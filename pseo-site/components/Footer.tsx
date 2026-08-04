@@ -99,6 +99,32 @@ export default function Footer() {
             </nav>
           </div>
           <div>
+            <p className="text-xs font-semibold text-gray-300 uppercase tracking-wider mb-3">Resources</p>
+            <nav aria-label="Footer — Resources" className="flex flex-col gap-2 text-sm text-gray-400">
+              <a href="https://gitdealflow.com/trending" className="hover:text-gray-200 transition-colors" target="_blank" rel="noopener noreferrer">Weekly Trending</a>
+              <a href="https://gitdealflow.com/heatmap" className="hover:text-gray-200 transition-colors" target="_blank" rel="noopener noreferrer">Sector Heatmap</a>
+              <a href="https://gitdealflow.com/signal" className="hover:text-gray-200 transition-colors" target="_blank" rel="noopener noreferrer">Signal Types</a>
+              <a href="https://gitdealflow.com/blog" className="hover:text-gray-200 transition-colors" target="_blank" rel="noopener noreferrer">Blog</a>
+              <a href="https://gitdealflow.com/badges-share" className="hover:text-gray-200 transition-colors" target="_blank" rel="noopener noreferrer">Velocity Badges</a>
+              <a href="https://gitdealflow.com/scout" className="hover:text-gray-200 transition-colors" target="_blank" rel="noopener noreferrer">Scout Score</a>
+              <a href="https://gitdealflow.com/api" className="hover:text-gray-200 transition-colors" target="_blank" rel="noopener noreferrer">API Docs</a>
+              <a href="https://gitdealflow.com/compare-tool" className="hover:text-gray-200 transition-colors" target="_blank" rel="noopener noreferrer">Comparison Tool</a>
+            </nav>
+          </div>
+          <div>
+            <p className="text-xs font-semibold text-gray-300 uppercase tracking-wider mb-3">Network</p>
+            <nav aria-label="Footer — Network" className="flex flex-col gap-2 text-sm text-gray-400">
+              <a href="https://gitdealflow.com" className="hover:text-gray-200 transition-colors" target="_blank" rel="noopener noreferrer">GitDealFlow</a>
+              <a href="https://sipi.bot" className="hover:text-gray-200 transition-colors" target="_blank" rel="noopener noreferrer">Sipi.bot</a>
+              <a href="https://voicelogpro.com" className="hover:text-gray-200 transition-colors" target="_blank" rel="noopener noreferrer">VoiceLogPro</a>
+              <a href="https://invisibleexit.com" className="hover:text-gray-200 transition-colors" target="_blank" rel="noopener noreferrer">InvisibleExit</a>
+              <a href="https://unlocksaas.com" className="hover:text-gray-200 transition-colors" target="_blank" rel="noopener noreferrer">UnlockSaaS</a>
+              <a href="https://churnlens.site" className="hover:text-gray-200 transition-colors" target="_blank" rel="noopener noreferrer">ChurnLens</a>
+              <a href="https://sanctionsai.dev" className="hover:text-gray-200 transition-colors" target="_blank" rel="noopener noreferrer">SanctionsAI</a>
+              <a href="https://carshake.online" className="hover:text-gray-200 transition-colors" target="_blank" rel="noopener noreferrer">CarShake</a>
+            </nav>
+          </div>
+          <div>
             <p className="text-xs font-semibold text-gray-300 uppercase tracking-wider mb-3">Elsewhere</p>
             <nav aria-label="Footer — Elsewhere" className="flex flex-col gap-2 text-sm text-gray-400">
               <a href="https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">Chrome — Crunchbase/Wellfound</a>

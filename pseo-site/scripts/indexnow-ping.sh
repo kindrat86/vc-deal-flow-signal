@@ -21,11 +21,11 @@ SITEMAP_INDEX="${BASE_URL}/sitemap.xml"
 echo "→ Fetching sitemap index: ${SITEMAP_INDEX}"
 
 # Extract child sitemap URLs from sitemap index
-CHILD_SITEMAPS=$(curl -sf "${SITEMAP_INDEX}" | grep -oP '<loc>[^<]+</loc>' | sed 's/<loc>//;s/<\/loc>//' | head -6)
+CHILD_SITEMAPS=$(curl -sf "${SITEMAP_INDEX}" | sed -n 's/.*<loc>\([^<]*\)<\/loc>.*/\1/p' | head -6)
 
 for child in $CHILD_SITEMAPS; do
   echo "→ Fetching child sitemap: ${child}"
-  curl -sf "$child" | grep -oP '<loc>[^<]+</loc>' | sed 's/<loc>//;s/<\/loc>//' >> "$URLS" || true
+  curl -sf "$child" | sed -n 's/.*<loc>\([^<]*\)<\/loc>.*/\1/p' >> "$URLS" || true
 done
 
 TOTAL=$(wc -l < "$URLS" | tr -d ' ')

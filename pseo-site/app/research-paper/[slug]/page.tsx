@@ -9,6 +9,7 @@ import {
 import { glossaryTerms } from "@/content/glossary";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
+import InlineSubscribe from "@/components/InlineSubscribe";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -289,6 +290,10 @@ export default async function ResearchPaperPage({ params }: PageProps) {
             Read /methodology
           </Link>
         </div>
+      </div>
+
+      <div className="mt-12">
+        <InlineSubscribe template="research-paper" />
       </div>
     </>
   );

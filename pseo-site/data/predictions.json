@@ -1,6 +1,6 @@
 {
-  "_doc": "Weekly Acceleration Watch — named startups showing the strongest GitHub engineering acceleration the week of `weekStart`. Each cohort is graded post-hoc against public fundraise / acquisition / shutdown news at the 60-day and 90-day windows. Methodology: ssrn.com/abstract=6606558.",
-  "_legal": "This is a data-driven engineering activity watchlist generated from public GitHub data. It is not investment advice. Naming a company indicates that its observed engineering activity matches the patterns described in our methodology — it does not assert that the company is fundraising, will fundraise, or has any specific intent. Outcomes are recorded post-hoc from public announcements only.",
+  "_doc": "Weekly Acceleration Watch \u2014 named startups showing the strongest GitHub engineering acceleration the week of `weekStart`. Each cohort is graded post-hoc against public fundraise / acquisition / shutdown news at the 60-day and 90-day windows. Methodology: ssrn.com/abstract=6606558.",
+  "_legal": "This is a data-driven engineering activity watchlist generated from public GitHub data. It is not investment advice. Naming a company indicates that its observed engineering activity matches the patterns described in our methodology \u2014 it does not assert that the company is fundraising, will fundraise, or has any specific intent. Outcomes are recorded post-hoc from public announcements only.",
   "_grading": {
     "_doc": "Outcome enum. `null` = not yet graded. Pending picks remain null until the 60d window closes.",
     "values": {
@@ -38,9 +38,9 @@
           "contributors": 3,
           "contributorGrowth": null,
           "thesis": "Pre-seed US jobs platform sustaining 1,694 commits over 14 days with the contributor signal pointing to a hiring burst. The combination of pre-seed stage and high commit volume is the textbook pre-seed-to-seed acceleration profile.",
-          "outcome": null,
-          "outcomeNotes": null,
-          "outcomeAt": null
+          "outcome": "no_event",
+          "outcomeNotes": "Graded 2026-07-31 (60-day window closed 2026-07-03): no public funding, acquisition, IPO, or shutdown announcement found for this organization via news search.",
+          "outcomeAt": "2026-07-31"
         },
         {
           "rank": 2,
@@ -57,10 +57,10 @@
           "commitVelocityChange": "+38%",
           "contributors": 18,
           "contributorGrowth": null,
-          "thesis": "EU seed-stage configurable PIM/MDM platform with a sustained framework-migration signal. The +38% acceleration on 116 commits indicates production-grade refactor work — usually a Series A precursor in B2B SaaS.",
-          "outcome": null,
-          "outcomeNotes": null,
-          "outcomeAt": null
+          "thesis": "EU seed-stage configurable PIM/MDM platform with a sustained framework-migration signal. The +38% acceleration on 116 commits indicates production-grade refactor work \u2014 usually a Series A precursor in B2B SaaS.",
+          "outcome": "no_event",
+          "outcomeNotes": "Graded 2026-07-31 (60-day window closed 2026-07-03): no public funding, acquisition, IPO, or shutdown announcement found for this organization via news search.",
+          "outcomeAt": "2026-07-31"
         },
         {
           "rank": 3,
@@ -78,9 +78,9 @@
           "contributors": 79,
           "contributorGrowth": null,
           "thesis": "Open-core ERP/HR platform showing a 9.5x acceleration over baseline with a contributor base of 79. A spike of this magnitude on a multi-product team usually maps to a release window or a customer-driven sprint.",
-          "outcome": null,
-          "outcomeNotes": null,
-          "outcomeAt": null
+          "outcome": "no_event",
+          "outcomeNotes": "Graded 2026-07-31 (60-day window closed 2026-07-03): no public funding, acquisition, IPO, or shutdown announcement found for this organization via news search.",
+          "outcomeAt": "2026-07-31"
         },
         {
           "rank": 4,
@@ -98,9 +98,9 @@
           "contributors": 14,
           "contributorGrowth": null,
           "thesis": "LATAM seed-stage commerce engine with one of the highest commit volumes in the seed cohort. 598 commits / 14d with a +32% delta indicates real customer-driven shipping rather than open-source maintenance.",
-          "outcome": null,
-          "outcomeNotes": null,
-          "outcomeAt": null
+          "outcome": "no_event",
+          "outcomeNotes": "Graded 2026-07-31 (60-day window closed 2026-07-03): no public funding, acquisition, IPO, or shutdown announcement found for this organization via news search.",
+          "outcomeAt": "2026-07-31"
         },
         {
           "rank": 5,
@@ -118,9 +118,9 @@
           "contributors": 100,
           "contributorGrowth": null,
           "thesis": "Identity-and-access platform (Gluu spinout) with a +77% acceleration on a 100-contributor base. Framework migration in identity SaaS at this scale typically lines up with enterprise-tier launch or platform compliance work.",
-          "outcome": null,
-          "outcomeNotes": null,
-          "outcomeAt": null
+          "outcome": "no_event",
+          "outcomeNotes": "Graded 2026-07-31 (60-day window closed 2026-07-03): no public funding, acquisition, IPO, or shutdown announcement found for this organization via news search.",
+          "outcomeAt": "2026-07-31"
         },
         {
           "rank": 6,
@@ -138,9 +138,9 @@
           "contributors": 66,
           "contributorGrowth": null,
           "thesis": "EU venture-backed open-core ERP with a 2.4x acceleration. Sustained framework migration plus 66 active contributors maps to a re-platform or a major customer onboarding.",
-          "outcome": null,
-          "outcomeNotes": null,
-          "outcomeAt": null
+          "outcome": "no_event",
+          "outcomeNotes": "Graded 2026-07-31 (60-day window closed 2026-07-03): no public funding, acquisition, IPO, or shutdown announcement found for this organization via news search.",
+          "outcomeAt": "2026-07-31"
         },
         {
           "rank": 7,
@@ -157,10 +157,10 @@
           "commitVelocityChange": "+59%",
           "contributors": 100,
           "contributorGrowth": null,
-          "thesis": "APAC open-core Laravel commerce platform with a +59% acceleration. Framework-migration commits with a 100-contributor base usually map to a major version release — a typical B2B fundraising-window precursor in the e-commerce stack.",
-          "outcome": null,
-          "outcomeNotes": null,
-          "outcomeAt": null
+          "thesis": "APAC open-core Laravel commerce platform with a +59% acceleration. Framework-migration commits with a 100-contributor base usually map to a major version release \u2014 a typical B2B fundraising-window precursor in the e-commerce stack.",
+          "outcome": "no_event",
+          "outcomeNotes": "Graded 2026-07-31 (60-day window closed 2026-07-03): no public funding, acquisition, IPO, or shutdown announcement found for this organization via news search.",
+          "outcomeAt": "2026-07-31"
         },
         {
           "rank": 8,
@@ -177,10 +177,10 @@
           "commitVelocityChange": "+38%",
           "contributors": 29,
           "contributorGrowth": null,
-          "thesis": "Italian Series A/B devtools / SaaS shop with a +38% acceleration. Smaller velocity but high contributor:commit ratio (1:1) — a hallmark of distributed senior engineering teams shipping to production.",
-          "outcome": null,
-          "outcomeNotes": null,
-          "outcomeAt": null
+          "thesis": "Italian Series A/B devtools / SaaS shop with a +38% acceleration. Smaller velocity but high contributor:commit ratio (1:1) \u2014 a hallmark of distributed senior engineering teams shipping to production.",
+          "outcome": "no_event",
+          "outcomeNotes": "Graded 2026-07-31 (60-day window closed 2026-07-03): no public funding, acquisition, IPO, or shutdown announcement found for this organization via news search.",
+          "outcomeAt": "2026-07-31"
         },
         {
           "rank": 9,
@@ -197,10 +197,10 @@
           "commitVelocityChange": "+25%",
           "contributors": 28,
           "contributorGrowth": null,
-          "thesis": "Series A/B healthcare software shop with a +25% acceleration on a 28-person contributor base. Framework migration in regulated software (healthcare) is rare and meaningful — usually a product re-architecture financed by a recent or upcoming round.",
-          "outcome": null,
-          "outcomeNotes": null,
-          "outcomeAt": null
+          "thesis": "Series A/B healthcare software shop with a +25% acceleration on a 28-person contributor base. Framework migration in regulated software (healthcare) is rare and meaningful \u2014 usually a product re-architecture financed by a recent or upcoming round.",
+          "outcome": "no_event",
+          "outcomeNotes": "Graded 2026-07-31 (60-day window closed 2026-07-03): no public funding, acquisition, IPO, or shutdown announcement found for this organization via news search.",
+          "outcomeAt": "2026-07-31"
         },
         {
           "rank": 10,
@@ -218,9 +218,9 @@
           "contributors": 14,
           "contributorGrowth": null,
           "thesis": "Seed-stage decentralized infra team with a +28% acceleration. Smaller absolute volume but the framework-migration label across a 14-person contributor base indicates a real product re-platform rather than a single-author push.",
-          "outcome": null,
-          "outcomeNotes": null,
-          "outcomeAt": null
+          "outcome": "no_event",
+          "outcomeNotes": "Graded 2026-07-31 (60-day window closed 2026-07-03): no public funding, acquisition, IPO, or shutdown announcement found for this organization via news search.",
+          "outcomeAt": "2026-07-31"
         }
       ]
     }

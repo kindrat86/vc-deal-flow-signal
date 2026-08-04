@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-07-22T16:16:09.377Z",
+  "generatedAt": "2026-07-29T17:55:49.386Z",
   "minCellSize": 3,
   "surfaces": [
     {
@@ -309,6 +309,121 @@
         {
           "cellKey": "growth/web3",
           "cellSize": 10,
+          "status": "included"
+        }
+      ]
+    },
+    {
+      "surface": "/stage/[stage]/in/[geo]",
+      "total": 20,
+      "included": 13,
+      "suppressed": 7,
+      "cells": [
+        {
+          "cellKey": "pre-seed/canada",
+          "cellSize": 1,
+          "status": "suppressed",
+          "reason": "below MIN_PSEO_CELL_SIZE"
+        },
+        {
+          "cellKey": "seed/canada",
+          "cellSize": 1,
+          "status": "suppressed",
+          "reason": "below MIN_PSEO_CELL_SIZE"
+        },
+        {
+          "cellKey": "growth/canada",
+          "cellSize": 1,
+          "status": "suppressed",
+          "reason": "below MIN_PSEO_CELL_SIZE"
+        },
+        {
+          "cellKey": "pre-seed/uk",
+          "cellSize": 2,
+          "status": "suppressed",
+          "reason": "below MIN_PSEO_CELL_SIZE"
+        },
+        {
+          "cellKey": "pre-seed/latam",
+          "cellSize": 2,
+          "status": "suppressed",
+          "reason": "below MIN_PSEO_CELL_SIZE"
+        },
+        {
+          "cellKey": "seed/uk",
+          "cellSize": 2,
+          "status": "suppressed",
+          "reason": "below MIN_PSEO_CELL_SIZE"
+        },
+        {
+          "cellKey": "growth/latam",
+          "cellSize": 2,
+          "status": "suppressed",
+          "reason": "below MIN_PSEO_CELL_SIZE"
+        },
+        {
+          "cellKey": "seed/apac",
+          "cellSize": 3,
+          "status": "included"
+        },
+        {
+          "cellKey": "seed/latam",
+          "cellSize": 3,
+          "status": "included"
+        },
+        {
+          "cellKey": "pre-seed/apac",
+          "cellSize": 4,
+          "status": "included"
+        },
+        {
+          "cellKey": "growth/apac",
+          "cellSize": 5,
+          "status": "included"
+        },
+        {
+          "cellKey": "series-a-b/europe",
+          "cellSize": 6,
+          "status": "included"
+        },
+        {
+          "cellKey": "growth/europe",
+          "cellSize": 8,
+          "status": "included"
+        },
+        {
+          "cellKey": "pre-seed/us",
+          "cellSize": 9,
+          "status": "included"
+        },
+        {
+          "cellKey": "series-a-b/apac",
+          "cellSize": 9,
+          "status": "included"
+        },
+        {
+          "cellKey": "pre-seed/europe",
+          "cellSize": 10,
+          "status": "included"
+        },
+        {
+          "cellKey": "seed/europe",
+          "cellSize": 10,
+          "status": "included"
+        },
+        {
+          "cellKey": "growth/us",
+          "cellSize": 12,
+          "status": "included"
+        },
+        {
+          "cellKey": "series-a-b/us",
+          "cellSize": 13,
+          "status": "included"
+        },
+        {
+          "cellKey": "seed/us",
+          "cellSize": 17,
           "status": "included"
         }
       ]
@@ -707,6 +822,92 @@
           "status": "included"
         }
       ]
+    },
+    {
+      "surface": "/startups-to-watch/new/[sector]",
+      "total": 15,
+      "included": 12,
+      "suppressed": 3,
+      "cells": [
+        {
+          "cellKey": "ecommerce-infrastructure",
+          "cellSize": 1,
+          "status": "suppressed",
+          "reason": "below MIN_PSEO_CELL_SIZE"
+        },
+        {
+          "cellKey": "supply-chain",
+          "cellSize": 1,
+          "status": "suppressed",
+          "reason": "below MIN_PSEO_CELL_SIZE"
+        },
+        {
+          "cellKey": "hr-tech",
+          "cellSize": 2,
+          "status": "suppressed",
+          "reason": "below MIN_PSEO_CELL_SIZE"
+        },
+        {
+          "cellKey": "healthcare",
+          "cellSize": 3,
+          "status": "included"
+        },
+        {
+          "cellKey": "enterprise-saas",
+          "cellSize": 3,
+          "status": "included"
+        },
+        {
+          "cellKey": "data-infrastructure",
+          "cellSize": 3,
+          "status": "included"
+        },
+        {
+          "cellKey": "robotics",
+          "cellSize": 3,
+          "status": "included"
+        },
+        {
+          "cellKey": "space-tech",
+          "cellSize": 3,
+          "status": "included"
+        },
+        {
+          "cellKey": "edtech",
+          "cellSize": 4,
+          "status": "included"
+        },
+        {
+          "cellKey": "proptech",
+          "cellSize": 5,
+          "status": "included"
+        },
+        {
+          "cellKey": "agtech",
+          "cellSize": 5,
+          "status": "included"
+        },
+        {
+          "cellKey": "web3",
+          "cellSize": 6,
+          "status": "included"
+        },
+        {
+          "cellKey": "legal-tech",
+          "cellSize": 6,
+          "status": "included"
+        },
+        {
+          "cellKey": "gaming",
+          "cellSize": 6,
+          "status": "included"
+        },
+        {
+          "cellKey": "social-community",
+          "cellSize": 6,
+          "status": "included"
+        }
+      ]
     }
   ],
   "localeTopicCoverage": {
@@ -770,10 +971,10 @@
     }
   },
   "summary": {
-    "totalCells": 132,
-    "totalIncluded": 110,
-    "totalSuppressed": 22,
-    "suppressionRatePct": 16.7,
+    "totalCells": 167,
+    "totalIncluded": 135,
+    "totalSuppressed": 32,
+    "suppressionRatePct": 19.2,
     "minCellSizeEnforced": 3
   }
 }

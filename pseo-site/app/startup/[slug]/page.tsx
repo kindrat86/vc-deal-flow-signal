@@ -9,6 +9,7 @@ import {
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import CuriosityGate from "@/components/CuriosityGate";
 import SeoCta from "@/components/SeoCta";
+import InlineSubscribe from "@/components/InlineSubscribe";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 import RelatedLinks from "@/components/RelatedLinks";
 import { getDefaultRelatedGroups } from "@/lib/related-links";
@@ -636,6 +637,11 @@ export default async function StartupPage({ params }: PageProps) {
 
         {/* CTA */}
         <SeoCta secondary={{ label: "See a €7 First Look sample", href: "/firstlook" }} />
+
+        {/* Inline email capture — capture readers who won't click through */}
+        <div className="mt-8">
+          <InlineSubscribe template="startup" />
+        </div>
       </div>
 
       <RelatedLinks groups={getDefaultRelatedGroups()} />

@@ -16,6 +16,7 @@ import CuriosityGate from "@/components/CuriosityGate";
 import RelatedLinks from "@/components/RelatedLinks";
 import { getDefaultRelatedGroups } from "@/lib/related-links";
 import SeoCta from "@/components/SeoCta";
+import InlineSubscribe from "@/components/InlineSubscribe";
 import ShareBar from "@/components/ShareBar";
 import VelocityBar from "@/components/charts/VelocityBar";
 import SignalDistribution from "@/components/charts/SignalDistribution";
@@ -403,6 +404,10 @@ export default async function SectorPage({ params }: PageProps) {
             </div>
           </section>
         )}
+      </div>
+
+      <div className="mt-10 mb-8">
+        <InlineSubscribe template="startups-to-watch" />
       </div>
 
       <RelatedLinks groups={getDefaultRelatedGroups()} />

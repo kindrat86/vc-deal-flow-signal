@@ -12,11 +12,13 @@ const LANG = "en";
 // 48 hours. Anything older is silently dropped from the news index, so we
 // pre-filter aggressively rather than letting Google trim it for us.
 const WINDOW_MS_48H = 48 * 60 * 60 * 1000;
-// Quiet-week fallback (audit 2026-07-23 tightened). Only extend to 7 d
-// when the 48-h window is completely empty — stale items are dropped by
-// Google anyway and pollute the sitemap's freshness signal. A non-empty
-// sitemap (even with 1 item) is re-fetched more aggressively.
-const MIN_FRESH_ITEMS = 3; // kept for reference; strict 48h mode skips the <3 fallback
+// Quiet-week fallback (audit 2026-05-08 closed gap "News sitemap is 48-h
+// rolling; quiet weeks ship near-empty"). When the 48-h window yields
+// fewer than this many items, we extend the window to 7 days. Google still
+// drops anything past 48 h from its News index, but a non-empty sitemap is
+// re-fetched more aggressively and surfaces freshly-published items the
+// moment they cross into the 48-h window.
+const MIN_FRESH_ITEMS = 3;
 const WINDOW_MS_7D = 7 * 24 * 60 * 60 * 1000;
 // Last-ditch fallback when even the 7-day window is empty. Cap at 5 most
 // recent items regardless of age — guarantees the file is never an empty
@@ -122,20 +124,17 @@ export async function GET() {
     all = [];
   }
 
-  // Tiered fallback (audit 2026-07-23): strict 48 h filter for Google News
-  // compliance. Google drops anything past 48 h from its News index, so
-  // including stale items wastes crawl budget and creates a misleading
-  // freshness signal. If 48 h yields zero, fall back to 7 d — Google will
-  // ignore the stale items but the non-empty sitemap is re-fetched more
-  // aggressively. Absolute fallback (5 most recent) as last resort.
-  // Newest first. Capped at 1,000 URLs per sitemap.
+  // Tiered fallback (audit 2026-05-08): try 48 h → 7 d → 5 most recent.
+  // Newest first — Google News uses publication_date for ranking but
+  // sorted output is friendlier to manual auditors. Capped at the
+  // Google News spec limit of 1,000 URLs per sitemap.
   let recent = filterAndSort(all, now, WINDOW_MS_48H);
   let windowUsed: "48h" | "7d" | "absolute" = "48h";
-  if (recent.length === 0 && all.length > 0) {
+  if (recent.length < MIN_FRESH_ITEMS) {
     recent = filterAndSort(all, now, WINDOW_MS_7D);
     windowUsed = "7d";
   }
-  if (recent.length === 0) {
+  if (recent.length === 0 && all.length > 0) {
     recent = all
       .filter((item) => {
         const t = Date.parse(item.publishedAt);

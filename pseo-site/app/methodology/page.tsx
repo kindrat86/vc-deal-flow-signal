@@ -8,6 +8,7 @@ import PSEOFooterNav from "@/components/PSEOFooterNav";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import InlineSubscribe from "@/components/InlineSubscribe";
 
 export const metadata: Metadata = {
   title: "Methodology — How We Measure Startup Engineering Acceleration",
@@ -714,6 +715,10 @@ export default function MethodologyPage() {
             </Link>
           </div>
         </div>
+      </div>
+
+      <div className="mt-12 mb-8">
+        <InlineSubscribe template="methodology" />
       </div>
     </>
   );
