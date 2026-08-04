@@ -4526,6 +4526,49 @@
         }
       ],
       "publishedAt": "2026-08-03T09:00:00Z"
+    },
+    {
+      "date": "2026-08-04",
+      "slug": "2026-08-04",
+      "headline": "The legal tech opening hiding in a +371% deploy frequency spike",
+      "hook": "Pre-seed legal tech teams shipping 33 commits in 14 days at +371% aren't just building product — they're broadcasting the deploy-frequency that usually precedes a raise.",
+      "repo": {
+        "name": "publicmap",
+        "githubUrl": "https://github.com/publicmap",
+        "stage": "Pre-seed",
+        "geography": "Unknown",
+        "sector": "Legal Tech",
+        "sectorSlug": "legal-tech",
+        "signalType": "Deploy frequency spike",
+        "commitVelocity14d": 33,
+        "commitVelocityChange": "+371%",
+        "contributors": 6,
+        "contributorGrowth": "+0%",
+        "newRepos": 0,
+        "description": "Public maps by the Public"
+      },
+      "ideaThesis": "Legal Tech has a buyer who is also a builder. The category incumbents shipped for an ops/HR/finance lead; the next wave ships for the engineer running that function. Read the repo: deploy frequency spike, pre-seed team, 6 contributors. That's the shape of a team that crosses the next funding line on engineering output, not enterprise sales — and the gap they leave is the wedge for an indie or two-founder tool that does one job better than the suite they're inside of.",
+      "buildAngles": [
+        "EHR/court/contract export tool — the part that vendors refuse to expose. Read-only, audit-trail-first.",
+        "Compliance-as-a-tool for one narrow workflow; sell the artifact (signed PDF, attestation) not the platform.",
+        "Verification layer that sits between the AI and the system of record; the engineer-buyer is your first 100 customers."
+      ],
+      "distributionPlay": "Lead with a credible benchmark or audit — a single PDF that names what the existing tools miss. Send it to two industry newsletters before posting it anywhere social.",
+      "signalReading": [
+        {
+          "metric": "33 commits / 14 days",
+          "reading": "Low absolute volume. The signal is the change-in-change, not the raw count — see the next metric."
+        },
+        {
+          "metric": "+371% commit-velocity change",
+          "reading": "Trend is still accelerating, not peaking. A positive change-in-change is the leading edge of the curve, not the back of it."
+        },
+        {
+          "metric": "6 contributors (+0%)",
+          "reading": "Small core team — likely seed-funded with focused velocity. The opportunity is adjacent tooling that augments the small team."
+        }
+      ],
+      "publishedAt": "2026-08-04T09:00:00Z"
     }
   ]
 }
