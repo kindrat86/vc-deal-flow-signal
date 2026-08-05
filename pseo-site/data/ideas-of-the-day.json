@@ -4569,6 +4569,49 @@
         }
       ],
       "publishedAt": "2026-08-04T09:00:00Z"
+    },
+    {
+      "date": "2026-08-05",
+      "slug": "2026-08-05",
+      "headline": "The proptech reset hiding in a -33% framework migration",
+      "hook": "Pre-seed proptech teams cooling to 6 commits over 14 days (-33%) are showing the framework-migration pattern — a recoverable dip, not a flatline, and the natural moment to build the next adjacent tool.",
+      "repo": {
+        "name": "rosteleset",
+        "githubUrl": "https://github.com/rosteleset",
+        "stage": "Pre-seed",
+        "geography": "Unknown",
+        "sector": "PropTech",
+        "sectorSlug": "proptech",
+        "signalType": "Framework migration",
+        "commitVelocity14d": 6,
+        "commitVelocityChange": "-33%",
+        "contributors": 3,
+        "contributorGrowth": "+0%",
+        "newRepos": 0,
+        "description": "Ассоциация РОСТЕЛЕСЕТЬ"
+      },
+      "ideaThesis": "PropTech has a buyer who is also a builder. The category incumbents shipped for an ops/HR/finance lead; the next wave ships for the engineer running that function. Read the repo: framework migration, pre-seed team, 3 contributors. That's the shape of a team that crosses the next funding line on engineering output, not enterprise sales — and the gap they leave is the wedge for an indie or two-founder tool that does one job better than the suite they're inside of.",
+      "buildAngles": [
+        "Single-table replacement for one screen of the incumbent proptech suite. Sell the export, not the storage.",
+        "Browser extension that overlays signal data on the existing proptech dashboards the buyer already uses.",
+        "Lightweight monitoring + alerting for one specific failure mode — narrower than the platform, deeper on the one job."
+      ],
+      "distributionPlay": "Publish a 'state of proptech engineering' weekly digest derived from the same data; the digest becomes the first sales channel and an SEO surface at the same time.",
+      "signalReading": [
+        {
+          "metric": "6 commits / 14 days",
+          "reading": "Low absolute volume. The signal is the change-in-change, not the raw count — see the next metric."
+        },
+        {
+          "metric": "-33% commit-velocity change",
+          "reading": "Cooling. Often a deliberate slowdown for refactor, rebrand, or hiring — read alongside the next two lines before calling it a decline."
+        },
+        {
+          "metric": "3 contributors (+0%)",
+          "reading": "Founding-team-still-coding signal. Hiring will be the next-cycle move; ATS / sourcing tools are the natural wedge."
+        }
+      ],
+      "publishedAt": "2026-08-05T09:00:00Z"
     }
   ]
 }
