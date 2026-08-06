@@ -1,0 +1,47 @@
+name: Delete Stadium Pitch duplicates
+
+# One-shot cleanup for the 2026-08 cron misfire that uploaded 5 copies of
+# "Stadium Pitch — August 2026" (GHA ORs day-of-month/day-of-week, so
+# "7 14 1-7 * 3" fired daily Aug 1-6). Deletes the 4 duplicates, keeps the
+# true first-Wednesday upload (YnH0_io012g).
+#
+# Run manually via workflow_dispatch. Safe to re-run: already-deleted IDs
+# are skipped, and the script refuses to run against any channel other than
+# "The Data Nerd".
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  delete-duplicates:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    defaults:
+      run:
+        working-directory: tools/video
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+          cache-dependency-path: tools/video/package-lock.json
+
+      - name: Install npm deps
+        run: npm ci
+
+      - name: Decode YouTube OAuth credentials
+        run: |
+          echo "${{ secrets.YT_CREDENTIALS_B64 }}" | base64 -d > .yt-credentials.json
+          echo "${{ secrets.YT_TOKEN_B64 }}" | base64 -d > .yt-token.json
+
+      - name: Delete duplicates
+        run: node scripts/08-delete-stadium-pitch-duplicates.mjs
+
+      - name: Cleanup secrets
+        if: always()
+        run: rm -f .yt-credentials.json .yt-token.json
