@@ -28,7 +28,11 @@ PSEO_DIR="/Users/sipi/Downloads/vc-deal-flow-signal/pseo-site"
 EMAILS_DIR="/Users/sipi/Downloads/vc-deal-flow-signal/emails"
 SENT_LOG_DIR="/Users/sipi/Downloads/vc-deal-flow-signal/email-api/sent-log"
 
-PRO_KEY="re_3K9Eht1E_DbtLMaPBviJCMk7UpMGF4rc6"
+# Resend API key — NEVER hardcode. Load from environment (repo .env is gitignored).
+# The previously hardcoded key (re_3K9...) was revoked 2026-08-06 after a
+# GitGuardian scan flagged it; use a fresh key from the Resend dashboard.
+: "${RESEND_API_KEY:?RESEND_API_KEY must be set (see .env — gitignored)}"
+PRO_KEY="$RESEND_API_KEY"
 FROM="The Data Nerd <signal@gitdealflow.com>"
 BCC="sales@sipiteno.com"
 AUDIENCE_ID="1ddf358e-2416-4481-a0f5-538fd12f6e73"  # GitDealFlow on PRO team
