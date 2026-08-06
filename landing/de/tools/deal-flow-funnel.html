@@ -162,32 +162,55 @@
   </div>
 </div>
 
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@graph":[
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@type":"WebApplication",
-      "name":"Deal Flow Funnel Calculator",
-      "url":"https://gitdealflow.com/de/tools/deal-flow-funnel.html",
-      "applicationCategory":"BusinessApplication",
-      "operatingSystem":"Any",
-      "browserRequirements":"Requires JavaScript",
-      "description":"Calculate VC deal flow conversion rates at every stage and benchmark against typical early-stage fund performance.",
-      "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
-      "publisher":{"@type":"Organization","name":"GitDealFlow","url":"https://gitdealflow.com"}
+      "@type": "WebApplication",
+      "name": "Deal Flow Funnel Calculator",
+      "url": "https://gitdealflow.com/de/tools/deal-flow-funnel.html",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript",
+      "description": "Calculate VC deal flow conversion rates at every stage and benchmark against typical early-stage fund performance.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "GitDealFlow",
+        "url": "https://gitdealflow.com"
+      },
+      "isAccessibleForFree": true
     },
     {
-      "@type":"FAQPage",
-      "mainEntity":[
-        {"@type":"Question","name":"What is a good deal flow conversion rate from seen to closed?","acceptedAnswer":{"@type":"Answer","text":"For early-stage funds, 0.5-1.5% of deals seen ultimately close. Top-decile funds cluster around 2-3%. Below 0.3% means you're sourcing too broadly."}},
-        {"@type":"Question","name":"Where do most deal flow funnels leak?","acceptedAnswer":{"@type":"Answer","text":"The biggest drop is seen to screened (~70-80% attrition is normal). The most diagnostic stage is meeting to term sheet: below 15% means too many low-conviction meetings."}},
-        {"@type":"Question","name":"How many deals do I need to see to close one per quarter?","acceptedAnswer":{"@type":"Answer","text":"At typical 1% overall conversion, you need ~100 qualified deals seen per quarter to close one. Solo GPs use proprietary signals like GitDealFlow's GitHub velocity data to compress the funnel."}}
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is a good deal flow conversion rate from seen to closed?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "For early-stage funds, 0.5-1.5% of deals seen ultimately close. Top-decile funds cluster around 2-3%. Below 0.3% means you're sourcing too broadly."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Where do most deal flow funnels leak?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The biggest drop is seen to screened (~70-80% attrition is normal). The most diagnostic stage is meeting to term sheet: below 15% means too many low-conviction meetings."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How many deals do I need to see to close one per quarter?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "At typical 1% overall conversion, you need ~100 qualified deals seen per quarter to close one. Solo GPs use proprietary signals like GitDealFlow's GitHub velocity data to compress the funnel."
+          }
+        }
       ]
     }
   ]
-}
-</script>
+}</script>
 
 <script>
 // Typical early-stage benchmarks (rough industry medians)

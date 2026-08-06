@@ -197,32 +197,55 @@
   </div>
 </div>
 
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@graph":[
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@type":"WebApplication",
-      "name":"Burn Rate Analyzer",
-      "url":"https://gitdealflow.com/de/tools/burn-rate-analyzer.html",
-      "applicationCategory":"FinanceApplication",
-      "operatingSystem":"Any",
-      "browserRequirements":"Requires JavaScript",
-      "description":"Analyze startup burn rate, net burn, burn multiple, Magic Number, and 12-month cash projection from MRR, churn, and expenses.",
-      "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
-      "publisher":{"@type":"Organization","name":"GitDealFlow","url":"https://gitdealflow.com"}
+      "@type": "WebApplication",
+      "name": "Burn Rate Analyzer",
+      "url": "https://gitdealflow.com/de/tools/burn-rate-analyzer.html",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript",
+      "description": "Analyze startup burn rate, net burn, burn multiple, Magic Number, and 12-month cash projection from MRR, churn, and expenses.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "GitDealFlow",
+        "url": "https://gitdealflow.com"
+      },
+      "isAccessibleForFree": true
     },
     {
-      "@type":"FAQPage",
-      "mainEntity":[
-        {"@type":"Question","name":"What is the burn multiple?","acceptedAnswer":{"@type":"Answer","text":"Burn Multiple = Net Burn divided by Net New ARR. Under 1.0 is exceptional, 1-1.5 is good, 2+ is a red flag. It measures capital efficiency."}},
-        {"@type":"Question","name":"What is a good SaaS Magic Number?","acceptedAnswer":{"@type":"Answer","text":"Above 1.0 means pour more fuel on growth. 0.5-1.0 is healthy. Below 0.5 suggests your sales engine is inefficient."}},
-        {"@type":"Question","name":"What counts as net burn?","acceptedAnswer":{"@type":"Answer","text":"Net burn = total monthly operating expenses minus recognized revenue. Spend $60k, collect $25k MRR, net burn is $35k/mo."}}
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "What is the burn multiple?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Burn Multiple = Net Burn divided by Net New ARR. Under 1.0 is exceptional, 1-1.5 is good, 2+ is a red flag. It measures capital efficiency."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a good SaaS Magic Number?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Above 1.0 means pour more fuel on growth. 0.5-1.0 is healthy. Below 0.5 suggests your sales engine is inefficient."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What counts as net burn?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Net burn = total monthly operating expenses minus recognized revenue. Spend $60k, collect $25k MRR, net burn is $35k/mo."
+          }
+        }
       ]
     }
   ]
-}
-</script>
+}</script>
 
 <script>
 function fmtMoney(n) {

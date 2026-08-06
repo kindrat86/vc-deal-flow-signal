@@ -163,32 +163,55 @@
   </div>
 </div>
 
-<script type="application/ld+json">
-{
-  "@context":"https://schema.org",
-  "@graph":[
+<script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@graph": [
     {
-      "@type":"WebApplication",
-      "name":"Startup Runway Calculator",
-      "url":"https://gitdealflow.com/de/tools/runway-calculator.html",
-      "applicationCategory":"FinanceApplication",
-      "operatingSystem":"Any",
-      "browserRequirements":"Requires JavaScript",
-      "description":"Calculate startup runway from cash on hand and monthly burn rate. Shows months of cash left, cash-out date, and fundraising urgency.",
-      "offers":{"@type":"Offer","price":"0","priceCurrency":"USD"},
-      "publisher":{"@type":"Organization","name":"GitDealFlow","url":"https://gitdealflow.com"}
+      "@type": "WebApplication",
+      "name": "Startup Runway Calculator",
+      "url": "https://gitdealflow.com/de/tools/runway-calculator.html",
+      "applicationCategory": "FinanceApplication",
+      "operatingSystem": "Any",
+      "browserRequirements": "Requires JavaScript",
+      "description": "Calculate startup runway from cash on hand and monthly burn rate. Shows months of cash left, cash-out date, and fundraising urgency.",
+      "publisher": {
+        "@type": "Organization",
+        "name": "GitDealFlow",
+        "url": "https://gitdealflow.com"
+      },
+      "isAccessibleForFree": true
     },
     {
-      "@type":"FAQPage",
-      "mainEntity":[
-        {"@type":"Question","name":"How is startup runway calculated?","acceptedAnswer":{"@type":"Answer","text":"Runway = Cash on Hand divided by Monthly Net Burn. $500k cash with $40k/month net burn = 12.5 months runway."}},
-        {"@type":"Question","name":"When should I start fundraising?","acceptedAnswer":{"@type":"Answer","text":"Raise when you have 9-12 months of runway left. A typical round takes 3-6 months from first pitch to wired cash."}},
-        {"@type":"Question","name":"What is a good runway?","acceptedAnswer":{"@type":"Answer","text":"Post-fund-raise, VCs expect 18-24 months of runway. Below 12 months is a yellow flag. Below 6 months is a crisis."}}
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How is startup runway calculated?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Runway = Cash on Hand divided by Monthly Net Burn. $500k cash with $40k/month net burn = 12.5 months runway."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "When should I start fundraising?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Raise when you have 9-12 months of runway left. A typical round takes 3-6 months from first pitch to wired cash."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What is a good runway?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Post-fund-raise, VCs expect 18-24 months of runway. Below 12 months is a yellow flag. Below 6 months is a crisis."
+          }
+        }
       ]
     }
   ]
-}
-</script>
+}</script>
 
 <script>
 function fmtMoney(n) {
