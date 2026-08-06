@@ -16,8 +16,12 @@ name: YouTube monthly Stadium Pitch
 
 on:
   schedule:
-    # First Wednesday of the month: day-of-month 1-7, weekday Wed (3).
-    - cron: "7 14 1-7 * 3"
+    # First Wednesday of the month. GitHub Actions ORs day-of-month and
+    # day-of-week fields, so "1-7 * 3" fires on EVERY day of the 1st-7th
+    # (plus every Wednesday) — ~10 runs/month of a heavy Remotion render.
+    # Use every-Wednesday + a first-week gate step instead: 4-5 cheap
+    # runs/month, only the first Wednesday does the real work.
+    - cron: "7 14 * * 3"
   workflow_dispatch:
 
 permissions:
@@ -36,6 +40,17 @@ jobs:
         working-directory: tools/video
     steps:
       - uses: actions/checkout@v4
+
+      - name: Gate — only run on the first Wednesday of the month
+        run: |
+          DOW=$(date -u +%u)   # 1=Mon .. 7=Sun
+          DOM=$(date -u +%d)
+          if [ "$DOW" -ne 3 ] || [ "$DOM" -gt 7 ]; then
+            echo "Not the first Wednesday (dow=$DOW dom=$DOM) — exiting without doing work."
+            exit 0
+          fi
+          echo "First Wednesday confirmed (dow=$DOW dom=$DOM) — proceeding."
+        working-directory: ${{ github.workspace }}
 
       - uses: actions/setup-node@v4
         with:
