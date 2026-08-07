@@ -132,7 +132,7 @@ export default function YearInReviewHubPage() {
           </p>
           <Link
             href="/firstlook"
-            className="inline-block rounded-md bg-sky-500 px-5 py-2 text-sm font-semibold text-white hover:bg-sky-400 transition-colors"
+            className="inline-block rounded-md bg-signal-500 px-5 py-2 text-sm font-semibold text-slate-950 hover:bg-signal-400 transition-colors"
           >
             See First Look
           </Link>

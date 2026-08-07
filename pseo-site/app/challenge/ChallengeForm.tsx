@@ -94,7 +94,7 @@ export default function ChallengeForm() {
         <button
           type="submit"
           disabled={status === "submitting"}
-          className="inline-flex items-center justify-center px-5 py-2.5 rounded-md bg-sky-500 hover:bg-sky-400 disabled:opacity-60 disabled:cursor-not-allowed text-slate-950 font-semibold text-sm transition-colors"
+          className="inline-flex items-center justify-center px-5 py-2.5 rounded-md bg-signal-500 hover:bg-signal-400 disabled:opacity-60 disabled:cursor-not-allowed text-slate-950 font-semibold text-sm transition-colors"
         >
           {status === "submitting" ? "Sending…" : "Start Day 1 →"}
         </button>

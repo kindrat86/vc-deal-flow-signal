@@ -632,7 +632,7 @@ export default async function BuildVsInvestSectorPage({ params }: PageProps) {
             </Link>
             <Link
               href="https://gitdealflow.com/#signup"
-              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-sm transition-colors"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-signal-500 hover:bg-signal-400 text-slate-950 font-bold text-sm transition-colors"
             >
               Get the Monday email →
             </Link>
@@ -702,7 +702,7 @@ export default async function BuildVsInvestSectorPage({ params }: PageProps) {
               </p>
               <Link
                 href="https://gitdealflow.com/dashboard"
-                className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-sm transition-colors"
+                className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-signal-500 hover:bg-signal-400 text-slate-950 font-bold text-sm transition-colors"
               >
                 Get the dashboard — €49/mo →
               </Link>

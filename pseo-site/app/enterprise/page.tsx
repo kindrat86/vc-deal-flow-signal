@@ -386,7 +386,7 @@ export default function EnterprisePage() {
           </p>
           <Link
             href="/pricing"
-            className="inline-block bg-sky-600 hover:bg-sky-500 text-white text-sm font-semibold px-4 py-2 rounded-md transition-colors"
+            className="inline-block bg-signal-500 hover:bg-signal-600 text-slate-950 text-sm font-semibold px-4 py-2 rounded-md transition-colors"
           >
             See full pricing &rarr;
           </Link>

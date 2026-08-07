@@ -155,7 +155,7 @@ export default async function FirstLookLastChancePage({ searchParams }: Props) {
           declineHref="/firstlook/done"
           acceptLabel={`Yes — add a second sector for ${fmt(oto.unitAmount)}`}
           declineLabel="No thanks, just deliver my First Look"
-          acceptToneClass="bg-sky-500 hover:bg-sky-400 text-slate-950"
+          acceptToneClass="bg-signal-500 hover:bg-signal-400 text-slate-950"
         />
 
         <p className="text-slate-500 text-xs leading-relaxed border-t border-slate-800 pt-4">

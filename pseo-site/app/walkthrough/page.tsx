@@ -1162,7 +1162,7 @@ export default function PerfectWebinarPage() {
           <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
             <a
               href={STRIPE_DASHBOARD}
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-semibold text-base shadow-lg shadow-sky-500/30 transition-colors"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-signal-500 hover:bg-signal-600 text-slate-950 font-semibold text-base shadow-lg shadow-signal-500/30 transition-colors"
             >
               Lock €49/mo founder price <span aria-hidden="true">→</span>
             </a>
@@ -1261,7 +1261,7 @@ export default function PerfectWebinarPage() {
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <a
               href={STRIPE_DASHBOARD}
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-semibold text-base shadow-lg shadow-sky-500/30 transition-colors"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-signal-500 hover:bg-signal-600 text-slate-950 font-semibold text-base shadow-lg shadow-signal-500/30 transition-colors"
             >
               Lock €49/mo · Founder price <span aria-hidden="true">→</span>
             </a>

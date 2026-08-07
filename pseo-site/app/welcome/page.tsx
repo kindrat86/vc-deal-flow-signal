@@ -182,7 +182,7 @@ export default async function WelcomePage() {
       <div className="flex flex-col sm:flex-row gap-3">
         <Link
           href="/dashboard"
-          className="inline-flex items-center justify-center gap-1.5 bg-sky-600 hover:bg-sky-500 text-white font-semibold px-7 py-3 rounded-lg text-base transition-colors shadow-sm shadow-sky-500/30"
+          className="inline-flex items-center justify-center gap-1.5 bg-signal-500 hover:bg-signal-600 text-slate-950 font-semibold px-7 py-3 rounded-lg text-base transition-colors shadow-sm shadow-signal-500/30"
         >
           Go to Dashboard
           <span aria-hidden="true">→</span>

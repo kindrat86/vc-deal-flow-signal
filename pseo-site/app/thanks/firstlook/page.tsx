@@ -105,7 +105,7 @@ export default function ThanksFirstLook() {
           <div className="flex flex-col sm:flex-row gap-3 pt-1">
             <Link
               href="/dashboard"
-              className="inline-flex items-center justify-center gap-2 rounded-md bg-sky-600 hover:bg-sky-500 px-5 py-3 text-white text-base font-semibold transition-colors shadow-sm shadow-sky-500/30"
+              className="inline-flex items-center justify-center gap-2 rounded-md bg-signal-500 hover:bg-signal-600 px-5 py-3 text-slate-950 text-base font-semibold transition-colors shadow-sm shadow-signal-500/30"
             >
               Lock founding rate (€2.97 first month) →
             </Link>

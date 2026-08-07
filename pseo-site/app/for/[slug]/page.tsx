@@ -354,7 +354,7 @@ export default async function PersonaPage({ params }: PageProps) {
           </p>
           <Link
             href={persona.ctaPath}
-            className="inline-block rounded-md bg-sky-500 px-5 py-2 text-sm font-semibold text-white hover:bg-sky-400 transition-colors"
+            className="inline-block rounded-md bg-signal-500 px-5 py-2 text-sm font-semibold text-slate-950 hover:bg-signal-400 transition-colors"
           >
             {persona.ctaLabel}
           </Link>

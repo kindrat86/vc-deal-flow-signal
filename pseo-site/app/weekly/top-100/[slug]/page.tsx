@@ -360,7 +360,7 @@ export default async function Top100WeeklyPage({ params }: PageProps) {
           <div className="flex flex-wrap justify-center gap-3">
             <Link
               href="https://gitdealflow.com/#signup"
-              className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium transition-colors"
+              className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-signal-500 hover:bg-signal-600 text-slate-950 text-sm font-medium transition-colors"
             >
               Get next Monday&apos;s index
             </Link>

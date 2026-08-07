@@ -384,7 +384,7 @@ export default function MistralIntegrationPage() {
           </p>
           <Link
             href="mailto:signals@gitdealflow.com?subject=Mistral%20Le%20Chat%20MCP%20install%20help"
-            className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium transition-colors"
+            className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-signal-500 hover:bg-signal-600 text-slate-950 text-sm font-medium transition-colors"
           >
             Email support
           </Link>

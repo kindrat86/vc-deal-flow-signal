@@ -44,7 +44,7 @@ const ACCENTS: Record<
     ring: "border-sky-700/50 hover:border-sky-500",
     bg: "bg-gradient-to-br from-sky-950/30 via-slate-900 to-slate-950",
     text: "text-sky-300",
-    cta: "bg-sky-600 hover:bg-sky-500 shadow-sm shadow-sky-500/30",
+    cta: "bg-signal-500 hover:bg-signal-600 shadow-sm shadow-signal-500/30",
     hoverShadow: "hover:shadow-lg hover:shadow-sky-500/15",
   },
   emerald: {

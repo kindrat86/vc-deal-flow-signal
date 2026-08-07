@@ -152,7 +152,7 @@ export default function FounderPage() {
             Use this page if you need to judge the person behind the signal. But if your real question is methodology, origin, or buyer-side evaluation, start with the proof stack first.
           </p>
           <div className="flex flex-col sm:flex-row sm:items-center gap-4">
-            <Link href="/origin" className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-sky-600 text-white text-sm font-semibold hover:bg-sky-500 transition-colors">
+            <Link href="/origin" className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-signal-500 text-slate-950 text-sm font-semibold hover:bg-signal-600 transition-colors">
               Read the origin story →
             </Link>
             <span className="text-sm text-gray-400">

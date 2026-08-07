@@ -235,7 +235,7 @@ export default function IdeaOfTheDayIndexPage() {
           <div className="flex flex-col sm:flex-row gap-3 pt-2">
             <Link
               href={`/idea-of-the-day/${today.slug}`}
-              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-sm transition-colors"
+              className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-signal-500 hover:bg-signal-400 text-slate-950 font-bold text-sm transition-colors"
             >
               Read today&rsquo;s idea →
             </Link>

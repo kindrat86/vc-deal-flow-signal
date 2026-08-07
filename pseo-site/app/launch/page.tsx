@@ -119,7 +119,7 @@ export default function LaunchIndex() {
             Use this page if you want the full launch archive. But if your real question is current offers, where to start, or which paid lane fits this week, take the sharper routes first.
           </p>
           <div className="flex flex-wrap gap-3">
-            <Link href="/who-this-is-for" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 text-white text-sm font-semibold hover:bg-sky-500 transition-colors">
+            <Link href="/who-this-is-for" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-signal-500 text-slate-950 text-sm font-semibold hover:bg-signal-600 transition-colors">
               Pick your starting lane →
             </Link>
             <Link href="/pricing" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">

@@ -109,7 +109,7 @@ export default function ShareGate({
           <button
             type="submit"
             disabled={gate === "submitting"}
-            className="px-3 py-2 rounded-lg bg-sky-600 hover:bg-sky-500 disabled:bg-slate-700 disabled:cursor-wait text-white text-xs font-medium transition-colors whitespace-nowrap"
+            className="px-3 py-2 rounded-lg bg-signal-500 hover:bg-signal-600 disabled:bg-slate-700 disabled:cursor-wait text-slate-950 text-xs font-medium transition-colors whitespace-nowrap"
           >
             {gate === "submitting" ? "Sending…" : "Email it →"}
           </button>

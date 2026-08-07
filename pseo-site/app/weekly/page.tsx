@@ -107,7 +107,7 @@ export default function WeeklyArchivePage() {
             If your real question is what is moving now, whether the signal is real, or how to use the shortlist, these are the best starting pages.
           </p>
           <div className="flex flex-wrap gap-3">
-            <Link href="/weekly/top-100" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 text-white text-sm font-semibold hover:bg-sky-500 transition-colors">
+            <Link href="/weekly/top-100" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-signal-500 text-slate-950 text-sm font-semibold hover:bg-signal-600 transition-colors">
               Open the weekly Top 100 →
             </Link>
             <Link href="/research" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">

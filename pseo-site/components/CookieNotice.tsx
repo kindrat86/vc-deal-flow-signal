@@ -47,7 +47,7 @@ export default function CookieNotice() {
         <button
           type="button"
           onClick={dismiss}
-          className="rounded-md bg-sky-500 px-3 py-1.5 text-xs font-medium text-white hover:bg-sky-400"
+          className="rounded-md bg-signal-500 px-3 py-1.5 text-xs font-medium text-slate-950 hover:bg-signal-400"
         >
           Got it
         </button>

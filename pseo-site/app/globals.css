@@ -11,6 +11,25 @@
   --color-foreground: var(--foreground);
 }
 
+/* ── BRAND PALETTE ALIGNMENT with gitdealflow.com homepage (2026-08-07) ──
+   The landing's canon: page bg #0f172a, surfaces #1e293b, borders #334155,
+   primary CTA signal-orange #ff6b1a with DARK text (WCAG 6.27:1 — white on
+   this orange fails at 2.85:1), secondary accent = sky family.
+   Templates here were written against body bg-slate-950 (#020617) with
+   slate-900 cards, so instead of editing thousands of class occurrences we
+   shift the slate ramp one step lighter at the token level. Hierarchy
+   (bg < section < card) is preserved; only the absolute values move onto
+   the landing's palette. Do NOT "fix" these back to Tailwind defaults —
+   that un-brands all ~9k pages at once. */
+@theme {
+  --color-slate-950: #0f172a;
+  --color-slate-900: #1e293b;
+  --color-slate-800: #334155;
+  --color-signal-400: #ff8c4d;
+  --color-signal-500: #ff6b1a;
+  --color-signal-600: #e85a0c;
+}
+
 body {
   background: var(--background);
   color: var(--foreground);

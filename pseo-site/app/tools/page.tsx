@@ -244,7 +244,7 @@ export default function ToolsIndexPage() {
           </p>
           <Link
             href="/dashboard"
-            className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-semibold transition-colors"
+            className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-signal-500 hover:bg-signal-600 text-slate-950 text-sm font-semibold transition-colors"
           >
             See who&apos;s accelerating now — Dashboard, €49/mo →
           </Link>
@@ -262,7 +262,7 @@ export default function ToolsIndexPage() {
           </p>
           <Link
             href="/#signup"
-            className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium transition-colors"
+            className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-signal-500 hover:bg-signal-600 text-slate-950 text-sm font-medium transition-colors"
           >
             Get the Sunday digest
           </Link>
@@ -281,7 +281,7 @@ export default function ToolsIndexPage() {
           <div className="flex flex-col sm:flex-row gap-3 justify-center items-center">
             <Link
               href="/#signup"
-              className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-semibold transition-colors w-full sm:w-auto"
+              className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-signal-500 hover:bg-signal-600 text-slate-950 text-sm font-semibold transition-colors w-full sm:w-auto"
             >
               Free Sunday digest →
             </Link>

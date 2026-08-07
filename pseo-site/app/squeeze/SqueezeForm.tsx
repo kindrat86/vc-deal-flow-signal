@@ -112,7 +112,7 @@ export default function SqueezeForm() {
       <button
         type="submit"
         disabled={submitting || !email || !route}
-        className="w-full inline-flex items-center justify-center gap-2 rounded-md bg-sky-600 hover:bg-sky-500 disabled:opacity-50 disabled:cursor-not-allowed px-5 py-3 text-white text-base font-semibold transition-colors shadow-sm shadow-sky-500/30"
+        className="w-full inline-flex items-center justify-center gap-2 rounded-md bg-signal-500 hover:bg-signal-600 disabled:opacity-50 disabled:cursor-not-allowed px-5 py-3 text-slate-950 text-base font-semibold transition-colors shadow-sm shadow-signal-500/30"
       >
         {submitting ? "Sending confirmation…" : "Send me Sunday's 5 →"}
       </button>

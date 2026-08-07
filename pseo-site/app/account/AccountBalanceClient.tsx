@@ -107,7 +107,7 @@ export default function AccountBalanceClient() {
           <button
             type="submit"
             disabled={loading || apiKey.length < 10}
-            className="inline-flex items-center justify-center gap-1.5 h-11 px-5 rounded-lg bg-sky-600 hover:bg-sky-500 disabled:bg-slate-700 disabled:cursor-not-allowed text-white text-sm font-semibold transition-colors shadow-sm shadow-sky-500/30"
+            className="inline-flex items-center justify-center gap-1.5 h-11 px-5 rounded-lg bg-signal-500 hover:bg-signal-600 disabled:bg-slate-700 disabled:cursor-not-allowed text-slate-950 text-sm font-semibold transition-colors shadow-sm shadow-signal-500/30"
           >
             {loading ? (
               <>

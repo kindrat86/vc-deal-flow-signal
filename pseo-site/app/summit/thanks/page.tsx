@@ -68,7 +68,7 @@ export default function SummitThanksPage() {
           </p>
           <Link
             href="/summit/all-access"
-            className="inline-block rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-semibold px-5 py-3 transition-colors"
+            className="inline-block rounded-lg bg-signal-500 hover:bg-signal-400 text-slate-950 font-semibold px-5 py-3 transition-colors"
           >
             Get All-Access Pass — €{SUMMIT.allAccessPrice} →
           </Link>

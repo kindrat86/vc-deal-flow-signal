@@ -139,7 +139,7 @@ export default async function LocaleLandingPage({ params }: PageProps) {
         <div className="flex flex-wrap gap-3 mb-10">
           <Link
             href="/methodology"
-            className="inline-flex items-center px-5 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium"
+            className="inline-flex items-center px-5 py-2.5 rounded-lg bg-signal-500 hover:bg-signal-600 text-slate-950 text-sm font-medium"
             hrefLang="en"
           >
             <span dangerouslySetInnerHTML={{ __html: l.methodologyLabel }} />

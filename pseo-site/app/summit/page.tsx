@@ -308,7 +308,7 @@ export default function SummitPage() {
           <div className="flex flex-col sm:flex-row gap-3 pt-2">
             <Link
               href="/summit/all-access"
-              className="rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-semibold px-6 py-3 transition-colors text-center"
+              className="rounded-lg bg-signal-500 hover:bg-signal-400 text-slate-950 font-semibold px-6 py-3 transition-colors text-center"
             >
               Get the All-Access Pass — €{SUMMIT.allAccessPrice}
             </Link>

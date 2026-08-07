@@ -188,7 +188,7 @@ export default function McpDemoPage() {
             <div className="flex flex-wrap gap-2">
               <Link
                 href="/install"
-                className="inline-block rounded bg-sky-500 hover:bg-sky-400 text-slate-950 font-semibold px-4 py-2 text-sm"
+                className="inline-block rounded bg-signal-500 hover:bg-signal-400 text-slate-950 font-semibold px-4 py-2 text-sm"
               >
                 Install in one line →
               </Link>

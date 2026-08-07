@@ -121,7 +121,7 @@ export default function AlternativesIndex() {
             If the real question is timing, do not start with the broad index. Start with the comparisons that explain what the default tools miss and what kind of stack makes sense next.
           </p>
           <div className="flex flex-wrap gap-3">
-            <Link href="/compare/crunchbase-alternative-for-angel-investors" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 text-white text-sm font-semibold hover:bg-sky-500 transition-colors">
+            <Link href="/compare/crunchbase-alternative-for-angel-investors" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-signal-500 text-slate-950 text-sm font-semibold hover:bg-signal-600 transition-colors">
               Crunchbase alternative for angels →
             </Link>
             <Link href="/compare/best-alternative-data-tools-for-angel-investors" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
@@ -171,7 +171,7 @@ export default function AlternativesIndex() {
           </p>
           <Link
             href="/pricing"
-            className="inline-block bg-sky-600 hover:bg-sky-500 text-white text-sm font-semibold px-4 py-2 rounded-md transition-colors"
+            className="inline-block bg-signal-500 hover:bg-signal-600 text-slate-950 text-sm font-semibold px-4 py-2 rounded-md transition-colors"
           >
             See full pricing &rarr;
           </Link>

@@ -772,7 +772,7 @@ export default function PricingPage() {
                 href={tier.ctaHref}
                 className={`inline-block px-4 py-2 rounded-md text-sm font-semibold transition ${
                   tier.highlight
-                    ? "bg-sky-600 hover:bg-sky-500 text-white"
+                    ? "bg-signal-500 hover:bg-signal-600 text-slate-950"
                     : "bg-slate-800 hover:bg-slate-700 text-gray-100 border border-slate-700"
                 }`}
               >
@@ -926,7 +926,7 @@ export default function PricingPage() {
             </div>
             <a
               href={STRIPE_DASHBOARD}
-              className="inline-flex items-center justify-center px-5 py-3 rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-semibold text-sm shadow-lg shadow-sky-500/20 transition-all"
+              className="inline-flex items-center justify-center px-5 py-3 rounded-lg bg-signal-500 hover:bg-signal-400 text-slate-950 font-semibold text-sm shadow-lg shadow-signal-500/20 transition-all"
             >
               Get the Dashboard →
             </a>
@@ -1105,7 +1105,7 @@ export default function PricingPage() {
               </p>
               <a
                 href={STRIPE_DASHBOARD_ANNUAL}
-                className="inline-flex items-center justify-center px-3 py-2 rounded-md bg-sky-600 hover:bg-sky-500 text-white text-xs font-semibold transition-colors"
+                className="inline-flex items-center justify-center px-3 py-2 rounded-md bg-signal-500 hover:bg-signal-600 text-slate-950 text-xs font-semibold transition-colors"
               >
                 Get Dashboard annual →
               </a>

@@ -142,7 +142,7 @@ export default function AffiliatesPage() {
             Use this page if you want the full affiliate economics. But if your real question is swipe copy, proven distribution plays, or active partnership paths, start with the sharper routes first.
           </p>
           <div className="flex flex-wrap gap-3">
-            <Link href="/affiliates/funnel-hack" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 text-white text-sm font-semibold hover:bg-sky-500 transition-colors">
+            <Link href="/affiliates/funnel-hack" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-signal-500 text-slate-950 text-sm font-semibold hover:bg-signal-600 transition-colors">
               Open the swipe kit →
             </Link>
             <Link href="/earned-plays" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
@@ -176,7 +176,7 @@ export default function AffiliatesPage() {
 
         <a
           href={PORTAL_URL}
-          className="inline-flex items-center gap-2 rounded-lg bg-sky-500 hover:bg-sky-400 active:bg-sky-600 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-sky-500/30 transition-all hover:-translate-y-0.5 mb-12"
+          className="inline-flex items-center gap-2 rounded-lg bg-signal-500 hover:bg-signal-400 active:bg-sky-600 px-6 py-3 text-base font-semibold text-slate-950 shadow-lg shadow-signal-500/30 transition-all hover:-translate-y-0.5 mb-12"
           target="_blank"
           rel="noopener"
         >
@@ -498,7 +498,7 @@ export default function AffiliatesPage() {
           </p>
           <a
             href={PORTAL_URL}
-            className="inline-flex items-center gap-2 rounded-lg bg-sky-500 hover:bg-sky-400 active:bg-sky-600 px-6 py-3 text-base font-semibold text-white shadow-lg shadow-sky-500/30 transition-all hover:-translate-y-0.5"
+            className="inline-flex items-center gap-2 rounded-lg bg-signal-500 hover:bg-signal-400 active:bg-sky-600 px-6 py-3 text-base font-semibold text-slate-950 shadow-lg shadow-signal-500/30 transition-all hover:-translate-y-0.5"
             target="_blank"
             rel="noopener"
           >

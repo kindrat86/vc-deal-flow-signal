@@ -296,7 +296,7 @@ export default function ScoutScorePage() {
           <div className="flex flex-col sm:flex-row sm:items-center gap-4 pt-2">
             <Link
               href="/receipts"
-              className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-semibold shadow-sm shadow-sky-500/30 transition-colors"
+              className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-signal-500 hover:bg-signal-600 text-slate-950 text-sm font-semibold shadow-sm shadow-signal-500/30 transition-colors"
             >
               Compute my Scout Score →
             </Link>

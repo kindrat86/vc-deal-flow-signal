@@ -1339,7 +1339,7 @@ export default function Home() {
           </div>
           <Link
             href="/predicted"
-            className="inline-flex items-center justify-center gap-2 rounded-lg bg-sky-500 px-4 py-2.5 text-xs font-semibold text-slate-950 shadow-lg transition-colors hover:bg-sky-400"
+            className="inline-flex items-center justify-center gap-2 rounded-lg bg-signal-500 px-4 py-2.5 text-xs font-semibold text-slate-950 shadow-lg transition-colors hover:bg-signal-400"
           >
             Get the Sunday issue <span aria-hidden="true">→</span>
           </Link>

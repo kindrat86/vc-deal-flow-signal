@@ -247,7 +247,7 @@ export default function ChatGPTIntegrationPage() {
         {GPT_URL_IS_LIVE ? (
           <Link
             href={GPT_URL}
-            className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-semibold transition-colors mb-12"
+            className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-signal-500 hover:bg-signal-600 text-slate-950 text-sm font-semibold transition-colors mb-12"
           >
             Open the GitHub VC Signal GPT →
           </Link>
@@ -447,7 +447,7 @@ export default function ChatGPTIntegrationPage() {
           </p>
           <Link
             href="mailto:signals@gitdealflow.com?subject=ChatGPT%20GPT%20feedback"
-            className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium transition-colors"
+            className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-signal-500 hover:bg-signal-600 text-slate-950 text-sm font-medium transition-colors"
           >
             Email feedback
           </Link>

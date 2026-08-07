@@ -580,7 +580,7 @@ export default function CodeSideSourcingPage() {
             </Link>
             <Link
               href="/pricing"
-              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-semibold text-base shadow-lg shadow-sky-500/30 transition-colors"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-signal-500 hover:bg-signal-600 text-slate-950 font-semibold text-base shadow-lg shadow-signal-500/30 transition-colors"
             >
               Run the dashboard — €49/mo{" "}
               <span aria-hidden="true">→</span>

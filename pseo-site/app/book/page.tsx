@@ -231,7 +231,7 @@ export default function BookPage() {
           <div className="flex flex-col items-center gap-3 pt-4">
             <Link
               href="#download"
-              className="inline-flex items-center justify-center rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold text-lg px-8 py-4 shadow-lg shadow-sky-500/20 transition-colors"
+              className="inline-flex items-center justify-center rounded-lg bg-signal-500 hover:bg-signal-400 text-slate-950 font-bold text-lg px-8 py-4 shadow-lg shadow-signal-500/20 transition-colors"
             >
               Get the free PDF + EPUB →
             </Link>
@@ -271,7 +271,7 @@ export default function BookPage() {
             Use the book when you want the full argument and the seven-signal framework. But if your real question is proof, timing, or what to buy first, start with the sharper pages first.
           </p>
           <div className="flex flex-wrap gap-3 justify-center">
-            <Link href="/research" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 text-white text-sm font-semibold hover:bg-sky-500 transition-colors">
+            <Link href="/research" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-signal-500 text-slate-950 text-sm font-semibold hover:bg-signal-600 transition-colors">
               Read the research panel →
             </Link>
             <Link href="/compare/crunchbase-alternative-for-angel-investors" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
@@ -424,7 +424,7 @@ export default function BookPage() {
             <input type="hidden" name="utm_source" value="book-page" />
             <button
               type="submit"
-              className="inline-flex items-center justify-center rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-semibold px-6 py-3 transition-colors"
+              className="inline-flex items-center justify-center rounded-lg bg-signal-500 hover:bg-signal-400 text-slate-950 font-semibold px-6 py-3 transition-colors"
             >
               Email me the book
             </button>
@@ -542,7 +542,7 @@ export default function BookPage() {
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
               href="#download"
-              className="inline-flex items-center justify-center rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-semibold px-6 py-3 transition-colors"
+              className="inline-flex items-center justify-center rounded-lg bg-signal-500 hover:bg-signal-400 text-slate-950 font-semibold px-6 py-3 transition-colors"
             >
               Free PDF + EPUB
             </Link>

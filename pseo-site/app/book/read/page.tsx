@@ -99,7 +99,7 @@ export default function BookReadIndex() {
         <section className="text-center pt-4">
           <Link
             href="/book/read/introduction"
-            className="inline-flex items-center justify-center rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-semibold px-6 py-3 transition-colors"
+            className="inline-flex items-center justify-center rounded-lg bg-signal-500 hover:bg-signal-400 text-slate-950 font-semibold px-6 py-3 transition-colors"
           >
             Start with the introduction →
           </Link>

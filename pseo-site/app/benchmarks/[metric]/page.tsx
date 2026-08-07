@@ -257,7 +257,7 @@ export default async function BenchmarkPage({ params }: PageProps) {
         <section className="mb-8 rounded-xl border border-sky-900/50 bg-sky-950/30 p-6 text-center">
           <p className="text-gray-200 text-lg font-semibold mb-2">Get the full dataset</p>
           <p className="text-gray-400 text-sm mb-4">JSON, CSV, NDJSON, API. Free, no auth.</p>
-          <Link href="/api/signals.json" className="inline-block rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-semibold px-6 py-3 transition-colors">
+          <Link href="/api/signals.json" className="inline-block rounded-lg bg-signal-500 hover:bg-signal-600 text-slate-950 font-semibold px-6 py-3 transition-colors">
             Download Dataset (CC BY 4.0)
           </Link>
         </section>

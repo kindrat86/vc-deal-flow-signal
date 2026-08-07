@@ -162,7 +162,7 @@ export default function SqueezeSuccess({
         <div className="flex flex-col sm:flex-row gap-3">
           <a
             href={leadDashboard ? DASHBOARD_URL : FIRSTLOOK_URL}
-            className="inline-flex items-center justify-center gap-1.5 rounded-md bg-sky-600 hover:bg-sky-500 px-4 py-2.5 text-white text-sm font-semibold transition-colors"
+            className="inline-flex items-center justify-center gap-1.5 rounded-md bg-signal-500 hover:bg-signal-600 px-4 py-2.5 text-slate-950 text-sm font-semibold transition-colors"
           >
             {leadDashboard
               ? "See the Dashboard →"

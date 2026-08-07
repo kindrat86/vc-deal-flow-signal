@@ -129,7 +129,7 @@ export default function OriginPage() {
             Read this page if you want the founder-level why. But if your real question is whether the signal holds up, where the timing edge comes from, or what to do with it next, use the sharper proof pages first.
           </p>
           <div className="flex flex-wrap gap-3">
-            <Link href="/research" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 text-white text-sm font-semibold hover:bg-sky-500 transition-colors">
+            <Link href="/research" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-signal-500 text-slate-950 text-sm font-semibold hover:bg-signal-600 transition-colors">
               Read the research panel →
             </Link>
             <Link href="/how-to-spot-startup-momentum-before-the-round-gets-crowded" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">

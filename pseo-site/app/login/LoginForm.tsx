@@ -109,7 +109,7 @@ export default function LoginForm() {
         <button
           type="submit"
           disabled={loading}
-          className="inline-flex w-full items-center justify-center gap-1.5 h-11 bg-sky-600 hover:bg-sky-500 disabled:opacity-50 disabled:cursor-not-allowed text-white font-semibold rounded-lg transition-colors shadow-sm shadow-sky-500/30"
+          className="inline-flex w-full items-center justify-center gap-1.5 h-11 bg-signal-500 hover:bg-signal-600 disabled:opacity-50 disabled:cursor-not-allowed text-slate-950 font-semibold rounded-lg transition-colors shadow-sm shadow-signal-500/30"
         >
           {loading ? (
             <>

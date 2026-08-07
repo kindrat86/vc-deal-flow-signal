@@ -168,7 +168,7 @@ export default function Dream100Page() {
             Use the Top 100 when you want to know where attention already lives. But if your real question is proof, workflow, or buyer-side clarity, start with the sharper pages first.
           </p>
           <div className="flex flex-wrap gap-3">
-            <Link href="/from-stars-to-seed" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 text-white text-sm font-semibold hover:bg-sky-500 transition-colors">
+            <Link href="/from-stars-to-seed" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-signal-500 text-slate-950 text-sm font-semibold hover:bg-signal-600 transition-colors">
               Proof before the round →
             </Link>
             <Link href="/use-cases" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">

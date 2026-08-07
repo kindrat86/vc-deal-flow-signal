@@ -283,7 +283,7 @@ export default function PartnersPage() {
             Use this page if you want the full partnership map. But if your real question is affiliate distribution, builder integration, or trust-proof material to cite, start with the sharper routes first.
           </p>
           <div className="flex flex-wrap gap-3">
-            <Link href="/affiliates" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 text-white text-sm font-semibold hover:bg-sky-500 transition-colors">
+            <Link href="/affiliates" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-signal-500 text-slate-950 text-sm font-semibold hover:bg-signal-600 transition-colors">
               Join the affiliate program →
             </Link>
             <Link href="/for-builders" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
@@ -411,7 +411,7 @@ export default function PartnersPage() {
                 <div className="flex flex-col sm:flex-row gap-3">
                   <Link
                     href={track.primaryCta.href}
-                    className="inline-flex items-center justify-center px-5 py-2.5 rounded-md bg-sky-500 hover:bg-sky-400 text-slate-950 font-semibold text-sm transition-colors"
+                    className="inline-flex items-center justify-center px-5 py-2.5 rounded-md bg-signal-500 hover:bg-signal-400 text-slate-950 font-semibold text-sm transition-colors"
                   >
                     {track.primaryCta.label}
                   </Link>

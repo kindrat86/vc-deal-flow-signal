@@ -105,7 +105,7 @@ export default function TeardownThanksPage() {
           </p>
           <Link
             href="/pricing#dashboard-beta"
-            className="inline-flex items-center justify-center w-full sm:w-auto rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-semibold px-6 py-3 transition-colors"
+            className="inline-flex items-center justify-center w-full sm:w-auto rounded-lg bg-signal-500 hover:bg-signal-400 text-slate-950 font-semibold px-6 py-3 transition-colors"
           >
             Lock in €49/mo Dashboard →
           </Link>

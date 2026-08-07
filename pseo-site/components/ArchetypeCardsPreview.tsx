@@ -28,7 +28,7 @@ const ACCENT_CLASSES: Record<
       "border-sky-500/30 bg-gradient-to-br from-sky-950/40 via-sky-950/10 to-transparent hover:border-sky-400/50",
     chip: "bg-sky-500/15 text-sky-300 ring-sky-400/30",
     underline: "decoration-sky-400/40 hover:decoration-sky-300",
-    cta: "bg-sky-600 hover:bg-sky-500 text-white shadow-sky-500/30",
+    cta: "bg-signal-500 hover:bg-signal-600 text-slate-950 shadow-signal-500/30",
     secondary:
       "border-sky-700/50 bg-sky-950/30 hover:bg-sky-900/40 text-sky-100",
     ring: "ring-sky-400/30",

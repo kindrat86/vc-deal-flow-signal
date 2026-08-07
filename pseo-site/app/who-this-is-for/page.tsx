@@ -60,7 +60,7 @@ const ACCENT = {
   sky: {
     border: "border-sky-500/30 bg-sky-950/20",
     label: "text-sky-300",
-    button: "bg-sky-600 hover:bg-sky-500 text-white",
+    button: "bg-signal-500 hover:bg-signal-600 text-slate-950",
   },
   amber: {
     border: "border-amber-500/30 bg-amber-950/20",

@@ -94,7 +94,7 @@ const TONE_CLASSES = {
     border: "border-sky-600/60",
     bg: "bg-sky-950/30",
     label: "text-sky-300",
-    button: "bg-sky-500 hover:bg-sky-400 text-slate-950 font-semibold",
+    button: "bg-signal-500 hover:bg-signal-400 text-slate-950 font-semibold",
   },
   amber: {
     border: "border-amber-700/60",

@@ -299,7 +299,7 @@ export default async function LocaleTopicPage({ params }: PageProps) {
           <a
             href="https://gitdealflow.com/#signup"
             hrefLang="en"
-            className="inline-flex items-center px-5 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium"
+            className="inline-flex items-center px-5 py-2.5 rounded-lg bg-signal-500 hover:bg-signal-600 text-slate-950 text-sm font-medium"
           >
             <span
               dangerouslySetInnerHTML={{ __html: localeMeta.signalReportLabel }}

@@ -159,7 +159,7 @@ export default function AllAccessPage() {
             </label>
             <button
               type="submit"
-              className="block w-full rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-bold px-6 py-4 transition-colors text-center text-lg min-h-[56px]"
+              className="block w-full rounded-lg bg-signal-500 hover:bg-signal-400 text-slate-950 font-bold px-6 py-4 transition-colors text-center text-lg min-h-[56px]"
             >
               Get the All-Access Pass — €{SUMMIT.allAccessPrice}
             </button>

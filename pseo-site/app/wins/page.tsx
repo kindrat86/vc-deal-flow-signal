@@ -439,7 +439,7 @@ export default function WinsPage() {
           <div className="flex flex-col sm:flex-row gap-3">
             <Link
               href="/predicted"
-              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-sky-600 hover:bg-sky-500 text-white font-semibold text-sm transition-colors"
+              className="inline-flex items-center justify-center gap-2 px-5 py-3 rounded-lg bg-signal-500 hover:bg-signal-600 text-slate-950 font-semibold text-sm transition-colors"
             >
               See this week&rsquo;s public picks <span aria-hidden="true">→</span>
             </Link>

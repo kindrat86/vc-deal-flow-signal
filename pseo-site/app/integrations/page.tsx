@@ -415,7 +415,7 @@ export default function IntegrationsPage() {
             Salesforce. Pick a lane and you&apos;re done.
           </p>
           <div className="flex flex-wrap gap-3">
-            <Link href="https://gitdealflow.com/#signup" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-600 text-white text-sm font-semibold hover:bg-sky-500 transition-colors">
+            <Link href="https://gitdealflow.com/#signup" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-signal-500 text-slate-950 text-sm font-semibold hover:bg-signal-600 transition-colors">
               Get it by email every Monday →
             </Link>
             <Link href="https://t.me/gitdealflow" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 text-gray-200 hover:border-slate-500 transition-colors text-sm font-medium">
@@ -497,7 +497,7 @@ export default function IntegrationsPage() {
           </p>
           <Link
             href="mailto:signals@gitdealflow.com"
-            className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium transition-colors"
+            className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-signal-500 hover:bg-signal-600 text-slate-950 text-sm font-medium transition-colors"
           >
             Request an integration
           </Link>
@@ -513,7 +513,7 @@ export default function IntegrationsPage() {
           </p>
           <Link
             href="/pricing"
-            className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-sky-600 hover:bg-sky-500 text-white text-sm font-medium transition-colors"
+            className="inline-flex items-center justify-center px-6 py-2.5 rounded-lg bg-signal-500 hover:bg-signal-600 text-slate-950 text-sm font-medium transition-colors"
           >
             See full pricing &rarr;
           </Link>
