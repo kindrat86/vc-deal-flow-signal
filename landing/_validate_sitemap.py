@@ -421,6 +421,94 @@ def validate_full(args) -> int:
     
     elapsed = time.time() - start
     
+    # ── Step 2.5: Validate image assets (for image sitemaps) ──
+    image_asset_errors = []
+    for child_name, _ in child_sitemaps:
+        if 'image' not in child_name.lower():
+            continue
+        print(f"\n🖼️  Validating image assets in {child_name}...")
+        
+        # Re-parse the image sitemap for image:image entries
+        child_path = BASE_DIR / child_name
+        if child_path.exists():
+            ns = {
+                'sm': 'http://www.sitemaps.org/schemas/sitemap/0.9',
+                'image': 'http://www.google.com/schemas/sitemap-image/1.1'
+            }
+            try:
+                import xml.etree.ElementTree as ET
+                tree = ET.parse(str(child_path))
+                root = tree.getroot()
+                
+                img_entries = []
+                for url_el in root.findall('sm:url', ns):
+                    page_loc_el = url_el.find('sm:loc', ns)
+                    page_url = page_loc_el.text.strip() if page_loc_el is not None and page_loc_el.text else None
+                    
+                    for img_el in url_el.findall('image:image', ns):
+                        img_loc_el = img_el.find('image:loc', ns)
+                        img_loc = img_loc_el.text.strip() if img_loc_el is not None and img_loc_el.text else None
+                        
+                        if not img_loc:
+                            image_asset_errors.append(f"Missing <image:loc> in {child_name} for page {page_url}")
+                            continue
+                        if not img_loc.startswith('https://'):
+                            image_asset_errors.append(f"Non-HTTPS <image:loc>: {img_loc}")
+                            continue
+                        
+                        check_target = rewrite_url(img_loc, base_url) if base_url and not local_only else img_loc
+                        img_entries.append((page_url, img_loc, check_target))
+                
+                if not img_entries:
+                    continue
+                
+                # Check image assets via HTTP
+                if not local_only:
+                    checked_imgs = 0
+                    img_ok = 0
+                    for page_url, img_loc, check_target in img_entries:
+                        try:
+                            req = Request(check_target, headers={
+                                "User-Agent": "Googlebot-Image/1.0"
+                            })
+                            resp = OPENER.open(req, timeout=15)
+                            code = resp.getcode()
+                            ct = resp.headers.get('Content-Type', '')
+                            
+                            if code == 200:
+                                if ct.startswith('image/'):
+                                    img_ok += 1
+                                else:
+                                    image_asset_errors.append(
+                                        f"Non-image Content-Type for {img_loc}: {ct}"
+                                    )
+                            elif code and 300 <= code < 400:
+                                image_asset_errors.append(
+                                    f"Image redirect [{code}]: {img_loc} → {resp.headers.get('Location','?')}"
+                                )
+                            else:
+                                image_asset_errors.append(
+                                    f"Image HTTP [{code}]: {img_loc}"
+                                )
+                        except Exception as e:
+                            image_asset_errors.append(
+                                f"Image check error: {img_loc}: {getattr(e,'code','ERR')}"
+                            )
+                        checked_imgs += 1
+                    
+                    print(f"  {img_ok}/{checked_imgs} image assets pass")
+                else:
+                    print(f"  {len(img_entries)} image entries (local-only, no HTTP check)")
+                    
+            except ET.ParseError as e:
+                image_asset_errors.append(f"Malformed image sitemap XML: {e}")
+            except Exception as e:
+                image_asset_errors.append(f"Image sitemap parse error: {e}")
+    
+    if image_asset_errors:
+        for err in image_asset_errors:
+            all_errors.append(err)
+    
     # ── Step 3: Report ────────────────────────────────────────
     total_errors = (len(redirects) + len(errors_4xx) + len(errors_5xx) +
                     len(network_errors) + len(noindex_pages) + len(canonical_mismatches))
@@ -462,6 +550,7 @@ def validate_full(args) -> int:
     print_section("Network errors", network_errors, "🌐")
     print_section("Noindex pages", noindex_pages, "⚠️")
     print_section("Canonical mismatches", canonical_mismatches, "⚠️")
+    print_section("Image asset errors", [(None, e, "") for e in image_asset_errors], "🖼️", max_show=10)
     
     # Cross-sitemap page references are normal (image sitemap
     # legitimately references pages from the pages sitemap)

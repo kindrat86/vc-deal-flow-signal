@@ -321,37 +321,95 @@ def main():
 
 
 def rebuild_image_sitemap(pages, pages_changed):
-    """Rebuild image-sitemap.xml from the same page inventory.
+    """Rebuild image-sitemap.xml from file inventory.
     
-    Each page gets an <image:image> entry pointing to the site's
-    Open Graph image (served by signals.gitdealflow.com).
-    Only pages that exist in the file inventory are included.
+    Only includes pages that have at least one real content image
+    (excludes the shared OG image, tracking pixels, data URIs,
+    and icon/logos).  Each qualifying page gets one <image:image>
+    entry per real image found in its HTML.
     """
     img_path = BASE / "image-sitemap.xml"
     
-    # Build image sitemap content
+    # Discover pages with real images
+    image_pages = {}  # url -> [(image_loc, image_title)]
+    
+    for url, rel, lastmod in pages:
+        # Find the HTML file
+        if rel.endswith('.html'):
+            html_path = BASE / rel
+        else:
+            html_path = BASE / (rel + '.html')
+        
+        if not html_path.exists():
+            continue
+        
+        try:
+            with open(html_path, 'r', encoding='utf-8') as f:
+                html = f.read()
+        except Exception:
+            continue
+        
+        # Extract <img> tags
+        img_tags = re.findall(
+            r'<img[^>]*src=["\']([^"\']+)["\'][^>]*(?:alt=["\']([^"\']*)["\'])?',
+            html, re.IGNORECASE
+        )
+        
+        real_images = []
+        for src, alt in img_tags:
+            # Skip data URIs, tracking pixels
+            if src.startswith('data:'):
+                continue
+            if any(w in src.lower() for w in ('pixel', 'track', '1x1')):
+                continue
+            # Skip the shared OG image (social meta, not content)
+            if 'opengraph-image' in src:
+                continue
+            # Skip icon/logos
+            if src.endswith('.svg') and any(w in src.lower() for w in ('icon', 'logo')):
+                continue
+            
+            # Normalize to absolute URL
+            if src.startswith('/'):
+                # Check if it's a local asset or on another host
+                local_path = BASE / src.lstrip('/')
+                if local_path.exists():
+                    src = f"https://{DOMAIN}{src}"
+                else:
+                    src = f"https://{DOMAIN}{src}"
+            elif not src.startswith('http'):
+                src = f"https://{DOMAIN}/{src}"
+            
+            title = (alt or '').strip()[:100]
+            if not title:
+                # Derive from filename
+                fname = src.rstrip('/').split('/')[-1].rsplit('.', 1)[0]
+                title = fname.replace('-', ' ').replace('_', ' ').title()[:100]
+            
+            real_images.append((src, title))
+        
+        if real_images:
+            image_pages[url] = real_images
+    
+    # Build image sitemap
     lines = [
         '<?xml version="1.0" encoding="UTF-8"?>',
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"',
         '        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">',
     ]
     
-    og_image = "https://signals.gitdealflow.com/opengraph-image"
-    
-    for url, rel, lastmod in pages:
+    total_img_entries = 0
+    for url in sorted(image_pages.keys(), key=lambda u: (0 if u == '/' else 1, u)):
+        images = image_pages[url]
         full_url = BASE_URL if url == '/' else f"{BASE_URL}{url}"
-        # Extract a title from the URL path for image:title
-        title = url.strip('/').split('/')[-1] if url != '/' else 'GitDealFlow'
-        title = title.replace('-', ' ').title()
-        
         lines.append("  <url>")
         lines.append(f"    <loc>{full_url}</loc>")
-        lines.append("    <image:image>")
-        lines.append(f"      <image:loc>{og_image}</image:loc>")
-        lines.append(f"      <image:title>{title}</image:title>")
-        lines.append("    </image:image>")
-        if lastmod:
-            lines.append(f"    <lastmod>{lastmod}</lastmod>")
+        for img_loc, img_title in images:
+            lines.append("    <image:image>")
+            lines.append(f"      <image:loc>{img_loc}</image:loc>")
+            lines.append(f"      <image:title>{img_title}</image:title>")
+            lines.append("    </image:image>")
+            total_img_entries += 1
         lines.append("  </url>")
     
     lines.append('</urlset>')
@@ -361,7 +419,11 @@ def rebuild_image_sitemap(pages, pages_changed):
     if changed or pages_changed:
         img_path.write_text(new_img, encoding='utf-8')
         print(f"  image-sitemap.xml: {'written' if changed else 'updated'} "
-              f"({len(new_img)} bytes, {len(pages)} image entries)")
+              f"({len(new_img)} bytes, {len(image_pages)} pages, "
+              f"{total_img_entries} image entries)")
+    else:
+        print(f"  image-sitemap.xml: unchanged ({len(image_pages)} pages, "
+              f"{total_img_entries} image entries)")
 
 
 if __name__ == "__main__":
