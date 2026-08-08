@@ -370,13 +370,21 @@ def rebuild_image_sitemap(pages, pages_changed):
                 continue
             
             # Normalize to absolute URL
+            local_path = None
             if src.startswith('/'):
-                # Check if it's a local asset or on another host
                 local_path = BASE / src.lstrip('/')
+            elif src.startswith(f"https://{DOMAIN}/"):
+                local_path = BASE / src[len(f"https://{DOMAIN}/"):]
+            elif src.startswith(f"http://{DOMAIN}/"):
+                local_path = BASE / src[len(f"http://{DOMAIN}/"):]
+            
+            if local_path is not None:
+                # Same-domain URL — check if file exists locally
                 if local_path.exists():
-                    src = f"https://{DOMAIN}{src}"
+                    src = f"https://{DOMAIN}" + ('/' + str(local_path.relative_to(BASE)) if local_path != BASE else '')
                 else:
-                    src = f"https://{DOMAIN}{src}"
+                    # No local file — skip (dynamic route, API, etc.)
+                    continue
             elif not src.startswith('http'):
                 src = f"https://{DOMAIN}/{src}"
             
