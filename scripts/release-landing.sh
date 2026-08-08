@@ -36,8 +36,14 @@ DO_DEPLOY=false
 if [[ "${1:-}" == "--prod" ]]; then
     DO_DEPLOY=true
     echo "=== Release Gate (PRODUCTION DEPLOY) ==="
-else
+elif [[ -z "${1:-}" ]]; then
     echo "=== Release Gate (validation only — no deploy) ==="
+else
+    echo "ERROR: Unknown argument '${1}'" >&2
+    echo "Usage: bash scripts/release-landing.sh [--prod]" >&2
+    echo "  (no argument)  Validate sitemaps only, never deploy" >&2
+    echo "  --prod         Run all gates, then deploy to production" >&2
+    exit 1
 fi
 
 # ── Step 1: Regenerate sitemaps ──────────────────────────────
@@ -117,9 +123,6 @@ else
     echo ""
     echo "To deploy, run:"
     echo "  bash scripts/release-landing.sh --prod"
-    echo ""
-    echo "Or manually:"
-    echo "  cd landing && vercel --prod --yes"
     echo ""
     echo "After deploy, validate production:"
     echo "  cd landing && python3 _validate_sitemap.py"
