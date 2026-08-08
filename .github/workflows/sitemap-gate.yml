@@ -1,0 +1,91 @@
+name: Sitemap Gate
+
+# Guards against stale sitemap files and invalid sitemap content.
+#
+# Two layers:
+#  1. Regeneration — rebuilds sitemap-pages.xml from the actual .html
+#     file inventory, then fails if any tracked sitemap file changed.
+#     This catches: added/removed/renamed HTML pages without a
+#     corresponding sitemap update.
+#  2. Validation — runs --local-only checks on the full sitemap tree
+#     (index → children → page URLs → file existence → exclusions).
+#     This catches: missing files for sitemap URLs, noindex pages in
+#     sitemaps, duplicates, and structural errors.
+#
+# Triggered on PRs affecting landing/**, pushes to main, and manual
+# dispatch.
+
+on:
+  pull_request:
+    paths:
+      - "landing/**"
+      - ".github/workflows/sitemap-gate.yml"
+  push:
+    branches: [main]
+    paths:
+      - "landing/**"
+      - ".github/workflows/sitemap-gate.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sitemap-gate-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  sitemap:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    defaults:
+      run:
+        working-directory: landing
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Regenerate sitemap from file inventory
+        run: python3 _rebuild_sitemap.py
+
+      - name: Check for sitemap drift
+        id: drift
+        run: |
+          git diff --exit-code -- \
+            sitemap.xml \
+            sitemap-index.xml \
+            sitemap-pages.xml \
+            image-sitemap.xml
+        continue-on-error: true
+
+      - name: Report drift (fail if sitemaps are stale)
+        if: steps.drift.outcome == 'failure'
+        run: |
+          echo "::error::Sitemap files are stale — regenerate and commit them."
+          echo ""
+          echo "The sitemap generator (_rebuild_sitemap.py) produced different output"
+          echo "than what is committed. This means HTML pages were added, removed, or"
+          echo "renamed without updating the sitemap files."
+          echo ""
+          echo "Fix: run these commands locally and commit the result:"
+          echo "  cd landing"
+          echo "  python3 _rebuild_sitemap.py"
+          echo "  python3 _validate_sitemap.py --local-only"
+          echo "  git add sitemap.xml sitemap-index.xml sitemap-pages.xml image-sitemap.xml"
+          echo "  git commit -m 'chore: regenerate sitemaps'"
+          echo ""
+          echo "Changes that would be committed:"
+          git diff --stat -- \
+            sitemap.xml \
+            sitemap-index.xml \
+            sitemap-pages.xml \
+            image-sitemap.xml
+          exit 1
+
+      - name: Validate sitemap tree (local-only)
+        run: python3 _validate_sitemap.py --local-only

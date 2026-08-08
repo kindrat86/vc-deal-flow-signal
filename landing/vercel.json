@@ -129,6 +129,11 @@
       "permanent": true
     },
     {
+      "source": "/methodology",
+      "destination": "https://signals.gitdealflow.com/methodology",
+      "permanent": true
+    },
+    {
       "source": "/g2",
       "destination": "https://www.g2.com/products/gitdealflow/reviews",
       "permanent": false
@@ -140,7 +145,7 @@
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=3600, s-maxage=86400, stale-while-revalidate=604800"
+          "value": "public, max-age=0, must-revalidate, s-maxage=86400, stale-while-revalidate=604800"
         }
       ]
     },

@@ -2,142 +2,2579 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:image="http://www.google.com/schemas/sitemap-image/1.1">
   <url>
-    <loc>https://gitdealflow.com/</loc>
-      <image:image>
-        <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
-        <image:title>GitDealFlow</image:title>
-      </image:image>
-      <image:image>
-        <image:loc>https://gitdealflow.com/data-nerd.png</image:loc>
-        <image:title>GitDealFlow</image:title>
-      </image:image>
+    <loc>https://gitdealflow.com</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Gitdealflow</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
   </url>
   <url>
-    <loc>https://gitdealflow.com/firstlook</loc>
-      <image:image>
-        <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
-        <image:title>GitDealFlow</image:title>
-      </image:image>
-      <image:image>
-        <image:loc>https://gitdealflow.com/data-nerd.png</image:loc>
-        <image:title>GitDealFlow</image:title>
-      </image:image>
+    <loc>https://gitdealflow.com/2025</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>2025</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
   </url>
   <url>
-    <loc>https://gitdealflow.com/dashboard</loc>
-      <image:image>
-        <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
-        <image:title>GitDealFlow</image:title>
-      </image:image>
-      <image:image>
-        <image:loc>https://gitdealflow.com/data-nerd.png</image:loc>
-        <image:title>GitDealFlow</image:title>
-      </image:image>
+    <loc>https://gitdealflow.com/2026</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>2026</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
   </url>
   <url>
-    <loc>https://gitdealflow.com/insider</loc>
-      <image:image>
-        <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
-        <image:title>GitDealFlow</image:title>
-      </image:image>
-      <image:image>
-        <image:loc>https://gitdealflow.com/data-nerd.png</image:loc>
-        <image:title>GitDealFlow</image:title>
-      </image:image>
+    <loc>https://gitdealflow.com/about</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>About</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
   </url>
   <url>
-    <loc>https://gitdealflow.com/sector-sweep</loc>
-      <image:image>
-        <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
-        <image:title>GitDealFlow</image:title>
-      </image:image>
-      <image:image>
-        <image:loc>https://gitdealflow.com/data-nerd.png</image:loc>
-        <image:title>GitDealFlow</image:title>
-      </image:image>
+    <loc>https://gitdealflow.com/affiliates</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Affiliates</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
   </url>
   <url>
-    <loc>https://gitdealflow.com/chrome</loc>
-      <image:image>
-        <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
-        <image:title>GitDealFlow</image:title>
-      </image:image>
+    <loc>https://gitdealflow.com/ai--machine-learning-startups</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Ai  Machine Learning Startups</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/alternatives-to</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Alternatives To</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/alternatives-to/angellist-alternatives</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Angellist Alternatives</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/alternatives-to/cb-insights-alternatives</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Cb Insights Alternatives</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/alternatives-to/crunchbase</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Crunchbase</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/alternatives-to/crunchbase-alternatives</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Crunchbase Alternatives</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/alternatives-to/dealroom-alternatives</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Dealroom Alternatives</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/alternatives-to/pitchbook</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Pitchbook</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/alternatives-to/pitchbook-alternatives</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Pitchbook Alternatives</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/alternatives-to/privco-alternatives</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Privco Alternatives</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/alternatives-to/tracxn-alternatives</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Tracxn Alternatives</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/amsterdam</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Amsterdam</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/answers</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Answers</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/answers/how-do-i-track-startup-acquisitions-in-real-time</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>How Do I Track Startup Acquisitions In Real Time</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/answers/how-do-investors-use-acquisition-data-to-find-opportunities</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>How Do Investors Use Acquisition Data To Find Opportunities</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/answers/how-does-angel-investing-work</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>How Does Angel Investing Work</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/answers/how-long-does-fundraising-take</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>How Long Does Fundraising Take</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/answers/how-to-spot-a-unicorn-early</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>How To Spot A Unicorn Early</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/answers/what-is-a-scout-program</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>What Is A Scout Program</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/answers/what-makes-a-good-vc-investor</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>What Makes A Good Vc Investor</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/answers/what-s-the-difference-between-gitdealflow-and-crunchbase</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>What S The Difference Between Gitdealflow And Crunchbase</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/apply</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Apply</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/austin</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Austin</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/bangalore</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Bangalore</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/berlin</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Berlin</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/best</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Best</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/best/best-angel-investment-platforms</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Best Angel Investment Platforms</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/best/best-crunchbase-alternatives</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Best Crunchbase Alternatives</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/best/best-deal-flow-tools</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Best Deal Flow Tools</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/best/best-fundraising-intelligence-tools</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Best Fundraising Intelligence Tools</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/best/best-market-intelligence-platforms</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Best Market Intelligence Platforms</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/best/best-pitchbook-alternatives</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Best Pitchbook Alternatives</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/best/best-pre-seed-trackers</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Best Pre Seed Trackers</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/best/best-scout-programs</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Best Scout Programs</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/best/best-series-a-trackers</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Best Series A Trackers</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/best/best-startup-databases</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Best Startup Databases</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/best/best-startup-newsletters</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Best Startup Newsletters</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/best/best-startup-research-tools</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Best Startup Research Tools</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/best/best-startup-signal-tools</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Best Startup Signal Tools</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/best/best-startup-trackers</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Best Startup Trackers</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/best/best-startup-trackers-for-angels</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Best Startup Trackers For Angels</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/best/best-startup-valuation-tools</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Best Startup Valuation Tools</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/best/best-vc-crms</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Best Vc Crms</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/best/best-vc-scout-programs</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Best Vc Scout Programs</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/best/best-vc-screening-tools</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Best Vc Screening Tools</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/best/best-venture-data-platforms</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Best Venture Data Platforms</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/best/crunchbase-alternatives</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Crunchbase Alternatives</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/best/startup-databases</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Startup Databases</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/best/vc-deal-sourcing-tools</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Vc Deal Sourcing Tools</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/boston</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Boston</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/brand</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Brand</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/cheatsheet</loc>
-      <image:image>
-        <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
-        <image:title>GitDealFlow</image:title>
-      </image:image>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Cheatsheet</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
   </url>
   <url>
-    <loc>https://gitdealflow.com/perfect-webinar</loc>
-      <image:image>
-        <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
-        <image:title>GitDealFlow</image:title>
-      </image:image>
+    <loc>https://gitdealflow.com/checklists/deal-flow-sourcing-checklist</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Deal Flow Sourcing Checklist</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
   </url>
   <url>
-    <loc>https://gitdealflow.com/report</loc>
-      <image:image>
-        <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
-        <image:title>GitDealFlow</image:title>
-      </image:image>
+    <loc>https://gitdealflow.com/checklists/follow-on-investment-checklist</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Follow On Investment Checklist</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
   </url>
   <url>
-    <loc>https://gitdealflow.com/dream-100</loc>
-      <image:image>
-        <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
-        <image:title>GitDealFlow</image:title>
-      </image:image>
+    <loc>https://gitdealflow.com/checklists/founder-interview-checklist</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Founder Interview Checklist</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
   </url>
   <url>
-    <loc>https://gitdealflow.com/partners</loc>
-      <image:image>
-        <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
-        <image:title>GitDealFlow</image:title>
-      </image:image>
+    <loc>https://gitdealflow.com/checklists/investment-memo-checklist</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Investment Memo Checklist</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/checklists/market-due-diligence-checklist</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Market Due Diligence Checklist</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/checklists/portfolio-monitoring-checklist</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Portfolio Monitoring Checklist</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/checklists/pre-seed-due-diligence-checklist</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Pre Seed Due Diligence Checklist</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/checklists/seed-due-diligence-checklist</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Seed Due Diligence Checklist</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/checklists/series-a-due-diligence-checklist</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Series A Due Diligence Checklist</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/checklists/technical-due-diligence-checklist</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Technical Due Diligence Checklist</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/checklists/term-sheet-review-checklist</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Term Sheet Review Checklist</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/chrome</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Chrome</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/climate--energy-startups</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Climate  Energy Startups</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/content-strategy</loc>
-      <image:image>
-        <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
-        <image:title>GitDealFlow</image:title>
-      </image:image>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Content Strategy</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/crypto--web3-startups</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Crypto  Web3 Startups</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/cybersecurity-startups</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Cybersecurity Startups</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Data</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/github-engineering-velocity-data</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Github Engineering Velocity Data</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/momentum-index</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Momentum Index</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/momentum-index/activepieces-activepieces</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Activepieces Activepieces</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/momentum-index/appsmithorg-appsmith</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Appsmithorg Appsmith</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/momentum-index/appwrite-appwrite</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Appwrite Appwrite</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/momentum-index/calcom-cal-com</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Calcom Cal Com</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/momentum-index/chroma-core-chroma</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Chroma Core Chroma</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/momentum-index/cline-cline</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Cline Cline</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/momentum-index/coollabsio-coolify</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Coollabsio Coolify</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/momentum-index/denoland-deno</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Denoland Deno</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/momentum-index/directus-directus</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Directus Directus</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/momentum-index/documenso-documenso</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Documenso Documenso</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/momentum-index/formbricks-formbricks</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Formbricks Formbricks</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/momentum-index/go-gitea-gitea</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Go Gitea Gitea</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/momentum-index/hoppscotch-hoppscotch</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Hoppscotch Hoppscotch</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/momentum-index/immich-app-immich</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Immich App Immich</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/momentum-index/langchain-ai-langchain</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Langchain Ai Langchain</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/momentum-index/medusajs-medusa</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Medusajs Medusa</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/momentum-index/meilisearch-meilisearch</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Meilisearch Meilisearch</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/momentum-index/mindsdb-mindsdb</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Mindsdb Mindsdb</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/momentum-index/n8n-io-n8n</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>N8N Io N8N</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/momentum-index/nocodb-nocodb</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Nocodb Nocodb</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/momentum-index/novuhq-novu</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Novuhq Novu</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/momentum-index/ollama-ollama</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Ollama Ollama</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/momentum-index/oven-sh-bun</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Oven Sh Bun</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/momentum-index/plausible-analytics</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Plausible Analytics</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/momentum-index/pocketbase-pocketbase</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Pocketbase Pocketbase</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/momentum-index/posthog-posthog</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Posthog Posthog</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/momentum-index/qdrant-qdrant</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Qdrant Qdrant</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/momentum-index/refinedev-refine</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Refinedev Refine</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/momentum-index/run-llama-llama-index</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Run Llama Llama Index</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/momentum-index/strapi-strapi</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Strapi Strapi</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/momentum-index/supabase-supabase</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Supabase Supabase</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/momentum-index/tauri-apps-tauri</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Tauri Apps Tauri</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/momentum-index/triggerdotdev-trigger-dev</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Triggerdotdev Trigger Dev</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/momentum-index/twentyhq-twenty</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Twentyhq Twenty</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/momentum-index/typesense-typesense</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Typesense Typesense</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/momentum-index/umami-software-umami</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Umami Software Umami</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/momentum-index/unkeyed-unkey</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Unkeyed Unkey</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/momentum-index/vercel-next-js</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Vercel Next Js</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/momentum-index/weaviate-weaviate</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Weaviate Weaviate</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/momentum-index/windmill-labs-windmill</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Windmill Labs Windmill</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/startup-ma-statistics</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Startup Ma Statistics</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/startup-valuation-trends</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Startup Valuation Trends</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/data/vc-funding-trends</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Vc Funding Trends</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/dataset</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Dataset</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/datasets</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Datasets</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/developer-tools-startups</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Developer Tools Startups</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/dream-100</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Dream 100</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/dream100</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Dream100</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/enterprise-saas-startups</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Enterprise Saas Startups</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/faq/can-you-predict-startup-funding</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Can You Predict Startup Funding</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/faq/how-accurate-are-funding-signals</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>How Accurate Are Funding Signals</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/faq/how-do-angel-investors-make-money</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>How Do Angel Investors Make Money</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/faq/how-early-can-you-detect-funding</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>How Early Can You Detect Funding</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/faq/how-to-find-startup-funding-rounds</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>How To Find Startup Funding Rounds</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/faq/how-to-track-startup-investments</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>How To Track Startup Investments</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/faq/how-vcs-make-money</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>How Vcs Make Money</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/faq/what-data-does-gitdealflow-track</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>What Data Does Gitdealflow Track</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/faq/what-is-a-bridge-round</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>What Is A Bridge Round</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/faq/what-is-a-down-round</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>What Is A Down Round</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/faq/what-is-a-lead-investor</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>What Is A Lead Investor</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/faq/what-is-a-scout-score</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>What Is A Scout Score</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/faq/what-is-a-signal-in-venture-capital</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>What Is A Signal In Venture Capital</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/faq/what-is-dilution-and-how-does-it-work</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>What Is Dilution And How Does It Work</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/faq/what-is-due-diligence</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>What Is Due Diligence</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/faq/what-is-pre-seed-funding</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>What Is Pre Seed Funding</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/faq/what-is-product-market-fit</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>What Is Product Market Fit</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/faq/what-is-seed-funding</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>What Is Seed Funding</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/faq/what-is-series-a-funding</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>What Is Series A Funding</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/faq/what-is-startup-valuation</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>What Is Startup Valuation</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/faq/when-do-startups-raise-money</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>When Do Startups Raise Money</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/fintech-startups</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Fintech Startups</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/for/accelerators</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Accelerators</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/for/angel-investors</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Angel Investors</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/for/corporate-vcs</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Corporate Vcs</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/for/corporate-ventures</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Corporate Ventures</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/for/family-offices</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Family Offices</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/for/founders</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Founders</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/for/hedge-funds</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Hedge Funds</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/for/impact-investors</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Impact Investors</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/for/investment-bankers</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Investment Bankers</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/for/lp-investors</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Lp Investors</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/for/micro-vcs</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Micro Vcs</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/for/private-equity-analysts</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Private Equity Analysts</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/for/solo-gps</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Solo Gps</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/for/startup-studios</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Startup Studios</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/for/venture-scouts</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Venture Scouts</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/free</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Free</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/free/free-deal-flow-routine-checklist</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Free Deal Flow Routine Checklist</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/free/free-momentum-score-calculator</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Free Momentum Score Calculator</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/free/free-startup-research-template</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Free Startup Research Template</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/free/free-startup-signal-checker</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Free Startup Signal Checker</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/free/free-vc-deal-flow-tracker</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Free Vc Deal Flow Tracker</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/free/free-vc-outreach-email-templates</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Free Vc Outreach Email Templates</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/free/github-momentum-checker</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Github Momentum Checker</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Glossary</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/anti-dilution</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Anti Dilution</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/arr</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Arr</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/board-seats</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Board Seats</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/burn-multiple</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Burn Multiple</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/burn-rate</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Burn Rate</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/cap-table</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Cap Table</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/churn-rate</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Churn Rate</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/cohort-analysis</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Cohort Analysis</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/convertible-note</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Convertible Note</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/decacorn</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Decacorn</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/dilution</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Dilution</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/due-diligence</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Due Diligence</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/information-rights</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Information Rights</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/liquidation-preference</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Liquidation Preference</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/ltv-cac</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Ltv Cac</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/moat</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Moat</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/mrr</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Mrr</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/mvp</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Mvp</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/network-effects</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Network Effects</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/pitch-deck</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Pitch Deck</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/pivot</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Pivot</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/post-money</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Post Money</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/post-money-valuation</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Post Money Valuation</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/pre-money</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Pre Money</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/pre-money-valuation</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Pre Money Valuation</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/pre-seed</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Pre Seed</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/pre-seed-funding</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Pre Seed Funding</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/pro-rata-rights</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Pro Rata Rights</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/product-market-fit</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Product Market Fit</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/runway</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Runway</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/safe-note</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Safe Note</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/seed-round</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Seed Round</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/series-a</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Series A</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/series-a-funding</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Series A Funding</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/series-b</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Series B</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/series-b-funding</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Series B Funding</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/tam-sam-som</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Tam Sam Som</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/term-sheet</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Term Sheet</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/unicorn</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Unicorn</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/valuation-cap</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Valuation Cap</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/vesting</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Vesting</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/healthtech-startups</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Healthtech Startups</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/how-to</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>How To</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/how-to/evaluate-startup-traction</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Evaluate Startup Traction</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/how-to/find-pre-seed-startups</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Find Pre Seed Startups</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/how-to/how-to-build-a-deal-flow-pipeline</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>How To Build A Deal Flow Pipeline</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/how-to/how-to-build-a-portfolio-strategy</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>How To Build A Portfolio Strategy</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/how-to/how-to-build-a-weekly-deal-flow-routine</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>How To Build A Weekly Deal Flow Routine</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/how-to/how-to-conduct-founder-due-diligence</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>How To Conduct Founder Due Diligence</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/how-to/how-to-evaluate-engineering-velocity</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>How To Evaluate Engineering Velocity</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/how-to/how-to-find-stealth-startups</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>How To Find Stealth Startups</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/how-to/how-to-identify-venture-scale-startups</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>How To Identify Venture Scale Startups</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/how-to/how-to-network-with-vcs</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>How To Network With Vcs</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/how-to/how-to-predict-startup-fundraising</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>How To Predict Startup Fundraising</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/how-to/how-to-source-pre-seed-startups</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>How To Source Pre Seed Startups</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/how-to/how-to-track-startup-hiring-velocity</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>How To Track Startup Hiring Velocity</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/how-to/how-to-use-mcp-for-vc-research</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>How To Use Mcp For Vc Research</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/how-to/track-vc-deals</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Track Vc Deals</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/integrations/gitdealflow-for-affinity-crm</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Gitdealflow For Affinity Crm</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/integrations/gitdealflow-for-airtable</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Gitdealflow For Airtable</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/integrations/gitdealflow-for-google-sheets</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Gitdealflow For Google Sheets</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/integrations/gitdealflow-for-notion</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Gitdealflow For Notion</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/integrations/gitdealflow-for-slack</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Gitdealflow For Slack</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/learn</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Learn</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/learn/deal-flow</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Deal Flow</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/learn/how-to-build-an-investment-thesis</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>How To Build An Investment Thesis</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/learn/how-to-calculate-startup-valuation</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>How To Calculate Startup Valuation</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/learn/how-to-do-reference-calls</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>How To Do Reference Calls</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/learn/how-to-evaluate-a-pitch-deck</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>How To Evaluate A Pitch Deck</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/learn/how-to-find-startups-before-they-raise</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>How To Find Startups Before They Raise</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/learn/how-to-read-a-cap-table</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>How To Read A Cap Table</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/learn/how-to-structure-a-syndicate</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>How To Structure A Syndicate</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/learn/how-to-track-startup-momentum</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>How To Track Startup Momentum</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/learn/pre-seed-investing</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Pre Seed Investing</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/learn/what-is-a-deal-flow-signal</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>What Is A Deal Flow Signal</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/london</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>London</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/masterclass</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Masterclass</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/mcp</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Mcp</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/network</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Network</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/new-york</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>New York</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/partners</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Partners</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/perfect-webinar</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Perfect Webinar</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/pricing</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Pricing</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/pricing/cb-insights-pricing-vs-gitdealflow</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Cb Insights Pricing Vs Gitdealflow</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/pricing/crunchbase-pricing-vs-gitdealflow</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Crunchbase Pricing Vs Gitdealflow</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/pricing/pitchbook-pricing-vs-gitdealflow</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Pitchbook Pricing Vs Gitdealflow</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/privacy</loc>
-      <image:image>
-        <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
-        <image:title>GitDealFlow</image:title>
-      </image:image>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Privacy</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/public/dream-100</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Dream 100</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/research</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Research</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/research/engineering-momentum-benchmarks</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Engineering Momentum Benchmarks</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/research/github-velocity-correlation-study</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Github Velocity Correlation Study</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/research/vc-deal-flow-signal-2026</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Vc Deal Flow Signal 2026</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/san-francisco</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>San Francisco</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/seattle</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Seattle</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/sectors/agritech</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Agritech</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/sectors/ai-ml</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Ai Ml</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/sectors/biotech</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Biotech</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/sectors/climate-tech</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Climate Tech</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/sectors/consumer</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Consumer</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/sectors/cybersecurity</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Cybersecurity</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/sectors/deep-tech</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Deep Tech</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/sectors/devtools</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Devtools</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/sectors/ecommerce</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Ecommerce</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/sectors/edtech</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Edtech</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/sectors/enterprise</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Enterprise</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/sectors/fintech</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Fintech</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/sectors/gaming</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Gaming</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/sectors/healthtech</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Healthtech</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/sectors/hrtech</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Hrtech</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/sectors/insurtech</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Insurtech</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/sectors/legaltech</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Legaltech</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/sectors/logistics</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Logistics</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/sectors/martech</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Martech</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/sectors/media</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Media</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/sectors/mobility</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Mobility</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/sectors/proptech</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Proptech</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/sectors/robotics</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Robotics</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/sectors/saas</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Saas</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/sectors/web3</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Web3</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/singapore</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Singapore</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/stats</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Stats</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/tel-aviv</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Tel Aviv</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/terms</loc>
-      <image:image>
-        <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
-        <image:title>GitDealFlow</image:title>
-      </image:image>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Terms</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
   </url>
   <url>
-    <loc>https://gitdealflow.com/llms.txt</loc>
-      <image:image>
-        <image:loc>https://gitdealflow.com/data-nerd.webp</image:loc>
-        <image:title>GitDealFlow</image:title>
-      </image:image>
+    <loc>https://gitdealflow.com/tools</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Tools</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
   </url>
   <url>
-    <loc>https://gitdealflow.com/llms-full.txt</loc>
-      <image:image>
-        <image:loc>https://gitdealflow.com/data-nerd.webp</image:loc>
-        <image:title>GitDealFlow</image:title>
-      </image:image>
+    <loc>https://gitdealflow.com/tools/burn-rate-analyzer</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Burn Rate Analyzer</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
   </url>
   <url>
-    <loc>https://gitdealflow.com/ai.txt</loc>
-      <image:image>
-        <image:loc>https://gitdealflow.com/data-nerd.webp</image:loc>
-        <image:title>GitDealFlow</image:title>
-      </image:image>
+    <loc>https://gitdealflow.com/tools/cac-ltv-calculator</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Cac Ltv Calculator</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/tools/cap-table-simulator</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Cap Table Simulator</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/tools/churn-rate-calculator</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Churn Rate Calculator</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/tools/deal-flow-funnel</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Deal Flow Funnel</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/tools/growth-rate-calculator</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Growth Rate Calculator</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/tools/investment-calculator</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Investment Calculator</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/tools/runway-calculator</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Runway Calculator</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/tools/startup-valuation-calculator</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Startup Valuation Calculator</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/toronto</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Toronto</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/use-cases</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Use Cases</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/use-cases/angel-investors</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Angel Investors</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/use-cases/competitive-intelligence</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Competitive Intelligence</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/use-cases/corporate-venture</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Corporate Venture</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/use-cases/deal-sourcing</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Deal Sourcing</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/use-cases/portfolio-monitoring</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Portfolio Monitoring</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/use-cases/venture-capital</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Venture Capital</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/vs</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Vs</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/vs/angellist</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Angellist</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/vs/cb-insights</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Cb Insights</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/vs/crunchbase</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Crunchbase</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/vs/dealroom</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Dealroom</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/vs/gitdealflow-vs-crunchbase</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Gitdealflow Vs Crunchbase</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/vs/gitdealflow-vs-pitchbook</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Gitdealflow Vs Pitchbook</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/vs/pitchbook</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Pitchbook</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/vs/privateequitywire</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Privateequitywire</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/vs/tracxn</loc>
+    <image:image>
+      <image:loc>https://signals.gitdealflow.com/opengraph-image</image:loc>
+      <image:title>Tracxn</image:title>
+    </image:image>
+    <lastmod>2026-08-08</lastmod>
   </url>
 </urlset>
