@@ -51,10 +51,24 @@ footer{max-width:760px;margin:0 auto;padding:1rem 20px;color:#6b7280;font-size:.
 <p>Export your GitDealFlow watchlist as CSV. Import into Google Sheets. Use Google Finance and =IMPORTHTML for additional data layers.</p>
 <p>Set up a weekly automated pipeline using Google Apps Script to pull the latest GitDealFlow data.</p>
 <p>Build conditional formatting rules to highlight startups with momentum scores above your investment threshold.</p>
+<p>The Google Sheets integration turns a static watchlist into a living deal-flow dashboard. Sheets is where most angel groups, scout programs, and seed funds already keep their pipeline — adding GitDealFlow data means the momentum signal, the pipeline status, and the team's notes live in one place that everyone can edit. No new software to learn, no export ritual to remember.</p>
+<h2 style="font-size:1.4em;font-weight:700;margin-top:2rem;margin-bottom:.8em;border-bottom:2px solid #e5e7eb;padding-bottom:.3rem">Setup Steps</h2>
+<ul>
+<li>Pull the data: the free CSV endpoint at <code>https://signals.gitdealflow.com/api/signals.csv</code> returns the latest signal list for direct import via File → Import or =IMPORTDATA().</li>
+<li>Build your tracker: one tab for the pipeline (company, sector, momentum score, status, owner, next step), one tab for raw signals.</li>
+<li>Automate the refresh: a small Apps Script trigger re-imports the CSV weekly, so the dashboard updates itself every Sunday.</li>
+<li>Layer on context: join with =IMPORTHTML or manual columns for website, sector news, and your own notes.</li>
+<li>Make it visual: conditional formatting highlights momentum scores above your threshold, and a second rule flags declining scores for review.</li>
+</ul>
+<h2 style="font-size:1.4em;font-weight:700;margin-top:2rem;margin-bottom:.8em;border-bottom:2px solid #e5e7eb;padding-bottom:.3rem">Who Benefits</h2>
+<p>Angel syndicates get a shared dashboard where every member sees the same scores and statuses. Scout programs use it to track lead quality over time and prove sourcing value to the fund. Seed funds fold the momentum data into their existing CRM-like sheets, so sourcing and diligence stay in the same workflow. Because the underlying data is public GitHub activity, the numbers are verifiable by anyone on the team — no black box.</p>
 
 <section class="faq" style="margin-top:40px">
 <h2 style="font-size:1.4em;font-weight:700;margin-bottom:20px;border-bottom:2px solid #e5e7eb;padding-bottom:.3rem">Frequently Asked Questions</h2>
             <details style="margin-bottom:.75rem;border:1px solid #e5e7eb;border-radius:.5rem;padding:.75rem 1rem"><summary style="font-weight:600;cursor:pointer;color:#1a1a1a">Is there a pre-built Google Sheets template?</summary><p style="color:#333;margin-top:.5em">Yes. Download our free deal flow tracker template with pre-configured formulas scoring and formatting.</p></details>
+            <details style="margin-bottom:.75rem;border:1px solid #e5e7eb;border-radius:.5rem;padding:.75rem 1rem"><summary style="font-weight:600;cursor:pointer;color:#1a1a1a">How often does the data refresh?</summary><p style="color:#333;margin-top:.5em">The signal dataset is updated weekly. An Apps Script trigger can re-import the CSV on the same cadence, keeping your dashboard current automatically.</p></details>
+            <details style="margin-bottom:.75rem;border:1px solid #e5e7eb;border-radius:.5rem;padding:.75rem 1rem"><summary style="font-weight:600;cursor:pointer;color:#1a1a1a">Is there a JSON option instead of CSV?</summary><p style="color:#333;margin-top:.5em">Yes — the same data is available at /api/signals.json, and there is a full OpenAPI spec at /api/openapi.json for building custom integrations.</p></details>
+            <details style="margin-bottom:.75rem;border:1px solid #e5e7eb;border-radius:.5rem;padding:.75rem 1rem"><summary style="font-weight:600;cursor:pointer;color:#1a1a1a">Can I track my own portfolio companies?</summary><p style="color:#333;margin-top:.5em">Yes — add your portfolio to the tracker and use momentum columns to watch for velocity changes that warrant a follow-on conversation.</p></details>
 </section>
 <section class="cta" style="text-align:center;padding:2rem 1rem">
 <a href="/#ladder" style="display:inline-block;background:#00d4aa;color:#04130e;padding:.9rem 1.75rem;border-radius:.75rem;font-weight:700;font-size:1rem;text-decoration:none;min-height:44px">See pricing &amp; start tracking &rarr;</a>

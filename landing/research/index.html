@@ -59,7 +59,7 @@ h1{font-size:2rem;color:#f8fafc;margin-bottom:.5rem}
 .links .sep{color:#475569}
 .license{color:#64748b;font-size:.85rem;margin-top:2rem;text-align:center}
 </style>
-<link rel="stylesheet" href="/ux.css">
+<link rel="stylesheet" href="/ux.css?v=20260808-2">
     <script src="/ux.js" defer></script>
   </head>
 <body>
@@ -67,6 +67,8 @@ h1{font-size:2rem;color:#f8fafc;margin-bottom:.5rem}
 
 <h1>Research & Data — GitDealFlow</h1>
 <p class="subtitle">Free, open datasets and research reports. All content under <a href="https://creativecommons.org/licenses/by/4.0/" style="color:#38bdf8">CC BY 4.0</a>.</p>
+
+<p style="margin-bottom:1.5rem;color:#cbd5e1">GitDealFlow's research program turns public GitHub activity into a structured, reproducible view of startup momentum. Everything here is derived from public data, published with an open methodology, and released under a CC BY 4.0 license — you can download the datasets, audit the method, and build your own analysis on top. The target audience is investors — angels, scouts, seed funds, and family offices — who want evidence instead of anecdotes when they decide which startups to approach.</p>
 
 <div class="report">
   <h2><a href="vc-deal-flow-signal-2026/">VC Deal Flow Signal Report: Startup Funding Velocity Patterns 2026</a></h2>
@@ -79,6 +81,20 @@ h1{font-size:2rem;color:#f8fafc;margin-bottom:.5rem}
     <a href="vc-deal-flow-signal-2026/data.json">JSON</a>
   </div>
 </div>
+
+<h2 style="font-size:1.3rem;color:#f8fafc;margin:2rem 0 .8rem">The method, in short</h2>
+<p style="color:#cbd5e1;margin-bottom:1rem">GitDealFlow tracks three signals per company from public GitHub activity: commit velocity (how much the team ships), contributor growth (how fast the team is adding people who actually commit), and repository expansion (new projects and surface area). When these accelerate together, the team is typically gearing up — and in the research panel of 219 documented fundraises, that acceleration led the public round announcement by 21-47 days. The full method, including the open dataset, is published on SSRN under CC BY 4.0.</p>
+
+<h2 style="font-size:1.3rem;color:#f8fafc;margin:2rem 0 .8rem">How to use this data</h2>
+<ul style="color:#cbd5e1;margin:0 0 1rem 1.2rem;line-height:1.9">
+  <li>Build your own screens: download the CSV or JSON and filter by sector, momentum, or cohort.</li>
+  <li>Replicate the research: the SSRN paper documents the methodology end to end, including definitions and caveats.</li>
+  <li>Go live: the same signals are served programmatically at signals.gitdealflow.com — JSON API, CSV export, MCP server, and OpenAPI spec, all free and without authentication.</li>
+  <li>Cite it: use the citation format in the report — "VC Deal Flow Signal (signals.gitdealflow.com), Q2 2026 data."</li>
+</ul>
+
+<h2 style="font-size:1.3rem;color:#f8fafc;margin:2rem 0 .8rem">What's coming</h2>
+<p style="color:#cbd5e1;margin-bottom:1rem">The dataset refreshes weekly and the research program publishes new reports as panels grow: sector-specific deep dives, benchmark tables like the engineering momentum benchmarks, and follow-on analysis of the fundraise lead-time findings. Everything remains free and open — the data is the product, and the product is public.</p>
 
 <p class="license">© 2026 GitDealFlow · <a href="https://gitdealflow.com">gitdealflow.com</a></p>
 
