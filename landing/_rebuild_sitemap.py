@@ -68,9 +68,17 @@ EXCLUDE_FILES = {
     "confirmed.html",
     "subscribe-thanks.html",
     "thanks.html",
+    "checkout-success.html",
     # Other non-indexable
     "report.html",        # has noindex meta
     "funnel-math.html",
+    # Soft-404 / thin content pages (GSC "Soft 404" fix, Aug 2026)
+    "pulse.html",              # 270 chars visible text — live JS visualizer
+    "trustpilot-footer-link.html",  # 140 chars — link-building artifact
+    "embed-gallery.html",      # thin widget gallery
+    "embed/tracker.html",      # embeddable widget
+    "embed/check-velocity.html",  # embeddable widget
+    "embed/momentum.html",     # embeddable widget
 }
 
 # Prefix patterns for verification files
