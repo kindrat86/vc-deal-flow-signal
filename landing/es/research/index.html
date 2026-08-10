@@ -7,7 +7,7 @@
     <link rel="alternate" hreflang="en" href="https://gitdealflow.com/research">
     <link rel="alternate" hreflang="es" href="https://gitdealflow.com/es/research">
     <link rel="alternate" hreflang="de" href="https://gitdealflow.com/de/research">
-    <link rel="alternate" hreflang="x-default" href="https://gitdealflow.com/research"><meta name="description" content="Free, open datasets and research reports from GitDealFlow. All data under CC BY 4.0. Download CSV and JSON.">
+    <link rel="alternate" hreflang="x-default" href="https://gitdealflow.com/research"><meta name="description" content="Datasets e informes de investigación gratuitos y abiertos de GitDealFlow. Todos los datos bajo CC BY 4.0. Descarga CSV y JSON.">
 <link rel="canonical" href="https://gitdealflow.com/es/research">
 <link rel="manifest" href="/site.webmanifest">
 <meta name="mobile-web-app-capable" content="yes">
@@ -23,7 +23,7 @@
   "@context": "https://schema.org",
   "@type": "CollectionPage",
   "name": "Research & Data — GitDealFlow",
-  "description": "Free, open datasets and research reports from GitDealFlow.",
+  "description": "Datasets e informes de investigación gratuitos y abiertos de GitDealFlow.",
   "about": {"@type": "Thing", "name": "VC deal flow signals and startup engineering velocity"},
   "itemListElement": [
     {"@type": "Dataset", "name": "VC Deal Flow Signal Report: Startup Funding Velocity Patterns 2026", "url": "https://gitdealflow.com/es/research/vc-deal-flow-signal-2026/"}
@@ -59,26 +59,42 @@ h1{font-size:2rem;color:#f8fafc;margin-bottom:.5rem}
 .links .sep{color:#475569}
 .license{color:#64748b;font-size:.85rem;margin-top:2rem;text-align:center}
 </style>
-<link rel="stylesheet" href="/ux.css">
+<link rel="stylesheet" href="/ux.css?v=20260808-2">
     <script src="/ux.js" defer></script>
   </head>
 <body>
 <div class="wrap">
 
 <h1>Research & Data — GitDealFlow</h1>
-<p class="subtitle">Free, open datasets and research reports. All content under <a href="https://creativecommons.org/licenses/by/4.0/" style="color:#38bdf8">CC BY 4.0</a>.</p>
+<p class="subtitle">Datasets e informes de investigación gratuitos y abiertos. Todo el contenido bajo <a href="https://creativecommons.org/licenses/by/4.0/" style="color:#38bdf8">CC BY 4.0</a>.</p>
+
+<p style="margin-bottom:1.5rem;color:#cbd5e1">El programa de investigación de GitDealFlow convierte la actividad pública de GitHub en una vista estructurada y reproducible del momentum de startups. Todo aquí se deriva de datos públicos, se publica con una metodología abierta y se publica bajo licencia CC BY 4.0: puedes descargar los datasets, auditar el método y construir tu propio análisis encima. El público objetivo son inversores (ángeles, scouts, fondos semilla y family offices) que quieren evidencia en lugar de anécdotas a la hora de decidir a qué startups acercarse.</p>
 
 <div class="report">
   <h2><a href="vc-deal-flow-signal-2026/">VC Deal Flow Signal Report: Startup Funding Velocity Patterns 2026</a></h2>
-  <p class="desc">Cross-sector analysis of 538 startup engineering organizations across 15 sectors, measuring commit velocity, team size, breakout signals, and time from engineering spike to fundraise announcement. AI/ML leads with 28 breakout signals in Q2 2026; median time from signal to fundraise is 6.2 weeks.</p>
+  <p class="desc">Análisis transversal de 538 organizaciones de ingeniería de startups en 15 sectores, midiendo velocidad de commits, tamaño de equipo, señales de breakout y tiempo desde el pico de ingeniería hasta el anuncio de financiación. IA/ML lidera con 28 señales de breakout en Q2 2026; la mediana de tiempo desde la señal hasta la financiación es de 6,2 semanas.</p>
   <div class="links">
-    <a href="vc-deal-flow-signal-2026/">Report</a>
+    <a href="vc-deal-flow-signal-2026/">Informe</a>
     <span class="sep">·</span>
     <a href="vc-deal-flow-signal-2026/data.csv">CSV</a>
     <span class="sep">·</span>
     <a href="vc-deal-flow-signal-2026/data.json">JSON</a>
   </div>
 </div>
+
+<h2 style="font-size:1.3rem;color:#f8fafc;margin:2rem 0 .8rem">El método, en resumen</h2>
+<p style="color:#cbd5e1;margin-bottom:1rem">GitDealFlow rastrea tres señales por empresa a partir de la actividad pública de GitHub: velocidad de commits (cuánto envía el equipo), crecimiento de contribuidores (con qué rapidez añade gente que commitea de verdad) y expansión de repositorios (nuevos proyectos y superficie). Cuando estas tres aceleran juntas, el equipo se está preparando para algo, y en el panel de investigación de 219 rondas documentadas esa aceleración se adelantó al anuncio público de la ronda en 21-47 días. El método completo, incluido el dataset abierto, está publicado en SSRN bajo CC BY 4.0.</p>
+
+<h2 style="font-size:1.3rem;color:#f8fafc;margin:2rem 0 .8rem">Cómo usar estos datos</h2>
+<ul style="color:#cbd5e1;margin:0 0 1rem 1.2rem;line-height:1.9">
+  <li>Construye tus propios filtros: descarga el CSV o JSON y filtra por sector, momentum o cohorte.</li>
+  <li>Replica la investigación: el paper de SSRN documenta la metodología de principio a fin, incluidas definiciones y advertencias.</li>
+  <li>Pásalo a producción: las mismas señales se sirven programáticamente en signals.gitdealflow.com (API JSON, export CSV, servidor MCP y especificación OpenAPI), todo gratis y sin autenticación.</li>
+  <li>Cítalo: usa el formato de cita del informe: "VC Deal Flow Signal (signals.gitdealflow.com), Q2 2026 data."</li>
+</ul>
+
+<h2 style="font-size:1.3rem;color:#f8fafc;margin:2rem 0 .8rem">Lo que viene</h2>
+<p style="color:#cbd5e1;margin-bottom:1rem">El dataset se actualiza semanalmente y el programa de investigación publica nuevos informes a medida que crecen los paneles: análisis profundos sectoriales, tablas de benchmarks como los de momentum de ingeniería y análisis de seguimiento sobre los hallazgos de ventaja temporal en financiación. Todo sigue siendo gratuito y abierto: los datos son el producto, y el producto es público.</p>
 
 <p class="license">© 2026 GitDealFlow · <a href="https://gitdealflow.com">gitdealflow.com</a></p>
 

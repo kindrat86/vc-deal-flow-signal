@@ -3,66 +3,86 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>GitDealFlow MCP Server — Install in Claude, Cursor, Windsurf</title>
+<title>GitDealFlow MCP Server — Instala en Claude, Cursor, Windsurf</title>
     <link rel="alternate" hreflang="en" href="https://gitdealflow.com/mcp">
     <link rel="alternate" hreflang="es" href="https://gitdealflow.com/es/mcp">
     <link rel="alternate" hreflang="de" href="https://gitdealflow.com/de/mcp">
-    <link rel="alternate" hreflang="x-default" href="https://gitdealflow.com/mcp"><meta name="description" content="Track startup engineering acceleration from public GitHub data. Discover high-momentum startups before they announce funding. Install the MCP server in any MCP-aware client.">
+    <link rel="alternate" hreflang="x-default" href="https://gitdealflow.com/mcp"><meta name="description" content="Rastrea la aceleración de ingeniería de startups a partir de datos públicos de GitHub. Descubre startups de alto momentum antes de que anuncien financiación. Instala el servidor MCP en cualquier cliente compatible con MCP.">
 <link rel="canonical" href="https://gitdealflow.com/es/mcp">
 <link rel="manifest" href="/site.webmanifest">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 <meta name="apple-mobile-web-app-title" content="GitDealFlow">
-<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"GitDealFlow MCP Server","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://gitdealflow.com/es/mcp","downloadUrl":"https://gitdealflow.com/es/api/mcp","description":"Track startup engineering acceleration from public GitHub data. Discover high-momentum startups before they announce funding.","isAccessibleForFree":true}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"SoftwareApplication","name":"GitDealFlow MCP Server","applicationCategory":"DeveloperApplication","operatingSystem":"Any","url":"https://gitdealflow.com/es/mcp","downloadUrl":"https://gitdealflow.com/api/mcp","description":"Rastrea la aceleración de ingeniería de startups a partir de datos públicos de GitHub. Descubre startups de alto momentum antes de que anuncien financiación.","isAccessibleForFree":true}</script>
 
-<link rel="stylesheet" href="/ux.css">
+<link rel="stylesheet" href="/ux.css?v=20260808-2">
     <script src="/ux.js" defer></script>
   <link rel="stylesheet" href="/inline.css"></head>
-<body>
-<span class="badge">MCP Server</span>
-<h1>GitDealFlow — MCP Server</h1>
-<p>Track startup engineering acceleration from public GitHub data. Discover high-momentum startups before they announce funding.</p>
-<p>One endpoint. Stateless HTTP transport. No auth required. Paste it into any MCP client:</p>
-<pre><code>https://gitdealflow.com/api/mcp</code></pre>
+<body class="page-mcp">
+<span class="badge">Servidor MCP</span>
+<h1>GitDealFlow — Servidor MCP</h1>
+<p>Rastrea la aceleración de ingeniería de startups a partir de datos públicos de GitHub. Descubre startups de alto momentum antes de que anuncien financiación.</p>
+<p>Cómo funciona la señal: GitDealFlow lee la actividad pública de GitHub de 4.200+ startups y rastrea la velocidad de commits, el crecimiento de contribuidores y la expansión de repositorios. Cuando esas tres aceleran juntas, el equipo se está preparando típicamente para levantar capital. En un panel de investigación de 219 rondas documentadas, la aceleración se adelantó al anuncio público de la ronda en 21-47 días. El email semanal entrega cinco nombres cada domingo, y este servidor MCP expone el mismo dataset a los agentes.</p>
+<p>El servidor MCP de GitDealFlow expone el dataset de momentum de startups a cualquier cliente compatible con MCP. Todas las herramientas son de solo lectura, idempotentes y completamente gratuitas: sin autenticación, sin API key, sin límites de tasa. Los datos se derivan de la actividad pública de GitHub de 4.200+ startups, con la metodología publicada en SSRN bajo CC BY 4.0 junto a un dataset abierto.</p>
 
-<h2>Install in Claude Desktop</h2>
-<p>Add to <code>claude_desktop_config.json</code>:</p>
+<h2>Inicio rápido (stdio)</h2>
+<p>Para Claude Desktop, Claude Code, Cursor o cualquier cliente que soporte servidores MCP locales, ejecuta el paquete publicado directamente:</p>
+<pre><code>npx -y @gitdealflow/mcp-signal</code></pre>
+
+<h2>Transporte HTTP Streamable</h2>
+<p>Para clientes MCP alojados (ChatGPT apps, runtimes MCP remotos) que prefieren un endpoint URL, usa el servidor HTTP Streamable:</p>
+<pre><code>https://signals.gitdealflow.com/api/mcp/rpc</code></pre>
+
+<h2>Instalar en Claude Desktop</h2>
+<p>Añade a <code>claude_desktop_config.json</code>:</p>
 <pre><code>{
-  "mcpServers": {
-    "gitdealflow": {
-      "command": "npx",
-      "args": ["mcp-remote", "https://gitdealflow.com/api/mcp"]
-    }
-  }
+ "mcpServers": {
+   "gitdealflow": {
+     "command": "npx",
+     "args": ["-y", "@gitdealflow/mcp-signal"]
+   }
+ }
 }</code></pre>
 
-<h2>Install in Cursor</h2>
-<p>Add to <code>.cursor/mcp.json</code>:</p>
+<h2>Instalar en Cursor</h2>
+<p>Añade a <code>.cursor/mcp.json</code>:</p>
 <pre><code>{
-  "mcpServers": {
-    "gitdealflow": {
-      "url": "https://gitdealflow.com/api/mcp"
-    }
-  }
+ "mcpServers": {
+   "gitdealflow": {
+     "command": "npx",
+     "args": ["-y", "@gitdealflow/mcp-signal"]
+   }
+ }
 }</code></pre>
 
-<h2>Inspect</h2>
-<pre><code>npx @modelcontextprotocol/inspector https://gitdealflow.com/api/mcp</code></pre>
+<h2>Inspeccionar</h2>
+<pre><code>npx @modelcontextprotocol/inspector npx -y @gitdealflow/mcp-signal</code></pre>
 
-<h2>Available Tools (4)</h2>
+<h2>Herramientas disponibles (6)</h2>
 <ul>
-<li><code>search_startups</code> — Search tracked startups by sector, city, or keyword.</li>
-<li><code>get_startup_signal</code> — Get engineering momentum signal for a specific startup.</li>
-<li><code>list_sectors</code> — List all tracked sectors with startup counts.</li>
-<li><code>list_cities</code> — List all tracked cities with startup counts.</li>
+<li><code>get_trending_startups</code> — Las 20 startups con mayor aceleración en todos los sectores.</li>
+<li><code>search_startups_by_sector</code> — Filtra el universo rastreado por sector (20 slugs sectoriales enumerados).</li>
+<li><code>get_startup_signal</code> — Señal de momentum de ingeniería para una startup específica; insensible a mayúsculas y tolerante a la normalización.</li>
+<li><code>get_signals_summary</code> — Periodo, frescura y URLs de formato para el dataset de señales actual.</li>
+<li><code>get_scout_receipts</code> — Scout Score (0-100) para un usuario de GitHub, calculado a partir de su historial de starring frente a empresas breakout validadas.</li>
+<li><code>get_methodology</code> — Texto completo de la metodología y URL canónica, para que cualquier agente pueda verificar cómo se construye la señal.</li>
 </ul>
 
-<p style="margin-top:2rem;color:#666;font-size:0.9rem">
-Discovery manifest: <a href="/.well-known/mcp.json">/.well-known/mcp.json</a> ·
-<a href="/">← Back to GitDealFlow</a>
-</p>
+<h2>Distribución y descubrimiento</h2>
+<ul>
+<li>npm: <code>@gitdealflow/mcp-signal</code></li>
+<li>MCP Registry: <code>io.github.kindrat86/vc-deal-flow-signal</code></li>
+<li>Glama: listing A-tier — <a href="https://glama.ai/mcp/servers/@kindrat86/vc-deal-flow-signal">glama.ai/mcp/servers/@kindrat86/vc-deal-flow-signal</a></li>
+<li>Manifest de descubrimiento: <a href="/.well-known/mcp.json">/.well-known/mcp.json</a></li>
+</ul>
 
+<h2>Otras superficies programáticas</h2>
+<p>¿Prefieres HTTP plano? El mismo dataset está disponible sin ningún cliente MCP: API JSON en <code>https://signals.gitdealflow.com/api/signals.json</code>, export CSV en <code>/api/signals.csv</code>, una API de function-calling (<code>/api/agent/tools</code> + <code>/api/agent/call</code>) para SDKs de OpenAI/Anthropic/Gemini, un endpoint A2A en <code>/api/a2a</code>, un endpoint NLWeb en <code>/api/nlweb</code> y una especificación OpenAPI 3.1 completa en <code>/api/openapi.json</code>. Todo gratuito y sin autenticación.</p>
+
+<p style="margin-top:2rem;color:#666;font-size:0.9rem">
+<a href="/es/">← Volver a GitDealFlow</a>
+</p>
 
 </body>
 </html>
