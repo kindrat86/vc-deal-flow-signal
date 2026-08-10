@@ -421,7 +421,46 @@ def validate_full(args) -> int:
     
     elapsed = time.time() - start
     
-    # ── Step 2.5: Validate image assets (for image sitemaps) ──
+    # ── Step 2.5: Thin-content (soft-404) gate — local-only ──
+    # Pages with < 150 visible words trigger Google "Soft 404" classification.
+    thin_pages = []
+    if local_only:
+        MIN_WORDS = 150
+        for child_name, _ in child_sitemaps:
+            for canonical_url in page_urls_by_child[child_name]:
+                # Resolve local file path from URL
+                path = canonical_url.replace(f"https://{PRODUCTION_HOST}", "").lstrip("/")
+                if path == "":
+                    candidates = [BASE_DIR / "index.html"]
+                else:
+                    candidates = [BASE_DIR / f"{path}.html", BASE_DIR / path / "index.html"]
+                filepath = next((c for c in candidates if c.exists()), None)
+                if not filepath:
+                    continue
+                try:
+                    html = filepath.read_text(encoding="utf-8", errors="replace")
+                    body_match = re.search(r"<body[^>]*>(.*?)</body>", html, re.DOTALL)
+                    if not body_match:
+                        continue
+                    body = body_match.group(1)
+                    body = re.sub(r"<script[^>]*>.*?</script>", "", body, flags=re.DOTALL)
+                    body = re.sub(r"<style[^>]*>.*?</style>", "", body, flags=re.DOTALL)
+                    body = re.sub(r"<noscript[^>]*>.*?</noscript>", "", body, flags=re.DOTALL)
+                    text = re.sub(r"<[^>]+>", " ", body)
+                    text = re.sub(r"\s+", " ", text).strip()
+                    wc = len(text.split())
+                    if wc < MIN_WORDS:
+                        thin_pages.append((canonical_url, wc, str(filepath.relative_to(BASE_DIR))))
+                except Exception:
+                    pass
+        if thin_pages:
+            print(f"\n📏 Thin-content gate ({MIN_WORDS} word minimum):")
+            for url, wc, rel in sorted(thin_pages, key=lambda x: x[1]):
+                print(f"      {wc:>4} words  {url}")
+        else:
+            print(f"\n📏 Thin-content gate: ✅ all pages ≥ {MIN_WORDS} words")
+
+    # ── Step 3: Validate image assets (for image sitemaps) ──
     image_asset_errors = []
     for child_name, _ in child_sitemaps:
         if 'image' not in child_name.lower():
@@ -511,7 +550,8 @@ def validate_full(args) -> int:
     
     # ── Step 3: Report ────────────────────────────────────────
     total_errors = (len(redirects) + len(errors_4xx) + len(errors_5xx) +
-                    len(network_errors) + len(noindex_pages) + len(canonical_mismatches))
+                    len(network_errors) + len(noindex_pages) + len(canonical_mismatches) +
+                    len(thin_pages))
     
     print(f"\n{'═' * 60}")
     print(f"RESULTS ({elapsed:.1f}s)")
