@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffffff">
+<meta name="color-scheme" content="light">
+<title>"Dear Professor" — Our GitHub Dataset Paper Is Now Predatory-Journal Bait</title>
+<link rel="alternate" hreflang="en" href="https://gitdealflow.com/research/predatory-journal-invitations">
+<link rel="alternate" hreflang="x-default" href="https://gitdealflow.com/research/predatory-journal-invitations">
+<meta name="description" content="Two 'journals' invited our SSRN preprint on GitHub engineering velocity for publication — one about nuclear energy, one addressing 'Dr. The Data Nerd'. The full emails, annotated, plus a red-flag checklist for spotting predatory journal invitations.">
+<link rel="canonical" href="https://gitdealflow.com/research/predatory-journal-invitations">
+<meta property="og:type" content="article">
+<meta property="og:title" content="&quot;Dear Professor&quot; — Our GitHub Dataset Paper Is Now Predatory-Journal Bait">
+<meta property="og:description" content="Two 'journals' invited our SSRN preprint for publication — one about nuclear energy, one addressing 'Dr. The Data Nerd'. The full emails, annotated, plus a red-flag checklist.">
+<meta property="og:url" content="https://gitdealflow.com/research/predatory-journal-invitations">
+<meta property="og:site_name" content="GitDealFlow">
+<meta property="og:image" content="https://signals.gitdealflow.com/opengraph-image">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://signals.gitdealflow.com/opengraph-image">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a predatory journal invitation?","acceptedAnswer":{"@type":"Answer","text":"An unsolicited email from a pay-to-publish outlet that flatters any paper it scrapes from preprint servers like SSRN, invites a 'full-length submission', and later reveals an article-processing charge. The tell-tale signs: generic salutations ('Dear Professor'), a journal scope that has nothing to do with your paper, artificial deadlines, and submission 'via this email as an attachment' instead of a manuscript system."},{"@type":"Question","name":"How do you know these invitations were automated scrapes?","acceptedAnswer":{"@type":"Answer","text":"One email addressed the author as 'Dear Dr. The Data Nerd' — a pseudonym, not a person's name. It was lifted verbatim from the SSRN author field. No human editor read the paper: a nuclear-energy journal invited a venture-capital dataset paper, and a second email claimed to be a 'reminder' when no earlier email had ever arrived."},{"@type":"Question","name":"Does an ISSN mean a journal is legitimate?","acceptedAnswer":{"@type":"Answer","text":"No. An ISSN is a serial identifier, not a quality mark — any periodical can register one. Both emails cited ISSNs prominently precisely because they sound official. Check the journal against DOAJ, Scopus, or your library's indexed lists instead."},{"@type":"Question","name":"What paper were these invitations targeting?","acceptedAnswer":{"@type":"Answer","text":"'A Longitudinal Panel of GitHub Engineering Velocity for Venture-Backed Startups: Dataset and Early Observations' — an open CC BY 4.0 preprint on SSRN (abstract 6606558) with the dataset on Zenodo (DOI 10.5281/zenodo.19650920). It measures commit velocity, contributor growth, and repository expansion across venture-backed startup GitHub organizations."}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://gitdealflow.com/"},{"@type":"ListItem","position":2,"name":"Research","item":"https://gitdealflow.com/research/"},{"@type":"ListItem","position":3,"name":"Predatory Journal Invitations","item":"https://gitdealflow.com/research/predatory-journal-invitations"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"\"Dear Professor\" — Our GitHub Dataset Paper Is Now Predatory-Journal Bait","description":"Two 'journals' invited our SSRN preprint on GitHub engineering velocity for publication — one about nuclear energy, one addressing 'Dr. The Data Nerd'. The full emails, annotated, plus a red-flag checklist.","author":{"@type":"Organization","name":"GitDealFlow","url":"https://gitdealflow.com"},"publisher":{"@type":"Organization","name":"GitDealFlow","url":"https://gitdealflow.com"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://gitdealflow.com/research/predatory-journal-invitations"},"datePublished":"2026-08-11","dateModified":"2026-08-11"}</script>
+<style>
+body{background:#fff;color:#1a1a1a;font-family:-apple-system,system-ui,sans-serif;line-height:1.7;max-width:760px;margin:0 auto;padding:0 20px 60px}
+.hero h1{font-size:2em;font-weight:800;margin:1.5em 0 .5em;line-height:1.2;color:#1a1a1a}
+.content p{margin-bottom:1em;color:#333}
+.content ul{line-height:1.9;color:#333;margin:0 0 1em 1.2em}
+.content h2{font-size:1.4em;font-weight:700;margin-top:2rem;margin-bottom:.8em;border-bottom:2px solid #e5e7eb;padding-bottom:.3rem}
+.receipt{background:#f8fafc;border:1px solid #e2e8f0;border-left:4px solid #94a3b8;border-radius:.5rem;padding:1rem 1.25rem;margin:1.25rem 0;font-size:.95rem}
+.receipt .meta{color:#64748b;font-size:.85rem;margin-bottom:.6rem;font-family:ui-monospace,SFMono-Regular,Menlo,monospace}
+.receipt blockquote{margin:0;color:#334155;font-style:italic}
+.flag{background:#fef2f2;border-left:4px solid #ef4444;padding:.5rem .9rem;margin:.5rem 0;border-radius:0 .4rem .4rem 0;font-size:.93rem;color:#7f1d1d}
+footer{max-width:760px;margin:0 auto;padding:1rem 20px;color:#6b7280;font-size:.85rem;border-top:1px solid #e5e7eb}
+</style>
+</head>
+<body>
+<header style="border-bottom:1px solid #1f2937;background:#0f172a">
+<nav style="max-width:1100px;margin:0 auto;padding:1rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+<a href="/" style="color:#f1f5f9;font-weight:700;font-size:1.1rem;text-decoration:none;min-height:44px;display:inline-flex;align-items:center">GitDealFlow</a>
+<div style="display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap">
+<a href="/#ladder" style="color:#cbd5e1;text-decoration:none;font-size:.9rem;min-height:44px;display:inline-flex;align-items:center">Pricing</a>
+<a href="/#signup" style="background:#00d4aa;color:#04130e;padding:.6rem 1.1rem;border-radius:.5rem;font-weight:700;font-size:.9rem;text-decoration:none;min-height:44px;display:inline-flex;align-items:center">Get free signal</a>
+</div>
+</nav>
+</header>
+<main>
+<section class="hero"><h1>"Dear Professor" — Our GitHub Dataset Paper Is Now Predatory-Journal Bait</h1></section>
+<section class="content">
+<p><em>Published August 11, 2026 · Filed under Research notes</em></p>
+
+<p>A strange milestone for an open dataset: on the same day, two different "journals" emailed to say our SSRN preprint — <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558">A Longitudinal Panel of GitHub Engineering Velocity for Venture-Backed Startups</a> — is "very impressive and fits within the scope" of their publication.</p>
+
+<p>One of them publishes on <strong>nuclear energy</strong>.</p>
+
+<p>The other opened with <strong>"Dear Dr. The Data Nerd"</strong> — flattering a pseudonym it scraped straight off the SSRN author field.</p>
+
+<p>Both emails are reproduced below verbatim, with the tells annotated. If you publish anything on a preprint server, you will get these too — so treat this page as a field guide.</p>
+
+<h2>Receipt #1: The nuclear-energy journal that loves VC data</h2>
+<div class="receipt">
+<div class="meta">From: Jason West &lt;jason.west@jscholarium.info&gt; · Aug 11, 2026 · Subject: Manuscript Submission -Nuclear Energy Science and Technology</div>
+<blockquote>"Dear Professor, Best wishes from the Archives of Nuclear Energy Science and Technology, ISSN:3067-1965. We came through your article entitled 'A Longitudinal Panel of GitHub Engineering Velocity for Venture-Backed Startups'. Your research is very impressive and fits within the scope of the journal. I would like to invite you to publish the full-length paper for publication in our journal. It will be appreciated if you could submit your paper on or before August 25th, 2026."</blockquote>
+</div>
+<div class="flag">🚩 Scope mismatch: a quarterly panel of startup commit velocity has nothing to do with nuclear energy. No human editor read past the title — if they read the title at all.</div>
+<div class="flag">🚩 "Dear Professor": the paper's author is pseudonymous and holds no professorship anywhere. A generic honorific means a mail-merge, not an editor.</div>
+<div class="flag">🚩 A two-week deadline: real journals do not give unsolicited authors a submission deadline. Urgency is a sales tactic.</div>
+
+<h2>Receipt #2: The "reminder" for an email that never came</h2>
+<div class="receipt">
+<div class="meta">From: Cassidy Moon &lt;cassidy.moon@theresearchpaper.org&gt; · Aug 11, 2026 · Subject: Reminder Mail: Letters in Economic Research Updates</div>
+<blockquote>"Dear Dr. The Data Nerd, … Wishes from the 'Letters in Economic Research Updates (ISSN: 3068-9236)' journal. As we haven't received any response from you, we would like to remind you once again to submit your article, as it perfectly aligned with our journal scope. If you are interested in ensuring consideration, please submit your article via this email as an attachment."</blockquote>
+</div>
+<div class="flag">🚩 "Dear Dr. The Data Nerd": that is not a name. It's the pseudonymous author string on the SSRN listing, scraped and mail-merged with an honorific bolted on. No doctorate was harmed in the making of this email.</div>
+<div class="flag">🚩 A "reminder" with no original: this was the first and only email ever received from this domain. Fake thread history is a known trick to manufacture familiarity.</div>
+<div class="flag">🚩 "Submit via this email as an attachment": legitimate journals use manuscript-submission systems with peer-review tracking. An inbox is not an editorial workflow.</div>
+
+<h2>Why this happens to preprints</h2>
+<p>Predatory outlets scrape SSRN, arXiv, and ResearchGate for fresh preprints, then mass-mail the listed authors. The economics are simple: flattery is free, and a fraction of recipients — often early-career researchers under publish-or-perish pressure — pay the article-processing charge that appears after "acceptance". The invitations target the <em>author</em>, not the research; that is why a nuclear-energy journal will happily claim a venture-capital dataset "fits within the scope".</p>
+<p>Our paper is a useful canary precisely because its author is pseudonymous. Any email addressing "Dr. The Data Nerd" or "Professor" self-certifies that no human being was involved in the invitation.</p>
+
+<h2>The red-flag checklist</h2>
+<p>Before responding to any journal invitation, check:</p>
+<ul>
+<li><strong>Scope:</strong> does the journal's subject have anything to do with your paper?</li>
+<li><strong>Salutation:</strong> do they know who you actually are, or is it "Dear Professor / Dr. [scraped string]"?</li>
+<li><strong>Provenance:</strong> did they say where they found the paper, and does a claimed "reminder" match a real earlier email?</li>
+<li><strong>Submission channel:</strong> manuscript system with tracking, or "reply with an attachment"?</li>
+<li><strong>Deadline:</strong> unsolicited invitations with countdown deadlines are sales funnels, not calls for papers.</li>
+<li><strong>ISSN ≠ legitimacy:</strong> an ISSN is a serial number, not a quality mark. Check DOAJ or Scopus indexing instead.</li>
+<li><strong>Fees:</strong> if the article-processing charge only appears after acceptance, that's the product being sold — you.</li>
+</ul>
+
+<h2>The paper they didn't read</h2>
+<p>For the humans (and agents) who do want the actual research: the preprint releases a quarterly longitudinal panel of GitHub engineering-velocity signals across venture-backed startups — commit velocity, contributor growth, and repository expansion — with the full dataset open under CC BY 4.0.</p>
+<ul>
+<li>Preprint: <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558">SSRN abstract 6606558</a></li>
+<li>Dataset: <a href="https://doi.org/10.5281/zenodo.19650920">Zenodo, DOI 10.5281/zenodo.19650920</a></li>
+<li>30 findings, cited to section: <a href="https://signals.gitdealflow.com/research">signals.gitdealflow.com/research</a></li>
+<li>Live signals derived from the same methodology: <a href="https://signals.gitdealflow.com/api/signals.json">free JSON API</a></li>
+</ul>
+<p>It remains free, open, and — as of this week — apparently impressive enough for the nuclear-energy literature.</p>
+
+<section class="faq" style="margin-top:40px">
+<h2>Frequently Asked Questions</h2>
+<details style="margin-bottom:.75rem;border:1px solid #e5e7eb;border-radius:.5rem;padding:.75rem 1rem"><summary style="font-weight:600;cursor:pointer;color:#1a1a1a">What is a predatory journal invitation?</summary><p style="color:#333;margin-top:.5em">An unsolicited email from a pay-to-publish outlet that flatters any paper it scrapes from preprint servers, invites a "full-length submission", and later reveals an article-processing charge. Tells: generic salutations, scope mismatch, artificial deadlines, and submission by email attachment instead of a manuscript system.</p></details>
+<details style="margin-bottom:.75rem;border:1px solid #e5e7eb;border-radius:.5rem;padding:.75rem 1rem"><summary style="font-weight:600;cursor:pointer;color:#1a1a1a">How do you know these were automated scrapes?</summary><p style="color:#333;margin-top:.5em">One email addressed the author as "Dear Dr. The Data Nerd" — a pseudonym lifted verbatim from the SSRN author field. A nuclear-energy journal invited a venture-capital dataset paper, and a "reminder" email had no original preceding it.</p></details>
+<details style="margin-bottom:.75rem;border:1px solid #e5e7eb;border-radius:.5rem;padding:.75rem 1rem"><summary style="font-weight:600;cursor:pointer;color:#1a1a1a">Does an ISSN mean a journal is legitimate?</summary><p style="color:#333;margin-top:.5em">No. An ISSN is a serial identifier any periodical can register — not a quality mark. Check DOAJ, Scopus, or your library's indexed lists instead.</p></details>
+<details style="margin-bottom:.75rem;border:1px solid #e5e7eb;border-radius:.5rem;padding:.75rem 1rem"><summary style="font-weight:600;cursor:pointer;color:#1a1a1a">Which paper were these invitations targeting?</summary><p style="color:#333;margin-top:.5em">"A Longitudinal Panel of GitHub Engineering Velocity for Venture-Backed Startups: Dataset and Early Observations" — an open CC BY 4.0 preprint on SSRN (abstract 6606558) with the dataset on Zenodo (DOI 10.5281/zenodo.19650920).</p></details>
+</section>
+
+<section class="cta" style="text-align:center;padding:2rem 1rem">
+<a href="/#signup" style="display:inline-block;background:#00d4aa;color:#04130e;padding:.9rem 1.75rem;border-radius:.75rem;font-weight:700;font-size:1rem;text-decoration:none;min-height:44px">Get the free Sunday signal &rarr;</a>
+</section>
+</section>
+</main>
+
+<section style="margin-top:40px;padding-top:20px;border-top:1px solid #e0e0e0">
+<h3 style="font-size:1.1em;font-weight:700;margin-bottom:12px">Related pages</h3>
+<ul style="list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px">
+<li><a href="https://gitdealflow.com/research/" style="color:#0066cc">All Research</a></li>
+<li><a href="https://gitdealflow.com/research/github-velocity-correlation-study" style="color:#0066cc">GitHub Velocity Correlation Study</a></li>
+<li><a href="https://gitdealflow.com/research/engineering-momentum-benchmarks" style="color:#0066cc">Engineering Momentum Benchmarks</a></li>
+</ul>
+</section>
+<footer><p>&copy; 2026 GitDealFlow</p></footer>
+</body>
+</html>
