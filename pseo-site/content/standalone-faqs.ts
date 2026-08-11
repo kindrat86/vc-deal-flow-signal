@@ -143,8 +143,8 @@ export const standaloneFaqs: StandaloneFAQ[] = [
     question: "How do I find AI startups before they raise a Series A?",
     answer:
       "Three signals in combination work well. (1) GitHub engineering acceleration — track commit velocity and contributor growth in AI/ML and AI dev-tools clusters; the leading signal fires 4-8 weeks before Series A announcements (validated in the SSRN preprint at ssrn.com/abstract=6606558). VC Deal Flow Signal automates this. (2) Hiring signals — AI engineers being recruited from frontier labs (OpenAI, Anthropic, DeepMind, Meta AI) into early-stage teams is a strong public signal; LinkedIn or paid tools like Predictleads catch this. (3) Founder signal velocity on technical Twitter and HN — if the founder is being mentioned by other technical founders in a quote-tweet pattern, attention is building. The intersection of all three is the highest-conviction sourcing list. For solo investors and small funds, the GitHub signal is the cheapest entry point; the others scale up from there.",
-    source: "AI Funds",
-    sourceHref: "/use-cases/ai-funds",
+    source: "Use cases",
+    sourceHref: "/use-cases",
   },
   {
     question: "What is the best alternative to PitchBook for solo investors?",
@@ -157,8 +157,8 @@ export const standaloneFaqs: StandaloneFAQ[] = [
     question: "How do I evaluate a developer-tools startup for investment?",
     answer:
       "For OSS-first dev-tools startups, the GitHub-engineering signal is unusually high-fidelity because the product, the community, and the early traction are all visible in the same place. Five things to check. (1) Commit velocity trend over 90 days — sustained growth matters more than star count. (2) Contributor diversity — is engineering investment coming from a widening team or just one or two people? (3) Issue and PR response time — a fast feedback loop in the issue queue is a strong signal of operator quality. (4) Infrastructure code patterns — Dockerfiles, kubernetes manifests, CI/CD scripts indicate the team is preparing for production scale. (5) Founder Scout Score at /receipts — pre-fundraise stars on validated unicorns are a fast read on technical taste. VC Deal Flow Signal automates 1-3 across the dev-tools sector cluster; 4 and 5 are one-off checks per candidate.",
-    source: "Dev-Tools Investors",
-    sourceHref: "/use-cases/dev-tools-investors",
+    source: "Use cases",
+    sourceHref: "/use-cases",
   },
   {
     question: "Can AI agents query VC Deal Flow Signal directly?",
@@ -234,8 +234,8 @@ export const standaloneFaqs: StandaloneFAQ[] = [
     question: "Is there an Affinity alternative for solo investors?",
     answer:
       "Affinity has no direct peer for solo-investor pricing — it is enterprise SaaS for 5+ person VC firms ($2K+/seat/year). Solo investors typically use Attio Lite ($20-50/seat/month) or a Notion-plus-Zapier workflow as a lighter substitute. For just the relationship CRM job, both work fine at the solo-investor scale. Note that Affinity is a CRM, not a sourcing engine — it manages names already in your pipeline. To generate the names that go into the CRM, pair whichever CRM you pick with a leading-signal layer (VC Deal Flow Signal at EUR 19/month for technical startups).",
-    source: "Comparison",
-    sourceHref: "/alternatives/attio",
+    source: "Comparisons",
+    sourceHref: "/alternatives",
   },
   {
     question: "What's the difference between OpenVC and a sourcing-signal tool?",
@@ -248,22 +248,22 @@ export const standaloneFaqs: StandaloneFAQ[] = [
     question: "Can syndicate leads cite VC Deal Flow Signal in deal memos?",
     answer:
       "Yes. The methodology is published in a public SSRN preprint (ssrn.com/abstract=6606558) with a stable DOI, indexed by Crossref / Semantic Scholar / OpenAlex / DataCite, and the underlying dataset is on Zenodo under CC BY 4.0. Syndicate backers can independently verify the lead-time math against the public dataset. Citing the methodology in a deal memo signals discipline and gives backers a stress-testable input for their commit decision. Sophisticated backers — especially institutional or family-office backers — generally prefer methodologies they can verify over proprietary scoring.",
-    source: "Syndicate Leads",
-    sourceHref: "/use-cases/syndicate-leads",
+    source: "Use cases",
+    sourceHref: "/use-cases",
   },
   {
     question: "Can secondary investors use engineering signals for timing?",
     answer:
       "Yes — engineering acceleration is a leading indicator that we expect precedes fundraises (and the next-round repricing that goes with them) by several weeks — a claim we validate openly on /scorecard, not yet established. Secondary investors can cross-reference their LP-position or direct-secondary watchlist against the weekly GitDealFlow digest. Names accelerating per the signal that are also available on the secondary market are timing-window candidates — the discount window before next-round repricing closes the gap. Methodology validated against 219 startup-period observations in the SSRN preprint at ssrn.com/abstract=6606558.",
-    source: "Secondary Investors",
-    sourceHref: "/use-cases/secondary-investors",
+    source: "Use cases",
+    sourceHref: "/use-cases",
   },
   {
     question: "How do accelerator programs use engineering signal data?",
     answer:
       "Two ways. (1) Cohort sourcing — surface high-acceleration technical startups outside the application pool and invite them to apply. The weekly digest typically surfaces 5-15 high-signal candidates per week aligned to specific sector clusters. (2) Cohort benchmarking — compare cohort companies' commit-velocity and contributor-growth rates against the sector cluster median in the Insider Circle Dashboard. A cohort startup in the top quintile of its sector cluster is signaling readiness for a strong demo day. Free MCP server lets accelerator partners run live engineering checks during applicant interviews.",
-    source: "Accelerator Program Leads",
-    sourceHref: "/use-cases/accelerator-program-leads",
+    source: "Accelerator Scouts",
+    sourceHref: "/use-cases/accelerator-scouts",
   },
   {
     question: "Is VC Deal Flow Signal compatible with Notion or Linear?",
@@ -290,8 +290,8 @@ export const standaloneFaqs: StandaloneFAQ[] = [
     question: "Is there an Attio alternative for VC firms?",
     answer:
       "Attio is already one of the cheapest serious VC CRMs ($20-50/seat/month vs Affinity's $2K+/seat/year) and has no real peer at that price-quality tier. Most modern small-to-mid funds run on Attio. The legitimate alternatives are: Affinity (more expensive, more institutional features for 5+ partner firms), Notion + Zapier (cheaper, more DIY, fine for 1-2 person firms), or Salesforce (institutional default but heavy and expensive). For most early-stage funds Attio is sufficient; the upstream sourcing-signal layer (VC Deal Flow Signal at EUR 19/month for technical startups) composes well with any of these CRMs via CSV export or the public REST API.",
-    source: "Comparison",
-    sourceHref: "/alternatives/attio",
+    source: "Comparisons",
+    sourceHref: "/alternatives",
   },
   {
     question: "Can I run VC Deal Flow Signal on my own infrastructure?",
@@ -339,15 +339,15 @@ export const standaloneFaqs: StandaloneFAQ[] = [
     question: "Is there a Beauhurst alternative for UK technical startups?",
     answer:
       "Beauhurst has no direct peer for UK private-company depth — it is institutional infrastructure built specifically for that geography. For UK technical-startup leading signal at individual-investor pricing, VC Deal Flow Signal at EUR 19/month covers the leading-signal layer and includes UK companies alongside US, European, Israeli, and Indian ones. For ad-hoc UK ownership lookups, Companies House is free and authoritative. Most UK-focused angels and emerging managers run GitDealFlow + Companies House; institutional UK-focused VCs add Beauhurst on top for verification depth.",
-    source: "Comparison",
-    sourceHref: "/alternatives/beauhurst",
+    source: "Comparisons",
+    sourceHref: "/alternatives",
   },
   {
     question: "Can I use VC Deal Flow Signal alongside Attio?",
     answer:
       "Yes — they sit at different points in the same workflow. Attio is a relationship CRM that manages deals already in your pipeline; VC Deal Flow Signal is a sourcing-signal engine that surfaces technical startups before they enter your CRM. Compose via CSV export from the weekly digest or the public REST API. Several Insider Circle subscribers run a weekly Zapier flow that pushes new signal startups directly into an Attio 'Watchlist' list. Both tools cost under $80/month combined — well within solo-investor or small-fund budget.",
-    source: "Integration",
-    sourceHref: "/alternatives/attio",
+    source: "Comparisons",
+    sourceHref: "/alternatives",
   },
   {
     question: "What's the difference between a sourcing signal and a CRM?",
@@ -416,15 +416,15 @@ export const standaloneFaqs: StandaloneFAQ[] = [
     question: "Can impact investors use VC Deal Flow Signal?",
     answer:
       "Yes — for technical impact-tech startups (climate, healthcare platforms, education tech, civic tech, OSS tools) the engineering-acceleration signal is highly relevant. The GitDealFlow universe covers four impact-relevant clusters: Climate Tech, Healthcare Tech, Education Tech, and Open Source Tools. Pure consumer impact (sustainable fashion, ethical food), most healthcare-services impact, and policy/advocacy organizations have minimal public engineering footprint and are systematically under-represented. For technical impact theses pair the engineering-acceleration signal with mission-fit screening (IMP, IRIS+ frameworks) — names that score high on both are unusually high-conviction.",
-    source: "Impact Investors",
-    sourceHref: "/use-cases/impact-investors",
+    source: "Use cases",
+    sourceHref: "/use-cases",
   },
   {
     question: "Does VC Deal Flow Signal cover Israeli or Indian startups?",
     answer:
       "Yes for both. Israeli technical startups (cybersecurity, AI/ML, dev tools especially) have high public-GitHub adoption and signal density comparable to US technical startups. Indian dev-tools and AI/ML startups are well-represented; Indian fintech and consumer companies often use private repos and are partially covered. The methodology is geography-agnostic — coverage tracks where engineering teams use public GitHub, not where the company is incorporated. For deeper India coverage pair with Tracxn; for verification on UK or European adjacent regions pair with Beauhurst or Dealroom.",
-    source: "Regional",
-    sourceHref: "/use-cases/regional-fund-managers",
+    source: "Use cases",
+    sourceHref: "/use-cases",
   },
   {
     question: "Is GitDealFlow legitimate alternative data?",
