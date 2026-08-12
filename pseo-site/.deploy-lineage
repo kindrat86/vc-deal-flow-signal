@@ -1,0 +1,8 @@
+# Deploy-lineage sentinel for signals.gitdealflow.com — DO NOT EDIT.
+# Checked first in prebuild by scripts/assert-canonical-lineage.mjs.
+# This branch (worldclass-signals) is RETIRED from deploying the site.
+# The one canonical lineage is ~/signals-gitdealflow/pseo-site on `main`.
+# Resolution date: 2026-08-12. See AGENTS.md "one canonical lineage".
+role=RETIRED
+lineage=vc-deal-flow-signal/worldclass-signals
+retired=2026-08-12
