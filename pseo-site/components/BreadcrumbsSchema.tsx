@@ -1,31 +1,29 @@
-"use client";
-
-import { usePathname } from "next/navigation";
+import { headers } from "next/headers";
 
 const BASE_URL = "https://signals.gitdealflow.com";
 
 /**
  * Site-wide BreadcrumbList JSON-LD. Renders on every page through the root
- * layout, derived from the route pathname via `usePathname()`.
+ * layout, derived from the `x-pathname` header injected by middleware/proxy.
  *
- * Client component ON PURPOSE (audit 2026-07-18): the previous server-side
- * implementation awaited `headers()` to read the proxy-injected `x-pathname`
- * header, which opted EVERY page into per-request dynamic rendering — all
- * ISR/`revalidate` exports were silently dead and each hit was a billable
- * serverless SSR with `private, no-store` caching. `usePathname()` resolves
- * at prerender time for static/ISR routes (the concrete path is known for
- * every `generateStaticParams` page), so the JSON-LD still lands in the
- * server-rendered HTML while pages stay static/edge-cacheable.
+ * Server component (2026-08-12 fix): the previous client-side implementation
+ * used `usePathname()` and rendered a `<script>` tag via React. For some
+ * ISR/static pages (notably `/startups-to-watch/[slug]` sector pages),
+ * `usePathname()` resolved correctly at runtime but the JSON-LD `<script>`
+ * tag was NOT present in the initial server-rendered HTML — Googlebot saw
+ * pages with either a missing or malformed BreadcrumbList, triggering the
+ * GSC "Missing field 'itemListElement'" error.
  *
- * Audit 2026-05-08 closed the "No site-wide BreadcrumbList component" gap:
- * pages previously emitted ad-hoc breadcrumbs only in stage/sector hubs.
- * Google explicitly allows multiple BreadcrumbList items on a single page,
- * so this layout-level emission is additive — pages with custom, more
- * specific breadcrumbs continue to render their own and Google picks the
- * best match.
+ * Reading `x-pathname` from `headers()` in this isolated component is safe
+ * for ISR: Next.js evaluates `headers()` at prerender time for
+ * `generateStaticParams` routes (the middleware writes the concrete path on
+ * every outbound response), so the JSON-LD lands in the static HTML payload
+ * without forcing per-request dynamic rendering of the page body.
  *
- * Schema-only (no visible UI) to avoid altering existing layouts; the goal
- * is the SERP-level breadcrumb signal, not in-page navigation.
+ * CRITICAL INVARIANT: this component MUST return a complete BreadcrumbList
+ * with a non-empty `itemListElement` array, or return `null`. Never emit
+ * `{"@type":"BreadcrumbList"}` without `itemListElement` — that is the exact
+ * Google Search Console error we are fixing.
  */
 
 // Friendly labels for the top-level segments. Anything not in this map falls
@@ -133,10 +131,9 @@ function labelForSegment(segment: string): string {
   }
 }
 
-export default function BreadcrumbsSchema() {
-  // Route pathname (no query/hash). Fall back to "/" defensively — App Router
-  // always provides a value, but the Pages-Router compat type is nullable.
-  const pathname = usePathname() ?? "/";
+export default async function BreadcrumbsSchema() {
+  const hdrs = await headers();
+  const pathname = hdrs.get("x-pathname") ?? "/";
 
   // Skip homepage — a single-item BreadcrumbList is redundant with the
   // sitelink/Organization graph already emitted by RootIdentitySchema.
@@ -155,6 +152,8 @@ export default function BreadcrumbsSchema() {
     .map((s) => s.trim())
     .filter((s) => s.length > 0);
 
+  // DEFENSIVE GUARD: never emit a BreadcrumbList with an empty itemListElement.
+  // This is the exact Google Search Console error we're fixing.
   if (segments.length === 0) return null;
 
   const itemListElement: Array<Record<string, unknown>> = [
@@ -176,6 +175,9 @@ export default function BreadcrumbsSchema() {
       item: BASE_URL + cumulativePath,
     });
   });
+
+  // Final safety net: if itemListElement somehow ended up empty, bail.
+  if (itemListElement.length === 0) return null;
 
   const breadcrumbJsonLd = {
     "@context": "https://schema.org",
