@@ -102,10 +102,27 @@ export async function GET() {
     <span class="wk">Week of ${fmtShortDate(week.weekStart)}</span>
   </div>
   <ol class="rows">${rows}</ol>
-  <a class="ft" href="${weekUrl}" target="_top" rel="noopener">
+  <a class="ft" id="gdf-ft" href="${weekUrl}?utm_source=embed&utm_medium=widget" target="_top" rel="noopener">
     See full 10 + scorecard at gitdealflow.com →
   </a>
 </main>
+<script>
+/* Publisher attribution: the route is statically cached, so the per-publisher
+ * pub id travels on the iframe URL (?pub=NEWSLETTER_ID) and is appended to
+ * the outbound CTA client-side. No cookies, no external requests. */
+(function () {
+  try {
+    var pub = new URLSearchParams(location.search).get("pub");
+    if (!pub || !/^[a-z0-9_-]{1,40}$/i.test(pub)) return;
+    var ft = document.getElementById("gdf-ft");
+    if (!ft) return;
+    var u = new URL(ft.href);
+    u.searchParams.set("utm_campaign", pub);
+    u.searchParams.set("pub", pub);
+    ft.href = u.toString();
+  } catch (e) { /* keep default link */ }
+})();
+</script>
 </body></html>`;
 
   return new Response(html, {
