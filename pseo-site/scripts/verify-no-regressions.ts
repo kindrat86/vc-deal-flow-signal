@@ -234,6 +234,19 @@ check(
 );
 
 // ---------------------------------------------------------------------------
+// 7. Newsletter widget publisher attribution (2026-08-13). /embed/weekly is
+//    the co-branded "Signal of the Week" block pitched to VC newsletters.
+//    The ?pub= parameter is how each publisher's clicks are attributed —
+//    losing it silently blinds the whole newsletter-distribution funnel.
+// ---------------------------------------------------------------------------
+check(
+  "app/embed/weekly/route.ts",
+  "/embed/weekly lost the ?pub= publisher-attribution script — newsletter embeds stop attributing clicks.",
+  (s) => s.includes('get("pub")') && s.includes("utm_campaign"),
+  "restore the inline script that reads ?pub= from the iframe URL and appends utm_campaign/pub to the CTA link",
+);
+
+// ---------------------------------------------------------------------------
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +
