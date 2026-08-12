@@ -169,3 +169,83 @@ The preprint and the dataset are linked from the landing page. Everything is pub
 - **Rules:** No self-promotion pods. Do not coordinate with anyone to upvote. Do not share the post link in Telegram/Slack/Discord before it hits the front page. Let the data speak for itself.
 - **If it gets traction:** Prepare a "what happened in the last 24 hours" follow-up comment with traffic and download stats.
 - **Fallback:** If it does not clear the front page within 3 hours, accept it and move on. The data asset lives regardless.
+
+---
+
+## PLAY #6: Chrome Extension Distribution — store actions (added 2026-08-13)
+
+**Why human:** Chrome Web Store / Edge Partner Center / Firefox AMO all sit behind your Google/Microsoft/Mozilla logins (passkey prompt blocked the agent). Everything below is staged — packages built, copy paste-ready.
+
+**Packages (already built, v0.2.0 with in-popup upsell + review prompt):**
+- Chrome: `~/signals-gitdealflow/dist-extensions/momentum-badge-chrome-v0.2.0.zip`
+- Edge: `~/signals-gitdealflow/dist-extensions/momentum-badge-edge-v0.2.0.zip` (identical, Edge accepts Chrome zip)
+- Firefox: `~/signals-gitdealflow/dist-extensions/momentum-badge-firefox-v0.2.0.zip` (has `gecko.id: momentum-badge@gitdealflow.com` — NEVER change this id later)
+
+### 1. Chrome Web Store — upload v0.2.0 + fix listing (15 min)
+1. Sign in: https://chrome.google.com/webstore/devconsole (passkey)
+2. Open item `hehkgipiamajnnlpkfhpeoeaoaogmknn` ("VC Deal Flow Signal — GitHub Startup Signals")
+3. Package → Upload updated package → the chrome zip above → Submit for review
+4. Store listing → replace the description. Current listing says **"AngelList"** (wrong — it's Wellfound) and **"100+ startup organizations"** (stale). Paste-ready corrected copy:
+
+```
+Shows startup engineering velocity signals on Crunchbase and Wellfound company profiles. Free, GitHub-based data for VC deal flow analysis.
+
+When you open a company profile on Crunchbase or Wellfound, an inline badge appears showing the live engineering signal:
+• "Accelerating" — commit velocity up sharply vs the company's own baseline
+• "Steady" — within normal range
+• "Decelerating" — velocity down vs prior period
+• "No data" — company not in the public dataset yet
+
+Hover the badge for the underlying metrics: 14-day commit velocity, velocity change vs prior period, contributor count and growth, and the engineering signal type (hiring burst, infrastructure buildout, framework migration, deploy-frequency spike).
+
+Data comes from GitDealFlow's public sector rankings — built from the public GitHub API across ~4,200 candidate startup organizations, refreshed weekly, and free to browse at https://signals.gitdealflow.com.
+
+BUILT FOR
+Seed and pre-seed investors, scouts, angels, and micro-fund GPs who research deals on Crunchbase and Wellfound and want a leading indicator next to the lagging database. Crunchbase shows what already happened; this badge shows whether engineering is accelerating right now — the acceleration that typically precedes a fundraise announcement by three to six weeks (methodology + SSRN preprint at https://gitdealflow.com).
+
+PRIVACY
+• No analytics, no tracking, no account required.
+• Reads only the company slug from the URL of the page you're on.
+• One outbound request to signals.gitdealflow.com per profile load.
+• Free in perpetuity. Manifest V3.
+
+Companion extension: "VC GitHub Lookup — Startup Signals on Hover" puts the same signal on every GitHub repo or org page. Install both from https://signals.gitdealflow.com/install.
+```
+
+5. Add screenshots (up to 5, 1280×800): ready-made at `~/signals-gitdealflow/chrome-ext-screenshot-1280x800.png` + take 2 more (badge on a Crunchbase page, the popup with the new upsell card).
+
+### 2. Chrome Web Store — fix WRONG description on extension #2 (5 min)
+Item `plgngijmloeljfkenecdkhiblcfcbblm` ("VC GitHub Lookup — Startup Signals on Hover") currently carries **extension #1's description** (talks about Crunchbase/Wellfound badges) and lists ITSELF as its own companion. Paste-ready corrected copy:
+
+```
+Hover any GitHub repo or org link — on any page — and a chip appears with VC-grade engineering signals: 14-day commit velocity, contributor growth, signal type, and stage estimate. Direct visits to github.com/org or github.com/org/repo pages get the chip automatically, and the toolbar popup runs a manual lookup against any GitHub URL.
+
+Data comes from GitDealFlow's public sector rankings — built from the public GitHub API across ~4,200 candidate startup organizations, refreshed weekly, free to browse at https://signals.gitdealflow.com.
+
+BUILT FOR
+Investors and analysts doing technical diligence: native GitHub shows stars and a repo list; this chip shows whether the team is ramping or stalling against its own baseline — the engineering acceleration that typically precedes a fundraise by three to six weeks (methodology + SSRN preprint at https://gitdealflow.com).
+
+PRIVACY
+• No analytics, no tracking, no account required.
+• Reads only GitHub org/repo slugs from links on the page.
+• One outbound request to signals.gitdealflow.com per lookup.
+• Free in perpetuity. Manifest V3.
+
+Companion extension: "VC Deal Flow Signal — GitHub Startup Signals" overlays the same signal on Crunchbase and Wellfound company profiles. Install both from https://signals.gitdealflow.com/install.
+```
+
+### 3. Edge Add-ons (10 min, one-time account)
+1. https://partner.microsoft.com/dashboard/microsoftedge — sign in with any Microsoft account, choose **Individual** account type (free, no business verification — do NOT pick Company)
+2. New extension → upload the edge zip → listing copy: same as Chrome #1 above (title ≤55 chars: `GitDealFlow — Startup Signals on Crunchbase`)
+3. Support/homepage URL: `https://gitdealflow.com/?utm_source=edge-addons`
+
+### 4. Firefox AMO (10 min, one-time account)
+1. https://addons.mozilla.org → register (free) → Developer Hub → Submit a New Add-on
+2. Upload the firefox zip (first listed version MUST go through the web UI)
+3. Listing copy: same as Chrome #1; homepage `https://gitdealflow.com/?utm_source=firefox-amo`
+4. Source is unminified readable JS — no source archive needed.
+
+### 5. Review-ask email (blocked on Resend key — SWITCH 6 above)
+Once the Resend key is refreshed, send to the Digest list (day-14 of campaign):
+Subject: `30 seconds: an honest review of the badge?`
+Body: at `~/gitdealflow-distribution/06-chrome-extensions/review-campaign.md` (section "Lever 2").
