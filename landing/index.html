@@ -550,11 +550,15 @@
 
     <section id="verify" class="mobile-section-pad max-w-5xl mx-auto px-4 sm:px-6 py-8" style="scroll-margin-top:5rem">
       <div class="mobile-card-pad rounded-2xl border border-gray-800 bg-dark-800/70 p-6 md:p-8">
-        <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider mb-4">Verify the claim in three clicks</p>
-        <div class="mobile-proof-grid grid md:grid-cols-3 gap-4 text-left">
+        <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider mb-4">Verify the claim in four clicks</p>
+        <div class="mobile-proof-grid grid md:grid-cols-2 lg:grid-cols-4 gap-4 text-left">
           <a href="https://signals.gitdealflow.com/methodology" target="_blank" rel="noopener" class="proof-card rounded-xl border border-gray-700 bg-dark-900 p-5 hover:border-signal-500/50 transition">
             <p class="text-white font-semibold mb-2">Methodology<span class="sr-only"> (opens in a new tab)</span></p>
             <p class="text-sm text-gray-400">Read how the signal works, what the SSRN panel measured, and why the lead-time claim exists.</p>
+          </a>
+          <a href="https://github.com/kindrat86/gitdealflow-signal-engine" target="_blank" rel="noopener" onclick="if(window.posthog)posthog.capture('open_source_repo_click',{placement:'verify_section'})" class="proof-card rounded-xl border border-gray-700 bg-dark-900 p-5 hover:border-signal-500/50 transition">
+            <p class="text-white font-semibold mb-2">Open-source code<span class="sr-only"> (opens in a new tab)</span></p>
+            <p class="text-sm text-gray-400">Run the exact signal computation yourself. MIT-licensed Python — clone it, point it at any GitHub org, re-derive the numbers.</p>
           </a>
           <a href="https://signals.gitdealflow.com/compare/best-alternative-data-tools-for-angel-investors" target="_blank" rel="noopener" class="proof-card rounded-xl border border-gray-700 bg-dark-900 p-5 hover:border-signal-500/50 transition">
             <p class="text-white font-semibold mb-2">Comparison<span class="sr-only"> (opens in a new tab)</span></p>
@@ -988,6 +992,7 @@
       <div class="flex flex-wrap justify-center gap-6 text-gray-400 text-sm mb-3">
         <a href="/cheatsheet" class="py-2 inline-block hover:text-gray-300">Free cheat sheet</a>
         <a href="/perfect-webinar" class="py-2 inline-block hover:text-gray-300">Walkthrough</a>
+        <a href="/scout-pass" class="py-2 inline-block hover:text-gray-300">Scout Pass</a>
         <a href="/affiliates" class="py-2 inline-block hover:text-gray-300">Affiliates</a>
         <a href="/partners" class="py-2 inline-block hover:text-gray-300">Partners</a>
         <a href="/content-calendar" class="py-2 inline-block hover:text-gray-300">Content Calendar</a>
