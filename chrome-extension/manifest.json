@@ -1,11 +1,13 @@
 {
   "manifest_version": 3,
-  "name": "Momentum Badge — Startup Engineering Velocity | GitDealFlow",
+  "name": "Momentum Badge \u2014 Startup Engineering Velocity | GitDealFlow",
   "short_name": "Momentum Badge",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Shows startup engineering velocity signals on Crunchbase and Wellfound. Free GitHub-based data for deal flow analysis.",
   "homepage_url": "https://gitdealflow.com",
-  "permissions": [],
+  "permissions": [
+    "storage"
+  ],
   "host_permissions": [
     "https://signals.gitdealflow.com/*"
   ],
@@ -15,8 +17,12 @@
         "https://www.crunchbase.com/organization/*",
         "https://wellfound.com/company/*"
       ],
-      "js": ["content.js"],
-      "css": ["styles.css"],
+      "js": [
+        "content.js"
+      ],
+      "css": [
+        "styles.css"
+      ],
       "run_at": "document_idle"
     }
   ],

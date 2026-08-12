@@ -69,3 +69,88 @@ p {
   text-align: center;
 }
 .footer a { color: #0ea5e9; text-decoration: none; }
+
+/* === Upsell / review card (quiet footnote, not a billboard) === */
+.upsell-banner {
+  position: relative;
+  margin-top: 12px;
+  padding: 12px 14px;
+  border: 1px solid #e2e8f0;
+  border-radius: 8px;
+  background: #f5f7fa;
+  font-size: 13px;
+  line-height: 1.45;
+  color: #334155;
+  /* No entry animation. Static render only. */
+}
+.upsell-close {
+  position: absolute;
+  top: 6px;
+  right: 8px;
+  background: none;
+  border: none;
+  font-size: 16px;
+  line-height: 1;
+  color: #94a3b8;
+  cursor: pointer;
+  padding: 2px 4px;
+  border-radius: 4px;
+}
+.upsell-close:hover { color: #475569; }
+.upsell-headline {
+  font-weight: 600;
+  font-size: 13px;
+  color: #0f172a;
+  margin-bottom: 4px;
+  padding-right: 16px;
+}
+.upsell-body {
+  font-size: 12px;
+  color: #64748b;
+  margin-bottom: 10px;
+}
+.upsell-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+.upsell-cta {
+  display: inline-block;
+  padding: 6px 12px;
+  background: #0f4c75;
+  color: #ffffff !important;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 600;
+  border-radius: 6px;
+  white-space: nowrap;
+  transition: background 0.15s ease;
+}
+.upsell-cta:hover { background: #0b3d5e; }
+.upsell-dismiss {
+  background: none;
+  border: none;
+  color: #94a3b8;
+  font-size: 12px;
+  cursor: pointer;
+  padding: 6px 4px;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+.upsell-dismiss:hover { color: #475569; }
+.upsell-soft {
+  margin-top: 10px;
+  padding-top: 8px;
+  border-top: 1px solid #e2e8f0;
+  font-size: 11px;
+  color: #94a3b8;
+}
+.upsell-soft a { color: #0f4c75; text-decoration: none; }
+.upsell-soft a:hover { text-decoration: underline; }
+@media (prefers-color-scheme: dark) {
+  .upsell-banner { background: #1e2530; border-color: #2d3748; color: #cbd5e0; }
+  .upsell-headline { color: #f1f5f9; }
+  .upsell-body { color: #94a3b8; }
+  .upsell-soft { border-top-color: #2d3748; }
+  .upsell-soft a { color: #60a5fa; }
+}
