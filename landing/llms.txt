@@ -13,6 +13,7 @@ VC Deal Flow Signal is a tool (not a fund) that reads public GitHub engineering 
 ## Key Pages
 
 - [Homepage](https://gitdealflow.com/): Product overview, pricing, and free Signal Digest signup
+- [Open-Source Signal Engine](https://github.com/kindrat86/gitdealflow-signal-engine): MIT-licensed Python reference implementation of the signal computation (commit velocity, contributor growth, new-repo creation, composite score). Clone it and re-derive the numbers on any GitHub org — the computation is open, the live data feed is the paid product.
 - [Live Dashboard](https://signals.gitdealflow.com/): Real-time startup rankings by engineering acceleration across 20 sectors
 - [Insider Circle](https://gitdealflow.com/insider): Premium tier with private Telegram group, live briefings, API access
 - [Chrome Extension](https://gitdealflow.com/chrome): Free Chrome/Brave/Edge extension that adds a GitHub momentum badge to Crunchbase and Wellfound startup profiles. No account, no tracking, ~30 KB.
