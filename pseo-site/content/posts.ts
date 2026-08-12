@@ -2786,7 +2786,7 @@ Replication studies welcome. signals@gitdealflow.com for co-authorship on fundin
       "The 10 Chrome extensions venture investors actually use in 2026 to source deals, research startups, and move faster — including two purpose-built for GitHub engineering signal. Real pricing, honest disclosure, install links.",
     summary:
       "If you source venture deals, your browser is your office. This list covers the ten Chrome extensions that turn Crunchbase, LinkedIn, and GitHub from passive databases into an active deal-flow engine. Two are GitDealFlow's own (disclosed up front): the Crunchbase/Wellfound signal badge and the GitHub hover lookup, both free and both running on the 4,200-startup public panel. The other eight — Affinity, Clearbit Connect, Hunter, LinkedIn Sales Navigator, BuiltWith, Save to Notion, Loom, and Grammarly — cover contact enrichment, relationship tracking, technical diligence, capture, and outreach. The closing section assembles the leanest free stack for a solo GP: discover, research, capture, reach out, follow up.",
-    date: "2026-08-13",
+    date: "2026-08-12",
     relatedSectors: ["developer-tools", "enterprise-saas", "ai-ml", "fintech", "data-infrastructure"],
     keyStats: [
       { value: "2", label: "Purpose-built signal extensions", context: "The only two entries that generate a new leading indicator rather than organizing existing data" },
