@@ -1,0 +1,8 @@
+# Deploy-lineage sentinel for signals.gitdealflow.com — DO NOT EDIT.
+# Checked first in prebuild by scripts/assert-canonical-lineage.mjs.
+# Only the canonical lineage (role=CANONICAL) may build/deploy this site.
+# Resolution date: 2026-08-12. See AGENTS.md "one canonical lineage".
+role=CANONICAL
+lineage=vc-deal-flow-signal/main
+checkout=~/signals-gitdealflow/pseo-site
+resolved=2026-08-12

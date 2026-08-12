@@ -1,5 +1,24 @@
 # Deploy Notes — Cross-link additions to startup pages
 
+## ⚠️ LINEAGE RESOLUTION 2026-08-12 — one canonical deploy lineage, guard-enforced
+
+**The only tree allowed to build/deploy signals.gitdealflow.com is
+`~/signals-gitdealflow/pseo-site` on branch `main`.** A committed sentinel
+(`.deploy-lineage`, `role=CANONICAL`) is checked FIRST in `prebuild` by
+`scripts/assert-canonical-lineage.mjs`. The retired `worldclass-signals`
+checkout (`~/signals-worldclass/pseo-site`) carries `role=RETIRED` and its
+builds abort before anything compiles — covering every deploy path, including
+`deploy_from_commit.sh`'s git-archive export (the sentinel is committed, so it
+travels with the tree). The third historical checkout,
+`~/Downloads/vc-deal-flow-signal`, no longer exists on disk (verified
+2026-08-12). If you are in the retired checkout: land your change on `main` in
+the canonical checkout — do NOT edit `.deploy-lineage` or the guard.
+NOTE: `worldclass-signals` still holds 43 commits `main` lacks (entity-graph
+fix, email send-gate guards, GSC sitemap fixes); see the backlog order to
+audit/cherry-pick them before that branch is archived.
+(Owner: AGENTS.md still needs this paragraph — agent writes to AGENTS.md are
+blocked in autonomous mode; see owner-queue.)
+
 ## What changed
 
 Added a **"Related Resources"** section to all 4,408 startup page templates (`app/startup/[slug]/page.tsx`), placing 4 cross-links to gitdealflow.com landing pages between the "View Full Sector Rankings" section and the "Badge embed CTA" section.
