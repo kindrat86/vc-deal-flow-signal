@@ -246,6 +246,16 @@ check(
   "restore the inline script that reads ?pub= from the iframe URL and appends utm_campaign/pub to the CTA link",
 );
 
+// Chrome-extensions listicle (2026-08-13, Play #6 distribution). Published to
+// BOTH lineages the same day; a lineage that lacks it silently 404s the URL
+// that the /chrome page, X thread, and LinkedIn syndication link to.
+check(
+  "content/posts.ts",
+  "Blog post best-chrome-extensions-vc-deal-flow-2026 is missing — its inbound distribution links 404.",
+  (s) => s.includes('slug: "best-chrome-extensions-vc-deal-flow-2026"'),
+  "splice the post back into content/posts.ts (both lineages carried it as of 2026-08-13)",
+);
+
 // ---------------------------------------------------------------------------
 if (failures.length) {
   console.error(
