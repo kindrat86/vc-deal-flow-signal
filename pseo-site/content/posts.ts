@@ -2779,7 +2779,145 @@ The Data Nerd (2026). "30 Research Findings, Now One Page Each." VC Deal Flow Si
 
 Replication studies welcome. signals@gitdealflow.com for co-authorship on funding-event joins.`,
   },
+  {
+    slug: "best-chrome-extensions-vc-deal-flow-2026",
+    title: "The 10 Best Chrome Extensions for VC Deal Flow (2026)",
+    description:
+      "The 10 Chrome extensions venture investors actually use in 2026 to source deals, research startups, and move faster — including two purpose-built for GitHub engineering signal. Real pricing, honest disclosure, install links.",
+    summary:
+      "If you source venture deals, your browser is your office. This list covers the ten Chrome extensions that turn Crunchbase, LinkedIn, and GitHub from passive databases into an active deal-flow engine. Two are GitDealFlow's own (disclosed up front): the Crunchbase/Wellfound signal badge and the GitHub hover lookup, both free and both running on the 4,200-startup public panel. The other eight — Affinity, Clearbit Connect, Hunter, LinkedIn Sales Navigator, BuiltWith, Save to Notion, Loom, and Grammarly — cover contact enrichment, relationship tracking, technical diligence, capture, and outreach. The closing section assembles the leanest free stack for a solo GP: discover, research, capture, reach out, follow up.",
+    date: "2026-08-13",
+    relatedSectors: ["developer-tools", "enterprise-saas", "ai-ml", "fintech", "data-infrastructure"],
+    keyStats: [
+      { value: "2", label: "Purpose-built signal extensions", context: "The only two entries that generate a new leading indicator rather than organizing existing data" },
+      { value: "4,200+", label: "Startup orgs on the public panel", context: "The GitHub activity panel behind both GitDealFlow extensions, refreshed weekly" },
+      { value: "3–6 weeks", label: "Median signal lead time", context: "Engineering acceleration typically precedes fundraise announcements, per the SSRN methodology" },
+      { value: "5", label: "Extensions in the free solo-GP stack", context: "Both GitDealFlow extensions + Hunter free tier + Save to Notion + Grammarly free" },
+    ],
+    references: [
+      { label: "1", title: "Engineering Acceleration as a VC Deal Flow Signal", url: "https://ssrn.com/abstract=6606558", source: "SSRN" },
+      { label: "2", title: "VC Deal Flow Signal Methodology", url: "https://signals.gitdealflow.com/methodology", source: "GitDealFlow" },
+      { label: "3", title: "VC Deal Flow Signal — GitHub Startup Signals (Chrome Web Store)", url: "https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn", source: "Chrome Web Store" },
+      { label: "4", title: "VC GitHub Lookup — Startup Signals on Hover (Chrome Web Store)", url: "https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm", source: "Chrome Web Store" },
+    ],
+    faqs: [
+      {
+        question: "Are the GitDealFlow Chrome extensions really free?",
+        answer:
+          "Yes. Both extensions — the Crunchbase/Wellfound signal badge and the GitHub hover lookup — are free in perpetuity, with no account, no API key, and no tracking. The paid tiers (€7 First Look, €49/month Dashboard, €197/month Insider Circle) sit on top of the same public data with deeper rankings and weekly analysis; the extensions themselves never gate.",
+      },
+      {
+        question: "What data do the GitDealFlow extensions collect?",
+        answer:
+          "Almost none by design. The Crunchbase/Wellfound badge reads only the company slug from the URL of the page you are on and makes one outbound request to signals.gitdealflow.com per profile load. There is no analytics, no host-page content collection, and no account. The GitHub lookup works the same way against GitHub org and repo URLs.",
+      },
+      {
+        question: "Which Chrome extensions should a solo angel install first?",
+        answer:
+          "Start with the free five: both GitDealFlow extensions for the engineering-momentum signal on Crunchbase and GitHub, Hunter's free tier for founder emails, Save to Notion for capturing companies into a pipeline, and Grammarly free for outreach. That stack covers the full loop — discover, research, capture, reach out — at zero cost, and you can layer Affinity or Sales Navigator later if you raise a fund.",
+      },
+      {
+        question: "Do browser extensions replace Crunchbase or PitchBook?",
+        answer:
+          "No — they complement them. Databases like Crunchbase record what already happened: the last round, the announced valuation. Extensions layer live context on top of those pages. The GitDealFlow badge specifically adds a leading indicator (engineering acceleration from public GitHub activity) to the lagging database you are already reading, which is a different job than replacing the database itself.",
+      },
+    ],
+    body: `If you source venture deals, your browser is your office. The right Chrome extensions turn Crunchbase, LinkedIn, and GitHub from passive databases into an active deal-flow engine — surfacing signals, enriching contacts, and cutting hours off diligence per company.
+
+This is the list we wish we'd had when we started. It includes two extensions we built ourselves (we'll be upfront about that) and eight others that earn their place in a working VC stack. Every entry has real pricing and a clear "why an investor needs it" — no fluff, no paid placements.
+
+## 1. VC Deal Flow Signal — GitHub Startup Signals (free)
+
+**What it does**: Overlays a live engineering-signal badge on Crunchbase and Wellfound company profiles. Open a company page and the badge shows whether the startup's engineering is accelerating, steady, or decelerating against its own baseline. Hover for the underlying metrics: 14-day commit velocity, velocity change versus the prior period, contributor count and growth, and the signal type (hiring burst, infrastructure buildout, framework migration, deploy-frequency spike) [3].
+
+**Pricing**: Free in perpetuity. No account, no API key, no tracking. Deeper signal lives in the paid tiers (€7 First Look → €49/month Dashboard → €197/month Insider Circle), each with a 30-day guarantee.
+
+**Why investors need it**: Crunchbase tells you what already happened — the last round, the announced valuation. It doesn't tell you whether the engineering team is accelerating right now. This badge layers a leading indicator on the lagging database you already read: public GitHub activity across a 4,200-startup panel [2], where sustained acceleration typically precedes a fundraise announcement by three to six weeks [1]. If you research deals on Crunchbase, install this first.
+
+## 2. VC GitHub Lookup — Startup Signals on Hover (free)
+
+**What it does**: Puts the same signal on GitHub itself. Hover any GitHub repo or org and a chip appears with commit velocity, contributor growth, and breakout status; direct visits to an org or repo page get the chip too, and the toolbar popup runs a manual lookup against any GitHub URL [4].
+
+**Pricing**: Free. Same paid ladder as #1.
+
+**Why investors need it**: Half of early-stage technical diligence ends with "let me check their GitHub." Native GitHub shows stars and a repo list; it does not tell you whether the team is ramping or stalling against its own baseline. This turns a 15-minute scroll through commit history into a two-second read, on the same weekly-refreshed panel as the Crunchbase badge.
+
+**Disclosure**: #1 and #2 are GitDealFlow's own extensions. We built them because nothing else did this. The remaining eight are third-party tools that round out the stack.
+
+## 3. Affinity (paid, from ~$100/user/mo)
+
+**What it does**: A relationship-intelligence CRM whose extension captures every email, meeting, and contact interaction automatically and links them to deals in your pipeline. No manual data entry.
+
+**Why investors need it**: The most common reason deals die is that nobody followed up. Affinity silently logs who you talked to, when, and about what — so when a founder resurfaces six months later, the full history is one click away. It's the CRM many growth-stage firms standardize on; pricing is custom and starts around $100 per user per month.
+
+## 4. Clearbit Connect (free tier + paid)
+
+**What it does**: Reveals email address, role, and company details for people at the company you're viewing, from a browser sidebar. The free tier carries a limited monthly lookup budget.
+
+**Why investors need it**: When a startup looks interesting, the next step is reaching the founder or VP Engineering — not the info@ black hole. Clearbit surfaces verified addresses enriched with title, seniority, and headcount so the first touch lands with the right person.
+
+## 5. Hunter (free tier + paid)
+
+**What it does**: Shows the email pattern a company uses (first.last@company.com and variants) and verifies deliverability before you send. The free tier includes a small monthly search budget; paid plans start around $34/month.
+
+**Why investors need it**: When Clearbit misses a contact, Hunter's pattern-based inference usually lands it — running both gives near-complete coverage on founder emails at early-stage companies. The deliverability check also prevents the embarrassing bounce on a first intro.
+
+## 6. LinkedIn Sales Navigator (paid, from ~$99/mo)
+
+**What it does**: Layers advanced search, saved lead lists, and change alerts on top of LinkedIn. For investors, the killer feature is alerts when a tracked founder changes role, posts, or announces.
+
+**Why investors need it**: LinkedIn is still where founders announce fundraises, hires, and pivots. Sales Navigator turns that firehose into a filtered feed of exactly the people you track. Expensive, but for a firm sourcing actively it pays for itself in one caught deal.
+
+## 7. BuiltWith (free extension + paid)
+
+**What it does**: Click the icon on any website and it lists the tech stack behind it — hosting, analytics, frameworks, payment providers. The free extension covers most diligence needs; paid plans add historical stack changes.
+
+**Why investors need it**: Tech stack is a diligence shortcut. A startup "scaling fast" on a $5/month shared host is not scaling; a team that just migrated off off-the-shelf billing may be hitting real volume. BuiltWith answers "is the engineering real?" in seconds, and pairs naturally with the GitHub lookup in #2 for a full technical-health read.
+
+## 8. Save to Notion (free)
+
+**What it does**: One-click clipper that saves any page — a Crunchbase profile, a LinkedIn post, a GitHub repo — into a Notion database with source URL, title, and screenshot.
+
+**Why investors need it**: Deal flow is a capture problem before it's an analysis problem. Save to Notion turns browser research into a structured pipeline: every interesting company lands in your tracking database without copy-paste. Pairs with a simple Notion CRM template for anyone not ready to pay for Affinity.
+
+## 9. Loom (free tier + paid)
+
+**What it does**: Records screen and camera in one click and produces a shareable video link. The free tier covers 25 videos per account.
+
+**Why investors need it**: Partner meetings run on context, and a two-minute Loom walking through a Crunchbase profile and a GitHub repo carries more signal than a one-page memo. Analysts pitch deals upstream with it; partners give feedback asynchronously.
+
+## 10. Grammarly (free tier + paid)
+
+**What it does**: Real-time grammar, clarity, and tone checking in every browser text field — Gmail, LinkedIn messages, your CRM.
+
+**Why investors need it**: A typo in a cold intro to a technical founder reads as "didn't care enough to proofread." The free tier eliminates the embarrassing errors; Premium's tone adjustment helps first-touch emails read confident rather than canned. The lowest-glamour item on this list, and the one used most often per day.
+
+## How to combine them: the lean 2026 stack
+
+You don't need all ten. The leanest high-signal setup for a solo GP or small fund:
+
+1. Both GitDealFlow extensions — the engineering-momentum signal on Crunchbase, Wellfound, and GitHub.
+2. Hunter (or Clearbit) — for the founder's email.
+3. Save to Notion — for capturing companies into a pipeline.
+4. Loom — for pitching deals to partners.
+5. Grammarly — so the outreach doesn't read like spam.
+
+That stack is free or near-free and covers the full loop: discover → research → capture → reach out → follow up. Firms with budget layer Affinity for relationship tracking and Sales Navigator for LinkedIn signal on top, with BuiltWith for technical diligence on anything approaching a term sheet.
+
+## The signal nobody else has
+
+The pattern across this list: most VC tools organize or enrich existing data. Affinity organizes your relationships. Clearbit enriches contacts. Sales Navigator filters LinkedIn. All of them work with what's already public and already lagging.
+
+The two GitDealFlow extensions are the only entries that generate a new leading indicator — engineering acceleration drawn from public GitHub activity, benchmarked per-org against its own baseline, and shown in the panel data to precede fundraise announcements by three to six weeks [1][2]. That's the lead time that lets you start a relationship before the round is competitive.
+
+If you're not ready to install anything, the lowest-friction way to see the signal is the free Sunday digest — one email a week with the startups whose engineering accelerated, at [gitdealflow.com](https://gitdealflow.com). Both extensions install in one click from the [/install](https://signals.gitdealflow.com/install) page.
+
+## How to cite this guide
+
+The Data Nerd (2026). "The 10 Best Chrome Extensions for VC Deal Flow (2026)." VC Deal Flow Signal blog. Retrieved from https://signals.gitdealflow.com/blog/best-chrome-extensions-vc-deal-flow-2026.`,
+  },
 ];
+
 
 // Merge in the auto-generated signal report + signal of the week if they exist,
 // then sort newest-first.
