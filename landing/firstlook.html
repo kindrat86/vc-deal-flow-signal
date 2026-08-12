@@ -81,35 +81,7 @@
   }
   </script>
 
-<script type="application/ld+json">
-{
-  "@context": "https://schema.org",
-  "@graph": [
-    {
-      "@type": "Organization",
-      "@id": "https://gitdealflow.com/#org",
-      "name": "GitDealFlow",
-      "url": "https://gitdealflow.com",
-      "description": "VC Deal Flow Signal — spot breakout startups 3-6 weeks before fundraise via public GitHub activity.",
-      "sameAs": ["https://t.me/gitdealflow", "https://github.com/kindrat86"]
-    },
-    {
-      "@type": "WebSite",
-      "@id": "https://gitdealflow.com/#website",
-      "url": "https://gitdealflow.com",
-      "name": "GitDealFlow",
-      "publisher": {"@id": "https://gitdealflow.com/#org"}
-    },
-    {
-      "@type": "SiteNavigationElement",
-      "name": ["Home", "Signals", "Research"],
-      "url": ["https://gitdealflow.com/", "https://signals.gitdealflow.com/", "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558"]
-    }
-  ]
-}
-</script>
-
-<link rel="stylesheet" href="/ux.css">
+<link rel="stylesheet" href="/ux.css?v=20260808-2">
     <script src="/ux.js" defer></script>
   <link rel="stylesheet" href="/inline.css"></head>
 <body class="bg-dark-900 text-gray-100 font-sans antialiased">
@@ -579,7 +551,6 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&t.getAttrib
       if('requestIdleCallback' in window){requestIdleCallback(_load,{timeout:3000});} else {setTimeout(_load,2500);}
     })();
   </script>
-
 
 </body>
 </html>

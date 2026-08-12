@@ -8,6 +8,7 @@
 
 /* ── 0. CSS CUSTOM PROPERTIES (DESIGN TOKENS) ──────────────────── */
 :root {
+  color-scheme: light;
   --ux-accent: #2563eb;
   --ux-accent-hover: #1d4ed8;
   --ux-accent-ghost: rgba(37, 99, 235, 0.08);
@@ -785,8 +786,9 @@ body.nav-open { overflow: hidden; }
   section, .section { padding: 1.25rem 0.875rem; }
 }
 
-/* ── 42. DARK MODE ──────────────────────────────────────────────── */
-@media (prefers-color-scheme: dark) {
+/* ── 42. FIXED BRAND PALETTE ───────────────────────────────────────
+   These static pages use the desktop light palette at every viewport. */
+@media not all {
   :root {
     --ux-accent: #60a5fa;
     --ux-accent-hover: #93bbfd;
@@ -823,7 +825,7 @@ body.nav-open { overflow: hidden; }
   .ux-bottom-sheet-overlay { background: rgba(0, 0, 0, 0.7); }
 }
 
-@media (prefers-color-scheme: dark) and (max-width: 768px) {
+@media not all {
   .ux-glass-card {
     background: rgba(15, 23, 42, 0.85);
   }

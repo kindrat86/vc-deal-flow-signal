@@ -1,0 +1,89 @@
+[
+  {
+    "sent_at": "2026-08-12T09:42:52Z",
+    "entries": [
+      {
+        "show": "Invest Like the Best",
+        "recipient": "patrick@osv.llc",
+        "status": "failed",
+        "error": "HTTP Error 401: Unauthorized"
+      },
+      {
+        "show": "20VC",
+        "recipient": "harry@thetwentyminutevc.com",
+        "status": "failed",
+        "error": "HTTP Error 401: Unauthorized"
+      },
+      {
+        "show": "All-In Podcast",
+        "recipient": "allin@allinpodcast.co",
+        "status": "failed",
+        "error": "HTTP Error 401: Unauthorized"
+      },
+      {
+        "show": "Acquired",
+        "recipient": "acquiredfm@gmail.com",
+        "status": "failed",
+        "error": "HTTP Error 401: Unauthorized"
+      },
+      {
+        "show": "My First Million",
+        "recipient": "info@mfmpod.com",
+        "status": "failed",
+        "error": "HTTP Error 401: Unauthorized"
+      }
+    ]
+  },
+  {
+    "sent_at": "2026-08-12T09:56:32.724845Z",
+    "emails": [
+      {
+        "podcast": "Invest Like the Best",
+        "to": "patrick@osv.llc",
+        "ok": true,
+        "message_id": "4e213f2a-b9db-4045-86cc-dc38d3984b68",
+        "error": "{'id': '4e213f2a-b9db-4045-86cc-dc38d3984b68'}",
+        "status": "200"
+      },
+      {
+        "podcast": "20VC",
+        "to": "harry@thetwentyminutevc.com",
+        "ok": true,
+        "message_id": "ad9610a3-c16b-4149-ba07-bb03b00bdfab",
+        "error": "{'id': 'ad9610a3-c16b-4149-ba07-bb03b00bdfab'}",
+        "status": "200"
+      },
+      {
+        "podcast": "All-In Podcast",
+        "status": "skipped",
+        "reason": "no_email"
+      },
+      {
+        "podcast": "Acquired",
+        "to": "acquiredfm@gmail.com",
+        "ok": true,
+        "message_id": "7e254ad7-6efb-4c24-a5e2-594422c80cf4",
+        "error": "{'id': '7e254ad7-6efb-4c24-a5e2-594422c80cf4'}",
+        "status": "200"
+      },
+      {
+        "podcast": "My First Million",
+        "to": "shaan@thehustle.co",
+        "ok": true,
+        "message_id": "136fe0b6-f1bf-4b46-8dd7-79a1e45e9a14",
+        "error": "{'id': '136fe0b6-f1bf-4b46-8dd7-79a1e45e9a14'}",
+        "status": "200"
+      }
+    ]
+  },
+  {
+    "sent_at": "2026-08-12T09:56:44.581778Z",
+    "manual": {
+      "podcast": "All-In Podcast",
+      "status": "manual_submission_required",
+      "reason": "No public email address found. Contact form at https://allinpodcast.co/contact",
+      "pitch_subject": "The Data Nerd: predicting fundraises with GitHub commit velocity",
+      "pitch_ready": true
+    }
+  }
+]

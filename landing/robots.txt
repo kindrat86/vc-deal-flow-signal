@@ -51,7 +51,7 @@ Allow: /
 User-agent: Bytespider
 Allow: /
 
-Sitemap: https://gitdealflow.com/sitemap-index.xml
+Sitemap: https://gitdealflow.com/sitemap.xml
 Sitemap: https://signals.gitdealflow.com/sitemap.xml
 
 # AI agent discovery files
@@ -66,5 +66,3 @@ Sitemap: https://signals.gitdealflow.com/sitemap.xml
 # OpenAPI: https://signals.gitdealflow.com/api/openapi.json
 # MCP: https://signals.gitdealflow.com/.well-known/mcp.json
 # AgentCard: https://signals.gitdealflow.com/.well-known/agent-card.json
-
-Sitemap: https://gitdealflow.com/image-sitemap.xml

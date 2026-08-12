@@ -52,8 +52,8 @@ function verificationEmailHtml(
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="color-scheme" content="light dark">
-<meta name="supported-color-schemes" content="light dark">
+<meta name="color-scheme" content="light">
+<meta name="supported-color-schemes" content="light">
 <title>VC Deal Flow Signal</title>
 <!--[if mso]><noscript><xml><o:OfficeDocumentSettings><o:PixelsPerInch>96</o:PixelsPerInch></o:OfficeDocumentSettings></xml></noscript><![endif]-->
 <style>

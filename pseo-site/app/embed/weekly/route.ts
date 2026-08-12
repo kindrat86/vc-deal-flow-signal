@@ -137,7 +137,7 @@ body { padding: 8px; }
 .ft { display: block; margin-top: 10px; padding-top: 8px; border-top: 1px solid #1e293b; text-align: center; font-size: 11px; color: #94a3b8; text-decoration: none; }
 .ft:hover { color: #38bdf8; }
 .empty { padding: 32px 8px; text-align: center; color: #94a3b8; font-size: 12px; }
-@media (prefers-color-scheme: light) {
+@media not all {
   html, body { background: #ffffff; color: #0f172a; }
   .card { background: linear-gradient(180deg, #ffffff 0%, #f8fafc 100%); border-color: #e2e8f0; }
   .hd { border-color: #e2e8f0; } .row { border-color: #f1f5f9; }

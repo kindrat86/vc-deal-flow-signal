@@ -132,7 +132,7 @@ export const metadata: Metadata = {
     "msapplication-TileColor": "#0ea5e9",
     "msapplication-config": "/browserconfig.xml",
     "theme-color": "#0f172a",
-    "color-scheme": "dark light",
+    "color-scheme": "dark",
     "referrer": "strict-origin-when-cross-origin",
     // Per-page AI policy + content-license meta. Some LLM crawlers (Anthropic,
     // OpenAI, Perplexity) read robot-meta tags AND a parallel "ai-policy" /
@@ -147,11 +147,8 @@ export const metadata: Metadata = {
 };
 
 export const viewport = {
-  themeColor: [
-    { media: "(prefers-color-scheme: light)", color: "#ffffff" },
-    { media: "(prefers-color-scheme: dark)", color: "#0f172a" },
-  ],
-  colorScheme: "dark light",
+  themeColor: "#0f172a",
+  colorScheme: "dark",
   width: "device-width",
   initialScale: 1,
   maximumScale: 5,
@@ -184,7 +181,8 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://avatars.githubusercontent.com" />
         <link rel="dns-prefetch" href="https://gitdealflow-pb.fly.dev" />
         {/* R16 world-class UX layer — shared design system across portfolio */}
-        <link rel="stylesheet" href="/ux.css" />
+        {/* Versioned so in-app browsers cannot reuse a stale palette after deployment. */}
+        <link rel="stylesheet" href="/ux.css?v=20260808-2" />
         {/* ux.js REMOVED 2026-07-21: it calls document.body.prepend/appendChild on
             load, which mutates the DOM before React (App Router) hydrates. That
             hydration mismatch made React wipe the SSR content → blank white page.
@@ -518,8 +516,8 @@ export default function RootLayout({
     overflow: hidden;
     text-overflow: ellipsis;
 }
-/* Dark mode */
-@media (prefers-color-scheme: dark) {
+/* Match the site's fixed dark application palette. */
+@media all {
     .portfolio-network { border-top-color: #374151; }
     .portfolio-network h3 { color: #6b7280; }
     .network-card { background: #1f2937; }

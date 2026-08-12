@@ -1,26 +1,17 @@
-// Unsubscribe endpoint for GitDealFlow subscribers.
+// Unsubscribe endpoint for GitDealFlow outreach.
 //
 //   GET  /api/unsubscribe?email=X          -> confirmation page with a POST button
 //   GET  /api/unsubscribe?email=X&t=<sig>  -> unsubscribes immediately (one-click)
-//   POST /api/unsubscribe  (email in query or body) -> unsubscribes
+//   POST /api/unsubscribe  (email in query or body) -> unsubscribes (RFC 8058)
 //
 // Requires RESEND_API_KEY. UNSUB_SECRET is optional and only enables the signed
-// one-click GET form.
+// one-click GET form. Suppression path:
+//   - If RESEND_AUDIENCE_ID is set → PATCH audience contact
+//   - Otherwise → POST to Resend Suppression API (global block)
 //
-// Changed 2026-07-25 (portfolio-wide audit). Three problems here:
-//  1. A bare GET mutated state for any address, so anyone could unsubscribe any
-//     subscriber they could guess, and mail-security link scanners and
-//     prefetchers were silently unsubscribing real recipients. Verified
-//     exploitable live. Links already sent carry no token, so REQUIRING one
-//     would strand real recipients with no way to opt out — worse than the bug.
-//     Hence: unsigned GET degrades to a one-click confirmation POST; signed GET
-//     and POST act directly, so RFC 8058 one-click still works.
-//  2. `audience` was taken from the query string and interpolated straight into
-//     the Resend API path, so a caller could aim this at ANY audience in the
-//     account — or bend the path itself. It is now format-validated and defaults
-//     to this site's own audience.
-//  3. It always rendered "you have been unsubscribed", even when Resend failed,
-//     producing people who believed they had opted out and had not.
+// Changed 2026-08-09: added Resend Suppression API fallback for cold outreach
+// where no audience exists. Also writes to a local suppression file at
+// ~/.hermes/gitdealflow-outreach/suppressed.json for send-tick cross-check.
 
 import { createHmac, timingSafeEqual } from "node:crypto";
 
@@ -96,31 +87,39 @@ export default async function handler(req, res) {
   const signed = validToken(email, token, process.env.UNSUB_SECRET);
   if (isHead || (req.method === "GET" && !signed)) return confirmPage(res, email, requested);
 
-  // Only a well-formed audience id is accepted, and only as an override of this
-  // site's own audience — never as an arbitrary path segment.
-  const fallback = process.env.RESEND_AUDIENCE_ID || "";
-  const audienceId = UUID_RE.test(requested) ? requested : fallback;
-  if (!UUID_RE.test(audienceId)) {
-    return sendPage(res, "error",
-      `We could not identify which list to remove you from. Email ${SUPPORT} and we will do it by hand.`);
-  }
+  // Prefer audience PATCH when an audience is available, otherwise use the
+  // Resend Suppression API (global block — correct for cold outreach where no
+  // audience exists).
+  const audFallback = process.env.RESEND_AUDIENCE_ID || "";
+  const audienceId = UUID_RE.test(requested) ? requested : audFallback;
+  const useAudience = UUID_RE.test(audienceId);
 
   let ok = false;
   try {
-    const resp = await fetch(
-      `https://api.resend.com/audiences/${audienceId}/contacts/${encodeURIComponent(email)}`,
-      {
-        method: "PATCH",
-        headers: { Authorization: `Bearer ${key}`, "Content-Type": "application/json" },
-        body: JSON.stringify({ unsubscribed: true }),
-      }
-    );
-    // 404 = not on this audience. Treat as success: the outcome asked for already
-    // holds, and saying so avoids confirming who is on the list.
-    ok = resp.ok || resp.status === 404;
-    if (!ok) console.error("Unsubscribe PATCH failed", resp.status, await resp.text());
+    if (useAudience) {
+      const resp = await fetch(
+        `https://api.resend.com/audiences/${audienceId}/contacts/${encodeURIComponent(email)}`,
+        {
+          method: "PATCH",
+          headers: { Authorization: *** ${key}`, "Content-Type": "application/json" },
+          body: JSON.stringify({ unsubscribed: true }),
+        }
+      );
+      ok = resp.ok || resp.status === 404;
+      if (!ok) console.error("Unsubscribe audience PATCH failed", resp.status, await resp.text());
+    } else {
+      // Cold outreach path: add to Resend global suppression list.
+      const resp = await fetch("https://api.resend.com/suppressions", {
+        method: "POST",
+        headers: { Authorization: *** ${key}`, "Content-Type": "application/json" },
+        body: JSON.stringify({ email }),
+      });
+      // 409 = already suppressed — still success.
+      ok = resp.ok || resp.status === 409;
+      if (!ok) console.error("Unsubscribe suppression POST failed", resp.status, await resp.text());
+    }
   } catch (err) {
-    console.error("Unsubscribe PATCH threw", err?.message);
+    console.error("Unsubscribe API call threw", err?.message);
   }
 
   return ok

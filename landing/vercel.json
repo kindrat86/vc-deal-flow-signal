@@ -25,12 +25,28 @@
       "destination": "/mcp.html"
     },
     {
+      "source": "/jv",
+      "destination": "/jv.html"
+    },
+    {
+      "source": "/content-calendar",
+      "destination": "/content-calendar.html"
+    },
+    {
+      "source": "/partners",
+      "destination": "/jv.html"
+    },
+    {
       "source": "/embed",
       "destination": "/embed.html"
     },
     {
       "source": "/embed/tools/:slug",
       "destination": "/embed/tools/:slug.html"
+    },
+    {
+      "source": "/start-here",
+      "destination": "/start-here.html"
     },
     {
       "source": "/feed.xml",
@@ -137,6 +153,46 @@
       "source": "/g2",
       "destination": "https://www.g2.com/products/gitdealflow/reviews",
       "permanent": false
+    },
+    {
+      "source": "/vs-crunchbase",
+      "destination": "/vs/crunchbase",
+      "permanent": true
+    },
+    {
+      "source": "/vs-pitchbook",
+      "destination": "/vs/pitchbook",
+      "permanent": true
+    },
+    {
+      "source": "/vs-harmonic-ai",
+      "destination": "/vs/harmonic-ai",
+      "permanent": true
+    },
+    {
+      "source": "/vs-cb-insights",
+      "destination": "/vs/cb-insights",
+      "permanent": true
+    },
+    {
+      "source": "/vs-dealroom",
+      "destination": "/vs/dealroom",
+      "permanent": true
+    },
+    {
+      "source": "/vs-tracxn",
+      "destination": "/vs/tracxn",
+      "permanent": true
+    },
+    {
+      "source": "/vs-angellist",
+      "destination": "/vs/angellist",
+      "permanent": true
+    },
+    {
+      "source": "/vs-privateequitywire",
+      "destination": "/vs/privateequitywire",
+      "permanent": true
     }
   ],
   "headers": [

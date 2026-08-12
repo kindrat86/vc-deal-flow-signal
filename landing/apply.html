@@ -52,7 +52,7 @@
   <link rel="manifest" href="/manifest.webmanifest" />
   <link rel="preload" href="/styles.css" as="style">
 
-<link rel="stylesheet" href="/ux.css">
+<link rel="stylesheet" href="/ux.css?v=20260808-2">
     <script src="/ux.js" defer></script>
   <link rel="stylesheet" href="/inline.css"></head>
 <body class="bg-dark-900 text-gray-100 font-sans antialiased">
@@ -651,7 +651,6 @@
 t.addEventListener('click',function(){set(t.getAttribute('aria-expanded')!=='true');});
 document.addEventListener('keydown',function(e){if(e.key==='Escape'&&t.getAttribute('aria-expanded')==='true'){set(false);t.focus();}});})();
   </script>
-
 
 </body>
 </html>

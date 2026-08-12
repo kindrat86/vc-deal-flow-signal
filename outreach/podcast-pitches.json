@@ -1,0 +1,74 @@
+{
+  "pitches": [
+    {
+      "podcast": "Invest Like the Best",
+      "subject_line": "The Data Nerd: predicting fundraises with GitHub commit velocity",
+      "one_line_hook": "A pseudonymous angel investor built a tool that spots breakout startups 3–6 weeks before they fundraise — and published the methodology on SSRN.",
+      "three_talking_points": [
+        "How GitHub commit velocity (not stars, not funding announcements) predicted 219 fundraises with a 3.4x lift over random selection — and why traditional VC signals are lagging indicators by design",
+        "The three engineering metrics that matter: commit frequency, contributor growth, and repository expansion — and how they surface breakout teams before the deck exists",
+        "The case for anonymity in investing: how operating without a name forces the market to engage with the work, not the credential — and what that says about the VC signaling game"
+      ],
+      "bio_paragraph": "The Data Nerd is a pseudonymous angel investor and builder who created GitDealFlow, a VC deal-flow signal tool that tracks GitHub commit velocity across 4,200+ startups. Their methodology, published as an SSRN preprint, demonstrates a 3.4x lift in predicting fundraises across 219 backtested rounds. They operate entirely under a pseudonym — anonymity isn't a gimmick, it's a design pillar that keeps the focus on the data, not the résumé.",
+      "call_to_action": "I'd love to come on Invest Like the Best to walk through the methodology, the backtest, and what commit velocity reveals about the companies building in plain sight. Happy to do it anonymously — voice modulator, silhouette, the whole thing. The data speaks for itself.",
+      "methodology_link": "https://signals.gitdealflow.com/methodology",
+      "ssrn_link": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558"
+    },
+    {
+      "podcast": "20VC",
+      "subject_line": "Why your next deal might already be on GitHub (before the deck exists)",
+      "one_line_hook": "A pseudonymous angel built a signal engine that finds startups 3–6 weeks before they hit the fundraising circuit — and it's free.",
+      "three_talking_points": [
+        "The three engineering metrics that outperform founder pedigree and warm intros as fundraising predictors — commit cadence, contributor growth, and repo expansion across 4,200+ tracked startups",
+        "How any VC can plug deal-flow signals directly into their AI assistant via the free MCP server (npx -y @gitdealflow/mcp-signal) — no API key, no paywall, no demo request form",
+        "The SSRN preprint nobody in VC is talking about: n=219 backtested fundraises, 3.4x predictive lift, and why the signal peaks 3–6 weeks before the round is announced"
+      ],
+      "bio_paragraph": "The Data Nerd is a pseudonymous angel investor and builder who created GitDealFlow, a VC deal-flow signal tool that tracks GitHub commit velocity across 4,200+ startups. Their methodology, published as an SSRN preprint, demonstrates a 3.4x lift in predicting fundraises across 219 backtested rounds. They operate entirely under a pseudonym — anonymity isn't a gimmick, it's a design pillar that keeps the focus on the data, not the résumé.",
+      "call_to_action": "I'd love to come on 20VC to talk about how the best funds are using engineering signals to get ahead of the fundraising announcement — and why the tools to do it are already free and public. Anonymity on-air is non-negotiable, but the data is fully open.",
+      "methodology_link": "https://signals.gitdealflow.com/methodology",
+      "ssrn_link": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558"
+    },
+    {
+      "podcast": "All-In Podcast",
+      "subject_line": "The anonymous data nerd who built a better VC signal than Crunchbase",
+      "one_line_hook": "What happens when a pseudonymous operator builds a free, open-source deal-flow tool that outperforms billion-dollar data platforms?",
+      "three_talking_points": [
+        "The SSRN paper the VC data industry doesn't want you to read: 219 fundraises backtested, 3.4x predictive lift, zero paywalls — and why the incumbents are selling lagging indicators dressed as intelligence",
+        "Why the best signal isn't a funding round announcement or a Crunchbase alert — it's the engineering velocity spike that happens 3–6 weeks before, visible in public GitHub data that anyone can scrape",
+        "Anonymity as a competitive statement: when nobody knows who you are, they can only judge the output — and what that says about credentialism, signaling, and the venture ecosystem's obsession with pedigree"
+      ],
+      "bio_paragraph": "The Data Nerd is a pseudonymous angel investor and builder who created GitDealFlow, a VC deal-flow signal tool that tracks GitHub commit velocity across 4,200+ startups. Their methodology, published as an SSRN preprint, demonstrates a 3.4x lift in predicting fundraises across 219 backtested rounds. They operate entirely under a pseudonym — anonymity isn't a gimmick, it's a design pillar that keeps the focus on the data, not the résumé.",
+      "call_to_action": "I'd love to join the All-In conversation — not as a VC insider, but as an outsider who built a tool that challenges how the industry evaluates early-stage traction. Anonymity on-air, open data, zero spin. Let the besties tear into the methodology.",
+      "methodology_link": "https://signals.gitdealflow.com/methodology",
+      "ssrn_link": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558"
+    },
+    {
+      "podcast": "Acquired",
+      "subject_line": "The story of GitDealFlow: a pseudonymous data nerd, 4,200 startups, and an SSRN preprint",
+      "one_line_hook": "One anonymous builder spent months scraping GitHub, built a predictive model for startup fundraises, and published it to SSRN — and it actually works.",
+      "three_talking_points": [
+        "The origin story: how a side project tracking commit patterns across open-source repos turned into a tool that predicts fundraises with statistical significance — the 'why now' and the 'why GitHub' behind the methodology",
+        "The methodology deep-dive: commit velocity, contributor churn, and repo expansion as leading indicators of institutional investor interest — and the backtest across 219 rounds that validated the signal",
+        "What GitDealFlow reveals about the companies Acquired has covered: the engineering fingerprints of breakout success, visible months before the market catches on — and where the next generation is building right now"
+      ],
+      "bio_paragraph": "The Data Nerd is a pseudonymous angel investor and builder who created GitDealFlow, a VC deal-flow signal tool that tracks GitHub commit velocity across 4,200+ startups. Their methodology, published as an SSRN preprint, demonstrates a 3.4x lift in predicting fundraises across 219 backtested rounds. They operate entirely under a pseudonym — anonymity isn't a gimmick, it's a design pillar that keeps the focus on the data, not the résumé.",
+      "call_to_action": "I'd love to tell the GitDealFlow story on Acquired — the build, the methodology, the backtest, and what the data says about the companies you've canonized. Anonymity on-air, same as always. The narrative is in the numbers.",
+      "methodology_link": "https://signals.gitdealflow.com/methodology",
+      "ssrn_link": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558"
+    },
+    {
+      "podcast": "My First Million",
+      "subject_line": "The Data Nerd built a free tool to find the next unicorn on GitHub",
+      "one_line_hook": "A pseudonymous builder created a free deal-flow tool that spots hot startups on GitHub before anyone else — here's how to use it to find your next investment or business idea.",
+      "three_talking_points": [
+        "How to use the free MCP server (just run 'npx -y @gitdealflow/mcp-signal') to find trending startups in any sector — fintech, AI, climate, biotech — right now, with real-time commit velocity data",
+        "The Momentum Index at gitdealflow.com/data/momentum-index: a free weekly leaderboard of breakout engineering teams, and how Sam and Shaan can use it to spot the next big thing before it hits TechCrunch",
+        "Why the biggest investing edge in 2026 isn't a Bloomberg terminal or a Scout subscription — it's watching GitHub commit graphs, and the data proves it with a 3.4x lift across 219 backtested fundraises"
+      ],
+      "bio_paragraph": "The Data Nerd is a pseudonymous angel investor and builder who created GitDealFlow, a VC deal-flow signal tool that tracks GitHub commit velocity across 4,200+ startups. Their methodology, published as an SSRN preprint, demonstrates a 3.4x lift in predicting fundraises across 219 backtested rounds. They operate entirely under a pseudonym — anonymity isn't a gimmick, it's a design pillar that keeps the focus on the data, not the résumé.",
+      "call_to_action": "I'd love to come on MFM and show Sam and Shaan exactly how to use GitDealFlow to find the next breakout startup — live, on-air, with real data. Anonymity stays. The tool is free. Let's find some deals.",
+      "methodology_link": "https://signals.gitdealflow.com/methodology",
+      "ssrn_link": "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558"
+    }
+  ]
+}

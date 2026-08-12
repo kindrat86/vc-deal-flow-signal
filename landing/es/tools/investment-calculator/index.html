@@ -188,7 +188,6 @@ function calculate() {
   inputState['exit_value'] = exit_value;
   inputState['dilution'] = dilution;
   encodeState({inputs: inputState});
-  
 
   const ownership = check_size / (pre_money + check_size);
   const diluted_ownership = ownership * (1 - dilution / 100);
@@ -216,7 +215,6 @@ function calculate() {
     }))
   };
 
-  
   displayResults(result);
   document.getElementById('result-card').classList.add('show');
   document.getElementById('result-card').scrollIntoView({behavior:'smooth'});

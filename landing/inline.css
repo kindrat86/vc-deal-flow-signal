@@ -1343,7 +1343,7 @@ body.page-mcp ul{padding-left:1.5rem} body.page-mcp li{margin-bottom:0.5rem}
     border-radius: 50%;
     flex-shrink: 0;
 }
-@media (prefers-color-scheme: dark) {
+@media not all {
     .related-tools { background: #1f2937; }
     .related-card:hover { background: #374151; }
     .related-card strong { color: #f9fafb; }
