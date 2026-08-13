@@ -261,15 +261,10 @@ export async function GET(_req: Request, ctx: RouteContext) {
         changefreq: "monthly",
         priority: 0.6,
       })),
-      // Localized topic stubs — 12 locales × 3 topics = 36 stubs
-      ...LOCALES.flatMap((l) =>
-        ["methodology", "glossary", "faq"].map((topic) => ({
-          url: `${BASE_URL}/${l.code}/${topic}`,
-          lastmod,
-          changefreq: "monthly",
-          priority: 0.55,
-        })),
-      ),
+      // Localized topic stubs (12 locales × 3 topics) are owned by the
+      // /sitemap-i18n.xml shard, which annotates them with hreflang alternates.
+      // Emitting them here too duplicated every localized URL across two
+      // sitemaps, so they are dropped from `core` (2026-08-14 dedup).
       // Wikipedia citation helper
       { url: `${BASE_URL}/wikipedia`, lastmod, changefreq: "monthly", priority: 0.7 },
       // Wikidata Knowledge Panel claim — Brunson Audit V8 2026-05-09
@@ -537,7 +532,8 @@ export async function GET(_req: Request, ctx: RouteContext) {
   } else if (id === "content") {
     entries = [
       { url: `${BASE_URL}/blog`, lastmod, changefreq: "weekly", priority: 0.6 },
-      { url: `${BASE_URL}/how-to-spot-startup-momentum-before-the-round-gets-crowded`, lastmod, changefreq: "weekly", priority: 0.9 },
+      // /how-to-spot... is owned by the `core` shard; emitting it here also
+      // duplicated the URL across two sitemaps (2026-08-14 dedup).
       { url: `${BASE_URL}/topics`, lastmod, changefreq: "weekly", priority: 0.7 },
       ...Object.keys(pillars).map((slug) => ({
         url: `${BASE_URL}/topics/${slug}`,
