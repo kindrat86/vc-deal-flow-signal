@@ -1080,6 +1080,13 @@
       }
     };
 
+    window.GDFtimezone = function () {
+      try {
+        var tz = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        return (typeof tz === 'string' && tz.indexOf('/') !== -1) ? tz : undefined;
+      } catch (e) { return undefined; }
+    };
+
     // Email-only opt-in, shared across every form on the page (hero + footer +
     // any repeated CTA). Each form carries class js-signup-form, an email input,
     // a submit button, and optionally a .js-signup-msg status line.
@@ -1102,7 +1109,7 @@
           const res = await fetch('https://signals.gitdealflow.com/api/subscribe', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(Object.assign({ email: email, quiz_route: quizVal || '', quiz_route_label: '' }, attr))
+            body: JSON.stringify(Object.assign({ email: email, quiz_route: quizVal || '', quiz_route_label: '', tz: window.GDFtimezone() }, attr))
           });
           const data = await res.json();
           if (data.ok) {
@@ -1219,7 +1226,8 @@
             body: JSON.stringify(Object.assign({
               email: email,
               quiz_route: document.querySelector('input[name="qual_question"]:checked')?.value || 'F',
-              quiz_route_label: 'Free Acceleration Watch'
+              quiz_route_label: 'Free Acceleration Watch',
+              tz: window.GDFtimezone()
             }, attr))
           });
           const data = await res.json();
@@ -1601,7 +1609,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&t.getAttrib
       var res = await fetch('https://signals.gitdealflow.com/api/subscribe', {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: JSON.stringify({email: email, source: 'exit-popup', quiz_route: '', quiz_route_label: ''})
+        body: JSON.stringify({email: email, source: 'exit-popup', quiz_route: '', quiz_route_label: '', tz: window.GDFtimezone()})
       });
       var data = await res.json();
       if (data.ok) {

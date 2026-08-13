@@ -257,6 +257,26 @@ check(
 );
 
 // ---------------------------------------------------------------------------
+// 8. Subscribe→verify timezone wiring (2026-08-14). The browser IANA timezone
+//    is captured on the landing form, forwarded by /api/subscribe on the verify
+//    URL, and stored on the Resend contact last_name so the drip engine sends
+//    during the subscriber's LOCAL 9am-6pm. A tree missing any hop silently
+//    drops the timezone and every subscriber falls back to server-time sends.
+// ---------------------------------------------------------------------------
+check(
+  "app/api/subscribe/route.ts",
+  "subscribe route dropped the timezone forward: subscribers lose their tz before verify.",
+  (s) => s.includes('clip(body.tz, 64)') && s.includes('params.set("tz", tz)'),
+  "restore the tz clip after the cohort parse and the params.set('tz', tz) forward",
+);
+check(
+  "app/api/verify/route.ts",
+  "verify route dropped timezone storage: the Resend contact loses its tz and the drip reverts to server time.",
+  (s) => s.includes('clip(url.searchParams.get("tz"), 64)') && s.includes("contactBody.last_name"),
+  "restore the tz clip from the verify query and contactBody.last_name = tz:${tz}",
+);
+
+// ---------------------------------------------------------------------------
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +

@@ -143,6 +143,8 @@ export async function GET(request: Request) {
     quiz_route: ["F", "T", "D", "I"].includes(rawRoute) ? rawRoute : "",
     quiz_route_label: clip(url.searchParams.get("quiz_route_label"), 120),
   };
+  const tzRaw = clip(url.searchParams.get("tz"), 64);
+  const tz = tzRaw.includes("/") ? tzRaw : "";
   const packedAttribution = packAttribution(attribution);
 
   if (!RESEND_API_KEY) {
@@ -180,6 +182,9 @@ export async function GET(request: Request) {
       };
       if (packedAttribution) {
         contactBody.first_name = packedAttribution;
+      }
+      if (tz) {
+        contactBody.last_name = `tz:${tz}`;
       }
 
       const contactRes = await fetch(
