@@ -165,7 +165,6 @@ Once you have Wikidata, Crunchbase, LinkedIn, and optionally GitHub URLs, update
 ```json
 "sameAs": [
   "https://t.me/gitdealflow",
-  "https://x.com/data_nerd",
   "https://www.wikidata.org/wiki/Q_______",
   "https://www.crunchbase.com/organization/vc-deal-flow-signal",
   "https://www.linkedin.com/company/______",

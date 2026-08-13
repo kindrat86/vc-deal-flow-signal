@@ -56,7 +56,7 @@ We monitor GitHub engineering activity across thousands of startup orgs and surf
 | Chrome extension | https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn |
 | MCP server (npm) | https://www.npmjs.com/package/@gitdealflow/mcp-signal |
 | GitHub (methodology) | https://github.com/kindrat86/mcp-deal-flow-signal |
-| Twitter/X | https://x.com/data_nerd |
+| Twitter/X | — (no live X account; account suspended, removed 2026-08-13) |
 | LinkedIn | https://www.linkedin.com/company/gitdealflow |
 
 ### Topics (pick up to 4)

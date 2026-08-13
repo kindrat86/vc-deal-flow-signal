@@ -172,7 +172,6 @@ If you want to put your own eye on the line, there's a prediction game on top of
 - Scout Game: https://signals.gitdealflow.com/predict?utm_source=github&utm_medium=readme&utm_campaign=mcp_server
 - Leaderboard: https://signals.gitdealflow.com/leaderboard?utm_source=github&utm_medium=readme&utm_campaign=mcp_server
 - Chrome Extension (Momentum Badge): https://chrome.google.com/webstore/detail/...
-- Twitter/X: https://x.com/data_nerd
 - Email: signals@gitdealflow.com
 - Telegram: https://t.me/gitdealflow
 - SSRN: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558

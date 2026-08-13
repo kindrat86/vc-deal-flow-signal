@@ -95,7 +95,7 @@ Built solo by the Data Nerd. Shipping in public. Feedback welcome.
 
 | Field | Value |
 | --- | --- |
-| Twitter / X | https://x.com/data_nerd |
+| Twitter / X | — (no live X account; account suspended, removed 2026-08-13) |
 | LinkedIn | https://www.linkedin.com/company/gitdealflow |
 | GitHub | https://github.com/kindrat86/mcp-deal-flow-signal |
 | Product Hunt | https://www.producthunt.com/posts/vc-deal-flow-signal *(live Apr 26 — leave blank if pre-launch)* |

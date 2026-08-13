@@ -211,8 +211,6 @@ reusable. It handles squash-merge noise, dependabot churn, and the
   https://github.com/kindrat86/gitdealflow-signal-classifier
 - Product:
   https://gitdealflow.com
-- Twitter:
-  [@data_nerd](https://x.com/data_nerd)
 
 If you run a replication against Crunchbase or PitchBook labels, drop
 me a DM — I'll happily co-author the follow-up.
