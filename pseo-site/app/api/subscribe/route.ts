@@ -199,6 +199,9 @@ export async function POST(request: Request) {
           ? "launch"
           : "soap-opera";
 
+    const tzRaw = clip(body.tz, 64);
+    const tz = tzRaw.includes("/") ? tzRaw : "";
+
     // Build verification URL — attribution piggybacks as query params so
     // /api/verify can persist it to PocketBase regardless of which device
     // the user clicks the verify link from. Cohort piggybacks too.
@@ -216,6 +219,7 @@ export async function POST(request: Request) {
     }
     if (quiz_route) params.set("quiz_route", quiz_route);
     if (quiz_route_label) params.set("quiz_route_label", quiz_route_label);
+    if (tz) params.set("tz", tz);
     const verifyUrl = `${VERIFY_BASE_URL}/api/verify?${params.toString()}`;
 
     // Send verification email
