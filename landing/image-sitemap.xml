@@ -5,29 +5,7 @@
     <loc>https://gitdealflow.com</loc>
     <image:image>
       <image:loc>https://gitdealflow.com/data-nerd.png</image:loc>
-      <image:title>GitDealFlow — The Data Nerd</image:title>
-      <image:caption>Built by The Data Nerd — the pseudonymous author behind GitDealFlow's engineering acceleration signal</image:caption>
-    </image:image>
-    <image:image>
-      <image:loc>https://gitdealflow.com/data-nerd.webp</image:loc>
-      <image:title>GitDealFlow — The Data Nerd (WebP)</image:title>
-      <image:caption>Engineering acceleration signal for venture capital investors</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://gitdealflow.com/chrome</loc>
-    <image:image>
-      <image:loc>https://gitdealflow.com/chrome-ext-icon-128.png</image:loc>
-      <image:title>GitDealFlow Chrome Extension Icon</image:title>
-      <image:caption>Free Chrome extension overlaying momentum badges on Crunchbase and Wellfound</image:caption>
-    </image:image>
-  </url>
-  <url>
-    <loc>https://gitdealflow.com/data/momentum-index</loc>
-    <image:image>
-      <image:loc>https://gitdealflow.com/data-nerd.png</image:loc>
-      <image:title>GitHub Startup Momentum Index Q3 2026</image:title>
-      <image:caption>40 startup repos ranked weekly by engineering momentum score</image:caption>
+      <image:title>Data Nerd</image:title>
     </image:image>
   </url>
 </urlset>
