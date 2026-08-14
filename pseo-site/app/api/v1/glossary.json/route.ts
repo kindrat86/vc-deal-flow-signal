@@ -33,6 +33,7 @@ export async function GET() {
       "@id": `${SITE}/glossary#${t.id}`,
       name: t.term,
       termCode: t.id,
+      snippet: t.snippet ?? null,
       description: t.definition,
       url: `${SITE}/glossary#${t.id}`,
       inDefinedTermSet: `${SITE}/glossary`,

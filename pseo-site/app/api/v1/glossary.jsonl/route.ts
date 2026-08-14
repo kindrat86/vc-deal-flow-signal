@@ -32,6 +32,7 @@ export async function GET() {
     return JSON.stringify({
       id: t.id,
       term: t.term,
+      snippet: t.snippet ?? null,
       definition: t.definition,
       category: category,
       category_label: CATEGORY_META[category].label,

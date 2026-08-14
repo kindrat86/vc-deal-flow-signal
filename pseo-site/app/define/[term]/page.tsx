@@ -168,7 +168,7 @@ export default async function DefineTermPage({ params }: PageProps) {
             name: `What is ${t.term}?`,
             acceptedAnswer: {
               "@type": "Answer",
-              text: t.definition,
+              text: t.snippet ?? t.definition,
             },
           },
           {
@@ -266,8 +266,16 @@ export default async function DefineTermPage({ params }: PageProps) {
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
           {t.term}
         </h1>
+        {t.snippet ? (
+          <p
+            className="text-lg text-gray-200 leading-relaxed mb-3 font-medium"
+            data-speakable
+          >
+            {t.snippet}
+          </p>
+        ) : null}
         <p
-          className="text-lg text-gray-300 leading-relaxed mb-10"
+          className="text-gray-300 leading-relaxed mb-10"
           data-speakable
         >
           {t.definition}

@@ -62,7 +62,7 @@ export default function GlossaryPage() {
           name: `What is ${t.term}?`,
           acceptedAnswer: {
             "@type": "Answer",
-            text: t.definition,
+            text: t.snippet ?? t.definition,
             url: `https://signals.gitdealflow.com/glossary#${t.id}`,
           },
         })),
@@ -249,6 +249,14 @@ export default function GlossaryPage() {
               >
                 What is {t.term}?
               </h2>
+              {t.snippet ? (
+                <p
+                  className="text-gray-200 text-base leading-relaxed mb-2"
+                  data-speakable
+                >
+                  {t.snippet}
+                </p>
+              ) : null}
               <p
                 className="text-gray-400 text-sm leading-relaxed"
                 itemProp="description"

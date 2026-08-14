@@ -62,37 +62,24 @@ export default function MethodologyPage() {
       },
       {
         "@type": "FAQPage",
+        "@id": "https://signals.gitdealflow.com/methodology#faq",
+        url: "https://signals.gitdealflow.com/methodology",
+        inLanguage: "en-US",
         mainEntity: [
+          {
+            "@type": "Question",
+            name: "What data sources does VC Deal Flow Signal use?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "VC Deal Flow Signal uses the public GitHub REST API v3 as its primary data source: the search/repositories endpoint to discover active startup organizations across 15 sector topic clusters, and the stats/commit_activity and contributors endpoints for per-organization data. Bot commits are excluded before aggregation, and no private repositories or scraping is involved.",
+            },
+          },
           {
             "@type": "Question",
             name: "How does VC Deal Flow Signal measure engineering acceleration?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Engineering acceleration is computed weekly from public GitHub data. The pipeline pulls 14-day commit velocity, contributor count, and repository creation events for approximately 350+ startup organizations across 15 sectors via the GitHub REST API, then expresses each metric as a percentage change versus the prior 14-day window. A startup whose 14-day commit velocity doubles relative to its own baseline is recorded as +100% acceleration. The metric is computed per organization against its own historical baseline, not across the population.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "What data sources are used in the methodology?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "The primary source is the public GitHub REST API v3, search/repositories, stats/commit_activity, contributors, and repos endpoints. No private repositories, no scraping, no terms-of-service violations. The methodology excludes commits authored by accounts matching common bot patterns (Dependabot, Renovate, GitHub Actions) and applies file-count filtering to remove trivial commits. The full data sources page lists every endpoint and refresh cadence.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "Why use a 14-day rolling window?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "Investor signal pipelines tend to use either 14-day or 28-day rolling windows. The 14-day window is more responsive, it surfaces breakouts faster, at the cost of higher volatility. To filter the resulting noise, the methodology requires a breakout to persist into a second 14-day window before it is treated as actionable. This two-period confirmation rule removes most one-period spikes caused by hackathons, launch sprints, or single contributors onboarding.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "How are bot commits filtered out?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "Commits authored by accounts whose name or type matches known bot patterns (bot, github-actions, dependabot, renovate) are excluded before any aggregation. A second filter removes commits with diffs below a small file-count threshold to suppress automated formatting and dependency-update commits. The combination removes the loudest noise sources without overfitting; further normalization can be added but is rarely worth the engineering cost.",
+              text: "Engineering acceleration is computed weekly from public GitHub data. The pipeline pulls 14-day commit velocity, contributor count, and repository creation events for roughly 350+ startup organizations across 15 sectors, then expresses each metric as a percentage change versus the prior 14-day window. A breakout must persist into a second 14-day window before it becomes actionable.",
             },
           },
           {
@@ -100,39 +87,31 @@ export default function MethodologyPage() {
             name: "What are the four signal types?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Acceleration patterns sort into four operational types. The hiring burst is rising velocity plus rising contributor count, the strongest fundraise predictor. The shipping sprint is velocity rising while contributor count holds flat, typical of launch preparation. The infrastructure buildout is repository creation accelerating versus baseline, strategic technical investment. The platform migration is language mix shifting between primary languages over a quarter, slower-moving but strategically significant. Each pattern implies a different diligence question.",
+              text: "Each accelerated startup is classified into one of four signal types: engineering hiring burst, when contributor growth exceeds 50%; infrastructure buildout, when three or more new repositories appear in 30 days; deploy frequency spike, when commit velocity rises 150% or more; and framework migration, for general acceleration that fits none of the above.",
             },
           },
           {
             "@type": "Question",
-            name: "How is funding stage estimated?",
+            name: "How is startup stage estimated?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Funding stage is estimated heuristically from contributor count, repository age, language mix maturity, and any cross-referenced public funding history. Pre-seed teams typically have 1 to 3 contributors and codebases under six months old; seed teams have 3 to 8 contributors with sustained activity over several quarters; Series A teams have 8 to 20 contributors with multiple repositories and mature language mixes. The estimate is heuristic and is intended as a screening filter, not a definitive label.",
+              text: "Stage is estimated from contributor count as a rough proxy for team size: pre-seed shows 1-7 contributors, seed 8-19, Series A/B 20-49, and growth 50 or more. It is an approximation, because not all contributors are employees and not all employees contribute to public repositories.",
             },
           },
           {
             "@type": "Question",
-            name: "Is the methodology peer-reviewed?",
+            name: "How often is the data updated?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "The methodology write-up is published on SSRN at ssrn.com/abstract=6606558 and mirrored on Zenodo with a DOI. The dataset is auto-indexed by OpenAlex (W7154916891) and DataCite. The work is not formally peer reviewed in a journal but is openly published and reproducible. Investors evaluating the signal can audit the full methodology and replicate the metrics from the same public GitHub data described in the paper.",
+              text: "Data is refreshed weekly, every Monday morning. The pipeline queries GitHub for the latest 52 weeks of commit history, recalculates all metrics, regenerates sector rankings, and rebuilds the site. Each sector page shows rankings for the current quarter and up to four previous quarters.",
             },
           },
           {
             "@type": "Question",
-            name: "How often is the data refreshed?",
+            name: "What are the known limitations of GitHub-based signals?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "The full panel refreshes weekly. Each Monday the pipeline pulls the latest 14-day GitHub activity, recomputes acceleration metrics, classifies signal patterns, and republishes the sector rankings, the API endpoints, and the dashboard. The free Signal Report email is sent the same morning. Intraday changes do not affect rankings, the cadence is intentionally weekly to match how investors review pipelines.",
-            },
-          },
-          {
-            "@type": "Question",
-            name: "Is engineering acceleration the same as a startup accelerator program?",
-            acceptedAnswer: {
-              "@type": "Answer",
-              text: "No. They are unrelated concepts that share a word. A startup accelerator (Y Combinator, Techstars, 500 Global) is a fixed-term program founders join. Engineering acceleration is a quantitative signal computed from public GitHub activity. Throughout this site the term refers exclusively to code-side momentum: commit velocity, contributor growth, repository creation. It has nothing to do with program participation.",
+              text: "Private repositories are invisible, so the signal only covers public engineering activity. Commit volume measures output, not code quality. And engineering acceleration is a leading indicator of traction, not a guarantee of success: it is a screening filter for due diligence, not investment advice.",
             },
           },
         ],
@@ -469,8 +448,16 @@ export default function MethodologyPage() {
         {/* Data Sources */}
         <section className="mb-10">
           <h2 className="text-xl font-semibold text-gray-100 mb-4">
-            Data Sources
+            What data sources does VC Deal Flow Signal use?
           </h2>
+          <p className="text-gray-200 text-base leading-relaxed mb-4" data-speakable>
+            VC Deal Flow Signal uses the public GitHub REST API v3 as its
+            primary data source: the search/repositories endpoint to discover
+            active startup organizations across 15 sector topic clusters, and
+            the stats/commit_activity and contributors endpoints for
+            per-organization data. Bot commits are excluded before aggregation,
+            and no private repositories or scraping is involved.
+          </p>
           <div className="rounded-lg border border-slate-800 bg-slate-900 p-6 space-y-4 text-gray-400 text-sm leading-relaxed">
             <p>
               <strong className="text-gray-200">GitHub API v3</strong> is our
@@ -502,8 +489,16 @@ export default function MethodologyPage() {
         {/* Core Metrics */}
         <section className="mb-10">
           <h2 className="text-xl font-semibold text-gray-100 mb-4">
-            Core Metrics
+            How does VC Deal Flow Signal measure engineering acceleration?
           </h2>
+          <p className="text-gray-200 text-base leading-relaxed mb-4" data-speakable>
+            Engineering acceleration is computed weekly from public GitHub
+            data. The pipeline pulls 14-day commit velocity, contributor count,
+            and repository creation events for roughly 350+ startup
+            organizations across 15 sectors, then expresses each metric as a
+            percentage change versus the prior 14-day window. A breakout must
+            persist into a second 14-day window before it becomes actionable.
+          </p>
           <div className="space-y-4">
             <div className="rounded-lg border border-slate-800 bg-slate-900 p-6">
               <h3 className="text-gray-100 font-medium mb-2">
@@ -613,8 +608,16 @@ export default function MethodologyPage() {
         {/* Signal Classification */}
         <section className="mb-10">
           <h2 className="text-xl font-semibold text-gray-100 mb-4">
-            Signal Classification
+            What are the four signal types?
           </h2>
+          <p className="text-gray-200 text-base leading-relaxed mb-4" data-speakable>
+            Each accelerated startup is classified into one of four signal
+            types: engineering hiring burst, when contributor growth exceeds
+            50%; infrastructure buildout, when three or more new repositories
+            appear in 30 days; deploy frequency spike, when commit velocity
+            rises 150% or more; and framework migration, for general
+            acceleration that fits none of the above.
+          </p>
           <div className="rounded-lg border border-slate-800 bg-slate-900 p-6 text-gray-400 text-sm leading-relaxed">
             <p className="mb-4">
               Each startup is assigned one of four signal types based on which
@@ -648,8 +651,15 @@ general acceleration that doesn&apos;t fit the above categories,
         {/* Stage Classification */}
         <section className="mb-10">
           <h2 className="text-xl font-semibold text-gray-100 mb-4">
-            Stage Estimation
+            How is startup stage estimated?
           </h2>
+          <p className="text-gray-200 text-base leading-relaxed mb-4" data-speakable>
+            Stage is estimated from contributor count as a rough proxy for team
+            size: pre-seed shows 1-7 contributors, seed 8-19, Series A/B 20-49,
+            and growth 50 or more. It is an approximation, because not all
+            contributors are employees and not all employees contribute to
+            public repositories.
+          </p>
           <div className="rounded-lg border border-slate-800 bg-slate-900 p-6 text-gray-400 text-sm leading-relaxed">
             <p>
               We estimate startup stage from contributor count as a rough proxy
@@ -666,8 +676,15 @@ general acceleration that doesn&apos;t fit the above categories,
         {/* Update Frequency */}
         <section className="mb-10">
           <h2 className="text-xl font-semibold text-gray-100 mb-4">
-            Update Frequency
+            How often is the data updated?
           </h2>
+          <p className="text-gray-200 text-base leading-relaxed mb-4" data-speakable>
+            Data is refreshed weekly, every Monday morning. The pipeline
+            queries GitHub for the latest 52 weeks of commit history,
+            recalculates all metrics, regenerates sector rankings, and rebuilds
+            the site. Each sector page shows rankings for the current quarter
+            and up to four previous quarters.
+          </p>
           <div className="rounded-lg border border-slate-800 bg-slate-900 p-6 text-gray-400 text-sm leading-relaxed">
             <p>
               Data is refreshed weekly (Monday mornings). The pipeline queries
@@ -682,8 +699,15 @@ general acceleration that doesn&apos;t fit the above categories,
         {/* Limitations */}
         <section className="mb-10">
           <h2 className="text-xl font-semibold text-gray-100 mb-4">
-            Known Limitations
+            What are the known limitations of GitHub-based signals?
           </h2>
+          <p className="text-gray-200 text-base leading-relaxed mb-4" data-speakable>
+            Private repositories are invisible, so the signal only covers
+            public engineering activity. Commit volume measures output, not
+            code quality. And engineering acceleration is a leading indicator
+            of traction, not a guarantee of success: it is a screening filter
+            for due diligence, not investment advice.
+          </p>
           <div className="rounded-lg border border-slate-800 bg-slate-900 p-6 text-gray-400 text-sm leading-relaxed space-y-3">
             <p>
               <strong className="text-gray-200">Private repos are invisible.</strong>{" "}

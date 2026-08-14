@@ -1037,6 +1037,64 @@ check(
 }
 
 // ---------------------------------------------------------------------------
+// §18 Featured-snippet answer blocks (2026-08-15). The SERP-feature audit
+// fix: every glossary term carries a 40-55 word `snippet` direct answer,
+// rendered as the first paragraph under each question heading on /glossary
+// and /define/[term], and the methodology page answers with question-form
+// h2s plus visible 40-55 word direct answers synced to its FAQPage schema.
+// A lineage that loses these reverts the featured-snippet / PAA surface.
+// ---------------------------------------------------------------------------
+check(
+  "content/glossary.ts",
+  "glossary terms lost their featured-snippet `snippet` field, or snippets drifted outside the 40-55 word extraction window.",
+  (s) => {
+    const snips = [...s.matchAll(/snippet:\s*\n\s*"([\s\S]*?)",/g)].map(
+      (m) => m[1],
+    );
+    return (
+      snips.length >= 130 &&
+      snips.every((t) => {
+        const wc = t.split(/\s+/).filter(Boolean).length;
+        return wc >= 40 && wc <= 55;
+      })
+    );
+  },
+  "keep a 40-55 word `snippet` on every glossary term in content/glossary.ts",
+);
+
+check(
+  "app/glossary/page.tsx",
+  "glossary page no longer renders the snippet as the first answer paragraph under each 'What is X?' heading.",
+  (s) => s.includes("{t.snippet}") && s.includes("t.snippet ?? t.definition"),
+  "render {t.snippet} right after each question h2 and use t.snippet ?? t.definition in the FAQPage schema",
+);
+
+check(
+  "app/define/[term]/page.tsx",
+  "definition term pages lost the snippet lede or the snippet-backed FAQ answer.",
+  (s) => s.includes("{t.snippet}") && s.includes("t.snippet ?? t.definition"),
+  "render {t.snippet} as the direct-answer lede after the h1 and use it in the FAQPage acceptedAnswer",
+);
+
+check(
+  "app/methodology/page.tsx",
+  "methodology page reverted to declarative section headings and lost the visible direct-answer paragraphs (featured-snippet blocks).",
+  (s) =>
+    s.includes("What data sources does VC Deal Flow Signal use?") &&
+    s.includes("What are the four signal types?") &&
+    s.includes("How often is the data updated?") &&
+    s.includes("Each accelerated startup is classified into one of four signal"),
+  "keep question-form h2s plus visible 40-55 word direct-answer paragraphs on the methodology page",
+);
+
+check(
+  "app/api/v1/glossary.jsonl/route.ts",
+  "glossary.jsonl no longer exposes the snippet field for RAG pipelines.",
+  (s) => s.includes("snippet: t.snippet ?? null"),
+  "include snippet: t.snippet ?? null in each jsonl line",
+);
+
+// ---------------------------------------------------------------------------
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +
