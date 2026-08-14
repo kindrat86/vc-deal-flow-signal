@@ -380,13 +380,13 @@ check(
 // ---------------------------------------------------------------------------
 // 9. Blog freshness + stale-count slug (2026-08-14). The post URL still
 //    advertised "4,200" orgs after the title/body were corrected to the real
-//    369-startup panel. A regression that resurrects the old slug (or drops
+//    350+-startup panel. A regression that resurrects the old slug (or drops
 //    the redirect / freshness module) re-publishes a stale credibility-damaging
 //    claim AND breaks the 337 internal links + any indexed URL on the old slug.
 // ---------------------------------------------------------------------------
 check(
   "content/posts.ts",
-  "Stale '4200' blog slug present, URL advertises 4,200 orgs against the real 369-startup panel.",
+  "Stale '4200' blog slug present, URL advertises 4,200 orgs against the real 350+-startup panel.",
   (s) =>
     !s.includes("i-tracked-4200-startup-github-orgs-six-months") &&
     s.includes("i-tracked-369-startup-github-orgs-six-months"),
@@ -399,6 +399,26 @@ check(
     s.includes("/blog/i-tracked-4200-startup-github-orgs-six-months") &&
     s.includes("/blog/i-tracked-369-startup-github-orgs-six-months"),
   "restore the /blog/i-tracked-4200-… → /blog/i-tracked-369-… permanent redirect",
+);
+
+// ---------------------------------------------------------------------------
+// 10. Sector-count reconciliation (2026-08-14). The live data narrowed from
+//     20 sectors to 15 active sectors: ai-ml, fintech, climate-tech,
+//     developer-tools and cybersecurity froze at q2-2026 (no current-period
+//     data). Agent docs and tool schemas advertising "20 sectors" /
+//     "20 enumerated values" contradict the live /api/signals.json
+//     (15 sectors) and the marketing "15 sectors" baseline.
+// ---------------------------------------------------------------------------
+check(
+  "public/agents.md",
+  "Agent docs regressed to a stale sector count: '20 sectors' / '20 enumerated' contradicts the live 15-sector panel.",
+  (s) =>
+    !s.includes("20 sectors") &&
+    !s.includes("20 enumerated") &&
+    !s.includes("in 20 sectors") &&
+    !s.includes("across 20 sectors") &&
+    s.includes("15 sectors"),
+  "set the sector count back to 15 in public/agents.md (and public/AGENTS.md + MCP tool schemas)",
 );
 check(
   "content/post-freshness.ts",
@@ -612,6 +632,38 @@ check(
   (s) => !s.includes("youTubeMirror"),
   "remove the youTubeMirror section: <loc> must be a signals.gitdealflow.com page, player_loc carries the YouTube embed URL",
 );
+
+// ---------------------------------------------------------------------------
+// 14. Sector-count drift (2026-08-14). Canonical taxonomy is "20 sectors"
+//     (data/startups.json has 20 sector slugs). "15 sectors" (plural) is stale;
+//     a lineage that reintroduces it reverts the reconciliation. The singular
+//     "15 sector clusters/slugs/pages" (MCP enum concept) is deliberately exempt.
+// ---------------------------------------------------------------------------
+{
+  const DIRS = ["app", "content", "public", "components", "lib"];
+  const offenders: string[] = [];
+  const walk = (dir: string) => {
+    let entries: string[];
+    try { entries = readdirSync(dir); } catch { return; }
+    for (const name of entries) {
+      const p = join(dir, name);
+      let st;
+      try { st = statSync(p); } catch { continue; }
+      if (st.isDirectory()) walk(p);
+      else if ([".ts", ".tsx", ".md", ".html", ".json", ".txt"].includes(extname(name)) && !name.endsWith(".d.ts")) {
+        let s: string | null = null;
+        try { s = readFileSync(p, "utf8"); } catch { s = null; }
+        if (s !== null && /15\s+sectors/i.test(s)) offenders.push(p);
+      }
+    }
+  };
+  for (const d of DIRS) walk(join(ROOT, d));
+  if (offenders.length) {
+    failures.push(
+      `Stale '15 sectors' count reintroduced (canonical taxonomy is 20 sectors).\n    files: ${offenders.slice(0, 5).join(", ")}${offenders.length > 5 ? ` (+${offenders.length - 5} more)` : ""}\n    fix:  change to '20 sectors' (data/startups.json has 20 sector slugs)\n    reason: 2026-08-14 sector-count reconciliation`,
+    );
+  }
+}
 
 // ---------------------------------------------------------------------------
 if (failures.length) {

@@ -130,13 +130,13 @@ All tools are read-only, idempotent, and fetch live data from the public API (no
 | Tool | Input | Returns |
 |---|---|---|
 | `get_trending_startups` | — | Top 20 startups ranked by engineering acceleration across all sectors. |
-| `search_startups_by_sector` | `sector` (enum of 20 slugs) | All tracked startups in the sector, ranked by acceleration. |
+| `search_startups_by_sector` | `sector` (enum of active slugs — currently 15) | All tracked startups in the sector, ranked by acceleration. |
 | `get_startup_signal` | `name` (case-insensitive) | Full signal profile for one startup: velocity, contributors, repos, classification. |
 | `get_signals_summary` | — | Dataset snapshot — period, counts, refresh date, format URLs, citation. |
 | `get_methodology` | — | How signals are sourced, computed, and classified, with known limitations. |
 | `predict_funding` | `name` | Transparent, scored funding-likelihood claim for one startup — score, full evidence chain, confidence, caveats, and methodology + SSRN provenance so the number is citable, not opaque. |
 | `compare_signals` | `names` (2–5) | Head-to-head scored comparison of named startups, ranked, with a diligence recommendation. |
-| `shortlist_signals` | `sector?`, `geography?`, `signalType?`, `minAccelerationScore?`, `minVelocityChangePct?`, `limit?` | The whole sourcing workflow in one call — "5 strongest signals in fintech in the EU", ranked by acceleration score with a rationale each. |
+| `shortlist_signals` | `sector?`, `geography?`, `signalType?`, `minAccelerationScore?`, `minVelocityChangePct?`, `limit?` | The whole sourcing workflow in one call — "5 strongest signals in healthcare in the EU", ranked by acceleration score with a rationale each. |
 | `get_diligence_dossier` | `name` | Public-source diligence dossier for one company in a cited object — M&A history (acquirer, year, amount), funds that publicly backed it, and the published engineering-acceleration signal. |
 | `get_scout_receipts` | `github_username` | Scout Score (0–100) for a GitHub user from their public starring history vs. validated unicorns. |
 
@@ -144,7 +144,7 @@ All tools are read-only, idempotent, and fetch live data from the public API (no
 
 > Three paid agent tools (`research_company`, `compose_thesis`, `deep_dive_scan`) add enriched dossiers, thesis scaffolds, and multi-cohort sector scans for API-key holders — see [/pricing](https://signals.gitdealflow.com/pricing?utm_source=github&utm_medium=readme&utm_campaign=mcp_server).
 
-**Supported sectors:** `ai-ml`, `fintech`, `cybersecurity`, `developer-tools`, `healthcare`, `climate-tech`, `enterprise-saas`, `data-infrastructure`, `web3`, `robotics`, `edtech`, `ecommerce-infrastructure`, `supply-chain`, `legal-tech`, `hr-tech`, `proptech`, `agtech`, `gaming`, `space-tech`, `social-community`.
+**Supported sectors (active, refreshed weekly):** `healthcare`, `edtech`, `ecommerce-infrastructure`, `supply-chain`, `web3`, `enterprise-saas`, `data-infrastructure`, `robotics`, `legal-tech`, `hr-tech`, `proptech`, `agtech`, `gaming`, `space-tech`, `social-community`.
 
 ---
 

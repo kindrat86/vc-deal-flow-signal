@@ -178,19 +178,14 @@ interface ChangelogData {
 }
 
 const SECTOR_SLUGS = [
-  "ai-ml",
-  "fintech",
-  "cybersecurity",
-  "developer-tools",
   "healthcare",
-  "climate-tech",
-  "enterprise-saas",
-  "data-infrastructure",
-  "web3",
-  "robotics",
   "edtech",
   "ecommerce-infrastructure",
   "supply-chain",
+  "web3",
+  "enterprise-saas",
+  "data-infrastructure",
+  "robotics",
   "legal-tech",
   "hr-tech",
   "proptech",
@@ -523,10 +518,10 @@ const TOOLS = [
     name: "search_startups_by_sector",
     title: "Search Startups by Sector",
     description: [
-      "Return every tracked startup within one of 20 supported sectors, ranked by engineering acceleration for the current reporting period.",
+      "Return every tracked startup within one of 15 supported sectors, ranked by engineering acceleration for the current reporting period.",
       "",
       "WHEN TO USE:",
-      "- The user names a specific vertical: 'show me AI/ML startups', 'who's moving in fintech?', 'cybersecurity deal flow', 'climate-tech picks'.",
+      "- The user names a specific vertical: 'show me healthcare startups', 'who's moving in web3?', 'data-infrastructure deal flow', 'space-tech picks'.",
       "- You need a focused list for a thesis-driven investor or a sector report.",
       "- You're comparing momentum inside a defined market before a sourcing cycle.",
       "",
@@ -540,17 +535,17 @@ const TOOLS = [
       "- Read-only, idempotent, no side effects.",
       "- Deterministic within a 7-day window: dataset refreshes every Monday ~09:00 UTC.",
       "- No authentication required. No rate limit enforced by this server.",
-      "- Returns between 5 and 30 startups per sector depending on open-source density. Dense: ai-ml, developer-tools, data-infrastructure. Sparse: legal-tech, proptech, agtech.",
+      "- Returns between 5 and 30 startups per sector depending on open-source density. Dense: data-infrastructure, enterprise-saas, healthcare. Sparse: legal-tech, proptech, agtech.",
       "- On unknown sector slug: returns `isError: true` with the full list of valid slugs in `structuredContent.availableSectors` so the agent can retry with a correct value.",
       "- On upstream failure: returns `isError: true` with the HTTP status.",
       "- Open-world: the tracked universe changes week to week.",
       "",
       "PARAMETERS:",
-      "- `sector` (required, string) — MUST be one of the 20 enumerated slugs in `inputSchema.properties.sector.enum`. Map fuzzy user input BEFORE calling: 'AI' / 'artificial intelligence' / 'ML' → 'ai-ml'; 'crypto' / 'blockchain' → 'web3'; 'cyber' / 'infosec' / 'security' → 'cybersecurity'; 'SaaS' → 'enterprise-saas'; 'devtools' / 'developer experience' → 'developer-tools'; 'climate' / 'clean energy' / 'cleantech' → 'climate-tech'; 'biotech' / 'health' / 'medtech' → 'healthcare'; 'data' / 'databases' → 'data-infrastructure'; 'real estate' → 'proptech'; 'agriculture' → 'agtech'; 'space' → 'space-tech'; 'games' → 'gaming'; 'community' / 'social' → 'social-community'; 'logistics' → 'supply-chain'; 'law' / 'legal' → 'legal-tech'; 'recruiting' / 'HR' → 'hr-tech'; 'learning' / 'education' → 'edtech'; 'commerce' / 'retail infra' → 'ecommerce-infrastructure'; 'hardware' / 'drones' → 'robotics'. If no mapping is clear, call `get_signals_summary` and ask the user to pick.",
+      "- `sector` (required, string) — MUST be one of the 15 enumerated slugs in `inputSchema.properties.sector.enum`. Map fuzzy user input BEFORE calling: 'crypto' / 'blockchain' → 'web3'; 'SaaS' → 'enterprise-saas'; 'biotech' / 'health' / 'medtech' → 'healthcare'; 'data' / 'databases' → 'data-infrastructure'; 'real estate' → 'proptech'; 'agriculture' → 'agtech'; 'space' → 'space-tech'; 'games' → 'gaming'; 'community' / 'social' → 'social-community'; 'logistics' → 'supply-chain'; 'law' / 'legal' → 'legal-tech'; 'recruiting' / 'HR' → 'hr-tech'; 'learning' / 'education' → 'edtech'; 'commerce' / 'retail infra' → 'ecommerce-infrastructure'; 'hardware' / 'drones' → 'robotics'. If no mapping is clear, call `get_signals_summary` and ask the user to pick.",
       "",
       "RETURNS: `{ sector: {slug, name, description, url}, period, startupCount, startups[], citation }`. Each startup row contains rank, name, sector, stage, geography, commitVelocity14d, commitVelocityChange, contributors, contributorGrowth, newRepos, signalType, description, githubUrl, websiteUrl (when known), linkedinUrl (when known), profileUrl.",
       "",
-      "TYPICAL WORKFLOW: `search_startups_by_sector('fintech')` → pick a name → `get_startup_signal(name)` → `get_methodology` if the user asks what the signal type means.",
+      "TYPICAL WORKFLOW: `search_startups_by_sector('web3')` → pick a name → `get_startup_signal(name)` → `get_methodology` if the user asks what the signal type means.",
       "",
       "LIMITATIONS: One sector slug per call; no free-text sector search. For cross-sector views use `get_trending_startups`. No historical series — each call is the latest weekly snapshot only.",
     ].join("\n"),
@@ -560,9 +555,9 @@ const TOOLS = [
         sector: {
           type: "string",
           description:
-            "Sector slug. Must be one of the 20 supported values. Map fuzzy user input to the closest slug (e.g. 'AI' → 'ai-ml', 'crypto' → 'web3', 'cyber' → 'cybersecurity', 'SaaS' → 'enterprise-saas').",
+            "Sector slug. Must be one of the 15 supported values. Map fuzzy user input to the closest slug (e.g. 'crypto' → 'web3', 'health' → 'healthcare', 'SaaS' → 'enterprise-saas').",
           enum: [...SECTOR_SLUGS],
-          examples: ["ai-ml", "fintech", "cybersecurity", "developer-tools"],
+          examples: ["web3", "healthcare", "data-infrastructure", "space-tech"],
         },
       },
       required: ["sector"],
@@ -781,7 +776,7 @@ const TOOLS = [
       "",
       "TYPICAL WORKFLOW: User asks 'is @X a good scout?' → `get_scout_receipts({ github_username: 'X' })` → quote the score, top wins, and personality, link the share_url for them to post.",
       "",
-      "LIMITATIONS: The validated-wins database is biased toward developer-tools, AI, and data/ops companies with public GitHub presence. Closed-source unicorns are not represented — false negatives possible. Score reflects backwards-looking taste only; not a predictor of future calls.",
+      "LIMITATIONS: The validated-wins database is biased toward developer platforms, data infrastructure, and DevOps companies with public GitHub presence. Closed-source unicorns are not represented — false negatives possible. Score reflects backwards-looking taste only; not a predictor of future calls.",
     ].join("\n"),
     inputSchema: {
       type: "object" as const,
@@ -1103,7 +1098,7 @@ const TOOLS = [
       "",
       "AUTH: Requires `GITDEALFLOW_API_KEY`. Free `search_startups_by_sector` keeps working without auth.",
       "",
-      "PARAMETERS: { sector: string } — one of the 20 supported sector slugs.",
+      "PARAMETERS: { sector: string } — one of the 15 supported sector slugs.",
       "",
       "RETURNS: { sector, period, summary: { total, breakouts, cold }, breakouts[≤10], cold[≤5], top10ByCommitVelocity[10], citation, _meter }.",
     ].join("\n"),
@@ -1276,7 +1271,7 @@ const TOOLS = [
     name: "shortlist_signals",
     title: "Shortlist Strongest Signals",
     description: [
-      "Return a ranked shortlist of the strongest engineering-acceleration signals matching a set of filters — the entire sourcing workflow in ONE call. Replaces the 'browse a sector, read each row, eyeball the strongest' loop: 'give me the 5 strongest signals in observability HQ'd in the US', 'top fintech breakouts in the EU', 'who's accelerating hardest in AI right now'.",
+      "Return a ranked shortlist of the strongest engineering-acceleration signals matching a set of filters — the entire sourcing workflow in ONE call. Replaces the 'browse a sector, read each row, eyeball the strongest' loop: 'give me the 5 strongest signals in observability HQ'd in the US', 'top web3 breakouts in the EU', 'who's accelerating hardest in data-infrastructure right now'.",
       "",
       "WHEN TO USE:",
       "- Any 'top N in <sector> / <region> / <signal type>' sourcing request.",
@@ -1293,7 +1288,7 @@ const TOOLS = [
       "- GEOGRAPHY IS REGION-LEVEL ONLY. The feed has no city granularity — values are US / EU / UK / APAC / LATAM / Canada / Unknown. City or country aliases (e.g. 'NYC', 'New York', 'Berlin', 'London', 'Singapore') are normalized up to the enclosing region and the response `notes` says so. There is no way to filter to a city.",
       "",
       "PARAMETERS (all optional — omit to scan the whole universe):",
-      "- `sector` — one of the 20 sector slugs (map fuzzy input first, e.g. 'AI'→'ai-ml').",
+      "- `sector` — one of the 15 sector slugs (map fuzzy input first, e.g. 'crypto'→'web3', 'health'→'healthcare').",
       "- `geography` — a region token (US/EU/UK/APAC/LATAM/Canada) or a city/country alias that normalizes to one. Unrecognized values return a note and are ignored (no filtering on geography).",
       "- `signalType` — exact label: 'Deploy frequency spike' | 'Engineering hiring burst' | 'Infrastructure buildout' | 'Framework migration'.",
       "- `minAccelerationScore` — integer 0-100; drop anything below.",
@@ -1307,7 +1302,7 @@ const TOOLS = [
       properties: {
         sector: {
           type: "string",
-          description: "Optional sector slug. One of the 20 supported values.",
+          description: "Optional sector slug. One of the 15 supported values.",
           enum: [...SECTOR_SLUGS],
         },
         geography: {
@@ -1513,7 +1508,7 @@ const RESOURCE_TEMPLATES = [
     uriTemplate: "signal://sector/{slug}",
     name: "Sector Signal Snapshot",
     description:
-      "All tracked startups within a sector, ranked by engineering acceleration. {slug} must be one of: ai-ml, fintech, cybersecurity, developer-tools, healthcare, climate-tech, enterprise-saas, data-infrastructure, web3, robotics, edtech, ecommerce-infrastructure, supply-chain, legal-tech, hr-tech, proptech, agtech, gaming, space-tech, social-community.",
+      "All tracked startups within a sector, ranked by engineering acceleration. {slug} must be one of: healthcare, edtech, ecommerce-infrastructure, supply-chain, web3, enterprise-saas, data-infrastructure, robotics, legal-tech, hr-tech, proptech, agtech, gaming, space-tech, social-community.",
     mimeType: "application/json",
   },
 ];
@@ -1533,7 +1528,7 @@ const PROMPTS = [
       {
         name: "sector",
         description:
-          "Sector slug. Must be one of the 20 supported values (e.g. 'ai-ml', 'fintech', 'cybersecurity').",
+          "Sector slug. Must be one of the 15 supported values (e.g. 'web3', 'healthcare', 'data-infrastructure').",
         required: true,
       },
     ],
@@ -1588,7 +1583,7 @@ const PROMPTS = [
       {
         name: "sector",
         description:
-          "Optional sector slug to focus the shortlist (e.g. 'ai-ml', 'fintech'). Omit to scan all sectors.",
+          "Optional sector slug to focus the shortlist (e.g. 'web3', 'healthcare'). Omit to scan all sectors.",
         required: false,
       },
       {

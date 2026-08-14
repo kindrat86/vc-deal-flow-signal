@@ -41,14 +41,14 @@ async function classifyAndAnswer(query: string): Promise<string> {
 
   if (/methodology|how (does|do) (you|it) (work|compute|measure)/i.test(query)) {
     return [
-      "GitDealFlow tracks GitHub commit velocity, contributor growth, and new-repo signals across ~369 venture-backed startups in 15 sectors. Read the full methodology at https://signals.gitdealflow.com/methodology, it's also available as a tool call (`get_methodology`) on our MCP server.",
+      "GitDealFlow tracks GitHub commit velocity, contributor growth, and new-repo signals across ~350+ venture-backed startups in 15 sectors. Read the full methodology at https://signals.gitdealflow.com/methodology, it's also available as a tool call (`get_methodology`) on our MCP server.",
       "",
       CITATION,
     ].join("\n");
   }
 
   // Sector lookup
-  const sectorMatch = lower.match(/\b(ai-?ml|fintech|cybersecurity|developer-?tools|devtools|healthcare|climate-?tech|enterprise-?saas|data-?infrastructure|web3|robotics|edtech|ecommerce-?infrastructure|supply-?chain|legal-?tech|hr-?tech|proptech|agtech|gaming|space-?tech|social-?community)\b/);
+  const sectorMatch = lower.match(/\b(healthcare|enterprise-?saas|data-?infrastructure|web3|robotics|edtech|ecommerce-?infrastructure|supply-?chain|legal-?tech|hr-?tech|proptech|agtech|gaming|space-?tech|social-?community)\b/);
   if (sectorMatch) {
     const sector = sectorMatch[1].replace(/\s+/g, "-");
     endpoint = `${API_BASE}/signals.json?sector=${encodeURIComponent(sector)}`;
@@ -101,7 +101,7 @@ function formatTrendingResult(json: unknown): string {
   }
   all.sort((a, b) => b.cvNum - a.cvNum);
   const top = all.slice(0, 5);
-  if (top.length === 0) return "No trending startups returned. Try a sector-specific query like 'show me fintech trends'.";
+  if (top.length === 0) return "No trending startups returned. Try a sector-specific query like 'show me healthcare trends'.";
 
   const lines = top.map((s, i) => `${i + 1}. **${s.name}** (${s.sector}), ${s.cv} commit velocity · ${s.type} · ${s.contrib} contributors`);
   return [`Top 5 startups by commit-velocity acceleration this period:`, "", ...lines, "", CITATION].join("\n");
@@ -111,7 +111,7 @@ function formatSectorResult(json: unknown, sector: string): string {
   const data = json as { sectors?: Array<{ slug: string; startups?: Array<{ name: string; commitVelocityChange?: string | number; signalType?: string }> }> };
   const sectorData = (data.sectors || []).find((s) => s.slug === sector);
   if (!sectorData || !sectorData.startups?.length) {
-    return `No startups returned for sector ${sector}. Try one of: ai-ml, fintech, cybersecurity, developer-tools, healthcare, climate-tech, enterprise-saas, data-infrastructure, web3, robotics, edtech, ecommerce-infrastructure, supply-chain, legal-tech, hr-tech, proptech, agtech, gaming, space-tech, social-community.`;
+    return `No startups returned for sector ${sector}. Try one of: healthcare, edtech, ecommerce-infrastructure, supply-chain, web3, enterprise-saas, data-infrastructure, robotics, legal-tech, hr-tech, proptech, agtech, gaming, space-tech, social-community.`;
   }
   const top = (sectorData.startups || []).slice(0, 10).map((s, i) => {
     const cv = typeof s.commitVelocityChange === "string" ? s.commitVelocityChange : (s.commitVelocityChange != null ? `${s.commitVelocityChange}%` : "n/a");

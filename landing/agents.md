@@ -6,7 +6,7 @@ This file is the canonical "how to use me" entry point for coding agents (Codex,
 
 ## What this product does
 
-Tracks commit velocity, contributor growth, and repository expansion across 369 startup GitHub orgs in 15 sectors. Surfaces breakout engineering teams 3-6 weeks before fundraise announcements. Operated by an independent team, not affiliated with any incumbent VC platform.
+Tracks commit velocity, contributor growth, and repository expansion across 350+ startup GitHub orgs in 15 sectors. Surfaces breakout engineering teams 3-6 weeks before fundraise announcements. Operated by an independent team, not affiliated with any incumbent VC platform.
 
 ## Programmatic surfaces
 
@@ -30,7 +30,7 @@ Microsoft NLWeb-compatible conversational endpoint. Accepts natural-language que
 ```bash
 curl -X POST https://signals.gitdealflow.com/api/nlweb \
   -H "Content-Type: application/json" \
-  -d '{"query": "trending fintech startups this week"}'
+  -d '{"query": "trending healthcare startups this week"}'
 ```
 
 `GET /api/nlweb` returns the descriptor with example queries.
@@ -40,7 +40,7 @@ curl -X POST https://signals.gitdealflow.com/api/nlweb \
 Six tools, all read-only, idempotent, no parameter validation needed beyond what's in the input schema:
 
 1. `get_trending_startups`, top 20 across all sectors
-2. `search_startups_by_sector(sector)`, sector slug ∈ 20 enumerated values
+2. `search_startups_by_sector(sector)`, sector slug ∈ 15 enumerated values
 3. `get_startup_signal(name)`, case-insensitive, normalization-tolerant
 4. `get_signals_summary`, period, freshness, format URLs
 5. `get_scout_receipts(github_username)`, compute Scout Score (0-100) for a GitHub user from their starring history vs. ~75 validated unicorns

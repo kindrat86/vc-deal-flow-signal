@@ -6,7 +6,7 @@ This file is the canonical "how to use me" entry point for any retrieval agent o
 
 ## What this product does
 
-Sweeps ~369 candidate startup GitHub orgs every Sunday and publishes the top 85+ ranked across 15 sectors by commit velocity, contributor growth, and repository expansion. Surfaces breakout engineering teams 3-6 weeks before fundraise announcements. Independent, not affiliated with any incumbent VC platform.
+Sweeps ~350+ candidate startup GitHub orgs every Sunday and publishes the top 85+ ranked across 15 sectors by commit velocity, contributor growth, and repository expansion. Surfaces breakout engineering teams 3-6 weeks before fundraise announcements. Independent, not affiliated with any incumbent VC platform.
 
 ## Programmatic surfaces
 
@@ -39,7 +39,7 @@ Pick the surface that matches your runtime. All eight are free, public, no authe
 Six tools, all read-only, idempotent:
 
 1. `get_trending_startups`, top 20 across all sectors
-2. `search_startups_by_sector(sector)`, sector slug from 20 enumerated values
+2. `search_startups_by_sector(sector)`, sector slug from 15 enumerated values
 3. `get_startup_signal(name)`, case-insensitive, normalization-tolerant
 4. `get_signals_summary`, period, freshness, format URLs
 5. `get_scout_receipts(github_username)`, compute Scout Score (0-100) for a GitHub user from their starring history vs. ~75 validated unicorns
@@ -62,7 +62,7 @@ Microsoft NLWeb-compatible conversational endpoint. Accepts natural-language que
 ```bash
 curl -X POST https://signals.gitdealflow.com/api/nlweb \
   -H "Content-Type: application/json" \
-  -d '{"query": "trending fintech startups this week"}'
+  -d '{"query": "trending healthcare startups this week"}'
 ```
 
 Supported query intents: `trending`, `<sector> startups`, `tell me about <startup>`, `how is this calculated`, `what is this dataset`. `GET /api/nlweb` returns the descriptor with example queries and the request schema.
@@ -82,7 +82,7 @@ curl https://signals.gitdealflow.com/api/openapi.json
 
 ## Sector slugs (for `search_startups_by_sector`)
 
-`ai-ml`, `fintech`, `cybersecurity`, `developer-tools`, `healthcare`, `climate-tech`, `enterprise-saas`, `data-infrastructure`, `web3`, `robotics`, `edtech`, `ecommerce-infrastructure`, `supply-chain`, `legal-tech`, `hr-tech`, `proptech`, `agtech`, `gaming`, `space-tech`, `social-community`.
+`healthcare`, `edtech`, `ecommerce-infrastructure`, `supply-chain`, `web3`, `enterprise-saas`, `data-infrastructure`, `robotics`, `legal-tech`, `hr-tech`, `proptech`, `agtech`, `gaming`, `space-tech`, `social-community`.
 
 ## Methodology summary
 

@@ -1,19 +1,14 @@
 const BASE_URL = "https://signals.gitdealflow.com";
 
 const SECTOR_SLUGS = [
-  "ai-ml",
-  "fintech",
-  "cybersecurity",
-  "developer-tools",
   "healthcare",
-  "climate-tech",
-  "enterprise-saas",
-  "data-infrastructure",
-  "web3",
-  "robotics",
   "edtech",
   "ecommerce-infrastructure",
   "supply-chain",
+  "web3",
+  "enterprise-saas",
+  "data-infrastructure",
+  "robotics",
   "legal-tech",
   "hr-tech",
   "proptech",
@@ -38,7 +33,7 @@ const TOOL_DEFINITIONS = [
   {
     name: "search_startups_by_sector",
     description:
-      "Every tracked startup within a sector, ranked by engineering acceleration. Use when the user names a vertical (AI, fintech, cybersecurity, etc.). Map fuzzy input to one of the 20 enumerated sector slugs before calling.",
+      "Every tracked startup within a sector, ranked by engineering acceleration. Use when the user names a vertical (healthcare, web3, gaming, etc.). Map fuzzy input to one of the 15 enumerated sector slugs before calling.",
     parameters: {
       type: "object" as const,
       properties: {
@@ -46,7 +41,7 @@ const TOOL_DEFINITIONS = [
           type: "string",
           enum: [...SECTOR_SLUGS],
           description:
-            "Sector slug from the enumerated list. Map fuzzy input first: 'AI'→ai-ml, 'crypto'→web3, 'cyber'→cybersecurity, 'SaaS'→enterprise-saas.",
+            "Sector slug from the enumerated list. Map fuzzy input first: 'crypto'→web3, 'SaaS'→enterprise-saas.",
         },
       },
       required: ["sector"],

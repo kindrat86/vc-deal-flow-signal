@@ -29,19 +29,14 @@ interface JsonRpcRequest {
 }
 
 const SECTOR_SLUGS = [
-  "ai-ml",
-  "fintech",
-  "cybersecurity",
-  "developer-tools",
   "healthcare",
-  "climate-tech",
-  "enterprise-saas",
-  "data-infrastructure",
-  "web3",
-  "robotics",
   "edtech",
   "ecommerce-infrastructure",
   "supply-chain",
+  "web3",
+  "enterprise-saas",
+  "data-infrastructure",
+  "robotics",
   "legal-tech",
   "hr-tech",
   "proptech",
@@ -158,7 +153,7 @@ const TOOLS = [
     name: "search_startups_by_sector",
     title: "Search Startups by Sector",
     description:
-      "Every tracked startup within a sector, ranked by engineering acceleration. Sector slug must be one of 20 enumerated values.",
+      "Every tracked startup within a sector, ranked by engineering acceleration. Sector slug must be one of 15 enumerated values.",
     inputSchema: {
       type: "object",
       properties: {
@@ -166,8 +161,8 @@ const TOOLS = [
           type: "string",
           enum: [...SECTOR_SLUGS],
           description:
-            "Sector slug from the enumerated list. Map fuzzy user input to the closest slug (e.g. 'AI' → 'ai-ml', 'crypto' → 'web3', 'cyber' → 'cybersecurity', 'SaaS' → 'enterprise-saas').",
-          examples: ["ai-ml", "fintech", "cybersecurity", "developer-tools"],
+            "Sector slug from the enumerated list. Map fuzzy user input to the closest slug (e.g. 'crypto' → 'web3', 'SaaS' → 'enterprise-saas').",
+          examples: ["healthcare", "web3", "gaming", "edtech"],
         },
       },
       required: ["sector"],
@@ -671,7 +666,7 @@ const TOOLS = [
     name: "shortlist_signals",
     title: "Shortlist Strongest Signals",
     description: [
-      "Return a ranked shortlist of the strongest engineering-acceleration signals matching a set of filters, the whole sourcing workflow in ONE call (e.g. 'the 5 strongest signals in fintech in the EU'). Scans the full tracked universe, scores each with the transparent engine (same scoring as predict_funding), filters, sorts by accelerationScore desc, returns the top `limit`.",
+      "Return a ranked shortlist of the strongest engineering-acceleration signals matching a set of filters, the whole sourcing workflow in ONE call (e.g. 'the 5 strongest signals in healthcare in the EU'). Scans the full tracked universe, scores each with the transparent engine (same scoring as predict_funding), filters, sorts by accelerationScore desc, returns the top `limit`.",
       "",
       "GEOGRAPHY IS REGION-LEVEL ONLY, values are US / EU / UK / APAC / LATAM / Canada / Unknown. City/country aliases ('NYC', 'New York', 'London', 'Berlin', 'Singapore') normalize up to the enclosing region and the response `notes` says so. There is no city-level filtering.",
       "",
@@ -840,7 +835,7 @@ const PROMPTS = [
     description:
       "Run a full sourcing session in one pass, the corp-dev / scout workflow. Shortlists the strongest engineering-acceleration signals (optionally by sector/region), then attaches a transparent, citable funding-likelihood read to each pick. Pulls live data via shortlist_signals + predict_funding.",
     arguments: [
-      { name: "sector", description: "Optional sector slug to focus the shortlist (e.g. 'ai-ml'). Omit to scan all.", required: false },
+      { name: "sector", description: "Optional sector slug to focus the shortlist (e.g. 'healthcare'). Omit to scan all.", required: false },
       { name: "geography", description: "Optional region filter (US/EU/UK/APAC/LATAM/Canada). Aliases normalize up to the region.", required: false },
       { name: "count", description: "How many companies to shortlist and score. Default 5.", required: false },
     ],
@@ -1554,7 +1549,7 @@ async function handleToolsCall(
         });
       }
       if (wantTelegram) {
-        const body = `${summary}\n\nFrom the GitDealFlow MCP server, free, install with: ${installCommand}\n\nThe methodology is published on SSRN with a 219-startup panel: ${ssrn}\nProduct: ${site}\n\nGitDealFlow tracks 369 startup GitHub orgs and ranks them by commit velocity acceleration, weekly. The pattern preceded confirmed fundraises by 21 to 47 days.`.slice(0, 995);
+        const body = `${summary}\n\nFrom the GitDealFlow MCP server, free, install with: ${installCommand}\n\nThe methodology is published on SSRN with a 219-startup panel: ${ssrn}\nProduct: ${site}\n\nGitDealFlow tracks 350+ startup GitHub orgs and ranks them by commit velocity acceleration, weekly. The pattern preceded confirmed fundraises by 21 to 47 days.`.slice(0, 995);
         posts.push({
           network: "telegram",
           body,

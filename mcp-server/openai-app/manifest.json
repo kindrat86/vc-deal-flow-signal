@@ -39,7 +39,7 @@
     },
     {
       "name": "search_startups_by_sector",
-      "summary": "Sector-filtered ranking. Sector slug from 20 enumerated values."
+      "summary": "Sector-filtered ranking. Sector slug from 15 enumerated values."
     },
     {
       "name": "get_startup_signal",
@@ -88,9 +88,9 @@
   ],
   "example_prompts": [
     "Show me trending startups this week",
-    "Who's moving in fintech right now",
+    "Who's moving in healthcare right now",
     "Tell me about Roboflow",
-    "Find a dark horse in cybersecurity",
+    "Find a dark horse in web3",
     "Compare SkyPilot to Modular",
     "Is Roboflow likely to raise soon, and what's the evidence?",
     "Shortlist the 5 strongest AI/ML signals in the US",
