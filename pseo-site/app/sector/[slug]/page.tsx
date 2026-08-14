@@ -172,6 +172,12 @@ export default async function SectorHubPage({ params }: PageProps) {
           {s.tagline}
         </p>
         <p className="text-gray-400 text-base leading-relaxed mb-3">{s.intro}</p>
+        <div className="mb-8 rounded-lg border border-sky-900/60 bg-sky-950/30 p-4 sm:p-5">
+          <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-sky-400">
+            Analyst note
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed sm:text-base">{s.analystNote}</p>
+        </div>
         <SignalDisclaimer className="mb-10" />
 
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-10">
