@@ -77,7 +77,7 @@ const TWEET_TEXT =
   "I drag-installed a bookmarklet that shows engineering momentum + Scout Score on any github.com page. Zero install, no extension. Free.";
 const TWEET_INTENT = `https://x.com/intent/tweet?text=${encodeURIComponent(
   TWEET_TEXT,
-)}&url=${encodeURIComponent(`${SITE}/install`)}&via=data_nerd`;
+)}&url=${encodeURIComponent(`${SITE}/install`)}&via=sipiteno`;
 
 export default function InstallClient() {
   const [copied, setCopied] = useState(false);

@@ -32,7 +32,7 @@ const DATASET_ENTRY = `@misc{datanerd2026dataset,
   year         = {2026},
   howpublished = {Dataset},
   url          = {https://signals.gitdealflow.com/api/dataset.jsonl},
-  note         = {Newline-delimited JSON. 140 venture-backed startups across 20 sectors. Refreshed weekly. Licensed CC BY 4.0.},
+  note         = {Newline-delimited JSON. 140 venture-backed startups across 15 sectors. Refreshed weekly. Licensed CC BY 4.0.},
   keywords     = {dataset, github, commit velocity, contributor growth},
 }`;
 

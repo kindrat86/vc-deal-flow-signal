@@ -86,7 +86,7 @@ export const alternatives: Alternative[] = [
       },
       {
         heading: "Data sources",
-        body: "Harmonic aggregates LinkedIn, news, startup databases, and proprietary network graphs — broad coverage, heavy curation. VC Deal Flow Signal pulls directly from GitHub's public API: commit activity, contributor stats, repository creation, and release cadence across 20 sector-specific topic clusters. The data is narrower but the source is canonical and the update cycle is weekly.",
+        body: "Harmonic aggregates LinkedIn, news, startup databases, and proprietary network graphs — broad coverage, heavy curation. VC Deal Flow Signal pulls directly from GitHub's public API: commit activity, contributor stats, repository creation, and release cadence across 15 sector-specific topic clusters. The data is narrower but the source is canonical and the update cycle is weekly.",
       },
       {
         heading: "Coverage",
@@ -116,7 +116,7 @@ export const alternatives: Alternative[] = [
       { question: "Is VC Deal Flow Signal a direct Harmonic.ai alternative?", answer: "It is a complementary tool rather than a full feature replacement. Harmonic covers all sectors with team-level signals; VC Deal Flow Signal focuses on technical startups with engineering-level signals. For investors who care about technical sectors and want a lower-cost entry point, it is a strong alternative." },
       { question: "Why is VC Deal Flow Signal so much cheaper than Harmonic.ai?", answer: "Different data sources and different target customers. Harmonic licenses and curates broad data from many providers and sells to enterprise VCs. VC Deal Flow Signal pulls directly from GitHub's public API, focuses on a narrower signal, and is priced for individual investors and smaller funds." },
       { question: "Can I use both Harmonic.ai and VC Deal Flow Signal?", answer: "Yes, and many investors do. Harmonic is strong for broad candidate generation across all sectors; VC Deal Flow Signal is strong as a confirming engineering signal on technical startups. They answer different questions and their signals rarely overlap." },
-      { question: "How does VC Deal Flow Signal compare to Harmonic.ai on coverage?", answer: "Harmonic covers all sectors, including non-technical. VC Deal Flow Signal covers only technical startups with public GitHub activity — roughly 20 sector clusters in AI/ML, infrastructure, dev tools, and enterprise SaaS. If you invest in consumer brands or healthtech, Harmonic has broader reach." },
+      { question: "How does VC Deal Flow Signal compare to Harmonic.ai on coverage?", answer: "Harmonic covers all sectors, including non-technical. VC Deal Flow Signal covers only technical startups with public GitHub activity — roughly 15 sector clusters in AI/ML, infrastructure, dev tools, and enterprise SaaS. If you invest in consumer brands or healthtech, Harmonic has broader reach." },
     ],
     relatedSectors: ["ai-ml", "enterprise-saas", "developer-tools"],
   },
@@ -143,7 +143,7 @@ export const alternatives: Alternative[] = [
       },
       {
         heading: "Sector taxonomy",
-        body: "Dealroom has one of the most detailed sector taxonomies in the industry, with hundreds of subsectors and a strong European bias. VC Deal Flow Signal operates in 20 sector clusters derived from GitHub topic taxonomy — narrower, more technical, and not tied to any regional bias. If you need granular sector filtering, Dealroom wins. If you want signals by engineering domain, VC Deal Flow Signal is closer to the work.",
+        body: "Dealroom has one of the most detailed sector taxonomies in the industry, with hundreds of subsectors and a strong European bias. VC Deal Flow Signal operates in 15 sector clusters derived from GitHub topic taxonomy — narrower, more technical, and not tied to any regional bias. If you need granular sector filtering, Dealroom wins. If you want signals by engineering domain, VC Deal Flow Signal is closer to the work.",
       },
       {
         heading: "Pricing",
@@ -203,7 +203,7 @@ export const alternatives: Alternative[] = [
       },
       {
         heading: "Coverage",
-        body: "Forager.ai covers any company with a public web footprint — consumer, SaaS, hardware, services, across all sectors. VC Deal Flow Signal covers technical startups with public GitHub activity in about 20 sector clusters. If you invest in consumer or services companies, Forager is more applicable. If you invest in technical and developer-facing products, GitHub signals are closer to the actual work.",
+        body: "Forager.ai covers any company with a public web footprint — consumer, SaaS, hardware, services, across all sectors. VC Deal Flow Signal covers technical startups with public GitHub activity in about 15 sector clusters. If you invest in consumer or services companies, Forager is more applicable. If you invest in technical and developer-facing products, GitHub signals are closer to the actual work.",
       },
       {
         heading: "Pricing and access",
@@ -257,7 +257,7 @@ export const alternatives: Alternative[] = [
           name: "VC Deal Flow Signal",
           url: "https://signals.gitdealflow.com",
           isUs: true,
-          free: "Yes — weekly report, 20 sector pages, JSON/CSV/RSS + MCP API",
+          free: "Yes — weekly report, 15 sector pages, JSON/CSV/RSS + MCP API",
           signal: "GitHub commit-velocity acceleration (leading, ~3–6 wks pre-raise)",
           bestFor: "Angels, scouts, technical funds sourcing before the round",
         },
@@ -313,7 +313,7 @@ export const alternatives: Alternative[] = [
       },
       {
         heading: "Coverage and sector fit",
-        body: "Crunchbase covers every sector with equal authority — consumer, SaaS, fintech, healthtech, hardware, services. VC Deal Flow Signal covers technical startups with meaningful public engineering activity, primarily AI/ML, infrastructure, dev tools, and enterprise SaaS — about 20 sector clusters. For non-technical investing, Crunchbase is more comprehensive. For technical investing, GitHub signal is closer to the actual product work.",
+        body: "Crunchbase covers every sector with equal authority — consumer, SaaS, fintech, healthtech, hardware, services. VC Deal Flow Signal covers technical startups with meaningful public engineering activity, primarily AI/ML, infrastructure, dev tools, and enterprise SaaS — about 15 sector clusters. For non-technical investing, Crunchbase is more comprehensive. For technical investing, GitHub signal is closer to the actual product work.",
       },
       {
         heading: "Workflow composition",
@@ -342,7 +342,7 @@ export const alternatives: Alternative[] = [
     faqs: [
       { question: "Is VC Deal Flow Signal a Crunchbase replacement?", answer: "No. Crunchbase is a structured funding database; VC Deal Flow Signal is a weekly signal engine. They answer different questions. Most investors run both: VC Deal Flow Signal as the leading signal, Crunchbase as the lagging context layer." },
       { question: "Why is GitHub signal a leading indicator vs Crunchbase data?", answer: "Engineering acceleration — commit velocity, contributor growth, infrastructure buildout — typically begins 6-12 weeks before a startup announces a fundraise. By the time the round closes and Crunchbase data is updated, the engineering acceleration has been visible for weeks. The engineering signal is causally upstream of the funding signal." },
-      { question: "How much cheaper is VC Deal Flow Signal than Crunchbase Pro?", answer: "VC Deal Flow Signal Dashboard is EUR 49/month during beta vs Crunchbase Pro at $49-$99/month for individual investors. The free tier of VC Deal Flow Signal (weekly Signal Report plus 20 sector pages) is also more substantial than Crunchbase's free tier." },
+      { question: "How much cheaper is VC Deal Flow Signal than Crunchbase Pro?", answer: "VC Deal Flow Signal Dashboard is EUR 49/month during beta vs Crunchbase Pro at $49-$99/month for individual investors. The free tier of VC Deal Flow Signal (weekly Signal Report plus 15 sector pages) is also more substantial than Crunchbase's free tier." },
       { question: "Which is better for non-technical sectors?", answer: "Crunchbase. VC Deal Flow Signal only covers technical startups with public GitHub activity. For consumer brands, healthtech, fintech services, or hardware companies without meaningful open-source presence, Crunchbase's coverage is much broader and more relevant." },
       { question: "Can I see VC Deal Flow Signal data through a Crunchbase profile?", answer: "Not currently. The two products are independent. The standard workflow is to use VC Deal Flow Signal to identify accelerating technical startups, then look up their Crunchbase profile separately for funding history and team context." },
     ],
@@ -371,7 +371,7 @@ export const alternatives: Alternative[] = [
       },
       {
         heading: "Sector coverage",
-        body: "Crunchbase covers all sectors with equal authority — consumer, SaaS, healthtech, fintech, services, hardware. VC Deal Flow Signal covers technical startups with public GitHub activity across about 20 sector clusters. For non-technical sectors, Crunchbase is more comprehensive; for technical sectors, GitHub signals are closer to the actual product work.",
+        body: "Crunchbase covers all sectors with equal authority — consumer, SaaS, healthtech, fintech, services, hardware. VC Deal Flow Signal covers technical startups with public GitHub activity across about 15 sector clusters. For non-technical sectors, Crunchbase is more comprehensive; for technical sectors, GitHub signals are closer to the actual product work.",
       },
       {
         heading: "Pricing",
@@ -435,7 +435,7 @@ export const alternatives: Alternative[] = [
       },
       {
         heading: "Coverage",
-        body: "PitchBook covers 3.4 million companies globally across all sectors and stages. VC Deal Flow Signal covers technical startups with public GitHub activity — about 20 sector clusters, narrower but with canonical source data. PitchBook is the right tool for non-technical sectors (consumer, healthcare delivery, financial services); GitHub signals are stronger for AI/ML, dev tools, infrastructure, and enterprise SaaS.",
+        body: "PitchBook covers 3.4 million companies globally across all sectors and stages. VC Deal Flow Signal covers technical startups with public GitHub activity — about 15 sector clusters, narrower but with canonical source data. PitchBook is the right tool for non-technical sectors (consumer, healthcare delivery, financial services); GitHub signals are stronger for AI/ML, dev tools, infrastructure, and enterprise SaaS.",
       },
       {
         heading: "Using them together",
@@ -449,7 +449,7 @@ export const alternatives: Alternative[] = [
         { feature: "Lead time", values: { "VC Deal Flow Signal": "3–6 weeks pre-fundraise", "PitchBook": "Post-fundraise (lagging)" } },
         { feature: "Free tier", values: { "VC Deal Flow Signal": "Weekly report + sector pages", "PitchBook": "None" } },
         { feature: "Paid pricing", values: { "VC Deal Flow Signal": "EUR 49/mo", "PitchBook": "$20,000+/year per seat" } },
-        { feature: "Coverage", values: { "VC Deal Flow Signal": "Technical startups, ~20 sectors", "PitchBook": "3.4M companies, all sectors" } },
+        { feature: "Coverage", values: { "VC Deal Flow Signal": "Technical startups, ~15 sectors", "PitchBook": "3.4M companies, all sectors" } },
         { feature: "Best for", values: { "VC Deal Flow Signal": "Early sourcing, technical sectors", "PitchBook": "Due diligence, LP reporting, market mapping" } },
       ],
     },
@@ -600,7 +600,7 @@ export const alternatives: Alternative[] = [
       },
       {
         heading: "Coverage shape",
-        body: "Tracxn covers all sectors with breadth. VC Deal Flow Signal covers technical startups with public engineering activity — about 20 sector clusters. For non-technical investing (consumer, services, healthtech delivery), Tracxn is the better fit. For technical sector sourcing, GitHub signals are closer to the actual product work.",
+        body: "Tracxn covers all sectors with breadth. VC Deal Flow Signal covers technical startups with public engineering activity — about 15 sector clusters. For non-technical investing (consumer, services, healthtech delivery), Tracxn is the better fit. For technical sector sourcing, GitHub signals are closer to the actual product work.",
       },
     ],
     featureTable: {
@@ -660,7 +660,7 @@ export const alternatives: Alternative[] = [
       features: [
         { feature: "Signal channel", values: { "VC Deal Flow Signal": "GitHub engineering acceleration", "Specter": "Web/social composite (multi-channel)" } },
         { feature: "Lead time", values: { "VC Deal Flow Signal": "3–6 weeks pre-fundraise", "Specter": "Mixed (launch / concurrent)" } },
-        { feature: "Coverage", values: { "VC Deal Flow Signal": "Technical startups, ~20 sectors", "Specter": "All sectors, broad" } },
+        { feature: "Coverage", values: { "VC Deal Flow Signal": "Technical startups, ~15 sectors", "Specter": "All sectors, broad" } },
         { feature: "Free tier", values: { "VC Deal Flow Signal": "Permanent", "Specter": "Trial / limited" } },
         { feature: "Paid pricing", values: { "VC Deal Flow Signal": "EUR 49/mo", "Specter": "Tiered (hundreds/mo+)" } },
       ],

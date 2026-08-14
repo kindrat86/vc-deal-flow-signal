@@ -180,7 +180,7 @@ export const LAUNCHES: Launch[] = [
         headline:
           "‘Just sell us a higher seat tier’ doesn’t work. Agents have a different consumption shape than humans.",
         body: [
-          "I tried two fixes before I built this one. First, I tried higher Insider tiers (€197 → €197 → €497). The math broke immediately: a single agent scaling across 4,200 orgs ends up running ~30,000 deep-signal calls in a weekend. €497/month doesn’t cover the GitHub-API cost layer underneath, let alone the regression compute.",
+          "I tried two fixes before I built this one. First, I tried higher Insider tiers (€197 → €197 → €497). The math broke immediately: a single agent scaling across 369 orgs ends up running ~30,000 deep-signal calls in a weekend. €497/month doesn’t cover the GitHub-API cost layer underneath, let alone the regression compute.",
           "Second, I tried a flat ‘fair-use ceiling.’ That’s the SaaS-pricing equivalent of duct tape. The honest agents stay polite at 200 calls/month. The dishonest ones blow through 30,000 the first week and the ceiling becomes the entire ceiling — at which point the only honest move is to cut their API access, which is a worse experience than just charging them per call up front.",
           "What this product needed was the simplest economic model in software: a credit. Pay for the call, get the result, walk away. No subscription, no overage drama, no per-seat fiction. The fix had to be priced by what an agent actually does, not by what a human looks like to a billing system.",
         ],
@@ -212,7 +212,7 @@ export const LAUNCHES: Launch[] = [
     faq: [
       {
         q: "What counts as a ‘deep-signal call’?",
-        a: "One call returns the full signal panel for one GitHub org — commit-velocity acceleration, contributor-diversity Gini, dependents-graph external count, README-freshness diff size, new-repo-creation rate, issue-to-PR ratio, and the composite score. Calls against orgs not in our universe (4,200+ venture-backed startup orgs) are misses and don’t decrement your balance.",
+        a: "One call returns the full signal panel for one GitHub org — commit-velocity acceleration, contributor-diversity Gini, dependents-graph external count, README-freshness diff size, new-repo-creation rate, issue-to-PR ratio, and the composite score. Calls against orgs not in our universe (350+ venture-backed startup orgs) are misses and don’t decrement your balance.",
       },
       {
         q: "Is this rate-limited?",
@@ -446,7 +446,7 @@ export const LAUNCHES: Launch[] = [
         body: [
           "The 47-page PDF opens with the executive summary: top 5 movers, top 3 breakouts, the regression statistics that backed the picks, and the false-positive caveat list. If you read nothing else, the first 4 pages set the watchlist for the quarter.",
           "Pages 5–32 are the ranked top 25, one page each: org name, GitHub URL, 14-day commit-velocity delta, contributor influx (30-day), dependents graph, README freshness, and a 60-word thesis paragraph on why this org is on the list. The contributor influx map is a network diagram with the 30-day joiners highlighted.",
-          "Pages 33–47 are the breakout dossier: 8–12 named pre-Crunchbase orgs we believe will register a fundraise in 21–47 days. Each gets a 1.5-page memo with thesis tags, the specific signals that triggered the pick, and a confidence score. The raw CSV mirrors every metric for the entire universe (4,200+ orgs) so you can re-rank by any criterion.",
+          "Pages 33–47 are the breakout dossier: 8–12 named pre-Crunchbase orgs we believe will register a fundraise in 21–47 days. Each gets a 1.5-page memo with thesis tags, the specific signals that triggered the pick, and a confidence score. The raw CSV mirrors every metric for the entire universe (369+ orgs) so you can re-rank by any criterion.",
           "The 12-minute synthetic-voice walkthrough is a guided audio tour through the top 5 picks — what stood out, what we’re unsure about, what the data is saying that the headlines aren’t. Played at 1.5× over Monday breakfast, you’re fully briefed by 09:15.",
         ],
         videoCue: {
@@ -467,7 +467,7 @@ export const LAUNCHES: Launch[] = [
         body: [
           "‘Is a weekend really enough depth?’ Honest answer: depth depends on what you’re after. If you want a 60-page McKinsey-style narrative on the regulatory landscape and the macro cycle, no — that’s a three-week consultancy engagement. If you want the actual list of 8 companies you should be writing checks at right now, sorted by the signal that leads fundraise announcements by 21–47 days — that’s a weekend of compute, and the artifact is more accurate than the three-week version because it’s computed, not opined.",
           "‘How do you avoid hallucinating breakouts?’ Two-period confirmation rule. A breakout candidate has to register a 2× contributor spike in two consecutive 14-day windows before it lands on the list. Single-window spikes are filtered out as noise. We also include a false-positive caveat list — the candidates that almost made the cut but didn’t pass the two-period filter. You see what we excluded and why.",
-          "‘What if my sector isn’t covered?’ We track 20 sectors. The full list is at /weekly. If you want a sector outside that universe, email signals@gitdealflow.com before checkout — we may extend to your sector for the cohort, or refund. We don’t sell sweeps for sectors we can’t actually run the panel on.",
+          "‘What if my sector isn’t covered?’ We track 15 sectors. The full list is at /weekly. If you want a sector outside that universe, email signals@gitdealflow.com before checkout — we may extend to your sector for the cohort, or refund. We don’t sell sweeps for sectors we can’t actually run the panel on.",
           "‘Is the €1,797 refundable?’ Yes — if zero of the breakouts in our list register a fundraise within 90 days of delivery, we refund or credit toward the next quarter at your choice. The 90-day window is the median lead-time floor; missing it entirely means the panel didn’t fire and you shouldn’t pay for the artifact.",
         ],
         videoCue: {

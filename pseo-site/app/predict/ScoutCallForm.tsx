@@ -85,7 +85,7 @@ export default function ScoutCallForm({ prefilledOrg }: Props) {
     const shareOrg = normalizeOrg(githubOrg);
     const fallbackUrl = `https://signals.gitdealflow.com/predict?org=${encodeURIComponent(shareOrg)}&utm_source=share&utm_medium=scout_call&utm_campaign=prediction_${predictionId || "v1"}`;
     const effectiveShareUrl = shareUrl || fallbackUrl;
-    const shareText = `Just locked in my scout call on ${shareOrg}: ${prediction?.toUpperCase()} on raising in 6 months. ${confidence}% confidence.${scoutHandle ? ` (@${scoutHandle} on @data_nerd's GitDealFlow.)` : ""}\n\nPlay the game, pick a startup. The recipient gets a 7-day extended preview:`;
+    const shareText = `Just locked in my scout call on ${shareOrg}: ${prediction?.toUpperCase()} on raising in 6 months. ${confidence}% confidence.${scoutHandle ? ` (@${scoutHandle} on @sipiteno's GitDealFlow.)` : ""}\n\nPlay the game, pick a startup. The recipient gets a 7-day extended preview:`;
     const xHref = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(effectiveShareUrl)}`;
     const linkedinHref = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(effectiveShareUrl)}`;
 

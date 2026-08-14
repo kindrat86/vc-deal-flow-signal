@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@data_nerd",
+    site: "@sipiteno",
     title: TITLE,
     description: DESCRIPTION,
     images: [`${SITE}/api/og/badge-builder`],

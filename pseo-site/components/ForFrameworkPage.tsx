@@ -28,7 +28,7 @@ export function ForFrameworkPage({ framework: f }: Props) {
   const path = `/for-${f.slug}`;
   const url = `${SITE}${path}`;
   const title = `Use GitDealFlow with ${f.name} — VC Engineering Signals for Your Agent`;
-  const description = `${f.hook} Free A2A endpoint, MCP server, no auth. 140 venture-backed startups across 20 sectors, refreshed weekly.`;
+  const description = `${f.hook} Free A2A endpoint, MCP server, no auth. 140 venture-backed startups across 15 sectors, refreshed weekly.`;
 
   const others = FRAMEWORKS.filter((x) => x.slug !== f.slug);
 

@@ -57,7 +57,7 @@ function buildBuiltWithBadge(variant: BuiltWithVariant) {
 function buildTweetIntent({ text, url }: { text: string; url: string }): string {
   const t = encodeURIComponent(text);
   const u = encodeURIComponent(url);
-  return `https://x.com/intent/tweet?text=${t}&url=${u}&via=data_nerd`;
+  return `https://x.com/intent/tweet?text=${t}&url=${u}&via=sipiteno`;
 }
 
 function trackTweetIntent(kind: "scout" | "momentum", handleOrRepo: string) {

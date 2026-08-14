@@ -41,7 +41,7 @@ const STACK_ITEMS = [
   {
     label: "Everything in Dashboard Beta",
     description:
-      "140 venture-backed startups across 20 sectors, refreshed every Monday 06:00 UTC. Sector filters. Five-quarter historical comparison. Watchlists. Both Chrome extensions. Free MCP forever.",
+      "140 venture-backed startups across 15 sectors, refreshed every Monday 06:00 UTC. Sector filters. Five-quarter historical comparison. Watchlists. Both Chrome extensions. Free MCP forever.",
     standalone: "€348/yr",
   },
   {
@@ -418,7 +418,7 @@ export default function InsiderPage() {
                 SSRN abstract 6606558
               </a>
               {" "}because we don&rsquo;t mind. Building the pipeline that
-              ranks 4,200 orgs every week, deduplicates them against fundraise
+              ranks 369 orgs every week, deduplicates them against fundraise
               announcements, classifies the signal type, and ships the result
               by Sunday 09:00 UTC is its own job. €197/mo is roughly the cost
               of ninety minutes of that engineer&rsquo;s time. You buy the
@@ -843,7 +843,7 @@ export default function InsiderPage() {
             <li className="flex gap-3">
               <span className="text-amber-400 shrink-0 font-bold">→</span>
               <span>
-                Everything in Dashboard Beta — 140 startups, 20 sectors,
+                Everything in Dashboard Beta — 140 startups, 15 sectors,
                 weekly refresh, both Chrome extensions, free MCP forever.
               </span>
             </li>

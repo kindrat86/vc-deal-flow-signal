@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@data_nerd",
+    site: "@sipiteno",
     title: TITLE,
     description: DESCRIPTION,
   },
@@ -44,7 +44,7 @@ const TOOLS = [
   {
     name: "get_trending_startups",
     summary:
-      "Top 20 startups by engineering acceleration across all 20 sectors for the current week.",
+      "Top 20 startups by engineering acceleration across all 15 sectors for the current week.",
   },
   {
     name: "search_startups_by_sector",

@@ -68,7 +68,7 @@ const productUpdates: ProductEntry[] = [
     date: "2026-04-17",
     title: "SEO hardening pass",
     tag: "seo",
-    body: "Added JSON-LD on all page types, BreadcrumbList everywhere, OG images, Twitter card metadata, enriched RSS with content:encoded, footer social links, and sitewide Twitter handle @data_nerd.",
+    body: "Added JSON-LD on all page types, BreadcrumbList everywhere, OG images, Twitter card metadata, enriched RSS with content:encoded, footer social links, and sitewide Twitter handle @sipiteno.",
   },
   {
     date: "2026-04-16",

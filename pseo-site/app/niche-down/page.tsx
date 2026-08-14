@@ -17,12 +17,12 @@ export const revalidate = 604800;
 export const metadata: Metadata = {
   title: `Niche-down — ${countNiches()} small specific opportunities, indexed by sector`,
   description:
-    "The riches are in the niches. We took the GitHub-signal sector map and split each sector into the small, specific opportunities a builder could ship or an early-stage VC could back. 20 sectors, 200 sub-niches, every entry status-flagged for build-vs-invest.",
+    "The riches are in the niches. We took the GitHub-signal sector map and split each sector into the small, specific opportunities a builder could ship or an early-stage VC could back. 15 sectors, 200 sub-niches, every entry status-flagged for build-vs-invest.",
   alternates: { canonical: "/niche-down" },
   openGraph: {
     title: `Niche-down — ${countNiches()} small specific opportunities`,
     description:
-      "20 sectors × 10 sub-niches each. Each entry: build cost, deal velocity, signal shape, build-vs-invest call.",
+      "15 sectors × 10 sub-niches each. Each entry: build cost, deal velocity, signal shape, build-vs-invest call.",
     url: `${SITE}/niche-down`,
     type: "article",
   },

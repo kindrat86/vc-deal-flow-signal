@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@data_nerd",
+    site: "@sipiteno",
     title: "GitHub Scout Score (free) — You Saw It First",
     description:
       "Free GitHub Scout Score from your starring history. No login. 8 seconds.",

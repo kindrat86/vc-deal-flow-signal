@@ -59,7 +59,7 @@ export default async function WelcomePage() {
             <CheckIcon className="text-sky-400" />
             <span>
               <strong className="text-gray-100">Full Dashboard</strong> — 100+
-              startups ranked by engineering acceleration across 20 sectors
+              startups ranked by engineering acceleration across 15 sectors
             </span>
           </li>
           <li className="flex items-start gap-3 text-gray-300">

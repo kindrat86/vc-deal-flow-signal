@@ -34,7 +34,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@data_nerd",
+    site: "@sipiteno",
     title: "Agent Diligence Answers — one cited dossier per company",
     description:
       "Who acquired X · which funds backed Y · what's the signal on Z. Public-source, machine-readable grounding for AI agents.",

@@ -136,7 +136,7 @@ const TOOLS = [
     name: "get_trending_startups",
     title: "Trending Startups",
     description:
-      "Top 20 startups by engineering acceleration across all 20 sectors for the current weekly period. Read-only, idempotent.",
+      "Top 20 startups by engineering acceleration across all 15 sectors for the current weekly period. Read-only, idempotent.",
     inputSchema: { type: "object", properties: {}, additionalProperties: false },
     outputSchema: {
       type: "object" as const,
@@ -551,7 +551,7 @@ const TOOLS = [
       "- `summary` (string, required, 10-200 chars) — the one-line takeaway to share.",
       "- `approval_token` (string, required after first call) — the 10-minute token returned by the /share-approve page.",
       "- `network` (string, optional) — 'twitter' | 'bluesky' | 'mastodon' | 'linkedin' | 'telegram' | 'all' (default: 'all').",
-      "- `mention_handle` (boolean, optional, default false) — include @data_nerd attribution (twitter/bluesky/mastodon only).",
+      "- `mention_handle` (boolean, optional, default false) — include @sipiteno attribution (twitter/bluesky/mastodon only).",
     ].join("\n"),
     inputSchema: {
       type: "object" as const,
@@ -578,7 +578,7 @@ const TOOLS = [
         mention_handle: {
           type: "boolean",
           default: false,
-          description: "Include @data_nerd attribution. Only applied to twitter/bluesky/mastodon.",
+          description: "Include @sipiteno attribution. Only applied to twitter/bluesky/mastodon.",
         },
       },
       required: ["summary", "approval_token"],
@@ -1506,7 +1506,7 @@ async function handleToolsCall(
         );
       }
 
-      const handleAttr = mentionHandle ? " (h/t @data_nerd)" : "";
+      const handleAttr = mentionHandle ? " (h/t @sipiteno)" : "";
       const installCommand = "npx @gitdealflow/mcp-signal";
       const methodologyUrl = `${BASE_URL}/methodology`;
       const ssrn = "https://ssrn.com/abstract=6606558";
@@ -1554,7 +1554,7 @@ async function handleToolsCall(
         });
       }
       if (wantTelegram) {
-        const body = `${summary}\n\nFrom the GitDealFlow MCP server — free, install with: ${installCommand}\n\nThe methodology is published on SSRN with a 219-startup panel: ${ssrn}\nProduct: ${site}\n\nGitDealFlow tracks 4,200 startup GitHub orgs and ranks them by commit velocity acceleration, weekly. The pattern preceded confirmed fundraises by 21 to 47 days.`.slice(0, 995);
+        const body = `${summary}\n\nFrom the GitDealFlow MCP server — free, install with: ${installCommand}\n\nThe methodology is published on SSRN with a 219-startup panel: ${ssrn}\nProduct: ${site}\n\nGitDealFlow tracks 369 startup GitHub orgs and ranks them by commit velocity acceleration, weekly. The pattern preceded confirmed fundraises by 21 to 47 days.`.slice(0, 995);
         posts.push({
           network: "telegram",
           body,

@@ -12,7 +12,7 @@ const GPT_URL_IS_LIVE = true;
 const TITLE =
   "Use VC Deal Flow Signal in ChatGPT — GitHub VC Signal GPT";
 const DESCRIPTION =
-  "Add the GitHub VC Signal GPT to ChatGPT in one click. Public OpenAPI Action calling signals.gitdealflow.com — find startups whose engineering is accelerating before they raise. Five tools across 20 sectors, weekly refresh, no auth, no setup.";
+  "Add the GitHub VC Signal GPT to ChatGPT in one click. Public OpenAPI Action calling signals.gitdealflow.com — find startups whose engineering is accelerating before they raise. Five tools across 15 sectors, weekly refresh, no auth, no setup.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -27,7 +27,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@data_nerd",
+    site: "@sipiteno",
     title: TITLE,
     description: DESCRIPTION,
   },
@@ -37,7 +37,7 @@ const TOOLS: { name: string; summary: string }[] = [
   {
     name: "getAllSignals",
     summary:
-      "Top 20 trending startups across all 20 sectors plus every sector's full ranked roster. The GPT slices the response for trending or sector queries.",
+      "Top 20 trending startups across all 15 sectors plus every sector's full ranked roster. The GPT slices the response for trending or sector queries.",
   },
   {
     name: "getStartupSignal",
@@ -94,7 +94,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "What does it actually rank?",
-    a: "Engineering momentum, derived from public GitHub activity. Three input metrics: commit velocity over a rolling 14-day window, contributor growth over a rolling 30-day window, and new repos over a rolling 30-day window. Output classification: breakout (sudden surge), acceleration (sustained growth), steady (healthy baseline), or cooling (declining). Approximately 400 venture-backed startups across 20 sectors are tracked.",
+    a: "Engineering momentum, derived from public GitHub activity. Three input metrics: commit velocity over a rolling 14-day window, contributor growth over a rolling 30-day window, and new repos over a rolling 30-day window. Output classification: breakout (sudden surge), acceleration (sustained growth), steady (healthy baseline), or cooling (declining). Approximately 400 venture-backed startups across 15 sectors are tracked.",
   },
   {
     q: "Why GitHub specifically?",
@@ -102,7 +102,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "Will the GPT hallucinate startups?",
-    a: "The system prompt explicitly forbids inventing startups. When you ask about a company not in the tracked universe of ~400, the Action returns status: 'no_data' and the GPT surfaces a CTA pointing to signals.gitdealflow.com. If you spot any hallucinations, email signals@gitdealflow.com — we'll tighten the instructions.",
+    a: "The system prompt explicitly forbids inventing startups. When you ask about a company not in the tracked universe of ~369, the Action returns status: 'no_data' and the GPT surfaces a CTA pointing to signals.gitdealflow.com. If you spot any hallucinations, email signals@gitdealflow.com — we'll tighten the instructions.",
   },
   {
     q: "Can I use the same data without ChatGPT?",
@@ -182,7 +182,7 @@ const jsonLd = {
       applicationCategory: "BusinessApplication",
       operatingSystem: "Web (ChatGPT)",
       description:
-        "ChatGPT GPT exposing the VC Deal Flow Signal dataset as a public OpenAPI Action. Find startups whose engineering is accelerating before they raise — six tools, 20 sectors, weekly refresh, no auth.",
+        "ChatGPT GPT exposing the VC Deal Flow Signal dataset as a public OpenAPI Action. Find startups whose engineering is accelerating before they raise — six tools, 15 sectors, weekly refresh, no auth.",
       offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
       author: {
         "@type": "Organization",
@@ -231,7 +231,7 @@ export default function ChatGPTIntegrationPage() {
           answer with commit-velocity changes, contributor deltas, signal
           classification, and a citation block — all powered by a public
           OpenAPI Action against signals.gitdealflow.com. No install. No auth.
-          Five tools across 20 sectors, refreshed every Monday.
+          Five tools across 15 sectors, refreshed every Monday.
         </p>
 
         <div className="rounded-xl border border-emerald-900/50 bg-emerald-950/30 p-4 mb-10 text-sm">

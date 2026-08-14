@@ -20,7 +20,7 @@ export default function ShareBar({ title, url }: ShareBarProps) {
         Share
       </span>
       <a
-        href={`https://x.com/intent/tweet?text=${twitterText}&url=${encodedUrl}&via=data_nerd`}
+        href={`https://x.com/intent/tweet?text=${twitterText}&url=${encodedUrl}&via=sipiteno`}
         target="_blank"
         rel="noopener noreferrer"
         className="inline-flex items-center gap-1.5 whitespace-nowrap rounded-md border border-slate-700 bg-slate-800/50 px-3 py-1.5 text-xs text-gray-400 hover:text-sky-400 hover:border-sky-500/40 transition-colors"

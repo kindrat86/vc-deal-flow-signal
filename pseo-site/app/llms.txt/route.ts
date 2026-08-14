@@ -290,14 +290,14 @@ ${useCases.map((u) => `- [${u.h1}](${BASE_URL}/use-cases/${u.slug}): ${u.descrip
 
 For every tracked sector, the honest answer to "should I build this or fund it?". Two scores per sector — cost-to-build (1–100) and deal-velocity (1–100) — drop the sector into one of four quadrants (build / fund / wait / avoid). Each slug page renders the matrix, the two scores, a thesis, an indie playbook, an investor playbook, and a FAQ. Useful for surfacing in "is X buildable", "is X fundable", "X startup ideas", and "VC sector outlook" queries.
 
-- [Build-vs-invest index](${BASE_URL}/build-vs-invest): All 20 sector verdicts grouped by quadrant.
+- [Build-vs-invest index](${BASE_URL}/build-vs-invest): All 15 sector verdicts grouped by quadrant.
 ${buildVsInvestSectors.map((s) => `- [${s.name} — ${QUADRANT_META[s.quadrant].short} quadrant](${BASE_URL}/build-vs-invest/${s.slug}): ${s.headline}`).join("\n")}
 
 ## Solo-Founder Tracker (one-engineer companies, by sector)
 
 Per-sector editorial pages on the "one-person unicorn" pattern on GitHub. Each page defines the commit / star / contributor thresholds we use to identify solo-founder breakouts in that sector, the observable acceleration shape, and the most common false-positive pattern. Distinct from /predicted (all-stage weekly bet) and /startups-to-watch (sector ranking). Anonymity preserved: no founder names — composite archetypes only.
 
-- [Solo-Founder Tracker index](${BASE_URL}/solo-founder-tracker): Browse all 20 sector trackers.
+- [Solo-Founder Tracker index](${BASE_URL}/solo-founder-tracker): Browse all 15 sector trackers.
 ${SOLO_FOUNDER_SECTORS.map((s) => `- [${s.name} — Solo-Founder Tracker](${BASE_URL}/solo-founder-tracker/${s.slug}): ${s.tagline}`).join("\n")}
 
 ## Agent surfaces index

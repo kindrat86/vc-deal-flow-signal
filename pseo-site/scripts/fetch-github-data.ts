@@ -68,7 +68,7 @@ const DESCRIPTION_REJECT_PATTERNS = [
 const MIN_CONTRIBUTORS = 3;   // skip personal projects
 const MAX_ORG_AGE_YEARS = 12; // skip orgs created before 2014
 const SEARCH_PER_TOPIC = 60;  // results per topic search (was 30)
-const MAX_ORGS_PER_SECTOR = 30; // orgs evaluated per sector (was 10, target ~400 total)
+const MAX_ORGS_PER_SECTOR = 30; // orgs evaluated per sector (was 10, target ~369 total)
 const SECTORS_PER_RUN = 5;     // fewer sectors per run to stay within rate limits with larger per-sector volume
 
 function buildPeriods(): PeriodDef[] {

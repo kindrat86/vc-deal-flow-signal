@@ -48,7 +48,7 @@ export const FRAMEWORKS: FrameworkPositioning[] = [
     hook: "Wire VC engineering signals into any LangChain agent in 20 lines of Python.",
     narrative: [
       "If you ship LangChain agents and you also write angel checks, you sit in the rarest segment of the deal-flow market. The default playbook — Crunchbase Pro, PitchBook, hand-rolled scrapers — is built for analysts, not for builders. None of it is callable from your agent loop. None of it knows what Series A milestone a 14-day commit-velocity spike actually predicts. The data was never designed to flow through an LLM.",
-      "GitDealFlow signals are. The corpus is 140 venture-backed startups across 20 sectors, refreshed weekly, ranked by the kind of GitHub momentum that historically precedes fundraises by three to six weeks. The MCP server and the public A2A endpoint expose the same five skills your LangChain ReAct loop needs: trending, sector slice, named-startup lookup, dataset summary, methodology citation. Drop the tool in, point your agent at OpenAI or Anthropic, and you're shipping deal-flow conviction by Sunday.",
+      "GitDealFlow signals are. The corpus is 140 venture-backed startups across 15 sectors, refreshed weekly, ranked by the kind of GitHub momentum that historically precedes fundraises by three to six weeks. The MCP server and the public A2A endpoint expose the same five skills your LangChain ReAct loop needs: trending, sector slice, named-startup lookup, dataset summary, methodology citation. Drop the tool in, point your agent at OpenAI or Anthropic, and you're shipping deal-flow conviction by Sunday.",
     ],
     outcomes: [
       {

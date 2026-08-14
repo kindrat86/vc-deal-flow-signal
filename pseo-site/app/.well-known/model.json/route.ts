@@ -46,7 +46,7 @@ export async function GET() {
         ],
         coverage: {
           sectors: 20,
-          startups: "panel of ~4,200 venture-backed companies, weekly",
+          startups: "panel of ~350+ venture-backed companies, weekly",
           history: "Q1 2024 — present",
           geographies: "global, no geo-filtering",
         },

@@ -25,7 +25,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary",
-    site: "@data_nerd",
+    site: "@sipiteno",
     title: "Status",
     description:
       "Live status across site, APIs, MCP, and agent surfaces. Honest uptime, not a dashboard art project.",

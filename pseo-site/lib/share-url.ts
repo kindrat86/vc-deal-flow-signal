@@ -32,7 +32,7 @@ export function makeShareIntents(opts: {
   const enc = encodeURIComponent;
   return {
     shareUrl,
-    twitterIntent: `https://twitter.com/intent/tweet?text=${enc(opts.text)}&url=${enc(shareUrl)}&via=data_nerd`,
+    twitterIntent: `https://twitter.com/intent/tweet?text=${enc(opts.text)}&url=${enc(shareUrl)}&via=sipiteno`,
     linkedinIntent: `https://www.linkedin.com/sharing/share-offsite/?url=${enc(shareUrl)}`,
   };
 }

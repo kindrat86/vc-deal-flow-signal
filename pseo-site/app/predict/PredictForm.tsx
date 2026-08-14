@@ -32,7 +32,7 @@ async function fetchShareIntents(org: string, result: SignalResult): Promise<Sha
   const status = labelByStatus[result.status];
   const text =
     result.status === "no_data"
-      ? `Just looked up ${org} on @data_nerd's GitDealFlow. Not in the index yet. The 7-day preview shows this week's actual breakouts:`
+      ? `Just looked up ${org} on @sipiteno's GitDealFlow. Not in the index yet. The 7-day preview shows this week's actual breakouts:`
       : `${org} on GitDealFlow: ${status}${result.velocityChange ? ` (${result.velocityChange} velocity)` : ""}. Recipient gets a 7-day extended preview of the live signal index:`;
   try {
     const res = await fetch("/api/share/mint", {
@@ -73,7 +73,7 @@ const STATUS_STYLES: Record<
     label: "Not in our index yet",
     bg: "bg-slate-800 border-slate-700",
     pill: "bg-slate-700 text-gray-300",
-    msg: "We track ~400 venture-backed startup orgs. Submit this one to add it to next week's index.",
+    msg: "We track ~369 venture-backed startup orgs. Submit this one to add it to next week's index.",
   },
 };
 

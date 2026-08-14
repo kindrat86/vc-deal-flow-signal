@@ -128,7 +128,7 @@ export function RootIdentitySchema() {
         // pattern (analogous to the propertyID="ORCID" pattern used on
         // Person identifiers). Reciprocal: Wikidata Q139376302 carries
         // P856 (official website) → signals.gitdealflow.com, P2002
-        // (Twitter) → @data_nerd, P31 (instance of) → Q4830453.
+        // (Twitter) → @sipiteno, P31 (instance of) → Q4830453.
         identifier: [
           {
             "@type": "PropertyValue",
@@ -355,7 +355,7 @@ export function RootIdentitySchema() {
         },
         url: SITE,
         description:
-          "Tracks GitHub commit-velocity, contributor-growth and repository-expansion signals across 4,200+ venture-backed startups; surfaces engineering-acceleration patterns 3–6 weeks before fundraise announcements. Delivered as a weekly free digest, a paid dashboard, an MCP server, an A2A endpoint, and a CSV/JSON dataset.",
+          "Tracks GitHub commit-velocity, contributor-growth and repository-expansion signals across 350+ venture-backed startups; surfaces engineering-acceleration patterns 3–6 weeks before fundraise announcements. Delivered as a weekly free digest, a paid dashboard, an MCP server, an A2A endpoint, and a CSV/JSON dataset.",
         termsOfService: `${SITE}/legal/terms`,
       },
       {

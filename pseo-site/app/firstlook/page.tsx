@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@data_nerd",
+    site: "@sipiteno",
     title: "First Look Pass — €7. One sector. 24-hour deep dive.",
     description:
       "€7 once, pick a sector, get the full GitHub-momentum deep dive in 24h.",

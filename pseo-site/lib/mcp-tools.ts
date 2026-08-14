@@ -30,7 +30,7 @@ export const MCP_TOOLS: McpTool[] = [
   {
     name: "get_trending_startups",
     description:
-      "Top 20 startups by engineering acceleration across all 20 sectors for the current weekly period.",
+      "Top 20 startups by engineering acceleration across all 15 sectors for the current weekly period.",
     readOnly: true,
   },
   {

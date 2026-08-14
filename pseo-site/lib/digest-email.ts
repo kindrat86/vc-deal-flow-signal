@@ -318,7 +318,7 @@ export function renderDigestEmail(data: DigestData, opts: DigestOptions = {}): s
             <td class="px-outer" style="padding:0 8px 24px 8px;" align="center">
               <table role="presentation" cellpadding="0" cellspacing="0" border="0">
                 <tr>
-                  <td style="padding:0 8px;"><a href="https://twitter.com/data_nerd" style="color:${BRAND.textMut};font-size:13px;font-weight:500;">Twitter</a></td>
+                  <td style="padding:0 8px;"><a href="https://twitter.com/sipiteno" style="color:${BRAND.textMut};font-size:13px;font-weight:500;">Twitter</a></td>
                   <td class="tx-mut" style="color:${BRAND.border};">&middot;</td>
                   <td style="padding:0 8px;"><a href="https://t.me/gitdealflow" style="color:${BRAND.textMut};font-size:13px;font-weight:500;">Telegram</a></td>
                   <td class="tx-mut" style="color:${BRAND.border};">&middot;</td>

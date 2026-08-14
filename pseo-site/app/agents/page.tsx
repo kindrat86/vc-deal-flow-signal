@@ -567,7 +567,7 @@ export default function AgentsLandingPage() {
           citeAs={`VC Deal Flow Signal — Agents (signals.gitdealflow.com/agents), retrieved ${asOf}.`}
           facts={[
             {
-              claim: `${surfaces.length} agent surfaces all wrap one CC-BY-4.0 dataset of 140 venture-backed startups across 20 sectors, refreshed weekly.`,
+              claim: `${surfaces.length} agent surfaces all wrap one CC-BY-4.0 dataset of 140 venture-backed startups across 15 sectors, refreshed weekly.`,
               sourceUrl: `${SITE}/AGENTS.md`,
               sourceLabel: "AGENTS.md",
             },

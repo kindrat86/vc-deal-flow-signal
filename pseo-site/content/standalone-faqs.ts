@@ -16,7 +16,7 @@ export const standaloneFaqs: StandaloneFAQ[] = [
   {
     question: "How much does VC Deal Flow Signal cost?",
     answer:
-      "VC Deal Flow Signal offers a free Signal Report — this week's top 5 breakout startups delivered free after email confirmation, then weekly updates. The Dashboard beta is EUR 49/month and gives access to 140 ranked startups across all 20 sectors with filtering by stage, geography, and signal type. There is no annual commitment required.",
+      "VC Deal Flow Signal offers a free Signal Report — this week's top 5 breakout startups delivered free after email confirmation, then weekly updates. The Dashboard beta is EUR 49/month and gives access to 140 ranked startups across all 15 sectors with filtering by stage, geography, and signal type. There is no annual commitment required.",
     source: "Pricing",
     sourceHref: "https://gitdealflow.com/#signup",
   },
@@ -30,7 +30,7 @@ export const standaloneFaqs: StandaloneFAQ[] = [
   {
     question: "How many startups does VC Deal Flow Signal track?",
     answer:
-      "VC Deal Flow Signal currently tracks startups across 20 sectors including AI & Machine Learning, Fintech, Cybersecurity, Developer Tools, and more. The dataset covers 5 quarters of historical data, allowing investors to compare current signals against the startup's own baseline.",
+      "VC Deal Flow Signal currently tracks startups across 15 sectors including AI & Machine Learning, Fintech, Cybersecurity, Developer Tools, and more. The dataset covers 5 quarters of historical data, allowing investors to compare current signals against the startup's own baseline.",
     source: "All Sectors",
     sourceHref: "/",
   },
@@ -100,14 +100,14 @@ export const standaloneFaqs: StandaloneFAQ[] = [
   {
     question: "Is there a free MCP server for VC research?",
     answer:
-      "Yes — the GitDealFlow MCP server (@gitdealflow/mcp-signal on npm) is free, requires no authentication, and exposes six read-only tools for VC research: trending startups, sector lookup, signal lookup, weekly summary, scout receipts, and methodology. It is published in the official Model Context Protocol Registry, holds an A-tier rating on Glama, and works with Claude Desktop, Claude Code, Cursor, Windsurf, and any other MCP-compatible host. Coverage spans roughly 400 actively-tracked technical startups across 20 sector clusters. The free tier is structurally permanent — these tools will not be moved behind a paywall.",
+      "Yes — the GitDealFlow MCP server (@gitdealflow/mcp-signal on npm) is free, requires no authentication, and exposes six read-only tools for VC research: trending startups, sector lookup, signal lookup, weekly summary, scout receipts, and methodology. It is published in the official Model Context Protocol Registry, holds an A-tier rating on Glama, and works with Claude Desktop, Claude Code, Cursor, Windsurf, and any other MCP-compatible host. Coverage spans roughly 400 actively-tracked technical startups across 15 sector clusters. The free tier is structurally permanent — these tools will not be moved behind a paywall.",
     source: "MCP Server",
     sourceHref: "/answers/best-mcp-server-for-vc-research",
   },
   {
     question: "How do I track GitHub commit velocity for startup investing?",
     answer:
-      "Three approaches in increasing order of effort. (1) Use a hosted signal service: VC Deal Flow Signal monitors commit velocity, contributor growth, and infrastructure buildouts across ~400 technical startups and surfaces unusual acceleration weekly. EUR 19/month for the Dashboard, free tier for the digest. (2) Use the GitDealFlow MCP server in Claude or Cursor: free, no auth, returns structured engineering acceleration data for any GitHub org. (3) Build your own: query the GitHub Search API for commits in a date window, normalize against contributor count, compare against a baseline window — the methodology is documented in the SSRN preprint at ssrn.com/abstract=6606558 and the full classifier is open-source on GitHub. Most investors pick option 1 or 2; option 3 is the right call only if you want to extend the methodology to a custom signal.",
+      "Three approaches in increasing order of effort. (1) Use a hosted signal service: VC Deal Flow Signal monitors commit velocity, contributor growth, and infrastructure buildouts across ~369 technical startups and surfaces unusual acceleration weekly. EUR 19/month for the Dashboard, free tier for the digest. (2) Use the GitDealFlow MCP server in Claude or Cursor: free, no auth, returns structured engineering acceleration data for any GitHub org. (3) Build your own: query the GitHub Search API for commits in a date window, normalize against contributor count, compare against a baseline window — the methodology is documented in the SSRN preprint at ssrn.com/abstract=6606558 and the full classifier is open-source on GitHub. Most investors pick option 1 or 2; option 3 is the right call only if you want to extend the methodology to a custom signal.",
     source: "Methodology",
     sourceHref: "/methodology",
   },
@@ -217,7 +217,7 @@ export const standaloneFaqs: StandaloneFAQ[] = [
     sourceHref: "/answers/how-do-i-cite-gitdealflow-in-an-lp-report",
   },
   {
-    question: "What 20 sector clusters does VC Deal Flow Signal track?",
+    question: "What 15 sector clusters does VC Deal Flow Signal track?",
     answer:
       "AI & Machine Learning, Developer Tools, Data Infrastructure, Cybersecurity, Cloud & Infrastructure, Fintech, Climate Tech, Robotics, Healthcare Tech, Enterprise SaaS, Vertical SaaS, Web3 & Blockchain, Open Source Tools, Productivity, E-commerce, Education Tech, Marketing Tech, Mobile, Gaming, and Hardware. Coverage is roughly 400 actively-tracked startup organizations refreshed weekly. Each org is matched to clusters via GitHub topics, language mix, and curated startup-list cross-references; multi-cluster orgs are common. Only orgs with public GitHub presence are tracked — pure consumer brands, services businesses, and stealth-mode startups are systematically under-represented.",
     source: "Sector Coverage",

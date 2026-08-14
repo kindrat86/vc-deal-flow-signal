@@ -159,7 +159,7 @@ export default function BuildVsInvestIndexPage() {
             <span className="text-gray-400">Build vs invest</span>
           </nav>
           <p className="text-sky-400 text-xs font-semibold uppercase tracking-wider">
-            One 2×2 · 20 sectors · scored on engineering-signal data
+            One 2×2 · 15 sectors · scored on engineering-signal data
           </p>
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight">
             Should you{" "}
@@ -254,7 +254,7 @@ export default function BuildVsInvestIndexPage() {
         {/* All sectors index */}
         <section aria-label="All sector verdicts" className="space-y-4">
           <h2 className="text-xl sm:text-2xl font-bold text-gray-100">
-            All 20 sector verdicts.
+            All 15 sector verdicts.
           </h2>
           <div className="grid sm:grid-cols-2 gap-3">
             {buildVsInvestSectors.map((s) => {

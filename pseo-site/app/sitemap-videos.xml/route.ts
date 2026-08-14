@@ -90,7 +90,7 @@ ${tags}
       <video:family_friendly>yes</video:family_friendly>
       <video:live>no</video:live>
       <video:category>${escapeXml(v.category)}</video:category>
-      <video:uploader info="https://www.youtube.com/@data_nerd">VC Deal Flow Signal</video:uploader>
+      <video:uploader info="https://www.youtube.com/@gitdealflow">VC Deal Flow Signal</video:uploader>
       <video:requires_subscription>no</video:requires_subscription>
       <video:platform relationship="allow">web mobile tv</video:platform>
     </video:video>

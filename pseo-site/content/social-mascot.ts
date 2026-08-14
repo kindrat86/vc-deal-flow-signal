@@ -19,10 +19,10 @@ export const DATA_NERD = {
   // ── Identity ──────────────────────────────────────────────────
   name: "Data Nerd",
   handles: {
-    twitter: "@data_nerd",
+    twitter: "@sipiteno",
     instagram: "@gitdealflow.datanerd",
     facebook: "GitDealFlowDataNerd",
-    tiktok: "@data_nerd_signals",
+    tiktok: "@sipiteno_signals",
     linkedin: "GitDealFlow",
     youtube: "@gitdealflow",
     threads: "@gitdealflow.datanerd",

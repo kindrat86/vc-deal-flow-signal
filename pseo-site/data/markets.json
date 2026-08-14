@@ -9,7 +9,7 @@
       "resolvesOn": "2026-12-31",
       "resolverNote": "Resolves YES on the first publicly disclosed primary Series A round (Crunchbase, PitchBook, SEC Form D, or company press release) closing on or before 2026-12-31, 23:59 UTC. Bridge rounds, SAFEs, and convertible notes do not count. If multiple candidates close on the same day, the higher publicly disclosed round size wins; ties broken by earlier UTC time. NO if none qualify by deadline.",
       "methodologyUrl": "/markets/methodology",
-      "sourceOfTruth": "GitHub commit velocity, contributor growth, and signal classification from VC Deal Flow Signal's Q2-2026 dataset (4,200+ tracked startups). Implied odds are model output, not investment advice.",
+      "sourceOfTruth": "GitHub commit velocity, contributor growth, and signal classification from VC Deal Flow Signal's Q2-2026 dataset (350+ tracked startups). Implied odds are model output, not investment advice.",
       "candidates": [
         {
           "name": "zapplyjobs",
@@ -107,7 +107,7 @@
           "status": "draft",
           "playMoneyOnly": true,
           "url": null,
-          "note": "Free play-money mirror, no KYC. Draft staged in distribution/markets/manifold-series-a-race-2026.md; user posts manually under @data_nerd handle."
+          "note": "Free play-money mirror, no KYC. Draft staged in distribution/markets/manifold-series-a-race-2026.md; user posts manually under @sipiteno handle."
         },
         {
           "platform": "Polymarket",

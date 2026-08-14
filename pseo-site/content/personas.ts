@@ -509,7 +509,7 @@ export const PERSONAS: Persona[] = [
     tagline:
       "Spot pre-seed breakouts 3-6 weeks before the round gets crowded — using public GitHub commit velocity as the earliest engineering-momentum signal.",
     intro:
-      "Angel investors need signals before the round gets crowded. Commit velocity is the earliest public indicator of engineering momentum — visible weeks before pitch decks circulate, press hits, or SEC filings appear. VC Deal Flow Signal tracks 400+ startups across 20 sectors, refreshed weekly.",
+      "Angel investors need signals before the round gets crowded. Commit velocity is the earliest public indicator of engineering momentum — visible weeks before pitch decks circulate, press hits, or SEC filings appear. VC Deal Flow Signal tracks 400+ startups across 15 sectors, refreshed weekly.",
     workflows: [
       {
         name: "Pre-seed breakout detection",
@@ -553,7 +553,7 @@ export const PERSONAS: Persona[] = [
     shortName: "Scouts",
     title: "Deal Flow Sourcing for Venture Scouts — GitHub Momentum as a Lead Indicator",
     metaDescription:
-      "Venture scouts use GitHub engineering acceleration to find startups before partners do. Free weekly rankings across 20 sectors, MCP server for Claude Desktop.",
+      "Venture scouts use GitHub engineering acceleration to find startups before partners do. Free weekly rankings across 15 sectors, MCP server for Claude Desktop.",
     h1: "Deal Flow Sourcing for Venture Scouts",
     tagline:
       "Use GitHub engineering acceleration to surface deals before the partners you scout for do — with a reproducible, data-driven sourcing edge.",
@@ -605,9 +605,9 @@ export const PERSONAS: Persona[] = [
       "Solo general partners use public GitHub momentum data to source deals before institutional rounds. Free dataset, CSV export, API access.",
     h1: "Deal Flow Tools for Solo GPs",
     tagline:
-      "Level the playing field against established funds with a single dataset that surfaces breakout startups across 20 sectors every week.",
+      "Level the playing field against established funds with a single dataset that surfaces breakout startups across 15 sectors every week.",
     intro:
-      "Solo GPs don't have a sourcing team. GitHub engineering signals level the playing field — a single dataset that surfaces breakout startups across 20 sectors every week, before the round is live. No expensive Bloomberg terminal, no analyst subscriptions. Just public code, measured.",
+      "Solo GPs don't have a sourcing team. GitHub engineering signals level the playing field — a single dataset that surfaces breakout startups across 15 sectors every week, before the round is live. No expensive Bloomberg terminal, no analyst subscriptions. Just public code, measured.",
     workflows: [
       {
         name: "Full dataset export for CRM pipeline",

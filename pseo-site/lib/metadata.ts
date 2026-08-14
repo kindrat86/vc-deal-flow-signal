@@ -116,7 +116,7 @@ export function defineMetadata(input: DefineMetadataInput): Metadata {
     },
     twitter: {
       card: "summary_large_image",
-      site: "@data_nerd",
+      site: "@sipiteno",
       title: input.twitterTitle ?? input.title,
       description: input.twitterDescription ?? input.description,
       ...(ogImage ? { images: [ogImage] } : {}),

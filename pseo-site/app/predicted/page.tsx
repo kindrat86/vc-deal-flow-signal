@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@data_nerd",
+    site: "@sipiteno",
     title:
       "Engineering Acceleration Watch — public bet, graded weekly (not Y Combinator)",
     description:

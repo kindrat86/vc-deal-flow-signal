@@ -39,7 +39,7 @@ export const useCases: UseCase[] = [
     intro:
       "Angels compete with funds on everything except speed of conviction. The platforms funds use — Harmonic.ai, Dealroom, Crunchbase Enterprise — start in the five-figure range and assume a full-time sourcing team. VC Deal Flow Signal is built for the opposite end of the market: individual angels who want a quantitative early signal, weekly, for the price of two lunches.",
     problem:
-      "By the time a technical startup shows up in press coverage, job boards, or Crunchbase alerts, the round is already competitive. Solo angels rarely have the bandwidth to monitor GitHub activity across 20 sectors manually. And without a signal that fires early, it is hard to justify the time spent on founder outreach before the deal exists.",
+      "By the time a technical startup shows up in press coverage, job boards, or Crunchbase alerts, the round is already competitive. Solo angels rarely have the bandwidth to monitor GitHub activity across 15 sectors manually. And without a signal that fires early, it is hard to justify the time spent on founder outreach before the deal exists.",
     solution:
       "VC Deal Flow Signal watches the GitHub activity you would watch yourself if you had time: commit velocity, contributor growth, infrastructure buildouts, and repo creation across 20 technical sector clusters. Each week the Signal Report surfaces five breakout startups with direct links to each GitHub organisation. Roughly 6-12 weeks later, those same companies show up on Crunchbase alerts. You are already warm.",
     workflow: [
@@ -51,7 +51,7 @@ export const useCases: UseCase[] = [
       {
         step: 2,
         name: "Filter by your sector focus",
-        body: "Open the Dashboard (EUR 49/mo beta) and filter 140 ranked startups by AI/ML, enterprise SaaS, dev tools, fintech, or any of 20 sectors. Layer on stage and geography if you focus geographically.",
+        body: "Open the Dashboard (EUR 49/mo beta) and filter 140 ranked startups by AI/ML, enterprise SaaS, dev tools, fintech, or any of 15 sectors. Layer on stage and geography if you focus geographically.",
       },
       {
         step: 3,
@@ -78,7 +78,7 @@ export const useCases: UseCase[] = [
     faqs: [
       { question: "Is VC Deal Flow Signal suitable for first-time angels?", answer: "Yes. The free weekly Signal Report requires no technical interpretation — each startup comes with the signal type explained in plain English. For deeper inspection, you can verify the engineering signal by just looking at the GitHub org's commit graph. No coding or quantitative background required." },
       { question: "How does this compare to an angel group's shared deal flow?", answer: "Complementary. Angel groups surface deals that other angels have already sourced and qualified — useful but often warm/competitive. VC Deal Flow Signal gives you your own early signal, which you can take to your group or play solo." },
-      { question: "Can I use it to source deals outside of AI and SaaS?", answer: "Partially. The platform covers 20 sector clusters including fintech, dev tools, infrastructure, enterprise SaaS, AI/ML, and data tools. It does not cover consumer brands, healthtech services, or companies with minimal public GitHub footprint." },
+      { question: "Can I use it to source deals outside of AI and SaaS?", answer: "Partially. The platform covers 15 sector clusters including fintech, dev tools, infrastructure, enterprise SaaS, AI/ML, and data tools. It does not cover consumer brands, healthtech services, or companies with minimal public GitHub footprint." },
       { question: "What's the smallest angel check size this is worth for?", answer: "The EUR 49/month cost is trivial compared to a single $10k angel check. If the signal helps you get into one additional round per year that outperforms, the ROI is absurd. The free tier alone is enough for angels writing one or two checks per quarter." },
     ],
     relatedSectors: ["ai-ml", "enterprise-saas", "developer-tools"],
@@ -211,7 +211,7 @@ export const useCases: UseCase[] = [
     problem:
       "Scouts have small budgets, limited time, and no fund-level data infrastructure. Most scouts source from their personal network plus whatever they read on Twitter — which means most scouts are seeing the same deals at the same time. The competitive edge for a scout is finding a startup the fund's analysts have not flagged yet, with a non-anecdotal reason to flag it.",
     solution:
-      "VC Deal Flow Signal gives scouts a weekly external feed of breakout engineering signals across 20 sectors. Each signal is a pre-fundraise event tagged with type and magnitude, and each comes with a direct GitHub link the scout can use to verify the activity in under two minutes. The signal is exactly the kind of evidence a partner respects when deciding whether to take a meeting.",
+      "VC Deal Flow Signal gives scouts a weekly external feed of breakout engineering signals across 15 sectors. Each signal is a pre-fundraise event tagged with type and magnitude, and each comes with a direct GitHub link the scout can use to verify the activity in under two minutes. The signal is exactly the kind of evidence a partner respects when deciding whether to take a meeting.",
     workflow: [
       {
         step: 1,
@@ -265,7 +265,7 @@ export const useCases: UseCase[] = [
     problem:
       "Solo GPs operate against the same competitive landscape as institutional funds: same companies, same rounds, same allocation pressure. But the labor model is fundamentally different — one person cannot manually monitor GitHub activity across thousands of companies. Without an external screening layer, the solo GP either narrows their fund's surface area or ends up sourcing from the same Twitter feed as everyone else.",
     solution:
-      "An automated weekly feed of breakout engineering signals across 20 sectors. The Dashboard ranks 50+ startups every Monday by acceleration magnitude, filterable by stage and geography. Pipe the signal into your existing CRM (Affinity, HubSpot, Notion) via API or RSS. The screening pipeline runs while you are reviewing decks; you arrive at meetings with a longer warm list than peers.",
+      "An automated weekly feed of breakout engineering signals across 15 sectors. The Dashboard ranks 50+ startups every Monday by acceleration magnitude, filterable by stage and geography. Pipe the signal into your existing CRM (Affinity, HubSpot, Notion) via API or RSS. The screening pipeline runs while you are reviewing decks; you arrive at meetings with a longer warm list than peers.",
     workflow: [
       {
         step: 1,
@@ -319,12 +319,12 @@ export const useCases: UseCase[] = [
     problem:
       "Corporate venture teams sit between two pressures: speed of decision-making (slower than financial VCs because of internal review) and fit with strategic theses (faster than financial VCs because the corporate parent has clear adjacency targets). The result is that corporate venture often arrives at deals after the institutional VC pricing has been set, paying premiums without sourcing edge.",
     solution:
-      "VC Deal Flow Signal surfaces engineering acceleration across 20 sectors weekly, filterable by sector and stage. Corporate venture teams filter to their parent's adjacency areas (cloud infrastructure for hyperscalers, security for security companies, fintech infrastructure for banks) and use the signal as a leading indicator of which startups are about to break out. The 3 to 6 week lead time over Crunchbase Alerts is enough to start a strategic conversation before the round's pricing dynamic locks in.",
+      "VC Deal Flow Signal surfaces engineering acceleration across 15 sectors weekly, filterable by sector and stage. Corporate venture teams filter to their parent's adjacency areas (cloud infrastructure for hyperscalers, security for security companies, fintech infrastructure for banks) and use the signal as a leading indicator of which startups are about to break out. The 3 to 6 week lead time over Crunchbase Alerts is enough to start a strategic conversation before the round's pricing dynamic locks in.",
     workflow: [
       {
         step: 1,
         name: "Define adjacency sectors with the corporate strategy team",
-        body: "Map your parent's strategic priorities to the 20 sector clusters covered. Most corporate venture teams find 2 to 4 sectors directly aligned with their thesis.",
+        body: "Map your parent's strategic priorities to the 15 sector clusters covered. Most corporate venture teams find 2 to 4 sectors directly aligned with their thesis.",
       },
       {
         step: 2,
@@ -373,7 +373,7 @@ export const useCases: UseCase[] = [
     problem:
       "Most accelerator scouting is reactive: review applications, reach out to obvious-fit founders in networks, hope for the best. Proactive scouting at scale requires a signal that fires at the right moment in the founder's arc — early enough to influence the application decision, but late enough that the founder has demonstrable traction.",
     solution:
-      "VC Deal Flow Signal surfaces pre-seed and seed-stage engineering acceleration across 20 sectors. Scouts filter to the stage and sectors their program targets, identify breakout teams that have not yet raised institutional capital, and reach out with program fit. The three to six week lead time vs Crunchbase means scouts can engage founders during the decision window, not after.",
+      "VC Deal Flow Signal surfaces pre-seed and seed-stage engineering acceleration across 15 sectors. Scouts filter to the stage and sectors their program targets, identify breakout teams that have not yet raised institutional capital, and reach out with program fit. The three to six week lead time vs Crunchbase means scouts can engage founders during the decision window, not after.",
     workflow: [
       {
         step: 1,
@@ -643,7 +643,7 @@ export const useCases: UseCase[] = [
     problem:
       "Series A funds compete intensely on a small pool of qualified candidates. Most Series A sourcing flows from seed-stage investors making warm intros, plus inbound founder pitches. Funds without dense seed-stage networks or with thesis-specific mandates find the inbound flow too undifferentiated. A leading-indicator signal supplements the network with a quantitative top-of-funnel feed.",
     solution:
-      "VC Deal Flow Signal surfaces Series A-stage breakouts (8 to 20 contributors, 200 to 500 commits per 14-day window, infrastructure-buildout signal) across 20 sectors. Series A funds filter to their thesis sectors and review the top breakouts weekly, often catching candidates four to eight weeks before founders begin formal fundraising conversations.",
+      "VC Deal Flow Signal surfaces Series A-stage breakouts (8 to 20 contributors, 200 to 500 commits per 14-day window, infrastructure-buildout signal) across 15 sectors. Series A funds filter to their thesis sectors and review the top breakouts weekly, often catching candidates four to eight weeks before founders begin formal fundraising conversations.",
     workflow: [
       {
         step: 1,

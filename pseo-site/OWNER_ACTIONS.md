@@ -293,3 +293,95 @@ these in a real browser, scroll to the bottom so the lazy images load, and look:
 
 Re-check ~10 minutes later. A pass immediately after deploy proves only that
 moment; the failure mode here is another lineage aliasing over you.
+---
+
+## 2026-08-13 — internal links into the /research-paper silo (striking-distance work on /research-paper/hu-2021-lora-low-rank-adaptation)
+
+**Commit to ship:** `20e761e4` — *feat(define): link glossary terms back into
+the /research-paper silo* (this OWNER_ACTIONS entry lands in a separate
+docs-only commit on top; it does not need to ship).
+**Lives in:** `/Users/sipi/growth-loop/sites/signals.gitdealflow.com/worktrees/20260813T042220Z-harness-action-internal_links-https:/signals.gitdealflow.com/research-paper/hu-2021-lora-low-rank-adaptation`
+(detached worktree off `1b1ad5a0`; the site is the `pseo-site/` subdir)
+**Status:** implemented + verified on `next dev` by screenshot, **not deployed**.
+
+### What changed
+
+| file | why |
+|---|---|
+| `app/define/[term]/page.tsx` | new "Source research on <term>" section — reverse-indexes `content/research-papers.ts` `relatedGlossaryIds` and links the papers that ground each term |
+| `scripts/verify-no-regressions.ts` | one assertion so a lineage without that section cannot build |
+
+### Why
+
+`/research-paper/hu-2021-lora-low-rank-adaptation` is a striking-distance page
+with only **4 inbound internal links**, all auto-generated siblings inside its
+own `/research-paper` silo (`data/internal-links.json`). The paper leaves
+already linked *out* to `/define/[term]`, but nothing linked back. The reverse
+index adds 4 cross-silo inbound links to the LoRA paper — from `/define/lora`,
+`/define/fine-tuning`, `/define/foundation-model`, `/define/open-weight-model` —
+with the paper title as anchor text. The other 8 paper leaves gain the same
+treatment from the same code path. No new copy was invented: venue, year, title
+and the summary line all come from `content/research-papers.ts`.
+
+`data/internal-links.json` was deliberately NOT hand-edited — it is regenerated
+from the live sitemaps by `scripts/build-internal-links.ts`, so an edit there
+would be overwritten on the next run.
+
+### Pre-deploy checks (AGENTS.md)
+
+- **Which lineage is live?** The domain is alias-pinned and deployed from at
+  least three checkouts (`~/Downloads/vc-deal-flow-signal` on `main`,
+  `~/signals-worldclass` on `worldclass-signals`, `~/signals-gitdealflow` on
+  `internal-link-engine`). Whichever aliases last wins. `20e761e4` is built on
+  `1b1ad5a0`; if production has moved past that, cherry-pick rather than alias
+  over the newer lineage.
+- **Check for swarm races first:** `ps aux | grep hermes` — another agent
+  mid-deploy will silently revert this.
+- `prebuild` runs `verify-no-regressions.ts`, which now asserts this section
+  exists. A stale lineage will fail the build rather than revert the fix. Do
+  not edit the guard to make a build pass.
+- `vercel --prod` alone does NOT move the domain — the alias step below is
+  mandatory.
+
+### Deploy command (same flags as the 2026-08-12 entry; rationale unchanged)
+
+```bash
+~/growth-loop/lib/deploy_from_commit.sh \
+  --worktree "/Users/sipi/growth-loop/sites/signals.gitdealflow.com/worktrees/20260813T042220Z-harness-action-internal_links-https:/signals.gitdealflow.com/research-paper/hu-2021-lora-low-rank-adaptation" \
+  --commit 20e761e4:pseo-site \
+  --build-cmd "npm ci && npx vercel build --prod" \
+  --deploy-cmd "npx vercel deploy --prebuilt --prod --archive=tgz" \
+  --repo-path /Users/sipi/signals-gitdealflow/pseo-site
+```
+
+Then re-alias: `npx vercel alias <deployment-url> signals.gitdealflow.com`.
+
+### Verify AFTER aliasing — screenshot only
+
+- `https://signals.gitdealflow.com/define/lora` → a **"Source research on LoRA
+  (Low-Rank Adaptation)"** section sits between "Related terms" and "Citation",
+  with one card linking to the LoRA paper
+- `https://signals.gitdealflow.com/define/foundation-model` → the same section
+  lists **six** paper cards
+- `https://signals.gitdealflow.com/research-paper/hu-2021-lora-low-rank-adaptation`
+  → still renders (non-blank), unchanged by this diff
+
+Re-check ~10 minutes later. A pass immediately after deploy proves only that
+moment; the failure mode here is another lineage aliasing over you.
+
+### Notes
+
+- Section blurb was corrected before commit: it read "The academic papers
+  behind this term … canonical arXiv/Semantic Scholar links", but
+  `forsgren-2018-accelerate-dora-research` (the card on `/define/commit-velocity`)
+  is a book with no arXiv ID. Now reads "The research behind this term,
+  summarised with key findings and canonical source links" — true for all nine
+  entries. `tsc --noEmit` and `npm run verify:no-regressions` re-run clean after
+  the edit.
+- Known, NOT fixed here (out of scope): four `relatedGlossaryIds` in
+  `content/research-papers.ts` point at glossary ids that do not exist —
+  `vector-database` (lewis-2020-rag) and `compute-efficiency`,
+  `model-capacity`, `conditional-computation` (all shazeer-2017-mixture-of-experts).
+  They are filtered out silently on both sides, so they are missed links rather
+  than broken ones — but the MoE paper gains no inbound links from this change
+  until they are corrected.

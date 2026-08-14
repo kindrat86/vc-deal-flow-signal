@@ -15,7 +15,7 @@ export async function GET() {
     schema_version: "1.0",
     name: "VC Deal Flow Signal",
     description:
-      "GitHub commit-velocity signals across 140 venture-backed startups in 20 sectors. Free Q&A dataset and machine-readable APIs for AI agents.",
+      "GitHub commit-velocity signals across 140 venture-backed startups in 15 sectors. Free Q&A dataset and machine-readable APIs for AI agents.",
     canonical: "https://signals.gitdealflow.com",
     publisher: {
       name: "VC Deal Flow Signal (GitDealFlow)",

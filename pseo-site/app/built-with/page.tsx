@@ -20,7 +20,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@data_nerd",
+    site: "@sipiteno",
     title: TITLE,
     description: DESCRIPTION,
     images: [`${SITE}/api/og/badge-builder`],
@@ -97,7 +97,7 @@ const FREE_TOOLS = [
   },
   {
     name: "search_startups_by_sector",
-    desc: "All tracked startups in a sector, ranked by acceleration. 20 sector enum.",
+    desc: "All tracked startups in a sector, ranked by acceleration. 15 sector enum.",
   },
   {
     name: "get_startup_signal",

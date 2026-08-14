@@ -408,7 +408,7 @@ export default function Home() {
         },
         category: "Alternative Data — Engineering Velocity Signals",
         description:
-          "Weekly engineering-acceleration signals from public GitHub data across 20 startup sectors. Surfaces breakout startups 3-6 weeks before fundraise announcements. Delivered via web dashboard, MCP server, JSON/CSV, RSS, Telegram, and email.",
+          "Weekly engineering-acceleration signals from public GitHub data across 15 startup sectors. Surfaces breakout startups 3-6 weeks before fundraise announcements. Delivered via web dashboard, MCP server, JSON/CSV, RSS, Telegram, and email.",
         url: "https://signals.gitdealflow.com",
         availableChannel: [
           {
@@ -450,7 +450,7 @@ export default function Home() {
         url: "https://signals.gitdealflow.com",
         name: "VC Deal Flow Signal — Startup Engineering Acceleration Tracker",
         description:
-          "Weekly ranking of breakout engineering teams by GitHub commit velocity, contributor growth, and infrastructure buildouts across 20 startup sectors.",
+          "Weekly ranking of breakout engineering teams by GitHub commit velocity, contributor growth, and infrastructure buildouts across 15 startup sectors.",
         inLanguage: "en-US",
         speakable: {
           "@type": "SpeakableSpecification",
@@ -624,7 +624,7 @@ export default function Home() {
         name: "VC Deal Flow Signal — Weekly Data Refresh",
         description:
           "Weekly update of startup engineering acceleration data across " +
-          sectors.length +
+          activeSectorCount +
           " sectors. Commit velocity, contributor growth, and signal classification refreshed every Monday morning.",
         startDate: (() => {
           const now = new Date();

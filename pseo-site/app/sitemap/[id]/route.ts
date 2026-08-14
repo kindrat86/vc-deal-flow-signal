@@ -630,6 +630,18 @@ export async function GET(_req: Request, ctx: RouteContext) {
         "learn/how-to-evaluate-engineering-velocity",
         "learn/how-to-build-a-startup-watchlist",
         "learn/how-to-use-startup-signals-api",
+        // Static pSEO leaves discovered orphaned 2026-08-14 — live, self-canonical,
+        // index,follow, but absent from every shard (the old repo-root
+        // sitemap-pseo.xml listed them but was never deployed, so these 8 pages
+        // were reachable only by crawlers stumbling into a cross-link).
+        "learn/github-momentum-signals",
+        "learn/how-to-evaluate-startups",
+        "learn/what-is-commit-velocity",
+        "free/github-momentum-checker",
+        "free/startup-screener",
+        "integrations/airtable",
+        "integrations/crunchbase",
+        "integrations/pitchbook",
         // NOTE: /vs/crunchbase and /vs/tracxn were dropped 2026-07-20 — their
         // static public/vs/* files were removed and next.config.ts now
         // 308-redirects both to /alternatives/{crunchbase,tracxn} (already
@@ -694,7 +706,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
         priority: 0.75,
       })),
       // Niche-down — Greg-style "riches are in the niches" pSEO cluster
-      // (2026-05-22). 1 hub + 20 sector hubs + 200 leaf pages = 221 URLs.
+      // (2026-05-22). 1 hub + 15 sector hubs + 200 leaf pages = 221 URLs.
       // Sector → sub-niche taxonomy lives in content/niches.ts.
       { url: `${BASE_URL}/niche-down`, lastmod, changefreq: "weekly", priority: 0.8 },
       ...nicheSectors.map((s) => ({
@@ -768,7 +780,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
         priority: 0.75,
       })),
       // Solo-Founder Tracker (2026-05-22) — per-sector "one-person unicorn"
-      // editorial pages. Index + 20 sector slugs. Distinct from /predicted
+      // editorial pages. Index + 15 sector slugs. Distinct from /predicted
       // (all-stage) and /startups-to-watch (ranking) — see content/
       // solo-founder-tracker.ts for the rationale.
       { url: `${BASE_URL}/solo-founder-tracker`, lastmod, changefreq: "weekly", priority: 0.85 },

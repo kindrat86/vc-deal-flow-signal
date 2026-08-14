@@ -14,7 +14,7 @@ export async function GET() {
   Author / Researcher: The Data Nerd
   ORCID: 0009-0002-2222-4112
   Site: ${SITE}/about
-  Twitter: @data_nerd
+  Twitter: @sipiteno
   GitHub: kindrat86
 
 /* THANKS */

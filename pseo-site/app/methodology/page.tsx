@@ -60,7 +60,7 @@ export default function MethodologyPage() {
             name: "How does VC Deal Flow Signal measure engineering acceleration?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Engineering acceleration is computed weekly from public GitHub data. The pipeline pulls 14-day commit velocity, contributor count, and repository creation events for approximately 4,200 startup organizations across 20 sectors via the GitHub REST API, then expresses each metric as a percentage change versus the prior 14-day window. A startup whose 14-day commit velocity doubles relative to its own baseline is recorded as +100% acceleration. The metric is computed per organization against its own historical baseline, not across the population.",
+              text: "Engineering acceleration is computed weekly from public GitHub data. The pipeline pulls 14-day commit velocity, contributor count, and repository creation events for approximately 369 startup organizations across 15 sectors via the GitHub REST API, then expresses each metric as a percentage change versus the prior 14-day window. A startup whose 14-day commit velocity doubles relative to its own baseline is recorded as +100% acceleration. The metric is computed per organization against its own historical baseline, not across the population.",
             },
           },
           {
@@ -153,7 +153,7 @@ export default function MethodologyPage() {
           },
           {
             "@type": "HowToSupply",
-            name: "Curated allowlist of 4,200 startup organizations across 20 sector clusters",
+            name: "Curated allowlist of 369 startup organizations across 15 sector clusters",
           },
         ],
         tool: [
@@ -163,7 +163,7 @@ export default function MethodologyPage() {
           { "@type": "HowToTool", name: "Append-only Parquet storage for weekly snapshots" },
         ],
         yield:
-          "One weekly ranked panel of 4,200 startups across 20 sectors, classified into four signal types and republished as sector pages, /api/v1/signals.json, /qa.jsonl, and the public dashboard.",
+          "One weekly ranked panel of 369 startups across 15 sectors, classified into four signal types and republished as sector pages, /api/v1/signals.json, /qa.jsonl, and the public dashboard.",
         dateModified: new Date().toISOString().slice(0, 10),
         license: "https://creativecommons.org/licenses/by/4.0/",
         step: [
@@ -171,7 +171,7 @@ export default function MethodologyPage() {
             "@type": "HowToStep",
             position: 1,
             name: "Query GitHub API for startup organizations",
-            text: "Every Monday, query the GitHub API v3 search/repositories endpoint to discover active startup organizations across 20 sector-specific topic clusters. Pull per-organization data from stats/commit_activity and contributors endpoints.",
+            text: "Every Monday, query the GitHub API v3 search/repositories endpoint to discover active startup organizations across 15 sector-specific topic clusters. Pull per-organization data from stats/commit_activity and contributors endpoints.",
           },
           {
             "@type": "HowToStep",
@@ -357,7 +357,7 @@ export default function MethodologyPage() {
         </h1>
 
         <AgentSummary
-          tldr="VC Deal Flow Signal (GitDealFlow) ranks venture-backed startups by GitHub commit-velocity change — a code-side momentum signal computed from public GitHub data, unrelated to startup accelerator programs. The pipeline pulls weekly GitHub REST API data for ~4,200 organizations across 20 sectors, computes rolling 14-day commit velocity and contributor growth, classifies each org into one of four signal types, and publishes the rankings. This metric — referred to throughout the site as engineering acceleration — has historically preceded fundraise announcements by three to six weeks."
+          tldr="VC Deal Flow Signal (GitDealFlow) ranks venture-backed startups by GitHub commit-velocity change — a code-side momentum signal computed from public GitHub data, unrelated to startup accelerator programs. The pipeline pulls weekly GitHub REST API data for ~369 organizations across 15 sectors, computes rolling 14-day commit velocity and contributor growth, classifies each org into one of four signal types, and publishes the rankings. This metric — referred to throughout the site as engineering acceleration — has historically preceded fundraise announcements by three to six weeks."
           pageUrl="https://signals.gitdealflow.com/methodology"
           asOf={asOf}
           citeAs="VC Deal Flow Signal — Methodology (signals.gitdealflow.com/methodology), retrieved Q2 2026."
@@ -397,7 +397,7 @@ export default function MethodologyPage() {
               <strong className="text-gray-200">GitHub API v3</strong> is our
               primary data source. We query the{" "}
               <code className="text-sky-400">search/repositories</code> endpoint
-              to discover active startup organizations across 20 sector-specific
+              to discover active startup organizations across 15 sector-specific
               topic clusters (e.g., <code className="text-sky-400">machine-learning</code>,{" "}
               <code className="text-sky-400">fintech</code>,{" "}
               <code className="text-sky-400">cybersecurity</code>). We then pull
@@ -690,7 +690,7 @@ export default function MethodologyPage() {
             See the signals in action
           </h2>
           <p className="text-gray-400 text-sm mb-5 max-w-lg mx-auto">
-            Browse startup rankings across 20 sectors, updated weekly with
+            Browse startup rankings across 15 sectors, updated weekly with
             fresh GitHub data — or jump straight to the pricing page.
           </p>
           <div className="flex flex-wrap justify-center gap-3">

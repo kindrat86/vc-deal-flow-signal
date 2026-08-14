@@ -41,7 +41,7 @@ export default function ThanksFirstLook() {
 
         <section className="bg-slate-900/60 border border-slate-800 rounded-lg p-5 space-y-3">
           <p className="text-gray-300 text-sm font-semibold">
-            We track 20 sectors:
+            We track 15 sectors:
           </p>
           <p className="text-gray-400 text-sm leading-relaxed">
             AI/ML · AI infra · AI safety · climate tech · crypto/web3 ·

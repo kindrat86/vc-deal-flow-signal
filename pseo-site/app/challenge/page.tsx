@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@data_nerd",
+    site: "@sipiteno",
     title: "30-Day Deal Flow Reset Challenge",
     description:
       "Free 30-day course building a real sourcing system from public GitHub data. SSRN methodology, paste-ready procedures.",
@@ -395,7 +395,7 @@ export default function ChallengePage() {
             </a>
             . The Challenge delivers the framework as a 30-day cadence and
             adds the operational practice around it — we charge for scale (the
-            live engine across 4,200 orgs and the custom Sector Sweep), not for
+            live engine across 369 orgs and the custom Sector Sweep), not for
             the framework.
           </p>
         </section>

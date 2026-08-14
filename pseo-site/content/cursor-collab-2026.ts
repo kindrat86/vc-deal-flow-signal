@@ -5,7 +5,7 @@ export const cursorCollabPost: BlogPost = {
   title:
     "Cursor + GitDealFlow: Inline Deal-Flow Lookup During Code Review (2-Minute MCP Recipe)",
   description:
-    "A working Cursor MCP recipe: 4 lines of JSON, 5 paste-ready prompts, and your AI editor can answer 'is this commit pattern unusual' from inside the file you're reading. Built on GitDealFlow's 4,200-startup engineering acceleration panel.",
+    "A working Cursor MCP recipe: 4 lines of JSON, 5 paste-ready prompts, and your AI editor can answer 'is this commit pattern unusual' from inside the file you're reading. Built on GitDealFlow's 369-startup engineering acceleration panel.",
   summary:
     "A 1,500-word recipe blog showing developer-investors how to wire GitDealFlow's MCP server into Cursor in two minutes. Covers both UI-panel and ~/.cursor/mcp.json install paths, 8 paste-ready prompts, a real-feeling diligence walkthrough using a fictional fintech (Halcyon Pay), and the citation chain back to the SSRN preprint and Kaggle dataset. The post is the tip of the spear of a planned reshare-ask to the Cursor team — it ships first, the email goes out second, and the success metric is post + JSON-LD validated, not the reshare itself.",
   date: "2026-04-26",
@@ -26,7 +26,7 @@ export const cursorCollabPost: BlogPost = {
       context: "trending, sector search, signal, summary, methodology",
     },
     {
-      value: "4,200",
+      value: "369",
       label: "Tracked startup orgs",
       context: "Same panel as the SSRN preprint",
     },
@@ -104,7 +104,7 @@ You're three commits deep into a small-team payments-rails infrastructure repo. 
 
 You ask Cursor: "is this commit pattern unusual?"
 
-Cursor's AI calls a tool. The tool replies: out of 4,200 tracked startups, this team is in the top 6% by 14-day commit-velocity acceleration. Their language mix shifted from 78% TypeScript to 51% TypeScript / 32% Rust over the last 30 days. There are 4 newly-active contributors with FAANG-tagged GitHub histories. The closest matched cohort raised a Series A within 6-8 weeks of a similar pattern.
+Cursor's AI calls a tool. The tool replies: out of 369 tracked startups, this team is in the top 6% by 14-day commit-velocity acceleration. Their language mix shifted from 78% TypeScript to 51% TypeScript / 32% Rust over the last 30 days. There are 4 newly-active contributors with FAANG-tagged GitHub histories. The closest matched cohort raised a Series A within 6-8 weeks of a similar pattern.
 
 You hit reply on the founder's email. "Quick call this week?"
 
@@ -143,7 +143,7 @@ If you already manage MCP servers via JSON (Claude Code-style), drop this into ~
 
 Restart Cursor (Cmd-Q, reopen). The MCP panel under Settings will now show GitDealFlow with a green dot.
 
-The npx command pulls @gitdealflow/mcp-signal from npm and runs it on stdio. The package is open-source, read-only, no auth, no destructive ops. It exposes 5 skills: get_trending_startups, search_startups_by_sector, get_startup_signal, get_signals_summary, and get_methodology. The data behind those skills is the same panel that backs the SSRN preprint and the Kaggle dataset — 4,200 tracked startup GitHub orgs, weekly refresh, public methodology.
+The npx command pulls @gitdealflow/mcp-signal from npm and runs it on stdio. The package is open-source, read-only, no auth, no destructive ops. It exposes 5 skills: get_trending_startups, search_startups_by_sector, get_startup_signal, get_signals_summary, and get_methodology. The data behind those skills is the same panel that backs the SSRN preprint and the Kaggle dataset — 369 tracked startup GitHub orgs, weekly refresh, public methodology.
 
 ## The working recipe
 

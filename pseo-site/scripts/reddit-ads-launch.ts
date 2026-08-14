@@ -131,7 +131,7 @@ const CREATIVES = [
   {
     variant: "v3",
     headline: "219 fundraises. One signal. 21–47 days early.",
-    body: "Open-access SSRN preprint. Reproducible methodology. Live ranking of 4,200+ venture-backed GitHub orgs. Pick a sector and we ship the 25-row deep-dive in 24 hours for €7. €7 credited toward Dashboard upgrade.",
+    body: "Open-access SSRN preprint. Reproducible methodology. Live ranking of 350+ venture-backed GitHub orgs. Pick a sector and we ship the 25-row deep-dive in 24 hours for €7. €7 credited toward Dashboard upgrade.",
     cta: "Read the panel + grab a sector",
     image: `${CREATIVE_BASE}/api/og/reddit/v3`,
   },

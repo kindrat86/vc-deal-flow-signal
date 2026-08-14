@@ -179,7 +179,7 @@ ${top10
 If you're allocating real capital into one sector and need this depth across the whole field:
 - **Custom Sector Sweep** (€1,997 one-time) — every venture-backed startup in one sector you pick, engineering acceleration ranked over four quarters, diligence prompts on each top-10 name, three early-stage targets not yet on Crunchbase or PitchBook. Written report in 7 business days, 30-minute clarifications call after delivery. Detail: https://gitdealflow.com/sector-sweep?utm_source=email&utm_medium=firstlook-delivery&utm_campaign=sector-sweep · Commission: /api/checkout/session?tier=sector_sweep
 
-If you want this every week, across all 20 sectors, with filters and the live dashboard:
+If you want this every week, across all 15 sectors, with filters and the live dashboard:
 - **Dashboard** (€9.97/mo founding-member, locked forever) — https://gitdealflow.com/dashboard?utm_source=email&utm_medium=firstlook-delivery&utm_campaign=dashboard
 - Reply to your confirmation email with **"credit me"** and your €7 First Look Pass is credited toward your first month.
 
@@ -287,7 +287,7 @@ export function buildAutoFulfillmentEmailHtml(opts: {
 The <a href="https://gitdealflow.com/sector-sweep?utm_source=email&amp;utm_medium=firstlook-delivery&amp;utm_campaign=sector-sweep" style="color:#FF6B1A;font-weight:600;">Custom Sector Sweep</a> takes the same lens you just got for ${displaySector} and runs it across <em>every</em> venture-backed startup in one sector you pick &mdash; engineering acceleration ranked over four quarters, diligence prompts on each top-10 name, three early-stage targets not yet on Crunchbase or PitchBook. Written report in 7 business days, plus a 30-minute clarifications call after delivery. <strong>€1,997 one-time.</strong>
 <div style="margin-top:14px;"><a href="/api/checkout/session?tier=sector_sweep" style="display:block;width:100%;box-sizing:border-box;background:#FF6B1A;color:#ffffff;font-weight:700;font-size:19px;line-height:1.2;padding:18px 28px;border-radius:10px;text-decoration:none;text-align:center;box-shadow:0 4px 14px rgba(255,107,26,0.35);">Commission a Sector Sweep &rarr;</a></div>
 </div>
-<p style="margin-top:28px;"><strong>Want this every week, across all 20 sectors?</strong> Reply with <code>credit me</code> to apply your €7 toward the full Dashboard (€9.97/mo founding price, locked forever).</p>
+<p style="margin-top:28px;"><strong>Want this every week, across all 15 sectors?</strong> Reply with <code>credit me</code> to apply your €7 toward the full Dashboard (€9.97/mo founding price, locked forever).</p>
 <p>Questions about any specific name? Reply &mdash; same email thread.</p>
 <p>— The Data Nerd</p>
 </div>

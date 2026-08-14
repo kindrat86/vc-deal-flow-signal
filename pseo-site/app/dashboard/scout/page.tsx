@@ -210,7 +210,7 @@ export default async function ScoutDashboardPage({
 }
 
 function ShareSection({ scoutHandle, rankLabel }: { scoutHandle: string; rankLabel: string }) {
-  const shareText = `I'm scouting pre-seed breakouts on @data_nerd's GitDealFlow. Rank: ${rankLabel}. The recipient gets a 7-day preview of the live signal index:`;
+  const shareText = `I'm scouting pre-seed breakouts on @sipiteno's GitDealFlow. Rank: ${rankLabel}. The recipient gets a 7-day preview of the live signal index:`;
   const { shareUrl, twitterIntent } = makeShareIntents({
     sharer: scoutHandle,
     kind: "scout",

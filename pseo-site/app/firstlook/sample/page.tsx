@@ -316,7 +316,7 @@ export default function FirstLookSamplePage() {
             </h2>
             <p className="text-gray-400 text-sm leading-relaxed">
               Every First Look ships at 14 pages exactly &mdash; the structure
-              holds across all 20 sectors. If you don&rsquo;t see at least three
+              holds across all 15 sectors. If you don&rsquo;t see at least three
               pages below that you&rsquo;d screenshot into a memo, the bait
               isn&rsquo;t the right shape for you and you should skip the €7.
             </p>

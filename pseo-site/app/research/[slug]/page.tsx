@@ -440,7 +440,7 @@ export default async function ResearchFindingPage({ params }: PageProps) {
           14-day rolling count of commits to a startup&rsquo;s most active
           public repository — the earliest public signal of engineering
           throughput before a fundraise announcement. All 30 findings in this
-          series are derived from the SSRN panel dataset of ~400 tracked
+          series are derived from the SSRN panel dataset of ~369 tracked
           startup GitHub organizations.
         </p>
 

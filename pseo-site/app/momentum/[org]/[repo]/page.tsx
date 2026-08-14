@@ -84,7 +84,7 @@ export async function generateMetadata({
         url: `${SITE}/momentum/${org}/${repo}`,
         type: "website",
       },
-      twitter: { card: "summary_large_image", site: "@data_nerd" },
+      twitter: { card: "summary_large_image", site: "@sipiteno" },
     };
   }
   const tier = tierFromVelocityChange(startup.commitVelocityChange);
@@ -105,7 +105,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      site: "@data_nerd",
+      site: "@sipiteno",
       title,
       description,
     },

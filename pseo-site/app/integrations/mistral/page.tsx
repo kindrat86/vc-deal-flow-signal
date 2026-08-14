@@ -7,7 +7,7 @@ const MCP_URL = `${SITE}/api/mcp/rpc`;
 const TITLE =
   "Use VC Deal Flow Signal in Mistral Le Chat — Custom MCP Connector";
 const DESCRIPTION =
-  "Add the VC Deal Flow Signal MCP server to Mistral Le Chat as a Custom MCP Connector in under two minutes. Public Streamable HTTP endpoint, no auth required, six read-only tools for venture-backed startup engineering signals across 20 sectors.";
+  "Add the VC Deal Flow Signal MCP server to Mistral Le Chat as a Custom MCP Connector in under two minutes. Public Streamable HTTP endpoint, no auth required, six read-only tools for venture-backed startup engineering signals across 15 sectors.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    site: "@data_nerd",
+    site: "@sipiteno",
     title: TITLE,
     description: DESCRIPTION,
   },
@@ -32,12 +32,12 @@ const TOOLS: { name: string; summary: string }[] = [
   {
     name: "get_trending_startups",
     summary:
-      "Top 20 startups across all 20 sectors ranked by GitHub engineering acceleration.",
+      "Top 20 startups across all 15 sectors ranked by GitHub engineering acceleration.",
   },
   {
     name: "search_startups_by_sector",
     summary:
-      "Every tracked startup in one of 20 sectors, ranked by acceleration. Sectors enumerated.",
+      "Every tracked startup in one of 15 sectors, ranked by acceleration. Sectors enumerated.",
   },
   {
     name: "get_startup_signal",
@@ -72,7 +72,7 @@ const HOW_TO_STEPS = [
   },
   {
     name: "Paste the server URL",
-    text: `Connector name: vc-deal-flow-signal (no spaces). Connection server: ${MCP_URL}. Description (optional): VC Deal Flow Signal — engineering acceleration signals across 20 sectors. Authentication: No Authentication (the server is public, read-only).`,
+    text: `Connector name: vc-deal-flow-signal (no spaces). Connection server: ${MCP_URL}. Description (optional): VC Deal Flow Signal — engineering acceleration signals across 15 sectors. Authentication: No Authentication (the server is public, read-only).`,
   },
   {
     name: "Click Connect",
@@ -99,7 +99,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "What data does it return?",
-    a: "Six tools backed by a 140-row dataset refreshed weekly: trending startups across 20 sectors, sector-filtered rankings, single-startup deep lookups, dataset metadata, GitHub Scout Score for any user, and the full methodology. Every record includes commit velocity (14-day window), contributor delta, repo expansion, sector, and signal classification (Engineering Acceleration / Contributor Growth / Infrastructure Buildout).",
+    a: "Six tools backed by a 140-row dataset refreshed weekly: trending startups across 15 sectors, sector-filtered rankings, single-startup deep lookups, dataset metadata, GitHub Scout Score for any user, and the full methodology. Every record includes commit velocity (14-day window), contributor delta, repo expansion, sector, and signal classification (Engineering Acceleration / Contributor Growth / Infrastructure Buildout).",
   },
   {
     q: "Does Le Chat support dynamic tool discovery?",
@@ -179,7 +179,7 @@ const jsonLd = {
       applicationCategory: "DeveloperApplication",
       operatingSystem: "Web (Streamable HTTP)",
       description:
-        "MCP server exposing six read-only tools over engineering-acceleration signals for 140 venture-backed startups across 20 sectors. Streamable HTTP, no auth, public dataset.",
+        "MCP server exposing six read-only tools over engineering-acceleration signals for 140 venture-backed startups across 15 sectors. Streamable HTTP, no auth, public dataset.",
       offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
       author: {
         "@type": "Organization",
@@ -225,7 +225,7 @@ export default function MistralIntegrationPage() {
           Add the VC Deal Flow Signal MCP server to your Mistral Le Chat
           workspace as a Custom MCP Connector in under two minutes. Public
           Streamable HTTP endpoint, no authentication, six read-only tools for
-          venture-backed startup engineering signals across 20 sectors. Once an
+          venture-backed startup engineering signals across 15 sectors. Once an
           admin installs the connector, every teammate can ask Le Chat about
           breakout startups directly in chat.
         </p>

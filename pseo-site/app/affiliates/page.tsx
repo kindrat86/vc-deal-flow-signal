@@ -535,7 +535,7 @@ export default function AffiliatesPage() {
             <p className="text-sky-400 text-xs font-semibold uppercase tracking-wider mb-2">
               Channel 1 — Twitter / X (single tweet)
             </p>
-            <pre className="text-gray-300 text-sm leading-relaxed whitespace-pre-wrap font-sans bg-slate-950 border border-slate-800 rounded p-4 mb-3">{`I keep telling people about this. GitDealFlow scans 4,200 GitHub orgs every Sunday and tells you which startups are accelerating before they raise. The pattern preceded 219 startup-period observations by 21–47 days in their SSRN paper.
+            <pre className="text-gray-300 text-sm leading-relaxed whitespace-pre-wrap font-sans bg-slate-950 border border-slate-800 rounded p-4 mb-3">{`I keep telling people about this. GitDealFlow scans 369 GitHub orgs every Sunday and tells you which startups are accelerating before they raise. The pattern preceded 219 startup-period observations by 21–47 days in their SSRN paper.
 
 Free Sunday digest, no card: YOURLINK`}</pre>
             <p className="text-gray-400 text-xs">~245 chars. Add the SSRN link if you have room. Pin if you have a small audience — the share rate compounds.</p>
@@ -578,7 +578,7 @@ If you write checks, scout for a fund, or just like watching engineering data, t
             </p>
             <pre className="text-gray-300 text-sm leading-relaxed whitespace-pre-wrap font-sans bg-slate-950 border border-slate-800 rounded p-4 mb-3">{`if anyone here is sourcing seed/Series A:
 
-GitDealFlow tracks GitHub commit velocity across 4,200 startup orgs and surfaces the ones accelerating fast. The free Sunday digest gives you 5 names a week — they have a research paper on SSRN with 219 startup-period observations that the signal preceded by 21-47 days.
+GitDealFlow tracks GitHub commit velocity across 369 startup orgs and surfaces the ones accelerating fast. The free Sunday digest gives you 5 names a week — they have a research paper on SSRN with 219 startup-period observations that the signal preceded by 21-47 days.
 
 free, no card, weekly email: YOURLINK`}</pre>
             <p className="text-gray-400 text-xs">For #investors, #vc, #startups channels. Drop once per quarter per community max.</p>

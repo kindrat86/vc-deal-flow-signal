@@ -69,7 +69,7 @@ export function dealVelocityLabel(v: DealVelocity): string {
 }
 
 // ---------------------------------------------------------------------------
-// Sector × sub-niche taxonomy. 20 sectors × 10 sub-niches = 200 leaf pages.
+// Sector × sub-niche taxonomy. 15 sectors × 10 sub-niches = 200 leaf pages.
 // ---------------------------------------------------------------------------
 
 export const nicheSectors: NicheSector[] = [

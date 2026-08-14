@@ -27,7 +27,7 @@ const TOOL_DEFINITIONS = [
   {
     name: "get_trending_startups",
     description:
-      "Top 20 startups by engineering acceleration across all 20 sectors for the current weekly period. Read-only, idempotent. Use for cross-sector 'what's hot this week' questions.",
+      "Top 20 startups by engineering acceleration across all 15 sectors for the current weekly period. Read-only, idempotent. Use for cross-sector 'what's hot this week' questions.",
     parameters: {
       type: "object" as const,
       properties: {} as Record<string, unknown>,

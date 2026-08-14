@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   title:
     "GitHub Engineering Velocity for Venture-Backed Startups — 30 Findings (SSRN-Indexed)",
   description:
-    "SSRN-indexed research panel tracking GitHub engineering signals across 55 venture-backed startups in 20 sectors. Free dataset, 30 findings, CC BY 4.0.",
+    "SSRN-indexed research panel tracking GitHub engineering signals across 55 venture-backed startups in 15 sectors. Free dataset, 30 findings, CC BY 4.0.",
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
   alternates: { canonical: "/research" },
   openGraph: {
@@ -40,7 +40,7 @@ const FAQ_ENTRIES = [
   {
     q: "What is the GitDealFlow research dataset?",
     a:
-      "A public longitudinal panel of GitHub engineering velocity signals across 55 venture-backed startups in 20 sectors, spanning 5 quarters from Q2 2025 through Q2 2026 (219 startup-period observations). Distributed under CC BY 4.0.",
+      "A public longitudinal panel of GitHub engineering velocity signals across 55 venture-backed startups in 15 sectors, spanning 5 quarters from Q2 2025 through Q2 2026 (219 startup-period observations). Distributed under CC BY 4.0.",
   },
   {
     q: "What is the typical commit velocity for a venture-backed startup?",
@@ -84,7 +84,7 @@ export default function ResearchPage() {
     "@type": "ScholarlyArticle",
     headline: PAPER_TITLE,
     description:
-      "A longitudinal panel of GitHub engineering velocity signals across 55 venture-backed startups in 20 sectors.",
+      "A longitudinal panel of GitHub engineering velocity signals across 55 venture-backed startups in 15 sectors.",
     author: DATA_NERD_AUTHOR_REF,
     datePublished: "2026-04-19",
     inLanguage: "en",
@@ -190,7 +190,7 @@ export default function ResearchPage() {
     "@type": "Dataset",
     name: "VC Deal Flow Signal — GitHub Engineering Acceleration Validation Panel",
     description:
-      "A 219-startup longitudinal panel of GitHub engineering velocity signals against confirmed venture fundraises across 20 sectors. Used to validate the lead-time math published in the SSRN preprint at ssrn.com/abstract=6606558. Median lead time 5.4 weeks, top-decile precision ~65%.",
+      "A 219-startup longitudinal panel of GitHub engineering velocity signals against confirmed venture fundraises across 15 sectors. Used to validate the lead-time math published in the SSRN preprint at ssrn.com/abstract=6606558. Median lead time 5.4 weeks, top-decile precision ~65%.",
     url: "https://doi.org/10.5281/zenodo.19650920",
     sameAs: [
       "https://ssrn.com/abstract=6606558",
@@ -390,7 +390,7 @@ export default function ResearchPage() {
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed mb-6 max-w-3xl">
             A public longitudinal panel of GitHub engineering velocity signals
             across <strong>55 venture-backed startups</strong> in{" "}
-            <strong>20 sectors</strong>, spanning 5 quarters from Q2 2025
+            <strong>15 sectors</strong>, spanning 5 quarters from Q2 2025
             through Q2 2026 (<strong>219 startup-period observations</strong>).
             Below: 30 atomic findings from the paper, each cited to its
             section, each falsifiable against the public dataset. If your
@@ -473,7 +473,7 @@ export default function ResearchPage() {
           <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
             We release a quarterly longitudinal panel of GitHub
             engineering-velocity signals across 55 venture-backed startups in
-            20 sectors, spanning five quarters from Q2 2025 through Q2 2026
+            15 sectors, spanning five quarters from Q2 2025 through Q2 2026
             (219 startup-period observations). For each observation we record
             commit velocity over a rolling 14-day window, unique-contributor
             count, new-repository creation, and a deterministic classification

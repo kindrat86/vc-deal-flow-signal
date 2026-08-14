@@ -46,7 +46,7 @@ const RUNGS = [
     name: "Dashboard",
     price: "€9.97/mo founding rate",
     headline:
-      "The 7-signal composite, computed continuously across 4,200 startup orgs.",
+      "The 7-signal composite, computed continuously across 369 startup orgs.",
     deliverables: [
       "140 venture-backed startups ranked by 14-day commit-velocity acceleration, refreshed every Monday at 06:00 UTC",
       "Filter by sector, stage, geography",
@@ -312,7 +312,7 @@ export default function ChallengeDonePage() {
             indefinitely.
           </p>
           <p className="text-gray-300 text-sm leading-relaxed">
-            We charge for scale (the live engine across 4,200 orgs and the
+            We charge for scale (the live engine across 369 orgs and the
             custom Sector Sweep), not for the framework. If the manual version
             fits you, the manual version is genuinely the right answer.
           </p>

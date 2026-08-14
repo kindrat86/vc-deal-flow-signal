@@ -4,7 +4,7 @@
  *
  * Keeps the full `fetch-github-data.ts` pipeline untouched. That crawler only
  * processes a rotating 5-sector slice per day, so backfilling URLs across all
- * ~400 existing records via the main pipeline would take multiple full runs.
+ * ~369 existing records via the main pipeline would take multiple full runs.
  *
  * Usage: npx tsx scripts/backfill-blog-urls.ts
  */

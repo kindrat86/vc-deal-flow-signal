@@ -23,7 +23,7 @@ export async function GET() {
       protocolVersion: "0.3.0",
       name: "GitDealFlow Signal Agent",
       description:
-        "Track startup engineering acceleration from public GitHub data. Returns trending startups, sector signals, and per-company velocity profiles across 20 sectors. Updated weekly. Free, no auth required.",
+        "Track startup engineering acceleration from public GitHub data. Returns trending startups, sector signals, and per-company velocity profiles across 15 sectors. Updated weekly. Free, no auth required.",
       url: `${BASE_URL}/api/a2a`,
       preferredTransport: "JSONRPC",
       iconUrl: `${BASE_URL}/icon.png`,
@@ -45,7 +45,7 @@ export async function GET() {
           id: "get_trending_startups",
           name: "Get Trending Startups",
           description:
-            "Top 20 startups across all 20 sectors ranked by engineering acceleration for the current weekly period. Includes commit velocity, contributor count, signal classification, and GitHub URL.",
+            "Top 20 startups across all 15 sectors ranked by engineering acceleration for the current weekly period. Includes commit velocity, contributor count, signal classification, and GitHub URL.",
           tags: ["startups", "trending", "vc", "deal-flow", "github", "weekly"],
           examples: [
             "Show me trending startups this week",

@@ -173,7 +173,7 @@ export default function StartHerePage() {
             earlier — by reading their public GitHub.</strong>
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
-            We track 100+ venture-backed orgs across 20 sectors. Every
+            We track 100+ venture-backed orgs across 15 sectors. Every
             Monday at 06:00 UTC we re-rank them by 14-day commit-velocity
             acceleration. The five highest-momentum names go into a free
             email digest. The full ranked dashboard is €49/mo. The

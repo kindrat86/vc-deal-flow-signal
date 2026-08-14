@@ -73,6 +73,17 @@ async function main() {
     }
   }
 
+  // Filter to THIS host only. The video sitemap embeds YouTube
+  // <video:player_loc> URLs, and IndexNow rejects the ENTIRE batch with 422
+  // ("One or more URLs are not related to your verified domain") when any
+  // entry is cross-domain — so the postbuild submission has been silently
+  // failing on every deploy. Fixed 2026-08-14.
+  for (let i = urls.length - 1; i >= 0; i--) {
+    if (!urls[i].startsWith(BASE_URL)) {
+      urls.splice(i, 1);
+    }
+  }
+
   if (urls.length === 0) {
     console.log("No URLs found in sitemap, skipping.");
     return;

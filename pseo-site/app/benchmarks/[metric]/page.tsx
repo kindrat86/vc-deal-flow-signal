@@ -25,7 +25,7 @@ const BENCHMARKS: Benchmark[] = [
     name: "Commit Velocity",
     title: "Startup Commit Velocity Benchmarks by Sector — 2026 GitHub Data",
     description:
-      "How does your startup's GitHub commit velocity compare? Real benchmarks from 400+ venture-backed startups across 20 sectors. 14-day rolling window, refreshed weekly.",
+      "How does your startup's GitHub commit velocity compare? Real benchmarks from 400+ venture-backed startups across 15 sectors. 14-day rolling window, refreshed weekly.",
     h1: "Commit Velocity Benchmarks — How Your Startup Compares",
     intro:
       "Commit velocity (14-day rolling commits to the most active public repo) is the core ranking metric for VC Deal Flow Signal. These benchmarks show where your startup stands relative to the sector median and top quartile.",
@@ -49,7 +49,7 @@ const BENCHMARKS: Benchmark[] = [
     faqs: [
       { q: "What is commit velocity?", a: "Commit velocity is the total number of commits to a startup's most active public repository over a rolling 14-day window. It's a direct measure of engineering throughput." },
       { q: "What's a good commit velocity?", a: "It depends heavily on sector and language. A Rust infrastructure startup with 50 commits/14d may be outperforming a JavaScript SaaS startup with 200 commits. Compare against the sector median, not an absolute number." },
-      { q: "How is this data collected?", a: "Public GitHub data only. We sweep ~4,200 candidate orgs every Sunday and publish the top 85+ across 20 sectors. Full methodology at /methodology." },
+      { q: "How is this data collected?", a: "Public GitHub data only. We sweep ~369 candidate orgs every Sunday and publish the top 85+ across 15 sectors. Full methodology at /methodology." },
     ],
   },
   {
@@ -57,7 +57,7 @@ const BENCHMARKS: Benchmark[] = [
     name: "Contributor Growth",
     title: "Startup Contributor Growth Benchmarks — GitHub Engineer Hiring Signals",
     description:
-      "How many active contributors do venture-backed startups have? Real benchmarks from 400+ tracked GitHub organizations across 20 sectors. Hiring burst detection.",
+      "How many active contributors do venture-backed startups have? Real benchmarks from 400+ tracked GitHub organizations across 15 sectors. Hiring burst detection.",
     h1: "Contributor Growth Benchmarks — Hiring Signals by Sector",
     intro:
       "Contributor count and 6-week growth rate are the second-strongest fundraise-precursor signal after commit velocity. A hiring burst (3+ new organizational committers in a 14-day window) frequently precedes a round announcement.",
@@ -210,7 +210,7 @@ export default async function BenchmarkPage({ params }: PageProps) {
         <section aria-label="TL;DR" className="mb-8 rounded-lg border border-slate-800 bg-slate-900/60 p-4">
           <p className="text-xs font-semibold text-sky-400 uppercase tracking-wider mb-2">TL;DR</p>
           <p className="text-gray-300 text-sm leading-relaxed">
-            Real benchmark data from ~400 venture-backed startups across 20 sectors. Refreshed weekly every Monday.
+            Real benchmark data from ~369 venture-backed startups across 15 sectors. Refreshed weekly every Monday.
             Data from {period.name}. Free under CC BY 4.0.
           </p>
         </section>

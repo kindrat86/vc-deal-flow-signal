@@ -322,7 +322,7 @@ function summaryResponse() {
     "@type": "Dataset" as const,
     name: "VC Deal Flow Signal",
     description:
-      "Public dataset of startup engineering acceleration derived from public GitHub activity. Commit velocity, contributor growth, and signal classification across 20 sectors. Updated weekly.",
+      "Public dataset of startup engineering acceleration derived from public GitHub activity. Commit velocity, contributor growth, and signal classification across 15 sectors. Updated weekly.",
     url: BASE_URL,
     keywords: [
       "venture-capital",

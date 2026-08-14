@@ -5,7 +5,7 @@
     "gitdealflow": {
       "command": "npx",
       "args": ["-y", "@gitdealflow/mcp-signal"],
-      "description": "VC Deal Flow Signal — GitHub-derived engineering acceleration signals across ~400 venture-backed startups in 20 sectors. Six free read-only tools.",
+      "description": "VC Deal Flow Signal — GitHub-derived engineering acceleration signals across ~369 venture-backed startups in 15 sectors. Six free read-only tools.",
       "env": {}
     }
   },

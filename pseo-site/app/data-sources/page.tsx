@@ -29,7 +29,7 @@ const sources: DataSource[] = [
     type: "primary",
     endpoint: "https://api.github.com/search/repositories",
     description:
-      "Primary discovery endpoint. Queried every Monday across 20 sector-specific topic clusters (machine-learning, saas, fintech, devtools, etc.) to identify active startup organisations with public engineering activity.",
+      "Primary discovery endpoint. Queried every Monday across 15 sector-specific topic clusters (machine-learning, saas, fintech, devtools, etc.) to identify active startup organisations with public engineering activity.",
     updateCadence: "Weekly (Monday)",
     license: "GitHub Terms of Service — public data access",
     attribution: "GitHub, Inc.",
@@ -88,7 +88,7 @@ const sources: DataSource[] = [
     type: "reference",
     endpoint: "https://github.com/topics",
     description:
-      "Reference for the 20 sector clusters. Each cluster maps to 3-10 GitHub topic tags; a repository is included in a sector if its primary language, topic tags, or description matches the cluster rules. The mapping is versioned and available on request.",
+      "Reference for the 15 sector clusters. Each cluster maps to 3-10 GitHub topic tags; a repository is included in a sector if its primary language, topic tags, or description matches the cluster rules. The mapping is versioned and available on request.",
     updateCadence: "Quarterly review",
     license: "Public reference data",
   },
@@ -227,7 +227,7 @@ export default function DataSourcesPage() {
             name: "How is the data refreshed?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "The full panel refreshes every Monday morning. The pipeline pulls the latest 14-day GitHub activity for approximately 4,200 startup organizations, normalizes for bot accounts and trivial commits, computes acceleration metrics, classifies signal patterns, and republishes the sector rankings, the API endpoints, the dashboard, the dataset mirrors on Zenodo and Kaggle, and the weekly Signal Report email — all in the same publishing window.",
+              text: "The full panel refreshes every Monday morning. The pipeline pulls the latest 14-day GitHub activity for approximately 369 startup organizations, normalizes for bot accounts and trivial commits, computes acceleration metrics, classifies signal patterns, and republishes the sector rankings, the API endpoints, the dashboard, the dataset mirrors on Zenodo and Kaggle, and the weekly Signal Report email — all in the same publishing window.",
             },
           },
           {
@@ -339,7 +339,7 @@ export default function DataSourcesPage() {
           </p>
           <ul className="list-disc pl-5 space-y-1.5">
             <li>
-              <strong className="text-gray-200">~4,200 organisations scanned every week</strong>{" "}
+              <strong className="text-gray-200">~369 organisations scanned every week</strong>{" "}
               — the full universe of venture-backed GitHub orgs we look at. This
               is the haystack, not the picks.
             </li>
@@ -357,7 +357,7 @@ export default function DataSourcesPage() {
           </ul>
           <p>
             Scanned universe, weekly shortlist, and research panel are three
-            different layers. You never sift the 4,200 yourself — we do, and hand
+            different layers. You never sift the 369 yourself — we do, and hand
             you the shortlist.
           </p>
         </PlainEnglishNote>
