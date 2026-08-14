@@ -978,6 +978,138 @@ It works in 18-month chunks. The first six months feel like nothing. The second 
       "warm relationship vc",
     ],
   },
+  {
+    slug: "how-to-find-startups-to-invest-in",
+    h1: "How to Find Startups to Invest In (Before They Raise)",
+    description:
+      "A step-by-step process to find startups to invest in before they raise, using GitHub commit-velocity and contributor-influx signals on top of your usual sourcing.",
+    tldr:
+      "Find startups to invest in before the round is announced by layering public GitHub signals (commit-velocity change, contributor influx, repo expansion) on top of your usual sourcing, then qualifying with a four-test rubric before you spend a founder minute.",
+    body: `Most guidance on how to find startups to invest in stops at the obvious: network harder, read Crunchbase every morning, show up to demo days. Those channels work, but they put you in the same line as every other investor, bidding on the same 40 companies the week the round is announced.
+
+The edge is in the six to eight weeks before that announcement. In that window a startup's public GitHub activity changes in measurable ways: commit velocity spikes, new contributors arrive, new repositories appear. Those changes show up in the commit graph before they show up in a press release, and they are free to read.
+
+This playbook is the process we run on the operating side of GitDealFlow. It is designed for angels, scouts, and pre-seed through Series A investors who want a systematic source of candidates that is not yet crowded. Total time per week is roughly 40 minutes of focused work, plus whatever you spend on the calls you decide to take.
+
+You do not need to be an engineer to use it. You need to know which numbers move when a team gets busy, and which ones mean nothing. That is what the four-test rubric below is for.`,
+    totalTime: "PT40M",
+    difficulty: "beginner",
+    prerequisites: [
+      "A target list of 3 to 5 sectors you actually understand (not a thesis you borrowed)",
+      "A simple spreadsheet or CRM to hold your candidate shortlist",
+      "Read access to the free signals feed at /api/v1/signals.json (no auth)",
+    ],
+    tools: [
+      "GitDealFlow signals feed (free, no auth)",
+      "GitHub web UI (commit and contributor inspection)",
+      "A watchlist spreadsheet",
+    ],
+    steps: [
+      {
+        name: "Pick your sector slice",
+        text: "Choose the 3 to 5 sectors where you have an actual information edge. Fetch the signal slice for each, for example https://signals.gitdealflow.com/api/v1/signals.json?sector=ai-ml. You are looking for the current top repos ranked by composite signal score.",
+        timeRequired: "PT5M",
+        toolUrl: "https://signals.gitdealflow.com/api/v1/signals.json?sector=ai-ml",
+        toolLabel: "Open the live AI/ML feed",
+      },
+      {
+        name: "Screen for acceleration, not size",
+        text: "Ignore total commits and total stars. You want change: a repo whose 28-day commit velocity jumped relative to its own 90-day baseline. A steady 200 commits a week tells you nothing. Going from 80 to 240 in two weeks tells you something is happening. Filter for velocity-percentile and velocity-change, not raw volume.",
+        timeRequired: "PT10M",
+        toolUrl: "/methodology",
+        toolLabel: "Read how velocity-change is computed",
+      },
+      {
+        name: "Apply the four-test rubric",
+        text: "For each shortlisted repo, check four things: (1) commit-velocity change over 14 to 28 days, (2) contributor growth (new people shipping, not one founder grinding), (3) new repository creation (platform building, not just polishing one repo), (4) a stack that matches the stated stage. Keep only candidates passing 3 of 4.",
+        timeRequired: "PT10M",
+        toolUrl: "/methodology",
+        toolLabel: "Review the four-signal methodology",
+      },
+      {
+        name: "Cross-check the team, not just the code",
+        text: "Open the org's GitHub page and the founders' profiles. You are checking whether the signal has a face: is the acceleration driven by a real team, or by one prolific developer plus bots? Look for a named founder, a coherent org, and contributor diversity. Cut anything that is clearly a hobby project or an enterprise fork.",
+        timeRequired: "PT8M",
+      },
+      {
+        name: "Time-box your diligence before you reach out",
+        text: "Run the five-checks-in-five-minutes pass: commit consistency, contributor growth, technology choices, new repo creation, and the ratio of product code to maintenance activity. This is a screen to decide whether a company deserves a real meeting, not a replacement for that meeting.",
+        timeRequired: "PT5M",
+        toolUrl: "/blog/github-due-diligence-for-vcs",
+        toolLabel: "Read the five-checks diligence guide",
+      },
+      {
+        name: "Reach out with a specific, non-generic note",
+        text: "When you find a candidate, your first message should reference something only someone who actually looked would know: the spike in a specific repo, the new contributor pattern, the infrastructure you saw them building. That specificity is what gets a founder to reply to a cold note, and it is the thing a public GitHub signal gives you for free.",
+        timeRequired: "PT2M",
+        toolUrl: "/playbooks/how-to-turn-a-trending-repo-into-a-warm-intro",
+        toolLabel: "See the warm-intro playbook",
+      },
+    ],
+    facts: [
+      {
+        claim:
+          "Commit-velocity change precedes public fundraise announcements by roughly 3 to 6 weeks in the startups GitDealFlow tracks.",
+        sourceUrl: "https://signals.gitdealflow.com/methodology",
+        sourceLabel: "Methodology",
+      },
+      {
+        claim:
+          "The single most predictive indicator is not commit volume but commit-velocity change: a steady 200 commits per week is neutral, while 80 to 240 inside 14 days is the pre-announcement pattern.",
+        sourceUrl: "https://signals.gitdealflow.com/blog/commit-velocity-explained",
+        sourceLabel: "Commit velocity explained",
+      },
+      {
+        claim:
+          "Half of the venture startups tracked show positive velocity growth in a given quarter, which means raw positive growth is not a signal; the size of the change relative to baseline is.",
+        sourceUrl:
+          "https://signals.gitdealflow.com/research/half-of-vc-startups-show-positive-velocity-growth",
+        sourceLabel: "Research finding",
+      },
+    ],
+    faqs: [
+      {
+        q: "How do I find startups to invest in without a network?",
+        a: "Start from public signal feeds instead of warm intros. GitHub activity is public, timestamped, and free to read. A systematic weekly screen of 3 to 5 sectors will surface candidates weeks before they appear in your inbox. The network compounds later; the signal gives you a first source today.",
+      },
+      {
+        q: "Do I need to know how to code to use GitHub signals?",
+        a: "No. You need to know which numbers move when a team gets busy (commit-velocity change, contributor influx, new repos), not how to write the queries. The GitDealFlow feed pre-computes those numbers so you read ranked lists, not raw git logs.",
+      },
+      {
+        q: "Is GitHub data enough to make an investment decision?",
+        a: "No, and it should not be. Public GitHub data is a sourcing and screening layer. It tells you which companies deserve a technical deep dive and a founder call, not whether to wire the check. Use it to decide who gets a meeting, then do normal diligence.",
+      },
+      {
+        q: "How is this different from just reading Crunchbase?",
+        a: "Crunchbase tells you what already happened (a round closed, a hire announced). GitHub signals show you what is happening now, in the weeks before it becomes a Crunchbase entry. They answer the same question at different points in the timeline; use both.",
+      },
+      {
+        q: "How many candidates should I expect per week?",
+        a: "A focused 40-minute screen across 3 to 5 sectors typically yields 5 to 10 candidates worth a second look, of which 1 or 2 clear the four-test rubric and justify a founder call. That is a healthy weekly cadence for a solo angel or scout.",
+      },
+    ],
+    ctaUrl: "https://gitdealflow.com/#signup",
+    ctaLabel: "Get the weekly breakout-startup report",
+    related: [
+      "how-to-find-your-first-investable-saas-on-github",
+      "how-to-spot-a-pre-seed-round-from-commit-velocity",
+      "how-to-read-a-github-trendline-like-a-partner",
+      "how-to-turn-a-trending-repo-into-a-warm-intro",
+    ],
+    keywords: [
+      "how to find startups to invest in",
+      "find startups to invest in",
+      "how to find startups before they raise",
+      "startup sourcing for angels",
+      "startup discovery",
+      "pre seed deal sourcing",
+      "github deal sourcing",
+      "angel investing sourcing",
+      "startup scouting",
+      "find breakout startups",
+    ],
+  },
 ];
 
 export function getPlaybookBySlug(slug: string): Playbook | undefined {
