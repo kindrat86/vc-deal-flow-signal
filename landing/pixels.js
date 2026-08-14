@@ -17,7 +17,7 @@
     meta: "",          // Facebook + Instagram. e.g. "1234567890123456"
     ga4: "G-7SV2SNZE4C",           // GA4 measurement ID (GitDealFlow property)
     googleAds: "",     // Google Ads conversion ID. e.g. "AW-123456789"
-    linkedin: "",      // LinkedIn Insight partner ID. e.g. "1234567"
+    linkedin: "10702217",      // LinkedIn Insight partner ID. e.g. "1234567"
     twitter: "",       // X/Twitter pixel ID. e.g. "abc12"
     tiktok: "",        // TikTok pixel ID. e.g. "C0XXXXXXXXXXXXXXXXXX"
     reddit: "",        // Reddit pixel ID. e.g. "t2_xxxxxxxx"
@@ -91,4 +91,54 @@
   if (PIXEL_IDS.msUet) {
     (function (w, d, t, r, u) { var f, n, i; w[u] = w[u] || [], f = function () { var o = { ti: PIXEL_IDS.msUet, enableAutoSpaTracking: true }; o.q = w[u], w[u] = new UET(o), w[u].push("pageLoad") }, n = d.createElement(t), n.src = r, n.async = 1, n.onload = n.onreadystatechange = function () { var s = this.readyState; s && s !== "loaded" && s !== "complete" || (f(), n.onload = n.onreadystatechange = null) }, i = d.getElementsByTagName(t)[0], i.parentNode.insertBefore(n, i) })(window, document, "script", "//bat.bing.com/bat.js", "uetq");
   }
+
+  // ------------------------------------------------------------------
+  // Core Web Vitals beacon (added 2026-08-15). Ships LCP/INP/CLS/FCP/TTFB
+  // to the existing PostHog EU project as $web_vitals events, the same
+  // event shape as pseo-site components/WebVitalsReporter.tsx, so ONE
+  // PostHog insight covers both domains. Closes the audit gap "no CWV
+  // field measurement on gitdealflow.com". Uses the self-hosted
+  // /web-vitals.js IIFE (no new CSP script origin). Honors GPC and DNT.
+  // ------------------------------------------------------------------
+  (function () {
+    try {
+      if (navigator.globalPrivacyControl === true || navigator.doNotTrack === "1") return;
+      var PH_KEY = "phc_lyZCgvTpicjLzAO3rY2GhxuX5WUc5jQjP8ZVwwJqauX";
+      var PH_URL = "https://eu.i.posthog.com/i/v2/e/";
+      var TH = { LCP: [2500, 4000], INP: [200, 500], CLS: [0.1, 0.25], FCP: [1800, 3000], TTFB: [800, 1800] };
+      var DID = "cwv-" + Math.random().toString(36).slice(2, 10);
+      function rate(n, v) { var t = TH[n]; if (!t) return "good"; return v <= t[0] ? "good" : v <= t[1] ? "needs-improvement" : "poor"; }
+      function send(name, value, id) {
+        var props = {
+          distinct_id: DID,
+          $pathname: location.pathname,
+          $current_url: location.href,
+          $process_person_profile: false,
+          $web_vitals_name: name,
+          metric_name: name,
+          metric_value: value,
+          metric_rating: rate(name, value),
+          metric_id: id
+        };
+        props["$web_vitals_" + name + "_value"] = value;
+        props["$web_vitals_" + name + "_rating"] = rate(name, value);
+        props["$web_vitals_" + name + "_event_id"] = id;
+        var body = JSON.stringify({ api_key: PH_KEY, batch: [{ event: "$web_vitals", properties: props, timestamp: new Date().toISOString() }] });
+        try { if (navigator.sendBeacon) { navigator.sendBeacon(PH_URL, new Blob([body], { type: "application/json" })); return; } } catch (e) {}
+        try { fetch(PH_URL, { method: "POST", body: body, keepalive: true, headers: { "Content-Type": "application/json" } }); } catch (e) {}
+      }
+      function start() {
+        var wv = window.webVitals; if (!wv) return;
+        wv.onLCP(function (m) { send("LCP", m.value, m.id); });
+        wv.onINP(function (m) { send("INP", m.value, m.id); });
+        wv.onCLS(function (m) { send("CLS", m.value, m.id); });
+        wv.onFCP(function (m) { send("FCP", m.value, m.id); });
+        wv.onTTFB(function (m) { send("TTFB", m.value, m.id); });
+      }
+      if (window.webVitals) { start(); return; }
+      var s = document.createElement("script");
+      s.src = "/web-vitals.js"; s.async = true; s.onload = start;
+      document.head.appendChild(s);
+    } catch (e) { /* beacon must never throw */ }
+  })();
 })();

@@ -67,4 +67,12 @@ th{color:#94a3b8;font-weight:600;font-size:.8rem;text-transform:uppercase;letter
 <p>The Momentum Score (0-100) blends three transparent, public signals: <strong>traction</strong> (star count, log-scaled), <strong>recency</strong> (days since last push), and <strong>velocity</strong> (week-over-week star growth). The exact formula is printed at the bottom of every page. Nothing here is proprietary or hidden, reproduce it yourself from the <a href="/data/momentum-index/data.json">dataset</a>.</p>
 <p class="disc"><strong>Methodology & disclaimer.</strong> The Momentum Score reflects public software-engineering activity only. It is not investment advice, a valuation, or a recommendation to buy, sell, or fund any company. Data source: GitHub public REST API, refreshed as of 2026-08-10. Score = round(0.40·traction + 0.35·recency + 0.25·velocity), where traction=100·log10(stars+1)/5, recency is a step function of days since last push, and velocity reflects week-over-week star growth (falls back to traction on first snapshot). Full dataset: <a href="/data/momentum-index/data.json">data.json</a> (CC BY 4.0).</p>
 <p class="disc"><a href="/data/">← GitDealFlow Research Datasets</a> · <a href="/">gitdealflow.com</a></p>
-</div></body></html>
+</div>
+  <script>
+    (function(){
+      function _load(){var s=document.createElement('script');s.src='/pixels.js';s.async=true;document.head.appendChild(s);}
+      if('requestIdleCallback' in window){requestIdleCallback(_load,{timeout:3000});} else {setTimeout(_load,2500);}
+    })();
+  </script>
+
+  </body></html>

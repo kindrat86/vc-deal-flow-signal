@@ -60,8 +60,6 @@
   <url><loc>https://gitdealflow.com/data/startup-ma-statistics</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://gitdealflow.com/data/startup-valuation-trends</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://gitdealflow.com/data/vc-funding-trends</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://gitdealflow.com/embed/tools/portfolio-network</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://gitdealflow.com/embed/tools/startup-momentum-checker</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://gitdealflow.com/faq/can-you-predict-startup-funding</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://gitdealflow.com/faq/how-accurate-are-funding-signals</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://gitdealflow.com/faq/how-do-angel-investors-make-money</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
@@ -183,7 +181,6 @@
   <url><loc>https://gitdealflow.com/learn/pre-seed-investing</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://gitdealflow.com/learn/what-is-a-deal-flow-signal</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://gitdealflow.com/london</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
-  <url><loc>https://gitdealflow.com/network/widget</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://gitdealflow.com/new-york</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://gitdealflow.com/pricing/cb-insights-pricing-vs-gitdealflow</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://gitdealflow.com/pricing/crunchbase-pricing-vs-gitdealflow</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>

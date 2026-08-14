@@ -182,5 +182,13 @@
     if(/^https?:$/.test(location.protocol))posthog.init('phc_lyZCgvTpicjLzAO3rY2GhxuX5WUc5jQjP8ZVwwJqauX', {api_host: 'https://eu.i.posthog.com', persistence: 'memory', person_profiles: 'identified_only'});
   </script>
 
-</body>
+
+  <script>
+    (function(){
+      function _load(){var s=document.createElement('script');s.src='/pixels.js';s.async=true;document.head.appendChild(s);}
+      if('requestIdleCallback' in window){requestIdleCallback(_load,{timeout:3000});} else {setTimeout(_load,2500);}
+    })();
+  </script>
+
+  </body>
 </html>

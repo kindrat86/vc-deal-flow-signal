@@ -652,5 +652,13 @@ t.addEventListener('click',function(){set(t.getAttribute('aria-expanded')!=='tru
 document.addEventListener('keydown',function(e){if(e.key==='Escape'&&t.getAttribute('aria-expanded')==='true'){set(false);t.focus();}});})();
   </script>
 
-</body>
+
+  <script>
+    (function(){
+      function _load(){var s=document.createElement('script');s.src='/pixels.js';s.async=true;document.head.appendChild(s);}
+      if('requestIdleCallback' in window){requestIdleCallback(_load,{timeout:3000});} else {setTimeout(_load,2500);}
+    })();
+  </script>
+
+  </body>
 </html>
