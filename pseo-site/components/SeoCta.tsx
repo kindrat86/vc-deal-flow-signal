@@ -36,8 +36,8 @@ interface Props {
 const FREE_DIGEST = "https://gitdealflow.com/#signup";
 
 export default function SeoCta({
-  heading = "Five breakout startups, every Sunday — before the round gets crowded",
-  blurb = "The free Acceleration Watch: five venture-backed teams accelerating on the engineering signal, translated into plain English — 21 to 47 days before the deck circulates. No code-reading, no card.",
+  heading = "Five breakout startups, every Sunday, before the round gets crowded",
+  blurb = "The free Acceleration Watch: five venture-backed teams accelerating on the engineering signal, translated into plain English, 21 to 47 days before the deck circulates. No code-reading, no card.",
   primary = { label: "Get the free Sunday issue →", href: FREE_DIGEST },
   secondary,
   signoff = true,

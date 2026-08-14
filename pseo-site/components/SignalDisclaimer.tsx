@@ -16,7 +16,7 @@ export function SignalDisclaimer({ className = "" }: Props) {
   return (
     <p className={`text-xs text-gray-500 leading-relaxed ${className}`}>
       Not investment advice. Engineering signals are one sourcing input among
-      many — verify independently.
+      many, verify independently.
     </p>
   );
 }

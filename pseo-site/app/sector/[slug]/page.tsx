@@ -93,7 +93,7 @@ export default async function SectorHubPage({ params }: PageProps) {
       },
       {
         "@type": "ItemList",
-        name: `${s.name} — Tracked Companies`,
+        name: `${s.name}: Tracked Companies`,
         itemListOrder: "Unordered",
         numberOfItems: companiesInSector.length,
         itemListElement: companiesInSector.map((c, i) => ({
@@ -373,7 +373,7 @@ export default async function SectorHubPage({ params }: PageProps) {
         </section>
 
         <SeoCta
-          heading={`Get the weekly ${s.name} signal — before the round gets crowded`}
+          heading={`Get the weekly ${s.name} signal, before the round gets crowded`}
           secondary={{ label: "See First Look (€7)", href: "/firstlook" }}
           signoffIndex={0}
         />

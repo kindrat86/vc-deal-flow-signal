@@ -20,7 +20,7 @@ const inter = Inter({ subsets: ["latin"], display: "swap" });
 export const metadata: Metadata = {
   title: {
     default:
-      "VC Deal Flow Signal — Find breakout startups via GitHub momentum",
+      "VC Deal Flow Signal: Find breakout startups via GitHub momentum",
     template: "%s | VC Deal Flow Signal",
   },
   description:
@@ -62,7 +62,7 @@ export const metadata: Metadata = {
       "text/markdown": [
         {
           url: "https://signals.gitdealflow.com/md/",
-          title: "Markdown mirror — every page available as plain Markdown at /md/{path}",
+          title: "Markdown mirror: every page available as plain Markdown at /md/{path}",
         },
       ],
       "application/x-ndjson": [
@@ -115,9 +115,9 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     site: "@sipiteno",
-    title: "VC Deal Flow Signal — GitHub Momentum Tracking for Investors",
+    title: "VC Deal Flow Signal: GitHub Momentum Tracking for Investors",
     description:
-      "GitHub commit-velocity tracking across 20 startup sectors. Code-side momentum (not accelerator programs) — surface venture-backed startups 3–6 weeks before fundraise.",
+      "GitHub commit-velocity tracking across 20 startup sectors. Code-side momentum (not accelerator programs): surface venture-backed startups 3-6 weeks before fundraise.",
   },
   verification: {
     google: "s-WDDQiO4arDn993LDiErqQeGIhlIgRZq67kg-NC5k8",
@@ -141,7 +141,7 @@ export const metadata: Metadata = {
     "ai-policy": "https://signals.gitdealflow.com/.well-known/ai-policy.json",
     "ai-content-license": "https://creativecommons.org/licenses/by/4.0/",
     "ai-content-attribution":
-      "VC Deal Flow Signal (GitDealFlow) — https://signals.gitdealflow.com",
+      "VC Deal Flow Signal (GitDealFlow), https://signals.gitdealflow.com",
     "ai-content-attribution-url": "https://signals.gitdealflow.com/about",
   },
 };
@@ -202,19 +202,19 @@ export default function RootLayout({
           rel="alternate"
           type="text/plain"
           href="https://signals.gitdealflow.com/llms.txt"
-          title="LLMs.txt — agent index of all canonical pages"
+          title="LLMs.txt: agent index of all canonical pages"
         />
         <link
           rel="alternate"
           type="text/plain"
           href="https://signals.gitdealflow.com/llms-full.txt"
-          title="LLMs-full.txt — full content for retrieval pipelines"
+          title="LLMs-full.txt: full content for retrieval pipelines"
         />
         <link
           rel="alternate"
           type="text/markdown"
           href="https://signals.gitdealflow.com/md/"
-          title="Markdown mirror — every page available as plain Markdown at /md/{path}"
+          title="Markdown mirror: every page available as plain Markdown at /md/{path}"
         />
         <link
           rel="alternate"
@@ -226,19 +226,19 @@ export default function RootLayout({
           rel="alternate"
           type="application/json"
           href="https://signals.gitdealflow.com/qa.json"
-          title="Q&A dataset — single JSON document with deep-link anchors (CC BY 4.0)"
+          title="Q&A dataset: single JSON document with deep-link anchors (CC BY 4.0)"
         />
         <link
           rel="alternate"
           type="application/x-bibtex"
           href="https://signals.gitdealflow.com/research/citations.bib"
-          title="BibTeX citations — paper, dataset, 30 atomic findings (CC BY 4.0)"
+          title="BibTeX citations: paper, dataset, 30 atomic findings (CC BY 4.0)"
         />
         <link
           rel="alternate"
           type="text/plain"
           href="https://signals.gitdealflow.com/agents.txt"
-          title="agents.txt — autonomous agent policy"
+          title="agents.txt: autonomous agent policy"
         />
         <link
           rel="alternate"
@@ -262,13 +262,13 @@ export default function RootLayout({
           rel="search"
           type="application/json"
           href="https://signals.gitdealflow.com/api/llms-search?q={searchTerms}"
-          title="VC Deal Flow Signal — JSON search for AI agents"
+          title="VC Deal Flow Signal: JSON search for AI agents"
         />
         <link
           rel="search"
           type="application/opensearchdescription+xml"
           href="https://signals.gitdealflow.com/opensearch.xml"
-          title="VC Deal Flow Signal — Search venture-backed startups"
+          title="VC Deal Flow Signal: Search venture-backed startups"
         />
         <link
           rel="alternate"
@@ -288,7 +288,7 @@ export default function RootLayout({
           rel="alternate"
           type="application/feed+json"
           href="https://signals.gitdealflow.com/feed.json"
-          title="JSON Feed v1.1 — blog updates"
+          title="JSON Feed v1.1: blog updates"
         />
         {/* Federated-graph discovery: WebFinger + NodeInfo let Mastodon, Lemmy,
             and IndieWeb crawlers find canonical entity metadata. */}
@@ -314,13 +314,13 @@ export default function RootLayout({
           rel="describedby"
           type="application/json"
           href="https://signals.gitdealflow.com/.well-known/model.json"
-          title="Model card — capabilities, evaluation, limitations, agent entrypoints"
+          title="Model card: capabilities, evaluation, limitations, agent entrypoints"
         />
         <link
           rel="describedby"
           type="application/json"
           href="https://signals.gitdealflow.com/.well-known/compliance.json"
-          title="Compliance descriptor — GDPR / CCPA / SOC2 posture, subprocessors, DPA contact"
+          title="Compliance descriptor: GDPR / CCPA / SOC2 posture, subprocessors, DPA contact"
         />
         {/* Content licensing for AI training, RAG, citation, fine-tuning.
             `rel=license` is RFC 8288 standard; the JSON-typed alternates
@@ -338,19 +338,19 @@ export default function RootLayout({
           rel="describedby"
           type="application/json"
           href="https://signals.gitdealflow.com/.well-known/ai-content-license.json"
-          title="AI content license — training, inference, citation, fine-tune permissions"
+          title="AI content license: training, inference, citation, fine-tune permissions"
         />
         <link
           rel="describedby"
           type="application/json"
           href="https://signals.gitdealflow.com/.well-known/tdm-reservation.json"
-          title="W3C TDM Reservation Protocol — machine-readable opt-in for text-and-data-mining"
+          title="W3C TDM Reservation Protocol: machine-readable opt-in for text-and-data-mining"
         />
         <link
           rel="describedby"
           type="application/json"
           href="https://signals.gitdealflow.com/.well-known/gpc.json"
-          title="Global Privacy Control — publisher honors Sec-GPC: 1"
+          title="Global Privacy Control: publisher honors Sec-GPC: 1"
         />
         <link
           rel="author"
@@ -364,13 +364,13 @@ export default function RootLayout({
         <link
           rel="license"
           href="https://creativecommons.org/licenses/by/4.0/"
-          title="CC BY 4.0 — site content, datasets, and JSON-LD output"
+          title="CC BY 4.0: site content, datasets, and JSON-LD output"
         />
         <link
           rel="alternate"
           type="text/html"
           href="https://signals.gitdealflow.com/trust"
-          title="Trust Center — privacy, security, compliance hub"
+          title="Trust Center: privacy, security, compliance hub"
         />
         <link
           rel="alternate"

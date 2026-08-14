@@ -47,7 +47,7 @@ export default function Footer() {
         <div className="grid grid-cols-2 sm:grid-cols-6 gap-6 sm:gap-8 mb-8">
           <div>
             <p className="text-xs font-semibold text-gray-300 uppercase tracking-wider mb-3">Start Here</p>
-            <nav aria-label="Footer — Start Here" className="flex flex-col gap-2 text-sm text-gray-400">
+            <nav aria-label="Footer: Start Here" className="flex flex-col gap-2 text-sm text-gray-400">
               <Link href="/compare/crunchbase-alternative-for-angel-investors" className="hover:text-gray-200 transition-colors">Crunchbase alternative for angels</Link>
               <Link href="/answers/deal-flow-timing-vs-verification" className="hover:text-gray-200 transition-colors">Timing vs verification</Link>
               <Link href="/answers/how-angel-investors-use-github-signals" className="hover:text-gray-200 transition-colors">How angels use GitHub signals</Link>
@@ -58,7 +58,7 @@ export default function Footer() {
           </div>
           <div>
             <p className="text-xs font-semibold text-gray-300 uppercase tracking-wider mb-3">Product</p>
-            <nav aria-label="Footer — Product" className="flex flex-col gap-2 text-sm text-gray-400">
+            <nav aria-label="Footer: Product" className="flex flex-col gap-2 text-sm text-gray-400">
               <Link href="/funnels" className="hover:text-gray-200 transition-colors">Funnel Hub</Link>
               <Link href="/pricing" className="hover:text-gray-200 transition-colors">Pricing</Link>
               <Link href="/buyers-guide" className="hover:text-gray-200 transition-colors">Buyers Guide</Link>
@@ -72,7 +72,7 @@ export default function Footer() {
           </div>
           <div>
             <p className="text-xs font-semibold text-gray-300 uppercase tracking-wider mb-3">Data</p>
-            <nav aria-label="Footer — Data" className="flex flex-col gap-2 text-sm text-gray-400">
+            <nav aria-label="Footer: Data" className="flex flex-col gap-2 text-sm text-gray-400">
               <Link href="/methodology" className="hover:text-gray-200 transition-colors">Methodology</Link>
               <Link href="/reproducibility" className="hover:text-gray-200 transition-colors">Reproducibility</Link>
               <Link href="/research" className="hover:text-gray-200 transition-colors">Research</Link>
@@ -87,20 +87,20 @@ export default function Footer() {
           </div>
           <div>
             <p className="text-xs font-semibold text-gray-300 uppercase tracking-wider mb-3">Browse</p>
-            <nav aria-label="Footer — Browse" className="flex flex-col gap-2 text-sm text-gray-400">
+            <nav aria-label="Footer: Browse" className="flex flex-col gap-2 text-sm text-gray-400">
               <Link href="/" className="hover:text-gray-200 transition-colors">All Sectors</Link>
               <Link href="/trending" className="hover:text-gray-200 transition-colors">Trending</Link>
               <Link href="/stage/seed" className="hover:text-gray-200 transition-colors">By Stage</Link>
               <Link href="/vs/harmonic-ai-vs-dealroom" className="hover:text-gray-200 transition-colors">Head-to-Head</Link>
               <Link href="/blog" className="hover:text-gray-200 transition-colors">Blog</Link>
-              <Link href="/book" className="hover:text-gray-200 transition-colors">Book — 7 Signals</Link>
+              <Link href="/book" className="hover:text-gray-200 transition-colors">Book: 7 Signals</Link>
               <Link href="/glossary" className="hover:text-gray-200 transition-colors">Glossary</Link>
               <Link href="/faq" className="hover:text-gray-200 transition-colors">FAQ</Link>
             </nav>
           </div>
           <div>
             <p className="text-xs font-semibold text-gray-300 uppercase tracking-wider mb-3">Network</p>
-            <nav aria-label="Footer — Network" className="flex flex-col gap-2 text-sm text-gray-400">
+            <nav aria-label="Footer: Network" className="flex flex-col gap-2 text-sm text-gray-400">
               <a href="https://sipi.bot" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">Sipi.bot</a>
               <a href="https://churnlens.site" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">ChurnLens</a>
               <a href="https://carshake.online" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">CarShake</a>
@@ -114,9 +114,9 @@ export default function Footer() {
           </div>
           <div>
             <p className="text-xs font-semibold text-gray-300 uppercase tracking-wider mb-3">Elsewhere</p>
-            <nav aria-label="Footer — Elsewhere" className="flex flex-col gap-2 text-sm text-gray-400">
-              <a href="https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">Chrome — Crunchbase/Wellfound</a>
-              <a href="https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">Chrome — GitHub Hover Lookup</a>
+            <nav aria-label="Footer: Elsewhere" className="flex flex-col gap-2 text-sm text-gray-400">
+              <a href="https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">Chrome: Crunchbase/Wellfound</a>
+              <a href="https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">Chrome: GitHub Hover Lookup</a>
               <a href="https://t.me/gitdealflow" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">Telegram</a>
               <a href="https://x.com/sipiteno" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">Twitter/X</a>
               <a href="https://www.linkedin.com/company/gitdealflow" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">LinkedIn</a>
@@ -144,7 +144,7 @@ export default function Footer() {
             engineering acceleration as a leading indicator of startup
             momentum. Data is updated weekly.
           </p>
-          <nav aria-label="Footer — Legal" className="flex flex-wrap items-center gap-4 text-sm text-gray-400">
+          <nav aria-label="Footer: Legal" className="flex flex-wrap items-center gap-4 text-sm text-gray-400">
             <Link href="https://gitdealflow.com" className="hover:text-gray-300 transition-colors">Main Site</Link>
             <Link href="/about" className="hover:text-gray-300 transition-colors">About</Link>
             <Link href="/about/founder" className="hover:text-gray-300 transition-colors">Founder</Link>

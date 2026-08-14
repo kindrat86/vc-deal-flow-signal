@@ -83,7 +83,7 @@ export function DataNerdSignoff({
     return (
       <aside
         className={`rounded-xl border border-amber-700/30 bg-gradient-to-br from-amber-950/15 via-slate-900 to-slate-950 p-6 sm:p-7 ${className}`}
-        aria-label={`Author signoff — ${DATA_NERD_NAME}`}
+        aria-label={`Author signoff: ${DATA_NERD_NAME}`}
       >
         <div className="flex items-start gap-4">
           <Sigil size={56} />
@@ -92,7 +92,7 @@ export function DataNerdSignoff({
               Whose voice you were just reading
             </p>
             <h3 className="text-gray-100 font-bold text-lg leading-snug">
-              — {DATA_NERD_NAME}
+              {DATA_NERD_NAME}
             </h3>
             <p className="text-gray-300 text-sm leading-relaxed">
               {DATA_NERD_BIO_MEDIUM}
@@ -129,7 +129,7 @@ export function DataNerdSignoff({
   return (
     <aside
       className={`rounded-xl border border-slate-800 bg-slate-900/40 p-5 sm:p-6 ${className}`}
-      aria-label={`Author signoff — ${DATA_NERD_NAME}`}
+      aria-label={`Author signoff: ${DATA_NERD_NAME}`}
     >
       <div className="flex items-start gap-4">
         <Sigil />
@@ -138,7 +138,7 @@ export function DataNerdSignoff({
             Signed
           </p>
           <h3 className="text-gray-100 font-bold text-base">
-            — {DATA_NERD_NAME}
+            {DATA_NERD_NAME}
           </h3>
           <p className="text-gray-400 text-sm leading-relaxed">
             {DATA_NERD_BIO_SHORT}

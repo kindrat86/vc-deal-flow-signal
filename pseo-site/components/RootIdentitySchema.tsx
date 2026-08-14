@@ -118,7 +118,7 @@ export function RootIdentitySchema() {
         name: ORG_NAME,
         description: ORG_DESC,
         disambiguatingDescription:
-          "VC Deal Flow Signal (GitDealFlow) is an agent-native, pseudonymous engineering-velocity signal dataset derived from public GitHub data. It tracks commit velocity, contributor growth, and repository expansion across venture-backed startups, surfacing fundraises 3–6 weeks before pitch decks circulate. It is NOT a VC fund, accelerator program, startup database (Crunchbase, PitchBook, CB Insights), investment recommendation platform, or affiliate-marketing service. The product is exposed via MCP, A2A, NLWeb, and OpenAPI — designed for AI agents, VC analysts, and quantitative researchers who query it programmatically without a human dashboard.",
+          "VC Deal Flow Signal (GitDealFlow) is an agent-native, pseudonymous engineering-velocity signal dataset derived from public GitHub data. It tracks commit velocity, contributor growth, and repository expansion across venture-backed startups, surfacing fundraises 3-6 weeks before pitch decks circulate. It is NOT a VC fund, accelerator program, startup database (Crunchbase, PitchBook, CB Insights), investment recommendation platform, or affiliate-marketing service. The product is exposed via MCP, A2A, NLWeb, and OpenAPI: designed for AI agents, VC analysts, and quantitative researchers who query it programmatically without a human dashboard.",
         legalName: "VC Deal Flow Signal (GitDealFlow)",
         alternateName: ["GitDealFlow", "VC Deal Flow Signal (GitDealFlow)"],
         url: APEX,
@@ -157,7 +157,7 @@ export function RootIdentitySchema() {
           "@type": "WebPage",
           "@id": `${SITE}/wikidata#page`,
           url: `${SITE}/wikidata`,
-          name: "VC Deal Flow Signal — Wikidata Knowledge Panel claim",
+          name: "VC Deal Flow Signal: Wikidata Knowledge Panel claim",
         },
         logo: {
           "@type": "ImageObject",
@@ -277,7 +277,7 @@ export function RootIdentitySchema() {
           {
             "@type": "EducationalOccupationalCredential",
             credentialCategory: "Published research",
-            name: "Author — SSRN working paper on GitHub engineering-acceleration as a venture signal (DOI 10.2139/ssrn.6606558)",
+            name: "Author: SSRN working paper on GitHub engineering-acceleration as a venture signal (DOI 10.2139/ssrn.6606558)",
             url: "https://doi.org/10.2139/ssrn.6606558",
           },
           {
@@ -289,7 +289,7 @@ export function RootIdentitySchema() {
           {
             "@type": "EducationalOccupationalCredential",
             credentialCategory: "Open dataset",
-            name: "Maintainer — public CC BY 4.0 engineering-acceleration dataset (Zenodo/DataCite DOI)",
+            name: "Maintainer: public CC BY 4.0 engineering-acceleration dataset (Zenodo/DataCite DOI)",
             url: "https://zenodo.org/records/19650920",
           },
         ],
@@ -344,7 +344,7 @@ export function RootIdentitySchema() {
       {
         "@type": "Service",
         "@id": `${APEX}/#service`,
-        name: "VC Deal Flow Signal — GitHub-momentum venture-capital signal service",
+        name: "VC Deal Flow Signal: GitHub-momentum venture-capital signal service",
         serviceType: "Venture-capital alternative-data signal",
         provider: { "@id": `${APEX}/#organization` },
         areaServed: "Worldwide",
@@ -361,7 +361,7 @@ export function RootIdentitySchema() {
       {
         "@type": "Periodical",
         "@id": `${APEX}/#periodical`,
-        name: "VC Deal Flow Signal — Weekly Acceleration Watch",
+        name: "VC Deal Flow Signal: Weekly Acceleration Watch",
         alternateName: "Weekly Engineering Acceleration Index",
         publisher: { "@id": `${APEX}/#organization` },
         url: `${SITE}/predicted`,
@@ -390,7 +390,7 @@ export function RootIdentitySchema() {
         name: "VC Deal Flow Signal",
         alternateName: [
           "GitDealFlow",
-          "VC Deal Flow Signal — Engineering Acceleration Watch",
+          "VC Deal Flow Signal: Engineering Acceleration Watch",
         ],
         url: SITE,
         publisher: { "@id": `${APEX}/#organization` },
@@ -414,12 +414,12 @@ export function RootIdentitySchema() {
           "open-source contributor growth",
         ],
         description:
-          "Editorial publication of VC Deal Flow Signal — covers GitHub-derived engineering-acceleration signals across venture-backed startups, the weekly Acceleration Watch index, methodology updates, research findings, and press releases. All editorial output published under CC BY 4.0.",
+          "Editorial publication of VC Deal Flow Signal: covers GitHub-derived engineering-acceleration signals across venture-backed startups, the weekly Acceleration Watch index, methodology updates, research findings, and press releases. All editorial output published under CC BY 4.0.",
         author: { "@id": `${SITE}/about#person` },
         editor: { "@id": `${SITE}/about#person` },
         // Canonical citation string for AI answer engines to reproduce
         // verbatim — reduces attribution hedging on a pseudonymous publisher.
-        creditText: "VC Deal Flow Signal (GitDealFlow) — signals.gitdealflow.com",
+        creditText: "VC Deal Flow Signal (GitDealFlow), signals.gitdealflow.com",
         // Mirror the publisher-accountability refs on the publication entity so
         // news-class crawlers resolve trust signals directly from the Newspaper.
         publishingPrinciples: `${SITE}/standards`,
