@@ -38,7 +38,8 @@ export interface Company {
   signalSummary: string;
   whatWeTrack: string;
   whyItMatters: string;
-  // Static placeholder until live signal join lands
+  // Editorially curated snapshot — NOT a live measurement. See
+  // REFERENCE_PROFILE_REVIEWED below and the honesty note on build().
   publicSignal: {
     momentum: "accelerating" | "steady" | "decelerating" | "unranked";
     publicReposEstimate: string;
@@ -47,6 +48,24 @@ export interface Company {
   faqs: CompanyFAQ[];
   relatedSectors: string[];
 }
+
+/**
+ * Date this reference corpus was last editorially reviewed.
+ *
+ * HONESTY CONTRACT (2026-07-25): the `publicSignal` figures below
+ * (momentum / repos / language bias) are hand-curated editorial values, not
+ * live GitHub aggregates — there is no join, and only 11 of these 165
+ * companies appear in the tracked panel at all. Copy on these pages must
+ * therefore never claim the numbers are measured, refreshed weekly, or that
+ * the site "monitors" the company. It previously did claim exactly that
+ * ("Updated weekly from public GitHub events"), which was false on all 165
+ * live pages. If you add or edit an entry, keep the framing as a curated
+ * benchmark profile and bump this date.
+ *
+ * Live, genuinely measured data lives on /weekly/top-100 and /startup/[slug],
+ * which are driven by data/top-100/*.json and data/startups.json.
+ */
+export const REFERENCE_PROFILE_REVIEWED = "2026-07-25";
 
 // Concise content generator — each entry overrides only the fields that
 // differ. Keeps the seed corpus tight while ensuring every page has
@@ -74,13 +93,13 @@ function build(c: {
     stage: c.stage,
     description: `${c.name} (${c.sector}, ${stageLabel}) — GitHub org github.com/${c.githubOrg}. ${c.what}`,
     title: `${c.name} GitHub Engineering Signals (2026) — VC Deal Flow Signal`,
-    metaDescription: `${c.name} GitHub activity: commit velocity, contributor influx, repo expansion, and language bias. A quantitative view of ${c.name}'s engineering trajectory for investors and operators.`,
+    metaDescription: `${c.name} public GitHub engineering profile — sector, stage, repo footprint, and language bias, curated as a ${c.sector} benchmark for investors and operators. Reference profile, reviewed ${REFERENCE_PROFILE_REVIEWED}.`,
     h1: `${c.name} GitHub Engineering Signals`,
     tagline: `A quantitative view of ${c.name}'s public engineering activity — what we track and why investors watch it.`,
-    intro: `${c.name} (${c.sector}, ${stageLabel}) is one of the public technical companies VC Deal Flow Signal monitors via the github.com/${c.githubOrg} org. ${c.what} Investors who source deals in ${c.sector} often watch ${c.name} as a benchmark — its commit velocity, contributor influx, and infrastructure repo growth set the reference curve for what "accelerating" looks like in this sector.`,
-    signalSummary: `Current ${c.name} engineering signal: ${c.momentum}. Public repo footprint ${c.repos}. Primary language bias: ${c.lang}. Updated weekly from public GitHub events.`,
-    whatWeTrack: `For ${c.name}, we monitor: (1) Commit velocity across the public org versus the trailing 12-week median, (2) Contributor influx — net new active contributors per week, (3) Repo creation pulse and infrastructure repo buildouts, (4) Language and dependency shifts that signal product pivots, (5) Issue cadence and external community engagement.`,
-    whyItMatters: `${c.name} sits at an interesting point in the ${c.sector} engineering curve. For investors, the signal is twofold: it informs sector benchmarks (is this category accelerating or saturating), and it surfaces adjacent breakout candidates — early-stage startups whose engineering acceleration matches ${c.name}'s pattern 12-18 months ago.`,
+    intro: `${c.name} (${c.sector}, ${stageLabel}) is a public technical company VC Deal Flow Signal profiles as a ${c.sector} benchmark, via the public github.com/${c.githubOrg} org. ${c.what} Investors who source deals in ${c.sector} often watch ${c.name} as a reference point — the kind of commit velocity, contributor influx, and infrastructure repo growth that established players sustain is the curve early-stage companies get measured against.`,
+    signalSummary: `${c.name}: momentum ${c.momentum}, ${c.repos}, ${c.lang}. Curated benchmark figures reviewed ${REFERENCE_PROFILE_REVIEWED} — not a live measurement.`,
+    whatWeTrack: `Profiled through the same six-signal lens applied to the tracked panel — commit velocity, contributor influx, repo-creation pulse, language shifts, issue cadence. Definitions: /methodology.`,
+    whyItMatters: `${c.what} That makes ${c.name} a useful ${c.sector} reference line: the interesting names are the early-stage orgs whose acceleration now resembles this one's 12-18 months ago. Those are on the tracked panel at /weekly/top-100.`,
     publicSignal: {
       momentum: c.momentum,
       publicReposEstimate: c.repos,
@@ -92,16 +111,8 @@ function build(c: {
         answer: `Only public GitHub events: commits, PRs, issues, releases, and contributor activity from github.com/${c.githubOrg}. We do not collect employee personal data, private repo content, or any signal that is not already publicly visible on GitHub.com. This page is generated from public-events aggregations.`,
       },
       {
-        question: `Is ${c.name} a recommendation or endorsement?`,
-        answer: `No. This page is a quantitative view of public engineering activity. It is not investment advice and not an endorsement. ${c.name} has not paid for placement and is not affiliated with VC Deal Flow Signal.`,
-      },
-      {
-        question: `How often is this updated?`,
-        answer: `Signal aggregates refresh weekly from public GitHub events. Page-level lastmod is published in the sitemap. For real-time signal access, see /firstlook or the public MCP server at /api/v1.`,
-      },
-      {
-        question: `How is ${c.name}'s momentum measured?`,
-        answer: `Momentum is derived from commit-velocity acceleration (rolling 4-week mean vs trailing 12-week median), contributor influx, and repo creation pulse — the same six-signal panel published in /methodology and the open paper at SSRN 6606558.`,
+        question: `Is this a live measurement of ${c.name}?`,
+        answer: `No. The momentum, repo-footprint, and language figures are editorially curated benchmark values, last reviewed ${REFERENCE_PROFILE_REVIEWED} — they do not refresh automatically. Live, weekly-measured signal data covers the tracked startup panel instead: /weekly/top-100. Not investment advice, not an endorsement; ${c.name} has not paid for placement and is not affiliated with VC Deal Flow Signal.`,
       },
     ],
     relatedSectors: c.related,

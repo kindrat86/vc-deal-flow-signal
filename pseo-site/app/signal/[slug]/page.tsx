@@ -175,7 +175,7 @@ export default async function CompanySignalPage({ params }: PageProps) {
           </div>
           <div className="signal-summary rounded-lg border border-sky-900/50 bg-sky-950/30 p-6">
             <p className="text-xs font-medium text-sky-400 uppercase tracking-wider mb-2">
-              Current signal
+              Reference profile
             </p>
             <p className="text-gray-300 text-sm leading-relaxed">{c.signalSummary}</p>
           </div>
