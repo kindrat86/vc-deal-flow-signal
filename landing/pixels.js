@@ -124,8 +124,21 @@
         props["$web_vitals_" + name + "_rating"] = rate(name, value);
         props["$web_vitals_" + name + "_event_id"] = id;
         var body = JSON.stringify({ api_key: PH_KEY, batch: [{ event: "$web_vitals", properties: props, timestamp: new Date().toISOString() }] });
-        try { if (navigator.sendBeacon) { navigator.sendBeacon(PH_URL, new Blob([body], { type: "application/json" })); return; } } catch (e) {}
-        try { fetch(PH_URL, { method: "POST", body: body, keepalive: true, headers: { "Content-Type": "application/json" } }); } catch (e) {}
+        try { if (navigator.sendBeacon) { navigator.sendBeacon(PH_URL, new Blob([body], { type: "application/json" })); } } catch (e) { try { fetch(PH_URL, { method: "POST", body: body, keepalive: true, headers: { "Content-Type": "application/json" } }); } catch (e) {} }
+        // Forward the same metric to GA4 (G-7SV2SNZE4C) with Google's standard
+        // event params so GA4's Core Web Vitals reporting fills up alongside
+        // PostHog. gtag is loaded by this same file; a no-op if it is absent.
+        try {
+          if (window.gtag) {
+            window.gtag("event", name, {
+              value: Math.round(name === "CLS" ? value * 1000 : value),
+              metric_id: id,
+              metric_value: value,
+              metric_delta: undefined,
+              metric_rating: rate(name, value)
+            });
+          }
+        } catch (e) {}
       }
       function start() {
         var wv = window.webVitals; if (!wv) return;
