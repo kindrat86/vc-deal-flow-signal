@@ -49,7 +49,7 @@ const TOOLS = [
   {
     name: "search_startups_by_sector",
     summary:
-      "Every tracked startup within a sector, ranked by velocity. Sector slug from the 20 enumerated values.",
+      "Every tracked startup within a sector, ranked by velocity. Sector slug from the 15 enumerated values.",
   },
   {
     name: "get_startup_signal",

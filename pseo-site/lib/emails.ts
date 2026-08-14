@@ -202,7 +202,7 @@ Sunday digest. Wednesday filter. End-of-quarter sweep. The Acceleration Watch is
     html: wrap(`
 <p>If you're still on the fence, here's the thing I'd suggest before any subscription:</p>
 <p><strong>The First Look Pass, €7 once.</strong></p>
-<p>You pick any one of our 20 tracked sectors at checkout. Within 24 hours I send you the full Sector Deep Dive PDF for that sector, top 25 ranked orgs, 14-day acceleration deltas, contributor maps, signal-type classification, and the top 3 names that haven't shown up on Crunchbase yet.</p>
+<p>You pick any one of our 15 tracked sectors at checkout. Within 24 hours I send you the full Sector Deep Dive PDF for that sector, top 25 ranked orgs, 14-day acceleration deltas, contributor maps, signal-type classification, and the top 3 names that haven't shown up on Crunchbase yet.</p>
 <p>Plus the raw CSV. Plus a written walkthrough of what stood out.</p>
 <p>Why €7 is the price: it's exactly what a coffee costs in central Lisbon. It's the lowest-friction commitment that filters out the time-wasters but doesn't punish someone who just wants to see the data on their thesis. It also means I can ship a custom report in 24 hours without it eating my whole week.</p>
 <p>If you upgrade to the Dashboard within 14 days of receiving the deep dive, the €7 is credited. If you don't, you still keep the report and the CSV.</p>
