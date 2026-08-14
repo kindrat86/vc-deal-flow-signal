@@ -53,10 +53,30 @@ cd /Users/sipi/signals-gitdealflow/landing && vercel --prod --yes
 
 ## SWITCH 6: Resend Key Expired — Refresh & Resend
 
-The Resend API key in `agent/.env` returned 401. Refresh it:
+**STATUS 2026-08-14: RESOLVED.** The `agent/.env` key (`re_9aQ…`) was re-tested
+and returns HTTP 200 against `/audiences` and `/emails` (live sends confirmed
+same day). The "401" this entry warned about is stale. Do NOT rotate the key.
+
+The real blocker that surfaced alongside it was different and is now fixed:
+- `email-api/send-weekly-digest.mjs` reads `email-api/.env`, which did NOT
+  exist — so the Sunday digest sender errored before it could count or send.
+  `email-api/.env` is now written (gitignored) with the working key +
+  `RESEND_AUDIENCE_ID=1ddf358e-2416-4481-a0f5-538fd12f6e73`.
+- `resolveAudienceId()` in that file used `data[0]` as a fallback, which under
+  the multi-product team would have blasted the digest to Hirenika's list.
+  It now prefers a name match on "gitdealflow" before falling back to `data[0]`.
+
+Subscriber count is now tracked at `monitoring/subscriber-count.{jsonl,md}`
+(baseline: 30 active) and reported weekly via the
+`gitdealflow-subscriber-count` cron (Sun 07:00). The digest itself is
+regenerated + broadcast via `gitdealflow-sunday-digest` (Sun 16:00, runs
+`~/.hermes/scripts/send-signal-digest-cron.sh`).
+
+Only if the key genuinely fails in future (HTTP 401 from
+`monitoring/subscriber-count.py`):
 1. Go to https://resend.com/api-keys
 2. Create new key for gitdealflow.com domain
-3. Update `agent/.env`: `RESEND_API_KEY=re_NEW_KEY`
+3. Update BOTH `agent/.env` and `email-api/.env`: `RESEND_API_KEY=re_NEW_KEY`
 
 **Then run podcast sends** — 5 pitches at `outreach/podcast-pitches.json` to:
 - Invest Like the Best: patrick@osv.llc
@@ -127,10 +147,12 @@ SSRN: ssrn.com/abstract=6606558
 
 Safe subreddits: r/datasets, r/juststart, r/devops. DO NOT post to r/SaaS, r/Entrepreneur, r/startups.
 
-### Friday — Dev.to Article (no API key)
-Create account at dev.to/enter, then post from this file:
-`outreach/devto-mcp-agent-article.md`
-Tag: #mcp #ai #startup #datascience #github
+### Friday — Substack / Newsletter cross-promo (buyer-facing, not dev.to)
+Post from The Data Nerd accounts, Friday 10:00 UTC.
+
+Do NOT post the dev.to MCP article (that's developer-facing; the buyer doesn't read code). Instead, pitch a substack author or newsletter editor with the data story. The pre-registered-prediction angle ("10 names locked before the raise, graded after") is the hook. Pitch drafts are auto-generated every Monday by the `gitdealflow-buyer-pr-pitch` cron into `~/gitdealflow-distribution/07-community-distribution/`. Send from your own accounts.
+
+Targets (buyer reads these): Not Boring, The Diff, Growth Unhinged, Clouded Judgement, StrictlyVC, Newcomer, Fortune Term Sheet.
 
 ---
 

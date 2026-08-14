@@ -26,6 +26,7 @@ ENV_FILE = os.path.join(REPO, "agent", ".env")
 MON = os.path.join(REPO, "monitoring")
 HIST = os.path.join(MON, "subscriber-count.jsonl")
 MD = os.path.join(MON, "subscriber-count.md")
+SIGNALS = os.path.expanduser("~/.hermes/portfolio-signals.md")
 
 # Canonical GitDealFlow audience (also used by email-api/send-weekly-signal-digest.sh
 # and ~/.hermes/email-engine/enroll-clickers.py). Name-resolved as a fallback.
@@ -166,6 +167,9 @@ def main():
     with open(MD, "w") as f:
         f.write("\n".join(lines) + "\n")
 
+    # Mirror into the portfolio signal hub the user already reads (newest first).
+    _append_portfolio_signal(record, delta)
+
     if delta is None:
         print(f"GitDealFlow Sunday-digest list: {record['active']} active subscribers (baseline).")
     else:
@@ -173,6 +177,38 @@ def main():
             f"GitDealFlow Sunday-digest list: {record['active']} active subscribers "
             f"({'+' if delta > 0 else ''}{delta} this week)."
         )
+
+
+def _append_portfolio_signal(record, delta):
+    """Append a one-line entry to ~/.hermes/portfolio-signals.md (newest first).
+
+    Inserted just before the first existing dated section so the weekly count
+    shows up at the top of the file, matching the file's "newest first"
+    convention, without disturbing the signal-sweep's own entries.
+    """
+    date_str = record["ts"][:10]
+    delta_str = ""
+    if delta is not None:
+        delta_str = f" ({'+' if delta > 0 else ''}{delta} vs last week)"
+    block = (
+        f"## {date_str}\n\n"
+        f"### GitDealFlow — Sunday digest list\n"
+        f"- {record['active']} active subscribers{delta_str}. "
+        f"Audience GitDealFlow ({record['audience_id']}), "
+        f"total {record['total']}, unsubscribed {record['unsubscribed']}.\n\n"
+    )
+    try:
+        with open(SIGNALS) as f:
+            content = f.read()
+    except FileNotFoundError:
+        content = "# Portfolio Signals Log\n\n"
+    idx = content.find("\n## ")
+    if idx == -1:
+        content += "\n" + block
+    else:
+        content = content[: idx + 1] + block + content[idx + 1 :]
+    with open(SIGNALS, "w") as f:
+        f.write(content)
 
 
 if __name__ == "__main__":

@@ -171,8 +171,16 @@ async function resendApi(path) {
 async function resolveAudienceId() {
   if (process.env.RESEND_AUDIENCE_ID) return process.env.RESEND_AUDIENCE_ID;
   const body = await resendApi("/audiences");
-  const id = body.data?.[0]?.id;
-  if (!id) throw new Error("No Resend audience found (and RESEND_AUDIENCE_ID not set).");
+  // The Resend team hosts audiences for several products (Hirenika, SipiBot,
+  // Sipiteno, GitDealFlow, …). `data[0]` is NOT safe — between 2026-07-05 and
+  // 2026-07-13 the daily broadcast went to another product's list because of
+  // exactly that. Prefer a name match on "gitdealflow"; data[0] only as a
+  // last resort for genuinely single-audience accounts.
+  const byName = body.data?.find((a) =>
+    a.name?.toLowerCase().includes("gitdealflow"),
+  );
+  const id = byName?.id ?? body.data?.[0]?.id;
+  if (!id) throw new Error("No GitDealFlow Resend audience found (and RESEND_AUDIENCE_ID not set).");
   return id;
 }
 
