@@ -1,5 +1,5 @@
 /**
- * /sector/[slug] entity pages — curated sector hubs.
+ * /sector/[slug] entity pages: curated sector hubs.
  *
  * Each hub aggregates the four curated entity corpora into one
  * Marcus-grade sector landing: companies (/signal/[slug]), funds
@@ -32,7 +32,7 @@ export interface Sector {
   intro: string;
   whatWeTrack: string;
   whyItMatters: string;
-  /** Unique per-sector analyst commentary — breaks template similarity across hubs. */
+  /** Unique per-sector analyst commentary: breaks template similarity across hubs. */
   analystNote: string;
   faqs: SectorFAQ[];
   /** Substring tokens we match against glossary term + definition. */
@@ -69,12 +69,12 @@ function build(s: {
   return {
     slug: s.slug,
     name: s.name,
-    title: `${s.name} Engineering Signals & VC Deal Flow (2026) — VC Deal Flow Signal`,
+    title: `${s.name} Engineering Signals & VC Deal Flow (2026), VC Deal Flow Signal`,
     metaDescription: `Curated ${s.name.toLowerCase()} sector hub: ${companyCount} tracked companies, ${fundCount} active funds, notable engineering leaders, and the metrics we use to read momentum. Built for Corp Dev, PE operating partners, and emerging managers.`,
-    h1: `${s.name} — Engineering Signals & Deal Flow`,
+    h1: `${s.name}: Engineering Signals & Deal Flow`,
     tagline: `${s.short} A single page mapping who builds, who funds, and who leads in ${s.name.toLowerCase()}.`,
     intro: `This hub aggregates the ${s.name.toLowerCase()} surface VC Deal Flow Signal tracks: ${companyCount} curated companies with public GitHub orgs, ${fundCount} venture funds whose published thesis covers ${s.name.toLowerCase()}, and notable engineering leaders whose work shapes the category. ${s.why} Use it as a starting point for sourcing, diligence, or competitive scans.`,
-    whatWeTrack: `In ${s.name.toLowerCase()} we track four engineering-acceleration primitives across every monitored org: commit velocity (rolling 14-day vs trailing 12-week median), contributor influx (new committers in the trailing 4 weeks), repo creation pulse (new public repos shipped in the trailing 8 weeks), and language-bias drift (when a new primary language appears in production code). The six-signal panel published at /methodology is empirically tied to imminent fundraise probability — see SSRN paper 6606558.`,
+    whatWeTrack: `In ${s.name.toLowerCase()} we track four engineering-acceleration primitives across every monitored org: commit velocity (rolling 14-day vs trailing 12-week median), contributor influx (new committers in the trailing 4 weeks), repo creation pulse (new public repos shipped in the trailing 8 weeks), and language-bias drift (when a new primary language appears in production code). The six-signal panel published at /methodology is empirically tied to imminent fundraise probability (see SSRN paper 6606558).`,
     whyItMatters: s.why,
     analystNote: s.note,
     faqs: [
@@ -88,19 +88,19 @@ function build(s: {
       },
       {
         question: `Which ${s.name.toLowerCase()} companies do you track?`,
-        answer: `We currently track ${companyCount} curated ${s.name.toLowerCase()} companies whose GitHub orgs are self-published on their homepage, devrel blog, or hiring page. The full list with per-company signal pages is at /signal — filter by sector. We do not track private orgs, leaked employee data, or LinkedIn-inferred profiles.`,
+        answer: `We currently track ${companyCount} curated ${s.name.toLowerCase()} companies whose GitHub orgs are self-published on their homepage, devrel blog, or hiring page. The full list with per-company signal pages is at /signal (filter by sector). We do not track private orgs, leaked employee data, or LinkedIn-inferred profiles.`,
       },
       {
         question: `Which venture funds focus on ${s.name.toLowerCase()}?`,
-        answer: `${fundCount} funds in our /fund/ corpus publish ${s.name.toLowerCase()} as part of their stated thesis. Each /fund/[slug] page is an independent summary of the fund's public thesis mapped against our engineering-acceleration signal panel. The corpus is not exhaustive — it is the seed set we built around Marcus 100 (Corp Dev, PE operating partners, non-engineer tech VPs).`,
+        answer: `${fundCount} funds in our /fund/ corpus publish ${s.name.toLowerCase()} as part of their stated thesis. Each /fund/[slug] page is an independent summary of the fund's public thesis mapped against our engineering-acceleration signal panel. The corpus is not exhaustive. It is the seed set we built around Marcus 100 (Corp Dev, PE operating partners, non-engineer tech VPs).`,
       },
       {
         question: `How can a fund or Corp Dev team use this hub?`,
-        answer: `Two workflows. (1) Source: weekly digest of ${s.name.toLowerCase()} companies whose engineering acceleration matches your stage and check-size filters, delivered before competitive rounds form — see /firstlook. (2) Validate: given a deal already in your pipeline, retrieve the public engineering trajectory via the public MCP server at /api/v1 or the openapi.json at /api/openapi.json.`,
+        answer: `Two workflows. (1) Source: weekly digest of ${s.name.toLowerCase()} companies whose engineering acceleration matches your stage and check-size filters, delivered before competitive rounds form (see /firstlook). (2) Validate: given a deal already in your pipeline, retrieve the public engineering trajectory via the public MCP server at /api/v1 or the openapi.json at /api/openapi.json.`,
       },
       {
         question: `Is this an exhaustive list?`,
-        answer: `No. This is a curated seed corpus, not a Crunchbase-scale database. We add companies, funds, and founders deliberately when they meet our public-source threshold (self-published GitHub handle, public thesis, well-documented role).${s.scrapedLeaderboard === false ? "" : ` For the full open-source coverage of every ${s.name.toLowerCase()} startup we score, see /stage/[stage]/${s.slug} — the scraped leaderboard.`}`,
+        answer: `No. This is a curated seed corpus, not a Crunchbase-scale database. We add companies, funds, and founders deliberately when they meet our public-source threshold (self-published GitHub handle, public thesis, well-documented role).${s.scrapedLeaderboard === false ? "" : ` For the full open-source coverage of every ${s.name.toLowerCase()} startup we score, see /stage/[stage]/${s.slug}, the scraped leaderboard.`}`,
       },
     ],
     glossaryTokens: s.glossary,
@@ -140,7 +140,7 @@ export const sectors: Sector[] = [
     slug: "infrastructure",
     name: "Cloud Infrastructure",
     short: "Edge platforms, runtimes, networking, observability primitives, and the platform-as-a-service layer.",
-    why: "Cloud infrastructure is the longest-cycle engineering investment in software — companies here ship sustained commit velocity for years before fundraise events. The signal that matters is repo creation pulse paired with new-language adoption (Rust appearances are particularly load-bearing). Corp Dev tracks this for platform-tier acquisitions.",
+    why: "Cloud infrastructure is the longest-cycle engineering investment in software: companies here ship sustained commit velocity for years before fundraise events. The signal that matters is repo creation pulse paired with new-language adoption (Rust appearances are particularly load-bearing). Corp Dev tracks this for platform-tier acquisitions.",
     note: "Cloud infrastructure reads like a long-cycle portfolio, heavily skewed toward steady, later-stage, and public names (Cloudflare, HashiCorp, DigitalOcean, Render). Acceleration concentrates in the platform-tier challengers (Fly.io, Railway, Upstash, Fermyon) and in the Rust-native edge, which the language-bias primitive flags early. For Corp Dev the decisive signal is repo-creation pulse paired with new-language adoption, not headline velocity.",
     glossary: ["infrastructure", "edge", "platform", "runtime", "deployment", "kubernetes", "container"],
     fundSectors: ["infrastructure"],
@@ -158,7 +158,7 @@ export const sectors: Sector[] = [
     slug: "observability",
     name: "Observability & Monitoring",
     short: "Logs, traces, metrics, error tracking, profiling, and the runtime-visibility surface for engineering orgs.",
-    why: "Observability is a quietly consolidating sector — the engineering signal is integration breadth (new framework adapters, new language SDKs) more than core-product velocity. PE operating partners watch this category for roll-up opportunities since the buyer profile across vendors is nearly identical.",
+    why: "Observability is a quietly consolidating sector: the engineering signal is integration breadth (new framework adapters, new language SDKs) more than core-product velocity. PE operating partners watch this category for roll-up opportunities since the buyer profile across vendors is nearly identical.",
     note: "Observability is a consolidating, mostly steady sector: only a handful of tracked companies read as accelerating against a long tail of public incumbents (Datadog, New Relic, Splunk, Dynatrace). The quiet signal lives in the AI-native and open-source challengers (SigNoz, Axiom, Better Stack) and the LLM-observability wedge (Langfuse, Arize, Braintrust, Helicone). PE operating partners should read this hub as a roll-up map: near-identical buyer profiles across vendors are what make the category attractive for consolidation.",
     glossary: ["observability", "logging", "trace", "metric", "monitoring", "telemetry", "error tracking"],
     fundSectors: ["developer-tools", "infrastructure", "enterprise-saas"],
@@ -167,7 +167,7 @@ export const sectors: Sector[] = [
     slug: "analytics",
     name: "Data Analytics",
     short: "Warehousing, transformation, BI, and the analyst-facing query surface on top of operational data.",
-    why: "Analytics tools show the most cross-sector contributor influx because the buyer persona (data engineer, analytics engineer) is shared across every industry vertical. Engineering acceleration here is the SQL/Python integration layer — new connectors, new transformation primitives, new query-engine optimizations.",
+    why: "Analytics tools show the most cross-sector contributor influx because the buyer persona (data engineer, analytics engineer) is shared across every industry vertical. Engineering acceleration here is the SQL/Python integration layer: new connectors, new transformation primitives, new query-engine optimizations.",
     note: "Data analytics is the most cross-sector of the hubs: the buyer persona (data engineer, analytics engineer) is shared with every vertical, which is why it draws one of the deepest fund sets on the site. Acceleration is scarce and concentrated in the open-source, developer-first names (PostHog, dbt Labs, DuckDB, Airbyte, Fivetran), while the public comps (Amplitude, Mixpanel) read as steady. The leading indicator to watch is the SQL/Python integration layer: new connectors and query-engine optimizations precede a breakout.",
     glossary: ["analytics", "warehouse", "etl", "elt", "transformation", "query", "sql", "bi"],
     fundSectors: ["enterprise-saas", "developer-tools", "infrastructure"],
@@ -185,7 +185,7 @@ export const sectors: Sector[] = [
     slug: "productivity",
     name: "Productivity & Knowledge Work",
     short: "Documents, collaboration, knowledge management, and the prosumer + team productivity layer.",
-    why: "Productivity companies are the hardest sector to read from engineering signals alone — UI quality and brand load most of the value, and that does not surface in public GitHub. We track this category for completeness and as a Marcus reference (tech VPs and operating partners almost always have a productivity-tooling consolidation thesis).",
+    why: "Productivity companies are the hardest sector to read from engineering signals alone: UI quality and brand load most of the value, and that does not surface in public GitHub. We track this category for completeness and as a Marcus reference (tech VPs and operating partners almost always have a productivity-tooling consolidation thesis).",
     note: "Productivity is the honest outlier: almost every tracked company reads as steady, because UI quality and brand load most of the value here, and neither surfaces in public GitHub. We track it for completeness and as a reference set (Linear, Figma, Retool, Coda, Miro), not as a live acceleration feed. Tech VPs and operating partners almost always carry a productivity-tooling consolidation thesis, so use this hub as a vendor map rather than a momentum signal.",
     glossary: ["productivity", "collaboration", "document", "knowledge", "team", "workflow"],
     fundSectors: ["enterprise-saas", "consumer"],
@@ -194,7 +194,7 @@ export const sectors: Sector[] = [
     slug: "gaming",
     name: "Gaming Infrastructure",
     short: "Game backends, multiplayer servers, server orchestration, cross-game avatars, and the live-ops layer beneath studios.",
-    why: "Gaming is hit-driven and hard to read at the studio level, but gaming infrastructure underwrites like developer tools: the engineering signal is integration breadth (new engine SDKs, new platform adapters) and sustained backend commit velocity rather than a single launch spike. Corp Dev teams and gaming-native funds use this hub to track the picks-and-shovels layer — backends, multiplayer, and orchestration — where deal mechanics resemble dev tools, not content bets. We deliberately exclude studios, where signals are dominated by release calendars.",
+    why: "Gaming is hit-driven and hard to read at the studio level, but gaming infrastructure underwrites like developer tools: the engineering signal is integration breadth (new engine SDKs, new platform adapters) and sustained backend commit velocity rather than a single launch spike. Corp Dev teams and gaming-native funds use this hub to track the picks-and-shovels layer (backends, multiplayer, and orchestration), where deal mechanics resemble dev tools, not content bets. We deliberately exclude studios, where signals are dominated by release calendars.",
     note: "Gaming infrastructure is deliberately narrow (all seed through series B, all currently reading steady), and we exclude studios entirely because their signal is dominated by release calendars. The picks-and-shovels layer we do track (Heroic Labs, Hathora, Edgegap, Beamable, Pragma, Ready Player Me) underwrites like developer tools: integration breadth and sustained backend velocity, not a single launch spike. It is the smallest hub by design, and the three listed founders are all Heroic Labs, a reminder this is a seed corpus, not an inventory.",
     glossary: ["gaming", "multiplayer", "matchmaking", "netcode", "game server", "game engine", "live-ops"],
     fundSectors: ["gaming"],
@@ -229,7 +229,7 @@ export function getFundsInSector(slug: string): Fund[] {
  * (a) exact company name appearing in affiliation string, OR
  * (b) company githubOrg appearing in affiliation (lowercased).
  *
- * Conservative match — false negatives are fine, false positives are not.
+ * Conservative match: false negatives are fine, false positives are not.
  */
 export function getFoundersInSector(slug: string): Founder[] {
   const sectorCompanies = getCompaniesInSector(slug);
