@@ -102,7 +102,7 @@ export default async function SectorPage({ params }: PageProps) {
     "@graph": [
       {
         "@type": "Article",
-        headline: `${sector.name} Startups to Watch, ${period.name}`,
+        headline: `${countLead(snapshot.startups.length, `${sector.name} Startups`)} Accelerating on GitHub, ${period.name}`,
         description: sector.description,
         author: DATA_NERD_AUTHOR_REF,
         publisher: {
