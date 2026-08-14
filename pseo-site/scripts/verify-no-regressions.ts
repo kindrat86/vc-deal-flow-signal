@@ -599,6 +599,21 @@ check(
 );
 
 // ---------------------------------------------------------------------------
+// Video sitemap must not emit foreign <loc> URLs (2026-08-14). A youTubeMirror
+// section emitted <url> entries whose <loc> was youtube.com/watch?v=..., a page
+// NOT on signals.gitdealflow.com. Google's video-sitemap spec requires <loc> to
+// be a page on the sitemap's own domain (player_loc carries the embed URL), so
+// GSC reported 4 errors on sitemap-videos.xml until the mirror was removed. A
+// lineage that re-adds it reintroduces the errors.
+// ---------------------------------------------------------------------------
+check(
+  "app/sitemap-videos.xml/route.ts",
+  "Video sitemap re-emits foreign <loc> URLs (youtube.com/watch?v= as the page URL), Google rejects them.",
+  (s) => !s.includes("youTubeMirror"),
+  "remove the youTubeMirror section: <loc> must be a signals.gitdealflow.com page, player_loc carries the YouTube embed URL",
+);
+
+// ---------------------------------------------------------------------------
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +
