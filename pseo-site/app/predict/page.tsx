@@ -7,9 +7,10 @@ import {
   getDataLastModified,
   type Startup,
 } from "@/lib/data";
+import { Suspense } from "react";
 import SignalBadge from "@/components/SignalBadge";
-import PredictForm from "./PredictForm";
-import ScoutCallForm from "./ScoutCallForm";
+import PredictFormUrlPrefill from "./PredictFormUrlPrefill";
+import ScoutCallFormUrlPrefill from "./ScoutCallFormUrlPrefill";
 import { AgentSummary } from "@/components/AgentSummary";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 
@@ -42,12 +43,11 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function PredictPage({
-  searchParams,
-}: {
-  searchParams: Promise<{ org?: string }>;
-}) {
-  const { org } = await searchParams;
+// Static route: the ?org= prefill now reads the URL client-side via
+// PredictFormUrlPrefill (inside Suspense). Awaiting searchParams here
+// forced dynamic rendering (private, no-store) on every crawl of this
+// sitemap'd page, ~0.85s TTFB function invocation per request.
+export default function PredictPage() {
   const sectors = getAllSectors();
   const period = getCurrentPeriod();
 
@@ -334,7 +334,15 @@ peer-reviewable paper at{" "}
           </p>
         </section>
 
-        <PredictForm initialOrg={org ?? ""} />
+        <Suspense
+          fallback={
+            <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-6 text-gray-400 text-sm">
+              Loading predictor…
+            </div>
+          }
+        >
+          <PredictFormUrlPrefill />
+        </Suspense>
 
         <section className="mt-14">
           <div className="mb-6">
@@ -352,7 +360,9 @@ peer-reviewable paper at{" "}
             </p>
           </div>
 
-          <ScoutCallForm prefilledOrg={org ?? ""} />
+          <Suspense fallback={null}>
+            <ScoutCallFormUrlPrefill />
+          </Suspense>
         </section>
 
         <section className="mt-12 rounded-xl border border-slate-800 bg-slate-900/60 p-6">

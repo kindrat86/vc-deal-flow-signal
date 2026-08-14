@@ -1095,6 +1095,127 @@ check(
 );
 
 // ---------------------------------------------------------------------------
+// §18 Title CTR patterns (2026-08-15). Traffic audit item: titles were
+// descriptive but CTR-flat ("AI & ML Startups to Watch, Q2 2026"). The fix
+// leads every scaled template with a REAL count rendered from the same
+// snapshot the page table shows (never hardcoded), adds bracketed quarters,
+// and puts live proof numbers in /startup titles. Counts in titles lift SERP
+// CTR; because they render from data, they stay truthful as data refreshes.
+// ---------------------------------------------------------------------------
+check(
+  "app/startups-to-watch/[slug]/page.tsx",
+  "startups-to-watch titles lost the leading count + Accelerating-on-GitHub CTR pattern (reverted to the flat 'X Startups to Watch, Y' form).",
+  (s) =>
+    s.includes("Startups Accelerating on GitHub") &&
+    s.includes("snapshot.startups.length"),
+  "keep `${startupCount} ${sector.name} Startups Accelerating on GitHub (${period.name})` with startupCount from snapshot.startups.length",
+);
+
+check(
+  "app/startups-to-watch/geo/[slug]/page.tsx",
+  "geo startups-to-watch titles lost the leading count + geo CTR pattern.",
+  (s) => s.includes("Startups Accelerating in ${geoName}"),
+  "keep `${parsed.startups.length} ... Startups Accelerating in ${geoName} (${period.name})`",
+);
+
+check(
+  "app/startups-to-watch/region/[slug]/page.tsx",
+  "region startups-to-watch titles lost the leading count CTR pattern.",
+  (s) => s.includes("${parsed.startups.length} ${geoName} Startups Accelerating on GitHub"),
+  "keep the leading `${parsed.startups.length} ${geoName} Startups Accelerating on GitHub` title",
+);
+
+check(
+  "app/stage/[slug]/page.tsx",
+  "stage titles lost the leading cohort count + Accelerating-on-GitHub CTR pattern.",
+  (s) => s.includes("${data.startups.length} ${data.name} Startups Accelerating on GitHub"),
+  "keep `${data.startups.length} ${data.name} Startups Accelerating on GitHub (${data.period.name})`",
+);
+
+check(
+  "app/stage/[slug]/[sector]/page.tsx",
+  "stage-sector titles lost the leading count CTR pattern.",
+  (s) => s.includes("${data.startups.length} ${data.stageName} ${data.sector.name} Startups Accelerating"),
+  "keep the leading count in stage-sector titles",
+);
+
+check(
+  "app/stage/[slug]/signal/[signal]/page.tsx",
+  "stage-signal titles lost the leading count CTR pattern.",
+  (s) => s.includes("${data.startups.length} ${data.stageName} Startups With ${data.signalName}"),
+  "keep the leading count in stage-signal titles",
+);
+
+check(
+  "app/startup/[slug]/page.tsx",
+  "startup titles lost the live proof numbers (velocity change + contributors) that made SERP snippets carry data.",
+  (s) => s.includes("${profile.name}: ${latest.commitVelocityChange} Commit Velocity Change"),
+  "keep `${profile.name}: ${latest.commitVelocityChange} Commit Velocity Change, ${latest.contributors} Contributors`",
+);
+
+check(
+  "content/sectors.ts",
+  "sector hub titles lost the leading companies+funds counts CTR pattern.",
+  (s) => s.includes("${companyCount} ${s.name} Companies & ${fundCount} Active Funds"),
+  "keep `${companyCount} ${s.name} Companies & ${fundCount} Active Funds: Engineering Signals (2026)`",
+);
+
+// ---------------------------------------------------------------------------
+// §17 TTFB / edge-cache for sitemap'd tool pages + public data feeds
+// (2026-08-15). Ten sitemap'd routes (/predict + 8 /tools/* calculators)
+// awaited searchParams server-side, forcing per-request dynamic rendering
+// (private, no-store): every crawl was a full function invocation at
+// 0.85-1.35s TTFB instead of an edge PRERENDER/HIT at ~0.2s. The URL
+// prefill now reads the query client-side behind Suspense; metadata is
+// static. /api/signals.json and /api/signals.csv lose their handler-set
+// s-maxage to the framework's must-revalidate override, so the middleware
+// (deterministic last writer) pins 1h edge caching with an Authorization
+// Vary split (paid callers get enriched payloads, they must not share a
+// cache entry with anonymous ones).
+// ---------------------------------------------------------------------------
+check(
+  "proxy.ts",
+  "proxy.ts no longer pins the 1h edge-cache policy for /api/signals.json and /api/signals.csv; every bot fetch of the public data feeds regresses to a full function invocation (p95 1.35s, 100% MISS) instead of an edge HIT.",
+  (s) =>
+    s.includes('pathname === "/api/signals.json"') &&
+    s.includes('pathname === "/api/signals.csv"') &&
+    s.includes("s-maxage=3600") &&
+    s.includes('"Vary", "Authorization"') &&
+    s.includes("private, no-store"),
+  "keep the /api/signals.json + /api/signals.csv cache branch in proxy.ts: anonymous -> public, max-age=0, s-maxage=3600, stale-while-revalidate=600 with Vary: Authorization; Bearer -> private, no-store",
+);
+
+check(
+  "app/predict/page.tsx",
+  "app/predict/page.tsx awaits searchParams again; /predict regresses from static prerender to private, no-store dynamic rendering on every crawl.",
+  (s) =>
+    !s.includes("await searchParams") &&
+    s.includes("PredictFormUrlPrefill") &&
+    s.includes("ScoutCallFormUrlPrefill") &&
+    s.includes("<Suspense"),
+  "keep /predict static: prefill via PredictFormUrlPrefill / ScoutCallFormUrlPrefill (useSearchParams client-side inside Suspense), never await searchParams on the server",
+);
+
+for (const tool of [
+  "burn-multiple-calculator",
+  "cac-payback-calculator",
+  "dilution-stack",
+  "ltv-calculator",
+  "magic-number-calculator",
+  "quick-ratio-calculator",
+  "runway-calculator",
+  "safe-calculator",
+]) {
+  check(
+    `app/tools/${tool}/page.tsx`,
+    `app/tools/${tool}/page.tsx awaits searchParams again; the calculator regresses from static prerender to private, no-store dynamic rendering on every crawl.`,
+    (s) =>
+      !s.includes("await searchParams") &&
+      s.includes("generateMetadata(): Metadata"),
+    "keep generateMetadata(): Metadata static (no searchParams); the client calculator already reads URL params via useSearchParams inside its Suspense boundary",
+  );
+}
+
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +

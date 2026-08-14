@@ -207,6 +207,36 @@ export async function proxy(request: NextRequest) {
     }
   }
 
+  // Public data feeds (signals.json / signals.csv). The route handlers set
+  // s-maxage=3600 on their Responses, but Next 16 dynamic route handlers get
+  // Cache-Control overridden to max-age=0, must-revalidate in production, so
+  // every bot fetch was a full function invocation (measured p95 1.35s TTFB,
+  // 100% MISS across the probe set). The middleware is the deterministic
+  // last-writer of response headers, so the 1h edge cache policy lives here.
+  // Authorization split is REQUIRED: the handlers enrich payloads for
+  // Bearer-authenticated (paid) callers, so authenticated responses must
+  // never share a cache entry with anonymous ones.
+  if (
+    pathname === "/api/signals.json" ||
+    pathname === "/api/signals.csv"
+  ) {
+    const hasAuth = Boolean(request.headers.get("authorization"));
+    const feedResponse = NextResponse.next();
+    if (!hasAuth) {
+      feedResponse.headers.set(
+        "Cache-Control",
+        "public, max-age=0, s-maxage=3600, stale-while-revalidate=600",
+      );
+    } else {
+      feedResponse.headers.set(
+        "Cache-Control",
+        "private, no-store, max-age=0, must-revalidate",
+      );
+    }
+    feedResponse.headers.set("Vary", "Authorization");
+    return feedResponse;
+  }
+
   if (
     pathname.startsWith("/_next/") ||
     pathname.startsWith("/api/") ||

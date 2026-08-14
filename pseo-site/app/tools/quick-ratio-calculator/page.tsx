@@ -9,25 +9,13 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 const SITE = "https://signals.gitdealflow.com";
 const PAGE_URL = `${SITE}/tools/quick-ratio-calculator`;
 
-const PARAM_KEYS = ["new", "exp", "churn", "contract"] as const;
-
-interface PageProps {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-}
-
-export async function generateMetadata({
-  searchParams,
-}: PageProps): Promise<Metadata> {
-  const sp = await searchParams;
-  const ogParams = new URLSearchParams();
-  for (const key of PARAM_KEYS) {
-    const v = sp[key];
-    if (typeof v === "string" && v.length > 0) {
-      ogParams.set(key, v);
-    }
-  }
-  const ogQuery = ogParams.toString();
-  const ogImage = `${SITE}/api/og/tools/quick-ratio-calculator${ogQuery ? `?${ogQuery}` : ""}`;
+// Static metadata: this route must prerender. Reading searchParams
+// here forces per-request dynamic rendering (private, no-store) for
+// every crawl of a sitemap'd page. The og:image endpoint accepts the
+// same params, but the meta tag stays static; shared URLs still work
+// (client hydrates values), the card just shows default values.
+export function generateMetadata(): Metadata {
+  const ogImage = `${SITE}/api/og/tools/quick-ratio-calculator`;
 
   return {
     title:

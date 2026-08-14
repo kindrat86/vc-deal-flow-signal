@@ -9,31 +9,13 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 const SITE = "https://signals.gitdealflow.com";
 const PAGE_URL = `${SITE}/tools/safe-calculator`;
 
-const SAFE_PARAM_KEYS = ["amount", "cap", "discount", "pre", "invest"] as const;
-
-interface PageProps {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-}
-
-/**
- * Dynamic OG: each shared URL gets its own preview card. The OG image
- * route at /api/og/tools/safe-calculator reads the same params and
- * renders the computed result, so a paste to Twitter/Slack/LinkedIn
- * shows the actual ownership %, not a generic image.
- */
-export async function generateMetadata({
-  searchParams,
-}: PageProps): Promise<Metadata> {
-  const sp = await searchParams;
-  const ogParams = new URLSearchParams();
-  for (const key of SAFE_PARAM_KEYS) {
-    const v = sp[key];
-    if (typeof v === "string" && v.length > 0) {
-      ogParams.set(key, v);
-    }
-  }
-  const ogQuery = ogParams.toString();
-  const ogImage = `${SITE}/api/og/tools/safe-calculator${ogQuery ? `?${ogQuery}` : ""}`;
+// Static metadata: this route must prerender. Reading searchParams
+// here forces per-request dynamic rendering (private, no-store) for
+// every crawl of a sitemap'd page. The og:image endpoint accepts the
+// same params, but the meta tag stays static; shared URLs still work
+// (client hydrates values), the card just shows default values.
+export function generateMetadata(): Metadata {
+  const ogImage = `${SITE}/api/og/tools/safe-calculator`;
 
   return {
     title:
