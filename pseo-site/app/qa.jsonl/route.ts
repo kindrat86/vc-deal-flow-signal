@@ -7,6 +7,8 @@ import {
 } from "@/lib/data";
 import { posts } from "@/content/posts";
 import { standaloneFaqs } from "@/content/standalone-faqs";
+import { methodologyFaqs } from "@/content/methodology-faqs";
+import { signalTypeFaqs } from "@/content/signal-type-faqs";
 import { FINDINGS as RESEARCH_FINDINGS } from "@/content/research-findings";
 
 const BASE_URL = "https://signals.gitdealflow.com";
@@ -41,7 +43,14 @@ export async function GET(request: Request) {
     source: BASE_URL,
     contact: "signals@gitdealflow.com",
     schema: ["question", "answer", "source", "sourceUrl", "category"],
-    categories: ["general", "blog", "sector", "signal-type"],
+    categories: [
+      "general",
+      "blog",
+      "sector",
+      "signal-type",
+      "methodology",
+      "research-finding",
+    ],
   };
 
   for (const faq of standaloneFaqs) {
@@ -54,6 +63,19 @@ export async function GET(request: Request) {
       source: faq.source,
       sourceUrl: url,
       category: "general",
+    });
+  }
+
+  for (const faq of methodologyFaqs) {
+    const url = faq.sourceHref.startsWith("http")
+      ? faq.sourceHref
+      : `${BASE_URL}${faq.sourceHref}`;
+    out.push({
+      question: faq.question,
+      answer: faq.answer,
+      source: faq.source,
+      sourceUrl: url,
+      category: "methodology",
     });
   }
 
@@ -100,6 +122,20 @@ export async function GET(request: Request) {
     out.push({
       question: `What should investors look for in a "${sig.name}" signal?`,
       answer: sig.investorInsight,
+      source: sig.name,
+      sourceUrl: `${BASE_URL}/signals/${sig.slug}`,
+      category: "signal-type",
+    });
+  }
+
+  // Deep-dive signal-type Q&As (detection, false positives, stage, timing,
+  // differentiation, next steps) keyed to each SIGNAL_TYPES slug.
+  for (const faq of signalTypeFaqs) {
+    const sig = SIGNAL_TYPES.find((s) => s.slug === faq.slug);
+    if (!sig) continue;
+    out.push({
+      question: faq.question,
+      answer: faq.answer,
       source: sig.name,
       sourceUrl: `${BASE_URL}/signals/${sig.slug}`,
       category: "signal-type",
