@@ -1,7 +1,7 @@
 {
   "manifest_version": 3,
-  "name": "Momentum Badge \u2014 Startup Engineering Velocity | GitDealFlow",
-  "short_name": "Momentum Badge",
+  "name": "VC Deal Flow Signal \u2014 GitHub Startup Signals",
+  "short_name": "VC Deal Flow Signal",
   "version": "0.2.0",
   "description": "Shows startup engineering velocity signals on Crunchbase and Wellfound. Free GitHub-based data for deal flow analysis.",
   "homepage_url": "https://gitdealflow.com",

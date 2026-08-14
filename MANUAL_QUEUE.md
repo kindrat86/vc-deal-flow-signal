@@ -203,6 +203,8 @@ The preprint and the dataset are linked from the landing page. Everything is pub
 - Edge: `~/signals-gitdealflow/dist-extensions/momentum-badge-edge-v0.2.0.zip` (identical, Edge accepts Chrome zip)
 - Firefox: `~/signals-gitdealflow/dist-extensions/momentum-badge-firefox-v0.2.0.zip` (has `gecko.id: momentum-badge@gitdealflow.com` — NEVER change this id later)
 
+> **2026-08-14 rebuild:** manifest `name` was corrected from the stale "Momentum Badge" to "VC Deal Flow Signal — GitHub Startup Signals" so the in-browser name matches the store title (and the popup's own `<h1>`). All three zips were rebuilt via `python3 scripts/package-extensions.py`. When you upload the updated package, confirm the Package tab shows "VC Deal Flow Signal — GitHub Startup Signals" before submitting.
+
 ### 1. Chrome Web Store — upload v0.2.0 + fix listing (15 min)
 1. Sign in: https://chrome.google.com/webstore/devconsole (passkey)
 2. Open item `hehkgipiamajnnlpkfhpeoeaoaogmknn` ("VC Deal Flow Signal — GitHub Startup Signals")
