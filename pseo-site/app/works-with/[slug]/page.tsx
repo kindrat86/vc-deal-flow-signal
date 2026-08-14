@@ -28,8 +28,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const t = getWorksWith(slug);
   if (!t) return {};
 
+  // Titles embed the brand mid-string ("X + VC Deal Flow Signal, ..."), use
+  // absolute to bypass the "| VC Deal Flow Signal" template (brand doubling fix).
   return {
-    title: t.title,
+    title: t.title.includes("VC Deal Flow Signal")
+      ? { absolute: t.title }
+      : t.title,
     description: t.metaDescription,
     openGraph: { title: t.title, description: t.metaDescription, type: "article", url: `/works-with/${slug}` },
     twitter: { card: "summary_large_image", title: t.title, description: t.metaDescription },

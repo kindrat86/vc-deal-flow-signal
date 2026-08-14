@@ -37,13 +37,16 @@ export async function generateMetadata({
   const finding = getFindingBySlug(slug);
   if (!finding) return {};
 
+  // absolute: bypasses the layout's "| VC Deal Flow Signal" template, which
+  // would otherwise double the brand in the rendered <title>.
   const title = `${finding.title}, VC Deal Flow Signal Research`;
+  const pageTitle = { absolute: title };
   const description = `${finding.claim} ${finding.why} From the SSRN-indexed methodology paper by VC Deal Flow Signal (GitDealFlow): ${PAPER_TITLE}. Section ${finding.section}.`;
 
   // hreflang emitted via <HreflangLinks/> in the page body (Next 16 +
   // explicit <head> in layout double-emit when both metadata + JSX set it).
   return {
-    title,
+    title: pageTitle,
     description,
     alternates: { canonical: `/research/${slug}` },
     openGraph: {

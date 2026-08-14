@@ -36,7 +36,7 @@ export async function generateMetadata({
   if (!l) return {};
 
   return {
-    title: `VC Deal Flow Signal, ${l.nativeName.replace(/&amp;/g, "&")} (${l.display})`,
+    title: { absolute: `VC Deal Flow Signal, ${l.nativeName.replace(/&amp;/g, "&")} (${l.display})` },
     description: l.intro.slice(0, 200),
     // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
     alternates: { canonical: `/${locale}` },

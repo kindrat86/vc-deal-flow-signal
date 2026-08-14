@@ -724,6 +724,101 @@ check(
 );
 
 // ---------------------------------------------------------------------------
+// 16. Title brand-doubling (2026-08-15). The layout template appends
+//     "| VC Deal Flow Signal" to every title, but 14 content/route families
+//     ALSO embedded the brand in the stored title, so ~430 pages rendered
+//     "..., VC Deal Flow Signal | VC Deal Flow Signal" (up to 122 chars,
+//     truncated in SERPs). Fixed two ways: trailing-brand stripped from
+//     stored titles (template supplies it once), and { absolute } on routes
+//     whose titles legitimately lead with/near the brand. A lineage that
+//     reintroduces either pattern re-doubles ~430 page titles.
+// ---------------------------------------------------------------------------
+check(
+  "content/sectors.ts",
+  "Sector titles embed the brand again (template appends it): doubled 'VC Deal Flow Signal' on 10 sector hubs.",
+  (s) => !s.includes("VC Deal Flow (2026), VC Deal Flow Signal"),
+  "strip the trailing ', VC Deal Flow Signal' from the stored title, the layout template adds it once",
+);
+check(
+  "content/companies.ts",
+  "Company titles embed the brand again: 165 /signal pages doubled the brand.",
+  (s) => !s.includes("GitHub Engineering Signals (2026), VC Deal Flow Signal"),
+  "strip the trailing ', VC Deal Flow Signal', the layout template adds it once",
+);
+check(
+  "content/founders.ts",
+  "Founder titles embed the brand again: 34 /founder pages doubled the brand.",
+  (s) => !s.includes("Public Engineering Profile | VC Deal Flow Signal"),
+  "strip the trailing ' | VC Deal Flow Signal', the layout template adds it once",
+);
+check(
+  "content/acquirers.ts",
+  "Acquirer titles embed the brand again: 34 /acquirer pages doubled the brand.",
+  (s) => !s.includes("M&A Pattern (2026), VC Deal Flow Signal"),
+  "strip the trailing ', VC Deal Flow Signal', the layout template adds it once",
+);
+check(
+  "content/trend-leaderboards.ts",
+  "Trend titles embed the brand again: 25 /trend pages doubled the brand.",
+  (s) => !s.includes("Engineering Signal Leaderboard | VC Deal Flow Signal"),
+  "strip the trailing ' | VC Deal Flow Signal', the layout template adds it once",
+);
+check(
+  "content/locale-topics.ts",
+  "Locale-topic titles embed the brand again: 84 of 96 i18n pages doubled the brand.",
+  (s) => !s.includes(', VC Deal Flow Signal"'),
+  "strip the trailing ', VC Deal Flow Signal' from all topic titles; About-style titles are handled via { absolute } in the route",
+);
+check(
+  "content/alternatives.ts",
+  "Alternatives titles embed the brand again: 11 /alternatives pages doubled the brand.",
+  (s) => !s.includes(", VC Deal Flow Signal (2026)"),
+  "strip the trailing ', VC Deal Flow Signal' before ' (2026)', the layout template adds it once",
+);
+check(
+  "content/year-in-review.ts",
+  "Year-in-review titles embed the brand again: 3 /year-in-review pages doubled the brand.",
+  (s) => !s.includes(" | VC Deal Flow Signal\""),
+  "strip the trailing ' | VC Deal Flow Signal', the layout template adds it once",
+);
+check(
+  "app/[locale]/page.tsx",
+  "Locale landing titles lost { absolute }: 12 /xx landings re-double the brand via the layout template.",
+  (s) => s.includes("title: { absolute: `VC Deal Flow Signal,"),
+  "keep title as { absolute: ... } on locale landings, the title already leads with the brand",
+);
+check(
+  "app/[locale]/[topic]/page.tsx",
+  "Locale-topic route lost the conditional { absolute }: 11 localized About pages re-double the brand.",
+  (s) => s.includes('title: t.title.includes("VC Deal Flow Signal")'),
+  "keep the conditional { absolute } for titles that already contain the brand",
+);
+check(
+  "app/research/[slug]/page.tsx",
+  "Research route lost { absolute }: 31 /research pages re-double the brand.",
+  (s) => s.includes("const pageTitle = { absolute: title }"),
+  "keep title: pageTitle ({ absolute }) in metadata, plain string for og/twitter",
+);
+check(
+  "app/compare/[slug]/page.tsx",
+  "Compare route lost the conditional { absolute }: 8 /compare pages re-double the brand.",
+  (s) => s.includes('comp.title.includes("VC Deal Flow Signal")'),
+  "keep the conditional { absolute } for titles that already contain the brand",
+);
+check(
+  "app/for/[slug]/page.tsx",
+  "Persona route lost the conditional { absolute }: 7 /for pages re-double the brand.",
+  (s) => s.includes('p.title.includes("VC Deal Flow Signal")'),
+  "keep the conditional { absolute } for titles that already contain the brand",
+);
+check(
+  "app/works-with/[slug]/page.tsx",
+  "Works-with route lost the conditional { absolute }: integration pages re-double the brand.",
+  (s) => s.includes('t.title.includes("VC Deal Flow Signal")'),
+  "keep the conditional { absolute } for titles that already contain the brand",
+);
+
+// ---------------------------------------------------------------------------
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +

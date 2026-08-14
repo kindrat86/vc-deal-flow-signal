@@ -39,8 +39,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const p = getPersona(slug);
   if (!p) return {};
 
+  // Titles that already name the brand (7 persona pages lead with it) use
+  // absolute to bypass the "| VC Deal Flow Signal" template (brand doubling fix).
   return {
-    title: p.title,
+    title: p.title.includes("VC Deal Flow Signal")
+      ? { absolute: p.title }
+      : p.title,
     description: p.metaDescription,
     openGraph: { title: p.title, description: p.metaDescription, type: "article", url: `/for/${slug}` },
     twitter: { card: "summary_large_image", title: p.title, description: p.metaDescription },

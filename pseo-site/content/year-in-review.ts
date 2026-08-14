@@ -41,7 +41,7 @@ export const YEARS_IN_REVIEW: YearInReview[] = [
   {
     year: 2024,
     slug: "2024",
-    title: "2024 Year in Review, Engineering Signals & Venture Patterns | VC Deal Flow Signal",
+    title: "2024 Year in Review, Engineering Signals & Venture Patterns",
     metaDescription:
       "How 2024 looked through the engineering-acceleration lens: the AI infrastructure boom, generative AI bifurcation, Cisco's $28B Splunk move, and the open-weight model providers' commercial breakthrough.",
     h1: "2024, Year in Review",
@@ -93,7 +93,7 @@ export const YEARS_IN_REVIEW: YearInReview[] = [
   {
     year: 2025,
     slug: "2025",
-    title: "2025 Year in Review, Engineering Signals & Venture Patterns | VC Deal Flow Signal",
+    title: "2025 Year in Review, Engineering Signals & Venture Patterns",
     metaDescription:
       "How 2025 looked through the engineering-acceleration lens: agent infrastructure consolidation, the IBM-HashiCorp close, the rise of code-side sourcing as a category, and the AI-coding-tool ARR scramble.",
     h1: "2025, Year in Review",
@@ -143,7 +143,7 @@ export const YEARS_IN_REVIEW: YearInReview[] = [
   {
     year: 2026,
     slug: "2026",
-    title: "2026 Year in Review, Engineering Signals & Venture Patterns | VC Deal Flow Signal",
+    title: "2026 Year in Review, Engineering Signals & Venture Patterns",
     metaDescription:
       "How 2026 is shaping up through the engineering-acceleration lens: voice AI breakout, agent commerce primitives, edge-AI gateway consolidation, and the WebSub/answer-engine traffic shift.",
     h1: "2026, Year in Progress",

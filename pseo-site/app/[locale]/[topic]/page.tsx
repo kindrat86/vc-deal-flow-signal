@@ -35,7 +35,11 @@ export async function generateMetadata({
   if (!localeMeta) return {};
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
   return {
-    title: t.title,
+    // absolute: titles that already name the brand (11 localized About pages)
+    // bypass the "| VC Deal Flow Signal" template, otherwise the brand doubles.
+    title: t.title.includes("VC Deal Flow Signal")
+      ? { absolute: t.title }
+      : t.title,
     description: t.intro,
     alternates: { canonical: `/${locale}/${topic}` },
     openGraph: {

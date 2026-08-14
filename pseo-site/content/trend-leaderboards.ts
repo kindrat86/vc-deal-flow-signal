@@ -56,7 +56,7 @@ function build(t: {
     slug: t.slug,
     name: t.name,
     period: t.period,
-    title: `${t.name} (${t.period}), Engineering Signal Leaderboard | VC Deal Flow Signal`,
+    title: `${t.name} (${t.period}), Engineering Signal Leaderboard`,
     metaDescription: `${companyCount} tracked companies leading ${t.name.toLowerCase()} in ${t.period}, ranked by publicly observable engineering acceleration. Independent, sourced from GitHub event aggregates only.`,
     h1: `${t.name}, ${t.period} Leaderboard`,
     tagline: `${companyCount} tracked companies leading ${t.name.toLowerCase()} in ${t.period}, by publicly observable engineering signals.`,

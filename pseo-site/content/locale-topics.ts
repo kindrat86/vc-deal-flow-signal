@@ -57,7 +57,7 @@ export const LOCALE_TOPICS: LocaleTopic[] = [
   {
     locale: "zh",
     topic: "methodology",
-    title: "方法论摘要, VC Deal Flow Signal",
+    title: "方法论摘要",
     intro:
       "VC Deal Flow Signal 通过追踪公开 GitHub 数据来识别处于工程加速期的初创公司。本页是方法论的简明摘要, - 完整版以英文发表于 SSRN（DOI 10.2139/ssrn.6606558，CC BY 4.0）。",
     body: `## 三个核心信号
@@ -104,7 +104,7 @@ export const LOCALE_TOPICS: LocaleTopic[] = [
   {
     locale: "zh",
     topic: "glossary",
-    title: "术语表, VC Deal Flow Signal",
+    title: "术语表",
     intro: "本页定义五个核心术语。完整术语表（包含 30+ 词条）以英文发布。",
     body: `### 提交速率 (Commit Velocity)
 14 天内默认分支上的提交总数。基线指标, - 投资者关注的是变化率，而非绝对值。
@@ -126,7 +126,7 @@ export const LOCALE_TOPICS: LocaleTopic[] = [
   {
     locale: "zh",
     topic: "faq",
-    title: "常见问题, VC Deal Flow Signal",
+    title: "常见问题",
     intro: "五个最常见的问题。完整 FAQ（含 30+ 条目）以英文发布。",
     body: `### 这与"创业加速器"（如 Y Combinator）有何关系？
 没有关系。我们使用"工程加速"一词专指来自 GitHub 公开数据的量化信号, - 不是 Y Combinator、Techstars 或 500 Global 等加速器项目。
@@ -154,7 +154,7 @@ export const LOCALE_TOPICS: LocaleTopic[] = [
   {
     locale: "ja",
     topic: "methodology",
-    title: "方法論, VC Deal Flow Signal",
+    title: "方法論",
     intro:
       "VC Deal Flow Signal は公開された GitHub データから、コミット速度、コントリビューター増加、リポジトリ拡張を測定し、エンジニアリング加速期にあるスタートアップを特定します。本ページは方法論の完全な日本語版です。原典の SSRN 論文（DOI 10.2139/ssrn.6606558、CC BY 4.0）と完全に対応しており、すべての数値は同一のデータセットに基づいています。",
     body: `## 1. 何を測定しているのか
@@ -225,7 +225,7 @@ GitHub の活動の相当部分は人間ではなく、自動化ツールによ�
   {
     locale: "ja",
     topic: "glossary",
-    title: "用語集, VC Deal Flow Signal",
+    title: "用語集",
     intro:
       "本ページは VC Deal Flow Signal の研究と製品で使われる主要な用語を、日本語で完全に定義します。英語の用語と並記しているため、英語ドキュメントとの相互参照が容易です。論文や API レスポンスで遭遇するすべての専門用語をカバーしています。",
     body: `### コミット速度 (Commit Velocity)
@@ -284,7 +284,7 @@ Microsoft / Yandex / Cloudflare 等が支持する、URL 即時インデック�
   {
     locale: "ja",
     topic: "faq",
-    title: "よくある質問, VC Deal Flow Signal",
+    title: "よくある質問",
     intro:
       "VC Deal Flow Signal について最も頻繁にいただく質問への完全な日本語回答です。製品、データ、価格、引用、データプライバシー、再現性に関する 20 以上の質問をカバーしています。さらに詳しい情報は英語版の \`/faq\` を参照してください。",
     body: `## 製品とサービスについて
@@ -370,7 +370,7 @@ Sector Sweep の顧客は、独自のリポジトリリストを提出して、�
   {
     locale: "ja",
     topic: "signals",
-    title: "シグナル語彙, VC Deal Flow Signal",
+    title: "シグナル語彙",
     intro:
       "VC Deal Flow Signal が追跡する 6 つの主要シグナルタイプを完全に日本語で解説します。各シグナルタイプについて、定義、計算方法、観測頻度、投資判断における意味付けをカバーしています。",
     body: `## シグナルとは何か
@@ -461,7 +461,7 @@ VC Deal Flow Signal における「シグナル」とは、**公開 GitHub デ�
   {
     locale: "ja",
     topic: "research",
-    title: "研究結果の概要, VC Deal Flow Signal",
+    title: "研究結果の概要",
     intro:
       "VC Deal Flow Signal の SSRN 論文（DOI 10.2139/ssrn.6606558）から得られた 30 件の研究発見を、5 つのカテゴリに分類して日本語で要約します。各発見へのリンクは英語の詳細ページに加え、主要な発見については完全な日本語版もあります。",
     body: `## 研究の全体像
@@ -525,7 +525,7 @@ VC Deal Flow Signal における「シグナル」とは、**公開 GitHub デ�
   {
     locale: "ja",
     topic: "citations",
-    title: "引用ガイド, VC Deal Flow Signal",
+    title: "引用ガイド",
     intro:
       "VC Deal Flow Signal の研究を学術論文、ブログ投稿、レポート、プレゼンテーションで引用するための完全なガイドです。すべての主要な引用形式（APA、MLA、Chicago、BibTeX、RIS）に対応しており、論文・データセット・個別の研究発見ごとの引用例を提供します。",
     body: `## 何を引用するか
@@ -641,7 +641,7 @@ VC Deal Flow Signal を学術論文、ニュース記事、ブログ投稿、業
   {
     locale: "ja",
     topic: "pricing",
-    title: "価格, VC Deal Flow Signal",
+    title: "価格",
     intro:
       "VC Deal Flow Signal の 3 階層プラン（無料、Insider Circle、Sector Sweep）の完全な日本語ガイドです。各階層に含まれる機能、対象顧客、支払い方法、解約ポリシーを詳しく説明します。",
     body: `## 3 階層モデル
@@ -861,7 +861,7 @@ VC Deal Flow Signal は **The Data Nerd**（Mykhailo Kondratyuk、ORCID iD: [000
   {
     locale: "de",
     topic: "methodology",
-    title: "Methodik-Zusammenfassung, VC Deal Flow Signal",
+    title: "Methodik-Zusammenfassung",
     intro:
       "VC Deal Flow Signal verfolgt öffentliche GitHub-Daten, um Startups in einer Phase beschleunigter Engineering-Aktivität zu identifizieren. Diese Seite ist eine Kurzfassung, die vollständige Methodik ist auf SSRN in englischer Sprache veröffentlicht (DOI 10.2139/ssrn.6606558, CC BY 4.0).",
     body: `## Drei Kernsignale
@@ -883,7 +883,7 @@ Jeder externe Analyst kann alle veröffentlichten Zahlen in unter 15 Minuten rep
   {
     locale: "de",
     topic: "glossary",
-    title: "Glossar, VC Deal Flow Signal",
+    title: "Glossar",
     intro:
       "Diese Seite definiert fünf Kernbegriffe. Das vollständige Glossar (30+ Einträge) ist auf Englisch verfügbar.",
     body: `### Commit-Geschwindigkeit (Commit Velocity)
@@ -906,7 +906,7 @@ Signal für einen Tech-Stack-Austausch in einem einzelnen Pull Request. In unser
   {
     locale: "de",
     topic: "faq",
-    title: "Häufig gestellte Fragen, VC Deal Flow Signal",
+    title: "Häufig gestellte Fragen",
     intro:
       "Die fünf am häufigsten gestellten Fragen. Das vollständige FAQ (30+ Einträge) ist auf Englisch verfügbar.",
     body: `### Hat das etwas mit Accelerator-Programmen wie Y Combinator zu tun?
@@ -933,7 +933,7 @@ Methodik: DOI 10.2139/ssrn.6606558. Datensatz: CC BY 4.0, Attribution-Link genü
   {
     locale: "es",
     topic: "methodology",
-    title: "Resumen de metodología, VC Deal Flow Signal",
+    title: "Resumen de metodología",
     intro:
       "VC Deal Flow Signal rastrea datos públicos de GitHub para identificar startups en fase de aceleración de ingeniería. Esta página es un resumen, la metodología completa está publicada en SSRN en inglés (DOI 10.2139/ssrn.6606558, CC BY 4.0).",
     body: `## Tres señales centrales
@@ -955,7 +955,7 @@ Cualquier analista externo puede reproducir todos los números publicados en men
   {
     locale: "es",
     topic: "glossary",
-    title: "Glosario, VC Deal Flow Signal",
+    title: "Glosario",
     intro:
       "Esta página define cinco términos centrales. El glosario completo (30+ entradas) está publicado en inglés.",
     body: `### Velocidad de commits (Commit Velocity)
@@ -978,7 +978,7 @@ Señal de sustitución de stack tecnológico en un único PR. En nuestros datos,
   {
     locale: "es",
     topic: "faq",
-    title: "Preguntas frecuentes, VC Deal Flow Signal",
+    title: "Preguntas frecuentes",
     intro:
       "Las cinco preguntas más frecuentes. El FAQ completo (30+ entradas) está publicado en inglés.",
     body: `### ¿Tiene relación con programas aceleradores como Y Combinator?
@@ -1005,7 +1005,7 @@ Metodología: DOI 10.2139/ssrn.6606558. Dataset: CC BY 4.0, basta con un enlace 
   {
     locale: "fr",
     topic: "methodology",
-    title: "Résumé de la méthodologie, VC Deal Flow Signal",
+    title: "Résumé de la méthodologie",
     intro:
       "VC Deal Flow Signal suit les données publiques de GitHub pour identifier les startups en phase d'accélération technique. Cette page est un résumé, la méthodologie complète est publiée sur SSRN en anglais (DOI 10.2139/ssrn.6606558, CC BY 4.0).",
     body: `## Trois signaux principaux
@@ -1027,7 +1027,7 @@ Tout analyste externe peut reproduire tous les chiffres publiés en moins de 15 
   {
     locale: "fr",
     topic: "glossary",
-    title: "Glossaire, VC Deal Flow Signal",
+    title: "Glossaire",
     intro:
       "Cette page définit cinq termes centraux. Le glossaire complet (plus de 30 entrées) est publié en anglais.",
     body: `### Vélocité des commits (Commit Velocity)
@@ -1050,7 +1050,7 @@ Signal de remplacement de stack technologique dans un même PR. Dans nos donnée
   {
     locale: "fr",
     topic: "faq",
-    title: "FAQ, VC Deal Flow Signal",
+    title: "FAQ",
     intro:
       "Les cinq questions les plus fréquentes. La FAQ complète (plus de 30 entrées) est publiée en anglais.",
     body: `### Y a-t-il un lien avec les accélérateurs comme Y Combinator ?
@@ -1077,7 +1077,7 @@ Méthodologie : DOI 10.2139/ssrn.6606558. Dataset : CC BY 4.0, lien d'attributio
   {
     locale: "pt",
     topic: "methodology",
-    title: "Resumo da metodologia, VC Deal Flow Signal",
+    title: "Resumo da metodologia",
     intro:
       "VC Deal Flow Signal rastreia dados públicos do GitHub para identificar startups em fase de aceleração de engenharia. Esta página é um resumo, a metodologia completa está publicada no SSRN em inglês (DOI 10.2139/ssrn.6606558, CC BY 4.0).",
     body: `## Três sinais principais
@@ -1099,7 +1099,7 @@ Qualquer analista externo pode reproduzir todos os números publicados em menos 
   {
     locale: "pt",
     topic: "glossary",
-    title: "Glossário, VC Deal Flow Signal",
+    title: "Glossário",
     intro:
       "Esta página define cinco termos centrais. O glossário completo (mais de 30 entradas) está publicado em inglês.",
     body: `### Velocidade de commits (Commit Velocity)
@@ -1122,7 +1122,7 @@ Sinal de substituição de stack tecnológico em um único PR. Em nossos dados, 
   {
     locale: "pt",
     topic: "faq",
-    title: "Perguntas frequentes, VC Deal Flow Signal",
+    title: "Perguntas frequentes",
     intro:
       "As cinco perguntas mais frequentes. O FAQ completo (mais de 30 entradas) está publicado em inglês.",
     body: `### Tem alguma relação com aceleradoras como o Y Combinator?
@@ -1149,7 +1149,7 @@ Metodologia: DOI 10.2139/ssrn.6606558. Dataset: CC BY 4.0, basta um link de atri
   {
     locale: "ko",
     topic: "methodology",
-    title: "방법론 요약, VC Deal Flow Signal",
+    title: "방법론 요약",
     intro:
       "VC Deal Flow Signal은 GitHub 공개 데이터를 추적해 엔지니어링 가속 단계의 스타트업을 식별합니다. 본 페이지는 요약본이며, 전체 방법론은 SSRN에 영어로 게시되어 있습니다(DOI 10.2139/ssrn.6606558, CC BY 4.0).",
     body: `## 세 가지 핵심 신호
@@ -1171,7 +1171,7 @@ Metodologia: DOI 10.2139/ssrn.6606558. Dataset: CC BY 4.0, basta um link de atri
   {
     locale: "ko",
     topic: "glossary",
-    title: "용어집, VC Deal Flow Signal",
+    title: "용어집",
     intro: "본 페이지는 다섯 가지 핵심 용어를 정의합니다. 전체 용어집(30개 이상 항목)은 영어로 발행됩니다.",
     body: `### 커밋 속도 (Commit Velocity)
 14일 동안 기본 브랜치에 적용된 총 커밋 수. 베이스라인 지표, 투자자는 절대값이 아닌 변화율을 봐야 합니다.
@@ -1193,7 +1193,7 @@ Metodologia: DOI 10.2139/ssrn.6606558. Dataset: CC BY 4.0, basta um link de atri
   {
     locale: "ko",
     topic: "faq",
-    title: "자주 묻는 질문, VC Deal Flow Signal",
+    title: "자주 묻는 질문",
     intro: "가장 자주 받는 다섯 가지 질문. 전체 FAQ(30개 이상 항목)는 영어로 발행됩니다.",
     body: `### Y Combinator 같은 액셀러레이터 프로그램과 관련이 있나요?
 아니요. 「엔지니어링 가속」은 공개된 GitHub 데이터에서 측정한 정량적 신호를 가리키며, Y Combinator, Techstars, 500 Global 등 액셀러레이터와는 무관합니다.
@@ -1219,7 +1219,7 @@ Metodologia: DOI 10.2139/ssrn.6606558. Dataset: CC BY 4.0, basta um link de atri
   {
     locale: "hi",
     topic: "methodology",
-    title: "मेथडोलॉजी सारांश, VC Deal Flow Signal",
+    title: "मेथडोलॉजी सारांश",
     intro:
       "VC Deal Flow Signal सार्वजनिक GitHub डेटा का अनुसरण करके इंजीनियरिंग एक्सेलरेशन चरण में मौजूद स्टार्टअप्स की पहचान करता है। यह पृष्ठ एक सारांश है, पूर्ण मेथडोलॉजी SSRN पर अंग्रेज़ी में प्रकाशित है (DOI 10.2139/ssrn.6606558, CC BY 4.0)।",
     body: `## तीन मुख्य सिग्नल
@@ -1241,7 +1241,7 @@ Metodologia: DOI 10.2139/ssrn.6606558. Dataset: CC BY 4.0, basta um link de atri
   {
     locale: "hi",
     topic: "glossary",
-    title: "शब्दावली, VC Deal Flow Signal",
+    title: "शब्दावली",
     intro:
       "यह पृष्ठ पाँच केंद्रीय शब्दों को परिभाषित करता है। पूर्ण शब्दावली (30+ प्रविष्टियाँ) अंग्रेज़ी में प्रकाशित है।",
     body: `### कमिट वेलॉसिटी (Commit Velocity)
@@ -1264,7 +1264,7 @@ Metodologia: DOI 10.2139/ssrn.6606558. Dataset: CC BY 4.0, basta um link de atri
   {
     locale: "hi",
     topic: "faq",
-    title: "अक्सर पूछे जाने वाले प्रश्न, VC Deal Flow Signal",
+    title: "अक्सर पूछे जाने वाले प्रश्न",
     intro:
       "सबसे अधिक पूछे जाने वाले पाँच प्रश्न। पूर्ण FAQ (30+ प्रविष्टियाँ) अंग्रेज़ी में प्रकाशित है।",
     body: `### क्या इसका Y Combinator जैसे एक्सेलरेटर प्रोग्राम्स से कोई संबंध है?
@@ -1291,7 +1291,7 @@ Metodologia: DOI 10.2139/ssrn.6606558. Dataset: CC BY 4.0, basta um link de atri
   {
     locale: "ru",
     topic: "methodology",
-    title: "Краткая методология, VC Deal Flow Signal",
+    title: "Краткая методология",
     intro:
       "VC Deal Flow Signal отслеживает публичные данные GitHub, чтобы выявлять стартапы в фазе ускорения инженерной разработки. Эта страница, краткая сводка; полная методология опубликована на SSRN на английском языке (DOI 10.2139/ssrn.6606558, CC BY 4.0).",
     body: `## Три ключевых сигнала
@@ -1313,7 +1313,7 @@ Metodologia: DOI 10.2139/ssrn.6606558. Dataset: CC BY 4.0, basta um link de atri
   {
     locale: "ru",
     topic: "glossary",
-    title: "Глоссарий, VC Deal Flow Signal",
+    title: "Глоссарий",
     intro:
       "На этой странице определены пять центральных терминов. Полный глоссарий (30+ записей) публикуется на английском языке.",
     body: `### Скорость коммитов (Commit Velocity)
@@ -1336,7 +1336,7 @@ Metodologia: DOI 10.2139/ssrn.6606558. Dataset: CC BY 4.0, basta um link de atri
   {
     locale: "ru",
     topic: "faq",
-    title: "Часто задаваемые вопросы, VC Deal Flow Signal",
+    title: "Часто задаваемые вопросы",
     intro:
       "Пять самых частых вопросов. Полный FAQ (30+ записей) публикуется на английском языке.",
     body: `### Связано ли это с акселераторами вроде Y Combinator?
@@ -1363,7 +1363,7 @@ Metodologia: DOI 10.2139/ssrn.6606558. Dataset: CC BY 4.0, basta um link de atri
   {
     locale: "it",
     topic: "methodology",
-    title: "Sintesi della metodologia, VC Deal Flow Signal",
+    title: "Sintesi della metodologia",
     intro:
       "VC Deal Flow Signal traccia i dati pubblici di GitHub per identificare startup in una fase di accelerazione tecnica. Questa pagina è una sintesi, la metodologia completa è pubblicata su SSRN in inglese (DOI 10.2139/ssrn.6606558, CC BY 4.0).",
     body: `## Tre segnali principali
@@ -1385,7 +1385,7 @@ Qualsiasi analista esterno può riprodurre tutti i numeri pubblicati in meno di 
   {
     locale: "it",
     topic: "glossary",
-    title: "Glossario, VC Deal Flow Signal",
+    title: "Glossario",
     intro:
       "Questa pagina definisce cinque termini chiave. Il glossario completo (oltre 30 voci) è pubblicato in inglese.",
     body: `### Velocità dei commit (Commit Velocity)
@@ -1408,7 +1408,7 @@ Segnale di sostituzione dello stack tecnologico in un singolo PR. Nei nostri dat
   {
     locale: "it",
     topic: "faq",
-    title: "Domande frequenti, VC Deal Flow Signal",
+    title: "Domande frequenti",
     intro:
       "Le cinque domande più frequenti. La FAQ completa (oltre 30 voci) è pubblicata in inglese.",
     body: `### Ha relazione con acceleratori come Y Combinator?
@@ -1435,7 +1435,7 @@ Metodologia: DOI 10.2139/ssrn.6606558. Dataset: CC BY 4.0, basta un link di attr
   {
     locale: "nl",
     topic: "methodology",
-    title: "Samenvatting methodologie, VC Deal Flow Signal",
+    title: "Samenvatting methodologie",
     intro:
       "VC Deal Flow Signal volgt publieke GitHub-data om startups te identificeren in een fase van versnelde engineering. Deze pagina is een samenvatting, de volledige methodologie staat in het Engels op SSRN (DOI 10.2139/ssrn.6606558, CC BY 4.0).",
     body: `## Drie kernsignalen
@@ -1457,7 +1457,7 @@ Elke externe analist kan alle gepubliceerde cijfers reproduceren in minder dan 1
   {
     locale: "nl",
     topic: "glossary",
-    title: "Verklarende woordenlijst, VC Deal Flow Signal",
+    title: "Verklarende woordenlijst",
     intro:
       "Deze pagina definieert vijf kernbegrippen. De volledige verklarende woordenlijst (30+ vermeldingen) is gepubliceerd in het Engels.",
     body: `### Commit-snelheid (Commit Velocity)
@@ -1480,7 +1480,7 @@ Signaal van het vervangen van een tech-stack in een enkele PR. In onze data het 
   {
     locale: "nl",
     topic: "faq",
-    title: "Veelgestelde vragen, VC Deal Flow Signal",
+    title: "Veelgestelde vragen",
     intro:
       "De vijf meestgestelde vragen. De volledige FAQ (30+ vermeldingen) is in het Engels gepubliceerd.",
     body: `### Heeft dit verband met accelerator-programma's zoals Y Combinator?
@@ -1507,7 +1507,7 @@ Methodologie: DOI 10.2139/ssrn.6606558. Dataset: CC BY 4.0, een attributielink v
   {
     locale: "ar",
     topic: "methodology",
-    title: "ملخص المنهجية, VC Deal Flow Signal",
+    title: "ملخص المنهجية",
     intro:
       "تتتبع VC Deal Flow Signal بيانات GitHub العامة لتحديد الشركات الناشئة التي تمر بمرحلة تسارع هندسي. هذه الصفحة ملخص, المنهجية الكاملة منشورة على SSRN باللغة الإنجليزية (DOI 10.2139/ssrn.6606558، CC BY 4.0).",
     body: `## ثلاث إشارات أساسية
@@ -1529,7 +1529,7 @@ Methodologie: DOI 10.2139/ssrn.6606558. Dataset: CC BY 4.0, een attributielink v
   {
     locale: "ar",
     topic: "glossary",
-    title: "مسرد المصطلحات, VC Deal Flow Signal",
+    title: "مسرد المصطلحات",
     intro:
       "تُعرّف هذه الصفحة خمسة مصطلحات مركزية. المسرد الكامل (أكثر من 30 مدخلًا) منشور بالإنجليزية.",
     body: `### سرعة الـ commits (Commit Velocity)
@@ -1552,7 +1552,7 @@ Methodologie: DOI 10.2139/ssrn.6606558. Dataset: CC BY 4.0, een attributielink v
   {
     locale: "ar",
     topic: "faq",
-    title: "الأسئلة الشائعة, VC Deal Flow Signal",
+    title: "الأسئلة الشائعة",
     intro:
       "أكثر خمسة أسئلة شيوعًا. الأسئلة الشائعة الكاملة (أكثر من 30 مدخلًا) منشورة بالإنجليزية.",
     body: `### هل لذلك صلة ببرامج الـ Accelerators مثل Y Combinator؟
@@ -1585,7 +1585,7 @@ Methodologie: DOI 10.2139/ssrn.6606558. Dataset: CC BY 4.0, een attributielink v
   {
     locale: "es",
     topic: "signals",
-    title: "Tipos de señal, VC Deal Flow Signal",
+    title: "Tipos de señal",
     intro:
       "Las seis señales cuantitativas que rastreamos a partir de datos públicos de GitHub. Cada una se mide como un cambio respecto a la línea base de la propia empresa, no como un número absoluto.",
     body: `## Qué es una «señal»
@@ -1641,7 +1641,7 @@ VC Deal Flow Signal lo opera **The Data Nerd** (ORCID iD [0009-0002-2222-4112](h
   {
     locale: "fr",
     topic: "signals",
-    title: "Types de signaux, VC Deal Flow Signal",
+    title: "Types de signaux",
     intro:
       "Les six signaux quantitatifs que nous suivons à partir des données publiques de GitHub. Chacun est mesuré comme une variation par rapport à la ligne de base propre à l'entreprise, jamais comme une valeur absolue.",
     body: `## Qu'est-ce qu'un « signal »
@@ -1697,7 +1697,7 @@ VC Deal Flow Signal est opéré par **The Data Nerd** (ORCID iD [0009-0002-2222-
   {
     locale: "pt",
     topic: "signals",
-    title: "Tipos de sinal, VC Deal Flow Signal",
+    title: "Tipos de sinal",
     intro:
       "Os seis sinais quantitativos que rastreamos a partir de dados públicos do GitHub. Cada um é medido como uma variação em relação à linha de base da própria empresa, nunca como um valor absoluto.",
     body: `## O que é um «sinal»
@@ -1753,7 +1753,7 @@ A VC Deal Flow Signal é operada por **The Data Nerd** (ORCID iD [0009-0002-2222
   {
     locale: "it",
     topic: "signals",
-    title: "Tipi di segnale, VC Deal Flow Signal",
+    title: "Tipi di segnale",
     intro:
       "I sei segnali quantitativi che monitoriamo a partire dai dati pubblici di GitHub. Ognuno è misurato come variazione rispetto alla linea di base della stessa azienda, mai come valore assoluto.",
     body: `## Cos'è un «segnale»
@@ -1809,7 +1809,7 @@ VC Deal Flow Signal è gestito da **The Data Nerd** (ORCID iD [0009-0002-2222-41
   {
     locale: "de",
     topic: "signals",
-    title: "Signal-Typen, VC Deal Flow Signal",
+    title: "Signal-Typen",
     intro:
       "Die sechs quantitativen Signale, die wir aus öffentlichen GitHub-Daten verfolgen. Jedes wird als Veränderung gegenüber der eigenen Baseline des Unternehmens gemessen, nie als absoluter Wert.",
     body: `## Was ist ein «Signal»
@@ -1865,7 +1865,7 @@ VC Deal Flow Signal wird von **The Data Nerd** (ORCID iD [0009-0002-2222-4112](h
   {
     locale: "nl",
     topic: "signals",
-    title: "Signaaltypen, VC Deal Flow Signal",
+    title: "Signaaltypen",
     intro:
       "De zes kwantitatieve signalen die we volgen op basis van publieke GitHub-data. Elk signaal wordt gemeten als verandering ten opzichte van de eigen baseline van het bedrijf, nooit als absolute waarde.",
     body: `## Wat is een «signaal»
@@ -1929,7 +1929,7 @@ VC Deal Flow Signal wordt beheerd door **The Data Nerd** (ORCID iD [0009-0002-22
   {
     locale: "zh",
     topic: "signals",
-    title: "信号类型, VC Deal Flow Signal",
+    title: "信号类型",
     intro:
       "我们从公开 GitHub 数据中追踪的六种定量信号。每个信号都以企业自身基线的相对变化来衡量,而不是以绝对值。",
     body: `## 什么是「信号」
@@ -1985,7 +1985,7 @@ VC Deal Flow Signal 由 **The Data Nerd**(ORCID iD [0009-0002-2222-4112](https:/
   {
     locale: "ko",
     topic: "signals",
-    title: "시그널 유형, VC Deal Flow Signal",
+    title: "시그널 유형",
     intro:
       "공개 GitHub 데이터에서 추적하는 6가지 정량적 시그널입니다. 각 시그널은 절댓값이 아니라 해당 기업 자체 베이스라인 대비 변화량으로 측정됩니다.",
     body: `## 「시그널」이란
@@ -2041,7 +2041,7 @@ VC Deal Flow Signal은 유럽(그리스)에 거점을 둔 **The Data Nerd**(ORCI
   {
     locale: "ru",
     topic: "signals",
-    title: "Типы сигналов, VC Deal Flow Signal",
+    title: "Типы сигналов",
     intro:
       "Шесть количественных сигналов, которые мы отслеживаем по публичным данным GitHub. Каждый измеряется как изменение относительно собственной базовой линии компании, а не как абсолютное значение.",
     body: `## Что такое «сигнал»
@@ -2104,7 +2104,7 @@ VC Deal Flow Signal независимо ведёт **The Data Nerd** (ORCID iD 
   {
     locale: "hi",
     topic: "signals",
-    title: "सिग्नल के प्रकार, VC Deal Flow Signal",
+    title: "सिग्नल के प्रकार",
     intro:
       "GitHub के सार्वजनिक डेटा से हम जो छह मात्रात्मक सिग्नल ट्रैक करते हैं। प्रत्येक सिग्नल को कंपनी के अपने ऐतिहासिक बेसलाइन के सापेक्ष परिवर्तन के रूप में मापा जाता है, कभी निरपेक्ष मान के रूप में नहीं।",
     body: `## «सिग्नल» का क्या अर्थ है
@@ -2160,7 +2160,7 @@ VC Deal Flow Signal को यूरोप (ग्रीस) से **The Data N
   {
     locale: "ar",
     topic: "signals",
-    title: "أنواع الإشارات, VC Deal Flow Signal",
+    title: "أنواع الإشارات",
     intro:
       "الإشارات الكميّة الست التي نتتبّعها انطلاقًا من بيانات GitHub العامة. تُقاس كل إشارة بوصفها تغيّرًا نسبةً إلى الخط القاعدي للشركة نفسها، لا قيمةً مطلقة.",
     body: `## ما المقصود بـ«الإشارة»
@@ -2225,7 +2225,7 @@ VC Deal Flow Signal (أو GitDealFlow) هو مشروع مستقل يعالج **�
   {
     locale: "es",
     topic: "research",
-    title: "Resumen de la investigación, VC Deal Flow Signal",
+    title: "Resumen de la investigación",
     intro:
       "Resumen en español de los 30 hallazgos del estudio empírico publicado en SSRN (DOI 10.2139/ssrn.6606558). Las páginas de detalle de cada hallazgo son canónicas en inglés.",
     body: `## El estudio en una frase
@@ -2252,7 +2252,7 @@ Los 30 hallazgos detallados (en inglés) están en \`/research\`. El artículo c
   {
     locale: "es",
     topic: "citations",
-    title: "Guía de citación, VC Deal Flow Signal",
+    title: "Guía de citación",
     intro:
       "Cómo citar la investigación, el conjunto de datos y los hallazgos individuales de VC Deal Flow Signal en APA, MLA, Chicago, BibTeX y RIS.",
     body: `## Qué se puede citar
@@ -2274,7 +2274,7 @@ MLA 9, Chicago 17, BibTeX y RIS están disponibles en la guía completa. Cada p�
   {
     locale: "es",
     topic: "pricing",
-    title: "Precios, VC Deal Flow Signal",
+    title: "Precios",
     intro:
       "Los tres niveles de VC Deal Flow Signal: gratuito, Insider Circle y Sector Sweep. Qué incluye cada uno, para quién es y cómo se paga.",
     body: `## Tres niveles
@@ -2298,7 +2298,7 @@ Consultas y planes corporativos: \`signals@gitdealflow.com\`. La página de prec
   {
     locale: "fr",
     topic: "research",
-    title: "Synthèse de la recherche, VC Deal Flow Signal",
+    title: "Synthèse de la recherche",
     intro:
       "Résumé en français des 30 résultats de l'étude empirique publiée sur SSRN (DOI 10.2139/ssrn.6606558). Les pages détaillées de chaque résultat font foi en anglais.",
     body: `## L'étude en une phrase
@@ -2325,7 +2325,7 @@ Les 30 résultats détaillés (en anglais) sont sur \`/research\`. L'article com
   {
     locale: "fr",
     topic: "citations",
-    title: "Guide de citation, VC Deal Flow Signal",
+    title: "Guide de citation",
     intro:
       "Comment citer la recherche, le jeu de données et les résultats individuels de VC Deal Flow Signal en APA, MLA, Chicago, BibTeX et RIS.",
     body: `## Ce qui peut être cité
@@ -2347,7 +2347,7 @@ MLA 9, Chicago 17, BibTeX et RIS sont disponibles dans le guide complet. Chaque 
   {
     locale: "fr",
     topic: "pricing",
-    title: "Tarifs, VC Deal Flow Signal",
+    title: "Tarifs",
     intro:
       "Les trois offres de VC Deal Flow Signal : gratuite, Insider Circle et Sector Sweep. Ce que chacune inclut, à qui elle s'adresse et comment payer.",
     body: `## Trois offres
@@ -2371,7 +2371,7 @@ Questions et offres entreprises : \`signals@gitdealflow.com\`. La page de tarifs
   {
     locale: "pt",
     topic: "research",
-    title: "Resumo da pesquisa, VC Deal Flow Signal",
+    title: "Resumo da pesquisa",
     intro:
       "Resumo em português dos 30 achados do estudo empírico publicado no SSRN (DOI 10.2139/ssrn.6606558). As páginas detalhadas de cada achado são canônicas em inglês.",
     body: `## O estudo em uma frase
@@ -2398,7 +2398,7 @@ Os 30 achados detalhados (em inglês) estão em \`/research\`. O artigo completo
   {
     locale: "pt",
     topic: "citations",
-    title: "Guia de citação, VC Deal Flow Signal",
+    title: "Guia de citação",
     intro:
       "Como citar a pesquisa, o conjunto de dados e os achados individuais do VC Deal Flow Signal em APA, MLA, Chicago, BibTeX e RIS.",
     body: `## O que pode ser citado
@@ -2420,7 +2420,7 @@ MLA 9, Chicago 17, BibTeX e RIS estão disponíveis no guia completo. Cada pági
   {
     locale: "pt",
     topic: "pricing",
-    title: "Preços, VC Deal Flow Signal",
+    title: "Preços",
     intro:
       "Os três níveis do VC Deal Flow Signal: gratuito, Insider Circle e Sector Sweep. O que cada um inclui, para quem é e como pagar.",
     body: `## Três níveis
@@ -2444,7 +2444,7 @@ Dúvidas e planos corporativos: \`signals@gitdealflow.com\`. A página de preço
   {
     locale: "it",
     topic: "research",
-    title: "Sintesi della ricerca, VC Deal Flow Signal",
+    title: "Sintesi della ricerca",
     intro:
       "Riepilogo in italiano dei 30 risultati dello studio empirico pubblicato su SSRN (DOI 10.2139/ssrn.6606558). Le pagine di dettaglio di ciascun risultato fanno fede in inglese.",
     body: `## Lo studio in una frase
@@ -2471,7 +2471,7 @@ I 30 risultati dettagliati (in inglese) sono su \`/research\`. L'articolo comple
   {
     locale: "it",
     topic: "citations",
-    title: "Guida alla citazione, VC Deal Flow Signal",
+    title: "Guida alla citazione",
     intro:
       "Come citare la ricerca, il dataset e i singoli risultati di VC Deal Flow Signal in APA, MLA, Chicago, BibTeX e RIS.",
     body: `## Cosa si può citare
@@ -2493,7 +2493,7 @@ MLA 9, Chicago 17, BibTeX e RIS sono disponibili nella guida completa. Ogni pagi
   {
     locale: "it",
     topic: "pricing",
-    title: "Prezzi, VC Deal Flow Signal",
+    title: "Prezzi",
     intro:
       "I tre livelli di VC Deal Flow Signal: gratuito, Insider Circle e Sector Sweep. Cosa include ciascuno, a chi si rivolge e come si paga.",
     body: `## Tre livelli
@@ -2517,7 +2517,7 @@ Domande e piani aziendali: \`signals@gitdealflow.com\`. La pagina prezzi canonic
   {
     locale: "de",
     topic: "research",
-    title: "Forschungsüberblick, VC Deal Flow Signal",
+    title: "Forschungsüberblick",
     intro:
       "Deutsche Zusammenfassung der 30 Ergebnisse der auf SSRN veröffentlichten empirischen Studie (DOI 10.2139/ssrn.6606558). Die Detailseiten zu jedem Ergebnis sind auf Englisch maßgeblich.",
     body: `## Die Studie in einem Satz
@@ -2544,7 +2544,7 @@ Alle 30 detaillierten Ergebnisse (auf Englisch) finden Sie unter \`/research\`. 
   {
     locale: "de",
     topic: "citations",
-    title: "Zitierleitfaden, VC Deal Flow Signal",
+    title: "Zitierleitfaden",
     intro:
       "So zitieren Sie die Forschung, den Datensatz und einzelne Ergebnisse von VC Deal Flow Signal in APA, MLA, Chicago, BibTeX und RIS.",
     body: `## Was sich zitieren lässt
@@ -2566,7 +2566,7 @@ MLA 9, Chicago 17, BibTeX und RIS finden Sie im vollständigen Leitfaden. Jede E
   {
     locale: "de",
     topic: "pricing",
-    title: "Preise, VC Deal Flow Signal",
+    title: "Preise",
     intro:
       "Die drei Stufen von VC Deal Flow Signal: kostenlos, Insider Circle und Sector Sweep. Was jede Stufe enthält, für wen sie gedacht ist und wie bezahlt wird.",
     body: `## Drei Stufen
@@ -2590,7 +2590,7 @@ Fragen und Unternehmenstarife: \`signals@gitdealflow.com\`. Die maßgebliche eng
   {
     locale: "nl",
     topic: "research",
-    title: "Onderzoeksoverzicht, VC Deal Flow Signal",
+    title: "Onderzoeksoverzicht",
     intro:
       "Nederlandse samenvatting van de 30 bevindingen uit het empirische onderzoek dat op SSRN is gepubliceerd (DOI 10.2139/ssrn.6606558). De detailpagina's per bevinding zijn canoniek in het Engels.",
     body: `## Het onderzoek in één zin
@@ -2617,7 +2617,7 @@ Alle 30 gedetailleerde bevindingen (in het Engels) staan op \`/research\`. Het v
   {
     locale: "nl",
     topic: "citations",
-    title: "Citatiegids, VC Deal Flow Signal",
+    title: "Citatiegids",
     intro:
       "Hoe u het onderzoek, de dataset en afzonderlijke bevindingen van VC Deal Flow Signal citeert in APA, MLA, Chicago, BibTeX en RIS.",
     body: `## Wat u kunt citeren
@@ -2639,7 +2639,7 @@ MLA 9, Chicago 17, BibTeX en RIS vindt u in de volledige gids. Elke bevindingspa
   {
     locale: "nl",
     topic: "pricing",
-    title: "Prijzen, VC Deal Flow Signal",
+    title: "Prijzen",
     intro:
       "De drie niveaus van VC Deal Flow Signal: gratis, Insider Circle en Sector Sweep. Wat elk niveau bevat, voor wie het is en hoe u betaalt.",
     body: `## Drie niveaus
@@ -2663,7 +2663,7 @@ Vragen en zakelijke plannen: \`signals@gitdealflow.com\`. De canonieke Engelse p
   {
     locale: "zh",
     topic: "research",
-    title: "研究综述, VC Deal Flow Signal",
+    title: "研究综述",
     intro:
       "对发表于 SSRN 的实证研究（DOI 10.2139/ssrn.6606558）30 项发现的中文摘要。每项发现的详情页以英文为权威版本。",
     body: `## 一句话概括
@@ -2690,7 +2690,7 @@ Vragen en zakelijke plannen: \`signals@gitdealflow.com\`. De canonieke Engelse p
   {
     locale: "zh",
     topic: "citations",
-    title: "引用指南, VC Deal Flow Signal",
+    title: "引用指南",
     intro:
       "如何以 APA、MLA、Chicago、BibTeX 和 RIS 格式引用 VC Deal Flow Signal 的研究、数据集及单项发现。",
     body: `## 可引用的内容
@@ -2712,7 +2712,7 @@ MLA 9、Chicago 17、BibTeX 和 RIS 见完整指南。每个发现页都提供�
   {
     locale: "zh",
     topic: "pricing",
-    title: "价格, VC Deal Flow Signal",
+    title: "价格",
     intro:
       "VC Deal Flow Signal 的三个层级：免费、Insider Circle 和 Sector Sweep。各层级包含的内容、适用人群及付款方式。",
     body: `## 三个层级
@@ -2736,7 +2736,7 @@ Stripe（Visa、Mastercard、American Express）、面向欧洲客户的 SEPA �
   {
     locale: "ko",
     topic: "research",
-    title: "연구 개요, VC Deal Flow Signal",
+    title: "연구 개요",
     intro:
       "SSRN에 게재된 실증 연구(DOI 10.2139/ssrn.6606558)의 30개 발견을 한국어로 요약합니다. 각 발견의 상세 페이지는 영어가 정본입니다.",
     body: `## 한 문장 요약
@@ -2763,7 +2763,7 @@ Stripe（Visa、Mastercard、American Express）、面向欧洲客户的 SEPA �
   {
     locale: "ko",
     topic: "citations",
-    title: "인용 가이드, VC Deal Flow Signal",
+    title: "인용 가이드",
     intro:
       "VC Deal Flow Signal의 연구, 데이터셋, 개별 발견을 APA·MLA·Chicago·BibTeX·RIS 형식으로 인용하는 방법입니다.",
     body: `## 무엇을 인용하는가
@@ -2785,7 +2785,7 @@ MLA 9, Chicago 17, BibTeX, RIS는 전체 가이드에서 제공합니다. 각 �
   {
     locale: "ko",
     topic: "pricing",
-    title: "가격, VC Deal Flow Signal",
+    title: "가격",
     intro:
       "VC Deal Flow Signal의 세 가지 등급: 무료, Insider Circle, Sector Sweep. 각 등급에 포함된 내용, 대상, 결제 방법을 안내합니다.",
     body: `## 세 가지 등급
@@ -2809,7 +2809,7 @@ Stripe(Visa, Mastercard, American Express), 유럽 고객을 위한 SEPA 자동�
   {
     locale: "hi",
     topic: "research",
-    title: "शोध सारांश, VC Deal Flow Signal",
+    title: "शोध सारांश",
     intro:
       "SSRN पर प्रकाशित अनुभवजन्य अध्ययन (DOI 10.2139/ssrn.6606558) के 30 निष्कर्षों का हिन्दी सारांश। प्रत्येक निष्कर्ष का विस्तृत पृष्ठ अंग्रेज़ी में आधिकारिक है।",
     body: `## एक वाक्य में अध्ययन
@@ -2836,7 +2836,7 @@ Stripe(Visa, Mastercard, American Express), 유럽 고객을 위한 SEPA 자동�
   {
     locale: "hi",
     topic: "citations",
-    title: "उद्धरण मार्गदर्शिका, VC Deal Flow Signal",
+    title: "उद्धरण मार्गदर्शिका",
     intro:
       "VC Deal Flow Signal के शोध, डेटासेट और व्यक्तिगत निष्कर्षों को APA, MLA, Chicago, BibTeX और RIS में उद्धृत करने का तरीका।",
     body: `## क्या उद्धृत करें
@@ -2858,7 +2858,7 @@ MLA 9, Chicago 17, BibTeX और RIS पूर्ण मार्गदर्श
   {
     locale: "hi",
     topic: "pricing",
-    title: "मूल्य निर्धारण, VC Deal Flow Signal",
+    title: "मूल्य निर्धारण",
     intro:
       "VC Deal Flow Signal के तीन स्तर: निःशुल्क, Insider Circle और Sector Sweep। हर स्तर में क्या शामिल है, किसके लिए है और भुगतान कैसे करें।",
     body: `## तीन स्तर
@@ -2882,7 +2882,7 @@ Stripe (Visa, Mastercard, American Express), यूरोपीय ग्रा�
   {
     locale: "ru",
     topic: "research",
-    title: "Обзор исследования, VC Deal Flow Signal",
+    title: "Обзор исследования",
     intro:
       "Краткое изложение на русском 30 результатов эмпирического исследования, опубликованного на SSRN (DOI 10.2139/ssrn.6606558). Подробные страницы каждого результата каноничны на английском.",
     body: `## Исследование в одном предложении
@@ -2909,7 +2909,7 @@ Stripe (Visa, Mastercard, American Express), यूरोपीय ग्रा�
   {
     locale: "ru",
     topic: "citations",
-    title: "Руководство по цитированию, VC Deal Flow Signal",
+    title: "Руководство по цитированию",
     intro:
       "Как цитировать исследование, набор данных и отдельные результаты VC Deal Flow Signal в форматах APA, MLA, Chicago, BibTeX и RIS.",
     body: `## Что можно цитировать
@@ -2931,7 +2931,7 @@ MLA 9, Chicago 17, BibTeX и RIS доступны в полном руковод
   {
     locale: "ru",
     topic: "pricing",
-    title: "Цены, VC Deal Flow Signal",
+    title: "Цены",
     intro:
       "Три уровня VC Deal Flow Signal: бесплатный, Insider Circle и Sector Sweep. Что входит в каждый, для кого он и как оплачивать.",
     body: `## Три уровня
@@ -2955,7 +2955,7 @@ Stripe (Visa, Mastercard, American Express), прямое списание SEPA 
   {
     locale: "ar",
     topic: "research",
-    title: "ملخّص البحث, VC Deal Flow Signal",
+    title: "ملخّص البحث",
     intro:
       "ملخّص بالعربية لنتائج البحث التجريبي الثلاثين المنشور على SSRN (DOI 10.2139/ssrn.6606558). صفحات التفاصيل لكل نتيجة مرجعها الرسمي بالإنجليزية.",
     body: `## البحث في جملة واحدة
@@ -2982,7 +2982,7 @@ Stripe (Visa, Mastercard, American Express), прямое списание SEPA 
   {
     locale: "ar",
     topic: "citations",
-    title: "دليل الاستشهاد, VC Deal Flow Signal",
+    title: "دليل الاستشهاد",
     intro:
       "كيفية الاستشهاد ببحث VC Deal Flow Signal ومجموعة بياناته ونتائجه الفردية بصيغ APA وMLA وChicago وBibTeX وRIS.",
     body: `## ماذا تستشهد به
@@ -3004,7 +3004,7 @@ Kondratyuk, M. (2026). VC Deal Flow Signal: GitHub Engineering Acceleration as a
   {
     locale: "ar",
     topic: "pricing",
-    title: "الأسعار, VC Deal Flow Signal",
+    title: "الأسعار",
     intro:
       "المستويات الثلاثة لـ VC Deal Flow Signal: المجاني، وInsider Circle، وSector Sweep. ما يتضمّنه كل مستوى، ولمن هو، وكيفية الدفع.",
     body: `## ثلاثة مستويات

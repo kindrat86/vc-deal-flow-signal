@@ -33,8 +33,12 @@ export async function generateMetadata({
   const comp = getComparison(slug);
   if (!comp) return {};
 
+  // Titles that already name the brand (e.g. "VC Deal Flow Signal vs X") use
+  // absolute to bypass the "| VC Deal Flow Signal" template (brand doubling fix).
   return {
-    title: comp.title,
+    title: comp.title.includes("VC Deal Flow Signal")
+      ? { absolute: comp.title }
+      : comp.title,
     description: clampDescription(comp.description),
     ...(comp.noindex ? { robots: { index: false } } : {}),
     openGraph: {
