@@ -462,7 +462,7 @@ export default function RootLayout({
         </NotInEmbed>
       
         {/* Cross-Portfolio Network Footer */}
-        <div dangerouslySetInnerHTML={{ __html: `<!-- CROSS-PORTFOLIO NETWORK FOOTER — generated 2026-07-18 -->
+        <div dangerouslySetInnerHTML={{ __html: `<!-- CROSS-PORTFOLIO NETWORK FOOTER, generated 2026-07-18 -->
 <style>
 .portfolio-network {
     max-width: 1200px;
