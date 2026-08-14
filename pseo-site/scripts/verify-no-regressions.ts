@@ -368,6 +368,14 @@ check(
     s.includes('aria-label="Similar momentum in other sectors"'),
   "restore the crossSectorPeers computation and the Similar Momentum section",
 );
+check(
+  "app/startup/[slug]/[period]/page.tsx",
+  "startup period pages lost the cross-sector peers module: cross-sector equity path re-siloed.",
+  (s) =>
+    s.includes("getCrossSectorPeers(slug, 3)") &&
+    s.includes('aria-label="Similar momentum in other sectors"'),
+  "restore the crossSectorPeers computation and the Similar Momentum section on the period page",
+);
 
 // ---------------------------------------------------------------------------
 // 9. Blog freshness + stale-count slug (2026-08-14). The post URL still

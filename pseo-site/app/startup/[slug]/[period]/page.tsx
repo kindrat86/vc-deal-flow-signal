@@ -6,6 +6,7 @@ import {
   getAllStartupPeriodPairs,
   getDataLastModified,
   getRelatedStartups,
+  getCrossSectorPeers,
 } from "@/lib/data";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
@@ -78,6 +79,12 @@ export default async function StartupPeriodPage({ params }: PageProps) {
   // Same-sector peers from this page's own period, so historical snapshots
   // cross-link to the startups they were moving with at the time.
   const relatedStartups = getRelatedStartups(slug, entry.sectorSlug, 6, period);
+
+  // Cross-sector peers: same-stage startups in adjacent sectors. These link
+  // to the peers' canonical /startup/[slug] hubs (current momentum), not a
+  // period-scoped view; the noindex period page exists to flow equity through
+  // the cross-sector mesh via `follow`.
+  const crossSectorPeers = getCrossSectorPeers(slug, 3);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -207,6 +214,20 @@ export default async function StartupPeriodPage({ params }: PageProps) {
                 position: i + 1,
                 name: r.name,
                 url: `https://signals.gitdealflow.com/startup/${r.slug}`,
+              })),
+            },
+          ]
+        : []),
+      ...(crossSectorPeers.length > 0
+        ? [
+            {
+              "@type": "ItemList",
+              name: `Similar momentum in other sectors for ${profile.name}`,
+              itemListElement: crossSectorPeers.map((p, i) => ({
+                "@type": "ListItem",
+                position: i + 1,
+                name: p.name,
+                url: `https://signals.gitdealflow.com/startup/${p.slug}`,
               })),
             },
           ]
@@ -414,6 +435,53 @@ export default async function StartupPeriodPage({ params }: PageProps) {
                       </span>
                       <span>
                         Commits: <span className="text-gray-300">{r.commitVelocity14d}</span>
+                      </span>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </section>
+        )}
+
+        {/* Cross-sector peers: same stage in adjacent sectors */}
+        {crossSectorPeers.length > 0 && (
+          <section className="mb-10" aria-label="Similar momentum in other sectors">
+            <h2 className="text-lg font-semibold text-gray-100 mb-4">
+              Similar Momentum in Other Sectors
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
+              {crossSectorPeers.map((p) => {
+                const pChangePct =
+                  parseInt(p.commitVelocityChange.replace(/[^0-9-]/g, ""), 10) ||
+                  0;
+                return (
+                  <Link
+                    key={p.slug}
+                    href={`/startup/${p.slug}`}
+                    className="group block rounded-lg border border-slate-800 bg-slate-900 p-4 hover:border-sky-700/50 hover:bg-slate-800/80 transition-all"
+                  >
+                    <h3 className="text-gray-200 font-medium text-sm group-hover:text-sky-400 transition-colors mb-1.5">
+                      {p.name}
+                    </h3>
+                    <div className="flex flex-wrap gap-1.5 mb-2">
+                      <span className="inline-block rounded-full bg-slate-800 px-2 py-0.5 text-[10px] text-gray-400">
+                        {p.stage}
+                      </span>
+                      <span className="inline-block rounded-full bg-slate-800 px-2 py-0.5 text-[10px] text-gray-400">
+                        {p.sectorName}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-2 text-xs text-gray-500">
+                      <span>
+                        Velocity:{" "}
+                        <span
+                          className={
+                            pChangePct >= 0 ? "text-emerald-400" : "text-red-400"
+                          }
+                        >
+                          {p.commitVelocityChange}
+                        </span>
                       </span>
                     </div>
                   </Link>
