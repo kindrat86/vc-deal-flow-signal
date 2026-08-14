@@ -15,7 +15,7 @@
 
   var PIXEL_IDS = {
     meta: "",          // Facebook + Instagram. e.g. "1234567890123456"
-    ga4: "",           // GA4 measurement ID. e.g. "G-XXXXXXXXXX"
+    ga4: "G-7SV2SNZE4C",           // GA4 measurement ID (GitDealFlow property)
     googleAds: "",     // Google Ads conversion ID. e.g. "AW-123456789"
     linkedin: "",      // LinkedIn Insight partner ID. e.g. "1234567"
     twitter: "",       // X/Twitter pixel ID. e.g. "abc12"
