@@ -672,6 +672,23 @@ check(
 );
 
 // ---------------------------------------------------------------------------
+// 14. BreadcrumbsSchema must NOT read headers() (2026-08-14). headers() is a
+//     request-time API that opts the whole route into dynamic rendering,
+//     emitting Cache-Control: private, no-store and silently killing revalidate
+//     + edge caching for every public page (~4,830 URLs). Fixed 2026-07-18,
+//     regressed 2026-08-12 (the "breadcrumb fix" traded ISR for the GSC
+//     "missing itemListElement" error), fixed again 2026-08-14 by deriving the
+//     pathname via usePathname(). A lineage that reintroduces headers() here
+//     re-kills the site-wide cache.
+// ---------------------------------------------------------------------------
+check(
+  "components/BreadcrumbsSchema.tsx",
+  "BreadcrumbsSchema reads headers() again, forcing every page into dynamic rendering and killing ISR/edge caching site-wide.",
+  (s) => !s.includes('from "next/headers"') && !s.includes("await headers()"),
+  "derive the pathname via usePathname() in a client component; headers() opts the whole route into dynamic rendering",
+);
+
+// ---------------------------------------------------------------------------
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +

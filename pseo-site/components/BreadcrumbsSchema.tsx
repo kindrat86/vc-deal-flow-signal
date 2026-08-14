@@ -1,24 +1,25 @@
-import { headers } from "next/headers";
+"use client";
+
+import { usePathname } from "next/navigation";
 
 const BASE_URL = "https://signals.gitdealflow.com";
 
 /**
  * Site-wide BreadcrumbList JSON-LD. Renders on every page through the root
- * layout, derived from the `x-pathname` header injected by middleware/proxy.
+ * layout, derived from the current pathname via `usePathname()`.
  *
- * Server component (2026-08-12 fix): the previous client-side implementation
- * used `usePathname()` and rendered a `<script>` tag via React. For some
- * ISR/static pages (notably `/startups-to-watch/[slug]` sector pages),
- * `usePathname()` resolved correctly at runtime but the JSON-LD `<script>`
- * tag was NOT present in the initial server-rendered HTML, Googlebot saw
- * pages with either a missing or malformed BreadcrumbList, triggering the
- * GSC "Missing field 'itemListElement'" error.
+ * Client component, server-rendered: `usePathname()` resolves synchronously
+ * during SSR, so the `<script>` tag lands in the initial HTML payload. Google
+ * sees a complete BreadcrumbList with no JS execution, while the route itself
+ * stays static/ISR-cacheable.
  *
- * Reading `x-pathname` from `headers()` in this isolated component is safe
- * for ISR: Next.js evaluates `headers()` at prerender time for
- * `generateStaticParams` routes (the middleware writes the concrete path on
- * every outbound response), so the JSON-LD lands in the static HTML payload
- * without forcing per-request dynamic rendering of the page body.
+ * DO NOT reintroduce a `headers()` read here. `headers()` is a request-time
+ * API that opts the whole route into dynamic rendering (emitting
+ * `Cache-Control: private, no-store`), which silently kills `revalidate` and
+ * edge caching for every public page (audit 2026-08-14). This regression
+ * already happened once: 2026-07-18 removed `headers()` from the layout tree
+ * for exactly this reason, then 2026-08-12 reintroduced it here to fix a GSC
+ * "missing itemListElement" error, trading ISR for breadcrumbs.
  *
  * CRITICAL INVARIANT: this component MUST return a complete BreadcrumbList
  * with a non-empty `itemListElement` array, or return `null`. Never emit
@@ -131,9 +132,8 @@ function labelForSegment(segment: string): string {
   }
 }
 
-export default async function BreadcrumbsSchema() {
-  const hdrs = await headers();
-  const pathname = hdrs.get("x-pathname") ?? "/";
+export default function BreadcrumbsSchema() {
+  const pathname = usePathname();
 
   // Skip homepage, a single-item BreadcrumbList is redundant with the
   // sitelink/Organization graph already emitted by RootIdentitySchema.
