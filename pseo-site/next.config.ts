@@ -88,6 +88,29 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        // Legacy sitemap path (retired 2026-07-21): the "high-intent" pSEO shard
+        // was consolidated into the /sitemap/[id] shards, but the old URL still
+        // 404s and any stale crawler/bookmark/GSC reference points at it. 301 to
+        // the canonical index instead of serving a 404 HTML page.
+        source: "/sitemap-pseo.xml",
+        destination: "/sitemap.xml",
+        permanent: true,
+      },
+      {
+        // Same retired-shard cleanup: /sitemap-high-intent.xml was the pre-rename
+        // name of the consolidated shard.
+        source: "/sitemap-high-intent.xml",
+        destination: "/sitemap.xml",
+        permanent: true,
+      },
+      {
+        // /image-sitemap.xml was renamed to /sitemap-images.xml; the old URL 404s.
+        // 301 stale references to the live images shard.
+        source: "/image-sitemap.xml",
+        destination: "/sitemap-images.xml",
+        permanent: true,
+      },
+      {
         // Stale-count slug: the post title and body were corrected from "4,200"
         // to the real 369-startup panel (2026-08-14), but the URL still
         // advertised "4200". 301 the old inbound links / backlinks / any
