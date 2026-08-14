@@ -27,7 +27,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!p) return {};
 
   return {
-    title: p.metaTitle,
+    // `absolute` bypasses the "| VC Deal Flow Signal" template suffix. The
+    // research-paper leaves serve a scholarly/technical audience searching for
+    // paper names (RAG, LoRA, InstructGPT, …), where a VC-branded suffix is a
+    // CTR deterrent: the exact audience we lose to zero-click skips at 0% CTR.
+    title: { absolute: p.metaTitle },
     description: p.metaDescription,
     openGraph: { title: p.metaTitle, description: p.metaDescription, type: "article", url: `/research-paper/${slug}` },
     twitter: { card: "summary_large_image", title: p.metaTitle, description: p.metaDescription },

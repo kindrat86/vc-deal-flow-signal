@@ -79,7 +79,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "https://www.semanticscholar.org/paper/204e3073870fae3d05bcbc2f6a8e263d9b72e776",
       "https://openalex.org/works/W2963403868",
     ],
-    metaTitle: "Attention Is All You Need: Transformer Paper Summary (Vaswani et al. 2017)",
+    metaTitle: "The Transformer Explained: Attention Is All You Need (Vaswani et al., 2017)",
     metaDescription:
       "The 2017 NeurIPS paper introducing the Transformer architecture. Foundational reference for every modern LLM (GPT, Claude, Gemini, Mistral, Llama, Qwen). Our context: cited in /code-side-sourcing as foundational to the AI-native engineering surface we track.",
     abstractSummary:
@@ -135,7 +135,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "https://arxiv.org/abs/2005.14165",
       "https://www.semanticscholar.org/paper/90abbc2cf38462b954ae1b772fac9532e2ccd8b0",
     ],
-    metaTitle: "GPT-3 Paper Summary: Language Models are Few-Shot Learners (Brown et al. 2020)",
+    metaTitle: "GPT-3 Explained: Language Models Are Few-Shot Learners (Brown et al., 2020)",
     metaDescription:
       "OpenAI's GPT-3 paper introducing the 175B-parameter model and the few-shot in-context learning paradigm. Foundational reference for modern prompt engineering. Our context: cited as the catalyst for the agentic AI and applied-AI categories our /signal corpus tracks.",
     abstractSummary:
@@ -191,7 +191,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "https://arxiv.org/abs/2203.02155",
       "https://www.semanticscholar.org/paper/d766bffc357127e0dc86dd69561d5aeb520d6f4c",
     ],
-    metaTitle: "InstructGPT / RLHF Paper Summary: Training LLMs to Follow Instructions (Ouyang et al. 2022)",
+    metaTitle: "InstructGPT & RLHF Explained: Training LLMs to Follow Instructions (Ouyang et al., 2022)",
     metaDescription:
       "OpenAI's InstructGPT paper formalizing Reinforcement Learning from Human Feedback (RLHF) as the alignment technique. Foundational reference for ChatGPT, Claude, and Gemini training pipelines.",
     abstractSummary:
@@ -247,7 +247,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "https://arxiv.org/abs/2005.11401",
       "https://www.semanticscholar.org/paper/58ed1fbaabe027345f7bb3a6312d41c5aac63e22",
     ],
-    metaTitle: "RAG Paper Summary: Retrieval-Augmented Generation (Lewis et al. 2020), Key Findings",
+    metaTitle: "RAG Explained: Retrieval-Augmented Generation (Lewis et al., 2020)",
     metaDescription:
       "The RAG paper formalizing Retrieval-Augmented Generation as the architecture for grounding LLM responses in retrieved documents. Foundational reference for modern vector-DB-backed LLM applications.",
     abstractSummary:
@@ -303,7 +303,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "https://arxiv.org/abs/2106.09685",
       "https://www.semanticscholar.org/paper/a8ca46b171467ceb2d7652fbb7e5e2f4631c4ac0",
     ],
-    metaTitle: "LoRA Paper Summary: Low-Rank Adaptation (Hu et al. 2021), Key Findings & Method",
+    metaTitle: "LoRA Explained: Low-Rank Adaptation for LLM Fine-Tuning (Hu et al., 2021)",
     metaDescription:
       "Microsoft's LoRA paper introducing low-rank adaptation as a parameter-efficient fine-tuning method. Foundational reference for cost-effective LLM specialization at scale.",
     abstractSummary:
@@ -359,7 +359,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "https://arxiv.org/abs/2212.08073",
       "https://www.semanticscholar.org/paper/5c4d44eb4b0d9c1eeed03a8bcccef957fce8a06b",
     ],
-    metaTitle: "Constitutional AI Paper Summary (Bai et al. 2022), Key Findings & Method",
+    metaTitle: "Constitutional AI Explained: Self-Critiquing Language Models (Bai et al., 2022)",
     metaDescription:
       "Anthropic's Constitutional AI paper introducing RLAIF (Reinforcement Learning from AI Feedback). Foundational reference for Claude's training pipeline and the scalable-oversight approach to LLM alignment.",
     abstractSummary:
@@ -415,7 +415,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "https://arxiv.org/abs/2201.11903",
       "https://www.semanticscholar.org/paper/1b6e810ce0afd0dd093f789d2b2742d047e316d5",
     ],
-    metaTitle: "Chain-of-Thought Prompting Paper Summary (Wei et al. 2022), Key Findings",
+    metaTitle: "Chain-of-Thought Prompting Explained (Wei et al., 2022)",
     metaDescription:
       "The Chain-of-Thought paper demonstrating that step-by-step reasoning prompts dramatically improve LLM accuracy on math, logic, and multi-step problems. Foundational reference for reasoning-model design.",
     abstractSummary:
@@ -467,7 +467,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "https://dora.dev/",
       "https://services.google.com/fh/files/misc/state-of-devops-2023.pdf",
     ],
-    metaTitle: "Accelerate / DORA Research Summary (Forsgren et al. 2018), Key Metrics",
+    metaTitle: "DORA Metrics Explained: The Accelerate Research (Forsgren et al., 2018)",
     metaDescription:
       "The DORA research foundation showing that deployment frequency, lead time, change failure rate, and MTTR predict software-organization performance. Foundational reference for the engineering-velocity field.",
     abstractSummary:
@@ -525,7 +525,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "https://www.semanticscholar.org/paper/3a07552649a9d04e10293aa4f895f959bf8f3d1d",
       "https://openalex.org/works/W2740393300",
     ],
-    metaTitle: "Mixture of Experts Paper Summary (Shazeer et al. 2017), Key Findings",
+    metaTitle: "Mixture of Experts Explained (Shazeer et al., 2017)",
     metaDescription:
       "The foundational Mixture of Experts paper showing sparsely-gated MoE layers scale to trillion-parameter models. Basis for Mixtral, GShard, and Switch Transformer. Summary and key findings.",
     abstractSummary:
