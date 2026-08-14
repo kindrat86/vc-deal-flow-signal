@@ -348,6 +348,59 @@ check(
 );
 
 // ---------------------------------------------------------------------------
+// 9. Blog freshness + stale-count slug (2026-08-14). The post URL still
+//    advertised "4,200" orgs after the title/body were corrected to the real
+//    369-startup panel. A regression that resurrects the old slug (or drops
+//    the redirect / freshness module) re-publishes a stale credibility-damaging
+//    claim AND breaks the 337 internal links + any indexed URL on the old slug.
+// ---------------------------------------------------------------------------
+check(
+  "content/posts.ts",
+  "Stale '4200' blog slug present — URL advertises 4,200 orgs against the real 369-startup panel.",
+  (s) =>
+    !s.includes("i-tracked-4200-startup-github-orgs-six-months") &&
+    s.includes("i-tracked-369-startup-github-orgs-six-months"),
+  "rename the slug to i-tracked-369-startup-github-orgs-six-months",
+);
+check(
+  "next.config.ts",
+  "Missing 301 for the old '4200' blog slug — old internal links / indexed URLs would 404.",
+  (s) =>
+    s.includes("/blog/i-tracked-4200-startup-github-orgs-six-months") &&
+    s.includes("/blog/i-tracked-369-startup-github-orgs-six-months"),
+  "restore the /blog/i-tracked-4200-… → /blog/i-tracked-369-… permanent redirect",
+);
+check(
+  "content/post-freshness.ts",
+  "post-freshness module missing — the quarterly blog-freshen cron has nothing to write.",
+  (s) => s.includes("export const postFreshness") && s.includes("getPostLastUpdated"),
+  "restore content/post-freshness.ts with postFreshness + getPostLastUpdated",
+);
+
+// ---------------------------------------------------------------------------
+// Keyword-cannibalization canonicalization (2026-08-14). signals ships ~1,700
+// quarterly startup pages (/startup/[slug]/[period]) and ~95 quarterly sector
+// pages (/startups-to-watch/[sector]-[quarter]); all were SELF-canonical, so
+// every period competed with its own base/hub AND its sibling periods for the
+// same head keyword. Old quarters must consolidate to the base startup hub /
+// the latest sector quarter, or the pSEO fleet silently re-cannibalizes itself
+// the next time a quarter ships.
+// ---------------------------------------------------------------------------
+check(
+  "app/startup/[slug]/[period]/page.tsx",
+  "startup period page is self-canonical again (the ~1,700 period pages will cannibalize their base /startup/[slug] page).",
+  (s) => /canonical:\s*`\/startup\/\$\{slug\}`/.test(s),
+  'set alternates.canonical to `/startup/${slug}` (the evergreen startup hub), not `/startup/${slug}/${period}`',
+);
+
+check(
+  "app/startups-to-watch/[slug]/page.tsx",
+  "sector quarter pages self-canonicalize (old quarters compete with the latest for the head keyword).",
+  (s) => !/canonical:\s*`\/startups-to-watch\/\$\{slug\}`/.test(s) && s.includes("getSectorLatestPeriod"),
+  "canonicalize old quarters to the latest quarter via getSectorLatestPeriod(sector.slug); keep only the latest self-canonical",
+);
+
+// ---------------------------------------------------------------------------
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +

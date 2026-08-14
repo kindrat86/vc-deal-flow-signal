@@ -40,7 +40,10 @@ export async function generateMetadata({
     openGraph: { title, description, type: "article", url: `/startup/${slug}/${period}` },
     twitter: { card: "summary_large_image", title, description },
     alternates: {
-      canonical: `/startup/${slug}/${period}`,
+      // Historical snapshots consolidate ranking signals to the evergreen
+      // startup hub, so the ~1,700 period pages don't cannibalize their own
+      // base /startup/[slug] page for the startup-name head keyword.
+      canonical: `/startup/${slug}`,
       types: {
         "text/markdown": `/md/startup/${slug}/${period}`,
         "application/ld+json": `/jsonld/startup/${slug}/${period}`,

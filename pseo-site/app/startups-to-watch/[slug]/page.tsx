@@ -10,6 +10,7 @@ import {
   getDataLastModified,
   getKeyTakeaway,
   getAllGeoPageSlugs,
+  getSectorLatestPeriod,
 } from "@/lib/data";
 import StartupTable from "@/components/StartupTable";
 import CuriosityGate from "@/components/CuriosityGate";
@@ -40,6 +41,18 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const title = `${sector.name} Startups to Watch, ${period.name}`;
   const description = `Ranked list of ${sector.name} startups showing the highest GitHub commit-velocity acceleration in ${period.name}. Commit velocity, contributor growth, and breakout signals for investors.`;
 
+  // Cannibalization guard: every quarter a sector ships, the older quarters
+  // would compete with it for the same "X startups to watch" head keyword.
+  // Old quarters canonicalize to the sector's LATEST quarter (same ranked-list
+  // content, fresher data); the latest stays self-canonical. Self-maintaining:
+  // getSectorLatestPeriod resolves from data.periods (newest-first), so the
+  // moment a new quarter ships, all older quarters re-point to it automatically.
+  const latest = getSectorLatestPeriod(sector.slug);
+  const canonicalTarget =
+    latest && latest.slug !== period.slug
+      ? `/startups-to-watch/${sector.slug}-${latest.slug}`
+      : `/startups-to-watch/${slug}`;
+
   return {
     title,
     description,
@@ -55,7 +68,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description,
     },
     alternates: {
-      canonical: `/startups-to-watch/${slug}`,
+      canonical: canonicalTarget,
     },
   };
 }
