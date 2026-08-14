@@ -1106,51 +1106,51 @@ check(
   "app/startups-to-watch/[slug]/page.tsx",
   "startups-to-watch titles lost the leading count + Accelerating-on-GitHub CTR pattern (reverted to the flat 'X Startups to Watch, Y' form).",
   (s) =>
-    s.includes("Startups Accelerating on GitHub") &&
-    s.includes("snapshot.startups.length"),
-  "keep `${startupCount} ${sector.name} Startups Accelerating on GitHub (${period.name})` with startupCount from snapshot.startups.length",
+    s.includes("Accelerating on GitHub") &&
+    s.includes("countLead(snapshot.startups.length"),
+  "keep countLead(snapshot.startups.length, `${sector.name} Startups`) + ' Accelerating on GitHub (${period.name})' (countLead drops the number below 5 so thin snapshots never ship '1 Fintech Startups')",
 );
 
 check(
   "app/startups-to-watch/geo/[slug]/page.tsx",
   "geo startups-to-watch titles lost the leading count + geo CTR pattern.",
-  (s) => s.includes("Startups Accelerating in ${geoName}"),
-  "keep `${parsed.startups.length} ... Startups Accelerating in ${geoName} (${period.name})`",
+  (s) => s.includes("Accelerating in ${geoName}") && s.includes("countLead("),
+  "keep countLead(parsed.startups.length, ...) + ' Accelerating in ${geoName} (${period.name})'",
 );
 
 check(
   "app/startups-to-watch/region/[slug]/page.tsx",
   "region startups-to-watch titles lost the leading count CTR pattern.",
-  (s) => s.includes("${parsed.startups.length} ${geoName} Startups Accelerating on GitHub"),
-  "keep the leading `${parsed.startups.length} ${geoName} Startups Accelerating on GitHub` title",
+  (s) => s.includes("`${geoName} Startups`") && s.includes("Accelerating on GitHub") && s.includes("countLead("),
+  "keep countLead(parsed.startups.length, ${geoName} Startups) + Accelerating on GitHub in the title",
 );
 
 check(
   "app/stage/[slug]/page.tsx",
   "stage titles lost the leading cohort count + Accelerating-on-GitHub CTR pattern.",
-  (s) => s.includes("${data.startups.length} ${data.name} Startups Accelerating on GitHub"),
-  "keep `${data.startups.length} ${data.name} Startups Accelerating on GitHub (${data.period.name})`",
+  (s) => s.includes("`${data.name} Startups`") && s.includes("Accelerating on GitHub") && s.includes("countLead("),
+  "keep countLead(data.startups.length, ${data.name} Startups) + Accelerating on GitHub in the title",
 );
 
 check(
   "app/stage/[slug]/[sector]/page.tsx",
   "stage-sector titles lost the leading count CTR pattern.",
-  (s) => s.includes("${data.startups.length} ${data.stageName} ${data.sector.name} Startups Accelerating"),
-  "keep the leading count in stage-sector titles",
+  (s) => s.includes("${data.stageName} ${data.sector.name} Startups") && s.includes("countLead("),
+  "keep countLead(data.startups.length, ${data.stageName} ${data.sector.name} Startups) in the title",
 );
 
 check(
   "app/stage/[slug]/signal/[signal]/page.tsx",
   "stage-signal titles lost the leading count CTR pattern.",
-  (s) => s.includes("${data.startups.length} ${data.stageName} Startups With ${data.signalName}"),
-  "keep the leading count in stage-signal titles",
+  (s) => s.includes("${data.stageName} Startups") && s.includes("countLead("),
+  "keep countLead(data.startups.length, `${data.stageName} Startups`) in the title",
 );
 
 check(
   "app/startup/[slug]/page.tsx",
-  "startup titles lost the live proof numbers (velocity change + contributors) that made SERP snippets carry data.",
-  (s) => s.includes("${profile.name}: ${latest.commitVelocityChange} Commit Velocity Change"),
-  "keep `${profile.name}: ${latest.commitVelocityChange} Commit Velocity Change, ${latest.contributors} Contributors`",
+  "startup titles lost the live proof numbers (14-day commits + contributors) that made SERP snippets carry data.",
+  (s) => s.includes("${latest.commitVelocity14d} Commits in 14 Days, ${latest.contributors} Contributors"),
+  "keep `${profile.name}: ${latest.commitVelocity14d} Commits in 14 Days, ${latest.contributors} Contributors` (absolute velocity, never the possibly-negative % change)",
 );
 
 check(

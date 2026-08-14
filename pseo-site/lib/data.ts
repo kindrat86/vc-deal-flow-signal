@@ -180,6 +180,16 @@ export function getSortedStartups(startups: Startup[]): Startup[] {
   });
 }
 
+/**
+ * CTR title lead: numbers at the front of a title lift SERP CTR, but only
+ * when the number reads as evidence ("17 AI Startups..."), not as thin data
+ * ("1 Fintech Startups..."). Threshold 5: below it the count is dropped and
+ * the plain noun phrase is used. Rendered from live data, never hardcoded.
+ */
+export function countLead(count: number, phrase: string): string {
+  return count >= 5 ? `${count} ${phrase}` : phrase;
+}
+
 export interface TopMover extends Startup {
   sectorName: string;
   sectorSlug: string;

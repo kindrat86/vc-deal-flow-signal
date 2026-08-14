@@ -5,6 +5,7 @@ import {
   getStageSignalData,
   getAllStageSignalPairs,
   getDataLastModified,
+  countLead,
 } from "@/lib/data";
 import StartupTable from "@/components/StartupTable";
 import SeoCta from "@/components/SeoCta";
@@ -32,8 +33,8 @@ export async function generateMetadata({
   const data = getStageSignalData(slug, signal);
   if (!data) return {};
 
-  const title = `${data.stageName} Startups Showing ${data.signalName}, ${data.period.name}`;
-  const description = `${data.startups.length} ${data.stageName.toLowerCase()}-stage startups currently showing ${data.signalName.toLowerCase()} signal in ${data.period.name}. ${data.signalDescription}`;
+  const title = `${countLead(data.startups.length, `${data.stageName} Startups`)} With ${data.signalName} Signals (${data.period.name})`;
+  const description = `${data.startups.length} ${data.stageName.toLowerCase()}-stage startups showing ${data.signalName.toLowerCase()} in ${data.period.name}. What the pattern means and who shows it. Free, no signup.`;
 
   return {
     title,

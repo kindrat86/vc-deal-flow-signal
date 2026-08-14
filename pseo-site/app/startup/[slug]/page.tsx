@@ -35,7 +35,11 @@ export async function generateMetadata({
   if (!profile) return {};
 
   const latest = profile.history[0];
-  const title = `${profile.name} Engineering Signal, GitHub Activity & Acceleration`;
+  // CTR: brand-name head + always-positive proof numbers from the latest
+  // snapshot (same values the page renders). Absolute 14-day commit velocity
+  // and contributor count read as evidence for every org; % change can be
+  // negative (decelerating) and would make the SERP headline self-defeating.
+  const title = `${profile.name}: ${latest.commitVelocity14d} Commits in 14 Days, ${latest.contributors} Contributors`;
   const description = `${profile.name} engineering acceleration tracked by VC Deal Flow Signal. ${latest.commitVelocityChange} commit velocity change, ${latest.contributors} contributors, signal type: ${latest.signalType}.${profile.description ? ' ' + profile.description.replace(/<[^>]+>/g, '').trim().substring(0, 160 - 120 - 5) : ''}`.substring(0, 152).trim() + '...';
 
   // Signal type description for OG

@@ -6,6 +6,7 @@ import {
   parseRegionPageSlug,
   getDataLastModified,
   getRegionLatestPeriod,
+  countLead,
 } from "@/lib/data";
 import StartupTable from "@/components/StartupTable";
 import SeoCta from "@/components/SeoCta";
@@ -30,8 +31,10 @@ export async function generateMetadata({
   if (!parsed) return {};
 
   const { geoSlug, geoName, period } = parsed;
-  const title = `${geoName} Startups to Watch, ${period.name} Engineering Signals`;
-  const description = `All tracked startups in ${geoName} ranked by GitHub engineering acceleration across every sector. ${parsed.startups.length} startups, ${parsed.sectorBreakdown.length} sectors, updated weekly.`;
+  // CTR: leading real count + "Accelerating on GitHub" hook (count renders
+  // from the same rolled-up snapshot the table shows, never hardcoded).
+  const title = `${countLead(parsed.startups.length, `${geoName} Startups`)} Accelerating on GitHub (${period.name})`;
+  const description = `${parsed.startups.length} ${geoName} startups across ${parsed.sectorBreakdown.length} sectors, ranked by GitHub engineering acceleration in ${period.name}. Free, no signup, updated weekly.`;
 
   // Cannibalization guard: old region quarters canonicalize to the latest
   // region quarter, so the quarterly variants don't split the "startups in X"

@@ -5,6 +5,7 @@ import {
   getStageSectorData,
   getAllStageSectorPairs,
   getDataLastModified,
+  countLead,
 } from "@/lib/data";
 import StartupTable from "@/components/StartupTable";
 import SeoCta from "@/components/SeoCta";
@@ -32,8 +33,8 @@ export async function generateMetadata({
   const data = getStageSectorData(slug, sector);
   if (!data) return {};
 
-  const title = `${data.stageName} ${data.sector.name} Startups, Engineering Acceleration (${data.period.name})`;
-  const description = `${data.startups.length} ${data.sector.name.toLowerCase()} startups at ${data.stageName.toLowerCase()} stage ranked by GitHub engineering acceleration in ${data.period.name}.`;
+  const title = `${countLead(data.startups.length, `${data.stageName} ${data.sector.name} Startups`)} Accelerating on GitHub (${data.period.name})`;
+  const description = `${data.startups.length} ${data.sector.name.toLowerCase()} startups at ${data.stageName.toLowerCase()} stage, ranked by GitHub engineering acceleration in ${data.period.name}. Free, no signup.`;
 
   return {
     title,

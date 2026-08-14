@@ -11,6 +11,7 @@ import {
   getKeyTakeaway,
   getAllGeoPageSlugs,
   getSectorLatestPeriod,
+  countLead,
 } from "@/lib/data";
 import StartupTable from "@/components/StartupTable";
 import CuriosityGate from "@/components/CuriosityGate";
@@ -37,9 +38,14 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const parsed = parsePageSlug(slug);
   if (!parsed) return {};
 
-  const { sector, period } = parsed;
-  const title = `${sector.name} Startups to Watch, ${period.name}`;
-  const description = `Ranked list of ${sector.name} startups showing the highest GitHub commit-velocity acceleration in ${period.name}. Commit velocity, contributor growth, and breakout signals for investors.`;
+  const { sector, period, snapshot } = parsed;
+  // CTR: lead with the real tracked count (computed from the snapshot, never
+  // hardcoded) + bracketed quarter; counts in titles lift SERP CTR and stay
+  // truthful because they render from the same data as the table below.
+  // countLead drops the number on thin snapshots (<5) so no page ships
+  // "1 Fintech Startups" as its SERP headline.
+  const title = `${countLead(snapshot.startups.length, `${sector.name} Startups`)} Accelerating on GitHub (${period.name})`;
+  const description = `${sector.name} startups ranked by GitHub engineering acceleration, ${period.name}: commit velocity, contributor growth, and breakout signals. No signup required, every number links to public GitHub data.`;
 
   // Cannibalization guard: every quarter a sector ships, the older quarters
   // would compete with it for the same "X startups to watch" head keyword.

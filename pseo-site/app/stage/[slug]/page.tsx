@@ -5,6 +5,7 @@ import {
   getAllStageSlugs,
   getStagePageData,
   getDataLastModified,
+  countLead,
 } from "@/lib/data";
 import StartupTable from "@/components/StartupTable";
 import SeoCta from "@/components/SeoCta";
@@ -29,8 +30,10 @@ export async function generateMetadata({
   const data = getStagePageData(slug);
   if (!data) return {};
 
-  const title = `${data.name} Startups Showing Engineering Acceleration, ${data.period.name}`;
-  const description = `${data.startups.length} ${data.name.toLowerCase()} startups ranked by GitHub engineering acceleration in ${data.period.name}. Commit velocity, contributor growth, and breakout signals for investors focused on ${data.name.toLowerCase()} companies.`;
+  // CTR: lead with the real cohort size + "Accelerating on GitHub" hook;
+  // count renders from the same data as the table, so it stays truthful.
+  const title = `${countLead(data.startups.length, `${data.name} Startups`)} Accelerating on GitHub (${data.period.name})`;
+  const description = `${data.startups.length} ${data.name.toLowerCase()} startups ranked by GitHub engineering acceleration in ${data.period.name}. See who ships fastest before the round is obvious. Free, no signup.`;
 
   return {
     title,

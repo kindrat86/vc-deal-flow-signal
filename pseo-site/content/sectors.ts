@@ -94,7 +94,7 @@ function build(s: {
   return {
     slug: s.slug,
     name: s.name,
-    title: `${s.name} Engineering Signals & VC Deal Flow (2026)`,
+    title: `${companyCount} ${s.name} Companies & ${fundCount} Active Funds: Engineering Signals (2026)`,
     metaDescription: `Curated ${s.name.toLowerCase()} sector hub: ${companyCount} tracked companies, ${fundCount} active funds, notable engineering leaders, and the metrics we use to read momentum. Built for Corp Dev, PE operating partners, and emerging managers.`,
     h1: `${s.name}: Engineering Signals & Deal Flow`,
     tagline: `${s.short} A single page mapping who builds, who funds, and who leads in ${s.name.toLowerCase()}.`,
