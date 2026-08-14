@@ -105,6 +105,10 @@ export async function GET() {
         url: "https://signals.gitdealflow.com/sitemap.xml",
       },
       {
+        type: "sitemap-llm",
+        url: "https://signals.gitdealflow.com/sitemap-llm.xml",
+      },
+      {
         type: "answers",
         url: "https://signals.gitdealflow.com/api/answers.json",
       },
