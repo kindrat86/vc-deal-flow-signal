@@ -818,6 +818,70 @@ check(
   "keep the conditional { absolute } for titles that already contain the brand",
 );
 
+check(
+  "app/members/[handle]/page.tsx",
+  "Member page titles lost { absolute }: charter pages re-double the brand.",
+  (s) => s.includes("title: { absolute: `${claimedLabel}"),
+  "keep title as { absolute: ... }, the title already names the brand",
+);
+check(
+  "app/about/founder/page.tsx",
+  "About/founder title lost { absolute }: page re-doubles the brand.",
+  (s) => s.includes('title: { absolute: "About The Data Nerd'),
+  "keep title as { absolute: ... }, the title already names the brand",
+);
+
+// ---------------------------------------------------------------------------
+// 14. Heading hierarchy (2026-08-15, full-tree heading audit). The fixes:
+//     layout footer used an H3 (broke every page whose last content heading
+//     was H1), homepage framework cards jumped H1->H3, DataNerdSignoff H3s
+//     broke pages whose only other heading is the H1, the book renderer
+//     emitted a SECOND H1 from the chapter md, and two pre-H1 hero H2s
+//     (VideoEmbedBlock, StadiumPitchHero) put a heading before the H1.
+//     Assert the fixed state so no lineage can reintroduce them.
+// ---------------------------------------------------------------------------
+check(
+  "app/layout.tsx",
+  "Footer network heading reverted to <h3>: every page's outline broke at the footer.",
+  (s) =>
+    !s.includes("<h3>🚀 Explore Our Network</h3>") &&
+    s.includes('<p class="network-heading">🚀 Explore Our Network</p>') &&
+    s.includes(".portfolio-network .network-heading"),
+  "keep the network footer title as <p class=\"network-heading\"> with the .network-heading CSS",
+);
+check(
+  "app/page.tsx",
+  "Homepage framework cards reverted to H3: H1->H3 skip is back.",
+  (s) =>
+    s.includes('<h2 className="text-gray-100 font-semibold text-sm mb-1.5">') &&
+    !s.includes('<h3 className="text-gray-100 font-semibold text-sm mb-1.5">'),
+  "keep the three Hook/Story/Offer card titles as H2",
+);
+check(
+  "components/DataNerdSignoff.tsx",
+  "Signoff name reverted to H3: broke pages whose only other heading is the H1.",
+  (s) => !s.includes("<h3 className=\"text-gray-100 font-bold"),
+  "keep the signoff name as a <p> (styled bold), never a heading",
+);
+check(
+  "components/VideoEmbedBlock.tsx",
+  "sr-only video label reverted to <h2>: on /walkthrough a heading again precedes the H1.",
+  (s) => !s.includes("className=\"sr-only\"\n      >\n        {v.title}\n      </h2>"),
+  "keep the sr-only section label as <p id=video-...>, aria-labelledby works on any element",
+);
+check(
+  "components/StadiumPitchHero.tsx",
+  "Stadium hero reverted to H2: heading-before-H1 is back on /state-of-github.",
+  (s) => !/<h2[\s>]/.test(s),
+  "keep ALL hero straplines as styled <p>s; every variant renders above the page H1",
+);
+check(
+  "lib/book.ts",
+  "Book renderer stopped stripping the chapter md H1: double-H1 is back on /book/read/*.",
+  (s) => s.includes("leading H1 line is dropped here"),
+  "renderChapterHtml must drop the md's first `# ` line (both templates render chapter.title themselves)",
+);
+
 // ---------------------------------------------------------------------------
 // 15. JSON-LD must stream AFTER the content, not before it (LCP, 2026-08-15).
 //     The LCP element on the homepage is the hero H1 text (there is no hero
@@ -880,6 +944,28 @@ check(
   "components/WebVitalsReporter.tsx lost its PostHog capture of $web_vitals; the beacon component renders but reports nothing.",
   (s) => s.includes('$web_vitals') && s.includes("useReportWebVitals"),
   "keep the ph.capture(\"$web_vitals\", ...) call and the useReportWebVitals hook in WebVitalsReporter.tsx",
+);
+
+// ---------------------------------------------------------------------------
+// §17 Mobile-first indexing fixes (2026-08-15). Live render audit (iPhone 12 +
+// 360px Android emulation) found horizontal overflow on /startup/[slug]:
+// the header actions row was shrink-0 (scrollWidth 417 vs 390 viewport) and
+// the momentum badge <img> had no intrinsic dimensions (CLS jump on load).
+// A lineage that reverts either reintroduces overflow into the
+// mobile-first-indexed render of ~2,290 startup pages.
+// ---------------------------------------------------------------------------
+check(
+  "app/startup/[slug]/page.tsx",
+  "app/startup/[slug]/page.tsx header actions row reverted to shrink-0; the Website/LinkedIn/GitHub buttons no longer wrap on 360-390px phones and the startup header overflows the mobile viewport again (scrollWidth 417 vs 390, measured 2026-08-15).",
+  (s) => s.includes("flex flex-wrap items-center gap-2 min-w-0") && !s.includes('className="shrink-0 flex items-center gap-2"'),
+  'keep the header actions div as flex flex-wrap items-center gap-2 min-w-0 (wraps under the name on phones)',
+);
+
+check(
+  "app/startup/[slug]/page.tsx",
+  "app/startup/[slug]/page.tsx momentum badge <img> lost its width/height attributes; the badge loads without reserved space and shifts layout (CLS) on every startup page.",
+  (s) => /<img\s[^>]*api\/badge\/\$\{slug\}[\s\S]*?width=\{408\}/.test(s) && /api\/badge\/\$\{slug\}[\s\S]*?height=\{28\}/.test(s),
+  "keep width={408} height={28} on the /api/badge/<slug> img (intrinsic SVG size, reserves layout space)",
 );
 
 // ---------------------------------------------------------------------------

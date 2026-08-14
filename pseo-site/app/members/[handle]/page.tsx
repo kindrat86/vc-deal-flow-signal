@@ -51,7 +51,9 @@ export async function generateMetadata(
     ? `${member.claimedBy?.handle ?? handle}`
     : `Open seat, ${member.archetype}`;
   return {
-    title: `${claimedLabel} · Charter Cohort 2026 · VC Deal Flow Signal`,
+    // absolute: title already names the brand, bypass the layout template
+    // (brand-doubling fix 2026-08-15)
+    title: { absolute: `${claimedLabel} · Charter Cohort 2026 · VC Deal Flow Signal` },
     description: member.tagline,
     alternates: { canonical: `/members/${member.handle}` },
     openGraph: {

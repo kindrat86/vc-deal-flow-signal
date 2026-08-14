@@ -38,7 +38,9 @@ const SITE = "https://signals.gitdealflow.com";
 
 export const metadata: Metadata = {
   title:
-    "Member Leaderboard, Charter Cohort 2026 · VC Deal Flow Signal",
+    // absolute: title already names the brand, bypass the layout template
+    // (brand-doubling fix 2026-08-15)
+    { absolute: "Member Leaderboard, Charter Cohort 2026 · VC Deal Flow Signal" },
   description:
     "Public ranking of Charter Cohort members by 60d/90d hit rate, picks published, and lead-time delta. Pseudonymous handles, public scorecards, no fabricated wins. Currently 0 of 25 seats claimed, be the first to land on the board.",
   alternates: { canonical: "/members/leaderboard" },

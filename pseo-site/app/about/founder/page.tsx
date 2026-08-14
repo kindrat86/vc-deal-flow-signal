@@ -14,7 +14,9 @@ import {
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "About The Data Nerd, the founder behind VC Deal Flow Signal",
+  // absolute: title already names the brand, bypass the layout template
+  // (brand-doubling fix 2026-08-15)
+  title: { absolute: "About The Data Nerd, the founder behind VC Deal Flow Signal" },
   description:
     "Anonymous engineer-investor. Reluctant Reporter. Wrote the methodology paper on SSRN. Refuses podcasts. Three parables, eight polarities, three character flaws this product has on purpose, and a 12-month commitment graded May 2027.",
   alternates: { canonical: "/about/founder" },

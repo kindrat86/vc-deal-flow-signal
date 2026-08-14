@@ -26,7 +26,9 @@ const SITE = "https://signals.gitdealflow.com";
 
 export const metadata: Metadata = {
   title:
-    "Claim a Charter Seat, VC Deal Flow Signal · Cohort 2026",
+    // absolute: title already names the brand, bypass the layout template
+    // (brand-doubling fix 2026-08-15)
+    { absolute: "Claim a Charter Seat, VC Deal Flow Signal · Cohort 2026" },
   description:
     "Submit your charter application. Pseudonymous handles welcome. Real name never required. The founder reads every application personally and replies within 48 business hours with a draft profile to confirm.",
   alternates: { canonical: "/members/join" },
