@@ -53,6 +53,8 @@ export interface ResearchPaper {
   keyFindings: string[];
   /** Related glossary IDs in /define/[id]. */
   relatedGlossaryIds: string[];
+  /** Sector-hub slugs (content/sectors.ts) this paper informs; rendered as deal-flow cross-links. */
+  relatedSectors: string[];
   faqs: PaperFAQ[];
 }
 
@@ -93,6 +95,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "Multi-head attention captures different relationship types in parallel, a design choice that proved central to LLM expressiveness.",
     ],
     relatedGlossaryIds: ["foundation-model", "context-window", "embedding-model"],
+    relatedSectors: ["ai-ml", "ai-infra"],
     faqs: [
       {
         question: "Why is this paper considered foundational?",
@@ -149,6 +152,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "The 175B-parameter scale established a new design space that frontier labs compete within.",
     ],
     relatedGlossaryIds: ["foundation-model", "context-window", "fine-tuning"],
+    relatedSectors: ["ai-ml"],
     faqs: [
       {
         question: "What is GPT-3?",
@@ -205,6 +209,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "Modern alternatives (DPO, KTO, RLAIF) achieve similar results without the explicit reward-model step but inherit the framing.",
     ],
     relatedGlossaryIds: ["rlhf", "foundation-model", "fine-tuning"],
+    relatedSectors: ["ai-ml"],
     faqs: [
       {
         question: "What is RLHF?",
@@ -261,6 +266,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "The design pattern became the foundation of the modern vector-DB-backed LLM application stack.",
     ],
     relatedGlossaryIds: ["rag", "embedding-model", "vector-database"],
+    relatedSectors: ["ai-ml", "ai-infra"],
     faqs: [
       {
         question: "What is RAG?",
@@ -317,6 +323,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "Established as the default PEFT method for open-weight models (Llama, Mistral, Qwen, Gemma).",
     ],
     relatedGlossaryIds: ["lora", "fine-tuning", "foundation-model", "open-weight-model"],
+    relatedSectors: ["ai-ml", "ai-infra"],
     faqs: [
       {
         question: "What is LoRA?",
@@ -373,6 +380,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "Scalable oversight via AI feedback is the path to alignment as models exceed human-evaluator capacity.",
     ],
     relatedGlossaryIds: ["rlhf", "foundation-model"],
+    relatedSectors: ["ai-ml"],
     faqs: [
       {
         question: "How does Constitutional AI differ from RLHF?",
@@ -429,6 +437,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "Foundation for modern reasoning models that train extended chain-of-thought as a native capability.",
     ],
     relatedGlossaryIds: ["chain-of-thought", "reasoning-model", "foundation-model"],
+    relatedSectors: ["ai-ml"],
     faqs: [
       {
         question: "What is chain-of-thought prompting?",
@@ -481,6 +490,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "Engineering-velocity measurement is a quantitative discipline with predictive empirical foundations.",
     ],
     relatedGlossaryIds: ["continuous-deployment", "deploy-frequency-spike", "commit-velocity"],
+    relatedSectors: ["developer-tools", "analytics"],
     faqs: [
       {
         question: "What is the DORA research?",
@@ -540,6 +550,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "The batch-domain penalty for load balancing ensures no single expert becomes a bottleneck, a technique still used in modern MoE implementations.",
     ],
     relatedGlossaryIds: ["compute-efficiency", "model-capacity", "conditional-computation"],
+    relatedSectors: ["ai-ml", "ai-infra"],
     faqs: [
       {
         question: "What is Mixture of Experts (MoE)?",

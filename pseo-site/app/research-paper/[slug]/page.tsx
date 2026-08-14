@@ -7,6 +7,7 @@ import {
   getResearchPaper,
 } from "@/content/research-papers";
 import { glossaryTerms } from "@/content/glossary";
+import { getSector } from "@/content/sectors";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
 
@@ -52,6 +53,12 @@ export default async function ResearchPaperPage({ params }: PageProps) {
   const relatedTerms = glossaryTerms.filter((g) =>
     paper.relatedGlossaryIds.includes(g.id),
   );
+  const relatedSectors = paper.relatedSectors
+    .map((slug) => {
+      const s = getSector(slug);
+      return s ? { slug, name: s.name } : null;
+    })
+    .filter((x): x is { slug: string; name: string } => x !== null);
 
   const authorAffiliations = Array.from(
     new Set(paper.authors.map((a) => a.affiliation).filter(Boolean)),
@@ -215,6 +222,25 @@ export default async function ResearchPaperPage({ params }: PageProps) {
           </h2>
           <p className="text-gray-400 text-sm leading-relaxed">{paper.ourContext}</p>
         </section>
+
+        {relatedSectors.length > 0 && (
+          <section className="mb-10" aria-label="Related sectors">
+            <h2 className="text-xl font-semibold text-gray-100 mb-4">
+              Where this matters for deal flow
+            </h2>
+            <div className="flex flex-wrap gap-2">
+              {relatedSectors.map((s) => (
+                <Link
+                  key={s.slug}
+                  href={`/sector/${s.slug}`}
+                  className="rounded-full border border-slate-800 bg-slate-900 px-3 py-1 text-xs text-gray-300 hover:border-slate-600 hover:text-sky-400 transition-all"
+                >
+                  {s.name} sector
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
 
         <section className="mb-10" aria-label="Key findings">
           <h2 className="text-xl font-semibold text-gray-100 mb-4">Key findings</h2>
