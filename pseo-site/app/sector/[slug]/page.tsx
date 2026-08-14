@@ -8,8 +8,10 @@ import {
   getFundsInSector,
   getFoundersInSector,
   getGlossaryTermsForSector,
+  getSectorKeyStats,
   sectors,
 } from "@/content/sectors";
+import { REFERENCE_PROFILE_REVIEWED } from "@/content/companies";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
 import SignalDisclaimer from "@/components/SignalDisclaimer";
@@ -62,6 +64,7 @@ export default async function SectorHubPage({ params }: PageProps) {
   const fundsInSector = getFundsInSector(slug);
   const foundersInSector = getFoundersInSector(slug);
   const glossaryForSector = getGlossaryTermsForSector(slug).slice(0, 12);
+  const keyStats = getSectorKeyStats(slug);
   const otherSectors = sectors.filter((o) => o.slug !== slug);
 
   const pageUrl = `https://signals.gitdealflow.com/sector/${slug}`;
@@ -85,7 +88,7 @@ export default async function SectorHubPage({ params }: PageProps) {
         },
         speakable: {
           "@type": "SpeakableSpecification",
-          cssSelector: ["[data-speakable]", "h1", ".tagline", ".what-we-track"],
+          cssSelector: ["[data-speakable]", "h1", ".tagline", ".what-we-track", ".key-stats"],
         },
       },
       {
@@ -178,6 +181,35 @@ export default async function SectorHubPage({ params }: PageProps) {
           </p>
           <p className="text-gray-300 text-sm leading-relaxed sm:text-base">{s.analystNote}</p>
         </div>
+        {keyStats.length > 0 && (
+          <div
+            data-speakable
+            className="key-stats mb-8 rounded-lg border border-emerald-900/50 bg-emerald-950/20 p-4 sm:p-5"
+          >
+            <p className="mb-3 text-xs font-semibold uppercase tracking-wider text-emerald-400">
+              Key stats
+            </p>
+            <div className="grid grid-cols-1 sm:grid-cols-3 gap-3">
+              {keyStats.map((stat) => (
+                <div
+                  key={stat.label}
+                  className="rounded-lg border border-slate-800 bg-slate-900/70 p-3"
+                >
+                  <p className="text-2xl font-bold text-emerald-300">{stat.value}</p>
+                  <p className="mt-1 text-xs font-semibold uppercase tracking-wider text-gray-200">
+                    {stat.label}
+                  </p>
+                  <p className="mt-1 text-xs text-gray-400 leading-snug">{stat.detail}</p>
+                </div>
+              ))}
+            </div>
+            <p className="mt-3 text-[11px] text-gray-500 leading-relaxed">
+              Figures are editorially curated benchmark values (reviewed{" "}
+              {REFERENCE_PROFILE_REVIEWED}), computed across this hub&apos;s{" "}
+              {companiesInSector.length} tracked orgs, not live GitHub measurements.
+            </p>
+          </div>
+        )}
         <SignalDisclaimer className="mb-10" />
 
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-10">

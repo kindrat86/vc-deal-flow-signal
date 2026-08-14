@@ -210,6 +210,76 @@ export function getSector(slug: string): Sector | undefined {
   return sectors.find((s) => s.slug === slug);
 }
 
+export interface SectorKeyStat {
+  label: string;
+  value: string;
+  detail: string;
+}
+
+const STAGE_LABELS: Record<Company["stage"], string> = {
+  seed: "Seed",
+  "series-a": "Series A",
+  "series-b": "Series B",
+  "series-c": "Series C",
+  later: "Later-stage",
+  public: "Public",
+};
+
+/**
+ * Quotable, data-grounded "key stats" for a sector hub. Computed at build
+ * time from the same getCompaniesInSector() corpus the page renders, so the
+ * numbers always match the visible company list. Framed as curated benchmark
+ * figures, never live measurements (see the honesty contract in companies.ts).
+ */
+export function getSectorKeyStats(slug: string): SectorKeyStat[] {
+  const list = getCompaniesInSector(slug);
+  const total = list.length;
+  if (total === 0) return [];
+
+  const accelerating = list.filter(
+    (c) => c.publicSignal.momentum === "accelerating",
+  ).length;
+  const accPct = Math.round((accelerating / total) * 100);
+
+  const stageCounts = new Map<Company["stage"], number>();
+  for (const c of list) stageCounts.set(c.stage, (stageCounts.get(c.stage) ?? 0) + 1);
+  const [topStage, topStageCount] = [...stageCounts.entries()].sort(
+    (a, b) => b[1] - a[1],
+  )[0];
+
+  const langCounts = new Map<string, number>();
+  for (const c of list) {
+    for (const raw of c.publicSignal.languageBias.split("/")) {
+      const lang = raw.trim();
+      if (lang) langCounts.set(lang, (langCounts.get(lang) ?? 0) + 1);
+    }
+  }
+  const [topLang, topLangCount] = [...langCounts.entries()].sort(
+    (a, b) => b[1] - a[1],
+  )[0];
+
+  return [
+    {
+      label: "Accelerating share",
+      value: `${accPct}%`,
+      detail:
+        accelerating > 0
+          ? `${accelerating} of ${total} tracked orgs read as accelerating`
+          : `all ${total} tracked orgs read as steady`,
+    },
+    {
+      label: "Stage concentration",
+      value: STAGE_LABELS[topStage],
+      detail: `${topStageCount} of ${total} tracked orgs`,
+    },
+    {
+      label: "Language bias",
+      value: topLang,
+      detail: `${topLangCount} of ${total} tracked orgs list ${topLang} as a primary language`,
+    },
+  ];
+}
+
 export function getCompaniesInSector(slug: string): Company[] {
   return companies.filter(
     (c) => c.sector === slug || c.relatedSectors.includes(slug),
