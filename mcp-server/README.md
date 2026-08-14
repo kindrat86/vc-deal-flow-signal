@@ -184,7 +184,7 @@ If you want to put your own eye on the line, there's a prediction game on top of
 - [signals.gitdealflow.com](https://signals.gitdealflow.com) — full dashboard with interactive rankings, charting, and sector breakdowns
 - [Momentum Badge (Chrome Extension)](https://chrome.google.com/webstore/detail/...) — see startup velocity on Crunchbase and Wellfound
 - [Smithery registry](https://smithery.ai/server/kindrat86/vc-deal-flow-signal) — one-click MCP install
-- [Glama A-tier listing](https://glama.ai/mcp/servers/@kindrat86/vc-deal-flow-signal)
+- [Glama A-tier listing](https://glama.ai/mcp/servers/kindrat86/mcp-deal-flow-signal)
 - [MCP Registry](https://registry.modelcontextprotocol.io) — `io.github.kindrat86/vc-deal-flow-signal`
 
 ---

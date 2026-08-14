@@ -83,7 +83,7 @@ Install on Claude Desktop, Claude Code, or any MCP host with one command, see th
         claim:
           "Listed in the official MCP Registry as io.github.kindrat86/vc-deal-flow-signal and rated A-tier on Glama.",
         sourceUrl:
-          "https://glama.ai/mcp/servers/@kindrat86/vc-deal-flow-signal",
+          "https://glama.ai/mcp/servers/kindrat86/mcp-deal-flow-signal",
         sourceLabel: "Glama listing",
       },
       {
@@ -1314,7 +1314,7 @@ The tools are free in perpetuity. There is no API key gate. The free tier is str
       {
         claim:
           "A-tier rated on Glama, the leading MCP server directory.",
-        sourceUrl: "https://glama.ai/mcp/servers/@kindrat86/vc-deal-flow-signal",
+        sourceUrl: "https://glama.ai/mcp/servers/kindrat86/mcp-deal-flow-signal",
         sourceLabel: "Glama listing",
       },
       {
@@ -2632,7 +2632,7 @@ If you already have other MCP servers configured, add the \`gitdealflow\` entry 
       {
         claim:
           "GitDealFlow MCP server holds an A-tier rating on Glama.",
-        sourceUrl: "https://glama.ai/mcp/servers/@kindrat86/vc-deal-flow-signal",
+        sourceUrl: "https://glama.ai/mcp/servers/kindrat86/mcp-deal-flow-signal",
         sourceLabel: "Glama listing",
       },
       {
@@ -2660,7 +2660,7 @@ If you already have other MCP servers configured, add the \`gitdealflow\` entry 
         a: "No. The official MCP Registry (github.com/modelcontextprotocol/registry) is the canonical source of MCP server metadata, maintained by the protocol stewards. Glama is an independent directory and discoverability layer that adds quality ratings, search, and install instructions on top.",
       },
     ],
-    ctaUrl: "https://glama.ai/mcp/servers/@kindrat86/vc-deal-flow-signal",
+    ctaUrl: "https://glama.ai/mcp/servers/kindrat86/mcp-deal-flow-signal",
     ctaLabel: "View GitDealFlow on Glama",
     related: [
       "best-mcp-server-for-vc-research",

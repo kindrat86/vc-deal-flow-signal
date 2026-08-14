@@ -49,7 +49,7 @@ export async function GET() {
           registry_id: "io.github.kindrat86/vc-deal-flow-signal",
           glama_tier: "A",
           glama_url:
-            "https://glama.ai/mcp/servers/@kindrat86/vc-deal-flow-signal",
+            "https://glama.ai/mcp/servers/kindrat86/mcp-deal-flow-signal",
           discovery_manifest: `${SITE}/.well-known/mcp.json`,
         },
         http: {

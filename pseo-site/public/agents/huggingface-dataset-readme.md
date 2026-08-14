@@ -96,7 +96,7 @@ CC-BY 4.0, commercial reuse with attribution is allowed.
 
 - npm package: <https://www.npmjs.com/package/@gitdealflow/mcp-signal>
 - MCP Registry: `io.github.kindrat86/vc-deal-flow-signal`
-- Glama A-tier listing: <https://glama.ai/mcp/servers/@kindrat86/vc-deal-flow-signal>
+- Glama A-tier listing: <https://glama.ai/mcp/servers/kindrat86/mcp-deal-flow-signal>
 - Wikidata entity: <https://www.wikidata.org/wiki/Q139376302>
 
 ## Contact

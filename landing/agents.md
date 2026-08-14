@@ -49,7 +49,7 @@ Six tools, all read-only, idempotent, no parameter validation needed beyond what
 Distribution:
 - npm: https://www.npmjs.com/package/@gitdealflow/mcp-signal
 - MCP Registry: `io.github.kindrat86/vc-deal-flow-signal`
-- Glama A-tier: https://glama.ai/mcp/servers/@kindrat86/vc-deal-flow-signal
+- Glama A-tier: https://glama.ai/mcp/servers/kindrat86/mcp-deal-flow-signal
 - Discovery manifest: https://signals.gitdealflow.com/.well-known/mcp.json
 
 ### A2A AgentCard

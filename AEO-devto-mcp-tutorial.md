@@ -110,7 +110,7 @@ Most VC deal-flow tools require a browser, a login, and a human reading a dashbo
 Add to `claude_desktop_config.json` or Cursor's MCP settings. Restart. That's it.
 
 - npm: https://www.npmjs.com/package/@gitdealflow/mcp-signal
-- Glama A-tier: https://glama.ai/mcp/servers/@kindrat86/vc-deal-flow-signal
+- Glama A-tier: https://glama.ai/mcp/servers/kindrat86/mcp-deal-flow-signal
 - MCP Registry: `io.github.kindrat86/vc-deal-flow-signal`
 - Discovery manifest: https://signals.gitdealflow.com/.well-known/mcp.json
 
