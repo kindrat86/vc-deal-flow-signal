@@ -35,7 +35,15 @@ LOCK_HELPER="${GITDEALFLOW_LOCK_HELPER:-$HOME/growth-loop/lib/deploy-lock.sh}"
 if [ -f "$LOCK_HELPER" ]; then
   # shellcheck disable=SC1090
   source "$LOCK_HELPER"
-  deploy_lock_acquire "signals.gitdealflow.com" 600 || exit 1
+  # Lock key must match deploy_from_commit.sh: derive the Vercel projectId so
+  # BOTH deploy paths serialize against the same mutex (the domain alone would
+  # let a deploy_from_commit.sh run race a deploy-prod.sh run).
+  LOCK_KEY="signals.gitdealflow.com"
+  if [ -f ".vercel/project.json" ]; then
+    _pj_id="$(sed -n 's/.*"projectId": *"\([^"]*\)".*/\1/p' .vercel/project.json | head -1)"
+    [ -n "$_pj_id" ] && LOCK_KEY="$_pj_id"
+  fi
+  deploy_lock_acquire "$LOCK_KEY" 600 || exit 1
   trap deploy_lock_release EXIT
 else
   echo "⚠ deploy-lock.sh not found at $LOCK_HELPER — proceeding WITHOUT the deploy lock."
