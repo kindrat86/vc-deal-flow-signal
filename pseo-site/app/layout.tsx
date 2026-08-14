@@ -282,6 +282,22 @@ export default function RootLayout({
           href="https://signals.gitdealflow.com/sitemap.txt"
           title="Plain-text sitemap"
         />
+        {/* Classic XML feed autodiscovery. Feedly, Inoreader, NetNewsWire,
+            FeedBin, and Google's crawler-driven readers discover feeds via
+            rel=alternate links in <head>, not via the JSON Feed alone.
+            Order: RSS (widest support), Atom (per-entry dates), JSON Feed. */}
+        <link
+          rel="alternate"
+          type="application/rss+xml"
+          href="https://signals.gitdealflow.com/feed.xml"
+          title="VC Deal Flow Signal: RSS 2.0 (blog updates)"
+        />
+        <link
+          rel="alternate"
+          type="application/atom+xml"
+          href="https://signals.gitdealflow.com/atom.xml"
+          title="VC Deal Flow Signal: Atom 1.0 (blog updates)"
+        />
         {/* Modern RSS sibling. Inoreader, NetNewsWire, FeedBin, and most LLM
             feed-pipelines prefer JSON Feed v1.1 over XML RSS. */}
         <link

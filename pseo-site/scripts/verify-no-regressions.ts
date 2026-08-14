@@ -689,6 +689,41 @@ check(
 );
 
 // ---------------------------------------------------------------------------
+// XML feed autodiscovery (2026-08-15). Feedly/Inoreader/NetNewsWire and
+// crawler-driven readers discover feeds via <link rel=alternate> tags in the
+// page <head>, not by guessing URLs. layout.tsx advertised ONLY the JSON
+// Feed, so no XML feed reader could autodiscover the blog (Feedly catalog
+// had zero gitdealflow results on 2026-08-15). Guards the three-format
+// autodiscovery block.
+// ---------------------------------------------------------------------------
+check(
+  "app/layout.tsx",
+  "layout.tsx lost the RSS/Atom feed autodiscovery links; XML feed readers cannot find the blog feed.",
+  (s) =>
+    s.includes('type="application/rss+xml"') &&
+    s.includes('type="application/atom+xml"') &&
+    s.includes('type="application/feed+json"') &&
+    s.includes('href="https://signals.gitdealflow.com/feed.xml"'),
+  'restore the three <link rel="alternate"> tags (rss+xml /feed.xml, atom+xml /atom.xml, feed+json /feed.json) in layout.tsx',
+);
+
+// ---------------------------------------------------------------------------
+// Dead WebSub hub (2026-08-15). websubhub.com returns 404 on publish; only
+// pubsubhubbub.appspot.com and pubsubhubbub.superfeedr.com are live hubs
+// (verified 2026-07-18). A dead hub in the feed declaration makes WebSub
+// subscribers that try it fail the subscription handshake.
+// ---------------------------------------------------------------------------
+check(
+  "app/feed.xml/route.ts",
+  "feed.xml declares the dead websubhub.com hub (404); only appspot + superfeedr are live WebSub hubs.",
+  (s) =>
+    !s.includes("websubhub.com") &&
+    s.includes('href="https://pubsubhubbub.appspot.com/" rel="hub"') &&
+    s.includes('href="https://pubsubhubbub.superfeedr.com/" rel="hub"'),
+  'keep only pubsubhubbub.appspot.com + pubsubhubbub.superfeedr.com as rel="hub", never websubhub.com',
+);
+
+// ---------------------------------------------------------------------------
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +
