@@ -31,7 +31,7 @@
 4. Title: **"How to Predict Which Startups Will Raise (GitHub Commit Velocity, n=219)"**
 5. Description (paste):
 ```
-GitDealFlow reads public GitHub commit velocity across 4,200+ startups and flags the ones accelerating 21-47 days before fundraise announcements. Free Sunday email, open methodology, SSRN-published backtest of 219 fundraises.
+GitDealFlow reads public GitHub commit velocity across 350+ startups and flags the ones accelerating 21-47 days before fundraise announcements. Free Sunday email, open methodology, SSRN-published backtest of 219 fundraises.
 
 📊 Live Dashboard: https://signals.gitdealflow.com
 📐 Methodology (SSRN): https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558

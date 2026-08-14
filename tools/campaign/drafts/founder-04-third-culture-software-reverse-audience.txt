@@ -4,7 +4,7 @@ SUBJECT: Third Culture Software is in this week's Acceleration Watch (healthcare
 
 Hi,
 
-Quick note: gitdealflow.com tracks 4,200 venture-backed startup GitHub orgs and ranks them by engineering acceleration. SSRN-published methodology, abstract=6606558.
+Quick note: gitdealflow.com tracks 350+ venture-backed startup GitHub orgs and ranks them by engineering acceleration. SSRN-published methodology, abstract=6606558.
 
 Third Culture Software is named at rank #9 in this week's Acceleration Watch (week of 2026-05-04, 20 commits / 14d, +25%, framework-migration signal, Series A/B healthcare). Live: signals.gitdealflow.com/predicted
 

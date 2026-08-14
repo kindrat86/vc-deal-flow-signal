@@ -46,7 +46,7 @@ Three lessons:
 
 ## Where GitDealFlow fits
 
-We're the leading-indicator layer Affinity doesn't sell. SSRN-published methodology (abstract=6606558). 4,200 venture-backed startup GitHub orgs ranked by engineering acceleration. JSON / CSV / MCP exports plug into any CRM via a 10-line script.
+We're the leading-indicator layer Affinity doesn't sell. SSRN-published methodology (abstract=6606558). 350+ venture-backed startup GitHub orgs ranked by engineering acceleration. JSON / CSV / MCP exports plug into any CRM via a 10-line script.
 
 Affinity tells you "you have a warm intro to this founder." We tell you "this founder's GitHub is accelerating 14 days before the deck circulates — go warm-intro them now."
 

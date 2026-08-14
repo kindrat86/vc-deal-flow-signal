@@ -1,0 +1,52 @@
+{
+  "campaign": "pre-registered-prediction-pr",
+  "date": "2026-08-14",
+  "from": "GitDealFlow <signals@gitdealflow.com>",
+  "notes": "Honest reframe: the first graded cohort (w18, locked 2026-05-04, graded 2026-07-31) came back 0/10 (all no_event). Pitches lead with the transparency/pre-registration angle, NOT a fabricated win. All fundraise claims attributed to the SSRN preprint (6606558).",
+  "targets": [
+    {
+      "id": "strictlyvc",
+      "outlet": "StrictlyVC",
+      "to": "connie@strictlyvc.com",
+      "prior_contact": "2 cold emails (2026-04-20 + 2026-04-27), past 60-90d cooldown",
+      "subject": "A data nerd published his startup predictions and the scorecard (0-for-10 first cohort, on purpose)",
+      "body": "Hi Connie,\n\nQuick one for StrictlyVC. An independent researcher has been publishing a pre-registered list of ten startups every week, ranked by public GitHub engineering velocity across 350+ startup orgs. The unusual part: he grades each list in public, 60 days later, misses included.\n\nThe first cohort was locked May 4 and graded July 31. It came back 0-for-10: none of the ten announced a raise in the window. He published that scorecard anyway, and the full ledger is live here: https://signals.gitdealflow.com/predicted\n\nThat transparency is the story. Venture's alternative-data products sell cherry-picked backtests. This is someone running the forward test in the open, because the underlying methodology (SSRN 6606558) reports a 3.4x lift and a 21 to 47 day median lead across 219 backtested rounds, and he would rather have that edge audited than oversold.\n\nEverything is free and public: methodology, CC BY 4.0 dataset, grading rubric. No fund behind it. Happy to send charts or put you in touch with The Data Nerd (signals@gitdealflow.com).\n\nThe Data Nerd\nsignals.gitdealflow.com"
+    },
+    {
+      "id": "newcomer",
+      "outlet": "Newcomer",
+      "to": "newcomer@newcomer.co",
+      "prior_contact": "1 cold email (2026-05-22), past 60-90d cooldown",
+      "subject": "A pseudonymous researcher grades his own deal-flow predictions in public (0-for-10, published anyway)",
+      "body": "Hi Eric,\n\nSending this as a source, not a pitch. Someone operating as The Data Nerd publishes a weekly, pre-registered list of ten startups flagged by public GitHub engineering velocity across 350+ orgs, then grades every list in public 60 days later.\n\nThe first cohort, locked May 4 and graded July 31, went 0-for-10: none announced a round. He published it anyway, ledger included: https://signals.gitdealflow.com/predicted\n\nThe angle for Newcomer: VC alternative data is built on backtests no one can audit. This is the opposite, a forward test with published misses, plus an open methodology (SSRN 6606558, n=219, reported 3.4x lift and a 21 to 47 day lead). The author is pseudonymous by design, ORCID 0009-0002-2222-4112, no fund affiliation.\n\nIf you would like the raw ledger, the grading rubric, or a conversation, I can connect you (signals@gitdealflow.com).\n\nThe Data Nerd\nsignals.gitdealflow.com"
+    },
+    {
+      "id": "fortune-term-sheet",
+      "outlet": "Fortune Term Sheet",
+      "to": "alexandra.garfinkle@fortune.com",
+      "prior_contact": "none (status 'Pending' in Dream 50; weekly tipline mechanism exists but no formal pitch logged)",
+      "subject": "The deal-flow predictor that publishes its misses (0-for-10 first cohort, by design)",
+      "body": "Hi Allie,\n\nThought this could be a Term Sheet item. A pseudonymous researcher publishes a pre-registered list of ten startups every week, ranked by public GitHub engineering velocity across 350+ orgs, then grades the list in public 60 days later.\n\nHis first cohort, locked May 4 and graded July 31, went 0-for-10: none of the ten announced a round. He published that result rather than bury it: https://signals.gitdealflow.com/predicted\n\nFor a dealmaking readership, the interesting part is not the miss, it is the discipline: forward-looking picks with a hard grade and a public ledger, in an industry that mostly sells backtests. The methodology (SSRN 6606558) reports a 3.4x lift across 219 backtested rounds with a 21 to 47 day median lead. The data is CC BY 4.0, free, no fund behind it.\n\nHappy to send charts, the ledger, or arrange a call with The Data Nerd (signals@gitdealflow.com).\n\nThe Data Nerd\nsignals.gitdealflow.com"
+    },
+    {
+      "id": "cbinsights-data-desk",
+      "outlet": "CB Insights (data desk)",
+      "to": "info@cbinsights.com",
+      "prior_contact": "none (listed as data-partnership target in Dream 100, not a press pitch)",
+      "subject": "An open, citable startup-signal dataset for your coverage (graded in public)",
+      "body": "Hi CB Insights team,\n\nA resource your research and newsletter teams may want on the radar: GitDealFlow publishes a weekly, pre-registered list of ten startups flagged by public GitHub engineering velocity across 350+ orgs, and grades every list in public 60 days later.\n\nThe first cohort, locked May 4 and graded July 31, went 0-for-10 and was published anyway: https://signals.gitdealflow.com/predicted\n\nThe methodology (SSRN 6606558) reports a 3.4x lift across 219 backtested rounds with a 21 to 47 day median lead. Everything is free and CC BY 4.0, machine-readable (JSON, CSV, OpenAPI), and citable. If a guest chart, a data cross-check, or a citation ever fits your coverage, we would welcome it.\n\nThe Data Nerd\nsignals.gitdealflow.com"
+    }
+  ],
+  "form_gated_not_sent": [
+    {
+      "outlet": "Axios Pro Rata (Dan Primack)",
+      "why": "no public email; tip form only",
+      "action": "submit via https://tips.axios.com"
+    },
+    {
+      "outlet": "The Information (Briefing)",
+      "why": "tip line is form-only and explicitly asks for no press releases",
+      "action": "submit via https://www.theinformation.com/tips or staff contact on About page"
+    }
+  ]
+}

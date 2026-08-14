@@ -4,7 +4,7 @@ SUBJECT: Affiliate idea for The Pragmatic Engineer — 20% lifetime, dev-investo
 
 Hi Gergely,
 
-I run gitdealflow.com — open SSRN-published methodology that ranks 4,200 venture-backed startup GitHub orgs by commit-velocity acceleration. Methodology: ssrn.com/abstract=6606558.
+I run gitdealflow.com — open SSRN-published methodology that ranks 350+ venture-backed startup GitHub orgs by commit-velocity acceleration. Methodology: ssrn.com/abstract=6606558.
 
 Reason I'm writing: a meaningful share of your readers angel invest, and the question they keep asking ("how do I source pre-deck?") maps to a tool you could recommend.
 

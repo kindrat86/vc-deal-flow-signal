@@ -4,7 +4,7 @@ SUBJECT: AtroCore is named in this week's Acceleration Watch (rank #2)
 
 Hi,
 
-I run gitdealflow.com — methodology-published (SSRN abstract=6606558) signal that ranks 4,200 venture-backed startup GitHub orgs by engineering acceleration.
+I run gitdealflow.com — methodology-published (SSRN abstract=6606558) signal that ranks 350+ venture-backed startup GitHub orgs by engineering acceleration.
 
 AtroCore is named at rank #2 in this week's Acceleration Watch (week of 2026-05-04, 116 commits / 14d, +38%, framework-migration signal, EU seed). Live page: signals.gitdealflow.com/predicted
 

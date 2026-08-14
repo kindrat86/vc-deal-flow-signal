@@ -248,7 +248,7 @@ const CHANNEL_BRANDING = {
   description: [
     "VC Deal Flow Signal (GitDealFlow) — engineering acceleration tracking for venture capital.",
     "",
-    "We rank 4,200+ venture-backed startup GitHub orgs every week by commit velocity, contributor influx, and infrastructure buildout. The pattern has historically preceded Series A and Series B fundraise announcements by 21 to 47 days across a longitudinal panel of 219 confirmed rounds (SSRN-indexed, CC BY 4.0).",
+    "We rank 350+ venture-backed startup GitHub orgs every week by commit velocity, contributor influx, and infrastructure buildout. The pattern has historically preceded Series A and Series B fundraise announcements by 21 to 47 days across a longitudinal panel of 219 confirmed rounds (SSRN-indexed, CC BY 4.0).",
     "",
     "🔗 " + APEX + "                  — apex + free Sunday digest",
     "🔗 " + SIGNALS + "/predicted       — Engineering Acceleration Watch",

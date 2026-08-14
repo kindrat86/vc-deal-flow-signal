@@ -42,4 +42,4 @@ Happy to share the contributor-level diff or the Stripe-graph correlate on a spe
 — GitDealFlow Research
    The Data Nerd · https://signals.gitdealflow.com/about
 
-(One-line provenance: signal threshold = 95th-percentile commit-velocity Δ over a rolling 14-day window across a 4,200-org venture-backed panel. Outcomes are graded post-hoc from public news; the 60-day window for this cohort closes July 3, 2026.)
+(One-line provenance: signal threshold = 95th-percentile commit-velocity Δ over a rolling 14-day window across a 350+ org venture-backed panel. Outcomes are graded post-hoc from public news; the 60-day window for this cohort closes July 3, 2026.)

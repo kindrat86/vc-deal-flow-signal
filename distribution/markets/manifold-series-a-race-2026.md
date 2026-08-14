@@ -1,6 +1,6 @@
 # Manifold market — Series A Race 2026
 
-**Status:** DRAFT (user posts manually under @data_nerd)
+**Status:** DRAFT (user posts manually under @sipiteno)
 
 **Why Manifold and not Polymarket/Kalshi:**
 - Manifold = play money (mana), no KYC, no real money. Free to post, free to bet.
@@ -42,7 +42,7 @@ Machine-readable JSON: https://signals.gitdealflow.com/api/markets/series-a-race
 
 **Resolves to "None"** if none qualify by the deadline.
 
-Candidate selection: Pre-seed and Seed stage startups with at least 30 commits in the last 14 days, ranked by composite engineering-acceleration score (40% commit velocity + 30% velocity change + 20% contributor growth + 10% new repos). Source: VC Deal Flow Signal Q2-2026 dataset of 4,200+ tracked startup GitHub orgs.
+Candidate selection: Pre-seed and Seed stage startups with at least 30 commits in the last 14 days, ranked by composite engineering-acceleration score (40% commit velocity + 30% velocity change + 20% contributor growth + 10% new repos). Source: VC Deal Flow Signal Q2-2026 dataset of 350+ tracked startup GitHub orgs.
 
 Not investment advice. The market creator does not hold equity, advisory, or consulting positions in any of the candidates.
 ```
@@ -62,7 +62,7 @@ Not investment advice. The market creator does not hold equity, advisory, or con
 ---
 
 ## Pre-flight checklist (before user posts)
-- [ ] User logged into Manifold as @data_nerd (consistent with HN/Reddit/IH/PH/Quora handles)
+- [ ] User logged into Manifold as @sipiteno (consistent with HN/Reddit/IH/PH/Quora handles)
 - [ ] Confirm zapplyjobs, bakaphp, atrocore, OpenOLAT, Lonero-Team are still in the live dataset (re-run candidate query if >7 days old)
 - [ ] Confirm none of the 5 has already announced a Series A in last 7d (negates whole market)
 - [ ] Set close date to **2026-12-31 23:59 UTC** (not local time)
@@ -70,6 +70,6 @@ Not investment advice. The market creator does not hold equity, advisory, or con
 - [ ] After posting: place a small M$10 bet on each candidate to seed odds (seeds visible price discovery)
 
 ## Post-publish followups
-- Tweet the Manifold URL from @data_nerd → quote-tweet the gitdealflow.com/markets/series-a-race-2026 page
+- Tweet the Manifold URL from @sipiteno → quote-tweet the gitdealflow.com/markets/series-a-race-2026 page
 - Comment on the Manifold market with the methodology URL
 - Update memory: `project_markets_series_a_race_2026.md` with live URL + first-7d activity

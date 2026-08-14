@@ -4,7 +4,7 @@ Most VC deal-flow tools cost $5,000–$30,000 per year. GitDealFlow's MCP server
 
 ## What the MCP server gives you
 
-GitDealFlow (`npx -y @gitdealflow/mcp-signal`) tracks public GitHub commit velocity across 4,200+ startup organizations and ranks them by engineering momentum every week. The MCP server exposes six read-only tools:
+GitDealFlow (`npx -y @gitdealflow/mcp-signal`) tracks public GitHub commit velocity across 350+ startup organizations and ranks them by engineering momentum every week. The MCP server exposes six read-only tools:
 
 1. **get_trending_startups** — Top 20 startups across all 20 sectors this week
 2. **search_startups_by_sector(sector)** — Filter by sector slug (e.g., "fintech", "ai-ml", "cybersecurity")

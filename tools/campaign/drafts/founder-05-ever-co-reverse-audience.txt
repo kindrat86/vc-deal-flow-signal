@@ -4,7 +4,7 @@ SUBJECT: Ever is named in this week's Acceleration Watch (+854%, rank #3)
 
 Hi,
 
-gitdealflow.com tracks 4,200 venture-backed startup GitHub orgs and ranks them by engineering acceleration. Open SSRN methodology, abstract=6606558.
+gitdealflow.com tracks 350+ venture-backed startup GitHub orgs and ranks them by engineering acceleration. Open SSRN methodology, abstract=6606558.
 
 Ever (ever-co) is at rank #3 in this week's Acceleration Watch (week of 2026-05-04, 124 commits / 14d, +854% over baseline, deploy-frequency-spike signal). 9.5x acceleration is one of the largest moves in this week's cohort. Live: signals.gitdealflow.com/predicted
 

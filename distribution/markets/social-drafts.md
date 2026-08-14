@@ -6,7 +6,7 @@ User posts manually per [no-LinkedIn-actions](feedback_no_linkedin_actions.md) +
 
 ## Twitter / X (composer-method: ONE insertText on fresh editor; no clear-and-reinsert)
 
-### Anchor post (own profile, @data_nerd)
+### Anchor post (own profile, @sipiteno)
 ```
 We just opened a public prediction market on which 5 GitHub-flagged startups raises a Series A first by EOY 2026.
 
@@ -83,7 +83,7 @@ Curious how others would weight the score components. The 14-day window is short
 Title: Show HN: Open prediction market on which 5 GitHub-flagged startups raises Series A first
 URL: https://signals.gitdealflow.com/markets/series-a-race-2026
 
-Body: We pull commit velocity, contributor growth, and signal type from public GitHub for ~4,200 venture-backed startups. The Pre-seed/Seed cohort with positive signal becomes a candidate set. Top 5 go in a public market.
+Body: We pull commit velocity, contributor growth, and signal type from public GitHub for 350+ venture-backed startups. The Pre-seed/Seed cohort with positive signal becomes a candidate set. Top 5 go in a public market.
 
 Resolves Dec 31, 2026 on first publicly disclosed primary Series A round (Crunchbase, PitchBook, SEC Form D, or company press release). Bridge rounds and SAFEs don't count.
 

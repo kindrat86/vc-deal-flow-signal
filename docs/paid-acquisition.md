@@ -98,7 +98,7 @@ All ads use Reddit's "Promoted Post" format — title up to 300 chars, body up t
 **Body:**
 > I'm a developer who also writes angel cheques. Spent two years frustrated that warm-intro deal flow always meant arriving after consensus had already formed.
 >
-> Built a system that monitors GitHub commit velocity, contributor influx, and new-repo creation across 4,200 venture-backed startups. Across the SSRN-published panel of 219 confirmed rounds, the engineering acceleration shows up 21–47 days before Crunchbase hears about it.
+> Built a system that monitors GitHub commit velocity, contributor influx, and new-repo creation across 350+ venture-backed startups. Across the SSRN-published panel of 219 confirmed rounds, the engineering acceleration shows up 21–47 days before Crunchbase hears about it.
 >
 > Free version: 5 ranked names every Sunday, sector-tagged.
 >
@@ -132,7 +132,7 @@ All ads use Reddit's "Promoted Post" format — title up to 300 chars, body up t
 > Founders: the data layer your investors are about to start using to find you (and how to use it back at them).
 
 **Body:**
-> Spent the last 18 months building a dashboard that tracks engineering acceleration across 4,200 venture-backed startups. The use-case is investor-side — surface companies before consensus forms — but the same data answers a question founders care about:
+> Spent the last 18 months building a dashboard that tracks engineering acceleration across 350+ venture-backed startups. The use-case is investor-side — surface companies before consensus forms — but the same data answers a question founders care about:
 >
 > Which competitors in your sector are about to raise? You can read it from their commit graph 21–47 days before they announce.
 >
@@ -147,12 +147,12 @@ All ads use Reddit's "Promoted Post" format — title up to 300 chars, body up t
 #### Ad 4 — r/devtools → /r/devtools
 
 **Title:**
-> The data nerd's deal flow tool: ranks 4,200 venture-backed devtools companies by GitHub commit velocity weekly.
+> The data nerd's deal flow tool: ranks 350+ venture-backed devtools companies by GitHub commit velocity weekly.
 
 **Body:**
 > If you've ever wished GitHub had a "trending startups (not trending repos)" view, this is it.
 >
-> Continuous panel of ~4,200 venture-backed orgs. Weekly refresh on commit velocity acceleration, contributor diversity (Gini), README freshness, dependents-graph adoption, issue-to-PR ratio.
+> Continuous panel of 350+ venture-backed orgs. Weekly refresh on commit velocity acceleration, contributor diversity (Gini), README freshness, dependents-graph adoption, issue-to-PR ratio.
 >
 > Built specifically for the developer who also writes angel cheques. Methodology open, source CC BY 4.0 on the Sharp Tier.
 >
@@ -170,7 +170,7 @@ All ads use Reddit's "Promoted Post" format — title up to 300 chars, body up t
 **Body:**
 > SSRN-published methodology, n=219 confirmed rounds, matched control set. Stratified by stage. Contributor-diversity Gini ~0.34 at month -3 for closed rounds vs ~0.61 for non-closing.
 >
-> Productized as a weekly digest of 5 names + a paid dashboard ranking 4,200 orgs.
+> Productized as a weekly digest of 5 names + a paid dashboard ranking 350+ orgs.
 >
 > Paper: ssrn.com/abstract=6606558. Methodology page is the entire algorithm in <500 words. You can fork it and re-derive every claim from public GitHub data without paying us.
 
@@ -184,7 +184,7 @@ All ads use Reddit's "Promoted Post" format — title up to 300 chars, body up t
 > AI-infra is 60% of the panel. Built a tool that flags accelerating AI startups 21–47 days before Crunchbase.
 
 **Body:**
-> Tracked engineering acceleration across 4,200 venture-backed orgs for 18 months. AI infra and AI-tools sectors over-index in the panel of 219 confirmed rounds — closed AI-infra rounds had a contributor-diversity Gini of ~0.30 at month -3, vs ~0.61 for non-closing.
+> Tracked engineering acceleration across 350+ venture-backed orgs for 18 months. AI infra and AI-tools sectors over-index in the panel of 219 confirmed rounds — closed AI-infra rounds had a contributor-diversity Gini of ~0.30 at month -3, vs ~0.61 for non-closing.
 >
 > Translation: distributed AI codebases (4+ committers, top one <50% of volume) close rounds faster than single-bus-factor ones. Surprising to no-one who works in AI infra; surprising to most VCs writing the cheques.
 >

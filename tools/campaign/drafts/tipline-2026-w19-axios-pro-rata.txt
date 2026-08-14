@@ -4,7 +4,7 @@ SUBJECT: GitHub Momentum Index — week of May 4, 2026 — 5 movers
 
 Hi Pro Rata team,
 
-Quick-hit data drop for the May 4, 2026 cycle — top 5 GitHub-momentum movers from this week's Engineering Acceleration Watch. Each is a venture-stage company whose 14-day commit velocity crossed the 95th percentile of our 4,200-org panel.
+Quick-hit data drop for the May 4, 2026 cycle — top 5 GitHub-momentum movers from this week's Engineering Acceleration Watch. Each is a venture-stage company whose 14-day commit velocity crossed the 95th percentile of our 350+ org panel.
 
 1. Zapply Jobs — US Pre-seed HR Tech.
    Signal: Engineering hiring burst. +82% velocity over 14 days, 3 contributors.
@@ -42,4 +42,4 @@ Bullet-format-friendly. Raw JSON feed at /predicted/feed.json if useful for an e
 — GitDealFlow Research
    The Data Nerd · https://signals.gitdealflow.com/about
 
-(One-line provenance: signal threshold = 95th-percentile commit-velocity Δ over a rolling 14-day window across a 4,200-org venture-backed panel. Outcomes are graded post-hoc from public news; the 60-day window for this cohort closes July 3, 2026.)
+(One-line provenance: signal threshold = 95th-percentile commit-velocity Δ over a rolling 14-day window across a 350+ org venture-backed panel. Outcomes are graded post-hoc from public news; the 60-day window for this cohort closes July 3, 2026.)

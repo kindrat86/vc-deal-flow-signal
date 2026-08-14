@@ -79,7 +79,7 @@ const OUTLETS = [
     to: "proratatips@axios.com",
     addressee: "Pro Rata team",
     angle:
-      "Quick-hit data drop for the {weekDate} cycle — top 5 GitHub-momentum movers from this week's Engineering Acceleration Watch. Each is a venture-stage company whose 14-day commit velocity crossed the 95th percentile of our 4,200-org panel.",
+      "Quick-hit data drop for the {weekDate} cycle — top 5 GitHub-momentum movers from this week's Engineering Acceleration Watch. Each is a venture-stage company whose 14-day commit velocity crossed the 95th percentile of our 350+ org panel.",
     closing: "Bullet-format-friendly. Raw JSON feed at /predicted/feed.json if useful for an embedded chart.",
   },
   {
@@ -97,7 +97,7 @@ const OUTLETS = [
     to: "tips@theinformation.com",
     addressee: "The Information data desk",
     angle:
-      "Data exclusive for the week of {weekDate}: five startups whose GitHub engineering signature crossed our acceleration threshold this week. SSRN-published methodology (n=219, 21–47 day pre-announce lead-time IQR). The full panel covers 4,200 venture-backed orgs.",
+      "Data exclusive for the week of {weekDate}: five startups whose GitHub engineering signature crossed our acceleration threshold this week. SSRN-published methodology (n=219, 21–47 day pre-announce lead-time IQR). The full panel covers 350+ venture-backed orgs.",
     closing: "All numbers reproducible against the public Zenodo dataset linked from /methodology. Custom cuts (sector / geography / stage) on request.",
   },
 ];
@@ -173,7 +173,7 @@ function buildBody(outlet, week, top5) {
     `— GitDealFlow Research`,
     `   The Data Nerd · ${SITE}/about`,
     ``,
-    `(One-line provenance: signal threshold = 95th-percentile commit-velocity Δ over a rolling 14-day window across a 4,200-org venture-backed panel. Outcomes are graded post-hoc from public news; the 60-day window for this cohort closes ${fmtLongDate(week.gradingDueAt)}.)`,
+    `(One-line provenance: signal threshold = 95th-percentile commit-velocity Δ over a rolling 14-day window across a 350+ org venture-backed panel. Outcomes are graded post-hoc from public news; the 60-day window for this cohort closes ${fmtLongDate(week.gradingDueAt)}.)`,
   ].join("\n");
 }
 

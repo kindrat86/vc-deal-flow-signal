@@ -4,6 +4,103 @@ Tasks that require a human hand. Execute once, file the result.
 
 ---
 
+## OPEN: Sector-count reconciliation — 15 vs 20 (autonomous, next truth-baseline task)
+
+**STATUS: Queued 2026-08-14. Agent-executable (NOT human-gated). Deferred per owner
+instruction to complete other top-10 wins first.**
+
+Three sector counts now disagree across surfaces:
+
+| Surface | Count | Source |
+|---|---|---|
+| Scraped leaderboard (data pages: `/startups-to-watch/*`, `/startup/*`, `/stage/*`) | **20** | `data/startups.json` + `lib/data.ts` (`getAllSectors()`) |
+| Curated hubs (`/sector/[slug]`) | **10** | `content/sectors.ts` |
+| Marketing copy / truth baseline | **15** | llms.txt, llms-full.txt, AGENTS.md, agents.md, homepage, Product Hunt, Chrome ext, AlternativeTo, G2/Capterra/GetApp/SA |
+
+The methodology-page internal-link hub (shipped 2026-08-14, commit `91c61d30`)
+honestly reflects the **20** scraped sectors, so the data pages and the marketing
+"15 sectors" claim now visibly diverge on the site's own highest-authority page.
+
+**Thin-data flag:** `fintech` has only 1 startup in its latest period (q2-2026);
+several sectors lag on q2-2026 while the rest are on q3-2026. Decide whether the
+canonical count is **20** (update marketing "15" → "20" everywhere) or whether
+stale/near-empty sectors should be consolidated back down (then update data).
+
+**To do:** pick ONE canonical number, sweep every surface above to match, and add a
+`verify-no-regressions.ts` assertion that the marketing sector-count string equals
+`getAllSectors().length` so a future drift fails the build.
+
+---
+
+## DONE 2026-08-15: Wikidata entity enrichment — batch EXECUTED (fully autonomous)
+
+**STATUS: Complete. All 17 claims live + stale claim removed. No human action needed.**
+
+Executed via API as TheDataNerd (password recovered through project inbox —
+reset email to signal@gitdealflow.com → temp password → email verification code →
+new permanent password, stored in macOS keychain `wikidata-hermes`).
+
+Live now on **Q139493250** (paper): P893 SSRN, P356 DOI 10.2139/SSRN.6606558,
+P4011 Semantic Scholar, P10283 OpenAlex, P4901 Zenodo, P973 ×3 (Zenodo/Kaggle/classifier).
+Live now on **Q139376302** (product): P856 signals site, P3789 Telegram, P2002 sipiteno
+(stale data_nerd removed), P8559 2nd extension, P9618 AlternativeTo, P1324 classifier repo,
+P11206 npm scope, P973 ×2 (Substack, HF dataset).
+Verification: SPARQL reverse-lookups resolving (partial WDQS lag normal, settles in minutes).
+Corrected plan: `distribution/research-paper/submissions/11-wikidata-enhancements.md`.
+
+---
+
+## OPEN: Product Hunt listing — already LIVE, needs copy correction (10 min, human-only)
+
+**STATUS: Launched already. Listing is live at producthunt.com/products/vc-deal-flow-signal
+with 1 upvote, 3 followers, 0 reviews, full gallery + maker comment + tags.
+No logged-in PH session on this Mac, so the copy fix is a manual edit.**
+
+Live copy is stale/inflated and hurts credibility with angels/scouts/GPs:
+"2,000+ orgs" (real: 350+ startups), "18 sectors" (real: 15), "updated daily"
+(real: weekly), "monthly digest" (real: weekly), "EUR 97 Insider Circle"
+(verify), and X link points to the SUSPENDED @data_nerd (use @sipiteno).
+
+Corrected tagline + description + maker comment + X/TG/email activation pack
+ready to paste: `marketing/launch-posts/05-product-hunt-corrected-copy-2026-08-14.md`
+
+Human steps:
+1. Log in at producthunt.com as @gitdealflow
+2. Open the listing -> Edit -> fix description numbers (350+ / 15 sectors / weekly)
+3. Change X link @data_nerd -> @sipiteno
+4. Fix maker comment numbers (2,000+ -> 350+, 18 -> 15 sectors, daily -> weekly)
+5. Save. Then run the activation pack (X thread from @sipiteno, TG, Sunday email).
+
+---
+
+## DONE 2026-08-14: AlternativeTo listing — SUBMITTED, in review queue
+
+**STATUS: Submitted Aug 14, 2026 · In the normal queue, expect a few months.**
+Logged in as user `sipiteno`. App ID `2b3d0c21-d915-426c-9011-d39f67e6bae9`.
+Submitted with: name GitDealFlow, website https://gitdealflow.com, Freemium,
+tags venture-capital / startups / github-integration, platforms Online + Google-chrome,
+icon https://gitdealflow.com/apple-touch-icon.png, full description referencing
+350+ startups / 15 sectors / SSRN paper.
+Alternatives queued: CrunchBase, Dealroom, PitchBook, CB insights. (Tracxn and
+Wellfound are not in AlternativeTo's database; searching them yields no matches.)
+
+Check status at: https://alternativeto.net/my-submissions/
+Priority-review ("Get reviewed sooner") exists on that page if you want to pay to jump the queue.
+
+---
+
+## OPEN: Dev.to profile website URL — 1 minute, human-only
+
+**Why this is here:** The Dev.to API has no endpoint for the profile website URL
+(`PUT /api/profile` returns 404). It can only be set in the web UI.
+
+1. Log in at https://dev.to (account: `maryan_k_bef6cf83fa64e809`)
+2. Go to https://dev.to/settings
+3. Fill "Website URL" = `https://gitdealflow.com`
+4. Save. That adds a dofollow profile-level backlink visible on all 10 article pages.
+
+---
+
 ## SWITCH 3: Pixel IDs — 10 minutes, human-only
 
 **Why this is here:** The agent CANNOT create Meta Pixel IDs or LinkedIn Partner IDs. These require human ad account logins.
@@ -94,7 +191,7 @@ Or send manually from signals@gitdealflow.com.
 ## SWITCH 7: Content Calendar Week 1 — Social Posts
 
 ### Monday — X/Twitter Thread
-Post from @data_nerd account. 5 tweets:
+Post from @sipiteno account. 5 tweets:
 
 1/5: This week's top 3 movers from the engineering acceleration signal (Q3 2026):
 
@@ -128,7 +225,7 @@ So I stopped networking. Started reading commit graphs the way quants read SEC f
 
 That asymmetry — not a better rolodex — turned out to be the whole opportunity.
 
-I built a tool that reads that trail across 4,200+ startups every week. Methodology published on SSRN. Dataset CC BY 4.0. Sunday email free.
+I built a tool that reads that trail across 350+ startups every week. Methodology published on SSRN. Dataset CC BY 4.0. Sunday email free.
 
 You don't need to be in San Francisco. You just need to read what's already public.
 
@@ -170,7 +267,7 @@ I spent the last six months asking a single question: if you tracked every commi
 
 The answer is yes.
 
-I mapped 4,200+ startup GitHub organizations across 20 sectors and backtested 219 fundraise events against the engineering velocity data. The signal is clean: a 3.4x lift in a composite of commit velocity and contributor diversity reliably precedes Series A pricing rounds by 21 to 47 days (median 31). The preprint is on SSRN (ssrn.com/abstract=6606558). The methodology is open. The data is CC BY 4.0.
+I mapped 350+ startup GitHub organizations across 20 sectors and backtested 219 fundraise events against the engineering velocity data. The signal is clean: a 3.4x lift in a composite of commit velocity and contributor diversity reliably precedes Series A pricing rounds by 21 to 47 days (median 31). The preprint is on SSRN (ssrn.com/abstract=6606558). The methodology is open. The data is CC BY 4.0.
 
 What "The Data Nerd" shipped from this:
 
@@ -222,7 +319,7 @@ When you open a company profile on Crunchbase or Wellfound, an inline badge appe
 
 Hover the badge for the underlying metrics: 14-day commit velocity, velocity change vs prior period, contributor count and growth, and the engineering signal type (hiring burst, infrastructure buildout, framework migration, deploy-frequency spike).
 
-Data comes from GitDealFlow's public sector rankings — built from the public GitHub API across ~4,200 candidate startup organizations, refreshed weekly, and free to browse at https://signals.gitdealflow.com.
+Data comes from GitDealFlow's public sector rankings — built from the public GitHub API across 350+ candidate startup organizations, refreshed weekly, and free to browse at https://signals.gitdealflow.com.
 
 BUILT FOR
 Seed and pre-seed investors, scouts, angels, and micro-fund GPs who research deals on Crunchbase and Wellfound and want a leading indicator next to the lagging database. Crunchbase shows what already happened; this badge shows whether engineering is accelerating right now — the acceleration that typically precedes a fundraise announcement by three to six weeks (methodology + SSRN preprint at https://gitdealflow.com).
@@ -244,7 +341,7 @@ Item `plgngijmloeljfkenecdkhiblcfcbblm` ("VC GitHub Lookup — Startup Signals o
 ```
 Hover any GitHub repo or org link — on any page — and a chip appears with VC-grade engineering signals: 14-day commit velocity, contributor growth, signal type, and stage estimate. Direct visits to github.com/org or github.com/org/repo pages get the chip automatically, and the toolbar popup runs a manual lookup against any GitHub URL.
 
-Data comes from GitDealFlow's public sector rankings — built from the public GitHub API across ~4,200 candidate startup organizations, refreshed weekly, free to browse at https://signals.gitdealflow.com.
+Data comes from GitDealFlow's public sector rankings — built from the public GitHub API across 350+ candidate startup organizations, refreshed weekly, free to browse at https://signals.gitdealflow.com.
 
 BUILT FOR
 Investors and analysts doing technical diligence: native GitHub shows stars and a repo list; this chip shows whether the team is ramping or stalling against its own baseline — the engineering acceleration that typically precedes a fundraise by three to six weeks (methodology + SSRN preprint at https://gitdealflow.com).
