@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPost, getAllPostSlugs, posts } from "@/content/posts";
+import { getPostLastUpdated } from "@/content/post-freshness";
 import { getAllSectors, getCurrentPeriod, getDataLastModified } from "@/lib/data";
 import { getAuthor } from "@/content/authors";
 import { slugify } from "@/lib/slugify";
@@ -45,7 +46,8 @@ export async function generateMetadata({
   // Mirror the JSON-LD dateModified policy: data refresh bumps freshness even
   // if prose is unchanged, so social cards advertise an accurate "modified".
   const dataLastMod = getDataLastModified().toISOString().slice(0, 10);
-  const modifiedTime = dataLastMod > post.date ? dataLastMod : post.date;
+  const contentMod = getPostLastUpdated(slug, post.date);
+  const modifiedTime = [post.date, contentMod, dataLastMod].sort().pop()!;
 
   return {
     title: post.title,
@@ -153,6 +155,11 @@ export default async function BlogPostPage({ params }: PageProps) {
     return wikidataUri ? { ...base, sameAs: [wikidataUri] } : base;
   });
 
+  // Effective content-modified date = max(published, content revision, dataset refresh).
+  const dataLastMod = getDataLastModified().toISOString().slice(0, 10);
+  const lastUpdated = getPostLastUpdated(post.slug, post.date);
+  const effectiveModified = [post.date, lastUpdated, dataLastMod].sort().pop() as string;
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -191,10 +198,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         // references gets weekly refreshes — Google Discover and AI Overviews
         // weight recency, so reflecting the data refresh keeps the article
         // "fresh" without lying about the prose.
-        dateModified: (() => {
-          const dataLastMod = getDataLastModified().toISOString().slice(0, 10);
-          return dataLastMod > post.date ? dataLastMod : post.date;
-        })(),
+        dateModified: effectiveModified,
         reviewedBy: {
           "@type": "Organization",
           "@id": "https://gitdealflow.com/#organization",
@@ -205,10 +209,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         // Overviews + Search treat it as a freshness signal on Article-typed
         // entities too. Mirrors dateModified so AI engines can confirm the
         // article surfaces this week's signal data.
-        lastReviewed: (() => {
-          const dataLastMod = getDataLastModified().toISOString().slice(0, 10);
-          return dataLastMod > post.date ? dataLastMod : post.date;
-        })(),
+        lastReviewed: effectiveModified,
         ...(mentions.length > 0 ? { mentions } : {}),
         ...(post.references && post.references.length > 0
           ? {
@@ -490,6 +491,14 @@ export default async function BlogPostPage({ params }: PageProps) {
               <span className="text-gray-400 text-xs">{author.jobTitle}</span>
               <span className="text-slate-700">|</span>
               <time dateTime={post.date}>{post.date}</time>
+              {lastUpdated > post.date && (
+                <>
+                  <span className="text-slate-700">|</span>
+                  <span className="text-sky-400">
+                    Updated <time dateTime={lastUpdated}>{lastUpdated}</time>
+                  </span>
+                </>
+              )}
             </div>
             <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
               {post.title}

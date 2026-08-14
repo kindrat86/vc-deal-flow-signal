@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { allPosts as posts } from "@/content/posts";
+import { getPostLastUpdated } from "@/content/post-freshness";
 import PSEOFooterNav from "@/components/PSEOFooterNav";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { HreflangLinks } from "@/components/HreflangLinks";
@@ -133,6 +134,11 @@ export default function BlogIndex() {
           >
             <p className="text-gray-400 text-xs mb-2 uppercase tracking-wider font-mono">
               {post.date}
+              {getPostLastUpdated(post.slug, post.date) > post.date && (
+                <span className="text-sky-400 normal-case tracking-normal ml-2">
+                  · Updated {getPostLastUpdated(post.slug, post.date)}
+                </span>
+              )}
             </p>
             <h2 className="text-gray-100 font-semibold text-lg sm:text-xl mb-2 group-hover:text-sky-400 transition-colors leading-snug tracking-tight">
               {post.title}

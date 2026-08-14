@@ -1986,7 +1986,7 @@ The signal gets you to the table early. The decision still requires founder conv
 For the full screening framework, see the [7 engineering metrics every investor should track](/blog/startup-engineering-metrics-investors-should-track).`,
   },
   {
-    slug: "i-tracked-4200-startup-github-orgs-six-months",
+    slug: "i-tracked-369-startup-github-orgs-six-months",
     title: "I Tracked 369 Startup GitHub Orgs for Six Months. Here's What Predicts a Series A.",
     description:
       "Six months of public GitHub data across 369 startup organizations. Which commit patterns actually predict a Series A round? Plus the public Q3 2026 watchlist – bookmark and verify.",
@@ -2785,7 +2785,7 @@ Replication studies welcome. signals@gitdealflow.com for co-authorship on fundin
     description:
       "The 10 Chrome extensions venture investors actually use in 2026 to source deals, research startups, and move faster — including two purpose-built for GitHub engineering signal. Real pricing, honest disclosure, install links.",
     summary:
-      "If you source venture deals, your browser is your office. This list covers the ten Chrome extensions that turn Crunchbase, LinkedIn, and GitHub from passive databases into an active deal-flow engine. Two are GitDealFlow's own (disclosed up front): the Crunchbase/Wellfound signal badge and the GitHub hover lookup, both free and both running on the 369-startup public panel. The other eight — Affinity, Clearbit Connect, Hunter, LinkedIn Sales Navigator, BuiltWith, Save to Notion, Loom, and Grammarly — cover contact enrichment, relationship tracking, technical diligence, capture, and outreach. The closing section assembles the leanest free stack for a solo GP: discover, research, capture, reach out, follow up.",
+      "If you source venture deals, your browser is your office. This list covers the ten Chrome extensions that turn Crunchbase, LinkedIn, and GitHub from passive databases into an active deal-flow engine. Two are GitDealFlow's own (disclosed up front): the Crunchbase/Wellfound signal badge and the GitHub hover lookup, both free and both running on the 350+ startup public panel. The other eight — Affinity, Clearbit Connect, Hunter, LinkedIn Sales Navigator, BuiltWith, Save to Notion, Loom, and Grammarly — cover contact enrichment, relationship tracking, technical diligence, capture, and outreach. The closing section assembles the leanest free stack for a solo GP: discover, research, capture, reach out, follow up.",
     date: "2026-08-12",
     relatedSectors: ["developer-tools", "enterprise-saas", "ai-ml", "fintech", "data-infrastructure"],
     keyStats: [
@@ -2832,7 +2832,7 @@ This is the list we wish we'd had when we started. It includes two extensions we
 
 **Pricing**: Free in perpetuity. No account, no API key, no tracking. Deeper signal lives in the paid tiers (€7 First Look → €49/month Dashboard → €197/month Insider Circle), each with a 30-day guarantee.
 
-**Why investors need it**: Crunchbase tells you what already happened — the last round, the announced valuation. It doesn't tell you whether the engineering team is accelerating right now. This badge layers a leading indicator on the lagging database you already read: public GitHub activity across a 369-startup panel [2], where sustained acceleration typically precedes a fundraise announcement by three to six weeks [1]. If you research deals on Crunchbase, install this first.
+**Why investors need it**: Crunchbase tells you what already happened — the last round, the announced valuation. It doesn't tell you whether the engineering team is accelerating right now. This badge layers a leading indicator on the lagging database you already read: public GitHub activity across a 350+ startup panel [2], where sustained acceleration typically precedes a fundraise announcement by three to six weeks [1]. If you research deals on Crunchbase, install this first.
 
 ## 2. VC GitHub Lookup — Startup Signals on Hover (free)
 

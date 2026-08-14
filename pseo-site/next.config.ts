@@ -88,6 +88,15 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        // Stale-count slug: the post title and body were corrected from "4,200"
+        // to the real 369-startup panel (2026-08-14), but the URL still
+        // advertised "4200". 301 the old inbound links / backlinks / any
+        // already-indexed URL to the corrected slug.
+        source: "/blog/i-tracked-4200-startup-github-orgs-six-months",
+        destination: "/blog/i-tracked-369-startup-github-orgs-six-months",
+        permanent: true,
+      },
+      {
         // Consolidated the duplicate €1 teardown product into /teardown
         // (2026-06-01). /tweet-teardown/thanks stays for in-flight purchases.
         source: "/tweet-teardown",
