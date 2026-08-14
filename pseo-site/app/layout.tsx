@@ -485,7 +485,7 @@ export default function RootLayout({
     border-top: 1px solid #e5e7eb;
     font-family: system-ui, -apple-system, sans-serif;
 }
-.portfolio-network h3 {
+.portfolio-network .network-heading {
     font-size: 0.875rem;
     text-transform: uppercase;
     letter-spacing: 0.1em;
@@ -533,7 +533,7 @@ export default function RootLayout({
 /* Match the site's fixed dark application palette. */
 @media all {
     .portfolio-network { border-top-color: #374151; }
-    .portfolio-network h3 { color: #6b7280; }
+    .portfolio-network .network-heading { color: #6b7280; }
     .network-card { background: #1f2937; }
     .network-card:hover { background: #374151; }
     .network-name { color: #f9fafb; }
@@ -541,7 +541,7 @@ export default function RootLayout({
 }
 </style>
 <section class="portfolio-network">
-    <h3>🚀 Explore Our Network</h3>
+    <p class="network-heading">🚀 Explore Our Network</p>
     <nav class="network-grid" aria-label="Portfolio network">
             <a href="https://gitdealflow.com" class="network-card" 
                title="GitDealFlow: Track startup acquisitions & funding rounds">

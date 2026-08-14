@@ -48,6 +48,18 @@ export function prevChapter(slug: string): BookChapter | undefined {
  */
 export function renderChapterHtml(md: string): string {
   const lines = md.split(/\r?\n/);
+
+  // Every chapter md starts with `# <Title>`, and BOTH call sites
+  // (/book/read/[chapter] and /book/print) render chapter.title from the
+  // manifest as the page/section heading. Rendering the md H1 too produced
+  // two H1s per chapter page (heading-hierarchy audit 2026-08-15), so the
+  // leading H1 line is dropped here. H2/H3 in the md are kept as-is.
+  let first = 0;
+  while (first < lines.length && lines[first].trim() === "") first++;
+  if (first < lines.length && /^# /.test(lines[first])) {
+    lines.splice(first, 1);
+  }
+
   const out: string[] = [];
   let i = 0;
   while (i < lines.length) {

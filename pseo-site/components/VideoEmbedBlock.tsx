@@ -113,12 +113,16 @@ export function VideoEmbedBlock({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(buildJsonLd(v)) }}
       />
-      <h2
+      {/* sr-only label as <p>, not <h2>: on /walkthrough this block renders
+          BEFORE the page H1, and a heading ahead of the H1 breaks the
+          document outline. aria-labelledby works on any element with an
+          id, so the section label is preserved. */}
+      <p
         id={`video-${slug}`}
         className="sr-only"
       >
         {v.title}
-      </h2>
+      </p>
 
       <figure
         className={`${aspectClass} overflow-hidden rounded-xl bg-black border border-slate-800 shadow-2xl`}

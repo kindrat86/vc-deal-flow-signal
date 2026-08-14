@@ -99,10 +99,12 @@ function PlaceholderHero({ latestMonth }: { latestMonth: string }) {
       <p className="text-slate-400 text-xs font-semibold uppercase tracking-wider">
         Stadium Pitch · monthly cadence
       </p>
-      <h2 className="text-xl sm:text-2xl font-bold text-gray-100 leading-snug">
+      {/* plain p, not a heading element: this hero renders ABOVE the page H1 on
+          /state-of-github, a heading before the H1 breaks the outline. */}
+      <p className="text-xl sm:text-2xl font-bold text-gray-100 leading-snug">
         The {latestMonth} address is live below, next drop ships first
         Wednesday of next month, 09:00 UTC.
-      </h2>
+      </p>
       <div
         aria-hidden="true"
         className="h-6 w-48 rounded bg-slate-800/40"
@@ -131,10 +133,12 @@ function LiveHero({
           Just dropped · Live window
         </p>
       </div>
-      <h2 className="text-xl sm:text-2xl font-bold text-gray-100 leading-snug">
+      {/* plain p, not a heading element: this hero renders ABOVE the page H1 on
+          /state-of-github, a heading before the H1 breaks the outline. */}
+      <p className="text-xl sm:text-2xl font-bold text-gray-100 leading-snug">
         The {latestMonth} address is live now. Read it before the public
         window closes.
-      </h2>
+      </p>
       <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
         {latestTitle}
       </p>
@@ -175,9 +179,11 @@ function ReplayHero({
           Replay · {latestMonth}
         </p>
       </div>
-      <h2 className="text-xl sm:text-2xl font-bold text-gray-100 leading-snug">
+      {/* plain p, not a heading element: this hero renders ABOVE the page H1 on
+          /state-of-github, a heading before the H1 breaks the outline. */}
+      <p className="text-xl sm:text-2xl font-bold text-gray-100 leading-snug">
         Next live drop, {nextMonth}.
-      </h2>
+      </p>
       <div className="space-y-2">
         <p className="text-sky-200 text-xs font-semibold uppercase tracking-wider">
           Drops in

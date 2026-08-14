@@ -91,9 +91,9 @@ export function DataNerdSignoff({
             <p className="text-amber-300 text-[10px] font-semibold uppercase tracking-wider">
               Whose voice you were just reading
             </p>
-            <h3 className="text-gray-100 font-bold text-lg leading-snug">
+            <p className="text-gray-100 font-bold text-lg leading-snug">
               {DATA_NERD_NAME}
-            </h3>
+            </p>
             <p className="text-gray-300 text-sm leading-relaxed">
               {DATA_NERD_BIO_MEDIUM}
             </p>
@@ -137,9 +137,9 @@ export function DataNerdSignoff({
           <p className="text-amber-300 text-[10px] font-semibold uppercase tracking-wider">
             Signed
           </p>
-          <h3 className="text-gray-100 font-bold text-base">
+          <p className="text-gray-100 font-bold text-base">
             {DATA_NERD_NAME}
-          </h3>
+          </p>
           <p className="text-gray-400 text-sm leading-relaxed">
             {DATA_NERD_BIO_SHORT}
           </p>

@@ -802,9 +802,9 @@ export default function Home() {
             <p className="text-sky-400 text-[11px] font-semibold uppercase tracking-wider mb-1.5">
               1 · Hook
             </p>
-            <h3 className="text-gray-100 font-semibold text-sm mb-1.5">
+            <h2 className="text-gray-100 font-semibold text-sm mb-1.5">
               Grab your attention in one sentence.
-            </h3>
+            </h2>
             <p className="text-gray-400 text-xs leading-relaxed">
               The headline above is the Hook, &ldquo;47 days before the deck.&rdquo;
               It names a specific, measurable gap every investor feels. No
@@ -815,9 +815,9 @@ export default function Home() {
             <p className="text-emerald-400 text-[11px] font-semibold uppercase tracking-wider mb-1.5">
               2 · Story
             </p>
-            <h3 className="text-gray-100 font-semibold text-sm mb-1.5">
+            <h2 className="text-gray-100 font-semibold text-sm mb-1.5">
               Keep your attention with a true moment.
-            </h3>
+            </h2>
             <p className="text-gray-400 text-xs leading-relaxed">
               The block above this banner is the Story, a Saturday morning, a
               laptop, a fintech&rsquo;s GitHub lighting up. Stories carry truth
@@ -828,9 +828,9 @@ export default function Home() {
             <p className="text-indigo-400 text-[11px] font-semibold uppercase tracking-wider mb-1.5">
               3 · Offer
             </p>
-            <h3 className="text-gray-100 font-semibold text-sm mb-1.5">
+            <h2 className="text-gray-100 font-semibold text-sm mb-1.5">
               Convert your attention into action.
-            </h3>
+            </h2>
             <p className="text-gray-400 text-xs leading-relaxed">
               Every page ends with a clear next step, a free Sunday digest, a
               paid dashboard, or a methodology deep-dive. The Offer is always an
