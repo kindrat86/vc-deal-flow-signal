@@ -5,6 +5,7 @@ import {
   getStartupPeriodData,
   getAllStartupPeriodPairs,
   getDataLastModified,
+  getRelatedStartups,
 } from "@/lib/data";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
@@ -57,6 +58,10 @@ export default async function StartupPeriodPage({ params }: PageProps) {
   const { profile, entry, nextEntry, prevEntry, sectorRank, sectorTotal } = data;
   const lastModified = getDataLastModified();
   const velNum = parseInt(entry.commitVelocityChange.replace(/[^0-9-]/g, ""), 10) || 0;
+
+  // Same-sector peers from this page's own period, so historical snapshots
+  // cross-link to the startups they were moving with at the time.
+  const relatedStartups = getRelatedStartups(slug, entry.sectorSlug, 6, period);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -176,6 +181,20 @@ export default async function StartupPeriodPage({ params }: PageProps) {
           },
         ],
       },
+      ...(relatedStartups.length > 0
+        ? [
+            {
+              "@type": "ItemList",
+              name: `Related startups in ${entry.sectorName} (${entry.periodName})`,
+              itemListElement: relatedStartups.map((r, i) => ({
+                "@type": "ListItem",
+                position: i + 1,
+                name: r.name,
+                url: `https://signals.gitdealflow.com/startup/${r.slug}`,
+              })),
+            },
+          ]
+        : []),
     ],
   };
 
@@ -342,6 +361,51 @@ export default async function StartupPeriodPage({ params }: PageProps) {
             )}
           </div>
         </nav>
+
+        {/* Same-sector peers from this period */}
+        {relatedStartups.length > 0 && (
+          <section className="mb-10" aria-label="Related startups">
+            <h2 className="text-lg font-semibold text-gray-100 mb-4">
+              Related Startups in {entry.sectorName} ({entry.periodName})
+            </h2>
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+              {relatedStartups.map((r) => {
+                const rChangePct =
+                  parseInt(r.commitVelocityChange.replace(/[^0-9-]/g, ""), 10) || 0;
+                return (
+                  <Link
+                    key={r.slug}
+                    href={`/startup/${r.slug}`}
+                    className="group block rounded-lg border border-slate-800 bg-slate-900 p-4 hover:border-sky-700/50 hover:bg-slate-800/80 transition-all"
+                  >
+                    <h3 className="text-gray-200 font-medium text-sm group-hover:text-sky-400 transition-colors mb-1.5">
+                      {r.name}
+                    </h3>
+                    <div className="flex flex-wrap gap-1.5 mb-2">
+                      <span className="inline-block rounded-full bg-slate-800 px-2 py-0.5 text-[10px] text-gray-400">
+                        {r.stage}
+                      </span>
+                      <span className="inline-block rounded-full bg-slate-800 px-2 py-0.5 text-[10px] text-gray-400">
+                        {r.signalType}
+                      </span>
+                    </div>
+                    <div className="flex items-center gap-3 text-xs text-gray-500">
+                      <span>
+                        Velocity:{" "}
+                        <span className={rChangePct >= 0 ? "text-emerald-400" : "text-red-400"}>
+                          {r.commitVelocityChange}
+                        </span>
+                      </span>
+                      <span>
+                        Commits: <span className="text-gray-300">{r.commitVelocity14d}</span>
+                      </span>
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          </section>
+        )}
 
         <div className="rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">
           <h2 className="text-gray-100 font-semibold text-lg mb-2">

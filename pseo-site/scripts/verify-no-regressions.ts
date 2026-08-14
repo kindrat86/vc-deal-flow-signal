@@ -125,7 +125,7 @@ check(
 );
 
 // ---------------------------------------------------------------------------
-// 4. Suspended X account in the author entity (2026-07-31). x.com/data_nerd
+// 4. Suspended X account in the author entity (2026-07-31). x.com/sipiteno
 //    renders "Account suspended"; a dead profile in sameAs/rel=me is a
 //    negative trust signal to Google and to AI engines reconciling the author.
 // ---------------------------------------------------------------------------
@@ -147,7 +147,7 @@ check(
   }
   if (hits) {
     failures.push(
-      `Suspended x.com/data_nerd is back in the entity graph (dead profile = negative trust signal).\n    ${hits
+      `Suspended x.com/sipiteno is back in the entity graph (dead profile = negative trust signal).\n    ${hits
         .split("\n")
         .join("\n    ")}\n    fix:  remove the sameAs/rel=me/profile reference; only re-add X once a LIVE handle exists`,
     );
@@ -274,6 +274,77 @@ check(
   "verify route dropped timezone storage: the Resend contact loses its tz and the drip reverts to server time.",
   (s) => s.includes('clip(url.searchParams.get("tz"), 64)') && s.includes("contactBody.last_name"),
   "restore the tz clip from the verify query and contactBody.last_name = tz:${tz}",
+);
+
+// ---------------------------------------------------------------------------
+// 9. Root loading.tsx must NOT exist (2026-08-14). Its Suspense boundary
+//    streamed every page with HTTP 200, so notFound()/dynamicParams=false on
+//    dynamic routes ([locale], [slug], [handle], ...) returned 200 soft-404s
+//    (a streamed RSC payload instead of hydrated HTML + a clean 404). Removing
+//    the trigger restores clean 404s site-wide; re-adding it reintroduces the bug.
+// ---------------------------------------------------------------------------
+{
+  const loadingPath = join(ROOT, "app", "loading.tsx");
+  if (existsSync(loadingPath)) {
+    failures.push(
+      `Root loading.tsx re-added (reintroduces the streaming soft-404 bug).\n    file: app/loading.tsx\n    fix:  remove it; streaming makes notFound() return HTTP 200 instead of 404\n    reason: 2026-08-14 site-wide soft-404 -> clean 404 fix`,
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
+// 10. Related-startups module must render on ALL startup pages (2026-08-14).
+//     getRelatedStartups used to hard-require getCurrentPeriod(); only 10/20
+//     sectors had the global current snapshot, so the module silently rendered
+//     nothing on every ai-ml / fintech / climate-tech / developer-tools /
+//     cybersecurity startup page (~half the 2,290-page long tail, incl.
+//     huggingface and langchain). The fix selects the SECTOR's latest
+//     snapshot and the period pages (/startup/{slug}/{period}) gained the
+//     module too. A tree without either re-orphans the long tail.
+// ---------------------------------------------------------------------------
+{
+  const dataSrc = read("lib/data.ts") ?? "";
+  // Slice the getRelatedStartups function body (up to the next section
+  // header) and assert it no longer depends on the global current period.
+  const fnStart = dataSrc.indexOf("export function getRelatedStartups(");
+  if (fnStart === -1) {
+    failures.push(
+      `getRelatedStartups missing from lib/data.ts.\n    fix:  restore the function (see 2026-08-14 related-startups fix)`,
+    );
+  } else {
+    // Slice to the next section header, not a fixed width, so a regression
+    // appended to the end of the function is still caught.
+    const nextSection = dataSrc.indexOf(
+      "// ---------------------------------------------------------------------------",
+      fnStart + 1,
+    );
+    const fnBody = dataSrc.slice(fnStart, nextSection === -1 ? undefined : nextSection);
+    if (fnBody.includes("getCurrentPeriod()")) {
+      failures.push(
+        `getRelatedStartups depends on getCurrentPeriod() again: the module silently vanishes on sectors lacking the global current snapshot (~half the long tail).\n    fix:  select the sector's own latest snapshot (filtered against data.periods), not the global period`,
+      );
+    }
+    if (!fnBody.includes("fallbackPeriod")) {
+      failures.push(
+        `getRelatedStartups lost its per-sector period fallback.\n    fix:  resolve the snapshot from Object.keys(sector.periods) sorted by data.periods order`,
+      );
+    }
+  }
+}
+check(
+  "app/startup/[slug]/page.tsx",
+  "startup profile page no longer renders the related-startups module.",
+  (s) => s.includes("getRelatedStartups(slug, latest.sectorSlug, 6)") && s.includes('aria-label="Related startups"'),
+  "restore the related-startups section (heading + 6-card grid) and its call",
+);
+check(
+  "app/startup/[slug]/[period]/page.tsx",
+  "startup period pages lost the related-startups module: 1,290 historical pages re-orphaned.",
+  (s) =>
+    s.includes('getRelatedStartups(slug, entry.sectorSlug, 6, period)') &&
+    s.includes('aria-label="Related startups"') &&
+    s.includes('"@type": "ItemList"'),
+  "restore the relatedStartups computation, the card-grid section, and the ItemList JSON-LD node",
 );
 
 // ---------------------------------------------------------------------------

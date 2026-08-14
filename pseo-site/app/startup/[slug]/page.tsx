@@ -6,6 +6,7 @@ import {
   getStartupProfile,
   getCurrentPeriod,
   getRelatedStartups,
+  getSectorLatestPeriod,
   computeVelocityScore,
   getVelocityLabel,
 } from "@/lib/data";
@@ -138,6 +139,13 @@ export default async function StartupPage({ params }: PageProps) {
 
   // Related startups from the same sector
   const relatedStartups = getRelatedStartups(slug, latest.sectorSlug, 6);
+  // Honesty: when the sector's freshest snapshot is older than the global
+  // current period, say which cohort the related list comes from.
+  const relatedPeriod = getSectorLatestPeriod(latest.sectorSlug);
+  const relatedPeriodLabel =
+    relatedPeriod && relatedPeriod.slug !== period.slug
+      ? relatedPeriod.name
+      : null;
 
   // Generate FAQs
   const faqs = [
@@ -725,6 +733,8 @@ export default async function StartupPage({ params }: PageProps) {
           <section className="mb-10" aria-label="Related startups">
             <h2 className="text-lg font-semibold text-gray-100 mb-4">
               Related Startups in {latest.sectorName}
+              {relatedPeriodLabel &&
+                ` (${relatedPeriodLabel} cohort)`}
             </h2>
             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
               {relatedStartups.map((r) => {

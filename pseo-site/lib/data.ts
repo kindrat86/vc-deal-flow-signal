@@ -1224,20 +1224,38 @@ export interface RelatedStartup {
 }
 
 /**
- * Returns related startups from the same sector in the current period,
- * excluding the given startup. Sorted by commit velocity change descending.
+ * Returns related startups from the same sector, excluding the given
+ * startup. Sorted by commit velocity change descending.
+ *
+ * Period selection (2026-08-14 fix): use the SECTOR's most recent snapshot,
+ * not the global current period. Sector snapshots advance on the crawler's
+ * schedule, so the global current period (q3-2026) only exists for 10/20
+ * sectors. The old hard requirement on getCurrentPeriod() made the module
+ * silently render nothing on every ai-ml / fintech / climate-tech /
+ * developer-tools / cybersecurity startup page (~half of the 2,290-page
+ * long tail, including huggingface and langchain). Using the sector's own
+ * latest snapshot means related links render wherever the sector has data.
  */
 export function getRelatedStartups(
   startupSlug: string,
   sectorSlug: string,
-  limit = 6
+  limit = 6,
+  periodSlug?: string
 ): RelatedStartup[] {
-  const period = getCurrentPeriod();
   const sector = data.sectors.find((s) => s.slug === sectorSlug);
   if (!sector) return [];
 
-  const snapshot = sector.periods[period.slug];
-  if (!snapshot) return [];
+  // Prefer the sector's freshest snapshot that actually exists.
+  const periodOrder = data.periods.map((p) => p.slug);
+  const fallbackPeriod = Object.keys(sector.periods)
+    .filter((p) => periodOrder.includes(p))
+    .sort((a, b) => periodOrder.indexOf(a) - periodOrder.indexOf(b))[0];
+  // A period override (history pages) wins when that snapshot exists.
+  const chosenPeriod =
+    periodSlug && sector.periods[periodSlug] ? periodSlug : fallbackPeriod;
+  if (!chosenPeriod) return [];
+
+  const snapshot = sector.periods[chosenPeriod];
 
   const toSlug = (name: string) =>
     name
@@ -1260,6 +1278,22 @@ export function getRelatedStartups(
       githubUrl: s.githubUrl,
       description: s.description,
     }));
+}
+
+/**
+ * The sector's most recent period that actually has a snapshot. Used to
+ * label the related-startups module honestly (e.g. "Q2 2026 cohort" on
+ * sectors the crawler has not refreshed for the global current period).
+ */
+export function getSectorLatestPeriod(sectorSlug: string): Period | null {
+  const sector = data.sectors.find((s) => s.slug === sectorSlug);
+  if (!sector) return null;
+  const periodOrder = data.periods.map((p) => p.slug);
+  const latest = Object.keys(sector.periods)
+    .filter((p) => periodOrder.includes(p))
+    .sort((a, b) => periodOrder.indexOf(a) - periodOrder.indexOf(b))[0];
+  if (!latest) return null;
+  return data.periods.find((p) => p.slug === latest) ?? null;
 }
 
 // ---------------------------------------------------------------------------
