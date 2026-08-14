@@ -3,7 +3,15 @@ import Link from "next/link";
 import { AgentSummary } from "@/components/AgentSummary";
 import { PlainEnglishNote } from "@/components/PlainEnglishNote";
 import { TrustConversionBlock } from "@/components/TrustConversionBlock";
-import { getDataLastModified } from "@/lib/data";
+import {
+  getDataLastModified,
+  getAllSectors,
+  getSectorLatestPeriod,
+  getAllStageSlugs,
+  getStagePageData,
+  getTopMoversThisWeek,
+} from "@/lib/data";
+import { slugify } from "@/lib/slugify";
 import PSEOFooterNav from "@/components/PSEOFooterNav";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
@@ -331,6 +339,32 @@ export default function MethodologyPage() {
 
   const asOf = getDataLastModified().toISOString().slice(0, 10);
 
+  // Internal-link targets: route link equity from this high-authority
+  // (SSRN-linked) page out to the data pages it describes — sector
+  // rankings, stage rollups, and this week's top movers. Each resolves
+  // against the latest available period so the links self-maintain as
+  // new quarters ship (never hardcode a period slug).
+  const sectorLinks = getAllSectors()
+    .map((s) => {
+      const latest = getSectorLatestPeriod(s.slug);
+      return latest
+        ? { name: s.name, href: `/startups-to-watch/${s.slug}-${latest.slug}` }
+        : null;
+    })
+    .filter((x): x is { name: string; href: string } => x !== null);
+
+  const stageLinks = getAllStageSlugs()
+    .map((slug) => {
+      const data = getStagePageData(slug);
+      return data ? { name: data.name, href: `/stage/${slug}` } : null;
+    })
+    .filter((x): x is { name: string; href: string } => x !== null);
+
+  const topMoverLinks = getTopMoversThisWeek(6).map((m) => ({
+    name: m.name,
+    href: `/startup/${slugify(m.name)}`,
+  }));
+
   return (
     <>
       <HreflangLinks
@@ -627,6 +661,68 @@ export default function MethodologyPage() {
               guarantee of success. Always conduct your own due diligence before
               making investment decisions.
             </p>
+          </div>
+        </section>
+
+        {/* Explore the live rankings (internal-link hub) */}
+        <section className="mb-10">
+          <h2 className="text-xl font-semibold text-gray-100 mb-3">
+            Explore the live rankings
+          </h2>
+          <p className="text-gray-400 text-sm leading-relaxed mb-5">
+            Every Monday this methodology produces a fresh ranked panel. Jump
+            straight into the data it generates: by sector, by funding stage, or
+            straight to this week&apos;s top movers.
+          </p>
+
+          <div className="rounded-lg border border-slate-800 bg-slate-900 p-6 mb-4">
+            <h3 className="text-gray-100 font-medium mb-3">By sector</h3>
+            <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-2 text-sm">
+              {sectorLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sky-400 hover:text-sky-300 hover:underline underline-offset-2"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="rounded-lg border border-slate-800 bg-slate-900 p-6 mb-4">
+            <h3 className="text-gray-100 font-medium mb-3">By funding stage</h3>
+            <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+              {stageLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sky-400 hover:text-sky-300 hover:underline underline-offset-2"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div className="rounded-lg border border-slate-800 bg-slate-900 p-6">
+            <h3 className="text-gray-100 font-medium mb-3">
+              This week&apos;s top movers
+            </h3>
+            <ul className="flex flex-wrap gap-x-6 gap-y-2 text-sm">
+              {topMoverLinks.map((link) => (
+                <li key={link.href}>
+                  <Link
+                    href={link.href}
+                    className="text-sky-400 hover:text-sky-300 hover:underline underline-offset-2"
+                  >
+                    {link.name}
+                  </Link>
+                </li>
+              ))}
+            </ul>
           </div>
         </section>
 
