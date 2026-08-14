@@ -74,6 +74,16 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        // /contact never existed as a page; contact happens via
+        // signals@gitdealflow.com (surfaced on /about). Investors, AI
+        // crawlers, and diligence flows probing the conventional /contact
+        // URL hit a 404 trust leak. 308 to the strongest identity page
+        // instead (added 2026-08-15, live-audit finding).
+        source: "/contact",
+        destination: "/about",
+        permanent: true,
+      },
+      {
         // Legacy pSEO generator once shadowed the real /alternatives/[slug]
         // pages with a bare-slug static file at /vs/tracxn (removed
         // 2026-07-20, see predeploy audit). Redirect the old inbound

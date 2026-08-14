@@ -1,6 +1,6 @@
 {
   "outputDirectory": ".",
-  "buildCommand": "node scripts/verify-jsonld.mjs .",
+  "buildCommand": "node scripts/verify-vercel-config.mjs && node scripts/verify-jsonld.mjs .",
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
@@ -127,6 +127,11 @@
         }
       ],
       "destination": "https://gitdealflow.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/contact",
+      "destination": "/about",
       "permanent": true
     },
     {

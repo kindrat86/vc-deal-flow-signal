@@ -56,6 +56,7 @@ data/momentum-index/_build_momentum_index.mjs
 # no secrets, no keys and no site-specific data.
 scripts/*
 !scripts/verify-jsonld.mjs
+!scripts/verify-vercel-config.mjs
 
 # NEVER add a bare `scripts/` line. It reads like the right hardening, churnlens
 # and carshake both have one, and here it fails every deploy — see above.

@@ -1216,6 +1216,21 @@ for (const tool of [
   );
 }
 
+// ---------------------------------------------------------------------------
+// /contact must 308 to /about, not 404 (2026-08-15)
+// ---------------------------------------------------------------------------
+// The site never had a /contact page; investors and AI crawlers probing the
+// conventional contact URL got a 404 trust leak. The fix is a single
+// next.config.ts redirect. This assertion makes a tree that lacks it
+// undeployable, so no other lineage can silently bring the 404 back.
+check(
+  "next.config.ts",
+  "/contact 404s again: the /contact -> /about permanent redirect is missing from next.config.ts redirects().",
+  (s) => s.includes('source: "/contact"') && s.includes('destination: "/about"'),
+  'restore the { source: "/contact", destination: "/about", permanent: true } entry in redirects()',
+);
+
+// ---------------------------------------------------------------------------
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +
