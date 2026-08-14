@@ -969,6 +969,39 @@ check(
 );
 
 // ---------------------------------------------------------------------------
+// §18 Mobile tap-target and micro-font fixes (2026-08-15). Playwright device
+// audit (iPhone SE/14, Galaxy S8, 320px) measured every table row on the
+// startups-to-watch and stage templates: the Website/LinkedIn icon links
+// (p-2 -m-2) overlapped the company card link above by 2px (negative margin
+// beating mt-1.5) and their hit boxes sat only 4px apart (gap-5 minus 2x8px
+// negative margins), so fat-finger taps hit the wrong target. Also fixed:
+// the CuriosityGate disclaimer at 10px, its Insider-preview chip at 10px,
+// and the SignalDistribution donut label at 8px, all below the 12px mobile
+// readability floor. A lineage that reverts any of these re-introduces
+// overlapping tap targets or micro-fonts.
+// ---------------------------------------------------------------------------
+check(
+  "components/StartupTable.tsx",
+  "StartupTable icon row reverted: Website/LinkedIn links overlap the company card link and each other again (tap-target overlap, measured 2026-08-15).",
+  (s) => s.includes("mt-3 flex items-center gap-8"),
+  "keep the icon container as mt-3 flex items-center gap-8 (4px clear of the card link above, 16px between the two icon hit boxes)",
+);
+
+check(
+  "components/CuriosityGate.tsx",
+  "CuriosityGate reverted to 10px text (below the 12px mobile readability floor, measured 2026-08-15).",
+  (s) => !s.includes("text-[10px]"),
+  "keep the projections disclaimer at text-xs (12px) and the Insider-preview chip at text-[11px] or larger",
+);
+
+check(
+  "components/charts/SignalDistribution.tsx",
+  "SignalDistribution donut label reverted to 8px (below the 12px mobile readability floor, measured 2026-08-15).",
+  (s) => !s.includes("fontSize={8}"),
+  "keep the 'startups' donut sub-label at fontSize={10} or larger",
+);
+
+// ---------------------------------------------------------------------------
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +

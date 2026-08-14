@@ -75,7 +75,7 @@ export default function StartupTable({ startups, tableName }: StartupTableProps)
                     </span>
                   </Link>
                   {(startup.websiteUrl || startup.linkedinUrl) && (
-                    <div className="mt-1.5 flex items-center gap-5">
+                    <div className="mt-3 flex items-center gap-8">
                       {startup.websiteUrl && (
                         <a
                           href={startup.websiteUrl}

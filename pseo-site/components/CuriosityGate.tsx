@@ -50,7 +50,7 @@ export default function CuriosityGate({
       className={`rounded-lg border-2 border-signal-500/30 bg-gradient-to-br from-signal-500/[0.03] to-slate-900 p-5 ${className}`}
     >
       <div className="flex items-center gap-2 mb-3">
-        <span className="inline-block bg-signal-500/15 text-signal-300 text-[10px] font-bold uppercase tracking-[0.15em] px-2 py-1 rounded-full border border-signal-500/30">
+        <span className="inline-block bg-signal-500/15 text-signal-300 text-[11px] font-bold uppercase tracking-[0.15em] px-2 py-1 rounded-full border border-signal-500/30">
           Insider preview
         </span>
         <p className="text-gray-400 text-xs">Free with email signup</p>
@@ -81,7 +81,7 @@ export default function CuriosityGate({
       >
         Unlock with email →
       </a>
-      <p className="text-gray-400 text-[10px] mt-3 italic">
+      <p className="text-gray-400 text-xs mt-3 italic">
         Projections are model estimates derived from each org&apos;s public commit
         signal and the SSRN-published methodology, not statements of fact.
         Cross-reference with primary sources before acting.

@@ -93,7 +93,7 @@ export default function SignalDistribution({
             y={cy + 10}
             textAnchor="middle"
             fill="#64748b"
-            fontSize={8}
+            fontSize={10}
             fontFamily="system-ui"
           >
             startups
