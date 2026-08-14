@@ -66,13 +66,85 @@ export const pillars: Record<string, Pillar> = {
     slug: "founder-research",
     name: "Operator Notes",
     description:
-      "First-hand notes from running the dataset — building a longitudinal panel of 4,200+ startup GitHub orgs, MCP server lessons, and other operator-side observations.",
+      "First-hand notes from running the dataset — building a longitudinal panel of 369+ startup GitHub orgs, MCP server lessons, and other operator-side observations.",
     keywords: [
       "GitHub dataset",
       "operator notes",
       "MCP server",
       "VC dataset construction",
       "longitudinal panel",
+    ],
+  },
+  "startup-due-diligence": {
+    slug: "startup-due-diligence",
+    name: "Startup Due Diligence",
+    description:
+      "How investors evaluate a startup before writing the check: team, market, product, and the engineering layer public GitHub data reveals before the data room opens.",
+    keywords: [
+      "startup due diligence",
+      "VC due diligence",
+      "how to evaluate a startup",
+      "due diligence checklist",
+      "technical due diligence",
+      "investment due diligence",
+    ],
+  },
+
+  "deal-flow-management": {
+    slug: "deal-flow-management",
+    name: "Deal Flow Management",
+    description:
+      "How to capture, triage, score, and prioritize inbound startup opportunities so the strongest deals surface before they raise.",
+    keywords: [
+      "deal flow management",
+      "VC pipeline management",
+      "deal flow CRM",
+      "deal scoring",
+      "startup pipeline",
+      "deal triage",
+    ],
+  },
+
+  "venture-scouting": {
+    slug: "venture-scouting",
+    name: "Venture Scouting",
+    description:
+      "How scouts and angels source, vet, and refer startups: scout programs, referral networks, and the leading-indicator data that finds deals before the databases do.",
+    keywords: [
+      "venture scouting",
+      "startup scouting",
+      "scout program",
+      "angel sourcing",
+      "deal referral",
+      "startup discovery",
+    ],
+  },
+
+  "engineering-velocity-benchmarks": {
+    slug: "engineering-velocity-benchmarks",
+    name: "Engineering Velocity Benchmarks",
+    description:
+      "Reference numbers for reading GitHub activity: what counts as fast, how sectors differ, and where the acceleration thresholds sit in the weekly panel.",
+    keywords: [
+      "engineering velocity benchmark",
+      "commit velocity benchmark",
+      "GitHub activity benchmark",
+      "startup engineering benchmarks",
+      "contributor growth benchmark",
+    ],
+  },
+
+  "founder-evaluation": {
+    slug: "founder-evaluation",
+    name: "Founder Evaluation",
+    description:
+      "How to assess founder quality from public signals: technical capability, shipping discipline, and team-building patterns visible in GitHub and beyond.",
+    keywords: [
+      "founder evaluation",
+      "founder due diligence",
+      "technical founder assessment",
+      "founder quality",
+      "startup founder signals",
     ],
   },
 };
@@ -112,6 +184,16 @@ export const postPillars: Record<string, string> = {
 
   "30-research-findings-now-one-page-each": "github-signals-methodology",
   "install-vc-deal-flow-signal-mcp-in-any-agent-runtime": "deal-sourcing-workflow",
+  "startup-due-diligence-checklist-for-investors": "startup-due-diligence",
+  "technical-due-diligence-with-github-data": "startup-due-diligence",
+  "deal-flow-management-for-early-stage-investors": "deal-flow-management",
+  "deal-flow-scoring-framework": "deal-flow-management",
+  "venture-scouting-guide": "venture-scouting",
+  "pre-seed-scouting-with-github-signals": "venture-scouting",
+  "engineering-velocity-benchmarks-by-stage": "engineering-velocity-benchmarks",
+  "commit-velocity-benchmark-numbers": "engineering-velocity-benchmarks",
+  "how-to-evaluate-startup-founders": "founder-evaluation",
+  "technical-founder-assessment-github": "founder-evaluation",
 };
 
 export function getPillarForPost(slug: string): Pillar | undefined {

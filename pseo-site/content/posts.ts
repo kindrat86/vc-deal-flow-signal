@@ -56,13 +56,13 @@ export const posts: BlogPost[] = [
     slug: "enterprise-saas-github-signal-patterns",
     title: "Enterprise SaaS GitHub Signal Patterns: A Sector Taxonomy for VC Sourcing",
     description:
-      "Enterprise SaaS startups signal differently on GitHub than developer-tools or AI companies. A sector taxonomy covering integration API buildouts, SDK releases, contributor compression reversal, and the compliance-cycle false positive — with stage-specific benchmarks from the 4,200-startup panel.",
+      "Enterprise SaaS startups signal differently on GitHub than developer-tools or AI companies. A sector taxonomy covering integration API buildouts, SDK releases, contributor compression reversal, and the compliance-cycle false positive — with stage-specific benchmarks from the 369-startup panel.",
     summary:
-      "Enterprise SaaS companies carry the lowest commit velocity baseline of any software sector on the 4,200-startup panel, yet they produce some of the most reliable fundraise-precursor signals when read with sector-appropriate metrics. This post taxonomizes the five dominant GitHub signal patterns in enterprise SaaS — integration API buildout, SDK/CLI release, multi-module expansion, contributor compression reversal, and compliance-to-product pivot — with stage-specific benchmarks from pre-seed through Series B and a structured false-positive checklist. The central finding: velocity is the wrong primary metric for this sector. Contributor count change and repository expansion are stronger leading indicators of capital events in enterprise SaaS than in any other sector except fintech.",
+      "Enterprise SaaS companies carry the lowest commit velocity baseline of any software sector on the 369-startup panel, yet they produce some of the most reliable fundraise-precursor signals when read with sector-appropriate metrics. This post taxonomizes the five dominant GitHub signal patterns in enterprise SaaS — integration API buildout, SDK/CLI release, multi-module expansion, contributor compression reversal, and compliance-to-product pivot — with stage-specific benchmarks from pre-seed through Series B and a structured false-positive checklist. The central finding: velocity is the wrong primary metric for this sector. Contributor count change and repository expansion are stronger leading indicators of capital events in enterprise SaaS than in any other sector except fintech.",
     date: "2026-05-29",
     relatedSectors: ["enterprise-saas", "fintech", "developer-tools", "data-infrastructure", "ai-ml"],
     keyStats: [
-      { value: "35–60%", label: "Lower baseline commit velocity", context: "Enterprise SaaS vs. AI-tools startups at equivalent stage, per 4,200-startup panel" },
+      { value: "35–60%", label: "Lower baseline commit velocity", context: "Enterprise SaaS vs. AI-tools startups at equivalent stage, per 369-startup panel" },
       { value: "28-day", label: "Optimal observation window", context: "Longer than the 14-day default; smooths sprint-cycle artifacts in enterprise SaaS" },
       { value: "4–7 weeks", label: "Median lead time", context: "Enterprise SaaS acceleration-to-fundraise-announcement in the panel" },
       { value: "75%+", label: "Contributor growth threshold", context: "Contributor compression reversal signal; baseline of ≤5 active authors" },
@@ -109,7 +109,7 @@ export const posts: BlogPost[] = [
     ],
     body: `Enterprise SaaS is the sector where the simplest version of the GitHub engineering acceleration model breaks down first. The 14-day commit velocity threshold that works reliably for AI and developer-tools companies systematically under-ranks enterprise SaaS startups — not because the companies are uninteresting, but because the sector carries a structurally lower commit baseline that a naive percentile ranking treats as inactivity.
 
-Across the 4,200-startup panel [1][2], enterprise SaaS companies average 35–60% fewer commits per 14-day window than AI-tools startups at equivalent funding stage. The causal chain is short: SOC 2 Type II compliance requirements, enterprise customer change-notification windows, and the review gates embedded in most B2B engineering processes all throttle deployment frequency in ways that public GitHub commit data reflects directly. DORA research confirms that deployment frequency is significantly lower in regulated and customer-sensitive environments than in product-led growth companies [4]. A two-week sprint that produces 20 commits in a developer-tools company may produce 12 commits at an enterprise SaaS company doing equivalent engineering work.
+Across the 369-startup panel [1][2], enterprise SaaS companies average 35–60% fewer commits per 14-day window than AI-tools startups at equivalent funding stage. The causal chain is short: SOC 2 Type II compliance requirements, enterprise customer change-notification windows, and the review gates embedded in most B2B engineering processes all throttle deployment frequency in ways that public GitHub commit data reflects directly. DORA research confirms that deployment frequency is significantly lower in regulated and customer-sensitive environments than in product-led growth companies [4]. A two-week sprint that produces 20 commits in a developer-tools company may produce 12 commits at an enterprise SaaS company doing equivalent engineering work.
 
 The implication for signal extraction is that threshold-based screens configured for the general startup population will systematically filter out enterprise SaaS breakouts. A company accelerating from 18 commits per 14-day window to 36 commits — a +100% acceleration — looks unimpressive in absolute terms but is, within the enterprise SaaS sector distribution, a top-decile move. Sector-stratified ranking — computing percentile rank within enterprise SaaS rather than across the full panel — is the correct default for this sector [2].
 
@@ -167,15 +167,15 @@ The sector-stratified rankings, signal thresholds, and underlying methodology ar
     slug: "how-vcs-track-engineering-acceleration-2026-playbook",
     title: "How VCs Track Startup Engineering Acceleration: The Complete 2026 Playbook",
     description:
-      "The complete 2026 playbook on engineering acceleration as a VC deal flow signal — pipeline, metrics, benchmarks, predictive analytics, screening workflow, and sector patterns, with worked examples from a 4,200-startup GitHub panel.",
+      "The complete 2026 playbook on engineering acceleration as a VC deal flow signal — pipeline, metrics, benchmarks, predictive analytics, screening workflow, and sector patterns, with worked examples from a 369-startup GitHub panel.",
     summary:
-      "Engineering acceleration — the rate of change in a startup's GitHub commit, contributor, and repository activity relative to its own 14-day baseline — has emerged as one of the highest-signal leading indicators in venture capital deal flow. This playbook is the operating model: building a GitHub data pipeline, defining the four metrics that matter, benchmarking healthy acceleration by stage, turning signals into fundraise forecasts, automating screening at the fund level, and integrating the resulting watchlist into a normal investment workflow. Drawing on the 4,200-startup longitudinal panel maintained at VC Deal Flow Signal, the piece quantifies typical lead times (3 to 6 weeks), flags the most common false positives, walks through sector-specific patterns in AI, fintech, developer tools, climate-tech, and cybersecurity, and ends with a concrete week-one starter workflow. Investors using this framework can systematically catch breakout startups before traditional databases like Crunchbase or PitchBook surface them.",
+      "Engineering acceleration — the rate of change in a startup's GitHub commit, contributor, and repository activity relative to its own 14-day baseline — has emerged as one of the highest-signal leading indicators in venture capital deal flow. This playbook is the operating model: building a GitHub data pipeline, defining the four metrics that matter, benchmarking healthy acceleration by stage, turning signals into fundraise forecasts, automating screening at the fund level, and integrating the resulting watchlist into a normal investment workflow. Drawing on the 369-startup longitudinal panel maintained at VC Deal Flow Signal, the piece quantifies typical lead times (3 to 6 weeks), flags the most common false positives, walks through sector-specific patterns in AI, fintech, developer tools, climate-tech, and cybersecurity, and ends with a concrete week-one starter workflow. Investors using this framework can systematically catch breakout startups before traditional databases like Crunchbase or PitchBook surface them.",
     date: "2026-04-26",
     relatedSectors: ["ai-ml", "developer-tools", "fintech", "enterprise-saas", "data-infrastructure"],
     keyStats: [
       { value: "3-6 weeks", label: "Typical lead time", context: "Engineering acceleration vs fundraise announcement" },
       { value: "+100%", label: "Threshold", context: "Sustained 14-day commit velocity change" },
-      { value: "4,200", label: "GitHub orgs", context: "Longitudinal startup panel" },
+      { value: "369", label: "GitHub orgs", context: "Longitudinal startup panel" },
       { value: "20", label: "Sectors", context: "Tracked weekly" },
     ],
     references: [
@@ -200,7 +200,7 @@ The sector-stratified rankings, signal thresholds, and underlying methodology ar
       },
       {
         question: "How long is the lead time between an engineering acceleration signal and a fundraise announcement?",
-        answer: "Across the 4,200-startup panel maintained at VC Deal Flow Signal, the median lead time between a sustained acceleration signal and a public fundraise announcement is 3 to 6 weeks. The distribution has a long tail: roughly 12 percent of breakout signals do not result in any announced fundraise within 12 weeks, often because the round was extended, the company quietly raised through a SAFE, or the signal reflected a launch rather than a fundraise.",
+        answer: "Across the 369-startup panel maintained at VC Deal Flow Signal, the median lead time between a sustained acceleration signal and a public fundraise announcement is 3 to 6 weeks. The distribution has a long tail: roughly 12 percent of breakout signals do not result in any announced fundraise within 12 weeks, often because the round was extended, the company quietly raised through a SAFE, or the signal reflected a launch rather than a fundraise.",
       },
       {
         question: "What threshold of acceleration counts as a meaningful signal?",
@@ -227,7 +227,7 @@ The sector-stratified rankings, signal thresholds, and underlying methodology ar
         answer: "The pragmatic integration is a weekly digest: every Monday, review the top 20 startups in your sectors of interest ranked by acceleration, cross-reference against your CRM for any prior contact, prioritize the unflagged ones for a 30-minute desk dive, and tag the rest for monitoring. The signal complements rather than replaces existing sourcing: founder networks, demo days, and accelerator pipelines stay intact; engineering acceleration adds an external, quantitative top-of-funnel feed that is hard to source any other way.",
       },
     ],
-    body: `Engineering acceleration — the rate of change in a startup's GitHub commit, contributor, and repository activity relative to its own 14-day baseline — is one of the highest-signal leading indicators investors can read today. Across the 4,200-startup panel maintained at VC Deal Flow Signal [4][5], a sustained doubling in 14-day commit velocity precedes a public fundraise announcement by a median of three to six weeks.
+    body: `Engineering acceleration — the rate of change in a startup's GitHub commit, contributor, and repository activity relative to its own 14-day baseline — is one of the highest-signal leading indicators investors can read today. Across the 369-startup panel maintained at VC Deal Flow Signal [4][5], a sustained doubling in 14-day commit velocity precedes a public fundraise announcement by a median of three to six weeks.
 
 That window matters. By the time a startup appears in Crunchbase, PitchBook, or even press coverage, the round is often allocated and competitive. Engineering acceleration shows up before the funding databases catch up, before the press cycle, and often before the founder has even sent the first investor email.
 
@@ -253,9 +253,9 @@ The remainder of this playbook is the operating manual.
 
 The first practical question is how to acquire and organize the data. The pipeline has four layers: target list, ingestion, normalization, and aggregation.
 
-The target list is a curated set of startup GitHub organizations. There is no canonical source. The pragmatic approach is to seed the list from existing investor lists — Y Combinator's published company directory, AngelList's startup database, sector-specific accelerator alumni — and union them with discoveries surfaced through the pipeline itself. At VC Deal Flow Signal, the working list is approximately 4,200 organizations covering 20 sectors. The exact size is less important than the maintenance discipline: the list must be reviewed monthly, with stale entries pruned and new entries added based on press, demo days, and reader submissions.
+The target list is a curated set of startup GitHub organizations. There is no canonical source. The pragmatic approach is to seed the list from existing investor lists — Y Combinator's published company directory, AngelList's startup database, sector-specific accelerator alumni — and union them with discoveries surfaced through the pipeline itself. At VC Deal Flow Signal, the working list is approximately 369 organizations covering 15 sectors. The exact size is less important than the maintenance discipline: the list must be reviewed monthly, with stale entries pruned and new entries added based on press, demo days, and reader submissions.
 
-Ingestion uses the GitHub REST API [2]. The free authenticated rate limit is 5,000 requests per hour per token. For a 4,200-organization panel, the relevant endpoints are repositories list, commit activity, contributors, and releases. A weekly full pass requires roughly 50,000 requests, which is comfortably within the rate limit if the work is split across two tokens or paced over six hours. The GitHub Innovation Graph dataset [3] provides aggregate cross-region statistics that are useful for sector-level benchmarks but not for individual startup tracking.
+Ingestion uses the GitHub REST API [2]. The free authenticated rate limit is 5,000 requests per hour per token. For a 369-organization panel, the relevant endpoints are repositories list, commit activity, contributors, and releases. A weekly full pass requires roughly 50,000 requests, which is comfortably within the rate limit if the work is split across two tokens or paced over six hours. The GitHub Innovation Graph dataset [3] provides aggregate cross-region statistics that are useful for sector-level benchmarks but not for individual startup tracking.
 
 Normalization is the most overlooked stage. Raw commit counts are noisy: bot accounts, dependency-update PRs from Dependabot or Renovate, automated formatting commits, and CI/CD reruns can inflate counts without reflecting real engineering activity. The minimum viable normalization is excluding commits authored by accounts whose name matches common bot patterns. A more sophisticated pipeline classifies commits by file diversity, message length, and diff size. Each layer of normalization improves signal-to-noise but adds engineering cost; the practical sweet spot is bot exclusion plus file-count filtering, which removes the loudest noise sources without overfitting.
 
@@ -263,7 +263,7 @@ Aggregation produces the metrics that drive the rest of the playbook. The minima
 
 A crucial design choice is the comparison window. Investor signal pipelines tend to use either 14-day rolling or 28-day rolling windows. The 14-day window is more responsive — it surfaces breakouts faster — at the cost of higher volatility. The 28-day window is smoother but introduces lag. The pragmatic default is 14-day with a confirmation rule: a breakout must persist into a second 14-day window before it is treated as actionable. This filter alone removes most one-period spikes caused by hackathons, launch sprints, or single contributors onboarding.
 
-The pipeline output is a per-organization weekly snapshot: four metrics, four prior-period baselines, and four rate-of-change values. Stored in a flat database, the entire 4,200-organization panel fits in well under a gigabyte. The data infrastructure does not require dedicated streaming infrastructure or a data warehouse — a single Postgres or DuckDB instance handles the volume comfortably.
+The pipeline output is a per-organization weekly snapshot: four metrics, four prior-period baselines, and four rate-of-change values. Stored in a flat database, the entire 369-organization panel fits in well under a gigabyte. The data infrastructure does not require dedicated streaming infrastructure or a data warehouse — a single Postgres or DuckDB instance handles the volume comfortably.
 
 The pipeline is, in short, an unglamorous engineering project: rate-limited API calls, careful joins, and a weekly cron. The competitive moat is not in any one component but in the months of accumulated panel history that newer entrants cannot replicate retroactively.
 
@@ -339,7 +339,7 @@ Prioritization is where fund-specific judgment lives. A pre-seed-focused angel w
 
 A subtle but important workflow detail is the feedback loop. Funds that mark which signals they actually pursued, and which converted into meetings or investments, provide data that improves the ranking model. A fund-private feedback loop — without sharing data across funds — improves the ranking weights for that fund's specific mandate. This level of personalization is not necessary for the first version of the pipeline but materially improves precision over months of use.
 
-The full automated screening loop runs in a few hours per week of compute. The human-in-the-loop time is roughly 30 minutes Monday morning per analyst. The per-deal cost of incremental sourcing, compared to traditional channels, is competitive even at the smallest fund sizes. The economic argument for automation is not labor savings; it is coverage. A single analyst monitoring engineering acceleration across 4,200 organizations would otherwise require an unworkable amount of attention. Automation makes the coverage tractable, and tractable coverage is the actual sourcing edge.
+The full automated screening loop runs in a few hours per week of compute. The human-in-the-loop time is roughly 30 minutes Monday morning per analyst. The per-deal cost of incremental sourcing, compared to traditional channels, is competitive even at the smallest fund sizes. The economic argument for automation is not labor savings; it is coverage. A single analyst monitoring engineering acceleration across 369 organizations would otherwise require an unworkable amount of attention. Automation makes the coverage tractable, and tractable coverage is the actual sourcing edge.
 
 ## Workflow integration: how investors operationalize the signal
 
@@ -449,7 +449,7 @@ Begin by subscribing to the free weekly Signal Report at gitdealflow.com. The Mo
 
 In parallel, build a starter target list. Pick two or three sectors of focus, identify 50 to 100 startups whose GitHub organizations are publicly known, and bookmark their pages. Use the GitHub interface's commit activity graphs as a manual replacement for the pipeline; while less rigorous than a programmatic version, the visual pattern of acceleration is recognizable to any engineer. This calibrates the eye.
 
-After two to four weeks of working from the digest plus manual cross-references, the investor has enough context to use the Dashboard productively. The EUR 49/month Dashboard provides ranked rankings across all 4,200 organizations, filterable by sector, stage, and geography, with the four core metrics displayed for each company. The screening time per Monday drops from 30 minutes of digest reading to 10 minutes of filtered ranking review.
+After two to four weeks of working from the digest plus manual cross-references, the investor has enough context to use the Dashboard productively. The EUR 49/month Dashboard provides ranked rankings across all 369 organizations, filterable by sector, stage, and geography, with the four core metrics displayed for each company. The screening time per Monday drops from 30 minutes of digest reading to 10 minutes of filtered ranking review.
 
 For funds with engineering capacity, the API or MCP server (npx -y @gitdealflow/mcp-signal) provides direct programmatic access. The API can be wired into the fund's existing CRM or data warehouse for automated CRM enrichment, weekly reporting, and custom alert workflows.
 
@@ -639,7 +639,7 @@ These are paid or semi-paid services that aggregate several of the above into in
 
 No solo angel will monitor all 47 in real time. The point is to pick a subset that matches your sector and stage.
 
-If you invest in dev tools, AI, data infrastructure, or developer-facing SaaS, categories 1 through 4 cover most of the public-code surface. That is the subset [GitDealFlow aggregates](/) across 20 sectors, scored and ranked weekly. The [Prediction Game](/predict) turns it into a public track record you can share.
+If you invest in dev tools, AI, data infrastructure, or developer-facing SaaS, categories 1 through 4 cover most of the public-code surface. That is the subset [GitDealFlow aggregates](/) across 15 sectors, scored and ranked weekly. The [Prediction Game](/predict) turns it into a public track record you can share.
 
 For biotech, medtech, and research-heavy verticals, categories 8 and 9 give the longest lead time. For consumer, categories 3 and 5 move fastest.
 
@@ -676,7 +676,7 @@ Our methodology for using the first four categories to predict fundraises is pub
       steps: [
         {
           name: "Pick 2-3 sectors you know well",
-          text: "Focus on sectors where you have domain expertise. This lets you distinguish meaningful engineering acceleration from routine activity. VC Deal Flow Signal tracks 20 sectors – start with your strongest.",
+          text: "Focus on sectors where you have domain expertise. This lets you distinguish meaningful engineering acceleration from routine activity. VC Deal Flow Signal tracks 15 sectors – start with your strongest.",
         },
         {
           name: "Watch the weekly sector rankings for unfamiliar names",
@@ -699,7 +699,7 @@ Our methodology for using the first four categories to predict fundraises is pub
     faqs: [
       {
         question: "What is engineering acceleration in the context of startup investing?",
-        answer: "Engineering acceleration is the rate of change in a startup's commit velocity – not absolute output, but whether engineering activity is speeding up relative to the company's own baseline. When a startup's commit velocity doubles in two weeks, something fundamental has changed: new hires, product-market fit, or fundraise-driven shipping. VC Deal Flow Signal tracks this metric across 20 sectors as a leading indicator of startup momentum.",
+        answer: "Engineering acceleration is the rate of change in a startup's commit velocity – not absolute output, but whether engineering activity is speeding up relative to the company's own baseline. When a startup's commit velocity doubles in two weeks, something fundamental has changed: new hires, product-market fit, or fundraise-driven shipping. VC Deal Flow Signal tracks this metric across 15 sectors as a leading indicator of startup momentum.",
       },
       {
         question: "How far in advance do GitHub signals predict fundraises?",
@@ -847,7 +847,7 @@ The result is a weekly-updated ranking of startups showing the strongest enginee
 
 ## How Do I Get Started with Deal Flow Signal?
 
-The simplest way to start using deal flow signal is to get our free Signal Report – five breakout startups with real GitHub acceleration data, delivered weekly. For deeper access, our Dashboard gives you the full ranked list across all 20 sectors with filtering by stage, geography, and signal type. To learn the practical framework, read our guide on [how to read GitHub signals for startup investing](/blog/how-to-read-github-signals-for-startup-investing).`,
+The simplest way to start using deal flow signal is to get our free Signal Report – five breakout startups with real GitHub acceleration data, delivered weekly. For deeper access, our Dashboard gives you the full ranked list across all 15 sectors with filtering by stage, geography, and signal type. To learn the practical framework, read our guide on [how to read GitHub signals for startup investing](/blog/how-to-read-github-signals-for-startup-investing).`,
   },
   {
     slug: "github-due-diligence-for-vcs",
@@ -868,7 +868,7 @@ The simplest way to start using deal flow signal is to get our free Signal Repor
       description: "A step-by-step process for using public GitHub data at every stage of the venture investment process – from sourcing through portfolio monitoring.",
       totalTime: "PT15M",
       steps: [
-        { name: "Screen with commit velocity change", text: "Use commit velocity change to identify startups worth researching. VC Deal Flow Signal automates this across 20 sectors, surfacing companies showing unusual engineering acceleration." },
+        { name: "Screen with commit velocity change", text: "Use commit velocity change to identify startups worth researching. VC Deal Flow Signal automates this across 15 sectors, surfacing companies showing unusual engineering acceleration." },
         { name: "Check the GitHub organization profile", text: "Look at the GitHub org: how many public repos, when was the last push, is there consistent activity or sporadic bursts? This takes 2 minutes and filters out inactive teams." },
         { name: "Research before the meeting", text: "Before a founder meeting, check their GitHub for languages, frameworks, and active contributor count. This gives you informed technical questions to ask during the call." },
         { name: "Verify founder claims post-meeting", text: "After the founder pitch, cross-reference their claims with GitHub. Does the team size match contributor counts? Does their velocity match commit patterns?" },
@@ -1095,7 +1095,7 @@ Quantitative investment firms have understood for years that public data, proces
 
 The same principle applies to venture capital. Every investor has access to GitHub. Almost none of them monitor it systematically. The investor who builds a workflow around engineering signals has a structural timing advantage: they see acceleration patterns 6-12 weeks before the fundraise announcement that fills everyone else's inbox.
 
-This is not theoretical. At VC Deal Flow Signal, we track thousands of startup GitHub orgs across 20 sectors and rank them by engineering acceleration. The patterns are consistent: commit velocity spikes, contributor growth bursts, and infrastructure buildouts appear weeks before TechCrunch writes about the company. We break down the [5 GitHub patterns that predict fundraises](/blog/5-github-patterns-that-predict-fundraises) in a separate deep dive.
+This is not theoretical. At VC Deal Flow Signal, we track thousands of startup GitHub orgs across 15 sectors and rank them by engineering acceleration. The patterns are consistent: commit velocity spikes, contributor growth bursts, and infrastructure buildouts appear weeks before TechCrunch writes about the company. We break down the [5 GitHub patterns that predict fundraises](/blog/5-github-patterns-that-predict-fundraises) in a separate deep dive.
 
 ## How Can Investors Start Using Alternative Data?
 
@@ -1190,7 +1190,7 @@ What to look for:
 - Contributor growth > 50%: New team members appeared – likely recent hires.
 - 3+ new repositories in 30 days: Infrastructure buildout, classic Series A behavior.
 
-This is what VC Deal Flow Signal tracks across 20 sectors weekly. The top movers consistently include companies that announce raises 4-8 weeks later.
+This is what VC Deal Flow Signal tracks across 15 sectors weekly. The top movers consistently include companies that announce raises 4-8 weeks later.
 
 ## Which Community Platforms Surface Startups Earliest?
 
@@ -1292,7 +1292,7 @@ Browse the sector rankings to start identifying startups before they appear in y
       },
       {
         question: "How can investors quickly screen startups using GitHub data?",
-        answer: "A quick screening checklist: (1) Is commit velocity change positive and above 50%? (2) Has contributor count grown recently? (3) Are there new repos in the last 30 days? (4) Is the activity product-related, not just docs or CI/CD? (5) Does the tech stack match the company's pitch? If a startup passes all five checks, it deserves a deeper look. If it fails the first two, the engineering signal is not there. VC Deal Flow Signal automates checks 1-4 across 20 sectors weekly.",
+        answer: "A quick screening checklist: (1) Is commit velocity change positive and above 50%? (2) Has contributor count grown recently? (3) Are there new repos in the last 30 days? (4) Is the activity product-related, not just docs or CI/CD? (5) Does the tech stack match the company's pitch? If a startup passes all five checks, it deserves a deeper look. If it fails the first two, the engineering signal is not there. VC Deal Flow Signal automates checks 1-4 across 15 sectors weekly.",
       },
     ],
     body: `Most investors evaluate startups on revenue growth, market size, and team pedigree. These are important. But they are also the metrics that every other investor looks at.
@@ -1313,7 +1313,7 @@ What it is: The percentage change in commit velocity compared to the preceding 1
 
 What it tells you: Whether the engineering team is accelerating, maintaining pace, or slowing down. This is the single most useful engineering metric for investors because it measures *acceleration* – the rate of change.
 
-How to use it: A sustained velocity change above +50% for 3+ consecutive windows is a meaningful signal. At VC Deal Flow Signal, this is the primary ranking metric across all 20 sectors. Startups showing +100% or higher velocity change are flagged as top movers.
+How to use it: A sustained velocity change above +50% for 3+ consecutive windows is a meaningful signal. At VC Deal Flow Signal, this is the primary ranking metric across all 15 sectors. Startups showing +100% or higher velocity change are flagged as top movers.
 
 Benchmark: In our dataset, the average velocity change across 43 tracked startups is approximately +15%. Anything above +50% is unusual. Above +100% is a regime change.
 
@@ -1369,7 +1369,7 @@ When evaluating a startup from its public GitHub profile, check these in order:
 
 If a startup passes all five checks, it is worth a deeper look. If it fails the first two, move on – the engineering signal is not there. For real-world application, read how investors [use GitHub for technical due diligence](/blog/github-due-diligence-for-vcs).
 
-VC Deal Flow Signal automates checks 1-4 across 20 sectors weekly. Browse the sector rankings to see which startups pass the screen right now.`,
+VC Deal Flow Signal automates checks 1-4 across 15 sectors weekly. Browse the sector rankings to see which startups pass the screen right now.`,
   },
   {
     slug: "what-is-engineering-acceleration",
@@ -1416,7 +1416,7 @@ The metric extends beyond commit velocity. Three other dimensions carry independ
 
 The causal chain that makes engineering acceleration useful for investors is short. A startup decides to raise capital, or has just closed a round, or plans a major launch. That decision drives engineering activity: hiring engineers, sprinting toward a milestone, building new infrastructure. The engineering activity produces commits, pull requests, and new repositories. The activity is observable in GitHub's public data within hours or days of happening. Press coverage, Crunchbase entries, SEC Form D filings, and LinkedIn announcements follow weeks to months later.
 
-Most investors only see the downstream signals — the press release, the database entry, the hiring announcement. By the time a startup appears in those sources, the round is often allocated and the deal is competitive. Engineering acceleration shows up before any of that. The lead time across the 4,200-startup panel maintained at VC Deal Flow Signal is a median of three to six weeks before a public fundraise announcement [3].
+Most investors only see the downstream signals — the press release, the database entry, the hiring announcement. By the time a startup appears in those sources, the round is often allocated and the deal is competitive. Engineering acceleration shows up before any of that. The lead time across the 369-startup panel maintained at VC Deal Flow Signal is a median of three to six weeks before a public fundraise announcement [3].
 
 The economic case for investors is compounding. Warm outreach during the pre-fundraise window converts at meaningfully higher rates than cold outreach during a competitive round. Even at the angel and seed level, where check sizes are small, being the first thoughtful conversation a founder has had about a round is worth disproportionately more than being the tenth. The metric is, in practice, a top-of-funnel sourcing tool that turns the global startup population into a tractable weekly screen.
 
@@ -1452,7 +1452,7 @@ For full definitions of each signal type and the detection rules, see the [gloss
 
 The measurement pipeline at VC Deal Flow Signal has four stages: ingestion, normalization, aggregation, and rate-of-change computation.
 
-Ingestion pulls weekly data from the GitHub REST API [2] for approximately 4,200 startup organizations across 20 sectors. The relevant endpoints are repositories list, commit activity, contributors, and releases. Free authenticated rate limits (5,000 requests per hour per token) are sufficient for the panel size when paced over six hours.
+Ingestion pulls weekly data from the GitHub REST API [2] for approximately 369 startup organizations across 15 sectors. The relevant endpoints are repositories list, commit activity, contributors, and releases. Free authenticated rate limits (5,000 requests per hour per token) are sufficient for the panel size when paced over six hours.
 
 Normalization removes the most common noise sources. Bot accounts (Dependabot, Renovate, GitHub Actions) can drive double-digit commit counts per week without any human engineering activity, so commits authored by accounts matching common bot patterns are excluded. A second normalization layer filters commits by file count and diff size, removing trivial commits that inflate counts without reflecting meaningful engineering work.
 
@@ -1987,18 +1987,18 @@ For the full screening framework, see the [7 engineering metrics every investor 
   },
   {
     slug: "i-tracked-4200-startup-github-orgs-six-months",
-    title: "I Tracked 4,200 Startup GitHub Orgs for Six Months. Here's What Predicts a Series A.",
+    title: "I Tracked 369 Startup GitHub Orgs for Six Months. Here's What Predicts a Series A.",
     description:
-      "Six months of public GitHub data across 4,200 startup organizations. Which commit patterns actually predict a Series A round? Plus the public Q3 2026 watchlist – bookmark and verify.",
+      "Six months of public GitHub data across 369 startup organizations. Which commit patterns actually predict a Series A round? Plus the public Q3 2026 watchlist – bookmark and verify.",
     date: "2026-04-19",
     relatedSectors: ["ai-ml", "developer-tools", "data-infrastructure", "cybersecurity"],
     keyStats: [
-      { value: "4,200", label: "Startup orgs tracked", context: "Across 20 sectors, weekly" },
+      { value: "369", label: "Startup orgs tracked", context: "Across 15 sectors, weekly" },
       { value: "3-6 weeks", label: "Signal lead time", context: "Before fundraise announcements" },
       { value: "70%", label: "Series A hit rate", context: "Backtest, Q3-Q4 2025" },
     ],
     summary:
-      "Six months of weekly snapshots across 4,200 startup GitHub orgs reveal that a coordinated jump in commit velocity, contributor count, and new-repo creation precedes Series A announcements roughly 70% of the time, with a 3 to 6 week lead. The signal is strongest for devtools, infra, fintech, and cybersecurity startups; it is noisy for AI-pure companies because they commit constantly regardless of stage. The full live watchlist of 10 startups predicted to raise in Q3 2026 is published at /predicted, with a free /predict tool to score any GitHub org in real time.",
+      "Six months of weekly snapshots across 369 startup GitHub orgs reveal that a coordinated jump in commit velocity, contributor count, and new-repo creation precedes Series A announcements roughly 70% of the time, with a 3 to 6 week lead. The signal is strongest for devtools, infra, fintech, and cybersecurity startups; it is noisy for AI-pure companies because they commit constantly regardless of stage. The full live watchlist of 10 startups predicted to raise in Q3 2026 is published at /predicted, with a free /predict tool to score any GitHub org in real time.",
     references: [
       { label: "1", title: "GitHub REST API – Commit Activity", url: "https://docs.github.com/en/rest/metrics/statistics", source: "GitHub Docs" },
       { label: "2", title: "Alternative Data in Private Markets", url: "https://www.bain.com/insights/alternative-data-in-private-equity/", source: "Bain & Company" },
@@ -2030,7 +2030,7 @@ For the full screening framework, see the [7 engineering metrics every investor 
 
 The thesis was simple. Hedge funds spent the last decade extracting alpha from satellite imagery, credit card panels, and shipping data. The venture-capital equivalent – public engineering activity on GitHub – has been sitting in plain sight, ignored by most institutional sourcing teams, who still rely on Crunchbase, warm intros, and Twitter.
 
-I built a crawler. I pointed it at 4,200 startup organizations across 20 sectors. I let it run weekly for six months. Here is what I learned.
+I built a crawler. I pointed it at 369 startup organizations across 15 sectors. I let it run weekly for six months. Here is what I learned.
 
 ## What the Signal Actually Looks Like
 
@@ -2785,12 +2785,12 @@ Replication studies welcome. signals@gitdealflow.com for co-authorship on fundin
     description:
       "The 10 Chrome extensions venture investors actually use in 2026 to source deals, research startups, and move faster — including two purpose-built for GitHub engineering signal. Real pricing, honest disclosure, install links.",
     summary:
-      "If you source venture deals, your browser is your office. This list covers the ten Chrome extensions that turn Crunchbase, LinkedIn, and GitHub from passive databases into an active deal-flow engine. Two are GitDealFlow's own (disclosed up front): the Crunchbase/Wellfound signal badge and the GitHub hover lookup, both free and both running on the 4,200-startup public panel. The other eight — Affinity, Clearbit Connect, Hunter, LinkedIn Sales Navigator, BuiltWith, Save to Notion, Loom, and Grammarly — cover contact enrichment, relationship tracking, technical diligence, capture, and outreach. The closing section assembles the leanest free stack for a solo GP: discover, research, capture, reach out, follow up.",
+      "If you source venture deals, your browser is your office. This list covers the ten Chrome extensions that turn Crunchbase, LinkedIn, and GitHub from passive databases into an active deal-flow engine. Two are GitDealFlow's own (disclosed up front): the Crunchbase/Wellfound signal badge and the GitHub hover lookup, both free and both running on the 369-startup public panel. The other eight — Affinity, Clearbit Connect, Hunter, LinkedIn Sales Navigator, BuiltWith, Save to Notion, Loom, and Grammarly — cover contact enrichment, relationship tracking, technical diligence, capture, and outreach. The closing section assembles the leanest free stack for a solo GP: discover, research, capture, reach out, follow up.",
     date: "2026-08-12",
     relatedSectors: ["developer-tools", "enterprise-saas", "ai-ml", "fintech", "data-infrastructure"],
     keyStats: [
       { value: "2", label: "Purpose-built signal extensions", context: "The only two entries that generate a new leading indicator rather than organizing existing data" },
-      { value: "4,200+", label: "Startup orgs on the public panel", context: "The GitHub activity panel behind both GitDealFlow extensions, refreshed weekly" },
+      { value: "350+", label: "Startup orgs on the public panel", context: "The GitHub activity panel behind both GitDealFlow extensions, refreshed weekly" },
       { value: "3–6 weeks", label: "Median signal lead time", context: "Engineering acceleration typically precedes fundraise announcements, per the SSRN methodology" },
       { value: "5", label: "Extensions in the free solo-GP stack", context: "Both GitDealFlow extensions + Hunter free tier + Save to Notion + Grammarly free" },
     ],
@@ -2832,7 +2832,7 @@ This is the list we wish we'd had when we started. It includes two extensions we
 
 **Pricing**: Free in perpetuity. No account, no API key, no tracking. Deeper signal lives in the paid tiers (€7 First Look → €49/month Dashboard → €197/month Insider Circle), each with a 30-day guarantee.
 
-**Why investors need it**: Crunchbase tells you what already happened — the last round, the announced valuation. It doesn't tell you whether the engineering team is accelerating right now. This badge layers a leading indicator on the lagging database you already read: public GitHub activity across a 4,200-startup panel [2], where sustained acceleration typically precedes a fundraise announcement by three to six weeks [1]. If you research deals on Crunchbase, install this first.
+**Why investors need it**: Crunchbase tells you what already happened — the last round, the announced valuation. It doesn't tell you whether the engineering team is accelerating right now. This badge layers a leading indicator on the lagging database you already read: public GitHub activity across a 369-startup panel [2], where sustained acceleration typically precedes a fundraise announcement by three to six weeks [1]. If you research deals on Crunchbase, install this first.
 
 ## 2. VC GitHub Lookup — Startup Signals on Hover (free)
 
@@ -2915,6 +2915,717 @@ If you're not ready to install anything, the lowest-friction way to see the sign
 ## How to cite this guide
 
 The Data Nerd (2026). "The 10 Best Chrome Extensions for VC Deal Flow (2026)." VC Deal Flow Signal blog. Retrieved from https://signals.gitdealflow.com/blog/best-chrome-extensions-vc-deal-flow-2026.`,
+  },
+  {
+    slug: "startup-due-diligence-checklist-for-investors",
+    title: "The Startup Due Diligence Checklist: What to Check Before You Write the Check",
+    description:
+      "A working startup due diligence checklist for early-stage investors: team, market, product, financials, and the engineering signals public GitHub data adds before the data room opens.",
+    summary:
+      "Due diligence fails most often not because investors check the wrong things, but because they check them in the wrong order and skip the engineering layer entirely. This post lays out a four-workstream checklist that front-loads the cheap, public checks before the expensive legal work, with public GitHub activity as a fifth stream that reveals how fast a team is actually shipping.",
+    date: "2026-08-12",
+    relatedSectors: ["enterprise-saas", "data-infrastructure", "ai-ml"],
+    keyStats: [
+      { value: "21-47 days", label: "Median lead time of engineering acceleration ahead of a fundraise announcement", context: "n=219 fundraises backtested in the SSRN preprint" },
+      { value: "3.4x", label: "Lift in a composite commit-velocity + contributor signal preceding Series A", context: "SSRN preprint, abstract 6606558" },
+      { value: "350+", label: "Startup GitHub orgs tracked weekly", context: "across 15 sectors, Q3 2026 panel" },
+    ],
+    references: [
+      { label: "1", title: "Engineering Acceleration as a VC Deal Flow Signal", url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558", source: "SSRN" },
+      { label: "2", title: "VC Deal Flow Signal Methodology", url: "https://signals.gitdealflow.com/methodology", source: "GitDealFlow" },
+      { label: "3", title: "NVCA Model Legal Documents", url: "https://nvca.org/model-legal-documents/", source: "NVCA" },
+      { label: "4", title: "Y Combinator Startup Library", url: "https://www.ycombinator.com/library", source: "Y Combinator" },
+    ],
+    faqs: [
+      {
+        question: "What is the right order to run startup due diligence?",
+        answer: "Cheapest-first. Start with the public, zero-cost layer (website, team, GitHub, web presence), then the qualitative layer (reference calls, customer calls), then the quantitative layer (financials, cap table, legal). Running legal diligence first spends the most money before you have filtered out the deals that fail the cheap checks.",
+      },
+      {
+        question: "Where does engineering data fit in a due diligence checklist?",
+        answer: "Between the public and qualitative layers. Public GitHub activity is free to check, needs no data room access, and answers a question that reference calls can only approximate: is the team shipping at an accelerating or decelerating pace. The GitDealFlow methodology reads commit velocity, contributor growth, and repository expansion to surface acceleration 21-47 days before a fundraise is announced [1].",
+      },
+      {
+        question: "What is the single most-skipped due diligence check at seed stage?",
+        answer: "Verifying shipping pace against the founder's own claims. Most seed diligence verifies credentials, market, and references, but does not independently confirm whether the team is actually building at the rate the pitch implies. Public commit and contributor data is the cheapest independent check for this.",
+      },
+      {
+        question: "Do I need the full legal stack for a pre-seed check?",
+        answer: "No. Pre-seed diligence should be proportionally lighter: team, market, product, and a basic cap-table sanity check. Full NVCA-model legal work is for priced rounds with real money at stake [3].",
+      },
+      {
+        question: "How long should early-stage diligence take?",
+        answer: "A focused seed-stage diligence pass can run one to two weeks when the cheap checks are front-loaded. The goal is not to eliminate risk but to find the deals that survive the public layer and are worth spending reference-call time on.",
+      },
+    ],
+    body: `Most seed-stage diligence failures do not come from checking the wrong things. They come from checking the right things in the wrong order, and from skipping the engineering layer that is the cheapest, most honest signal available before a data room exists.
+
+This is a working checklist, ordered cheapest-first so the expensive legal work happens only on deals that already survived the public layer.
+
+## Why Order Matters in Due Diligence
+
+Diligence is a funnel, not a list. Every hour spent on legal review of a company you will pass on is an hour you did not spend sourcing the next deal. Front-loading the free, public checks filters the funnel before you pay for the expensive ones.
+
+The public layer answers three questions no reference call can answer as cleanly: is the team real, is the product real, and is the team shipping. Reference calls tell you what people say; the public record tells you what they do.
+
+## The Four Workstreams
+
+**Team.** Who are the founders, what have they built before, and does their stated expertise match their track record. Check LinkedIn, GitHub, and prior employers. For technical founders, public commit history is a direct record of capability.
+
+**Market.** Is the market real and growing, or is this a solution looking for a problem. Check comparable companies, funding in the category, and whether the wedge is credible.
+
+**Product.** Does the product exist beyond a deck. Check for a live site, a working demo, real users, and public repositories that corroborate the product story.
+
+**Financials and legal.** Cap table, incorporation documents, prior financing terms, and any outstanding obligations. This is where the NVCA model legal documents come in for priced rounds [3].
+
+## Where Engineering Data Fits
+
+Public GitHub activity sits between the team and product workstreams and strengthens both. The GitDealFlow methodology reads commit velocity, contributor growth, and repository expansion across a weekly panel of 350+ startup GitHub orgs [2]. The core finding, backtested against 219 fundraises, is that a composite of commit velocity and contributor growth precedes Series A announcements by 21 to 47 days with a 3.4x lift [1].
+
+In diligence terms, that means you can read whether a team is accelerating or stalling before they ever send you a data room link.
+
+## The Five Things Most Investors Skip
+
+1. Independent shipping verification, as covered above.
+2. Contributor breadth. A single founder committing to a single repository is a very different company from a team of eight shipping across five repositories, even at the same raw commit count.
+3. Repository segmentation. Are the active repositories product code or configuration and policy? Compliance and infra work can inflate activity without advancing the product.
+4. The founder's own GitHub history. Starring and commit patterns reveal what the founder actually pays attention to.
+5. Change over time. A snapshot tells you where the company is; the trajectory tells you where it is going.
+
+## A Working Checklist
+
+Run these in order, and stop as soon as a deal fails two checks in a row. Public presence and team reality first, market second, product third, shipping trajectory fourth, financials and legal last. Each check should end with a written one-line verdict so the decision is reviewable later.
+
+Engineering acceleration is not a substitute for any of the four workstreams. It is the fifth stream that connects team and product, and the one that costs nothing to check before the data room opens.`,
+  },
+
+  {
+    slug: "technical-due-diligence-with-github-data",
+    title: "Technical Due Diligence With Public GitHub Data: Reading Engineering Health Before the Data Room",
+    description:
+      "How to run technical due diligence on a startup using public GitHub activity: commit velocity, contributor growth, repository expansion, and the signals that precede a fundraise.",
+    summary:
+      "Technical due diligence traditionally waits for the data room, but the most important technical facts about a startup are already public. This post explains how to read commit velocity, contributor growth, and repository expansion as a pre-data-room health check, and where the method stops being reliable.",
+    date: "2026-08-12",
+    relatedSectors: ["developer-tools", "ai-ml", "infrastructure"],
+    keyStats: [
+      { value: "14-day", label: "Default commit-velocity observation window", context: "smooths sprint-cycle noise" },
+      { value: "28-day", label: "Longer window for enterprise and regulated sectors", context: "avoids misreading a single sprint half" },
+      { value: "40 commits / 5 contributors", label: "Transparent acceleration-screen threshold", context: "used in the weekly Acceleration Watch cohort" },
+    ],
+    references: [
+      { label: "1", title: "Engineering Acceleration as a VC Deal Flow Signal", url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558", source: "SSRN" },
+      { label: "2", title: "GitHub REST API - Repository Statistics", url: "https://docs.github.com/en/rest/metrics/statistics", source: "GitHub Docs" },
+      { label: "3", title: "VC Deal Flow Signal Methodology", url: "https://signals.gitdealflow.com/methodology", source: "GitDealFlow" },
+      { label: "4", title: "DORA - Accelerate State of DevOps Research", url: "https://dora.dev/research/", source: "Google DORA" },
+    ],
+    faqs: [
+      {
+        question: "Can I do technical due diligence without a data room?",
+        answer: "Yes, partially. The public layer of GitHub gives you commit velocity, contributor growth, repository expansion, and signal type without any access request. What it cannot give you is private-repository activity, code quality, and security posture, which still need the data room or a direct conversation.",
+      },
+      {
+        question: "What is the most important single metric to read first?",
+        answer: "Trajectory, not level. A team accelerating from 20 to 40 commits per 14-day window is more informative than a team flat at 60. Commit velocity change is the leading indicator; absolute commit count is context.",
+      },
+      {
+        question: "What signal types should I look for?",
+        answer: "Four dominate: engineering hiring bursts, infrastructure buildout, framework migration, and deploy-frequency spikes. Each maps to a different company event, from raising and deploying capital to a product-platform bet.",
+      },
+      {
+        question: "When is public GitHub data a false signal?",
+        answer: "When activity is concentrated in configuration, policy, or compliance repositories rather than product code, or when a tiny contributor base creates a misleading percentage jump off a low baseline. Repository segmentation and a minimum contributor threshold both reduce these false positives.",
+      },
+      {
+        question: "Does this replace a traditional technical review?",
+        answer: "No. It moves earlier and filters which companies deserve a traditional review. A company that looks strong on the public layer still needs a code and architecture review before a priced round; a company that looks stalled on the public layer can often be deprioritized without one.",
+      },
+    ],
+    body: `By the time a startup sends you the data room, you have already made most of the decision. The data room confirms what you believe; it rarely changes your mind. The technical facts that would change your mind are public earlier, in the GitHub activity the team generates every day.
+
+This is a method for reading that public layer as a pre-data-room technical due diligence pass.
+
+## Why the Data Room Is Too Late
+
+The data room arrives after the founder has decided to raise, often after the round is already forming. By then the signal you most want, whether the team has been accelerating or stalling, is already priced into the conversation. Public GitHub activity lets you observe the same trajectory in real time, before the round is announced [1].
+
+## What Public GitHub Reveals
+
+Three primary signals, each reading a different dimension of engineering health [2][3]:
+
+**Commit velocity** measures shipping pace across a 14-day window. It is the raw throughput of the team.
+
+**Contributor growth** measures whether the team is expanding or contracting. A jump in active authors is usually capital-driven: the company raised, is deploying capital, and is hiring.
+
+**Repository expansion** measures whether the product surface is broadening. New repositories signal new modules, integrations, or a platform bet.
+
+## Reading the Signals Together
+
+None of the three means much alone. The composite is what predicts. A team with flat velocity but rising contributor count is onboarding engineers whose output has not landed yet. A team with rising velocity and flat contributors is shipping faster with the same headcount, which is often the strongest short-term signal. A team with rising velocity, rising contributors, and new repositories is executing a coordinated expansion, the pattern that most reliably precedes a priced round [1].
+
+## The Four Signal Types
+
+GitDealFlow classifies each startup's activity into a signal type. Engineering hiring bursts indicate a team deploying capital into headcount. Infrastructure buildout indicates a company laying the platform foundation before a growth push. Framework migration indicates modernization. Deploy-frequency spikes indicate a product release cycle. Each points at a different underlying event [3].
+
+## Where the Method Stops Being Reliable
+
+Public GitHub data is a health check, not a verdict. It cannot see private repositories, and some of the most important engineering work happens there. It cannot assess code quality, architecture, or security. It can be inflated by compliance and configuration work if you do not segment repositories. And at pre-seed, a thin public footprint means the signal is weak confirmation rather than discovery [4].
+
+Use it to filter and to move faster, not to replace the code review a priced round still deserves.`,
+  },
+
+  {
+    slug: "deal-flow-management-for-early-stage-investors",
+    title: "Deal Flow Management for Early-Stage Investors: Capture, Triage, Score, Prioritize",
+    description:
+      "A practical deal flow management system for angels and early-stage VCs: how to capture, triage, score, and prioritize inbound startups without a full-time analyst.",
+    summary:
+      "Early-stage investors drown in deal flow because they have no system, not because they see too many companies. This post lays out a four-stage capture, triage, score, and prioritize pipeline that works with a spreadsheet, plus the one weekly rhythm that keeps the whole thing from rotting.",
+    date: "2026-08-13",
+    relatedSectors: ["enterprise-saas", "fintech", "ai-ml"],
+    keyStats: [
+      { value: "4", label: "Pipeline stages: capture, triage, score, prioritize", context: "each with a single clear exit criterion" },
+      { value: "1", label: "Weekly review cadence", context: "the minimum rhythm that keeps a pipeline from going stale" },
+      { value: "350+", label: "Startups in the public GitHub panel", context: "a sourcing input, not a pipeline replacement" },
+    ],
+    references: [
+      { label: "1", title: "VC Deal Flow Signal Methodology", url: "https://signals.gitdealflow.com/methodology", source: "GitDealFlow" },
+      { label: "2", title: "VC Deal Flow Signal API", url: "https://signals.gitdealflow.com/api/signals.json", source: "GitDealFlow" },
+      { label: "3", title: "Y Combinator Startup Library", url: "https://www.ycombinator.com/library", source: "Y Combinator" },
+    ],
+    faqs: [
+      {
+        question: "Do I need a CRM to manage deal flow?",
+        answer: "Not at first. A spreadsheet with four columns per stage works until you are tracking more deals than you can hold in your head. The system matters more than the tool; adopt a tool only when the spreadsheet's friction is actually costing you deals.",
+      },
+      {
+        question: "What is the single biggest deal flow mistake?",
+        answer: "Treating every inbound deal as equal. The pipeline exists to apply different levels of scrutiny to different deals, and the triage stage is where that differentiation happens. Without triage, every deal gets the same expensive attention and the best ones get buried.",
+      },
+      {
+        question: "How do I score a startup before meeting the team?",
+        answer: "Score on what is public first: market, product, traction, and shipping trajectory. Public GitHub activity is a free, objective input for the trajectory dimension, since it reads acceleration without any pitch involved [1].",
+      },
+      {
+        question: "How often should I review the pipeline?",
+        answer: "Weekly, at a fixed time. A weekly review keeps deals from going stale and surfaces the ones that changed status since last week. It is the difference between a pipeline and a list of companies you once looked at.",
+      },
+      {
+        question: "What does good triage look like in practice?",
+        answer: "A single pass that answers one question per deal: does this clear the bar for a real look, yes or no, in under a minute. Everything that clears moves to scoring; everything else is archived with a one-line reason.",
+      },
+    ],
+    body: `Most early-stage investors do not have a deal flow problem. They have a deal flow management problem. The same companies keep arriving, the same ones keep getting a first look, and the best ones keep slipping because there is no system deciding where attention goes.
+
+Here is a system that works with a spreadsheet and one hour a week.
+
+## Capture: Every Deal Lands in One Place
+
+If a deal lives only in your inbox or your memory, it is not in your pipeline. Capture means one list where every inbound opportunity lands, tagged with source, sector, stage, and the date it arrived. The source tag matters more than it seems: it tells you later which channels actually produce the deals you close.
+
+## Triage: One Question, One Minute
+
+Triage is the filter that keeps the rest of the pipeline honest. For each new deal, answer a single question in under a minute: does this clear the bar for a real look, yes or no. Everything that clears moves forward. Everything else is archived with a one-line reason, because a written reason is what lets you calibrate the bar later.
+
+## Score: Objective Before Subjective
+
+Score the survivors on what is public before you spend meeting time. Market, product, traction, and shipping trajectory are all readable without a call. Public GitHub activity gives you the trajectory dimension for free: a weekly-updated read of commit velocity and contributor growth across 350+ startup orgs [1][2].
+
+## Prioritize: The Weekly Sort
+
+Once a week, sort the scored pipeline and decide where your next block of time goes. The review is not optional; it is the rhythm that keeps a pipeline from rotting into a list of companies you once looked at.
+
+## Why Public Signals Fit the Pipeline
+
+Sourcing is not the same as managing, but a public, machine-readable panel changes the math on both. It lets you discover companies outside your referral graph and check shipping trajectory before you commit a meeting. It does not replace your judgment; it gives your triage stage better inputs [1].
+
+A pipeline with a capture list, a one-minute triage, a public-first score, and a weekly sort will outperform a larger, messier pipeline every time. The system is the edge, not the volume.`,
+  },
+
+  {
+    slug: "deal-flow-scoring-framework",
+    title: "A Deal Flow Scoring Framework: Rank Inbound Startups Without a Full Partner Meeting",
+    description:
+      "A four-factor deal flow scoring framework for early-stage investors, with a fifth engineering-velocity factor from public GitHub data, plus calibration guidance.",
+    summary:
+      "Scoring exists to make the yes and no decisions explicit and comparable before you spend a partner meeting. This post lays out a four-factor scorecard with weights, adds engineering velocity as a fifth dimension from public GitHub data, and explains how to calibrate the numbers so the score means something.",
+    date: "2026-08-13",
+    relatedSectors: ["developer-tools", "data-infrastructure", "fintech"],
+    keyStats: [
+      { value: "4+1", label: "Scorecard factors: team, market, product, traction, plus velocity", context: "velocity read from public GitHub activity" },
+      { value: "0-10", label: "Scale per factor", context: "keep the range small so scoring stays fast" },
+      { value: "3.4x", label: "Lift of the velocity signal on Series A prediction", context: "SSRN preprint, n=219" },
+    ],
+    references: [
+      { label: "1", title: "Engineering Acceleration as a VC Deal Flow Signal", url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558", source: "SSRN" },
+      { label: "2", title: "VC Deal Flow Signal Methodology", url: "https://signals.gitdealflow.com/methodology", source: "GitDealFlow" },
+      { label: "3", title: "Y Combinator Startup Library", url: "https://www.ycombinator.com/library", source: "Y Combinator" },
+    ],
+    faqs: [
+      {
+        question: "Why score at all instead of just reading the deal?",
+        answer: "Because scores are comparable and readable later. A score forces you to separate the dimensions instead of collapsing everything into a gut feel, and a written scorecard is what lets you go back and see where your judgment was systematically wrong.",
+      },
+      {
+        question: "How many factors should a scorecard have?",
+        answer: "Four to five. More factors and the scoring takes too long to be worth it; fewer and you lose the ability to see which dimension is driving the decision. Team, market, product, and traction are the core four; engineering velocity is the optional fifth.",
+      },
+      {
+        question: "How is engineering velocity scored?",
+        answer: "Read the public trajectory: is commit velocity and contributor growth accelerating, flat, or decelerating. Acceleration maps to a high score, flat to the middle, deceleration to the low end. The signal precedes fundraises by 21 to 47 days in the backtest, so it is a leading, not lagging, input [1].",
+      },
+      {
+        question: "Do all factors get equal weight?",
+        answer: "No. At seed and pre-seed, team weight dominates. As the round gets later, traction and market weight rise. Set the weights explicitly for your stage and write them down, so the score reflects a real policy instead of a mood.",
+      },
+      {
+        question: "How do I know my scores are calibrated?",
+        answer: "Track outcomes. Go back after six months and check whether high-scored deals actually raised and performed better than low-scored ones. Calibration is the difference between a scorecard and a superstition.",
+      },
+    ],
+    body: `A scorecard is not a substitute for judgment. It is a way to make judgment explicit, comparable, and reviewable, so that the decision you make on deal forty is as disciplined as the one you made on deal one.
+
+Here is a framework that is fast enough to use on every inbound deal and structured enough to calibrate.
+
+## Score Before You Meet
+
+The point of scoring is to rank before you spend the expensive meeting. Score on what is public, then decide who earns the call. A 0 to 10 scale on each factor keeps the pass fast enough that you will actually do it.
+
+## The Four Core Factors
+
+**Team.** Do the founders have the right capability and track record for this specific problem. At seed, this is the highest-weight factor.
+
+**Market.** Is the market real, large, and growing. A great team in a bad market is still a bad investment.
+
+**Product.** Does the product exist and solve the stated problem. A live product beats a deck, every time.
+
+**Traction.** Is there evidence of real usage, revenue, or engagement. Traction weight rises with stage.
+
+## The Fifth Factor: Engineering Velocity
+
+Public GitHub activity adds a leading-indicator dimension the other four do not cover. It reads whether the team is shipping faster or slower, independently of what the deck claims. The backtest against 219 fundraises found a 3.4x lift in a composite commit-velocity and contributor signal preceding Series A, with a 21 to 47 day lead [1].
+
+Score it on trajectory: accelerating high, flat middle, decelerating low. It is the only factor on the card that predicts rather than reports.
+
+## Setting Weights
+
+Write the weights down. At pre-seed, team might be 40 percent with velocity and product splitting the rest. At Series A, traction and market rise. The weights are a policy; the discipline of writing them is what makes the scorecard useful later.
+
+## Calibrate or Discard
+
+A scorecard that is never checked against outcomes is superstition. Go back after six months and test whether high scores predicted raises and performance. Adjust the weights where the card was wrong.
+
+The goal is not a perfect number. It is a decision process you can defend, review, and improve [2][3].`,
+  },
+
+  {
+    slug: "venture-scouting-guide",
+    title: "Venture Scouting: How Scouts and Angels Source Deals Before the Databases",
+    description:
+      "How venture scouts and angels source startup deals ahead of Crunchbase and the funding databases, from scout programs to referral networks and leading-indicator data.",
+    summary:
+      "Scouts win by seeing deals before the databases do. This post explains what a scout actually does, how scout programs work, the sourcing stack, and where public engineering-acceleration data fits as a leading indicator that databases, by design, lag.",
+    date: "2026-08-14",
+    relatedSectors: ["enterprise-saas", "ai-ml", "web3"],
+    keyStats: [
+      { value: "3-6 weeks", label: "Lead time of engineering acceleration over a fundraise announcement", context: "the window databases cannot see" },
+      { value: "350+", label: "Startups in the weekly public panel", context: "a discovery surface for scouts" },
+      { value: "6", label: "Read-only tools in the free MCP server", context: "trending, sector search, lookup, summary, scout receipts, methodology" },
+    ],
+    references: [
+      { label: "1", title: "Engineering Acceleration as a VC Deal Flow Signal", url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558", source: "SSRN" },
+      { label: "2", title: "VC Deal Flow Signal Methodology", url: "https://signals.gitdealflow.com/methodology", source: "GitDealFlow" },
+      { label: "3", title: "VC Deal Flow Signal MCP Server", url: "https://www.npmjs.com/package/@gitdealflow/mcp-signal", source: "npm" },
+    ],
+    faqs: [
+      {
+        question: "What is the difference between a scout and an angel?",
+        answer: "A scout typically sources and refers deals on behalf of a fund or scout program and earns carry or a referral fee on closed deals, while an angel writes their own checks. The sourcing discipline is the same; the capital and economics differ.",
+      },
+      {
+        question: "How do scout programs work?",
+        answer: "A fund gives a scout a small allocation to deploy, and the scout sources deals, usually in exchange for carry on what they bring in. The scout's edge is reach into a network or community the fund cannot easily cover itself.",
+      },
+      {
+        question: "Where do the best scouts find deals?",
+        answer: "In communities and networks databases do not index: technical communities, founder circles, and the public engineering activity of startups before they announce. The common thread is finding the company before the round is public.",
+      },
+      {
+        question: "Why do databases lag deal discovery?",
+        answer: "A database like Crunchbase records what has already happened: a round that was announced. The scouting opportunity is the 3 to 6 weeks before the announcement, when engineering activity is already accelerating but nothing is public yet [1].",
+      },
+      {
+        question: "Is there a free tool for scouting by engineering signal?",
+        answer: "Yes. The GitDealFlow MCP server exposes six free, read-only tools including trending startups, sector search, startup lookup, and scout receipts, usable inside any MCP-compatible agent runtime [3].",
+      },
+    ],
+    body: `The entire scouting edge is timing. A database tells you what already happened; a scout earns their place by seeing it before it happens. This is the sourcing discipline, not the capital, and it is learnable.
+
+## What a Scout Actually Does
+
+A scout sources deals, vets them against a fund's thesis, and refers the ones that clear the bar, in exchange for carry or a referral fee. The job is two skills: reach into places the fund is not looking, and judgment about which companies are worth a real look.
+
+## Scout Programs
+
+Scout programs formalize the arrangement. A fund gives a scout a small allocation, and the scout deploys it on deals they source. The scout's edge is not capital; it is access to a network, a community, or a signal the fund does not already have.
+
+## The Sourcing Stack
+
+The best scouts run several sourcing channels at once. Referral networks bring warm intros. Communities and forums surface companies before they raise. Public data, including engineering activity, surfaces companies whose shipping pace is accelerating before the round is announced [2].
+
+## Leading Indicators vs. Lagging Databases
+
+Databases are lagging indicators by design: they record rounds after they are announced. The scouting opportunity is the leading indicator, the 3 to 6 weeks before the announcement when a company's engineering activity is already accelerating. The backtest against 219 fundraises found the signal precedes Series A by 21 to 47 days [1].
+
+## Where Public Engineering Data Fits
+
+A weekly-updated public panel of 350+ startup GitHub orgs gives a scout a discovery surface that does not depend on their referral graph. The free MCP server exposes six read-only tools for trending startups, sector search, startup lookup, signal summary, scout receipts, and methodology, usable inside any agent runtime [3].
+
+Scouting is not a network you are born into. It is a system for seeing deals before the databases do, and public engineering data is one of the cheapest inputs to that system.`,
+  },
+
+  {
+    slug: "pre-seed-scouting-with-github-signals",
+    title: "Pre-Seed Scouting With GitHub Signals: Finding Startups Before Their First Announcement",
+    description:
+      "How to scout pre-seed startups using public GitHub signals, including the thin-footprint caveat that makes pre-seed a verification game rather than a discovery game.",
+    summary:
+      "Pre-seed is the hardest stage to scout because the public footprint is thin. This post explains what GitHub activity does and does not reveal at pre-seed, why the signal is verification rather than discovery, and a workflow for combining it with the channels that do find pre-seed companies.",
+    date: "2026-08-14",
+    relatedSectors: ["developer-tools", "ai-ml", "fintech"],
+    keyStats: [
+      { value: "2-4", label: "Typical pre-seed engineering team size", context: "a thin public footprint by definition" },
+      { value: "14-day", label: "Observation window", context: "the default velocity read" },
+      { value: "0", label: "Cost to check a public GitHub org", context: "the cheapest pre-seed verification available" },
+    ],
+    references: [
+      { label: "1", title: "Engineering Acceleration as a VC Deal Flow Signal", url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558", source: "SSRN" },
+      { label: "2", title: "VC Deal Flow Signal Methodology", url: "https://signals.gitdealflow.com/methodology", source: "GitDealFlow" },
+      { label: "3", title: "GitHub REST API - Repositories", url: "https://docs.github.com/en/rest/repos/repos", source: "GitHub Docs" },
+    ],
+    faqs: [
+      {
+        question: "Can GitHub signals discover pre-seed startups cold?",
+        answer: "Rarely. Pre-seed teams are two to four engineers often working partly in private repositories, so the public footprint is thin. The practical use is verification, confirming that a founder you met through another channel is actually building, not cold discovery.",
+      },
+      {
+        question: "What should I look for on a pre-seed founder's GitHub?",
+        answer: "Consistency over volume. A founder who ships regularly, even at low absolute commit counts, is a stronger signal than a burst of activity followed by silence. Contributor breadth and repository activity both help confirm the team is real.",
+      },
+      {
+        question: "Why is pre-seed the hardest stage to scout?",
+        answer: "Because there is almost no public record yet: no funding announcement, no press, and a thin code footprint. The signal that works at Series A is too weak to be discovery-grade at pre-seed.",
+      },
+      {
+        question: "What is the right pre-seed scouting workflow?",
+        answer: "Source through communities, referrals, and accelerators, then use public GitHub activity as a free verification pass on the founders before you spend a meeting. It confirms shipping pace and team reality at zero cost.",
+      },
+      {
+        question: "Is a pre-seed signal worth tracking at all?",
+        answer: "Yes, as a verification layer and an early-warning system. A pre-seed team that begins accelerating is often deploying capital or approaching a round, which is exactly when a scout wants to be in touch.",
+      },
+    ],
+    body: `Pre-seed is where the scouting model breaks down first, for a simple reason: there is almost nothing public to read. The team has not announced, the press has not written, and the code footprint is thin.
+
+Understanding that limitation is what separates a useful pre-seed workflow from a wasted one.
+
+## Why Pre-Seed Is the Hardest Stage
+
+At pre-seed, a startup is two to four engineers, often working partly in private repositories. The public footprint is thin by definition, and the engineering signal that is discovery-grade at Series A is too weak to surface a company cold at pre-seed [1].
+
+## What Public GitHub Shows at Pre-Seed
+
+What it does show is whether a team is real and whether it is shipping. Consistency matters more than volume: a founder who commits regularly at low absolute counts is a stronger signal than a burst followed by silence. Contributor breadth tells you whether it is a solo founder or a team, and repository activity tells you whether the product story matches the code [3].
+
+## Verification, Not Discovery
+
+The honest framing is that public GitHub activity at pre-seed is a verification tool, not a discovery tool. Use it to confirm that a founder you met through a community, a referral, or an accelerator is actually building, not to find the company in the first place [2].
+
+## A Pre-Seed Scouting Workflow
+
+Source through the channels that do find pre-seed companies: communities, referrals, accelerators, and founder circles. When a founder surfaces, run a free public pass on their GitHub before you spend a meeting. Check that the team is real, the product story matches the code, and the shipping is consistent.
+
+## The Early-Warning Use
+
+There is one case where the pre-seed signal is worth tracking proactively: acceleration. When a pre-seed team you already know begins to accelerate, they are usually deploying capital or approaching a round, which is exactly the moment a scout wants to be in the conversation [1].
+
+Pre-seed scouting is hard because the record is thin. But the cheapest check in the stack, a public GitHub pass, is also the one that keeps you from wasting a meeting on a team that is not actually building.`,
+  },
+
+  {
+    slug: "engineering-velocity-benchmarks-by-stage",
+    title: "Engineering Velocity Benchmarks: What Fast Looks Like on GitHub, by Stage and Sector",
+    description:
+      "Reference numbers for reading startup engineering velocity on GitHub: how sectors differ, what the acceleration thresholds are, and how to benchmark a team against its own baseline.",
+    summary:
+      "Benchmarks exist so you can tell the difference between a team that looks busy and a team that is actually accelerating. This post explains how the weekly panel is composed, how sectors differ in baseline activity, what the acceleration-screen thresholds are, and why the most useful benchmark is a team against its own prior pace.",
+    date: "2026-08-14",
+    relatedSectors: ["enterprise-saas", "data-infrastructure", "ai-ml"],
+    keyStats: [
+      { value: "15", label: "Sectors in the current Q3 2026 panel", context: "from web3 (42 startups) to agtech (11)" },
+      { value: "40 / 5", label: "Acceleration-screen threshold: 40 commits per 14 days and 5 contributors", context: "excludes low-base artifacts" },
+      { value: "35-60%", label: "Lower baseline commit velocity in enterprise SaaS", context: "vs. AI-tools startups at equivalent stage" },
+    ],
+    references: [
+      { label: "1", title: "Engineering Acceleration as a VC Deal Flow Signal", url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558", source: "SSRN" },
+      { label: "2", title: "VC Deal Flow Signal Methodology", url: "https://signals.gitdealflow.com/methodology", source: "GitDealFlow" },
+      { label: "3", title: "VC Deal Flow Signal API", url: "https://signals.gitdealflow.com/api/signals.json", source: "GitDealFlow" },
+      { label: "4", title: "DORA - Accelerate State of DevOps Research", url: "https://dora.dev/research/", source: "Google DORA" },
+    ],
+    faqs: [
+      {
+        question: "What is a good commit velocity benchmark?",
+        answer: "There is no single number, because baselines differ by sector and stage. Enterprise SaaS teams commit 35 to 60 percent less than AI-tools teams at the same stage. The useful benchmark is a team against its own prior pace, which is what the velocity-change signal measures.",
+      },
+      {
+        question: "What threshold does GitDealFlow use to screen for acceleration?",
+        answer: "The weekly Acceleration Watch cohort uses a transparent threshold of at least 40 commits per 14-day window and at least 5 contributors, and excludes percentage jumps off a near-zero baseline. The threshold exists to suppress low-base artifacts rather than to define fast in absolute terms.",
+      },
+      {
+        question: "How do sectors differ in the panel?",
+        answer: "The current Q3 2026 panel spans 15 sectors. Web3 is the largest at 42 startups and agtech the smallest at 11. Raw size reflects where public GitHub activity is most observable, not where the best companies are.",
+      },
+      {
+        question: "Why is a team's own baseline the best benchmark?",
+        answer: "Because acceleration is relative. A move from 18 to 36 commits per 14 days is a top-decile acceleration within enterprise SaaS even though the absolute number looks modest. Comparing against a sector distribution instead of the whole panel is the correct default [1].",
+      },
+      {
+        question: "Does a faster team mean a better company?",
+        answer: "Not by itself. Velocity is a shipping-pace signal, not a quality signal. It predicts capital events, not outcomes. Use it as one leading indicator among several, never as a standalone ranking.",
+      },
+    ],
+    body: `Benchmarks exist for one reason: to tell the difference between a team that looks busy and a team that is actually accelerating. Without a reference point, a commit count is just a number.
+
+Here are the reference points the weekly panel actually uses, and where each one is and is not useful.
+
+## The Panel
+
+GitDealFlow tracks public GitHub activity across a weekly panel of 350+ startup orgs in 15 sectors, from web3 at 42 startups to agtech at 11 in the current Q3 2026 snapshot [2][3]. The composition reflects where public engineering activity is most observable, not where the best companies are.
+
+## The Acceleration Screen
+
+The weekly Acceleration Watch cohort uses a transparent threshold: at least 40 commits per 14-day window and at least 5 contributors, excluding percentage jumps off a near-zero baseline. The threshold is a screen against low-base artifacts, not a definition of fast in absolute terms.
+
+## Sector Differences
+
+Baseline velocity differs by sector. Enterprise SaaS teams commit 35 to 60 percent less than AI-tools teams at the equivalent stage, because compliance and change-control processes throttle deployment frequency in a way public commit data reflects directly [1][4]. This is why sector-stratified ranking beats a single global percentile.
+
+## Stage Differences
+
+Velocity and contributor behavior also shift with stage. Pre-seed teams are thin and lumpy. Seed and Series A teams show the sharpest acceleration as they deploy capital into headcount. Growth teams show contributor expansion more than velocity spikes. The stage tells you which dimension to weight.
+
+## The Best Benchmark Is a Team Against Itself
+
+The single most useful benchmark is a team against its own prior pace. A company accelerating from 18 to 36 commits per 14 days is a top-decile move inside enterprise SaaS even though the absolute number looks small. Trajectory, not level, is the signal [1].
+
+Benchmarks are reference points, not verdicts. They tell you what fast looks like so you can recognize acceleration when you see it.`,
+  },
+
+  {
+    slug: "commit-velocity-benchmark-numbers",
+    title: "Commit Velocity Benchmark Numbers: The Thresholds Behind a Startup Acceleration Signal",
+    description:
+      "The specific commit velocity numbers behind the GitDealFlow acceleration signal: observation windows, contributor thresholds, and how to read velocity change.",
+    summary:
+      "Commit velocity is the raw throughput metric behind the acceleration signal, but the numbers only mean something inside the right windows and thresholds. This post spells out the 14-day and 28-day windows, the contributor floor, and how to read the percentage change without being fooled by low-base artifacts.",
+    date: "2026-08-14",
+    relatedSectors: ["developer-tools", "data-infrastructure", "ai-ml"],
+    keyStats: [
+      { value: "14-day", label: "Default commit-velocity window", context: "the standard velocity read" },
+      { value: "28-day", label: "Longer window for enterprise and regulated sectors", context: "smooths sprint-cycle artifacts" },
+      { value: "5", label: "Minimum contributor count for a credible acceleration read", context: "suppresses single-author artifacts" },
+    ],
+    references: [
+      { label: "1", title: "Engineering Acceleration as a VC Deal Flow Signal", url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558", source: "SSRN" },
+      { label: "2", title: "VC Deal Flow Signal Methodology", url: "https://signals.gitdealflow.com/methodology", source: "GitDealFlow" },
+      { label: "3", title: "GitHub REST API - Repository Statistics", url: "https://docs.github.com/en/rest/metrics/statistics", source: "GitHub Docs" },
+      { label: "4", title: "DORA - Accelerate State of DevOps Research", url: "https://dora.dev/research/", source: "Google DORA" },
+    ],
+    faqs: [
+      {
+        question: "What exactly does commit velocity count?",
+        answer: "The number of commits pushed to a startup's public repositories within a rolling observation window, read through the public GitHub statistics API [3]. It is a proxy for shipping pace, not a measure of code quality.",
+      },
+      {
+        question: "Why are there two observation windows?",
+        answer: "The 14-day window is the default read, but enterprise and regulated teams work in two-week sprints that make a 14-day window lumpy. The 28-day window smooths that sprint artifact and gives a cleaner read of whether the team's overall pace is changing [4].",
+      },
+      {
+        question: "Why does a percentage change need a contributor floor?",
+        answer: "Because a jump from 1 to 4 commits is a 300 percent change that means nothing. A minimum contributor count, and an absolute commit floor, suppresses the low-base artifacts that would otherwise flood the signal with noise.",
+      },
+      {
+        question: "What counts as a meaningful velocity change?",
+        answer: "A sustained, non-artifactual move against the team's own baseline, ideally confirmed across both the 14-day and 28-day windows. A one-window spike is worth a look; a two-window trend is worth a call.",
+      },
+      {
+        question: "Is commit velocity the only number that matters?",
+        answer: "No. It is one of three primary signals alongside contributor growth and repository expansion, and it is the raw-throughput input, not the conclusion. The composite is what predicts [1].",
+      },
+    ],
+    body: `Commit velocity is the raw throughput metric behind the acceleration signal, but a raw number without windows and thresholds is noise. Here are the specific numbers that make it interpretable.
+
+## What Commit Velocity Counts
+
+Commit velocity is the count of commits pushed to a startup's public repositories within a rolling window, read through the public GitHub statistics API [3]. It is a proxy for shipping pace. It does not measure code quality, and it was never meant to.
+
+## The 14-Day and 28-Day Windows
+
+The default read is a 14-day window. But teams that work in two-week sprints produce naturally lumpy distributions, a heavy push followed by quiet, and a 14-day window can catch half a sprint and misread the quiet half as deceleration. The 28-day window smooths that artifact and gives a cleaner read of whether overall pace is changing [4].
+
+## The Contributor Floor
+
+A percentage change only means something above an absolute floor. A jump from 1 to 4 commits is a 300 percent change that means nothing. A minimum contributor count, five in the weekly screen, suppresses the single-author artifacts that would otherwise dominate the signal [2].
+
+## Reading Velocity Change
+
+Read the change against the team's own baseline, not against the whole panel. A team moving from 18 to 36 commits per 14 days is a top-decile move inside enterprise SaaS even though the absolute number looks modest. And confirm a move across both windows: a one-window spike is worth a look, a two-window trend is worth a call [1].
+
+## Why the Numbers Are Thresholds, Not Rankings
+
+None of these numbers is a grade. The commit floor, the contributor floor, and the windows are filters that keep the signal honest. They exist so that when a startup shows up as accelerating, the acceleration is real rather than an artifact of a low baseline [1][2].
+
+Commit velocity is the input. Contributor growth and repository expansion are the confirmation. The composite of the three is what actually predicts a fundraise.`,
+  },
+
+  {
+    slug: "how-to-evaluate-startup-founders",
+    title: "How to Evaluate Startup Founders: Signals That Predict Execution",
+    description:
+      "A framework for evaluating startup founders before writing a check: execution signals, technical depth, team-building, and the red flags that matter at seed.",
+    summary:
+      "At seed stage the founder is the investment, which means founder evaluation is most of the job. This post lays out the execution signals, technical depth, and team-building patterns that predict a founder can deliver, plus the red flags that override everything else.",
+    date: "2026-08-14",
+    relatedSectors: ["developer-tools", "ai-ml", "enterprise-saas"],
+    keyStats: [
+      { value: "40%", label: "Suggested seed-stage team weight in a scorecard", context: "founder quality dominates early-stage decisions" },
+      { value: "0", label: "Cost to read a founder's public shipping record", context: "the cheapest founder check available" },
+      { value: "350+", label: "Startup orgs in the public panel", context: "a surface for spotting founders who ship" },
+    ],
+    references: [
+      { label: "1", title: "Engineering Acceleration as a VC Deal Flow Signal", url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558", source: "SSRN" },
+      { label: "2", title: "VC Deal Flow Signal Methodology", url: "https://signals.gitdealflow.com/methodology", source: "GitDealFlow" },
+      { label: "3", title: "Y Combinator Startup Library", url: "https://www.ycombinator.com/library", source: "Y Combinator" },
+    ],
+    faqs: [
+      {
+        question: "What matters most when evaluating a seed-stage founder?",
+        answer: "Execution, not credentials. A founder's track record matters, but the best predictor of whether they can deliver is whether they are delivering right now, which is readable in their public shipping record.",
+      },
+      {
+        question: "How do I assess a technical founder's capability?",
+        answer: "Read their work. Public commit history is a direct record of what a technical founder actually builds, at what pace, and with how many collaborators. It is the cheapest and least gameable founder check available [2].",
+      },
+      {
+        question: "What are the founder red flags that override everything?",
+        answer: "A mismatch between the pitch and the public record, a shipping pace that contradicts the claimed traction, and a founder who cannot name the specific problem their product solves. Any one of these is worth walking away over.",
+      },
+      {
+        question: "Does a founder's network matter?",
+        answer: "Less than it used to. Network helps with the first meeting, but a founder who ships in public can be discovered and verified without any network. Execution is the equalizer [1].",
+      },
+      {
+        question: "Can I evaluate a founder I have never met?",
+        answer: "Partially. You can verify capability and shipping pace from the public record, but judgment and coachability still require a conversation. Use the public record to decide who earns the conversation.",
+      },
+    ],
+    body: `At seed stage, the founder is the investment. The product will pivot, the market will shift, but the team's ability to execute is the constant. Which makes founder evaluation most of the job.
+
+## Why Founders Matter Most at Seed
+
+A seed check is a bet on a team before the product and market have proven themselves. Everything else on the scorecard, market, product, traction, is a bet on the founder's ability to find them. Get the team wrong and nothing else matters.
+
+## Execution Signals
+
+The best predictor of whether a founder can deliver is whether they are delivering right now. That is readable in their public shipping record: the commits they push, the repositories they build, and the pace at which they do it. It is the least gameable founder check available [2].
+
+## Technical Depth
+
+For technical founders, public code is a direct record of capability. It shows what they actually build, at what pace, and with how many collaborators. It is also the cheapest check: reading a founder's public GitHub costs nothing and cannot be rehearsed.
+
+## Team-Building Signals
+
+A founder who can recruit is a founder who can scale. Watch contributor growth on their projects. A founder whose team is expanding is building something other people want to work on, which is itself a signal about the company.
+
+## The Red Flags
+
+A few signals override everything else. A pitch that contradicts the public record. A shipping pace that does not match the claimed traction. A founder who cannot name the specific problem their product solves. Any one of these is worth walking away over.
+
+## Reading Founders in Public
+
+A weekly-updated panel of 350+ startup orgs gives you a surface for spotting founders who ship, independently of their network [1]. It does not replace the conversation, but it decides who earns one [3].
+
+Founder evaluation is judgment, but the inputs to that judgment are increasingly public. Read the shipping record first, then take the meeting.`,
+  },
+
+  {
+    slug: "technical-founder-assessment-github",
+    title: "Assessing Technical Founders From Their GitHub: Shipping Discipline as a Quality Signal",
+    description:
+      "How to assess a technical founder's capability from their GitHub activity: shipping discipline, contributor patterns, and the Scout Score that grades a user's star history.",
+    summary:
+      "A technical founder's GitHub is the most honest resume they have, a running record of what they build, at what pace, and with whom. This post explains how to read shipping discipline and contributor patterns as capability signals, and how the Scout Score grades a founder's eye for unicorns from their star history.",
+    date: "2026-08-14",
+    relatedSectors: ["developer-tools", "ai-ml", "infrastructure"],
+    keyStats: [
+      { value: "0-100", label: "Scout Score range", context: "grades a GitHub user's star history against ~75 validated unicorns" },
+      { value: "75", label: "Validated unicorns in the Scout Score reference set", context: "the benchmark for a founder's eye for breakout companies" },
+      { value: "14-day", label: "Window for reading shipping pace", context: "consistency beats volume at the founder level" },
+    ],
+    references: [
+      { label: "1", title: "Engineering Acceleration as a VC Deal Flow Signal", url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558", source: "SSRN" },
+      { label: "2", title: "VC Deal Flow Signal MCP Server", url: "https://www.npmjs.com/package/@gitdealflow/mcp-signal", source: "npm" },
+      { label: "3", title: "VC Deal Flow Signal Methodology", url: "https://signals.gitdealflow.com/methodology", source: "GitDealFlow" },
+    ],
+    faqs: [
+      {
+        question: "Why is GitHub the most honest founder resume?",
+        answer: "Because it cannot be rehearsed. A founder can curate a LinkedIn headline, but their commit history is a running record of what they actually build, at what pace, and with whom, generated daily without intent to impress.",
+      },
+      {
+        question: "What should I look for in a technical founder's GitHub?",
+        answer: "Shipping discipline first: consistent commits over time, not a burst followed by silence. Then contributor patterns: does the founder build alone or attract collaborators. Then the specific repositories, to see whether the code matches the product story.",
+      },
+      {
+        question: "What is the Scout Score?",
+        answer: "A 0 to 100 grade of a GitHub user's star history against roughly 75 validated unicorns. It measures whether a founder has been watching breakout companies early, a proxy for their eye for what is about to work [2].",
+      },
+      {
+        question: "Does a high Scout Score mean a good founder?",
+        answer: "Not on its own. It measures one dimension, the ability to spot breakout companies early, which correlates with judgment. It is a useful signal alongside shipping discipline, not a standalone verdict.",
+      },
+      {
+        question: "How do I check a founder's shipping discipline quickly?",
+        answer: "Look at the trailing activity: is there consistent, recent work, or a spike followed by silence. Consistency at any absolute volume is the signal; a founder who ships steadily is a founder who executes.",
+      },
+    ],
+    body: `A technical founder's GitHub is the most honest resume they have. It is a running record of what they build, at what pace, and with whom, generated daily without any intent to impress. Reading it well is a founder-evaluation superpower.
+
+## Why GitHub Is the Honest Resume
+
+LinkedIn can be curated. A pitch deck can be rehearsed. But a commit history is a record of actual work, produced continuously, and it cannot be faked for an interview. That makes it the single least gameable signal in founder evaluation [3].
+
+## Shipping Discipline
+
+The first thing to read is discipline: consistent commits over time, not a burst followed by silence. A founder who ships steadily at low absolute volume is a stronger signal than a founder who ships in a burst and then goes quiet. Consistency is execution made visible [1].
+
+## Contributor Patterns
+
+Next, read who they build with. Does the founder build alone, or do other people choose to work with them? Contributor growth on their projects is a signal about both the founder's recruiting and the quality of the work, because people do not contribute to projects that are not worth their time.
+
+## Scout Score: Grading a Founder's Eye
+
+There is a second dimension the GitHub record reveals: judgment. The Scout Score grades a GitHub user's star history against roughly 75 validated unicorns, measuring whether they have been watching breakout companies before they were obvious. A founder who consistently spotted winners early has demonstrated the judgment that seed investing depends on [2].
+
+## Honest Limits
+
+GitHub tells you what a founder builds and whether they can spot a winner. It does not tell you how they handle pressure, whether they are coachable, or how they treat their team. Those still require a conversation.
+
+## The Workflow
+
+Check the trailing activity for shipping discipline, read the contributor patterns for team-building, look at the specific repositories to confirm the product story, and run the Scout Score for judgment. Then take the meeting with a founder you already have reasons to believe in [2][3].
+
+Founder evaluation is a judgment call, but it is a judgment call you can now make with better inputs. The public record is the cheapest, most honest input of all.`,
   },
 ];
 
