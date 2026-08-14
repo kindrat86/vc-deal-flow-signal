@@ -457,7 +457,7 @@ const TOOLS = [
     name: "get_trending_startups",
     title: "Get Trending Startups",
     description: [
-      "Return the top 20 startups ranked by engineering acceleration across all 20 sectors for the current reporting period. Each row includes commit velocity, contributor count, signal classification, and GitHub URL.",
+      "Return the top 20 startups ranked by engineering acceleration across all 15 sectors for the current reporting period. Each row includes commit velocity, contributor count, signal classification, and GitHub URL.",
       "",
       "WHEN TO USE:",
       "- A VC, scout, or analyst asks 'who's trending this week', 'what's hot right now', 'who should I look at', or 'what to watch'.",
@@ -476,7 +476,7 @@ const TOOLS = [
       "- No authentication required. No rate limit enforced by this server; the upstream CDN absorbs typical agent traffic.",
       "- Returns exactly 20 rows when the dataset is healthy; fewer only if the upstream feed is degraded.",
       "- On upstream failure: returns `isError: true` with the HTTP status in the text block — retry once after a short delay before escalating to the user.",
-      "- Open-world: the tracked universe (~400 companies) evolves week to week as new orgs qualify or drop out.",
+      "- Open-world: the tracked universe (369 companies) evolves week to week as new orgs qualify or drop out.",
       "",
       "PARAMETERS: None.",
       "",
@@ -623,7 +623,7 @@ const TOOLS = [
       "- Matching is case-insensitive and normalization-tolerant: whitespace, punctuation, and capitalization are stripped before comparison. 'Sky Pilot', 'skypilot', and 'SkyPilot' all resolve to the same entry. Accepts either the display name or the GitHub org slug.",
       "- On no match: returns `structuredContent: { found: false, suggestion: ... }`. This is an EXPECTED outcome (the startup is not in the tracked universe), NOT an error — do not retry, do not flag as failure. Instead surface the suggestion to the user and offer to run `get_trending_startups` or `search_startups_by_sector`.",
       "- On upstream failure: returns `isError: true` with HTTP status.",
-      "- Open-world: only ~400 companies are tracked. This tool cannot add new ones — direct the user to the website submission form if needed.",
+      "- Open-world: only 369 companies are tracked. This tool cannot add new ones — direct the user to the website submission form if needed.",
       "",
       "PARAMETERS:",
       "- `name` (required, string, 1–100 chars) — Startup display name OR GitHub org name. Case-insensitive; punctuation and whitespace are ignored during matching.",
@@ -1482,7 +1482,7 @@ const RESOURCES = [
     uri: "signal://trending",
     name: "Trending Startups (current week)",
     description:
-      "Top 20 startups across all 20 sectors ranked by engineering acceleration for the current weekly period. Refreshes every Monday ~09:00 UTC.",
+      "Top 20 startups across all 15 sectors ranked by engineering acceleration for the current weekly period. Refreshes every Monday ~09:00 UTC.",
     mimeType: "application/json",
   },
   {
