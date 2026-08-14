@@ -27,6 +27,20 @@
 
 set -euo pipefail
 
+# Deploy lock — serialize against concurrent deploys to the same alias-pinned
+# Vercel project (multiple agents deploy this site; last-wins silently reverts
+# fixes). The lock helper lives in the shared growth-loop framework so both
+# deploy paths (this one and deploy_from_commit.sh) acquire the same mutex.
+LOCK_HELPER="${GITDEALFLOW_LOCK_HELPER:-$HOME/growth-loop/lib/deploy-lock.sh}"
+if [ -f "$LOCK_HELPER" ]; then
+  # shellcheck disable=SC1090
+  source "$LOCK_HELPER"
+  deploy_lock_acquire "signals.gitdealflow.com" 600 || exit 1
+  trap deploy_lock_release EXIT
+else
+  echo "⚠ deploy-lock.sh not found at $LOCK_HELPER — proceeding WITHOUT the deploy lock."
+fi
+
 # Step 1 — build production artifacts (.vercel/output)
 echo "▶ Building production artifact..."
 npx vercel build --prod
