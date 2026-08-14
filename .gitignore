@@ -5,6 +5,8 @@ node_modules/
 .env
 .env.*
 secrets/
+# YouTube uploader hardcodes an OAuth refresh token + client ID
+scripts/yt-upload-sipiteno.py
 
 # Logs
 *.log
