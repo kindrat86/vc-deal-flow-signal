@@ -1059,7 +1059,7 @@ DATA_PAGES = [
            "Seed-stage valuations remain elevated ($8-12M median pre-money). Series A valuations have normalized from 2021 peaks."]),
      ],
      [
-         ("What sectors are getting the most VC funding in 2026?", "AI/ML (~30%), climate tech (~15%), fintech (~12%), healthtech (~10%), and defense tech (~10%). GitDealFlow tracks engineering momentum in all 20 sectors."),
+         ("What sectors are getting the most VC funding in 2026?", "AI/ML (~30%), climate tech (~15%), fintech (~12%), healthtech (~10%), and defense tech (~10%). GitDealFlow tracks engineering momentum in all 15 sectors."),
      ]),
 
     ("startup-valuation-trends", "Startup Valuation Trends 2026 — Data-Backed Insights",
@@ -1080,7 +1080,7 @@ DATA_PAGES = [
      "GitDealFlow tracks commit velocity, contributor growth, and repo expansion across 400+ venture-backed startups. Here's the data methodology and sector benchmarks.",
      [
          ("Data Methodology",
-          ["GitDealFlow scans public GitHub organizations for ~400 venture-backed startups across 20 sectors.",
+          ["GitDealFlow scans public GitHub organizations for 369 venture-backed startups across 15 sectors.",
            "Three core metrics: commit velocity (weekly commits), contributor growth (new contributors per month), and repo expansion (new public repos and code size growth).",
            "Data refreshes every Monday based on the prior week's GitHub activity.",
            "All data is publicly available and free via JSON API, CSV export, and MCP server."]),
@@ -1103,7 +1103,7 @@ RESEARCH_PAGES = [
      "A peer-reviewed study on the correlation between GitHub commit velocity and startup fundraising events, published on SSRN.",
      [
          ("Study Overview",
-          ["This study analyzes the relationship between public GitHub activity and fundraising events across ~400 venture-backed startups.",
+          ["This study analyzes the relationship between public GitHub activity and fundraising events across 369 venture-backed startups.",
            "Key finding: engineering velocity (commit velocity + contributor growth + repo expansion) rises 3-6 weeks before fundraise announcements with statistically significant correlation.",
            "The full paper is published on SSRN: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558"]),
          ("Key Findings",
@@ -1112,7 +1112,7 @@ RESEARCH_PAGES = [
            "The strongest signal pattern (sustained velocity increase + contributor growth for 2+ weeks) predicts fundraises with 78% precision."]),
      ],
      [
-         ("How was this study validated?", "The findings have been validated against ~1,200 fundraise events across 20 sectors. The SSRN preprint is peer-reviewed by the academic community."),
+         ("How was this study validated?", "The findings have been validated against ~1,200 fundraise events across 15 sectors. The SSRN preprint is peer-reviewed by the academic community."),
      ]),
 
     ("engineering-momentum-benchmarks", "Engineering Momentum Benchmarks by Sector",

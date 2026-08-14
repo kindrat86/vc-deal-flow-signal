@@ -26,7 +26,7 @@ If the MCP server isn't installed yet, add it to the user's MCP host config:
 ## Tools available (all read-only, no auth)
 
 - `get_trending_startups` — top 20 across all sectors by GitHub commit-velocity acceleration
-- `search_startups_by_sector(sector)` — filter by one of 20 sector slugs (`ai-ml`, `fintech`, `devtools`, `infra`, `climate`, `security`, `biotech`, etc.)
+- `search_startups_by_sector(sector)` — filter by one of 15 sector slugs (`ai-ml`, `fintech`, `devtools`, `infra`, `climate`, `security`, `biotech`, etc.)
 - `get_startup_signal(name)` — individual startup lookup, returns current metrics + signal type + history
 - `get_signals_summary` — dataset freshness, period, total counts
 - `get_scout_receipts(github_username)` — Scout Score (0-100) for a developer based on starring history vs. validated unicorns

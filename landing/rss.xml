@@ -3,7 +3,7 @@
   <channel>
     <title>GitDealFlow</title>
     <link>https://gitdealflow.com</link>
-    <description>VC deal flow signal — startup engineering acceleration tracker. Surfaces breakout engineering teams 3-6 weeks before fundraise announcements using public GitHub activity data across ~400 startup orgs in 20 sectors. Free APIs, MCP server, and weekly reports.</description>
+    <description>VC deal flow signal — startup engineering acceleration tracker. Surfaces breakout engineering teams 3-6 weeks before fundraise announcements using public GitHub activity data across 369 startup orgs in 15 sectors. Free APIs, MCP server, and weekly reports.</description>
     <language>en</language>
     <lastBuildDate>Sat, 18 Jul 2026 09:05:22 GMT</lastBuildDate>
     <generator>Hermes WebSub Feed Generator</generator>
@@ -162,7 +162,7 @@
       <title>/tweet-teardown</title>
       <link>https://signals.gitdealflow.com/tweet-teardown</link>
       <guid isPermaLink="true">https://signals.gitdealflow.com/tweet-teardown</guid>
-      <description>VC deal flow signal — startup engineering acceleration tracker. Surfaces breakout engineering teams 3-6 weeks before fundraise announcements using public GitHub activity data across ~400 startup orgs in 20 sectors. Free APIs, MCP server, and weekly reports.</description>
+      <description>VC deal flow signal — startup engineering acceleration tracker. Surfaces breakout engineering teams 3-6 weeks before fundraise announcements using public GitHub activity data across 369 startup orgs in 15 sectors. Free APIs, MCP server, and weekly reports.</description>
       <dc:creator>GitDealFlow</dc:creator>
       <pubDate>Sun, 14 Jun 2026 09:05:22 GMT</pubDate>
     </item>

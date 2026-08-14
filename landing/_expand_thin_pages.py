@@ -179,7 +179,7 @@ def build_for_page(audience, description, use_case):
         <p>{use_case}</p>
         
         <h2>How GitDealFlow Works for {audience}</h2>
-        <p>Every Monday, GitDealFlow scans public GitHub activity across 400+ venture-backed startup organizations in 20 sectors. We surface teams with accelerating commit velocity, growing contributor bases, and expanding repositories — the engineering signals that historically precede fundraising.</p>
+        <p>Every Monday, GitDealFlow scans public GitHub activity across 400+ venture-backed startup organizations in 15 sectors. We surface teams with accelerating commit velocity, growing contributor bases, and expanding repositories — the engineering signals that historically precede fundraising.</p>
         <p>For {audience}, this means you can build a watchlist of high-momentum startups, receive weekly updates on velocity changes, and reach out to founders before their rounds become competitive.</p>
         
         <h2>Getting Started</h2>
@@ -386,7 +386,7 @@ FOR_PAGES = [
     ("Hedge Funds", "add engineering momentum to your cross-over investment research stack",
      "Hedge funds investing in late-stage private companies need leading indicators beyond financials. GitDealFlow's engineering momentum data provides an objective signal of team execution speed — the #1 predictor of post-IPO performance for tech companies."),
     ("Micro VCs", "build a proprietary deal pipeline without a large analyst team",
-     "Micro VCs compete with larger funds on deal access. GitDealFlow gives you a systematic sourcing engine: track 400+ startups across 20 sectors, surface breakout teams weekly, and reach out before larger funds spot them."),
+     "Micro VCs compete with larger funds on deal access. GitDealFlow gives you a systematic sourcing engine: track 400+ startups across 15 sectors, surface breakout teams weekly, and reach out before larger funds spot them."),
     ("Startup Studios", "find founding teams and technical co-founders through GitHub activity",
      "Startup studios need strong technical founders. GitDealFlow surfaces engineers who are already shipping meaningful code — the ideal candidates for studio-backed ventures. Track GitHub activity to identify potential founders before they start fundraising."),
     ("Venture Scouts", "surface the highest-signal deals for your VC firm's Monday meeting",
@@ -568,23 +568,23 @@ OTHER_PAGES = [
         <p><a href="{CANONICAL}/#signup" style="display:inline-block;background:#00d4aa;color:#04130e;padding:.8rem 1.5rem;border-radius:.5rem;font-weight:700;text-decoration:none;margin-top:1rem">See 2026 signals →</a></p>''',
      [
          ("What was the most active sector in 2025?", "AI/ML led all sectors in engineering velocity and fundraise activity. Infrastructure-layer startups (training frameworks, inference serving, vector databases) showed the strongest and most sustained momentum."),
-         ("How many fundraises did GitDealFlow predict?", "219 fundraises were identified 21–47 days before public announcement across 20 sectors. The strongest signal pattern (sustained velocity + contributor growth) had a 78% precision rate."),
+         ("How many fundraises did GitDealFlow predict?", "219 fundraises were identified 21–47 days before public announcement across 15 sectors. The strongest signal pattern (sustained velocity + contributor growth) had a 78% precision rate."),
          ("Can I see 2025's historical signals?", "Yes. The live dashboard includes historical data. Insider Circle members get API access to full historical signal datasets."),
      ],
      [("Home", CANONICAL + "/"), ("Year in Review", ""), ("2025", "")],
      [("2026 Startup Signals", f"{CANONICAL}/2026"), ("Best Deal Flow Tools", f"{CANONICAL}/best/best-deal-flow-tools"), ("How to Track Startup Momentum", f"{CANONICAL}/learn/how-to-track-startup-momentum")]),
     
     ("2026", "Startup Engineering Signals — 2026 Live | GitDealFlow",
-     "Real-time startup engineering signals for 2026. Track commit velocity, contributor growth, and repo expansion across 400+ venture-backed startups in 20 sectors.",
+     "Real-time startup engineering signals for 2026. Track commit velocity, contributor growth, and repo expansion across 400+ venture-backed startups in 15 sectors.",
      f'''<h2>2026 Startup Engineering Signals: Live Tracking</h2>
-        <p>2026 is shaping up as the year engineering momentum data goes mainstream in venture capital. GitDealFlow now tracks 400+ startups across 20 sectors, with weekly signal updates every Monday. The live dashboard at signals.gitdealflow.com shows real-time momentum rankings.</p>
+        <p>2026 is shaping up as the year engineering momentum data goes mainstream in venture capital. GitDealFlow now tracks 400+ startups across 15 sectors, with weekly signal updates every Monday. The live dashboard at signals.gitdealflow.com shows real-time momentum rankings.</p>
         <h2>What's New in 2026</h2>
         <p>This year we added: MCP server integration (query deal flow directly in Claude and Cursor), A2A and NLWeb endpoints for agent-native access, the Scout Game (predict which startups will raise), and expanded sector coverage including climate tech, biotech, and robotics.</p>
         <h2>How to Use 2026 Signals</h2>
         <p>Start with the free weekly Signal Digest. Pick 3–5 sectors. Every Monday, review the trending list and add 5–10 startups to your watchlist. Within 4 weeks, you'll have a quality pipeline of 20–50 prospects sourced from engineering signals, not inbound decks.</p>
         <p><a href="{CANONICAL}/#signup" style="display:inline-block;background:#00d4aa;color:#04130e;padding:.8rem 1.5rem;border-radius:.5rem;font-weight:700;text-decoration:none;margin-top:1rem">Get free 2026 signals →</a></p>''',
      [
-         ("How many startups does GitDealFlow track in 2026?", "400+ venture-backed startups across 20 sectors. Coverage expands weekly as new startups ship code publicly on GitHub."),
+         ("How many startups does GitDealFlow track in 2026?", "400+ venture-backed startups across 15 sectors. Coverage expands weekly as new startups ship code publicly on GitHub."),
          ("How often is 2026 data updated?", "Weekly. New signals appear every Monday based on the prior week's GitHub activity. The live dashboard updates in real-time."),
          ("Is there a free way to track 2026 signals?", "Yes. GitDealFlow's free tier includes trending startups, sector search, MCP server, and the weekly Signal Digest. Upgrade for watchlists, alerts, and API access."),
      ],

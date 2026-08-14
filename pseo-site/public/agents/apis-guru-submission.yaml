@@ -20,8 +20,8 @@ openapi: "3.1.0"
 info:
   title: VC Deal Flow Signal Public API
   description: |
-    GitHub-derived engineering acceleration signals across ~400 venture-backed
-    startup organizations in 20 sectors. Free, no-auth public API. Same dataset
+    GitHub-derived engineering acceleration signals across 369 venture-backed
+    startup organizations in 15 sectors. Free, no-auth public API. Same dataset
     is also exposed via MCP server, A2A JSON-RPC, NLWeb, function-calling
     tools (OpenAI / Anthropic / Gemini formats), embeddable SVG badges,
     Hugging Face Datasets-compatible JSONL, and RFC 9727 api-catalog Linkset.
