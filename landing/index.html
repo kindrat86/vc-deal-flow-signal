@@ -76,7 +76,41 @@
       "@type": "WebSite",
       "@id": "https://gitdealflow.com/#website",
       "name": "GitDealFlow",
-      "url": "https://gitdealflow.com"
+      "alternateName": "VC Deal Flow Signal",
+      "url": "https://gitdealflow.com",
+      "description": "GitHub commit-velocity tracking across venture-backed startups. Code-side momentum signals from public GitHub data. Distinct from accelerator programs.",
+      "identifier": {
+        "@type": "PropertyValue",
+        "propertyID": "wikidata",
+        "value": "Q139376302",
+        "url": "https://www.wikidata.org/wiki/Q139376302"
+      },
+      "publisher": {
+        "@id": "https://gitdealflow.com/#organization"
+      },
+      "copyrightHolder": {
+        "@id": "https://gitdealflow.com/#organization"
+      },
+      "inLanguage": "en-US",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "potentialAction": [
+        {
+          "@type": "SearchAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://signals.gitdealflow.com/api/llms-search?q={search_term_string}"
+          },
+          "query-input": "required name=search_term_string"
+        },
+        {
+          "@type": "AskAction",
+          "target": {
+            "@type": "EntryPoint",
+            "urlTemplate": "https://signals.gitdealflow.com/api/answer?q={question}"
+          },
+          "query-input": "required name=question"
+        }
+      ]
     },
     {
       "@type": "SoftwareApplication",
