@@ -26,6 +26,7 @@
  */
 import { readFileSync, existsSync, readdirSync, statSync } from "node:fs";
 import { join, extname } from "node:path";
+import { createHash } from "node:crypto";
 
 const ROOT = process.cwd();
 const failures: string[] = [];
@@ -1000,6 +1001,40 @@ check(
   (s) => !s.includes("fontSize={8}"),
   "keep the 'startups' donut sub-label at fontSize={10} or larger",
 );
+
+// ---------------------------------------------------------------------------
+// FCP fix 2026-08-16: /ux.css must load asynchronously. The load-bearing base
+// rules live in app/critical.css (generated from public/ux.css). A blocking
+// <link> makes every first paint wait on a 33KB stylesheet; a stale
+// critical.css lets a future ux.css edit drift visually from first paint.
+// ---------------------------------------------------------------------------
+check(
+  "app/layout.tsx",
+  "app/layout.tsx regressed to a render-blocking /ux.css <link>; first paint waits on a 33KB stylesheet every visit (FCP fix 2026-08-16).",
+  (s) =>
+    s.includes('id="ux-css"') &&
+    s.includes('media="print"') &&
+    s.includes('import "./critical.css"'),
+  "keep the async ux.css pattern (link id=ux-css with media=print, load-swap script, noscript fallback) and the critical.css import in the root layout",
+);
+
+{
+  const ux = read("public/ux.css");
+  const crit = read("app/critical.css");
+  if (ux && crit) {
+    const hash = createHash("sha1").update(ux).digest("hex").slice(0, 16);
+    if (!crit.includes(`source-sha1: ${hash}`)) {
+      failures.push(
+        `app/critical.css is STALE vs public/ux.css (FCP fix 2026-08-16)\n    file: app/critical.css\n    fix:  run node scripts/gen-critical-css.mjs and commit the regenerated file`,
+      );
+    }
+  }
+  if (crit && (!crit.includes("--ux-accent") || !crit.includes("margin-inline: auto !important"))) {
+    failures.push(
+      `app/critical.css lost a load-bearing rule (FCP fix 2026-08-16)\n    file: app/critical.css\n    fix:  run node scripts/gen-critical-css.mjs to regenerate from public/ux.css`,
+    );
+  }
+}
 
 // ---------------------------------------------------------------------------
 if (failures.length) {

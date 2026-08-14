@@ -127,6 +127,13 @@ function publicHtmlCacheControl(pathname: string): string {
   if (shouldNoindex(pathname)) {
     return "private, no-cache, no-store, max-age=0, must-revalidate";
   }
+  // Versioned public asset (?v=YYYYMMDD-N): content changes ship a new URL,
+  // so copies can be cached forever. Immutable caching removes the
+  // revalidation RTT from every repeat visit and stops /ux.css blocking
+  // first paint on cache re-checks (FCP fix 2026-08-16).
+  if (pathname === "/ux.css") {
+    return "public, max-age=31536000, immutable";
+  }
   return "public, max-age=0, s-maxage=3600, stale-while-revalidate=86400";
 }
 
