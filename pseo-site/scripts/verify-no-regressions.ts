@@ -941,6 +941,13 @@ check(
 );
 
 check(
+  "components/PixelManager.tsx",
+  "components/PixelManager.tsx lost the hardcoded GA4/LinkedIn fallback IDs; pixels go dark again on every deploy_from_commit.sh build (env vars do not inline in the git-archive export path).",
+  (s) => s.includes('|| "G-7SV2SNZE4C"') && s.includes('|| "10702217"'),
+  "keep the fallback defaults: ga4 ... || \"G-7SV2SNZE4C\", linkedin ... || \"10702217\" (env vars win when present)",
+);
+
+check(
   "components/WebVitalsReporter.tsx",
   "components/WebVitalsReporter.tsx lost its PostHog capture of $web_vitals; the beacon component renders but reports nothing.",
   (s) => s.includes('$web_vitals') && s.includes("useReportWebVitals"),
