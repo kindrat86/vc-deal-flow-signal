@@ -1,7 +1,7 @@
 {
   "version": "https://jsonfeed.org/version/1.1",
   "title": "GitDealFlow",
-  "description": "VC deal flow signal, startup engineering acceleration tracker. Surfaces breakout engineering teams 3-6 weeks before fundraise announcements using public GitHub activity data across 369 startup orgs in 15 sectors. Free APIs, MCP server, and weekly reports.",
+  "description": "VC deal flow signal, startup engineering acceleration tracker. Surfaces breakout engineering teams 3-6 weeks before fundraise announcements using public GitHub activity data across 350+ startup orgs in 15 sectors. Free APIs, MCP server, and weekly reports.",
   "home_page_url": "https://gitdealflow.com/",
   "feed_url": "https://gitdealflow.com/feed.json",
   "language": "en",
@@ -246,7 +246,7 @@
       "id": "https://signals.gitdealflow.com/tweet-teardown",
       "url": "https://signals.gitdealflow.com/tweet-teardown",
       "title": "/tweet-teardown",
-      "content_text": "VC deal flow signal, startup engineering acceleration tracker. Surfaces breakout engineering teams 3-6 weeks before fundraise announcements using public GitHub activity data across 369 startup orgs in 15 sectors. Free APIs, MCP server, and weekly reports.",
+      "content_text": "VC deal flow signal, startup engineering acceleration tracker. Surfaces breakout engineering teams 3-6 weeks before fundraise announcements using public GitHub activity data across 350+ startup orgs in 15 sectors. Free APIs, MCP server, and weekly reports.",
       "date_published": "2026-06-14T09:05:22Z",
       "authors": [
         {

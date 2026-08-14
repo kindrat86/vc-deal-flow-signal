@@ -161,7 +161,7 @@ def build_page(sec):
 
     faqs = [
         (f"How does GitDealFlow detect breakout {display.lower()} startups?",
-         f"GitDealFlow tracks {tagline} across 369 startup GitHub orgs. For {display.lower()}, the strongest early signal is {top_signals[0].lower()}, teams accelerating backend infrastructure work are typically 3-6 weeks from a fundraise announcement. The methodology weights production-deployment signals (serving, integration, and SDK repos) higher than research output."),
+         f"GitDealFlow tracks {tagline} across 350+ startup GitHub orgs. For {display.lower()}, the strongest early signal is {top_signals[0].lower()}, teams accelerating backend infrastructure work are typically 3-6 weeks from a fundraise announcement. The methodology weights production-deployment signals (serving, integration, and SDK repos) higher than research output."),
         (f"What {display.lower()} sub-sectors does GitDealFlow cover?",
          f"The {display.lower()} sector bucket includes: " + "; ".join(sub_focus[:-1]) + f"; and {sub_focus[-1]}. Each is tracked at the GitHub-org level, with weekly commit velocity, contributor growth, and new repo creation decomposed by sub-focus area."),
         (f"Is the {display.lower()} signal data free?",
@@ -222,7 +222,7 @@ def build_page(sec):
 <script type="application/ld+json">{json.dumps(article_json)}</script>
 <script type="application/ld+json">{json.dumps(breadcrumb_json)}</script>
 <script type="application/ld+json">{json.dumps(faq_json)}</script>
-<script type="application/ld+json">{json.dumps({"@context":"https://schema.org","@type":"Organization","name":"GitDealFlow","url":BASE,"description":"GitDealFlow tracks commit velocity, contributor growth, and repository expansion across 369 startup GitHub orgs in 15 sectors. Surfaces breakout engineering teams 3-6 weeks before fundraise announcements."})}</script>
+<script type="application/ld+json">{json.dumps({"@context":"https://schema.org","@type":"Organization","name":"GitDealFlow","url":BASE,"description":"GitDealFlow tracks commit velocity, contributor growth, and repository expansion across 350+ startup GitHub orgs in 15 sectors. Surfaces breakout engineering teams 3-6 weeks before fundraise announcements."})}</script>
 <script>
     !function(t,e){{var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){{function g(t,e){{var o=e.split('.');2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){{t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}}}(p=t.createElement('script')).type='text/javascript',p.async=!0,p.src=s.api_host+'/static/array.js',(r=t.getElementsByTagName('script')[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a='posthog',u.people=u.people||[],u.toString=function(t){{var e='posthog';return'posthog'!==a&&(e+='.'+a),t||(e+=' (stub)'),e}},u.people.toString=function(){{return u.toString(1)+'.people (stub)'}},o='init capture register register_once register_for_session unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group setPersonProperties resetPersonProperties setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags'.split(' '),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])}},e.__SV=1)}}(document,window.posthog||[]);
     (function(){{function _init(){{ if(/^https?:$/.test(location.protocol)) posthog.init('phc_lyZCgvTpicjLzAO3rY2GhxuX5WUc5jQjP8ZVwwJqauX', {{api_host: 'https://eu.i.posthog.com', persistence: 'memory', person_profiles: 'identified_only'}}); }} if('requestIdleCallback' in window){{requestIdleCallback(_init,{{timeout:2500}});}} else {{setTimeout(_init,2000);}} }})();
@@ -234,7 +234,7 @@ def build_page(sec):
 <main>
 <nav style="font-size:.9rem;color:#666;margin-bottom:1.5rem"><a href="{BASE}" style="color:#0066cc">Home</a> › <a href="{BASE}/sectors" style="color:#0066cc">Sectors</a> › {display}</nav>
 <h1 style="font-size:2em;font-weight:800;margin-bottom:.5em;line-height:1.2">{display} Startups, Funding Signals & Deal Flow</h1>
-<p style="font-size:1.1em;color:#555;margin-bottom:2em">{tagline.capitalize()}, tracked at the GitHub-org level across 369 startups.</p>
+<p style="font-size:1.1em;color:#555;margin-bottom:2em">{tagline.capitalize()}, tracked at the GitHub-org level across 350+ startups.</p>
 <p>GitDealFlow tracks {tagline} startup momentum derived from public GitHub activity: commit velocity, contributor growth, and repository expansion. We surface breakout {display.lower()} engineering teams 3-6 weeks before their fundraise is announced, early enough to matter, late enough to be real. The {display.lower()} sector bucket includes {sub_focus_html}.</p>
 
 <h2 style="font-size:1.45rem;margin-top:2rem;border-bottom:2px solid #e5e7eb;padding-bottom:.3rem">{display} sector overview</h2>

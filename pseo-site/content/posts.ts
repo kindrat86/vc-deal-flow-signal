@@ -56,13 +56,13 @@ export const posts: BlogPost[] = [
     slug: "enterprise-saas-github-signal-patterns",
     title: "Enterprise SaaS GitHub Signal Patterns: A Sector Taxonomy for VC Sourcing",
     description:
-      "Enterprise SaaS startups signal differently on GitHub than developer-tools or AI companies. A sector taxonomy covering integration API buildouts, SDK releases, contributor compression reversal, and the compliance-cycle false positive, with stage-specific benchmarks from the 369-startup panel.",
+      "Enterprise SaaS startups signal differently on GitHub than developer-tools or AI companies. A sector taxonomy covering integration API buildouts, SDK releases, contributor compression reversal, and the compliance-cycle false positive, with stage-specific benchmarks from the 350+-startup panel.",
     summary:
-      "Enterprise SaaS companies carry the lowest commit velocity baseline of any software sector on the 369-startup panel, yet they produce some of the most reliable fundraise-precursor signals when read with sector-appropriate metrics. This post taxonomizes the five dominant GitHub signal patterns in enterprise SaaS, integration API buildout, SDK/CLI release, multi-module expansion, contributor compression reversal, and compliance-to-product pivot, with stage-specific benchmarks from pre-seed through Series B and a structured false-positive checklist. The central finding: velocity is the wrong primary metric for this sector. Contributor count change and repository expansion are stronger leading indicators of capital events in enterprise SaaS than in any other sector except fintech.",
+      "Enterprise SaaS companies carry the lowest commit velocity baseline of any software sector on the 350+-startup panel, yet they produce some of the most reliable fundraise-precursor signals when read with sector-appropriate metrics. This post taxonomizes the five dominant GitHub signal patterns in enterprise SaaS, integration API buildout, SDK/CLI release, multi-module expansion, contributor compression reversal, and compliance-to-product pivot, with stage-specific benchmarks from pre-seed through Series B and a structured false-positive checklist. The central finding: velocity is the wrong primary metric for this sector. Contributor count change and repository expansion are stronger leading indicators of capital events in enterprise SaaS than in any other sector except fintech.",
     date: "2026-05-29",
     relatedSectors: ["enterprise-saas", "fintech", "developer-tools", "data-infrastructure", "ai-ml"],
     keyStats: [
-      { value: "35-60%", label: "Lower baseline commit velocity", context: "Enterprise SaaS vs. AI-tools startups at equivalent stage, per 369-startup panel" },
+      { value: "35-60%", label: "Lower baseline commit velocity", context: "Enterprise SaaS vs. AI-tools startups at equivalent stage, per 350+-startup panel" },
       { value: "28-day", label: "Optimal observation window", context: "Longer than the 14-day default; smooths sprint-cycle artifacts in enterprise SaaS" },
       { value: "4-7 weeks", label: "Median lead time", context: "Enterprise SaaS acceleration-to-fundraise-announcement in the panel" },
       { value: "75%+", label: "Contributor growth threshold", context: "Contributor compression reversal signal; baseline of ≤5 active authors" },
@@ -109,7 +109,7 @@ export const posts: BlogPost[] = [
     ],
     body: `Enterprise SaaS is the sector where the simplest version of the GitHub engineering acceleration model breaks down first. The 14-day commit velocity threshold that works reliably for AI and developer-tools companies systematically under-ranks enterprise SaaS startups, not because the companies are uninteresting, but because the sector carries a structurally lower commit baseline that a naive percentile ranking treats as inactivity.
 
-Across the 369-startup panel [1][2], enterprise SaaS companies average 35-60% fewer commits per 14-day window than AI-tools startups at equivalent funding stage. The causal chain is short: SOC 2 Type II compliance requirements, enterprise customer change-notification windows, and the review gates embedded in most B2B engineering processes all throttle deployment frequency in ways that public GitHub commit data reflects directly. DORA research confirms that deployment frequency is significantly lower in regulated and customer-sensitive environments than in product-led growth companies [4]. A two-week sprint that produces 20 commits in a developer-tools company may produce 12 commits at an enterprise SaaS company doing equivalent engineering work.
+Across the 350+-startup panel [1][2], enterprise SaaS companies average 35-60% fewer commits per 14-day window than AI-tools startups at equivalent funding stage. The causal chain is short: SOC 2 Type II compliance requirements, enterprise customer change-notification windows, and the review gates embedded in most B2B engineering processes all throttle deployment frequency in ways that public GitHub commit data reflects directly. DORA research confirms that deployment frequency is significantly lower in regulated and customer-sensitive environments than in product-led growth companies [4]. A two-week sprint that produces 20 commits in a developer-tools company may produce 12 commits at an enterprise SaaS company doing equivalent engineering work.
 
 The implication for signal extraction is that threshold-based screens configured for the general startup population will systematically filter out enterprise SaaS breakouts. A company accelerating from 18 commits per 14-day window to 36 commits, a +100% acceleration, looks unimpressive in absolute terms but is, within the enterprise SaaS sector distribution, a top-decile move. Sector-stratified ranking, computing percentile rank within enterprise SaaS rather than across the full panel, is the correct default for this sector [2].
 
@@ -167,15 +167,15 @@ The sector-stratified rankings, signal thresholds, and underlying methodology ar
     slug: "how-vcs-track-engineering-acceleration-2026-playbook",
     title: "How VCs Track Startup Engineering Acceleration: The Complete 2026 Playbook",
     description:
-      "The complete 2026 playbook on engineering acceleration as a VC deal flow signal, pipeline, metrics, benchmarks, predictive analytics, screening workflow, and sector patterns, with worked examples from a 369-startup GitHub panel.",
+      "The complete 2026 playbook on engineering acceleration as a VC deal flow signal, pipeline, metrics, benchmarks, predictive analytics, screening workflow, and sector patterns, with worked examples from a 350+-startup GitHub panel.",
     summary:
-      "Engineering acceleration, the rate of change in a startup's GitHub commit, contributor, and repository activity relative to its own 14-day baseline, has emerged as one of the highest-signal leading indicators in venture capital deal flow. This playbook is the operating model: building a GitHub data pipeline, defining the four metrics that matter, benchmarking healthy acceleration by stage, turning signals into fundraise forecasts, automating screening at the fund level, and integrating the resulting watchlist into a normal investment workflow. Drawing on the 369-startup longitudinal panel maintained at VC Deal Flow Signal, the piece quantifies typical lead times (3 to 6 weeks), flags the most common false positives, walks through sector-specific patterns in AI, fintech, developer tools, climate-tech, and cybersecurity, and ends with a concrete week-one starter workflow. Investors using this framework can systematically catch breakout startups before traditional databases like Crunchbase or PitchBook surface them.",
+      "Engineering acceleration, the rate of change in a startup's GitHub commit, contributor, and repository activity relative to its own 14-day baseline, has emerged as one of the highest-signal leading indicators in venture capital deal flow. This playbook is the operating model: building a GitHub data pipeline, defining the four metrics that matter, benchmarking healthy acceleration by stage, turning signals into fundraise forecasts, automating screening at the fund level, and integrating the resulting watchlist into a normal investment workflow. Drawing on the 350+-startup longitudinal panel maintained at VC Deal Flow Signal, the piece quantifies typical lead times (3 to 6 weeks), flags the most common false positives, walks through sector-specific patterns in AI, fintech, developer tools, climate-tech, and cybersecurity, and ends with a concrete week-one starter workflow. Investors using this framework can systematically catch breakout startups before traditional databases like Crunchbase or PitchBook surface them.",
     date: "2026-04-26",
     relatedSectors: ["ai-ml", "developer-tools", "fintech", "enterprise-saas", "data-infrastructure"],
     keyStats: [
       { value: "3-6 weeks", label: "Typical lead time", context: "Engineering acceleration vs fundraise announcement" },
       { value: "+100%", label: "Threshold", context: "Sustained 14-day commit velocity change" },
-      { value: "369", label: "GitHub orgs", context: "Longitudinal startup panel" },
+      { value: "350+", label: "GitHub orgs", context: "Longitudinal startup panel" },
       { value: "20", label: "Sectors", context: "Tracked weekly" },
     ],
     references: [
@@ -200,7 +200,7 @@ The sector-stratified rankings, signal thresholds, and underlying methodology ar
       },
       {
         question: "How long is the lead time between an engineering acceleration signal and a fundraise announcement?",
-        answer: "Across the 369-startup panel maintained at VC Deal Flow Signal, the median lead time between a sustained acceleration signal and a public fundraise announcement is 3 to 6 weeks. The distribution has a long tail: roughly 12 percent of breakout signals do not result in any announced fundraise within 12 weeks, often because the round was extended, the company quietly raised through a SAFE, or the signal reflected a launch rather than a fundraise.",
+        answer: "Across the 350+-startup panel maintained at VC Deal Flow Signal, the median lead time between a sustained acceleration signal and a public fundraise announcement is 3 to 6 weeks. The distribution has a long tail: roughly 12 percent of breakout signals do not result in any announced fundraise within 12 weeks, often because the round was extended, the company quietly raised through a SAFE, or the signal reflected a launch rather than a fundraise.",
       },
       {
         question: "What threshold of acceleration counts as a meaningful signal?",
@@ -227,7 +227,7 @@ The sector-stratified rankings, signal thresholds, and underlying methodology ar
         answer: "The pragmatic integration is a weekly digest: every Monday, review the top 20 startups in your sectors of interest ranked by acceleration, cross-reference against your CRM for any prior contact, prioritize the unflagged ones for a 30-minute desk dive, and tag the rest for monitoring. The signal complements rather than replaces existing sourcing: founder networks, demo days, and accelerator pipelines stay intact; engineering acceleration adds an external, quantitative top-of-funnel feed that is hard to source any other way.",
       },
     ],
-    body: `Engineering acceleration, the rate of change in a startup's GitHub commit, contributor, and repository activity relative to its own 14-day baseline, is one of the highest-signal leading indicators investors can read today. Across the 369-startup panel maintained at VC Deal Flow Signal [4][5], a sustained doubling in 14-day commit velocity precedes a public fundraise announcement by a median of three to six weeks.
+    body: `Engineering acceleration, the rate of change in a startup's GitHub commit, contributor, and repository activity relative to its own 14-day baseline, is one of the highest-signal leading indicators investors can read today. Across the 350+-startup panel maintained at VC Deal Flow Signal [4][5], a sustained doubling in 14-day commit velocity precedes a public fundraise announcement by a median of three to six weeks.
 
 That window matters. By the time a startup appears in Crunchbase, PitchBook, or even press coverage, the round is often allocated and competitive. Engineering acceleration shows up before the funding databases catch up, before the press cycle, and often before the founder has even sent the first investor email.
 
@@ -253,9 +253,9 @@ The remainder of this playbook is the operating manual.
 
 The first practical question is how to acquire and organize the data. The pipeline has four layers: target list, ingestion, normalization, and aggregation.
 
-The target list is a curated set of startup GitHub organizations. There is no canonical source. The pragmatic approach is to seed the list from existing investor lists, Y Combinator's published company directory, AngelList's startup database, sector-specific accelerator alumni, and union them with discoveries surfaced through the pipeline itself. At VC Deal Flow Signal, the working list is approximately 369 organizations covering 15 sectors. The exact size is less important than the maintenance discipline: the list must be reviewed monthly, with stale entries pruned and new entries added based on press, demo days, and reader submissions.
+The target list is a curated set of startup GitHub organizations. There is no canonical source. The pragmatic approach is to seed the list from existing investor lists, Y Combinator's published company directory, AngelList's startup database, sector-specific accelerator alumni, and union them with discoveries surfaced through the pipeline itself. At VC Deal Flow Signal, the working list is approximately 350+ organizations covering 15 sectors. The exact size is less important than the maintenance discipline: the list must be reviewed monthly, with stale entries pruned and new entries added based on press, demo days, and reader submissions.
 
-Ingestion uses the GitHub REST API [2]. The free authenticated rate limit is 5,000 requests per hour per token. For a 369-organization panel, the relevant endpoints are repositories list, commit activity, contributors, and releases. A weekly full pass requires roughly 50,000 requests, which is comfortably within the rate limit if the work is split across two tokens or paced over six hours. The GitHub Innovation Graph dataset [3] provides aggregate cross-region statistics that are useful for sector-level benchmarks but not for individual startup tracking.
+Ingestion uses the GitHub REST API [2]. The free authenticated rate limit is 5,000 requests per hour per token. For a 350+-organization panel, the relevant endpoints are repositories list, commit activity, contributors, and releases. A weekly full pass requires roughly 50,000 requests, which is comfortably within the rate limit if the work is split across two tokens or paced over six hours. The GitHub Innovation Graph dataset [3] provides aggregate cross-region statistics that are useful for sector-level benchmarks but not for individual startup tracking.
 
 Normalization is the most overlooked stage. Raw commit counts are noisy: bot accounts, dependency-update PRs from Dependabot or Renovate, automated formatting commits, and CI/CD reruns can inflate counts without reflecting real engineering activity. The minimum viable normalization is excluding commits authored by accounts whose name matches common bot patterns. A more sophisticated pipeline classifies commits by file diversity, message length, and diff size. Each layer of normalization improves signal-to-noise but adds engineering cost; the practical sweet spot is bot exclusion plus file-count filtering, which removes the loudest noise sources without overfitting.
 
@@ -263,7 +263,7 @@ Aggregation produces the metrics that drive the rest of the playbook. The minima
 
 A crucial design choice is the comparison window. Investor signal pipelines tend to use either 14-day rolling or 28-day rolling windows. The 14-day window is more responsive, it surfaces breakouts faster, at the cost of higher volatility. The 28-day window is smoother but introduces lag. The pragmatic default is 14-day with a confirmation rule: a breakout must persist into a second 14-day window before it is treated as actionable. This filter alone removes most one-period spikes caused by hackathons, launch sprints, or single contributors onboarding.
 
-The pipeline output is a per-organization weekly snapshot: four metrics, four prior-period baselines, and four rate-of-change values. Stored in a flat database, the entire 369-organization panel fits in well under a gigabyte. The data infrastructure does not require dedicated streaming infrastructure or a data warehouse, a single Postgres or DuckDB instance handles the volume comfortably.
+The pipeline output is a per-organization weekly snapshot: four metrics, four prior-period baselines, and four rate-of-change values. Stored in a flat database, the entire 350+-organization panel fits in well under a gigabyte. The data infrastructure does not require dedicated streaming infrastructure or a data warehouse, a single Postgres or DuckDB instance handles the volume comfortably.
 
 The pipeline is, in short, an unglamorous engineering project: rate-limited API calls, careful joins, and a weekly cron. The competitive moat is not in any one component but in the months of accumulated panel history that newer entrants cannot replicate retroactively.
 
@@ -339,7 +339,7 @@ Prioritization is where fund-specific judgment lives. A pre-seed-focused angel w
 
 A subtle but important workflow detail is the feedback loop. Funds that mark which signals they actually pursued, and which converted into meetings or investments, provide data that improves the ranking model. A fund-private feedback loop, without sharing data across funds, improves the ranking weights for that fund's specific mandate. This level of personalization is not necessary for the first version of the pipeline but materially improves precision over months of use.
 
-The full automated screening loop runs in a few hours per week of compute. The human-in-the-loop time is roughly 30 minutes Monday morning per analyst. The per-deal cost of incremental sourcing, compared to traditional channels, is competitive even at the smallest fund sizes. The economic argument for automation is not labor savings; it is coverage. A single analyst monitoring engineering acceleration across 369 organizations would otherwise require an unworkable amount of attention. Automation makes the coverage tractable, and tractable coverage is the actual sourcing edge.
+The full automated screening loop runs in a few hours per week of compute. The human-in-the-loop time is roughly 30 minutes Monday morning per analyst. The per-deal cost of incremental sourcing, compared to traditional channels, is competitive even at the smallest fund sizes. The economic argument for automation is not labor savings; it is coverage. A single analyst monitoring engineering acceleration across 350+ organizations would otherwise require an unworkable amount of attention. Automation makes the coverage tractable, and tractable coverage is the actual sourcing edge.
 
 ## Workflow integration: how investors operationalize the signal
 
@@ -449,7 +449,7 @@ Begin by subscribing to the free weekly Signal Report at gitdealflow.com. The Mo
 
 In parallel, build a starter target list. Pick two or three sectors of focus, identify 50 to 100 startups whose GitHub organizations are publicly known, and bookmark their pages. Use the GitHub interface's commit activity graphs as a manual replacement for the pipeline; while less rigorous than a programmatic version, the visual pattern of acceleration is recognizable to any engineer. This calibrates the eye.
 
-After two to four weeks of working from the digest plus manual cross-references, the investor has enough context to use the Dashboard productively. The EUR 49/month Dashboard provides ranked rankings across all 369 organizations, filterable by sector, stage, and geography, with the four core metrics displayed for each company. The screening time per Monday drops from 30 minutes of digest reading to 10 minutes of filtered ranking review.
+After two to four weeks of working from the digest plus manual cross-references, the investor has enough context to use the Dashboard productively. The EUR 49/month Dashboard provides ranked rankings across all 350+ organizations, filterable by sector, stage, and geography, with the four core metrics displayed for each company. The screening time per Monday drops from 30 minutes of digest reading to 10 minutes of filtered ranking review.
 
 For funds with engineering capacity, the API or MCP server (npx -y @gitdealflow/mcp-signal) provides direct programmatic access. The API can be wired into the fund's existing CRM or data warehouse for automated CRM enrichment, weekly reporting, and custom alert workflows.
 
@@ -1416,7 +1416,7 @@ The metric extends beyond commit velocity. Three other dimensions carry independ
 
 The causal chain that makes engineering acceleration useful for investors is short. A startup decides to raise capital, or has just closed a round, or plans a major launch. That decision drives engineering activity: hiring engineers, sprinting toward a milestone, building new infrastructure. The engineering activity produces commits, pull requests, and new repositories. The activity is observable in GitHub's public data within hours or days of happening. Press coverage, Crunchbase entries, SEC Form D filings, and LinkedIn announcements follow weeks to months later.
 
-Most investors only see the downstream signals, the press release, the database entry, the hiring announcement. By the time a startup appears in those sources, the round is often allocated and the deal is competitive. Engineering acceleration shows up before any of that. The lead time across the 369-startup panel maintained at VC Deal Flow Signal is a median of three to six weeks before a public fundraise announcement [3].
+Most investors only see the downstream signals, the press release, the database entry, the hiring announcement. By the time a startup appears in those sources, the round is often allocated and the deal is competitive. Engineering acceleration shows up before any of that. The lead time across the 350+-startup panel maintained at VC Deal Flow Signal is a median of three to six weeks before a public fundraise announcement [3].
 
 The economic case for investors is compounding. Warm outreach during the pre-fundraise window converts at meaningfully higher rates than cold outreach during a competitive round. Even at the angel and seed level, where check sizes are small, being the first thoughtful conversation a founder has had about a round is worth disproportionately more than being the tenth. The metric is, in practice, a top-of-funnel sourcing tool that turns the global startup population into a tractable weekly screen.
 
@@ -1452,7 +1452,7 @@ For full definitions of each signal type and the detection rules, see the [gloss
 
 The measurement pipeline at VC Deal Flow Signal has four stages: ingestion, normalization, aggregation, and rate-of-change computation.
 
-Ingestion pulls weekly data from the GitHub REST API [2] for approximately 369 startup organizations across 15 sectors. The relevant endpoints are repositories list, commit activity, contributors, and releases. Free authenticated rate limits (5,000 requests per hour per token) are sufficient for the panel size when paced over six hours.
+Ingestion pulls weekly data from the GitHub REST API [2] for approximately 350+ startup organizations across 15 sectors. The relevant endpoints are repositories list, commit activity, contributors, and releases. Free authenticated rate limits (5,000 requests per hour per token) are sufficient for the panel size when paced over six hours.
 
 Normalization removes the most common noise sources. Bot accounts (Dependabot, Renovate, GitHub Actions) can drive double-digit commit counts per week without any human engineering activity, so commits authored by accounts matching common bot patterns are excluded. A second normalization layer filters commits by file count and diff size, removing trivial commits that inflate counts without reflecting meaningful engineering work.
 
@@ -1987,18 +1987,18 @@ For the full screening framework, see the [7 engineering metrics every investor 
   },
   {
     slug: "i-tracked-369-startup-github-orgs-six-months",
-    title: "I Tracked 369 Startup GitHub Orgs for Six Months. Here's What Predicts a Series A.",
+    title: "I Tracked 350+ Startup GitHub Orgs for Six Months. Here's What Predicts a Series A.",
     description:
-      "Six months of public GitHub data across 369 startup organizations. Which commit patterns actually predict a Series A round? Plus the public Q3 2026 watchlist - bookmark and verify.",
+      "Six months of public GitHub data across 350+ startup organizations. Which commit patterns actually predict a Series A round? Plus the public Q3 2026 watchlist - bookmark and verify.",
     date: "2026-04-19",
     relatedSectors: ["ai-ml", "developer-tools", "data-infrastructure", "cybersecurity"],
     keyStats: [
-      { value: "369", label: "Startup orgs tracked", context: "Across 15 sectors, weekly" },
+      { value: "350+", label: "Startup orgs tracked", context: "Across 15 sectors, weekly" },
       { value: "3-6 weeks", label: "Signal lead time", context: "Before fundraise announcements" },
       { value: "70%", label: "Series A hit rate", context: "Backtest, Q3-Q4 2025" },
     ],
     summary:
-      "Six months of weekly snapshots across 369 startup GitHub orgs reveal that a coordinated jump in commit velocity, contributor count, and new-repo creation precedes Series A announcements roughly 70% of the time, with a 3 to 6 week lead. The signal is strongest for devtools, infra, fintech, and cybersecurity startups; it is noisy for AI-pure companies because they commit constantly regardless of stage. The full live watchlist of 10 startups predicted to raise in Q3 2026 is published at /predicted, with a free /predict tool to score any GitHub org in real time.",
+      "Six months of weekly snapshots across 350+ startup GitHub orgs reveal that a coordinated jump in commit velocity, contributor count, and new-repo creation precedes Series A announcements roughly 70% of the time, with a 3 to 6 week lead. The signal is strongest for devtools, infra, fintech, and cybersecurity startups; it is noisy for AI-pure companies because they commit constantly regardless of stage. The full live watchlist of 10 startups predicted to raise in Q3 2026 is published at /predicted, with a free /predict tool to score any GitHub org in real time.",
     references: [
       { label: "1", title: "GitHub REST API - Commit Activity", url: "https://docs.github.com/en/rest/metrics/statistics", source: "GitHub Docs" },
       { label: "2", title: "Alternative Data in Private Markets", url: "https://www.bain.com/insights/alternative-data-in-private-equity/", source: "Bain & Company" },
@@ -2030,7 +2030,7 @@ For the full screening framework, see the [7 engineering metrics every investor 
 
 The thesis was simple. Hedge funds spent the last decade extracting alpha from satellite imagery, credit card panels, and shipping data. The venture-capital equivalent - public engineering activity on GitHub - has been sitting in plain sight, ignored by most institutional sourcing teams, who still rely on Crunchbase, warm intros, and Twitter.
 
-I built a crawler. I pointed it at 369 startup organizations across 15 sectors. I let it run weekly for six months. Here is what I learned.
+I built a crawler. I pointed it at 350+ startup organizations across 15 sectors. I let it run weekly for six months. Here is what I learned.
 
 ## What the Signal Actually Looks Like
 

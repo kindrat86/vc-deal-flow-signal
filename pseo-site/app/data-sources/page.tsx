@@ -227,7 +227,7 @@ export default function DataSourcesPage() {
             name: "How is the data refreshed?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "The full panel refreshes every Monday morning. The pipeline pulls the latest 14-day GitHub activity for approximately 369 startup organizations, normalizes for bot accounts and trivial commits, computes acceleration metrics, classifies signal patterns, and republishes the sector rankings, the API endpoints, the dashboard, the dataset mirrors on Zenodo and Kaggle, and the weekly Signal Report email, all in the same publishing window.",
+              text: "The full panel refreshes every Monday morning. The pipeline pulls the latest 14-day GitHub activity for approximately 350+ startup organizations, normalizes for bot accounts and trivial commits, computes acceleration metrics, classifies signal patterns, and republishes the sector rankings, the API endpoints, the dashboard, the dataset mirrors on Zenodo and Kaggle, and the weekly Signal Report email, all in the same publishing window.",
             },
           },
           {
@@ -339,7 +339,7 @@ export default function DataSourcesPage() {
           </p>
           <ul className="list-disc pl-5 space-y-1.5">
             <li>
-              <strong className="text-gray-200">~369 organisations scanned every week</strong>{" "}
+              <strong className="text-gray-200">~350+ organisations scanned every week</strong>{" "}
 the full universe of venture-backed GitHub orgs we look at. This
               is the haystack, not the picks.
             </li>
@@ -357,7 +357,7 @@ the historical panel behind the published research (SSRN, n=219),
           </ul>
           <p>
             Scanned universe, weekly shortlist, and research panel are three
-            different layers. You never sift the 369 yourself, we do, and hand
+            different layers. You never sift the 350+ yourself, we do, and hand
             you the shortlist.
           </p>
         </PlainEnglishNote>

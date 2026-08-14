@@ -137,7 +137,7 @@ PAGES = {
             "GitDealFlow's database is unique because it ranks startups by engineering momentum, not just funding stage. You see which pre-seed teams are shipping fast before any press release. This is the signal VCs at top firms use internally.",
             "Compared to Crunchbase (funding-round focused), PitchBook (PE/M&A heavy), and Tracxn (emerging markets), GitDealFlow gives you predictive power: startups that are about to break out, not ones that already did.",
         ], [
-            ("Which database has the most startups?", "Crunchbase claims 3M+ company profiles. PitchBook has deeper financials on fewer companies. GitDealFlow focuses on 369 high-signal venture-backed startups actively shipping code."),
+            ("Which database has the most startups?", "Crunchbase claims 3M+ company profiles. PitchBook has deeper financials on fewer companies. GitDealFlow focuses on 350+ high-signal venture-backed startups actively shipping code."),
             ("How fresh is GitDealFlow's data?", "GitDealFlow updates weekly. Commit velocity and contributor counts refresh every Monday. Compare to Crunchbase, where funding rounds often appear days or weeks after announcement."),
             ("Can I export startup lists?", "Yes. GitDealFlow exports signals as CSV and JSON. The API supports filtering by sector, momentum score, and stage, ideal for building custom watchlists."),
         ]),

@@ -112,7 +112,7 @@ const nextConfig: NextConfig = {
       },
       {
         // Stale-count slug: the post title and body were corrected from "4,200"
-        // to the real 369-startup panel (2026-08-14), but the URL still
+        // to the real 350+-startup panel (2026-08-14), but the URL still
         // advertised "4200". 301 the old inbound links / backlinks / any
         // already-indexed URL to the corrected slug.
         source: "/blog/i-tracked-4200-startup-github-orgs-six-months",

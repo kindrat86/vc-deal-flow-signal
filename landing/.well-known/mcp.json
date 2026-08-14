@@ -6,7 +6,7 @@
   "mcpServers": [
     {
       "name": "vc-deal-flow-signal",
-      "description": "MCP server exposing startup engineering acceleration data, commit velocity, contributor growth, repository expansion across 369 startup GitHub orgs in 15 sectors.",
+      "description": "MCP server exposing startup engineering acceleration data, commit velocity, contributor growth, repository expansion across 350+ startup GitHub orgs in 15 sectors.",
       "url": "https://signals.gitdealflow.com/api/mcp/rpc",
       "transport": "http",
       "installUrl": "https://signals.gitdealflow.com/.well-known/mcp.json",

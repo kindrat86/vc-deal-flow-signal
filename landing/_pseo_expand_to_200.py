@@ -1080,7 +1080,7 @@ DATA_PAGES = [
      "GitDealFlow tracks commit velocity, contributor growth, and repo expansion across 400+ venture-backed startups. Here's the data methodology and sector benchmarks.",
      [
          ("Data Methodology",
-          ["GitDealFlow scans public GitHub organizations for 369 venture-backed startups across 15 sectors.",
+          ["GitDealFlow scans public GitHub organizations for 350+ venture-backed startups across 15 sectors.",
            "Three core metrics: commit velocity (weekly commits), contributor growth (new contributors per month), and repo expansion (new public repos and code size growth).",
            "Data refreshes every Monday based on the prior week's GitHub activity.",
            "All data is publicly available and free via JSON API, CSV export, and MCP server."]),
@@ -1103,7 +1103,7 @@ RESEARCH_PAGES = [
      "A peer-reviewed study on the correlation between GitHub commit velocity and startup fundraising events, published on SSRN.",
      [
          ("Study Overview",
-          ["This study analyzes the relationship between public GitHub activity and fundraising events across 369 venture-backed startups.",
+          ["This study analyzes the relationship between public GitHub activity and fundraising events across 350+ venture-backed startups.",
            "Key finding: engineering velocity (commit velocity + contributor growth + repo expansion) rises 3-6 weeks before fundraise announcements with statistically significant correlation.",
            "The full paper is published on SSRN: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558"]),
          ("Key Findings",
