@@ -2909,3 +2909,26 @@ video {
     grid-template-columns: 1.2fr 0.8fr;
   }
 }
+
+/* ============================================================
+   MOBILE TABLE OVERFLOW REPAIR (2026-08-15)
+   Data tables with long unbreakable tokens (URLs, product
+   names) blew out the 360-390px viewport on /vs/ and
+   /alternatives-to/ pages (measured scrollWidth 404-461 vs
+   viewport 360-390). Mobile-first indexing crawls the
+   smartphone render, so this was the indexed version.
+   Fix: tables scroll within themselves and long tokens wrap.
+   Marker: MOBILE TABLE OVERFLOW REPAIR
+   ============================================================ */
+@media (max-width: 640px) {
+  table {
+    display: block;
+    max-width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+  table th,
+  table td {
+    overflow-wrap: anywhere;
+  }
+}
