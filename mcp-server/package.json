@@ -19,13 +19,13 @@
   "author": "The Data Nerd <signals@gitdealflow.com>",
   "repository": {
     "type": "git",
-    "url": "https://github.com/kindrat86/vc-deal-flow-signal.git",
+    "url": "git+https://github.com/kindrat86/vc-deal-flow-signal.git",
     "directory": "mcp-server"
   },
   "homepage": "https://gitdealflow.com",
   "type": "module",
   "bin": {
-    "gitdealflow-mcp": "./dist/server.js"
+    "gitdealflow-mcp": "dist/server.js"
   },
   "main": "./dist/server.js",
   "files": [
