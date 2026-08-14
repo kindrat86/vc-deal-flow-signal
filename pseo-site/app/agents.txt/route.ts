@@ -73,6 +73,7 @@ const SURFACES = [
   ["citation-guide", "https://signals.gitdealflow.com/citation-guide"],
   ["citations-bib", "https://signals.gitdealflow.com/research/citations.bib"],
   ["sitemap-index", "https://signals.gitdealflow.com/sitemap.xml"],
+  ["sitemap-llm", "https://signals.gitdealflow.com/sitemap-llm.xml"],
   ["sitemap-images", "https://signals.gitdealflow.com/sitemap-images.xml"],
   ["news-sitemap", "https://signals.gitdealflow.com/news-sitemap.xml"],
   ["openapi", "https://signals.gitdealflow.com/api/openapi.json"],

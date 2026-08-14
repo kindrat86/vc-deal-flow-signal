@@ -469,6 +469,51 @@ check(
   "drop the period-pair entries from the `startups` shard",
 );
 
+// ---------------------------------------------------------------------------
+// LLM sitemap (2026-08-14). /sitemap-llm.xml is the curated high-density
+// sitemap for AI crawlers (methodology + definition cluster, /define/[term]
+// glossary terms, sector deep-dives). If the route is deleted or gutted, AI
+// crawlers lose their focused discovery path and fall back to the ~4,800-URL
+// pSEO long tail, which dilutes RAG ingestion and answer-engine citation.
+// ---------------------------------------------------------------------------
+check(
+  "app/sitemap-llm.xml/route.ts",
+  "LLM sitemap route missing or no longer emits the canonical high-density families (methodology, glossary, sector deep-dives).",
+  (s) =>
+    s.includes('"/methodology"') &&
+    s.includes("glossaryTerms") &&
+    s.includes("getAllSectorSlugs") &&
+    s.includes("getAllPageSlugs"),
+  "restore /sitemap-llm.xml so it lists the methodology cluster, /define/[term] glossary terms, and /sector + /startups-to-watch deep-dives",
+);
+
+
+// ---------------------------------------------------------------------------
+// Thin-content floor on /vs and /alternatives (2026-08-14). The head-to-head
+// /vs pages (~750 words) and the "us vs them" /alternatives pages
+// (~900-1,490 words) sat under the Helpful-Content floor. Enrichment added
+// per-competitor overview + bestFor, per-pair intro + decision, a shared
+// METHODOLOGY const to /vs, and additive "How to decide" sections to
+// /alternatives. A lineage that drops any of it re-ships thin pages.
+// ---------------------------------------------------------------------------
+check(
+  "content/competitor-vs.ts",
+  "competitor-vs enrichment dropped: /vs pages revert to thin head-to-heads.",
+  (s) => s.includes("export const METHODOLOGY") && s.includes("overview:") && s.includes("decision:"),
+  "restore overview/bestFor on competitors, intro/decision on pairs, and the METHODOLOGY const",
+);
+check(
+  "app/vs/[slug]/page.tsx",
+  "/vs template no longer renders the enrichment (overview/decision/methodology sections).",
+  (s) => s.includes("pair.decision") && s.includes("c.overview") && s.includes("METHODOLOGY"),
+  "restore the intro, tool-overview, decision, and methodology sections",
+);
+check(
+  "content/alternatives.ts",
+  "alternatives enrichment dropped: /alternatives pages revert under the 1,500-word floor.",
+  (s) => s.includes("How to decide between Tracxn") && s.includes("How to decide between Harmonic.ai"),
+  "restore the additive 'How to decide' sections on the alternatives entries",
+);
 
 // ---------------------------------------------------------------------------
 if (failures.length) {
