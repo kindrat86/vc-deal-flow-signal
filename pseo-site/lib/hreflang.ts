@@ -5,16 +5,16 @@
  * Next.js `metadata.alternates.languages` that includes:
  *   - en-US → canonical English URL
  *   - x-default → canonical English URL
- *   - one entry per locale that has a translated stub for this topic
+ *   - one entry per locale that has a translated page for this topic
  *
  * Pages that don't correspond to a locale topic still get the en-US +
  * x-default entries, that tells Google there is no localized variant and
  * the English URL is canonical for all locales.
  *
- * Mirroring is one-way (English canonical advertises locale variants when
- * they exist; locale stubs already advertise the full hreflang map via
- * their own metadata). Together this satisfies Google's mutual-link
- * requirement.
+ * Mirroring is fully bidirectional: the English canonical advertises every
+ * locale variant here, and each /[locale]/<topic> page advertises the English
+ * canonical plus all sibling locales via its own <HreflangLinks/> map.
+ * Together this satisfies Google's mutual-link requirement on both sides.
  */
 
 import { LOCALE_TOPICS } from "@/content/locale-topics";
@@ -31,9 +31,9 @@ const SITE = "https://signals.gitdealflow.com";
  * Most topic keys equal the URL segment, but some diverge:
  *   - English `/citation-guide` ↔ ja `/ja/citations` (topic key: citations)
  *
- * Topics that have no English canonical (ja-only deep pages, e.g. pricing)
- * are NOT listed here, they still render at /ja/<topic> via the
- * [locale]/[topic] route, but they advertise no English alternate.
+ * A topic with no English canonical would NOT be listed here; it would still
+ * render at /[locale]/<topic> but advertise no English alternate. (None
+ * currently: full topic parity gives all 8 topics an English canonical.)
  */
 const PATH_TO_TOPIC: Record<string, string> = {
   "/methodology": "methodology",
@@ -50,8 +50,10 @@ const PATH_TO_TOPIC: Record<string, string> = {
  * Inverse of PATH_TO_TOPIC. Used by the i18n sitemap and by per-locale
  * pages that need to point back at the English canonical.
  *
- * For ja-only topics with no English counterpart (pricing), enUrl is
- * undefined and the sitemap entry becomes a self-canonical for /ja.
+ * Every topic currently has an English canonical (full topic parity), so
+ * enUrl is always defined. Kept as a lookup (not a literal) so a future
+ * locale-only topic degrades to a self-canonical /[locale]/<topic> instead
+ * of a 404.
  */
 const TOPIC_TO_EN_PATH: Record<string, string | undefined> = {
   methodology: "/methodology",
@@ -120,9 +122,9 @@ export function getHomepageHreflang(): Record<string, string> {
  * for every URL that has localized variants.
  *
  * For topics that have an English canonical, enUrl points to it
- * (e.g. /citation-guide for the citations topic). For ja-only topics
- * with no English counterpart (pricing), enUrl is the ja URL itself
- * and the alternates list omits English.
+ * (e.g. /citation-guide for the citations topic). Every current topic has
+ * one; the no-English-canonical branch is a defensive fallback that pins
+ * the entry to /ja/<topic> and omits the English alternates.
  */
 export function getI18nSitemapEntries(): {
   enUrl: string;
@@ -133,7 +135,7 @@ export function getI18nSitemapEntries(): {
     const enPath = TOPIC_TO_EN_PATH[topic];
     const enUrl = enPath
       ? `${SITE}${enPath}`
-      : // ja-only, pin entry against /ja/<topic> as the self-canonical
+      : // defensive: locale-only topic, pin entry against /ja/<topic> as self-canonical
         `${SITE}/ja/${topic}`;
     const alternates: { hreflang: string; href: string }[] = [];
     if (enPath) {

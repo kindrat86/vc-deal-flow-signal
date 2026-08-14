@@ -634,6 +634,44 @@ check(
 );
 
 // ---------------------------------------------------------------------------
+// 13. hreflang topic parity (2026-08-14). Every localized topic must exist
+//     in all 12 locales, or hreflang breaks bidirectional: Google's
+//     International Targeting report flags a "no return tags" error when an
+//     English canonical advertises /xx/<topic> but the locale page no longer
+//     renders (or stops advertising its English canonical). Commit 30cd710e
+//     brought all 12 locales to 8-topic parity; a lineage that reverts any
+//     topic to ja-only re-breaks the return tags.
+// ---------------------------------------------------------------------------
+{
+  const s = read("content/locale-topics.ts");
+  if (s === null) {
+    failures.push(
+      `locale-topics.ts missing.\n    fix:  restore content/locale-topics.ts with all 8 topics × 12 locales`,
+    );
+  } else {
+    const topics = [
+      "methodology", "glossary", "faq", "signals",
+      "research", "citations", "pricing", "about",
+    ];
+    const broken = topics.filter((t) => {
+      const n = (s.match(new RegExp(`topic:\\s*"${t}"`, "g")) || []).length;
+      return n !== 12;
+    });
+    if (broken.length) {
+      failures.push(
+        `hreflang topic parity broken: topic(s) ${broken.join(", ")} no longer exist in all 12 locales, breaking bidirectional hreflang return tags.\n    fix:  restore every topic × 12 locales in content/locale-topics.ts (see 30cd710e i18n topic-parity)`,
+      );
+    }
+  }
+}
+check(
+  "lib/hreflang.ts",
+  "hreflang resolver lost its bidirectional helpers (getHreflangLanguages / getHomepageHreflang).",
+  (s) => s.includes("export function getHreflangLanguages(") && s.includes("export function getHomepageHreflang("),
+  "restore both helpers: English pages use getHreflangLanguages(path), the homepage uses getHomepageHreflang()",
+);
+
+// ---------------------------------------------------------------------------
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +

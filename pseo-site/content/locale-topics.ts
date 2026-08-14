@@ -1,18 +1,14 @@
 /**
  * Hand-curated per-locale topic summaries.
  *
- * 3 topics per locale:
- *   - methodology, 4-6 sentence summary of how the signal is computed
- *   - glossary, top 5 terms with one-line native-language definition
- *   - faq, 5 most-common questions answered concisely
+ * 8 topics per locale, so hreflang is fully bidirectional (each
+ * /[locale]/<topic> advertises the English canonical AND every sibling
+ * locale): methodology, glossary, faq, signals, research, citations,
+ * pricing, about. 12 locales × 8 topics = 96 pages.
  *
- * 12 locales × 3 topics = 36 stubs. Each is HAND-WRITTEN, not Google-Translate.
- * Quality bar: a native speaker would not flag any sentence as MT slop.
- *
- * Why three topics, not full localization: pSEO/AEO penalizes thin localized
- * content. Three focused stubs per locale send a clean signal without
- * committing to a full localization stack. Each links back to canonical
- * English as the source of truth.
+ * Every page is HAND-WRITTEN, not Google-Translate. Quality bar: a native
+ * speaker would not flag any sentence as MT slop. Each links back to
+ * canonical English as the source of truth.
  */
 
 export type LocaleCode =
@@ -32,9 +28,10 @@ export type Topic =
   | "methodology"
   | "glossary"
   | "faq"
-  // Extended ja-only topics, fully-translated, long-form Japanese pages.
-  // English canonicals exist; ja gets the deep treatment as the chosen
-  // "fully shipped" locale (all other locales remain 3-topic stubs).
+  // Extended topics, present in ALL 12 locales (topic parity since
+  // 2026-05-31). English canonicals exist for each; every locale links
+  // back via translationOfWork + hreflang. Japanese additionally carries
+  // 5 long-form research-finding pages (/ja/research/<slug>, ja-only).
   | "signals"
   | "research"
   | "citations"
@@ -150,11 +147,9 @@ export const LOCALE_TOPICS: LocaleTopic[] = [
   },
 
   // ============================================================
-  // JA, fully translated locale (8 topics, long-form content).
-  // This is the "shipped fully" locale: methodology / glossary / faq
-  // are full translations of their English canonicals (not stubs);
-  // signals / research / citations / pricing / about are ja-only deep
-  // pages with translationOfWork links to the English canonicals.
+  // JA, the "shipped fully" locale (long-form content on every topic,
+  // plus 5 long-form research-finding pages that stay ja-only). The other
+  // 11 locales carry the same 8 topics as concise native prose.
   // ============================================================
   {
     locale: "ja",
