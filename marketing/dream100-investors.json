@@ -1,10 +1,10 @@
 {
-  "_comment": "INTERNAL targeting data — do NOT wire into a public route. Named-investor prospect list for the @data_nerd X dream-customer follow campaign. Distinct from pseo-site/content/target-list.ts (public channel/voice Dream-100). Extend this as new handles are vetted.",
+  "_comment": "INTERNAL targeting data — do NOT wire into a public route. Named-investor prospect list for the @sipiteno X dream-customer follow campaign. Distinct from pseo-site/content/target-list.ts (public channel/voice Dream-100). Extend this as new handles are vetted.",
   "meta": {
-    "campaign": "@data_nerd X dream-customer follow campaign",
-    "brandAccount": "@data_nerd",
+    "campaign": "@sipiteno X dream-customer follow campaign",
+    "brandAccount": "@sipiteno",
     "lastUpdated": "2026-06-01",
-    "followMechanism": "Chrome MCP, logged in as @data_nerd; verify identity from live profile before follow",
+    "followMechanism": "Chrome MCP, logged in as @sipiteno; verify identity from live profile before follow",
     "standingAuth": "Auto-follow clean customer fits; ask on borderline/distribution-only; skip off-target. Always pull LIVE bio before classifying (roles drift — see PaulYacoubian).",
     "countsNote": "counts reflect ITEMIZED records[] only. An additional ~19 follows from the 2026-06-01 network-mining sweep (2nd-degree from already-followed accounts) are logged in agent memory (project_data_nerd_x_follow_campaign_2026_05_31) but NOT yet itemized here — so true live followed count is higher (~44). Backfill those handles when next re-vetted.",
     "counts": { "vetted": 32, "followed": 22, "skipped": 10 }
@@ -57,6 +57,6 @@
     { "handle": "@jayyeh", "name": "Jason Yeh", "firm": "Adamant / Funded podcast", "role": "Fundraising coach (ex-Greycroft EIR)", "classification": "skip", "fit": "none", "thesisFit": "founder-side fundraising advisory — wrong side of table", "followed": false, "verdict": "Audience is founders raising, not investors sourcing." },
     { "handle": "@nicomoel", "name": "Nicolai", "firm": "Bifrost Studios / Scaleup Finance", "role": "GP / venture builder (self-described Micro-PE)", "classification": "customer", "fit": "strong", "thesisFit": "micro-PE / emerging-mgr tier; venture studio ('building 100 companies/year') = price-sensitive small-fund buyer; sits inside Evan Buhler / Geoff Woo network", "followed": true, "source": "inbound-followers-sweep-2026-06-01", "verdict": "Clean customer fit; auto-followed per standing auth (verified live profile, bifroststudios.com)." },
     { "handle": "@alexbrown1734", "name": "Alex Brown", "firm": null, "role": "Ex-founder, early-stage angel", "classification": "customer", "fit": "borderline", "thesisFit": "operator-angel archetype (ex-founder now investing early-stage) BUT no named fund/site and a networker profile (961-following / 254-follower) — unverified as an active check-writer", "followed": true, "source": "inbound-followers-sweep-2026-06-01", "verdict": "Below clean-fit bar; user-approved follow.", "flags": ["user-approved", "below-clean-bar"] },
-    { "handle": "@smc90", "name": "Sonal Chokshi", "firm": "a16z (former)", "role": "Ex-EIC a16z crypto / a16z podcast showrunner 2014-2022 (fmr WIRED, Xerox PARC)", "classification": "distribution", "fit": "strong", "thesisFit": "megafund media/editorial figure = NOT a buyer; 37.6K reach + followed by 56+ accounts @data_nerd follows = strong distribution node", "followed": true, "source": "inbound-followers-sweep-2026-06-01", "verdict": "Distribution-only; user-approved follow.", "flags": ["user-approved", "distribution"] }
+    { "handle": "@smc90", "name": "Sonal Chokshi", "firm": "a16z (former)", "role": "Ex-EIC a16z crypto / a16z podcast showrunner 2014-2022 (fmr WIRED, Xerox PARC)", "classification": "distribution", "fit": "strong", "thesisFit": "megafund media/editorial figure = NOT a buyer; 37.6K reach + followed by 56+ accounts @sipiteno follows = strong distribution node", "followed": true, "source": "inbound-followers-sweep-2026-06-01", "verdict": "Distribution-only; user-approved follow.", "flags": ["user-approved", "distribution"] }
   ]
 }

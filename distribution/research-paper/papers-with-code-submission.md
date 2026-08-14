@@ -77,7 +77,7 @@ from the paper list. Fill:
 
 Papers With Code typically reviews within 3–7 days. Once live:
 
-1. Tweet the PwC URL from @data_nerd. Tag @paperswithcode.
+1. Tweet the PwC URL from @sipiteno. Tag @paperswithcode.
 2. LinkedIn announcement with the paper link + PwC link.
 3. Add PwC URL to landing page footer alongside Zenodo/Kaggle/etc.
 4. Cross-post abstract to r/MachineLearning flair=Research once you have

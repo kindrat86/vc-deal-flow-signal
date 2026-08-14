@@ -6,7 +6,7 @@ All 5 services have free tiers; this checklist is copy-paste fields for each.
 **Name:** [user's display name — pick consistent across all services]
 **Website:** https://gitdealflow.com
 **LinkedIn:** https://www.linkedin.com/company/gitdealflow
-**Twitter:** https://twitter.com/data_nerd
+**Twitter:** https://twitter.com/sipiteno
 
 ---
 

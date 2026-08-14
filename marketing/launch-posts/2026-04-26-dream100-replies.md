@@ -2,7 +2,7 @@
 
 > ⚠️ **REVISED 2026-04-26 T+8h — drop "PH live today" framing.** The PH listing exists but is NOT featured (PH GraphQL `featuredAt: null`). Drafts revised below to lead with the MCP server shipping (which IS true) and mention PH listing only as "the listing is up while we wait for the PH feature batch." Do NOT use the older "we're live on PH" framing. **Verify before posting:** `curl -s https://signals.gitdealflow.com/api/a2a | jq .launch.state` — if `scheduled-pending-feature`, use the revised drafts; if `featured-live`, the original "we're live today" framing is also fine.
 
-**Purpose:** 5 short Twitter in-thread reply drafts that ride existing threads where @data_nerd already engaged (per `marketing/dream-100-engagement-log.md`). These are PUBLIC replies in their existing threads — not cold sends, not DMs.
+**Purpose:** 5 short Twitter in-thread reply drafts that ride existing threads where @sipiteno already engaged (per `marketing/dream-100-engagement-log.md`). These are PUBLIC replies in their existing threads — not cold sends, not DMs.
 
 **Strict rules — verify before posting:**
 

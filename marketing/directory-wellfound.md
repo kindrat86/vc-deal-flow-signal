@@ -19,7 +19,7 @@
 - **Name:** The Data Nerd (or your preferred public name)
 - **Title:** Founder
 - **LinkedIn:** linkedin.com/company/gitdealflow (company page; preserve anonymity per memory note)
-- **Twitter/X:** @data_nerd
+- **Twitter/X:** @sipiteno
 
 ---
 
@@ -115,7 +115,7 @@ Skip. Wellfound's "Investor pitch" flow is for raising — you're not raising. L
 - [ ] Add wellfound.com/company/vc-deal-flow-signal to JSON-LD `sameAs` arrays in [pseo-site/app/page.tsx](pseo-site/app/page.tsx) and [pseo-site/app/about/page.tsx](pseo-site/app/about/page.tsx) (entity consolidation to Google — same pattern used for SaaSHub, Crunchbase, SideProjectors)
 - [ ] Add the Wellfound URL to [pseo-site/app/llms.txt/route.ts](pseo-site/app/llms.txt/route.ts) and [llms-full.txt/route.ts](pseo-site/app/llms-full.txt/route.ts) presence list
 - [ ] Add to landing footer "Find us on" section alongside Crunchbase / G2 / SaaSHub badges
-- [ ] Tweet from @data_nerd linking the listing once approved
+- [ ] Tweet from @sipiteno linking the listing once approved
 - [ ] Save the Wellfound company URL to memory as `project_wellfound.md`
 
 ## Gotchas

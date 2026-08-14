@@ -47,7 +47,7 @@ Momentum Badge injects a live signal badge directly onto Crunchbase organization
 • Contributor count — active developers shipping code
 • Signal type — data-backed acceleration classification
 
-The badge pulls data from GitDealFlow's public API, which tracks commit velocity, contributor growth, and repository expansion across ~400 startups in 20 sectors (AI/ML, fintech, cybersecurity, developer tools, and more). Updated weekly.
+The badge pulls data from GitDealFlow's public API, which tracks commit velocity, contributor growth, and repository expansion across 369 startups in 15 sectors (AI/ML, fintech, cybersecurity, developer tools, and more). Updated weekly.
 
 No login or API key required. Works instantly on Crunchbase and Wellfound.
 
@@ -101,7 +101,7 @@ Click **Submit for Review**. Typical review time is 1–3 business days for firs
 - [ ] Extension is live on Chrome Web Store
 - [ ] Update `homepage_url` in manifest if store listing URL changes
 - [ ] Add Chrome Web Store badge to gitdealflow.com landing page
-- [ ] Tweet about launch from @data_nerd
+- [ ] Tweet about launch from @sipiteno
 - [ ] Submit to ProductHunt, AlternativeTo, and G2
 
 ---

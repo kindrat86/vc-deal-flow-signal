@@ -39,7 +39,7 @@ Both channels should be mentioned together in content. Avoid forcing a choice â€
 #### 2. Twitter thread â€” share dev.to article
 - **Asset:** `distribution/twitter-devto-article-thread.md`
 - **Actions:**
-  - [ ] Post 6-tweet thread from @data_nerd
+  - [ ] Post 6-tweet thread from @sipiteno
   - [ ] Pin tweet 1
   - [ ] Quote-tweet the "invisible funnel" tweet (tweet 5) standalone later in the week
   - [ ] Reply to any MCP-related tweets from @AnthropicAI, @alexalbert__, @simonw with the article link
@@ -119,7 +119,7 @@ Both channels should be mentioned together in content. Avoid forcing a choice â€
   - 1 tweet/week with a specific MCP query + result screenshot
   - 1 tweet/week engaging with MCP ecosystem tweets (retweet + comment)
   - 1 tweet/week about MCP ecosystem growth (new servers, new directories, adoption numbers)
-- **Template:** "Asked Claude: '[query]' â†’ got live data from thousands of startup GitHub orgs in 3 seconds. This is what MCP does." + screenshot
+- **Template:** "Asked Claude: '[query]' â†’ got live data from 350+ startup GitHub orgs in 3 seconds. This is what MCP does." + screenshot
 
 #### 11. Hacker News MCP threads
 - **Strategy:** Don't post your own server. Find existing HN threads about MCP and comment with your experience.

@@ -12,11 +12,11 @@
 
 **Built an MCP server for VC deal flow signals — free, no API key**
 
-I track GitHub engineering acceleration across thousands of startup orgs (commit velocity, contributor growth, repo expansion) and rank them by sector. Published it as an MCP server so Claude can query the data directly.
+I track GitHub engineering acceleration across 350+ startup orgs (commit velocity, contributor growth, repo expansion) and rank them by sector. Published it as an MCP server so Claude can query the data directly.
 
 **5 tools:**
 - `get_trending_startups` — top 20 by engineering acceleration
-- `search_startups_by_sector` — 20 sectors (AI, fintech, healthcare, etc.)
+- `search_startups_by_sector` — 15 sectors (web3, healthcare, space-tech, etc.)
 - `get_startup_signal` — deep profile on any tracked startup
 - `get_signals_summary` — dataset overview
 - `get_methodology` — how signals are calculated
@@ -51,7 +51,7 @@ Happy to answer questions on the build or methodology.
 
 **New MCP server: VC Deal Flow Signal (finance/startup data)**
 
-Published a server that gives any MCP client live startup engineering acceleration data. It monitors GitHub activity across 2,000+ orgs in 20 sectors and ranks them by commit velocity change.
+Published a server that gives any MCP client live startup engineering acceleration data. It monitors GitHub activity across 350+ orgs in 15 sectors and ranks them by commit velocity change.
 
 Built for investors, but the data is interesting for anyone tracking open-source ecosystem trends.
 
@@ -83,7 +83,7 @@ Would love feedback from other server builders — especially on the tool API de
 
 If you use [Cursor/Windsurf/etc.] with MCP support, I published a server that gives you live startup acceleration data.
 
-It tracks commit velocity spikes across 2,000+ GitHub orgs in 20 sectors. Originally built for VC investors, but useful for anyone curious about which startups are building fast right now.
+It tracks commit velocity spikes across 350+ GitHub orgs in 15 sectors. Originally built for VC investors, but useful for anyone curious about which startups are building fast right now.
 
 **Install:** `npx @gitdealflow/mcp-signal`
 

@@ -29,10 +29,10 @@ The primary ranking signal is 14-day commit velocity change vs prior 14-day wind
 
 ### 2. `search_startups_by_sector(sector)` — drill into one vertical
 
-20 sector slugs: `ai-ml`, `fintech`, `cybersecurity`, `developer-tools`, `healthcare`, `climate-tech`, `enterprise-saas`, `data-infrastructure`, `web3`, `robotics`, `edtech`, `ecommerce-infrastructure`, `supply-chain`, `legal-tech`, `hr-tech`, `proptech`, `agtech`, `gaming`, `space-tech`, `social-community`.
+15 sector slugs: `healthcare`, `edtech`, `ecommerce-infrastructure`, `supply-chain`, `web3`, `enterprise-saas`, `data-infrastructure`, `robotics`, `legal-tech`, `hr-tech`, `proptech`, `agtech`, `gaming`, `space-tech`, `social-community`.
 
 ```
-You: "Show me climate-tech startups with momentum this week"
+You: "Show me space-tech startups with momentum this week"
 Claude: [returns ranked list for that sector]
 ```
 

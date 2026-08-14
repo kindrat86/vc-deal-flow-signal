@@ -81,7 +81,7 @@ User asked Claude to act as Russell + Greg, do a full audit, and suggest what bo
 ### 2026-04-19 — autonomous-video-pipeline
 - **Tier:** 2 (time-boxed opportunity — value gated on post-launch funnel data)
 - **Source:** Maryan asked about YouTube/TikTok this evening; Claude proposed Remotion + ElevenLabs + YouTube Shorts pipeline; both agreed to defer until post-launch
-- **Idea:** Auto-render a 25-second 1080x1920 MP4 every Monday from the Signal of the Week (Remotion programmatic slideshow + ElevenLabs TTS voiceover, ~$0.10-0.20/video, 25s output). Auto-publish to YouTube Shorts (Data API v3), @data_nerd Twitter (Chrome MCP), LinkedIn company page (LinkedIn API). Skip TikTok and Instagram Reels.
+- **Idea:** Auto-render a 25-second 1080x1920 MP4 every Monday from the Signal of the Week (Remotion programmatic slideshow + ElevenLabs TTS voiceover, ~$0.10-0.20/video, 25s output). Auto-publish to YouTube Shorts (Data API v3), @sipiteno Twitter (Chrome MCP), LinkedIn company page (LinkedIn API). Skip TikTok and Instagram Reels.
 - **Why it might fit Developer-Investor:** YouTube Shorts skews technical-curious. A clean 25s "here is this week's breakout startup, here is the GitHub commit graph that flagged it" hits the same Dev-Investor we already target. NOT a new audience — same audience, new surface area.
 - **Setup cost:** 3-4 hours of Claude time + one-time user OAuth (5 min for YouTube, 5 min for LinkedIn) + ~$5/mo ElevenLabs Starter
 - **Decision:** deferred-to-may4 — see scheduled task `video-pipeline-revisit-may4` (fires May 4 10:00 EEST, autonomous decision tree based on PostHog launch-week metrics)

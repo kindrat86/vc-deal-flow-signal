@@ -1,5 +1,5 @@
 # Twitter Follow List — Day 2 (Friday Apr 17, 2026)
-## Account: @data_nerd. Hit follow limit Apr 16, resume tomorrow.
+## Account: @sipiteno. Hit follow limit Apr 16, resume tomorrow.
 
 12 accounts to follow tomorrow. Spread over 2-3 sittings (morning/afternoon/evening) to avoid re-hitting the limit.
 
@@ -43,5 +43,5 @@
 Spreading across 3 sittings should keep you under daily/hourly follow caps for a newish account.
 
 After all 12 followed, also do:
-- [ ] Like 1 recent tweet from each of the 5 Priority 4 accounts (puts @data_nerd in their notifications)
+- [ ] Like 1 recent tweet from each of the 5 Priority 4 accounts (puts @sipiteno in their notifications)
 - [ ] Reply to 1 tweet from @alexalbert__ or @simonw with a substantive MCP take (no link, just opinion) — best amplification path for the MCP angle

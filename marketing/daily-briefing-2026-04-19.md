@@ -10,7 +10,7 @@ Generated: 08:30 EEST | Orchestrator run
 - **AlternativeTo submit:** April 24 (7-day wait ends Apr 22; reminder set)
 
 ## Yesterday's Progress (Apr 18)
-- Twitter standalone MCP video tweet **pinned** to @data_nerd profile
+- Twitter standalone MCP video tweet **pinned** to @sipiteno profile
 - LinkedIn company page native video post published
 - Discord Cursor #showcase post with MP4
 - dev.to article published: "I Stopped Building Dashboards…"
@@ -25,7 +25,7 @@ Generated: 08:30 EEST | Orchestrator run
 
 ## Today's Completed Work (already done before this run)
 - **Twitter MCP 6-tweet thread POSTED + PINNED** — hero content for Apr 19
-  - Tweet 1: https://x.com/data_nerd/status/2045798342941192669
+  - Tweet 1: https://x.com/sipiteno/status/2045798342941192669
   - Tweets 2-6 auto-posted via Chrome MCP
 - **Reddit Day 5:** ALL 6 COMMENTS POSTED (r/venturecapital skipped — saturated)
 - **IH Day 5:** ALL 5 COMMENTS POSTED + Flowly/Max thread warm reply
@@ -52,7 +52,7 @@ Generated: 08:30 EEST | Orchestrator run
 - **Hashnode cross-post:** Published
 
 ## Metrics Snapshot (last known)
-- Twitter @data_nerd: 0 followers (baseline Apr 17 snapshot), 27 posts, 45 follows — NOT Premium
+- Twitter @sipiteno: 0 followers (baseline Apr 17 snapshot), 27 posts, 45 follows — NOT Premium
 - Reddit u/Worth_Wealth_6811: 718 karma / 957 contribs / 17 followers (Apr 19)
 - PH: 4-day streak (Apr 18); listing submitted and scheduled for Apr 26
 - IH @The_Data_Nerd: 0 followers / 13 points (Apr 19)

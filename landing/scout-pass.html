@@ -413,7 +413,7 @@
           if (r.ok) {
             form.hidden = true;
             msg.className = 'text-sm text-brand-400 text-center font-medium';
-            msg.textContent = 'Application received. Check your inbox, you\u2019ll hear back within 24\u201348 hours.';
+            msg.textContent = 'Application received. Check your inbox, you\u2019ll hear back within 24-48 hours.';
             msg.scrollIntoView({ behavior: 'smooth', block: 'center' });
             if (window.posthog) { try { posthog.capture('scout_pass_application_accepted'); } catch (err) {} }
           } else {

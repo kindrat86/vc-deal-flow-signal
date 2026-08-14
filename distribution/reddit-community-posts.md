@@ -11,12 +11,12 @@ Account: use the established account that posted the MCP threads. Do NOT use a f
 
 ## 1. r/venturecapital — value post, zero links
 
-**Title:** GitHub activity as a sourcing signal: what 8 weeks of tracking 140 startups taught me
+**Title:** GitHub activity as a sourcing signal: what 8 weeks of tracking 350+ startups taught me
 
 **Body:**
 
 I've been tracking public GitHub activity (commit velocity, contributor growth, new repo
-creation) across ~140 startup engineering orgs in 20 sectors since April, trying to answer
+creation) across 350+ startup engineering orgs in 15 sectors since April, trying to answer
 one question: does engineering acceleration actually lead funding events, or is that just a
 nice story?
 
@@ -53,7 +53,7 @@ nothing else.)*
 
 **Body:**
 
-I run a small project that tracks public GitHub activity across ~140 startup orgs for
+I run a small project that tracks public GitHub activity across 350+ startup orgs for
 investors. Founders should know what's visible from the outside, because most of you are
 leaking your roadmap without realizing it:
 

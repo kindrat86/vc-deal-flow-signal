@@ -45,7 +45,7 @@ Happy to answer questions on the methodology or signal classification.
 
 **Skip-condition:** none — Bluesky has no invite gating in 2026. Just need an account.
 
-**Account:** create or use existing @data_nerd handle on Bluesky (verify identity matches Twitter handle to keep cross-platform proof-of-taste).
+**Account:** create or use existing @sipiteno handle on Bluesky (verify identity matches Twitter handle to keep cross-platform proof-of-taste).
 
 **Post 1 (288 chars max — Bluesky cap is 300):**
 ```

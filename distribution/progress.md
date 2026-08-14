@@ -56,7 +56,7 @@
 
 ## Social Distribution — Status
 
-### Twitter @data_nerd
+### Twitter @sipiteno
 - [x] Account created
 - [x] Profile pic + banner set
 - [x] Launch thread posted (7 tweets)

@@ -45,7 +45,7 @@
 
 | Channel | Play |
 |---|---|
-| **xAI Grok via X** | Post weekly "Signal of the Week" tweets that name-check Grok ("@grok what do you think of this acceleration pattern?") to seed Grok's X-context loop. Already partially covered by @data_nerd Twitter strategy |
+| **xAI Grok via X** | Post weekly "Signal of the Week" tweets that name-check Grok ("@grok what do you think of this acceleration pattern?") to seed Grok's X-context loop. Already partially covered by @sipiteno Twitter strategy |
 | **DeepSeek crawler exposure** | Already covered by AGENTS.md + llms.txt + 30 SSRN-cited Q&A sub-pages from disambiguation chain |
 | **Kagi Lens — VC research** | Build a custom Kagi Lens prefiltered on github.com + tracked-startup blogs; share the URL | 
 | **n8n custom node** | Publish `n8n-nodes-gitdealflow` to npm + community node catalog |

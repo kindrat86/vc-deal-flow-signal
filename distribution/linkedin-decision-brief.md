@@ -9,7 +9,7 @@
 real name in any generated output, README, package metadata, or external listing."*
 
 A personal LinkedIn profile posting GitDealFlow content **breaks the brand's core design
-pillar**. The Data Nerd persona, the @data_nerd account, the pseudonymous SSRN setup — all
+pillar**. The Data Nerd persona, the @sipiteno account, the pseudonymous SSRN setup — all
 of it unwinds the moment a real name + face is attached. This is not reversible later.
 
 ## Options

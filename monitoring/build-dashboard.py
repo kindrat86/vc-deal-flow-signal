@@ -89,8 +89,8 @@ BENCHMARK_ROWS = [
 # Stats as of `as_of`; update here when meaningful changes happen.
 CHANNELS = {
     "social": [
-        {"name": "Twitter / X", "handle": "@data_nerd",
-         "url": "https://twitter.com/data_nerd",
+        {"name": "Twitter / X", "handle": "@sipiteno",
+         "url": "https://twitter.com/sipiteno",
          "stat": "1 follower · 57 posts · 88 following",
          "note": "First organic follower; daily Dream 100 blitz + own posts (not Premium)",
          "status": "active", "as_of": "2026-04-20"},
@@ -105,7 +105,7 @@ CHANNELS = {
          "note": "Document/PDF carousel is the only format that converts: 31% CTR / 33% ER vs 0% CTR on image/text/poll. HackerNoon journalist visited — warm. 1 ICP follower (VC managing partner). Posting 2x/wk (Doc Wed, Poll Tue). No invite-to-follow per user rule. User handles all LinkedIn actions — Claude drafts + tracks stats only.",
          "status": "active", "as_of": "2026-05-25"},
         {"name": "Product Hunt", "handle": "data_nerd",
-         "url": "https://www.producthunt.com/@data_nerd",
+         "url": "https://www.producthunt.com/@sipiteno",
          "stat": "0 followers · 18 following · 6-day streak",
          "note": "Launch: Apr 26 · 6 seeding comments/day · badges: Gemologist/Tastemaker/Gone streaking 5",
          "status": "pre-launch", "as_of": "2026-04-20"},

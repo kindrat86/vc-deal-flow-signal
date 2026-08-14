@@ -1,5 +1,5 @@
 # Twitter Follow List — Day 3 (Saturday Apr 18, 2026)
-## Account: @data_nerd
+## Account: @sipiteno
 
 **Strategy:** Follow the Dream 100 accounts you're actively replying to. Following someone you just engaged with looks natural + puts you in their notifications. Prioritize accounts you've already posted substantive replies to this week.
 

@@ -16,7 +16,7 @@
         "height": 630
       },
       "image": "https://signals.gitdealflow.com/og-image.png",
-      "description": "Tracks commit velocity, contributor growth, and repository expansion across 369 startup GitHub orgs in 15 sectors.",
+      "description": "Tracks commit velocity, contributor growth, and repository expansion across 350+ startup GitHub orgs in 15 sectors.",
       "sameAs": [
         "https://t.me/gitdealflow",
         "https://www.linkedin.com/company/gitdealflow",
@@ -65,7 +65,7 @@
       "name": "VC Deal Flow Signal",
       "url": "https://signals.gitdealflow.com",
       "logo": "https://signals.gitdealflow.com/og-image.png",
-      "description": "Tracks commit velocity, contributor growth, and repository expansion across 369 startup GitHub orgs in 15 sectors.",
+      "description": "Tracks commit velocity, contributor growth, and repository expansion across 350+ startup GitHub orgs in 15 sectors.",
       "sameAs": [
         "https://t.me/gitdealflow",
         "https://www.linkedin.com/company/gitdealflow",
@@ -87,7 +87,7 @@
       "@type": "Dataset",
       "@id": "https://signals.gitdealflow.com/#dataset",
       "name": "VC Deal Flow Signal — Public Dataset",
-      "description": "Tracks commit velocity, contributor growth, and repository expansion across 369 startup GitHub orgs in 15 sectors.",
+      "description": "Tracks commit velocity, contributor growth, and repository expansion across 350+ startup GitHub orgs in 15 sectors.",
       "url": "https://signals.gitdealflow.com",
       "creator": {
         "@id": "https://signals.gitdealflow.com/#organization"

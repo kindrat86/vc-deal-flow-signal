@@ -30,7 +30,7 @@
 
 > Status legend: ✅ posted · 🟡 drafted · ⏸ blocked · ❌ aborted
 
-### 1. Twitter / X — `@data_nerd` 🟡
+### 1. Twitter / X — `@sipiteno` 🟡
 
 - **Window.** Tue 13:00–16:00 UTC.
 - **Opener pattern.** One-line counter-intuitive observation, no preamble.

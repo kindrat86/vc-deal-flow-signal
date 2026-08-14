@@ -13,7 +13,7 @@ I built something I think this crowd will appreciate: a free, open dataset that 
 **If commit velocity suddenly 3x's and contributor count doubles, that startup is likely about to raise — and the data was public the whole time.**
 
 What's in it:
-- **20 sectors**, ~400 startup GitHub orgs tracked weekly
+- **15 sectors**, 350+ startup GitHub orgs tracked weekly
 - **6 free MCP tools** you can query from Claude Desktop, Cursor, or any MCP client (`npx -y @gitdealflow/mcp-signal`)
 - **Free Scout Score tool** — paste any GitHub username, see how many unicorns they starred *before* the funding event (backwards-looking taste metric from public star history)
 - **SSRN-indexed methodology** with a 219-startup panel — median lead time 31 days between signal spike and fundraise announcement

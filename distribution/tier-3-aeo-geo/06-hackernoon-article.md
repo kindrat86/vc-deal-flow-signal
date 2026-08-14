@@ -29,7 +29,7 @@ Venture capital is about six years behind. And the reason isn't that VCs are les
 
 The private-markets alt-data that actually works is structurally different. It measures team behavior, not consumer behavior. And for software startups, the highest-signal category by a wide margin is public engineering activity.
 
-I spent the last year building a pipeline that monitors GitHub commits across ~2,000 startup organizations in 20 sectors. The goal was simple: figure out which public engineering signals actually predict private-market outcomes like fundraise announcements, product launches, and acquisitions.
+I spent the last year building a pipeline that monitors GitHub commits across 350+ startup organizations in 15 sectors. The goal was simple: figure out which public engineering signals actually predict private-market outcomes like fundraise announcements, product launches, and acquisitions.
 
 Here's what I found.
 
@@ -121,7 +121,7 @@ I tested plenty of signals that don't predict funding events:
 
 Here's the practical workflow I run weekly:
 
-1. **Pull the 14-day and 30-day rolling windows** for ~2,000 organizations across 20 sectors.
+1. **Pull the 14-day and 30-day rolling windows** for 350+ organizations across 15 sectors.
 2. **Compute velocity change** for each org. Flag anything above +50%.
 3. **Cross-check with contributor delta.** If velocity is up but contributors are flat, it's probably one person overworking. Filter out.
 4. **Check infrastructure repo creation.** If present, flag as higher confidence.
@@ -143,7 +143,7 @@ The network still matters — it's how you close. But "find" and "close" are dif
 
 ### What's next
 
-I'm running this as a weekly signal report at [gitdealflow.com](https://gitdealflow.com) — free, no paywall, no signup. There's a deeper-access dashboard for investors who want the full ranked lists across all 20 sectors, and an MCP server so you can query the signals from inside Claude.
+I'm running this as a weekly signal report at [gitdealflow.com](https://gitdealflow.com) — free, no paywall, no signup. There's a deeper-access dashboard for investors who want the full ranked lists across all 15 sectors, and an MCP server so you can query the signals from inside Claude.
 
 But the methodology above is what matters, not the product. The hedge-fund alt-data trend took a decade to fully arrive. The VC version is arriving now. If you're building a data operation on the investing side, commit-velocity signal is the place to start — the data is free, the API is documented, and the math is under 50 lines of code.
 

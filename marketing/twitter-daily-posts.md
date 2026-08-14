@@ -1,4 +1,4 @@
-# Twitter Daily Posts — @data_nerd
+# Twitter Daily Posts — @sipiteno
 ## Pre-launch cadence: Wed Apr 15 → Sun Apr 19
 
 All times in Athens (EEST, UTC+3). Post around 10:00 Athens = 09:00 CET = 07:00 UTC.

@@ -7,7 +7,7 @@
 - Name, Tagline (47/60), Description (470/500), all 7 links
 - Launch tags: Chrome Extensions, Investing, Venture Capital
 - Thumbnail (custom 240×240) + 6-image gallery + 30-sec MCP demo GIF
-- Maker = The Data Nerd (@data_nerd); Hunter = self
+- Maker = The Data Nerd (@sipiteno); Hunter = self
 - Pricing = Paid (with a free trial or plan)
 - Maker's first comment drafted and persisted (auto-posts at launch)
 
@@ -72,7 +72,7 @@ We monitor GitHub engineering activity across thousands of startup orgs and surf
 - Paid — Insider Circle, EUR 97/mo (normally 197)
 
 ### Makers
-- `@data_nerd` — solo maker
+- `@sipiteno` — solo maker
 
 ### Platforms
 - Web
@@ -133,7 +133,7 @@ I'd love to hear from anyone who invests or is curious about data-driven deal so
 
 ## 4. Hunter DM — send Apr 22 (4 days before launch)
 
-**From:** @data_nerd on X
+**From:** @sipiteno on X
 **To (primary):** https://x.com/messages/compose?recipient_id=rrhoover (Ryan Hoover)
 **Fallbacks if no reply by Apr 24 evening:** @tibo_maker, @chrismessina, @kwdinc. Otherwise self-hunt.
 
@@ -183,7 +183,7 @@ Also schedule the same link in the **public Telegram channel** at 10:01 EEST sha
 
 ## 6. Twitter thread — schedule for 12:15 AM PT (14 min post-launch)
 
-**Post from:** @data_nerd · 4 tweets · character-trimmed for non-Premium (≤280 each)
+**Post from:** @sipiteno · 4 tweets · character-trimmed for non-Premium (≤280 each)
 
 **TWEET 1:**
 ```
@@ -224,7 +224,7 @@ Paste `{PH-link}` from the PH dashboard once live.
 ## 7. Day-by-day countdown · Apr 18 → Apr 26
 
 ### Today · Apr 18 (T-8) — prep the listing in PH dashboard
-- [ ] Go to https://www.producthunt.com/posts/new while signed in as @data_nerd
+- [ ] Go to https://www.producthunt.com/posts/new while signed in as @sipiteno
 - [ ] Paste Name, Tagline, Description (above), set topics + pricing
 - [ ] Paste all links
 - [ ] Save as draft. Do NOT schedule yet — PH slots open 7 days out

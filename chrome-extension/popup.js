@@ -46,7 +46,7 @@
   const VARIANTS = [
     {
       id: "A",
-      headline: "You're seeing one signal. There are 4,200+ more.",
+      headline: "You're seeing one signal. The full panel tracks 350+ startups.",
       body:
         "This badge is the free layer. The Dashboard tracks every accelerating startup org on the panel — ranked weekly, filtered to your sectors.",
       cta: "See the Dashboard",
@@ -138,7 +138,7 @@
 
   function renderSoftMention(container) {
     container.innerHTML =
-      '<div class="upsell-soft">Tracking 4,200+ orgs. ' +
+      '<div class="upsell-soft">Tracking 350+ startups. ' +
       '<a href="https://gitdealflow.com/?utm_source=extension&utm_medium=popup_soft&utm_campaign=power_user#signup" ' +
       'target="_blank" rel="noopener noreferrer">See the week\u2019s biggest accelerators \u2192</a></div>';
   }

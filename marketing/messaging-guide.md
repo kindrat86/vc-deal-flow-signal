@@ -84,7 +84,7 @@ casual on X is fine). Honesty over hype — a dream customer literally said
 ## Live surfaces already aligned (2026-05-29)
 - Apex gitdealflow.com — rebuilt + deployed (PR #267).
 - signals.gitdealflow.com — "tool, not a fund" in hero + meta, deployed (PR #268).
-- @data_nerd X bio — new copy supplied.
+- @sipiteno X bio — new copy supplied.
 - Welcome email (`pseo-site/lib/emails.ts` SOAP_OPERA_EMAILS[0]) — "tool, not a
   fund" clarity added.
 

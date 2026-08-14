@@ -80,7 +80,7 @@ launchctl unload ~/Library/LaunchAgents/com.gitdealflow.dream-customers.plist
 ## Inbound engagement scrape (who engages with YOU)
 
 Separate from the daily "what did they post" check, this captures **inbound
-engagement** — who replied to, liked, reposted, or quoted @data_nerd's posts —
+engagement** — who replied to, liked, reposted, or quoted @sipiteno's posts —
 so each card shows an engagement **★ score** and a reply/like/repost breakdown
 (the PB `engagement_events` collection the dashboard already reads).
 

@@ -1,6 +1,6 @@
 # Come-back to Evan — SHORT, plain language (the version to send)
 
-**To:** @evanbuhler (X DM thread) · **From:** @data_nerd
+**To:** @evanbuhler (X DM thread) · **From:** @sipiteno
 **Format the user wants:** ONE short voice message + ONE short DM. Plain language Evan
 understands — he's a generalist lawyer-investor and got lost in the technical framing
 ("signal field", "commit velocity", "I don't get it"). No jargon. Say "brain tech" not

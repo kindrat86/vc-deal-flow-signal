@@ -1,4 +1,4 @@
-# Variant 1 — Twitter single tweet (@data_nerd, non-Premium 280-char cap)
+# Variant 1 — Twitter single tweet (@sipiteno, non-Premium 280-char cap)
 
 **Cadence:** Monday 14:00 EEST · auto-publish via daily-marketing-orchestrator
 **CTA:** /predict (single)

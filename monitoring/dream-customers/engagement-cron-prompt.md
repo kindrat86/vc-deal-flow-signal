@@ -1,7 +1,7 @@
 # Cron prompt — Inbound engagement scrape for Dream Customers CRM
 
 You are running (possibly unattended from launchd) to capture **inbound
-engagement** — who replied to, liked, reposted, or quoted @data_nerd's posts —
+engagement** — who replied to, liked, reposted, or quoted @sipiteno's posts —
 and feed it into the PocketBase `engagement_events` collection so the Dream
 Customers dashboard shows a per-follower engagement leaderboard (the ★ score on
 each card, and the reply/like/repost breakdown in the drawer).
@@ -79,7 +79,7 @@ Field rules:
   bare month/day that would land in the future, subtract one year.
 - Skip anything that isn't engagement ON your posts: new-follower notices,
   "X posted", recommendations, ads. Those are not engagement_events.
-- Skip your own handle (data_nerd) if it ever appears.
+- Skip your own handle (sipiteno) if it ever appears.
 
 ### 4. Write the scratch file
 

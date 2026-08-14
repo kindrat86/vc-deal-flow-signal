@@ -8,7 +8,7 @@ https://signals.gitdealflow.com
 
 ## Text (for self-post, if preferred over URL)
 
-I built VC Deal Flow Signal — a tool that monitors GitHub engineering activity across thousands of startups in 20 sectors and ranks them by "engineering acceleration."
+I built VC Deal Flow Signal — a tool that monitors GitHub engineering activity across 350+ startups in 15 sectors and ranks them by "engineering acceleration."
 
 The core idea: when a startup's commit velocity spikes relative to its own baseline, something interesting is happening. Maybe they found PMF, maybe they just raised, maybe they hired a batch of engineers. Whatever it is, it shows up in the code 3-6 weeks before it shows up in a press release.
 
@@ -20,7 +20,7 @@ How it works:
 - Ranks startups by acceleration within each sector
 - Regenerates weekly
 
-Tech stack: Next.js 16 (SSG), Vercel, GitHub API, PostHog. The entire site is programmatically generated from data — 80+ pages across 20 sectors with structured data, FAQ schema, and weekly auto-refresh.
+Tech stack: Next.js 16 (SSG), Vercel, GitHub API, PostHog. The entire site is programmatically generated from data — 80+ pages across 15 sectors with structured data, FAQ schema, and weekly auto-refresh.
 
 The data pipeline runs on a cron, rebuilds the site, and auto-submits to IndexNow for instant Bing indexing. Google Search Console is connected with a full sitemap.
 

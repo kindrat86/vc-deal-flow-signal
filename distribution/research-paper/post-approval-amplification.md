@@ -21,7 +21,7 @@ Add PwC URL once assigned (via the legacy deposit edit API flow we
 used 2026-04-19 — see `distribution/dataset/LIVE-URLS.md` for the
 Zenodo notes section).
 
-### 3. Announce on Twitter (@data_nerd)
+### 3. Announce on Twitter (@sipiteno)
 
 Thread of 4 tweets:
 
@@ -146,7 +146,7 @@ next candidates.
 
 Longer-form post summarizing the paper — "I built a public dataset of
 GitHub engineering velocity. Here's what's in it." Publish on dev.to
-under the existing @data_nerd account. Cross-post to Hashnode (per
+under the existing @sipiteno account. Cross-post to Hashnode (per
 memory pattern).
 
 ## T+1 week

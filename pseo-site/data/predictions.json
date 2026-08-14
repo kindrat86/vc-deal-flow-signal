@@ -1,6 +1,6 @@
 {
-  "_doc": "Weekly Acceleration Watch \u2014 named startups showing the strongest GitHub engineering acceleration the week of `weekStart`. Each cohort is graded post-hoc against public fundraise / acquisition / shutdown news at the 60-day and 90-day windows. Methodology: ssrn.com/abstract=6606558.",
-  "_legal": "This is a data-driven engineering activity watchlist generated from public GitHub data. It is not investment advice. Naming a company indicates that its observed engineering activity matches the patterns described in our methodology \u2014 it does not assert that the company is fundraising, will fundraise, or has any specific intent. Outcomes are recorded post-hoc from public announcements only.",
+  "_doc": "Weekly Acceleration Watch, named startups showing the strongest GitHub engineering acceleration the week of `weekStart`. Each cohort is graded post-hoc against public fundraise / acquisition / shutdown news at the 60-day and 90-day windows. Methodology: ssrn.com/abstract=6606558.",
+  "_legal": "This is a data-driven engineering activity watchlist generated from public GitHub data. It is not investment advice. Naming a company indicates that its observed engineering activity matches the patterns described in our methodology, it does not assert that the company is fundraising, will fundraise, or has any specific intent. Outcomes are recorded post-hoc from public announcements only.",
   "_grading": {
     "_doc": "Outcome enum. `null` = not yet graded. Pending picks remain null until the 60d window closes.",
     "values": {
@@ -57,7 +57,7 @@
           "commitVelocityChange": "+38%",
           "contributors": 18,
           "contributorGrowth": null,
-          "thesis": "EU seed-stage configurable PIM/MDM platform with a sustained framework-migration signal. The +38% acceleration on 116 commits indicates production-grade refactor work \u2014 usually a Series A precursor in B2B SaaS.",
+          "thesis": "EU seed-stage configurable PIM/MDM platform with a sustained framework-migration signal. The +38% acceleration on 116 commits indicates production-grade refactor work, usually a Series A precursor in B2B SaaS.",
           "outcome": "no_event",
           "outcomeNotes": "Graded 2026-07-31 (60-day window closed 2026-07-03): no public funding, acquisition, IPO, or shutdown announcement found for this organization via news search.",
           "outcomeAt": "2026-07-31"
@@ -157,7 +157,7 @@
           "commitVelocityChange": "+59%",
           "contributors": 100,
           "contributorGrowth": null,
-          "thesis": "APAC open-core Laravel commerce platform with a +59% acceleration. Framework-migration commits with a 100-contributor base usually map to a major version release \u2014 a typical B2B fundraising-window precursor in the e-commerce stack.",
+          "thesis": "APAC open-core Laravel commerce platform with a +59% acceleration. Framework-migration commits with a 100-contributor base usually map to a major version release, a typical B2B fundraising-window precursor in the e-commerce stack.",
           "outcome": "no_event",
           "outcomeNotes": "Graded 2026-07-31 (60-day window closed 2026-07-03): no public funding, acquisition, IPO, or shutdown announcement found for this organization via news search.",
           "outcomeAt": "2026-07-31"
@@ -177,7 +177,7 @@
           "commitVelocityChange": "+38%",
           "contributors": 29,
           "contributorGrowth": null,
-          "thesis": "Italian Series A/B devtools / SaaS shop with a +38% acceleration. Smaller velocity but high contributor:commit ratio (1:1) \u2014 a hallmark of distributed senior engineering teams shipping to production.",
+          "thesis": "Italian Series A/B devtools / SaaS shop with a +38% acceleration. Smaller velocity but high contributor:commit ratio (1:1), a hallmark of distributed senior engineering teams shipping to production.",
           "outcome": "no_event",
           "outcomeNotes": "Graded 2026-07-31 (60-day window closed 2026-07-03): no public funding, acquisition, IPO, or shutdown announcement found for this organization via news search.",
           "outcomeAt": "2026-07-31"
@@ -197,7 +197,7 @@
           "commitVelocityChange": "+25%",
           "contributors": 28,
           "contributorGrowth": null,
-          "thesis": "Series A/B healthcare software shop with a +25% acceleration on a 28-person contributor base. Framework migration in regulated software (healthcare) is rare and meaningful \u2014 usually a product re-architecture financed by a recent or upcoming round.",
+          "thesis": "Series A/B healthcare software shop with a +25% acceleration on a 28-person contributor base. Framework migration in regulated software (healthcare) is rare and meaningful, usually a product re-architecture financed by a recent or upcoming round.",
           "outcome": "no_event",
           "outcomeNotes": "Graded 2026-07-31 (60-day window closed 2026-07-03): no public funding, acquisition, IPO, or shutdown announcement found for this organization via news search.",
           "outcomeAt": "2026-07-31"
@@ -247,7 +247,7 @@
           "commitVelocityChange": "+573%",
           "contributors": 8,
           "contributorGrowth": "+0%",
-          "thesis": "Seed-stage enterprise SaaS org showing a +573% deploy-frequency spike on 74 commits/14d across 8 contributors \u2014 the sharpest week-over-week acceleration in the panel this week.",
+          "thesis": "Seed-stage enterprise SaaS org showing a +573% deploy-frequency spike on 74 commits/14d across 8 contributors, the sharpest week-over-week acceleration in the panel this week.",
           "outcome": null,
           "outcomeNotes": null,
           "outcomeAt": null
@@ -267,7 +267,7 @@
           "commitVelocityChange": "+421%",
           "contributors": 23,
           "contributorGrowth": "+400%",
-          "thesis": "Series A/B data-infrastructure team at +421% with contributor count up +400% \u2014 a simultaneous velocity and hiring-burst signal, the strongest combined pattern we track.",
+          "thesis": "Series A/B data-infrastructure team at +421% with contributor count up +400%, a simultaneous velocity and hiring-burst signal, the strongest combined pattern we track.",
           "outcome": null,
           "outcomeNotes": null,
           "outcomeAt": null
@@ -287,7 +287,7 @@
           "commitVelocityChange": "+358%",
           "contributors": 5,
           "contributorGrowth": "+37%",
-          "thesis": "Pre-seed gaming studio at +358% on 55 commits/14d with contributor growth of +37% \u2014 early-stage volume of this kind usually maps to a pre-launch sprint.",
+          "thesis": "Pre-seed gaming studio at +358% on 55 commits/14d with contributor growth of +37%, early-stage volume of this kind usually maps to a pre-launch sprint.",
           "outcome": null,
           "outcomeNotes": null,
           "outcomeAt": null
@@ -307,7 +307,7 @@
           "commitVelocityChange": "+167%",
           "contributors": 100,
           "contributorGrowth": "+0%",
-          "thesis": "Growth-stage US game-engine org at +167% on 147 commits/14d with a 100-contributor base \u2014 a deploy-frequency spike at this scale indicates a major release window.",
+          "thesis": "Growth-stage US game-engine org at +167% on 147 commits/14d with a 100-contributor base, a deploy-frequency spike at this scale indicates a major release window.",
           "outcome": null,
           "outcomeNotes": null,
           "outcomeAt": null
@@ -327,7 +327,7 @@
           "commitVelocityChange": "+118%",
           "contributors": 9,
           "contributorGrowth": "+0%",
-          "thesis": "Seed robotics (drone-show software) org at +118% with framework-migration commits \u2014 production re-architecture at seed stage is a classic pre-round profile.",
+          "thesis": "Seed robotics (drone-show software) org at +118% with framework-migration commits, production re-architecture at seed stage is a classic pre-round profile.",
           "outcome": null,
           "outcomeNotes": null,
           "outcomeAt": null
@@ -347,7 +347,7 @@
           "commitVelocityChange": "+113%",
           "contributors": 65,
           "contributorGrowth": "+49%",
-          "thesis": "APAC payments-infrastructure org at +113% on 100 commits/14d with contributor growth of +49% \u2014 sustained framework migration plus hiring is a scale-up signal.",
+          "thesis": "APAC payments-infrastructure org at +113% on 100 commits/14d with contributor growth of +49%, sustained framework migration plus hiring is a scale-up signal.",
           "outcome": null,
           "outcomeNotes": null,
           "outcomeAt": null
@@ -367,7 +367,7 @@
           "commitVelocityChange": "+96%",
           "contributors": 30,
           "contributorGrowth": "+0%",
-          "thesis": "Space-tech collective at +96% on 104 commits/14d across 30 contributors \u2014 sustained framework-migration work at above-panel-median volume.",
+          "thesis": "Space-tech collective at +96% on 104 commits/14d across 30 contributors, sustained framework-migration work at above-panel-median volume.",
           "outcome": null,
           "outcomeNotes": null,
           "outcomeAt": null
@@ -387,7 +387,7 @@
           "commitVelocityChange": "+80%",
           "contributors": 16,
           "contributorGrowth": "+400%",
-          "thesis": "EU seed web3 protocol at +80% with contributors up +400% \u2014 an engineering hiring burst on a 16-person base is rare at this stage.",
+          "thesis": "EU seed web3 protocol at +80% with contributors up +400%, an engineering hiring burst on a 16-person base is rare at this stage.",
           "outcome": null,
           "outcomeNotes": null,
           "outcomeAt": null
@@ -407,7 +407,7 @@
           "commitVelocityChange": "+49%",
           "contributors": 65,
           "contributorGrowth": "+0%",
-          "thesis": "Canadian agtech platform at +49% on 186 commits/14d \u2014 one of the highest absolute velocities in this week's cohort, with 65 active contributors.",
+          "thesis": "Canadian agtech platform at +49% on 186 commits/14d, one of the highest absolute velocities in this week's cohort, with 65 active contributors.",
           "outcome": null,
           "outcomeNotes": null,
           "outcomeAt": null
@@ -427,7 +427,7 @@
           "commitVelocityChange": "+42%",
           "contributors": 7,
           "contributorGrowth": "+54%",
-          "thesis": "Pre-seed gaming org at +42% with contributor growth of +54% \u2014 small-base hiring bursts like this are the textbook pre-seed-to-seed acceleration profile.",
+          "thesis": "Pre-seed gaming org at +42% with contributor growth of +54%, small-base hiring bursts like this are the textbook pre-seed-to-seed acceleration profile.",
           "outcome": null,
           "outcomeNotes": null,
           "outcomeAt": null

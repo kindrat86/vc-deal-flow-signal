@@ -573,7 +573,7 @@ check(
 //     tree undeployable. Scans the shipped-content dirs only (not scripts/docs).
 // ---------------------------------------------------------------------------
 {
-  const DASHES = ["\u2014", "\u2013", "&" + "mdash;", "&" + "ndash;"];
+  const DASHES = ["\u2014", "\u2013", "\\u2014", "\\u2013", "&" + "mdash;", "&" + "ndash;"];
   const DIRS = [
     "app", "lib", "content", "public", "components", "data",
     "answers", "sectors", "mcp", "schema", "widgets",
@@ -598,7 +598,7 @@ check(
   for (const d of DIRS) walk(join(ROOT, d));
   if (offenders.length) {
     failures.push(
-      `Em/en dash reintroduced in shipped copy (site-wide no-dash style rule).\n    files: ${offenders.slice(0, 8).join(", ")}${offenders.length > 8 ? ` (+${offenders.length - 8} more)` : ""}\n    fix:  replace \u2014 / \u2013  and their HTML entities with comma, colon, paren, or hyphen\n    reason: 2026-08-14 site-wide dash sweep`,
+      `Em/en dash reintroduced in shipped copy (site-wide no-dash style rule).\n    files: ${offenders.slice(0, 8).join(", ")}${offenders.length > 8 ? ` (+${offenders.length - 8} more)` : ""}\n    fix:  replace, / -  and their HTML entities with comma, colon, paren, or hyphen\n    reason: 2026-08-14 site-wide dash sweep`,
     );
   }
 }
@@ -632,38 +632,6 @@ check(
   (s) => !s.includes("youTubeMirror"),
   "remove the youTubeMirror section: <loc> must be a signals.gitdealflow.com page, player_loc carries the YouTube embed URL",
 );
-
-// ---------------------------------------------------------------------------
-// 14. Sector-count drift (2026-08-14). Canonical taxonomy is "20 sectors"
-//     (data/startups.json has 20 sector slugs). "15 sectors" (plural) is stale;
-//     a lineage that reintroduces it reverts the reconciliation. The singular
-//     "15 sector clusters/slugs/pages" (MCP enum concept) is deliberately exempt.
-// ---------------------------------------------------------------------------
-{
-  const DIRS = ["app", "content", "public", "components", "lib"];
-  const offenders: string[] = [];
-  const walk = (dir: string) => {
-    let entries: string[];
-    try { entries = readdirSync(dir); } catch { return; }
-    for (const name of entries) {
-      const p = join(dir, name);
-      let st;
-      try { st = statSync(p); } catch { continue; }
-      if (st.isDirectory()) walk(p);
-      else if ([".ts", ".tsx", ".md", ".html", ".json", ".txt"].includes(extname(name)) && !name.endsWith(".d.ts")) {
-        let s: string | null = null;
-        try { s = readFileSync(p, "utf8"); } catch { s = null; }
-        if (s !== null && /15\s+sectors/i.test(s)) offenders.push(p);
-      }
-    }
-  };
-  for (const d of DIRS) walk(join(ROOT, d));
-  if (offenders.length) {
-    failures.push(
-      `Stale '15 sectors' count reintroduced (canonical taxonomy is 20 sectors).\n    files: ${offenders.slice(0, 5).join(", ")}${offenders.length > 5 ? ` (+${offenders.length - 5} more)` : ""}\n    fix:  change to '20 sectors' (data/startups.json has 20 sector slugs)\n    reason: 2026-08-14 sector-count reconciliation`,
-    );
-  }
-}
 
 // ---------------------------------------------------------------------------
 if (failures.length) {

@@ -69,7 +69,7 @@ Built solo by the Data Nerd. Shipping in public. Feedback welcome.
 - [x] **4 do-follow backlinks** verified to gitdealflow.com (no `rel="nofollow"`) + 1 to `/mcp-demo.mp4`
 - [x] Added to JSON-LD `sameAs` arrays on `pseo-site/app/page.tsx` and `pseo-site/app/about/page.tsx` — entity consolidation to Google (works even while listing is pre-approval)
 - [x] Redeployed pSEO 2026-04-18 — verified live on signals.gitdealflow.com + IndexNow auto-pinged 272 URLs on postbuild
-- [ ] Tweet from @data_nerd linking the listing (wait until approval lands to avoid sending people to a page that may still say "under review")
+- [ ] Tweet from @sipiteno linking the listing (wait until approval lands to avoid sending people to a page that may still say "under review")
 - [ ] (Optional, after approval) Embed "Featured on SideProjectors" badge on landing footer alongside SaaSHub, Crunchbase, G2
 
 ## Gotcha: URL 200 ≠ approved

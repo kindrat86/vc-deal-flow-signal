@@ -1,8 +1,8 @@
-# Twitter Post-Launch Cadence — @data_nerd
+# Twitter Post-Launch Cadence — @sipiteno
 ## Apr 20 (Mon) → Apr 26 (Sun) — sustains momentum from Apr 19 launch
 
 All times in Athens (EEST, UTC+3). Default slot: 10:00 EEST = 09:00 CET = 07:00 UTC.
-Post link: https://x.com/data_nerd/compose/tweet (account: @data_nerd)
+Post link: https://x.com/sipiteno/compose/tweet (account: @sipiteno)
 
 Cadence shifts to **3x/week (Mon/Wed/Fri data observations) + 2 reactive slots (Tue/Thu MCP/replies)**. Sat = quiet, Sun = retro thread (see launch-retrospective.md).
 

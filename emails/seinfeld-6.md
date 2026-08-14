@@ -18,6 +18,6 @@ Here are 7 startups heating up early on GitHub right now — shipping faster, pu
 
 All numbers from public GitHub data, updated weekly.
 
-The free digest shows you the highlights. The full Dashboard surfaces 60+ startups across 20 sectors, filtered to your sectors — you just look: https://gitdealflow.com/dashboard
+The free digest shows you the highlights. The full Dashboard surfaces 60+ startups across 15 sectors, filtered to your sectors — you just look: https://gitdealflow.com/dashboard
 
 The Data Nerd

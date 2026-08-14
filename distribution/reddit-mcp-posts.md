@@ -15,7 +15,7 @@ I track GitHub engineering acceleration across startups (commit velocity, contri
 5 tools:
 
 - `get_trending_startups` — top 20 startups by engineering acceleration right now
-- `search_startups_by_sector` — 20 sectors (AI, fintech, healthcare, cybersecurity, etc.)
+- `search_startups_by_sector` — 15 sectors (web3, healthcare, space-tech, etc.)
 - `get_startup_signal` — deep profile on any tracked startup
 - `get_signals_summary` — dataset overview
 - `get_methodology` — how the signals work
@@ -52,11 +52,11 @@ Happy to answer questions about the build or the data methodology.
 
 Just published an MCP server that gives you live startup acceleration data inside Cursor.
 
-It tracks commit velocity, contributor growth, and repo expansion across thousands of startup GitHub orgs and ranks them by engineering momentum. Useful if you're into venture capital, angel investing, or just curious about which startups are building fast.
+It tracks commit velocity, contributor growth, and repo expansion across 350+ startup GitHub orgs and ranks them by engineering momentum. Useful if you're into venture capital, angel investing, or just curious about which startups are building fast.
 
 Install: `npx @gitdealflow/mcp-signal`
 
-5 tools, 20 sectors, updated weekly. No API key, no login.
+5 tools, 15 sectors, updated weekly. No API key, no login.
 
 Example queries:
 - "Which AI startups are showing the highest commit velocity?"
@@ -73,7 +73,7 @@ npm: https://www.npmjs.com/package/@gitdealflow/mcp-signal
 
 **Body:**
 
-I built an MCP server that serves live startup engineering acceleration data. It tracks commit velocity, contributor growth, and repo expansion across 20 sectors using the public GitHub API.
+I built an MCP server that serves live startup engineering acceleration data. It tracks commit velocity, contributor growth, and repo expansion across 15 sectors using the public GitHub API.
 
 The server is TypeScript, runs over stdio, and works with any MCP-compatible client. No API key needed, data fetched live from signals.gitdealflow.com.
 
@@ -103,7 +103,7 @@ Because that's not how people work anymore. They ask their AI.
 
 So instead of trying to get people to visit a website, I published an MCP server. Now when an investor asks Claude "which startups are accelerating in healthcare?", they get live data from my engine. No login, no tab to remember.
 
-The data: I monitor thousands of startup GitHub orgs for engineering acceleration (commit velocity spikes, contributor growth, new repos). The patterns have historically preceded fundraise announcements by 3 to 6 weeks.
+The data: I monitor 350+ startup GitHub orgs for engineering acceleration (commit velocity spikes, contributor growth, new repos). The patterns have historically preceded fundraise announcements by 3 to 6 weeks.
 
 The product:
 - Free MCP server: `npx @gitdealflow/mcp-signal`
@@ -128,7 +128,7 @@ I've been tracking what GitHub repos look like before a startup announces a rais
 
 This acceleration window, usually 14 days, has been the most reliable leading indicator I've found. By the time AngelList shows "trending" or TechCrunch writes about it, you're already weeks late.
 
-I built a system that monitors thousands of startup GitHub orgs across 20 sectors and ranks them by engineering acceleration. The data updates weekly.
+I built a system that monitors 350+ startup GitHub orgs across 15 sectors and ranks them by engineering acceleration. The data updates weekly.
 
 Three ways to access it:
 

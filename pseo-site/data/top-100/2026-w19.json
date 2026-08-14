@@ -829,7 +829,7 @@
     },
     {
       "name": "dbt-labs",
-      "description": "dbt helps data teams work like software engineers\u2014to ship trusted data, faster.",
+      "description": "dbt helps data teams work like software engineers to ship trusted data, faster.",
       "stage": "Growth",
       "geography": "Unknown",
       "sectorSlug": "data-infrastructure",
@@ -1575,7 +1575,7 @@
     },
     {
       "name": "nextcloud",
-      "description": "\ud83d\udcf1\u2601\ufe0f\ud83d\udcbb A safe home for all your data \u2013 community-driven, free & open source \ud83d\udc4f",
+      "description": "\ud83d\udcf1\u2601\ufe0f\ud83d\udcbb A safe home for all your data - community-driven, free & open source \ud83d\udc4f",
       "stage": "Growth",
       "geography": "Unknown",
       "sectorSlug": "social-community",
@@ -1690,7 +1690,7 @@
     },
     {
       "name": "IntersectMBO",
-      "description": "Intersect is a member-based organization for the Cardano ecosystem \u2014 putting the community at the center of Cardano\u2019s de",
+      "description": "Intersect is a member-based organization for the Cardano ecosystem, putting the community at the center of Cardano\u2019s de",
       "stage": "Growth",
       "geography": "US",
       "sectorSlug": "web3",

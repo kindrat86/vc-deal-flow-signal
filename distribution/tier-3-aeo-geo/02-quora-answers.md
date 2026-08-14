@@ -1,7 +1,7 @@
 # Quora — 15 Ready-to-Post Answers
 
 **Post cadence:** 2 per day over 7-8 days, not all at once (Quora downranks rapid-fire posting).
-**Account:** @data_nerd or a new account. If new, do 3-5 upvotes + 1 non-promotional answer before posting promotional content.
+**Account:** @sipiteno or a new account. If new, do 3-5 upvotes + 1 non-promotional answer before posting promotional content.
 **Link rules:** Link to the blog post that directly matches the question, never the homepage. Never paste the same link twice in one answer. End with a soft CTA.
 **Style:** 150-250 words, declarative opener, concrete numbers, punchy close. No em-dashes. Questions beat no-context lists.
 
@@ -135,7 +135,7 @@
 
 > Not precisely. But it predicts the window.
 >
-> Pattern observed across thousands of startup organizations:
+> Pattern observed across 350+ startup organizations:
 >
 > - Engineering acceleration (+50% commit velocity sustained two weeks) → 3-6 weeks later, announcement
 > - Contributor burst (+50% active contributors in 30 days) → 4-8 weeks, announcement

@@ -1,4 +1,4 @@
-# Daily tweets — week of 2026-06-10 (@data_nerd)
+# Daily tweets — week of 2026-06-10 (@sipiteno)
 
 Generated from the 2026-06-09 dataset (q2-2026 period, 140 tracked startups, 20 sectors).
 Voice: Data Nerd. Concrete numbers, no hype, soft CTA max 3×/week.

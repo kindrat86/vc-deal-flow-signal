@@ -9,7 +9,7 @@ Citation block:
 
 ---
 
-## 1. Twitter / X thread (@data_nerd) – Monday 2026-06-01, 14:00 EEST
+## 1. Twitter / X thread (@sipiteno) – Monday 2026-06-01, 14:00 EEST
 
 Tweet 1 (hook, ≤280 chars):
 

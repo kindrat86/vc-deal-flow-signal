@@ -134,6 +134,6 @@ For each platform that goes live:
 1. Add a `tracks.json` entry for `llm-marketplaces-watcher` (polls Zoho for `*@poe.com`, `*@mistral.ai`, `*@you.com` notifications).
 2. Update `marketing/llm-marketplaces/USER-CLICKS.md` from `☐` to `✅` with the share URL.
 3. Append to `MEMORY.md` with the listing URL.
-4. Draft cross-posts for Twitter (@data_nerd) and Telegram once we have ≥2 of these live (so the post lists multiple surfaces, not just one).
+4. Draft cross-posts for Twitter (@sipiteno) and Telegram once we have ≥2 of these live (so the post lists multiple surfaces, not just one).
 
 Tabs are still open — you can blast all four in one ~10-min batched session if you want. Or do them one at a time and ping me after each.

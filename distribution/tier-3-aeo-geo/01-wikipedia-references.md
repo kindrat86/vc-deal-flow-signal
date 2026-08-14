@@ -8,7 +8,7 @@
 
 ## Pre-flight (before editing anything)
 
-1. Create or use a Wikipedia account **not** tied to @gitdealflow / @data_nerd handles. Use `signal@gitdealflow.com` but a neutral username like `BitVelocity` or similar. Do NOT disclose affiliation in the username.
+1. Create or use a Wikipedia account **not** tied to @gitdealflow / @sipiteno handles. Use `signal@gitdealflow.com` but a neutral username like `BitVelocity` or similar. Do NOT disclose affiliation in the username.
 2. Make 10-12 legitimate edits on unrelated articles first (typo fixes, clearer wording, dead-link replacement). Use [Wikipedia's "Suggested edits"](https://en.wikipedia.org/wiki/Wikipedia:Community_portal) or Citation Hunt. Space over 5-7 days.
 3. After autoconfirmed, add a disclosure on your user page: "I work on a venture capital alternative-data product. I will not edit articles promotionally and will disclose COI on any edit that touches my work."
 4. For every edit, follow [WP:COI](https://en.wikipedia.org/wiki/Wikipedia:Conflict_of_interest) — propose the edit on the Talk page, don't just push it.

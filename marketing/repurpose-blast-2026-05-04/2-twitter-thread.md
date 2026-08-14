@@ -1,4 +1,4 @@
-# Variant 2 — Twitter thread, 5 tweets (@data_nerd)
+# Variant 2 — Twitter thread, 5 tweets (@sipiteno)
 
 **Cadence:** Monday 14:30 EEST · auto-publish
 **CTA:** /predicted (only on tweet 5)

@@ -32,7 +32,7 @@ _Contributor disclosure: I operate one of the tools below (GitDealFlow). Mods, f
 Data-driven sourcing supplements warm intros with quantitative signals. The common categories:
 
 **Engineering / GitHub signals**
-- [GitDealFlow](https://gitdealflow.com) — free weekly signal report on startup commit velocity across 20 sectors
+- [GitDealFlow](https://gitdealflow.com) — free weekly signal report on startup commit velocity across 15 sectors
 - [GitHub Archive](https://www.gharchive.org/) — raw GitHub event data, BigQuery-accessible
 - [OSS Insight](https://ossinsight.io/) — public analytics on OSS trends, useful for dev-tool sector mapping
 

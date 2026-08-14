@@ -2,11 +2,11 @@
 
 > ⚠️ **REVISED 2026-04-26 T+8h post-discovery.** Original variants assumed PH listing was featured. It is not (PH GraphQL `featuredAt: null`). Hardened `/api/a2a` now correctly returns `active: false / state: scheduled-pending-feature` until PH features us. Variants below are revised to reflect THAT truthful state — they pivot the angle from "we're live on PH today" to "we shipped the agent-callable infra; PH listing is in queue." If/when PH features the listing, the original "we're live" framing becomes valid again — those variants are preserved at the bottom under "Variants if PH features later".
 
-**Purpose:** A pinned tweet on @data_nerd (the Twitter handle from `reference_twitter.md`) that demonstrates the agent-callable infrastructure at `/api/a2a`. The differentiator (agent-discoverable launch payload) is REAL regardless of PH feature state — the endpoint returns truthful state, which is itself novel.
+**Purpose:** A pinned tweet on @sipiteno (the Twitter handle from `reference_twitter.md`) that demonstrates the agent-callable infrastructure at `/api/a2a`. The differentiator (agent-discoverable launch payload) is REAL regardless of PH feature state — the endpoint returns truthful state, which is itself novel.
 
 **Posting method (per memory `feedback_twitter_compose_method.md`):** ONE `insertText` only on a fresh editor; never clear-and-reinsert in same session.
 
-**Constraint:** @data_nerd is on Twitter free tier — 280-char cap per tweet (per memory `reference_twitter.md`).
+**Constraint:** @sipiteno is on Twitter free tier — 280-char cap per tweet (per memory `reference_twitter.md`).
 
 **Timing (PH-state-safe variants below):** post any time. The endpoint is live and the framing is truthful. Pin immediately after posting.
 

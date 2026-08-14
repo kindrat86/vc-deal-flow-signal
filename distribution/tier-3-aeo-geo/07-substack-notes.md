@@ -225,7 +225,7 @@ All 15 notes can be cross-posted to:
 2. **LinkedIn** (expand 3 into full posts with more context — 150-200 words each)
 3. **Bluesky** (same text, hashtag `#VC #altdata`)
 
-Do NOT cross-post to Twitter; Twitter drafts are managed separately per memory (@data_nerd, tight 280-char limit, trim before posting).
+Do NOT cross-post to Twitter; Twitter drafts are managed separately per memory (@sipiteno, tight 280-char limit, trim before posting).
 
 ---
 
