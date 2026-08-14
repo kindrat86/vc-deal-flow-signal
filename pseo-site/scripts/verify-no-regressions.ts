@@ -852,6 +852,37 @@ check(
 );
 
 // ---------------------------------------------------------------------------
+// §16 GA4 + Core Web Vitals measurement (2026-08-15). GA4 (G-7SV2SNZE4C) was
+// configured but SILENTLY BLOCKED: neither CSP allowed googletagmanager.com,
+// so dataLayer stayed empty on both domains and zero GA4 data ever arrived.
+// The CWV beacon (WebVitalsReporter -> PostHog $web_vitals) plus the CSP
+// script/connect origins are load-bearing for the "measure CWV field data"
+// audit item. A lineage that reverts either goes blind again.
+// ---------------------------------------------------------------------------
+check(
+  "next.config.ts",
+  "next.config.ts CSP no longer allows https://www.googletagmanager.com in script-src; GA4 gtag.js is silently blocked again (empty dataLayer, zero GA4 data, re-opening the measurement blind spot).",
+  (s) =>
+    /script-src[^";]*https:\/\/www\.googletagmanager\.com/.test(s) &&
+    /connect-src[^";]*google-analytics\.com/.test(s),
+  "keep https://www.googletagmanager.com in the global script-src AND *.google-analytics.com in connect-src (GA4 gtag + beacon endpoints)",
+);
+
+check(
+  "app/layout.tsx",
+  "app/layout.tsx no longer renders <WebVitalsReporter />; LCP/INP/CLS/FCP/TTFB field data stops reaching PostHog and CWV regressions become invisible until CrUX updates 28 days later.",
+  (s) => s.includes("<WebVitalsReporter />"),
+  "keep <WebVitalsReporter /> mounted inside <NotInEmbed> in app/layout.tsx (ships $web_vitals events to PostHog EU)",
+);
+
+check(
+  "components/WebVitalsReporter.tsx",
+  "components/WebVitalsReporter.tsx lost its PostHog capture of $web_vitals; the beacon component renders but reports nothing.",
+  (s) => s.includes('$web_vitals') && s.includes("useReportWebVitals"),
+  "keep the ph.capture(\"$web_vitals\", ...) call and the useReportWebVitals hook in WebVitalsReporter.tsx",
+);
+
+// ---------------------------------------------------------------------------
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +
