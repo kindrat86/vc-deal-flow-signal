@@ -18,7 +18,7 @@ Run: python3 _rebuild_sitemap.py
 After run: validate with _validate_sitemap.py
 """
 
-import os, re, hashlib
+import os, re, hashlib, json
 from datetime import date, datetime, timezone
 from pathlib import Path
 
@@ -91,6 +91,31 @@ MTIME_UNRELIABLE_PREFIXES = (
     # These get rewritten fresh each build, so their mtime is
     # the build time, not the content age.
 )
+
+# ── Redirect-source exclusion ─────────────────────────────────
+
+def load_redirect_sources() -> set:
+    """Return plain-path redirect sources from vercel.json.
+
+    A discovered page whose URL is a redirect source (e.g.
+    /alternatives-to/crunchbase -> /alternatives-to/crunchbase-alternatives)
+    must NOT appear in the sitemap: Google flags such entries as
+    'Page with redirect'. Only plain paths are considered (no
+    wildcards, params, or catch-alls like /:path*).
+    """
+    try:
+        vc = json.loads((BASE / "vercel.json").read_text(encoding="utf-8"))
+    except Exception:
+        return set()
+    sources = set()
+    for rule in vc.get("redirects", []):
+        src = rule.get("source", "")
+        if src.startswith("/") and not any(ch in src for ch in "*:?("):
+            sources.add(src.rstrip("/") or "/")
+    return sources
+
+
+REDIRECT_SOURCES = load_redirect_sources()
 
 # ── URL conversion ────────────────────────────────────────────
 
@@ -201,6 +226,9 @@ def discover_pages():  # -> list[tuple[str, str, Optional[str]]]
                 continue
             
             url = file_to_url(rel)
+            # Skip URLs that are redirect sources (see load_redirect_sources).
+            if (url.rstrip("/") or "/") in REDIRECT_SOURCES:
+                continue
             lastmod = get_lastmod(full_path)
             pages.append((url, rel, lastmod))
     
