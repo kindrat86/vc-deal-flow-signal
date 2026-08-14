@@ -138,6 +138,14 @@ export default async function StartupPage({ params }: PageProps) {
 
   const geoLabel = geoNames[profile.latestGeography] || profile.latestGeography;
 
+  // GitHub org handle + avatar URL, derived from the canonical github.com URL
+  // (always present, form https://github.com/{org}). GitHub serves a sized
+  // avatar PNG at https://github.com/{org}.png?size=N (2x for retina at 48px).
+  const githubOrg = profile.githubUrl.replace(/\/+$/, "").split("/").pop() || "";
+  const avatarUrl = githubOrg
+    ? `https://github.com/${githubOrg}.png?size=96`
+    : null;
+
   // Related startups from the same sector
   const relatedStartups = getRelatedStartups(slug, latest.sectorSlug, 6);
   // Honesty: when the sector's freshest snapshot is older than the global
@@ -352,9 +360,21 @@ export default async function StartupPage({ params }: PageProps) {
         <header className="mb-8">
           <div className="flex items-start justify-between gap-4 mb-4">
             <div>
-              <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 leading-tight">
-                {profile.name}
-              </h1>
+              <div className="flex items-center gap-3 mb-3">
+                {avatarUrl && (
+                  <img
+                    src={avatarUrl}
+                    alt={`${profile.name} logo`}
+                    width={48}
+                    height={48}
+                    className="h-12 w-12 rounded-lg object-cover shrink-0"
+                    referrerPolicy="no-referrer"
+                  />
+                )}
+                <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 leading-tight">
+                  {profile.name}
+                </h1>
+              </div>
               <p className="text-gray-400 text-base mt-2 leading-relaxed">
                 {profile.description}
               </p>
@@ -966,7 +986,7 @@ export default async function StartupPage({ params }: PageProps) {
           <div className="flex items-center gap-2 mb-3">
             <img
               src={`/api/badge/${slug}`}
-              alt={`${profile.name} engineering momentum badge`}
+              alt={`${profile.name} engineering momentum badge: ${latest.signalType} signal, ${latest.commitVelocity14d} commits in 14 days`}
               className="h-7"
               loading="lazy"
             />
