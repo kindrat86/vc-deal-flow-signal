@@ -66,6 +66,31 @@ function build(s: {
   const fundCount = funds.filter((f) =>
     s.fundSectors.some((fs) => f.relatedSectors.includes(fs)),
   ).length;
+  // People Also Ask (PAA) questions: search-intent queries Google surfaces for
+  // this sector, answered from the real corpus so they stay honest and quotable.
+  const primaryAccelerating = companies
+    .filter((c) => c.sector === s.slug && c.publicSignal.momentum === "accelerating")
+    .map((c) => c.name);
+  const topMovers =
+    primaryAccelerating.length > 0
+      ? `On our 14-day commit-velocity change signal, the ${s.name.toLowerCase()} companies accelerating fastest right now include ${primaryAccelerating
+          .slice(0, 3)
+          .join(", ")}${primaryAccelerating.length > 3 ? ", among others" : ""}. Rankings come from public GitHub activity, not fundraise press.`
+      : `None of the ${s.name.toLowerCase()} companies we track currently read as accelerating on our 14-day commit-velocity change signal; the hub is a steady seed set by design. The key stats above break down the exact stage and momentum mix.`;
+  const paaFaqs: SectorFAQ[] = [
+    {
+      question: `What is ${s.name}?`,
+      answer: `${s.short} At VC Deal Flow Signal we map ${s.name.toLowerCase()} companies, funds, and engineering leaders and score their public GitHub acceleration, so investors can spot momentum before a round is announced.`,
+    },
+    {
+      question: `Which ${s.name} companies are growing fastest right now?`,
+      answer: topMovers,
+    },
+    {
+      question: `What is commit velocity, and why do investors watch it?`,
+      answer: `Commit velocity is the total commits to a startup's most active public repository over a rolling 14-day window. Its rate of change is our primary ranking signal: sustained acceleration has historically preceded fundraise announcements by three to six weeks, which is why investors watch it for ${s.name.toLowerCase()} sourcing and diligence.`,
+    },
+  ];
   return {
     slug: s.slug,
     name: s.name,
@@ -77,7 +102,7 @@ function build(s: {
     whatWeTrack: `In ${s.name.toLowerCase()} we track four engineering-acceleration primitives across every monitored org: commit velocity (rolling 14-day vs trailing 12-week median), contributor influx (new committers in the trailing 4 weeks), repo creation pulse (new public repos shipped in the trailing 8 weeks), and language-bias drift (when a new primary language appears in production code). The six-signal panel published at /methodology is empirically tied to imminent fundraise probability (see SSRN paper 6606558).`,
     whyItMatters: s.why,
     analystNote: s.note,
-    faqs: [
+    faqs: [...paaFaqs,
       {
         question: `What are the breakout ${s.name.toLowerCase()} startups to watch right now?`,
         answer: `The breakout names in ${s.name.toLowerCase()} are the companies showing the steepest GitHub commit-velocity acceleration and contributor growth over a rolling 14-day window, the same pattern that has historically preceded fundraise announcements by three to six weeks. This hub lists ${companyCount} curated ${s.name.toLowerCase()} companies; the full signal list, filterable by sector, is at /signal, and every ranking number links back to a public GitHub repository.`,
