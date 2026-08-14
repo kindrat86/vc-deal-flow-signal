@@ -239,7 +239,6 @@ Disallow: /welcome/
 Disallow: /share/
 Disallow: /api/share/
 Disallow: /account/
-Crawl-delay: 10
 
 User-Agent: Amazonbot
 Allow: /
@@ -254,7 +253,6 @@ Disallow: /welcome/
 Disallow: /share/
 Disallow: /api/share/
 Disallow: /account/
-Crawl-delay: 10
 
 User-Agent: cohere-ai
 Allow: /
@@ -395,7 +393,6 @@ Disallow: /welcome/
 Disallow: /share/
 Disallow: /api/share/
 Disallow: /account/
-Crawl-delay: 10
 
 User-Agent: PetalBot
 Allow: /
@@ -410,7 +407,6 @@ Disallow: /welcome/
 Disallow: /share/
 Disallow: /api/share/
 Disallow: /account/
-Crawl-delay: 10
 
 User-Agent: Webzio-Extended
 Allow: /
