@@ -379,7 +379,9 @@ export default async function StartupPage({ params }: PageProps) {
                 {profile.description}
               </p>
             </div>
-            <div className="shrink-0 flex items-center gap-2">
+            {/* Mobile-first fix: actions row must wrap under the name on 360-390px
+                phones (was shrink-0, pushed scrollWidth to 417px vs 390 viewport) */}
+            <div className="flex flex-wrap items-center gap-2 min-w-0">
               {profile.websiteUrl && (
                 <a
                   href={profile.websiteUrl}
@@ -987,7 +989,9 @@ export default async function StartupPage({ params }: PageProps) {
             <img
               src={`/api/badge/${slug}`}
               alt={`${profile.name} engineering momentum badge: ${latest.signalType} signal, ${latest.commitVelocity14d} commits in 14 days`}
-              className="h-7"
+              width={408}
+              height={28}
+              className="h-7 w-auto"
               loading="lazy"
             />
           </div>
