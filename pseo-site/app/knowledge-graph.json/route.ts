@@ -115,7 +115,8 @@ export async function GET() {
           "https://github.com/kindrat86/mcp-deal-flow-signal",
           "https://www.npmjs.com/package/@gitdealflow/mcp-signal",
           "https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn",
-          "https://www.g2.com/sellers/vc-deal-flow-signal",
+          "https://www.producthunt.com/products/vc-deal-flow-signal",
+          "https://www.g2.com/products/vc-deal-flow-signal/reviews",
           "https://alternativeto.net/software/vc-deal-flow-signal/",
         ],
         knowsAbout: [
