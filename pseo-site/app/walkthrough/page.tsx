@@ -22,7 +22,7 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title:
-    "How to Spot a Series A Weeks Before the Deck Lands — 12-Minute Walkthrough",
+    "How to Spot a Series A Weeks Before the Deck Lands, 12-Minute Walkthrough",
   description:
     "See why public engineering acceleration can give you earlier startup timing. Three objections, direct proof, and the weekly signal stack behind it.",
   alternates: {
@@ -52,7 +52,7 @@ const STACK_ITEMS = [
   {
     label: "The 219-Observation Panel CSV",
     description:
-      "Five quarters of the descriptive engineering-velocity panel (no funding-event labels) — the dataset behind our 21–47-day lead-time hypothesis, ready to join to funding data and replicate yourself in a notebook.",
+      "Five quarters of the descriptive engineering-velocity panel (no funding-event labels), the dataset behind our 21-47-day lead-time hypothesis, ready to join to funding data and replicate yourself in a notebook.",
     standalone: "€297 one-time",
   },
   {
@@ -64,7 +64,7 @@ const STACK_ITEMS = [
   {
     label: "Two Free Chrome Extensions",
     description:
-      "(1) Crunchbase + Wellfound badge that injects a momentum score into every profile. (2) VC GitHub Lookup — hover any org or repo, see the velocity in 200ms.",
+      "(1) Crunchbase + Wellfound badge that injects a momentum score into every profile. (2) VC GitHub Lookup, hover any org or repo, see the velocity in 200ms.",
     standalone: "€198/yr value",
     links: [
       {
@@ -80,8 +80,8 @@ const STACK_ITEMS = [
   {
     label: "The Free MCP Server (forever, never gated)",
     description:
-      "npx @gitdealflow/mcp-signal — six read-only tools inside Claude, Cursor, Windsurf, or any MCP host. Ask 'which AI infra startups are accelerating this week' and get the answer inline.",
-    standalone: "€0 — bundled with every tier",
+      "npx @gitdealflow/mcp-signal, six read-only tools inside Claude, Cursor, Windsurf, or any MCP host. Ask 'which AI infra startups are accelerating this week' and get the answer inline.",
+    standalone: "€0, bundled with every tier",
   },
   {
     label: "Async Watchlist Build",
@@ -92,8 +92,8 @@ const STACK_ITEMS = [
   {
     label: "Methodology Vault",
     description:
-      "The full SSRN preprint, every signal definition, the regression code behind the methodology. Open by default — the vault is the unlock to the source data.",
-    standalone: "€0 — published",
+      "The full SSRN preprint, every signal definition, the regression code behind the methodology. Open by default, the vault is the unlock to the source data.",
+    standalone: "€0, published",
   },
   {
     label: "30-Day Signal-or-It's-Free Guarantee",
@@ -106,19 +106,19 @@ const STACK_ITEMS = [
 const FAQS = [
   {
     q: "Why is this a written page instead of a recorded video?",
-    a: "Because a busy investor can read 12 minutes faster than they can sit through a 90-minute recording. The arc is the same one direct-response sellers have used for decades — open with a hook, tell the discovery story, state the single belief, break three objections, stack the offer, close. We just put it on one scrollable page. The structure is what closes; the medium is just delivery.",
+    a: "Because a busy investor can read 12 minutes faster than they can sit through a 90-minute recording. The arc is the same one direct-response sellers have used for decades, open with a hook, tell the discovery story, state the single belief, break three objections, stack the offer, close. We just put it on one scrollable page. The structure is what closes; the medium is just delivery.",
   },
   {
     q: "What's the single belief in one sentence?",
-    a: "If GitHub commit-velocity acceleration is the most leading public signal in venture capital, then every other deal-flow source — pitch decks, AngelList, Crunchbase, warm intros — is a lagging indicator. The whole investing thesis falls or stands on whether that single belief is true.",
+    a: "If GitHub commit-velocity acceleration is the most leading public signal in venture capital, then every other deal-flow source, pitch decks, AngelList, Crunchbase, warm intros, is a lagging indicator. The whole investing thesis falls or stands on whether that single belief is true.",
   },
   {
-    q: "Where does the 21–47 day lead claim come from?",
-    a: "The SSRN/Zenodo panel (219 GitHub engineering-velocity observations, 19 sectors, five quarterly periods) is descriptive — it deliberately carries no funding-event labels, so it does not by itself prove a lead band. Our working hypothesis is that a 2× contributor spike inside a 14-day window precedes fundraise announcements by a few weeks; we validate that openly on /scorecard (currently un-graded). The full panel + regression code is at signals.gitdealflow.com/research and the preprint is at ssrn.com/abstract=6606558.",
+    q: "Where does the 21-47 day lead claim come from?",
+    a: "The SSRN/Zenodo panel (219 GitHub engineering-velocity observations, 19 sectors, five quarterly periods) is descriptive, it deliberately carries no funding-event labels, so it does not by itself prove a lead band. Our working hypothesis is that a 2× contributor spike inside a 14-day window precedes fundraise announcements by a few weeks; we validate that openly on /scorecard (currently un-graded). The full panel + regression code is at signals.gitdealflow.com/research and the preprint is at ssrn.com/abstract=6606558.",
   },
   {
     q: "Why €49/mo when comparable tools cost €1,000/mo?",
-    a: "Two reasons. One — we do not have a sales team. The whole price difference between us and Harmonic or Tracxn is the cost of an enterprise sales motion. Two — this is priced for someone writing small checks who wants earlier signal without an enterprise contract. Pricing matches the actual job, not procurement theatre.",
+    a: "Two reasons. One, we do not have a sales team. The whole price difference between us and Harmonic or Tracxn is the cost of an enterprise sales motion. Two, this is priced for someone writing small checks who wants earlier signal without an enterprise contract. Pricing matches the actual job, not procurement theatre.",
   },
   {
     q: "What if I just want to test it on one sector before committing?",
@@ -127,7 +127,7 @@ const FAQS = [
 ] as const;
 
 export default function PerfectWebinarPage() {
-  // Brunson Live-Replay Pressure (Expert Secrets Ch 14 — Perfect Webinar Hack):
+  // Brunson Live-Replay Pressure (Expert Secrets Ch 14, Perfect Webinar Hack):
   // every cohort opens Mon 06:00 UTC and closes Thu 23:59 UTC, with fast-action
   // bonuses dropping at Wed 23:59 UTC. The snapshot is captured at build time;
   // the client components correct to live state on hydration so the cohort
@@ -200,15 +200,15 @@ export default function PerfectWebinarPage() {
       />
       <AgentMirrorLinks path="/walkthrough" />
 
-      {/* Brunson Expert Secrets Ch 14 — Live-replay pressure mechanic.
+      {/* Brunson Expert Secrets Ch 14, Live-replay pressure mechanic.
           Sticky cohort countdown across all three phases:
           fast-action (Mon→Wed), last-hours (Thu), closed (Fri→Sun). */}
       <LiveReplayBar initialWindow={replaySnapshot} />
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
-        {/* VEO anchor — 3-minute VSL version of this Perfect Webinar */}
+        {/* VEO anchor, 3-minute VSL version of this Perfect Webinar */}
         <VideoEmbedBlock slug="walkthrough-vsl" variant="full" />
-        {/* HOOK — Brunson rule: hook hard, lead with curiosity. */}
+        {/* HOOK, Brunson rule: hook hard, lead with curiosity. */}
         <header className="space-y-4">
           <nav aria-label="Breadcrumb" className="text-xs text-gray-400">
             <Link href="/" className="hover:text-sky-400 transition-colors">
@@ -228,7 +228,7 @@ export default function PerfectWebinarPage() {
               Skip to offer →
             </a>
           </div>
-          {/* Length picker — same argument, three lengths. The two short
+          {/* Length picker, same argument, three lengths. The two short
               versions are what /walkthrough/quick A/B-routes a cold visitor
               into. Showing both here lets a long-form reader who lands here
               first share whichever short link fits their forward-to recipient. */}
@@ -265,13 +265,13 @@ export default function PerfectWebinarPage() {
           </p>
           <p className="text-gray-400 text-sm leading-relaxed border-l-2 border-sky-500/40 pl-4">
             You don&rsquo;t need to read code. We translate the engineering
-            movement into plain business language — &ldquo;this team is
-            suddenly shipping far more than usual&rdquo; — so the read is done
+            movement into plain business language, &ldquo;this team is
+            suddenly shipping far more than usual&rdquo;, so the read is done
             for you.
           </p>
           <DataNerdAudio
             slug="walkthrough-prologue"
-            label="Press play — 90-second prologue, narrated by The Data Nerd"
+            label="Press play, 90-second prologue, narrated by The Data Nerd"
             subtitle="If you only have 90 seconds: this is the single belief, stated. The rest of the page is what falls when it tips."
           />
         </header>
@@ -300,7 +300,7 @@ export default function PerfectWebinarPage() {
           </p>
           <p>
             That moment broke something for me. The signal had been right there
-            the whole time — public, free, updating in real time on a website
+            the whole time, public, free, updating in real time on a website
             every developer already opens 30 times a day. And nobody was reading
             it as deal flow.
           </p>
@@ -309,7 +309,7 @@ export default function PerfectWebinarPage() {
           </p>
           <TrialClose tone="sky">
             Pause for one second. If <em>you</em> had spotted that fintech in your
-            own GitHub feed three weeks early — would you have written a check?
+            own GitHub feed three weeks early, would you have written a check?
           </TrialClose>
         </section>
 
@@ -326,8 +326,8 @@ export default function PerfectWebinarPage() {
             data-speakable
           >
             If commit-velocity acceleration is the most leading public signal
-            in venture capital, then every other deal-flow source — pitch
-            decks, AngelList, Crunchbase, warm intros — is a{" "}
+            in venture capital, then every other deal-flow source, pitch
+            decks, AngelList, Crunchbase, warm intros, is a{" "}
             <span className="text-sky-400">lagging indicator</span>.
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
@@ -357,7 +357,7 @@ export default function PerfectWebinarPage() {
             </p>
           </div>
 
-          {/* SECRET 1 — VEHICLE BELIEF */}
+          {/* SECRET 1, VEHICLE BELIEF */}
           <div className="border-l-4 border-sky-500 pl-5 space-y-3">
             <p className="text-sky-400 text-xs font-semibold uppercase tracking-wider">
               Secret #1 · Vehicle objection
@@ -376,15 +376,15 @@ export default function PerfectWebinarPage() {
               <em className="text-sky-300 not-italic font-semibold">
                 acceleration patterns
               </em>{" "}
-              — when a company&rsquo;s engineering velocity deviates sharply
+when a company&rsquo;s engineering velocity deviates sharply
               from its own baseline. That is not noise. That is a regime
               change. Something happened inside that company. They hired. They
               found product-market fit. They are preparing to launch.
             </p>
             <p className="text-gray-300 text-base leading-relaxed">
               The SSRN-published 219-observation panel is descriptive (no
-              funding labels); our hypothesis — that a 2× contributor spike
-              inside a 14-day window precedes a fundraise by a few weeks — is
+              funding labels); our hypothesis, that a 2× contributor spike
+              inside a 14-day window precedes a fundraise by a few weeks, is
               validated openly on /scorecard. Same dataset, replicate the regression
               yourself at{" "}
               <Link
@@ -396,13 +396,13 @@ export default function PerfectWebinarPage() {
               .
             </p>
             <TrialClose tone="amber">
-              Acceleration vs. absolute count — does that distinction land?
+              Acceleration vs. absolute count, does that distinction land?
               That single shift is what turns &ldquo;noise&rdquo; into a signal
               with a 31-day median lead.
             </TrialClose>
           </div>
 
-          {/* SECRET 2 — INTERNAL BELIEF */}
+          {/* SECRET 2, INTERNAL BELIEF */}
           <div className="border-l-4 border-emerald-500 pl-5 space-y-3">
             <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">
               Secret #2 · Internal objection
@@ -432,12 +432,12 @@ export default function PerfectWebinarPage() {
               you to the table. This gets you there first.
             </p>
             <TrialClose tone="emerald">
-              If you arrived 21–47 days before the deck started circulating,
+              If you arrived 21-47 days before the deck started circulating,
               would your hit rate change? Make a mental note of the answer.
             </TrialClose>
           </div>
 
-          {/* SECRET 3 — EXTERNAL BELIEF.
+          {/* SECRET 3, EXTERNAL BELIEF.
               Brunson Expert Secrets Ch 10 (False Beliefs / Identity Shift)
               + Ch 5 (Storytelling): "show, don't tell." Prior version
               argued the SEC-quant analogy abstractly. This version opens
@@ -453,7 +453,7 @@ export default function PerfectWebinarPage() {
               Secret #3 · External objection
             </p>
             <h3 className="text-xl font-bold text-gray-100">
-              &ldquo;Public data can&rsquo;t be an edge — everyone has it.&rdquo;
+              &ldquo;Public data can&rsquo;t be an edge, everyone has it.&rdquo;
             </h3>
             <p className="text-gray-300 text-base leading-relaxed">
               <strong className="text-gray-100">
@@ -462,12 +462,12 @@ export default function PerfectWebinarPage() {
               Reuters market quotes. OPRA options ticks. SEC filings. None of
               it was private. Every fund on Wall Street had access to the same
               feed. Thirty years later, Medallion had compounded at roughly
-              39% net of fees &mdash; the best multi-decade fund return in
+              39% net of fees, the best multi-decade fund return in
               recorded history. The data wasn&rsquo;t edge. The lens was edge.
             </p>
             <p className="text-gray-300 text-base leading-relaxed">
               Now apply that to a Saturday in October 2024. A small fintech
-              team &mdash; three founders, one repo, beautifully boring
+              team, three founders, one repo, beautifully boring
               product. I opened their org page on a whim. Their commit
               velocity had tripled in the prior fortnight. Four new
               contributors had joined. They had spun up three new
@@ -482,7 +482,7 @@ export default function PerfectWebinarPage() {
               </strong>{" "}
               I checked. Three weeks later the team announced a $4M Series A.
               The two investors who got in had either been told by a warm
-              intro &mdash; fine, but slow &mdash; or had been reading the
+              intro, fine, but slow, or had been reading the
               same public data I had. The other three later said they had
               &ldquo;missed&rdquo; the round. They had not missed it. They
               had not read it.
@@ -490,7 +490,7 @@ export default function PerfectWebinarPage() {
             <p className="text-gray-300 text-base leading-relaxed">
               That is the entire point of the third objection.
               Public-by-default is not the absence of edge; it is the
-              prerequisite for a different kind of edge &mdash; the kind
+              prerequisite for a different kind of edge, the kind
               that compounds because the data is re-derivable, the
               methodology is auditable, and the lens is the only thing that
               matters. Same as SEC. Same as Reuters. Same as every market
@@ -500,7 +500,7 @@ export default function PerfectWebinarPage() {
             <p className="text-gray-300 text-base leading-relaxed">
               Right now, zero investor tools package GitHub activity as a
               dedicated deal-flow signal. The data is public. The analysis
-              layer doesn&rsquo;t exist. That gap is your edge &mdash; and
+              layer doesn&rsquo;t exist. That gap is your edge, and
               it stays your edge until the market catches up.
             </p>
             <p className="text-gray-300 text-base leading-relaxed">
@@ -517,7 +517,7 @@ export default function PerfectWebinarPage() {
             </p>
             <TrialClose tone="violet">
               Three objections, three breakdowns. If none of those three is
-              what was holding you back — what is? (That answer is the one to
+              what was holding you back, what is? (That answer is the one to
               keep handy as the stack lands.)
             </TrialClose>
           </div>
@@ -544,20 +544,20 @@ export default function PerfectWebinarPage() {
           <p className="text-gray-300 text-base leading-relaxed">
             That is the rhythm. Sunday digest, Wednesday filter, end-of-quarter
             sweep. Three touchpoints, twelve minutes a week, sub-€10/mo. The
-            dashboard is just a tool — the leverage is in the rhythm.
+            dashboard is just a tool, the leverage is in the rhythm.
           </p>
           <TrialClose tone="amber">
             Twelve minutes a week, three touchpoints, one rhythm. Sound fair?
           </TrialClose>
         </section>
 
-        {/* CONVERSION STORY — Brunson Expert Secrets Ch 12. Five-step
+        {/* CONVERSION STORY, Brunson Expert Secrets Ch 12. Five-step
             canonical script: Old Way → New Vehicle → External Struggle
             collapsed → Internal Struggle collapsed → Frameworks revealed.
             The bridge from belief (Three Objections) to offer (Stack). */}
         <section
           id="conversion-story"
-          aria-label="Conversion story — five-step bridge"
+          aria-label="Conversion story, five-step bridge"
           className="space-y-5 border-y border-slate-800 py-8 scroll-mt-20"
         >
           <header className="space-y-2">
@@ -565,11 +565,11 @@ export default function PerfectWebinarPage() {
               The five-step shift
             </p>
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
-              The five-step shift — in your own voice.
+              The five-step shift, in your own voice.
             </h2>
             <p className="text-gray-400 text-sm leading-relaxed max-w-2xl">
               If you read the three objections and felt the shift, here&rsquo;s
-              the formal version of what just happened — the same five-beat
+              the formal version of what just happened, the same five-beat
               arc direct-response sellers use, applied to earlier-signal buyers.
             </p>
           </header>
@@ -596,7 +596,7 @@ export default function PerfectWebinarPage() {
               <div className="flex items-baseline gap-3">
                 <span className="text-violet-300 font-bold tabular-nums shrink-0">2.</span>
                 <p className="text-violet-300 text-[10px] font-semibold uppercase tracking-wider">
-                  The new vehicle — a named category
+                  The new vehicle, a named category
                 </p>
               </div>
               <p className="text-gray-100 font-semibold text-base leading-snug">
@@ -610,12 +610,12 @@ export default function PerfectWebinarPage() {
                 >
                   Code-Side Sourcing
                 </Link>{" "}
-                — using public repository-velocity data as a leading indicator
+using public repository-velocity data as a leading indicator
                 of venture-stage outcomes. Every great startup leaves a
-                footprint in its code 21–47 days before the deck circulates.
+                footprint in its code 21-47 days before the deck circulates.
                 That footprint is public, the methodology is reproducible
                 (SSRN n=219), and the cost of reading it is €49/mo. The new
-                vehicle isn&rsquo;t bigger network — it&rsquo;s a different
+                vehicle isn&rsquo;t bigger network, it&rsquo;s a different
                 sensor, with a category name you can repeat to a partner.
               </p>
             </li>
@@ -631,7 +631,7 @@ export default function PerfectWebinarPage() {
                 builder-grade signal.
               </p>
               <p className="text-gray-300 text-sm leading-relaxed">
-                Harmonic, Tracxn, and Affinity are €1k–€10k/mo because they
+                Harmonic, Tracxn, and Affinity are €1k-€10k/mo because they
                 serve fund-grade procurement. Smaller check-writers were priced
                 out of the category not by methodology, but by sales motion.
                 Pull the sales motion out and the same data ladder runs at
@@ -650,9 +650,9 @@ export default function PerfectWebinarPage() {
               </p>
               <p className="text-gray-300 text-sm leading-relaxed">
                 The fear the technical room plants is that you needed to become
-                technical — read the code, hire a quant, borrow an
+                technical, read the code, hire a quant, borrow an
                 engineer&rsquo;s afternoon. The data-side path lets you stay the
-                dealmaker. Identity stays intact. The signal does the reading —
+                dealmaker. Identity stays intact. The signal does the reading -
                 and the introduction.
               </p>
             </li>
@@ -670,26 +670,26 @@ export default function PerfectWebinarPage() {
                 The Acceleration Watch is the Sunday digest. The Dashboard is
                 the Wednesday filter. The Sector Sweep is the end-of-quarter
                 deep dive. Three rhythms, twelve minutes a week, methodology
-                published. The shift is already wired into the product —
+                published. The shift is already wired into the product -
                 you&rsquo;re not buying a tool, you&rsquo;re buying a cadence.
               </p>
             </li>
           </ol>
           <p className="text-gray-400 text-sm leading-relaxed border-l-2 border-violet-700/40 pl-4">
-            That&rsquo;s the five-step Conversion Story. If steps 1–4 read
+            That&rsquo;s the five-step Conversion Story. If steps 1-4 read
             like the room you&rsquo;re standing in, step 5 is the door.
           </p>
         </section>
 
-        {/* FUTURE-PACING — Brunson Expert Secrets Ch 21. The mental movie
-            placed between Conversion Story and Stack — buyer is now
+        {/* FUTURE-PACING, Brunson Expert Secrets Ch 21. The mental movie
+            placed between Conversion Story and Stack, buyer is now
             primed for the offer, but doesn't yet feel the offer. The
             "Tuesday in August" block makes them live the cadence three
             months from now in their own working week, so the Stack
             reveal that follows isn't a list of features, it's the
             instrument that produces the future they just imagined. */}
         <section
-          aria-label="Three months from now — a Tuesday in August"
+          aria-label="Three months from now, a Tuesday in August"
           className="bg-gradient-to-br from-violet-950/40 via-slate-900 to-slate-950 border border-violet-700/40 rounded-xl p-6 sm:p-8 space-y-5"
         >
           <div className="space-y-1.5">
@@ -701,7 +701,7 @@ export default function PerfectWebinarPage() {
             </h2>
             <p className="text-gray-400 text-sm leading-relaxed">
               Three months from now. Second Tuesday of August. You&rsquo;ve
-              run the Sunday–Wednesday–Quarter rhythm for twelve weeks.
+              run the Sunday-Wednesday-Quarter rhythm for twelve weeks.
               Here&rsquo;s what your day looks like, hour by hour, once
               the cadence is just background.
             </p>
@@ -712,22 +712,22 @@ export default function PerfectWebinarPage() {
               {
                 time: "09:14",
                 scene:
-                  "Coffee, laptop open. Sunday’s digest from this past weekend is still in the tab to the left — five names, sector-tagged. The third one, an AI-infra org out of Berlin, you opened on Monday because it matched the thesis you keep pulling toward. You spent fifteen minutes on their commit graph and sent the founder a three-line email. There’s a reply at the top of your inbox now: short, friendly, asks if you want to see the deck.",
+                  "Coffee, laptop open. Sunday’s digest from this past weekend is still in the tab to the left, five names, sector-tagged. The third one, an AI-infra org out of Berlin, you opened on Monday because it matched the thesis you keep pulling toward. You spent fifteen minutes on their commit graph and sent the founder a three-line email. There’s a reply at the top of your inbox now: short, friendly, asks if you want to see the deck.",
               },
               {
                 time: "11:30",
                 scene:
-                  "Wednesday filter, but pulled forward to Tuesday because you have a partner call this afternoon. You open the Dashboard, set sector = AI infra, stage = Seed, and sort by 14-day acceleration. Top ten. You cross-reference two of them against your portfolio’s GitHub orgs — and one of them has a contributor in common with a portfolio company you led last year. That’s a warm-intro vector your AngelList syndicate doesn’t have. You note it for the partner call.",
+                  "Wednesday filter, but pulled forward to Tuesday because you have a partner call this afternoon. You open the Dashboard, set sector = AI infra, stage = Seed, and sort by 14-day acceleration. Top ten. You cross-reference two of them against your portfolio’s GitHub orgs, and one of them has a contributor in common with a portfolio company you led last year. That’s a warm-intro vector your AngelList syndicate doesn’t have. You note it for the partner call.",
               },
               {
                 time: "15:00",
                 scene:
-                  "Partner call. You open with the Berlin org and the warm-intro vector. The partner asks how you’re finding these. You don’t name the tool — you describe the rhythm. Five names on Sunday, fifteen minutes on Wednesday, one specific email a month. Twelve minutes a week. The partner is quiet for a beat and then asks if you’d co-source the next three. That’s the moment the cadence stops being a private edge and becomes leverage in the room.",
+                  "Partner call. You open with the Berlin org and the warm-intro vector. The partner asks how you’re finding these. You don’t name the tool, you describe the rhythm. Five names on Sunday, fifteen minutes on Wednesday, one specific email a month. Twelve minutes a week. The partner is quiet for a beat and then asks if you’d co-source the next three. That’s the moment the cadence stops being a private edge and becomes leverage in the room.",
               },
               {
                 time: "18:00",
                 scene:
-                  "End of day. You drop the Sector Sweep file on the AI-infra panel into the partner’s shared folder — €1,997 once, paid in March, still earning attention now five months later. The IC memo for next week writes itself: three names, two of them off-Crunchbase, one already with a confirmed product launch since the Sweep was delivered. You close the laptop. The Sunday email lands again in five days. The rhythm is the room you live in now, not a workflow you maintain.",
+                  "End of day. You drop the Sector Sweep file on the AI-infra panel into the partner’s shared folder, €1,997 once, paid in March, still earning attention now five months later. The IC memo for next week writes itself: three names, two of them off-Crunchbase, one already with a confirmed product launch since the Sweep was delivered. You close the laptop. The Sunday email lands again in five days. The rhythm is the room you live in now, not a workflow you maintain.",
               },
             ].map((moment) => (
               <li
@@ -756,7 +756,7 @@ export default function PerfectWebinarPage() {
           </p>
           <TrialClose tone="violet">
             Can you picture it? The Sunday digest, the Tuesday email, the
-            quarter-end Sweep — that&rsquo;s the rhythm that produces the
+            quarter-end Sweep, that&rsquo;s the rhythm that produces the
             August Tuesday above. The next section is the bill.
           </TrialClose>
         </section>
@@ -867,18 +867,18 @@ export default function PerfectWebinarPage() {
           </TrialClose>
         </section>
 
-        {/* FAST-ACTION BONUSES — Brunson DotCom Secrets Ch 12 (Cart Funnel
+        {/* FAST-ACTION BONUSES, Brunson DotCom Secrets Ch 12 (Cart Funnel
             Building Block #19): stacked bonuses with hard expiry. Three
             named bonuses, dollar-denominated, that disappear at Wed 23:59
             UTC. The component swaps copy when the cohort enters last-hours
-            (Thu) and closed (Fri–Sun) so the page is honest about phase. */}
+            (Thu) and closed (Fri-Sun) so the page is honest about phase. */}
         <FastActionBonuses initialWindow={replaySnapshot} signupUrl={SIGNUP_URL} />
 
-        {/* GUARANTEE — Brunson Expert Secrets Ch 15 (Money / Identity /
+        {/* GUARANTEE, Brunson Expert Secrets Ch 15 (Money / Identity /
             Risk closes). Audit 2026-05-09 verdict: "Risk Reversal close
             could be louder ('if 31-day prediction misses, full refund')."
             Replaced the paragraph-style block with the named badge
-            component — wax-seal stamp, three structured rows (Promise /
+            component, wax-seal stamp, three structured rows (Promise /
             How to redeem / Calibration receipt). Same content, far
             louder visual treatment. */}
         <RiskReversalPromise tier="dashboard" anchor="guarantee" />
@@ -888,10 +888,10 @@ export default function PerfectWebinarPage() {
           tool?
         </TrialClose>
 
-        {/* TRIAL CLOSES — 3-stack */}
+        {/* TRIAL CLOSES, 3-stack */}
         <section className="space-y-3">
           <h2 className="text-2xl font-bold text-gray-100">
-            Three trial closes — pick the one that sounds like you.
+            Three trial closes, pick the one that sounds like you.
           </h2>
           <ul className="space-y-3 text-gray-300 text-base leading-relaxed">
             <li className="flex items-start gap-3">
@@ -923,30 +923,30 @@ export default function PerfectWebinarPage() {
           </ul>
         </section>
 
-        {/* "IF ALL THIS DID" — Brunson's canonical trial close.
+        {/* "IF ALL THIS DID", Brunson's canonical trial close.
             Expert Secrets Ch 16. Each line lowers the bar a notch and
             re-anchors the price against a single high-value outcome. */}
         <section className="space-y-4">
           <h2 className="text-2xl font-bold text-gray-100">
-            And if you&rsquo;re still not sure — ask yourself this.
+            And if you&rsquo;re still not sure, ask yourself this.
           </h2>
           <ul className="space-y-3 text-gray-300 text-base leading-relaxed">
             <li className="border-l-4 border-amber-500 pl-5 py-1">
               If all this did was surface{" "}
               <strong className="text-amber-300">one name</strong> you would
-              otherwise have missed in the next 12 months — would €119.64
+              otherwise have missed in the next 12 months, would €119.64
               for the year be worth it?
             </li>
             <li className="border-l-4 border-amber-500 pl-5 py-1">
               If all this did was give you a{" "}
               <strong className="text-amber-300">15-minute Monday rhythm</strong>{" "}
-              you actually keep, instead of three open tabs you don&rsquo;t —
+              you actually keep, instead of three open tabs you don&rsquo;t -
               would €9.97/mo be worth it?
             </li>
             <li className="border-l-4 border-amber-500 pl-5 py-1">
               If all this did was let you{" "}
               <strong className="text-amber-300">reach one founder before the deck circulated</strong>,
-              and that founder remembered you when they took the meeting —
+              and that founder remembered you when they took the meeting -
               would the entire stack pay for itself?
             </li>
           </ul>
@@ -956,7 +956,7 @@ export default function PerfectWebinarPage() {
           </p>
         </section>
 
-        {/* THE FOUR CLOSES — Money / Identity / Pricing / Scarcity.
+        {/* THE FOUR CLOSES, Money / Identity / Pricing / Scarcity.
             Expert Secrets Ch 18. These are the named close-stack patterns
             Russell teaches; previously the page had one generic close. */}
         <section
@@ -964,7 +964,7 @@ export default function PerfectWebinarPage() {
           className="space-y-5 border-t border-slate-800 pt-8"
         >
           <h2 className="text-2xl font-bold text-gray-100">
-            The four closes — one of these is yours.
+            The four closes, one of these is yours.
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -978,7 +978,7 @@ export default function PerfectWebinarPage() {
               </h3>
               <p className="text-gray-300 text-sm leading-relaxed">
                 €49/mo is €119.64 a year. The expected cost of missing one
-                name that 8x&rsquo;s in five years — at a €5k angel check —
+                name that 8x&rsquo;s in five years, at a €5k angel check -
                 is €40,000. The math doesn&rsquo;t work the other way. You
                 are not buying a dashboard. You are insuring against a single
                 missed Monday.
@@ -1014,7 +1014,7 @@ export default function PerfectWebinarPage() {
                 We could charge €100/mo and the math would still work. We
                 picked €9.97 because we want builders, not budgets. The
                 €49/mo public price launches the Monday a regulated investor
-                tool reviews us — the founding-member rate locks before that
+                tool reviews us, the founding-member rate locks before that
                 day. After it locks, you keep €9.97 for as long as you stay
                 subscribed.
               </p>
@@ -1029,23 +1029,23 @@ export default function PerfectWebinarPage() {
                 The window is the lead time, not the discount.
               </h3>
               <p className="text-gray-300 text-sm leading-relaxed">
-                Our hypothesis is that the signal precedes fundraises by 21–47 days (validated openly on /scorecard). Every Monday
+                Our hypothesis is that the signal precedes fundraises by 21-47 days (validated openly on /scorecard). Every Monday
                 you skip is a 21-to-47-day window that closes on five
-                specific names. The discount lock is real — €49 vs €49 —
+                specific names. The discount lock is real, €49 vs €49 -
                 but the harder scarcity is the deal flow, not the price.
                 Either it works for you in 30 days or you reply REFUND.
               </p>
             </div>
           </div>
 
-          {/* CLOSE-SIDE FUTURE PACE — Brunson Expert Secrets Ch 21.
+          {/* CLOSE-SIDE FUTURE PACE, Brunson Expert Secrets Ch 21.
               Russell-Brunson audit 2026-05-09 (Secret #21, 93→100):
               the four closes above answer Money / Identity / Pricing /
               Urgency objections, but they don't *land* the buyer in
               the new identity. A 30-second mental movie at the close
-              of the closes — short-horizon (next Sunday), not the
+              of the closes, short-horizon (next Sunday), not the
               90-day August-Tuesday horizon already on the page above
-              — delivers the buyer into the room they're about to step
+delivers the buyer into the room they're about to step
               into, in the five days immediately after the click. The
               existing /walkthrough Future-Pacing block (line ~636)
               sits between Conversion Story and Stack and runs
@@ -1054,7 +1054,7 @@ export default function PerfectWebinarPage() {
               moment so the Doors-Closing banner and final CTA below
               read as the action that produces the very next scene. */}
           <div
-            aria-label="Five days from now — the first Sunday after you click"
+            aria-label="Five days from now, the first Sunday after you click"
             className="mt-8 rounded-xl border border-sky-700/50 bg-gradient-to-br from-sky-950/50 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-5"
           >
             <div className="space-y-1.5">
@@ -1066,7 +1066,7 @@ export default function PerfectWebinarPage() {
               </h3>
               <p className="text-gray-400 text-sm leading-relaxed">
                 Click the button below. Here&rsquo;s what the next five days
-                actually look like &mdash; not the 90-day horizon, the one
+                actually look like, not the 90-day horizon, the one
                 right in front of you.
               </p>
             </div>
@@ -1076,12 +1076,12 @@ export default function PerfectWebinarPage() {
                 {
                   time: "Today, 14:00",
                   scene:
-                    "Stripe charges €49. Dashboard URL lands in your inbox inside ten minutes, alongside the SSRN panel dataset and the one-line MCP install. You paste the install into your terminal — the six tools are inside Claude before you finish your coffee. The methodology vault is bookmarked. The Sunday email subscription is already wired.",
+                    "Stripe charges €49. Dashboard URL lands in your inbox inside ten minutes, alongside the SSRN panel dataset and the one-line MCP install. You paste the install into your terminal, the six tools are inside Claude before you finish your coffee. The methodology vault is bookmarked. The Sunday email subscription is already wired.",
                 },
                 {
                   time: "Sunday, 09:00 UTC",
                   scene:
-                    "The first Acceleration Watch lands while you’re still on your first coffee. Five names, sector-tagged, with the chart and the percentile next to each. You scan. The third one is in a sector you’ve been quietly pulling toward for three months. You open the commit graph. The contributor influx is exactly the pattern the SSRN paper called out — four new committers inside 14 days, two of them ex-FAANG infrastructure engineers.",
+                    "The first Acceleration Watch lands while you’re still on your first coffee. Five names, sector-tagged, with the chart and the percentile next to each. You scan. The third one is in a sector you’ve been quietly pulling toward for three months. You open the commit graph. The contributor influx is exactly the pattern the SSRN paper called out, four new committers inside 14 days, two of them ex-FAANG infrastructure engineers.",
                 },
                 {
                   time: "Sunday, 09:11",
@@ -1091,7 +1091,7 @@ export default function PerfectWebinarPage() {
                 {
                   time: "Wednesday, 14:30",
                   scene:
-                    "Reply lands. The founder is raising. Round closes in six weeks. You’re talking to them roughly 47 days before the deck reaches anyone in your warm-intro network — and the conversation you walk into Wednesday isn’t “I heard about you from a friend,” it’s “I read your code and the work is good.” That’s a different room. That’s the room you bought.",
+                    "Reply lands. The founder is raising. Round closes in six weeks. You’re talking to them roughly 47 days before the deck reaches anyone in your warm-intro network, and the conversation you walk into Wednesday isn’t “I heard about you from a friend,” it’s “I read your code and the work is good.” That’s a different room. That’s the room you bought.",
                 },
               ].map((moment) => (
                 <li
@@ -1131,14 +1131,14 @@ export default function PerfectWebinarPage() {
           </div>
         </section>
 
-        {/* BUYER ROADMAP — Brunson Expert Secrets Ch 18. The closer's
+        {/* BUYER ROADMAP, Brunson Expert Secrets Ch 18. The closer's
             tool: "where you are now → where this takes you" rendered as
             calendar beats so the offer reads as a vehicle, not a feature.
             Sits between the closes and the doors-closing banner so the
             arc is the last thing the buyer reads before the CTA. */}
         <BuyerRoadmap tier="dashboard" />
 
-        {/* DOORS-CLOSING BANNER — phase-aware ribbon directly above the
+        {/* DOORS-CLOSING BANNER, phase-aware ribbon directly above the
             final CTA. Brunson Expert Secrets Ch 14: deadline lives at the
             point of decision, not buried in the chrome. */}
         <DoorsClosingBanner initialWindow={replaySnapshot} />
@@ -1181,7 +1181,7 @@ export default function PerfectWebinarPage() {
             >
               €7 (First Look Pass)
             </Link>{" "}
-            — credited toward Dashboard if you upgrade in 14 days.
+credited toward Dashboard if you upgrade in 14 days.
           </p>
         </section>
 
@@ -1196,11 +1196,11 @@ export default function PerfectWebinarPage() {
           ))}
         </section>
 
-        {/* ENCORE CLOSE — Brunson "Perfect Webinar Hack" Ch 15.
+        {/* ENCORE CLOSE, Brunson "Perfect Webinar Hack" Ch 15.
             Last-chance summary that re-stacks every promise into one block.
             This is the thing the page was missing on the prior audit. */}
         <section
-          aria-label="Encore — last-chance summary"
+          aria-label="Encore, last-chance summary"
           className="rounded-xl border border-amber-500/40 bg-gradient-to-br from-amber-950/30 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-4"
         >
           <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
@@ -1216,7 +1216,7 @@ export default function PerfectWebinarPage() {
             </li>
             <li className="flex gap-3">
               <span className="text-amber-400 shrink-0 font-bold">→</span>
-              <span>The Sunday digest before that — five names ranked by acceleration, with the chart, the percentile, and the decision rule.</span>
+              <span>The Sunday digest before that, five names ranked by acceleration, with the chart, the percentile, and the decision rule.</span>
             </li>
             <li className="flex gap-3">
               <span className="text-amber-400 shrink-0 font-bold">→</span>
@@ -1224,7 +1224,7 @@ export default function PerfectWebinarPage() {
             </li>
             <li className="flex gap-3">
               <span className="text-amber-400 shrink-0 font-bold">→</span>
-              <span>The MCP server (six tools) for Claude / Cursor / any agent — read your portfolio against the live signal in plain English.</span>
+              <span>The MCP server (six tools) for Claude / Cursor / any agent, read your portfolio against the live signal in plain English.</span>
             </li>
             <li className="flex gap-3">
               <span className="text-amber-400 shrink-0 font-bold">→</span>
@@ -1253,7 +1253,7 @@ export default function PerfectWebinarPage() {
           </div>
         </section>
 
-        {/* FINAL CTA — never end on FAQ; close the loop. */}
+        {/* FINAL CTA, never end on FAQ; close the loop. */}
         <section className="border-t border-slate-800 pt-10 text-center space-y-4">
           <p className="text-gray-300 text-base leading-relaxed">
             Read this far? You already believe the signal works.
@@ -1277,7 +1277,7 @@ export default function PerfectWebinarPage() {
           </p>
         </section>
 
-        {/* Brunson Expert Secrets Ch 9 — Three Core Stories.
+        {/* Brunson Expert Secrets Ch 9, Three Core Stories.
             Audit 2026-05-09 (Ch 9 push 94→100): the walkthrough is the
             Vehicle (long form). Walk the reader into the Origin (where
             the story started) and the Identity (who they become) so the
@@ -1286,7 +1286,7 @@ export default function PerfectWebinarPage() {
 
         <DataNerdSignoff variant="long" catchphraseIndex={3} />
 
-        {/* Founder character card — Brunson Expert Secrets Ch 1: the
+        {/* Founder character card, Brunson Expert Secrets Ch 1: the
             Attractive Character appears on every conversion-critical page
             in compressed form. Seed = "walkthrough" so the same surface
             always picks the same belief / parable slice (different from
@@ -1294,14 +1294,14 @@ export default function PerfectWebinarPage() {
         <DataNerdCharacterCard seed="walkthrough" />
 
         <AgentSummary
-          tldr="The 12-minute walkthrough lays out the single belief — commit-velocity acceleration is the most leading public signal in venture capital — and supports it by breaking three classic objections (vehicle: GitHub data is noise; internal: I already have deal flow; external: public data has no edge). Closes on the €9.97/mo Dashboard tier (founding-member, locked forever) with a 30-day Signal-or-It's-Free guarantee. Built on the 219-startup SSRN-published panel with a 21–47 day median lead time over fundraise announcements."
+          tldr="The 12-minute walkthrough lays out the single belief, commit-velocity acceleration is the most leading public signal in venture capital, and supports it by breaking three classic objections (vehicle: GitHub data is noise; internal: I already have deal flow; external: public data has no edge). Closes on the €9.97/mo Dashboard tier (founding-member, locked forever) with a 30-day Signal-or-It's-Free guarantee. Built on the 219-startup SSRN-published panel with a 21-47 day median lead time over fundraise announcements."
           pageUrl="https://signals.gitdealflow.com/walkthrough"
           asOf="2026-05-05"
-          citeAs="VC Deal Flow Signal — 12-Minute Walkthrough (signals.gitdealflow.com/walkthrough)."
+          citeAs="VC Deal Flow Signal, 12-Minute Walkthrough (signals.gitdealflow.com/walkthrough)."
           facts={[
             {
               claim:
-                "Median lead time from a 2× contributor spike (14-day window) to a fundraise announcement is our hypothesis (a few weeks), validated openly on /scorecard — not yet established; the SSRN panel itself is descriptive (219 observations, no funding labels).",
+                "Median lead time from a 2× contributor spike (14-day window) to a fundraise announcement is our hypothesis (a few weeks), validated openly on /scorecard, not yet established; the SSRN panel itself is descriptive (219 observations, no funding labels).",
               sourceUrl: "https://ssrn.com/abstract=6606558",
               sourceLabel: "SSRN preprint",
             },
@@ -1313,7 +1313,7 @@ export default function PerfectWebinarPage() {
             },
             {
               claim:
-                "30-day Signal-or-It's-Free guarantee on every paid tier — reply REFUND to any email, full refund inside two business days.",
+                "30-day Signal-or-It's-Free guarantee on every paid tier, reply REFUND to any email, full refund inside two business days.",
               sourceUrl: "https://signals.gitdealflow.com/pricing#guarantee",
               sourceLabel: "Guarantee terms",
             },

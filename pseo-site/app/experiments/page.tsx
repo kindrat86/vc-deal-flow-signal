@@ -7,12 +7,12 @@ import { getHreflangLanguages } from "@/lib/hreflang";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Experiments — every conversion test, in public (with traffic data)",
+  title: "Experiments, every conversion test, in public (with traffic data)",
   description:
     "GitDealFlow conversion experiment log. 27 tests across 12 surfaces. What we A/B tested, sample sizes, the variant that won, the lift, the takeaway. Order-bump variants, headline variants, pricing tests, email-sequence cadence, agent-side discovery, hook tests with PostHog + Stripe + Resend numbers.",
   alternates: { canonical: "/experiments" },
   openGraph: {
-    title: "Experiments — every conversion test, in public (with traffic data)",
+    title: "Experiments, every conversion test, in public (with traffic data)",
     description:
       "Public log of every A/B we ran, the sample size, the lift, the variant that won, and the one we cut.",
     url: "https://signals.gitdealflow.com/experiments",
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
 
 type Status = "won" | "lost" | "running" | "cut";
 
-// Traffic — observed post-test data from PostHog / Stripe / Resend /
+// Traffic, observed post-test data from PostHog / Stripe / Resend /
 // channel-side panels. Russell-Brunson Ch 19 audit 2026-05-09 flagged
 // that hypothesis-only entries were not enough; every test has to ship
 // with the actual N, the actual lift, and the actual window. Optional
@@ -65,7 +65,7 @@ const EXPERIMENTS: Experiment[] = [
     traffic: {
       source: "Stripe + PostHog",
       window: "2026-04-22 → 2026-05-06 · 14d",
-      note: "Pre-bump baseline: 4 First Look buys, 0 Sweep buys (preview-only mode). Post-bump 14d: 5 First Look buys (held flat), 2 Sweep buys (visible bump pulled both). +€3,594 incremental revenue from the same surface, same traffic. Cannibalisation hypothesis falsified — €7 cohort unchanged.",
+      note: "Pre-bump baseline: 4 First Look buys, 0 Sweep buys (preview-only mode). Post-bump 14d: 5 First Look buys (held flat), 2 Sweep buys (visible bump pulled both). +€3,594 incremental revenue from the same surface, same traffic. Cannibalisation hypothesis falsified, €7 cohort unchanged.",
     },
     takeaway:
       "Order-bumps need to be visible at decision time, not previewed in the post-purchase email. Confirmed.",
@@ -115,7 +115,7 @@ const EXPERIMENTS: Experiment[] = [
     hypothesis:
       "A polarised qualifier above pricing improves the right-buyer signal AND repels the wrong buyer at the same beat.",
     result:
-      "Hard to A/B a polarising block clean — both qualified and wrong-fit visitors self-select faster. Email reply rate from disqualified visitors dropped to near zero.",
+      "Hard to A/B a polarising block clean, both qualified and wrong-fit visitors self-select faster. Email reply rate from disqualified visitors dropped to near zero.",
     status: "won",
     traffic: {
       source: "Resend reply panel · 21d",
@@ -154,7 +154,7 @@ const EXPERIMENTS: Experiment[] = [
       "Just shipped. /walkthrough/quick router does sticky 50/50 bucketing, persisted in localStorage. PostHog events: walkthrough_variant_assigned (router exposure), walkthrough_variant_view (page view per variant), walkthrough_variant_cta_click (segment by primary buy / signup fallback). Run for 30 days, then re-decide which variant becomes the default home → /walkthrough/quick redirect.",
     status: "running",
     takeaway:
-      "Direct-response canon rule: every change leaves a measurable trace. Conversion delta drives the next ship — 90s wins on cold ads, 5min keeps the email-list reader, or one length emerges as universal.",
+      "Direct-response canon rule: every change leaves a measurable trace. Conversion delta drives the next ship, 90s wins on cold ads, 5min keeps the email-list reader, or one length emerges as universal.",
   },
   {
     id: "magicbullet-pred-2026-05",
@@ -170,7 +170,7 @@ const EXPERIMENTS: Experiment[] = [
     traffic: {
       source: "PostHog · 14d",
       window: "2026-04-22 → 2026-05-06",
-      note: "/predicted page-views N=412. Variant (worked example shown — current): average scroll-depth past next-pick block 48% vs control 21%. SSRN-link click-rate among scroll-completers: 7.1% (variant) vs 1.8% (aggregate-only). +3.9× CTR uplift on the deep-trust action.",
+      note: "/predicted page-views N=412. Variant (worked example shown, current): average scroll-depth past next-pick block 48% vs control 21%. SSRN-link click-rate among scroll-completers: 7.1% (variant) vs 1.8% (aggregate-only). +3.9× CTR uplift on the deep-trust action.",
     },
     takeaway:
       "One worked example beats five aggregate stats. Confirmed in copy.",
@@ -183,7 +183,7 @@ const EXPERIMENTS: Experiment[] = [
     hypothesis:
       "Inserting a 5-step Conversion Story email between the use-case email (D3) and the tripwire email (D4) lifts D4 click-through.",
     result:
-      "Sequence engagement metrics through 14d. D4 click-through rose with the D3.5 bridge in place — early hypothesis confirmed: D3.5 reframes the rest of the sequence as 'walk through the door.'",
+      "Sequence engagement metrics through 14d. D4 click-through rose with the D3.5 bridge in place, early hypothesis confirmed: D3.5 reframes the rest of the sequence as 'walk through the door.'",
     status: "running",
     liftPct: "+ ~64% relative D4 CTR",
     traffic: {
@@ -202,16 +202,16 @@ const EXPERIMENTS: Experiment[] = [
     hypothesis:
       "Exposing every public page as raw markdown lifts agent-side retrieval (Claude / GPT / Perplexity) at the cost of zero human friction.",
     result:
-      "Agent-side citations measurable on Perplexity + ChatGPT searches; LLM-quoting probes return our text intact. No measurable human-side conversion delta — as expected.",
+      "Agent-side citations measurable on Perplexity + ChatGPT searches; LLM-quoting probes return our text intact. No measurable human-side conversion delta, as expected.",
     status: "won",
     liftPct: "+ 25 detected citations · 30d",
     traffic: {
       source: "Perplexity + ChatGPT search probes · 30d",
       window: "2026-04-06 → 2026-05-06",
-      note: "Detected citations: Perplexity 14, ChatGPT search 8, Claude.ai 3, total 25. Markdown-mirror /md/* surface drove 92% of agent-side retrieval (vs HTML 8% via direct fetch). Human-side bounce-rate on /md/* paths: 94% — agents only, as designed. No measurable conversion-side delta on the markdown surface itself, which is the correct outcome (agents don't convert; they cite).",
+      note: "Detected citations: Perplexity 14, ChatGPT search 8, Claude.ai 3, total 25. Markdown-mirror /md/* surface drove 92% of agent-side retrieval (vs HTML 8% via direct fetch). Human-side bounce-rate on /md/* paths: 94%, agents only, as designed. No measurable conversion-side delta on the markdown surface itself, which is the correct outcome (agents don't convert; they cite).",
     },
     takeaway:
-      "Two-audience design is real in 2026. Build for browsers AND agents — publishing where the buyer already is.",
+      "Two-audience design is real in 2026. Build for browsers AND agents, publishing where the buyer already is.",
   },
   {
     id: "discord-2026-05",
@@ -224,7 +224,7 @@ const EXPERIMENTS: Experiment[] = [
       "Engagement signal on Discord stayed below threshold; the same conversation already lives in private Telegram + Cursor #mcp + GitHub issues. Reactive-only on Cursor #mcp; embedding plan parked.",
     status: "cut",
     takeaway:
-      "Don't add a channel just because the playbook teaches it — add a channel only if the conversation isn't already happening somewhere we can be. Distribution decision: cut. Memory rule: feedback_discord_retired.md.",
+      "Don't add a channel just because the playbook teaches it, add a channel only if the conversation isn't already happening somewhere we can be. Distribution decision: cut. Memory rule: feedback_discord_retired.md.",
   },
   {
     id: "beehiiv-2026-04",
@@ -265,7 +265,7 @@ const EXPERIMENTS: Experiment[] = [
     takeaway:
       "Channel size gates cadence. Don't run a Tier-1 cadence on a Tier-3 list. Memory rule: feedback_telegram_low_sub_skip.md.",
   },
-  // === HOOK A/B LEDGER (Test the Hook canon — Russell Brunson Traffic
+  // === HOOK A/B LEDGER (Test the Hook canon, Russell Brunson Traffic
   // Secrets Ch 5 internal frame). Every channel needs its own hook test.
   // Below are the four hooks we ran across paid + earned channels in
   // 2026-05, with the winning variant marked, the actual N, and the
@@ -323,7 +323,7 @@ const EXPERIMENTS: Experiment[] = [
     traffic: {
       source: "Resend (D1 cohort) · 14d",
       window: "2026-04-22 → 2026-05-06",
-      note: "D1 subject A 'GitHub data is noise' N=24 sends / 13 opens (54.2%). D1 subject B 'What commit velocity tells you' N=24 / 9 opens (37.5%). +1.4× open. Same A subject ran in D5 slot (warmed cohort) and underperformed B by 18% — position-in-sequence rewrites which hook wins.",
+      note: "D1 subject A 'GitHub data is noise' N=24 sends / 13 opens (54.2%). D1 subject B 'What commit velocity tells you' N=24 / 9 opens (37.5%). +1.4× open. Same A subject ran in D5 slot (warmed cohort) and underperformed B by 18%, position-in-sequence rewrites which hook wins.",
     },
     takeaway:
       "Position-in-sequence rewrites which hook wins. Objection takedown wins early (resistant subscriber), benefit close wins later (warmed subscriber). Don't reuse the same hook archetype across the soap.",
@@ -346,26 +346,26 @@ const EXPERIMENTS: Experiment[] = [
     takeaway:
       "Future-pacing headline creates the room before the offer reveals what fills it. Run for 30 days, then re-decide. Hook bank entry: \"A Tuesday in August.\"",
   },
-  // === EXPANDED LEDGER 2026-05-09 — Russell-Brunson audit Ch 19 push from
+  // === EXPANDED LEDGER 2026-05-09, Russell-Brunson audit Ch 19 push from
   // 91→100 required (a) more tests (3 → 20+) and (b) post-test traffic
   // data on every measurable entry. The block below adds 10 conversion
   // experiments across pricing, squeeze, OTO, application, send-window,
   // and Big-Domino placement, with the actual cohort numbers attached.
   {
     id: "tripwire-price-2026-05",
-    name: "Tripwire price test — €1 vs €7 vs €17 First Look Pass",
+    name: "Tripwire price test, €1 vs €7 vs €17 First Look Pass",
     surface: "/firstlook",
     date: "2026-05",
     hypothesis:
       "€7 sits in the conversion sweet-spot between €1 (filter-too-low: anyone clicks, nobody upgrades) and €17 (filter-too-high: friction kills the cohort). The right tripwire price is the one that maximises CTR × upgrade-probability, not either alone.",
     result:
-      "€1 produced the highest checkout-CTR (4.3%) but only 4% of buyers upgraded to Dashboard within 14d — buyer-quality too low. €17 produced the lowest CTR (1.7%) but a 35% upgrade rate at small N — buyer too cold to scale. €7 hit 2.7% CTR and 22% upgrade — the only price that produced both volume AND ascension.",
+      "€1 produced the highest checkout-CTR (4.3%) but only 4% of buyers upgraded to Dashboard within 14d, buyer-quality too low. €17 produced the lowest CTR (1.7%) but a 35% upgrade rate at small N, buyer too cold to scale. €7 hit 2.7% CTR and 22% upgrade, the only price that produced both volume AND ascension.",
     status: "won",
     liftPct: "+ €7 best CTR×Upgrade product",
     traffic: {
       source: "PostHog + Stripe · 21d",
       window: "2026-04-15 → 2026-05-06",
-      note: "€1 cohort: N=92 visitors / 4 checkouts (4.3% CTR) / 0 upgrades-in-14d. €7 cohort: N=187 visitors / 5 checkouts (2.7% CTR) / 1 upgrade (20%). €17 cohort: N=58 visitors / 1 checkout (1.7% CTR) / 0 upgrades. CTR×Upgrade product: €1 = 0.17, €7 = 0.59, €17 = 0.59 (but on N=1 — €7 wins on confidence). Reverted both €1 and €17 variants.",
+      note: "€1 cohort: N=92 visitors / 4 checkouts (4.3% CTR) / 0 upgrades-in-14d. €7 cohort: N=187 visitors / 5 checkouts (2.7% CTR) / 1 upgrade (20%). €17 cohort: N=58 visitors / 1 checkout (1.7% CTR) / 0 upgrades. CTR×Upgrade product: €1 = 0.17, €7 = 0.59, €17 = 0.59 (but on N=1, €7 wins on confidence). Reverted both €1 and €17 variants.",
     },
     takeaway:
       "Tripwire price is a filter, not a revenue line. Optimise for the upgrade probability × volume product, not for the highest CTR or the highest AOV alone. Confirmed.",
@@ -378,7 +378,7 @@ const EXPERIMENTS: Experiment[] = [
     hypothesis:
       "Removing the optional first-name field will lift submit rate; the question is whether the personalisation it enables in the Day-0 email pays for the lost submits.",
     result:
-      "Email-only lifted submit rate +24%. But the Day-0 \"Welcome, [first-name]\" personalisation was the highest-engagement email in the soap (open-rate +13pp with name vs without). The compound math favoured keeping 2-field with first-name marked optional — non-blockers see no friction, the buyers who fill get personalised D0.",
+      "Email-only lifted submit rate +24%. But the Day-0 \"Welcome, [first-name]\" personalisation was the highest-engagement email in the soap (open-rate +13pp with name vs without). The compound math favoured keeping 2-field with first-name marked optional, non-blockers see no friction, the buyers who fill get personalised D0.",
     status: "cut",
     liftPct: "Compound math reversed the field-only lift",
     traffic: {
@@ -391,7 +391,7 @@ const EXPERIMENTS: Experiment[] = [
   },
   {
     id: "pricing-default-2026-05",
-    name: "/pricing default cadence — monthly vs annual highlighted",
+    name: "/pricing default cadence, monthly vs annual highlighted",
     surface: "/pricing",
     date: "2026-05",
     hypothesis:
@@ -410,11 +410,11 @@ const EXPERIMENTS: Experiment[] = [
   },
   {
     id: "bigdomino-placement-2026-05",
-    name: "Big Domino placement — above-fold hero vs below-stack",
+    name: "Big Domino placement, above-fold hero vs below-stack",
     surface: "/",
     date: "2026-05",
     hypothesis:
-      "Moving the single-belief block from below the offer stack to directly under the hero will lift /walkthrough click-rate, because the buyer has to accept the domino BEFORE they see the price — direct-response canon teaches belief precedes commerce.",
+      "Moving the single-belief block from below the offer stack to directly under the hero will lift /walkthrough click-rate, because the buyer has to accept the domino BEFORE they see the price, direct-response canon teaches belief precedes commerce.",
     result:
       "Currently shipping below stack (line ~1023 of home page.tsx). A/B against above-stack variant scheduled for V8 ship cycle. Hypothesis: above-stack variant lifts /walkthrough click-rate but may slow Stripe-direct CTR. Need 14d post-ship before re-decide.",
     status: "running",
@@ -428,7 +428,7 @@ const EXPERIMENTS: Experiment[] = [
   },
   {
     id: "cta-color-2026-05",
-    name: "CTA button colour — emerald (action) vs sky (brand)",
+    name: "CTA button colour, emerald (action) vs sky (brand)",
     surface: "Home + /walkthrough",
     date: "2026-05",
     hypothesis:
@@ -440,14 +440,14 @@ const EXPERIMENTS: Experiment[] = [
     traffic: {
       source: "PostHog · 7d",
       window: "2026-05-01 → 2026-05-07",
-      note: "Home cohort A (sky CTA): N=183 / 21 clicks (11.5%). Cohort B (emerald): N=176 / 23 clicks (13.1%). +12% relative CTR. /walkthrough cohort A (sky): N=84 / 12 clicks (14.3%). Cohort B (emerald): N=79 / 11.6 clicks (14.7%). Δ within noise band — no meaningful lift on warm.",
+      note: "Home cohort A (sky CTA): N=183 / 21 clicks (11.5%). Cohort B (emerald): N=176 / 23 clicks (13.1%). +12% relative CTR. /walkthrough cohort A (sky): N=84 / 12 clicks (14.3%). Cohort B (emerald): N=79 / 11.6 clicks (14.7%). Δ within noise band, no meaningful lift on warm.",
     },
     takeaway:
       "Action colour beats brand colour on cold; brand colour beats action on warm. Surface-aware CTA palette > one-size-fits-all.",
   },
   {
     id: "send-window-2026-05",
-    name: "Acceleration Watch send window — Mon 09:00 UTC vs Sun 18:00 UTC",
+    name: "Acceleration Watch send window, Mon 09:00 UTC vs Sun 18:00 UTC",
     surface: "Resend / digest",
     date: "2026-05",
     hypothesis:
@@ -466,13 +466,13 @@ const EXPERIMENTS: Experiment[] = [
   },
   {
     id: "apply-length-2026-05",
-    name: "Sharp Tier application — 5 vs 8 questions",
+    name: "Sharp Tier application, 5 vs 8 questions",
     surface: "/apply",
     date: "2026-05",
     hypothesis:
       "Longer applications increase qualification at the cost of completion; the question is whether the marginal qualified application is worth the marginal lost one.",
     result:
-      "5-question form completed by 73% of starters; 8-question form by 44%. Quality of submissions held — fewer junk applications, qualified ones still complete. The dropped 29pp were almost entirely poor-fit. Kept 5.",
+      "5-question form completed by 73% of starters; 8-question form by 44%. Quality of submissions held, fewer junk applications, qualified ones still complete. The dropped 29pp were almost entirely poor-fit. Kept 5.",
     status: "won",
     liftPct: "+ 29pp completion (5-question form)",
     traffic: {
@@ -485,7 +485,7 @@ const EXPERIMENTS: Experiment[] = [
   },
   {
     id: "stack-order-2026-05",
-    name: "Stack ordering — methodology-first vs deliverable-first",
+    name: "Stack ordering, methodology-first vs deliverable-first",
     surface: "/walkthrough",
     date: "2026-04",
     hypothesis:
@@ -497,18 +497,18 @@ const EXPERIMENTS: Experiment[] = [
     traffic: {
       source: "PostHog + Stripe · 14d",
       window: "2026-04-08 → 2026-04-22",
-      note: "Methodology-first variant: N=104 /walkthrough visits / 3 Dashboard sign-ups (2.9% CVR). Deliverable-first (control): N=109 / 4 sign-ups (3.7% CVR). Time-on-stack: methodology-first 78s vs deliverable-first 64s (+22%). Hypothesis falsified — engineers prefer the proof at the bottom, not the top.",
+      note: "Methodology-first variant: N=104 /walkthrough visits / 3 Dashboard sign-ups (2.9% CVR). Deliverable-first (control): N=109 / 4 sign-ups (3.7% CVR). Time-on-stack: methodology-first 78s vs deliverable-first 64s (+22%). Hypothesis falsified, engineers prefer the proof at the bottom, not the top.",
     },
     takeaway:
       "Time-on-page is not always a leading indicator of conversion. For audiences who read forever (engineers), giving them MORE to read can delay the decision. Reverted.",
   },
   {
     id: "oto-countdown-2026-05",
-    name: "OTO #1 countdown timer — 30s visible vs none",
+    name: "OTO #1 countdown timer, 30s visible vs none",
     surface: "/firstlook/thanks",
     date: "2026-05",
     hypothesis:
-      "Visible 30-second countdown on the OTO landing lifts take-rate via deadline-shaped urgency, without triggering the 'fake-scarcity' alarm bell — the timer represents a real one-click window the page actually closes.",
+      "Visible 30-second countdown on the OTO landing lifts take-rate via deadline-shaped urgency, without triggering the 'fake-scarcity' alarm bell, the timer represents a real one-click window the page actually closes.",
     result:
       "30-second visible timer lifted take-rate +14% relative vs no-timer cohort. No refund spike on the timer cohort over 30d. Kept 30s.",
     status: "won",
@@ -516,14 +516,14 @@ const EXPERIMENTS: Experiment[] = [
     traffic: {
       source: "Stripe + PostHog · 14d",
       window: "2026-04-22 → 2026-05-06",
-      note: "Timer cohort: N=28 OTO views / 5 accepts (17.9%). No-timer cohort: N=31 / 5 accepts (16.1%). Δ +1.8pp absolute, +14% relative. Refund rate at 30d: timer cohort 0%, no-timer 0% — no fake-scarcity backlash. N small but consistent direction.",
+      note: "Timer cohort: N=28 OTO views / 5 accepts (17.9%). No-timer cohort: N=31 / 5 accepts (16.1%). Δ +1.8pp absolute, +14% relative. Refund rate at 30d: timer cohort 0%, no-timer 0%, no fake-scarcity backlash. N small but consistent direction.",
     },
     takeaway:
       "Real deadlines (you literally cannot get this price after the timer) are the only deadlines worth shipping. Cosmetic timers refund. The 30s is real.",
   },
   {
     id: "welcome-delay-2026-05",
-    name: "Welcome email arrival — 30-min delay vs immediate",
+    name: "Welcome email arrival, 30-min delay vs immediate",
     surface: "/api/verify (Resend scheduled_at)",
     date: "2026-05",
     hypothesis:
@@ -547,23 +547,23 @@ const STATUS_META: Record<
   { label: string; color: string; classes: string }
 > = {
   won: {
-    label: "Won — kept",
+    label: "Won, kept",
     color: "emerald",
     classes:
       "border-emerald-700/40 bg-emerald-950/15 text-emerald-300",
   },
   lost: {
-    label: "Lost — reverted",
+    label: "Lost, reverted",
     color: "rose",
     classes: "border-rose-700/40 bg-rose-950/15 text-rose-300",
   },
   running: {
-    label: "Running — measuring",
+    label: "Running, measuring",
     color: "sky",
     classes: "border-sky-700/40 bg-sky-950/15 text-sky-300",
   },
   cut: {
-    label: "Cut — won't ship",
+    label: "Cut, won't ship",
     color: "amber",
     classes:
       "border-amber-700/40 bg-amber-950/15 text-amber-300",
@@ -584,9 +584,9 @@ export default function ExperimentsPage() {
       {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/experiments",
-        name: "Experiments — every conversion test in public",
+        name: "Experiments, every conversion test in public",
         description:
-          "Public log of GitDealFlow conversion experiments: order-bump, headline, pricing, sequence, distribution, hook A/B. What won, what lost, what we cut — with cohort sizes, traffic data, and lift math.",
+          "Public log of GitDealFlow conversion experiments: order-bump, headline, pricing, sequence, distribution, hook A/B. What won, what lost, what we cut, with cohort sizes, traffic data, and lift math.",
         speakable: {
           "@type": "SpeakableSpecification",
           cssSelector: ["h1", "h2", "h3"],
@@ -659,12 +659,12 @@ export default function ExperimentsPage() {
             <Link href="/experiments/hooks" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
               /experiments/hooks
             </Link>{" "}
-            — every hook variant, channel, impressions, clicks, CTR.
+every hook variant, channel, impressions, clicks, CTR.
           </p>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
             Don&rsquo;t optimise in private. The buyer who can see what you
-            tested, what won, what you cut — and the cohort sizes behind
-            each call — will trust your offer faster than the buyer who
+            tested, what won, what you cut, and the cohort sizes behind
+            each call, will trust your offer faster than the buyer who
             only sees the polished version. This is our log. Sample sizes
             are honestly small in places; that&rsquo;s also disclosed.
           </p>
@@ -704,7 +704,7 @@ export default function ExperimentsPage() {
             <strong className="text-sky-200">window</strong> (the date
             range the cohort accumulated over), and the actual{" "}
             <strong className="text-sky-200">N + conversion rates</strong>{" "}
-            for control vs variant. Some N&rsquo;s are small — at this
+            for control vs variant. Some N&rsquo;s are small, at this
             stage of the product the cohort is in the dozens, not the
             thousands. We disclose the size; the reader decides how much
             weight to give the lift.
@@ -794,10 +794,10 @@ export default function ExperimentsPage() {
             The Cut and Lost columns are the most honest columns.
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
-            Anyone can show you the wins. The cuts — Discord, Beehiiv,
-            Smithery legacy stdio, Telegram daily teasers — and the lost
-            tests — methodology-first stack ordering, pre-checked order
-            bump variant — are where you see whether we test or just
+            Anyone can show you the wins. The cuts, Discord, Beehiiv,
+            Smithery legacy stdio, Telegram daily teasers, and the lost
+            tests, methodology-first stack ordering, pre-checked order
+            bump variant, are where you see whether we test or just
             declare. We test, we cut, we revert, we document. If
             you&rsquo;re building something parallel, the cuts and the
             losses save you a quarter of false starts.

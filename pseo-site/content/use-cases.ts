@@ -35,9 +35,9 @@ export const useCases: UseCase[] = [
       "How angel investors use VC Deal Flow Signal to find technical startups 6-12 weeks before the round is competitive. Free weekly signals, EUR 49/mo Dashboard, no enterprise contracts.",
     h1: "VC Deal Flow Signal for Angel Investors",
     tagline:
-      "Catch technical startups 6-12 weeks before the round is competitive — without an enterprise sourcing budget.",
+      "Catch technical startups 6-12 weeks before the round is competitive, without an enterprise sourcing budget.",
     intro:
-      "Angels compete with funds on everything except speed of conviction. The platforms funds use — Harmonic.ai, Dealroom, Crunchbase Enterprise — start in the five-figure range and assume a full-time sourcing team. VC Deal Flow Signal is built for the opposite end of the market: individual angels who want a quantitative early signal, weekly, for the price of two lunches.",
+      "Angels compete with funds on everything except speed of conviction. The platforms funds use, Harmonic.ai, Dealroom, Crunchbase Enterprise, start in the five-figure range and assume a full-time sourcing team. VC Deal Flow Signal is built for the opposite end of the market: individual angels who want a quantitative early signal, weekly, for the price of two lunches.",
     problem:
       "By the time a technical startup shows up in press coverage, job boards, or Crunchbase alerts, the round is already competitive. Solo angels rarely have the bandwidth to monitor GitHub activity across 15 sectors manually. And without a signal that fires early, it is hard to justify the time spent on founder outreach before the deal exists.",
     solution:
@@ -76,8 +76,8 @@ export const useCases: UseCase[] = [
       { label: "Sectors covered", value: "20 technical clusters" },
     ],
     faqs: [
-      { question: "Is VC Deal Flow Signal suitable for first-time angels?", answer: "Yes. The free weekly Signal Report requires no technical interpretation — each startup comes with the signal type explained in plain English. For deeper inspection, you can verify the engineering signal by just looking at the GitHub org's commit graph. No coding or quantitative background required." },
-      { question: "How does this compare to an angel group's shared deal flow?", answer: "Complementary. Angel groups surface deals that other angels have already sourced and qualified — useful but often warm/competitive. VC Deal Flow Signal gives you your own early signal, which you can take to your group or play solo." },
+      { question: "Is VC Deal Flow Signal suitable for first-time angels?", answer: "Yes. The free weekly Signal Report requires no technical interpretation, each startup comes with the signal type explained in plain English. For deeper inspection, you can verify the engineering signal by just looking at the GitHub org's commit graph. No coding or quantitative background required." },
+      { question: "How does this compare to an angel group's shared deal flow?", answer: "Complementary. Angel groups surface deals that other angels have already sourced and qualified, useful but often warm/competitive. VC Deal Flow Signal gives you your own early signal, which you can take to your group or play solo." },
       { question: "Can I use it to source deals outside of AI and SaaS?", answer: "Partially. The platform covers 15 sector clusters including fintech, dev tools, infrastructure, enterprise SaaS, AI/ML, and data tools. It does not cover consumer brands, healthtech services, or companies with minimal public GitHub footprint." },
       { question: "What's the smallest angel check size this is worth for?", answer: "The EUR 49/month cost is trivial compared to a single $10k angel check. If the signal helps you get into one additional round per year that outperforms, the ROI is absurd. The free tier alone is enough for angels writing one or two checks per quarter." },
     ],
@@ -94,7 +94,7 @@ export const useCases: UseCase[] = [
     tagline:
       "Scale weekly sourcing across 20 technical sectors without manually monitoring GitHub at 2am.",
     intro:
-      "Analysts are the ones who actually find the deals, and the ones most likely to be doing it manually. If your fund covers technical startups, you are probably already looking at GitHub activity — just inefficiently, one repo at a time, when a partner forwards a lead. VC Deal Flow Signal turns that manual work into a weekly feed you can scan in five minutes and act on in fifty.",
+      "Analysts are the ones who actually find the deals, and the ones most likely to be doing it manually. If your fund covers technical startups, you are probably already looking at GitHub activity, just inefficiently, one repo at a time, when a partner forwards a lead. VC Deal Flow Signal turns that manual work into a weekly feed you can scan in five minutes and act on in fifty.",
     problem:
       "Manual GitHub monitoring does not scale. You can pick a dozen companies to track, but you will miss the acceleration happening in the hundreds of companies you are not watching. Sector databases like Crunchbase tell you what already raised; Harmonic and similar platforms require an enterprise budget that smaller funds do not have.",
     solution:
@@ -118,7 +118,7 @@ export const useCases: UseCase[] = [
       {
         step: 4,
         name: "Enrich with Crunchbase / Harmonic / manual",
-        body: "For the 10-20% of startups that warrant deeper research, layer on whatever you already use — funding history, team backgrounds, cap table info. VC Deal Flow Signal is the filter layer, not the research layer.",
+        body: "For the 10-20% of startups that warrant deeper research, layer on whatever you already use, funding history, team backgrounds, cap table info. VC Deal Flow Signal is the filter layer, not the research layer.",
       },
       {
         step: 5,
@@ -133,10 +133,10 @@ export const useCases: UseCase[] = [
       { label: "Per-seat cost", value: "EUR 49/mo (beta)" },
     ],
     faqs: [
-      { question: "Can multiple analysts share one account?", answer: "For the beta Dashboard, yes — the login is per-seat but the underlying data is the same for every analyst. For larger teams, get in touch and a multi-seat plan can be set up." },
+      { question: "Can multiple analysts share one account?", answer: "For the beta Dashboard, yes, the login is per-seat but the underlying data is the same for every analyst. For larger teams, get in touch and a multi-seat plan can be set up." },
       { question: "How does this integrate with Affinity?", answer: "Via Zapier during beta. Trigger: new weekly signal. Action: create or update Affinity record with sector, signal type, and GitHub URL. Once the Zapier integration is public (after the three-user threshold), it becomes a one-click setup." },
-      { question: "Does it replace our existing sourcing tool stack?", answer: "Usually not — it replaces manual GitHub monitoring and the 'keep an eye on this handful of companies' tracker spreadsheet. Most analysts keep Crunchbase, Dealroom, or Harmonic for broad coverage and add VC Deal Flow Signal as the engineering-signal layer." },
-      { question: "Can I feed this into our LLM-powered research workflow?", answer: "Yes. The MCP server exposes six tools (trending, sector search, startup lookup, summary, scout receipts, methodology) to any MCP-compatible assistant — Claude Desktop, Cursor, Windsurf, Continue. Run a weekly analyst query directly in Claude against live data." },
+      { question: "Does it replace our existing sourcing tool stack?", answer: "Usually not, it replaces manual GitHub monitoring and the 'keep an eye on this handful of companies' tracker spreadsheet. Most analysts keep Crunchbase, Dealroom, or Harmonic for broad coverage and add VC Deal Flow Signal as the engineering-signal layer." },
+      { question: "Can I feed this into our LLM-powered research workflow?", answer: "Yes. The MCP server exposes six tools (trending, sector search, startup lookup, summary, scout receipts, methodology) to any MCP-compatible assistant, Claude Desktop, Cursor, Windsurf, Continue. Run a weekly analyst query directly in Claude against live data." },
     ],
     relatedSectors: ["ai-ml", "enterprise-saas", "fintech"],
     relatedAlternatives: ["harmonic-ai", "dealroom", "forager-ai"],
@@ -151,11 +151,11 @@ export const useCases: UseCase[] = [
     tagline:
       "Benchmark your VCs' sourcing quality against a common engineering signal, and spot emerging GPs with better deal flow before everyone else does.",
     intro:
-      "Most LPs evaluate a VC's sourcing by looking at deployed deals — a lagging indicator that takes years to mature. VC Deal Flow Signal gives LPs and fund of funds a new kind of leading indicator: how do the companies a GP backed compare to the companies VC Deal Flow Signal flagged at the same moment? And for emerging managers — which of them are consistently getting into companies that later show up as breakout engineering signals?",
+      "Most LPs evaluate a VC's sourcing by looking at deployed deals, a lagging indicator that takes years to mature. VC Deal Flow Signal gives LPs and fund of funds a new kind of leading indicator: how do the companies a GP backed compare to the companies VC Deal Flow Signal flagged at the same moment? And for emerging managers, which of them are consistently getting into companies that later show up as breakout engineering signals?",
     problem:
       "Sourcing quality is hard to measure from the outside. LPs rely on GP self-reporting, which is flattering by construction, or on IRR / DPI, which are 7-10 year signals. There is no industry benchmark for 'would a reasonable engineering-signal tool have flagged this startup at the same time?' that LPs can apply consistently across their portfolio of GPs.",
     solution:
-      "Use VC Deal Flow Signal's weekly dataset as a benchmark. For each portfolio company a GP invests in, check whether that company was flagged as a breakout engineering signal 6-12 weeks before the round — and if so, whether the GP was already engaged. GPs whose wins correlate strongly with leading engineering signals are likely sourcing on the early side. GPs whose wins correlate with no early signal are either backing non-technical companies, or sourcing through networks that the signal does not capture.",
+      "Use VC Deal Flow Signal's weekly dataset as a benchmark. For each portfolio company a GP invests in, check whether that company was flagged as a breakout engineering signal 6-12 weeks before the round, and if so, whether the GP was already engaged. GPs whose wins correlate strongly with leading engineering signals are likely sourcing on the early side. GPs whose wins correlate with no early signal are either backing non-technical companies, or sourcing through networks that the signal does not capture.",
     workflow: [
       {
         step: 1,
@@ -170,7 +170,7 @@ export const useCases: UseCase[] = [
       {
         step: 3,
         name: "Compare across portfolio GPs",
-        body: "The overlap score is not a quality metric on its own — non-technical funds will score low for structural reasons — but across a peer group of technical-sector GPs, it is a useful sourcing-speed proxy.",
+        body: "The overlap score is not a quality metric on its own, non-technical funds will score low for structural reasons, but across a peer group of technical-sector GPs, it is a useful sourcing-speed proxy.",
       },
       {
         step: 4,
@@ -190,9 +190,9 @@ export const useCases: UseCase[] = [
       { label: "Benchmark cost", value: "EUR 49/mo (beta)" },
     ],
     faqs: [
-      { question: "Can I get a custom historical signal export?", answer: "Yes — email signals@gitdealflow.com with the date range and sector focus. The beta tier access includes custom exports for LP use cases on request." },
+      { question: "Can I get a custom historical signal export?", answer: "Yes, email signals@gitdealflow.com with the date range and sector focus. The beta tier access includes custom exports for LP use cases on request." },
       { question: "How do I handle GPs that invest in non-technical sectors?", answer: "The signal only covers technical startups with public GitHub activity. For consumer, healthtech, or services GPs, the overlap score is structurally low and not meaningful. Use the signal only for peer groups where the sector mix is comparable." },
-      { question: "Is the signal biased toward open-source companies?", answer: "The signal measures any public GitHub activity — both open-source projects and companies with public infrastructure repos, public API repos, or public SDKs. It is biased toward technical startups that do any of their engineering work in public, which is the majority of modern SaaS and dev tools but a minority of closed-source B2B." },
+      { question: "Is the signal biased toward open-source companies?", answer: "The signal measures any public GitHub activity, both open-source projects and companies with public infrastructure repos, public API repos, or public SDKs. It is biased toward technical startups that do any of their engineering work in public, which is the majority of modern SaaS and dev tools but a minority of closed-source B2B." },
       { question: "Can you help us build a custom LP benchmark?", answer: "Yes. The data is available in machine-readable formats; email signals@gitdealflow.com for scoped help building a custom benchmark or GP scoring model. The product team is small but direct." },
     ],
     relatedSectors: ["ai-ml", "enterprise-saas", "fintech"],
@@ -209,7 +209,7 @@ export const useCases: UseCase[] = [
     intro:
       "Scout programs reward early conviction and original sourcing. The fastest way for a scout to lose credibility is to forward a deal the GP already saw on Twitter. The fastest way to gain credibility is to forward a quantitative engineering signal three to six weeks before the round becomes public. VC Deal Flow Signal is built for that exact moment in the scout workflow.",
     problem:
-      "Scouts have small budgets, limited time, and no fund-level data infrastructure. Most scouts source from their personal network plus whatever they read on Twitter — which means most scouts are seeing the same deals at the same time. The competitive edge for a scout is finding a startup the fund's analysts have not flagged yet, with a non-anecdotal reason to flag it.",
+      "Scouts have small budgets, limited time, and no fund-level data infrastructure. Most scouts source from their personal network plus whatever they read on Twitter, which means most scouts are seeing the same deals at the same time. The competitive edge for a scout is finding a startup the fund's analysts have not flagged yet, with a non-anecdotal reason to flag it.",
     solution:
       "VC Deal Flow Signal gives scouts a weekly external feed of breakout engineering signals across 15 sectors. Each signal is a pre-fundraise event tagged with type and magnitude, and each comes with a direct GitHub link the scout can use to verify the activity in under two minutes. The signal is exactly the kind of evidence a partner respects when deciding whether to take a meeting.",
     workflow: [
@@ -221,7 +221,7 @@ export const useCases: UseCase[] = [
       {
         step: 2,
         name: "Filter Dashboard for your scout focus areas",
-        body: "Most scouts have a couple of named sectors or geographies. Filter to those — typically narrows weekly results to under 10 high-relevance signals.",
+        body: "Most scouts have a couple of named sectors or geographies. Filter to those, typically narrows weekly results to under 10 high-relevance signals.",
       },
       {
         step: 3,
@@ -236,7 +236,7 @@ export const useCases: UseCase[] = [
       {
         step: 5,
         name: "Track which signals converted",
-        body: "Maintain a private spreadsheet of forwarded signals and outcomes. After two quarters, you have a portfolio-level view of your scout sourcing precision — useful at scout review time.",
+        body: "Maintain a private spreadsheet of forwarded signals and outcomes. After two quarters, you have a portfolio-level view of your scout sourcing precision, useful at scout review time.",
       },
     ],
     metrics: [
@@ -245,7 +245,7 @@ export const useCases: UseCase[] = [
       { label: "Cost", value: "EUR 49/month" },
     ],
     faqs: [
-      { question: "Do scout programs allow third-party data tools?", answer: "Almost universally yes — the data is public GitHub activity, not non-public information. Scout programs care about the strength of conviction, not the source of the signal. Document your data sources in any scout report and you are within bounds." },
+      { question: "Do scout programs allow third-party data tools?", answer: "Almost universally yes, the data is public GitHub activity, not non-public information. Scout programs care about the strength of conviction, not the source of the signal. Document your data sources in any scout report and you are within bounds." },
       { question: "How do I avoid duplicating signals the fund analysts already see?", answer: "Filter to sectors and stages your fund's analysts under-cover, focus on early stages where fund analysts have less bandwidth, and lead with the engineering signal as evidence rather than as the deal itself. Scouts add value at the discovery layer; engineering acceleration is one of the strongest discovery layers available." },
       { question: "Is the EUR 49/month worth it as a scout?", answer: "If even one signal per year converts to a deal the fund invests in, the ROI is hundreds of times the cost. Most scouts forward five to fifteen signals per quarter. Even at a modest conversion rate, the math is trivial." },
     ],
@@ -259,11 +259,11 @@ export const useCases: UseCase[] = [
     description:
       "How solo GPs running rolling funds, syndicates, or first-time funds use VC Deal Flow Signal to compete with institutional sourcing teams without an institutional budget.",
     h1: "VC Deal Flow Signal for Solo GPs",
-    tagline: "Source like a 10-person institutional fund — without hiring 10 people.",
+    tagline: "Source like a 10-person institutional fund, without hiring 10 people.",
     intro:
       "Solo GPs have one structural disadvantage and one structural advantage. The disadvantage is sourcing scale: you cannot match the breadth of a fund with five analysts on it. The advantage is decision speed: you can move from signal to wire in days, not weeks. VC Deal Flow Signal is built to neutralize the disadvantage so the advantage compounds.",
     problem:
-      "Solo GPs operate against the same competitive landscape as institutional funds: same companies, same rounds, same allocation pressure. But the labor model is fundamentally different — one person cannot manually monitor GitHub activity across thousands of companies. Without an external screening layer, the solo GP either narrows their fund's surface area or ends up sourcing from the same Twitter feed as everyone else.",
+      "Solo GPs operate against the same competitive landscape as institutional funds: same companies, same rounds, same allocation pressure. But the labor model is fundamentally different, one person cannot manually monitor GitHub activity across thousands of companies. Without an external screening layer, the solo GP either narrows their fund's surface area or ends up sourcing from the same Twitter feed as everyone else.",
     solution:
       "An automated weekly feed of breakout engineering signals across 15 sectors. The Dashboard ranks 50+ startups every Monday by acceleration magnitude, filterable by stage and geography. Pipe the signal into your existing CRM (Affinity, HubSpot, Notion) via API or RSS. The screening pipeline runs while you are reviewing decks; you arrive at meetings with a longer warm list than peers.",
     workflow: [
@@ -299,7 +299,7 @@ export const useCases: UseCase[] = [
       { label: "Cost vs equivalent labor", value: "1/100th of a junior analyst" },
     ],
     faqs: [
-      { question: "Does this work if I am pre-fund?", answer: "Yes — many syndicate leads and angel-roll-up operators use the signal at the syndicate stage. The data and methodology are identical; the only difference is the structure of how the deals get done downstream." },
+      { question: "Does this work if I am pre-fund?", answer: "Yes, many syndicate leads and angel-roll-up operators use the signal at the syndicate stage. The data and methodology are identical; the only difference is the structure of how the deals get done downstream." },
       { question: "Can I report this signal source to LPs?", answer: "Yes. Engineering acceleration as a sourcing input is a methodologically defensible answer to LP sourcing questions. The methodology is published openly on SSRN, and the data is public GitHub activity." },
       { question: "How does this compare to building it in-house?", answer: "Building a comparable pipeline takes four to six weeks of engineering time plus ongoing maintenance. The labor cost dwarfs the EUR 49/month subscription unless you are running a fund large enough to justify a dedicated data engineer." },
     ],
@@ -334,7 +334,7 @@ export const useCases: UseCase[] = [
       {
         step: 3,
         name: "Cross-reference internal product teams",
-        body: "For each interesting signal, get a 15-minute read from the relevant internal product team. This is the corporate venture superpower — strategic context is faster than market research.",
+        body: "For each interesting signal, get a 15-minute read from the relevant internal product team. This is the corporate venture superpower, strategic context is faster than market research.",
       },
       {
         step: 4,
@@ -353,9 +353,9 @@ export const useCases: UseCase[] = [
       { label: "Conversion to investment or partnership", value: "5-15%" },
     ],
     faqs: [
-      { question: "How does this fit alongside our internal corporate intelligence?", answer: "Engineering acceleration is upstream of most corporate intelligence sources — press, conferences, partner networks — so it complements internal work rather than duplicating it. Most corporate venture teams use it as the discovery layer feeding into the strategic-fit evaluation done internally." },
+      { question: "How does this fit alongside our internal corporate intelligence?", answer: "Engineering acceleration is upstream of most corporate intelligence sources, press, conferences, partner networks, so it complements internal work rather than duplicating it. Most corporate venture teams use it as the discovery layer feeding into the strategic-fit evaluation done internally." },
       { question: "Can the API support our internal data warehouse?", answer: "Yes. The API returns ranked signals as JSON, and many corporate venture teams pipe weekly snapshots into Snowflake or BigQuery for cross-referencing with internal CRM, product analytics, and partnership data." },
-      { question: "Is this useful for M&A targeting, not just venture investing?", answer: "Yes. Several corporate development teams use the signal specifically for M&A pipeline construction — engineering acceleration is a strong leading indicator for which startups will reach the size that triggers acquisition conversations." },
+      { question: "Is this useful for M&A targeting, not just venture investing?", answer: "Yes. Several corporate development teams use the signal specifically for M&A pipeline construction, engineering acceleration is a strong leading indicator for which startups will reach the size that triggers acquisition conversations." },
     ],
     relatedSectors: ["enterprise-saas", "cybersecurity", "data-infrastructure"],
     relatedAlternatives: ["pitchbook", "cb-insights"],
@@ -369,9 +369,9 @@ export const useCases: UseCase[] = [
     h1: "VC Deal Flow Signal for Accelerator Program Scouts",
     tagline: "Identify program-fit founders three months before they apply.",
     intro:
-      "Accelerator and incubator programs compete for the same pool of high-potential founders, and the best programs proactively recruit founders rather than waiting for applications. Engineering acceleration is one of the strongest leading indicators that a founder is approaching the moment when accelerator participation becomes attractive — they have shipped something credible but not yet raised an institutional round.",
+      "Accelerator and incubator programs compete for the same pool of high-potential founders, and the best programs proactively recruit founders rather than waiting for applications. Engineering acceleration is one of the strongest leading indicators that a founder is approaching the moment when accelerator participation becomes attractive, they have shipped something credible but not yet raised an institutional round.",
     problem:
-      "Most accelerator scouting is reactive: review applications, reach out to obvious-fit founders in networks, hope for the best. Proactive scouting at scale requires a signal that fires at the right moment in the founder's arc — early enough to influence the application decision, but late enough that the founder has demonstrable traction.",
+      "Most accelerator scouting is reactive: review applications, reach out to obvious-fit founders in networks, hope for the best. Proactive scouting at scale requires a signal that fires at the right moment in the founder's arc, early enough to influence the application decision, but late enough that the founder has demonstrable traction.",
     solution:
       "VC Deal Flow Signal surfaces pre-seed and seed-stage engineering acceleration across 15 sectors. Scouts filter to the stage and sectors their program targets, identify breakout teams that have not yet raised institutional capital, and reach out with program fit. The three to six week lead time vs Crunchbase means scouts can engage founders during the decision window, not after.",
     workflow: [
@@ -398,7 +398,7 @@ export const useCases: UseCase[] = [
       {
         step: 5,
         name: "Share data with portfolio post-program",
-        body: "Once a startup graduates the program, the same engineering acceleration signal becomes a portfolio monitoring tool — useful for the program's network of mentor investors.",
+        body: "Once a startup graduates the program, the same engineering acceleration signal becomes a portfolio monitoring tool, useful for the program's network of mentor investors.",
       },
     ],
     metrics: [
@@ -407,9 +407,9 @@ export const useCases: UseCase[] = [
       { label: "Cost vs alternative scouting tools", value: "Fraction of enterprise scouting" },
     ],
     faqs: [
-      { question: "Does this replace application-based intake?", answer: "No, it complements it. Most programs combine inbound applications with proactive scouting. Engineering acceleration strengthens the proactive layer — applications still capture founders without significant public engineering activity." },
+      { question: "Does this replace application-based intake?", answer: "No, it complements it. Most programs combine inbound applications with proactive scouting. Engineering acceleration strengthens the proactive layer, applications still capture founders without significant public engineering activity." },
       { question: "How early-stage does the signal work?", answer: "Down to teams of 1 to 3 contributors with sustained activity. Pre-seed signals require human review and the +200% threshold rather than +100% because base rates are noisier." },
-      { question: "Can this be used for international cohort scouting?", answer: "Yes — the geographic filter supports country-level and city-level filtering, useful for programs with regional cohorts (Antler in specific cities, Techstars regional programs)." },
+      { question: "Can this be used for international cohort scouting?", answer: "Yes, the geographic filter supports country-level and city-level filtering, useful for programs with regional cohorts (Antler in specific cities, Techstars regional programs)." },
     ],
     relatedSectors: ["ai-ml", "developer-tools", "fintech"],
     relatedAlternatives: ["specter", "harmonic-ai"],
@@ -425,7 +425,7 @@ export const useCases: UseCase[] = [
     intro:
       "Funds increasingly need to know how their portfolio companies are pacing without relying on quarterly board updates. Engineering acceleration is a frequency-rich, founder-independent signal that supplements board reporting with weekly read on shipping velocity, hiring trends, and architectural shifts. Platform and operations teams use it to time follow-on conversations, surface stress signals, and report cohort-level metrics to LPs.",
     problem:
-      "Quarterly board updates are too infrequent for active portfolio management, and asking founders for monthly metric reports introduces relational friction. Most funds end up with stale visibility into which portfolio companies are shipping faster, hiring, or migrating platforms — until something goes wrong and the founder finally surfaces it.",
+      "Quarterly board updates are too infrequent for active portfolio management, and asking founders for monthly metric reports introduces relational friction. Most funds end up with stale visibility into which portfolio companies are shipping faster, hiring, or migrating platforms, until something goes wrong and the founder finally surfaces it.",
     solution:
       "VC Deal Flow Signal monitors GitHub engineering activity across the panel that includes most venture-backed technical companies. Funds wire portfolio company GitHub orgs into a custom watchlist (via API), and receive weekly engineering acceleration snapshots without any founder involvement. Portfolio monitoring becomes passive instead of relational.",
     workflow: [
@@ -461,7 +461,7 @@ export const useCases: UseCase[] = [
       { label: "Founder time required", value: "Zero" },
     ],
     faqs: [
-      { question: "Does this require founder consent?", answer: "No — the data is public GitHub activity. Many funds disclose to portfolio founders that they monitor public engineering signals, which most founders appreciate as a low-friction way for the fund to stay current without weekly check-ins." },
+      { question: "Does this require founder consent?", answer: "No, the data is public GitHub activity. Many funds disclose to portfolio founders that they monitor public engineering signals, which most founders appreciate as a low-friction way for the fund to stay current without weekly check-ins." },
       { question: "Can the signal predict portfolio company struggles?", answer: "Sometimes. Sustained engineering deceleration combined with declining contributor count is a strong leading indicator of team turnover or strategic stall. The signal does not catch every problem but flags meaningful changes weeks before they appear in formal updates." },
       { question: "How does this fit with our existing portfolio data tools?", answer: "Most funds use Affinity, HubSpot, or custom tools for portfolio data. The API integrates as an enrichment layer, attaching engineering acceleration metrics to existing portfolio records. Engineering acceleration is one input among many; it does not replace board reporting." },
     ],
@@ -477,7 +477,7 @@ export const useCases: UseCase[] = [
     h1: "VC Deal Flow Signal for Technical Due Diligence",
     tagline: "Verify engineering claims with public data instead of taking the founder's word.",
     intro:
-      "Technical due diligence in venture historically depended on founder self-reporting plus a partner's intuition about the team. Public engineering data has changed that — diligence teams can now verify shipping pace, contributor growth, language stack, and architectural choices independently, in hours rather than weeks. VC Deal Flow Signal is the structured layer most diligence teams use as the first pass.",
+      "Technical due diligence in venture historically depended on founder self-reporting plus a partner's intuition about the team. Public engineering data has changed that, diligence teams can now verify shipping pace, contributor growth, language stack, and architectural choices independently, in hours rather than weeks. VC Deal Flow Signal is the structured layer most diligence teams use as the first pass.",
     problem:
       "Founder pitch decks describe shipping velocity and team composition; diligence teams rarely have time to independently verify these claims. Bringing in a technical advisor to spend a week reviewing a startup's GitHub org costs four-figure consulting fees and weeks of latency. For most checks the diligence team accepts the founder's framing, which can produce expensive surprises post-investment.",
     solution:
@@ -516,8 +516,8 @@ export const useCases: UseCase[] = [
     ],
     faqs: [
       { question: "Does this replace a technical advisor?", answer: "No, it complements one. Engineering acceleration provides quantitative metrics; a technical advisor provides architectural and code-quality judgment. For checks above $1M most diligence teams use both." },
-      { question: "What if the startup is private-repo only?", answer: "The signal works for any startup with at least some public engineering footprint — public SDK, infra repos, OSS components. For purely closed-source companies, the diligence layer requires alternative sources. Many SaaS companies have at least some public artifacts." },
-      { question: "Can findings be shared with the founder?", answer: "Yes. The data is public, so sharing diligence findings with the founder during follow-up conversations is appropriate. Many founders welcome the structured metrics — it gives them a defensible answer to investor velocity questions." },
+      { question: "What if the startup is private-repo only?", answer: "The signal works for any startup with at least some public engineering footprint, public SDK, infra repos, OSS components. For purely closed-source companies, the diligence layer requires alternative sources. Many SaaS companies have at least some public artifacts." },
+      { question: "Can findings be shared with the founder?", answer: "Yes. The data is public, so sharing diligence findings with the founder during follow-up conversations is appropriate. Many founders welcome the structured metrics, it gives them a defensible answer to investor velocity questions." },
     ],
     relatedSectors: ["ai-ml", "enterprise-saas", "developer-tools"],
     relatedAlternatives: ["pitchbook", "harmonic-ai"],
@@ -550,7 +550,7 @@ export const useCases: UseCase[] = [
       {
         step: 3,
         name: "Build a GP sourcing-edge metric",
-        body: "Aggregate the lead-time-to-investment across the GP's portfolio. The distribution itself — median, top quartile, tail — is a defensible quantitative read on sourcing methodology.",
+        body: "Aggregate the lead-time-to-investment across the GP's portfolio. The distribution itself, median, top quartile, tail, is a defensible quantitative read on sourcing methodology.",
       },
       {
         step: 4,
@@ -569,9 +569,9 @@ export const useCases: UseCase[] = [
       { label: "Time per GP analysis", value: "2-4 hours" },
     ],
     faqs: [
-      { question: "Is engineering acceleration a complete measure of sourcing edge?", answer: "No — sourcing edge has many components, including network strength, founder relationships, and contrarian conviction. Engineering acceleration measures one specific dimension: the timing of investment relative to publicly observable engineering signals. It is one input, not a full evaluation." },
+      { question: "Is engineering acceleration a complete measure of sourcing edge?", answer: "No, sourcing edge has many components, including network strength, founder relationships, and contrarian conviction. Engineering acceleration measures one specific dimension: the timing of investment relative to publicly observable engineering signals. It is one input, not a full evaluation." },
       { question: "Does this work for non-technical sectors?", answer: "Less well. The framework is most informative for technical sectors where startups have meaningful public engineering footprints. For consumer, services, or hardware-heavy companies, alternative metrics are more relevant." },
-      { question: "Can GPs see this analysis?", answer: "The underlying data is public, so the analysis is independently reproducible by the GP. Most GPs welcome quantitative discussion of their sourcing methodology — it differentiates them from peers when the methodology is genuinely rigorous." },
+      { question: "Can GPs see this analysis?", answer: "The underlying data is public, so the analysis is independently reproducible by the GP. Most GPs welcome quantitative discussion of their sourcing methodology, it differentiates them from peers when the methodology is genuinely rigorous." },
     ],
     relatedSectors: ["ai-ml", "enterprise-saas", "fintech"],
     relatedAlternatives: ["pitchbook", "cb-insights"],
@@ -587,9 +587,9 @@ export const useCases: UseCase[] = [
     intro:
       "Seed-stage funds operate in the highest-leverage window of venture investing: the price is set, the team is small, the product is real, and the next round will be at meaningful step-up. The constraint is sourcing: getting into competitive seed rounds requires being early and having a defensible reason for conviction. Engineering acceleration is exactly that.",
     problem:
-      "Seed-stage sourcing is dominated by founder networks and accelerator demos. Funds without strong founder networks compete for the same set of demo-day startups, where pricing is least favorable. Funds that source early — before the demo, before the press, before the announcement — get into rounds at better terms with stronger conviction.",
+      "Seed-stage sourcing is dominated by founder networks and accelerator demos. Funds without strong founder networks compete for the same set of demo-day startups, where pricing is least favorable. Funds that source early, before the demo, before the press, before the announcement, get into rounds at better terms with stronger conviction.",
     solution:
-      "VC Deal Flow Signal surfaces seed-stage breakouts weekly via the Dashboard. Filter to seed-stage companies showing the hiring-burst signal type — the strongest predictor of imminent fundraise — across the fund's sector mandate. Reach out during the acceleration window with a structured engineering-context outreach, not generic demo-day pitching.",
+      "VC Deal Flow Signal surfaces seed-stage breakouts weekly via the Dashboard. Filter to seed-stage companies showing the hiring-burst signal type, the strongest predictor of imminent fundraise, across the fund's sector mandate. Reach out during the acceleration window with a structured engineering-context outreach, not generic demo-day pitching.",
     workflow: [
       {
         step: 1,
@@ -653,7 +653,7 @@ export const useCases: UseCase[] = [
       {
         step: 2,
         name: "Look for infrastructure buildout and platform migration patterns",
-        body: "These patterns are most informative at Series A — they indicate strategic technical investment that often precedes follow-on fundraises.",
+        body: "These patterns are most informative at Series A, they indicate strategic technical investment that often precedes follow-on fundraises.",
       },
       {
         step: 3,
@@ -677,8 +677,8 @@ export const useCases: UseCase[] = [
       { label: "Cross-validation with seed-stage network", value: "High" },
     ],
     faqs: [
-      { question: "How does this fit with proactive Series A sourcing teams?", answer: "Most Series A funds have analysts running proactive sourcing. Engineering acceleration is one input to that pipeline — typically the highest-frequency, most quantitative input. It complements rather than replaces the analysts' qualitative work." },
-      { question: "Does the signal work for non-software Series A companies?", answer: "Less well — the framework's coverage is best for technical companies with public engineering footprints. Vertical SaaS, consumer marketplaces, services-driven businesses, and hardware companies are partially or not covered." },
+      { question: "How does this fit with proactive Series A sourcing teams?", answer: "Most Series A funds have analysts running proactive sourcing. Engineering acceleration is one input to that pipeline, typically the highest-frequency, most quantitative input. It complements rather than replaces the analysts' qualitative work." },
+      { question: "Does the signal work for non-software Series A companies?", answer: "Less well, the framework's coverage is best for technical companies with public engineering footprints. Vertical SaaS, consumer marketplaces, services-driven businesses, and hardware companies are partially or not covered." },
       { question: "Can this surface breakout international Series A candidates?", answer: "Yes. The data is global; geographic filters support country and city-level filtering. Many funds use it specifically to expand sourcing beyond the US-centric demo-day flow." },
     ],
     relatedSectors: ["enterprise-saas", "data-infrastructure", "cybersecurity"],

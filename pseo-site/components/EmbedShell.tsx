@@ -8,7 +8,7 @@ const SITE = "https://signals.gitdealflow.com";
  * leaderboard, etc.) shown inside an iframe on a third-party site.
  *
  * Rendering contract:
- *   - No site chrome (Header/Footer/banner/pixels) — those are gated off in
+ *   - No site chrome (Header/Footer/banner/pixels), those are gated off in
  *     the root layout via <NotInEmbed/> for any path matching
  *     /embed/<widget>/... .
  *   - A thin top bar shows the widget name and a deep-link back to the
@@ -31,7 +31,7 @@ export function EmbedShell({
   deepLinkLabel,
   children,
 }: {
-  /** Slug under /tools — e.g., "safe-calculator" — used to build the deep link. */
+  /** Slug under /tools, e.g., "safe-calculator", used to build the deep link. */
   toolSlug: string;
   /** Human-readable tool name shown in the top bar. */
   toolName: string;

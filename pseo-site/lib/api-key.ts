@@ -27,12 +27,12 @@ export function verifyApiKeyFormat(key: string): boolean {
 }
 
 /**
- * v2 API key — reversible, embeds the Stripe customer ID so the server can
+ * v2 API key, reversible, embeds the Stripe customer ID so the server can
  * authenticate per-request without iterating the customer list.
  *
  * Format: `gdf_v2.<customerId>.<hmac16>`
- *   customerId — literal Stripe customer ID (e.g. `cus_NffrFeUfNV2Hib`)
- *   hmac16     — first 16 hex chars of HMAC-SHA256(secret, "api-key-v2:" + customerId)
+ *   customerId, literal Stripe customer ID (e.g. `cus_NffrFeUfNV2Hib`)
+ *   hmac16    , first 16 hex chars of HMAC-SHA256(secret, "api-key-v2:" + customerId)
  *
  * Used for the per-request agent tier. v1 keys remain valid for legacy callers.
  */

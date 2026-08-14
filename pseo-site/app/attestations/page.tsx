@@ -6,14 +6,14 @@ import { TrustPageOutro } from "@/components/TrustPageOutro";
 const SITE = "https://signals.gitdealflow.com";
 
 export const metadata: Metadata = {
-  title: "Attestations — Where VC Deal Flow Signal Is Indexed &amp; Verified",
+  title: "Attestations, Where VC Deal Flow Signal Is Indexed &amp; Verified",
   description:
     "Every third-party indexer, registry, and review platform that has independently verified VC Deal Flow Signal (GitDealFlow). SSRN, Crossref, Semantic Scholar, OpenAlex, DataCite, Zenodo, Wikidata, Glama (A-Tier 4.9/5.0), Cursor Directory, npm, GitHub, Chrome Web Store, ProductHunt, G2, AlternativeTo, SaaSHub.",
   alternates: { canonical: "/attestations" },
   openGraph: {
-    title: "Attestations — Third-party indexing &amp; verification",
+    title: "Attestations, Third-party indexing &amp; verification",
     description:
-      "Independent verification across 15+ external indexers and registries — academic, agent, distribution, and review.",
+      "Independent verification across 15+ external indexers and registries, academic, agent, distribution, and review.",
     type: "article",
     url: `${SITE}/attestations`,
   },
@@ -181,7 +181,7 @@ const ATTESTATIONS: Attestation[] = [
     href: "https://www.producthunt.com/products/vc-deal-flow-signal",
     status: "Listed",
     attestedOn: "2026-04-26",
-    verifiable: "Product page carries makers, comments, votes — all timestamped.",
+    verifiable: "Product page carries makers, comments, votes, all timestamped.",
   },
   {
     group: "Review &amp; directory",
@@ -218,7 +218,7 @@ export default function AttestationsPage() {
       {
         "@type": "WebPage",
         "@id": `${SITE}/attestations#page`,
-        name: "Attestations — VC Deal Flow Signal",
+        name: "Attestations, VC Deal Flow Signal",
         url: `${SITE}/attestations`,
         inLanguage: "en-US",
         isPartOf: { "@id": `${SITE}/#website` },
@@ -289,7 +289,7 @@ export default function AttestationsPage() {
         >
           In short: the {ATTESTATIONS.length} rows on this page are every
           third-party registry, indexer, and review platform that has
-          independently verified VC Deal Flow Signal — each with the identifier
+          independently verified VC Deal Flow Signal, each with the identifier
           they assigned, the date of attestation, and a one-click verifiable
           URL. We do not list pending reviews here. If a row appears, the
           link resolves.
@@ -300,7 +300,7 @@ export default function AttestationsPage() {
           data-speakable
         >
           <strong className="text-sky-300">The one belief this page asks for:</strong>{" "}
-          a claim you can verify yourself in one click isn&rsquo;t trust &mdash;
+          a claim you can verify yourself in one click isn&rsquo;t trust -
           it&rsquo;s a fact. Every registry below is a third party we don&rsquo;t
           control: click any row and it resolves, or it wouldn&rsquo;t be on this page.
         </p>
@@ -377,7 +377,7 @@ export default function AttestationsPage() {
           </Link>
         </p>
 
-        <TrustPageOutro institutional acNote="I keep my face off this site, so I can't ask you to trust me — only to check me. Every row above is a third party I don't control saying the same thing: the paper, the dataset, the identifiers are real. If a registry ever delisted us, this table would say so — I'd rather lose the row than fake it." />
+        <TrustPageOutro institutional acNote="I keep my face off this site, so I can't ask you to trust me, only to check me. Every row above is a third party I don't control saying the same thing: the paper, the dataset, the identifiers are real. If a registry ever delisted us, this table would say so, I'd rather lose the row than fake it." />
       </div>
     </>
   );

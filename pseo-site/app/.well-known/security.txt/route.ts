@@ -1,5 +1,5 @@
 /**
- * RFC 9116 — `/.well-known/security.txt`
+ * RFC 9116, `/.well-known/security.txt`
  *
  * Standard machine-readable contact for security disclosures. Some agents
  * (and security-conscious crawlers) check this before scraping; publishing

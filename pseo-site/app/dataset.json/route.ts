@@ -4,8 +4,8 @@
  * Google Dataset Search and Hugging Face Datasets historically probe both
  * /.well-known/dataset.json and a root-level /dataset.json. We serve the
  * DCAT 3 catalog body directly (200, not 308) because some dataset
- * crawlers don't follow redirects on JSON-LD probes. The canonical URL —
- * declared via the `Link: rel=canonical` header — remains under
+ * crawlers don't follow redirects on JSON-LD probes. The canonical URL -
+ * declared via the `Link: rel=canonical` header, remains under
  * /.well-known/.
  */
 

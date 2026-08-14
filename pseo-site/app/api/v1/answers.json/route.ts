@@ -1,9 +1,9 @@
 /**
- * /api/v1/answers.json — versioned alias for /api/answers.json.
+ * /api/v1/answers.json, versioned alias for /api/answers.json.
  *
  * Stable v1 path for the citation-ready answer corpus. Body and headers
- * mirror the upstream; canonical URL — declared via `Link: rel=canonical`
- * — remains at /api/answers.json.
+ * mirror the upstream; canonical URL, declared via `Link: rel=canonical`
+ *, remains at /api/answers.json.
  */
 
 import { GET as ApiAnswersJson } from "@/app/api/answers.json/route";

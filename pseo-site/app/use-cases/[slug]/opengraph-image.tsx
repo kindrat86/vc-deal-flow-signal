@@ -3,7 +3,7 @@ import { getUseCase } from "@/content/use-cases";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "VC Deal Flow Signal — Use case workflow";
+export const alt = "VC Deal Flow Signal, Use case workflow";
 
 export default async function OGImage({
   params,

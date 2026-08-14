@@ -2,7 +2,7 @@
  * Dream-100 ICP scoring (audit 2026-05-06, Russell Brunson Dream-100 rubric).
  *
  *   Match  (1-10)  How concentrated this voice's audience is with our ICP
- *                  (Marcus — a corp-dev / PE-operating-partner / non-engineer
+ *                  (Marcus, a corp-dev / PE-operating-partner / non-engineer
  *                  tech-VP buyer who does NOT read code, also reads as a solo
  *                  angel / scout / seed buyer, and needs engineering signal
  *                  translated into business language: who's accelerating,
@@ -19,13 +19,13 @@
  *   Brunson rule: Match before Reach. Match weight is 4, Reach is 3.
  *
  * Tiers (matching the @/components Tier convention used elsewhere):
- *   T1 (>=85) — lean in this quarter (single Tuesday/Friday cycle)
- *   T2 (70-84) — sustaining cadence (monthly contact)
- *   T3 (<70)  — read-only / mental-model only
+ *   T1 (>=85), lean in this quarter (single Tuesday/Friday cycle)
+ *   T2 (70-84), sustaining cadence (monthly contact)
+ *   T3 (<70) , read-only / mental-model only
  *
  * Keys must match `name` exactly in @/content/target-list. Verified at runtime
  * by `assertCoverage()` (called from the page render path). Keep this file
- * in lockstep with @/content/target-list — when names change there, change them
+ * in lockstep with @/content/target-list, when names change there, change them
  * here, or coverage will fail and the build will surface the gap.
  */
 
@@ -50,7 +50,7 @@ export const ICP_SCORES: Record<string, IcpScoreInputs> = {
   "Every": { match: 7, reach: 7, engage: 6 },
   "Platformer": { match: 6, reach: 7, engage: 6 },
 
-  // ---- podcasts (10) — Engage caps low: anonymity rule blocks guesting ----
+  // ---- podcasts (10), Engage caps low: anonymity rule blocks guesting ----
   "Acquired": { match: 8, reach: 10, engage: 4 },
   "Invest Like the Best": { match: 9, reach: 10, engage: 4 },
   "Business Breakdowns": { match: 8, reach: 8, engage: 4 },
@@ -74,7 +74,7 @@ export const ICP_SCORES: Record<string, IcpScoreInputs> = {
   "Crunchbase Daily": { match: 8, reach: 9, engage: 5 },
   "PitchBook News": { match: 9, reach: 8, engage: 5 },
 
-  // ---- market-map & research desks (10) — Engage hot on data desks ----
+  // ---- market-map & research desks (10), Engage hot on data desks ----
   "CB Insights": { match: 10, reach: 9, engage: 7 },
   "PitchBook": { match: 10, reach: 9, engage: 7 },
   "Sacra": { match: 10, reach: 6, engage: 8 },
@@ -86,7 +86,7 @@ export const ICP_SCORES: Record<string, IcpScoreInputs> = {
   "Forrester": { match: 7, reach: 8, engage: 4 },
   "Tracxn": { match: 8, reach: 6, engage: 6 },
 
-  // ---- conferences (10) — Engage caps: anonymity, no speaking ----
+  // ---- conferences (10), Engage caps: anonymity, no speaking ----
   "SaaStr Annual": { match: 9, reach: 9, engage: 4 },
   "Slush": { match: 8, reach: 8, engage: 4 },
   "Web Summit": { match: 7, reach: 9, engage: 3 },
@@ -98,19 +98,19 @@ export const ICP_SCORES: Record<string, IcpScoreInputs> = {
   "Forrester events": { match: 7, reach: 7, engage: 3 },
   "NACD": { match: 7, reach: 6, engage: 3 },
 
-  // ---- books (10) — Engage caps: we cite, we don't co-author ----
-  "The Outsiders — William Thorndike": { match: 9, reach: 8, engage: 2 },
-  "7 Powers — Hamilton Helmer": { match: 9, reach: 7, engage: 2 },
-  "Competition Demystified — Bruce Greenwald": { match: 8, reach: 7, engage: 2 },
-  "Expectations Investing — Michael Mauboussin": { match: 9, reach: 6, engage: 2 },
-  "Zero to One — Peter Thiel": { match: 8, reach: 10, engage: 2 },
-  "The Cold Start Problem — Andrew Chen": { match: 7, reach: 8, engage: 2 },
-  "Working Backwards — Colin Bryar & Bill Carr": { match: 8, reach: 8, engage: 2 },
-  "High Growth Handbook — Elad Gil": { match: 8, reach: 8, engage: 2 },
-  "Venture Deals — Brad Feld & Jason Mendelson": { match: 9, reach: 8, engage: 2 },
-  "Super Founders — Ali Tamaseb": { match: 9, reach: 7, engage: 3 },
+  // ---- books (10), Engage caps: we cite, we don't co-author ----
+  "The Outsiders, William Thorndike": { match: 9, reach: 8, engage: 2 },
+  "7 Powers, Hamilton Helmer": { match: 9, reach: 7, engage: 2 },
+  "Competition Demystified, Bruce Greenwald": { match: 8, reach: 7, engage: 2 },
+  "Expectations Investing, Michael Mauboussin": { match: 9, reach: 6, engage: 2 },
+  "Zero to One, Peter Thiel": { match: 8, reach: 10, engage: 2 },
+  "The Cold Start Problem, Andrew Chen": { match: 7, reach: 8, engage: 2 },
+  "Working Backwards, Colin Bryar & Bill Carr": { match: 8, reach: 8, engage: 2 },
+  "High Growth Handbook, Elad Gil": { match: 8, reach: 8, engage: 2 },
+  "Venture Deals, Brad Feld & Jason Mendelson": { match: 9, reach: 8, engage: 2 },
+  "Super Founders, Ali Tamaseb": { match: 9, reach: 7, engage: 3 },
 
-  // ---- PE / M&A / holdco operators (10) — Engage caps: we read, not co-invest ----
+  // ---- PE / M&A / holdco operators (10), Engage caps: we read, not co-invest ----
   "Tiny (Andrew Wilkinson)": { match: 9, reach: 7, engage: 4 },
   "FJ Labs (Fabrice Grinda)": { match: 8, reach: 6, engage: 4 },
   "Altimeter (Brad Gerstner)": { match: 8, reach: 7, engage: 3 },
@@ -134,7 +134,7 @@ export const ICP_SCORES: Record<string, IcpScoreInputs> = {
   "GP / LP Slack groups": { match: 9, reach: 4, engage: 4 },
   "Carta Equity community": { match: 7, reach: 6, engage: 5 },
 
-  // ---- linkedin-pages (10) — Engage = page-only commenting (4/wk ceiling) ----
+  // ---- linkedin-pages (10), Engage = page-only commenting (4/wk ceiling) ----
   "Insight Partners": { match: 7, reach: 8, engage: 4 },
   "Index Ventures": { match: 6, reach: 7, engage: 4 },
   "Carta": { match: 9, reach: 9, engage: 6 },
@@ -188,14 +188,14 @@ export const TIER_CHIP_CLASS: Record<IcpTier, string> = {
 };
 
 /**
- * Archetype affinity overlay (audit 2026-05-09 — Brunson Traffic Secrets Ch 1
+ * Archetype affinity overlay (audit 2026-05-09, Brunson Traffic Secrets Ch 1
  * split). For each Dream-100 voice, which of the three reader-archetypes
  * (Solo Angel / Fund GP / Family Office) skews toward consuming this voice.
  * Used by distribution playbooks to target by archetype, not just by score.
  *
- * Values are 0–10; higher = stronger affinity. A voice can score high for
+ * Values are 0-10; higher = stronger affinity. A voice can score high for
  * multiple archetypes (e.g. Stratechery is read by Fund GPs AND Family
- * Offices). The total can exceed 10 — these are independent affinity
+ * Offices). The total can exceed 10, these are independent affinity
  * dimensions, not a budget.
  *
  * Internal use only (no customer-facing surface reads from this map yet).
@@ -264,16 +264,16 @@ export const ARCHETYPE_AFFINITY: Record<string, ArchetypeAffinity> = {
   "Forrester events": { soloAngel: 3, fundGp: 6, familyOffice: 8 },
   "NACD": { soloAngel: 3, fundGp: 6, familyOffice: 9 },
   // ---- books ----
-  "The Outsiders — William Thorndike": { soloAngel: 6, fundGp: 8, familyOffice: 10 },
-  "7 Powers — Hamilton Helmer": { soloAngel: 6, fundGp: 9, familyOffice: 8 },
-  "Competition Demystified — Bruce Greenwald": { soloAngel: 5, fundGp: 8, familyOffice: 9 },
-  "Expectations Investing — Michael Mauboussin": { soloAngel: 4, fundGp: 8, familyOffice: 9 },
-  "Zero to One — Peter Thiel": { soloAngel: 8, fundGp: 9, familyOffice: 8 },
-  "The Cold Start Problem — Andrew Chen": { soloAngel: 8, fundGp: 8, familyOffice: 5 },
-  "Working Backwards — Colin Bryar & Bill Carr": { soloAngel: 6, fundGp: 7, familyOffice: 7 },
-  "High Growth Handbook — Elad Gil": { soloAngel: 7, fundGp: 9, familyOffice: 7 },
-  "Venture Deals — Brad Feld & Jason Mendelson": { soloAngel: 9, fundGp: 8, familyOffice: 6 },
-  "Super Founders — Ali Tamaseb": { soloAngel: 8, fundGp: 8, familyOffice: 6 },
+  "The Outsiders, William Thorndike": { soloAngel: 6, fundGp: 8, familyOffice: 10 },
+  "7 Powers, Hamilton Helmer": { soloAngel: 6, fundGp: 9, familyOffice: 8 },
+  "Competition Demystified, Bruce Greenwald": { soloAngel: 5, fundGp: 8, familyOffice: 9 },
+  "Expectations Investing, Michael Mauboussin": { soloAngel: 4, fundGp: 8, familyOffice: 9 },
+  "Zero to One, Peter Thiel": { soloAngel: 8, fundGp: 9, familyOffice: 8 },
+  "The Cold Start Problem, Andrew Chen": { soloAngel: 8, fundGp: 8, familyOffice: 5 },
+  "Working Backwards, Colin Bryar & Bill Carr": { soloAngel: 6, fundGp: 7, familyOffice: 7 },
+  "High Growth Handbook, Elad Gil": { soloAngel: 7, fundGp: 9, familyOffice: 7 },
+  "Venture Deals, Brad Feld & Jason Mendelson": { soloAngel: 9, fundGp: 8, familyOffice: 6 },
+  "Super Founders, Ali Tamaseb": { soloAngel: 8, fundGp: 8, familyOffice: 6 },
   // ---- PE / M&A / holdco operators ----
   "Tiny (Andrew Wilkinson)": { soloAngel: 7, fundGp: 7, familyOffice: 8 },
   "FJ Labs (Fabrice Grinda)": { soloAngel: 7, fundGp: 8, familyOffice: 7 },

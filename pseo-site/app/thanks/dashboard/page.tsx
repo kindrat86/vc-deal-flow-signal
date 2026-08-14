@@ -21,7 +21,7 @@ const STEPS = [
     n: 1,
     label: "Bookmark the Dashboard",
     detail:
-      "https://signals.gitdealflow.com — log in with the email on your Stripe receipt. The magic link in your inbox lasts 30 days. Bookmark it now so the Monday rhythm starts on Monday.",
+      "https://signals.gitdealflow.com, log in with the email on your Stripe receipt. The magic link in your inbox lasts 30 days. Bookmark it now so the Monday rhythm starts on Monday.",
   },
   {
     n: 2,
@@ -33,7 +33,7 @@ const STEPS = [
     n: 3,
     label: "Pick the sector for your first Sector Deep-Dive PDF",
     detail:
-      "Reply to your welcome email with the sector you want first. PDFs ship monthly — the first one within seven days. If you don't pick, the founder picks based on what's hottest in your thesis and you can swap next month.",
+      "Reply to your welcome email with the sector you want first. PDFs ship monthly, the first one within seven days. If you don't pick, the founder picks based on what's hottest in your thesis and you can swap next month.",
   },
 ] as const;
 
@@ -57,7 +57,7 @@ export default function ThanksDashboard() {
           <p className="text-gray-300 text-base leading-relaxed">
             The receipt is in your inbox. So is a magic-link login. Three
             things to do in the next ten minutes that double the value of
-            your first month — written by the founder, not a bot.
+            your first month, written by the founder, not a bot.
           </p>
         </header>
 
@@ -118,7 +118,7 @@ export default function ThanksDashboard() {
           </div>
         </section>
 
-        {/* Brunson TS §3 Ch 11 — Dashboard buyers already get email; the
+        {/* Brunson TS §3 Ch 11, Dashboard buyers already get email; the
             channel is the second pipe. Sits AFTER the founder note and
             BEFORE the next-tier mention so it reads as a useful free
             add-on, not a competing offer to Insider. */}
@@ -132,7 +132,7 @@ export default function ThanksDashboard() {
             Private investor Telegram, monthly live briefings, Slack/Telegram
             spike alerts, JSON/CSV API access, and quarterly trend briefings.
             Two months in the Dashboard is enough to know if Insider would
-            pay for itself. No upgrade pressure — the Acceleration Watch
+            pay for itself. No upgrade pressure, the Acceleration Watch
             email mentions the doors when they&rsquo;re relevant.
           </p>
           <p className="pt-2">

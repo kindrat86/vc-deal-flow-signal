@@ -3,8 +3,8 @@
  *
  * Some discovery agents probe `/agent-card.json` at the apex before checking
  * the well-known prefix. We serve the same body here directly (200, not 308)
- * because some AI bots don't follow redirects. The canonical URL — declared
- * via the `Link: rel=canonical` header — remains under /.well-known so
+ * because some AI bots don't follow redirects. The canonical URL, declared
+ * via the `Link: rel=canonical` header, remains under /.well-known so
  * dedupers see the two surfaces as one resource.
  */
 

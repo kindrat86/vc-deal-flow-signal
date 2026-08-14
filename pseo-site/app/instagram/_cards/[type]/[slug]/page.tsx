@@ -34,13 +34,13 @@ export async function generateMetadata({
   const { type, slug } = await params;
   const post = findCard(type as InstagramCardType, slug);
   const title = post
-    ? `${prettyType(type)} · ${slug} — @thedatanerd`
-    : `Card · ${type}/${slug} — @thedatanerd`;
+    ? `${prettyType(type)} · ${slug}, @thedatanerd`
+    : `Card · ${type}/${slug}, @thedatanerd`;
   return {
     title,
     description: post
       ? post.caption.split("\n")[0]?.slice(0, 160) ?? title
-      : `Instagram card — ${type}/${slug}`,
+      : `Instagram card, ${type}/${slug}`,
     alternates: {
       canonical: `/instagram/cards/${type}/${slug}`,
     },
@@ -50,7 +50,7 @@ export async function generateMetadata({
       url: `https://signals.gitdealflow.com/instagram/cards/${type}/${slug}`,
     },
     robots: {
-      // Indexable — these are public reference pages for the IG queue and
+      // Indexable, these are public reference pages for the IG queue and
       // help link unfurls + agent-side discovery (the cards mirror the same
       // data we expose at /predicted, /signal-of-the-week, /methodology).
       index: true,
@@ -113,7 +113,7 @@ export default async function InstagramCardPreview({
         {/* eslint-disable-next-line @next/next/no-img-element */}
         <img
           src={imageUrl}
-          alt={`Instagram card — ${type}/${slug}`}
+          alt={`Instagram card, ${type}/${slug}`}
           width={540}
           height={540}
           style={{ borderRadius: "12px", boxShadow: "0 8px 24px rgba(0,0,0,0.08)" }}

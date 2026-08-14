@@ -13,13 +13,13 @@ const PAGE_URL = `${SITE}/from-stars-to-seed`;
 
 export const metadata: Metadata = {
   title:
-    "From Stars to Seed — case studies of GitHub repos that became funded companies",
+    "From Stars to Seed, case studies of GitHub repos that became funded companies",
   description:
-    "Case studies where GitHub engineering acceleration showed up before the public round — from Vercel and LangChain to Cursor, Groq, and Modal.",
+    "Case studies where GitHub engineering acceleration showed up before the public round, from Vercel and LangChain to Cursor, Groq, and Modal.",
   alternates: { canonical: "/from-stars-to-seed" },
   openGraph: {
     title:
-      "From Stars to Seed — GitHub momentum case studies that led to priced rounds",
+      "From Stars to Seed, GitHub momentum case studies that led to priced rounds",
     description:
       "Repo-level engineering acceleration preceded the priced rounds at Vercel, LangChain, Hugging Face, Cursor, Groq, and more. The case studies are public; the signal is reproducible.",
     url: PAGE_URL,
@@ -36,7 +36,7 @@ export default function FromStarsToSeedIndexPage() {
       {
         "@type": "CollectionPage",
         "@id": `${PAGE_URL}#collection`,
-        name: "From Stars to Seed — case studies",
+        name: "From Stars to Seed, case studies",
         description:
           "Case studies of GitHub repositories whose engineering acceleration signal preceded a publicly announced fundraise.",
         url: PAGE_URL,
@@ -58,7 +58,7 @@ export default function FromStarsToSeedIndexPage() {
       },
       {
         "@type": "ItemList",
-        name: "From Stars to Seed — case studies",
+        name: "From Stars to Seed, case studies",
         description:
           "List of repos whose engineering acceleration preceded a priced round.",
         numberOfItems: totalCases,
@@ -132,8 +132,8 @@ export default function FromStarsToSeedIndexPage() {
             data-speakable
           >
             Every entry on this page is a public GitHub repository whose
-            engineering acceleration — star slope, release cadence, SDK
-            install velocity, contributor growth, integration density — was
+            engineering acceleration, star slope, release cadence, SDK
+            install velocity, contributor growth, integration density, was
             visible <em>weeks or months before</em> the company behind it
             announced a priced round. Vercel, LangChain, Hugging Face,
             Cursor, Groq, Modal, Replicate, ComfyUI, and {totalCases - 8} more.
@@ -165,7 +165,7 @@ export default function FromStarsToSeedIndexPage() {
                 </span>
               </div>
               <h2 className="text-xl sm:text-2xl font-bold text-gray-100 leading-snug group-hover:text-sky-200 transition-colors mb-2">
-                {c.company} —{" "}
+                {c.company}, {" "}
                 <span className="text-gray-300 font-medium">{c.raise}</span>
               </h2>
               <p className="text-gray-400 text-sm leading-relaxed mb-3">
@@ -198,14 +198,14 @@ export default function FromStarsToSeedIndexPage() {
             newsletter mention density. For Mistral it&rsquo;s the
             open-weights release itself. For PlanetScale it&rsquo;s
             partnership-announcement density. What every case shares is
-            that the signal preceded the priced round — sometimes by
+            that the signal preceded the priced round, sometimes by
             weeks, sometimes by quarters.
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
             VC Deal Flow Signal tracks engineering acceleration in real
             time across twenty sectors. The same signal shapes that flagged
             the repos on this page run every Monday on every public repo
-            in our dataset — the next case study is being authored right
+            in our dataset, the next case study is being authored right
             now in someone&rsquo;s commit log.
           </p>
           <p className="text-gray-300 text-base leading-relaxed">

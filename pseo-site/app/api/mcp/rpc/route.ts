@@ -299,7 +299,7 @@ const TOOLS = [
     name: "get_diligence_dossier",
     title: "Company Diligence Dossier",
     description:
-      "Public-source diligence dossier for a company or entity in one cited object: who acquired it (M&A history), which funds publicly backed it, and its published engineering-acceleration signal. Use mid-diligence for 'who acquired X', 'which funds backed Y', 'what's the signal on Z'. Sources are press-release / SEC-filing / both-sides-disclosed only; returns found:false (an expected outcome, not an error) with honest notes when the entity is outside the tracked corpus — never guesses.",
+      "Public-source diligence dossier for a company or entity in one cited object: who acquired it (M&A history), which funds publicly backed it, and its published engineering-acceleration signal. Use mid-diligence for 'who acquired X', 'which funds backed Y', 'what's the signal on Z'. Sources are press-release / SEC-filing / both-sides-disclosed only; returns found:false (an expected outcome, not an error) with honest notes when the entity is outside the tracked corpus, never guesses.",
     inputSchema: {
       type: "object",
       properties: {
@@ -490,7 +490,7 @@ const TOOLS = [
     name: "get_deep_signal",
     title: "Get Deep Signal (paid)",
     description:
-      "PAID per-request — €0.19/call, 100 credits = €19 at https://signals.gitdealflow.com/agents/credits. Returns enriched signal beyond the free get_startup_signal: composite score (0-100), velocity/growth/novelty sub-scores, in-sector rank + percentile, plain-English investment thesis, top-3 sector comparables, and multi-period history. Requires Authorization: Bearer gdf_v2.cus_xxx.<hmac>. 1 credit consumed only on a successful match; misses are FREE. Credits never expire.",
+      "PAID per-request, €0.19/call, 100 credits = €19 at https://signals.gitdealflow.com/agents/credits. Returns enriched signal beyond the free get_startup_signal: composite score (0-100), velocity/growth/novelty sub-scores, in-sector rank + percentile, plain-English investment thesis, top-3 sector comparables, and multi-period history. Requires Authorization: Bearer gdf_v2.cus_xxx.<hmac>. 1 credit consumed only on a successful match; misses are FREE. Credits never expire.",
     inputSchema: {
       type: "object" as const,
       properties: {
@@ -536,8 +536,8 @@ const TOOLS = [
       "- The user is writing a thread/post about startup engineering signals and wants the canonical install command + share copy.",
       "",
       "DO NOT USE FOR:",
-      "- Posting on the user's behalf — this tool only composes the text + intent URLs. The user must click and confirm in the destination network.",
-      "- Generating fake or speculative results — pass real data the agent received from another tool call.",
+      "- Posting on the user's behalf, this tool only composes the text + intent URLs. The user must click and confirm in the destination network.",
+      "- Generating fake or speculative results, pass real data the agent received from another tool call.",
       "",
       "BEHAVIOR (two-step approval flow, see `approval_token`):",
       "- Step 1: call this tool with `summary` only. The server replies with an error (-32602) containing a `/share-approve?summary=...` URL the user must open.",
@@ -548,10 +548,10 @@ const TOOLS = [
       "- Always includes the canonical install command `npx @gitdealflow/mcp-signal` and the SSRN paper link for credibility.",
       "",
       "PARAMETERS:",
-      "- `summary` (string, required, 10-200 chars) — the one-line takeaway to share.",
-      "- `approval_token` (string, required after first call) — the 10-minute token returned by the /share-approve page.",
-      "- `network` (string, optional) — 'twitter' | 'bluesky' | 'mastodon' | 'linkedin' | 'telegram' | 'all' (default: 'all').",
-      "- `mention_handle` (boolean, optional, default false) — include @sipiteno attribution (twitter/bluesky/mastodon only).",
+      "- `summary` (string, required, 10-200 chars), the one-line takeaway to share.",
+      "- `approval_token` (string, required after first call), the 10-minute token returned by the /share-approve page.",
+      "- `network` (string, optional), 'twitter' | 'bluesky' | 'mastodon' | 'linkedin' | 'telegram' | 'all' (default: 'all').",
+      "- `mention_handle` (boolean, optional, default false), include @sipiteno attribution (twitter/bluesky/mastodon only).",
     ].join("\n"),
     inputSchema: {
       type: "object" as const,
@@ -567,7 +567,7 @@ const TOOLS = [
           minLength: 16,
           maxLength: 512,
           description:
-            "10-minute HMAC-signed token bound to a hash of `summary`. Obtain it by directing the user to https://signals.gitdealflow.com/share-approve?summary=<urlencoded-summary> — they review and click Approve, then paste the resulting token back. The first call with no token will return an error containing the exact URL to send the user to.",
+            "10-minute HMAC-signed token bound to a hash of `summary`. Obtain it by directing the user to https://signals.gitdealflow.com/share-approve?summary=<urlencoded-summary>they review and click Approve, then paste the resulting token back. The first call with no token will return an error containing the exact URL to send the user to.",
         },
         network: {
           type: "string",
@@ -617,7 +617,7 @@ const TOOLS = [
       "",
       "SCORING (also returned in evidence.scoreBreakdown): velocity ≤40 (saturates +300%), contributorGrowth ≤25 (saturates +200%), newRepos ≤15 (saturates 10), signalType ≤20 (Deploy frequency spike 20 / Engineering hiring burst 17 / Infrastructure buildout 14 / Framework migration 8). Total 0-100 → >=70 high, 45-69 elevated, 25-44 moderate, <25 low.",
       "",
-      "PARAMETERS: { name } — display name or GitHub org slug (case-insensitive). On no match returns { found: false, suggestion } (expected, not an error).",
+      "PARAMETERS: { name }, display name or GitHub org slug (case-insensitive). On no match returns { found: false, suggestion } (expected, not an error).",
     ].join("\n"),
     inputSchema: {
       type: "object",
@@ -671,9 +671,9 @@ const TOOLS = [
     name: "shortlist_signals",
     title: "Shortlist Strongest Signals",
     description: [
-      "Return a ranked shortlist of the strongest engineering-acceleration signals matching a set of filters — the whole sourcing workflow in ONE call (e.g. 'the 5 strongest signals in fintech in the EU'). Scans the full tracked universe, scores each with the transparent engine (same scoring as predict_funding), filters, sorts by accelerationScore desc, returns the top `limit`.",
+      "Return a ranked shortlist of the strongest engineering-acceleration signals matching a set of filters, the whole sourcing workflow in ONE call (e.g. 'the 5 strongest signals in fintech in the EU'). Scans the full tracked universe, scores each with the transparent engine (same scoring as predict_funding), filters, sorts by accelerationScore desc, returns the top `limit`.",
       "",
-      "GEOGRAPHY IS REGION-LEVEL ONLY — values are US / EU / UK / APAC / LATAM / Canada / Unknown. City/country aliases ('NYC', 'New York', 'London', 'Berlin', 'Singapore') normalize up to the enclosing region and the response `notes` says so. There is no city-level filtering.",
+      "GEOGRAPHY IS REGION-LEVEL ONLY, values are US / EU / UK / APAC / LATAM / Canada / Unknown. City/country aliases ('NYC', 'New York', 'London', 'Berlin', 'Singapore') normalize up to the enclosing region and the response `notes` says so. There is no city-level filtering.",
       "",
       "PARAMETERS (all optional): sector (one of 20 slugs), geography (region token or alias), signalType (exact label), minAccelerationScore (0-100), minVelocityChangePct (integer percent), limit (1-25, default 5).",
     ].join("\n"),
@@ -727,7 +727,7 @@ const TOOLS = [
       "",
       "Names that don't resolve are returned in `notFound` (expected, not an error). The recommendation is computed only over resolved companies; if fewer than 2 resolve it explains that no comparison was possible.",
       "",
-      "PARAMETERS: { names: string[] } — 2 to 5 display names or GitHub org slugs (case-insensitive).",
+      "PARAMETERS: { names: string[] }, 2 to 5 display names or GitHub org slugs (case-insensitive).",
     ].join("\n"),
     inputSchema: {
       type: "object",
@@ -806,7 +806,7 @@ const PROMPTS = [
   {
     name: "sector_deep_dive",
     description:
-      "Sector intelligence brief — top movers, dark horses, thesis follow-ups.",
+      "Sector intelligence brief, top movers, dark horses, thesis follow-ups.",
     arguments: [
       { name: "sector", description: "Sector slug.", required: true },
     ],
@@ -838,7 +838,7 @@ const PROMPTS = [
   {
     name: "sourcing_session",
     description:
-      "Run a full sourcing session in one pass — the corp-dev / scout workflow. Shortlists the strongest engineering-acceleration signals (optionally by sector/region), then attaches a transparent, citable funding-likelihood read to each pick. Pulls live data via shortlist_signals + predict_funding.",
+      "Run a full sourcing session in one pass, the corp-dev / scout workflow. Shortlists the strongest engineering-acceleration signals (optionally by sector/region), then attaches a transparent, citable funding-likelihood read to each pick. Pulls live data via shortlist_signals + predict_funding.",
     arguments: [
       { name: "sector", description: "Optional sector slug to focus the shortlist (e.g. 'ai-ml'). Omit to scan all.", required: false },
       { name: "geography", description: "Optional region filter (US/EU/UK/APAC/LATAM/Canada). Aliases normalize up to the region.", required: false },
@@ -855,7 +855,7 @@ const PROMPTS = [
   },
 ];
 
-const FOOTER = "— Powered by gitdealflow.com";
+const FOOTER = ", Powered by gitdealflow.com";
 
 function startupRow(s: Startup, rank: number, sectorName: string) {
   return {
@@ -884,7 +884,7 @@ function getActiveSectors() {
 }
 
 // ---------------------------------------------------------------------------
-// Transparent scoring engine — shared by predict_funding / shortlist_signals /
+// Transparent scoring engine, shared by predict_funding / shortlist_signals /
 // compare_signals. Mirrors the stdio server (@gitdealflow/mcp-signal). Every
 // component and weight is returned in the response so the score is auditable.
 // ---------------------------------------------------------------------------
@@ -1144,7 +1144,7 @@ function textBlockFromTrending() {
   const data = getTrendingPayload();
   const lines = data.startups.map(
     (s) =>
-      `${s.rank}. ${s.name} — ${s.commitVelocityChange} velocity change, ${s.contributors} contributors, signal: ${s.signalType}`
+      `${s.rank}. ${s.name}, ${s.commitVelocityChange} velocity change, ${s.contributors} contributors, signal: ${s.signalType}`
   );
   return `Top 20 Trending Startups (${data.period})\n\n${lines.join("\n")}\n\nSource: ${BASE_URL}\nCitation: ${data.citation}\n\n${FOOTER}`;
 }
@@ -1156,7 +1156,7 @@ function textBlockFromSector(sectorSlug: string) {
   }
   const lines = data.startups.map(
     (s) =>
-      `${s.rank}. ${s.name} — ${s.commitVelocityChange} velocity change, ${s.contributors} contributors, signal: ${s.signalType}`
+      `${s.rank}. ${s.name}, ${s.commitVelocityChange} velocity change, ${s.contributors} contributors, signal: ${s.signalType}`
   );
   return `${data.sector.name} Startups (${data.period})\n${data.sector.description ?? ""}\n${data.startupCount} startups tracked\n\n${lines.join("\n\n")}\n\nSource: ${data.sector.url}\nCitation: ${data.citation}\n\n${FOOTER}`;
 }
@@ -1168,7 +1168,7 @@ function textBlockFromStartup(name: string) {
   }
   const s = data.startup;
   return [
-    `${s.name} — Engineering Signal Profile`,
+    `${s.name}, Engineering Signal Profile`,
     ``,
     `Sector: ${s.sector}`,
     `Stage: ${s.stage}`,
@@ -1268,7 +1268,7 @@ async function handleToolsCall(
     case "get_signals_summary": {
       const structured = getSummaryPayload();
       const text = [
-        `VC Deal Flow Signal — Data Summary`,
+        `VC Deal Flow Signal, Data Summary`,
         ``,
         `Current Period: ${structured.period}`,
         `Sectors Active: ${structured.sectorsActive}`,
@@ -1291,7 +1291,7 @@ async function handleToolsCall(
         return rpcError(id, -32602, "Missing required parameter: company");
       }
       const d = buildDossier(entity);
-      const lines: string[] = [`Diligence dossier — ${d.entity}`, ``];
+      const lines: string[] = [`Diligence dossier, ${d.entity}`, ``];
       if (d.acquiredBy.length) {
         lines.push(
           `Acquired by: ${d.acquiredBy
@@ -1320,7 +1320,7 @@ async function handleToolsCall(
       }
       if (!d.found) {
         lines.push(
-          `No grounded facts — "${entity}" is outside the tracked corpus. We do not guess.`,
+          `No grounded facts, "${entity}" is outside the tracked corpus. We do not guess.`,
         );
       }
       for (const n of d.notes) lines.push(``, n);
@@ -1387,7 +1387,7 @@ async function handleToolsCall(
         .slice(0, 5)
         .map(
           (w, i) =>
-            `${i + 1}. ${w.name} — starred ${w.months_early.toFixed(0)}mo before ${w.event} (+${Math.round(w.points)} pts)`
+            `${i + 1}. ${w.name}, starred ${w.months_early.toFixed(0)}mo before ${w.event} (+${Math.round(w.points)} pts)`
         )
         .join("\n");
       const text = [
@@ -1415,14 +1415,14 @@ async function handleToolsCall(
     }
     case "get_methodology": {
       const structured = await getMethodologyPayload();
-      const text = `VC Deal Flow Signal — Methodology\n\n${structured.methodology}\n\nFull details: ${structured.url}\n\n${FOOTER}`;
+      const text = `VC Deal Flow Signal, Methodology\n\n${structured.methodology}\n\nFull details: ${structured.url}\n\n${FOOTER}`;
       return rpcResult(id, {
         content: [{ type: "text", text }],
         structuredContent: structured,
       });
     }
     case "get_deep_signal": {
-      // Paid tool — forward to /api/agent/deep-signal which owns auth + credit
+      // Paid tool, forward to /api/agent/deep-signal which owns auth + credit
       // ledger. Auth scheme is gdf_v2.<customerId>.<hmac>, NOT the OAuth JWT
       // used for free-tool gating; the POST handler skips JWT verify when the
       // bearer is gdf_v2-prefixed so this path can run unblocked.
@@ -1451,7 +1451,7 @@ async function handleToolsCall(
           `"${startupName}" is not in the tracked universe. ${data.suggestion ?? ""} (0 credits charged for misses.)`
         );
       } else {
-        lines.push(`${data.name as string} — Deep Signal (paid)`);
+        lines.push(`${data.name as string}, Deep Signal (paid)`);
         const scores = data.scores as Record<string, number> | undefined;
         const rank = data.rank as Record<string, number> | undefined;
         if (scores) lines.push(`Composite ${scores.composite}/100 · V${scores.velocity} G${scores.growth} N${scores.novelty}`);
@@ -1495,7 +1495,7 @@ async function handleToolsCall(
           expired:
             "approval_token has expired (10-minute TTL). Ask the user to re-approve at /share-approve.",
           summary_mismatch:
-            "approval_token does not match this summary. The token is bound to a hash of the summary the user approved — pass the SAME summary verbatim, or re-approve with the new wording.",
+            "approval_token does not match this summary. The token is bound to a hash of the summary the user approved, pass the SAME summary verbatim, or re-approve with the new wording.",
         };
         const url = approvalUrlFor(summary, BASE_URL);
         return rpcError(
@@ -1518,7 +1518,7 @@ async function handleToolsCall(
       const wantLinkedIn = network === "all" || network === "linkedin";
       const wantTelegram = network === "all" || network === "telegram";
       if (wantTwitter) {
-        const body = `${summary}${handleAttr}\n\nFrom GitDealFlow MCP — install: ${installCommand}\nMethodology: ${ssrn}`.slice(0, 275);
+        const body = `${summary}${handleAttr}\n\nFrom GitDealFlow MCP, install: ${installCommand}\nMethodology: ${ssrn}`.slice(0, 275);
         posts.push({
           network: "twitter",
           body,
@@ -1527,7 +1527,7 @@ async function handleToolsCall(
         });
       }
       if (wantBluesky) {
-        const body = `${summary}${handleAttr}\n\nFrom GitDealFlow MCP — install: ${installCommand}\nMethodology: ${ssrn}`.slice(0, 295);
+        const body = `${summary}${handleAttr}\n\nFrom GitDealFlow MCP, install: ${installCommand}\nMethodology: ${ssrn}`.slice(0, 295);
         posts.push({
           network: "bluesky",
           body,
@@ -1536,7 +1536,7 @@ async function handleToolsCall(
         });
       }
       if (wantMastodon) {
-        const body = `${summary}${handleAttr}\n\nFrom @gitdealflow's MCP server — install: ${installCommand}\nMethodology (SSRN, 219-startup panel): ${ssrn}\n\n#VC #DevTools #AltData`.slice(0, 495);
+        const body = `${summary}${handleAttr}\n\nFrom @gitdealflow's MCP server, install: ${installCommand}\nMethodology (SSRN, 219-startup panel): ${ssrn}\n\n#VC #DevTools #AltData`.slice(0, 495);
         posts.push({
           network: "mastodon",
           body,
@@ -1545,7 +1545,7 @@ async function handleToolsCall(
         });
       }
       if (wantLinkedIn) {
-        const body = `${summary}\n\nThis came out of the GitDealFlow MCP server — a free Claude/Cursor integration that ranks startup GitHub orgs by engineering acceleration. The methodology behind it (SSRN-published, 219-startup panel) found commit velocity preceded fundraises by 21–47 days.\n\nInstall: ${installCommand}\nPaper: ${ssrn}\nProduct: ${site}`.slice(0, 695);
+        const body = `${summary}\n\nThis came out of the GitDealFlow MCP server, a free Claude/Cursor integration that ranks startup GitHub orgs by engineering acceleration. The methodology behind it (SSRN-published, 219-startup panel) found commit velocity preceded fundraises by 21-47 days.\n\nInstall: ${installCommand}\nPaper: ${ssrn}\nProduct: ${site}`.slice(0, 695);
         posts.push({
           network: "linkedin",
           body,
@@ -1554,7 +1554,7 @@ async function handleToolsCall(
         });
       }
       if (wantTelegram) {
-        const body = `${summary}\n\nFrom the GitDealFlow MCP server — free, install with: ${installCommand}\n\nThe methodology is published on SSRN with a 219-startup panel: ${ssrn}\nProduct: ${site}\n\nGitDealFlow tracks 369 startup GitHub orgs and ranks them by commit velocity acceleration, weekly. The pattern preceded confirmed fundraises by 21 to 47 days.`.slice(0, 995);
+        const body = `${summary}\n\nFrom the GitDealFlow MCP server, free, install with: ${installCommand}\n\nThe methodology is published on SSRN with a 219-startup panel: ${ssrn}\nProduct: ${site}\n\nGitDealFlow tracks 369 startup GitHub orgs and ranks them by commit velocity acceleration, weekly. The pattern preceded confirmed fundraises by 21 to 47 days.`.slice(0, 995);
         posts.push({
           network: "telegram",
           body,
@@ -1612,19 +1612,19 @@ async function handleToolsCall(
         (match.signalType ? ` and a "${match.signalType}" signal` : "") +
         `. Confidence: ${sc.confidence}. This is a transparent heuristic over open-source activity, not a guarantee.`;
       const caveats: string[] = [
-        "Score reflects engineering acceleration only — it does not see funding rounds, revenue, cap table, or team.",
+        "Score reflects engineering acceleration only, it does not see funding rounds, revenue, cap table, or team.",
         "The estimated window is a heuristic band, not a forecast date.",
       ];
       if (sc.confidence === "low") {
         caveats.push(
-          "Low confidence: a key growth metric was unparseable or the contributor base is very small — treat the score as directional."
+          "Low confidence: a key growth metric was unparseable or the contributor base is very small, treat the score as directional."
         );
       }
       if ((match.geography ?? "Unknown") === "Unknown") {
         caveats.push("Geography is Unknown for this company in the feed.");
       }
       const text = [
-        `${match.name} — Funding-Likelihood Prediction`,
+        `${match.name}, Funding-Likelihood Prediction`,
         ``,
         claim,
         ``,
@@ -1699,7 +1699,7 @@ async function handleToolsCall(
           );
         } else if (norm.matchedAlias) {
           notes.push(
-            `Geography is region-level only — "${geoArg}" was normalized to "${geoRegion}". There is no city-level data in the feed.`
+            `Geography is region-level only, "${geoArg}" was normalized to "${geoRegion}". There is no city-level data in the feed.`
           );
         }
       }
@@ -1741,7 +1741,7 @@ async function handleToolsCall(
         newRepos: c.row.newRepos,
         githubUrl: c.row.githubUrl,
         profileUrl: `${BASE_URL}/startup/${slugify(c.row.name)}`,
-        rationale: `Score ${c.score.accelerationScore}/100 (${c.score.raiseLikelihood}) — ${c.row.commitVelocityChange} velocity, ${c.row.contributorGrowth} contributor growth, ${c.row.signalType}.`,
+        rationale: `Score ${c.score.accelerationScore}/100 (${c.score.raiseLikelihood}), ${c.row.commitVelocityChange} velocity, ${c.row.contributorGrowth} contributor growth, ${c.row.signalType}.`,
       }));
 
       const query = {
@@ -1754,10 +1754,10 @@ async function handleToolsCall(
       };
       const lines = results.map(
         (r) =>
-          `${r.rank}. ${r.name} (${r.sector}, ${r.geography}) — ${r.accelerationScore}/100 ${r.raiseLikelihood}, ${r.commitVelocityChange} velocity, ${r.signalType}`
+          `${r.rank}. ${r.name} (${r.sector}, ${r.geography}), ${r.accelerationScore}/100 ${r.raiseLikelihood}, ${r.commitVelocityChange} velocity, ${r.signalType}`
       );
       const text = [
-        `Shortlist — strongest signals (${periodName})`,
+        `Shortlist, strongest signals (${periodName})`,
         `Filters: ${JSON.stringify(query)}`,
         `${matchedCount} matched of ${consideredCount} tracked; showing top ${results.length}.`,
         ``,
@@ -1832,7 +1832,7 @@ async function handleToolsCall(
       if (compared.length < 2) {
         recommendation =
           compared.length === 0
-            ? "No comparison possible — none of the supplied names are in the tracked universe."
+            ? "No comparison possible, none of the supplied names are in the tracked universe."
             : `Only ${(compared[0] as { name: string }).name} resolved to a tracked company, so no head-to-head was possible. The others are not tracked.`;
       } else {
         const winner = compared[0] as { name: string; accelerationScore: number; raiseLikelihood: string };
@@ -1840,13 +1840,13 @@ async function handleToolsCall(
         const gap = winner.accelerationScore - runnerUp.accelerationScore;
         recommendation =
           gap >= 10
-            ? `${winner.name} warrants deeper diligence first — it leads on acceleration score (${winner.accelerationScore} vs ${runnerUp.accelerationScore}, ${winner.raiseLikelihood} likelihood), a clear ${gap}-point margin.`
-            : `${winner.name} edges ahead (${winner.accelerationScore} vs ${runnerUp.accelerationScore}), but the ${gap}-point margin is narrow — treat them as roughly comparable and diligence both.`;
+            ? `${winner.name} warrants deeper diligence first, it leads on acceleration score (${winner.accelerationScore} vs ${runnerUp.accelerationScore}, ${winner.raiseLikelihood} likelihood), a clear ${gap}-point margin.`
+            : `${winner.name} edges ahead (${winner.accelerationScore} vs ${runnerUp.accelerationScore}), but the ${gap}-point margin is narrow, treat them as roughly comparable and diligence both.`;
       }
 
       const lines = compared.map(
         (c) =>
-          `${c.rank}. ${c.name} (${c.sector}) — ${c.accelerationScore}/100 ${c.raiseLikelihood}, ${c.commitVelocityChange} velocity, ${c.signalType}`
+          `${c.rank}. ${c.name} (${c.sector}), ${c.accelerationScore}/100 ${c.raiseLikelihood}, ${c.commitVelocityChange} velocity, ${c.signalType}`
       );
       const text = [
         `Head-to-head signal comparison (${periodName})`,
@@ -1912,7 +1912,7 @@ async function handleResourceRead(id: JsonRpcId | undefined, params: unknown) {
   }
   if (uri === "signal://methodology") {
     const data = await getMethodologyPayload();
-    const md = `# VC Deal Flow Signal — Methodology\n\n${data.methodology}\n\nFull details: ${data.url}\n\n${FOOTER}`;
+    const md = `# VC Deal Flow Signal, Methodology\n\n${data.methodology}\n\nFull details: ${data.url}\n\n${FOOTER}`;
     return rpcResult(id, {
       contents: [{ uri, mimeType: "text/markdown", text: md }],
     });
@@ -1963,7 +1963,7 @@ function handlePromptGet(id: JsonRpcId | undefined, params: unknown) {
         "",
         "Step 1: Call the `get_trending_startups` tool to fetch the current top 20.",
         "Step 2: Open with three plain-English sentences naming the dominant pattern of the week.",
-        "Step 3: List the top 10, one per line: `<rank>. <name> (<sector>) — <commitVelocityChange> velocity, <signalType>. <one-sentence rationale>`.",
+        "Step 3: List the top 10, one per line: `<rank>. <name> (<sector>), <commitVelocityChange> velocity, <signalType>. <one-sentence rationale>`.",
         "Step 4: Close with the citation string and source URL.",
         "",
         "Tone: factual, terse, investor-grade.",
@@ -2039,12 +2039,12 @@ function handlePromptGet(id: JsonRpcId | undefined, params: unknown) {
         .filter(Boolean)
         .join(", ");
       messageText = [
-        `You are running a sourcing session${sector ? ` for ${sector}` : ""}${geography ? ` in ${geography}` : ""} — a corp-dev / scout watchlist grounded in engineering-acceleration signals.`,
+        `You are running a sourcing session${sector ? ` for ${sector}` : ""}${geography ? ` in ${geography}` : ""}, a corp-dev / scout watchlist grounded in engineering-acceleration signals.`,
         "",
         `Step 1: Call \`shortlist_signals\` with ${shortlistArgs}. Returns the top ${count} companies ranked by acceleration score, each with a rationale.`,
         "Step 2: Surface the `notes` from the response verbatim if present (e.g. geography normalized to a region) so the reader knows the filter semantics.",
         "Step 3: For EACH shortlisted company, call `predict_funding` with its name to attach a funding-likelihood read (score, band, window, confidence) + evidence chain. Run in parallel.",
-        "Step 4: Produce a ranked watchlist: `<rank>. <name> (<sector>, <geography>) — accel <score>/100, raise likelihood <band> (<window>), conf <confidence>. <one-line rationale>.`",
+        "Step 4: Produce a ranked watchlist: `<rank>. <name> (<sector>, <geography>), accel <score>/100, raise likelihood <band> (<window>), conf <confidence>. <one-line rationale>.`",
         "Step 5: Footer 'How to read this': heuristics over public GitHub activity, not investment advice; cite the methodology + SSRN links from predict_funding provenance.",
         "",
         "Tone: factual, terse, investor-grade. Use only what the tools return; never invent companies or numbers. If the shortlist is empty, say so and suggest loosening the filters.",
@@ -2060,7 +2060,7 @@ function handlePromptGet(id: JsonRpcId | undefined, params: unknown) {
         `Step 1: Call \`get_diligence_dossier\` with name="${companyName}" for the public-source record (M&A history, backers, published signal). If not found, surface that and continue with the other tools.`,
         `Step 2: Call \`predict_funding\` with name="${companyName}" for the scored funding-likelihood read + evidence chain.`,
         "Step 3: Call `get_methodology` once to frame how the score was derived.",
-        "Step 4: Draft the brief (one page max): TL;DR; Public Record (acquirer/M&A with year + amount, backing funds — all cited); Funding-Likelihood Read (score/100, band, window, confidence) with the evidence chain; How the score was derived (one sentence); Open Questions (3-5).",
+        "Step 4: Draft the brief (one page max): TL;DR; Public Record (acquirer/M&A with year + amount, backing funds, all cited); Funding-Likelihood Read (score/100, band, window, confidence) with the evidence chain; How the score was derived (one sentence); Open Questions (3-5).",
         "",
         "Tone: factual, investor-grade. Cite every claim to the tool that produced it. End with the methodology + SSRN provenance and the disclaimer that this is a heuristic over public data, not investment advice.",
       ].join("\n");
@@ -2118,7 +2118,7 @@ export async function OPTIONS() {
 export async function POST(request: NextRequest) {
   // OPTIONAL OAuth 2.1 bearer-token verification.
   // - If Authorization header is present, the token MUST be valid (else 401).
-  // - If absent, request is allowed anyway — preserves backward compat for
+  // - If absent, request is allowed anyway, preserves backward compat for
   //   public clients (Claude Desktop, Cursor, Cline, etc.) that don't send tokens.
   // - This satisfies Anthropic Connectors Directory's requirement that the
   //   server "supports OAuth 2.1" while keeping the open-by-default surface.

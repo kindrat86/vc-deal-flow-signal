@@ -9,14 +9,14 @@ import {
 
 export const metadata: Metadata = {
   title:
-    "30-Day Deal Flow Reset Challenge — Free Email Course",
+    "30-Day Deal Flow Reset Challenge, Free Email Course",
   description:
     "Free 30-day email course. Week 1 teaches the 7 GitHub signals from the SSRN methodology. Weeks 2-4 build your operational sourcing system: watchlist, weekly rhythm, alerts, MCP integration. ~10 min/day; the framework stays yours either way.",
   alternates: { canonical: "/challenge" },
   openGraph: {
-    title: "30-Day Deal Flow Reset Challenge — Free Email Course",
+    title: "30-Day Deal Flow Reset Challenge, Free Email Course",
     description:
-      "Four weeks. Week 1 — Learn the 7 signals. Week 2 — Apply on real candidates. Week 3 — Synthesize the watchlist + cadence. Week 4 — Operationalize alerts, sharing, MCP integration. The framework is yours either way.",
+      "Four weeks. Week 1, Learn the 7 signals. Week 2, Apply on real candidates. Week 3, Synthesize the watchlist + cadence. Week 4, Operationalize alerts, sharing, MCP integration. The framework is yours either way.",
     url: "https://signals.gitdealflow.com/challenge",
     type: "website",
   },
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 // has roughly doubled next-day open rates in our internal A/B (31%→62%).
 const PLEDGES = [
   "5-10 minutes a day, 30 days running.",
-  "One real GitHub org per exercise — not a hypothetical.",
+  "One real GitHub org per exercise, not a hypothetical.",
   "On Day 31, the Sunday digest rhythm continues; the framework is mine to keep.",
 ] as const;
 
@@ -46,7 +46,7 @@ const PLEDGES = [
 // graduation pitch.
 const STACK_BY_WEEK: { label: string; detail: string; value: number }[] = [
   {
-    label: "Week 1 — Learn (Days 1-7)",
+    label: "Week 1, Learn (Days 1-7)",
     detail:
       "Each of the 7 atomic signals: commit velocity, contributor diversity, dependents graph, README freshness, new repo creation, issue-to-PR ratio, composite scoring.",
     value: CHALLENGE_DAYS.filter((d) => d.phase === "learn").reduce(
@@ -55,7 +55,7 @@ const STACK_BY_WEEK: { label: string; detail: string; value: number }[] = [
     ),
   },
   {
-    label: "Week 2 — Apply (Days 8-14)",
+    label: "Week 2, Apply (Days 8-14)",
     detail:
       "Score 3 real candidates from your pipeline + 1 calibration backtest + your first scorecard artifact.",
     value: CHALLENGE_DAYS.filter((d) => d.phase === "apply").reduce(
@@ -64,7 +64,7 @@ const STACK_BY_WEEK: { label: string; detail: string; value: number }[] = [
     ),
   },
   {
-    label: "Week 3 — Synthesize (Days 15-21)",
+    label: "Week 3, Synthesize (Days 15-21)",
     detail:
       "Build a 10-org watchlist, set the Monday rhythm, sector batching, score-driven founder Q&A, the 30-second pre-read.",
     value: CHALLENGE_DAYS.filter((d) => d.phase === "synthesize").reduce(
@@ -73,7 +73,7 @@ const STACK_BY_WEEK: { label: string; detail: string; value: number }[] = [
     ),
   },
   {
-    label: "Week 4 — Operationalize (Days 22-30)",
+    label: "Week 4, Operationalize (Days 22-30)",
     detail:
       "Alerts, anti-signals, co-investor share template, MCP integration, custom weights, retrospective, graduation.",
     value: CHALLENGE_DAYS.filter((d) => d.phase === "operationalize").reduce(
@@ -115,7 +115,7 @@ export default function ChallengePage() {
         },
         syllabusSections: CHALLENGE_DAYS.map((d) => ({
           "@type": "Syllabus",
-          name: `Day ${d.day} — ${d.title}`,
+          name: `Day ${d.day}, ${d.title}`,
           description: d.oneLine,
           url: `https://signals.gitdealflow.com/challenge/${d.slug}`,
         })),
@@ -161,7 +161,7 @@ export default function ChallengePage() {
             name: "Do I need to know how to code?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "No. The exercises use only the public GitHub web interface — Insights, Pulse, Contributors, Dependency graph. If you've ever opened a repository on github.com you have everything you need.",
+              text: "No. The exercises use only the public GitHub web interface, Insights, Pulse, Contributors, Dependency graph. If you've ever opened a repository on github.com you have everything you need.",
             },
           },
           {
@@ -169,7 +169,7 @@ export default function ChallengePage() {
             name: "What's the source of the methodology?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "The seven Week-1 signals are drawn from a panel analysis of 219 startup-period observations, published as 'GitHub Signals as Leading Indicators of Venture Fundraising' on SSRN (abstract id 6606558). Weeks 2-4 (Apply, Synthesize, Operationalize) extend that framework into the operational practice an investor would build around it — calibration, watchlist cadence, alerting, custom weights, MCP-server integration.",
+              text: "The seven Week-1 signals are drawn from a panel analysis of 219 startup-period observations, published as 'GitHub Signals as Leading Indicators of Venture Fundraising' on SSRN (abstract id 6606558). Weeks 2-4 (Apply, Synthesize, Operationalize) extend that framework into the operational practice an investor would build around it, calibration, watchlist cadence, alerting, custom weights, MCP-server integration.",
             },
           },
           {
@@ -177,7 +177,7 @@ export default function ChallengePage() {
             name: "How is this different from the Sunday digest?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "The Sunday digest is the ongoing free product — five named startups every week, applied. The Challenge is the framework — it teaches you the underlying signals so you can run the analysis yourself on any startup, not just the ones we name.",
+              text: "The Sunday digest is the ongoing free product, five named startups every week, applied. The Challenge is the framework, it teaches you the underlying signals so you can run the analysis yourself on any startup, not just the ones we name.",
             },
           },
           {
@@ -193,7 +193,7 @@ export default function ChallengePage() {
             name: "How is the Challenge structured across 30 days?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Week 1 (Days 1-7) — Learn: each of the 7 atomic signals individually with a 5-minute manual exercise. Week 2 (Days 8-14) — Apply: run the composite on three real candidates from your own pipeline plus one calibration backtest. Week 3 (Days 15-21) — Synthesize: build a 10-org watchlist, set the Monday rhythm, sector batching, and the 30-second pre-read for first meetings. Week 4 (Days 22-30) — Operationalize: alerts, anti-signals, co-investor share template, MCP integration, custom weights, retrospective, graduation. Each phase ends with a wrap day that produces a real artifact.",
+              text: "Week 1 (Days 1-7), Learn: each of the 7 atomic signals individually with a 5-minute manual exercise. Week 2 (Days 8-14), Apply: run the composite on three real candidates from your own pipeline plus one calibration backtest. Week 3 (Days 15-21), Synthesize: build a 10-org watchlist, set the Monday rhythm, sector batching, and the 30-second pre-read for first meetings. Week 4 (Days 22-30), Operationalize: alerts, anti-signals, co-investor share template, MCP integration, custom weights, retrospective, graduation. Each phase ends with a wrap day that produces a real artifact.",
             },
           },
         ],
@@ -230,7 +230,7 @@ export default function ChallengePage() {
             candidates in Week 2. A 10-org watchlist + weekly Monday rhythm in
             Week 3. Alerts, MCP integration, and a custom-weighted composite in
             Week 4. End the month with an operational sourcing system that runs
-            in ~25 minutes a week — drawn from the SSRN-published methodology
+            in ~25 minutes a week, drawn from the SSRN-published methodology
             covering 219 startup-period observations.
           </p>
           <p className="text-gray-400 text-sm leading-relaxed">
@@ -245,7 +245,7 @@ export default function ChallengePage() {
           <ChallengeForm />
         </div>
 
-        {/* Brunson commitment device — public pledge framing. */}
+        {/* Brunson commitment device, public pledge framing. */}
         <section
           className="mb-12 rounded-xl border border-amber-700/40 bg-amber-950/20 p-6 sm:p-8"
           aria-label="Pledge"
@@ -276,10 +276,10 @@ export default function ChallengePage() {
               const days = CHALLENGE_DAYS.filter((cd) => cd.phase === phase);
               const week = ["learn", "apply", "synthesize", "operationalize"].indexOf(phase) + 1;
               const phaseTitle = {
-                learn: "Learn — the 7 atomic signals",
-                apply: "Apply — composite on real candidates",
-                synthesize: "Synthesize — watchlist + cadence",
-                operationalize: "Operationalize — alerts + share + MCP",
+                learn: "Learn, the 7 atomic signals",
+                apply: "Apply, composite on real candidates",
+                synthesize: "Synthesize, watchlist + cadence",
+                operationalize: "Operationalize, alerts + share + MCP",
               }[phase];
               return (
                 <details
@@ -333,7 +333,7 @@ export default function ChallengePage() {
             },
           )}
           <p className="text-gray-500 text-xs mt-3 italic">
-            Click any day to read it as a permalink — useful if you want to
+            Click any day to read it as a permalink, useful if you want to
             preview the curriculum before subscribing, or refer back after.
           </p>
         </section>
@@ -343,10 +343,10 @@ export default function ChallengePage() {
             ask. */}
         <section
           className="mb-12 rounded-xl border border-emerald-700/40 bg-emerald-950/20 p-6 sm:p-8"
-          aria-label="Stack — what you're getting"
+          aria-label="Stack, what you're getting"
         >
           <h2 className="text-emerald-300 text-sm font-medium mb-1 uppercase tracking-wider">
-            The Stack — at retail
+            The Stack, at retail
           </h2>
           <p className="text-gray-300 text-base leading-relaxed mb-5">
             Comparable signal-walkthrough + applied-practice courses charge
@@ -394,8 +394,8 @@ export default function ChallengePage() {
               ssrn.com/abstract=6606558
             </a>
             . The Challenge delivers the framework as a 30-day cadence and
-            adds the operational practice around it — we charge for scale (the
-            live engine across 369 orgs and the custom Sector Sweep), not for
+            adds the operational practice around it, we charge for scale (the
+            live engine across 350+ orgs and the custom Sector Sweep), not for
             the framework.
           </p>
         </section>
@@ -431,13 +431,13 @@ export default function ChallengePage() {
             </li>
             <li className="flex gap-3">
               <span className="text-emerald-400 mt-0.5">✓</span>The exact same
-              framework that powers the GitDealFlow ranking — open methodology,
+              framework that powers the GitDealFlow ranking, open methodology,
               re-derivable from public GitHub data
             </li>
             <li className="flex gap-3">
               <span className="text-emerald-400 mt-0.5">✓</span>Three optional
               next steps if you want to scale the framework: free Sunday
-              digest, €9.97/mo Dashboard, €1,997 one-time Sector Sweep — no
+              digest, €9.97/mo Dashboard, €1,997 one-time Sector Sweep, no
               upgrade pressure if you keep it manual
             </li>
           </ul>
@@ -495,8 +495,8 @@ export default function ChallengePage() {
                 How is this different from the Sunday digest?
               </h3>
               <p className="text-gray-400 text-sm leading-relaxed">
-                The Sunday digest is the applied product — five named startups
-                every week. The Challenge is the framework — the underlying
+                The Sunday digest is the applied product, five named startups
+                every week. The Challenge is the framework, the underlying
                 signals so you can run the analysis yourself on any startup,
                 not only the ones we surface.
               </p>
@@ -506,7 +506,7 @@ export default function ChallengePage() {
                 Can I read each day as a webpage instead?
               </h3>
               <p className="text-gray-400 text-sm leading-relaxed">
-                Yes. Every day has a permalink — see the day-by-day list above,
+                Yes. Every day has a permalink, see the day-by-day list above,
                 or jump straight to{" "}
                 <Link
                   href="/challenge/commit-velocity"

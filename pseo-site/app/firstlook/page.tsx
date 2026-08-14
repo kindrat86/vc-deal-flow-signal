@@ -12,27 +12,27 @@ import PaidTrafficBanner from "@/components/PaidTrafficBanner";
 
 export const dynamic = "force-static";
 
-// QUEUE DEPTH — synthetic but grounded. The First Look engine processes
+// QUEUE DEPTH, synthetic but grounded. The First Look engine processes
 // one report per ~4 hours of founder time. The queue depth varies in real
 // use between 0 and 4. We expose the *capacity* (8 reports/day) and the
 // realistic "currently in queue" range so the visitor sees the SLA is
 // real, not a marketing claim. Numbers refresh on next deploy.
 const QUEUE_CAPACITY_PER_DAY = 8;
-const QUEUE_TYPICAL_DEPTH = "0–4";
+const QUEUE_TYPICAL_DEPTH = "0-4";
 
 // Canonical URL for schema.org Offer.url. The actual checkout flow is
 // a server-created Stripe Checkout Session (POST /api/checkout/session)
-// that captures the card with setup_future_usage='off_session' — that's
+// that captures the card with setup_future_usage='off_session', that's
 // what makes the one-click OTO on /firstlook/thanks possible.
 const FIRSTLOOK_OFFER_URL = "https://signals.gitdealflow.com/firstlook";
 
 export const metadata: Metadata = {
-  title: "First Look Pass — €7. One sector. 24-hour deep dive.",
+  title: "First Look Pass, €7. One sector. 24-hour deep dive.",
   description:
     "Pay €7 once, pick any of 19 tracked sectors, and within 24 hours get a written sector deep dive: top 25 ranked GitHub orgs, 14-day acceleration deltas, contributor maps, and three pre-Crunchbase breakouts. Credited toward Dashboard if you upgrade in 14 days.",
   alternates: { canonical: "/firstlook" },
   openGraph: {
-    title: "First Look Pass — €7. One sector. 24-hour deep dive.",
+    title: "First Look Pass, €7. One sector. 24-hour deep dive.",
     description:
       "€7 once, pick a sector, get the full GitHub-momentum deep dive in 24h.",
     url: "https://signals.gitdealflow.com/firstlook",
@@ -41,13 +41,13 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     site: "@sipiteno",
-    title: "First Look Pass — €7. One sector. 24-hour deep dive.",
+    title: "First Look Pass, €7. One sector. 24-hour deep dive.",
     description:
       "€7 once, pick a sector, get the full GitHub-momentum deep dive in 24h.",
   },
 };
 
-// CURIOSITY LOOPS — Brunson DotCom Secrets Ch 12 (23 Building Blocks),
+// CURIOSITY LOOPS, Brunson DotCom Secrets Ch 12 (23 Building Blocks),
 // Building Block #3: "What you'll discover" bullets. Each line opens a loop
 // the reader can only close by paying €7. The page-number references make the
 // artefact feel concrete; the counter-intuitive twist on each bullet is what
@@ -63,8 +63,8 @@ const DISCOVERIES = [
     body: "Plus the 90-second test you can run on any GitHub org tonight to see the pattern on a public company before we ship the report. Page 7.",
   },
   {
-    head: "Three pre-Crunchbase startups in your sector — named, with the timestamp we surfaced each one",
-    body: "So when one of them announces a round in 21–47 days you can verify we flagged it first, not back-fitted. Page 11.",
+    head: "Three pre-Crunchbase startups in your sector, named, with the timestamp we surfaced each one",
+    body: "So when one of them announces a round in 21-47 days you can verify we flagged it first, not back-fitted. Page 11.",
   },
 ] as const;
 
@@ -82,7 +82,7 @@ const STACK = [
   {
     label: "Three pre-Crunchbase breakouts",
     detail:
-      "Net-new orgs surfaced by the same engine — companies the consensus deal-flow tools haven't indexed yet.",
+      "Net-new orgs surfaced by the same engine, companies the consensus deal-flow tools haven't indexed yet.",
   },
   {
     label: "Raw CSV (every org × every metric)",
@@ -96,22 +96,22 @@ const STACK = [
   },
 ] as const;
 
-// Brunson Stack Slide — DotCom Secrets Ch 9. Each line in the deliverable
+// Brunson Stack Slide, DotCom Secrets Ch 9. Each line in the deliverable
 // quoted with the standalone retail value of the same artefact ordered
 // elsewhere, so the €7 cart price reads as the anchor it actually is.
 const VALUE_STACK = [
   { label: "Top-25 ranked org list (one sector)", value: 290 },
   { label: "Contributor influx map (top 10 orgs × 30-day)", value: 240 },
   { label: "Three pre-Crunchbase breakouts (named + thesis-tagged)", value: 360 },
-  { label: "Raw CSV — every org × every metric", value: 190 },
+  { label: "Raw CSV, every org × every metric", value: 190 },
   { label: "JSON dump (Dashboard-grade, agent-readable)", value: 150 },
   { label: "Written 14-page walkthrough PDF", value: 220 },
-  { label: "REQUEST CREDIT — €7 toward Dashboard if you upgrade in 14d", value: 97 },
+  { label: "REQUEST CREDIT, €7 toward Dashboard if you upgrade in 14d", value: 97 },
 ] as const;
 
 const TOTAL_VALUE = VALUE_STACK.reduce((s, x) => s + x.value, 0);
 
-// Brunson OTO Ladder — Cart Funnel Secret 18. Buyers move up rungs at
+// Brunson OTO Ladder, Cart Funnel Secret 18. Buyers move up rungs at
 // progressively higher commitment. We show the whole ladder so the reader
 // can see where they are and where the path goes.
 const OTO_LADDER = [
@@ -127,7 +127,7 @@ const OTO_LADDER = [
     rung: "Rung 1",
     label: "First Look Pass",
     price: "€7",
-    purpose: "One sector, 24-hour intake. The tripwire — first dollar.",
+    purpose: "One sector, 24-hour intake. The tripwire, first dollar.",
     href: "/firstlook",
     tone: "amber",
     current: true,
@@ -144,7 +144,7 @@ const OTO_LADDER = [
     rung: "Rung 3",
     label: "Sector Sweep (post-purchase OTO)",
     price: "€1,797",
-    purpose: "One-click upsell on the thank-you page. Full panel + 60-min walkthrough — €200 off standalone.",
+    purpose: "One-click upsell on the thank-you page. Full panel + 60-min walkthrough, €200 off standalone.",
     href: "/firstlook/thanks",
     tone: "emerald",
   },
@@ -185,7 +185,7 @@ const OTO_LADDER = [
 const FAQS = [
   {
     q: "What's the deliverable, exactly?",
-    a: "A PDF report (10–14 pages depending on sector) plus the raw CSV. Delivered to your inbox within 24 hours of payment, weekdays. Manually written by the founder, not auto-generated. The same engine that powers the Dashboard, but applied to one sector with a written narrative around it.",
+    a: "A PDF report (10-14 pages depending on sector) plus the raw CSV. Delivered to your inbox within 24 hours of payment, weekdays. Manually written by the founder, not auto-generated. The same engine that powers the Dashboard, but applied to one sector with a written narrative around it.",
   },
   {
     q: "How do I pick the sector?",
@@ -193,19 +193,19 @@ const FAQS = [
   },
   {
     q: "What happens if I upgrade to the Dashboard?",
-    a: "The €7 is credited toward your first month of Dashboard if you upgrade within 14 days of receiving the deep dive. Reply to the delivery email with REQUEST CREDIT and the founder applies it manually — no automation, but it's never been missed.",
+    a: "The €7 is credited toward your first month of Dashboard if you upgrade within 14 days of receiving the deep dive. Reply to the delivery email with REQUEST CREDIT and the founder applies it manually, no automation, but it's never been missed.",
   },
   {
     q: "Why is it €7 and not free?",
-    a: "Two reasons. One — €7 filters out time-wasters but doesn't punish a serious investor who just wants to see the data on their thesis before subscribing. Two — €7 is the price of a coffee in central Lisbon, which is exactly what writing a 14-page sector report costs in time when amortised across the work it takes to build it. The price isn't margin, it's a filter.",
+    a: "Two reasons. One, €7 filters out time-wasters but doesn't punish a serious investor who just wants to see the data on their thesis before subscribing. Two, €7 is the price of a coffee in central Lisbon, which is exactly what writing a 14-page sector report costs in time when amortised across the work it takes to build it. The price isn't margin, it's a filter.",
   },
   {
     q: "What's the order bump and how do I claim it?",
-    a: "Tick the Methodology Vault checkbox in the cart preview before checkout — the 38-page PDF is added to your order as a +€19 line item, total €26. The Vault unpacks every signal definition, every regression coefficient in the SSRN paper, and the three confounders the public preprint does not name. It arrives as an instant download link in your First Look intake email. The bump is only available at this checkout step — the Vault is not sold standalone.",
+    a: "Tick the Methodology Vault checkbox in the cart preview before checkout, the 38-page PDF is added to your order as a +€19 line item, total €26. The Vault unpacks every signal definition, every regression coefficient in the SSRN paper, and the three confounders the public preprint does not name. It arrives as an instant download link in your First Look intake email. The bump is only available at this checkout step, the Vault is not sold standalone.",
   },
   {
     q: "What if I don't like the deliverable?",
-    a: "30-day refund, no questions, no clawback of the artefacts you received. Reply REFUND to the delivery email; we send back the €7 inside one business day and you keep the PDF + CSV. The guarantee exists because we'd rather lose €7 than have a buyer feel oversold — and because in three years of running this we've issued exactly two refunds.",
+    a: "30-day refund, no questions, no clawback of the artefacts you received. Reply REFUND to the delivery email; we send back the €7 inside one business day and you keep the PDF + CSV. The guarantee exists because we'd rather lose €7 than have a buyer feel oversold, and because in three years of running this we've issued exactly two refunds.",
   },
 ] as const;
 
@@ -215,7 +215,7 @@ export default function FirstLookPage() {
     "@graph": [
       {
         // F23: explicit access-status statement. The /firstlook URL itself is
-        // fully crawlable — every word of the marketing copy, value stack,
+        // fully crawlable, every word of the marketing copy, value stack,
         // FAQs, and order-bump description is publicly readable. The PRODUCT
         // is paid (€7 base + €19 Methodology Vault order-bump), but its
         // description is not paywalled, so we set isAccessibleForFree: true
@@ -225,7 +225,7 @@ export default function FirstLookPage() {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/firstlook#webpage",
         url: "https://signals.gitdealflow.com/firstlook",
-        name: "First Look Pass — €7. One sector. 24-hour deep dive.",
+        name: "First Look Pass, €7. One sector. 24-hour deep dive.",
         isAccessibleForFree: true,
         primaryImageOfPage: {
           "@type": "ImageObject",
@@ -240,14 +240,14 @@ export default function FirstLookPage() {
         "@id": "https://signals.gitdealflow.com/firstlook#product",
         name: "First Look Pass",
         description:
-          "€7 one-time tripwire — a sector-specific written deep dive on GitHub momentum, delivered within 24 hours.",
+          "€7 one-time tripwire, a sector-specific written deep dive on GitHub momentum, delivered within 24 hours.",
         brand: { "@type": "Brand", name: "GitDealFlow" },
         offers: {
           "@type": "AggregateOffer",
           priceCurrency: "EUR",
           lowPrice: "7.00",
           // €7 base + €19 Methodology Vault bump. Sector Sweep €1,797 is
-          // the OTO #1 rung on /firstlook/thanks — surfaced to its own
+          // the OTO #1 rung on /firstlook/thanks, surfaced to its own
           // Product/Offer entity over there, not aggregated here, because
           // it is post-purchase and not selectable on /firstlook itself.
           highPrice: "26.00",
@@ -258,7 +258,7 @@ export default function FirstLookPage() {
           offers: [
             {
               "@type": "Offer",
-              name: "First Look Pass — base",
+              name: "First Look Pass, base",
               price: "7.00",
               priceCurrency: "EUR",
               availability: "https://schema.org/InStock",
@@ -267,7 +267,7 @@ export default function FirstLookPage() {
             },
             {
               "@type": "Offer",
-              name: "Order bump — Methodology Vault PDF",
+              name: "Order bump, Methodology Vault PDF",
               price: "19.00",
               priceCurrency: "EUR",
               availability: "https://schema.org/InStock",
@@ -280,7 +280,7 @@ export default function FirstLookPage() {
       {
         "@type": "ItemList",
         "@id": "https://signals.gitdealflow.com/firstlook#stack",
-        name: "First Look Pass — value stack",
+        name: "First Look Pass, value stack",
         itemListOrder: "https://schema.org/ItemListOrderDescending",
         numberOfItems: VALUE_STACK.length,
         itemListElement: VALUE_STACK.map((s, i) => ({
@@ -335,7 +335,7 @@ export default function FirstLookPage() {
       <AgentMirrorLinks path="/firstlook" />
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
-        {/* Paid-traffic continuity banner — Brunson "scent rule".
+        {/* Paid-traffic continuity banner, Brunson "scent rule".
             Renders nothing for organic visitors (returns null until URL
             params are parsed client-side). When utm_source matches a
             known paid channel (reddit/google/tldr/...), swaps in
@@ -354,7 +354,7 @@ export default function FirstLookPage() {
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
             Most investors won&rsquo;t pay €49/mo for a tool they
             haven&rsquo;t tested on their actual thesis. Fair. The First Look
-            Pass exists for that exact gap. €7, one-time, no subscription —
+            Pass exists for that exact gap. €7, one-time, no subscription -
             and €7 of credit if you upgrade. If your real question is narrow,
             hot, and already expensive, this is the paid step before a
             recurring workflow.
@@ -381,12 +381,12 @@ export default function FirstLookPage() {
           </div>
         </section>
 
-        {/* CURIOSITY LOOPS — Brunson DotCom Secrets Ch 12 (Building Block #3,
+        {/* CURIOSITY LOOPS, Brunson DotCom Secrets Ch 12 (Building Block #3,
             "What you'll discover"). Squeeze placement: first thing after the
             hero, before the offer reveal. Three open loops the reader can
             only close by paying. Specific page numbers + counter-intuitive
             second beats are what convert curiosity into checkout clicks.
-            Headline pattern: "Discover [specific named thing] — and why
+            Headline pattern: "Discover [specific named thing], and why
             [thing that flips the obvious assumption]." */}
         <section
           aria-label="What you'll discover inside the deep dive"
@@ -431,18 +431,18 @@ export default function FirstLookPage() {
           </ul>
 
           <p className="text-violet-200/80 text-xs leading-relaxed border-l-2 border-violet-700/40 pl-3">
-            Open loops on purpose. The page numbers are real — if any of these
+            Open loops on purpose. The page numbers are real, if any of these
             three discoveries isn&rsquo;t in your delivered PDF, reply REFUND
             and the €7 returns inside one business day, no questions.
           </p>
           <TrialClose tone="amber">
             Three loops opened, three answers gated behind €7. If even one of
-            those questions is one you&rsquo;ve been carrying for a month —
+            those questions is one you&rsquo;ve been carrying for a month -
             what&rsquo;s the cost of carrying it for another?
           </TrialClose>
         </section>
 
-        {/* SAMPLE CTA — Brunson Ch 13 ("Best Bait") rule: show the shape
+        {/* SAMPLE CTA, Brunson Ch 13 ("Best Bait") rule: show the shape
             of the deliverable BEFORE the cart. Curiosity loops opened above
             create desire; this aside collapses the imagination tax for the
             sceptical reader who wants to verify the goods are real before
@@ -457,7 +457,7 @@ export default function FirstLookPage() {
               See it before you buy it
             </p>
             <h2 className="text-gray-100 font-bold text-lg sm:text-xl leading-snug">
-              Real page from a real delivered PDF — org names redacted.
+              Real page from a real delivered PDF, org names redacted.
             </h2>
             <p className="text-gray-400 text-sm leading-relaxed">
               The structure, the data columns, the finding type, and the full
@@ -473,7 +473,7 @@ export default function FirstLookPage() {
           </Link>
         </aside>
 
-        {/* BEST BAIT — Brunson DotCom Secrets Ch 13. */}
+        {/* BEST BAIT, Brunson DotCom Secrets Ch 13. */}
         <aside
           aria-label="Why this is bait built for you"
           className="rounded-xl border border-amber-700/40 bg-amber-950/15 p-5 sm:p-6 space-y-2"
@@ -490,19 +490,19 @@ export default function FirstLookPage() {
             wrong shape for a fund running procurement. It&rsquo;s the right shape
             when you want to test one sector on a real thesis before you
             subscribe. That&rsquo;s why the price is €7, the deliverable is
-            sector-specific, and the format is PDF + raw CSV — not a sales
+            sector-specific, and the format is PDF + raw CSV, not a sales
             call, not a demo, not a calendar invite.
           </p>
           <TrialClose tone="emerald">
-            Right bait or wrong bait — does this read as built for you, or
+            Right bait or wrong bait, does this read as built for you, or
             built for someone else? If it&rsquo;s built for you, the €7
             isn&rsquo;t the question; the question is which sector.
           </TrialClose>
         </aside>
 
-        {/* STACK SLIDE — Brunson DotCom Secrets Ch 9 + Expert Secrets Ch 13.
+        {/* STACK SLIDE, Brunson DotCom Secrets Ch 9 + Expert Secrets Ch 13.
             Quote each artefact at standalone retail value, sum it, anchor
-            against the €7 cart price. The math has to be defensible —
+            against the €7 cart price. The math has to be defensible -
             every line is the going rate for that artefact in the open
             market when ordered separately. */}
         <section
@@ -518,7 +518,7 @@ export default function FirstLookPage() {
             </h2>
             <p className="text-gray-400 text-sm leading-relaxed">
               Every artefact below is priced at what the same thing costs when
-              ordered separately on the open market — sector-research consulting
+              ordered separately on the open market, sector-research consulting
               rates, list-rental fees, custom-CSV jobs. The total isn&rsquo;t
               marketing math; it&rsquo;s the going retail.
             </p>
@@ -552,7 +552,7 @@ export default function FirstLookPage() {
                 Your cart price
               </p>
               <p className="text-amber-100 text-sm leading-snug pt-0.5">
-                One sector, fully worked — for less than a coffee.
+                One sector, fully worked, for less than a coffee.
               </p>
             </div>
             <p className="text-amber-300 font-bold text-3xl sm:text-4xl tabular-nums">
@@ -560,7 +560,7 @@ export default function FirstLookPage() {
             </p>
           </div>
           <TrialClose tone="violet">
-            Stack value vs cart price — if even half of those line items hold
+            Stack value vs cart price, if even half of those line items hold
             up at retail, has the math already closed itself?
           </TrialClose>
         </section>
@@ -580,16 +580,16 @@ export default function FirstLookPage() {
           </ul>
         </section>
 
-        {/* SECTOR INTENT PRE-CAPTURE — Brunson Ch 13 ("Best Bait") + the
+        {/* SECTOR INTENT PRE-CAPTURE, Brunson Ch 13 ("Best Bait") + the
             foot-in-the-door technique. Capturing sector + email before
             checkout (1) segments the list by sector for non-buyers,
             (2) lets the engine pre-warm the panel so the 24h SLA holds
             even on Friday, (3) raises checkout completion via soft
-            commitment. Non-blocking — Stripe captures both fields again
+            commitment. Non-blocking, Stripe captures both fields again
             if the visitor skips the form. */}
         <SectorIntent source="firstlook-page" />
 
-        {/* CART PREVIEW — Brunson Cart Funnel Secret 18. Visual cart with
+        {/* CART PREVIEW, Brunson Cart Funnel Secret 18. Visual cart with
             running total + bump toggle. Stripe handles auth/payment, but the
             cart UX (line items, bump optics, save-amount feedback) lives on
             this page so the buyer sees the funnel mechanics before checkout. */}
@@ -597,14 +597,14 @@ export default function FirstLookPage() {
           <CartPreview />
         </div>
 
-        {/* BUYER ROADMAP — Brunson Expert Secrets Ch 18. The four-beat
+        {/* BUYER ROADMAP, Brunson Expert Secrets Ch 18. The four-beat
             arc (Today → 24h → Day 14 → Day 90) renders the €7 tripwire
             as a vehicle, not an impulse buy. Sits between the cart and
             the risk-reversal so the buyer reads the calendar before the
             guarantee. */}
         <BuyerRoadmap tier="firstlook" />
 
-        {/* RISK REVERSAL — Brunson DotCom Secrets Ch 19, placed at the cart
+        {/* RISK REVERSAL, Brunson DotCom Secrets Ch 19, placed at the cart
             point where it actually catches the hesitation, not buried in
             the FAQ. Every Brunson cart has a guarantee card adjacent to
             the buy button. */}
@@ -629,7 +629,7 @@ export default function FirstLookPage() {
               <p className="text-gray-300 text-sm leading-relaxed">
                 If the deep dive doesn&rsquo;t surface at least one startup
                 you&rsquo;d otherwise have missed, reply <code className="bg-slate-900 text-emerald-200 px-1.5 py-0.5 rounded text-xs">REFUND</code>{" "}
-                inside 30 days — refund hits your card in one business day, no
+                inside 30 days, refund hits your card in one business day, no
                 questions, no clawback. We&rsquo;ve issued two refunds in three
                 years. The guarantee exists because we&rsquo;d rather lose €7
                 than have a buyer feel oversold.
@@ -637,18 +637,18 @@ export default function FirstLookPage() {
             </div>
           </div>
           <TrialClose tone="rose">
-            Two refunds in three years — worst case the €7 lands back on your
+            Two refunds in three years, worst case the €7 lands back on your
             card in one business day. Where else does that downside profile
             exist for a sourcing tool?
           </TrialClose>
         </section>
 
-        {/* OTO LADDER — Brunson Cart Funnel Secret 18. The full path the cart
+        {/* OTO LADDER, Brunson Cart Funnel Secret 18. The full path the cart
             funnel walks the buyer through: free → tripwire → OTO → bump →
             retention. Each rung has its own purpose; transparency about the
             sequence is itself a trust signal. */}
         <section
-          aria-label="The full cart funnel — every rung the buyer can take"
+          aria-label="The full cart funnel, every rung the buyer can take"
           className="space-y-4"
         >
           <header className="space-y-1.5">
@@ -661,7 +661,7 @@ export default function FirstLookPage() {
             <p className="text-gray-400 text-sm leading-relaxed">
               The cart-funnel rule: tell the buyer the whole map. Hidden
               upsells feel like ambush; named ones feel like a path. Every
-              offer below is independent — no offer requires the next.
+              offer below is independent, no offer requires the next.
             </p>
           </header>
 
@@ -733,7 +733,7 @@ export default function FirstLookPage() {
           </TrialClose>
         </section>
 
-        {/* FUTURE PACING — Brunson Expert Secrets Ch 14. The buyer needs to
+        {/* FUTURE PACING, Brunson Expert Secrets Ch 14. The buyer needs to
             FEEL the next 24 hours before they pay; uncertainty about timing
             is one of the three top-line cart objections. Timeline removes
             it by making each stop concrete. */}
@@ -755,7 +755,7 @@ export default function FirstLookPage() {
             </p>
           </header>
 
-          {/* QUEUE DEPTH STATS — Brunson Ch 13 risk-removal beat. The
+          {/* QUEUE DEPTH STATS, Brunson Ch 13 risk-removal beat. The
               biggest objection to a 24-hour SLA is "yeah right." Disclosing
               actual capacity + typical queue depth (synthetic but realistic)
               turns the SLA from a claim into a constraint anyone can
@@ -856,12 +856,12 @@ export default function FirstLookPage() {
           </p>
           <TrialClose tone="cyan">
             T+0 to T+24, mapped to the minute, founder writing the narrative
-            personally — if the timeline itself were the only deliverable,
+            personally, if the timeline itself were the only deliverable,
             would you still take it for €7?
           </TrialClose>
         </section>
 
-        {/* POST-PURCHASE OTO PREVIEW — DotCom Ch 12. */}
+        {/* POST-PURCHASE OTO PREVIEW, DotCom Ch 12. */}
         <aside
           className="border border-slate-800 bg-slate-900/40 rounded-xl p-5 sm:p-6 space-y-2"
           aria-label="Post-purchase upsell preview"
@@ -876,14 +876,14 @@ export default function FirstLookPage() {
             </Link>{" "}
             (private Telegram + spike alerts + monthly briefing) at{" "}
             <strong className="text-gray-100">€177 for the first month</strong>{" "}
-            — €20 off the standard €197. The invite expires when the next
+€20 off the standard €197. The invite expires when the next
             Monday digest goes out, and never re-appears at this price.
             Decline it and your €7 First Look Pass still works exactly the
             same way.
           </p>
         </aside>
 
-        {/* AGENT CART — Brunson Secret 13 ("right bait, right avatar")
+        {/* AGENT CART, Brunson Secret 13 ("right bait, right avatar")
             applied to a non-human buyer. The same data, different cart
             shape. Builders who run an autonomous deal-screen agent
             don't want a 24-hour PDF; they want a callable JSON endpoint
@@ -959,10 +959,10 @@ export default function FirstLookPage() {
           </div>
         </section>
 
-        {/* DOWNSELL — DotCom Ch 12. If they bounce on €7, capture them on the
+        {/* DOWNSELL, DotCom Ch 12. If they bounce on €7, capture them on the
             €1 Teardown rung first, free list second. Russell rule: never let
             a visitor leave at zero commitment if there's a paid-but-cheaper
-            rung below — the €1 Teardown is the buyer-threshold breaker added
+            rung below, the €1 Teardown is the buyer-threshold breaker added
             specifically to close the €0-to-€7 psychological gap. */}
         <aside
           className="border-l-2 border-rose-700/50 pl-4 py-1 space-y-2"
@@ -979,7 +979,7 @@ export default function FirstLookPage() {
             >
               €1 Tweet Teardown
             </Link>{" "}
-            instead — name one startup, get a tweet-length read on its
+            instead, name one startup, get a tweet-length read on its
             engineering momentum in 24h, written by the founder. €1 credits
             into the First Look Pass if you upgrade within 7 days, so this
             is the €0-to-€7 bridge, not a separate purchase.
@@ -993,7 +993,7 @@ export default function FirstLookPage() {
             >
               Acceleration Watch
             </a>{" "}
-            — five startups every Monday, sector-tagged, no card.
+five startups every Monday, sector-tagged, no card.
           </p>
         </aside>
 
@@ -1015,7 +1015,7 @@ export default function FirstLookPage() {
           .
         </p>
 
-        {/* Founder character card — Brunson Expert Secrets Ch 1. Seeded
+        {/* Founder character card, Brunson Expert Secrets Ch 1. Seeded
             "firstlook" so the slice differs from /walkthrough. */}
         <DataNerdCharacterCard seed="firstlook" />
 
@@ -1024,10 +1024,10 @@ export default function FirstLookPage() {
         <div aria-hidden="true" className="md:hidden h-20" />
       </div>
 
-      {/* STICKY MOBILE CART BAR — Brunson Cart Funnel Secret 18. The bar
+      {/* STICKY MOBILE CART BAR, Brunson Cart Funnel Secret 18. The bar
           travels with the buyer as they scroll FAQ + timeline so the
           cart never falls below the fold on small screens. CSS-only
-          (no JS, no client component) — the price is the base €7;
+          (no JS, no client component), the price is the base €7;
           tap to scroll to the interactive CartPreview where the bump
           can be toggled. Hidden md+ (the full cart is always visible
           on desktop). */}

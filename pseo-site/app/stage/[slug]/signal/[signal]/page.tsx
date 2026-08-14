@@ -32,7 +32,7 @@ export async function generateMetadata({
   const data = getStageSignalData(slug, signal);
   if (!data) return {};
 
-  const title = `${data.stageName} Startups Showing ${data.signalName} — ${data.period.name}`;
+  const title = `${data.stageName} Startups Showing ${data.signalName}, ${data.period.name}`;
   const description = `${data.startups.length} ${data.stageName.toLowerCase()}-stage startups currently showing ${data.signalName.toLowerCase()} signal in ${data.period.name}. ${data.signalDescription}`;
 
   return {
@@ -90,7 +90,7 @@ export default async function StageSignalPage({ params }: PageProps) {
     "@graph": [
       {
         "@type": "Article",
-        headline: `${stageName} Startups Showing ${signalName} — ${period.name}`,
+        headline: `${stageName} Startups Showing ${signalName}, ${period.name}`,
         description: signalDescription,
         author: DATA_NERD_AUTHOR_REF,
         publisher: {
@@ -223,7 +223,7 @@ export default async function StageSignalPage({ params }: PageProps) {
         <section className="mb-10" aria-label="Startup rankings">
           <h2 className="text-gray-100 font-semibold text-lg mb-4">
             Ranked {stageName.toLowerCase()} startups with{" "}
-            {signalName.toLowerCase()} — {period.name}
+            {signalName.toLowerCase()}, {period.name}
           </h2>
           <StartupTable startups={startups} />
           <p className="mt-3 text-gray-400 text-xs">

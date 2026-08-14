@@ -22,7 +22,7 @@ export interface Startup {
   newRepos: number;
   signalType: string;
   githubUrl: string;
-  // Outbound links — websiteUrl comes from the GitHub crawler when the org
+  // Outbound links, websiteUrl comes from the GitHub crawler when the org
   // exposes a `blog` field; linkedinUrl is populated by the Apollo gap-fill
   // pass. Both sit in data/links.json (name-keyed) and get merged in via
   // enrichLinks() below, mirroring the enrichment.json pattern.
@@ -57,7 +57,7 @@ export function enrichStartup(startup: Startup): Startup {
 /**
  * Merge outbound-link data into a startup record. Existing non-empty fields
  * on the startup (e.g. websiteUrl harvested from GitHub's `blog` field) take
- * precedence over the Apollo cache — the cache is a fallback, not an override.
+ * precedence over the Apollo cache, the cache is a fallback, not an override.
  */
 export function enrichLinks(startup: Startup): Startup {
   const extra = links[startup.name];
@@ -105,7 +105,7 @@ const data = startupsData as unknown as StartupsData;
 // consumer iterating `data.sectors[*].periods[*].startups` sees websiteUrl +
 // linkedinUrl without having to call enrichLinks() themselves. websiteUrl on
 // the raw record (harvested by the GitHub crawler) always wins over the Apollo
-// cache — see enrichLinks() above for the precedence rule.
+// cache, see enrichLinks() above for the precedence rule.
 for (const sector of data.sectors) {
   for (const snapshot of Object.values(sector.periods)) {
     snapshot.startups = snapshot.startups.map(enrichLinks);
@@ -151,7 +151,7 @@ export function parsePageSlug(slug: string): {
   period: Period;
   snapshot: SectorSnapshot;
 } | null {
-  // Try matching each sector slug — the period slug is whatever remains after removing
+  // Try matching each sector slug, the period slug is whatever remains after removing
   // the sector slug prefix + the separator dash.
   // Sort sectors by slug length descending so "data-infrastructure" matches before "data".
   const sorted = [...data.sectors].sort(
@@ -223,7 +223,7 @@ export function getTopMoversThisWeek(
 }
 
 /**
- * Total tracked startup count for the current period — used for the
+ * Total tracked startup count for the current period, used for the
  * social-proof bar and homepage credibility chips.
  */
 export function getTotalTrackedThisWeek(): number {
@@ -321,7 +321,7 @@ export interface GeoPageData {
  * Returns all geo page slugs in format `{sector}-{geo}-{period}`.
  *
  * Emits ONLY slugs that `parseGeoPageSlug` will accept. A candidate is kept iff
- * round-tripping it back through the parser yields a non-null page — which
+ * round-tripping it back through the parser yields a non-null page, which
  * guarantees the generated set (used for both `generateStaticParams` and the
  * sitemap) can never diverge from what the route can actually render.
  *
@@ -361,7 +361,7 @@ export interface RegionPageData {
 
 /**
  * Returns region-only page slugs in format `{geo}-{period}`.
- * Rolls up all sectors in a geography — gives /startups-to-watch/region/us-q2-2026.
+ * Rolls up all sectors in a geography, gives /startups-to-watch/region/us-q2-2026.
  */
 export function getAllRegionPageSlugs(): string[] {
   const slugs: string[] = [];
@@ -476,7 +476,7 @@ const STAGE_DEFINITIONS = [
     name: "Pre-Seed",
     match: ["Pre-Seed", "Pre-seed", "PreSeed"],
     description:
-      "Earliest-stage technical startups — typically before any institutional round. Engineering activity at this stage is the clearest leading indicator because there is little press, no fundraise announcement, and few public breadcrumbs other than the code itself.",
+      "Earliest-stage technical startups, typically before any institutional round. Engineering activity at this stage is the clearest leading indicator because there is little press, no fundraise announcement, and few public breadcrumbs other than the code itself.",
     investorInsight:
       "At pre-seed, the GitHub commit graph is often the only public signal of product velocity. Founders are heads-down shipping. A pre-seed startup showing sustained engineering acceleration over a multi-week window is a high-conviction outbound target before the seed round is live.",
   },
@@ -485,7 +485,7 @@ const STAGE_DEFINITIONS = [
     name: "Seed",
     match: ["Seed"],
     description:
-      "Seed-stage startups — typically post-angel/accelerator, pre-Series A. Engineering signals here often correlate with the first production build-out and the earliest customer-facing launches.",
+      "Seed-stage startups, typically post-angel/accelerator, pre-Series A. Engineering signals here often correlate with the first production build-out and the earliest customer-facing launches.",
     investorInsight:
       "Seed-stage acceleration is the sweet spot for scouts and solo GPs. Deploy-frequency spikes and infrastructure buildouts at this stage usually precede the Series A announcement by 6-12 weeks. The window to get in before the round is competitive is narrow but real.",
   },
@@ -505,7 +505,7 @@ const STAGE_DEFINITIONS = [
     description:
       "Growth-stage startups at Series C and beyond. Engineering signals at this scale indicate platform expansion, new product line development, or preparation for an IPO or major strategic milestone.",
     investorInsight:
-      "At growth stage, engineering signals indicate strategic direction — a major deploy-frequency spike often maps to a product launch; an infrastructure buildout often signals a new business line. Useful for secondary investors, growth funds, and corporate development teams benchmarking targets.",
+      "At growth stage, engineering signals indicate strategic direction, a major deploy-frequency spike often maps to a product launch; an infrastructure buildout often signals a new business line. Useful for secondary investors, growth funds, and corporate development teams benchmarking targets.",
   },
 ] as const;
 
@@ -589,7 +589,7 @@ export const SIGNAL_TYPES = [
     name: "Engineering Hiring Burst",
     match: "Engineering hiring burst",
     description:
-      "Startups whose contributor growth rate exceeds 50%, indicating rapid team expansion — often following a recent funding round.",
+      "Startups whose contributor growth rate exceeds 50%, indicating rapid team expansion, often following a recent funding round.",
     investorInsight:
       "If you are seeing a hiring burst signal, you may be too late for the current round but well-positioned for the next one. The team expansion suggests the company has capital to deploy and is building toward a product milestone.",
   },
@@ -607,7 +607,7 @@ export const SIGNAL_TYPES = [
     name: "Deploy Frequency Spike",
     match: "Deploy frequency spike",
     description:
-      "Startups whose commit velocity increased 150%+ versus baseline — the team is shipping code at an unusually high rate.",
+      "Startups whose commit velocity increased 150%+ versus baseline, the team is shipping code at an unusually high rate.",
     investorInsight:
       "Deploy frequency spikes indicate a product launch, rapid iteration on customer feedback, or a competitive response. All are potential indicators of product-market fit and interesting timing for investors.",
   },
@@ -616,9 +616,9 @@ export const SIGNAL_TYPES = [
     name: "Framework Migration",
     match: "Framework migration",
     description:
-      "Startups showing general engineering acceleration that indicates a technology stack transition — moving from prototype to production infrastructure.",
+      "Startups showing general engineering acceleration that indicates a technology stack transition, moving from prototype to production infrastructure.",
     investorInsight:
-      "Framework migrations are the subtlest signal type but can indicate the shift from exploration to exploitation — a key milestone in startup development that often precedes fundraising.",
+      "Framework migrations are the subtlest signal type but can indicate the shift from exploration to exploitation, a key milestone in startup development that often precedes fundraising.",
   },
 ] as const;
 
@@ -968,11 +968,11 @@ export interface StageSectorPageData {
  * Thin-cell suppression threshold for Cartesian pSEO routes.
  *
  * Cells with fewer than this many startups would render near-empty
- * tables — Google flags those as thin content and downranks the entire
+ * tables, Google flags those as thin content and downranks the entire
  * site. We hide them from `generateStaticParams` and return `null` from
  * the data getters so the route 404s cleanly under `dynamicParams=false`.
  *
- * Set to 3: aggressive enough to drop the worst 1–2-startup cells,
+ * Set to 3: aggressive enough to drop the worst 1-2-startup cells,
  * generous enough that we keep ~95% of the existing surface area.
  * Override via env if you need to tune (CI experiments, full-graph audits).
  */

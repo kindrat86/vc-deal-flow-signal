@@ -5,7 +5,7 @@ import { TEASER_VISIBLE, TEASER_LOCKED_COUNT } from "@/lib/teaser-signals";
 // Brunson "Almost there" bridge page, shared by HomeSqueezeForm and the
 // /squeeze SqueezeForm. It replaces the old thin "One last step / check your
 // inbox" card and does the four jobs of a real bridge page:
-//   1. Restate the prize (and pay part of it out NOW — close the value gap).
+//   1. Restate the prize (and pay part of it out NOW, close the value gap).
 //   2. Give the literal instruction (open the email, click confirm, whitelist).
 //   3. Seed the story loop the confirmation email + email 1 of the SOS close.
 //   4. Make the ascension offer (don't wait for Sunday).
@@ -39,7 +39,7 @@ export default function SqueezeSuccess({
             Here&rsquo;s a taste while your inbox loads.
           </h3>
           <p className="text-gray-300 text-sm leading-relaxed">
-            A sample from a recent Sunday issue — the kind of names the
+            A sample from a recent Sunday issue, the kind of names the
             signal flags 21 to 47 days before the deck circulates. Your
             own first issue is being generated now.
           </p>
@@ -71,7 +71,7 @@ export default function SqueezeSuccess({
             </li>
           ))}
 
-          {/* Locked rows — the dopamine gap the confirm-click closes */}
+          {/* Locked rows, the dopamine gap the confirm-click closes */}
           {Array.from({ length: TEASER_LOCKED_COUNT }).map((_, i) => (
             <li
               key={`locked-${i}`}
@@ -106,7 +106,7 @@ export default function SqueezeSuccess({
         </ul>
 
         <p className="text-emerald-200/90 text-sm font-medium leading-relaxed">
-          Confirm your email to unlock the full five — and so next Sunday&rsquo;s
+          Confirm your email to unlock the full five, and so next Sunday&rsquo;s
           issue lands in your inbox instead of you coming back here.
         </p>
       </div>
@@ -134,8 +134,8 @@ export default function SqueezeSuccess({
             <span className="text-gray-100 font-semibold">
               3. The first thing you&rsquo;ll read
             </span>{" "}
-            is the deal I missed by one night&rsquo;s sleep — it raised a
-            $4M Series A three weeks later — and the system I built so you
+            is the deal I missed by one night&rsquo;s sleep, it raised a
+            $4M Series A three weeks later, and the system I built so you
             don&rsquo;t repeat it.
           </li>
         </ol>
@@ -156,7 +156,7 @@ export default function SqueezeSuccess({
         </p>
         <p className="text-gray-300 text-sm leading-relaxed">
           {leadDashboard
-            ? "Five names help. The full ranked field — 60+ accelerating startups in your sectors, re-ranked weekly — changes how you work. Don't wait for Sunday."
+            ? "Five names help. The full ranked field, 60+ accelerating startups in your sectors, re-ranked weekly, changes how you work. Don't wait for Sunday."
             : "If you already know the sector you want answered, don't wait for Sunday. Pick one, pay €7, and get the full ranked deep-dive in 24 hours."}
         </p>
         <div className="flex flex-col sm:flex-row gap-3">
@@ -176,7 +176,7 @@ export default function SqueezeSuccess({
           </a>
         </div>
         <p className="text-gray-500 text-xs">
-          No pressure — your free Sunday issue is already on its way.
+          No pressure, your free Sunday issue is already on its way.
         </p>
       </div>
     </div>

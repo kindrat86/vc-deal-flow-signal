@@ -11,7 +11,7 @@ const SITE = "https://signals.gitdealflow.com";
  * One request, every operator how-to in machine-readable form. Each entry
  * carries the same fields the page renders (TL;DR, body, steps with
  * timeRequired + toolUrl, prerequisites, tools, facts with sources, FAQs,
- * keywords). Built for RAG ingestion — agents that want to ground responses
+ * keywords). Built for RAG ingestion, agents that want to ground responses
  * in our playbook corpus can drop this into a vector store with one fetch.
  *
  * Mirrors the shape of /api/answers.json so consumers can reuse the same
@@ -22,7 +22,7 @@ export async function GET() {
 
   const body = {
     version: "1.0.0",
-    name: "VC Deal Flow Signal — Playbook Corpus",
+    name: "VC Deal Flow Signal, Playbook Corpus",
     description:
       "Operator how-tos for VC deal flow via GitHub signals. Reproducible, time-budgeted, step-by-step playbooks for operator-investors, scouts, solo founders, and angels. Each entry has a TL;DR, prerequisites, tools, ordered steps with per-step timeRequired and optional tool URLs, supporting facts with source URLs, and a FAQPage.",
     site: SITE,
@@ -31,7 +31,7 @@ export async function GET() {
       url: "https://creativecommons.org/licenses/by/4.0/",
     },
     citation:
-      "VC Deal Flow Signal — Playbooks (signals.gitdealflow.com/playbooks).",
+      "VC Deal Flow Signal, Playbooks (signals.gitdealflow.com/playbooks).",
     lastModified: lastModified.toISOString(),
     count: playbooks.length,
     playbooks: playbooks.map((p) => ({

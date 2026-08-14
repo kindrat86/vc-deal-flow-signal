@@ -1,5 +1,5 @@
 /**
- * ux.js — World-Class Interactive UX Enhancements (R16)
+ * ux.js, World-Class Interactive UX Enhancements (R16)
  * Zero dependencies. Progressive enhancement.
  * Features: reading progress bar, back-to-top, lazy image loading,
  * accordions, smooth scroll, exit-intent detection, mobile bottom nav,
@@ -106,7 +106,7 @@
     var aboveFoldObserver = new IntersectionObserver(function(entries) {
       entries.forEach(function(entry) {
         if (entry.isIntersecting) {
-          // Above/at fold — leave eager
+          // Above/at fold, leave eager
           entry.target.setAttribute('data-ux-fold', 'above');
         } else {
           entry.target.setAttribute('data-ux-fold', 'below');
@@ -313,7 +313,7 @@
           shown = true;
         } else if (shown && window.scrollY < window.innerHeight * 0.5) {
           bar.classList.remove('visible');
-          // keep shown=false so it re-shows; but don't flash — keep shown true once revealed
+          // keep shown=false so it re-shows; but don't flash, keep shown true once revealed
         }
         ticking = false;
       });
@@ -402,7 +402,7 @@
   // ── R16: VIEW TRANSITIONS for same-origin links ─────
   function initViewTransitions() {
     if (!document.startViewTransition) return;
-    // Respect reduced motion — don't hijack navigation if user dislikes motion
+    // Respect reduced motion, don't hijack navigation if user dislikes motion
     if (REDUCED_MOTION) return;
     document.addEventListener('click', function(e) {
       var link = e.target.closest('a');

@@ -21,7 +21,7 @@ const SITE = "https://signals.gitdealflow.com";
 const STRIPE_INSIDER = "https://buy.stripe.com/bJeaEWfRpcRG6gm2fC0x20d";
 
 /**
- * /continuity/[slug] — individual Insider Drop page.
+ * /continuity/[slug], individual Insider Drop page.
  *
  * Brunson DotCom Secrets Ch 22 (Decade in a Day / Continuity). Each drop
  * is a separately-routable page with its own JSON-LD CreativeWork schema,
@@ -31,10 +31,10 @@ const STRIPE_INSIDER = "https://buy.stripe.com/bJeaEWfRpcRG6gm2fC0x20d";
  *
  * generateStaticParams pre-renders one route per drop in
  * /content/continuity-drops.ts so every drop is a 200 from the day it
- * lands in the registry — including scheduled drops, so the cadence
+ * lands in the registry, including scheduled drops, so the cadence
  * forward-calendar is auditable.
  *
- * Async-params signature is required for Next.js 15+ — params is a
+ * Async-params signature is required for Next.js 15+, params is a
  * Promise that must be awaited.
  */
 
@@ -65,7 +65,7 @@ export async function generateMetadata({
   }
   const url = `${SITE}/continuity/${drop.slug}`;
   return {
-    title: `${drop.title} — Insider Drop #${String(drop.n).padStart(3, "0")}`,
+    title: `${drop.title}, Insider Drop #${String(drop.n).padStart(3, "0")}`,
     description: drop.abstract,
     alternates: { canonical: `/continuity/${drop.slug}` },
     openGraph: {
@@ -227,7 +227,7 @@ export default async function ContinuityDropPage({
             className="rounded-xl border border-slate-700 bg-slate-900/50 p-6 sm:p-8 space-y-3"
           >
             <p className="text-gray-400 text-xs font-semibold uppercase tracking-wider">
-              Scheduled — drops {dateLabel}
+              Scheduled, drops {dateLabel}
             </p>
             <h2 className="text-xl sm:text-2xl font-bold text-gray-100 leading-snug">
               Abstract
@@ -238,7 +238,7 @@ export default async function ContinuityDropPage({
             <p className="text-gray-500 text-sm leading-relaxed pt-2">
               This drop is on the published forward calendar and will land on
               the first Tuesday of the month above. If it slips by more than
-              48 hours, every Insider gets a one-month credit automatically —
+              48 hours, every Insider gets a one-month credit automatically -
               that&rsquo;s how serious the cadence is taken.
             </p>
             <div className="pt-3 flex flex-col sm:flex-row gap-3">
@@ -252,7 +252,7 @@ export default async function ContinuityDropPage({
                 href={STRIPE_INSIDER}
                 className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold text-sm transition-colors"
               >
-                Lock €197/mo Insider — get this drop the day it lands
+                Lock €197/mo Insider, get this drop the day it lands
               </a>
             </div>
           </section>
@@ -264,7 +264,7 @@ export default async function ContinuityDropPage({
             className="space-y-8 border-t border-slate-800 pt-8"
           >
             <p className="text-gray-400 text-xs font-semibold uppercase tracking-wider">
-              The essay — public · the artefact below — members only
+              The essay, public · the artefact below, members only
             </p>
             <p className="text-gray-300 text-base leading-relaxed">
               {drop.abstract}
@@ -330,7 +330,7 @@ export default async function ContinuityDropPage({
           </section>
         )}
 
-        {/* SISTER DROPS — calendar context */}
+        {/* SISTER DROPS, calendar context */}
         <section
           aria-label="Sister drops"
           className="border-t border-slate-800 pt-8 space-y-3"

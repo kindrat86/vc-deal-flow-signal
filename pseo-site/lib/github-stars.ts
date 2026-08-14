@@ -16,7 +16,7 @@ import "server-only";
 
 const GH_TOKEN = process.env.GITHUB_PERSONAL_ACCESS_TOKEN || "";
 const PER_PAGE = 100;
-const MAX_PAGES = 5; // 500 stars max — covers 99% of devs, caps worst-case latency
+const MAX_PAGES = 5; // 500 stars max, covers 99% of devs, caps worst-case latency
 const CACHE_TTL_MS = 24 * 3600 * 1000;
 
 export interface StarredRepo {

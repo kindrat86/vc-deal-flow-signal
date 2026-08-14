@@ -73,7 +73,7 @@ export async function GET(request: NextRequest) {
     }
 
     // One-time tiers (teardown, firstlook, sector_sweep, agent_credits_*,
-    // book) don't grant Dashboard access — the deliverable arrives by email
+    // book) don't grant Dashboard access, the deliverable arrives by email
     // (manual teardown reply within 4h for teardown; sector report for
     // first look; PDF for sector sweep; API key for credit packs; book
     // downloads + bonus emails for book). Redirect to a thank-you page

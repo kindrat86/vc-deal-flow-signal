@@ -1,5 +1,5 @@
 /**
- * /.well-known/did-configuration.json — DIF Well-Known DID Configuration.
+ * /.well-known/did-configuration.json, DIF Well-Known DID Configuration.
  *
  * Pass VII (2026-05-05). Decentralized Identity Foundation (DIF) spec for
  * proving that a domain (signals.gitdealflow.com) controls a DID
@@ -12,7 +12,7 @@
  *
  * Spec: https://identity.foundation/.well-known/resources/did-configuration/
  *
- * NOTE — This is the "minimal" form. A full proof requires a signed
+ * NOTE, This is the "minimal" form. A full proof requires a signed
  * domainLinkageCredential (JWT) with the DID's private key. We don't yet
  * issue VCs from this DID, so the linked-DIDs list alone is sufficient for
  * AI-agent discovery; a future pass can add the JWT once the keypair is

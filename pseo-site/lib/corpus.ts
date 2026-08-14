@@ -1,15 +1,15 @@
 /**
- * lib/corpus.ts — the canonical, versioned, dated, content-hashed snapshot
+ * lib/corpus.ts, the canonical, versioned, dated, content-hashed snapshot
  * of the *curated entity corpus* (companies, funds, founders, glossary,
  * sectors, acquirers).
  *
  * This is the data layer behind two machine-readable surfaces:
- *   - /api/corpus.json   — full snapshot, one document
- *   - /api/corpus.jsonl  — NDJSON, one record per line (line-diffable)
+ *   - /api/corpus.json  , full snapshot, one document
+ *   - /api/corpus.jsonl , NDJSON, one record per line (line-diffable)
  *
  * Why this exists separately from the surfaces already on the domain:
  *   - /entities.json          lists only *meta* entities (the org, the
- *                             founder, the datasets, the publication) — not
+ *                             founder, the datasets, the publication), not
  *                             the 159 companies / 45 funds / 29 founders /
  *                             135 glossary terms that make up the corpus.
  *   - /api/dataset.jsonl      streams the *numeric signal panel* (lib/data),
@@ -17,14 +17,14 @@
  *   - /knowledge-graph.json   is JSON-LD; needs a JSON-LD parser.
  *
  * The agentic-era contract this surface adds:
- *   1. DATED  — every snapshot carries `asOf` (data-as-of, tied to the same
+ *   1. DATED , every snapshot carries `asOf` (data-as-of, tied to the same
  *      freshness clock as the rest of the site via getDataLastModified) and
  *      `generatedAt` (build time). An LLM can ground "as of 2026-05-30"
  *      instead of hallucinating freshness.
- *   2. VERSIONED — `contractVersion` is the schema semver; `revision` is a
+ *   2. VERSIONED, `contractVersion` is the schema semver; `revision` is a
  *      deterministic short content hash of the records. Same data → same
  *      revision, across rebuilds. Different data → different revision.
- *   3. DIFFABLE — every record carries its own `recordHash`, and the
+ *   3. DIFFABLE, every record carries its own `recordHash`, and the
  *      JSONL surface emits one record per line, so a consumer can diff two
  *      pulls line-by-line (or hash-by-hash) and see exactly what changed
  *      without re-reading the whole corpus.
@@ -227,7 +227,7 @@ export interface CorpusSnapshot {
 
 /**
  * Assemble the full snapshot. Pure function of the curated corpus modules +
- * the freshness clock — no wall-clock, no randomness — so `revision` is
+ * the freshness clock, no wall-clock, no randomness, so `revision` is
  * reproducible.
  */
 export function buildCorpusSnapshot(): CorpusSnapshot {

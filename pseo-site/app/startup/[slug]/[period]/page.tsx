@@ -31,7 +31,7 @@ export async function generateMetadata({
   const data = getStartupPeriodData(slug, period);
   if (!data) return {};
 
-  const title = `${data.profile.name} — ${data.entry.periodName} Engineering Signal`;
+  const title = `${data.profile.name}, ${data.entry.periodName} Engineering Signal`;
   const description = `${data.profile.name} engineering metrics in ${data.entry.periodName}: ${data.entry.commitVelocityChange} commit velocity change, ${data.entry.contributors} contributors, signal type: ${data.entry.signalType}. Historical snapshot from VC Deal Flow Signal.`;
 
   return {
@@ -41,7 +41,7 @@ export async function generateMetadata({
     // historical snapshots that already consolidate ranking signals to the
     // evergreen /startup/[slug] hub via the canonical below. noindex keeps
     // them OUT of the Google/Bing index (and they are dropped from the
-    // sitemap — see app/sitemap/[id]/route.ts), while `follow` preserves the
+    // sitemap, see app/sitemap/[id]/route.ts), while `follow` preserves the
     // prev/next + related-startups crawl paths so link equity still flows to
     // the base pages and sibling startups. Machine-readable mirrors (/md/,
     // /jsonld/, /api/signals.json) still expose the per-period data to
@@ -85,8 +85,8 @@ export default async function StartupPeriodPage({ params }: PageProps) {
       {
         "@type": "Article",
         "@id": `https://signals.gitdealflow.com/startup/${slug}/${period}#article`,
-        headline: `${profile.name} — ${entry.periodName} Engineering Signal`,
-        name: `${profile.name} — ${entry.periodName} Engineering Signal`,
+        headline: `${profile.name}, ${entry.periodName} Engineering Signal`,
+        name: `${profile.name}, ${entry.periodName} Engineering Signal`,
         description: `${profile.name} engineering metrics and signal classification for ${entry.periodName}: ${entry.commitVelocityChange} commit velocity change, ${entry.contributors} contributors, signal type ${entry.signalType}.`,
         url: `https://signals.gitdealflow.com/startup/${slug}/${period}`,
         mainEntityOfPage: {
@@ -155,7 +155,7 @@ export default async function StartupPeriodPage({ params }: PageProps) {
         "@type": "WebPage",
         "@id": `https://signals.gitdealflow.com/startup/${slug}/${period}#webpage`,
         url: `https://signals.gitdealflow.com/startup/${slug}/${period}`,
-        name: `${profile.name} — ${entry.periodName} Engineering Signal`,
+        name: `${profile.name}, ${entry.periodName} Engineering Signal`,
         inLanguage: "en-US",
         isPartOf: { "@id": "https://signals.gitdealflow.com/#website" },
         speakable: {
@@ -243,7 +243,7 @@ export default async function StartupPeriodPage({ params }: PageProps) {
             {entry.periodName} · Historical Snapshot
           </p>
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 leading-tight">
-            {profile.name} — {entry.periodName} Engineering Signal
+            {profile.name}, {entry.periodName} Engineering Signal
           </h1>
           <p className="text-gray-400 text-base mt-2 leading-relaxed">
             {profile.description}
@@ -253,7 +253,7 @@ export default async function StartupPeriodPage({ params }: PageProps) {
         <section className="mb-8" aria-label="Period summary">
           <div className="rounded-lg border border-sky-900/50 bg-sky-950/30 p-5">
             <p className="text-xs font-medium text-sky-400 uppercase tracking-wider mb-2">
-              Signal — {entry.periodName}
+              Signal, {entry.periodName}
             </p>
             <p className="text-gray-300 text-sm leading-relaxed">
               In {entry.periodName}, {profile.name} showed{" "}
@@ -271,7 +271,7 @@ export default async function StartupPeriodPage({ params }: PageProps) {
 
         <section className="mb-10" aria-label="Period metrics">
           <h2 className="text-lg font-semibold text-gray-100 mb-4">
-            Metrics — {entry.periodName}
+            Metrics, {entry.periodName}
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             <div className="rounded-lg border border-slate-800 bg-slate-900 p-4">
@@ -334,7 +334,7 @@ export default async function StartupPeriodPage({ params }: PageProps) {
             </p>
             <p>
               <strong className="text-gray-200">Signal classification:</strong>{" "}
-              {entry.signalType} —{" "}
+              {entry.signalType}, {" "}
               <Link
                 href={`/signals/${signalSlug(entry.signalType)}`}
                 className="text-sky-500 hover:text-sky-400 underline transition-colors"

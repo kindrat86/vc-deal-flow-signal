@@ -1,5 +1,5 @@
 /**
- * /sitemap-i18n.xml — separate i18n-annotated sitemap with
+ * /sitemap-i18n.xml, separate i18n-annotated sitemap with
  * xhtml:link rel="alternate" hreflang="..." per URL.
  *
  * Google's official format for international targeting:
@@ -22,7 +22,7 @@ export async function GET() {
   const urlBlocks = entries
     .flatMap(({ enUrl, alternates }) => {
       // Emit one <url> per (en + each locale variant). Each emits the FULL
-      // alternates list — Google requires bidirectional declarations.
+      // alternates list, Google requires bidirectional declarations.
       const allUrls = Array.from(new Set([enUrl, ...alternates.map((a) => a.href)]));
       return allUrls.map((url) => {
         const altLinks = alternates

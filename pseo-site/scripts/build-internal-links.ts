@@ -1,6 +1,6 @@
 #!/usr/bin/env npx tsx
 /**
- * build-internal-links.ts — generates the pSEO internal-link graph for
+ * build-internal-links.ts, generates the pSEO internal-link graph for
  * signals.gitdealflow.com from the site's OWN sitemaps (every URL is real).
  *
  * Output: data/internal-links.json  ->  { [pathname]: RelatedGroup[] }
@@ -75,7 +75,7 @@ for (const p of paths) {
   const section = sectionOf(p);
   const groups: RelatedGroup[] = [];
 
-  // Group 1 — siblings in the same section, ranked by token similarity
+  // Group 1, siblings in the same section, ranked by token similarity
   const siblings = (bySection.get(section) || [])
     .filter((q) => q !== p)
     .map((q) => ({ q, score: overlap(p, q) }))
@@ -85,7 +85,7 @@ for (const p of paths) {
   if (siblings.length >= 2)
     groups.push({ title: `More in ${titleCase("/" + section)}`, links: siblings.map((x) => ({ href: x.q, label: titleCase(x.q) })) });
 
-  // Group 2 — cross-section pages sharing slug tokens (semantic neighbors)
+  // Group 2, cross-section pages sharing slug tokens (semantic neighbors)
   const cross = paths
     .filter((q) => q !== p && sectionOf(q) !== section)
     .map((q) => ({ q, score: overlap(p, q) }))
@@ -95,7 +95,7 @@ for (const p of paths) {
   if (cross.length >= 2)
     groups.push({ title: "Related topics", links: cross.map((x) => ({ href: x.q, label: titleCase(x.q) })) });
 
-  // Group 3 — always offer a path up to the section hub + explore
+  // Group 3, always offer a path up to the section hub + explore
   const hub: Link[] = [];
   if (paths.includes(`/${section}`)) hub.push({ href: `/${section}`, label: `All ${titleCase("/" + section)}` });
   hub.push({ href: "/explore", label: "Explore all signals" });

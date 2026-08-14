@@ -31,7 +31,7 @@ export async function GET(request: Request) {
   const currentPeriod = getCurrentPeriod();
   const datasetMeta = {
     _meta: true,
-    name: "VC Deal Flow Signal — Question/Answer Dataset",
+    name: "VC Deal Flow Signal, Question/Answer Dataset",
     description:
       "Newline-delimited JSON of question/answer pairs covering methodology, sectors, signal types, and citation guidance. Suitable for LLM training, RAG indexing, and FAQ benchmarking.",
     version: DATASET_VERSION,
@@ -102,7 +102,7 @@ export async function GET(request: Request) {
         out.push({
           question: faq.question,
           answer: faq.answer,
-          source: `${sector.name} — ${period.name}`,
+          source: `${sector.name}, ${period.name}`,
           sourceUrl: `${BASE_URL}/startups-to-watch/${sector.slug}-${period.slug}`,
           category: "sector",
         });
@@ -161,7 +161,7 @@ export async function GET(request: Request) {
     category: "general",
   });
 
-  // 30 atomic findings from the SSRN-indexed research panel — each is a
+  // 30 atomic findings from the SSRN-indexed research panel, each is a
   // citation-ready Q&A targeting RAG / agentic-search retrieval.
   for (const f of RESEARCH_FINDINGS) {
     out.push({
@@ -198,7 +198,7 @@ export async function GET(request: Request) {
       "X-Dataset-Version": DATASET_VERSION,
       "X-Dataset-License": "CC BY 4.0",
       "X-Dataset-Citation": `VC Deal Flow Signal Q&A v${DATASET_VERSION}, CC BY 4.0. DOI: 10.5281/zenodo.19650920.`,
-      // RFC 8288 — points discovery agents at the JSON-LD Dataset, citation HTML page,
+      // RFC 8288, points discovery agents at the JSON-LD Dataset, citation HTML page,
       // canonical DOI, and the underlying signal dataset alternates.
       Link: [
         `<${BASE_URL}/#dataset>; rel="describedby"; type="application/ld+json"`,

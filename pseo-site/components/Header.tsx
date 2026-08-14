@@ -63,7 +63,7 @@ export default function Header() {
           </span>
         </Link>
 
-        {/* Hamburger button — mobile only. p-3 pads the 20px icon to a 44px hit area. */}
+        {/* Hamburger button, mobile only. p-3 pads the 20px icon to a 44px hit area. */}
         <button
           className="md:hidden text-gray-300 hover:text-white p-3 -mr-2 rounded-md hover:bg-slate-800/60 transition-colors"
           onClick={() => setOpen(!open)}

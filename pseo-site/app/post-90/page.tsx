@@ -7,7 +7,7 @@ import { getHreflangLanguages } from "@/lib/hreflang";
 const SITE = "https://signals.gitdealflow.com";
 
 /**
- * Brunson DotCom Secrets Ch 11, Phase 6 — "Change the Selling Environment".
+ * Brunson DotCom Secrets Ch 11, Phase 6, "Change the Selling Environment".
  *
  * The 90-day soap-opera + Seinfeld rhythm has run its course in the inbox.
  * If we keep delivering State-of-the-Engine prose to the same email
@@ -15,39 +15,39 @@ const SITE = "https://signals.gitdealflow.com";
  * deliberate move to a *different context* where the next phase of the
  * relationship lives.
  *
- * The environment shift is REAL — three concrete channel changes:
- *   1. Audio podcast feed (`/post-90/feed.xml`) — buyer subscribes in
+ * The environment shift is REAL, three concrete channel changes:
+ *   1. Audio podcast feed (`/post-90/feed.xml`), buyer subscribes in
  *      Apple Podcasts / Spotify / Overcast. Now the rhythm arrives in a
  *      different app, with a different sense modality (voice, not text).
- *   2. Calendar feed (`/post-90/calendar.ics`) — buyer adds the monthly
+ *   2. Calendar feed (`/post-90/calendar.ics`), buyer adds the monthly
  *      Stadium Pitch + quarterly State-of-the-Engine to their calendar.
  *      The rhythm is now a scheduled event, not an email surprise.
- *   3. Engine Room cohort page (this surface) — visually distinct from
+ *   3. Engine Room cohort page (this surface), visually distinct from
  *      the public site (terminal monospace, status-board feel). The
  *      reader knows they crossed a threshold.
  *
  * Anonymity-safe: synthetic Cartesia Theo voice powers the audio, no
  * founder face/voice/name. Cohort framing is "graduates of the 90-day
- * signal rhythm" — methodology authority, not personality cult.
+ * signal rhythm", methodology authority, not personality cult.
  */
 
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Engine Room — the post-90 cohort home",
+  title: "Engine Room, the post-90 cohort home",
   description:
-    "You crossed Day 90. The Engine Room is where the rhythm continues — Sunday voice memo in your podcast app, monthly founder talk on your calendar, quarterly State-of-the-Engine post-mortem on the record. Three subscribe links. No more inbox-only.",
+    "You crossed Day 90. The Engine Room is where the rhythm continues, Sunday voice memo in your podcast app, monthly founder talk on your calendar, quarterly State-of-the-Engine post-mortem on the record. Three subscribe links. No more inbox-only.",
   alternates: { canonical: "/post-90" },
   openGraph: {
-    title: "Engine Room — the post-90 cohort home",
+    title: "Engine Room, the post-90 cohort home",
     description:
-      "Sunday voice memo, monthly founder talk, quarterly post-mortem. The 90-day rhythm continues in your podcast app and your calendar — not just your inbox.",
+      "Sunday voice memo, monthly founder talk, quarterly post-mortem. The 90-day rhythm continues in your podcast app and your calendar, not just your inbox.",
     type: "article",
     url: `${SITE}/post-90`,
   },
   twitter: {
     card: "summary_large_image",
-    title: "Engine Room — post-90 cohort home",
+    title: "Engine Room, post-90 cohort home",
     description:
       "Sunday voice memo, monthly founder talk, quarterly post-mortem. Channel-shift from inbox to podcast app and calendar.",
   },
@@ -57,9 +57,9 @@ const RITUALS = [
   {
     cadence: "Sunday · 09:00 UTC · weekly",
     title: "The Brief",
-    medium: "Audio · synthetic voice · 4–6 min",
+    medium: "Audio · synthetic voice · 4-6 min",
     body:
-      "A short voice memo from the engine. The week's single sharpest acceleration break, what shifted on the panel, and one thing to put on the radar before Monday. Lands in the same podcast app you already open — Apple Podcasts, Spotify, Overcast, anything that takes an RSS URL.",
+      "A short voice memo from the engine. The week's single sharpest acceleration break, what shifted on the panel, and one thing to put on the radar before Monday. Lands in the same podcast app you already open, Apple Podcasts, Spotify, Overcast, anything that takes an RSS URL.",
     cta: "Subscribe to the feed",
     href: "/post-90/feed.xml",
     accent: "amber",
@@ -67,9 +67,9 @@ const RITUALS = [
   {
     cadence: "First Tuesday of each month · 16:00 UTC",
     title: "The monthly founder talk",
-    medium: "Synthetic-voice video · 8–12 min · YouTube + RSS",
+    medium: "Synthetic-voice video · 8-12 min · YouTube + RSS",
     body:
-      "The monthly address — what the panel showed across 350+ venture-backed orgs, what shifted in the false-positive rate, and one falsifiable prediction on the record. Same content cadence as State of GitHub, now scheduled in your calendar so it lands as an event, not an email surprise.",
+      "The monthly address, what the panel showed across 350+ venture-backed orgs, what shifted in the false-positive rate, and one falsifiable prediction on the record. Same content cadence as State of GitHub, now scheduled in your calendar so it lands as an event, not an email surprise.",
     cta: "Add to calendar",
     href: "/post-90/calendar.ics",
     accent: "sky",
@@ -79,7 +79,7 @@ const RITUALS = [
     title: "The Post-Mortem",
     medium: "Long-form written · public ledger",
     body:
-      "Every 90 days, the State-of-the-Engine email reports back on the previous quarter's specific prediction and lays a fresh one for the next quarter. Predictions resolve onto the public Receipts ledger — same format as panel-validation entries, append-only, no opinions.",
+      "Every 90 days, the State-of-the-Engine email reports back on the previous quarter's specific prediction and lays a fresh one for the next quarter. Predictions resolve onto the public Receipts ledger, same format as panel-validation entries, append-only, no opinions.",
     cta: "Open the Receipts ledger",
     href: "/wins",
     accent: "emerald",
@@ -113,7 +113,7 @@ const SUBSCRIBE_LINKS = [
   },
   {
     label: "Calendar (iCal / Google Calendar / Outlook)",
-    sub: "Subscribe to the .ics URL — the monthly Stadium drop + quarterly post-mortem land as events.",
+    sub: "Subscribe to the .ics URL, the monthly Stadium drop + quarterly post-mortem land as events.",
     href: `${SITE}/post-90/calendar.ics`,
     raw: `${SITE}/post-90/calendar.ics`,
   },
@@ -121,7 +121,7 @@ const SUBSCRIBE_LINKS = [
 
 const COMMITMENT_RITUAL = [
   "Open the Sunday voice memo in your podcast app of choice. Background-listen while you make coffee. The whole point of the channel-shift is that you are *not* in your email when this lands.",
-  "Add the calendar feed once. The first Tuesday of every month from now on, the founder talk is on your calendar — not a surprise drop.",
+  "Add the calendar feed once. The first Tuesday of every month from now on, the founder talk is on your calendar, not a surprise drop.",
   "When the quarterly post-mortem hits, reply with one sentence: did the previous quarter's prediction resolve on your radar before consensus? That sentence is the only feedback loop the engine asks for.",
 ] as const;
 
@@ -132,9 +132,9 @@ export default function Post90Page() {
       {
         "@type": "WebPage",
         "@id": `${SITE}/post-90#page`,
-        name: "Engine Room — post-90 cohort home",
+        name: "Engine Room, post-90 cohort home",
         description:
-          "Cohort home for graduates of the 90-day signal rhythm. Sunday voice memo, monthly founder talk, quarterly State-of-the-Engine post-mortem. Three subscribe channels — podcast app, calendar app, public Receipts ledger.",
+          "Cohort home for graduates of the 90-day signal rhythm. Sunday voice memo, monthly founder talk, quarterly State-of-the-Engine post-mortem. Three subscribe channels, podcast app, calendar app, public Receipts ledger.",
         url: `${SITE}/post-90`,
         inLanguage: "en-US",
         isPartOf: { "@type": "WebSite", name: "VC Deal Flow Signal", url: "https://gitdealflow.com" },
@@ -153,7 +153,7 @@ export default function Post90Page() {
       {
         "@type": "PodcastSeries",
         "@id": `${SITE}/post-90#podcast`,
-        name: "Engine Room — VC Deal Flow Signal",
+        name: "Engine Room, VC Deal Flow Signal",
         description:
           "Weekly synthetic-voice voice memo for graduates of the 90-day signal rhythm. The single sharpest acceleration break each Sunday, plus the monthly founder talk and quarterly State-of-the-Engine post-mortem.",
         url: `${SITE}/post-90`,
@@ -196,7 +196,7 @@ export default function Post90Page() {
           <span className="text-gray-400">Engine Room</span>
         </nav>
 
-        {/* Status-board header — visually distinct from the rest of the site
+        {/* Status-board header, visually distinct from the rest of the site
             on purpose. Brunson Phase 6: the environment changed. */}
         <header className="space-y-5 border border-amber-500/30 bg-slate-950/70 rounded-lg p-6 sm:p-8 font-mono">
           <div className="flex flex-wrap items-center gap-3 text-xs uppercase tracking-widest">
@@ -218,7 +218,7 @@ export default function Post90Page() {
           </h1>
           <p className="text-amber-200/80 text-base sm:text-lg leading-relaxed font-sans" data-speakable>
             You crossed Day 90 of the signal rhythm. The 21-email welcome
-            sequence and daily-drip end here — the relationship
+            sequence and daily-drip end here, the relationship
             doesn&rsquo;t. From this page on, the rhythm lives in three
             different surfaces, deliberately outside your inbox.
           </p>
@@ -230,7 +230,7 @@ export default function Post90Page() {
           </div>
         </header>
 
-        {/* Newcomer on-ramp — cold/SEO arrivals aren't at Day 90 yet.
+        {/* Newcomer on-ramp, cold/SEO arrivals aren't at Day 90 yet.
             Give them a free entry point instead of a dead-end. */}
         <section className="rounded-lg border border-gray-800 bg-slate-900/40 p-5 sm:p-6 space-y-2">
           <p className="text-sky-400 text-xs font-semibold uppercase tracking-wider font-mono">
@@ -239,7 +239,7 @@ export default function Post90Page() {
           <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
             Not at Day 90 yet? This page is the cohort home for readers who
             already finished the 90-day rhythm. Start with the free Sunday
-            digest —{" "}
+            digest, {" "}
             <a
               href="https://gitdealflow.com/#signup"
               rel="noopener noreferrer"
@@ -247,7 +247,7 @@ export default function Post90Page() {
             >
               subscribe to the Acceleration Watch
             </a>{" "}
-            — or read{" "}
+or read{" "}
             <Link href="/start-here" className="text-amber-400 hover:underline font-semibold">
               /start-here
             </Link>{" "}
@@ -255,7 +255,7 @@ export default function Post90Page() {
           </p>
         </section>
 
-        {/* Three rituals — the actual environment shift, listed plainly. */}
+        {/* Three rituals, the actual environment shift, listed plainly. */}
         <section className="space-y-6">
           <h2 className="text-xl font-bold text-gray-100" data-speakable>
             Three rituals. Three different apps.
@@ -292,10 +292,10 @@ export default function Post90Page() {
           </div>
         </section>
 
-        {/* Subscribe options — each is a literal channel switch. */}
+        {/* Subscribe options, each is a literal channel switch. */}
         <section className="space-y-5">
           <h2 className="text-xl font-bold text-gray-100" data-speakable>
-            Subscribe — paste one URL.
+            Subscribe, paste one URL.
           </h2>
           <p className="text-sm text-gray-400 leading-relaxed">
             The same RSS feed plugs into every podcast app. The calendar feed
@@ -321,10 +321,10 @@ export default function Post90Page() {
           </div>
         </section>
 
-        {/* The 30-day commitment — Brunson "buyer ritual" mechanic. */}
+        {/* The 30-day commitment, Brunson "buyer ritual" mechanic. */}
         <section className="space-y-4 border-l-2 border-amber-500/40 pl-5 py-1">
           <h2 className="text-xl font-bold text-gray-100" data-speakable>
-            The cohort commitment — three steps, one minute.
+            The cohort commitment, three steps, one minute.
           </h2>
           <ol className="space-y-3">
             {COMMITMENT_RITUAL.map((step, i) => (
@@ -336,7 +336,7 @@ export default function Post90Page() {
           </ol>
         </section>
 
-        {/* Recap — what changes vs. what stays. */}
+        {/* Recap, what changes vs. what stays. */}
         <section className="space-y-3 border border-gray-800 bg-slate-950/40 rounded-lg p-6">
           <h2 className="text-base font-bold text-gray-100 uppercase tracking-wider">
             What changes / what stays
@@ -375,7 +375,7 @@ export default function Post90Page() {
           <p>
             <span className="text-amber-400 font-mono">›</span> The Engine Room
             page is the public landing for cohort graduates. The audio voice is
-            a synthetic Cartesia model — same anonymity rule that governs every
+            a synthetic Cartesia model, same anonymity rule that governs every
             other surface on this site. The methodology, not the personality.
           </p>
           <p>

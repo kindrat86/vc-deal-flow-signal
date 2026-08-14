@@ -1,10 +1,10 @@
 /**
- * /watch/[slug] — per-video embed page.
+ * /watch/[slug], per-video embed page.
  *
  * Each entry in `content/videos.ts` gets a static page here with:
  *   - YouTube embed (privacy-enhanced, lazy-loaded)
  *   - Full VideoObject JSON-LD with Clip[] chapters and SeekToAction
- *   - On-page transcript paragraphs (anonymity-safe — no founder face/voice)
+ *   - On-page transcript paragraphs (anonymity-safe, no founder face/voice)
  *   - BreadcrumbList + WebPage + Speakable
  *   - Backlinks to the canonical anchor pages (/predicted, /walkthrough)
  *
@@ -97,7 +97,7 @@ function buildVideoJsonLd(v: SiteVideo) {
   const pageUrl = watchPageUrl(v.slug);
   const fullEmbed = embedUrl(v);
 
-  // Clip[] — Google's chapter carousel. Each Clip needs name, startOffset,
+  // Clip[], Google's chapter carousel. Each Clip needs name, startOffset,
   // endOffset, and a url that uses the t= seek param so the viewer jumps
   // directly to the chapter.
   const clips = v.chapters.map((c, i) => ({
@@ -119,7 +119,7 @@ function buildVideoJsonLd(v: SiteVideo) {
         "@type": "VideoObject",
         "@id": `${pageUrl}#video`,
         name: v.title,
-        alternateName: v.title.split("—")[0]?.trim(),
+        alternateName: v.title.split("-")[0]?.trim(),
         description: v.description,
         thumbnailUrl: [v.thumbnailMaxUrl, v.thumbnailUrl],
         contentUrl: v.contentUrl ?? undefined,
@@ -235,7 +235,7 @@ export default async function WatchPage({
           </Link>
           <span className="mx-2">/</span>
           <span aria-current="page" className="text-slate-300">
-            {v.title.split("—")[0]?.trim() ?? v.title}
+            {v.title.split("-")[0]?.trim() ?? v.title}
           </span>
         </nav>
 
@@ -322,7 +322,7 @@ export default async function WatchPage({
         <section className="space-y-4">
           <h2 className="text-2xl font-bold text-gray-100">Transcript</h2>
           <p className="text-xs text-slate-400 uppercase tracking-wider">
-            Synthetic voice — Cartesia &ldquo;Theo&rdquo; — anonymity-safe per
+            Synthetic voice, Cartesia &ldquo;Theo&rdquo;, anonymity-safe per
             the project&rsquo;s no-founder-face rule.
           </p>
           <div className="space-y-4 text-gray-300 text-base leading-relaxed">
@@ -375,7 +375,7 @@ export default async function WatchPage({
                   href={`/watch/${o.slug}`}
                   className="text-sky-300 hover:text-sky-200 font-medium block mb-1"
                 >
-                  {o.title.split("—")[0]?.trim() ?? o.title}
+                  {o.title.split("-")[0]?.trim() ?? o.title}
                 </Link>
                 <p className="text-xs text-slate-400">
                   {fmtTime(o.durationSeconds)} ·{" "}

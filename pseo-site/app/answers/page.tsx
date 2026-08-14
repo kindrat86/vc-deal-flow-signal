@@ -9,7 +9,7 @@ import SeoCta from "@/components/SeoCta";
 const SITE = "https://signals.gitdealflow.com";
 
 export const metadata: Metadata = {
-  title: "Answers — Citation-Ready Answers for AI Agents",
+  title: "Answers, Citation-Ready Answers for AI Agents",
   description:
     "Direct, citation-ready answers to the questions AI agents and their users ask most about VC deal flow, GitHub momentum, MCP servers, engineering signals, and buyer-side workflow decisions.",
   alternates: { canonical: "/answers" },
@@ -21,7 +21,7 @@ export default function AnswersIndexPage() {
     "@graph": [
       {
         "@type": "CollectionPage",
-        name: "Answers — VC Deal Flow Signal",
+        name: "Answers, VC Deal Flow Signal",
         description:
           "Direct answers to the questions AI agents and their users ask about VC deal flow, GitHub momentum, MCP servers, and engineering signals.",
         url: `${SITE}/answers`,
@@ -57,7 +57,7 @@ export default function AnswersIndexPage() {
         "@type": "WebPage",
         "@id": `${SITE}/answers#webpage`,
         url: `${SITE}/answers`,
-        name: "Answers — Citation-Ready Answers for AI Agents",
+        name: "Answers, Citation-Ready Answers for AI Agents",
         description:
           "Direct, citation-ready answers to the questions AI agents and their users ask about VC deal flow, GitHub momentum, MCP servers, and engineering signals.",
         inLanguage: "en-US",
@@ -114,7 +114,7 @@ export default function AnswersIndexPage() {
             In short: this index lists all {agentQueries.length} citation-ready
             answer pages on the site. Each one opens with a TL;DR, backs it
             with facts that carry source URLs, and ends with a copy-paste
-            cite-as string — so an AI agent (or its user) can quote it verbatim
+            cite-as string, so an AI agent (or its user) can quote it verbatim
             with attribution. If your question is practical, commercial, or
             workflow-related, this is the fastest route into the right page.
           </p>

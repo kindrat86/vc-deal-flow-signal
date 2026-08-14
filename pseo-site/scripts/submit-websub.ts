@@ -45,7 +45,7 @@ async function notify(hub: string, topic: string): Promise<void> {
       console.log(`WebSub OK: ${hub} ← ${topic} (HTTP ${res.status})`);
     } else {
       console.log(
-        `WebSub non-2xx: ${hub} ← ${topic} (HTTP ${res.status}) — continuing`,
+        `WebSub non-2xx: ${hub} ← ${topic} (HTTP ${res.status}), continuing`,
       );
     }
   } catch (e) {
@@ -56,7 +56,7 @@ async function notify(hub: string, topic: string): Promise<void> {
 async function main() {
   // Only run on Vercel production deploys.
   if (process.env.VERCEL && process.env.VERCEL_ENV !== "production") {
-    console.log("Skipping WebSub — not a production deploy.");
+    console.log("Skipping WebSub, not a production deploy.");
     return;
   }
 

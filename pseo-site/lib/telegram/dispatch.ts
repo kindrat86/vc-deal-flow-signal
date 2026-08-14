@@ -3,8 +3,8 @@
  *
  * Takes a parsed update payload from Telegram and decides what to send back.
  * Two entry points:
- *   - handleMessage(update.message)      — regular /command messages
- *   - handleInlineQuery(update.inline_query) — typed @botname queries in any chat
+ *   - handleMessage(update.message)     , regular /command messages
+ *   - handleInlineQuery(update.inline_query), typed @botname queries in any chat
  *
  * All replies are emitted as HTML (parse_mode: "HTML") so we only have to
  * escape <, >, & once at send time. Bold/italic/code come from a tiny
@@ -81,32 +81,32 @@ const START_REPLY = `
 
 Free VC + founder calculators and the full glossary, in any chat.
 
-<b>Calculators</b> — type /tools to see all 8
-• /safe — SAFE conversion + dilution
-• /runway — cash runway
-• /burn — burn multiple
-• /magic — magic number
-• /cac — CAC payback
-• /ltv — customer LTV
-• /quick — quick ratio
-• /dilution — multi-SAFE + Series A stack
+<b>Calculators</b>: type /tools to see all 8
+• /safe, SAFE conversion + dilution
+• /runway, cash runway
+• /burn, burn multiple
+• /magic, magic number
+• /cac, CAC payback
+• /ltv, customer LTV
+• /quick, quick ratio
+• /dilution, multi-SAFE + Series A stack
 
 <b>Glossary</b>
-• /define &lt;term&gt; — define a VC term
-• /glossary — browse all ${GLOSSARY_COUNT} terms
+• /define &lt;term&gt;, define a VC term
+• /glossary, browse all ${GLOSSARY_COUNT} terms
 
 <b>Inline mode</b>
 Type <code>@gitdealflow_bot &lt;query&gt;</code> in any chat to search the glossary without joining the bot.
 
 Source &amp; methodology: <a href="${SITE}">${SITE}</a>
-Educational tool — not legal/tax/investment advice.
+Educational tool, not legal/tax/investment advice.
 `.trim();
 
 const HELP_REPLY = START_REPLY;
 
 function toolsListReply(): string {
   const rows = TOOLS_INDEX.map(
-    (t) => `${t.cmd} — <a href="${escapeHtml(t.url)}">${escapeHtml(t.name)}</a>`,
+    (t) => `${t.cmd}, <a href="${escapeHtml(t.url)}">${escapeHtml(t.name)}</a>`,
   ).join("\n");
   return `<b>8 free calculators</b>\n${rows}\n\nType the command (e.g. <code>/safe 50k 5m 20</code>) to compute inline.`;
 }
@@ -124,12 +124,12 @@ function defineReply(args: string[]): string {
   const query = args.join(" ");
   const hits = searchGlossary(query, 3);
   if (hits.length === 0) {
-    // Common SaaS metrics live in /tools rather than the glossary —
+    // Common SaaS metrics live in /tools rather than the glossary -
     // nudge the user there instead of a flat "not found".
     const toolHint = /\b(burn|cac|ltv|magic|quick|payback|runway|safe|dilution)\b/i.test(
       query,
     )
-      ? `\n\nLooks like a metric — try <code>/tools</code> for the calculators.`
+      ? `\n\nLooks like a metric, try <code>/tools</code> for the calculators.`
       : "";
     return `No glossary match for <b>${escapeHtml(query)}</b>.${toolHint}\nBrowse all ${GLOSSARY_COUNT} terms: <a href="${SITE}/glossary">${SITE}/glossary</a>`;
   }
@@ -219,7 +219,7 @@ export function buildMessageReply(
       body = withDeepLink(calcDilutionStack());
       break;
     default:
-      // Unknown command — quietly ignore in groups to avoid noise. In DMs,
+      // Unknown command, quietly ignore in groups to avoid noise. In DMs,
       // Telegram doesn't expose a chat type field reliably from message_id
       // alone; we conservatively no-op.
       return { text: null };
@@ -252,7 +252,7 @@ export function buildInlineResults(
 ): InlineQueryResultArticle[] {
   const q = query.trim();
   if (!q) {
-    // Empty query — show a "type to search" hint
+    // Empty query, show a "type to search" hint
     return [
       {
         type: "article",

@@ -122,7 +122,7 @@ export default function BuyersGuidePage() {
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed max-w-3xl">
             You do not need a procurement memo to know whether a tool is helping.
             You need to know whether it gives you earlier signal, clearer timing,
-            and less noise — or whether it simply helps you verify what already happened.
+            and less noise, or whether it simply helps you verify what already happened.
             If you are comparing GitDealFlow, Crunchbase, PitchBook, or any
             other deal-flow tool, this is the buyer-side page that tells you
             what to check first.

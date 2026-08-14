@@ -7,7 +7,7 @@ import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 
 export const dynamic = "force-static";
 
-// Brunson Audit 2026-05-08 — DotCom Secrets Ch 2 (Value Ladder) ding fix.
+// Brunson Audit 2026-05-08, DotCom Secrets Ch 2 (Value Ladder) ding fix.
 // Rung 8 of the now-10-rung ladder. Built to respect the anonymity rule:
 // no live calls, no founder voice, no in-person attendance. Every
 // deliverable is async and licensable.
@@ -15,7 +15,7 @@ export const dynamic = "force-static";
 const APPLY_MAILTO =
   "mailto:signals@gitdealflow.com" +
   "?subject=" +
-  encodeURIComponent("Methodology Partnership — application") +
+  encodeURIComponent("Methodology Partnership, application") +
   "&body=" +
   encodeURIComponent(
     [
@@ -30,7 +30,7 @@ const APPLY_MAILTO =
       "How urgent is this (months / quarters):",
       "",
       "We review applications inside 48 business hours. The Methodology",
-      "Partnership is async-only — no live calls, no in-person attendance.",
+      "Partnership is async-only, no live calls, no in-person attendance.",
       "Capped at 5 funds in 2026.",
     ].join("\n"),
   );
@@ -50,42 +50,42 @@ const STACK = [
       "Quarterly portfolio review brief (async), custom thesis-aligned watchlist, white-labeled API endpoint, methodology source code access, same-day signal questions, data-room exports formatted for LP updates. The full Sharp Tier deliverable, included.",
   },
   {
-    label: "Custom Panel Construction — your fund's regression model",
+    label: "Custom Panel Construction, your fund's regression model",
     detail:
       "Send your fund's anonymized historical investment outcomes (wins, misses, exits, write-offs). We re-train the panel-construction pipeline on your portfolio and return a fund-specific lead-time model that scores future GitHub-momentum events against your fund's actual returns curve.",
   },
   {
-    label: "Bespoke 50-Org Watchlist — monthly rebuild",
+    label: "Bespoke 50-Org Watchlist, monthly rebuild",
     detail:
       "Beyond the 140-startup public Dashboard. A 50-org watchlist tuned to your written thesis, rebuilt the first Monday of every month against the live signal feed and pushed to your inbox plus Slack/Discord webhook.",
   },
   {
-    label: "White-Labeled Fund Subdomain — signal.yourfund.com",
+    label: "White-Labeled Fund Subdomain, signal.yourfund.com",
     detail:
       "Your fund's subdomain returns the same dataset behind your auth, with your brand. Drop into your CRM (Affinity, Attio, Salesforce), internal dashboards, deal-screening tool, or LP reports. Includes uptime SLA matching the public Dashboard.",
   },
   {
-    label: "Quarterly Synthetic Founder Talk — fund-specific",
+    label: "Quarterly Synthetic Founder Talk, fund-specific",
     detail:
       "Four times a year, we render a 6-minute Remotion-built synthetic-voice video on your fund's specific thesis: where the engineering data is heading, what the regression flagged in your watchlist, and one falsifiable prediction for the next quarter. Anonymity-preserving (no founder face), shareable internally for IC prep.",
   },
   {
-    label: "Async Methodology Q&A — dedicated channel",
+    label: "Async Methodology Q&A, dedicated channel",
     detail:
-      "Unlimited written methodology questions via a dedicated email channel. 24-hour weekday turn. Replaces the live-call SLA with an async equivalent — covers signal interpretation, regression questions, methodology forks, and write-up review.",
+      "Unlimited written methodology questions via a dedicated email channel. 24-hour weekday turn. Replaces the live-call SLA with an async equivalent, covers signal interpretation, regression questions, methodology forks, and write-up review.",
   },
   {
-    label: "Quarterly Anonymized Case Study — published",
+    label: "Quarterly Anonymized Case Study, published",
     detail:
-      "Each quarter, we co-author a case study using your fund as the (anonymized, attribution-optional) example, published to /press and submitted to industry newsletters. Fund-as-publisher move — your thesis becomes part of the public record without exposing your fund identity. Optional opt-in to named attribution.",
+      "Each quarter, we co-author a case study using your fund as the (anonymized, attribution-optional) example, published to /press and submitted to industry newsletters. Fund-as-publisher move, your thesis becomes part of the public record without exposing your fund identity. Optional opt-in to named attribution.",
   },
   {
-    label: "Annual Methodology Brief — fund-only",
+    label: "Annual Methodology Brief, fund-only",
     detail:
       "Once a year, a 30-minute synthetic-voice walkthrough plus 40-page PDF brief covering: panel re-construction, regression coefficients with confidence intervals, signal-type performance over twelve months, and the year-ahead methodology roadmap. Distributed only to Methodology Partnership funds.",
   },
   {
-    label: "Founding-rate lock — through end of 2027",
+    label: "Founding-rate lock, through end of 2027",
     detail:
       "The Methodology Partnership rate goes to €29,997/yr after 2026. Funds joining in 2026 keep €14,997/yr through the end of 2027 as long as the partnership stays active. The rate is a relationship anchor, not a discount window.",
   },
@@ -94,19 +94,19 @@ const STACK = [
 const FAQS = [
   {
     q: "What does 'async-only' mean in practice?",
-    a: "No live calls, no Zoom, no in-person attendance, no founder voice on a recording. Every deliverable is text, PDF, dataset, or synthetic-voice video. Methodology Q&A runs through a dedicated email channel with 24-hour weekday turn. The constraint is the founder anonymity rule — and it forces every deliverable to be licensable, archivable, and reviewable on the fund's own time. If your fund's diligence process requires a live partner-to-partner call, we are not the right vendor.",
+    a: "No live calls, no Zoom, no in-person attendance, no founder voice on a recording. Every deliverable is text, PDF, dataset, or synthetic-voice video. Methodology Q&A runs through a dedicated email channel with 24-hour weekday turn. The constraint is the founder anonymity rule, and it forces every deliverable to be licensable, archivable, and reviewable on the fund's own time. If your fund's diligence process requires a live partner-to-partner call, we are not the right vendor.",
   },
   {
     q: "What does 'custom panel construction' actually deliver?",
-    a: "You send anonymized historical investment outcomes — round dates, sector tags, outcome labels (success / write-off / hold), and any internal scoring you used. We rebuild the panel-construction pipeline on your portfolio: same regression methodology as the public SSRN paper, retrained on your fund's actual returns curve. The output is a fund-specific lead-time score that grades every flagged signal against the regression your fund would have benefited from, had it existed three years ago. The model code, the regression coefficients, and the audit trail are all yours under a fund-only license.",
+    a: "You send anonymized historical investment outcomes, round dates, sector tags, outcome labels (success / write-off / hold), and any internal scoring you used. We rebuild the panel-construction pipeline on your portfolio: same regression methodology as the public SSRN paper, retrained on your fund's actual returns curve. The output is a fund-specific lead-time score that grades every flagged signal against the regression your fund would have benefited from, had it existed three years ago. The model code, the regression coefficients, and the audit trail are all yours under a fund-only license.",
   },
   {
     q: "Why €14,997 and not €4,997 or €49,997?",
-    a: "Three anchors. (1) The Sharp Tier at €4,970/yr is what a fund pays for the productized version of this — same data, no custom regression, no fund-branded subdomain, no quarterly founder talk. The €14,997 is roughly 3× Sharp because the deliverables are bespoke, not productized. (2) Equivalent fund-as-case-study work from a name-brand methodology consultancy quotes €60,000–€120,000/year. We undercut that on margin, not on quality. (3) The next rung up — the Vault — is €49,997/yr and includes co-development access, pre-publication paper preview, and signal-of-the-quarter co-invest alerts. €14,997 sits exactly between productized and partnership-grade.",
+    a: "Three anchors. (1) The Sharp Tier at €4,970/yr is what a fund pays for the productized version of this, same data, no custom regression, no fund-branded subdomain, no quarterly founder talk. The €14,997 is roughly 3× Sharp because the deliverables are bespoke, not productized. (2) Equivalent fund-as-case-study work from a name-brand methodology consultancy quotes €60,000-€120,000/year. We undercut that on margin, not on quality. (3) The next rung up, the Vault, is €49,997/yr and includes co-development access, pre-publication paper preview, and signal-of-the-quarter co-invest alerts. €14,997 sits exactly between productized and partnership-grade.",
   },
   {
     q: "Why is this capped at 5 funds in 2026?",
-    a: "Two reasons. (1) The custom regression work is real founder-engineering time — even on async-only delivery, every additional fund adds 80–120 hours of pipeline work over the first three months. Five is the ceiling at which we can guarantee the 24-hour Q&A SLA without dropping quality. (2) Cap creates the scarcity that makes the founding rate hold. After 2026 the cap rises to 8 and the rate moves to €29,997/yr. Founding-rate funds keep €14,997/yr through end of 2027.",
+    a: "Two reasons. (1) The custom regression work is real founder-engineering time, even on async-only delivery, every additional fund adds 80-120 hours of pipeline work over the first three months. Five is the ceiling at which we can guarantee the 24-hour Q&A SLA without dropping quality. (2) Cap creates the scarcity that makes the founding rate hold. After 2026 the cap rises to 8 and the rate moves to €29,997/yr. Founding-rate funds keep €14,997/yr through end of 2027.",
   },
   {
     q: "How does this compare to commissioning a Sector Sweep?",
@@ -114,7 +114,7 @@ const FAQS = [
   },
   {
     q: "What disqualifies an application?",
-    a: "(1) Reselling the data wholesale — we license to one fund per agreement, not OEM. (2) Funds whose primary thesis is reselling alternative data. (3) Anything that would compromise the founder's anonymity (live in-person calls, named-attribution publications featuring the founder, photos, podcast appearances). (4) Funds requesting a per-deal sourcing fee — the Partnership is a flat-rate license, not a finders-fee structure. We turn down roughly one in three applications on these grounds; written reasons are always provided.",
+    a: "(1) Reselling the data wholesale, we license to one fund per agreement, not OEM. (2) Funds whose primary thesis is reselling alternative data. (3) Anything that would compromise the founder's anonymity (live in-person calls, named-attribution publications featuring the founder, photos, podcast appearances). (4) Funds requesting a per-deal sourcing fee, the Partnership is a flat-rate license, not a finders-fee structure. We turn down roughly one in three applications on these grounds; written reasons are always provided.",
   },
   {
     q: "What's the upgrade path to the Vault (€49,997/yr)?",
@@ -124,12 +124,12 @@ const FAQS = [
 
 export const metadata: Metadata = {
   title:
-    "Methodology Partnership — €14,997/yr · Custom regression on your fund's thesis",
+    "Methodology Partnership, €14,997/yr · Custom regression on your fund's thesis",
   description:
     "Done-with-you methodology engagement for active VC funds. Custom panel construction trained on your portfolio, bespoke 50-org watchlist, white-labeled fund subdomain, quarterly synthetic founder talk, async-only methodology Q&A. Capped at 5 funds in 2026. €14,997/yr founding rate.",
   alternates: { canonical: "/methodology-partnership" },
   openGraph: {
-    title: "Methodology Partnership — €14,997/yr · GitDealFlow",
+    title: "Methodology Partnership, €14,997/yr · GitDealFlow",
     description:
       "Custom regression on your fund's portfolio. Bespoke watchlist. Async-only. Capped at 5 funds in 2026.",
     url: "https://signals.gitdealflow.com/methodology-partnership",
@@ -146,7 +146,7 @@ export default function MethodologyPartnershipPage() {
         "@id":
           "https://signals.gitdealflow.com/methodology-partnership#webpage",
         url: "https://signals.gitdealflow.com/methodology-partnership",
-        name: "Methodology Partnership — €14,997/yr · VC Deal Flow Signal",
+        name: "Methodology Partnership, €14,997/yr · VC Deal Flow Signal",
         isAccessibleForFree: true,
       },
       {
@@ -160,7 +160,7 @@ export default function MethodologyPartnershipPage() {
         provider: { "@id": "https://gitdealflow.com/#organization" },
         offers: {
           "@type": "Offer",
-          name: "Methodology Partnership — annual",
+          name: "Methodology Partnership, annual",
           price: PRICE_NUMBER,
           priceCurrency: "EUR",
           priceValidUntil: "2026-12-31",
@@ -177,7 +177,7 @@ export default function MethodologyPartnershipPage() {
         "@type": "ItemList",
         "@id":
           "https://signals.gitdealflow.com/methodology-partnership#stack",
-        name: "Methodology Partnership — what's included",
+        name: "Methodology Partnership, what's included",
         numberOfItems: STACK.length,
         itemListElement: STACK.map((s, i) => ({
           "@type": "ListItem",
@@ -266,12 +266,12 @@ export default function MethodologyPartnershipPage() {
             public panel.
           </h2>
           <p className="text-gray-300 text-sm leading-relaxed">
-            The SSRN paper&rsquo;s 21–47-day lead time was measured against
+            The SSRN paper&rsquo;s 21-47-day lead time was measured against
             the public 219-startup panel. Funds with five-plus years of their
             own outcomes (wins, write-offs, exits) carry private signal that
             the public regression cannot see. The Methodology Partnership
             trains the same regression on your data and gives you the
-            fund-specific lead-time score &mdash; plus the source code to
+            fund-specific lead-time score, plus the source code to
             re-run it whenever your portfolio updates.
           </p>
         </aside>
@@ -312,7 +312,7 @@ export default function MethodologyPartnershipPage() {
               {PRICE_LABEL}
             </p>
             <p className="text-gray-400 text-sm leading-relaxed">
-              No invented &ldquo;stack value&rdquo; &mdash; the price is anchored
+              No invented &ldquo;stack value&rdquo;, the price is anchored
               to two real comparisons. The productised{" "}
               <Link
                 href="/pricing#sharp-tier"
@@ -322,7 +322,7 @@ export default function MethodologyPartnershipPage() {
               </Link>{" "}
               is €4,970/yr with no custom regression; equivalent
               fund-as-case-study work from a name-brand methodology consultancy
-              quotes €60,000&ndash;€120,000/yr. Founding rate locked through end
+              quotes €60,000-€120,000/yr. Founding rate locked through end
               of 2027, then €29,997/yr.
             </p>
           </div>
@@ -350,7 +350,7 @@ export default function MethodologyPartnershipPage() {
             </p>
             <p className="text-gray-300 text-sm leading-relaxed">
               This is a jump up from the €1,997 Sweep, so check the track
-              record first &mdash; you don&rsquo;t need to read any code to do
+              record first, you don&rsquo;t need to read any code to do
               it. The{" "}
               <Link
                 href="/wins"
@@ -428,14 +428,14 @@ export default function MethodologyPartnershipPage() {
             >
               Sharp Tier (€4,970/yr)
             </Link>{" "}
-            — productised, no custom regression. Above: the{" "}
+productised, no custom regression. Above: the{" "}
             <Link
               href="/vault"
               className="text-violet-400 hover:text-violet-300 underline decoration-dotted"
             >
               Vault (€49,997/yr)
             </Link>{" "}
-            — adds co-development, pre-publication paper preview, 72-hour
+adds co-development, pre-publication paper preview, 72-hour
             signal head-start, capped at 2 funds. See the{" "}
             <Link
               href="/pricing"

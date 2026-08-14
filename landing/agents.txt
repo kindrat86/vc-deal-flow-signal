@@ -1,4 +1,4 @@
-# /agents.txt — autonomous agent policy for VC Deal Flow Signal (apex mirror)
+# /agents.txt, autonomous agent policy for VC Deal Flow Signal (apex mirror)
 # Canonical:  https://gitdealflow.com/agents.txt
 # Subdomain:  https://signals.gitdealflow.com/agents.txt
 # Machine:    https://signals.gitdealflow.com/.well-known/ai-policy.json

@@ -48,7 +48,7 @@ export async function generateMetadata({
   if (!t) return {};
 
   const lede = firstSentence(t.definition);
-  const title = `${t.term} — Definition, Context & Related Terms`;
+  const title = `${t.term}, Definition, Context & Related Terms`;
   const description = `${lede} Part of the VC Deal Flow Signal glossary, cross-referenced to the SSRN methodology paper and the signal primitives.`;
   const ogImage = `${SITE}/api/og/define/${term}`;
 
@@ -66,7 +66,7 @@ export async function generateMetadata({
           url: ogImage,
           width: 1200,
           height: 630,
-          alt: `${t.term} — VC Deal Flow Signal glossary`,
+          alt: `${t.term}, VC Deal Flow Signal glossary`,
         },
       ],
     },
@@ -122,7 +122,7 @@ export default async function DefineTermPage({ params }: PageProps) {
         inDefinedTermSet: {
           "@type": "DefinedTermSet",
           "@id": `${SITE}/glossary#vocabulary`,
-          name: "VC Deal Flow Signal — controlled vocabulary",
+          name: "VC Deal Flow Signal, controlled vocabulary",
           url: `${SITE}/glossary`,
         },
         url: pageUrl,
@@ -139,7 +139,7 @@ export default async function DefineTermPage({ params }: PageProps) {
       {
         "@type": "Article",
         "@id": `${pageUrl}#article`,
-        headline: `${t.term} — definition and context`,
+        headline: `${t.term}, definition and context`,
         description: lede,
         url: pageUrl,
         inLanguage: "en-US",
@@ -186,7 +186,7 @@ export default async function DefineTermPage({ params }: PageProps) {
                   name: `Is ${t.term} a formal signal primitive?`,
                   acceptedAnswer: {
                     "@type": "Answer",
-                    text: `Yes — ${t.term} has a formal signal definition with a published formula, decision rule, and pitfall analysis at ${SITE}/signals/define/${signalSlug}.`,
+                    text: `Yes, ${t.term} has a formal signal definition with a published formula, decision rule, and pitfall analysis at ${SITE}/signals/define/${signalSlug}.`,
                   },
                 },
               ]
@@ -216,7 +216,7 @@ export default async function DefineTermPage({ params }: PageProps) {
         "@type": "WebPage",
         "@id": pageUrl,
         url: pageUrl,
-        name: `${t.term} — Definition, Context & Related Terms`,
+        name: `${t.term}, Definition, Context & Related Terms`,
         description: lede,
         inLanguage: "en-US",
         isPartOf: { "@id": `${SITE}/#website` },
@@ -364,7 +364,7 @@ export default async function DefineTermPage({ params }: PageProps) {
 
         <SeoCta
           heading={`Now see ${t.term} in live signal data`}
-          blurb={`The free Acceleration Watch turns terms like ${t.term} into five named, accelerating startups every Sunday — translated into plain English, 21 to 47 days before the deck circulates. No code-reading, no card.`}
+          blurb={`The free Acceleration Watch turns terms like ${t.term} into five named, accelerating startups every Sunday, translated into plain English, 21 to 47 days before the deck circulates. No code-reading, no card.`}
           secondary={{ label: "Browse this week's signals", href: "/" }}
           signoffIndex={3}
         />

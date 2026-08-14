@@ -6,7 +6,7 @@ import Script from "next/script";
  * That means we can ship this component now and pixels start firing the moment
  * the corresponding NEXT_PUBLIC_* var is set in Vercel (no code change needed).
  *
- * All vars are NEXT_PUBLIC_ because pixel IDs are public by design — they
+ * All vars are NEXT_PUBLIC_ because pixel IDs are public by design, they
  * appear in the page source on every ad-tracked site.
  */
 export default function PixelManager() {

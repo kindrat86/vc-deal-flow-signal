@@ -26,8 +26,8 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!fund) return {};
 
   const portfolio = getFundPortfolio(slug);
-  const title = `${fund.name} Portfolio — Companies We Track (2026) | VC Deal Flow Signal`;
-  const description = `${portfolio.length} companies from ${fund.name}'s publicly disclosed portfolio that we track in the VC Deal Flow Signal engineering-signal panel. Independent — sources are press releases and Crunchbase only.`;
+  const title = `${fund.name} Portfolio, Companies We Track (2026) | VC Deal Flow Signal`;
+  const description = `${portfolio.length} companies from ${fund.name}'s publicly disclosed portfolio that we track in the VC Deal Flow Signal engineering-signal panel. Independent, sources are press releases and Crunchbase only.`;
 
   return {
     title,
@@ -73,7 +73,7 @@ export default async function FundPortfolioPage({ params }: PageProps) {
   const faqs = [
     {
       question: `How many ${fund.name} portfolio companies does VC Deal Flow Signal track?`,
-      answer: `We track ${portfolio.length} ${fund.name} portfolio companies in our /signal/ corpus — these are companies where ${fund.name} has publicly disclosed their investor relationship via press release, the fund's own portfolio page, or both. ${fund.name}'s full portfolio is larger; this page only shows the intersection with our curated tracked set.`,
+      answer: `We track ${portfolio.length} ${fund.name} portfolio companies in our /signal/ corpus, these are companies where ${fund.name} has publicly disclosed their investor relationship via press release, the fund's own portfolio page, or both. ${fund.name}'s full portfolio is larger; this page only shows the intersection with our curated tracked set.`,
     },
     {
       question: `How was this portfolio list sourced?`,
@@ -89,7 +89,7 @@ export default async function FundPortfolioPage({ params }: PageProps) {
     },
     {
       question: `How can LPs or emerging managers use this page?`,
-      answer: `Two workflows. (1) Thesis validation: compare ${fund.name}'s public portfolio concentration (sector and stage breakdowns above) against the fund's stated thesis on the parent /fund/${slug} page. (2) Engineering benchmarking: each portfolio company's /signal/ page shows their engineering-acceleration trajectory — useful as a comparator when modeling your own portfolio's velocity profile.`,
+      answer: `Two workflows. (1) Thesis validation: compare ${fund.name}'s public portfolio concentration (sector and stage breakdowns above) against the fund's stated thesis on the parent /fund/${slug} page. (2) Engineering benchmarking: each portfolio company's /signal/ page shows their engineering-acceleration trajectory, useful as a comparator when modeling your own portfolio's velocity profile.`,
     },
   ];
 
@@ -99,7 +99,7 @@ export default async function FundPortfolioPage({ params }: PageProps) {
       {
         "@type": "CollectionPage",
         url: pageUrl,
-        name: `${fund.name} Portfolio — Companies We Track`,
+        name: `${fund.name} Portfolio, Companies We Track`,
         description: `${portfolio.length} ${fund.name} portfolio companies tracked in the VC Deal Flow Signal engineering-signal panel.`,
         isPartOf: {
           "@type": "WebSite",
@@ -114,7 +114,7 @@ export default async function FundPortfolioPage({ params }: PageProps) {
       },
       {
         "@type": "ItemList",
-        name: `${fund.name} — Portfolio Companies (Tracked Subset)`,
+        name: `${fund.name}, Portfolio Companies (Tracked Subset)`,
         itemListOrder: "Unordered",
         numberOfItems: portfolio.length,
         itemListElement: portfolio.map(({ company }, i) => ({
@@ -193,7 +193,7 @@ export default async function FundPortfolioPage({ params }: PageProps) {
         </nav>
 
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
-          {fund.name} — Portfolio Companies We Track
+          {fund.name}, Portfolio Companies We Track
         </h1>
         <p className="text-sky-400 text-base leading-relaxed mb-6 font-medium">
           {portfolio.length} publicly disclosed {fund.name} portfolio companies in the

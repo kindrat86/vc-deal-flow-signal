@@ -1,4 +1,4 @@
-# GitDealFlow — direct engagement message pack
+# GitDealFlow, direct engagement message pack
 
 Purpose: make active distribution executable without improvising every reply.
 

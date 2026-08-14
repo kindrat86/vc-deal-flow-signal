@@ -1,9 +1,9 @@
 /**
- * /api/v1/changelog.json — versioned alias for /api/changelog.json.
+ * /api/v1/changelog.json, versioned alias for /api/changelog.json.
  *
  * Stable v1 path for the public changelog feed (release notes, signal
  * cadence updates, methodology revisions). Body and headers mirror the
- * upstream; canonical URL — declared via `Link: rel=canonical` —
+ * upstream; canonical URL, declared via `Link: rel=canonical` -
  * remains at /api/changelog.json.
  */
 

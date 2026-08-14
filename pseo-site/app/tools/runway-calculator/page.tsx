@@ -36,9 +36,9 @@ export async function generateMetadata({
 
   return {
     title:
-      "Runway Calculator — Cash, Burn, Headcount Scenarios for Startups",
+      "Runway Calculator, Cash, Burn, Headcount Scenarios for Startups",
     description:
-      "Free startup runway calculator. Cash divided by net burn equals months of runway. Model headcount scenarios — see how many months each engineer costs you. URL-shareable results.",
+      "Free startup runway calculator. Cash divided by net burn equals months of runway. Model headcount scenarios, see how many months each engineer costs you. URL-shareable results.",
     alternates: { canonical: "/tools/runway-calculator" },
     openGraph: {
       title: "Runway Calculator",
@@ -51,7 +51,7 @@ export async function generateMetadata({
           url: ogImage,
           width: 1200,
           height: 630,
-          alt: "Runway Calculator — VC Deal Flow Signal",
+          alt: "Runway Calculator, VC Deal Flow Signal",
         },
       ],
     },
@@ -79,7 +79,7 @@ const FAQS: { question: string; answer: string }[] = [
   {
     question: "How is runway calculated?",
     answer:
-      "Runway in months = cash on hand divided by net monthly burn. Net burn = gross burn minus monthly revenue. If revenue covers burn (net burn is zero or negative), runway is effectively infinite — the company is cashflow-positive.",
+      "Runway in months = cash on hand divided by net monthly burn. Net burn = gross burn minus monthly revenue. If revenue covers burn (net burn is zero or negative), runway is effectively infinite, the company is cashflow-positive.",
   },
   {
     question: "When should I start fundraising?",
@@ -94,7 +94,7 @@ const FAQS: { question: string; answer: string }[] = [
   {
     question: "Does this account for new revenue from those hires?",
     answer:
-      "No — this is a strict cost-side model. New engineering hires usually take 6 to 18 months to contribute revenue, and attributing future revenue to specific headcount is notoriously hard. The conservative move is to model their cost without their revenue contribution and treat any revenue uplift as upside.",
+      "No, this is a strict cost-side model. New engineering hires usually take 6 to 18 months to contribute revenue, and attributing future revenue to specific headcount is notoriously hard. The conservative move is to model their cost without their revenue contribution and treat any revenue uplift as upside.",
   },
   {
     question: "What about one-off expenses or seasonal burn?",
@@ -104,7 +104,7 @@ const FAQS: { question: string; answer: string }[] = [
   {
     question: "Can I share my calculation?",
     answer:
-      "Yes — every input is encoded in the URL. The 'Copy share link' button copies the current URL to your clipboard. Send it to your co-founder, board, or investor and they open the calculator with the same numbers.",
+      "Yes, every input is encoded in the URL. The 'Copy share link' button copies the current URL to your clipboard. Send it to your co-founder, board, or investor and they open the calculator with the same numbers.",
   },
 ];
 
@@ -163,7 +163,7 @@ export default function RunwayCalculatorPage() {
             "@type": "HowToStep",
             position: 2,
             name: "Enter gross monthly burn",
-            text: "Enter total monthly cash out — salaries, infrastructure, tools, marketing, everything.",
+            text: "Enter total monthly cash out, salaries, infrastructure, tools, marketing, everything.",
           },
           {
             "@type": "HowToStep",
@@ -212,7 +212,7 @@ export default function RunwayCalculatorPage() {
         "@type": "WebPage",
         "@id": PAGE_URL,
         url: PAGE_URL,
-        name: "Runway Calculator — Cash, Burn, Headcount Scenarios for Startups",
+        name: "Runway Calculator, Cash, Burn, Headcount Scenarios for Startups",
         description:
           "Free startup runway calculator with headcount scenarios and shareable URLs.",
         inLanguage: "en-US",

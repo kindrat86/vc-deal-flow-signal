@@ -1,7 +1,7 @@
 import "server-only";
 
 /**
- * Solana payment verification — raw JSON-RPC, no SDK.
+ * Solana payment verification, raw JSON-RPC, no SDK.
  *
  * We deliberately do NOT depend on `@solana/web3.js`. The JSON-RPC wire
  * protocol (`getTransaction` with `jsonParsed` encoding) is stable across
@@ -17,7 +17,7 @@ import "server-only";
  *      amount of the configured USDC mint actually landed in our wallet.
  *
  * Verification reads the token-balance deltas in transaction metadata rather
- * than parsing instructions — that way it works identically for `transfer`,
+ * than parsing instructions, that way it works identically for `transfer`,
  * `transferChecked`, and any future transfer shape, and can't be fooled by a
  * no-op instruction that merely *mentions* our address.
  */
@@ -40,7 +40,7 @@ export interface SolanaPayConfig {
 /**
  * Read configuration from the environment. Returns null if any required value
  * is missing so the route can answer 503 "not configured" instead of throwing
- * — mirroring the x402 rail's `notConfiguredHandler`.
+ *, mirroring the x402 rail's `notConfiguredHandler`.
  */
 export function getSolanaPayConfig(): SolanaPayConfig | null {
   const rpcUrl = process.env.SOLANA_RPC_URL?.trim();
@@ -63,7 +63,7 @@ export function getSolanaPayConfig(): SolanaPayConfig | null {
   };
 }
 
-/** A Solana transaction signature is base58 and ~87–88 chars long. */
+/** A Solana transaction signature is base58 and ~87-88 chars long. */
 export function isValidSignature(sig: string): boolean {
   return /^[1-9A-HJ-NP-Za-km-z]{64,96}$/.test(sig);
 }
@@ -103,7 +103,7 @@ interface RpcTransaction {
 /**
  * Verify that `signature` represents a confirmed payment of at least the
  * required USDC amount into our recipient wallet. Network/RPC failures and
- * not-yet-confirmed transactions both return a structured `{ ok: false }` —
+ * not-yet-confirmed transactions both return a structured `{ ok: false }` -
  * callers retry rather than crashing.
  */
 export async function verifySolanaPayment(

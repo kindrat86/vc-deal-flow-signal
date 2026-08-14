@@ -61,7 +61,7 @@ const notConfigured = () =>
     { status: 503, headers: CORS },
   );
 
-// GET — discovery. Returns how to pay without requiring a key.
+// GET, discovery. Returns how to pay without requiring a key.
 export async function GET() {
   const cfg = getSolanaPayConfig();
   if (!cfg) return notConfigured();
@@ -79,7 +79,7 @@ export async function POST(request: Request) {
   const cfg = getSolanaPayConfig();
   if (!cfg) return notConfigured();
 
-  // Authenticate the caller — credits are granted to this customer.
+  // Authenticate the caller, credits are granted to this customer.
   const token = extractBearer(request.headers.get("authorization"));
   const parsed = token ? parseApiKeyV2(token) : null;
   if (!parsed) {

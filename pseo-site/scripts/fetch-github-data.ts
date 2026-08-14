@@ -1,5 +1,5 @@
 /**
- * GitHub Data Pipeline — Multi-Period Edition
+ * GitHub Data Pipeline, Multi-Period Edition
  *
  * Fetches real startup engineering activity from GitHub and outputs
  * to data/startups.json in the period-aware format.
@@ -117,7 +117,7 @@ async function ghApiFetch(endpoint: string): Promise<unknown> {
   const url = endpoint.startsWith("https://") ? endpoint : `https://api.github.com/${endpoint}`;
   const headers = { Authorization: `token ${GITHUB_TOKEN}`, Accept: "application/vnd.github.v3+json", "User-Agent": "vc-deal-flow-signal" };
 
-  // GitHub stats endpoints return 202 while computing — retry with backoff
+  // GitHub stats endpoints return 202 while computing, retry with backoff
   const isStats = url.includes("/stats/");
   const maxAttempts = isStats ? 3 : 1;
 
@@ -157,7 +157,7 @@ function normalizeBlog(raw: string | null | undefined, orgLogin: string): string
   if (!/^https?:\/\//i.test(v)) v = `https://${v}`;
   try {
     const u = new URL(v);
-    // Reject orgLogin.github.io — not an independent company site
+    // Reject orgLogin.github.io, not an independent company site
     if (u.hostname.toLowerCase() === `${orgLogin.toLowerCase()}.github.io`) return undefined;
     // Normalize: lowercase hostname, strip trailing slash from root
     u.hostname = u.hostname.toLowerCase();
@@ -283,7 +283,7 @@ function generateFaqs(name: string, desc: string, pName: string, startups: Start
 
   return [
     { question: `What engineering signals are ${name.toLowerCase()} startups showing in ${pName}?`, answer: `In ${pName}, we are tracking ${startups.length} ${name.toLowerCase()} startups with measurable GitHub engineering signals. ${pos} of ${startups.length} show positive commit velocity growth. The most common signal type is "${ts[0]}", observed in ${ts[1]} of the tracked companies. The average 14-day commit velocity across the sector is ${avg} commits, with ${top.name} leading at ${top.commitVelocity14d} commits (${top.commitVelocityChange} change). These patterns have historically preceded fundraise announcements by three to six weeks.` },
-    { question: `Which ${name.toLowerCase()} startup has the highest engineering acceleration in ${pName}?`, answer: `${top.name} leads the ${name.toLowerCase()} sector in ${pName} with ${top.commitVelocity14d} commits over a 14-day window, representing a ${top.commitVelocityChange} change from the prior period. With ${top.contributors} active contributors${top.newRepos > 0 ? ` and ${top.newRepos} new repositories` : ""}, ${top.name} is showing a "${top.signalType}" pattern — one of the more reliable leading indicators of a significant product milestone or fundraise.` },
+    { question: `Which ${name.toLowerCase()} startup has the highest engineering acceleration in ${pName}?`, answer: `${top.name} leads the ${name.toLowerCase()} sector in ${pName} with ${top.commitVelocity14d} commits over a 14-day window, representing a ${top.commitVelocityChange} change from the prior period. With ${top.contributors} active contributors${top.newRepos > 0 ? ` and ${top.newRepos} new repositories` : ""}, ${top.name} is showing a "${top.signalType}" pattern, one of the more reliable leading indicators of a significant product milestone or fundraise.` },
     { question: `Where are the most active ${name.toLowerCase()} engineering teams located?`, answer: tg ? `Among the ${startups.length} ${name.toLowerCase()} startups we track, ${tg[0]} accounts for the highest concentration with ${tg[1]} teams. ${desc} Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers.` : `The ${name.toLowerCase()} startups we track are geographically distributed across multiple regions. ${desc} We derive geography from GitHub organization profiles.` },
   ];
 }

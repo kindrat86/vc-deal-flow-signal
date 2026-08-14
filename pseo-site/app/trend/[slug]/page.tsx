@@ -75,7 +75,7 @@ export default async function TrendLeaderboardPage({ params }: PageProps) {
       },
       {
         "@type": "ItemList",
-        name: `${trend.name} — ${trend.period} Leaderboard`,
+        name: `${trend.name}, ${trend.period} Leaderboard`,
         itemListOrder: "Descending",
         numberOfItems: trackedCompanies.length,
         itemListElement: trackedCompanies.map((c, i) => ({

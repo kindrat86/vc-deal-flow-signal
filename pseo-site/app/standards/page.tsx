@@ -7,14 +7,14 @@ import { TrustPageOutro } from "@/components/TrustPageOutro";
 const SITE = "https://signals.gitdealflow.com";
 
 export const metadata: Metadata = {
-  title: "Standards — Specifications VC Deal Flow Signal Conforms To",
+  title: "Standards, Specifications VC Deal Flow Signal Conforms To",
   description:
-    "Every published specification, schema, and standard VC Deal Flow Signal (GitDealFlow) implements end-to-end — Schema.org, Dublin Core, Highwire Press, DCAT 3, FAIR, OpenAPI 3.1, MCP, A2A, llms.txt, security.txt, IndieWeb. Each entry links to the spec and to the surface that exposes it.",
+    "Every published specification, schema, and standard VC Deal Flow Signal (GitDealFlow) implements end-to-end, Schema.org, Dublin Core, Highwire Press, DCAT 3, FAIR, OpenAPI 3.1, MCP, A2A, llms.txt, security.txt, IndieWeb. Each entry links to the spec and to the surface that exposes it.",
   alternates: { canonical: "/standards" },
   openGraph: {
-    title: "Standards — Specifications VC Deal Flow Signal Conforms To",
+    title: "Standards, Specifications VC Deal Flow Signal Conforms To",
     description:
-      "Schema.org, Dublin Core, Highwire Press, DCAT 3, FAIR, OpenAPI 3.1, MCP, A2A, llms.txt, security.txt, IndieWeb — every spec implemented.",
+      "Schema.org, Dublin Core, Highwire Press, DCAT 3, FAIR, OpenAPI 3.1, MCP, A2A, llms.txt, security.txt, IndieWeb, every spec implemented.",
     type: "article",
     url: `${SITE}/standards`,
   },
@@ -178,7 +178,7 @@ const STANDARDS: Standard[] = [
     spec: "https://llmstxt.org/",
     appliedAt: "/llms.txt + /llms-full.txt + /llms/[pillar]",
     appliedHref: "/llms.txt",
-    note: "Three layers — index, full corpus, per-pillar segments — so retrieval pipelines can grab as much or as little as they need.",
+    note: "Three layers, index, full corpus, per-pillar segments, so retrieval pipelines can grab as much or as little as they need.",
   },
   {
     group: "API & agents",
@@ -325,7 +325,7 @@ export default function StandardsPage() {
       {
         "@type": "WebPage",
         "@id": `${SITE}/standards#page`,
-        name: "Standards — VC Deal Flow Signal",
+        name: "Standards, VC Deal Flow Signal",
         url: `${SITE}/standards`,
         inLanguage: "en-US",
         isPartOf: { "@id": `${SITE}/#website` },
@@ -411,7 +411,7 @@ export default function StandardsPage() {
           <strong className="text-sky-300">The one belief this page asks for:</strong>{" "}
           a standard you can&rsquo;t independently check is just a badge. Every spec
           below links to the canonical source and to the exact surface here that
-          implements it &mdash; so your engineer can confirm it without taking our word.
+          implements it, so your engineer can confirm it without taking our word.
         </p>
 
         <div className="rounded-lg border border-slate-800 bg-slate-900/40 p-5 mb-10 text-sm text-gray-300">
@@ -420,14 +420,14 @@ export default function StandardsPage() {
             E-E-A-T signals are not just bylines and headshots. They are
             verifiable, machine-checkable conformance to the standards that the
             web of data is built on. Every row below is a public spec you can
-            validate this site against — open the spec URL, hit the &quot;applied
+            validate this site against, open the spec URL, hit the &quot;applied
             at&quot; endpoint, and check the output.
           </p>
           <p className="mt-3">
             <strong className="text-white">For a non-technical buyer,</strong> the
             takeaway is simpler: you don&apos;t have to take our word for anything.
             Every claim on this site resolves to a public spec or a public dataset
-            your firm&apos;s engineer can validate in an afternoon — and you can hand
+            your firm&apos;s engineer can validate in an afternoon, and you can hand
             this page to them without reading a line of it yourself.
           </p>
         </div>
@@ -555,7 +555,7 @@ export default function StandardsPage() {
                   methodology paper
                 </Link>{" "}
                 stand behind every claim. No claim depends on the author&apos;s
-                identity — each is traceable to the public dataset.
+                identity, each is traceable to the public dataset.
               </p>
             </div>
 
@@ -568,7 +568,7 @@ export default function StandardsPage() {
               </h3>
               <p className="text-sm text-gray-300 leading-relaxed">
                 Independently operated and self-funded by subscription and
-                dataset revenue — not affiliated with, owned by, or funded by
+                dataset revenue, not affiliated with, owned by, or funded by
                 any incumbent VC platform, fund, or data vendor. Full ownership
                 and funding disclosure is published in the annual{" "}
                 <Link
@@ -597,7 +597,7 @@ export default function StandardsPage() {
                 </strong>{" "}
                 GitHub activity. We use no private, scraped-behind-login, or
                 unnamed-source data, and we do not pay for tips. There are no
-                anonymous sources to protect because there are none — the inputs
+                anonymous sources to protect because there are none, the inputs
                 are public and the transformation is documented in the{" "}
                 <Link
                   href="/methodology"
@@ -724,7 +724,7 @@ export default function StandardsPage() {
           </ol>
         </section>
 
-        <TrustPageOutro acNote="E-E-A-T isn't a headshot and a LinkedIn — it's whether a stranger can check your claims without trusting you. Every row on this page is something you can validate yourself. Trust the math, not me." />
+        <TrustPageOutro acNote="E-E-A-T isn't a headshot and a LinkedIn, it's whether a stranger can check your claims without trusting you. Every row on this page is something you can validate yourself. Trust the math, not me." />
 
         <p className="text-xs text-gray-400 text-center mt-12">
           See also:{" "}

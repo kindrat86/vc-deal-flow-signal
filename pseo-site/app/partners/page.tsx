@@ -6,12 +6,12 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title:
-    "Partner with GitDealFlow — distribution, co-marketing, white-label MCP",
+    "Partner with GitDealFlow, distribution, co-marketing, white-label MCP",
   description:
     "Six concrete partnership tracks for funds, accelerators, newsletters, and platforms. Embed our scores via badge/widget. Co-publish a Sector Sweep. White-label the MCP server with your portfolio. Cite the methodology paper. Co-host a quarterly synthetic-voice webinar. Refer customers via the affiliate program.",
   alternates: { canonical: "/partners" },
   openGraph: {
-    title: "Partner with GitDealFlow — six concrete tracks",
+    title: "Partner with GitDealFlow, six concrete tracks",
     description:
       "Embed · co-publish · white-label MCP · cite · co-host · refer. Founder anonymity preserved across every track.",
     url: "https://signals.gitdealflow.com/partners",
@@ -43,7 +43,7 @@ const TRACKS: readonly Track[] = [
     mechanic:
       "Drop a one-line script tag (or use the badge SVG) to surface a startup's GitDealFlow score in your own UI. Updates daily, attribution required, CC BY 4.0.",
     deliverables: [
-      "Live badge SVG — 3 sizes, light + dark theme",
+      "Live badge SVG, 3 sizes, light + dark theme",
       "Embed script (one-line, defer-loaded, ~3KB)",
       "Per-org JSON via /api/v1/signals.json (filter by GitHub org)",
       "Crunchbase/Wellfound Chrome extensions for score-on-card augmentation",
@@ -131,7 +131,7 @@ const TRACKS: readonly Track[] = [
       "Optional: send your published piece to citations@gitdealflow.com to be added to the receipts ledger at /receipts",
     ],
     cost: "Free (CC BY 4.0)",
-    timeline: "Immediate — no application needed",
+    timeline: "Immediate, no application needed",
     primaryCta: { label: "Open the press kit →", href: "/press" },
     secondaryCta: { label: "View citations ledger", href: "/citations" },
     status: "live",
@@ -225,7 +225,7 @@ export default function PartnersPage() {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/partners#webpage",
         url: "https://signals.gitdealflow.com/partners",
-        name: "Partner with GitDealFlow — six concrete tracks",
+        name: "Partner with GitDealFlow, six concrete tracks",
         description:
           "Six partnership tracks for funds, accelerators, newsletters, and platforms: embed scores, co-publish a Sector Sweep, white-label the MCP server, cite the methodology, co-host a quarterly synthetic-voice webinar, refer customers via the affiliate program.",
         inLanguage: "en-US",
@@ -329,7 +329,7 @@ export default function PartnersPage() {
             >
               the founder&rsquo;s real name, voice, and face never appear
             </Link>{" "}
-            — the methodology, the data, and the synthetic mascot do all the
+the methodology, the data, and the synthetic mascot do all the
             talking. This makes us a clean co-marketing partner for funds and
             publishers who don&rsquo;t want a third-party founder personality
             on their distribution.
@@ -438,7 +438,7 @@ export default function PartnersPage() {
             Multi-track partnership?
           </h2>
           <p className="text-gray-200 text-base leading-relaxed mb-5 max-w-xl mx-auto">
-            Most fund-side partners run 2-3 tracks together — typically embed +
+            Most fund-side partners run 2-3 tracks together, typically embed +
             citation + co-published Sector Sweep, or white-label MCP +
             quarterly co-host. Email us with a sketch of which tracks fit your
             audience; we reply inside 48 business hours.

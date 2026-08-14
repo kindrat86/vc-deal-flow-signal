@@ -1,4 +1,4 @@
-# GitDealFlow — Friday learning pack
+# GitDealFlow, Friday learning pack
 
 Purpose: close the week with evidence, not vibes.
 
@@ -41,7 +41,7 @@ Open these files:
 
 ## Friday decision rules
 
-### Rule 1 — choose the page that earned curiosity
+### Rule 1, choose the page that earned curiosity
 A page is a winner if it did at least one of these:
 - gained impressions
 - gained clicks
@@ -51,7 +51,7 @@ A page is a winner if it did at least one of these:
 
 If more than one page qualifies, pick the page that moved closest to money or proof.
 
-### Rule 2 — choose the page that leaked trust
+### Rule 2, choose the page that leaked trust
 A page needs patching next week if it did one of these:
 - people asked “what is this?” after seeing it
 - people asked for methodology because the page didn’t explain enough
@@ -59,7 +59,7 @@ A page needs patching next week if it did one of these:
 - people clicked it but did not continue deeper
 - it got distributed several times and produced nothing
 
-### Rule 3 — stop doing what produced no signal
+### Rule 3, stop doing what produced no signal
 Stop or pause a page-angle-platform combination if:
 - it got 3+ real touches
 - in good contexts

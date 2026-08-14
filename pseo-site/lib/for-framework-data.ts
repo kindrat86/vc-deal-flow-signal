@@ -21,7 +21,7 @@ export interface FrameworkPositioning {
   narrative: string[];
   /** What "shipping with X" looks like once you wire GitDealFlow in. */
   outcomes: { title: string; detail: string }[];
-  /** A complete starter agent — copy, paste, run. Different framing from /a2a. */
+  /** A complete starter agent, copy, paste, run. Different framing from /a2a. */
   starterCode: { title: string; lang: string; code: string };
   /** A second snippet showing one production-shaped pattern. */
   productionCode: { title: string; lang: string; code: string };
@@ -47,7 +47,7 @@ export const FRAMEWORKS: FrameworkPositioning[] = [
     shortName: "LangChain",
     hook: "Wire VC engineering signals into any LangChain agent in 20 lines of Python.",
     narrative: [
-      "If you ship LangChain agents and you also write angel checks, you sit in the rarest segment of the deal-flow market. The default playbook — Crunchbase Pro, PitchBook, hand-rolled scrapers — is built for analysts, not for builders. None of it is callable from your agent loop. None of it knows what Series A milestone a 14-day commit-velocity spike actually predicts. The data was never designed to flow through an LLM.",
+      "If you ship LangChain agents and you also write angel checks, you sit in the rarest segment of the deal-flow market. The default playbook, Crunchbase Pro, PitchBook, hand-rolled scrapers, is built for analysts, not for builders. None of it is callable from your agent loop. None of it knows what Series A milestone a 14-day commit-velocity spike actually predicts. The data was never designed to flow through an LLM.",
       "GitDealFlow signals are. The corpus is 350+ venture-backed startups across 15 sectors, refreshed weekly, ranked by the kind of GitHub momentum that historically precedes fundraises by three to six weeks. The MCP server and the public A2A endpoint expose the same five skills your LangChain ReAct loop needs: trending, sector slice, named-startup lookup, dataset summary, methodology citation. Drop the tool in, point your agent at OpenAI or Anthropic, and you're shipping deal-flow conviction by Sunday.",
     ],
     outcomes: [
@@ -64,7 +64,7 @@ export const FRAMEWORKS: FrameworkPositioning[] = [
       {
         title: "LangGraph state machines",
         detail:
-          "The five skills are stateless and idempotent — drop them into a LangGraph node and they replay safely on retry. Same response for the same args inside a refresh window.",
+          "The five skills are stateless and idempotent, drop them into a LangGraph node and they replay safely on retry. Same response for the same args inside a refresh window.",
       },
       {
         title: "MCP-native if you already moved",
@@ -153,19 +153,19 @@ print(out["memo"])`,
     },
     examplePrompts: [
       "Who is trending in fintech this week? Cite the methodology.",
-      "Compare commit velocity for Roboflow and Modular — which is shipping faster?",
+      "Compare commit velocity for Roboflow and Modular, which is shipping faster?",
       "Show me ai-ml startups with breakout signals; rank by contributor delta.",
-      "What does engineering acceleration mean — is it the same as Y Combinator?",
+      "What does engineering acceleration mean, is it the same as Y Combinator?",
       "Summarize the dataset: how many sectors, how many startups, how fresh.",
     ],
     faqs: [
       {
         q: "How is this different from giving LangChain a Crunchbase API tool?",
-        a: "Crunchbase Pro is $20K/yr and surfaces post-fact data — funding announcements, headcount changes, press. GitDealFlow surfaces leading indicators: commit velocity changes, contributor growth, infrastructure buildout, all from public GitHub. The two are complementary; GitDealFlow gets you to the deal three to six weeks before Crunchbase has the round announced.",
+        a: "Crunchbase Pro is $20K/yr and surfaces post-fact data, funding announcements, headcount changes, press. GitDealFlow surfaces leading indicators: commit velocity changes, contributor growth, infrastructure buildout, all from public GitHub. The two are complementary; GitDealFlow gets you to the deal three to six weeks before Crunchbase has the round announced.",
       },
       {
         q: "Does the LangChain tool work with Anthropic Claude as well?",
-        a: "Yes. The tool is model-agnostic — it's a plain Python callable wrapped by @tool. It works with ChatOpenAI, ChatAnthropic, ChatVertexAI, ChatBedrock, or any LangChain chat model. The tool calling format is normalized by LangChain before the model sees it.",
+        a: "Yes. The tool is model-agnostic, it's a plain Python callable wrapped by @tool. It works with ChatOpenAI, ChatAnthropic, ChatVertexAI, ChatBedrock, or any LangChain chat model. The tool calling format is normalized by LangChain before the model sees it.",
       },
       {
         q: "Is there a rate limit?",
@@ -190,7 +190,7 @@ print(out["memo"])`,
     shortName: "CrewAI",
     hook: "Build a role-based VC scouting crew where the scout, analyst, and skeptic share live engineering signals.",
     narrative: [
-      "CrewAI's core unit is the role: a scout who finds, an analyst who writes, a skeptic who pokes holes. The pattern fits venture work better than any other agent framework — diligence is exactly that conversation. The missing piece is data. Without it, the scout is hallucinating company names from training-data fragments and the skeptic is correcting them.",
+      "CrewAI's core unit is the role: a scout who finds, an analyst who writes, a skeptic who pokes holes. The pattern fits venture work better than any other agent framework, diligence is exactly that conversation. The missing piece is data. Without it, the scout is hallucinating company names from training-data fragments and the skeptic is correcting them.",
       "Plug GitDealFlow's A2A endpoint in as a single BaseTool and the scout becomes credible. Now it's pulling 350+ real startups, ranked by 14-day commit velocity, with an SSRN-anchored methodology the skeptic can cite back. Run the crew on a Monday cron and your weekly deal-flow review writes itself: who's accelerating, who's stalling, who deserves a partner check-in.",
     ],
     outcomes: [
@@ -202,7 +202,7 @@ print(out["memo"])`,
       {
         title: "Sector-scoped weekly digests",
         detail:
-          "Daily/weekly Process schedules let CrewAI run unattended. Pipe the result into Slack, Notion, Linear — anywhere the team already lives.",
+          "Daily/weekly Process schedules let CrewAI run unattended. Pipe the result into Slack, Notion, Linear, anywhere the team already lives.",
       },
       {
         title: "Compositional with other paid sources",
@@ -289,7 +289,7 @@ class GitDealFlowArgs(BaseModel):
 
 class GitDealFlowTool(BaseTool):
     name: str = "gitdealflow"
-    description: str = "Live VC engineering signals — strict typed args."
+    description: str = "Live VC engineering signals, strict typed args."
     args_schema: type[BaseModel] = GitDealFlowArgs
 
     def _run(self, skill: str, args: dict | None = None) -> dict:
@@ -317,19 +317,19 @@ while True:
     faqs: [
       {
         q: "How do I attach the GitDealFlow tool to multiple agents in a crew?",
-        a: "Instantiate GitDealFlowTool() once and pass the same instance to every Agent that needs it via tools=[tool]. CrewAI handles concurrency safely — each agent's tool call is independent.",
+        a: "Instantiate GitDealFlowTool() once and pass the same instance to every Agent that needs it via tools=[tool]. CrewAI handles concurrency safely, each agent's tool call is independent.",
       },
       {
         q: "Does CrewAI work with Anthropic and Mistral, not just OpenAI?",
-        a: "Yes. CrewAI uses LiteLLM under the hood, which supports OpenAI, Anthropic, Mistral, Bedrock, Vertex, Cohere, and Ollama. Set the llm parameter on Agent (or LITELLM_PROVIDER env vars) — the GitDealFlow tool is unchanged.",
+        a: "Yes. CrewAI uses LiteLLM under the hood, which supports OpenAI, Anthropic, Mistral, Bedrock, Vertex, Cohere, and Ollama. Set the llm parameter on Agent (or LITELLM_PROVIDER env vars), the GitDealFlow tool is unchanged.",
       },
       {
         q: "Can I use GitDealFlow with CrewAI Studio (the no-code UI)?",
-        a: "Yes — CrewAI Studio supports Custom Tools via the Tool Builder. Paste the BaseTool class above into the code editor, save, and the tool becomes available to drag onto any agent in the visual flow.",
+        a: "Yes, CrewAI Studio supports Custom Tools via the Tool Builder. Paste the BaseTool class above into the code editor, save, and the tool becomes available to drag onto any agent in the visual flow.",
       },
     ],
     gotchas: [
-      "CrewAI passes tool args as kwargs — declare _run signature explicitly or use a Pydantic args_schema.",
+      "CrewAI passes tool args as kwargs, declare _run signature explicitly or use a Pydantic args_schema.",
       "Crews default to verbose=False; turn on verbose=True the first run so you see exactly which skill the agent picked.",
       "Process.hierarchical lets a manager LLM delegate; for VC use cases, Process.sequential gives more predictable memo output.",
     ],
@@ -346,7 +346,7 @@ while True:
     shortName: "Letta",
     hook: "Stateful VC analyst agents with persistent memory of every startup they've scouted.",
     narrative: [
-      "Letta (formerly MemGPT) is the only mainstream agent framework where memory is a first-class primitive. For venture work, that maps perfectly: deal flow is fundamentally a longitudinal exercise — you watched this team six months ago, the signal was warm, you passed; now the signal is breakout and you want to remember why you hesitated. Stateless agents lose that thread on every restart.",
+      "Letta (formerly MemGPT) is the only mainstream agent framework where memory is a first-class primitive. For venture work, that maps perfectly: deal flow is fundamentally a longitudinal exercise, you watched this team six months ago, the signal was warm, you passed; now the signal is breakout and you want to remember why you hesitated. Stateless agents lose that thread on every restart.",
       "Wire GitDealFlow into a Letta agent and the agent's archival memory becomes a personal scouting database. Every startup it looks up gets remembered. Every methodology citation gets indexed. When you ask 'have I seen Roboflow before?', the agent can answer with the exact prior context, plus the live commit-velocity delta since you last looked. That's a VC analyst that compounds.",
     ],
     outcomes: [
@@ -358,7 +358,7 @@ while True:
       {
         title: "Self-editing core memory",
         detail:
-          "Letta agents can edit their own persona block. Start with 'I am a venture analyst' and after 50 conversations the agent has refined its own thesis prompt — 'I focus on dev-tools breakouts under 10 contributors.'",
+          "Letta agents can edit their own persona block. Start with 'I am a venture analyst' and after 50 conversations the agent has refined its own thesis prompt, 'I focus on dev-tools breakouts under 10 contributors.'",
       },
       {
         title: "Recall rather than re-fetch",
@@ -462,7 +462,7 @@ for entry in archival:
     faqs: [
       {
         q: "Does Letta have native MCP support?",
-        a: "As of late 2025, Letta exposed an MCP-compatible interface for tool definitions, and the @gitdealflow/mcp-signal package can be wrapped in a Letta tool. The simplest path remains a plain Python function tool that hits the A2A endpoint — Letta's tool auto-generation reads the docstring and signature to build the schema for the LLM.",
+        a: "As of late 2025, Letta exposed an MCP-compatible interface for tool definitions, and the @gitdealflow/mcp-signal package can be wrapped in a Letta tool. The simplest path remains a plain Python function tool that hits the A2A endpoint, Letta's tool auto-generation reads the docstring and signature to build the schema for the LLM.",
       },
       {
         q: "Why use Letta over LangChain for VC scouting agents?",
@@ -470,12 +470,12 @@ for entry in archival:
       },
       {
         q: "Can I run Letta server in production for a team?",
-        a: "Yes — Letta ships a REST API server (`letta server`) that supports multi-user agent management, persistent storage (SQLite or Postgres), and authentication. Multiple analysts can share one VC-scout agent or fork into per-user agents that share archival memory.",
+        a: "Yes, Letta ships a REST API server (`letta server`) that supports multi-user agent management, persistent storage (SQLite or Postgres), and authentication. Multiple analysts can share one VC-scout agent or fork into per-user agents that share archival memory.",
       },
     ],
     gotchas: [
       "Letta's archival memory grows over time; if you're cost-sensitive, set archival_memory_size limits in agent config or periodically prune via the API.",
-      "Tool docstrings are the single source of truth for JSON schema — keep arg descriptions tight and accurate or the LLM picks wrong skills.",
+      "Tool docstrings are the single source of truth for JSON schema, keep arg descriptions tight and accurate or the LLM picks wrong skills.",
       "Local-only mode (no server) works for prototyping but loses persistence across script restarts; run `letta server` for stateful agents.",
     ],
     docsLinks: [
@@ -491,7 +491,7 @@ for entry in archival:
     hook: "Type-safe VC signal agents shipped alongside your Next.js app.",
     narrative: [
       "Mastra is the TypeScript agent framework you reach for when you already ship a Next.js or Hono app. It speaks the same Zod schemas, the same Vercel AI SDK primitives, the same edge-or-Node deployment story. That means deal-flow features can ship inside the same codebase as your portfolio dashboard, with the same type safety and the same deploy pipeline.",
-      "Mastra's MCP support is first-class — drop the @gitdealflow/mcp-signal package into MCPClient and every Mastra agent in your project gets all five skills. The A2A fallback is pure fetch, edge-safe, no child processes — useful when you want a single Server Action to surface 'is this startup tracked?' for a logged-in user without spinning up a stdio server.",
+      "Mastra's MCP support is first-class, drop the @gitdealflow/mcp-signal package into MCPClient and every Mastra agent in your project gets all five skills. The A2A fallback is pure fetch, edge-safe, no child processes, useful when you want a single Server Action to surface 'is this startup tracked?' for a logged-in user without spinning up a stdio server.",
     ],
     outcomes: [
       {
@@ -502,7 +502,7 @@ for entry in archival:
       {
         title: "Inside cron-triggered routes",
         detail:
-          "Mastra workflows on Vercel Cron Jobs (or any cron runner) let you ship a Monday digest that pulls trending, summarizes via a small AI Gateway model, posts to Slack, and writes to Postgres — all in one TypeScript module.",
+          "Mastra workflows on Vercel Cron Jobs (or any cron runner) let you ship a Monday digest that pulls trending, summarizes via a small AI Gateway model, posts to Slack, and writes to Postgres, all in one TypeScript module.",
       },
       {
         title: "Inside multi-step agents with memory",
@@ -512,7 +512,7 @@ for entry in archival:
       {
         title: "Inside Hono API routes",
         detail:
-          "Hono + Mastra is the lightest stack for a deal-flow API microservice. Deploy to Cloudflare Workers, Bun, or Vercel Functions — the same agent code runs everywhere.",
+          "Hono + Mastra is the lightest stack for a deal-flow API microservice. Deploy to Cloudflare Workers, Bun, or Vercel Functions, the same agent code runs everywhere.",
       },
     ],
     starterCode: {
@@ -562,7 +562,7 @@ import { createTool } from "@mastra/core/tools";
 import { Agent } from "@mastra/core/agent";
 import { z } from "zod";
 
-export const runtime = "nodejs"; // not edge — fetch keep-alive matters
+export const runtime = "nodejs"; // not edge, fetch keep-alive matters
 
 const A2A = "${A2A}";
 
@@ -617,7 +617,7 @@ export async function POST(req: Request) {
     faqs: [
       {
         q: "Does Mastra MCPClient work in Vercel Edge runtime?",
-        a: "No — MCPClient spawns a stdio child process and Edge runtime forbids subprocesses. Use the A2A fetch tool for edge routes; reserve MCPClient for Node.js routes (set `export const runtime = 'nodejs'`).",
+        a: "No, MCPClient spawns a stdio child process and Edge runtime forbids subprocesses. Use the A2A fetch tool for edge routes; reserve MCPClient for Node.js routes (set `export const runtime = 'nodejs'`).",
       },
       {
         q: "How does Mastra compare to the raw Vercel AI SDK?",
@@ -625,12 +625,12 @@ export async function POST(req: Request) {
       },
       {
         q: "Can I deploy Mastra agents on Cloudflare Workers?",
-        a: "Yes — Mastra is runtime-agnostic. Workers requires the A2A fetch tool (not MCPClient stdio). The agent.generate() call is pure fetch + LLM API, fully Workers-compatible.",
+        a: "Yes, Mastra is runtime-agnostic. Workers requires the A2A fetch tool (not MCPClient stdio). The agent.generate() call is pure fetch + LLM API, fully Workers-compatible.",
       },
     ],
     gotchas: [
-      "Mastra MCPClient holds long-lived stdio processes — call `await mcp.disconnect()` in serverless teardown to avoid orphaned children.",
-      "If your edge runtime can't spawn child processes, use the A2A fetch tool — it's pure fetch, edge-safe.",
+      "Mastra MCPClient holds long-lived stdio processes, call `await mcp.disconnect()` in serverless teardown to avoid orphaned children.",
+      "If your edge runtime can't spawn child processes, use the A2A fetch tool, it's pure fetch, edge-safe.",
       "Mastra's memory store defaults to LibSQL; for multi-region deployments, swap to Postgres or Upstash Redis.",
     ],
     docsLinks: [
@@ -644,10 +644,10 @@ export async function POST(req: Request) {
     slug: "vercel-ai-sdk",
     name: "Vercel AI SDK",
     shortName: "Vercel AI SDK",
-    hook: "Ship VC signal features inside your Next.js app — Server Components, Route Handlers, Server Actions.",
+    hook: "Ship VC signal features inside your Next.js app, Server Components, Route Handlers, Server Actions.",
     narrative: [
       "The Vercel AI SDK is the default for AI features inside web apps. If you ship Next.js, the AI SDK is the path of least resistance from idea to production. generateText, streamText, and tool() compose with React Server Components, Route Handlers, Server Actions, and the AI Gateway out of the box.",
-      "Drop GitDealFlow in as a single tool() with a Zod-validated input schema and your portfolio dashboard becomes deal-flow-aware. The MCP integration via experimental_createMCPClient gives you the same five skills with zero argument typing — useful for prototypes — but for production-shaped apps, the explicit tool() path is more debuggable and friendlier to TypeScript inference.",
+      "Drop GitDealFlow in as a single tool() with a Zod-validated input schema and your portfolio dashboard becomes deal-flow-aware. The MCP integration via experimental_createMCPClient gives you the same five skills with zero argument typing, useful for prototypes, but for production-shaped apps, the explicit tool() path is more debuggable and friendlier to TypeScript inference.",
     ],
     outcomes: [
       {
@@ -663,7 +663,7 @@ export async function POST(req: Request) {
       {
         title: "AI Gateway with model routing",
         detail:
-          "Route to OpenAI for fast queries and Anthropic for memo writing — same tool, no code change. The AI Gateway handles the model switch and the observability is unified.",
+          "Route to OpenAI for fast queries and Anthropic for memo writing, same tool, no code change. The AI Gateway handles the model switch and the observability is unified.",
       },
       {
         title: "Background workflows with WDK",
@@ -685,7 +685,7 @@ const A2A = "${A2A}";
 
 const gitdealflow = tool({
   description:
-    "Live VC engineering signals — trending startups, sector watchlists, named-startup profiles, dataset summaries, methodology citation.",
+    "Live VC engineering signals, trending startups, sector watchlists, named-startup profiles, dataset summaries, methodology citation.",
   inputSchema: z.object({
     skill: z.enum([
       "get_trending_startups",
@@ -755,7 +755,7 @@ export default async function TrendingPage() {
       <ol>
         {startups.map((s: { name: string; sector: string }) => (
           <li key={s.name}>
-            <strong>{s.name}</strong> — {s.sector}
+            <strong>{s.name}</strong>: {s.sector}
           </li>
         ))}
       </ol>
@@ -773,21 +773,21 @@ export default async function TrendingPage() {
     faqs: [
       {
         q: "Does this work with the AI Gateway and BYOK?",
-        a: "Yes. The AI Gateway sits transparently between your Vercel AI SDK code and any provider you're routed to. The gitdealflow tool() definition is unchanged — you can swap models freely or BYOK without touching the integration.",
+        a: "Yes. The AI Gateway sits transparently between your Vercel AI SDK code and any provider you're routed to. The gitdealflow tool() definition is unchanged, you can swap models freely or BYOK without touching the integration.",
       },
       {
         q: "Can I run the tool in Edge runtime?",
-        a: "Yes — the A2A endpoint is just a fetch, edge-safe. The MCP path (experimental_createMCPClient with stdio transport) is Node-only because it spawns a subprocess. For Edge, stick with the explicit tool() definition.",
+        a: "Yes, the A2A endpoint is just a fetch, edge-safe. The MCP path (experimental_createMCPClient with stdio transport) is Node-only because it spawns a subprocess. For Edge, stick with the explicit tool() definition.",
       },
       {
         q: "How does this fit with the Workflow DevKit (WDK)?",
-        a: "WDK gives you durable, retryable steps. Wrap the gitdealflow fetch as a step.run() so a long batch — 'enrich 50 startups, write to Postgres, email when done' — survives crashes and retries 5xx automatically. The endpoint returns 200 with JSON-RPC error envelopes, so check `result` vs `error`, not HTTP status.",
+        a: "WDK gives you durable, retryable steps. Wrap the gitdealflow fetch as a step.run() so a long batch, 'enrich 50 startups, write to Postgres, email when done', survives crashes and retries 5xx automatically. The endpoint returns 200 with JSON-RPC error envelopes, so check `result` vs `error`, not HTTP status.",
       },
     ],
     gotchas: [
-      "tool() expects you to return JSON-serializable data; the .data field on artifacts is already a plain object — passing it through is safe.",
+      "tool() expects you to return JSON-serializable data; the .data field on artifacts is already a plain object, passing it through is safe.",
       "If you use Edge runtime, the fetch to A2A should be on regular Node runtime since you may want to hold connections longer. Set `export const runtime = 'nodejs'`.",
-      "The Vercel AI SDK's streamText pipes tool calls + tool results into the data stream — render them with the Generative UI pattern, not as plain text.",
+      "The Vercel AI SDK's streamText pipes tool calls + tool results into the data stream, render them with the Generative UI pattern, not as plain text.",
     ],
     docsLinks: [
       { label: "Vercel AI SDK", url: "https://ai-sdk.dev" },

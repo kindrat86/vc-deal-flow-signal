@@ -95,7 +95,7 @@ export default function VelocityBar({
         })}
       </svg>
       <figcaption className="text-gray-600 text-xs mt-1">
-        {title} — top {sorted.length} startups by 14-day commit velocity change.
+        {title}, top {sorted.length} startups by 14-day commit velocity change.
         Data: VC Deal Flow Signal.
       </figcaption>
     </figure>

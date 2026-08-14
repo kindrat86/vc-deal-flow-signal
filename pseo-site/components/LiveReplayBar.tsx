@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * Brunson Live-Replay Pressure — sticky top bar with cohort countdown.
+ * Brunson Live-Replay Pressure, sticky top bar with cohort countdown.
  *
  * Initial render: server-passed snapshot (build-time state). Hydration: live
  * Date.now() inside useEffect, ticking every second. The mismatch between
@@ -10,8 +10,8 @@
  *
  * Phases drive copy + colour:
  *   fast-action → emerald, "Fast-action bonuses expire Wed 23:59 UTC"
- *   last-hours  → rose,    "Doors closing tonight — cart closes Thu 23:59 UTC"
- *   closed      → slate,   "Doors closed — next cohort opens Monday 06:00 UTC"
+ *   last-hours  → rose,    "Doors closing tonight, cart closes Thu 23:59 UTC"
+ *   closed      → slate,   "Doors closed, next cohort opens Monday 06:00 UTC"
  */
 
 import { useEffect, useState } from "react";
@@ -100,9 +100,9 @@ export function LiveReplayBar({ initialWindow }: Props) {
           {countdown
             ? formatCountdown(countdown)
             : phase === "closed"
-              ? "—"
+              ? "-"
               : countdown === null
-                ? "—"
+                ? "-"
                 : ""}
         </span>
         <span className="hidden sm:inline opacity-80 text-[11px] font-medium">

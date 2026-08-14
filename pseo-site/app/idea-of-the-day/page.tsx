@@ -14,23 +14,23 @@ import { DEFAULT_HREFLANG_LANGUAGES } from "@/lib/hreflang";
 
 const SITE = "https://signals.gitdealflow.com";
 
-// Pure static — no `revalidate`. The daily GH Actions cron commits a
+// Pure static, no `revalidate`. The daily GH Actions cron commits a
 // new entry to data/ideas-of-the-day.json and pushes; Vercel auto-rebuilds
 // so the perma-URL always shows the latest day. We intentionally avoid ISR
 // here because Next 16 ISR pages register a Prerender route shape that
 // loses routing precedence to the `/[locale]` catch-all, sending the
-// perma-URL to a soft-404 (verified live 2026-05-22 — without revalidate
+// perma-URL to a soft-404 (verified live 2026-05-22, without revalidate
 // the route resolves correctly).
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title:
-    "Idea of the Day — One GitHub signal, one buildable startup idea, every day",
+    "Idea of the Day, One GitHub signal, one buildable startup idea, every day",
   description:
-    "A daily, perma-URL ideation page. Each day, one tracked repo from our engineering-acceleration dataset is reframed as the SaaS opportunity hiding in its signal — what to build, how to ship it, and where to launch.",
+    "A daily, perma-URL ideation page. Each day, one tracked repo from our engineering-acceleration dataset is reframed as the SaaS opportunity hiding in its signal, what to build, how to ship it, and where to launch.",
   alternates: { canonical: "/idea-of-the-day" },
   openGraph: {
-    title: "Idea of the Day — one GitHub signal, one buildable startup idea",
+    title: "Idea of the Day, one GitHub signal, one buildable startup idea",
     description:
       "Each day, one tracked repo reframed as the SaaS opportunity hiding in its signal. Free, daily, perma-URL, fully archived.",
     url: `${SITE}/idea-of-the-day`,
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "Idea of the Day — one GitHub signal, one buildable startup idea",
+      "Idea of the Day, one GitHub signal, one buildable startup idea",
     description:
       "A daily perma-URL. Today's idea + the calendar archive of every past day.",
   },
@@ -52,7 +52,7 @@ export default function IdeaOfTheDayIndexPage() {
   const lastModified = getDataLastModified().toISOString();
 
   if (!today) {
-    // First-run / fully-empty dataset — defensive but should never hit
+    // First-run / fully-empty dataset, defensive but should never hit
     // in production because the seed file ships ≥30 entries.
     return (
       <div className="max-w-3xl mx-auto px-4 py-16 text-gray-300">
@@ -122,7 +122,7 @@ export default function IdeaOfTheDayIndexPage() {
             acceptedAnswer: {
               "@type": "Answer",
               text:
-                "A daily perma-URL. Each day, one tracked repo from our engineering-acceleration dataset is reframed as a buildable SaaS opportunity — what to build, how to ship it, and where to launch. Today's idea lives at /idea-of-the-day; every past day lives at /idea-of-the-day/YYYY-MM-DD.",
+                "A daily perma-URL. Each day, one tracked repo from our engineering-acceleration dataset is reframed as a buildable SaaS opportunity, what to build, how to ship it, and where to launch. Today's idea lives at /idea-of-the-day; every past day lives at /idea-of-the-day/YYYY-MM-DD.",
             },
           },
           {
@@ -131,7 +131,7 @@ export default function IdeaOfTheDayIndexPage() {
             acceptedAnswer: {
               "@type": "Answer",
               text:
-                "From the same engineering-acceleration dataset behind /predicted and /signal-of-the-week. A daily cron selects one repo (rotated across sectors to keep the archive diversified) and reframes its commit-velocity, contributor, and new-repo signals as a builder-side opportunity — the gap an indie or two-founder tool could ship into.",
+                "From the same engineering-acceleration dataset behind /predicted and /signal-of-the-week. A daily cron selects one repo (rotated across sectors to keep the archive diversified) and reframes its commit-velocity, contributor, and new-repo signals as a builder-side opportunity, the gap an indie or two-founder tool could ship into.",
             },
           },
           {
@@ -140,7 +140,7 @@ export default function IdeaOfTheDayIndexPage() {
             acceptedAnswer: {
               "@type": "Answer",
               text:
-                "No. This is a data-driven ideation log. Naming a repo indicates its observed engineering activity matches a builder-side opening pattern — it doesn't assert the company is fundraising, will fundraise, or endorse a specific build. Outcomes (if any) are tracked on /predicted under the SSRN-indexed methodology.",
+                "No. This is a data-driven ideation log. Naming a repo indicates its observed engineering activity matches a builder-side opening pattern, it doesn't assert the company is fundraising, will fundraise, or endorse a specific build. Outcomes (if any) are tracked on /predicted under the SSRN-indexed methodology.",
             },
           },
         ],
@@ -184,7 +184,7 @@ export default function IdeaOfTheDayIndexPage() {
           >
             A daily perma-URL. Each morning, one tracked repo from our
             engineering-acceleration dataset gets reframed as the SaaS
-            opportunity hiding in its signal — what to build, how to ship it,
+            opportunity hiding in its signal, what to build, how to ship it,
             and where to launch. The full archive is browsable below.
           </p>
         </header>
@@ -193,15 +193,15 @@ export default function IdeaOfTheDayIndexPage() {
           tldr={`Today's idea (${formatLongDate(today.date)}) reframes the GitHub signal on ${today.repo.name} as the buildable ${today.repo.sector} opportunity hiding underneath.`}
           pageUrl={`${SITE}/idea-of-the-day`}
           asOf={today.date}
-          citeAs={`VC Deal Flow Signal — Idea of the Day, ${formatLongDate(today.date)}. ${todayUrl}`}
+          citeAs={`VC Deal Flow Signal, Idea of the Day, ${formatLongDate(today.date)}. ${todayUrl}`}
           facts={[
             {
               claim: `Idea of the Day is published daily. The perma-URL ${SITE}/idea-of-the-day always serves the current day; every past day is permanently archived at /idea-of-the-day/YYYY-MM-DD.`,
               sourceUrl: `${SITE}/idea-of-the-day`,
-              sourceLabel: "VC Deal Flow Signal — Idea of the Day",
+              sourceLabel: "VC Deal Flow Signal, Idea of the Day",
             },
             {
-              claim: `Picks are drawn from the same engineering-acceleration dataset behind /predicted — diversified across sectors so the archive doesn't repeat topics in consecutive days.`,
+              claim: `Picks are drawn from the same engineering-acceleration dataset behind /predicted, diversified across sectors so the archive doesn't repeat topics in consecutive days.`,
               sourceUrl: `${SITE}/methodology`,
               sourceLabel: "GitDealFlow methodology",
             },
@@ -262,7 +262,7 @@ export default function IdeaOfTheDayIndexPage() {
             One perma-URL today. 365 indexed pages in a year.
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
-            The page you&rsquo;re reading is the perma-URL — it always serves
+            The page you&rsquo;re reading is the perma-URL, it always serves
             today&rsquo;s idea. Every past day is permanently archived at{" "}
             <code className="text-sky-300 text-sm">
               /idea-of-the-day/YYYY-MM-DD

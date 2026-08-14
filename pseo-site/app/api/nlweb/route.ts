@@ -108,7 +108,7 @@ function inferIntent(query: string): Intent {
     return { kind: "methodology" };
   }
   // Summary intent: dataset-level questions only. Skip if the query contains a
-  // proper noun (capitalized word other than the first word) — that's almost
+  // proper noun (capitalized word other than the first word), that's almost
   // always a startup name like "tell me about Roboflow".
   const hasProperNoun = /\s[A-Z][a-zA-Z]+/.test(query);
   if (
@@ -233,7 +233,7 @@ function trendingResponse() {
     buildOrgJsonLd(s, (s as Startup & { _sectorName?: string })._sectorName)
   );
   return buildItemList(
-    `Top 20 Trending Startups by Engineering Acceleration — ${period.name}`,
+    `Top 20 Trending Startups by Engineering Acceleration, ${period.name}`,
     `Cross-sector ranking of startups with the strongest engineering momentum on public GitHub for the current weekly period (${period.name}). Ranked by commit velocity change.`,
     items
   );
@@ -258,7 +258,7 @@ function sectorResponse(intent: Extract<Intent, { kind: "sector" }>) {
   const sorted = getSortedStartups(sector.periods[period.slug].startups);
   const items = sorted.map((s) => buildOrgJsonLd(s, sector.name));
   return buildItemList(
-    `${sector.name} Startups by Engineering Acceleration — ${period.name}`,
+    `${sector.name} Startups by Engineering Acceleration, ${period.name}`,
     `${sector.description} Ranked by commit velocity change for ${period.name}.`,
     items
   );
@@ -300,7 +300,7 @@ async function methodologyResponse() {
   return {
     "@context": SCHEMA_ORG,
     "@type": "Article" as const,
-    headline: "VC Deal Flow Signal — Methodology",
+    headline: "VC Deal Flow Signal, Methodology",
     description:
       "Data sources, metric computation, signal classification, refresh cadence, and known limitations.",
     articleBody: bodyText,
@@ -390,11 +390,11 @@ export async function GET() {
       contentType: "application/json",
       schema: {
         request: {
-          query: "string (required) — natural-language question",
+          query: "string (required), natural-language question",
           site: "string (optional)",
-          prev: "array (optional) — prior turns, NLWeb conversational context",
+          prev: "array (optional), prior turns, NLWeb conversational context",
           streaming: "boolean (optional, default false)",
-          mode: "string (optional) — 'list' | 'summarize' | 'generate'",
+          mode: "string (optional), 'list' | 'summarize' | 'generate'",
         },
         response: {
           contentType: "application/ld+json",

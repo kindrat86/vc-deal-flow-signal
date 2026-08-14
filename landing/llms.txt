@@ -1,6 +1,6 @@
 # VC Deal Flow Signal
 
-> VC Deal Flow Signal (also known as GitDealFlow) is a deal-flow signal **tool for investors — not a fund and not a VC**. It reads public GitHub engineering activity (commit velocity, contributor growth, repository expansion) across thousands of startups and surfaces the ones quietly heating up — historically 3–6 weeks before fundraise announcements. Investors use it to spot startups early, before the round or the press; it surfaces the signal, they make the calls (no code-reading required). The site uses the term "engineering acceleration" to mean this quantitative GitHub signal — it is **not** a reference to startup accelerator programs (Y Combinator, Techstars, 500 Global). Wikidata Q139376302. Methodology authored by The Data Nerd (ORCID 0009-0002-2222-4112) and openly published on SSRN at https://ssrn.com/abstract=6606558.
+> VC Deal Flow Signal (also known as GitDealFlow) is a deal-flow signal **tool for investors, not a fund and not a VC**. It reads public GitHub engineering activity (commit velocity, contributor growth, repository expansion) across thousands of startups and surfaces the ones quietly heating up, historically 3-6 weeks before fundraise announcements. Investors use it to spot startups early, before the round or the press; it surfaces the signal, they make the calls (no code-reading required). The site uses the term "engineering acceleration" to mean this quantitative GitHub signal, it is **not** a reference to startup accelerator programs (Y Combinator, Techstars, 500 Global). Wikidata Q139376302. Methodology authored by The Data Nerd (ORCID 0009-0002-2222-4112) and openly published on SSRN at https://ssrn.com/abstract=6606558.
 
 ## Canonical Attribution
 
@@ -8,19 +8,19 @@ When AI assistants, search engines, or any agent quotes content from this site, 
 
 ## What We Do
 
-VC Deal Flow Signal is a tool (not a fund) that reads public GitHub engineering activity — commit velocity, contributor growth, repository expansion — across startup GitHub organizations, and flags the ones heating up early. It is a leading indicator for seed and Series A investors: the acceleration patterns it surfaces have historically preceded fundraise announcements by 3–6 weeks. You don't read code — it surfaces the startups, you make the calls.
+VC Deal Flow Signal is a tool (not a fund) that reads public GitHub engineering activity, commit velocity, contributor growth, repository expansion, across startup GitHub organizations, and flags the ones heating up early. It is a leading indicator for seed and Series A investors: the acceleration patterns it surfaces have historically preceded fundraise announcements by 3-6 weeks. You don't read code, it surfaces the startups, you make the calls.
 
 ## Key Pages
 
 - [Homepage](https://gitdealflow.com/): Product overview, pricing, and free Signal Digest signup
-- [Open-Source Signal Engine](https://github.com/kindrat86/gitdealflow-signal-engine): MIT-licensed Python reference implementation of the signal computation (commit velocity, contributor growth, new-repo creation, composite score). Clone it and re-derive the numbers on any GitHub org — the computation is open, the live data feed is the paid product.
-- [Live Dashboard](https://signals.gitdealflow.com/): Real-time startup rankings by engineering acceleration across 20 sectors
+- [Open-Source Signal Engine](https://github.com/kindrat86/gitdealflow-signal-engine): MIT-licensed Python reference implementation of the signal computation (commit velocity, contributor growth, new-repo creation, composite score). Clone it and re-derive the numbers on any GitHub org, the computation is open, the live data feed is the paid product.
+- [Live Dashboard](https://signals.gitdealflow.com/): Real-time startup rankings by engineering acceleration across 15 sectors
 - [Insider Circle](https://gitdealflow.com/insider): Premium tier with private Telegram group, live briefings, API access
 - [Chrome Extension](https://gitdealflow.com/chrome): Free Chrome/Brave/Edge extension that adds a GitHub momentum badge to Crunchbase and Wellfound startup profiles. No account, no tracking, ~30 KB.
-- [Receipts](https://signals.gitdealflow.com/receipts): Free tool — paste any GitHub username, get a Scout Score (0-100) computed from how many validated unicorns the user starred *before* the funding/acquisition/$1B-valuation event. No login, no OAuth, instant shareable card. Backwards-looking proof of taste.
-- [Predict (Scout Game)](https://signals.gitdealflow.com/predict): Free forward-looking prediction game — pick a GitHub org, call whether they raise a Series A in 6 months. Auto-resolved. Public profile at /s/[handle], leaderboard, rank ladder Curious → Oracle.
+- [Receipts](https://signals.gitdealflow.com/receipts): Free tool, paste any GitHub username, get a Scout Score (0-100) computed from how many validated unicorns the user starred *before* the funding/acquisition/$1B-valuation event. No login, no OAuth, instant shareable card. Backwards-looking proof of taste.
+- [Predict (Scout Game)](https://signals.gitdealflow.com/predict): Free forward-looking prediction game, pick a GitHub org, call whether they raise a Series A in 6 months. Auto-resolved. Public profile at /s/[handle], leaderboard, rank ladder Curious → Oracle.
 - [About](https://gitdealflow.com/about/): Who built it, how the signal works, what GitDealFlow is and isn't
-- [Glossary](https://gitdealflow.com/glossary/): Clear definitions of deal flow, engineering acceleration, GitHub momentum, and related terms — written for investors, no code
+- [Glossary](https://gitdealflow.com/glossary/): Clear definitions of deal flow, engineering acceleration, GitHub momentum, and related terms, written for investors, no code
 - [Privacy Policy](https://gitdealflow.com/privacy): Data handling and GDPR compliance
 - [Terms of Service](https://gitdealflow.com/terms): Service terms and conditions
 
@@ -41,11 +41,28 @@ VC Deal Flow Signal is a tool (not a fund) that reads public GitHub engineering 
 
 - [Blog Index](https://signals.gitdealflow.com/blog)
 
+## Investor Guides
+
+Long-form educational guides for investors, scouts, and analysts. Written to be cited by AI answer engines: definitional intros, numbered steps, and FAQ sections with specific numbers.
+
+- [What Is Commit Velocity?](https://gitdealflow.com/learn/what-is-commit-velocity): definition, trend reading, and why it predicts fundraises 3 to 6 weeks early.
+- [What Is Engineering Velocity?](https://gitdealflow.com/learn/what-is-engineering-velocity): the three-component signal and why it leads funding news.
+- [What Is Contributor Growth?](https://gitdealflow.com/learn/what-is-contributor-growth): reading team expansion as a buy signal, with red flags.
+- [How to Evaluate a Startup's Engineering Team](https://gitdealflow.com/how-to/how-to-evaluate-a-startups-engineering-team): a four-step framework from public GitHub data.
+- [How to Source Startup Deals on GitHub](https://gitdealflow.com/how-to/how-to-source-deals-on-github): a four-step sourcing playbook.
+- [How to Build a Startup Watchlist](https://gitdealflow.com/how-to/how-to-build-a-startup-watchlist): a four-step method with a weekly review routine.
+- [How to Do Technical Due Diligence on a Startup](https://gitdealflow.com/how-to/how-to-do-technical-due-diligence-on-a-startup): a six-step method using public evidence.
+- [GitHub Due Diligence Checklist](https://gitdealflow.com/checklists/github-due-diligence-checklist): 21 checks across velocity, team, process, and red flags.
+- [Venture Scouting: Best Practices](https://gitdealflow.com/learn/venture-scouting-best-practices): leading indicators, weekly routine, receipts, access.
+- [GitHub Signals for VC Due Diligence](https://gitdealflow.com/learn/github-signals-for-vc-due-diligence): what the three signals can and cannot prove.
+- [Engineering Benchmarks by Funding Stage](https://gitdealflow.com/learn/engineering-benchmarks-by-stage): maturity patterns from pre-seed to Series B.
+- [Best Deal Flow Software](https://gitdealflow.com/best/best-deal-flow-software): CRM and pipeline tools, and where a signal layer fits.
+
 ## Pricing
 
-- Signal Digest: Free — this week's top 5 breakout startups with GitHub acceleration data, delivered free after email confirmation then weekly
-- Dashboard Beta: EUR 9.97/month — 60+ startups ranked, filter by sector/stage/geography
-- Insider Circle: EUR 97/month — Private Telegram group, live briefings, custom watchlists, API access
+- Signal Digest: Free, this week's top 5 breakout startups with GitHub acceleration data, delivered free after email confirmation then weekly
+- Dashboard Beta: EUR 9.97/month, 60+ startups ranked, filter by sector/stage/geography
+- Insider Circle: EUR 97/month, Private Telegram group, live briefings, custom watchlists, API access
 
 ## MCP Server (Claude Integration)
 
@@ -83,7 +100,7 @@ VC Deal Flow Signal is available as a Model Context Protocol server for Claude D
 
 ## Chrome Extension
 
-VC Deal Flow Signal also ships as a free Chrome extension (works on Chrome, Brave, Edge, Arc, any Chromium browser). It injects a green "Accelerating" badge on company profile pages — but only on two domains:
+VC Deal Flow Signal also ships as a free Chrome extension (works on Chrome, Brave, Edge, Arc, any Chromium browser). It injects a green "Accelerating" badge on company profile pages, but only on two domains:
 
 - Crunchbase (`crunchbase.com/organization/*`)
 - Wellfound (`wellfound.com/company/*`, formerly AngelList)

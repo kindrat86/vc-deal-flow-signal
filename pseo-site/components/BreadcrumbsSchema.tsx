@@ -10,7 +10,7 @@ const BASE_URL = "https://signals.gitdealflow.com";
  * used `usePathname()` and rendered a `<script>` tag via React. For some
  * ISR/static pages (notably `/startups-to-watch/[slug]` sector pages),
  * `usePathname()` resolved correctly at runtime but the JSON-LD `<script>`
- * tag was NOT present in the initial server-rendered HTML — Googlebot saw
+ * tag was NOT present in the initial server-rendered HTML, Googlebot saw
  * pages with either a missing or malformed BreadcrumbList, triggering the
  * GSC "Missing field 'itemListElement'" error.
  *
@@ -22,7 +22,7 @@ const BASE_URL = "https://signals.gitdealflow.com";
  *
  * CRITICAL INVARIANT: this component MUST return a complete BreadcrumbList
  * with a non-empty `itemListElement` array, or return `null`. Never emit
- * `{"@type":"BreadcrumbList"}` without `itemListElement` — that is the exact
+ * `{"@type":"BreadcrumbList"}` without `itemListElement`, that is the exact
  * Google Search Console error we are fixing.
  */
 
@@ -135,7 +135,7 @@ export default async function BreadcrumbsSchema() {
   const hdrs = await headers();
   const pathname = hdrs.get("x-pathname") ?? "/";
 
-  // Skip homepage — a single-item BreadcrumbList is redundant with the
+  // Skip homepage, a single-item BreadcrumbList is redundant with the
   // sitelink/Organization graph already emitted by RootIdentitySchema.
   if (pathname === "/" || pathname === "") return null;
 
@@ -188,7 +188,7 @@ export default async function BreadcrumbsSchema() {
   return (
     <script
       type="application/ld+json"
-      // JSON.stringify is safe — values are strings derived from URL segments
+      // JSON.stringify is safe, values are strings derived from URL segments
       // and a static label table; no user input reaches this serialization.
       dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbJsonLd) }}
     />

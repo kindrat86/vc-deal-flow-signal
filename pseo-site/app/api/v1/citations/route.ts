@@ -1,9 +1,9 @@
 /**
- * /api/v1/citations — extension-stripped alias for /api/v1/citations.json.
+ * /api/v1/citations, extension-stripped alias for /api/v1/citations.json.
  *
  * Pass IX (2026-05-08). Generic agents that infer "stripped" REST paths
- * (without the .json suffix) hit 404 — this alias serves the JSON body
- * directly. Canonical URL — declared via `Link: rel=canonical` —
+ * (without the .json suffix) hit 404, this alias serves the JSON body
+ * directly. Canonical URL, declared via `Link: rel=canonical` -
  * remains at /api/v1/citations.json.
  */
 

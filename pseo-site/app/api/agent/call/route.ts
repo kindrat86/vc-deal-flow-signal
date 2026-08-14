@@ -302,7 +302,7 @@ export async function POST(request: NextRequest) {
       });
 
     case "get_deep_signal": {
-      // Paid per-request tool — forward to the dedicated /api/agent/deep-signal
+      // Paid per-request tool, forward to the dedicated /api/agent/deep-signal
       // route that owns auth + credit decrement + enrichment. Keeping that route
       // as the single source of truth avoids divergence.
       const startupName = String(args.name ?? "");

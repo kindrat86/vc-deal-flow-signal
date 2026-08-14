@@ -1,10 +1,10 @@
 /**
- * /works-with/[slug] entity pages — CRM and workflow tool integration pages.
+ * /works-with/[slug] entity pages, CRM and workflow tool integration pages.
  *
  * Each entry is a CRM, automation, or workflow tool that the Marcus 100
  * audience (Corp Dev, PE Operating Partners, non-engineer tech VPs)
  * already uses daily. The page describes how VC Deal Flow Signal
- * data flows into that tool — current paths (CSV import, API,
+ * data flows into that tool, current paths (CSV import, API,
  * webhooks, MCP, Zapier) plus aspirational native integrations.
  *
  * Disambiguation: distinct from /integrations/[slug] (the existing
@@ -107,11 +107,11 @@ function build(t: {
     name: t.name,
     homepageUrl: t.homepage,
     category: t.category,
-    title: `${t.name} + VC Deal Flow Signal — Integration & Workflows (2026)`,
-    metaDescription: `How VC Deal Flow Signal engineering-acceleration signals flow into ${t.name}. ${t.paths.length} integration paths available today — ${t.paths.map(pathLabel).join(", ")}.`,
+    title: `${t.name} + VC Deal Flow Signal, Integration & Workflows (2026)`,
+    metaDescription: `How VC Deal Flow Signal engineering-acceleration signals flow into ${t.name}. ${t.paths.length} integration paths available today, ${t.paths.map(pathLabel).join(", ")}.`,
     h1: `VC Deal Flow Signal + ${t.name}`,
     tagline: `${t.short} ${t.paths.length} integration paths available today.`,
-    intro: `${t.name} is one of the tools Corp Dev, PE Operating Partners, and emerging-manager funds rely on for deal flow management. This page describes how VC Deal Flow Signal engineering-acceleration data flows into ${t.name} — the integration paths we already ship plus the custom paths available on request.`,
+    intro: `${t.name} is one of the tools Corp Dev, PE Operating Partners, and emerging-manager funds rely on for deal flow management. This page describes how VC Deal Flow Signal engineering-acceleration data flows into ${t.name}, the integration paths we already ship plus the custom paths available on request.`,
     availablePaths: t.paths,
     workflows: t.workflows,
     howItWorks: t.howWorks,
@@ -119,7 +119,7 @@ function build(t: {
     faqs: [
       {
         question: `What integration paths are available for ${t.name}?`,
-        answer: `${t.paths.length} paths today: ${t.paths.map(pathLabel).join(", ")}. The most common workflow for ${t.name} users is ${pathLabel(t.paths[0])} — see the workflows section above for concrete examples.`,
+        answer: `${t.paths.length} paths today: ${t.paths.map(pathLabel).join(", ")}. The most common workflow for ${t.name} users is ${pathLabel(t.paths[0])}, see the workflows section above for concrete examples.`,
       },
       {
         question: `Is there a native ${t.name} integration?`,
@@ -135,7 +135,7 @@ function build(t: {
       },
       {
         question: `What's the cost?`,
-        answer: `Standard integration paths (CSV, API, MCP, Zapier, RSS, webhook) are included in every paid plan — see /pricing. Custom ${t.name}-native integrations are scoped per engagement and quoted separately.`,
+        answer: `Standard integration paths (CSV, API, MCP, Zapier, RSS, webhook) are included in every paid plan, see /pricing. Custom ${t.name}-native integrations are scoped per engagement and quoted separately.`,
       },
     ],
   };
@@ -167,9 +167,9 @@ export const WORKS_WITH: WorksWithTool[] = [
           "Monthly CSV export of sector-filtered acceleration leaders, imported into Affinity as a new entity batch for the partner-team to triage.",
       },
     ],
-    howWorks: `Affinity exposes a REST API and supports both inbound webhook events and Zapier triggers. We do not yet ship a one-click Affinity Marketplace app — the typical setup is Zapier-mediated (signal acceleration → Affinity custom field write) which most VC ops teams already have configured for other data sources. For higher-volume teams, direct API integration scoped during onboarding gives sub-minute signal latency into Affinity entity records.`,
+    howWorks: `Affinity exposes a REST API and supports both inbound webhook events and Zapier triggers. We do not yet ship a one-click Affinity Marketplace app, the typical setup is Zapier-mediated (signal acceleration → Affinity custom field write) which most VC ops teams already have configured for other data sources. For higher-volume teams, direct API integration scoped during onboarding gives sub-minute signal latency into Affinity entity records.`,
     missing:
-      "Not yet — there is no first-party Affinity Marketplace app today. The Zapier and direct-API paths cover most VC ops workflows; a native Marketplace listing is on the roadmap once we hit a customer threshold that justifies the listing process.",
+      "Not yet, there is no first-party Affinity Marketplace app today. The Zapier and direct-API paths cover most VC ops workflows; a native Marketplace listing is on the roadmap once we hit a customer threshold that justifies the listing process.",
   }),
   build({
     slug: "hubspot",
@@ -188,7 +188,7 @@ export const WORKS_WITH: WorksWithTool[] = [
       {
         name: "Deal-stage progression triggers",
         description:
-          "A HubSpot workflow watches for engineering acceleration breaks on companies in active deals — when a portfolio company crosses the +50% commit-velocity threshold, the deal stage advances automatically.",
+          "A HubSpot workflow watches for engineering acceleration breaks on companies in active deals, when a portfolio company crosses the +50% commit-velocity threshold, the deal stage advances automatically.",
       },
       {
         name: "Sequence personalization",
@@ -217,7 +217,7 @@ export const WORKS_WITH: WorksWithTool[] = [
       {
         name: "Opportunity-stage signal anchoring",
         description:
-          "Salesforce Opportunities can be filtered by 'engineering acceleration in trailing 90 days' — useful for Corp Dev teams running quarterly acquisition shortlists.",
+          "Salesforce Opportunities can be filtered by 'engineering acceleration in trailing 90 days', useful for Corp Dev teams running quarterly acquisition shortlists.",
       },
       {
         name: "Apex-based custom integration",
@@ -225,9 +225,9 @@ export const WORKS_WITH: WorksWithTool[] = [
           "For full-Salesforce shops, an Apex class pulls /api/v1 signal data on a daily schedule and updates Account records via standard Salesforce DML.",
       },
     ],
-    howWorks: `Salesforce supports REST, SOAP, and Bulk APIs plus Apex code execution. The most common deployment is a scheduled Apex class hitting our /api/v1 endpoints and updating Account custom fields. For lighter-touch deployments, Zapier or Workato can mediate the integration without code. Direct Salesforce AppExchange listing is roadmapped but not shipped — custom integration is the path today.`,
+    howWorks: `Salesforce supports REST, SOAP, and Bulk APIs plus Apex code execution. The most common deployment is a scheduled Apex class hitting our /api/v1 endpoints and updating Account custom fields. For lighter-touch deployments, Zapier or Workato can mediate the integration without code. Direct Salesforce AppExchange listing is roadmapped but not shipped, custom integration is the path today.`,
     missing:
-      "No first-party AppExchange listing yet. AppExchange certification is a significant lift (security review, scalability tests, customer adoption thresholds) — we are pre-AppExchange-stage and ship custom integrations on demand for paying Salesforce customers.",
+      "No first-party AppExchange listing yet. AppExchange certification is a significant lift (security review, scalability tests, customer adoption thresholds), we are pre-AppExchange-stage and ship custom integrations on demand for paying Salesforce customers.",
   }),
   build({
     slug: "notion",
@@ -241,7 +241,7 @@ export const WORKS_WITH: WorksWithTool[] = [
       {
         name: "Notion database sync",
         description:
-          "GitDealFlow signal snapshots write directly into a Notion database via the official Notion API — each company becomes a database row with current engineering momentum, last signal timestamp, and a link to the per-company /signal page.",
+          "GitDealFlow signal snapshots write directly into a Notion database via the official Notion API, each company becomes a database row with current engineering momentum, last signal timestamp, and a link to the per-company /signal page.",
       },
       {
         name: "Weekly digest in a Notion doc",
@@ -256,7 +256,7 @@ export const WORKS_WITH: WorksWithTool[] = [
     ],
     howWorks: `Notion exposes a clean REST API with database read/write support. The typical integration is a scheduled Zapier flow or a custom script that pushes /api/v1 signal data into a Notion database every 6-24 hours. Notion's database-as-CRM pattern is increasingly popular for emerging-manager funds; signal data fits naturally as additional database columns.`,
     missing:
-      "There is no first-party Notion Connector yet. The Notion connector ecosystem is in early flux (the Notion App Marketplace launched 2024) — once the marketplace economics stabilize, a first-party connector is on the roadmap.",
+      "There is no first-party Notion Connector yet. The Notion connector ecosystem is in early flux (the Notion App Marketplace launched 2024), once the marketplace economics stabilize, a first-party connector is on the roadmap.",
   }),
   build({
     slug: "airtable",
@@ -264,7 +264,7 @@ export const WORKS_WITH: WorksWithTool[] = [
     homepage: "https://www.airtable.com",
     category: "spreadsheet",
     short:
-      "Airtable sits between spreadsheet and database — popular with emerging-manager funds running structured deal-flow tracking without a full CRM.",
+      "Airtable sits between spreadsheet and database, popular with emerging-manager funds running structured deal-flow tracking without a full CRM.",
     paths: ["csv-import", "api-rest", "zapier", "webhook"],
     workflows: [
       {
@@ -309,12 +309,12 @@ export const WORKS_WITH: WorksWithTool[] = [
       {
         name: "Slash command lookups",
         description:
-          "A custom Slack bot exposes /gitdealflow {company} that returns the current engineering signal snapshot inline — useful for ad-hoc lookups during partner conversations.",
+          "A custom Slack bot exposes /gitdealflow {company} that returns the current engineering signal snapshot inline, useful for ad-hoc lookups during partner conversations.",
       },
     ],
-    howWorks: `Slack Incoming Webhooks are the standard path — paying customers configure a webhook URL during onboarding and we push formatted message blocks on the relevant cadence (weekly digest, threshold alerts, or both). For higher-touch deployments, a custom Slack bot with slash-command support is scoped during onboarding.`,
+    howWorks: `Slack Incoming Webhooks are the standard path, paying customers configure a webhook URL during onboarding and we push formatted message blocks on the relevant cadence (weekly digest, threshold alerts, or both). For higher-touch deployments, a custom Slack bot with slash-command support is scoped during onboarding.`,
     missing:
-      "There is no first-party Slack App Directory listing yet. Slack's App Directory submission requires OAuth flow, security review, and proven customer adoption — we are pre-listing-stage. Webhook-based integration covers ~95% of use cases.",
+      "There is no first-party Slack App Directory listing yet. Slack's App Directory submission requires OAuth flow, security review, and proven customer adoption, we are pre-listing-stage. Webhook-based integration covers ~95% of use cases.",
   }),
   build({
     slug: "linear",
@@ -338,10 +338,10 @@ export const WORKS_WITH: WorksWithTool[] = [
       {
         name: "Triage workflow integration",
         description:
-          "Linear's triage queue can receive incoming signal alerts as new issues, with sector and stage as labels — partners review the triage queue weekly.",
+          "Linear's triage queue can receive incoming signal alerts as new issues, with sector and stage as labels, partners review the triage queue weekly.",
       },
     ],
-    howWorks: `Linear exposes a clean GraphQL API and a webhook system. We push signal events as issues or comments via the API on the configured cadence. Most Linear-using VC firms also use Slack — the combination (Linear for tracking + Slack for discussion) is the typical setup.`,
+    howWorks: `Linear exposes a clean GraphQL API and a webhook system. We push signal events as issues or comments via the API on the configured cadence. Most Linear-using VC firms also use Slack, the combination (Linear for tracking + Slack for discussion) is the typical setup.`,
     missing:
       "Linear's App Marketplace is in early stages (launched 2024). A first-party Linear App listing is roadmapped once the marketplace economics support the certification effort.",
   }),
@@ -357,7 +357,7 @@ export const WORKS_WITH: WorksWithTool[] = [
       {
         name: "Company record enrichment",
         description:
-          "Attio's flexible schema lets us push GitDealFlow signal data as native company attributes — commit velocity, contributor count, momentum tier — visible on every company page.",
+          "Attio's flexible schema lets us push GitDealFlow signal data as native company attributes, commit velocity, contributor count, momentum tier, visible on every company page.",
       },
       {
         name: "List automation",
@@ -370,9 +370,9 @@ export const WORKS_WITH: WorksWithTool[] = [
           "Attio's webhook system lets us push signal updates as soon as they fire (rather than nightly batch), giving sub-minute latency from signal break to CRM visibility.",
       },
     ],
-    howWorks: `Attio has one of the most developer-friendly REST APIs in the CRM space — comprehensive object/attribute model, robust webhooks, no schema-rigidity issues. The typical integration is direct API push from /api/v1 signal updates into Attio company records, with no Zapier middleman needed.`,
+    howWorks: `Attio has one of the most developer-friendly REST APIs in the CRM space, comprehensive object/attribute model, robust webhooks, no schema-rigidity issues. The typical integration is direct API push from /api/v1 signal updates into Attio company records, with no Zapier middleman needed.`,
     missing:
-      "Attio's developer ecosystem is young (CRM launched publicly in 2023) — no Attio Marketplace yet exists for first-party listings. Direct API integration is the standard for all Attio integrations today.",
+      "Attio's developer ecosystem is young (CRM launched publicly in 2023), no Attio Marketplace yet exists for first-party listings. Direct API integration is the standard for all Attio integrations today.",
   }),
   build({
     slug: "pipedrive",
@@ -386,7 +386,7 @@ export const WORKS_WITH: WorksWithTool[] = [
       {
         name: "Deal pipeline auto-progression",
         description:
-          "A Zapier flow watches for engineering-acceleration signals on companies in active Pipedrive deals — when the signal fires, the deal advances to the next pipeline stage automatically.",
+          "A Zapier flow watches for engineering-acceleration signals on companies in active Pipedrive deals, when the signal fires, the deal advances to the next pipeline stage automatically.",
       },
       {
         name: "Custom field enrichment",
@@ -415,7 +415,7 @@ export const WORKS_WITH: WorksWithTool[] = [
       {
         name: "Workspace-scoped pipeline",
         description:
-          "Copper's Google Workspace integration means signal data lives next to Drive docs and Calendar events — useful for funds running their entire workflow inside Google.",
+          "Copper's Google Workspace integration means signal data lives next to Drive docs and Calendar events, useful for funds running their entire workflow inside Google.",
       },
     ],
     howWorks: `Copper has a REST API plus deep Google Workspace integration. We push signal data via the REST API; Copper's Gmail sidebar surfaces it inline. Most Copper users are Google-anchored teams who value the Workspace integration over Marketplace listing volume.`,
@@ -439,7 +439,7 @@ export const WORKS_WITH: WorksWithTool[] = [
       {
         name: "Power Automate flows",
         description:
-          "Power Automate flows pull signal updates and trigger downstream Dynamics workflows — useful for Microsoft-stack Corp Dev teams orchestrating M&A pipelines.",
+          "Power Automate flows pull signal updates and trigger downstream Dynamics workflows, useful for Microsoft-stack Corp Dev teams orchestrating M&A pipelines.",
       },
     ],
     howWorks: `Microsoft Dynamics integrates via the Dataverse Web API and Power Automate. Typical deployment is a Power Automate flow scheduled hourly or daily, pulling /api/v1 data and writing to a Dataverse custom table joined to Accounts. For full enterprise deployments, a Dynamics 365 custom plugin scoped during onboarding gives sub-minute latency.`,
@@ -452,13 +452,13 @@ export const WORKS_WITH: WorksWithTool[] = [
     homepage: "https://zapier.com",
     category: "automation",
     short:
-      "Zapier is the no-code automation platform that bridges thousands of tools — the easiest path to integrate GitDealFlow with any niche CRM or workflow.",
+      "Zapier is the no-code automation platform that bridges thousands of tools, the easiest path to integrate GitDealFlow with any niche CRM or workflow.",
     paths: ["zapier"],
     workflows: [
       {
         name: "Multi-step automation",
         description:
-          "Zapier triggers on new GitDealFlow signals and routes them through transformation, filtering, and delivery steps — to Slack, email, Notion, Airtable, or any of Zapier's 7,000+ supported apps.",
+          "Zapier triggers on new GitDealFlow signals and routes them through transformation, filtering, and delivery steps, to Slack, email, Notion, Airtable, or any of Zapier's 7,000+ supported apps.",
       },
       {
         name: "Filter by sector or stage",
@@ -471,7 +471,7 @@ export const WORKS_WITH: WorksWithTool[] = [
           "Zapier's batch import mode pulls historical signal data into the destination tool, useful for new customers wanting context before subscribing to live alerts.",
       },
     ],
-    howWorks: `Zapier is the universal middleman — our /api/v1 endpoints work with any Zapier custom integration, and we are exploring a published Zapier App for direct one-click integration. For now, paying customers can configure Zaps using HTTP triggers pointed at /api/v1 endpoints with our authentication scheme.`,
+    howWorks: `Zapier is the universal middleman, our /api/v1 endpoints work with any Zapier custom integration, and we are exploring a published Zapier App for direct one-click integration. For now, paying customers can configure Zaps using HTTP triggers pointed at /api/v1 endpoints with our authentication scheme.`,
     missing:
       "A published Zapier App with first-party triggers and actions is roadmapped. Today, integration uses Zapier's generic HTTP/Webhook steps which require slightly more setup than a published app but offer full flexibility.",
   }),
@@ -495,7 +495,7 @@ export const WORKS_WITH: WorksWithTool[] = [
           "Make's branching logic handles complex filtering (e.g., 'accelerating + sector=fintech + stage=series-a → route to Pipeline A, else discard') better than most automation platforms.",
       },
     ],
-    howWorks: `Make.com supports our /api/v1 endpoints through its HTTP module. The typical deployment uses scheduled HTTP requests pulling signal data, then visual-flow logic to route to destinations. No first-party Make App yet — direct HTTP integration covers all workflows.`,
+    howWorks: `Make.com supports our /api/v1 endpoints through its HTTP module. The typical deployment uses scheduled HTTP requests pulling signal data, then visual-flow logic to route to destinations. No first-party Make App yet, direct HTTP integration covers all workflows.`,
     missing:
       "No first-party Make.com App listing yet. The HTTP module + visual-flow integration is the standard path.",
   }),
@@ -511,12 +511,12 @@ export const WORKS_WITH: WorksWithTool[] = [
       {
         name: "Live data pull via Apps Script",
         description:
-          "A Google Apps Script triggers daily, pulls /api/v1 signal data, and writes it to a designated sheet — auto-refreshed without manual import.",
+          "A Google Apps Script triggers daily, pulls /api/v1 signal data, and writes it to a designated sheet, auto-refreshed without manual import.",
       },
       {
         name: "IMPORTDATA from CSV endpoint",
         description:
-          "Our /dataset.json and /dataset.csv endpoints work with Google Sheets' IMPORTDATA function — a one-cell formula pulls live data into any sheet without scripting.",
+          "Our /dataset.json and /dataset.csv endpoints work with Google Sheets' IMPORTDATA function, a one-cell formula pulls live data into any sheet without scripting.",
       },
       {
         name: "Zapier-mediated batch updates",
@@ -540,12 +540,12 @@ export const WORKS_WITH: WorksWithTool[] = [
       {
         name: "Self-hosted signal pipeline",
         description:
-          "n8n workflows pull /api/v1 data on a schedule, transform it via Function nodes, and push to any destination — CRM, database, Slack, email — all under the user's own infrastructure control.",
+          "n8n workflows pull /api/v1 data on a schedule, transform it via Function nodes, and push to any destination, CRM, database, Slack, email, all under the user's own infrastructure control.",
       },
       {
         name: "AI-enhanced flows",
         description:
-          "n8n's growing AI-node ecosystem (LangChain, OpenAI, Anthropic) lets users layer LLM reasoning on top of signal alerts — e.g., 'summarize this week's accelerating companies for a partner-meeting brief.'",
+          "n8n's growing AI-node ecosystem (LangChain, OpenAI, Anthropic) lets users layer LLM reasoning on top of signal alerts, e.g., 'summarize this week's accelerating companies for a partner-meeting brief.'",
       },
     ],
     howWorks: `n8n supports our /api/v1 endpoints via standard HTTP Request and Webhook nodes. Most n8n users are self-hosting; the integration uses scheduled HTTP nodes plus custom Function nodes to fit the destination's data model. For full setup help, custom integration support is available during onboarding.`,

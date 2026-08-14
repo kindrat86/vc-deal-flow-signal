@@ -1,9 +1,9 @@
 /**
- * roadmap-board.ts — public Linear/Trello-style roadmap mirror.
+ * roadmap-board.ts, public Linear/Trello-style roadmap mirror.
  *
  * Internal-only design note (do NOT surface in customer copy):
  * Closes Traffic Secrets §3 Ch 19 audit gap. Audit V8 (2026-05-09) flagged:
- * "/roadmap exists but no public Trello/Linear-style board mirror — anyone
+ * "/roadmap exists but no public Trello/Linear-style board mirror, anyone
  * should see what's shipping next quarter without an account."
  *
  * Single source of truth for:
@@ -39,13 +39,13 @@ export type RoadmapItem = {
   id: string;
   /** Public-facing card title. */
   title: string;
-  /** Short rationale (1–3 sentences). Reads like a Linear card description. */
+  /** Short rationale (1-3 sentences). Reads like a Linear card description. */
   summary: string;
   /** Which lane this card lives in. */
   lane: RoadmapLane;
   /** Target/actual quarter, e.g. "Q2 2026". */
   quarter: string;
-  /** ISO date target. Optional — null for `considering` and `cut`. */
+  /** ISO date target. Optional, null for `considering` and `cut`. */
   eta?: string;
   /**
    * Public-safe owner role. Use roles, not names. Rotates as work moves.
@@ -53,7 +53,7 @@ export type RoadmapItem = {
    */
   ownerRole: string;
   /**
-   * Progress 0–100. For `shipped` always 100. For `cut` always 0.
+   * Progress 0-100. For `shipped` always 100. For `cut` always 0.
    */
   progress: number;
   /** Tags for column-level filters. */
@@ -78,7 +78,7 @@ export type RoadmapItem = {
 
 /** Master ordered list. Newer items at top within each lane group. */
 export const ROADMAP_ITEMS: RoadmapItem[] = [
-  // ────────────────────────── SHIPPED — Q2 2026 ──────────────────────────
+  // ────────────────────────── SHIPPED, Q2 2026 ──────────────────────────
   {
     id: "buyer-roadmap-five-surfaces",
     title: "Buyer Roadmap wired into 5 conversion surfaces",
@@ -97,7 +97,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
     id: "sector-sweep-heat-build-sequence",
     title: "Sector Sweep heat-build setter sequence",
     summary:
-      "Five-day heat-build sequence on the Sector Sweep brief (€1,997 tier) — daily proof emails, a worked client teardown, and a soft-pitch close. Lifts the brief funnel score to 100/100.",
+      "Five-day heat-build sequence on the Sector Sweep brief (€1,997 tier), daily proof emails, a worked client teardown, and a soft-pitch close. Lifts the brief funnel score to 100/100.",
     lane: "shipped",
     quarter: "Q2 2026",
     eta: "2026-05-07",
@@ -111,7 +111,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
     id: "openapi-31-mcp-x",
     title: "Unified OpenAPI 3.1 spec with x-mcp-tool extensions",
     summary:
-      "Single /api/openapi.json now serves REST and MCP in one fetch — 31 paths, 8 MCP tools, 3 resources, 5 prompt templates. Consumed by ChatGPT GPT, Cursor, Claude, and any MCP host without a separate manifest.",
+      "Single /api/openapi.json now serves REST and MCP in one fetch, 31 paths, 8 MCP tools, 3 resources, 5 prompt templates. Consumed by ChatGPT GPT, Cursor, Claude, and any MCP host without a separate manifest.",
     lane: "shipped",
     quarter: "Q2 2026",
     eta: "2026-05-07",
@@ -137,7 +137,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
   },
   {
     id: "book-funnel-7-signals",
-    title: "Free book funnel — 7 GitHub Signals (104 pages)",
+    title: "Free book funnel, 7 GitHub Signals (104 pages)",
     summary:
       "Free PDF/EPUB read at /book/read, €0.99 Kindle unlocks a three-email bonus drip with a worked Series A walkthrough and a 30-day direct-line invite. Acts as the indoctrination top of the value ladder.",
     lane: "shipped",
@@ -151,7 +151,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
   },
   {
     id: "predicted-acceleration-watch",
-    title: "Acceleration Watch — free weekly index",
+    title: "Acceleration Watch, free weekly index",
     summary:
       "Every Monday: 5 named startups whose commit-velocity acceleration crossed the signal threshold, with sector + percentile + post-hoc grading at 60d / 90d. ClaimReview JSON-LD on every pick.",
     lane: "shipped",
@@ -165,7 +165,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
   },
   {
     id: "state-of-github-monthly",
-    title: "State of GitHub — monthly written address",
+    title: "State of GitHub, monthly written address",
     summary:
       "First Wednesday of every month: 10-minute written address on engineering-velocity panel data. May 2026 covered AI-native devtools as the loudest sector. Synthetic-voice video render is on deck.",
     lane: "shipped",
@@ -181,7 +181,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
     id: "ssrn-research-panel",
     title: "SSRN-indexed research panel (CC BY 4.0)",
     summary:
-      "219-company longitudinal panel published as a working paper (SSRN abstract 6606558). Reproducibility appendix, replication CSV, and DOI on Crossref. Lead-time median 21–47 days vs. press release.",
+      "219-company longitudinal panel published as a working paper (SSRN abstract 6606558). Reproducibility appendix, replication CSV, and DOI on Crossref. Lead-time median 21-47 days vs. press release.",
     lane: "shipped",
     quarter: "Q2 2026",
     eta: "2026-04-15",
@@ -208,7 +208,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
   },
   {
     id: "mcp-server-published",
-    title: "MCP server v1.6.0 — six read-only tools",
+    title: "MCP server v1.6.0, six read-only tools",
     summary:
       "Published as @gitdealflow/mcp-signal on npm. Discoverable via /.well-known/mcp.json, listed on Glama and Smithery. Six tools: signal_get, signal_search, signal_sector, signal_get_deep_signal, signal_trend, agent_pitch.",
     lane: "shipped",
@@ -223,7 +223,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
   },
   {
     id: "pseo-1060-pages",
-    title: "Programmatic SEO surface — 1,060+ live pages",
+    title: "Programmatic SEO surface, 1,060+ live pages",
     summary:
       "12 hreflang locales, /startup/[slug]/[period] long-tail, /predicted/[week] archive, /signals/define/[primitive] knowledge base. All 1,060 sitemap URLs return 200 with full schema.org markup.",
     lane: "shipped",
@@ -250,12 +250,12 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
     updatedAt: "2026-05-05",
   },
 
-  // ───────────────────────── IN FLIGHT — this quarter ─────────────────────
+  // ───────────────────────── IN FLIGHT, this quarter ─────────────────────
   {
     id: "public-roadmap-board",
     title: "Public roadmap board (this page)",
     summary:
-      "A Linear-style kanban view of every shipped, in-flight, on-deck, considering, and cut item — no account required, machine-readable JSON feed at /api/v1/roadmap.json. Closes the public-bet transparency loop.",
+      "A Linear-style kanban view of every shipped, in-flight, on-deck, considering, and cut item, no account required, machine-readable JSON feed at /api/v1/roadmap.json. Closes the public-bet transparency loop.",
     lane: "in-flight",
     quarter: "Q2 2026",
     eta: "2026-05-09",
@@ -267,7 +267,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
   },
   {
     id: "instagram-pipeline",
-    title: "Instagram pipeline — daily anonymous chart-reels",
+    title: "Instagram pipeline, daily anonymous chart-reels",
     summary:
       "Anonymous data-viz reels (commit-velocity charts, sector heat maps) posted daily at @thedatanerd. No founder face required. Aiming for 30 posts in 30 days as a baseline reach experiment.",
     lane: "in-flight",
@@ -310,7 +310,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
   },
   {
     id: "reddit-ads-launch",
-    title: "Reddit Ads launch — 6 ad-sets at €5/day",
+    title: "Reddit Ads launch, 6 ad-sets at €5/day",
     summary:
       "Six targeted ad-sets across r/startups, r/Entrepreneur, r/AngelInvesting, r/InvestmentClub, r/SideProject, r/EntrepreneurRideAlong. Account, pixel, env vars, and creatives ready. Launch over the weekend window.",
     lane: "in-flight",
@@ -351,10 +351,10 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
     updatedAt: "2026-05-09",
   },
 
-  // ───────────────────────── ON DECK — next quarter ───────────────────────
+  // ───────────────────────── ON DECK, next quarter ───────────────────────
   {
     id: "press-wire-first-release",
-    title: "First paid press wire — SSRN panel announcement",
+    title: "First paid press wire, SSRN panel announcement",
     summary:
       "Wire one of the five ready releases through Newswire ($99). Targets the SSRN-panel + agent-credits launch. Tests the desk pickup rate before committing to a quarterly cadence.",
     lane: "on-deck",
@@ -368,7 +368,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
   },
   {
     id: "funnel-hacking-friday",
-    title: "Funnel Hacking Friday — weekly competitor teardown",
+    title: "Funnel Hacking Friday, weekly competitor teardown",
     summary:
       "Every Friday: a screenshotted teardown of one competitor's funnel (Harmonic, Tracxn, Affinity, Forager, Dealroom). Posted to Twitter/LinkedIn with a link back to /alternatives.",
     lane: "on-deck",
@@ -382,7 +382,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
   },
   {
     id: "sector-coverage-19-to-24",
-    title: "Sector coverage expansion — 19 → 24 sectors",
+    title: "Sector coverage expansion, 19 → 24 sectors",
     summary:
       "Adding climate-software, robotics-ops, identity-infra, healthtech-RWD, fintech-rails-EU. Each gets its own /startups-to-watch/[sector] page and Acceleration Watch coverage.",
     lane: "on-deck",
@@ -396,7 +396,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
   },
   {
     id: "live-ab-experiments-dashboard",
-    title: "Live A/B experiments — public conversion log",
+    title: "Live A/B experiments, public conversion log",
     summary:
       "Public dashboard of every experiment we run on /firstlook, /pricing, /apply. Hypothesis → variant → metric → outcome. Read-only, updated weekly.",
     lane: "on-deck",
@@ -412,7 +412,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
     id: "long-form-vsl",
     title: "Long-Form Video Sales Letter (anonymous narration)",
     summary:
-      "Voiceover-only walkthrough of the full pitch — synthetic narration, no founder face, screen-only visuals. Embeds on /vsl, /walkthrough, and /pricing.",
+      "Voiceover-only walkthrough of the full pitch, synthetic narration, no founder face, screen-only visuals. Embeds on /vsl, /walkthrough, and /pricing.",
     lane: "on-deck",
     quarter: "Q3 2026",
     eta: "2026-09-01",
@@ -439,7 +439,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
   },
   {
     id: "recurring-sector-sweep-rhythm",
-    title: "Custom Sector Sweep — recurring quarterly rhythm",
+    title: "Custom Sector Sweep, recurring quarterly rhythm",
     summary:
       "End-of-quarter deep dives on requested sectors. Capped at 8 per quarter. Buyers can re-up the same sector or rotate; queue is publicly numbered.",
     lane: "on-deck",
@@ -455,7 +455,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
     id: "annual-state-of-engineering-velocity-report",
     title: "Annual State of Engineering Velocity report (PDF)",
     summary:
-      "Year-end branded PDF — sector-by-sector commit-velocity rankings, year-over-year shifts, methodology updates. Industry-citation play; positioned as the standard reference for the category.",
+      "Year-end branded PDF, sector-by-sector commit-velocity rankings, year-over-year shifts, methodology updates. Industry-citation play; positioned as the standard reference for the category.",
     lane: "on-deck",
     quarter: "Q4 2026",
     eta: "2026-12-15",
@@ -470,7 +470,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
     id: "european-data-residency",
     title: "European data residency",
     summary:
-      "Mirror dashboard + CSV in EU-hosted Postgres for GDPR-strict syndicates. Demand-gated — won't build until two paying funds explicitly request it.",
+      "Mirror dashboard + CSV in EU-hosted Postgres for GDPR-strict syndicates. Demand-gated, won't build until two paying funds explicitly request it.",
     lane: "considering",
     quarter: "Q4 2026",
     ownerRole: "Infrastructure",
@@ -480,7 +480,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
   },
   {
     id: "github-actions-portfolio-watch",
-    title: "GitHub Actions integration — portfolio watch",
+    title: "GitHub Actions integration, portfolio watch",
     summary:
       "Drop your portfolio orgs into a YAML file in your private repo, get a PR comment on weekly velocity changes. Free utility play to seed the agent-native distribution surface.",
     lane: "considering",
@@ -492,7 +492,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
   },
   {
     id: "anonymous-funder-map",
-    title: "Anonymous funder map — who's reading the Watch",
+    title: "Anonymous funder map, who's reading the Watch",
     summary:
       "Aggregated view of who reads the Acceleration Watch by region, fund stage, and focus. No individual identity; cohort math only. Tested if it lifts conversion on /pricing.",
     lane: "considering",
@@ -574,7 +574,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
     id: "founder-podcasts",
     title: "Founder podcasts and on-camera interviews",
     summary:
-      "Permanent cut — anonymity rule is a positioning choice, not a temporary constraint. Synthetic-voice guest spots remain on the table separately.",
+      "Permanent cut, anonymity rule is a positioning choice, not a temporary constraint. Synthetic-voice guest spots remain on the table separately.",
     lane: "cut",
     quarter: "Q1 2026",
     ownerRole: "Content Lead",
@@ -646,7 +646,7 @@ export function getRoadmapLastUpdated(): string {
   return ROADMAP_ITEMS.map((it) => it.updatedAt).sort().reverse()[0] ?? "2026-05-09";
 }
 
-/** Counts per lane — surfaces in board nav + JSON feed. */
+/** Counts per lane, surfaces in board nav + JSON feed. */
 export function getLaneCounts(): Record<RoadmapLane, number> {
   return ROADMAP_ITEMS.reduce(
     (acc, it) => {

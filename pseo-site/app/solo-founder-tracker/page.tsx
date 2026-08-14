@@ -16,22 +16,22 @@ const SITE = "https://signals.gitdealflow.com";
 
 export const metadata: Metadata = {
   title:
-    "Solo-Founder Tracker — one-person companies hitting commit / star / contributor thresholds, by sector",
+    "Solo-Founder Tracker, one-person companies hitting commit / star / contributor thresholds, by sector",
   description:
     "15 sector pages indexing the 'one-person unicorn' pattern on GitHub. Commit-velocity, star-growth, and contributor-concentration thresholds that solo-founder companies share. Distinct from /predicted: this surface answers 'where are the one-engineer companies emerging right now?', not 'who's the next round'.",
   alternates: { canonical: "/solo-founder-tracker" },
   openGraph: {
     title:
-      "Solo-Founder Tracker — one-person companies hitting commit / star / contributor thresholds",
+      "Solo-Founder Tracker, one-person companies hitting commit / star / contributor thresholds",
     description:
-      "15 sectors. Threshold-driven framework for spotting one-engineer companies on GitHub before they hire. Distinct from the all-stage /predicted feed — this is the solo-founder lens.",
+      "15 sectors. Threshold-driven framework for spotting one-engineer companies on GitHub before they hire. Distinct from the all-stage /predicted feed, this is the solo-founder lens.",
     url: `${SITE}/solo-founder-tracker`,
     type: "article",
   },
   twitter: {
     card: "summary_large_image",
     title:
-      "Solo-Founder Tracker — the 'one-person unicorn' lens, indexed by sector",
+      "Solo-Founder Tracker, the 'one-person unicorn' lens, indexed by sector",
     description:
       "15 sector pages. Commit/star/contributor thresholds for spotting one-engineer companies on GitHub before they hire.",
   },
@@ -61,7 +61,7 @@ export default function SoloFounderTrackerIndexPage() {
         "@type": "CollectionPage",
         "@id": `${url}#collection`,
         url,
-        name: "Solo-Founder Tracker — by sector",
+        name: "Solo-Founder Tracker, by sector",
         description:
           "15 sector pages indexing the 'one-person unicorn' pattern on GitHub. Threshold-driven framework for spotting one-engineer companies before they hire.",
         inLanguage: "en-US",
@@ -84,19 +84,19 @@ export default function SoloFounderTrackerIndexPage() {
         hasPart: SOLO_FOUNDER_SECTORS.map((s) => ({
           "@type": "WebPage",
           url: `${SITE}/solo-founder-tracker/${s.slug}`,
-          name: `Solo-Founder Tracker — ${s.name}`,
+          name: `Solo-Founder Tracker, ${s.name}`,
           description: s.tagline,
         })),
       },
       {
         "@type": "ItemList",
-        name: "Solo-Founder Tracker — per-sector pages",
+        name: "Solo-Founder Tracker, per-sector pages",
         numberOfItems: SOLO_FOUNDER_SECTORS.length,
         itemListOrder: "https://schema.org/ItemListUnordered",
         itemListElement: SOLO_FOUNDER_SECTORS.map((s, i) => ({
           "@type": "ListItem",
           position: i + 1,
-          name: `${s.name} — Solo-Founder Tracker`,
+          name: `${s.name}, Solo-Founder Tracker`,
           url: `${SITE}/solo-founder-tracker/${s.slug}`,
         })),
       },
@@ -166,9 +166,9 @@ export default function SoloFounderTrackerIndexPage() {
             data-speakable
           >
             One engineer. One repo. One revenue curve. The Solo-Founder Tracker
-            indexes the GitHub shape of one-person companies — the commit
+            indexes the GitHub shape of one-person companies, the commit
             cadence, the star trajectory, the contributor-concentration
-            window — across 15 sectors. Distinct from{" "}
+            window, across 15 sectors. Distinct from{" "}
             <Link
               href="/predicted"
               className="text-sky-300 underline decoration-dotted hover:text-sky-200"
@@ -182,7 +182,7 @@ export default function SoloFounderTrackerIndexPage() {
             >
               /startups-to-watch
             </Link>{" "}
-            (sector ranking): this surface answers a narrower question —{" "}
+            (sector ranking): this surface answers a narrower question, {" "}
             <em>where are the one-engineer companies emerging right now, and
             what shape does that acceleration take?</em>
           </p>
@@ -230,7 +230,7 @@ export default function SoloFounderTrackerIndexPage() {
                 ≤ {defaultThresholds.maxContributors}
               </dd>
               <dd className="text-gray-400 text-xs leading-snug">
-                Humans only — bots excluded.
+                Humans only, bots excluded.
               </dd>
             </div>
             <div className="rounded-lg border border-slate-800 bg-slate-900 p-3">
@@ -246,7 +246,7 @@ export default function SoloFounderTrackerIndexPage() {
             </div>
           </dl>
           <p className="text-gray-400 text-sm leading-relaxed">
-            Per-sector pages override these — fintech and healthcare run lower
+            Per-sector pages override these, fintech and healthcare run lower
             star floors because their distribution is private; AI/ML and
             developer tools run higher floors because the customer is also the
             GitHub audience.
@@ -297,20 +297,19 @@ export default function SoloFounderTrackerIndexPage() {
           </h2>
           <ul className="text-gray-300 text-base leading-relaxed space-y-2 list-disc pl-5">
             <li>
-              <strong className="text-gray-100">/predicted</strong> — the
+              <strong className="text-gray-100">/predicted</strong>: the
               all-stage weekly bet. Ten orgs every Monday across every
               org-shape, graded against fundraise news at 60 and 90 days.
             </li>
             <li>
-              <strong className="text-gray-100">/startups-to-watch</strong> —
-              the ranked sector list. Filters the panel by sector + period and
+              <strong className="text-gray-100">/startups-to-watch</strong>: the ranked sector list. Filters the panel by sector + period and
               ranks by acceleration; agnostic to team size.
             </li>
             <li>
               <strong className="text-gray-100">
                 /solo-founder-tracker (this page)
               </strong>{" "}
-              — the one-engineer lens. Per-sector editorial on the shape of
+the one-engineer lens. Per-sector editorial on the shape of
               one-person companies + threshold definitions a sourcer can
               memorise.
             </li>

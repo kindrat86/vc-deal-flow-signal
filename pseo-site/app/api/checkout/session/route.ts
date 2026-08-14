@@ -98,7 +98,7 @@ export async function POST(req: NextRequest) {
   }
 
   // Bump is optional. Unknown values are dropped silently rather than
-  // 400-ing — a malformed param shouldn't block a paying buyer.
+  // 400-ing, a malformed param shouldn't block a paying buyer.
   const bump: BumpKey | null = isBump(rawBump) ? rawBump : null;
 
   // Variant tag for /r/[campaign] + on-page A/B attribution. Sanitized to
@@ -111,12 +111,12 @@ export async function POST(req: NextRequest) {
   const cfg = ENTRY_TIERS[tier];
   const origin = req.headers.get("origin") || SITE_ORIGIN;
 
-  // Brunson DotCom Ch 14/18 — additive order bump. The bump is a SECOND
+  // Brunson DotCom Ch 14/18, additive order bump. The bump is a SECOND
   // purchasable item, not a price swap. AOV lifts without disrupting the
   // OTO ladder that follows on /firstlook/thanks.
   //
   // For `payment` mode: bump becomes a second line_item alongside the
-  // base product — both are one-time charges.
+  // base product, both are one-time charges.
   //
   // For `subscription` mode: bump becomes an add_invoice_item on the
   // FIRST invoice only (Stripe won't allow mixing one-time line_items
@@ -136,7 +136,7 @@ export async function POST(req: NextRequest) {
 
   // Build the bump price data once (only when a valid bump was requested).
   // We reuse this for both payment-mode line_items and subscription-mode
-  // add_invoice_items — the shape is identical.
+  // add_invoice_items, the shape is identical.
   const validBump: BumpKey | null = bump;
   const bumpPriceData =
     validBump !== null
@@ -194,7 +194,7 @@ export async function POST(req: NextRequest) {
       sessionParams.customer_creation = "always";
       sessionParams.payment_intent_data = {
         // Save the card on the customer for one-click OTO charges on the
-        // thank-you page (Brunson cart funnel — Secret 18 / DotCom Ch 12).
+        // thank-you page (Brunson cart funnel, Secret 18 / DotCom Ch 12).
         // Without this the OTO has to re-collect card details.
         setup_future_usage: "off_session",
         metadata,
@@ -202,7 +202,7 @@ export async function POST(req: NextRequest) {
     } else {
       sessionParams.subscription_data = {
         metadata,
-        // Brunson Ch 14 — order bump on subscription mode: charge the
+        // Brunson Ch 14, order bump on subscription mode: charge the
         // bump once on the first invoice, then the recurring price
         // continues normally on subsequent invoices.
         ...(bumpInvoiceItem

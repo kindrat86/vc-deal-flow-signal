@@ -1,5 +1,5 @@
 /**
- * /sitemap-videos.xml — Google Video sitemap.
+ * /sitemap-videos.xml, Google Video sitemap.
  *
  * Surfaces every <VideoObject> we declare in JSON-LD as a machine-readable
  * video index for Google Video search, Bing video, and any AI engine that

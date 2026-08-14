@@ -15,7 +15,7 @@ import { pickAudienceId } from "@/lib/resend-audience";
  *
  * Unlike /api/subscribe (which uses double-opt-in to gate the report behind a
  * verification click), the book endpoint sends the downloads on the first
- * request — the book IS the lead magnet, friction here would defeat the
+ * request, the book IS the lead magnet, friction here would defeat the
  * purpose. We still tag the contact + queue verification follow-ups so the
  * audience build matches every other capture surface.
  */
@@ -74,17 +74,17 @@ function downloadEmailHtml(email: string): string {
 
 <p>Or read the full book on the open web at <a href="${SITE_URL}/book/read" style="color:#0ea5e9;">${SITE_URL}/book/read</a>.</p>
 
-<p>The book is ${"~"}104 pages — about four hours straight through. The seven signal chapters are roughly thirty minutes each. The replication appendix takes ninety minutes if you do the exercises with a terminal open.</p>
+<p>The book is ${"~"}104 pages, about four hours straight through. The seven signal chapters are roughly thirty minutes each. The replication appendix takes ninety minutes if you do the exercises with a terminal open.</p>
 
-<p>If you only have one evening, the recommended path is the Introduction + Methodology + Replication Appendix — about ninety minutes total — which gives you the full computational toolkit. The seven signal chapters can wait for a longer sitting.</p>
+<p>If you only have one evening, the recommended path is the Introduction + Methodology + Replication Appendix, about ninety minutes total, which gives you the full computational toolkit. The seven signal chapters can wait for a longer sitting.</p>
 
-<p>Tomorrow morning at nine, I&rsquo;ll send a short follow-up — the most recent Series A announcement that the methodology would have caught, walked signal-by-signal. After that you&rsquo;ll be on the regular Monday-morning Signal Digest with the top five firings of the week.</p>
+<p>Tomorrow morning at nine, I&rsquo;ll send a short follow-up, the most recent Series A announcement that the methodology would have caught, walked signal-by-signal. After that you&rsquo;ll be on the regular Monday-morning Signal Digest with the top five firings of the week.</p>
 
-<p>If anything in the book breaks for you — a threshold that doesn&rsquo;t reproduce, a script that errors, a chapter that contradicts itself — reply to this email. I read every message and the next edition will fold in your correction.</p>
+<p>If anything in the book breaks for you, a threshold that doesn&rsquo;t reproduce, a script that errors, a chapter that contradicts itself, reply to this email. I read every message and the next edition will fold in your correction.</p>
 
-<p>— ${FROM_NAME}</p>
+<p>${FROM_NAME}</p>
 
-<p style="color:#64748b;font-size:14px;">P.S. The €0.99 Kindle copy at <a href="${SITE_URL}/book" style="color:#0ea5e9;">${SITE_URL}/book</a> includes three bonus emails the free copy doesn&rsquo;t — a worked walkthrough of the most recent Series A catch, a private link to the unedited investor interviews, and a direct line to me for thirty days. Same content, different bonus stack.</p>
+<p style="color:#64748b;font-size:14px;">P.S. The €0.99 Kindle copy at <a href="${SITE_URL}/book" style="color:#0ea5e9;">${SITE_URL}/book</a> includes three bonus emails the free copy doesn&rsquo;t, a worked walkthrough of the most recent Series A catch, a private link to the unedited investor interviews, and a direct line to me for thirty days. Same content, different bonus stack.</p>
 
 <p style="color:#64748b;font-size:14px;">P.P.S. If you want the methodology run for you on a 250+ org universe every Monday, the Dashboard locks in <a href="${SITE_URL}/pricing#dashboard-beta" style="color:#0ea5e9;">€9.97/mo founding-member rate</a>. The methodology is in the book; the Dashboard is the methodology executed.</p>
 </div>
@@ -177,7 +177,7 @@ async function scheduleSoapOpera(
     }
   }
 
-  // Store the deferred remainder on the contact — same shape drip-sender
+  // Store the deferred remainder on the contact, same shape drip-sender
   // reads ({d: days, s: subject, h: html}). Needs the audience contact to
   // exist (addToAudience runs first in the POST handler).
   if (deferred.length > 0 && audienceId) {
@@ -211,7 +211,7 @@ async function scheduleSoapOpera(
     }
   } else if (deferred.length > 0) {
     console.error(
-      `[book-download] no audience id — ${deferred.length} deferred drip emails NOT stored for ${email}`,
+      `[book-download] no audience id, ${deferred.length} deferred drip emails NOT stored for ${email}`,
     );
   }
 }
@@ -255,7 +255,7 @@ async function addToAudience(email: string): Promise<string | null> {
       },
     );
     if (!res.ok) {
-      // Already a contact (re-download / prior subscriber) — re-activate so
+      // Already a contact (re-download / prior subscriber), re-activate so
       // a previously-unsubscribed reader who asks for the book again gets it.
       await fetch(
         `https://api.resend.com/audiences/${audienceId}/contacts/${encodeURIComponent(email)}`,
@@ -318,7 +318,7 @@ export async function POST(req: NextRequest) {
   }
 
   // Mint a verify token (stored on the contact's first_name field via attribution
-  // — same pattern as /api/subscribe). We don't gate the download on a verify
+  //, same pattern as /api/subscribe). We don't gate the download on a verify
   // click, but we issue the token so the standard verify path works for any
   // follow-up flow.
   signVerifyToken({
@@ -327,12 +327,12 @@ export async function POST(req: NextRequest) {
     ttlSeconds: 30 * 86_400,
   });
 
-  // Send the download email and start the drip — but only if the address
+  // Send the download email and start the drip, but only if the address
   // isn't on the testers/bots exclusion list (memory feedback rule).
   if (!isExcluded(email)) {
     await sendImmediate(
       email,
-      "Your book — 7 GitHub Signals (PDF + EPUB inside)",
+      "Your book, 7 GitHub Signals (PDF + EPUB inside)",
       downloadEmailHtml(email),
       "book-funnel-download",
     );

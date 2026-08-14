@@ -14,7 +14,7 @@ interface PageProps {
 
 /**
  * Diligence-grade personas evaluate a specific company for a living, on a
- * deadline — they get a paid escalation (test it on their thesis this week,
+ * deadline, they get a paid escalation (test it on their thesis this week,
  * then keep the panel open) on top of the free Sunday signal. The other
  * personas (browsers/scouts) stay on the free-first floor.
  */
@@ -359,7 +359,7 @@ export default async function UseCasePage({ params }: PageProps) {
             <p className="text-gray-400 text-sm mb-6 max-w-xl leading-relaxed">
               The Monday email tells you who&rsquo;s moving across the market. When a
               specific company lands on your desk and you need a read before the
-              call, you don&rsquo;t want to wait for Monday. Two ways to go deeper —
+              call, you don&rsquo;t want to wait for Monday. Two ways to go deeper -
               still no code to read, still plain-English answers you can paste into
               a memo.
             </p>
@@ -376,7 +376,7 @@ export default async function UseCasePage({ params }: PageProps) {
                 </h3>
                 <p className="text-gray-400 text-xs leading-relaxed">
                   Point it at one company you&rsquo;re actually looking at. A single
-                  written read on whether the team is genuinely accelerating — for
+                  written read on whether the team is genuinely accelerating, for
                   less than the coffee on a partner call.
                 </p>
               </Link>

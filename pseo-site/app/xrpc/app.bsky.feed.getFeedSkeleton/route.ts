@@ -8,7 +8,7 @@
  *
  * Strategy: query Bluesky's public searchPosts XRPC in parallel with a small
  * set of curated queries that flag GitHub-momentum-meets-VC conversations,
- * then merge, dedupe, and rank by recency. Strictly serverless — no firehose
+ * then merge, dedupe, and rank by recency. Strictly serverless, no firehose
  * subscriber, no DB. Cached for 60s at the edge so repeat requests within a
  * minute don't re-query the AppView.
  *
@@ -89,7 +89,7 @@ async function searchOne(q: string, signal: AbortSignal): Promise<BskyPost[]> {
 function isRelevant(post: BskyPost): boolean {
   const text = (post.record?.text || "").toLowerCase();
   if (!text) return false;
-  // English-only — Bluesky search is global so we get JP/PT/ES posts too
+  // English-only, Bluesky search is global so we get JP/PT/ES posts too
   const langs = post.record?.langs;
   if (Array.isArray(langs) && langs.length > 0 && !langs.includes("en")) return false;
   const hasVc = VC_TERMS.some((t) => text.includes(t));
@@ -134,7 +134,7 @@ export async function GET(req: Request) {
 
     const sorted = Array.from(byUri.values()).sort((a, b) => score(b) - score(a));
 
-    // Cursor is the index into the sorted list — opaque to clients but lets
+    // Cursor is the index into the sorted list, opaque to clients but lets
     // them paginate through the snapshot. New requests get a fresh snapshot.
     const start = cursor ? Math.max(0, parseInt(cursor, 10) || 0) : 0;
     const slice = sorted.slice(start, start + limit);

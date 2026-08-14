@@ -38,7 +38,7 @@ export default function SignalLeader({ movers, periodSlug, asOf }: SignalLeaderP
       </div>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
-        {/* Lead card — 2 columns wide on desktop */}
+        {/* Lead card, 2 columns wide on desktop */}
         <Link
           href={`/startups-to-watch/${lead.sectorSlug}-${periodSlug}`}
           className={`lg:col-span-2 group rounded-lg border ${leadTone.ring} ${leadTone.bg} p-5 hover:bg-slate-800/40 transition-all`}

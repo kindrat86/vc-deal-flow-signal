@@ -8,7 +8,7 @@ import { getHreflangLanguages } from "@/lib/hreflang";
 export const dynamic = "force-static";
 export const revalidate = 86400;
 
-const TITLE = "Public Telegram — second owned pipe after email";
+const TITLE = "Public Telegram, second owned pipe after email";
 const DESCRIPTION =
   "The five-name Acceleration Watch and mid-week sector alerts, mirrored to a public broadcast Telegram channel. Free, no signup, no DMs, no login. Email is owned channel #1; Telegram is #2.";
 const CANONICAL = "https://signals.gitdealflow.com/telegram";
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
   ],
 };
 
-// Brunson Traffic Secrets §3 Ch 11 — "After the Slap" — V8 audit (2026-05-09)
+// Brunson Traffic Secrets §3 Ch 11, "After the Slap", V8 audit (2026-05-09)
 // flagged Telegram as a buried second owned channel. This page is the
 // funnel-shape push: hook + reason-why + stack + objection handling +
 // CTA. Anonymity-safe (broadcast channel, no DMs, no founder face).
@@ -52,11 +52,11 @@ const REASONS_WHY = [
   },
   {
     h: "Pseudonymous by construction.",
-    p: "No identity required. No phone number visible. No DMs accepted. The channel is broadcast-only — same five-name list, same mid-week sector pings, same methodology change notes. The founder never asks who you are; the channel never asks for a login.",
+    p: "No identity required. No phone number visible. No DMs accepted. The channel is broadcast-only, same five-name list, same mid-week sector pings, same methodology change notes. The founder never asks who you are; the channel never asks for a login.",
   },
   {
     h: "Free, forever, with no upsell pressure inline.",
-    p: "Pricing pages are at /pricing. The channel does not advertise tiers. If a fund-tier investor (€197/mo Insider) wants to upgrade, the door is mentioned exactly once a quarter — at the bottom of a methodology post, never on a signal post.",
+    p: "Pricing pages are at /pricing. The channel does not advertise tiers. If a fund-tier investor (€197/mo Insider) wants to upgrade, the door is mentioned exactly once a quarter, at the bottom of a methodology post, never on a signal post.",
   },
   {
     h: "Mute it. Pin it. Forward it.",
@@ -83,11 +83,11 @@ const FAQS = [
   },
   {
     q: "What does the public channel get that the email doesn't?",
-    a: "Mid-week sector pings (when AI infra crosses 2× contributor influx, the channel fires before the next Monday email). Live methodology change notes (the email recaps changes monthly; the channel posts them when shipped). Synthetic-voice clips from the monthly /state-of-github address (audio is anonymity-safe — no founder voice, only Cartesia Theo synthetic narration).",
+    a: "Mid-week sector pings (when AI infra crosses 2× contributor influx, the channel fires before the next Monday email). Live methodology change notes (the email recaps changes monthly; the channel posts them when shipped). Synthetic-voice clips from the monthly /state-of-github address (audio is anonymity-safe, no founder voice, only Cartesia Theo synthetic narration).",
   },
   {
     q: "What does the private (paid) Telegram get that the public doesn't?",
-    a: "The Insider Circle private group (€197/mo) gets next Monday's five names 24 hours early, custom watchlists, the JSON/CSV API for portfolio cross-checks, direct line to the founder, and ~30 fund-tier subscribers comparing notes. The public channel posts the same five names — but 24 hours later. See /pricing for the full ladder.",
+    a: "The Insider Circle private group (€197/mo) gets next Monday's five names 24 hours early, custom watchlists, the JSON/CSV API for portfolio cross-checks, direct line to the founder, and ~30 fund-tier subscribers comparing notes. The public channel posts the same five names, but 24 hours later. See /pricing for the full ladder.",
   },
 ] as const;
 
@@ -108,7 +108,7 @@ export default function TelegramPage() {
         about: {
           "@type": "Service",
           "@id": `${CANONICAL}#service`,
-          name: "VC Deal Flow Signal — Public Telegram Channel",
+          name: "VC Deal Flow Signal, Public Telegram Channel",
           description:
             "Public broadcast Telegram channel mirroring the weekly Acceleration Watch and mid-week sector alerts. Free, pseudonymous, broadcast-only.",
           provider: {
@@ -129,7 +129,7 @@ export default function TelegramPage() {
           serviceType: "Broadcast distribution",
           serviceOutput: {
             "@type": "Periodical",
-            name: "Acceleration Watch — Telegram mirror",
+            name: "Acceleration Watch, Telegram mirror",
             issn: "3065-4521",
           },
         },
@@ -179,7 +179,7 @@ export default function TelegramPage() {
       />
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
-        {/* HOOK — Russell DCS Ch 4. One promise, one mechanism, one frame. */}
+        {/* HOOK, Russell DCS Ch 4. One promise, one mechanism, one frame. */}
         <header className="space-y-4 border-b border-slate-800 pb-8">
           <p className="text-cyan-300 text-xs font-semibold uppercase tracking-wider">
             Owned channel #2 · public · free
@@ -190,7 +190,7 @@ export default function TelegramPage() {
             Telegram is the alarm.
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-            The same five-name Monday Acceleration Watch — mirrored to a
+            The same five-name Monday Acceleration Watch, mirrored to a
             public broadcast channel within 60 seconds. Plus mid-week
             sector pings the email doesn&rsquo;t carry. Free, pseudonymous,
             no DMs, no login, no founder face. The second pipe that closes
@@ -215,9 +215,9 @@ export default function TelegramPage() {
           </div>
         </header>
 
-        {/* OFFER STACK — Russell ES Ch 11. Each item is falsifiable.
-            "Mondays at 09:00 UTC" — verifiable by reading the channel
-            history. "Mid-week within 60 seconds of email" — verifiable
+        {/* OFFER STACK, Russell ES Ch 11. Each item is falsifiable.
+            "Mondays at 09:00 UTC", verifiable by reading the channel
+            history. "Mid-week within 60 seconds of email", verifiable
             by timestamp comparison. */}
         <section
           aria-label="What you get from the public channel"
@@ -235,7 +235,7 @@ export default function TelegramPage() {
             <li className="flex items-start gap-3">
               <span className="mt-1 inline-block w-2 h-2 rounded-full bg-cyan-400 shrink-0" aria-hidden="true" />
               <div className="text-gray-200">
-                <strong>Monday 09:00 UTC — Acceleration Watch.</strong>{" "}
+                <strong>Monday 09:00 UTC, Acceleration Watch.</strong>{" "}
                 <span className="text-gray-400">
                   Five startups whose 14-day commit-velocity acceleration
                   cleared the panel&rsquo;s 2× threshold and whose
@@ -247,7 +247,7 @@ export default function TelegramPage() {
             <li className="flex items-start gap-3">
               <span className="mt-1 inline-block w-2 h-2 rounded-full bg-cyan-400 shrink-0" aria-hidden="true" />
               <div className="text-gray-200">
-                <strong>Mid-week — sector pings.</strong>{" "}
+                <strong>Mid-week, sector pings.</strong>{" "}
                 <span className="text-gray-400">
                   When AI infra, dev-tools, climate-tech, fintech rails, or
                   any of the 19 tracked sectors crosses 2× cohort baseline
@@ -260,11 +260,11 @@ export default function TelegramPage() {
             <li className="flex items-start gap-3">
               <span className="mt-1 inline-block w-2 h-2 rounded-full bg-cyan-400 shrink-0" aria-hidden="true" />
               <div className="text-gray-200">
-                <strong>Monthly — methodology change notes.</strong>{" "}
+                <strong>Monthly, methodology change notes.</strong>{" "}
                 <span className="text-gray-400">
                   Every regression coefficient that moves, every
                   contributor-classification rule that changes, every false-
-                  positive cohort the panel reclassifies — posted with diff
+                  positive cohort the panel reclassifies, posted with diff
                   link to the public methodology and SSRN preprint
                   (abstract 6606558).
                 </span>
@@ -273,25 +273,25 @@ export default function TelegramPage() {
             <li className="flex items-start gap-3">
               <span className="mt-1 inline-block w-2 h-2 rounded-full bg-cyan-400 shrink-0" aria-hidden="true" />
               <div className="text-gray-200">
-                <strong>First Wednesday of the month — State of GitHub.</strong>{" "}
+                <strong>First Wednesday of the month, State of GitHub.</strong>{" "}
                 <span className="text-gray-400">
                   Synthetic-voice clip + transcript from the monthly{" "}
                   <Link href="/state-of-github" className="underline decoration-dotted text-cyan-300">
                     Stadium Pitch
                   </Link>
-                  . No founder voice — Cartesia Theo synthetic narration
+                  . No founder voice, Cartesia Theo synthetic narration
                   only. Anonymity-safe by construction.
                 </span>
               </div>
             </li>
           </ul>
           <p className="text-gray-500 text-xs italic pt-2 border-t border-slate-800">
-            Cadence is published, not promised — the channel post history
+            Cadence is published, not promised, the channel post history
             is the proof. Scroll back any month and count the drops.
           </p>
         </section>
 
-        {/* REASONS-WHY — Russell ES Ch 10 (False Beliefs / Vehicle).
+        {/* REASONS-WHY, Russell ES Ch 10 (False Beliefs / Vehicle).
             The default investor objection to a public channel is "I don't
             want another pipe to monitor". Each reason-why dismantles a
             specific version of that objection. */}
@@ -319,7 +319,7 @@ export default function TelegramPage() {
           </div>
         </section>
 
-        {/* OWNED-CHANNEL HIERARCHY — Russell TS Ch 11 ("After the Slap").
+        {/* OWNED-CHANNEL HIERARCHY, Russell TS Ch 11 ("After the Slap").
             Make it explicit: which channels do we own, which do we rent.
             The channel inherits trust from being co-equal with email,
             not a downgrade from it. */}
@@ -342,7 +342,7 @@ export default function TelegramPage() {
               </p>
               <ul className="text-gray-300 text-sm space-y-1.5 leading-relaxed">
                 <li>
-                  <strong className="text-gray-100">Email list</strong> — the
+                  <strong className="text-gray-100">Email list</strong>: the
                   briefing. Sunday rhythm, Monday ship, full archive at{" "}
                   <Link href="/predicted" className="underline decoration-dotted text-emerald-300">
                     /predicted
@@ -351,12 +351,12 @@ export default function TelegramPage() {
                 </li>
                 <li>
                   <strong className="text-gray-100">Public Telegram</strong>{" "}
-                  — the alarm. Real-time mirror plus mid-week pings.
+the alarm. Real-time mirror plus mid-week pings.
                   Pseudonymous, broadcast-only.
                 </li>
                 <li>
                   <strong className="text-gray-100">MCP server + API</strong>{" "}
-                  — the agent surface.{" "}
+the agent surface.{" "}
                   <Link href="/integrations" className="underline decoration-dotted text-emerald-300">
                     /integrations
                   </Link>
@@ -364,7 +364,7 @@ export default function TelegramPage() {
                 </li>
                 <li>
                   <strong className="text-gray-100">Chrome extensions</strong>{" "}
-                  — the in-browser badge. Crunchbase + GitHub overlays.
+the in-browser badge. Crunchbase + GitHub overlays.
                 </li>
               </ul>
             </div>
@@ -373,26 +373,26 @@ export default function TelegramPage() {
                 Rented (platform owns delivery)
               </p>
               <ul className="text-gray-400 text-sm space-y-1.5 leading-relaxed">
-                <li>X / Twitter — replies, threads, no list ownership</li>
-                <li>Reddit — subreddit-gated, mod-controlled</li>
-                <li>Hacker News — single-post visibility, no follow</li>
-                <li>dev.to + Hashnode — algo-gated reach</li>
-                <li>Discord — community-gated, login-required</li>
+                <li>X / Twitter, replies, threads, no list ownership</li>
+                <li>Reddit, subreddit-gated, mod-controlled</li>
+                <li>Hacker News, single-post visibility, no follow</li>
+                <li>dev.to + Hashnode, algo-gated reach</li>
+                <li>Discord, community-gated, login-required</li>
               </ul>
               <p className="text-gray-500 text-xs italic pt-1">
                 Rented platforms feed both owned channels. The asymmetry is
-                the point — we lose nothing if a rented platform deplatforms
+                the point, we lose nothing if a rented platform deplatforms
                 us.
               </p>
             </div>
           </div>
         </section>
 
-        {/* CTA — Russell DCS Ch 9 (23 Building Blocks · Block #6 Call to Action) */}
+        {/* CTA, Russell DCS Ch 9 (23 Building Blocks · Block #6 Call to Action) */}
         <TelegramCTA tone="neutral" context="generic" />
 
-        {/* FAQ — answer surfaces (FAQPage schema in JSON-LD above). Each
-            answer is a paragraph, not a sentence — answer-engine optimised
+        {/* FAQ, answer surfaces (FAQPage schema in JSON-LD above). Each
+            answer is a paragraph, not a sentence, answer-engine optimised
             for Claude/Perplexity/ChatGPT direct quotation. */}
         <section
           aria-label="Frequently asked questions"
@@ -421,7 +421,7 @@ export default function TelegramPage() {
           </dl>
         </section>
 
-        {/* CLOSING / NEXT-STEP RAIL — keeps the user on owned surfaces. */}
+        {/* CLOSING / NEXT-STEP RAIL, keeps the user on owned surfaces. */}
         <section
           aria-label="Adjacent surfaces"
           className="rounded-xl border border-slate-800 bg-slate-900/40 p-6 space-y-3"
@@ -432,32 +432,32 @@ export default function TelegramPage() {
           <ul className="grid gap-2 sm:grid-cols-2 text-sm">
             <li>
               <Link href="/predicted" className="text-cyan-300 hover:text-cyan-200 underline decoration-dotted">
-                /predicted — weekly Acceleration Watch archive →
+                /predicted, weekly Acceleration Watch archive →
               </Link>
             </li>
             <li>
               <Link href="/state-of-github" className="text-cyan-300 hover:text-cyan-200 underline decoration-dotted">
-                /state-of-github — monthly Stadium Pitch →
+                /state-of-github, monthly Stadium Pitch →
               </Link>
             </li>
             <li>
               <Link href="/insider" className="text-cyan-300 hover:text-cyan-200 underline decoration-dotted">
-                /insider — private Telegram + 24h lead (€197/mo) →
+                /insider, private Telegram + 24h lead (€197/mo) →
               </Link>
             </li>
             <li>
               <Link href="/integrations" className="text-cyan-300 hover:text-cyan-200 underline decoration-dotted">
-                /integrations — MCP, email, RSS, API →
+                /integrations, MCP, email, RSS, API →
               </Link>
             </li>
             <li>
               <Link href="/distribution" className="text-cyan-300 hover:text-cyan-200 underline decoration-dotted">
-                /distribution — every owned + earned + rented surface →
+                /distribution, every owned + earned + rented surface →
               </Link>
             </li>
             <li>
               <Link href="/manifesto" className="text-cyan-300 hover:text-cyan-200 underline decoration-dotted">
-                /manifesto — the six pillars, public over private →
+                /manifesto, the six pillars, public over private →
               </Link>
             </li>
           </ul>

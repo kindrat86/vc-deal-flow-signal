@@ -1,6 +1,6 @@
 {
   "info": {
-    "name": "VC Deal Flow Signal — Public Agent API",
+    "name": "VC Deal Flow Signal, Public Agent API",
     "description": "Free, no-auth public API surface for AI agents. Includes JSON / CSV exports, MCP server (Streamable HTTP), A2A JSON-RPC, NLWeb, function-calling tools (OpenAI / Anthropic / Gemini formats), and embeddable SVG badges. OpenAPI 3.1 spec describes every callable route. CC-BY 4.0 with attribution. See https://signals.gitdealflow.com/AGENTS.md.",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
     "_postman_id": "gitdealflow-public-agent-api-2026-04-26"
@@ -17,7 +17,7 @@
       "name": "Bulk dataset",
       "item": [
         {
-          "name": "GET signals.json — full panel",
+          "name": "GET signals.json, full panel",
           "request": {
             "method": "GET",
             "url": "{{baseUrl}}/api/signals.json",
@@ -25,7 +25,7 @@
           }
         },
         {
-          "name": "GET signals.csv — same panel as CSV",
+          "name": "GET signals.csv, same panel as CSV",
           "request": {
             "method": "GET",
             "url": "{{baseUrl}}/api/signals.csv",
@@ -33,7 +33,7 @@
           }
         },
         {
-          "name": "GET changelog.json — dataset version",
+          "name": "GET changelog.json, dataset version",
           "request": {
             "method": "GET",
             "url": "{{baseUrl}}/api/changelog.json",
@@ -46,7 +46,7 @@
       "name": "Per-startup lookup",
       "item": [
         {
-          "name": "GET /api/signal — single startup by name",
+          "name": "GET /api/signal, single startup by name",
           "request": {
             "method": "GET",
             "url": {
@@ -64,7 +64,7 @@
       "name": "Scout receipts (per-user)",
       "item": [
         {
-          "name": "GET /api/receipts/{username} — Scout Score",
+          "name": "GET /api/receipts/{username}, Scout Score",
           "request": {
             "method": "GET",
             "url": "{{baseUrl}}/api/receipts/sindresorhus",
@@ -77,7 +77,7 @@
       "name": "MCP / A2A / NLWeb",
       "item": [
         {
-          "name": "POST /api/mcp/rpc — Streamable HTTP MCP",
+          "name": "POST /api/mcp/rpc, Streamable HTTP MCP",
           "request": {
             "method": "POST",
             "header": [
@@ -92,7 +92,7 @@
           }
         },
         {
-          "name": "POST /api/a2a — A2A JSON-RPC",
+          "name": "POST /api/a2a, A2A JSON-RPC",
           "request": {
             "method": "POST",
             "header": [
@@ -107,7 +107,7 @@
           }
         },
         {
-          "name": "POST /api/nlweb — Microsoft NLWeb",
+          "name": "POST /api/nlweb, Microsoft NLWeb",
           "request": {
             "method": "POST",
             "header": [
@@ -181,7 +181,7 @@
       "name": "Discovery",
       "item": [
         {
-          "name": "GET /api/openapi.json — OpenAPI 3.1 spec",
+          "name": "GET /api/openapi.json, OpenAPI 3.1 spec",
           "request": {
             "method": "GET",
             "url": "{{baseUrl}}/api/openapi.json",
@@ -189,35 +189,35 @@
           }
         },
         {
-          "name": "GET /.well-known/agent-card.json — A2A AgentCard",
+          "name": "GET /.well-known/agent-card.json, A2A AgentCard",
           "request": {
             "method": "GET",
             "url": "{{baseUrl}}/.well-known/agent-card.json"
           }
         },
         {
-          "name": "GET /.well-known/mcp.json — MCP discovery manifest",
+          "name": "GET /.well-known/mcp.json, MCP discovery manifest",
           "request": {
             "method": "GET",
             "url": "{{baseUrl}}/.well-known/mcp.json"
           }
         },
         {
-          "name": "GET /.well-known/ai-plugin.json — ChatGPT manifest",
+          "name": "GET /.well-known/ai-plugin.json, ChatGPT manifest",
           "request": {
             "method": "GET",
             "url": "{{baseUrl}}/.well-known/ai-plugin.json"
           }
         },
         {
-          "name": "GET /llms.txt — concise LLM context",
+          "name": "GET /llms.txt, concise LLM context",
           "request": {
             "method": "GET",
             "url": "{{baseUrl}}/llms.txt"
           }
         },
         {
-          "name": "GET /llms-full.txt — full LLM context",
+          "name": "GET /llms-full.txt, full LLM context",
           "request": {
             "method": "GET",
             "url": "{{baseUrl}}/llms-full.txt"

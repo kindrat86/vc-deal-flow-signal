@@ -1,5 +1,5 @@
 {
-  "note": "Seed list for the GitHub Startup Momentum Index. Real public repos only. Owner may edit/extend. One API call per repo — keep <=50 unless GITHUB_TOKEN is set.",
+  "note": "Seed list for the GitHub Startup Momentum Index. Real public repos only. Owner may edit/extend. One API call per repo, keep <=50 unless GITHUB_TOKEN is set.",
   "repos": [
     "vercel/next.js", "supabase/supabase", "calcom/cal.com", "PostHog/posthog",
     "denoland/deno", "oven-sh/bun", "tauri-apps/tauri", "langchain-ai/langchain",

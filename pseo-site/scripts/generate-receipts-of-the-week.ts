@@ -1,10 +1,10 @@
 /**
- * Receipts of the Week — Wed cadence in Greg Isenberg's 30-day distribution
+ * Receipts of the Week, Wed cadence in Greg Isenberg's 30-day distribution
  * play. Picks one notable developer from a curated seed list, fetches their
  * /receipts data via the live API, and writes a distribution-ready markdown
  * doc with Twitter / Telegram / Substack / LinkedIn copy.
  *
- * No auto-posting — per division-of-labor rules, Reddit + LinkedIn + HN are
+ * No auto-posting, per division-of-labor rules, Reddit + LinkedIn + HN are
  * user-only. This script produces drafts.
  *
  * Usage:
@@ -22,7 +22,7 @@ const SITE = "https://signals.gitdealflow.com";
 
 // Seed list rotated weekly. Each is a notable dev whose receipts already
 // produce visible "Curious / Scout / Sharp / Elite / Oracle" outputs against
-// the validated unicorn database. Order is rotation order — date-deterministic
+// the validated unicorn database. Order is rotation order, date-deterministic
 // pick so the same seed reappears every ~14 weeks.
 const SEED_DEVS: readonly string[] = [
   "sindresorhus",
@@ -134,13 +134,13 @@ function buildTwitterThread(r: ReceiptResponse): string[] {
   const t2 = top
     .map(
       (p, i) =>
-        `${i + 1}/ ${p.name} — starred ${formatMonthsEarly(p.months_early)} before ${p.event}`,
+        `${i + 1}/ ${p.name}, starred ${formatMonthsEarly(p.months_early)} before ${p.event}`,
     )
     .join("\n");
 
   const t3 =
     `Pattern: pre-fundraise breakouts have a GitHub fingerprint. ` +
-    `Commit-velocity acceleration leads the deck by 21–47 days. ` +
+    `Commit-velocity acceleration leads the deck by 21-47 days. ` +
     `SSRN-indexed methodology: ssrn.com/abstract=6606558\n\n` +
     `Receipts (backwards) → ${SITE}/receipts\n` +
     `Scout (forwards) → ${SITE}/predict`;
@@ -153,12 +153,12 @@ function buildTelegramPost(r: ReceiptResponse): string {
     .slice(0, 3)
     .map(
       (p, i) =>
-        `${i + 1}. ${p.name} — ${formatMonthsEarly(p.months_early)} early (${p.event})`,
+        `${i + 1}. ${p.name}, ${formatMonthsEarly(p.months_early)} early (${p.event})`,
     )
     .join("\n");
   const rankLabel = RANK_LABEL[r.rank] ?? r.rank;
   return (
-    `📜 **Receipts of the Week — @${r.username}**\n\n` +
+    `📜 **Receipts of the Week, @${r.username}**\n\n` +
     `Rank: ${rankLabel} (${Math.round(r.score)} pts)\n` +
     `${r.matched_count} validated wins · ${r.early_count} called early\n\n` +
     `Top calls:\n${top}\n\n` +
@@ -181,7 +181,7 @@ function buildLinkedinDraft(r: ReceiptResponse): string {
     .slice(0, 3)
     .map(
       (p) =>
-        `· ${p.name} — starred ${formatMonthsEarly(p.months_early)} before ${p.event}`,
+        `· ${p.name}, starred ${formatMonthsEarly(p.months_early)} before ${p.event}`,
     )
     .join("\n");
   return (
@@ -210,12 +210,12 @@ function renderDoc(args: {
     .slice(0, 5)
     .map(
       (p) =>
-        `- **${p.name}** (\`${p.repo}\`) — starred ${new Date(p.starred_at).toISOString().slice(0, 10)} ` +
+        `- **${p.name}** (\`${p.repo}\`), starred ${new Date(p.starred_at).toISOString().slice(0, 10)} ` +
         `(${formatMonthsEarly(p.months_early)} before *${p.event}*)`,
     )
     .join("\n");
 
-  return `# Receipts of the Week — ${date}
+  return `# Receipts of the Week, ${date}
 
 **Featured developer:** @${username}
 **Rank:** ${rankLabel} (${Math.round(receipts.score)} pts)
@@ -256,7 +256,7 @@ ${substack}
 
 ---
 
-## LinkedIn draft (USER POSTS MANUALLY — per division-of-labor rule)
+## LinkedIn draft (USER POSTS MANUALLY, per division-of-labor rule)
 
 ${linkedin}
 
@@ -264,12 +264,12 @@ ${linkedin}
 
 ## Distribution checklist
 
-- [ ] Twitter thread — auto-post via tools/twitter
-- [ ] Telegram channel post — paste manually if low subs (memory: feedback_telegram_low_sub_skip.md)
-- [ ] Substack Note — auto-post via tools/substack
-- [ ] LinkedIn — USER posts manually, no automation
-- [ ] Reddit — DO NOT POST
-- [ ] HN — skip
+- [ ] Twitter thread, auto-post via tools/twitter
+- [ ] Telegram channel post, paste manually if low subs (memory: feedback_telegram_low_sub_skip.md)
+- [ ] Substack Note, auto-post via tools/substack
+- [ ] LinkedIn, USER posts manually, no automation
+- [ ] Reddit, DO NOT POST
+- [ ] HN, skip
 
 ## Why this dev
 
@@ -327,7 +327,7 @@ async function main(): Promise<void> {
   const outFile = path.join(outDir, `${isoDate}.md`);
 
   if (fs.existsSync(outFile)) {
-    // Don't clobber a hand-edited draft — reroute to -fresh.md per the
+    // Don't clobber a hand-edited draft, reroute to -fresh.md per the
     // never-clobber-user-drafts memory rule.
     const freshFile = outFile.replace(/\.md$/, "-fresh.md");
     fs.writeFileSync(freshFile, doc);

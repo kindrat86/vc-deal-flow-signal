@@ -73,7 +73,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
       },
       {
         "@type": "HowTo",
-        name: `${cs.h1} — workflow steps`,
+        name: `${cs.h1}, workflow steps`,
         description: cs.tagline,
         step: cs.steps.map((s, i) => ({
           "@type": "HowToStep",
@@ -265,7 +265,7 @@ export default async function CaseStudyPage({ params }: PageProps) {
         <section aria-label="Call to action">
           <SeoCta
             heading="Try this workflow for your team"
-            blurb="The free Acceleration Watch runs on the same engineering signal these workflows use — five breakout teams every Sunday, in plain English, no code-reading. Onboarding to any paid tier includes a guided walkthrough of the workflow that matches your role."
+            blurb="The free Acceleration Watch runs on the same engineering signal these workflows use, five breakout teams every Sunday, in plain English, no code-reading. Onboarding to any paid tier includes a guided walkthrough of the workflow that matches your role."
             secondary={{ label: "See a €7 First Look sample", href: "/firstlook" }}
           />
         </section>

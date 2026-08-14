@@ -1,4 +1,4 @@
-# AI Access Policy — VC Deal Flow Signal
+# AI Access Policy, VC Deal Flow Signal
 # https://gitdealflow.com
 
 User-agent: *

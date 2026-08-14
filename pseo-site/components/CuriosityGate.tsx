@@ -1,8 +1,8 @@
 /**
- * CuriosityGate — the email-gated "Insider preview" row.
+ * CuriosityGate, the email-gated "Insider preview" row.
  *
  * Shows a blurred, PER-ENTITY projected lead-time window + next milestone
- * (derived from this org's own real commit signal — see lib/projection.ts),
+ * (derived from this org's own real commit signal, see lib/projection.ts),
  * gated behind the free Sunday-digest signup. Brunson curiosity-gap squeeze:
  * the value is visibly there, the email is the key.
  *
@@ -71,7 +71,7 @@ export default function CuriosityGate({
       </div>
       <p className="text-gray-400 text-sm leading-relaxed mb-4">
         The free Sunday digest puts {entityName}
-        {others} in context — 14-day acceleration deltas, contributor maps, and
+        {others} in context, 14-day acceleration deltas, contributor maps, and
         the top names not on Crunchbase yet. Five names every Sunday, no card, no
         code-reading.
       </p>
@@ -83,7 +83,7 @@ export default function CuriosityGate({
       </a>
       <p className="text-gray-400 text-[10px] mt-3 italic">
         Projections are model estimates derived from each org&apos;s public commit
-        signal and the SSRN-published methodology — not statements of fact.
+        signal and the SSRN-published methodology, not statements of fact.
         Cross-reference with primary sources before acting.
       </p>
     </div>

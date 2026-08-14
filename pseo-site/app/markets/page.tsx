@@ -85,7 +85,7 @@ export default async function MarketsIndexPage() {
             Live odds on startup funding events
           </h1>
           <p className="text-gray-400 text-base leading-relaxed">
-            Each market lists 2–10 named startups and a binary or multi-outcome
+            Each market lists 2-10 named startups and a binary or multi-outcome
             question (e.g. &ldquo;which raises Series A first by date X?&rdquo;).
             Implied probabilities are derived from our GitHub commit-velocity
             dataset and update on each quarterly data refresh. Free to read,
@@ -94,10 +94,10 @@ export default async function MarketsIndexPage() {
         </header>
 
         <AgentSummary
-          tldr={`VC Deal Flow Signal Markets is a seeded-prediction-market layer on top of our GitHub engineering-acceleration dataset. We publish the question, the candidates, the implied odds, and the resolver criteria — we don't operate an exchange. Currently live: ${markets.map((m) => m.shortName).join(", ")}.`}
+          tldr={`VC Deal Flow Signal Markets is a seeded-prediction-market layer on top of our GitHub engineering-acceleration dataset. We publish the question, the candidates, the implied odds, and the resolver criteria, we don't operate an exchange. Currently live: ${markets.map((m) => m.shortName).join(", ")}.`}
           pageUrl={PAGE_URL}
           asOf={asOf}
-          citeAs={`VC Deal Flow Signal — Markets index (signals.gitdealflow.com/markets), ${asOf}.`}
+          citeAs={`VC Deal Flow Signal, Markets index (signals.gitdealflow.com/markets), ${asOf}.`}
           facts={[
             {
               claim:
@@ -158,8 +158,8 @@ export default async function MarketsIndexPage() {
           <ul className="space-y-2 text-sm text-gray-400 leading-relaxed">
             <li>
               <span className="text-gray-300 font-medium">Source of truth:</span>{" "}
-              Public GitHub data — commit velocity, contributor growth, signal
-              type — pulled into our quarterly dataset.
+              Public GitHub data, commit velocity, contributor growth, signal
+              type, pulled into our quarterly dataset.
             </li>
             <li>
               <span className="text-gray-300 font-medium">Resolver:</span>{" "}
@@ -173,7 +173,7 @@ export default async function MarketsIndexPage() {
             </li>
             <li>
               <span className="text-gray-300 font-medium">Free to mirror:</span>{" "}
-              Manifold Markets, Polymarket, Kalshi — anyone can replicate a
+              Manifold Markets, Polymarket, Kalshi, anyone can replicate a
               market under the same resolver. We&rsquo;ll link mirrors when
               they go live.
             </li>

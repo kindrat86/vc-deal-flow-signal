@@ -18,15 +18,15 @@ export const dynamic = "force-static";
 const SITE = "https://signals.gitdealflow.com";
 
 /**
- * /members/leaderboard — Charter Cohort public ranking surface.
+ * /members/leaderboard, Charter Cohort public ranking surface.
  *
- * Brunson DotCom Secrets Ch 4 (Three Core Markets / Desires) — the secondary
+ * Brunson DotCom Secrets Ch 4 (Three Core Markets / Desires), the secondary
  * market is Status. The Charter Cohort hub at /members tells visitors WHO
  * the members are; this leaderboard tells them WHO IS WINNING. That's the
  * Status payoff that the IdentityBanner promises but the cohort hub
  * doesn't operationalise.
  *
- * Brunson Expert Secrets §1 Ch 4 (Mass Movement Vehicle) — visible momentum
+ * Brunson Expert Secrets §1 Ch 4 (Mass Movement Vehicle), visible momentum
  * compounds when members can see their own ranking move. The page uses the
  * shared CHARTER_COHORT content file so claims surface here automatically.
  *
@@ -38,12 +38,12 @@ const SITE = "https://signals.gitdealflow.com";
 
 export const metadata: Metadata = {
   title:
-    "Member Leaderboard — Charter Cohort 2026 · VC Deal Flow Signal",
+    "Member Leaderboard, Charter Cohort 2026 · VC Deal Flow Signal",
   description:
-    "Public ranking of Charter Cohort members by 60d/90d hit rate, picks published, and lead-time delta. Pseudonymous handles, public scorecards, no fabricated wins. Currently 0 of 25 seats claimed — be the first to land on the board.",
+    "Public ranking of Charter Cohort members by 60d/90d hit rate, picks published, and lead-time delta. Pseudonymous handles, public scorecards, no fabricated wins. Currently 0 of 25 seats claimed, be the first to land on the board.",
   alternates: { canonical: "/members/leaderboard" },
   openGraph: {
-    title: "Member Leaderboard — Charter Cohort 2026",
+    title: "Member Leaderboard, Charter Cohort 2026",
     description:
       "Public ranking of Charter Cohort members by 60d/90d hit rate. Pseudonymous, transparent, methodology-grade.",
     url: `${SITE}/members/leaderboard`,
@@ -100,7 +100,7 @@ export default function MembersLeaderboardPage() {
         "@type": "WebPage",
         "@id": `${SITE}/members/leaderboard#webpage`,
         url: `${SITE}/members/leaderboard`,
-        name: "Member Leaderboard — Charter Cohort 2026",
+        name: "Member Leaderboard, Charter Cohort 2026",
         description:
           "Public ranking of Charter Cohort members by 60d/90d hit rate.",
         isPartOf: { "@id": `${SITE}/#website` },
@@ -188,7 +188,7 @@ export default function MembersLeaderboardPage() {
             </Link>
             : a pick is a Hit at the 60d or 90d window if a public fundraise
             lands or commit velocity sustains 4× baseline. Misses and Pendings
-            are public — that&rsquo;s the methodology rule.
+            are public, that&rsquo;s the methodology rule.
           </p>
         </header>
 
@@ -232,14 +232,14 @@ export default function MembersLeaderboardPage() {
               </p>
               <p className="text-3xl font-bold text-gray-100 tabular-nums">
                 {aggregateHitRatePct === null
-                  ? "—"
+                  ? "-"
                   : `${aggregateHitRatePct}%`}
               </p>
             </div>
           </div>
           {aggregateHitRatePct === null && (
             <p className="pt-4 mt-4 border-t border-amber-800/30 text-gray-400 text-sm leading-relaxed">
-              <strong className="text-amber-300">Cohort hit rate is —</strong>{" "}
+              <strong className="text-amber-300">Cohort hit rate is, </strong>{" "}
               because no grading window has closed yet. The first 60-day
               window opens 60 days after the first charter member publishes
               their first pick.
@@ -258,7 +258,7 @@ export default function MembersLeaderboardPage() {
             </p>
           </div>
 
-          {/* Empty-state framing — when no members have published, the board
+          {/* Empty-state framing, when no members have published, the board
               shows the seat templates ranked alphabetically and admits the
               ranking will reshuffle once real picks land. */}
           {claimed === 0 && (
@@ -348,7 +348,7 @@ export default function MembersLeaderboardPage() {
                         {r.pending}
                       </td>
                       <td className="px-4 py-3 text-right text-gray-300 tabular-nums">
-                        {r.hitRatePct === null ? "—" : `${r.hitRatePct}%`}
+                        {r.hitRatePct === null ? "-" : `${r.hitRatePct}%`}
                       </td>
                     </tr>
                   );
@@ -389,7 +389,7 @@ export default function MembersLeaderboardPage() {
                     >
                       Claim a charter seat
                     </Link>
-                    {" "}— pseudonymous handle welcome, real name never
+                    {" "}, pseudonymous handle welcome, real name never
                     required. 48-hour written review.
                   </>
                 ),
@@ -453,7 +453,7 @@ export default function MembersLeaderboardPage() {
             We don&rsquo;t backfill. We don&rsquo;t fabricate. The first row
             on this leaderboard goes to the first charter member whose first
             pick grades Hit at the 60-day window. After that, it&rsquo;s
-            cumulative — every Hit moves you up the board permanently.
+            cumulative, every Hit moves you up the board permanently.
           </p>
           <div className="pt-2 flex flex-col sm:flex-row gap-3 justify-center">
             <Link

@@ -6,7 +6,7 @@
  *   2. Substring match on term/id → score by position (earlier = better).
  *   3. Substring match on definition → lower-weight fallback.
  *
- * Returns up to N matches sorted by descending score. Pure function — used
+ * Returns up to N matches sorted by descending score. Pure function, used
  * by both the /define command (top-1) and inline-mode (top-5).
  */
 
@@ -38,7 +38,7 @@ export function searchGlossary(query: string, limit = 5): GlossaryHit[] {
 
     let score = 0;
 
-    // Whole-query passes — strongest signals
+    // Whole-query passes, strongest signals
     if (tn === q || id === q) score = 100;
     else if (tn.startsWith(q) || id.startsWith(q)) score = 80;
     else if (tn.includes(q) || id.includes(q)) {

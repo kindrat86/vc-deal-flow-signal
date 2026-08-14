@@ -6,7 +6,7 @@
  * Claude-with-search) preferentially extract. The Speakable selector at the
  * top makes voice assistants pick the same passage.
  *
- * Useful to humans too — works as a TL;DR with copy-paste citation. So we
+ * Useful to humans too, works as a TL;DR with copy-paste citation. So we
  * render it unconditionally rather than gating on User-Agent. The `data-cite`
  * attributes on each fact let RAG pipelines scrape (passage, source, date)
  * tuples without parsing prose.
@@ -17,7 +17,7 @@ import Link from "next/link";
 interface Fact {
   /** Self-contained sentence. */
   claim: string;
-  /** Source URL — usually a same-origin canonical URL. */
+  /** Source URL, usually a same-origin canonical URL. */
   sourceUrl: string;
   /** Human-readable source label, e.g. "GitDealFlow methodology". */
   sourceLabel: string;
@@ -32,7 +32,7 @@ interface AgentSummaryProps {
   asOf: string;
   /** 0-5 supporting facts the page elaborates on. Each becomes a citable bullet. */
   facts?: Fact[];
-  /** Citation string — what consumers should write when quoting. */
+  /** Citation string, what consumers should write when quoting. */
   citeAs: string;
 }
 

@@ -1,5 +1,5 @@
 /**
- * /knowledge-graph.json — single canonical entity graph for the project.
+ * /knowledge-graph.json, single canonical entity graph for the project.
  *
  * Aggregates every authoritative cross-reference (Wikidata, ORCID, SSRN,
  * OpenAlex, Crossref, Semantic Scholar, DataCite, Zenodo, Kaggle, npm,
@@ -32,7 +32,7 @@ const METHODOLOGY_STEPS: Array<{ name: string; text: string; anchor: string }> =
   [
     {
       name: "Sector universe selection",
-      text: "Curate 20 startup sectors from public GitHub topic clusters; each sector has a manually curated allowlist of 50–500 public GitHub orgs/repos.",
+      text: "Curate 20 startup sectors from public GitHub topic clusters; each sector has a manually curated allowlist of 50-500 public GitHub orgs/repos.",
       anchor: "sectors",
     },
     {
@@ -57,7 +57,7 @@ const METHODOLOGY_STEPS: Array<{ name: string; text: string; anchor: string }> =
     },
     {
       name: "Validation & track record",
-      text: "When a tracked startup announces a fundraise, log the lead time between the engineering signal and the announcement. Empirical median lead time across 2024–2025 backtests: 4 weeks.",
+      text: "When a tracked startup announces a fundraise, log the lead time between the engineering signal and the announcement. Empirical median lead time across 2024-2025 backtests: 4 weeks.",
       anchor: "validation",
     },
   ];
@@ -72,7 +72,7 @@ export async function GET() {
     ],
     "@id": `${SITE}/knowledge-graph.json`,
     "@type": "DataCatalog",
-    name: "VC Deal Flow Signal — Canonical Knowledge Graph",
+    name: "VC Deal Flow Signal, Canonical Knowledge Graph",
     description:
       "Single authoritative entity graph for VC Deal Flow Signal (GitDealFlow). Resolves the brand, founder, methodology paper, dataset, and product into one machine-readable document with every cross-reference (Wikidata, ORCID, SSRN, OpenAlex, Crossref, Semantic Scholar, DataCite, Zenodo, Kaggle, npm).",
     url: `${SITE}/knowledge-graph.json`,
@@ -84,7 +84,7 @@ export async function GET() {
       {
         "@type": "Organization",
         "@id": `${APEX}/#organization`,
-        // Brunson Audit V8 (2026-05-09) — Knowledge Panel claim. Pairs with
+        // Brunson Audit V8 (2026-05-09), Knowledge Panel claim. Pairs with
         // /.well-known/wikidata.json + /wikidata page + RootIdentitySchema
         // identifier block. additionalType=Q4830453 (business).
         additionalType: "https://www.wikidata.org/wiki/Q4830453",
@@ -191,7 +191,7 @@ export async function GET() {
       {
         "@type": "Dataset",
         "@id": `${SITE}/#dataset`,
-        name: "VC Deal Flow Signal — Startup Engineering Acceleration Dataset",
+        name: "VC Deal Flow Signal, Startup Engineering Acceleration Dataset",
         url: SITE,
         identifier: SITE,
         sameAs: [
@@ -245,7 +245,7 @@ export async function GET() {
         "@id": `${SITE}/glossary#engineering-acceleration`,
         name: "engineering acceleration",
         description:
-          "A quantitative, code-side momentum signal computed from public GitHub data: rolling 14-day commit velocity, contributor growth, and repository expansion. Distinct from startup accelerator programs (Y Combinator, Techstars, etc.) — refers to engineering velocity, not cohort-based mentorship.",
+          "A quantitative, code-side momentum signal computed from public GitHub data: rolling 14-day commit velocity, contributor growth, and repository expansion. Distinct from startup accelerator programs (Y Combinator, Techstars, etc.), refers to engineering velocity, not cohort-based mentorship.",
         inDefinedTermSet: { "@id": `${SITE}/glossary` },
         url: `${SITE}/glossary#engineering-acceleration`,
         isBasedOn: { "@id": SSRN },
@@ -259,13 +259,13 @@ export async function GET() {
         inDefinedTermSet: { "@id": `${SITE}/glossary` },
         url: `${SITE}/glossary#commit-velocity`,
       },
-      // ─── Methodology (HowTo) — F25 ────────────────────────────────────────
+      // ─── Methodology (HowTo), F25 ────────────────────────────────────────
       {
         "@type": "HowTo",
         "@id": `${SITE}/methodology#howto`,
         name: "How VC Deal Flow Signal classifies engineering acceleration",
         description:
-          "Step-by-step methodology for tracking startup engineering momentum using public GitHub data — from data collection through signal classification, weekly ranking, and validation.",
+          "Step-by-step methodology for tracking startup engineering momentum using public GitHub data, from data collection through signal classification, weekly ranking, and validation.",
         url: `${SITE}/methodology`,
         inLanguage: "en-US",
         license: "https://creativecommons.org/licenses/by/4.0/",
@@ -284,11 +284,11 @@ export async function GET() {
           url: `${SITE}/methodology#${s.anchor}`,
         })),
       },
-      // ─── Prediction markets (ItemList of CreativeWork) — F25 ──────────────
+      // ─── Prediction markets (ItemList of CreativeWork), F25 ──────────────
       {
         "@type": "ItemList",
         "@id": `${SITE}/markets#list`,
-        name: "VC Deal Flow Signal — Open Prediction Markets",
+        name: "VC Deal Flow Signal, Open Prediction Markets",
         description:
           "Seeded prediction markets on startup funding events, derived from GitHub commit-velocity signals. Implied odds are model output over a public candidate set, not investment advice.",
         url: `${SITE}/markets`,
@@ -329,7 +329,7 @@ export async function GET() {
           },
         })),
       },
-      // ─── MCP server (SoftwareApplication) — F25 cross-link ────────────────
+      // ─── MCP server (SoftwareApplication), F25 cross-link ────────────────
       {
         "@type": "SoftwareApplication",
         "@id": `${SITE}/#mcp-server`,
@@ -358,7 +358,7 @@ export async function GET() {
           },
         },
       },
-      // ─── Periodical (the weekly Acceleration Watch) — F25 cross-link ──────
+      // ─── Periodical (the weekly Acceleration Watch), F25 cross-link ──────
       {
         "@type": "Periodical",
         "@id": `${SITE}/predicted#periodical`,

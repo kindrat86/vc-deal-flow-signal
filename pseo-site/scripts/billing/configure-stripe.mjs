@@ -50,11 +50,11 @@ const webhooks = await stripe.webhookEndpoints.list({ limit: 100 });
 let endpoint = webhooks.data.find((w) => w.url === WEBHOOK_URL);
 
 if (!endpoint) {
-  console.log(`No webhook found at ${WEBHOOK_URL} — creating...`);
+  console.log(`No webhook found at ${WEBHOOK_URL}, creating...`);
   endpoint = await stripe.webhookEndpoints.create({
     url: WEBHOOK_URL,
     enabled_events: REQUIRED_EVENTS,
-    description: "GitDealFlow billing — checkout + subscription lifecycle",
+    description: "GitDealFlow billing, checkout + subscription lifecycle",
   });
   console.log(`Created ${endpoint.id}`);
   console.log(`SECRET (set as STRIPE_WEBHOOK_SECRET): ${endpoint.secret}`);
@@ -95,7 +95,7 @@ const desiredFeatures = {
 };
 
 if (!portalCfg) {
-  console.log("No default portal configuration found — creating...");
+  console.log("No default portal configuration found, creating...");
   portalCfg = await stripe.billingPortal.configurations.create({
     business_profile: {
       headline: "Manage your VC Deal Flow Signal subscription",

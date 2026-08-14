@@ -30,12 +30,12 @@ const RANK_LABEL: Record<string, string> = {
 };
 
 export const metadata: Metadata = {
-  title: "Scout Leaderboard — Top 100 VC Deal Flow Scouts",
+  title: "Scout Leaderboard, Top 100 VC Deal Flow Scouts",
   description:
-    "Live leaderboard of the top 100 scouts calling startup fundraises from public GitHub engineering signals. Points come from correct calls — wrong calls subtract. Top 1% earn an Oracle badge.",
+    "Live leaderboard of the top 100 scouts calling startup fundraises from public GitHub engineering signals. Points come from correct calls, wrong calls subtract. Top 1% earn an Oracle badge.",
   alternates: { canonical: "/leaderboard" },
   openGraph: {
-    title: "Scout Leaderboard — Top 100 VC Deal Flow Scouts",
+    title: "Scout Leaderboard, Top 100 VC Deal Flow Scouts",
     description:
       "Live ranking of scouts calling startup fundraises from GitHub signals. Oracle, Elite, Sharp, Scout, Curious.",
     url: "https://signals.gitdealflow.com/leaderboard",
@@ -63,9 +63,9 @@ export default async function LeaderboardPage() {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/leaderboard#webpage",
         url: "https://signals.gitdealflow.com/leaderboard",
-        name: "Scout Leaderboard — Top 100 VC Deal Flow Scouts",
+        name: "Scout Leaderboard, Top 100 VC Deal Flow Scouts",
         description:
-          "Live leaderboard of the top 100 scouts calling startup fundraises from public GitHub engineering signals. Points come from correct calls — wrong calls subtract. Top 1% earn an Oracle badge.",
+          "Live leaderboard of the top 100 scouts calling startup fundraises from public GitHub engineering signals. Points come from correct calls, wrong calls subtract. Top 1% earn an Oracle badge.",
         inLanguage: "en-US",
         isPartOf: { "@id": "https://signals.gitdealflow.com/#website" },
         speakable: {
@@ -112,7 +112,7 @@ export default async function LeaderboardPage() {
             name: "What are the rank tiers?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Curious (any resolved call), Scout (10 resolved calls at 40% accuracy), Sharp (25 at 55%, paid tier), Elite (50 at 65%, paid), Oracle (100 at 70% — top 1% globally). Ranks are recalculated on every resolution. The first 100 scouts to register receive a permanent Founder Scout badge regardless of accuracy.",
+              text: "Curious (any resolved call), Scout (10 resolved calls at 40% accuracy), Sharp (25 at 55%, paid tier), Elite (50 at 65%, paid), Oracle (100 at 70%, top 1% globally). Ranks are recalculated on every resolution. The first 100 scouts to register receive a permanent Founder Scout badge regardless of accuracy.",
             },
           },
           {
@@ -253,7 +253,7 @@ export default async function LeaderboardPage() {
                     {Math.round(s.points)}
                   </div>
                   <div className="col-span-2 text-right text-gray-400 font-mono hidden sm:block">
-                    {accuracy !== null ? `${accuracy}%` : "—"}
+                    {accuracy !== null ? `${accuracy}%` : "-"}
                   </div>
                   <div className="col-span-2 text-right text-gray-400 font-mono">
                     {s.correct_count + s.wrong_count}
@@ -271,8 +271,8 @@ export default async function LeaderboardPage() {
             How points work
           </h2>
           <ul className="text-gray-400 text-sm space-y-1 list-disc list-inside">
-            <li>Correct call: floor(confidence / 10) points (5–9)</li>
-            <li>Wrong call: floor(confidence / 20) lost (2–4)</li>
+            <li>Correct call: floor(confidence / 10) points (5-9)</li>
+            <li>Wrong call: floor(confidence / 20) lost (2-4)</li>
             <li>3+ correct streak: +1 bonus per call</li>
             <li>Expired (6mo, no event): 0</li>
           </ul>
@@ -283,19 +283,19 @@ export default async function LeaderboardPage() {
           </h2>
           <ul className="text-gray-400 text-sm space-y-1">
             <li>
-              <span className="text-emerald-400 font-semibold">Curious</span> — first call
+              <span className="text-emerald-400 font-semibold">Curious</span>: first call
             </li>
             <li>
-              <span className="text-sky-400 font-semibold">Scout</span> — 10+ calls, 40% accuracy
+              <span className="text-sky-400 font-semibold">Scout</span>: 10+ calls, 40% accuracy
             </li>
             <li>
-              <span className="text-purple-400 font-semibold">Sharp</span> — paid, 25+ calls, 55%
+              <span className="text-purple-400 font-semibold">Sharp</span>: paid, 25+ calls, 55%
             </li>
             <li>
-              <span className="text-amber-400 font-semibold">Elite</span> — paid, 50+ calls, 65%
+              <span className="text-amber-400 font-semibold">Elite</span>: paid, 50+ calls, 65%
             </li>
             <li>
-              <span className="text-rose-400 font-semibold">Oracle</span> — 100+ calls, 70%, top 1%
+              <span className="text-rose-400 font-semibold">Oracle</span>: 100+ calls, 70%, top 1%
             </li>
           </ul>
         </div>

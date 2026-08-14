@@ -17,7 +17,7 @@ import {
 
 export const dynamic = "force-static";
 
-// Build-time sanity check — every group's roster must match its declared
+// Build-time sanity check, every group's roster must match its declared
 // `expected` count. If a future edit drifts a group off, the build catches
 // it here rather than letting a malformed list ship.
 assertCommunityCounts();
@@ -26,13 +26,13 @@ const SITE = "https://signals.gitdealflow.com";
 
 export const metadata: Metadata = {
   title:
-    "Community Signal — communities ranked by deal-flow yield, indexed by type",
+    "Community Signal, communities ranked by deal-flow yield, indexed by type",
   description:
-    "/voices indexes rooms by platform (Reddit-100, HN-100, X-100). Community Signal indexes them by community type — indie founder forums, AI builder rooms, devtools maker rooms, VC and angel forums, OSS maintainer spaces, infra and platform-eng circles — each ranked by deal-flow yield.",
+    "/voices indexes rooms by platform (Reddit-100, HN-100, X-100). Community Signal indexes them by community type, indie founder forums, AI builder rooms, devtools maker rooms, VC and angel forums, OSS maintainer spaces, infra and platform-eng circles, each ranked by deal-flow yield.",
   alternates: { canonical: "/community-signal" },
   openGraph: {
     title:
-      "Community Signal — communities ranked by deal-flow yield, indexed by type",
+      "Community Signal, communities ranked by deal-flow yield, indexed by type",
     description:
       "Ten community types, each a ranked roster of the rooms where early startup signal gets noticed first.",
     url: `${SITE}/community-signal`,
@@ -72,7 +72,7 @@ export default function CommunitySignalIndexPage() {
       {
         "@type": "WebPage",
         "@id": `${SITE}/community-signal`,
-        name: "Community Signal — communities ranked by deal-flow yield, indexed by type",
+        name: "Community Signal, communities ranked by deal-flow yield, indexed by type",
         description:
           "Ten community-type rosters, each ranked by deal-flow yield. Cousin of /voices but indexed by purpose, not by platform.",
         url: `${SITE}/community-signal`,
@@ -104,7 +104,7 @@ export default function CommunitySignalIndexPage() {
           item: {
             "@type": "WebPage",
             "@id": `${SITE}/community-signal/${g.slug}`,
-            name: `${g.label} — deal-flow yield roster`,
+            name: `${g.label}, deal-flow yield roster`,
             description: g.tagline,
           },
         })),
@@ -137,7 +137,7 @@ export default function CommunitySignalIndexPage() {
             Indexed by community type · Ranked by deal-flow yield · {total} rooms
           </p>
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight">
-            Community Signal —{" "}
+            Community Signal, {" "}
             <span className="text-emerald-400">communities ranked</span>{" "}
             by deal-flow yield.
           </h1>
@@ -145,14 +145,14 @@ export default function CommunitySignalIndexPage() {
             className="text-gray-300 text-base sm:text-lg leading-relaxed"
             data-speakable
           >
-            /voices indexes rooms by platform — 100 subreddits, 100 X accounts,
+            /voices indexes rooms by platform, 100 subreddits, 100 X accounts,
             100 HN attention slots. Community Signal indexes the same audience
-            by community <em>type</em> instead — the indie-founder forum, the
+            by community <em>type</em> instead, the indie-founder forum, the
             AI-builder Discord, the OSS-maintainer Slack, the platform-eng
             circle. Same map, different cross-section.
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
-            Each entry is a public surface — a subreddit, a Discord invite, a
+            Each entry is a public surface, a subreddit, a Discord invite, a
             Slack landing page, a Discourse forum, a newsletter homepage. Each
             community is ranked by its deal-flow yield tier (
             <span className="text-emerald-300">primary</span> /{" "}
@@ -164,7 +164,7 @@ export default function CommunitySignalIndexPage() {
             Anonymity rule, restated: we name <em>communities</em>, not
             individuals. Listing a Discord ≠ listing its members. The
             individual founders and contributors we surface live inside the
-            paid product — that&rsquo;s the buyer&rsquo;s edge.
+            paid product, that&rsquo;s the buyer&rsquo;s edge.
           </p>
         </header>
 
@@ -299,7 +299,7 @@ export default function CommunitySignalIndexPage() {
             answers <em>where</em> the conversation happens. The type map
             here answers <em>which room are they reading inside that
             platform</em>. The same Discord user is one of half a dozen
-            archetypes depending on which server they&rsquo;re in — a Cursor
+            archetypes depending on which server they&rsquo;re in, a Cursor
             user with a maintained repo is a different signal than the same
             user in a CNCF channel.
           </p>
@@ -322,7 +322,7 @@ export default function CommunitySignalIndexPage() {
             never.
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
-            We don&rsquo;t source deals out of any of these rooms — the rooms
+            We don&rsquo;t source deals out of any of these rooms, the rooms
             tell us <em>where to look</em>, not <em>what to fund</em>. The
             actual deal-flow signal comes from the GitHub-side telemetry that
             powers{" "}
@@ -339,7 +339,7 @@ export default function CommunitySignalIndexPage() {
             >
               /firstlook
             </Link>
-            . The rooms above are the second derivative — they reveal which
+            . The rooms above are the second derivative, they reveal which
             sectors the dev-side audience is bending toward, weeks before the
             telemetry confirms it.
           </p>

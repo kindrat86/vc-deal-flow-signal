@@ -1,5 +1,5 @@
 // NodeInfo discovery (https://nodeinfo.diaspora.software/protocol.html).
-// Surfaces the project as a discoverable open-graph node — Mastodon admins,
+// Surfaces the project as a discoverable open-graph node, Mastodon admins,
 // Lemmy crawlers, and federated indexers query this to learn about a service.
 const BASE_URL = "https://signals.gitdealflow.com";
 

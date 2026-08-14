@@ -1,7 +1,7 @@
 /**
- * Engine Room — iCalendar feed (RFC 5545).
+ * Engine Room, iCalendar feed (RFC 5545).
  *
- * Brunson DotCom Secrets Ch 11, Phase 6 — second channel of the
+ * Brunson DotCom Secrets Ch 11, Phase 6, second channel of the
  * environment shift. Subscribe URL pastes into iCal / Google Calendar /
  * Outlook / Fantastical and the monthly Stadium Pitch + quarterly
  * State-of-the-Engine post-mortem land as scheduled events.
@@ -15,9 +15,9 @@ export const revalidate = 3600;
 const SITE = "https://signals.gitdealflow.com";
 const FEED_URL = `${SITE}/post-90/calendar.ics`;
 const PRODID = "-//VC Deal Flow Signal//Engine Room//EN";
-const CALNAME = "Engine Room — VC Deal Flow Signal";
+const CALNAME = "Engine Room, VC Deal Flow Signal";
 const CALDESC =
-  "Cohort calendar for the post-90 signal rhythm. Monthly founder talk (first Tuesday at 16:00 UTC) and quarterly State-of-the-Engine post-mortem (Day 90 / 180 / 270 / 365). Subscribe once — calendar apps auto-refresh.";
+  "Cohort calendar for the post-90 signal rhythm. Monthly founder talk (first Tuesday at 16:00 UTC) and quarterly State-of-the-Engine post-mortem (Day 90 / 180 / 270 / 365). Subscribe once, calendar apps auto-refresh.";
 
 function pad(n: number): string {
   return n < 10 ? `0${n}` : String(n);
@@ -89,7 +89,7 @@ function buildEvents(now: Date): Event[] {
       uid: `stadium-${t.toISOString().slice(0, 7)}@gitdealflow.com`,
       start: t,
       end,
-      summary: `Founder talk — ${monthLabel}`,
+      summary: `Founder talk, ${monthLabel}`,
       description: `Monthly address from VC Deal Flow Signal. What the panel showed across 350+ venture-backed orgs this month, what shifted in the false-positive rate, and one falsifiable prediction on the record. Drops as a synthetic-voice video on the Engine Room podcast feed and the State of GitHub archive at signals.gitdealflow.com/state-of-github.`,
       url: `${SITE}/state-of-github`,
     });
@@ -109,7 +109,7 @@ function buildEvents(now: Date): Event[] {
       uid: `post-mortem-${start.toISOString().slice(0, 10)}@gitdealflow.com`,
       start,
       end,
-      summary: `State-of-the-Engine post-mortem — ${q.label}`,
+      summary: `State-of-the-Engine post-mortem, ${q.label}`,
       description: `Quarterly post-mortem. Reports back on the previous quarter's specific prediction (resolved on the public Receipts ledger at signals.gitdealflow.com/wins, append-only, no opinions) and lays a fresh falsifiable prediction for the next 90 days.`,
       url: `${SITE}/wins`,
     });

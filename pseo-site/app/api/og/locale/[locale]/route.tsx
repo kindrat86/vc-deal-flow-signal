@@ -19,17 +19,17 @@ interface RouteContext {
 // substitutions because Arabic letters take 4 positional forms.
 // Until Satori adds support upstream (vercel/satori#... open), the `ar`
 // OG card uses a Latin transliteration. The page itself remains fully
-// Arabic with dir="rtl" — this fallback only affects the social card.
+// Arabic with dir="rtl", this fallback only affects the social card.
 const LOCALE_HEADLINE: Record<string, string> = {
   zh: "GitHub 工程加速的早期 VC 信号",
   ja: "ベンチャー資金調達の3〜6週間前の GitHub シグナル",
-  de: "GitHub-Signale 3–6 Wochen vor Finanzierungs-runden",
+  de: "GitHub-Signale 3-6 Wochen vor Finanzierungs-runden",
   es: "Señales GitHub que preceden rondas de financiación",
   fr: "Signaux GitHub précédant les levées de fonds",
   pt: "Sinais GitHub antes de anúncios de captação",
   ko: "펀드레이즈 3~6주 전의 GitHub 시그널",
   hi: "फ़ंडरेज़ से पहले GitHub इंजीनियरिंग सिग्नल",
-  ru: "GitHub-сигналы за 3–6 недель до раунда",
+  ru: "GitHub-сигналы за 3-6 недель до раунда",
   it: "Segnali GitHub prima delle raccolte fondi",
   nl: "GitHub-signalen vóór financierings-aankondigingen",
   ar: "GitHub signals 3-6 weeks before fundraises",
@@ -57,7 +57,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
   const tagline = LOCALE_TAGLINE[locale] ?? "VC Deal Flow Signal · SSRN-indexed";
   // Arabic chip uses a Latin transliteration; native script in Satori
   // would crash the renderer (see top-of-file note on GSUB lookupType 5).
-  // Page content itself remains fully Arabic with dir="rtl" — only the
+  // Page content itself remains fully Arabic with dir="rtl", only the
   // social card stays LTR until Satori supports Arabic shaping.
   const nativeName = locale === "ar" ? "Arabic" : meta?.nativeName ?? locale;
 

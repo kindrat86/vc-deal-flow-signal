@@ -1,11 +1,11 @@
 /**
- * Founding-rate scarcity — HONEST, non-resetting.
+ * Founding-rate scarcity, HONEST, non-resetting.
  *
  * Replaces the prior weekly-resetting "doors closing tonight" countdown,
- * which implied the €9.97 Stripe link closes Thursday–Monday (it does not;
+ * which implied the €9.97 Stripe link closes Thursday-Monday (it does not;
  * the link is always live). Project rule: honest dated/capped scarcity only,
  * never a resetting or fake countdown. The real scarcity is the
- * founding-member rate — locked for life now, rising to €49/mo once the
+ * founding-member rate, locked for life now, rising to €49/mo once the
  * founding cohort closes.
  *
  * Kept as a named export with the same prop shape so the existing call sites
@@ -32,7 +32,7 @@ export function DoorsClosingBanner(_props: Props) {
       />
       <p className="text-emerald-100 text-sm leading-snug flex-1 min-w-0">
         <strong className="text-white">
-          Dashboard is €49/mo. Founding members who joined before 2026-06-30 keep €9.97 for life — that window is closed and is not coming back.
+          Dashboard is €49/mo. Founding members who joined before 2026-06-30 keep €9.97 for life, that window is closed and is not coming back.
         </strong>
       </p>
     </div>

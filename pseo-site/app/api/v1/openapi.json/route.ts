@@ -1,5 +1,5 @@
 /**
- * /api/v1/openapi.json — versioned alias for /api/openapi.json.
+ * /api/v1/openapi.json, versioned alias for /api/openapi.json.
  *
  * Pass VII (2026-05-05). Companion to /api/v1/{signals,agents,answers,
  * changelog,dataset,pricing}.json. OpenAPI consumers that pin to v1 paths

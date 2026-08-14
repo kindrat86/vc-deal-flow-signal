@@ -40,8 +40,8 @@ export function prevChapter(slug: string): BookChapter | undefined {
 
 /**
  * Convert one of our markdown chapters to safe HTML. We deliberately do NOT
- * use a heavy markdown library — our chapters are written in a constrained
- * dialect (paragraphs, headings 1–3, ordered + unordered lists, fenced code,
+ * use a heavy markdown library, our chapters are written in a constrained
+ * dialect (paragraphs, headings 1-3, ordered + unordered lists, fenced code,
  * inline code, bold, italic, blockquote). Hand-rolling the renderer keeps the
  * runtime dep surface zero and makes the print/PDF generators trivially
  * compatible.
@@ -197,7 +197,7 @@ function escapeAttr(s: string): string {
  */
 export function chapterToPlainText(chapter: BookChapter): string {
   const md = getChapterMarkdown(chapter);
-  // Markdown is already mostly plain — strip just the inline code/bold/italic
+  // Markdown is already mostly plain, strip just the inline code/bold/italic
   // tokens, keep headings prefixed with # so a reader can still see structure.
   return md
     .replace(/`([^`]+)`/g, "$1")

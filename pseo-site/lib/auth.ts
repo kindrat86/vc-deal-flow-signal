@@ -10,12 +10,12 @@ function getBaseSecret(): string {
   return secret;
 }
 
-/** Derived key for session tokens — separate from magic link key for defense in depth. */
+/** Derived key for session tokens, separate from magic link key for defense in depth. */
 function getSessionSecret() {
   return new TextEncoder().encode(`session:${getBaseSecret()}`);
 }
 
-/** Derived key for magic link tokens — separate from session key. */
+/** Derived key for magic link tokens, separate from session key. */
 function getMagicLinkSecret() {
   return new TextEncoder().encode(`magic-link:${getBaseSecret()}`);
 }

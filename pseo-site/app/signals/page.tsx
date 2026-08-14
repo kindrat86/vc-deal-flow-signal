@@ -9,9 +9,9 @@ import SeoCta from "@/components/SeoCta";
 const SITE = "https://signals.gitdealflow.com";
 
 export const metadata: Metadata = {
-  title: "Signal Vocabulary — Every Primitive Defined &amp; Linked",
+  title: "Signal Vocabulary, Every Primitive Defined &amp; Linked",
   description:
-    "The six atomic signal primitives VC Deal Flow Signal computes from public GitHub data — commit velocity, commit velocity change, contributor growth, engineering hiring burst, framework migration, infrastructure buildout. Each links to its formula, decision rule, common pitfall, and the empirical findings that depend on it.",
+    "The six atomic signal primitives VC Deal Flow Signal computes from public GitHub data, commit velocity, commit velocity change, contributor growth, engineering hiring burst, framework migration, infrastructure buildout. Each links to its formula, decision rule, common pitfall, and the empirical findings that depend on it.",
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
   alternates: { canonical: "/signals" },
   openGraph: {
@@ -128,7 +128,7 @@ export default function SignalsIndexPage() {
           ))}
         </ul>
 
-        {/* In-body editorial cross-links — moves PageRank to high-value
+        {/* In-body editorial cross-links, moves PageRank to high-value
             destinations and helps Yandex / Google escape the "low-value"
             classifier on signal-adjacent pages (2026-05-02 audit). */}
         <section className="mt-12 rounded-lg border border-slate-800 bg-slate-900/40 p-6">

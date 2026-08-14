@@ -68,7 +68,7 @@ async function main() {
 
     console.log(`Webhook ${ep.id}  →  ${ep.url}`);
     console.log(`  before: ${[...before].sort().join(", ")}`);
-    console.log(`  to add: ${added.length ? added.join(", ") : "(none — already up to date)"}`);
+    console.log(`  to add: ${added.length ? added.join(", ") : "(none, already up to date)"}`);
 
     if (added.length === 0) continue;
 

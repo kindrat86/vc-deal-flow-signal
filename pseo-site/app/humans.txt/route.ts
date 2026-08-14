@@ -1,5 +1,5 @@
 /**
- * /humans.txt — RFC-style credit page for the humans behind the site.
+ * /humans.txt, RFC-style credit page for the humans behind the site.
  * Lightweight discovery + credibility signal for crawlers and reviewers.
  * Spec: https://humanstxt.org/
  */
@@ -34,7 +34,7 @@ export async function GET() {
   Brand: VC Deal Flow Signal (GitDealFlow). Wikidata Q139376302.
   Methodology: ${SITE}/methodology
   Citations map: ${SITE}/citations
-  License (data): CC BY 4.0 — ${SITE}/api/dataset.jsonl
+  License (data): CC BY 4.0, ${SITE}/api/dataset.jsonl
 
 /* CONTACT */
 

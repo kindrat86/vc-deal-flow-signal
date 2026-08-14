@@ -18,15 +18,15 @@ import {
 
 export const metadata: Metadata = {
   title:
-    "Engineering Acceleration Watch — Weekly Data Index (Not an Accelerator Program)",
+    "Engineering Acceleration Watch, Weekly Data Index (Not an Accelerator Program)",
   description:
-    "A weekly public data feed — not an accelerator program. Every Monday we name 10 startups whose GitHub engineering acceleration crossed the signal threshold. Each pick is graded post-hoc against public fundraise news at 60 and 90 days.",
+    "A weekly public data feed, not an accelerator program. Every Monday we name 10 startups whose GitHub engineering acceleration crossed the signal threshold. Each pick is graded post-hoc against public fundraise news at 60 and 90 days.",
   alternates: { canonical: "/predicted" },
   openGraph: {
     title:
-      "Engineering Acceleration Watch — weekly data index, not an accelerator program",
+      "Engineering Acceleration Watch, weekly data index, not an accelerator program",
     description:
-      "Public weekly data feed. 10 named GitHub-engineering accelerations every Monday. Graded post-hoc versus fundraise news. No application, no cohort, no equity — just the dataset.",
+      "Public weekly data feed. 10 named GitHub-engineering accelerations every Monday. Graded post-hoc versus fundraise news. No application, no cohort, no equity, just the dataset.",
     url: "https://signals.gitdealflow.com/predicted",
     type: "website",
   },
@@ -34,7 +34,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@sipiteno",
     title:
-      "Engineering Acceleration Watch — public bet, graded weekly (not Y Combinator)",
+      "Engineering Acceleration Watch, public bet, graded weekly (not Y Combinator)",
     description:
       "10 named startups every Monday. Public dataset, not an accelerator program. Outcomes graded against fundraise news at 60 and 90 days.",
   },
@@ -73,11 +73,11 @@ export default function PredictedPage() {
     );
   }
 
-  // F4 — top-level ClaimReview blocks (one per pick) per the schema rule
+  // F4, top-level ClaimReview blocks (one per pick) per the schema rule
   // documented in feedback_review_jsonld_must_be_top_level.md: ClaimReview
   // must sit at @graph top-level, never nested under an Article's `review:`.
   // Current-week picks are still pre-grading-window so each emits
-  // alternateName "Unproven" with ratingValue 0 — Google's controlled
+  // alternateName "Unproven" with ratingValue 0, Google's controlled
   // vocabulary for "on the record, not yet adjudicated".
   const claimReviewItems = buildClaimReviewItems(week, {
     skipExcluded: true,
@@ -91,7 +91,7 @@ export default function PredictedPage() {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/predicted#webpage",
         url: "https://signals.gitdealflow.com/predicted",
-        name: "Engineering Acceleration Watch — Weekly Data Index",
+        name: "Engineering Acceleration Watch, Weekly Data Index",
         alternateName: "Acceleration Watch",
         description:
           "Weekly public data feed (not an accelerator program). Names 10 startups whose GitHub engineering acceleration crossed the signal threshold; graded post-hoc against public fundraise news at 60 and 90 days.",
@@ -133,7 +133,7 @@ export default function PredictedPage() {
       },
       {
         "@type": "ItemList",
-        name: `Acceleration Watch — Week of ${fmtLongDate(week.weekStart)}`,
+        name: `Acceleration Watch, Week of ${fmtLongDate(week.weekStart)}`,
         description: `10 named startups whose GitHub engineering acceleration crossed our signal threshold the week of ${fmtLongDate(week.weekStart)}. Grading window closes ${fmtLongDate(week.gradingDueAt)}.`,
         itemListOrder: "https://schema.org/ItemListOrderAscending",
         numberOfItems: week.picks.length,
@@ -175,11 +175,11 @@ export default function PredictedPage() {
             Public bet · Week of {fmtLongDate(week.weekStart)}
           </p>
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
-            Engineering Acceleration Watch — 10 named startups, graded weekly
+            Engineering Acceleration Watch, 10 named startups, graded weekly
           </h1>
           <p className="text-amber-300/90 text-sm leading-relaxed max-w-2xl mb-3">
             <strong>Not an accelerator program.</strong> This is a weekly
-            public data feed. There is no application, no cohort, no equity —
+            public data feed. There is no application, no cohort, no equity -
             just the dataset. (Y Combinator, Techstars, etc. are accelerator
             programs; this is engineering-acceleration as a leading signal.)
           </p>
@@ -238,7 +238,7 @@ export default function PredictedPage() {
                   ? fmtLongDate(score.firstGradingDueAt)
                   : "soon"}
               </span>{" "}
-              — first cohort matures 60 days after publish. Until then, every
+first cohort matures 60 days after publish. Until then, every
               pick is on the record but ungraded. Bookmark this page; we will
               not edit picks once published, only append outcome rows.
             </p>
@@ -300,22 +300,22 @@ export default function PredictedPage() {
 
         <div className="mb-8">
           <ShareBar
-            title={`Acceleration Watch — 10 named startups, week of ${fmtLongDate(week.weekStart)}. Public bet, graded at 60 days.`}
+            title={`Acceleration Watch, 10 named startups, week of ${fmtLongDate(week.weekStart)}. Public bet, graded at 60 days.`}
             url="/predicted"
           />
         </div>
 
-        {/* MAGIC BULLET — Brunson Expert Secrets Ch 13. The single
+        {/* MAGIC BULLET, Brunson Expert Secrets Ch 13. The single
             high-resolution demonstration that the signal works the way
             we say it does. One named startup, one acceleration window,
-            one fundraise outcome — narrated on the page, not buried in
+            one fundraise outcome, narrated on the page, not buried in
             a CSV download. */}
         <section
-          aria-label="The signal in action — one worked example"
+          aria-label="The signal in action, one worked example"
           className="mb-10 rounded-xl border border-amber-500/40 bg-gradient-to-br from-amber-950/20 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-4"
         >
           <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
-            The signal in action — one worked example
+            The signal in action, one worked example
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
             How a 2× contributor spike preceded a Series A by{" "}
@@ -334,7 +334,7 @@ export default function PredictedPage() {
               <span className="text-amber-400 shrink-0 font-bold tabular-nums">D-21</span>
               <span>
                 Contributor count jumps to seven. New repos appear in the
-                org — auth-service, billing-engine, infra-deploys.
+                org, auth-service, billing-engine, infra-deploys.
                 Acceleration percentile crosses the 95th. The signal fires
                 inside our weekly scan.
               </span>
@@ -342,7 +342,7 @@ export default function PredictedPage() {
             <li className="flex gap-3">
               <span className="text-amber-400 shrink-0 font-bold tabular-nums">D-14</span>
               <span>
-                Commit velocity is now ~58/14d — a clean 2.6× over the
+                Commit velocity is now ~58/14d, a clean 2.6× over the
                 14-day baseline. Two of the new contributors are senior
                 engineers from a Series B incumbent (verified via
                 <code className="mx-1 px-1.5 py-0.5 rounded bg-slate-800 text-amber-300 text-xs">git log --author</code>
@@ -360,7 +360,7 @@ export default function PredictedPage() {
             <li className="flex gap-3 pt-1 border-t border-amber-700/30 mt-1">
               <span className="text-emerald-300 shrink-0 font-bold tabular-nums">D 0</span>
               <span className="text-emerald-200">
-                <strong>Series A announced — $4M led by a top-tier fund.</strong>{" "}
+                <strong>Series A announced, $4M led by a top-tier fund.</strong>{" "}
                 The deck circulated to four investors that week. We had
                 surfaced the company on D-31, a full month before the deck
                 existed.
@@ -377,12 +377,12 @@ export default function PredictedPage() {
             >
               SSRN methodology paper
             </a>{" "}
-            — anonymized to protect the founder, but the regression is
+anonymized to protect the founder, but the regression is
             reproducible against the public Zenodo dataset linked from{" "}
             <Link href="/methodology" className="text-amber-300 hover:text-amber-200 underline decoration-dotted">
               /methodology
             </Link>
-            . The lead-time distribution: 21–47 days, IQR, n=219.
+            . The lead-time distribution: 21-47 days, IQR, n=219.
           </p>
         </section>
 
@@ -499,7 +499,7 @@ export default function PredictedPage() {
 
         <div className="mt-12 rounded-xl border border-emerald-500/30 bg-emerald-500/5 p-6 sm:p-8">
           <h2 className="text-gray-100 font-semibold text-lg mb-2">
-            Subscribe — get next Monday&rsquo;s 10
+            Subscribe, get next Monday&rsquo;s 10
           </h2>
           <p className="text-gray-400 text-sm mb-5 max-w-2xl">
             Free Sunday-night digest. Five names from next week&rsquo;s
@@ -523,7 +523,7 @@ export default function PredictedPage() {
               href="/pricing#sector-sweep"
               className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-amber-700/60 bg-amber-950/40 hover:bg-amber-950/60 text-amber-200 text-sm font-medium transition-colors"
             >
-              Commission a Sector Sweep — €1,997
+              Commission a Sector Sweep, €1,997
             </Link>
           </div>
           <DataNerdSignoff variant="compact" className="mt-6" />
@@ -531,7 +531,7 @@ export default function PredictedPage() {
 
         <p className="mt-8 text-xs text-gray-400 text-center">
           This is a data-driven engineering activity watchlist generated from
-          public GitHub data — not investment advice. Naming a company
+          public GitHub data, not investment advice. Naming a company
           indicates its observed engineering activity matches the patterns
           described in our methodology. Outcomes are recorded post-hoc from
           public announcements only. Methodology:{" "}

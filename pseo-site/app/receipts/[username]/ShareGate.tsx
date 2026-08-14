@@ -13,7 +13,7 @@ interface ShareGateProps {
 /**
  * Brunson-style share gate. Default state shows share buttons inline so
  * we don't slow down a hot moment, but also surfaces a one-line email
- * capture box that — if filled — subscribes the visitor to the free
+ * capture box that, if filled, subscribes the visitor to the free
  * Sunday digest. Skipping is allowed (anti-friction). The capture is
  * optional; the share is not paywalled.
  */
@@ -52,7 +52,7 @@ export default function ShareGate({
       setErr(
         error instanceof Error
           ? error.message
-          : "Subscribe failed — share buttons still work below.",
+          : "Subscribe failed, share buttons still work below.",
       );
       setGate("error");
     }
@@ -60,7 +60,7 @@ export default function ShareGate({
 
   return (
     <div className="space-y-3">
-      {/* Share buttons — always visible, never paywalled */}
+      {/* Share buttons, always visible, never paywalled */}
       <div className="flex gap-2">
         <a
           href={twitterShare}
@@ -85,10 +85,10 @@ export default function ShareGate({
         </a>
       </div>
 
-      {/* Capture nudge — invites email but does not block share */}
+      {/* Capture nudge, invites email but does not block share */}
       {gate === "captured" ? (
         <p className="text-emerald-400 text-xs">
-          Subscribed ✓ — Sunday digest lands in 30 minutes.
+          Subscribed ✓, Sunday digest lands in 30 minutes.
         </p>
       ) : (
         <form

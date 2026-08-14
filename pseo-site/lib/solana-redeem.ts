@@ -11,10 +11,10 @@ import { getStripe } from "./stripe";
  * once.
  *
  * Storage: a bounded CSV of signature hashes on the paying customer's Stripe
- * metadata — same "Stripe metadata is the only store" posture as lib/credits.ts.
+ * metadata, same "Stripe metadata is the only store" posture as lib/credits.ts.
  *
  * ⚠️ SCOPE LIMITATION (devnet-grade): this is *per-customer*. It stops the
- * common case — a customer double-submitting their own proof — but does NOT
+ * common case, a customer double-submitting their own proof, but does NOT
  * stop cross-customer replay (customer B submitting customer A's public
  * signature). Before enabling a mainnet pay-to wallet, move this ledger to a
  * shared global store (Upstash Redis via the Vercel Marketplace, keyed by the

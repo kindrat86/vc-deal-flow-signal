@@ -219,7 +219,7 @@ export default async function FromStarsToSeedPage({ params }: PageProps) {
           tldr={c.tldr}
           pageUrl={url}
           asOf={asOf}
-          citeAs={`VC Deal Flow Signal — From Stars to Seed (${url}), retrieved ${asOf}.`}
+          citeAs={`VC Deal Flow Signal, From Stars to Seed (${url}), retrieved ${asOf}.`}
           facts={c.citations}
         />
 
@@ -372,7 +372,7 @@ export default async function FromStarsToSeedPage({ params }: PageProps) {
           </p>
           <p className="text-gray-200 text-sm mb-4">
             VC Deal Flow Signal tracks engineering acceleration weekly across
-            twenty sectors — the same signal shapes that preceded the raise
+            twenty sectors, the same signal shapes that preceded the raise
             above.
           </p>
           <Link

@@ -1,21 +1,21 @@
 /**
- * /.well-known/discover.json — umbrella manifest of every well-known and
+ * /.well-known/discover.json, umbrella manifest of every well-known and
  * root-level discovery surface in one machine-readable doc.
  *
  * Pass VIII (2026-05-05). Net-new AEO/AIO surface. Existing AI agents and
  * retrieval pipelines have to probe ~30 distinct .well-known and root URLs
  * to fully map the agent surface area. This endpoint emits the complete
- * inventory in one fetch — agent-card, openapi, llms.txt, sitemaps, RSS/
+ * inventory in one fetch, agent-card, openapi, llms.txt, sitemaps, RSS/
  * Atom, dataset descriptors, AI-policy, freshness manifest, mcp.json, etc.
  *
- * F2 (2026-05-07) — every Surface now carries a stable `name` (kebab-slug)
+ * F2 (2026-05-07), every Surface now carries a stable `name` (kebab-slug)
  * and canonical API surfaces carry a populated `endpoints[]` array with
  * method+path+description tuples so a fresh agent can map operations in
  * one fetch instead of probing each endpoint. Adds the previously-missing
  * /api/cite/{format}/{slug} formatter surface that was reachable but not
  * advertised in this manifest.
  *
- * F34 (2026-05-07 evening) — endpoints[] now carry RICH method+param
+ * F34 (2026-05-07 evening), endpoints[] now carry RICH method+param
  * descriptors:
  *   - operationId cross-referenced with /api/openapi.json
  *   - parameters[] with name, in (query|path|header|body), type, required,
@@ -257,7 +257,7 @@ const SURFACES: Surface[] = [
     url: `${SITE}/.well-known/agent-card.json`,
     format: "application/json",
     category: "agent",
-    description: "A2A AgentCard — canonical agent descriptor with skills, transports, capabilities",
+    description: "A2A AgentCard, canonical agent descriptor with skills, transports, capabilities",
     endpoints: [
       ep({
         method: "GET",
@@ -265,7 +265,7 @@ const SURFACES: Surface[] = [
         operationId: "getAgentCard",
         summary: "A2A AgentCard",
         description:
-          "Fetch the canonical A2A AgentCard payload — agent identity, skills, supported transports, signing keys.",
+          "Fetch the canonical A2A AgentCard payload, agent identity, skills, supported transports, signing keys.",
         responses: [RESP_200_JSON],
         contentType: "application/json",
         security: ["none"],
@@ -322,7 +322,7 @@ const SURFACES: Surface[] = [
     url: `${SITE}/.well-known/mcp.json`,
     format: "application/json",
     category: "agent",
-    description: "Model Context Protocol discovery manifest — install snippet, tools list",
+    description: "Model Context Protocol discovery manifest, install snippet, tools list",
     endpoints: [
       ep({
         method: "GET",
@@ -330,7 +330,7 @@ const SURFACES: Surface[] = [
         operationId: "getMcpDiscovery",
         summary: "MCP discovery manifest",
         description:
-          "MCP server discovery manifest — protocolVersion, transports, tool list, install snippets for stdio and streamable-http.",
+          "MCP server discovery manifest, protocolVersion, transports, tool list, install snippets for stdio and streamable-http.",
         responses: [RESP_200_JSON],
         contentType: "application/json",
         security: ["none"],
@@ -344,7 +344,7 @@ const SURFACES: Surface[] = [
     url: `${SITE}/agents.json`,
     format: "application/json",
     category: "agent",
-    description: "Root agent toolkit catalog — same body as well-known mirror",
+    description: "Root agent toolkit catalog, same body as well-known mirror",
     endpoints: [
       ep({
         method: "GET",
@@ -422,7 +422,7 @@ const SURFACES: Surface[] = [
     format: "application/json",
     category: "agent",
     description:
-      "Streamable MCP JSON-RPC 2.0 endpoint — 11 free tools + 1 paid (x402 €0.19 USDC)",
+      "Streamable MCP JSON-RPC 2.0 endpoint, 11 free tools + 1 paid (x402 €0.19 USDC)",
     endpoints: [
       ep({
         method: "POST",
@@ -557,7 +557,7 @@ const SURFACES: Surface[] = [
         path: "/api/mcp/rpc",
         operationId: "mcpCallGetSignalsSummary",
         summary: "JSON-RPC tools/call get_signals_summary",
-        description: "High-level signal stats — count, top sectors, last refresh.",
+        description: "High-level signal stats, count, top sectors, last refresh.",
         parameters: [
           {
             name: "name",
@@ -635,7 +635,7 @@ const SURFACES: Surface[] = [
         operationId: "mcpCallGetDeepSignal",
         summary: "JSON-RPC tools/call get_deep_signal (paid, x402)",
         description:
-          "Premium per-startup deep signal. Charged via x402 challenge — first call returns HTTP 402 with payTo wallet, asset, and amount.",
+          "Premium per-startup deep signal. Charged via x402 challenge, first call returns HTTP 402 with payTo wallet, asset, and amount.",
         parameters: [
           {
             name: "name",
@@ -652,7 +652,7 @@ const SURFACES: Surface[] = [
           {
             status: 402,
             description:
-              "x402 payment challenge — body contains payTo, asset, amount, chain. Resubmit with X-PAYMENT header per x402 spec.",
+              "x402 payment challenge, body contains payTo, asset, amount, chain. Resubmit with X-PAYMENT header per x402 spec.",
             contentType: "application/json",
           },
         ],
@@ -684,7 +684,7 @@ const SURFACES: Surface[] = [
             in: "body",
             type: "object",
             required: true,
-            description: "Card payload — title, summary, citation URL, optional tags.",
+            description: "Card payload, title, summary, citation URL, optional tags.",
           },
           {
             name: "userApprovalToken",
@@ -717,7 +717,7 @@ const SURFACES: Surface[] = [
     url: `${SITE}/api/openapi.json`,
     format: "application/json",
     category: "api",
-    description: "OpenAPI 3.1 spec — full API contract with paths, schemas, examples",
+    description: "OpenAPI 3.1 spec, full API contract with paths, schemas, examples",
     endpoints: [
       ep({
         method: "GET",
@@ -802,7 +802,7 @@ const SURFACES: Surface[] = [
     url: `${SITE}/api/v1/pricing.json`,
     format: "application/json",
     category: "api",
-    description: "Machine-readable pricing — six tiers, founding-member rates, guarantees",
+    description: "Machine-readable pricing, six tiers, founding-member rates, guarantees",
     endpoints: [
       ep({
         method: "GET",
@@ -831,7 +831,7 @@ const SURFACES: Surface[] = [
         path: "/api/v1/glossary.json",
         operationId: "getGlossary",
         summary: "Glossary (DefinedTermSet)",
-        description: "Full DefinedTermSet (Schema.org JSON-LD) — 18 controlled-vocabulary terms.",
+        description: "Full DefinedTermSet (Schema.org JSON-LD), 18 controlled-vocabulary terms.",
         responses: [RESP_200_LDJSON],
         contentType: "application/ld+json",
         security: ["none"],
@@ -852,7 +852,7 @@ const SURFACES: Surface[] = [
         path: "/api/v1/faq.json",
         operationId: "getFaq",
         summary: "FAQ (FAQPage)",
-        description: "Full FAQPage (Schema.org JSON-LD) — every Q&A pair anchored to a stable URL.",
+        description: "Full FAQPage (Schema.org JSON-LD), every Q&A pair anchored to a stable URL.",
         responses: [RESP_200_LDJSON],
         contentType: "application/ld+json",
         security: ["none"],
@@ -896,7 +896,7 @@ const SURFACES: Surface[] = [
         operationId: "getSignalsV1",
         summary: "Full signal panel",
         description:
-          "Full ranked signal panel — refreshes weekly Mondays ~09:00 UTC. Same body as /api/signals.json with v1 stability guarantee.",
+          "Full ranked signal panel, refreshes weekly Mondays ~09:00 UTC. Same body as /api/signals.json with v1 stability guarantee.",
         parameters: [PARAM_SECTOR, PARAM_LIMIT, PARAM_OFFSET],
         responses: [RESP_200_JSON],
         contentType: "application/json",
@@ -1004,7 +1004,7 @@ const SURFACES: Surface[] = [
     url: `${SITE}/api/health.json`,
     format: "application/json",
     category: "api",
-    description: "Service health probe — uptime, last data refresh, surface readiness",
+    description: "Service health probe, uptime, last data refresh, surface readiness",
     endpoints: [
       ep({
         method: "GET",
@@ -1123,7 +1123,7 @@ const SURFACES: Surface[] = [
     format: "text/plain",
     category: "api",
     description:
-      "Per-finding citation formatter — emits BibTeX, APA, or MLA for any /research, /answers, or /receipts slug",
+      "Per-finding citation formatter, emits BibTeX, APA, or MLA for any /research, /answers, or /receipts slug",
     endpoints: [
       ep({
         method: "GET",
@@ -1181,37 +1181,37 @@ const SURFACES: Surface[] = [
     ],
   },
   // ── Retrieval / LLM ────────────────────────────────────
-  { name: "llms-index", url: `${SITE}/llms.txt`, format: "text/plain", category: "retrieval", description: "llms.txt — agent index of every canonical page (172KB)" },
+  { name: "llms-index", url: `${SITE}/llms.txt`, format: "text/plain", category: "retrieval", description: "llms.txt, agent index of every canonical page (172KB)" },
   { name: "llms-index-wellknown", url: `${SITE}/.well-known/llms.txt`, format: "text/plain", category: "retrieval", description: "Well-known alias for /llms.txt" },
-  { name: "llms-full", url: `${SITE}/llms-full.txt`, format: "text/plain", category: "retrieval", description: "llms-full.txt — extended canonical content for retrieval pipelines" },
+  { name: "llms-full", url: `${SITE}/llms-full.txt`, format: "text/plain", category: "retrieval", description: "llms-full.txt, extended canonical content for retrieval pipelines" },
   { name: "llms-full-wellknown", url: `${SITE}/.well-known/llms-full.txt`, format: "text/plain", category: "retrieval", description: "Well-known alias for /llms-full.txt" },
-  { name: "qa-jsonl", url: `${SITE}/qa.jsonl`, format: "application/x-ndjson", category: "retrieval", description: "Q&A NDJSON corpus — citation-ready, RAG-friendly" },
+  { name: "qa-jsonl", url: `${SITE}/qa.jsonl`, format: "application/x-ndjson", category: "retrieval", description: "Q&A NDJSON corpus, citation-ready, RAG-friendly" },
   { name: "qa-jsonl-wellknown", url: `${SITE}/.well-known/qa.jsonl`, format: "application/x-ndjson", category: "retrieval", description: "Well-known alias for /qa.jsonl" },
-  { name: "markdown-mirror", url: `${SITE}/md/`, format: "text/markdown", category: "retrieval", description: "Markdown mirror — every page available at /md/{path}" },
+  { name: "markdown-mirror", url: `${SITE}/md/`, format: "text/markdown", category: "retrieval", description: "Markdown mirror, every page available at /md/{path}" },
   // ── Community / movement ───────────────────────────────
   // Brunson Expert Secrets §1 Ch 4 (Mass Movement Vehicle). The Charter
   // Cohort is the member-side ledger that pairs with /wins (startup-side).
   // Pseudonymous handles welcome under the same anonymity rule as the
   // founder. The JSON endpoint mirrors /members hub for agents, the human
   // web UI surfaces the same data with the seat-claim CTA.
-  { name: "members-cohort", url: `${SITE}/api/v1/members.json`, format: "application/json", category: "community", description: "Charter Cohort 2026 — member roster + leaderboard + aggregate stats + 60d/90d grading rules" },
-  { name: "members-hub", url: `${SITE}/members`, format: "text/html", category: "community", description: "Charter Cohort 2026 hub — 25-seat counter, archetype templates, claim-a-seat CTA" },
+  { name: "members-cohort", url: `${SITE}/api/v1/members.json`, format: "application/json", category: "community", description: "Charter Cohort 2026, member roster + leaderboard + aggregate stats + 60d/90d grading rules" },
+  { name: "members-hub", url: `${SITE}/members`, format: "text/html", category: "community", description: "Charter Cohort 2026 hub, 25-seat counter, archetype templates, claim-a-seat CTA" },
   { name: "members-leaderboard", url: `${SITE}/members/leaderboard`, format: "text/html", category: "community", description: "Public ranked roster of Charter Cohort members by 60d/90d hits" },
-  { name: "members-apply", url: `${SITE}/members/join`, format: "text/html", category: "community", description: "Charter seat application form — pseudonymous handles welcome, 48h written review" },
+  { name: "members-apply", url: `${SITE}/members/join`, format: "text/html", category: "community", description: "Charter seat application form, pseudonymous handles welcome, 48h written review" },
   // ── Affiliate program (Letterman/Affiliate-Army Traffic Ch 15+17) ─────
-  { name: "affiliates-program", url: `${SITE}/api/v1/affiliates.json`, format: "application/json", category: "community", description: "Affiliate program — terms (20% lifetime, €399/Sweep, €19.40/mo/Insider, 60-day cookie), pseudonymous top-10 leaderboard, 6 swipe-kit content templates, prohibited channels" },
-  { name: "affiliates-hub", url: `${SITE}/affiliates`, format: "text/html", category: "community", description: "Affiliate program landing — commission terms, swipe kit, signup at gitdealflow.refgrow.com" },
-  { name: "affiliates-leaderboard", url: `${SITE}/affiliates/leaderboard`, format: "text/html", category: "community", description: "Public anonymized monthly leaderboard — top 10 affiliates by lifetime commission with tier badges" },
-  { name: "affiliates-funnel-hack", url: `${SITE}/affiliates/funnel-hack`, format: "text/html", category: "community", description: "Sneaky Affiliate Funnel — 6 clone-ready content templates (tweet thread, LinkedIn post, blog post, newsletter mention, podcast script, 3-email sequence) using the free book as bait" },
-  { name: "affiliates-top-partners", url: `${SITE}/affiliates/top-partners`, format: "text/html", category: "community", description: "Dream-50 publisher roster — 50 named newsletter writers, podcast hosts, communities with outreach status and pitch templates" },
+  { name: "affiliates-program", url: `${SITE}/api/v1/affiliates.json`, format: "application/json", category: "community", description: "Affiliate program, terms (20% lifetime, €399/Sweep, €19.40/mo/Insider, 60-day cookie), pseudonymous top-10 leaderboard, 6 swipe-kit content templates, prohibited channels" },
+  { name: "affiliates-hub", url: `${SITE}/affiliates`, format: "text/html", category: "community", description: "Affiliate program landing, commission terms, swipe kit, signup at gitdealflow.refgrow.com" },
+  { name: "affiliates-leaderboard", url: `${SITE}/affiliates/leaderboard`, format: "text/html", category: "community", description: "Public anonymized monthly leaderboard, top 10 affiliates by lifetime commission with tier badges" },
+  { name: "affiliates-funnel-hack", url: `${SITE}/affiliates/funnel-hack`, format: "text/html", category: "community", description: "Sneaky Affiliate Funnel, 6 clone-ready content templates (tweet thread, LinkedIn post, blog post, newsletter mention, podcast script, 3-email sequence) using the free book as bait" },
+  { name: "affiliates-top-partners", url: `${SITE}/affiliates/top-partners`, format: "text/html", category: "community", description: "Dream-50 publisher roster, 50 named newsletter writers, podcast hosts, communities with outreach status and pitch templates" },
   // ── Brand mascot (Traffic Ch 7+8 anonymity-respecting social) ───────
-  { name: "social-mascot-bible", url: `${SITE}/api/v1/social-mascot.json`, format: "application/json", category: "community", description: "Data Nerd mascot bible — character voice, content pillars, posting cadence, hashtag bank, sample 5-post batch. Founder anonymity rule preserved via synthetic mascot." },
-  { name: "social-mascot-hub", url: `${SITE}/data-nerd/social`, format: "text/html", category: "community", description: "Public character bible for the GitDealFlow social mascot — channels (Twitter/IG/LinkedIn/FB/TikTok/YouTube), voice rules, pillar mix, posting cadence, sample batch" },
-  { name: "data-nerd-hub", url: `${SITE}/data-nerd`, format: "text/html", category: "community", description: "Data Nerd mascot hub — the character that fronts every video, podcast segment, and social post" },
-  // ── Partner / co-marketing tracks (Traffic Ch 13 — Other Initiatives) ──
-  { name: "partners-hub", url: `${SITE}/partners`, format: "text/html", category: "community", description: "Six concrete partnership tracks for funds, accelerators, newsletters, and platforms — embed scores, co-publish a Sector Sweep, white-label MCP, cite the methodology, quarterly co-host webinar, affiliate program. Founder anonymity preserved across every track." },
+  { name: "social-mascot-bible", url: `${SITE}/api/v1/social-mascot.json`, format: "application/json", category: "community", description: "Data Nerd mascot bible, character voice, content pillars, posting cadence, hashtag bank, sample 5-post batch. Founder anonymity rule preserved via synthetic mascot." },
+  { name: "social-mascot-hub", url: `${SITE}/data-nerd/social`, format: "text/html", category: "community", description: "Public character bible for the GitDealFlow social mascot, channels (Twitter/IG/LinkedIn/FB/TikTok/YouTube), voice rules, pillar mix, posting cadence, sample batch" },
+  { name: "data-nerd-hub", url: `${SITE}/data-nerd`, format: "text/html", category: "community", description: "Data Nerd mascot hub, the character that fronts every video, podcast segment, and social post" },
+  // ── Partner / co-marketing tracks (Traffic Ch 13, Other Initiatives) ──
+  { name: "partners-hub", url: `${SITE}/partners`, format: "text/html", category: "community", description: "Six concrete partnership tracks for funds, accelerators, newsletters, and platforms, embed scores, co-publish a Sector Sweep, white-label MCP, cite the methodology, quarterly co-host webinar, affiliate program. Founder anonymity preserved across every track." },
   // ── Policy / governance ────────────────────────────────
-  { name: "ai-policy", url: `${SITE}/.well-known/ai-policy.json`, format: "application/json", category: "policy", description: "Machine-readable AI access policy — per-agent allow/disallow + use modes" },
+  { name: "ai-policy", url: `${SITE}/.well-known/ai-policy.json`, format: "application/json", category: "policy", description: "Machine-readable AI access policy, per-agent allow/disallow + use modes" },
   { name: "ai-policy-shortname", url: `${SITE}/.well-known/ai.json`, format: "application/json", category: "policy", description: "Short-name alias for ai-policy.json" },
   { name: "ai-policy-text", url: `${SITE}/ai.txt`, format: "text/plain", category: "policy", description: "Human-readable AI access policy (analog to robots.txt)" },
   { name: "ai-policy-text-wellknown", url: `${SITE}/.well-known/ai.txt`, format: "text/plain", category: "policy", description: "Well-known alias for /ai.txt" },
@@ -1219,35 +1219,35 @@ const SURFACES: Surface[] = [
   { name: "security-policy", url: `${SITE}/.well-known/security-policy.json`, format: "application/json", category: "policy", description: "Machine-readable security disclosure policy" },
   { name: "security-txt-root", url: `${SITE}/security.txt`, format: "text/plain", category: "policy", description: "Root alias for /.well-known/security.txt" },
   { name: "robots", url: `${SITE}/robots.txt`, format: "text/plain", category: "policy", description: "Crawler access rules" },
-  { name: "tdm-reservation", url: `${SITE}/.well-known/tdm-reservation.json`, format: "application/json", category: "policy", description: "W3C TDM Reservation Protocol — machine-readable opt-in for text-and-data-mining (EU DSA / Copyright Directive Article 4)" },
-  { name: "ai-content-license", url: `${SITE}/.well-known/ai-content-license.json`, format: "application/json", category: "policy", description: "Machine-readable AI training/inference/citation license — bridges CC BY 4.0 with per-use-mode permissions and exclusions" },
-  { name: "gpc", url: `${SITE}/.well-known/gpc.json`, format: "application/json", category: "policy", description: "Global Privacy Control descriptor — publisher honors the Sec-GPC: 1 signal" },
+  { name: "tdm-reservation", url: `${SITE}/.well-known/tdm-reservation.json`, format: "application/json", category: "policy", description: "W3C TDM Reservation Protocol, machine-readable opt-in for text-and-data-mining (EU DSA / Copyright Directive Article 4)" },
+  { name: "ai-content-license", url: `${SITE}/.well-known/ai-content-license.json`, format: "application/json", category: "policy", description: "Machine-readable AI training/inference/citation license, bridges CC BY 4.0 with per-use-mode permissions and exclusions" },
+  { name: "gpc", url: `${SITE}/.well-known/gpc.json`, format: "application/json", category: "policy", description: "Global Privacy Control descriptor, publisher honors the Sec-GPC: 1 signal" },
   // ── Sitemaps ──────────────────────────────────────────
-  { name: "sitemap-index", url: `${SITE}/sitemap.xml`, format: "application/xml", category: "sitemap", description: "Root sitemapindex — points to 5 sub-sitemaps + news + i18n + images + videos" },
+  { name: "sitemap-index", url: `${SITE}/sitemap.xml`, format: "application/xml", category: "sitemap", description: "Root sitemapindex, points to 5 sub-sitemaps + news + i18n + images + videos" },
   { name: "sitemap-wellknown", url: `${SITE}/.well-known/sitemap.xml`, format: "application/xml", category: "sitemap", description: "Well-known alias for /sitemap.xml" },
   { name: "sitemap-text", url: `${SITE}/sitemap.txt`, format: "text/plain", category: "sitemap", description: "Plain-text sitemap (one URL per line)" },
   { name: "sitemap-i18n", url: `${SITE}/sitemap-i18n.xml`, format: "application/xml", category: "sitemap", description: "i18n sitemap with hreflang annotations across 12 locales" },
   { name: "sitemap-images", url: `${SITE}/sitemap-images.xml`, format: "application/xml", category: "sitemap", description: "Image sitemap with captions" },
-  { name: "sitemap-videos", url: `${SITE}/sitemap-videos.xml`, format: "application/xml", category: "sitemap", description: "Google Video sitemap — every VideoObject (YouTube + self-hosted) with thumbnail_loc, player_loc, duration, chapters, family-friendly + region whitelist" },
-  { name: "videos-catalog", url: `${SITE}/api/v1/videos.json`, format: "application/ld+json", category: "api", description: "JSON-LD video catalog — every video with Clip[] chapters, transcripts, SeekToAction targets. Mirrors what /watch/[slug] HTML pages embed; agent-friendly shape." },
+  { name: "sitemap-videos", url: `${SITE}/sitemap-videos.xml`, format: "application/xml", category: "sitemap", description: "Google Video sitemap, every VideoObject (YouTube + self-hosted) with thumbnail_loc, player_loc, duration, chapters, family-friendly + region whitelist" },
+  { name: "videos-catalog", url: `${SITE}/api/v1/videos.json`, format: "application/ld+json", category: "api", description: "JSON-LD video catalog, every video with Clip[] chapters, transcripts, SeekToAction targets. Mirrors what /watch/[slug] HTML pages embed; agent-friendly shape." },
   { name: "videos-catalog-stripped", url: `${SITE}/api/v1/videos`, format: "application/ld+json", category: "api", description: "Extension-stripped alias for /api/v1/videos.json (matches F37 pattern)." },
   { name: "video-transcripts", url: `${SITE}/api/v1/transcripts/{slug}`, format: "text/vtt", category: "api", description: "WebVTT transcript per video, slug-keyed. Content-negotiates to text/plain when Accept asks. Cues align to chapter timing from content/videos.ts." },
-  { name: "watch-pages", url: `${SITE}/watch`, format: "text/html", category: "human", description: "Human watch hub — links to every /watch/[slug] page with chapters + transcript. The silent-canvas /watch demo plus three synthetic-voice videos on YouTube and the self-hosted MCP screencast." },
+  { name: "watch-pages", url: `${SITE}/watch`, format: "text/html", category: "human", description: "Human watch hub, links to every /watch/[slug] page with chapters + transcript. The silent-canvas /watch demo plus three synthetic-voice videos on YouTube and the self-hosted MCP screencast." },
   { name: "sitemap-news", url: `${SITE}/news-sitemap.xml`, format: "application/xml", category: "sitemap", description: "Google News sitemap (recent posts only)" },
   // ── Feeds ─────────────────────────────────────────────
   { name: "rss", url: `${SITE}/rss.xml`, format: "application/rss+xml", category: "feed", description: "RSS 2.0 feed of recent posts" },
   { name: "atom", url: `${SITE}/atom.xml`, format: "application/atom+xml", category: "feed", description: "Atom 1.0 feed of recent posts" },
   // ── Dataset / freshness ───────────────────────────────
-  { name: "dataset-descriptor", url: `${SITE}/.well-known/dataset.json`, format: "application/ld+json", category: "schema", description: "DCAT 3 dataset descriptor — distributions, license, cadence" },
+  { name: "dataset-descriptor", url: `${SITE}/.well-known/dataset.json`, format: "application/ld+json", category: "schema", description: "DCAT 3 dataset descriptor, distributions, license, cadence" },
   { name: "dataset-descriptor-root", url: `${SITE}/dataset.json`, format: "application/ld+json", category: "schema", description: "Root alias for /.well-known/dataset.json" },
-  { name: "freshness", url: `${SITE}/.well-known/freshness.json`, format: "application/ld+json", category: "schema", description: "DataFeed manifest — last modified timestamp, refresh cadence per surface" },
+  { name: "freshness", url: `${SITE}/.well-known/freshness.json`, format: "application/ld+json", category: "schema", description: "DataFeed manifest, last modified timestamp, refresh cadence per surface" },
   // ── Identity / federation ─────────────────────────────
-  { name: "did-configuration", url: `${SITE}/.well-known/did-configuration.json`, format: "application/json", category: "identity", description: "DID Configuration — verifiable identity binding" },
-  // Brunson Audit V8 (2026-05-09) — Wikidata Knowledge Panel claim. Closes
+  { name: "did-configuration", url: `${SITE}/.well-known/did-configuration.json`, format: "application/json", category: "identity", description: "DID Configuration, verifiable identity binding" },
+  // Brunson Audit V8 (2026-05-09), Wikidata Knowledge Panel claim. Closes
   // Traffic Secrets §2 Ch 9 (Google) +4-pt gap on Q139376302 entity claim.
-  { name: "wikidata-claim", url: `${SITE}/.well-known/wikidata.json`, format: "application/json", category: "identity", description: "Wikidata Knowledge Panel claim manifest — bidirectional binding between this domain and Wikidata entity Q139376302, with full P-code property table, attestation-method ledger, and SPARQL verification queries." },
-  { name: "wikidata-claim-page", url: `${SITE}/wikidata`, format: "text/html", category: "human", description: "Human-readable Knowledge Panel claim landing — mirror of the well-known manifest with copy-paste SPARQL queries and the full P-code property table." },
-  { name: "entities-json", url: `${SITE}/entities.json`, format: "application/json", category: "identity", description: "Flat NER-friendly entity manifest — people, organizations, software products, datasets, publications. One fetch surfaces the full named-entity inventory in plain JSON for spaCy/Hugging Face/lightweight retrieval consumers that don't parse JSON-LD." },
+  { name: "wikidata-claim", url: `${SITE}/.well-known/wikidata.json`, format: "application/json", category: "identity", description: "Wikidata Knowledge Panel claim manifest, bidirectional binding between this domain and Wikidata entity Q139376302, with full P-code property table, attestation-method ledger, and SPARQL verification queries." },
+  { name: "wikidata-claim-page", url: `${SITE}/wikidata`, format: "text/html", category: "human", description: "Human-readable Knowledge Panel claim landing, mirror of the well-known manifest with copy-paste SPARQL queries and the full P-code property table." },
+  { name: "entities-json", url: `${SITE}/entities.json`, format: "application/json", category: "identity", description: "Flat NER-friendly entity manifest, people, organizations, software products, datasets, publications. One fetch surfaces the full named-entity inventory in plain JSON for spaCy/Hugging Face/lightweight retrieval consumers that don't parse JSON-LD." },
   {
     name: "webfinger",
     url: `${SITE}/.well-known/webfinger`,
@@ -1296,28 +1296,28 @@ const SURFACES: Surface[] = [
   { name: "nodeinfo", url: `${SITE}/.well-known/nodeinfo`, format: "application/json", category: "identity", description: "NodeInfo discovery for Fediverse compatibility" },
   { name: "oauth-authorization-server", url: `${SITE}/.well-known/oauth-authorization-server`, format: "application/json", category: "identity", description: "OAuth 2.0 authorization server metadata (RFC 8414)" },
   { name: "openai-search", url: `${SITE}/.well-known/openai-search.json`, format: "application/json", category: "schema", description: "OpenAI search policy + agent-card pointer" },
-  { name: "model-descriptor", url: `${SITE}/.well-known/model.json`, format: "application/json", category: "schema", description: "Model.json descriptor — capabilities, sources, license" },
+  { name: "model-descriptor", url: `${SITE}/.well-known/model.json`, format: "application/json", category: "schema", description: "Model.json descriptor, capabilities, sources, license" },
   { name: "compliance", url: `${SITE}/.well-known/compliance.json`, format: "application/json", category: "schema", description: "Machine-readable compliance posture" },
   // ── Human-readable ─────────────────────────────────────
-  { name: "humans-wellknown", url: `${SITE}/.well-known/humans.txt`, format: "text/plain", category: "human", description: "Human attribution — author, ORCID, contact" },
+  { name: "humans-wellknown", url: `${SITE}/.well-known/humans.txt`, format: "text/plain", category: "human", description: "Human attribution, author, ORCID, contact" },
   { name: "humans-root", url: `${SITE}/humans.txt`, format: "text/plain", category: "human", description: "Root alias for /.well-known/humans.txt" },
   // ── F38 Trust Center surfaces (2026-05-08) ─────────────
   // Net-new TrustSEO push: enterprise-procurement, AI-agent compliance, and
   // GDPR controllers all probe this set first. Each pair is HTML page +
   // machine-readable mirror under /.well-known/.
-  { name: "trust-center", url: `${SITE}/trust`, format: "text/html", category: "policy", description: "Trust Center — single page linking every privacy/security/compliance/transparency surface" },
-  { name: "privacy-policy", url: `${SITE}/privacy`, format: "text/html", category: "policy", description: "Privacy Policy — what we collect, retention, GDPR/CCPA rights, subprocessor pointer" },
-  { name: "terms-of-service", url: `${SITE}/terms`, format: "text/html", category: "policy", description: "Terms of Service — license, acceptable use, paid-tier billing, liability cap" },
-  { name: "security-overview", url: `${SITE}/security`, format: "text/html", category: "policy", description: "Security Overview — TLS, email auth, vuln-disclosure entry point" },
-  { name: "dpa-html", url: `${SITE}/dpa`, format: "text/html", category: "policy", description: "Data Processing Agreement (GDPR Art. 28) — counter-signed PDF on request" },
+  { name: "trust-center", url: `${SITE}/trust`, format: "text/html", category: "policy", description: "Trust Center, single page linking every privacy/security/compliance/transparency surface" },
+  { name: "privacy-policy", url: `${SITE}/privacy`, format: "text/html", category: "policy", description: "Privacy Policy, what we collect, retention, GDPR/CCPA rights, subprocessor pointer" },
+  { name: "terms-of-service", url: `${SITE}/terms`, format: "text/html", category: "policy", description: "Terms of Service, license, acceptable use, paid-tier billing, liability cap" },
+  { name: "security-overview", url: `${SITE}/security`, format: "text/html", category: "policy", description: "Security Overview, TLS, email auth, vuln-disclosure entry point" },
+  { name: "dpa-html", url: `${SITE}/dpa`, format: "text/html", category: "policy", description: "Data Processing Agreement (GDPR Art. 28), counter-signed PDF on request" },
   { name: "dpa-wellknown", url: `${SITE}/.well-known/dpa.json`, format: "application/json", category: "policy", description: "DPA pointer + SCCs metadata + processing scope (machine-readable)" },
-  { name: "transparency-html", url: `${SITE}/transparency`, format: "text/html", category: "policy", description: "Annual Transparency Report — gov data requests, takedowns, breaches; warrant canary" },
-  { name: "transparency-wellknown", url: `${SITE}/.well-known/transparency.json`, format: "application/json", category: "policy", description: "Transparency report machine-readable — yearly figures + standing policies" },
-  { name: "disclosure-html", url: `${SITE}/disclosure`, format: "text/html", category: "policy", description: "Coordinated Vulnerability Disclosure — disclose.io core terms, scope, SLAs" },
-  { name: "disclosure-wellknown", url: `${SITE}/.well-known/disclosure.json`, format: "application/json", category: "policy", description: "Disclosure policy machine-readable — disclose.io fields + scope + SLAs" },
-  { name: "subprocessors-html", url: `${SITE}/subprocessors`, format: "text/html", category: "policy", description: "Subprocessor list — Stripe, Vercel, Resend, Hetzner/PocketBase, PostHog, GitHub, Cloudflare, Anthropic, Coinbase" },
-  { name: "subprocessors-wellknown", url: `${SITE}/.well-known/subprocessors.json`, format: "application/json", category: "policy", description: "Subprocessor registry machine-readable — roles, regions, certifications, DPAs" },
-  { name: "mta-sts-policy", url: `${SITE}/.well-known/mta-sts.txt`, format: "text/plain", category: "policy", description: "RFC 8461 MTA-STS — inbound mail must use TLS to advertised MX hosts" },
+  { name: "transparency-html", url: `${SITE}/transparency`, format: "text/html", category: "policy", description: "Annual Transparency Report, gov data requests, takedowns, breaches; warrant canary" },
+  { name: "transparency-wellknown", url: `${SITE}/.well-known/transparency.json`, format: "application/json", category: "policy", description: "Transparency report machine-readable, yearly figures + standing policies" },
+  { name: "disclosure-html", url: `${SITE}/disclosure`, format: "text/html", category: "policy", description: "Coordinated Vulnerability Disclosure, disclose.io core terms, scope, SLAs" },
+  { name: "disclosure-wellknown", url: `${SITE}/.well-known/disclosure.json`, format: "application/json", category: "policy", description: "Disclosure policy machine-readable, disclose.io fields + scope + SLAs" },
+  { name: "subprocessors-html", url: `${SITE}/subprocessors`, format: "text/html", category: "policy", description: "Subprocessor list, Stripe, Vercel, Resend, Hetzner/PocketBase, PostHog, GitHub, Cloudflare, Anthropic, Coinbase" },
+  { name: "subprocessors-wellknown", url: `${SITE}/.well-known/subprocessors.json`, format: "application/json", category: "policy", description: "Subprocessor registry machine-readable, roles, regions, certifications, DPAs" },
+  { name: "mta-sts-policy", url: `${SITE}/.well-known/mta-sts.txt`, format: "text/plain", category: "policy", description: "RFC 8461 MTA-STS, inbound mail must use TLS to advertised MX hosts" },
   { name: "dnt-policy", url: `${SITE}/.well-known/dnt-policy.txt`, format: "text/plain", category: "policy", description: "EFF Do-Not-Track Policy v1.0 compliance statement" },
 ];
 
@@ -1359,7 +1359,7 @@ export async function GET() {
       "@context": "https://schema.org",
       "@type": "DataCatalog",
       "@id": `${SITE}/.well-known/discover.json`,
-      name: "VC Deal Flow Signal — Discovery Manifest",
+      name: "VC Deal Flow Signal, Discovery Manifest",
       description:
         "Umbrella manifest of every well-known, root-level, and /api/v1/* surface this site exposes for AI agents, retrieval pipelines, and machine consumers. Each surface carries a stable `name` (kebab-slug); canonical API surfaces carry a populated `endpoints[]` array with rich method+param descriptors (operationId, parameters, responses, security, x-mcp-tool cross-references, x402 payment metadata) so a fresh agent can map operations in a single fetch instead of probing each endpoint or pulling the full OpenAPI.",
       contractVersion: CONTRACT_VERSION,

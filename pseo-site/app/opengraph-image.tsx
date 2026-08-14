@@ -3,7 +3,7 @@ import { getAllSectors, getCurrentPeriod } from "@/lib/data";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "VC Deal Flow Signal — Startup Engineering Acceleration Tracker";
+export const alt = "VC Deal Flow Signal, Startup Engineering Acceleration Tracker";
 
 export default async function OGImage() {
   const sectors = getAllSectors();

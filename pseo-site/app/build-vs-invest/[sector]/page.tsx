@@ -41,7 +41,7 @@ export async function generateMetadata({
   if (!entry) return {};
 
   const meta = QUADRANT_META[entry.quadrant];
-  const title = `${entry.name}: build it or fund it? — ${meta.short} quadrant`;
+  const title = `${entry.name}: build it or fund it?, ${meta.short} quadrant`;
   const description = entry.headline;
 
   return {
@@ -180,7 +180,7 @@ function buildJsonLd(entry: BuildVsInvestSector, lastModifiedIso: string) {
           {
             "@type": "ListItem",
             position: 3,
-            name: `${entry.name} — ${meta.short} quadrant`,
+            name: `${entry.name}, ${meta.short} quadrant`,
             item: url,
           },
         ],
@@ -196,7 +196,7 @@ function buildJsonLd(entry: BuildVsInvestSector, lastModifiedIso: string) {
       {
         "@type": "Claim",
         text: entry.headline,
-        about: `${entry.name} — build-vs-invest verdict`,
+        about: `${entry.name}, build-vs-invest verdict`,
         author: DATA_NERD_AUTHOR_REF,
         firstAppearance: {
           "@type": "CreativeWork",
@@ -225,7 +225,7 @@ export default async function BuildVsInvestSectorPage({ params }: PageProps) {
   const url = `${SITE}/build-vs-invest/${sector}`;
 
   // Link to the live sector roster if the slug matches the canonical sector
-  // taxonomy (it should — see content/build-vs-invest.ts file header).
+  // taxonomy (it should, see content/build-vs-invest.ts file header).
   const sectors = getAllSectors();
   const period = getCurrentPeriod();
   const liveSector = sectors.find((s) => s.slug === entry.slug);
@@ -235,7 +235,7 @@ export default async function BuildVsInvestSectorPage({ params }: PageProps) {
     ? `${liveSector.slug}-${period.slug}`
     : null;
 
-  // Sibling sectors in the same quadrant — for cross-linking.
+  // Sibling sectors in the same quadrant, for cross-linking.
   const siblings = buildVsInvestSectors
     .filter((s) => s.quadrant === entry.quadrant && s.slug !== entry.slug)
     .slice(0, 5);
@@ -338,14 +338,14 @@ export default async function BuildVsInvestSectorPage({ params }: PageProps) {
           className="max-w-3xl mb-8 rounded-lg border border-slate-800 bg-slate-900/60 p-4"
         >
           <p className="text-xs font-semibold text-sky-400 uppercase tracking-wider mb-2">
-            TL;DR — {entry.name}
+            TL;DR, {entry.name}
           </p>
           <p className="text-gray-300 text-sm leading-relaxed">
             {entry.headline}
           </p>
           <p className="mt-2 text-gray-400 text-xs">
             Quadrant: <strong className="text-gray-200">{meta.label}</strong>
-            {" "}— {meta.description}. Data refreshed weekly.
+            {" "}, {meta.description}. Data refreshed weekly.
           </p>
         </section>
 
@@ -620,7 +620,7 @@ export default async function BuildVsInvestSectorPage({ params }: PageProps) {
             See the full matrix.
           </h2>
           <p className="text-gray-400 text-sm leading-relaxed">
-            Every sector we track lives somewhere on the 2×2 — the index page
+            Every sector we track lives somewhere on the 2×2, the index page
             groups all 20 verdicts in one place.
           </p>
           <div className="flex flex-col sm:flex-row gap-3">
@@ -639,7 +639,7 @@ export default async function BuildVsInvestSectorPage({ params }: PageProps) {
           </div>
         </section>
 
-        {/* Escalation ladder — for the reader who's already decided to act */}
+        {/* Escalation ladder, for the reader who's already decided to act */}
         <section
           aria-label="Go deeper on this sector"
           className="rounded-xl border border-sky-700/30 bg-sky-950/10 p-5 sm:p-6 space-y-5"
@@ -672,7 +672,7 @@ export default async function BuildVsInvestSectorPage({ params }: PageProps) {
               </div>
               <p className="text-gray-400 text-xs leading-relaxed flex-1">
                 One sector, one teardown, one sitting. The same read your
-                analyst would spend an afternoon on — who&rsquo;s shipping like
+                analyst would spend an afternoon on, who&rsquo;s shipping like
                 they&rsquo;re about to raise, and who just looks busy. Cheaper
                 than the coffee you&rsquo;d buy to ask around.
               </p>
@@ -680,7 +680,7 @@ export default async function BuildVsInvestSectorPage({ params }: PageProps) {
                 href="https://gitdealflow.com/firstlook"
                 className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-slate-800 hover:bg-slate-700 text-gray-100 font-semibold text-sm transition-colors"
               >
-                Test one sector — €7 →
+                Test one sector, €7 →
               </Link>
             </div>
 
@@ -694,7 +694,7 @@ export default async function BuildVsInvestSectorPage({ params }: PageProps) {
                 </p>
               </div>
               <p className="text-gray-400 text-xs leading-relaxed flex-1">
-                The standing dashboard across every sector we track — so the
+                The standing dashboard across every sector we track, so the
                 team that quietly doubled overnight lands in front of you, not
                 in front of the partner who beat you to the term sheet. The deck
                 lags the work by 21 to 47 days; this is where you spend that
@@ -704,7 +704,7 @@ export default async function BuildVsInvestSectorPage({ params }: PageProps) {
                 href="https://gitdealflow.com/dashboard"
                 className="inline-flex items-center justify-center gap-2 px-4 py-2 rounded-lg bg-signal-500 hover:bg-signal-400 text-slate-950 font-bold text-sm transition-colors"
               >
-                Get the dashboard — €49/mo →
+                Get the dashboard, €49/mo →
               </Link>
             </div>
           </div>

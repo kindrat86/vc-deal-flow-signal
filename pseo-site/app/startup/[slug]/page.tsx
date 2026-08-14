@@ -34,7 +34,7 @@ export async function generateMetadata({
   if (!profile) return {};
 
   const latest = profile.history[0];
-  const title = `${profile.name} Engineering Signal — GitHub Activity & Acceleration`;
+  const title = `${profile.name} Engineering Signal, GitHub Activity & Acceleration`;
   const description = `${profile.name} engineering acceleration tracked by VC Deal Flow Signal. ${latest.commitVelocityChange} commit velocity change, ${latest.contributors} contributors, signal type: ${latest.signalType}.${profile.description ? ' ' + profile.description.replace(/<[^>]+>/g, '').trim().substring(0, 160 - 120 - 5) : ''}`.substring(0, 152).trim() + '...';
 
   // Signal type description for OG
@@ -76,7 +76,7 @@ export async function generateMetadata({
     },
     openGraph: {
       title,
-      description: `${profile.name} — ${signalDesc}. ${latest.commitVelocityChange} commit velocity, ${latest.signalType} signal.`,
+      description: `${profile.name}, ${signalDesc}. ${latest.commitVelocityChange} commit velocity, ${latest.signalType} signal.`,
       type: "article",
       url: `/startup/${slug}`,
       tags: discoverTags,
@@ -132,7 +132,7 @@ export default async function StartupPage({ params }: PageProps) {
     Unknown: "Not specified",
   };
   // Curiosity-gate projections are computed inside <CuriosityGate/> from this
-  // org's real signal (lib/projection.ts) — kept DRY with the list templates.
+  // org's real signal (lib/projection.ts), kept DRY with the list templates.
   const trackedCount = getAllStartupSlugs().length;
 
   const geoLabel = geoNames[profile.latestGeography] || profile.latestGeography;
@@ -174,7 +174,7 @@ export default async function StartupPage({ params }: PageProps) {
         "@type": "WebPage",
         "@id": `https://signals.gitdealflow.com/startup/${slug}#webpage`,
         url: `https://signals.gitdealflow.com/startup/${slug}`,
-        name: `${profile.name} Engineering Signal — GitHub Activity & Acceleration`,
+        name: `${profile.name} Engineering Signal, GitHub Activity & Acceleration`,
         description: profile.description || `${profile.name} engineering acceleration data from VC Deal Flow Signal.`,
         isPartOf: {
           "@id": "https://signals.gitdealflow.com/#website",
@@ -193,7 +193,7 @@ export default async function StartupPage({ params }: PageProps) {
       {
         "@type": "Article",
         "@id": `https://signals.gitdealflow.com/startup/${slug}#article`,
-        headline: `${profile.name} Engineering Signal — GitHub Activity & Acceleration`,
+        headline: `${profile.name} Engineering Signal, GitHub Activity & Acceleration`,
         description: profile.description,
         image: {
           "@type": "ImageObject",
@@ -400,7 +400,7 @@ export default async function StartupPage({ params }: PageProps) {
         <section className="mb-8" aria-label="Key takeaway">
           <div className="rounded-lg border border-sky-900/50 bg-sky-950/30 p-5">
             <p className="text-xs font-medium text-sky-400 uppercase tracking-wider mb-2">
-              Current Signal — {latest.periodName}
+              Current Signal, {latest.periodName}
             </p>
             <p className="text-gray-300 text-sm leading-relaxed">
               {profile.name} shows {latest.commitVelocityChange} commit velocity
@@ -416,8 +416,8 @@ export default async function StartupPage({ params }: PageProps) {
               <dfn className="not-italic font-medium text-gray-300">
                 Engineering acceleration
               </dfn>{" "}
-              is a sustained rise in a startup&apos;s public GitHub output —
-              commits, contributors, new repositories — relative to its own
+              is a sustained rise in a startup&apos;s public GitHub output -
+              commits, contributors, new repositories, relative to its own
               baseline. It is a quantitative signal computed from public data,
               unrelated to accelerator programs.
             </p>
@@ -436,7 +436,7 @@ export default async function StartupPage({ params }: PageProps) {
         {/* Current metrics */}
         <section className="mb-10" aria-label="Current metrics">
           <h2 className="text-lg font-semibold text-gray-100 mb-4">
-            Engineering Metrics — {latest.periodName}
+            Engineering Metrics, {latest.periodName}
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
             <div className="rounded-lg border border-slate-800 bg-slate-900 p-4">
@@ -529,10 +529,10 @@ export default async function StartupPage({ params }: PageProps) {
                     <p className="text-gray-400 text-sm mt-1">
                       <span className={`font-medium ${scoreColor}`}>{label}</span>
                       {score >= 60
-                        ? " — Significant engineering activity detected"
+                        ? ", Significant engineering activity detected"
                         : score >= 40
-                          ? " — Moderate activity above baseline"
-                          : " — Baseline activity level"}
+                          ? ", Moderate activity above baseline"
+                          : ", Baseline activity level"}
                     </p>
                   </div>
                   <div className="w-24 h-24 rounded-full border-4 border-slate-700 flex items-center justify-center">
@@ -713,13 +713,13 @@ export default async function StartupPage({ params }: PageProps) {
                   {profile.name} shows general engineering acceleration that
                   classifies as a{" "}
                   <strong className="text-gray-200">framework migration</strong>
-                  . This often indicates a technology stack transition — moving
+                  . This often indicates a technology stack transition, moving
                   from a prototype to production infrastructure, or adopting new
                   tooling.
                 </p>
                 <p>
                   Framework migrations are the subtlest signal type but can
-                  indicate the shift from exploration to exploitation — a key
+                  indicate the shift from exploration to exploitation, a key
                   milestone in startup development that often precedes
                   fundraising.
                 </p>
@@ -834,7 +834,7 @@ export default async function StartupPage({ params }: PageProps) {
           </div>
         </section>
 
-        {/* Related Resources — cross-links to gitdealflow.com landing pages */}
+        {/* Related Resources, cross-links to gitdealflow.com landing pages */}
         <section className="mb-10" aria-label="Related resources">
           <h2 className="text-lg font-semibold text-gray-100 mb-4">
             Related Resources
@@ -895,7 +895,7 @@ export default async function StartupPage({ params }: PageProps) {
           </div>
         </section>
 
-        {/* Badge embed CTA — viral growth: every startup can embed a badge */}
+        {/* Badge embed CTA, viral growth: every startup can embed a badge */}
         <section className="mb-12 rounded-xl border border-sky-900/40 bg-sky-950/20 p-6">
           <div className="flex items-center gap-2 mb-3">
             <img

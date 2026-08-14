@@ -13,13 +13,13 @@
 
 /* ── BRAND PALETTE ALIGNMENT with gitdealflow.com homepage (2026-08-07) ──
    The landing's canon: page bg #0f172a, surfaces #1e293b, borders #334155,
-   primary CTA signal-orange #ff6b1a with DARK text (WCAG 6.27:1 — white on
+   primary CTA signal-orange #ff6b1a with DARK text (WCAG 6.27:1, white on
    this orange fails at 2.85:1), secondary accent = sky family.
    Templates here were written against body bg-slate-950 (#020617) with
    slate-900 cards, so instead of editing thousands of class occurrences we
    shift the slate ramp one step lighter at the token level. Hierarchy
    (bg < section < card) is preserved; only the absolute values move onto
-   the landing's palette. Do NOT "fix" these back to Tailwind defaults —
+   the landing's palette. Do NOT "fix" these back to Tailwind defaults -
    that un-brands all ~9k pages at once. */
 @theme {
   --color-slate-950: #0f172a;
@@ -41,7 +41,7 @@ body {
 }
 
 /* Centre all text on every page (owner request, reaffirmed 2026-07-25).
-   This supersedes the earlier "headings centred, body left" system — do not
+   This supersedes the earlier "headings centred, body left" system, do not
    thrash back without the owner asking. Note that centring the text is only
    half of it: the boxes have to be centred too, see the CENTERED PAGE COLUMN
    REPAIR / CENTERED TEXT BOX REPAIR notes in public/ux.css. */
@@ -50,7 +50,7 @@ main * {
   text-align: center !important;
 }
 
-/* Code and preformatted blocks stay left — centring them destroys them. */
+/* Code and preformatted blocks stay left, centring them destroys them. */
 main pre,
 main pre *,
 main code,
@@ -58,12 +58,12 @@ main code * {
   text-align: left !important;
 }
 
-/* Centring the text is not enough — a box that is itself off-centre keeps its
+/* Centring the text is not enough, a box that is itself off-centre keeps its
    text off-centre. Two structural cases the markup leaves behind:
      1. a container with a `max-w-*` cap but no `mx-auto`. The /trending hero
         (`header.mb-8.max-w-3xl`) sat at x 92..860 inside a 1280px column.
      2. a flex/grid row that never declared its justification, so its items pack
-        to flex-start — the tag chips on every /startup/* page.
+        to flex-start, the tag chips on every /startup/* page.
 
    Both live inside `@layer base` ON PURPOSE. Tailwind's utilities sit in
    `@layer utilities`, which outranks base, so anything that DOES declare
@@ -74,7 +74,7 @@ main code * {
    the layer or add `!important`: that would shove deliberate layouts around.
 
    `flex-col` is excluded because on a column `justify-content` is the VERTICAL
-   axis — centring there would collapse vertical stacks. The `:not()` chains must
+   axis, centring there would collapse vertical stacks. The `:not()` chains must
    stay touching; whitespace between them is a descendant combinator and quietly
    changes what they mean. Verified with a before/after position diff of every
    element in `main` on /trending, /startup/*, /methodology and at 375px: no new
@@ -99,20 +99,20 @@ main code * {
   }
 }
 
-/* Selection palette — sky to match brand accent. */
+/* Selection palette, sky to match brand accent. */
 ::selection {
   background-color: rgba(14, 165, 233, 0.35);
   color: #f1f5f9;
 }
 
-/* Focus-visible — readable, brand-coloured ring on every interactive element. */
+/* Focus-visible, readable, brand-coloured ring on every interactive element. */
 :where(a, button, [role="button"], input, textarea, select):focus-visible {
   outline: 2px solid #38bdf8;
   outline-offset: 2px;
   border-radius: 6px;
 }
 
-/* Scrollbar — slim, slate-toned, doesn't fight the dark background. */
+/* Scrollbar, slim, slate-toned, doesn't fight the dark background. */
 * {
   scrollbar-width: thin;
   scrollbar-color: #334155 transparent;
@@ -133,7 +133,7 @@ main code * {
   background: #475569;
 }
 
-/* Card interaction — consistent hover affordance across every card-shaped link. */
+/* Card interaction, consistent hover affordance across every card-shaped link. */
 @utility card-interactive {
   transition: border-color 0.2s ease, background-color 0.2s ease,
     transform 0.2s ease, box-shadow 0.2s ease;
@@ -160,7 +160,7 @@ main code * {
   animation: fade-in-up 0.4s ease-out both;
 }
 
-/* Soft brand glow — used behind hero stats and CTA badges. */
+/* Soft brand glow, used behind hero stats and CTA badges. */
 @utility brand-glow {
   background: radial-gradient(
     600px circle at 50% 0%,
@@ -170,7 +170,7 @@ main code * {
 }
 
 /* ===========================================================================
-   Book prose — used by /book/read/[chapter] and /book/print
+   Book prose, used by /book/read/[chapter] and /book/print
    Long-form reading typography against the dark theme. Tuned for ~75ch
    measure, generous line-height, headings that breathe, and code blocks that
    stay readable on small screens.
@@ -286,7 +286,7 @@ main code * {
   font-weight: 600;
 }
 
-/* Print-friendly version of the book — used on /book/print and when any
+/* Print-friendly version of the book, used on /book/print and when any
    /book/* page is sent to the printer. Reverses to light-on-paper. */
 @media print {
   .book-print {

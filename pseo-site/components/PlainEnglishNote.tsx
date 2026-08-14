@@ -1,12 +1,12 @@
 /**
- * PlainEnglishNote — the "translate, don't dump" callout for technical pages.
+ * PlainEnglishNote, the "translate, don't dump" callout for technical pages.
  *
  * The proof/methodology pages (/methodology, /research, /reproducibility,
  * /data-sources, /scorecard) carry load-bearing code/stats jargon (Gini,
- * regression, IQR, percentiles, curl/jq) that the core buyer — Marcus, a
+ * regression, IQR, percentiles, curl/jq) that the core buyer, Marcus, a
  * non-engineer dealmaker whose stated fear is "looking non-technical in a
- * technical room" — cannot decode. Per the Data Nerd voice rule #2
- * ("Translate, don't dump — plain business English over code jargon"),
+ * technical room", cannot decode. Per the Data Nerd voice rule #2
+ * ("Translate, don't dump, plain business English over code jargon"),
  * every technical claim should sit beside the plain-English version of what
  * it means for a deal.
  *
@@ -25,7 +25,7 @@ interface Props {
 
 export function PlainEnglishNote({
   children,
-  title = "In plain English — no code required",
+  title = "In plain English, no code required",
   className = "",
 }: Props) {
   return (

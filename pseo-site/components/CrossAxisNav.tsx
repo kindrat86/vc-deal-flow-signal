@@ -70,7 +70,7 @@ export default function CrossAxisNav({ sector, period, snapshot }: CrossAxisNavP
   return (
     <section className="mb-12" aria-label="Explore by axis">
       <h2 className="text-lg font-semibold text-gray-100 mb-3">
-        More views of {sector.name} — {period.name}
+        More views of {sector.name}, {period.name}
       </h2>
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
         <Link

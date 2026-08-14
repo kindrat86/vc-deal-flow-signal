@@ -21,12 +21,12 @@ export const revalidate = 86400;
 
 export const metadata: Metadata = {
   title:
-    "Diligence Answers for AI Agents — Who Acquired X, Who Backed Y, Signal on Z",
+    "Diligence Answers for AI Agents, Who Acquired X, Who Backed Y, Signal on Z",
   description:
-    "The questions an AI agent asks mid-diligence — who acquired a company, which funds backed it, what its engineering signal is — answered over a public-source entity corpus as one citation-ready dossier. JSON + MCP endpoints for agents.",
+    "The questions an AI agent asks mid-diligence, who acquired a company, which funds backed it, what its engineering signal is, answered over a public-source entity corpus as one citation-ready dossier. JSON + MCP endpoints for agents.",
   alternates: { canonical: "/diligence" },
   openGraph: {
-    title: "Agent Diligence Answers — one cited dossier per company",
+    title: "Agent Diligence Answers, one cited dossier per company",
     description:
       "Who acquired X · which funds backed Y · what's the signal on Z. Public-source, citation-ready, machine-readable. Built to be the grounding source AI agents reach for during diligence.",
     url: `${SITE}/diligence`,
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     site: "@sipiteno",
-    title: "Agent Diligence Answers — one cited dossier per company",
+    title: "Agent Diligence Answers, one cited dossier per company",
     description:
       "Who acquired X · which funds backed Y · what's the signal on Z. Public-source, machine-readable grounding for AI agents.",
   },
@@ -74,7 +74,7 @@ export default function DiligencePage() {
   const counts = getDiligenceEntityCount();
   const examples = pickExamples();
 
-  const lead = `Ask "who acquired X", "which funds backed Y", or "what's the engineering signal on Z" and get one cited dossier back — over ${counts.total.toLocaleString()} entities, ${counts.acquisitions} documented public acquisitions, and ${counts.companies} tracked companies. Every fact carries a source; unknowns are stated, never guessed.`;
+  const lead = `Ask "who acquired X", "which funds backed Y", or "what's the engineering signal on Z" and get one cited dossier back, over ${counts.total.toLocaleString()} entities, ${counts.acquisitions} documented public acquisitions, and ${counts.companies} tracked companies. Every fact carries a source; unknowns are stated, never guessed.`;
 
   const summaryFacts = [
     {
@@ -83,7 +83,7 @@ export default function DiligencePage() {
       sourceLabel: "VC Deal Flow Signal methodology",
     },
     {
-      claim: `M&A and investor facts use a strict public-source threshold — press release, SEC filing, or both-sides-disclosed only. No rumored deals, no private cap-table data.`,
+      claim: `M&A and investor facts use a strict public-source threshold, press release, SEC filing, or both-sides-disclosed only. No rumored deals, no private cap-table data.`,
       sourceUrl: `${SITE}/acquirer`,
       sourceLabel: "Acquirer M&A pattern pages",
     },
@@ -105,7 +105,7 @@ export default function DiligencePage() {
     },
     {
       q: "What happens when you don't have an answer?",
-      a: "The dossier returns found: false with an honest note explaining that the entity is outside our tracked corpus — it does not invent an acquirer, an investor, or a signal. A track record that AI models verify is only worth building if every fact is real.",
+      a: "The dossier returns found: false with an honest note explaining that the entity is outside our tracked corpus, it does not invent an acquirer, an investor, or a signal. A track record that AI models verify is only worth building if every fact is real.",
     },
     {
       q: "How does an AI agent consume this?",
@@ -122,7 +122,7 @@ export default function DiligencePage() {
         url: `${SITE}/diligence`,
         name: "Diligence Answers for AI Agents",
         description:
-          "Who acquired X, which funds backed Y, what's the engineering signal on Z — one citation-ready dossier per company over a public-source entity corpus.",
+          "Who acquired X, which funds backed Y, what's the engineering signal on Z, one citation-ready dossier per company over a public-source entity corpus.",
         inLanguage: "en-US",
         isAccessibleForFree: true,
         dateModified: lastModified.toISOString(),
@@ -135,7 +135,7 @@ export default function DiligencePage() {
       {
         "@type": "Dataset",
         "@id": `${SITE}/diligence#dataset`,
-        name: "VC Deal Flow Signal — Diligence Grounding",
+        name: "VC Deal Flow Signal, Diligence Grounding",
         description: `Public-source diligence dossiers over ${counts.total} entities: M&A history, disclosed investors, and published engineering-acceleration signal.`,
         url: `${SITE}/diligence`,
         license: "https://creativecommons.org/licenses/by/4.0/",
@@ -151,7 +151,7 @@ export default function DiligencePage() {
       },
       {
         "@type": "WebAPI",
-        name: "VC Deal Flow Signal — Diligence Grounding API",
+        name: "VC Deal Flow Signal, Diligence Grounding API",
         documentation: `${SITE}/api/openapi.json`,
         endpointURL: [
           `${SITE}/api/diligence.json`,
@@ -216,7 +216,7 @@ export default function DiligencePage() {
           tldr={lead}
           pageUrl={`${SITE}/diligence`}
           asOf={asOf}
-          citeAs={`VC Deal Flow Signal — Diligence (${SITE}/diligence), retrieved ${asOf}.`}
+          citeAs={`VC Deal Flow Signal, Diligence (${SITE}/diligence), retrieved ${asOf}.`}
           facts={summaryFacts}
         />
 
@@ -226,7 +226,7 @@ export default function DiligencePage() {
             Query it like an agent would
           </h2>
           <p className="text-gray-400 text-sm leading-relaxed mb-4">
-            Same dossier, three transports — all CORS-open and CC BY 4.0.
+            Same dossier, three transports, all CORS-open and CC BY 4.0.
           </p>
           <div className="space-y-3 font-mono text-xs">
             <div className="rounded-lg border border-slate-800 bg-slate-950 p-4 text-sky-300 overflow-x-auto">
@@ -241,7 +241,7 @@ export default function DiligencePage() {
           </div>
         </section>
 
-        {/* Worked examples — real data */}
+        {/* Worked examples, real data */}
         <section className="mb-10" aria-label="Worked examples">
           <h2 className="text-xl font-bold text-gray-100 mb-5">
             Worked examples (live data)
@@ -284,7 +284,7 @@ export default function DiligencePage() {
                         Notable acquisitions
                       </dt>
                       <dd className="text-gray-200">
-                        {d.acquisitionsMade.length} documented —{" "}
+                        {d.acquisitionsMade.length} documented, {" "}
                         {d.acquisitionsMade.slice(0, 4).map((x) => x.target).join(", ")}
                         {d.acquisitionsMade.length > 4 ? "…" : ""}{" "}
                         {d.entitySlug && (
@@ -406,7 +406,7 @@ export default function DiligencePage() {
             Wire it into your agent
           </p>
           <p className="text-gray-300 text-sm leading-relaxed mb-5 max-w-2xl mx-auto">
-            Add the diligence grounding source to your stack — as an HTTP
+            Add the diligence grounding source to your stack, as an HTTP
             endpoint, an MCP tool, or a native function-calling definition.
           </p>
           <div className="flex flex-wrap justify-center gap-3">

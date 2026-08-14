@@ -3,13 +3,13 @@
 import { useState } from "react";
 
 /**
- * Stadium Pitch — RSVP form.
+ * Stadium Pitch, RSVP form.
  *
  * POSTs to /api/stadium-pitch/rsvp. Schedules T-24h / T-1h / T-0 reminder
  * emails for the next first-Wednesday-of-the-month drop. Confirmation
  * email lands inside ~30 seconds; reminders queue at Resend.
  *
- * Single email field. No double-opt-in flow — RSVP is a low-stakes
+ * Single email field. No double-opt-in flow, RSVP is a low-stakes
  * commitment ("notify me when this drops"), not a newsletter signup. Users
  * who also want the weekly Sunday digest sign up at gitdealflow.com via
  * the separate flow.
@@ -81,7 +81,7 @@ export default function StadiumPitchRsvp({
           <strong className="text-emerald-200">{email}</strong>.
           {scheduled.length > 0 && (
             <> We&rsquo;ll send you {scheduled.length} reminder
-              {scheduled.length === 1 ? "" : "s"} ahead of the drop —
+              {scheduled.length === 1 ? "" : "s"} ahead of the drop -
               {" "}
               {scheduled.join(", ")}.
             </>
@@ -113,11 +113,11 @@ export default function StadiumPitchRsvp({
           htmlFor="stadium-pitch-rsvp-email"
           className="block text-emerald-300 text-xs font-semibold uppercase tracking-[0.14em]"
         >
-          RSVP — get the next drop in your inbox at the live moment
+          RSVP, get the next drop in your inbox at the live moment
         </label>
         <p className="text-gray-400 text-xs leading-relaxed">
           Three reminders (T-24h, T-1h, the drop). No weekly newsletter, no
-          drip. Just the Stadium Pitch reminder cadence — separate list from
+          drip. Just the Stadium Pitch reminder cadence, separate list from
           the Sunday digest.
         </p>
       </div>

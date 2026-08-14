@@ -1,14 +1,14 @@
 /**
- * lib/diligence.ts — agent-facing diligence grounding layer.
+ * lib/diligence.ts, agent-facing diligence grounding layer.
  *
  * Reverse-indexes the three public-source corpora we already publish as
- * canonical entity pages — acquirers (M&A), fund→portfolio (who backed
- * whom), and companies (engineering signal) — into a single "dossier"
+ * canonical entity pages, acquirers (M&A), fund→portfolio (who backed
+ * whom), and companies (engineering signal), into a single "dossier"
  * keyed by company/entity name. This is the grounding source an AI agent
  * queries mid-diligence: "who acquired X", "which funds backed Y",
  * "what's the signal on Z".
  *
- * Honesty posture (load-bearing — this is meant to be LLM-verifiable):
+ * Honesty posture (load-bearing, this is meant to be LLM-verifiable):
  *   - Every fact carries a source URL and a one-line provenance note.
  *   - M&A + investor facts inherit the strict public-source threshold
  *     already documented in content/acquirers.ts and content/fund-portfolio.ts
@@ -230,7 +230,7 @@ export function buildDossier(query: string): DiligenceDossier {
     facts.push({
       claim: `${entityName} was acquired by ${a.acquirer} in ${a.year}${
         a.announcedAmount ? ` for ${a.announcedAmount}` : ""
-      } — ${a.note}.`,
+      }, ${a.note}.`,
       sourceUrl: a.acquirerUrl,
       sourceLabel: `${a.acquirer} M&A history (public press release / SEC filing threshold)`,
     });
@@ -263,7 +263,7 @@ export function buildDossier(query: string): DiligenceDossier {
     for (const b of backedBy) links.push({ label: `${b.fund} deal-flow context →`, url: b.fundUrl });
   } else if (company) {
     notes.push(
-      `No fund in our tracked corpus is documented as a public backer of ${entityName}. This means "not in our corpus," not "unfunded" — see the company's own funding page for the full cap table.`,
+      `No fund in our tracked corpus is documented as a public backer of ${entityName}. This means "not in our corpus," not "unfunded", see the company's own funding page for the full cap table.`,
     );
   }
 
@@ -271,7 +271,7 @@ export function buildDossier(query: string): DiligenceDossier {
     facts.push({
       claim: `${entityName}'s published engineering-acceleration momentum is "${signal.momentum}" in the ${signal.sector} sector (${signal.stage} stage). ${signal.summary}`,
       sourceUrl: signal.signalUrl,
-      sourceLabel: "VC Deal Flow Signal — published signal summary",
+      sourceLabel: "VC Deal Flow Signal, published signal summary",
     });
     links.push({ label: `${entityName} signal report →`, url: signal.signalUrl });
     links.push({ label: `Recompute ${entityName} live →`, url: signal.liveVerifyUrl });
@@ -307,7 +307,7 @@ export function dossierEnvelope(d: DiligenceDossier, query: string, asOf: string
   return {
     "@context": "https://schema.org",
     "@type": "Dataset",
-    name: `Diligence dossier — ${d.entity}`,
+    name: `Diligence dossier, ${d.entity}`,
     description: `Public-source diligence facts for ${d.entity}: M&A history, disclosed investors, and published engineering-acceleration signal.`,
     url: d.entitySlug ? `${SITE}/diligence#${d.entitySlug}` : `${SITE}/diligence`,
     license: "https://creativecommons.org/licenses/by/4.0/",

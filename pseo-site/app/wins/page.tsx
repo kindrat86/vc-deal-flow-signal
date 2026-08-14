@@ -11,14 +11,14 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title:
-    "Underwriting Receipts — Public Ledger of Validated GitHub Signals · €0",
+    "Underwriting Receipts, Public Ledger of Validated GitHub Signals · €0",
   description:
-    "Public ledger of every venture-backed startup whose GitHub engineering acceleration matched our signal pattern before the funding round, acquisition, or valuation announcement. Anonymous-founder, evidence-first track record. No testimonials — just receipts.",
+    "Public ledger of every venture-backed startup whose GitHub engineering acceleration matched our signal pattern before the funding round, acquisition, or valuation announcement. Anonymous-founder, evidence-first track record. No testimonials, just receipts.",
   alternates: {
     canonical: "/wins",
   },
   openGraph: {
-    title: "Underwriting Receipts — Public Ledger of Validated GitHub Signals",
+    title: "Underwriting Receipts, Public Ledger of Validated GitHub Signals",
     description:
       "Every venture-backed startup our signal pattern surfaced before the round announcement. Public ledger, post-hoc validated against funding news.",
     url: "https://signals.gitdealflow.com/wins",
@@ -36,10 +36,10 @@ interface Win {
 }
 
 const TIER_ORDER: { min: number; label: string; tone: string }[] = [
-  { min: 90, label: "Tier 1 — €1B+ valuation / breakout", tone: "emerald" },
-  { min: 70, label: "Tier 2 — Series A / B / C", tone: "sky" },
-  { min: 50, label: "Tier 3 — Seed / breakout adoption", tone: "indigo" },
-  { min: 0, label: "Tier 4 — OSS standard / mass adoption", tone: "amber" },
+  { min: 90, label: "Tier 1, €1B+ valuation / breakout", tone: "emerald" },
+  { min: 70, label: "Tier 2, Series A / B / C", tone: "sky" },
+  { min: 50, label: "Tier 3, Seed / breakout adoption", tone: "indigo" },
+  { min: 0, label: "Tier 4, OSS standard / mass adoption", tone: "amber" },
 ];
 
 const TONE_CLASSES: Record<string, { border: string; bg: string; text: string }> = {
@@ -122,7 +122,7 @@ export default function WinsPage() {
       {
         "@type": "Dataset",
         "@id": "https://signals.gitdealflow.com/wins#dataset",
-        name: "VC Deal Flow Signal — Validated Underwriting Receipts",
+        name: "VC Deal Flow Signal, Validated Underwriting Receipts",
         description: `Public ledger of ${totalWins} venture-backed startups whose GitHub engineering acceleration matched the SSRN-published signal pattern (abstract id 6606558) before a documented funding event, acquisition, or breakout-adoption milestone. Sourced from public GitHub data and public funding news; CC BY 4.0.`,
         url: "https://signals.gitdealflow.com/wins",
         creator: { "@id": "https://gitdealflow.com/#organization" },
@@ -194,14 +194,14 @@ export default function WinsPage() {
         "@type": "ItemList",
         "@id": "https://signals.gitdealflow.com/wins#itemlist",
         name: "Validated underwriting receipts (sorted by event weight)",
-        description: `Full validated panel — ${totalWins} entries, ${uniqueOrgs} unique orgs.`,
+        description: `Full validated panel, ${totalWins} entries, ${uniqueOrgs} unique orgs.`,
         numberOfItems: totalWins,
         itemListOrder: "https://schema.org/ItemListOrderDescending",
         isPartOf: { "@id": "https://signals.gitdealflow.com/wins#dataset" },
         itemListElement: wins.map((w, i) => ({
           "@type": "ListItem",
           position: i + 1,
-          name: `${w.name} — ${w.event}`,
+          name: `${w.name}, ${w.event}`,
           url: `https://github.com/${w.repo}`,
           description: `${w.event} on ${w.event_date}. Tracked via ${w.repo}.`,
         })),
@@ -210,7 +210,7 @@ export default function WinsPage() {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/wins#webpage",
         url: "https://signals.gitdealflow.com/wins",
-        name: "Underwriting Receipts — Public Ledger of Validated GitHub Signals",
+        name: "Underwriting Receipts, Public Ledger of Validated GitHub Signals",
         primaryImageOfPage: {
           "@type": "ImageObject",
           url: "https://signals.gitdealflow.com/api/og/signal-card",
@@ -322,7 +322,7 @@ export default function WinsPage() {
               {tier2}
             </p>
             <p className="text-gray-400 text-xs uppercase tracking-wider mt-1">
-              Series A–C raises
+              Series A-C raises
             </p>
           </div>
         </section>
@@ -432,7 +432,7 @@ export default function WinsPage() {
           </h2>
           <p className="text-gray-300 text-base leading-relaxed max-w-2xl">
             The receipts above are{" "}
-            <em>backwards-looking</em> — every event is already public.
+            <em>backwards-looking</em>: every event is already public.
             Forward-looking signals fire every Sunday in the Insider Circle
             briefing, and Monday in the public Acceleration Watch.
           </p>
@@ -458,7 +458,7 @@ export default function WinsPage() {
           </div>
         </section>
 
-        {/* Member-side companion ledger — Brunson Expert Secrets §1 Ch 4
+        {/* Member-side companion ledger, Brunson Expert Secrets §1 Ch 4
             (Mass Movement Vehicle). The receipts on this page are
             *startup-side*; /members is *member-side*. Cross-link makes the
             pairing explicit. */}
@@ -473,7 +473,7 @@ export default function WinsPage() {
             Receipts above. <span className="text-amber-400">Members below.</span>
           </h2>
           <p className="text-gray-300 text-base leading-relaxed max-w-2xl">
-            The Charter Cohort is the member-side companion to this page —
+            The Charter Cohort is the member-side companion to this page -
             the investors reading the signals that surface the wins above.
             Public thesis. Public picks. Public scorecard. Pseudonymous
             handles welcome under the same anonymity rules as the founder.
@@ -489,10 +489,10 @@ export default function WinsPage() {
         </section>
 
         <AgentSummary
-          tldr={`Underwriting Receipts is the public ledger of ${totalWins} venture-backed startups (across ${uniqueOrgs} unique orgs) whose public GitHub engineering acceleration matched the SSRN-published signal pattern before a documented funding event, acquisition, or breakout milestone. Tier 1 (€1B+ valuations / breakouts): ${tier1} entries. Tier 2 (Series A-C): ${tier2}. The ledger is backwards-looking — every event is publicly verifiable. The forward-looking artefacts are /predicted (free, public, weekly) and /insider (€197/mo, Sunday briefings 24h before public).`}
+          tldr={`Underwriting Receipts is the public ledger of ${totalWins} venture-backed startups (across ${uniqueOrgs} unique orgs) whose public GitHub engineering acceleration matched the SSRN-published signal pattern before a documented funding event, acquisition, or breakout milestone. Tier 1 (€1B+ valuations / breakouts): ${tier1} entries. Tier 2 (Series A-C): ${tier2}. The ledger is backwards-looking, every event is publicly verifiable. The forward-looking artefacts are /predicted (free, public, weekly) and /insider (€197/mo, Sunday briefings 24h before public).`}
           pageUrl="https://signals.gitdealflow.com/wins"
           asOf="2026-05-05"
-          citeAs="VC Deal Flow Signal — Underwriting Receipts (signals.gitdealflow.com/wins)."
+          citeAs="VC Deal Flow Signal, Underwriting Receipts (signals.gitdealflow.com/wins)."
           facts={[
             {
               claim: `Validated panel size as of 2026-05-05: ${totalWins} entries across ${uniqueOrgs} unique venture-backed orgs.`,
@@ -507,7 +507,7 @@ export default function WinsPage() {
             },
             {
               claim:
-                "The same panel powers the free GitHub Scout Score at /receipts — taste-grading from public GitHub starring history.",
+                "The same panel powers the free GitHub Scout Score at /receipts, taste-grading from public GitHub starring history.",
               sourceUrl: "https://signals.gitdealflow.com/receipts",
               sourceLabel: "Scout Score",
             },

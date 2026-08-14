@@ -16,9 +16,9 @@ export const dynamic = "force-static";
 // Brunson Expert Secrets Ch 2 (Charismatic Leader 2.0): the founder
 // character must be in daily contact with the tribe. The Sunday digest
 // covers broadcast cadence; the monthly /state-of-github address covers
-// long-form. /now is the in-between status surface — five fields, five
+// long-form. /now is the in-between status surface, five fields, five
 // minutes, every Monday. Convention borrowed from nownownow.com (Derek
-// Sivers) — anonymity-compatible because it's status, not face.
+// Sivers), anonymity-compatible because it's status, not face.
 //
 // Single source of truth for the content lives in lib/data-nerd.ts so the
 // /about/founder page and the /data-nerd character bible can teaser-link
@@ -26,11 +26,11 @@ export const dynamic = "force-static";
 // in that file and ship a single deploy.
 
 export const metadata: Metadata = {
-  title: `/now — what The Data Nerd is working on this week (${DATA_NERD_NOW.weekISO})`,
+  title: `/now, what The Data Nerd is working on this week (${DATA_NERD_NOW.weekISO})`,
   description: `Current weekly status from ${DATA_NERD_NAME}. Five fields, updated every Monday: shipping, reading, blocked, parking lot, weekly rhythm. The cadence is the character. Updated ${DATA_NERD_NOW.asOf}.`,
   alternates: { canonical: "/now" },
   openGraph: {
-    title: `/now — ${DATA_NERD_NAME}`,
+    title: `/now, ${DATA_NERD_NAME}`,
     description:
       "What I'm working on this week. Updated every Monday. The cadence is the character.",
     url: "https://signals.gitdealflow.com/now",
@@ -56,7 +56,7 @@ export default function NowPage() {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/now#page",
         url: "https://signals.gitdealflow.com/now",
-        name: `/now — ${DATA_NERD_NAME}`,
+        name: `/now, ${DATA_NERD_NAME}`,
         description: `Current weekly status. Updated every Monday. ${DATA_NERD_NOW.asOf}.`,
         inLanguage: "en-US",
         dateModified: DATA_NERD_NOW.asOf,
@@ -130,7 +130,7 @@ export default function NowPage() {
             >
               State of GitHub
             </Link>{" "}
-            is the long-form. This is the in-between — five fields,
+            is the long-form. This is the in-between, five fields,
             updated every Monday. Status, not face. Convention borrowed
             from{" "}
             <a
@@ -190,7 +190,7 @@ export default function NowPage() {
             <p className="text-gray-400 text-sm leading-relaxed">
               Publishing the blocker keeps the cadence honest. If I keep
               writing &ldquo;blocked&rdquo; for a thing every week, that&rsquo;s
-              a real signal — please DM me about it.
+              a real signal, please DM me about it.
             </p>
             <ul className="space-y-2.5 pt-1">
               {DATA_NERD_NOW.blocked.map((item, i) => (
@@ -256,7 +256,7 @@ export default function NowPage() {
           </dl>
         </section>
 
-        {/* TWELVE-MONTH FUTURE COMMIT — anchor of the future-self arc.
+        {/* TWELVE-MONTH FUTURE COMMIT, anchor of the future-self arc.
             Repeated from /data-nerd + /about/founder so the reader who
             lands here from a Substack share has the full character
             commitment in view, not just the weekly status. */}
@@ -283,7 +283,7 @@ export default function NowPage() {
                 className="rounded-lg border border-slate-800 bg-slate-900/40 p-4"
               >
                 <p className="text-amber-300 text-sm font-bold leading-snug mb-1">
-                  Commit {c.n} — {c.label}
+                  Commit {c.n}, {c.label}
                 </p>
                 <p className="text-gray-300 text-sm leading-relaxed">
                   {c.body}
@@ -293,7 +293,7 @@ export default function NowPage() {
           </ol>
         </section>
 
-        {/* WHERE TO FOLLOW THE WORK — calm revenue path that keeps the
+        {/* WHERE TO FOLLOW THE WORK, calm revenue path that keeps the
             "status, not face" cadence. Free digest is the primary action;
             the paid surfaces are a soft, optional next step. */}
         <section className="rounded-xl border border-slate-800 bg-slate-900/40 p-5 sm:p-6 space-y-3">
@@ -313,7 +313,7 @@ export default function NowPage() {
             >
               Acceleration Watch
             </a>{" "}
-            — one email a week, the sharpest acceleration break, no code
+one email a week, the sharpest acceleration break, no code
             required to read it. Start there.
           </p>
           <p className="text-gray-400 text-sm leading-relaxed">
@@ -331,12 +331,12 @@ export default function NowPage() {
             >
               the pricing page
             </Link>{" "}
-            lays out the rest of the ladder. No rush — the free digest is the
+            lays out the rest of the ladder. No rush, the free digest is the
             honest place to decide whether the rest is worth it.
           </p>
         </section>
 
-        {/* CHARACTER + TRIBE FOOTER — link the live status to the wider
+        {/* CHARACTER + TRIBE FOOTER, link the live status to the wider
             character bible so readers landing from a share have the
             anchor. */}
         <section className="border-t border-slate-800 pt-8 space-y-3">
@@ -344,7 +344,7 @@ export default function NowPage() {
             <strong className="text-gray-200">{DATA_NERD_NAME}</strong>{" "}
             ({DATA_NERD_ARCHETYPE.label}) writes for{" "}
             <strong className="text-sky-300">{DATA_NERD_TRIBE.name}</strong>{" "}
-            — &ldquo;{DATA_NERD_TRIBE.oneLine}&rdquo;
+&ldquo;{DATA_NERD_TRIBE.oneLine}&rdquo;
           </p>
           <ul className="space-y-1.5 text-sm">
             <li>

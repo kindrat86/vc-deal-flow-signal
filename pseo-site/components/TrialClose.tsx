@@ -1,11 +1,11 @@
-// Brunson Expert Secrets Ch 14 — Trial Closes. Russell's rule: every 2–3
+// Brunson Expert Secrets Ch 14, Trial Closes. Russell's rule: every 2-3
 // paragraphs of a webinar / VSL / sales letter, the speaker drops a
 // micro-question that the reader silently answers "yes" to. Each yes is a
 // micro-commitment; by the time the close arrives the reader has already
-// said yes 6–8 times in their head.
+// said yes 6-8 times in their head.
 //
-// Use sparingly per page (Russell's number: 6–10). Each one MUST be a
-// different phrase — repeating "make sense?" eight times reads as a tic.
+// Use sparingly per page (Russell's number: 6-10). Each one MUST be a
+// different phrase, repeating "make sense?" eight times reads as a tic.
 // Visual treatment: italicized, muted, slight left-rail accent. Not a
 // border-clutter banner; a "speaker pause" beat in the typography flow.
 //

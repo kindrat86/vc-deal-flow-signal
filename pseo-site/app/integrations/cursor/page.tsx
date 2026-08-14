@@ -17,9 +17,9 @@ const CURSOR_DEEPLINK_STDIO = `cursor://anysphere.cursor-deeplink/mcp/install?na
 const CURSOR_DEEPLINK_HTTP = `cursor://anysphere.cursor-deeplink/mcp/install?name=vc-deal-flow-signal&config=${HTTP_CONFIG_B64}`;
 
 const TITLE =
-  "Use VC Deal Flow Signal in Cursor — one-click MCP install";
+  "Use VC Deal Flow Signal in Cursor, one-click MCP install";
 const DESCRIPTION =
-  "Add the VC Deal Flow Signal MCP server to Cursor in one click. Six free read-only tools — trending startups, sector signals, startup lookup, dataset summary, Scout receipts, methodology. Works in Cursor v0.45+, no auth, no setup, weekly refresh.";
+  "Add the VC Deal Flow Signal MCP server to Cursor in one click. Six free read-only tools, trending startups, sector signals, startup lookup, dataset summary, Scout receipts, methodology. Works in Cursor v0.45+, no auth, no setup, weekly refresh.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -69,7 +69,7 @@ const TOOLS = [
   {
     name: "get_methodology",
     summary:
-      "Plain-text methodology — data sources, metric computation, classification thresholds, refresh cadence, limitations. For citation footnotes.",
+      "Plain-text methodology, data sources, metric computation, classification thresholds, refresh cadence, limitations. For citation footnotes.",
   },
 ];
 
@@ -80,7 +80,7 @@ const HOW_TO_STEPS = [
   },
   {
     name: "Pick stdio or HTTP transport",
-    text: "Stdio runs the server locally via npx — fastest, no network latency on tool calls. Streamable HTTP hits signals.gitdealflow.com/api/mcp/rpc — no Node required, works on locked-down corporate machines. Either is one click.",
+    text: "Stdio runs the server locally via npx, fastest, no network latency on tool calls. Streamable HTTP hits signals.gitdealflow.com/api/mcp/rpc, no Node required, works on locked-down corporate machines. Either is one click.",
   },
   {
     name: "Ask a deal-flow question in chat",
@@ -95,15 +95,15 @@ const HOW_TO_STEPS = [
 const FAQ = [
   {
     q: "Does the install button work without Cursor v0.45+?",
-    a: "No — one-click MCP deeplinks shipped in Cursor v0.45 (December 2024). Update Cursor first, or paste the JSON config under Settings → MCP → +Add new MCP server.",
+    a: "No, one-click MCP deeplinks shipped in Cursor v0.45 (December 2024). Update Cursor first, or paste the JSON config under Settings → MCP → +Add new MCP server.",
   },
   {
-    q: "Stdio vs Streamable HTTP — which should I pick?",
+    q: "Stdio vs Streamable HTTP, which should I pick?",
     a: "Stdio if you have Node 20+ and want sub-100ms tool calls. Streamable HTTP if you don't want a local Node runtime (corporate-locked machines, Codespaces, web-only Cursor sessions). Same six tools, same data, same auth-free.",
   },
   {
     q: "Is the server free?",
-    a: "Yes. Six read-only tools, no rate limits beyond the CDN's, no signup, no API key. The paid tier (Insider Circle, EUR 197/mo) adds private Telegram, watchlists, and a direct line — none of which are MCP-gated.",
+    a: "Yes. Six read-only tools, no rate limits beyond the CDN's, no signup, no API key. The paid tier (Insider Circle, EUR 197/mo) adds private Telegram, watchlists, and a direct line, none of which are MCP-gated.",
   },
   {
     q: "Where does it list on cursor.directory?",
@@ -149,7 +149,7 @@ const jsonLd = {
       "@type": "HowTo",
       name: "How to install VC Deal Flow Signal in Cursor",
       description:
-        "Three-click workflow to add the VC Deal Flow Signal MCP server to Cursor — pick a transport, click Add to Cursor, approve the install dialog.",
+        "Three-click workflow to add the VC Deal Flow Signal MCP server to Cursor, pick a transport, click Add to Cursor, approve the install dialog.",
       totalTime: "PT45S",
       step: HOW_TO_STEPS.map((s, i) => ({
         "@type": "HowToStep",
@@ -196,7 +196,7 @@ export default function CursorIntegrationPage() {
             </h1>
             <p className="text-xl text-gray-300 leading-relaxed mb-8">
               Add live GitHub engineering-acceleration signals to Cursor in one click.
-              Six free MCP tools — trending startups, sector ranks, single-startup
+              Six free MCP tools, trending startups, sector ranks, single-startup
               lookups, Scout receipts, dataset summary, methodology. Cursor v0.45+, no
               auth, no setup, weekly refresh.
             </p>
@@ -255,7 +255,7 @@ export default function CursorIntegrationPage() {
               The buttons trigger Cursor&apos;s native install dialog via the{" "}
               <code className="rounded bg-slate-900 px-1 py-0.5 text-xs">cursor://</code>{" "}
               deeplink. Cursor v0.45+ required. If nothing happens, your browser is
-              blocking custom protocol handlers — fall back to the manual config below.
+              blocking custom protocol handlers, fall back to the manual config below.
             </p>
           </section>
 
@@ -263,7 +263,7 @@ export default function CursorIntegrationPage() {
             <h2 className="text-2xl font-bold text-white mb-6">Manual install (Settings → MCP)</h2>
             <p className="text-gray-300 mb-4">
               Open Cursor → Settings → MCP → <strong>+Add new MCP server</strong>, then
-              paste either snippet. Restart not required — the server appears in the
+              paste either snippet. Restart not required, the server appears in the
               MCP servers list and tools light up immediately.
             </p>
             <div className="grid md:grid-cols-2 gap-4">

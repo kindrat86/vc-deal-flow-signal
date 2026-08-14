@@ -19,9 +19,9 @@ function verificationEmailHtml(
 ): string {
   const headline =
     cohort === "challenge"
-      ? "Confirm your email — your 7-Day Reset starts immediately"
+      ? "Confirm your email, your 7-Day Reset starts immediately"
       : cohort === "launch"
-        ? "Confirm your email — launch sequence starts in 30 minutes"
+        ? "Confirm your email, launch sequence starts in 30 minutes"
         : "There's a deal in here I missed by one night's sleep.";
   const body =
     cohort === "challenge"
@@ -30,9 +30,9 @@ function verificationEmailHtml(
       : cohort === "launch"
         ? `<p>Click below to confirm your email and start the Agent Credits launch sequence.</p>
 <p>Five emails over ten days: Stage 1 the problem, Stage 2 why current fixes fail, Stage 3 what I shipped, Stage 4 cart open, Stage 5 last call. Cart closes May 20 at 23:59 UTC.</p>`
-        : `<p>A few years ago I was watching a quiet fintech startup. No press, no warm intros circulating — but their public GitHub lit up in two weeks. Four new contributors. Three new repos. I flagged it, then closed my laptop and went to bed.</p>
+        : `<p>A few years ago I was watching a quiet fintech startup. No press, no warm intros circulating, but their public GitHub lit up in two weeks. Four new contributors. Three new repos. I flagged it, then closed my laptop and went to bed.</p>
 <p>Three weeks later they raised a $4M Series A. The investors who got in had seen exactly what I'd seen. They just didn't talk themselves out of it.</p>
-<p>That's the night that made me build this. Confirm your email below and the first thing you'll read is the whole story — plus <strong>This Week's Top 5 Breakout Startups</strong>, the names showing the same engineering acceleration right now, 21 to 47 days before the deck circulates.</p>`;
+<p>That's the night that made me build this. Confirm your email below and the first thing you'll read is the whole story, plus <strong>This Week's Top 5 Breakout Startups</strong>, the names showing the same engineering acceleration right now, 21 to 47 days before the deck circulates.</p>`;
   const cta =
     cohort === "challenge"
       ? "Start the Challenge"
@@ -42,10 +42,10 @@ function verificationEmailHtml(
   // Inbox preview line (hidden preheader). Mobile clients show ~90 chars.
   const preheader =
     cohort === "challenge"
-      ? "Confirm to start your 7-Day Deal Flow Reset — Day 1 lands in 15 minutes."
+      ? "Confirm to start your 7-Day Deal Flow Reset, Day 1 lands in 15 minutes."
       : cohort === "launch"
-        ? "Confirm to start the Agent Credits launch sequence — first email in 30 minutes."
-        : "Confirm to unlock This Week's Top 5 Breakout Startups — plus the deal I missed.";
+        ? "Confirm to start the Agent Credits launch sequence, first email in 30 minutes."
+        : "Confirm to unlock This Week's Top 5 Breakout Startups, plus the deal I missed.";
   return `<!DOCTYPE html>
 <html lang="en" xmlns:v="urn:schemas-microsoft-com:vml" xmlns:o="urn:schemas-microsoft-com:office:office">
 <head>
@@ -99,7 +99,7 @@ Button not working? Paste this into your browser:<br>
 <a href="${verifyUrl}" style="color:#0284c7;word-break:break-all;">${verifyUrl}</a>
 </td></tr>
 <tr><td class="px" style="padding:20px 40px 28px 40px;font-size:14px;line-height:1.6;color:#64748b;">
-After you confirm, you'll also start receiving weekly signal updates — the top startups showing unusual engineering acceleration. No spam, unsubscribe anytime.
+After you confirm, you'll also start receiving weekly signal updates, the top startups showing unusual engineering acceleration. No spam, unsubscribe anytime.
 </td></tr>
 <tr><td class="px" style="padding:20px 40px 32px 40px;border-top:1px solid #e2e8f0;font-size:12px;line-height:1.6;color:#94a3b8;">
 You're receiving this because you entered your email at <a href="https://gitdealflow.com" style="color:#0ea5e9;">gitdealflow.com</a>.<br>
@@ -179,7 +179,7 @@ export async function POST(request: Request) {
       landing_path: clip(body.landing_path, 500),
     };
 
-    // Phase 3 (Qualify Subs) — quiz_route is the avatar tier the visitor
+    // Phase 3 (Qualify Subs), quiz_route is the avatar tier the visitor
     // self-selected before email capture. Whitelisted to F/T/D/I; anything
     // else degrades to "" so an unqualified email never silently gets a
     // wrong-tier label downstream.
@@ -202,7 +202,7 @@ export async function POST(request: Request) {
     const tzRaw = clip(body.tz, 64);
     const tz = tzRaw.includes("/") ? tzRaw : "";
 
-    // Build verification URL — attribution piggybacks as query params so
+    // Build verification URL, attribution piggybacks as query params so
     // /api/verify can persist it to PocketBase regardless of which device
     // the user clicks the verify link from. Cohort piggybacks too.
     // v2 token: payload-bound (email + purpose + 30d expiry + nonce). Replaces
@@ -235,9 +235,9 @@ export async function POST(request: Request) {
         to: email,
         subject:
           cohort === "challenge"
-            ? "Confirm your email — your 7-Day Reset starts now"
+            ? "Confirm your email, your 7-Day Reset starts now"
             : cohort === "launch"
-              ? "Confirm your email — Agent Credits launch starts now"
+              ? "Confirm your email, Agent Credits launch starts now"
               : "Confirm to unlock your 5 (and the deal I missed)",
         html: verificationEmailHtml(verifyUrl, cohort),
         headers: listUnsubscribeHeaders(email),
@@ -257,7 +257,7 @@ export async function POST(request: Request) {
     // landing can show "an investor from {city} signed up" toasts. We capture
     // geo here (direct browser request → accurate location; email-link clicks
     // get proxied and would lie). Anonymous: city + country only, no email, no
-    // IP, no name. Best-effort — a cache hiccup must never break the subscribe.
+    // IP, no name. Best-effort, a cache hiccup must never break the subscribe.
     try {
       const city = decodeURIComponent(
         request.headers.get("x-vercel-ip-city") || "",
@@ -268,11 +268,11 @@ export async function POST(request: Request) {
       console.error("[recent-signups] record failed:", geoErr);
     }
 
-    // Reddit Conversions API — fire `Lead` server-side for paid Reddit
+    // Reddit Conversions API, fire `Lead` server-side for paid Reddit
     // traffic only (gated inside fireRedditLead on utm_source==="reddit").
     // Best-effort: a Reddit-side outage must never starve the buyer of
     // their verification email. The helper has its own 2.5s timeout +
-    // catch — but we still wrap in a final guard for safety.
+    // catch, but we still wrap in a final guard for safety.
     try {
       await fireRedditLead({
         email,

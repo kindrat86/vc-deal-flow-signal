@@ -32,7 +32,7 @@ export async function POST(request: Request) {
         message:
           "Send Authorization: Bearer gdf_v2.<customerId>.<hmac>. Buy 100 credits for €19 at " +
           PURCHASE_URL +
-          " — or pay per call in USDC on Base via " +
+          ", or pay per call in USDC on Base via " +
           X402_URL,
         purchaseUrl: PURCHASE_URL,
         x402Url: X402_URL,
@@ -73,7 +73,7 @@ export async function POST(request: Request) {
     );
   }
 
-  // Pre-flight balance check — return 402 BEFORE consuming so callers can top up.
+  // Pre-flight balance check, return 402 BEFORE consuming so callers can top up.
   const credits = await getCredits(parsed.customerId);
   if (credits.balance < 1) {
     return NextResponse.json(
@@ -89,7 +89,7 @@ export async function POST(request: Request) {
 
   const result = buildDeepSignal(name);
 
-  // Only consume on a real hit. Misses are free — agents shouldn't pay for "not found".
+  // Only consume on a real hit. Misses are free, agents shouldn't pay for "not found".
   if (!result.found) {
     return NextResponse.json(
       { ...result, balance: credits.balance, charged: 0 },

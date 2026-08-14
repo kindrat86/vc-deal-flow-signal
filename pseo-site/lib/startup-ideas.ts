@@ -5,7 +5,7 @@
  * against the current-period startup dataset and returns the top-N matching
  * orgs ranked by commit-velocity acceleration.
  *
- * The join is intentionally pure — it reads from the same in-memory snapshot
+ * The join is intentionally pure, it reads from the same in-memory snapshot
  * used everywhere else, so prebuild-time data refreshes (fetch-github-data.ts)
  * propagate without a content change.
  */
@@ -41,7 +41,7 @@ export function getStartupsForIdea(
   // Pool every sector-matched, volume-passed startup, plus a flag for
   // whether it ALSO passed the keyword/signal-type narrowing. Surfacing
   // both buckets lets the resolver prefer narrow matches but supplement
-  // with sector-leader rankings when the narrow filter is sparse —
+  // with sector-leader rankings when the narrow filter is sparse -
   // important because the dataset's org names don't repeat product
   // marketing keywords verbatim.
   interface Pool {
@@ -94,7 +94,7 @@ export function getStartupsForIdea(
 
   // Rank narrow matches first (true keyword hit), then sector-leaders,
   // then by velocity-change desc within each group. This preserves the
-  // editorial promise — when keywords match, those repos win; when they
+  // editorial promise, when keywords match, those repos win; when they
   // don't, the page still surfaces credible sector-level signal.
   pool.sort((a, b) => {
     if (a.narrow !== b.narrow) return a.narrow ? -1 : 1;

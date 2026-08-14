@@ -1,4 +1,4 @@
-// MCP Server for GitDealFlow — Track startup engineering acceleration from public GitHub data. Discover high-momentum startups before they announce funding.
+// MCP Server for GitDealFlow, Track startup engineering acceleration from public GitHub data. Discover high-momentum startups before they announce funding.
 // Implements Model Context Protocol JSON-RPC over HTTP (Streamable HTTP transport)
 // Deployed as a Vercel serverless function. No auth required (read-only tools).
 // Install in Claude Desktop: npx mcp-remote https://gitdealflow.com/api/mcp
@@ -94,7 +94,7 @@ function handleToolCall(name, args) {
 }
 
 export default function handler(req, res) {
-  // CORS — MCP clients connect from various origins
+  // CORS, MCP clients connect from various origins
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS");
   res.setHeader("Access-Control-Allow-Headers", "Content-Type, Accept, Mcp-Session-Id");
@@ -134,7 +134,7 @@ export default function handler(req, res) {
 
   const result = handleSingleRequest(body);
   if (result === null) {
-    // Notification (no id) — acknowledge silently
+    // Notification (no id), acknowledge silently
     return res.status(202).end();
   }
   return res.json(result);

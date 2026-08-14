@@ -38,7 +38,7 @@ const jsonLd = {
       url: PAGE_URL,
       name: "Company GitHub Signals",
       description:
-        "Index of per-company GitHub engineering signal pages — commit velocity, contributor influx, and repo activity for well-known public technical companies.",
+        "Index of per-company GitHub engineering signal pages, commit velocity, contributor influx, and repo activity for well-known public technical companies.",
       isPartOf: {
         "@type": "WebSite",
         name: "VC Deal Flow Signal",
@@ -104,7 +104,7 @@ export default function SignalHubPage() {
           A quantitative view of engineering activity across {companies.length} well-known public technical companies.
         </p>
         <p className="text-gray-400 text-base leading-relaxed mb-10">
-          Each page summarizes publicly observable GitHub engineering signals — commit velocity, contributor influx, repo creation pulse — for one company. Built for investors benchmarking sector momentum and operators studying engineering trajectories. Updated weekly from public GitHub events.
+          Each page summarizes publicly observable GitHub engineering signals, commit velocity, contributor influx, repo creation pulse, for one company. Built for investors benchmarking sector momentum and operators studying engineering trajectories. Updated weekly from public GitHub events.
         </p>
 
         {sectors.map((sector) => {

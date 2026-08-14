@@ -46,7 +46,7 @@ export async function GET(request: Request, ctx: RouteContext) {
       },
       {
         headers: {
-          // Browser cache 5 min, CDN cache 24h, SWR 7d — cards stay fast even at viral spikes.
+          // Browser cache 5 min, CDN cache 24h, SWR 7d, cards stay fast even at viral spikes.
           "Cache-Control": "public, max-age=300, s-maxage=86400, stale-while-revalidate=604800",
         },
       },

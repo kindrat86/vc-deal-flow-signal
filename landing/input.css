@@ -5,16 +5,16 @@
 @layer components {
   /* ==== Brunson button system =====================================
      One source of truth for every CTA. Variants:
-       .btn         — base (sizing, motion, focus ring, font)
-       .btn-primary — main hero CTA (orange signal pulse)
-       .btn-cta     — secondary brand CTA (sky blue, lifts on hover)
-       .btn-gold    — high-ticket Sharp Tier (yellow on dark)
-       .btn-ghost   — outlined / muted (used for "secondary" tier
+       .btn        , base (sizing, motion, focus ring, font)
+       .btn-primary, main hero CTA (orange signal pulse)
+       .btn-cta    , secondary brand CTA (sky blue, lifts on hover)
+       .btn-gold   , high-ticket Sharp Tier (yellow on dark)
+       .btn-ghost  , outlined / muted (used for "secondary" tier
                       buttons like the free Signal Digest)
      Sizes:
-       .btn-sm  — header / nav / inline pills
-       .btn-lg  — pricing-tier and section closers
-       .btn-xl  — hero monster
+       .btn-sm , header / nav / inline pills
+       .btn-lg , pricing-tier and section closers
+       .btn-xl , hero monster
   ============================================================== */
 
   .btn {
@@ -43,7 +43,7 @@
            focus-visible:ring-signal-400;
   }
   /* Pulse lives on a pseudo-element animating only opacity/transform
-     (compositor-driven) — box-shadow keyframes repainted every frame. */
+     (compositor-driven), box-shadow keyframes repainted every frame. */
   .btn-primary::after {
     content: "";
     position: absolute;
@@ -96,7 +96,7 @@
     color: #fff;
   }
 
-  /* CTA arrow icon — animates rightward on hover */
+  /* CTA arrow icon, animates rightward on hover */
   .btn-arrow {
     @apply transition-transform duration-150 will-change-transform;
   }
@@ -119,7 +119,7 @@
   /* Lead-magnet email preview mock */
   .digest-mock { font-family: ui-monospace, SFMono-Regular, Menlo, monospace; }
 
-  /* Sticky mobile bottom CTA — only shows on mobile, slides in after the fold */
+  /* Sticky mobile bottom CTA, only shows on mobile, slides in after the fold */
   .sticky-cta {
     @apply fixed bottom-0 inset-x-0 z-40 md:hidden
            bg-dark-900/95 backdrop-blur-md border-t border-gray-800
@@ -129,7 +129,7 @@
   }
   .sticky-cta.is-visible { transform: translateY(0); }
 
-  /* Reduce motion preference — cover every decorative animation */
+  /* Reduce motion preference, cover every decorative animation */
   @media (prefers-reduced-motion: reduce) {
     .animate-cta-pulse,
     .btn-primary::after,
@@ -146,7 +146,7 @@
 
 /* ============================================================
    TAP-TARGET OVERRIDES (mirror of the block appended to the
-   prebuilt styles.css on 2026-07-13) — keep .btn-sm at a 44px
+   prebuilt styles.css on 2026-07-13), keep .btn-sm at a 44px
    minimum touch target so a future Tailwind rebuild preserves it.
    ============================================================ */
 @layer components {

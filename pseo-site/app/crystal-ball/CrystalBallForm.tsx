@@ -66,7 +66,7 @@ export default function CrystalBallForm() {
       setMessage(
         err instanceof Error
           ? err.message
-          : "Something went wrong — please email signals@gitdealflow.com directly.",
+          : "Something went wrong, please email signals@gitdealflow.com directly.",
       );
     }
   }
@@ -129,7 +129,7 @@ export default function CrystalBallForm() {
           autoComplete="email"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder="you@example.com (private — for grading notifications)"
+          placeholder="you@example.com (private, for grading notifications)"
           maxLength={200}
           className="w-full px-4 py-3 rounded-lg bg-slate-900 border border-slate-700 focus:border-sky-500 focus:outline-none text-gray-100 text-sm placeholder-gray-600"
           disabled={status === "submitting"}
@@ -191,7 +191,7 @@ export default function CrystalBallForm() {
           disabled={status === "submitting"}
           className="px-6 py-3 rounded-lg bg-amber-500 hover:bg-amber-400 disabled:bg-slate-700 disabled:cursor-wait text-slate-950 font-semibold text-base transition-colors"
         >
-          {status === "submitting" ? "Submitting…" : "Predict — 90-day window"}
+          {status === "submitting" ? "Submitting…" : "Predict, 90-day window"}
         </button>
         <p className="text-gray-400 text-xs leading-relaxed">
           One pick per email per week. We grade post-hoc against public

@@ -1,5 +1,5 @@
 /**
- * /.well-known/sitemap.xml — sitemap-discovery alias.
+ * /.well-known/sitemap.xml, sitemap-discovery alias.
  *
  * RFC 9079 lays out a `.well-known/host-meta` discovery pattern; some
  * crawlers and AEO probes look for `.well-known/sitemap.xml` as a quick

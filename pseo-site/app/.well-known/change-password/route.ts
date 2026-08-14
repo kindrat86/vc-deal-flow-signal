@@ -1,5 +1,5 @@
 /**
- * /.well-known/change-password — RFC 8615 + draft-ietf-httpapi-change-password
+ * /.well-known/change-password, RFC 8615 + draft-ietf-httpapi-change-password
  *
  * Password managers (1Password, Bitwarden, iCloud Keychain, Chrome) probe
  * this URL to deep-link a user to the password-reset flow. Without it,

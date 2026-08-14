@@ -19,7 +19,7 @@ import type { ReactNode } from "react";
  * contexts on hydration. The page itself also injects a no-FOUC CSS
  * backstop that hides the chrome before hydration.
  *
- * `/embed` (the docs index) keeps the chrome — the regex matches only
+ * `/embed` (the docs index) keeps the chrome, the regex matches only
  * nested `/embed/<segment>/...` paths.
  */
 export function NotInEmbed({ children }: { children: ReactNode }) {

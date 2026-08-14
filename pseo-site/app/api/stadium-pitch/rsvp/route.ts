@@ -21,28 +21,28 @@ const RESEND_API_KEY = process.env.RESEND_API_KEY!;
 const FROM_EMAIL = process.env.FROM_EMAIL || "signals@gitdealflow.com";
 const FROM_NAME = process.env.FROM_NAME || "The Data Nerd";
 
-// Brunson Expert Secrets §1 Ch 20 — Stadium Pitch RSVP handler.
+// Brunson Expert Secrets §1 Ch 20, Stadium Pitch RSVP handler.
 //
 // Schedules reminder emails (T-24h / T-1h / T-0) for the next first-Wednesday-
 // of-the-month address drop, plus a confirmation email that lands inside ~30
 // seconds.
 //
 // Design notes:
-//   • Standalone list — RSVPs do NOT enter the SOAP_OPERA_EMAILS audience.
+//   • Standalone list, RSVPs do NOT enter the SOAP_OPERA_EMAILS audience.
 //     A reader who wants the weekly Sunday digest signs up separately at
 //     gitdealflow.com. Mixing the two would double-mail.
 //   • Resend `scheduled_at` is the source of truth for delayed sends. We do
 //     not maintain our own queue. Each reminder is a separate POST to
-//     /v1/emails — Resend handles cancellation if we ever need to clear.
+//     /v1/emails, Resend handles cancellation if we ever need to clear.
 //   • If the user RSVPs close to the drop, the past-time reminders (T-24h,
 //     T-1h) are skipped via getActiveReminders().
-//   • Confirmation email always sends — separate immediate POST, no
+//   • Confirmation email always sends, separate immediate POST, no
 //     scheduled_at.
 //   • Excluded testers (founder QA inbox lives in TESTER_EMAILS) get a 200
 //     with skipped=true and no Resend calls. This mirrors the verify-route
 //     pattern and keeps us from polluting open/click metrics during smoke.
-//   • Rate limit per IP — 3 RSVPs per minute (one user shouldn't need more).
-//   • Same-origin only — the form lives on signals.gitdealflow.com. Other
+//   • Rate limit per IP, 3 RSVPs per minute (one user shouldn't need more).
+//   • Same-origin only, the form lives on signals.gitdealflow.com. Other
 //     origins get a 403 to discourage drive-by abuse.
 
 interface RsvpRequest {
@@ -101,7 +101,7 @@ export async function POST(request: Request) {
     );
   }
 
-  // Excluded — return success but skip Resend. Don't leak which addresses
+  // Excluded, return success but skip Resend. Don't leak which addresses
   // are on the exclusion list.
   if (isExcluded(email)) {
     return NextResponse.json(
@@ -133,7 +133,7 @@ export async function POST(request: Request) {
   // Build each reminder's payload. We assemble all four emails (3 reminders +
   // 1 confirmation) before any network I/O so the dispatch loop below is a
   // simple parallel fan-out. Failure to schedule one reminder doesn't block
-  // the others — partial success is logged but still returned as ok=true.
+  // the others, partial success is logged but still returned as ok=true.
   type Dispatch = {
     label: string;
     sendAtIso?: string; // omit for immediate (confirmation)
@@ -143,7 +143,7 @@ export async function POST(request: Request) {
 
   const dispatches: Dispatch[] = [];
 
-  // Confirmation — immediate.
+  // Confirmation, immediate.
   const conf = buildRsvpConfirmationEmail({
     dropTimeIso: nextDropIso,
     scheduledLabels: reminders.map((r) => r.label),
@@ -228,7 +228,7 @@ export async function POST(request: Request) {
     );
   }
 
-  // If literally everything failed, surface a 502 — the caller's UI will
+  // If literally everything failed, surface a 502, the caller's UI will
   // show the error message and the user can retry.
   if (succeeded.length === 0) {
     return NextResponse.json(

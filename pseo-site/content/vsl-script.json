@@ -2,10 +2,10 @@
   "id": "vsl-3min",
   "cadence": "evergreen-vsl",
   "version": "2026-05-08",
-  "title": "How to spot a Series A 47 days before the deck lands — The Perfect VSL",
+  "title": "How to spot a Series A 47 days before the deck lands, The Perfect VSL",
   "headline": "How to spot a Series A 47 days before the deck lands.",
   "subhead": "The 10-minute case for code-side momentum as the single most leading public signal in venture capital.",
-  "description": "Brunson-format video sales letter. The single belief: GitHub commit-velocity acceleration is the most leading public signal in venture capital — every other deal-flow source is a lagging indicator. Built on a 219-startup SSRN panel with a 21–47 day median pre-deck lead band.\n\nThree doors at the end:\n• Free Sunday digest — https://gitdealflow.com/#signup\n• €7 First Look Pass — https://signals.gitdealflow.com/firstlook\n• €9.97/mo Dashboard — https://signals.gitdealflow.com/pricing\n\nSSRN preprint: https://ssrn.com/abstract=6606558\nFull written version: https://signals.gitdealflow.com/walkthrough\n\n#vc #dealflow #github #startups #seriesA",
+  "description": "Brunson-format video sales letter. The single belief: GitHub commit-velocity acceleration is the most leading public signal in venture capital, every other deal-flow source is a lagging indicator. Built on a 219-startup SSRN panel with a 21-47 day median pre-deck lead band.\n\nThree doors at the end:\n• Free Sunday digest, https://gitdealflow.com/#signup\n• €7 First Look Pass, https://signals.gitdealflow.com/firstlook\n• €9.97/mo Dashboard, https://signals.gitdealflow.com/pricing\n\nSSRN preprint: https://ssrn.com/abstract=6606558\nFull written version: https://signals.gitdealflow.com/walkthrough\n\n#vc #dealflow #github #startups #seriesA",
   "fps": 30,
   "width": 1920,
   "height": 1080,
@@ -23,13 +23,13 @@
       "durationHint": 4.5,
       "data": {
         "title": "How to spot a Series A 47 days early.",
-        "subtitle": "The Perfect VSL — 10 minutes."
+        "subtitle": "The Perfect VSL, 10 minutes."
       }
     },
     {
       "id": "hook",
       "kind": "hook",
-      "vo": "Imagine your inbox on a Tuesday morning. Most weeks you scroll. You half-read a deck someone forwarded. But this Tuesday, your inbox has something different — a list of three sectors. One of them has a startup whose contributor count doubled in the last fourteen days. You spend fifteen minutes on the merge graph. By the time their deck reaches Sequoia, you've already had the coffee. That is the rhythm. Stick with me — what comes next is mathematically falsifiable, and the proof is sitting on a public preprint server.",
+      "vo": "Imagine your inbox on a Tuesday morning. Most weeks you scroll. You half-read a deck someone forwarded. But this Tuesday, your inbox has something different, a list of three sectors. One of them has a startup whose contributor count doubled in the last fourteen days. You spend fifteen minutes on the merge graph. By the time their deck reaches Sequoia, you've already had the coffee. That is the rhythm. Stick with me, what comes next is mathematically falsifiable, and the proof is sitting on a public preprint server.",
       "durationHint": 38,
       "data": {
         "lines": [
@@ -44,7 +44,7 @@
     {
       "id": "big-domino",
       "kind": "big-domino",
-      "vo": "Here is the single belief this whole video stands on. If GitHub commit-velocity acceleration is the most leading public signal in venture capital, then every other deal-flow source — pitch decks, AngelList, Crunchbase, warm intros — is a lagging indicator. The whole investing thesis stands or falls on whether that single sentence is true. Stay with me. By the time we are done, you will be able to falsify it yourself in a notebook.",
+      "vo": "Here is the single belief this whole video stands on. If GitHub commit-velocity acceleration is the most leading public signal in venture capital, then every other deal-flow source, pitch decks, AngelList, Crunchbase, warm intros, is a lagging indicator. The whole investing thesis stands or falls on whether that single sentence is true. Stay with me. By the time we are done, you will be able to falsify it yourself in a notebook.",
       "durationHint": 32,
       "data": {
         "label": "The single belief",
@@ -57,7 +57,7 @@
     {
       "id": "three-secrets",
       "kind": "magic-bullet",
-      "vo": "Before the dashboard worked, I had to unlearn three things. Day one — I thought GitHub data was noise. Pull requests, commits, issues — too granular to mean anything at the company level. I was wrong. A single derived metric — fourteen-day commit-velocity acceleration with a contributor-spike confirmation — filters the noise and leaves a signal you can act on. Day two — I trusted my network to show me the deals. My network was showing me yesterday's deals. By the time a partner forwards you a deck, three other funds already have it. The merge graph, watched weekly, shows you tomorrow's deals. Day three — I worried public data had no edge. It does. The data is public. The rhythm — Sunday-morning attention applied every week on a stable methodology — is the moat. Make sense so far?",
+      "vo": "Before the dashboard worked, I had to unlearn three things. Day one, I thought GitHub data was noise. Pull requests, commits, issues, too granular to mean anything at the company level. I was wrong. A single derived metric, fourteen-day commit-velocity acceleration with a contributor-spike confirmation, filters the noise and leaves a signal you can act on. Day two, I trusted my network to show me the deals. My network was showing me yesterday's deals. By the time a partner forwards you a deck, three other funds already have it. The merge graph, watched weekly, shows you tomorrow's deals. Day three, I worried public data had no edge. It does. The data is public. The rhythm, Sunday-morning attention applied every week on a stable methodology, is the moat. Make sense so far?",
       "durationHint": 65,
       "data": {
         "title": "Three things I had to unlearn",
@@ -86,10 +86,10 @@
     {
       "id": "proof",
       "kind": "magic-bullet",
-      "vo": "Here's our core claim — and how we test it in the open. Two hundred nineteen GitHub engineering-velocity observations, across nineteen sectors and five quarterly periods, all openly published. Our claim is that a two-times contributor spike inside a fourteen-day window precedes a startup's fundraise by a few weeks. Here's the honest part: that published dataset is descriptive — it does not yet carry the funding labels that would prove the lead time, so we validate the claim live, in public, on the scorecard. Every velocity number is re-derivable from public GitHub data. The regression code is on Zenodo, the preprint on SSRN, CC-BY-4-point-zero — and we are inviting exactly that funding-join replication. You can pull the panel in an afternoon. Still with me?",
+      "vo": "Here's our core claim, and how we test it in the open. Two hundred nineteen GitHub engineering-velocity observations, across nineteen sectors and five quarterly periods, all openly published. Our claim is that a two-times contributor spike inside a fourteen-day window precedes a startup's fundraise by a few weeks. Here's the honest part: that published dataset is descriptive, it does not yet carry the funding labels that would prove the lead time, so we validate the claim live, in public, on the scorecard. Every velocity number is re-derivable from public GitHub data. The regression code is on Zenodo, the preprint on SSRN, CC-BY-4-point-zero, and we are inviting exactly that funding-join replication. You can pull the panel in an afternoon. Still with me?",
       "durationHint": 54,
       "data": {
-        "title": "Our core claim — tested in the open",
+        "title": "Our core claim, tested in the open",
         "beats": [
           {
             "day": "Day 1",
@@ -100,7 +100,7 @@
           {
             "day": "Day 2",
             "label": "Claim: a few weeks' lead",
-            "detail": "Our hypothesis — validated live on /scorecard.",
+            "detail": "Our hypothesis, validated live on /scorecard.",
             "win": false
           },
           {
@@ -121,7 +121,7 @@
     {
       "id": "future-pace",
       "kind": "magic-bullet",
-      "vo": "Now picture a Tuesday morning, three months from now. The Sunday digest is in your inbox. Three sectors flagged — AI-native devtools, verifiable compute, on-device inference. AI-native devtools has a name you have not heard before, with a contributor influx that doubled inside fourteen days. You spend fifteen minutes on the dashboard. You read the README, the merge graph, the contributor map. You write to the founder. By the time their deck reaches another partner at another fund, you have had the coffee, formed a view, and quoted a number. That is the cadence. Fifteen minutes a week, one new founder per fortnight, twenty-four named sourcing edges in your first year.",
+      "vo": "Now picture a Tuesday morning, three months from now. The Sunday digest is in your inbox. Three sectors flagged, AI-native devtools, verifiable compute, on-device inference. AI-native devtools has a name you have not heard before, with a contributor influx that doubled inside fourteen days. You spend fifteen minutes on the dashboard. You read the README, the merge graph, the contributor map. You write to the founder. By the time their deck reaches another partner at another fund, you have had the coffee, formed a view, and quoted a number. That is the cadence. Fifteen minutes a week, one new founder per fortnight, twenty-four named sourcing edges in your first year.",
       "durationHint": 52,
       "data": {
         "title": "A Tuesday morning, three months from now",
@@ -150,7 +150,7 @@
     {
       "id": "stack",
       "kind": "stack-reveal",
-      "vo": "Here is what is in the box at nine ninety-seven a month. The live dashboard — one hundred and nine ranked startups, refreshed every Monday, the same dataset behind the SSRN paper. The two hundred nineteen startup backtest CSV — every panel row, regression-ready, drop it into a notebook. Monthly sector deep-dive PDF — twelve pages, your sector, every month. Two free Chrome extensions — the Crunchbase badge that injects a momentum score, and the GitHub Lookup that hovers any org and shows velocity in two hundred milliseconds. The free MCP server, forever — six tools inside Claude, Cursor, Windsurf, any agent host. Async watchlist build — send your thesis, get back the ten highest-acceleration matching orgs. Methodology vault — the full SSRN preprint and regression code, open. And the thirty-day signal-or-it's-free guarantee — if the dashboard does not surface a startup you find genuinely interesting in your first month, reply REFUND to any email. No forms, no calls. Total real value — one thousand seven hundred twenty-eight euros. Your price — nine ninety-seven a month. Locked at the founding rate. Forever.",
+      "vo": "Here is what is in the box at nine ninety-seven a month. The live dashboard, one hundred and nine ranked startups, refreshed every Monday, the same dataset behind the SSRN paper. The two hundred nineteen startup backtest CSV, every panel row, regression-ready, drop it into a notebook. Monthly sector deep-dive PDF, twelve pages, your sector, every month. Two free Chrome extensions, the Crunchbase badge that injects a momentum score, and the GitHub Lookup that hovers any org and shows velocity in two hundred milliseconds. The free MCP server, forever, six tools inside Claude, Cursor, Windsurf, any agent host. Async watchlist build, send your thesis, get back the ten highest-acceleration matching orgs. Methodology vault, the full SSRN preprint and regression code, open. And the thirty-day signal-or-it's-free guarantee, if the dashboard does not surface a startup you find genuinely interesting in your first month, reply REFUND to any email. No forms, no calls. Total real value, one thousand seven hundred twenty-eight euros. Your price, nine ninety-seven a month. Locked at the founding rate. Forever.",
       "durationHint": 90,
       "data": {
         "items": [
@@ -170,7 +170,7 @@
     {
       "id": "objections",
       "kind": "magic-bullet",
-      "vo": "A few questions I get every week. What if you are not technical? The dashboard is fully human-readable. The backtest CSV is a bonus, not a requirement. What if you are a team of one? That is the ideal customer profile — solo developer-investors writing five-to-fifty-thousand euro checks. What if you want to test before committing? Seven euros gets you a single-sector First Look Pass. Twenty-four hour deep-dive. The seven euros credit toward Dashboard if you upgrade in fourteen days. What if you cancel? Cancel anytime, email reply, done in two business days. What if it does not work? Reply REFUND in your first thirty days. Full refund. No forms, no calls. Make sense?",
+      "vo": "A few questions I get every week. What if you are not technical? The dashboard is fully human-readable. The backtest CSV is a bonus, not a requirement. What if you are a team of one? That is the ideal customer profile, solo developer-investors writing five-to-fifty-thousand euro checks. What if you want to test before committing? Seven euros gets you a single-sector First Look Pass. Twenty-four hour deep-dive. The seven euros credit toward Dashboard if you upgrade in fourteen days. What if you cancel? Cancel anytime, email reply, done in two business days. What if it does not work? Reply REFUND in your first thirty days. Full refund. No forms, no calls. Make sense?",
       "durationHint": 50,
       "data": {
         "title": "Five questions you might be asking",
@@ -184,7 +184,7 @@
           {
             "day": "Q2",
             "label": "Team of one?",
-            "detail": "That is the ICP. Solo dev-investors, €5–50k checks.",
+            "detail": "That is the ICP. Solo dev-investors, €5-50k checks.",
             "win": false
           },
           {
@@ -211,22 +211,22 @@
     {
       "id": "cta",
       "kind": "cta",
-      "vo": "Three doors at the end of this video. The free Sunday digest — five names a week, no commitment — gitdealflow dot com slash signup. The seven euro First Look Pass — pick a sector, twenty-four hour deep-dive — signals dot gitdealflow dot com slash firstlook. The Dashboard at nine ninety-seven a month, founding rate, locked forever — signals dot gitdealflow dot com slash pricing. Pick the rung that fits your cadence. The rest stay out of your way.",
+      "vo": "Three doors at the end of this video. The free Sunday digest, five names a week, no commitment, gitdealflow dot com slash signup. The seven euro First Look Pass, pick a sector, twenty-four hour deep-dive, signals dot gitdealflow dot com slash firstlook. The Dashboard at nine ninety-seven a month, founding rate, locked forever, signals dot gitdealflow dot com slash pricing. Pick the rung that fits your cadence. The rest stay out of your way.",
       "durationHint": 38,
       "data": {
         "headline": "Three doors. Pick the rung that fits your cadence.",
         "url": "signals.gitdealflow.com/pricing",
         "ctas": [
-          "Free Sunday digest — gitdealflow.com/#signup",
-          "First Look Pass €7 — signals.gitdealflow.com/firstlook",
-          "Dashboard €9.97/mo — signals.gitdealflow.com/pricing"
+          "Free Sunday digest, gitdealflow.com/#signup",
+          "First Look Pass €7, signals.gitdealflow.com/firstlook",
+          "Dashboard €9.97/mo, signals.gitdealflow.com/pricing"
         ]
       }
     },
     {
       "id": "encore",
       "kind": "magic-bullet",
-      "vo": "One last frame before you go. If all this did was surface one Series A forty-seven days before the deck reached your competitors — would the nine ninety-seven a month be worth it? If all this did was save you one warm intro you did not have access to — would it be worth it? If all this did was replace one hour of manual sourcing per week — would it be worth it? If all this did was give you one quoting moment with an LP about a thesis they had not heard from any other fund — would it be worth it? That is the question I want you to answer. The link is below.",
+      "vo": "One last frame before you go. If all this did was surface one Series A forty-seven days before the deck reached your competitors, would the nine ninety-seven a month be worth it? If all this did was save you one warm intro you did not have access to, would it be worth it? If all this did was replace one hour of manual sourcing per week, would it be worth it? If all this did was give you one quoting moment with an LP about a thesis they had not heard from any other fund, would it be worth it? That is the question I want you to answer. The link is below.",
       "durationHint": 50,
       "data": {
         "title": "If all this did was...",
@@ -262,27 +262,27 @@
   "faqs": [
     {
       "q": "Why is this called a VSL when it's also a written page?",
-      "a": "The video is the primary asset — a 10-minute Brunson-format VSL with synthetic voice cadence (Cartesia Theo, no founder face or voice). The page below the video is the structured transcript so the same content is consumable in 12 minutes by an investor who would rather skim than watch. Same arc — hook, big domino, three secrets, proof, stack, closes, encore — both formats."
+      "a": "The video is the primary asset, a 10-minute Brunson-format VSL with synthetic voice cadence (Cartesia Theo, no founder face or voice). The page below the video is the structured transcript so the same content is consumable in 12 minutes by an investor who would rather skim than watch. Same arc, hook, big domino, three secrets, proof, stack, closes, encore, both formats."
     },
     {
       "q": "Is the voice synthetic?",
-      "a": "Yes — Cartesia 'Theo'. Anonymity rule: no founder face, voice, or name. Synthetic TTS keeps the methodology in front and the personality out of the way."
+      "a": "Yes, Cartesia 'Theo'. Anonymity rule: no founder face, voice, or name. Synthetic TTS keeps the methodology in front and the personality out of the way."
     },
     {
-      "q": "Where does the 21–47 day lead band come from?",
-      "a": "The SSRN/Zenodo panel (219 GitHub engineering-velocity observations, 19 sectors, 5 quarterly periods, CC-BY-4.0) is descriptive — it deliberately carries no funding-event labels, so it does not by itself prove a lead band. The 21–47 day window is our working hypothesis; we validate it in the open on /scorecard (currently un-graded) and invite replication joining the panel to funding data. Pull the panel and regression code in an afternoon."
+      "q": "Where does the 21-47 day lead band come from?",
+      "a": "The SSRN/Zenodo panel (219 GitHub engineering-velocity observations, 19 sectors, 5 quarterly periods, CC-BY-4.0) is descriptive, it deliberately carries no funding-event labels, so it does not by itself prove a lead band. The 21-47 day window is our working hypothesis; we validate it in the open on /scorecard (currently un-graded) and invite replication joining the panel to funding data. Pull the panel and regression code in an afternoon."
     },
     {
       "q": "Why €9.97/mo when comparable tools cost €1,000+/mo?",
-      "a": "Two reasons. One — there is no sales team, no enterprise motion, no demo gating. The whole price difference is the cost of the sales motion we removed. Two — the buyer is a developer-investor writing €5k–€50k checks, not a partner at a fund with a six-figure data budget. Pricing matches the buyer."
+      "a": "Two reasons. One, there is no sales team, no enterprise motion, no demo gating. The whole price difference is the cost of the sales motion we removed. Two, the buyer is a developer-investor writing €5k-€50k checks, not a partner at a fund with a six-figure data budget. Pricing matches the buyer."
     },
     {
       "q": "What if I want to test it on one sector before committing?",
-      "a": "First Look Pass — €7 once. Pick any of 19 tracked sectors at checkout. Within 24 hours you receive a written deep-dive PDF, the raw CSV, and a walkthrough of what stood out. If you upgrade to Dashboard within 14 days, the €7 is credited. If you don't, you keep the report."
+      "a": "First Look Pass, €7 once. Pick any of 19 tracked sectors at checkout. Within 24 hours you receive a written deep-dive PDF, the raw CSV, and a walkthrough of what stood out. If you upgrade to Dashboard within 14 days, the €7 is credited. If you don't, you keep the report."
     },
     {
       "q": "What about the false positives?",
-      "a": "38% false-positive rate at the 30-day window. Of those, ~70% are silent rounds that didn't get press — not no-events. The remaining ~30% are genuine head-fakes (early hiring spikes that didn't translate to a round). The Day 21 follow-up email walks through how we handle them."
+      "a": "38% false-positive rate at the 30-day window. Of those, ~70% are silent rounds that didn't get press, not no-events. The remaining ~30% are genuine head-fakes (early hiring spikes that didn't translate to a round). The Day 21 follow-up email walks through how we handle them."
     }
   ]
 }

@@ -1,8 +1,8 @@
 /**
- * /.well-known/wikidata.json — Knowledge Panel claim manifest.
+ * /.well-known/wikidata.json, Knowledge Panel claim manifest.
  *
  * Brunson Audit Pass V8 (2026-05-09). Closes the +4-pt gap on Traffic
- * Secrets §2 Ch 9 (Google) — the entity Q139376302 already exists on
+ * Secrets §2 Ch 9 (Google), the entity Q139376302 already exists on
  * Wikidata; this manifest is the canonical machine-readable proof that
  * THIS domain controls THAT entity, in the shape Google's Knowledge
  * Graph crawler reads to bind a Knowledge Panel.
@@ -49,7 +49,7 @@ export async function GET() {
       QID +
       ". Verify reciprocal claims at https://www.wikidata.org/wiki/" +
       QID +
-      " — the P856 (official website) statement on the entity must resolve to one of the URLs listed under `domain`.",
+      ", the P856 (official website) statement on the entity must resolve to one of the URLs listed under `domain`.",
 
     entity: {
       qid: QID,
@@ -225,7 +225,7 @@ export async function GET() {
       },
     },
 
-    // Cross-graph identifiers — every external profile/registry that
+    // Cross-graph identifiers, every external profile/registry that
     // references this entity. Each entry mirrors the Wikidata claim for
     // the corresponding P-code so a consumer can resolve any of these
     // back to QID Q139376302 through reciprocal lookup.
@@ -256,7 +256,7 @@ export async function GET() {
       "https://orcid.org/0009-0002-2222-4112",
     ],
 
-    // Reciprocal verification — how a consumer (Google, Bing, AI agent)
+    // Reciprocal verification, how a consumer (Google, Bing, AI agent)
     // independently verifies the binding without trusting this manifest.
     verification: {
       sparqlEndpoint: "https://query.wikidata.org/sparql",
@@ -282,13 +282,13 @@ export async function GET() {
         url: `${SITE}/wikidata`,
         format: "text/html",
         description:
-          "Human-readable Knowledge Panel claim landing — mirror of this manifest with reciprocal-claim proof and copy-paste SPARQL queries.",
+          "Human-readable Knowledge Panel claim landing, mirror of this manifest with reciprocal-claim proof and copy-paste SPARQL queries.",
       },
       {
         url: `${SITE}/wikipedia`,
         format: "text/html",
         description:
-          "Wikipedia citation helper — copy-paste {{cite journal}} and {{cite web}} snippets pre-filled with the SSRN DOI and dataset URL.",
+          "Wikipedia citation helper, copy-paste {{cite journal}} and {{cite web}} snippets pre-filled with the SSRN DOI and dataset URL.",
       },
       {
         url: `${SITE}/.well-known/wikidata.json`,

@@ -1,15 +1,15 @@
 /**
- * SeoCta — the standard conversion block for cold programmatic-SEO traffic.
+ * SeoCta, the standard conversion block for cold programmatic-SEO traffic.
  *
  * Traffic Secrets: every content page is a funnel entry point and needs a
  * hook → offer. Most of our pSEO templates either dead-ended or leaked to
  * "more reading." This drops one consistent capture block (free Sunday
- * digest is the magnet — Brunson "front-end lead funnel") plus the
+ * digest is the magnet, Brunson "front-end lead funnel") plus the
  * Attractive-Character signoff so the page doesn't read as a faceless SEO
  * surface.
  *
  * Defaults are Marcus-voiced (non-coding dealmaker): plain English, the
- * timing edge, "no code-reading." The primary CTA is the FREE digest — never
+ * timing edge, "no code-reading." The primary CTA is the FREE digest, never
  * a paid page behind "free" copy (that bait/scent-mismatch is the bug this
  * replaces). Pass `secondary` for high-intent pages (e.g. €7 First Look on
  * comparison templates).

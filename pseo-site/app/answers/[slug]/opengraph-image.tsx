@@ -3,7 +3,7 @@ import { getAgentQueryBySlug } from "@/content/agent-queries";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "VC Deal Flow Signal — Answer";
+export const alt = "VC Deal Flow Signal, Answer";
 
 export default async function OGImage({
   params,
@@ -13,7 +13,7 @@ export default async function OGImage({
   const { slug } = await params;
   const q = getAgentQueryBySlug(slug);
 
-  const title = q?.h1 ?? "VC Deal Flow Signal — Answer";
+  const title = q?.h1 ?? "VC Deal Flow Signal, Answer";
   const tldr = q?.tldr ?? "";
 
   return new ImageResponse(

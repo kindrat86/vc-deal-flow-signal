@@ -41,7 +41,7 @@ export async function generateMetadata({
 
   return {
     title:
-      "Dilution Stack Calculator — Multiple SAFEs + Series A + Option Pool",
+      "Dilution Stack Calculator, Multiple SAFEs + Series A + Option Pool",
     description:
       "Free dilution-stack calculator. Model up to 3 stacked post-money SAFEs converting at Series A, with option pool refresh, and see the final founder ownership. URL-shareable for board decks and term-sheet discussions.",
     alternates: { canonical: "/tools/dilution-stack" },
@@ -56,7 +56,7 @@ export async function generateMetadata({
           url: ogImage,
           width: 1200,
           height: 630,
-          alt: "Dilution Stack Calculator — VC Deal Flow Signal",
+          alt: "Dilution Stack Calculator, VC Deal Flow Signal",
         },
       ],
     },
@@ -95,22 +95,22 @@ const FAQS: { question: string; answer: string }[] = [
   {
     question: "What assumption is the calculator making about discounts?",
     answer:
-      "v1 assumes each SAFE converts at its post-money cap (the cap-binding case). It does not model discount conversion. For cap-vs-discount math on a single SAFE, use the dedicated /tools/safe-calculator — it shows when the cap binds, when the discount binds, and the resulting effective valuation.",
+      "v1 assumes each SAFE converts at its post-money cap (the cap-binding case). It does not model discount conversion. For cap-vs-discount math on a single SAFE, use the dedicated /tools/safe-calculator, it shows when the cap binds, when the discount binds, and the resulting effective valuation.",
   },
   {
     question: "How is the option pool refresh modelled?",
     answer:
-      "v1 sets the option pool as a target percentage of the post-round cap table and dilutes everyone proportionally — founders, SAFE holders, and Series A investors. The YC standard 'option pool comes out of pre-money' is an approximation that requires an iterative SAFE-and-pool waterfall; v1 simplifies for legibility. The difference is meaningful at large pool refreshes (>15%) and should be confirmed with your lawyer.",
+      "v1 sets the option pool as a target percentage of the post-round cap table and dilutes everyone proportionally, founders, SAFE holders, and Series A investors. The YC standard 'option pool comes out of pre-money' is an approximation that requires an iterative SAFE-and-pool waterfall; v1 simplifies for legibility. The difference is meaningful at large pool refreshes (>15%) and should be confirmed with your lawyer.",
   },
   {
     question: "What does 'over-diluted' mean?",
     answer:
-      "When SAFE ownership + Series A percentage + option pool sum to more than 100% of the post-round cap table, the founders' residual is negative — mathematically impossible in a real cap table. This usually means the SAFE caps are too low relative to the Series A pre-money, the SAFE amounts are too large for the caps, or the option pool target is too aggressive. The calculator flags this with a red band so you can adjust inputs.",
+      "When SAFE ownership + Series A percentage + option pool sum to more than 100% of the post-round cap table, the founders' residual is negative, mathematically impossible in a real cap table. This usually means the SAFE caps are too low relative to the Series A pre-money, the SAFE amounts are too large for the caps, or the option pool target is too aggressive. The calculator flags this with a red band so you can adjust inputs.",
   },
   {
     question: "Can I share the cap-table scenario?",
     answer:
-      "Yes — every SAFE row + the entire Series A is encoded in the URL. The 'Copy share link' button copies the current URL to your clipboard. Send it to your co-founder, board, or lawyer and they open the calculator with the same numbers ready to inspect.",
+      "Yes, every SAFE row + the entire Series A is encoded in the URL. The 'Copy share link' button copies the current URL to your clipboard. Send it to your co-founder, board, or lawyer and they open the calculator with the same numbers ready to inspect.",
   },
 ];
 
@@ -213,7 +213,7 @@ export default function DilutionStackPage() {
         "@type": "WebPage",
         "@id": PAGE_URL,
         url: PAGE_URL,
-        name: "Dilution Stack Calculator — Multiple SAFEs + Series A + Option Pool",
+        name: "Dilution Stack Calculator, Multiple SAFEs + Series A + Option Pool",
         description:
           "Free multi-SAFE dilution-stack calculator with shareable URLs.",
         inLanguage: "en-US",
@@ -271,7 +271,7 @@ export default function DilutionStackPage() {
           Model up to 3 stacked post-money SAFEs converting at a priced Series
           A, with an option pool refresh, and see your final founder
           ownership at close. Each SAFE row + the entire Series A encodes
-          into the URL — share the exact scenario with your co-founder, board,
+          into the URL, share the exact scenario with your co-founder, board,
           or lawyer without retyping a number.
         </p>
 

@@ -1,5 +1,5 @@
 /**
- * /.well-known/openai-search.json — OpenAI search-discovery descriptor.
+ * /.well-known/openai-search.json, OpenAI search-discovery descriptor.
  *
  * Sibling to /.well-known/openai-search-data.json that ChatGPT Search and
  * SearchGPT crawl when building their domain index. Mirrors the openai-search

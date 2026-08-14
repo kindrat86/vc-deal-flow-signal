@@ -123,7 +123,7 @@ export default async function SectorPage({ params }: PageProps) {
           {
             "@type": "ListItem",
             position: 2,
-            name: `${sector.name} — ${period.name}`,
+            name: `${sector.name}, ${period.name}`,
             item: `https://signals.gitdealflow.com/startups-to-watch/${slug}`,
           },
         ],
@@ -147,13 +147,13 @@ export default async function SectorPage({ params }: PageProps) {
           "@type": "ListItem",
           position: i + 1,
           name: s.name,
-          description: `${s.description} — ${s.commitVelocityChange} commit velocity change, ${s.contributors} contributors, signal: ${s.signalType}`,
+          description: `${s.description}, ${s.commitVelocityChange} commit velocity change, ${s.contributors} contributors, signal: ${s.signalType}`,
           url: s.githubUrl,
         })),
       },
       {
         "@type": "Dataset",
-        name: `${sector.name} Startups — Engineering Acceleration Dataset, ${period.name}`,
+        name: `${sector.name} Startups, Engineering Acceleration Dataset, ${period.name}`,
         description: `Ranked dataset of ${sortedStartups.length} ${sector.name.toLowerCase()} startups in ${period.name}, scored by GitHub commit velocity change, contributor growth, new repository count, and signal classification. Sourced from public GitHub API data.`,
         url: `https://signals.gitdealflow.com/startups-to-watch/${slug}`,
         identifier: `gitdealflow:startups-to-watch:${slug}`,
@@ -187,7 +187,7 @@ export default async function SectorPage({ params }: PageProps) {
           { "@type": "PropertyValue", name: "Contributors", description: "Unique contributors to the most active public repository" },
           { "@type": "PropertyValue", name: "New Repositories (30d)", description: "Public repositories created in the last 30 days" },
           { "@type": "PropertyValue", name: "Signal Type", description: "Engineering hiring burst, infrastructure buildout, deploy frequency spike, or framework migration" },
-          { "@type": "PropertyValue", name: "Stage Estimate", description: "Pre-seed, Seed, Series A/B, or Growth — estimated from contributor count" },
+          { "@type": "PropertyValue", name: "Stage Estimate", description: "Pre-seed, Seed, Series A/B, or Growth, estimated from contributor count" },
         ],
         distribution: [
           {
@@ -215,7 +215,7 @@ export default async function SectorPage({ params }: PageProps) {
           </Link>
           <span className="mx-2">/</span>
           <span className="text-gray-400">
-            {sector.name} — {period.name}
+            {sector.name}, {period.name}
           </span>
         </nav>
 
@@ -240,12 +240,12 @@ export default async function SectorPage({ params }: PageProps) {
           />
         </div>
 
-        {/* Key Takeaway — self-contained summary for AI citation */}
+        {/* Key Takeaway, self-contained summary for AI citation */}
         {keyTakeaway && (
           <section className="mb-8" aria-label="Key takeaway">
             <div className="rounded-lg border border-sky-900/50 bg-sky-950/30 p-5">
               <h2 className="text-xs font-medium text-sky-400 uppercase tracking-wider mb-2">
-                Key takeaways — at a glance
+                Key takeaways, at a glance
               </h2>
               <p className="text-gray-300 text-sm leading-relaxed">
                 {keyTakeaway}
@@ -267,7 +267,7 @@ export default async function SectorPage({ params }: PageProps) {
         <section className="mb-10 grid grid-cols-1 sm:grid-cols-2 gap-6" aria-label="Engineering signal charts">
           <VelocityBar
             startups={sortedStartups}
-            title={`${sector.name} — Velocity Change`}
+            title={`${sector.name}, Velocity Change`}
           />
           <SignalDistribution
             startups={sortedStartups}
@@ -299,7 +299,7 @@ export default async function SectorPage({ params }: PageProps) {
         {/* CTA */}
         <section className="mb-12" aria-label="Call to action">
           <SeoCta
-            heading={`The full ranked ${sector.name} list updates every week — get it free`}
+            heading={`The full ranked ${sector.name} list updates every week, get it free`}
             secondary={{ label: "Unlock the Dashboard", href: "https://gitdealflow.com/dashboard" }}
           />
         </section>

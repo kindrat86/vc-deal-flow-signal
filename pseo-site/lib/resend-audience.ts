@@ -4,7 +4,7 @@ import "server-only";
  * Resolve the GitDealFlow Resend audience id.
  *
  * The Resend team hosts audiences for several products (VoiceLogPro,
- * UnlockSaaS, GitDealFlow — split out 2026-07-03), so `audiences.data[0]`
+ * UnlockSaaS, GitDealFlow, split out 2026-07-03), so `audiences.data[0]`
  * is NOT safe: between 2026-07-05 and 2026-07-13 the daily Seinfeld
  * broadcast went to another product's list because of exactly that.
  *

@@ -1,5 +1,5 @@
 /**
- * /.well-known/compliance.json — enterprise-procurement compliance descriptor.
+ * /.well-known/compliance.json, enterprise-procurement compliance descriptor.
  *
  * Many AI-procurement and enterprise-security workflows now probe a
  * .well-known/compliance.json (or security.json) before approving an external
@@ -91,7 +91,7 @@ export async function GET() {
 
       iso27001: {
         status: "not_certified",
-        notes: "Same posture as SOC 2 — relying on subprocessor certifications.",
+        notes: "Same posture as SOC 2, relying on subprocessor certifications.",
       },
 
       // AI / training posture

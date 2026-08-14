@@ -1,7 +1,7 @@
 /**
- * /api/v1/pricing — extension-stripped alias for /api/v1/pricing.json.
+ * /api/v1/pricing, extension-stripped alias for /api/v1/pricing.json.
  *
- * NOT force-static — see feedback_no_force_static_on_alias_via_import.md.
+ * NOT force-static, see feedback_no_force_static_on_alias_via_import.md.
  */
 import { GET as Upstream } from "@/app/api/v1/pricing.json/route";
 

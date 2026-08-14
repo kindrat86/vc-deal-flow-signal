@@ -4,13 +4,13 @@ import Link from "next/link";
 const SITE = "https://signals.gitdealflow.com";
 
 export const metadata: Metadata = {
-  title: "Free 5-Call Sample — Agent Credits",
+  title: "Free 5-Call Sample, Agent Credits",
   description:
     "Try get_deep_signal before buying credits: drop your email, get an API key with 5 free deep-signal calls within 24 hours. No card, no subscription.",
   alternates: { canonical: "/agents/credits/sample" },
   robots: { index: true, follow: true },
   openGraph: {
-    title: "Free 5-Call Sample — Agent Credits",
+    title: "Free 5-Call Sample, Agent Credits",
     description:
       "5 free get_deep_signal calls to test the paid endpoint. Key arrives by email within 24 hours.",
     type: "website",
@@ -70,7 +70,7 @@ export default async function AgentCreditsSamplePage({
             5 free <code className="text-emerald-300 font-mono">get_deep_signal</code>{" "}
             calls
           </strong>{" "}
-          — same payload, same data, same misses-are-free rule as the paid
+same payload, same data, same misses-are-free rule as the paid
           pack.
         </p>
       </header>
@@ -82,7 +82,7 @@ export default async function AgentCreditsSamplePage({
           className="mb-10 rounded-xl border border-emerald-500/40 bg-emerald-500/10 p-6 sm:p-8"
         >
           <h2 className="text-emerald-300 font-semibold text-lg mb-2">
-            Request received — your key arrives by email within 24 hours
+            Request received, your key arrives by email within 24 hours
           </h2>
           <p className="text-emerald-100/80 text-sm leading-relaxed mb-2">
             Sample keys are issued by a human (that&rsquo;s the honest part:
@@ -111,7 +111,7 @@ export default async function AgentCreditsSamplePage({
               role="alert"
               className="mb-4 rounded-lg border border-red-500/40 bg-red-500/10 px-4 py-3 text-red-300 text-sm"
             >
-              That email didn&rsquo;t look valid — try again.
+              That email didn&rsquo;t look valid, try again.
             </p>
           )}
           {errored && (
@@ -166,7 +166,7 @@ export default async function AgentCreditsSamplePage({
                 className="w-full rounded-lg border border-slate-700 bg-slate-950 px-4 py-2.5 text-gray-100 placeholder-gray-500 focus:border-emerald-500 focus:outline-none focus:ring-1 focus:ring-emerald-500 text-sm"
               />
             </div>
-            {/* Honeypot — hidden from humans, bots fill it and get ignored */}
+            {/* Honeypot, hidden from humans, bots fill it and get ignored */}
             <div className="hidden" aria-hidden="true">
               <label htmlFor="sample-website">Website</label>
               <input
@@ -184,7 +184,7 @@ export default async function AgentCreditsSamplePage({
               Send me the 5-call key →
             </button>
             <p className="text-gray-500 text-xs leading-relaxed">
-              Your key arrives by email within 24 hours — sample keys are
+              Your key arrives by email within 24 hours, sample keys are
               issued by a human, not a bot. You&rsquo;ll also join the weekly
               Signal Digest (unsubscribe any time, one click).
             </p>
@@ -198,20 +198,19 @@ export default async function AgentCreditsSamplePage({
         </h2>
         <ul className="text-gray-300 text-sm leading-relaxed space-y-2 mb-4">
           <li>
-            <strong className="text-gray-100">The full paid payload</strong> —
-            composite score (0–100), in-sector rank + percentile,
+            <strong className="text-gray-100">The full paid payload</strong>: composite score (0-100), in-sector rank + percentile,
             plain-English thesis, top 3 comparables, multi-period history,
             citation string. Nothing is trimmed for the sample.
           </li>
           <li>
-            <strong className="text-gray-100">Misses are free</strong> — a
+            <strong className="text-gray-100">Misses are free</strong>: a
             startup outside the tracked universe returns{" "}
             <code className="text-emerald-400 font-mono">{`{ found: false }`}</code>{" "}
             and costs 0 of your 5 calls.
           </li>
           <li>
             <strong className="text-gray-100">Works everywhere the paid key works</strong>{" "}
-            — the <code className="text-emerald-400 font-mono">get_deep_signal</code>{" "}
+the <code className="text-emerald-400 font-mono">get_deep_signal</code>{" "}
             MCP tool and{" "}
             <code className="text-emerald-400 font-mono">
               POST /api/agent/deep-signal
@@ -240,7 +239,7 @@ export default async function AgentCreditsSamplePage({
               Why does the key take up to 24 hours?
             </dt>
             <dd className="text-gray-400 leading-relaxed">
-              Sample keys are issued manually — a human reads every request.
+              Sample keys are issued manually, a human reads every request.
               That keeps the free tier abuse-free without a signup wall. Paid
               credit-pack keys are automated and arrive in ~30 seconds.
             </dd>
@@ -273,7 +272,7 @@ export default async function AgentCreditsSamplePage({
               >
                 x402 pay-per-call endpoint
               </Link>{" "}
-              instead — $0.19 USDC per call on Base, no key, no email, the
+              instead, $0.19 USDC per call on Base, no key, no email, the
               wallet signs each request.
             </dd>
           </div>

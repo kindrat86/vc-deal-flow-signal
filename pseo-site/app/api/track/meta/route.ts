@@ -2,9 +2,9 @@ import { NextRequest } from "next/server";
 import { createHash } from "node:crypto";
 
 /**
- * /api/track/meta — Server-side Meta Conversions API (CAPI) bridge.
+ * /api/track/meta, Server-side Meta Conversions API (CAPI) bridge.
  *
- * Brunson Traffic Secrets §2 Ch 8 — Facebook layer. Anonymity-compatible:
+ * Brunson Traffic Secrets §2 Ch 8, Facebook layer. Anonymity-compatible:
  * no founder content, only event-side pixel work. The browser pixel
  * (loaded by components/PixelManager.tsx when NEXT_PUBLIC_META_PIXEL_ID is
  * set) tracks page-views client-side; this endpoint mirrors high-value
@@ -12,7 +12,7 @@ import { createHash } from "node:crypto";
  * survives iOS Safari ITP, ad-blockers, and the "Limit Ad Tracking" toggle.
  *
  * Why server-side mirror:
- *   - Browser pixel loses ~30–50% of events on iOS 17+ via ITP.
+ *   - Browser pixel loses ~30-50% of events on iOS 17+ via ITP.
  *   - Conversions API is Meta's recommended replacement (deduped via event_id).
  *   - Server-side hashing of PII (email, IP, user-agent) gives Meta
  *     a parallel attribution path without leaking raw PII to the browser.
@@ -25,10 +25,10 @@ import { createHash } from "node:crypto";
  *   - Event ID required for browser↔server dedup. We accept caller-supplied
  *     IDs and synthesize one from the request signature when absent.
  *
- * Env (all optional — endpoint is a no-op if missing):
- *   META_PIXEL_ID         — same value as NEXT_PUBLIC_META_PIXEL_ID
- *   META_CAPI_TOKEN       — long-lived access token from Events Manager
- *   META_TEST_EVENT_CODE  — optional, only set during ads-manager test runs
+ * Env (all optional, endpoint is a no-op if missing):
+ *   META_PIXEL_ID        , same value as NEXT_PUBLIC_META_PIXEL_ID
+ *   META_CAPI_TOKEN      , long-lived access token from Events Manager
+ *   META_TEST_EVENT_CODE , optional, only set during ads-manager test runs
  */
 
 export const runtime = "nodejs";
@@ -39,9 +39,9 @@ type CapiEventPayload = {
   event_name: string;
   /** Caller-supplied dedup ID. Required for browser↔server matching. */
   event_id?: string;
-  /** Buyer email — hashed before transmission. */
+  /** Buyer email, hashed before transmission. */
   email?: string;
-  /** External ID (e.g. user_id) — hashed before transmission. */
+  /** External ID (e.g. user_id), hashed before transmission. */
   external_id?: string;
   /** Currency ISO 4217. Required when value is set. */
   currency?: string;
@@ -49,7 +49,7 @@ type CapiEventPayload = {
   value?: number;
   /** Free-form custom_data object passed through to Meta. */
   custom_data?: Record<string, unknown>;
-  /** Optional source URL — defaults to the Referer header. */
+  /** Optional source URL, defaults to the Referer header. */
   event_source_url?: string;
 };
 
@@ -62,7 +62,7 @@ export async function POST(req: NextRequest): Promise<Response> {
   const pixelId = process.env.META_PIXEL_ID;
   const token = process.env.META_CAPI_TOKEN;
 
-  // Env-gated — returns 200 so the caller never errors when the pixel is
+  // Env-gated, returns 200 so the caller never errors when the pixel is
   // not yet provisioned. Lets us deploy this endpoint and the calling code
   // simultaneously, then flip the env vars when the user creates the pixel.
   if (!pixelId || !token) {
@@ -90,7 +90,7 @@ export async function POST(req: NextRequest): Promise<Response> {
   }
 
   // Pull request-side fingerprints. CAPI dedup uses (event_id, event_time,
-  // event_name) — without event_id Meta cannot pair browser+server hits.
+  // event_name), without event_id Meta cannot pair browser+server hits.
   const ip =
     req.headers.get("x-forwarded-for")?.split(",")[0]?.trim() ??
     req.headers.get("x-real-ip") ??
@@ -143,7 +143,7 @@ export async function POST(req: NextRequest): Promise<Response> {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(body),
-      // Don't block the user-facing path waiting for Meta — short timeout.
+      // Don't block the user-facing path waiting for Meta, short timeout.
       signal: AbortSignal.timeout(3000),
     });
 
@@ -154,7 +154,7 @@ export async function POST(req: NextRequest): Promise<Response> {
       );
       return Response.json(
         { ok: false, dispatched: false, status: res.status },
-        { status: 200 }, // 200 to caller — server-side issue, don't leak to user
+        { status: 200 }, // 200 to caller, server-side issue, don't leak to user
       );
     }
 
@@ -178,7 +178,7 @@ export async function POST(req: NextRequest): Promise<Response> {
 }
 
 /**
- * GET returns capability info — useful for ops smoke-testing without
+ * GET returns capability info, useful for ops smoke-testing without
  * actually firing an event (and without leaking the access token).
  */
 export async function GET(): Promise<Response> {

@@ -8,12 +8,12 @@ import { videos } from "@/content/videos";
 const SITE = "https://signals.gitdealflow.com";
 
 export const metadata: Metadata = {
-  title: "Watch — VC Deal Flow Signal in 90 seconds (silent demo)",
+  title: "Watch, VC Deal Flow Signal in 90 seconds (silent demo)",
   description:
-    "Silent visual walkthrough of the VC Deal Flow Signal engine. No audio, no narrator, no face. Just the dashboard breathing — commit velocity, contributor diversity, dependents graph, the composite score animating in real time.",
+    "Silent visual walkthrough of the VC Deal Flow Signal engine. No audio, no narrator, no face. Just the dashboard breathing, commit velocity, contributor diversity, dependents graph, the composite score animating in real time.",
   alternates: { canonical: "/watch" },
   openGraph: {
-    title: "Watch — VC Deal Flow Signal in 90 seconds (silent demo)",
+    title: "Watch, VC Deal Flow Signal in 90 seconds (silent demo)",
     description:
       "Silent visual walkthrough of the VC Deal Flow Signal engine. No audio, no narrator. Dashboard breathing in real time.",
     type: "article",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Watch — VC Deal Flow Signal in 90 seconds",
+    title: "Watch, VC Deal Flow Signal in 90 seconds",
     description:
       "Silent visual walkthrough. No audio, no narrator. Dashboard breathing in real time.",
   },
@@ -37,9 +37,9 @@ export default function WatchPage() {
         "@type": "Article",
         "@id": `${SITE}/watch#article`,
         headline:
-          "Watch — VC Deal Flow Signal in 90 seconds (silent visual demo)",
+          "Watch, VC Deal Flow Signal in 90 seconds (silent visual demo)",
         description:
-          "Silent visual walkthrough of the VC Deal Flow Signal engine — no audio, no narrator, no face. Just the dashboard breathing.",
+          "Silent visual walkthrough of the VC Deal Flow Signal engine, no audio, no narrator, no face. Just the dashboard breathing.",
         author: {
           "@type": "Organization",
           name: "VC Deal Flow Signal",
@@ -87,7 +87,7 @@ export default function WatchPage() {
             Watch the engine breathe.
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-            A silent visual walkthrough — no audio, no presenter, no face. Just
+            A silent visual walkthrough, no audio, no presenter, no face. Just
             the dashboard animating. Commit velocity climbs. Contributor count
             broadens. Dependents fan out. The composite score crosses the
             fundraise-precursor threshold. That&rsquo;s the whole product.
@@ -96,16 +96,16 @@ export default function WatchPage() {
 
         <AnimatedDemo />
 
-        {/* Video catalog — every video this site exposes, with chapters + transcripts */}
+        {/* Video catalog, every video this site exposes, with chapters + transcripts */}
         <section
           className="rounded-xl border border-emerald-700/30 bg-emerald-950/10 p-6 space-y-4"
           aria-labelledby="catalog"
         >
           <h2 id="catalog" className="text-xl font-bold text-gray-100">
-            Watch catalog — chapters &amp; transcripts
+            Watch catalog, chapters &amp; transcripts
           </h2>
           <p className="text-gray-400 text-sm leading-relaxed">
-            Every video this site exposes — the silent canvas demo above, the
+            Every video this site exposes, the silent canvas demo above, the
             self-hosted MCP screencast, plus three synthetic-voice videos on
             the YouTube channel. Each catalog page carries Clip-schema chapters
             and the full transcript so the content is readable without watching.
@@ -120,7 +120,7 @@ export default function WatchPage() {
                   href={`/watch/${v.slug}`}
                   className="text-sky-300 hover:text-sky-200 font-medium block mb-1"
                 >
-                  → {v.title.split("—")[0]?.trim() ?? v.title}
+                  → {v.title.split("-")[0]?.trim() ?? v.title}
                 </Link>
                 <p className="text-xs text-slate-400">
                   {v.format === "short" ? "Short · 9:16" : "Long-form"} ·{" "}
@@ -163,13 +163,13 @@ export default function WatchPage() {
             </li>
             <li>
               <strong className="text-gray-100">Contributor count</strong>{" "}
-              broadening — five external committers added inside 14 days, the
+              broadening, five external committers added inside 14 days, the
               specific 2x-influx pattern that anchors the lead-time number on
               this site&rsquo;s home page.
             </li>
             <li>
               <strong className="text-gray-100">Dependents graph</strong>{" "}
-              expanding outward — external repos that depend on this org&rsquo;s
+              expanding outward, external repos that depend on this org&rsquo;s
               code, the cheapest available proxy for &ldquo;is anyone actually
               using this.&rdquo;
             </li>
@@ -190,7 +190,7 @@ export default function WatchPage() {
             The founder of VC Deal Flow Signal is anonymous by design. No video
             interviews, no podcast appearances, no real-name attribution. This
             page renders the same visual content you&rsquo;d expect from a
-            product video — just rendered live in the browser instead of
+            product video, just rendered live in the browser instead of
             hosted from a face-bearing channel. The methodology, the data, and
             the engine are all public; only the founder isn&rsquo;t.
           </p>

@@ -31,7 +31,7 @@ export async function generateMetadata({
 
   return {
     title:
-      "SaaS Quick Ratio Calculator — Growth Efficiency, Kleiner Perkins Bands",
+      "SaaS Quick Ratio Calculator, Growth Efficiency, Kleiner Perkins Bands",
     description:
       "Free SaaS quick ratio calculator. (New ARR + expansion) divided by (churned + contracted), classified into the Kleiner Perkins / Mamoon Hamid bands (≥4 exceptional, 2-4 healthy, 1.5-2 OK, 1-1.5 concerning, <1 bad). URL-shareable.",
     alternates: { canonical: "/tools/quick-ratio-calculator" },
@@ -46,7 +46,7 @@ export async function generateMetadata({
           url: ogImage,
           width: 1200,
           height: 630,
-          alt: "SaaS Quick Ratio Calculator — VC Deal Flow Signal",
+          alt: "SaaS Quick Ratio Calculator, VC Deal Flow Signal",
         },
       ],
     },
@@ -79,12 +79,12 @@ const FAQS: { question: string; answer: string }[] = [
   {
     question: "Who originated the metric?",
     answer:
-      "Mamoon Hamid (Kleiner Perkins) is broadly credited with popularising quick ratio as a SaaS-investor heuristic. It became standard in growth-stage diligence because it captures dynamics that NDR (net dollar retention) compresses away — two companies with the same NDR can have very different quick ratios.",
+      "Mamoon Hamid (Kleiner Perkins) is broadly credited with popularising quick ratio as a SaaS-investor heuristic. It became standard in growth-stage diligence because it captures dynamics that NDR (net dollar retention) compresses away, two companies with the same NDR can have very different quick ratios.",
   },
   {
     question: "What are the standard bands?",
     answer:
-      "≥4 exceptional (best-in-class growth efficiency), 2-4 healthy (top quartile), 1.5-2 OK (typical at scale), 1-1.5 concerning (net churn is dominating growth, investors will dig in), <1 bad (net ARR is shrinking — fix retention before scaling acquisition).",
+      "≥4 exceptional (best-in-class growth efficiency), 2-4 healthy (top quartile), 1.5-2 OK (typical at scale), 1-1.5 concerning (net churn is dominating growth, investors will dig in), <1 bad (net ARR is shrinking, fix retention before scaling acquisition).",
   },
   {
     question: "How is this different from NDR?",
@@ -94,12 +94,12 @@ const FAQS: { question: string; answer: string }[] = [
   {
     question: "How should I pick the measurement period?",
     answer:
-      "Monthly is right at early stage where churn dynamics matter quarter-over-quarter. Quarterly is right at scale where monthly noise dominates. Annual smooths over short-term churn dynamics you actually want to see — avoid unless you have a multi-year dataset.",
+      "Monthly is right at early stage where churn dynamics matter quarter-over-quarter. Quarterly is right at scale where monthly noise dominates. Annual smooths over short-term churn dynamics you actually want to see, avoid unless you have a multi-year dataset.",
   },
   {
     question: "Can I share my calculation?",
     answer:
-      "Yes — every input is encoded in the URL. The 'Copy share link' button copies the current URL to your clipboard. Send it to your board, head of growth, or investor and they open the calculator with the same numbers.",
+      "Yes, every input is encoded in the URL. The 'Copy share link' button copies the current URL to your clipboard. Send it to your board, head of growth, or investor and they open the calculator with the same numbers.",
   },
 ];
 
@@ -201,7 +201,7 @@ export default function QuickRatioPage() {
         "@type": "WebPage",
         "@id": PAGE_URL,
         url: PAGE_URL,
-        name: "SaaS Quick Ratio Calculator — Growth Efficiency, Kleiner Perkins Bands",
+        name: "SaaS Quick Ratio Calculator, Growth Efficiency, Kleiner Perkins Bands",
         description:
           "Free SaaS quick ratio calculator with Kleiner Perkins band classification and shareable URLs.",
         inLanguage: "en-US",

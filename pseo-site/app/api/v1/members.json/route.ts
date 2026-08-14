@@ -1,12 +1,12 @@
 /**
- * /api/v1/members.json — programmatic Charter Cohort endpoint.
+ * /api/v1/members.json, programmatic Charter Cohort endpoint.
  *
  * Brunson DotCom Secrets Ch 13 (Best Bait) + Traffic Secrets Ch 9 (Publishing)
- * — agent-side bait. The /members hub serves the Charter Cohort to humans;
+ *, agent-side bait. The /members hub serves the Charter Cohort to humans;
  * this endpoint serves the same data to agents (Claude, Cursor, MCP hosts,
  * RAG pipelines, custom crawlers) as JSON with stable v1 versioning.
  *
- * Brunson Expert Secrets §1 Ch 4 (Mass Movement Vehicle) — visible momentum
+ * Brunson Expert Secrets §1 Ch 4 (Mass Movement Vehicle), visible momentum
  * through every crawler that reads JSON. The Charter Cohort surface compounds
  * automatically as members claim seats and publish picks.
  *

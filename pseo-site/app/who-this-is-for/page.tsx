@@ -8,14 +8,14 @@ import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Where to Start — Pick the GitDealFlow Layer That Fits Right Now",
+  title: "Where to Start, Pick the GitDealFlow Layer That Fits Right Now",
   description:
     "Pick the GitDealFlow layer that fits the way you source right now. Start free, test one sector, move to the full field, or go deeper when the question gets expensive.",
   alternates: { canonical: "/who-this-is-for" },
   openGraph: {
     title: "Where to start with GitDealFlow",
     description:
-      "Choose the layer that fits the way you source right now — free issue, one-sector pass, weekly field, or a deeper custom cut.",
+      "Choose the layer that fits the way you source right now, free issue, one-sector pass, weekly field, or a deeper custom cut.",
     url: "https://signals.gitdealflow.com/who-this-is-for",
     type: "website",
   },
@@ -33,7 +33,7 @@ const STEPS = [
   {
     label: "Test one sector",
     title: "If you already have a live question",
-    body: "Take First Look if one sector keeps bothering you and you want a fast answer instead of another week of tabs and notes. This is for the moment when you do not need a subscription yet — you need one sharper cut.",
+    body: "Take First Look if one sector keeps bothering you and you want a fast answer instead of another week of tabs and notes. This is for the moment when you do not need a subscription yet, you need one sharper cut.",
     ctaHref: "/firstlook",
     ctaLabel: "See First Look",
     accent: "amber",
@@ -49,7 +49,7 @@ const STEPS = [
   {
     label: "Go deeper",
     title: "If the question is already expensive",
-    body: "Go to Insider, Sharp, or Sector Sweep when the signal is no longer just interesting — it needs to support decisions, conviction, and deeper work. At that point you are choosing how much support and depth you want, not whether the signal itself is useful.",
+    body: "Go to Insider, Sharp, or Sector Sweep when the signal is no longer just interesting, it needs to support decisions, conviction, and deeper work. At that point you are choosing how much support and depth you want, not whether the signal itself is useful.",
     ctaHref: "/pricing",
     ctaLabel: "See every paid layer",
     accent: "violet",
@@ -132,9 +132,9 @@ export default function WhoThisIsForPage() {
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed max-w-3xl">
             This is for the First Mover: the dealmaker who evaluates companies
-            but doesn&rsquo;t read code — corp-dev, PE, angel, scout, or a seed
+            but doesn&rsquo;t read code, corp-dev, PE, angel, scout, or a seed
             fund. You move on the engineering signal before the round, without
-            reading a line of code. You never read a line of code — the read is
+            reading a line of code. You never read a line of code, the read is
             done for you, in plain business English.
           </p>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed max-w-3xl">

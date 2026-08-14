@@ -8,7 +8,7 @@ import { getDataLastModified } from "@/lib/data";
 
 export const metadata: Metadata = {
   title:
-    "GitHub Scout Score (Free) — Grade Your Investment Taste from GitHub Stars",
+    "GitHub Scout Score (Free), Grade Your Investment Taste from GitHub Stars",
   description:
     "Check your GitHub Scout Score for free and see how your stars map to startup taste, validated signals, and public engineering momentum.",
   alternates: { canonical: "/receipts" },
@@ -22,7 +22,7 @@ export const metadata: Metadata = {
     "free github tool no login",
   ],
   openGraph: {
-    title: "GitHub Scout Score — Grade Your Investment Taste",
+    title: "GitHub Scout Score, Grade Your Investment Taste",
     description:
       "Every dev has invested in unicorns. They just don't know it. Your GitHub stars are the receipts. Free Scout Score from your public starring history.",
     url: "https://signals.gitdealflow.com/receipts",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     site: "@sipiteno",
-    title: "GitHub Scout Score (free) — You Saw It First",
+    title: "GitHub Scout Score (free), You Saw It First",
     description:
       "Free GitHub Scout Score from your starring history. No login. 8 seconds.",
     images: ["https://signals.gitdealflow.com/api/og/signal-card"],
@@ -46,7 +46,7 @@ export default function ReceiptsLandingPage() {
     "@graph": [
       {
         "@type": "WebApplication",
-        name: "GitHub Scout Score — taste-grading from public GitHub starring history",
+        name: "GitHub Scout Score, taste-grading from public GitHub starring history",
         alternateName: ["GitHub Receipts", "GitDealFlow Scout Score"],
         url: "https://signals.gitdealflow.com/receipts",
         applicationCategory: "DeveloperApplication",
@@ -80,7 +80,7 @@ export default function ReceiptsLandingPage() {
         termsOfService: "https://signals.gitdealflow.com/legal/terms",
         url: "https://signals.gitdealflow.com/receipts",
         description:
-          "Backwards-looking investment-taste validation: grade any public GitHub user's starring history against a curated panel of ~75 validated unicorn / big-funding / acquisition outcomes. Returns a 0–100 Scout Score, a five-tier rank (Curious → Oracle), and a shareable OG card. Same data exposed via /api/receipts/{username}, /api/badge/scout/{username}/svg, and the get_scout_receipts MCP tool.",
+          "Backwards-looking investment-taste validation: grade any public GitHub user's starring history against a curated panel of ~75 validated unicorn / big-funding / acquisition outcomes. Returns a 0-100 Scout Score, a five-tier rank (Curious → Oracle), and a shareable OG card. Same data exposed via /api/receipts/{username}, /api/badge/scout/{username}/svg, and the get_scout_receipts MCP tool.",
         subjectOf: { "@id": "https://signals.gitdealflow.com/wins#dataset" },
         isBasedOn: {
           "@type": "CreativeWork",
@@ -139,7 +139,7 @@ export default function ReceiptsLandingPage() {
             "@type": "HowToStep",
             position: 1,
             name: "Paste your GitHub username",
-            text: "Enter any public GitHub username in the form. No login or OAuth required — we read your public starring history via the GitHub API.",
+            text: "Enter any public GitHub username in the form. No login or OAuth required, we read your public starring history via the GitHub API.",
             url: "https://signals.gitdealflow.com/receipts#paste",
           },
           {
@@ -167,7 +167,7 @@ export default function ReceiptsLandingPage() {
       },
       {
         "@type": "WebPage",
-        name: "GitHub Receipts — Scout Score",
+        name: "GitHub Receipts, Scout Score",
         url: "https://signals.gitdealflow.com/receipts",
         speakable: {
           "@type": "SpeakableSpecification",
@@ -185,7 +185,7 @@ export default function ReceiptsLandingPage() {
             name: "What is a Scout Score?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "A Scout Score is a 0–100 grade computed from your public GitHub starring history. It measures how many validated unicorn outcomes you starred *before* the funding, acquisition, or $1B-valuation event. Score normalises so five clean early calls equals 100. Backwards-looking proof of taste — pair with the forward-looking Scout Game at /predict for a complete public track record.",
+              text: "A Scout Score is a 0-100 grade computed from your public GitHub starring history. It measures how many validated unicorn outcomes you starred *before* the funding, acquisition, or $1B-valuation event. Score normalises so five clean early calls equals 100. Backwards-looking proof of taste, pair with the forward-looking Scout Game at /predict for a complete public track record.",
               url: "https://signals.gitdealflow.com/receipts",
             },
           },
@@ -202,7 +202,7 @@ export default function ReceiptsLandingPage() {
             name: "Which unicorns count toward the Scout Score?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "A curated panel of ~75 validated outcomes — companies that crossed $1B valuation, were acquired for $250M+, or raised a public Series C+ at unicorn pricing. The full panel is documented at /methodology and mirrored in lib/validated-wins.json. Stars must predate the event by at least 30 days to count.",
+              text: "A curated panel of ~75 validated outcomes, companies that crossed $1B valuation, were acquired for $250M+, or raised a public Series C+ at unicorn pricing. The full panel is documented at /methodology and mirrored in lib/validated-wins.json. Stars must predate the event by at least 30 days to count.",
             },
           },
           {
@@ -210,7 +210,7 @@ export default function ReceiptsLandingPage() {
             name: "Can I share my Scout Score?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Yes. Each result generates a permalinked 1200×630 OG card and an embeddable shields.io-style SVG badge — drop the markdown into any GitHub README, dev.to bio, LinkedIn, or Twitter post. The badge auto-updates as your starring history grows.",
+              text: "Yes. Each result generates a permalinked 1200×630 OG card and an embeddable shields.io-style SVG badge, drop the markdown into any GitHub README, dev.to bio, LinkedIn, or Twitter post. The badge auto-updates as your starring history grows.",
               url: "https://signals.gitdealflow.com/badge-builder",
             },
           },
@@ -219,7 +219,7 @@ export default function ReceiptsLandingPage() {
             name: "Is the Scout Score actually predictive?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "It's a proof-of-taste metric over a fixed validation panel, not a forward-looking predictor. A high Scout Score says you've consistently identified breakout teams early; it does not project that pattern forward. The forward-looking artifact is the Scout Game at /predict — it auto-resolves over a six-month window and produces an accuracy ladder (Curious → Scout → Sharp → Elite → Oracle). Use both together for a defensible public track record.",
+              text: "It's a proof-of-taste metric over a fixed validation panel, not a forward-looking predictor. A high Scout Score says you've consistently identified breakout teams early; it does not project that pattern forward. The forward-looking artifact is the Scout Game at /predict, it auto-resolves over a six-month window and produces an accuracy ladder (Curious → Scout → Sharp → Elite → Oracle). Use both together for a defensible public track record.",
             },
           },
         ],
@@ -246,9 +246,9 @@ export default function ReceiptsLandingPage() {
           <p className="text-lg text-gray-300 leading-relaxed max-w-2xl mb-8">
             Your GitHub stars are receipts. Paste your username and we&rsquo;ll
             grade your public starring history against ~75 validated unicorns /
-            Series A / acquisitions — counting only the ones you starred{" "}
+            Series A / acquisitions, counting only the ones you starred{" "}
             <em>before</em> the news broke. Free <strong>Scout Score</strong>{" "}
-            (0–100) and a shareable card in under 8 seconds.
+            (0-100) and a shareable card in under 8 seconds.
           </p>
 
           <ReceiptsForm />
@@ -272,7 +272,7 @@ export default function ReceiptsLandingPage() {
         <section className="mb-12 rounded-xl border border-amber-700/40 bg-amber-950/10 p-6 sm:p-8">
           <p className="text-gray-300 text-sm leading-relaxed max-w-2xl">
             No personal GitHub starring history to score? That&rsquo;s fine
-            &mdash; you don&rsquo;t need one to use the product. The Scout Score
+you don&rsquo;t need one to use the product. The Scout Score
             is a side door for developers who already star repos. The product
             itself reads the signal for you, in plain business English. You
             never open GitHub.
@@ -283,7 +283,7 @@ export default function ReceiptsLandingPage() {
           tldr="GitHub Receipts is a free, no-login tool that grades any developer's GitHub starring history against a curated database of ~75 validated unicorns. Paste a username, get a Scout Score (0-100), a rank from Curious to Oracle, and a shareable 1200×630 OG card. Same data is available via /api/receipts/{username}, an embeddable SVG badge, and the get_scout_receipts MCP tool."
           pageUrl="https://signals.gitdealflow.com/receipts"
           asOf={getDataLastModified().toISOString().slice(0, 10)}
-          citeAs="VC Deal Flow Signal — Receipts (signals.gitdealflow.com/receipts), Q2 2026."
+          citeAs="VC Deal Flow Signal, Receipts (signals.gitdealflow.com/receipts), Q2 2026."
           facts={[
             {
               claim:
@@ -299,7 +299,7 @@ export default function ReceiptsLandingPage() {
             },
             {
               claim:
-                "Free MCP tool — get_scout_receipts(github_username) — exposes the same scoring from Claude Desktop, Cursor, Windsurf, and any MCP host.",
+                "Free MCP tool, get_scout_receipts(github_username), exposes the same scoring from Claude Desktop, Cursor, Windsurf, and any MCP host.",
               sourceUrl: "https://signals.gitdealflow.com/agents.md",
               sourceLabel: "agents.md",
             },
@@ -342,7 +342,7 @@ export default function ReceiptsLandingPage() {
               <span className="font-mono text-emerald-400 pt-0.5">02</span>
               <span>
                 We cross-reference each repo against our database of{" "}
-                <strong>~75 validated unicorns</strong> — companies that hit a
+                <strong>~75 validated unicorns</strong>: companies that hit a
                 $1B+ valuation, raised a Series A+, were acquired, or crossed
                 25K+ stars in the last 5 years.
               </span>
@@ -359,7 +359,7 @@ export default function ReceiptsLandingPage() {
               <span className="font-mono text-emerald-400 pt-0.5">04</span>
               <span>
                 Top 5 wins are summed and normalized to a{" "}
-                <strong>0–100 Scout Score</strong>. Five perfect early calls =
+                <strong>0-100 Scout Score</strong>. Five perfect early calls =
                 100. You get a rank from <em>Curious</em> to <em>Oracle</em>.
               </span>
             </li>
@@ -372,7 +372,7 @@ export default function ReceiptsLandingPage() {
           </h2>
           <p className="text-gray-400 text-sm leading-relaxed mb-5 max-w-2xl">
             Receipts grade your past. The Scout game tracks your future. Pick
-            any GitHub org and predict whether they raise in 6 months — we
+            any GitHub org and predict whether they raise in 6 months, we
             resolve every call automatically. Free tier: 3 predictions a month.
             Top 1% earn an Oracle badge.
           </p>
@@ -385,7 +385,7 @@ export default function ReceiptsLandingPage() {
         </section>
 
         {/* Series A Race market promo demoted to a link in "What to read next"
-            below — one-funnel: the free Scout tool + digest stay dominant. */}
+            below, one-funnel: the free Scout tool + digest stay dominant. */}
 
         <section className="text-center text-xs text-gray-400">
           <p>
@@ -401,14 +401,14 @@ export default function ReceiptsLandingPage() {
             <Link href="/badge-builder" className="text-sky-400 hover:text-sky-300 underline">
               Grab the SVG badge
             </Link>{" "}
-            and skip the form &mdash; it auto-renders any handle&rsquo;s live score.
+            and skip the form, it auto-renders any handle&rsquo;s live score.
           </p>
         </section>
 
         <div className="mt-12">
           <TrustConversionBlock
             dominant="digest"
-            context="No GitHub stars to score? You don't need them — we read the signal for you."
+            context="No GitHub stars to score? You don't need them, we read the signal for you."
           />
         </div>
 
@@ -434,7 +434,7 @@ export default function ReceiptsLandingPage() {
             </li>
             <li>
               <Link href="/markets/series-a-race-2026" className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm">
-                Series A Race 2026 — live implied odds
+                Series A Race 2026, live implied odds
               </Link>
             </li>
           </ul>

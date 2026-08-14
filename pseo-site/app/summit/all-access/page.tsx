@@ -12,11 +12,11 @@ export const dynamic = "force-static";
 export const revalidate = 3600;
 
 export const metadata: Metadata = {
-  title: `All-Access Pass — VC Engineering Acceleration Summit · €${SUMMIT.allAccessPrice} one-time`,
+  title: `All-Access Pass, VC Engineering Acceleration Summit · €${SUMMIT.allAccessPrice} one-time`,
   description: `Lifetime replays of all 20 talks, full transcripts (PDF + markdown), slide decks, and the 219-startup panel dataset. €${SUMMIT.allAccessPrice} one-time. 30-day refund.`,
   alternates: { canonical: "/summit/all-access" },
   openGraph: {
-    title: `All-Access Pass — €${SUMMIT.allAccessPrice} one-time`,
+    title: `All-Access Pass, €${SUMMIT.allAccessPrice} one-time`,
     description: `Lifetime replays of all 20 talks + full transcripts + slide decks + 219-startup panel dataset.`,
     url: `${SITE}/summit/all-access`,
     type: "article",
@@ -27,10 +27,10 @@ const STACK = [
   { label: "Lifetime replays of all 20 talks", standalone: "€297 if bought separately" },
   { label: "Full PDF + markdown transcripts of every talk", standalone: "€197 standalone" },
   { label: "Slide decks and chart packs from every talk", standalone: "€69 standalone" },
-  { label: "219-startup panel dataset — the dataset behind the panel", standalone: "€297 standalone" },
-  { label: "Methodology vault — every signal definition + decision rule + pitfall", standalone: "€0, always free" },
+  { label: "219-startup panel dataset, the dataset behind the panel", standalone: "€297 standalone" },
+  { label: "Methodology vault, every signal definition + decision rule + pitfall", standalone: "€0, always free" },
   { label: "Anonymous-by-design narration files (audio, MP3 + WAV)", standalone: "€49 standalone" },
-  { label: "30-day refund — reply REFUND, no forms, no questions", standalone: "Bonus" },
+  { label: "30-day refund, reply REFUND, no forms, no questions", standalone: "Bonus" },
 ] as const;
 
 const TOTAL_VALUE = 297 + 97 + 69 + 297 + 49;
@@ -42,7 +42,7 @@ export default function AllAccessPage() {
       {
         "@type": "Product",
         "@id": `${SITE}/summit/all-access#product`,
-        name: "VC Engineering Acceleration Summit — All-Access Pass",
+        name: "VC Engineering Acceleration Summit, All-Access Pass",
         description:
           "Lifetime replays of all 20 anonymous-by-design summit talks, full transcripts, slide decks, and the 219-startup panel dataset.",
         brand: { "@id": "https://gitdealflow.com/#organization" },
@@ -97,11 +97,11 @@ export default function AllAccessPage() {
             All-Access Pass · Lifetime · No subscription
           </p>
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-100 leading-[1.05] tracking-tight">
-            Every talk, every transcript, every slide — €{SUMMIT.allAccessPrice} once. Yours forever.
+            Every talk, every transcript, every slide, €{SUMMIT.allAccessPrice} once. Yours forever.
           </h1>
           <p className="text-gray-300 text-lg leading-relaxed">
             All 20 talks of the VC Engineering Acceleration Summit, locked
-            after their 24-hour free window — yours for life with the
+            after their 24-hour free window, yours for life with the
             All-Access Pass. Plus full transcripts, slide decks, the
             219-startup panel dataset, and the anonymous-by-design narration
             audio. One payment, lifetime access, 30-day refund if it isn't
@@ -139,7 +139,7 @@ export default function AllAccessPage() {
           </div>
           <form method="POST" action="/api/checkout/session" className="space-y-4">
             <input type="hidden" name="tier" value={SUMMIT.allAccessCheckoutTier} />
-            {/* Brunson in-cart order bump — checkbox adds the Sector Sweep
+            {/* Brunson in-cart order bump, checkbox adds the Sector Sweep
                 as a second line item in the same Stripe checkout. */}
             <label className="flex items-start gap-3 rounded-lg border-2 border-dashed border-amber-500/60 bg-amber-950/20 p-4 cursor-pointer">
               <input
@@ -150,7 +150,7 @@ export default function AllAccessPage() {
               />
               <span className="text-sm text-gray-200 leading-snug">
                 <span className="font-bold text-amber-300">
-                  Yes — add the {SUMMIT.orderBumpLabel}.
+                  Yes, add the {SUMMIT.orderBumpLabel}.
                 </span>{" "}
                 One full sector deep-dive of your choice: top 25 ranked GitHub
                 orgs, contributor maps, three pre-Crunchbase breakouts, raw
@@ -161,7 +161,7 @@ export default function AllAccessPage() {
               type="submit"
               className="block w-full rounded-lg bg-signal-500 hover:bg-signal-400 text-slate-950 font-bold px-6 py-4 transition-colors text-center text-lg min-h-[56px]"
             >
-              Get the All-Access Pass — €{SUMMIT.allAccessPrice}
+              Get the All-Access Pass, €{SUMMIT.allAccessPrice}
             </button>
             <p className="text-xs text-gray-400 text-center">
               Stripe checkout · Card or Apple/Google Pay · 30-day refund · No subscription
@@ -196,7 +196,7 @@ export default function AllAccessPage() {
           </h2>
           <p className="text-sm text-gray-400 leading-relaxed">
             Reply REFUND to any email. We process inside two business days.
-            The signal is reproducible from public data — we'd rather refund a
+            The signal is reproducible from public data, we'd rather refund a
             buyer who didn't get value than retain one who didn't.
           </p>
         </section>

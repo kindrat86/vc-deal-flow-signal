@@ -22,7 +22,7 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   }
 
-  // Rate limit: 3 login attempts per minute per IP (stricter — sends emails)
+  // Rate limit: 3 login attempts per minute per IP (stricter, sends emails)
   const ip = getClientIp(request);
   const rl = checkRateLimit(`login:${ip}`, 3, 60_000);
   if (!rl.allowed) {
@@ -43,7 +43,7 @@ export async function POST(request: NextRequest) {
     // Check Stripe for active subscriptions with this email
     const customers = await stripe.customers.list({ email, limit: 1 });
     if (customers.data.length === 0) {
-      // Don't reveal whether the email exists — always say "check your email"
+      // Don't reveal whether the email exists, always say "check your email"
       return NextResponse.json({ ok: true });
     }
 
@@ -55,11 +55,11 @@ export async function POST(request: NextRequest) {
     });
 
     if (subscriptions.data.length === 0) {
-      // No active subscription — still don't reveal this
+      // No active subscription, still don't reveal this
       return NextResponse.json({ ok: true });
     }
 
-    // Active subscription found — send magic link
+    // Active subscription found, send magic link
     const token = await createMagicLinkToken(email);
     const magicLink = `${BASE_URL}/api/auth/verify?token=${token}`;
 

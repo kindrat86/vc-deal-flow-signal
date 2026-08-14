@@ -13,10 +13,10 @@ import { useRouter, useSearchParams } from "next/navigation";
  * compares full-year ARR added against the quarterly S&M spend.
  *
  * Bands (Bessemer / OpenView consensus, broadly adopted):
- *   > 1.5   Exceptional — invest more aggressively
- *   1.0-1.5 Good — continue investing
- *   0.75-1  OK — hold pace, watch trajectory
- *   < 0.75  Bad — cut spend and figure out why
+ *   > 1.5   Exceptional, invest more aggressively
+ *   1.0-1.5 Good, continue investing
+ *   0.75-1  OK, hold pace, watch trajectory
+ *   < 0.75  Bad, cut spend and figure out why
  *
  * Undefined when S&M spend is zero (you can't measure efficiency on
  * zero input).
@@ -83,7 +83,7 @@ function computeMagicNumber(inputs: Inputs): ComputedResult {
       magicNumber: Number.NaN,
       band: "undefined",
       bandLabel:
-        "Magic number is undefined when S&M spend is zero — there is no input to be efficient with.",
+        "Magic number is undefined when S&M spend is zero, there is no input to be efficient with.",
     };
   }
 
@@ -96,7 +96,7 @@ function computeMagicNumber(inputs: Inputs): ComputedResult {
       magicNumber,
       band: "negative",
       bandLabel:
-        "Negative magic number — ARR contracted while S&M spent. Spend is destroying value.",
+        "Negative magic number, ARR contracted while S&M spent. Spend is destroying value.",
     };
   }
 
@@ -105,17 +105,17 @@ function computeMagicNumber(inputs: Inputs): ComputedResult {
 
   if (magicNumber > 1.5) {
     band = "exceptional";
-    bandLabel = "Exceptional — invest more aggressively.";
+    bandLabel = "Exceptional, invest more aggressively.";
   } else if (magicNumber >= 1.0) {
     band = "good";
-    bandLabel = "Good — continue investing at this pace.";
+    bandLabel = "Good, continue investing at this pace.";
   } else if (magicNumber >= 0.75) {
     band = "ok";
-    bandLabel = "OK — hold pace, watch trajectory.";
+    bandLabel = "OK, hold pace, watch trajectory.";
   } else {
     band = "bad";
     bandLabel =
-      "Bad — cut spend and find the bottleneck before investing more.";
+      "Bad, cut spend and find the bottleneck before investing more.";
   }
 
   return { netNewArr, annualizedNetNewArr, magicNumber, band, bandLabel };
@@ -267,7 +267,7 @@ export function MagicNumberCalculator() {
           {copied ? "Link copied" : "Copy share link"}
         </button>
         <p className="text-xs text-gray-500">
-          The URL contains your inputs — share with your board, head of sales,
+          The URL contains your inputs, share with your board, head of sales,
           or growth-stage investor.
         </p>
       </div>

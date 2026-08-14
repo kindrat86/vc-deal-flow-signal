@@ -74,7 +74,7 @@ const PLC_BADGE: Record<
     tone: "border-rose-500/40 bg-rose-950/40 text-rose-200",
   },
   "big-idea": {
-    label: "Big Idea — Open Cart",
+    label: "Big Idea, Open Cart",
     tone: "border-amber-500/40 bg-amber-950/40 text-amber-200",
   },
 };
@@ -105,7 +105,7 @@ function VideoCueBlock({ cue }: { cue: VideoCue }) {
     );
   }
 
-  // kind === "scheduled" — render a placeholder card with the queue date.
+  // kind === "scheduled", render a placeholder card with the queue date.
   // Synthetic-voice render lands on the scheduledFor date via the Stadium-Pitch
   // GitHub Actions cron (Cartesia Theo + Remotion).
   const dateLabel = cue.scheduledFor
@@ -199,7 +199,7 @@ export default async function LaunchPage({ params }: PageProps) {
       {
         "@type": "HowTo",
         "@id": `${SITE}/launch/${slug}#howto`,
-        name: `4-stage Product Launch Funnel — ${launch.headline}`,
+        name: `4-stage Product Launch Funnel, ${launch.headline}`,
         description:
           "Jeff Walker PLC sequence: Sideways Story → Ownership Experience → Internal Struggle → Big Idea (Open Cart).",
         step: launch.stages.map((s) => ({
@@ -287,7 +287,7 @@ export default async function LaunchPage({ params }: PageProps) {
           className="rounded-xl border border-slate-800 bg-slate-950/30 p-4"
         >
           <p className="text-gray-400 text-[11px] font-semibold uppercase tracking-wider mb-3">
-            The four stages — Jeff Walker PLF
+            The four stages, Jeff Walker PLF
           </p>
           <ol className="grid grid-cols-2 sm:grid-cols-4 gap-2 list-none pl-0">
             {launch.stages.map((s) => {
@@ -397,7 +397,7 @@ export default async function LaunchPage({ params }: PageProps) {
             </a>
           ) : (
             <p className="text-gray-400 text-sm">
-              Launch window is closed. Standard pricing now applies — see{" "}
+              Launch window is closed. Standard pricing now applies, see{" "}
               <Link
                 href="/pricing"
                 className="text-sky-400 hover:text-sky-300 underline decoration-dotted"

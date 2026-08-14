@@ -1,5 +1,5 @@
 /**
- * /api/ask — fuzzy multi-result search across the Q&A corpus.
+ * /api/ask, fuzzy multi-result search across the Q&A corpus.
  *
  * Sibling of /api/answer (single best match). This one returns the top-N
  * ranked candidates so an agent can present options or pick a different
@@ -57,7 +57,7 @@ export async function GET(request: Request) {
       JSON.stringify(
         {
           _meta: {
-            name: "VC Deal Flow Signal — Fuzzy Multi-Result Q&A Search",
+            name: "VC Deal Flow Signal, Fuzzy Multi-Result Q&A Search",
             description:
               "Top-N ranked Q&A candidates over the full /answers + /faq corpus. Sibling of /api/answer (single best match). Designed for autocomplete UX and confidence-tuned agents.",
             usage: "GET /api/ask?q={query}&limit={1-20}",

@@ -14,24 +14,24 @@ export const dynamic = "force-static";
 const SITE = "https://signals.gitdealflow.com";
 
 /**
- * /members/join — Charter Cohort application page.
+ * /members/join, Charter Cohort application page.
  *
- * Brunson DotCom Secrets §23 (Application Funnel) — async-only equivalent of
+ * Brunson DotCom Secrets §23 (Application Funnel), async-only equivalent of
  * the phone-close, anonymity-preserving. The form posts to
  * /api/charter-application and the founder reads + replies in 48h.
  *
- * Brunson Expert Secrets Ch 16+17 (Setter+Closer) — the founder is both,
+ * Brunson Expert Secrets Ch 16+17 (Setter+Closer), the founder is both,
  * since async-only. The 48h SLA replaces the live call.
  */
 
 export const metadata: Metadata = {
   title:
-    "Claim a Charter Seat — VC Deal Flow Signal · Cohort 2026",
+    "Claim a Charter Seat, VC Deal Flow Signal · Cohort 2026",
   description:
     "Submit your charter application. Pseudonymous handles welcome. Real name never required. The founder reads every application personally and replies within 48 business hours with a draft profile to confirm.",
   alternates: { canonical: "/members/join" },
   openGraph: {
-    title: "Claim a Charter Seat — Cohort 2026",
+    title: "Claim a Charter Seat, Cohort 2026",
     description:
       "5-field application. Pseudonymous welcome. 48h written reply.",
     url: `${SITE}/members/join`,
@@ -61,7 +61,7 @@ export default async function MembersJoinPage(ctx: RouteContext) {
         "@type": "WebPage",
         "@id": `${SITE}/members/join#webpage`,
         url: `${SITE}/members/join`,
-        name: "Claim a Charter Seat — VC Deal Flow Signal",
+        name: "Claim a Charter Seat, VC Deal Flow Signal",
         description:
           "Charter Cohort 2026 application form. Pseudonymous welcome. 48h reply.",
         isPartOf: { "@id": `${SITE}/#website` },
@@ -123,7 +123,7 @@ export default async function MembersJoinPage(ctx: RouteContext) {
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
             Five fields, four minutes. The founder reads every application
             personally and replies inside 48 business hours with a draft
-            profile to confirm — or a written no with the reason.
+            profile to confirm, or a written no with the reason.
           </p>
         </header>
 

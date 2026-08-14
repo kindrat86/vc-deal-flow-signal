@@ -1,5 +1,5 @@
 /**
- * /.well-known/disclosure.json — coordinated vulnerability disclosure policy.
+ * /.well-known/disclosure.json, coordinated vulnerability disclosure policy.
  *
  * F38 (2026-05-08). The JSON companion to /.well-known/security.txt and
  * /.well-known/security-policy.json. Where security.txt is the canonical
@@ -26,7 +26,7 @@ export async function GET() {
       "@context": "https://schema.org",
       "@type": "DigitalDocument",
       "@id": `${SITE}/.well-known/disclosure.json`,
-      name: "Coordinated Vulnerability Disclosure Policy — VC Deal Flow Signal",
+      name: "Coordinated Vulnerability Disclosure Policy, VC Deal Flow Signal",
       description:
         "Policy that governs how security researchers report, escalate, and disclose vulnerabilities affecting VC Deal Flow Signal services. Aligned with the disclose.io core terms; companion to /.well-known/security.txt and /.well-known/security-policy.json.",
       license: "https://creativecommons.org/licenses/by/4.0/",
@@ -69,7 +69,7 @@ export async function GET() {
           "https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn (Chrome extension)",
         ],
         out_of_scope: [
-          "Subprocessor systems (Stripe, Vercel, Resend, etc.) — please report via their own disclosure programs",
+          "Subprocessor systems (Stripe, Vercel, Resend, etc.), please report via their own disclosure programs",
           "Findings on /content/* SEO copy ('we recommend X over Y' and similar editorial)",
           "Self-XSS and clickjacking on pages without sensitive actions",
           "Issues that require physical access to a victim's device or social engineering",

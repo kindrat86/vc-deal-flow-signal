@@ -72,7 +72,7 @@ const DIFFICULTY_BADGE: Record<
 
 function buildJsonLd(p: Playbook): object {
   const url = `${SITE}/playbooks/${p.slug}`;
-  // Mirror /answers — single ISO timestamp shared across datePublished
+  // Mirror /answers, single ISO timestamp shared across datePublished
   // and dateModified, sourced from the data-mtime so freshness signals
   // stay in sync with the rest of the panel.
   const lastModifiedIso = getDataLastModified().toISOString();
@@ -185,7 +185,7 @@ function buildJsonLd(p: Playbook): object {
       },
       {
         "@type": "WebAPI",
-        name: "VC Deal Flow Signal — Public Agent API",
+        name: "VC Deal Flow Signal, Public Agent API",
         documentation: `${SITE}/api/openapi.json`,
         endpointURL: [
           `${SITE}/api/signals.json`,
@@ -279,7 +279,7 @@ export default async function PlaybookPage({ params }: PageProps) {
           tldr={p.tldr}
           pageUrl={url}
           asOf={asOf}
-          citeAs={`VC Deal Flow Signal — Playbooks (${url}), retrieved ${asOf}.`}
+          citeAs={`VC Deal Flow Signal, Playbooks (${url}), retrieved ${asOf}.`}
           facts={p.facts}
         />
 
@@ -447,7 +447,7 @@ export default async function PlaybookPage({ params }: PageProps) {
         <section className="mt-12" aria-label="Who wrote this playbook">
           <p className="text-gray-400 text-sm leading-relaxed mb-4">
             The rubric above is the same one I run on the operating side every
-            week. I keep my name off it on purpose — the edge is in the timing,
+            week. I keep my name off it on purpose, the edge is in the timing,
             not the messenger. Trust the math, not me.
           </p>
           <DataNerdSignoff />

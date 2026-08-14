@@ -15,13 +15,13 @@ const STRIPE_BOOK_LINK =
 const PAGE_URL = "https://signals.gitdealflow.com/book";
 
 export const metadata: Metadata = {
-  title: `${BOOK.title} — Free book by ${BOOK.authorRole}`,
+  title: `${BOOK.title}, Free book by ${BOOK.authorRole}`,
   description: BOOK.description,
   alternates: { canonical: "/book" },
   openGraph: {
     title: BOOK.title,
     description:
-      "A working investor's field manual — read free online, download free PDF + EPUB, or grab the €0.99 Kindle copy.",
+      "A working investor's field manual, read free online, download free PDF + EPUB, or grab the €0.99 Kindle copy.",
     url: PAGE_URL,
     type: "book",
   },
@@ -46,7 +46,7 @@ const PROMISES = [
   {
     n: "04",
     h: "Catch the off-platform attention spike that the founders orchestrated",
-    p: "Star-velocity detachment — when stars accelerate three times faster than commits. The signature of a Show HN, a Product Hunt launch, a viral demo, or a coordinated trade-publication feature.",
+    p: "Star-velocity detachment, when stars accelerate three times faster than commits. The signature of a Show HN, a Product Hunt launch, a viral demo, or a coordinated trade-publication feature.",
   },
   {
     n: "05",
@@ -56,7 +56,7 @@ const PROMISES = [
   {
     n: "06",
     h: "Trace adoption through other people's package.json",
-    p: "Libraries.io aggregation across npm, PyPI, Maven, crates.io, Go modules. The second-most-honest signal in the book — seventy-three per cent hit rate for developer-tools companies.",
+    p: "Libraries.io aggregation across npm, PyPI, Maven, crates.io, Go modules. The second-most-honest signal in the book, seventy-three per cent hit rate for developer-tools companies.",
   },
   {
     n: "07",
@@ -68,7 +68,7 @@ const PROMISES = [
 const STAKES = [
   "You stop asking for warm intros to companies your peers have already met.",
   "You walk into the founder conversation having read every line of public code they have shipped in the past sixty days.",
-  "You compute one signal yourself in the appendix, against the live leaderboard, in ninety minutes — and from then on the methodology is yours, replicable on a $0 budget, indefinitely.",
+  "You compute one signal yourself in the appendix, against the live leaderboard, in ninety minutes, and from then on the methodology is yours, replicable on a $0 budget, indefinitely.",
   "Your watchlist of thirty companies turns into a Monday-morning workflow that takes ninety minutes and produces three or four high-conviction conversations per quarter.",
 ];
 
@@ -90,7 +90,7 @@ const REVIEWS = [
 const FAQS = [
   {
     q: "Why is the book free? What's the catch?",
-    a: "Three reasons. First, the methodology is already public — the SSRN preprint at abstract id 6606558 contains the formal version. The book is the operational version of the same work. Second, free distribution is the point: the more readers run the workflow, the better the methodology gets, because every reader who finds a false-positive pattern reports it back and we fold it into the next edition. Third, this is a marketing motion — readers who get value from the book are the ones who eventually subscribe to the €49/mo Dashboard, and a book that closes that loop pays for itself in three subscribers.",
+    a: "Three reasons. First, the methodology is already public, the SSRN preprint at abstract id 6606558 contains the formal version. The book is the operational version of the same work. Second, free distribution is the point: the more readers run the workflow, the better the methodology gets, because every reader who finds a false-positive pattern reports it back and we fold it into the next edition. Third, this is a marketing motion, readers who get value from the book are the ones who eventually subscribe to the €49/mo Dashboard, and a book that closes that loop pays for itself in three subscribers.",
   },
   {
     q: "What do I get with the €0.99 Kindle copy?",
@@ -102,15 +102,15 @@ const FAQS = [
   },
   {
     q: "Do I need to know how to code?",
-    a: "Reading: no. Comprehension: very useful but not strictly required. Replication appendix: yes — the appendix is intentionally written for readers comfortable with a Python script and a curl command. If you do not code, you will get value from the seven signal chapters and the conclusion, and you can either skip the methodology and appendix or pair with a colleague who can run the scripts.",
+    a: "Reading: no. Comprehension: very useful but not strictly required. Replication appendix: yes, the appendix is intentionally written for readers comfortable with a Python script and a curl command. If you do not code, you will get value from the seven signal chapters and the conclusion, and you can either skip the methodology and appendix or pair with a colleague who can run the scripts.",
   },
   {
     q: "Is the data really that good?",
-    a: "Read the SSRN preprint at ssrn.com/abstract=6606558. The numbers in the book are the same as the numbers in the preprint, with one or two threshold updates that reflect the larger panel size in the 2026 follow-on. The single biggest source of scepticism — that the seven-signal stack would not generalise outside the 2023 cohort — is addressed in the appendix's historical-replication exercises.",
+    a: "Read the SSRN preprint at ssrn.com/abstract=6606558. The numbers in the book are the same as the numbers in the preprint, with one or two threshold updates that reflect the larger panel size in the 2026 follow-on. The single biggest source of scepticism, that the seven-signal stack would not generalise outside the 2023 cohort, is addressed in the appendix's historical-replication exercises.",
   },
   {
     q: "Can I republish or quote from the book?",
-    a: "Yes. The book is licensed CC-BY-4.0 — quote freely with attribution to The Data Nerd / GitDealFlow. If you want to republish a full chapter on your own newsletter or blog, drop me a note at signals@gitdealflow.com first; I am almost always happy to say yes and will sometimes have a mildly improved version that has not yet been folded into the public PDF.",
+    a: "Yes. The book is licensed CC-BY-4.0, quote freely with attribution to The Data Nerd / GitDealFlow. If you want to republish a full chapter on your own newsletter or blog, drop me a note at signals@gitdealflow.com first; I am almost always happy to say yes and will sometimes have a mildly improved version that has not yet been folded into the public PDF.",
   },
 ];
 
@@ -283,7 +283,7 @@ export default function BookPage() {
           </div>
         </section>
 
-        {/* The Big Domino — Brunson Perfect Webinar single-belief frame */}
+        {/* The Big Domino, Brunson Perfect Webinar single-belief frame */}
         <section className="bg-gradient-to-br from-slate-900/80 via-slate-950 to-slate-950 border border-sky-900/40 rounded-xl p-6 sm:p-8 space-y-4">
           <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider">
             The core claim
@@ -291,7 +291,7 @@ export default function BookPage() {
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
             If reading public GitHub data can predict Series A rounds three to
             six weeks before the press release, with a sixty-eight per cent hit
-            rate, on a $0 budget — then warm-intro deal flow is no longer the
+            rate, on a $0 budget, then warm-intro deal flow is no longer the
             only path into early-stage venture.
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
@@ -303,7 +303,7 @@ export default function BookPage() {
           </p>
           <TrialClose tone="sky">
             One claim, falsifiable, free to download. If the methodology
-            holds when you replicate it on a fresh laptop in 90 minutes —
+            holds when you replicate it on a fresh laptop in 90 minutes -
             does the rest of the deal-flow market reduce to a stack of
             lagging indicators?
           </TrialClose>
@@ -353,7 +353,7 @@ export default function BookPage() {
           </ul>
           <TrialClose tone="amber">
             104 pages, free PDF, €0.99 Kindle. If the price isn&rsquo;t the
-            question and the time-to-read is — would you rather start at
+            question and the time-to-read is, would you rather start at
             chapter one or skim the table of contents below first?
           </TrialClose>
         </section>
@@ -403,7 +403,7 @@ export default function BookPage() {
             Get the PDF and EPUB. No credit card. Instant.
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
-            One email — the PDF and EPUB downloads land in your inbox in about
+            One email, the PDF and EPUB downloads land in your inbox in about
             ninety seconds. You also get the free Monday-morning Signal Digest
             with the top five firings across the universe of tracked
             organizations. Unsubscribe in one click; your email is never sold.
@@ -457,11 +457,11 @@ export default function BookPage() {
           <ul className="space-y-2.5 text-gray-200 text-base leading-relaxed">
             <li className="flex gap-3">
               <span className="text-amber-300 flex-shrink-0">✓</span>
-              <span>Native Kindle format — syncs across every Kindle device and app</span>
+              <span>Native Kindle format, syncs across every Kindle device and app</span>
             </li>
             <li className="flex gap-3">
               <span className="text-amber-300 flex-shrink-0">✓</span>
-              <span>Bonus email 1: a fully worked walkthrough of the most recent Series A announcement that the methodology would have caught — week-by-week, signal-by-signal</span>
+              <span>Bonus email 1: a fully worked walkthrough of the most recent Series A announcement that the methodology would have caught, week-by-week, signal-by-signal</span>
             </li>
             <li className="flex gap-3">
               <span className="text-amber-300 flex-shrink-0">✓</span>
@@ -476,7 +476,7 @@ export default function BookPage() {
             href={STRIPE_BOOK_LINK}
             className="inline-flex items-center justify-center w-full sm:w-auto rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold px-6 py-3 transition-colors"
           >
-            Get the Kindle copy — €0.99 one-time
+            Get the Kindle copy, €0.99 one-time
           </a>
           <p className="text-xs text-gray-400">
             Stripe checkout · receipt in your inbox · the bonus emails arrive
@@ -501,7 +501,7 @@ export default function BookPage() {
                 <p className="text-gray-200 text-sm leading-relaxed italic">
                   &ldquo;{r.text}&rdquo;
                 </p>
-                <p className="text-gray-400 text-xs">— {r.by}</p>
+                <p className="text-gray-400 text-xs">{r.by}</p>
               </blockquote>
             ))}
           </div>

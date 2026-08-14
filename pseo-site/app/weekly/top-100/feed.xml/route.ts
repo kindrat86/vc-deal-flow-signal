@@ -24,7 +24,7 @@ export async function GET() {
         ? `Composite leaderboard of ${snap.summary.totalRanked} distinct startups for ${label}. #1 this week: ${top.name} (${top.sectorName}) at Signal Score ${top.signalScore}. Median ${snap.summary.medianSignalScore}.`
         : `Top 100 GitHub-Signal Startups for ${label}.`;
       return `    <item>
-      <title><![CDATA[Top 100 GitHub-Signal Startups — ${label}]]></title>
+      <title><![CDATA[Top 100 GitHub-Signal Startups, ${label}]]></title>
       <link>${BASE_URL}/weekly/top-100/${slug}</link>
       <guid isPermaLink="true">${BASE_URL}/weekly/top-100/${slug}</guid>
       <description><![CDATA[${desc}]]></description>
@@ -37,7 +37,7 @@ export async function GET() {
   const feed = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>VC Deal Flow Signal — Top 100 GitHub-Signal Startups (Weekly Index)</title>
+    <title>VC Deal Flow Signal: Top 100 GitHub-Signal Startups (Weekly Index)</title>
     <link>${BASE_URL}/weekly/top-100</link>
     <description>Weekly composite leaderboard of the 100 startups with the strongest GitHub engineering signals. Refreshed every Monday. Same dataset that powers the per-sector pages, rolled up into a single ranked index.</description>
     <language>en</language>

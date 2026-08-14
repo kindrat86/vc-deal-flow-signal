@@ -22,7 +22,7 @@ export interface DefineMetadataInput {
    */
   title: string;
   /**
-   * Search-engine description, 120–180 chars recommended. Reused as OG and
+   * Search-engine description, 120-180 chars recommended. Reused as OG and
    * Twitter description unless overridden.
    */
   description: string;
@@ -70,7 +70,7 @@ function absoluteUrl(path: string): string {
  * OG, and Twitter all set from a single input. Use in any `page.tsx` like:
  *
  *     export const metadata = defineMetadata({
- *       title: "Methodology — Scout Score 2026",
+ *       title: "Methodology, Scout Score 2026",
  *       description: "How we compute Scout Score …",
  *       path: "/methodology",
  *     });
@@ -79,7 +79,7 @@ function absoluteUrl(path: string): string {
  *
  *     export async function generateMetadata({ params }): Promise<Metadata> {
  *       const { slug } = await params;
- *       return defineMetadata({ title: `${slug} — Compare`, description: ..., path: `/compare/${slug}` });
+ *       return defineMetadata({ title: `${slug}, Compare`, description: ..., path: `/compare/${slug}` });
  *     }
  */
 export function defineMetadata(input: DefineMetadataInput): Metadata {
@@ -88,12 +88,12 @@ export function defineMetadata(input: DefineMetadataInput): Metadata {
   // Previously this hard-coded `${canonical}/opengraph-image` as the default,
   // which only 200s on the ~33 routes that co-locate an `opengraph-image.tsx`.
   // On the 100+ routes without one (all trust/legal/E-E-A-T + most hubs),
-  // that URL 404'd — every social / Slack / AI share of those pages showed a
+  // that URL 404'd, every social / Slack / AI share of those pages showed a
   // broken image. Setting `openGraph.images` explicitly also SUPPRESSED
   // Next.js's file-convention inheritance, so those pages never fell back to
   // the root `app/opengraph-image`. Fix: only pin an image when the caller
   // passes an explicit override; otherwise omit it and let the file convention
-  // supply the correct image — the route's own co-located card where present,
+  // supply the correct image, the route's own co-located card where present,
   // else the inherited root `/opengraph-image`.
   const ogImage = input.ogImage;
   const meta: Metadata = {

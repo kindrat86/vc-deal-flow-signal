@@ -10,7 +10,7 @@ import TelegramCTA from "@/components/TelegramCTA";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "First Look Pass — confirmed. One-time offer inside.",
+  title: "First Look Pass, confirmed. One-time offer inside.",
   robots: { index: false, follow: false },
 };
 
@@ -62,7 +62,7 @@ export default async function FirstLookThanksPage({ searchParams }: Props) {
           You&rsquo;re in. The First Look deep dive lands within 24h.
         </h1>
         <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
-          Your delivery email is queued. Watch your inbox — you&rsquo;ll get
+          Your delivery email is queued. Watch your inbox, you&rsquo;ll get
           one mail asking which sector you want covered, and the deep dive
           (PDF + raw CSV) within 24 hours of your reply on weekdays.
         </p>
@@ -88,14 +88,14 @@ export default async function FirstLookThanksPage({ searchParams }: Props) {
         </div>
       </section>
 
-      {/* IDENTITY FRAME — Brunson Expert Secrets Ch 4 ("New Opportunity")
+      {/* IDENTITY FRAME, Brunson Expert Secrets Ch 4 ("New Opportunity")
           + DotCom Ch 13 ("Best Bait" identity-shaping). The bait isn't
           just the artefact; it's the role the buyer steps into. After
           payment, naming the role explicitly turns "I bought a PDF"
           into "I'm a Sector Scout now." That single sentence is what
           carries the buyer through the 14-day credit window. */}
       <section
-        aria-label="Identity frame — what you just became"
+        aria-label="Identity frame, what you just became"
         className="rounded-xl border-2 border-violet-500/40 bg-gradient-to-br from-violet-950/30 via-slate-900 to-slate-950 p-5 sm:p-7 space-y-3"
       >
         <p className="text-violet-300 text-[10px] sm:text-xs font-semibold uppercase tracking-wider">
@@ -106,9 +106,9 @@ export default async function FirstLookThanksPage({ searchParams }: Props) {
         </h2>
         <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
           Most investors source by deck and warm intro. Sector Scouts source
-          on the engineering signal — translated to plain English — 21–47 days
+          on the engineering signal, translated to plain English, 21-47 days
           before the deck lands. This is
-          the lane you just stepped into — your first deep dive arrives
+          the lane you just stepped into, your first deep dive arrives
           tomorrow, the engine refreshes every Monday, and the credit
           window keeps the door open to the live Dashboard for two weeks.
         </p>
@@ -116,19 +116,19 @@ export default async function FirstLookThanksPage({ searchParams }: Props) {
           &ldquo;Trust the math, not me.&rdquo; The methodology is open;
           the SSRN paper is at <code className="bg-slate-900 text-violet-200 px-1.5 py-0.5 rounded text-xs">ssrn.com/abstract=6606558</code>;
           the regression code reproduces on the public Zenodo dataset. You
-          don&rsquo;t have to take anyone&rsquo;s word — you can re-run the
+          don&rsquo;t have to take anyone&rsquo;s word, you can re-run the
           panel yourself.
         </p>
       </section>
 
-      {/* LIVE DELIVERY COUNTDOWN — Brunson Ch 13 + Expert Ch 21 (Fast 15).
+      {/* LIVE DELIVERY COUNTDOWN, Brunson Ch 13 + Expert Ch 21 (Fast 15).
           A ticking clock turns the 24-hour SLA from a marketing claim
           into a contract the buyer watches enforce itself. Anchored at
           the moment of page load (proxy for payment confirmation, since
           this page is only reached on a paid session). */}
       <DeliveryCountdown />
 
-      {/* OTO #1 — the heart of the cart funnel. The card was JUST captured
+      {/* OTO #1, the heart of the cart funnel. The card was JUST captured
           with setup_future_usage=off_session, so this button charges the
           saved card with one click. No re-entry, no second checkout. */}
       <section
@@ -140,12 +140,11 @@ export default async function FirstLookThanksPage({ searchParams }: Props) {
             One-time offer · disappears when you leave this page
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-tight">
-            Wait — before your deep dive lands.
+            Wait, before your deep dive lands.
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
             You picked one sector. The Custom Sector Sweep is the same lens
-            applied across <strong className="text-gray-100">every venture-backed startup in one sector</strong> —
-            three time windows (30d / 90d / TTM), the full ranked panel, plus
+            applied across <strong className="text-gray-100">every venture-backed startup in one sector</strong>: three time windows (30d / 90d / TTM), the full ranked panel, plus
             a <strong className="text-gray-100">60-minute walkthrough call</strong> to talk through
             the names that surprised you.
           </p>
@@ -159,12 +158,12 @@ export default async function FirstLookThanksPage({ searchParams }: Props) {
 
         <ul className="space-y-2.5 border-t border-amber-700/40 pt-5">
           {[
-            "Every venture-backed org in one sector — not just the top 25",
-            "Three time windows (30d / 90d / TTM) — trend confirmation, not snapshot",
+            "Every venture-backed org in one sector, not just the top 25",
+            "Three time windows (30d / 90d / TTM), trend confirmation, not snapshot",
             "Contributor influx maps for top 50",
             "Eight pre-Crunchbase breakouts (vs three in First Look)",
-            "60-minute walkthrough call — bring your IC questions",
-            "10 business days to delivery — clock starts on your sector reply",
+            "60-minute walkthrough call, bring your IC questions",
+            "10 business days to delivery, clock starts on your sector reply",
           ].map((line) => (
             <li key={line} className="flex items-start gap-2.5 text-sm text-gray-300">
               <span aria-hidden="true" className="text-amber-400 font-bold shrink-0 mt-0.5">→</span>
@@ -176,7 +175,7 @@ export default async function FirstLookThanksPage({ searchParams }: Props) {
         <div className="rounded-lg border border-emerald-700/40 bg-emerald-950/20 p-4 sm:p-5 text-sm text-emerald-100 leading-relaxed">
           <strong className="text-emerald-200">Sweep-or-it&rsquo;s-free guarantee.</strong>{" "}
           14 days from delivery to ask for a refund. Keep the artefacts. We&rsquo;ve
-          honored every one in three years — two refunds total.
+          honored every one in three years, two refunds total.
         </div>
 
         <OneClickOtoButton
@@ -184,7 +183,7 @@ export default async function FirstLookThanksPage({ searchParams }: Props) {
           oto="sector_sweep_oto1"
           acceptHref="/firstlook/done"
           declineHref="/firstlook/downsell"
-          acceptLabel={`Yes — add Sector Sweep for ${fmt(otoPrice)}`}
+          acceptLabel={`Yes, add Sector Sweep for ${fmt(otoPrice)}`}
           declineLabel="No thanks, just deliver my First Look"
           acceptToneClass="bg-amber-500 hover:bg-amber-400 text-slate-950"
         />
@@ -197,7 +196,7 @@ export default async function FirstLookThanksPage({ searchParams }: Props) {
         </p>
       </section>
 
-      {/* Brunson TS §3 Ch 11 — second owned channel push, sits AFTER the
+      {/* Brunson TS §3 Ch 11, second owned channel push, sits AFTER the
           OTO so it doesn't compete with the upsell. The buyer's already
           past the upsell decision; Telegram is a free habit-anchor that
           survives whichever way the OTO went. */}

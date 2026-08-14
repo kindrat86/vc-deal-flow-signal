@@ -200,7 +200,7 @@ export default async function ResearchPaperPage({ params }: PageProps) {
             {paper.abstractSummary}
           </p>
           <p className="text-gray-500 text-xs mt-3 italic">
-            Our summary in our own words — see the canonical source links below for the
+            Our summary in our own words, see the canonical source links below for the
             original abstract.
           </p>
         </section>

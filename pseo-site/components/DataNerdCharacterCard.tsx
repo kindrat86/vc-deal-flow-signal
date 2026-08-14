@@ -1,10 +1,10 @@
 /**
- * DataNerdCharacterCard — compact AC surface for embedding on key pages.
+ * DataNerdCharacterCard, compact AC surface for embedding on key pages.
  *
  * Brunson Expert Secrets Ch 2 (Charismatic Leader): the founder character
  * appears on every conversion-critical page in compressed form. The
  * /walkthrough, /firstlook, /pricing, /sector-sweep, /apply pages all
- * benefit from a single-card reminder of who is selling — archetype,
+ * benefit from a single-card reminder of who is selling, archetype,
  * one polarity, one catchphrase, one parable link.
  *
  * Picks a deterministic-by-page polarity + parable so each surface
@@ -25,7 +25,7 @@ import {
 } from "@/lib/data-nerd";
 
 interface Props {
-  /** Stable seed string — typically the page slug. Determines which slice is shown. */
+  /** Stable seed string, typically the page slug. Determines which slice is shown. */
   seed: string;
   className?: string;
   /** Hide the parable teaser if the page already deep-links to one. */
@@ -33,7 +33,7 @@ interface Props {
 }
 
 // Deterministic small-string hash so the same seed always picks the same
-// slice. Not cryptographic — just stable rotation across surfaces.
+// slice. Not cryptographic, just stable rotation across surfaces.
 function hash(s: string): number {
   let h = 0;
   for (let i = 0; i < s.length; i++) {
@@ -57,7 +57,7 @@ export function DataNerdCharacterCard({
   return (
     <aside
       className={`rounded-xl border border-amber-700/30 bg-gradient-to-br from-amber-950/15 via-slate-900 to-slate-950 p-5 sm:p-6 space-y-4 ${className}`}
-      aria-label={`Who's writing this — ${DATA_NERD_NAME}`}
+      aria-label={`Who's writing this, ${DATA_NERD_NAME}`}
     >
       <header className="space-y-1.5">
         <p className="text-amber-300 text-[10px] font-semibold uppercase tracking-wider">

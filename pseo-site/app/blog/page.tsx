@@ -25,7 +25,7 @@ export default function BlogIndex() {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/blog#webpage",
         url: "https://signals.gitdealflow.com/blog",
-        name: "Signal Intelligence Blog — VC Deal Flow Signal",
+        name: "Signal Intelligence Blog, VC Deal Flow Signal",
         description:
           "Insights on using GitHub engineering signals for startup investing.",
         inLanguage: "en-US",
@@ -90,7 +90,7 @@ export default function BlogIndex() {
         Signal Intelligence Blog
       </h1>
       <p className="text-gray-300 text-base leading-relaxed mb-4">
-        In short: this blog is the site&rsquo;s long-form layer —{" "}
+        In short: this blog is the site&rsquo;s long-form layer, {" "}
         {posts.length} practical guides on reading GitHub engineering signals
         for startup investing, all written by the same pseudonymous author as
         the methodology. The recurring theme: which code-side patterns tend to

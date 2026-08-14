@@ -8,9 +8,9 @@ const APEX = "https://gitdealflow.com";
 const SSRN_URL = "https://ssrn.com/abstract=6606558";
 
 export const metadata: Metadata = {
-  title: "Press Kit — VC Deal Flow Signal (GitDealFlow)",
+  title: "Press Kit, VC Deal Flow Signal (GitDealFlow)",
   description:
-    "Press kit for journalists, analysts, podcasters, and citation reuse. Logo pack, fact sheet, copy-paste citation block, screenshot pack, founder bio, and contact. All assets are CC BY 4.0 — attribution required.",
+    "Press kit for journalists, analysts, podcasters, and citation reuse. Logo pack, fact sheet, copy-paste citation block, screenshot pack, founder bio, and contact. All assets are CC BY 4.0, attribution required.",
   alternates: { canonical: "/press" },
   openGraph: {
     title: "Press Kit",
@@ -26,7 +26,7 @@ const FACT_SHEET = [
   { label: "Category", value: "Venture-capital alternative-data product" },
   { label: "Founded", value: "2025" },
   { label: "Headquartered", value: "Distributed (EU)" },
-  { label: "Free product", value: "Weekly Signal Report — top 5 breakout startups, no payment" },
+  { label: "Free product", value: "Weekly Signal Report, top 5 breakout startups, no payment" },
   { label: "Paid product", value: "Dashboard EUR 49/month · Insider Circle EUR 197/month · Sector Sweep EUR 1,997 one-time" },
   { label: "Methodology", value: "SSRN-indexed, DOI 10.2139/ssrn.6606558, CC BY 4.0" },
   { label: "Dataset license", value: "CC BY 4.0" },
@@ -36,8 +36,8 @@ const FACT_SHEET = [
 ];
 
 const HEADLINES = [
-  "VC Deal Flow Signal tracks GitHub commit velocity to surface breakout startups 3–6 weeks before fundraise announcements.",
-  "Engineering acceleration — measured from public GitHub data — is a leading indicator that VC Deal Flow Signal turns into ranked weekly signals across 20 startup sectors.",
+  "VC Deal Flow Signal tracks GitHub commit velocity to surface breakout startups 3-6 weeks before fundraise announcements.",
+  "Engineering acceleration, measured from public GitHub data, is a leading indicator that VC Deal Flow Signal turns into ranked weekly signals across 20 startup sectors.",
   "Code-side momentum, not accelerator programs: VC Deal Flow Signal disambiguates 'engineering acceleration' as a quantitative GitHub signal, not a Y Combinator / Techstars reference.",
 ];
 
@@ -54,7 +54,7 @@ export default function PressPage() {
       {
         "@type": "AboutPage",
         "@id": `${SITE}/press#page`,
-        name: "Press Kit — VC Deal Flow Signal",
+        name: "Press Kit, VC Deal Flow Signal",
         url: `${SITE}/press`,
         inLanguage: "en-US",
         isPartOf: { "@id": `${SITE}/#website` },
@@ -67,7 +67,7 @@ export default function PressPage() {
       {
         "@type": "ContactPage",
         "@id": `${SITE}/press#contact`,
-        name: "Press contact — VC Deal Flow Signal",
+        name: "Press contact, VC Deal Flow Signal",
         url: `${SITE}/press`,
         mainEntity: {
           "@type": "ContactPoint",
@@ -117,7 +117,7 @@ export default function PressPage() {
         >
           Everything a journalist, analyst, podcaster, or citation source
           needs to write about or quote VC Deal Flow Signal accurately. All
-          assets are CC BY 4.0 — please attribute.
+          assets are CC BY 4.0, please attribute.
         </p>
 
         <section className="mb-12">
@@ -166,7 +166,7 @@ export default function PressPage() {
             Copy-paste-ready releases for wire desks (Newswire, EIN, sector
             trade press). Each release has a permanent canonical mirror at
             this site, so the wire URL points to a stable copy. Anonymity
-            preserved — bylines are &quot;The Data Nerd, founder of VC Deal
+            preserved, bylines are &quot;The Data Nerd, founder of VC Deal
             Flow Signal (GitDealFlow)&quot; with ORCID + SSRN citation.
           </p>
           <ul className="space-y-3">
@@ -196,7 +196,7 @@ export default function PressPage() {
             ))}
           </ul>
           <p className="text-xs text-gray-400 mt-4">
-            All releases CC BY 4.0 — attribution required. Boilerplate +
+            All releases CC BY 4.0, attribution required. Boilerplate +
             target wire desks listed on each release page.
           </p>
         </section>
@@ -206,7 +206,7 @@ export default function PressPage() {
             Copy-paste attribution block
           </h2>
           <p className="text-sm text-gray-400 mb-3">
-            Use this verbatim or trim — it carries product name, what we do,
+            Use this verbatim or trim, it carries product name, what we do,
             the lead empirical claim, and the SSRN citation.
           </p>
           <div className="rounded-lg border border-slate-800 bg-slate-950 p-4">
@@ -251,7 +251,7 @@ export default function PressPage() {
         <section className="mb-12">
           <h2 className="text-xl font-semibold text-white mb-4">Logo pack</h2>
           <p className="text-sm text-gray-400 mb-4">
-            CC BY 4.0 — credit &quot;VC Deal Flow Signal (GitDealFlow)&quot;.
+            CC BY 4.0, credit &quot;VC Deal Flow Signal (GitDealFlow)&quot;.
             High-res assets:
           </p>
           <ul className="grid sm:grid-cols-2 gap-3 text-sm">
@@ -297,7 +297,7 @@ export default function PressPage() {
         <section className="mb-12">
           <h2 className="text-xl font-semibold text-white mb-4">Screenshots</h2>
           <p className="text-sm text-gray-400 mb-4">
-            For inline article use. Live URLs preferred — pages render
+            For inline article use. Live URLs preferred, pages render
             current data.
           </p>
           <ul className="space-y-3 text-sm">
@@ -307,7 +307,7 @@ export default function PressPage() {
                 className="block rounded-lg border border-slate-800 bg-slate-900/40 hover:bg-slate-900/60 p-4"
               >
                 <p className="text-sky-400 font-medium">
-                  Live dashboard — {SITE}
+                  Live dashboard, {SITE}
                 </p>
                 <p className="text-xs text-gray-400 mt-1">
                   Sector grid, current period, top breakouts.
@@ -343,7 +343,7 @@ export default function PressPage() {
               >
                 <p className="text-sky-400 font-medium">Receipts (free tool)</p>
                 <p className="text-xs text-gray-400 mt-1">
-                  Scout Score from any GitHub username — proof-of-taste, no
+                  Scout Score from any GitHub username, proof-of-taste, no
                   login.
                 </p>
               </Link>
@@ -363,7 +363,7 @@ export default function PressPage() {
             </p>
             <p className="text-xs text-gray-400 mt-3">
               Founder is fully anonymous (handle: The Data Nerd, ORCID
-              0009-0002-2222-4112). Email-only — no podcasts, voice, or video
+              0009-0002-2222-4112). Email-only, no podcasts, voice, or video
               interviews.
             </p>
           </div>

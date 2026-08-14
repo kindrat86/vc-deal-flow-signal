@@ -9,7 +9,7 @@ const CANONICAL_HOST = "signals.gitdealflow.com";
  * Path prefixes whose pages opt out of indexing via Next metadata
  * (`metadata.robots.index = false`). The proxy normally sets
  * `X-Robots-Tag: index, follow` as belt-and-suspenders, but for these paths
- * the header would override the per-page noindex meta — so we emit
+ * the header would override the per-page noindex meta, so we emit
  * `X-Robots-Tag: noindex, follow` instead. Keep this list aligned with
  * `defineMetadata({ noindex: true })` callers.
  */
@@ -61,21 +61,21 @@ function isCanonicalOrAllowedHost(host: string | null): boolean {
  * additions (Speakable schema, AgentSummary blocks) when a known agent crawler
  * fetches the page.
  *
- * - **Canonical-host redirect** — non-apex hosts (e.g. `www.gitdealflow.com`,
+ * - **Canonical-host redirect**, non-apex hosts (e.g. `www.gitdealflow.com`,
  *   IDN aliases) are 308'd to the apex before any other logic. Defense-in-
  *   depth on top of Vercel's domain-level redirect (see memory entry
- *   `feedback_vercel_json_host_redirect_unreliable.md` — the platform-level
+ *   `feedback_vercel_json_host_redirect_unreliable.md`, the platform-level
  *   rule has historically silently failed; this is the layer that survives).
- * - `x-pathname: <pathname>` — forwarded request header available to server
+ * - `x-pathname: <pathname>`, forwarded request header available to server
  *   components that need the resolved path. NOTE: `<BreadcrumbsSchema/>` no
- *   longer reads it — awaiting `headers()` in the root layout forced every
+ *   longer reads it, awaiting `headers()` in the root layout forced every
  *   page into per-request dynamic rendering (audit 2026-07-18); breadcrumbs
  *   now derive the path client-side via `usePathname()`. Do NOT reintroduce
  *   a `headers()` read in the layout tree.
- * - `Link: <canonical>; rel="canonical"` — explicit canonical for crawlers
+ * - `Link: <canonical>; rel="canonical"`, explicit canonical for crawlers
  *   that skip HTML parsing (Google, Bing do read this).
- * - `X-Robots-Tag: index, follow` — belt-and-suspenders indexing directive.
- * - `x-agent-bot: <canonical-token>` — forwarded request header for downstream
+ * - `X-Robots-Tag: index, follow`, belt-and-suspenders indexing directive.
+ * - `x-agent-bot: <canonical-token>`, forwarded request header for downstream
  *   pages that opt into agent-aware rendering. Empty for normal browser UAs.
  *
  * Skipped for API routes and asset paths (they set their own headers).
@@ -116,12 +116,12 @@ export function proxy(request: NextRequest) {
   // Content negotiation: when an LLM/agent client sends `Accept: text/markdown`,
   // rewrite the request to the corresponding `/md/<path>` mirror (handled by
   // app/md/[...path]/route.ts and app/md/route.ts). Eliminates the need for
-  // clients to know the mirror URL convention — they can hit the canonical URL
+  // clients to know the mirror URL convention, they can hit the canonical URL
   // with the right Accept header instead.
   //
   // Only triggers for HTML page paths (the early skip above filters out
   // /api, /md, asset extensions, etc.). The mirror returns 404 markdown for
-  // paths it doesn't have an alternate for — which is the correct answer for
+  // paths it doesn't have an alternate for, which is the correct answer for
   // an explicit text/markdown request.
   const acceptHeader = request.headers.get("accept") ?? "";
   if (/\btext\/markdown\b/i.test(acceptHeader)) {
@@ -134,7 +134,7 @@ export function proxy(request: NextRequest) {
     // client doesn't get the markdown payload (or vice-versa) from a shared
     // edge cache.
     mdResponse.headers.set("Vary", "Accept");
-    // Canonical still points to the HTML URL — markdown is an alternate
+    // Canonical still points to the HTML URL, markdown is an alternate
     // representation, not a competing page.
     const canonical = `${BASE_URL}${pathname}`;
     mdResponse.headers.set("Link", `<${canonical}>; rel="canonical"`);
@@ -148,14 +148,14 @@ export function proxy(request: NextRequest) {
 
   const ua = request.headers.get("user-agent");
   const detectedBot = detectAgentBot(ua);
-  // `?format=agent` query param manually forces the agent variant — handy for
+  // `?format=agent` query param manually forces the agent variant, handy for
   // QA and for human reviewers checking the citation block.
   const queryOverride = request.nextUrl.searchParams.get("format") === "agent";
   const agentBotToken = detectedBot ?? (queryOverride ? "manual" : null);
 
   // Always forward the resolved pathname so route-level server components
   // can read it without their own access to NextRequest. Layout-level
-  // components must NOT consume it via headers() — that forces site-wide
+  // components must NOT consume it via headers(), that forces site-wide
   // dynamic rendering (see BreadcrumbsSchema, now usePathname-based).
   // Combined with the agent-bot header when present.
   const requestHeaders = new Headers(request.headers);

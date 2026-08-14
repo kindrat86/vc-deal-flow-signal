@@ -24,7 +24,7 @@ export default function CompareIndex() {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/compare#webpage",
         url: "https://signals.gitdealflow.com/compare",
-        name: "Compare Deal Flow Tools — VC Deal Flow Signal",
+        name: "Compare Deal Flow Tools, VC Deal Flow Signal",
         description:
           "Side-by-side comparisons of deal flow and startup sourcing tools for investors.",
         inLanguage: "en-US",
@@ -96,7 +96,7 @@ export default function CompareIndex() {
           At a glance
         </h2>
         <p className="text-sky-100 text-sm leading-relaxed">
-          TL;DR — {(comparisons.length + programmaticComparisons.length)} side-by-side comparisons, each pitting a
+          TL;DR, {(comparisons.length + programmaticComparisons.length)} side-by-side comparisons, each pitting a
           tool investors already use (PitchBook, CB Insights, Dealroom,
           Harmonic.ai, Crunchbase alerts and more) against VC Deal Flow
           Signal&rsquo;s code-side timing signal, across signal philosophy,

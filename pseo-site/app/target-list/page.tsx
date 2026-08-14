@@ -17,12 +17,12 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title:
-    "Top 100 — the publications, communities, and research desks worth paying attention to",
+    "Top 100, the publications, communities, and research desks worth paying attention to",
   description:
     "100 named publications, communities, market-map desks, deal newsletters, research, podcasts, datasets, and company pages worth watching if you care about earlier startup signal, clearer timing, and less noise.",
   alternates: { canonical: "/target-list" },
   openGraph: {
-    title: "Top 100 — the voices worth paying attention to",
+    title: "Top 100, the voices worth paying attention to",
     description:
       "A practical roster of 100 publications, communities, and research desks worth watching when you care about earlier startup signal and clearer timing.",
     url: "https://signals.gitdealflow.com/target-list",
@@ -41,8 +41,8 @@ const STATUS_BADGE_CLASS: Record<Dream100Status, string> = {
 /**
  * Build-time sanity check: every Dream-100 name must have a matching ICP
  * score entry, and vice versa. Throws during `next build` if drift exists.
- * (The internal ICP score itself is no longer rendered on the public page —
- * this list is reader-facing — but the coverage guard stays so the roster and
+ * (The internal ICP score itself is no longer rendered on the public page -
+ * this list is reader-facing, but the coverage guard stays so the roster and
  * the scoring data file can never silently drift apart.)
  */
 const ALL_NAMES = DREAM_100_GROUPS.flatMap((g) => g.items.map((v) => v.name));
@@ -75,7 +75,7 @@ export default function Dream100Page() {
       {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/target-list",
-        name: "Top 100 — the voices worth paying attention to",
+        name: "Top 100, the voices worth paying attention to",
         description:
           "100 named publications, communities, market-map desks, deal newsletters, research, podcasts, datasets, and company pages worth watching when you care about earlier startup signal, clearer timing, and less noise.",
         speakable: {
@@ -92,7 +92,7 @@ export default function Dream100Page() {
       },
       {
         "@type": "ItemList",
-        name: "Top 100 — voices we read",
+        name: "Top 100, voices we read",
         numberOfItems: DREAM_100_TOTAL,
         itemListOrder: "https://schema.org/ItemListOrderAscending",
         itemListElement: ROSTER.map((r) => ({
@@ -137,7 +137,7 @@ export default function Dream100Page() {
             Top 100 · the voices worth your attention
           </p>
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight">
-            The Top 100 — the <span className="text-sky-400">publications, communities, and research desks</span>
+            The Top 100, the <span className="text-sky-400">publications, communities, and research desks</span>
             worth paying attention to.
           </h1>
           <p
@@ -147,7 +147,7 @@ export default function Dream100Page() {
             This is the roster itself: 100 publications, communities, market-map
             desks, and research sources worth your attention if you care about
             earlier startup signal and clearer timing. It is the answer to a
-            question we get every week — <em>what do you actually read?</em>
+            question we get every week, <em>what do you actually read?</em>
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
             If you care about earlier signal, this roster shows you where the right attention already lives. Use it to decide where to read, where to show up, and where a thoughtful contribution is worth more than another broad post.
@@ -155,7 +155,7 @@ export default function Dream100Page() {
           <p className="text-gray-400 text-sm leading-relaxed border-l-2 border-slate-700 pl-4">
             Anonymity rule: every voice on this list is a public publication,
             org, or community. We don&rsquo;t name the individual founders we
-            track inside our paid product — that&rsquo;s the buyer&rsquo;s
+            track inside our paid product, that&rsquo;s the buyer&rsquo;s
             edge, not ours to publish.
           </p>
         </header>
@@ -180,7 +180,7 @@ export default function Dream100Page() {
           </div>
         </section>
 
-        {/* Our read on each voice — a light reading signal, not an outreach board. */}
+        {/* Our read on each voice, a light reading signal, not an outreach board. */}
         <section
           aria-label="Our read on each voice"
           className="rounded-xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6 space-y-4"
@@ -329,10 +329,10 @@ export default function Dream100Page() {
             >
               free Acceleration Watch
             </Link>{" "}
-            is built around your reading habits — same density, same priors,
+            is built around your reading habits, same density, same priors,
             same Monday rhythm. You read the room; we translate the engineering
             into &ldquo;who&rsquo;s accelerating, stalling, or worth a
-            meeting&rdquo; — never raw commits, never quant jargon, and you
+            meeting&rdquo;, never raw commits, never quant jargon, and you
             never read a line of code.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 pt-2">
@@ -353,7 +353,7 @@ export default function Dream100Page() {
 
         <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-6">
           Every voice here is public, and the list is curated by hand and
-          re-checked quarterly. The other side of the map — where we publish —
+          re-checked quarterly. The other side of the map, where we publish -
           is on{" "}
           <Link
             href="/distribution"

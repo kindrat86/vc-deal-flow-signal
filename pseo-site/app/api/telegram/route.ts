@@ -9,8 +9,8 @@
  * Setup: see pseo-site/docs/telegram-bot-setup.md
  *
  * Env:
- *   TELEGRAM_BOT_TOKEN     — bot token from @BotFather
- *   TELEGRAM_WEBHOOK_SECRET — random string set at setWebhook time
+ *   TELEGRAM_BOT_TOKEN    , bot token from @BotFather
+ *   TELEGRAM_WEBHOOK_SECRET, random string set at setWebhook time
  */
 
 import { NextResponse } from "next/server";
@@ -47,7 +47,7 @@ export async function POST(req: Request) {
   if (!process.env.TELEGRAM_BOT_TOKEN) {
     // Webhook hit before env vars are configured. Return 200 so Telegram
     // doesn't retry forever; log to stderr so the misconfig is visible.
-    console.error("[telegram] TELEGRAM_BOT_TOKEN missing — dropping update");
+    console.error("[telegram] TELEGRAM_BOT_TOKEN missing, dropping update");
     return NextResponse.json({ ok: true, dropped: "no-token" });
   }
   if (!verifySecret(req)) {

@@ -4,11 +4,11 @@ import { isValidEmail, isAllowedOrigin } from "@/lib/validation";
 import { listUnsubscribeHeaders, injectUnsubscribeLink } from "@/lib/list-unsubscribe";
 
 /**
- * /api/crystal-ball/submit — receives Crystal Ball game submissions.
+ * /api/crystal-ball/submit, receives Crystal Ball game submissions.
  *
  * Pattern mirrors /api/sharp-application: validate, rate-limit per IP,
  * email signals@gitdealflow.com via Resend for human moderation. No DB
- * write — picks land in inbox, are reviewed within 24h, and seeded into
+ * write, picks land in inbox, are reviewed within 24h, and seeded into
  * lib/crystal-ball-picks.json (or similar) by the maintainer if accepted.
  */
 
@@ -49,7 +49,7 @@ function modEmailHtml(fields: {
 <body style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#1e293b;background:#f8fafc;margin:0;padding:0;">
 <div style="max-width:640px;margin:0 auto;padding:24px;">
 <div style="background:#fef3c7;border-left:4px solid #f59e0b;padding:16px 20px;margin-bottom:24px;">
-<strong style="color:#854d0e;font-size:13px;letter-spacing:1px;text-transform:uppercase;">Crystal Ball — Pick Submitted</strong>
+<strong style="color:#854d0e;font-size:13px;letter-spacing:1px;text-transform:uppercase;">Crystal Ball, Pick Submitted</strong>
 <p style="margin:4px 0 0;font-size:14px;color:#713f12;">90-day grading window opens on accept · review within 24h</p>
 </div>
 <table style="width:100%;border-collapse:collapse;font-size:14px;">
@@ -74,15 +74,15 @@ function confirmEmailHtml(handle: string, org: string, graderDueAt: string): str
 <head><meta charset="utf-8"></head>
 <body style="margin:0;padding:0;background:#f8fafc;color:#1e293b;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
 <div style="max-width:600px;margin:0 auto;padding:32px 24px;">
-<div style="margin-bottom:24px;"><strong style="color:#f59e0b;font-size:14px;letter-spacing:1px;">VC DEAL FLOW SIGNAL — CRYSTAL BALL</strong></div>
+<div style="margin-bottom:24px;"><strong style="color:#f59e0b;font-size:14px;letter-spacing:1px;">VC DEAL FLOW SIGNAL, CRYSTAL BALL</strong></div>
 <div style="font-size:16px;line-height:1.7;color:#1e293b;">
 <p>Pick received, ${escapeHtml(handle)}.</p>
 <p>You picked <strong style="font-family:monospace;">github.com/${escapeHtml(org)}</strong>. Your 90-day grading window closes <strong>${escapeHtml(graderDueAt)}</strong>.</p>
 <p>We review picks within 24 hours to keep the leaderboard clean. Once accepted, your pick gets a permalinked record at <a href="https://signals.gitdealflow.com/crystal-ball" style="color:#0ea5e9;">signals.gitdealflow.com/crystal-ball</a>.</p>
 <p>If the org publicly announces a funding round (any size, Seed through Mega), an acquisition, or an IPO inside the 90-day window, the pick is graded as a hit. Public-product launches do not count by default.</p>
-<p>Five hits earn the Founding Forecaster badge — permanent, public, and unlocks a 50% discount on a Sector Sweep.</p>
+<p>Five hits earn the Founding Forecaster badge, permanent, public, and unlocks a 50% discount on a Sector Sweep.</p>
 <p>Want a head-start on next week's signal? <a href="https://gitdealflow.com/#signup" style="color:#0ea5e9;">Free Sunday digest</a>.</p>
-<p>— The Data Nerd</p>
+<p>The Data Nerd</p>
 </div>
 <div style="margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;font-size:12px;color:#94a3b8;">
 <p>You're receiving this because you submitted to the Crystal Ball game at signals.gitdealflow.com/crystal-ball.</p>
@@ -116,13 +116,13 @@ export async function POST(request: Request) {
   }
 
   const ip = getClientIp(request);
-  // 1 pick per IP per week — same as the published game rules.
+  // 1 pick per IP per week, same as the published game rules.
   const rl = checkRateLimit(`crystal-ball:${ip}`, 1, 7 * 24 * 3600_000);
   if (!rl.allowed) {
     return NextResponse.json(
       {
         error:
-          "One pick per email per week. Come back next Monday — or email signals@gitdealflow.com if your previous pick was rejected.",
+          "One pick per email per week. Come back next Monday, or email signals@gitdealflow.com if your previous pick was rejected.",
       },
       { status: 429, headers: { ...headers, ...rateLimitHeaders(rl) } },
     );
@@ -152,7 +152,7 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           error:
-            "Handle must be 1–32 characters, alphanumerics/underscore/dash/@ only.",
+            "Handle must be 1-32 characters, alphanumerics/underscore/dash/@ only.",
         },
         { status: 400, headers },
       );
@@ -203,7 +203,7 @@ export async function POST(request: Request) {
           bcc: "sales@sipiteno.com",
           to: TO_EMAIL,
           reply_to: email,
-          subject: `[Crystal Ball] ${handle} — github.com/${org}`,
+          subject: `[Crystal Ball] ${handle}, github.com/${org}`,
           html: modHtml,
         }),
       }),
@@ -217,7 +217,7 @@ export async function POST(request: Request) {
           from: `${FROM_NAME} <${FROM_EMAIL}>`,
           bcc: "sales@sipiteno.com",
           to: email,
-          subject: `Pick received — github.com/${org} (90-day window)`,
+          subject: `Pick received, github.com/${org} (90-day window)`,
           html: injectUnsubscribeLink(userHtml, email),
           headers: listUnsubscribeHeaders(email),
         }),
@@ -228,7 +228,7 @@ export async function POST(request: Request) {
       const errText = await modRes.text();
       console.error("Crystal Ball moderation email failed:", errText);
       return NextResponse.json(
-        { error: "Failed to deliver pick — please email signals@gitdealflow.com directly" },
+        { error: "Failed to deliver pick, please email signals@gitdealflow.com directly" },
         { status: 500, headers },
       );
     }
@@ -247,7 +247,7 @@ export async function POST(request: Request) {
   } catch (err) {
     console.error("Crystal Ball submit error:", err);
     return NextResponse.json(
-      { error: "Something went wrong — please email signals@gitdealflow.com directly" },
+      { error: "Something went wrong, please email signals@gitdealflow.com directly" },
       { status: 500, headers },
     );
   }

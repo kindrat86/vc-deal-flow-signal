@@ -48,7 +48,7 @@ export async function generateMetadata({
     };
   }
   return {
-    title: `${g.label} — communities ranked by deal-flow yield`,
+    title: `${g.label}, communities ranked by deal-flow yield`,
     description: `${g.tagline} ${g.cadence}`,
     keywords: [
       g.label.toLowerCase(),
@@ -61,14 +61,14 @@ export async function generateMetadata({
     ].join(", "),
     alternates: { canonical: `/community-signal/${g.slug}` },
     openGraph: {
-      title: `${g.label} — ranked by deal-flow yield`,
+      title: `${g.label}, ranked by deal-flow yield`,
       description: g.tagline,
       url: `${SITE}/community-signal/${g.slug}`,
       type: "article",
     },
     twitter: {
       card: "summary_large_image",
-      title: `${g.label} — ranked by deal-flow yield`,
+      title: `${g.label}, ranked by deal-flow yield`,
       description: g.tagline,
     },
   };
@@ -120,19 +120,19 @@ export default async function CommunityGroupPage({ params }: PageProps) {
   const faqs = [
     {
       q: `What is the "deal-flow yield" of a community?`,
-      a: `Yield is a three-tier rating — primary, secondary, ambient — describing how often a community has been the first public surface where a repo or founder we now surface inside the product appeared. Primary means multiple deals trace back to the room; ambient means the room is read for framing, not sourcing.`,
+      a: `Yield is a three-tier rating, primary, secondary, ambient, describing how often a community has been the first public surface where a repo or founder we now surface inside the product appeared. Primary means multiple deals trace back to the room; ambient means the room is read for framing, not sourcing.`,
     },
     {
       q: `Why is ${g.label.toLowerCase()} indexed by type instead of by platform?`,
-      a: `The platform map at /voices already covers per-platform rosters (Reddit-100, HN-100, X-100). Indexing by type cuts the same audience differently — a Cursor user in a Cursor Discord is a different deal-flow signal than the same user in a CNCF channel, even though both are on Discord.`,
+      a: `The platform map at /voices already covers per-platform rosters (Reddit-100, HN-100, X-100). Indexing by type cuts the same audience differently, a Cursor user in a Cursor Discord is a different deal-flow signal than the same user in a CNCF channel, even though both are on Discord.`,
     },
     {
       q: `Do we engage in every community on this page?`,
-      a: `No. Each community is tagged with an engagement status (engage / watch / hold / read / blocked). The default for most rooms is "watch" or "read" — we listen but do not post. The "engage" tag is reserved for a small number of rooms where comment-only engagement on technical Q&A is allowed by both the room rules and our anonymity rule.`,
+      a: `No. Each community is tagged with an engagement status (engage / watch / hold / read / blocked). The default for most rooms is "watch" or "read", we listen but do not post. The "engage" tag is reserved for a small number of rooms where comment-only engagement on technical Q&A is allowed by both the room rules and our anonymity rule.`,
     },
     {
       q: `Are the individuals inside these communities listed anywhere?`,
-      a: `No. The anonymity rule that governs the entire site applies here: we name communities, not individuals. The specific founders, maintainers, and contributors we surface live inside the paid product — that is the buyer's edge.`,
+      a: `No. The anonymity rule that governs the entire site applies here: we name communities, not individuals. The specific founders, maintainers, and contributors we surface live inside the paid product, that is the buyer's edge.`,
     },
   ];
 
@@ -143,7 +143,7 @@ export default async function CommunityGroupPage({ params }: PageProps) {
         "@type": "WebPage",
         "@id": `${SITE}/community-signal/${g.slug}`,
         url: `${SITE}/community-signal/${g.slug}`,
-        name: `${g.label} — communities ranked by deal-flow yield`,
+        name: `${g.label}, communities ranked by deal-flow yield`,
         description: g.tagline,
         speakable: {
           "@type": "SpeakableSpecification",
@@ -170,7 +170,7 @@ export default async function CommunityGroupPage({ params }: PageProps) {
       },
       {
         "@type": "ItemList",
-        name: `${g.label} — communities ranked by deal-flow yield`,
+        name: `${g.label}, communities ranked by deal-flow yield`,
         numberOfItems: orderedItems.length,
         itemListOrder: "https://schema.org/ItemListOrderAscending",
         itemListElement: orderedItems.map((c, i) => ({
@@ -326,11 +326,11 @@ export default async function CommunityGroupPage({ params }: PageProps) {
               The ranked roster
             </p>
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
-              {g.items.length} rooms — sorted by yield tier, numbered, linked.
+              {g.items.length} rooms, sorted by yield tier, numbered, linked.
             </h2>
             <p className="text-gray-400 text-sm leading-relaxed">
               Primary first, then secondary, then ambient. Hand-authored order
-              within each tier — top of tier = highest attention density.
+              within each tier, top of tier = highest attention density.
             </p>
           </header>
           <ol className="space-y-2">

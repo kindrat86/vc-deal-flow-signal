@@ -24,12 +24,12 @@ const INTEGRATIONS: Integration[] = [
     slug: "notion",
     name: "Notion",
     category: "Knowledge Base",
-    title: "VC Deal Flow Signal + Notion — Embed Startup Rankings in Your Deal Database",
+    title: "VC Deal Flow Signal + Notion, Embed Startup Rankings in Your Deal Database",
     description:
       "Embed live GitHub engineering momentum data from VC Deal Flow Signal directly into your Notion deal-flow database. Free API, no auth, auto-updating.",
-    h1: "VC Deal Flow Signal × Notion — Live Startup Rankings in Your Database",
+    h1: "VC Deal Flow Signal × Notion, Live Startup Rankings in Your Database",
     intro:
-      "Notion is where investors manage deal flow. VC Deal Flow Signal is where engineering momentum data lives. Connect them to see real-time commit velocity alongside your deal notes — without a separate dashboard.",
+      "Notion is where investors manage deal flow. VC Deal Flow Signal is where engineering momentum data lives. Connect them to see real-time commit velocity alongside your deal notes, without a separate dashboard.",
     steps: [
       "Create a new Notion database with columns: Startup Name, Commit Velocity, Signal Type, Sector, Last Updated.",
       "Use the JSON API endpoint (https://signals.gitdealflow.com/api/signals.json) as a data source in Notion's API integration or via a Make.com/Zapier automation.",
@@ -47,12 +47,12 @@ const INTEGRATIONS: Integration[] = [
     slug: "slack",
     name: "Slack",
     category: "Team Chat",
-    title: "VC Deal Flow Signal + Slack — Weekly Engineering Signal Alerts in Your Channel",
+    title: "VC Deal Flow Signal + Slack, Weekly Engineering Signal Alerts in Your Channel",
     description:
       "Post weekly startup engineering momentum alerts to Slack. Free, no bot required. Uses the JSON API and a scheduled Slack incoming webhook.",
-    h1: "VC Deal Flow Signal × Slack — Weekly Momentum Alerts",
+    h1: "VC Deal Flow Signal × Slack, Weekly Momentum Alerts",
     intro:
-      "Get the top 5 breakout startups posted to your Slack channel every Monday. No bot, no subscription — just the JSON API and a Slack incoming webhook.",
+      "Get the top 5 breakout startups posted to your Slack channel every Monday. No bot, no subscription, just the JSON API and a Slack incoming webhook.",
     steps: [
       "Create a Slack incoming webhook for your #deal-flow channel (Settings → Integrations → Incoming Webhooks).",
       "Set up a scheduled job (cron, GitHub Actions, or Make.com) that fetches https://signals.gitdealflow.com/api/signals.json every Monday at 09:30 UTC.",
@@ -70,14 +70,14 @@ const INTEGRATIONS: Integration[] = [
     slug: "telegram",
     name: "Telegram",
     category: "Messaging",
-    title: "VC Deal Flow Signal Telegram Channel — Free Weekly Breakout Startups",
+    title: "VC Deal Flow Signal Telegram Channel, Free Weekly Breakout Startups",
     description:
       "Join the free Telegram channel for weekly engineering momentum signals. 5 breakout startups every Sunday, direct from the public GitHub dataset.",
-    h1: "VC Deal Flow Signal on Telegram — Free Weekly Digest",
+    h1: "VC Deal Flow Signal on Telegram, Free Weekly Digest",
     intro:
       "The fastest way to get weekly breakout startup signals. Join the Telegram channel for 5 hand-picked momentum plays every Sunday, free forever.",
     steps: [
-      "Join the channel at https://t.me/gitdealflow — no signup, no email.",
+      "Join the channel at https://t.me/gitdealflow, no signup, no email.",
       "Every Sunday at 18:00 UTC, receive 5 breakout startups with their commit velocity, signal type, and sector.",
       "Click through to the full startup signal page for detailed metrics and methodology.",
       "Upgrade to Insider Circle (€197/month) for 47 fundraise-precursor names per month.",
@@ -93,22 +93,22 @@ const INTEGRATIONS: Integration[] = [
     slug: "linear",
     name: "Linear",
     category: "Project Management",
-    title: "VC Deal Flow Signal + Linear — Track Startup Signals as Research Tasks",
+    title: "VC Deal Flow Signal + Linear, Track Startup Signals as Research Tasks",
     description:
       "Create Linear issues for breakout startups detected by VC Deal Flow Signal. Free API integration, webhook-based, auto-sourced deal-flow pipeline.",
-    h1: "VC Deal Flow Signal × Linear — Auto-Sourced Deal Research Pipeline",
+    h1: "VC Deal Flow Signal × Linear, Auto-Sourced Deal Research Pipeline",
     intro:
       "Turn GitHub engineering signals into trackable Linear issues. When a startup shows a breakout signal, automatically create a research task in your Linear workspace.",
     steps: [
       "Create a Linear API token (Settings → API → Personal API keys).",
       "Set up a scheduled job that fetches https://signals.gitdealflow.com/api/signals.json every Monday at 10:00 UTC.",
       "Filter for signalType containing 'breakout' and commitVelocityChange > 100%.",
-      "Create a Linear issue for each matching startup with title 'Research: {name} — {signalType}' and a link to the startup's signal page.",
+      "Create a Linear issue for each matching startup with title 'Research: {name}, {signalType}' and a link to the startup's signal page.",
     ],
     embedSnippet: "https://signals.gitdealflow.com/api/v1/signals.json",
     faqs: [
       { q: "Does this require a paid Linear plan?", a: "No. The Linear API is available on all plans including free." },
-      { q: "Can I use the MCP server instead of the raw API?", a: "Yes. The MCP server has a get_trending_startups tool that returns the top 20 — perfect for a Monday automation." },
+      { q: "Can I use the MCP server instead of the raw API?", a: "Yes. The MCP server has a get_trending_startups tool that returns the top 20, perfect for a Monday automation." },
       { q: "How do I deduplicate across weeks?", a: "Check for an existing Linear issue with the startup name before creating a new one. Use Linear's search API." },
     ],
   },
@@ -116,10 +116,10 @@ const INTEGRATIONS: Integration[] = [
     slug: "discord",
     name: "Discord",
     category: "Community",
-    title: "VC Deal Flow Signal + Discord — Share Engineering Momentum in Your VC Community",
+    title: "VC Deal Flow Signal + Discord, Share Engineering Momentum in Your VC Community",
     description:
       "Post weekly startup engineering signals to your Discord server. Free webhook integration, no bot required.",
-    h1: "VC Deal Flow Signal × Discord — Community Deal-Flow Sharing",
+    h1: "VC Deal Flow Signal × Discord, Community Deal-Flow Sharing",
     intro:
       "Running a VC or founder Discord? Share weekly breakout startup signals automatically using a Discord webhook and the free JSON API.",
     steps: [

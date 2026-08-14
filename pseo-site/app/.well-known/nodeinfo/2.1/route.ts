@@ -28,7 +28,7 @@ export async function GET() {
     metadata: {
       nodeName: "VC Deal Flow Signal",
       nodeDescription:
-        "GitHub commit-velocity tracking for venture capital — open-data alternative-data product.",
+        "GitHub commit-velocity tracking for venture capital, open-data alternative-data product.",
       sectorsTracked: sectors.length,
       startupsTracked: totalStartups,
       currentPeriod: period.name,

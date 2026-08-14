@@ -5,14 +5,14 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
 
 export const metadata: Metadata = {
-  title: "Cities — Engineering & VC Signals",
+  title: "Cities, Engineering & VC Signals",
   description:
     "Editorial city pages mapping engineering acceleration to local VC ecosystems across 41 hubs in Europe, North America, Asia-Pacific, Latin America, and MEA. Built for Corp Dev, PE operating partners, and emerging managers.",
   alternates: { canonical: "/city" },
   openGraph: {
     title: "Cities",
     description:
-      "Editorial city pages for 41 venture hubs — engineering signals through a local lens.",
+      "Editorial city pages for 41 venture hubs, engineering signals through a local lens.",
     type: "website",
     url: "/city",
   },
@@ -37,7 +37,7 @@ export default function CityHubIndexPage() {
       {
         "@type": "CollectionPage",
         url: PAGE_URL,
-        name: "Cities — Engineering & VC Signals",
+        name: "Cities, Engineering & VC Signals",
         description:
           "Index of 41 venture hub cities with editorial interpretation of engineering acceleration signals through a local lens.",
         isPartOf: {
@@ -98,14 +98,14 @@ export default function CityHubIndexPage() {
         </nav>
 
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
-          Cities — Engineering & VC Signals
+          Cities, Engineering & VC Signals
         </h1>
         <p className="text-sky-400 text-base leading-relaxed mb-6 font-medium">
           {CITIES.length} venture hubs across {REGION_ORDER.length} regions, with editorial
           interpretation of how engineering acceleration reads through a local lens.
         </p>
         <p className="text-gray-400 text-base leading-relaxed mb-10">
-          Each city page is an interpretive surface — notable engineering orgs, active VC
+          Each city page is an interpretive surface, notable engineering orgs, active VC
           anchors, the local commit-cadence pattern, and where the engineering-acceleration
           signal carries the highest fidelity. The live data panel resolves to continents
           (US, EU, APAC, LATAM, Canada); these pages are the lens for reading it locally.

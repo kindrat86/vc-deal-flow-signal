@@ -1,14 +1,14 @@
 "use client";
 
 /**
- * Brunson Live-Replay — fast-action bonuses block (DotCom Secrets Ch 12,
+ * Brunson Live-Replay, fast-action bonuses block (DotCom Secrets Ch 12,
  * Cart Funnel Building Block #19: stacked bonuses with hard expiry).
  *
  * Three named bonuses with concrete dollar values. Visible during the
  * "fast-action" phase (Mon → Wed 23:59 UTC). Replaced with a "last-hours"
- * pulse on Thursday, then a "doors closed" waitlist redirect Fri–Sun.
+ * pulse on Thursday, then a "doors closed" waitlist redirect Fri-Sun.
  *
- * Each phase is a different *card* — not a hidden div. The reader who
+ * Each phase is a different *card*, not a hidden div. The reader who
  * lands on Friday should see WHY the page is gated, not an empty container.
  */
 
@@ -28,21 +28,21 @@ interface Props {
 
 const FAST_ACTION_BONUSES = [
   {
-    label: "Bonus #1 — Same-week Sector Sweep slot",
+    label: "Bonus #1, Same-week Sector Sweep slot",
     detail:
       "Lock by Wednesday 23:59 UTC and your first €1,797 Sector Sweep file ships the same calendar week, instead of next-cohort-Monday. Saves a four-to-seven-day delay on the deepest deliverable in the stack.",
     value: "€1,797 → same week",
   },
   {
-    label: "Bonus #2 — Founding-rate ratchet (€9.97 anchored to today)",
+    label: "Bonus #2, Founding-rate ratchet (€9.97 anchored to today)",
     detail:
       "Lock now and the €9.97/mo rate is contractually anchored to your checkout date. Even if next cohort opens at €19/mo or the public price hits €49/mo, your seat doesn't move. Lock-in is dated to entry, not to tenure.",
     value: "€39/mo saved year-1",
   },
   {
-    label: "Bonus #3 — Twelve historical Sunday digests",
+    label: "Bonus #3, Twelve historical Sunday digests",
     detail:
-      "Locked-in members get the full back-archive of every Sunday digest since January 2026 — twelve issues of narrative around the dataset. Cohort-locked, never offered to next-week's cohort.",
+      "Locked-in members get the full back-archive of every Sunday digest since January 2026, twelve issues of narrative around the dataset. Cohort-locked, never offered to next-week's cohort.",
     value: "€348 standalone",
   },
 ] as const;
@@ -72,7 +72,7 @@ export function FastActionBonuses({ initialWindow, signupUrl = "https://gitdealf
         <p className="text-gray-300 text-sm leading-relaxed">
           Live replays open Monday 06:00 UTC and close Thursday 23:59 UTC,
           every cohort. The founding-member rate is only checkoutable while
-          doors are open — that&rsquo;s how the price stays locked for the
+          doors are open, that&rsquo;s how the price stays locked for the
           people who are already in. The free Acceleration Watch is
           unaffected.
         </p>
@@ -93,7 +93,7 @@ export function FastActionBonuses({ initialWindow, signupUrl = "https://gitdealf
         <p className="text-gray-500 text-xs leading-relaxed border-t border-slate-800 pt-3">
           The €7 First Look Pass is the only checkoutable surface during
           closed-cart hours. It&rsquo;s a tripwire, not the founding-member
-          tier — but the €7 credits toward Dashboard if you upgrade in the
+          tier, but the €7 credits toward Dashboard if you upgrade in the
           next 14 days.
         </p>
       </section>
@@ -103,7 +103,7 @@ export function FastActionBonuses({ initialWindow, signupUrl = "https://gitdealf
   if (phase === "last-hours") {
     return (
       <section
-        aria-label="Last hours — doors closing tonight"
+        aria-label="Last hours, doors closing tonight"
         className="rounded-xl border border-rose-500/50 bg-gradient-to-br from-rose-950/40 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-4"
       >
         <p className="text-rose-300 text-xs font-semibold uppercase tracking-wider">
@@ -116,22 +116,22 @@ export function FastActionBonuses({ initialWindow, signupUrl = "https://gitdealf
         <p className="text-gray-300 text-sm leading-relaxed">
           The three fast-action bonuses (same-week Sector Sweep slot +
           founding-rate ratchet + twelve historical Sunday digests) expired
-          Wednesday 23:59 UTC. The seat itself is still on the table — but
+          Wednesday 23:59 UTC. The seat itself is still on the table, but
           only until tonight. Tomorrow morning the link returns the
           waitlist screen.
         </p>
         <p className="text-rose-200 text-sm leading-relaxed">
           Doors close on every cohort. This isn&rsquo;t the discount
-          expiring — the cohort is. The seat does not roll over.
+          expiring, the cohort is. The seat does not roll over.
         </p>
       </section>
     );
   }
 
-  // fast-action phase — show the three bonuses with their hard deadline.
+  // fast-action phase, show the three bonuses with their hard deadline.
   return (
     <section
-      aria-label="Fast-action bonuses — expire Wednesday 23:59 UTC"
+      aria-label="Fast-action bonuses, expire Wednesday 23:59 UTC"
       className="rounded-xl border border-emerald-500/40 bg-gradient-to-br from-emerald-950/30 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-5"
     >
       <div className="space-y-1.5">
@@ -181,7 +181,7 @@ export function FastActionBonuses({ initialWindow, signupUrl = "https://gitdealf
       <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-3">
         These three bonuses disappear at Wednesday 23:59 UTC sharp. The seat
         itself stays available until Thursday 23:59 UTC. After that, the
-        cart link routes to a waitlist page — Monday 06:00 UTC the next
+        cart link routes to a waitlist page, Monday 06:00 UTC the next
         cohort opens.
       </p>
     </section>

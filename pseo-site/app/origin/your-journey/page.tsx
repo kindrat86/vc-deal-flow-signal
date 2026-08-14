@@ -8,14 +8,14 @@ import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 export const dynamic = "force-static";
 
 /**
- * /origin/your-journey — Brunson Expert Secrets Ch 8 (Hero's Two Journeys),
+ * /origin/your-journey, Brunson Expert Secrets Ch 8 (Hero's Two Journeys),
  * companion to /origin.
  *
  * Background: the 2026-05-09 Secret-Trilogy audit scored Hero's Two Journeys
  * at 91/100 with the note: "the buyer's journey gets less ink than the
- * founder's." /origin is the FOUNDER's journey (told in first person — "I
+ * founder's." /origin is the FOUNDER's journey (told in first person, "I
  * watched a $4M Series A from the wrong side"). This page is the BUYER's
- * journey, told in second person — the reader's own future-and-past arc.
+ * journey, told in second person, the reader's own future-and-past arc.
  *
  * It mirrors /origin's eight-section structure beat-for-beat so a reader
  * who finishes /origin and clicks through can feel the symmetry:
@@ -31,7 +31,7 @@ export const dynamic = "force-static";
  *   08 Your turn                   →  08 The door (CTA)
  *
  * Distinct from /identity (which is a structured 7-shift before/after
- * grid + 3 archetypes + quotes). This page is pure narrative — the reader
+ * grid + 3 archetypes + quotes). This page is pure narrative, the reader
  * reading their own future. /identity is the table; this is the story.
  *
  * Static RSC. All copy at module scope. JSON-LD Article + isPartOf back to
@@ -40,12 +40,12 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title:
-    "Your Journey — the buyer's arc",
+    "Your Journey, the buyer's arc",
   description:
     "The companion to /origin, told from your seat. The deal you'll never tell anyone about, the three false beliefs you've been holding without naming, the first concrete move, and what you actually look like as an investor six months from now. Eight sections, ten-minute read.",
   alternates: { canonical: "/origin/your-journey" },
   openGraph: {
-    title: "Your Journey — the buyer's arc",
+    title: "Your Journey, the buyer's arc",
     description:
       "From the deal you missed to the partner who reads code first. The buyer's journey, told beat-for-beat against the founder's.",
     url: "https://signals.gitdealflow.com/origin/your-journey",
@@ -62,7 +62,7 @@ export default function YourJourneyPage() {
         "@id":
           "https://signals.gitdealflow.com/origin/your-journey#article",
         headline:
-          "Your Journey — the buyer's arc against the founder's origin",
+          "Your Journey, the buyer's arc against the founder's origin",
         description:
           "The buyer-side companion to /origin. The deal you'll never tell anyone about, the three false beliefs you're holding without naming them, the first concrete move, and the identity you arrive at six months in.",
         url: "https://signals.gitdealflow.com/origin/your-journey",
@@ -81,7 +81,7 @@ export default function YourJourneyPage() {
         isPartOf: {
           "@type": "Article",
           "@id": "https://signals.gitdealflow.com/origin#article",
-          name: "Origin — the founder backstory behind VC Deal Flow Signal",
+          name: "Origin, the founder backstory behind VC Deal Flow Signal",
           url: "https://signals.gitdealflow.com/origin",
         },
         speakable: {
@@ -161,7 +161,7 @@ export default function YourJourneyPage() {
             </Link>
             , I told you the deal I missed.{" "}
             <span className="text-sky-400">
-              Now let me tell you yours — the one you haven&rsquo;t told anyone
+              Now let me tell you yours, the one you haven&rsquo;t told anyone
               about either.
             </span>
           </h1>
@@ -184,12 +184,12 @@ export default function YourJourneyPage() {
             >
               the founder version
             </Link>{" "}
-            yet, do that first — this one lands harder when the two arcs read
+            yet, do that first, this one lands harder when the two arcs read
             against each other.
           </p>
         </header>
 
-        {/* 01 — WHERE YOU ARE NOW (mirrors /origin §01 The old journey) */}
+        {/* 01, WHERE YOU ARE NOW (mirrors /origin §01 The old journey) */}
         <section className="space-y-4">
           <p className="text-amber-400 text-xs font-semibold uppercase tracking-wider">
             01 · Where you are right now
@@ -201,7 +201,7 @@ export default function YourJourneyPage() {
             You evaluate companies for a living. Maybe you trained as an
             engineer; maybe you never wrote a line and just work alongside
             them. Somewhere along the way you started writing small
-            cheques — €5K, €10K, occasionally €25K — into devtools, AI infra,
+            cheques, €5K, €10K, occasionally €25K, into devtools, AI infra,
             developer-shaped SaaS. The thesis was the obvious one: I know
             technical founders, I can recognise good code, I&rsquo;ll see good
             companies before the generalists do.
@@ -222,7 +222,7 @@ export default function YourJourneyPage() {
           </p>
         </section>
 
-        {/* 02 — THE WALL (mirrors /origin §02 The wall) */}
+        {/* 02, THE WALL (mirrors /origin §02 The wall) */}
         <section className="space-y-4">
           <p className="text-amber-400 text-xs font-semibold uppercase tracking-wider">
             02 · The deal you&rsquo;ll never tell anyone about
@@ -254,8 +254,8 @@ export default function YourJourneyPage() {
             Here&rsquo;s the part that matters. The data you noticed on that
             Saturday <em className="not-italic font-semibold">was already
             public</em>. It updated every day. It was free. The investors who
-            got into the round either had a warm intro you didn&rsquo;t — fine,
-            that happens — or they were watching the same data you were and
+            got into the round either had a warm intro you didn&rsquo;t, fine,
+            that happens, or they were watching the same data you were and
             had a system that made them act on it inside the week, not the
             month. The wall isn&rsquo;t your network. It&rsquo;s the rhythm.
           </p>
@@ -265,10 +265,10 @@ export default function YourJourneyPage() {
           </p>
         </section>
 
-        {/* 03 — FALSE BELIEF #1 (mirrors /origin §03) */}
+        {/* 03, FALSE BELIEF #1 (mirrors /origin §03) */}
         <section className="space-y-3">
           <p className="text-rose-400 text-xs font-semibold uppercase tracking-wider">
-            03 · False belief #1 — the one you tell yourself out loud
+            03 · False belief #1, the one you tell yourself out loud
           </p>
           <h2 className="text-2xl font-bold text-gray-100">
             &ldquo;I just need a better network.&rdquo;
@@ -301,10 +301,10 @@ export default function YourJourneyPage() {
           </p>
         </section>
 
-        {/* 04 — FALSE BELIEF #2 (mirrors /origin §04) */}
+        {/* 04, FALSE BELIEF #2 (mirrors /origin §04) */}
         <section className="space-y-3">
           <p className="text-rose-400 text-xs font-semibold uppercase tracking-wider">
-            04 · False belief #2 — the one you tell yourself in private
+            04 · False belief #2, the one you tell yourself in private
           </p>
           <h2 className="text-2xl font-bold text-gray-100">
             &ldquo;This kind of edge isn&rsquo;t built for someone my size.&rdquo;
@@ -319,13 +319,13 @@ export default function YourJourneyPage() {
             cheques on the side of a day job aren&rsquo;t the customer.
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
-            The belief isn&rsquo;t crazy — it&rsquo;s how the category was
+            The belief isn&rsquo;t crazy, it&rsquo;s how the category was
             built. But the category was built that way because{" "}
             <em className="not-italic font-semibold">enterprise sales
             motions are expensive</em>, not because the data ladder requires
             them. Strip the sales motion out, run the same regression on the
             same public dataset, and the price drops by two orders of
-            magnitude. Quant hedge funds make billions on SEC filings — data
+            magnitude. Quant hedge funds make billions on SEC filings, data
             anyone with a browser can read. The edge isn&rsquo;t the access.
             The edge is the lens. And the lens doesn&rsquo;t care how big your
             cheque is.
@@ -340,10 +340,10 @@ export default function YourJourneyPage() {
           </p>
         </section>
 
-        {/* 05 — FALSE BELIEF #3 (mirrors /origin §05) */}
+        {/* 05, FALSE BELIEF #3 (mirrors /origin §05) */}
         <section className="space-y-3">
           <p className="text-rose-400 text-xs font-semibold uppercase tracking-wider">
-            05 · False belief #3 — the one you argue with yourself about
+            05 · False belief #3, the one you argue with yourself about
           </p>
           <h2 className="text-2xl font-bold text-gray-100">
             &ldquo;If this worked, I&rsquo;d already be doing it.&rdquo;
@@ -379,7 +379,7 @@ export default function YourJourneyPage() {
           </p>
         </section>
 
-        {/* 06 — THE FIRST MOVE (mirrors /origin §06 The new journey) */}
+        {/* 06, THE FIRST MOVE (mirrors /origin §06 The new journey) */}
         <section className="space-y-4 border-t border-slate-800 pt-8">
           <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">
             06 · The first move
@@ -398,8 +398,8 @@ export default function YourJourneyPage() {
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
             For three Sundays you do nothing except read the email and feel
-            whether the names land. On the fourth Sunday — and this is the
-            commitment you&rsquo;re actually making, not the email signup —
+            whether the names land. On the fourth Sunday, and this is the
+            commitment you&rsquo;re actually making, not the email signup -
             you pick one name from one digest and you send the founder a
             three-line email about a specific repo file. Not &ldquo;loved your
             deck.&rdquo; Specific. &ldquo;I noticed your settlement-layer repo
@@ -409,7 +409,7 @@ export default function YourJourneyPage() {
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
             That&rsquo;s the entire shape of the new sourcing motion: weekly
-            digest in, specific email out, founder reply, meeting, cheque —
+            digest in, specific email out, founder reply, meeting, cheque -
             all of it happening before any deck circulates. The rest of the
             ladder (€7 First Look Pass, €49/mo Dashboard, €197/mo Insider
             Circle) just gives you more surface area for the same shape, on
@@ -418,7 +418,7 @@ export default function YourJourneyPage() {
           </p>
         </section>
 
-        {/* 07 — WHO YOU BECOME (mirrors /origin §07 Identity shift) */}
+        {/* 07, WHO YOU BECOME (mirrors /origin §07 Identity shift) */}
         <section className="space-y-3">
           <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">
             07 · Who you become, six months in
@@ -431,7 +431,7 @@ export default function YourJourneyPage() {
             subscribed. You open the laptop, you read Monday&rsquo;s
             five-name digest from the day before, and you forward two of them
             to the partner you co-invest with most often, with one line of
-            commentary each. By 10:00 you&rsquo;ve sent two cold emails — the
+            commentary each. By 10:00 you&rsquo;ve sent two cold emails, the
             specific kind, with the repo file and the contributor name. By
             lunchtime one of them has replied. The reply is the founder
             saying &ldquo;how did you know about that file?&rdquo; The answer
@@ -443,7 +443,7 @@ export default function YourJourneyPage() {
             written three cheques into companies the consensus tools
             haven&rsquo;t indexed yet, and the partner you forward to has
             started forwarding back. The conversations at dinners are
-            different — you&rsquo;re no longer the angel who&rsquo;s slightly
+            different, you&rsquo;re no longer the angel who&rsquo;s slightly
             embarrassed about the slow misses. You&rsquo;re the one who picks
             up a board seat because the founder remembered the cold email
             from before the round.
@@ -451,7 +451,7 @@ export default function YourJourneyPage() {
           <p className="text-gray-300 text-base leading-relaxed">
             The shift isn&rsquo;t a tactic. It&rsquo;s identity. The
             warm-intro investor optimises for who they know. The First Mover
-            optimises for what the engineering is actually doing — read for them,
+            optimises for what the engineering is actually doing, read for them,
             in plain English. The first compounds with
             seniority and dinners. The second compounds with rhythm and
             tooling. They feel different from the inside. The second one
@@ -467,7 +467,7 @@ export default function YourJourneyPage() {
           </p>
         </section>
 
-        {/* 08 — THE DOOR (mirrors /origin §08 Your turn) */}
+        {/* 08, THE DOOR (mirrors /origin §08 Your turn) */}
         <section className="space-y-4 border-t border-slate-800 pt-8">
           <p className="text-sky-400 text-xs font-semibold uppercase tracking-wider">
             08 · The door
@@ -491,7 +491,7 @@ export default function YourJourneyPage() {
               >
                 Subscribe to the Acceleration Watch
               </a>
-              {" "}— five names every Monday, sector-tagged, no commitment. Run
+              {" "}, five names every Monday, sector-tagged, no commitment. Run
               the four-Sunday experiment from §06. If the names don&rsquo;t
               land, unsubscribe and lose nothing.
             </li>
@@ -515,7 +515,7 @@ export default function YourJourneyPage() {
               >
                 Lock the founding-rate Dashboard
               </Link>
-              {" "}— 140 ranked orgs, refreshed weekly, founding rate locked
+              {" "}, 140 ranked orgs, refreshed weekly, founding rate locked
               forever. The all-in version of the rhythm in §06.
             </li>
           </ul>

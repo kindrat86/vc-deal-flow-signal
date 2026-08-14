@@ -1,4 +1,4 @@
-# Telegram Bot — Setup
+# Telegram Bot, Setup
 
 Ships the GitDealFlow Telegram bot: `/safe`, `/runway`, `/define <term>`, and 8 other commands plus inline glossary search.
 
@@ -10,12 +10,12 @@ Webhook handler lives at `pseo-site/app/api/telegram/route.ts`, dispatch logic a
 
 1. Open Telegram → DM **@BotFather**.
 2. Send `/newbot` → pick a display name (e.g. `VC Deal Flow Signal`) and a username ending in `bot` (e.g. `gitdealflow_bot`).
-3. Copy the `HTTP API` token BotFather replies with — that's `TELEGRAM_BOT_TOKEN`.
+3. Copy the `HTTP API` token BotFather replies with, that's `TELEGRAM_BOT_TOKEN`.
 4. **Enable inline mode** (powers `@yourbot <query>` in any chat):
    - Send `/setinline` to BotFather → pick the bot → set placeholder text e.g. `Search VC terms…`.
 5. Optional polish:
    - `/setdescription` → "Free VC + founder calculators and a full VC glossary."
-   - `/setabouttext` → "Built by gitdealflow.com — code-side sourcing signals."
+   - `/setabouttext` → "Built by gitdealflow.com, code-side sourcing signals."
    - `/setuserpic` → upload a 512×512 logo.
 
 ### 2. Generate the webhook secret
@@ -24,7 +24,7 @@ Webhook handler lives at `pseo-site/app/api/telegram/route.ts`, dispatch logic a
 node -e "console.log(require('crypto').randomBytes(24).toString('hex'))"
 ```
 
-Copy that string — that's `TELEGRAM_WEBHOOK_SECRET`. Anything 16+ chars works.
+Copy that string, that's `TELEGRAM_WEBHOOK_SECRET`. Anything 16+ chars works.
 
 ### 3. Add env vars to Vercel
 
@@ -71,7 +71,7 @@ npx tsx scripts/telegram-set-webhook.ts --url https://pseo-site-<hash>.vercel.ap
 - DM `/safe 50k 5m 20 15m 3m` → should reply with the SAFE conversion math.
 - In any other chat (or the bot DM), type `@yourbot safe note` → should show a dropdown with the SAFE definition.
 
-If something is off, hit `GET https://signals.gitdealflow.com/api/telegram` — it returns a JSON status with whether the env vars are present.
+If something is off, hit `GET https://signals.gitdealflow.com/api/telegram`, it returns a JSON status with whether the env vars are present.
 
 ## Commands
 
@@ -92,15 +92,15 @@ If something is off, hit `GET https://signals.gitdealflow.com/api/telegram` — 
 
 All numeric args accept `5m`, `500k`, `1.5B`, `1,500,000` etc.
 
-## Channel broadcasting — Signal of the Week (cron)
+## Channel broadcasting, Signal of the Week (cron)
 
 The bot posts the weekly **Signal of the Week** to the existing public
 channel **`@gitdealflow`** (`https://t.me/gitdealflow`). This is a Vercel
-Cron job — server-side, no laptop required:
+Cron job, server-side, no laptop required:
 
 - **Route:** `pseo-site/app/api/cron/telegram-signal/route.ts`
 - **Builder:** `pseo-site/lib/telegram/signal-of-the-week.ts` (renders the
-  post from `getTopMoversThisWeek(1)` — the current #1 mover)
+  post from `getTopMoversThisWeek(1)`, the current #1 mover)
 - **Schedule:** Sundays 13:00 UTC (`vercel.json` → `crons`)
 - **Target:** `TELEGRAM_CHANNEL_ID` = `@gitdealflow`
 
@@ -108,7 +108,7 @@ Cron job — server-side, no laptop required:
 > driving the **native Telegram desktop app** as the channel owner's account
 > (see `marketing/daily-briefing-2026-04-19.md`). That path needed the desktop
 > app running + physical clicks and was duplicate-prone. This cron replaces it
-> with the bot token server-side — which is why the bot must be a channel
+> with the bot token server-side, which is why the bot must be a channel
 > admin (a bot can only post to a channel it administers).
 
 ### One-time setup
@@ -124,13 +124,13 @@ Cron job — server-side, no laptop required:
    ```
 
    `CRON_SECRET` and `TELEGRAM_BOT_TOKEN` are already set (the other crons and
-   the webhook use them). Redeploy so the new env var takes effect — Vercel
+   the webhook use them). Redeploy so the new env var takes effect, Vercel
    registers the cron from `vercel.json` automatically on deploy.
 
 ### Test surfaces
 
 ```sh
-# 1. Render only — no auth, no send. Returns the post JSON.
+# 1. Render only, no auth, no send. Returns the post JSON.
 curl "https://signals.gitdealflow.com/api/cron/telegram-signal?dry=1"
 
 # 2. Live send to YOURSELF (DM the bot once first so it can message you),

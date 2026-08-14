@@ -10,11 +10,11 @@ export const dynamic = "force-static";
 const PAGE_URL = "https://signals.gitdealflow.com/book/read";
 
 export const metadata: Metadata = {
-  title: `Read online — ${BOOK.title}`,
+  title: `Read online, ${BOOK.title}`,
   description: `Free, full-text web edition of ${BOOK.title}. ${BOOK.pages}-page book on reading public GitHub data to predict Series A rounds.`,
   alternates: { canonical: "/book/read" },
   openGraph: {
-    title: `Read online — ${BOOK.title}`,
+    title: `Read online, ${BOOK.title}`,
     description: BOOK.description,
     url: PAGE_URL,
     type: "article",
@@ -55,7 +55,7 @@ export default function BookReadIndex() {
             <Link href="/book" className="text-sky-400 hover:text-sky-300">
               book page
             </Link>{" "}
-            — or buy the €0.99 Kindle copy to support the work and unlock the
+or buy the €0.99 Kindle copy to support the work and unlock the
             three bonus emails.
           </p>
         </section>

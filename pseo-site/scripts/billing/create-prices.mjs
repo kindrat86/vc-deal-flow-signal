@@ -95,7 +95,7 @@ const paygNineteen = await findOrCreatePrice({
   productId: PAYG_PRODUCT_ID,
   unitAmount: 1900,
   currency: "eur",
-  nickname: "PAYG €19 — 190 calls",
+  nickname: "PAYG €19, 190 calls",
   planTag: "payg-19",
 });
 
@@ -103,7 +103,7 @@ const paygHundred = await findOrCreatePrice({
   productId: PAYG_PRODUCT_ID,
   unitAmount: 10000,
   currency: "eur",
-  nickname: "PAYG €100 — 1000 calls",
+  nickname: "PAYG €100, 1000 calls",
   planTag: "payg-100",
 });
 

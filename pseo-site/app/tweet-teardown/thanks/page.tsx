@@ -7,7 +7,7 @@ import { getHreflangLanguages } from "@/lib/hreflang";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Thanks — your teardown is in the queue",
+  title: "Thanks, your teardown is in the queue",
   description:
     "Confirmation page for the €1 Tweet Teardown. Manual reply within 4 hours, with refund if no org match.",
   alternates: { canonical: "/tweet-teardown/thanks" },
@@ -35,7 +35,7 @@ export default function TeardownThanksPage() {
           </h1>
           <p className="text-gray-300 text-base leading-relaxed">
             The receipt is in your inbox. The teardown reply lands within four
-            business hours — usually faster, never slower than next-business-
+            business hours, usually faster, never slower than next-business-
             morning UTC.
           </p>
         </header>
@@ -56,7 +56,7 @@ export default function TeardownThanksPage() {
               short paragraphs of written teardown.
             </li>
             <li>
-              The reply lands in your inbox as plain prose — no PDF attachment,
+              The reply lands in your inbox as plain prose, no PDF attachment,
               no clickbait formatting. You can forward it, paste it into a
               memo, or reply with a follow-up question.
             </li>
@@ -89,7 +89,7 @@ export default function TeardownThanksPage() {
           </p>
         </section>
 
-        {/* OTO ascension — Brunson Ladder, exactly one logical next move */}
+        {/* OTO ascension, Brunson Ladder, exactly one logical next move */}
         <section className="bg-gradient-to-br from-sky-950/40 via-slate-900 to-slate-950 border border-sky-700/50 rounded-xl p-6 space-y-4">
           <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider">
             One-time offer · for teardown buyers only

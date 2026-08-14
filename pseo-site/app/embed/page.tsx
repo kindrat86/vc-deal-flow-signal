@@ -5,9 +5,9 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 const SITE = "https://signals.gitdealflow.com";
 
 export const metadata: Metadata = {
-  title: "Embed — Free Widgets, Badges &amp; OG Cards",
+  title: "Embed, Free Widgets, Badges &amp; OG Cards",
   description:
-    "Free embeddable widgets and badges from VC Deal Flow Signal. Scout Score badges, repo momentum badges, signal-of-the-week OG cards. Drop a single URL into a README, blog post, or social card. CC BY 4.0 — attribution baked into the asset.",
+    "Free embeddable widgets and badges from VC Deal Flow Signal. Scout Score badges, repo momentum badges, signal-of-the-week OG cards. Drop a single URL into a README, blog post, or social card. CC BY 4.0, attribution baked into the asset.",
   alternates: { canonical: "/embed" },
   openGraph: {
     title: "Embed",
@@ -31,7 +31,7 @@ interface Embed {
   copyAltLabel?: string;
 }
 
-// Calculators — defined first so they appear at the top of the docs page.
+// Calculators, defined first so they appear at the top of the docs page.
 // Operator newsletters and VC blogs are the primary embed surface for these.
 const CALCULATOR_EMBEDS: Embed[] = (
   [
@@ -39,7 +39,7 @@ const CALCULATOR_EMBEDS: Embed[] = (
       slug: "safe-calculator",
       name: "SAFE Calculator",
       description:
-        "Post-money SAFE conversion math — cap vs discount, effective ownership at the next priced round. Sliders + share-link.",
+        "Post-money SAFE conversion math, cap vs discount, effective ownership at the next priced round. Sliders + share-link.",
       height: 620,
     },
     {
@@ -60,7 +60,7 @@ const CALCULATOR_EMBEDS: Embed[] = (
       slug: "magic-number-calculator",
       name: "Magic Number Calculator",
       description:
-        "Annualized net new ARR ÷ quarterly S&M spend — Bessemer / OpenView SaaS sales efficiency.",
+        "Annualized net new ARR ÷ quarterly S&M spend, Bessemer / OpenView SaaS sales efficiency.",
       height: 520,
     },
     {
@@ -74,14 +74,14 @@ const CALCULATOR_EMBEDS: Embed[] = (
       slug: "ltv-calculator",
       name: "LTV Calculator",
       description:
-        "Customer lifetime value + LTV:CAC ratio with industry-standard bands (>5× exceptional, 3–5× healthy, …).",
+        "Customer lifetime value + LTV:CAC ratio with industry-standard bands (>5× exceptional, 3-5× healthy, …).",
       height: 540,
     },
     {
       slug: "quick-ratio-calculator",
       name: "Quick Ratio Calculator",
       description:
-        "(New + expansion ARR) ÷ (churned + contracted) — Kleiner Perkins / Mamoon Hamid SaaS growth efficiency.",
+        "(New + expansion ARR) ÷ (churned + contracted), Kleiner Perkins / Mamoon Hamid SaaS growth efficiency.",
       height: 520,
     },
     {
@@ -104,10 +104,10 @@ const CALCULATOR_EMBEDS: Embed[] = (
   preview: `${SITE}/api/og/tools/${slug}`,
   example: `${SITE}/embed/tools/${slug}`,
   description: `${description} Dark theme, CC BY 4.0 attribution baked in, auto-resize via /embed.js. Full standalone tool at /tools/${slug}.`,
-  copy: `<iframe src="https://signals.gitdealflow.com/embed/tools/${slug}" width="100%" height="${height}" frameborder="0" loading="lazy" title="${name} — GitDealFlow"></iframe>`,
+  copy: `<iframe src="https://signals.gitdealflow.com/embed/tools/${slug}" width="100%" height="${height}" frameborder="0" loading="lazy" title="${name}, GitDealFlow"></iframe>`,
   copyAlt: `<script src="https://signals.gitdealflow.com/embed.js" data-tool="${slug}"></script>`,
   copyAltLabel:
-    "Script tag (auto-resize, for hosts that allow JS — Ghost, WordPress, Notion)",
+    "Script tag (auto-resize, for hosts that allow JS, Ghost, WordPress, Notion)",
 }));
 
 const EMBEDS: Embed[] = [
@@ -120,7 +120,7 @@ const EMBEDS: Embed[] = [
     preview: `${SITE}/api/badge/scout/torvalds/svg`,
     example: `${SITE}/api/badge/scout/torvalds/svg`,
     description:
-      "0–100 Scout Score for any GitHub username. Rendered as shields.io-style SVG. Replace {username} with a GitHub handle.",
+      "0-100 Scout Score for any GitHub username. Rendered as shields.io-style SVG. Replace {username} with a GitHub handle.",
     copy: `[![Scout Score](https://signals.gitdealflow.com/api/badge/scout/{username}/svg)](https://signals.gitdealflow.com/s/{username})`,
   },
   {
@@ -140,7 +140,7 @@ const EMBEDS: Embed[] = [
     preview: `${SITE}/api/badge/built-with/svg`,
     example: `${SITE}/api/badge/built-with/svg?variant=long`,
     description:
-      "'Built with @gitdealflow/mcp-signal' badge for any project that calls our MCP server, signals JSON, or dataset API. Three variants — default, compact, long — via ?variant=. One ask, permanent backlink. Full landing at /built-with.",
+      "'Built with @gitdealflow/mcp-signal' badge for any project that calls our MCP server, signals JSON, or dataset API. Three variants, default, compact, long, via ?variant=. One ask, permanent backlink. Full landing at /built-with.",
     copy: `[![Built with gitdealflow MCP](https://signals.gitdealflow.com/api/badge/built-with/svg)](https://signals.gitdealflow.com/built-with)`,
   },
 
@@ -164,7 +164,7 @@ const EMBEDS: Embed[] = [
     example: `${SITE}/embed/weekly`,
     description:
       "Drop-in iframe widget showing the top 5 picks from this week's Engineering Acceleration Watch. Updates every Monday. CDN-cached, sandbox-safe, and styled with the same fixed dark palette as the site. Pulls from the same dataset as /predicted and /predicted/feed.json.",
-    copy: `<iframe src="https://signals.gitdealflow.com/embed/weekly?pub=your-newsletter" width="380" height="420" frameborder="0" loading="lazy" title="Engineering Acceleration Watch — top 5 this week"></iframe>`,
+    copy: `<iframe src="https://signals.gitdealflow.com/embed/weekly?pub=your-newsletter" width="380" height="420" frameborder="0" loading="lazy" title="Engineering Acceleration Watch, top 5 this week"></iframe>`,
   },
   {
     group: "Mini-widgets",
@@ -200,7 +200,7 @@ export default function EmbedPage() {
       {
         "@type": "CollectionPage",
         "@id": `${SITE}/embed#page`,
-        name: "Embed — VC Deal Flow Signal",
+        name: "Embed, VC Deal Flow Signal",
         url: `${SITE}/embed`,
         inLanguage: "en-US",
         isPartOf: { "@id": `${SITE}/#website` },
@@ -220,7 +220,7 @@ export default function EmbedPage() {
           name: e.name,
         })),
       },
-      // WebApplication nodes for the 8 embeddable calculators — these are the
+      // WebApplication nodes for the 8 embeddable calculators, these are the
       // primary embeddable software surfaces. Adding explicit SoftwareApplication /
       // WebApplication JSON-LD lets AI answer engines (Perplexity, ChatGPT,
       // Bing Copilot) and app directories (Futurepedia, TAAFT) index each tool
@@ -278,7 +278,7 @@ export default function EmbedPage() {
         >
           Free embeddable calculators, badges, OG cards, and mini-widgets.
           Drop a single iframe or script tag into a README, Substack post,
-          Ghost site, Notion page, or VC blog. CC BY 4.0 — every asset
+          Ghost site, Notion page, or VC blog. CC BY 4.0, every asset
           carries attribution back to{" "}
           <Link href="/" className="text-sky-400 hover:text-sky-300">
             signals.gitdealflow.com
@@ -351,7 +351,7 @@ export default function EmbedPage() {
           <ul className="text-sm text-gray-300 leading-relaxed space-y-2 list-disc pl-5">
             <li>
               Badges and OG cards are CDN-cached for ~1 hour at the edge.
-              Inline-embedding hundreds of badges on a single page is fine —
+              Inline-embedding hundreds of badges on a single page is fine -
               they all hit cache after the first paint.
             </li>
             <li>
@@ -367,7 +367,7 @@ export default function EmbedPage() {
               <code className="font-mono text-sky-300">
                 /embed.js
               </code>{" "}
-              loader handles auto-resize via postMessage — no fixed{" "}
+              loader handles auto-resize via postMessage, no fixed{" "}
               <code className="font-mono text-sky-300">height=</code>{" "}
               guess required.
             </li>
@@ -380,7 +380,7 @@ export default function EmbedPage() {
               >
                 signals@gitdealflow.com
               </a>{" "}
-              — we&apos;ll feature it on{" "}
+we&apos;ll feature it on{" "}
               <Link href="/mirrors" className="text-sky-400 hover:text-sky-300">
                 /mirrors
               </Link>

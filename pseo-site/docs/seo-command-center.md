@@ -1,4 +1,4 @@
-# GitDealFlow — SEO command center
+# GitDealFlow, SEO command center
 
 Purpose: one page that tells you what matters right now.
 
@@ -53,16 +53,16 @@ If the top 5 attract attention but these 3 feel weak, the system leaks trust and
 
 ## Weekly priority order
 
-### Priority 1 — authority
+### Priority 1, authority
 - /research
 - /from-stars-to-seed
 
-### Priority 2 — commercial intent
+### Priority 2, commercial intent
 - /compare/crunchbase-alternative-for-angel-investors
 - /answers/how-angel-investors-use-github-signals
 - /answers/deal-flow-timing-vs-verification
 
-### Priority 3 — freshness / repeat visits
+### Priority 3, freshness / repeat visits
 - /weekly/top-100
 - /predicted
 

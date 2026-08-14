@@ -3,12 +3,12 @@
 import { useEffect } from "react";
 
 /**
- * WalkthroughVariantTracker — pixel-light PostHog event emitter for the
- * /walkthrough length A/B (Brunson Expert Secrets §3 Ch 15 — Webinar Variations).
+ * WalkthroughVariantTracker, pixel-light PostHog event emitter for the
+ * /walkthrough length A/B (Brunson Expert Secrets §3 Ch 15, Webinar Variations).
  *
  * Two surfaces are head-to-head on the same argument:
- *   • /walkthrough/5min — 800 words, ~5-minute read
- *   • /walkthrough/90s  —  ~250 words, ~90-second read
+ *   • /walkthrough/5min, 800 words, ~5-minute read
+ *   • /walkthrough/90s ,  ~250 words, ~90-second read
  *
  * The /walkthrough/quick router does the bucket assignment (sticky in
  * localStorage so the same visitor always lands on the same variant).
@@ -17,14 +17,14 @@ import { useEffect } from "react";
  * names regardless of how the visitor arrived.
  *
  * Events emitted:
- *   walkthrough_variant_view          — fires once on mount per variant
- *   walkthrough_variant_cta_click     — wired via window-event listener;
+ *   walkthrough_variant_view         , fires once on mount per variant
+ *   walkthrough_variant_cta_click    , wired via window-event listener;
  *                                       the CTA <a>/<button> dispatches
  *                                       a CustomEvent("walkthrough-cta",
  *                                       {detail:{kind:"primary"|"signup"}}).
  *
  * Anonymity-safe: no PII, only variant + path. Brunson canon (Expert Ch 19
- * "Test, Test, Test") — every change should leave a measurable trace, and
+ * "Test, Test, Test"), every change should leave a measurable trace, and
  * conversion deltas should drive the next ship.
  */
 
@@ -35,7 +35,7 @@ interface Props {
   variant: Variant;
   /** Word count, for descriptive analytics. */
   wordCount: number;
-  /** Read-time in seconds (rough — used for engagement-rate denominator). */
+  /** Read-time in seconds (rough, used for engagement-rate denominator). */
   readSeconds: number;
 }
 
@@ -63,7 +63,7 @@ export default function WalkthroughVariantTracker({
 
     // Read the bucket the /walkthrough/quick router stamped (if any).
     // If the visitor came in via a direct link to /walkthrough/5min or
-    // /walkthrough/90s, there's no router stamp — that's fine, we still
+    // /walkthrough/90s, there's no router stamp, that's fine, we still
     // log the view event with `assignment_source: "direct"`.
     let assignmentSource: "router" | "direct" = "direct";
     let assignedVariant: Variant | null = null;
@@ -74,7 +74,7 @@ export default function WalkthroughVariantTracker({
         assignmentSource = "router";
       }
     } catch {
-      // localStorage blocked / private mode — degrade gracefully.
+      // localStorage blocked / private mode, degrade gracefully.
     }
 
     const ph = window.posthog;
@@ -89,11 +89,11 @@ export default function WalkthroughVariantTracker({
           path: window.location.pathname,
         });
       } catch {
-        // Non-fatal — analytics shouldn't break rendering.
+        // Non-fatal, analytics shouldn't break rendering.
       }
     }
 
-    // CTA listener — the variant pages dispatch a CustomEvent on click so
+    // CTA listener, the variant pages dispatch a CustomEvent on click so
     // we can keep the tracker decoupled from individual CTA components.
     function onCtaClick(e: Event) {
       const detail = (e as CustomEvent<{ kind?: string; href?: string }>)

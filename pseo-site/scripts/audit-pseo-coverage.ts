@@ -8,12 +8,12 @@
  *   - locale × topic coverage gaps
  *
  * Output:
- *   data/audit/pseo-coverage-report.json — machine-readable report
- *   stdout — human-readable summary
+ *   data/audit/pseo-coverage-report.json, machine-readable report
+ *   stdout, human-readable summary
  *
  * Why this exists: the audit at 2026-05-08 flagged that Cartesian
  * routes (stage × sector, signal × sector, stage × signal) risk
- * thin-content downranking when a cell holds only 1–2 startups.
+ * thin-content downranking when a cell holds only 1-2 startups.
  * `MIN_PSEO_CELL_SIZE` (default 3) suppresses those at the data
  * layer; this script verifies the threshold is actually doing work
  * and surfaces the diagnostic in CI logs.
@@ -33,7 +33,7 @@ import { LOCALE_TOPICS } from "../content/locale-topics";
 // Note: lib/data.ts uses `server-only` so we can't import it from a tsx
 // script. We mirror the canonical SIGNAL_TYPES + STAGE_DEFINITIONS slug
 // lists inline below. The audit recomputes counts directly from
-// data/startups.json — that is the same input the route generators use,
+// data/startups.json, that is the same input the route generators use,
 // so any drift between this audit's totals and `generateStaticParams`
 // indicates a bug in the threshold logic, not an audit/code mismatch.
 
@@ -90,7 +90,7 @@ interface FullReport {
 }
 
 // ---------- inline stage list ----------
-// Mirrors STAGE_DEFINITIONS in lib/data.ts (kept in sync manually — if the
+// Mirrors STAGE_DEFINITIONS in lib/data.ts (kept in sync manually, if the
 // canonical list ever changes, update both. The CI audit below will surface
 // any drift via the cell counts.)
 const STAGE_SLUGS: { slug: string; match: readonly string[] }[] = [
@@ -272,7 +272,7 @@ function main() {
     console.log(
       `  ${s.surface.padEnd(36)} ${String(s.included).padStart(3)}/${String(
         s.total,
-      ).padStart(3)} included (${ratio}%) — ${s.suppressed} suppressed`,
+      ).padStart(3)} included (${ratio}%), ${s.suppressed} suppressed`,
     );
     if (s.suppressed > 0) {
       const examples = s.cells

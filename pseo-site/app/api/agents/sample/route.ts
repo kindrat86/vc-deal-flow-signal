@@ -6,7 +6,7 @@ import { isNonceUsed, markNonceUsed } from "@/lib/runtime-cache";
 import { pickAudienceId } from "@/lib/resend-audience";
 
 /**
- * /api/agents/sample — free 5-call deep-signal sample request.
+ * /api/agents/sample, free 5-call deep-signal sample request.
  *
  * Drip emails and press releases promise "drop your email at
  * /agents/credits/sample, get an API key with 5 free get_deep_signal calls".
@@ -15,7 +15,7 @@ import { pickAudienceId } from "@/lib/resend-audience";
  *   1. Rate-limits + honeypots like /api/subscribe.
  *   2. Adds the requester to the Resend audience with
  *      source:"agent-credits-sample" attribution (gdf-attr-v1 bridge).
- *   3. Notifies the admin (reply_to requester) to issue the 5-call key —
+ *   3. Notifies the admin (reply_to requester) to issue the 5-call key -
  *      key issuance is MANUAL for now; the page promises delivery within
  *      24h, which the admin fulfils by replying with a key.
  *   4. Per-email nonce (30d) so repeat submissions don't re-spam the admin.
@@ -74,7 +74,7 @@ async function addToAudience(email: string) {
       },
     );
     if (!res.ok) {
-      // Already a contact — re-activate so they receive the key email.
+      // Already a contact, re-activate so they receive the key email.
       await fetch(
         `https://api.resend.com/audiences/${audienceId}/contacts/${encodeURIComponent(email)}`,
         {
@@ -106,7 +106,7 @@ async function notifyAdmin(email: string, useCase: string, ip: string) {
         bcc: "sales@sipiteno.com",
         to: ADMIN_EMAIL,
         reply_to: email,
-        subject: `[agent sample] 5-call key request — ${email}`,
+        subject: `[agent sample] 5-call key request, ${email}`,
         html: `<p><strong>New free 5-call sample request</strong></p>
 <p>Email: <a href="mailto:${escapeHtml(email)}">${escapeHtml(email)}</a></p>
 <p>Use case: ${useCase ? escapeHtml(useCase) : "<em>blank</em>"}</p>
@@ -193,7 +193,7 @@ export async function POST(req: NextRequest) {
     );
   }
 
-  // Tester/bot suppression — visually succeed, no side effects.
+  // Tester/bot suppression, visually succeed, no side effects.
   if (isExcluded(email)) {
     console.log(`[agents/sample] suppressed excluded address: ${email}`);
     return respond(isForm, "sent", { ok: true, message: "Request received." }, 200);
@@ -220,7 +220,7 @@ export async function POST(req: NextRequest) {
         ok: true,
         replay: true,
         message:
-          "Already requested — your key is being issued. It arrives by email within 24 hours of your first request.",
+          "Already requested, your key is being issued. It arrives by email within 24 hours of your first request.",
       },
       200,
     );

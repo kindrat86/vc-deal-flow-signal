@@ -28,7 +28,7 @@ const TIERS: readonly Tier[] = [
     name: "Free",
     price: "€0",
     cadence: "forever",
-    pitch: "Acceleration Watch — the Monday email investors set their calendar to.",
+    pitch: "Acceleration Watch, the Monday email investors set their calendar to.",
     bullets: [
       "Acceleration Watch: top 5 breakouts every Monday 09:00 UTC",
       "Free Scout Receipts at /receipts",
@@ -43,7 +43,7 @@ const TIERS: readonly Tier[] = [
     name: "Dashboard",
     price: "€49",
     cadence: "per month",
-    pitch: "8-object stack — €1,728 of value, 30-day Signal-or-It's-Free guarantee.",
+    pitch: "8-object stack, €1,728 of value, 30-day Signal-or-It's-Free guarantee.",
     bullets: [
       "Sunday Digest, Full Dashboard (140 startups, 15 sectors)",
       "219-startup Backtest CSV (the SSRN dataset)",
@@ -54,7 +54,7 @@ const TIERS: readonly Tier[] = [
     cta: "Start the Dashboard",
     href: "https://buy.stripe.com/4gMbJ07kTaJy7kqg6s0x20b",
     annualHref: STRIPE_DASHBOARD_ANNUAL,
-    annualLabel: "or €490/yr — 2 months free",
+    annualLabel: "or €490/yr, 2 months free",
     external: true,
     highlight: true,
   },
@@ -73,7 +73,7 @@ const TIERS: readonly Tier[] = [
     cta: "Join the Insider Circle",
     href: "https://buy.stripe.com/bJeaEWfRpcRG6gm2fC0x20d",
     annualHref: STRIPE_INSIDER_ANNUAL,
-    annualLabel: "or €1,970/yr — 2 months free",
+    annualLabel: "or €1,970/yr, 2 months free",
     external: true,
   },
 ];
@@ -107,7 +107,7 @@ export default function PricingLadder() {
           Simple pricing. Free forever for the curious.
         </h2>
         <p className="text-gray-400 text-xs">
-          The founding window closed June 30 — exactly as promised. Founding
+          The founding window closed June 30, exactly as promised. Founding
           members keep their price for life.
         </p>
       </div>
@@ -194,18 +194,18 @@ export default function PricingLadder() {
         <Link href="https://signals.gitdealflow.com/firstlook/sample" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
           €7 First Look Pass
         </Link>{" "}
-        — one sector deep-dive, one-time payment, ahead of the next weekly
+one sector deep-dive, one-time payment, ahead of the next weekly
         digest. <strong className="text-emerald-400">30-day Signal-or-It&rsquo;s-Free
         guarantee</strong>: any paid rung, 30 days, email me, every cent back.
         No forms, no survey.
       </p>
 
-      {/* Brunson Audit 2026-05-08 — Value Ladder ding fix. Show the
+      {/* Brunson Audit 2026-05-08, Value Ladder ding fix. Show the
           high-ticket continuity above €1,997 so the buyer can see where the
           ladder actually goes. Async-only, anonymity-preserving. */}
       <div className="mt-6 rounded-xl border border-violet-700/30 bg-gradient-to-br from-violet-950/20 to-slate-900 p-5">
         <p className="text-violet-300 text-xs font-semibold uppercase tracking-wider mb-2">
-          For active funds — high-ticket research partnerships
+          For active funds, high-ticket research partnerships
         </p>
         <h3 className="text-gray-100 font-semibold text-base mb-3 leading-snug">
           The ladder doesn&rsquo;t stop at the Dashboard.
@@ -249,7 +249,7 @@ export default function PricingLadder() {
           </Link>
         </div>
         <p className="text-gray-500 text-xs mt-3 leading-relaxed">
-          All three are async-only — no live calls, no in-person attendance.
+          All three are async-only, no live calls, no in-person attendance.
           See the{" "}
           <Link
             href="/pricing"

@@ -1,5 +1,5 @@
 /**
- * /api/v1/citations.json — index of every valid citation subject × format
+ * /api/v1/citations.json, index of every valid citation subject × format
  * combination served by /api/cite/[format]/[slug].
  *
  * Closes a real audit gap: agents probing /api/cite/bibtex/<unknown-slug>
@@ -47,7 +47,7 @@ function buildSubjects(): SubjectMeta[] {
       slug: "dataset",
       kind: "dataset",
       title:
-        "VC Deal Flow Signal — Public Engineering-Velocity Panel (NDJSON, CC BY 4.0)",
+        "VC Deal Flow Signal, Public Engineering-Velocity Panel (NDJSON, CC BY 4.0)",
     },
   ];
   for (const f of FINDINGS) {
@@ -77,7 +77,7 @@ export async function GET() {
     "@context": "https://schema.org",
     "@type": "Collection",
     "@id": `${SITE}/api/v1/citations.json`,
-    name: "VC Deal Flow Signal — Citation Index",
+    name: "VC Deal Flow Signal, Citation Index",
     description:
       "Every valid {format, slug} combination served by /api/cite/[format]/[slug]. Combine any format with any slug to get a copy-paste-ready citation. Slug 'paper' returns the SSRN paper, 'dataset' the NDJSON corpus, anything else must be a /research/[slug] finding.",
     url: `${SITE}/research`,

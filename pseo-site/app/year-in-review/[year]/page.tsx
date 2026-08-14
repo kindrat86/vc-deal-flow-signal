@@ -314,7 +314,7 @@ export default async function YearInReviewPage({ params }: PageProps) {
                   className="group block rounded-lg border border-slate-800 bg-slate-900 p-4 hover:border-slate-600 transition-all"
                 >
                   <h3 className="text-gray-200 font-medium text-sm group-hover:text-sky-400 transition-colors mb-1">
-                    {o.year} — Year in Review
+                    {o.year}, Year in Review
                   </h3>
                   <p className="text-gray-400 text-xs leading-relaxed">{o.tagline}</p>
                 </Link>

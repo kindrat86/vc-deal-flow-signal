@@ -145,7 +145,7 @@ export async function GET(request: Request) {
           <div style={{ display: "flex", gap: 36, marginBottom: 32 }}>
             <Stat label="VELOCITY (14D)" value={target.commitVelocityChange} accent={accent} />
             <Stat label="CONTRIBUTORS" value={String(target.contributors)} />
-            <Stat label="GROWTH (30D)" value={target.contributorGrowth ?? "—"} />
+            <Stat label="GROWTH (30D)" value={target.contributorGrowth ?? "-"} />
             <Stat label="NEW REPOS" value={String(target.newRepos ?? 0)} />
           </div>
 
@@ -340,7 +340,7 @@ function launchCard() {
             }}
           >
             <div style={{ display: "flex", fontSize: 16, color: "#94a3b8" }}>
-              MCP server, A2A endpoint, and live data — all free.
+              MCP server, A2A endpoint, and live data, all free.
             </div>
             <div
               style={{
@@ -360,7 +360,7 @@ function launchCard() {
       width: 1200,
       height: 630,
       headers: {
-        // 5-min cache during launch — short enough for fresh shares, long
+        // 5-min cache during launch, short enough for fresh shares, long
         // enough to absorb tweet-storm load. Falls back to fallbackCard()
         // shape automatically once the date check expires upstream.
         "Cache-Control": "public, max-age=300, s-maxage=300",

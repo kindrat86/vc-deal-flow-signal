@@ -94,7 +94,7 @@ export default async function ComparisonPage({ params }: PageProps) {
         },
       },
       // AEO 2026-07-24: Review node removed. GSC flagged "Invalid object
-      // type for field itemReviewed" — comp.h1 is a vs./listicle title
+      // type for field itemReviewed", comp.h1 is a vs./listicle title
       // ("X vs Y", "Best N tools for..."), never a single reviewed item,
       // which Google's Review-snippet spec requires. The verdict is
       // already carried validly by the Claim node below (about: comp.h1).
@@ -145,7 +145,7 @@ export default async function ComparisonPage({ params }: PageProps) {
             },
           ]
         : []),
-      // HowTo schema per teardown — describes the competitor's funnel
+      // HowTo schema per teardown, describes the competitor's funnel
       // architecture as ordered steps. Crawlable, agent-readable, and
       // strengthens topical authority on the comparison surface.
       ...teardowns.map((td) => ({
@@ -156,7 +156,7 @@ export default async function ComparisonPage({ params }: PageProps) {
         step: td.funnelArch.map((s, i) => ({
           "@type": "HowToStep",
           position: i + 1,
-          name: s.step.replace(/^\d+\s*[—-]\s*/, ""),
+          name: s.step.replace(/^\d+\s*[--]\s*/, ""),
           text: s.theirMechanic,
           url: `${pageUrl}#teardown-${td.key}-step-${i + 1}`,
         })),
@@ -225,7 +225,7 @@ export default async function ComparisonPage({ params }: PageProps) {
             At a glance
           </h2>
           <p data-speakable className="text-sky-100 text-sm leading-relaxed">
-            TL;DR — {comp.verdict}
+            TL;DR, {comp.verdict}
           </p>
         </aside>
         <p data-speakable className="text-gray-400 text-base leading-relaxed mb-3">
@@ -257,9 +257,9 @@ export default async function ComparisonPage({ params }: PageProps) {
           ))}
         </div>
 
-        {/* Funnel teardowns — Brunson-style structural reverse-engineering
+        {/* Funnel teardowns, Brunson-style structural reverse-engineering
             of competitor funnel architecture. Server-rendered, no JS. Renders
-            inline because per-page count is bounded (1–3) by SLUG_TO_TEARDOWN_KEYS. */}
+            inline because per-page count is bounded (1-3) by SLUG_TO_TEARDOWN_KEYS. */}
         {teardowns.length > 0 ? (
           <section className="mb-12" aria-label="Competitor funnel teardowns">
             <header className="mb-6">
@@ -273,7 +273,7 @@ export default async function ComparisonPage({ params }: PageProps) {
               <p className="text-gray-400 text-sm leading-relaxed max-w-3xl">
                 The fastest way to understand a market is to walk every step
                 of every competitor&rsquo;s funnel and name the conversion
-                mechanic. Below is the structural teardown — what they do at
+                mechanic. Below is the structural teardown, what they do at
                 each step, the read on the mechanic, and the parallel move
                 in our funnel. All sourced from publicly-observable, logged-
                 out surfaces.
@@ -307,7 +307,7 @@ export default async function ComparisonPage({ params }: PageProps) {
                           {tool}
                         </p>
                         <p className="text-sm leading-relaxed text-gray-300">
-                          {row.values[tool] ?? "—"}
+                          {row.values[tool] ?? "-"}
                         </p>
                       </div>
                     ))}
@@ -331,7 +331,7 @@ export default async function ComparisonPage({ params }: PageProps) {
                     <tr key={row.feature} className="border-b border-slate-800/60 last:border-0 hover:bg-slate-800/40 transition-colors align-top">
                       <td className="px-4 py-3 text-gray-200 font-medium">{row.feature}</td>
                       {comp.featureTable!.tools.map((tool) => (
-                        <td key={tool} className="px-4 py-3 text-gray-400 leading-relaxed">{row.values[tool] ?? "—"}</td>
+                        <td key={tool} className="px-4 py-3 text-gray-400 leading-relaxed">{row.values[tool] ?? "-"}</td>
                       ))}
                     </tr>
                   ))}
@@ -363,7 +363,7 @@ export default async function ComparisonPage({ params }: PageProps) {
           </section>
         ) : null}
 
-        {/* Verdict — single canonical block (".verdict-block" is the JSON-LD cssSelector) */}
+        {/* Verdict, single canonical block (".verdict-block" is the JSON-LD cssSelector) */}
         <div className="verdict-block rounded-lg border border-sky-900/50 bg-sky-950/30 p-6 mb-12">
           <p className="text-xs font-medium text-sky-400 uppercase tracking-wider mb-2">
             Verdict
@@ -453,11 +453,11 @@ export default async function ComparisonPage({ params }: PageProps) {
           </section>
         ) : null}
 
-        {/* CTA — free digest primary, First Look secondary, AC signoff; methodology demoted to a text link */}
+        {/* CTA, free digest primary, First Look secondary, AC signoff; methodology demoted to a text link */}
         <SeoCta
-          heading="Skip the debate — see who's actually shipping"
+          heading="Skip the debate, see who's actually shipping"
           signoffIndex={6}
-          secondary={{ label: "Test one sector — First Look (€7) →", href: "/firstlook" }}
+          secondary={{ label: "Test one sector, First Look (€7) →", href: "/firstlook" }}
         />
         <p className="mt-3 text-center text-xs text-gray-500">
           Still verifying the claim?{" "}

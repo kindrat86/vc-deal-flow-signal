@@ -1,5 +1,5 @@
 /**
- * /.well-known/subprocessors.json — machine-readable subprocessor registry.
+ * /.well-known/subprocessors.json, machine-readable subprocessor registry.
  *
  * F38 (2026-05-08). TrustSEO push: enterprise procurement and AI-agent
  * compliance probes consume this format directly so legal/security teams
@@ -98,7 +98,7 @@ const SUBPROCESSORS: Subprocessor[] = [
     region: ["US"],
     certifications: ["SOC 1 Type II", "SOC 2 Type II"],
     notes:
-      "Used only by /api/agent/deep-signal/x402 — wallets are paying agents, not human end users. No PII passes through this leg.",
+      "Used only by /api/agent/deep-signal/x402, wallets are paying agents, not human end users. No PII passes through this leg.",
   },
   {
     name: "PostHog (EU Cloud)",
@@ -124,7 +124,7 @@ const SUBPROCESSORS: Subprocessor[] = [
     region: ["US"],
     certifications: ["SOC 1 Type II", "SOC 2 Type II", "ISO 27001"],
     notes:
-      "We consume the public GitHub events API only — no private repo access, no OAuth-scoped user data.",
+      "We consume the public GitHub events API only, no private repo access, no OAuth-scoped user data.",
   },
   {
     name: "Cloudflare",
@@ -159,7 +159,7 @@ export async function GET() {
     "@context": "https://schema.org",
     "@type": "DataCatalog",
     "@id": `${SITE}/.well-known/subprocessors.json`,
-    name: "Subprocessor Registry — VC Deal Flow Signal",
+    name: "Subprocessor Registry, VC Deal Flow Signal",
     description:
       "Machine-readable list of every third-party processor that handles VC Deal Flow Signal data, ordered by sensitivity tier. Companion to the human-readable page at /subprocessors and the GDPR posture in /.well-known/compliance.json.",
     license: "https://creativecommons.org/licenses/by/4.0/",

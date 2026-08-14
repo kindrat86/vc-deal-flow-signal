@@ -29,7 +29,7 @@ if (process.env.NODE_ENV !== "production") {
  */
 export function isAllowedOrigin(request: Request): boolean {
   const origin = request.headers.get("origin");
-  // No origin header = non-browser client (curl, API call) — allow
+  // No origin header = non-browser client (curl, API call), allow
   if (!origin) return true;
   return ALLOWED_ORIGINS.includes(origin);
 }

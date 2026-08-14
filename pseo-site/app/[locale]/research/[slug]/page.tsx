@@ -1,5 +1,5 @@
 /**
- * /[locale]/research/[slug] — fully translated research finding pages.
+ * /[locale]/research/[slug], fully translated research finding pages.
  *
  * Currently only ja entries exist (in @/content/ja-research). The route
  * is locale-generic so additional locales can plug in later by:
@@ -73,7 +73,7 @@ export async function generateMetadata({
       description: f.claim,
       images: [`${SITE}/api/og/signal-card`],
     },
-    // Highwire Press citation tags — keep parity with English /research/[slug]
+    // Highwire Press citation tags, keep parity with English /research/[slug]
     // so Google Scholar can index the locale variant as a translation of the
     // SSRN paper. citation_language is the only delta from English.
     other: {

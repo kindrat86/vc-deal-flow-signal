@@ -1,5 +1,5 @@
 /**
- * RFC 6415 §3.1 — host-meta JRD variant.
+ * RFC 6415 §3.1, host-meta JRD variant.
  * JSON sibling of /.well-known/host-meta. Some agents prefer JSON.
  */
 

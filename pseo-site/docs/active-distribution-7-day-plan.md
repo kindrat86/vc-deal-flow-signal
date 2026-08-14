@@ -1,4 +1,4 @@
-# GitDealFlow — 7-day active distribution plan
+# GitDealFlow, 7-day active distribution plan
 
 Purpose: turn the strongest pages into real conversations, not just indexed assets.
 
@@ -9,7 +9,7 @@ Operating rule:
 - 1 exact angle
 - 1 exact next page if someone bites
 
-## Day 1 — commercial wedge
+## Day 1, commercial wedge
 Primary page:
 - `/compare/crunchbase-alternative-for-angel-investors`
 Primary channel:
@@ -25,7 +25,7 @@ If they engage, send next:
 Success signal:
 - asks how this differs from Crunchbase / PitchBook / Dealroom
 
-## Day 2 — category definition
+## Day 2, category definition
 Primary page:
 - `/answers/deal-flow-timing-vs-verification`
 Primary channel:
@@ -41,7 +41,7 @@ If they engage, send next:
 Success signal:
 - asks whether the signal is too noisy or too early
 
-## Day 3 — evidence
+## Day 3, evidence
 Primary page:
 - `/research`
 Primary channel:
@@ -57,7 +57,7 @@ If they engage, send next:
 Success signal:
 - asks for methodology, dataset, or reproducibility
 
-## Day 4 — proof
+## Day 4, proof
 Primary page:
 - `/from-stars-to-seed`
 Primary channel:
@@ -73,7 +73,7 @@ If they engage, send next:
 Success signal:
 - asks for more examples or proof that this isn’t backfit
 
-## Day 5 — practical workflow
+## Day 5, practical workflow
 Primary page:
 - `/answers/how-angel-investors-use-github-signals`
 Primary channel:
@@ -89,7 +89,7 @@ If they engage, send next:
 Success signal:
 - asks how non-technical angels can use this in practice
 
-## Day 6 — buyer evaluation
+## Day 6, buyer evaluation
 Primary page:
 - `/buyers-guide`
 Primary channel:
@@ -105,7 +105,7 @@ If they engage, send next:
 Success signal:
 - asks which paid step fits them
 
-## Day 7 — AI-native angle
+## Day 7, AI-native angle
 Primary page:
 - `/integrations/best-mcp-server-for-vc-research`
 Primary channel:

@@ -1,16 +1,16 @@
 /**
- * /entities.json — flat, NER-friendly named-entity manifest.
+ * /entities.json, flat, NER-friendly named-entity manifest.
  *
  * Companion to the richer surfaces already on this domain:
- *   - /knowledge-graph.json — full JSON-LD DataCatalog @graph
- *   - /.well-known/wikidata.json — Wikidata P-code claim ledger
- *   - RootIdentitySchema (every page) — site-wide JSON-LD identity block
+ *   - /knowledge-graph.json, full JSON-LD DataCatalog @graph
+ *   - /.well-known/wikidata.json, Wikidata P-code claim ledger
+ *   - RootIdentitySchema (every page), site-wide JSON-LD identity block
  *
  * This surface exists for downstream NER and entity-extraction consumers
  * (spaCy, Hugging Face datasets, lightweight retrieval pipelines) that
- * want a single flat list of every named entity this site asserts —
+ * want a single flat list of every named entity this site asserts -
  * people, organizations, the software product, datasets, and academic
- * publications — without parsing nested JSON-LD.
+ * publications, without parsing nested JSON-LD.
  *
  * Schema design:
  *   - One root object with typed arrays (people, organizations,
@@ -22,7 +22,7 @@
  *     identifier index without parsing PropertyValue triples.
  *
  * Why this file exists separately from knowledge-graph.json:
- *   knowledge-graph.json is a JSON-LD document — consumers need a
+ *   knowledge-graph.json is a JSON-LD document, consumers need a
  *   JSON-LD parser. entities.json is plain JSON; flat schema; one fetch
  *   gives the full entity inventory to a spaCy pipeline or a Hugging
  *   Face dataset script.
@@ -115,7 +115,7 @@ const ORGANIZATIONS: Entity[] = [
     url: APEX,
     alternateName: ["GitDealFlow", "VC Deal Flow Signal (GitDealFlow)"],
     description:
-      "Independent research and product studio tracking GitHub commit-velocity, contributor-growth, and repository-expansion signals across venture-backed startups. Surfaces engineering-acceleration patterns 3–6 weeks before fundraise announcements.",
+      "Independent research and product studio tracking GitHub commit-velocity, contributor-growth, and repository-expansion signals across venture-backed startups. Surfaces engineering-acceleration patterns 3-6 weeks before fundraise announcements.",
     identifiers: [
       {
         propertyID: "wikidata",
@@ -142,7 +142,7 @@ const SOFTWARE_APPLICATIONS: Entity[] = [
     type: "SoftwareApplication",
     url: `${SITE}/dashboard`,
     description:
-      "Web dashboard surfacing weekly engineering-acceleration signals for 350+ venture-backed startups. Sector, stage, and signal-type filters; CSV/JSON export.",
+      "Web dashboard surfacing weekly engineering-acceleration signals for 369 venture-backed startups. Sector, stage, and signal-type filters; CSV/JSON export.",
     identifiers: [
       {
         propertyID: "wikidata",
@@ -172,7 +172,7 @@ const SOFTWARE_APPLICATIONS: Entity[] = [
     ],
   },
   {
-    name: "VC Deal Flow Signal — Crunchbase + Wellfound badge",
+    name: "VC Deal Flow Signal, Crunchbase + Wellfound badge",
     type: "SoftwareApplication",
     url: "https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn",
     description:
@@ -182,7 +182,7 @@ const SOFTWARE_APPLICATIONS: Entity[] = [
     ],
   },
   {
-    name: "VC GitHub Lookup — Startup Signals on Hover",
+    name: "VC GitHub Lookup, Startup Signals on Hover",
     type: "SoftwareApplication",
     url: "https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm",
     description:
@@ -195,11 +195,11 @@ const SOFTWARE_APPLICATIONS: Entity[] = [
 
 const DATASETS: Entity[] = [
   {
-    name: "VC Deal Flow Signal — open dataset",
+    name: "VC Deal Flow Signal, open dataset",
     type: "Dataset",
     url: `${SITE}/dataset`,
     description:
-      "Open weekly dataset of GitHub-derived engineering-acceleration signals across 350+ venture-backed startups. CC BY 4.0. Available as JSON, JSONL, CSV.",
+      "Open weekly dataset of GitHub-derived engineering-acceleration signals across 369 venture-backed startups. CC BY 4.0. Available as JSON, JSONL, CSV.",
     identifiers: [
       {
         propertyID: "DOI",
@@ -217,11 +217,11 @@ const DATASETS: Entity[] = [
     ],
   },
   {
-    name: "VC Deal Flow Signal — curated entity corpus",
+    name: "VC Deal Flow Signal, curated entity corpus",
     type: "Dataset",
     url: `${SITE}/api/corpus.json`,
     description:
-      "Versioned, dated, diffable snapshot of every curated entity asserted by this site — companies, venture funds, public engineering founders, glossary terms, sector hubs, and M&A acquirers. Each record carries a stable recordHash; the snapshot carries a content-derived revision and an asOf date. Served as JSON and NDJSON. CC BY 4.0.",
+      "Versioned, dated, diffable snapshot of every curated entity asserted by this site, companies, venture funds, public engineering founders, glossary terms, sector hubs, and M&A acquirers. Each record carries a stable recordHash; the snapshot carries a content-derived revision and an asOf date. Served as JSON and NDJSON. CC BY 4.0.",
     sameAs: [
       `${SITE}/api/corpus.json`,
       `${SITE}/api/corpus.jsonl`,
@@ -275,7 +275,7 @@ const PROJECTS: Entity[] = [
       "Weekly editorial publication grading named startups whose GitHub engineering acceleration crossed the signal threshold during the prior week.",
   },
   {
-    name: "Hugging Face Space — VC Deal Flow Explorer",
+    name: "Hugging Face Space, VC Deal Flow Explorer",
     type: "SoftwareApplication",
     url: "https://huggingface.co/spaces/the-data-nerd/vc-deal-flow-explorer",
     description:
@@ -287,21 +287,21 @@ const PROJECTS: Entity[] = [
     type: "CollectionPage",
     url: `${SITE}/signal`,
     description:
-      "Index of per-company GitHub engineering signal pages — commit velocity, contributor influx, and repo activity for well-known public technical companies. One leaf page per company under /signal/[slug].",
+      "Index of per-company GitHub engineering signal pages, commit velocity, contributor influx, and repo activity for well-known public technical companies. One leaf page per company under /signal/[slug].",
   },
   {
     name: "Venture Fund Profiles Index",
     type: "CollectionPage",
     url: `${SITE}/fund`,
     description:
-      "Independent profiles of well-known venture funds — published thesis, stage focus, and engineering-signal sourcing map. One leaf page per fund under /fund/[slug].",
+      "Independent profiles of well-known venture funds, published thesis, stage focus, and engineering-signal sourcing map. One leaf page per fund under /fund/[slug].",
   },
   {
     name: "Founder & Public Engineering Profiles Index",
     type: "CollectionPage",
     url: `${SITE}/founder`,
     description:
-      "Public-figure-threshold engineering profile pages — founders, OSS maintainers, and technical executives who self-publish their GitHub handle on their own surface. One leaf per handle under /founder/[handle], with opt-out at /founder/opt-out.",
+      "Public-figure-threshold engineering profile pages, founders, OSS maintainers, and technical executives who self-publish their GitHub handle on their own surface. One leaf per handle under /founder/[handle], with opt-out at /founder/opt-out.",
   },
   {
     name: "Sector Hubs Index",
@@ -322,21 +322,21 @@ const PROJECTS: Entity[] = [
     type: "CollectionPage",
     url: `${SITE}/acquirer`,
     description:
-      "Independent M&A pattern pages for 20 well-known public-company tech acquirers — Microsoft, Google, Salesforce, Adobe, Apple, Amazon/AWS, Cisco, IBM, Oracle, Nvidia, Atlassian, ServiceNow, Stripe, Cloudflare, Shopify, Snowflake, Databricks, GitHub, HubSpot, Intel. Every deal listed was announced via press release, SEC filing, or both. One leaf per acquirer under /acquirer/[slug].",
+      "Independent M&A pattern pages for 20 well-known public-company tech acquirers, Microsoft, Google, Salesforce, Adobe, Apple, Amazon/AWS, Cisco, IBM, Oracle, Nvidia, Atlassian, ServiceNow, Stripe, Cloudflare, Shopify, Snowflake, Databricks, GitHub, HubSpot, Intel. Every deal listed was announced via press release, SEC filing, or both. One leaf per acquirer under /acquirer/[slug].",
   },
   {
     name: "Trend Leaderboards Index",
     type: "CollectionPage",
     url: `${SITE}/trend`,
     description:
-      "Editorial trend leaderboards across 20 technical categories in 2026 — agentic AI frameworks, LLM inference, frontier labs, AI coding tools, open-weight models, voice AI, edge compute, AI sandboxes, serverless runtimes, AI-native databases, Postgres platforms, auth providers, background jobs, ORMs, frontend frameworks, observability, email, payments, video tooling, container orchestration. AEO-optimized for citation. One leaf per trend under /trend/[slug].",
+      "Editorial trend leaderboards across 20 technical categories in 2026, agentic AI frameworks, LLM inference, frontier labs, AI coding tools, open-weight models, voice AI, edge compute, AI sandboxes, serverless runtimes, AI-native databases, Postgres platforms, auth providers, background jobs, ORMs, frontend frameworks, observability, email, payments, video tooling, container orchestration. AEO-optimized for citation. One leaf per trend under /trend/[slug].",
   },
   {
     name: "Works-with Integrations Index",
     type: "CollectionPage",
     url: `${SITE}/works-with`,
     description:
-      "CRM and workflow tool integration pages — Affinity, HubSpot, Salesforce, Notion, Airtable, Slack, Linear, Attio, Pipedrive, Copper, Microsoft Dynamics, Zapier, Make.com, Google Sheets, n8n. Each leaf documents available integration paths (CSV, REST API, MCP, Zapier, webhook, RSS), live workflows, and what custom integration would require. For Marcus 100 audiences who want signals inside their existing stack.",
+      "CRM and workflow tool integration pages, Affinity, HubSpot, Salesforce, Notion, Airtable, Slack, Linear, Attio, Pipedrive, Copper, Microsoft Dynamics, Zapier, Make.com, Google Sheets, n8n. Each leaf documents available integration paths (CSV, REST API, MCP, Zapier, webhook, RSS), live workflows, and what custom integration would require. For Marcus 100 audiences who want signals inside their existing stack.",
   },
   {
     name: "Year in Review Index",
@@ -350,14 +350,14 @@ const PROJECTS: Entity[] = [
     type: "CollectionPage",
     url: `${SITE}/for`,
     description:
-      "Buyer-persona navigation hubs mapping the engineering-signal panel to specific Marcus 100 roles — Corp Dev directors, PE Operating Partners, non-engineer Tech VPs, Emerging-Manager VCs, Founders, Researchers, Tech Journalists. Each leaf documents workflows, quick-start paths, and honest caveats for one buyer persona under /for/[slug].",
+      "Buyer-persona navigation hubs mapping the engineering-signal panel to specific Marcus 100 roles, Corp Dev directors, PE Operating Partners, non-engineer Tech VPs, Emerging-Manager VCs, Founders, Researchers, Tech Journalists. Each leaf documents workflows, quick-start paths, and honest caveats for one buyer persona under /for/[slug].",
   },
   {
     name: "Case Studies Index",
     type: "CollectionPage",
     url: `${SITE}/case-study`,
     description:
-      "Narrative workflow case studies for Marcus 100 buyer personas — Corp Dev AI acquisition shortlists, PE Operating Partner portfolio benchmarking, emerging-manager sourcing, Tech VP vendor consolidation, founder fundraise mapping, researcher methodology citation, journalist trend grounding, Corp Dev quarterly sector scan. Each leaf documents the workflow step-by-step with HowTo + Article + FAQPage JSON-LD under /case-study/[slug].",
+      "Narrative workflow case studies for Marcus 100 buyer personas, Corp Dev AI acquisition shortlists, PE Operating Partner portfolio benchmarking, emerging-manager sourcing, Tech VP vendor consolidation, founder fundraise mapping, researcher methodology citation, journalist trend grounding, Corp Dev quarterly sector scan. Each leaf documents the workflow step-by-step with HowTo + Article + FAQPage JSON-LD under /case-study/[slug].",
   },
   {
     name: "Research Papers Index (External)",
@@ -372,9 +372,9 @@ export async function GET() {
   const body: EntityManifest = {
     $schema: "https://json-schema.org/draft/2020-12/schema",
     contractVersion: "1.0.0",
-    name: "VC Deal Flow Signal — named-entity manifest",
+    name: "VC Deal Flow Signal, named-entity manifest",
     description:
-      "Flat, NER-friendly inventory of every named entity asserted by signals.gitdealflow.com — people, organizations, software products, datasets, publications, projects. Companion to /knowledge-graph.json (JSON-LD) and /.well-known/wikidata.json (Wikidata claim ledger). License: CC BY 4.0.",
+      "Flat, NER-friendly inventory of every named entity asserted by signals.gitdealflow.com, people, organizations, software products, datasets, publications, projects. Companion to /knowledge-graph.json (JSON-LD) and /.well-known/wikidata.json (Wikidata claim ledger). License: CC BY 4.0.",
     generatedAt: new Date().toISOString(),
     publisher: {
       name: "VC Deal Flow Signal",

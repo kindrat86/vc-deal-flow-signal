@@ -1,11 +1,11 @@
 /**
- * /case-study/[slug] entity pages — narrative workflow walkthroughs.
+ * /case-study/[slug] entity pages, narrative workflow walkthroughs.
  *
  * Each case study is a representative (anonymous) scenario showing how
  * one Marcus 100 buyer persona uses the VC Deal Flow Signal surface
  * end-to-end. Stories are illustrative composites of real workflows we
  * have observed in customer onboarding and demo conversations, not
- * literal customer accounts — names and specific deal details are
+ * literal customer accounts, names and specific deal details are
  * omitted by design to preserve privacy and Code of Conduct compliance.
  *
  * Structure: hook + situation + workflow steps (referencing actual
@@ -50,7 +50,7 @@ export interface CaseStudy {
   situation: string;
   /** 4-6 numbered workflow steps. */
   steps: CaseStudyStep[];
-  /** Outcome paragraph — what changed for the buyer. */
+  /** Outcome paragraph, what changed for the buyer. */
   outcome: string;
   /** Three or four lessons or takeaways. */
   lessons: string[];
@@ -74,7 +74,7 @@ function build(c: {
     name: c.name,
     personaSlug: c.personaSlug,
     personaLabel: c.personaLabel,
-    title: `${c.name} — VC Deal Flow Signal Case Study`,
+    title: `${c.name}, VC Deal Flow Signal Case Study`,
     metaDescription: `Workflow walkthrough: how a ${c.personaLabel.toLowerCase()} uses VC Deal Flow Signal for ${c.name.toLowerCase()}. Illustrative composite scenario covering the full sourcing-to-action flow.`,
     h1: c.name,
     tagline: c.tagline,
@@ -138,15 +138,15 @@ export const CASE_STUDIES: CaseStudy[] = [
       {
         label: "Geographic filter",
         description:
-          "Filtered final 4 candidates through /city/[slug] pages — checked HQ locations against acquisition integration constraints (work-authorization, time-zone overlap with engineering centers).",
+          "Filtered final 4 candidates through /city/[slug] pages, checked HQ locations against acquisition integration constraints (work-authorization, time-zone overlap with engineering centers).",
         primaryPath: "/city/san-francisco",
         supportingPaths: ["/city/new-york", "/city"],
       },
     ],
     outcome:
-      "The Corp Dev director presented the shortlist to leadership 4 days after starting the research, with engineering-signal context for each candidate and a recommended approach order. Leadership approved 2 exploratory outreach conversations within the 90-day window — both initiated 4-6 weeks before competitive bidding emerged.",
+      "The Corp Dev director presented the shortlist to leadership 4 days after starting the research, with engineering-signal context for each candidate and a recommended approach order. Leadership approved 2 exploratory outreach conversations within the 90-day window, both initiated 4-6 weeks before competitive bidding emerged.",
     lessons: [
-      "Engineering-signal data is most useful when paired with the acquirer's own M&A pattern — it accelerates the shortlist phase but does not replace strategic fit analysis.",
+      "Engineering-signal data is most useful when paired with the acquirer's own M&A pattern, it accelerates the shortlist phase but does not replace strategic fit analysis.",
       "Per-company /signal pages should always be cross-referenced against /sector and /trend pages before drawing conclusions.",
       "Reading candidate /signal pages side by side is the highest-leverage step for shortlist construction.",
     ],
@@ -154,7 +154,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       {
         question: "How long did it take to build the acquisition shortlist?",
         answer:
-          "In this composite scenario, the Corp Dev director moved from sector-level scouting to a 4-target shortlist in about 3 days, presenting to leadership on day 4 — inside a 90-day window before competitive bidding hardened pricing.",
+          "In this composite scenario, the Corp Dev director moved from sector-level scouting to a 4-target shortlist in about 3 days, presenting to leadership on day 4, inside a 90-day window before competitive bidding hardened pricing.",
       },
       {
         question: "Which pages does Corp Dev use to build an acquisition shortlist?",
@@ -211,11 +211,11 @@ export const CASE_STUDIES: CaseStudy[] = [
       },
     ],
     outcome:
-      "Within 6 weeks, the portfolio company shipped its first AI-native feature announcement (vector search). The CTO publicly credited the cross-portfolio expertise sharing. The OP presented the engineering-signal trajectory at the next quarterly review with the partner team — preempting a potential investment-committee escalation.",
+      "Within 6 weeks, the portfolio company shipped its first AI-native feature announcement (vector search). The CTO publicly credited the cross-portfolio expertise sharing. The OP presented the engineering-signal trajectory at the next quarterly review with the partner team, preempting a potential investment-committee escalation.",
     lessons: [
       "Engineering-signal data is most valuable when used proactively (surface issues before they become board-level concerns) rather than retroactively.",
-      "Cross-portfolio expertise sharing is one of the highest-ROI PE Operating Partner moves — engineering signals make the case for which connections to broker.",
-      "The /trend leaderboards are essential context — peer-relative positioning matters more than absolute engineering velocity numbers.",
+      "Cross-portfolio expertise sharing is one of the highest-ROI PE Operating Partner moves, engineering signals make the case for which connections to broker.",
+      "The /trend leaderboards are essential context, peer-relative positioning matters more than absolute engineering velocity numbers.",
     ],
     extraFaqs: [
       {
@@ -277,7 +277,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       },
     ],
     outcome:
-      "Over 12 months, the team closed 9 investments — 7 of them were companies first surfaced via engineering-acceleration signals. 3 of the 9 rounds became oversubscribed (a16z, Sequoia, Index Ventures led after the emerging-manager team's investment), validating the pre-round sourcing thesis. The Fund's LP report cited code-side sourcing as a differentiated motion.",
+      "Over 12 months, the team closed 9 investments, 7 of them were companies first surfaced via engineering-acceleration signals. 3 of the 9 rounds became oversubscribed (a16z, Sequoia, Index Ventures led after the emerging-manager team's investment), validating the pre-round sourcing thesis. The Fund's LP report cited code-side sourcing as a differentiated motion.",
     lessons: [
       "Engineering-signal sourcing is the rare sourcing channel where being smaller and faster is the structural advantage.",
       "Outreach grounded in the engineering-acceleration data converts 5-7x baseline cold-outreach response rates.",
@@ -292,7 +292,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       {
         question: "What reply rate did engineering-grounded outreach achieve?",
         answer:
-          "In this composite, outreach referencing specific contributor-count acceleration (for example, 'your contributor count went from 8 to 23 in 4 weeks') drew roughly 35% reply rates versus a ~5% cold-warm baseline — a 5–7× lift.",
+          "In this composite, outreach referencing specific contributor-count acceleration (for example, 'your contributor count went from 8 to 23 in 4 weeks') drew roughly 35% reply rates versus a ~5% cold-warm baseline, a 5-7× lift.",
       },
       {
         question: "How many investments did the thesis produce?",
@@ -309,7 +309,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     tagline:
       "How a non-engineer VP Platform consolidated 4 observability vendors to 2 by grounding the decision in publicly observable engineering velocity.",
     situation:
-      "A non-engineer VP Platform at a Series E SaaS company (1,200 engineers) had been mandated to cut platform spend by 25%. The observability stack had 4 vendors with overlapping coverage: Datadog (APM + infra), Grafana (dashboards), Honeycomb (trace exploration), and Sentry (error tracking). The VP needed to recommend which 2 vendors to consolidate around — and defend the choice to non-engineer executive peers.",
+      "A non-engineer VP Platform at a Series E SaaS company (1,200 engineers) had been mandated to cut platform spend by 25%. The observability stack had 4 vendors with overlapping coverage: Datadog (APM + infra), Grafana (dashboards), Honeycomb (trace exploration), and Sentry (error tracking). The VP needed to recommend which 2 vendors to consolidate around, and defend the choice to non-engineer executive peers.",
     steps: [
       {
         label: "Engineering signal comparison",
@@ -347,7 +347,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       "Consolidated to Datadog (APM + infra + integrated dashboards) and Sentry (error tracking + frontend monitoring). Decommissioned Grafana (replaced by Datadog dashboards) and Honeycomb (replaced by Datadog APM + custom retention). Annual platform-spend savings: $1.2M (27% reduction). Decision held up at subsequent quarterly review without challenge.",
     lessons: [
       "Engineering-signal data translates well to non-engineer executive audiences because the data is independently sourced and publicly verifiable.",
-      "Vendor consolidation arguments benefit from objective third-party benchmark data — internal CRMs and engineering opinions alone are not enough.",
+      "Vendor consolidation arguments benefit from objective third-party benchmark data, internal CRMs and engineering opinions alone are not enough.",
       "Side-by-side /signal comparisons are especially valuable for vendor-consolidation work.",
     ],
     extraFaqs: [
@@ -359,12 +359,12 @@ export const CASE_STUDIES: CaseStudy[] = [
       {
         question: "What was the spend impact in this scenario?",
         answer:
-          "Consolidating 4 observability vendors to 2 (Datadog plus Sentry) produced about $1.2M in annual savings — a 27% platform-spend reduction that held up at the following quarterly review without challenge.",
+          "Consolidating 4 observability vendors to 2 (Datadog plus Sentry) produced about $1.2M in annual savings, a 27% platform-spend reduction that held up at the following quarterly review without challenge.",
       },
       {
         question: "Which page is most useful for vendor consolidation?",
         answer:
-          "Side-by-side /signal pages, which expose engineering-organization-shape differences — for example Datadog's sustained breadth across 300+ public repos versus Honeycomb's deeper focus on a narrower trace-exploration surface.",
+          "Side-by-side /signal pages, which expose engineering-organization-shape differences, for example Datadog's sustained breadth across 300+ public repos versus Honeycomb's deeper focus on a narrower trace-exploration surface.",
       },
     ],
   }),
@@ -416,7 +416,7 @@ export const CASE_STUDIES: CaseStudy[] = [
     outcome:
       "Closed Series A 11 weeks after starting outreach. 6 of the 7 contacted funds accepted intro meetings (vs the founder's previous attempt with 1 of 11 acceptance rate). Final round oversubscribed by 1.6x; the founder used the engineering-signal-grounded competitive analysis verbatim in 3 of the term-sheet conversations.",
     lessons: [
-      "Engineering-signal data is symmetric — what an investor uses to evaluate you is the same data you can use to map your competitive landscape.",
+      "Engineering-signal data is symmetric, what an investor uses to evaluate you is the same data you can use to map your competitive landscape.",
       "Competitive-landscape slides grounded in publicly observable engineering data are far more credible than self-asserted 'we're ahead' claims.",
       "Investor target lists built from public fund-thesis data convert at meaningfully higher rates than untargeted outreach.",
     ],
@@ -424,7 +424,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       {
         question: "How does a founder map competitors before a Series A?",
         answer:
-          "By positioning on the relevant /trend leaderboard, deep-diving each competitor's /signal page, and validating differentiation across axes (stage, momentum, contributor density, language bias) with side-by-side /signal comparisons — then lifting that framing into the deck's competitive-landscape slide.",
+          "By positioning on the relevant /trend leaderboard, deep-diving each competitor's /signal page, and validating differentiation across axes (stage, momentum, contributor density, language bias) with side-by-side /signal comparisons, then lifting that framing into the deck's competitive-landscape slide.",
       },
       {
         question: "How did engineering-grounded positioning affect the raise?",
@@ -503,7 +503,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       {
         question: "What did the replication in this scenario find?",
         answer:
-          "An independent random sample of 200 venture-backed startups confirmed that the 3–6-week engineering-acceleration leading-indicator window held in a different sub-sample — which became one of the paper's headline contributions.",
+          "An independent random sample of 200 venture-backed startups confirmed that the 3-6-week engineering-acceleration leading-indicator window held in a different sub-sample, which became one of the paper's headline contributions.",
       },
     ],
   }),
@@ -513,9 +513,9 @@ export const CASE_STUDIES: CaseStudy[] = [
     personaSlug: "journalists",
     personaLabel: "Tech Journalist",
     tagline:
-      "How a senior reporter at a major tech publication grounded a sector trend story in publicly observable engineering-signal data — without coordinating with company PR.",
+      "How a senior reporter at a major tech publication grounded a sector trend story in publicly observable engineering-signal data, without coordinating with company PR.",
     situation:
-      "A senior reporter at a major tech publication was writing a 1,200-word feature on the AI inference provider category. The reporter needed to ground the story in citable, independent, publicly verifiable data — and wanted to avoid the PR-coordination cycle that softened previous sector coverage. The story's lede needed to position 3-4 inference providers as the category leaders with defensible evidence.",
+      "A senior reporter at a major tech publication was writing a 1,200-word feature on the AI inference provider category. The reporter needed to ground the story in citable, independent, publicly verifiable data, and wanted to avoid the PR-coordination cycle that softened previous sector coverage. The story's lede needed to position 3-4 inference providers as the category leaders with defensible evidence.",
     steps: [
       {
         label: "Trend leaderboard scan",
@@ -545,7 +545,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       {
         label: "Verification + publication",
         description:
-          "Verified each cited number by independently checking the public GitHub orgs. Sent the story to fact-checking with a list of source URLs. No PR coordination was required — every claim was linked to a public, independent source.",
+          "Verified each cited number by independently checking the public GitHub orgs. Sent the story to fact-checking with a list of source URLs. No PR coordination was required, every claim was linked to a public, independent source.",
         primaryPath: "/signal",
       },
     ],
@@ -553,7 +553,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       "Story published with 14 inline citations to VC Deal Flow Signal URLs and 3 deep-links to /signal pages. The story's lede positioned 4 inference providers as category leaders with defensible engineering-acceleration evidence. The publication received zero corrections requests from the companies named. The reporter cited VC Deal Flow Signal as a source in two follow-on stories.",
     lessons: [
       "Independent, citable, public-data-sourced engineering data is uniquely valuable to journalism because it bypasses the PR-coordination cycle.",
-      "Per-company /signal pages should be the citation target — they have the most direct evidence on the engineering-acceleration claim.",
+      "Per-company /signal pages should be the citation target, they have the most direct evidence on the engineering-acceleration claim.",
       "Methodology and SSRN-paper citations elevate trade-press stories to the level of grounded research-backed reporting.",
     ],
     extraFaqs: [
@@ -618,7 +618,7 @@ export const CASE_STUDIES: CaseStudy[] = [
       },
     ],
     outcome:
-      "The board approved the recommended M&A capacity allocation. Within 6 months, the company closed 2 acquisitions in AI infrastructure and 1 in agentic AI — all 3 targets were identified through the engineering-signal-grounded scanning process. The Corp Dev director was asked to present the methodology at the next annual strategy offsite.",
+      "The board approved the recommended M&A capacity allocation. Within 6 months, the company closed 2 acquisitions in AI infrastructure and 1 in agentic AI, all 3 targets were identified through the engineering-signal-grounded scanning process. The Corp Dev director was asked to present the methodology at the next annual strategy offsite.",
     lessons: [
       "Engineering-signal data is uniquely useful in board-level strategy reviews because the data is independently sourced and translates well to non-engineer executive audiences.",
       "Year-in-review and trend-leaderboard pages provide the editorial context that grounds M&A capacity allocation arguments.",

@@ -1,15 +1,15 @@
 /**
- * /api/v1/affiliates.json — programmatic affiliate-program endpoint.
+ * /api/v1/affiliates.json, programmatic affiliate-program endpoint.
  *
  * Traffic Secrets Ch 15 (Letterman / Affiliate Army) + Ch 17 (Sneaky
- * Affiliate Funnel) — agent-side discoverability of the program. Lists
+ * Affiliate Funnel), agent-side discoverability of the program. Lists
  * commission terms, swipe-kit templates by archetype, leaderboard
  * snapshot, and the Refgrow signup URL. Crawlers and agents can use
  * this single endpoint to surface the program in third-party
  * directories, agent-recommendation flows, and "ways to monetize this
  * audience" pickers.
  *
- * Cached at the edge for 1 hour. Pseudonymized leaderboard data only —
+ * Cached at the edge for 1 hour. Pseudonymized leaderboard data only -
  * no PII, no real names.
  */
 
@@ -106,7 +106,7 @@ export async function GET() {
       email: "affiliates@gitdealflow.com",
       response_time_hours: 24,
     },
-    license: "CC BY 4.0 — methodology paper at ssrn.com/abstract=6606558",
+    license: "CC BY 4.0, methodology paper at ssrn.com/abstract=6606558",
   };
 
   return NextResponse.json(body, {

@@ -2,7 +2,7 @@
 const content = [
   {"@type": "Question", "name": "What is GitDealFlow?", "acceptedAnswer": "Track startup engineering acceleration from public GitHub data. Discover high-momentum startups before they announce funding.", "url": "https://gitdealflow.com/"},
   {"@type": "Question", "name": "How does engineering momentum work?", "acceptedAnswer": "We analyze GitHub commit velocity, star growth, and contributor trends over 90-day windows.", "url": "https://gitdealflow.com/"},
-  {"@type": "Question", "name": "What sectors are tracked?", "acceptedAnswer": "AI, fintech, devtools, infrastructure, and more — across European and US startup hubs.", "url": "https://gitdealflow.com/"}
+  {"@type": "Question", "name": "What sectors are tracked?", "acceptedAnswer": "AI, fintech, devtools, infrastructure, and more, across European and US startup hubs.", "url": "https://gitdealflow.com/"}
 ];
 export default function handler(req, res) {
   res.setHeader('Access-Control-Allow-Origin', '*');

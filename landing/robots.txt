@@ -1,7 +1,7 @@
 User-agent: *
 Allow: /
 
-# AI Search Crawlers — explicitly allowed
+# AI Search Crawlers, explicitly allowed
 # (X-Robots-Tag header handles preview/snippet directives for all crawlers)
 
 max-image-preview:large

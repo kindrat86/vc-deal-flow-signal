@@ -12,14 +12,14 @@ import { useRouter, useSearchParams } from "next/navigation";
  *   if cac > 0:
  *     ltv_cac_ratio = ltv / cac
  *
- * LTV:CAC bands (industry consensus — SaaStr, ICONIQ, Bessemer):
- *   > 5×    Exceptional — under-investing in growth, raise spend
- *   3-5×    Healthy — the textbook target
- *   2-3×    OK — typical at growth stage, watch margin/churn
- *   1-2×    Suspect — each customer barely profitable
- *   < 1×    Bad — losing money per customer
+ * LTV:CAC bands (industry consensus, SaaStr, ICONIQ, Bessemer):
+ *   > 5×    Exceptional, under-investing in growth, raise spend
+ *   3-5×    Healthy, the textbook target
+ *   2-3×    OK, typical at growth stage, watch margin/churn
+ *   1-2×    Suspect, each customer barely profitable
+ *   < 1×    Bad, losing money per customer
  *
- * Undefined when monthly churn is zero (lifetime → infinity) — handled
+ * Undefined when monthly churn is zero (lifetime → infinity), handled
  * with explicit messaging.
  *
  * Educational tool. Not financial planning advice.
@@ -103,7 +103,7 @@ function computeLtv(inputs: Inputs): ComputedResult {
       ratio: Number.POSITIVE_INFINITY,
       band: "undefined-churn",
       bandLabel:
-        "Zero churn means infinite lifetime — LTV is undefined. Enter a non-zero monthly churn (even 0.5%) to get a meaningful number.",
+        "Zero churn means infinite lifetime, LTV is undefined. Enter a non-zero monthly churn (even 0.5%) to get a meaningful number.",
     };
   }
 
@@ -129,20 +129,20 @@ function computeLtv(inputs: Inputs): ComputedResult {
   if (ratio > 5) {
     band = "exceptional";
     bandLabel =
-      "Exceptional — likely under-investing in growth. Consider raising spend.";
+      "Exceptional, likely under-investing in growth. Consider raising spend.";
   } else if (ratio >= 3) {
     band = "healthy";
-    bandLabel = "Healthy — the textbook target.";
+    bandLabel = "Healthy, the textbook target.";
   } else if (ratio >= 2) {
     band = "ok";
-    bandLabel = "OK — typical at growth stage. Watch margin and churn.";
+    bandLabel = "OK, typical at growth stage. Watch margin and churn.";
   } else if (ratio >= 1) {
     band = "suspect";
-    bandLabel = "Suspect — each customer is barely profitable.";
+    bandLabel = "Suspect, each customer is barely profitable.";
   } else {
     band = "bad";
     bandLabel =
-      "Bad — losing money per customer. Fix unit economics before scaling spend.";
+      "Bad, losing money per customer. Fix unit economics before scaling spend.";
   }
 
   return { lifetimeMonths, ltv, ratio, band, bandLabel };
@@ -270,7 +270,7 @@ export function LtvCalculator() {
           />
           <ResultCard
             label="LTV:CAC ratio"
-            value={inputs.cac > 0 ? formatRatio(result.ratio) : "—"}
+            value={inputs.cac > 0 ? formatRatio(result.ratio) : "-"}
             sublabel={
               inputs.cac > 0
                 ? "Industry target: 3-5×."
@@ -312,14 +312,14 @@ export function LtvCalculator() {
           {copied ? "Link copied" : "Copy share link"}
         </button>
         <p className="text-xs text-gray-500">
-          The URL contains your inputs — drop into a board deck or investor
+          The URL contains your inputs, drop into a board deck or investor
           update without retyping.
         </p>
       </div>
 
       <p className="mt-6 text-xs text-gray-500 leading-relaxed">
         Educational tool. Simple LTV formula assumes constant churn and ARPC
-        — real lifetime values use cohort-by-cohort decay curves and net
+real lifetime values use cohort-by-cohort decay curves and net
         dollar retention. Use this for back-of-envelope; use cohort retention
         analysis for diligence. Not financial planning advice.
       </p>

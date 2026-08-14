@@ -3,7 +3,7 @@ import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 
 const SITE = "https://signals.gitdealflow.com";
-const TITLE = "Built with @gitdealflow/mcp-signal — embed badge for MCP integrators";
+const TITLE = "Built with @gitdealflow/mcp-signal, embed badge for MCP integrators";
 const DESCRIPTION =
   "Free 'Built with @gitdealflow/mcp-signal' badge for any project that calls our MCP server, dataset API, or signals JSON. Three variants, copy-paste markdown, no signup, no telemetry. Same caching model as Codecov or shields.io.";
 
@@ -39,7 +39,7 @@ interface Variant {
 const VARIANTS: Variant[] = [
   {
     name: "default",
-    caption: "Default — best for README hero rows.",
+    caption: "Default, best for README hero rows.",
     url: `${SITE}/api/badge/built-with/svg`,
     markdown: `[![Built with gitdealflow MCP](${SITE}/api/badge/built-with/svg)](${SITE}/built-with)`,
     html: `<a href="${SITE}/built-with"><img src="${SITE}/api/badge/built-with/svg" alt="Built with gitdealflow MCP" /></a>`,
@@ -47,7 +47,7 @@ const VARIANTS: Variant[] = [
   },
   {
     name: "compact",
-    caption: "Compact — narrow value field, fits dense badge rows.",
+    caption: "Compact, narrow value field, fits dense badge rows.",
     url: `${SITE}/api/badge/built-with/svg?variant=compact`,
     markdown: `[![Built with gitdealflow](${SITE}/api/badge/built-with/svg?variant=compact)](${SITE}/built-with)`,
     html: `<a href="${SITE}/built-with"><img src="${SITE}/api/badge/built-with/svg?variant=compact" alt="Built with gitdealflow" /></a>`,
@@ -55,7 +55,7 @@ const VARIANTS: Variant[] = [
   },
   {
     name: "long",
-    caption: "Long — explicit npm package name. Best for npm package READMEs.",
+    caption: "Long, explicit npm package name. Best for npm package READMEs.",
     url: `${SITE}/api/badge/built-with/svg?variant=long`,
     markdown: `[![Built with @gitdealflow/mcp-signal](${SITE}/api/badge/built-with/svg?variant=long)](${SITE}/built-with)`,
     html: `<a href="${SITE}/built-with"><img src="${SITE}/api/badge/built-with/svg?variant=long" alt="Built with @gitdealflow/mcp-signal" /></a>`,
@@ -66,7 +66,7 @@ const VARIANTS: Variant[] = [
 const FAQ = [
   {
     q: "Who is this badge for?",
-    a: "Any project that calls our MCP server (@gitdealflow/mcp-signal), the public signals JSON, or the dataset API. AI agents, dashboards, side-projects, fund-internal tools — if you read our data, you can wear the badge.",
+    a: "Any project that calls our MCP server (@gitdealflow/mcp-signal), the public signals JSON, or the dataset API. AI agents, dashboards, side-projects, fund-internal tools, if you read our data, you can wear the badge.",
   },
   {
     q: "Do I need permission?",
@@ -74,7 +74,7 @@ const FAQ = [
   },
   {
     q: "Will the badge break my README?",
-    a: "GitHub renders all README images through its camo proxy, which caches the SVG aggressively (24h CDN, hourly ETag revalidation). The endpoint always returns a valid SVG — even on transient errors, it returns a neutral pill rather than a broken-image icon.",
+    a: "GitHub renders all README images through its camo proxy, which caches the SVG aggressively (24h CDN, hourly ETag revalidation). The endpoint always returns a valid SVG, even on transient errors, it returns a neutral pill rather than a broken-image icon.",
   },
   {
     q: "What's the cache policy?",
@@ -82,11 +82,11 @@ const FAQ = [
   },
   {
     q: "Can I customize the label?",
-    a: "Yes — append ?label=your+label (max 40 chars) to override the left-hand label text. Variant controls the right-hand value: default, compact, or long.",
+    a: "Yes, append ?label=your+label (max 40 chars) to override the left-hand label text. Variant controls the right-hand value: default, compact, or long.",
   },
   {
     q: "Is the MCP server free forever?",
-    a: "Yes. The six tier-zero tools — get_trending_startups, search_startups_by_sector, get_startup_signal, get_signals_summary, get_scout_receipts, get_methodology — are free with no signup, no rate limit, no telemetry. New paid tools may ship later, but these six stay free.",
+    a: "Yes. The six tier-zero tools, get_trending_startups, search_startups_by_sector, get_startup_signal, get_signals_summary, get_scout_receipts, get_methodology, are free with no signup, no rate limit, no telemetry. New paid tools may ship later, but these six stay free.",
   },
 ];
 
@@ -105,7 +105,7 @@ const FREE_TOOLS = [
   },
   {
     name: "get_signals_summary",
-    desc: "Dataset snapshot — period, counts, refresh date, format URLs, citation.",
+    desc: "Dataset snapshot, period, counts, refresh date, format URLs, citation.",
   },
   {
     name: "get_scout_receipts",
@@ -113,7 +113,7 @@ const FREE_TOOLS = [
   },
   {
     name: "get_methodology",
-    desc: "How signals are sourced, computed, and classified — with known limitations.",
+    desc: "How signals are sourced, computed, and classified, with known limitations.",
   },
 ];
 
@@ -219,7 +219,7 @@ export default function BuiltWithPage() {
           <p className="text-lg text-gray-300 leading-relaxed" data-speakable>
             One-line copy-paste. Three variants. CC BY 4.0. If you call our MCP
             server, the signals JSON, or the dataset API anywhere in your
-            stack, this badge tells your visitors where the data comes from —
+            stack, this badge tells your visitors where the data comes from -
             and gives us a permanent backlink in return.
           </p>
         </header>
@@ -232,7 +232,7 @@ export default function BuiltWithPage() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={v.url}
-                  alt={`Built-With badge — ${v.name}`}
+                  alt={`Built-With badge, ${v.name}`}
                   className="h-5"
                   loading="lazy"
                 />
@@ -296,7 +296,7 @@ export default function BuiltWithPage() {
             </li>
             <li>
               First-look access when we ship new datasets, sectors, or tier-zero
-              tools — implementers get the changelog before the broadcast list.
+              tools, implementers get the changelog before the broadcast list.
             </li>
           </ul>
         </section>
@@ -306,7 +306,7 @@ export default function BuiltWithPage() {
             The six free-tier MCP tools
           </h2>
           <p className="text-sm text-gray-300 mb-4">
-            These six tools are tier-zero — free, no signup, no rate limit on
+            These six tools are tier-zero, free, no signup, no rate limit on
             the public CDN. If your project calls any of them, you can wear the
             badge.
           </p>

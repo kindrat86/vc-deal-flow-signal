@@ -23,7 +23,7 @@ export async function generateMetadata({
   const author = authors[slug];
   if (!author) return { title: "Author not found" };
   return {
-    title: `${author.name} — Author at VC Deal Flow Signal`,
+    title: `${author.name}, Author at VC Deal Flow Signal`,
     description: author.bio,
     alternates: { canonical: `/authors/${author.slug}` },
     openGraph: {
@@ -77,7 +77,7 @@ export default async function AuthorPage({
       {
         "@type": "ProfilePage",
         url: `${BASE_URL}/authors/${author.slug}`,
-        name: `${author.name} — Author at VC Deal Flow Signal`,
+        name: `${author.name}, Author at VC Deal Flow Signal`,
         description: author.bio,
         inLanguage: "en",
         isPartOf: {

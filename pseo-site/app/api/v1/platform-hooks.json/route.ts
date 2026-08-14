@@ -1,9 +1,9 @@
 /**
- * /api/v1/platform-hooks.json — twelve platform-native opener variants
+ * /api/v1/platform-hooks.json, twelve platform-native opener variants
  * resolving the universal product story (commit-velocity acceleration as
- * a 21–47-day pre-fundraise signal).
+ * a 21-47-day pre-fundraise signal).
  *
- * Built 2026-05-09 to close Brunson Traffic Secrets §1 Ch 3 — the
+ * Built 2026-05-09 to close Brunson Traffic Secrets §1 Ch 3, the
  * trilogy-audit gap of one-shared-opener-everywhere. Single source of
  * truth: pseo-site/content/platform-hooks.ts.
  *
@@ -26,7 +26,7 @@ export async function GET() {
     "@id": `${SITE}/api/v1/platform-hooks.json`,
     name: "Platform-native opener variants",
     description:
-      "Twelve platform-native opener variants resolving one universal product story (public commit-velocity acceleration as a 21–47-day pre-fundraise signal). Each entry carries an opener pattern, audience signal, format constraint, timing window, and the platform-specific landmine.",
+      "Twelve platform-native opener variants resolving one universal product story (public commit-velocity acceleration as a 21-47-day pre-fundraise signal). Each entry carries an opener pattern, audience signal, format constraint, timing window, and the platform-specific landmine.",
     url: `${SITE}/distribution/platform-hooks`,
     inLanguage: "en-US",
     license: "https://creativecommons.org/licenses/by/4.0/",

@@ -1,7 +1,7 @@
 /**
  * Weekly Signal Digest email renderer.
  *
- * Pure function — takes structured weekly signal data and returns an HTML
+ * Pure function, takes structured weekly signal data and returns an HTML
  * string suitable for sending via Resend, Postmark, Mailgun, or SES. Uses
  * inline styles + table layout for broad email-client compatibility.
  *
@@ -74,7 +74,7 @@ function escape(s: string): string {
 
 function unsubToken(_esp: DigestOptions["esp"]): { unsub: string; prefs: string } {
   // We send the digest via Resend's /emails endpoint (per-recipient), not
-  // /broadcasts — so neither {{{RESEND_UNSUBSCRIBE_URL}}} nor
+  // /broadcasts, so neither {{{RESEND_UNSUBSCRIBE_URL}}} nor
   // %unsubscribe_url% would be substituted at send time and the literal
   // template text would land in the inbox. Use a real mailto: link that
   // works in any client. The List-Unsubscribe header set by the sender
@@ -149,7 +149,7 @@ function sectorCard(s: DigestSector): string {
 export function renderDigestEmail(data: DigestData, opts: DigestOptions = {}): string {
   const { unsub, prefs } = unsubToken(opts.esp);
   const subject =
-    opts.subject ?? `Signal Digest — Week of ${data.weekOf}: ${data.topStartups[0]?.name ?? ""} leads with ${data.topStartups[0]?.commitVelocityChange ?? ""}`;
+    opts.subject ?? `Signal Digest, Week of ${data.weekOf}: ${data.topStartups[0]?.name ?? ""} leads with ${data.topStartups[0]?.commitVelocityChange ?? ""}`;
   const preheader = `${data.statStartups} startups tracked across ${data.statSectors} sectors. ${data.topStartups
     .slice(0, 3)
     .map((s) => `${s.name} ${s.commitVelocityChange}`)
@@ -306,7 +306,7 @@ export function renderDigestEmail(data: DigestData, opts: DigestOptions = {}): s
             <td class="bg-card brd px-outer" style="background:${BRAND.card};border:1px solid ${BRAND.border};border-radius:12px;padding:20px;">
               <div class="tx-mut" style="color:${BRAND.textMut};font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;">How we measure</div>
               <p class="tx-sec" style="margin:8px 0 0 0;color:${BRAND.textSec};font-size:14px;line-height:22px;">
-                Each week we look at how fast a team is shipping code, how many engineers are pitching in, and how often they push out updates &mdash; over the last 14 days, against that startup's own normal pace. The names at the top of this list have historically started moving 3&ndash;6 weeks before a funding announcement.
+                Each week we look at how fast a team is shipping code, how many engineers are pitching in, and how often they push out updates, over the last 14 days, against that startup's own normal pace. The names at the top of this list have historically started moving 3-6 weeks before a funding announcement.
                 <a href="https://signals.gitdealflow.com/methodology" style="color:${BRAND.accentLight};font-weight:600;">See exactly how &rarr;</a>
               </p>
             </td>

@@ -1,6 +1,6 @@
 /**
  * Hand-curated, short locale landings. We do NOT ship machine-translated
- * full-site copy — Google penalizes thin/translated pages, and bad
+ * full-site copy, Google penalizes thin/translated pages, and bad
  * translations hurt brand. Each entry is a short "what we are" landing in
  * the target language, written so a native speaker would not flag it as
  * machine-translated, with a clear pointer back to the canonical English
@@ -151,9 +151,9 @@ export const LOCALES: Locale[] = [
     region: "Russia &amp; CIS",
     dir: "ltr",
     intro:
-      "VC Deal Flow Signal (GitDealFlow) выявляет стартапы в фазе ускорения инженерной разработки, отслеживая скорость коммитов, рост числа участников и расширение репозиториев в публичных данных GitHub. Наше исследование показывает, что такие сигналы обычно появляются за три–шесть недель до объявлений о раундах финансирования. Методология опубликована на SSRN на английском языке (DOI 10.2139/ssrn.6606558, CC BY 4.0); набор данных также доступен открыто.",
+      "VC Deal Flow Signal (GitDealFlow) выявляет стартапы в фазе ускорения инженерной разработки, отслеживая скорость коммитов, рост числа участников и расширение репозиториев в публичных данных GitHub. Наше исследование показывает, что такие сигналы обычно появляются за три-шесть недель до объявлений о раундах финансирования. Методология опубликована на SSRN на английском языке (DOI 10.2139/ssrn.6606558, CC BY 4.0); набор данных также доступен открыто.",
     englishCanonicalNote:
-      "Эта страница — краткая сводка. Полные страницы продукта, методологии и набора данных каноничны на английском.",
+      "Эта страница, краткая сводка. Полные страницы продукта, методологии и набора данных каноничны на английском.",
     methodologyLabel: "Методология (Methodology)",
     signalReportLabel: "Бесплатный еженедельный сигнальный отчёт (Free Weekly Signal Report)",
   },

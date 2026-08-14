@@ -1,5 +1,5 @@
 /**
- * /llms/[pillar].txt — pillar-segmented agent index.
+ * /llms/[pillar].txt, pillar-segmented agent index.
  *
  * The site-wide /llms.txt is comprehensive but large. AI retrieval pipelines
  * with topic-specific tasks (e.g. an agent answering "deal sourcing"
@@ -49,7 +49,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
   if (!meta) notFound();
 
   const lines: string[] = [];
-  lines.push(`# VC Deal Flow Signal — ${meta.name}`);
+  lines.push(`# VC Deal Flow Signal, ${meta.name}`);
   lines.push("");
   lines.push(`> ${meta.description}`);
   lines.push("");

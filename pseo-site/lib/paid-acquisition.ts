@@ -1,7 +1,7 @@
 /**
- * Paid acquisition — single source of truth for active campaigns.
+ * Paid acquisition, single source of truth for active campaigns.
  *
- * Brunson DotCom Secret #5 — Three Types of Traffic.  Earn (organic, SSRN,
+ * Brunson DotCom Secret #5, Three Types of Traffic.  Earn (organic, SSRN,
  * MCP catalogues) and Own (email list) are in production; Control (paid)
  * was missing.  This file wires the third leg.
  *
@@ -37,7 +37,7 @@ export type ChannelKind =
 export type Campaign = {
   /** Short slug used in `/r/<slug>` redirect URL.  Keep <= 24 chars, lowercase. */
   slug: string;
-  /** Channel — drives ad-network attribution + banner copy. */
+  /** Channel, drives ad-network attribution + banner copy. */
   channel: ChannelKind;
   /** Destination on signals.gitdealflow.com (path-only, must start with /). */
   destination: string;
@@ -50,10 +50,10 @@ export type Campaign = {
     campaign: string;
     content?: string;
   };
-  /** Internal note — what this campaign is testing. Shown in /api/v1/changelog
+  /** Internal note, what this campaign is testing. Shown in /api/v1/changelog
    *  the day the campaign goes live so the data nerd voice stays public. */
   hypothesis: string;
-  /** Status — gate for /r redirect.  Inactive slugs return 410 Gone so old
+  /** Status, gate for /r redirect.  Inactive slugs return 410 Gone so old
    *  ad-clicks don't keep landing after the budget is paused. */
   status: "draft" | "live" | "paused" | "killed";
 };
@@ -64,7 +64,7 @@ const SITE = "https://signals.gitdealflow.com";
  * The starter set.  Reddit Ads first because:
  *   1. Lowest test floor (€5/day, no minimum spend lock-in).
  *   2. r/venturecapital + r/AngelInvestors + r/programming form a literal
- *      Brunson Dream-100 cluster — the developer-investor lives there.
+ *      Brunson Dream-100 cluster, the developer-investor lives there.
  *   3. Subreddit targeting is precise enough to avoid LinkedIn-style B2B
  *      cost blowups.
  *
@@ -72,7 +72,7 @@ const SITE = "https://signals.gitdealflow.com";
  * alternative", "tracxn alternative", "github trending startups") map
  * cleanly to existing /alternatives and /vs pages.
  *
- * Newsletter sponsorship third — saved for after Reddit confirms the
+ * Newsletter sponsorship third, saved for after Reddit confirms the
  * landing converts at >2%.
  */
 export const CAMPAIGNS: Campaign[] = [
@@ -116,7 +116,7 @@ export const CAMPAIGNS: Campaign[] = [
       content: "startups",
     },
     hypothesis:
-      "r/startups skews founder-side — testing if founders share with their angels (referral compounding).",
+      "r/startups skews founder-side, testing if founders share with their angels (referral compounding).",
     status: "draft",
   },
 
@@ -146,7 +146,7 @@ export const CAMPAIGNS: Campaign[] = [
       content: "programming",
     },
     hypothesis:
-      "r/programming has scale (5M+) — broadest test, lowest expected CTR but cheapest CPM.",
+      "r/programming has scale (5M+), broadest test, lowest expected CTR but cheapest CPM.",
     status: "draft",
   },
   {
@@ -218,7 +218,7 @@ export const CAMPAIGNS: Campaign[] = [
       campaign: "newsletter-2026-q3",
     },
     hypothesis:
-      "The Generalist (~150k VC-curious) — purest investor-side ICP we can buy on a single drop.",
+      "The Generalist (~150k VC-curious), purest investor-side ICP we can buy on a single drop.",
     status: "draft",
   },
 
@@ -227,7 +227,7 @@ export const CAMPAIGNS: Campaign[] = [
   // ad-set lands on /from/facebook (platform-native pre-frame) which then
   // funnels to /firstlook with the same UTM payload preserved.
   //
-  // Brunson Traffic Secrets §2 Ch 8 — Facebook layer. Why we run paid here
+  // Brunson Traffic Secrets §2 Ch 8, Facebook layer. Why we run paid here
   // despite the "no persona" rule: retargeting site visitors who already
   // self-qualified via /pricing, /firstlook, /walkthrough is the cheapest
   // CPA in the funnel (~€2-4 vs ~€15 cold). The 6 ad-sets below split
@@ -243,7 +243,7 @@ export const CAMPAIGNS: Campaign[] = [
       content: "retarget-pricing",
     },
     hypothesis:
-      "Retarget /pricing visitors (last 30d) with the €7 First Look bait. Lowest expected CPA in funnel — visitor already self-qualified by hitting pricing.",
+      "Retarget /pricing visitors (last 30d) with the €7 First Look bait. Lowest expected CPA in funnel, visitor already self-qualified by hitting pricing.",
     status: "draft",
   },
   {
@@ -299,7 +299,7 @@ export const CAMPAIGNS: Campaign[] = [
       content: "lookalike-engineer-2pct",
     },
     hypothesis:
-      "2% lookalike of /firstlook buyers — broader reach. Engineering-investor crossover targeting: GitHub Pro/Team subscribers, dev.to readers, MCP/Claude users.",
+      "2% lookalike of /firstlook buyers, broader reach. Engineering-investor crossover targeting: GitHub Pro/Team subscribers, dev.to readers, MCP/Claude users.",
     status: "draft",
   },
   {
@@ -333,7 +333,7 @@ export function findCampaign(slug: string): Campaign | undefined {
   return CAMPAIGNS.find((c) => c.slug === slug);
 }
 
-/** Active campaigns only — used by the public changelog endpoint. */
+/** Active campaigns only, used by the public changelog endpoint. */
 export function liveCampaigns(): Campaign[] {
   return CAMPAIGNS.filter((c) => c.status === "live");
 }

@@ -3,7 +3,7 @@ import { defineMetadata } from "@/lib/metadata";
 import { TrustConversionBlock } from "@/components/TrustConversionBlock";
 
 export const metadata = defineMetadata({
-  title: "Trust Center — Privacy, Security, Compliance & Transparency",
+  title: "Trust Center, Privacy, Security, Compliance & Transparency",
   description:
     "Single page that links every trust-relevant surface VC Deal Flow Signal publishes: privacy policy, terms, security disclosure, DPA, subprocessor list, annual transparency report, and machine-readable mirrors at /.well-known/.",
   path: "/trust",
@@ -96,7 +96,7 @@ const TRUST_SURFACES: Array<{
         html: "/transparency",
         machine: "/.well-known/transparency.json",
         summary:
-          "Government data requests, takedown demands, breaches — published yearly with explicit zeros.",
+          "Government data requests, takedown demands, breaches, published yearly with explicit zeros.",
       },
       {
         name: "Service Status",
@@ -136,7 +136,7 @@ export default function TrustPage() {
     "@context": "https://schema.org",
     "@type": "WebPage",
     "@id": `${SITE}/trust`,
-    name: "Trust Center — VC Deal Flow Signal",
+    name: "Trust Center, VC Deal Flow Signal",
     description: metadata.description,
     inLanguage: "en-US",
     license: "https://creativecommons.org/licenses/by/4.0/",
@@ -185,7 +185,7 @@ export default function TrustPage() {
           Trust Center
         </p>
         <h1 className="text-4xl font-bold text-gray-100 mb-4 leading-tight">
-          Privacy, security, compliance — in one page
+          Privacy, security, compliance, in one page
         </h1>
         <p className="text-gray-300 text-base leading-relaxed max-w-3xl">
           Every legal, security, and operational disclosure is published on

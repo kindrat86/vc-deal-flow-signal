@@ -10,7 +10,7 @@ interface FormState {
   thesis: string;
   how_heard: string;
   quarterly_question: string;
-  // Brunson high-ticket diligence (DotCom Secrets Ch 22 — async equivalent
+  // Brunson high-ticket diligence (DotCom Secrets Ch 22, async equivalent
   // of the phone-close five-question script). Replaces the live-call closer
   // with a written diligence questionnaire to preserve founder anonymity.
   dream_state: string;
@@ -68,7 +68,7 @@ export default function ApplyForm() {
   }
 
   if (status === "success") {
-    // Brunson DotCom Secrets Ch 12 — application thank-you. Manage the
+    // Brunson DotCom Secrets Ch 12, application thank-you. Manage the
     // wait window: tell the buyer exactly what's happening between now
     // and the reply, give them a single sub-step CTA so the moment of
     // momentum doesn't dissipate, and pre-empt the "did it get there?"
@@ -77,7 +77,7 @@ export default function ApplyForm() {
       {
         when: "Now",
         who: "Pipeline",
-        what: "Your application was logged and forwarded to the founder's review queue. You'll see a confirmation email in the next 5 minutes from signals@gitdealflow.com — that one is automated, the human reply is not.",
+        what: "Your application was logged and forwarded to the founder's review queue. You'll see a confirmation email in the next 5 minutes from signals@gitdealflow.com, that one is automated, the human reply is not.",
       },
       {
         when: "Within 12 hours",
@@ -85,14 +85,14 @@ export default function ApplyForm() {
         what: "I read every Sharp application personally. The first read happens today (or first thing tomorrow if you submitted after 22:00 UTC). I check fund fit against the 8-fund 2026 cap, and your specific quarterly question against what the methodology can actually deliver.",
       },
       {
-        when: "Within 24–36 hours",
+        when: "Within 24-36 hours",
         who: "Founder",
-        what: "If accepted, I draft a Stripe Sharp Tier invoice and an Insider Circle invitation. If declined, I write a one-paragraph reason — never a form letter. Either reply lands inside 48 business hours of submission.",
+        what: "If accepted, I draft a Stripe Sharp Tier invoice and an Insider Circle invitation. If declined, I write a one-paragraph reason, never a form letter. Either reply lands inside 48 business hours of submission.",
       },
       {
         when: "After acceptance",
         who: "Founder pipeline",
-        what: "The first quarterly call gets scheduled (anonymity-preserving — initials only on the founder side). The white-labeled API sub-domain is set up the same week. Methodology source code repo gets shared on day one of paid.",
+        what: "The first quarterly call gets scheduled (anonymity-preserving, initials only on the founder side). The white-labeled API sub-domain is set up the same week. Methodology source code repo gets shared on day one of paid.",
       },
     ];
 
@@ -127,7 +127,7 @@ export default function ApplyForm() {
 
         <div className="rounded-lg bg-slate-950/40 border border-slate-800 p-4 space-y-2">
           <p className="text-gray-300 text-sm font-semibold">
-            While the review runs — one useful 12 minutes
+            While the review runs, one useful 12 minutes
           </p>
           <p className="text-gray-400 text-sm leading-relaxed">
             If you haven&rsquo;t already, the{" "}
@@ -225,17 +225,17 @@ export default function ApplyForm() {
       <div className="rounded-xl border border-purple-700/40 bg-purple-950/20 p-5 space-y-5">
         <div>
           <p className="text-purple-300 text-[11px] font-semibold uppercase tracking-wider">
-            Diligence — 5 questions, 90 seconds each
+            Diligence, 5 questions, 90 seconds each
           </p>
           <p className="text-gray-400 text-xs mt-1 leading-relaxed">
             These replace what would normally be a 30-minute phone close. Async
             and anonymity-preserving. The founder reads every answer before
-            replying — short and specific beats long and polished.
+            replying, short and specific beats long and polished.
           </p>
         </div>
 
         <FieldArea
-          label="1 · Dream state — where do you want your sourcing to be 12 months from now?"
+          label="1 · Dream state, where do you want your sourcing to be 12 months from now?"
           required
           id="dream_state"
           value={form.dream_state}
@@ -244,7 +244,7 @@ export default function ApplyForm() {
           rows={2}
         />
         <FieldArea
-          label="2 · Current state — where are you actually today on that axis?"
+          label="2 · Current state, where are you actually today on that axis?"
           required
           id="current_state"
           value={form.current_state}
@@ -253,7 +253,7 @@ export default function ApplyForm() {
           rows={2}
         />
         <FieldArea
-          label="3 · Gap — what's between the two? What's blocking dream state?"
+          label="3 · Gap, what's between the two? What's blocking dream state?"
           required
           id="gap"
           value={form.gap}
@@ -262,16 +262,16 @@ export default function ApplyForm() {
           rows={2}
         />
         <FieldArea
-          label="4 · Money — what's that gap worth to your fund this year?"
+          label="4 · Money, what's that gap worth to your fund this year?"
           required
           id="money_value"
           value={form.money_value}
           onChange={(v) => update("money_value", v)}
-          placeholder="e.g. 'One missed Series A is ~€800k of foregone fees + ~€4M of unrealized markups over 4 years' / 'We size around 12 deals/year — a 1-deal sourcing improvement is ~5% of the fund's vintage outcome'"
+          placeholder="e.g. 'One missed Series A is ~€800k of foregone fees + ~€4M of unrealized markups over 4 years' / 'We size around 12 deals/year, a 1-deal sourcing improvement is ~5% of the fund's vintage outcome'"
           rows={2}
         />
         <FieldArea
-          label="5 · Urgency — why now, vs. waiting six months?"
+          label="5 · Urgency, why now, vs. waiting six months?"
           required
           id="urgency"
           value={form.urgency}
@@ -306,7 +306,7 @@ export default function ApplyForm() {
       <p className="text-gray-400 text-xs leading-relaxed">
         By submitting you agree the founder may reply to your email with a
         Stripe invoice or a decline. Your data is not added to any list,
-        sold, or shared — it lives only in the application email until the
+        sold, or shared, it lives only in the application email until the
         decision is made.
       </p>
     </form>

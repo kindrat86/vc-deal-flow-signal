@@ -1,5 +1,5 @@
 /**
- * DataNerdSignoff — Reusable Attractive Character bio chip.
+ * DataNerdSignoff, Reusable Attractive Character bio chip.
  *
  * Drop near the bottom of any conversion-affecting surface so the reader
  * leaves the page knowing whose voice they were just reading. Brunson DCS
@@ -8,13 +8,13 @@
  * disconnected SEO pages.
  *
  * Variants:
- *   compact — single-line strip, fits below a CTA
- *   default — 4-line card with a polarity hint and link to /data-nerd
- *   long    — adds the medium bio + a catchphrase, used on /manifesto +
+ *   compact, single-line strip, fits below a CTA
+ *   default, 4-line card with a polarity hint and link to /data-nerd
+ *   long   , adds the medium bio + a catchphrase, used on /manifesto +
  *             /walkthrough where the reader has time
  *
  * No founder face/voice anywhere. The "avatar" is a Greek-letter sigma
- * mark — the methodology glyph, not a person.
+ * mark, the methodology glyph, not a person.
  */
 
 import Link from "next/link";

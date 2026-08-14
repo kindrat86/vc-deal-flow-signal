@@ -12,14 +12,14 @@ import {
 } from "@/lib/stadium-pitch-schedule";
 
 /**
- * Stadium Pitch — phase-aware event hero.
+ * Stadium Pitch, phase-aware event hero.
  *
  * Renders one of two banners based on whether the page is currently inside
  * the 48-hour live window of the latest published address:
  *
- *   - "live"   — JUST DROPPED, read it now while it's live, countdown to
+ *   - "live"  , JUST DROPPED, read it now while it's live, countdown to
  *                end of live window.
- *   - "replay" — REPLAY of latest address, countdown to next drop, RSVP
+ *   - "replay", REPLAY of latest address, countdown to next drop, RSVP
  *                form to be on the list for the next moment.
  *
  * Why client-side: the phase depends on the current wall clock and ticks
@@ -31,7 +31,7 @@ import {
 type Props = {
   /** Date string (YYYY-MM-DD) of the latest address's publishDate. */
   latestPublishDate: string;
-  /** Title of the latest address — surfaced in "live" mode. */
+  /** Title of the latest address, surfaced in "live" mode. */
   latestTitle: string;
   /** Display label (e.g. "May 2026") of the latest address. */
   latestMonth: string;
@@ -59,14 +59,14 @@ export default function StadiumPitchHero({
       setSnapshot(getStadiumPhase(new Date(), latestPublishDate));
     }
     refresh();
-    // The phase only transitions every ~48 hours or at month boundary —
+    // The phase only transitions every ~48 hours or at month boundary -
     // a 60-second tick is plenty. The countdown ticker inside
     // StadiumPitchCountdown updates the visible numbers every second.
     const id = setInterval(refresh, 60_000);
     return () => clearInterval(id);
   }, [latestPublishDate]);
 
-  // SSR placeholder — no phase, just frame.
+  // SSR placeholder, no phase, just frame.
   if (!snapshot) {
     return <PlaceholderHero latestMonth={latestMonth} />;
   }
@@ -100,7 +100,7 @@ function PlaceholderHero({ latestMonth }: { latestMonth: string }) {
         Stadium Pitch · monthly cadence
       </p>
       <h2 className="text-xl sm:text-2xl font-bold text-gray-100 leading-snug">
-        The {latestMonth} address is live below — next drop ships first
+        The {latestMonth} address is live below, next drop ships first
         Wednesday of next month, 09:00 UTC.
       </h2>
       <div
@@ -148,7 +148,7 @@ function LiveHero({
         />
       </div>
       <p className="text-gray-400 text-xs leading-relaxed pt-1">
-        After the window, the page enters replay — still public, but Sunday
+        After the window, the page enters replay, still public, but Sunday
         RSVP subscribers always get the next drop in their inbox first.
       </p>
     </section>
@@ -176,7 +176,7 @@ function ReplayHero({
         </p>
       </div>
       <h2 className="text-xl sm:text-2xl font-bold text-gray-100 leading-snug">
-        Next live drop — {nextMonth}.
+        Next live drop, {nextMonth}.
       </h2>
       <div className="space-y-2">
         <p className="text-sky-200 text-xs font-semibold uppercase tracking-wider">
@@ -192,7 +192,7 @@ function ReplayHero({
       </div>
       <StadiumPitchRsvp source="state-of-github-replay" />
       <p className="text-gray-400 text-xs leading-relaxed pt-1">
-        Or keep reading — the {latestMonth} replay is below, free and public.{" "}
+        Or keep reading, the {latestMonth} replay is below, free and public.{" "}
         <Link
           href="/funnels"
           className="text-sky-400 hover:text-sky-300 underline decoration-dotted"

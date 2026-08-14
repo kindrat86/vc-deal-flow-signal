@@ -1,5 +1,5 @@
 /**
- * /.well-known/dpa.json — Data Processing Agreement pointer.
+ * /.well-known/dpa.json, Data Processing Agreement pointer.
  *
  * F38 (2026-05-08). Machine-readable answer to the enterprise-procurement
  * question "where is your DPA?" Since GDPR Art. 28 requires a written DPA
@@ -7,7 +7,7 @@
  * subscriber email + Stripe customer ID) need a clear path to executing one.
  *
  * Format follows the de-facto convention used by Vercel, Stripe, Resend,
- * and similar SaaS — a single JSON document pointing to: (a) standard
+ * and similar SaaS, a single JSON document pointing to: (a) standard
  * unsigned template, (b) negotiation contact, (c) signed-template request
  * email, (d) referenced subprocessor list and security/compliance docs.
  */
@@ -26,7 +26,7 @@ export async function GET() {
       "@context": "https://schema.org",
       "@type": "DigitalDocument",
       "@id": `${SITE}/.well-known/dpa.json`,
-      name: "Data Processing Agreement (DPA) — VC Deal Flow Signal",
+      name: "Data Processing Agreement (DPA), VC Deal Flow Signal",
       description:
         "Pointer to the GDPR Article 28 Data Processing Agreement that governs subscriber-PII processing by VC Deal Flow Signal acting as Controller and any subprocessor acting as Processor. The DPA is the legal companion to the compliance posture published at /.well-known/compliance.json.",
       license: "https://creativecommons.org/licenses/by/4.0/",
@@ -42,7 +42,7 @@ export async function GET() {
         contact: "signals@gitdealflow.com",
         rolesScope: [
           "Controller for subscriber email, Stripe customer ID, share tokens, scout-session metadata",
-          "Processor (none) — we engage no upstream controllers",
+          "Processor (none), we engage no upstream controllers",
         ],
       },
 
@@ -51,7 +51,7 @@ export async function GET() {
         url: `${SITE}/dpa`,
         format: "text/html",
         signedFormat:
-          "On request — emailing signals@gitdealflow.com with company legal name returns a counter-signed PDF within 5 business days",
+          "On request, emailing signals@gitdealflow.com with company legal name returns a counter-signed PDF within 5 business days",
         countersignContact: "signals@gitdealflow.com",
         appliesTo: [
           "Insider Tier (€97/mo)",
@@ -62,7 +62,7 @@ export async function GET() {
         ],
       },
 
-      // Standard Contractual Clauses (SCCs) — required for EU→US data flows
+      // Standard Contractual Clauses (SCCs), required for EU→US data flows
       sccs: {
         applicable: true,
         version: "EU 2021/914 Module Two (Controller-to-Processor)",

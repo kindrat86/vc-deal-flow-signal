@@ -21,13 +21,13 @@ const STEPS = [
     n: 1,
     label: "Reply to your welcome email with three things",
     detail:
-      "(1) The sector or thesis you want the Sweep written against. Be specific — 'AI infra' is too broad; 'AI inference observability + GPU monitoring' is sharp. (2) Three companies you'd want a deep-dive on regardless. (3) Three companies you're comparing against (these become the comparative anchor in the report).",
+      "(1) The sector or thesis you want the Sweep written against. Be specific, 'AI infra' is too broad; 'AI inference observability + GPU monitoring' is sharp. (2) Three companies you'd want a deep-dive on regardless. (3) Three companies you're comparing against (these become the comparative anchor in the report).",
   },
   {
     n: 2,
     label: "Send any private intel you'd want factored in (optional)",
     detail:
-      "If you have non-public context — companies you've passed on, founders you've met, sub-theses you're testing — share it. Goes into the founder's private notes only, never published, never quoted. It just makes the Sweep sharper.",
+      "If you have non-public context, companies you've passed on, founders you've met, sub-theses you're testing, share it. Goes into the founder's private notes only, never published, never quoted. It just makes the Sweep sharper.",
   },
   {
     n: 3,
@@ -55,7 +55,7 @@ export default function ThanksSweep() {
             Sweep is on the build queue.
           </h1>
           <p className="text-gray-300 text-base leading-relaxed">
-            Stripe receipt is in your inbox. The deliverable is custom — the
+            Stripe receipt is in your inbox. The deliverable is custom, the
             sharper your thesis brief, the sharper the Sweep. Three things to
             send in the next 24 hours.
           </p>
@@ -124,7 +124,7 @@ export default function ThanksSweep() {
           </p>
         </section>
 
-        {/* Brunson TS §3 Ch 11 — Sweep buyers wait 5–10 business days for
+        {/* Brunson TS §3 Ch 11, Sweep buyers wait 5-10 business days for
             delivery. The public Telegram pinned during that window keeps
             the signal-rhythm alive between purchase and delivery. */}
         <TelegramCTA tone="amber" context="post-purchase" />

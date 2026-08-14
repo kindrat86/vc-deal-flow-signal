@@ -35,7 +35,7 @@ function isValidGithubOrg(org: string): boolean {
 
 /**
  * Add the scout to the Resend audience with source attribution so they
- * receive future digests/broadcasts — previously scouts only ever got the
+ * receive future digests/broadcasts, previously scouts only ever got the
  * scout-specific emails and fell out of the general list. On already-exists,
  * PATCH unsubscribed:false to re-activate. Best-effort.
  */
@@ -119,7 +119,7 @@ function confirmationHtml(opts: {
 <html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
 <body style="margin:0;padding:0;background:#f8fafc;color:#1e293b;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
 <div style="max-width:600px;margin:0 auto;padding:32px 24px;">
-<div style="margin-bottom:24px;"><strong style="color:#0ea5e9;font-size:14px;letter-spacing:1px;">VC DEAL FLOW SIGNAL — SCOUT GAME</strong></div>
+<div style="margin-bottom:24px;"><strong style="color:#0ea5e9;font-size:14px;letter-spacing:1px;">VC DEAL FLOW SIGNAL, SCOUT GAME</strong></div>
 <div style="font-size:16px;line-height:1.7;color:#1e293b;">
 <p style="font-size:22px;font-weight:700;color:#1e293b;margin:0 0 8px;">${isFirstPrediction ? "Welcome, scout." : "Prediction locked in."}</p>
 <p style="color:#475569;margin:0 0 24px;">You are <strong>@${escapeHtml(handle)}</strong>. Current rank: <strong>${isFirstPrediction ? "Curious" : "see dashboard"}</strong>${isFounder ? ' · <strong style="color:#059669;">🏆 Founder Scout</strong>' : ""}.</p>
@@ -159,7 +159,7 @@ function adminNotificationHtml(opts: {
   isFirstPrediction: boolean;
   isFounder: boolean;
 }): string {
-  return `<p><strong>New scout prediction${opts.isFirstPrediction ? " — 🎉 new scout" : ""}${opts.isFounder ? " — 🏆 Founder Scout #?" : ""}</strong></p>
+  return `<p><strong>New scout prediction${opts.isFirstPrediction ? ", 🎉 new scout" : ""}${opts.isFounder ? ", 🏆 Founder Scout #?" : ""}</strong></p>
 <ul>
 <li>ID: <code>${escapeHtml(opts.predictionId)}</code></li>
 <li>Scout: <code>@${escapeHtml(opts.handle)}</code> (${escapeHtml(opts.email)})</li>
@@ -286,7 +286,7 @@ export async function POST(request: Request) {
           bcc: "sales@sipiteno.com",
           to: email,
           subject: created
-            ? `Welcome scout — your first call locked in (${githubOrg})`
+            ? `Welcome scout, your first call locked in (${githubOrg})`
             : `Prediction locked in: ${githubOrg} · ${prediction.toUpperCase()}`,
           html: confirmationHtml({
             handle: scout.handle,

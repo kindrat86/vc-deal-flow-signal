@@ -1,5 +1,5 @@
 /**
- * /research-paper/[slug] entity pages — external academic papers we cite.
+ * /research-paper/[slug] entity pages, external academic papers we cite.
  *
  * Distinct from /research/[slug] (the user's own SSRN paper findings).
  * /research-paper/[slug] documents external academic papers in venture
@@ -11,7 +11,7 @@
  * sources (DOI, arXiv, OpenAlex, Semantic Scholar).
  *
  * AEO target: scholarly LLM queries like "what is the original RLHF
- * paper" or "Vaswani transformer paper citation" — our /research-paper
+ * paper" or "Vaswani transformer paper citation", our /research-paper
  * leaf becomes a citation-ready summary.
  */
 
@@ -47,7 +47,7 @@ export interface ResearchPaper {
   metaDescription: string;
   /** Concise abstract summary in our own words, not the original abstract. */
   abstractSummary: string;
-  /** Our editorial context — why we cite this paper. */
+  /** Our editorial context, why we cite this paper. */
   ourContext: string;
   /** 3-5 key findings or contributions. */
   keyFindings: string[];
@@ -85,12 +85,12 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
     abstractSummary:
       "Introduces the Transformer architecture: a sequence-to-sequence model based entirely on attention mechanisms, dispensing with recurrence and convolutions. Demonstrates state-of-the-art results on English-to-German and English-to-French translation benchmarks with significantly less training time than the prior recurrent encoder-decoder models. The architecture's self-attention mechanism allows parallel processing of sequence elements and scales effectively with model size and data.",
     ourContext:
-      "The Transformer is the architectural foundation of every modern frontier LLM — GPT, Claude, Gemini, Mistral, Llama, Qwen, DeepSeek. Our engineering-acceleration tracking of AI infrastructure and agentic AI categories operates on a substrate that did not exist before this paper. We cite it as the foundational reference for the AI-native engineering surface our /signal corpus covers.",
+      "The Transformer is the architectural foundation of every modern frontier LLM, GPT, Claude, Gemini, Mistral, Llama, Qwen, DeepSeek. Our engineering-acceleration tracking of AI infrastructure and agentic AI categories operates on a substrate that did not exist before this paper. We cite it as the foundational reference for the AI-native engineering surface our /signal corpus covers.",
     keyFindings: [
       "Attention-only architectures match or exceed recurrent models on sequence-to-sequence tasks while training significantly faster.",
-      "Self-attention scales effectively with model size, enabling the parameter regimes (1B–1T+) that define modern LLMs.",
+      "Self-attention scales effectively with model size, enabling the parameter regimes (1B-1T+) that define modern LLMs.",
       "Position encoding via learned or sinusoidal embeddings allows attention models to handle sequence order without recurrence.",
-      "Multi-head attention captures different relationship types in parallel — a design choice that proved central to LLM expressiveness.",
+      "Multi-head attention captures different relationship types in parallel, a design choice that proved central to LLM expressiveness.",
     ],
     relatedGlossaryIds: ["foundation-model", "context-window", "embedding-model"],
     faqs: [
@@ -107,7 +107,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       {
         question: "Who wrote Attention Is All You Need?",
         answer:
-          "The eight authors were Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Łukasz Kaiser, and Illia Polosukhin — most working at Google Brain or Google Research at the time of publication.",
+          "The eight authors were Ashish Vaswani, Noam Shazeer, Niki Parmar, Jakob Uszkoreit, Llion Jones, Aidan N. Gomez, Łukasz Kaiser, and Illia Polosukhin, most working at Google Brain or Google Research at the time of publication.",
       },
       {
         question: "What is the Transformer architecture?",
@@ -144,7 +144,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "GPT-3 is the catalyst paper for the modern LLM era. The few-shot in-context learning paradigm became the dominant interaction pattern for AI products, and the 175B-parameter scale established the design space that frontier labs (Anthropic, OpenAI, Mistral, Cohere, Hugging Face) operate within. The applied-AI category we track at /signal/[anthropic/openai/etc.] would not exist without the GPT-3 demonstration.",
     keyFindings: [
       "Few-shot learning emerges as a capability of sufficiently-scaled language models, without explicit task-specific fine-tuning.",
-      "Performance scales smoothly with model size, training data, and compute — establishing the scaling-law trend later formalized by Kaplan et al.",
+      "Performance scales smoothly with model size, training data, and compute, establishing the scaling-law trend later formalized by Kaplan et al.",
       "A single LLM can perform translation, question-answering, summarization, arithmetic, and code generation competitively given few-shot prompting.",
       "The 175B-parameter scale established a new design space that frontier labs compete within.",
     ],
@@ -209,7 +209,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       {
         question: "What is RLHF?",
         answer:
-          "Reinforcement Learning from Human Feedback — the training technique that aligns LLMs to human-preferred outputs after pretraining. See /define/rlhf for the full term definition.",
+          "Reinforcement Learning from Human Feedback, the training technique that aligns LLMs to human-preferred outputs after pretraining. See /define/rlhf for the full term definition.",
       },
       {
         question: "Why is this paper considered foundational?",
@@ -224,7 +224,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       {
         question: "Did a smaller InstructGPT model beat GPT-3?",
         answer:
-          "Yes. The paper reports that a 1.3B-parameter InstructGPT model was preferred by human evaluators over the 175B-parameter GPT-3 baseline — a roughly 100× parameter reduction at higher human-preference quality.",
+          "Yes. The paper reports that a 1.3B-parameter InstructGPT model was preferred by human evaluators over the 175B-parameter GPT-3 baseline, a roughly 100× parameter reduction at higher human-preference quality.",
       },
     ],
   },
@@ -247,16 +247,16 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "https://arxiv.org/abs/2005.11401",
       "https://www.semanticscholar.org/paper/58ed1fbaabe027345f7bb3a6312d41c5aac63e22",
     ],
-    metaTitle: "RAG Paper Summary: Retrieval-Augmented Generation (Lewis et al. 2020) — Key Findings",
+    metaTitle: "RAG Paper Summary: Retrieval-Augmented Generation (Lewis et al. 2020), Key Findings",
     metaDescription:
       "The RAG paper formalizing Retrieval-Augmented Generation as the architecture for grounding LLM responses in retrieved documents. Foundational reference for modern vector-DB-backed LLM applications.",
     abstractSummary:
       "Introduces Retrieval-Augmented Generation (RAG): an architecture that combines a pretrained sequence-to-sequence model (BART) with a non-parametric memory (a Dense Passage Retrieval index over Wikipedia). Demonstrates strong performance on knowledge-intensive NLP tasks while providing transparency about which documents informed each generation. Establishes the design pattern of retrieving documents before generating.",
     ourContext:
-      "RAG is the architecture behind essentially every enterprise LLM deployment in 2026. The retrieval layer — typically using embedding models plus vector databases (Pinecone, Weaviate, Qdrant, Milvus) — is one of the densest engineering-acceleration surfaces we track at /sector/database and /trend/ai-native-databases-2026.",
+      "RAG is the architecture behind essentially every enterprise LLM deployment in 2026. The retrieval layer, typically using embedding models plus vector databases (Pinecone, Weaviate, Qdrant, Milvus), is one of the densest engineering-acceleration surfaces we track at /sector/database and /trend/ai-native-databases-2026.",
     keyFindings: [
       "Combining parametric (model weights) and non-parametric (retrieved documents) memory outperforms either alone on knowledge-intensive tasks.",
-      "Retrieval enables citation transparency — the model's outputs can be traced to specific source documents.",
+      "Retrieval enables citation transparency, the model's outputs can be traced to specific source documents.",
       "RAG addresses three core LLM limitations: knowledge cutoff dates, hallucination on out-of-distribution facts, and inability to cite sources.",
       "The design pattern became the foundation of the modern vector-DB-backed LLM application stack.",
     ],
@@ -265,7 +265,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       {
         question: "What is RAG?",
         answer:
-          "Retrieval-Augmented Generation — an architecture where a model retrieves relevant documents from an external knowledge store before generating an answer. See /define/rag for the full term definition.",
+          "Retrieval-Augmented Generation, an architecture where a model retrieves relevant documents from an external knowledge store before generating an answer. See /define/rag for the full term definition.",
       },
       {
         question: "Who wrote the RAG paper?",
@@ -275,7 +275,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       {
         question: "Why is RAG used in enterprise LLM applications?",
         answer:
-          "It grounds generations in retrieved documents, which mitigates knowledge-cutoff staleness, reduces hallucination on out-of-distribution facts, and enables source citation — the three properties most enterprise deployments require.",
+          "It grounds generations in retrieved documents, which mitigates knowledge-cutoff staleness, reduces hallucination on out-of-distribution facts, and enables source citation, the three properties most enterprise deployments require.",
       },
       {
         question: "What infrastructure does RAG depend on?",
@@ -303,15 +303,15 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "https://arxiv.org/abs/2106.09685",
       "https://www.semanticscholar.org/paper/a8ca46b171467ceb2d7652fbb7e5e2f4631c4ac0",
     ],
-    metaTitle: "LoRA Paper Summary: Low-Rank Adaptation (Hu et al. 2021) — Key Findings & Method",
+    metaTitle: "LoRA Paper Summary: Low-Rank Adaptation (Hu et al. 2021), Key Findings & Method",
     metaDescription:
       "Microsoft's LoRA paper introducing low-rank adaptation as a parameter-efficient fine-tuning method. Foundational reference for cost-effective LLM specialization at scale.",
     abstractSummary:
-      "Introduces Low-Rank Adaptation (LoRA): a parameter-efficient fine-tuning technique that adds small low-rank matrices to a frozen base model. Demonstrates that LoRA matches full fine-tuning performance on multiple benchmarks while updating only 0.1%–1% of parameters. Reduces GPU memory requirements and storage footprint by orders of magnitude.",
+      "Introduces Low-Rank Adaptation (LoRA): a parameter-efficient fine-tuning technique that adds small low-rank matrices to a frozen base model. Demonstrates that LoRA matches full fine-tuning performance on multiple benchmarks while updating only 0.1%-1% of parameters. Reduces GPU memory requirements and storage footprint by orders of magnitude.",
     ourContext:
       "LoRA is the standard parameter-efficient fine-tuning method in 2026, deployed across Hugging Face's PEFT ecosystem and integrated into every major open-weight LLM serving stack. Engineering signals around LoRA adapter ecosystems are one of the cleanest measures of practical AI-application velocity in our /trend/ai-coding-tools-2026 leaderboard.",
     keyFindings: [
-      "LoRA matches full fine-tuning quality on benchmarks while updating only 0.1%–1% of base-model parameters.",
+      "LoRA matches full fine-tuning quality on benchmarks while updating only 0.1%-1% of base-model parameters.",
       "Adapters can be mixed and matched at inference time, enabling multi-tenant LLM serving.",
       "Memory and storage requirements drop by 3-10× compared to full fine-tuning.",
       "Established as the default PEFT method for open-weight models (Llama, Mistral, Qwen, Gemma).",
@@ -321,7 +321,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       {
         question: "What is LoRA?",
         answer:
-          "Low-Rank Adaptation — a parameter-efficient fine-tuning method that adds small low-rank matrices to a frozen base model. See /define/lora for the full term definition.",
+          "Low-Rank Adaptation, a parameter-efficient fine-tuning method that adds small low-rank matrices to a frozen base model. See /define/lora for the full term definition.",
       },
       {
         question: "Who created LoRA?",
@@ -331,7 +331,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       {
         question: "How many parameters does LoRA update?",
         answer:
-          "Only 0.1%–1% of the base model's parameters, while matching full fine-tuning quality on the paper's benchmarks and cutting GPU memory and storage requirements by roughly 3–10×.",
+          "Only 0.1%-1% of the base model's parameters, while matching full fine-tuning quality on the paper's benchmarks and cutting GPU memory and storage requirements by roughly 3-10×.",
       },
       {
         question: "Why is LoRA the default fine-tuning method?",
@@ -359,13 +359,13 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "https://arxiv.org/abs/2212.08073",
       "https://www.semanticscholar.org/paper/5c4d44eb4b0d9c1eeed03a8bcccef957fce8a06b",
     ],
-    metaTitle: "Constitutional AI Paper Summary (Bai et al. 2022) — Key Findings & Method",
+    metaTitle: "Constitutional AI Paper Summary (Bai et al. 2022), Key Findings & Method",
     metaDescription:
       "Anthropic's Constitutional AI paper introducing RLAIF (Reinforcement Learning from AI Feedback). Foundational reference for Claude's training pipeline and the scalable-oversight approach to LLM alignment.",
     abstractSummary:
       "Introduces Constitutional AI (CAI): an alignment approach where an LLM critiques and revises its own outputs according to a written constitution of principles, with reinforcement learning from AI feedback (RLAIF) replacing the human-labeling step. Demonstrates that RLAIF can produce models that are both more helpful AND more harmless than RLHF baselines, while scaling alignment without proportional human labeling effort.",
     ourContext:
-      "Constitutional AI is the foundation of Claude's training pipeline at Anthropic — the headline 'safety-first' frontier lab in our engineering-acceleration tracking. The RLAIF paradigm addresses RLHF's scaling bottleneck and has influenced subsequent alignment research across frontier labs.",
+      "Constitutional AI is the foundation of Claude's training pipeline at Anthropic, the headline 'safety-first' frontier lab in our engineering-acceleration tracking. The RLAIF paradigm addresses RLHF's scaling bottleneck and has influenced subsequent alignment research across frontier labs.",
     keyFindings: [
       "RLAIF (AI feedback) can substitute for RLHF (human feedback) at scale while maintaining alignment quality.",
       "A written 'constitution' of principles enables transparent control over model behavior.",
@@ -387,7 +387,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       {
         question: "What is RLAIF?",
         answer:
-          "Reinforcement Learning from AI Feedback — the technique introduced in this paper, where AI-generated preferences judged against a written constitution replace human preference labeling, allowing alignment to scale without proportional human effort.",
+          "Reinforcement Learning from AI Feedback, the technique introduced in this paper, where AI-generated preferences judged against a written constitution replace human preference labeling, allowing alignment to scale without proportional human effort.",
       },
       {
         question: "Which model uses Constitutional AI?",
@@ -415,7 +415,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "https://arxiv.org/abs/2201.11903",
       "https://www.semanticscholar.org/paper/1b6e810ce0afd0dd093f789d2b2742d047e316d5",
     ],
-    metaTitle: "Chain-of-Thought Prompting Paper Summary (Wei et al. 2022) — Key Findings",
+    metaTitle: "Chain-of-Thought Prompting Paper Summary (Wei et al. 2022), Key Findings",
     metaDescription:
       "The Chain-of-Thought paper demonstrating that step-by-step reasoning prompts dramatically improve LLM accuracy on math, logic, and multi-step problems. Foundational reference for reasoning-model design.",
     abstractSummary:
@@ -467,17 +467,17 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "https://dora.dev/",
       "https://services.google.com/fh/files/misc/state-of-devops-2023.pdf",
     ],
-    metaTitle: "Accelerate / DORA Research Summary (Forsgren et al. 2018) — Key Metrics",
+    metaTitle: "Accelerate / DORA Research Summary (Forsgren et al. 2018), Key Metrics",
     metaDescription:
       "The DORA research foundation showing that deployment frequency, lead time, change failure rate, and MTTR predict software-organization performance. Foundational reference for the engineering-velocity field.",
     abstractSummary:
-      "Documents the multi-year DevOps Research and Assessment (DORA) research showing that four metrics — deployment frequency, lead time for changes, change failure rate, and mean time to recovery — empirically predict software-organization performance. Establishes the empirical foundation for engineering-velocity measurement as a research discipline.",
+      "Documents the multi-year DevOps Research and Assessment (DORA) research showing that four metrics, deployment frequency, lead time for changes, change failure rate, and mean time to recovery, empirically predict software-organization performance. Establishes the empirical foundation for engineering-velocity measurement as a research discipline.",
     ourContext:
-      "Accelerate is the foundational empirical reference for the engineering-velocity measurement field. Our Code-Side Sourcing methodology operates on the same empirical premise — that publicly observable engineering activity (commit velocity, contributor influx, repo creation pulse) carries predictive signal about venture outcomes. The DORA research established the academic-level credibility for engineering-velocity measurement that our /methodology paper extends to the venture-finance domain.",
+      "Accelerate is the foundational empirical reference for the engineering-velocity measurement field. Our Code-Side Sourcing methodology operates on the same empirical premise, that publicly observable engineering activity (commit velocity, contributor influx, repo creation pulse) carries predictive signal about venture outcomes. The DORA research established the academic-level credibility for engineering-velocity measurement that our /methodology paper extends to the venture-finance domain.",
     keyFindings: [
       "Four key metrics (deployment frequency, lead time, change failure rate, MTTR) empirically predict software-organization performance.",
       "High-performing organizations deploy 200× more frequently than low performers with 100× shorter lead times.",
-      "Speed and stability are not opposed — high performers deliver faster AND with fewer failures.",
+      "Speed and stability are not opposed, high performers deliver faster AND with fewer failures.",
       "Engineering-velocity measurement is a quantitative discipline with predictive empirical foundations.",
     ],
     relatedGlossaryIds: ["continuous-deployment", "deploy-frequency-spike", "commit-velocity"],
@@ -485,7 +485,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       {
         question: "What is the DORA research?",
         answer:
-          "DevOps Research and Assessment — multi-year research by Nicole Forsgren and colleagues documenting that four metrics (deployment frequency, lead time, change failure rate, MTTR) predict software-organization performance. The annual State of DevOps Report is a continued output of this research line.",
+          "DevOps Research and Assessment, multi-year research by Nicole Forsgren and colleagues documenting that four metrics (deployment frequency, lead time, change failure rate, MTTR) predict software-organization performance. The annual State of DevOps Report is a continued output of this research line.",
       },
       {
         question: "How does this relate to Code-Side Sourcing?",
@@ -525,7 +525,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "https://www.semanticscholar.org/paper/3a07552649a9d04e10293aa4f895f959bf8f3d1d",
       "https://openalex.org/works/W2740393300",
     ],
-    metaTitle: "Mixture of Experts Paper Summary (Shazeer et al. 2017) — Key Findings",
+    metaTitle: "Mixture of Experts Paper Summary (Shazeer et al. 2017), Key Findings",
     metaDescription:
       "The foundational Mixture of Experts paper showing sparsely-gated MoE layers scale to trillion-parameter models. Basis for Mixtral, GShard, and Switch Transformer. Summary and key findings.",
     abstractSummary:

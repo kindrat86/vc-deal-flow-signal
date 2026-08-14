@@ -3,7 +3,7 @@ import { renderBrandOG, OG_SIZE, OG_CONTENT_TYPE } from "@/lib/og-template";
 
 export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
-export const alt = "VC Deal Flow Signal — Signal Type";
+export const alt = "VC Deal Flow Signal, Signal Type";
 
 export default async function OGImage({
   params,
@@ -28,7 +28,7 @@ export default async function OGImage({
 
   return renderBrandOG({
     kind: data.name,
-    title: `${data.name} — Engineering Signal`,
+    title: `${data.name}, Engineering Signal`,
     subtitle: data.description,
     stats: [
       { value: data.totalAcrossSectors, label: "Startups (all sectors)" },

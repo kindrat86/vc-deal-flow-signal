@@ -15,12 +15,12 @@ const PORTAL_URL = "https://gitdealflow.refgrow.com";
 
 export const metadata: Metadata = {
   title:
-    "Affiliate Leaderboard — Top 10 Earners (May 2026) | GitDealFlow",
+    "Affiliate Leaderboard, Top 10 Earners (May 2026) | GitDealFlow",
   description:
     "Public, anonymized leaderboard of GitDealFlow's top affiliates. €5,000+ earned by Platinum tier; 11.3% top conversion rate from an Agent integration; ~140 affiliates active. Updated monthly.",
   alternates: { canonical: "/affiliates/leaderboard" },
   openGraph: {
-    title: "Affiliate Leaderboard — Top 10 Earners",
+    title: "Affiliate Leaderboard, Top 10 Earners",
     description:
       "Anonymized monthly snapshot. €5,000+ Platinum, 11.3% top CVR, ~140 affiliates active.",
     url: "https://signals.gitdealflow.com/affiliates/leaderboard",
@@ -137,7 +137,7 @@ export default function AffiliateLeaderboardPage() {
           >
             In short: this leaderboard is the public, anonymized snapshot of
             GitDealFlow&rsquo;s top 10 affiliates ranked by lifetime commission
-            earned. Pseudonyms are stable — the same affiliate keeps the same
+            earned. Pseudonyms are stable, the same affiliate keeps the same
             handle across snapshots so returning visitors can track their own
             row. Real names and addresses never leave the Refgrow dashboard.
           </p>
@@ -264,7 +264,7 @@ export default function AffiliateLeaderboardPage() {
           </ol>
         </section>
 
-        {/* Tier ladder — invitation to climb. */}
+        {/* Tier ladder, invitation to climb. */}
         <section
           className="mb-12 rounded-xl border border-amber-700/40 bg-amber-950/20 p-6 sm:p-8"
           aria-label="Tier ladder"
@@ -295,7 +295,7 @@ export default function AffiliateLeaderboardPage() {
           </div>
         </section>
 
-        {/* CTA — affiliate signup. */}
+        {/* CTA, affiliate signup. */}
         <section className="mb-10 rounded-xl border border-emerald-700/40 bg-emerald-950/20 p-6 sm:p-8 text-center">
           <h2 className="text-emerald-300 text-sm font-medium mb-2 uppercase tracking-wider">
             Want to be on this list?

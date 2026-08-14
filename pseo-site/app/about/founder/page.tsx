@@ -14,7 +14,7 @@ import {
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "About The Data Nerd — the founder behind VC Deal Flow Signal",
+  title: "About The Data Nerd, the founder behind VC Deal Flow Signal",
   description:
     "Anonymous engineer-investor. Reluctant Reporter. Wrote the methodology paper on SSRN. Refuses podcasts. Three parables, eight polarities, three character flaws this product has on purpose, and a 12-month commitment graded May 2027.",
   alternates: { canonical: "/about/founder" },
@@ -36,7 +36,7 @@ export default function FounderPage() {
         "@id": "https://signals.gitdealflow.com/about/founder#page",
         name: "About The Data Nerd",
         description:
-          "The founder behind VC Deal Flow Signal — anonymous engineer-investor, SSRN methodology author, deliberately niche.",
+          "The founder behind VC Deal Flow Signal, anonymous engineer-investor, SSRN methodology author, deliberately niche.",
         url: "https://signals.gitdealflow.com/about/founder",
         speakable: {
           "@type": "SpeakableSpecification",
@@ -127,8 +127,8 @@ export default function FounderPage() {
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed" data-speakable>
             In short: The Data Nerd is the pseudonymous engineer-investor who
             built VC Deal Flow Signal and wrote its methodology paper on SSRN.
-            The anonymity is deliberate — the signal is meant to be judged on
-            reproducible public data, not on a name — so identity here means
+            The anonymity is deliberate, the signal is meant to be judged on
+            reproducible public data, not on a name, so identity here means
             persistent public anchors (the SSRN author page, ORCID, and
             verified handles), not a face.
           </p>
@@ -139,7 +139,7 @@ export default function FounderPage() {
           </p>
           <DataNerdAudio
             slug="about-founder"
-            label="Listen — The Data Nerd introduces himself"
+            label="Listen, The Data Nerd introduces himself"
             subtitle="Synthetic Cartesia voice. Same voice across YouTube, email-audio, and every page narration on this site."
           />
         </header>
@@ -164,7 +164,7 @@ export default function FounderPage() {
           </div>
         </section>
 
-        {/* ARCHETYPE — Brunson Expert Secrets Ch 2 (Charismatic Leader 2.0).
+        {/* ARCHETYPE, Brunson Expert Secrets Ch 2 (Charismatic Leader 2.0).
             Declare which of the four canonical archetypes this character
             occupies before the reader builds their own model from the prose.
             Reluctant Reporter is the explicit answer; the proof beats are
@@ -208,7 +208,7 @@ export default function FounderPage() {
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
             I&rsquo;ve shipped production code for fifteen-plus years. I write
-            angel checks somewhere between deal #5 and deal #40 of my career —
+            angel checks somewhere between deal #5 and deal #40 of my career -
             small, infrequent, mostly into AI infra and devtools. I am not a GP.
             I do not run a fund. I do not have a portfolio company that needs
             fundraising help. I built this product because the data felt
@@ -218,7 +218,7 @@ export default function FounderPage() {
           <p className="text-gray-300 text-base leading-relaxed">
             I publish under{" "}
             <em className="not-italic font-semibold text-gray-100">The Data Nerd</em>
-            {" "}— a handle, not a brand. The methodology paper on{" "}
+            {" "}, a handle, not a brand. The methodology paper on{" "}
             <a
               href="https://ssrn.com/abstract=6606558"
               rel="noopener noreferrer"
@@ -243,7 +243,7 @@ export default function FounderPage() {
             The fintech startup I should have written a check into.
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
-            In 2024 I was tracking a small fintech team — three founders, one
+            In 2024 I was tracking a small fintech team, three founders, one
             repo, no press, no AngelList buzz, no warm intros circulating in my
             network. They had a beautifully boring product I happened to think
             was structurally underestimated by the consensus. I was going to
@@ -262,7 +262,7 @@ export default function FounderPage() {
             warm intro, which is fine but slow, or (b) been watching the same
             data I had access to and acting faster. I built this product because
             I was tired of being in column (a) and one quarter late. You never
-            read a line of code — the read is done for you.
+            read a line of code, the read is done for you.
           </p>
         </section>
 
@@ -299,7 +299,7 @@ export default function FounderPage() {
               <p className="text-gray-200 text-base leading-relaxed">
                 Two cars start a race. One is silent at the line. The other
                 idles loud, builds revs, the driver checks his mirrors, the
-                passenger fastens her belt. The silent car may win — but the
+                passenger fastens her belt. The silent car may win, but the
                 loud one is doing every observable thing a car about to launch
                 does. Code is the engine of a startup. When the engine is
                 visibly louder for two weeks running, the launch usually
@@ -315,11 +315,11 @@ export default function FounderPage() {
               <p className="text-gray-200 text-base leading-relaxed">
                 Imagine the postman could read every letter in his bag. The
                 richest man in town wouldn&rsquo;t pay him for tomorrow&rsquo;s
-                letters — those aren&rsquo;t in the bag yet. He&rsquo;d pay him
+                letters, those aren&rsquo;t in the bag yet. He&rsquo;d pay him
                 for today&rsquo;s letters delivered three days early. GitHub
                 already wrote the letters. Crunchbase reads them on the day they
                 land. We open them in transit. Everyone else gets the same mail
-                we do — they just get it the week after the founder posted on
+                we do, they just get it the week after the founder posted on
                 LinkedIn.
               </p>
             </div>
@@ -388,7 +388,7 @@ export default function FounderPage() {
           <ul className="text-gray-200 text-base leading-relaxed space-y-3 pl-1">
             <li>
               <strong className="text-rose-300">
-                Flaw 1 — I&rsquo;m slow to reply.
+                Flaw 1, I&rsquo;m slow to reply.
               </strong>{" "}
               Email replies happen in two daily batches, never inside the hour.
               I don&rsquo;t respond to LinkedIn DMs at all. If you need a vendor
@@ -396,7 +396,7 @@ export default function FounderPage() {
             </li>
             <li>
               <strong className="text-rose-300">
-                Flaw 2 — I won&rsquo;t do calls before you&rsquo;ve subscribed.
+                Flaw 2, I won&rsquo;t do calls before you&rsquo;ve subscribed.
               </strong>{" "}
               Sharp Tier funds get one quarterly call, included. Insider Circle
               gets the monthly group briefing. Below that, everything is async
@@ -405,7 +405,7 @@ export default function FounderPage() {
             </li>
             <li>
               <strong className="text-rose-300">
-                Flaw 3 — I refuse to do video, podcasts, or named publication.
+                Flaw 3, I refuse to do video, podcasts, or named publication.
               </strong>{" "}
               Anonymity is non-negotiable. If your firm requires named
               attribution on every paper or photo on every LinkedIn post,
@@ -416,7 +416,7 @@ export default function FounderPage() {
           </ul>
         </section>
 
-        {/* TRIBE DECLARATION — Brunson Expert Secrets Ch 3.
+        {/* TRIBE DECLARATION, Brunson Expert Secrets Ch 3.
             Name the people the reader joins by self-identifying with
             the character. The label has to be wearable. */}
         <section className="space-y-3 border-t border-slate-800 pt-8">
@@ -443,7 +443,7 @@ export default function FounderPage() {
           </div>
         </section>
 
-        {/* NOW — current weekly status. Brunson Expert Secrets Ch 2:
+        {/* NOW, current weekly status. Brunson Expert Secrets Ch 2:
             character must be in daily contact with the tribe. Sunday
             digest covers the broadcast cadence; this surfaces the
             in-between status. */}
@@ -478,9 +478,9 @@ export default function FounderPage() {
           </Link>
         </section>
 
-        {/* FUTURE SELF — Brunson Expert Secrets Ch 22 (Decade in a Day).
+        {/* FUTURE SELF, Brunson Expert Secrets Ch 22 (Decade in a Day).
             The character has to project a future. Not the product
-            roadmap — the narrator's commitment. Five public commits
+            roadmap, the narrator's commitment. Five public commits
             graded May 2027. */}
         <section className="space-y-4 border-t border-slate-800 pt-8">
           <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">
@@ -505,7 +505,7 @@ export default function FounderPage() {
                 className="rounded-lg border border-slate-800 bg-slate-900/40 p-4"
               >
                 <p className="text-amber-300 text-sm font-bold leading-snug mb-1">
-                  Commit {c.n} — {c.label}
+                  Commit {c.n}, {c.label}
                 </p>
                 <p className="text-gray-300 text-sm leading-relaxed">
                   {c.body}
@@ -524,10 +524,10 @@ export default function FounderPage() {
             This page is the introduction. The bible is at /data-nerd.
           </h2>
           <p className="text-gray-300 text-sm leading-relaxed">
-            If you want the long version — six parables (three more than on
+            If you want the long version, six parables (three more than on
             this page), seven voice rules the site is audited against, the
             synthetic-voice disclosure, and the six surfaces where you&rsquo;ll
-            meet the same handle — that lives at the canonical character page.
+            meet the same handle, that lives at the canonical character page.
             Same handle, same voice, more density.
           </p>
           <Link

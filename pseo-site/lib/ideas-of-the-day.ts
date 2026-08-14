@@ -23,8 +23,8 @@ export interface IdeaRepo {
 }
 
 export interface IdeaOfTheDay {
-  date: string; // ISO date — YYYY-MM-DD
-  slug: string; // mirrors date — present so future renames don't break URLs
+  date: string; // ISO date, YYYY-MM-DD
+  slug: string; // mirrors date, present so future renames don't break URLs
   headline: string;
   hook: string;
   repo: IdeaRepo;
@@ -65,7 +65,7 @@ export function getIdeaBySlug(slug: string): IdeaOfTheDay | null {
 }
 
 /**
- * The current "idea of today" — the entry whose date is the latest published
+ * The current "idea of today", the entry whose date is the latest published
  * (i.e. ≤ today, UTC). Falls back to the newest entry on file if nothing
  * matches (shouldn't happen with a daily cron, but defensive for first-run
  * test envs where the seed runs in the future).
@@ -135,7 +135,7 @@ export function getIdeasByMonth(): IdeaMonth[] {
   return months;
 }
 
-/** Long-form date — "Friday, May 22, 2026". */
+/** Long-form date, "Friday, May 22, 2026". */
 export function formatLongDate(iso: string): string {
   const [y, m, d] = iso.split("-").map(Number);
   return new Date(Date.UTC(y, m - 1, d)).toLocaleString("en-US", {

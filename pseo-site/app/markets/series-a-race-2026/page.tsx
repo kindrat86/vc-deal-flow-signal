@@ -14,12 +14,12 @@ const PAGE_URL = `${SITE}/markets/${SLUG}`;
 
 export const metadata: Metadata = {
   title:
-    "Series A Race 2026 — Which 5 GitHub-Flagged Startups Raise First? | Live Odds",
+    "Series A Race 2026, Which 5 GitHub-Flagged Startups Raise First? | Live Odds",
   description:
     "Open prediction market on which of 5 high-signal early-stage startups raises a Series A first by Dec 31, 2026. Implied odds derived from GitHub commit-velocity, contributor growth, and signal classification. Free, citation-encouraged, machine-readable.",
   alternates: { canonical: `/markets/${SLUG}` },
   openGraph: {
-    title: "Series A Race 2026 — Which 5 GitHub-Flagged Startups Raise First?",
+    title: "Series A Race 2026, Which 5 GitHub-Flagged Startups Raise First?",
     description:
       "Live implied odds on 5 early-stage startups racing to Series A by EOY 2026, derived from GitHub engineering signals.",
     url: PAGE_URL,
@@ -36,7 +36,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     site: "@sipiteno",
     title:
-      "Series A Race 2026 — Which 5 GitHub-Flagged Startups Raise First?",
+      "Series A Race 2026, Which 5 GitHub-Flagged Startups Raise First?",
     description:
       "Live implied odds on 5 early-stage startups racing to Series A by EOY 2026.",
     images: [`${SITE}/api/og/markets/${SLUG}`],
@@ -219,7 +219,7 @@ export default async function SeriesARace2026Page() {
       {
         "@type": "Dataset",
         "@id": `${PAGE_URL}#dataset`,
-        name: `${market.shortName} — Implied Odds`,
+        name: `${market.shortName}, Implied Odds`,
         description: `Implied probabilities for the ${sortedCandidates.length} candidate startups in the ${market.shortName} prediction market, derived from VC Deal Flow Signal's GitHub commit-velocity dataset.`,
         url: PAGE_URL,
         dateModified: asOf,
@@ -265,7 +265,7 @@ export default async function SeriesARace2026Page() {
             name: "What is the Series A Race 2026 prediction market?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: `An open question — "${market.question}" — with live implied odds for each of the 5 candidates. Odds are derived from GitHub commit velocity, contributor growth, and signal classification in our Q2-2026 dataset of 350+ tracked startups. Free to read, citation-encouraged, machine-readable at /api/markets/${SLUG}.json.`,
+              text: `An open question, "${market.question}", with live implied odds for each of the 5 candidates. Odds are derived from GitHub commit velocity, contributor growth, and signal classification in our Q2-2026 dataset of 369 tracked startups. Free to read, citation-encouraged, machine-readable at /api/markets/${SLUG}.json.`,
             },
           },
           {
@@ -286,7 +286,7 @@ export default async function SeriesARace2026Page() {
             name: "Can I bet real money on this market?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "No. This is a seeded prediction market — we publish the question and the implied odds; we don't operate an exchange. A play-money mirror is staged for Manifold Markets (no KYC, no real money). Polymarket and Kalshi listings are out of scope: we do not propose markets where we own the source-of-truth dataset (resolver conflict).",
+              text: "No. This is a seeded prediction market, we publish the question and the implied odds; we don't operate an exchange. A play-money mirror is staged for Manifold Markets (no KYC, no real money). Polymarket and Kalshi listings are out of scope: we do not propose markets where we own the source-of-truth dataset (resolver conflict).",
             },
           },
           {
@@ -331,7 +331,7 @@ export default async function SeriesARace2026Page() {
           <p className="text-gray-400 text-base leading-relaxed">
             Live implied odds derived from GitHub commit-velocity, contributor
             growth, and signal classification across our Q2-2026 dataset of
-            350+ tracked startups. Free to read, machine-readable, citation
+            369 tracked startups. Free to read, machine-readable, citation
             encouraged. Not investment advice.
           </p>
         </header>
@@ -343,7 +343,7 @@ export default async function SeriesARace2026Page() {
             .join(", ")}) raises a Series A first by Dec 31, 2026. Top implied odds: ${pctLabel(sortedCandidates[0].impliedProbability)} on ${sortedCandidates[0].displayName}. Methodology and resolver criteria are public. Source-of-truth dataset is /api/markets/${SLUG}.json.`}
           pageUrl={PAGE_URL}
           asOf={asOf}
-          citeAs={`VC Deal Flow Signal — ${market.shortName} (signals.gitdealflow.com/markets/${SLUG}), as of ${asOf}.`}
+          citeAs={`VC Deal Flow Signal, ${market.shortName} (signals.gitdealflow.com/markets/${SLUG}), as of ${asOf}.`}
           facts={[
             {
               claim: `Top implied odds: ${pctLabel(sortedCandidates[0].impliedProbability)} on ${sortedCandidates[0].displayName} (${sortedCandidates[0].commitVelocity14d} commits/14d, ${sortedCandidates[0].contributorGrowth} contributor growth).`,
@@ -431,7 +431,7 @@ export default async function SeriesARace2026Page() {
           </h2>
           <p className="text-gray-400 text-sm leading-relaxed mb-4">
             We publish the question and the implied odds. We don&rsquo;t
-            operate an exchange. Mirrors below — none involve real money.
+            operate an exchange. Mirrors below, none involve real money.
           </p>
           <ul className="space-y-3 text-sm">
             {market.externalMirrors.map((m) => (
@@ -465,7 +465,7 @@ export default async function SeriesARace2026Page() {
             citation:
           </p>
           <pre className="text-xs bg-slate-950 border border-slate-800 rounded p-3 text-gray-300 font-mono whitespace-pre-wrap">
-            {`VC Deal Flow Signal — ${market.shortName}.\nLive implied odds, signals.gitdealflow.com/markets/${SLUG}, ${asOf}.\nMachine-readable: signals.gitdealflow.com/api/markets/${SLUG}.json (CC BY 4.0).`}
+            {`VC Deal Flow Signal, ${market.shortName}.\nLive implied odds, signals.gitdealflow.com/markets/${SLUG}, ${asOf}.\nMachine-readable: signals.gitdealflow.com/api/markets/${SLUG}.json (CC BY 4.0).`}
           </pre>
           <p className="text-xs text-gray-400 mt-3 leading-relaxed">
             Press kit:{" "}

@@ -17,15 +17,15 @@ export const dynamic = "force-static";
 
 // Word count + read-time co-located with the page so the variant tracker
 // logs the same numbers the JSON-LD advertises. Update together if copy
-// changes. Brunson Expert Secrets §4 Ch 19 (Test, Test, Test) — the A/B
+// changes. Brunson Expert Secrets §4 Ch 19 (Test, Test, Test), the A/B
 // against /walkthrough/90s is what closes the V8 push from 92→100.
 const WORD_COUNT = 820;
 const READ_SECONDS = 300;
 
 export const metadata: Metadata = {
-  title: "The 5-Minute Walkthrough — GitDealFlow in 800 words",
+  title: "The 5-Minute Walkthrough, GitDealFlow in 800 words",
   description:
-    "The full case, condensed. Core claim, three objections, direct proof, and the weekly signal stack — in five minutes flat.",
+    "The full case, condensed. Core claim, three objections, direct proof, and the weekly signal stack, in five minutes flat.",
   alternates: { canonical: "/walkthrough/5min" },
   openGraph: {
     title: "The 5-Minute Walkthrough",
@@ -40,7 +40,7 @@ const STRIPE_DASHBOARD = "https://buy.stripe.com/4gMbJ07kTaJy7kqg6s0x20b";
 const SIGNUP_URL = "https://gitdealflow.com/#signup";
 
 export default function FiveMinPerfectWebinarPage() {
-  // Brunson live-replay cohort snapshot — same engine as the long-form
+  // Brunson live-replay cohort snapshot, same engine as the long-form
   // /walkthrough page, so both surfaces show a synchronized deadline.
   const replaySnapshot = getReplayWindowSnapshot();
 
@@ -50,7 +50,7 @@ export default function FiveMinPerfectWebinarPage() {
       {
         "@type": "Article",
         "@id": "https://signals.gitdealflow.com/walkthrough/5min#article",
-        headline: "The 5-Minute Walkthrough — GitDealFlow in 800 words",
+        headline: "The 5-Minute Walkthrough, GitDealFlow in 800 words",
         description:
           "GitDealFlow's full sales argument condensed to 5 minutes. Core claim, three objections, offer stack, four closes.",
         url: "https://signals.gitdealflow.com/walkthrough/5min",
@@ -93,7 +93,7 @@ export default function FiveMinPerfectWebinarPage() {
         readSeconds={READ_SECONDS}
       />
 
-      {/* Brunson live-replay sticky cohort countdown — shared across the
+      {/* Brunson live-replay sticky cohort countdown, shared across the
           long-form and 5-minute Perfect Webinar surfaces. */}
       <LiveReplayBar initialWindow={replaySnapshot} />
 
@@ -110,7 +110,7 @@ export default function FiveMinPerfectWebinarPage() {
             The 5-Minute Walkthrough
           </p>
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 leading-[1.15] tracking-tight">
-            GitDealFlow, the whole pitch — <span className="text-amber-400">in 800 words</span>.
+            GitDealFlow, the whole pitch, <span className="text-amber-400">in 800 words</span>.
           </h1>
           <p className="text-gray-400 text-sm">
             Reading time: 5 min. In a hurry?{" "}
@@ -131,8 +131,8 @@ export default function FiveMinPerfectWebinarPage() {
           </p>
           <DataNerdAudio
             slug="walkthrough-5min"
-            label="Press play — 5-minute auto-walkthrough, narrated by The Data Nerd"
-            subtitle="The whole pitch as audio. Read it, listen to it, or both. Hook → Story → Three Objections → Offer Stack → Four Closes — in five minutes flat."
+            label="Press play, 5-minute auto-walkthrough, narrated by The Data Nerd"
+            subtitle="The whole pitch as audio. Read it, listen to it, or both. Hook → Story → Three Objections → Offer Stack → Four Closes, in five minutes flat."
           />
         </header>
 
@@ -140,7 +140,7 @@ export default function FiveMinPerfectWebinarPage() {
           <h2 className="text-xl font-bold text-gray-100">Hook</h2>
           <p className="text-gray-200 text-base leading-relaxed">
             Crunchbase tells you the day a startup raised. We tell you the
-            day they started preparing — 21 to 47 days earlier — by reading
+            day they started preparing, 21 to 47 days earlier, by reading
             their public GitHub.
           </p>
         </section>
@@ -151,7 +151,7 @@ export default function FiveMinPerfectWebinarPage() {
             In 2023 I passed on a dev-tool company because the deck looked
             weak; eleven months later they raised at a 9× valuation, and
             their public GitHub had been telling that story the whole
-            time — five new repos, a 4× contributor expansion, a clean
+            time, five new repos, a 4× contributor expansion, a clean
             velocity curve I would have read in two minutes if I had known
             to look.
           </p>
@@ -161,8 +161,8 @@ export default function FiveMinPerfectWebinarPage() {
           <h2 className="text-xl font-bold text-gray-100">The core claim</h2>
           <p className="text-gray-100 text-lg font-semibold leading-snug">
             If commit-velocity acceleration is the most leading public signal
-            in venture capital, every other deal-flow source — pitch decks,
-            AngelList, Crunchbase, warm intros — is a lagging indicator.
+            in venture capital, every other deal-flow source, pitch decks,
+            AngelList, Crunchbase, warm intros, is a lagging indicator.
           </p>
           <p className="text-gray-400 text-sm">
             The whole investing thesis falls or stands on whether that
@@ -171,12 +171,12 @@ export default function FiveMinPerfectWebinarPage() {
           </p>
           <TrialClose tone="sky">
             One sentence. One falsifiable claim. Read it again. If
-            it&rsquo;s true, the rest of the page is a footnote — fair?
+            it&rsquo;s true, the rest of the page is a footnote, fair?
           </TrialClose>
         </section>
 
         <section className="space-y-3">
-          <h2 className="text-xl font-bold text-gray-100">Three objections — collapsed</h2>
+          <h2 className="text-xl font-bold text-gray-100">Three objections, collapsed</h2>
           <ol className="space-y-3 text-gray-300 text-base leading-relaxed">
             <li className="border-l-2 border-rose-700 pl-4">
               <strong className="text-gray-100">&ldquo;GitHub data is too noisy.&rdquo;</strong>{" "}
@@ -199,15 +199,15 @@ export default function FiveMinPerfectWebinarPage() {
         </section>
 
         <section className="space-y-3 rounded-xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6">
-          <h2 className="text-xl font-bold text-gray-100">The Stack — eight objects</h2>
+          <h2 className="text-xl font-bold text-gray-100">The Stack, eight objects</h2>
           <ul className="space-y-1.5 text-gray-300 text-sm leading-relaxed">
             <li>→ Live dashboard, refreshed every Monday at 06:00 UTC.</li>
-            <li>→ 219-startup panel dataset — load it into any notebook, replicate the regression.</li>
-            <li>→ Monthly sector deep-dive PDF — top 25 ranked, contributor maps, three breakout candidates.</li>
+            <li>→ 219-startup panel dataset, load it into any notebook, replicate the regression.</li>
+            <li>→ Monthly sector deep-dive PDF, top 25 ranked, contributor maps, three breakout candidates.</li>
             <li>→ Two free Chrome extensions (Crunchbase / Wellfound badge + GitHub Lookup).</li>
-            <li>→ The MCP server — six tools inside Claude / Cursor. Free forever.</li>
-            <li>→ Async watchlist build — send your thesis, get the 10 highest-acceleration matches.</li>
-            <li>→ Methodology vault — full SSRN preprint, signal definitions, regression code.</li>
+            <li>→ The MCP server, six tools inside Claude / Cursor. Free forever.</li>
+            <li>→ Async watchlist build, send your thesis, get the 10 highest-acceleration matches.</li>
+            <li>→ Methodology vault, full SSRN preprint, signal definitions, regression code.</li>
             <li>→ 30-day Signal-or-It&rsquo;s-Free guarantee.</li>
           </ul>
           <div className="border-t border-slate-700 pt-3 mt-3 flex items-baseline justify-between text-sm">
@@ -220,12 +220,12 @@ export default function FiveMinPerfectWebinarPage() {
           </div>
           <TrialClose tone="amber">
             €1,728 of standalone artefacts at €9.97/mo. If even half the
-            stack reads as real — has the math already done itself?
+            stack reads as real, has the math already done itself?
           </TrialClose>
         </section>
 
         <section className="space-y-3">
-          <h2 className="text-xl font-bold text-gray-100">Four closes — pick yours</h2>
+          <h2 className="text-xl font-bold text-gray-100">Four closes, pick yours</h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             <div className="rounded-lg border border-emerald-700/40 bg-emerald-950/10 p-4">
               <p className="text-emerald-400 text-[10px] font-semibold uppercase tracking-wider">Money</p>
@@ -251,7 +251,7 @@ export default function FiveMinPerfectWebinarPage() {
             <div className="rounded-lg border border-rose-700/40 bg-rose-950/10 p-4">
               <p className="text-rose-400 text-[10px] font-semibold uppercase tracking-wider">Urgency</p>
               <p className="text-gray-200 text-sm leading-relaxed mt-1">
-                The window is the lead time, not the discount. 21–47 days
+                The window is the lead time, not the discount. 21-47 days
                 before the deck. Every Monday skipped is one window closed.
               </p>
             </div>
@@ -267,7 +267,7 @@ export default function FiveMinPerfectWebinarPage() {
           </p>
           <p className="text-gray-100 text-base sm:text-lg leading-relaxed">
             If all this did was surface <strong className="text-amber-300">one
-            name</strong> you would have missed in the next 12 months — would
+            name</strong> you would have missed in the next 12 months, would
             €119.64 be worth it?
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">

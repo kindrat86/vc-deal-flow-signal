@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     canonical: "/faq",
   },
   openGraph: {
-    // F5 — absolute og:url (Next 16 drops relative og:url even with metadataBase).
+    // F5, absolute og:url (Next 16 drops relative og:url even with metadataBase).
     url: "https://signals.gitdealflow.com/faq",
     type: "website",
   },
@@ -41,7 +41,7 @@ const standaloneFaqs: FAQEntry[] = [
   {
     question: "How much does VC Deal Flow Signal cost?",
     answer:
-      "VC Deal Flow Signal offers a free Signal Report — this week's top 5 breakout startups delivered free after email confirmation, then weekly updates. The Dashboard beta is EUR 49/month: roughly 350+ venture-backed GitHub orgs are scanned every week, and the 140 that show real engineering acceleration are ranked and surfaced across all 15 sectors with filtering by stage, geography, and signal type. There is no annual commitment required.",
+      "VC Deal Flow Signal offers a free Signal Report, this week's top 5 breakout startups delivered free after email confirmation, then weekly updates. The Dashboard beta is EUR 49/month: roughly 350+ venture-backed GitHub orgs are scanned every week, and the 140 that show real engineering acceleration are ranked and surfaced across all 15 sectors with filtering by stage, geography, and signal type. There is no annual commitment required.",
     source: "Pricing",
     sourceHref: "https://gitdealflow.com/#signup",
   },
@@ -62,14 +62,14 @@ const standaloneFaqs: FAQEntry[] = [
   {
     question: "Is VC Deal Flow Signal investment advice?",
     answer:
-      "No. VC Deal Flow Signal provides engineering acceleration data as a leading indicator for deal sourcing. It is not investment advice. Engineering signals should be one input among many in an investment decision — combined with market analysis, founder evaluation, and customer reference checks.",
+      "No. VC Deal Flow Signal provides engineering acceleration data as a leading indicator for deal sourcing. It is not investment advice. Engineering signals should be one input among many in an investment decision, combined with market analysis, founder evaluation, and customer reference checks.",
     source: "Methodology",
     sourceHref: "/methodology",
   },
   {
     question: "What is the difference between VC Deal Flow Signal and Crunchbase?",
     answer:
-      "Crunchbase tracks funding announcements, team changes, and company profiles — all lagging indicators that appear after a round closes. VC Deal Flow Signal tracks engineering acceleration from public GitHub data — a leading indicator that typically appears 6-12 weeks before the fundraise announcement. The two are complementary: use VC Deal Flow Signal for early sourcing, Crunchbase for verification.",
+      "Crunchbase tracks funding announcements, team changes, and company profiles, all lagging indicators that appear after a round closes. VC Deal Flow Signal tracks engineering acceleration from public GitHub data, a leading indicator that typically appears 6-12 weeks before the fundraise announcement. The two are complementary: use VC Deal Flow Signal for early sourcing, Crunchbase for verification.",
     source: "Comparison",
     sourceHref: "/compare/github-signals-vs-crunchbase-alerts",
   },
@@ -99,7 +99,7 @@ export default function FAQPage() {
         "@type": "FAQPage",
         "@id": "https://signals.gitdealflow.com/faq#faqpage",
         url: "https://signals.gitdealflow.com/faq",
-        name: "VC Deal Flow Signal — Frequently Asked Questions",
+        name: "VC Deal Flow Signal, Frequently Asked Questions",
         description:
           "Answers to common questions about GitHub engineering signals, startup deal sourcing, and how investors use engineering acceleration data.",
         inLanguage: "en-US",
@@ -182,7 +182,7 @@ export default function FAQPage() {
             At a glance
           </h2>
           <p className="text-sky-100 text-sm leading-relaxed">
-            TL;DR — {allFaqs.length} questions answered on this page. The
+            TL;DR, {allFaqs.length} questions answered on this page. The
             short version of almost all of them: the signal ranks startups
             by change in 14-day GitHub commit velocity, uses only public data,
             and has historically moved three to six weeks before fundraise
@@ -287,12 +287,12 @@ export default function FAQPage() {
 
         <PSEOFooterNav excludeHrefs={["/faq"]} />
 
-        {/* CTA — single funnel: free digest primary, First Look secondary, AC signoff */}
+        {/* CTA, single funnel: free digest primary, First Look secondary, AC signoff */}
         <SeoCta
           className="mt-12"
           signoffIndex={5}
           secondary={{
-            label: "Still deciding? Test one sector — First Look (€7) →",
+            label: "Still deciding? Test one sector, First Look (€7) →",
             href: "/firstlook",
           }}
         />

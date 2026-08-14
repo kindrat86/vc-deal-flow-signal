@@ -23,7 +23,7 @@ const DOORS = [
     href: "/predict",
     eyebrow: "Free game",
     title: "Predict the next breakout",
-    body: "Pick any GitHub org. Get a 1–99% breakout score. Compete on the public leaderboard.",
+    body: "Pick any GitHub org. Get a 1-99% breakout score. Compete on the public leaderboard.",
     cta: "Play Scout",
     accent: "indigo",
     external: false,

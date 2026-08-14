@@ -1,4 +1,4 @@
-// OAuth 2.0 Authorization Server Metadata — RFC 8414.
+// OAuth 2.0 Authorization Server Metadata, RFC 8414.
 //
 // Discovery endpoint for OAuth-aware MCP clients (Anthropic Connectors, etc.).
 // Advertises only what we actually implement: client_credentials grant, no

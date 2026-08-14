@@ -125,7 +125,7 @@ async function main() {
       errors++;
       console.error(`  [${i + 1}/${uniqueNames.length}] ${name} → ERROR:`, (e as Error).message);
       if ((e as Error).message.startsWith("Rate-limited")) {
-        console.error("Stopping early — rerun after rate limit resets.");
+        console.error("Stopping early, rerun after rate limit resets.");
         break;
       }
     }

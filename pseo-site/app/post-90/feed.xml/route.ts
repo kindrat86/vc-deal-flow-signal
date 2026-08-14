@@ -1,10 +1,10 @@
 /**
- * Engine Room — RSS 2.0 + iTunes podcast feed.
+ * Engine Room, RSS 2.0 + iTunes podcast feed.
  *
  * Brunson DotCom Secrets Ch 11, Phase 6 ("change the selling environment").
  * The buyer subscribes to this URL in Apple Podcasts / Spotify / Overcast /
  * any podcast or RSS reader. From that point forward the rhythm arrives in
- * a different app from email — that IS the environment shift.
+ * a different app from email, that IS the environment shift.
  */
 
 import { NextResponse } from "next/server";
@@ -14,7 +14,7 @@ export const revalidate = 3600;
 
 const SITE = "https://signals.gitdealflow.com";
 const FEED_URL = `${SITE}/post-90/feed.xml`;
-const CHANNEL_TITLE = "Engine Room — VC Deal Flow Signal";
+const CHANNEL_TITLE = "Engine Room, VC Deal Flow Signal";
 const CHANNEL_DESC =
   "The post-90 cohort home for VC Deal Flow Signal. Weekly synthetic-voice voice memo on the single sharpest GitHub-acceleration break, plus the monthly founder talk and quarterly State-of-the-Engine post-mortem. Methodology, not personality. Anonymity-safe Cartesia voice, panel data, falsifiable predictions.";
 
@@ -95,7 +95,7 @@ function buildEpisodes(now: Date): Episode[] {
     const slug = s.toISOString().slice(0, 10);
     items.push({
       guid: `${SITE}/post-90/sunday-brief/${slug}`,
-      title: `Sunday Brief — week of ${slug}`,
+      title: `Sunday Brief, week of ${slug}`,
       description:
         "Five-minute synthetic-voice voice memo. The week's single sharpest GitHub-acceleration break across 350+ venture-backed orgs. What shifted on the panel. One thing to put on the radar before Monday's public Acceleration Watch.",
       pubDate: s,
@@ -111,9 +111,9 @@ function buildEpisodes(now: Date): Episode[] {
     const monthLabel = t.toLocaleString("en-US", { month: "long", year: "numeric", timeZone: "UTC" });
     items.push({
       guid: `${SITE}/state-of-github/${t.toISOString().slice(0, 7)}`,
-      title: `Founder talk — ${monthLabel}`,
+      title: `Founder talk, ${monthLabel}`,
       description:
-        "Monthly address. What the panel showed across 350+ venture-backed orgs this month, what shifted in the false-positive rate, and one falsifiable prediction on the record. Same content cadence as the State of GitHub written archive — now in audio + scheduled-event form.",
+        "Monthly address. What the panel showed across 350+ venture-backed orgs this month, what shifted in the false-positive rate, and one falsifiable prediction on the record. Same content cadence as the State of GitHub written archive, now in audio + scheduled-event form.",
       pubDate: t,
       link: `${SITE}/state-of-github`,
       duration: "10:00",
@@ -122,10 +122,10 @@ function buildEpisodes(now: Date): Episode[] {
   }
 
   const QUARTERS = [
-    { days: 90, label: "Day 90 — first quarterly post-mortem" },
-    { days: 180, label: "Day 180 — six-month post-mortem" },
-    { days: 270, label: "Day 270 — three-quarter post-mortem" },
-    { days: 365, label: "Day 365 — one-year post-mortem" },
+    { days: 90, label: "Day 90, first quarterly post-mortem" },
+    { days: 180, label: "Day 180, six-month post-mortem" },
+    { days: 270, label: "Day 270, three-quarter post-mortem" },
+    { days: 365, label: "Day 365, one-year post-mortem" },
   ];
   for (const q of QUARTERS) {
     const d = addDays(now, q.days);
@@ -176,10 +176,10 @@ export async function GET() {
     <atom:link href="${FEED_URL}" rel="self" type="application/rss+xml" />
     <description><![CDATA[${CHANNEL_DESC}]]></description>
     <language>en-us</language>
-    <copyright>CC BY 4.0 — VC Deal Flow Signal</copyright>
+    <copyright>CC BY 4.0, VC Deal Flow Signal</copyright>
     <lastBuildDate>${rfc2822(now)}</lastBuildDate>
     <pubDate>${rfc2822(now)}</pubDate>
-    <generator>VC Deal Flow Signal — Engine Room feed</generator>
+    <generator>VC Deal Flow Signal, Engine Room feed</generator>
     <itunes:author>VC Deal Flow Signal</itunes:author>
     <itunes:summary>${escape(CHANNEL_DESC)}</itunes:summary>
     <itunes:owner>

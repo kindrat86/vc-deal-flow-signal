@@ -3,13 +3,13 @@
 import { useEffect, useState } from "react";
 
 /**
- * PaidTrafficBanner — UTM-aware top banner that customizes the headline
+ * PaidTrafficBanner, UTM-aware top banner that customizes the headline
  * for paid traffic without breaking the static rendering of the host page.
  *
  * Mounts on /firstlook (the €7 tripwire landing).  When `?utm_source` is
  * present in the URL, the banner shows a channel-specific opening line
  * that matches the ad copy, so the visitor sees continuity from creative
- * to landing — Brunson's "scent" rule.
+ * to landing, Brunson's "scent" rule.
  *
  * Returns null on first paint (no UTMs detected yet) so we never paint
  * a blank banner above-the-fold for organic traffic.  The check runs
@@ -23,7 +23,7 @@ type ChannelCopy = {
   badge: string;
   /** The headline override. */
   headline: string;
-  /** Sub-line — keep <120 chars. */
+  /** Sub-line, keep <120 chars. */
   sub: string;
 };
 
@@ -55,14 +55,14 @@ const CHANNEL_COPY: Record<string, ChannelCopy> = {
   newsletter: {
     badge: "From Newsletter",
     headline:
-      "From the newsletter sponsorship — here's the GitHub-momentum signal in full.",
+      "From the newsletter sponsorship, here's the GitHub-momentum signal in full.",
     sub: "Pay €7, pick a sector, get the deep-dive in 24h. Credited toward Dashboard upgrade for 14 days.",
   },
   devto: {
     badge: "From dev.to",
     headline:
       "From dev.to. The engineering-side version of why VCs miss the best devtools companies.",
-    sub: "Same data the founder reads on Sunday — applied to your thesis sector for €7, delivered in 24h.",
+    sub: "Same data the founder reads on Sunday, applied to your thesis sector for €7, delivered in 24h.",
   },
 };
 

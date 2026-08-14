@@ -1,7 +1,7 @@
 import { getCompany } from "@/content/companies";
 import { renderSignalBadge, renderPendingBadge } from "@/lib/badge-svg";
 
-// Dynamic SVG per curated company — resolves against content/companies.ts
+// Dynamic SVG per curated company, resolves against content/companies.ts
 // `publicSignal.momentum` (editorial), NOT the live GitHub-velocity scrape
 // used by /api/badge/momentum. Every curated company therefore has a stable,
 // embeddable badge. Rendered on demand and CDN-cached for 24h via the

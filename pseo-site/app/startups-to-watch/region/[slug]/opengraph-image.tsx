@@ -3,7 +3,7 @@ import { renderBrandOG, OG_SIZE, OG_CONTENT_TYPE } from "@/lib/og-template";
 
 export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
-export const alt = "VC Deal Flow Signal — Region Ranking";
+export const alt = "VC Deal Flow Signal, Region Ranking";
 
 export default async function OGImage({
   params,
@@ -24,7 +24,7 @@ export default async function OGImage({
 
   return renderBrandOG({
     kind: "Region Ranking",
-    title: `${parsed.geoName} — All Sectors`,
+    title: `${parsed.geoName}, All Sectors`,
     subtitle: `${parsed.startups.length} startups across ${parsed.sectorBreakdown.length} sectors ranked by GitHub engineering acceleration.`,
     stats: [
       { value: parsed.startups.length, label: "Startups" },

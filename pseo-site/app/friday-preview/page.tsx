@@ -9,10 +9,10 @@ import SqueezeForm from "../squeeze/SqueezeForm";
 export const dynamic = "force-static";
 
 /**
- * Brunson Best Bait — DotCom Secrets Ch 13.
+ * Brunson Best Bait, DotCom Secrets Ch 13.
  *
  * The "trailer for the Sunday digest." This page shows the SHAPE of
- * what's about to publish — sector, stage, velocity delta, signal type —
+ * what's about to publish, sector, stage, velocity delta, signal type -
  * for the five orgs that will land in the Sunday digest at 09:00 UTC,
  * with the org names redacted. The only way to get the actual names is
  * to be subscribed when the digest sends.
@@ -20,22 +20,22 @@ export const dynamic = "force-static";
  * Brunson's rule of bait: bait works when it shows enough that the
  * visitor can verify the value, but not so much that they no longer
  * need to consume the offer. A redacted-but-shape-visible preview is
- * the trailer pattern — same engine output as the digest, name field
+ * the trailer pattern, same engine output as the digest, name field
  * blurred, sector and metric stack fully visible.
  *
  * The page rebuilds with the dataset (revalidate: 1h via the static
  * data lifecycle), so on Friday at noon the preview reflects the same
  * top-5 the Sunday email will reveal. No special cron, no live data
- * fetch — pure static off the existing data pipeline.
+ * fetch, pure static off the existing data pipeline.
  */
 export const metadata: Metadata = {
-  title: "Friday preview — what lands Sunday at 09:00 UTC",
+  title: "Friday preview, what lands Sunday at 09:00 UTC",
   description:
-    "Trailer for the Sunday digest. Sector, stage, velocity delta, signal type for the five orgs about to publish. Names redacted — subscribe to get the actual list.",
+    "Trailer for the Sunday digest. Sector, stage, velocity delta, signal type for the five orgs about to publish. Names redacted, subscribe to get the actual list.",
   alternates: { canonical: "/friday-preview" },
   robots: { index: true, follow: true },
   openGraph: {
-    title: "Friday preview — Sunday's five, with names redacted",
+    title: "Friday preview, Sunday's five, with names redacted",
     description:
       "See the shape of Sunday's digest before it ships. Subscribe free to get the actual names.",
     url: "https://signals.gitdealflow.com/friday-preview",
@@ -47,9 +47,9 @@ export const metadata: Metadata = {
 // Friday-noon trailer shows all four; org name is intentionally redacted.
 function bucket(pct: number): string {
   if (pct >= 200) return "≥ +200% in 14 days";
-  if (pct >= 100) return "+100–200% in 14 days";
-  if (pct >= 50) return "+50–100% in 14 days";
-  return "+30–50% in 14 days";
+  if (pct >= 100) return "+100-200% in 14 days";
+  if (pct >= 50) return "+50-100% in 14 days";
+  return "+30-50% in 14 days";
 }
 
 function stageBadge(stage: string): { color: string; bg: string; label: string } {
@@ -72,10 +72,10 @@ export default function FridayPreviewPage() {
       {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/friday-preview#page",
-        name: "Friday preview — Sunday's five, names redacted",
+        name: "Friday preview, Sunday's five, names redacted",
         url: "https://signals.gitdealflow.com/friday-preview",
         description:
-          "Right-shaped-bait teaser surface — show the shape of the Sunday digest without revealing the names.",
+          "Right-shaped-bait teaser surface, show the shape of the Sunday digest without revealing the names.",
       },
       {
         "@type": "BreadcrumbList",
@@ -120,8 +120,8 @@ export default function FridayPreviewPage() {
             <span className="whitespace-nowrap">until 09:00 UTC.</span>
           </h1>
           <p className="text-gray-300 text-base leading-relaxed">
-            Same engine output as the Sunday email — sector, stage, velocity
-            delta, signal type — with the org names hidden. Subscribe free
+            Same engine output as the Sunday email, sector, stage, velocity
+            delta, signal type, with the org names hidden. Subscribe free
             and the actual list lands in your inbox the moment the digest
             sends.
           </p>
@@ -208,7 +208,7 @@ export default function FridayPreviewPage() {
             </h2>
             <p className="text-gray-400 text-sm leading-relaxed">
               The five org names, every repo URL, the engine&rsquo;s
-              one-line read on each — delivered to your inbox the instant
+              one-line read on each, delivered to your inbox the instant
               the digest sends. No card, one email a week, reply to
               unsubscribe.
             </p>
@@ -223,7 +223,7 @@ export default function FridayPreviewPage() {
           <p className="text-gray-300 text-sm leading-relaxed">
             Show enough to let the buyer verify the value, but not so much
             that they no longer need to consume the offer. The shape of the
-            digest IS the value preview — sector + stage + velocity-bucket +
+            digest IS the value preview, sector + stage + velocity-bucket +
             signal-type stack is the engine&rsquo;s actual output. Names are
             the payload. Trailer first, payload Sunday.
           </p>

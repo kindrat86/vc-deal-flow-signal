@@ -243,7 +243,7 @@ export default async function CompanySignalPage({ params }: PageProps) {
         <SeoCta
           signoffIndex={3}
           secondary={{
-            label: "See it on your sector — First Look (€7) →",
+            label: "See it on your sector, First Look (€7) →",
             href: `/firstlook?ref=signal-${slug}`,
           }}
         />

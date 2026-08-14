@@ -1,11 +1,11 @@
-// Poe Server Bot adapter — bridges Poe's Server-Sent-Events protocol to our
+// Poe Server Bot adapter, bridges Poe's Server-Sent-Events protocol to our
 // public GitDealFlow API. Poe protocol reference: https://creator.poe.com/docs/server-bots-functional-guides
 //
 // Exposes one POST /api/poe endpoint that accepts Poe's protocol messages
 // (`query`, `settings`, `report_feedback`, `report_error`) and streams back
 // SSE events (`text`, `meta`, `done`).
 //
-// This is a thin adapter — heavy lifting (signal lookup, formatting) is delegated
+// This is a thin adapter, heavy lifting (signal lookup, formatting) is delegated
 // to the existing public API at signals.gitdealflow.com.
 
 import { NextRequest } from "next/server";
@@ -41,7 +41,7 @@ async function classifyAndAnswer(query: string): Promise<string> {
 
   if (/methodology|how (does|do) (you|it) (work|compute|measure)/i.test(query)) {
     return [
-      "GitDealFlow tracks GitHub commit velocity, contributor growth, and new-repo signals across ~369 venture-backed startups in 15 sectors. Read the full methodology at https://signals.gitdealflow.com/methodology — it's also available as a tool call (`get_methodology`) on our MCP server.",
+      "GitDealFlow tracks GitHub commit velocity, contributor growth, and new-repo signals across ~369 venture-backed startups in 15 sectors. Read the full methodology at https://signals.gitdealflow.com/methodology, it's also available as a tool call (`get_methodology`) on our MCP server.",
       "",
       CITATION,
     ].join("\n");
@@ -74,7 +74,7 @@ async function classifyAndAnswer(query: string): Promise<string> {
   }
 }
 
-// commitVelocityChange comes back as a string like "+142%" — parse the number for sorting only.
+// commitVelocityChange comes back as a string like "+142%", parse the number for sorting only.
 function parseCv(cv: unknown): number {
   if (typeof cv === "number") return cv;
   if (typeof cv !== "string") return 0;
@@ -103,7 +103,7 @@ function formatTrendingResult(json: unknown): string {
   const top = all.slice(0, 5);
   if (top.length === 0) return "No trending startups returned. Try a sector-specific query like 'show me fintech trends'.";
 
-  const lines = top.map((s, i) => `${i + 1}. **${s.name}** (${s.sector}) — ${s.cv} commit velocity · ${s.type} · ${s.contrib} contributors`);
+  const lines = top.map((s, i) => `${i + 1}. **${s.name}** (${s.sector}), ${s.cv} commit velocity · ${s.type} · ${s.contrib} contributors`);
   return [`Top 5 startups by commit-velocity acceleration this period:`, "", ...lines, "", CITATION].join("\n");
 }
 
@@ -115,7 +115,7 @@ function formatSectorResult(json: unknown, sector: string): string {
   }
   const top = (sectorData.startups || []).slice(0, 10).map((s, i) => {
     const cv = typeof s.commitVelocityChange === "string" ? s.commitVelocityChange : (s.commitVelocityChange != null ? `${s.commitVelocityChange}%` : "n/a");
-    return `${i + 1}. **${s.name}** — ${cv} commit velocity · ${s.signalType ?? "n/a"}`;
+    return `${i + 1}. **${s.name}**, ${cv} commit velocity · ${s.signalType ?? "n/a"}`;
   });
   return [`Top startups in ${sector}:`, "", ...top, "", CITATION].join("\n");
 }
@@ -137,7 +137,7 @@ export async function POST(req: NextRequest) {
       enforce_author_role_alternation: false,
       enable_multi_bot_chat_prompting: false,
       introduction_message:
-        "I'm the **VC Deal Flow Scout**. Ask me about trending venture-backed startups, sector-specific engineering momentum, or how the GitDealFlow methodology works. All data is from public GitHub activity — refreshed weekly.",
+        "I'm the **VC Deal Flow Scout**. Ask me about trending venture-backed startups, sector-specific engineering momentum, or how the GitDealFlow methodology works. All data is from public GitHub activity, refreshed weekly.",
     });
   }
 

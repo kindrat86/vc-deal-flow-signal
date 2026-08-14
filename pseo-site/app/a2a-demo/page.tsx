@@ -5,12 +5,12 @@ import { slugify } from "@/lib/slugify";
 import A2APlayground from "./A2APlayground";
 
 export const metadata: Metadata = {
-  title: "Try the GitDealFlow A2A Agent — Live Playground",
+  title: "Try the GitDealFlow A2A Agent, Live Playground",
   description:
     "Send live JSON-RPC 2.0 requests to the GitDealFlow Agent2Agent endpoint. No signup, no API key. Watch your call return startup engineering signals from public GitHub data.",
   alternates: { canonical: "/a2a-demo" },
   openGraph: {
-    title: "Try the GitDealFlow A2A Agent — Live Playground",
+    title: "Try the GitDealFlow A2A Agent, Live Playground",
     description:
       "Crunchbase API: $20K/yr. GitDealFlow A2A: free. Try it now.",
     type: "website",
@@ -40,7 +40,7 @@ export default function A2ADemoPage() {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/a2a-demo#webpage",
         url: "https://signals.gitdealflow.com/a2a-demo",
-        name: "Try the GitDealFlow A2A Agent — Live Playground",
+        name: "Try the GitDealFlow A2A Agent, Live Playground",
         description:
           "Interactive playground for the GitDealFlow Agent2Agent endpoint. Send live JSON-RPC 2.0 calls and receive startup engineering signals from public GitHub data.",
         isPartOf: {
@@ -356,7 +356,7 @@ Once registered, ask your AI:
         </ul>
         <p style={{ marginTop: 16 }}>
           The first four are stubbed because we have not seen a paying customer ask
-          for them yet. The fifth — predictions — is a separate product at{" "}
+          for them yet. The fifth, predictions, is a separate product at{" "}
           <Link href="/predict" style={{ color: "#0ea5e9" }}>
             /predict
           </Link>

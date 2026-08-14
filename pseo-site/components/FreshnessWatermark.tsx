@@ -1,10 +1,10 @@
 /**
- * FreshnessWatermark — visible "Last verified: YYYY-MM-DD" line on pSEO pages.
+ * FreshnessWatermark, visible "Last verified: YYYY-MM-DD" line on pSEO pages.
  *
  * Why: Google's freshness algorithm reads <time> elements and visible date
  * mentions. Our /.well-known/freshness.json carries cadence metadata for AI
  * agents, but the *rendered HTML body* of pSEO pages had no per-page freshness
- * watermark — which means classic crawlers had no on-page signal that the
+ * watermark, which means classic crawlers had no on-page signal that the
  * data is current. This component fixes that gap.
  *
  * Single source of truth: getDataLastModified() (from @/lib/data) reads the
@@ -13,8 +13,8 @@
  * surfaces that have their own data file).
  *
  * Variants:
- *  - "compact" — single line, used inline in headers / metadata strips.
- *  - "full"    — labelled box with cadence note, used at section bottoms.
+ *  - "compact", single line, used inline in headers / metadata strips.
+ *  - "full"   , labelled box with cadence note, used at section bottoms.
  */
 import { getDataLastModified } from "@/lib/data";
 

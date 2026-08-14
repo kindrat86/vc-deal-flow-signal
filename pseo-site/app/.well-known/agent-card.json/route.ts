@@ -1,9 +1,9 @@
 /**
- * /.well-known/agent-card.json — A2A AgentCard descriptor.
+ * /.well-known/agent-card.json, A2A AgentCard descriptor.
  *
  * Canonical agent-card location per the A2A protocol spec. The legacy alias
  * /.well-known/agent.json 308-redirects here. Several `<head>` rel=alternate
- * links and openai-search.json point at this URL — it must serve a valid
+ * links and openai-search.json point at this URL, it must serve a valid
  * AgentCard, not 404.
  *
  * Mirrors the body emitted by /agents.json (root-level alias) so any agent
@@ -104,7 +104,7 @@ export async function GET() {
           id: "get_deep_signal",
           name: "Get Deep Signal (paid)",
           description:
-            "Enriched per-startup signal: composite score, sector percentile, plain-English thesis, comparables, multi-period history. PAID per-request. Two payment paths: (1) HMAC API key + pre-paid credits — €0.19/call, 100 credits = €19 at https://signals.gitdealflow.com/agents/credits. (2) x402 USDC on Base — $0.19/call, no signup, no key, settled per request via HTTP 402, endpoint at https://signals.gitdealflow.com/api/agent/deep-signal/x402. Misses are FREE on both paths.",
+            "Enriched per-startup signal: composite score, sector percentile, plain-English thesis, comparables, multi-period history. PAID per-request. Two payment paths: (1) HMAC API key + pre-paid credits, €0.19/call, 100 credits = €19 at https://signals.gitdealflow.com/agents/credits. (2) x402 USDC on Base, $0.19/call, no signup, no key, settled per request via HTTP 402, endpoint at https://signals.gitdealflow.com/api/agent/deep-signal/x402. Misses are FREE on both paths.",
           tags: [
             "startups",
             "deep-signal",

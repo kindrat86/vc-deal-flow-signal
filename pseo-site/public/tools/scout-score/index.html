@@ -3,10 +3,10 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Scout Score Checker — GitDealFlow Signals</title>
-<meta name="description" content="Enter your GitHub username to discover your Scout Score — a 0–100 rating of how early you starred unicorn startups. Used by VCs to find talent with pattern recognition.">
+<title>Scout Score Checker: GitDealFlow Signals</title>
+<meta name="description" content="Enter your GitHub username to discover your Scout Score, a 0-100 rating of how early you starred unicorn startups. Used by VCs to find talent with pattern recognition.">
 <meta property="og:title" content="Scout Score Checker">
-<meta property="og:description" content="Enter your GitHub username to discover your Scout Score — a 0–100 rating of how early you starred unicorn startups. Used by VCs to find talent with pattern recognition.">
+<meta property="og:description" content="Enter your GitHub username to discover your Scout Score, a 0-100 rating of how early you starred unicorn startups. Used by VCs to find talent with pattern recognition.">
 <meta property="og:type" content="website">
 <meta property="og:url" content="https://signals.gitdealflow.com/tools/scout-score">
 <meta name="twitter:card" content="summary_large_image">
@@ -16,7 +16,7 @@
   "@context": "https://schema.org",
   "@type": ["SoftwareApplication", "WebApplication"],
   "name": "Scout Score Checker",
-  "description": "Enter your GitHub username to discover your Scout Score — a 0–100 rating of how early you starred unicorn startups. Used by VCs to find talent with pattern recognition.",
+  "description": "Enter your GitHub username to discover your Scout Score, a 0-100 rating of how early you starred unicorn startups. Used by VCs to find talent with pattern recognition.",
   "applicationCategory": "Career",
   "operatingSystem": "Web",
   "offers": {"@type": "Offer", "price": "0", "priceCurrency": "USD"},
@@ -78,7 +78,7 @@ footer{text-align:center;padding:2rem;color:#475569;font-size:0.8rem}
 <div class="container">
   <header>
     <h1>Scout Score Checker</h1>
-    <p>Enter your GitHub username to discover your Scout Score — a 0–100 rating of how early you starred unicorn startups. Used by VCs to find talent with pattern recognition.</p>
+    <p>Enter your GitHub username to discover your Scout Score, a 0-100 rating of how early you starred unicorn startups. Used by VCs to find talent with pattern recognition.</p>
   </header>
 
   <div class="card" id="input-card">
@@ -111,7 +111,7 @@ footer{text-align:center;padding:2rem;color:#475569;font-size:0.8rem}
   </div>
   
   <div class="powered-by">
-    Powered by <a href="https://signals.gitdealflow.com/">GitDealFlow Signals</a> — free to use, no signup required
+    Powered by <a href="https://signals.gitdealflow.com/">GitDealFlow Signals</a>: free to use, no signup required
   </div>
 </div>
 
@@ -279,7 +279,7 @@ function copyLink() {
 }
 
 function shareTwitter() {
-  const text = encodeURIComponent(document.title + ' — Check your score:');
+  const text = encodeURIComponent(document.title + ', Check your score:');
   const url = encodeURIComponent(window.location.href);
   window.open('https://x.com/intent/tweet?text=' + text + '&url=' + url, '_blank');
 }

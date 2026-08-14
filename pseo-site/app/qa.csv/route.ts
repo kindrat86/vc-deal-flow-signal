@@ -1,5 +1,5 @@
 /**
- * /qa.csv — CSV alternate of /qa.jsonl for Excel / Google Sheets / pandas
+ * /qa.csv, CSV alternate of /qa.jsonl for Excel / Google Sheets / pandas
  * consumers and AI tools that prefer tabular ingestion over NDJSON.
  * Same content set, RFC 4180 quoted CSV, CC BY 4.0.
  */
@@ -67,7 +67,7 @@ export async function GET() {
         rows.push({
           question: f.question,
           answer: f.answer,
-          source: `${sector.name} — ${period.name}`,
+          source: `${sector.name}, ${period.name}`,
           source_url: `${SITE}/startups-to-watch/${sector.slug}-${period.slug}`,
           category: "sector",
         });

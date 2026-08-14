@@ -5,15 +5,15 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { PLATFORM_HOOKS, UNIVERSAL_STORY } from "@/content/platform-hooks";
 
-// Brunson Traffic Secrets §1 Ch 3 — platform-native opener variants.
+// Brunson Traffic Secrets §1 Ch 3, platform-native opener variants.
 // Twelve resolutions of one universal story (commit-velocity =
-// 21–47-day pre-fundraise signal). Audit gap pre-2026-05-09: the same
+// 21-47-day pre-fundraise signal). Audit gap pre-2026-05-09: the same
 // opener was reused across every channel. This surface ships the
 // transparency play (show the variants publicly, methodology-first)
 // AND functions as the single source of truth that the daily-briefing
 // pipeline reads from.
 //
-// Customer-visible copy stays neutral — no Brunson framework names per
+// Customer-visible copy stays neutral, no Brunson framework names per
 // the durable rule in feedback_brunson_internal_only.md.
 
 export const dynamic = "force-static";
@@ -21,15 +21,15 @@ export const dynamic = "force-static";
 const CANONICAL = "https://signals.gitdealflow.com/distribution/platform-hooks";
 
 export const metadata: Metadata = {
-  title: "Platform-native openers — twelve ways to introduce the same signal",
+  title: "Platform-native openers, twelve ways to introduce the same signal",
   description:
-    "How the same product story (commit-velocity acceleration as a 21–47-day pre-fundraise signal) gets reframed for each of the twelve platforms we publish on. Twitter / Reddit / Hacker News / dev.to / Hashnode / Discord / LinkedIn / Email / AngelList / Product Hunt / Indie Hackers / Telegram. Each variant carries an opener pattern, audience signal, format constraint, timing window, and the platform-specific landmine.",
+    "How the same product story (commit-velocity acceleration as a 21-47-day pre-fundraise signal) gets reframed for each of the twelve platforms we publish on. Twitter / Reddit / Hacker News / dev.to / Hashnode / Discord / LinkedIn / Email / AngelList / Product Hunt / Indie Hackers / Telegram. Each variant carries an opener pattern, audience signal, format constraint, timing window, and the platform-specific landmine.",
   alternates: { canonical: "/distribution/platform-hooks" },
   openGraph: {
     title:
-      "Platform-native openers — twelve ways to introduce the same signal",
+      "Platform-native openers, twelve ways to introduce the same signal",
     description:
-      "Twelve openers, one story. The merge graph as the new pitch deck — reframed for Twitter, Reddit, Hacker News, dev.to, Hashnode, Discord, LinkedIn, email, AngelList, Product Hunt, Indie Hackers, and Telegram.",
+      "Twelve openers, one story. The merge graph as the new pitch deck, reframed for Twitter, Reddit, Hacker News, dev.to, Hashnode, Discord, LinkedIn, email, AngelList, Product Hunt, Indie Hackers, and Telegram.",
     url: CANONICAL,
     type: "article",
   },
@@ -58,9 +58,9 @@ export default function PlatformHooksPage() {
         "@type": "Article",
         "@id": `${CANONICAL}#article`,
         headline:
-          "Platform-native openers — twelve ways to introduce the same signal",
+          "Platform-native openers, twelve ways to introduce the same signal",
         description:
-          "Methodology page documenting how a single product story gets re-framed across twelve distribution platforms — Twitter, Reddit, Hacker News, dev.to, Hashnode, Discord, LinkedIn, email, AngelList, Product Hunt, Indie Hackers, Telegram.",
+          "Methodology page documenting how a single product story gets re-framed across twelve distribution platforms, Twitter, Reddit, Hacker News, dev.to, Hashnode, Discord, LinkedIn, email, AngelList, Product Hunt, Indie Hackers, Telegram.",
         url: CANONICAL,
         mainEntityOfPage: CANONICAL,
         author: {
@@ -150,17 +150,17 @@ export default function PlatformHooksPage() {
             The product story is one sentence:{" "}
             <em className="text-gray-200 not-italic">
               public commit-velocity acceleration crosses a falsifiable
-              threshold 21–47 days before a Series A round closes.
+              threshold 21-47 days before a Series A round closes.
             </em>{" "}
             That sentence wins on Hacker News and gets you flagged on
             LinkedIn. It converts on Indie Hackers and reads as bragging on
-            r/startups. So we resolve it twelve different ways — one per
+            r/startups. So we resolve it twelve different ways, one per
             platform we publish on. Each variant carries an opener pattern,
             an audience signal, a format constraint, a timing window, and the
             specific landmine to avoid.
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
-            This page exists for two reasons. First, transparency — if
+            This page exists for two reasons. First, transparency, if
             you&rsquo;re a buyer comparing tools, you should see how the
             methodology shows up everywhere, not just on the homepage.
             Second, it&rsquo;s the single source of truth our daily-briefing
@@ -177,7 +177,7 @@ export default function PlatformHooksPage() {
             The universal story
           </p>
           <h2 className="text-xl sm:text-2xl font-bold text-gray-100 leading-snug">
-            The opener / narrative / offer triad — same arc, twelve resolutions.
+            The opener / narrative / offer triad, same arc, twelve resolutions.
           </h2>
           <dl className="grid sm:grid-cols-3 gap-5 text-sm">
             <div className="space-y-2 rounded-lg border border-emerald-900/40 bg-slate-950/60 p-4">
@@ -373,7 +373,7 @@ export default function PlatformHooksPage() {
               >
                 /distribution
               </Link>{" "}
-              — the full surface map (every channel, every mirror, every
+the full surface map (every channel, every mirror, every
               feed).
             </li>
             <li>
@@ -383,7 +383,7 @@ export default function PlatformHooksPage() {
               >
                 /earned-plays
               </Link>{" "}
-              — the named earned-traffic plays we run on a weekly cadence.
+the named earned-traffic plays we run on a weekly cadence.
             </li>
             <li>
               <Link
@@ -392,7 +392,7 @@ export default function PlatformHooksPage() {
               >
                 /target-list
               </Link>{" "}
-              — the 100 voices we read on the engineering-signal frontier.
+the 100 voices we read on the engineering-signal frontier.
             </li>
             <li>
               <Link
@@ -401,7 +401,7 @@ export default function PlatformHooksPage() {
               >
                 /methodology
               </Link>{" "}
-              — the regression and the dataset behind the universal story.
+the regression and the dataset behind the universal story.
             </li>
           </ul>
         </section>

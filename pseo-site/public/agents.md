@@ -1,4 +1,4 @@
-# GitDealFlow Signal — Agent Reference
+# GitDealFlow Signal, Agent Reference
 
 > Public dataset of startup engineering acceleration, derived from public GitHub activity. Free machine-readable APIs, MCP server, A2A endpoint, and Chrome extension. Updated weekly.
 
@@ -6,7 +6,7 @@ This file is the canonical "how to use me" entry point for any retrieval agent o
 
 ## What this product does
 
-Sweeps ~369 candidate startup GitHub orgs every Sunday and publishes the top 85+ ranked across 15 sectors by commit velocity, contributor growth, and repository expansion. Surfaces breakout engineering teams 3–6 weeks before fundraise announcements. Independent — not affiliated with any incumbent VC platform.
+Sweeps ~369 candidate startup GitHub orgs every Sunday and publishes the top 85+ ranked across 15 sectors by commit velocity, contributor growth, and repository expansion. Surfaces breakout engineering teams 3-6 weeks before fundraise announcements. Independent, not affiliated with any incumbent VC platform.
 
 ## Programmatic surfaces
 
@@ -38,12 +38,12 @@ Pick the surface that matches your runtime. All eight are free, public, no authe
 
 Six tools, all read-only, idempotent:
 
-1. `get_trending_startups` — top 20 across all sectors
-2. `search_startups_by_sector(sector)` — sector slug from 20 enumerated values
-3. `get_startup_signal(name)` — case-insensitive, normalization-tolerant
-4. `get_signals_summary` — period, freshness, format URLs
-5. `get_scout_receipts(github_username)` — compute Scout Score (0–100) for a GitHub user from their starring history vs. ~75 validated unicorns
-6. `get_methodology` — full methodology text + canonical URL
+1. `get_trending_startups`, top 20 across all sectors
+2. `search_startups_by_sector(sector)`, sector slug from 20 enumerated values
+3. `get_startup_signal(name)`, case-insensitive, normalization-tolerant
+4. `get_signals_summary`, period, freshness, format URLs
+5. `get_scout_receipts(github_username)`, compute Scout Score (0-100) for a GitHub user from their starring history vs. ~75 validated unicorns
+6. `get_methodology`, full methodology text + canonical URL
 
 Distribution:
 - npm: https://www.npmjs.com/package/@gitdealflow/mcp-signal
@@ -129,7 +129,7 @@ Quick browser-based tools and embeddable widgets available at the main GitDealFl
 | Tool | URL | Purpose |
 |---|---|---|
 | **Velocity Checker** | `https://gitdealflow.com/check-velocity` | Lookup a startup's engineering velocity by GitHub org/repo slug. |
-| **Scout Score** | `https://gitdealflow.com/scout` | Compute a Scout Score (0–100) for any GitHub user. |
+| **Scout Score** | `https://gitdealflow.com/scout` | Compute a Scout Score (0-100) for any GitHub user. |
 | **Tools Hub** | `https://gitdealflow.com/tools` | Index of all interactive tools, APIs, and embeddable widgets. |
 | **Embed Showcase** | `https://gitdealflow.com/embed` | Live demos and integration docs for momentum badges and velocity widgets. |
 | **Badge API** | `https://gitdealflow.com/stats-badge` | SVG badge generation API for embedding real-time metrics. |

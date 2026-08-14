@@ -10,7 +10,7 @@ const SITE = "https://signals.gitdealflow.com";
 
 export const metadata: Metadata = {
   title:
-    "Podcasts — synthetic-voice guest segments",
+    "Podcasts, synthetic-voice guest segments",
   description:
     "Pre-recorded podcast segments for show hosts: 5, 7, and 10-minute methodology walkthroughs delivered by The Data Nerd via synthetic voice. Seven topics ready, thirteen shows in active outreach.",
   alternates: { canonical: "/podcasts" },
@@ -98,7 +98,7 @@ export default function PodcastsPage() {
           </h1>
           <p className="text-gray-400 leading-relaxed text-base">
             The Data Nerd records 5, 7, and 10-minute podcast segments via
-            synthetic voice — the same voice that powers our methodology
+            synthetic voice, the same voice that powers our methodology
             walkthrough. Hosts receive a verbatim 60-second opening, five Q&amp;A
             prompts, and links to receipts (SSRN paper, methodology, dataset).
             The format is methodology-first; the founder identity is incidental.
@@ -142,7 +142,7 @@ export default function PodcastsPage() {
           <h2 className="text-xl font-semibold text-white">Active outreach</h2>
           <p className="text-gray-400 text-sm">
             {ready.length} shows in our ready queue
-            {statusSummary ? ` — ${statusSummary}` : ""}. Updated as shows
+            {statusSummary ? `, ${statusSummary}` : ""}. Updated as shows
             respond.
           </p>
           <div className="space-y-2">
@@ -155,7 +155,7 @@ export default function PodcastsPage() {
                 className="flex flex-wrap items-baseline gap-x-3 gap-y-1 rounded-md border border-slate-800 bg-slate-900/30 px-4 py-3 hover:border-slate-600 transition-colors"
               >
                 <span className="text-gray-100 font-medium">{t.name}</span>
-                <span className="text-gray-500 text-sm">— {t.host}</span>
+                <span className="text-gray-500 text-sm">{t.host}</span>
                 <span className="text-[10px] uppercase tracking-wider text-sky-400 ml-auto">
                   {FOCUS_LABELS[t.focus]}
                 </span>

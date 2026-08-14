@@ -7,7 +7,7 @@
  *        - 1 campaign (objective=TRAFFIC, daily budget €5/100¢ × 6 ad groups)
  *        - 6 ad groups (one per subreddit cluster)
  *        - 18 ads (3 creatives × 6 ad groups)
- *      All entities created in `PAUSED` state — the user must click
+ *      All entities created in `PAUSED` state, the user must click
  *      "Activate" in Reddit Ads Manager UI before any spend starts.
  *   3. Prints a summary URL list so the user can spot-check before activation.
  *
@@ -27,7 +27,7 @@
  *
  * Env vars consumed (all server-side, never NEXT_PUBLIC_*):
  *   - REDDIT_ADS_OAUTH_TOKEN     short-lived bearer (refresh handled below)
- *   - REDDIT_ADS_OAUTH_REFRESH   long-lived refresh token (optional — used
+ *   - REDDIT_ADS_OAUTH_REFRESH   long-lived refresh token (optional, used
  *                                if OAUTH_TOKEN is missing/expired)
  *   - REDDIT_ADS_OAUTH_CLIENT_ID
  *   - REDDIT_ADS_OAUTH_CLIENT_SECRET
@@ -117,7 +117,7 @@ const CREATIVES = [
   {
     variant: "v1",
     headline: "Your network is showing you yesterday's deals.",
-    body: "In a panel of 219 confirmed Series A & B fundraises, commit-velocity acceleration showed up 21–47 days before the deck did. Pick a sector. €7 once. 24-hour Sector Deep-Dive PDF. €7 credited if you upgrade.",
+    body: "In a panel of 219 confirmed Series A & B fundraises, commit-velocity acceleration showed up 21-47 days before the deck did. Pick a sector. €7 once. 24-hour Sector Deep-Dive PDF. €7 credited if you upgrade.",
     cta: "Pick my sector for €7",
     image: `${CREATIVE_BASE}/api/og/reddit/v1`,
   },
@@ -130,7 +130,7 @@ const CREATIVES = [
   },
   {
     variant: "v3",
-    headline: "219 fundraises. One signal. 21–47 days early.",
+    headline: "219 fundraises. One signal. 21-47 days early.",
     body: "Open-access SSRN preprint. Reproducible methodology. Live ranking of 350+ venture-backed GitHub orgs. Pick a sector and we ship the 25-row deep-dive in 24 hours for €7. €7 credited toward Dashboard upgrade.",
     cta: "Read the panel + grab a sector",
     image: `${CREATIVE_BASE}/api/og/reddit/v3`,
@@ -162,7 +162,7 @@ async function main() {
   }
 
   console.log(
-    `Reddit Ads launch — ${DRY_RUN ? "DRY-RUN (no writes)" : "EXECUTE (live writes)"}`,
+    `Reddit Ads launch, ${DRY_RUN ? "DRY-RUN (no writes)" : "EXECUTE (live writes)"}`,
   );
   console.log(`Account: ${ACCOUNT_ID}`);
   console.log(`Creative base: ${CREATIVE_BASE}`);
@@ -180,7 +180,7 @@ async function main() {
       method: "POST",
       body: JSON.stringify({
         data: {
-          name: "VC Deal Flow Signal — First Look (auto, 2026-05)",
+          name: "VC Deal Flow Signal, First Look (auto, 2026-05)",
           objective: "TRAFFIC",
           configured_status: "PAUSED",
           spend_cap_basis: "DAILY",
@@ -210,7 +210,7 @@ async function main() {
             bid_value: 50, // 50¢ max CPC per the bundle
             optimization_goal: "CLICKS",
             start_time: new Date().toISOString(),
-            // 30-day window from launch — bundle says €5/day × 30d
+            // 30-day window from launch, bundle says €5/day × 30d
             end_time: new Date(Date.now() + 30 * 86_400_000).toISOString(),
             targeting: {
               communities: [community],

@@ -5,7 +5,7 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { TrustConversionBlock } from "@/components/TrustConversionBlock";
 
 export const metadata: Metadata = {
-  title: "Case Studies — Workflow Walkthroughs",
+  title: "Case Studies, Workflow Walkthroughs",
   description: `${CASE_STUDIES.length} narrative workflow case studies showing how corp-dev, PE, and VC dealmakers use VC Deal Flow Signal end-to-end. Illustrative composite scenarios with full step-by-step walkthroughs.`,
   alternates: { canonical: "/case-study" },
   openGraph: {
@@ -33,7 +33,7 @@ export default function CaseStudyHubPage() {
       {
         "@type": "CollectionPage",
         url: PAGE_URL,
-        name: "Case Studies — Workflow Walkthroughs",
+        name: "Case Studies, Workflow Walkthroughs",
         description: `${CASE_STUDIES.length} narrative workflow case studies for corp-dev, PE, and VC dealmakers.`,
         isPartOf: {
           "@type": "WebSite",
@@ -101,15 +101,15 @@ export default function CaseStudyHubPage() {
         <p className="text-gray-400 text-base leading-relaxed mb-10">
           Each case study is an illustrative composite scenario showing how one
           non-technical dealmaker uses the VC Deal Flow Signal surface end-to-end. Names and
-          specific deal details are omitted by design — the structure of the workflow
+          specific deal details are omitted by design, the structure of the workflow
           (which URLs the persona uses, which questions they ask, which action they
           take) is the representative element. Designed to show buyers exactly how the
           product works for their role.
         </p>
         <p className="text-gray-400 text-sm leading-relaxed mb-10">
           These walkthroughs are illustrative composites. The named, dated
-          receipts — real orgs and the engineering events that preceded their
-          rounds — live on{" "}
+          receipts, real orgs and the engineering events that preceded their
+          rounds, live on{" "}
           <Link href="/wins" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
             the wins page
           </Link>
@@ -141,14 +141,14 @@ export default function CaseStudyHubPage() {
             Try a workflow for your team
           </h2>
           <p className="text-gray-400 text-sm mb-4">
-            No call to book — run the same workflow on a sector you already care
+            No call to book, run the same workflow on a sector you already care
             about for €7.
           </p>
           <Link
             href="/firstlook"
             className="inline-block rounded-md bg-signal-500 px-5 py-2 text-sm font-semibold text-slate-950 hover:bg-signal-400 transition-colors"
           >
-            See it on your sector — €7 First Look
+            See it on your sector, €7 First Look
           </Link>
         </div>
 

@@ -1,5 +1,5 @@
 /**
- * RiskReversalPromise — Brunson Expert Secrets Ch 15 (Money / Identity /
+ * RiskReversalPromise, Brunson Expert Secrets Ch 15 (Money / Identity /
  * Risk closes), the Risk Reversal beat specifically.
  *
  * Audit 2026-05-09 verdict (Ch 15, score 94/100):
@@ -7,18 +7,18 @@
  *    full refund')."
  *
  * The 30-day Signal-or-It's-Free guarantee already lives in /firstlook,
- * /sector-sweep, /pricing copy — but as paragraph text, not a punchy
+ * /sector-sweep, /pricing copy, but as paragraph text, not a punchy
  * named badge. This component is the visual badge: one card, three
  * declarative lines (THE PROMISE / THE STAKE / THE PROCESS) and a
  * wax-seal-style "30 DAYS" mark. Gets dropped on every close-side
  * surface so the buyer reads it the same way every time.
  *
- * Server Component — pure presentation, no client state. Variants:
- *   tier="dashboard"     — €49/mo, Signal-or-It's-Free
- *   tier="insider"       — €197/mo,  Signal-or-It's-Free
- *   tier="sharp"         — €497/mo, Signal-or-It's-Free
- *   tier="sector-sweep"  — €1,997 once, Three-Orgs-or-Refund
- *   tier="firstlook"     — €7 once, no-questions
+ * Server Component, pure presentation, no client state. Variants:
+ *   tier="dashboard"    , €49/mo, Signal-or-It's-Free
+ *   tier="insider"      , €197/mo,  Signal-or-It's-Free
+ *   tier="sharp"        , €497/mo, Signal-or-It's-Free
+ *   tier="sector-sweep" , €1,997 once, Three-Orgs-or-Refund
+ *   tier="firstlook"    , €7 once, no-questions
  *
  * Anonymity rule: copy is voice-of-The-Data-Nerd. No founder reference.
  */
@@ -37,9 +37,9 @@ interface PromiseSpec {
   promise: string;
   /** The dollar stake on the line. */
   stake: string;
-  /** The redemption process — what to type and where it lands. */
+  /** The redemption process, what to type and where it lands. */
   process: string;
-  /** Calibration receipt — refunds issued historically. */
+  /** Calibration receipt, refunds issued historically. */
   receipt: string;
   /** Refund window in days. */
   windowDays: 30;
@@ -51,13 +51,13 @@ const SPEC: Record<RiskReversalTier, PromiseSpec> = {
       "If the First Look Pass doesn't surface one startup you'd otherwise have missed, reply REFUND inside 30 days.",
     stake: "€7",
     process:
-      "One reply, no questionnaire. The €7 lands back on your card inside one business day. You keep the PDF and the CSV — we'd rather you have them than have you feel oversold.",
+      "One reply, no questionnaire. The €7 lands back on your card inside one business day. You keep the PDF and the CSV, we'd rather you have them than have you feel oversold.",
     receipt: "Two refunds issued in three years of running this.",
     windowDays: 30,
   },
   dashboard: {
     promise:
-      "If, in your first 30 days, the Acceleration Watch doesn't surface a startup you find genuinely interesting — defined as one you'd have wanted to know about earlier — full refund.",
+      "If, in your first 30 days, the Acceleration Watch doesn't surface a startup you find genuinely interesting, defined as one you'd have wanted to know about earlier, full refund.",
     stake: "€49/mo",
     process:
       "Reply REFUND to any system email. Full payment back inside two business days. No exit interview, no 'wait, let me show you one more thing'.",
@@ -67,7 +67,7 @@ const SPEC: Record<RiskReversalTier, PromiseSpec> = {
   },
   insider: {
     promise:
-      "If, in your first 30 days, the private Telegram + JSON/CSV API don't earn the seat — measured by you, against your own thesis — full refund.",
+      "If, in your first 30 days, the private Telegram + JSON/CSV API don't earn the seat, measured by you, against your own thesis, full refund.",
     stake: "€97/mo",
     process:
       "Reply REFUND to any Insider email. Full payment back inside two business days. The MCP server stays free regardless of refund decision.",
@@ -77,22 +77,22 @@ const SPEC: Record<RiskReversalTier, PromiseSpec> = {
   },
   sharp: {
     promise:
-      "If the quarterly review call + custom watchlist + white-labeled API don't fit the way your fund actually works in the first 30 days — full refund.",
+      "If the quarterly review call + custom watchlist + white-labeled API don't fit the way your fund actually works in the first 30 days, full refund.",
     stake: "€497/mo",
     process:
       "Reply REFUND or pick up the phone on the next quarterly call. Full payment back, methodology source code stays in your repo (it's MIT-licensed, not gated).",
     receipt:
-      "Application-gated, capped at 8 funds in 2026. The cap exists so the guarantee can stay this loose — we can only refund what we can serve.",
+      "Application-gated, capped at 8 funds in 2026. The cap exists so the guarantee can stay this loose, we can only refund what we can serve.",
     windowDays: 30,
   },
   "sector-sweep": {
     promise:
-      "If the Sector Sweep doesn't surface at least three orgs you didn't already know about — or if the methodology can't be reproduced from the published panel — full refund.",
+      "If the Sector Sweep doesn't surface at least three orgs you didn't already know about, or if the methodology can't be reproduced from the published panel, full refund.",
     stake: "€1,997",
     process:
       "Reply REFUND to the delivery email inside 30 days. Full €1,997 back inside two business days. No exit interview, no clawback of the artefacts you received.",
     receipt:
-      "Three orgs or refund. The bar is binary because the deliverable is binary — you either learn three new names or you don't.",
+      "Three orgs or refund. The bar is binary because the deliverable is binary, you either learn three new names or you don't.",
     windowDays: 30,
   },
 };
@@ -113,10 +113,10 @@ export function RiskReversalPromise({ tier, anchor = "guarantee", compact = fals
   return (
     <section
       id={anchor}
-      aria-label={`${spec.windowDays}-day guarantee — ${spec.stake}`}
+      aria-label={`${spec.windowDays}-day guarantee, ${spec.stake}`}
       className={`relative rounded-xl border-2 border-emerald-500/40 bg-gradient-to-br from-emerald-950/30 via-slate-900 to-slate-950 ${padding} space-y-4`}
     >
-      {/* Wax-seal style stamp — visual anchor, screen-reader hidden. */}
+      {/* Wax-seal style stamp, visual anchor, screen-reader hidden. */}
       <div
         aria-hidden="true"
         className="absolute -top-3 -right-3 sm:top-4 sm:right-4 sm:relative sm:float-right sm:ml-3 w-20 h-20 sm:w-24 sm:h-24 rounded-full bg-emerald-500/20 border-2 border-emerald-400 flex flex-col items-center justify-center text-emerald-300 leading-none rotate-[-6deg] shadow-lg shadow-emerald-500/10"

@@ -3,19 +3,19 @@
 import { useState } from "react";
 import SqueezeSuccess from "@/components/SqueezeSuccess";
 
-// Brunson DotCom Secrets Ch 14 — Lead "Squeeze" Funnels.
+// Brunson DotCom Secrets Ch 14, Lead "Squeeze" Funnels.
 // Russell-Brunson HSO audit 2026-05-08 flagged that the home hero
-// (ThreeDoorHero) gave equal weight to three CTAs — diluting the
+// (ThreeDoorHero) gave equal weight to three CTAs, diluting the
 // single-purpose squeeze. This client component is the home-page
 // variant of /squeeze SqueezeForm, attribution-tagged source="home"
 // so the home squeeze and the dedicated /squeeze page split-bucket
 // in PostHog. Same /api/subscribe endpoint, same soap-opera cohort,
-// same Resend audience — only the source UTM differs.
+// same Resend audience, only the source UTM differs.
 
 type Status = "idle" | "submitting" | "success" | "error";
 
 const ROUTES: { value: string; label: string }[] = [
-  { value: "F", label: "I write angel cheques (€5k–€50k)" },
+  { value: "F", label: "I write angel cheques (€5k-€50k)" },
   { value: "T", label: "I run a small fund or syndicate (Pre-seed/Seed)" },
   { value: "D", label: "I'm an operator who occasionally writes cheques" },
   { value: "I", label: "Something else / just curious" },
@@ -78,7 +78,7 @@ export default function HomeSqueezeForm() {
           htmlFor="home-squeeze-route"
           className="text-sky-300 text-xs font-semibold uppercase tracking-[0.14em]"
         >
-          Step 1 — pick the one that fits
+          Step 1, pick the one that fits
         </label>
         <select
           id="home-squeeze-route"
@@ -88,8 +88,7 @@ export default function HomeSqueezeForm() {
           disabled={submitting}
           className="block w-full rounded-md border border-slate-700 bg-slate-900 text-gray-100 text-base px-3 py-2.5 focus:border-sky-500 focus:ring-1 focus:ring-sky-500 disabled:opacity-50"
         >
-          <option value="" disabled>
-            — select your investor type —
+          <option value="" disabled>select your investor type -
           </option>
           {ROUTES.map((r) => (
             <option key={r.value} value={r.value}>
@@ -103,7 +102,7 @@ export default function HomeSqueezeForm() {
           htmlFor="home-squeeze-email"
           className="text-sky-300 text-xs font-semibold uppercase tracking-[0.14em]"
         >
-          Step 2 — where to send Sunday&rsquo;s 5
+          Step 2, where to send Sunday&rsquo;s 5
         </label>
         <input
           id="home-squeeze-email"
@@ -127,7 +126,7 @@ export default function HomeSqueezeForm() {
       </button>
       <p className="text-gray-400 text-xs leading-relaxed">
         Free forever. One email a week. Unsubscribe with one click. We
-        never sell or share your email — see{" "}
+        never sell or share your email, see{" "}
         <a
           href="/.well-known/security.txt"
           className="text-gray-400 underline decoration-dotted underline-offset-2 hover:text-gray-300"

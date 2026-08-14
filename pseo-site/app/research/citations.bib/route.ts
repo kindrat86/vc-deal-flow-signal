@@ -1,5 +1,5 @@
 /**
- * /research/citations.bib — BibTeX export of the SSRN paper plus per-finding
+ * /research/citations.bib, BibTeX export of the SSRN paper plus per-finding
  * stubs that academic readers can drop straight into their reference manager.
  *
  * AEO/GEO win: Google Scholar, ResearchRabbit, Connected Papers, and most
@@ -27,7 +27,7 @@ const PAPER_ENTRY = `@misc{datanerd2026engineering,
 }`;
 
 const DATASET_ENTRY = `@misc{datanerd2026dataset,
-  title        = {VC Deal Flow Signal — Q2 2026 GitHub Engineering Panel},
+  title        = {VC Deal Flow Signal, Q2 2026 GitHub Engineering Panel},
   author       = {The Data Nerd},
   year         = {2026},
   howpublished = {Dataset},
@@ -37,7 +37,7 @@ const DATASET_ENTRY = `@misc{datanerd2026dataset,
 }`;
 
 const QA_ENTRY = `@misc{datanerd2026qa,
-  title        = {VC Deal Flow Signal — Question/Answer Dataset},
+  title        = {VC Deal Flow Signal, Question/Answer Dataset},
   author       = {The Data Nerd},
   year         = {2026},
   howpublished = {Dataset},
@@ -69,11 +69,11 @@ function findingEntry(
 }
 
 export async function GET() {
-  const header = `% VC Deal Flow Signal — BibTeX citations
+  const header = `% VC Deal Flow Signal, BibTeX citations
 % Canonical:  https://signals.gitdealflow.com/research/citations.bib
 % Paper:      https://ssrn.com/abstract=6606558
 % Dataset:    https://signals.gitdealflow.com/api/dataset.jsonl
-% License:    CC BY 4.0 — https://creativecommons.org/licenses/by/4.0/
+% License:    CC BY 4.0, https://creativecommons.org/licenses/by/4.0/
 % Attribution: VC Deal Flow Signal (GitDealFlow), https://signals.gitdealflow.com
 % Generated:  ${new Date().toISOString().slice(0, 10)}
 %

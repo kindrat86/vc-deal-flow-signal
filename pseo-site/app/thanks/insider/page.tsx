@@ -21,7 +21,7 @@ const STEPS = [
     n: 1,
     label: "Watch your inbox for the private Telegram invitation",
     detail:
-      "Sent within four business hours, manually by the founder, to the email on your Stripe receipt. The Telegram group is small (under 80 investors at any time) and stays that way — the value is signal density, not vanity numbers.",
+      "Sent within four business hours, manually by the founder, to the email on your Stripe receipt. The Telegram group is small (under 80 investors at any time) and stays that way, the value is signal density, not vanity numbers.",
   },
   {
     n: 2,
@@ -33,7 +33,7 @@ const STEPS = [
     n: 3,
     label: "Tell the founder what to alert you on",
     detail:
-      "Reply to your welcome email with the sectors, stages, or companies you want spike alerts on. Slack or Telegram, your pick. Alerts are calibrated weekly so you don't get paged for noise — alpha thresholds are tunable per investor.",
+      "Reply to your welcome email with the sectors, stages, or companies you want spike alerts on. Slack or Telegram, your pick. Alerts are calibrated weekly so you don't get paged for noise, alpha thresholds are tunable per investor.",
   },
 ] as const;
 
@@ -57,7 +57,7 @@ export default function ThanksInsider() {
           <p className="text-gray-300 text-base leading-relaxed">
             The Insider Circle is small by design. Three things to set up in
             the next thirty minutes that turn the subscription into a
-            standing rhythm — written by the founder, not a bot.
+            standing rhythm, written by the founder, not a bot.
           </p>
         </header>
 
@@ -110,7 +110,7 @@ export default function ThanksInsider() {
           <p className="text-gray-200 text-base leading-relaxed">
             The Insider tier is the closest thing this product has to a
             standing meeting with the founder. Use the Telegram group like
-            you&rsquo;d use a Slack DM with a co-investor — ask about a
+            you&rsquo;d use a Slack DM with a co-investor, ask about a
             specific org, request a re-rank against your portfolio, surface a
             competitor for cross-check. Reply within 24 hours is the norm.
           </p>
@@ -123,7 +123,7 @@ export default function ThanksInsider() {
           </p>
         </section>
 
-        {/* Brunson TS §3 Ch 11 — Insider gets the PRIVATE Telegram
+        {/* Brunson TS §3 Ch 11, Insider gets the PRIVATE Telegram
             (manual invite within 4h). Public channel is the placeholder
             while they wait, AND a forwardable surface for partners who
             aren't on the paid tier yet. Two pipes for the one fund. */}
@@ -137,7 +137,7 @@ export default function ThanksInsider() {
           <p className="text-gray-300 text-sm leading-relaxed">
             The private Insider Circle Telegram is invite-only and ships
             within four business hours. In the meantime, the public
-            channel —{" "}
+            channel, {" "}
             <Link
               href="https://t.me/gitdealflow"
               rel="noopener noreferrer"
@@ -146,7 +146,7 @@ export default function ThanksInsider() {
             >
               t.me/gitdealflow
             </Link>{" "}
-            — carries the Monday five-name drop and mid-week sector pings
+carries the Monday five-name drop and mid-week sector pings
             (the same names you&rsquo;ll see 24h earlier in the private
             group). Pin it, mute it, forward signals to partners. Two
             pipes for the one fund.

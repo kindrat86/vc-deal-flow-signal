@@ -1,5 +1,5 @@
 /**
- * /.well-known/dataset.json — DCAT 3 (W3C) dataset descriptor.
+ * /.well-known/dataset.json, DCAT 3 (W3C) dataset descriptor.
  * https://www.w3.org/TR/vocab-dcat-3/
  *
  * Lets data-aware crawlers (research aggregators, RAG indexers, dataset
@@ -28,7 +28,7 @@ export async function GET() {
     },
     "@type": "Catalog",
     "@id": `${SITE}/.well-known/dataset.json`,
-    "dct:title": "VC Deal Flow Signal — Open Data Catalog",
+    "dct:title": "VC Deal Flow Signal, Open Data Catalog",
     "dct:description":
       "Machine-readable dataset surfaces published by VC Deal Flow Signal: question/answer corpus, full signal panel, methodology, OpenAPI 3.1 spec, MCP descriptor, A2A agent card. All open, CC BY 4.0.",
     "dct:publisher": {
@@ -51,7 +51,7 @@ export async function GET() {
       {
         "@type": "Dataset",
         "@id": `${SITE}/api/dataset.jsonl`,
-        "dct:title": "VC Deal Flow Signal — Full Signal Panel (NDJSON)",
+        "dct:title": "VC Deal Flow Signal, Full Signal Panel (NDJSON)",
         "dct:description":
           "Complete longitudinal panel of GitHub engineering signals across all tracked sectors and periods. Newline-delimited JSON. Same content set as the SSRN paper (abstract=6606558).",
         "dct:identifier": "vcdfs-panel-ndjson",
@@ -103,7 +103,7 @@ export async function GET() {
       {
         "@type": "Dataset",
         "@id": `${SITE}/qa.jsonl`,
-        "dct:title": "VC Deal Flow Signal — Q&A Corpus",
+        "dct:title": "VC Deal Flow Signal, Q&A Corpus",
         "dct:description":
           "Self-contained question/answer pairs covering methodology, sectors, signal types, and citation guidance. Suitable for LLM training, RAG indexing, FAQ benchmarking.",
         "dct:identifier": "vcdfs-qa-corpus",
@@ -129,7 +129,7 @@ export async function GET() {
       {
         "@type": "Dataset",
         "@id": `${SITE}/api/corpus.json`,
-        "dct:title": "VC Deal Flow Signal — Curated Entity Corpus",
+        "dct:title": "VC Deal Flow Signal, Curated Entity Corpus",
         "dct:description":
           "Versioned, dated, diffable snapshot of every curated entity: companies (with public GitHub orgs), venture funds, public engineering founders, glossary terms, sector hubs, and M&A acquirers. Each record carries a stable recordHash; the snapshot carries a content-derived `revision` and an `asOf` date for provenance. Distinct from the numeric signal panel.",
         "dct:identifier": "vcdfs-entity-corpus",
@@ -177,7 +177,7 @@ export async function GET() {
       {
         "@type": "DataService",
         "@id": `${SITE}/api/openapi.json`,
-        "dct:title": "VC Deal Flow Signal — OpenAPI 3.1 Spec",
+        "dct:title": "VC Deal Flow Signal, OpenAPI 3.1 Spec",
         "dct:description":
           "OpenAPI 3.1 description of the public read-only API endpoints, suitable for client codegen and agent tool registration.",
         endpointURL: `${SITE}/api`,
@@ -187,7 +187,7 @@ export async function GET() {
       {
         "@type": "DataService",
         "@id": `${SITE}/.well-known/mcp.json`,
-        "dct:title": "VC Deal Flow Signal — MCP Server Descriptor",
+        "dct:title": "VC Deal Flow Signal, MCP Server Descriptor",
         "dct:description":
           "Model Context Protocol descriptor. The corresponding npm package is @gitdealflow/mcp-signal; the same surface is mirrored over Streamable HTTP at /api/mcp/rpc.",
         endpointURL: `${SITE}/api/mcp/rpc`,
@@ -195,7 +195,7 @@ export async function GET() {
       {
         "@type": "DataService",
         "@id": `${SITE}/.well-known/agent-card.json`,
-        "dct:title": "VC Deal Flow Signal — A2A AgentCard",
+        "dct:title": "VC Deal Flow Signal, A2A AgentCard",
         "dct:description":
           "Google Agent-to-Agent (A2A) AgentCard descriptor; JSON-RPC endpoint at /api/a2a.",
         endpointURL: `${SITE}/api/a2a`,

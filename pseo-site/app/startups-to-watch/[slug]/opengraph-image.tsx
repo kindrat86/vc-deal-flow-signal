@@ -3,7 +3,7 @@ import { parsePageSlug, getSortedStartups } from "@/lib/data";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "VC Deal Flow Signal — Sector Rankings";
+export const alt = "VC Deal Flow Signal, Sector Rankings";
 
 export default async function OGImage({
   params,

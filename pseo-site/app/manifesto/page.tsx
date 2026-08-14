@@ -12,9 +12,9 @@ import {
 } from "@/content/cause";
 
 export const metadata: Metadata = {
-  title: "What GitDealFlow Believes — and What It Refuses to Become",
+  title: "What GitDealFlow Believes, and What It Refuses to Become",
   description:
-    "What GitDealFlow believes about timing, proof, and signal — and what it refuses to become while helping you move earlier with less noise.",
+    "What GitDealFlow believes about timing, proof, and signal, and what it refuses to become while helping you move earlier with less noise.",
   alternates: { canonical: "/manifesto" },
   openGraph: {
     title: "What GitDealFlow believes",
@@ -65,7 +65,7 @@ export default function ManifestoPage() {
     "@graph": [
       {
         "@type": "Article",
-        headline: "What GitDealFlow Believes — and What It Refuses to Become",
+        headline: "What GitDealFlow Believes, and What It Refuses to Become",
         description:
           "What GitDealFlow believes about timing, proof, and signal.",
         author: DATA_NERD_AUTHOR_REF,
@@ -225,14 +225,14 @@ export default function ManifestoPage() {
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
             The manifesto matters only if the output earns your trust.
-            Start with the free weekly signal — or, if one sector is already on your mind, test it with a €7 First Look.
+            Start with the free weekly signal, or, if one sector is already on your mind, test it with a €7 First Look.
           </p>
           <div className="flex flex-col sm:flex-row gap-3">
             <Link href="https://gitdealflow.com/#signup" className="inline-flex items-center justify-center rounded-lg bg-sky-700 hover:bg-sky-600 text-white text-sm font-semibold px-5 py-3 transition-colors">
               Get the free issue
             </Link>
             <Link href="/firstlook" className="inline-flex items-center justify-center rounded-lg border border-slate-700 bg-slate-950/60 text-gray-200 hover:border-slate-600 text-sm font-semibold px-5 py-3 transition-colors">
-              Or test one sector — First Look €7
+              Or test one sector, First Look €7
             </Link>
           </div>
         </section>

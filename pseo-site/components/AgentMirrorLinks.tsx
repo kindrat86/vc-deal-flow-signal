@@ -6,7 +6,7 @@
  *
  * Browsers ignore <link> outside <head>, but HTML parsers, RSS readers, and
  * LLM crawlers (Common Crawl, GPTBot, ClaudeBot, PerplexityBot) read every
- * <link rel="alternate"> regardless of placement — Next.js 16's App Router
+ * <link rel="alternate"> regardless of placement, Next.js 16's App Router
  * doesn't expose <head> from a child page, so emitting from the body is the
  * pragmatic option.
  */

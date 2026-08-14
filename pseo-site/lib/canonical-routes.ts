@@ -1,15 +1,15 @@
 /**
- * Canonical production routes — ones that MUST stay 200 on
+ * Canonical production routes, ones that MUST stay 200 on
  * https://signals.gitdealflow.com.
  *
  * The route-canary cron (app/api/cron/route-canary/route.ts) curls
  * every entry in this list once a day. Any non-2xx triggers a Resend
  * email alert to signals@gitdealflow.com.
  *
- * Single source of truth — when a new Brunson surface ships, add the
+ * Single source of truth, when a new Brunson surface ships, add the
  * path here so the canary catches future silent rollbacks.
  *
- * Background — encoded from `feedback_unmerged_branch_overwrites_prod.md`
+ * Background, encoded from `feedback_unmerged_branch_overwrites_prod.md`
  * + 2026-05-06 incident where 6 routes silently 404'd on prod despite
  * existing in main, because a `vercel deploy --prod` fired from a
  * stale source tree and aliased over the good deploy.
@@ -17,7 +17,7 @@
  * Rules for inclusion:
  *   - Must be a stable, indexable, marketing-relevant URL
  *   - Must NOT be a dynamic [slug] / API endpoint (those need their
- *     own probes — see api/cron/state-of-github for the pattern)
+ *     own probes, see api/cron/state-of-github for the pattern)
  *   - Must NOT require auth, cookies, or query params for a 200
  *
  * If a route here legitimately changes status (e.g. a sunsetted
@@ -39,7 +39,7 @@ export const CANONICAL_PROD_ROUTES = [
   "/insider",
   "/pricing",
 
-  // Brunson Funnels (DotCom Secrets) — three lengths of the same Perfect
+  // Brunson Funnels (DotCom Secrets), three lengths of the same Perfect
   // Webinar argument, plus the A/B router that sticky-buckets a visitor
   // into 5min or 90s (Brunson Expert Secrets §3 Ch 15 + §4 Ch 19).
   "/walkthrough",
@@ -87,7 +87,7 @@ export const CANONICAL_PROD_ROUTES = [
   "/crystal-ball",
   "/friday-preview",
 
-  // Well-known / agent surfaces (Pass VI–VIII shipped these)
+  // Well-known / agent surfaces (Pass VI-VIII shipped these)
   "/llms.txt",
   "/agents.txt",
   "/manifest.webmanifest",
@@ -97,7 +97,7 @@ export const CANONICAL_PROD_ROUTES = [
   // --- GEO / AIO / AEO discovery surfaces (added 2026-05-28) ---
   //
   // The 2026-05-06 incident this canary was built for was a silent 404/308
-  // *batch* on exactly these agent/well-known/v1 routes — yet only five of
+  // *batch* on exactly these agent/well-known/v1 routes, yet only five of
   // them were probed. Pass VIII separately found 16 of these regressing to
   // 404/308 between deploys. They are the highest-leverage surfaces for
   // generative engines, answer engines, and autonomous agents, and they

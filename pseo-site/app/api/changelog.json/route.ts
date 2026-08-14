@@ -14,7 +14,7 @@ export async function GET() {
 
   const changelog = {
     meta: {
-      name: "VC Deal Flow Signal — Data Changelog",
+      name: "VC Deal Flow Signal, Data Changelog",
       description:
         "Structured log of data updates, periods added, and sector changes. Use this endpoint to determine when data was last refreshed and what changed.",
       lastUpdated: lastModified.toISOString(),

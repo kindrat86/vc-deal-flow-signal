@@ -11,21 +11,21 @@ import TrialClose from "@/components/TrialClose";
 
 export const metadata: Metadata = {
   title:
-    "Pricing — Start free, go deeper only when you need it",
+    "Pricing, Start free, go deeper only when you need it",
   description:
-    "VC Deal Flow Signal pricing — start free, test one sector, move to the full field, or go deeper only when the question justifies it. Founding-member rates locked. 30-day Signal-or-It's-Free guarantee on every paid plan above €1.",
+    "VC Deal Flow Signal pricing, start free, test one sector, move to the full field, or go deeper only when the question justifies it. Founding-member rates locked. 30-day Signal-or-It's-Free guarantee on every paid plan above €1.",
   alternates: {
     canonical: "/pricing",
   },
   openGraph: {
-    // F5 — explicit og:url so the field reaches the rendered <head>.
+    // F5, explicit og:url so the field reaches the rendered <head>.
     // (Layout-default openGraph is replaced wholesale when a child page
     // sets its own openGraph object, so no inheritance for url here.)
     url: "https://signals.gitdealflow.com/pricing",
     title:
-      "Pricing — Start free, go deeper only when you need it",
+      "Pricing, Start free, go deeper only when you need it",
     description:
-      "VC Deal Flow Signal pricing — start free, test one sector, work the full field, or go deeper only when the question gets expensive. Research partnership layers sit above the weekly workflow, not in front of it.",
+      "VC Deal Flow Signal pricing, start free, test one sector, work the full field, or go deeper only when the question gets expensive. Research partnership layers sit above the weekly workflow, not in front of it.",
     type: "website",
   },
 };
@@ -33,7 +33,7 @@ export const metadata: Metadata = {
 const STRIPE_DASHBOARD = "https://buy.stripe.com/4gMbJ07kTaJy7kqg6s0x20b";
 const STRIPE_INSIDER = "https://buy.stripe.com/bJeaEWfRpcRG6gm2fC0x20d";
 const STRIPE_SWEEP = "/api/checkout/session?tier=sector_sweep";
-// `||` not `??` — Vercel env entries can be empty strings, which `??`
+// `||` not `??`, Vercel env entries can be empty strings, which `??`
 // would NOT replace. We want the hardcoded canonical URL whenever the
 // env var is missing OR empty.
 const STRIPE_DASHBOARD_ANNUAL =
@@ -43,7 +43,7 @@ const STRIPE_INSIDER_ANNUAL =
   process.env.NEXT_PUBLIC_STRIPE_INSIDER_ANNUAL_LINK ||
   "https://buy.stripe.com/cNieVc34DbNCcEK2fC0x20e";
 const SIGNUP_URL = "https://gitdealflow.com/#signup";
-// Sharp Tier — application-gated, capped at 8 funds in 2026. The mailto includes a structured intake template so the reply is immediate-prioritised.
+// Sharp Tier, application-gated, capped at 8 funds in 2026. The mailto includes a structured intake template so the reply is immediate-prioritised.
 // Russell audit 2026-05-05 PM: replaced mailto: with a proper application
 // page (/apply). Mailto leaked the funnel to the user's email client and
 // dropped 60%+ of intents. /apply is a real form posting to
@@ -72,15 +72,15 @@ const tiers: Tier[] = [
     priceCadence: "forever",
     rrpLabel: null,
     oneLine:
-      "Five breakout startups in your inbox every Monday — the same data the paid tiers see, narrowed to the top five.",
+      "Five breakout startups in your inbox every Monday, the same data the paid tiers see, narrowed to the top five.",
     forWho:
       "Use this if you want to feel the signal first and keep your weekly read simple.",
     bullets: [
-      "Weekly email — five startups ranked by engineering acceleration",
+      "Weekly email, five startups ranked by engineering acceleration",
       "Signal type per startup (hiring burst, infra buildout, shipping sprint)",
       "Direct GitHub link + sector tag",
       "No tracker pixels beyond basic open rate",
-      "Free MCP server for Claude / Cursor / Windsurf — five tools, never gated",
+      "Free MCP server for Claude / Cursor / Windsurf, five tools, never gated",
     ],
     ctaLabel: "Get the Free Digest",
     ctaHref: SIGNUP_URL,
@@ -88,12 +88,12 @@ const tiers: Tier[] = [
   },
   {
     slug: "book",
-    name: "The Book — 7 GitHub Signals",
+    name: "The Book, 7 GitHub Signals",
     priceLabel: "€0.99",
     priceCadence: "one-time",
     rrpLabel: "Free PDF + EPUB",
     oneLine:
-      "104-page operational field manual on the seven public-data signals that precede Series A rounds — read free on the open web, free PDF/EPUB download, or €0.99 Kindle copy with three bonus emails.",
+      "104-page operational field manual on the seven public-data signals that precede Series A rounds, read free on the open web, free PDF/EPUB download, or €0.99 Kindle copy with three bonus emails.",
     forWho:
       "Use this if you want to understand the signal fully before you decide on a recurring workflow.",
     bullets: [
@@ -114,7 +114,7 @@ const tiers: Tier[] = [
     priceCadence: "one-time",
     rrpLabel: "Buyer-threshold breaker · 24-hour delivery",
     oneLine:
-      "Pay €1 once, name one venture-backed startup, and within 24 hours get a tweet-length (≤280 char) teardown of its GitHub momentum — signal type, 14-day acceleration %, and the kicker insight.",
+      "Pay €1 once, name one venture-backed startup, and within 24 hours get a tweet-length (≤280 char) teardown of its GitHub momentum, signal type, 14-day acceleration %, and the kicker insight.",
     forWho:
       "Use this if you want one fast low-friction test before you trust the signal with more money.",
     bullets: [
@@ -123,9 +123,9 @@ const tiers: Tier[] = [
       "Hand-written by the founder, not LLM-generated",
       "Delivered to your inbox within 24h on weekdays",
       "€1 credited toward First Look Pass if you upgrade within 7 days",
-      "No PDF, no CSV, no call — pure signal compression",
+      "No PDF, no CSV, no call, pure signal compression",
     ],
-    ctaLabel: "Buy the Teardown — €1",
+    ctaLabel: "Buy the Teardown, €1",
     ctaHref: "/teardown",
     highlight: false,
   },
@@ -136,7 +136,7 @@ const tiers: Tier[] = [
     priceCadence: "one-time",
     rrpLabel: "€19 after launch",
     oneLine:
-      "Pay €7 once and get a Sector Deep Dive on the sector you pick — full GitHub momentum table, 14-day acceleration deltas, and the top three names not yet on Crunchbase.",
+      "Pay €7 once and get a Sector Deep Dive on the sector you pick, full GitHub momentum table, 14-day acceleration deltas, and the top three names not yet on Crunchbase.",
     forWho:
       "Use this if one sector already matters and you want a sharper answer before you subscribe.",
     bullets: [
@@ -147,7 +147,7 @@ const tiers: Tier[] = [
       "Delivered to your inbox within 24 hours",
       "€7 credited toward Dashboard if you upgrade within 14 days",
     ],
-    ctaLabel: "Get the Pass — €7",
+    ctaLabel: "Get the Pass, €7",
     ctaHref: "/firstlook",
     highlight: false,
   },
@@ -156,7 +156,7 @@ const tiers: Tier[] = [
     name: "Dashboard Beta",
     priceLabel: "€49",
     priceCadence: "/mo",
-    rrpLabel: "Founding rate €9.97/mo — window closed 2026-06-30",
+    rrpLabel: "Founding rate €9.97/mo, window closed 2026-06-30",
     oneLine:
       "140 startups ranked across 15 sectors, refreshed weekly, with sector filters and historical period comparisons.",
     forWho:
@@ -166,7 +166,7 @@ const tiers: Tier[] = [
       "Sector filters with five-quarter historical comparison",
       "All four signal types per startup (hiring burst, shipping sprint, infrastructure buildout, platform migration)",
       "Watchlists and saved filters",
-      "Free Chrome extensions — Crunchbase + Wellfound badge and GitHub-native hover lookup",
+      "Free Chrome extensions, Crunchbase + Wellfound badge and GitHub-native hover lookup",
       "30-day Signal-or-It's-Free guarantee",
     ],
     ctaLabel: "Get the Dashboard",
@@ -178,18 +178,18 @@ const tiers: Tier[] = [
     name: "Insider Circle",
     priceLabel: "€197",
     priceCadence: "/mo",
-    rrpLabel: "Founding rate €97/mo — window closed 2026-06-30",
+    rrpLabel: "Founding rate €97/mo, window closed 2026-06-30",
     oneLine:
-      "Private Telegram group, live briefings, custom watchlists, JSON API, and bulk CSV pulls — every part of the signal that doesn't fit a public dashboard.",
+      "Private Telegram group, live briefings, custom watchlists, JSON API, and bulk CSV pulls, every part of the signal that doesn't fit a public dashboard.",
     forWho:
       "Use this if you want closer context, live briefings, and a more serious operating rhythm around the signal.",
     bullets: [
       "Everything in Dashboard Beta",
       "Private Insider Circle Telegram group with live briefings",
       "Custom watchlists co-built around your investment thesis",
-      "Insider API access — JSON endpoints + bulk CSV pulls (€1,200/yr value)",
+      "Insider API access, JSON endpoints + bulk CSV pulls (€1,200/yr value)",
       "Webhook delivery on threshold triggers (route into Slack / Discord / internal tooling)",
-      "Monthly Insider Drop — first Tuesday, net-new sector deep-dive / methodology / essay / tool (12-month forward calendar at /continuity)",
+      "Monthly Insider Drop, first Tuesday, net-new sector deep-dive / methodology / essay / tool (12-month forward calendar at /continuity)",
       "Direct line to the founder for diligence questions",
       "30-day Signal-or-It's-Free guarantee",
     ],
@@ -204,19 +204,19 @@ const tiers: Tier[] = [
     priceCadence: "/mo",
     rrpLabel: "€4,970/yr saves two months · application required · 8-fund cap 2026",
     oneLine:
-      "Everything in Insider Circle plus the parts of the work that don't scale — quarterly portfolio review call, custom thesis-aligned watchlist co-built with you, white-labeled API endpoint at /api/v1/sharp/<your-fund>, and direct access to the methodology source code.",
+      "Everything in Insider Circle plus the parts of the work that don't scale, quarterly portfolio review call, custom thesis-aligned watchlist co-built with you, white-labeled API endpoint at /api/v1/sharp/<your-fund>, and direct access to the methodology source code.",
     forWho:
       "Use this if the signal needs to support an active fund workflow, not just your own weekly reading.",
     bullets: [
       "Everything in Insider Circle",
-      "Quarterly 60-minute portfolio review call — map existing holdings against the live signal",
+      "Quarterly 60-minute portfolio review call, map existing holdings against the live signal",
       "Custom thesis-aligned watchlist (co-built with you)",
       "White-labeled API endpoint and data feed at /api/v1/sharp/<your-fund>",
       "Same-day signal questions answered (no SLA, but typically <4h)",
       "Data-room exports formatted for LP updates",
       "All future paid MCP tools included, no per-tool upcharge",
       "Direct access to the methodology source code (private repo invite)",
-      "Capped at 8 funds in 2026 — applications reviewed within 48h",
+      "Capped at 8 funds in 2026, applications reviewed within 48h",
     ],
     ctaLabel: "Apply for Sharp Tier",
     ctaHref: SHARP_APPLY_URL,
@@ -229,18 +229,18 @@ const tiers: Tier[] = [
     priceCadence: "one-time",
     rrpLabel: "€13,000+ in itemized value · 8 seats per quarter",
     oneLine:
-      "A custom written report on one sector you pick — engineering momentum across every venture-backed startup in that sector, ranked, with diligence prompts and the top three early-stage targets.",
+      "A custom written report on one sector you pick, engineering momentum across every venture-backed startup in that sector, ranked, with diligence prompts and the top three early-stage targets.",
     forWho:
       "Use this if one sector question is already expensive enough to justify a serious one-time pass.",
     bullets: [
-      "40-page custom Sector Sweep PDF — every venture-backed startup in your sector ranked over the last four quarters (analyst-report equivalent: €4,500)",
-      "Raw CSV — every org × every metric, license-friendly to drop into your CRM (data-license equivalent: €1,200)",
-      "Written walkthrough — 60 minutes of reading, methodology + top-5 deep dives + thesis-specific surprises (analyst-hour equivalent: €600)",
+      "40-page custom Sector Sweep PDF, every venture-backed startup in your sector ranked over the last four quarters (analyst-report equivalent: €4,500)",
+      "Raw CSV, every org × every metric, license-friendly to drop into your CRM (data-license equivalent: €1,200)",
+      "Written walkthrough, 60 minutes of reading, methodology + top-5 deep dives + thesis-specific surprises (analyst-hour equivalent: €600)",
       "Diligence prompts for each top-10 startup, paste-ready into your IC memo (custom diligence work: €800)",
       "Three early-stage targets not on Crunchbase or PitchBook, surfaced via the same engine (sourcing-fee equivalent: €2,000)",
-      "14-day email Q&A window — unlimited follow-up, additional cuts on demand (4-6 analyst emails: €1,400)",
-      "Reproducible methodology audit trail — every metric you can re-derive from public GitHub data (audit deliverable: €500)",
-      "BONUS — €1,997 100% credited toward an Insider Circle subscription if you upgrade within 60 days (your first ~20 months of Insider, paid)",
+      "14-day email Q&A window, unlimited follow-up, additional cuts on demand (4-6 analyst emails: €1,400)",
+      "Reproducible methodology audit trail, every metric you can re-derive from public GitHub data (audit deliverable: €500)",
+      "BONUS, €1,997 100% credited toward an Insider Circle subscription if you upgrade within 60 days (your first ~20 months of Insider, paid)",
       "30-day Signal-or-It's-Free guarantee on the Sweep itself",
     ],
     ctaLabel: "Commission a Sector Sweep",
@@ -260,13 +260,13 @@ const tiers: Tier[] = [
       "Use this if you want the methodology adapted to your own portfolio and internal workflow.",
     bullets: [
       "Everything in Sharp Tier (€4,970/yr value)",
-      "Custom panel construction — your fund's regression model trained on anonymized portfolio outcomes",
+      "Custom panel construction, your fund's regression model trained on anonymized portfolio outcomes",
       "Bespoke 50-org watchlist tuned to your written thesis, monthly rebuild against the live signal feed",
-      "White-labeled fund subdomain — signal.yourfund.com returns the same dataset behind your auth",
-      "Quarterly synthetic founder talk — 6-min Remotion video on your fund's specific thesis (4/yr)",
-      "Async methodology Q&A — unlimited via dedicated email channel, 24h weekday turn",
+      "White-labeled fund subdomain, signal.yourfund.com returns the same dataset behind your auth",
+      "Quarterly synthetic founder talk, 6-min Remotion video on your fund's specific thesis (4/yr)",
+      "Async methodology Q&A, unlimited via dedicated email channel, 24h weekday turn",
       "Quarterly anonymized fund-as-case-study published to /press (attribution opt-in)",
-      "Annual fund-only methodology brief — 30-min synthetic-voice walkthrough + 40-page PDF",
+      "Annual fund-only methodology brief, 30-min synthetic-voice walkthrough + 40-page PDF",
       "Founding-rate locked through end of 2027. After 2026: €29,997/yr. Capped at 5 funds in 2026.",
     ],
     ctaLabel: "Apply for Methodology Partnership",
@@ -283,15 +283,15 @@ const tiers: Tier[] = [
     oneLine:
       "Top rung. Methodology Partnership plus: co-development access to the panel-construction pipeline, pre-publication SSRN preview six months early, 72-hour signal head-start over the public Dashboard, methodology source repo (fund-only fork license), Signal-of-the-Quarter co-investment alerts.",
     forWho:
-      "Funds intending to make GitHub-momentum signal a multi-year sourcing advantage — funds who want to own the methodology, not license the output. Most Vault funds enter via Methodology Partnership for 6–12 months first.",
+      "Funds intending to make GitHub-momentum signal a multi-year sourcing advantage, funds who want to own the methodology, not license the output. Most Vault funds enter via Methodology Partnership for 6-12 months first.",
     bullets: [
       "Everything in Methodology Partnership (€68,000+ stack value)",
-      "Co-development access — your analysts submit signal hypotheses to the panel-construction pipeline, ~24 senior-engineering hours/mo equivalent",
-      "Pre-publication SSRN preview — read next year's successor paper 6 months before public release, opt-in author credit (initials)",
-      "72-hour signal head-start — every flag delivered to Vault funds 72h before the public Dashboard (~12 flags/yr)",
-      "Annual async methodology summit — 8-hour Remotion-rendered keynote + fund-branded artifacts, no live attendance required",
-      "Methodology source repo — private fork, MIT-license to your fund only, panel construction + regression engine + ETL pipeline",
-      "Signal-of-the-Quarter co-investment alerts — 4 deep written analyses per year on the highest-conviction events",
+      "Co-development access, your analysts submit signal hypotheses to the panel-construction pipeline, ~24 senior-engineering hours/mo equivalent",
+      "Pre-publication SSRN preview, read next year's successor paper 6 months before public release, opt-in author credit (initials)",
+      "72-hour signal head-start, every flag delivered to Vault funds 72h before the public Dashboard (~12 flags/yr)",
+      "Annual async methodology summit, 8-hour Remotion-rendered keynote + fund-branded artifacts, no live attendance required",
+      "Methodology source repo, private fork, MIT-license to your fund only, panel construction + regression engine + ETL pipeline",
+      "Signal-of-the-Quarter co-investment alerts, 4 deep written analyses per year on the highest-conviction events",
       "Founding-rate locked through end of 2028. After 2026: €99,997/yr. Capped at 2 funds in 2026.",
     ],
     ctaLabel: "Apply for the Vault",
@@ -303,31 +303,31 @@ const tiers: Tier[] = [
 const faqs: { q: string; a: string }[] = [
   {
     q: "How much does VC Deal Flow Signal cost?",
-    a: "Pricing has ten tiers. The Signal Digest is free forever — a weekly email with five ranked startups. The Book is €0.99 one-time (or free PDF/EPUB) for the 104-page operational field manual on the seven public-data signals that precede Series A rounds. The Tweet Teardown is €1 one-time and delivers a tweet-length (≤280 char) momentum teardown of one startup you name, hand-written by the founder, within 24 hours. The First Look Pass is €7 one-time and delivers a full sector deep dive within 24 hours. The Dashboard Beta is €49 per month (the €9.97/mo founding rate closed 2026-06-30; existing founding members keep it for life) and ranks 140 startups across 15 sectors with weekly refresh. The Insider Circle is €197 per month (founding rate was €97/mo, same closed cohort) and adds a private Telegram group, custom watchlists, and JSON / CSV API access. The Sharp Tier is €497 per month or €4,970 per year for active funds and syndicates — quarterly portfolio review brief, custom thesis-aligned watchlist co-built with the fund, white-labeled API endpoint at /api/v1/sharp/<your-fund>, methodology source code access, application-gated and capped at 8 funds in 2026. The Custom Sector Sweep is €1,997 one-time for a written report on one sector of your choice. The Methodology Partnership is €14,997 per year (founding rate, going to €29,997 per year for funds joining 2027+) and runs a custom regression on the fund's anonymized portfolio outcomes, ships a bespoke 50-org watchlist with monthly rebuild, runs a white-labeled fund subdomain at signal.yourfund.com, and includes a quarterly synthetic founder talk and async-only methodology Q&A — capped at 5 funds in 2026. The Vault is €49,997 per year (founding rate, going to €99,997 per year for funds joining 2027+) and adds co-development access to the panel-construction pipeline, pre-publication SSRN preview six months early, 72-hour signal head-start over the public Dashboard, an annual async methodology summit, methodology source repo on a fund-only fork license, and Signal-of-the-Quarter co-investment alerts — capped at 2 funds in 2026. The Methodology Partnership and Vault are async-only and anonymity-preserving — no live calls, no in-person attendance. The free MCP server for Claude / Cursor / Windsurf is bundled with every tier including the free one and will never be gated.",
+    a: "Pricing has ten tiers. The Signal Digest is free forever, a weekly email with five ranked startups. The Book is €0.99 one-time (or free PDF/EPUB) for the 104-page operational field manual on the seven public-data signals that precede Series A rounds. The Tweet Teardown is €1 one-time and delivers a tweet-length (≤280 char) momentum teardown of one startup you name, hand-written by the founder, within 24 hours. The First Look Pass is €7 one-time and delivers a full sector deep dive within 24 hours. The Dashboard Beta is €49 per month (the €9.97/mo founding rate closed 2026-06-30; existing founding members keep it for life) and ranks 140 startups across 15 sectors with weekly refresh. The Insider Circle is €197 per month (founding rate was €97/mo, same closed cohort) and adds a private Telegram group, custom watchlists, and JSON / CSV API access. The Sharp Tier is €497 per month or €4,970 per year for active funds and syndicates, quarterly portfolio review brief, custom thesis-aligned watchlist co-built with the fund, white-labeled API endpoint at /api/v1/sharp/<your-fund>, methodology source code access, application-gated and capped at 8 funds in 2026. The Custom Sector Sweep is €1,997 one-time for a written report on one sector of your choice. The Methodology Partnership is €14,997 per year (founding rate, going to €29,997 per year for funds joining 2027+) and runs a custom regression on the fund's anonymized portfolio outcomes, ships a bespoke 50-org watchlist with monthly rebuild, runs a white-labeled fund subdomain at signal.yourfund.com, and includes a quarterly synthetic founder talk and async-only methodology Q&A, capped at 5 funds in 2026. The Vault is €49,997 per year (founding rate, going to €99,997 per year for funds joining 2027+) and adds co-development access to the panel-construction pipeline, pre-publication SSRN preview six months early, 72-hour signal head-start over the public Dashboard, an annual async methodology summit, methodology source repo on a fund-only fork license, and Signal-of-the-Quarter co-investment alerts, capped at 2 funds in 2026. The Methodology Partnership and Vault are async-only and anonymity-preserving, no live calls, no in-person attendance. The free MCP server for Claude / Cursor / Windsurf is bundled with every tier including the free one and will never be gated.",
   },
   {
     q: "Why is there a €1 tier?",
-    a: "The psychological gap between Free and €7 is larger than the gap between €7 and €197. The €1 Tweet Teardown is a deliberate buyer-threshold breaker — the smallest viable charge that converts a free reader into a paying customer. Once a card has been used at any price, the next purchase is no longer a first purchase. The €1 is credited toward the €7 First Look Pass if upgraded within 7 days, so the tier acts as a frictionless on-ramp rather than a separate purchase decision. The deliverable itself is genuinely useful — three sentences, one number, one human read on a startup the buyer already has a name for — but the tier exists primarily to break the €0-to-paid threshold.",
+    a: "The psychological gap between Free and €7 is larger than the gap between €7 and €197. The €1 Tweet Teardown is a deliberate buyer-threshold breaker, the smallest viable charge that converts a free reader into a paying customer. Once a card has been used at any price, the next purchase is no longer a first purchase. The €1 is credited toward the €7 First Look Pass if upgraded within 7 days, so the tier acts as a frictionless on-ramp rather than a separate purchase decision. The deliverable itself is genuinely useful, three sentences, one number, one human read on a startup the buyer already has a name for, but the tier exists primarily to break the €0-to-paid threshold.",
   },
   {
     q: "Is there a free tier?",
-    a: "Yes — the Signal Digest is free forever. One email per week, five startups ranked by GitHub engineering acceleration, signal type per startup, direct GitHub links, and a sector tag. The free MCP server (five tools, no auth) is bundled with the free tier and works in Claude, Cursor, Windsurf, and any MCP-compatible client. Both will remain free permanently — they are the distribution magnet for the paid tiers, not a trial.",
+    a: "Yes, the Signal Digest is free forever. One email per week, five startups ranked by GitHub engineering acceleration, signal type per startup, direct GitHub links, and a sector tag. The free MCP server (five tools, no auth) is bundled with the free tier and works in Claude, Cursor, Windsurf, and any MCP-compatible client. Both will remain free permanently, they are the distribution magnet for the paid tiers, not a trial.",
   },
   {
     q: "What is the cheapest paid plan?",
-    a: "The Tweet Teardown at €1 one-time is the cheapest paid product. It delivers a tweet-length (≤280 character) GitHub-momentum teardown of one startup you name — signal classification, 14-day acceleration delta, and the human-written kicker insight — emailed within 24 hours on weekdays. The €1 is credited toward the €7 First Look Pass if you upgrade within 7 days, so the rung functions as a near-zero-friction on-ramp into the paid ladder. The next step up is the €7 First Look Pass, which delivers a full sector deep dive (PDF + CSV) on whichever sector you pick. If you upgrade Tweet Teardown → First Look → Dashboard, every credit chains forward.",
+    a: "The Tweet Teardown at €1 one-time is the cheapest paid product. It delivers a tweet-length (≤280 character) GitHub-momentum teardown of one startup you name, signal classification, 14-day acceleration delta, and the human-written kicker insight, emailed within 24 hours on weekdays. The €1 is credited toward the €7 First Look Pass if you upgrade within 7 days, so the rung functions as a near-zero-friction on-ramp into the paid ladder. The next step up is the €7 First Look Pass, which delivers a full sector deep dive (PDF + CSV) on whichever sector you pick. If you upgrade Tweet Teardown → First Look → Dashboard, every credit chains forward.",
   },
   {
     q: "What is founding-member pricing?",
-    a: "Founding-member pricing was the discounted launch rate on Dashboard Beta (€9.97 per month) and Insider Circle (€97 per month), locked for the lifetime of the subscription as long as it stays active. The founding window closed 2026-06-30. Everyone who signed up before that date keeps their original rate for as long as they stay subscribed; new sign-ups pay the list price — €49 per month for Dashboard, €197 per month for Insider. There is no minimum commitment on either — month-to-month, cancel anytime.",
+    a: "Founding-member pricing was the discounted launch rate on Dashboard Beta (€9.97 per month) and Insider Circle (€97 per month), locked for the lifetime of the subscription as long as it stays active. The founding window closed 2026-06-30. Everyone who signed up before that date keeps their original rate for as long as they stay subscribed; new sign-ups pay the list price, €49 per month for Dashboard, €197 per month for Insider. There is no minimum commitment on either, month-to-month, cancel anytime.",
   },
   {
     q: "What is the Signal-or-It's-Free guarantee?",
-    a: "Every paid tier (Dashboard, Insider, and Sector Sweep) ships with a 30-day guarantee. If, in your first 30 days, the signal doesn't surface a startup that you find genuinely interesting — defined as one you would have wanted to know about earlier — reply to any email with the word REFUND and the full payment is refunded, no questions asked. The guarantee exists because the signal either works or it doesn't; charging for an output you don't find useful is bad business.",
+    a: "Every paid tier (Dashboard, Insider, and Sector Sweep) ships with a 30-day guarantee. If, in your first 30 days, the signal doesn't surface a startup that you find genuinely interesting, defined as one you would have wanted to know about earlier, reply to any email with the word REFUND and the full payment is refunded, no questions asked. The guarantee exists because the signal either works or it doesn't; charging for an output you don't find useful is bad business.",
   },
   {
     q: "How does the Sector Sweep differ from Dashboard?",
-    a: "Dashboard is a live ranking across 15 sectors, refreshed weekly, that you keep open during deal-flow review. Sector Sweep is a one-time written report on a single sector you pick — every venture-backed startup in that sector ranked over the past four quarters, with diligence prompts on the top ten and three early-stage targets not yet on Crunchbase. Sweep is for funds who want a deeper, narrative-led analysis on a defined thesis without committing to a recurring subscription. Many funds use both: Dashboard for ongoing review, Sweep for thesis-anchored deep dives.",
+    a: "Dashboard is a live ranking across 15 sectors, refreshed weekly, that you keep open during deal-flow review. Sector Sweep is a one-time written report on a single sector you pick, every venture-backed startup in that sector ranked over the past four quarters, with diligence prompts on the top ten and three early-stage targets not yet on Crunchbase. Sweep is for funds who want a deeper, narrative-led analysis on a defined thesis without committing to a recurring subscription. Many funds use both: Dashboard for ongoing review, Sweep for thesis-anchored deep dives.",
   },
   {
     q: "Can I cancel anytime?",
@@ -335,19 +335,19 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "Is there an API?",
-    a: "Basic JSON endpoints (signals.json, weekly summary, methodology) are free with reasonable rate limits suitable for individual investors and small funds. Higher-volume API access — JSON endpoints, bulk CSV pulls, and webhook delivery on threshold triggers — is included with Insider Circle (€197 per month). No enterprise contract required. The MCP server is also fully usable as a programmatic interface from Claude, Cursor, or any MCP-compatible client.",
+    a: "Basic JSON endpoints (signals.json, weekly summary, methodology) are free with reasonable rate limits suitable for individual investors and small funds. Higher-volume API access, JSON endpoints, bulk CSV pulls, and webhook delivery on threshold triggers, is included with Insider Circle (€197 per month). No enterprise contract required. The MCP server is also fully usable as a programmatic interface from Claude, Cursor, or any MCP-compatible client.",
   },
   {
     q: "What is the MCP server and is it really free forever?",
-    a: "The MCP (Model Context Protocol) server exposes five read-only tools — get_trending_startups, search_startups_by_sector, get_startup_signal, get_signals_summary, and get_methodology — to any MCP-compatible AI client (Claude, Cursor, Windsurf, Mistral Le Chat, ChatGPT GPT, custom agents). It is published on npm as @gitdealflow/mcp-signal and runs as a Streamable HTTP endpoint at signals.gitdealflow.com/api/mcp/rpc. It is free and will never be gated — it is the distribution magnet that brings technical early adopters into the funnel, the same way a free Chrome extension or API trial does in classic technical-tool GTM.",
+    a: "The MCP (Model Context Protocol) server exposes five read-only tools, get_trending_startups, search_startups_by_sector, get_startup_signal, get_signals_summary, and get_methodology, to any MCP-compatible AI client (Claude, Cursor, Windsurf, Mistral Le Chat, ChatGPT GPT, custom agents). It is published on npm as @gitdealflow/mcp-signal and runs as a Streamable HTTP endpoint at signals.gitdealflow.com/api/mcp/rpc. It is free and will never be gated, it is the distribution magnet that brings technical early adopters into the funnel, the same way a free Chrome extension or API trial does in classic technical-tool GTM.",
   },
   {
     q: "Do you offer enterprise pricing?",
-    a: "Yes — the Sharp Tier at €497 per month (or €4,970 per year, saves two months) is the dedicated tier for active funds and syndicates. It includes quarterly portfolio review calls, custom thesis-aligned watchlist co-build, white-labeled API endpoint at /api/v1/sharp/<your-fund>, direct methodology source code access, same-day signal questions, and data-room exports formatted for LP updates. Sharp Tier is application-gated and capped at 8 funds in 2026 — applications reviewed within 48 hours. The Sector Sweep at €1,997 one-time is a lower-commitment on-ramp; many funds commission a Sweep first and upgrade to Sharp after delivery if the signal quality matches their thesis. Funds with deeper custom requirements (white-label fund-branded UI, dedicated Slack channel, on-call for fundraise diligence) should email signal at gitdealflow dot com for a scoped proposal.",
+    a: "Yes, the Sharp Tier at €497 per month (or €4,970 per year, saves two months) is the dedicated tier for active funds and syndicates. It includes quarterly portfolio review calls, custom thesis-aligned watchlist co-build, white-labeled API endpoint at /api/v1/sharp/<your-fund>, direct methodology source code access, same-day signal questions, and data-room exports formatted for LP updates. Sharp Tier is application-gated and capped at 8 funds in 2026, applications reviewed within 48 hours. The Sector Sweep at €1,997 one-time is a lower-commitment on-ramp; many funds commission a Sweep first and upgrade to Sharp after delivery if the signal quality matches their thesis. Funds with deeper custom requirements (white-label fund-branded UI, dedicated Slack channel, on-call for fundraise diligence) should email signal at gitdealflow dot com for a scoped proposal.",
   },
   {
     q: "Why is the methodology open?",
-    a: "The methodology is published openly on SSRN (abstract id 6606558) and mirrored on Zenodo with a DOI. The dataset is auto-indexed by OpenAlex and DataCite. Investors evaluating the signal can audit the full methodology and replicate the metrics from the same public GitHub data described in the paper. Open methodology is the cheapest way to earn investor trust — it removes the black-box objection up front.",
+    a: "The methodology is published openly on SSRN (abstract id 6606558) and mirrored on Zenodo with a DOI. The dataset is auto-indexed by OpenAlex and DataCite. Investors evaluating the signal can audit the full methodology and replicate the metrics from the same public GitHub data described in the paper. Open methodology is the cheapest way to earn investor trust, it removes the black-box objection up front.",
   },
 ];
 
@@ -399,11 +399,11 @@ export default function PricingPage() {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/pricing#webpage",
         url: "https://signals.gitdealflow.com/pricing",
-        name: "VC Deal Flow Signal — Pricing",
+        name: "VC Deal Flow Signal, Pricing",
         description:
-          "Seven-tier pricing for VC Deal Flow Signal — free weekly digest, €1 Tweet Teardown, €7 First Look Pass, €49/mo Dashboard, €197/mo Insider Circle, €497/mo Sharp Tier, and €1,997 one-time Sector Sweep.",
+          "Seven-tier pricing for VC Deal Flow Signal, free weekly digest, €1 Tweet Teardown, €7 First Look Pass, €49/mo Dashboard, €197/mo Insider Circle, €497/mo Sharp Tier, and €1,997 one-time Sector Sweep.",
         inLanguage: "en-US",
-        // F23: every word of the pricing page is publicly readable — only the
+        // F23: every word of the pricing page is publicly readable, only the
         // Product/Service deliverables behind the prices are paid. Setting
         // this explicitly avoids appearing to cloak paywalled content; the
         // paid status of the offers themselves is represented by Offer.price.
@@ -517,31 +517,31 @@ export default function PricingPage() {
           <span className="text-gray-400">Pricing</span>
         </nav>
 
-        {/* PH50OFF promo banner — matches apex banner; auto-applies on Stripe checkout */}
+        {/* PH50OFF promo banner, matches apex banner; auto-applies on Stripe checkout */}
         <div
           className="mb-4 rounded-md border border-amber-700/60 bg-amber-950/30 px-4 py-3 text-sm text-amber-200"
           role="note"
         >
           <strong className="text-amber-100">Limited time:</strong> 50% off
-          your first 3 months on Dashboard or Insider Circle &mdash; use code{" "}
+          your first 3 months on Dashboard or Insider Circle, use code{" "}
           <code className="rounded bg-amber-900/40 px-1.5 py-0.5 text-amber-100 font-semibold">
             PH50OFF
           </code>{" "}
           at Stripe checkout.
         </div>
 
-        {/* Sharp Tier scarcity — public counter, updated when funds sign */}
+        {/* Sharp Tier scarcity, public counter, updated when funds sign */}
         <div className="mb-8">
           <SharpScarcityBadge variant="default" />
         </div>
 
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
-          Pricing — Free Forever, €1 to Try, €7 to Test, €49 to Subscribe, €497 for Funds
+          Pricing, Free Forever, €1 to Try, €7 to Test, €49 to Subscribe, €497 for Funds
         </h1>
 
         <p className="text-gray-400 text-base leading-relaxed mb-3">
           Start with the lightest useful step, then go deeper only if the question justifies it. The free Signal
-          Digest and the free MCP server are the distribution magnet — they
+          Digest and the free MCP server are the distribution magnet, they
           will never be gated. The €1 Tweet Teardown is the threshold
           breaker between Free and €7. Dashboard is €49 per month and
           Insider Circle is €197 per month (founding members who joined
@@ -560,12 +560,12 @@ export default function PricingPage() {
           >
             Code-Side Sourcing
           </Link>
-          {" "}— public repository-velocity data as a leading indicator of
+          {" "}, public repository-velocity data as a leading indicator of
           venture-stage outcomes. Each rung is a different operational form
           of the same category, sized to a different sourcing cadence.
         </p>
 
-        {/* Quiz nudge — visitors landing on /pricing cold often pick the wrong
+        {/* Quiz nudge, visitors landing on /pricing cold often pick the wrong
             tier. Route them by urgency, not persona labels. */}
         <div className="mb-8 flex items-center gap-3 rounded-lg border border-sky-700/40 bg-sky-950/20 px-4 py-3">
           <span aria-hidden="true" className="text-sky-300 text-lg">⚡</span>
@@ -607,26 +607,26 @@ export default function PricingPage() {
         </div>
 
         <AgentSummary
-          tldr="VC Deal Flow Signal (GitDealFlow) has seven pricing tiers: a free weekly Signal Digest with five ranked startups, a €1 one-time Tweet Teardown (tweet-length GitHub-momentum read on one startup the buyer names — buyer-threshold breaker between Free and €7), a €7 one-time First Look Pass for a sector deep dive, a €49/mo Dashboard Beta covering 140 startups across 15 sectors, a €197/mo Insider Circle adding private Telegram + JSON/CSV API, a €497/mo Sharp Tier for active funds with quarterly review calls + custom watchlists + white-labeled API + methodology source code (application-gated, capped at 8 funds in 2026), and a €1,997 one-time Custom Sector Sweep written report. A founding-member rate (€9.97/mo Dashboard, €97/mo Insider) closed 2026-06-30 and applies only to subscribers who joined before that date. The free MCP server (five read-only tools) is bundled with every tier including the free one and will never be gated. Every paid tier ships with a 30-day Signal-or-It's-Free guarantee."
+          tldr="VC Deal Flow Signal (GitDealFlow) has seven pricing tiers: a free weekly Signal Digest with five ranked startups, a €1 one-time Tweet Teardown (tweet-length GitHub-momentum read on one startup the buyer names, buyer-threshold breaker between Free and €7), a €7 one-time First Look Pass for a sector deep dive, a €49/mo Dashboard Beta covering 140 startups across 15 sectors, a €197/mo Insider Circle adding private Telegram + JSON/CSV API, a €497/mo Sharp Tier for active funds with quarterly review calls + custom watchlists + white-labeled API + methodology source code (application-gated, capped at 8 funds in 2026), and a €1,997 one-time Custom Sector Sweep written report. A founding-member rate (€9.97/mo Dashboard, €97/mo Insider) closed 2026-06-30 and applies only to subscribers who joined before that date. The free MCP server (five read-only tools) is bundled with every tier including the free one and will never be gated. Every paid tier ships with a 30-day Signal-or-It's-Free guarantee."
           pageUrl="https://signals.gitdealflow.com/pricing"
           asOf={asOf}
-          citeAs="VC Deal Flow Signal — Pricing (signals.gitdealflow.com/pricing), retrieved Q2 2026."
+          citeAs="VC Deal Flow Signal, Pricing (signals.gitdealflow.com/pricing), retrieved Q2 2026."
           facts={[
             {
               claim:
-                "Free tier (Signal Digest) is permanent — weekly email with five startups ranked by GitHub engineering acceleration; the bundled MCP server with five read-only tools will never be gated.",
+                "Free tier (Signal Digest) is permanent, weekly email with five startups ranked by GitHub engineering acceleration; the bundled MCP server with five read-only tools will never be gated.",
               sourceUrl: "https://signals.gitdealflow.com/integrations",
               sourceLabel: "Integrations",
             },
             {
               claim:
-                "Cheapest paid product is the €1 Tweet Teardown — a tweet-length (≤280 char) momentum teardown on one startup the buyer names, hand-written by the founder, delivered within 24h. €1 credited toward First Look Pass if upgraded within 7 days.",
+                "Cheapest paid product is the €1 Tweet Teardown, a tweet-length (≤280 char) momentum teardown on one startup the buyer names, hand-written by the founder, delivered within 24h. €1 credited toward First Look Pass if upgraded within 7 days.",
               sourceUrl: "https://signals.gitdealflow.com/teardown",
               sourceLabel: "Tweet Teardown",
             },
             {
               claim:
-                "Second-cheapest paid product is the €7 First Look Pass — a one-time full sector deep dive delivered within 24 hours, with the €7 credited toward Dashboard if you upgrade within 14 days.",
+                "Second-cheapest paid product is the €7 First Look Pass, a one-time full sector deep dive delivered within 24 hours, with the €7 credited toward Dashboard if you upgrade within 14 days.",
               sourceUrl: "https://gitdealflow.com/firstlook",
               sourceLabel: "First Look Pass",
             },
@@ -638,7 +638,7 @@ export default function PricingPage() {
             },
             {
               claim:
-                "Every paid tier ships with a 30-day Signal-or-It's-Free guarantee — full refund within 30 days if the signal does not surface a startup you find genuinely interesting.",
+                "Every paid tier ships with a 30-day Signal-or-It's-Free guarantee, full refund within 30 days if the signal does not surface a startup you find genuinely interesting.",
               sourceUrl: "https://signals.gitdealflow.com/pricing#guarantee",
               sourceLabel: "Guarantee",
             },
@@ -715,7 +715,7 @@ export default function PricingPage() {
           <TrialClose tone="sky">
             Start free, go deeper only when you need it from free to €49,997/yr, every cell honest about what
             it does and doesn&rsquo;t include. If you can already see the
-            rung you&rsquo;d sit on — does the rest of the page just confirm
+            rung you&rsquo;d sit on, does the rest of the page just confirm
             the math?
           </TrialClose>
         </section>
@@ -783,22 +783,22 @@ export default function PricingPage() {
           <TrialClose tone="violet">
             Each tier names what it&rsquo;s for and who shouldn&rsquo;t buy
             it. If one of the &ldquo;best for&rdquo; lines reads exactly
-            like the way you write checks — does the choice already feel
+            like the way you write checks, does the choice already feel
             obvious?
           </TrialClose>
         </section>
 
-        {/* Dashboard stack slide — Brunson stack-and-close on the workhorse
+        {/* Dashboard stack slide, Brunson stack-and-close on the workhorse
             mid-tier. Mirrors the Sector Sweep stack pattern but for the
             €49/mo subscription that converts most buyers. Russell audit
             2026-05-05: only the €1,997 tier had a stack visualization. */}
         <section
           id="dashboard-stack"
           className="mb-12 rounded-xl border border-sky-700/40 bg-sky-950/10 p-6 sm:p-8"
-          aria-label="Dashboard — itemized value stack"
+          aria-label="Dashboard, itemized value stack"
         >
           <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider mb-3">
-            Dashboard Beta — what €49/mo actually buys
+            Dashboard Beta, what €49/mo actually buys
           </p>
           <h2 className="text-2xl font-bold text-gray-100 mb-2">
             €1,728/yr of standalone value for €49/mo
@@ -820,13 +820,13 @@ export default function PricingPage() {
               {
                 label: "219-Startup Backtest CSV",
                 detail:
-                  "Five quarters of historical signal-to-fundraise pairs. The full dataset behind the SSRN-published 21–47-day lead-time claim.",
+                  "Five quarters of historical signal-to-fundraise pairs. The full dataset behind the SSRN-published 21-47-day lead-time claim.",
                 value: "€297 once",
               },
               {
                 label: "Monthly Sector Deep-Dive PDF",
                 detail:
-                  "Pick any sector each month — twelve 12-page deep-dives a year, with top 25 ranked orgs, contributor maps, and three pre-Crunchbase breakouts.",
+                  "Pick any sector each month, twelve 12-page deep-dives a year, with top 25 ranked orgs, contributor maps, and three pre-Crunchbase breakouts.",
                 value: "€588/yr",
               },
               {
@@ -848,7 +848,7 @@ export default function PricingPage() {
               {
                 label: "Free MCP server (forever, never gated)",
                 detail:
-                  "npx @gitdealflow/mcp-signal — six read-only tools inside Claude, Cursor, Windsurf. Ask 'which AI infra startups are accelerating' inline.",
+                  "npx @gitdealflow/mcp-signal, six read-only tools inside Claude, Cursor, Windsurf. Ask 'which AI infra startups are accelerating' inline.",
                 value: "Bundled",
               },
               {
@@ -864,7 +864,7 @@ export default function PricingPage() {
                 value: "Open",
               },
               {
-                label: "BONUS — 30-day Signal-or-It's-Free guarantee",
+                label: "BONUS, 30-day Signal-or-It's-Free guarantee",
                 detail:
                   "If the signal doesn't surface a startup you find genuinely interesting in 30 days, reply REFUND. Full refund inside two business days.",
                 value: "Priceless",
@@ -940,21 +940,21 @@ export default function PricingPage() {
           </TrialClose>
         </section>
 
-        {/* Sector Sweep stack slide — anchored value vs price */}
+        {/* Sector Sweep stack slide, anchored value vs price */}
         <section
           id="sector-sweep-stack"
           className="mb-12 rounded-xl border border-amber-700/40 bg-amber-950/10 p-6 sm:p-8"
-          aria-label="Sector Sweep — itemized value stack"
+          aria-label="Sector Sweep, itemized value stack"
         >
           <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider mb-3">
-            Custom Sector Sweep — what €1,997 actually buys
+            Custom Sector Sweep, what €1,997 actually buys
           </p>
           <h2 className="text-2xl font-bold text-gray-100 mb-2">
             €13,000+ of analyst work, packaged as one written report
           </h2>
           <p className="text-gray-400 text-sm mb-6 max-w-2xl">
             The Sweep is built from scratch on your thesis. Below is the
-            itemized stack — each line is the standalone market price for
+            itemized stack, each line is the standalone market price for
             the same deliverable. You pay the bottom line, not the sum.
           </p>
           <ul className="divide-y divide-amber-900/30 mb-6 border border-amber-900/30 rounded-lg overflow-hidden">
@@ -966,7 +966,7 @@ export default function PricingPage() {
                 value: "€4,500",
               },
               {
-                label: "Raw CSV — every org × every metric",
+                label: "Raw CSV, every org × every metric",
                 detail:
                   "Commit velocity 14d/30d/90d, contributor delta, new-repo count, signal classification. License-friendly to drop into your CRM.",
                 value: "€1,200",
@@ -1002,13 +1002,13 @@ export default function PricingPage() {
                 value: "€500",
               },
               {
-                label: "BONUS — Insider Circle credit (€1,997, 60 days)",
+                label: "BONUS, Insider Circle credit (€1,997, 60 days)",
                 detail:
-                  "Upgrade to Insider Circle within 60 days of receiving the Sweep and the €1,997 is 100% credited — first ~20 months of Insider, paid.",
+                  "Upgrade to Insider Circle within 60 days of receiving the Sweep and the €1,997 is 100% credited, first ~20 months of Insider, paid.",
                 value: "€1,997",
               },
               {
-                label: "BONUS — 30-day Signal-or-It's-Free guarantee",
+                label: "BONUS, 30-day Signal-or-It's-Free guarantee",
                 detail:
                   "Reply with REFUND within 30 days if the Sweep doesn't surface three orgs you didn't already know about. No forms, no call.",
                 value: "Priceless",
@@ -1061,17 +1061,17 @@ export default function PricingPage() {
           </div>
           <p className="text-gray-400 text-xs mt-3">
             Capped at 8 sweeps per quarter. Q3 2026: 7 of 8 open. Each Sweep
-            is custom — nothing template, nothing reused.
+            is custom, nothing template, nothing reused.
           </p>
           <TrialClose tone="amber">
             €13,000+ retail at €1,997, with the entire sum credited toward
             Insider on upgrade. If even half the line items hold up
-            standalone — has the cap (7 of 8 left) become the real
+            standalone, has the cap (7 of 8 left) become the real
             constraint?
           </TrialClose>
         </section>
 
-        {/* Annual plans — save vs monthly. Stripe links land
+        {/* Annual plans, save vs monthly. Stripe links land
             via env when user creates them; otherwise a soft mailto-style
             instruction so we don't strand the visitor. */}
         <section
@@ -1093,7 +1093,7 @@ export default function PricingPage() {
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-3 mb-5">
             <li className="rounded-lg border border-slate-800 bg-slate-900/40 p-4 space-y-2">
               <p className="text-gray-100 font-semibold text-base">
-                Dashboard Beta — Annual
+                Dashboard Beta, Annual
               </p>
               <p className="text-gray-400 text-sm">
                 <span className="text-2xl font-bold text-sky-300">€490</span>
@@ -1112,7 +1112,7 @@ export default function PricingPage() {
             </li>
             <li className="rounded-lg border border-slate-800 bg-slate-900/40 p-4 space-y-2">
               <p className="text-gray-100 font-semibold text-base">
-                Insider Circle — Annual
+                Insider Circle, Annual
               </p>
               <p className="text-gray-400 text-sm">
                 <span className="text-2xl font-bold text-emerald-300">€1,970</span>
@@ -1139,12 +1139,12 @@ export default function PricingPage() {
             >
               signals@gitdealflow.com
             </a>{" "}
-            — we credit the unused portion of the current month toward
+we credit the unused portion of the current month toward
             the annual term.
           </p>
         </section>
 
-        {/* Agent Credits cross-link — separate ICP (AI-agent builders),
+        {/* Agent Credits cross-link, separate ICP (AI-agent builders),
             buried until now. Brunson "same product, new market" funnel. */}
         <section
           id="agent-credits"
@@ -1159,7 +1159,7 @@ export default function PricingPage() {
           </h2>
           <p className="text-gray-400 text-sm mb-4 max-w-2xl">
             If you&rsquo;re shipping an agent that scouts startups or briefs
-            investors, the subscription tiers above are the wrong shape — you
+            investors, the subscription tiers above are the wrong shape, you
             want per-call pricing on the deep-enrichment endpoint. €19 buys
             100 <code className="text-amber-300 font-mono">get_deep_signal</code>{" "}
             calls (€0.19 each). Misses are free. Credits never expire. Six
@@ -1176,7 +1176,7 @@ export default function PricingPage() {
               href="/agents/credits"
               className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-amber-700/40 hover:border-amber-500/60 text-amber-200 text-sm font-medium transition-colors"
             >
-              Buy 100 credits — €19
+              Buy 100 credits, €19
             </Link>
           </div>
         </section>
@@ -1184,14 +1184,14 @@ export default function PricingPage() {
         {/* Guarantee */}
         <section id="guarantee" className="mb-12 rounded-lg border border-emerald-800 bg-emerald-950/20 p-6">
           <h2 className="text-xl font-semibold text-emerald-300 mb-3">
-            Signal or It&rsquo;s Free — 30-day guarantee
+            Signal or It&rsquo;s Free, 30-day guarantee
           </h2>
           <p className="text-gray-300 text-sm leading-relaxed mb-3">
             Every paid tier (Dashboard, Insider Circle, and Sector Sweep)
             ships with a 30-day guarantee. If, in your first 30 days, the
             signal doesn&rsquo;t surface a startup you find genuinely
-            interesting &mdash; defined as one you would have wanted to know
-            about earlier &mdash; reply to any email with the word{" "}
+            interesting, defined as one you would have wanted to know
+            about earlier, reply to any email with the word{" "}
             <code className="text-emerald-300 bg-emerald-900/40 px-1.5 py-0.5 rounded text-xs">
               REFUND
             </code>{" "}
@@ -1204,7 +1204,7 @@ export default function PricingPage() {
           </p>
         </section>
 
-        {/* FAQ — collapsible <details> reduces scroll fatigue and lets readers
+        {/* FAQ, collapsible <details> reduces scroll fatigue and lets readers
             jump straight to the question that matches their objection. */}
         <section className="mb-12">
           <h2 className="text-xl font-semibold text-gray-100 mb-2">

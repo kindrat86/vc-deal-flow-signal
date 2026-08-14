@@ -33,11 +33,11 @@ export async function generateMetadata({
   const week = getPredictionWeek(slug);
   if (!week) return { title: "Week not found" };
   return {
-    title: `Acceleration Watch — Week of ${fmtLongDate(week.weekStart)}`,
+    title: `Acceleration Watch, Week of ${fmtLongDate(week.weekStart)}`,
     description: `10 startups whose GitHub engineering acceleration crossed the signal threshold the week of ${fmtLongDate(week.weekStart)}. Public bet, graded post-hoc against fundraise / acquisition news at ${week.windowDays} days.`,
     alternates: { canonical: `/predicted/${week.slug}` },
     openGraph: {
-      title: `Acceleration Watch — Week of ${fmtLongDate(week.weekStart)}`,
+      title: `Acceleration Watch, Week of ${fmtLongDate(week.weekStart)}`,
       description: `10 named startups, graded post-hoc. Window closes ${fmtLongDate(week.gradingDueAt)}.`,
       url: `https://signals.gitdealflow.com/predicted/${week.slug}`,
       type: "article",
@@ -45,7 +45,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `Acceleration Watch — Week of ${fmtLongDate(week.weekStart)}`,
+      title: `Acceleration Watch, Week of ${fmtLongDate(week.weekStart)}`,
       description: `10 named startups, graded post-hoc. Window closes ${fmtLongDate(week.gradingDueAt)}.`,
     },
   };
@@ -84,14 +84,14 @@ export default async function PredictedWeekPage({ params }: RouteContext) {
   ).length;
   const pending = week.picks.filter((p) => p.outcome === null).length;
 
-  // F4 — top-level ClaimReview blocks for every published pick
+  // F4, top-level ClaimReview blocks for every published pick
   // (excluding outcome === "excluded" only). Uses Google's controlled
   // fact-check vocabulary so resolved picks are rich-result eligible:
   //   raised|acquired|ipo  → True       (5)
   //   other_milestone      → Mixture    (3)
   //   no_event|shutdown    → False      (1)
   //   pending (null)       → Unproven   (0)
-  // ClaimReview blocks are spread directly into @graph — never nested under
+  // ClaimReview blocks are spread directly into @graph, never nested under
   // Article.review (durable rule: feedback_review_jsonld_must_be_top_level.md).
   const claimReviewItems = buildClaimReviewItems(week, {
     skipExcluded: true,
@@ -104,7 +104,7 @@ export default async function PredictedWeekPage({ params }: RouteContext) {
       {
         "@type": "Article",
         "@id": `https://signals.gitdealflow.com/predicted/${week.slug}#article`,
-        headline: `Acceleration Watch — Week of ${fmtLongDate(week.weekStart)}`,
+        headline: `Acceleration Watch, Week of ${fmtLongDate(week.weekStart)}`,
         description: `10 startups whose GitHub engineering acceleration crossed the signal threshold the week of ${fmtLongDate(week.weekStart)}. Graded ${week.windowDays} days post-publish.`,
         url: `https://signals.gitdealflow.com/predicted/${week.slug}`,
         mainEntityOfPage: {
@@ -159,7 +159,7 @@ export default async function PredictedWeekPage({ params }: RouteContext) {
       },
       {
         "@type": "ItemList",
-        name: `Acceleration Watch — Week of ${fmtLongDate(week.weekStart)}`,
+        name: `Acceleration Watch, Week of ${fmtLongDate(week.weekStart)}`,
         numberOfItems: week.picks.length,
         itemListElement: week.picks.map((p) => ({
           "@type": "ListItem",
@@ -204,11 +204,11 @@ export default async function PredictedWeekPage({ params }: RouteContext) {
             Archive · {week.slug}
           </p>
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
-            Acceleration Watch — Week of {fmtLongDate(week.weekStart)}
+            Acceleration Watch, Week of {fmtLongDate(week.weekStart)}
           </h1>
           <p className="text-gray-400 text-base leading-relaxed max-w-2xl">
             10 named startups whose GitHub engineering acceleration crossed
-            our signal threshold during the week of {fmtLongDate(week.weekStart)}–{fmtLongDate(week.weekEnd)}.
+            our signal threshold during the week of {fmtLongDate(week.weekStart)}-{fmtLongDate(week.weekEnd)}.
             Grading window closes {fmtLongDate(week.gradingDueAt)}.
           </p>
         </header>
@@ -232,7 +232,7 @@ export default async function PredictedWeekPage({ params }: RouteContext) {
 
         <div className="mb-8">
           <ShareBar
-            title={`Acceleration Watch — week of ${fmtLongDate(week.weekStart)}: 10 named startups, graded post-hoc.`}
+            title={`Acceleration Watch, week of ${fmtLongDate(week.weekStart)}: 10 named startups, graded post-hoc.`}
             url={`/predicted/${week.slug}`}
           />
         </div>

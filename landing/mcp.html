@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>GitDealFlow MCP Server — Install in Claude, Cursor, Windsurf</title>
+<title>GitDealFlow MCP Server: Install in Claude, Cursor, Windsurf</title>
     <link rel="alternate" hreflang="en" href="https://gitdealflow.com/mcp">
     <link rel="alternate" hreflang="es" href="https://gitdealflow.com/es/mcp">
     <link rel="alternate" hreflang="de" href="https://gitdealflow.com/de/mcp">
@@ -18,14 +18,14 @@
 
 <link rel="stylesheet" href="/ux.css?v=20260808-2">
     <script src="/ux.js" defer></script>
-  <link rel="stylesheet" href="/inline.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://gitdealflow.com/"}, {"@type": "ListItem", "position": 2, "name": "GitDealFlow MCP Server — Install in Claude, Cursor, Windsurf", "item": "https://gitdealflow.com/mcp"}]}</script>
+  <link rel="stylesheet" href="/inline.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://gitdealflow.com/"}, {"@type": "ListItem", "position": 2, "name": "GitDealFlow MCP Server, Install in Claude, Cursor, Windsurf", "item": "https://gitdealflow.com/mcp"}]}</script>
 </head>
 <body class="page-mcp">
 <span class="badge">MCP Server</span>
-<h1>GitDealFlow — MCP Server</h1>
+<h1>GitDealFlow, MCP Server</h1>
 <p>Track startup engineering acceleration from public GitHub data. Discover high-momentum startups before they announce funding.</p>
-<p>How the signal works: GitDealFlow reads public GitHub activity across 350+ startups and tracks commit velocity, contributor growth, and repository expansion. When those accelerate together, the team is typically gearing up to raise — in a research panel of 219 documented fundraises, the acceleration led the public round announcement by 21-47 days. The weekly email delivers five names every Sunday, and this MCP server exposes the same dataset to agents.</p>
-<p>The GitDealFlow MCP server exposes the startup momentum dataset to any MCP-compatible client. All tools are read-only, idempotent, and completely free — no authentication, no API key, no rate-limit gating. The data is derived from public GitHub activity across 350+ startups, with the methodology published on SSRN under CC BY 4.0 alongside an open dataset.</p>
+<p>How the signal works: GitDealFlow reads public GitHub activity across 350+ startups and tracks commit velocity, contributor growth, and repository expansion. When those accelerate together, the team is typically gearing up to raise, in a research panel of 219 documented fundraises, the acceleration led the public round announcement by 21-47 days. The weekly email delivers five names every Sunday, and this MCP server exposes the same dataset to agents.</p>
+<p>The GitDealFlow MCP server exposes the startup momentum dataset to any MCP-compatible client. All tools are read-only, idempotent, and completely free, no authentication, no API key, no rate-limit gating. The data is derived from public GitHub activity across 350+ startups, with the methodology published on SSRN under CC BY 4.0 alongside an open dataset.</p>
 
 <h2>Quick start (stdio)</h2>
 <p>For Claude Desktop, Claude Code, Cursor, or any client that supports local MCP servers, run the published package directly:</p>
@@ -62,19 +62,19 @@
 
 <h2>Available Tools (6)</h2>
 <ul>
-<li><code>get_trending_startups</code> — Top 20 accelerating startups across all sectors.</li>
-<li><code>search_startups_by_sector</code> — Filter the tracked universe by sector (20 enumerated sector slugs).</li>
-<li><code>get_startup_signal</code> — Engineering momentum signal for a specific startup; case-insensitive and normalization-tolerant.</li>
-<li><code>get_signals_summary</code> — Period, freshness, and format URLs for the current signal dataset.</li>
-<li><code>get_scout_receipts</code> — Scout Score (0-100) for a GitHub user, computed from their starring history against validated breakout companies.</li>
-<li><code>get_methodology</code> — Full methodology text and canonical URL, so any agent can verify how the signal is built.</li>
+<li><code>get_trending_startups</code>: Top 20 accelerating startups across all sectors.</li>
+<li><code>search_startups_by_sector</code>: Filter the tracked universe by sector (20 enumerated sector slugs).</li>
+<li><code>get_startup_signal</code>: Engineering momentum signal for a specific startup; case-insensitive and normalization-tolerant.</li>
+<li><code>get_signals_summary</code>: Period, freshness, and format URLs for the current signal dataset.</li>
+<li><code>get_scout_receipts</code>: Scout Score (0-100) for a GitHub user, computed from their starring history against validated breakout companies.</li>
+<li><code>get_methodology</code>: Full methodology text and canonical URL, so any agent can verify how the signal is built.</li>
 </ul>
 
 <h2>Distribution and discovery</h2>
 <ul>
 <li>npm: <code>@gitdealflow/mcp-signal</code></li>
 <li>MCP Registry: <code>io.github.kindrat86/vc-deal-flow-signal</code></li>
-<li>Glama: A-tier listing — <a href="https://glama.ai/mcp/servers/@kindrat86/vc-deal-flow-signal">glama.ai/mcp/servers/@kindrat86/vc-deal-flow-signal</a></li>
+<li>Glama: A-tier listing, <a href="https://glama.ai/mcp/servers/@kindrat86/vc-deal-flow-signal">glama.ai/mcp/servers/@kindrat86/vc-deal-flow-signal</a></li>
 <li>Discovery manifest: <a href="/.well-known/mcp.json">/.well-known/mcp.json</a></li>
 </ul>
 

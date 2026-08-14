@@ -4,7 +4,7 @@ import { YEARS_IN_REVIEW } from "@/content/year-in-review";
 import { HreflangLinks } from "@/components/HreflangLinks";
 
 export const metadata: Metadata = {
-  title: "Year in Review — Engineering Signals & Venture Patterns",
+  title: "Year in Review, Engineering Signals & Venture Patterns",
   description: `${YEARS_IN_REVIEW.length} annual editorial roundups covering the engineering-acceleration shifts, M&A patterns, and venture trends defining recent years (${YEARS_IN_REVIEW.map((y) => y.year).join(", ")}).`,
   alternates: { canonical: "/year-in-review" },
   openGraph: {
@@ -49,7 +49,7 @@ export default function YearInReviewHubPage() {
           "@type": "ListItem",
           position: i + 1,
           url: `${PAGE_URL}/${y.slug}`,
-          name: `${y.year} — Year in Review`,
+          name: `${y.year}, Year in Review`,
         })),
       },
       {
@@ -113,7 +113,7 @@ export default function YearInReviewHubPage() {
               className="group block rounded-lg border border-slate-800 bg-slate-900 p-5 hover:border-slate-600 transition-all"
             >
               <h2 className="text-gray-100 font-semibold text-lg group-hover:text-sky-400 transition-colors mb-2">
-                {y.year} — Year in Review
+                {y.year}, Year in Review
               </h2>
               <p className="text-sky-400 text-xs font-medium mb-2">{y.tagline}</p>
               <p className="text-gray-400 text-sm leading-relaxed line-clamp-3">

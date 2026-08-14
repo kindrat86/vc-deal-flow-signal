@@ -57,7 +57,7 @@ export async function GET(req: NextRequest) {
     return Response.json(
       {
         _meta: {
-          name: "VC Deal Flow Signal — LLM Search Endpoint",
+          name: "VC Deal Flow Signal, LLM Search Endpoint",
           description:
             "Lexical search over startups, sectors, blog posts, comparisons, agent answers, FAQs, and research findings. Designed for AI agents and retrieval pipelines that prefer JSON over HTML scraping.",
           usage: "GET /api/llms-search?q={query}&limit={1-50}",
@@ -91,10 +91,10 @@ export async function GET(req: NextRequest) {
           url: profile
             ? `${BASE_URL}/startup/${profile.slug}`
             : `${BASE_URL}/startups-to-watch/${sector.slug}-${period.slug}`,
-          title: `${startup.name} — ${sector.name} startup`,
+          title: `${startup.name}, ${sector.name} startup`,
           snippet: startup.description,
           type: "startup",
-          score: s + 2, // small boost — fresh data
+          score: s + 2, // small boost, fresh data
         });
       }
     }
@@ -108,7 +108,7 @@ export async function GET(req: NextRequest) {
     if (s > 0) {
       hits.push({
         url: `${BASE_URL}/startups-to-watch/${sector.slug}-${period.slug}`,
-        title: `${sector.name} — startups to watch`,
+        title: `${sector.name}, startups to watch`,
         snippet: sector.description,
         type: "sector",
         score: s + 1,
@@ -194,7 +194,7 @@ export async function GET(req: NextRequest) {
   return Response.json(
     {
       _meta: {
-        name: "VC Deal Flow Signal — LLM Search",
+        name: "VC Deal Flow Signal, LLM Search",
         description:
           "Ranked JSON results across startups, sectors, blog, comparisons, answers, FAQs, and research findings.",
         license: "https://creativecommons.org/licenses/by/4.0/",

@@ -23,7 +23,7 @@ configs:
     path: signals.json
 ---
 
-# VC Deal Flow Signal — Startup Engineering Signals
+# VC Deal Flow Signal, Startup Engineering Signals
 
 GitHub-derived engineering acceleration panel for ~369 venture-backed startup organizations across 15 sectors, refreshed weekly. Includes commit-velocity change, contributor count, signal-type classification, estimated funding stage, and per-sector rankings.
 
@@ -34,7 +34,7 @@ GitHub-derived engineering acceleration panel for ~369 venture-backed startup or
 | `name` | string | Startup organization name |
 | `sector` | string | One of 15 sector slugs (`ai-ml`, `fintech`, `devtools`, etc.) |
 | `commitVelocity` | int | Total commits to the most-active public repo over rolling 14-day window |
-| `commitVelocityChange` | string | Percentage change vs. prior 14-day window — primary signal |
+| `commitVelocityChange` | string | Percentage change vs. prior 14-day window, primary signal |
 | `contributors` | int | Unique contributor count |
 | `signalType` | enum | `engineering-hiring-burst` \| `infrastructure-buildout` \| `deploy-frequency-spike` \| `framework-migration` |
 | `stage` | enum | `pre-seed` \| `seed` \| `series-a-b` \| `growth` (estimated from contributor count) |
@@ -51,12 +51,12 @@ curl https://signals.gitdealflow.com/api/signals.json
 
 Same data is exposed via:
 
-- **MCP server** — `npx -y @gitdealflow/mcp-signal` (Claude / Cursor / Windsurf / any MCP host)
-- **Streamable HTTP MCP** — `POST https://signals.gitdealflow.com/api/mcp/rpc`
-- **A2A JSON-RPC** — `POST https://signals.gitdealflow.com/api/a2a`
-- **NLWeb** — `POST https://signals.gitdealflow.com/api/nlweb`
-- **Function-calling API** — `GET https://signals.gitdealflow.com/api/agent/tools?format={openai|anthropic|gemini}`
-- **OpenAPI 3.1 spec** — `GET https://signals.gitdealflow.com/api/openapi.json`
+- **MCP server**, `npx -y @gitdealflow/mcp-signal` (Claude / Cursor / Windsurf / any MCP host)
+- **Streamable HTTP MCP**, `POST https://signals.gitdealflow.com/api/mcp/rpc`
+- **A2A JSON-RPC**, `POST https://signals.gitdealflow.com/api/a2a`
+- **NLWeb**, `POST https://signals.gitdealflow.com/api/nlweb`
+- **Function-calling API**, `GET https://signals.gitdealflow.com/api/agent/tools?format={openai|anthropic|gemini}`
+- **OpenAPI 3.1 spec**, `GET https://signals.gitdealflow.com/api/openapi.json`
 
 See [AGENTS.md](https://signals.gitdealflow.com/AGENTS.md) for the full agent surface.
 
@@ -90,7 +90,7 @@ For prose citation: `VC Deal Flow Signal (signals.gitdealflow.com), Q2 2026 data
 
 ## License
 
-CC-BY 4.0 — commercial reuse with attribution is allowed.
+CC-BY 4.0, commercial reuse with attribution is allowed.
 
 ## Related artifacts
 

@@ -11,7 +11,7 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title:
-    "For AI Agent Builders — Don't Re-Read Crunchbase. Plug Into 369 GitHub Orgs.",
+    "For AI Agent Builders, Don't Re-Read Crunchbase. Plug Into 350+ GitHub Orgs.",
   description:
     "If you're shipping an AI agent that scouts startups, sources deal flow, or briefs investors, your data layer shouldn't be Crunchbase scraping. It should be live GitHub engineering acceleration. Free MCP server (6 tools), then €19/100 calls for deep enrichment. Zero rate limits inside quota.",
   alternates: {
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title:
-      "For AI Agent Builders — Plug Into 369 GitHub Orgs Of Live Signal",
+      "For AI Agent Builders, Plug Into 350+ GitHub Orgs Of Live Signal",
     description:
       "Free MCP. €19/100 calls for deep_signal. €0.19/call. Misses are free. Same data layer that powers the SSRN methodology paper.",
     url: "https://signals.gitdealflow.com/for-builders",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     site: "@sipiteno",
-    title: "For AI agent builders — live GitHub signal as a data layer",
+    title: "For AI agent builders, live GitHub signal as a data layer",
     description:
       "Six free MCP tools. €19/100 calls for deep_signal. €0.19/call. Misses free. No rate limits inside quota.",
   },
@@ -45,15 +45,15 @@ const FREE_TOOLS = [
   },
   {
     name: "search_startups_by_sector",
-    desc: "Filter the 369-org universe by sector slug + stage + geography. Returns ranked list.",
+    desc: "Filter the 350+ org universe by sector slug + stage + geography. Returns ranked list.",
   },
   {
     name: "get_startup_signal",
-    desc: "Shallow signal for one named org — current acceleration percentile, signal type, last refresh.",
+    desc: "Shallow signal for one named org, current acceleration percentile, signal type, last refresh.",
   },
   {
     name: "get_signals_summary",
-    desc: "Aggregate signal counts across the entire universe — hiring bursts, infra buildouts, shipping sprints, framework migrations.",
+    desc: "Aggregate signal counts across the entire universe, hiring bursts, infra buildouts, shipping sprints, framework migrations.",
   },
   {
     name: "get_scout_receipts",
@@ -61,7 +61,7 @@ const FREE_TOOLS = [
   },
   {
     name: "get_methodology",
-    desc: "Open methodology spec — every signal definition, the SSRN abstract, the Zenodo dataset link, the regression code.",
+    desc: "Open methodology spec, every signal definition, the SSRN abstract, the Zenodo dataset link, the regression code.",
   },
 ] as const;
 
@@ -76,15 +76,15 @@ const FAQS = [
   },
   {
     q: "What does get_deep_signal return that the free tools don't?",
-    a: "A composite 0–100 score weighted across velocity / contributor growth / repo novelty, in-sector rank and percentile, a one-sentence plain-English thesis you can drop into a memo, top 3 sector comparables with signal type, up to 6 prior periods of velocity history, and a citation string. The free get_startup_signal returns just the current percentile and signal type. The deep tool is what you call when you've identified a target and need report-grade output.",
+    a: "A composite 0-100 score weighted across velocity / contributor growth / repo novelty, in-sector rank and percentile, a one-sentence plain-English thesis you can drop into a memo, top 3 sector comparables with signal type, up to 6 prior periods of velocity history, and a citation string. The free get_startup_signal returns just the current percentile and signal type. The deep tool is what you call when you've identified a target and need report-grade output.",
   },
   {
     q: "How does the credit metering work?",
-    a: "One credit per match. €19 buys 100 credits = €0.19/call. If you query an org we don't track ('found: false'), the call is free and your balance is unchanged. Credits never expire — buy when you need to, use when you need to. Top up any time. No subscription, no monthly minimum, no auto-renewal. The HMAC API key stays the same key forever; topping up just adds credits to its balance.",
+    a: "One credit per match. €19 buys 100 credits = €0.19/call. If you query an org we don't track ('found: false'), the call is free and your balance is unchanged. Credits never expire, buy when you need to, use when you need to. Top up any time. No subscription, no monthly minimum, no auto-renewal. The HMAC API key stays the same key forever; topping up just adds credits to its balance.",
   },
   {
     q: "What's the latency target?",
-    a: "~200ms median for get_deep_signal. The endpoint is HMAC-keyed (no DB lookup on the hot path), runs on Vercel Functions in fluid-compute mode, and pre-computes scores nightly. Inside your quota there are no rate limits — burst freely.",
+    a: "~200ms median for get_deep_signal. The endpoint is HMAC-keyed (no DB lookup on the hot path), runs on Vercel Functions in fluid-compute mode, and pre-computes scores nightly. Inside your quota there are no rate limits, burst freely.",
   },
   {
     q: "Will this stay €0.19/call?",
@@ -92,7 +92,7 @@ const FAQS = [
   },
   {
     q: "Can I see code examples?",
-    a: "Yes — three runtimes covered on /agents/credits: MCP config (Claude Desktop, Cursor, Windsurf, any host), HTTP curl, and balance check. The MCP server is the same npm package as the free version (@gitdealflow/mcp-signal); set GITDEALFLOW_API_KEY in env and the deep tool wakes up. The other six tools ignore the env var entirely.",
+    a: "Yes, three runtimes covered on /agents/credits: MCP config (Claude Desktop, Cursor, Windsurf, any host), HTTP curl, and balance check. The MCP server is the same npm package as the free version (@gitdealflow/mcp-signal); set GITDEALFLOW_API_KEY in env and the deep tool wakes up. The other six tools ignore the env var entirely.",
   },
 ] as const;
 
@@ -104,7 +104,7 @@ export default function ForBuildersPage() {
         "@type": "Article",
         "@id": "https://signals.gitdealflow.com/for-builders#article",
         headline:
-          "For AI Agent Builders — Don't Re-Read Crunchbase. Plug Into 369 GitHub Orgs.",
+          "For AI Agent Builders, Don't Re-Read Crunchbase. Plug Into 350+ GitHub Orgs.",
         description:
           "Live GitHub engineering acceleration as a data layer for AI agents. Six free MCP tools, then €19/100 calls for deep enrichment.",
         url: "https://signals.gitdealflow.com/for-builders",
@@ -182,17 +182,17 @@ export default function ForBuildersPage() {
           >
             Your AI agent shouldn&rsquo;t re-read{" "}
             <span className="text-amber-400">Crunchbase</span>.<br />
-            Plug into 369 GitHub orgs of live signal.
+            Plug into 350+ GitHub orgs of live signal.
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed" data-speakable>
             If you&rsquo;re shipping a deal-flow agent, an investor-briefing
             assistant, or a startup-research tool, the bottleneck isn&rsquo;t
-            the LLM — it&rsquo;s the data layer. We sell the data layer. Six
-            free MCP tools cover discovery and shallow lookup. The seventh —{" "}
+            the LLM, it&rsquo;s the data layer. We sell the data layer. Six
+            free MCP tools cover discovery and shallow lookup. The seventh, {" "}
             <code className="bg-slate-800 px-1.5 py-0.5 rounded text-amber-300 text-sm">
               get_deep_signal
             </code>{" "}
-            — runs at €0.19/call with misses free. Zero rate limits inside
+runs at €0.19/call with misses free. Zero rate limits inside
             quota. ~200ms median.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 pt-1">
@@ -200,7 +200,7 @@ export default function ForBuildersPage() {
               href={STRIPE_AGENT_CREDITS}
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold text-base shadow-lg shadow-amber-500/30 transition-colors"
             >
-              Buy 100 credits — €19 <span aria-hidden="true">→</span>
+              Buy 100 credits, €19 <span aria-hidden="true">→</span>
             </a>
             <a
               href="#deep-signal"
@@ -252,11 +252,11 @@ export default function ForBuildersPage() {
             That&rsquo;s the only durable difference between an agent that
             briefs investors after the fact and one that briefs them before
             the round closes. Same LLM, same prompt, completely different
-            output — because the input is forward-looking instead of lagging.
+            output, because the input is forward-looking instead of lagging.
           </p>
           <p className="text-amber-200 text-sm italic leading-relaxed border-l-2 border-amber-700/50 pl-4">
             &ldquo;The deck lags the code by 21 to 47 days.&rdquo;{" "}
-            <span className="not-italic text-gray-400">— {DATA_NERD_NAME}</span>
+            <span className="not-italic text-gray-400">{DATA_NERD_NAME}</span>
           </p>
         </section>
 
@@ -264,14 +264,14 @@ export default function ForBuildersPage() {
         <section className="space-y-5">
           <div className="space-y-2">
             <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">
-              Six free MCP tools — distribution magnet, never gated
+              Six free MCP tools, distribution magnet, never gated
             </p>
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-100">
               Start here. Free, no signup, no API key.
             </h2>
             <p className="text-gray-400 text-sm">
               The free six cover discovery and shallow lookup. Most agents
-              never need to upgrade — the seventh tool is for when you&rsquo;ve
+              never need to upgrade, the seventh tool is for when you&rsquo;ve
               identified a target and need report-grade output for an
               investor brief.
             </p>
@@ -319,7 +319,7 @@ export default function ForBuildersPage() {
         >
           <div className="space-y-2">
             <p className="text-amber-400 text-xs font-semibold uppercase tracking-wider">
-              The seventh tool — pay-per-call deep enrichment
+              The seventh tool, pay-per-call deep enrichment
             </p>
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-100">
               <code className="text-amber-300 font-mono">get_deep_signal</code>{" "}
@@ -327,7 +327,7 @@ export default function ForBuildersPage() {
             </h2>
           </div>
           <p className="text-gray-300 text-base leading-relaxed">
-            Returns a composite 0–100 score, in-sector rank, plain-English
+            Returns a composite 0-100 score, in-sector rank, plain-English
             thesis, top 3 comparables, multi-period history, and a citation
             string. Hits charge one credit. Misses (org not in our universe)
             return{" "}
@@ -338,7 +338,7 @@ export default function ForBuildersPage() {
           </p>
           <div className="rounded-lg border border-slate-800 bg-slate-950 p-5 space-y-3">
             <p className="text-xs font-medium text-amber-400 uppercase tracking-wider">
-              HTTP — direct from any agent runtime
+              HTTP, direct from any agent runtime
             </p>
             <pre className="text-xs text-emerald-300 font-mono overflow-x-auto whitespace-pre">
 {`curl -X POST https://signals.gitdealflow.com/api/agent/deep-signal \\
@@ -349,7 +349,7 @@ export default function ForBuildersPage() {
           </div>
           <div className="rounded-lg border border-amber-700/40 bg-amber-950/30 p-5">
             <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider mb-2">
-              Starter pack — 100 credits
+              Starter pack, 100 credits
             </p>
             <div className="flex items-baseline gap-3 mb-3">
               <p className="text-3xl font-bold text-gray-100">€19</p>
@@ -359,7 +359,7 @@ export default function ForBuildersPage() {
               href={STRIPE_AGENT_CREDITS}
               className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold text-sm transition-colors"
             >
-              Buy 100 credits — €19 →
+              Buy 100 credits, €19 →
             </a>
             <p className="text-gray-400 text-xs mt-2">
               Stripe-hosted checkout. API key delivered in ~30s. Top up any
@@ -368,7 +368,7 @@ export default function ForBuildersPage() {
           </div>
           <div className="rounded-lg border border-sky-700/40 bg-sky-950/20 p-5 space-y-3">
             <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider">
-              Crypto-native alternative — x402 / USDC on Base
+              Crypto-native alternative, x402 / USDC on Base
             </p>
             <p className="text-gray-300 text-sm leading-relaxed">
               Fully autonomous agents with their own wallet can skip the
@@ -381,7 +381,7 @@ export default function ForBuildersPage() {
               >
                 x402 protocol
               </a>
-              . No signup, no API key — same payload, $0.19/call settled per
+              . No signup, no API key, same payload, $0.19/call settled per
               request via HTTP 402. Misses still free.
             </p>
             <pre className="text-xs text-sky-300 font-mono overflow-x-auto whitespace-pre bg-slate-950 border border-slate-800 rounded p-3">
@@ -407,7 +407,7 @@ export default function ForBuildersPage() {
             </li>
             <li className="border-l-4 border-emerald-500 pl-5 py-1">
               <strong className="text-gray-100">Deal-flow assistants in Cursor.</strong>{" "}
-              An angel writes 5–15 cheques a year. Their Cursor agent surfaces
+              An angel writes 5-15 cheques a year. Their Cursor agent surfaces
               the week&rsquo;s ranked list, deep-signals their three favourite
               names, drafts cold outbound, and queues it for review.
             </li>
@@ -437,14 +437,14 @@ export default function ForBuildersPage() {
             <li className="flex gap-3">
               <span className="text-emerald-400 shrink-0 font-bold">•</span>
               <span>
-                Methodology is open — SSRN abstract 6606558, Zenodo dataset
+                Methodology is open, SSRN abstract 6606558, Zenodo dataset
                 with DOI, regression code on GitHub.
               </span>
             </li>
             <li className="flex gap-3">
               <span className="text-emerald-400 shrink-0 font-bold">•</span>
               <span>
-                Output license is permissive — drop the data into briefs,
+                Output license is permissive, drop the data into briefs,
                 products, or training pipelines. Attribution requested,
                 CC&nbsp;BY&nbsp;4.0 on the dataset, MIT-style on responses.
               </span>
@@ -466,7 +466,7 @@ export default function ForBuildersPage() {
               <span className="text-emerald-400 shrink-0 font-bold">•</span>
               <span>
                 Every paid tier (and the free MCP) supports the same toolset
-                — switching surfaces does not change tool names or signatures.
+switching surfaces does not change tool names or signatures.
               </span>
             </li>
           </ul>
@@ -495,7 +495,7 @@ export default function ForBuildersPage() {
             The free tools take three minutes to wire into Claude Desktop or
             Cursor. The paid tool takes one Stripe checkout and a bearer-token
             header. If your agent doesn&rsquo;t produce sharper output after
-            burning the first 100 credits, the credits never expire — and the
+            burning the first 100 credits, the credits never expire, and the
             free six tools stay live regardless.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
@@ -503,7 +503,7 @@ export default function ForBuildersPage() {
               href={STRIPE_AGENT_CREDITS}
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold text-base shadow-lg shadow-amber-500/30 transition-colors"
             >
-              Buy 100 credits — €19 <span aria-hidden="true">→</span>
+              Buy 100 credits, €19 <span aria-hidden="true">→</span>
             </a>
             <Link
               href="/agents"
@@ -522,7 +522,7 @@ export default function ForBuildersPage() {
           tldr="A landing for AI-agent builders shipping deal-flow assistants, investor-briefing agents, sector-research notebooks, or portfolio-overlap detectors. Pitches the free MCP server (six tools) as the discovery layer and get_deep_signal at €0.19/call (€19 = 100 credits, misses free, credits never expire) as the report-grade enrichment endpoint. ~200ms median latency, HMAC-keyed, no rate limits inside quota. Methodology open (SSRN abstract 6606558), output license permissive."
           pageUrl="https://signals.gitdealflow.com/for-builders"
           asOf="2026-05-05"
-          citeAs="VC Deal Flow Signal — For Builders (signals.gitdealflow.com/for-builders)."
+          citeAs="VC Deal Flow Signal, For Builders (signals.gitdealflow.com/for-builders)."
           facts={[
             {
               claim:

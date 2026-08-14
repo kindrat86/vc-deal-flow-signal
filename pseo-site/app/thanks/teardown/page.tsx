@@ -36,7 +36,7 @@ export default function ThanksTeardown() {
           <p className="text-gray-300 text-base leading-relaxed">
             Stripe receipt is in your inbox. The Teardown is hand-written
             from public GitHub data, so the only thing that can&rsquo;t be
-            done at scale is choosing the org &mdash; that comes from you.
+            done at scale is choosing the org, that comes from you.
           </p>
         </header>
 
@@ -74,7 +74,7 @@ export default function ThanksTeardown() {
           </ul>
           <p className="text-gray-400 text-xs leading-relaxed">
             If the org has no public GitHub footprint, you get an immediate
-            €1 refund &mdash; no public commit data means no signal to read.
+            €1 refund, no public commit data means no signal to read.
           </p>
         </section>
 
@@ -87,12 +87,12 @@ export default function ThanksTeardown() {
             <li>The founder confirms within an hour (during EU business hours).</li>
             <li>
               Within 24 hours of confirmation, you get the tweet-length
-              teardown in your inbox &mdash; signal type, 14-day acceleration
+              teardown in your inbox, signal type, 14-day acceleration
               %, kicker insight.
             </li>
             <li>
               €1 credits toward the €7 First Look Pass if you upgrade within
-              7 days &mdash; reply{" "}
+              7 days, reply{" "}
               <code className="text-rose-200 bg-rose-900/40 px-1.5 py-0.5 rounded text-xs">
                 REQUEST CREDIT
               </code>{" "}
@@ -101,7 +101,7 @@ export default function ThanksTeardown() {
           </ol>
         </section>
 
-        {/* Brunson TS §3 Ch 11 — €1 buyers are the highest-velocity tier
+        {/* Brunson TS §3 Ch 11, €1 buyers are the highest-velocity tier
             of the value-ladder. Telegram is the lowest-friction next step
             (no payment, no signup), keeping them inside the orbit while
             the €7 upgrade decision processes. */}
@@ -113,7 +113,7 @@ export default function ThanksTeardown() {
           </p>
           <p className="text-gray-300 text-sm leading-relaxed">
             Skip the upgrade email and go straight to the €7 First Look Pass.
-            The €1 credit applies if you check out within 7 days &mdash;
+            The €1 credit applies if you check out within 7 days -
             effective price, €6.
           </p>
           <p className="pt-2">
@@ -121,7 +121,7 @@ export default function ThanksTeardown() {
               href="/firstlook"
               className="text-amber-300 hover:text-amber-200 text-sm underline decoration-dotted"
             >
-              See the First Look Pass &mdash; €7 →
+              See the First Look Pass, €7 →
             </Link>
           </p>
         </section>

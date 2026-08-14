@@ -15,12 +15,12 @@ export const dynamic = "force-static";
 export const revalidate = 604800;
 
 export const metadata: Metadata = {
-  title: `Niche-down — ${countNiches()} small specific opportunities, indexed by sector`,
+  title: `Niche-down, ${countNiches()} small specific opportunities, indexed by sector`,
   description:
     "The riches are in the niches. We took the GitHub-signal sector map and split each sector into the small, specific opportunities a builder could ship or an early-stage VC could back. 15 sectors, 200 sub-niches, every entry status-flagged for build-vs-invest.",
   alternates: { canonical: "/niche-down" },
   openGraph: {
-    title: `Niche-down — ${countNiches()} small specific opportunities`,
+    title: `Niche-down, ${countNiches()} small specific opportunities`,
     description:
       "15 sectors × 10 sub-niches each. Each entry: build cost, deal velocity, signal shape, build-vs-invest call.",
     url: `${SITE}/niche-down`,
@@ -28,9 +28,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: `Niche-down — ${countNiches()} sub-niches by sector`,
+    title: `Niche-down, ${countNiches()} sub-niches by sector`,
     description:
-      "The riches are in the niches — 200 specific opportunities a builder or VC could move on this quarter.",
+      "The riches are in the niches, 200 specific opportunities a builder or VC could move on this quarter.",
   },
 };
 
@@ -45,7 +45,7 @@ export default function NicheDownHubPage() {
         "@type": "WebPage",
         "@id": `${SITE}/niche-down`,
         url: `${SITE}/niche-down`,
-        name: `Niche-down — ${totalNiches} small specific opportunities, indexed by sector`,
+        name: `Niche-down, ${totalNiches} small specific opportunities, indexed by sector`,
         description:
           "Every GitHub-signal sector, split into the 10 most fundable small niches. Each leaf carries build cost, deal velocity, signal shape, and a build-vs-invest call.",
         speakable: {
@@ -71,7 +71,7 @@ export default function NicheDownHubPage() {
           item: {
             "@type": "WebPage",
             "@id": `${SITE}/niche-down/${s.slug}`,
-            name: `${s.name} — ${s.niches.length} sub-niches`,
+            name: `${s.name}, ${s.niches.length} sub-niches`,
             description: s.shortPitch,
           },
         })),
@@ -110,7 +110,7 @@ export default function NicheDownHubPage() {
           >
             One mixed list of &ldquo;hot sectors&rdquo; isn&rsquo;t useful for
             builders or seed-stage investors. The actual opportunities are{" "}
-            <em>inside</em> each sector — small, specific, often unbuilt. So we
+            <em>inside</em> each sector, small, specific, often unbuilt. So we
             took the GitHub-signal sector map and split each one into the 10
             sub-niches a builder could ship this quarter or an early-stage VC
             could write a first cheque into next week.
@@ -181,7 +181,7 @@ export default function NicheDownHubPage() {
             >
               GitHub momentum panel
             </Link>{" "}
-            uses — they&rsquo;re the categories under which repositories
+            uses, they&rsquo;re the categories under which repositories
             cluster when we scan the open-source population for engineering
             acceleration.
           </p>
@@ -190,7 +190,7 @@ export default function NicheDownHubPage() {
             where (a) the signal shape suggests something is breaking out, (b)
             an indie team could plausibly build it in a quarter or less, and
             (c) an early-stage check would be a reasonable first move. We
-            don&rsquo;t name the founders we track inside the paid product —
+            don&rsquo;t name the founders we track inside the paid product -
             that&rsquo;s the buyer&rsquo;s edge. The category-level commentary
             here is fair game.
           </p>
@@ -208,23 +208,21 @@ export default function NicheDownHubPage() {
           </h2>
           <ul className="text-gray-300 text-base leading-relaxed space-y-2 list-disc pl-5">
             <li>
-              <span className="text-sky-200 font-semibold">Build cost</span> —
-              weekend, month, quarter, or team build. How big the upfront
+              <span className="text-sky-200 font-semibold">Build cost</span>: weekend, month, quarter, or team build. How big the upfront
               commitment is for an indie / small team.
             </li>
             <li>
               <span className="text-sky-200 font-semibold">Deal velocity</span>{" "}
-              — trickle, steady, hot, or frothy. How fast funded companies are
+trickle, steady, hot, or frothy. How fast funded companies are
               landing in the category right now.
             </li>
             <li>
               <span className="text-sky-200 font-semibold">Signal shape</span>{" "}
-              — what the GitHub-trending pattern looks like when a repository
+what the GitHub-trending pattern looks like when a repository
               in this niche is breaking out.
             </li>
             <li>
-              <span className="text-sky-200 font-semibold">Our take</span> —
-              the 2-3 sentence build-vs-invest call.
+              <span className="text-sky-200 font-semibold">Our take</span>: the 2-3 sentence build-vs-invest call.
             </li>
           </ul>
           <div className="flex flex-col sm:flex-row gap-3 pt-2">
@@ -256,7 +254,7 @@ export default function NicheDownHubPage() {
           <p className="text-gray-300 text-base leading-relaxed">
             The map above is the category view. The weekly Acceleration Watch
             emails you the specific companies whose engineering is accelerating
-            right now — ranked, in plain English, no code required. Free to
+            right now, ranked, in plain English, no code required. Free to
             start. Or test one sector for €7.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 pt-2">

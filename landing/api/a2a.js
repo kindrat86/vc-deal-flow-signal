@@ -18,7 +18,7 @@ const agentCard = {
 const faqs = [
   {"q": "What is GitDealFlow?", "a": "GitDealFlow tracks startup engineering acceleration from public GitHub data to help investors discover high-momentum companies before funding announcements."},
   {"q": "How does engineering momentum signal work?", "a": "We analyze commit velocity, star growth, and contributor trends over 90-day windows to identify startups with accelerating development activity."},
-  {"q": "What cities and sectors are tracked?", "a": "Startups across AI, fintech, devtools, and more — in cities including London, Berlin, Amsterdam, Paris, Austin, and San Francisco."}
+  {"q": "What cities and sectors are tracked?", "a": "Startups across AI, fintech, devtools, and more, in cities including London, Berlin, Amsterdam, Paris, Austin, and San Francisco."}
 ];
 
 export default function handler(req, res) {

@@ -3,16 +3,16 @@
 import { useCallback, type ReactNode } from "react";
 
 /**
- * WalkthroughCtaLink — fires the `walkthrough-cta` CustomEvent that
+ * WalkthroughCtaLink, fires the `walkthrough-cta` CustomEvent that
  * <WalkthroughVariantTracker /> listens for, then lets the browser handle
  * the navigation normally.
  *
  * This is split out so the variant pages can keep their CTA buttons
  * declarative (one element per close, no per-page event-handler boilerplate)
- * while the tracker component stays decoupled — adding a new CTA on either
+ * while the tracker component stays decoupled, adding a new CTA on either
  * page just requires using this wrapper.
  *
- * Brunson Expert Secrets §4 Ch 19 — Test, Test, Test. Every CTA on the
+ * Brunson Expert Secrets §4 Ch 19, Test, Test, Test. Every CTA on the
  * variant pages emits a click event with `kind` so we can segment by close
  * type (primary buy, signup fallback) inside PostHog.
  */
@@ -43,11 +43,11 @@ export default function WalkthroughCtaLink({
         })
       );
     } catch {
-      // Non-fatal — click should still navigate.
+      // Non-fatal, click should still navigate.
     }
   }, [href, kind]);
 
-  // External Stripe + apex signup URLs need to leave SPA — using <a>, not
+  // External Stripe + apex signup URLs need to leave SPA, using <a>, not
   // <Link>. The CTA destinations on these pages are all cross-origin.
   return (
     <a href={href} className={className} onClick={onClick}>

@@ -4,14 +4,14 @@ import Link from "next/link";
 const PORTAL_URL = "https://gitdealflow.refgrow.com";
 
 export const metadata: Metadata = {
-  title: "Affiliate Program — 20% Lifetime Commission on GitDealFlow",
+  title: "Affiliate Program, 20% Lifetime Commission on GitDealFlow",
   description:
     "Earn 20% lifetime recurring commission promoting VC Deal Flow Signal. €399 per Sector Sweep referral. €19.40/mo per Insider Circle subscriber, forever. 60-day cookie. Monthly payouts via Stripe.",
   alternates: {
     canonical: "/affiliates",
   },
   openGraph: {
-    title: "GitDealFlow Affiliate Program — 20% Lifetime",
+    title: "GitDealFlow Affiliate Program, 20% Lifetime",
     description:
       "20% lifetime commission. €399 per Sector Sweep, €19.40/mo per Insider sub. 60-day cookie. Monthly Stripe payouts.",
     url: "https://signals.gitdealflow.com/affiliates",
@@ -95,7 +95,7 @@ export default function AffiliatesPage() {
             name: "When do I get paid?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Monthly payouts via Stripe, with a €50 minimum payout threshold. Earnings are held for 60 days from the conversion date — twice the 30-day customer refund window — so a clawback is impossible if a customer cancels.",
+              text: "Monthly payouts via Stripe, with a €50 minimum payout threshold. Earnings are held for 60 days from the conversion date, twice the 30-day customer refund window, so a clawback is impossible if a customer cancels.",
             },
           },
           {
@@ -111,7 +111,7 @@ export default function AffiliatesPage() {
             name: "Are there channels where I can't promote?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Yes. We don't allow brand-keyword bidding on Google Ads (bidding on 'GitDealFlow' or 'gitdealflow.com' cannibalizes our own SEM). We don't allow impersonation of the founder or the brand. Some Reddit subreddits (r/EntrepreneurRideAlong, r/venturecapital) auto-remove affiliate posts — please follow each platform's rules. The full prohibited-channels list is on the program spec linked in your affiliate dashboard.",
+              text: "Yes. We don't allow brand-keyword bidding on Google Ads (bidding on 'GitDealFlow' or 'gitdealflow.com' cannibalizes our own SEM). We don't allow impersonation of the founder or the brand. Some Reddit subreddits (r/EntrepreneurRideAlong, r/venturecapital) auto-remove affiliate posts, please follow each platform's rules. The full prohibited-channels list is on the program spec linked in your affiliate dashboard.",
             },
           },
           {
@@ -119,7 +119,7 @@ export default function AffiliatesPage() {
             name: "How do I sign up?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Visit gitdealflow.refgrow.com, register with your email, and your unique referral link is generated immediately. No approval queue — you can start sharing within 60 seconds.",
+              text: "Visit gitdealflow.refgrow.com, register with your email, and your unique referral link is generated immediately. No approval queue, you can start sharing within 60 seconds.",
             },
           },
         ],
@@ -231,7 +231,7 @@ export default function AffiliatesPage() {
               Publishers we want
             </p>
             <p className="text-gray-400 text-xs leading-relaxed">
-              50 named newsletter writers, podcast hosts, communities — with
+              50 named newsletter writers, podcast hosts, communities, with
               outreach status and pitch templates.
             </p>
           </Link>
@@ -244,7 +244,7 @@ export default function AffiliatesPage() {
           <div className="grid sm:grid-cols-2 gap-4 mb-4">
             <div className="rounded-lg border border-slate-800 bg-slate-900 p-6">
               <p className="text-xs font-medium text-sky-500 uppercase tracking-wider mb-2">
-                Sector Sweep — one-time
+                Sector Sweep, one-time
               </p>
               <p className="text-3xl font-bold text-emerald-400 mb-1">€399</p>
               <p className="text-gray-400 text-sm">
@@ -254,7 +254,7 @@ export default function AffiliatesPage() {
             </div>
             <div className="rounded-lg border border-slate-800 bg-slate-900 p-6">
               <p className="text-xs font-medium text-sky-500 uppercase tracking-wider mb-2">
-                Insider Circle — recurring
+                Insider Circle, recurring
               </p>
               <p className="text-3xl font-bold text-emerald-400 mb-1">
                 €19.40<span className="text-base text-gray-400">/mo</span>
@@ -389,27 +389,27 @@ export default function AffiliatesPage() {
             <li className="flex gap-3">
               <span className="text-emerald-400 mt-0.5">✓</span>
               Newsletter writers covering venture, alt-data, or developer
-              tooling — recommend GitDealFlow as a tool your readers use
+              tooling, recommend GitDealFlow as a tool your readers use
             </li>
             <li className="flex gap-3">
               <span className="text-emerald-400 mt-0.5">✓</span>
-              Communities of scout angels and emerging fund managers —
+              Communities of scout angels and emerging fund managers -
               workspace pinned-resource posts, Slack/Discord recommendations
             </li>
             <li className="flex gap-3">
               <span className="text-emerald-400 mt-0.5">✓</span>
               Developer-investor influencers on Twitter, Substack, or YouTube
-              — pre-roll mentions, sponsored thread placements
+pre-roll mentions, sponsored thread placements
             </li>
             <li className="flex gap-3">
               <span className="text-emerald-400 mt-0.5">✓</span>
-              VC tooling reviewers — comparison posts, alternative-to articles
+              VC tooling reviewers, comparison posts, alternative-to articles
             </li>
             <li className="flex gap-3">
               <span className="text-emerald-400 mt-0.5">✓</span>
               Anyone whose audience cares about finding venture-backed startups
               before they fundraise (the SSRN paper is a descriptive 219-observation panel; the
-              21–47-day lead is our hypothesis, validated on /scorecard)
+              21-47-day lead is our hypothesis, validated on /scorecard)
             </li>
           </ul>
         </section>
@@ -444,8 +444,7 @@ export default function AffiliatesPage() {
             <li className="flex gap-3">
               <span className="text-rose-400 mt-0.5">✗</span>
               <span>
-                <strong className="text-gray-200">Spam tactics</strong> —
-                bulk-DMs, comment spam, scraped-list cold email, fake-account
+                <strong className="text-gray-200">Spam tactics</strong>: bulk-DMs, comment spam, scraped-list cold email, fake-account
                 amplification.
               </span>
             </li>
@@ -472,7 +471,7 @@ export default function AffiliatesPage() {
                 <strong className="text-gray-200">
                   Posting where it&apos;s against platform rules
                 </strong>{" "}
-                — e.g. r/EntrepreneurRideAlong (auto-removes any URL),
+e.g. r/EntrepreneurRideAlong (auto-removes any URL),
                 r/venturecapital (auto-removes product posts). Follow each
                 platform&apos;s self-promotion guidelines.
               </span>
@@ -480,8 +479,7 @@ export default function AffiliatesPage() {
             <li className="flex gap-3">
               <span className="text-rose-400 mt-0.5">✗</span>
               <span>
-                <strong className="text-gray-200">FTC non-disclosure</strong> —
-                US affiliates must disclose paid relationships per 16 CFR Part
+                <strong className="text-gray-200">FTC non-disclosure</strong>: US affiliates must disclose paid relationships per 16 CFR Part
                 255. We provide a one-line disclosure template in the
                 affiliate dashboard.
               </span>
@@ -492,7 +490,7 @@ export default function AffiliatesPage() {
         <div className="rounded-lg border border-sky-500/30 bg-sky-500/5 p-6 mb-12">
           <p className="text-gray-100 font-medium mb-2">Ready to start?</p>
           <p className="text-gray-400 text-sm leading-relaxed mb-4">
-            Sign up takes 60 seconds — your referral link is generated
+            Sign up takes 60 seconds, your referral link is generated
             immediately. The full program spec, brand assets, and creative
             templates are inside the affiliate dashboard.
           </p>
@@ -507,12 +505,12 @@ export default function AffiliatesPage() {
         </div>
 
         {/* ============================================================ */}
-        {/* BRUNSON SWIPE KIT — added 2026-05-05 per Russell audit (Traffic #17). */}
+        {/* BRUNSON SWIPE KIT, added 2026-05-05 per Russell audit (Traffic #17). */}
         {/* Pre-written copy across 6 channels. Affiliates do zero writing. */}
         {/* ============================================================ */}
         <section className="mb-12" aria-label="Affiliate swipe kit">
           <h2 className="text-xl font-semibold text-gray-100 mb-3">
-            The swipe kit — 6 channels, zero writing required
+            The swipe kit, 6 channels, zero writing required
           </h2>
           <p className="text-gray-400 text-sm leading-relaxed mb-3">
             Every affiliate program promises &quot;creative templates.&quot; Most
@@ -526,29 +524,29 @@ export default function AffiliatesPage() {
             <Link href="/affiliates/top-partners" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
               Dream 50 publisher roster
             </Link>{" "}
-            — 50 named partners we&apos;d like to hear from, with the exact
+50 named partners we&apos;d like to hear from, with the exact
             pitch templates we send.
           </p>
 
           {/* Twitter / X */}
           <div className="rounded-lg border border-slate-800 bg-slate-900 p-6 mb-4">
             <p className="text-sky-400 text-xs font-semibold uppercase tracking-wider mb-2">
-              Channel 1 — Twitter / X (single tweet)
+              Channel 1, Twitter / X (single tweet)
             </p>
-            <pre className="text-gray-300 text-sm leading-relaxed whitespace-pre-wrap font-sans bg-slate-950 border border-slate-800 rounded p-4 mb-3">{`I keep telling people about this. GitDealFlow scans 369 GitHub orgs every Sunday and tells you which startups are accelerating before they raise. The pattern preceded 219 startup-period observations by 21–47 days in their SSRN paper.
+            <pre className="text-gray-300 text-sm leading-relaxed whitespace-pre-wrap font-sans bg-slate-950 border border-slate-800 rounded p-4 mb-3">{`I keep telling people about this. GitDealFlow scans 350+ GitHub orgs every Sunday and tells you which startups are accelerating before they raise. The pattern preceded 219 startup-period observations by 21-47 days in their SSRN paper.
 
 Free Sunday digest, no card: YOURLINK`}</pre>
-            <p className="text-gray-400 text-xs">~245 chars. Add the SSRN link if you have room. Pin if you have a small audience — the share rate compounds.</p>
+            <p className="text-gray-400 text-xs">~245 chars. Add the SSRN link if you have room. Pin if you have a small audience, the share rate compounds.</p>
           </div>
 
           {/* Newsletter recommendation */}
           <div className="rounded-lg border border-slate-800 bg-slate-900 p-6 mb-4">
             <p className="text-sky-400 text-xs font-semibold uppercase tracking-wider mb-2">
-              Channel 2 — Newsletter recommendation block
+              Channel 2, Newsletter recommendation block
             </p>
             <pre className="text-gray-300 text-sm leading-relaxed whitespace-pre-wrap font-sans bg-slate-950 border border-slate-800 rounded p-4 mb-3">{`👀 What I'm reading: VC Deal Flow Signal
 
-Every Sunday, the Data Nerd sends 5 startups whose GitHub commit velocity just spiked — typically 21 to 47 days before they announce a fundraise. The methodology is published on SSRN with a 219-startup panel; the dataset is on Zenodo; the lens is the part that didn't exist before.
+Every Sunday, the Data Nerd sends 5 startups whose GitHub commit velocity just spiked, typically 21 to 47 days before they announce a fundraise. The methodology is published on SSRN with a 219-startup panel; the dataset is on Zenodo; the lens is the part that didn't exist before.
 
 If you spend any time on alt-data for venture, this is the lowest-friction one I've found.
 
@@ -559,39 +557,39 @@ Free Sunday digest → YOURLINK`}</pre>
           {/* dev.to / Substack */}
           <div className="rounded-lg border border-slate-800 bg-slate-900 p-6 mb-4">
             <p className="text-sky-400 text-xs font-semibold uppercase tracking-wider mb-2">
-              Channel 3 — dev.to / Substack post (200-word footer)
+              Channel 3, dev.to / Substack post (200-word footer)
             </p>
             <pre className="text-gray-300 text-sm leading-relaxed whitespace-pre-wrap font-sans bg-slate-950 border border-slate-800 rounded p-4 mb-3">{`---
 
-Loved this post and want to find startups like the ones in it before they raise? I use VC Deal Flow Signal — a free weekly Sunday digest that ranks 140 startup GitHub orgs by commit velocity. The methodology behind it is the SSRN-published 219-observation panel; the 21-to-47-day lead time is our hypothesis, validated openly on /scorecard.
+Loved this post and want to find startups like the ones in it before they raise? I use VC Deal Flow Signal, a free weekly Sunday digest that ranks 140 startup GitHub orgs by commit velocity. The methodology behind it is the SSRN-published 219-observation panel; the 21-to-47-day lead time is our hypothesis, validated openly on /scorecard.
 
 If you write checks, scout for a fund, or just like watching engineering data, the digest is free forever: YOURLINK
 
-(Disclosure: affiliate link — costs you nothing, helps me keep writing.)`}</pre>
-            <p className="text-gray-400 text-xs">FTC-compliant disclosure included. Don&apos;t edit it out — it kills trust faster than it lifts conversion.</p>
+(Disclosure: affiliate link, costs you nothing, helps me keep writing.)`}</pre>
+            <p className="text-gray-400 text-xs">FTC-compliant disclosure included. Don&apos;t edit it out, it kills trust faster than it lifts conversion.</p>
           </div>
 
           {/* Discord / Slack community */}
           <div className="rounded-lg border border-slate-800 bg-slate-900 p-6 mb-4">
             <p className="text-sky-400 text-xs font-semibold uppercase tracking-wider mb-2">
-              Channel 4 — Discord / Slack community drop
+              Channel 4, Discord / Slack community drop
             </p>
             <pre className="text-gray-300 text-sm leading-relaxed whitespace-pre-wrap font-sans bg-slate-950 border border-slate-800 rounded p-4 mb-3">{`if anyone here is sourcing seed/Series A:
 
-GitDealFlow tracks GitHub commit velocity across 369 startup orgs and surfaces the ones accelerating fast. The free Sunday digest gives you 5 names a week — they have a research paper on SSRN with 219 startup-period observations that the signal preceded by 21-47 days.
+GitDealFlow tracks GitHub commit velocity across 350+ startup orgs and surfaces the ones accelerating fast. The free Sunday digest gives you 5 names a week, they have a research paper on SSRN with 219 startup-period observations that the signal preceded by 21-47 days.
 
 free, no card, weekly email: YOURLINK`}</pre>
             <p className="text-gray-400 text-xs">For #investors, #vc, #startups channels. Drop once per quarter per community max.</p>
           </div>
 
-          {/* Cold email — for established affiliates */}
+          {/* Cold email, for established affiliates */}
           <div className="rounded-lg border border-slate-800 bg-slate-900 p-6 mb-4">
             <p className="text-sky-400 text-xs font-semibold uppercase tracking-wider mb-2">
-              Channel 5 — 1:1 email to one investor friend (warm)
+              Channel 5, 1:1 email to one investor friend (warm)
             </p>
             <pre className="text-gray-300 text-sm leading-relaxed whitespace-pre-wrap font-sans bg-slate-950 border border-slate-800 rounded p-4 mb-3">{`Subject: thought you'd like this dataset
 
-Hey [Name] —
+Hey [Name] -
 
 You know how we always say "wish I'd seen [Company X] before they were on AngelList trending"?
 
@@ -608,9 +606,9 @@ Sign up here if you want: YOURLINK
           {/* Reddit / IH */}
           <div className="rounded-lg border border-slate-800 bg-slate-900 p-6 mb-8">
             <p className="text-sky-400 text-xs font-semibold uppercase tracking-wider mb-2">
-              Channel 6 — Reddit / IndieHackers comment (no-link version)
+              Channel 6, Reddit / IndieHackers comment (no-link version)
             </p>
-            <pre className="text-gray-300 text-sm leading-relaxed whitespace-pre-wrap font-sans bg-slate-950 border border-slate-800 rounded p-4 mb-3">{`On the question of finding startups before consensus: the cleanest leading indicator I've found is GitHub commit velocity. There's a service called VC Deal Flow Signal (search for it — username gives away free Sunday digest with 5 names/wk). They published an SSRN paper showing 219 startup-period observations were preceded by acceleration spikes by an average of 21-47 days.
+            <pre className="text-gray-300 text-sm leading-relaxed whitespace-pre-wrap font-sans bg-slate-950 border border-slate-800 rounded p-4 mb-3">{`On the question of finding startups before consensus: the cleanest leading indicator I've found is GitHub commit velocity. There's a service called VC Deal Flow Signal (search for it, username gives away free Sunday digest with 5 names/wk). They published an SSRN paper showing 219 startup-period observations were preceded by acceleration spikes by an average of 21-47 days.
 
 Not affiliated [or: affiliate disclosure required], just one of the cheapest sources of signal I've found.`}</pre>
             <p className="text-gray-400 text-xs">For subs that auto-remove links (r/venturecapital, r/EntrepreneurRideAlong). Lower CTR but won&apos;t get auto-modded.</p>
@@ -666,8 +664,8 @@ Not affiliated [or: affiliate disclosure required], just one of the cheapest sou
               </h3>
               <p className="text-gray-400 text-sm leading-relaxed">
                 Monthly via Stripe, with a €50 minimum payout threshold.
-                Earnings are held for 60 days from the conversion date —
-                twice the 30-day customer refund window — so a clawback is
+                Earnings are held for 60 days from the conversion date -
+                twice the 30-day customer refund window, so a clawback is
                 impossible if a customer cancels.
               </p>
             </div>
@@ -681,7 +679,7 @@ Not affiliated [or: affiliate disclosure required], just one of the cheapest sou
                 40-page sector report) and €197/mo recurring Insider Circle
                 (8-object stack including the weekly digest, dataset access,
                 and research walkthroughs). The free Signal Digest is also
-                attribution-eligible — if a free subscriber later upgrades,
+                attribution-eligible, if a free subscriber later upgrades,
                 the commission still tracks back to you within the 60-day
                 window.
               </p>

@@ -1,5 +1,5 @@
 /**
- * /press/atom.xml — dedicated Atom 1.0 feed for press releases.
+ * /press/atom.xml, dedicated Atom 1.0 feed for press releases.
  *
  * Companion to /press/rss.xml. Atom 1.0 (RFC 4287) because Feedly,
  * Reeder, NetNewsWire, and most modern AI/agent feed pipelines resolve
@@ -61,7 +61,7 @@ export async function GET() {
       <name>The Data Nerd</name>
       <uri>${SITE}/about</uri>
     </author>
-    <rights>CC BY 4.0 — VC Deal Flow Signal</rights>
+    <rights>CC BY 4.0, VC Deal Flow Signal</rights>
 ${categories}
   </entry>`;
     })
@@ -69,13 +69,13 @@ ${categories}
 
   const feed = `<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>VC Deal Flow Signal — Press Releases</title>
+  <title>VC Deal Flow Signal: Press Releases</title>
   <subtitle>Wire-ready press releases. Engineering acceleration signals for venture capital. CC BY 4.0.</subtitle>
   <link href="${SITE}/press/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="${SITE}/press" rel="alternate" type="text/html"/>
   <id>${SITE}/press/atom.xml</id>
   <updated>${updated}</updated>
-  <rights>CC BY 4.0 — VC Deal Flow Signal</rights>
+  <rights>CC BY 4.0, VC Deal Flow Signal</rights>
   <generator uri="${SITE}">VC Deal Flow Signal press distribution</generator>
 ${entries}
 </feed>`;

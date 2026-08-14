@@ -8,12 +8,12 @@ import StartHereArchetypeQuiz from "@/components/StartHereArchetypeQuiz";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Start Here — what GitDealFlow is, and where to begin",
+  title: "Start Here, what GitDealFlow is, and where to begin",
   description:
     "Three-minute primer for the cold visitor. 90-second identity quiz routes buyers, subscribers, and engineer-curious to the right next page. What we measure (GitHub commit-velocity acceleration), why (47 days before the deck), and the four entry points sized to your week.",
   alternates: { canonical: "/start-here" },
   openGraph: {
-    title: "Start Here — GitDealFlow primer",
+    title: "Start Here, GitDealFlow primer",
     description:
       "Three-minute primer + four entry points sized to your week.",
     url: "https://signals.gitdealflow.com/start-here",
@@ -33,7 +33,7 @@ const PATHS = [
   {
     minutes: "12 min",
     label: "Read the walkthrough",
-    desc: "The full epiphany — core claim, three objections collapsed, stack, and the four closes. Read it the way you'd read a long-form blog post.",
+    desc: "The full epiphany, core claim, three objections collapsed, stack, and the four closes. Read it the way you'd read a long-form blog post.",
     href: "/walkthrough",
     badge: "Convinced you want to read more",
     color: "violet",
@@ -57,9 +57,9 @@ const PATHS = [
   {
     minutes: "90 sec",
     label: "Take the price-tier quiz",
-    desc: "Four questions on check-size, thesis, time, and edge — routed to one of the four pricing tiers. Different from the identity quiz above; this one assumes you're already buying and just need the right rung.",
+    desc: "Four questions on check-size, thesis, time, and edge, routed to one of the four pricing tiers. Different from the identity quiz above; this one assumes you're already buying and just need the right rung.",
     href: "/quiz",
-    badge: "Already buying — pick a tier",
+    badge: "Already buying, pick a tier",
     color: "indigo",
   },
 ] as const;
@@ -115,7 +115,7 @@ export default function StartHerePage() {
       {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/start-here",
-        name: "Start Here — GitDealFlow primer",
+        name: "Start Here, GitDealFlow primer",
         description:
           "Three-minute primer on what GitDealFlow is, what it measures, and where to begin.",
         speakable: {
@@ -159,8 +159,8 @@ export default function StartHerePage() {
             Hi. <span className="text-emerald-400">Here&rsquo;s what this is</span> in three minutes.
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-            If you came in cold — from a search, a thread, a podcast mention,
-            an agent that found us — read this page and pick the door at the
+            If you came in cold, from a search, a thread, a podcast mention,
+            an agent that found us, read this page and pick the door at the
             bottom that fits the time you have.
           </p>
         </header>
@@ -169,8 +169,8 @@ export default function StartHerePage() {
           <h2 className="text-2xl font-bold text-gray-100">The 90-second version</h2>
           <p className="text-gray-300 text-base leading-relaxed">
             Crunchbase tells you the day a startup raised. <strong className="text-gray-100">We tell
-            you the day they started preparing to raise — 21 to 47 days
-            earlier — by reading their public GitHub.</strong>
+            you the day they started preparing to raise, 21 to 47 days
+            earlier, by reading their public GitHub.</strong>
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
             We track 100+ venture-backed orgs across 15 sectors. Every
@@ -230,7 +230,7 @@ export default function StartHerePage() {
               If you only do one thing: get the free Acceleration Watch.
             </h2>
             <p className="text-gray-300 text-base leading-relaxed">
-              Five startups every Monday — the ones whose public code shipped
+              Five startups every Monday, the ones whose public code shipped
               harder than last week. Sector-tagged, 6-week historical context.
               No card, no code required to read it. It&rsquo;s the lowest-risk
               way to see whether the signal is worth more of your time.
@@ -252,7 +252,7 @@ export default function StartHerePage() {
           </h2>
           <p className="text-gray-400 text-sm leading-relaxed">
             Not ready to subscribe yet? Read first. Each of these is the same
-            argument at a different length — pick the one that fits your week.
+            argument at a different length, pick the one that fits your week.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
             {PATHS.map((p) => (
@@ -281,7 +281,7 @@ export default function StartHerePage() {
           </h2>
           <p className="text-gray-400 text-sm leading-relaxed">
             Want more than the weekly email? Here are the paid doors.
-            There&rsquo;s no wrong one — only doors sized to different check
+            There&rsquo;s no wrong one, only doors sized to different check
             sizes. None of them require you to read code.
           </p>
           <ul className="space-y-3">
@@ -333,7 +333,7 @@ export default function StartHerePage() {
             Six read-only tools inside Claude / Cursor / any MCP host. Ask{" "}
             <em>&ldquo;which AI infra startups are accelerating this
             week?&rdquo;</em> and get the answer inline. Five core tools
-            stay free forever — we add new paid tools alongside them, never
+            stay free forever, we add new paid tools alongside them, never
             gate the existing ones.
           </p>
           <code className="block bg-slate-900 border border-slate-800 rounded px-3 py-2 text-amber-300 text-sm font-mono">
@@ -350,20 +350,20 @@ export default function StartHerePage() {
         <section className="space-y-3 border-t border-slate-800 pt-8">
           <h2 className="text-xl font-bold text-gray-100">If you want the long version</h2>
           <ul className="space-y-2 text-gray-300 text-sm leading-relaxed">
-            <li>→ <Link href="/origin" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">Origin</Link> — the founder backstory behind the product.</li>
-            <li>→ <Link href="/about/founder" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">About the founder</Link> — identity, parables, the polarity that drew you here.</li>
-            <li>→ <Link href="/funnels" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">Funnel Hub</Link> — every entry point to the product, mapped on one page.</li>
-            <li>→ <Link href="/target-list" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">Top 100</Link> — the 100 voices we read on the engineering-signal frontier.</li>
-            <li>→ <Link href="/distribution" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">Distribution</Link> — every channel where we publish + every feed we expose.</li>
-            <li>→ <Link href="/manifesto" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">Manifesto</Link> — what we believe, what we&rsquo;re replacing, who&rsquo;s on the bus.</li>
-            <li>→ <Link href="/roadmap" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">Roadmap</Link> — what&rsquo;s shipping next + what&rsquo;s on the public bet.</li>
-            <li>→ <Link href="/methodology" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">Methodology</Link> — the regression, the panel, the false-positive controls.</li>
+            <li>→ <Link href="/origin" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">Origin</Link>: the founder backstory behind the product.</li>
+            <li>→ <Link href="/about/founder" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">About the founder</Link>: identity, parables, the polarity that drew you here.</li>
+            <li>→ <Link href="/funnels" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">Funnel Hub</Link>: every entry point to the product, mapped on one page.</li>
+            <li>→ <Link href="/target-list" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">Top 100</Link>: the 100 voices we read on the engineering-signal frontier.</li>
+            <li>→ <Link href="/distribution" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">Distribution</Link>: every channel where we publish + every feed we expose.</li>
+            <li>→ <Link href="/manifesto" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">Manifesto</Link>: what we believe, what we&rsquo;re replacing, who&rsquo;s on the bus.</li>
+            <li>→ <Link href="/roadmap" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">Roadmap</Link>: what&rsquo;s shipping next + what&rsquo;s on the public bet.</li>
+            <li>→ <Link href="/methodology" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">Methodology</Link>: the regression, the panel, the false-positive controls.</li>
           </ul>
         </section>
 
         <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-6">
           Built for cold visitors. The cold-traffic visitor doesn&rsquo;t
-          know us yet — this page exists so they don&rsquo;t have to fight
+          know us yet, this page exists so they don&rsquo;t have to fight
           the rest of the site to find a place to land.
         </p>
       </div>

@@ -7,7 +7,7 @@ import { glossaryTerms, type GlossaryTerm } from "@/content/glossary";
 import SeoCta from "@/components/SeoCta";
 
 export const metadata: Metadata = {
-  title: "Glossary — VC Deal Flow Signal Terms & Definitions",
+  title: "Glossary, VC Deal Flow Signal Terms & Definitions",
   description:
     "Definitions of key terms used in startup deal flow signal analysis: commit velocity, engineering acceleration, contributor growth, signal types, and more. A reference for investors using GitHub data for deal sourcing.",
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
@@ -71,7 +71,7 @@ export default function GlossaryPage() {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/glossary#webpage",
         url: "https://signals.gitdealflow.com/glossary",
-        name: "Glossary — VC Deal Flow Signal Terms & Definitions",
+        name: "Glossary, VC Deal Flow Signal Terms & Definitions",
         description:
           "Definitions of key terms used in startup deal flow signal analysis: commit velocity, engineering acceleration, contributor growth, Scout Score, MCP, A2A, llms.txt, AEO, AIO and more.",
         inLanguage: "en-US",
@@ -100,14 +100,14 @@ export default function GlossaryPage() {
           "https://ssrn.com/abstract=6606558",
         ],
       },
-      // DefinedTermSet — gives glossary terms a controlled-vocabulary
+      // DefinedTermSet, gives glossary terms a controlled-vocabulary
       // identity that retrieval pipelines can consume independently of the
       // FAQPage. Cross-links matching terms to /signals/[type] so the
       // glossary acts as a hub into the formal signal definitions.
       {
         "@type": "DefinedTermSet",
         "@id": "https://signals.gitdealflow.com/glossary#vocabulary",
-        name: "VC Deal Flow Signal — controlled vocabulary",
+        name: "VC Deal Flow Signal, controlled vocabulary",
         description:
           "Canonical definitions of every term used in VC Deal Flow Signal research, methodology, and dashboard. Each term has a stable @id anchor and, where applicable, a cross-link to its formal signal definition.",
         url: "https://signals.gitdealflow.com/glossary",
@@ -182,7 +182,7 @@ export default function GlossaryPage() {
             At a glance
           </h2>
           <p className="text-sky-100 text-sm leading-relaxed">
-            TL;DR — {glossaryTerms.length} self-contained definitions covering
+            TL;DR, {glossaryTerms.length} self-contained definitions covering
             one metric family: how public GitHub activity (commit velocity,
             contributor growth, signal types) is turned into an early
             startup-momentum signal for investors.
@@ -190,7 +190,7 @@ export default function GlossaryPage() {
         </aside>
         <p className="text-gray-400 text-base leading-relaxed mb-10">
           Key terms used in startup engineering signal analysis. Each
-          definition is self-contained — useful for investors evaluating
+          definition is self-contained, useful for investors evaluating
           GitHub-based deal flow data for the first time.
         </p>
 
@@ -199,7 +199,7 @@ export default function GlossaryPage() {
             Read VC content anywhere · don&rsquo;t come back here for every term
           </p>
           <p className="text-gray-300 text-sm leading-relaxed mb-4">
-            Install the <strong className="text-gray-100">VC Term Highlighter</strong> Chrome extension. It underlines every term in this glossary — SAFE, ARR, burn multiple, magic number, all {terms.length} — on any article you read. Hover for the definition, click to jump back here. No telemetry, no remote calls.
+            Install the <strong className="text-gray-100">VC Term Highlighter</strong> Chrome extension. It underlines every term in this glossary, SAFE, ARR, burn multiple, magic number, all {terms.length}, on any article you read. Hover for the definition, click to jump back here. No telemetry, no remote calls.
           </p>
           <div className="flex flex-wrap gap-3">
             <a
@@ -270,7 +270,7 @@ export default function GlossaryPage() {
           ))}
         </div>
 
-        {/* Sister hub — de-orphans the category-grouped /define index (and the
+        {/* Sister hub, de-orphans the category-grouped /define index (and the
             individual term pages it links) from this well-linked page. */}
         <p className="mt-10 text-sm text-gray-400">
           Prefer to browse by category?{" "}

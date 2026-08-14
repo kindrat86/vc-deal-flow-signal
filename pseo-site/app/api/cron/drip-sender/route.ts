@@ -1,10 +1,10 @@
 /**
- * Deferred Drip Sender — daily cron.
+ * Deferred Drip Sender, daily cron.
  *
  * PROBLEM: Resend's `scheduled_at` API rejects any email more than 30 days
  * in the future (HTTP 422). The Soap Opera + Seinfeld sequence spans Day 0
  * through Day 180+. Before this cron existed, every email beyond Day 29 was
- * silently dropped — the verify route logged the 422 and moved on. That
+ * silently dropped, the verify route logged the 422 and moved on. That
  * meant 8+ nurture emails per subscriber (including all tier-specific
  * upsells) never sent.
  *
@@ -80,7 +80,7 @@ async function sendEmail(
   html: string,
 ): Promise<boolean> {
   // Every send from this cron is marketing nurture, so claim the shared daily
-  // slot first. If another system already mailed this person today we skip —
+  // slot first. If another system already mailed this person today we skip -
   // the day stays unmarked, so it retries on a later run.
   if (!(await gateAllows(to, "pseo:drip-sender"))) return false;
   const res = await fetch("https://api.resend.com/emails", {
@@ -156,7 +156,7 @@ export async function GET(request: Request) {
   for (const contact of contacts) {
     scanned++;
 
-    // Skip unsubscribed — never send to opted-out contacts.
+    // Skip unsubscribed, never send to opted-out contacts.
     if (contact.unsubscribed) continue;
 
     const planRaw = contact.properties?.drip_plan;

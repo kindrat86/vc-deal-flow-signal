@@ -36,7 +36,7 @@ export default function OptOutPage() {
       <section className="mb-10" aria-label="Eligibility">
         <h2 className="text-xl font-semibold text-gray-100 mb-3">Who can request removal</h2>
         <p className="text-gray-400 text-sm leading-relaxed">
-          Anyone profiled on a /founder/[handle] page. Requests must come from the verified email associated with the public-figure identity — typically a corporate email matching the affiliation listed on the page, or an email at the domain referenced in the self-published source.
+          Anyone profiled on a /founder/[handle] page. Requests must come from the verified email associated with the public-figure identity, typically a corporate email matching the affiliation listed on the page, or an email at the domain referenced in the self-published source.
         </p>
       </section>
 
@@ -55,7 +55,7 @@ export default function OptOutPage() {
         <ul className="list-disc pl-6 space-y-2 text-gray-400 text-sm leading-relaxed">
           <li>The exact URL of the /founder/[handle] page you want removed.</li>
           <li>A statement that you are the person profiled.</li>
-          <li>Verification — sent from an email at a domain that matches the affiliation or the self-published source already cited on the page.</li>
+          <li>Verification, sent from an email at a domain that matches the affiliation or the self-published source already cited on the page.</li>
         </ul>
       </section>
 
@@ -88,7 +88,7 @@ export default function OptOutPage() {
           Why this opt-out exists
         </p>
         <p className="text-gray-400 text-sm leading-relaxed">
-          /founder/[handle] pages are restricted to public figures who self-publish their GitHub handle. The opt-out exists so that anyone in that group can have the page removed at any time without explanation — public-figure status today does not require permanent indexability.
+          /founder/[handle] pages are restricted to public figures who self-publish their GitHub handle. The opt-out exists so that anyone in that group can have the page removed at any time without explanation, public-figure status today does not require permanent indexability.
         </p>
       </div>
     </div>

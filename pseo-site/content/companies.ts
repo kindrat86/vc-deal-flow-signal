@@ -1,5 +1,5 @@
 /**
- * /signal/[slug] entity pages — per-company GitHub engineering signal reports.
+ * /signal/[slug] entity pages, per-company GitHub engineering signal reports.
  *
  * Seed corpus of public, well-known startups and scale-ups that maintain a
  * visible GitHub org. Each entry powers one /signal/{slug} page with
@@ -8,7 +8,7 @@
  * Privacy posture: only companies whose engineering operations are already
  * matter-of-fact public (the company self-publishes its GitHub org on its
  * homepage, devrel blog, or hiring page). No private orgs, no leaked
- * employee data, no inferred-from-LinkedIn personal data — only signals
+ * employee data, no inferred-from-LinkedIn personal data, only signals
  * derivable from public GitHub events.
  *
  * Signal scores are static placeholders for the v1 ship; a follow-up PR
@@ -38,7 +38,7 @@ export interface Company {
   signalSummary: string;
   whatWeTrack: string;
   whyItMatters: string;
-  // Editorially curated snapshot — NOT a live measurement. See
+  // Editorially curated snapshot, NOT a live measurement. See
   // REFERENCE_PROFILE_REVIEWED below and the honesty note on build().
   publicSignal: {
     momentum: "accelerating" | "steady" | "decelerating" | "unranked";
@@ -54,7 +54,7 @@ export interface Company {
  *
  * HONESTY CONTRACT (2026-07-25): the `publicSignal` figures below
  * (momentum / repos / language bias) are hand-curated editorial values, not
- * live GitHub aggregates — there is no join, and only 11 of these 165
+ * live GitHub aggregates, there is no join, and only 11 of these 165
  * companies appear in the tracked panel at all. Copy on these pages must
  * therefore never claim the numbers are measured, refreshed weekly, or that
  * the site "monitors" the company. It previously did claim exactly that
@@ -67,7 +67,7 @@ export interface Company {
  */
 export const REFERENCE_PROFILE_REVIEWED = "2026-07-25";
 
-// Concise content generator — each entry overrides only the fields that
+// Concise content generator, each entry overrides only the fields that
 // differ. Keeps the seed corpus tight while ensuring every page has
 // unique title, description, intro, and FAQs.
 function build(c: {
@@ -91,14 +91,14 @@ function build(c: {
     homepageUrl: c.homepage,
     sector: c.sector,
     stage: c.stage,
-    description: `${c.name} (${c.sector}, ${stageLabel}) — GitHub org github.com/${c.githubOrg}. ${c.what}`,
-    title: `${c.name} GitHub Engineering Signals (2026) — VC Deal Flow Signal`,
-    metaDescription: `${c.name} public GitHub engineering profile — sector, stage, repo footprint, and language bias, curated as a ${c.sector} benchmark for investors and operators. Reference profile, reviewed ${REFERENCE_PROFILE_REVIEWED}.`,
+    description: `${c.name} (${c.sector}, ${stageLabel}), GitHub org github.com/${c.githubOrg}. ${c.what}`,
+    title: `${c.name} GitHub Engineering Signals (2026), VC Deal Flow Signal`,
+    metaDescription: `${c.name} public GitHub engineering profile, sector, stage, repo footprint, and language bias, curated as a ${c.sector} benchmark for investors and operators. Reference profile, reviewed ${REFERENCE_PROFILE_REVIEWED}.`,
     h1: `${c.name} GitHub Engineering Signals`,
-    tagline: `A quantitative view of ${c.name}'s public engineering activity — what we track and why investors watch it.`,
-    intro: `${c.name} (${c.sector}, ${stageLabel}) is a public technical company VC Deal Flow Signal profiles as a ${c.sector} benchmark, via the public github.com/${c.githubOrg} org. ${c.what} Investors who source deals in ${c.sector} often watch ${c.name} as a reference point — the kind of commit velocity, contributor influx, and infrastructure repo growth that established players sustain is the curve early-stage companies get measured against.`,
-    signalSummary: `${c.name}: momentum ${c.momentum}, ${c.repos}, ${c.lang}. Curated benchmark figures reviewed ${REFERENCE_PROFILE_REVIEWED} — not a live measurement.`,
-    whatWeTrack: `Profiled through the same six-signal lens applied to the tracked panel — commit velocity, contributor influx, repo-creation pulse, language shifts, issue cadence. Definitions: /methodology.`,
+    tagline: `A quantitative view of ${c.name}'s public engineering activity, what we track and why investors watch it.`,
+    intro: `${c.name} (${c.sector}, ${stageLabel}) is a public technical company VC Deal Flow Signal profiles as a ${c.sector} benchmark, via the public github.com/${c.githubOrg} org. ${c.what} Investors who source deals in ${c.sector} often watch ${c.name} as a reference point, the kind of commit velocity, contributor influx, and infrastructure repo growth that established players sustain is the curve early-stage companies get measured against.`,
+    signalSummary: `${c.name}: momentum ${c.momentum}, ${c.repos}, ${c.lang}. Curated benchmark figures reviewed ${REFERENCE_PROFILE_REVIEWED}, not a live measurement.`,
+    whatWeTrack: `Profiled through the same six-signal lens applied to the tracked panel, commit velocity, contributor influx, repo-creation pulse, language shifts, issue cadence. Definitions: /methodology.`,
     whyItMatters: `${c.what} That makes ${c.name} a useful ${c.sector} reference line: the interesting names are the early-stage orgs whose acceleration now resembles this one's 12-18 months ago. Those are on the tracked panel at /weekly/top-100.`,
     publicSignal: {
       momentum: c.momentum,
@@ -112,7 +112,7 @@ function build(c: {
       },
       {
         question: `Is this a live measurement of ${c.name}?`,
-        answer: `No. The momentum, repo-footprint, and language figures are editorially curated benchmark values, last reviewed ${REFERENCE_PROFILE_REVIEWED} — they do not refresh automatically. Live, weekly-measured signal data covers the tracked startup panel instead: /weekly/top-100. Not investment advice, not an endorsement; ${c.name} has not paid for placement and is not affiliated with VC Deal Flow Signal.`,
+        answer: `No. The momentum, repo-footprint, and language figures are editorially curated benchmark values, last reviewed ${REFERENCE_PROFILE_REVIEWED}, they do not refresh automatically. Live, weekly-measured signal data covers the tracked startup panel instead: /weekly/top-100. Not investment advice, not an endorsement; ${c.name} has not paid for placement and is not affiliated with VC Deal Flow Signal.`,
       },
     ],
     relatedSectors: c.related,
@@ -140,7 +140,7 @@ export const companies: Company[] = [
     homepage: "https://supabase.com",
     sector: "developer-tools",
     stage: "series-c",
-    what: "Open-source Firebase alternative — Postgres-native backend, auth, storage, edge functions. Their commit velocity has compounded steadily since the 2020 launch.",
+    what: "Open-source Firebase alternative, Postgres-native backend, auth, storage, edge functions. Their commit velocity has compounded steadily since the 2020 launch.",
     momentum: "accelerating",
     repos: "200+ active public repos",
     lang: "TypeScript / Go",
@@ -166,7 +166,7 @@ export const companies: Company[] = [
     homepage: "https://posthog.com",
     sector: "analytics",
     stage: "series-c",
-    what: "Open-source product analytics — events, session replay, feature flags, A/B tests, LLM observability, all in one self-hostable platform.",
+    what: "Open-source product analytics, events, session replay, feature flags, A/B tests, LLM observability, all in one self-hostable platform.",
     momentum: "accelerating",
     repos: "100+ active public repos",
     lang: "Python / TypeScript",
@@ -192,7 +192,7 @@ export const companies: Company[] = [
     homepage: "https://convex.dev",
     sector: "database",
     stage: "series-b",
-    what: "Reactive backend platform — database, queries, mutations, file storage, scheduling, all in one TypeScript-native runtime.",
+    what: "Reactive backend platform, database, queries, mutations, file storage, scheduling, all in one TypeScript-native runtime.",
     momentum: "accelerating",
     repos: "50+ active public repos",
     lang: "TypeScript / Rust",
@@ -218,7 +218,7 @@ export const companies: Company[] = [
     homepage: "https://modal.com",
     sector: "ai-infra",
     stage: "series-b",
-    what: "Serverless compute for AI — train, fine-tune, serve, and orchestrate Python workloads with sub-second cold starts on GPUs.",
+    what: "Serverless compute for AI, train, fine-tune, serve, and orchestrate Python workloads with sub-second cold starts on GPUs.",
     momentum: "accelerating",
     repos: "30+ public repos",
     lang: "Python",
@@ -244,7 +244,7 @@ export const companies: Company[] = [
     homepage: "https://www.anthropic.com",
     sector: "ai-ml",
     stage: "later",
-    what: "Frontier AI lab — Claude model family, MCP protocol, Claude Code CLI, Claude Agent SDK. Their MCP standardization is reshaping the entire agentic ecosystem.",
+    what: "Frontier AI lab, Claude model family, MCP protocol, Claude Code CLI, Claude Agent SDK. Their MCP standardization is reshaping the entire agentic ecosystem.",
     momentum: "accelerating",
     repos: "30+ active public repos",
     lang: "TypeScript / Python",
@@ -283,7 +283,7 @@ export const companies: Company[] = [
     homepage: "https://cohere.com",
     sector: "ai-ml",
     stage: "series-c",
-    what: "Enterprise-focused LLM provider — strong retrieval and embeddings stack, growing agent and tool-use layer.",
+    what: "Enterprise-focused LLM provider, strong retrieval and embeddings stack, growing agent and tool-use layer.",
     momentum: "steady",
     repos: "40+ public repos",
     lang: "Python / TypeScript",
@@ -296,7 +296,7 @@ export const companies: Company[] = [
     homepage: "https://huggingface.co",
     sector: "ai-ml",
     stage: "later",
-    what: "The default model hub for open-weight AI. Transformers, datasets, diffusers, accelerate — the entire OSS ML stack ships through this org.",
+    what: "The default model hub for open-weight AI. Transformers, datasets, diffusers, accelerate, the entire OSS ML stack ships through this org.",
     // Downgraded 2026-05-30: current-period (q2-2026) public commit velocity -49%.
     momentum: "steady",
     repos: "300+ active public repos",
@@ -323,7 +323,7 @@ export const companies: Company[] = [
     homepage: "https://www.cloudflare.com",
     sector: "infrastructure",
     stage: "public",
-    what: "Edge platform — Workers, R2, D1, Hyperdrive, Durable Objects, AI Gateway. Their public org ships dozens of active repos across runtimes.",
+    what: "Edge platform, Workers, R2, D1, Hyperdrive, Durable Objects, AI Gateway. Their public org ships dozens of active repos across runtimes.",
     momentum: "accelerating",
     repos: "500+ active public repos",
     lang: "Rust / TypeScript",
@@ -336,7 +336,7 @@ export const companies: Company[] = [
     homepage: "https://www.hashicorp.com",
     sector: "infrastructure",
     stage: "public",
-    what: "Terraform, Vault, Consul, Nomad — the canonical infrastructure-as-code stack. Their public org is a long-running benchmark for OSS infra companies.",
+    what: "Terraform, Vault, Consul, Nomad, the canonical infrastructure-as-code stack. Their public org is a long-running benchmark for OSS infra companies.",
     momentum: "steady",
     repos: "400+ public repos",
     lang: "Go",
@@ -349,7 +349,7 @@ export const companies: Company[] = [
     homepage: "https://grafana.com",
     sector: "observability",
     stage: "later",
-    what: "Open-source observability — Grafana, Loki, Tempo, Mimir, Pyroscope. Their public org is one of the most active in monitoring tooling.",
+    what: "Open-source observability, Grafana, Loki, Tempo, Mimir, Pyroscope. Their public org is one of the most active in monitoring tooling.",
     momentum: "accelerating",
     repos: "300+ public repos",
     lang: "Go / TypeScript",
@@ -401,7 +401,7 @@ export const companies: Company[] = [
     homepage: "https://clerk.com",
     sector: "developer-tools",
     stage: "series-b",
-    what: "User management for modern apps — auth, organizations, billing. Strong React/Next.js integration and growing multi-framework SDKs.",
+    what: "User management for modern apps, auth, organizations, billing. Strong React/Next.js integration and growing multi-framework SDKs.",
     momentum: "accelerating",
     repos: "40+ public repos",
     lang: "TypeScript",
@@ -466,7 +466,7 @@ export const companies: Company[] = [
     homepage: "https://fly.io",
     sector: "infrastructure",
     stage: "series-b",
-    what: "Global app platform — micro-VMs near users, with a strong Postgres and durable-objects layer.",
+    what: "Global app platform, micro-VMs near users, with a strong Postgres and durable-objects layer.",
     momentum: "steady",
     repos: "60+ public repos",
     lang: "Go / Elixir / Rust",
@@ -544,7 +544,7 @@ export const companies: Company[] = [
     homepage: "https://workos.com",
     sector: "developer-tools",
     stage: "series-b",
-    what: "Enterprise SSO, directory sync, audit logs — the SOC2-ready APIs that B2B SaaS bolts on for compliance.",
+    what: "Enterprise SSO, directory sync, audit logs, the SOC2-ready APIs that B2B SaaS bolts on for compliance.",
     momentum: "steady",
     repos: "30+ public repos",
     lang: "TypeScript / Go / Ruby",
@@ -557,7 +557,7 @@ export const companies: Company[] = [
     homepage: "https://www.fermyon.com",
     sector: "infrastructure",
     stage: "series-a",
-    what: "Wasm-native serverless platform — the canonical bet on WebAssembly as the next compute runtime.",
+    what: "Wasm-native serverless platform, the canonical bet on WebAssembly as the next compute runtime.",
     momentum: "steady",
     repos: "40+ public repos",
     lang: "Rust",
@@ -583,7 +583,7 @@ export const companies: Company[] = [
     homepage: "https://www.together.ai",
     sector: "ai-infra",
     stage: "series-b",
-    what: "Open-weight LLM training and inference. Heavy public OSS presence — RedPajama, Mamba, OpenChatKit.",
+    what: "Open-weight LLM training and inference. Heavy public OSS presence, RedPajama, Mamba, OpenChatKit.",
     momentum: "accelerating",
     repos: "20+ public repos",
     lang: "Python",
@@ -635,7 +635,7 @@ export const companies: Company[] = [
     homepage: "https://lovable.dev",
     sector: "ai-ml",
     stage: "series-a",
-    what: "Vibe-coding platform — natural-language to full-stack web app. One of the most-discussed AI builder platforms of 2025-2026.",
+    what: "Vibe-coding platform, natural-language to full-stack web app. One of the most-discussed AI builder platforms of 2025-2026.",
     momentum: "accelerating",
     repos: "10+ public repos",
     lang: "TypeScript",
@@ -674,7 +674,7 @@ export const companies: Company[] = [
     homepage: "https://ui.shadcn.com",
     sector: "developer-tools",
     stage: "seed",
-    what: "Component library by reference — copy-paste primitives that became the default React UI stack in 2024-2026.",
+    what: "Component library by reference, copy-paste primitives that became the default React UI stack in 2024-2026.",
     momentum: "accelerating",
     repos: "10+ public repos",
     lang: "TypeScript",
@@ -687,7 +687,7 @@ export const companies: Company[] = [
     homepage: "https://www.langchain.com",
     sector: "ai-ml",
     stage: "series-b",
-    what: "Most-forked AI-framework org — LangChain, LangGraph, LangSmith. Defines a large slice of the public agent-tooling surface.",
+    what: "Most-forked AI-framework org, LangChain, LangGraph, LangSmith. Defines a large slice of the public agent-tooling surface.",
     // Downgraded 2026-05-30: current-period (q2-2026) public commit velocity -5% (flat after a strong run).
     momentum: "steady",
     repos: "60+ public repos",
@@ -793,7 +793,7 @@ export const companies: Company[] = [
     homepage: "https://www.elastic.co",
     sector: "observability",
     stage: "public",
-    what: "Elasticsearch creators — search, observability, and security stack. Massive public OSS surface across Elasticsearch, Kibana, Logstash, Beats, and the Elastic Common Schema.",
+    what: "Elasticsearch creators, search, observability, and security stack. Massive public OSS surface across Elasticsearch, Kibana, Logstash, Beats, and the Elastic Common Schema.",
     momentum: "steady",
     repos: "300+ public repos across the entire stack",
     lang: "Java / TypeScript / Go",
@@ -833,7 +833,7 @@ export const companies: Company[] = [
     homepage: "https://www.pulumi.com",
     sector: "developer-tools",
     stage: "series-c",
-    what: "Infrastructure-as-code as actual code — TypeScript, Python, Go, .NET, Java IaC. The cloud-native challenger to Terraform; growing post-HashiCorp acquisition.",
+    what: "Infrastructure-as-code as actual code, TypeScript, Python, Go, .NET, Java IaC. The cloud-native challenger to Terraform; growing post-HashiCorp acquisition.",
     momentum: "accelerating",
     repos: "200+ public repos across providers and SDKs",
     lang: "Go / TypeScript",
@@ -859,7 +859,7 @@ export const companies: Company[] = [
     homepage: "https://plaid.com",
     sector: "fintech",
     stage: "later",
-    what: "Banking API platform. Public org hosts SDKs across 10+ languages plus the Link integration kits — the developer surface of US fintech.",
+    what: "Banking API platform. Public org hosts SDKs across 10+ languages plus the Link integration kits, the developer surface of US fintech.",
     momentum: "steady",
     repos: "50+ public repos across SDKs and templates",
     lang: "Go / TypeScript",
@@ -924,7 +924,7 @@ export const companies: Company[] = [
     homepage: "https://duckdb.org",
     sector: "database",
     stage: "seed",
-    what: "In-process analytical database engine. The DuckDB core ships under MIT license with bindings in 10+ languages — the SQLite of analytics.",
+    what: "In-process analytical database engine. The DuckDB core ships under MIT license with bindings in 10+ languages, the SQLite of analytics.",
     momentum: "accelerating",
     repos: "40+ public repos",
     lang: "C++ / Rust",
@@ -1016,7 +1016,7 @@ export const companies: Company[] = [
     homepage: "https://www.meilisearch.com",
     sector: "database",
     stage: "series-b",
-    what: "Lightweight Rust-native search engine. Open-source core with a hosted cloud — the developer-experience-first alternative to Elasticsearch for app search.",
+    what: "Lightweight Rust-native search engine. Open-source core with a hosted cloud, the developer-experience-first alternative to Elasticsearch for app search.",
     momentum: "accelerating",
     repos: "50+ public repos",
     lang: "Rust / TypeScript",
@@ -1217,7 +1217,7 @@ export const companies: Company[] = [
     lang: "Python / TypeScript",
     related: ["developer-tools", "ai-ml", "observability"],
   }),
-  // ───────────────────────── 2026-05-28 expansion 3 (15 orgs — cross 1000) ─────────────────────────
+  // ───────────────────────── 2026-05-28 expansion 3 (15 orgs, cross 1000) ─────────────────────────
   build({
     slug: "cockroachdb",
     name: "CockroachDB",
@@ -1303,7 +1303,7 @@ export const companies: Company[] = [
     homepage: "https://www.ory.sh",
     sector: "developer-tools",
     stage: "series-a",
-    what: "Open-source identity infrastructure — Kratos (identity), Hydra (OAuth2), Keto (authorization), Oathkeeper (zero trust). Self-hostable Auth0 alternative.",
+    what: "Open-source identity infrastructure, Kratos (identity), Hydra (OAuth2), Keto (authorization), Oathkeeper (zero trust). Self-hostable Auth0 alternative.",
     momentum: "steady",
     repos: "30+ public repos",
     lang: "Go / TypeScript",
@@ -1413,7 +1413,7 @@ export const companies: Company[] = [
     lang: "TypeScript",
     related: ["developer-tools", "infrastructure", "productivity"],
   }),
-  // ───────────────────────── 2026-05-29 expansion 4 (15 orgs — fintech/analytics/prod gaps) ─────────────────────────
+  // ───────────────────────── 2026-05-29 expansion 4 (15 orgs, fintech/analytics/prod gaps) ─────────────────────────
   build({
     slug: "wise",
     name: "Wise",
@@ -1539,7 +1539,7 @@ export const companies: Company[] = [
     homepage: "https://retool.com",
     sector: "productivity",
     stage: "series-c",
-    what: "Internal tools platform — drag-and-drop interface builder backed by SQL, REST, and GraphQL. Strong adoption with engineering and ops teams for replacing custom internal dashboards.",
+    what: "Internal tools platform, drag-and-drop interface builder backed by SQL, REST, and GraphQL. Strong adoption with engineering and ops teams for replacing custom internal dashboards.",
     momentum: "steady",
     repos: "30+ public repos",
     lang: "TypeScript",
@@ -1610,7 +1610,7 @@ export const companies: Company[] = [
     lang: "TypeScript / Python",
     related: ["productivity", "developer-tools"],
   }),
-  // ───────────────────────── 2026-05-29 expansion 5 (15 orgs — AI-infra + ML platforms) ─────────────────────────
+  // ───────────────────────── 2026-05-29 expansion 5 (15 orgs, AI-infra + ML platforms) ─────────────────────────
   build({
     slug: "anyscale",
     name: "Anyscale",
@@ -1806,7 +1806,7 @@ export const companies: Company[] = [
     lang: "Python",
     related: ["ai-ml", "developer-tools", "ai-infra"],
   }),
-  // ───────────────────────── 2026-05-29 expansion 6 (15 orgs — infra + obs + DevOps) ─────────────────────────
+  // ───────────────────────── 2026-05-29 expansion 6 (15 orgs, infra + obs + DevOps) ─────────────────────────
   build({
     slug: "digitalocean",
     name: "DigitalOcean",
@@ -1996,13 +1996,13 @@ export const companies: Company[] = [
     homepage: "https://buildkite.com",
     sector: "developer-tools",
     stage: "series-b",
-    what: "CI/CD platform optimized for hybrid cloud — control plane in Buildkite, agents on customer infrastructure. Strong adoption with engineering orgs running large-scale build farms.",
+    what: "CI/CD platform optimized for hybrid cloud, control plane in Buildkite, agents on customer infrastructure. Strong adoption with engineering orgs running large-scale build farms.",
     momentum: "steady",
     repos: "100+ public repos",
     lang: "Go / Ruby",
     related: ["developer-tools", "infrastructure"],
   }),
-  // ───────────────────────── 2026-05-29 expansion 7 (15 orgs — fintech crypto + obs legacy + prod + analytics) ─────────────────────────
+  // ───────────────────────── 2026-05-29 expansion 7 (15 orgs, fintech crypto + obs legacy + prod + analytics) ─────────────────────────
   build({
     slug: "coinbase",
     name: "Coinbase",
@@ -2202,7 +2202,7 @@ export const companies: Company[] = [
   // --- Gaming / game infrastructure ---
   // Curated game-infrastructure companies (backends, multiplayer, orchestration,
   // avatars) with self-published public GitHub orgs. Studios are deliberately
-  // excluded — the fundable, signal-legible shape in gaming is infrastructure.
+  // excluded, the fundable, signal-legible shape in gaming is infrastructure.
   build({
     slug: "heroic-labs",
     name: "Heroic Labs",
@@ -2210,7 +2210,7 @@ export const companies: Company[] = [
     homepage: "https://heroiclabs.com",
     sector: "gaming",
     stage: "seed",
-    what: "Maker of Nakama, the leading open-source game backend — multiplayer, matchmaking, leaderboards, chat, and social services used by studios and publishers. A textbook game-infrastructure shape where the product is the public GitHub org.",
+    what: "Maker of Nakama, the leading open-source game backend, multiplayer, matchmaking, leaderboards, chat, and social services used by studios and publishers. A textbook game-infrastructure shape where the product is the public GitHub org.",
     momentum: "steady",
     repos: "35+ public repos",
     lang: "Go / C#",
@@ -2223,7 +2223,7 @@ export const companies: Company[] = [
     homepage: "https://hathora.dev",
     sector: "gaming",
     stage: "seed",
-    what: "Serverless hosting and orchestration for multiplayer game servers — deploy and scale game servers worldwide with no ops. Raised a $7.6M seed (Upfront Ventures, Founders Fund) in 2023.",
+    what: "Serverless hosting and orchestration for multiplayer game servers, deploy and scale game servers worldwide with no ops. Raised a $7.6M seed (Upfront Ventures, Founders Fund) in 2023.",
     momentum: "steady",
     repos: "50+ public repos",
     lang: "TypeScript / C#",
@@ -2262,7 +2262,7 @@ export const companies: Company[] = [
     homepage: "https://readyplayer.me",
     sector: "gaming",
     stage: "series-b",
-    what: "Cross-game avatar platform — one 3D avatar players carry across thousands of games and apps. Raised a $56M Series B led by a16z in 2022.",
+    what: "Cross-game avatar platform, one 3D avatar players carry across thousands of games and apps. Raised a $56M Series B led by a16z in 2022.",
     momentum: "steady",
     repos: "30+ public repos",
     lang: "C++ / C#",
@@ -2275,7 +2275,7 @@ export const companies: Company[] = [
     homepage: "https://pragma.gg",
     sector: "gaming",
     stage: "series-b",
-    what: "Backend platform for live-service games — accounts, social, store, matchmaking, and game data as one integrated system, trusted by studios including Bungie and Remedy. Raised a $22M Series B led by Insight Partners.",
+    what: "Backend platform for live-service games, accounts, social, store, matchmaking, and game data as one integrated system, trusted by studios including Bungie and Remedy. Raised a $22M Series B led by Insight Partners.",
     momentum: "steady",
     repos: "15+ public repos",
     lang: "Rust",

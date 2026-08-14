@@ -1,5 +1,5 @@
 /**
- * /api/v1/glossary.jsonl — NDJSON dump of the VC Deal Flow Signal
+ * /api/v1/glossary.jsonl, NDJSON dump of the VC Deal Flow Signal
  * controlled vocabulary, one term per line.
  *
  * Sibling to /api/v1/glossary.json (which is a single JSON object). The
@@ -11,7 +11,7 @@
  * `url` field pointing at the term's dedicated page at /define/[id] so
  * the line itself is a complete citation unit.
  *
- * CC BY 4.0 — attribution requested per /citation-guide.
+ * CC BY 4.0, attribution requested per /citation-guide.
  */
 
 import { glossaryTerms } from "@/content/glossary";

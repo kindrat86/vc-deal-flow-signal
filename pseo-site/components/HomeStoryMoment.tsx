@@ -1,7 +1,7 @@
 import Link from "next/link";
 
 /**
- * HomeStoryMoment — 30-second cinematic story above the fold.
+ * HomeStoryMoment, 30-second cinematic story above the fold.
  *
  * Audit gap (2026-05-09 Russell Secret Trilogy pass): Expert Secrets §2 Ch 5
  * (Storytelling) was scoring 95/100 because the email sequence carries the
@@ -9,7 +9,7 @@ import Link from "next/link";
  * Day 14 "the deal I missed because I trusted the deck", Day 25 "rebuilt
  * the regression last weekend"), and /origin walks the long-form Hero's
  * Two Journeys, but the home page above-the-fold had no story moment at
- * all — H1, avatar pin, stat band, subhead, then straight into the
+ * all, H1, avatar pin, stat band, subhead, then straight into the
  * 5-step Epiphany Bridge pills. The first emotional beat the reader hit
  * was already the abstracted version of the story, not the story itself.
  *
@@ -27,7 +27,7 @@ import Link from "next/link";
  *
  * The closing line is the bridge to the product: "This product is the
  * version of me that wouldn't have closed the laptop." That sentence
- * does what the audit asked for — it converts the H1 hook into an
+ * does what the audit asked for, it converts the H1 hook into an
  * emotional payoff before the reader is asked to scroll.
  *
  * Anonymity: narrated in The Data Nerd's first-person voice, no real
@@ -35,7 +35,7 @@ import Link from "next/link";
  * geographic anchor stays in /origin where the long-form arc lives.
  *
  * Visual treatment: amber accent border-left signals "this is a story,
- * not copy" — same accent the Manifesto block uses lower on the page,
+ * not copy", same accent the Manifesto block uses lower on the page,
  * so the reader's eye reads them as the same voice.
  *
  * Server component. Pure markup, no interactivity.
@@ -43,7 +43,7 @@ import Link from "next/link";
 export default function HomeStoryMoment() {
   return (
     <section
-      aria-label="How this product started — 30-second story"
+      aria-label="How this product started, 30-second story"
       className="my-2 sm:my-3 border-l-2 border-amber-500/50 pl-5 sm:pl-6 py-1"
     >
       <p className="text-amber-400 text-xs font-semibold uppercase tracking-wider mb-3">
@@ -82,7 +82,7 @@ export default function HomeStoryMoment() {
         >
           /origin
         </Link>
-        {" "}— the same scene at full length, plus the three false
+        {" "}, the same scene at full length, plus the three false
         beliefs it collapsed.
       </p>
     </section>

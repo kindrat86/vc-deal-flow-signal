@@ -17,9 +17,9 @@ const DEPLOY_URL = `https://vercel.com/new/clone?repository-url=${encodeURICompo
 )}`;
 
 const TITLE =
-  "Deploy VC Deal Flow Signal to Vercel — one-click MCP endpoint + Next.js dashboard";
+  "Deploy VC Deal Flow Signal to Vercel, one-click MCP endpoint + Next.js dashboard";
 const DESCRIPTION =
-  "Deploy your own VC Deal Flow Signal — MCP server (Streamable HTTP) plus the full Next.js dashboard — to Vercel in one click. Self-host the same six tools we serve at signals.gitdealflow.com, on your own domain, with full control over rate limits, custom enrichment, and private analytics. Free Hobby tier compatible. MIT licensed.";
+  "Deploy your own VC Deal Flow Signal, MCP server (Streamable HTTP) plus the full Next.js dashboard, to Vercel in one click. Self-host the same six tools we serve at signals.gitdealflow.com, on your own domain, with full control over rate limits, custom enrichment, and private analytics. Free Hobby tier compatible. MIT licensed.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -43,11 +43,11 @@ export const metadata: Metadata = {
 const HOW_TO_STEPS = [
   {
     name: "Click Deploy to Vercel",
-    text: "Vercel's clone form opens prefilled with the repo URL, project name, and template metadata. Sign in (GitHub / GitLab / Bitbucket / email — Vercel's free Hobby tier works), pick your scope, and Vercel forks the repo into your account.",
+    text: "Vercel's clone form opens prefilled with the repo URL, project name, and template metadata. Sign in (GitHub / GitLab / Bitbucket / email, Vercel's free Hobby tier works), pick your scope, and Vercel forks the repo into your account.",
   },
   {
     name: "Configure environment variables",
-    text: "The clone form prompts for optional env vars — RESEND_API_KEY (for the welcome email path), STRIPE_SECRET_KEY (for the optional paid tiers), DATABASE_URL (for your own analytics). Skip them all to deploy a read-only MCP endpoint and dashboard with no DB. Add them later from Vercel → Settings → Environment Variables.",
+    text: "The clone form prompts for optional env vars, RESEND_API_KEY (for the welcome email path), STRIPE_SECRET_KEY (for the optional paid tiers), DATABASE_URL (for your own analytics). Skip them all to deploy a read-only MCP endpoint and dashboard with no DB. Add them later from Vercel → Settings → Environment Variables.",
   },
   {
     name: "Hit Deploy",
@@ -55,30 +55,30 @@ const HOW_TO_STEPS = [
   },
   {
     name: "Add your own custom domain",
-    text: "Vercel → Domains → Add. Vercel issues the cert and routes traffic. The MCP endpoint inherits the new domain — point Cursor / Claude / agents at https://your-domain.com/api/mcp/rpc.",
+    text: "Vercel → Domains → Add. Vercel issues the cert and routes traffic. The MCP endpoint inherits the new domain, point Cursor / Claude / agents at https://your-domain.com/api/mcp/rpc.",
   },
 ];
 
 const FAQ = [
   {
     q: "Why self-host instead of using signals.gitdealflow.com?",
-    a: "Three reasons. (1) Custom rate limits — the public endpoint is CDN-fronted but unauth'd; if you're embedding the tools in a customer-facing agent, self-hosting lets you authenticate on your terms. (2) Custom enrichment — fork, add your own scoring layer, ship it as your team's own MCP. (3) Private analytics — the public endpoint logs nothing user-identifying; if you want telemetry on which tools your team uses most, self-host gets you the logs.",
+    a: "Three reasons. (1) Custom rate limits, the public endpoint is CDN-fronted but unauth'd; if you're embedding the tools in a customer-facing agent, self-hosting lets you authenticate on your terms. (2) Custom enrichment, fork, add your own scoring layer, ship it as your team's own MCP. (3) Private analytics, the public endpoint logs nothing user-identifying; if you want telemetry on which tools your team uses most, self-host gets you the logs.",
   },
   {
     q: "Does the deploy include the dashboard, or just the MCP server?",
-    a: "Both. The repo is the full Next.js app — pSEO pages, the dashboard, the MCP server (HTTP at /api/mcp/rpc, plus the agent-card and OpenAPI surfaces), the email API, the Stripe webhook handler. Strip what you don't need from the app/ directory before deploying if you only want the MCP endpoint.",
+    a: "Both. The repo is the full Next.js app, pSEO pages, the dashboard, the MCP server (HTTP at /api/mcp/rpc, plus the agent-card and OpenAPI surfaces), the email API, the Stripe webhook handler. Strip what you don't need from the app/ directory before deploying if you only want the MCP endpoint.",
   },
   {
     q: "How does this differ from the npm package?",
-    a: "The npm package (@gitdealflow/mcp-signal) is just the stdio MCP server — local-first. Deploying to Vercel gives you the HTTP endpoint, the Next.js UI, and every other service surface (OpenAPI, agents.json, llms.txt, etc.) running on your domain.",
+    a: "The npm package (@gitdealflow/mcp-signal) is just the stdio MCP server, local-first. Deploying to Vercel gives you the HTTP endpoint, the Next.js UI, and every other service surface (OpenAPI, agents.json, llms.txt, etc.) running on your domain.",
   },
   {
     q: "Is it on vercel.com/templates?",
-    a: "Submitted. Listing live at vercel.com/templates — search for VC Deal Flow Signal under the AI / MCP category. The Deploy button on this page is the same one served from the Vercel Templates listing.",
+    a: "Submitted. Listing live at vercel.com/templates, search for VC Deal Flow Signal under the AI / MCP category. The Deploy button on this page is the same one served from the Vercel Templates listing.",
   },
   {
     q: "What does it cost on Vercel?",
-    a: "Free on Hobby for personal use (10k function invocations/month, plenty for a private deal-flow dashboard). Pro tier (USD 20/user/month) recommended for team usage, custom domain, password protection on preview deploys, and unlimited bandwidth. The MCP server itself runs as a Vercel Function — no compute beyond invocations.",
+    a: "Free on Hobby for personal use (10k function invocations/month, plenty for a private deal-flow dashboard). Pro tier (USD 20/user/month) recommended for team usage, custom domain, password protection on preview deploys, and unlimited bandwidth. The MCP server itself runs as a Vercel Function, no compute beyond invocations.",
   },
 ];
 
@@ -183,7 +183,7 @@ export default function VercelDeployPage() {
             </h1>
             <p className="text-xl text-gray-300 leading-relaxed mb-8">
               Spin up your own MCP endpoint and Next.js dashboard on Vercel in one
-              click. Same six tools we serve at signals.gitdealflow.com — running on
+              click. Same six tools we serve at signals.gitdealflow.com, running on
               your own domain, your own rate limits, your own enrichment. Free Hobby
               tier compatible. MIT licensed.
             </p>
@@ -246,7 +246,7 @@ export default function VercelDeployPage() {
                 },
                 {
                   title: "Next.js dashboard + pSEO",
-                  body: "Full app — homepage, sector pages, glossary, FAQ, blog, /predicted weekly, /state-of-github monthly. Yours to keep, brand, modify.",
+                  body: "Full app, homepage, sector pages, glossary, FAQ, blog, /predicted weekly, /state-of-github monthly. Yours to keep, brand, modify.",
                 },
                 {
                   title: "OpenAPI 3.1 + agents.json + llms.txt",
@@ -254,7 +254,7 @@ export default function VercelDeployPage() {
                 },
                 {
                   title: "Email + Stripe + Webhook plumbing",
-                  body: "Resend integration, Stripe checkout + webhook handler, runtime-cache idempotency. Optional — disable via env vars if you don't need it.",
+                  body: "Resend integration, Stripe checkout + webhook handler, runtime-cache idempotency. Optional, disable via env vars if you don't need it.",
                 },
               ].map((card) => (
                 <li
@@ -271,7 +271,7 @@ export default function VercelDeployPage() {
           <section className="mb-16">
             <h2 className="text-2xl font-bold text-white mb-6">Environment variables</h2>
             <p className="text-gray-300 mb-5 leading-relaxed">
-              All env vars are optional. The repo is built to run with zero config —
+              All env vars are optional. The repo is built to run with zero config -
               the MCP endpoint and the static dashboard work without a database, email
               provider, or payment processor.
             </p>
@@ -372,7 +372,7 @@ export default function VercelDeployPage() {
           <p className="text-xs text-gray-500 mb-4">
             <strong>Public endpoint URL (do not change):</strong>{" "}
             <code className="rounded bg-slate-900 px-1 py-0.5 text-xs">{HTTP_RPC}</code>{" "}
-            — point integrations here when you want to consume our hosted data instead
+point integrations here when you want to consume our hosted data instead
             of self-hosting.
           </p>
 

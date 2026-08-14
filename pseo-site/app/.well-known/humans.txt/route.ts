@@ -1,5 +1,5 @@
 /**
- * /.well-known/humans.txt — alias for /humans.txt (direct content, not redirect).
+ * /.well-known/humans.txt, alias for /humans.txt (direct content, not redirect).
  *
  * Pass VII (2026-05-05). The humanstxt.org spec only mandates root-level
  * /humans.txt, but several agent toolchains (and some accessibility

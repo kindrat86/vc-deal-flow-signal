@@ -9,15 +9,15 @@ import {
 } from "@/content/charter-cohort";
 
 /**
- * CharterCohortBlock — visible-momentum surface on the home page.
+ * CharterCohortBlock, visible-momentum surface on the home page.
  *
  * Brunson Expert Secrets §1 Ch 4 (Mass Movement Vehicle). The chapter teaches
- * that a movement requires *visible momentum* — the new visitor sees other
+ * that a movement requires *visible momentum*, the new visitor sees other
  * members. The /wins ledger is founder-curated startup-side proof; this block
  * is the member-side complement.
  *
  * Pulls from the shared CHARTER_COHORT content file so the home counter and
- * /members header always agree. Pure server component — no hydration cost.
+ * /members header always agree. Pure server component, no hydration cost.
  */
 
 export default function CharterCohortBlock() {
@@ -35,7 +35,7 @@ export default function CharterCohortBlock() {
             The movement, member-side
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-tight tracking-tight">
-            Charter Cohort 2026 —{" "}
+            Charter Cohort 2026, {" "}
             <span className="text-amber-400 tabular-nums">
               {remaining} of {CHARTER_COHORT_TOTAL_SEATS}
             </span>{" "}
@@ -50,12 +50,12 @@ export default function CharterCohortBlock() {
             </Link>{" "}
             shows the startups our methodology surfaced before fundraise. The
             Charter Cohort shows the <strong>investors</strong> reading those
-            signals — public thesis, public picks, public scorecard.
+            signals, public thesis, public picks, public scorecard.
             Pseudonymous handles welcome.
           </p>
         </header>
 
-        {/* Compact seat preview — 4 archetypes, single row on desktop */}
+        {/* Compact seat preview, 4 archetypes, single row on desktop */}
         <ul className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-3">
           {CHARTER_COHORT.map((m) => (
             <li

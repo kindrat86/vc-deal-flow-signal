@@ -8,7 +8,7 @@ import { readRecentSignups } from "@/lib/recent-signups";
 // Honest by construction: it returns only real signup events recorded at
 // /api/subscribe (see lib/recent-signups.ts). When nothing real has happened
 // recently the feed is empty and the landing shows no toast. Nothing is
-// seeded or faked. Data is anonymous — city + country only, no PII.
+// seeded or faked. Data is anonymous, city + country only, no PII.
 //
 // CORS: the apex landing (gitdealflow.com) fetches this cross-origin, so we
 // echo the Origin when it is on the allow-list. Runtime: Node.js (Runtime

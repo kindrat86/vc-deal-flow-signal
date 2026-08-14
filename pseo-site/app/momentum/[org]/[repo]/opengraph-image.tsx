@@ -4,7 +4,7 @@ import { renderBrandOG, OG_SIZE, OG_CONTENT_TYPE } from "@/lib/og-template";
 
 export const size = OG_SIZE;
 export const contentType = OG_CONTENT_TYPE;
-export const alt = "VC Deal Flow Signal — Momentum Score";
+export const alt = "VC Deal Flow Signal, Momentum Score";
 
 const TIER_ACCENT: Record<string, string> = {
   cold: "#94a3b8",
@@ -50,7 +50,7 @@ export default async function OGImage({
       kind: "Momentum",
       title: `${org}/${repo}`,
       subtitle:
-        "Live GitHub momentum score — engineering acceleration tier based on commit velocity Δ.",
+        "Live GitHub momentum score, engineering acceleration tier based on commit velocity Δ.",
       footerLeft: `signals.gitdealflow.com/momentum/${org}/${repo}`,
       footerRight: period.name,
       accent: "#94a3b8",
@@ -62,12 +62,12 @@ export default async function OGImage({
 
   return renderBrandOG({
     kind: TIER_LABEL[tier] ?? "Momentum",
-    title: `${org}/${repo} — ${TIER_LABEL[tier] ?? "Momentum"}`,
+    title: `${org}/${repo}, ${TIER_LABEL[tier] ?? "Momentum"}`,
     subtitle: startup.description,
     stats: [
       { value: startup.commitVelocityChange, label: "Commit velocity Δ" },
       { value: startup.contributors, label: "Contributors" },
-      { value: startup.commitVelocity14d ?? "—", label: "Commits / 14d" },
+      { value: startup.commitVelocity14d ?? "-", label: "Commits / 14d" },
     ],
     footerLeft: `signals.gitdealflow.com/momentum/${org}/${repo}`,
     footerRight: period.name,

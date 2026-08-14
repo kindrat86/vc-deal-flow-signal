@@ -1,10 +1,10 @@
 /**
- * /community-signal — communities ranked by deal-flow yield.
+ * /community-signal, communities ranked by deal-flow yield.
  *
  * Cousin of /voices, indexed by *community type* instead of platform. /voices
  * answers "which 100 entries do I read on Reddit / HN / X?"; /community-signal
- * answers "which rooms — subreddits, Discords, Slacks, Discourse forums,
- * newsletter comment sections — produce the developer-investor and the
+ * answers "which rooms, subreddits, Discords, Slacks, Discourse forums,
+ * newsletter comment sections, produce the developer-investor and the
  * stealth-stage builder we end up funding?"
  *
  * Each entry is a public surface (a subreddit, a Discord invite, a forum URL,
@@ -53,9 +53,9 @@ export type CommunityPlatform =
 export interface Community {
   /** Display name (community handle / room name). */
   name: string;
-  /** Public URL — homepage, invite, or landing. Omit if surface has no public link. */
+  /** Public URL, homepage, invite, or landing. Omit if surface has no public link. */
   url?: string;
-  /** Surface type — drives the platform badge on the page. */
+  /** Surface type, drives the platform badge on the page. */
   platform: CommunityPlatform;
   /** One-sentence "what we get from listening here". */
   what: string;
@@ -63,28 +63,28 @@ export interface Community {
   yield: YieldTier;
   /** Engagement status. */
   status: CommunityStatus;
-  /** Optional context note — auto-mod rule, anonymity flag, throttling, etc. */
+  /** Optional context note, auto-mod rule, anonymity flag, throttling, etc. */
   note?: string;
 }
 
 export interface CommunityGroup {
-  /** URL-safe slug — drives /community-signal/[slug]. */
+  /** URL-safe slug, drives /community-signal/[slug]. */
   slug: string;
   /** Human label rendered in headings ("Indie founder forums"). */
   label: string;
-  /** One-phrase archetype — who hangs out here. */
+  /** One-phrase archetype, who hangs out here. */
   archetype: string;
   /** Short tagline rendered in cards and OG. */
   tagline: string;
   /** 2-3 sentence intro on the page. */
   intro: string;
-  /** Why this group ranks where it does — paragraph used in the yield section. */
+  /** Why this group ranks where it does, paragraph used in the yield section. */
   yieldStory: string;
   /** When and how we read it. */
   cadence: string;
   /** Engagement / anonymity caveat for this group. */
   caveat: string;
-  /** Expected count — sanity check at build time. */
+  /** Expected count, sanity check at build time. */
   expected: number;
   /** Roster, ordered by attention priority (top = most yield). */
   items: Community[];
@@ -117,12 +117,12 @@ export const COMMUNITY_STATUS_META: Record<
 > = {
   engage: {
     short: "Engage",
-    long: "Active engagement layer — we comment, post, or integrate.",
+    long: "Active engagement layer, we comment, post, or integrate.",
     tone: "emerald",
   },
   watch: {
     short: "Watch",
-    long: "Monitoring only — we read the signal, do not post.",
+    long: "Monitoring only, we read the signal, do not post.",
     tone: "sky",
   },
   hold: {
@@ -137,7 +137,7 @@ export const COMMUNITY_STATUS_META: Record<
   },
   blocked: {
     short: "Blocked",
-    long: "Cannot engage — platform constraint, anonymity rule, or policy.",
+    long: "Cannot engage, platform constraint, anonymity rule, or policy.",
     tone: "rose",
   },
 };
@@ -158,11 +158,11 @@ export const PLATFORM_META: Record<
 };
 
 // ────────────────────────────────────────────────────────────────────────────
-// 1. INDIE FOUNDER FORUMS — bootstrapper economics, build-in-public crowd
+// 1. INDIE FOUNDER FORUMS, bootstrapper economics, build-in-public crowd
 // ────────────────────────────────────────────────────────────────────────────
 
 const INDIE_FOUNDER_FORUMS: Community[] = [
-  { name: "IndieHackers.com", url: "https://www.indiehackers.com", platform: "forum", what: "Bootstrapper economics — different ladder, same dataset.", yield: "primary", status: "engage" },
+  { name: "IndieHackers.com", url: "https://www.indiehackers.com", platform: "forum", what: "Bootstrapper economics, different ladder, same dataset.", yield: "primary", status: "engage" },
   { name: "r/IndieHackers", url: "https://reddit.com/r/IndieHackers", platform: "reddit", what: "Mirror of the IH forum on Reddit. Slightly noisier, faster.", yield: "primary", status: "engage" },
   { name: "r/SideProject", url: "https://reddit.com/r/SideProject", platform: "reddit", what: "Hobby-build to startup pipeline. Earliest GitHub-trending signal.", yield: "primary", status: "watch" },
   { name: "r/microsaas", url: "https://reddit.com/r/microsaas", platform: "reddit", what: "Niche SaaS founder audience. One-person commercial repos.", yield: "secondary", status: "read" },
@@ -177,7 +177,7 @@ const INDIE_FOUNDER_FORUMS: Community[] = [
 ];
 
 // ────────────────────────────────────────────────────────────────────────────
-// 2. AI BUILDER ROOMS — agent / model / infra builder communities
+// 2. AI BUILDER ROOMS, agent / model / infra builder communities
 // ────────────────────────────────────────────────────────────────────────────
 
 const AI_BUILDER_ROOMS: Community[] = [
@@ -196,7 +196,7 @@ const AI_BUILDER_ROOMS: Community[] = [
 ];
 
 // ────────────────────────────────────────────────────────────────────────────
-// 3. DEVTOOLS MAKER ROOMS — framework + runtime + IDE communities
+// 3. DEVTOOLS MAKER ROOMS, framework + runtime + IDE communities
 // ────────────────────────────────────────────────────────────────────────────
 
 const DEVTOOLS_MAKER_ROOMS: Community[] = [
@@ -215,11 +215,11 @@ const DEVTOOLS_MAKER_ROOMS: Community[] = [
 ];
 
 // ────────────────────────────────────────────────────────────────────────────
-// 4. VC & ANGEL FORUMS — capital-side rooms
+// 4. VC & ANGEL FORUMS, capital-side rooms
 // ────────────────────────────────────────────────────────────────────────────
 
 const VC_AND_ANGEL_FORUMS: Community[] = [
-  { name: "r/venturecapital", url: "https://reddit.com/r/venturecapital", platform: "reddit", what: "VC-side reality. Comment-only — auto-mod removes any post that names a product.", yield: "primary", status: "engage", note: "Comments-only. Hero posts auto-removed." },
+  { name: "r/venturecapital", url: "https://reddit.com/r/venturecapital", platform: "reddit", what: "VC-side reality. Comment-only, auto-mod removes any post that names a product.", yield: "primary", status: "engage", note: "Comments-only. Hero posts auto-removed." },
   { name: "r/AngelInvesting", url: "https://reddit.com/r/AngelInvesting", platform: "reddit", what: "Angel-side avatar. Developer-investor lives here.", yield: "primary", status: "engage" },
   { name: "r/startups", url: "https://reddit.com/r/startups", platform: "reddit", what: "General founder community. We engage on data-question threads.", yield: "secondary", status: "engage" },
   { name: "AngelList Syndicate threads", url: "https://www.angellist.com/syndicates", platform: "forum", what: "Syndicate-deal comment sections. Sentiment signal on hot deals.", yield: "secondary", status: "read" },
@@ -234,7 +234,7 @@ const VC_AND_ANGEL_FORUMS: Community[] = [
 ];
 
 // ────────────────────────────────────────────────────────────────────────────
-// 5. B2B SAAS OPERATOR GROUPS — go-to-market + ops crowd
+// 5. B2B SAAS OPERATOR GROUPS, go-to-market + ops crowd
 // ────────────────────────────────────────────────────────────────────────────
 
 const B2B_SAAS_OPERATOR_GROUPS: Community[] = [
@@ -253,7 +253,7 @@ const B2B_SAAS_OPERATOR_GROUPS: Community[] = [
 ];
 
 // ────────────────────────────────────────────────────────────────────────────
-// 6. OPEN-SOURCE MAINTAINER SPACES — repo, foundation, sustainability
+// 6. OPEN-SOURCE MAINTAINER SPACES, repo, foundation, sustainability
 // ────────────────────────────────────────────────────────────────────────────
 
 const OSS_MAINTAINER_SPACES: Community[] = [
@@ -272,7 +272,7 @@ const OSS_MAINTAINER_SPACES: Community[] = [
 ];
 
 // ────────────────────────────────────────────────────────────────────────────
-// 7. INFRA & PLATFORM ENGINEERING CIRCLES — k8s, sre, devops, platform-eng
+// 7. INFRA & PLATFORM ENGINEERING CIRCLES, k8s, sre, devops, platform-eng
 // ────────────────────────────────────────────────────────────────────────────
 
 const INFRA_PLATFORM_ENG_CIRCLES: Community[] = [
@@ -283,7 +283,7 @@ const INFRA_PLATFORM_ENG_CIRCLES: Community[] = [
   { name: "r/sre", url: "https://reddit.com/r/sre", platform: "reddit", what: "Reliability-engineering audience. High-overlap with observability orgs.", yield: "primary", status: "watch" },
   { name: "HashiCorp Discuss", url: "https://discuss.hashicorp.com", platform: "discourse", what: "HashiCorp-tooling discussion. Infra-OSS pattern memory.", yield: "secondary", status: "read" },
   { name: "DevOpsDays community", url: "https://devopsdays.org", platform: "forum", what: "Conference-attached community. Ambient ops-culture signal.", yield: "ambient", status: "read" },
-  { name: "CNCF Slack", url: "https://slack.cncf.io", platform: "slack", what: "Cloud-native foundation Slack — listed again here for infra-eng angle.", yield: "primary", status: "watch" },
+  { name: "CNCF Slack", url: "https://slack.cncf.io", platform: "slack", what: "Cloud-native foundation Slack, listed again here for infra-eng angle.", yield: "primary", status: "watch" },
   { name: "Reliability Engineering Slack", url: "https://www.reliabilityengineering.community", platform: "slack", what: "Reliability-eng practitioner Slack. SRE-buyer crossover.", yield: "secondary", status: "watch" },
   { name: "DataDog Community", url: "https://www.datadoghq.com/community", platform: "forum", what: "Observability-customer community. Adjacent buyer pool.", yield: "secondary", status: "read" },
   { name: "r/aws", url: "https://reddit.com/r/aws", platform: "reddit", what: "AWS-customer audience. Cross-confirms cloud-native bets.", yield: "ambient", status: "read" },
@@ -291,7 +291,7 @@ const INFRA_PLATFORM_ENG_CIRCLES: Community[] = [
 ];
 
 // ────────────────────────────────────────────────────────────────────────────
-// 8. FRONTEND & PRODUCT BUILDER ROOMS — UI, design system, web framework
+// 8. FRONTEND & PRODUCT BUILDER ROOMS, UI, design system, web framework
 // ────────────────────────────────────────────────────────────────────────────
 
 const FRONTEND_PRODUCT_BUILDER_ROOMS: Community[] = [
@@ -304,13 +304,13 @@ const FRONTEND_PRODUCT_BUILDER_ROOMS: Community[] = [
   { name: "Mantine Discord", url: "https://discord.gg/wbH82zuWMN", platform: "discord", what: "Mantine UI-kit community. Niche component-lib signal.", yield: "secondary", status: "watch" },
   { name: "Figma Friends Slack", url: "https://friends.figma.com", platform: "slack", what: "Figma-power-user / community Slack. Designer crossover.", yield: "ambient", status: "read" },
   { name: "Designer Hangout Slack", url: "https://www.designerhangout.co", platform: "slack", what: "Design-practitioner Slack. Ambient design-side signal.", yield: "ambient", status: "read" },
-  { name: "r/reactjs", url: "https://reddit.com/r/reactjs", platform: "reddit", what: "React community — half of our dataset's frontend orgs land here.", yield: "secondary", status: "watch" },
+  { name: "r/reactjs", url: "https://reddit.com/r/reactjs", platform: "reddit", what: "React community, half of our dataset's frontend orgs land here.", yield: "secondary", status: "watch" },
   { name: "r/nextjs", url: "https://reddit.com/r/nextjs", platform: "reddit", what: "Next.js community. Vercel-orbit orgs surface here first.", yield: "primary", status: "watch" },
   { name: "r/webdev", url: "https://reddit.com/r/webdev", platform: "reddit", what: "Frontend-leaning practitioner audience.", yield: "secondary", status: "read" },
 ];
 
 // ────────────────────────────────────────────────────────────────────────────
-// 9. DATA & ML ENGINEERING COLLECTIVES — pipelines, warehouses, ML eng
+// 9. DATA & ML ENGINEERING COLLECTIVES, pipelines, warehouses, ML eng
 // ────────────────────────────────────────────────────────────────────────────
 
 const DATA_AND_ML_ENG_COLLECTIVES: Community[] = [
@@ -329,7 +329,7 @@ const DATA_AND_ML_ENG_COLLECTIVES: Community[] = [
 ];
 
 // ────────────────────────────────────────────────────────────────────────────
-// 10. FOUNDER-NEWSLETTER COMMENT SECTIONS — analyst-led reading rooms
+// 10. FOUNDER-NEWSLETTER COMMENT SECTIONS, analyst-led reading rooms
 // ────────────────────────────────────────────────────────────────────────────
 
 const FOUNDER_NEWSLETTER_COMMENT_SECTIONS: Community[] = [
@@ -355,11 +355,11 @@ export const COMMUNITY_GROUPS: CommunityGroup[] = [
     label: "Indie founder forums",
     archetype: "Bootstrappers, build-in-public crowd, micro-SaaS operators",
     tagline:
-      "Bootstrapped, indie, build-in-public — the rooms where a repo first leaks a commercial plan.",
+      "Bootstrapped, indie, build-in-public, the rooms where a repo first leaks a commercial plan.",
     intro:
-      "Founder-side rooms whose median citizen runs a one-to-three-person commercial repo. These are not VC rooms. We read them for the inverse signal — a maintainer announcing pricing, hiring a second engineer, or moving a side project into a workdays-only cadence.",
+      "Founder-side rooms whose median citizen runs a one-to-three-person commercial repo. These are not VC rooms. We read them for the inverse signal, a maintainer announcing pricing, hiring a second engineer, or moving a side project into a workdays-only cadence.",
     yieldStory:
-      "Primary surfaces are the IndieHackers forum, r/SideProject, and the ProductHunt makers stream — three places where bootstrappers most often telegraph a transition to a fundable shape. Secondary rooms (WIP, MakerLog, r/microsaas) provide tone but rarely first-mention signal.",
+      "Primary surfaces are the IndieHackers forum, r/SideProject, and the ProductHunt makers stream, three places where bootstrappers most often telegraph a transition to a fundable shape. Secondary rooms (WIP, MakerLog, r/microsaas) provide tone but rarely first-mention signal.",
     cadence:
       "Weekly read on Mondays. Active engagement is comment-only on data-question threads.",
     caveat:
@@ -372,11 +372,11 @@ export const COMMUNITY_GROUPS: CommunityGroup[] = [
     label: "AI builder rooms",
     archetype: "Agent, model, and inference-infra builders",
     tagline:
-      "LangChain, HF, Latent Space, MLOps — where the next AI-infra repo gets its first 100 users.",
+      "LangChain, HF, Latent Space, MLOps, where the next AI-infra repo gets its first 100 users.",
     intro:
       "Builder-side rooms attached to the agent, model, and inference-infra stacks. These rooms front-run the public GitHub-trending feed by ~2-6 weeks on infra-grade tools and by ~1-2 days on vertical-AI apps.",
     yieldStory:
-      "Primary surfaces are LangChain Discord, HF Discord, Latent Space, MLOps Community Slack, and r/LocalLLaMA — five rooms that account for the first public mention of a meaningful share of the AI infra repos we surface inside the product.",
+      "Primary surfaces are LangChain Discord, HF Discord, Latent Space, MLOps Community Slack, and r/LocalLLaMA, five rooms that account for the first public mention of a meaningful share of the AI infra repos we surface inside the product.",
     cadence:
       "Daily read on three of these; weekly read on the rest. Comment-only on technical threads. No product mentions until a maintainer asks.",
     caveat:
@@ -389,22 +389,22 @@ export const COMMUNITY_GROUPS: CommunityGroup[] = [
     label: "Devtools maker rooms",
     archetype: "Framework, runtime, and IDE customers / contributors",
     tagline:
-      "Vercel, Cursor, Bun, Supabase, Astro — the rooms where infra-on-infra repos surface.",
+      "Vercel, Cursor, Bun, Supabase, Astro, the rooms where infra-on-infra repos surface.",
     intro:
-      "Framework-, runtime-, and IDE-attached communities. The audience is half-builders, half-customers — same people, different hat. Repos that build on top of these stacks usually leak a launch plan inside the host community first.",
+      "Framework-, runtime-, and IDE-attached communities. The audience is half-builders, half-customers, same people, different hat. Repos that build on top of these stacks usually leak a launch plan inside the host community first.",
     yieldStory:
-      "Primary surfaces are Vercel Community, Cursor forum, Bun Discord, Supabase Discord, Zed Discord, and Lovable Discord — six rooms where vibe-coding-era startups currently break first.",
+      "Primary surfaces are Vercel Community, Cursor forum, Bun Discord, Supabase Discord, Zed Discord, and Lovable Discord, six rooms where vibe-coding-era startups currently break first.",
     cadence:
       "Weekly read on the primary five. Watch-only on the rest.",
     caveat:
-      "These rooms are heavily moderated against self-promotion. Engagement is reactive only — we never post a hero thread.",
+      "These rooms are heavily moderated against self-promotion. Engagement is reactive only, we never post a hero thread.",
     expected: 12,
     items: DEVTOOLS_MAKER_ROOMS,
   },
   {
     slug: "vc-and-angel-forums",
     label: "VC and angel forums",
-    archetype: "Capital-side rooms — VCs, angels, scout networks",
+    archetype: "Capital-side rooms, VCs, angels, scout networks",
     tagline:
       "Where the buy-side discusses what it just saw. Inverse signal of /devtools-maker-rooms.",
     intro:
@@ -421,13 +421,13 @@ export const COMMUNITY_GROUPS: CommunityGroup[] = [
   {
     slug: "b2b-saas-operator-groups",
     label: "B2B SaaS operator groups",
-    archetype: "GTM, RevOps, PLG, sales — the operator-side rooms",
+    archetype: "GTM, RevOps, PLG, sales, the operator-side rooms",
     tagline:
-      "r/SaaS, RevOps Co-op, ProductLed — where SaaS GTM patterns leak first.",
+      "r/SaaS, RevOps Co-op, ProductLed, where SaaS GTM patterns leak first.",
     intro:
-      "GTM-side rooms. The audience here is half-buyer, half-builder. We read these for the second-derivative signal — a repo's commercial plan, pricing experiments, and PLG-vs-sales-led inflection.",
+      "GTM-side rooms. The audience here is half-buyer, half-builder. We read these for the second-derivative signal, a repo's commercial plan, pricing experiments, and PLG-vs-sales-led inflection.",
     yieldStory:
-      "Primary surfaces are r/SaaS, RevOps Co-op, ProductLed Community, and ProductHunt Discussion forums — four rooms where SaaS operator patterns leak earliest. The rest are read-only.",
+      "Primary surfaces are r/SaaS, RevOps Co-op, ProductLed Community, and ProductHunt Discussion forums, four rooms where SaaS operator patterns leak earliest. The rest are read-only.",
     cadence:
       "Weekly read on the primary surfaces, monthly on the rest.",
     caveat:
@@ -440,15 +440,15 @@ export const COMMUNITY_GROUPS: CommunityGroup[] = [
     label: "Open-source maintainer spaces",
     archetype: "Maintainers, foundation-grade infra contributors",
     tagline:
-      "GitHub Discussions, CNCF Slack, Sustain OSS — where 'we're going commercial' leaks earliest.",
+      "GitHub Discussions, CNCF Slack, Sustain OSS, where 'we're going commercial' leaks earliest.",
     intro:
-      "Maintainer-side rooms. The high-yield pattern here is the maintainer-to-company transition — a project's GitHub Discussions or a foundation's Slack often carry the earliest public signal that a repo is leaving the foundation orbit for a company.",
+      "Maintainer-side rooms. The high-yield pattern here is the maintainer-to-company transition, a project's GitHub Discussions or a foundation's Slack often carry the earliest public signal that a repo is leaving the foundation orbit for a company.",
     yieldStory:
-      "Primary surfaces are GitHub Discussions (per-repo), CNCF Slack, LF AI & Data Slack, and Sustain OSS Discourse — four surfaces where the OSS-to-company flip telegraphs ~3-6 weeks before a press announcement.",
+      "Primary surfaces are GitHub Discussions (per-repo), CNCF Slack, LF AI & Data Slack, and Sustain OSS Discourse, four surfaces where the OSS-to-company flip telegraphs ~3-6 weeks before a press announcement.",
     cadence:
       "Weekly read on the four primary surfaces; ambient consumption of the rest via aggregator.",
     caveat:
-      "Foundation-grade rooms are governance-sensitive — we read, we do not engage on roadmap or sustainability threads.",
+      "Foundation-grade rooms are governance-sensitive, we read, we do not engage on roadmap or sustainability threads.",
     expected: 12,
     items: OSS_MAINTAINER_SPACES,
   },
@@ -457,11 +457,11 @@ export const COMMUNITY_GROUPS: CommunityGroup[] = [
     label: "Infra and platform-engineering circles",
     archetype: "K8s, SRE, devops, platform-team practitioners",
     tagline:
-      "K8s Slack, Platform Engineering, r/sre — buyer + builder at the same table.",
+      "K8s Slack, Platform Engineering, r/sre, buyer + builder at the same table.",
     intro:
-      "Platform-engineering and infra-ops rooms. The audience is overwhelmingly buyers — but they are also the early-adopter user base for the infra-grade tools we surface inside the product.",
+      "Platform-engineering and infra-ops rooms. The audience is overwhelmingly buyers, but they are also the early-adopter user base for the infra-grade tools we surface inside the product.",
     yieldStory:
-      "Primary surfaces are Kubernetes Slack, Platform Engineering community, r/devops, and r/sre — four rooms whose membership shows the highest crossover with infra-grade GitHub orgs we surface.",
+      "Primary surfaces are Kubernetes Slack, Platform Engineering community, r/devops, and r/sre, four rooms whose membership shows the highest crossover with infra-grade GitHub orgs we surface.",
     cadence:
       "Weekly read on the four primary surfaces.",
     caveat:
@@ -474,11 +474,11 @@ export const COMMUNITY_GROUPS: CommunityGroup[] = [
     label: "Frontend and product-builder rooms",
     archetype: "UI, design system, web framework practitioners",
     tagline:
-      "Next.js Discord, Reactiflux, Tailwind, shadcn/ui — the surface where frontend-org repos surface first.",
+      "Next.js Discord, Reactiflux, Tailwind, shadcn/ui, the surface where frontend-org repos surface first.",
     intro:
       "Frontend-framework and design-system rooms. Half our dataset's frontend-org repos surface here before they hit GitHub trending. This is the highest first-mention density among non-AI builder rooms.",
     yieldStory:
-      "Primary surfaces are Next.js Discord, Reactiflux, Tailwind Discord, and shadcn/ui Discussions — four rooms with the highest first-mention density for frontend-org repos.",
+      "Primary surfaces are Next.js Discord, Reactiflux, Tailwind Discord, and shadcn/ui Discussions, four rooms with the highest first-mention density for frontend-org repos.",
     cadence:
       "Weekly read on the four primary surfaces.",
     caveat:
@@ -491,11 +491,11 @@ export const COMMUNITY_GROUPS: CommunityGroup[] = [
     label: "Data and ML engineering collectives",
     archetype: "Pipeline, warehouse, modern-data-stack, ML-engineering practitioners",
     tagline:
-      "dbt, MLOps, r/dataengineering, Modern Data Stack — where production-data orgs first leak hiring + roadmap.",
+      "dbt, MLOps, r/dataengineering, Modern Data Stack, where production-data orgs first leak hiring + roadmap.",
     intro:
-      "Data-eng and ML-eng practitioner rooms. The audience overlaps with /infra-and-platform-eng-circles but indexes harder on data-platform and modern-data-stack adoption. Crossover with /ai-builder-rooms is intentional — same people, different lens.",
+      "Data-eng and ML-eng practitioner rooms. The audience overlaps with /infra-and-platform-eng-circles but indexes harder on data-platform and modern-data-stack adoption. Crossover with /ai-builder-rooms is intentional, same people, different lens.",
     yieldStory:
-      "Primary surfaces are dbt Community Slack, MLOps Community Slack, r/dataengineering, r/MachineLearning, DataTalks.Club Slack, and Modern Data Stack forum — six rooms where data-platform repos most often first telegraph commercial plans.",
+      "Primary surfaces are dbt Community Slack, MLOps Community Slack, r/dataengineering, r/MachineLearning, DataTalks.Club Slack, and Modern Data Stack forum, six rooms where data-platform repos most often first telegraph commercial plans.",
     cadence:
       "Weekly read on the six primary surfaces.",
     caveat:
@@ -508,11 +508,11 @@ export const COMMUNITY_GROUPS: CommunityGroup[] = [
     label: "Founder-newsletter comment sections",
     archetype: "Analyst-led reading rooms with attached comment threads",
     tagline:
-      "Lenny's, Latent Space, Pragmatic Engineer, Trends.vc — where thesis-shaping happens in public.",
+      "Lenny's, Latent Space, Pragmatic Engineer, Trends.vc, where thesis-shaping happens in public.",
     intro:
-      "Analyst-led newsletters with active comment sections. These rarely produce first-mention deal-flow but they shape how a sector is read — and the comment threads carry the operator-side reaction in near-real-time.",
+      "Analyst-led newsletters with active comment sections. These rarely produce first-mention deal-flow but they shape how a sector is read, and the comment threads carry the operator-side reaction in near-real-time.",
     yieldStory:
-      "Primary surfaces are Lenny's Newsletter, Latent Space, and Trends.vc — three rooms whose comment threads we cite most often in trend essays and thesis memos.",
+      "Primary surfaces are Lenny's Newsletter, Latent Space, and Trends.vc, three rooms whose comment threads we cite most often in trend essays and thesis memos.",
     cadence:
       "Weekly digest read across the twelve. Active comment posting is rare; reading is daily.",
     caveat:
@@ -565,7 +565,7 @@ export function communityStatusCounts(
 }
 
 /**
- * Build-time invariant — fail the build if any group's roster drifts off its
+ * Build-time invariant, fail the build if any group's roster drifts off its
  * declared `expected` count. Caught here rather than letting an off-by-one
  * malformed roster ship.
  */

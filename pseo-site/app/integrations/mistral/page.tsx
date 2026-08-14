@@ -5,7 +5,7 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 const SITE = "https://signals.gitdealflow.com";
 const MCP_URL = `${SITE}/api/mcp/rpc`;
 const TITLE =
-  "Use VC Deal Flow Signal in Mistral Le Chat — Custom MCP Connector";
+  "Use VC Deal Flow Signal in Mistral Le Chat, Custom MCP Connector";
 const DESCRIPTION =
   "Add the VC Deal Flow Signal MCP server to Mistral Le Chat as a Custom MCP Connector in under two minutes. Public Streamable HTTP endpoint, no auth required, six read-only tools for venture-backed startup engineering signals across 15 sectors.";
 
@@ -47,12 +47,12 @@ const TOOLS: { name: string; summary: string }[] = [
   {
     name: "get_signals_summary",
     summary:
-      "Dataset snapshot — current period, counts, refresh date, format URLs, citation.",
+      "Dataset snapshot, current period, counts, refresh date, format URLs, citation.",
   },
   {
     name: "get_scout_receipts",
     summary:
-      "GitHub Scout Score for any user — backwards-looking proof-of-taste from validated unicorns.",
+      "GitHub Scout Score for any user, backwards-looking proof-of-taste from validated unicorns.",
   },
   {
     name: "get_methodology",
@@ -72,7 +72,7 @@ const HOW_TO_STEPS = [
   },
   {
     name: "Paste the server URL",
-    text: `Connector name: vc-deal-flow-signal (no spaces). Connection server: ${MCP_URL}. Description (optional): VC Deal Flow Signal — engineering acceleration signals across 15 sectors. Authentication: No Authentication (the server is public, read-only).`,
+    text: `Connector name: vc-deal-flow-signal (no spaces). Connection server: ${MCP_URL}. Description (optional): VC Deal Flow Signal, engineering acceleration signals across 15 sectors. Authentication: No Authentication (the server is public, read-only).`,
   },
   {
     name: "Click Connect",
@@ -87,7 +87,7 @@ const HOW_TO_STEPS = [
 const FAQS: { q: string; a: string }[] = [
   {
     q: "Do I need a paid Mistral plan to use this?",
-    a: "Custom MCP Connectors are available on Le Chat plans that surface the Connectors panel. Adding a custom connector is admin-gated inside an organisation, so you need workspace admin rights to install it for your team — but once installed, every teammate can use it.",
+    a: "Custom MCP Connectors are available on Le Chat plans that surface the Connectors panel. Adding a custom connector is admin-gated inside an organisation, so you need workspace admin rights to install it for your team, but once installed, every teammate can use it.",
   },
   {
     q: "What protocol does the server speak?",
@@ -95,7 +95,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "Is authentication required?",
-    a: "No. The MCP server is fully public and read-only. All six tools query a pre-computed weekly dataset of GitHub commit-velocity signals — no PII, no rate-limited downstream APIs, no credentials needed. Mistral's auto-detection picks up No Authentication and skips the OAuth flow.",
+    a: "No. The MCP server is fully public and read-only. All six tools query a pre-computed weekly dataset of GitHub commit-velocity signals, no PII, no rate-limited downstream APIs, no credentials needed. Mistral's auto-detection picks up No Authentication and skips the OAuth flow.",
   },
   {
     q: "What data does it return?",
@@ -107,11 +107,11 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "How is this different from installing the npm package locally?",
-    a: "Three differences. (1) The Custom Connector route uses the live HTTP endpoint, so you always get the latest server version without re-running npx. (2) It works for every teammate in your Mistral workspace once an admin installs it once, not per-machine. (3) It doesn't need Node.js installed locally. The npm package (@gitdealflow/mcp-signal) is still the right choice for Claude Desktop, Cursor, Cline, and Continue — clients that prefer stdio over remote HTTP.",
+    a: "Three differences. (1) The Custom Connector route uses the live HTTP endpoint, so you always get the latest server version without re-running npx. (2) It works for every teammate in your Mistral workspace once an admin installs it once, not per-machine. (3) It doesn't need Node.js installed locally. The npm package (@gitdealflow/mcp-signal) is still the right choice for Claude Desktop, Cursor, Cline, and Continue, clients that prefer stdio over remote HTTP.",
   },
   {
     q: "Can I use the same MCP server in Claude Desktop and Cursor?",
-    a: "Yes. The same server is published two ways: (a) npm @gitdealflow/mcp-signal for stdio clients (Claude Desktop, Cursor, Cline, Continue) — also catalogued at Glama A-Tier (4.9/5.0 across 6 tools), and (b) the Streamable HTTP endpoint at signals.gitdealflow.com/api/mcp/rpc for Mistral Le Chat and any other Streamable HTTP-compatible client. Pick whichever transport your client supports.",
+    a: "Yes. The same server is published two ways: (a) npm @gitdealflow/mcp-signal for stdio clients (Claude Desktop, Cursor, Cline, Continue), also catalogued at Glama A-Tier (4.9/5.0 across 6 tools), and (b) the Streamable HTTP endpoint at signals.gitdealflow.com/api/mcp/rpc for Mistral Le Chat and any other Streamable HTTP-compatible client. Pick whichever transport your client supports.",
   },
 ];
 
@@ -344,7 +344,7 @@ export default function MistralIntegrationPage() {
                 >
                   Glama
                 </Link>{" "}
-                — A-Tier MCP catalog (4.9/5.0 across 6 tools). One-line install
+A-Tier MCP catalog (4.9/5.0 across 6 tools). One-line install
                 via{" "}
                 <code className="font-mono text-gray-300 text-xs">npx -y @gitdealflow/mcp-signal</code>{" "}
                 for Claude Desktop, Cursor, Cline, Continue.
@@ -356,7 +356,7 @@ export default function MistralIntegrationPage() {
                 >
                   npm @gitdealflow/mcp-signal
                 </Link>{" "}
-                — stdio install for any MCP-compatible client. Run{" "}
+stdio install for any MCP-compatible client. Run{" "}
                 <code className="font-mono text-gray-300">
                   npx -y @gitdealflow/mcp-signal
                 </code>
@@ -366,7 +366,7 @@ export default function MistralIntegrationPage() {
                 <code className="font-mono text-gray-300 break-all">
                   {MCP_URL}
                 </code>{" "}
-                — public Streamable HTTP endpoint for Mistral Le Chat and any
+public Streamable HTTP endpoint for Mistral Le Chat and any
                 other Streamable HTTP-compatible client.
               </li>
             </ul>
@@ -378,7 +378,7 @@ export default function MistralIntegrationPage() {
             Stuck on the install?
           </h2>
           <p className="text-gray-400 text-sm mb-5 max-w-lg mx-auto">
-            Email signals@gitdealflow.com — replies within 24 hours, EU business
+            Email signals@gitdealflow.com, replies within 24 hours, EU business
             time. Common gotchas (workspace admin rights, server URL trailing
             slash, Mistral region) are documented in the FAQ above.
           </p>

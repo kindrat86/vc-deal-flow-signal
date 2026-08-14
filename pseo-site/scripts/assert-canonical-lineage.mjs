@@ -1,5 +1,5 @@
 #!/usr/bin/env node
-// scripts/assert-canonical-lineage.mjs — multi-lineage deploy guard.
+// scripts/assert-canonical-lineage.mjs, multi-lineage deploy guard.
 //
 // signals.gitdealflow.com (Vercel project `pseo-site`, alias-pinned) was
 // historically deployed from MULTIPLE checkouts on different branches:
@@ -16,9 +16,9 @@
 // How this works: a committed sentinel file `.deploy-lineage` at the repo
 // root declares the tree's role. On `main` it says role=CANONICAL; on the
 // retired `worldclass-signals` branch it says role=RETIRED. This script runs
-// FIRST in `prebuild`, so every deploy path — direct `vercel build`, CI,
+// FIRST in `prebuild`, so every deploy path, direct `vercel build`, CI,
 // scripts/deploy-prod.sh, and deploy_from_commit.sh's temp git-archive
-// export (which has no .git dir, hence a sentinel and not a path check) —
+// export (which has no .git dir, hence a sentinel and not a path check) -
 // aborts before building a non-canonical tree.
 //
 // Do NOT "fix" a failure here by editing the sentinel or this script.
@@ -32,13 +32,13 @@ const CANONICAL_CHECKOUT = "~/signals-gitdealflow/pseo-site";
 const CANONICAL_BRANCH = "main";
 
 function die(msg) {
-  console.error("\n[assert-canonical-lineage] ✖ BUILD ABORTED — NON-CANONICAL LINEAGE\n");
+  console.error("\n[assert-canonical-lineage] ✖ BUILD ABORTED, NON-CANONICAL LINEAGE\n");
   console.error(msg);
   console.error(
     `\nThe ONLY tree allowed to build/deploy signals.gitdealflow.com is:\n` +
       `    checkout ${CANONICAL_CHECKOUT}  (branch ${CANONICAL_BRANCH})\n\n` +
       `Deploying any other tree silently reverts production fixes\n` +
-      `("whichever deploys last wins" — see AGENTS.md, incidents of 2026-08-03/04).\n` +
+      `("whichever deploys last wins", see AGENTS.md, incidents of 2026-08-03/04).\n` +
       `Land your change on ${CANONICAL_BRANCH} in the canonical checkout and deploy from there\n` +
       `via ~/growth-loop/lib/deploy_from_commit.sh. Do NOT edit .deploy-lineage\n` +
       `or this guard to get past this error.\n`
@@ -76,7 +76,7 @@ if (/\/signals-worldclass\//.test(cwd)) {
 // --- 3. Branch check when a real .git is present (skipped in exports/Vercel)
 if (!process.env.VERCEL && !process.env.CI) {
   try {
-    // Fixed literal command, no user input — execSync is safe here.
+    // Fixed literal command, no user input, execSync is safe here.
     const branch = execSync("git rev-parse --abbrev-ref HEAD", {
       stdio: ["ignore", "pipe", "ignore"],
     })
@@ -86,7 +86,7 @@ if (!process.env.VERCEL && !process.env.CI) {
       die(`This checkout is on branch '${branch}', not '${CANONICAL_BRANCH}'.`);
     }
   } catch {
-    // git-archive export or no git — sentinel already validated the lineage.
+    // git-archive export or no git, sentinel already validated the lineage.
   }
 }
 

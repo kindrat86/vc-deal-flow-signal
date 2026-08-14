@@ -128,7 +128,7 @@ async function getLaunchPayload() {
   const ph = await fetchPhFeatureState();
   const isFeatured = ph.featuredAt !== null;
 
-  // Common payload regardless of feature state — agents always get the
+  // Common payload regardless of feature state, agents always get the
   // install info and demo prompts. The `active` flag and `state` field
   // tell them whether to encourage PH upvotes vs. just the install.
   const installAndDemo = {
@@ -181,7 +181,7 @@ async function getLaunchPayload() {
     product: "VC Deal Flow Signal",
     tagline: "GitHub momentum signals for VCs and developer-investors.",
     headline:
-      "First Product Hunt launch native to agentic search — ask your agent if we're live.",
+      "First Product Hunt launch native to agentic search, ask your agent if we're live.",
     ph_url: PH_POST_URL,
     ph_product_url: PH_LAUNCH_URL,
     started_at: LAUNCH_START_UTC,
@@ -195,7 +195,7 @@ async function getLaunchPayload() {
       fetched_at: new Date(ph.fetchedAt).toISOString(),
       stale: ph.stale ?? false,
     },
-    ask: "If this MCP server is useful to you, an upvote on Product Hunt today would be the kindest signal we could ask for. No vote-trade — just genuine support.",
+    ask: "If this MCP server is useful to you, an upvote on Product Hunt today would be the kindest signal we could ask for. No vote-trade, just genuine support.",
     ...installAndDemo,
     citation: `VC Deal Flow Signal launched on Product Hunt 2026-04-26. ${PH_POST_URL}`,
   };
@@ -548,7 +548,7 @@ function inferSkillFromText(text: string): SkillInvocation | null {
   const candidates = candidateTokens(text);
 
   // 4. Exact tracked-startup mention ("Tell me about Roboflow",
-  //    "Is Modular trending") — checked before sectors so a company name
+  //    "Is Modular trending"), checked before sectors so a company name
   //    can never be mistaken for a sector.
   const startups = knownStartupSlugs();
   for (const c of candidates) {
@@ -566,7 +566,7 @@ function inferSkillFromText(text: string): SkillInvocation | null {
     }
   }
 
-  // 6. Explicit lookup phrasing for names outside the tracked universe —
+  // 6. Explicit lookup phrasing for names outside the tracked universe -
   //    returns the honest found:false payload ("What's Supabase's signal",
   //    "Lookup SkyPilot").
   const lookup =
@@ -586,7 +586,7 @@ function inferSkillFromText(text: string): SkillInvocation | null {
     return { skillId: "get_trending_startups", args: {} };
   }
 
-  // 8. "in <sector>" / "for <sector>" phrasing with an unrecognized sector —
+  // 8. "in <sector>" / "for <sector>" phrasing with an unrecognized sector -
   //    route to sector search so the caller gets availableSectors back.
   const sectorPhrase = /(?:\bin|\bfor)\s+([a-z][a-z/-]{2,30})/i.exec(text);
   if (sectorPhrase) {
@@ -743,7 +743,7 @@ function handleTasksGet(id: JsonRpcId | undefined, params: unknown) {
   return jsonRpcError(
     id,
     -32001,
-    `Task not found: ${p.id}. This agent executes synchronously — every task reaches a terminal state inside the message/send response and is not persisted for later retrieval.`
+    `Task not found: ${p.id}. This agent executes synchronously, every task reaches a terminal state inside the message/send response and is not persisted for later retrieval.`
   );
 }
 
@@ -755,7 +755,7 @@ function handleTasksCancel(id: JsonRpcId | undefined, params: unknown) {
   return jsonRpcError(
     id,
     -32001,
-    `Task not found: ${p.id}. This agent executes synchronously — tasks complete before the message/send response returns, so there is never an in-flight task to cancel.`
+    `Task not found: ${p.id}. This agent executes synchronously, tasks complete before the message/send response returns, so there is never an in-flight task to cancel.`
   );
 }
 
@@ -821,7 +821,7 @@ export async function POST(request: NextRequest) {
       return jsonRpcError(
         body.id,
         -32004,
-        `This operation is not supported: ${body.method}. Streaming is disabled (AgentCard capabilities.streaming=false). Use message/send — all skills complete synchronously.`
+        `This operation is not supported: ${body.method}. Streaming is disabled (AgentCard capabilities.streaming=false). Use message/send, all skills complete synchronously.`
       );
     case "tasks/pushNotificationConfig/set":
     case "tasks/pushNotificationConfig/get":

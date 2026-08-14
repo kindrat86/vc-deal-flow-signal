@@ -4,16 +4,16 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import SeoCta from "@/components/SeoCta";
 
 /**
- * /wikidata — Knowledge Panel claim landing.
+ * /wikidata, Knowledge Panel claim landing.
  *
  * Brunson Audit Pass V8 (2026-05-09). Closes the +4-pt gap on Traffic
- * Secrets §2 Ch 9 (Google) — the entity Q139376302 already exists on
+ * Secrets §2 Ch 9 (Google), the entity Q139376302 already exists on
  * Wikidata; this page is the public-facing reciprocal proof that THIS
  * domain controls THAT entity.
  *
  * What this page does:
  *   1. Asserts the bidirectional binding (domain → QID, QID → domain)
- *      in human-readable form — copy-paste SPARQL queries any consumer
+ *      in human-readable form, copy-paste SPARQL queries any consumer
  *      can run against query.wikidata.org to verify.
  *   2. Renders the same property table the manifest at
  *      /.well-known/wikidata.json carries, so search engines indexing
@@ -34,7 +34,7 @@ const WIKIDATA_TTL = `https://www.wikidata.org/wiki/Special:EntityData/${QID}.tt
 
 export const metadata: Metadata = {
   title:
-    "Wikidata Knowledge Panel claim — VC Deal Flow Signal (Q139376302)",
+    "Wikidata Knowledge Panel claim, VC Deal Flow Signal (Q139376302)",
   description:
     "Bidirectional Knowledge Panel claim binding the Wikidata entity Q139376302 to signals.gitdealflow.com. Includes copy-paste SPARQL verification queries, the full P-code property table, and the machine-readable manifest at /.well-known/wikidata.json. Reciprocal sameAs across 24+ external profiles.",
   alternates: { canonical: "/wikidata" },
@@ -180,7 +180,7 @@ export default function WikidataClaimPage() {
         "@type": "WebPage",
         "@id": `${SITE}/wikidata#page`,
         url: `${SITE}/wikidata`,
-        name: "Wikidata Knowledge Panel claim — VC Deal Flow Signal",
+        name: "Wikidata Knowledge Panel claim, VC Deal Flow Signal",
         description:
           "Bidirectional Knowledge Panel claim binding the Wikidata entity Q139376302 to signals.gitdealflow.com. SPARQL-verifiable.",
         inLanguage: "en-US",
@@ -226,7 +226,7 @@ export default function WikidataClaimPage() {
           bestRating: 5,
           worstRating: 1,
           ratingValue: 5,
-          alternateName: "Verified — bidirectional reciprocal claim",
+          alternateName: "Verified, bidirectional reciprocal claim",
         },
       },
     ],
@@ -266,7 +266,7 @@ export default function WikidataClaimPage() {
             {QID}
           </a>
           . Every claim on this page is independently verifiable against
-          Wikidata via SPARQL — no trust required.
+          Wikidata via SPARQL, no trust required.
         </p>
 
         <section className="mb-10 rounded-lg border border-emerald-900/40 bg-emerald-950/20 p-5 text-sm text-emerald-100/90">
@@ -403,7 +403,7 @@ export default function WikidataClaimPage() {
             >
               {QID}
             </a>
-            . Differences indicate stale on-Wikidata claims — file a
+            . Differences indicate stale on-Wikidata claims, file a
             correction by editing the entity directly. The machine-readable
             mirror at{" "}
             <Link
@@ -535,7 +535,7 @@ export default function WikidataClaimPage() {
               >
                 /.well-known/wikidata.json
               </Link>{" "}
-              — machine-readable manifest of every claim on this page.
+machine-readable manifest of every claim on this page.
             </li>
             <li>
               <Link
@@ -544,7 +544,7 @@ export default function WikidataClaimPage() {
               >
                 /wikipedia
               </Link>{" "}
-              — copy-paste{" "}
+copy-paste{" "}
               <code className="font-mono text-xs text-gray-300">
                 {`{{cite journal}}`}
               </code>{" "}
@@ -561,7 +561,7 @@ export default function WikidataClaimPage() {
               >
                 /knowledge-graph.json
               </Link>{" "}
-              — full site-wide JSON-LD entity map.
+full site-wide JSON-LD entity map.
             </li>
             <li>
               <Link
@@ -570,7 +570,7 @@ export default function WikidataClaimPage() {
               >
                 /.well-known/discover.json
               </Link>{" "}
-              — umbrella manifest of every well-known + root surface.
+umbrella manifest of every well-known + root surface.
             </li>
             <li>
               <Link
@@ -579,7 +579,7 @@ export default function WikidataClaimPage() {
               >
                 /attestations
               </Link>{" "}
-              — every public claim with source, date, and ClaimReview
+every public claim with source, date, and ClaimReview
               fact-check status.
             </li>
           </ul>

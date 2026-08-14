@@ -56,7 +56,7 @@ function thesisFor(
       : scores.composite >= 50
       ? `Watch-list candidate; revisit if velocity holds.`
       : `Below median for ${sectorName}; pass unless thesis-aligned.`;
-  return `${lead}${stageBit} in ${sectorName} — driven primarily by ${dominant}. ${closing}`;
+  return `${lead}${stageBit} in ${sectorName}, driven primarily by ${dominant}. ${closing}`;
 }
 
 export interface DeepSignal {
@@ -193,7 +193,7 @@ export function buildDeepSignal(name: string): DeepSignalResult {
       ...(foundStartup.linkedinUrl ? { linkedinUrl: foundStartup.linkedinUrl } : {}),
       profileUrl: `${BASE_URL}/startup/${slug}`,
     },
-    citation: `VC Deal Flow Signal (signals.gitdealflow.com), ${period.name} data — deep signal v1.`,
+    citation: `VC Deal Flow Signal (signals.gitdealflow.com), ${period.name} data, deep signal v1.`,
     source: BASE_URL,
   };
 }

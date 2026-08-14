@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Reproducibility Kit",
     description:
-      "Reproduce every published number — methodology paper + open dataset + open-source MCP server + worked example.",
+      "Reproduce every published number, methodology paper + open dataset + open-source MCP server + worked example.",
     type: "article",
     url: `${SITE}/reproducibility`,
   },
@@ -36,7 +36,7 @@ const STEPS: Step[] = [
     n: 1,
     name: "Read the methodology paper",
     body:
-      "Start with the SSRN-indexed methodology paper. It defines every term used downstream — commit velocity, contributor growth, framework migration, the 14-day rolling window, and the way signal types are classified. Section 3 is the core; Section 4 is the empirical results that the dataset reproduces.",
+      "Start with the SSRN-indexed methodology paper. It defines every term used downstream, commit velocity, contributor growth, framework migration, the 14-day rolling window, and the way signal types are classified. Section 3 is the core; Section 4 is the empirical results that the dataset reproduces.",
     href: SSRN_URL,
     hrefLabel: "Open paper on SSRN (DOI: 10.2139/ssrn.6606558)",
   },
@@ -122,7 +122,7 @@ export default function ReproducibilityPage() {
       {
         "@type": "WebPage",
         "@id": `${SITE}/reproducibility#page`,
-        name: "Reproducibility Kit — VC Deal Flow Signal",
+        name: "Reproducibility Kit, VC Deal Flow Signal",
         url: `${SITE}/reproducibility`,
         inLanguage: "en-US",
         isPartOf: { "@id": `${SITE}/#website` },
@@ -211,7 +211,7 @@ export default function ReproducibilityPage() {
             {Object.entries(RUNTIME).map(([k, v]) => (
               <li key={k}>
                 <span className="text-sky-300">{k}</span>{" "}
-                <span className="text-gray-400">— {v}</span>
+                <span className="text-gray-400">{v}</span>
               </li>
             ))}
           </ul>
@@ -235,7 +235,7 @@ export default function ReproducibilityPage() {
             >
               /wins
             </Link>{" "}
-            for the receipts — calls we made and what happened next — and{" "}
+            for the receipts, calls we made and what happened next, and{" "}
             <Link
               href="/scorecard"
               className="text-emerald-300 hover:text-emerald-200 underline decoration-dotted font-medium"
@@ -311,7 +311,7 @@ export default function ReproducibilityPage() {
             </li>
             <li>
               We do not gate the five read tools behind authentication. They
-              were free at launch and they stay free — paid tooling lives on
+              were free at launch and they stay free, paid tooling lives on
               top, not as a replacement.
             </li>
           </ul>

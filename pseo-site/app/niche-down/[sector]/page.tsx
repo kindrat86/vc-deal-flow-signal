@@ -35,8 +35,8 @@ export async function generateMetadata({
   const sector = getNicheSector(sectorSlug);
   if (!sector) return {};
 
-  const title = `${sector.name} — ${sector.niches.length} niche-down opportunities`;
-  const description = `${sector.shortPitch} — ${sector.niches.length} specific sub-niches inside ${sector.name}, each tagged with build cost, deal velocity, and a build-vs-invest call.`;
+  const title = `${sector.name}, ${sector.niches.length} niche-down opportunities`;
+  const description = `${sector.shortPitch}, ${sector.niches.length} specific sub-niches inside ${sector.name}, each tagged with build cost, deal velocity, and a build-vs-invest call.`;
   const url = `${SITE}/niche-down/${sector.slug}`;
   return {
     title,
@@ -74,7 +74,7 @@ export default async function NicheSectorPage({ params }: PageProps) {
         "@type": "WebPage",
         "@id": url,
         url,
-        name: `${sector.name} — niche-down opportunities`,
+        name: `${sector.name}, niche-down opportunities`,
         description: sector.shortPitch,
         speakable: {
           "@type": "SpeakableSpecification",
@@ -143,7 +143,7 @@ export default async function NicheSectorPage({ params }: PageProps) {
           </p>
           <p className="text-gray-400 text-sm leading-relaxed border-l-2 border-slate-700 pl-4">
             Each entry below is a specific opportunity inside {sector.name}.
-            We name public projects as examples — never the founders we track
+            We name public projects as examples, never the founders we track
             inside the paid product. The category commentary is the public
             surface; the named buyers&rsquo; edge lives in the{" "}
             <Link href="/startups-to-watch" className="text-sky-300 underline decoration-dotted hover:text-sky-200">
@@ -204,7 +204,7 @@ export default async function NicheSectorPage({ params }: PageProps) {
             <Link href="/methodology" className="text-sky-300 underline decoration-dotted hover:text-sky-200">
               GitHub momentum panel
             </Link>
-            . The sub-niches above are editorial slices on top of that data —
+            . The sub-niches above are editorial slices on top of that data -
             specific opportunities where the signal shape suggests something
             is breaking out. The named scoreboard for {sector.name} is in the{" "}
             <Link href={`/startups-to-watch`} className="text-sky-300 underline decoration-dotted hover:text-sky-200">
@@ -225,7 +225,7 @@ export default async function NicheSectorPage({ params }: PageProps) {
             Adjacent sector maps
           </p>
           <h2 className="text-xl sm:text-2xl font-bold text-gray-100">
-            Keep going — three more sector maps.
+            Keep going, three more sector maps.
           </h2>
           <div className="grid gap-3 sm:grid-cols-3">
             {nicheSectors

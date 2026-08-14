@@ -1,11 +1,11 @@
 /**
- * /.well-known/ai.json — short-name alias for ai-policy.json.
+ * /.well-known/ai.json, short-name alias for ai-policy.json.
  *
  * Some discovery agents probe `.well-known/ai.json` (parallel to
  * `.well-known/ai.txt`) before checking the canonical `ai-policy.json`.
  * Serves the body directly (200, not 308) because several AI bots don't
- * follow redirects on AI-policy probes. The canonical URL — declared via
- * the `Link: rel=canonical` header — remains at /.well-known/ai-policy.json.
+ * follow redirects on AI-policy probes. The canonical URL, declared via
+ * the `Link: rel=canonical` header, remains at /.well-known/ai-policy.json.
  */
 
 import { GET as AiPolicyJson } from "@/app/.well-known/ai-policy.json/route";

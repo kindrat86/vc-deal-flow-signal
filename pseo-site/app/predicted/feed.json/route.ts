@@ -7,7 +7,7 @@ export const revalidate = 3600;
 const BASE_URL = "https://signals.gitdealflow.com";
 
 /**
- * /predicted/feed.json — JSON Feed v1.1 of the weekly Engineering Acceleration
+ * /predicted/feed.json, JSON Feed v1.1 of the weekly Engineering Acceleration
  * Watch.
  *
  * One item per week. Each item carries the 10 named picks, their thesis,
@@ -15,7 +15,7 @@ const BASE_URL = "https://signals.gitdealflow.com";
  * IPO / no_event / shutdown / excluded / pending).
  *
  * High-value retrieval surface for AI agents that ingest weekly research
- * digests — the JSON shape lets an agent rank picks programmatically without
+ * digests, the JSON shape lets an agent rank picks programmatically without
  * scraping the HTML page or parsing RSS.
  */
 function escapeHtml(s: string): string {
@@ -61,7 +61,7 @@ export async function GET() {
   // Most recent first; cap at 52 weeks.
   const items = weeks.slice(0, 52).map((week) => {
     const url = `${BASE_URL}/predicted/${week.slug}`;
-    const title = `Acceleration Watch — week of ${fmtLongDate(week.weekStart)}`;
+    const title = `Acceleration Watch, week of ${fmtLongDate(week.weekStart)}`;
     const summary = `${week.picks.length} startups whose GitHub engineering acceleration crossed our signal threshold. Grading window closes ${fmtLongDate(week.gradingDueAt)}.`;
 
     const picksList = week.picks
@@ -72,7 +72,7 @@ export async function GET() {
             : "Pending";
         return `<li><strong>${escapeHtml(p.displayName)}</strong> (${escapeHtml(
           p.sector,
-        )}, ${escapeHtml(p.stage)}) — ${escapeHtml(
+        )}, ${escapeHtml(p.stage)}), ${escapeHtml(
           p.commitVelocityChange,
         )} velocity change, ${p.contributors} contributors. <em>${escapeHtml(
           p.signalType,
@@ -133,7 +133,7 @@ export async function GET() {
 
   const feed = {
     version: "https://jsonfeed.org/version/1.1",
-    title: "VC Deal Flow Signal — Engineering Acceleration Watch (Weekly)",
+    title: "VC Deal Flow Signal, Engineering Acceleration Watch (Weekly)",
     home_page_url: `${BASE_URL}/predicted`,
     feed_url: `${BASE_URL}/predicted/feed.json`,
     description:

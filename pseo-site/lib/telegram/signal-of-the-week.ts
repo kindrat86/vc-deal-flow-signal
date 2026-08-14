@@ -1,5 +1,5 @@
 /**
- * Signal of the Week — Telegram channel post builder.
+ * Signal of the Week, Telegram channel post builder.
  *
  * Renders the weekly broadcast post for the free Telegram channel from the
  * current #1 mover. Mirrors the manual template in
@@ -27,7 +27,7 @@ function clamp(s: string, max: number): string {
 export interface SignalOfTheWeekPost {
   /** Telegram-ready HTML body (parse_mode: "HTML"). */
   text: string;
-  /** Org name — surfaced in logs / the route's JSON response. */
+  /** Org name, surfaced in logs / the route's JSON response. */
   org: string;
   sectorName: string;
   sectorSlug: string;
@@ -35,7 +35,7 @@ export interface SignalOfTheWeekPost {
 
 /**
  * @param mover         the week's top mover from getTopMoversThisWeek(1)
- * @param totalSectors  getAllSectors().length — keeps the "N other sectors"
+ * @param totalSectors  getAllSectors().length, keeps the "N other sectors"
  *                      count honest instead of hardcoding it.
  */
 export function buildSignalOfTheWeek(
@@ -68,9 +68,9 @@ export function buildSignalOfTheWeek(
     `<b>What caught my eye:</b> ${desc}`,
     ``,
     // The "real base, not a small-number spike" framing reflects the
-    // 30-commit floor getTopMoversThisWeek applies; the 3–6 week framing
+    // 30-commit floor getTopMoversThisWeek applies; the 3-6 week framing
     // matches the house copy in lib/data.ts's weekly summary.
-    `The "${signalType}" pattern is firing on a real base — ${mover.commitVelocity14d} commits in 14 days, not a small-number spike. Engineering acceleration like this has historically preceded fundraise announcements by 3–6 weeks.`,
+    `The "${signalType}" pattern is firing on a real base, ${mover.commitVelocity14d} commits in 14 days, not a small-number spike. Engineering acceleration like this has historically preceded fundraise announcements by 3-6 weeks.`,
     ``,
     `🔗 GitHub: ${escapeHtml(mover.githubUrl)}`,
     ``,

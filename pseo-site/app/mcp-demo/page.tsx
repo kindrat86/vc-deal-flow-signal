@@ -15,12 +15,12 @@ const THUMB_URL = `${PAGE_URL}/opengraph-image`;
 const UPLOAD_DATE = "2026-04-17T00:00:00+00:00";
 const DURATION_ISO = "PT1M12S";
 const DURATION_SECONDS = 72;
-const VIDEO_TITLE = "VC Deal Flow Signal MCP Server — Claude Desktop Demo";
+const VIDEO_TITLE = "VC Deal Flow Signal MCP Server, Claude Desktop Demo";
 const VIDEO_DESCRIPTION =
   "Live demo of the VC Deal Flow Signal MCP server running inside Claude Desktop. Shows trending startups, sector search, and individual startup signal lookups via natural-language prompts. Free, no API key required.";
 
 export const metadata: Metadata = {
-  title: "MCP Server Demo — VC Deal Flow Signal in Claude Desktop",
+  title: "MCP Server Demo, VC Deal Flow Signal in Claude Desktop",
   description: VIDEO_DESCRIPTION,
   alternates: {
     canonical: "/mcp-demo",
@@ -136,7 +136,7 @@ export default function McpDemoPage() {
 
         <p className="text-base text-slate-300 mb-8">
           In plain terms: it tells you which companies are quietly building far
-          more than usual — the teams about to break out — and flags them weeks
+          more than usual, the teams about to break out, and flags them weeks
           before the round shows up in a deck. You ask in your own words; it
           answers with the names and the timing.
         </p>
@@ -159,7 +159,7 @@ export default function McpDemoPage() {
             .
           </video>
           <figcaption className="px-4 py-3 text-sm text-slate-400">
-            Duration {DURATION_SECONDS}s — silent — recorded {UPLOAD_DATE}.
+            Duration {DURATION_SECONDS}s, silent, recorded {UPLOAD_DATE}.
           </figcaption>
         </figure>
 
@@ -196,12 +196,12 @@ export default function McpDemoPage() {
                 href="/agents/credits"
                 className="inline-block rounded border border-emerald-500/50 bg-emerald-500/10 hover:bg-emerald-500/20 text-emerald-200 font-semibold px-4 py-2 text-sm"
               >
-                Buy 100 agent credits — €19 →
+                Buy 100 agent credits, €19 →
               </Link>
             </div>
             <p className="mt-3 text-xs text-slate-400">
               Wiring this into an agent? Credits are €0.19/call (x402 / USDC on
-              Base) — the deep-signal tool the free six don&apos;t cover.
+              Base), the deep-signal tool the free six don&apos;t cover.
             </p>
           </div>
         </section>
@@ -239,7 +239,7 @@ export default function McpDemoPage() {
           <p className="text-sm text-slate-300 mb-4">
             You don&apos;t need to install anything to get the signal. We&apos;ll
             translate the week&apos;s movers into plain English and send them to
-            your inbox — no config, no command line.
+            your inbox, no config, no command line.
           </p>
           <div className="flex flex-wrap gap-2">
             <a
@@ -252,7 +252,7 @@ export default function McpDemoPage() {
               href="/firstlook"
               className="inline-block rounded border border-slate-700 bg-slate-800/60 hover:bg-slate-800 text-slate-100 font-semibold px-4 py-2 text-sm"
             >
-              First Look — €7 →
+              First Look, €7 →
             </Link>
           </div>
         </section>

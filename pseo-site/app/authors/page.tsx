@@ -21,7 +21,7 @@ export default function AuthorsIndexPage() {
     "@graph": [
       {
         "@type": "CollectionPage",
-        name: "VC Deal Flow Signal — Authors",
+        name: "VC Deal Flow Signal, Authors",
         url: `${BASE_URL}/authors`,
         hasPart: all.map((a) => ({
           "@type": "Person",

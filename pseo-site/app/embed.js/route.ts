@@ -1,5 +1,5 @@
 /**
- * /embed.js — drop-in loader for GitDealFlow widgets.
+ * /embed.js, drop-in loader for GitDealFlow widgets.
  *
  * Usage on the embedder side (Ghost, WordPress, Notion, any HTML host
  * that allows <script>):
@@ -12,7 +12,7 @@
  *   - Listens for postMessage `gitdealflow:embed:size` events emitted
  *     by <EmbedAutoHeight/> inside the iframe and resizes the iframe
  *     height to fit the content. Works for multiple iframes on one
- *     page — each height update is routed to the matching iframe by
+ *     page, each height update is routed to the matching iframe by
  *     pathname.
  *
  * Iframe-first vs script-first: Substack and Beehiiv strip <script>

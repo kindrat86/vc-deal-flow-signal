@@ -1,12 +1,12 @@
 /**
- * Programmatic "startup ideas" pages — one slug per niche.
+ * Programmatic "startup ideas" pages, one slug per niche.
  *
  * Each entry frames a buildable opportunity in the same voice as the
  * indie-builder / micro-SaaS canon (community-led, distribution-first,
  * "the idea you could build today"). The slug page renders:
  *
  *   1. The idea + why-now (static).
- *   2. The top three repos already trying it — joined live against the
+ *   2. The top three repos already trying it, joined live against the
  *      current-period startup dataset via `matchSignal`. This is what
  *      makes the cluster pSEO-compounding: as the dataset shifts, the
  *      page reflects the new front-runners without a content edit.
@@ -14,13 +14,13 @@
  *   4. FAQ + JSON-LD (FAQPage, ItemList, Article, Speakable).
  *
  * Routes are rendered by `app/startup-ideas/[slug]/page.tsx`. Slugs are
- * stable — they go into IndexNow on `postbuild`, so renames break
+ * stable, they go into IndexNow on `postbuild`, so renames break
  * inbound citations and the sitemap reference.
  *
  * Anonymity rule restated: we do NOT name individual founders or stealth
  * teams here. The repos surfaced are public GitHub orgs that are already
  * indexed across the rest of the site (and on GitHub itself). Categories
- * — not people — are the unit of pSEO content here.
+ *, not people, are the unit of pSEO content here.
  */
 
 export interface StartupIdeaFAQ {
@@ -40,7 +40,7 @@ export interface StartupIdeaMatch {
    */
   keywords?: string[];
   /**
-   * Minimum commits in the 14-day window — filters out micro-orgs whose
+   * Minimum commits in the 14-day window, filters out micro-orgs whose
    * percent-change is noise. Defaults to 10 in the resolver.
    */
   minCommits14d?: number;
@@ -64,19 +64,19 @@ export interface StartupIdea {
   title: string;
   /** Meta description (<= 160 chars). */
   metaDescription: string;
-  /** TL;DR — speakable, lifted into Speakable schema, 1-2 sentences. */
+  /** TL;DR, speakable, lifted into Speakable schema, 1-2 sentences. */
   oneLiner: string;
-  /** "Why now" paragraph — the trend that makes this buildable in 2026. */
+  /** "Why now" paragraph, the trend that makes this buildable in 2026. */
   whyNow: string;
-  /** "What you'd build today" paragraph — the concrete shape of the product. */
+  /** "What you'd build today" paragraph, the concrete shape of the product. */
   buildToday: string;
-  /** Live-signal join — the resolver uses this to pull top-3 repos. */
+  /** Live-signal join, the resolver uses this to pull top-3 repos. */
   matchSignal: StartupIdeaMatch;
   /** The seed-round pattern hiding in the trendline. */
   seedPattern: string;
   /** Suggested build-stack hints (tools/frameworks). */
   buildStack: string[];
-  /** FAQ entries — emitted as FAQPage JSON-LD AND rendered as accordion. */
+  /** FAQ entries, emitted as FAQPage JSON-LD AND rendered as accordion. */
   faqs: StartupIdeaFAQ[];
   /** Related idea slugs to link from the bottom of the page. */
   related: string[];
@@ -86,46 +86,46 @@ export interface StartupIdea {
 
 export const startupIdeas: StartupIdea[] = [
   // ----------------------------------------------------------------------
-  // AI-Native SaaS — the "rebuild every category against GPT" cluster.
+  // AI-Native SaaS, the "rebuild every category against GPT" cluster.
   // ----------------------------------------------------------------------
   {
     slug: "ai-native-crm",
     category: "AI-Native SaaS",
     title: "AI-native CRM: the idea you could build today, the repos already trying",
     metaDescription:
-      "An AI-native CRM that drafts follow-ups, enriches contacts, and remembers context — the buildable opportunity in 2026, with three repos already accelerating against it.",
+      "An AI-native CRM that drafts follow-ups, enriches contacts, and remembers context, the buildable opportunity in 2026, with three repos already accelerating against it.",
     oneLiner:
-      "An AI-native CRM doesn't replace Salesforce — it replaces the salesperson's spreadsheet. The opportunity is the long tail of one-to-twenty-rep teams who never wanted Salesforce in the first place.",
+      "An AI-native CRM doesn't replace Salesforce, it replaces the salesperson's spreadsheet. The opportunity is the long tail of one-to-twenty-rep teams who never wanted Salesforce in the first place.",
     whyNow:
-      "Two things changed in 2025–2026. First, the model layer (Claude, GPT-class, Gemini, Llama) got cheap enough to draft every outbound email at $0.001 each. Second, MCP made it feasible to give an agent read/write access to a contact graph without a custom integration per ICP. That kills the gap between \"CRM\" and \"sales copilot\" — they're the same product now.",
+      "Two things changed in 2025-2026. First, the model layer (Claude, GPT-class, Gemini, Llama) got cheap enough to draft every outbound email at $0.001 each. Second, MCP made it feasible to give an agent read/write access to a contact graph without a custom integration per ICP. That kills the gap between \"CRM\" and \"sales copilot\", they're the same product now.",
     buildToday:
-      "A single-table contact graph plus an agent that does three jobs well: (1) summarize every email and call into one row of context, (2) draft the next-step message in the operator's voice, (3) chase replies on a cadence the operator can pause from a chat command. Skip pipelines, dashboards, forecasting — those are sequels, not the wedge.",
+      "A single-table contact graph plus an agent that does three jobs well: (1) summarize every email and call into one row of context, (2) draft the next-step message in the operator's voice, (3) chase replies on a cadence the operator can pause from a chat command. Skip pipelines, dashboards, forecasting, those are sequels, not the wedge.",
     matchSignal: {
       sectorSlugs: ["enterprise-saas", "ai-ml"],
       keywords: ["crm", "sales", "contact", "pipeline", "outreach", "lead"],
       minCommits14d: 20,
     },
     seedPattern:
-      "Watch for repos that hit ~250 contributors and 1.5x commit acceleration over a quarter while still describing themselves as \"open-source CRM\" — that's the dual-loop OSS-to-seed pattern Highrise / EspoCRM / Mautic ran before. The repos that flip the README to mention \"AI\" or \"agent\" in the same period are the ones raising in the next 6 weeks.",
+      "Watch for repos that hit ~250 contributors and 1.5x commit acceleration over a quarter while still describing themselves as \"open-source CRM\", that's the dual-loop OSS-to-seed pattern Highrise / EspoCRM / Mautic ran before. The repos that flip the README to mention \"AI\" or \"agent\" in the same period are the ones raising in the next 6 weeks.",
     buildStack: [
       "Next.js + Postgres (Neon) for the contact graph",
       "MCP server exposing read/write tools to any host",
       "Embedding store (pgvector or Turbopuffer) for context recall",
       "Inngest or Vercel Queues for the chase cadence",
-      "Stripe for billing — €19/seat is the indie ceiling",
+      "Stripe for billing, €19/seat is the indie ceiling",
     ],
     faqs: [
       {
         q: "Why not just build on top of Salesforce / HubSpot?",
-        a: "Because the customer who wants an AI-native CRM is the one who never signed up for Salesforce. The market is the founder, the recruiter, the agent, the consultant — single-operator pipelines that today live in Notion and Apple Notes. They don't want a CRM with an AI bolt-on; they want a chat window that remembers context.",
+        a: "Because the customer who wants an AI-native CRM is the one who never signed up for Salesforce. The market is the founder, the recruiter, the agent, the consultant, single-operator pipelines that today live in Notion and Apple Notes. They don't want a CRM with an AI bolt-on; they want a chat window that remembers context.",
       },
       {
         q: "How is this different from Attio or Folk?",
-        a: "Attio and Folk are still pipeline-first, agent-second. The bet here is that the next-generation product is agent-first — the table view is a side effect of the conversation, not the surface area.",
+        a: "Attio and Folk are still pipeline-first, agent-second. The bet here is that the next-generation product is agent-first, the table view is a side effect of the conversation, not the surface area.",
       },
       {
         q: "Is the market big enough?",
-        a: "There are roughly 30M solopreneurs, agencies, and one-to-twenty-rep teams worldwide who run sales out of an inbox today. €19/seat at 1% penetration is a €70M ARR business — and that's before vertical add-ons.",
+        a: "There are roughly 30M solopreneurs, agencies, and one-to-twenty-rep teams worldwide who run sales out of an inbox today. €19/seat at 1% penetration is a €70M ARR business, and that's before vertical add-ons.",
       },
     ],
     related: ["ai-native-support", "ai-native-recruiting", "vertical-ai-real-estate", "voice-agents-for-sales"],
@@ -136,13 +136,13 @@ export const startupIdeas: StartupIdea[] = [
     category: "AI-Native SaaS",
     title: "AI-native ERP: the buildable opportunity hiding under NetSuite",
     metaDescription:
-      "An AI-native ERP for the businesses NetSuite priced out — the buildable opportunity in 2026, with the three repos showing the pattern.",
+      "An AI-native ERP for the businesses NetSuite priced out, the buildable opportunity in 2026, with the three repos showing the pattern.",
     oneLiner:
       "ERP is the most-hated category in B2B software, and the smallest companies still need most of what it does. The wedge: one chat window that knows your invoices, your inventory, and your cash position.",
     whyNow:
-      "NetSuite, SAP, and Oracle Fusion sell at price points that exclude every business under 50 people. Below that line, the operator runs the business in seven SaaS tools and a spreadsheet. Agents make it possible to unify that view without a six-figure implementation — the integration layer is now \"ask the model.\"",
+      "NetSuite, SAP, and Oracle Fusion sell at price points that exclude every business under 50 people. Below that line, the operator runs the business in seven SaaS tools and a spreadsheet. Agents make it possible to unify that view without a six-figure implementation, the integration layer is now \"ask the model.\"",
     buildToday:
-      "Start with one chat window that reads from QuickBooks / Xero, Stripe, Shopify, and a freight provider. Answer three questions well: how much cash do I have, what's my burn this month, what do I owe and to whom. The ERP comes later — the wedge is being the cockpit, not the database.",
+      "Start with one chat window that reads from QuickBooks / Xero, Stripe, Shopify, and a freight provider. Answer three questions well: how much cash do I have, what's my burn this month, what do I owe and to whom. The ERP comes later, the wedge is being the cockpit, not the database.",
     matchSignal: {
       sectorSlugs: ["enterprise-saas", "supply-chain", "ai-ml"],
       keywords: ["erp", "accounting", "inventory", "finance", "ledger", "invoice"],
@@ -159,11 +159,11 @@ export const startupIdeas: StartupIdea[] = [
     faqs: [
       {
         q: "Won't this just be another QuickBooks?",
-        a: "QuickBooks is bookkeeping — it tells you what happened. The AI-native ERP tells you what to do next, with a draft of the action attached. That's a different product, not a feature.",
+        a: "QuickBooks is bookkeeping, it tells you what happened. The AI-native ERP tells you what to do next, with a draft of the action attached. That's a different product, not a feature.",
       },
       {
         q: "What's the moat?",
-        a: "The chat-state graph. Once the agent has eight months of context — your vendors, your seasonality, your customers' payment patterns — switching costs are real. The chat thread is the moat.",
+        a: "The chat-state graph. Once the agent has eight months of context, your vendors, your seasonality, your customers' payment patterns, switching costs are real. The chat thread is the moat.",
       },
     ],
     related: ["ai-native-accounting", "ai-native-billing", "ai-native-bi", "agent-payment-rails"],
@@ -176,7 +176,7 @@ export const startupIdeas: StartupIdea[] = [
     metaDescription:
       "The next Intercom is a chat window that ships with an agent runtime, not a ticket queue. The buildable opportunity with three repos already moving.",
     oneLiner:
-      "Customer-support tools are the easiest place to deploy agents — they have structured inputs, clear outcomes, and the customer is asking to be helped. The opportunity is the platform that ships agent-first, not bolted-on.",
+      "Customer-support tools are the easiest place to deploy agents, they have structured inputs, clear outcomes, and the customer is asking to be helped. The opportunity is the platform that ships agent-first, not bolted-on.",
     whyNow:
       "Every support tool launched a \"GPT macro\" in 2024 and a \"copilot\" in 2025. None re-built the product around agents. The greenfield is the workflow where the AI takes the first ten messages, hands off only when stuck, and the human surface area is just the escalation queue.",
     buildToday:
@@ -187,7 +187,7 @@ export const startupIdeas: StartupIdea[] = [
       minCommits14d: 15,
     },
     seedPattern:
-      "Watch the open-source helpdesk repos (Chatwoot-class). The ones that ship a usable agent runtime in 2026 will follow the Vapi / Sierra pricing flip — per-conversation, not per-seat — and the velocity tells you when the flip is imminent.",
+      "Watch the open-source helpdesk repos (Chatwoot-class). The ones that ship a usable agent runtime in 2026 will follow the Vapi / Sierra pricing flip, per-conversation, not per-seat, and the velocity tells you when the flip is imminent.",
     buildStack: [
       "Vercel AI SDK for the agent loop",
       "Inngest for the escalation timer",
@@ -197,7 +197,7 @@ export const startupIdeas: StartupIdea[] = [
     faqs: [
       {
         q: "What about Intercom Fin / Zendesk AI?",
-        a: "They sold to the existing buyer with the existing pricing model. The opportunity is the buyer who never wanted Intercom — Shopify stores, indie SaaS, agency-managed clients — who'll pay €0.50 per resolution instead of €99 per seat.",
+        a: "They sold to the existing buyer with the existing pricing model. The opportunity is the buyer who never wanted Intercom, Shopify stores, indie SaaS, agency-managed clients, who'll pay €0.50 per resolution instead of €99 per seat.",
       },
       {
         q: "How do you measure \"resolved\"?",
@@ -214,9 +214,9 @@ export const startupIdeas: StartupIdea[] = [
     metaDescription:
       "The accounts-receivable workflow is begging for an agent. Buildable opportunity in 2026 with three repos already accelerating.",
     oneLiner:
-      "Every B2B founder loses 4-8 hours a week to chasing invoices. The AI-native billing tool sends, follows up, and reconciles — with one chat input from the operator.",
+      "Every B2B founder loses 4-8 hours a week to chasing invoices. The AI-native billing tool sends, follows up, and reconciles, with one chat input from the operator.",
     whyNow:
-      "Stripe Billing solved subscriptions; nothing solved one-off B2B invoices for service businesses. The buyer is the agency, the freelance fleet, the consulting partner — all the businesses where billing is a chore the founder hates.",
+      "Stripe Billing solved subscriptions; nothing solved one-off B2B invoices for service businesses. The buyer is the agency, the freelance fleet, the consulting partner, all the businesses where billing is a chore the founder hates.",
     buildToday:
       "An inbox-shaped product: the operator drops a meeting transcript or a Slack DM, the agent drafts the invoice, schedules the send, follows up at +7 / +14 / +21 days with escalating tone. Stripe + a small ledger of \"paid / chasing / written off.\"",
     matchSignal: {
@@ -246,7 +246,7 @@ export const startupIdeas: StartupIdea[] = [
     category: "AI-Native SaaS",
     title: "AI-native accounting: the bookkeeper that doesn't sleep",
     metaDescription:
-      "An AI-native bookkeeper for SMBs that categorizes, reconciles, and files — buildable today, with three open-source signals already moving.",
+      "An AI-native bookkeeper for SMBs that categorizes, reconciles, and files, buildable today, with three open-source signals already moving.",
     oneLiner:
       "Bookkeeping is mostly pattern-matching and the patterns are public. The agent that does month-end close from a bank feed wins the small-business market.",
     whyNow:
@@ -269,7 +269,7 @@ export const startupIdeas: StartupIdea[] = [
     faqs: [
       {
         q: "What about Pilot / Bench?",
-        a: "They're managed services — humans in the loop. The AI-native bookkeeper is the same product without the humans, at 10% of the cost and twice the speed.",
+        a: "They're managed services, humans in the loop. The AI-native bookkeeper is the same product without the humans, at 10% of the cost and twice the speed.",
       },
     ],
     related: ["ai-native-erp", "ai-native-billing", "vertical-ai-tax-prep"],
@@ -280,9 +280,9 @@ export const startupIdeas: StartupIdea[] = [
     category: "AI-Native SaaS",
     title: "AI-native recruiting: the sourcer who works at 4am",
     metaDescription:
-      "The agent that sources, screens, and schedules candidates — buildable in 2026 with three repos showing the velocity pattern.",
+      "The agent that sources, screens, and schedules candidates, buildable in 2026 with three repos showing the velocity pattern.",
     oneLiner:
-      "Recruiting is the second-most-automatable office job after sales — structured inputs, structured outputs, and the human only matters at the end. The buildable agent does the top of the funnel.",
+      "Recruiting is the second-most-automatable office job after sales, structured inputs, structured outputs, and the human only matters at the end. The buildable agent does the top of the funnel.",
     whyNow:
       "LinkedIn rate-limited the sourcing market. ATS tools (Greenhouse, Lever) refuse to ship real AI. The greenfield is a tool that does sourcing across LinkedIn, GitHub, and a custom signal set, then runs a structured screening conversation before a human sees the candidate.",
     buildToday:
@@ -303,7 +303,7 @@ export const startupIdeas: StartupIdea[] = [
     faqs: [
       {
         q: "Won't the platforms shut you down?",
-        a: "LinkedIn already has, which is the wedge — the next-generation tool sources without LinkedIn. GitHub, conference attendee lists, Substack subscribers, open-source contributor graphs are the new sourcing surfaces.",
+        a: "LinkedIn already has, which is the wedge, the next-generation tool sources without LinkedIn. GitHub, conference attendee lists, Substack subscribers, open-source contributor graphs are the new sourcing surfaces.",
       },
     ],
     related: ["ai-native-crm", "ai-native-support", "vertical-ai-real-estate"],
@@ -314,7 +314,7 @@ export const startupIdeas: StartupIdea[] = [
     category: "AI-Native SaaS",
     title: "AI-native payroll: the agent that pays your contractors before you wake up",
     metaDescription:
-      "AI-native payroll for the global contractor economy — buildable in 2026 with three repos showing the velocity pattern.",
+      "AI-native payroll for the global contractor economy, buildable in 2026 with three repos showing the velocity pattern.",
     oneLiner:
       "Gusto and Deel solved payroll for W-2s and full-time international hires. The next wave is the agent that runs payroll for a fleet of contractors across 30 countries with one chat input.",
     whyNow:
@@ -352,16 +352,16 @@ export const startupIdeas: StartupIdea[] = [
     oneLiner:
       "Dashboards are a UI bug. The product is a chat window over the data warehouse that answers questions in plain English and draws the chart only when asked.",
     whyNow:
-      "Snowflake, BigQuery, and Postgres now expose enough metadata for an agent to write correct SQL against them. Text-to-SQL crossed the 90% accuracy bar on real schemas in 2025. The remaining work is the operator-facing surface — chat, with a chart as a side effect.",
+      "Snowflake, BigQuery, and Postgres now expose enough metadata for an agent to write correct SQL against them. Text-to-SQL crossed the 90% accuracy bar on real schemas in 2025. The remaining work is the operator-facing surface, chat, with a chart as a side effect.",
     buildToday:
-      "Connect to one warehouse. Ingest schema + foreign keys + a 100-row sample. Operator asks a question. Agent generates SQL, runs it, returns three sentences of interpretation plus an optional chart. Save the chat thread — that's the new dashboard.",
+      "Connect to one warehouse. Ingest schema + foreign keys + a 100-row sample. Operator asks a question. Agent generates SQL, runs it, returns three sentences of interpretation plus an optional chart. Save the chat thread, that's the new dashboard.",
     matchSignal: {
       sectorSlugs: ["data-infrastructure", "enterprise-saas", "ai-ml"],
       keywords: ["sql", "warehouse", "metabase", "superset", "dashboard", "bi", "analytics"],
       minCommits14d: 15,
     },
     seedPattern:
-      "Metabase / Superset forks that ship a text-to-SQL module hit the velocity pattern. The fork itself isn't the bet — the wholly new repo that beats them to the agent-first product is.",
+      "Metabase / Superset forks that ship a text-to-SQL module hit the velocity pattern. The fork itself isn't the bet, the wholly new repo that beats them to the agent-first product is.",
     buildStack: [
       "DuckDB or pg for the in-memory query layer",
       "Anthropic Claude or GPT-class for SQL gen",
@@ -371,7 +371,7 @@ export const startupIdeas: StartupIdea[] = [
     faqs: [
       {
         q: "Doesn't every BI tool ship an AI now?",
-        a: "They ship AI as a sidebar. The product here is AI-first — the dashboard is a generated artifact, not the primary surface.",
+        a: "They ship AI as a sidebar. The product here is AI-first, the dashboard is a generated artifact, not the primary surface.",
       },
     ],
     related: ["ai-native-bi", "data-quality-monitors", "vector-databases"],
@@ -382,9 +382,9 @@ export const startupIdeas: StartupIdea[] = [
     category: "AI-Native SaaS",
     title: "AI-native CMS: the content engine that owns the brief",
     metaDescription:
-      "Headless CMS plus an agent that writes, edits, and publishes — buildable in 2026 with three repos accelerating.",
+      "Headless CMS plus an agent that writes, edits, and publishes, buildable in 2026 with three repos accelerating.",
     oneLiner:
-      "The CMS market is mature. The next layer is the same product where the AI owns the brief, the draft, and the SEO pass — the human only approves.",
+      "The CMS market is mature. The next layer is the same product where the AI owns the brief, the draft, and the SEO pass, the human only approves.",
     whyNow:
       "Contentful and Sanity are infrastructure. They're not solving the actual content problem, which is producing the content. The greenfield is the CMS that ships a writer + editor + SEO agent in the same box.",
     buildToday:
@@ -395,7 +395,7 @@ export const startupIdeas: StartupIdea[] = [
       minCommits14d: 10,
     },
     seedPattern:
-      "Open-source headless CMS repos (Directus, Strapi, Payload) that add an AI module hit the velocity pattern. The contributor growth on the AI module is the lead indicator — it shows the maintainer commits to the new product surface.",
+      "Open-source headless CMS repos (Directus, Strapi, Payload) that add an AI module hit the velocity pattern. The contributor growth on the AI module is the lead indicator, it shows the maintainer commits to the new product surface.",
     buildStack: [
       "Payload or Directus as the headless engine",
       "Vercel AI SDK for the agent loop",
@@ -413,16 +413,16 @@ export const startupIdeas: StartupIdea[] = [
   },
 
   // ----------------------------------------------------------------------
-  // Agent Infrastructure — the picks-and-shovels for the agent economy.
+  // Agent Infrastructure, the picks-and-shovels for the agent economy.
   // ----------------------------------------------------------------------
   {
     slug: "browser-use-agents",
     category: "Agent Infrastructure",
     title: "Browser-use agents: the buildable opportunity behind the headless wave",
     metaDescription:
-      "Browser-use agents are the unsexy infrastructure of the agent economy. Three repos already showing the velocity pattern — buildable in 2026.",
+      "Browser-use agents are the unsexy infrastructure of the agent economy. Three repos already showing the velocity pattern, buildable in 2026.",
     oneLiner:
-      "Browser-use is to agents what Stripe was to payments — invisible plumbing, but the only way the agent gets work done. The buildable opportunity is the managed runtime, not the framework.",
+      "Browser-use is to agents what Stripe was to payments, invisible plumbing, but the only way the agent gets work done. The buildable opportunity is the managed runtime, not the framework.",
     whyNow:
       "Anthropic shipped computer-use in 2024. Browser-use frameworks (Playwright-wrapping, DOM-aware) exploded in 2025. Every agent product needs a way to run a real browser session, capture state, recover from crashes. Nobody's ahead on the managed-runtime side.",
     buildToday:
@@ -443,7 +443,7 @@ export const startupIdeas: StartupIdea[] = [
     faqs: [
       {
         q: "What about Browserbase / Steel?",
-        a: "They're the leaders. The wedge is the workload they can't price for — the long-running, multi-session agents where per-minute billing eats the operator's margin. A flat-rate plan for the indie tier is the underserved market.",
+        a: "They're the leaders. The wedge is the workload they can't price for, the long-running, multi-session agents where per-minute billing eats the operator's margin. A flat-rate plan for the indie tier is the underserved market.",
       },
     ],
     related: ["computer-use-agents", "headless-browser-fleets", "agent-observability"],
@@ -456,7 +456,7 @@ export const startupIdeas: StartupIdea[] = [
     metaDescription:
       "Computer-use agents need a sandboxed desktop, not just a browser. Three repos showing the pattern, buildable in 2026.",
     oneLiner:
-      "Browser-use solves 60% of agent work. The remaining 40% — anything that touches a native app — needs a sandboxed desktop. That's a separate product, and it's still greenfield.",
+      "Browser-use solves 60% of agent work. The remaining 40%, anything that touches a native app, needs a sandboxed desktop. That's a separate product, and it's still greenfield.",
     whyNow:
       "Claude's computer-use API and the equivalent in OpenAI's stack made desktop-grounded agents practical in late 2024. By 2026 every AI-native legal / accounting / clinical product needs a runtime. The infrastructure layer is still wide open.",
     buildToday:
@@ -477,7 +477,7 @@ export const startupIdeas: StartupIdea[] = [
     faqs: [
       {
         q: "Why not just give the agent SSH?",
-        a: "Most of the AI-native vertical products run against apps that have no SSH or API — desktop legal software, clinical record systems, in-house tools. The desktop is the API.",
+        a: "Most of the AI-native vertical products run against apps that have no SSH or API, desktop legal software, clinical record systems, in-house tools. The desktop is the API.",
       },
     ],
     related: ["browser-use-agents", "agent-observability", "vertical-ai-legal"],
@@ -494,7 +494,7 @@ export const startupIdeas: StartupIdea[] = [
     whyNow:
       "Every team that put an agent in production hit the same wall: long-running runs crash, retries are non-trivial, the trace is impossible to read. Workflow DevKit, Inngest, Temporal, and Restate are all racing for the durable-execution layer.",
     buildToday:
-      "A TypeScript library that exposes one `step.run` primitive plus a `step.agent.invoke` for tool-calling loops. Crash-safe, retry-safe, single-trace-per-run. Ship it as an SDK on top of Vercel Workflow DevKit or Inngest — don't rebuild the durability layer.",
+      "A TypeScript library that exposes one `step.run` primitive plus a `step.agent.invoke` for tool-calling loops. Crash-safe, retry-safe, single-trace-per-run. Ship it as an SDK on top of Vercel Workflow DevKit or Inngest, don't rebuild the durability layer.",
     matchSignal: {
       sectorSlugs: ["developer-tools", "ai-ml"],
       keywords: ["agent", "workflow", "orchestrat", "langchain", "langgraph", "crewai"],
@@ -524,9 +524,9 @@ export const startupIdeas: StartupIdea[] = [
     metaDescription:
       "Agent memory is the bottleneck for production agents. Three repos showing the pattern, buildable in 2026.",
     oneLiner:
-      "Vector databases solved retrieval. Nobody solved memory — the layer above retrieval that knows what the agent already learned, forgot, and should re-check. That's the next category.",
+      "Vector databases solved retrieval. Nobody solved memory, the layer above retrieval that knows what the agent already learned, forgot, and should re-check. That's the next category.",
     whyNow:
-      "Every agent in production runs into the same problem: the context window fills up, the agent loses track, the user repeats themselves. The fix is a separate memory tier — write-on-significant-events, decay-by-recency, query-on-need.",
+      "Every agent in production runs into the same problem: the context window fills up, the agent loses track, the user repeats themselves. The fix is a separate memory tier, write-on-significant-events, decay-by-recency, query-on-need.",
     buildToday:
       "A managed service that exposes three tools: `memory.write(event, importance)`, `memory.recall(query)`, `memory.forget(predicate)`. Backed by a graph + embedding store. MCP-first so any agent host can plug in.",
     matchSignal: {
@@ -560,9 +560,9 @@ export const startupIdeas: StartupIdea[] = [
     oneLiner:
       "Agents are non-deterministic and expensive. Datadog doesn't know what to do with a tool-call trace. The dedicated observability tool wins because the data shape is different.",
     whyNow:
-      "Langsmith, Helicone, and Weave are racing for the category. None of them is the obvious winner — the market is too early, and the buyer is the engineering manager who already pays for Datadog. The wedge is per-feature pricing on top of an existing trace pipeline.",
+      "Langsmith, Helicone, and Weave are racing for the category. None of them is the obvious winner, the market is too early, and the buyer is the engineering manager who already pays for Datadog. The wedge is per-feature pricing on top of an existing trace pipeline.",
     buildToday:
-      "OpenTelemetry-compatible span format for LLM calls. Capture prompt, response, tools, cost, latency. Drop into Grafana / Datadog as a layer on top, or self-host. Free for the first 10K spans/month — that's the indie tier.",
+      "OpenTelemetry-compatible span format for LLM calls. Capture prompt, response, tools, cost, latency. Drop into Grafana / Datadog as a layer on top, or self-host. Free for the first 10K spans/month, that's the indie tier.",
     matchSignal: {
       sectorSlugs: ["developer-tools", "ai-ml"],
       keywords: ["observability", "tracing", "telemetry", "monitoring", "langsmith", "helicone"],
@@ -592,7 +592,7 @@ export const startupIdeas: StartupIdea[] = [
     metaDescription:
       "Eval is the unsolved part of shipping agents. Three repos accelerating in 2026.",
     oneLiner:
-      "Unit tests don't work for agents. The eval platform that lets a team define a regression suite over real conversations — with model-graded scoring — is the next category leader.",
+      "Unit tests don't work for agents. The eval platform that lets a team define a regression suite over real conversations, with model-graded scoring, is the next category leader.",
     whyNow:
       "Every team shipping agents has homegrown eval scripts. The pattern is the same: capture real traffic, label outcomes, replay against new prompts, compare scores. Nobody productized it well enough.",
     buildToday:
@@ -613,7 +613,7 @@ export const startupIdeas: StartupIdea[] = [
     faqs: [
       {
         q: "What about Braintrust / LangFuse?",
-        a: "They're the leaders. The opportunity is the long tail — the team that doesn't want a $500/mo SaaS and would happily self-host a smaller product. The OSS-first wedge.",
+        a: "They're the leaders. The opportunity is the long tail, the team that doesn't want a $500/mo SaaS and would happily self-host a smaller product. The OSS-first wedge.",
       },
     ],
     related: ["agent-observability", "multi-agent-orchestration", "open-source-observability"],
@@ -647,7 +647,7 @@ export const startupIdeas: StartupIdea[] = [
     faqs: [
       {
         q: "Why not just use Stripe?",
-        a: "Stripe doesn't settle in <1s and doesn't work for sub-cent amounts. The agent economy needs both. Stripe is the rail for the human checkout — x402+USDC is the rail for machine-to-machine.",
+        a: "Stripe doesn't settle in <1s and doesn't work for sub-cent amounts. The agent economy needs both. Stripe is the rail for the human checkout, x402+USDC is the rail for machine-to-machine.",
       },
     ],
     related: ["ai-native-billing", "ai-native-erp", "browser-use-agents"],
@@ -662,7 +662,7 @@ export const startupIdeas: StartupIdea[] = [
     oneLiner:
       "A managed pool of headless Chrome instances, autoscaling on demand, billed per minute. The compute primitive every agent product needs.",
     whyNow:
-      "Browser-use, web scrapers, AI testing tools, screenshot generators — all of them need the same primitive. Nobody's built the equivalent of Cloudflare Workers for headless Chrome.",
+      "Browser-use, web scrapers, AI testing tools, screenshot generators, all of them need the same primitive. Nobody's built the equivalent of Cloudflare Workers for headless Chrome.",
     buildToday:
       "Pool of pre-warmed Chrome instances on Vercel Sandbox or self-hosted Firecracker. WebSocket-based session API. Per-minute billing. Free 1-hour tier for builders. Ship MCP tools so any agent host can grab a browser without a custom integration.",
     matchSignal: {
@@ -681,7 +681,7 @@ export const startupIdeas: StartupIdea[] = [
     faqs: [
       {
         q: "Browserbase already does this?",
-        a: "Yes, and so does Steel, and Bright Data, and ScrapingBee. The market's bigger than any one of them — and the indie / OSS-first slot is open.",
+        a: "Yes, and so does Steel, and Bright Data, and ScrapingBee. The market's bigger than any one of them, and the indie / OSS-first slot is open.",
       },
     ],
     related: ["browser-use-agents", "computer-use-agents", "agent-observability"],
@@ -689,14 +689,14 @@ export const startupIdeas: StartupIdea[] = [
   },
 
   // ----------------------------------------------------------------------
-  // Vertical AI — the "AI for X" cluster.
+  // Vertical AI, the "AI for X" cluster.
   // ----------------------------------------------------------------------
   {
     slug: "vertical-ai-legal",
     category: "Vertical AI",
     title: "Vertical AI for legal: the buildable opportunity behind Harvey",
     metaDescription:
-      "Vertical AI for legal — buildable in 2026 below the AmLaw 200 tier, with three repos showing the pattern.",
+      "Vertical AI for legal, buildable in 2026 below the AmLaw 200 tier, with three repos showing the pattern.",
     oneLiner:
       "Harvey solved AI for the BigLaw partner. Nobody solved it for the 90% of lawyers who work in firms under 50 attorneys, where billables matter more than research depth.",
     whyNow:
@@ -714,7 +714,7 @@ export const startupIdeas: StartupIdea[] = [
       "Anthropic Claude for the long-context reasoning",
       "Clio / Practice Panther APIs for billable-hours sync",
       "Postgres + pgvector for the firm's knowledge base",
-      "PDF parsing — Unstructured.io or LlamaParse",
+      "PDF parsing, Unstructured.io or LlamaParse",
     ],
     faqs: [
       {
@@ -730,11 +730,11 @@ export const startupIdeas: StartupIdea[] = [
     category: "Vertical AI",
     title: "Vertical AI for medical: the scribe that finishes the note",
     metaDescription:
-      "AI medical scribes are a $2B market. The next layer is the platform — buildable, with three repos accelerating.",
+      "AI medical scribes are a $2B market. The next layer is the platform, buildable, with three repos accelerating.",
     oneLiner:
-      "AI medical scribes won the wedge. The next product is the platform — coding, billing, prior-auth, and patient follow-up in one agent layer above the EMR.",
+      "AI medical scribes won the wedge. The next product is the platform, coding, billing, prior-auth, and patient follow-up in one agent layer above the EMR.",
     whyNow:
-      "Abridge and Suki proved providers will pay for the scribe. The market is now ready for the layer above — the agent that also files the claim, drafts the prior-auth, and follows up with the patient.",
+      "Abridge and Suki proved providers will pay for the scribe. The market is now ready for the layer above, the agent that also files the claim, drafts the prior-auth, and follows up with the patient.",
     buildToday:
       "Connect to Epic or Athena via the FHIR API. Listen to the visit, write the note, generate the ICD-10 / CPT codes, draft the prior-auth letter, schedule the patient follow-up. Ship as a chat surface for the physician on the iPad.",
     matchSignal: {
@@ -753,7 +753,7 @@ export const startupIdeas: StartupIdea[] = [
     faqs: [
       {
         q: "What about Abridge, Suki, Nuance DAX?",
-        a: "Scribes only. The opportunity is the workflow above — claim filing, prior-auth, follow-up — which still runs on Excel and faxes at most practices.",
+        a: "Scribes only. The opportunity is the workflow above, claim filing, prior-auth, follow-up, which still runs on Excel and faxes at most practices.",
       },
     ],
     related: ["vertical-ai-veterinary", "vertical-ai-dentistry", "ai-native-recruiting"],
@@ -764,7 +764,7 @@ export const startupIdeas: StartupIdea[] = [
     category: "Vertical AI",
     title: "Vertical AI for real estate: the agent that handles the buyer's first 10 conversations",
     metaDescription:
-      "Vertical AI for real estate brokers — buildable in 2026 with three repos showing the velocity pattern.",
+      "Vertical AI for real estate brokers, buildable in 2026 with three repos showing the velocity pattern.",
     oneLiner:
       "Real estate agents lose deals to slow follow-up. The AI that texts every Zillow lead within 60 seconds, qualifies them, and books a showing wins the broker market.",
     whyNow:
@@ -787,7 +787,7 @@ export const startupIdeas: StartupIdea[] = [
     faqs: [
       {
         q: "What about Lofty / Top Producer?",
-        a: "Both are CRMs with an AI sidebar. The product here is agent-first — the lead conversion is the wedge, and the CRM is a side effect.",
+        a: "Both are CRMs with an AI sidebar. The product here is agent-first, the lead conversion is the wedge, and the CRM is a side effect.",
       },
     ],
     related: ["voice-agents-for-sales", "ai-native-crm", "vertical-ai-construction"],
@@ -798,7 +798,7 @@ export const startupIdeas: StartupIdea[] = [
     category: "Vertical AI",
     title: "Vertical AI for construction: blueprint agent",
     metaDescription:
-      "Vertical AI for construction PMs reads PDF blueprints, extracts quantity takeoffs, flags spec discrepancies, and drafts RFIs — a buildable 2026 wedge targeting 50,000 mid-market GCs underserved by Procore, with three repos already showing the pattern.",
+      "Vertical AI for construction PMs reads PDF blueprints, extracts quantity takeoffs, flags spec discrepancies, and drafts RFIs, a buildable 2026 wedge targeting 50,000 mid-market GCs underserved by Procore, with three repos already showing the pattern.",
     oneLiner:
       "Construction PMs spend half their day on takeoffs, RFIs, and submittal review. The AI that does all three from a PDF blueprint wins the small-and-mid-market GC.",
     whyNow:
@@ -832,11 +832,11 @@ export const startupIdeas: StartupIdea[] = [
     category: "Vertical AI",
     title: "Vertical AI for insurance: the underwriter that doesn't sleep",
     metaDescription:
-      "Vertical AI for insurance brokers and small-commercial underwriters — buildable in 2026.",
+      "Vertical AI for insurance brokers and small-commercial underwriters, buildable in 2026.",
     oneLiner:
-      "Insurance underwriting is structured-text classification at scale — and small-commercial is still done in Excel. The AI that quotes a policy from a loss-run PDF in under 2 minutes wins.",
+      "Insurance underwriting is structured-text classification at scale, and small-commercial is still done in Excel. The AI that quotes a policy from a loss-run PDF in under 2 minutes wins.",
     whyNow:
-      "Reinsurance and large-commercial have AI vendors. Small-commercial — the agency that quotes a restaurant or a contractor's GL policy — still does it by hand. The market is fragmented, the buyer is the broker, and the AI is buildable from public underwriting guides.",
+      "Reinsurance and large-commercial have AI vendors. Small-commercial, the agency that quotes a restaurant or a contractor's GL policy, still does it by hand. The market is fragmented, the buyer is the broker, and the AI is buildable from public underwriting guides.",
     buildToday:
       "Loss-run PDF in, structured risk profile out. Match to 3-5 carrier appetites. Generate the quote letter. Ship as a Chrome extension on top of the broker's existing AMS.",
     matchSignal: {
@@ -855,7 +855,7 @@ export const startupIdeas: StartupIdea[] = [
     faqs: [
       {
         q: "Is the regulatory burden too high?",
-        a: "For carriers, yes. For brokers, no — they sell the policy, the carrier underwrites it. The agent assists the broker; the carrier still signs.",
+        a: "For carriers, yes. For brokers, no, they sell the policy, the carrier underwrites it. The agent assists the broker; the carrier still signs.",
       },
     ],
     related: ["vertical-ai-tax-prep", "vertical-ai-legal", "ai-native-accounting"],
@@ -866,11 +866,11 @@ export const startupIdeas: StartupIdea[] = [
     category: "Vertical AI",
     title: "Vertical AI for tax prep: the buildable opportunity behind Intuit's moat",
     metaDescription:
-      "Vertical AI for tax preparation — buildable in 2026 in the prosumer / SMB segment.",
+      "Vertical AI for tax preparation, buildable in 2026 in the prosumer / SMB segment.",
     oneLiner:
-      "TurboTax owns the consumer. Nobody owns the small accountant who files for 200 clients a year — and the agent that does 30% of the data-entry work wins them.",
+      "TurboTax owns the consumer. Nobody owns the small accountant who files for 200 clients a year, and the agent that does 30% of the data-entry work wins them.",
     whyNow:
-      "1099 + W-2 + state form OCR is solved. The remaining work is the workflow on top — collecting docs, asking the right questions, drafting the return. Intuit ProConnect is mediocre; the indie tax preparer is hungry.",
+      "1099 + W-2 + state form OCR is solved. The remaining work is the workflow on top, collecting docs, asking the right questions, drafting the return. Intuit ProConnect is mediocre; the indie tax preparer is hungry.",
     buildToday:
       "A doc-collection chat for the client (texts, emails, uploads), an OCR + classification pipeline on the prep side, and a generated draft of the federal + state return. Preparer reviews + files. Bill per filed return.",
     matchSignal: {
@@ -900,9 +900,9 @@ export const startupIdeas: StartupIdea[] = [
     category: "Vertical AI",
     title: "Vertical AI for veterinary: the medical-scribe play, with fur",
     metaDescription:
-      "Vertical AI for veterinary practices — buildable in 2026 as the medical-scribe play applied to a 30,000-clinic market.",
+      "Vertical AI for veterinary practices, buildable in 2026 as the medical-scribe play applied to a 30,000-clinic market.",
     oneLiner:
-      "Vet clinics have the same scribe problem as human medicine — they just don't have the AI vendors yet. Same product, smaller addressable market, much less competition.",
+      "Vet clinics have the same scribe problem as human medicine, they just don't have the AI vendors yet. Same product, smaller addressable market, much less competition.",
     whyNow:
       "30,000+ vet clinics in the US alone. The PIMS (practice information management system) market is dominated by 3 legacy vendors. AI-scribe penetration is essentially zero in 2026.",
     buildToday:
@@ -923,7 +923,7 @@ export const startupIdeas: StartupIdea[] = [
     faqs: [
       {
         q: "Is the market too small?",
-        a: "$3B in PIMS revenue, with 30K clinics. At $100/mo per vet (avg 2.5 vets/clinic), that's a $90M ARR market on penetration alone — and the AI add-on prices above the PIMS, not under it.",
+        a: "$3B in PIMS revenue, with 30K clinics. At $100/mo per vet (avg 2.5 vets/clinic), that's a $90M ARR market on penetration alone, and the AI add-on prices above the PIMS, not under it.",
       },
     ],
     related: ["vertical-ai-medical", "vertical-ai-dentistry", "ai-native-recruiting"],
@@ -934,7 +934,7 @@ export const startupIdeas: StartupIdea[] = [
     category: "Vertical AI",
     title: "Vertical AI for dentistry: the scribe + the claims agent in one",
     metaDescription:
-      "Vertical AI for dental practices — buildable in 2026 as the scribe + claims combo.",
+      "Vertical AI for dental practices, buildable in 2026 as the scribe + claims combo.",
     oneLiner:
       "Dental practices need the medical-scribe + the insurance-claims-agent in one product. Neither exists. The market is 200,000+ practices in the US alone.",
     whyNow:
@@ -957,7 +957,7 @@ export const startupIdeas: StartupIdea[] = [
     faqs: [
       {
         q: "What about Dentrix Ascend / Open Dental?",
-        a: "PMS only. The AI workflow ships as a plugin on top — same go-to-market as the medical-scribe play.",
+        a: "PMS only. The AI workflow ships as a plugin on top, same go-to-market as the medical-scribe play.",
       },
     ],
     related: ["vertical-ai-medical", "vertical-ai-veterinary", "ai-native-billing"],
@@ -968,7 +968,7 @@ export const startupIdeas: StartupIdea[] = [
     category: "Vertical AI",
     title: "Vertical AI for logistics: the dispatcher that doesn't sleep",
     metaDescription:
-      "Vertical AI for freight brokers and 3PLs — buildable in 2026 as the dispatcher-agent play.",
+      "Vertical AI for freight brokers and 3PLs, buildable in 2026 as the dispatcher-agent play.",
     oneLiner:
       "Freight brokerage is 95% phone calls and emails. The AI dispatcher that handles load matching, driver scheduling, and rate-confirmation paperwork wins the small-broker market.",
     whyNow:
@@ -991,7 +991,7 @@ export const startupIdeas: StartupIdea[] = [
     faqs: [
       {
         q: "Is freight brokerage too old-school for AI?",
-        a: "Yes — which is exactly why the AI savings are 4-5x larger than they would be in a digital-native vertical. The TAM is also enormous: $90B+ in US freight brokerage gross revenue.",
+        a: "Yes, which is exactly why the AI savings are 4-5x larger than they would be in a digital-native vertical. The TAM is also enormous: $90B+ in US freight brokerage gross revenue.",
       },
     ],
     related: ["vertical-ai-construction", "vertical-ai-real-estate", "ai-native-erp"],
@@ -999,7 +999,7 @@ export const startupIdeas: StartupIdea[] = [
   },
 
   // ----------------------------------------------------------------------
-  // Dev Tools — the cluster engineers buy on a credit card.
+  // Dev Tools, the cluster engineers buy on a credit card.
   // ----------------------------------------------------------------------
   {
     slug: "ai-code-review",
@@ -1029,7 +1029,7 @@ export const startupIdeas: StartupIdea[] = [
     faqs: [
       {
         q: "What about CodeRabbit?",
-        a: "Leader of the current generation. The bet is the next generation — per-repo fine-tuning beats generic-prompt fanfic on signal quality.",
+        a: "Leader of the current generation. The bet is the next generation, per-repo fine-tuning beats generic-prompt fanfic on signal quality.",
       },
     ],
     related: ["ai-test-generation", "ai-debugging-assistants", "dev-environment-as-a-service"],
@@ -1044,7 +1044,7 @@ export const startupIdeas: StartupIdea[] = [
     oneLiner:
       "Nobody writes tests for the legacy module. The agent that opens a PR with passing tests against an uncovered file is the developer-tool wedge.",
     whyNow:
-      "AST parsing + LLMs cleared the test-generation bar in 2025. The remaining work is the developer-experience layer — running the tests in CI, opening the PR, handling the flake.",
+      "AST parsing + LLMs cleared the test-generation bar in 2025. The remaining work is the developer-experience layer, running the tests in CI, opening the PR, handling the flake.",
     buildToday:
       "GitHub App that detects uncovered files on every PR. Generates tests for the diff. Opens a separate PR with the new tests. CI runs both; failing tests get the LLM-iteration treatment. Per-repo billing.",
     matchSignal: {
@@ -1074,11 +1074,11 @@ export const startupIdeas: StartupIdea[] = [
     category: "Dev Tools",
     title: "AI debugging assistants: the rubber duck that reads the stack trace",
     metaDescription:
-      "AI debugging assistants — buildable in 2026 with three repos showing the velocity pattern.",
+      "AI debugging assistants, buildable in 2026 with three repos showing the velocity pattern.",
     oneLiner:
       "The most-shared moment in any engineering team is a stack trace pasted into Slack. The AI that reads the trace, finds the cause, and proposes the fix is the rubber-duck assistant for the team.",
     whyNow:
-      "Sentry and Rollbar collect the traces. Cursor and Copilot live in the IDE. Nobody owns the middle layer — the chat-shaped debugging assistant that takes the trace and ships a draft fix.",
+      "Sentry and Rollbar collect the traces. Cursor and Copilot live in the IDE. Nobody owns the middle layer, the chat-shaped debugging assistant that takes the trace and ships a draft fix.",
     buildToday:
       "Slack bot that picks up pasted stack traces. Reads the linked repo, finds the relevant code, proposes the fix as a chat reply. If the team accepts, opens a PR. Bill per-fix-accepted.",
     matchSignal: {
@@ -1108,11 +1108,11 @@ export const startupIdeas: StartupIdea[] = [
     category: "Dev Tools",
     title: "Dev environment as a service: the post-Codespaces opportunity",
     metaDescription:
-      "Cloud dev environments — buildable in 2026 with three repos showing the pattern.",
+      "Cloud dev environments, buildable in 2026 with three repos showing the pattern.",
     oneLiner:
       "Codespaces is too generic. Devbox is too DIY. The opportunity is the team-tier product that ships a per-repo cloud dev env with prebuilt agents inside.",
     whyNow:
-      "AI agents need a real dev environment to do real work — not a sandbox, not a notebook. The remote-dev-env market is consolidating, and the agent-friendly variant is wide open.",
+      "AI agents need a real dev environment to do real work, not a sandbox, not a notebook. The remote-dev-env market is consolidating, and the agent-friendly variant is wide open.",
     buildToday:
       "Per-repo Nix or Docker config. Boot a remote env in <30s. Pre-warm with the project's deps. Ship an MCP server inside the env so any agent host can execute commands. Per-active-minute pricing.",
     matchSignal: {
@@ -1131,7 +1131,7 @@ export const startupIdeas: StartupIdea[] = [
     faqs: [
       {
         q: "What about Codespaces / Gitpod / Coder?",
-        a: "All three sell the env to humans. The agent-first version sells the same primitive to AI hosts — and the pricing per-session is different than per-seat.",
+        a: "All three sell the env to humans. The agent-first version sells the same primitive to AI hosts, and the pricing per-session is different than per-seat.",
       },
     ],
     related: ["browser-use-agents", "computer-use-agents", "ai-code-review"],
@@ -1142,11 +1142,11 @@ export const startupIdeas: StartupIdea[] = [
     category: "Dev Tools",
     title: "Open-source observability: the Datadog alternative that doesn't bankrupt you",
     metaDescription:
-      "Open-source observability — buildable in 2026 with three repos showing the velocity pattern.",
+      "Open-source observability, buildable in 2026 with three repos showing the velocity pattern.",
     oneLiner:
       "Datadog made a $40B business out of observability. The OSS alternatives (SigNoz, OpenObserve, Highlight) are 18 months behind on features but 100x cheaper. The next leader fills the gap.",
     whyNow:
-      "OpenTelemetry standardized the data shape. ClickHouse made the backend tractable. Anyone can build a Datadog clone in 2026 — the bet is which OSS team has the best DX wins the market.",
+      "OpenTelemetry standardized the data shape. ClickHouse made the backend tractable. Anyone can build a Datadog clone in 2026, the bet is which OSS team has the best DX wins the market.",
     buildToday:
       "OpenTelemetry-native ingest. ClickHouse or Apache Druid for the trace + log store. Grafana-style frontend. Charge for the hosted version, ship the OSS version under Apache 2.0. Per-GB ingest pricing under $0.20.",
     matchSignal: {
@@ -1176,11 +1176,11 @@ export const startupIdeas: StartupIdea[] = [
     category: "Dev Tools",
     title: "Infra cost optimizers: agent in AWS bill",
     metaDescription:
-      "Infra cost optimizers read AWS, GCP, and Azure bills, find idle instances and oversized RDS, and open a Terraform fix PR — a buildable 2026 FinOps wedge for series-B teams, with three OSS repos already showing the pattern.",
+      "Infra cost optimizers read AWS, GCP, and Azure bills, find idle instances and oversized RDS, and open a Terraform fix PR, a buildable 2026 FinOps wedge for series-B teams, with three OSS repos already showing the pattern.",
     oneLiner:
       "Every engineering team overspends on cloud by 30%+. The agent that reads the bill, identifies the waste, and ships a PR to fix it wins the FinOps long tail.",
     whyNow:
-      "Cloud bills are public-facing structured data. FinOps tools (Vantage, CloudHealth) sell to enterprise. The mid-market — series-B and below — gets nothing actionable. That's the wedge.",
+      "Cloud bills are public-facing structured data. FinOps tools (Vantage, CloudHealth) sell to enterprise. The mid-market, series-B and below, gets nothing actionable. That's the wedge.",
     buildToday:
       "Connect to AWS / GCP / Azure cost explorer APIs. Identify the top 5 waste vectors (idle instances, oversized RDS, unattached EBS, unused EIPs). Generate a fix PR (Terraform or Pulumi). Bill 10% of savings, first year.",
     matchSignal: {
@@ -1199,7 +1199,7 @@ export const startupIdeas: StartupIdea[] = [
     faqs: [
       {
         q: "What about Vantage / CloudHealth?",
-        a: "Dashboard tools. The agent here writes the PR — it's a different surface and a different buyer.",
+        a: "Dashboard tools. The agent here writes the PR, it's a different surface and a different buyer.",
       },
     ],
     related: ["open-source-observability", "database-modernization-tools", "ai-code-review"],
@@ -1210,7 +1210,7 @@ export const startupIdeas: StartupIdea[] = [
     category: "Dev Tools",
     title: "Database modernization tools: the agent that ports your schema",
     metaDescription:
-      "Database modernization is buildable — three repos showing the velocity pattern.",
+      "Database modernization is buildable, three repos showing the velocity pattern.",
     oneLiner:
       "Migrating from MySQL to Postgres, or any legacy DB to a modern one, is a quarter of work for a senior. The agent that ships the migration PR with passing tests does it in a day.",
     whyNow:
@@ -1233,7 +1233,7 @@ export const startupIdeas: StartupIdea[] = [
     faqs: [
       {
         q: "What about AWS DMS / Striim?",
-        a: "Enterprise tools. The agent here ships the application-code change too — it's a different surface.",
+        a: "Enterprise tools. The agent here ships the application-code change too, it's a different surface.",
       },
     ],
     related: ["ai-code-review", "data-quality-monitors", "real-time-etl"],
@@ -1241,16 +1241,16 @@ export const startupIdeas: StartupIdea[] = [
   },
 
   // ----------------------------------------------------------------------
-  // Data Infrastructure — the picks-and-shovels for the data stack.
+  // Data Infrastructure, the picks-and-shovels for the data stack.
   // ----------------------------------------------------------------------
   {
     slug: "vector-databases",
     category: "Data Infrastructure",
     title: "Vector databases: the crowded market with one remaining seat",
     metaDescription:
-      "Vector databases — buildable in 2026 in the embedded / edge tier where the market is still open.",
+      "Vector databases, buildable in 2026 in the embedded / edge tier where the market is still open.",
     oneLiner:
-      "Pinecone, Weaviate, Qdrant, Chroma, Turbopuffer, pgvector — the SaaS market is full. The remaining opportunity is the embedded / edge tier — a vector DB that runs inside the agent.",
+      "Pinecone, Weaviate, Qdrant, Chroma, Turbopuffer, pgvector, the SaaS market is full. The remaining opportunity is the embedded / edge tier, a vector DB that runs inside the agent.",
     whyNow:
       "Agents are moving on-device. The standalone vector DB becomes a per-agent dependency. SQLite-class embedded vector stores (LanceDB, vectorlite) are the new opportunity.",
     buildToday:
@@ -1282,11 +1282,11 @@ export const startupIdeas: StartupIdea[] = [
     category: "Data Infrastructure",
     title: "Embedding as a service: the API every agent depends on",
     metaDescription:
-      "Embedding as a service — buildable in 2026 with three repos showing the velocity pattern.",
+      "Embedding as a service, buildable in 2026 with three repos showing the velocity pattern.",
     oneLiner:
       "Every agent calls an embedding model. The product that delivers low-latency, cheap embeddings with multi-model fallback is the OpenAI-batch wedge.",
     whyNow:
-      "Voyage AI, Cohere, OpenAI, and the open-source side (BGE, GTE, E5) all converged on quality. The buyer wants reliability and price — pick a winner, ship a router, charge per token.",
+      "Voyage AI, Cohere, OpenAI, and the open-source side (BGE, GTE, E5) all converged on quality. The buyer wants reliability and price, pick a winner, ship a router, charge per token.",
     buildToday:
       "OpenAI-compatible HTTP API. Route to the cheapest provider that meets the latency SLA. Cache embedded chunks. Bill per token, undercut OpenAI by 40%.",
     matchSignal: {
@@ -1305,7 +1305,7 @@ export const startupIdeas: StartupIdea[] = [
     faqs: [
       {
         q: "Is this just Vercel AI Gateway?",
-        a: "AI Gateway is the right primitive. The product is the embedding-specific routing — different latency targets, different caching strategy, different pricing model.",
+        a: "AI Gateway is the right primitive. The product is the embedding-specific routing, different latency targets, different caching strategy, different pricing model.",
       },
     ],
     related: ["vector-databases", "rag-evaluation-tools", "agent-memory-stores"],
@@ -1316,9 +1316,9 @@ export const startupIdeas: StartupIdea[] = [
     category: "Data Infrastructure",
     title: "RAG evaluation tools: the missing test suite for retrieval",
     metaDescription:
-      "RAG evaluation tools — buildable in 2026 with three repos showing the velocity pattern.",
+      "RAG evaluation tools, buildable in 2026 with three repos showing the velocity pattern.",
     oneLiner:
-      "Every RAG stack ships without an eval suite. The product that makes RAG testable — retrieval precision, answer faithfulness, context relevance — wins the team that's already burning $5K/mo on the wrong embeddings.",
+      "Every RAG stack ships without an eval suite. The product that makes RAG testable, retrieval precision, answer faithfulness, context relevance, wins the team that's already burning $5K/mo on the wrong embeddings.",
     whyNow:
       "Ragas, TruLens, and DeepEval exist but the DX is rough. The next generation makes eval a 5-minute setup, not a 5-day science project.",
     buildToday:
@@ -1339,7 +1339,7 @@ export const startupIdeas: StartupIdea[] = [
     faqs: [
       {
         q: "What about Ragas / TruLens / DeepEval?",
-        a: "They're the leaders, all Python-only. The TypeScript-first wedge is open — most agent stacks are TS now.",
+        a: "They're the leaders, all Python-only. The TypeScript-first wedge is open, most agent stacks are TS now.",
       },
     ],
     related: ["agent-eval-platforms", "agent-memory-stores", "vector-databases"],
@@ -1350,11 +1350,11 @@ export const startupIdeas: StartupIdea[] = [
     category: "Data Infrastructure",
     title: "Data quality monitors: the dbt-test layer everyone needs and nobody bought",
     metaDescription:
-      "Data quality monitors — buildable in 2026 with three repos showing the velocity pattern.",
+      "Data quality monitors, buildable in 2026 with three repos showing the velocity pattern.",
     oneLiner:
-      "dbt tests are reactive. The product that proactively monitors data freshness, schema drift, and row-count anomalies — without a giant SaaS bill — wins the dbt-on-Snowflake long tail.",
+      "dbt tests are reactive. The product that proactively monitors data freshness, schema drift, and row-count anomalies, without a giant SaaS bill, wins the dbt-on-Snowflake long tail.",
     whyNow:
-      "Monte Carlo and Bigeye sell to enterprise. The mid-market — anyone running dbt on Snowflake or BigQuery for under $50K/yr — has no good tool. The OSS-first product wins by being self-hostable.",
+      "Monte Carlo and Bigeye sell to enterprise. The mid-market, anyone running dbt on Snowflake or BigQuery for under $50K/yr, has no good tool. The OSS-first product wins by being self-hostable.",
     buildToday:
       "Connect to the warehouse. Sample tables on a schedule. Detect freshness lapses, schema changes, row-count anomalies, null spikes. Alert to Slack. Free OSS, hosted SaaS for the alert + history.",
     matchSignal: {
@@ -1384,7 +1384,7 @@ export const startupIdeas: StartupIdea[] = [
     category: "Data Infrastructure",
     title: "Real-time ETL: the streaming pipeline you don't hate to operate",
     metaDescription:
-      "Real-time ETL — buildable in 2026 with three repos showing the pattern.",
+      "Real-time ETL, buildable in 2026 with three repos showing the pattern.",
     oneLiner:
       "Fivetran is for batch. The product that does streaming CDC from Postgres / MySQL to a warehouse with sub-minute latency, without a PhD to operate, wins the operational analytics market.",
     whyNow:
@@ -1418,11 +1418,11 @@ export const startupIdeas: StartupIdea[] = [
     category: "Data Infrastructure",
     title: "Small data warehouses: DuckDB-class infrastructure for teams under 50",
     metaDescription:
-      "Small data warehouses — buildable in 2026 with three repos showing the pattern.",
+      "Small data warehouses, buildable in 2026 with three repos showing the pattern.",
     oneLiner:
       "Snowflake and BigQuery overserved everyone under 100GB of data. The DuckDB-on-S3 stack is the right architecture; the product layer is what's missing.",
     whyNow:
-      "MotherDuck, DuckLake, and the broader DuckDB ecosystem proved the architecture works. The next layer is the operator-friendly UI — query in a notebook, materialize to S3, no Snowflake bill.",
+      "MotherDuck, DuckLake, and the broader DuckDB ecosystem proved the architecture works. The next layer is the operator-friendly UI, query in a notebook, materialize to S3, no Snowflake bill.",
     buildToday:
       "Hosted DuckDB on top of S3 / R2. Notebook UI for ad-hoc queries. CDC ingest from Postgres / MySQL. Per-GB-stored pricing under $0.01.",
     matchSignal: {
@@ -1441,7 +1441,7 @@ export const startupIdeas: StartupIdea[] = [
     faqs: [
       {
         q: "MotherDuck already exists?",
-        a: "Yes — and they're the leader. The opportunity is the OSS-first, self-hostable, MotherDuck alternative for the long tail.",
+        a: "Yes, and they're the leader. The opportunity is the OSS-first, self-hostable, MotherDuck alternative for the long tail.",
       },
     ],
     related: ["real-time-etl", "data-quality-monitors", "ai-native-bi"],
@@ -1449,16 +1449,16 @@ export const startupIdeas: StartupIdea[] = [
   },
 
   // ----------------------------------------------------------------------
-  // Multimodal — voice, video, image.
+  // Multimodal, voice, video, image.
   // ----------------------------------------------------------------------
   {
     slug: "voice-agents-for-sales",
     category: "Multimodal",
     title: "Voice agents for sales: the BDR that doesn't sleep",
     metaDescription:
-      "Voice agents for sales — buildable in 2026 with three repos accelerating.",
+      "Voice agents for sales, buildable in 2026 with three repos accelerating.",
     oneLiner:
-      "Vapi, Retell, and Bland.ai built the voice infrastructure. The product layer — voice-first SDR for the long tail of small teams — is open.",
+      "Vapi, Retell, and Bland.ai built the voice infrastructure. The product layer, voice-first SDR for the long tail of small teams, is open.",
     whyNow:
       "Voice TTS / STT crossed the human-grade bar in 2025. The remaining work is the workflow: who to call, what to say, how to follow up. That's a CRM-shaped problem on top of a voice runtime.",
     buildToday:
@@ -1479,7 +1479,7 @@ export const startupIdeas: StartupIdea[] = [
     faqs: [
       {
         q: "What about Vapi / Retell / Bland?",
-        a: "They're the infrastructure layer. The product layer — the workflow that picks who to call and what to say — is where the next category leaders ship.",
+        a: "They're the infrastructure layer. The product layer, the workflow that picks who to call and what to say, is where the next category leaders ship.",
       },
     ],
     related: ["voice-cloning-tools", "ai-native-crm", "ai-native-recruiting"],
@@ -1490,9 +1490,9 @@ export const startupIdeas: StartupIdea[] = [
     category: "Multimodal",
     title: "Voice cloning tools: the buildable layer above ElevenLabs",
     metaDescription:
-      "Voice cloning tools — buildable in 2026 with three repos showing the velocity pattern.",
+      "Voice cloning tools, buildable in 2026 with three repos showing the velocity pattern.",
     oneLiner:
-      "ElevenLabs and Cartesia own the model layer. The product layer — voice IP management, multi-voice projects, brand-voice library — is open.",
+      "ElevenLabs and Cartesia own the model layer. The product layer, voice IP management, multi-voice projects, brand-voice library, is open.",
     whyNow:
       "Voice IP is the new likeness IP. The product that manages who owns which voice, who can use it, and how it gets paid for is the rights-management layer the voice economy needs.",
     buildToday:
@@ -1513,7 +1513,7 @@ export const startupIdeas: StartupIdea[] = [
     faqs: [
       {
         q: "Is voice rights a real problem?",
-        a: "Yes — and getting bigger. The first lawsuits already filed against unauthorized voice clones. The rights-management tool is closer to a category necessity than a category nice-to-have.",
+        a: "Yes, and getting bigger. The first lawsuits already filed against unauthorized voice clones. The rights-management tool is closer to a category necessity than a category nice-to-have.",
       },
     ],
     related: ["voice-agents-for-sales", "ai-video-editing", "ai-image-batch-tools"],
@@ -1524,9 +1524,9 @@ export const startupIdeas: StartupIdea[] = [
     category: "Multimodal",
     title: "AI video editing: the agent that ships the cut",
     metaDescription:
-      "AI video editing tools — buildable in 2026 with three repos accelerating.",
+      "AI video editing tools, buildable in 2026 with three repos accelerating.",
     oneLiner:
-      "Descript and Opus Clip own the consumer wedge. The product layer above them — agent-driven editing for the operator who ships 4 videos a week — is open.",
+      "Descript and Opus Clip own the consumer wedge. The product layer above them, agent-driven editing for the operator who ships 4 videos a week, is open.",
     whyNow:
       "Whisper, Cartesia, Stable Video, Runway, and a dozen open-source models converged to make video editing programmable. The next-generation product is the chat surface where the operator says \"cut every silence over 0.4s, add b-roll at every claim, ship\" and gets a finished cut.",
     buildToday:
@@ -1547,7 +1547,7 @@ export const startupIdeas: StartupIdea[] = [
     faqs: [
       {
         q: "What about Descript / Opus Clip?",
-        a: "Consumer-shaped tools. The agent-first version sells to the operator who ships 4x weekly — the marketer, the agency, the content producer.",
+        a: "Consumer-shaped tools. The agent-first version sells to the operator who ships 4x weekly, the marketer, the agency, the content producer.",
       },
     ],
     related: ["voice-cloning-tools", "ai-image-batch-tools", "ai-native-cms"],
@@ -1558,9 +1558,9 @@ export const startupIdeas: StartupIdea[] = [
     category: "Multimodal",
     title: "AI image batch tools: the agent that generates 500 OG cards before lunch",
     metaDescription:
-      "AI image batch tools — buildable in 2026 with three repos showing the velocity pattern.",
+      "AI image batch tools, buildable in 2026 with three repos showing the velocity pattern.",
     oneLiner:
-      "Midjourney owns single-image creative. The product layer for batch image generation — OG cards, product photos, banner sets, A/B variants — is wide open.",
+      "Midjourney owns single-image creative. The product layer for batch image generation, OG cards, product photos, banner sets, A/B variants, is wide open.",
     whyNow:
       "Marketing, e-commerce, and agency operators need to ship 100s of images per project. Midjourney's UI fights you on volume. The batch-first product wins by being optimized for the operator who ships, not the artist who explores.",
     buildToday:
@@ -1589,18 +1589,18 @@ export const startupIdeas: StartupIdea[] = [
   },
 
   // ----------------------------------------------------------------------
-  // Vibe-Coding / Micro-SaaS — the one-person-unicorn cluster.
+  // Vibe-Coding / Micro-SaaS, the one-person-unicorn cluster.
   // ----------------------------------------------------------------------
   {
     slug: "one-person-saas-stacks",
     category: "Vibe-Coding / Micro-SaaS",
     title: "One-person SaaS stacks: the buildable wedge for the solo operator",
     metaDescription:
-      "One-person SaaS stacks — buildable in 2026 with three repos showing the velocity pattern.",
+      "One-person SaaS stacks, buildable in 2026 with three repos showing the velocity pattern.",
     oneLiner:
       "The solo founder runs auth + billing + email + analytics + DB. The product that ships all five in one $29/mo bundle is the indie-hacker wedge.",
     whyNow:
-      "Levels.io, Tony Dinh, and the indie-hackers cohort proved the solo-founder market is real and growing. The tooling is fragmented — Clerk + Stripe + Resend + PostHog + Neon. The integrated stack is the next category.",
+      "Levels.io, Tony Dinh, and the indie-hackers cohort proved the solo-founder market is real and growing. The tooling is fragmented, Clerk + Stripe + Resend + PostHog + Neon. The integrated stack is the next category.",
     buildToday:
       "Bundle Clerk-class auth + Stripe billing + Resend email + PostHog analytics + Neon DB into one provisioned bundle with one dashboard. Charge $29-49/mo for the whole thing. Ship a Next.js starter that wires it all up.",
     matchSignal: {
@@ -1619,7 +1619,7 @@ export const startupIdeas: StartupIdea[] = [
     faqs: [
       {
         q: "Isn't this just a starter?",
-        a: "Starters fragment over time. The product is the provisioned bundle — one signup, one bill, one upgrade path. That's a category, not a template.",
+        a: "Starters fragment over time. The product is the provisioned bundle, one signup, one bill, one upgrade path. That's a category, not a template.",
       },
     ],
     related: ["ai-app-generators", "no-code-saas-templates", "solo-founder-finance-tools"],
@@ -1630,9 +1630,9 @@ export const startupIdeas: StartupIdea[] = [
     category: "Vibe-Coding / Micro-SaaS",
     title: "AI app generators: the post-v0 opportunity",
     metaDescription:
-      "AI app generators — buildable in 2026 with three repos showing the velocity pattern.",
+      "AI app generators, buildable in 2026 with three repos showing the velocity pattern.",
     oneLiner:
-      "v0, Bolt, Lovable, Replit Agent — the AI app generator market exploded in 2024-2025. The remaining wedge is the vertical / template-specific generator for a specific buyer.",
+      "v0, Bolt, Lovable, Replit Agent, the AI app generator market exploded in 2024-2025. The remaining wedge is the vertical / template-specific generator for a specific buyer.",
     whyNow:
       "Generic app generators reached a quality plateau. The next leaders specialize: AI dashboard generator for analysts, AI landing-page generator for marketers, AI internal-tool generator for ops. Vertical depth beats horizontal breadth.",
     buildToday:
@@ -1664,7 +1664,7 @@ export const startupIdeas: StartupIdea[] = [
     category: "Vibe-Coding / Micro-SaaS",
     title: "No-code SaaS templates: the marketplace the indie ops will pay for",
     metaDescription:
-      "No-code SaaS templates — buildable in 2026 with three repos showing the velocity pattern.",
+      "No-code SaaS templates, buildable in 2026 with three repos showing the velocity pattern.",
     oneLiner:
       "Bubble and Webflow templates exist but the SaaS-specific tier is underbuilt. The marketplace where indie ops buys a $200 SaaS template and ships in a weekend is the wedge.",
     whyNow:
@@ -1698,11 +1698,11 @@ export const startupIdeas: StartupIdea[] = [
     category: "Vibe-Coding / Micro-SaaS",
     title: "Solo-founder finance tools: the integrated CFO for the one-person company",
     metaDescription:
-      "Solo-founder finance tools — buildable in 2026 with three repos showing the velocity pattern.",
+      "Solo-founder finance tools, buildable in 2026 with three repos showing the velocity pattern.",
     oneLiner:
       "The solo founder has a Stripe account, a business checking, a quarterly tax bill, and a panic attack at month-end. The integrated CFO-in-a-chat is the wedge.",
     whyNow:
-      "The solo founder cohort doubled in 2024-2026 (per indie-hacker telemetry). The financial tooling is still fragmented — Mercury, Stripe, QuickBooks, calendar reminders for taxes. The integrated product wins by closing the loop.",
+      "The solo founder cohort doubled in 2024-2026 (per indie-hacker telemetry). The financial tooling is still fragmented, Mercury, Stripe, QuickBooks, calendar reminders for taxes. The integrated product wins by closing the loop.",
     buildToday:
       "Connect Stripe + a business bank (Plaid) + QuickBooks. Daily Slack-style digest: revenue, burn, runway, upcoming tax dates, next action. Chat surface for \"how am I doing this month\". Per-founder pricing.",
     matchSignal: {
@@ -1721,7 +1721,7 @@ export const startupIdeas: StartupIdea[] = [
     faqs: [
       {
         q: "What about Mercury?",
-        a: "Mercury is a bank. The product here is the layer that aggregates Mercury + Stripe + QuickBooks into one Slack message — the operator dashboard, not the bank account.",
+        a: "Mercury is a bank. The product here is the layer that aggregates Mercury + Stripe + QuickBooks into one Slack message, the operator dashboard, not the bank account.",
       },
     ],
     related: ["one-person-saas-stacks", "ai-native-accounting", "ai-native-billing"],
@@ -1732,7 +1732,7 @@ export const startupIdeas: StartupIdea[] = [
     category: "Vibe-Coding / Micro-SaaS",
     title: "Micro-influencer tools: the creator-economy long tail",
     metaDescription:
-      "Micro-influencer tools — buildable in 2026 with three repos showing the pattern.",
+      "Micro-influencer tools, buildable in 2026 with three repos showing the pattern.",
     oneLiner:
       "Macro influencers have Beacons and Linktree. The 100M+ micro-influencers (1K-50K followers) get nothing useful. The tool that helps them book brand deals, track revenue, and ship content wins the long tail.",
     whyNow:
@@ -1755,7 +1755,7 @@ export const startupIdeas: StartupIdea[] = [
     faqs: [
       {
         q: "What about Beacons / Linktree?",
-        a: "Top-of-market. The micro-influencer tier needs both the link-in-bio AND the brand-deal workflow — and Beacons charges too much for the latter.",
+        a: "Top-of-market. The micro-influencer tier needs both the link-in-bio AND the brand-deal workflow, and Beacons charges too much for the latter.",
       },
     ],
     related: ["voice-cloning-tools", "ai-video-editing", "ai-native-cms"],
@@ -1763,18 +1763,18 @@ export const startupIdeas: StartupIdea[] = [
   },
 
   // ----------------------------------------------------------------------
-  // Climate & Niche — the underserved verticals.
+  // Climate & Niche, the underserved verticals.
   // ----------------------------------------------------------------------
   {
     slug: "carbon-accounting-saas",
     category: "Climate & Niche",
     title: "Carbon accounting SaaS: the compliance-driven category",
     metaDescription:
-      "Carbon accounting SaaS — buildable in 2026 as the SEC + CSRD compliance forces SMBs into the market.",
+      "Carbon accounting SaaS, buildable in 2026 as the SEC + CSRD compliance forces SMBs into the market.",
     oneLiner:
       "SEC Scope 1-2 disclosure and EU CSRD are now compliance triggers for the long-tail SMB market. The carbon-accounting tool priced for that buyer is the wedge.",
     whyNow:
-      "The enterprise market (Persefoni, Watershed) is mature. The SMB market — companies under 500 employees who suddenly need a disclosure — has no good tool priced under $5K/yr.",
+      "The enterprise market (Persefoni, Watershed) is mature. The SMB market, companies under 500 employees who suddenly need a disclosure, has no good tool priced under $5K/yr.",
     buildToday:
       "Connect to QuickBooks / Xero for spend data. Apply emission factors (EPA, EEIO) to map spend → emissions. Generate the disclosure PDF in the required format (SEC, CSRD). Per-company-disclosure pricing.",
     matchSignal: {
@@ -1793,7 +1793,7 @@ export const startupIdeas: StartupIdea[] = [
     faqs: [
       {
         q: "What about Watershed / Persefoni?",
-        a: "Enterprise. The SMB-priced version is the wedge — same disclosure problem, different buyer.",
+        a: "Enterprise. The SMB-priced version is the wedge, same disclosure problem, different buyer.",
       },
     ],
     related: ["esg-data-platforms", "ai-native-accounting", "vertical-ai-construction"],
@@ -1804,7 +1804,7 @@ export const startupIdeas: StartupIdea[] = [
     category: "Climate & Niche",
     title: "ESG data platforms: the underwriting layer for the climate transition",
     metaDescription:
-      "ESG data platforms — buildable in 2026 as climate-risk underwriting becomes mainstream.",
+      "ESG data platforms, buildable in 2026 as climate-risk underwriting becomes mainstream.",
     oneLiner:
       "Insurers, lenders, and asset managers need ESG data to underwrite. The platform that aggregates climate, social, and governance signals into a single API is the underwriting wedge.",
     whyNow:
@@ -1835,16 +1835,16 @@ export const startupIdeas: StartupIdea[] = [
   },
 
   // ----------------------------------------------------------------------
-  // Open Source / Community — the distribution-led plays.
+  // Open Source / Community, the distribution-led plays.
   // ----------------------------------------------------------------------
   {
     slug: "open-source-funding-platforms",
     category: "Open Source / Community",
     title: "Open-source funding platforms: B2B OSS wedge",
     metaDescription:
-      "Open-source funding platforms turn 'we use this library' into a one-click B2B subscription with invoice and impact reporting — a buildable 2026 wedge with three OSS repos already showing the velocity pattern.",
+      "Open-source funding platforms turn 'we use this library' into a one-click B2B subscription with invoice and impact reporting, a buildable 2026 wedge with three OSS repos already showing the velocity pattern.",
     oneLiner:
-      "GitHub Sponsors solved the consumer wedge. The B2B wedge — companies paying for the OSS they depend on, with attribution and impact reporting — is open.",
+      "GitHub Sponsors solved the consumer wedge. The B2B wedge, companies paying for the OSS they depend on, with attribution and impact reporting, is open.",
     whyNow:
       "Companies want to fund OSS. The accounting and procurement workflow makes it hard. The platform that turns \"we use this library\" into a one-click subscription with invoice + impact report wins.",
     buildToday:
@@ -1876,9 +1876,9 @@ export const startupIdeas: StartupIdea[] = [
     category: "Open Source / Community",
     title: "Dev community platforms: the Discord+forum+wiki bundle",
     metaDescription:
-      "Dev community platforms — buildable in 2026 with three repos showing the velocity pattern.",
+      "Dev community platforms, buildable in 2026 with three repos showing the velocity pattern.",
     oneLiner:
-      "Dev communities live on Discord, Slack, GitHub Discussions, and Discourse — usually all four. The integrated platform that ships chat + forum + wiki + onboarding in one bundle is the wedge.",
+      "Dev communities live on Discord, Slack, GitHub Discussions, and Discourse, usually all four. The integrated platform that ships chat + forum + wiki + onboarding in one bundle is the wedge.",
     whyNow:
       "Community-led growth is the dominant GTM for dev tools. Discord is mature; the community-management layer on top is fragmented. The integrated platform priced under $99/mo wins the indie + early-stage tier.",
     buildToday:

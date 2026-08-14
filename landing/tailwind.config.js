@@ -15,7 +15,7 @@ module.exports = {
           800: '#075985',
           900: '#0c4a6e',
         },
-        // Action color — Brunson-style high-contrast orange for primary CTAs
+        // Action color, Brunson-style high-contrast orange for primary CTAs
         signal: {
           400: '#ff8c4d',
           500: '#ff6b1a',

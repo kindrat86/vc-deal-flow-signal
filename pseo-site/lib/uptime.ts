@@ -1,9 +1,9 @@
-// Uptime / status manifest — single source of truth for /uptime and
+// Uptime / status manifest, single source of truth for /uptime and
 // /api/v1/uptime.json (F35).
 //
 // Honesty notes:
 // - We compute current data freshness from the same getDataLastModified()
-//   that drives /.well-known/freshness.json — so "last data refresh" is
+//   that drives /.well-known/freshness.json, so "last data refresh" is
 //   exact, not pasted in.
 // - Component statuses are conservative: every major surface is reported
 //   as operational unless we have explicit evidence otherwise; we'd rather
@@ -56,7 +56,7 @@ const COMPONENTS: UptimeComponent[] = [
   {
     id: "weekly-issue",
     name: "/predicted (Engineering Acceleration Watch)",
-    description: "Weekly Monday issue — 10 named picks, graded post-hoc at 60 and 90 days.",
+    description: "Weekly Monday issue, 10 named picks, graded post-hoc at 60 and 90 days.",
     url: "https://signals.gitdealflow.com/predicted",
     status: "operational",
     group: "Surface",
@@ -89,7 +89,7 @@ const COMPONENTS: UptimeComponent[] = [
   {
     id: "api-mcp",
     name: "/api/mcp/rpc",
-    description: "MCP JSON-RPC 2.0 endpoint (8 tools — read-only research + share approval gated).",
+    description: "MCP JSON-RPC 2.0 endpoint (8 tools, read-only research + share approval gated).",
     url: "https://signals.gitdealflow.com/api/mcp/rpc",
     status: "operational",
     group: "Agent",
@@ -208,10 +208,10 @@ export function buildUptimeManifest(): UptimeManifest {
   }
   return {
     page: {
-      name: "VC Deal Flow Signal — Status",
+      name: "VC Deal Flow Signal, Status",
       url: "https://signals.gitdealflow.com/uptime",
       description:
-        "Live status of every public surface — the marketing site, programmatic SEO, JSON APIs, MCP server, OAuth token issuer, RSS/Atom feeds, and the agent-facing well-known files.",
+        "Live status of every public surface, the marketing site, programmatic SEO, JSON APIs, MCP server, OAuth token issuer, RSS/Atom feeds, and the agent-facing well-known files.",
     },
     status: overall,
     components: COMPONENTS,

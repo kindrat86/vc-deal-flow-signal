@@ -121,7 +121,7 @@ export const POST = PAY_TO
         network: NETWORK,
         config: {
           description:
-            "VC Deal Flow Signal — deep_signal lookup (commit velocity, contributor growth, sector rank, thesis sentence) for one named startup. Misses return 404 with no settlement.",
+            "VC Deal Flow Signal, deep_signal lookup (commit velocity, contributor growth, sector rank, thesis sentence) for one named startup. Misses return 404 with no settlement.",
           mimeType: "application/json",
           maxTimeoutSeconds: 30,
         },

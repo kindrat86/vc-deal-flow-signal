@@ -92,7 +92,7 @@ function buildStage(slug: string) {
     "@graph": [
       {
         "@type": "Article",
-        headline: `${name} Startups Showing Engineering Acceleration — ${period.name}`,
+        headline: `${name} Startups Showing Engineering Acceleration, ${period.name}`,
         description,
         author: org(),
         publisher: org(),
@@ -105,7 +105,7 @@ function buildStage(slug: string) {
       ]),
       {
         "@type": "ItemList",
-        name: `${name} startups — ${period.name}`,
+        name: `${name} startups, ${period.name}`,
         numberOfItems: startups.length,
         itemListElement: startups.slice(0, 20).map((s, i) => ({
           "@type": "ListItem",
@@ -137,7 +137,7 @@ function buildSignal(slug: string) {
     "@graph": [
       {
         "@type": "Article",
-        headline: `${data.name} Signal — ${current.name}`,
+        headline: `${data.name} Signal, ${current.name}`,
         description: data.description,
         author: org(),
         publisher: org(),
@@ -160,7 +160,7 @@ function buildSignal(slug: string) {
           "@type": "ListItem",
           position: i + 1,
           name: s.name,
-          description: `${s.sectorName} — ${s.commitVelocity14d} commits/14d (${s.commitVelocityChange})`,
+          description: `${s.sectorName}, ${s.commitVelocity14d} commits/14d (${s.commitVelocityChange})`,
         })),
       },
     ],
@@ -175,7 +175,7 @@ function buildStageSector(stageSlug: string, sectorSlug: string) {
     "@graph": [
       {
         "@type": "Article",
-        headline: `${data.stageName} ${data.sector.name} Startups — Engineering Acceleration (${data.period.name})`,
+        headline: `${data.stageName} ${data.sector.name} Startups, Engineering Acceleration (${data.period.name})`,
         description: `${data.startups.length} ${data.sector.name.toLowerCase()} startups at ${data.stageName.toLowerCase()} stage ranked by engineering acceleration in ${data.period.name}.`,
         author: org(),
         publisher: org(),
@@ -211,7 +211,7 @@ function buildSignalSector(signalSlug: string, sectorSlug: string) {
     "@graph": [
       {
         "@type": "Article",
-        headline: `${data.sector.name} Startups Showing ${data.signalName} — ${data.period.name}`,
+        headline: `${data.sector.name} Startups Showing ${data.signalName}, ${data.period.name}`,
         description: data.signalDescription,
         author: org(),
         publisher: org(),
@@ -247,7 +247,7 @@ function buildStageSignal(stageSlug: string, signalSlug: string) {
     "@graph": [
       {
         "@type": "Article",
-        headline: `${data.stageName} Startups Showing ${data.signalName} — ${data.period.name}`,
+        headline: `${data.stageName} Startups Showing ${data.signalName}, ${data.period.name}`,
         description: data.signalDescription,
         author: org(),
         publisher: org(),
@@ -268,7 +268,7 @@ function buildStageSignal(stageSlug: string, signalSlug: string) {
           "@type": "ListItem",
           position: i + 1,
           name: s.name,
-          description: `${s.sectorName} — ${s.commitVelocity14d} commits/14d (${s.commitVelocityChange})`,
+          description: `${s.sectorName}, ${s.commitVelocity14d} commits/14d (${s.commitVelocityChange})`,
         })),
       },
     ],
@@ -345,7 +345,7 @@ function buildStartupPeriod(slug: string, periodSlug: string) {
     "@graph": [
       {
         "@type": "Article",
-        headline: `${profile.name} — ${entry.periodName} Engineering Signal`,
+        headline: `${profile.name}, ${entry.periodName} Engineering Signal`,
         description: `${profile.name} engineering metrics for ${entry.periodName}.`,
         author: org(),
         publisher: org(),
@@ -364,7 +364,7 @@ function buildStartupPeriod(slug: string, periodSlug: string) {
         measuredProperty: "engineeringAcceleration",
         measuredValue: entry.commitVelocityChange,
         observationDate: entry.periodName,
-        description: `${entry.signalType} — ${entry.commitVelocity14d} commits/14d, ${entry.contributors} contributors (${entry.contributorGrowth} growth).`,
+        description: `${entry.signalType}, ${entry.commitVelocity14d} commits/14d, ${entry.contributors} contributors (${entry.contributorGrowth} growth).`,
       },
     ],
   };
@@ -379,7 +379,7 @@ function buildSector(slug: string) {
     "@graph": [
       {
         "@type": "Article",
-        headline: `${sector.name} Startups to Watch — ${period.name}`,
+        headline: `${sector.name} Startups to Watch, ${period.name}`,
         description: sector.description,
         author: org(),
         publisher: org(),
@@ -391,7 +391,7 @@ function buildSector(slug: string) {
       ]),
       {
         "@type": "ItemList",
-        name: `${sector.name} startups — ${period.name}`,
+        name: `${sector.name} startups, ${period.name}`,
         numberOfItems: snapshot.startups.length,
         itemListElement: snapshot.startups.slice(0, 20).map((s, i) => ({
           "@type": "ListItem",

@@ -1,5 +1,5 @@
 /**
- * /acquirer/[slug] entity pages — public-acquirer M&A pattern pages.
+ * /acquirer/[slug] entity pages, public-acquirer M&A pattern pages.
  *
  * Each entry is a well-known public-company tech acquirer with a
  * documented acquisition history. The page maps their stated M&A
@@ -8,7 +8,7 @@
  * year + announced amount where publicly disclosed.
  *
  * Strict source threshold: every acquisition listed here was
- * announced publicly via press release, SEC filing, or both — the
+ * announced publicly via press release, SEC filing, or both, the
  * same threshold Wikipedia uses for M&A list articles. We do not
  * publish private deals, rumored acquisitions, or "they might
  * acquire X next" speculation. The "what they typically scout for"
@@ -64,11 +64,11 @@ function build(a: {
     name: a.name,
     homepageUrl: a.homepage,
     hq: a.hq,
-    title: `${a.name} Acquisitions & M&A Pattern (2026) — VC Deal Flow Signal`,
+    title: `${a.name} Acquisitions & M&A Pattern (2026), VC Deal Flow Signal`,
     metaDescription: `${a.name}'s public acquisition history, M&A focus areas, and the engineering-signal patterns we track in their target sectors. ${acqCount} notable acquisitions documented. Built for Corp Dev, PE operating partners, and competitive analysts.`,
-    h1: `${a.name} — Acquisitions & M&A Pattern`,
+    h1: `${a.name}, Acquisitions & M&A Pattern`,
     tagline: `${a.name}'s public acquisition history (${acqCount} notable deals) mapped against the engineering-signal panel we publish.`,
-    intro: `${a.name} (HQ ${a.hq}) is one of the public-company acquirers whose M&A cadence shapes the technical-startup exit landscape. This page summarizes their publicly disclosed acquisitions, their stated focus areas, and how those map against the engineering-acceleration signals VC Deal Flow Signal tracks. ${a.strategy} No private data is published here — every deal listed below was announced via press release, SEC filing, or both.`,
+    intro: `${a.name} (HQ ${a.hq}) is one of the public-company acquirers whose M&A cadence shapes the technical-startup exit landscape. This page summarizes their publicly disclosed acquisitions, their stated focus areas, and how those map against the engineering-acceleration signals VC Deal Flow Signal tracks. ${a.strategy} No private data is published here, every deal listed below was announced via press release, SEC filing, or both.`,
     acquisitionStrategy: a.strategy,
     whatTheyScoutFor: a.scout,
     focusSectors: a.focusSectors,
@@ -83,19 +83,19 @@ export const ACQUIRERS: Acquirer[] = [
     homepage: "https://www.microsoft.com",
     hq: "Redmond, WA",
     strategy:
-      "Microsoft runs the most aggressive multi-vertical M&A program in tech — strategic infrastructure consolidation (GitHub, LinkedIn, Nuance) layered with category-defining content plays (Activision Blizzard, ZeniMax, Mojang). Their developer-tools M&A pattern follows public-OSS leverage: acquire the network effect, integrate it into Azure or Microsoft 365, expand the contributor pool from inside.",
+      "Microsoft runs the most aggressive multi-vertical M&A program in tech, strategic infrastructure consolidation (GitHub, LinkedIn, Nuance) layered with category-defining content plays (Activision Blizzard, ZeniMax, Mojang). Their developer-tools M&A pattern follows public-OSS leverage: acquire the network effect, integrate it into Azure or Microsoft 365, expand the contributor pool from inside.",
     scout:
       "Microsoft tends to scout developer-tools and AI/ML companies whose engineering org is already 100+ contributors at acquisition time. The four signals that have historically preceded their interest: sustained contributor influx, multi-language SDK breadth, large public-repo footprint, and visible enterprise-tier production usage. Recent priorities skew toward AI-infra and security.",
     focusSectors: ["developer-tools", "ai-ml", "ai-infra", "productivity", "infrastructure"],
     acquisitions: [
-      { name: "Activision Blizzard", year: 2023, announcedAmount: "$68.7B", note: "Gaming and content platform — Microsoft's largest tech acquisition." },
+      { name: "Activision Blizzard", year: 2023, announcedAmount: "$68.7B", note: "Gaming and content platform, Microsoft's largest tech acquisition." },
       { name: "Nuance Communications", year: 2022, announcedAmount: "$19.7B", note: "Conversational AI and healthcare voice tech." },
       { name: "ZeniMax / Bethesda", year: 2021, announcedAmount: "$7.5B", note: "Gaming studio portfolio." },
-      { name: "GitHub", year: 2018, announcedAmount: "$7.5B", note: "Developer-tools platform — the canonical OSS-network acquisition." },
+      { name: "GitHub", year: 2018, announcedAmount: "$7.5B", note: "Developer-tools platform, the canonical OSS-network acquisition." },
       { name: "LinkedIn", year: 2016, announcedAmount: "$26.2B", note: "Professional social network and B2B data." },
       { name: "Mojang / Minecraft", year: 2014, announcedAmount: "$2.5B", note: "Sandbox game IP and Java-based engineering team." },
       { name: "Skype", year: 2011, announcedAmount: "$8.5B", note: "Voice/video communications stack." },
-      { name: "aQuantive", year: 2007, announcedAmount: "$6.3B", note: "Digital advertising — Microsoft's adtech pivot." },
+      { name: "aQuantive", year: 2007, announcedAmount: "$6.3B", note: "Digital advertising, Microsoft's adtech pivot." },
     ],
   }),
   build({
@@ -109,9 +109,9 @@ export const ACQUIRERS: Acquirer[] = [
       "Security (Mandiant, Wiz), analytics infrastructure (Looker), and AI/ML are the dominant acquisition lanes in recent years. Engineering-signal hallmarks of Google interest: deep distributed-systems experience, public-repo activity in Go/Python/C++, multi-cloud enterprise customer base.",
     focusSectors: ["ai-ml", "ai-infra", "infrastructure", "observability", "analytics"],
     acquisitions: [
-      { name: "Wiz", year: 2025, announcedAmount: "$32B", note: "Cloud security platform — Google's largest acquisition ever." },
+      { name: "Wiz", year: 2025, announcedAmount: "$32B", note: "Cloud security platform, Google's largest acquisition ever." },
       { name: "Mandiant", year: 2022, announcedAmount: "$5.4B", note: "Threat intelligence and incident response." },
-      { name: "Looker", year: 2019, announcedAmount: "$2.6B", note: "BI and embedded analytics — core to GCP data stack." },
+      { name: "Looker", year: 2019, announcedAmount: "$2.6B", note: "BI and embedded analytics, core to GCP data stack." },
       { name: "Fitbit", year: 2021, announcedAmount: "$2.1B", note: "Wearables and health data." },
       { name: "DeepMind", year: 2014, announcedAmount: "~$500M", note: "Frontier AI research lab." },
       { name: "Nest", year: 2014, announcedAmount: "$3.2B", note: "Smart-home hardware and platform." },
@@ -127,7 +127,7 @@ export const ACQUIRERS: Acquirer[] = [
     homepage: "https://www.salesforce.com",
     hq: "San Francisco, CA",
     strategy:
-      "Salesforce M&A is the textbook category-extension playbook — every major acquisition becomes a Cloud product line within the Customer 360 architecture. Slack became Slack at Salesforce, MuleSoft became Integration Cloud, Tableau became Analytics Cloud, ExactTarget became Marketing Cloud.",
+      "Salesforce M&A is the textbook category-extension playbook, every major acquisition becomes a Cloud product line within the Customer 360 architecture. Slack became Slack at Salesforce, MuleSoft became Integration Cloud, Tableau became Analytics Cloud, ExactTarget became Marketing Cloud.",
     scout:
       "Salesforce scouts enterprise-saas companies with strong product-led adoption that can be re-packaged as a Cloud-prefix product within the Customer 360 stack. Engineering-signal hallmarks: multi-tenant architecture, REST-API surface area, public developer ecosystem (apps, plugins, extensions).",
     focusSectors: ["productivity", "analytics", "developer-tools"],
@@ -167,7 +167,7 @@ export const ACQUIRERS: Acquirer[] = [
     homepage: "https://www.apple.com",
     hq: "Cupertino, CA",
     strategy:
-      "Apple M&A is famously disciplined and quiet — they acquire ~one company per month on average, almost always small teams shipping a specific technical primitive (a sensor stack, an audio algorithm, a machine-learning model). Major exceptions (Beats, NeXT) are rare and category-defining.",
+      "Apple M&A is famously disciplined and quiet, they acquire ~one company per month on average, almost always small teams shipping a specific technical primitive (a sensor stack, an audio algorithm, a machine-learning model). Major exceptions (Beats, NeXT) are rare and category-defining.",
     scout:
       "Apple scouts companies with deeply specialized hardware-software co-design teams: AR/VR optics, voice synthesis, on-device ML, semiconductor IP, health sensors. Engineering signals that historically precede Apple interest: small, focused teams (often <50 engineers), advanced patents portfolio, hardware-adjacent software depth.",
     focusSectors: ["ai-ml", "infrastructure"],
@@ -208,12 +208,12 @@ export const ACQUIRERS: Acquirer[] = [
     homepage: "https://www.cisco.com",
     hq: "San Jose, CA",
     strategy:
-      "Cisco runs one of the most consistent M&A programs in enterprise tech — high cadence, strong focus on networking, security, and observability primitives. The Splunk acquisition (2024) was their largest ever and signals a multi-year observability consolidation push.",
+      "Cisco runs one of the most consistent M&A programs in enterprise tech, high cadence, strong focus on networking, security, and observability primitives. The Splunk acquisition (2024) was their largest ever and signals a multi-year observability consolidation push.",
     scout:
       "Cisco scouts security, observability, and networking companies with mature enterprise sales motions. Engineering-signal hallmarks: production deployments at >1,000 enterprise accounts, deep packet-level or kernel-level engineering, mature SOC or NOC integrations.",
     focusSectors: ["observability", "infrastructure", "developer-tools"],
     acquisitions: [
-      { name: "Splunk", year: 2024, announcedAmount: "$28B", note: "Observability and SIEM — Cisco's largest acquisition." },
+      { name: "Splunk", year: 2024, announcedAmount: "$28B", note: "Observability and SIEM, Cisco's largest acquisition." },
       { name: "Isovalent", year: 2024, note: "eBPF networking (Cilium)." },
       { name: "Acacia Communications", year: 2021, announcedAmount: "$4.5B", note: "Coherent optical networking." },
       { name: "AppDynamics", year: 2017, announcedAmount: "$3.7B", note: "APM and observability." },
@@ -236,7 +236,7 @@ export const ACQUIRERS: Acquirer[] = [
       { name: "HashiCorp", year: 2024, announcedAmount: "$6.4B", note: "Infrastructure as code and secrets management." },
       { name: "Apptio", year: 2023, announcedAmount: "$4.6B", note: "FinOps and technology business management." },
       { name: "Software AG StreamSets + webMethods", year: 2024, announcedAmount: "$2.3B", note: "Data integration and API management." },
-      { name: "Red Hat", year: 2019, announcedAmount: "$34B", note: "Open-source enterprise Linux — IBM's largest acquisition." },
+      { name: "Red Hat", year: 2019, announcedAmount: "$34B", note: "Open-source enterprise Linux, IBM's largest acquisition." },
       { name: "Promontory Financial", year: 2016, note: "Regulatory and risk consulting (Watson Financial Services)." },
       { name: "The Weather Company", year: 2016, announcedAmount: "$2B", note: "Weather data (Watson IoT)." },
       { name: "SoftLayer", year: 2013, announcedAmount: "$2B", note: "Cloud infrastructure (foundation of IBM Cloud)." },
@@ -253,7 +253,7 @@ export const ACQUIRERS: Acquirer[] = [
       "Oracle scouts enterprise applications, healthcare workflow software, and database-adjacent middleware with mature Fortune 500 deployments. Engineering-signal hallmarks: deep Oracle database integration, healthcare-grade compliance, complex multi-tenant architectures.",
     focusSectors: ["database", "analytics", "productivity"],
     acquisitions: [
-      { name: "Cerner", year: 2022, announcedAmount: "$28.3B", note: "Healthcare EHR — Oracle's largest acquisition." },
+      { name: "Cerner", year: 2022, announcedAmount: "$28.3B", note: "Healthcare EHR, Oracle's largest acquisition." },
       { name: "NetSuite", year: 2016, announcedAmount: "$9.3B", note: "Cloud ERP." },
       { name: "MICROS Systems", year: 2014, announcedAmount: "$5.3B", note: "Hospitality and retail POS." },
       { name: "Sun Microsystems", year: 2010, announcedAmount: "$7.4B", note: "Java, MySQL, Solaris, hardware." },
@@ -285,7 +285,7 @@ export const ACQUIRERS: Acquirer[] = [
     homepage: "https://www.atlassian.com",
     hq: "Sydney, Australia / San Francisco, CA",
     strategy:
-      "Atlassian M&A is the textbook product-led tuck-in playbook — every acquisition is a tool that already had product-market fit with developer or PM teams, then gets integrated into the Jira/Confluence/Bitbucket suite. Loom (2023, $975M) was their largest non-stock deal.",
+      "Atlassian M&A is the textbook product-led tuck-in playbook, every acquisition is a tool that already had product-market fit with developer or PM teams, then gets integrated into the Jira/Confluence/Bitbucket suite. Loom (2023, $975M) was their largest non-stock deal.",
     scout:
       "Atlassian scouts collaboration, project-management, and developer-workflow tools with strong PLG adoption inside engineering and product orgs. Engineering-signal hallmarks: JavaScript/TypeScript-heavy frontend, REST API maturity, third-party-developer plugin ecosystem.",
     focusSectors: ["developer-tools", "productivity"],
@@ -323,7 +323,7 @@ export const ACQUIRERS: Acquirer[] = [
     homepage: "https://stripe.com",
     hq: "San Francisco, CA / Dublin, Ireland",
     strategy:
-      "Stripe M&A is rare and selective — they acquire infrastructure primitives that extend the payments stack (Paystack for Africa, TaxJar for sales tax, Bouncer for payment-method intelligence) rather than buying scale or revenue. Indie Hackers (2017) was a developer-community play.",
+      "Stripe M&A is rare and selective, they acquire infrastructure primitives that extend the payments stack (Paystack for Africa, TaxJar for sales tax, Bouncer for payment-method intelligence) rather than buying scale or revenue. Indie Hackers (2017) was a developer-community play.",
     scout:
       "Stripe scouts payments infrastructure, fraud/risk primitives, tax/compliance tooling, and developer communities aligned to their API model. Engineering-signal hallmarks: clean REST API design, strong testing culture, deep fintech-compliance experience.",
     focusSectors: ["fintech", "developer-tools"],
@@ -342,7 +342,7 @@ export const ACQUIRERS: Acquirer[] = [
     homepage: "https://www.cloudflare.com",
     hq: "San Francisco, CA",
     strategy:
-      "Cloudflare M&A is small, focused, and platform-extending — every acquisition becomes a first-party feature on the Cloudflare Edge (Area 1 → Email Security, Zaraz → Third-party Tag Manager, S2 Systems → Browser Isolation). They scout infrastructure primitives that fit their global anycast network model.",
+      "Cloudflare M&A is small, focused, and platform-extending, every acquisition becomes a first-party feature on the Cloudflare Edge (Area 1 → Email Security, Zaraz → Third-party Tag Manager, S2 Systems → Browser Isolation). They scout infrastructure primitives that fit their global anycast network model.",
     scout:
       "Cloudflare scouts edge-runtime, security, and developer-platform primitives. Engineering-signal hallmarks: Rust or Go runtime expertise, distributed-systems depth, public APIs with developer-tooling integration.",
     focusSectors: ["infrastructure", "developer-tools", "observability"],
@@ -417,7 +417,7 @@ export const ACQUIRERS: Acquirer[] = [
     homepage: "https://github.com",
     hq: "San Francisco, CA",
     strategy:
-      "GitHub M&A (as a Microsoft subsidiary) targets developer-workflow primitives that extend the GitHub platform — dependency management (Dependabot), code analysis (Semmle → CodeQL), package distribution (npm). Each acquisition becomes a first-party platform feature.",
+      "GitHub M&A (as a Microsoft subsidiary) targets developer-workflow primitives that extend the GitHub platform, dependency management (Dependabot), code analysis (Semmle → CodeQL), package distribution (npm). Each acquisition becomes a first-party platform feature.",
     scout:
       "GitHub scouts developer-tools and code-intelligence companies whose primitives fit inside the GitHub platform: scanning, dependency analysis, package registries, automation. Engineering-signal hallmarks: deep Git or static-analysis expertise, large open-source community, public maintainer activity.",
     focusSectors: ["developer-tools"],
@@ -481,7 +481,7 @@ export const ACQUIRERS: Acquirer[] = [
       { name: "Kustomer", year: 2022, announcedAmount: "$1B", note: "Customer service platform." },
       { name: "GIPHY", year: 2020, announcedAmount: "$400M", note: "Animated images (later unwound by UK CMA)." },
       { name: "CTRL-labs", year: 2019, announcedAmount: "~$500M", note: "Neural interface (became Reality Labs core)." },
-      { name: "WhatsApp", year: 2014, announcedAmount: "$19B", note: "Messaging platform — largest tech acquisition of its era." },
+      { name: "WhatsApp", year: 2014, announcedAmount: "$19B", note: "Messaging platform, largest tech acquisition of its era." },
       { name: "Oculus VR", year: 2014, announcedAmount: "$2B", note: "VR hardware (became Meta Quest)." },
       { name: "Instagram", year: 2012, announcedAmount: "$1B", note: "Photo and video social network." },
     ],
@@ -525,7 +525,7 @@ export const ACQUIRERS: Acquirer[] = [
     homepage: "https://www.broadcom.com",
     hq: "Palo Alto, CA",
     strategy:
-      "Broadcom runs one of the most aggressive PE-style M&A programs in tech — large acquisitions, ruthless cost optimization, focus on profitable enterprise software and semiconductor assets. The VMware acquisition (2023, $69B) was one of the largest tech acquisitions ever.",
+      "Broadcom runs one of the most aggressive PE-style M&A programs in tech, large acquisitions, ruthless cost optimization, focus on profitable enterprise software and semiconductor assets. The VMware acquisition (2023, $69B) was one of the largest tech acquisitions ever.",
     scout:
       "Broadcom scouts mature enterprise software and semiconductor companies with strong cash flow and Fortune 500 install base. Engineering-signal hallmarks: enterprise-grade reliability, deep enterprise sales motion, legacy customer base willing to pay for support contracts.",
     focusSectors: ["infrastructure", "developer-tools"],
@@ -542,7 +542,7 @@ export const ACQUIRERS: Acquirer[] = [
     homepage: "https://www.paloaltonetworks.com",
     hq: "Santa Clara, CA",
     strategy:
-      "Palo Alto Networks runs a high-cadence security M&A program — typically 4-6 acquisitions per year — extending the Cortex, Prisma, and Strata platforms. Most acquisitions integrate into existing platforms rather than launching new product lines.",
+      "Palo Alto Networks runs a high-cadence security M&A program, typically 4-6 acquisitions per year, extending the Cortex, Prisma, and Strata platforms. Most acquisitions integrate into existing platforms rather than launching new product lines.",
     scout:
       "Palo Alto Networks scouts security companies with mature enterprise traction across SOC, network, and cloud-security categories. Engineering-signal hallmarks: deep packet-level or kernel-level engineering, mature SIEM/SOAR integrations, Fortune 1000 customer references.",
     focusSectors: ["observability", "infrastructure", "developer-tools"],
@@ -567,7 +567,7 @@ export const ACQUIRERS: Acquirer[] = [
     focusSectors: ["developer-tools", "infrastructure"],
     acquisitions: [
       { name: "Spera Security", year: 2024, note: "Identity security posture management." },
-      { name: "Auth0", year: 2021, announcedAmount: "$6.5B", note: "Developer-facing identity platform — Okta's largest acquisition." },
+      { name: "Auth0", year: 2021, announcedAmount: "$6.5B", note: "Developer-facing identity platform, Okta's largest acquisition." },
       { name: "Azuqua", year: 2019, note: "Workflow automation (became Okta Workflows)." },
     ],
   }),
@@ -577,7 +577,7 @@ export const ACQUIRERS: Acquirer[] = [
     homepage: "https://www.crowdstrike.com",
     hq: "Austin, TX",
     strategy:
-      "CrowdStrike runs a focused M&A program around endpoint security, log management, and adjacent observability primitives that extend the Falcon platform. Discipline over volume — typically 1-2 acquisitions per year, each ~$100M-$500M range.",
+      "CrowdStrike runs a focused M&A program around endpoint security, log management, and adjacent observability primitives that extend the Falcon platform. Discipline over volume, typically 1-2 acquisitions per year, each ~$100M-$500M range.",
     scout:
       "CrowdStrike scouts companies whose telemetry and detection primitives fit the Falcon platform. Engineering-signal hallmarks: high-cardinality data engineering, real-time event processing depth, SIEM/SOC workflow alignment.",
     focusSectors: ["observability", "infrastructure"],
@@ -594,7 +594,7 @@ export const ACQUIRERS: Acquirer[] = [
     homepage: "https://block.xyz",
     hq: "Oakland, CA",
     strategy:
-      "Block (formerly Square) runs M&A across payments, BNPL, music, and crypto — the diverse portfolio reflects Jack Dorsey's multi-product holding-company strategy. The Afterpay acquisition (2022) was the company's largest, repositioning Block in the BNPL space.",
+      "Block (formerly Square) runs M&A across payments, BNPL, music, and crypto, the diverse portfolio reflects Jack Dorsey's multi-product holding-company strategy. The Afterpay acquisition (2022) was the company's largest, repositioning Block in the BNPL space.",
     scout:
       "Block scouts companies in payments, fintech consumer apps, music streaming, and crypto/Bitcoin infrastructure. Engineering-signal hallmarks: consumer-grade UX, payments-compliance depth, multi-platform mobile engineering.",
     focusSectors: ["fintech", "developer-tools"],
@@ -643,7 +643,7 @@ export const ACQUIRERS: Acquirer[] = [
       { name: "Callidus Software", year: 2018, announcedAmount: "$2.4B", note: "Sales performance management." },
       { name: "Concur Technologies", year: 2014, announcedAmount: "$8.3B", note: "Travel and expense management." },
       { name: "Ariba", year: 2012, announcedAmount: "$4.3B", note: "Procurement and supply-chain SaaS." },
-      { name: "SuccessFactors", year: 2011, announcedAmount: "$3.4B", note: "Cloud HCM — SAP's pivot to SaaS." },
+      { name: "SuccessFactors", year: 2011, announcedAmount: "$3.4B", note: "Cloud HCM, SAP's pivot to SaaS." },
     ],
   }),
 ];

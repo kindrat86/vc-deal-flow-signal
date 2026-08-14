@@ -3,7 +3,7 @@ import { getComparison } from "@/content/comparisons";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "VC Deal Flow Signal — Comparison guide";
+export const alt = "VC Deal Flow Signal, Comparison guide";
 
 export default async function OGImage({
   params,

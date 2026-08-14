@@ -1,5 +1,5 @@
 /**
- * /api/v1/faq.json — versioned, machine-readable FAQ surface.
+ * /api/v1/faq.json, versioned, machine-readable FAQ surface.
  *
  * Pass VII (2026-05-05). Net-new LLMO/AEO surface. Mirrors the 100+ Q&A
  * pairs from /content/standalone-faqs.ts as a JSON-LD `FAQPage`.
@@ -22,7 +22,7 @@ export async function GET() {
     "@context": "https://schema.org",
     "@type": "FAQPage",
     "@id": `${SITE}/api/v1/faq.json`,
-    name: "VC Deal Flow Signal — FAQ",
+    name: "VC Deal Flow Signal, FAQ",
     description:
       "Frequently asked questions about VC Deal Flow Signal: methodology, pricing, data sources, signal types, agent integrations, and citation policy.",
     url: `${SITE}/faq`,

@@ -1,5 +1,5 @@
 /**
- * /.well-known/traffic-advice — Google "private prefetch proxy" advisory.
+ * /.well-known/traffic-advice, Google "private prefetch proxy" advisory.
  *
  * Spec: https://github.com/buettner/private-prefetch-proxy/blob/main/traffic-advice.md
  *
@@ -7,7 +7,7 @@
  * for our domain. Without it, Chrome conservatively skips prefetching us,
  * adding 100-300ms to first-paint for users who arrive via Google.
  *
- * The Content-Type MUST be `application/trafficadvice+json` per the spec —
+ * The Content-Type MUST be `application/trafficadvice+json` per the spec -
  * a generic `application/json` content-type causes Chrome to reject the file.
  */
 

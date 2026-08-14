@@ -1,5 +1,5 @@
 /**
- * /press/rss.xml — dedicated RSS 2.0 feed for press releases.
+ * /press/rss.xml, dedicated RSS 2.0 feed for press releases.
  *
  * Companion to /press/atom.xml. RSS 2.0 because some legacy newsroom
  * crawlers (PR Newswire, Crunchbase News, Pitchbook ingestion) probe
@@ -75,12 +75,12 @@ ${cats}
      xmlns:dc="http://purl.org/dc/elements/1.1/"
      xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>VC Deal Flow Signal — Press Releases</title>
+    <title>VC Deal Flow Signal: Press Releases</title>
     <link>${SITE}/press</link>
     <atom:link href="${SITE}/press/rss.xml" rel="self" type="application/rss+xml"/>
     <description>Wire-ready press releases from VC Deal Flow Signal (GitDealFlow). Engineering acceleration signals for venture capital. CC BY 4.0.</description>
     <language>en-US</language>
-    <copyright>CC BY 4.0 — VC Deal Flow Signal</copyright>
+    <copyright>CC BY 4.0, VC Deal Flow Signal</copyright>
     <managingEditor>signals@gitdealflow.com (The Data Nerd)</managingEditor>
     <webMaster>signals@gitdealflow.com (The Data Nerd)</webMaster>
     <lastBuildDate>${lastBuild}</lastBuildDate>

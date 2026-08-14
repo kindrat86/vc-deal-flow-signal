@@ -1,4 +1,4 @@
-# GitDealFlow — first 3 touches note
+# GitDealFlow, first 3 touches note
 
 Purpose: remove hesitation and define the first three real touches to make from the new distribution stack.
 

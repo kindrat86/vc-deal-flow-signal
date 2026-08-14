@@ -29,7 +29,7 @@ export async function generateMetadata({
   const data = getStagePageData(slug);
   if (!data) return {};
 
-  const title = `${data.name} Startups Showing Engineering Acceleration — ${data.period.name}`;
+  const title = `${data.name} Startups Showing Engineering Acceleration, ${data.period.name}`;
   const description = `${data.startups.length} ${data.name.toLowerCase()} startups ranked by GitHub engineering acceleration in ${data.period.name}. Commit velocity, contributor growth, and breakout signals for investors focused on ${data.name.toLowerCase()} companies.`;
 
   return {
@@ -75,7 +75,7 @@ export default async function StagePage({ params }: PageProps) {
     },
     {
       question: `How is stage determined in these rankings?`,
-      answer: `Stage is derived from contributor count, team-size enrichment data, and funding history where publicly available. Stage classifications use broad buckets (Pre-Seed, Seed, Series A/B, Growth) to provide meaningful sample sizes. These are estimates — always verify independently before any investment action.`,
+      answer: `Stage is derived from contributor count, team-size enrichment data, and funding history where publicly available. Stage classifications use broad buckets (Pre-Seed, Seed, Series A/B, Growth) to provide meaningful sample sizes. These are estimates, always verify independently before any investment action.`,
     },
   ];
 
@@ -84,7 +84,7 @@ export default async function StagePage({ params }: PageProps) {
     "@graph": [
       {
         "@type": "Article",
-        headline: `${name} Startups Showing Engineering Acceleration — ${period.name}`,
+        headline: `${name} Startups Showing Engineering Acceleration, ${period.name}`,
         description,
         author: DATA_NERD_AUTHOR_REF,
         publisher: { "@type": "Organization", name: "VC Deal Flow Signal", url: "https://gitdealflow.com" },
@@ -160,7 +160,7 @@ export default async function StagePage({ params }: PageProps) {
             aria-label="TL;DR"
           >
             <h2 className="text-xs font-semibold text-sky-400 uppercase tracking-wider mb-2">
-              TL;DR — At a glance
+              TL;DR, At a glance
             </h2>
             <p className="text-gray-300 text-sm leading-relaxed">
               We rank {startups.length} {name.toLowerCase()} startups by GitHub
@@ -192,7 +192,7 @@ export default async function StagePage({ params }: PageProps) {
 
         <section className="mb-10" aria-label="Sector breakdown">
           <h2 className="text-gray-100 font-semibold text-lg mb-4">
-            Sector breakdown — {name}
+            Sector breakdown, {name}
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
             {sectorBreakdown.map((s) => (
@@ -212,7 +212,7 @@ export default async function StagePage({ params }: PageProps) {
 
         <section className="mb-10" aria-label="Startup rankings">
           <h2 className="text-gray-100 font-semibold text-lg mb-4">
-            Ranked {name.toLowerCase()} startups — {period.name}
+            Ranked {name.toLowerCase()} startups, {period.name}
           </h2>
           <StartupTable startups={startups} />
           <p className="mt-3 text-gray-600 text-xs">

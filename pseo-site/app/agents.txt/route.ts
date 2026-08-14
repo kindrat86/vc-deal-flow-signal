@@ -1,5 +1,5 @@
 /**
- * /agents.txt — robots.txt sibling for autonomous agents.
+ * /agents.txt, robots.txt sibling for autonomous agents.
  *
  * Mirrors the policy expressed in /.well-known/ai-policy.json in a format
  * agents that don't speak JSON-LD can still parse. Lists allowed agents,
@@ -132,7 +132,7 @@ const SURFACES = [
 
 export async function GET() {
   const lines: string[] = [];
-  lines.push(`# /agents.txt — autonomous agent policy for VC Deal Flow Signal`);
+  lines.push(`# /agents.txt, autonomous agent policy for VC Deal Flow Signal`);
   lines.push(`# Canonical:  https://signals.gitdealflow.com/agents.txt`);
   lines.push(`# Machine:    https://signals.gitdealflow.com/.well-known/ai-policy.json`);
   lines.push(`# Updated:    ${new Date().toISOString().slice(0, 10)}`);
@@ -157,7 +157,7 @@ export async function GET() {
     lines.push(`License: https://creativecommons.org/licenses/by/4.0/`);
     lines.push(``);
   }
-  lines.push(`# Wildcard for unlisted agents — same policy.`);
+  lines.push(`# Wildcard for unlisted agents, same policy.`);
   lines.push(`User-agent: *`);
   lines.push(`Allow: /`);
   for (const p of DISALLOW) lines.push(`Disallow: ${p}`);

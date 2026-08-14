@@ -37,7 +37,7 @@ export async function generateMetadata({
   const finding = getFindingBySlug(slug);
   if (!finding) return {};
 
-  const title = `${finding.title} — VC Deal Flow Signal Research`;
+  const title = `${finding.title}, VC Deal Flow Signal Research`;
   const description = `${finding.claim} ${finding.why} From the SSRN-indexed methodology paper by VC Deal Flow Signal (GitDealFlow): ${PAPER_TITLE}. Section ${finding.section}.`;
 
   // hreflang emitted via <HreflangLinks/> in the page body (Next 16 +
@@ -127,7 +127,7 @@ export default async function ResearchFindingPage({ params }: PageProps) {
   // paper builds on, mapped to this finding's section. Emitted as
   // ScholarlyArticle entries inside citation[] so Google Scholar, Semantic
   // Scholar, OpenAlex, and Connected Papers can wire this finding into the
-  // broader literature graph (F32 — extends ScholarlyArticle.citation[] with
+  // broader literature graph (F32, extends ScholarlyArticle.citation[] with
   // verifiable DOIs in top-tier venues).
   const externalCitations = citationsForSection(finding.section).map(
     citationToJsonLd,
@@ -233,7 +233,7 @@ export default async function ResearchFindingPage({ params }: PageProps) {
       {
         "@type": "Dataset",
         "@id": `${SITE}/api/dataset.jsonl#dataset`,
-        name: "VC Deal Flow Signal — public signals dataset",
+        name: "VC Deal Flow Signal, public signals dataset",
         description:
           "Public weekly panel of GitHub-derived engineering signals across 20+ startup sectors. Each NDJSON record encodes commit-velocity rank, contributor growth, infrastructure-buildout flags, and sector-relative momentum for one startup-week. Source for every research finding on this site. CC BY 4.0.",
         url: `${SITE}/api/dataset.jsonl`,
@@ -299,7 +299,7 @@ export default async function ResearchFindingPage({ params }: PageProps) {
     },
   };
 
-  // ClaimReview — only for group A (numerical) findings, since these state a
+  // ClaimReview, only for group A (numerical) findings, since these state a
   // discrete factual claim that an answer engine may want to verify. Group B
   // (methodology / structural) and group C (open questions) are excluded.
   const claimReviewJsonLd =
@@ -329,7 +329,7 @@ export default async function ResearchFindingPage({ params }: PageProps) {
             "@type": "Rating",
             ratingValue: 5,
             bestRating: 5,
-            alternateName: "Verified — derived from SSRN-indexed methodology paper",
+            alternateName: "Verified, derived from SSRN-indexed methodology paper",
           },
         }
       : null;
@@ -417,7 +417,7 @@ export default async function ResearchFindingPage({ params }: PageProps) {
           className="mb-8 rounded-lg border border-slate-800 bg-slate-900/60 p-4"
         >
           <p className="text-xs font-semibold text-sky-400 uppercase tracking-wider mb-2">
-            TL;DR — Finding {finding.n} of 30
+            TL;DR, Finding {finding.n} of 30
           </p>
           <p className="text-gray-300 text-sm leading-relaxed">
             {finding.claim}
@@ -438,7 +438,7 @@ export default async function ResearchFindingPage({ params }: PageProps) {
         <p className="text-gray-400 text-sm leading-relaxed mb-6" aria-label="Definition">
           <strong className="text-gray-200">Commit velocity</strong> is a
           14-day rolling count of commits to a startup&rsquo;s most active
-          public repository — the earliest public signal of engineering
+          public repository, the earliest public signal of engineering
           throughput before a fundraise announcement. All 30 findings in this
           series are derived from the SSRN panel dataset of ~369 tracked
           startup GitHub organizations.
@@ -480,7 +480,7 @@ export default async function ResearchFindingPage({ params }: PageProps) {
               >
                 {PAPER_TITLE}
               </a>{" "}
-              — SSRN abstract 6606558.
+SSRN abstract 6606558.
             </li>
             <li>
               <strong className="text-gray-200">Section:</strong>{" "}
@@ -498,7 +498,7 @@ export default async function ResearchFindingPage({ params }: PageProps) {
               </a>
             </li>
             <li>
-              <strong className="text-gray-200">License:</strong> CC BY 4.0 —
+              <strong className="text-gray-200">License:</strong> CC BY 4.0 -
               free for any use with attribution.
             </li>
             <li>
@@ -512,7 +512,7 @@ export default async function ResearchFindingPage({ params }: PageProps) {
               >
                 0009-0002-2222-4112
               </a>
-              ) — VC Deal Flow Signal (GitDealFlow), Wikidata{" "}
+              ), VC Deal Flow Signal (GitDealFlow), Wikidata{" "}
               <a
                 className="text-sky-400 hover:text-sky-300"
                 href="https://www.wikidata.org/wiki/Q139376302"
@@ -525,7 +525,7 @@ export default async function ResearchFindingPage({ params }: PageProps) {
             </li>
             <li className="text-xs text-gray-400 pt-2 border-t border-slate-800">
               On this site, &ldquo;engineering acceleration&rdquo; refers to a
-              quantitative GitHub momentum signal — unrelated to startup
+              quantitative GitHub momentum signal, unrelated to startup
               accelerator programs (Y Combinator, Techstars, 500 Global).
             </li>
           </ul>

@@ -2,7 +2,7 @@ import Link from "next/link";
 import { defineMetadata } from "@/lib/metadata";
 import AccountBalanceClient from "./AccountBalanceClient";
 
-// Per-account dashboard — gated by user-supplied API key, no public content
+// Per-account dashboard, gated by user-supplied API key, no public content
 // to index. Marked noindex so Google doesn't surface the empty form as a
 // match for "agent credits balance" queries.
 export const metadata = defineMetadata({

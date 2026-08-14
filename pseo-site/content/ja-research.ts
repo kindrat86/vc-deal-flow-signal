@@ -2,7 +2,7 @@
  * Hand-translated Japanese versions of selected research findings.
  *
  * Strategy: pick the 5 findings most likely to be searched in Japanese
- * — the headline numbers (median velocity, framework migration share,
+ *, the headline numbers (median velocity, framework migration share,
  * hiring burst rarity, geographic share, quarterly velocity range).
  * Each entry is a full translation with a translationOfWork pointer
  * back to the English canonical, satisfying Schema.org and Google's
@@ -18,7 +18,7 @@ export interface JaFinding {
   title: string;
   claim: string;
   why: string;
-  section: string; // English section reference (kept verbatim — readers cross-reference the SSRN paper)
+  section: string; // English section reference (kept verbatim, readers cross-reference the SSRN paper)
   body: string; // markdown-ish, rendered by the same RenderBody as locale-topics
 }
 
@@ -37,7 +37,7 @@ export const JA_FINDINGS: JaFinding[] = [
 
 ## なぜ中央値なのか
 
-私たちはこの数値を **平均ではなく中央値**で報告しています。これには定量的な理由があります —— ベンチャー出資スタートアップの GitHub 活動分布は**大きく上方に歪んでいます**。同じデータセットの平均は **173 コミット**で、中央値の 2.4 倍以上です（[詳細](/ja/research/mean-vs-median-commit-velocity-skew)）。
+私たちはこの数値を **平均ではなく中央値**で報告しています。これには定量的な理由があります, - ベンチャー出資スタートアップの GitHub 活動分布は**大きく上方に歪んでいます**。同じデータセットの平均は **173 コミット**で、中央値の 2.4 倍以上です（[詳細](/ja/research/mean-vs-median-commit-velocity-skew)）。
 
 歪んだ分布を平均で要約すると、外れ値（極端に活発なリポジトリ）が支配し、典型的な企業の状況を見誤ります。投資判断にこの数値を使う場合は、必ず中央値（71）をベースラインとしてください。
 
@@ -66,7 +66,7 @@ export const JA_FINDINGS: JaFinding[] = [
     title:
       "フレームワーク移行が支配的：ベンチャー出資スタートアップの GitHub シグナルの 75%",
     claim:
-      "フレームワーク移行は、最も支配的なシグナルタイプです —— 観測の 75%（219 件中 165 件）を占めます。",
+      "フレームワーク移行は、最も支配的なシグナルタイプです, - 観測の 75%（219 件中 165 件）を占めます。",
     why:
       "「エンジニアリング速度＝採用」という従来のヒューリスティックに反する重要な発見。支配的なパターンは書き換えであり、ヘッドカウントの増加ではありません。",
     section: "§3.3 シグナル分類",
@@ -318,7 +318,7 @@ EU の人口は世界の **5.7%**、世界 GDP の **15%** を占めます。一
 
 しかし VC 出資**オープンソース活動的**組織における EU シェアは、わずか **22%** です。これは：
 
-- **EU の VC 投資シェア（22%）と均等** —— 資金は配分されているが、
+- **EU の VC 投資シェア（22%）と均等**, - 資金は配分されているが、
 - **オープンソース活動の可視性は相対的に低い**
 
 ## 解釈
@@ -341,8 +341,8 @@ EU の規制環境（GDPR、Digital Services Act 等）が、オープンソー�
 
 この発見は、**EU の VC 出資スタートアップは GitHub 上の可視性が低いため、過小評価されている可能性**を示唆します。EU フォーカスのファンドや、米国ファンドの EU エクスポージャーを増やしたいファンドにとって：
 
-1. **パブリック GitHub の signal は遅延または欠如する可能性が高い** —— 補完的なシグナル（LinkedIn、PitchBook 等）が必要
-2. **EU スタートアップが急にオープンソース化したら強いシグナル** —— 文化的シフトを示唆
+1. **パブリック GitHub の signal は遅延または欠如する可能性が高い**, - 補完的なシグナル（LinkedIn、PitchBook 等）が必要
+2. **EU スタートアップが急にオープンソース化したら強いシグナル**, - 文化的シフトを示唆
 3. **EU 法務テック、ヘルステック、フィンテックは特に過小代表される可能性**
 
 ## 関連する発見

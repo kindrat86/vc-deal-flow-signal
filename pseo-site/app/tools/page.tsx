@@ -9,7 +9,7 @@ const PAGE_URL = `${SITE}/tools`;
 const OG_IMAGE = `${SITE}/api/og/tools`;
 
 export const metadata: Metadata = {
-  title: "Free VC & Founder Tools — Calculators, Checkers, References",
+  title: "Free VC & Founder Tools, Calculators, Checkers, References",
   description:
     "Eight free calculators for founders and investors: SAFE conversion, dilution stack, runway, and the full SaaS efficiency suite (burn multiple, magic number, CAC payback, LTV, quick ratio). URL-shareable results, per-share OG cards, CC BY 4.0, no signup. Machine-readable catalog at /api/v1/tools.json.",
   alternates: { canonical: "/tools" },
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
         url: OG_IMAGE,
         width: 1200,
         height: 630,
-        alt: "Free VC & Founder Tools — 8 calculators from VC Deal Flow Signal",
+        alt: "Free VC & Founder Tools, 8 calculators from VC Deal Flow Signal",
       },
     ],
   },
@@ -139,7 +139,7 @@ export default function ToolsIndexPage() {
         // The free `offers` block is REQUIRED, not decorative: a
         // SoftwareApplication with none of offers/review/aggregateRating is a
         // CRITICAL GSC "Product snippets" error. These tools are genuinely
-        // free, so price "0" is an honest offer — the same shape the per-tool
+        // free, so price "0" is an honest offer, the same shape the per-tool
         // pages and /a2a-demo already emit.
         hasPart: liveTools.map((t) => ({
           "@type": "SoftwareApplication",
@@ -239,14 +239,14 @@ export default function ToolsIndexPage() {
           <p className="text-gray-300 text-sm leading-relaxed mb-5 max-w-2xl">
             Run a burn multiple or a dilution stack on a company you already
             found. The live Dashboard flips it around: it surfaces the teams that
-            are quietly shipping far more than usual right now — the ones worth
+            are quietly shipping far more than usual right now, the ones worth
             putting through these tools weeks before they show up in a deck.
           </p>
           <Link
             href="/dashboard"
             className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-signal-500 hover:bg-signal-600 text-slate-950 text-sm font-semibold transition-colors"
           >
-            See who&apos;s accelerating now — Dashboard, €49/mo →
+            See who&apos;s accelerating now, Dashboard, €49/mo →
           </Link>
         </section>
 
@@ -274,7 +274,7 @@ export default function ToolsIndexPage() {
           </h2>
           <p className="text-gray-400 text-sm mb-6 max-w-xl mx-auto leading-relaxed">
             The math above describes a company. We track which companies are
-            pulling ahead — the teams shipping far more than usual, the ones that
+            pulling ahead, the teams shipping far more than usual, the ones that
             tend to surface in a fundraise three to seven weeks later. Start free,
             or grab one full breakdown for €7.
           </p>
@@ -289,7 +289,7 @@ export default function ToolsIndexPage() {
               href="/firstlook"
               className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 bg-slate-800 hover:bg-slate-700 text-gray-100 text-sm font-semibold transition-colors w-full sm:w-auto"
             >
-              One full First Look — €7 →
+              One full First Look, €7 →
             </Link>
           </div>
         </div>

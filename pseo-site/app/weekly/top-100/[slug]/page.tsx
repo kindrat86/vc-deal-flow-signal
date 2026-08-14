@@ -32,21 +32,21 @@ export async function generateMetadata({
   const label = formatIsoWeekLabel(slug);
   const top = snap.rankings[0];
   const description = top
-    ? `Composite leaderboard of ${snap.summary.totalRanked} distinct startups ranked by GitHub engineering signal — ${label}. #1 this week: ${top.name} (Signal Score ${top.signalScore}, ${top.commitVelocityChange} commit velocity, ${top.contributorGrowth} contributor growth).`
+    ? `Composite leaderboard of ${snap.summary.totalRanked} distinct startups ranked by GitHub engineering signal, ${label}. #1 this week: ${top.name} (Signal Score ${top.signalScore}, ${top.commitVelocityChange} commit velocity, ${top.contributorGrowth} contributor growth).`
     : `Top 100 GitHub-Signal Startups for ${label}.`;
   return {
-    title: `Top 100 GitHub-Signal Startups — ${label}`,
+    title: `Top 100 GitHub-Signal Startups, ${label}`,
     description,
     alternates: { canonical: `/weekly/top-100/${slug}` },
     openGraph: {
-      title: `Top 100 GitHub-Signal Startups — ${label}`,
+      title: `Top 100 GitHub-Signal Startups, ${label}`,
       description,
       type: "article",
       url: `${SITE}/weekly/top-100/${slug}`,
     },
     twitter: {
       card: "summary_large_image",
-      title: `Top 100 GitHub-Signal Startups — ${label}`,
+      title: `Top 100 GitHub-Signal Startups, ${label}`,
       description,
     },
   };
@@ -105,7 +105,7 @@ export default async function Top100WeeklyPage({ params }: PageProps) {
       {
         "@type": "Article",
         "@id": `${pageUrl}#article`,
-        headline: `Top 100 GitHub-Signal Startups — ${label}`,
+        headline: `Top 100 GitHub-Signal Startups, ${label}`,
         datePublished: dateIso,
         dateModified: dateIso,
         author: DATA_NERD_AUTHOR_REF,
@@ -121,7 +121,7 @@ export default async function Top100WeeklyPage({ params }: PageProps) {
       {
         "@type": "ItemList",
         "@id": `${pageUrl}#leaderboard`,
-        name: `Top 100 GitHub-Signal Startups — ${label}`,
+        name: `Top 100 GitHub-Signal Startups, ${label}`,
         numberOfItems: snap.rankings.length,
         itemListOrder: "https://schema.org/ItemListOrderDescending",
         itemListElement: snap.rankings.slice(0, 100).map((r) => ({
@@ -187,7 +187,7 @@ export default async function Top100WeeklyPage({ params }: PageProps) {
 
         <p className="text-gray-400 text-xs mb-2">{dateIso}</p>
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
-          Top 100 GitHub-Signal Startups — {label}
+          Top 100 GitHub-Signal Startups, {label}
         </h1>
         <p
           className="text-gray-400 text-base leading-relaxed mb-8 speakable"

@@ -2,10 +2,10 @@ const BASE_URL = "https://signals.gitdealflow.com";
 
 export async function GET() {
   const manifest = {
-    name: "VC Deal Flow Signal — GitHub Momentum Tracking for Investors",
+    name: "VC Deal Flow Signal, GitHub Momentum Tracking for Investors",
     short_name: "GitDealFlow",
     description:
-      "GitHub commit-velocity tracking across 20 startup sectors. Code-side momentum signals — surface venture-backed startups 3–6 weeks before fundraise.",
+      "GitHub commit-velocity tracking across 20 startup sectors. Code-side momentum signals, surface venture-backed startups 3-6 weeks before fundraise.",
     start_url: "/",
     scope: "/",
     display: "standalone",
@@ -41,7 +41,7 @@ export async function GET() {
         sizes: "1200x630",
         type: "image/png",
         form_factor: "wide",
-        label: "VC Deal Flow Signal — Startup Engineering Acceleration Tracker",
+        label: "VC Deal Flow Signal, Startup Engineering Acceleration Tracker",
       },
     ],
     shortcuts: [

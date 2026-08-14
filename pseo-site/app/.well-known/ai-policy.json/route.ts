@@ -1,5 +1,5 @@
 /**
- * /.well-known/ai-policy.json — machine-readable AI permissions.
+ * /.well-known/ai-policy.json, machine-readable AI permissions.
  *
  * Structured JSON form of /ai.txt. Several rel=alternate links in <head>
  * advertise this URL; without this route they 404. Each agent entry maps

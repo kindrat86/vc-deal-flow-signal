@@ -1,5 +1,5 @@
 /**
- * Stadium Pitch — RSVP reminder email templates.
+ * Stadium Pitch, RSVP reminder email templates.
  *
  * Three reminders per RSVP:
  *   - save-the-date (T-24h)
@@ -41,7 +41,7 @@ ${body}
 }
 
 /**
- * Save-the-date — T-24h before drop. The "moment is coming" reminder.
+ * Save-the-date, T-24h before drop. The "moment is coming" reminder.
  */
 export function buildSaveTheDateEmail({ dropTimeIso }: BuildArgs): {
   subject: string;
@@ -51,21 +51,21 @@ export function buildSaveTheDateEmail({ dropTimeIso }: BuildArgs): {
   const monthLabel = formatMonthLabel(dropTimeIso);
   const dropLabel = formatDropTimeUtc(drop);
 
-  const subject = `${monthLabel} Stadium Pitch — drops in 24 hours`;
+  const subject = `${monthLabel} Stadium Pitch, drops in 24 hours`;
   const html = shell(
     `<p><strong>${dropLabel}</strong>.</p>
 
-<p>That's when the ${monthLabel} State of GitHub address drops — twelve weeks of which startups have been quietly heating up, the three sector-level shifts to plan around, what changed in how we read the signal since last month, and the one structural call anyone sourcing early should have on their calendar.</p>
+<p>That's when the ${monthLabel} State of GitHub address drops, twelve weeks of which startups have been quietly heating up, the three sector-level shifts to plan around, what changed in how we read the signal since last month, and the one structural call anyone sourcing early should have on their calendar.</p>
 
-<p style="color:#475569;font-size:14px;">Quick reminder on what this is: GitDealFlow is a tool, not a fund — we're not investing, not competing with you. It reads startups' public GitHub engineering activity and flags the ones heating up in your sectors before they raise or hit the press. You don't crunch anything; it surfaces them, you make the calls.</p>
+<p style="color:#475569;font-size:14px;">Quick reminder on what this is: GitDealFlow is a tool, not a fund, we're not investing, not competing with you. It reads startups' public GitHub engineering activity and flags the ones heating up in your sectors before they raise or hit the press. You don't crunch anything; it surfaces them, you make the calls.</p>
 
-<p>You'll get the address in your inbox at the moment it goes live. The page at <a href="${SITE_SIGNALS}/state-of-github?utm_source=email&amp;utm_medium=stadium-rsvp&amp;utm_campaign=stadium-save-date">/state-of-github</a> stays public for 48 hours afterward — but the email subscribers get the link first.</p>
+<p>You'll get the address in your inbox at the moment it goes live. The page at <a href="${SITE_SIGNALS}/state-of-github?utm_source=email&amp;utm_medium=stadium-rsvp&amp;utm_campaign=stadium-save-date">/state-of-github</a> stays public for 48 hours afterward, but the email subscribers get the link first.</p>
 
 <p style="margin-top:28px;color:#475569;font-size:14px;">Tomorrow at the same time, you'll get a one-hour reminder. Then the address itself when it ships.</p>
 
-<p>Talk soon — The Data Nerd</p>
+<p>Talk soon, The Data Nerd</p>
 
-<p style="margin-top:24px;color:#475569;font-size:14px;">P.S. If you also want the free weekly Sunday digest — a handful of startups heating up early each Monday — the signup lives at <a href="${SITE_APEX}/#signup">${SITE_APEX}</a>. Different list, same engine, no overlap.</p>`,
+<p style="margin-top:24px;color:#475569;font-size:14px;">P.S. If you also want the free weekly Sunday digest, a handful of startups heating up early each Monday, the signup lives at <a href="${SITE_APEX}/#signup">${SITE_APEX}</a>. Different list, same engine, no overlap.</p>`,
     "stadium-save-date",
   );
 
@@ -73,7 +73,7 @@ export function buildSaveTheDateEmail({ dropTimeIso }: BuildArgs): {
 }
 
 /**
- * One-hour reminder — T-1h. Final pre-drop nudge.
+ * One-hour reminder, T-1h. Final pre-drop nudge.
  */
 export function buildOneHourEmail({ dropTimeIso }: BuildArgs): {
   subject: string;
@@ -81,15 +81,15 @@ export function buildOneHourEmail({ dropTimeIso }: BuildArgs): {
 } {
   const monthLabel = formatMonthLabel(dropTimeIso);
 
-  const subject = `${monthLabel} Stadium Pitch — one hour to drop`;
+  const subject = `${monthLabel} Stadium Pitch, one hour to drop`;
   const html = shell(
     `<p>One hour from now the ${monthLabel} State of GitHub address goes live.</p>
 
-<p>The whole point of the monthly cadence is the moment: twelve weeks of watching which startups are quietly heating up in your sectors, one written address, one drop time. Sixty minutes from now, the panel speaks. (Reminder — we're a tool, not a fund; we surface the signal, you make the calls.)</p>
+<p>The whole point of the monthly cadence is the moment: twelve weeks of watching which startups are quietly heating up in your sectors, one written address, one drop time. Sixty minutes from now, the panel speaks. (Reminder, we're a tool, not a fund; we surface the signal, you make the calls.)</p>
 
-<p>You'll get the address in this inbox the second it ships. Nothing for you to do — just be reachable.</p>
+<p>You'll get the address in this inbox the second it ships. Nothing for you to do, just be reachable.</p>
 
-<p style="margin-top:28px;color:#475569;font-size:14px;">If something comes up and you miss the live window, the page stays public for 48 hours at <a href="${SITE_SIGNALS}/state-of-github?utm_source=email&amp;utm_medium=stadium-rsvp&amp;utm_campaign=stadium-one-hour">/state-of-github</a> — but the RSVP list always reads it first.</p>
+<p style="margin-top:28px;color:#475569;font-size:14px;">If something comes up and you miss the live window, the page stays public for 48 hours at <a href="${SITE_SIGNALS}/state-of-github?utm_source=email&amp;utm_medium=stadium-rsvp&amp;utm_campaign=stadium-one-hour">/state-of-github</a>: but the RSVP list always reads it first.</p>
 
 <p>The Data Nerd</p>`,
     "stadium-one-hour",
@@ -99,10 +99,10 @@ export function buildOneHourEmail({ dropTimeIso }: BuildArgs): {
 }
 
 /**
- * Live drop — T-0. The address email itself.
+ * Live drop, T-0. The address email itself.
  *
  * This is the moment. The email lands in the recipient's inbox the second
- * the page goes live. Body intentionally short — the reader's job is to
+ * the page goes live. Body intentionally short, the reader's job is to
  * click through to /state-of-github and read the long form there. The email
  * carries the headline + the link, not the full address.
  */
@@ -112,21 +112,21 @@ export function buildLiveDropEmail({ dropTimeIso }: BuildArgs): {
 } {
   const monthLabel = formatMonthLabel(dropTimeIso);
 
-  const subject = `${monthLabel} Stadium Pitch — live now`;
+  const subject = `${monthLabel} Stadium Pitch, live now`;
   const html = shell(
     `<p><strong>The ${monthLabel} address is live.</strong></p>
 
-<p>Read it now while it's fresh — the public page stays open for 48 hours, but the RSVP list gets the link first, every month.</p>
+<p>Read it now while it's fresh, the public page stays open for 48 hours, but the RSVP list gets the link first, every month.</p>
 
 <p style="text-align:center;margin:32px 0;">
 <a href="${SITE_SIGNALS}/state-of-github?utm_source=email&amp;utm_medium=stadium-rsvp&amp;utm_campaign=stadium-live" style="display:block;width:100%;box-sizing:border-box;background:#0284c7;color:#ffffff;font-weight:700;font-size:19px;line-height:1.2;padding:18px 28px;border-radius:10px;text-decoration:none;text-align:center;box-shadow:0 4px 14px rgba(2,132,199,0.35);">Read the ${monthLabel} address →</a>
 </p>
 
-<p>Three sector-level shifts to plan around. What changed in how we read the signal this month. The one structural call I think every investor sourcing early should have on their calendar. (As always — this is a tool, not a fund; it surfaces the startups heating up, you make the calls.)</p>
+<p>Three sector-level shifts to plan around. What changed in how we read the signal this month. The one structural call I think every investor sourcing early should have on their calendar. (As always, this is a tool, not a fund; it surfaces the startups heating up, you make the calls.)</p>
 
 <p style="margin-top:28px;color:#475569;font-size:14px;">RSVP'd already counts you in for next month. The address ships first Wednesday of every month, 09:00 UTC, in this exact inbox.</p>
 
-<p>Talk soon — The Data Nerd</p>`,
+<p>Talk soon, The Data Nerd</p>`,
     "stadium-live",
   );
 
@@ -134,7 +134,7 @@ export function buildLiveDropEmail({ dropTimeIso }: BuildArgs): {
 }
 
 /**
- * RSVP confirmation — sent immediately on signup, not on schedule.
+ * RSVP confirmation, sent immediately on signup, not on schedule.
  * Confirms the RSVP and hints at the next reminders that will arrive.
  */
 export function buildRsvpConfirmationEmail({
@@ -152,11 +152,11 @@ export function buildRsvpConfirmationEmail({
     ? `<ul style="padding-left:20px;margin:8px 0;">
 ${scheduledLabels.map((s) => `  <li style="margin-bottom:4px;">${s}</li>`).join("\n")}
 </ul>`
-    : `<p style="color:#475569;font-size:14px;">You signed up close to the drop time — the address itself will land in this inbox at <strong>${dropLabel}</strong>.</p>`;
+    : `<p style="color:#475569;font-size:14px;">You signed up close to the drop time, the address itself will land in this inbox at <strong>${dropLabel}</strong>.</p>`;
 
-  const subject = `RSVP confirmed — ${monthLabel} Stadium Pitch`;
+  const subject = `RSVP confirmed, ${monthLabel} Stadium Pitch`;
   const html = shell(
-    `<p>You're on the list for the ${monthLabel} State of GitHub address — twelve weeks of which startups have been heating up early in your sectors, before they raise or hit the press. (GitDealFlow is a tool, not a fund; we surface them, you make the calls.)</p>
+    `<p>You're on the list for the ${monthLabel} State of GitHub address, twelve weeks of which startups have been heating up early in your sectors, before they raise or hit the press. (GitDealFlow is a tool, not a fund; we surface them, you make the calls.)</p>
 
 <p><strong>Drop time:</strong> ${dropLabel}.</p>
 
@@ -164,11 +164,11 @@ ${scheduledLabels.map((s) => `  <li style="margin-bottom:4px;">${s}</li>`).join(
 
 ${reminderList}
 
-<p>You can add the moment to your calendar via this <a href="${SITE_SIGNALS}/api/stadium-pitch/calendar.ics?utm_source=email&amp;utm_medium=stadium-rsvp&amp;utm_campaign=stadium-confirm">.ics calendar invite</a> — it sets up a recurring monthly entry on the first Wednesday so future drops are pre-scheduled.</p>
+<p>You can add the moment to your calendar via this <a href="${SITE_SIGNALS}/api/stadium-pitch/calendar.ics?utm_source=email&amp;utm_medium=stadium-rsvp&amp;utm_campaign=stadium-confirm">.ics calendar invite</a>: it sets up a recurring monthly entry on the first Wednesday so future drops are pre-scheduled.</p>
 
-<p style="margin-top:28px;color:#475569;font-size:14px;">If you also want the free weekly Sunday digest — a handful of startups heating up early, every Monday at 09:00 UTC — separate signup at <a href="${SITE_APEX}/#signup">${SITE_APEX}</a>.</p>
+<p style="margin-top:28px;color:#475569;font-size:14px;">If you also want the free weekly Sunday digest, a handful of startups heating up early, every Monday at 09:00 UTC, separate signup at <a href="${SITE_APEX}/#signup">${SITE_APEX}</a>.</p>
 
-<p>Talk soon — The Data Nerd</p>`,
+<p>Talk soon, The Data Nerd</p>`,
     "stadium-confirm",
   );
 

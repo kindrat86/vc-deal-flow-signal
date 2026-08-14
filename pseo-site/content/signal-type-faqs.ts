@@ -1,5 +1,5 @@
 /**
- * Signal-type deep-dive Q&A pairs — one set of six per signal type.
+ * Signal-type deep-dive Q&A pairs, one set of six per signal type.
  *
  * Feeds app/qa.jsonl/route.ts (category "signal-type") and complements the
  * two generic per-type questions ("what is X", "what should investors look
@@ -22,7 +22,7 @@ export const signalTypeFaqs: SignalTypeFAQ[] = [
     slug: "hiring-burst",
     question: "How is the Engineering Hiring Burst signal detected?",
     answer:
-      "A startup is classified as an engineering hiring burst when its contributor growth rate exceeds 50% over the measurement window — a proxy for rapid team expansion, often following a recent funding round.",
+      "A startup is classified as an engineering hiring burst when its contributor growth rate exceeds 50% over the measurement window, a proxy for rapid team expansion, often following a recent funding round.",
   },
   {
     slug: "hiring-burst",
@@ -62,7 +62,7 @@ export const signalTypeFaqs: SignalTypeFAQ[] = [
     slug: "infrastructure-buildout",
     question: "How is the Infrastructure Buildout signal detected?",
     answer:
-      "A startup is classified as an infrastructure buildout when it creates three or more new public repositories within 30 days — expanding its technical surface area with new microservices, SDKs, or platform components.",
+      "A startup is classified as an infrastructure buildout when it creates three or more new public repositories within 30 days, expanding its technical surface area with new microservices, SDKs, or platform components.",
   },
   {
     slug: "infrastructure-buildout",
@@ -102,13 +102,13 @@ export const signalTypeFaqs: SignalTypeFAQ[] = [
     slug: "deploy-frequency-spike",
     question: "How is the Deploy Frequency Spike signal detected?",
     answer:
-      "A startup is classified as a deploy frequency spike when its commit velocity increases 150% or more versus baseline — the team is shipping code at an unusually high rate over the 14-day window.",
+      "A startup is classified as a deploy frequency spike when its commit velocity increases 150% or more versus baseline, the team is shipping code at an unusually high rate over the 14-day window.",
   },
   {
     slug: "deploy-frequency-spike",
     question: "What can falsely trigger a deploy frequency spike signal?",
     answer:
-      "Dependency-update and bot commits, mass refactoring, and CI/CD noise can all inflate commit counts without real feature work. The methodology filters known bot accounts and trivial-file commits, but a single large refactor can still look like a spike — which is why the signal requires the acceleration to persist into a second 14-day window.",
+      "Dependency-update and bot commits, mass refactoring, and CI/CD noise can all inflate commit counts without real feature work. The methodology filters known bot accounts and trivial-file commits, but a single large refactor can still look like a spike, which is why the signal requires the acceleration to persist into a second 14-day window.",
   },
   {
     slug: "deploy-frequency-spike",
@@ -120,7 +120,7 @@ export const signalTypeFaqs: SignalTypeFAQ[] = [
     slug: "deploy-frequency-spike",
     question: "How does a deploy frequency spike relate to fundraise timing?",
     answer:
-      "A deploy spike often indicates a product launch, rapid iteration on customer feedback, or a competitive response — all of which are common in the weeks immediately before a fundraise announcement. It is a near-term timing signal, sometimes visible as little as three weeks ahead.",
+      "A deploy spike often indicates a product launch, rapid iteration on customer feedback, or a competitive response, all of which are common in the weeks immediately before a fundraise announcement. It is a near-term timing signal, sometimes visible as little as three weeks ahead.",
   },
   {
     slug: "deploy-frequency-spike",
@@ -132,7 +132,7 @@ export const signalTypeFaqs: SignalTypeFAQ[] = [
     slug: "deploy-frequency-spike",
     question: "What should an investor do after spotting a deploy frequency spike signal?",
     answer:
-      "Check whether the spike is broad-based (many contributors) or concentrated (one developer), since the 3.4× finding shows velocity-plus-diversity is far more predictive than velocity alone. Then look for what is being shipped — a launch, a competitive response, or a pivot — before acting.",
+      "Check whether the spike is broad-based (many contributors) or concentrated (one developer), since the 3.4× finding shows velocity-plus-diversity is far more predictive than velocity alone. Then look for what is being shipped, a launch, a competitive response, or a pivot, before acting.",
   },
 
   // -------------------------------------------------------------------------
@@ -142,25 +142,25 @@ export const signalTypeFaqs: SignalTypeFAQ[] = [
     slug: "framework-migration",
     question: "How is the Framework Migration signal detected?",
     answer:
-      "A startup is classified as a framework migration when it shows general engineering acceleration that does not fit the hiring-burst, infrastructure-buildout, or deploy-spike rules — typically indicating a technology-stack transition from prototype to production infrastructure.",
+      "A startup is classified as a framework migration when it shows general engineering acceleration that does not fit the hiring-burst, infrastructure-buildout, or deploy-spike rules, typically indicating a technology-stack transition from prototype to production infrastructure.",
   },
   {
     slug: "framework-migration",
     question: "What can falsely trigger a framework migration signal?",
     answer:
-      "Because framework migration is the residual category, it can absorb mixed signals — a mild velocity bump plus a couple of new repos that individually fall under each threshold. The methodology accepts this imprecision deliberately: the category flags 'something is changing under the hood' and routes the investor to diligence rather than asserting a specific cause.",
+      "Because framework migration is the residual category, it can absorb mixed signals, a mild velocity bump plus a couple of new repos that individually fall under each threshold. The methodology accepts this imprecision deliberately: the category flags 'something is changing under the hood' and routes the investor to diligence rather than asserting a specific cause.",
   },
   {
     slug: "framework-migration",
     question: "Which funding stage does a framework migration usually indicate?",
     answer:
-      "Framework migration most often maps to seed through Series A, where a startup transitions from prototype to production infrastructure — moving from exploration to exploitation, a milestone that frequently precedes fundraising. It is a slower, quarter-scale signal than the other three.",
+      "Framework migration most often maps to seed through Series A, where a startup transitions from prototype to production infrastructure, moving from exploration to exploitation, a milestone that frequently precedes fundraising. It is a slower, quarter-scale signal than the other three.",
   },
   {
     slug: "framework-migration",
     question: "How does a framework migration relate to fundraise timing?",
     answer:
-      "Framework migrations move on a longer horizon than hiring bursts or deploy spikes — often one to two quarters ahead of a fundraise. They signal the shift from building to scaling, which is exactly the story a startup tells a Series A or B investor, but they are less useful for catching a round within weeks.",
+      "Framework migrations move on a longer horizon than hiring bursts or deploy spikes, often one to two quarters ahead of a fundraise. They signal the shift from building to scaling, which is exactly the story a startup tells a Series A or B investor, but they are less useful for catching a round within weeks.",
   },
   {
     slug: "framework-migration",

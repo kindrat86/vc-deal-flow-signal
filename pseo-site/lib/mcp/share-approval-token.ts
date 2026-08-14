@@ -2,7 +2,7 @@
 //
 // Why this exists (F21):
 // `share_result` composes social-media post bodies and intent URLs. It does NOT
-// post on behalf of the user — the destination network's compose UI is what
+// post on behalf of the user, the destination network's compose UI is what
 // finalizes the post. Even so, the tool is a *user-facing publishing surface*:
 // a malicious or hallucinating agent could compose embarrassing or misleading
 // copy and slip the intent URL into a chat with implicit confirmation. We want
@@ -18,11 +18,11 @@
 // passes still hashes to the same prefix.
 //
 // Token payload (compact, base64url-encoded JSON):
-//   k  — kind, always "share_result"
-//   h  — first 16 hex chars of SHA-256(summary), binds the token to the
+//   k , kind, always "share_result"
+//   h , first 16 hex chars of SHA-256(summary), binds the token to the
 //        approved content
-//   e  — expiry (unix ms)
-//   j  — random nonce (UUID), useful for future replay tracking
+//   e , expiry (unix ms)
+//   j , random nonce (UUID), useful for future replay tracking
 //
 // Secret: reuses MCP_OAUTH_SECRET (already provisioned in prod for the OAuth
 // token route). Distinct `kind` field prevents cross-namespace replay against

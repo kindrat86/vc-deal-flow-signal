@@ -4,7 +4,7 @@ import { isExcluded } from "@/lib/excluded-emails";
 import { getClientIp } from "@/lib/rate-limit";
 
 /**
- * Summit Free Pass registration endpoint — Brunson DotCom Ch 16 (Summit Funnel).
+ * Summit Free Pass registration endpoint, Brunson DotCom Ch 16 (Summit Funnel).
  *
  * Handles two body shapes:
  *  - application/x-www-form-urlencoded (HTML form POST from /summit#register)
@@ -15,7 +15,7 @@ import { getClientIp } from "@/lib/rate-limit";
  * verification email, and the /api/verify click performs the Resend
  * audience-add AND schedules the Soap Opera Sequence (29-day split +
  * deferred drip_plan). Previously this endpoint did a single-opt-in
- * audience-add with NO sequence — the comment claiming /api/verify "catches
+ * audience-add with NO sequence, the comment claiming /api/verify "catches
  * the cohort" was false, because nothing ever sent the verify email.
  *
  * On success, redirects to /summit/thanks (registrant must click the
@@ -65,12 +65,12 @@ async function startDoubleOptIn(
 ): Promise<{ ok: boolean; reason?: string }> {
   if (!RESEND_API_KEY) {
     // Hard-fail when env not wired: without Resend there is no verification
-    // email, no audience-add, and no sequence — pretending success would
+    // email, no audience-add, and no sequence, pretending success would
     // silently drop the registrant.
     return { ok: false, reason: "no-resend-config" };
   }
 
-  // Internal POST to /api/subscribe — the canonical capture pipeline. It
+  // Internal POST to /api/subscribe, the canonical capture pipeline. It
   // sends the double-opt-in verification email; the /api/verify click then
   // does the audience-add (with gdf-attr-v1 attribution) and schedules the
   // Soap Opera Sequence with the 29-day immediate/deferred split.
@@ -124,7 +124,7 @@ export async function POST(req: Request) {
     return NextResponse.redirect(url, { status: 303 });
   }
 
-  // Skip-list (testers, sales QA, bots) — registration succeeds visually
+  // Skip-list (testers, sales QA, bots), registration succeeds visually
   // but no audience-add. Same pattern as elsewhere in the codebase.
   if (isExcluded(payload.email)) {
     return NextResponse.redirect(`${SITE_URL}/summit/thanks`, { status: 303 });

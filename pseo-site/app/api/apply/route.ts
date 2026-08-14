@@ -9,13 +9,13 @@ import {
 } from "@/lib/sector-sweep-setter";
 
 /**
- * /api/apply — Sector Sweep application intake (Brunson DotCom Ch 23,
+ * /api/apply, Sector Sweep application intake (Brunson DotCom Ch 23,
  * Application Funnel).
  *
  * landing/apply.html (gitdealflow.com/apply) POSTs the 3-step €1,997
  * application here as JSON: { name, email, role, sector, geography,
  * question, check_size }. Before this route existed the fetch 404'd and the
- * page silently fell back to a mailto: link — most applications were lost.
+ * page silently fell back to a mailto: link, most applications were lost.
  *
  * On success (the page only checks `res.ok`):
  *   1. Emails the full application to signals@gitdealflow.com with
@@ -25,7 +25,7 @@ import {
  *      source:"sector-sweep-apply" attribution (packed into first_name,
  *      same gdf-attr-v1 bridge as /api/verify).
  *   3. Enrolls the applicant in the 4-step Setter heat-build drip from
- *      lib/sector-sweep-setter.ts — same sequence /api/sector-sweep-brief
+ *      lib/sector-sweep-setter.ts, same sequence /api/sector-sweep-brief
  *      uses, so the "async-only loses heat" gap stays closed on this
  *      funnel too.
  */
@@ -102,7 +102,7 @@ function applicationEmailHtml(fields: {
 </div>
 <hr style="border:none;border-top:1px solid #e2e8f0;margin:24px 0;">
 <p style="color:#94a3b8;font-size:12px;line-height:1.5;">Submitted from ${f.ip} (${f.ua})<br>Form: https://gitdealflow.com/apply</p>
-<p style="color:#94a3b8;font-size:12px;">Reply directly to <a href="mailto:${f.email}" style="color:#0ea5e9;">${f.email}</a> &mdash; that's the applicant.</p>
+<p style="color:#94a3b8;font-size:12px;">Reply directly to <a href="mailto:${f.email}" style="color:#0ea5e9;">${f.email}</a>: that's the applicant.</p>
 </div>
 </body>
 </html>`;
@@ -133,7 +133,7 @@ async function addToAudience(email: string, source: string): Promise<void> {
       },
     );
     if (!res.ok) {
-      // Contact already exists (re-applicant / prior subscriber) — make sure
+      // Contact already exists (re-applicant / prior subscriber), make sure
       // they're re-activated so future sends reach them.
       await fetch(
         `https://api.resend.com/audiences/${audienceId}/contacts/${encodeURIComponent(email)}`,
@@ -175,7 +175,7 @@ export async function POST(request: Request) {
   }
 
   const ip = getClientIp(request);
-  // Same tight limit as /api/sector-sweep-brief — this is a €1,997 rung.
+  // Same tight limit as /api/sector-sweep-brief, this is a €1,997 rung.
   const rl = checkRateLimit(`apply:${ip}`, 2, 3600_000);
   if (!rl.allowed) {
     return NextResponse.json(
@@ -205,7 +205,7 @@ export async function POST(request: Request) {
     const question = clip(raw.question, 2000);
     const check_size = clip(raw.check_size, 40);
 
-    // Reject empty applications server-side — the client-side step validation
+    // Reject empty applications server-side, the client-side step validation
     // is trivially bypassed and an empty brief is unanswerable.
     if (!name || !email || !sector || !question) {
       return NextResponse.json(
@@ -253,7 +253,7 @@ export async function POST(request: Request) {
         bcc: "sales@sipiteno.com",
         to: TO_EMAIL,
         reply_to: email,
-        subject: `[Sector Sweep Application] ${name} — ${sector.slice(0, 60)}`,
+        subject: `[Sector Sweep Application] ${name}, ${sector.slice(0, 60)}`,
         html,
       }),
     });
@@ -266,13 +266,13 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           error:
-            "Failed to deliver application — please email signals@gitdealflow.com directly",
+            "Failed to deliver application, please email signals@gitdealflow.com directly",
         },
         { status: 500, headers },
       );
     }
 
-    // Audience-add + Setter heat-build drip — both best-effort, both skipped
+    // Audience-add + Setter heat-build drip, both best-effort, both skipped
     // for excluded (tester/bot) addresses so smoke tests don't pollute the
     // list or burn Resend credits.
     if (!isExcluded(email)) {
@@ -307,7 +307,7 @@ export async function POST(request: Request) {
       console.log(`[apply] suppressed drip for excluded address: ${email}`);
     }
 
-    // apply.html only checks `res.ok` — keep the body informative for
+    // apply.html only checks `res.ok`, keep the body informative for
     // programmatic callers anyway.
     return NextResponse.json(
       {
@@ -322,7 +322,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         error:
-          "Server error — please email signals@gitdealflow.com directly with the same answers",
+          "Server error, please email signals@gitdealflow.com directly with the same answers",
       },
       { status: 500, headers },
     );

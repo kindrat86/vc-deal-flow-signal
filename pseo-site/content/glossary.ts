@@ -1,14 +1,14 @@
 /**
- * Glossary terms — single source of truth.
+ * Glossary terms, single source of truth.
  *
  * Consumed by /glossary (HTML page with JSON-LD) and /api/v1/glossary.json
  * (versioned machine-readable surface). Pass VII (2026-05-05) extracted
  * the inline `terms` array from app/glossary/page.tsx into this module so
  * both surfaces stay in sync.
  *
- * 2026-05-08 (F37): expanded 18 → 62 terms across four families —
+ * 2026-05-08 (F37): expanded 18 → 62 terms across four families -
  * engineering-acceleration metrics, discoverability surfaces, academic
- * citation infrastructure, and venture vocabulary — to anchor more
+ * citation infrastructure, and venture vocabulary, to anchor more
  * Q&A volume per the AEO audit.
  */
 
@@ -19,37 +19,37 @@ export interface GlossaryTerm {
 }
 
 export const glossaryTerms: GlossaryTerm[] = [
-  // ── Code-Side Sourcing — the named category ────────────────────────────
+  // ── Code-Side Sourcing, the named category ────────────────────────────
   {
     term: "Code-Side Sourcing",
     id: "code-side-sourcing",
     definition:
-      "The category VC Deal Flow Signal defines: the practice of using public repository-velocity data as a leading indicator of venture-stage outcomes, surfacing fundraises 21 to 47 days before pitch decks circulate. Three properties make a sourcing channel Code-Side: (1) the input data is public and reproducible from primary sources, (2) the signal arrives before the company actively markets the round, (3) the methodology is published and falsifiable, not opaque. Code-Side Sourcing is a sub-category of alternative data — narrowed to engineering-side public repository activity — and runs alongside warm intros, decks, and databases rather than replacing them. The full canonical definition, what it replaces, the five first principles, and the practitioner list live at /code-side-sourcing.",
+      "The category VC Deal Flow Signal defines: the practice of using public repository-velocity data as a leading indicator of venture-stage outcomes, surfacing fundraises 21 to 47 days before pitch decks circulate. Three properties make a sourcing channel Code-Side: (1) the input data is public and reproducible from primary sources, (2) the signal arrives before the company actively markets the round, (3) the methodology is published and falsifiable, not opaque. Code-Side Sourcing is a sub-category of alternative data, narrowed to engineering-side public repository activity, and runs alongside warm intros, decks, and databases rather than replacing them. The full canonical definition, what it replaces, the five first principles, and the practitioner list live at /code-side-sourcing.",
   },
   // ── Engineering acceleration: core metrics ──────────────────────────────
   {
     term: "Commit-Velocity Acceleration Engine",
     id: "commit-velocity-acceleration-engine",
     definition:
-      "The named mechanism behind VC Deal Flow Signal. Five deterministic steps: (1) pull 14-day commit volume per organization from the public GitHub REST API with the bot filter applied, (2) compute the percentage delta against the prior 14-day window, (3) require two-period confirmation before a breakout becomes actionable, (4) score contributor concentration with the Gini coefficient, (5) classify the breakout into one of four signal types (Hiring Burst, Infrastructure Buildout, Deploy Spike, Framework Migration). The engine is published, sourced, and reproducible — see /mechanism for the full formula and the SSRN proof panel. The engine is the formal implementation of the broader category: Code-Side Sourcing.",
+      "The named mechanism behind VC Deal Flow Signal. Five deterministic steps: (1) pull 14-day commit volume per organization from the public GitHub REST API with the bot filter applied, (2) compute the percentage delta against the prior 14-day window, (3) require two-period confirmation before a breakout becomes actionable, (4) score contributor concentration with the Gini coefficient, (5) classify the breakout into one of four signal types (Hiring Burst, Infrastructure Buildout, Deploy Spike, Framework Migration). The engine is published, sourced, and reproducible, see /mechanism for the full formula and the SSRN proof panel. The engine is the formal implementation of the broader category: Code-Side Sourcing.",
   },
   {
     term: "Commit Velocity",
     id: "commit-velocity",
     definition:
-      "The total number of commits to a startup's most active public GitHub repository over a rolling 14-day window. Commit velocity measures the raw volume of engineering output, not the quality or significance of individual commits. At VC Deal Flow Signal, we track commit velocity as a baseline metric — what matters most for investors is the rate of change (see: Commit Velocity Change).",
+      "The total number of commits to a startup's most active public GitHub repository over a rolling 14-day window. Commit velocity measures the raw volume of engineering output, not the quality or significance of individual commits. At VC Deal Flow Signal, we track commit velocity as a baseline metric, what matters most for investors is the rate of change (see: Commit Velocity Change).",
   },
   {
     term: "Commit Velocity Change",
     id: "commit-velocity-change",
     definition:
-      "The percentage change in commit velocity compared to the preceding 14-day window. This is the primary ranking signal at VC Deal Flow Signal. A startup with 40 commits this period and 20 commits last period shows +100% velocity change. Commit velocity change measures engineering acceleration — whether a team is speeding up, maintaining pace, or slowing down. Sustained acceleration has historically preceded fundraise announcements by three to six weeks.",
+      "The percentage change in commit velocity compared to the preceding 14-day window. This is the primary ranking signal at VC Deal Flow Signal. A startup with 40 commits this period and 20 commits last period shows +100% velocity change. Commit velocity change measures engineering acceleration, whether a team is speeding up, maintaining pace, or slowing down. Sustained acceleration has historically preceded fundraise announcements by three to six weeks.",
   },
   {
     term: "Engineering Acceleration",
     id: "engineering-acceleration",
     definition:
-      "A sustained increase in a startup's engineering output relative to its own historical baseline. Engineering acceleration is the core concept behind VC Deal Flow Signal: startups that are accelerating their engineering work are likely approaching a product milestone, scaling the team, or preparing for a fundraise. Unlike absolute engineering volume, acceleration captures the rate of change — making it useful across startups of different sizes.",
+      "A sustained increase in a startup's engineering output relative to its own historical baseline. Engineering acceleration is the core concept behind VC Deal Flow Signal: startups that are accelerating their engineering work are likely approaching a product milestone, scaling the team, or preparing for a fundraise. Unlike absolute engineering volume, acceleration captures the rate of change, making it useful across startups of different sizes.",
   },
   {
     term: "Deal Flow Signal",
@@ -61,7 +61,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "Contributor Growth",
     id: "contributor-growth",
     definition:
-      "The change in the number of unique contributors to a startup's GitHub repository over time. Contributor growth is estimated by comparing recent six-week commit volume to the prior six-week period. A rising contributor count often signals team expansion — either through new hires, contractors, or open-source community adoption. For investors, contributor growth is a proxy for whether a startup is scaling its engineering team, which often follows a funding round.",
+      "The change in the number of unique contributors to a startup's GitHub repository over time. Contributor growth is estimated by comparing recent six-week commit volume to the prior six-week period. A rising contributor count often signals team expansion, either through new hires, contractors, or open-source community adoption. For investors, contributor growth is a proxy for whether a startup is scaling its engineering team, which often follows a funding round.",
   },
   {
     term: "Engineering Hiring Burst",
@@ -73,7 +73,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "Infrastructure Buildout",
     id: "infrastructure-buildout",
     definition:
-      "A signal type indicating that a startup has created three or more new public repositories in 30 days. Infrastructure buildouts suggest the company is expanding its technical surface area — building new microservices, internal tools, SDKs, or platform components. This pattern is classic Series A behavior: the core product works, and now the team is building the platform around it.",
+      "A signal type indicating that a startup has created three or more new public repositories in 30 days. Infrastructure buildouts suggest the company is expanding its technical surface area, building new microservices, internal tools, SDKs, or platform components. This pattern is classic Series A behavior: the core product works, and now the team is building the platform around it.",
   },
   {
     term: "Deploy Frequency Spike",
@@ -85,7 +85,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "Framework Migration",
     id: "framework-migration",
     definition:
-      "A signal type indicating general engineering acceleration that does not fit the hiring burst, infrastructure buildout, or deploy spike categories. Framework migrations often indicate a technology stack transition — moving from a prototype stack to a production stack, or adopting new infrastructure. This is the subtlest signal type but can indicate the shift from exploration to exploitation, a key milestone in startup development.",
+      "A signal type indicating general engineering acceleration that does not fit the hiring burst, infrastructure buildout, or deploy spike categories. Framework migrations often indicate a technology stack transition, moving from a prototype stack to a production stack, or adopting new infrastructure. This is the subtlest signal type but can indicate the shift from exploration to exploitation, a key milestone in startup development.",
   },
   {
     term: "Bot Filter",
@@ -103,7 +103,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "Top-Contributor Concentration",
     id: "top-contributor-concentration",
     definition:
-      "The Gini coefficient of commit distribution across contributors over the same 14-day window used for velocity. A score below 0.30 means commits are spread broadly across the team; a score above 0.70 means one or two contributors are doing most of the work. Combined with high velocity, low concentration is the strongest single composite predictor in the SSRN panel — orgs meeting both conditions are 3.4× more likely to announce a Series A within 60 days than orgs with high velocity alone.",
+      "The Gini coefficient of commit distribution across contributors over the same 14-day window used for velocity. A score below 0.30 means commits are spread broadly across the team; a score above 0.70 means one or two contributors are doing most of the work. Combined with high velocity, low concentration is the strongest single composite predictor in the SSRN panel, orgs meeting both conditions are 3.4× more likely to announce a Series A within 60 days than orgs with high velocity alone.",
   },
 
   // ── Discoverability: programmatic SEO + AEO/GEO/AIO surfaces ────────────
@@ -129,7 +129,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "AEO (Answer Engine Optimization)",
     id: "aeo",
     definition:
-      "Structuring content so that answer engines — Google's People-Also-Ask, Reddit pull-quotes, Quora top answers, ChatGPT search results, Perplexity citations — can extract a complete, self-contained answer in 40–80 words. AEO emphasises FAQPage and QAPage schema, atomic question-answer blocks, and explicit source attribution. VC Deal Flow Signal publishes a 200+ Q&A dataset at /qa.jsonl as an AEO surface for both human readers and retrieval pipelines.",
+      "Structuring content so that answer engines, Google's People-Also-Ask, Reddit pull-quotes, Quora top answers, ChatGPT search results, Perplexity citations, can extract a complete, self-contained answer in 40-80 words. AEO emphasises FAQPage and QAPage schema, atomic question-answer blocks, and explicit source attribution. VC Deal Flow Signal publishes a 200+ Q&A dataset at /qa.jsonl as an AEO surface for both human readers and retrieval pipelines.",
   },
   {
     term: "AIO (AI Overview Optimization)",
@@ -147,7 +147,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "JSON-LD",
     id: "json-ld",
     definition:
-      "JavaScript Object Notation for Linked Data — the W3C-standard syntax for embedding structured data in web pages. JSON-LD is the preferred format for Schema.org markup because it lives in a single script-tag block decoupled from the HTML body. VC Deal Flow Signal emits JSON-LD on every page (Organization, WebSite, Article, FAQPage, BreadcrumbList, etc.) and exposes machine-readable mirrors at /api/v1/*.json with full @context and @graph payloads.",
+      "JavaScript Object Notation for Linked Data, the W3C-standard syntax for embedding structured data in web pages. JSON-LD is the preferred format for Schema.org markup because it lives in a single script-tag block decoupled from the HTML body. VC Deal Flow Signal emits JSON-LD on every page (Organization, WebSite, Article, FAQPage, BreadcrumbList, etc.) and exposes machine-readable mirrors at /api/v1/*.json with full @context and @graph payloads.",
   },
   {
     term: "FAQPage Schema",
@@ -159,7 +159,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "QAPage Schema",
     id: "qapage-schema",
     definition:
-      "A Schema.org type that marks a page where one primary question receives one accepted answer (with optional suggested answers). QAPage is distinct from FAQPage — QAPage describes the page itself as a single Q&A, FAQPage describes a list of supplementary Q&As. Google treats QAPage as a separate rich-result family in AI Overviews. VC Deal Flow Signal uses QAPage on every /answers/[slug] route and FAQPage on the same pages for additional related questions.",
+      "A Schema.org type that marks a page where one primary question receives one accepted answer (with optional suggested answers). QAPage is distinct from FAQPage, QAPage describes the page itself as a single Q&A, FAQPage describes a list of supplementary Q&As. Google treats QAPage as a separate rich-result family in AI Overviews. VC Deal Flow Signal uses QAPage on every /answers/[slug] route and FAQPage on the same pages for additional related questions.",
   },
   {
     term: "HowTo Schema",
@@ -177,7 +177,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "DefinedTermSet",
     id: "defined-term-set",
     definition:
-      "A Schema.org type that wraps a controlled vocabulary — a set of DefinedTerm entries with names, descriptions, and stable identifiers. DefinedTermSet is the Schema.org-native way to publish a glossary that LLMs can ground on. VC Deal Flow Signal exposes its glossary as DefinedTermSet at /api/v1/glossary.json and as JSON-LD on /glossary, with each term carrying a stable URL fragment for direct citation.",
+      "A Schema.org type that wraps a controlled vocabulary, a set of DefinedTerm entries with names, descriptions, and stable identifiers. DefinedTermSet is the Schema.org-native way to publish a glossary that LLMs can ground on. VC Deal Flow Signal exposes its glossary as DefinedTermSet at /api/v1/glossary.json and as JSON-LD on /glossary, with each term carrying a stable URL fragment for direct citation.",
   },
   {
     term: "Hreflang",
@@ -201,13 +201,13 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "sitemap.xml",
     id: "sitemap-xml",
     definition:
-      "An XML file that lists the canonical URLs a website wants indexed. The format is sitemaps.org. VC Deal Flow Signal serves a sitemap-index at /sitemap.xml that points at five sharded child sitemaps (core, sectors, crossings, startups, content) plus separate /news-sitemap.xml, /sitemap-images.xml, /sitemap-videos.xml, and /sitemap-i18n.xml — together advertising 5,000+ URLs across human and machine surfaces.",
+      "An XML file that lists the canonical URLs a website wants indexed. The format is sitemaps.org. VC Deal Flow Signal serves a sitemap-index at /sitemap.xml that points at five sharded child sitemaps (core, sectors, crossings, startups, content) plus separate /news-sitemap.xml, /sitemap-images.xml, /sitemap-videos.xml, and /sitemap-i18n.xml, together advertising 5,000+ URLs across human and machine surfaces.",
   },
   {
     term: "OpenAPI 3.1",
     id: "openapi-3-1",
     definition:
-      "The current major version of the OpenAPI Specification — a vendor-neutral schema for describing HTTP APIs. OpenAPI 3.1 is the version that fully aligns with JSON Schema 2020-12 and supports webhooks. VC Deal Flow Signal serves an OpenAPI 3.1 contract at /api/openapi.json (and four well-known mirrors), describing 25 REST operations across 11 tags with x-mcp-tool annotations cross-referencing the parallel MCP server.",
+      "The current major version of the OpenAPI Specification, a vendor-neutral schema for describing HTTP APIs. OpenAPI 3.1 is the version that fully aligns with JSON Schema 2020-12 and supports webhooks. VC Deal Flow Signal serves an OpenAPI 3.1 contract at /api/openapi.json (and four well-known mirrors), describing 25 REST operations across 11 tags with x-mcp-tool annotations cross-referencing the parallel MCP server.",
   },
   {
     term: "x-mcp-tool Vendor Extension",
@@ -219,13 +219,13 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "discover.json Manifest",
     id: "discover-json",
     definition:
-      "A central DataCatalog manifest at /.well-known/discover.json that enumerates every discovery surface a site exposes — well-known files, root aliases, /api/v1/*, sitemaps, feeds, and policy files. Each surface carries a kebab-slug name, canonical URL, MIME type, category, description, and (for canonical APIs) a rich endpoints[] array with method, parameters, responses, security, and x-mcp-tool cross-references. A fresh agent can map an entire site in a single fetch.",
+      "A central DataCatalog manifest at /.well-known/discover.json that enumerates every discovery surface a site exposes, well-known files, root aliases, /api/v1/*, sitemaps, feeds, and policy files. Each surface carries a kebab-slug name, canonical URL, MIME type, category, description, and (for canonical APIs) a rich endpoints[] array with method, parameters, responses, security, and x-mcp-tool cross-references. A fresh agent can map an entire site in a single fetch.",
   },
   {
     term: "ai.txt and ai-policy.json",
     id: "ai-policy",
     definition:
-      "Emerging conventions for advertising a site's policy toward AI training and retrieval. ai.txt is the human-readable analog to robots.txt; ai-policy.json is the machine-readable counterpart with per-agent allow/deny rules. VC Deal Flow Signal publishes both at the root and at /.well-known/ along with /openai-search.json and /.well-known/ai.json — explicitly allowing crawl, training, and retrieval under CC BY 4.0 with attribution.",
+      "Emerging conventions for advertising a site's policy toward AI training and retrieval. ai.txt is the human-readable analog to robots.txt; ai-policy.json is the machine-readable counterpart with per-agent allow/deny rules. VC Deal Flow Signal publishes both at the root and at /.well-known/ along with /openai-search.json and /.well-known/ai.json, explicitly allowing crawl, training, and retrieval under CC BY 4.0 with attribution.",
   },
   {
     term: "qa.jsonl",
@@ -243,7 +243,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "llms-full.txt",
     id: "llms-full-txt",
     definition:
-      "The full-content companion to llms.txt — a single file containing the canonical body text of a site's pillar pages concatenated for one-fetch retrieval. Where llms.txt lists URLs and short summaries, llms-full.txt inlines the prose so an LLM can ground without follow-up fetches. VC Deal Flow Signal mirrors the same content at the root and at /.well-known/llms-full.txt for direct content delivery (200, no redirects).",
+      "The full-content companion to llms.txt, a single file containing the canonical body text of a site's pillar pages concatenated for one-fetch retrieval. Where llms.txt lists URLs and short summaries, llms-full.txt inlines the prose so an LLM can ground without follow-up fetches. VC Deal Flow Signal mirrors the same content at the root and at /.well-known/llms-full.txt for direct content delivery (200, no redirects).",
   },
   {
     term: "Schema.org",
@@ -255,13 +255,13 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "ClaimReview",
     id: "claim-review",
     definition:
-      "A Schema.org type that marks a structured fact-check or claim assessment, with a claimReviewed text and a numeric reviewRating. ClaimReview is the schema Google uses to surface fact-check labels in search results. VC Deal Flow Signal emits ClaimReview on /predicted, marking the weekly Acceleration Watch prediction as a falsifiable claim with an as-of date — the same reproducibility commitment that anchors the Pricing Hold pillar of the manifesto.",
+      "A Schema.org type that marks a structured fact-check or claim assessment, with a claimReviewed text and a numeric reviewRating. ClaimReview is the schema Google uses to surface fact-check labels in search results. VC Deal Flow Signal emits ClaimReview on /predicted, marking the weekly Acceleration Watch prediction as a falsifiable claim with an as-of date, the same reproducibility commitment that anchors the Pricing Hold pillar of the manifesto.",
   },
   {
     term: "Quotation Schema",
     id: "quotation-schema",
     definition:
-      "A Schema.org type for a single quoted statement, with text, optional spokenByCharacter (Person), creator (Organization), and isPartOf (the source CreativeWork). Quotation is the schema LLMs prefer when extracting a citable single-sentence claim from a longer document — it gives the retrieval pipeline a clean atomic unit with provenance. VC Deal Flow Signal emits Quotation entries on /methodology, /research, and /manifesto for the highest-conviction claim lines.",
+      "A Schema.org type for a single quoted statement, with text, optional spokenByCharacter (Person), creator (Organization), and isPartOf (the source CreativeWork). Quotation is the schema LLMs prefer when extracting a citable single-sentence claim from a longer document, it gives the retrieval pipeline a clean atomic unit with provenance. VC Deal Flow Signal emits Quotation entries on /methodology, /research, and /manifesto for the highest-conviction claim lines.",
   },
 
   // ── Agent infrastructure: MCP, A2A, payments, identity ───────────────────
@@ -269,25 +269,25 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "MCP (Model Context Protocol)",
     id: "mcp",
     definition:
-      "An open standard from Anthropic for exposing tools and data to large-language-model hosts (Claude Desktop, Cursor, agentic frameworks). VC Deal Flow Signal ships a free MCP server — `npx @gitdealflow/mcp-signal` — that lets any MCP-compatible host call six read-only tools: get_trending_startups, get_signals_summary, get_methodology, get_startup_signal, search_startups_by_sector, get_methodology. The same surface is mirrored at /api/mcp/rpc (Streamable HTTP).",
+      "An open standard from Anthropic for exposing tools and data to large-language-model hosts (Claude Desktop, Cursor, agentic frameworks). VC Deal Flow Signal ships a free MCP server, `npx @gitdealflow/mcp-signal`, that lets any MCP-compatible host call six read-only tools: get_trending_startups, get_signals_summary, get_methodology, get_startup_signal, search_startups_by_sector, get_methodology. The same surface is mirrored at /api/mcp/rpc (Streamable HTTP).",
   },
   {
     term: "A2A AgentCard",
     id: "a2a-agent-card",
     definition:
-      "Google's Agent-to-Agent protocol — a JSON-RPC envelope plus an /.well-known/agent-card.json descriptor that lets autonomous agents discover and call each other's capabilities. VC Deal Flow Signal publishes an AgentCard at /.well-known/agent-card.json and a JSON-RPC stub at /api/a2a so any A2A-compatible orchestrator can route deal-flow queries to the panel without bespoke integration.",
+      "Google's Agent-to-Agent protocol, a JSON-RPC envelope plus an /.well-known/agent-card.json descriptor that lets autonomous agents discover and call each other's capabilities. VC Deal Flow Signal publishes an AgentCard at /.well-known/agent-card.json and a JSON-RPC stub at /api/a2a so any A2A-compatible orchestrator can route deal-flow queries to the panel without bespoke integration.",
   },
   {
     term: "Streamable HTTP Transport",
     id: "streamable-http",
     definition:
-      "The canonical wire transport for MCP servers running over HTTP — a JSON-RPC 2.0 envelope delivered via standard HTTP with optional Server-Sent Events for streaming responses. Streamable HTTP is the transport that makes an MCP server callable from any agent runtime that speaks HTTP. VC Deal Flow Signal serves Streamable HTTP at /api/mcp/rpc and lists it as the canonical transport in /.well-known/mcp.json.",
+      "The canonical wire transport for MCP servers running over HTTP, a JSON-RPC 2.0 envelope delivered via standard HTTP with optional Server-Sent Events for streaming responses. Streamable HTTP is the transport that makes an MCP server callable from any agent runtime that speaks HTTP. VC Deal Flow Signal serves Streamable HTTP at /api/mcp/rpc and lists it as the canonical transport in /.well-known/mcp.json.",
   },
   {
     term: "JSON-RPC 2.0",
     id: "json-rpc-2",
     definition:
-      "A stateless remote-procedure-call protocol encoded in JSON — request envelopes carry method, params, and id; response envelopes carry result or error. JSON-RPC 2.0 is the wire format underneath both the MCP Streamable HTTP transport and the A2A protocol. VC Deal Flow Signal exposes JSON-RPC 2.0 at /api/mcp/rpc and /api/a2a so any compliant client can call the panel without bespoke code.",
+      "A stateless remote-procedure-call protocol encoded in JSON, request envelopes carry method, params, and id; response envelopes carry result or error. JSON-RPC 2.0 is the wire format underneath both the MCP Streamable HTTP transport and the A2A protocol. VC Deal Flow Signal exposes JSON-RPC 2.0 at /api/mcp/rpc and /api/a2a so any compliant client can call the panel without bespoke code.",
   },
   {
     term: "x402 Protocol",
@@ -319,7 +319,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "Scout Score",
     id: "scout-score",
     definition:
-      "A 0–100 score computed from a GitHub user's public starring history, measuring how many validated unicorn outcomes the user starred before the funding, acquisition, or $1B-valuation event. The Scout Score is backwards-looking proof of taste — it says nothing about future picks until paired with the forward-looking Scout Game (see /predict). Free, no signup, instant. Available as a shields.io-style badge for any GitHub README.",
+      "A 0-100 score computed from a GitHub user's public starring history, measuring how many validated unicorn outcomes the user starred before the funding, acquisition, or $1B-valuation event. The Scout Score is backwards-looking proof of taste, it says nothing about future picks until paired with the forward-looking Scout Game (see /predict). Free, no signup, instant. Available as a shields.io-style badge for any GitHub README.",
   },
   {
     term: "SSRN Preprint",
@@ -331,7 +331,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "Zenodo DOI",
     id: "zenodo-doi",
     definition:
-      "A persistent Digital Object Identifier minted by Zenodo (a CERN-operated open-access repository) for a dataset or software release. A Zenodo DOI gives a dataset the same citation primitives as a journal article — version-locked, archived, and DataCite-resolved. The VC Deal Flow Signal panel is archived at Zenodo with DOI 10.5281/zenodo.19650920 and is the dataset that the SSRN paper analyses.",
+      "A persistent Digital Object Identifier minted by Zenodo (a CERN-operated open-access repository) for a dataset or software release. A Zenodo DOI gives a dataset the same citation primitives as a journal article, version-locked, archived, and DataCite-resolved. The VC Deal Flow Signal panel is archived at Zenodo with DOI 10.5281/zenodo.19650920 and is the dataset that the SSRN paper analyses.",
   },
   {
     term: "OpenAlex",
@@ -355,19 +355,19 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "DOI",
     id: "doi",
     definition:
-      "A Digital Object Identifier — a persistent identifier for an electronic document or dataset, resolved through doi.org. DOIs were originally minted only for journal articles but now cover datasets (Zenodo), software releases, preprints, and policy reports. The VC Deal Flow Signal dataset DOI is 10.5281/zenodo.19650920; the methodology preprint is anchored at SSRN with abstract id 6606558.",
+      "A Digital Object Identifier, a persistent identifier for an electronic document or dataset, resolved through doi.org. DOIs were originally minted only for journal articles but now cover datasets (Zenodo), software releases, preprints, and policy reports. The VC Deal Flow Signal dataset DOI is 10.5281/zenodo.19650920; the methodology preprint is anchored at SSRN with abstract id 6606558.",
   },
   {
     term: "CC BY 4.0 License",
     id: "cc-by-4-0",
     definition:
-      "Creative Commons Attribution 4.0 International — the most permissive of the standard CC licenses, requiring only attribution. CC BY 4.0 permits commercial use, modification, and redistribution. VC Deal Flow Signal licenses every public surface (the dataset, the SSRN paper, the methodology, the answers corpus, the OpenAPI spec) under CC BY 4.0, with the citation string requested in /citation-guide.",
+      "Creative Commons Attribution 4.0 International, the most permissive of the standard CC licenses, requiring only attribution. CC BY 4.0 permits commercial use, modification, and redistribution. VC Deal Flow Signal licenses every public surface (the dataset, the SSRN paper, the methodology, the answers corpus, the OpenAPI spec) under CC BY 4.0, with the citation string requested in /citation-guide.",
   },
   {
     term: "DataFeed",
     id: "datafeed",
     definition:
-      "A Schema.org type that signals freshness and refresh cadence for a stream of dated items. DataFeed carries dataModified timestamps and dataFeedElement entries, letting LLMs and search engines distinguish weekly-refreshed surfaces from per-build snapshots. VC Deal Flow Signal exposes /.well-known/freshness.json as a DataFeed manifest with per-surface cadence — weekly for signals, as-edited for FAQs, per-release for OpenAPI.",
+      "A Schema.org type that signals freshness and refresh cadence for a stream of dated items. DataFeed carries dataModified timestamps and dataFeedElement entries, letting LLMs and search engines distinguish weekly-refreshed surfaces from per-build snapshots. VC Deal Flow Signal exposes /.well-known/freshness.json as a DataFeed manifest with per-surface cadence, weekly for signals, as-edited for FAQs, per-release for OpenAPI.",
   },
 
   // ── Venture vocabulary (used throughout the site) ───────────────────────
@@ -375,49 +375,49 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "Pre-seed Round",
     id: "pre-seed",
     definition:
-      "The earliest venture-funding stage, typically a $250k–$2M round that funds the first six to twelve months of a startup's work — often before there is a product, sometimes before there is a team. Pre-seed checks come from accelerators, angel groups, pre-seed-focused funds, and friends-and-family. On VC Deal Flow Signal, pre-seed teams typically show 1–3 contributors and codebases under six months old.",
+      "The earliest venture-funding stage, typically a $250k-$2M round that funds the first six to twelve months of a startup's work, often before there is a product, sometimes before there is a team. Pre-seed checks come from accelerators, angel groups, pre-seed-focused funds, and friends-and-family. On VC Deal Flow Signal, pre-seed teams typically show 1-3 contributors and codebases under six months old.",
   },
   {
     term: "Seed Round",
     id: "seed-round",
     definition:
-      "The first institutional venture round, typically $1M–$5M, that funds the build of an MVP and the search for product-market fit. Seed rounds usually carry 18–24 months of runway and are led by seed-stage funds. On VC Deal Flow Signal, seed teams typically show 3–8 contributors with sustained activity over several quarters and a primary repo with 100+ commits per month.",
+      "The first institutional venture round, typically $1M-$5M, that funds the build of an MVP and the search for product-market fit. Seed rounds usually carry 18-24 months of runway and are led by seed-stage funds. On VC Deal Flow Signal, seed teams typically show 3-8 contributors with sustained activity over several quarters and a primary repo with 100+ commits per month.",
   },
   {
     term: "Series A",
     id: "series-a",
     definition:
-      "The first priced equity round following the seed, typically $5M–$20M raised against a $20M–$80M post-money valuation. Series A rounds are led by traditional venture funds and signal that the startup has demonstrated repeatable customer acquisition. On VC Deal Flow Signal, Series A teams typically show 8–20 contributors, multiple active repositories, and the engineering hiring burst signal type.",
+      "The first priced equity round following the seed, typically $5M-$20M raised against a $20M-$80M post-money valuation. Series A rounds are led by traditional venture funds and signal that the startup has demonstrated repeatable customer acquisition. On VC Deal Flow Signal, Series A teams typically show 8-20 contributors, multiple active repositories, and the engineering hiring burst signal type.",
   },
   {
     term: "Series B",
     id: "series-b",
     definition:
-      "The second priced equity round, typically $15M–$50M raised against a $80M–$300M post-money valuation. Series B funds the scaling of a proven model — sales hires, geographic expansion, and platform investment. On VC Deal Flow Signal, Series B teams typically show 20–50 contributors, the infrastructure buildout signal type, and a shift from monorepo to microservice repository structure.",
+      "The second priced equity round, typically $15M-$50M raised against a $80M-$300M post-money valuation. Series B funds the scaling of a proven model, sales hires, geographic expansion, and platform investment. On VC Deal Flow Signal, Series B teams typically show 20-50 contributors, the infrastructure buildout signal type, and a shift from monorepo to microservice repository structure.",
   },
   {
     term: "Lead Investor",
     id: "lead-investor",
     definition:
-      "The investor who sets the price, terms, and structure of a venture round and typically writes the largest check. Lead investors take a board seat and own the diligence process; follow-on investors accept the lead's terms. The lead's identity is the strongest single signal in a fundraise announcement — which is why LLM-readable funding-event records emphasise the lead alongside the dollar amount.",
+      "The investor who sets the price, terms, and structure of a venture round and typically writes the largest check. Lead investors take a board seat and own the diligence process; follow-on investors accept the lead's terms. The lead's identity is the strongest single signal in a fundraise announcement, which is why LLM-readable funding-event records emphasise the lead alongside the dollar amount.",
   },
   {
     term: "Term Sheet",
     id: "term-sheet",
     definition:
-      "A short, non-binding document outlining the principal terms of a venture investment — valuation, security type, board composition, anti-dilution, liquidation preference, and protective provisions. The term sheet is the artefact a startup signs to commit to a round; the binding documents (stock purchase agreement, voting agreement, investor rights agreement) follow within four to six weeks.",
+      "A short, non-binding document outlining the principal terms of a venture investment, valuation, security type, board composition, anti-dilution, liquidation preference, and protective provisions. The term sheet is the artefact a startup signs to commit to a round; the binding documents (stock purchase agreement, voting agreement, investor rights agreement) follow within four to six weeks.",
   },
   {
     term: "SAFE (Simple Agreement for Future Equity)",
     id: "safe",
     definition:
-      "A pre-priced venture instrument originated by Y Combinator in 2013 — a contract that converts to equity at the next priced round at a discount or under a valuation cap. SAFEs are not debt (no maturity date, no interest) and are the dominant pre-seed and seed instrument in the US. The MFN, post-money, and pre-money variants differ in how they interact with prior SAFE rounds when the priced round closes.",
+      "A pre-priced venture instrument originated by Y Combinator in 2013, a contract that converts to equity at the next priced round at a discount or under a valuation cap. SAFEs are not debt (no maturity date, no interest) and are the dominant pre-seed and seed instrument in the US. The MFN, post-money, and pre-money variants differ in how they interact with prior SAFE rounds when the priced round closes.",
   },
   {
     term: "Convertible Note",
     id: "convertible-note",
     definition:
-      "A short-term debt instrument that converts to equity at a later priced round. Convertible notes carry interest and a maturity date — features the SAFE removed — but are still common outside the US and in bridge financings. Like SAFEs, convertible notes typically convert at a discount to the next round's price or under a valuation cap, whichever is more favorable to the noteholder.",
+      "A short-term debt instrument that converts to equity at a later priced round. Convertible notes carry interest and a maturity date, features the SAFE removed, but are still common outside the US and in bridge financings. Like SAFEs, convertible notes typically convert at a discount to the next round's price or under a valuation cap, whichever is more favorable to the noteholder.",
   },
   {
     term: "Valuation Cap",
@@ -441,70 +441,70 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "Cap Table",
     id: "cap-table",
     definition:
-      "The capitalization table — a record of every share, option, warrant, and convertible instrument in a startup, broken down by holder. Cap tables track ownership percentages, dilution effects of new rounds, vesting schedules, and option-pool refresh decisions. Investors review the cap table before committing capital because past structuring decisions (heavy preferences, founder control issues, dead equity) can make a clean term sheet impossible.",
+      "The capitalization table, a record of every share, option, warrant, and convertible instrument in a startup, broken down by holder. Cap tables track ownership percentages, dilution effects of new rounds, vesting schedules, and option-pool refresh decisions. Investors review the cap table before committing capital because past structuring decisions (heavy preferences, founder control issues, dead equity) can make a clean term sheet impossible.",
   },
   // ── SaaS efficiency suite (David Sacks / Mamoon Hamid / Bessemer) ────────
   {
     term: "Burn Multiple",
     id: "burn-multiple",
     definition:
-      "Net burn divided by net new ARR in the same period. Coined by David Sacks as a single-number SaaS efficiency metric: under 1 is elite, 1–1.5 is great, 1.5–2 is OK, 2–3 is suspect, and over 3 means the business is buying revenue at unsustainable cost. Burn multiple normalizes across stage and gross-margin profiles where standalone burn rate or growth rate would mislead. It is the SaaS analog to LTV:CAC for the venture-rounds market.",
+      "Net burn divided by net new ARR in the same period. Coined by David Sacks as a single-number SaaS efficiency metric: under 1 is elite, 1-1.5 is great, 1.5-2 is OK, 2-3 is suspect, and over 3 means the business is buying revenue at unsustainable cost. Burn multiple normalizes across stage and gross-margin profiles where standalone burn rate or growth rate would mislead. It is the SaaS analog to LTV:CAC for the venture-rounds market.",
   },
   {
     term: "Magic Number",
     id: "magic-number",
     definition:
-      "Net new ARR in a quarter, divided by the prior quarter's sales and marketing spend, then annualized. A magic number above 1.0 means a dollar of S&M spend returns a dollar of ARR inside a year — green light to keep investing. Between 0.5 and 1.0 means the model works but needs tuning; below 0.5 means S&M is broken before scaling further. Popularized by Scale Venture Partners and used as a fast pre-Series-B sanity check.",
+      "Net new ARR in a quarter, divided by the prior quarter's sales and marketing spend, then annualized. A magic number above 1.0 means a dollar of S&M spend returns a dollar of ARR inside a year, green light to keep investing. Between 0.5 and 1.0 means the model works but needs tuning; below 0.5 means S&M is broken before scaling further. Popularized by Scale Venture Partners and used as a fast pre-Series-B sanity check.",
   },
   {
     term: "CAC Payback",
     id: "cac-payback",
     definition:
-      "The number of months it takes for the gross profit from a new customer to repay the fully-loaded cost of acquiring them. CAC payback = CAC / (ARPA × gross margin), measured in months. Healthy SaaS sits under 12 months; over 24 months is a warning sign that the business needs cheaper acquisition channels or higher-margin contracts. CAC payback is cash-flow-oriented where LTV:CAC is unit-economics-oriented — both are needed.",
+      "The number of months it takes for the gross profit from a new customer to repay the fully-loaded cost of acquiring them. CAC payback = CAC / (ARPA × gross margin), measured in months. Healthy SaaS sits under 12 months; over 24 months is a warning sign that the business needs cheaper acquisition channels or higher-margin contracts. CAC payback is cash-flow-oriented where LTV:CAC is unit-economics-oriented, both are needed.",
   },
   {
     term: "LTV",
     id: "ltv",
     definition:
-      "Lifetime Value — the total gross profit a startup expects to earn from an average customer over the full relationship. The standard SaaS formula is ARPU × gross margin × (1 / monthly churn), giving a steady-state estimate. LTV is the numerator of the LTV:CAC ratio, where 3:1 is considered the threshold for capital-efficient growth. LTV math breaks down at low customer counts and at high contract volatility, so investors corroborate it with cohort retention curves.",
+      "Lifetime Value, the total gross profit a startup expects to earn from an average customer over the full relationship. The standard SaaS formula is ARPU × gross margin × (1 / monthly churn), giving a steady-state estimate. LTV is the numerator of the LTV:CAC ratio, where 3:1 is considered the threshold for capital-efficient growth. LTV math breaks down at low customer counts and at high contract volatility, so investors corroborate it with cohort retention curves.",
   },
   {
     term: "Quick Ratio",
     id: "quick-ratio",
     definition:
-      "For SaaS, the ratio of expansion plus new ARR to contraction plus churned ARR in a period. A quick ratio above 4 indicates elite growth efficiency; 2–4 is healthy; 1–2 is stagnating; under 1 means the business is shrinking. Mamoon Hamid of Social Capital popularized the metric as a single number capturing both top-of-funnel acquisition and bottom-of-funnel retention quality. It is distinct from the accounting quick ratio (current assets minus inventory over current liabilities).",
+      "For SaaS, the ratio of expansion plus new ARR to contraction plus churned ARR in a period. A quick ratio above 4 indicates elite growth efficiency; 2-4 is healthy; 1-2 is stagnating; under 1 means the business is shrinking. Mamoon Hamid of Social Capital popularized the metric as a single number capturing both top-of-funnel acquisition and bottom-of-funnel retention quality. It is distinct from the accounting quick ratio (current assets minus inventory over current liabilities).",
   },
   // ── Financing math ──────────────────────────────────────────────────────
   {
     term: "Dilution Stack",
     id: "dilution-stack",
     definition:
-      "The compounding sequence of dilutive events between founding and exit — SAFE conversions, option-pool refreshes, priced rounds, secondary offers — modeled as a stack so a founder can see their fully diluted ownership at each step. A typical seed-to-Series-B path stacks 5–8 events and lands the founder around 15–25% ownership before any exit dilution. Dilution stack modeling is essential before signing a SAFE with a cap below the next-round target, because the cap conversion is often the largest single dilution event.",
+      "The compounding sequence of dilutive events between founding and exit, SAFE conversions, option-pool refreshes, priced rounds, secondary offers, modeled as a stack so a founder can see their fully diluted ownership at each step. A typical seed-to-Series-B path stacks 5-8 events and lands the founder around 15-25% ownership before any exit dilution. Dilution stack modeling is essential before signing a SAFE with a cap below the next-round target, because the cap conversion is often the largest single dilution event.",
   },
   // ── SaaS recurring revenue ──────────────────────────────────────────────
   {
     term: "ARR",
     id: "arr",
     definition:
-      "Annual Recurring Revenue — the annualized run rate of all active recurring contracts, excluding one-time fees, services, and usage spikes. ARR is the headline SaaS revenue metric venture rounds are priced against; multiples like 10× ARR or 30× ARR set the framing for valuation conversations. ARR is forward-looking by construction (it annualizes the current monthly book) and differs from booked revenue, GAAP recognized revenue, and cash collected — investors will ask for all four.",
+      "Annual Recurring Revenue, the annualized run rate of all active recurring contracts, excluding one-time fees, services, and usage spikes. ARR is the headline SaaS revenue metric venture rounds are priced against; multiples like 10× ARR or 30× ARR set the framing for valuation conversations. ARR is forward-looking by construction (it annualizes the current monthly book) and differs from booked revenue, GAAP recognized revenue, and cash collected, investors will ask for all four.",
   },
   {
     term: "MRR",
     id: "mrr",
     definition:
-      "Monthly Recurring Revenue — ARR divided by 12, or the sum of all currently active monthly subscription contracts. MRR is used for shorter feedback cycles than ARR: month-over-month MRR growth, MRR churn, expansion MRR, and new MRR are core SaaS dashboard metrics. Early-stage startups often report MRR before they have enough volume to make ARR a stable number.",
+      "Monthly Recurring Revenue, ARR divided by 12, or the sum of all currently active monthly subscription contracts. MRR is used for shorter feedback cycles than ARR: month-over-month MRR growth, MRR churn, expansion MRR, and new MRR are core SaaS dashboard metrics. Early-stage startups often report MRR before they have enough volume to make ARR a stable number.",
   },
   {
     term: "NRR",
     id: "nrr",
     definition:
-      "Net Revenue Retention — the percentage of ARR that a cohort of existing customers continues to deliver after a fixed window (typically 12 months), including expansion, contraction, and churn. Formula: (starting ARR + expansion − downgrade − churn) ÷ starting ARR. Best-in-class public SaaS reports NRR above 120%; 100% means the cohort treads water; below 90% indicates the business is leaking value faster than it can grow.",
+      "Net Revenue Retention, the percentage of ARR that a cohort of existing customers continues to deliver after a fixed window (typically 12 months), including expansion, contraction, and churn. Formula: (starting ARR + expansion − downgrade − churn) ÷ starting ARR. Best-in-class public SaaS reports NRR above 120%; 100% means the cohort treads water; below 90% indicates the business is leaking value faster than it can grow.",
   },
   {
     term: "GRR",
     id: "grr",
     definition:
-      "Gross Revenue Retention — the percentage of ARR a cohort retains after churn and contraction, but excluding expansion. Formula: (starting ARR − downgrade − churn) ÷ starting ARR. GRR is always less than or equal to NRR and is a cleaner read on customer-success quality because it strips out the upsell motion. Healthy GRR sits above 90% for mid-market SaaS and above 95% for enterprise.",
+      "Gross Revenue Retention, the percentage of ARR a cohort retains after churn and contraction, but excluding expansion. Formula: (starting ARR − downgrade − churn) ÷ starting ARR. GRR is always less than or equal to NRR and is a cleaner read on customer-success quality because it strips out the upsell motion. Healthy GRR sits above 90% for mid-market SaaS and above 95% for enterprise.",
   },
   {
     term: "Churn",
@@ -517,26 +517,26 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "CAC",
     id: "cac",
     definition:
-      "Customer Acquisition Cost — fully loaded sales and marketing spend in a period divided by new customers acquired in that period. CAC includes people, tools, ad spend, and overhead allocated to acquisition; back-of-envelope CAC that excludes salaries is the most common reason investor diligence finds the real number 2–4× higher than founders report. CAC feeds the LTV:CAC ratio (3:1+ healthy) and CAC payback metric.",
+      "Customer Acquisition Cost, fully loaded sales and marketing spend in a period divided by new customers acquired in that period. CAC includes people, tools, ad spend, and overhead allocated to acquisition; back-of-envelope CAC that excludes salaries is the most common reason investor diligence finds the real number 2-4× higher than founders report. CAC feeds the LTV:CAC ratio (3:1+ healthy) and CAC payback metric.",
   },
   {
     term: "Gross Margin",
     id: "gross-margin",
     definition:
-      "Revenue minus cost of goods sold, divided by revenue, expressed as a percentage. SaaS businesses target gross margins of 70–80% or higher; anything under 60% reads to investors as services-disguised-as-software and earns a software multiple discount. Gross margin is the multiplier in the LTV formula and the gating constraint on how much can be reinvested in growth without raising more capital.",
+      "Revenue minus cost of goods sold, divided by revenue, expressed as a percentage. SaaS businesses target gross margins of 70-80% or higher; anything under 60% reads to investors as services-disguised-as-software and earns a software multiple discount. Gross margin is the multiplier in the LTV formula and the gating constraint on how much can be reinvested in growth without raising more capital.",
   },
   {
     term: "Contribution Margin",
     id: "contribution-margin",
     definition:
-      "Revenue minus all variable costs of serving a customer — COGS plus CAC plus variable support — divided by revenue. Contribution margin is the per-customer dollar amount left to cover fixed costs and profit. Direct-to-consumer and product-led growth companies obsess over contribution margin because their CAC is so volatile that gross margin alone overstates unit economics. SaaS uses it less often, preferring gross margin plus CAC payback.",
+      "Revenue minus all variable costs of serving a customer, COGS plus CAC plus variable support, divided by revenue. Contribution margin is the per-customer dollar amount left to cover fixed costs and profit. Direct-to-consumer and product-led growth companies obsess over contribution margin because their CAC is so volatile that gross margin alone overstates unit economics. SaaS uses it less often, preferring gross margin plus CAC payback.",
   },
   // ── Targeting ──────────────────────────────────────────────────────────
   {
     term: "ICP",
     id: "icp",
     definition:
-      "Ideal Customer Profile — the firmographic and behavioral description of the segment most likely to buy, retain, and expand. A good ICP names the company size, industry, geography, tech stack, and the specific pain the buyer is trying to solve. Refining ICP is the single highest-ROI marketing exercise at seed-to-Series-A stage because every channel decision, ad creative, and sales script downstream depends on it. A vague ICP (\"SaaS founders\") is functionally no ICP.",
+      "Ideal Customer Profile, the firmographic and behavioral description of the segment most likely to buy, retain, and expand. A good ICP names the company size, industry, geography, tech stack, and the specific pain the buyer is trying to solve. Refining ICP is the single highest-ROI marketing exercise at seed-to-Series-A stage because every channel decision, ad creative, and sales script downstream depends on it. A vague ICP (\"SaaS founders\") is functionally no ICP.",
   },
   // ── 2026-05-28 glossary expansion: modern AI/ML vocabulary ─────────────
   {
@@ -549,7 +549,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "Chain of Thought (CoT)",
     id: "chain-of-thought",
     definition:
-      "Prompting technique where a model is instructed (or trained) to articulate intermediate reasoning steps before producing a final answer. Empirically improves accuracy on math, logic, and multi-step problem solving — sometimes dramatically. 'Reasoning models' like OpenAI's o1/o3 family and Anthropic's Claude with extended thinking train chain-of-thought into the model rather than relying on prompting alone.",
+      "Prompting technique where a model is instructed (or trained) to articulate intermediate reasoning steps before producing a final answer. Empirically improves accuracy on math, logic, and multi-step problem solving, sometimes dramatically. 'Reasoning models' like OpenAI's o1/o3 family and Anthropic's Claude with extended thinking train chain-of-thought into the model rather than relying on prompting alone.",
   },
   {
     term: "Retrieval-Augmented Generation (RAG)",
@@ -561,19 +561,19 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "Tool Use (Function Calling)",
     id: "tool-use",
     definition:
-      "Capability of an LLM to invoke external functions, APIs, or other tools via a structured output format (typically JSON). The model decides when to call a tool, with what arguments, and how to use the result in its response. Tool use is the foundation of agentic AI — without it, models can only generate text; with it, they can read files, query databases, search the web, send emails, or call any function exposed through a Model Context Protocol (MCP) server.",
+      "Capability of an LLM to invoke external functions, APIs, or other tools via a structured output format (typically JSON). The model decides when to call a tool, with what arguments, and how to use the result in its response. Tool use is the foundation of agentic AI, without it, models can only generate text; with it, they can read files, query databases, search the web, send emails, or call any function exposed through a Model Context Protocol (MCP) server.",
   },
   {
     term: "Context Window",
     id: "context-window",
     definition:
-      "The maximum number of tokens an LLM can attend to in a single inference pass — its working memory. Modern frontier models reach 200K–1M tokens (Claude, GPT-4, Gemini), though attention quality degrades non-linearly with length. Context-window size constrains how much code, document content, or conversation history can be included in a single prompt. Long-context engineering (chunking, attention sinks, retrieval) is an active research and product frontier.",
+      "The maximum number of tokens an LLM can attend to in a single inference pass, its working memory. Modern frontier models reach 200K-1M tokens (Claude, GPT-4, Gemini), though attention quality degrades non-linearly with length. Context-window size constrains how much code, document content, or conversation history can be included in a single prompt. Long-context engineering (chunking, attention sinks, retrieval) is an active research and product frontier.",
   },
   {
     term: "Inference Latency",
     id: "inference-latency",
     definition:
-      "The wall-clock time between sending a prompt to an LLM and receiving the response. Broken into time-to-first-token (TTFT — when the streaming response starts) and tokens-per-second (TPS — throughput once it begins). For interactive applications, TTFT under 500ms feels instant; over 2s feels broken. For batch jobs, raw TPS matters more. Inference providers like Groq, Together AI, Fireworks AI, and Replicate compete primarily on this metric.",
+      "The wall-clock time between sending a prompt to an LLM and receiving the response. Broken into time-to-first-token (TTFT, when the streaming response starts) and tokens-per-second (TPS, throughput once it begins). For interactive applications, TTFT under 500ms feels instant; over 2s feels broken. For batch jobs, raw TPS matters more. Inference providers like Groq, Together AI, Fireworks AI, and Replicate compete primarily on this metric.",
   },
   {
     term: "Fine-tuning",
@@ -585,25 +585,25 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "LoRA (Low-Rank Adaptation)",
     id: "lora",
     definition:
-      "Parameter-efficient fine-tuning method that adds small low-rank matrices to a frozen base model. Instead of updating billions of parameters, LoRA updates only a few million — typically 0.1%–1% of the original model. Inference can then mix-and-match LoRAs at runtime. Standard tooling on Hugging Face's PEFT library; default choice for fine-tuning open-weight models like Llama, Mistral, and Qwen.",
+      "Parameter-efficient fine-tuning method that adds small low-rank matrices to a frozen base model. Instead of updating billions of parameters, LoRA updates only a few million, typically 0.1%-1% of the original model. Inference can then mix-and-match LoRAs at runtime. Standard tooling on Hugging Face's PEFT library; default choice for fine-tuning open-weight models like Llama, Mistral, and Qwen.",
   },
   {
     term: "Model Distillation",
     id: "distillation",
     definition:
-      "Training a smaller 'student' model to mimic a larger 'teacher' model's outputs. The student learns the teacher's behavior at a fraction of the inference cost. Distillation is how Claude Haiku, GPT-4o-mini, and Gemini Flash are produced — small, fast, cheap models that capture much of the larger model's behavior on common tasks. Critical to making frontier capability economically viable at scale.",
+      "Training a smaller 'student' model to mimic a larger 'teacher' model's outputs. The student learns the teacher's behavior at a fraction of the inference cost. Distillation is how Claude Haiku, GPT-4o-mini, and Gemini Flash are produced, small, fast, cheap models that capture much of the larger model's behavior on common tasks. Critical to making frontier capability economically viable at scale.",
   },
   {
     term: "Quantization",
     id: "quantization",
     definition:
-      "Reducing the numerical precision of model weights (typically from 16-bit floats to 8-bit, 4-bit, or even 2-bit integers) to shrink memory footprint and speed up inference. Modern quantization schemes (GPTQ, AWQ, GGUF) preserve most of the model's quality while cutting size 4x–8x. Critical for running open-weight models on consumer GPUs and for edge inference.",
+      "Reducing the numerical precision of model weights (typically from 16-bit floats to 8-bit, 4-bit, or even 2-bit integers) to shrink memory footprint and speed up inference. Modern quantization schemes (GPTQ, AWQ, GGUF) preserve most of the model's quality while cutting size 4x-8x. Critical for running open-weight models on consumer GPUs and for edge inference.",
   },
   {
     term: "Embedding Model",
     id: "embedding-model",
     definition:
-      "A neural network that converts text (or images, audio, etc.) into a fixed-length vector — typically 384, 768, 1024, or 1536 dimensions. Semantic similarity between two inputs becomes the cosine similarity between their vectors. Embedding models power RAG retrieval, semantic search, clustering, and recommendation systems. Cohere, OpenAI, Mistral, and Voyage AI ship dedicated embedding APIs; open-weight options include Sentence-BERT and BGE.",
+      "A neural network that converts text (or images, audio, etc.) into a fixed-length vector, typically 384, 768, 1024, or 1536 dimensions. Semantic similarity between two inputs becomes the cosine similarity between their vectors. Embedding models power RAG retrieval, semantic search, clustering, and recommendation systems. Cohere, OpenAI, Mistral, and Voyage AI ship dedicated embedding APIs; open-weight options include Sentence-BERT and BGE.",
   },
   {
     term: "Foundation Model",
@@ -615,19 +615,19 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "Open-Weight Model",
     id: "open-weight-model",
     definition:
-      "An LLM whose trained weights are publicly available for download, fine-tuning, and self-hosting. Distinct from 'open source' in the strict sense — most open-weight models do not release training data or full training code, only the final weights. Llama, Mistral, Qwen, Gemma, DeepSeek, and the StableLM family are the headline open-weight providers. Closed-weight models (GPT-4, Claude) are accessed only via API.",
+      "An LLM whose trained weights are publicly available for download, fine-tuning, and self-hosting. Distinct from 'open source' in the strict sense, most open-weight models do not release training data or full training code, only the final weights. Llama, Mistral, Qwen, Gemma, DeepSeek, and the StableLM family are the headline open-weight providers. Closed-weight models (GPT-4, Claude) are accessed only via API.",
   },
   {
     term: "Reasoning Model",
     id: "reasoning-model",
     definition:
-      "An LLM trained to use extended chain-of-thought as a native capability rather than as a prompting technique. The model invests compute time at inference (sometimes minutes) to work through problems step-by-step before answering. OpenAI's o1/o3, Anthropic's Claude with extended thinking, and DeepSeek's R1 are the headline examples. Reasoning models tradeoff latency for accuracy on hard problems — best-fit for math, code, scientific reasoning, and complex planning tasks.",
+      "An LLM trained to use extended chain-of-thought as a native capability rather than as a prompting technique. The model invests compute time at inference (sometimes minutes) to work through problems step-by-step before answering. OpenAI's o1/o3, Anthropic's Claude with extended thinking, and DeepSeek's R1 are the headline examples. Reasoning models tradeoff latency for accuracy on hard problems, best-fit for math, code, scientific reasoning, and complex planning tasks.",
   },
   {
     term: "Multimodal Model",
     id: "multimodal-model",
     definition:
-      "A model that accepts and/or generates multiple input types — typically text and images, sometimes audio and video. GPT-4o, Claude 3.5/4.x Sonnet, and Gemini 1.5/2.x are native multimodal models capable of analyzing images alongside text. Specialized multimodal models exist for image generation (DALL-E, Imagen, Stable Diffusion), video (Sora, Veo, Runway Gen-3), and audio (ElevenLabs, Whisper).",
+      "A model that accepts and/or generates multiple input types, typically text and images, sometimes audio and video. GPT-4o, Claude 3.5/4.x Sonnet, and Gemini 1.5/2.x are native multimodal models capable of analyzing images alongside text. Specialized multimodal models exist for image generation (DALL-E, Imagen, Stable Diffusion), video (Sora, Veo, Runway Gen-3), and audio (ElevenLabs, Whisper).",
   },
   // ── M&A and Corp Dev vocabulary ────────────────────────────────────────
   {
@@ -640,13 +640,13 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "Acquihire",
     id: "acquihire",
     definition:
-      "An acquisition primarily motivated by acquiring the team rather than the company's products or revenue. Common in AI — Adept (Amazon), Character AI (Google), and Inflection (Microsoft) followed this template in 2024. The product is often wound down post-acquisition; the engineering team joins the acquirer. Acquihire valuations are often non-disclosed and structured as a mix of cash and retention compensation packages.",
+      "An acquisition primarily motivated by acquiring the team rather than the company's products or revenue. Common in AI, Adept (Amazon), Character AI (Google), and Inflection (Microsoft) followed this template in 2024. The product is often wound down post-acquisition; the engineering team joins the acquirer. Acquihire valuations are often non-disclosed and structured as a mix of cash and retention compensation packages.",
   },
   {
     term: "Earn-out",
     id: "earn-out",
     definition:
-      "Acquisition consideration paid over time, contingent on the acquired business hitting specified milestones — revenue targets, product launches, or team retention. Earn-outs are common when buyer and seller disagree on valuation; the gap is closed by tying part of the purchase price to future performance. Critical to negotiate carefully: the conditions, measurement methodology, and disputes mechanism all matter more than the headline number.",
+      "Acquisition consideration paid over time, contingent on the acquired business hitting specified milestones, revenue targets, product launches, or team retention. Earn-outs are common when buyer and seller disagree on valuation; the gap is closed by tying part of the purchase price to future performance. Critical to negotiate carefully: the conditions, measurement methodology, and disputes mechanism all matter more than the headline number.",
   },
   {
     term: "Down Round",
@@ -676,7 +676,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "Liquidation Preference",
     id: "liquidation-preference",
     definition:
-      "Investor right to receive their original investment (or a multiple of it) back before common shareholders see any proceeds in an exit. 1× non-participating preferred is the modern default — investor gets either their money back OR pro-rata share of proceeds, whichever is larger. Aggressive terms (2× or 3× participating preferred) create overhang for founders and employees; they appear in distressed rounds.",
+      "Investor right to receive their original investment (or a multiple of it) back before common shareholders see any proceeds in an exit. 1× non-participating preferred is the modern default, investor gets either their money back OR pro-rata share of proceeds, whichever is larger. Aggressive terms (2× or 3× participating preferred) create overhang for founders and employees; they appear in distressed rounds.",
   },
   {
     term: "Pro-rata Rights",
@@ -688,7 +688,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "Anti-dilution Provision",
     id: "anti-dilution-provision",
     definition:
-      "Investor protection against down rounds — adjusts the conversion price of preferred shares so existing investors aren't diluted as much when new shares are issued at a lower price. 'Weighted average' (broad-based) anti-dilution is standard and most founder-friendly. 'Full ratchet' anti-dilution is investor-friendly but punitive in a down round and is uncommon outside distressed deals.",
+      "Investor protection against down rounds, adjusts the conversion price of preferred shares so existing investors aren't diluted as much when new shares are issued at a lower price. 'Weighted average' (broad-based) anti-dilution is standard and most founder-friendly. 'Full ratchet' anti-dilution is investor-friendly but punitive in a down round and is uncommon outside distressed deals.",
   },
   // ── Engineering and platform primitives ────────────────────────────────
   {
@@ -701,7 +701,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "Edge Function",
     id: "edge-function",
     definition:
-      "Code executed at globally-distributed compute nodes physically close to end users — typically running in V8 isolates, Wasm sandboxes, or lightweight VMs. Cloudflare Workers, Vercel Edge Functions, Fly.io machines, and Deno Deploy are the headline platforms. Edge functions trade execution environment constraints for sub-100ms cold-start times and global low-latency reach. Increasingly used as the AI-inference gateway layer.",
+      "Code executed at globally-distributed compute nodes physically close to end users, typically running in V8 isolates, Wasm sandboxes, or lightweight VMs. Cloudflare Workers, Vercel Edge Functions, Fly.io machines, and Deno Deploy are the headline platforms. Edge functions trade execution environment constraints for sub-100ms cold-start times and global low-latency reach. Increasingly used as the AI-inference gateway layer.",
   },
   {
     term: "Continuous Deployment",
@@ -713,7 +713,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "Feature Flag",
     id: "feature-flag",
     definition:
-      "Runtime toggle controlling whether a feature is exposed to a given user, request, or environment — independently from deployment. Feature flags decouple deploy from release, enable A/B testing, support gradual rollout, and provide kill switches for production incidents. PostHog, LaunchDarkly, Statsig, and ConfigCat are the headline platforms. Standard practice at most modern product orgs.",
+      "Runtime toggle controlling whether a feature is exposed to a given user, request, or environment, independently from deployment. Feature flags decouple deploy from release, enable A/B testing, support gradual rollout, and provide kill switches for production incidents. PostHog, LaunchDarkly, Statsig, and ConfigCat are the headline platforms. Standard practice at most modern product orgs.",
   },
   {
     term: "Distributed Tracing",
@@ -732,7 +732,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "Agent Memory",
     id: "agent-memory",
     definition:
-      "Persistent state an LLM agent maintains across turns, sessions, or interactions. Three common memory types: (1) short-term — the current context window; (2) episodic — recent conversation history retrieved via RAG; (3) long-term — facts and preferences stored in a separate database. Letta (formerly MemGPT) is the canonical reference implementation for persistent agent memory; modern frameworks (Mastra, CrewAI) ship memory primitives as a first-class concept.",
+      "Persistent state an LLM agent maintains across turns, sessions, or interactions. Three common memory types: (1) short-term, the current context window; (2) episodic, recent conversation history retrieved via RAG; (3) long-term, facts and preferences stored in a separate database. Letta (formerly MemGPT) is the canonical reference implementation for persistent agent memory; modern frameworks (Mastra, CrewAI) ship memory primitives as a first-class concept.",
   },
   {
     term: "Multi-Agent Orchestration",
@@ -750,7 +750,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "Agent Guardrails",
     id: "agent-guardrails",
     definition:
-      "Runtime constraints that limit agent behavior — output filtering, tool-call validation, spend limits, time budgets, and harmful-action detection. Implementations include NVIDIA NeMo Guardrails, Guardrails AI, and platform-specific safety APIs (Anthropic, OpenAI). Distinct from training-time alignment (RLHF, Constitutional AI) — guardrails operate at inference time and can be customized per deployment.",
+      "Runtime constraints that limit agent behavior, output filtering, tool-call validation, spend limits, time budgets, and harmful-action detection. Implementations include NVIDIA NeMo Guardrails, Guardrails AI, and platform-specific safety APIs (Anthropic, OpenAI). Distinct from training-time alignment (RLHF, Constitutional AI), guardrails operate at inference time and can be customized per deployment.",
   },
   {
     term: "Planning Agent",
@@ -762,7 +762,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "Long-running Agent",
     id: "long-running-agent",
     definition:
-      "An LLM agent designed to execute a task over hours, days, or longer — across multiple sessions, with persistent state, and resilient to interruption. Examples: Anthropic's Claude with computer use, OpenAI's o1-Pro mode for extended reasoning, autonomous coding agents (Devin). Long-running agents require durable workflow infrastructure (Temporal, Inngest) and explicit checkpoint-resume primitives.",
+      "An LLM agent designed to execute a task over hours, days, or longer, across multiple sessions, with persistent state, and resilient to interruption. Examples: Anthropic's Claude with computer use, OpenAI's o1-Pro mode for extended reasoning, autonomous coding agents (Devin). Long-running agents require durable workflow infrastructure (Temporal, Inngest) and explicit checkpoint-resume primitives.",
   },
   {
     term: "Tool Bench",
@@ -816,13 +816,13 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "Lead Time for Changes (DORA)",
     id: "lead-time-for-changes",
     definition:
-      "One of the four DORA metrics — the time between a code commit and that code running successfully in production. Elite teams: less than 1 day. High performers: 1 day to 1 week. Medium: 1 week to 1 month. Low: 1 month to 6 months. Short lead time enables rapid iteration on customer feedback and emergency security patches. Long lead time often correlates with batch-up-and-release-monthly culture and brittle deployment pipelines.",
+      "One of the four DORA metrics, the time between a code commit and that code running successfully in production. Elite teams: less than 1 day. High performers: 1 day to 1 week. Medium: 1 week to 1 month. Low: 1 month to 6 months. Short lead time enables rapid iteration on customer feedback and emergency security patches. Long lead time often correlates with batch-up-and-release-monthly culture and brittle deployment pipelines.",
   },
   {
     term: "Change Failure Rate (DORA)",
     id: "change-failure-rate",
     definition:
-      "One of the four DORA metrics — the percentage of changes to production that result in degraded service, requiring hotfix, rollback, or remediation. Elite and high-performing teams: 0-15%. Medium and low performers: 16-30%. Despite intuition that high deployment frequency causes more failures, DORA research shows the opposite — high performers have BOTH high deployment frequency AND low change failure rate, because small batches reduce per-change risk.",
+      "One of the four DORA metrics, the percentage of changes to production that result in degraded service, requiring hotfix, rollback, or remediation. Elite and high-performing teams: 0-15%. Medium and low performers: 16-30%. Despite intuition that high deployment frequency causes more failures, DORA research shows the opposite, high performers have BOTH high deployment frequency AND low change failure rate, because small batches reduce per-change risk.",
   },
   {
     term: "Red-Teaming (AI)",

@@ -1,13 +1,13 @@
 import Link from "next/link";
 
 /**
- * IdentityBanner — Brunson DotCom Secrets Ch 4 (Three Core Markets / Desires).
+ * IdentityBanner, Brunson DotCom Secrets Ch 4 (Three Core Markets / Desires).
  *
  * The core move: pick ONE primary market (Wealth) and layer in the secondary
- * (Status) as identity transformation. The buyer doesn't just want a tool —
+ * (Status) as identity transformation. The buyer doesn't just want a tool -
  * they want to *become* the investor who's early on purpose: the one who moves
  * on a translated signal before the deck exists (avatar = Marcus, a non-coder
- * dealmaker — see lib/data-nerd.ts tribe).
+ * dealmaker, see lib/data-nerd.ts tribe).
  *
  * Surfaces above ThreeDoorHero on the home page so the identity declaration
  * frames every door beneath it. Also reused on /identity for the long-form
@@ -18,7 +18,7 @@ import Link from "next/link";
  */
 
 const WEALTH_OUTCOMES = [
-  "First investor on three breakouts a quarter — at €5–50k cheque sizes that survive a partner meeting because they're the talked-about deals.",
+  "First investor on three breakouts a quarter, at €5-50k cheque sizes that survive a partner meeting because they're the talked-about deals.",
   "Reply rate ~4× the warm-intro template, because you led with what the engineering team is shipping, not what the deck claims.",
   "First-meeting-to-term-sheet timeline compressed from months to weeks, because the round opened *after* you were already in the conversation.",
 ] as const;
@@ -93,7 +93,7 @@ export default function IdentityBanner() {
         >
           /identity
         </Link>
-        {" "}— who the buyer was before, who they are after, and the seven shifts
+        {" "}, who the buyer was before, who they are after, and the seven shifts
         that take you from one to the other.
       </p>
     </section>

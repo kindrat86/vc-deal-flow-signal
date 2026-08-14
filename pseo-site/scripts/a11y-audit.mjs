@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 /**
- * F40 — automated a11y CI (closes audit-2026-05-08 gap "no automated
+ * F40, automated a11y CI (closes audit-2026-05-08 gap "no automated
  * axe-core CI; regressions will surface only via visual review").
  *
  * Wraps `pa11y-ci` (Puppeteer + axe-core under the hood) and runs against
@@ -51,7 +51,7 @@ const REPORT_ONLY =
  * entity type so a layout regression in any route family surfaces here.
  *
  * Add to this list when shipping a new route family. Removing entries
- * masks regressions — only remove if the entire family is decommissioned.
+ * masks regressions, only remove if the entire family is decommissioned.
  *
  * Dynamic-route slugs are pinned to canonical examples that should remain
  * stable. If a slug is removed, swap to another example in the same family.
@@ -74,7 +74,7 @@ const PATHS = [
   "/answers/what-is-a-github-scout-score",
   // Content surfaces
   "/blog",
-  // pSEO families — one canonical example per family
+  // pSEO families, one canonical example per family
   "/vs",
   "/alternatives",
   "/use-cases",
@@ -100,7 +100,7 @@ function buildRuntimeConfig() {
 function findPa11yCi() {
   const local = join(PROJECT_ROOT, "node_modules", ".bin", "pa11y-ci");
   if (existsSync(local)) return local;
-  // Fall back to npx — ensures the script also works when invoked from a
+  // Fall back to npx, ensures the script also works when invoked from a
   // checkout without a local install (e.g. one-off ad-hoc audit).
   return null;
 }
@@ -111,7 +111,7 @@ function runPa11yCi(configPath) {
   const args = local
     ? ["--config", configPath, "--json"]
     : ["--yes", "pa11y-ci@^4", "--config", configPath, "--json"];
-  // Stream pa11y-ci stdout DIRECTLY to disk via a file descriptor — sidesteps
+  // Stream pa11y-ci stdout DIRECTLY to disk via a file descriptor, sidesteps
   // Node's child-process buffer limit (which silently truncates pa11y's
   // multi-MB JSON output to ~64 KB regardless of the configured maxBuffer
   // when stdio: "pipe" is used). The summarizer then re-reads from disk.
@@ -160,7 +160,7 @@ function writeGithubSummary(summary) {
   const path = process.env.GITHUB_STEP_SUMMARY;
   if (!path) return;
   const lines = [
-    `## A11y Audit — pa11y-ci + axe-core`,
+    `## A11y Audit, pa11y-ci + axe-core`,
     "",
     `**BASE_URL**: \`${BASE_URL}\`  `,
     `**URLs audited**: ${summary.urls}  `,
@@ -190,14 +190,14 @@ function main() {
   console.log(`[a11y-audit] BASE_URL=${BASE_URL}`);
   console.log(`[a11y-audit] auditing ${PATHS.length} URLs...`);
   if (REPORT_ONLY) {
-    console.log("[a11y-audit] A11Y_AUDIT_REPORT_ONLY=true — will exit 0 regardless of findings");
+    console.log("[a11y-audit] A11Y_AUDIT_REPORT_ONLY=true, will exit 0 regardless of findings");
   }
   const configPath = buildRuntimeConfig();
   const exitCode = runPa11yCi(configPath);
   const summary = summarize();
   console.log("");
   console.log(
-    `[a11y-audit] result — errors=${summary.errors} across ${summary.urls} url(s)`,
+    `[a11y-audit] result, errors=${summary.errors} across ${summary.urls} url(s)`,
   );
   if (summary.perUrl.length > 0) {
     const sorted = [...summary.perUrl].sort(
@@ -214,9 +214,9 @@ function main() {
   writeGithubSummary(summary);
 
   // pa11y-ci returns:
-  //   0 — all URLs pass
-  //   1 — at least one URL has errors at or above the configured `level`
-  //   2 — config error / startup error
+  //   0, all URLs pass
+  //   1, at least one URL has errors at or above the configured `level`
+  //   2, config error / startup error
   // In REPORT_ONLY mode we surface the count to logs / GitHub summary but
   // exit 0 so the workflow doesn't gate. Otherwise we propagate the
   // pa11y-ci exit code so CI fails on errors.

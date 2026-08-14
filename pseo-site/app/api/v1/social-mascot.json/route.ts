@@ -1,5 +1,5 @@
 /**
- * /api/v1/social-mascot.json — programmatic Data Nerd mascot bible.
+ * /api/v1/social-mascot.json, programmatic Data Nerd mascot bible.
  *
  * Traffic Secrets Ch 7 + Ch 8 (Instagram + Facebook playbook) under
  * an anonymity-respecting frame: synthetic mascot stays consistent
@@ -63,7 +63,7 @@ export async function GET() {
     },
     repurpose_rule:
       "All content originates as a Data Nerd post. The framework + the data + the methodology paper do the talking. The founder's identity stays anonymous.",
-    license: "CC BY 4.0 — methodology paper at ssrn.com/abstract=6606558",
+    license: "CC BY 4.0, methodology paper at ssrn.com/abstract=6606558",
   };
 
   return NextResponse.json(body, {

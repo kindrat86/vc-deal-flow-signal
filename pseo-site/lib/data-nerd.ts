@@ -1,5 +1,5 @@
 /**
- * The Data Nerd — Attractive Character canon (Russell Brunson DCS Ch 7 + ES Ch 2).
+ * The Data Nerd, Attractive Character canon (Russell Brunson DCS Ch 7 + ES Ch 2).
  *
  * Single source of truth for the synthetic narrator persona used across the site,
  * email drips, YouTube voice-over, and structured-data Person schema.
@@ -19,35 +19,35 @@ export const DATA_NERD_TAGLINE =
   "Anonymous engineer-investor. Wrote the SSRN methodology paper. Refuses to do podcasts.";
 
 /**
- * Short bio — used in email signoff chip and small character cards.
+ * Short bio, used in email signoff chip and small character cards.
  */
 export const DATA_NERD_BIO_SHORT =
   "Engineer-investor. Wrote the SSRN paper (n=219). Replies in batches. Won't do podcasts. Lives behind a regression.";
 
 /**
- * Medium bio — used on /walkthrough close, /manifesto signoff, /story footer.
+ * Medium bio, used on /walkthrough close, /manifesto signoff, /story footer.
  */
 export const DATA_NERD_BIO_MEDIUM =
-  "I'm The Data Nerd. I won't tell you my real name and that's on purpose — the methodology is the protagonist, I'm just the storyteller. Engineer for fifteen years, angel-checker since deal #5. The whole product rests on whether the signal is real, not on whether you find me charismatic.";
+  "I'm The Data Nerd. I won't tell you my real name and that's on purpose, the methodology is the protagonist, I'm just the storyteller. Engineer for fifteen years, angel-checker since deal #5. The whole product rests on whether the signal is real, not on whether you find me charismatic.";
 
 /**
- * Audio disclosure — required wherever the synthetic voice plays.
+ * Audio disclosure, required wherever the synthetic voice plays.
  */
 export const DATA_NERD_AUDIO_DISCLOSURE =
   "Synthetic voice (Cartesia). Same voice across YouTube, email-audio, and every page narration. There is no founder voice. The methodology is real. The voice is a writing convention.";
 
 /**
- * Identity archetype — Brunson Expert Secrets Ch 2 (Charismatic Leader 2.0).
+ * Identity archetype, Brunson Expert Secrets Ch 2 (Charismatic Leader 2.0).
  *
  * The character must explicitly belong to one of four canonical archetypes
  * so the reader can place the voice on a recognisable map. Picking and
- * declaring the archetype is itself a credibility move — it tells the
+ * declaring the archetype is itself a credibility move, it tells the
  * reader what they should expect from the next hundred emails before they
  * commit to opening one.
  *
  * The Data Nerd is a Reluctant Reporter: the discovery (GitHub commit
  * acceleration as a leading deal-flow signal) preceded the obligation to
- * publish. The character did not set out to lead a movement — the data
+ * publish. The character did not set out to lead a movement, the data
  * forced the position.
  */
 export const DATA_NERD_ARCHETYPE = {
@@ -55,23 +55,23 @@ export const DATA_NERD_ARCHETYPE = {
   oneLine:
     "I didn't set out to lead a movement. I noticed something true and felt obligated to publish it.",
   body:
-    "The four archetypes a founder character can occupy are Leader, Adventurer, Reluctant Hero, and Reporter. Leaders front-load conviction; Adventurers front-load risk; Reluctant Heroes front-load reluctance; Reporters front-load curiosity. I'm the fourth one with a touch of the third — a Reluctant Reporter. The first time I noticed the seabird flock I thought I was seeing a coincidence. The fifth time I checked I knew I owed the fishermen the warning. The product on this site is the warning, formalised.",
+    "The four archetypes a founder character can occupy are Leader, Adventurer, Reluctant Hero, and Reporter. Leaders front-load conviction; Adventurers front-load risk; Reluctant Heroes front-load reluctance; Reporters front-load curiosity. I'm the fourth one with a touch of the third, a Reluctant Reporter. The first time I noticed the seabird flock I thought I was seeing a coincidence. The fifth time I checked I knew I owed the fishermen the warning. The product on this site is the warning, formalised.",
   contrast:
-    "Not a Leader (I won't take stage), not an Adventurer (I won't sell risk as romance), not a pure Reluctant Hero (I'm not waiting to be drafted) — a Reporter who can't unsee the pattern and a Reluctant Hero about whether the discovery is mine to publish.",
+    "Not a Leader (I won't take stage), not an Adventurer (I won't sell risk as romance), not a pure Reluctant Hero (I'm not waiting to be drafted), a Reporter who can't unsee the pattern and a Reluctant Hero about whether the discovery is mine to publish.",
   proof: [
-    "Refused 14 podcast invitations in the last six months — every reply is a stock paragraph at /press/anonymity-policy.",
+    "Refused 14 podcast invitations in the last six months, every reply is a stock paragraph at /press/anonymity-policy.",
     "Methodology paper went on SSRN before any sales page existed. The order was: discovery → publication → product, not product → publication → discovery.",
     "First six months of email drips were unsigned. The handle 'The Data Nerd' was added only when readers asked who was writing them.",
   ],
 } as const;
 
 /**
- * Tribe — what the character calls the readers who self-identify as members
+ * Tribe, what the character calls the readers who self-identify as members
  * of the movement. Brunson Expert Secrets Ch 3: the tribe needs a name the
  * member can wear.
  *
  * Avatar pivot (2026-05-30, canonical `brand/voice.md` §Avatar +
- * `brunson/08-dream-customer.md`): the buyer is **Marcus** — a solo angel,
+ * `brunson/08-dream-customer.md`): the buyer is **Marcus**, a solo angel,
  * scout, seed fund, corp-dev, or PE-operating-partner / non-engineer tech-VP
  * who evaluates companies for a living but **does NOT read code**, whose core
  * fear is "looking non-technical in a technical room," and who needs the
@@ -79,21 +79,21 @@ export const DATA_NERD_ARCHETYPE = {
  * "developer-investor / code-reading partner" label (deprecated 2026-05-12):
  * handing a non-coder a code-reader identity pokes his deepest fear instead of
  * relieving it. The wearable label now names the *timing edge*, not a coding
- * skill — "First Mover" (the one who reaches the founder before the round, on
+ * skill, "First Mover" (the one who reaches the founder before the round, on
  * a signal someone else read for them). Per `marketing/messaging-guide.md`:
  * "we surface the signal, you make the calls / you don't read code."
  */
 export const DATA_NERD_TRIBE = {
   name: "First Movers",
   oneLine:
-    "We move on the engineering signal before the round — without reading a line of code.",
+    "We move on the engineering signal before the round, without reading a line of code.",
   badge: "first mover · early on signal, not on luck",
   body:
-    "The reader who nods through the polarity is a First Mover — a solo angel, scout, seed fund, corp-dev or PE operator who evaluates companies for a living but doesn't read code and doesn't want to. The handle the reader earns is 'first mover': the investor who reaches the founder before the round, on a signal someone else translated into plain English. The product is built around that identity. The pricing is built around that identity. Every page on this site is built around that identity. If the label feels off — if you'd rather pull up the merge graph and run the regression yourself — that's diagnostic, and the product is probably wrong for you.",
+    "The reader who nods through the polarity is a First Mover, a solo angel, scout, seed fund, corp-dev or PE operator who evaluates companies for a living but doesn't read code and doesn't want to. The handle the reader earns is 'first mover': the investor who reaches the founder before the round, on a signal someone else translated into plain English. The product is built around that identity. The pricing is built around that identity. Every page on this site is built around that identity. If the label feels off, if you'd rather pull up the merge graph and run the regression yourself, that's diagnostic, and the product is probably wrong for you.",
 } as const;
 
 /**
- * Polarity — what The Data Nerd stands for, what they stand against.
+ * Polarity, what The Data Nerd stands for, what they stand against.
  * Brunson DCS Ch 7: Attractive Character must take a side. Eight polarities
  * is the canon-spec spread (four is a teaser; eight is the audit-grade set).
  *
@@ -106,7 +106,7 @@ export const DATA_NERD_POLARITY = [
     for: "Public data is more valuable than private data.",
     against: "Edge from access.",
     body:
-      "Renaissance Technologies started in 1988 on data anyone could buy — Reuters quotes, SEC filings, OPRA ticks. Medallion compounded ~39% net for thirty years. The data wasn't edge. The lens was. Same logic on GitHub.",
+      "Renaissance Technologies started in 1988 on data anyone could buy, Reuters quotes, SEC filings, OPRA ticks. Medallion compounded ~39% net for thirty years. The data wasn't edge. The lens was. Same logic on GitHub.",
   },
   {
     n: 2,
@@ -160,7 +160,7 @@ export const DATA_NERD_POLARITY = [
 ] as const;
 
 /**
- * Voice rules — the shape of every sentence The Data Nerd writes.
+ * Voice rules, the shape of every sentence The Data Nerd writes.
  * Brunson Expert Secrets Ch 2 (Charismatic Leader 2.0).
  */
 export const DATA_NERD_VOICE_RULES = [
@@ -170,14 +170,14 @@ export const DATA_NERD_VOICE_RULES = [
       "Never say 'a startup'. Say 'a three-founder fintech with one repo'. Never say 'a fund'. Say 'the partner at [redacted] who DM'd me about the fintech the morning after the announcement'. Specific scales; general dies.",
   },
   {
-    rule: "Translate, don't dump — plain business English over code jargon.",
+    rule: "Translate, don't dump, plain business English over code jargon.",
     body:
-      "We're talking to Marcus: a dealmaker who evaluates companies but doesn't read code, and whose fear is looking non-technical in a technical room. The Data Nerd is an engineer, but he writes for a non-coder — he reaches for the plain-English image a corp-dev partner would use ('they're shipping far more than usual,' 'the team doubled overnight,' 'they're building the thing competitors will copy in a year'), never a merge graph or a regression coefficient as the load-bearing explanation. An occasional code metaphor is fine as flavour; it can never be the thing the reader has to decode. 'Synergize the funnel' is still banned — so is anything that makes the reader feel he should already know what a commit graph is.",
+      "We're talking to Marcus: a dealmaker who evaluates companies but doesn't read code, and whose fear is looking non-technical in a technical room. The Data Nerd is an engineer, but he writes for a non-coder, he reaches for the plain-English image a corp-dev partner would use ('they're shipping far more than usual,' 'the team doubled overnight,' 'they're building the thing competitors will copy in a year'), never a merge graph or a regression coefficient as the load-bearing explanation. An occasional code metaphor is fine as flavour; it can never be the thing the reader has to decode. 'Synergize the funnel' is still banned, so is anything that makes the reader feel he should already know what a commit graph is.",
   },
   {
     rule: "Number, then claim. Never claim, then number.",
     body:
-      "Wrong: 'GitHub data is the most leading signal — we ran a panel of 219 startups.' Right: '219 startups, five quarters, median 31-day lead time. That's why we say GitHub data is the most leading signal.' Numbers up front earn the claim.",
+      "Wrong: 'GitHub data is the most leading signal, we ran a panel of 219 startups.' Right: '219 startups, five quarters, median 31-day lead time. That's why we say GitHub data is the most leading signal.' Numbers up front earn the claim.",
   },
   {
     rule: "Admit what we don't know in the same breath.",
@@ -192,7 +192,7 @@ export const DATA_NERD_VOICE_RULES = [
   {
     rule: "Cliffhanger at the end of every email.",
     body:
-      "The P.S. previews tomorrow's email or the next chapter. The reader closes the browser still curious. That's the entire job of email #N — get them to open email #N+1.",
+      "The P.S. previews tomorrow's email or the next chapter. The reader closes the browser still curious. That's the entire job of email #N, get them to open email #N+1.",
   },
   {
     rule: "Never sign anyone else's name.",
@@ -217,7 +217,7 @@ export const DATA_NERD_PARABLES = [
     slug: "loud-engine",
     title: "The Loud Engine",
     body:
-      "Two cars start a race. One is silent at the line. The other idles loud, builds revs, the driver checks his mirrors, the passenger fastens her belt. The silent car may win — but the loud one is doing every observable thing a car about to launch does.",
+      "Two cars start a race. One is silent at the line. The other idles loud, builds revs, the driver checks his mirrors, the passenger fastens her belt. The silent car may win, but the loud one is doing every observable thing a car about to launch does.",
     lesson:
       "Code is the engine of a startup. When the engine is visibly louder for two weeks running, the launch usually follows. We aren't reading the future. We're reading the things that always happen right before the future arrives.",
   },
@@ -225,9 +225,9 @@ export const DATA_NERD_PARABLES = [
     slug: "letter-postman-read",
     title: "The Letter the Postman Already Read",
     body:
-      "Imagine the postman could read every letter in his bag. The richest man in town wouldn't pay him for tomorrow's letters — those aren't in the bag yet. He'd pay him for today's letters delivered three days early.",
+      "Imagine the postman could read every letter in his bag. The richest man in town wouldn't pay him for tomorrow's letters, those aren't in the bag yet. He'd pay him for today's letters delivered three days early.",
     lesson:
-      "GitHub already wrote the letters. Crunchbase reads them on the day they land. We open them in transit. Everyone else gets the same mail we do — they just get it the week after the founder posted on LinkedIn.",
+      "GitHub already wrote the letters. Crunchbase reads them on the day they land. We open them in transit. Everyone else gets the same mail we do, they just get it the week after the founder posted on LinkedIn.",
   },
   {
     slug: "sunday-email",
@@ -235,28 +235,28 @@ export const DATA_NERD_PARABLES = [
     body:
       "The Sunday before the $4M Series A I should have been in, I drafted a three-line email to the founder. 'Saw your settlement-layer commits. The way you're handling the FX edge case is the kind of thing your competitors will copy in eighteen months.' I read it back. Decided I hadn't earned the right. Closed the laptop. Three weeks later the deck went out and the round closed inside a week.",
     lesson:
-      "The email I didn't send cost me a position I'd already done the work to deserve. Now I send the email. The product on this site is a system that decides which Sunday emails are worth sending — so I never have to ask whether I've earned the right again.",
+      "The email I didn't send cost me a position I'd already done the work to deserve. Now I send the email. The product on this site is a system that decides which Sunday emails are worth sending, so I never have to ask whether I've earned the right again.",
   },
   {
     slug: "wrong-reader",
     title: "The Reader Who Told Me I Was Wrong",
     body:
-      "Six weeks into the public beta a Series B associate replied to a Tuesday digest with two lines. 'You flagged orgname. Their commit velocity tripled because they migrated a monorepo. There was no acceleration. Just a re-org.' She was right. The model had no signal for monorepo migration events. We added it the next Sunday — false positive rate dropped from 7% to 4% on the back of one reader's reply.",
+      "Six weeks into the public beta a Series B associate replied to a Tuesday digest with two lines. 'You flagged orgname. Their commit velocity tripled because they migrated a monorepo. There was no acceleration. Just a re-org.' She was right. The model had no signal for monorepo migration events. We added it the next Sunday, false positive rate dropped from 7% to 4% on the back of one reader's reply.",
     lesson:
-      "Every methodology is wrong somewhere. The cheap move is to deny it. The expensive move — and the one that compounds — is to publish the limit before the reader finds it. We publish ours at /methodology. The reader who corrects us is the reader who matters most.",
+      "Every methodology is wrong somewhere. The cheap move is to deny it. The expensive move, and the one that compounds, is to publish the limit before the reader finds it. We publish ours at /methodology. The reader who corrects us is the reader who matters most.",
   },
   {
     slug: "tuesday-regression",
     title: "The Tuesday I Broke the Regression",
     body:
-      "On a Tuesday in February I refactored the velocity computation 'just to clean it up.' Pushed at 9pm. Wednesday morning the digest went out with three orgs ranked at the top that did not belong there — a hackathon, a bot-heavy security tool, a vendor's documentation repo. Thirty subscribers replied. I rolled back, ran the panel against the prior week's truth set, found the off-by-one in the contributor-deduplication step, shipped the fix Thursday at 3am, posted the post-mortem at /uptime Friday morning.",
+      "On a Tuesday in February I refactored the velocity computation 'just to clean it up.' Pushed at 9pm. Wednesday morning the digest went out with three orgs ranked at the top that did not belong there, a hackathon, a bot-heavy security tool, a vendor's documentation repo. Thirty subscribers replied. I rolled back, ran the panel against the prior week's truth set, found the off-by-one in the contributor-deduplication step, shipped the fix Thursday at 3am, posted the post-mortem at /uptime Friday morning.",
     lesson:
-      "The methodology is more interesting than the wins. When something breaks, the post-mortem goes public the same week. The regression code, the truth set, the fix commit — all linkable, all CC BY 4.0. That's the whole reason the price is €9.97/mo and not €9,970.",
+      "The methodology is more interesting than the wins. When something breaks, the post-mortem goes public the same week. The regression code, the truth set, the fix commit, all linkable, all CC BY 4.0. That's the whole reason the price is €9.97/mo and not €9,970.",
   },
 ] as const;
 
 /**
- * Three character flaws — Brunson DCS Ch 7.
+ * Three character flaws, Brunson DCS Ch 7.
  */
 export const DATA_NERD_FLAWS = [
   {
@@ -277,7 +277,7 @@ export const DATA_NERD_FLAWS = [
 ] as const;
 
 /**
- * Recognizable catchphrases — Brunson Expert Secrets Ch 2.
+ * Recognizable catchphrases, Brunson Expert Secrets Ch 2.
  */
 export const DATA_NERD_CATCHPHRASES = [
   "Trust the math, not me.",
@@ -295,13 +295,13 @@ export const DATA_NERD_CATCHPHRASES = [
 export const DATA_NERD_TOUCHPOINTS = [
   {
     surface: "Email drip",
-    where: "Days 0–180 in the welcome + daily-story sequences",
+    where: "Days 0-180 in the welcome + daily-story sequences",
     how: "Every email signs as The Data Nerd. P.S. previews the next.",
   },
   {
     surface: "YouTube",
     where: "Acceleration Watch (weekly), State-of-the-Engine talk (monthly), Data Nerd Brief (weekly)",
-    how: "Cartesia synthetic voice — the same voice across every video. No real-voice cameo, ever.",
+    how: "Cartesia synthetic voice, the same voice across every video. No real-voice cameo, ever.",
   },
   {
     surface: "Manifesto + Origin + Founder pages",
@@ -326,18 +326,18 @@ export const DATA_NERD_TOUCHPOINTS = [
 ] as const;
 
 /**
- * Now status — what The Data Nerd is currently working on.
+ * Now status, what The Data Nerd is currently working on.
  *
  * Brunson Expert Secrets Ch 2 + Ch 9: the character must be in daily contact
  * with the tribe. The weekly Sunday digest + monthly /state-of-github
  * address cover the public broadcast cadence. /now is the in-between
- * surface — what's open in the IDE this week, what just shipped, what's
+ * surface, what's open in the IDE this week, what just shipped, what's
  * blocking, what's in the parking lot.
  *
  * Update every Monday. Five fields, no more. The cadence IS the character.
  *
  * The literal "/now" page is part of the broader nownownow.com convention
- * (Derek Sivers) — a public commit by the founder to keep this surface
+ * (Derek Sivers), a public commit by the founder to keep this surface
  * fresher than About-Me. We adopt the convention because it's a perfect
  * anonymity-compatible character beat: status, not face.
  */
@@ -350,16 +350,16 @@ export const DATA_NERD_NOW = {
     "On the data side: unsubscribes now propagate to the subscriber store, and the Sunday digest carries a one-click HTTPS unsubscribe header.",
   ],
   reading: [
-    "Reader replies from the two daily batches — still the cheapest place the next methodology fix comes from.",
+    "Reader replies from the two daily batches, still the cheapest place the next methodology fix comes from.",
     "The conversion-audit backlog: which faceless surfaces still need the plain-English, no-code-required treatment.",
   ],
   blocked: [
-    "Auto-refreshing this /now page from real commit activity. Until that's built, the page only stays current if I update it by hand — which is exactly the kind of thing this section exists to admit.",
+    "Auto-refreshing this /now page from real commit activity. Until that's built, the page only stays current if I update it by hand, which is exactly the kind of thing this section exists to admit.",
   ],
   parkingLot: [
     "The long tail of the conversion audit: the i18n depth pass and the remaining CTA-sprawl trims on secondary pages.",
     "Grading the first 60-day windows on the public /predicted picks as they come due on /scorecard.",
-    "A member-public /wins/[handle] profile per consenting subscriber — drafted, still not shipped.",
+    "A member-public /wins/[handle] profile per consenting subscriber, drafted, still not shipped.",
   ],
   rhythm: {
     monday: "Sunday digest goes out · /predicted refresh",
@@ -367,16 +367,16 @@ export const DATA_NERD_NOW = {
     wednesday: "Long-form essay (alternating Substack / dev.to) · methodology refinement",
     thursday: "Reply batch · panel-data audit",
     friday: "Friday Preview ships · /scorecard refresh",
-    saturday: "Off — no email replies, no commits, no public surface changes",
+    saturday: "Off, no email replies, no commits, no public surface changes",
     sunday: "Sunday digest pre-flight · the next week's /now update queues",
   },
 } as const;
 
 /**
- * Future self — the 12-month character arc.
+ * Future self, the 12-month character arc.
  *
  * Brunson Expert Secrets Ch 22 (Decade in a Day): the character has to
- * project a future. Not a roadmap of features — a public commitment about
+ * project a future. Not a roadmap of features, a public commitment about
  * who the character will be 12 months from now. This is the readers'
  * future-pacing of the character itself, not the product. The two are
  * intentionally distinct: /roadmap is the product future, this is the
@@ -399,19 +399,19 @@ export const DATA_NERD_FUTURE_SELF = {
       n: 2,
       label: "Twelve State-of-Engine addresses on the record.",
       body:
-        "One per month, every month, May 2026 → April 2027. Each one with a falsifiable prediction graded the following month. Twelve in a row is the cadence proof — eleven is a project, twelve is a practice.",
+        "One per month, every month, May 2026 → April 2027. Each one with a falsifiable prediction graded the following month. Twelve in a row is the cadence proof, eleven is a project, twelve is a practice.",
     },
     {
       n: 3,
       label: "/scorecard published with at least 80 weekly picks graded.",
       body:
-        "Twelve months × 4–5 weekly picks per Sunday = ~52 grading windows by May 2027. Hit/Miss/Pending public, no curation. If the published precision drops below 60% across the panel, the price drops with it — the credibility chain has to hold both directions.",
+        "Twelve months × 4-5 weekly picks per Sunday = ~52 grading windows by May 2027. Hit/Miss/Pending public, no curation. If the published precision drops below 60% across the panel, the price drops with it, the credibility chain has to hold both directions.",
     },
     {
       n: 4,
       label: "One additional methodology author on the SSRN paper.",
       body:
-        "Co-author named — credit shared. Not because the work needs help (it doesn't) but because a methodology that lives in one anonymous head is one regression-rewrite away from breaking. A second name on the next preprint version is a continuity commitment to the buyer.",
+        "Co-author named, credit shared. Not because the work needs help (it doesn't) but because a methodology that lives in one anonymous head is one regression-rewrite away from breaking. A second name on the next preprint version is a continuity commitment to the buyer.",
     },
     {
       n: 5,
@@ -423,7 +423,7 @@ export const DATA_NERD_FUTURE_SELF = {
 } as const;
 
 /**
- * Canonical author identity — E-E-A-T entity reconciliation.
+ * Canonical author identity, E-E-A-T entity reconciliation.
  *
  * The Data Nerd is pseudonymous BY DESIGN (polarity #3: "Anonymity is a
  * credibility signal"). We never reveal a real name/face/voice. But a
@@ -433,7 +433,7 @@ export const DATA_NERD_FUTURE_SELF = {
  * persons.
  *
  * Two rules enforce that:
- *   1. ONE @id everywhere — `${SITE}/about#person`. This is the id the rest
+ *   1. ONE @id everywhere, `${SITE}/about#person`. This is the id the rest
  *      of the site already points at (23 references, including bare
  *      `{ "@id": ... }` author pointers). Never mint a second id (no
  *      `#author`, no anonymous bare nodes). A split @id splits the entity
@@ -442,7 +442,7 @@ export const DATA_NERD_FUTURE_SELF = {
  *      Person rather than dangling.
  *   2. The full verified anchor set on every author node. Each URL below is
  *      an independently checkable, already-published surface (see
- *      /citations). Anonymity-safe: scholarly IDs + handles only — never a
+ *      /citations). Anonymity-safe: scholarly IDs + handles only, never a
  *      real name. ORCID + the SSRN / Semantic Scholar *author* pages are
  *      what let an E-E-A-T-aware crawler treat the handle as a credentialed
  *      researcher with a publication record, not an anonymous byline.
@@ -465,7 +465,7 @@ export const DATA_NERD_ORCID_IDENTIFIER = {
  * trust anchors first (ORCID, SSRN author page, Semantic Scholar author
  * page), then dataset/code/social handles, then internal long-form bio
  * surfaces. Note: Wikidata Q139376302 is the *brand* entity, not the
- * person — it lives on the Organization node, never here.
+ * person, it lives on the Organization node, never here.
  */
 export const DATA_NERD_AUTHOR_SAMEAS = [
   "https://orcid.org/0009-0002-2222-4112",
@@ -485,7 +485,7 @@ export const DATA_NERD_AUTHOR_SAMEAS = [
  * Reusable author node for `author` / `accountablePerson` / `creator`
  * fields in any Article, ScholarlyArticle, or Dataset JSON-LD.
  *
- * Use this EVERYWHERE instead of hand-rolling an inline Person — it carries
+ * Use this EVERYWHERE instead of hand-rolling an inline Person, it carries
  * the stable @id, the ORCID identifier, and the full sameAs set, so a
  * crawler reconciles the entity from a single page view.
  */
@@ -499,7 +499,7 @@ export const DATA_NERD_AUTHOR_REF = {
 } as const;
 
 /**
- * Schema.org Person object for The Data Nerd — the full author entity.
+ * Schema.org Person object for The Data Nerd, the full author entity.
  * Emitted at high authority (/data-nerd, /about) with the same @id as
  * DATA_NERD_AUTHOR_REF so every lightweight reference reconciles to it.
  */

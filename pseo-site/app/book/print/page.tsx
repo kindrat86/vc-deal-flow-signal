@@ -8,7 +8,7 @@ import {
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: `${BOOK.title} — printable single-page edition`,
+  title: `${BOOK.title}, printable single-page edition`,
   description:
     "Single-page printable web edition. Save as PDF from your browser, or use the pre-generated PDF/EPUB on the book page.",
   alternates: { canonical: "/book/print" },
@@ -76,7 +76,7 @@ export default function BookPrintPage() {
 
       <footer className="mt-20 pt-10 border-t border-slate-800 text-center text-sm text-gray-400 space-y-2">
         <p>
-          {BOOK.title} — {BOOK.edition}, {BOOK.publishedDate}.
+          {BOOK.title}, {BOOK.edition}, {BOOK.publishedDate}.
         </p>
         <p>
           Read updates and corrections at{" "}

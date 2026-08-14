@@ -4,7 +4,7 @@
  * 1200x630 PNG showing months of runway + band color (danger / warning /
  * safe / infinite). Each shared URL gets its own preview.
  *
- * Math duplicated from components/RunwayCalculator.tsx — see the same
+ * Math duplicated from components/RunwayCalculator.tsx, see the same
  * note on the SAFE OG route.
  *
  * Satori reminder: flex only, no display:grid.
@@ -63,7 +63,7 @@ interface Band {
 const BANDS: Record<Band["key"], Band> = {
   danger: {
     key: "danger",
-    label: "Critical — start fundraising now",
+    label: "Critical, start fundraising now",
     accent: "#fca5a5",
     background: "rgba(239, 68, 68, 0.12)",
     border: "rgba(239, 68, 68, 0.55)",
@@ -262,7 +262,7 @@ export async function GET(req: Request) {
             >
               {Number.isFinite(result.runwayMonths)
                 ? `Net burn ${formatMoney(result.totalNetBurn)}/mo${result.addedBurn > 0 ? ` (incl ${formatMoney(result.addedBurn)} new hires)` : ""}`
-                : "Monthly revenue covers the burn — no runway clock."}
+                : "Monthly revenue covers the burn, no runway clock."}
             </div>
           </div>
 

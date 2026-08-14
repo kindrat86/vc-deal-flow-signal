@@ -5,7 +5,7 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 
 export const metadata: Metadata = {
-  title: "Changelog — Weekly Signal Updates & Product Releases",
+  title: "Changelog, Weekly Signal Updates & Product Releases",
   description:
     "Weekly data refreshes, new sectors, MCP server releases, and product updates for VC Deal Flow Signal. Updated every Monday at 09:00 EEST.",
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
@@ -36,7 +36,7 @@ const productUpdates: ProductEntry[] = [
   },
   {
     date: "2026-05-04",
-    title: "Second Chrome extension shipped: VC GitHub Lookup — Startup Signals on Hover",
+    title: "Second Chrome extension shipped: VC GitHub Lookup, Startup Signals on Hover",
     tag: "integration",
     body: "Companion to the existing Crunchbase + Wellfound badge. Hover any GitHub repo or org link to see commit velocity (14d), velocity change vs prior period, contributor count and growth, signal type, and stage estimate. A chip is also injected next to the page header on direct repo or org page loads, and the toolbar opens a manual lookup form for any GitHub URL. Manifest V3, ~16 KB, no analytics, ≤5-min session-storage cache. Install: https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm",
   },
@@ -141,7 +141,7 @@ export default function ChangelogPage() {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/changelog#webpage",
         url: "https://signals.gitdealflow.com/changelog",
-        name: "Changelog — VC Deal Flow Signal",
+        name: "Changelog, VC Deal Flow Signal",
         description:
           "Weekly data refreshes and product updates for VC Deal Flow Signal.",
         inLanguage: "en-US",
@@ -188,7 +188,7 @@ export default function ChangelogPage() {
         // for "what changed recently" intents than a plain CollectionPage.
         "@type": "LiveBlogPosting",
         "@id": "https://signals.gitdealflow.com/changelog#liveblog",
-        headline: "VC Deal Flow Signal — Live Changelog",
+        headline: "VC Deal Flow Signal, Live Changelog",
         description:
           "Continuously-updated log of weekly data refreshes, product releases, and integration updates.",
         url: "https://signals.gitdealflow.com/changelog",

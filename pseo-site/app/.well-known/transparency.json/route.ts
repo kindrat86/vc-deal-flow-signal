@@ -1,14 +1,14 @@
 /**
- * /.well-known/transparency.json — annual transparency report.
+ * /.well-known/transparency.json, annual transparency report.
  *
  * F38 (2026-05-08). Industry-standard transparency disclosure: government
  * data requests, content takedowns, account terminations, and law-enforcement
  * cooperation, broken down by year. Published in the format used by Cloudflare,
- * Stripe, Discord and similar — one JSON document with a `reports[]` array
+ * Stripe, Discord and similar, one JSON document with a `reports[]` array
  * keyed by reporting year.
  *
  * Public-data-only architecture means most categories report zero, but
- * publishing the zero is itself a trust signal — it confirms there's nothing
+ * publishing the zero is itself a trust signal, it confirms there's nothing
  * being hidden behind a vague "we don't disclose" answer.
  */
 
@@ -26,7 +26,7 @@ export async function GET() {
       "@context": "https://schema.org",
       "@type": "Report",
       "@id": `${SITE}/.well-known/transparency.json`,
-      name: "Annual Transparency Report — VC Deal Flow Signal",
+      name: "Annual Transparency Report, VC Deal Flow Signal",
       description:
         "Annual disclosure of government data requests, content takedown demands, court orders, account terminations and law-enforcement cooperation handled by VC Deal Flow Signal. Published yearly; zero figures are published explicitly rather than omitted.",
       license: "https://creativecommons.org/licenses/by/4.0/",
@@ -50,7 +50,7 @@ export async function GET() {
           year: 2025,
           status: "pre-launch",
           notes:
-            "Service launched on 2026-01-08 — no operational data exists for calendar 2025.",
+            "Service launched on 2026-01-08, no operational data exists for calendar 2025.",
           governmentDataRequests: { received: 0, complied: 0, partiallyComplied: 0, rejected: 0 },
           courtOrders: { received: 0, complied: 0, rejected: 0 },
           contentTakedowns: { received: 0, honored: 0, rejected: 0 },

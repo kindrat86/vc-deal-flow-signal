@@ -6,7 +6,7 @@ import { TrustPageOutro } from "@/components/TrustPageOutro";
 export const metadata = defineMetadata({
   title: "Coordinated Vulnerability Disclosure",
   description:
-    "How to report security issues to VC Deal Flow Signal. Aligned with disclose.io core terms — safe harbor for good-faith research, 72-hour ack, attribution on the hall-of-fame page.",
+    "How to report security issues to VC Deal Flow Signal. Aligned with disclose.io core terms, safe harbor for good-faith research, 72-hour ack, attribution on the hall-of-fame page.",
   path: "/disclosure",
 });
 
@@ -17,7 +17,7 @@ export default function DisclosurePage() {
     "@context": "https://schema.org",
     "@type": "WebPage",
     "@id": `${SITE}/disclosure`,
-    name: "Coordinated Vulnerability Disclosure — VC Deal Flow Signal",
+    name: "Coordinated Vulnerability Disclosure, VC Deal Flow Signal",
     description: metadata.description,
     inLanguage: "en-US",
     isAccessibleForFree: true,
@@ -46,7 +46,7 @@ export default function DisclosurePage() {
       <section className="mb-8 rounded-xl border border-sky-700/30 bg-sky-950/20 p-5 sm:p-6">
         <p className="text-sky-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">Why a buyer should care</p>
         <p className="text-gray-200 text-sm leading-relaxed">
-          You may never report a bug — but the existence of this page is the signal: a vendor that publishes a real disclosure policy, a safe harbor, named scope, and response SLAs is a vendor that has already thought about what happens when something breaks. Most six-person data shops haven&apos;t.
+          You may never report a bug, but the existence of this page is the signal: a vendor that publishes a real disclosure policy, a safe harbor, named scope, and response SLAs is a vendor that has already thought about what happens when something breaks. Most six-person data shops haven&apos;t.
         </p>
       </section>
 
@@ -106,7 +106,7 @@ export default function DisclosurePage() {
         <div className="rounded-xl border border-slate-800 bg-slate-900/40 p-5">
           <h2 className="text-base font-semibold text-gray-100 mb-2">Out of scope</h2>
           <ul className="list-disc list-outside ml-5 space-y-1 text-gray-300">
-            <li>Subprocessor systems (Stripe, Vercel, Resend, etc.) — please report via their own programs</li>
+            <li>Subprocessor systems (Stripe, Vercel, Resend, etc.), please report via their own programs</li>
             <li>Editorial findings on <code className="text-emerald-400">/content/*</code> SEO copy</li>
             <li>Self-XSS and clickjacking on pages without sensitive actions</li>
             <li>Issues that require physical access or social engineering</li>

@@ -1,5 +1,5 @@
 /**
- * 30-day social content batch — Instagram + Facebook + Twitter +
+ * 30-day social content batch, Instagram + Facebook + Twitter +
  * LinkedIn pre-written posts ready for paste-and-publish.
  *
  * Anonymity-respecting: every post is written in the Data Nerd's
@@ -75,7 +75,7 @@ const TAGS_IG = [
 ];
 
 export const SOCIAL_BATCH: readonly SocialPost[] = [
-  // Day 1 — Signal of the Week
+  // Day 1, Signal of the Week
   {
     id: "2026-05-12-01",
     pillar: "signal-of-the-week",
@@ -83,12 +83,12 @@ export const SOCIAL_BATCH: readonly SocialPost[] = [
     crossPostTo: ["linkedin", "instagram", "threads", "bluesky"],
     scheduledIsoDate: "2026-05-12",
     bodies: {
-      twitter: `Signal of the week: ShadcnUI's 14d/90d commit-velocity ratio is 1.62 — third consecutive week above 1.5.
+      twitter: `Signal of the week: ShadcnUI's 14d/90d commit-velocity ratio is 1.62, third consecutive week above 1.5.
 
 Public-data only. github.com/shadcn-ui/ui → Insights → Pulse → 1 month, then 3 months. Compute (weekly × 4) ÷ monthly.
 
 Composite is 5/6. signals.gitdealflow.com/predicted${VIA}`,
-      linkedin: `**Signal of the week:** ShadcnUI's commit-velocity ratio is at 1.62 — the third consecutive week above the 1.5 acceleration threshold.
+      linkedin: `**Signal of the week:** ShadcnUI's commit-velocity ratio is at 1.62, the third consecutive week above the 1.5 acceleration threshold.
 
 What that means in plain English: the team is shipping ~62% more in the last 14 days than their 90-day baseline. Sustained acceleration over 14+ days is the cleanest leading indicator we track.
 
@@ -107,7 +107,7 @@ Read the live ranking: signals.gitdealflow.com/predicted${VIA}
 Methodology paper (CC BY 4.0): ssrn.com/abstract=6606558`,
       instagram: `Signal of the week 📊
 
-ShadcnUI — commit velocity 1.62
+ShadcnUI, commit velocity 1.62
 3rd week running above the 1.5 threshold.
 
 Composite: 5/6
@@ -117,7 +117,7 @@ github.com/shadcn-ui/ui
 Link in bio for the live ranking.
 
 ${TAGS_IG.join(" ")}`,
-      facebook: `Signal of the week: ShadcnUI is showing a 14d/90d commit-velocity ratio of 1.62 — the third consecutive week above the 1.5 acceleration threshold.
+      facebook: `Signal of the week: ShadcnUI is showing a 14d/90d commit-velocity ratio of 1.62, the third consecutive week above the 1.5 acceleration threshold.
 
 The framework backtest: composite of 5/6 with sustained 14-day acceleration → ~38% chance of a venture round closing within 47 days.
 
@@ -160,7 +160,7 @@ Composite: 5/6. signals.gitdealflow.com/predicted`,
     },
   },
 
-  // Day 2 — Framework Explainer
+  // Day 2, Framework Explainer
   {
     id: "2026-05-13-02",
     pillar: "framework-explainer",
@@ -183,7 +183,7 @@ Edge case: enterprise/private package registries don't show. That's a sign of pa
 Save this. Run it on the next dev-tools startup that pitches you.
 
 ${TAGS_IG.join(" ")}`,
-      twitter: `How to read a dependents graph in 60 seconds — most investors don't know GitHub exposes this page.
+      twitter: `How to read a dependents graph in 60 seconds, most investors don't know GitHub exposes this page.
 
 → Repo home → Insights → Dependency graph → Dependents
 → Count external dependents (excl. the org's own repos)
@@ -198,12 +198,12 @@ It's the cheapest external-adoption proxy that exists.
 The procedure:
 1. Open the org's flagship repo (the most-starred one, or the one in the README).
 2. Click Insights → Dependency graph → Dependents.
-3. Count the external dependents — repos that aren't part of the same org.
+3. Count the external dependents, repos that aren't part of the same org.
 4. For a dev-tools startup, 50+ external dependents is meaningful. 200+ is strong.
 
 What the framework filters for: external usage that the founder doesn't have to talk about for the data to exist. Strong PMF signal regardless of revenue.
 
-The edge case worth knowing: enterprise teams using private npm or pip registries won't show up. The dependents page being empty isn't a no-signal. It can be a "private distribution" signal — and that's a different kind of moat.
+The edge case worth knowing: enterprise teams using private npm or pip registries won't show up. The dependents page being empty isn't a no-signal. It can be a "private distribution" signal, and that's a different kind of moat.
 
 The full procedure for all seven signals is in the free 30-day course: signals.gitdealflow.com/challenge${VIA}`,
       facebook: `Framework explainer: how to read a dependents graph in 60 seconds.
@@ -219,7 +219,7 @@ The full 7-signal procedure (free, no card): signals.gitdealflow.com/challenge${
       slides: [
         { headline: "Most investors miss this", body: "GitHub exposes a per-repo dependents page" },
         { headline: "Where it lives", body: "Insights → Dependency graph → Dependents" },
-        { headline: "What to look for", body: "External dependents only — not the org's own repos" },
+        { headline: "What to look for", body: "External dependents only, not the org's own repos" },
         { headline: "Threshold", body: "50+ meaningful · 200+ strong (dev-tools)" },
         { headline: "Edge case", body: "Empty page can mean private distribution = real moat" },
         { headline: "Full framework", body: "30-day course, free · link in bio" },
@@ -228,7 +228,7 @@ The full 7-signal procedure (free, no card): signals.gitdealflow.com/challenge${
     },
   },
 
-  // Day 3 — Data Point
+  // Day 3, Data Point
   {
     id: "2026-05-14-03",
     pillar: "data-point",
@@ -250,7 +250,7 @@ Startups that did not close: 0.61.
 
 Translation: more concentrated codebases (one or two committers doing everything) close fewer rounds than distributed codebases.
 
-The mechanism is straightforward. A 4-person codebase with no single committer dominating is funding a real engineering team. A 1-person codebase is funding a salary. The contract value, the dilution math, and the diligence story are all different — even if the headline metrics look similar.
+The mechanism is straightforward. A 4-person codebase with no single committer dominating is funding a real engineering team. A 1-person codebase is funding a salary. The contract value, the dilution math, and the diligence story are all different, even if the headline metrics look similar.
 
 This is signal #2 of the seven we publish. The procedure to read it yourself runs in 5 minutes from any GitHub org's Insights → Contributors page.
 
@@ -271,7 +271,7 @@ ${TAGS_IG.join(" ")}`,
     },
   },
 
-  // Day 4 — Operator Prompt
+  // Day 4, Operator Prompt
   {
     id: "2026-05-15-04",
     pillar: "operator-prompt",
@@ -281,14 +281,14 @@ ${TAGS_IG.join(" ")}`,
     bodies: {
       twitter: `Try this on one startup you almost-invested in:
 
-1. Gut prediction first — score 0-6 from memory.
+1. Gut prediction first, score 0-6 from memory.
 2. Then run the 5-min composite.
 3. Reply with the delta.
 
 Most useful artifact you'll produce this week. Procedure: signals.gitdealflow.com/challenge${VIA}`,
       linkedin: `**One operator prompt for your weekend.**
 
-Pick a startup you almost-invested in last quarter. Doesn't have to be high-stakes — just one where you remember saying "I'll think about it" and then didn't.
+Pick a startup you almost-invested in last quarter. Doesn't have to be high-stakes, just one where you remember saying "I'll think about it" and then didn't.
 
 Step 1: write down a gut prediction. Score 0-6 from memory, no looking. What's your guess?
 
@@ -296,7 +296,7 @@ Step 2: run the 5-minute composite on their GitHub org. Insights → Pulse for c
 
 Step 3: compute the delta between your gut and the composite.
 
-The artifact you produce — a one-line note with org + gut + composite + delta — is the most useful sourcing-process exercise you'll do this week. It calibrates your gut against the framework, in both directions. Sometimes the framework is wrong; sometimes your gut was. Both are useful.
+The artifact you produce, a one-line note with org + gut + composite + delta, is the most useful sourcing-process exercise you'll do this week. It calibrates your gut against the framework, in both directions. Sometimes the framework is wrong; sometimes your gut was. Both are useful.
 
 If you reply with the delta (DM is fine), we're collecting cases for the next iteration of the curriculum.
 
@@ -306,7 +306,7 @@ Procedure: signals.gitdealflow.com/challenge${VIA}`,
     },
   },
 
-  // Day 5 — Calibration Case
+  // Day 5, Calibration Case
   {
     id: "2026-05-16-05",
     pillar: "calibration-case",
@@ -314,7 +314,7 @@ Procedure: signals.gitdealflow.com/challenge${VIA}`,
     crossPostTo: ["twitter", "instagram", "facebook"],
     scheduledIsoDate: "2026-05-16",
     bodies: {
-      linkedin: `**Calibration case — a recently-funded round, scored at month -3.**
+      linkedin: `**Calibration case, a recently-funded round, scored at month -3.**
 
 Vercel announced their Series E in 2026-04. We backtested their composite as it would have read 90 days before the announce.
 
@@ -325,9 +325,9 @@ Score at month -3: **5/6.**
 → Dependents graph: 280+ external dependents on Next.js alone ✅
 → README freshness: substantive diff at -42 days ✅
 → New repo creation: 4 platform repos in last 30 days ✅
-→ Issue-to-PR ratio: 0.9 — below the 1.5 threshold (the only miss)
+→ Issue-to-PR ratio: 0.9, below the 1.5 threshold (the only miss)
 
-The miss on issue-to-PR is interesting because it suggests the team was fielding inbound faster than they could ship — the kind of "we need the round to hire" moment that often precedes a growth-stage close.
+The miss on issue-to-PR is interesting because it suggests the team was fielding inbound faster than they could ship, the kind of "we need the round to hire" moment that often precedes a growth-stage close.
 
 Composite framework would have flagged this round before the headline. ~5× lift over the base rate at month -3.
 
@@ -351,22 +351,22 @@ Only miss: issue-to-PR ratio (suggested inbound > shipping speed)
 Framework would have flagged this round 90 days early.
 
 ${TAGS_IG.join(" ")}`,
-      facebook: `Calibration case — Vercel's Series E announced April 2026, backtested at month -3.
+      facebook: `Calibration case, Vercel's Series E announced April 2026, backtested at month -3.
 
-The composite read 5/6 ninety days before the announce. The only miss was the issue-to-PR ratio (0.9 vs the 1.5 healthy threshold) which suggested inbound was outpacing shipping — the kind of "we need the round to hire" moment that often precedes a growth-stage close.
+The composite read 5/6 ninety days before the announce. The only miss was the issue-to-PR ratio (0.9 vs the 1.5 healthy threshold) which suggested inbound was outpacing shipping, the kind of "we need the round to hire" moment that often precedes a growth-stage close.
 
 Calibration runs are how you build trust in the framework. Run one a week. SSRN: ssrn.com/abstract=6606558`,
     },
   },
 
-  // Days 6-30 — additional posts. To keep this file readable, the
+  // Days 6-30, additional posts. To keep this file readable, the
   // pillar mix continues: Signal of the Week (Mon), Explainer (Wed),
   // Calibration (Fri), Data Point (Tue), Operator Prompt (Sat). The
   // generator script reads /api/v1/signals.json + /api/v1/methodology.json
-  // and produces a fresh 30-day batch each month — see
+  // and produces a fresh 30-day batch each month, see
   // scripts/generate-social-batch.ts.
 
-  // Truncated batch — production use ships 30+ entries via the
+  // Truncated batch, production use ships 30+ entries via the
   // monthly generator. The 5 entries above are the canonical
   // template for each pillar; the operator playbook documents
   // the regeneration cadence.
@@ -392,7 +392,7 @@ export const BATCH_META = {
   ),
 } as const;
 
-// Helper for the playbook — given a `ChallengeDay`, produce a
+// Helper for the playbook, given a `ChallengeDay`, produce a
 // social-post draft that links the day's permalink. Used by the
 // monthly batch generator.
 export function challengeDayToSocialDraft(
@@ -404,7 +404,7 @@ export function challengeDayToSocialDraft(
     return `Day ${day.day}: ${day.title}\n\n${day.oneLine}\n\n${url}`;
   }
   if (channel === "linkedin" || channel === "facebook") {
-    return `**Day ${day.day} of the 30-Day Deal Flow Reset — ${day.title}.**\n\n${day.whyItMatters}\n\nProcedure: ${url}`;
+    return `**Day ${day.day} of the 30-Day Deal Flow Reset, ${day.title}.**\n\n${day.whyItMatters}\n\nProcedure: ${url}`;
   }
   // instagram caption
   return `Day ${day.day}: ${day.title}\n\n${day.oneLine}\n\nFull procedure (free, no card) → link in bio.\n\n${TAGS_IG.join(" ")}`;

@@ -13,7 +13,7 @@ export interface OGTemplateProps {
   kind: string;
   /** Headline; truncated to ~130 chars */
   title: string;
-  /** Optional 1–2 line description; truncated to ~220 chars */
+  /** Optional 1-2 line description; truncated to ~220 chars */
   subtitle?: string;
   /** Up to 3 stats shown above the footer */
   stats?: OGStat[];
@@ -38,7 +38,7 @@ function clamp(s: string | undefined, max: number): string | undefined {
  * Used by every programmatic surface's opengraph-image.tsx so social previews
  * vary by slug instead of all sharing the site-wide default.
  *
- * Constraints: next/og uses Satori — only inline styles, flex layout.
+ * Constraints: next/og uses Satori, only inline styles, flex layout.
  */
 export function renderBrandOG(p: OGTemplateProps): ImageResponse {
   const accent = p.accent ?? "#0ea5e9";

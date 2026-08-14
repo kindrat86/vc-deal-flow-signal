@@ -9,7 +9,7 @@
  * of-fund LP positions, or anything not publicly disclosed by both
  * sides.
  *
- * This is intentionally NOT exhaustive — every fund has more
+ * This is intentionally NOT exhaustive, every fund has more
  * investments than our /signal/ corpus covers. The map answers
  * "which of OUR tracked companies has fund X publicly backed?" not
  * "what is fund X's full portfolio?".
@@ -62,7 +62,7 @@ export const FUND_PORTFOLIO: Record<string, string[]> = {
   "insight-partners": ["hashicorp", "neon"],
   "khosla-ventures": ["openai", "stripe", "huggingface"],
   lightspeed: ["mistral-ai", "elevenlabs", "stripe"],
-  nea: ["mongoDB", "databricks"].filter((s) => s === "neon"), // placeholder — NEA's most relevant exposure to our corpus is via Neon
+  nea: ["mongoDB", "databricks"].filter((s) => s === "neon"), // placeholder, NEA's most relevant exposure to our corpus is via Neon
   nfx: [],
   "pear-vc": [],
   "pioneer-fund": [],

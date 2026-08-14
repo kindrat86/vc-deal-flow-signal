@@ -4,7 +4,7 @@ import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 
 export const metadata: Metadata = {
   title:
-    "Confirmed — your 30-Day Deal Flow Reset starts now",
+    "Confirmed, your 30-Day Deal Flow Reset starts now",
   description:
     "Email confirmed. Day 1 of the 30-Day Deal Flow Reset is queued for the next 15 minutes. Here's the four-week curriculum and what to expect.",
   alternates: { canonical: "/challenge/started" },
@@ -22,7 +22,7 @@ export default function ChallengeStartedPage() {
       </h1>
       <p className="text-gray-400 text-base leading-relaxed mb-8">
         Welcome to the 30-Day Deal Flow Reset. Pick one startup before tomorrow
-        — any one. A founder you met, a company you almost-invested in, a
+any one. A founder you met, a company you almost-invested in, a
         portfolio org you want to monitor. Have its GitHub URL ready. The first
         email walks you through the framework; over the next 30 days you&rsquo;ll
         learn the 7 atomic signals (Week 1), apply the composite to real
@@ -36,28 +36,24 @@ export default function ChallengeStartedPage() {
         </h2>
         <ol className="space-y-2 text-sm text-gray-300">
           <li>
-            <span className="text-emerald-400 font-mono">Day 0</span> (now) —
+            <span className="text-emerald-400 font-mono">Day 0</span> (now) -
             Welcome + curriculum + tomorrow&rsquo;s prep
           </li>
           <li>
-            <span className="text-emerald-400 font-mono">Week 1 (D1-7)</span> —
-            Learn: each of the 7 atomic signals (commit velocity →
+            <span className="text-emerald-400 font-mono">Week 1 (D1-7)</span>: Learn: each of the 7 atomic signals (commit velocity →
             contributor diversity → dependents graph → README freshness → new
             repo creation → issue-to-PR ratio → composite scoring)
           </li>
           <li>
-            <span className="text-emerald-400 font-mono">Week 2 (D8-14)</span> —
-            Apply: score 3 candidates from your pipeline + 1 calibration
+            <span className="text-emerald-400 font-mono">Week 2 (D8-14)</span>: Apply: score 3 candidates from your pipeline + 1 calibration
             backtest, ending with your first scorecard artifact
           </li>
           <li>
-            <span className="text-emerald-400 font-mono">Week 3 (D15-21)</span> —
-            Synthesize: 10-org watchlist, weekly Monday rhythm, sector
+            <span className="text-emerald-400 font-mono">Week 3 (D15-21)</span>: Synthesize: 10-org watchlist, weekly Monday rhythm, sector
             batching, score-driven founder Q&amp;A, the 30-second pre-read
           </li>
           <li>
-            <span className="text-emerald-400 font-mono">Week 4 (D22-30)</span> —
-            Operationalize: alerts, anti-signals, co-investor share template,
+            <span className="text-emerald-400 font-mono">Week 4 (D22-30)</span>: Operationalize: alerts, anti-signals, co-investor share template,
             MCP integration, custom weights, retrospective, graduation
           </li>
         </ol>
@@ -74,8 +70,7 @@ export default function ChallengeStartedPage() {
           >
             /methodology
           </Link>{" "}
-          <span className="text-gray-400 text-sm">
-            — the open, reproducible methodology behind the seven signals.
+          <span className="text-gray-400 text-sm">the open, reproducible methodology behind the seven signals.
           </span>
         </li>
         <li>
@@ -85,8 +80,7 @@ export default function ChallengeStartedPage() {
           >
             /predicted
           </Link>{" "}
-          <span className="text-gray-400 text-sm">
-            — this week&rsquo;s public Acceleration Watch (10 named startups,
+          <span className="text-gray-400 text-sm">this week&rsquo;s public Acceleration Watch (10 named startups,
             graded post-hoc).
           </span>
         </li>
@@ -99,8 +93,7 @@ export default function ChallengeStartedPage() {
           >
             ssrn.com/abstract=6606558
           </a>{" "}
-          <span className="text-gray-400 text-sm">
-            — the SSRN paper covering the 219-round panel.
+          <span className="text-gray-400 text-sm">the SSRN paper covering the 219-round panel.
           </span>
         </li>
       </ul>

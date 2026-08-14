@@ -12,13 +12,13 @@ export const revalidate = 604800;
 
 export const metadata: Metadata = {
   title:
-    "Playbooks — operator how-tos for VC deal flow via GitHub signals",
+    "Playbooks, operator how-tos for VC deal flow via GitHub signals",
   description:
     "Reproducible how-tos for operator-investors, scouts, solo founders, and angels. Each playbook ships a fixed time-budget, a step-by-step rubric, and a CTA into the live product.",
   alternates: { canonical: "/playbooks" },
   openGraph: {
     title:
-      "Playbooks — operator how-tos for VC deal flow via GitHub signals",
+      "Playbooks, operator how-tos for VC deal flow via GitHub signals",
     description:
       "Reproducible how-tos for operator-investors, scouts, solo founders, and angels. Step-by-step rubrics with citable facts and CTAs into the live product.",
     url: `${SITE}/playbooks`,
@@ -26,7 +26,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Playbooks — operator how-tos for VC deal flow",
+    title: "Playbooks, operator how-tos for VC deal flow",
     description:
       "Reproducible how-tos for operator-investors, scouts, solo founders, and angels.",
   },
@@ -61,7 +61,7 @@ export default function PlaybooksIndexPage() {
     "@graph": [
       {
         "@type": "CollectionPage",
-        name: "Playbooks — operator how-tos for VC deal flow",
+        name: "Playbooks, operator how-tos for VC deal flow",
         description:
           "Reproducible how-tos for operator-investors, scouts, solo founders, and angels. Each playbook ships a fixed time-budget, a step-by-step rubric, and a CTA into the live product.",
         url: `${SITE}/playbooks`,
@@ -75,7 +75,7 @@ export default function PlaybooksIndexPage() {
       },
       {
         "@type": "ItemList",
-        name: "Playbooks — operator how-tos",
+        name: "Playbooks, operator how-tos",
         description:
           "List of reproducible operator-investor playbooks ranging from 15-minute qualification rubrics to 18-month relationship-compounding mechanics.",
         numberOfItems: playbooks.length,
@@ -108,7 +108,7 @@ export default function PlaybooksIndexPage() {
         "@type": "WebPage",
         "@id": `${SITE}/playbooks#webpage`,
         url: `${SITE}/playbooks`,
-        name: "Playbooks — operator how-tos for VC deal flow via GitHub signals",
+        name: "Playbooks, operator how-tos for VC deal flow via GitHub signals",
         description:
           "Reproducible how-tos for operator-investors, scouts, solo founders, and angels.",
         inLanguage: "en-US",
@@ -152,7 +152,7 @@ export default function PlaybooksIndexPage() {
             data-speakable
           >
             Reproducible playbooks for operator-investors, scouts, solo
-            founders, and angels — each shipping a fixed time budget, a
+            founders, and angels, each shipping a fixed time budget, a
             step-by-step rubric, and a clean handoff into the live product.
             Steal them, fork them, run them weekly.
           </p>
@@ -198,7 +198,7 @@ export default function PlaybooksIndexPage() {
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
             Every playbook hands off to the right surface at the right step
-            — the free public signals feed for sourcing pulls, the methodology
+the free public signals feed for sourcing pulls, the methodology
             page for scoring questions, the free book for worked examples, and{" "}
             <Link
               href="/firstlook"

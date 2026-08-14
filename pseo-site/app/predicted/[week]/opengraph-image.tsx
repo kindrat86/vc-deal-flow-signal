@@ -7,7 +7,7 @@ import {
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "VC Deal Flow Signal — Acceleration Watch (weekly picks, graded post-hoc)";
+export const alt = "VC Deal Flow Signal, Acceleration Watch (weekly picks, graded post-hoc)";
 
 export default async function OGImage({
   params,

@@ -110,7 +110,7 @@ function computeRunway(inputs: Inputs): ComputedResult {
     endDate = new Date(now.getFullYear(), now.getMonth() + Math.round(runwayMonths), 1);
     if (runwayMonths < 6) {
       band = "danger";
-      bandLabel = "Critical — start fundraising now";
+      bandLabel = "Critical, start fundraising now";
     } else if (runwayMonths < 12) {
       band = "warning";
       bandLabel = "Fundraise window opens here";
@@ -238,7 +238,7 @@ export function RunwayCalculator() {
           <p className="text-sm opacity-90">
             {result.bandLabel}
             {result.runwayEndDate
-              ? ` — runs out around ${formatDate(result.runwayEndDate)}.`
+              ? `, runs out around ${formatDate(result.runwayEndDate)}.`
               : "."}
           </p>
         </div>
@@ -252,7 +252,7 @@ export function RunwayCalculator() {
           <ResultCard
             label="Added burn from hires"
             value={
-              result.addedBurn > 0 ? `+${formatMoney(result.addedBurn)}` : "—"
+              result.addedBurn > 0 ? `+${formatMoney(result.addedBurn)}` : "-"
             }
             sublabel={
               inputs.newHires > 0
@@ -279,7 +279,7 @@ export function RunwayCalculator() {
         <p>
           <span className="text-gray-300 font-medium">Loaded cost:</span> per-engineer
           monthly cost = salary × 1.3 / 12. The 1.3 multiplier covers
-          employer-side taxes, healthcare, equipment, and tools — adjust the
+          employer-side taxes, healthcare, equipment, and tools, adjust the
           salary input if your loaded cost differs.
         </p>
       </div>
@@ -293,7 +293,7 @@ export function RunwayCalculator() {
           {copied ? "Link copied" : "Copy share link"}
         </button>
         <p className="text-xs text-gray-500">
-          The URL contains your inputs — share it with your co-founder or
+          The URL contains your inputs, share it with your co-founder or
           investor without retyping anything.
         </p>
       </div>
@@ -301,7 +301,7 @@ export function RunwayCalculator() {
       <p className="mt-6 text-xs text-gray-500 leading-relaxed">
         Educational tool. Real runway calculations should account for
         seasonality, accruals, deferred revenue, payment-collection timing,
-        and one-off expenses. Not financial planning advice — talk to your
+        and one-off expenses. Not financial planning advice, talk to your
         CFO or fractional finance lead.
       </p>
     </div>

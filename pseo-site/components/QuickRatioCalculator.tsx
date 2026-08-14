@@ -15,13 +15,13 @@ import { useRouter, useSearchParams } from "next/navigation";
  * shrinking.
  *
  * Bands:
- *   ≥ 4   Exceptional — best-in-class growth efficiency
- *   2-4   Healthy — top quartile
- *   1.5-2 OK — typical at scale
- *   1-1.5 Concerning — net churn is dominating growth
- *   < 1   Bad — net ARR is shrinking
+ *   ≥ 4   Exceptional, best-in-class growth efficiency
+ *   2-4   Healthy, top quartile
+ *   1.5-2 OK, typical at scale
+ *   1-1.5 Concerning, net churn is dominating growth
+ *   < 1   Bad, net ARR is shrinking
  *
- * Undefined when there are no losses (churned + contracted = 0) —
+ * Undefined when there are no losses (churned + contracted = 0) -
  * the ratio is technically infinite but doesn't carry information at
  * very early stage.
  *
@@ -100,7 +100,7 @@ function computeQuickRatio(inputs: Inputs): ComputedResult {
       quickRatio: Number.NaN,
       band: "undefined",
       bandLabel:
-        "No ARR movement — enter at least one gain or loss to compute a ratio.",
+        "No ARR movement, enter at least one gain or loss to compute a ratio.",
     };
   }
 
@@ -112,7 +112,7 @@ function computeQuickRatio(inputs: Inputs): ComputedResult {
       quickRatio: Number.POSITIVE_INFINITY,
       band: "infinite",
       bandLabel:
-        "No ARR losses this period — the ratio is technically infinite. Common at very early stage; less informative as you scale.",
+        "No ARR losses this period, the ratio is technically infinite. Common at very early stage; less informative as you scale.",
     };
   }
 
@@ -123,21 +123,21 @@ function computeQuickRatio(inputs: Inputs): ComputedResult {
 
   if (quickRatio >= 4) {
     band = "exceptional";
-    bandLabel = "Exceptional — best-in-class growth efficiency.";
+    bandLabel = "Exceptional, best-in-class growth efficiency.";
   } else if (quickRatio >= 2) {
     band = "healthy";
-    bandLabel = "Healthy — top quartile.";
+    bandLabel = "Healthy, top quartile.";
   } else if (quickRatio >= 1.5) {
     band = "ok";
-    bandLabel = "OK — typical at scale.";
+    bandLabel = "OK, typical at scale.";
   } else if (quickRatio >= 1) {
     band = "concerning";
     bandLabel =
-      "Concerning — net churn is dominating growth. Investors will dig in.";
+      "Concerning, net churn is dominating growth. Investors will dig in.";
   } else {
     band = "bad";
     bandLabel =
-      "Bad — net ARR is shrinking. Fix retention before scaling acquisition.";
+      "Bad, net ARR is shrinking. Fix retention before scaling acquisition.";
   }
 
   return { gainedArr, lostArr, netNewArr, quickRatio, band, bandLabel };
@@ -275,7 +275,7 @@ export function QuickRatioCalculator() {
           <span className="text-gray-300 font-medium">Why this metric:</span>{" "}
           quick ratio captures the gross-flows view of growth that NDR
           (net dollar retention) compresses into a single ratio. Two
-          companies with the same NDR can have very different quick ratios —
+          companies with the same NDR can have very different quick ratios -
           the one with higher quick ratio is growing through acquisition AND
           retention; the one with lower quick ratio is barely staying ahead
           of its own churn.
@@ -296,7 +296,7 @@ export function QuickRatioCalculator() {
           {copied ? "Link copied" : "Copy share link"}
         </button>
         <p className="text-xs text-gray-500">
-          The URL contains your inputs — drop into a board deck or investor
+          The URL contains your inputs, drop into a board deck or investor
           update without retyping.
         </p>
       </div>

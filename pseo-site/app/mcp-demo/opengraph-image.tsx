@@ -6,7 +6,7 @@ import { ImageResponse } from "next/og";
  * Replaces the previous 1.9 MB animated `mcp-demo.gif`, which was doing
  * quadruple duty as the <video> poster, the Open Graph image, the Twitter
  * card, and the JSON-LD thumbnail. A poster/thumbnail should be a light
- * *static* frame — an animated GIF of that size forced every visitor and
+ * *static* frame, an animated GIF of that size forced every visitor and
  * every social-preview crawler to download ~1.9 MB for a still, hurting LCP
  * and producing blank/oversized previews on platforms that reject large or
  * animated OG images.
@@ -20,7 +20,7 @@ import { ImageResponse } from "next/og";
 
 export const size = { width: 1280, height: 720 };
 export const contentType = "image/png";
-export const alt = "VC Deal Flow Signal MCP Server — Claude Desktop Demo";
+export const alt = "VC Deal Flow Signal MCP Server, Claude Desktop Demo";
 
 export default function McpDemoPoster() {
   return new ImageResponse(

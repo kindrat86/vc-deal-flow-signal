@@ -12,7 +12,7 @@ Key properties:
 - Deterministic: same file tree → same sitemap.
 - Honest lastmod: uses each file's mtime (ISO YYYY-MM-DD).
   Omits <lastmod> when a file's mtime is unavailable or unreliable
-  (same as the generator run date — content didn't change).
+  (same as the generator run date, content didn't change).
 
 Run: python3 _rebuild_sitemap.py
 After run: validate with _validate_sitemap.py
@@ -32,13 +32,13 @@ TODAY = date.today().isoformat()
 # Directories whose contents are never indexable
 EXCLUDE_DIRS = {
     ".vercel", "node_modules", ".git",
-    "embed",        # embeddable widgets — X-Robots-Tag: noindex
-    "widgets",      # embeddable widgets — X-Robots-Tag: noindex
-    "network",      # network widget — X-Robots-Tag: noindex
-    "schema",       # schema.org files — X-Robots-Tag: noindex
+    "embed",        # embeddable widgets, X-Robots-Tag: noindex
+    "widgets",      # embeddable widgets, X-Robots-Tag: noindex
+    "network",      # network widget, X-Robots-Tag: noindex
+    "schema",       # schema.org files, X-Robots-Tag: noindex
     "api",          # API routes
-    "es",           # Spanish — has own sitemap (sitemap-es.xml)
-    "de",           # German — has own sitemap (sitemap-de.xml)
+    "es",           # Spanish, has own sitemap (sitemap-es.xml)
+    "de",           # German, has own sitemap (sitemap-de.xml)
 }
 
 # Specific files to exclude (non-indexable)
@@ -73,8 +73,8 @@ EXCLUDE_FILES = {
     "report.html",        # has noindex meta
     "funnel-math.html",
     # Soft-404 / thin content pages (GSC "Soft 404" fix, Aug 2026)
-    "pulse.html",              # 270 chars visible text — live JS visualizer
-    "trustpilot-footer-link.html",  # 140 chars — link-building artifact
+    "pulse.html",              # 270 chars visible text, live JS visualizer
+    "trustpilot-footer-link.html",  # 140 chars, link-building artifact
     "embed-gallery.html",      # thin widget gallery
     "embed/tracker.html",      # embeddable widget
     "embed/check-velocity.html",  # embeddable widget
@@ -161,7 +161,7 @@ def get_lastmod(filepath: Path):  # -> Optional[str]
         mtime_dt = datetime.fromtimestamp(mtime, tz=timezone.utc)
         
         # If mtime is within 5 minutes of now, the file was likely
-        # just regenerated — omit lastmod (unreliable)
+        # just regenerated, omit lastmod (unreliable)
         now = datetime.now(timezone.utc)
         if abs((now - mtime_dt).total_seconds()) < 300:
             return None
@@ -315,7 +315,7 @@ def main():
         update_sitemap_index(BASE / "sitemap.xml", {"sitemap-pages.xml"})
         update_sitemap_index(BASE / "sitemap-index.xml", {"sitemap-pages.xml"})
     else:
-        print(f"\n  Unchanged: {out_path} ({len(pages)} URLs) — skipped write")
+        print(f"\n  Unchanged: {out_path} ({len(pages)} URLs), skipped write")
     
     # Summary
     print(f"\n  Sitemap summary:")
@@ -387,11 +387,11 @@ def rebuild_image_sitemap(pages, pages_changed):
                 local_path = BASE / src[len(f"http://{DOMAIN}/"):]
             
             if local_path is not None:
-                # Same-domain URL — check if file exists locally
+                # Same-domain URL, check if file exists locally
                 if local_path.exists():
                     src = f"https://{DOMAIN}" + ('/' + str(local_path.relative_to(BASE)) if local_path != BASE else '')
                 else:
-                    # No local file — skip (dynamic route, API, etc.)
+                    # No local file, skip (dynamic route, API, etc.)
                     continue
             elif not src.startswith('http'):
                 src = f"https://{DOMAIN}/{src}"

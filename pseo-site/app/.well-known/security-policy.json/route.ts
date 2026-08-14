@@ -1,5 +1,5 @@
 /**
- * /.well-known/security-policy.json — JSON-structured companion to security.txt.
+ * /.well-known/security-policy.json, JSON-structured companion to security.txt.
  *
  * Pass VII (2026-05-05). RFC 9116 (security.txt) is the canonical format,
  * but several AI agents and automated scanners default to JSON descriptors

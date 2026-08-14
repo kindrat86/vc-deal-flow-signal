@@ -1,5 +1,5 @@
 /**
- * F24 — pSEO uniqueness audit
+ * F24, pSEO uniqueness audit
  *
  * Computes within-surface 64-bit SimHash fingerprints over our programmatic
  * pSEO content and pairwise-compares them. Fails the build if more than
@@ -65,7 +65,7 @@ interface Surface {
    * When true, the surface is MEASURED and reported but does NOT count
    * toward the build-gating global FAIL threshold. Used for combinatorial
    * and entity-template families (sector×city, signal) whose
-   * cross-page overlap is structural — driven by the shared `companies.ts`
+   * cross-page overlap is structural, driven by the shared `companies.ts`
    * editorial template, not by a per-page authoring defect. Their fix is a
    * product/content decision (rewrite per-entity editorial, noindex thin
    * leaves, or canonical to a hub), not something a build gate should force.
@@ -97,7 +97,7 @@ interface SurfaceReport {
 /**
  * Recursively walk an arbitrary JSON-like value and concatenate every
  * string leaf into a single body. Means we don't have to hand-code the
- * shape of every surface's entry — adding a new surface is just an import
+ * shape of every surface's entry, adding a new surface is just an import
  * + an entry in the SURFACES array below.
  */
 function flatten(value: unknown): string {
@@ -206,7 +206,7 @@ const SURFACES: Surface[] = [
     entries: competitorVsPairs.map((v) => buildEntry(v.slug, v)),
   },
   {
-    // Niche-down — Greg-style "riches in the niches" cluster (2026-05-22).
+    // Niche-down, Greg-style "riches in the niches" cluster (2026-05-22).
     // Flattens each leaf-niche to its full body for SimHash. Slug shape
     // "<sector>/<sub-niche>" so the basePath is /niche-down and the leaf
     // URL is /niche-down/<sector>/<sub-niche>.
@@ -222,7 +222,7 @@ const SURFACES: Surface[] = [
     entries: starsCases.map((c) => buildEntry(c.slug, c)),
   },
   {
-    // /build-vs-invest/[sector] — editorial "build it yourself vs back a
+    // /build-vs-invest/[sector], editorial "build it yourself vs back a
     // startup" pages, one per sector. Curation-gated (no live cell-size
     // threshold), so it belongs under the near-dup gate. Flagged by the
     // 2026-05-28 thin-page analysis as ungated.
@@ -231,14 +231,14 @@ const SURFACES: Surface[] = [
     entries: buildVsInvestSectors.map((s) => buildEntry(s.slug, s)),
   },
   {
-    // /solo-founder-tracker/[sector] — per-sector solo-founder breakout
+    // /solo-founder-tracker/[sector], per-sector solo-founder breakout
     // commentary. Curation-gated; added to the gate 2026-05-28.
     name: "solo-founder-tracker",
     basePath: "/solo-founder-tracker",
     entries: SOLO_FOUNDER_SECTORS.map((s) => buildEntry(s.slug, s)),
   },
   {
-    // /community-signal/[slug] — per-community editorial pages. Curation-
+    // /community-signal/[slug], per-community editorial pages. Curation-
     // gated; added to the gate 2026-05-28.
     name: "community-signal",
     basePath: "/community-signal",
@@ -250,13 +250,13 @@ const SURFACES: Surface[] = [
   // from `companies.ts`, whose per-company prose is templated mad-libs
   // ("For {Name}, we monitor: (1) Commit velocity…", "{Name} sits at an
   // interesting point in the {sector} engineering curve…"). Only the name
-  // and 1–2 variables change, so any page built from those objects is a
+  // and 1-2 variables change, so any page built from those objects is a
   // near-duplicate of its siblings. This is genuine scaled-content exposure.
   // We MEASURE it here so the number is visible on every build/PR, but do
-  // not fail the deploy — the remediation is a content rewrite or an
+  // not fail the deploy, the remediation is a content rewrite or an
   // index-strategy decision, owned by a human, not a CI gate.
   {
-    // /signal/[slug] — the root: one entity page per tracked company.
+    // /signal/[slug], the root: one entity page per tracked company.
     name: "signal",
     basePath: "/signal",
     reportOnly: true,
@@ -268,7 +268,7 @@ const SURFACES: Surface[] = [
   // The route, content module (content/showdowns.ts), sitemap/llms/entities
   // references, and internal links are gone; /showdown/* now redirects.
   {
-    // /sector/[slug]/in/[city] — sector × city crossings. The 2026-05-28
+    // /sector/[slug]/in/[city], sector × city crossings. The 2026-05-28
     // thin-page analysis named these the highest-risk combinatorial cells.
     name: "sector-city",
     basePath: "/sector",
@@ -332,7 +332,7 @@ function auditSurface(s: Surface): SurfaceReport {
 }
 
 function main(): void {
-  console.log("\nF24 — pSEO uniqueness audit");
+  console.log("\nF24, pSEO uniqueness audit");
   console.log("================================");
   const minSimPct = (((64 - HAMMING_THRESHOLD) / 64) * 100).toFixed(1);
   console.log(`Hamming threshold:    ${HAMMING_THRESHOLD} bits  (≥${minSimPct}% body similarity)`);
@@ -365,13 +365,13 @@ function main(): void {
   console.log(`Verdict (build gate):       ${verdict}`);
 
   // --- Observational tier: combinatorial / entity-template families. ---
-  // Measured every build but NOT gating — high cross-page overlap here is
+  // Measured every build but NOT gating, high cross-page overlap here is
   // structural (driven by the shared companies.ts template), and the fix is
   // a content/index-strategy decision, not a CI failure.
   const observational = reports.filter((r) => r.reportOnly);
   if (observational.length > 0) {
     console.log("");
-    console.log("Observational (report-only — NOT build-gating):");
+    console.log("Observational (report-only, NOT build-gating):");
     for (const r of observational) {
       console.log(fmt(r));
       for (const p of r.pairs.slice(0, 3)) {
@@ -389,7 +389,7 @@ function main(): void {
         `⚠️  ${obsPct.toFixed(0)}% of combinatorial/entity pages are near-duplicates of a sibling. ` +
           `Root cause: templated per-company prose in content/companies.ts. ` +
           `Remediation is a content/index-strategy decision (rewrite per-entity editorial, ` +
-          `noindex thin leaves, or canonical to a hub) — see marketing/seo-geo-aeo-audit-2026-05-29.md.`,
+          `noindex thin leaves, or canonical to a hub), see marketing/seo-geo-aeo-audit-2026-05-29.md.`,
       );
     }
   }

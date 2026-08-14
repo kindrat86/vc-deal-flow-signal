@@ -3,7 +3,7 @@ import { parseBestSectorSlug, getSortedStartups } from "@/lib/data";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "VC Deal Flow Signal — Best startups by sector";
+export const alt = "VC Deal Flow Signal, Best startups by sector";
 
 export default async function OGImage({
   params,

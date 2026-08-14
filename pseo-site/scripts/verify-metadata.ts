@@ -2,7 +2,7 @@
 /**
  * Verify every Next.js `page.tsx` exports either `metadata` or
  * `generateMetadata`. Closes audit-2026-05-08 gap "No central metadata()
- * enforcement helper" — companion to `lib/metadata.ts`.
+ * enforcement helper", companion to `lib/metadata.ts`.
  *
  * The helper makes it easy to define metadata, but a missed export still
  * silently falls back to the layout default (no per-page <title>
@@ -37,7 +37,7 @@ const ALLOWLIST_PATTERNS = [
   /\/twitter-image\.tsx$/,
   /\/icon\.tsx$/,
   /\/apple-icon\.tsx$/,
-  // Sitemap and robots.ts emit XML/text — not HTML pages.
+  // Sitemap and robots.ts emit XML/text, not HTML pages.
   /\/sitemap\.ts$/,
   /\/sitemap\.tsx$/,
   /\/robots\.ts$/,
@@ -100,7 +100,7 @@ async function main() {
   }
 
   console.log(
-    `[verify-metadata] OK — ${scanned} page(s) scanned, all export metadata.`,
+    `[verify-metadata] OK, ${scanned} page(s) scanned, all export metadata.`,
   );
 }
 

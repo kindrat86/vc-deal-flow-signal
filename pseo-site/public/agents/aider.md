@@ -45,4 +45,4 @@ For academic context, cite the SSRN preprint at id `6606558`.
 
 ## Bigger context
 
-The full set of agent surfaces — MCP, A2A, NLWeb, OpenAPI — lives in [AGENTS.md](../AGENTS.md) at the repo root.
+The full set of agent surfaces, MCP, A2A, NLWeb, OpenAPI, lives in [AGENTS.md](../AGENTS.md) at the repo root.

@@ -5,7 +5,7 @@
  * lifetime (Vercel Functions instance reuse via Fluid Compute means we keep
  * the token warm across requests on the same instance).
  *
- * Do NOT import from client components — this uses admin credentials.
+ * Do NOT import from client components, this uses admin credentials.
  */
 
 import "server-only";

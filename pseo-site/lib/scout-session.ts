@@ -2,7 +2,7 @@ import "server-only";
 import { SignJWT, jwtVerify } from "jose";
 import { cookies } from "next/headers";
 
-// Scout session — issued after a valid v2 dashboard URL token is presented at
+// Scout session, issued after a valid v2 dashboard URL token is presented at
 // /dashboard/scout. Lets the dashboard route accept a cookie on subsequent
 // visits instead of forcing the URL token to live forever in browser history,
 // referer logs, mailbox archives, etc.

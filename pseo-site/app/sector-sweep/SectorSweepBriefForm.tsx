@@ -3,7 +3,7 @@
 import { useState } from "react";
 
 /**
- * SectorSweepBriefForm — async Setter for the €1,997 Custom Sector Sweep.
+ * SectorSweepBriefForm, async Setter for the €1,997 Custom Sector Sweep.
  *
  * Brunson DotCom Secrets Ch 23 (Application Funnel) + Expert Secrets Ch 16
  * (The Setter / Magic Script). Replaces the live phone-close with a
@@ -118,23 +118,23 @@ export default function SectorSweepBriefForm() {
           </p>
           <ol className="text-gray-300 text-sm leading-relaxed space-y-1.5">
             <li>
-              <strong className="text-gray-100">Now — instant ack</strong>{" "}
+              <strong className="text-gray-100">Now, instant ack</strong>{" "}
               landing in <code className="text-emerald-300">{form.email}</code>:
               your thesis quoted back, a personalised sample table of contents,
               the exact deadline above.
             </li>
             <li>
-              <strong className="text-gray-100">+2h — Methodology Lead status</strong>:
+              <strong className="text-gray-100">+2h, Methodology Lead status</strong>:
               the methodology page that&rsquo;s grounding the reply, plus the
               one question every Sweep buyer asks before paying €1,997.
             </li>
             <li>
-              <strong className="text-gray-100">+12h — drafting transparency</strong>:
+              <strong className="text-gray-100">+12h, drafting transparency</strong>:
               halftime check-in. The single question we&rsquo;re trying to
               nail before the human reply lands.
             </li>
             <li>
-              <strong className="text-gray-100">+24h — written reply</strong>{" "}
+              <strong className="text-gray-100">+24h, written reply</strong>{" "}
               from <em>The Data Nerd</em> directly: 1-page fit assessment,
               tailored TOC, personal Stripe buy link, or the honest
               &ldquo;don&rsquo;t buy this&rdquo; note.
@@ -149,7 +149,7 @@ export default function SectorSweepBriefForm() {
                 Sample table of contents · tailored to the sector you typed
               </p>
               <p className="text-gray-400 text-xs leading-relaxed mt-1">
-                The full €1,997 PDF expands each line below into 2&ndash;4
+                The full €1,997 PDF expands each line below into 2-4
                 pages with the actual orgs, charts, and contributor maps.
                 This is the shape the deliverable will take.
               </p>
@@ -174,7 +174,7 @@ export default function SectorSweepBriefForm() {
             signals@gitdealflow.com
           </code>
           , or reply to your most recent Acceleration Watch digest with the
-          word &ldquo;BRIEF&rdquo; — that loops the same inbox. The Setter
+          word &ldquo;BRIEF&rdquo;, that loops the same inbox. The Setter
           sequence stops automatically once you reply or the human writes
           back, whichever happens first.
         </p>
@@ -188,7 +188,7 @@ export default function SectorSweepBriefForm() {
       className="rounded-xl border border-slate-800 bg-slate-900/40 p-5 sm:p-7 space-y-5"
       aria-label="Sector Sweep brief intake"
     >
-      {/* Q1 — contact */}
+      {/* Q1, contact */}
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <label className="block space-y-1.5">
           <span className="text-gray-300 text-sm font-semibold">
@@ -230,11 +230,11 @@ export default function SectorSweepBriefForm() {
           value={form.fund_or_role}
           onChange={(e) => update("fund_or_role", e.target.value)}
           className="w-full bg-slate-950 border border-slate-700 rounded px-3 py-2 text-gray-100 text-sm focus:border-amber-500 focus:outline-none"
-          placeholder="e.g. Partner at [Fund], scout for [Fund], solo angel writing 5–10/yr"
+          placeholder="e.g. Partner at [Fund], scout for [Fund], solo angel writing 5-10/yr"
         />
       </label>
 
-      {/* Q2 — sector */}
+      {/* Q2, sector */}
       <label className="block space-y-1.5">
         <span className="text-gray-300 text-sm font-semibold">
           1. Which sector do you want the Sweep on?
@@ -252,18 +252,18 @@ export default function SectorSweepBriefForm() {
           value={form.sector}
           onChange={(e) => update("sector", e.target.value)}
           className="w-full bg-slate-950 border border-slate-700 rounded px-3 py-2 text-gray-100 text-sm focus:border-amber-500 focus:outline-none resize-y"
-          placeholder="e.g. AI inference infrastructure — companies operating GPU clusters as a service for LLM serving, with focus on US + EU"
+          placeholder="e.g. AI inference infrastructure, companies operating GPU clusters as a service for LLM serving, with focus on US + EU"
         />
       </label>
 
-      {/* Q3 — thesis */}
+      {/* Q3, thesis */}
       <label className="block space-y-1.5">
         <span className="text-gray-300 text-sm font-semibold">
           2. What&rsquo;s your investment thesis on this sector?
         </span>
         <span className="text-gray-500 text-xs leading-relaxed block">
           Two to four sentences. What do you believe is going to happen in
-          the next 12–24 months that the consensus is wrong about? What
+          the next 12-24 months that the consensus is wrong about? What
           shape of company are you trying to back?
         </span>
         <textarea
@@ -277,7 +277,7 @@ export default function SectorSweepBriefForm() {
         />
       </label>
 
-      {/* Q4 — three orgs */}
+      {/* Q4, three orgs */}
       <label className="block space-y-1.5">
         <span className="text-gray-300 text-sm font-semibold">
           3. Three orgs you&rsquo;re already tracking in this sector (optional)
@@ -298,7 +298,7 @@ export default function SectorSweepBriefForm() {
         />
       </label>
 
-      {/* Q5 — decision window */}
+      {/* Q5, decision window */}
       <label className="block space-y-1.5">
         <span className="text-gray-300 text-sm font-semibold">
           4. When are you actually deploying capital into this sector?
@@ -316,10 +316,10 @@ export default function SectorSweepBriefForm() {
         >
           <option value="">Select a window</option>
           <option value="this-quarter">This quarter (next 90 days)</option>
-          <option value="this-half">This half (90–180 days)</option>
-          <option value="this-year">This calendar year (180–365 days)</option>
+          <option value="this-half">This half (90-180 days)</option>
+          <option value="this-year">This calendar year (180-365 days)</option>
           <option value="exploring">
-            Exploring — no capital deployment timeline yet
+            Exploring, no capital deployment timeline yet
           </option>
           <option value="post-sweep">
             Decision contingent on what the Sweep surfaces
@@ -327,7 +327,7 @@ export default function SectorSweepBriefForm() {
         </select>
       </label>
 
-      {/* Q6 — why sweep */}
+      {/* Q6, why sweep */}
       <label className="block space-y-1.5">
         <span className="text-gray-300 text-sm font-semibold">
           5. Why a written Sweep instead of the weekly Dashboard?

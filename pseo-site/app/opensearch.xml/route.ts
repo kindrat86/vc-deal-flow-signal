@@ -1,5 +1,5 @@
 /**
- * /opensearch.xml — OpenSearch 1.1 description document.
+ * /opensearch.xml, OpenSearch 1.1 description document.
  * Lets browsers (DuckDuckGo, Brave, Vivaldi, Firefox) and aggregators
  * register the site as a searchable engine. Pairs with the
  * <link rel="search"> in the HTML head.
@@ -16,7 +16,7 @@ export async function GET() {
 <OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/"
                       xmlns:moz="http://www.mozilla.org/2006/browser/search/">
   <ShortName>GitDealFlow</ShortName>
-  <LongName>VC Deal Flow Signal — startup engineering acceleration search</LongName>
+  <LongName>VC Deal Flow Signal, startup engineering acceleration search</LongName>
   <Description>Search venture-backed startups by GitHub engineering acceleration, sector, signal type, and period.</Description>
   <InputEncoding>UTF-8</InputEncoding>
   <Image height="32" width="32" type="image/png">${SITE}/icon.png</Image>

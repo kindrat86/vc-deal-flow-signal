@@ -51,7 +51,7 @@ export default function ThanksFirstLook() {
           </p>
           <p className="text-gray-400 text-sm leading-relaxed">
             If your thesis cuts across (e.g. &ldquo;AI infra meets fintech
-            rails&rdquo;), name the cross — the Sweep will pull from both
+            rails&rdquo;), name the cross, the Sweep will pull from both
             sectors.
           </p>
         </section>
@@ -69,7 +69,7 @@ export default function ThanksFirstLook() {
             </li>
             <li>
               €7 credits toward the Dashboard if you upgrade within 14 days
-              — reply{" "}
+reply{" "}
               <code className="text-amber-200 bg-amber-900/40 px-1.5 py-0.5 rounded text-xs">
                 REQUEST CREDIT
               </code>{" "}
@@ -78,7 +78,7 @@ export default function ThanksFirstLook() {
           </ol>
         </section>
 
-        {/* Brunson Traffic Secrets §3 Ch 11 ("After the Slap") — second
+        {/* Brunson Traffic Secrets §3 Ch 11 ("After the Slap"), second
             owned channel push. Public Telegram is the alarm to email's
             briefing. Drops here while the buyer is on the highest-trust
             page they'll see this week (just paid €7), so the ask cost is
@@ -86,18 +86,18 @@ export default function ThanksFirstLook() {
         <TelegramCTA tone="amber" context="post-purchase" />
 
         {/* Brunson DCS #14 Funnel Stacking + Secret 3 Ladder-to-Funnel
-            ascension — the thanks page must force exactly one logical
+            ascension, the thanks page must force exactly one logical
             next move. Promote the Dashboard upgrade from a footnote link
             to a button-grade CTA, with the €7 credit framed as already
             applied so the math reads "€2.97 for the first month." */}
         <section className="bg-gradient-to-br from-sky-950/40 via-slate-900 to-slate-950 border border-sky-700/40 rounded-xl p-6 space-y-4">
           <p className="text-sky-300 text-xs font-semibold uppercase tracking-[0.14em]">
-            Skip the wait — lock the Dashboard while you&rsquo;re here
+            Skip the wait, lock the Dashboard while you&rsquo;re here
           </p>
           <p className="text-gray-200 text-base leading-relaxed">
             If you already know the deep dive is going to make you a
             Dashboard subscriber, lock the founding rate now. Your €7
-            credit applies — the first month bills{" "}
+            credit applies, the first month bills{" "}
             <strong className="text-sky-200">€2.97</strong> instead of
             €9.97. Founding rate is locked forever; public price steps
             to €49/mo at launch.
@@ -121,7 +121,7 @@ export default function ThanksFirstLook() {
             <code className="text-gray-400 bg-slate-900/60 px-1.5 py-0.5 rounded text-xs">
               REFUND
             </code>{" "}
-            if the data didn&rsquo;t earn its keep — full refund, no
+            if the data didn&rsquo;t earn its keep, full refund, no
             questions, you keep the deep dive.
           </p>
         </section>

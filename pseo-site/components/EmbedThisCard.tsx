@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * EmbedThisCard — a per-page "Embed this" copy-button that hands out a
+ * EmbedThisCard, a per-page "Embed this" copy-button that hands out a
  * backlink-bearing snippet.
  *
  * Off-page authority is the binding constraint on the composite SEO score for
@@ -13,7 +13,7 @@
  *
  * ── Why the snippet ships a visible <a>, not just an <iframe> ──────────────
  * A bare iframe embed passes ZERO link equity. The only anchor in an
- * iframe-only snippet lives inside OUR /embed/* document — which is
+ * iframe-only snippet lives inside OUR /embed/* document, which is
  * `noindex,follow` and, being our own page, is a self-link. The host page's
  * DOM contains no crawlable link to us, so Google associates no backlink.
  *
@@ -34,7 +34,7 @@ interface Props {
   embedPath: string;
   /**
    * Indexable canonical page the visible attribution anchor links to,
-   * e.g. "/define/rlhf". This is the URL that receives the backlink equity —
+   * e.g. "/define/rlhf". This is the URL that receives the backlink equity -
    * it must be the indexable page, never the /embed/* URL.
    */
   sourcePath: string;
@@ -57,8 +57,8 @@ export default function EmbedThisCard({
 
   // The visible <a> below the iframe is the actual backlink. It targets the
   // indexable canonical page (sourcePath), not the noindex /embed widget.
-  const snippet = `<iframe src="${SITE}${embedPath}" width="100%" height="${height}" frameborder="0" loading="lazy" title="${label} — VC Deal Flow Signal"></iframe>
-<p style="font:12px/1.5 system-ui,-apple-system,sans-serif;margin:.5em 0;color:#64748b">Source: <a href="${SITE}${sourcePath}" rel="noopener" style="color:#0284c7">${label} — VC Deal Flow Signal</a> · <a href="https://creativecommons.org/licenses/by/4.0/" rel="license noopener" style="color:#0284c7">CC BY 4.0</a></p>`;
+  const snippet = `<iframe src="${SITE}${embedPath}" width="100%" height="${height}" frameborder="0" loading="lazy" title="${label}, VC Deal Flow Signal"></iframe>
+<p style="font:12px/1.5 system-ui,-apple-system,sans-serif;margin:.5em 0;color:#64748b">Source: <a href="${SITE}${sourcePath}" rel="noopener" style="color:#0284c7">${label}, VC Deal Flow Signal</a> · <a href="https://creativecommons.org/licenses/by/4.0/" rel="license noopener" style="color:#0284c7">CC BY 4.0</a></p>`;
 
   const copy = () => {
     navigator.clipboard.writeText(snippet).then(() => {
@@ -116,7 +116,7 @@ export default function EmbedThisCard({
             >
               CC BY 4.0
             </a>{" "}
-            — the snippet includes a visible source credit linking back to this
+the snippet includes a visible source credit linking back to this
             page.
           </p>
         </div>

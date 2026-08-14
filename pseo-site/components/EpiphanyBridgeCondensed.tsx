@@ -1,10 +1,10 @@
 import Link from "next/link";
 
-// Brunson Expert Secrets Ch 7 + Ch 9 — the Epiphany Bridge Script
+// Brunson Expert Secrets Ch 7 + Ch 9, the Epiphany Bridge Script
 // reduced to the 5-step shift. Russell-Brunson HSO audit 2026-05-08
 // flagged that the full Hero's Two Journeys lives on /origin (8-min
 // read) but the home page never surfaces the bridge for the reader
-// who won't click a sub-page. This component fixes that — the same
+// who won't click a sub-page. This component fixes that, the same
 // 5-step pattern, in 5 short pills, above the fold.
 //
 // Step labels mirror Brunson's canonical sequence:
@@ -13,8 +13,8 @@ import Link from "next/link";
 // Copy is sourced from /origin (sections 01-06) and the Day 3.5 email
 // in lib/emails.ts so the language is consistent across surfaces.
 //
-// Russell audit V11 2026-05-09 — Ch 7 Epiphany Bridge scored 96/100
-// with the note: "the home version is condensed — the bridge works
+// Russell audit V11 2026-05-09, Ch 7 Epiphany Bridge scored 96/100
+// with the note: "the home version is condensed, the bridge works
 // best when you walk the reader emotionally, not just enumerate. Let
 // the home version breathe one more sentence per pill." Each pill now
 // carries (a) the headline beat (existing line) plus (b) a second
@@ -22,7 +22,7 @@ import Link from "next/link";
 // loads as a mental movie, not as a checklist. Voice rules from
 // lib/data-nerd.ts: specific over general, code metaphors over
 // business metaphors, number-then-claim, admit-what-we-don't-know.
-// Layout unchanged — the existing one-paragraph shape per pill
+// Layout unchanged, the existing one-paragraph shape per pill
 // accommodates the longer body without grid changes.
 
 type StepColor = "amber" | "rose" | "emerald";
@@ -39,7 +39,7 @@ const STEPS: readonly Step[] = [
     n: 1,
     color: "amber",
     title: "Backstory",
-    body: "Ten years writing €5k–€50k angel cheques through warm intros — Athens, not San Francisco. Most mornings looked the same: laptop open, three Substack tabs, the WhatsApp group where deals showed up about a week after they had already closed.",
+    body: "Ten years writing €5k-€50k angel cheques through warm intros, Athens, not San Francisco. Most mornings looked the same: laptop open, three Substack tabs, the WhatsApp group where deals showed up about a week after they had already closed.",
   },
   {
     n: 2,
@@ -51,19 +51,19 @@ const STEPS: readonly Step[] = [
     n: 3,
     color: "rose",
     title: "External wall",
-    body: "By the time a deck reached me through any warm intro, three other investors were already in. I told myself it was geography, network seniority, conference attendance — every explanation I could find that did not force me to change my method.",
+    body: "By the time a deck reached me through any warm intro, three other investors were already in. I told myself it was geography, network seniority, conference attendance, every explanation I could find that did not force me to change my method.",
   },
   {
     n: 4,
     color: "rose",
     title: "Internal shift",
-    body: "Stopped networking. Started reading commit graphs the way quants read SEC filings. Same public data everyone else had, a lens almost nobody was using — and that asymmetry, not a better rolodex, turned out to be the whole opportunity.",
+    body: "Stopped networking. Started reading commit graphs the way quants read SEC filings. Same public data everyone else had, a lens almost nobody was using, and that asymmetry, not a better rolodex, turned out to be the whole opportunity.",
   },
   {
     n: 5,
     color: "emerald",
     title: "New opportunity",
-    body: "Code-side acceleration leads the deck by 21–47 days. The data is public. The lens was missing. Twenty-one to forty-seven days is the window where one Tuesday morning email lands in a founder's inbox before any other investor in any rolodex has the company on their radar.",
+    body: "Code-side acceleration leads the deck by 21-47 days. The data is public. The lens was missing. Twenty-one to forty-seven days is the window where one Tuesday morning email lands in a founder's inbox before any other investor in any rolodex has the company on their radar.",
   },
 ] as const;
 

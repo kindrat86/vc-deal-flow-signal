@@ -193,6 +193,51 @@
       "source": "/vs-privateequitywire",
       "destination": "/vs/privateequitywire",
       "permanent": true
+    },
+    {
+      "source": "/vs/gitdealflow-vs-crunchbase",
+      "destination": "/vs/crunchbase",
+      "permanent": true
+    },
+    {
+      "source": "/vs/gitdealflow-vs-pitchbook",
+      "destination": "/vs/pitchbook",
+      "permanent": true
+    },
+    {
+      "source": "/alternatives-to/crunchbase",
+      "destination": "/alternatives-to/crunchbase-alternatives",
+      "permanent": true
+    },
+    {
+      "source": "/alternatives-to/pitchbook",
+      "destination": "/alternatives-to/pitchbook-alternatives",
+      "permanent": true
+    },
+    {
+      "source": "/best/crunchbase-alternatives",
+      "destination": "/best/best-crunchbase-alternatives",
+      "permanent": true
+    },
+    {
+      "source": "/best/startup-databases",
+      "destination": "/best/best-startup-databases",
+      "permanent": true
+    },
+    {
+      "source": "/best/vc-deal-sourcing-tools",
+      "destination": "/best/best-deal-flow-tools",
+      "permanent": true
+    },
+    {
+      "source": "/best/vc-scout-programs",
+      "destination": "/best/best-scout-programs",
+      "permanent": true
+    },
+    {
+      "source": "/best/best-vc-scout-programs",
+      "destination": "/best/best-scout-programs",
+      "permanent": true
     }
   ],
   "headers": [
@@ -345,6 +390,15 @@
     },
     {
       "source": "/googlea30bb998b91eb6ac",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/googlead077899c404bc97",
       "headers": [
         {
           "key": "X-Robots-Tag",

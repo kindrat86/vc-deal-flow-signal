@@ -37,7 +37,7 @@ export async function generateMetadata({
 
   return {
     title:
-      "SAFE Calculator — Post-Money Conversion, Cap vs Discount, Dilution",
+      "SAFE Calculator, Post-Money Conversion, Cap vs Discount, Dilution",
     description:
       "Free SAFE calculator. Model YC 2018+ post-money SAFE conversion under both the valuation cap and the discount, see your effective ownership at the next priced round, and share the calculation via URL.",
     alternates: { canonical: "/tools/safe-calculator" },
@@ -52,7 +52,7 @@ export async function generateMetadata({
           url: ogImage,
           width: 1200,
           height: 630,
-          alt: "SAFE Calculator — VC Deal Flow Signal",
+          alt: "SAFE Calculator, VC Deal Flow Signal",
         },
       ],
     },
@@ -79,17 +79,17 @@ const FAQS: { question: string; answer: string }[] = [
   {
     question: "How does this SAFE calculator work?",
     answer:
-      "It models the YC 2018+ post-money SAFE. You enter the SAFE amount, the valuation cap (post-money), and a discount. Optionally model a next priced round — the calculator compares conversion under the cap versus under the discount and shows whichever gives the SAFE holder more ownership, which is how a post-money SAFE actually converts.",
+      "It models the YC 2018+ post-money SAFE. You enter the SAFE amount, the valuation cap (post-money), and a discount. Optionally model a next priced round, the calculator compares conversion under the cap versus under the discount and shows whichever gives the SAFE holder more ownership, which is how a post-money SAFE actually converts.",
   },
   {
     question: "What does post-money SAFE mean?",
     answer:
-      "A post-money SAFE caps the company's valuation after the SAFE itself (and any other SAFEs) have converted. Your post-money ownership = SAFE amount / valuation cap. Pre-money SAFEs (the older 2013–2018 variant) calculate differently because the cap excludes the SAFEs themselves.",
+      "A post-money SAFE caps the company's valuation after the SAFE itself (and any other SAFEs) have converted. Your post-money ownership = SAFE amount / valuation cap. Pre-money SAFEs (the older 2013-2018 variant) calculate differently because the cap excludes the SAFEs themselves.",
   },
   {
     question: "When does the cap apply vs the discount?",
     answer:
-      "The cap applies when the next round prices at or above the cap (the cap protects you from being diluted at a higher valuation). The discount applies when the next round prices below the cap (the cap is no longer binding, so the SAFE just converts at the next-round price with the discount). The SAFE holder always gets whichever is more favorable to them — the lower conversion price, equivalent to higher ownership.",
+      "The cap applies when the next round prices at or above the cap (the cap protects you from being diluted at a higher valuation). The discount applies when the next round prices below the cap (the cap is no longer binding, so the SAFE just converts at the next-round price with the discount). The SAFE holder always gets whichever is more favorable to them, the lower conversion price, equivalent to higher ownership.",
   },
   {
     question: "Why is the cap-only ownership different from the effective ownership?",
@@ -99,12 +99,12 @@ const FAQS: { question: string; answer: string }[] = [
   {
     question: "Is this calculator legal or tax advice?",
     answer:
-      "No — it's an educational tool. Real SAFE conversions depend on the exact document language (post-money vs pre-money, MFN, pro-rata, option-pool adjustments, side letters, and any subsequent SAFEs). Always run real numbers with your lawyer.",
+      "No, it's an educational tool. Real SAFE conversions depend on the exact document language (post-money vs pre-money, MFN, pro-rata, option-pool adjustments, side letters, and any subsequent SAFEs). Always run real numbers with your lawyer.",
   },
   {
     question: "Can I share my calculation with someone?",
     answer:
-      "Yes — every input is encoded in the URL. The 'Copy share link' button copies the current URL to your clipboard. Anyone you send it to opens the calculator with the same numbers pre-filled.",
+      "Yes, every input is encoded in the URL. The 'Copy share link' button copies the current URL to your clipboard. Anyone you send it to opens the calculator with the same numbers pre-filled.",
   },
 ];
 
@@ -180,7 +180,7 @@ export default function SafeCalculatorPage() {
             "@type": "HowToStep",
             position: 5,
             name: "Read the effective ownership",
-            text: "Effective ownership = max(cap ownership, discount ownership) — the SAFE always converts at the more favorable basis.",
+            text: "Effective ownership = max(cap ownership, discount ownership), the SAFE always converts at the more favorable basis.",
           },
         ],
       },
@@ -216,7 +216,7 @@ export default function SafeCalculatorPage() {
         "@type": "WebPage",
         "@id": PAGE_URL,
         url: PAGE_URL,
-        name: "SAFE Calculator — Post-Money Conversion, Cap vs Discount, Dilution",
+        name: "SAFE Calculator, Post-Money Conversion, Cap vs Discount, Dilution",
         description:
           "Free SAFE calculator. Model YC 2018+ post-money SAFE conversion under both the valuation cap and the discount.",
         inLanguage: "en-US",
@@ -340,7 +340,7 @@ export default function SafeCalculatorPage() {
               What is a valuation cap?
             </h3>
             <p className="text-gray-400 text-sm leading-relaxed">
-              The cap is the worst-case price you'll convert at — here's what
+              The cap is the worst-case price you'll convert at, here's what
               that means in practice.
             </p>
           </Link>

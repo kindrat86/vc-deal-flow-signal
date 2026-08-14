@@ -8,7 +8,7 @@
 // - 1-hour TTL.
 // - Optional scope claim for future per-tool gating.
 //
-// This is a public read-only API — the OAuth layer is purely for directory compliance.
+// This is a public read-only API, the OAuth layer is purely for directory compliance.
 // Do NOT add real authorization logic without revisiting the threat model.
 
 import { createHmac, timingSafeEqual } from "node:crypto";

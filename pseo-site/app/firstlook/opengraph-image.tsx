@@ -2,7 +2,7 @@ import { ImageResponse } from "next/og";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "First Look Pass — €7. One sector. 24-hour deep dive.";
+export const alt = "First Look Pass, €7. One sector. 24-hour deep dive.";
 
 export default async function OGImage() {
   return new ImageResponse(
@@ -70,7 +70,7 @@ export default async function OGImage() {
           }}
         >
           Pick any of 19 tracked sectors. Get top-25 ranked GitHub orgs, 14-day
-          acceleration deltas, and three pre-Crunchbase breakouts — written.
+          acceleration deltas, and three pre-Crunchbase breakouts, written.
         </div>
 
         {/* Stats */}

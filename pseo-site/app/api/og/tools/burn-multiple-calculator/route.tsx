@@ -265,7 +265,7 @@ export async function GET(req: Request) {
             >
               {Number.isFinite(result.burnMultiple)
                 ? `${formatMoney(inputs.totalBurn)} burn / ${formatMoney(result.netNewArr)} net new ARR`
-                : "Net new ARR is zero or negative — multiple is undefined."}
+                : "Net new ARR is zero or negative, multiple is undefined."}
             </div>
           </div>
 

@@ -4,12 +4,12 @@ import { A2A_FRAMEWORKS } from "@/lib/a2a-frameworks";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 
 export const metadata: Metadata = {
-  title: "GitDealFlow A2A — Free Startup Signals for Your AI Agent",
+  title: "GitDealFlow A2A, Free Startup Signals for Your AI Agent",
   description:
     "Plug GitDealFlow's startup engineering signals into Claude Code, Cursor, OpenAI Agents SDK, LangChain, and Vercel AI SDK via the Agent2Agent protocol. Free, no auth, no rate limit.",
   alternates: { canonical: "/a2a" },
   openGraph: {
-    title: "GitDealFlow A2A — Free Startup Signals for Your AI",
+    title: "GitDealFlow A2A, Free Startup Signals for Your AI",
     description:
       "Crunchbase API: $20K/yr. GitDealFlow A2A: free. AgentCard, JSON-RPC endpoint, and 5 framework recipes.",
   },
@@ -49,7 +49,7 @@ export default function A2AHubPage() {
             name: "How does this differ from a paid VC API like Crunchbase or PitchBook?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Paid APIs from Crunchbase, PitchBook, Harmonic.ai, and similar incumbents typically cost $20,000+ per year and require a sales call. The GitDealFlow A2A agent is free, no contract, and callable directly from any A2A-aware agent runtime. The data is different — we focus on engineering acceleration signals from public GitHub activity, while incumbents focus on funding history and team data — but for the question 'who is shipping fast right now,' our data is more direct and more current.",
+              text: "Paid APIs from Crunchbase, PitchBook, Harmonic.ai, and similar incumbents typically cost $20,000+ per year and require a sales call. The GitDealFlow A2A agent is free, no contract, and callable directly from any A2A-aware agent runtime. The data is different, we focus on engineering acceleration signals from public GitHub activity, while incumbents focus on funding history and team data, but for the question 'who is shipping fast right now,' our data is more direct and more current.",
             },
           },
           {
@@ -73,7 +73,7 @@ export default function A2AHubPage() {
             name: "Is there a rate limit?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "No application-layer rate limit. The upstream CDN absorbs typical agent traffic. If you hit the endpoint with 100 requests per second from a tight loop, the CDN may briefly throttle — add a 100ms sleep between calls in batch jobs.",
+              text: "No application-layer rate limit. The upstream CDN absorbs typical agent traffic. If you hit the endpoint with 100 requests per second from a tight loop, the CDN may briefly throttle, add a 100ms sleep between calls in batch jobs.",
             },
           },
         ],
@@ -82,7 +82,7 @@ export default function A2AHubPage() {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/a2a#webpage",
         url: "https://signals.gitdealflow.com/a2a",
-        name: "A2A Hub — VC Deal Flow Signal as an Agent2Agent agent",
+        name: "A2A Hub, VC Deal Flow Signal as an Agent2Agent agent",
         description:
           "Google A2A AgentCard + JSON-RPC stub. Five free skills exposed to any A2A-compatible orchestrator without auth or signup.",
         inLanguage: "en-US",
@@ -299,7 +299,7 @@ export default function A2AHubPage() {
           production agent and want the full per-startup deep read on every call, there is a paid
           lane built for machines:{" "}
           <strong style={{ color: "#0f172a" }}>€19 for 100 deep-signal calls (€0.19 each)</strong>.
-          Pay with a credit pack, or pay per call in USDC on Base via x402 — no contract, no sales
+          Pay with a credit pack, or pay per call in USDC on Base via x402, no contract, no sales
           call, credits never expire.
         </p>
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap", marginTop: 20 }}>
@@ -315,7 +315,7 @@ export default function A2AHubPage() {
               textDecoration: "none",
             }}
           >
-            Get agent credits — €19 / 100 calls →
+            Get agent credits, €19 / 100 calls →
           </Link>
           <Link
             href="/for-builders"
@@ -341,7 +341,7 @@ export default function A2AHubPage() {
           <Link href="/firstlook" style={{ color: "#0ea5e9", fontWeight: 600 }}>
             grab a €7 First Look
           </Link>{" "}
-          — same signals, read for you instead of your code.
+same signals, read for you instead of your code.
         </p>
       </section>
 
@@ -361,7 +361,7 @@ export default function A2AHubPage() {
           A2A is complementary to MCP. MCP exposes tools to a single AI assistant (Claude Desktop,
           Cursor, Windsurf). A2A lets agents call other agents across the network. We ship both
           because the audiences are different. The five skills, the data, and the methodology are
-          identical — only the transport differs.
+          identical, only the transport differs.
         </p>
         <p style={{ marginTop: 12, lineHeight: 1.7 }}>
           The full launch story is at{" "}

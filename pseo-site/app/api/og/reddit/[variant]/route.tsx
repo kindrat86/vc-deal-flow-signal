@@ -2,15 +2,15 @@ import { ImageResponse } from "next/og";
 import type { NextRequest } from "next/server";
 
 /**
- * Reddit Ads creative renderer — 1200×628 OG-spec images for the three
+ * Reddit Ads creative renderer, 1200×628 OG-spec images for the three
  * creatives in marketing/reddit-ads-launch-bundle-2026-05-06.md §3.
  *
  * URLs:
  *   /api/og/reddit/v1  → Hook-led ("Your network is showing you yesterday's deals")
  *   /api/og/reddit/v2  → Story-led ("The deal I missed because I trusted the deck")
- *   /api/og/reddit/v3  → Data-led ("219 fundraises. One signal. 21–47 days early")
+ *   /api/og/reddit/v3  → Data-led ("219 fundraises. One signal. 21-47 days early")
  *
- * Built with next/og ImageResponse so the bytes ship fresh from the edge —
+ * Built with next/og ImageResponse so the bytes ship fresh from the edge -
  * no static asset to keep in sync.  When iterating copy, change the strings
  * here and re-deploy; the next ad upload picks up the new image.
  *
@@ -52,7 +52,7 @@ export async function GET(
   }
 }
 
-/** Creative v1 — Hook-led inverse-statement pattern. */
+/** Creative v1, Hook-led inverse-statement pattern. */
 function renderHookLed() {
   return new ImageResponse(
     (
@@ -104,7 +104,7 @@ function renderHookLed() {
           Your network is showing you yesterday&apos;s deals.
         </div>
 
-        {/* Stylised cyan acceleration line — pure flexboxes, no SVG. */}
+        {/* Stylised cyan acceleration line, pure flexboxes, no SVG. */}
         <div
           style={{
             display: "flex",
@@ -160,7 +160,7 @@ function renderHookLed() {
   );
 }
 
-/** Creative v2 — Story-led, Brunson Backstory pattern from Soap D14. */
+/** Creative v2, Story-led, Brunson Backstory pattern from Soap D14. */
 function renderStoryLed() {
   return new ImageResponse(
     (
@@ -239,9 +239,9 @@ function renderStoryLed() {
   );
 }
 
-/** Creative v3 — Data-led, panel hook for r/MachineLearning + r/dataisbeautiful. */
+/** Creative v3, Data-led, panel hook for r/MachineLearning + r/dataisbeautiful. */
 function renderDataLed() {
-  // 8 small-multiple sparklines — fake-but-defensible curves.
+  // 8 small-multiple sparklines, fake-but-defensible curves.
   const sparkData: number[][] = [
     [10, 12, 11, 14, 18, 24, 32, 44, 60, 78, 96, 110],
     [8, 9, 11, 14, 16, 20, 26, 36, 50, 68, 84, 100],
@@ -307,10 +307,10 @@ function renderDataLed() {
             marginTop: 28,
           }}
         >
-          219 fundraises. One signal. 21–47 days early.
+          219 fundraises. One signal. 21-47 days early.
         </div>
 
-        {/* Satori (next/og) supports flex but not grid — emulate a 4-col
+        {/* Satori (next/og) supports flex but not grid, emulate a 4-col
             grid with flex-wrap + fixed-width children. 1072px content width
             (1200 - 64*2 padding) ÷ 4 columns = 268, minus 18px gap = 250. */}
         <div

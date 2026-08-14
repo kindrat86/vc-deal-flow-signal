@@ -10,8 +10,8 @@ export const dynamic = "force-static";
 
 // Russell-Brunson Expert Secrets §1 Ch 3 audit ship 2026-05-09:
 //   The "New Opportunity" must be named, not described. The audit scored
-//   the chapter at 92/100 — the -8 was that the category was walked
-//   ("the new vehicle isn't bigger network — it's a different sensor")
+//   the chapter at 92/100, the -8 was that the category was walked
+//   ("the new vehicle isn't bigger network, it's a different sensor")
 //   but never branded as a category a buyer could repeat to a partner.
 //
 //   This page brands the category: "Code-Side Sourcing." The page is the
@@ -26,12 +26,12 @@ const SITE = "https://signals.gitdealflow.com";
 
 export const metadata: Metadata = {
   title:
-    "Code-Side Sourcing — the new category VC Deal Flow Signal invented",
+    "Code-Side Sourcing, the new category VC Deal Flow Signal invented",
   description:
-    "Code-Side Sourcing is the practice of using public repository-velocity data as a leading indicator of venture-stage outcomes — surfacing fundraises 21–47 days before pitch decks circulate. The category, the formal definition, what it replaces, who practices it, and the open methodology that grounds it.",
+    "Code-Side Sourcing is the practice of using public repository-velocity data as a leading indicator of venture-stage outcomes, surfacing fundraises 21-47 days before pitch decks circulate. The category, the formal definition, what it replaces, who practices it, and the open methodology that grounds it.",
   alternates: { canonical: "/code-side-sourcing" },
   openGraph: {
-    title: "Code-Side Sourcing — a new category in venture sourcing",
+    title: "Code-Side Sourcing, a new category in venture sourcing",
     description:
       "Public repository-velocity data as a leading indicator of venture-stage outcomes. Definition, what it replaces, practitioners, methodology.",
     url: `${SITE}/code-side-sourcing`,
@@ -39,9 +39,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Code-Side Sourcing — the new category",
+    title: "Code-Side Sourcing, the new category",
     description:
-      "Public repository-velocity data as a leading indicator of venture-stage outcomes. The 21–47 day pre-deck window.",
+      "Public repository-velocity data as a leading indicator of venture-stage outcomes. The 21-47 day pre-deck window.",
   },
 };
 
@@ -49,7 +49,7 @@ const SHORT_DEFINITION =
   "Code-Side Sourcing is the practice of using public repository-velocity data as a leading indicator of venture-stage outcomes, surfacing fundraises 21 to 47 days before pitch decks circulate.";
 
 const FORMAL_DEFINITION = [
-  "Code-Side Sourcing is a category of venture-capital deal sourcing in which the primary input is public, machine-readable engineering activity — commit graphs, contributor maps, repository creation patterns, deploy cadence — rather than warm introductions, pitch decks, or curated databases.",
+  "Code-Side Sourcing is a category of venture-capital deal sourcing in which the primary input is public, machine-readable engineering activity, commit graphs, contributor maps, repository creation patterns, deploy cadence, rather than warm introductions, pitch decks, or curated databases.",
   "The category is defined by three properties: (1) the input data is public and reproducible from primary sources, (2) the signal arrives before the company actively markets the round, (3) the methodology is published and falsifiable, not opaque.",
   "Code-Side Sourcing is not a tool, it is a sourcing channel. The same way a fund builds a Dream-100 list of LPs or runs a partner-meeting funnel, a fund running Code-Side Sourcing builds a repository watchlist, runs a weekly acceleration scan, and surfaces breakouts before they reach the warm-intro layer.",
 ];
@@ -58,7 +58,7 @@ const WHAT_IT_REPLACES = [
   {
     n: 1,
     name: "Warm-intro sourcing",
-    body: "The dominant sourcing channel for the last forty years. Output capped by the partner&rsquo;s rolodex, latency measured in weeks, geography-locked to wherever the partner has lunch. Code-Side Sourcing runs in parallel — not as a replacement, but as the first parallel channel that doesn&rsquo;t depend on the partner&rsquo;s personal network.",
+    body: "The dominant sourcing channel for the last forty years. Output capped by the partner&rsquo;s rolodex, latency measured in weeks, geography-locked to wherever the partner has lunch. Code-Side Sourcing runs in parallel, not as a replacement, but as the first parallel channel that doesn&rsquo;t depend on the partner&rsquo;s personal network.",
   },
   {
     n: 2,
@@ -68,12 +68,12 @@ const WHAT_IT_REPLACES = [
   {
     n: 3,
     name: "Database-based sourcing (Crunchbase, PitchBook, Tracxn)",
-    body: "Comprehensive but lagging — a database row appears after the round is announced or after a press mention triggers ingestion. The database is a system of record, not a system of discovery. Code-Side Sourcing is the system of discovery that feeds the database, not the other way around.",
+    body: "Comprehensive but lagging, a database row appears after the round is announced or after a press mention triggers ingestion. The database is a system of record, not a system of discovery. Code-Side Sourcing is the system of discovery that feeds the database, not the other way around.",
   },
   {
     n: 4,
     name: "Alternative-data sourcing (web traffic, hiring scrapes, app downloads)",
-    body: "The closest existing analog. Strong for late-stage growth signals (B2C app traction, enterprise hiring waves), weak for early-stage technical companies whose product never lands on a public ranking before the Series A. Code-Side Sourcing is the alt-data category for engineering-led companies — the segment where commits and contributors leak the ramp before any consumer surface does.",
+    body: "The closest existing analog. Strong for late-stage growth signals (B2C app traction, enterprise hiring waves), weak for early-stage technical companies whose product never lands on a public ranking before the Series A. Code-Side Sourcing is the alt-data category for engineering-led companies, the segment where commits and contributors leak the ramp before any consumer surface does.",
   },
 ] as const;
 
@@ -81,27 +81,27 @@ const FIRST_PRINCIPLES = [
   {
     n: 1,
     title: "Acceleration over absolute volume",
-    body: "Cross-company commit-count comparisons are meaningless. A 50-commit week is a slowdown for one team and a breakout for another. Code-Side Sourcing measures each company against its own historical baseline — only sustained acceleration relative to self counts as a signal.",
+    body: "Cross-company commit-count comparisons are meaningless. A 50-commit week is a slowdown for one team and a breakout for another. Code-Side Sourcing measures each company against its own historical baseline, only sustained acceleration relative to self counts as a signal.",
   },
   {
     n: 2,
     title: "Confirm it twice before it counts",
-    body: "A one-off busy week — a hackathon, a launch sprint, a new-hire onboarding burst — means nothing on its own. The acceleration has to show up again in a second two-week window before it counts as a real signal (we call this two-period confirmation). This single rule eliminates the dominant source of false alarms.",
+    body: "A one-off busy week, a hackathon, a launch sprint, a new-hire onboarding burst, means nothing on its own. The acceleration has to show up again in a second two-week window before it counts as a real signal (we call this two-period confirmation). This single rule eliminates the dominant source of false alarms.",
   },
   {
     n: 3,
     title: "The whole team speeding up, not one star engineer",
-    body: "There is a difference between a broad team all pushing harder — the strongest predictor — and a single star engineer carrying everyone else, which is mostly noise. We measure how evenly the work is spread across contributors (using a standard inequality measure, the Gini coefficient) and only count the broad-team case. Acceleration alone is half a signal; acceleration plus a broad team is the full signal.",
+    body: "There is a difference between a broad team all pushing harder, the strongest predictor, and a single star engineer carrying everyone else, which is mostly noise. We measure how evenly the work is spread across contributors (using a standard inequality measure, the Gini coefficient) and only count the broad-team case. Acceleration alone is half a signal; acceleration plus a broad team is the full signal.",
   },
   {
     n: 4,
     title: "Classification over scoring",
-    body: "A composite score collapses information. Code-Side Sourcing classifies each breakout into one of four signal types — Engineering Hiring Burst, Infrastructure Buildout, Deploy Frequency Spike, Framework Migration — because each carries a distinct fundraise-lead-time distribution. The classification is the prediction; the score is just the headline.",
+    body: "A composite score collapses information. Code-Side Sourcing classifies each breakout into one of four signal types, Engineering Hiring Burst, Infrastructure Buildout, Deploy Frequency Spike, Framework Migration, because each carries a distinct fundraise-lead-time distribution. The classification is the prediction; the score is just the headline.",
   },
   {
     n: 5,
     title: "Open methodology over proprietary algorithm",
-    body: "If the methodology can&rsquo;t be published, the buyer can&rsquo;t verify it, can&rsquo;t reproduce it, can&rsquo;t argue with it. Code-Side Sourcing requires the methodology to be a published document — SSRN preprint, Zenodo dataset, regression code under CC BY 4.0 — so any buyer can audit the math before they trust the call.",
+    body: "If the methodology can&rsquo;t be published, the buyer can&rsquo;t verify it, can&rsquo;t reproduce it, can&rsquo;t argue with it. Code-Side Sourcing requires the methodology to be a published document, SSRN preprint, Zenodo dataset, regression code under CC BY 4.0, so any buyer can audit the math before they trust the call.",
   },
 ] as const;
 
@@ -110,13 +110,13 @@ const PRACTITIONERS = [
     name: "VC Deal Flow Signal",
     role: "Reference implementation",
     detail:
-      "The site you&rsquo;re reading. Live dashboard, weekly Acceleration Watch, SSRN-published methodology, 219-startup proof panel, free MCP server. The category and the reference implementation share an author — see /mechanism for the formula and /research for the panel.",
+      "The site you&rsquo;re reading. Live dashboard, weekly Acceleration Watch, SSRN-published methodology, 219-startup proof panel, free MCP server. The category and the reference implementation share an author, see /mechanism for the formula and /research for the panel.",
   },
   {
     name: "Quant funds adapting GitHub data",
     role: "Adjacent practitioners",
     detail:
-      "Several quantitative venture funds run internal GitHub-momentum models against public APIs. Most don&rsquo;t publish the methodology, which keeps the work outside the formal Code-Side Sourcing category — but the underlying activity is the same. Public categorisation lifts the floor for everyone.",
+      "Several quantitative venture funds run internal GitHub-momentum models against public APIs. Most don&rsquo;t publish the methodology, which keeps the work outside the formal Code-Side Sourcing category, but the underlying activity is the same. Public categorisation lifts the floor for everyone.",
   },
   {
     name: "Open-source contributor analytics tooling",
@@ -136,13 +136,13 @@ const DELIVERABLES = [
   {
     name: "Acceleration Watch",
     cadence: "Free, every Sunday",
-    what: "Five named startups ranked by 14-day commit-velocity acceleration. The on-ramp for any practitioner of the category — most funds adopt the rhythm before they adopt the dashboard.",
+    what: "Five named startups ranked by 14-day commit-velocity acceleration. The on-ramp for any practitioner of the category, most funds adopt the rhythm before they adopt the dashboard.",
     href: "https://gitdealflow.com/#signup",
   },
   {
     name: "Live Dashboard",
     cadence: "€9.97/mo founding",
-    what: "109+ ranked orgs across 15 sectors, refreshed Mondays 06:00 UTC. Sector filters, watchlists, the full acceleration ranking — the operational surface for a fund running Code-Side Sourcing as a weekly motion.",
+    what: "109+ ranked orgs across 15 sectors, refreshed Mondays 06:00 UTC. Sector filters, watchlists, the full acceleration ranking, the operational surface for a fund running Code-Side Sourcing as a weekly motion.",
     href: "/pricing",
   },
   {
@@ -154,13 +154,13 @@ const DELIVERABLES = [
   {
     name: "First Look Pass",
     cadence: "€7 once",
-    what: "The €7 tripwire — pick one sector, get a sector PDF in 24 hours. The cheapest way to feel the signal quality on a sector you already know before adopting the rhythm.",
+    what: "The €7 tripwire, pick one sector, get a sector PDF in 24 hours. The cheapest way to feel the signal quality on a sector you already know before adopting the rhythm.",
     href: "/firstlook",
   },
   {
     name: "MCP server, OpenAPI 3.1, JSON/CSV API",
     cadence: "Free agent layer",
-    what: "Six read-only tools inside Claude / Cursor / Windsurf. The agent surface lets any LLM-driven workflow call the same dataset without a screen — the agent-native form of Code-Side Sourcing.",
+    what: "Six read-only tools inside Claude / Cursor / Windsurf. The agent surface lets any LLM-driven workflow call the same dataset without a screen, the agent-native form of Code-Side Sourcing.",
     href: "/integrations",
   },
 ] as const;
@@ -168,11 +168,11 @@ const DELIVERABLES = [
 const FAQS = [
   {
     q: "Is Code-Side Sourcing the same as alternative data?",
-    a: "Code-Side Sourcing is a sub-category of alternative data, narrowed to engineering-side public repository activity. Most alternative-data products in venture capital surface late-stage growth signals (web traffic, app downloads, enterprise hiring). Code-Side Sourcing surfaces early-stage technical signals — the segment where alt-data has historically been weakest because the consumer surface doesn&rsquo;t exist yet.",
+    a: "Code-Side Sourcing is a sub-category of alternative data, narrowed to engineering-side public repository activity. Most alternative-data products in venture capital surface late-stage growth signals (web traffic, app downloads, enterprise hiring). Code-Side Sourcing surfaces early-stage technical signals, the segment where alt-data has historically been weakest because the consumer surface doesn&rsquo;t exist yet.",
   },
   {
     q: "Does Code-Side Sourcing replace warm intros?",
-    a: "No, it runs in parallel. A fund running Code-Side Sourcing as a sourcing channel still uses warm intros for diligence, founder reference checks, and the actual investment conversation. The difference is the channel that surfaces the company in the first place — Code-Side Sourcing extends the funnel one step earlier than the warm-intro layer can reach.",
+    a: "No, it runs in parallel. A fund running Code-Side Sourcing as a sourcing channel still uses warm intros for diligence, founder reference checks, and the actual investment conversation. The difference is the channel that surfaces the company in the first place, Code-Side Sourcing extends the funnel one step earlier than the warm-intro layer can reach.",
   },
   {
     q: "Why is the lead time 21 to 47 days specifically?",
@@ -180,15 +180,15 @@ const FAQS = [
   },
   {
     q: "What kind of fund or investor is best suited to practise Code-Side Sourcing?",
-    a: "Funds and angels investing in technical companies — AI infrastructure, developer tools, technical SaaS, open-source-led businesses, infrastructure software. The category is least useful for B2C consumer-facing companies (where app stores and web traffic are stronger leading indicators) and Series-D+ growth investing (where the engineering ramp is no longer the marginal information).",
+    a: "Funds and angels investing in technical companies, AI infrastructure, developer tools, technical SaaS, open-source-led businesses, infrastructure software. The category is least useful for B2C consumer-facing companies (where app stores and web traffic are stronger leading indicators) and Series-D+ growth investing (where the engineering ramp is no longer the marginal information).",
   },
   {
     q: "Can a Code-Side Sourcing pipeline be built without subscribing?",
-    a: "Yes. The methodology is published under CC BY 4.0 — anyone can build their own pipeline. The SSRN paper, Zenodo dataset, and regression code are all open. The reason most practitioners subscribe is operational: building and maintaining the pipeline is engineering work that competes with investment work, and €49/mo is materially cheaper than the engineer-hour cost of self-hosting it.",
+    a: "Yes. The methodology is published under CC BY 4.0, anyone can build their own pipeline. The SSRN paper, Zenodo dataset, and regression code are all open. The reason most practitioners subscribe is operational: building and maintaining the pipeline is engineering work that competes with investment work, and €49/mo is materially cheaper than the engineer-hour cost of self-hosting it.",
   },
   {
     q: "Is the category defensible if the data is public?",
-    a: "The data is public. The category is defensible by methodology, panel proof, distribution channel, and operational rhythm — none of which copy from a Wikipedia search. The same logic that makes quantitative finance defensible (everyone can read 10-Ks; not everyone can build the model) applies to Code-Side Sourcing.",
+    a: "The data is public. The category is defensible by methodology, panel proof, distribution channel, and operational rhythm, none of which copy from a Wikipedia search. The same logic that makes quantitative finance defensible (everyone can read 10-Ks; not everyone can build the model) applies to Code-Side Sourcing.",
   },
 ] as const;
 
@@ -219,7 +219,7 @@ export default function CodeSideSourcingPage() {
         "@type": "TechArticle",
         "@id": `${SITE}/code-side-sourcing#article`,
         headline:
-          "Code-Side Sourcing — the new category VC Deal Flow Signal invented",
+          "Code-Side Sourcing, the new category VC Deal Flow Signal invented",
         description: SHORT_DEFINITION,
         url: `${SITE}/code-side-sourcing`,
         datePublished: "2026-05-09T00:00:00.000Z",
@@ -311,7 +311,7 @@ export default function CodeSideSourcingPage() {
             &ldquo;code-side momentum&rdquo; now points here.
           </p>
 
-          {/* REFRAME / REASSURANCE — the most important line on the page.
+          {/* REFRAME / REASSURANCE, the most important line on the page.
               "Code-Side" describes where the signal originates, not anything
               the reader has to do. Buyer is corp-dev / PE / angel who does
               not read code. Reuses the reassurance phrasing + the creed. */}
@@ -324,7 +324,7 @@ export default function CodeSideSourcingPage() {
             </p>
             <p className="text-gray-200 text-base sm:text-lg leading-relaxed font-medium">
               &ldquo;Code-Side&rdquo; refers to where the <em>signal</em> comes
-              from — the engineering work — not to anything you have to do. You
+              from, the engineering work, not to anything you have to do. You
               never read a line of code; the read is done for you. The output
               is plain business English: a named company, why it&rsquo;s
               moving, and how long you likely have before the round.
@@ -332,7 +332,7 @@ export default function CodeSideSourcingPage() {
             <p className="text-gray-400 text-sm leading-relaxed">
               The creed is one line:{" "}
               <em className="text-gray-300">
-                &ldquo;We move on the engineering signal before the round —
+                &ldquo;We move on the engineering signal before the round -
                 without reading a line of code.&rdquo;
               </em>{" "}
               If you&rsquo;re a solo angel, scout, seed fund, corp-dev or PE
@@ -408,7 +408,7 @@ export default function CodeSideSourcingPage() {
             Anything calling itself Code-Side Sourcing must satisfy all five.
           </h2>
           <p className="text-gray-400 text-sm leading-relaxed">
-            These aren&rsquo;t our preferences — they&rsquo;re the rules that
+            These aren&rsquo;t our preferences, they&rsquo;re the rules that
             keep the category from collapsing back into &ldquo;another
             proprietary scoring algorithm&rdquo; (the trap that swallowed
             Schwartz-Level-3 deal-flow tooling).
@@ -435,8 +435,8 @@ export default function CodeSideSourcingPage() {
             ))}
           </ol>
           <p className="text-gray-400 text-sm leading-relaxed border-l-2 border-emerald-700/40 pl-4">
-            The full mechanism — the five formal steps that implement these
-            principles in code — is at{" "}
+            The full mechanism, the five formal steps that implement these
+            principles in code, is at{" "}
             <Link
               href="/mechanism"
               className="text-emerald-300 hover:text-emerald-200 underline decoration-dotted"
@@ -568,7 +568,7 @@ export default function CodeSideSourcingPage() {
           <p className="text-gray-300 text-base leading-relaxed max-w-xl mx-auto">
             Start at the free Sunday digest. Or skip the wait: see the signal
             on a sector you already know for €7, or run the live dashboard for
-            €49/mo. You never read a line of code — the read is done for you.
+            €49/mo. You never read a line of code, the read is done for you.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
             <Link
@@ -582,7 +582,7 @@ export default function CodeSideSourcingPage() {
               href="/pricing"
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-signal-500 hover:bg-signal-600 text-slate-950 font-semibold text-base shadow-lg shadow-signal-500/30 transition-colors"
             >
-              Run the dashboard — €49/mo{" "}
+              Run the dashboard, €49/mo{" "}
               <span aria-hidden="true">→</span>
             </Link>
           </div>

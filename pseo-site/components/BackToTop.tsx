@@ -3,7 +3,7 @@
 import { useEffect, useState, useCallback } from "react";
 
 /**
- * BackToTop — Floating button for long pages.
+ * BackToTop, Floating button for long pages.
  * Signals dark theme variant.
  */
 export default function BackToTop() {

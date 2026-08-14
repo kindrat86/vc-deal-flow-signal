@@ -8,13 +8,13 @@ const STRIPE_LINK =
   "https://buy.stripe.com/00w4gyfRpg3SbAGcUg0x205";
 
 export const metadata: Metadata = {
-  title: "Agent Credits — Pay Per Deep Signal",
+  title: "Agent Credits, Pay Per Deep Signal",
   description:
     "Per-request pricing for AI agents and programmatic callers. €19 = 100 deep-signal calls (€0.19 each). One credit per deep signal returned. The 6 free MCP tools stay free.",
   alternates: { canonical: "/agents/credits" },
   robots: { index: true, follow: true },
   openGraph: {
-    title: "Agent Credits — Pay Per Deep Signal",
+    title: "Agent Credits, Pay Per Deep Signal",
     description:
       "100 deep-signal calls for €19. €0.19 per call. The 6 free MCP tools are unaffected.",
     type: "website",
@@ -37,7 +37,7 @@ export default async function AgentCreditsPage({
         "@type": "WebPage",
         "@id": `${SITE}/agents/credits#webpage`,
         url: `${SITE}/agents/credits`,
-        name: "Agent Credits — Pay Per Deep Signal",
+        name: "Agent Credits, Pay Per Deep Signal",
         description:
           "Per-request pricing for AI agents. €19 = 100 deep-signal calls. The 6 free tools stay free.",
         isPartOf: {
@@ -48,7 +48,7 @@ export default async function AgentCreditsPage({
       },
       {
         "@type": "Offer",
-        name: "Agent Credits — 100 deep-signal calls",
+        name: "Agent Credits, 100 deep-signal calls",
         description:
           "100 per-request credits for the get_deep_signal MCP tool and POST /api/agent/deep-signal HTTP endpoint. One credit consumed per match. Misses are free. Credits never expire.",
         price: "19",
@@ -110,7 +110,7 @@ export default async function AgentCreditsPage({
               </svg>
               <div className="min-w-0">
                 <h2 className="text-emerald-300 font-semibold text-base mb-1">
-                  Payment received — your API key is on the way
+                  Payment received, your API key is on the way
                 </h2>
                 <p className="text-emerald-100/80 text-sm leading-relaxed mb-2">
                   Check the inbox for the email you used at checkout. The
@@ -126,7 +126,7 @@ export default async function AgentCreditsPage({
                   >
                     signals@gitdealflow.com
                   </a>{" "}
-                  with your Stripe receipt — keys are deterministic, we can
+                  with your Stripe receipt, keys are deterministic, we can
                   resend without re-charging.
                 </p>
               </div>
@@ -151,12 +151,12 @@ export default async function AgentCreditsPage({
             Pay-as-you-go · For agents
           </p>
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-3 leading-tight tracking-tight">
-            Agent credits — pay per deep signal
+            Agent credits, pay per deep signal
           </h1>
           <p className="text-gray-300 text-base leading-relaxed max-w-2xl mb-6">
             One credit = one deep signal returned. €0.19 per call. No
             subscription, no monthly minimum, credits never expire. The six
-            free MCP tools stay free forever — credits only apply to the new{" "}
+            free MCP tools stay free forever, credits only apply to the new{" "}
             <code className="text-emerald-300 font-mono">get_deep_signal</code>{" "}
             tool and the{" "}
             <code className="text-emerald-300 font-mono">
@@ -166,7 +166,7 @@ export default async function AgentCreditsPage({
           </p>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 max-w-2xl">
             {[
-              "Hit rate > 80% on tracked orgs — misses are free",
+              "Hit rate > 80% on tracked orgs, misses are free",
               "HMAC-keyed, no DB lookup, ~200ms median latency",
               "Credits never expire, top up any time",
               "Zero rate limits inside your quota",
@@ -246,7 +246,7 @@ export default async function AgentCreditsPage({
                 href={STRIPE_LINK}
                 className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-amber-600 hover:bg-amber-500 text-white text-sm font-semibold transition-colors"
               >
-                Buy 100 credits — €19 →
+                Buy 100 credits, €19 →
               </Link>
             </div>
 
@@ -285,13 +285,13 @@ export default async function AgentCreditsPage({
         <section
           id="x402-detail"
           className="mb-10 rounded-xl border border-sky-500/30 bg-sky-500/5 p-6 sm:p-8 scroll-mt-20"
-          aria-label="x402 — pay-per-call in USDC"
+          aria-label="x402, pay-per-call in USDC"
         >
           <p className="text-sky-400 text-xs uppercase tracking-wider mb-2 font-semibold">
             Crypto-native alternative · for fully autonomous agents
           </p>
           <h2 className="text-2xl font-bold text-gray-100 mb-2">
-            Pay per call in USDC on Base — no signup, no API key
+            Pay per call in USDC on Base, no signup, no API key
           </h2>
           <p className="text-gray-300 text-sm leading-relaxed mb-4">
             If your agent has its own wallet (Coinbase CDP, MetaMask, any
@@ -320,7 +320,7 @@ Content-Type: application/json
 { "name": "supabase" }`}
           </pre>
           <ul className="text-gray-300 text-sm leading-relaxed space-y-1 mb-2">
-            <li>• No account, no email, no password — pure HTTP 402</li>
+            <li>• No account, no email, no password, pure HTTP 402</li>
             <li>• Same payload as the credit-pack endpoint</li>
             <li>• Misses (404) are not charged</li>
             <li>• Use{" "}
@@ -348,29 +348,26 @@ Content-Type: application/json
           </p>
           <ul className="text-gray-300 text-sm leading-relaxed space-y-2 mb-4">
             <li>
-              <strong className="text-gray-100">Composite score (0–100)</strong>{" "}
-              — weighted average of velocity, contributor growth, and repo
+              <strong className="text-gray-100">Composite score (0-100)</strong>{" "}
+weighted average of velocity, contributor growth, and repo
               novelty.
             </li>
             <li>
               <strong className="text-gray-100">In-sector rank + percentile</strong>{" "}
-              — where this startup sits among its tracked peers.
+where this startup sits among its tracked peers.
             </li>
             <li>
-              <strong className="text-gray-100">Plain-English thesis</strong> —
-              one sentence ready to drop into a memo or Slack.
+              <strong className="text-gray-100">Plain-English thesis</strong>: one sentence ready to drop into a memo or Slack.
             </li>
             <li>
               <strong className="text-gray-100">Top 3 sector comparables</strong>{" "}
-              — names + signal type.
+names + signal type.
             </li>
             <li>
-              <strong className="text-gray-100">Multi-period history</strong> —
-              up to 6 prior periods of velocity and contributor counts.
+              <strong className="text-gray-100">Multi-period history</strong>: up to 6 prior periods of velocity and contributor counts.
             </li>
             <li>
-              <strong className="text-gray-100">Citation string</strong> —
-              ready to paste into investor reports.
+              <strong className="text-gray-100">Citation string</strong>: ready to paste into investor reports.
             </li>
           </ul>
         </section>
@@ -403,7 +400,7 @@ Content-Type: application/json
 
           <div className="rounded-lg border border-slate-800 bg-slate-900/40 p-5 mb-4">
             <p className="text-xs font-medium text-sky-500 uppercase tracking-wider mb-3">
-              HTTP — direct from any agent runtime
+              HTTP, direct from any agent runtime
             </p>
             <pre className="bg-slate-950 border border-slate-800 rounded p-3 text-xs text-emerald-300 font-mono overflow-x-auto whitespace-pre">
 {`curl -X POST https://signals.gitdealflow.com/api/agent/deep-signal \\
@@ -415,7 +412,7 @@ Content-Type: application/json
 
           <div className="rounded-lg border border-slate-800 bg-slate-900/40 p-5 mb-4">
             <p className="text-xs font-medium text-sky-500 uppercase tracking-wider mb-3">
-              x402 — USDC on Base, no key
+              x402, USDC on Base, no key
             </p>
             <pre className="bg-slate-950 border border-slate-800 rounded p-3 text-xs text-sky-300 font-mono overflow-x-auto whitespace-pre">
 {`# 1. First call returns 402 with payment requirements
@@ -502,7 +499,7 @@ const r = await fetchWithPayment(
               <dd className="text-gray-400 leading-relaxed">
                 No. The Dashboard is a human-facing weekly subscription. Agent
                 credits are a separate, additive product for programmatic
-                callers. Buy either, both, or neither — they don&rsquo;t
+                callers. Buy either, both, or neither, they don&rsquo;t
                 interact.
               </dd>
             </div>
@@ -513,7 +510,7 @@ const r = await fetchWithPayment(
               <dd className="text-gray-400 leading-relaxed">
                 Credits are pre-paid in EUR via Stripe (€19 for 100 calls); the
                 agent identifies itself with an HMAC API key on every call.
-                x402 is pay-per-call in USDC on Base — no signup, no key, the
+                x402 is pay-per-call in USDC on Base, no signup, no key, the
                 agent&rsquo;s wallet signs each request via the HTTP 402
                 protocol. Credits suit teams with a human topping up the
                 balance; x402 suits fully autonomous agents that hold their
@@ -557,7 +554,7 @@ const r = await fetchWithPayment(
               href={STRIPE_LINK}
               className="inline-flex items-center justify-center px-5 py-2 rounded-lg bg-amber-600 hover:bg-amber-500 text-white text-sm font-medium transition-colors"
             >
-              Buy 100 credits — €19
+              Buy 100 credits, €19
             </Link>
             <Link
               href="/agents"

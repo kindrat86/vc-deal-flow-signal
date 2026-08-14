@@ -12,7 +12,7 @@
 const BASE_URL = "https://signals.gitdealflow.com";
 // IndexNow keys are public by design (the protocol serves them at
 // /<key>.txt), so the env var is just an override. The default must match
-// public/22dfd6f8f816469b8c216bc7eaf8b936.txt — without that file on THIS
+// public/22dfd6f8f816469b8c216bc7eaf8b936.txt, without that file on THIS
 // host every submission is rejected (key existed only on the apex until
 // 2026-06-11, which is why submissions returned 400/403).
 const INDEXNOW_KEY =
@@ -21,7 +21,7 @@ const INDEXNOW_KEY =
 async function main() {
   // Only run on Vercel production deploys
   if (process.env.VERCEL && process.env.VERCEL_ENV !== "production") {
-    console.log("Skipping IndexNow — not a production deploy.");
+    console.log("Skipping IndexNow, not a production deploy.");
     return;
   }
 
@@ -76,7 +76,7 @@ async function main() {
   // Filter to THIS host only. The video sitemap embeds YouTube
   // <video:player_loc> URLs, and IndexNow rejects the ENTIRE batch with 422
   // ("One or more URLs are not related to your verified domain") when any
-  // entry is cross-domain — so the postbuild submission has been silently
+  // entry is cross-domain, so the postbuild submission has been silently
   // failing on every deploy. Fixed 2026-08-14.
   for (let i = urls.length - 1; i >= 0; i--) {
     if (!urls[i].startsWith(BASE_URL)) {
@@ -91,7 +91,7 @@ async function main() {
 
   // Preflight the key file. IndexNow validates it by CONTENT, and this host has
   // previously served a soft-404 (HTTP 200 with a "not found" body) for a
-  // missing key — so a status-only check passes while every submission is
+  // missing key, so a status-only check passes while every submission is
   // rejected. Compare the body to the key, never just the status.
   const keyUrl = `${BASE_URL}/${INDEXNOW_KEY}.txt`;
   try {
@@ -106,7 +106,7 @@ async function main() {
       return;
     }
   } catch (e) {
-    console.warn(`IndexNow SKIPPED: could not verify key file at ${keyUrl} — ${e}`);
+    console.warn(`IndexNow SKIPPED: could not verify key file at ${keyUrl}, ${e}`);
     return;
   }
 
@@ -135,13 +135,13 @@ async function main() {
     // real reason in the BODY, so always print it, and decode the status.
     const body = await res.text().catch(() => "(unreadable body)");
     const meaning: Record<number, string> = {
-      400: "bad request — malformed JSON or missing field",
-      403: "key rejected — keyLocation not reachable, or its content != the key",
+      400: "bad request, malformed JSON or missing field",
+      403: "key rejected, keyLocation not reachable, or its content != the key",
       422: "URLs do not belong to this host, or the key does not match the schema",
-      429: "rate limited — too many submissions",
+      429: "rate limited, too many submissions",
     };
     console.warn(
-      `IndexNow REJECTED: HTTP ${res.status} (${urls.length} URLs) — ${meaning[res.status] ?? "see body"}`,
+      `IndexNow REJECTED: HTTP ${res.status} (${urls.length} URLs), ${meaning[res.status] ?? "see body"}`,
     );
     console.warn(`IndexNow body: ${body.slice(0, 500) || "(empty)"}`);
     // Deliberately non-fatal: this is a crawl hint, not a correctness gate, and

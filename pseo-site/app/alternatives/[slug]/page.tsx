@@ -346,7 +346,7 @@ export default async function AlternativePage({ params }: PageProps) {
                 <tr key={row.feature} className="border-b border-slate-800/60 last:border-0 hover:bg-slate-800/40 transition-colors">
                   <td className="px-4 py-3 text-gray-200 font-medium">{row.feature}</td>
                   {alt.featureTable.tools.map((tool) => (
-                    <td key={tool} className="px-4 py-3 text-gray-400">{row.values[tool] ?? "—"}</td>
+                    <td key={tool} className="px-4 py-3 text-gray-400">{row.values[tool] ?? "-"}</td>
                   ))}
                 </tr>
               ))}
@@ -528,7 +528,7 @@ export default async function AlternativePage({ params }: PageProps) {
 
         <div className="mt-6">
           <SeoCta
-            secondary={{ label: "Test one sector — First Look €7", href: "/firstlook" }}
+            secondary={{ label: "Test one sector, First Look €7", href: "/firstlook" }}
             signoffIndex={1}
           />
         </div>

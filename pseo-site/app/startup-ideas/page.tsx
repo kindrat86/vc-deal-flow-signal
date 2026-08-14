@@ -18,13 +18,13 @@ export const revalidate = 604800;
 
 export const metadata: Metadata = {
   title:
-    "Startup Ideas 2026 — buildable opportunities with the repos already trying",
+    "Startup Ideas 2026, buildable opportunities with the repos already trying",
   description:
-    "Fifty-plus buildable startup ideas for 2026 — AI-native CRM, browser-use agents, vertical AI, dev tools, vibe-coding micro-SaaS. Each one paired with the three repos already accelerating against it, pulled live from our GitHub signal panel.",
+    "Fifty-plus buildable startup ideas for 2026, AI-native CRM, browser-use agents, vertical AI, dev tools, vibe-coding micro-SaaS. Each one paired with the three repos already accelerating against it, pulled live from our GitHub signal panel.",
   alternates: { canonical: "/startup-ideas" },
   openGraph: {
     title:
-      "Startup Ideas 2026 — buildable opportunities with the repos already trying",
+      "Startup Ideas 2026, buildable opportunities with the repos already trying",
     description:
       "Fifty-plus buildable startup ideas, each paired with the three repos already accelerating against it. Pulled live from GitHub commit velocity.",
     url: `${SITE}/startup-ideas`,
@@ -32,7 +32,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Startup Ideas 2026 — buildable opportunities, live signal",
+    title: "Startup Ideas 2026, buildable opportunities, live signal",
     description:
       "Fifty-plus buildable startup ideas. Each one with the three repos already accelerating against it.",
   },
@@ -54,21 +54,21 @@ const CATEGORY_BLURB: Record<string, string> = {
   "AI-Native SaaS":
     "Every B2B SaaS category, rebuilt with the agent as the primary surface.",
   "Agent Infrastructure":
-    "Picks-and-shovels for the agent economy — runtimes, memory, eval, payment rails.",
+    "Picks-and-shovels for the agent economy, runtimes, memory, eval, payment rails.",
   "Vertical AI":
-    "AI for one industry at a time — legal, medical, real estate, construction, insurance.",
+    "AI for one industry at a time, legal, medical, real estate, construction, insurance.",
   "Dev Tools":
     "The cluster engineers pay for on a credit card. Code review, test gen, debugging, observability.",
   "Data Infrastructure":
-    "The plumbing for the AI stack — vector stores, embeddings, ETL, warehouses.",
+    "The plumbing for the AI stack, vector stores, embeddings, ETL, warehouses.",
   Multimodal:
-    "Voice, video, image — the layer above the foundation models that ships the workflow.",
+    "Voice, video, image, the layer above the foundation models that ships the workflow.",
   "Vibe-Coding / Micro-SaaS":
     "One-person SaaS, AI app generators, indie operator tools. The solo-founder cohort.",
   "Climate & Niche":
-    "Compliance-driven and underserved verticals — carbon accounting, ESG underwriting.",
+    "Compliance-driven and underserved verticals, carbon accounting, ESG underwriting.",
   "Open Source / Community":
-    "Distribution-led plays — OSS funding, dev communities, the picks for the long tail.",
+    "Distribution-led plays, OSS funding, dev communities, the picks for the long tail.",
 };
 
 export default function StartupIdeasHubPage() {
@@ -81,7 +81,7 @@ export default function StartupIdeasHubPage() {
       {
         "@type": "CollectionPage",
         "@id": `${SITE}/startup-ideas#collection`,
-        name: "Startup Ideas 2026 — buildable opportunities with the repos already trying",
+        name: "Startup Ideas 2026, buildable opportunities with the repos already trying",
         description:
           "A curated set of buildable startup ideas for 2026, each paired with the top three GitHub repos already accelerating against it.",
         url: `${SITE}/startup-ideas`,
@@ -109,7 +109,7 @@ export default function StartupIdeasHubPage() {
       },
       {
         "@type": "ItemList",
-        name: "Buildable startup ideas — 2026",
+        name: "Buildable startup ideas, 2026",
         numberOfItems: startupIdeas.length,
         itemListOrder: "https://schema.org/ItemListUnordered",
         itemListElement: startupIdeas.map((idea, i) => ({
@@ -157,7 +157,7 @@ export default function StartupIdeasHubPage() {
             className="text-gray-300 text-base sm:text-lg leading-relaxed max-w-3xl"
             data-speakable
           >
-            Most startup-idea lists are vibes. This one is wired to live data —
+            Most startup-idea lists are vibes. This one is wired to live data -
             every idea below ships with the top three GitHub repos already
             accelerating against it, pulled from our current-period signal
             panel and re-ranked weekly. Use the framing for the why-now and
@@ -193,7 +193,7 @@ export default function StartupIdeasHubPage() {
             Each idea page has four blocks: <em>why now</em> (the trend that
             opens the wedge), <em>the idea you could build today</em> (the
             shape of the product + a build stack), <em>the three repos
-            already trying</em> (live join into our GitHub signal panel —
+            already trying</em> (live join into our GitHub signal panel -
             filtered by sector, name, and description match), and{" "}
             <em>the seed-round pattern</em> (the trendline that has
             historically preceded the announcement by three to six weeks).
@@ -263,7 +263,7 @@ export default function StartupIdeasHubPage() {
             miss the trendline.
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
-            The First Look digest sends the week&rsquo;s top-shifted ideas —
+            The First Look digest sends the week&rsquo;s top-shifted ideas -
             the categories where the top-three repos changed, and the seed
             patterns we&rsquo;re watching for the next 90 days. Free. Reply
             with what you&rsquo;d build next.

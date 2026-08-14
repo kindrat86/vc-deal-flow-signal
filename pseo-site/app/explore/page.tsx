@@ -5,7 +5,7 @@ import { getLinkSections } from "@/lib/related-links";
 const SITE = "https://signals.gitdealflow.com";
 
 export const metadata: Metadata = {
-  title: "Explore GitHub Startup Signals — Sectors, Stages, Trends & More | GitDealFlow",
+  title: "Explore GitHub Startup Signals, Sectors, Stages, Trends & More | GitDealFlow",
   description:
     "Browse every GitDealFlow signal view: sectors, funding stages, signal types, trends, comparisons, and research. Real GitHub engineering-activity signals across venture-backed startups.",
   alternates: { canonical: "/explore" },
@@ -36,7 +36,7 @@ export default function ExplorePage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(itemList) }} />
       <h1 className="text-3xl font-bold text-gray-100 mb-2">Explore GitHub startup signals</h1>
       <p className="text-slate-400 mb-8 max-w-2xl">
-        Every view into GitDealFlow&apos;s real GitHub engineering-activity signals — by sector, stage, signal type, trend,
+        Every view into GitDealFlow&apos;s real GitHub engineering-activity signals, by sector, stage, signal type, trend,
         comparison, and research. Pick a thread and follow it.
       </p>
       {ordered.map(([sec, ps]) => (

@@ -7,7 +7,7 @@ export const revalidate = 3600;
 const BASE_URL = "https://signals.gitdealflow.com";
 
 /**
- * /feed.json — JSON Feed v1.1 (https://www.jsonfeed.org/version/1.1/) for the
+ * /feed.json, JSON Feed v1.1 (https://www.jsonfeed.org/version/1.1/) for the
  * blog stream.
  *
  * Companion to /rss.xml + /atom.xml + /feed.xml. JSON Feed is preferred by
@@ -46,12 +46,12 @@ export async function GET() {
 
       // content_html is the agent-citable body. We hand-build a short HTML
       // doc that carries the summary, key stats (if any), references (if any),
-      // and the canonical link — so an LLM that consumes the feed can cite
+      // and the canonical link, so an LLM that consumes the feed can cite
       // the page accurately without a follow-up fetch.
       const keyStatsHtml = (p.keyStats ?? [])
         .map(
           (k) =>
-            `<li><strong>${escapeHtml(k.value)}</strong> — ${escapeHtml(
+            `<li><strong>${escapeHtml(k.value)}</strong>: ${escapeHtml(
               k.label,
             )}${k.context ? ` <em>(${escapeHtml(k.context)})</em>` : ""}</li>`,
         )
@@ -62,7 +62,7 @@ export async function GET() {
           (r) =>
             `<li>[${escapeHtml(r.label)}] <a href="${escapeHtml(
               r.url,
-            )}">${escapeHtml(r.title)}</a> — ${escapeHtml(r.source)}</li>`,
+            )}">${escapeHtml(r.title)}</a>: ${escapeHtml(r.source)}</li>`,
         )
         .join("");
 
@@ -114,11 +114,11 @@ export async function GET() {
 
   const feed = {
     version: "https://jsonfeed.org/version/1.1",
-    title: "VC Deal Flow Signal — Blog",
+    title: "VC Deal Flow Signal, Blog",
     home_page_url: `${BASE_URL}/blog`,
     feed_url: `${BASE_URL}/feed.json`,
     description:
-      "GitHub commit-velocity tracking for venture capital. Practical guides on engineering acceleration as a deal flow signal — written for readers who want earlier public signal, clearer timing, and less noise.",
+      "GitHub commit-velocity tracking for venture capital. Practical guides on engineering acceleration as a deal flow signal, written for readers who want earlier public signal, clearer timing, and less noise.",
     user_comment:
       "JSON Feed v1.1. Companion XML feeds at /rss.xml and /atom.xml. Catalog of every feed (per-stream × per-format) at /.well-known/feeds.json.",
     icon: `${BASE_URL}/icon.png`,
@@ -150,7 +150,7 @@ export async function GET() {
       catalog: `${BASE_URL}/.well-known/feeds.json`,
     },
     // JSON Feed v1.1 `hubs` (spec §top-level): array of {type, url}. This is
-    // the spec-compliant WebSub advertisement — parity with the 3 <link
+    // the spec-compliant WebSub advertisement, parity with the 3 <link
     // rel="hub"> entries in /rss.xml + /atom.xml so a WebSub-aware reader can
     // subscribe for push updates from the JSON feed too. (Previously carried
     // only as a non-standard `_hubs` string array, which readers ignore.)

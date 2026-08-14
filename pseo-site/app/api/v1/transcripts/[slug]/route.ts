@@ -1,5 +1,5 @@
 /**
- * /api/v1/transcripts/[slug] — WebVTT transcript for a given video.
+ * /api/v1/transcripts/[slug], WebVTT transcript for a given video.
  *
  * Returns text/vtt with cue blocks aligned to chapter timing from
  * `content/videos.ts`. Each transcript paragraph is split across the
@@ -19,7 +19,7 @@
 import { NextResponse } from "next/server";
 import { getVideoBySlug, getAllVideoSlugs } from "@/content/videos";
 
-// NOT force-static — content-type varies on Accept. Edge caches per
+// NOT force-static, content-type varies on Accept. Edge caches per
 // Accept value via the Vary header set on the response.
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -109,7 +109,7 @@ export async function GET(
   const body = `WEBVTT
 Kind: captions
 Language: en
-NOTE Synthetic narration — Cartesia "Theo" voice. Anonymity-safe per project rule (no founder face/voice/name). License: CC BY 4.0.
+NOTE Synthetic narration, Cartesia "Theo" voice. Anonymity-safe per project rule (no founder face/voice/name). License: CC BY 4.0.
 NOTE Source: ${SITE}/watch/${slug}
 NOTE Catalog: ${SITE}/api/v1/videos.json
 

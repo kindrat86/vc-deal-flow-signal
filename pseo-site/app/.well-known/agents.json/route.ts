@@ -1,10 +1,10 @@
 /**
- * /.well-known/agents.json — agent toolkit discovery direct alias.
+ * /.well-known/agents.json, agent toolkit discovery direct alias.
  *
  * Aliases the canonical /agents.json body so agent runtimes hitting either
  * location resolve to the same content. Serves directly (200, not 308)
  * because several AI bots don't follow redirects on JSON descriptor probes.
- * The canonical URL — declared via the `Link: rel=canonical` header —
+ * The canonical URL, declared via the `Link: rel=canonical` header -
  * remains at /agents.json.
  */
 

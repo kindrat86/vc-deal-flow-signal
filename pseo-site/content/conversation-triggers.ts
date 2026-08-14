@@ -1,9 +1,9 @@
 /**
- * Conversation Trigger Map — Brunson Traffic Secrets §3 Ch 16 (Conversation Domination).
+ * Conversation Trigger Map, Brunson Traffic Secrets §3 Ch 16 (Conversation Domination).
  *
  * Internal-only framing: closes the V8 audit gap "you're reactive, not
  * opportunistic." Customer-facing copy on /conversation-map calls this a
- * "real-time signal trigger map" — the Brunson framework name stays here in
+ * "real-time signal trigger map", the Brunson framework name stays here in
  * comments / variable names per the brand-attribution rule.
  *
  * Architecture:
@@ -57,11 +57,11 @@ export type HookFraming =
 export interface ConversationResponse {
   /** Where this draft posts. */
   platform: ConversationPlatform;
-  /** SLA bucket — drives email priority. */
+  /** SLA bucket, drives email priority. */
   cadence: "within-4h" | "within-24h" | "next-cycle";
   /** Mustache-light template. {{title}} {{url}} {{score}} {{org}} resolve at draft time. */
   template: string;
-  /** How the post should feel — drives intro pattern selection. */
+  /** How the post should feel, drives intro pattern selection. */
   hookFraming: HookFraming;
   /** Length budget in characters. */
   copyLength: { min: number; max: number };
@@ -70,7 +70,7 @@ export interface ConversationResponse {
 }
 
 export interface ConversationTrigger {
-  /** URL-safe identifier — used for dedup keys + JSON API. */
+  /** URL-safe identifier, used for dedup keys + JSON API. */
   id: string;
   /** Human-readable name for the trigger map page. */
   name: string;
@@ -87,15 +87,15 @@ export interface ConversationTrigger {
    *   - HN: minimum points
    *   - Reddit: minimum upvotes
    *   - GitHub trending: minimum stars-this-period
-   * Acts as a noise filter — small threads aren't worth the response budget.
+   * Acts as a noise filter, small threads aren't worth the response budget.
    */
   minSignalStrength?: number;
-  /** Hard SLA — defaults to 4h, only override for time-insensitive triggers. */
+  /** Hard SLA, defaults to 4h, only override for time-insensitive triggers. */
   slaHours: number;
   /** One or more platform responses generated when this trigger matches. */
   responses: ConversationResponse[];
   /**
-   * Brunson chapter reference — for the audit panel on /conversation-map.
+   * Brunson chapter reference, for the audit panel on /conversation-map.
    * Internal-only; rendered as "TS Ch 16" not the verbose name.
    */
   brunsonRef: string;
@@ -129,7 +129,7 @@ export const CONVERSATION_TRIGGERS: ConversationTrigger[] = [
         platform: "reddit",
         cadence: "within-4h",
         template:
-          "Looked them up on the engineering-velocity panel about 4 weeks ago — commit-velocity acceleration was tracking 1.4× baseline, dependent fanout doubled in 30 days. The fundraise was visible in the public Git graph weeks before the term sheet. Anyone else watching code-side signals?\n\n(Methodology + replication notebook: signals.gitdealflow.com/methodology)",
+          "Looked them up on the engineering-velocity panel about 4 weeks ago, commit-velocity acceleration was tracking 1.4× baseline, dependent fanout doubled in 30 days. The fundraise was visible in the public Git graph weeks before the term sheet. Anyone else watching code-side signals?\n\n(Methodology + replication notebook: signals.gitdealflow.com/methodology)",
         hookFraming: "data-drop",
         copyLength: { min: 200, max: 400 },
         rules: [
@@ -186,7 +186,7 @@ export const CONVERSATION_TRIGGERS: ConversationTrigger[] = [
         platform: "reddit",
         cadence: "within-4h",
         template:
-          "Counter-frame worth considering: warm intros are a lagging indicator. By the time you hear about it, the term sheet is being negotiated. The earliest legible signal a venture-stage company emits is its public Git graph — commit-velocity acceleration, contributor influx, dependent fanout. We've shipped a methodology paper showing 21–47 day median lead time on Series A predictions before press releases.\n\nNot pitching anything. Just: there's a parallel funnel that doesn't run on relationships.",
+          "Counter-frame worth considering: warm intros are a lagging indicator. By the time you hear about it, the term sheet is being negotiated. The earliest legible signal a venture-stage company emits is its public Git graph, commit-velocity acceleration, contributor influx, dependent fanout. We've shipped a methodology paper showing 21-47 day median lead time on Series A predictions before press releases.\n\nNot pitching anything. Just: there's a parallel funnel that doesn't run on relationships.",
         hookFraming: "category-frame",
         copyLength: { min: 250, max: 450 },
         rules: [
@@ -199,7 +199,7 @@ export const CONVERSATION_TRIGGERS: ConversationTrigger[] = [
         platform: "linkedin",
         cadence: "within-24h",
         template:
-          "On warm-intro deal flow being slow — there's a category most VCs haven't priced in yet. Public Git graphs emit a fundraise signal 21–47 days before the press release on average. Commit-velocity acceleration + contributor influx + dependent fanout = readable predictor. Methodology open-source on SSRN. The data is public; the lens is the edge.",
+          "On warm-intro deal flow being slow, there's a category most VCs haven't priced in yet. Public Git graphs emit a fundraise signal 21-47 days before the press release on average. Commit-velocity acceleration + contributor influx + dependent fanout = readable predictor. Methodology open-source on SSRN. The data is public; the lens is the edge.",
         hookFraming: "category-frame",
         copyLength: { min: 300, max: 600 },
       },
@@ -243,7 +243,7 @@ export const CONVERSATION_TRIGGERS: ConversationTrigger[] = [
         platform: "hn-comment",
         cadence: "within-24h",
         template:
-          "Ran the batch through public-GitHub commit-velocity. Of N companies in the batch, M show acceleration crossing the 1.3× threshold the methodology paper anchors on. Top 5 by metric: [list]. Worth noting: the metric is falsifiable — if these don't outperform the batch in fundraise speed at 90 days, the methodology is wrong.",
+          "Ran the batch through public-GitHub commit-velocity. Of N companies in the batch, M show acceleration crossing the 1.3× threshold the methodology paper anchors on. Top 5 by metric: [list]. Worth noting: the metric is falsifiable, if these don't outperform the batch in fundraise speed at 90 days, the methodology is wrong.",
         hookFraming: "data-drop",
         copyLength: { min: 250, max: 500 },
       },
@@ -264,7 +264,7 @@ export const CONVERSATION_TRIGGERS: ConversationTrigger[] = [
     description:
       "A repo lands GitHub trending and shows venture-stage signatures (corporate org, recent founding, devtool/AI category). Drop a watchlist note in Telegram + Twitter.",
     sources: ["github-trending"],
-    keywords: ["*"], // wildcard — gh-trending feed is the filter; we apply venture-signature heuristics in code
+    keywords: ["*"], // wildcard, gh-trending feed is the filter; we apply venture-signature heuristics in code
     minSignalStrength: 200, // stars this period
     slaHours: 4,
     responses: [
@@ -315,7 +315,7 @@ export const CONVERSATION_TRIGGERS: ConversationTrigger[] = [
         platform: "reddit",
         cadence: "within-4h",
         template:
-          "Worth adding a third frame to this conversation: most of those tools are scrapers of LinkedIn / press releases / fund filings — they read company state. A complementary lens reads code: commit-velocity acceleration, contributor influx, dependent fanout. The lead time on a fundraise from the code side is 21-47 days median (SSRN paper, 10.2139/ssrn.6606558). Methodology + replication notebook are CC-BY.\n\nWritten side-by-side comparisons here: signals.gitdealflow.com/alternatives",
+          "Worth adding a third frame to this conversation: most of those tools are scrapers of LinkedIn / press releases / fund filings, they read company state. A complementary lens reads code: commit-velocity acceleration, contributor influx, dependent fanout. The lead time on a fundraise from the code side is 21-47 days median (SSRN paper, 10.2139/ssrn.6606558). Methodology + replication notebook are CC-BY.\n\nWritten side-by-side comparisons here: signals.gitdealflow.com/alternatives",
         hookFraming: "category-frame",
         copyLength: { min: 300, max: 500 },
       },
@@ -323,7 +323,7 @@ export const CONVERSATION_TRIGGERS: ConversationTrigger[] = [
         platform: "hn-comment",
         cadence: "within-4h",
         template:
-          "There's a third axis missing in this thread: the code-side. Crunchbase / Harmonic / Tracxn / Affinity all read company state from network exhaust. Reading the public Git graph is orthogonal — commits, contributors, dependents — and the lead time on Series A predictions is 21-47 days median on a 219-company panel. SSRN: 10.2139/ssrn.6606558. CC-BY methodology, replication notebook, dataset open.",
+          "There's a third axis missing in this thread: the code-side. Crunchbase / Harmonic / Tracxn / Affinity all read company state from network exhaust. Reading the public Git graph is orthogonal, commits, contributors, dependents, and the lead time on Series A predictions is 21-47 days median on a 219-company panel. SSRN: 10.2139/ssrn.6606558. CC-BY methodology, replication notebook, dataset open.",
         hookFraming: "category-frame",
         copyLength: { min: 250, max: 450 },
       },
@@ -470,13 +470,13 @@ export const CONVERSATION_TRIGGERS: ConversationTrigger[] = [
         platform: "reddit",
         cadence: "within-24h",
         template:
-          "Engineer-investor here. The cleanest leverage I've found is reading code-side signals — commit-velocity, contributor influx, dependent fanout — because they're public, falsifiable, and orthogonal to the warm-intro game most LPs assume you'll play. I built a panel methodology around it (CC-BY, SSRN paper, replication notebook): signals.gitdealflow.com/methodology. Worth knowing the signal even if you build your own version.",
+          "Engineer-investor here. The cleanest leverage I've found is reading code-side signals, commit-velocity, contributor influx, dependent fanout, because they're public, falsifiable, and orthogonal to the warm-intro game most LPs assume you'll play. I built a panel methodology around it (CC-BY, SSRN paper, replication notebook): signals.gitdealflow.com/methodology. Worth knowing the signal even if you build your own version.",
         hookFraming: "helpful",
         copyLength: { min: 250, max: 500 },
         rules: [
           "Be the helpful peer, not the salesperson.",
           "Mention 'engineer-investor' to anchor the avatar match.",
-          "Methodology link only — no /pricing.",
+          "Methodology link only, no /pricing.",
         ],
       },
     ],
@@ -504,7 +504,7 @@ export const CONVERSATION_TRIGGERS: ConversationTrigger[] = [
         platform: "hn-comment",
         cadence: "within-4h",
         template:
-          "Nice ship. Two questions for the founders:\n\n1) What's your current lead time vs the press release for a Series A signal? (We benchmark our panel at 21-47 days median, 219 companies, SSRN methodology paper open.)\n\n2) Do you ingest GitHub commit-velocity / contributor / dependent signals? Most sourcing tools read company state from press/network exhaust; reading the public Git graph is orthogonal and seems underused.\n\nWishing this well — there's room for several lenses on this problem.",
+          "Nice ship. Two questions for the founders:\n\n1) What's your current lead time vs the press release for a Series A signal? (We benchmark our panel at 21-47 days median, 219 companies, SSRN methodology paper open.)\n\n2) Do you ingest GitHub commit-velocity / contributor / dependent signals? Most sourcing tools read company state from press/network exhaust; reading the public Git graph is orthogonal and seems underused.\n\nWishing this well, there's room for several lenses on this problem.",
         hookFraming: "ask-back",
         copyLength: { min: 200, max: 500 },
         rules: [
@@ -573,7 +573,7 @@ export const CONVERSATION_TRIGGERS: ConversationTrigger[] = [
         platform: "reddit",
         cadence: "within-4h",
         template:
-          "Side-by-side breakdown of {{competitor}} vs the code-side panel: signals.gitdealflow.com/alternatives\n\nNot trying to crowd this thread — the tools answer different questions. Theirs reads company state; ours reads code-side trajectory. Used together they cover blind spots in both.",
+          "Side-by-side breakdown of {{competitor}} vs the code-side panel: signals.gitdealflow.com/alternatives\n\nNot trying to crowd this thread, the tools answer different questions. Theirs reads company state; ours reads code-side trajectory. Used together they cover blind spots in both.",
         hookFraming: "helpful",
         copyLength: { min: 150, max: 300 },
       },
@@ -583,23 +583,23 @@ export const CONVERSATION_TRIGGERS: ConversationTrigger[] = [
 ];
 
 /**
- * Lookup map keyed by trigger id — used by the cron route to attach a
+ * Lookup map keyed by trigger id, used by the cron route to attach a
  * trigger reference to each draft post.
  */
 export const TRIGGER_BY_ID: Record<string, ConversationTrigger> = Object.freeze(
   Object.fromEntries(CONVERSATION_TRIGGERS.map((t) => [t.id, t])),
 );
 
-/** Total trigger count — used in the public page header copy. */
+/** Total trigger count, used in the public page header copy. */
 export const TRIGGER_COUNT = CONVERSATION_TRIGGERS.length;
 
-/** Total response template count — used in the public page header copy. */
+/** Total response template count, used in the public page header copy. */
 export const RESPONSE_COUNT = CONVERSATION_TRIGGERS.reduce(
   (sum, t) => sum + t.responses.length,
   0,
 );
 
-/** Distinct platforms covered — used in the public page header copy. */
+/** Distinct platforms covered, used in the public page header copy. */
 export const PLATFORM_COUNT = new Set(
   CONVERSATION_TRIGGERS.flatMap((t) => t.responses.map((r) => r.platform)),
 ).size;

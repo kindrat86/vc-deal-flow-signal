@@ -8,7 +8,7 @@ import SeoCta from "@/components/SeoCta";
 export const metadata: Metadata = {
   title: "Topics",
   description:
-    "Browse VC Deal Flow Signal articles by topical series — GitHub signals methodology, deal sourcing workflows, alternative data for VC, sector deep dives, and operator notes.",
+    "Browse VC Deal Flow Signal articles by topical series, GitHub signals methodology, deal sourcing workflows, alternative data for VC, sector deep dives, and operator notes.",
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
   alternates: { canonical: "/topics" },
 };
@@ -26,7 +26,7 @@ export default function TopicsIndexPage() {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/topics#webpage",
         url: "https://signals.gitdealflow.com/topics",
-        name: "Topics — VC Deal Flow Signal",
+        name: "Topics, VC Deal Flow Signal",
         description:
           "Browse articles by topical series across GitHub signals methodology, deal sourcing, alternative data, sector deep dives, and operator notes.",
         inLanguage: "en-US",
@@ -38,7 +38,7 @@ export default function TopicsIndexPage() {
       },
       {
         "@type": "CollectionPage",
-        name: "Topics — VC Deal Flow Signal",
+        name: "Topics, VC Deal Flow Signal",
         description:
           "Browse articles by topical series across GitHub signals methodology, deal sourcing, alternative data, sector deep dives, and operator notes.",
         url: "https://signals.gitdealflow.com/topics",

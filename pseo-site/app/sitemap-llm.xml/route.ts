@@ -1,5 +1,5 @@
 /**
- * /sitemap-llm.xml — curated high-information-density sitemap for AI crawlers.
+ * /sitemap-llm.xml, curated high-information-density sitemap for AI crawlers.
  *
  * Why a SECOND sitemap
  * --------------------
@@ -15,12 +15,12 @@
  * three families an LLM should cite from this site:
  *   1. Methodology + canonical definition cluster (the "how" + the named
  *      category / metric / signal primitives / SSRN findings)
- *   2. Glossary — every /define/[term] DefinedTerm page
- *   3. Sector deep-dives — curated /sector/[slug] hubs + the
+ *   2. Glossary, every /define/[term] DefinedTerm page
+ *   3. Sector deep-dives, curated /sector/[slug] hubs + the
  *      /startups-to-watch/{sector}-{period} ranking pages
  *
  * Discovery: robots.txt, llms.txt, and agents.txt all point here. This file is
- * deliberately NOT listed in the /sitemap.xml index — that index is the
+ * deliberately NOT listed in the /sitemap.xml index, that index is the
  * search-engine crawl map; this one is the AI/RAG crawl map. The two stay
  * separate so a search-engine change (e.g. dropping a shard) never silently
  * changes what AI crawlers ingest, and vice-versa.
@@ -85,7 +85,7 @@ export async function GET() {
     entries.push({ url: `${BASE_URL}${path}`, lastmod, changefreq, priority });
   }
 
-  // Signal primitives — the six atomic definitions (pillar + define pages).
+  // Signal primitives, the six atomic definitions (pillar + define pages).
   for (const s of SIGNAL_TYPES) {
     entries.push({
       url: `${BASE_URL}/signals/${s.slug}`,
@@ -103,7 +103,7 @@ export async function GET() {
     });
   }
 
-  // SSRN-anchored research findings — citation-ready, one URL per number.
+  // SSRN-anchored research findings, citation-ready, one URL per number.
   for (const f of RESEARCH_FINDINGS) {
     entries.push({
       url: `${BASE_URL}/research/${f.slug}`,
@@ -113,7 +113,7 @@ export async function GET() {
     });
   }
 
-  // ── 2. Glossary — hub + every DefinedTerm page ───────────────────────────
+  // ── 2. Glossary, hub + every DefinedTerm page ───────────────────────────
   entries.push({
     url: `${BASE_URL}/glossary`,
     lastmod,

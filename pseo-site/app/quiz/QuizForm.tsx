@@ -22,9 +22,9 @@ const QUESTIONS: Question[] = [
     id: "checks",
     prompt: "Roughly how many angel checks have you written in the past 12 months?",
     options: [
-      { label: "Zero or one — I'm exploring", route: "F" },
-      { label: "Two to five — building cadence", route: "T" },
-      { label: "Six to twenty — actively sourcing", route: "D" },
+      { label: "Zero or one, I'm exploring", route: "F" },
+      { label: "Two to five, building cadence", route: "T" },
+      { label: "Six to twenty, actively sourcing", route: "D" },
       { label: "Twenty-plus, or I run a fund / syndicate", route: "I" },
     ],
   },
@@ -32,19 +32,19 @@ const QUESTIONS: Question[] = [
     id: "thesis",
     prompt: "How well-defined is your investment thesis right now?",
     options: [
-      { label: "Vague — I invest case by case", route: "F" },
+      { label: "Vague, I invest case by case", route: "F" },
       { label: "I lean toward a sector, but it's loose", route: "T" },
       { label: "I have a clear thesis (e.g. AI infra, dev tools, fintech rails)", route: "D" },
-      { label: "Multiple sharp theses — I want bulk filtering by stage and geography", route: "I" },
+      { label: "Multiple sharp theses, I want bulk filtering by stage and geography", route: "I" },
     ],
   },
   {
     id: "rhythm",
     prompt: "How much time would you realistically spend on a deal-flow tool each week?",
     options: [
-      { label: "Five minutes — I want it pushed to me", route: "F" },
-      { label: "Fifteen minutes once a month — for one specific sector", route: "T" },
-      { label: "Twenty to thirty minutes weekly — Monday morning rhythm", route: "D" },
+      { label: "Five minutes, I want it pushed to me", route: "F" },
+      { label: "Fifteen minutes once a month, for one specific sector", route: "T" },
+      { label: "Twenty to thirty minutes weekly, Monday morning rhythm", route: "D" },
       { label: "Multiple hours weekly + I want API access for my own stack", route: "I" },
     ],
   },
@@ -60,7 +60,7 @@ const QUESTIONS: Question[] = [
   },
 ];
 
-// Q5 — explicit archetype self-ID. Audit 2026-05-09 (Brunson Traffic Secrets
+// Q5, explicit archetype self-ID. Audit 2026-05-09 (Brunson Traffic Secrets
 // Ch 1 split): the F/T/D/I tier-tally answers what the buyer DOES; this
 // question answers what the buyer IS. The two together let us surface both
 // the right tier AND the right archetype profile on the result page.
@@ -70,17 +70,17 @@ const ARCHETYPE_QUESTION: ArchetypeQuestion = {
   options: [
     {
       label:
-        "Solo Angel — I write personal checks, €5k–€50k each, on my own balance sheet",
+        "Solo Angel, I write personal checks, €5k-€50k each, on my own balance sheet",
       route: "solo-angel",
     },
     {
       label:
-        "Fund GP / Scout — I source for a fund (≤$50M AUM) or scout for a larger one; I write a Monday memo",
+        "Fund GP / Scout, I source for a fund (≤$50M AUM) or scout for a larger one; I write a Monday memo",
       route: "fund-gp",
     },
     {
       label:
-        "Family Office Analyst — I run diligence for a single- or multi-family office or institutional allocator",
+        "Family Office Analyst, I run diligence for a single- or multi-family office or institutional allocator",
       route: "family-office",
     },
   ],
@@ -90,8 +90,8 @@ const RESULTS = {
   F: {
     title: "Start with the free Acceleration Watch.",
     eyebrow: "Free tier · €0",
-    body: "You'd burn money on a paid subscription right now. The free Monday digest gives you the top 5 ranked startups every week — that's enough to test whether the signal matches your taste before you commit to a tool.",
-    cta: { label: "Subscribe to the Acceleration Watch — Free", href: "https://gitdealflow.com/#signup", external: true },
+    body: "You'd burn money on a paid subscription right now. The free Monday digest gives you the top 5 ranked startups every week, that's enough to test whether the signal matches your taste before you commit to a tool.",
+    cta: { label: "Subscribe to the Acceleration Watch, Free", href: "https://gitdealflow.com/#signup", external: true },
     secondary: { label: "Or skim the methodology first", href: "/methodology" },
   },
   T: {
@@ -102,16 +102,16 @@ const RESULTS = {
     secondary: { label: "Compare all tiers", href: "/pricing" },
   },
   D: {
-    title: "Dashboard Beta — €9.97/mo, founder price locked forever.",
+    title: "Dashboard Beta, €9.97/mo, founder price locked forever.",
     eyebrow: "Dashboard Beta · €9.97/mo",
-    body: "You write enough checks and have a sharp enough thesis that the full ranked dashboard pays for itself the first time it surfaces a name you didn't already see. €9.97/mo is the founding-member rate — it stays €9.97 even after the public hike to €49/mo. Read the 12-minute walkthrough before you click if you want the full case.",
+    body: "You write enough checks and have a sharp enough thesis that the full ranked dashboard pays for itself the first time it surfaces a name you didn't already see. €9.97/mo is the founding-member rate, it stays €9.97 even after the public hike to €49/mo. Read the 12-minute walkthrough before you click if you want the full case.",
     cta: { label: "Lock €9.97/mo founder price", href: "https://buy.stripe.com/4gMbJ07kTaJy7kqg6s0x20b", external: true },
     secondary: { label: "Read the 12-minute case first", href: "/walkthrough" },
   },
   I: {
-    title: "Insider Circle — or the €1,997 Sector Sweep, depending on what you need first.",
+    title: "Insider Circle, or the €1,997 Sector Sweep, depending on what you need first.",
     eyebrow: "Insider Circle · €197/mo  ·  or  ·  Sector Sweep · €1,997 once",
-    body: "You're operating at the volume where the API, custom watchlists, and Slack/Telegram alerts start to matter. If you want a one-time deep-dive built around your specific thesis before subscribing, the €1,997 Custom Sector Sweep is the right entry — €1,997 of it credits to Insider if you upgrade within 60 days.",
+    body: "You're operating at the volume where the API, custom watchlists, and Slack/Telegram alerts start to matter. If you want a one-time deep-dive built around your specific thesis before subscribing, the €1,997 Custom Sector Sweep is the right entry, €1,997 of it credits to Insider if you upgrade within 60 days.",
     cta: { label: "See the Insider case (24h lead)", href: "/insider", external: false },
     secondary: { label: "Or commission a Sector Sweep", href: "/pricing#sector-sweep-stack" },
   },
@@ -132,31 +132,31 @@ const RESULT_TIER_LABELS: Record<keyof typeof RESULTS, string> = {
   I: "Insider Circle (€197/mo) / Sector Sweep (€1,997 once)",
 };
 
-// Brunson Quiz Funnel transparency — show the user the tier-specific drip
+// Brunson Quiz Funnel transparency, show the user the tier-specific drip
 // they'll actually receive. This is the upgrade Russell flagged in his
-// 2026-05-08 audit ("same drip everyone gets" — fixed: 11 new tier-specific
+// 2026-05-08 audit ("same drip everyone gets", fixed: 11 new tier-specific
 // emails, every reader gets a sequence shaped to the rung they self-described
 // on the quiz). Source of truth is lib/emails.ts → SOAP_OPERA_F/T/D/I.
 const TIER_SEQUENCE_SUMMARY: Record<keyof typeof RESULTS, { count: number; pitch: string }> = {
   F: {
     count: 17,
     pitch:
-      "Tuned for 0–1 checks/year — Sunday-morning future-pace, no pressure to upgrade, Crystal Ball game framed as no-cheque public track record.",
+      "Tuned for 0-1 checks/year, Sunday-morning future-pace, no pressure to upgrade, Crystal Ball game framed as no-cheque public track record.",
   },
   T: {
     count: 19,
     pitch:
-      "Tuned for 2–5 checks/year — €7 First Look as the right test, Tuesday-afternoon scenario, credit-back to Dashboard at the 45-day mark.",
+      "Tuned for 2-5 checks/year, €7 First Look as the right test, Tuesday-afternoon scenario, credit-back to Dashboard at the 45-day mark.",
   },
   D: {
     count: 22,
     pitch:
-      "Tuned for 6–20 checks/year — full Dashboard close, Insider 24h-lead at D45, Sector Sweep at D60, State-of-the-Engine accountability anchor.",
+      "Tuned for 6-20 checks/year, full Dashboard close, Insider 24h-lead at D45, Sector Sweep at D60, State-of-the-Engine accountability anchor.",
   },
   I: {
     count: 19,
     pitch:
-      "Tuned for 20+ checks/year — fund-tier rung from email 1, 24h-lead Sunday-evening scenario, Sector Sweep window opens at D45.",
+      "Tuned for 20+ checks/year, fund-tier rung from email 1, 24h-lead Sunday-evening scenario, Sector Sweep window opens at D45.",
   },
 };
 
@@ -216,7 +216,7 @@ export default function QuizForm() {
           archetype_label: archetype ? ARCHETYPE_LABEL[archetype] : "",
         }),
       });
-      // /api/subscribe returns { ok: true } even for already-subscribed —
+      // /api/subscribe returns { ok: true } even for already-subscribed -
       // we always reveal the result, the gate is the capture moment, not
       // a paywall. If the endpoint hard-fails, we still reveal but flag
       // the error so we don't block the buyer.
@@ -226,9 +226,9 @@ export default function QuizForm() {
       setGate("ok");
     } catch (err) {
       setGateError(
-        err instanceof Error ? err.message : "Subscribe failed — showing result anyway.",
+        err instanceof Error ? err.message : "Subscribe failed, showing result anyway.",
       );
-      // Still reveal the result — anti-friction default.
+      // Still reveal the result, anti-friction default.
       setGate("ok");
     }
   }
@@ -282,13 +282,13 @@ export default function QuizForm() {
               ✓ Tier-matched sequence queued · first email lands in 30 minutes
             </p>
             <p className="text-gray-300 text-sm leading-relaxed">
-              We&rsquo;ll send you the <strong>tier-{resultTierKey} sequence</strong> &mdash;{" "}
+              We&rsquo;ll send you the <strong>tier-{resultTierKey} sequence</strong>: {" "}
               <strong>{sequence.count} emails over 8 months</strong>. {sequence.pitch}
             </p>
             <p className="text-gray-500 text-xs leading-relaxed">
               Other quiz takers get different sequences. We segment because the rung-up
-              from your tier is genuinely different from the rung-up from the next one over &mdash;
-              there&rsquo;s no point pitching you a &euro;1,997 Sweep if you&rsquo;re a 0&ndash;1 check/year reader,
+              from your tier is genuinely different from the rung-up from the next one over -
+              there&rsquo;s no point pitching you a &euro;1,997 Sweep if you&rsquo;re a 0-1 check/year reader,
               and there&rsquo;s no point pitching a fund operator a &euro;7 tripwire.
             </p>
           </div>
@@ -310,9 +310,9 @@ export default function QuizForm() {
     );
   }
 
-  // Q5 — archetype self-ID. Sits between the four tier-routing questions and
+  // Q5, archetype self-ID. Sits between the four tier-routing questions and
   // the email gate. Cleaner than blending into the F/T/D/I tally because this
-  // is identity, not behavior — the buyer recognises themselves once in their
+  // is identity, not behavior, the buyer recognises themselves once in their
   // answers (cadence/thesis/rhythm/edge) and again in the archetype label.
   if (finishedTierAnswers && archetype === null) {
     return (
@@ -335,7 +335,7 @@ export default function QuizForm() {
         </h2>
         <p className="text-gray-400 text-sm leading-relaxed">
           The previous four questions sized your buying motion. This one names
-          it. We&rsquo;ll route you to one of three reader profiles &mdash; the
+          it. We&rsquo;ll route you to one of three reader profiles, the
           tier suggestion stays the same, the framing changes to fit the way
           you actually decide.
         </p>
@@ -376,7 +376,7 @@ export default function QuizForm() {
         <p className="text-gray-300 text-sm leading-relaxed">
           We&rsquo;ll show your result on this page <em>and</em> send a copy
           to your inbox so you can come back to it later. The email also
-          starts the free Sunday Acceleration Watch digest — five ranked
+          starts the free Sunday Acceleration Watch digest, five ranked
           startups every Monday. Reply REFUND or unsubscribe any time.
         </p>
         <form onSubmit={captureEmail} className="space-y-3">

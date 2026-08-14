@@ -1,9 +1,9 @@
 import Link from "next/link";
 import HomeSqueezeForm from "./HomeSqueezeForm";
 
-// Brunson DotCom Secrets Ch 14 — Lead "Squeeze" Funnels.
+// Brunson DotCom Secrets Ch 14, Lead "Squeeze" Funnels.
 // Russell-Brunson HSO audit 2026-05-08 scored Ch 14 at 87/100 with
-// the note: "the home one isn't the most prominent — three-door hero
+// the note: "the home one isn't the most prominent, three-door hero
 // gives equal weight to multiple paths, which dilutes a single
 // squeeze."
 //
@@ -29,7 +29,7 @@ const EXIT_DOORS = [
     href: "/predict",
     eyebrow: "Free game",
     title: "Predict the next breakout",
-    body: "Pick any GitHub org. Get a 1–99% breakout score. Compete on the public leaderboard.",
+    body: "Pick any GitHub org. Get a 1-99% breakout score. Compete on the public leaderboard.",
   },
 ] as const;
 
@@ -39,19 +39,19 @@ export default function HomeSqueeze() {
       aria-label="Get the free Sunday digest"
       className="space-y-6"
     >
-      {/* Single-CTA squeeze — the dominant action. Headline above
+      {/* Single-CTA squeeze, the dominant action. Headline above
           the form to anchor the value before the user reads inputs. */}
       <div className="space-y-3">
         <p className="text-sky-300 text-[11px] uppercase tracking-[0.18em] font-semibold">
           Acceleration Watch · Free forever · One email a week
         </p>
         <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-tight tracking-tight">
-          5 breakout startups, every Sunday —{" "}
+          5 breakout startups, every Sunday, {" "}
           <span className="text-sky-400">47 days</span> before the deck
           arrives.
         </h2>
         <p className="text-gray-400 text-sm sm:text-base leading-relaxed max-w-2xl">
-          You reach out while the round is still 47 days away — not after
+          You reach out while the round is still 47 days away, not after
           the deck is circulating. It&rsquo;s the same engineering signal
           that preceded 219 startup-period observations in our SSRN-published
           panel. Two boxes, twenty seconds, free forever.
@@ -60,12 +60,12 @@ export default function HomeSqueeze() {
 
       <HomeSqueezeForm />
 
-      {/* Tertiary exits — visibly subordinate. Smaller type, no color
+      {/* Tertiary exits, visibly subordinate. Smaller type, no color
           accents, single-line cards. The visitor who's not ready for
           email still has somewhere to go, but the gravity is the form. */}
       <div className="pt-2">
         <p className="text-gray-500 text-[11px] uppercase tracking-[0.14em] font-semibold mb-3">
-          Or peek first — no email required
+          Or peek first, no email required
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
           {EXIT_DOORS.map((door) => (

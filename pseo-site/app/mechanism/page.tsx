@@ -7,7 +7,7 @@ import ThreeCoreStoriesNav from "@/components/ThreeCoreStoriesNav";
 
 export const dynamic = "force-static";
 
-// Brunson Audit (Russell, 2026-05-08): Ch 6 — Three Levels of Market
+// Brunson Audit (Russell, 2026-05-08): Ch 6, Three Levels of Market
 // Sophistication. Pushed from 93/100 toward 100 by:
 //   1) Naming the mechanism explicitly ("Commit-Velocity Acceleration Engine")
 //   2) Publishing the formula (5 deterministic steps, falsifiable)
@@ -19,15 +19,15 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title:
-    "How the Signal Works — The Commit-Velocity Acceleration Engine",
+    "How the Signal Works, The Commit-Velocity Acceleration Engine",
   description:
     "How the signal works: a reproducible public-data method for spotting startup momentum earlier, with the formula, the proof, and the checks that keep it honest.",
   alternates: { canonical: "/mechanism" },
   openGraph: {
     title:
-      "The Commit-Velocity Acceleration Engine — Named Mechanism for VC Deal Sourcing",
+      "The Commit-Velocity Acceleration Engine, Named Mechanism for VC Deal Sourcing",
     description:
-      "A new mechanism for VC deal sourcing — public-data, formula-driven, falsifiable. Eugene Schwartz Level 5.",
+      "A new mechanism for VC deal sourcing, public-data, formula-driven, falsifiable. Eugene Schwartz Level 5.",
     url: "https://signals.gitdealflow.com/mechanism",
     type: "article",
   },
@@ -46,29 +46,29 @@ const FORMULA_STEPS = [
     detail:
       "Each organization is measured against its own historical baseline, not the population. A 100% delta means the team doubled its merge cadence relative to its own prior fortnight. Cross-org comparison is meaningless; self-comparison is the whole point.",
     plain:
-      "In plain terms: we compare a team to its own normal, not to other teams. A 100% jump means they shipped twice as much code as their usual fortnight — the kind of step-change that happens right before a raise.",
+      "In plain terms: we compare a team to its own normal, not to other teams. A 100% jump means they shipped twice as much code as their usual fortnight, the kind of step-change that happens right before a raise.",
   },
   {
     n: 3,
     title: "Apply two-period confirmation",
     detail:
-      "An acceleration breakout must persist into a second 14-day window before the engine treats it as actionable. This removes hackathon spikes, launch-week bursts, and single-contributor onboarding noise — the three sources of false positives that trip up first-pass momentum trackers.",
+      "An acceleration breakout must persist into a second 14-day window before the engine treats it as actionable. This removes hackathon spikes, launch-week bursts, and single-contributor onboarding noise, the three sources of false positives that trip up first-pass momentum trackers.",
   },
   {
     n: 4,
     title: "Score contributor concentration with the Gini coefficient",
     detail:
-      "The Gini coefficient of commit distribution across contributors over the same 14-day window. Below 0.30 = broad team participation. Above 0.70 = a single hero developer. High velocity with low concentration is the strongest single composite predictor in the SSRN panel — orgs meeting both conditions are 3.4× more likely to announce a Series A within 60 days than orgs with high velocity alone.",
+      "The Gini coefficient of commit distribution across contributors over the same 14-day window. Below 0.30 = broad team participation. Above 0.70 = a single hero developer. High velocity with low concentration is the strongest single composite predictor in the SSRN panel, orgs meeting both conditions are 3.4× more likely to announce a Series A within 60 days than orgs with high velocity alone.",
     plain:
-      "In plain terms: the Gini coefficient is just a fairness score for who is doing the work — is this a whole team accelerating, or one person doing everything? A real team accelerating is a far stronger buy signal than a single hero coder, and we only flag the team pattern.",
+      "In plain terms: the Gini coefficient is just a fairness score for who is doing the work, is this a whole team accelerating, or one person doing everything? A real team accelerating is a far stronger buy signal than a single hero coder, and we only flag the team pattern.",
   },
   {
     n: 5,
     title: "Classify the breakout into one of four signal types",
     detail:
-      "Engineering Hiring Burst (≥50% contributor growth), Infrastructure Buildout (≥3 new public repos in 30 days), Deploy Frequency Spike (≥150% velocity), or Framework Migration (general acceleration that fits none of the above). Each type carries a distinct fundraise-lead-time distribution, so the classification is not cosmetic — it is the prediction.",
+      "Engineering Hiring Burst (≥50% contributor growth), Infrastructure Buildout (≥3 new public repos in 30 days), Deploy Frequency Spike (≥150% velocity), or Framework Migration (general acceleration that fits none of the above). Each type carries a distinct fundraise-lead-time distribution, so the classification is not cosmetic, it is the prediction.",
     plain:
-      "In plain terms: we tell you which kind of move it is — they just hired a wave of engineers, they're building scaling infrastructure, they're shipping to production far faster, or they're re-platforming. Each kind tends to lead a raise by a different amount of time, so the label is also the timing estimate.",
+      "In plain terms: we tell you which kind of move it is, they just hired a wave of engineers, they're building scaling infrastructure, they're shipping to production far faster, or they're re-platforming. Each kind tends to lead a raise by a different amount of time, so the label is also the timing estimate.",
   },
 ] as const;
 
@@ -85,19 +85,19 @@ const SOPHISTICATION_LEVELS: readonly SophisticationLevel[] = [
     level: "Level 1",
     headline: "Make the bare claim",
     competitorExample: "“Find startups before everyone else.”",
-    why: "First-to-market positioning. No mechanism. No proof. Markets at this stage will buy on the promise alone — but venture deal-flow stopped being a Level-1 market three decades ago.",
+    why: "First-to-market positioning. No mechanism. No proof. Markets at this stage will buy on the promise alone, but venture deal-flow stopped being a Level-1 market three decades ago.",
   },
   {
     level: "Level 2",
     headline: "Bigger, louder version of the same claim",
     competitorExample: "“The most comprehensive private-company database.”",
-    why: "Tracxn, CB Insights, PitchBook all sit here. The claim is a quantity claim — bigger, more, faster. The buyer has heard it twenty times this quarter and stopped reading the headline.",
+    why: "Tracxn, CB Insights, PitchBook all sit here. The claim is a quantity claim, bigger, more, faster. The buyer has heard it twenty times this quarter and stopped reading the headline.",
   },
   {
     level: "Level 3",
     headline: "Claim a unique mechanism",
     competitorExample: "“Proprietary AI scoring algorithm.”",
-    why: "Harmonic, Glasswing, SignalFire Beacon. They name a mechanism but the mechanism is opaque — the buyer cannot verify it, reproduce it, or argue with it. The mechanism becomes a marketing asset, not a working tool.",
+    why: "Harmonic, Glasswing, SignalFire Beacon. They name a mechanism but the mechanism is opaque, the buyer cannot verify it, reproduce it, or argue with it. The mechanism becomes a marketing asset, not a working tool.",
   },
   {
     level: "Level 4",
@@ -110,7 +110,7 @@ const SOPHISTICATION_LEVELS: readonly SophisticationLevel[] = [
     headline:
       "Name the mechanism, publish the formula, identify with the buyer’s worldview",
     competitorExample: "“The Commit-Velocity Acceleration Engine.”",
-    why: "The buyer is sophisticated. They have heard every claim, watched the elaboration arms race, and learned that the only mechanism worth trusting is one they can run themselves. We name it. We publish the formula. We hand them the regression code. The mechanism becomes shared vocabulary — and the conversation moves from “convince me” to “let me reproduce this.”",
+    why: "The buyer is sophisticated. They have heard every claim, watched the elaboration arms race, and learned that the only mechanism worth trusting is one they can run themselves. We name it. We publish the formula. We hand them the regression code. The mechanism becomes shared vocabulary, and the conversation moves from “convince me” to “let me reproduce this.”",
     self: true,
   },
 ];
@@ -119,13 +119,13 @@ const PROOF_ANCHORS = [
   {
     label: "SSRN longitudinal panel",
     detail:
-      "219 venture-backed startups, 19 sectors, 5 quarterly periods. Median fundraise-lead-time of 31 days, 21–47 day interquartile range.",
+      "219 venture-backed startups, 19 sectors, 5 quarterly periods. Median fundraise-lead-time of 31 days, 21-47 day interquartile range.",
     href: "/research",
   },
   {
     label: "Reproducibility kit",
     detail:
-      "Step-by-step HowTo to re-run the engine against the public dataset. CC BY 4.0 — every signal is re-derivable in a notebook.",
+      "Step-by-step HowTo to re-run the engine against the public dataset. CC BY 4.0, every signal is re-derivable in a notebook.",
     href: "/reproducibility",
   },
   {
@@ -145,7 +145,7 @@ const PROOF_ANCHORS = [
 const FALSIFIABILITY = [
   {
     claim: "Commit-velocity acceleration leads fundraise announcement",
-    test: "Re-run the regression on a held-out sector. Median lead-time should fall in the 21–47 day interquartile range published in the SSRN panel.",
+    test: "Re-run the regression on a held-out sector. Median lead-time should fall in the 21-47 day interquartile range published in the SSRN panel.",
   },
   {
     claim: "Two-period confirmation removes false positives",
@@ -166,7 +166,7 @@ export default function MechanismPage() {
         "@type": "Article",
         "@id": "https://signals.gitdealflow.com/mechanism#article",
         headline:
-          "The Commit-Velocity Acceleration Engine — A Named Mechanism for VC Deal Sourcing",
+          "The Commit-Velocity Acceleration Engine, A Named Mechanism for VC Deal Sourcing",
         description:
           "A new mechanism for venture capital deal sourcing: 14-day commit-velocity acceleration on public GitHub data, two-period confirmation, and Gini-weighted contributor concentration.",
         author: {
@@ -183,7 +183,7 @@ export default function MechanismPage() {
         "@id": "https://signals.gitdealflow.com/mechanism#term",
         name: "Commit-Velocity Acceleration Engine",
         description:
-          "A reproducible, public-data mechanism for surfacing venture-backed startups 21–47 days before fundraise announcement, built on 14-day commit velocity, two-period confirmation, and Gini-weighted contributor concentration.",
+          "A reproducible, public-data mechanism for surfacing venture-backed startups 21-47 days before fundraise announcement, built on 14-day commit velocity, two-period confirmation, and Gini-weighted contributor concentration.",
         inDefinedTermSet: "https://signals.gitdealflow.com/glossary",
         url: "https://signals.gitdealflow.com/mechanism",
       },
@@ -272,7 +272,7 @@ export default function MechanismPage() {
           >
             Code-Side Sourcing
           </Link>
-          {" "}— the practice of using public repository-velocity data as a
+          {" "}, the practice of using public repository-velocity data as a
           leading indicator of venture-stage outcomes. Read the category
           definition first if the term is new; the steps below are how we
           execute it.
@@ -280,13 +280,13 @@ export default function MechanismPage() {
 
         <p className="text-sm text-slate-300 mb-8 leading-relaxed rounded-xl border border-slate-800 bg-slate-900/40 p-5">
           <span className="font-semibold text-slate-100">You do not need to read code to use this.</span>{" "}
-          The steps below are how we do the reading — you never run any of it.
+          The steps below are how we do the reading, you never run any of it.
           The signal arrives already translated into plain business language:
           &ldquo;this team is shipping far more than usual,&rdquo; &ldquo;the
           engineering team roughly doubled overnight,&rdquo; &ldquo;they just
           stood up the infrastructure a company builds right before it scales.&rdquo;
           The formula is published below for the few buyers who want to audit
-          it. Most never look at it — they read the verdict, not the math.
+          it. Most never look at it, they read the verdict, not the math.
         </p>
 
         <section className="mb-10 rounded-2xl border border-amber-700/30 bg-amber-950/20 p-6 sm:p-8 space-y-3">
@@ -316,7 +316,7 @@ export default function MechanismPage() {
           <p className="text-sm text-slate-400 mb-6 leading-relaxed">
             Every signal you see on the dashboard, in the API, or inside the
             MCP server flows from these five steps. The bot filter and
-            two-period confirmation are not optional — they are what separates
+            two-period confirmation are not optional, they are what separates
             an acceleration <em>signal</em> from acceleration <em>noise.</em>
           </p>
           <ol className="space-y-4">
@@ -343,7 +343,7 @@ export default function MechanismPage() {
             ))}
           </ol>
           <p className="text-xs text-slate-500 mt-4 leading-relaxed">
-            The green lines are the plain-English read of each step — what it
+            The green lines are the plain-English read of each step, what it
             means for the deal, not how the code runs. You never touch the
             code; you read the verdict.
           </p>
@@ -357,7 +357,7 @@ export default function MechanismPage() {
             Eugene Schwartz mapped advertising claims onto five levels in{" "}
             <em>Breakthrough Advertising</em> (1966). Markets climb the
             ladder as buyers grow tired of repetition. Venture deal sourcing
-            has been at Level 4 for a decade — the explicit choice we made
+            has been at Level 4 for a decade, the explicit choice we made
             was to ship a Level 5 product, where the mechanism is named,
             published, and reproducible by the buyer.
           </p>
@@ -414,7 +414,7 @@ export default function MechanismPage() {
           <p className="text-xs text-slate-400 mb-6 leading-relaxed rounded-lg border border-slate-800 bg-slate-900/40 p-4">
             This section is for the buyer who wants to check our work, or hand
             it to an analyst who will. If the statistics below are not your
-            language, that is fine — nothing here is something you have to run.
+            language, that is fine, nothing here is something you have to run.
             In one sentence: each test is a way to prove the signal is real and
             not luck, and we publish them precisely because we expect them to hold.
           </p>
@@ -443,7 +443,7 @@ export default function MechanismPage() {
           <p className="text-sm text-slate-400 mb-6 leading-relaxed">
             The mechanism is published, sourced, and reproducible. We sell the
             live aggregation, the rhythm, the dashboard, the agent integration
-            — not the secret. The buyer who can reproduce our regression in a
+not the secret. The buyer who can reproduce our regression in a
             notebook is the buyer who trusts us most.
           </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -476,7 +476,7 @@ export default function MechanismPage() {
           </h2>
           <p className="text-sm text-slate-300 mb-5 leading-relaxed">
             Pick any of 19 tracked sectors. Within 24 hours we deliver the
-            full Commit-Velocity Acceleration Engine output for that sector —
+            full Commit-Velocity Acceleration Engine output for that sector -
             top 25 ranked orgs, contributor maps, the three pre-Crunchbase
             breakouts the consensus tools haven&rsquo;t indexed. Credited
             toward Dashboard if you upgrade in 14 days.
@@ -485,12 +485,12 @@ export default function MechanismPage() {
             href="/firstlook"
             className="inline-flex items-center gap-2 px-5 py-2.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold transition"
           >
-            Get the First Look pass — €7
+            Get the First Look pass, €7
             <span aria-hidden="true">→</span>
           </Link>
         </section>
 
-        {/* Brunson Expert Secrets Ch 9 — Three Core Stories.
+        {/* Brunson Expert Secrets Ch 9, Three Core Stories.
             Audit 2026-05-09 (Ch 9 push 94→100): the engine page is the
             "vehicle in formula form." Walk the reader into the Origin
             and Identity stories instead of dead-ending on a Schwartz

@@ -63,7 +63,7 @@ export const ARCHETYPES: readonly Archetype[] = [
     label: "Solo Angel",
     shortLabel: "Solo Angel",
     oneLiner:
-      "Engineer or ex-founder writing personal angel checks of €5k–€50k. Five to forty investments to date. Lives in Cursor, Claude, and GitHub all day.",
+      "Engineer or ex-founder writing personal angel checks of €5k-€50k. Five to forty investments to date. Lives in Cursor, Claude, and GitHub all day.",
     dayShape: [
       "Code in the morning, scroll Hacker News and Twitter at lunch.",
       "An AngelList syndicate invite at 14:00; decide on the check by 18:00.",
@@ -95,12 +95,12 @@ export const ARCHETYPES: readonly Archetype[] = [
       href: "/pricing",
     },
     whatBuys: [
-      "A Sunday digest where five names beats fifty — density over volume.",
+      "A Sunday digest where five names beats fifty, density over volume.",
       "MCP-native: query the data straight from Claude or Cursor, no dashboard tab.",
       "Methodology PDF over founder polish. Engineer-coded honesty, not enterprise theatre.",
     ],
     notForYouIf:
-      "You write €1M+ tickets out of a fund and need full-coverage screening — that’s a different category. Sharp Tier (€497/mo) would feel like overkill for a personal checkbook.",
+      "You write €1M+ tickets out of a fund and need full-coverage screening, that’s a different category. Sharp Tier (€497/mo) would feel like overkill for a personal checkbook.",
     accent: "sky",
   },
   {
@@ -117,7 +117,7 @@ export const ARCHETYPES: readonly Archetype[] = [
     jobs: [
       "Give me fifty names per sector my analyst can chase.",
       "Custom watchlist I can share with my partner, plus an API into our internal CRM.",
-      "A 21–47-day first-mover window I can credibly explain in an LP update.",
+      "A 21-47-day first-mover window I can credibly explain in an LP update.",
     ],
     entryTier: {
       name: "Insider Circle",
@@ -138,12 +138,12 @@ export const ARCHETYPES: readonly Archetype[] = [
       href: "/apply",
     },
     whatBuys: [
-      "A 24-hour lead window over the free digest — your analyst sees it before consensus does.",
+      "A 24-hour lead window over the free digest, your analyst sees it before consensus does.",
       "White-labeled API + custom watchlists; methodology source under CC BY 4.0 so an LP can audit it.",
       "Quarterly review call with the methodology lead. Capped 8 funds means scarcity is real, not theatre.",
     ],
     notForYouIf:
-      "You’re a Series-B+ partner with a six-figure data budget — Harmonic, Tracxn, and Affinity are built for full-coverage screening. We’re a leading-indicator overlay, not a replacement.",
+      "You’re a Series-B+ partner with a six-figure data budget, Harmonic, Tracxn, and Affinity are built for full-coverage screening. We’re a leading-indicator overlay, not a replacement.",
     accent: "amber",
   },
   {
@@ -159,7 +159,7 @@ export const ARCHETYPES: readonly Archetype[] = [
     ],
     jobs: [
       "A reproducible methodology paper my compliance team can audit.",
-      "ClaimReview-grade provenance on every public claim — not a marketing assertion.",
+      "ClaimReview-grade provenance on every public claim, not a marketing assertion.",
       "Annual contract with a named methodology lead, not a Stripe self-service flow.",
     ],
     entryTier: {
@@ -181,7 +181,7 @@ export const ARCHETYPES: readonly Archetype[] = [
       href: "/methodology-partnership",
     },
     whatBuys: [
-      "SSRN paper with replication appendix. CC BY 4.0 licensing — your compliance team can host the dataset internally.",
+      "SSRN paper with replication appendix. CC BY 4.0 licensing, your compliance team can host the dataset internally.",
       "Methodology Partnership is a named partnership, not a subscription. Procurement-friendly, annually renewed.",
       "Anonymous-by-design matches a compliance preference for source over personality. The voice is the methodology.",
     ],
@@ -206,7 +206,7 @@ export const ARCHETYPE_IDS: readonly ArchetypeId[] = ARCHETYPES.map(
 /**
  * Map quiz tier-route (F/T/D/I) → most likely archetype.
  *
- * Heuristic only — the quiz V2 also collects an explicit self-ID question,
+ * Heuristic only, the quiz V2 also collects an explicit self-ID question,
  * which overrides this map. Use this as the fallback when the user skips Q5.
  */
 export const TIER_TO_ARCHETYPE: Record<"F" | "T" | "D" | "I", ArchetypeId> = {

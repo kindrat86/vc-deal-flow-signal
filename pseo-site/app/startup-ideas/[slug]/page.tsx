@@ -128,13 +128,13 @@ function buildJsonLd(
       matches.length > 0
         ? {
             "@type": "ItemList",
-            name: `Top repos already trying — ${idea.title}`,
+            name: `Top repos already trying, ${idea.title}`,
             numberOfItems: matches.length,
             itemListElement: matches.map((m, i) => ({
               "@type": "ListItem",
               position: i + 1,
               name: m.name,
-              description: `${m.description || m.sectorName} — ${m.commitVelocityChange} commit-velocity change in ${m.sectorName}`,
+              description: `${m.description || m.sectorName}, ${m.commitVelocityChange} commit-velocity change in ${m.sectorName}`,
               url: m.githubUrl,
             })),
           }
@@ -247,7 +247,7 @@ export default async function StartupIdeaPage({ params }: PageProps) {
           )}
         </section>
 
-        {/* The 3 repos already trying — live signals join */}
+        {/* The 3 repos already trying, live signals join */}
         <section
           aria-label="Three repos already trying"
           className="space-y-4"
@@ -264,7 +264,7 @@ export default async function StartupIdeaPage({ params }: PageProps) {
             <div className="rounded-xl border border-slate-800 bg-slate-900/60 p-5 text-sm text-gray-400 leading-relaxed">
               <p>
                 No repos in the current period have crossed our minimum-volume
-                + sector match for this idea. That can mean two things — the
+                + sector match for this idea. That can mean two things, the
                 niche is too new for public GitHub signal to show up yet, or
                 the buildable wedge is genuinely greenfield. Either way, watch
                 this page; matches refresh weekly.

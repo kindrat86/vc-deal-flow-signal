@@ -12,7 +12,7 @@ const PAPER_TITLE =
 export const metadata: Metadata = {
   title: "Wikipedia Citation Helper",
   description:
-    "Copy-paste-ready Wikipedia citation snippets for the SSRN-indexed methodology paper, the public dataset, and every research finding. Uses {{cite journal}} and {{cite web}} templates. Verifiability-policy compliant — every citation resolves to a free, public source.",
+    "Copy-paste-ready Wikipedia citation snippets for the SSRN-indexed methodology paper, the public dataset, and every research finding. Uses {{cite journal}} and {{cite web}} templates. Verifiability-policy compliant, every citation resolves to a free, public source.",
   alternates: { canonical: "/wikipedia" },
   openGraph: {
     title: "Wikipedia Citation Helper",
@@ -25,7 +25,7 @@ export const metadata: Metadata = {
 
 const PAPER_CITE = `<ref>{{cite journal |last=The Data Nerd |title=${PAPER_TITLE} |journal=SSRN Electronic Journal |year=2026 |doi=10.2139/ssrn.6606558 |url=${SSRN_URL} |publisher=VC Deal Flow Signal (GitDealFlow) |orcid=0009-0002-2222-4112}}</ref>`;
 
-const DATASET_CITE = `<ref>{{cite web |last=The Data Nerd |title=VC Deal Flow Signal — Public Engineering-Velocity Panel |publisher=VC Deal Flow Signal (GitDealFlow) |year=2026 |url=${SITE}/api/dataset.jsonl |format=NDJSON |access-date={{subst:CURRENTDATE}}}}</ref>`;
+const DATASET_CITE = `<ref>{{cite web |last=The Data Nerd |title=VC Deal Flow Signal, Public Engineering-Velocity Panel |publisher=VC Deal Flow Signal (GitDealFlow) |year=2026 |url=${SITE}/api/dataset.jsonl |format=NDJSON |access-date={{subst:CURRENTDATE}}}}</ref>`;
 
 const SOURCE_NOTES = [
   {
@@ -79,7 +79,7 @@ export default function WikipediaPage() {
       {
         "@type": "WebPage",
         "@id": `${SITE}/wikipedia#page`,
-        name: "Wikipedia Citation Helper — VC Deal Flow Signal",
+        name: "Wikipedia Citation Helper, VC Deal Flow Signal",
         url: `${SITE}/wikipedia`,
         inLanguage: "en-US",
         isPartOf: { "@id": `${SITE}/#website` },
@@ -147,10 +147,10 @@ export default function WikipediaPage() {
               Why this page exists.
             </strong>{" "}
             Verifiability is Wikipedia&apos;s core content policy. Every
-            snippet on this page links to a public, free, indexed source —
+            snippet on this page links to a public, free, indexed source -
             SSRN, Zenodo, OpenAlex, Crossref. We license everything CC BY 4.0
             so attribution-with-link is always sufficient. We do not solicit
-            specific edits — see the suggested topic placements at the bottom
+            specific edits, see the suggested topic placements at the bottom
             for ideas, but please use editorial judgment.
           </p>
         </section>

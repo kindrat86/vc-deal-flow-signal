@@ -1,5 +1,5 @@
 /**
- * Category buckets for glossary terms — used by /define/[term] to render
+ * Category buckets for glossary terms, used by /define/[term] to render
  * a "related terms" grid and by /define (index) to group by family.
  *
  * Mirrors the section comments inside content/glossary.ts:
@@ -141,8 +141,8 @@ const TERM_CATEGORY: Record<string, GlossaryCategory> = {
   "cap-table": "venture-vocabulary",
 };
 
-/** Categorize a glossary term ID. Falls back to "discoverability" — the
- *  largest bucket — for any unmapped term so the build never crashes if
+/** Categorize a glossary term ID. Falls back to "discoverability", the
+ *  largest bucket, for any unmapped term so the build never crashes if
  *  glossary.ts adds a term without a category mapping. */
 export function getCategoryFor(termId: string): GlossaryCategory {
   return TERM_CATEGORY[termId] ?? "discoverability";

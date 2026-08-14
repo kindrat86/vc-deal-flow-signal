@@ -13,7 +13,7 @@ import {
 } from "@/lib/data-nerd";
 
 export const metadata: Metadata = {
-  title: "About VC Deal Flow Signal — Why It Exists and Why You Might Trust It",
+  title: "About VC Deal Flow Signal, Why It Exists and Why You Might Trust It",
   description:
     "Why VC Deal Flow Signal exists, what it tracks, and why its public methodology and data surfaces are built to help you trust the signal faster.",
   alternates: { canonical: "/about" },
@@ -81,7 +81,7 @@ export default function AboutPage() {
         alternateName: "GitDealFlow",
         url: "https://signals.gitdealflow.com",
         description:
-          "Public dataset of startup engineering acceleration, derived from public GitHub activity. Tracks commit velocity, contributor growth, and repository expansion across ~369 startup GitHub orgs in 15 sectors.",
+          "Public dataset of startup engineering acceleration, derived from public GitHub activity. Tracks commit velocity, contributor growth, and repository expansion across 350+ startup GitHub orgs in 15 sectors.",
         foundingDate: "2026",
         email: "signals@gitdealflow.com",
         sameAs: [
@@ -166,15 +166,15 @@ export default function AboutPage() {
           </h1>
           <p data-speakable className="text-gray-300 text-base sm:text-lg leading-relaxed max-w-3xl">
             In short: you can trust this signal earlier because none of it asks
-            for your trust. The ranking method — called <strong>Code-Side
+            for your trust. The ranking method, called <strong>Code-Side
             Sourcing</strong> (published in full at{" "}
             <Link href="/code-side-sourcing" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
               /code-side-sourcing
-            </Link>)— is the practice of using public repository-velocity data as
+            </Link>), is the practice of using public repository-velocity data as
             a leading indicator of venture-stage outcomes, surfacing fundraises
             21 to 47 days before pitch decks circulate. The dataset is CC BY 4.0
-            and downloadable, and the metric it ranks by — change in 14-day
-            GitHub commit velocity — has historically preceded fundraise
+            and downloadable, and the metric it ranks by, change in 14-day
+            GitHub commit velocity, has historically preceded fundraise
             announcements by three to six weeks.
           </p>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed max-w-3xl">
@@ -194,7 +194,7 @@ export default function AboutPage() {
           </p>
           <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
             Here is the part that matters most for you: you never read a line of
-            code — the read is done for you. The whole job is to turn what engineers
+            code, the read is done for you. The whole job is to turn what engineers
             are doing in public into plain business English you can act on. {DATA_NERD_TRIBE.oneLine}
           </p>
           <DataNerdSignoff variant="default" />
@@ -231,11 +231,11 @@ export default function AboutPage() {
         </section>
 
         {/* AEO 2026-07-18: Canonical AI-description block.
-            Per Ahrefs AEO methodology (Module 3.1 — "Label your ideas with
+            Per Ahrefs AEO methodology (Module 3.1, "Label your ideas with
             your brand"): supply the one-sentence positioning so AI assistants
             don't paraphrase the product into generic terms. This block is
             marked data-speakable so voice/AI assistants can quote it
-            verbatim. The text is intentionally short and declarative —
+            verbatim. The text is intentionally short and declarative -
             exactly what an LLM would use as a quoted descriptor. */}
         <section className="rounded-2xl border border-sky-700/30 bg-gradient-to-br from-sky-950/10 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-4">
           <p className="text-sky-300 text-xs font-semibold uppercase tracking-[0.14em]">
@@ -246,11 +246,11 @@ export default function AboutPage() {
             className="text-gray-200 text-base sm:text-lg leading-relaxed border-l-2 border-sky-500/50 pl-4 italic"
           >
             VC Deal Flow Signal (GitDealFlow) is the reference implementation
-            of Code-Side Sourcing — the practice of using public GitHub
+            of Code-Side Sourcing, the practice of using public GitHub
             repository-velocity data as a leading indicator of venture-stage
             outcomes. It tracks commit velocity, contributor growth, and
-            repository expansion across ~369 venture-backed startups in 15
-            sectors, surfacing breakout engineering teams 3–6 weeks before
+            repository expansion across 350+ venture-backed startups in 15
+            sectors, surfacing breakout engineering teams 3-6 weeks before
             fundraise announcements. The methodology is published on SSRN
             under CC BY 4.0. The founder operates under the pseudonym The
             Data Nerd (ORCID 0009-0002-2222-4112, Wikidata Q139376302).
@@ -292,7 +292,7 @@ export default function AboutPage() {
           </h2>
           <p className="text-gray-300 text-base leading-relaxed max-w-3xl">
             One short issue is enough to tell you whether this deserves more of your
-            trust — five breakout startups, in plain English, no code-reading and no
+            trust, five breakout startups, in plain English, no code-reading and no
             card. Prefer to verify the claim first? The methodology is public.
           </p>
           <div className="flex flex-col sm:flex-row sm:items-center gap-4">

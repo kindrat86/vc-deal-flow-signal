@@ -32,7 +32,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
         s.name.toLowerCase().replace(/[^a-z0-9]+/g, "-")
       )}`;
       const desc = `${s.commitVelocity14d} commits over 14 days (${s.commitVelocityChange} change). ${s.contributors} contributors (${s.contributorGrowth} growth). Signal: ${s.signalType}. Stage: ${s.stage}. Geography: ${s.geography}.`;
-      const title = `${s.name} — ${s.signalType} (${s.commitVelocityChange})`;
+      const title = `${s.name}, ${s.signalType} (${s.commitVelocityChange})`;
       return `    <item>
       <title>${escapeXml(title)}</title>
       <link>${startupUrl}</link>
@@ -47,7 +47,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
   const body = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>${escapeXml(sector.name)} Startups to Watch — ${escapeXml(period.name)}</title>
+    <title>${escapeXml(sector.name)} Startups to Watch: ${escapeXml(period.name)}</title>
     <link>${pageUrl}</link>
     <atom:link href="${feedUrl}" rel="self" type="application/rss+xml" />
     <description>${escapeXml(

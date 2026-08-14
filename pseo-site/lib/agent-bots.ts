@@ -1,7 +1,7 @@
 /**
  * Known AI / agent crawler User-Agent tokens.
  *
- * Keep in sync with `app/robots.ts` AI_CRAWLERS — that file declares which bots
+ * Keep in sync with `app/robots.ts` AI_CRAWLERS, that file declares which bots
  * we explicitly allow; this file gives runtime code (proxy, route handlers,
  * analytics) a single source of truth for UA detection.
  */

@@ -91,7 +91,7 @@ export default function VsIndex() {
           Head-to-head comparisons of every major deal flow platform used by VCs,
           angels, and scouts in 2026. Signal type, typical lead time before a
           fundraise, pricing, coverage, and when to pick each. Independently
-          maintained — VC Deal Flow Signal is one of the tools compared, but
+          maintained, VC Deal Flow Signal is one of the tools compared, but
           every page summarises the strengths and weaknesses of all of them on
           equal footing. If you already know the comparison you need, start with
           the sharper routes below instead of scanning the whole matrix.
@@ -139,7 +139,7 @@ export default function VsIndex() {
             Want VC Deal Flow Signal compared against any of these?
           </h2>
           <p className="text-gray-400 text-sm leading-relaxed mb-4">
-            VC Deal Flow Signal is a GitHub commit-velocity tracker — the only
+            VC Deal Flow Signal is a GitHub commit-velocity tracker, the only
             tool in this list that gives you a 6-12 week lead time before a
             fundraise on technical startups. See the dedicated alternative
             pages for direct comparisons.

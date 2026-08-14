@@ -8,7 +8,7 @@
  *   - one entry per locale that has a translated stub for this topic
  *
  * Pages that don't correspond to a locale topic still get the en-US +
- * x-default entries — that tells Google there is no localized variant and
+ * x-default entries, that tells Google there is no localized variant and
  * the English URL is canonical for all locales.
  *
  * Mirroring is one-way (English canonical advertises locale variants when
@@ -32,7 +32,7 @@ const SITE = "https://signals.gitdealflow.com";
  *   - English `/citation-guide` ↔ ja `/ja/citations` (topic key: citations)
  *
  * Topics that have no English canonical (ja-only deep pages, e.g. pricing)
- * are NOT listed here — they still render at /ja/<topic> via the
+ * are NOT listed here, they still render at /ja/<topic> via the
  * [locale]/[topic] route, but they advertise no English alternate.
  */
 const PATH_TO_TOPIC: Record<string, string> = {
@@ -100,7 +100,7 @@ export const DEFAULT_HREFLANG_LANGUAGES: Record<string, string> = {
 /**
  * Hreflang map for the English homepage `/`. Reciprocates every locale
  * stub at `/[locale]` (rendered by app/[locale]/page.tsx). Keeps Google's
- * bidirectional confirmation green — without this, /sitemap-i18n.xml
+ * bidirectional confirmation green, without this, /sitemap-i18n.xml
  * advertises locale alternates that the homepage doesn't acknowledge.
  */
 export function getHomepageHreflang(): Record<string, string> {
@@ -133,7 +133,7 @@ export function getI18nSitemapEntries(): {
     const enPath = TOPIC_TO_EN_PATH[topic];
     const enUrl = enPath
       ? `${SITE}${enPath}`
-      : // ja-only — pin entry against /ja/<topic> as the self-canonical
+      : // ja-only, pin entry against /ja/<topic> as the self-canonical
         `${SITE}/ja/${topic}`;
     const alternates: { hreflang: string; href: string }[] = [];
     if (enPath) {

@@ -8,12 +8,12 @@ import { getHreflangLanguages } from "@/lib/hreflang";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Where to find us — every channel, mirror, and feed",
+  title: "Where to find us, every channel, mirror, and feed",
   description:
     "GitDealFlow on the open web: RSS, MCP, GitHub, social mirrors, agent surfaces, SSRN, Zenodo, llms.txt, and OpenAPI. The full distribution map.",
   alternates: { canonical: "/distribution" },
   openGraph: {
-    title: "Where to find us — distribution map",
+    title: "Where to find us, distribution map",
     description:
       "Every public surface where GitDealFlow's signal shows up: newsletter, RSS, MCP, agent mirrors, federated social, academic, agents.json. The map.",
     url: "https://signals.gitdealflow.com/distribution",
@@ -44,13 +44,13 @@ const GROUPS: Group[] = [
     channels: [
       {
         name: "signals.gitdealflow.com",
-        what: "The product site — pricing, dashboard, dataset, methodology, MCP install, all 1,060+ pSEO pages.",
+        what: "The product site, pricing, dashboard, dataset, methodology, MCP install, all 1,060+ pSEO pages.",
         href: "https://signals.gitdealflow.com",
         external: true,
       },
       {
         name: "gitdealflow.com",
-        what: "The apex landing — Acceleration Watch signup, First Look Pass, Sector Sweep, daily-data sweep.",
+        what: "The apex landing, Acceleration Watch signup, First Look Pass, Sector Sweep, daily-data sweep.",
         href: "https://gitdealflow.com",
         external: true,
       },
@@ -70,14 +70,14 @@ const GROUPS: Group[] = [
         external: true,
       },
       {
-        name: "Substack — gitdealflow",
+        name: "Substack, gitdealflow",
         what: "Mirror of the weekly Top-100 startups list and the Acceleration Watch. Free publication, canonical back to signals.gitdealflow.com.",
         href: "https://gitdealflow.substack.com",
         cadence: "Weekly · Sunday 12:00 UTC",
         external: true,
       },
       {
-        name: "Hugging Face — the-data-nerd",
+        name: "Hugging Face, the-data-nerd",
         what: "Datasets, methodology artifacts, and long-form cards where the ML crowd already lives.",
         href: "https://huggingface.co/the-data-nerd",
         cadence: "Bi-weekly",
@@ -97,16 +97,16 @@ const GROUPS: Group[] = [
     intro:
       "Every public surface has an agent-side mirror. If you want our signal in your pipeline instead of your inbox, here is the full URL set.",
     channels: [
-      { name: "RSS — feed.xml", what: "Atom 1.0 feed of every blog post + Acceleration Watch entry.", href: "/feed.xml" },
-      { name: "JSON Feed — feed.json", what: "JSON Feed 1.1 mirror of the same content. Use whichever your tooling prefers.", href: "/feed.json" },
-      { name: "News sitemap — news-sitemap.xml", what: "Google News–compatible sitemap of recent posts.", href: "/news-sitemap.xml" },
-      { name: "OpenAPI — /api/actions/openapi.json", what: "12-endpoint OpenAPI 3.1 spec. Powers the ChatGPT GPT, agent integrations, and the agent-card.", href: "/api/actions/openapi.json" },
-      { name: "llms.txt", what: "Standardised LLM-instruction surface — every page agent-readable in markdown.", href: "/llms.txt" },
+      { name: "RSS, feed.xml", what: "Atom 1.0 feed of every blog post + Acceleration Watch entry.", href: "/feed.xml" },
+      { name: "JSON Feed, feed.json", what: "JSON Feed 1.1 mirror of the same content. Use whichever your tooling prefers.", href: "/feed.json" },
+      { name: "News sitemap, news-sitemap.xml", what: "Google News-compatible sitemap of recent posts.", href: "/news-sitemap.xml" },
+      { name: "OpenAPI, /api/actions/openapi.json", what: "12-endpoint OpenAPI 3.1 spec. Powers the ChatGPT GPT, agent integrations, and the agent-card.", href: "/api/actions/openapi.json" },
+      { name: "llms.txt", what: "Standardised LLM-instruction surface, every page agent-readable in markdown.", href: "/llms.txt" },
       { name: "llms-full.txt", what: "Full corpus dump for embedding pipelines. ~1.4MB.", href: "/llms-full.txt" },
       { name: "agents.json", what: "Agent-card discovery. Capabilities, tools, schema versions.", href: "/agents.json" },
       { name: "agent-card (.well-known)", what: "RFC-style well-known endpoint advertising agent capabilities.", href: "/.well-known/agent-card.json" },
       { name: "Sitemap index", what: "Master sitemap. 1,060+ URLs across 12 hreflang locales.", href: "/sitemap.xml" },
-      { name: "Q&A corpus — qa.jsonl", what: "Categorisable Q&A dump for embedding-pipeline answers.", href: "/qa.jsonl" },
+      { name: "Q&A corpus, qa.jsonl", what: "Categorisable Q&A dump for embedding-pipeline answers.", href: "/qa.jsonl" },
     ],
   },
   {
@@ -115,12 +115,12 @@ const GROUPS: Group[] = [
     intro:
       "The agent-native surface. Six free read tools, free forever. Drop into Claude Desktop, Cursor, or any MCP-compatible client.",
     channels: [
-      { name: "npm — @gitdealflow/mcp-signal", what: "The official MCP server. Install with one line: npx @gitdealflow/mcp-signal.", href: "https://www.npmjs.com/package/@gitdealflow/mcp-signal", external: true },
-      { name: "GitHub — mcp-deal-flow-signal", what: "Source code, issue tracker, public roadmap.", href: "https://github.com/kindrat86/mcp-deal-flow-signal", external: true },
+      { name: "npm, @gitdealflow/mcp-signal", what: "The official MCP server. Install with one line: npx @gitdealflow/mcp-signal.", href: "https://www.npmjs.com/package/@gitdealflow/mcp-signal", external: true },
+      { name: "GitHub, mcp-deal-flow-signal", what: "Source code, issue tracker, public roadmap.", href: "https://github.com/kindrat86/mcp-deal-flow-signal", external: true },
       { name: "Install instructions", what: "Step-by-step for Claude / Cursor / Mastra / LangChain / CrewAI / Letta / Vercel AI SDK.", href: "/install" },
       { name: "MCP Demo", what: "Live demonstration page. Watch the tools fire against real data.", href: "/mcp-demo" },
       { name: "OpenAPI viewer", what: "Browseable API documentation, agent-friendly.", href: "/api/actions/openapi.json" },
-      { name: "ChatGPT GPT — VC Deal Flow Signal", what: "OpenAPI-mounted GPT in the GPT Store. Action calls /api/actions endpoints.", href: "https://chat.openai.com/g/g-vc-deal-flow-signal", external: true },
+      { name: "ChatGPT GPT, VC Deal Flow Signal", what: "OpenAPI-mounted GPT in the GPT Store. Action calls /api/actions endpoints.", href: "https://chat.openai.com/g/g-vc-deal-flow-signal", external: true },
     ],
   },
   {
@@ -129,19 +129,19 @@ const GROUPS: Group[] = [
     intro:
       "Three federated networks. Posts cross-mirror via WebSub + ActivityPub-side bridges. Anonymity rule: company-page identity only.",
     channels: [
-      { name: "Farcaster — gitdealflow", what: "On-chain social via Neynar. Useful when the conversation is already happening in crypto-native circles.", href: "https://warpcast.com/gitdealflow", external: true },
-      { name: "LinkedIn — GitDealFlow Company", what: "Company page (no founder personal account, anonymity rule). Long-form essays + top-100 engagement.", href: "https://www.linkedin.com/company/gitdealflow", external: true },
+      { name: "Farcaster, gitdealflow", what: "On-chain social via Neynar. Useful when the conversation is already happening in crypto-native circles.", href: "https://warpcast.com/gitdealflow", external: true },
+      { name: "LinkedIn, GitDealFlow Company", what: "Company page (no founder personal account, anonymity rule). Long-form essays + top-100 engagement.", href: "https://www.linkedin.com/company/gitdealflow", external: true },
     ],
   },
   {
     id: "communities",
     label: "Community channels",
     intro:
-      "Where conversation happens. We engage in comment threads — never main posts on subs that auto-remove product content (see r/venturecapital).",
+      "Where conversation happens. We engage in comment threads, never main posts on subs that auto-remove product content (see r/venturecapital).",
     channels: [
-      { name: "Reddit — u/gitdealflow", what: "Comment-side engagement on AEO-relevant threads. Never a main post on r/venturecapital.", href: "https://www.reddit.com/user/gitdealflow", external: true },
-      { name: "Indie Hackers — gitdealflow", what: "Build-in-public surface. Bootstrapped-side audience.", href: "https://www.indiehackers.com/gitdealflow", external: true },
-      { name: "Product Hunt — gitdealflow", what: "Launch artifact. Live with the post-launch comment ladder strategy.", href: "https://www.producthunt.com/@gitdealflow", external: true },
+      { name: "Reddit, u/gitdealflow", what: "Comment-side engagement on AEO-relevant threads. Never a main post on r/venturecapital.", href: "https://www.reddit.com/user/gitdealflow", external: true },
+      { name: "Indie Hackers, gitdealflow", what: "Build-in-public surface. Bootstrapped-side audience.", href: "https://www.indiehackers.com/gitdealflow", external: true },
+      { name: "Product Hunt, gitdealflow", what: "Launch artifact. Live with the post-launch comment ladder strategy.", href: "https://www.producthunt.com/@gitdealflow", external: true },
       { name: "AlternativeTo", what: "Top-of-funnel for the buyer comparing dev-tool ecosystems.", href: "https://alternativeto.net/software/gitdealflow", external: true },
     ],
   },
@@ -151,8 +151,8 @@ const GROUPS: Group[] = [
     intro:
       "What makes the signal honest. Every prediction is reproducible against the SSRN paper + Zenodo dataset.",
     channels: [
-      { name: "SSRN paper — abstract=6606558", what: "Methodology paper. n=219 paired observations, lead-time 21–47 days IQR. The grounding citation for every claim on the site.", href: "https://ssrn.com/abstract=6606558", external: true },
-      { name: "Hugging Face dataset — vc-deal-flow-signal", what: "CC BY 4.0. Reproducible. The exact data behind the regression in the SSRN paper.", href: "https://huggingface.co/datasets/the-data-nerd/vc-deal-flow-signal", external: true },
+      { name: "SSRN paper, abstract=6606558", what: "Methodology paper. n=219 paired observations, lead-time 21-47 days IQR. The grounding citation for every claim on the site.", href: "https://ssrn.com/abstract=6606558", external: true },
+      { name: "Hugging Face dataset, vc-deal-flow-signal", what: "CC BY 4.0. Reproducible. The exact data behind the regression in the SSRN paper.", href: "https://huggingface.co/datasets/the-data-nerd/vc-deal-flow-signal", external: true },
       { name: "Methodology page", what: "Plain-English walkthrough of the regression, the panel construction, and the false-positive controls.", href: "/methodology" },
       { name: "Citation guide", what: "BibTeX, APA, Chicago. For academic / industry-report citations.", href: "/citation-guide" },
       { name: "Reproducibility page", what: "Step-by-step: clone the dataset, run the notebook, replicate the regression.", href: "/reproducibility" },
@@ -165,12 +165,12 @@ const GROUPS: Group[] = [
     intro:
       "Every public page has a markdown mirror at /md/<path>, plus inline AgentMirrorLinks discoverability headers. Built for retrieval pipelines.",
     channels: [
-      { name: "Markdown mirror — /md/<path>", what: "Plain-text-friendly version of every public page. Drop into RAG without re-parsing HTML.", href: "/md/" },
-      { name: "Knowledge graph — knowledge-graph.json", what: "Entity graph of products, sectors, predictions, dates. JSON-LD-compatible.", href: "/knowledge-graph.json" },
-      { name: "AI corpus — ai.json", what: "Categorised content for AI training / retrieval. JSON Feed format.", href: "/ai.json" },
+      { name: "Markdown mirror, /md/<path>", what: "Plain-text-friendly version of every public page. Drop into RAG without re-parsing HTML.", href: "/md/" },
+      { name: "Knowledge graph, knowledge-graph.json", what: "Entity graph of products, sectors, predictions, dates. JSON-LD-compatible.", href: "/knowledge-graph.json" },
+      { name: "AI corpus, ai.json", what: "Categorised content for AI training / retrieval. JSON Feed format.", href: "/ai.json" },
       { name: "ai.txt", what: "Standardised AI-bot policy + sitemap pointer.", href: "/ai.txt" },
-      { name: "Compliance manifest — compliance.json", what: "Privacy, anonymisation, and reproducibility manifest. Public.", href: "/compliance.json" },
-      { name: "Model manifest — model.json", what: "Schema versions, training-data cutoffs, methodology revision IDs.", href: "/model.json" },
+      { name: "Compliance manifest, compliance.json", what: "Privacy, anonymisation, and reproducibility manifest. Public.", href: "/compliance.json" },
+      { name: "Model manifest, model.json", what: "Schema versions, training-data cutoffs, methodology revision IDs.", href: "/model.json" },
     ],
   },
 ];
@@ -182,7 +182,7 @@ export default function DistributionPage() {
       {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/distribution",
-        name: "Where to find us — distribution map",
+        name: "Where to find us, distribution map",
         description:
           "Every public surface where GitDealFlow's signal shows up: Substack, dev.to, RSS, MCP, npm, GitHub, federated social, academic, agent-side mirrors.",
         speakable: {
@@ -226,7 +226,7 @@ export default function DistributionPage() {
             Where to find us. <span className="text-emerald-400">Every channel, every mirror.</span>
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-            Where to find and follow us — on whatever surface fits how you
+            Where to find and follow us, on whatever surface fits how you
             already read. Here&rsquo;s the full map: every public place the
             GitDealFlow signal shows up, grouped so you can pick your channel
             and get the same weekly read wherever you already are.
@@ -239,7 +239,7 @@ export default function DistributionPage() {
             >
               free Sunday digest
             </a>{" "}
-            — five accelerating teams in your inbox every week, no card. Want
+five accelerating teams in your inbox every week, no card. Want
             to know how to read the signal before you subscribe? Start with the{" "}
             <Link
               href="/buyers-guide"
@@ -267,7 +267,7 @@ export default function DistributionPage() {
             >
               /distribution/platform-hooks
             </Link>{" "}
-            documents the per-platform variants — Twitter / Reddit / Hacker
+            documents the per-platform variants, Twitter / Reddit / Hacker
             News / dev.to / Hashnode / Discord / LinkedIn / Email / AngelList
             / Product Hunt / Indie Hackers / Telegram.
           </p>
@@ -307,7 +307,7 @@ export default function DistributionPage() {
             </h2>
             <p className="text-gray-300 text-base leading-relaxed">
               If early technical momentum and startup timing is what you care
-              about, here&rsquo;s where that conversation already lives —
+              about, here&rsquo;s where that conversation already lives -
               forums, newsletters, and the engineering orgs people watch for
               fun. Useful as a reading list of its own. Every surface group
               further down the page is somewhere we publish so you can pick up
@@ -345,16 +345,16 @@ export default function DistributionPage() {
                 Where the long-form thinking on this gets published.
               </p>
               <ol className="text-gray-300 text-sm leading-relaxed space-y-1 list-decimal list-inside marker:text-emerald-500">
-                <li>The Pragmatic Engineer — Gergely Orosz</li>
-                <li>Lenny&rsquo;s Newsletter — Lenny Rachitsky</li>
-                <li>Not Boring — Packy McCormick</li>
-                <li>The Diff — Byrne Hobart</li>
-                <li>Stratechery — Ben Thompson</li>
-                <li>Newcomer — Eric Newcomer</li>
-                <li>SemiAnalysis — Dylan Patel</li>
-                <li>The Generalist — Mario Gabriele</li>
-                <li>Refactoring — Luca Rossi</li>
-                <li>Tomasz Tunguz — Theory Ventures</li>
+                <li>The Pragmatic Engineer, Gergely Orosz</li>
+                <li>Lenny&rsquo;s Newsletter, Lenny Rachitsky</li>
+                <li>Not Boring, Packy McCormick</li>
+                <li>The Diff, Byrne Hobart</li>
+                <li>Stratechery, Ben Thompson</li>
+                <li>Newcomer, Eric Newcomer</li>
+                <li>SemiAnalysis, Dylan Patel</li>
+                <li>The Generalist, Mario Gabriele</li>
+                <li>Refactoring, Luca Rossi</li>
+                <li>Tomasz Tunguz, Theory Ventures</li>
               </ol>
             </div>
 
@@ -363,7 +363,7 @@ export default function DistributionPage() {
                 10 GitHub orgs
               </h3>
               <p className="text-gray-400 text-[11px] leading-relaxed">
-                The engineering orgs people watch for fun — the kind of shipping this signal tracks.
+                The engineering orgs people watch for fun, the kind of shipping this signal tracks.
               </p>
               <ol className="text-gray-300 text-sm leading-relaxed space-y-1 list-decimal list-inside marker:text-emerald-500">
                 <li>vercel</li>
@@ -381,9 +381,9 @@ export default function DistributionPage() {
           </div>
 
           <p className="text-gray-400 text-sm leading-relaxed border-t border-emerald-900/40 pt-4">
-            What you see on each surface is shaped to fit it — a methodology
+            What you see on each surface is shaped to fit it, a methodology
             note on Lobste.rs, the weekly Acceleration Watch on Substack, the
-            one-line MCP install on the Cursor feed — but every one points back
+            one-line MCP install on the Cursor feed, but every one points back
             to the same SSRN paper{" "}
             <a
               href="https://ssrn.com/abstract=6606558"
@@ -497,7 +497,7 @@ export default function DistributionPage() {
             The distribution half. The honest half: every surface mirrors
             the same canonical data, with the same SSRN-grounded methodology,
             with the same 30-day Signal-or-It&rsquo;s-Free guarantee. We
-            don&rsquo;t change the message per channel — we change the medium.
+            don&rsquo;t change the message per channel, we change the medium.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 pt-2">
             <Link

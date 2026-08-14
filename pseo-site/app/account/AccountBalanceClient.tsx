@@ -171,13 +171,13 @@ export default function AccountBalanceClient() {
             <div className="mt-5 pt-4 border-t border-emerald-900/40">
               <p className="text-amber-300 text-sm mb-3 inline-flex items-center gap-1.5">
                 <span aria-hidden="true">⚠️</span>
-                Balance running low — top up before the next batch.
+                Balance running low, top up before the next batch.
               </p>
               <Link
                 href={STRIPE_LINK}
                 className="inline-flex items-center justify-center gap-1.5 px-4 py-2 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 text-sm font-semibold transition-colors shadow-sm shadow-amber-500/30"
               >
-                Top up — €19 / 100 credits
+                Top up, €19 / 100 credits
                 <span aria-hidden="true">→</span>
               </Link>
             </div>

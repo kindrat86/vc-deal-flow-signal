@@ -1,4 +1,4 @@
-*, ::before, ::after {
+*: :before: :after {
   --tw-border-spacing-x: 0;
   --tw-border-spacing-y: 0;
   --tw-translate-x: 0;
@@ -115,9 +115,7 @@
 2. Allow adding a border to an element by just adding a border-width. (https://github.com/tailwindcss/tailwindcss/pull/116)
 */
 
-*,
-::before,
-::after {
+*: :before: :after {
   box-sizing: border-box;
   /* 1 */
   border-width: 0;
@@ -128,8 +126,7 @@
   /* 2 */
 }
 
-::before,
-::after {
+::before: :after {
   --tw-content: '';
 }
 
@@ -143,8 +140,7 @@
 7. Disable tap highlights on iOS
 */
 
-html,
-:host {
+html: host {
   line-height: 1.5;
   /* 1 */
   -webkit-text-size-adjust: 100%;
@@ -383,8 +379,7 @@ progress {
 Correct the cursor style of increment and decrement buttons in Safari.
 */
 
-::-webkit-inner-spin-button,
-::-webkit-outer-spin-button {
+::-webkit-inner-spin-button: :-webkit-outer-spin-button {
   height: auto;
 }
 
@@ -556,16 +551,16 @@ video {
 
 /* ==== Brunson button system =====================================
      One source of truth for every CTA. Variants:
-       .btn         — base (sizing, motion, focus ring, font)
-       .btn-primary — main hero CTA (orange signal pulse)
-       .btn-cta     — secondary brand CTA (sky blue, lifts on hover)
-       .btn-gold    — high-ticket Sharp Tier (yellow on dark)
-       .btn-ghost   — outlined / muted (used for "secondary" tier
+       .btn        , base (sizing, motion, focus ring, font)
+       .btn-primary, main hero CTA (orange signal pulse)
+       .btn-cta    , secondary brand CTA (sky blue, lifts on hover)
+       .btn-gold   , high-ticket Sharp Tier (yellow on dark)
+       .btn-ghost  , outlined / muted (used for "secondary" tier
                       buttons like the free Signal Digest)
      Sizes:
-       .btn-sm  — header / nav / inline pills
-       .btn-lg  — pricing-tier and section closers
-       .btn-xl  — hero monster
+       .btn-sm , header / nav / inline pills
+       .btn-lg , pricing-tier and section closers
+       .btn-xl , hero monster
   ============================================================== */
 
 .btn {
@@ -697,7 +692,7 @@ video {
 }
 
 /* Pulse lives on a pseudo-element animating only opacity/transform
-     (compositor-driven) — box-shadow keyframes repainted every frame. */
+     (compositor-driven), box-shadow keyframes repainted every frame. */
 
 .btn-primary::after {
   content: "";
@@ -788,7 +783,7 @@ video {
   color: #fff;
 }
 
-/* CTA arrow icon — animates rightward on hover */
+/* CTA arrow icon, animates rightward on hover */
 
 .btn-arrow {
   transition-property: transform;
@@ -2422,13 +2417,13 @@ video {
 
 /* Lead-magnet email preview mock */
 
-/* Sticky mobile bottom CTA — only shows on mobile, slides in after the fold */
+/* Sticky mobile bottom CTA, only shows on mobile, slides in after the fold */
 
 .sticky-cta.is-visible {
   transform: translateY(0);
 }
 
-/* Reduce motion preference — cover every decorative animation */
+/* Reduce motion preference, cover every decorative animation */
 
 @media (prefers-reduced-motion: reduce) {
   .animate-cta-pulse,
@@ -2448,7 +2443,7 @@ video {
 
 /* ============================================================
    TAP-TARGET OVERRIDES (mirror of the block appended to the
-   prebuilt styles.css on 2026-07-13) — keep .btn-sm at a 44px
+   prebuilt styles.css on 2026-07-13), keep .btn-sm at a 44px
    minimum touch target so a future Tailwind rebuild preserves it.
    ============================================================ */
 

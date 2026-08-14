@@ -43,7 +43,7 @@ function badgeSvg(label: string, value: string, color: string) {
   const rightW = value.length * 8 + 24;
   const totalW = leftW + rightW;
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${totalW}" height="28" role="img">
-  <title>VC Deal Flow Signal — ${label}</title>
+  <title>VC Deal Flow Signal: ${label}</title>
   <linearGradient id="bg" x2="0" y2="100%">
     <stop offset="0" stop-color="#1e293b"/>
     <stop offset="1" stop-color="#0f172a"/>

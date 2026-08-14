@@ -44,7 +44,7 @@ async function buildApiKeyCache(): Promise<Map<string, string>> {
 async function authenticateApiKey(key: string): Promise<boolean> {
   if (!verifyApiKeyFormat(key)) return false;
   try {
-    // Use cached mapping — rebuild if expired
+    // Use cached mapping, rebuild if expired
     if (!_apiKeyCache || Date.now() > _apiKeyCacheExpiry) {
       _apiKeyCache = await buildApiKeyCache();
       _apiKeyCacheExpiry = Date.now() + API_KEY_CACHE_TTL;
@@ -78,7 +78,7 @@ export async function GET(request: NextRequest) {
   const lastModified = getDataLastModified();
   const activeSectors = sectors.filter((s) => s.periods[period.slug]);
 
-  // Build sector summaries — optionally filter to one sector to keep payload
+  // Build sector summaries, optionally filter to one sector to keep payload
   // small enough for ChatGPT Actions / agent ingestion (~10KB instead of 80KB).
   const filteredSectors = sectorFilter
     ? activeSectors.filter((s) => s.slug === sectorFilter)

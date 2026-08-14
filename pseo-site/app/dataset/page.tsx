@@ -10,7 +10,7 @@ import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 export const metadata: Metadata = {
   title:
-    "Open Dataset — VC Deal Flow Signal: GitHub Engineering Velocity Panel",
+    "Open Dataset, VC Deal Flow Signal: GitHub Engineering Velocity Panel",
   description:
     "Download the open VC Deal Flow Signal dataset (CC BY 4.0). 309 rows across three CSV configurations (startup_signals, sector_aggregates, signal_type_timeseries). Mirrored on Hugging Face, Zenodo, Kaggle, Data.world. DOI 10.5281/zenodo.19650920.",
   alternates: {
@@ -151,7 +151,7 @@ const variableMeasured = [
 ];
 
 const citationCff = `cff-version: 1.2.0
-title: "VC Deal Flow Signal — Startup Engineering Acceleration Dataset"
+title: "VC Deal Flow Signal, Startup Engineering Acceleration Dataset"
 type: dataset
 authors:
   - name: "The Data Nerd"
@@ -185,11 +185,11 @@ export default function DatasetPage() {
   const lastModified = getDataLastModified().toISOString().slice(0, 10);
 
   // Standalone Dataset JSON-LD for this page (mirrors the homepage @graph
-  // entry but simpler — Google Dataset Search prefers a dedicated URL).
+  // entry but simpler, Google Dataset Search prefers a dedicated URL).
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Dataset",
-    name: "VC Deal Flow Signal — Startup Engineering Acceleration Dataset",
+    name: "VC Deal Flow Signal, Startup Engineering Acceleration Dataset",
     alternateName: "GitDealFlow Startup Engineering Velocity Panel",
     description:
       `Open longitudinal panel of GitHub engineering-velocity signals across ${sectors.length} venture-backed startup sectors and ${allPeriods.length} quarterly periods. Tracks 14-day commit velocity, contributor growth, repository expansion, and acceleration-signal classification. Designed for venture-capital deal sourcing, portfolio monitoring, and academic research on alternative data in venture capital.`,
@@ -243,7 +243,7 @@ export default function DatasetPage() {
     temporalCoverage: allPeriods.map((p) => p.name).join("/"),
     spatialCoverage: {
       "@type": "Place",
-      name: "Global — US, EU, APAC, LATAM, Canada",
+      name: "Global, US, EU, APAC, LATAM, Canada",
     },
     measurementTechnique:
       "Automated collection from the GitHub REST API v3: commit activity, unique contributor counts, and repository-creation metadata for venture-backed startup organizations. Rolling 14-day observation windows with deterministic signal classification over commit patterns.",
@@ -302,7 +302,7 @@ export default function DatasetPage() {
       </nav>
 
       <h1 className="text-3xl font-bold text-slate-900">
-        Open Dataset — GitHub Engineering Velocity Panel for Venture-Backed
+        Open Dataset, GitHub Engineering Velocity Panel for Venture-Backed
         Startups
       </h1>
       <p className="mt-3 text-slate-600">
@@ -490,25 +490,25 @@ export default function DatasetPage() {
             >
               SSRN working paper
             </a>{" "}
-            — methodology, classification rules, and early observations.
+methodology, classification rules, and early observations.
           </li>
           <li>
             <Link href="/methodology" className="text-blue-600 underline">
               Methodology page
             </Link>{" "}
-            — full breakdown of how each signal is computed.
+full breakdown of how each signal is computed.
           </li>
           <li>
             <Link href="/data-sources" className="text-blue-600 underline">
               Data sources
             </Link>{" "}
-            — every API endpoint, update cadence, and licensing detail.
+every API endpoint, update cadence, and licensing detail.
           </li>
           <li>
             <Link href="/citations" className="text-blue-600 underline">
               Citations to this dataset
             </Link>{" "}
-            — papers, blog posts, and tools that have used the data.
+papers, blog posts, and tools that have used the data.
           </li>
         </ul>
       </section>

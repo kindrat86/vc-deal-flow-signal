@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const city = getCityBySlug(slug);
   if (!city) return {};
 
-  const title = `${city.name} Engineering & VC Signals (2026) — VC Deal Flow Signal`;
+  const title = `${city.name} Engineering & VC Signals (2026), VC Deal Flow Signal`;
   const description = `${city.name}, ${city.country}: engineering acceleration signals, notable scaleups, active VC anchors, and the local commit-cadence pattern. Editorial interpretation for Corp Dev, PE operating partners, and emerging managers.`;
 
   return {
@@ -56,11 +56,11 @@ export default async function CityPage({ params }: PageProps) {
   const faqs = [
     {
       question: `Which notable engineering orgs are headquartered in ${city.name}?`,
-      answer: `${city.notableOrgs.slice(0, 6).join(", ")} are among the publicly-known scaleups anchored in or near ${city.name}. The full list is editorial — discoverable on Crunchbase or each org's careers page.`,
+      answer: `${city.notableOrgs.slice(0, 6).join(", ")} are among the publicly-known scaleups anchored in or near ${city.name}. The full list is editorial, discoverable on Crunchbase or each org's careers page.`,
     },
     {
       question: `Which VCs are most active in ${city.name}?`,
-      answer: `${city.vcAnchors.slice(0, 5).join(", ")} are firms with named partners and an active engineering-aware lens on ${city.name} deal flow. We do not claim these funds endorse this page — the list is derived from public partner posts and Crunchbase profiles.`,
+      answer: `${city.vcAnchors.slice(0, 5).join(", ")} are firms with named partners and an active engineering-aware lens on ${city.name} deal flow. We do not claim these funds endorse this page, the list is derived from public partner posts and Crunchbase profiles.`,
     },
     {
       question: `When do ${city.name} engineering signals tend to fire?`,
@@ -114,7 +114,7 @@ export default async function CityPage({ params }: PageProps) {
       },
       {
         "@type": "ItemList",
-        name: `${city.name} — Notable Engineering Orgs`,
+        name: `${city.name}, Notable Engineering Orgs`,
         itemListOrder: "Unordered",
         numberOfItems: city.notableOrgs.length,
         itemListElement: city.notableOrgs.map((org, i) => ({
@@ -188,7 +188,7 @@ export default async function CityPage({ params }: PageProps) {
         </nav>
 
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
-          {city.name} — Engineering & VC Signals
+          {city.name}, Engineering & VC Signals
         </h1>
         <p className="text-sky-400 text-base leading-relaxed mb-6 font-medium">
           {city.country} &middot; {REGION_LABELS[city.region]} &middot; established as a

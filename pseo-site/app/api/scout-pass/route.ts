@@ -3,12 +3,12 @@ import { checkRateLimit, getClientIp, rateLimitHeaders } from "@/lib/rate-limit"
 import { isValidEmail, isAllowedOrigin } from "@/lib/validation";
 
 /**
- * /api/scout-pass — Scout Pass application intake.
+ * /api/scout-pass, Scout Pass application intake.
  *
  * Distribution Play #4 (Scout Program Infiltration): verified VC scouts get
  * free Dashboard access (€49/mo value) in exchange for carrying signals into
  * their fund partner networks. Same async-only pattern as
- * /api/charter-application — no DB write, the email IS the record.
+ * /api/charter-application, no DB write, the email IS the record.
  *
  * landing/scout-pass.html (gitdealflow.com/scout-pass) POSTs the application
  * here as JSON: { name, email, linkedin, program, angel_profile, investments,
@@ -16,7 +16,7 @@ import { isValidEmail, isAllowedOrigin } from "@/lib/validation";
  *
  * On success:
  *   1. Emails the full application to signals@gitdealflow.com with reply_to
- *      set to the applicant (24–48h manual verification promised on page).
+ *      set to the applicant (24-48h manual verification promised on page).
  *   2. Sends the applicant a confirmation email ("application received").
  *
  * Anonymity rule: pseudonymous brand, sender is The Data Nerd.
@@ -80,7 +80,7 @@ function applicationEmailHtml(fields: {
 <div style="max-width:640px;margin:0 auto;padding:24px;">
 <div style="background:#dbeafe;border-left:4px solid #0ea5e9;padding:16px 20px;margin-bottom:24px;">
 <strong style="color:#075985;font-size:13px;letter-spacing:1px;text-transform:uppercase;">Scout Pass Application</strong>
-<p style="margin:4px 0 0;font-size:14px;color:#0c4a6e;">Free Dashboard for verified scouts &middot; 24&ndash;48h verification promised</p>
+<p style="margin:4px 0 0;font-size:14px;color:#0c4a6e;">Free Dashboard for verified scouts &middot; 24-48h verification promised</p>
 </div>
 <table style="width:100%;border-collapse:collapse;font-size:14px;">
 <tr><td style="padding:8px 0;font-weight:600;width:180px;color:#475569;">Name</td><td style="padding:8px 0;">${f.name}</td></tr>
@@ -112,10 +112,10 @@ function confirmationEmailHtml(name: string): string {
 <span style="display:inline-block;color:#0ea5e9;font-size:13px;font-weight:700;letter-spacing:1.5px;">VC DEAL FLOW SIGNAL</span>
 <h1 style="font-size:22px;margin:16px 0 12px;color:#0f172a;">Scout Pass application received</h1>
 <p style="font-size:15px;line-height:1.6;">Hi ${safeName},</p>
-<p style="font-size:15px;line-height:1.6;">Your Scout Pass application is in. I verify every application by hand &mdash; LinkedIn, program affiliation, investment history &mdash; so expect a reply within <strong>24&ndash;48 hours</strong>.</p>
+<p style="font-size:15px;line-height:1.6;">Your Scout Pass application is in. I verify every application by hand, LinkedIn, program affiliation, investment history, so expect a reply within <strong>24-48 hours</strong>.</p>
 <p style="font-size:15px;line-height:1.6;">If approved, you get the full Dashboard (&euro;49/mo value, free for verified scouts), the Sunday signal digest, and MCP server access for querying signals from Claude, ChatGPT, or Cursor.</p>
 <p style="font-size:15px;line-height:1.6;">While you wait: the free weekly signal is at <a href="https://gitdealflow.com" style="color:#0ea5e9;">gitdealflow.com</a> and the methodology is published openly on <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558" style="color:#0ea5e9;">SSRN</a>.</p>
-<p style="font-size:15px;line-height:1.6;">&mdash; The Data Nerd</p>
+<p style="font-size:15px;line-height:1.6;">The Data Nerd</p>
 </div>
 <p style="color:#94a3b8;font-size:12px;text-align:center;margin-top:16px;">GitDealFlow &middot; signals@gitdealflow.com &middot; You received this because you applied for Scout Pass.</p>
 </div>
@@ -170,7 +170,7 @@ export async function POST(request: Request) {
       raw = Object.fromEntries(fd.entries());
     }
 
-    // Honeypot — bots fill every field; humans never see this one.
+    // Honeypot, bots fill every field; humans never see this one.
     if (clip(raw.website, 100)) {
       // Pretend success so bots don't adapt.
       return NextResponse.json({ ok: true }, { status: 200, headers });
@@ -251,7 +251,7 @@ export async function POST(request: Request) {
         bcc: "sales@sipiteno.com",
         to: TO_EMAIL,
         reply_to: email,
-        subject: `[Scout Pass] ${name} — ${program || "independent angel"}`,
+        subject: `[Scout Pass] ${name}, ${program || "independent angel"}`,
         html,
       }),
     });
@@ -262,13 +262,13 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           error:
-            "Failed to deliver application — please email signals@gitdealflow.com directly",
+            "Failed to deliver application, please email signals@gitdealflow.com directly",
         },
         { status: 500, headers },
       );
     }
 
-    // Confirmation to the applicant — best-effort, never fails the request.
+    // Confirmation to the applicant, best-effort, never fails the request.
     try {
       await fetch("https://api.resend.com/emails", {
         method: "POST",
@@ -279,7 +279,7 @@ export async function POST(request: Request) {
         body: JSON.stringify({
           from: `${FROM_NAME} <${FROM_EMAIL}>`,
           to: email,
-          subject: "Scout Pass application received — reply inside 48h",
+          subject: "Scout Pass application received, reply inside 48h",
           html: confirmationEmailHtml(name),
         }),
       });
@@ -291,7 +291,7 @@ export async function POST(request: Request) {
       {
         ok: true,
         message:
-          "Application received. You'll hear back within 24–48 hours.",
+          "Application received. You'll hear back within 24-48 hours.",
       },
       { status: 200, headers },
     );

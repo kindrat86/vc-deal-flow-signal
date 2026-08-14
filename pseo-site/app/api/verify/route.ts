@@ -18,20 +18,20 @@ import { pickAudienceId } from "@/lib/resend-audience";
 // Single-use tracking for v2 verify-subscribe nonces. Once a v2 token's nonce
 // is consumed, any replay (link prefetcher, leaked URL replay) becomes a
 // no-op redirect with no Resend side effects. Backed by Vercel Runtime Cache
-// — survives cold starts and is shared across function instances within a
+//, survives cold starts and is shared across function instances within a
 // region. Every replay we catch saves an audience-add + N-email drip
 // schedule. See lib/runtime-cache.ts.
 const VERIFY_NONCE_NAMESPACE = "verify-nonce";
 const VERIFY_NONCE_TTL_SECONDS = 30 * 86_400; // matches v2 token 30-day TTL
 
 // Per-EMAIL sequence dedup, on top of the per-TOKEN nonce above. A visitor
-// who subscribes twice gets two different v2 tokens — both single-use, but
+// who subscribes twice gets two different v2 tokens, both single-use, but
 // clicking both would enroll the same inbox in the Soap Opera Sequence twice.
 // We mark the email itself once the sequence is scheduled; ~180d TTL covers
-// the longest sequence span (Day 0–180) with the whole drip arc. A user who
+// the longest sequence span (Day 0-180) with the whole drip arc. A user who
 // unsubscribes and later legitimately re-subscribes inside that window is
 // re-activated on the audience (PATCH unsubscribed:false below) so digests
-// and broadcasts resume — but the already-seen drip sequence is NOT queued a
+// and broadcasts resume, but the already-seen drip sequence is NOT queued a
 // second time, which is the sane behavior for a returning subscriber.
 const SOS_ENROLLED_NAMESPACE = "sos-enrolled";
 const SOS_ENROLLED_TTL_SECONDS = 180 * 86_400;
@@ -105,7 +105,7 @@ export async function GET(request: Request) {
   if (v2 && v2.email === email) {
     isV2 = true;
     if (await isNonceUsed(VERIFY_NONCE_NAMESPACE, v2.nonce)) {
-      // Replay (link-prefetcher rescan, leaked URL replay) — return success
+      // Replay (link-prefetcher rescan, leaked URL replay), return success
       // redirect but skip every Resend side effect.
       return NextResponse.redirect(confirmedUrl(routeFromQuery(url)));
     }
@@ -199,7 +199,7 @@ export async function GET(request: Request) {
         },
       );
       if (!contactRes.ok) {
-        // Contact already exists — this is a RE-subscriber. If they had
+        // Contact already exists, this is a RE-subscriber. If they had
         // previously unsubscribed, the POST above did not flip them back;
         // PATCH unsubscribed:false so they actually receive emails again.
         await fetch(
@@ -223,7 +223,7 @@ export async function GET(request: Request) {
   //    7-Day Deal Flow Reset; `cohort=launch` routes to the 5-email Brunson
   //    Product Launch Funnel. Otherwise we fork on `quiz_route` (F/T/D/I) so
   //    the value-ladder pitch matches what the visitor self-described on
-  //    /landing#signup — pre-buyers (F) skip the €7/€9.97/€97 pitch days,
+  //    /landing#signup, pre-buyers (F) skip the €7/€9.97/€97 pitch days,
   //    First-Look (T) gets €7 + Dashboard, Dashboard (D) gets the modal
   //    sequence, Insider (I) skips the small denominations and emphasises
   //    €97 + €1,997. Missing/unknown route falls back to SOAP_OPERA_EMAILS
@@ -272,7 +272,7 @@ export async function GET(request: Request) {
   const toDefer = alreadyEnrolled ? [] : deferred;
 
   console.log(
-    `[verify] dispatch email=${email} cohort=${cohortParam || "default"} route=${route || "none"} total=${sequence.length} immediate=${immediate.length} deferred=${deferred.length}${alreadyEnrolled ? " (already enrolled — skipping drip schedule)" : ""}`,
+    `[verify] dispatch email=${email} cohort=${cohortParam || "default"} route=${route || "none"} total=${sequence.length} immediate=${immediate.length} deferred=${deferred.length}${alreadyEnrolled ? " (already enrolled, skipping drip schedule)" : ""}`,
   );
 
   for (const soapEmail of toScheduleNow) {
@@ -354,7 +354,7 @@ export async function GET(request: Request) {
     }
   }
 
-  // 3. Redirect — challenge cohort lands on /challenge/started so the user
+  // 3. Redirect, challenge cohort lands on /challenge/started so the user
   //    sees the curriculum, launch cohort lands on the open launch page so
   //    they can buy immediately if they want, default lands on the report.
   if (cohortParam === "challenge") {

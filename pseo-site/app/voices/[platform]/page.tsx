@@ -17,7 +17,7 @@ import {
 export const dynamic = "force-static";
 
 // Build-time sanity check: every list must hold exactly its declared count
-// (X=100, Reddit=30, HN=20 — sized to where the buyer actually is). If a
+// (X=100, Reddit=30, HN=20, sized to where the buyer actually is). If a
 // future edit drifts a roster off its `expected`, the build catches it here
 // rather than letting a malformed list ship.
 assertPlatformCounts();
@@ -42,11 +42,11 @@ export async function generateMetadata({
     };
   }
   return {
-    title: `${list.label} — ${list.items.length} voices · ${list.tagline}`,
+    title: `${list.label}, ${list.items.length} voices · ${list.tagline}`,
     description: `${list.intro} Cadence: ${list.cadence}`,
     alternates: { canonical: `/voices/${list.slug}` },
     openGraph: {
-      title: `${list.label} — ${list.items.length} voices for the buyer`,
+      title: `${list.label}, ${list.items.length} voices for the buyer`,
       description: list.tagline,
       url: `https://signals.gitdealflow.com/voices/${list.slug}`,
       type: "article",
@@ -83,7 +83,7 @@ export default async function PlatformVoicesPage({ params }: PageProps) {
       {
         "@type": "WebPage",
         "@id": `https://signals.gitdealflow.com/voices/${list.slug}`,
-        name: `${list.label} — ${list.items.length} voices for the buyer`,
+        name: `${list.label}, ${list.items.length} voices for the buyer`,
         description: list.tagline,
         speakable: {
           "@type": "SpeakableSpecification",
@@ -115,7 +115,7 @@ export default async function PlatformVoicesPage({ params }: PageProps) {
       },
       {
         "@type": "ItemList",
-        name: `${list.label} — ${list.items.length} voices for the buyer`,
+        name: `${list.label}, ${list.items.length} voices for the buyer`,
         numberOfItems: list.items.length,
         itemListOrder: "https://schema.org/ItemListOrderAscending",
         itemListElement: list.items.map((v, i) => ({
@@ -162,7 +162,7 @@ export default async function PlatformVoicesPage({ params }: PageProps) {
             {list.label} · {list.items.length} entries · platform-specific
           </p>
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight">
-            {list.label} —{" "}
+            {list.label}, {" "}
             <span className="text-sky-400">{list.items.length} voices</span>.
           </h1>
           <p
@@ -229,7 +229,7 @@ export default async function PlatformVoicesPage({ params }: PageProps) {
               The literal roster
             </p>
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
-              {list.items.length} entries — numbered, status-flagged, linked.
+              {list.items.length} entries, numbered, status-flagged, linked.
             </h2>
             <p className="text-gray-400 text-sm leading-relaxed">
               Sorted by attention priority (top of list = most active surface).
@@ -308,7 +308,7 @@ export default async function PlatformVoicesPage({ params }: PageProps) {
                     href={`/voices/${p.slug}`}
                     className="block px-3 py-2 rounded-md bg-slate-800/60 hover:bg-slate-800 text-sky-300 hover:text-sky-200 transition-colors"
                   >
-                    {p.label} — {p.items.length} →
+                    {p.label}, {p.items.length} →
                   </Link>
                 </li>
               ),
@@ -326,7 +326,7 @@ export default async function PlatformVoicesPage({ params }: PageProps) {
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
             We don&rsquo;t guard our infiltration plan because it doesn&rsquo;t
-            scale by secrecy — it scales by repetition. If you want to mirror
+            scale by secrecy, it scales by repetition. If you want to mirror
             the same {list.label} attention map, that&rsquo;s
             net positive: the conversation gets denser, the dataset gets
             cleaner, and the answer to the same question on each platform

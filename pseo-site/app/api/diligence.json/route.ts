@@ -1,8 +1,8 @@
 /**
- * /api/diligence.json — agent diligence grounding endpoint.
+ * /api/diligence.json, agent diligence grounding endpoint.
  *
- * The questions an AI agent issues mid-diligence — "who acquired X",
- * "which funds backed Y", "what's the engineering signal on Z" — answered
+ * The questions an AI agent issues mid-diligence, "who acquired X",
+ * "which funds backed Y", "what's the engineering signal on Z", answered
  * over our public-source entity corpus (acquirers + fund→portfolio +
  * companies) as a single citation-ready dossier.
  *
@@ -48,7 +48,7 @@ function usageEnvelope() {
   const counts = getDiligenceEntityCount();
   return {
     _meta: {
-      name: "VC Deal Flow Signal — Diligence Grounding API",
+      name: "VC Deal Flow Signal, Diligence Grounding API",
       description:
         "Public-source diligence dossiers keyed by company/entity name: M&A history (who acquired X), disclosed investors (which funds backed Y), and published engineering-acceleration signal (what's the signal on Z). Built for AI agents doing pre-investment or competitive diligence that prefer one cited JSON object over crawling HTML.",
       usage:
@@ -80,7 +80,7 @@ function usageEnvelope() {
     },
     "@context": "https://schema.org",
     "@type": "Dataset",
-    name: "VC Deal Flow Signal — Diligence Grounding",
+    name: "VC Deal Flow Signal, Diligence Grounding",
     answerableEntities: getAllDiligenceEntities(),
     isPartOf: { "@type": "WebSite", "@id": `${SITE}/#website`, url: SITE },
   };

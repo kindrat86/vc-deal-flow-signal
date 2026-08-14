@@ -1,5 +1,5 @@
 /**
- * /.well-known/freshness.json — data freshness manifest for AEO/AIO probes.
+ * /.well-known/freshness.json, data freshness manifest for AEO/AIO probes.
  *
  * Retrieval pipelines (Perplexity, ChatGPT-with-search, Claude search,
  * agent-native VC tools that cache our data) want a single quick handle
@@ -28,7 +28,7 @@ export async function GET() {
     "@context": "https://schema.org",
     "@type": "DataFeed",
     "@id": `${SITE}/.well-known/freshness.json`,
-    name: "VC Deal Flow Signal — Data Freshness Manifest",
+    name: "VC Deal Flow Signal, Data Freshness Manifest",
     description:
       "Machine-readable manifest of the most recent data mutation timestamp, the active reporting period, and per-surface refresh cadences. Designed for retrieval pipelines that cache our dataset and need a quick freshness probe before re-fetching.",
     publisher: {

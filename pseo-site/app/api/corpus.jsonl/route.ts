@@ -1,5 +1,5 @@
 /**
- * /api/corpus.jsonl — NDJSON stream of the curated entity corpus.
+ * /api/corpus.jsonl, NDJSON stream of the curated entity corpus.
  *
  * One record per line, line-diffable, with a leading `_meta` line that
  * self-describes the snapshot (revision, asOf, counts, license, citation)

@@ -26,7 +26,7 @@ export async function GET() {
   const feed = `<?xml version="1.0" encoding="UTF-8"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>VC Deal Flow Signal — Blog</title>
+    <title>VC Deal Flow Signal: Blog</title>
     <link>${BASE_URL}/blog</link>
     <description>Insights on using GitHub engineering signals for startup investing. Practical guides for VCs and angel investors.</description>
     <language>en</language>

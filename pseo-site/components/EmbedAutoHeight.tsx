@@ -4,7 +4,7 @@ import { useEffect } from "react";
 
 /**
  * Reports document height to the parent window via postMessage so embedder
- * sites that load /embed.js can resize the iframe to fit the widget — no
+ * sites that load /embed.js can resize the iframe to fit the widget, no
  * scrollbars on slider drags, no clipped result tables, no eyeballed
  * `height=420` guesses.
  *
@@ -26,7 +26,7 @@ import { useEffect } from "react";
 export function EmbedAutoHeight() {
   useEffect(() => {
     if (typeof window === "undefined") return;
-    if (window.parent === window) return; // Standalone view — not in an iframe.
+    if (window.parent === window) return; // Standalone view, not in an iframe.
 
     let lastHeight = 0;
     const post = () => {
@@ -49,7 +49,7 @@ export function EmbedAutoHeight() {
 
     post();
 
-    // ResizeObserver fires whenever the body box changes — covers slider
+    // ResizeObserver fires whenever the body box changes, covers slider
     // drags, conditional reveals, validation errors expanding the result
     // panel, etc.
     const ro = new ResizeObserver(() => post());

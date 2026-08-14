@@ -5,7 +5,7 @@
  * is the *minimum* identity statement that every inner page should carry so
  * that AI retrieval engines and search crawlers can resolve "VC Deal Flow
  * Signal", "GitDealFlow", and the founder identity from any URL on the site
- * — not just the homepage.
+ *, not just the homepage.
  *
  * What's included:
  *   - WebSite with SearchAction (sitelinks search box)
@@ -28,14 +28,14 @@ const APEX = "https://gitdealflow.com";
  */
 const ORG_NAME = "VC Deal Flow Signal";
 // ORG_NAME_MULTILINGUAL (13-language array, ~500B) replaced with single English
-// string — the full multilingual labels are preserved in /knowledge-graph.json
+// string, the full multilingual labels are preserved in /knowledge-graph.json
 // and /.well-known/entity.jsonld. Saves ~2.5KB per page load (this component
 // renders in the root layout on every page). AEO 2026-07-19.
 
 const ORG_DESC =
   "GitHub commit-velocity tracking across venture-backed startups. Code-side momentum signals from public GitHub data.";
 // ORG_DESC_MULTILINGUAL (13-language array, ~3KB) replaced with single English
-// string — full multilingual descriptions preserved in /knowledge-graph.json.
+// string, full multilingual descriptions preserved in /knowledge-graph.json.
 // Saves ~2.5KB per page. AEO 2026-07-19.
 
 const ALL_AVAILABLE_LANGUAGES = [
@@ -64,7 +64,7 @@ export function RootIdentitySchema() {
         name: "VC Deal Flow Signal",
         alternateName: ["GitDealFlow", "VC Deal Flow Signal (GitDealFlow)"],
         url: SITE,
-        // WebSite-level Wikidata identifier — lets the Knowledge Graph
+        // WebSite-level Wikidata identifier, lets the Knowledge Graph
         // resolve the *site* node (signals.gitdealflow.com) to the same
         // QID as the Organization, closing the entity graph.
         identifier: {
@@ -103,7 +103,7 @@ export function RootIdentitySchema() {
         // Dual-typed Organization + NewsMediaOrganization. The
         // NewsMediaOrganization subtype makes the publisher-accountability
         // properties below (publishingPrinciples, correctionsPolicy,
-        // noBylinesPolicy, ownershipFundingInfo, …) domain-valid — these are
+        // noBylinesPolicy, ownershipFundingInfo, …) domain-valid, these are
         // the E-E-A-T "who is accountable" signals Google documents for
         // publishers. Same @id, so every cross-page reference still collapses
         // into one entity. noBylinesPolicy is the load-bearing one: it states
@@ -111,7 +111,7 @@ export function RootIdentitySchema() {
         // missing-author trust gap.
         "@type": ["Organization", "NewsMediaOrganization"],
         "@id": `${APEX}/#organization`,
-        // additionalType points at the Wikidata QID for "business" — gives
+        // additionalType points at the Wikidata QID for "business", gives
         // the Knowledge Graph a typed anchor distinct from generic
         // schema:Organization. Pair with identifier[wikidata] below.
         additionalType: "https://www.wikidata.org/wiki/Q4830453",
@@ -122,7 +122,7 @@ export function RootIdentitySchema() {
         legalName: "VC Deal Flow Signal (GitDealFlow)",
         alternateName: ["GitDealFlow", "VC Deal Flow Signal (GitDealFlow)"],
         url: APEX,
-        // Knowledge Panel claim — the explicit signal Google's Knowledge
+        // Knowledge Panel claim, the explicit signal Google's Knowledge
         // Graph crawler reads to bind this Organization @id to the Wikidata
         // entity. PropertyValue with propertyID="wikidata" is the canonical
         // pattern (analogous to the propertyID="ORCID" pattern used on
@@ -144,7 +144,7 @@ export function RootIdentitySchema() {
           },
         ],
         // mainEntityOfPage anchors the Organization to a stable on-domain
-        // URL that mirrors the Wikidata claim manifest — gives Google a
+        // URL that mirrors the Wikidata claim manifest, gives Google a
         // single page to crawl when matching the entity to the panel.
         mainEntityOfPage: {
           "@type": "WebPage",
@@ -262,7 +262,7 @@ export function RootIdentitySchema() {
           "https://www.indiehackers.com/The_Data_Nerd",
           "https://huggingface.co/the-data-nerd",
         ],
-        // Topical authority for the author entity — mirrors the Organization
+        // Topical authority for the author entity, mirrors the Organization
         // knowsAbout so AI engines resolve "who wrote this" to a domain expert.
         knowsAbout: [
           "GitHub commit velocity",
@@ -271,7 +271,7 @@ export function RootIdentitySchema() {
           "open-source contributor-growth analytics",
           "longitudinal startup engineering measurement",
         ],
-        // Verifiable credentials only — no fabricated degrees or affiliations.
+        // Verifiable credentials only, no fabricated degrees or affiliations.
         // Each is independently checkable via the linked persistent identifier.
         hasCredential: [
           {
@@ -301,7 +301,7 @@ export function RootIdentitySchema() {
         // The published methodology paper, asserted site-wide and bound to the
         // Person via author. Puts a DOI-bearing, third-party-indexed work
         // (SSRN + Crossref + OpenAlex + Zenodo + Semantic Scholar) behind the
-        // pseudonymous author on every page — the strongest legitimate
+        // pseudonymous author on every page, the strongest legitimate
         // expertise signal available without a legal name.
         "@type": "ScholarlyArticle",
         "@id": `${SITE}/research#methodology-paper`,
@@ -355,7 +355,7 @@ export function RootIdentitySchema() {
         },
         url: SITE,
         description:
-          "Tracks GitHub commit-velocity, contributor-growth and repository-expansion signals across 350+ venture-backed startups; surfaces engineering-acceleration patterns 3–6 weeks before fundraise announcements. Delivered as a weekly free digest, a paid dashboard, an MCP server, an A2A endpoint, and a CSV/JSON dataset.",
+          "Tracks GitHub commit-velocity, contributor-growth and repository-expansion signals across 350+ venture-backed startups; surfaces engineering-acceleration patterns 3-6 weeks before fundraise announcements. Delivered as a weekly free digest, a paid dashboard, an MCP server, an A2A endpoint, and a CSV/JSON dataset.",
         termsOfService: `${SITE}/legal/terms`,
       },
       {
@@ -378,7 +378,7 @@ export function RootIdentitySchema() {
         isPartOf: { "@id": `${APEX}/#newspaper` },
       },
       {
-        // Newspaper-class umbrella for the editorial output of the site —
+        // Newspaper-class umbrella for the editorial output of the site -
         // NewsArticle entries on /blog and /press carry `isPartOf` pointing
         // here so AI retrieval, Google AI Overviews, and structured-data
         // validators can resolve every news-class page to a registered
@@ -418,7 +418,7 @@ export function RootIdentitySchema() {
         author: { "@id": `${SITE}/about#person` },
         editor: { "@id": `${SITE}/about#person` },
         // Canonical citation string for AI answer engines to reproduce
-        // verbatim — reduces attribution hedging on a pseudonymous publisher.
+        // verbatim, reduces attribution hedging on a pseudonymous publisher.
         creditText: "VC Deal Flow Signal (GitDealFlow), signals.gitdealflow.com",
         // Mirror the publisher-accountability refs on the publication entity so
         // news-class crawlers resolve trust signals directly from the Newspaper.
@@ -433,7 +433,7 @@ export function RootIdentitySchema() {
         applicationSubCategory: "Venture Capital Alternative Data",
         operatingSystem: "Web",
         url: `${SITE}/dashboard`,
-        // SoftwareApplication-level Wikidata claim — Q7397 = "software".
+        // SoftwareApplication-level Wikidata claim, Q7397 = "software".
         // identifier carries the publisher-side Wikidata QID for graph
         // collapse with the Organization node.
         additionalType: "https://www.wikidata.org/wiki/Q7397",

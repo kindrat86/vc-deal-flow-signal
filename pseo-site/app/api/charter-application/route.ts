@@ -3,12 +3,12 @@ import { checkRateLimit, getClientIp, rateLimitHeaders } from "@/lib/rate-limit"
 import { isValidEmail, isAllowedOrigin } from "@/lib/validation";
 
 /**
- * /api/charter-application — Charter Cohort 2026 intake.
+ * /api/charter-application, Charter Cohort 2026 intake.
  *
  * Brunson Expert Secrets §1 Ch 4 (Mass Movement Vehicle) + DotCom Secrets §23
  * (Application Funnel). The Charter Cohort gates 25 founding-member seats
  * behind a 5-field written application. Same async-only pattern as
- * /api/sharp-application — no DB write, the email IS the record.
+ * /api/sharp-application, no DB write, the email IS the record.
  *
  * The founder receives the application via Resend at signals@gitdealflow.com
  * and replies within 48 business hours with a draft profile to confirm.
@@ -69,7 +69,7 @@ function applicationEmailHtml(fields: {
 </table>
 <hr style="border:none;border-top:1px solid #e2e8f0;margin:24px 0;">
 <p style="color:#94a3b8;font-size:12px;line-height:1.5;">Submitted from ${f.ip} (${f.ua})<br>Form: https://signals.gitdealflow.com/members/join</p>
-<p style="color:#94a3b8;font-size:12px;">Reply directly to <a href="mailto:${f.email}" style="color:#0ea5e9;">${f.email}</a> &mdash; that's the applicant's verified email.</p>
+<p style="color:#94a3b8;font-size:12px;">Reply directly to <a href="mailto:${f.email}" style="color:#0ea5e9;">${f.email}</a>: that's the applicant's verified email.</p>
 <p style="color:#94a3b8;font-size:12px;">Action: review the thesis, write back inside 48h with either a draft profile to confirm OR a written no with the reason. Then update <code>pseo-site/content/charter-cohort.ts</code> if accepting.</p>
 </div>
 </body>
@@ -99,7 +99,7 @@ export async function POST(request: Request) {
   }
 
   const ip = getClientIp(request);
-  // Tighter rate limit — charter applications shouldn't see >3 attempts/hr from one IP.
+  // Tighter rate limit, charter applications shouldn't see >3 attempts/hr from one IP.
   const rl = checkRateLimit(`charter-application:${ip}`, 3, 3600_000);
   if (!rl.allowed) {
     return NextResponse.json(
@@ -178,7 +178,7 @@ export async function POST(request: Request) {
         bcc: "sales@sipiteno.com",
         to: TO_EMAIL,
         reply_to: email,
-        subject: `[Charter Cohort] ${handle} — ${archetype}`,
+        subject: `[Charter Cohort] ${handle}, ${archetype}`,
         html,
       }),
     });
@@ -189,7 +189,7 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           error:
-            "Failed to deliver application — please email signals@gitdealflow.com directly",
+            "Failed to deliver application, please email signals@gitdealflow.com directly",
         },
         { status: 500, headers },
       );
@@ -208,7 +208,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         error:
-          "Something went wrong — please email signals@gitdealflow.com directly",
+          "Something went wrong, please email signals@gitdealflow.com directly",
       },
       { status: 500, headers },
     );

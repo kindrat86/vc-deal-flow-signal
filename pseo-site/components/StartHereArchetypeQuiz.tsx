@@ -1,12 +1,12 @@
 "use client";
 
 // Three-question identity quiz for /start-here. Routes cold visitors by
-// identity (not by price tier — that's the job of /quiz).
+// identity (not by price tier, that's the job of /quiz).
 //
 // Three archetypes:
-//   BUYER       — angel/fund/family-office, ready to pay for names
-//   SUBSCRIBER  — curious reader, wants the free weekly digest
-//   ENGINEER    — builder/agent dev, wants the MCP server / API
+//   BUYER      , angel/fund/family-office, ready to pay for names
+//   SUBSCRIBER , curious reader, wants the free weekly digest
+//   ENGINEER   , builder/agent dev, wants the MCP server / API
 //
 // Q3 is weighted 2x so the most concrete-intent answer breaks ties cleanly.
 
@@ -32,7 +32,7 @@ const QUESTIONS: Question[] = [
     prompt: "Which one fits you best right now?",
     options: [
       {
-        label: "I write checks — angel, fund, family office, or syndicate.",
+        label: "I write checks, angel, fund, family office, or syndicate.",
         archetype: "BUYER",
       },
       {
@@ -42,7 +42,7 @@ const QUESTIONS: Question[] = [
       },
       {
         label:
-          "I build software. Agents, automations, internal tooling — that's my week.",
+          "I build software. Agents, automations, internal tooling, that's my week.",
         archetype: "ENGINEER",
       },
     ],
@@ -117,9 +117,9 @@ const RESULTS: Record<Archetype, Result> = {
     archetype: "SUBSCRIBER",
     eyebrow: "Cold Subscriber · here to read",
     title: "Subscribe to the free Acceleration Watch.",
-    body: "You're not buying anything today — and that's exactly right. The Monday digest gives you the top 5 ranked startups every week, sector-tagged, with 6-week historical context. Free forever. The fastest way to test whether the signal matches your taste before you commit to a paid tool.",
+    body: "You're not buying anything today, and that's exactly right. The Monday digest gives you the top 5 ranked startups every week, sector-tagged, with 6-week historical context. Free forever. The fastest way to test whether the signal matches your taste before you commit to a paid tool.",
     primary: {
-      label: "Subscribe to the Acceleration Watch — Free →",
+      label: "Subscribe to the Acceleration Watch, Free →",
       href: "https://gitdealflow.com/#signup",
       external: true,
     },
@@ -136,8 +136,8 @@ const RESULTS: Record<Archetype, Result> = {
   ENGINEER: {
     archetype: "ENGINEER",
     eyebrow: "Cold Engineer-Curious · here to build",
-    title: "Install the MCP server — six tools, free forever.",
-    body: "You think in code. The fastest way for you to evaluate this is to call it from Claude or Cursor and see the data shape for yourself. Six read-only tools, zero gating, npx-installable in 30 seconds. We add new paid tools alongside the free ones — never gate the existing ones.",
+    title: "Install the MCP server, six tools, free forever.",
+    body: "You think in code. The fastest way for you to evaluate this is to call it from Claude or Cursor and see the data shape for yourself. Six read-only tools, zero gating, npx-installable in 30 seconds. We add new paid tools alongside the free ones, never gate the existing ones.",
     primary: { label: "Install the MCP server →", href: "/install" },
     secondary: { label: "Or browse the agent surfaces", href: "/agents" },
     tertiary: {
@@ -331,7 +331,7 @@ export default function StartHereArchetypeQuiz() {
       </div>
 
       <p className="text-gray-400 text-sm leading-relaxed">
-        Cold buyer, cold subscriber, cold engineer-curious — three different
+        Cold buyer, cold subscriber, cold engineer-curious, three different
         people land on this site, and the next move is different for each.
         Pick the answer closest to the truth, even if none fits perfectly.
         Nothing leaves your browser.
@@ -382,7 +382,7 @@ export default function StartHereArchetypeQuiz() {
       </ol>
 
       <p className="text-[11px] text-gray-500 leading-relaxed border-t border-slate-800 pt-4">
-        Answers stay in your browser — nothing is sent anywhere unless you
+        Answers stay in your browser, nothing is sent anywhere unless you
         click through to the routed page. No analytics events fire on the
         question screens.
       </p>

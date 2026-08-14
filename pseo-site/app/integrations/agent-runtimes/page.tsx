@@ -7,9 +7,9 @@ const NPM = "@gitdealflow/mcp-signal";
 const HTTP_RPC = `${SITE}/api/mcp/rpc`;
 
 const TITLE =
-  "Use VC Deal Flow Signal in any AI agent runtime — Cursor, Cline, Goose, OpenHands, Aider, Raycast";
+  "Use VC Deal Flow Signal in any AI agent runtime, Cursor, Cline, Goose, OpenHands, Aider, Raycast";
 const DESCRIPTION =
-  "Install the VC Deal Flow Signal MCP server in seven popular agent runtimes — Cursor, Cline, Block Goose, OpenHands, Aider, AiderDesk, and Raycast. One npm package, six free read-only tools, no auth, weekly refresh. Per-runtime install snippets and marketplace links.";
+  "Install the VC Deal Flow Signal MCP server in seven popular agent runtimes, Cursor, Cline, Block Goose, OpenHands, Aider, AiderDesk, and Raycast. One npm package, six free read-only tools, no auth, weekly refresh. Per-runtime install snippets and marketplace links.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -66,7 +66,7 @@ const RUNTIMES: Runtime[] = [
   }
 }`,
     installNotes:
-      "Open Settings → MCP → +Add new MCP server, paste the snippet, and the six tools appear in the next chat. The streamable-HTTP variant works too — use \"url\": \"" +
+      "Open Settings → MCP → +Add new MCP server, paste the snippet, and the six tools appear in the next chat. The streamable-HTTP variant works too, use \"url\": \"" +
       HTTP_RPC +
       '" instead of command/args.',
     docsUrl: "https://docs.cursor.com/context/model-context-protocol",
@@ -103,7 +103,7 @@ const RUNTIMES: Runtime[] = [
     slug: "goose",
     name: "Block Goose",
     tagline:
-      "Open-source extensible AI agent (43k+ stars) from Block — runs MCP servers as extensions across CLI and Desktop.",
+      "Open-source extensible AI agent (43k+ stars) from Block, runs MCP servers as extensions across CLI and Desktop.",
     status: "in-review",
     marketplace: {
       url: "https://github.com/aaif-goose/goose/pull/8974",
@@ -120,7 +120,7 @@ const RUNTIMES: Runtime[] = [
     slug: "openhands",
     name: "OpenHands",
     tagline:
-      "Autonomous coding agent (formerly OpenDevin) from All-Hands-AI. MCP servers via per-user JSON config — no marketplace, all servers are self-served.",
+      "Autonomous coding agent (formerly OpenDevin) from All-Hands-AI. MCP servers via per-user JSON config, no marketplace, all servers are self-served.",
     status: "config",
     installType: "json-paste",
     installSnippet: `// ~/.openhands/mcp.json
@@ -133,7 +133,7 @@ const RUNTIMES: Runtime[] = [
   }
 }`,
     installNotes:
-      "OpenHands has no marketplace — every MCP server is added per-user. Drop the JSON above at ~/.openhands/mcp.json or use the GUI: Settings → MCP → Add Server. CLI shortcut: openhands mcp add vc-deal-flow-signal --transport stdio npx -- -y " +
+      "OpenHands has no marketplace, every MCP server is added per-user. Drop the JSON above at ~/.openhands/mcp.json or use the GUI: Settings → MCP → Add Server. CLI shortcut: openhands mcp add vc-deal-flow-signal --transport stdio npx -- -y " +
       NPM +
       ".",
     docsUrl: "https://docs.openhands.dev/openhands/usage/settings/mcp-settings",
@@ -204,19 +204,19 @@ const RUNTIMES: Runtime[] = [
 const FAQS: { q: string; a: string }[] = [
   {
     q: "Is the same npm package used everywhere?",
-    a: `Yes — every runtime above runs the exact same package: ${NPM} (current v1.5.2 on the npm registry, mirrored on the official MCP Registry as io.github.kindrat86/vc-deal-flow-signal). The classifications, methodology, and weekly refresh are identical across Cursor, Cline, Goose, OpenHands, Aider, AiderDesk, and Raycast. The streamable-HTTP variant at ${HTTP_RPC} also exposes the identical tools for runtimes that prefer hosted-MCP over local stdio.`,
+    a: `Yes, every runtime above runs the exact same package: ${NPM} (current v1.5.2 on the npm registry, mirrored on the official MCP Registry as io.github.kindrat86/vc-deal-flow-signal). The classifications, methodology, and weekly refresh are identical across Cursor, Cline, Goose, OpenHands, Aider, AiderDesk, and Raycast. The streamable-HTTP variant at ${HTTP_RPC} also exposes the identical tools for runtimes that prefer hosted-MCP over local stdio.`,
   },
   {
     q: "Do I need an API key for any of these runtimes?",
-    a: "No. The MCP server is read-only and unauthenticated. Every tool — get_trending_startups, search_startups_by_sector, get_startup_signal, get_signals_summary, get_scout_receipts, get_methodology — works anonymously across all seven runtimes. The HTTP variant supports OAuth 2.1 for runtimes that require it (Anthropic Connectors Directory, future enterprise gating), but anonymous calls remain supported indefinitely.",
+    a: "No. The MCP server is read-only and unauthenticated. Every tool, get_trending_startups, search_startups_by_sector, get_startup_signal, get_signals_summary, get_scout_receipts, get_methodology, works anonymously across all seven runtimes. The HTTP variant supports OAuth 2.1 for runtimes that require it (Anthropic Connectors Directory, future enterprise gating), but anonymous calls remain supported indefinitely.",
   },
   {
     q: "Which runtimes have one-click install?",
-    a: "Cursor (cursor.directory listing — under review), Block Goose (PR #8974 open), Raycast (PR #27618 open), and Cline (issue #1491 submitted) all have marketplace submissions in flight that will give one-click install once accepted. OpenHands, Aider, and AiderDesk have no marketplace surface at all — installation is per-user JSON config, which the snippets above paste verbatim into the right file.",
+    a: "Cursor (cursor.directory listing, under review), Block Goose (PR #8974 open), Raycast (PR #27618 open), and Cline (issue #1491 submitted) all have marketplace submissions in flight that will give one-click install once accepted. OpenHands, Aider, and AiderDesk have no marketplace surface at all, installation is per-user JSON config, which the snippets above paste verbatim into the right file.",
   },
   {
     q: "What about Continue.dev?",
-    a: "Skipped. The Continue Hub registry was deprecated in May 2026 — hub.continue.dev/hub returns HTTP 500 after the project's pivot to Continuous AI. We'll re-evaluate once a public registry comes back online.",
+    a: "Skipped. The Continue Hub registry was deprecated in May 2026, hub.continue.dev/hub returns HTTP 500 after the project's pivot to Continuous AI. We'll re-evaluate once a public registry comes back online.",
   },
   {
     q: "What about Claude Desktop, Claude.ai, and Mistral Le Chat?",
@@ -230,7 +230,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "How do I cite this in a memo?",
-    a: "VC Deal Flow Signal (signals.gitdealflow.com), <period name> data. Methodology: SSRN preprint 6606558. Refreshed weekly from public GitHub activity. Runtime-agnostic — the data does not depend on which agent runtime made the call.",
+    a: "VC Deal Flow Signal (signals.gitdealflow.com), <period name> data. Methodology: SSRN preprint 6606558. Refreshed weekly from public GitHub activity. Runtime-agnostic, the data does not depend on which agent runtime made the call.",
   },
 ];
 
@@ -344,12 +344,12 @@ export default function AgentRuntimesPage() {
           className="text-gray-400 text-base leading-relaxed mb-6 max-w-2xl speakable"
           data-agent-summary
         >
-          One npm package — <code className="font-mono text-gray-300">{NPM}</code>
-          {" "}— installs in seven popular agent runtimes: Cursor, Cline, Block
+          One npm package, <code className="font-mono text-gray-300">{NPM}</code>
+          {" "}, installs in seven popular agent runtimes: Cursor, Cline, Block
           Goose, OpenHands, Aider (via mcpm-aider), AiderDesk, and Raycast. Each
-          runtime gets the same six read-only tools — trending startups, sector
+          runtime gets the same six read-only tools, trending startups, sector
           lookup, single-startup signal, dataset summary, scout receipts,
-          methodology — running against the identical weekly-refreshed dataset.
+          methodology, running against the identical weekly-refreshed dataset.
           No auth required.
         </p>
 

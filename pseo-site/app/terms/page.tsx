@@ -18,7 +18,7 @@ export default function TermsPage() {
     "@context": "https://schema.org",
     "@type": "WebPage",
     "@id": `${SITE}/terms`,
-    name: "Terms of Service — VC Deal Flow Signal",
+    name: "Terms of Service, VC Deal Flow Signal",
     description: metadata.description,
     inLanguage: "en-US",
     isAccessibleForFree: true,
@@ -48,7 +48,7 @@ export default function TermsPage() {
       <section className="mb-8 rounded-xl border border-sky-700/30 bg-sky-950/20 p-5 sm:p-6">
         <p className="text-sky-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">For the buyer doing diligence</p>
         <p className="text-gray-200 text-sm leading-relaxed">
-          Two lines decide this for most buyers: <strong>paid tiers are billed by Stripe and cancel in one click</strong>, and the signal is <strong>research output, not investment advice</strong>. Everything below is the standard wrapper around those two facts — no engineer required to read it.
+          Two lines decide this for most buyers: <strong>paid tiers are billed by Stripe and cancel in one click</strong>, and the signal is <strong>research output, not investment advice</strong>. Everything below is the standard wrapper around those two facts, no engineer required to read it.
         </p>
       </section>
 
@@ -101,7 +101,7 @@ export default function TermsPage() {
         <p>Questions: <a className="text-sky-400 hover:underline" href="mailto:signals@gitdealflow.com">signals@gitdealflow.com</a>. We will email all subscribers at least 30 days before any material change to these Terms; minor edits (typos, link updates) ship without notice. Version history at <Link href="/changelog" className="text-sky-400 hover:underline">/changelog</Link>.</p>
       </section>
 
-      <TrustPageOutro institutional acNote="I sell a signal, not a promise. That's why the terms are short, the liability is capped, the advice disclaimer is loud, and the exit is one click. If the math stops being useful, you leave — I'd rather lose the subscription than bury the off-ramp." />
+      <TrustPageOutro institutional acNote="I sell a signal, not a promise. That's why the terms are short, the liability is capped, the advice disclaimer is loud, and the exit is one click. If the math stops being useful, you leave, I'd rather lose the subscription than bury the off-ramp." />
 
       <footer className="mt-10 pt-6 border-t border-slate-800 text-sm text-gray-400">
         License: <a href="https://creativecommons.org/licenses/by/4.0/" className="text-sky-400 hover:underline">CC BY 4.0</a>. Trust hub: <Link href="/trust" className="text-sky-400 hover:underline">/trust</Link>.

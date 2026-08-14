@@ -189,7 +189,7 @@ export async function GET(
                   fontStyle: "italic",
                 }}
               >
-                No early calls in our database — yet.
+                No early calls in our database, yet.
               </div>
             ) : (
               topThree.map((w) => (

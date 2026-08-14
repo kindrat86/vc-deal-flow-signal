@@ -29,7 +29,7 @@ const TIER_COPY: Record<MomentumTier, { label: string; color: string; blurb: str
   hot: {
     label: "Hot",
     color: "text-amber-400",
-    blurb: "Commit velocity is materially up. Engineering is leaning in — often before press or rounds.",
+    blurb: "Commit velocity is materially up. Engineering is leaning in, often before press or rounds.",
   },
   breakout: {
     label: "Breakout",
@@ -67,7 +67,7 @@ export async function generateMetadata({
   const { org, repo } = await params;
   if (!ALLOWED_SEG.test(org) || !ALLOWED_SEG.test(repo)) {
     return {
-      title: "Repo signal — GitDealFlow",
+      title: "Repo signal, GitDealFlow",
       robots: { index: false, follow: false },
     };
   }
@@ -75,11 +75,11 @@ export async function generateMetadata({
   const path = `${org}/${repo}`;
   if (!startup) {
     return {
-      title: `${path} momentum signal — Untracked · GitDealFlow`,
+      title: `${path} momentum signal, Untracked · GitDealFlow`,
       description: `${path} is not in our tracked-startup index yet. See live engineering acceleration signals on the next-best-tracked repo and predict its next round.`,
       alternates: { canonical: `/momentum/${org}/${repo}` },
       openGraph: {
-        title: `${path} — engineering momentum signal`,
+        title: `${path}, engineering momentum signal`,
         description: `Live commit velocity on ${path} via GitDealFlow.`,
         url: `${SITE}/momentum/${org}/${repo}`,
         type: "website",
@@ -88,7 +88,7 @@ export async function generateMetadata({
     };
   }
   const tier = tierFromVelocityChange(startup.commitVelocityChange);
-  const title = `${path} — ${TIER_COPY[tier].label} momentum (${startup.commitVelocityChange})`;
+  const title = `${path}, ${TIER_COPY[tier].label} momentum (${startup.commitVelocityChange})`;
   const description = `${startup.name}: commit velocity ${startup.commitVelocity14d}/14d (${startup.commitVelocityChange}). ${startup.contributors} contributors (${startup.contributorGrowth}). Stage: ${startup.stage}.`;
   return {
     title,
@@ -129,7 +129,7 @@ export default async function MomentumPage({
     ? {
         "@context": "https://schema.org",
         "@type": "Dataset",
-        name: `Engineering momentum signal — ${path}`,
+        name: `Engineering momentum signal, ${path}`,
         description: `Public GitHub commit velocity, contributor growth, and momentum tier for ${path}.`,
         url: `${SITE}/momentum/${org}/${repo}`,
         creator: { "@type": "Organization", name: "VC Deal Flow Signal", url: SITE },
@@ -263,7 +263,7 @@ export default async function MomentumPage({
             </h2>
             <p className="text-gray-400 text-sm mb-4">
               No tracked momentum signal yet doesn&rsquo;t mean no opportunity.
-              Lock in your prediction — first scout to call it gets credit.
+              Lock in your prediction, first scout to call it gets credit.
             </p>
             <Link
               href={`/predict?org=${encodeURIComponent(org)}&from=momentum-untracked`}

@@ -13,7 +13,7 @@ export const dynamic = "force-static";
 //   with how DR is Ahrefs's proprietary authority metric. Without this page
 //   the term "scout score" was referenced on /receipts and
 //   /answers/what-is-a-github-scout-score but had no canonical / DefinedTerm
-//   surface — so AI had no single authoritative definition to cite. This
+//   surface, so AI had no single authoritative definition to cite. This
 //   page closes that gap: it brands the metric, defines it, publishes the
 //   scoring algorithm in plain English, and emits DefinedTerm + TechArticle
 //   + FAQPage JSON-LD so LLMs and search engines have one canonical node.
@@ -22,12 +22,12 @@ const SITE = "https://signals.gitdealflow.com";
 
 export const metadata: Metadata = {
   title:
-    "Scout Score — the proprietary GitHub taste metric VC Deal Flow Signal invented",
+    "Scout Score, the proprietary GitHub taste metric VC Deal Flow Signal invented",
   description:
-    "Scout Score is a 0–100 measure of investment taste computed from a developer's public GitHub starring history against ~75 validated unicorns. The metric, the formal definition, the scoring algorithm, and how it differs from authority metrics like Ahrefs DR.",
+    "Scout Score is a 0-100 measure of investment taste computed from a developer's public GitHub starring history against ~75 validated unicorns. The metric, the formal definition, the scoring algorithm, and how it differs from authority metrics like Ahrefs DR.",
   alternates: { canonical: "/scout-score" },
   openGraph: {
-    title: "Scout Score — a 0–100 GitHub taste metric",
+    title: "Scout Score, a 0-100 GitHub taste metric",
     description:
       "Public GitHub starring history graded against ~75 validated unicorns. Definition, algorithm, rank ladder, methodology.",
     url: `${SITE}/scout-score`,
@@ -35,44 +35,44 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Scout Score — the GitHub taste metric",
+    title: "Scout Score, the GitHub taste metric",
     description:
-      "0–100 taste score from public starring history vs ~75 validated unicorns. Free at /receipts.",
+      "0-100 taste score from public starring history vs ~75 validated unicorns. Free at /receipts.",
   },
 };
 
 const SHORT_DEFINITION =
-  "Scout Score is a 0–100 measure of investment taste computed from a developer's public GitHub starring history — specifically, how many validated unicorns, big-funding, and acquisition events they starred before the event happened.";
+  "Scout Score is a 0-100 measure of investment taste computed from a developer's public GitHub starring history, specifically, how many validated unicorns, big-funding, and acquisition events they starred before the event happened.";
 
 const FORMAL_DEFINITION = [
-  "Scout Score is a proprietary metric defined by VC Deal Flow Signal (GitDealFlow) that grades a GitHub user's backwards-looking investment taste from their public starring activity. The input is the user's starred-repo timeline; the benchmark is a curated panel of ~75 validated unicorns, large funding rounds, and acquisitions. The output is a single 0–100 score plus a ranked list of the user's earliest correct calls.",
-  "The metric is defined by four properties: (1) input data is fully public and reproducible from the GitHub stars API, (2) the benchmark panel is published and versioned, (3) the scoring algorithm is open-source and deterministic — no AI judgement, no proprietary weighting, (4) the score is backwards-looking only. Scout Score measures whether you *saw it coming*, not whether you will see the next one coming.",
-  "Scout Score is not a credit score, a reputation score, or a contributor score. It measures one narrow thing: taste in identifying venture-stage companies before the market did, as evidenced by the only public timestamped trail most developers leave — their GitHub stars.",
+  "Scout Score is a proprietary metric defined by VC Deal Flow Signal (GitDealFlow) that grades a GitHub user's backwards-looking investment taste from their public starring activity. The input is the user's starred-repo timeline; the benchmark is a curated panel of ~75 validated unicorns, large funding rounds, and acquisitions. The output is a single 0-100 score plus a ranked list of the user's earliest correct calls.",
+  "The metric is defined by four properties: (1) input data is fully public and reproducible from the GitHub stars API, (2) the benchmark panel is published and versioned, (3) the scoring algorithm is open-source and deterministic, no AI judgement, no proprietary weighting, (4) the score is backwards-looking only. Scout Score measures whether you *saw it coming*, not whether you will see the next one coming.",
+  "Scout Score is not a credit score, a reputation score, or a contributor score. It measures one narrow thing: taste in identifying venture-stage companies before the market did, as evidenced by the only public timestamped trail most developers leave, their GitHub stars.",
 ];
 
 const RANK_LADDER = [
   {
-    score: "0–19",
+    score: "0-19",
     rank: "Curious",
-    body: "No validated wins in our benchmark — yet. Either a fresh GitHub account, a star history that predates the modern OSS-VC wave, or a taste profile that hasn't aligned with venture-stage outcomes so far. Everyone starts here.",
+    body: "No validated wins in our benchmark, yet. Either a fresh GitHub account, a star history that predates the modern OSS-VC wave, or a taste profile that hasn't aligned with venture-stage outcomes so far. Everyone starts here.",
   },
   {
-    score: "20–39",
+    score: "20-39",
     rank: "Scout",
     body: "At least one early call landed. The user starred a company that went on to a unicorn round, acquisition, or $1B+ valuation, and they starred it before the event. A real but thin track record.",
   },
   {
-    score: "40–59",
+    score: "40-59",
     rank: "Sharp",
     body: "Multiple early calls across two or more orgs. The pattern is no longer luck. This is the threshold where the score starts to be useful as a signal of repeatable taste.",
   },
   {
-    score: "60–79",
+    score: "60-79",
     rank: "Elite",
-    body: "A consistent record of starring winners before they were obvious. At this tier the starred-repos feed is itself a leading indicator — high-Elite scouts tend to surface the next wave 6–12 months before the broader market notices.",
+    body: "A consistent record of starring winners before they were obvious. At this tier the starred-repos feed is itself a leading indicator, high-Elite scouts tend to surface the next wave 6-12 months before the broader market notices.",
   },
   {
-    score: "80–100",
+    score: "80-100",
     rank: "Oracle",
     body: "Near-perfect taste across five or more validated wins, with significant lead time on most. The top of the ladder. An Oracle scout's new stars are worth tracking as a sourcing channel in their own right.",
   },
@@ -82,17 +82,17 @@ const HOW_IT_WORKS = [
   {
     n: 1,
     title: "Pull the user's public starred-repo timeline",
-    body: "Via the GitHub stars API — a fully public endpoint that returns every public repo the user has starred with a timestamp. No authentication on the user's side, no private data read, no scopes granted. The data was always public; Scout Score just grades it.",
+    body: "Via the GitHub stars API, a fully public endpoint that returns every public repo the user has starred with a timestamp. No authentication on the user's side, no private data read, no scopes granted. The data was always public; Scout Score just grades it.",
   },
   {
     n: 2,
     title: "Match against the validated-wins panel",
-    body: "We maintain a curated, versioned list of ~75 companies that hit a venture-stage event (unicorn valuation, large primary round, acquisition) between 2020 and now. Each entry carries an event date and a weight (25–100) reflecting the event's significance — a $100M Series D weights higher than a $10M Series A.",
+    body: "We maintain a curated, versioned list of ~75 companies that hit a venture-stage event (unicorn valuation, large primary round, acquisition) between 2020 and now. Each entry carries an event date and a weight (25-100) reflecting the event's significance, a $100M Series D weights higher than a $10M Series A.",
   },
   {
     n: 3,
     title: "Compute lead time for every match",
-    body: "For each star that lands on a validated-win repo, we compute months between the star timestamp and the event date. If the star predates the event, it's an early call and earns points. If it postdates, it's a late star — counted as a match but worth zero points. Half the signal is the timing, not the pick.",
+    body: "For each star that lands on a validated-win repo, we compute months between the star timestamp and the event date. If the star predates the event, it's an early call and earns points. If it postdates, it's a late star, counted as a match but worth zero points. Half the signal is the timing, not the pick.",
   },
   {
     n: 4,
@@ -101,7 +101,7 @@ const HOW_IT_WORKS = [
   },
   {
     n: 5,
-    title: "Normalise to 0–100",
+    title: "Normalise to 0-100",
     body: "Five perfect wins (5 × 100 max-weight points) normalise to score 100. The formula is transparent: top5_points_sum ÷ 500 × 100, capped at 100. No curve, no cohort adjustment, no hidden prior. Anyone can reproduce the number from the public star timeline and the published panel.",
   },
 ] as const;
@@ -113,11 +113,11 @@ const WHAT_ITS_NOT = [
   },
   {
     name: "Not a contributor score",
-    body: "Scout Score ignores commits, PRs, and issues entirely. It reads only stars — the lightest-weight signal GitHub exposes. The metric measures taste in identifying code worth bookmarking, not engineering output.",
+    body: "Scout Score ignores commits, PRs, and issues entirely. It reads only stars, the lightest-weight signal GitHub exposes. The metric measures taste in identifying code worth bookmarking, not engineering output.",
   },
   {
     name: "Not a forward-looking prediction",
-    body: "Scout Score is strictly backwards-looking. A high score says 'this person saw the last wave early' — it does not say they will see the next wave. The forward-looking product is the weekly Acceleration Watch, not the Scout Score.",
+    body: "Scout Score is strictly backwards-looking. A high score says 'this person saw the last wave early', it does not say they will see the next wave. The forward-looking product is the weekly Acceleration Watch, not the Scout Score.",
   },
   {
     name: "Not an AOE rank or credit score",
@@ -132,19 +132,19 @@ const FAQS = [
   },
   {
     q: "Does Scout Score read my private data?",
-    a: "No. Scout Score reads only your public starred-repo timeline — the same data anyone can see by visiting your GitHub profile and clicking the Stars tab. No private repos, no commit content, no email, no OAuth scopes beyond public read.",
+    a: "No. Scout Score reads only your public starred-repo timeline, the same data anyone can see by visiting your GitHub profile and clicking the Stars tab. No private repos, no commit content, no email, no OAuth scopes beyond public read.",
   },
   {
     q: "What's a good Scout Score?",
-    a: "The median active developer scores in the 5–25 range — most stars predate the modern OSS-VC wave or land on repos outside the validated panel. A score of 40+ (Sharp tier) is genuinely rare and indicates repeatable early-call behaviour. Scores above 60 (Elite) are uncommon enough that the starred-repos feed itself becomes a sourcing signal worth tracking.",
+    a: "The median active developer scores in the 5-25 range, most stars predate the modern OSS-VC wave or land on repos outside the validated panel. A score of 40+ (Sharp tier) is genuinely rare and indicates repeatable early-call behaviour. Scores above 60 (Elite) are uncommon enough that the starred-repos feed itself becomes a sourcing signal worth tracking.",
   },
   {
     q: "How is Scout Score different from Ahrefs DR or Domain Rating?",
-    a: "DR measures the backlink-based authority of a domain. Scout Score measures the starring-taste of a GitHub user. DR is about citation weight; Scout Score is about call timing. The two metrics operate on completely different surfaces (web link graph vs GitHub star graph) and answer different questions. The structural similarity is that both are proprietary 0–100 metrics owned by a single vendor that publishes the methodology — DR is to backlinks what Scout Score is to GitHub stars.",
+    a: "DR measures the backlink-based authority of a domain. Scout Score measures the starring-taste of a GitHub user. DR is about citation weight; Scout Score is about call timing. The two metrics operate on completely different surfaces (web link graph vs GitHub star graph) and answer different questions. The structural similarity is that both are proprietary 0-100 metrics owned by a single vendor that publishes the methodology, DR is to backlinks what Scout Score is to GitHub stars.",
   },
   {
     q: "Can I improve my Scout Score?",
-    a: "Not by gaming it. Starring more repos won't help — the score rewards early calls on the right repos, not star volume. The only honest way to raise a Scout Score is to develop taste for engineering-led companies before their breakout, which is the skill the metric is measuring. The cleanest side benefit: if you star a company early and it later validates, your score goes up retroactively.",
+    a: "Not by gaming it. Starring more repos won't help, the score rewards early calls on the right repos, not star volume. The only honest way to raise a Scout Score is to develop taste for engineering-led companies before their breakout, which is the skill the metric is measuring. The cleanest side benefit: if you star a company early and it later validates, your score goes up retroactively.",
   },
   {
     q: "Where does the validated-wins panel come from?",
@@ -165,7 +165,7 @@ export default function ScoutScorePage() {
         inDefinedTermSet: {
           "@type": "DefinedTermSet",
           "@id": `${SITE}/scout-score#termset`,
-          name: "VC Deal Flow Signal — proprietary metrics",
+          name: "VC Deal Flow Signal, proprietary metrics",
           url: `${SITE}/scout-score`,
         },
         termCode: "scout-score",
@@ -180,7 +180,7 @@ export default function ScoutScorePage() {
         "@type": "TechArticle",
         "@id": `${SITE}/scout-score#article`,
         headline:
-          "Scout Score — the proprietary GitHub taste metric VC Deal Flow Signal invented",
+          "Scout Score, the proprietary GitHub taste metric VC Deal Flow Signal invented",
         description: SHORT_DEFINITION,
         url: `${SITE}/scout-score`,
         datePublished: "2026-07-18T00:00:00.000Z",
@@ -258,7 +258,7 @@ export default function ScoutScorePage() {
             The proprietary metric
           </p>
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.05] tracking-tight">
-            Scout Score — the GitHub taste metric we invented.
+            Scout Score, the GitHub taste metric we invented.
           </h1>
           <p data-speakable className="text-gray-300 text-base sm:text-lg leading-relaxed">
             {SHORT_DEFINITION} The same way Ahrefs owns{" "}
@@ -278,7 +278,7 @@ export default function ScoutScorePage() {
             Try it free
           </p>
           <h2 className="text-xl sm:text-2xl font-bold text-gray-100 leading-snug">
-            Get your own Scout Score in under 10 seconds — no login, no email,
+            Get your own Scout Score in under 10 seconds, no login, no email,
             no OAuth scope.
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
@@ -330,7 +330,7 @@ export default function ScoutScorePage() {
           </h2>
           <p className="text-gray-400 text-sm leading-relaxed">
             Every Scout Score maps to one of five named tiers. The tiers are
-            structural, not cohort-adjusted — the same thresholds apply to every
+            structural, not cohort-adjusted, the same thresholds apply to every
             user regardless of account age or star volume.
           </p>
           <div className="space-y-3">
@@ -361,7 +361,7 @@ export default function ScoutScorePage() {
           </h2>
           <p className="text-gray-400 text-sm leading-relaxed">
             Five deterministic steps. No AI judgement, no proprietary weighting,
-            no curve. The algorithm is published here in full — anyone can
+            no curve. The algorithm is published here in full, anyone can
             reproduce the number from the public GitHub stars API and the
             published validated-wins panel.
           </p>

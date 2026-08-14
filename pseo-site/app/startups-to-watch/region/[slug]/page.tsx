@@ -30,7 +30,7 @@ export async function generateMetadata({
   if (!parsed) return {};
 
   const { geoSlug, geoName, period } = parsed;
-  const title = `${geoName} Startups to Watch — ${period.name} Engineering Signals`;
+  const title = `${geoName} Startups to Watch, ${period.name} Engineering Signals`;
   const description = `All tracked startups in ${geoName} ranked by GitHub engineering acceleration across every sector. ${parsed.startups.length} startups, ${parsed.sectorBreakdown.length} sectors, updated weekly.`;
 
   // Cannibalization guard: old region quarters canonicalize to the latest
@@ -89,7 +89,7 @@ export default async function RegionPage({ params }: PageProps) {
     "@graph": [
       {
         "@type": "Article",
-        headline: `${geoName} Startups to Watch — ${period.name}`,
+        headline: `${geoName} Startups to Watch, ${period.name}`,
         description: `All tracked startups in ${geoName} ranked by engineering acceleration.`,
         author: DATA_NERD_AUTHOR_REF,
         publisher: { "@type": "Organization", name: "VC Deal Flow Signal", url: "https://gitdealflow.com" },
@@ -105,7 +105,7 @@ export default async function RegionPage({ params }: PageProps) {
         "@type": "BreadcrumbList",
         itemListElement: [
           { "@type": "ListItem", position: 1, name: "All Sectors", item: "https://signals.gitdealflow.com" },
-          { "@type": "ListItem", position: 2, name: `${geoName} — ${period.name}`, item: `https://signals.gitdealflow.com/startups-to-watch/region/${slug}` },
+          { "@type": "ListItem", position: 2, name: `${geoName}, ${period.name}`, item: `https://signals.gitdealflow.com/startups-to-watch/region/${slug}` },
         ],
       },
       {
@@ -142,7 +142,7 @@ export default async function RegionPage({ params }: PageProps) {
             All Sectors
           </Link>
           <span className="mx-2">/</span>
-          <span className="text-gray-400">{geoName} — {period.name}</span>
+          <span className="text-gray-400">{geoName}, {period.name}</span>
         </nav>
 
         <header className="mb-8 max-w-3xl">
@@ -150,7 +150,7 @@ export default async function RegionPage({ params }: PageProps) {
             {period.name} · {geoName}
           </p>
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
-            {geoName} Startups to Watch — {period.name} Engineering Signals
+            {geoName} Startups to Watch, {period.name} Engineering Signals
           </h1>
           <p
             className="text-gray-400 text-base leading-relaxed"
@@ -186,7 +186,7 @@ export default async function RegionPage({ params }: PageProps) {
 
         <section className="mb-10" aria-label="Startup rankings">
           <h2 className="text-gray-100 font-semibold text-lg mb-4">
-            Ranked startups — {geoName}, {period.name}
+            Ranked startups, {geoName}, {period.name}
           </h2>
           <StartupTable startups={startups} />
           <p className="mt-3 text-gray-600 text-xs">

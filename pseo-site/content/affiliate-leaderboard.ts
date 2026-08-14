@@ -1,5 +1,5 @@
 /**
- * Anonymized affiliate leaderboard — Letterman / Affiliate Army (Traffic
+ * Anonymized affiliate leaderboard, Letterman / Affiliate Army (Traffic
  * Secrets Ch 15) + Sneaky Affiliate Funnel social-proof anchor (Traffic
  * Ch 17). Public page lists pseudonymous top earners so prospective
  * affiliates can see what's working.
@@ -35,7 +35,7 @@ export type LeaderboardRow = {
   audience: string; // one-line audience description
   joinedMonth: string; // YYYY-MM
   tier: AffiliateTier;
-  // Ranges, not exact numbers — preserves anonymity while showing scale.
+  // Ranges, not exact numbers, preserves anonymity while showing scale.
   commissionRange: string; // e.g. "€2,400 - €2,800"
   conversionRate: string; // e.g. "5.4%"
   topProductReferred: "Dashboard" | "Insider Circle" | "Sector Sweep" | "Mixed";
@@ -182,17 +182,17 @@ export const TIER_META: Record<
   },
   gold: {
     label: "Gold",
-    range: "€2,000–€4,999",
+    range: "€2,000-€4,999",
     classes: "border-amber-700/40 bg-amber-950/20 text-amber-300",
   },
   silver: {
     label: "Silver",
-    range: "€500–€1,999",
+    range: "€500-€1,999",
     classes: "border-slate-700/40 bg-slate-950/40 text-slate-300",
   },
   bronze: {
     label: "Bronze",
-    range: "€100–€499",
+    range: "€100-€499",
     classes: "border-orange-800/40 bg-orange-950/20 text-orange-300",
   },
 };

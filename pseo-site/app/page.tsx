@@ -11,7 +11,7 @@ import {
 import { allPosts as posts } from "@/content/posts";
 import { comparisons } from "@/content/comparisons";
 import { FINDINGS as RESEARCH_FINDINGS } from "@/content/research-findings";
-// standaloneFaqs removed from homepage JSON-LD — FAQPage schema now lives
+// standaloneFaqs removed from homepage JSON-LD, FAQPage schema now lives
 // only on /faq where it belongs (saved ~9KB on homepage payload).
 // import { standaloneFaqs } from "@/content/standalone-faqs";
 import { AgentSummary } from "@/components/AgentSummary";
@@ -40,13 +40,13 @@ import {
 
 export const metadata: Metadata = {
   description:
-    "A deal-flow signal tool for investors, not a fund. See which startups are accelerating before the round feels obvious — public engineering signals, calmer timing, and direct proof.",
+    "A deal-flow signal tool for investors, not a fund. See which startups are accelerating before the round feels obvious, public engineering signals, calmer timing, and direct proof.",
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
   alternates: {
     canonical: "/",
   },
   openGraph: {
-    // F5 — explicit absolute og:url. Layout-default openGraph is replaced
+    // F5, explicit absolute og:url. Layout-default openGraph is replaced
     // wholesale when a child page sets its own openGraph object, and Next 16
     // drops relative URLs at the og:url meta tag, so we go absolute here.
     url: "https://signals.gitdealflow.com/",
@@ -56,12 +56,12 @@ export const metadata: Metadata = {
 };
 
 // Hoisted to module scope so the array is allocated once at build, not per
-// render. Drives the "Pillar pages & topic clusters" block — strengthens the
+// render. Drives the "Pillar pages & topic clusters" block, strengthens the
 // internal-link graph from the home page to routes Yandex flagged
 // "low-value or low-demand" in the 2026-05-02 recheck.
 const PILLAR_LINKS = [
-  { href: "/code-side-sourcing", label: "Code-Side Sourcing", sub: "The category we're defining — definition, first principles, practitioners", icon: "🧭" },
-  { href: "/mechanism", label: "The named mechanism", sub: "Commit-Velocity Acceleration Engine — formula, falsifiability, ladder", icon: "🔬" },
+  { href: "/code-side-sourcing", label: "Code-Side Sourcing", sub: "The category we're defining, definition, first principles, practitioners", icon: "🧭" },
+  { href: "/mechanism", label: "The named mechanism", sub: "Commit-Velocity Acceleration Engine, formula, falsifiability, ladder", icon: "🔬" },
   { href: "/methodology", label: "Methodology", sub: "How signals are computed", icon: "📐" },
   { href: "/weekly", label: "This week's signals", sub: "Weekly top movers", icon: "📈" },
   { href: "/trending", label: "Trending now", sub: "Real-time leaderboard", icon: "🔥" },
@@ -81,8 +81,8 @@ const PILLAR_LINKS = [
   { href: "/summit", label: "Summit", sub: "5 days · 20 anonymous-by-design talks · free during the live window", icon: "🎤" },
   { href: "/launch", label: "Launches", sub: "Active and archived 4-stage funnels", icon: "🚀" },
   { href: "/press", label: "Press kit", sub: "Wire-ready releases + boilerplate", icon: "📰" },
-  { href: "/distribution/platform-hooks", label: "Platform-native openers", sub: "Twelve openers, one signal — how the same product story gets reframed for Twitter, Reddit, HN, dev.to, LinkedIn, Telegram and seven more", icon: "🪝" },
-  { href: "/target-list", label: "Top 100", sub: "100 voices we read on the engineering-signal frontier — substacks, podcasts, GitHub orgs, datasets — each ICP-scored", icon: "💬" },
+  { href: "/distribution/platform-hooks", label: "Platform-native openers", sub: "Twelve openers, one signal, how the same product story gets reframed for Twitter, Reddit, HN, dev.to, LinkedIn, Telegram and seven more", icon: "🪝" },
+  { href: "/target-list", label: "Top 100", sub: "100 voices we read on the engineering-signal frontier, substacks, podcasts, GitHub orgs, datasets, each ICP-scored", icon: "💬" },
 ] as const;
 
 // "Where to go next" deep-dive entry points. Icons help the eye navigate a
@@ -90,12 +90,12 @@ const PILLAR_LINKS = [
 const NEXT_LINKS = [
   { href: "/weekly", label: "Weekly leaderboard", sub: "Top 10 commit-velocity movers across every tracked sector, rebuilt every Monday.", icon: "🏆" },
   { href: "/signal-of-the-week", label: "Signal of the week", sub: "The single sharpest momentum break we observed this week, with the 14-day chart and decision rule.", icon: "⚡" },
-  { href: "/signals", label: "Signal vocabulary", sub: "The six atomic primitives we compute — formula, decision rule, common pitfall for each.", icon: "🧪" },
+  { href: "/signals", label: "Signal vocabulary", sub: "The six atomic primitives we compute, formula, decision rule, common pitfall for each.", icon: "🧪" },
   { href: "/methodology", label: "Methodology", sub: "How we compute commit velocity, sample frame, biases we accept, and what we explicitly do not claim.", icon: "📐" },
   { href: "/reproducibility", label: "Reproducibility", sub: "Step-by-step HowTo to re-run the panel against the public dataset. CC BY 4.0.", icon: "🔁" },
   { href: "/attestations", label: "Attestations", sub: "Every public claim with source, date, and a fact-check status (ClaimReview).", icon: "✅" },
   { href: "/knowledge", label: "Knowledge graph", sub: "Defined-term hub linking every sector, signal primitive, and competitor entity.", icon: "🕸️" },
-  { href: "/alternatives", label: "Alternatives", sub: "Honest side-by-side: Harmonic, Forager, SignalFire Beacon, Affinity, Tracxn — and where each beats us.", icon: "⚖️" },
+  { href: "/alternatives", label: "Alternatives", sub: "Honest side-by-side: Harmonic, Forager, SignalFire Beacon, Affinity, Tracxn, and where each beats us.", icon: "⚖️" },
 ] as const;
 
 const PRIORITY_LINK_BLOCKS = [
@@ -153,7 +153,7 @@ export default function Home() {
       // #organization) are emitted authoritatively by
       // <RootIdentitySchema/> in the root layout on every page,
       // including this one. The homepage previously re-emitted
-      // strict-subset copies under the same @id — pure byte bloat
+      // strict-subset copies under the same @id, pure byte bloat
       // (duplicated again in the RSC flight payload). Removed; the
       // richer layout nodes carry all fields. Page-unique nodes
       // (ItemList, Dataset, WebPage, WebAPI, FAQPage, Service,
@@ -173,7 +173,7 @@ export default function Home() {
       },
       {
         "@type": "Dataset",
-        name: "VC Deal Flow Signal — Startup Engineering Acceleration Dataset",
+        name: "VC Deal Flow Signal, Startup Engineering Acceleration Dataset",
         alternateName: "GitDealFlow Startup Engineering Velocity Panel",
         description:
           "Quarterly longitudinal panel of GitHub engineering-velocity signals across venture-backed startups. Covers commit velocity, contributor growth, repository expansion, and acceleration-signal classification across " +
@@ -257,13 +257,13 @@ export default function Home() {
         distribution: [
           {
             "@type": "DataDownload",
-            name: "Startup signals — CSV (live)",
+            name: "Startup signals, CSV (live)",
             encodingFormat: "text/csv",
             contentUrl: "https://signals.gitdealflow.com/api/signals.csv",
           },
           {
             "@type": "DataDownload",
-            name: "Startup signals — JSON (live)",
+            name: "Startup signals, JSON (live)",
             encodingFormat: "application/json",
             contentUrl: "https://signals.gitdealflow.com/api/signals.json",
           },
@@ -298,7 +298,7 @@ export default function Home() {
         temporalCoverage: allPeriods.map((p) => p.name).join("/"),
         spatialCoverage: {
           "@type": "Place",
-          name: "Global — US, EU, APAC, LATAM, Canada",
+          name: "Global, US, EU, APAC, LATAM, Canada",
         },
         measurementTechnique:
           "Automated collection from the GitHub REST API v3: commit activity, unique contributor counts, and repository-creation metadata for venture-backed startup organizations. Rolling 14-day observation windows with deterministic signal classification over commit patterns.",
@@ -361,13 +361,13 @@ export default function Home() {
         // page (carrying name, applicationCategory, the full offers list
         // incl. Insider, featureList, Wikidata identifier). Sharing that
         // @id merges these stats onto the canonical node instead of
-        // re-declaring a second, anonymous app entity — the old node
+        // re-declaring a second, anonymous app entity, the old node
         // duplicated the layout's name/offers/featureList in BOTH the
         // ld+json tag and the RSC flight payload (~2 KB ×2) and left
         // schema parsers with two competing apps.
         // AEO 2026-07-18: the aggregateRating that used to live on the
         // canonical /#software node was removed from RootIdentitySchema
-        // — see AEO-action-plan. Do not re-add here.
+        //, see AEO-action-plan. Do not re-add here.
         "@type": "SoftwareApplication",
         "@id": "https://signals.gitdealflow.com/#software",
         interactionStatistic: [
@@ -390,8 +390,8 @@ export default function Home() {
       {
         "@type": "Service",
         "@id": "https://signals.gitdealflow.com/#service",
-        name: "VC Deal Flow Signal — Engineering Acceleration Tracking",
-        serviceType: "Venture Capital Deal Sourcing — Alternative Data",
+        name: "VC Deal Flow Signal, Engineering Acceleration Tracking",
+        serviceType: "Venture Capital Deal Sourcing, Alternative Data",
         provider: {
           "@type": "Organization",
           name: "VC Deal Flow Signal",
@@ -406,7 +406,7 @@ export default function Home() {
           audienceType:
             "Venture capital investors, angel investors, deal-flow analysts, family office investment teams, fund-of-funds analysts, scout investors",
         },
-        category: "Alternative Data — Engineering Velocity Signals",
+        category: "Alternative Data, Engineering Velocity Signals",
         description:
           "Weekly engineering-acceleration signals from public GitHub data across 15 startup sectors. Surfaces breakout startups 3-6 weeks before fundraise announcements. Delivered via web dashboard, MCP server, JSON/CSV, RSS, Telegram, and email.",
         url: "https://signals.gitdealflow.com",
@@ -448,7 +448,7 @@ export default function Home() {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/#webpage",
         url: "https://signals.gitdealflow.com",
-        name: "VC Deal Flow Signal — Startup Engineering Acceleration Tracker",
+        name: "VC Deal Flow Signal, Startup Engineering Acceleration Tracker",
         description:
           "Weekly ranking of breakout engineering teams by GitHub commit velocity, contributor growth, and infrastructure buildouts across 15 startup sectors.",
         inLanguage: "en-US",
@@ -465,7 +465,7 @@ export default function Home() {
           name: "VC Deal Flow Signal",
           url: "https://signals.gitdealflow.com",
         },
-        // Named-entity disambiguation — anchor to Wikidata so AI engines can
+        // Named-entity disambiguation, anchor to Wikidata so AI engines can
         // cross-reference. Competitors, platforms, and concepts mentioned on
         // this site are explicitly typed and linked.
         mentions: [
@@ -575,7 +575,7 @@ export default function Home() {
       {
         "@type": "WebAPI",
         "@id": "https://signals.gitdealflow.com/#api",
-        name: "VC Deal Flow Signal — Public Agent API",
+        name: "VC Deal Flow Signal, Public Agent API",
         description:
           "Free, no-auth public API surface for AI agents and automation. Includes JSON / CSV exports, per-startup signal lookup, MCP server (stdio + Streamable HTTP), A2A JSON-RPC endpoint, NLWeb conversational endpoint, function-calling tool definitions for OpenAI / Anthropic / Gemini SDKs, and embeddable SVG badges. OpenAPI 3.1 spec describes every callable route.",
         documentation: "https://signals.gitdealflow.com/api/openapi.json",
@@ -621,7 +621,7 @@ export default function Home() {
       },
       {
         "@type": "Event",
-        name: "VC Deal Flow Signal — Weekly Data Refresh",
+        name: "VC Deal Flow Signal, Weekly Data Refresh",
         description:
           "Weekly update of startup engineering acceleration data across " +
           activeSectorCount +
@@ -666,7 +666,7 @@ export default function Home() {
       />
       <AgentMirrorLinks path="/" />
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 space-y-8 sm:space-y-10">
-      {/* Hero — specific outcome H1 + one-line subhead. Greg audit 2026-05-02:
+      {/* Hero, specific outcome H1 + one-line subhead. Greg audit 2026-05-02:
           previous H1 ("Startup Engineering Signals by Sector") was a filename,
           not a hook. New copy names the job-to-be-done and surfaces SSRN /
           live data as proof above the fold. */}
@@ -679,12 +679,12 @@ export default function Home() {
           <span className="text-sky-400">We tell you 47 days before the deck.</span>
         </h1>
 
-        {/* Brunson Secret Formula §1 — Ch 1 audit fix (2026-05-08):
+        {/* Brunson Secret Formula §1, Ch 1 audit fix (2026-05-08):
             single-sentence "this is who we serve" avatar pin. Names
             check size, stage, and sector in the buyer's own language.
             Mirrors the canonical avatar in @/content/target-list-icp.ts
-            (line 5–7). Placed between H1 and the stat band so it is
-            the first identity moment a reader hits — above the fold,
+            (line 5-7). Placed between H1 and the stat band so it is
+            the first identity moment a reader hits, above the fold,
             not 1,100 lines down where the longer disqualifier lives. */}
         <p
           aria-label="Start here if"
@@ -692,8 +692,8 @@ export default function Home() {
         >
           <span aria-hidden className="mt-[1px] sm:mt-0">→</span>
           <span className="leading-snug">
-            If you evaluate companies for a living — angel, scout, seed
-            fund, corp-dev or PE — and want a calmer signal before the round
+            If you evaluate companies for a living, angel, scout, seed
+            fund, corp-dev or PE, and want a calmer signal before the round
             gets obvious, you are in the right place.{" "}
             <span className="text-emerald-300/80">No code-reading required.</span>
           </span>
@@ -701,7 +701,7 @@ export default function Home() {
 
         {/* Brunson Secret Formula §1 fix (audit 2026-05-06): "Define result
             in numerical terms above the fold." The 3.4× lift is the
-            headline finding from soap-opera D12 (lib/emails.ts:241) —
+            headline finding from soap-opera D12 (lib/emails.ts:241) -
             high-acceleration AND low-contributor-concentration (Gini < 0.30)
             orgs are 3.4× more likely to announce a Series A within 60 days
             than orgs with high acceleration alone. Stat band sits between
@@ -726,7 +726,7 @@ export default function Home() {
               Median lead time
             </dt>
             <dd className="text-2xl sm:text-3xl font-bold text-gray-100 tabular-nums leading-none">
-              21–47<span className="text-sky-400 text-base sm:text-lg ml-1">d</span>
+              21-47<span className="text-sky-400 text-base sm:text-lg ml-1">d</span>
             </dd>
             <dd className="text-[11px] text-gray-400 mt-1 leading-snug">
               before the round announces
@@ -747,16 +747,15 @@ export default function Home() {
 
         <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
           {totalTracked} venture-backed GitHub orgs ranked every week by commit
-          velocity <strong className="text-gray-100">and contributor diversity</strong> —
-          the two signals that, combined, drove the{" "}
+          velocity <strong className="text-gray-100">and contributor diversity</strong>: the two signals that, combined, drove the{" "}
           <a
             href="/methodology#3-4x-finding"
             className="text-sky-400 hover:text-sky-300 underline decoration-sky-400/40 underline-offset-2"
           >
             3.4× Series-A lift
           </a>{" "}
-          in the SSRN panel of 219 startup-period observations (median lead time 21–47
-          days). It is a tool, not a fund — we surface the signal, you make the
+          in the SSRN panel of 219 startup-period observations (median lead time 21-47
+          days). It is a tool, not a fund, we surface the signal, you make the
           calls. Free to browse, built to give you a clearer read before the round gets obvious.
         </p>
       </header>
@@ -764,17 +763,17 @@ export default function Home() {
       {/* Brunson "one funnel, one offer" fix (2026-06-01): removed the early
           "Start here if the site feels large" 3-card router that sat here.
           It dumped three exits immediately after the hook, before any belief
-          was built or the free email was offered — the #1 conversion drag.
+          was built or the free email was offered, the #1 conversion drag.
           The site now keeps exactly ONE human routing block (the "Where to
           start" Free/Faster/Method lanes lower down, free as the default);
           the bottom "Where to go next" grid is a post-decision SEO hub, not a
           third start-router. Hero now flows straight into the story. */}
 
-      {/* Brunson Expert Secrets §2 Ch 5 — Storytelling. Audit 2026-05-09
+      {/* Brunson Expert Secrets §2 Ch 5, Storytelling. Audit 2026-05-09
           flagged Ch 5 at 95/100 because the Day 0 / Day 14 / Day 21 / Day 25
           email beats carry the story arc beautifully and /origin walks the
           long-form Hero's Two Journeys, but the home above-the-fold had no
-          story moment at all — H1 → avatar pin → stat band → subhead →
+          story moment at all, H1 → avatar pin → stat band → subhead →
           straight into the abstracted 5-step bridge. The first emotional
           beat the reader hit was already the conclusion of a story they
           had not been told yet. HomeStoryMoment ships the same canon scene
@@ -785,18 +784,18 @@ export default function Home() {
           product. */}
       <HomeStoryMoment />
 
-      {/* Brunson Traffic Secrets Ch 5 + Expert Secrets Ch 10-11 —
+      {/* Brunson Traffic Secrets Ch 5 + Expert Secrets Ch 10-11 -
           Hook-Story-Offer named framework. AEO audit 2026-07-18: the page
           follows HSO implicitly (Hook in H1 → Story via HomeStoryMoment →
           Offer via HomeOfferStack below) but the framework was never NAMED
           or made visible to the visitor. Brunson teaches that named
-          frameworks are IP — this 3-column badge makes the implicit
+          frameworks are IP, this 3-column badge makes the implicit
           explicit, lifting Expert Secrets Ch 10-11 (named frameworks)
           and Traffic Secrets Ch 5 (HSO). Compact, skimmable, with the
           same colors used in the Three Secrets grid further down for
           visual consistency. */}
       <section
-        aria-label="Hook-Story-Offer — how every page is built"
+        aria-label="Hook-Story-Offer, how every page is built"
         className="my-8 rounded-xl border border-sky-700/30 bg-gradient-to-br from-sky-950/20 via-slate-900 to-slate-950 p-5 sm:p-6"
       >
         <p className="text-sky-300 text-[11px] font-semibold uppercase tracking-wider mb-3">
@@ -811,7 +810,7 @@ export default function Home() {
               Grab your attention in one sentence.
             </h3>
             <p className="text-gray-400 text-xs leading-relaxed">
-              The headline above is the Hook — &ldquo;47 days before the deck.&rdquo;
+              The headline above is the Hook, &ldquo;47 days before the deck.&rdquo;
               It names a specific, measurable gap every investor feels. No
               jargon, no fluff, no &ldquo;revolutionary platform.&rdquo;
             </p>
@@ -824,7 +823,7 @@ export default function Home() {
               Keep your attention with a true moment.
             </h3>
             <p className="text-gray-400 text-xs leading-relaxed">
-              The block above this banner is the Story — a Saturday morning, a
+              The block above this banner is the Story, a Saturday morning, a
               laptop, a fintech&rsquo;s GitHub lighting up. Stories carry truth
               better than feature lists ever can.
             </p>
@@ -837,7 +836,7 @@ export default function Home() {
               Convert your attention into action.
             </h3>
             <p className="text-gray-400 text-xs leading-relaxed">
-              Every page ends with a clear next step — a free Sunday digest, a
+              Every page ends with a clear next step, a free Sunday digest, a
               paid dashboard, or a methodology deep-dive. The Offer is always an
               honest value exchange, never a pitch.
             </p>
@@ -846,15 +845,15 @@ export default function Home() {
         <p className="text-gray-500 text-xs mt-4 leading-relaxed">
           Russell Brunson calls this the Hook-Story-Offer framework
           (Traffic Secrets, Ch 5). We apply it to every page on this site
-          — so even the free content respects your attention.
+so even the free content respects your attention.
         </p>
       </section>
 
-      {/* Brunson Expert Secrets Ch 7 + Ch 9 — 5-step Epiphany Bridge.
+      {/* Brunson Expert Secrets Ch 7 + Ch 9, 5-step Epiphany Bridge.
           HSO audit 2026-05-08: full Hero's Two Journeys lives at /origin
           (8-min read) but the home reader who never clicks through never
-          sees the bridge. Five pills — Backstory, Desire, External Wall,
-          Internal Shift, New Opportunity — surface the same arc above
+          sees the bridge. Five pills, Backstory, Desire, External Wall,
+          Internal Shift, New Opportunity, surface the same arc above
           the fold. Long version stays linked. */}
       <EpiphanyBridgeCondensed />
 
@@ -863,9 +862,9 @@ export default function Home() {
         sectorCount={activeSectorCount}
       />
 
-      {/* Plain-English framing above the live movers (2026-06-01). Marcus —
+      {/* Plain-English framing above the live movers (2026-06-01). Marcus -
           corp-dev / PE / non-engineer VP, whose fear is "looking
-          non-technical in a technical room" — hits the business translation
+          non-technical in a technical room", hits the business translation
           BEFORE any velocity / contributor / deploy chips, so the numbers
           read as receipts, not a test he has to pass. Voice rule from
           lib/data-nerd.ts: "translate, don't dump." */}
@@ -875,7 +874,7 @@ export default function Home() {
         </p>
         <p className="text-gray-200 text-sm sm:text-[15px] leading-relaxed">
           These are the teams that suddenly started shipping far more than
-          their own normal this week — more engineers, more infrastructure,
+          their own normal this week, more engineers, more infrastructure,
           more activity than usual.{" "}
           <span className="text-gray-400">
             You don&rsquo;t read the code; we translate the movement into
@@ -884,17 +883,17 @@ export default function Home() {
         </p>
       </div>
 
-      {/* Live hero — top 3 movers this week. Greg audit: "embed a live,
+      {/* Live hero, top 3 movers this week. Greg audit: "embed a live,
           breathing thing at the top." */}
       <SignalLeader movers={topMovers} periodSlug={period.slug} asOf={asOf} />
 
-      {/* IdentityBanner — Brunson DotCom Secrets Ch 4 (Three Core Markets /
+      {/* IdentityBanner, Brunson DotCom Secrets Ch 4 (Three Core Markets /
           Desires). Wealth (returns) primary, Status (analyst reputation)
           secondary. Frames every door beneath it as an identity choice, not
           a feature comparison. /identity is the long-form companion. */}
       <IdentityBanner />
 
-      {/* CATEGORY NAMING — Russell-Brunson Expert Secrets §1 Ch 3 ship
+      {/* CATEGORY NAMING, Russell-Brunson Expert Secrets §1 Ch 3 ship
           2026-05-09. The "New Opportunity" must be named, not described.
           Audit had this chapter at 92/100 with the note that the category
           was walked but never branded. Block names "Code-Side Sourcing" as
@@ -909,16 +908,16 @@ export default function Home() {
           The category we&rsquo;re defining
         </p>
         <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug mb-3">
-          Code-Side Sourcing — a new sourcing channel for venture capital.
+          Code-Side Sourcing, a new sourcing channel for venture capital.
         </h2>
         <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-3">
           Code-Side Sourcing is the practice of using public
           repository-velocity data as a leading indicator of venture-stage
-          outcomes — surfacing fundraises{" "}
+          outcomes, surfacing fundraises{" "}
           <span className="text-amber-300 font-semibold">
             21 to 47 days before pitch decks circulate.
           </span>{" "}
-          It runs alongside warm intros, decks, and databases — not in place
+          It runs alongside warm intros, decks, and databases, not in place
           of them.
         </p>
         <p className="text-gray-400 text-sm leading-relaxed">
@@ -929,12 +928,12 @@ export default function Home() {
           >
             /code-side-sourcing
           </Link>
-          {" "}— what it replaces, the five first principles, who practises it,
+          {" "}, what it replaces, the five first principles, who practises it,
           and the open methodology that grounds it.
         </p>
       </section>
 
-      {/* Brunson Expert Secrets Ch 6 — Big Domino + Ch 10 Three Secrets
+      {/* Brunson Expert Secrets Ch 6, Big Domino + Ch 10 Three Secrets
           (false-belief collapses). Audit 2026-05-09: domino used to sit
           BELOW the offer (after HomeSqueeze + HomeOfferStack), which is the
           opposite of canonical Brunson sequence Story → Domino → Three
@@ -950,11 +949,11 @@ export default function Home() {
         </p>
         <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug mb-3">
           If commit-velocity acceleration is the most leading public signal in
-          venture capital, then every other deal-flow source —{" "}
+          venture capital, then every other deal-flow source, {" "}
           <span className="text-sky-400">
             pitch decks, AngelList, Crunchbase, warm intros
           </span>{" "}
-          — is a lagging indicator.
+is a lagging indicator.
         </h2>
         <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
           Read the long version on the{" "}
@@ -976,7 +975,7 @@ export default function Home() {
         </p>
       </section>
 
-      {/* Embedded VSL removed 2026-06-01 — the walkthrough-vsl recording was
+      {/* Embedded VSL removed 2026-06-01, the walkthrough-vsl recording was
           poor quality, so it's pulled from the homepage until a better cut is
           ready (owner will revisit). The asset still lives in
           content/videos.ts and is used on /walkthrough + /predicted. To
@@ -986,7 +985,7 @@ export default function Home() {
           point the Big Domino paragraph above back at "watch the version
           below". */}
 
-      {/* Three Secrets — the false-belief breakdowns surfaced directly
+      {/* Three Secrets, the false-belief breakdowns surfaced directly
           after the Big Domino so the reader's three objections collapse
           before the offer surfaces below. Same audit as the Domino move
           above (2026-05-09): belief block sits ahead of any commitment
@@ -1010,7 +1009,7 @@ export default function Home() {
               &ldquo;GitHub data is just noise.&rdquo;
             </h3>
             <p className="text-gray-400 text-sm leading-relaxed">
-              We don&rsquo;t look at absolute numbers — only sharp deviations
+              We don&rsquo;t look at absolute numbers, only sharp deviations
               from each company&rsquo;s own baseline. That isn&rsquo;t noise,
               that&rsquo;s a regime change.
             </p>
@@ -1036,17 +1035,17 @@ export default function Home() {
             </h3>
             <p className="text-gray-400 text-sm leading-relaxed">
               Renaissance Technologies started in 1988 on data anyone could
-              buy &mdash; Reuters quotes, SEC filings, OPRA ticks. Medallion
+              buy, Reuters quotes, SEC filings, OPRA ticks. Medallion
               compounded ~39% net for thirty years. Edge wasn&rsquo;t in
               the data. It was in the lens.
             </p>
           </div>
         </div>
 
-        {/* False-Belief #3 — visceral counter-story. The Three Objections
+        {/* False-Belief #3, visceral counter-story. The Three Objections
             grid argues the External objection abstractly ("the lens is the
             edge"); this block shows it. October 2024, a specific repo,
-            three peer angels who didn't open the page that month — the
+            three peer angels who didn't open the page that month, the
             buyer's brain needs the moment, not the principle. Brunson
             Expert Secrets Ch 5 (Storytelling) + Ch 10 (False Beliefs /
             Identity Shift): show, don't tell. */}
@@ -1055,7 +1054,7 @@ export default function Home() {
             The Saturday I learned that lesson on a GitHub page
           </p>
           <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
-            October 2024. A small fintech team &mdash; three founders, one
+            October 2024. A small fintech team, three founders, one
             repo, beautifully boring product. I opened their org page on a
             Saturday morning. Their commit velocity had tripled in the
             prior fortnight. Four new contributors had joined. They&rsquo;d
@@ -1070,7 +1069,7 @@ export default function Home() {
           <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
             Three weeks later the team announced a $4M Series A. The two
             investors who got in had either been told by a warm intro
-            &mdash; fine, but slow &mdash; or had been reading the same
+fine, but slow, or had been reading the same
             public data I had. The other three later said they
             &ldquo;missed&rdquo; the round.{" "}
             <strong className="text-gray-100">
@@ -1097,16 +1096,16 @@ export default function Home() {
         </p>
       </section>
 
-      {/* Brunson DotCom Secrets Ch 14 — Lead "Squeeze" Funnel.
+      {/* Brunson DotCom Secrets Ch 14, Lead "Squeeze" Funnel.
           HSO audit 2026-05-08 (Ch 14: 87/100): the prior ThreeDoorHero
           gave equal weight to three CTAs, diluting the squeeze. Replaced
-          with a true single-CTA squeeze — inline email-capture form
+          with a true single-CTA squeeze, inline email-capture form
           (dominant) + two small tertiary "exit" links (subordinate).
           The form posts to /api/subscribe with cohort=soap-opera and
           source=home for split-bucket attribution vs /squeeze. */}
       <HomeSqueeze />
 
-      {/* Brunson DotCom Secrets Ch 12 + Expert Secrets Ch 13 — Stack Slide
+      {/* Brunson DotCom Secrets Ch 12 + Expert Secrets Ch 13, Stack Slide
           on the home page. HSO audit 2026-05-08: full priced stack lived
           on /firstlook + /walkthrough but the home reader (who never
           clicks through) saw price tiers without value anchors. Eight
@@ -1115,42 +1114,42 @@ export default function Home() {
           (30-day guarantee) included as final stack line. */}
       <HomeOfferStack />
 
-      {/* CharterCohortBlock — Brunson Expert Secrets §1 Ch 4 (Mass Movement
+      {/* CharterCohortBlock, Brunson Expert Secrets §1 Ch 4 (Mass Movement
           Vehicle). The chapter teaches that a movement requires *visible
-          momentum* — the new visitor sees other members. /wins is the
+          momentum*, the new visitor sees other members. /wins is the
           startup-side ledger; /members is the member-side ledger. Block
           shows the seat counter (X of 25 open) + 4 archetype previews +
           claim-a-seat CTA so the home reader sees the movement scaffold
           before they hit the conversion path. */}
       <CharterCohortBlock />
 
-      {/* Brunson DCS Ch 7 — Attractive Character polarity card. The reader
+      {/* Brunson DCS Ch 7, Attractive Character polarity card. The reader
           self-qualifies on the four pillars before they hit the conversion
           path, so people who'd churn at email #2 churn here at scroll-second
           15 instead. Compact, links to /data-nerd for the long version. */}
       <DataNerdPolarityCard />
 
       {/* Institutional-trust beat (2026-06-01). The polarity card above
-          asserts "anonymity is a credibility signal" — true for the indie
+          asserts "anonymity is a credibility signal", true for the indie
           reader, but a procurement problem for Marcus, who has to defend a
           vendor to an investment committee. This converts the anonymity from
           an intimacy ceiling into a credentialed, IC-ready signal: anonymous
           handle, NOT an anonymous track record. Fixes the "anonymity =
           institutional-trust problem" + Brunson "anti-personality" docks
-          without breaking the anonymity pillar (no face/name/voice added —
+          without breaking the anonymity pillar (no face/name/voice added -
           only the already-published ORCID + SSRN + CC BY 4.0 credentials). */}
       <section
         aria-label="Anonymous handle, credentialed methodology"
         className="my-8 rounded-xl border border-sky-700/30 bg-gradient-to-br from-sky-950/25 via-slate-900 to-slate-950 p-6 sm:p-7"
       >
         <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider mb-2">
-          Anonymous handle — not an anonymous track record
+          Anonymous handle, not an anonymous track record
         </p>
         <p className="text-gray-200 text-sm sm:text-base leading-relaxed">
           You can take this to an investment committee without taking a
           personality with it. The handle is pseudonymous on purpose; the
           <strong className="text-gray-100"> methodology is credentialed and
-          auditable</strong> — an SSRN-indexed paper (n=219), a persistent
+          auditable</strong>: an SSRN-indexed paper (n=219), a persistent
           ORCID (<span className="font-mono text-sky-300 tabular-nums">{DATA_NERD_ORCID}</span>),
           and the full regression released CC BY 4.0 so your own team can
           reproduce every number before you commit a euro. Your committee buys
@@ -1178,18 +1177,18 @@ export default function Home() {
         </div>
       </section>
 
-      {/* AgentSummary kept for AI extractability — visually de-emphasized
+      {/* AgentSummary kept for AI extractability, visually de-emphasized
           via wrapper since the live SignalLeader now plays the human-facing
           TL;DR role. */}
       <AgentSummary
-        tldr={`VC Deal Flow Signal (GitDealFlow) ranks ${activeSectorCount} startup sectors by GitHub commit velocity every Monday — a quantitative code-side momentum signal computed from public GitHub data, distinct from startup accelerator programs (Y Combinator, Techstars). Data is free via JSON / CSV / RSS / MCP / A2A / NLWeb. The metric — sometimes called engineering acceleration on this site — has historically preceded fundraise announcements by three to six weeks.`}
+        tldr={`VC Deal Flow Signal (GitDealFlow) ranks ${activeSectorCount} startup sectors by GitHub commit velocity every Monday, a quantitative code-side momentum signal computed from public GitHub data, distinct from startup accelerator programs (Y Combinator, Techstars). Data is free via JSON / CSV / RSS / MCP / A2A / NLWeb. The metric, sometimes called engineering acceleration on this site, has historically preceded fundraise announcements by three to six weeks.`}
         pageUrl="https://signals.gitdealflow.com"
         asOf={asOf}
         citeAs={`VC Deal Flow Signal (signals.gitdealflow.com), ${period.name} data.`}
         facts={[
           {
             claim:
-              "Commit-velocity acceleration has preceded venture fundraise announcements by 3–6 weeks across the tracked dataset.",
+              "Commit-velocity acceleration has preceded venture fundraise announcements by 3-6 weeks across the tracked dataset.",
             sourceUrl: "https://signals.gitdealflow.com/methodology",
             sourceLabel: "Methodology",
           },
@@ -1207,7 +1206,7 @@ export default function Home() {
         ]}
       />
 
-      {/* CAUSE — emotional layer. Brunson Expert Secrets §1 Ch 2 — the
+      {/* CAUSE, emotional layer. Brunson Expert Secrets §1 Ch 2, the
           Future-Based Cause has two layers: intellectual and emotional.
           Intellectual lives below ("data over networks" + named enemy);
           emotional opens here, because the gut-level version is what
@@ -1250,12 +1249,12 @@ export default function Home() {
           >
             two-layer manifesto
           </Link>{" "}
-          — what we believe, what we refuse, the seven pillars, the named
+what we believe, what we refuse, the seven pillars, the named
           enemy, who&rsquo;s on the bus.
         </p>
       </section>
 
-      {/* CAUSE — intellectual layer. The pillars-flavored summary that
+      {/* CAUSE, intellectual layer. The pillars-flavored summary that
           retains the reader who already nodded through the emotional
           opener. The named enemy ("warm-intro roulette") closes the
           loop. */}
@@ -1274,14 +1273,14 @@ export default function Home() {
         <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
           The best startups leave footprints in their code long before they
           leave footprints in the press. Our mission is to make engineering
-          momentum visible to every investor — not just the ones with the
+          momentum visible to every investor, not just the ones with the
           right rolodex. A world where capital finds builders faster is a
           world where better products get built.
         </p>
         <p className="text-gray-300 text-sm sm:text-base leading-relaxed pt-2">
           The enemy isn&rsquo;t a fund or a competitor. It&rsquo;s the{" "}
           <strong className="text-amber-300">warm-intro roulette</strong>{" "}
-          — a sourcing system that rewards proximity to the right rolodex
+a sourcing system that rewards proximity to the right rolodex
           and punishes builders who happen to live three time zones away.
           We&rsquo;re replacing that roulette with a public, reproducible,
           code-side signal anyone with curiosity can read.
@@ -1289,11 +1288,11 @@ export default function Home() {
         <TrialClose tone="amber">
           Warm-intro roulette is the named enemy. If the system that&rsquo;s
           been gating your deal flow for ten years is the system, not your
-          network — does naming it change what you&rsquo;d try next?
+          network, does naming it change what you&rsquo;d try next?
         </TrialClose>
       </section>
 
-      {/* STARTING-POINT ROUTING — replaces persona/archetype framing with direct decision help. */}
+      {/* STARTING-POINT ROUTING, replaces persona/archetype framing with direct decision help. */}
       <section className="my-12 space-y-4">
         <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider">
           Where to start
@@ -1304,7 +1303,7 @@ export default function Home() {
         </h2>
         <p className="text-gray-300 text-base leading-relaxed max-w-3xl">
           <strong className="text-gray-100">Most people should start free</strong>{" "}
-          — one calm read every Sunday. The other two lanes are only for when a
+one calm read every Sunday. The other two lanes are only for when a
           live question is already costing you, or your team needs a method it
           can defend. Same signal. Different urgency.
         </p>
@@ -1402,7 +1401,7 @@ export default function Home() {
         </article>
       </section>
 
-      {/* DISQUALIFIER — "Who this is FOR / NOT FOR".
+      {/* DISQUALIFIER, "Who this is FOR / NOT FOR".
           Traffic Secrets Ch 1 (dream customer). The polarization is the
           point: telling the wrong reader to leave is what makes the right
           reader trust the offer. */}
@@ -1428,7 +1427,7 @@ export default function Home() {
             <li className="flex gap-3">
               <span aria-hidden className="mt-[0.55rem] inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400/70" />
               <span>
-                You write 5–40 angel checks a year and want one extra leading
+                You write 5-40 angel checks a year and want one extra leading
                 indicator your network can&rsquo;t give you.
               </span>
             </li>
@@ -1442,7 +1441,7 @@ export default function Home() {
             <li className="flex gap-3">
               <span aria-hidden className="mt-[0.55rem] inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-emerald-400/70" />
               <span>
-                You sit in corp-dev, PE, or as a non-engineer tech VP — you
+                You sit in corp-dev, PE, or as a non-engineer tech VP, you
                 evaluate companies for a living, don&rsquo;t read code
                 yourself, and want the engineering signal in plain business
                 English.
@@ -1472,7 +1471,7 @@ export default function Home() {
             <li className="flex gap-3">
               <span aria-hidden className="mt-[0.55rem] inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-rose-400/70" />
               <span>
-                You&rsquo;re a Series-B+ partner with a six-figure data budget —
+                You&rsquo;re a Series-B+ partner with a six-figure data budget -
                 Harmonic, Tracxn, and Affinity are built for you, not us.
               </span>
             </li>
@@ -1480,7 +1479,7 @@ export default function Home() {
               <span aria-hidden className="mt-[0.55rem] inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-rose-400/70" />
               <span>
                 You want a tool that screens code-quality or runs founder
-                background checks — that&rsquo;s a different category.
+                background checks, that&rsquo;s a different category.
               </span>
             </li>
             <li className="flex gap-3">
@@ -1500,7 +1499,7 @@ export default function Home() {
                 >
                   long-form pitch
                 </Link>{" "}
-                argues the opposite — if it doesn&rsquo;t convince you, this
+                argues the opposite, if it doesn&rsquo;t convince you, this
                 isn&rsquo;t the tool.
               </span>
             </li>
@@ -1508,17 +1507,17 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Sharp scarcity counter — public 2026-cohort capacity. Sits above
+      {/* Sharp scarcity counter, public 2026-cohort capacity. Sits above
           PricingLadder so high-intent fund visitors see the cap before the
           price grid. */}
       <SharpScarcityBadge variant="default" />
 
-      {/* Trial closes — Brunson Expert Secrets Ch 15. Three yes-no gut-checks
+      {/* Trial closes, Brunson Expert Secrets Ch 15. Three yes-no gut-checks
           immediately above the pricing card, so the visitor's head is nodding
           before they see the number. Russell rule: the trial close is the
           bridge between belief (Big Domino + Three Objections) and price
           (PricingLadder). One Money close, one Identity close, one Urgency
-          close — each phrased as "would that be worth it" so the answer is
+          close, each phrased as "would that be worth it" so the answer is
           a self-spoken yes. */}
       <section
         aria-label="Gut-check before pricing"
@@ -1536,8 +1535,8 @@ export default function Home() {
             <span>
               <strong className="text-amber-300">If a 24-hour lead</strong> on
               the same ten ranked startups changed{" "}
-              <em>one</em> cheque you write in the next 12 months — at a €5k–€50k
-              angel range with a 3× exit on one in five — would that head-start
+              <em>one</em> cheque you write in the next 12 months, at a €5k-€50k
+              angel range with a 3× exit on one in five, would that head-start
               be worth <strong>€197/month</strong>?
             </span>
           </li>
@@ -1548,7 +1547,7 @@ export default function Home() {
             />
             <span>
               <strong className="text-amber-300">If you never had to</strong>{" "}
-              read a line of code, hire a quant, or chase a warm intro — and the
+              read a line of code, hire a quant, or chase a warm intro, and the
               signal still found the founders before consensus did, would{" "}
               <strong>€49/month</strong> be a fair trade?
             </span>
@@ -1560,9 +1559,9 @@ export default function Home() {
             />
             <span>
               <strong className="text-amber-300">If the founding rate</strong>{" "}
-              locks forever for everyone who joins before the cohort closes —
+              locks forever for everyone who joins before the cohort closes -
               and the public price is already scheduled to step to €29/€197
-              after — does the cost of waiting one more week feel{" "}
+              after, does the cost of waiting one more week feel{" "}
               <em>cheaper</em> than the cost of locking in tonight?
             </span>
           </li>
@@ -1576,24 +1575,24 @@ export default function Home() {
           >
             free Sunday digest
           </Link>{" "}
-          is the right rhythm for now — no upgrade pressure, ever.
+          is the right rhythm for now, no upgrade pressure, ever.
         </p>
         <TrialClose tone="violet">
           A free rung, a €7 rung, a €49/mo rung, all the way up to a
           €49,997/yr rung. If even one of those fits where you actually
-          are — would you let the right rung pick itself?
+          are, would you let the right rung pick itself?
         </TrialClose>
       </section>
 
       {/* Brunson funnel hub cross-link (AEO audit 2026-07-18). The /funnels
           page maps every entry point in tiered Value Ladder form, but the
           homepage never mentioned it. This small badge gives the visitor a
-          one-click map of all the funnels on one page — the Brunson
+          one-click map of all the funnels on one page, the Brunson
           equivalent of a site map for the buying decision. */}
       <div className="my-6 rounded-lg border border-sky-700/20 bg-sky-950/15 px-4 py-3 flex flex-wrap items-center justify-between gap-3">
         <p className="text-gray-300 text-xs sm:text-sm leading-relaxed">
           <span className="text-sky-400 font-semibold">Funnel Hub</span>
-          {" "}— every entry point on one page. Free watch, dashboard, Insider
+          {" "}, every entry point on one page. Free watch, dashboard, Insider
           tiers, sector sweeps, quiz, walkthrough, and the 4-stage launch funnel.
         </p>
         <Link
@@ -1604,11 +1603,11 @@ export default function Home() {
         </Link>
       </div>
 
-      {/* Pricing ladder — visible on homepage so buyers don't have to hunt for
+      {/* Pricing ladder, visible on homepage so buyers don't have to hunt for
           the price. Greg audit: anchor on Insider, sell the middle tier. */}
       <PricingLadder />
 
-      {/* All sectors — moved below the fold. Still SEO-load-bearing (links to
+      {/* All sectors, moved below the fold. Still SEO-load-bearing (links to
           every /startups-to-watch/{sector}-{period} page) but no longer the
           first thing a human visitor sees. */}
       <div>
@@ -1681,7 +1680,7 @@ export default function Home() {
         </div>
       )}
 
-      {/* Priority link graph — commercial, proof, and live-now routes get
+      {/* Priority link graph, commercial, proof, and live-now routes get
           explicit homepage support so crawl pressure matches sitemap priority. */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4">
         {PRIORITY_LINK_BLOCKS.map((block) => (
@@ -1708,9 +1707,9 @@ export default function Home() {
         ))}
       </div>
 
-      {/* Topical hubs — in-body editorial links to high-intent destinations.
+      {/* Topical hubs, in-body editorial links to high-intent destinations.
           Footer carries discoverability; this carries contextual weight.
-          Yandex 2026-05-02 audit found apex-routes underweighted — body
+          Yandex 2026-05-02 audit found apex-routes underweighted, body
           links from the home page move PageRank where it matters. */}
       <div>
         <div className="flex items-baseline justify-between mb-3 flex-wrap gap-2">
@@ -1722,7 +1721,7 @@ export default function Home() {
           </p>
         </div>
         <p className="text-gray-400 text-sm mb-5 max-w-2xl">
-          Most of the value isn&rsquo;t in the sector grids — it&rsquo;s in
+          Most of the value isn&rsquo;t in the sector grids, it&rsquo;s in
           the methodology, the weekly leaderboard, and the receipts you can
           run against your own GitHub stars.
         </p>
@@ -1781,7 +1780,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Research findings — internal-link to /research/[slug] sub-pages */}
+      {/* Research findings, internal-link to /research/[slug] sub-pages */}
       <div>
         <div className="flex items-center justify-between mb-4">
           <h2 className="text-gray-100 font-semibold text-lg">
@@ -1795,7 +1794,7 @@ export default function Home() {
           </Link>
         </div>
         <p className="text-gray-400 text-xs mb-3">
-          SSRN-indexed methodology, CC BY 4.0 — quotable numbers from a
+          SSRN-indexed methodology, CC BY 4.0, quotable numbers from a
           219-observation panel of venture-backed startup GitHub activity.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -1850,7 +1849,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Pillar-page hub — boosts internal-link graph for Yandex
+      {/* Pillar-page hub, boosts internal-link graph for Yandex
           "low-value" recheck routes (/weekly, /methodology, /trending,
           /startups-to-watch, /alternatives, /signals, /faq, /glossary).
           Added 2026-05-03 per traffic-impact action plan. */}
@@ -1862,7 +1861,7 @@ export default function Home() {
         </div>
         <p className="text-gray-400 text-xs mb-3">
           Deep-dive entry points for the most-asked questions about GitHub
-          momentum signals — methodology, sectors, signal types, and tooling
+          momentum signals, methodology, sectors, signal types, and tooling
           comparisons.
         </p>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3">
@@ -1888,7 +1887,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Bottom CTA — receipts-led lead magnet (Russell pivot 2026-04-26) */}
+      {/* Bottom CTA, receipts-led lead magnet (Russell pivot 2026-04-26) */}
       <div className="relative rounded-xl border border-emerald-800/50 bg-gradient-to-br from-emerald-950/30 via-slate-900 to-slate-950 p-6 sm:p-10 text-center overflow-hidden shadow-lg shadow-emerald-500/5">
         <div
           aria-hidden="true"
@@ -1922,7 +1921,7 @@ export default function Home() {
         </div>
       </div>
 
-      {/* Brunson DCS Ch 7 — Attractive Character signoff at page-end. Upgraded
+      {/* Brunson DCS Ch 7, Attractive Character signoff at page-end. Upgraded
           default → "long" (2026-06-01) to give the Charismatic Leader more
           presence at the final CTA: the medium first-person bio + a
           catchphrase, so the page closes on a voice, not a logo. Counters the

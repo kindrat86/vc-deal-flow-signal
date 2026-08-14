@@ -2,15 +2,15 @@
  * Sync the live CSV dataset to Hugging Face + Zenodo after each prod deploy.
  *
  * Activation requires two env vars:
- *   HF_TOKEN        — Hugging Face write token (Account → Settings → Access Tokens)
- *   ZENODO_TOKEN    — Zenodo personal access token with `deposit:write` scope
+ *   HF_TOKEN       , Hugging Face write token (Account → Settings → Access Tokens)
+ *   ZENODO_TOKEN   , Zenodo personal access token with `deposit:write` scope
  *
  * Optional:
- *   HF_DATASET_REPO — e.g. "thedatanerd/vc-deal-flow-signal" (default below)
- *   ZENODO_DEPOSIT_ID — existing deposit to version; omit to create new
+ *   HF_DATASET_REPO, e.g. "thedatanerd/vc-deal-flow-signal" (default below)
+ *   ZENODO_DEPOSIT_ID, existing deposit to version; omit to create new
  *
  * If either token is missing, the corresponding mirror is skipped
- * (not an error — lets the script be safely wired into postbuild).
+ * (not an error, lets the script be safely wired into postbuild).
  *
  * Run: npx tsx scripts/sync-dataset-mirrors.ts
  */
@@ -42,7 +42,7 @@ async function fetchCsv(): Promise<Buffer | null> {
 
 async function pushHuggingFace(csv: Buffer): Promise<void> {
   if (!HF_TOKEN) {
-    console.log("HF_TOKEN not set — skipping Hugging Face sync.");
+    console.log("HF_TOKEN not set, skipping Hugging Face sync.");
     return;
   }
   console.log(`Uploading to huggingface.co/datasets/${HF_DATASET_REPO}...`);
@@ -63,7 +63,7 @@ async function pushHuggingFace(csv: Buffer): Promise<void> {
       console.log(`HF sync OK (HTTP ${res.status})`);
     } else {
       const body = await res.text();
-      console.log(`HF sync failed: HTTP ${res.status} — ${body.slice(0, 200)}`);
+      console.log(`HF sync failed: HTTP ${res.status}, ${body.slice(0, 200)}`);
     }
   } catch (e) {
     console.log(`HF sync error: ${e}`);
@@ -72,12 +72,12 @@ async function pushHuggingFace(csv: Buffer): Promise<void> {
 
 async function pushZenodo(csv: Buffer): Promise<void> {
   if (!ZENODO_TOKEN) {
-    console.log("ZENODO_TOKEN not set — skipping Zenodo sync.");
+    console.log("ZENODO_TOKEN not set, skipping Zenodo sync.");
     return;
   }
   if (!ZENODO_DEPOSIT_ID) {
     console.log(
-      "ZENODO_DEPOSIT_ID not set — skipping Zenodo sync (versioning requires parent deposit ID)."
+      "ZENODO_DEPOSIT_ID not set, skipping Zenodo sync (versioning requires parent deposit ID)."
     );
     return;
   }
@@ -135,7 +135,7 @@ async function pushZenodo(csv: Buffer): Promise<void> {
       }
     );
     if (publishRes.ok) {
-      console.log(`Zenodo sync OK — new version published as draft ${draftId}`);
+      console.log(`Zenodo sync OK, new version published as draft ${draftId}`);
     } else {
       console.log(`Zenodo publish failed: HTTP ${publishRes.status}`);
     }
@@ -146,13 +146,13 @@ async function pushZenodo(csv: Buffer): Promise<void> {
 
 async function main() {
   if (process.env.VERCEL && process.env.VERCEL_ENV !== "production") {
-    console.log("Skipping dataset sync — not a production deploy.");
+    console.log("Skipping dataset sync, not a production deploy.");
     return;
   }
 
   if (!HF_TOKEN && !ZENODO_TOKEN) {
     console.log(
-      "Neither HF_TOKEN nor ZENODO_TOKEN set — dataset sync skipped."
+      "Neither HF_TOKEN nor ZENODO_TOKEN set, dataset sync skipped."
     );
     return;
   }

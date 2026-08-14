@@ -3,13 +3,13 @@ import { checkRateLimit, getClientIp, rateLimitHeaders } from "@/lib/rate-limit"
 import { isValidEmail, isAllowedOrigin } from "@/lib/validation";
 
 /**
- * /api/sharp-application — Russell audit fix 2026-05-05 (DotCom Secrets §23).
+ * /api/sharp-application, Russell audit fix 2026-05-05 (DotCom Secrets §23).
  *
  * Receives the Sharp Tier (€497/mo, capped 8 funds/yr) application from
  * landing/apply/index.html, validates, and emails it to signals@gitdealflow.com
  * via Resend so the founder can review + reply within 48h.
  *
- * Anonymity-preserving: no live call mandate, no DB write — the email is the
+ * Anonymity-preserving: no live call mandate, no DB write, the email is the
  * record. PocketBase doesn't have a sharp_applications collection in prod
  * (per memory: prod PB only has users/scouts/predictions/subscribers), and
  * adding one isn't required at <8 apps/yr volume.
@@ -71,18 +71,18 @@ function applicationEmailHtml(fields: {
 <tr><td style="padding:8px 0;font-weight:600;color:#475569;vertical-align:top;">Quarterly review focus</td><td style="padding:8px 0;white-space:pre-wrap;">${f.quarterly_question || blank}</td></tr>
 </table>
 <div style="background:#f1f5ff;border-left:4px solid #6366f1;padding:14px 18px;margin:20px 0 8px;">
-<strong style="color:#3730a3;font-size:12px;letter-spacing:1px;text-transform:uppercase;">Diligence — 5 Questions</strong>
+<strong style="color:#3730a3;font-size:12px;letter-spacing:1px;text-transform:uppercase;">Diligence, 5 Questions</strong>
 </div>
 <table style="width:100%;border-collapse:collapse;font-size:14px;">
 <tr><td style="padding:8px 0;font-weight:600;width:180px;color:#475569;vertical-align:top;">1. Dream state (12-mo)</td><td style="padding:8px 0;white-space:pre-wrap;">${f.dream_state || blank}</td></tr>
 <tr><td style="padding:8px 0;font-weight:600;color:#475569;vertical-align:top;">2. Current state</td><td style="padding:8px 0;white-space:pre-wrap;">${f.current_state || blank}</td></tr>
 <tr><td style="padding:8px 0;font-weight:600;color:#475569;vertical-align:top;">3. The gap</td><td style="padding:8px 0;white-space:pre-wrap;">${f.gap || blank}</td></tr>
-<tr><td style="padding:8px 0;font-weight:600;color:#475569;vertical-align:top;">4. Money — gap value</td><td style="padding:8px 0;white-space:pre-wrap;">${f.money_value || blank}</td></tr>
-<tr><td style="padding:8px 0;font-weight:600;color:#475569;vertical-align:top;">5. Urgency — why now</td><td style="padding:8px 0;white-space:pre-wrap;">${f.urgency || blank}</td></tr>
+<tr><td style="padding:8px 0;font-weight:600;color:#475569;vertical-align:top;">4. Money, gap value</td><td style="padding:8px 0;white-space:pre-wrap;">${f.money_value || blank}</td></tr>
+<tr><td style="padding:8px 0;font-weight:600;color:#475569;vertical-align:top;">5. Urgency, why now</td><td style="padding:8px 0;white-space:pre-wrap;">${f.urgency || blank}</td></tr>
 </table>
 <hr style="border:none;border-top:1px solid #e2e8f0;margin:24px 0;">
 <p style="color:#94a3b8;font-size:12px;line-height:1.5;">Submitted from ${f.ip} (${f.ua})<br>Form: https://gitdealflow.com/apply</p>
-<p style="color:#94a3b8;font-size:12px;">Reply directly to <a href="mailto:${f.email}" style="color:#0ea5e9;">${f.email}</a> &mdash; that's the applicant's verified email.</p>
+<p style="color:#94a3b8;font-size:12px;">Reply directly to <a href="mailto:${f.email}" style="color:#0ea5e9;">${f.email}</a>: that's the applicant's verified email.</p>
 </div>
 </body>
 </html>`;
@@ -111,7 +111,7 @@ export async function POST(request: Request) {
   }
 
   const ip = getClientIp(request);
-  // Tighter rate limit than /subscribe — Sharp Tier should not see >2 attempts/hr from one IP.
+  // Tighter rate limit than /subscribe, Sharp Tier should not see >2 attempts/hr from one IP.
   const rl = checkRateLimit(`sharp-application:${ip}`, 2, 3600_000);
   if (!rl.allowed) {
     return NextResponse.json(
@@ -196,7 +196,7 @@ export async function POST(request: Request) {
         bcc: "sales@sipiteno.com",
         to: TO_EMAIL,
         reply_to: email,
-        subject: `[Sharp Tier Application] ${fund_name} — ${contact_name}`,
+        subject: `[Sharp Tier Application] ${fund_name}, ${contact_name}`,
         html,
       }),
     });
@@ -205,7 +205,7 @@ export async function POST(request: Request) {
       const errText = await emailRes.text();
       console.error("Failed to send Sharp application email:", errText);
       return NextResponse.json(
-        { error: "Failed to deliver application — please email signals@gitdealflow.com directly" },
+        { error: "Failed to deliver application, please email signals@gitdealflow.com directly" },
         { status: 500, headers },
       );
     }
@@ -221,7 +221,7 @@ export async function POST(request: Request) {
   } catch (err) {
     console.error("Sharp application error:", err);
     return NextResponse.json(
-      { error: "Something went wrong — please email signals@gitdealflow.com directly" },
+      { error: "Something went wrong, please email signals@gitdealflow.com directly" },
       { status: 500, headers },
     );
   }

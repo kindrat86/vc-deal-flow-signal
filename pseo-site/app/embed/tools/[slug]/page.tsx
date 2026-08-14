@@ -30,7 +30,7 @@ const SITE = "https://signals.gitdealflow.com";
  *   - One dynamic route serves all 8 slugs via generateStaticParams so
  *     each calc embed gets its own URL and CDN cache entry.
  *   - The page reuses the same client calculator components as the
- *     standalone /tools/<slug> page — single source of truth for the
+ *     standalone /tools/<slug> page, single source of truth for the
  *     math and UI. No duplicate vanilla-JS port to maintain.
  *   - Root layout's <NotInEmbed/> gate strips Header/Footer/banner/
  *     pixels for any `/embed/<widget>/...` path. The inline <style/>
@@ -56,7 +56,7 @@ const TOOLS: Record<string, ToolMeta> = {
     slug: "safe-calculator",
     name: "SAFE Calculator",
     description:
-      "Post-money SAFE conversion math — cap vs discount, effective ownership at the next priced round.",
+      "Post-money SAFE conversion math, cap vs discount, effective ownership at the next priced round.",
     defaultHeight: 620,
     Component: SafeCalculator,
   },
@@ -80,7 +80,7 @@ const TOOLS: Record<string, ToolMeta> = {
     slug: "magic-number-calculator",
     name: "Magic Number Calculator",
     description:
-      "Annualized net new ARR ÷ quarterly S&M spend — SaaS sales efficiency.",
+      "Annualized net new ARR ÷ quarterly S&M spend, SaaS sales efficiency.",
     defaultHeight: 520,
     Component: MagicNumberCalculator,
   },
@@ -104,7 +104,7 @@ const TOOLS: Record<string, ToolMeta> = {
     slug: "quick-ratio-calculator",
     name: "Quick Ratio Calculator",
     description:
-      "(New + expansion ARR) ÷ (churned + contracted) — SaaS growth efficiency.",
+      "(New + expansion ARR) ÷ (churned + contracted), SaaS growth efficiency.",
     defaultHeight: 520,
     Component: QuickRatioCalculator,
   },
@@ -136,14 +136,14 @@ export async function generateMetadata({
   if (!tool) return {};
   const url = `${SITE}/embed/tools/${slug}`;
   return {
-    title: `${tool.name} — Embed`,
+    title: `${tool.name}, Embed`,
     description: `Embeddable ${tool.name} widget. ${tool.description} CC BY 4.0.`,
     alternates: { canonical: url },
-    // Iframe surface — keep it out of search so it doesn't compete with
+    // Iframe surface, keep it out of search so it doesn't compete with
     // the canonical /tools/<slug> page for the same head terms.
     robots: { index: false, follow: false },
     openGraph: {
-      title: `${tool.name} — Embed widget`,
+      title: `${tool.name}, Embed widget`,
       description: tool.description,
       url,
       type: "website",

@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   const url = `https://signals.gitdealflow.com/book/read/${chapter.slug}`;
   return {
-    title: `${chapter.title} — ${BOOK.title}`,
+    title: `${chapter.title}, ${BOOK.title}`,
     description: chapter.summary,
     alternates: { canonical: `/book/read/${chapter.slug}` },
     openGraph: {

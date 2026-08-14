@@ -63,7 +63,7 @@ interface Props {
   eyebrow?: string;
   /**
    * Optional kicker headline. If omitted, no headline is rendered (the parent
-   * provides one — common for the homepage).
+   * provides one, common for the homepage).
    */
   headline?: string;
   /**
@@ -178,7 +178,7 @@ export default function ArchetypeCardsPreview({
           >
             The 90-second avatar quiz
           </Link>{" "}
-          asks five questions and routes you to the right tier — and the right
+          asks five questions and routes you to the right tier, and the right
           archetype profile. Or read{" "}
           <Link
             href="/who-this-is-for"

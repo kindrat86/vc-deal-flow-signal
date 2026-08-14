@@ -6,7 +6,7 @@ import { useRouter, useSearchParams } from "next/navigation";
 /**
  * Post-money SAFE calculator.
  *
- * Math (YC 2018+ post-money SAFE — the dominant US instrument):
+ * Math (YC 2018+ post-money SAFE, the dominant US instrument):
  *   - cap_ownership = safe_amount / valuation_cap
  *     (post-money cap = effective company value the SAFE prices into)
  *   - discount_ownership = safe_amount / (next_round_post_money * (1 - discount))
@@ -121,7 +121,7 @@ export function SafeCalculator() {
     ),
   }));
 
-  // Debounced URL sync — encodes the current state as ?amount=&cap=&...
+  // Debounced URL sync, encodes the current state as ?amount=&cap=&...
   // so the result is a shareable link without losing the back-button.
   useEffect(() => {
     const timer = setTimeout(() => {
@@ -222,9 +222,9 @@ export function SafeCalculator() {
           }
           sublabel={
             result.conversionBasis === "cap"
-              ? "Cap is binding — discount not enough."
+              ? "Cap is binding, discount not enough."
               : result.conversionBasis === "discount"
-                ? "Discount is binding — next round is below cap."
+                ? "Discount is binding, next round is below cap."
                 : "Cap and discount give the same conversion."
           }
         />
@@ -238,7 +238,7 @@ export function SafeCalculator() {
       <div className="mt-6 rounded-lg border border-slate-800 bg-slate-950/60 p-5 text-sm text-gray-400 space-y-2">
         <p>
           <span className="text-gray-300 font-medium">Cap-only ownership:</span>{" "}
-          {formatPercent(result.capOwnership)} (assumes the cap binds — i.e.
+          {formatPercent(result.capOwnership)} (assumes the cap binds, i.e.
           next round prices above the cap).
         </p>
         <p>
@@ -246,8 +246,8 @@ export function SafeCalculator() {
             Discount-only ownership:
           </span>{" "}
           {result.discountOwnership > 0
-            ? `${formatPercent(result.discountOwnership)} (assumes only the discount applies — i.e. next round is below the cap).`
-            : "n/a — model a next round above to compare."}
+            ? `${formatPercent(result.discountOwnership)} (assumes only the discount applies, i.e. next round is below the cap).`
+            : "n/a, model a next round above to compare."}
         </p>
         {result.nextRoundPostMoney > 0 ? (
           <p>
@@ -268,7 +268,7 @@ export function SafeCalculator() {
           {copied ? "Link copied" : "Copy share link"}
         </button>
         <p className="text-xs text-gray-500">
-          The URL contains your inputs — anyone you send it to sees the same
+          The URL contains your inputs, anyone you send it to sees the same
           numbers.
         </p>
       </div>
@@ -277,7 +277,7 @@ export function SafeCalculator() {
         Educational tool. Models the YC 2018+ post-money SAFE. Pre-money
         SAFEs (the older variant) calculate differently and may also be
         subject to MFN, pro-rata, and most-favored-nation provisions. Not
-        legal or tax advice — talk to your lawyer.
+        legal or tax advice, talk to your lawyer.
       </p>
     </div>
   );

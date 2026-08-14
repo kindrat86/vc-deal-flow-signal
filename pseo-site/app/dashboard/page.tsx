@@ -14,7 +14,7 @@ import DashboardFilters from "@/components/DashboardFilters";
 import LogoutButton from "./LogoutButton";
 
 export const metadata: Metadata = {
-  title: "Dashboard — Full Startup Rankings",
+  title: "Dashboard, Full Startup Rankings",
   description:
     "Browse and filter 60+ startups ranked by GitHub engineering acceleration. Filter by sector, stage, geography, and signal type. Updated weekly.",
   alternates: {
@@ -133,7 +133,7 @@ export default async function DashboardPage() {
         <div className="mb-8 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 rounded-lg border border-amber-500/30 bg-amber-950/15 px-4 py-3">
           <p className="text-sm text-gray-300 leading-relaxed">
             <span className="text-amber-300 font-semibold">Get this list 24 hours earlier</span>
-            {" "}+ the private investor room. Same ranked list, more lead time — €197/mo.
+            {" "}+ the private investor room. Same ranked list, more lead time, €197/mo.
           </p>
           <Link
             href="/insider"

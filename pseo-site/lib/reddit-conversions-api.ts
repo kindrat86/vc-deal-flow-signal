@@ -1,21 +1,21 @@
 /**
- * Reddit Conversions API — server-side event firing.
+ * Reddit Conversions API, server-side event firing.
  *
  * Why server-side:
  *   1. Survives ad-blockers + iOS ITP / Brave shields that nuke the browser
- *      pixel.  Reddit's CAPI typically reports 15–25% more conversions than
+ *      pixel.  Reddit's CAPI typically reports 15-25% more conversions than
  *      pixel-only on the same campaign in 2026 measurement audits.
- *   2. Stripe webhook is the source of truth for `Purchase` — firing here
+ *   2. Stripe webhook is the source of truth for `Purchase`, firing here
  *      means Reddit's `attribution_optimization` model trains on real $$,
  *      not best-effort browser pings.
  *   3. CPL/CPA reporting in the Reddit Ads dashboard reads the higher-fidelity
- *      conversion stream once CAPI is wired — better optimization within ~72h.
+ *      conversion stream once CAPI is wired, better optimization within ~72h.
  *
  * Auth:
- *   - REDDIT_ADS_CONVERSIONS_TOKEN — long-lived bearer token from Reddit Ads
+ *   - REDDIT_ADS_CONVERSIONS_TOKEN, long-lived bearer token from Reddit Ads
  *     Manager → Events Manager → Conversion API → Generate access token.
  *     Account-scoped, server-only, never NEXT_PUBLIC_*.
- *   - REDDIT_ADS_PIXEL_ID — same id used in the browser pixel
+ *   - REDDIT_ADS_PIXEL_ID, same id used in the browser pixel
  *     (NEXT_PUBLIC_REDDIT_PIXEL_ID), passed in the path.
  *
  * Idempotency:
@@ -30,7 +30,7 @@
  *     finishes Reddit Ads Manager setup.
  *
  * Reference: https://ads-api.reddit.com/api/v2.0/conversions/events/{pixel_id}
- *   POST body shape per Reddit's docs as of 2026-Q1 — kept narrow to the
+ *   POST body shape per Reddit's docs as of 2026-Q1, kept narrow to the
  *   subset we actually fire.  If Reddit deprecates fields the request will
  *   400 and we fail-soft (catch-and-log; never block the buyer flow).
  */
@@ -74,10 +74,10 @@ export function buildConversionId(seed: string): string {
   return createHash("sha256").update(seed).digest("hex").slice(0, 32);
 }
 
-/** Internal — POST one event to Reddit Conversions API.  Fails soft. */
+/** Internal, POST one event to Reddit Conversions API.  Fails soft. */
 async function postEvent(event: RedditEvent): Promise<void> {
   if (!PIXEL_ID || !TOKEN) {
-    // Configured-out — common until the user finishes account+pixel setup.
+    // Configured-out, common until the user finishes account+pixel setup.
     if (process.env.NODE_ENV !== "production") {
       console.log(
         `[reddit-capi] skipped (missing PIXEL_ID or CONVERSIONS_TOKEN): ${event.event_type.tracking_type}`,
@@ -98,17 +98,17 @@ async function postEvent(event: RedditEvent): Promise<void> {
         test_mode: process.env.NODE_ENV !== "production",
         events: [event],
       }),
-      // 2.5s ceiling — never block the buyer flow on Reddit's reachability.
+      // 2.5s ceiling, never block the buyer flow on Reddit's reachability.
       signal: AbortSignal.timeout(2_500),
     });
     if (!res.ok) {
       const txt = await res.text().catch(() => "<no body>");
       console.error(
-        `[reddit-capi] non-2xx (${res.status}): ${event.event_type.tracking_type} — ${txt.slice(0, 240)}`,
+        `[reddit-capi] non-2xx (${res.status}): ${event.event_type.tracking_type}, ${txt.slice(0, 240)}`,
       );
     }
   } catch (err) {
-    // Network errors, timeouts, JSON failures — all swallowed by design.
+    // Network errors, timeouts, JSON failures, all swallowed by design.
     // Reddit going down must NEVER fail a Stripe webhook acknowledgement.
     console.error(
       `[reddit-capi] dispatch error for ${event.event_type.tracking_type}:`,
@@ -132,7 +132,7 @@ export type LeadInput = {
  * Called from /api/subscribe POST after Resend accepts the verification mail.
  */
 export async function fireRedditLead(input: LeadInput): Promise<void> {
-  // Only fire for paid Reddit traffic — organic email captures don't optimize
+  // Only fire for paid Reddit traffic, organic email captures don't optimize
   // ad delivery and would skew the conversion volume signal.
   if (input.utmSource !== "reddit") return;
 
@@ -145,7 +145,7 @@ export async function fireRedditLead(input: LeadInput): Promise<void> {
       products: [
         {
           id: "firstlook-lead",
-          name: "First Look Pass — Email Capture",
+          name: "First Look Pass, Email Capture",
           category: "lead",
         },
       ],
@@ -163,7 +163,7 @@ export type PurchaseInput = {
   email: string;
   amountEUR: number; // 7.00, 26.00, 97.00, 1797.00, etc.
   tier: string; // "firstlook" | "dashboard" | "insider" | "sector_sweep" | …
-  stripeEventId: string; // Stripe event.id — perfect dedup key
+  stripeEventId: string; // Stripe event.id, perfect dedup key
   utmSource?: string;
   utmCampaign?: string;
   utmContent?: string;
@@ -178,7 +178,7 @@ export type PurchaseInput = {
  * Reddit-side outage cannot starve the buyer of their receipt.
  */
 export async function fireRedditPurchase(input: PurchaseInput): Promise<void> {
-  // Reddit attribution lookback is 28d view / 7d click by default — even
+  // Reddit attribution lookback is 28d view / 7d click by default, even
   // organic-looking customers may have clicked an ad in the past month, so
   // we fire `Purchase` on every paid order regardless of utm_source. Reddit
   // matches via click_id / cookie / hashed email and credits the right ad.
@@ -193,7 +193,7 @@ export async function fireRedditPurchase(input: PurchaseInput): Promise<void> {
       products: [
         {
           id: input.tier,
-          name: `VC Deal Flow Signal — ${input.tier}`,
+          name: `VC Deal Flow Signal, ${input.tier}`,
           category: "subscription",
         },
       ],

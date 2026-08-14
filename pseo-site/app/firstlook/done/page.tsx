@@ -6,7 +6,7 @@ import { stripe } from "@/lib/stripe";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "First Look — confirmed.",
+  title: "First Look, confirmed.",
   robots: { index: false, follow: false },
 };
 
@@ -43,7 +43,7 @@ export default async function FirstLookDonePage({ searchParams }: Props) {
     <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-16 space-y-8">
       <header className="space-y-3">
         <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">
-          ✓ All set — your First Look is queued
+          ✓ All set, your First Look is queued
         </p>
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 leading-tight">
           Watch your inbox.
@@ -67,7 +67,7 @@ export default async function FirstLookDonePage({ searchParams }: Props) {
             >
               This week&rsquo;s Acceleration Watch
             </Link>{" "}
-            — the five names the engine flagged this Monday.
+the five names the engine flagged this Monday.
           </li>
           <li>
             →{" "}
@@ -77,7 +77,7 @@ export default async function FirstLookDonePage({ searchParams }: Props) {
             >
               Live Scout Score scorecard
             </Link>{" "}
-            — see how the engine reasons in real time.
+see how the engine reasons in real time.
           </li>
           <li>
             →{" "}
@@ -87,17 +87,17 @@ export default async function FirstLookDonePage({ searchParams }: Props) {
             >
               The full ascension ladder
             </Link>{" "}
-            — every rung from free to Sharp Tier, mapped.
+every rung from free to Sharp Tier, mapped.
           </li>
         </ul>
       </section>
 
-      {/* Brunson Traffic Secrets Ch 12 (Conversation Domination) — the
+      {/* Brunson Traffic Secrets Ch 12 (Conversation Domination), the
           buyer is at peak commitment right now (just paid). The lowest-
           friction post-purchase ask is not "buy something else", it's
           "tell one person who'd want this". The sharable link is the
           /firstlook URL with a ref tag so we can attribute referred
-          buyers in PostHog. No referral payout — this is a pure word-of-
+          buyers in PostHog. No referral payout, this is a pure word-of-
           mouth ask, congruent with the manifesto pillar #4 (Methodology
           over personality / no growth-hacking schemes). */}
       <section
@@ -112,16 +112,16 @@ export default async function FirstLookDonePage({ searchParams }: Props) {
         </h2>
         <p className="text-gray-400 text-sm leading-relaxed">
           That&rsquo;s our buyer. If a name comes to mind, the share link
-          below opens a pre-written note — feel free to edit. We attribute
+          below opens a pre-written note, feel free to edit. We attribute
           the referrer in our weekly write-up; nothing else, no payout, no
           tracking pixel.
         </p>
         <div className="flex flex-col sm:flex-row gap-2 pt-1">
           <a
             href={`mailto:?subject=${encodeURIComponent(
-              "Worth €7 — sector deep dive on GitHub momentum",
+              "Worth €7, sector deep dive on GitHub momentum",
             )}&body=${encodeURIComponent(
-              "I just bought one of these and the 24-hour intake is unusual.\n\nIt's €7, picks any of 19 venture sectors, and you get a 14-page PDF + raw CSV on which startups in that sector are accelerating on commit-velocity (the SSRN paper backs it up — 21–47 day lead on fundraise announcements).\n\nhttps://signals.gitdealflow.com/firstlook?ref=" +
+              "I just bought one of these and the 24-hour intake is unusual.\n\nIt's €7, picks any of 19 venture sectors, and you get a 14-page PDF + raw CSV on which startups in that sector are accelerating on commit-velocity (the SSRN paper backs it up, 21-47 day lead on fundraise announcements).\n\nhttps://signals.gitdealflow.com/firstlook?ref=" +
                 encodeURIComponent(session.id),
             )}`}
             className="inline-flex items-center justify-center rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-semibold text-sm px-4 py-2.5 transition-colors"

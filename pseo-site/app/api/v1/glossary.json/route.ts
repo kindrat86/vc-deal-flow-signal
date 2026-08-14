@@ -1,5 +1,5 @@
 /**
- * /api/v1/glossary.json — versioned, machine-readable glossary surface.
+ * /api/v1/glossary.json, versioned, machine-readable glossary surface.
  *
  * Pass VII (2026-05-05). Net-new LLMO/AIO surface. Mirrors the 18 terms
  * shown on /glossary as a JSON-LD `DefinedTermSet`, the controlled-

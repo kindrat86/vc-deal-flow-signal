@@ -13,7 +13,7 @@ import SeoCta from "@/components/SeoCta";
 
 export const dynamic = "force-static";
 // Block requests for slugs not pre-rendered at build time. Brunson DCS
-// Ch 7: the canon is closed — six parables, no auto-generated extras.
+// Ch 7: the canon is closed, six parables, no auto-generated extras.
 export const dynamicParams = false;
 
 type Params = Promise<{ slug: string }>;
@@ -42,11 +42,11 @@ export async function generateMetadata({
     };
   }
   return {
-    title: `${parable.title} — a parable from ${DATA_NERD_NAME}`,
+    title: `${parable.title}, a parable from ${DATA_NERD_NAME}`,
     description: parable.lesson,
     alternates: { canonical: `/parables/${parable.slug}` },
     openGraph: {
-      title: `${parable.title} — ${DATA_NERD_NAME}`,
+      title: `${parable.title}, ${DATA_NERD_NAME}`,
       description: parable.lesson,
       url: `https://signals.gitdealflow.com/parables/${parable.slug}`,
       type: "article",
@@ -177,12 +177,12 @@ export default async function ParablePage({ params }: { params: Params }) {
             The parables aren&rsquo;t metaphors for branding. They&rsquo;re
             the shape of the underlying claim. If you find yourself nodding
             at this story, the rest of the methodology will land. If you
-            think the story is wrong, the product probably is too — and
+            think the story is wrong, the product probably is too, and
             that&rsquo;s honest.
           </p>
         </article>
 
-        {/* PREV / NEXT — Brunson Expert Secrets Ch 5: serialized story
+        {/* PREV / NEXT, Brunson Expert Secrets Ch 5: serialized story
             chains. Each page closes by previewing the next so the
             reader-as-tribe-member finishes the bible. */}
         <nav
@@ -240,7 +240,7 @@ export default async function ParablePage({ params }: { params: Params }) {
 
         <SeoCta
           heading="One parable landed. The Sunday issue is where the pattern pays off."
-          blurb="Five breakout startups every Sunday — the engineering signal in plain English, 21 to 47 days before the deck circulates. No code-reading, no card."
+          blurb="Five breakout startups every Sunday, the engineering signal in plain English, 21 to 47 days before the deck circulates. No code-reading, no card."
           className="mt-2"
         />
 
@@ -256,7 +256,7 @@ export default async function ParablePage({ params }: { params: Params }) {
             >
               CC BY 4.0
             </a>{" "}
-            — copy the text, quote the lesson, attribute the source.
+copy the text, quote the lesson, attribute the source.
           </p>
           <ul className="space-y-1.5">
             <li>

@@ -14,9 +14,9 @@ export type OtoKey =
   | "insider_oto2"
   | "extra_sector_oto3";
 
-// Brunson DotCom Ch 18 — true order bump. A SECOND, smaller line item the
+// Brunson DotCom Ch 18, true order bump. A SECOND, smaller line item the
 // buyer adds to the base €7 with a checkbox. Different from the OTO chain
-// (post-purchase) — this happens IN-cart, before card capture, so the
+// (post-purchase), this happens IN-cart, before card capture, so the
 // bumped checkout sets up the saved card for OTOs the same way the base
 // cart does.
 export type BumpKey =
@@ -109,7 +109,7 @@ export const ENTRY_TIERS: Record<EntryTierKey, EntryTierConfig> = {
   },
   summit: {
     mode: "payment",
-    productName: "VC Engineering Acceleration Summit — All-Access Pass",
+    productName: "VC Engineering Acceleration Summit, All-Access Pass",
     unitAmount: 9700,
     currency: "eur",
     successUrl: "/summit/thanks?session_id={CHECKOUT_SESSION_ID}",
@@ -122,12 +122,12 @@ export const ENTRY_TIERS: Record<EntryTierKey, EntryTierConfig> = {
 export const OTO_TIERS: Record<OtoKey, OtoConfig> = {
   sector_sweep_oto1: {
     kind: "one_time",
-    productName: "Sector Sweep — First Look bump",
+    productName: "Sector Sweep, First Look bump",
     unitAmount: 179700,
     currency: "eur",
     description:
-      "Full venture-backed panel for one sector, three time windows, 60-minute walkthrough call. Standalone €1,997 — €200 off when added to a First Look Pass.",
-    welcomeSubject: "Custom Sector Sweep — your thesis intake form",
+      "Full venture-backed panel for one sector, three time windows, 60-minute walkthrough call. Standalone €1,997, €200 off when added to a First Look Pass.",
+    welcomeSubject: "Custom Sector Sweep, your thesis intake form",
   },
   insider_oto2: {
     kind: "subscription",
@@ -135,63 +135,63 @@ export const OTO_TIERS: Record<OtoKey, OtoConfig> = {
     unitAmount: 19700,
     currency: "eur",
     interval: "month",
-    // v2 lookup key — v1 resolves to the retired €97/mo founding price in
+    // v2 lookup key, v1 resolves to the retired €97/mo founding price in
     // Stripe; reusing it would silently charge the old amount.
     lookupKey: "insider_monthly_v2_197",
     firstInvoiceCouponAmountOff: 2000,
     firstInvoiceCouponLookupKey: "insider_firstlook_oto_first_month_off_v1",
     description:
-      "Private investor Telegram, monthly briefing call, custom watchlists, API access, direct line to me. €197/mo — €20 off the first month from this offer only.",
+      "Private investor Telegram, monthly briefing call, custom watchlists, API access, direct line to me. €197/mo, €20 off the first month from this offer only.",
     welcomeSubject: "Welcome to the Insider Circle",
   },
-  // Brunson DotCom Ch 18 — last-chance OTO. Surface ONLY after the buyer
+  // Brunson DotCom Ch 18, last-chance OTO. Surface ONLY after the buyer
   // has declined both Sector Sweep (€1,797) and Insider (€97/mo). The price
-  // (€17) is one-third of standalone (€7 × 2 = €14 — €17 captures a small
+  // (€17) is one-third of standalone (€7 × 2 = €14, €17 captures a small
   // premium the bump buyer is willing to pay for not having to come back
   // and check out twice). The deliverable is a second sector report
   // following the same 24-hour cadence as the base First Look.
   extra_sector_oto3: {
     kind: "one_time",
-    productName: "Extra Sector — second First Look deep dive",
+    productName: "Extra Sector, second First Look deep dive",
     unitAmount: 1700,
     currency: "eur",
     description:
-      "Add a second sector to your First Look. Same 24-hour intake, same PDF + CSV deliverable. €17 from this page only — last-chance rung after Sector Sweep + Insider declined.",
-    welcomeSubject: "Second sector pick — quick intake",
+      "Add a second sector to your First Look. Same 24-hour intake, same PDF + CSV deliverable. €17 from this page only, last-chance rung after Sector Sweep + Insider declined.",
+    welcomeSubject: "Second sector pick, quick intake",
   },
 };
 
-// True Brunson order-bump — added IN-cart BEFORE Stripe capture, so the
+// True Brunson order-bump, added IN-cart BEFORE Stripe capture, so the
 // saved card flows through the same setup_future_usage path the base
 // product does. Each bump is a separate Checkout line item / invoice
 // item, not a price swap. Lifts AOV without disrupting the OTO ladder.
 export const BUMPS: Record<BumpKey, BumpConfig> = {
   methodology_vault: {
-    productName: "Methodology Vault — full PDF",
+    productName: "Methodology Vault, full PDF",
     unitAmount: 1900,
     currency: "eur",
     description:
-      "The 38-page Methodology Vault PDF — the SSRN methodology operationalized: annotated commentary on every signal definition and regression coefficient, plus ready-to-run checklists for the three confounder checks, so you apply the paper instead of re-deriving it. Delivered as an instant download link in your First Look intake email.",
+      "The 38-page Methodology Vault PDF, the SSRN methodology operationalized: annotated commentary on every signal definition and regression coefficient, plus ready-to-run checklists for the three confounder checks, so you apply the paper instead of re-deriving it. Delivered as an instant download link in your First Look intake email.",
   },
-  // Brunson DotCom Ch 14 — Dashboard order bump. Works for BOTH payment
+  // Brunson DotCom Ch 14, Dashboard order bump. Works for BOTH payment
   // and subscription tiers: on payment it becomes a second line_item; on
   // subscription it becomes an add_invoice_item on the first invoice.
   dashboard_playbook: {
-    productName: "The Deal Flow Playbook — 42-page PDF",
+    productName: "The Deal Flow Playbook, 42-page PDF",
     unitAmount: 700,
     currency: "eur",
     description:
-      "42-page PDF: how to turn the weekly field into a sourcing workflow — the 15-minute Monday ritual, the 3-question diligence filter, the sector rotation calendar, and the tracking template for first-touch outreach. Instant download link in your welcome email. Normally €47 — add it now for €7.",
+      "42-page PDF: how to turn the weekly field into a sourcing workflow, the 15-minute Monday ritual, the 3-question diligence filter, the sector rotation calendar, and the tracking template for first-touch outreach. Instant download link in your welcome email. Normally €47, add it now for €7.",
   },
-  // Brunson Summit playbook — in-cart bump on the All-Access Pass. Deep
+  // Brunson Summit playbook, in-cart bump on the All-Access Pass. Deep
   // discount honors the €297 summit-attendee rate advertised on
   // /summit/all-access (standalone Sector Sweep sells at €1,997).
   summit_sector_sweep: {
-    productName: "Custom Sector Sweep — Summit Attendee Rate",
+    productName: "Custom Sector Sweep, Summit Attendee Rate",
     unitAmount: 29700,
     currency: "eur",
     description:
-      "One full sector deep-dive on a sector of your choice — top 25 ranked GitHub orgs, contributor maps, three pre-Crunchbase breakouts, raw CSV, and a 14-page written walkthrough. €297 summit-attendee rate (standalone €1,997).",
+      "One full sector deep-dive on a sector of your choice, top 25 ranked GitHub orgs, contributor maps, three pre-Crunchbase breakouts, raw CSV, and a 14-page written walkthrough. €297 summit-attendee rate (standalone €1,997).",
   },
 };
 

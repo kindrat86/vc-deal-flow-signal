@@ -3,7 +3,7 @@
 import { useEffect, useRef, useState } from "react";
 
 /**
- * Silent visual demo — Brunson Traffic Secrets Ch 8 substitute under the
+ * Silent visual demo, Brunson Traffic Secrets Ch 8 substitute under the
  * project's anonymity rule. No video, no audio, no narrator face. Pure
  * canvas-rendered animation of a generic "fundraise-precursor profile":
  * commit-velocity rising, contributor count broadening, dependents fanning
@@ -17,10 +17,10 @@ const FPS = 30;
 const FRAME_MS = 1000 / FPS;
 const TOTAL_FRAMES = FRAMES * FPS;
 
-// Synthetic "org" trajectory — deterministic, repeatable. The shape is the
+// Synthetic "org" trajectory, deterministic, repeatable. The shape is the
 // canonical fundraise-precursor profile from the SSRN panel: a 14-day
 // inflection where commit velocity sustainably steps from a baseline to a
-// new regime, with contributor count broadening 5–7 days later.
+// new regime, with contributor count broadening 5-7 days later.
 function trajectory(t01: number) {
   // velocity rises sigmoidally past 1.3x (Russell-grade decision threshold)
   const v = 0.8 + 0.9 / (1 + Math.exp(-12 * (t01 - 0.45)));
@@ -104,7 +104,7 @@ export default function AnimatedDemo() {
         ctx.stroke();
       }
 
-      // velocity line — across the full width, accumulated
+      // velocity line, across the full width, accumulated
       ctx.strokeStyle = "#0ea5e9";
       ctx.lineWidth = 2.5;
       ctx.beginPath();
@@ -204,7 +204,7 @@ export default function AnimatedDemo() {
       <div className="rounded-xl overflow-hidden border border-slate-800 bg-slate-950 shadow-lg shadow-fuchsia-500/5">
         <div className="flex items-center justify-between px-4 py-2 border-b border-slate-800 bg-slate-900/60">
           <p className="text-gray-400 text-[11px] font-mono">
-            example_org · 369-org universe · panel-style render
+            example_org · 350+ org universe · panel-style render
           </p>
           <button
             type="button"
@@ -217,13 +217,13 @@ export default function AnimatedDemo() {
         <canvas
           ref={canvasRef}
           className="block w-full h-[360px] sm:h-[420px]"
-          aria-label="Animated fundraise-precursor profile — commit velocity, contributors, dependents, composite score over 90 simulated seconds"
+          aria-label="Animated fundraise-precursor profile, commit velocity, contributors, dependents, composite score over 90 simulated seconds"
           role="img"
         />
       </div>
       <p className="text-gray-400 text-xs mt-2">
         Synthetic trajectory rendered in your browser, not a recording. Loops
-        every 90 seconds. Reduce-motion preference is honored — paused state
+        every 90 seconds. Reduce-motion preference is honored, paused state
         renders the final frame.
       </p>
     </div>

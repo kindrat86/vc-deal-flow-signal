@@ -33,7 +33,7 @@ export async function generateMetadata({
   if (!signalData) return {};
 
   const period = getCurrentPeriod();
-  const title = `${signalData.name} Signal — Startups Showing ${signalData.name}, ${period.name}`;
+  const title = `${signalData.name} Signal, Startups Showing ${signalData.name}, ${period.name}`;
   const description = `${signalData.totalAcrossSectors} startups showing "${signalData.name.toLowerCase()}" signal across all sectors in ${period.name}. ${signalData.description}`;
 
   return {
@@ -64,7 +64,7 @@ export default async function SignalTypePage({ params }: PageProps) {
         "@type": "WebPage",
         "@id": `https://signals.gitdealflow.com/signals/${slug}#webpage`,
         url: `https://signals.gitdealflow.com/signals/${slug}`,
-        name: `${signalData.name} Signal — Startups Showing ${signalData.name}, ${period.name}`,
+        name: `${signalData.name} Signal, Startups Showing ${signalData.name}, ${period.name}`,
         description: signalData.description,
         inLanguage: "en-US",
         isAccessibleForFree: true,
@@ -75,7 +75,7 @@ export default async function SignalTypePage({ params }: PageProps) {
       },
       {
         "@type": "Article",
-        headline: `${signalData.name} Signal — ${period.name}`,
+        headline: `${signalData.name} Signal, ${period.name}`,
         description: signalData.description,
         author: DATA_NERD_AUTHOR_REF,
         publisher: {
@@ -110,7 +110,7 @@ export default async function SignalTypePage({ params }: PageProps) {
           "@type": "ListItem",
           position: i + 1,
           name: s.name,
-          description: `${s.description} — ${s.commitVelocityChange} commit velocity change, ${s.contributors} contributors`,
+          description: `${s.description}, ${s.commitVelocityChange} commit velocity change, ${s.contributors} contributors`,
           url: s.githubUrl,
         })),
       },
@@ -170,7 +170,7 @@ export default async function SignalTypePage({ params }: PageProps) {
         {/* Header */}
         <header className="mb-8 max-w-3xl">
           <p className="text-sky-400 text-sm font-medium mb-2 uppercase tracking-wider">
-            Signal Type — {period.name}
+            Signal Type, {period.name}
           </p>
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
             Startups Showing {signalData.name}
@@ -194,7 +194,7 @@ export default async function SignalTypePage({ params }: PageProps) {
           </div>
         </section>
 
-        {/* Top sectors breakdown — clickable sector pages */}
+        {/* Top sectors breakdown, clickable sector pages */}
         {signalData.topSectors.length > 0 && (() => {
           const sectorSlugByName: Record<string, string> = {};
           for (const s of signalData.startups) {

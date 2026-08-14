@@ -421,7 +421,7 @@ def validate_full(args) -> int:
     
     elapsed = time.time() - start
     
-    # ── Step 2.5: Thin-content (soft-404) gate — local-only ──
+    # ── Step 2.5: Thin-content (soft-404) gate, local-only ──
     # Pages with < 150 visible words trigger Google "Soft 404" classification.
     thin_pages = []
     if local_only:
@@ -599,10 +599,10 @@ def validate_full(args) -> int:
     print(f"  Total violations:    {total_errors + len(all_errors)}")
     
     if total_errors + len(all_errors) == 0:
-        print(f"\n✅ ALL CLEAN — zero violations")
+        print(f"\n✅ ALL CLEAN, zero violations")
         return 0
     else:
-        print(f"\n❌ FAILED — {total_errors + len(all_errors)} violation(s) found")
+        print(f"\n❌ FAILED, {total_errors + len(all_errors)} violation(s) found")
         return 1
 
 

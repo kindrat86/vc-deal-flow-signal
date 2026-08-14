@@ -9,7 +9,7 @@ export const dynamic = "force-static";
 const SCHEMA = {
   $schema: "https://json-schema.org/draft/2020-12/schema",
   $id: "https://signals.gitdealflow.com/markets/schema.json",
-  title: "VC Deal Flow Signal — Open Prediction Market",
+  title: "VC Deal Flow Signal, Open Prediction Market",
   description:
     "Schema for seeded prediction markets on startup funding events. The market itself is a model output (implied probabilities) over a public candidate set; the page does not operate an exchange or accept wagers.",
   type: "object",

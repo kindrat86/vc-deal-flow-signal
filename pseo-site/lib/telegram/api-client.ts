@@ -1,7 +1,7 @@
 /**
  * Minimal Telegram Bot API client.
  *
- * No external deps — raw fetch against api.telegram.org. We only use the
+ * No external deps, raw fetch against api.telegram.org. We only use the
  * handful of methods the bot actually calls: sendMessage, answerInlineQuery,
  * setWebhook, setMyCommands.
  */

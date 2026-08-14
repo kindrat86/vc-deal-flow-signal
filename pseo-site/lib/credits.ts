@@ -6,10 +6,10 @@ import { getStripe } from "./stripe";
  *
  * Source of truth: Stripe customer metadata. No separate DB.
  *
- *   metadata.api_credits           — current balance, integer string
- *   metadata.api_credits_purchased — lifetime credits purchased, integer string
- *   metadata.api_credits_consumed  — lifetime credits consumed, integer string
- *   metadata.api_credits_last_at   — ISO timestamp of last decrement
+ *   metadata.api_credits          , current balance, integer string
+ *   metadata.api_credits_purchased, lifetime credits purchased, integer string
+ *   metadata.api_credits_consumed , lifetime credits consumed, integer string
+ *   metadata.api_credits_last_at  , ISO timestamp of last decrement
  *
  * v1 traffic is low enough that we don't need optimistic locking; if two
  * concurrent requests race on the same customer, one decrement may be lost.

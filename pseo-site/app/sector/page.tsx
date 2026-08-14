@@ -10,14 +10,14 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
 
 export const metadata: Metadata = {
-  title: "Sector Hubs — Engineering Signals & VC Deal Flow",
+  title: "Sector Hubs, Engineering Signals & VC Deal Flow",
   description:
     "Curated sector hubs aggregating tracked companies, active venture funds, engineering leaders, and metrics across AI infra, AI/ML, developer tools, cloud infrastructure, databases, observability, analytics, fintech, and productivity.",
   alternates: { canonical: "/sector" },
   openGraph: {
     title: "Sector Hubs",
     description:
-      "Curated sector hubs for Corp Dev, PE operating partners, and emerging managers — companies, funds, founders, and metrics per sector.",
+      "Curated sector hubs for Corp Dev, PE operating partners, and emerging managers, companies, funds, founders, and metrics per sector.",
     type: "website",
     url: "/sector",
   },
@@ -115,14 +115,14 @@ export default function SectorHubIndexPage() {
           Sector Hubs
         </h1>
         <p className="text-sky-400 text-base leading-relaxed mb-6 font-medium">
-          Companies, funds, and engineering leaders mapped per sector — for Corp Dev, PE operating
+          Companies, funds, and engineering leaders mapped per sector, for Corp Dev, PE operating
           partners, and emerging managers.
         </p>
         <p className="text-gray-400 text-base leading-relaxed mb-10">
           Each sector hub aggregates the four curated entity corpora VC Deal Flow Signal
           maintains: tracked companies with public GitHub orgs, venture funds whose published
           thesis covers the sector, notable engineering leaders, and the metrics we use to read
-          momentum. These are seeded for Marcus 100 reach — they are not a Crunchbase-scale
+          momentum. These are seeded for Marcus 100 reach, they are not a Crunchbase-scale
           inventory.
         </p>
 

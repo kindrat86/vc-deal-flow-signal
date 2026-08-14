@@ -4,7 +4,7 @@ import { glossaryTerms } from "@/content/glossary";
 import { EmbedAutoHeight } from "@/components/EmbedAutoHeight";
 
 /**
- * /embed/define/[term] — iframe-embeddable glossary card.
+ * /embed/define/[term], iframe-embeddable glossary card.
  *
  * Distribution lever: tech blogs, Substack newsletters, Notion handbooks,
  * and Ghost publications that mention a VC term (e.g., "engineering
@@ -13,7 +13,7 @@ import { EmbedAutoHeight } from "@/components/EmbedAutoHeight";
  *   <iframe src="https://signals.gitdealflow.com/embed/define/commit-velocity" />
  *
  * snippet and get a definition card with persistent attribution. Same
- * iframe contract as /embed/tools/[slug] — iframe-friendly headers in
+ * iframe contract as /embed/tools/[slug], iframe-friendly headers in
  * next.config.ts, no site chrome (NotInEmbed strips Header/Footer for
  * /embed/* paths), CC BY 4.0 attribution baked into the asset.
  *
@@ -54,10 +54,10 @@ export async function generateMetadata({
   if (!t) return {};
   const url = `${SITE}/embed/define/${term}`;
   return {
-    title: `${t.term} — Embed`,
+    title: `${t.term}, Embed`,
     description: `Embeddable glossary card for "${t.term}". ${firstSentence(t.definition)} CC BY 4.0.`,
     alternates: { canonical: url },
-    // Iframe surface — keep it out of search so it doesn't compete with
+    // Iframe surface, keep it out of search so it doesn't compete with
     // the canonical /define/<term> page for the same head terms.
     robots: { index: false, follow: false },
   };

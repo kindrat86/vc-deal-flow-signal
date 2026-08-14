@@ -32,7 +32,7 @@ export async function generateMetadata({
   if (!entry) return {};
 
   const url = `${SITE}/solo-founder-tracker/${entry.slug}`;
-  const title = `${entry.name} — Solo-Founder Tracker (commit / star / contributor thresholds)`;
+  const title = `${entry.name}, Solo-Founder Tracker (commit / star / contributor thresholds)`;
   const description = `${entry.tagline} Threshold definition, observable acceleration shape, and most common false-positive pattern for spotting one-engineer companies in ${entry.name}.`;
 
   return {
@@ -47,7 +47,7 @@ export async function generateMetadata({
     },
     twitter: {
       card: "summary_large_image",
-      title: `${entry.name} — Solo-Founder Tracker`,
+      title: `${entry.name}, Solo-Founder Tracker`,
       description: entry.tagline,
     },
   };
@@ -82,7 +82,7 @@ function buildJsonLd(entry: SoloFounderSectorEntry): object {
         "@type": "WebPage",
         "@id": `${url}#webpage`,
         url,
-        name: `${entry.name} — Solo-Founder Tracker`,
+        name: `${entry.name}, Solo-Founder Tracker`,
         description: entry.tagline,
         inLanguage: "en-US",
         datePublished: lastModifiedIso,
@@ -109,7 +109,7 @@ function buildJsonLd(entry: SoloFounderSectorEntry): object {
       {
         "@type": "DefinedTermSet",
         "@id": `${url}#thresholds`,
-        name: `Solo-Founder Thresholds — ${entry.name}`,
+        name: `Solo-Founder Thresholds, ${entry.name}`,
         description: `Per-sector thresholds for identifying one-engineer companies on GitHub in ${entry.name}.`,
         hasDefinedTerm: [
           {
@@ -173,7 +173,7 @@ function buildJsonLd(entry: SoloFounderSectorEntry): object {
       },
       {
         "@type": "ItemList",
-        name: `Related Solo-Founder Tracker sectors — ${entry.name}`,
+        name: `Related Solo-Founder Tracker sectors, ${entry.name}`,
         numberOfItems: entry.relatedSectors.length,
         itemListOrder: "https://schema.org/ItemListUnordered",
         itemListElement: entry.relatedSectors
@@ -183,7 +183,7 @@ function buildJsonLd(entry: SoloFounderSectorEntry): object {
             return {
               "@type": "ListItem",
               position: i + 1,
-              name: `${r.name} — Solo-Founder Tracker`,
+              name: `${r.name}, Solo-Founder Tracker`,
               url: `${SITE}/solo-founder-tracker/${r.slug}`,
             };
           })
@@ -191,7 +191,7 @@ function buildJsonLd(entry: SoloFounderSectorEntry): object {
       },
       {
         "@type": "WebAPI",
-        name: "VC Deal Flow Signal — Public Agent API",
+        name: "VC Deal Flow Signal, Public Agent API",
         documentation: `${SITE}/api/openapi.json`,
         endpointURL: [
           `${SITE}/api/signals.json`,
@@ -253,7 +253,7 @@ export default async function SoloFounderSectorPage({ params }: PageProps) {
             Sector tracker · One-engineer companies · Threshold-driven
           </p>
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight">
-            {entry.name} — the{" "}
+            {entry.name}, the{" "}
             <span className="text-sky-400">one-person unicorn</span> lens.
           </h1>
           <p
@@ -270,7 +270,7 @@ export default async function SoloFounderSectorPage({ params }: PageProps) {
           data-agent-summary
         >
           <p className="text-amber-300 text-[10px] font-semibold uppercase tracking-wider">
-            Thresholds — {entry.name}
+            Thresholds, {entry.name}
           </p>
           <h2 className="text-xl sm:text-2xl font-bold text-gray-100">
             What makes a {entry.name} repo &ldquo;solo-founder&rdquo; here
@@ -364,7 +364,7 @@ export default async function SoloFounderSectorPage({ params }: PageProps) {
 
         <section className="space-y-3 rounded-xl border border-slate-800 bg-slate-900/40 p-5 sm:p-6">
           <p className="text-amber-300 text-[10px] font-semibold uppercase tracking-wider">
-            Archetype (composite — not a real person)
+            Archetype (composite, not a real person)
           </p>
           <h2 className="text-xl sm:text-2xl font-bold text-gray-100">
             The {entry.name} solo-founder shape, in one sentence
@@ -373,7 +373,7 @@ export default async function SoloFounderSectorPage({ params }: PageProps) {
             {entry.archetype}
           </p>
           <p className="text-gray-500 text-xs leading-relaxed">
-            Composite archetype. We don&rsquo;t name founders publicly — that
+            Composite archetype. We don&rsquo;t name founders publicly, that
             edge belongs to dashboard subscribers, not the open web.
           </p>
         </section>

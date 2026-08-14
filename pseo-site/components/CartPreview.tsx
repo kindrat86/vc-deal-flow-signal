@@ -3,16 +3,16 @@
 import { useEffect, useState } from "react";
 
 // Variant tag must stay short (Stripe metadata caps each value at 500
-// chars) and ASCII-safe — kept in lockstep with VARIANT_RX in
+// chars) and ASCII-safe, kept in lockstep with VARIANT_RX in
 // /api/checkout/session/route.ts. Mismatched shapes are dropped silently
 // rather than 400-ing the buyer.
 const VARIANT_RX = /^[a-zA-Z0-9_.-]{1,32}$/;
 
-// Brunson DotCom Ch 18 — TRUE order bump.
+// Brunson DotCom Ch 18, TRUE order bump.
 //
 // Pre-2026-05-08 behaviour: this checkbox SWAPPED the €7 First Look for
 // the €1,797 Sector Sweep via a separate Stripe Payment Link. That's not
-// what Brunson means by an order bump — a bump is an ADDITIVE checkbox
+// what Brunson means by an order bump, a bump is an ADDITIVE checkbox
 // that lifts AOV on the same order. The Sector Sweep is now the OTO #1
 // rung on /firstlook/thanks (one-click via the saved card), so this
 // component reclaims the bump pattern as its true shape: a small,
@@ -35,10 +35,10 @@ const BASE_LINE = {
 
 const BUMP_LINE = {
   // Mirrors BUMPS.methodology_vault in lib/stripe-tiers.ts (€19, currency
-  // EUR). If you change the price here, change it there too — the Stripe
+  // EUR). If you change the price here, change it there too, the Stripe
   // checkout uses the server-side number, this component is presentation.
   bumpKey: "methodology_vault",
-  label: "Methodology Vault — full PDF",
+  label: "Methodology Vault, full PDF",
   detail:
     "38-page deep-dive on every signal definition + the 3 confounders the SSRN paper does not name",
   price: 19,
@@ -47,7 +47,7 @@ const BUMP_LINE = {
 export default function CartPreview() {
   const [bumpOn, setBumpOn] = useState(false);
 
-  // Brunson Expert Secrets Ch 19 (Test, Test, Test) — variant attribution.
+  // Brunson Expert Secrets Ch 19 (Test, Test, Test), variant attribution.
   // /firstlook stays fully static (force-static) for SEO + edge-cache, so
   // we read ?variant= from window.location.search after mount and inject
   // it into the checkout form as a hidden field. /api/checkout/session
@@ -62,8 +62,8 @@ export default function CartPreview() {
 
   const subtotal = BASE_LINE.price + (bumpOn ? BUMP_LINE.price : 0);
   const ctaLabel = bumpOn
-    ? `Check out — €${subtotal} →`
-    : `Check out — €${subtotal} →`;
+    ? `Check out, €${subtotal} →`
+    : `Check out, €${subtotal} →`;
 
   return (
     <section
@@ -143,15 +143,15 @@ export default function CartPreview() {
 
         {bumpOn ? (
           <p className="text-emerald-300 text-[11px] sm:text-xs leading-snug">
-            ✓ <strong>Methodology Vault</strong> ships in the same intake email — no second order, no shipping.
+            ✓ <strong>Methodology Vault</strong> ships in the same intake email, no second order, no shipping.
           </p>
         ) : (
           <p className="text-gray-400 text-[11px] sm:text-xs leading-snug">
-            Tick the bump above for the 38-page Methodology Vault — instant PDF, +€{BUMP_LINE.price} only at this step.
+            Tick the bump above for the 38-page Methodology Vault, instant PDF, +€{BUMP_LINE.price} only at this step.
           </p>
         )}
 
-        {/* Single form path — same Stripe Checkout for bumped + base orders.
+        {/* Single form path, same Stripe Checkout for bumped + base orders.
             That preserves setup_future_usage='off_session' so the OTO chain
             on /firstlook/thanks fires identically for every buyer. */}
         <form action="/api/checkout/session" method="POST">

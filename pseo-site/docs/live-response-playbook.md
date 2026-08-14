@@ -1,4 +1,4 @@
-# GitDealFlow — live response playbook
+# GitDealFlow, live response playbook
 
 Purpose: handle real replies fast without improvising, overexplaining, or sending too many links.
 
@@ -56,7 +56,7 @@ What they mean:
 - “Show me that this signal actually preceded something real.”
 
 Reply:
-The proof page is here — real cases where the signal showed up before the public round: https://signals.gitdealflow.com/from-stars-to-seed
+The proof page is here, real cases where the signal showed up before the public round: https://signals.gitdealflow.com/from-stars-to-seed
 
 Send:
 - `/from-stars-to-seed`
@@ -182,7 +182,7 @@ What they mean:
 - strongest real-world signal
 
 Reply:
-Thanks — happy to share the cleanest page for that context. This is the best starting point: [one page only]
+Thanks, happy to share the cleanest page for that context. This is the best starting point: [one page only]
 
 Then choose page by introduced context.
 

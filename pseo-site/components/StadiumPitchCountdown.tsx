@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { deconstructDuration } from "@/lib/stadium-pitch-schedule";
 
 /**
- * Stadium Pitch — live countdown ticker.
+ * Stadium Pitch, live countdown ticker.
  *
  * Pure client component. SSR renders nothing (placeholder skeleton); on
  * mount, hydrates with the live countdown to `targetIso` and re-renders
@@ -17,9 +17,9 @@ import { deconstructDuration } from "@/lib/stadium-pitch-schedule";
 type Props = {
   /** ISO 8601 timestamp of the moment we're counting down to. */
   targetIso: string;
-  /** Optional accent class — overrides the default sky-400 for live state. */
+  /** Optional accent class, overrides the default sky-400 for live state. */
   accentClass?: string;
-  /** Compact mode — single line, smaller numbers. */
+  /** Compact mode, single line, smaller numbers. */
   compact?: boolean;
 };
 

@@ -1,5 +1,5 @@
 /**
- * /api/answer — direct Q→A retrieval API for AI agents.
+ * /api/answer, direct Q→A retrieval API for AI agents.
  *
  * Single-shot answer endpoint. Pass `?q=` (or POST { question }) and get back
  * a citation-ready answer object: short answer + supporting facts + canonical
@@ -16,7 +16,7 @@ import { agentQueries } from "@/content/agent-queries";
 import { standaloneFaqs } from "@/content/standalone-faqs";
 
 // Per-request because the answer depends on `?q=`. Vercel's CDN does NOT
-// include the query string in its cache key by default — so we deliberately
+// include the query string in its cache key by default, so we deliberately
 // avoid `force-static` + `s-maxage` here, otherwise the first cached response
 // (typically the empty-q error) is served for every subsequent query.
 export const dynamic = "force-dynamic";
@@ -160,7 +160,7 @@ export async function OPTIONS() {
 function usageEnvelope() {
   return {
     _meta: {
-      name: "VC Deal Flow Signal — Direct Answer API",
+      name: "VC Deal Flow Signal, Direct Answer API",
       description:
         "Single-shot Q→A retrieval over the full /answers + /faq corpus. Designed for AI agents that prefer JSON over HTML scraping. Returns a citation-ready Question/Answer envelope.",
       usage: "GET /api/answer?q={question}  or  POST {\"question\":\"...\"}",

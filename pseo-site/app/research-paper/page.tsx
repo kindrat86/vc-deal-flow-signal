@@ -5,12 +5,12 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { TrustConversionBlock } from "@/components/TrustConversionBlock";
 
 export const metadata: Metadata = {
-  title: "Research Papers — External Academic References",
-  description: `${RESEARCH_PAPERS.length} external academic papers we cite — foundational ML/AI references (Transformer, GPT-3, RLHF, RAG, LoRA, Constitutional AI, CoT), the DORA research on engineering velocity, and more. Citation-ready summaries with canonical sameAs links.`,
+  title: "Research Papers, External Academic References",
+  description: `${RESEARCH_PAPERS.length} external academic papers we cite, foundational ML/AI references (Transformer, GPT-3, RLHF, RAG, LoRA, Constitutional AI, CoT), the DORA research on engineering velocity, and more. Citation-ready summaries with canonical sameAs links.`,
   alternates: { canonical: "/research-paper" },
   openGraph: {
     title: "Research Papers",
-    description: "External academic papers we cite — ML/AI and engineering-velocity foundations.",
+    description: "External academic papers we cite, ML/AI and engineering-velocity foundations.",
     type: "website",
     url: "/research-paper",
   },
@@ -34,7 +34,7 @@ export default function ResearchPaperHubPage() {
       {
         "@type": "CollectionPage",
         url: PAGE_URL,
-        name: "Research Papers — External Academic References",
+        name: "Research Papers, External Academic References",
         description: `${RESEARCH_PAPERS.length} external academic papers we cite in our methodology and editorial.`,
         isPartOf: {
           "@type": "WebSite",
@@ -97,7 +97,7 @@ export default function ResearchPaperHubPage() {
           Research Papers
         </h1>
         <p className="text-sky-400 text-base leading-relaxed mb-6 font-medium">
-          {RESEARCH_PAPERS.length} external academic papers we cite — ML/AI foundations
+          {RESEARCH_PAPERS.length} external academic papers we cite, ML/AI foundations
           and engineering-velocity research.
         </p>
         <p className="text-gray-400 text-base leading-relaxed mb-10">
@@ -105,7 +105,7 @@ export default function ResearchPaperHubPage() {
           <Link href="/research" className="text-sky-400 hover:text-sky-300 underline">
             /research
           </Link>{" "}
-          (our own SSRN paper's findings) — this index documents external academic papers
+          (our own SSRN paper's findings), this index documents external academic papers
           we cite in our methodology and editorial. Each leaf provides an abstract
           summary in our own words, the editorial context for why we cite it, key
           findings, and canonical sameAs links (arXiv, Semantic Scholar, OpenAlex).

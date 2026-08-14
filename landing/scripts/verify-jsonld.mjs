@@ -4,9 +4,9 @@
  *
  * Why this exists alongside scripts/validate_jsonld.py: that one runs at
  * checkout on committed source and skips build directories by design. The
- * corruption that actually reached Google — Search Console "Unparsable
+ * corruption that actually reached Google, Search Console "Unparsable
  * structured data / Parsing error: Missing ',' or '}'" on voicelogpro.com,
- * 2026-07-25 — is introduced *between* the repo and the deployed page, by
+ * 2026-07-25, is introduced *between* the repo and the deployed page, by
  * the centrally generated pSEO pages and by build-time post-processors. A
  * source-only lint structurally cannot see that class of bug.
  *
@@ -27,24 +27,24 @@
  * builds, and local `vercel build && vercel deploy --prebuilt` alike) and node
  * is guaranteed in all of them, while python3 is not.
  *
- * Self-contained by design — no cross-repo import, so it works in Vercel's
+ * Self-contained by design, no cross-repo import, so it works in Vercel's
  * shallow clone. Keep the copies in the 10 site repos identical.
  *
  * Usage: node scripts/verify-jsonld.mjs [dir ...]
- *   Default target: vercel.json's `outputDirectory` — the tree that actually
+ *   Default target: vercel.json's `outputDirectory`, the tree that actually
  *   ships. Exit 1 on any bad block, or if a named directory does not exist.
  *
  * The default was hardcoded to `dist` until 2026-07-25, which is wrong on every
  * site that deploys from the repo root. This site has `outputDirectory: "."` and
- * no dist/ at all, so an argument-less run did not lint the wrong tree — it
- * exited 1 with `dist not found — run the build first`, on a site that has no
+ * no dist/ at all, so an argument-less run did not lint the wrong tree, it
+ * exited 1 with `dist not found, run the build first`, on a site that has no
  * build. Same misdirected default as churnlens (where it linted 78 stale
  * .vercelignored pages instead of the 294 real ones), just a louder failure.
  * Reading `outputDirectory` keeps the copies in the 10 site repos identical AND
- * correct per-site (this site "." — voicelogpro "dist").
+ * correct per-site (this site ".", voicelogpro "dist").
  *
  * Note for this repo specifically: vercel.json's `buildCommand` *is* this gate
- * (`node scripts/verify-jsonld.mjs .`), so it runs on every deploy — which is
+ * (`node scripts/verify-jsonld.mjs .`), so it runs on every deploy, which is
  * also why `scripts/` cannot be .vercelignored here, unlike churnlens and
  * carshake: the file has to exist in the build container.
  *
@@ -65,7 +65,7 @@ function defaultTarget() {
       return { dir: cfg.outputDirectory, why: 'vercel.json outputDirectory' };
     }
   } catch {
-    // No vercel.json, or unreadable — fall through to the heuristic.
+    // No vercel.json, or unreadable, fall through to the heuristic.
   }
   if (existsSync('dist') && statSync('dist').isDirectory()) {
     return { dir: 'dist', why: 'no outputDirectory in vercel.json; dist/ exists' };
@@ -91,18 +91,18 @@ const SKIP = new Set([
 // .vercelignore is the authority on what ships, so honour it rather than letting
 // the hardcoded list above drift away from it. Deliberately narrow: only bare
 // top-level directory names (`dist/`, `scripts/`, `/aeo`), never globs or nested
-// paths. A single leading slash is stripped — it is the .vercelignore idiom for
+// paths. A single leading slash is stripped, it is the .vercelignore idiom for
 // "top level only", and carshake's file is written entirely in that style, so
 // rejecting it would silently honour nothing there.
 //
 // Currently a no-op in this repo: .vercelignore holds one entry, `spec.md`, and
-// it is not a directory. Kept identical to the other copies anyway — the point of
+// it is not a directory. Kept identical to the other copies anyway, the point of
 // this function is that the skip list cannot drift from what Vercel obeys, and
 // that guarantee is worth having before the file grows rather than after.
 //
 // This is the one place where the gate is allowed to shrink its own surface, so
 // it is a real hazard: a green gate bought by narrowing coverage looks identical
-// to a green gate that checked everything. Two things keep it honest — the names
+// to a green gate that checked everything. Two things keep it honest, the names
 // come from the same file Vercel obeys (so anything skipped is genuinely
 // unrequestable), and every skipped name is printed on every run, so the surface
 // is visible in the log instead of implied. An explicitly named directory is
@@ -138,7 +138,7 @@ const BLOCK_RE =
 const SIGNATURES = [
   {
     re: /https:\/\/\*{3}/,
-    msg: 'clobbered @context (https://*** — expected https://schema.org)',
+    msg: 'clobbered @context (https://***, expected https://schema.org)',
   },
   {
     re: /"@context"\s*:\s*"[^"]*@type/,
@@ -198,7 +198,7 @@ function check(path) {
     try {
       parsed = JSON.parse(raw);
     } catch (err) {
-      errors.push(`${rel} [block ${i}]: invalid JSON — ${err.message}`);
+      errors.push(`${rel} [block ${i}]: invalid JSON, ${err.message}`);
       continue;
     }
 
@@ -218,7 +218,7 @@ function check(path) {
 }
 
 if (defaultWhy) {
-  console.log(`[verify-jsonld] no target given — defaulting to ${defaultWhy}`);
+  console.log(`[verify-jsonld] no target given, defaulting to ${defaultWhy}`);
 }
 if (ignoredDirs.length) {
   console.log(
@@ -234,7 +234,7 @@ for (const d of dirs) {
   if (!existsSync(root)) {
     console.error(
       `❌ verify-jsonld: ${d} not found` +
-        (d === 'dist' ? ' — run the build first.' : '.')
+        (d === 'dist' ? ', run the build first.' : '.')
     );
     process.exit(1);
   }
@@ -252,14 +252,14 @@ console.log(
 
 if (errors.length) {
   console.error(
-    `\n❌ verify-jsonld: ${errors.length} error(s) — refusing to ship broken structured data:`
+    `\n❌ verify-jsonld: ${errors.length} error(s), refusing to ship broken structured data:`
   );
   for (const e of errors) console.error(`  - ${e}`);
   console.error(
-    '\nFix the generator or post-processor that emitted this, not the page — ' +
+    '\nFix the generator or post-processor that emitted this, not the page, ' +
       'regeneration will re-introduce a hand-patched file.'
   );
   process.exit(1);
 }
 
-console.log('[verify-jsonld] OK — all shipped JSON-LD parses');
+console.log('[verify-jsonld] OK, all shipped JSON-LD parses');

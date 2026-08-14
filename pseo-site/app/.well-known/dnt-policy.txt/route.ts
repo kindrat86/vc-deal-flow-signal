@@ -1,5 +1,5 @@
 /**
- * /.well-known/dnt-policy.txt — EFF Do-Not-Track Policy v1.0 compliance statement.
+ * /.well-known/dnt-policy.txt, EFF Do-Not-Track Policy v1.0 compliance statement.
  *
  * F38 (2026-05-08). The EFF's DNT Policy (https://www.eff.org/dnt-policy)
  * is the de-facto standard interpretation of the W3C Do Not Track header
@@ -8,7 +8,7 @@
  * signal, especially with privacy-aware AI agents that probe this path.
  *
  * Statement intentionally near-verbatim from the EFF template (which is
- * the contract — the magic of the DNT Policy is that it is identical
+ * the contract, the magic of the DNT Policy is that it is identical
  * across all signatories).
  */
 
@@ -35,7 +35,7 @@ Briefly:
      necessary to deliver the requested page.
 
   2. Pseudonymous, aggregate analytics (page-view counts, sector
-     popularity) are still collected — these are not "tracking" under
+     popularity) are still collected, these are not "tracking" under
      the EFF DNT Policy.
 
   3. Logs that incidentally capture IP addresses and user agents are
@@ -48,7 +48,7 @@ Briefly:
      re-identification.
 
   5. This policy does not exempt us from honoring valid GDPR / CCPA
-     access, deletion, or opt-out requests — those operate independently.
+     access, deletion, or opt-out requests, those operate independently.
 
 Contact for DNT-related questions: signals@gitdealflow.com
 Reachable at: https://signals.gitdealflow.com/privacy

@@ -1,6 +1,6 @@
 import Link from "next/link";
 
-// Brunson DotCom Secrets Ch 12 + Expert Secrets Ch 13 — the Stack Slide.
+// Brunson DotCom Secrets Ch 12 + Expert Secrets Ch 13, the Stack Slide.
 // Russell-Brunson HSO audit 2026-05-08 flagged that the full priced
 // stack lives on /firstlook (VALUE_STACK) and /walkthrough
 // (STACK_ITEMS) but never on the home page. Most traffic never gets
@@ -18,42 +18,42 @@ type StackLine = {
 
 const STACK: readonly StackLine[] = [
   {
-    label: "Live Dashboard — 140 ranked orgs, refreshed Mondays 06:00 UTC",
+    label: "Live Dashboard, 140 ranked orgs, refreshed Mondays 06:00 UTC",
     anchor: "€348 / yr",
     priced: 348,
   },
   {
-    label: "219-Startup Backtest CSV — the full SSRN panel, five quarters",
+    label: "219-Startup Backtest CSV, the full SSRN panel, five quarters",
     anchor: "€297 once",
     priced: 297,
   },
   {
-    label: "Monthly Sector Deep-Dive PDF — 12 issues per year, your sector",
+    label: "Monthly Sector Deep-Dive PDF, 12 issues per year, your sector",
     anchor: "€588 / yr",
     priced: 588,
   },
   {
-    label: "Two Free Chrome Extensions — Crunchbase badge + VC GitHub Lookup",
+    label: "Two Free Chrome Extensions, Crunchbase badge + VC GitHub Lookup",
     anchor: "€198 / yr value",
     priced: 198,
   },
   {
-    label: "Async Watchlist Build — 10 orgs matching your written thesis",
+    label: "Async Watchlist Build, 10 orgs matching your written thesis",
     anchor: "€297 once",
     priced: 297,
   },
   {
-    label: "Free MCP Server — 6 tools inside Claude / Cursor / Windsurf",
+    label: "Free MCP Server, 6 tools inside Claude / Cursor / Windsurf",
     anchor: "Bundled, never gated",
     priced: 0,
   },
   {
-    label: "Methodology Vault — SSRN preprint + regression code, CC BY 4.0",
+    label: "Methodology Vault, SSRN preprint + regression code, CC BY 4.0",
     anchor: "Open by default",
     priced: 0,
   },
   {
-    label: "30-Day Signal-or-It's-Free Guarantee — reply REFUND, no clawback",
+    label: "30-Day Signal-or-It's-Free Guarantee, reply REFUND, no clawback",
     anchor: "Risk-reversal bonus",
     priced: 0,
   },
@@ -64,7 +64,7 @@ const PRICED_TOTAL = STACK.reduce((sum, item) => sum + item.priced, 0);
 export default function HomeOfferStack() {
   return (
     <section
-      aria-label="What 49 EUR per month unlocks — the priced stack"
+      aria-label="What 49 EUR per month unlocks, the priced stack"
       className="rounded-2xl border border-emerald-700/40 bg-gradient-to-br from-emerald-950/30 via-slate-900 to-slate-950 p-6 sm:p-8"
     >
       <div className="max-w-3xl">
@@ -79,7 +79,7 @@ export default function HomeOfferStack() {
         </h2>
         <p className="text-gray-400 text-sm sm:text-base mb-6 leading-relaxed">
           Each line is anchored against what the same artefact costs elsewhere
-          — Pitchbook for the dashboard tier, McKinsey-grade for the deep
+Pitchbook for the dashboard tier, McKinsey-grade for the deep
           dives, hand-built for the watchlist. The total below is what a fund
           would spend assembling each piece standalone. The founding
           rate is what you pay once to lock the whole stack
@@ -145,7 +145,7 @@ export default function HomeOfferStack() {
         <p className="mt-4 text-[11px] text-gray-500 leading-relaxed">
           Founding rate locked for the lifetime of your subscription. Public
           rate will rise to €49 / month once the founding cohort closes.
-          Cancel anytime — guarantee covers the first 30 days, no questions.
+          Cancel anytime, guarantee covers the first 30 days, no questions.
         </p>
       </div>
     </section>

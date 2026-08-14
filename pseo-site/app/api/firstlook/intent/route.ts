@@ -6,7 +6,7 @@ import { isNonceUsed, markNonceUsed } from "@/lib/runtime-cache";
 import { isExcluded } from "@/lib/excluded-emails";
 import { pickAudienceId } from "@/lib/resend-audience";
 
-// Sector pre-capture endpoint — Brunson DotCom Secrets Ch 13 ("Best Bait")
+// Sector pre-capture endpoint, Brunson DotCom Secrets Ch 13 ("Best Bait")
 // reactivation lever. The /firstlook page asks "which sector?" *before*
 // checkout. Capturing it here:
 //   1. fills a list segmented by sector even when the visitor doesn't pay,
@@ -80,13 +80,13 @@ async function notifyAdmin(email: string, sector: string, source: string) {
         from: `${FROM_NAME} <${FROM_EMAIL}>`,
         bcc: "sales@sipiteno.com",
         to: ADMIN_EMAIL,
-        subject: `First Look intent — ${sector} (${email})`,
+        subject: `First Look intent, ${sector} (${email})`,
         html: `<p><strong>New First Look sector intent</strong></p>
 <p>Email: ${escapeHtml(email)}</p>
 <p>Sector: ${escapeHtml(sector)}</p>
 <p>Source: ${escapeHtml(source)}</p>
 <p>Time: ${new Date().toISOString()}</p>
-<p>Pre-warm the panel for this sector — the visitor may convert at checkout in the next 30 minutes.</p>`,
+<p>Pre-warm the panel for this sector, the visitor may convert at checkout in the next 30 minutes.</p>`,
       }),
     });
   } catch (err) {
@@ -148,7 +148,7 @@ async function addToAudience(email: string, sector: string) {
 export async function POST(req: NextRequest) {
   // Guards mirror app/api/subscribe/route.ts (audit 2026-07-18): this route
   // fires an admin email + Resend audience write, so it needs the same
-  // origin allowlist, per-IP rate limit, and honeypot — the 7-day dedup
+  // origin allowlist, per-IP rate limit, and honeypot, the 7-day dedup
   // nonce below stays as the secondary guard.
   if (!isAllowedOrigin(req)) {
     return NextResponse.json(
@@ -234,7 +234,7 @@ export async function POST(req: NextRequest) {
     sector,
     next: "/firstlook#cart",
     message:
-      "Sector locked. Continue to checkout — your sector is pre-tagged on the order.",
+      "Sector locked. Continue to checkout, your sector is pre-tagged on the order.",
   });
 }
 

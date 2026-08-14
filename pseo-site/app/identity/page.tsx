@@ -11,11 +11,11 @@ import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 export const dynamic = "force-static";
 
 /**
- * /identity — Brunson DotCom Secrets Ch 4 (Three Core Markets / Desires).
+ * /identity, Brunson DotCom Secrets Ch 4 (Three Core Markets / Desires).
  *
  * The core book move: pick ONE primary market (Wealth: returns) and layer in
  * the secondary (Status: analyst reputation) as an identity transformation.
- * The buyer doesn't want a tool — they want to *become* the investor who's
+ * The buyer doesn't want a tool, they want to *become* the investor who's
  * early on purpose: the one who moves on a translated signal before the deck
  * even exists. Avatar = Marcus (corp-dev / PE / non-eng VP, solo angel / scout
  * / seed): he evaluates companies but does NOT read code. The AFTER identity
@@ -32,12 +32,12 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title:
-    "Who you become — moving earlier with a clearer signal",
+    "Who you become, moving earlier with a clearer signal",
   description:
     "A direct guide to the seven shifts that help you stop hearing the story late and start moving with a clearer signal while the window is still calm.",
   alternates: { canonical: "/identity" },
   openGraph: {
-    title: "Who you become — moving earlier with a clearer signal",
+    title: "Who you become, moving earlier with a clearer signal",
     description:
       "Stop hearing the story late. Start moving with a clearer signal while the window is still calm.",
     url: "https://signals.gitdealflow.com/identity",
@@ -50,8 +50,8 @@ const BEFORE_AFTER = [
     n: 1,
     before: "You wait for the deck to land in your inbox.",
     after:
-      "You get a plain-English read on which teams are accelerating, 21–47 days before the deck is even drafted.",
-    why: "Decks are written for the next round. The engineering is the company's actual behaviour, updated daily, by people who don't know they're being read. You never open a repo — the read is done for you.",
+      "You get a plain-English read on which teams are accelerating, 21-47 days before the deck is even drafted.",
+    why: "Decks are written for the next round. The engineering is the company's actual behaviour, updated daily, by people who don't know they're being read. You never open a repo, the read is done for you.",
   },
   {
     n: 2,
@@ -69,8 +69,8 @@ const BEFORE_AFTER = [
     n: 4,
     before: "You evaluate startups against the deck's claims.",
     after:
-      "You weigh the deck against what the engineering team is actually shipping — translated for you, no code required.",
-    why: "If the build activity disagrees with the team slide, you've found the deal's first credibility hole — and the founder will respect you for spotting it.",
+      "You weigh the deck against what the engineering team is actually shipping, translated for you, no code required.",
+    why: "If the build activity disagrees with the team slide, you've found the deal's first credibility hole, and the founder will respect you for spotting it.",
   },
   {
     n: 5,
@@ -83,15 +83,15 @@ const BEFORE_AFTER = [
     n: 6,
     before: "Your cold email opens with \"Loved your deck.\"",
     after:
-      "Your cold email opens with the specific detail the signal handed you: \"I noticed your team just shipped [specific feature] — that's the third infra build this month, and a new engineer just joined from [Series-B fintech].\"",
-    why: "The first email reads as fungible. The second reads as inevitable — and you didn't read a line of code to send it. Reply rate is roughly 4× higher.",
+      "Your cold email opens with the specific detail the signal handed you: \"I noticed your team just shipped [specific feature], that's the third infra build this month, and a new engineer just joined from [Series-B fintech].\"",
+    why: "The first email reads as fungible. The second reads as inevitable, and you didn't read a line of code to send it. Reply rate is roughly 4× higher.",
   },
   {
     n: 7,
     before:
       "You're one of forty analysts who saw the round circulate at the same time.",
     after:
-      "You're the partner whose pipeline note begins \"the engineering signal flagged this on 2026-04-12\" — six weeks before everyone else.",
+      "You're the partner whose pipeline note begins \"the engineering signal flagged this on 2026-04-12\", six weeks before everyone else.",
     why: "The first position is fungible at the term-sheet stage. The second position writes the term sheet.",
   },
 ] as const;
@@ -101,13 +101,13 @@ const ARCHETYPES = [
     name: "The First Mover",
     one: "Moves on the signal before the round exists.",
     body:
-      "You don't trust the narrative until the engineering read confirms it — and you let the tool do that read, in plain English, so you never open a repo. You weigh what a team is actually shipping the way a good journalist reads a press release: for what isn't said. When a partner asks how you found the deal, you don't drop a name. You give a date and a signal.",
+      "You don't trust the narrative until the engineering read confirms it, and you let the tool do that read, in plain English, so you never open a repo. You weigh what a team is actually shipping the way a good journalist reads a press release: for what isn't said. When a partner asks how you found the deal, you don't drop a name. You give a date and a signal.",
   },
   {
     name: "The Pre-Crunchbase Spotter",
     one: "Adds startups to the watchlist before they're on the standard tools.",
     body:
-      "Half the orgs on your radar aren't in Harmonic, Tracxn, or Affinity yet — because they're four contributors deep, two repos in, and the ETL run hasn't reached them. The €7 sector deep-dive named three breakouts in the last quarter that hit Crunchbase six weeks later. By then you'd already written three cheques.",
+      "Half the orgs on your radar aren't in Harmonic, Tracxn, or Affinity yet, because they're four contributors deep, two repos in, and the ETL run hasn't reached them. The €7 sector deep-dive named three breakouts in the last quarter that hit Crunchbase six weeks later. By then you'd already written three cheques.",
   },
   {
     name: "The Anonymous Edge",
@@ -125,13 +125,13 @@ const QUOTES = [
   },
   {
     line:
-      "We dropped Tracxn at €4.2k/month. The dashboard at €49/mo replaced one analyst-hour per week of manual digging — and nobody on the team had to read code to use it. The math wrote itself.",
+      "We dropped Tracxn at €4.2k/month. The dashboard at €49/mo replaced one analyst-hour per week of manual digging, and nobody on the team had to read code to use it. The math wrote itself.",
     role: "Pre-seed scout fund · 4-partner GP",
   },
   {
     line:
       "First time in two years I was first in a round, not third. The founder said I was the only one who knew what their team had actually shipped, not the AngelList one-liner.",
-    role: "Generalist analyst · €15k–50k cheque sizes",
+    role: "Generalist analyst · €15k-50k cheque sizes",
   },
 ] as const;
 
@@ -143,9 +143,9 @@ export default function IdentityPage() {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/identity#webpage",
         url: "https://signals.gitdealflow.com/identity",
-        name: "Who You Become — The Investor Who's Early on Purpose",
+        name: "Who You Become, The Investor Who's Early on Purpose",
         description:
-          "The buyer's identity transformation. Seven shifts from warm-intro-dependent analyst to early-by-signal first mover — no code required. Wealth + Status outcomes named explicitly.",
+          "The buyer's identity transformation. Seven shifts from warm-intro-dependent analyst to early-by-signal first mover, no code required. Wealth + Status outcomes named explicitly.",
         inLanguage: "en-US",
         isPartOf: { "@id": "https://signals.gitdealflow.com/#website" },
         mainEntity: {
@@ -155,7 +155,7 @@ export default function IdentityPage() {
       {
         "@type": "Article",
         "@id": "https://signals.gitdealflow.com/identity#article",
-        headline: "Who You Become — The Investor Who's Early on Purpose",
+        headline: "Who You Become, The Investor Who's Early on Purpose",
         description:
           "Wealth (returns) primary, Status (analyst reputation) secondary. Seven before/after shifts.",
         author: DATA_NERD_AUTHOR_REF,
@@ -201,7 +201,7 @@ export default function IdentityPage() {
           >
             Code-Side Sourcing
           </Link>
-          {" "}— public repository-velocity data as a leading indicator of
+          {" "}, public repository-velocity data as a leading indicator of
           venture-stage outcomes. The shifts below are how the buyer becomes
           a practitioner of that category.
         </p>
@@ -229,11 +229,11 @@ export default function IdentityPage() {
 
       <IdentityBanner />
 
-      {/* EMOTIONAL CAUSE CALLOUT — Brunson Expert Secrets §1 Ch 2 layer 2.
+      {/* EMOTIONAL CAUSE CALLOUT, Brunson Expert Secrets §1 Ch 2 layer 2.
           The before/after shifts below are the intellectual identity
           transformation. This block is the emotional anchor that names
           the moment the reader has actually lived through. The 5th line
-          ("if you've ever closed a laptop…") is the door — anyone who
+          ("if you've ever closed a laptop…") is the door, anyone who
           nods belongs in the seven shifts that follow. Source of truth:
           content/cause.ts. */}
       <section
@@ -263,7 +263,7 @@ export default function IdentityPage() {
           >
             full manifesto
           </Link>
-          {" "}— what we&rsquo;re tired of watching, what we believe, what we
+          {" "}, what we&rsquo;re tired of watching, what we believe, what we
           refuse, the seven pillars, the named enemy, who&rsquo;s on the bus.
         </p>
       </section>
@@ -273,7 +273,7 @@ export default function IdentityPage() {
           The seven shifts
         </p>
         <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug mb-6">
-          Before / after — line by line
+          Before / after, line by line
         </h2>
         <ol className="space-y-6">
           {BEFORE_AFTER.map((shift) => (
@@ -351,8 +351,7 @@ export default function IdentityPage() {
               <p className="text-gray-200 text-base leading-relaxed italic mb-2">
                 &ldquo;{q.line}&rdquo;
               </p>
-              <footer className="text-violet-300 text-xs font-mono uppercase tracking-wider">
-                — {q.role}
+              <footer className="text-violet-300 text-xs font-mono uppercase tracking-wider">{q.role}
               </footer>
             </blockquote>
           ))}
@@ -413,13 +412,13 @@ export default function IdentityPage() {
         </Link>
       </section>
 
-      {/* Brunson Expert Secrets Ch 9 — Three Core Stories.
+      {/* Brunson Expert Secrets Ch 9, Three Core Stories.
           Audit 2026-05-09 (Ch 9 push 94→100): walk the reader from
           Identity into Origin (where the story started) and the Vehicle
           (the long-form walkthrough). The two-door section above closes
           on /firstlook + /walkthrough (commerce intent); this section
           closes on /origin + /walkthrough (story intent). Both sets
-          coexist intentionally — different jobs for different readers. */}
+          coexist intentionally, different jobs for different readers. */}
       <ThreeCoreStoriesNav current="identity" />
 
       <AgentMirrorLinks path="/identity" />

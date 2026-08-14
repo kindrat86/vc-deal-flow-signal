@@ -1,10 +1,10 @@
 /**
- * Stadium Pitch — recurring monthly .ics calendar invite.
+ * Stadium Pitch, recurring monthly .ics calendar invite.
  *
  * Returns an RFC 5545 VCALENDAR with a single VEVENT carrying an
  * RRULE=FREQ=MONTHLY;BYDAY=1WE rule. Once the user imports this once, every
  * future first-Wednesday-of-the-month drop appears in their calendar
- * automatically — no need to re-download.
+ * automatically, no need to re-download.
  *
  * Why force-static: the body is fully deterministic. DTSTART is anchored to
  * a fixed past instance (the May 2026 drop, the first one in the series);
@@ -33,7 +33,7 @@ function escapeIcs(s: string): string {
 
 function fold(line: string): string {
   // RFC 5545 §3.1: lines longer than 75 octets must be folded with
-  // CRLF + space. Short folder — assumes UTF-8 ≈ 1 byte per ascii char.
+  // CRLF + space. Short folder, assumes UTF-8 ≈ 1 byte per ascii char.
   const limit = 75;
   if (line.length <= limit) return line;
   const parts: string[] = [];
@@ -47,17 +47,17 @@ function fold(line: string): string {
 export async function GET() {
   // Observability note: this route is force-static, so it executes once at
   // build time and ships from the CDN forever after. There is no
-  // request-time failure path — any error here would surface as a build
+  // request-time failure path, any error here would surface as a build
   // failure, not a user-visible 500. The try/catch below is a defense
   // against future edits that introduce non-deterministic content (e.g.,
-  // a date constant typo) — it logs with enough context to debug from CI.
+  // a date constant typo), it logs with enough context to debug from CI.
   try {
     const summary = escapeIcs(
-      "VC Deal Flow Signal — State of GitHub Engineering Velocity",
+      "VC Deal Flow Signal, State of GitHub Engineering Velocity",
     );
     const description = escapeIcs(
       [
-        "Monthly Stadium Pitch — written address + 90-second synthetic-voice video.",
+        "Monthly Stadium Pitch, written address + 90-second synthetic-voice video.",
         "",
         "Three sector-level shifts to plan around. Methodology delta from prior month.",
         "One structural call for any investor reading code-side momentum signals.",

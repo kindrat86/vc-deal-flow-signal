@@ -1,10 +1,10 @@
 /**
- * The Data Nerd — character bible for the GitDealFlow social mascot.
+ * The Data Nerd, character bible for the GitDealFlow social mascot.
  *
  * Anonymity rule (project memory, 2026-05-05): synthetic TTS, AI avatars,
  * and mascots are EXPLICITLY allowed. The founder's real face/voice/name
  * never appears. The Data Nerd is the canonical brand character that
- * fronts every social post, video, and audio segment — Twitter/X,
+ * fronts every social post, video, and audio segment, Twitter/X,
  * Instagram, Facebook, TikTok, LinkedIn, podcast.
  *
  * Used by:
@@ -42,13 +42,13 @@ export const DATA_NERD = {
   },
 
   // ── Visual identity ───────────────────────────────────────────
-  // Anonymous — no human face. Composed of:
+  // Anonymous, no human face. Composed of:
   //   - Slate background (#0a0e1a, matches site dark theme)
   //   - Sky-400 (#38bdf8) accent for chart elements
   //   - Emerald-400 (#34d399) for positive signals
   //   - Mono font (Inter Mono) for numbers
   //   - Sans font (Inter) for prose
-  // Avatar: an abstract "constellation" mark — 7 dots arranged like a
+  // Avatar: an abstract "constellation" mark, 7 dots arranged like a
   //   star map, each dot one of the 7 atomic GitHub signals. Generated
   //   in Figma; SVG in /public/data-nerd-avatar.svg.
   visual: {
@@ -86,11 +86,11 @@ export const DATA_NERD = {
   // ── Tone of voice ─────────────────────────────────────────────
   tone: {
     primary: [
-      "Direct — no filler, no jargon stack",
-      "Numerate — every claim has a number behind it",
+      "Direct, no filler, no jargon stack",
+      "Numerate, every claim has a number behind it",
       "Self-deprecating about the framework, not the user",
       "Skeptical of consensus narratives",
-      "Specific about edge cases — frameworks fail and we say where",
+      "Specific about edge cases, frameworks fail and we say where",
     ],
     avoid: [
       "Hype words: 'unlock', 'leverage', 'synergy', 'paradigm', 'disruptive'",
@@ -103,7 +103,7 @@ export const DATA_NERD = {
       "Open with the number, not the conclusion. ('38% close-within-47-days' before 'this works'.)",
       "If you can't cite the data, drop the claim.",
       "When the framework fails, say so. Failure modes are credibility.",
-      "Never use 'we' to mean 'the team' — 'we' is the framework + the data + the methodology paper.",
+      "Never use 'we' to mean 'the team', 'we' is the framework + the data + the methodology paper.",
       "Founder ('I') stays anonymous. The mascot ('the framework' / 'the data') does the talking.",
     ],
   },
@@ -118,7 +118,7 @@ export const DATA_NERD = {
       description:
         "One named startup, one signal, one 30-second walkthrough. Always public-data only. Always with the GitHub URL.",
       example:
-        "Signal of the week: ShadcnUI's 0.42 commit-velocity ratio. 14d ÷ 90d = 1.62. Above the 1.5 threshold for the third week running. github.com/shadcn-ui/ui — Insights → Pulse to verify.",
+        "Signal of the week: ShadcnUI's 0.42 commit-velocity ratio. 14d ÷ 90d = 1.62. Above the 1.5 threshold for the third week running. github.com/shadcn-ui/ui, Insights → Pulse to verify.",
     },
     {
       slug: "framework-explainer",
@@ -152,7 +152,7 @@ export const DATA_NERD = {
       label: "Operator Prompt",
       ratio: 0.10,
       description:
-        "Direct ask of the audience — 'try this on a startup you know'. Conversion-driving.",
+        "Direct ask of the audience, 'try this on a startup you know'. Conversion-driving.",
       example:
         "Try the manual procedure on one startup you almost-invested in. Gut prediction first, then the score. Reply with the delta.",
     },
@@ -160,16 +160,16 @@ export const DATA_NERD = {
 
   // ── Posting cadence ──────────────────────────────────────────
   cadence: {
-    twitter: "Daily — one Signal of the Week + one Data Point + one Operator Prompt across the day",
-    linkedin: "3×/week — long-form Signal of the Week + one Calibration Case + one Framework Explainer",
+    twitter: "Daily, one Signal of the Week + one Data Point + one Operator Prompt across the day",
+    linkedin: "3×/week, long-form Signal of the Week + one Calibration Case + one Framework Explainer",
     instagram:
-      "3×/week — carousel format. Signal of the Week (Mon), Framework Explainer (Wed), Calibration Case (Fri)",
+      "3×/week, carousel format. Signal of the Week (Mon), Framework Explainer (Wed), Calibration Case (Fri)",
     facebook:
-      "1×/week — repurpose the Wednesday Instagram carousel as a Facebook post with extended caption",
+      "1×/week, repurpose the Wednesday Instagram carousel as a Facebook post with extended caption",
     tiktok:
-      "1×/week — 60-second synthetic-voice walkthrough. Reuses the YouTube Short audio.",
+      "1×/week, 60-second synthetic-voice walkthrough. Reuses the YouTube Short audio.",
     youtube_shorts:
-      "1×/week (Wed) — Data Nerd Brief, character-shaped Short via existing tools/video pipeline",
+      "1×/week (Wed), Data Nerd Brief, character-shaped Short via existing tools/video pipeline",
     threads_bluesky:
       "Mirror of Twitter. Same content, posted via the existing Substack Notes + ATproto pipeline.",
   },
@@ -185,7 +185,7 @@ export const DATA_NERD = {
   },
 } as const;
 
-// ── Hashtag bank — used across IG/TikTok/LinkedIn ──────────────
+// ── Hashtag bank, used across IG/TikTok/LinkedIn ──────────────
 export const HASHTAG_BANK = {
   primary: ["#GitDealFlow", "#DataNerd", "#CodeSideSourcing"],
   vertical: [

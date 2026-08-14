@@ -19,7 +19,7 @@ export async function GET() {
 
   const body =
     `---\n` +
-    `title: "VC Deal Flow Signal — ${period.name}"\n` +
+    `title: "VC Deal Flow Signal, ${period.name}"\n` +
     `url: ${BASE_URL}/\n` +
     `description: "Engineering acceleration signals from public GitHub data."\n` +
     `source: VC Deal Flow Signal\n` +
@@ -35,12 +35,12 @@ export async function GET() {
       .join("\n")}\n\n` +
     `## Signal Types\n\n${SIGNAL_TYPES.map(
       (s) =>
-        `- [${s.name}](${BASE_URL}/md/signals/${s.slug}) — ${s.description}`
+        `- [${s.name}](${BASE_URL}/md/signals/${s.slug}), ${s.description}`
     ).join("\n")}\n\n` +
     `## Other Markdown Alternates\n\n` +
     `- [Methodology](${BASE_URL}/md/methodology)\n` +
-    `- [Stage pages](${BASE_URL}/md/stage/seed) — ${BASE_URL}/md/stage/{pre-seed,seed,series-a-b,growth}[-{period}]\n` +
-    `- [Startup pages](${BASE_URL}/md/startup/{slug}) — see [index](${BASE_URL}/llms.txt)\n\n` +
+    `- [Stage pages](${BASE_URL}/md/stage/seed), ${BASE_URL}/md/stage/{pre-seed,seed,series-a-b,growth}[-{period}]\n` +
+    `- [Startup pages](${BASE_URL}/md/startup/{slug}), see [index](${BASE_URL}/llms.txt)\n\n` +
     `## See Also\n\n- [llms.txt](${BASE_URL}/llms.txt)\n- [llms-full.txt](${BASE_URL}/llms-full.txt)\n- [API](${BASE_URL}/api/signals.json)\n`;
 
   return new Response(body, {

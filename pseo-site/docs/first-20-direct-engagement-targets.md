@@ -1,4 +1,4 @@
-# GitDealFlow — first 20 direct-engagement targets
+# GitDealFlow, first 20 direct-engagement targets
 
 Purpose: make active distribution concrete by naming the first live contexts to watch and the first page to send.
 
@@ -8,7 +8,7 @@ Rule:
 - one sentence
 - one page
 
-## Tier 1 — engage first
+## Tier 1, engage first
 
 1. Gergely Orosz
 Platform:
@@ -110,7 +110,7 @@ Angle:
 Follow-up:
 - `/weekly/top-100`
 
-## Tier 2 — engage once Tier 1 is moving
+## Tier 2, engage once Tier 1 is moving
 
 11. Carta
 Platform:
@@ -172,7 +172,7 @@ Angle:
 Follow-up:
 - `/citation-guide`
 
-## Tier 3 — opportunistic / recurring watch
+## Tier 3, opportunistic / recurring watch
 
 17. X investors discussing startup databases
 Platform:
@@ -217,7 +217,7 @@ Follow-up:
 ## Use rule
 
 Do not try to touch all 20.
-Touch 1–2 good contexts per day and log them.
+Touch 1-2 good contexts per day and log them.
 
 ## Command
 

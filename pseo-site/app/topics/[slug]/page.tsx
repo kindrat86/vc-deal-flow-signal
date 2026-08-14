@@ -29,18 +29,18 @@ export async function generateMetadata({
   if (!pillar) return {};
 
   return {
-    title: `${pillar.name} — Topical Series`,
+    title: `${pillar.name}, Topical Series`,
     description: pillar.description,
     keywords: pillar.keywords.join(", "),
     openGraph: {
-      title: `${pillar.name} — Topical Series`,
+      title: `${pillar.name}, Topical Series`,
       description: pillar.description,
       type: "website",
       url: `/topics/${slug}`,
     },
     twitter: {
       card: "summary_large_image",
-      title: `${pillar.name} — Topical Series`,
+      title: `${pillar.name}, Topical Series`,
       description: pillar.description,
     },
     alternates: {
@@ -75,7 +75,7 @@ export default async function TopicHubPage({ params }: PageProps) {
         "@type": "WebPage",
         "@id": `https://signals.gitdealflow.com/topics/${slug}#webpage`,
         url: `https://signals.gitdealflow.com/topics/${slug}`,
-        name: `${pillar.name} — Topical Series | VC Deal Flow Signal`,
+        name: `${pillar.name}, Topical Series | VC Deal Flow Signal`,
         description: pillar.description,
         inLanguage: "en-US",
         isAccessibleForFree: true,
@@ -86,7 +86,7 @@ export default async function TopicHubPage({ params }: PageProps) {
       },
       {
         "@type": "CollectionPage",
-        name: `${pillar.name} — Topical Series`,
+        name: `${pillar.name}, Topical Series`,
         description: pillar.description,
         url: `https://signals.gitdealflow.com/topics/${slug}`,
         about: {
@@ -135,7 +135,7 @@ export default async function TopicHubPage({ params }: PageProps) {
         "@type": "WebPage",
         "@id": `https://signals.gitdealflow.com/topics/${slug}#webpage`,
         url: `https://signals.gitdealflow.com/topics/${slug}`,
-        name: `${pillar.name} — Topical Series`,
+        name: `${pillar.name}, Topical Series`,
         description: pillar.description,
         inLanguage: "en-US",
         isPartOf: { "@id": "https://signals.gitdealflow.com/#website" },
@@ -172,7 +172,7 @@ export default async function TopicHubPage({ params }: PageProps) {
             name: `Where can I follow new posts in this series?`,
             acceptedAnswer: {
               "@type": "Answer",
-              text: `Subscribe to the site-wide RSS at /feed.xml — every new post in any topical series appears in the same feed within five minutes of publish. The free weekly Signal Report email also includes the latest series update.`,
+              text: `Subscribe to the site-wide RSS at /feed.xml, every new post in any topical series appears in the same feed within five minutes of publish. The free weekly Signal Report email also includes the latest series update.`,
               url: "https://signals.gitdealflow.com/feed.xml",
             },
           },

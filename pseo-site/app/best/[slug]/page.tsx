@@ -34,7 +34,7 @@ export async function generateMetadata({
 
   const { sector, year } = parsed;
   const sectorLower = sector.name.toLowerCase();
-  const title = `Best ${sector.name} Startups ${year} — Top Engineering Momentum`;
+  const title = `Best ${sector.name} Startups ${year}, Top Engineering Momentum`;
   const description = `The best ${sectorLower} startups in ${year} ranked by GitHub commit-velocity acceleration. Commit velocity, contributor growth, and breakout signals for investors looking at ${sectorLower}.`;
 
   return {
@@ -101,13 +101,13 @@ export default async function BestSectorPage({ params }: PageProps) {
           "@type": "ListItem",
           position: i + 1,
           name: s.name,
-          description: `${s.description} — ${s.commitVelocityChange} commit velocity change`,
+          description: `${s.description}, ${s.commitVelocityChange} commit velocity change`,
           url: s.githubUrl,
         })),
       },
       {
         "@type": "Dataset",
-        name: `Best ${sector.name} Startups ${year} — Engineering Acceleration Dataset`,
+        name: `Best ${sector.name} Startups ${year}, Engineering Acceleration Dataset`,
         description: `Ranked dataset of ${sorted.length} ${sectorLower} startups in ${year}, scored by GitHub commit velocity change, contributor growth, new repository count, and signal classification. Sourced from public GitHub API data.`,
         url: `https://signals.gitdealflow.com/best/${slug}`,
         identifier: `gitdealflow:best:${slug}`,
@@ -157,7 +157,7 @@ export default async function BestSectorPage({ params }: PageProps) {
             name: `How are the best ${sectorLower} startups ranked?`,
             acceptedAnswer: {
               "@type": "Answer",
-              text: `Startups are ranked by commit velocity change — the percentage change in 14-day commit counts versus the previous period. This measures engineering acceleration, which has historically preceded fundraise announcements by three to six weeks. Data sourced from public GitHub activity.`,
+              text: `Startups are ranked by commit velocity change, the percentage change in 14-day commit counts versus the previous period. This measures engineering acceleration, which has historically preceded fundraise announcements by three to six weeks. Data sourced from public GitHub activity.`,
             },
           },
         ],
@@ -194,7 +194,7 @@ export default async function BestSectorPage({ params }: PageProps) {
           <p className="text-gray-400 text-base leading-relaxed">
             The top {sectorLower} startups in {year}, ranked by GitHub
             engineering acceleration. These are the companies whose engineering
-            teams are shipping the fastest — a signal that has historically
+            teams are shipping the fastest, a signal that has historically
             preceded fundraise announcements by three to six weeks.
           </p>
         </header>
@@ -240,7 +240,7 @@ export default async function BestSectorPage({ params }: PageProps) {
                   .slice(0, 5)
                   .map((s) => s.name)
                   .join(", ")}
-                . Rankings are based on commit velocity change — the rate at
+                . Rankings are based on commit velocity change, the rate at
                 which engineering output is accelerating.
               </p>
             </div>
@@ -249,7 +249,7 @@ export default async function BestSectorPage({ params }: PageProps) {
                 How are these rankings determined?
               </h3>
               <p className="text-gray-400 text-sm leading-relaxed">
-                Startups are ranked by commit velocity change — the percentage
+                Startups are ranked by commit velocity change, the percentage
                 change in 14-day commit counts versus the prior period. This
                 measures engineering acceleration, not absolute size.{" "}
                 <Link

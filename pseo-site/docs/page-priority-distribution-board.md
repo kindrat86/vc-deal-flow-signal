@@ -1,4 +1,4 @@
-# GitDealFlow — page-priority distribution board
+# GitDealFlow, page-priority distribution board
 
 Purpose: decide which exact page should be pushed first in active distribution, by context, without rethinking the whole site every day.
 
@@ -15,7 +15,7 @@ Do not send three links when one page is enough.
 
 These are the pages that should carry most active distribution.
 
-### Tier 1 — highest leverage now
+### Tier 1, highest leverage now
 
 1. `/compare/crunchbase-alternative-for-angel-investors`
 Why:
@@ -65,7 +65,7 @@ Use when:
 - someone wants examples instead of theory
 - someone needs visible proof before reading deeper
 
-### Tier 2 — high-leverage supporting pages
+### Tier 2, high-leverage supporting pages
 
 6. `/answers/how-angel-investors-use-github-signals`
 Use when:
@@ -91,7 +91,7 @@ Use when:
 - someone wants to see workflow fit by investor type
 - you need to move from abstract signal to practical operating use
 
-### Tier 3 — offer-choice pages
+### Tier 3, offer-choice pages
 
 11. `/answers/when-should-i-use-first-look-vs-dashboard`
 Use when:

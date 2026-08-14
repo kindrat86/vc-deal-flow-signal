@@ -10,11 +10,11 @@ import { useRouter, useSearchParams } from "next/navigation";
  * with an option pool refresh. Simplifying assumptions called out in
  * the FAQ:
  *   - Each SAFE converts at its post-money cap (cap-binding case).
- *     Discount handling is omitted in v1 to keep the math legible —
+ *     Discount handling is omitted in v1 to keep the math legible -
  *     the SAFE calculator at /tools/safe-calculator handles cap-vs-
  *     discount conversion for a single SAFE.
  *   - Option pool target is post-round. v1 dilutes the entire pre-Series-A
- *     cap table evenly (founders + all SAFEs) — the YC standard "option
+ *     cap table evenly (founders + all SAFEs), the YC standard "option
  *     pool comes out of pre-money" is an approximation; precise modeling
  *     requires the iterative SAFE-and-pool waterfall.
  *
@@ -155,19 +155,19 @@ function computeDilution(inputs: Inputs): ComputedResult {
   if (foundersPct < 0) {
     band = "over-diluted";
     bandLabel =
-      "Over-diluted — inputs imply more than 100% allocated. Check cap sizes, SAFE amounts, and option pool target.";
+      "Over-diluted, inputs imply more than 100% allocated. Check cap sizes, SAFE amounts, and option pool target.";
   } else if (foundersPct >= 0.5) {
     band = "excellent";
-    bandLabel = `Excellent — founders retain ${formatPct(foundersPct)} after Series A.`;
+    bandLabel = `Excellent, founders retain ${formatPct(foundersPct)} after Series A.`;
   } else if (foundersPct >= 0.3) {
     band = "healthy";
-    bandLabel = `Healthy — typical post-Series-A position with ${formatPct(foundersPct)} founder ownership.`;
+    bandLabel = `Healthy, typical post-Series-A position with ${formatPct(foundersPct)} founder ownership.`;
   } else if (foundersPct >= 0.15) {
     band = "diluted";
-    bandLabel = `Diluted — ${formatPct(foundersPct)} is on the low end for post-Series-A founders.`;
+    bandLabel = `Diluted, ${formatPct(foundersPct)} is on the low end for post-Series-A founders.`;
   } else {
     band = "very-diluted";
-    bandLabel = `Very diluted — ${formatPct(foundersPct)} founder ownership leaves little room for Series B+ dilution.`;
+    bandLabel = `Very diluted, ${formatPct(foundersPct)} founder ownership leaves little room for Series B+ dilution.`;
   }
 
   return {
@@ -377,7 +377,7 @@ export function DilutionStackCalculator() {
         <p>
           <span className="text-gray-300 font-medium">v1 assumptions:</span>{" "}
           each SAFE converts at its post-money cap (cap-binding). Discount
-          handling omitted — for cap-vs-discount math on a single SAFE see
+          handling omitted, for cap-vs-discount math on a single SAFE see
           the dedicated{" "}
           <a
             href="/tools/safe-calculator"
@@ -386,7 +386,7 @@ export function DilutionStackCalculator() {
             SAFE calculator
           </a>
           . Option pool dilutes the pre-Series-A cap table evenly. Real
-          pre-money pool refresh is iterative — use this for back-of-envelope,
+          pre-money pool refresh is iterative, use this for back-of-envelope,
           confirm with your lawyer or finance lead before signing term sheets.
         </p>
         <p>
@@ -394,7 +394,7 @@ export function DilutionStackCalculator() {
           ≥50% founders is exceptional retention. 30-50% is the typical
           post-Series-A target. 15-30% is dilution-heavy. Below 15% leaves
           little room for Series B+ dilution. Negative means the inputs imply
-          over-allocation — check that SAFE caps + Series A + option pool
+          over-allocation, check that SAFE caps + Series A + option pool
           don't sum past 100%.
         </p>
       </div>
@@ -408,7 +408,7 @@ export function DilutionStackCalculator() {
           {copied ? "Link copied" : "Copy share link"}
         </button>
         <p className="text-xs text-gray-500">
-          The URL contains every SAFE row + the Series A — drop into a board
+          The URL contains every SAFE row + the Series A, drop into a board
           deck or co-founder conversation without retyping.
         </p>
       </div>
@@ -417,7 +417,7 @@ export function DilutionStackCalculator() {
         Educational tool. Real dilution math depends on the precise SAFE
         documents (post-money vs pre-money, MFN, pro-rata, side letters),
         the actual option pool waterfall, and any anti-dilution provisions.
-        Not legal or tax advice — talk to your lawyer.
+        Not legal or tax advice, talk to your lawyer.
       </p>
     </div>
   );

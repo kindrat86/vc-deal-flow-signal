@@ -1,6 +1,6 @@
-# Methodology — How to Compute Every Signal Yourself
+# Methodology, How to Compute Every Signal Yourself
 
-This chapter is the formal computation procedure for every signal in the book. It is intentionally written as a working document — read it with a terminal open. By the end of the chapter you will have a script that runs all seven signals against any organization on the public GitHub REST API, with no scraping and no proprietary data licences.
+This chapter is the formal computation procedure for every signal in the book. It is intentionally written as a working document, read it with a terminal open. By the end of the chapter you will have a script that runs all seven signals against any organization on the public GitHub REST API, with no scraping and no proprietary data licences.
 
 ## The data sources
 
@@ -13,7 +13,7 @@ Every signal in this book is computable from public, free, properly-rate-limited
 5. Public BigQuery datasets for PyPI downloads (`bigquery-public-data.pypi.file_downloads`) and the GitHub dependency graph (`bigquery-public-data.libraries_io.dependencies`). Free tier of one terabyte per month is more than enough.
 6. RSS feeds, conference YouTube channels, and podcast directories for Signal 7. No formal API; standard scrape patterns apply.
 
-That is the full data stack. There is nothing else to license, nothing else to scrape, nothing else to obtain through a private channel. Every claim in this book is recomputable by you, on a personal-budget infrastructure footprint, indefinitely — for as long as GitHub keeps the public REST API free, which it has done for the entire fifteen-year history of the platform.
+That is the full data stack. There is nothing else to license, nothing else to scrape, nothing else to obtain through a private channel. Every claim in this book is recomputable by you, on a personal-budget infrastructure footprint, indefinitely, for as long as GitHub keeps the public REST API free, which it has done for the entire fifteen-year history of the platform.
 
 ## The shared computational primitives
 
@@ -23,7 +23,7 @@ Every signal in the book reuses three primitives. Implement these once and the p
 
 The single most-called function in the signal stack pulls commits from a repository over a specified date range. The implementation is straightforward but has three subtleties that catch first-time implementers.
 
-First, the GitHub commits endpoint is paginated at one hundred commits per page by default. For active repositories you will need several pages. Use the `Link` response header rather than incrementing the `page` query parameter manually — GitHub's pagination has occasional edge cases at exactly the hundred-commit boundary that the Link header handles correctly.
+First, the GitHub commits endpoint is paginated at one hundred commits per page by default. For active repositories you will need several pages. Use the `Link` response header rather than incrementing the `page` query parameter manually, GitHub's pagination has occasional edge cases at exactly the hundred-commit boundary that the Link header handles correctly.
 
 Second, the `since` and `until` parameters take ISO 8601 timestamps. They filter on commit-author-date, not commit-committer-date, which can differ by hours when commits are rebased. For acceleration calculations the difference is usually noise; for surgical lead-time analysis it can matter and you should be deliberate.
 
@@ -97,7 +97,7 @@ def repo_metadata(org: str, repo: str, token: str):
 
 That is the third primitive. Everything else is a composition.
 
-## Signal 1 — Commit Velocity Acceleration
+## Signal 1, Commit Velocity Acceleration
 
 The full computation in code:
 
@@ -133,7 +133,7 @@ def signal_1_commit_velocity(org: str, repo: str, token: str) -> dict:
 
 That is the complete Signal 1 implementation. Approximately twenty-five lines of code. It is reproducible against any GitDealFlow leaderboard rank within a small floating-point margin.
 
-## Signal 2 — Contributor Influx
+## Signal 2, Contributor Influx
 
 ```python
 def signal_2_contributor_influx(org: str, repo: str, token: str) -> dict:
@@ -167,7 +167,7 @@ def signal_2_contributor_influx(org: str, repo: str, token: str) -> dict:
 
 The pagination cost for this signal is higher than for Signal 1 because the look-back window is longer. Budget approximately three or four times the API calls.
 
-## Signal 3 — Infrastructure Repository Buildout
+## Signal 3, Infrastructure Repository Buildout
 
 ```python
 INFRA_KEYWORDS = ["infra", "terraform", "tofu", "helm", "k8s", "kubernetes",
@@ -198,7 +198,7 @@ def classify_repo(org: str, repo: str, token: str) -> str:
 
 The classifier above is heuristic; it produces a small number of false classifications that you should manually correct on the first pass. The GitDealFlow `classify_repository` MCP tool maintains a more sophisticated version that uses the README contents and the language-distribution histogram, but the heuristic above is sufficient for rough computation.
 
-## Signal 4 — Star-Velocity Detachment
+## Signal 4, Star-Velocity Detachment
 
 ```python
 def signal_4_star_detachment(org: str, repo: str, token: str) -> dict:
@@ -244,7 +244,7 @@ def signal_4_star_detachment(org: str, repo: str, token: str) -> dict:
 
 The pagination cap of fifty pages prevents a runaway loop on extremely popular repositories. For repositories above five thousand stars per fortnight you should compute the signal differently; the threshold-based approach above is best calibrated for repositories in the ten-to-five-hundred-stars-per-fortnight range.
 
-## Signal 5 — Issue Closure Cadence
+## Signal 5, Issue Closure Cadence
 
 ```python
 def signal_5_issue_cadence(org: str, repo: str, token: str) -> dict:
@@ -294,7 +294,7 @@ def signal_5_issue_cadence(org: str, repo: str, token: str) -> dict:
 
 Issue endpoints are noisy because GitHub conflates issues with pull requests in the API response. The `pull_request` filter is essential.
 
-## Signal 6 — Downstream Dependency Adoption
+## Signal 6, Downstream Dependency Adoption
 
 This signal depends on Libraries.io, which is a third-party service. The free tier requires registering for an API key; sign up at `libraries.io` and store the key in `LIBRARIES_IO_API_KEY`.
 
@@ -335,7 +335,7 @@ def signal_6_dependency_adoption(package_name: str, registry: str, libraries_io_
 
 The Libraries.io API uses `pushed_at` as the proxy for "still actively using this dependency". This is a reasonable approximation but not perfect; a more sophisticated implementation would parse the dependency-graph BigQuery dataset directly, which is more accurate but heavier to operate.
 
-## Signal 7 — Founding-Team Public Visibility
+## Signal 7, Founding-Team Public Visibility
 
 Signal 7 is the only signal that is not fully scriptable. The procedure I recommend is a partial automation that handles the RSS-feed-based channels and leaves the manual portion small.
 
@@ -356,7 +356,7 @@ def signal_7_visibility(founder_profiles: list, since_days: int = 60) -> dict:
             output_count += len(recent)
             by_channel["blog"] += len(recent)
         # twitter / podcast / talk channels require manual entry per current
-        # API surface — populate manually from your weekly check
+        # API surface, populate manually from your weekly check
     return {
         "output_count": output_count,
         "by_channel": by_channel,
@@ -371,13 +371,13 @@ The Scout Score is a weighted composition of the seven signals into a single zer
 
 | Signal | Weight |
 |---|---|
-| 1 — Commit Velocity Acceleration | 0.22 |
-| 2 — Contributor Influx | 0.20 |
-| 3 — Infrastructure Buildout | 0.16 |
-| 4 — Star-Velocity Detachment | 0.10 |
-| 5 — Issue Closure Cadence | 0.10 |
-| 6 — Dependency Adoption | 0.14 |
-| 7 — Founding-Team Visibility | 0.08 |
+| 1, Commit Velocity Acceleration | 0.22 |
+| 2, Contributor Influx | 0.20 |
+| 3, Infrastructure Buildout | 0.16 |
+| 4, Star-Velocity Detachment | 0.10 |
+| 5, Issue Closure Cadence | 0.10 |
+| 6, Dependency Adoption | 0.14 |
+| 7, Founding-Team Visibility | 0.08 |
 
 A composite of this form, applied to a watchlist of two to three hundred organizations and re-computed weekly, produces a ranked list whose top decile contains a meaningful concentration of Series-A-bound companies. Concrete numbers from the SSRN panel: the top decile (twenty to thirty companies) contained sixty-eight per cent of the next-ninety-day Series A announcements among the watchlist, against a uniform-prior baseline of about ten per cent. That is a six-to-seven-times concentration ratio.
 
@@ -387,7 +387,7 @@ The Scout Score with these weights is implemented as the `compute_scout_score` M
 
 Three computational corners are worth cutting; three are not.
 
-Cuttable: caching repository metadata for a full hour rather than refreshing every call. Caching the human-vs-bot classification for a full week. Skipping Signal 6 entirely for non-developer-tools organizations — the score for those organizations should weight the other six and renormalize, not zero-fill.
+Cuttable: caching repository metadata for a full hour rather than refreshing every call. Caching the human-vs-bot classification for a full week. Skipping Signal 6 entirely for non-developer-tools organizations, the score for those organizations should weight the other six and renormalize, not zero-fill.
 
 Not cuttable: the two-period confirmation. The bot filter on the contributor classifier. The volume floors on every signal. The pagination on the commits endpoint. The `pull_request` filter on the issues endpoint. The default-branch lookup before pulling commits.
 

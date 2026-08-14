@@ -2,7 +2,7 @@
  * OG card for /tools/safe-calculator?amount=&cap=&discount=&pre=&invest=
  *
  * Renders the SAFE conversion result as a 1200x630 PNG. Each unique URL
- * gets its own preview card — when a user copies the share link and
+ * gets its own preview card, when a user copies the share link and
  * posts it on Twitter / Slack / LinkedIn, the preview shows the actual
  * computed ownership percentage, not a generic image.
  *
@@ -10,7 +10,7 @@
  * because next/og runs in a separate module graph and we want the OG
  * route to be self-contained).
  *
- * Satori reminder: NO display:grid — flex only (per feedback memory
+ * Satori reminder: NO display:grid, flex only (per feedback memory
  * after the Pass IX build trap).
  */
 

@@ -11,15 +11,15 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title:
-    "The Crystal Ball — Public Underwriting Game · Predict A Series A In 90 Days",
+    "The Crystal Ball, Public Underwriting Game · Predict A Series A In 90 Days",
   description:
-    "Pick any GitHub org. Predict whether they raise inside 90 days. We score every submission post-hoc against public funding news and publish a permanent leaderboard. Free, no real money — your forecasting track record is the prize.",
+    "Pick any GitHub org. Predict whether they raise inside 90 days. We score every submission post-hoc against public funding news and publish a permanent leaderboard. Free, no real money, your forecasting track record is the prize.",
   alternates: {
     canonical: "/crystal-ball",
   },
   openGraph: {
     title:
-      "The Crystal Ball — Public Underwriting Game",
+      "The Crystal Ball, Public Underwriting Game",
     description:
       "Predict a Series A in 90 days. Free, public leaderboard, post-hoc graded against public funding news.",
     url: "https://signals.gitdealflow.com/crystal-ball",
@@ -28,7 +28,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     site: "@sipiteno",
-    title: "Crystal Ball — predict a Series A in 90 days",
+    title: "Crystal Ball, predict a Series A in 90 days",
     description:
       "Public underwriting game. Pick a GitHub org, predict the round, leaderboard tracks your accuracy.",
   },
@@ -72,7 +72,7 @@ const SEEDED_PICKS: {
   {
     handle: "@oracle_alt",
     pick: "github.com/tursodatabase/libsql",
-    outcome: "Pending — grading 2026-08-04",
+    outcome: "Pending, grading 2026-08-04",
     outcomeDate: "2026-08-04",
     status: "pending",
   },
@@ -104,15 +104,15 @@ const FAQS = [
   },
   {
     q: "Why play if there's no money?",
-    a: "Because the leaderboard is the receipt. Top forecasters get a permanent public profile with timestamped picks and post-hoc grading — the kind of track record that takes a decade to build inside a fund. We've had three Crystal Ball top-10 forecasters get angel-allocation introductions because their pick history was the credential.",
+    a: "Because the leaderboard is the receipt. Top forecasters get a permanent public profile with timestamped picks and post-hoc grading, the kind of track record that takes a decade to build inside a fund. We've had three Crystal Ball top-10 forecasters get angel-allocation introductions because their pick history was the credential.",
   },
   {
     q: "How are picks graded?",
-    a: "A pick is a hit if the org publicly announces a funding round in the 90-day window after the submission timestamp. Acquisitions and IPO announcements also count as hits (the underlying signal is 'capital event'). Public-product launches do not count by default — a separate prediction type covers those.",
+    a: "A pick is a hit if the org publicly announces a funding round in the 90-day window after the submission timestamp. Acquisitions and IPO announcements also count as hits (the underlying signal is 'capital event'). Public-product launches do not count by default, a separate prediction type covers those.",
   },
   {
     q: "Can I pick the same org someone else already picked?",
-    a: "Yes. Multiple forecasters can pick the same org; each forecaster is graded independently on their own submission timestamp. The leaderboard ranks by hit rate weighted by lead time — picking 7 days before the announcement scores higher than picking 1 day before.",
+    a: "Yes. Multiple forecasters can pick the same org; each forecaster is graded independently on their own submission timestamp. The leaderboard ranks by hit rate weighted by lead time, picking 7 days before the announcement scores higher than picking 1 day before.",
   },
   {
     q: "What's the founding cap?",
@@ -120,7 +120,7 @@ const FAQS = [
   },
   {
     q: "How do I see my submissions?",
-    a: "Every submission emits an email confirmation with a permalink. Once we accept the pick (within 24 hours of submission, manually moderated to keep spam out), it appears on your forecaster page at /crystal-ball/{handle} — public, indexable, citation-friendly.",
+    a: "Every submission emits an email confirmation with a permalink. Once we accept the pick (within 24 hours of submission, manually moderated to keep spam out), it appears on your forecaster page at /crystal-ball/{handle}, public, indexable, citation-friendly.",
   },
 ] as const;
 
@@ -138,7 +138,7 @@ export default function CrystalBallPage() {
       {
         "@type": "Game",
         "@id": "https://signals.gitdealflow.com/crystal-ball#game",
-        name: "VC Deal Flow Signal — The Crystal Ball",
+        name: "VC Deal Flow Signal, The Crystal Ball",
         description:
           "Public underwriting game. Forecasters pick GitHub orgs and predict whether they will announce a funding round within 90 days. Picks are graded post-hoc against public sources; leaderboard tracks hit rate weighted by lead time.",
         url: "https://signals.gitdealflow.com/crystal-ball",
@@ -213,7 +213,7 @@ export default function CrystalBallPage() {
             GitHub org. Predict that they announce a funding round inside 90
             days. We grade every submission post-hoc against public funding
             news and publish a permanent leaderboard. The reward isn&rsquo;t
-            money — it&rsquo;s the public track record.
+            money, it&rsquo;s the public track record.
           </p>
         </header>
 
@@ -271,14 +271,14 @@ export default function CrystalBallPage() {
         <section className="space-y-4">
           <div className="flex items-baseline justify-between flex-wrap gap-2">
             <h2 className="text-2xl font-bold text-gray-100">
-              Founding cohort — first picks on record
+              Founding cohort, first picks on record
             </h2>
             <p className="text-gray-400 text-xs">
               Sorted by submission date. Manually graded as outcomes resolve.
             </p>
           </div>
           <p className="text-amber-300/90 text-xs leading-relaxed rounded-lg border border-amber-500/30 bg-amber-500/5 px-3 py-2">
-            Illustrative seed entries — the founding cohort is still filling. These show how a graded pick reads once an outcome resolves; your own picks appear here after you submit.
+            Illustrative seed entries, the founding cohort is still filling. These show how a graded pick reads once an outcome resolves; your own picks appear here after you submit.
           </p>
           <ul className="rounded-xl border border-slate-800 overflow-hidden divide-y divide-slate-800">
             {SEEDED_PICKS.map((pick, i) => (
@@ -319,7 +319,7 @@ export default function CrystalBallPage() {
               <span>
                 <strong className="text-gray-100">Pick.</strong> Submit any
                 public GitHub org you think will announce a funding round
-                inside 90 days. One pick per email per week — we cap to keep
+                inside 90 days. One pick per email per week, we cap to keep
                 quality high and prevent bot floods.
               </span>
             </li>
@@ -344,7 +344,7 @@ export default function CrystalBallPage() {
               <span className="text-amber-400 shrink-0 font-bold tabular-nums">04</span>
               <span>
                 <strong className="text-gray-100">Climb.</strong> Hit rate
-                ranks the leaderboard, weighted by lead time — picking 7 days
+                ranks the leaderboard, weighted by lead time, picking 7 days
                 before the announcement scores higher than picking 1 day
                 before. Founding forecasters keep their badge permanently.
               </span>
@@ -402,7 +402,7 @@ export default function CrystalBallPage() {
           tldr="The Crystal Ball is a free public forecasting game. Forecasters submit a GitHub org and predict that the org will publicly announce a funding round within 90 days. Picks are post-hoc graded against TechCrunch, company blog, Crunchbase, and SEC. The leaderboard ranks by hit rate weighted by lead time. Founding cohort capped at 1,000; founding badge is permanent and unlocks a 50% discount on a Sector Sweep after 5+ hits."
           pageUrl="https://signals.gitdealflow.com/crystal-ball"
           asOf="2026-05-05"
-          citeAs="VC Deal Flow Signal — The Crystal Ball (signals.gitdealflow.com/crystal-ball)."
+          citeAs="VC Deal Flow Signal, The Crystal Ball (signals.gitdealflow.com/crystal-ball)."
           facts={[
             {
               claim:

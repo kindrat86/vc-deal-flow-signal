@@ -4,8 +4,8 @@
  * Many enterprise-procurement scanners probe both /.well-known/compliance.json
  * and the apex /compliance.json before approving an external data source. We
  * serve content directly (200, not 308) because some scanners don't follow
- * redirects. The canonical URL — declared via the `Link: rel=canonical` header
- * — remains under /.well-known.
+ * redirects. The canonical URL, declared via the `Link: rel=canonical` header
+ *, remains under /.well-known.
  */
 
 import { GET as WellKnownCompliance } from "@/app/.well-known/compliance.json/route";

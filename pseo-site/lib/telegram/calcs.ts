@@ -5,7 +5,7 @@
  * so the bot can compute results inside Telegram without redirecting to web.
  * Every formatter returns a short Markdown-V2-safe string ready for sendMessage.
  *
- * Educational only — not legal/tax/investment advice.
+ * Educational only, not legal/tax/investment advice.
  */
 
 const SITE = "https://signals.gitdealflow.com";
@@ -132,7 +132,7 @@ export function calcSafe(args: string[]): CalcResult {
     lines.push("");
     lines.push(`Cap-only ownership: *${formatPercent(capOwn)}*`);
     lines.push(`Discount-only ownership: *${formatPercent(discountOwn)}*`);
-    lines.push(`Effective (max): *${formatPercent(effective)}* — converts on *${basis}*`);
+    lines.push(`Effective (max): *${formatPercent(effective)}*, converts on *${basis}*`);
   } else {
     lines.push("");
     lines.push(`Cap-only ownership: *${formatPercent(capOwn)}*`);
@@ -174,7 +174,7 @@ export function calcRunway(args: string[]): CalcResult {
       "",
       `Runway: *${months.toFixed(1)} months*`,
       `Cash-out: *${zeroDate.toISOString().slice(0, 7)}*`,
-      months < 6 ? "_⚠ Under 6 months — typical fundraise zone_" : "",
+      months < 6 ? "_⚠ Under 6 months, typical fundraise zone_" : "",
     ]
       .filter(Boolean)
       .join("\n"),
@@ -205,11 +205,11 @@ export function calcBurnMultiple(args: string[]): CalcResult {
     multiple < 1
       ? "🟢 Amazing (<1)"
       : multiple < 1.5
-        ? "🟢 Great (1–1.5)"
+        ? "🟢 Great (1-1.5)"
         : multiple < 2
-          ? "🟡 OK (1.5–2)"
+          ? "🟡 OK (1.5-2)"
           : multiple < 3
-            ? "🟠 Suspect (2–3)"
+            ? "🟠 Suspect (2-3)"
             : "🔴 Bad (3+)";
 
   return {
@@ -219,7 +219,7 @@ export function calcBurnMultiple(args: string[]): CalcResult {
       "",
       `Burn multiple: *${formatRatio(multiple)}x*`,
       `Grade: *${grade}*`,
-      "_(Sacca / Sammut benchmark — efficiency of capital used to generate ARR)_",
+      "_(Sacca / Sammut benchmark, efficiency of capital used to generate ARR)_",
     ].join("\n"),
     deepLink: `${SITE}/tools/burn-multiple-calculator`,
   };
@@ -248,11 +248,11 @@ export function calcMagicNumber(args: string[]): CalcResult {
     magic >= 1.5
       ? "🟢 Step on the gas (≥1.5)"
       : magic >= 1
-        ? "🟢 Spend more (1–1.5)"
+        ? "🟢 Spend more (1-1.5)"
         : magic >= 0.75
-          ? "🟡 Hold (0.75–1)"
+          ? "🟡 Hold (0.75-1)"
           : magic >= 0.5
-            ? "🟠 Investigate (0.5–0.75)"
+            ? "🟠 Investigate (0.5-0.75)"
             : "🔴 Pull back (<0.5)";
 
   return {
@@ -300,9 +300,9 @@ export function calcCacPayback(args: string[]): CalcResult {
     months <= 12
       ? "🟢 Healthy (≤12 mo)"
       : months <= 18
-        ? "🟡 OK (12–18 mo)"
+        ? "🟡 OK (12-18 mo)"
         : months <= 24
-          ? "🟠 Slow (18–24 mo)"
+          ? "🟠 Slow (18-24 mo)"
           : "🔴 Long (24+ mo)";
 
   return {
@@ -352,7 +352,7 @@ export function calcLtv(args: string[]): CalcResult {
       `ARPA ${formatMoney(arpa)}/mo · GM ${gm}% · Churn ${churn}%/mo`,
       "",
       `LTV: *${formatMoney(ltv)}*`,
-      "_(Pair with CAC for LTV:CAC ratio — healthy SaaS ≥3x)_",
+      "_(Pair with CAC for LTV:CAC ratio, healthy SaaS ≥3x)_",
     ].join("\n"),
     deepLink: `${SITE}/tools/ltv-calculator`,
   };
@@ -381,9 +381,9 @@ export function calcQuickRatio(args: string[]): CalcResult {
     ratio >= 4
       ? "🟢 Excellent (≥4)"
       : ratio >= 2
-        ? "🟢 Healthy (2–4)"
+        ? "🟢 Healthy (2-4)"
         : ratio >= 1
-          ? "🟡 Growing slowly (1–2)"
+          ? "🟡 Growing slowly (1-2)"
           : "🔴 Shrinking (<1)";
 
   return {
@@ -398,7 +398,7 @@ export function calcQuickRatio(args: string[]): CalcResult {
   };
 }
 
-// ── /dilution (deep-link only — too many args for chat) ────────────────────
+// ── /dilution (deep-link only, too many args for chat) ────────────────────
 
 export function calcDilutionStack(): CalcResult {
   return {

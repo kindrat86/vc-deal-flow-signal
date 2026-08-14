@@ -166,7 +166,7 @@ export default function RootLayout({
         {/* CSP sends `require-trusted-types-for 'script'` but ships no policy,
             so any legacy innerHTML/script-src string assignment (ux.js, some
             vendor loaders) throws instead of running. Must be the first
-            script in <head> — no defer/async — so it registers before
+            script in <head>no defer/async, so it registers before
             anything else executes. */}
         <script
           dangerouslySetInnerHTML={{
@@ -180,7 +180,7 @@ export default function RootLayout({
         <link rel="dns-prefetch" href="https://api.github.com" />
         <link rel="dns-prefetch" href="https://avatars.githubusercontent.com" />
         <link rel="dns-prefetch" href="https://gitdealflow-pb.fly.dev" />
-        {/* R16 world-class UX layer — shared design system across portfolio */}
+        {/* R16 world-class UX layer, shared design system across portfolio */}
         {/* Versioned so in-app browsers cannot reuse a stale palette after deployment. */}
         <link rel="stylesheet" href="/ux.css?v=20260808-2" />
         {/* ux.js REMOVED 2026-07-21: it calls document.body.prepend/appendChild on
@@ -188,14 +188,14 @@ export default function RootLayout({
             hydration mismatch made React wipe the SSR content → blank white page.
             The static portfolio sites tolerate it (no React); this Next.js app
             does not. Native Next styling is complete without it. Do NOT re-add
-            /ux.js here — the swarm R18 rollout must exclude this Next.js site. */}
+            /ux.js here, the swarm R18 rollout must exclude this Next.js site. */}
         {/* No preconnect to fonts.gstatic.com: next/font/google self-hosts the
             Inter woff2 at build time under /_next/static/media (preloaded, same
             origin). A gstatic preconnect would open an unused DNS+TLS handshake
-            and trip Lighthouse's "unused preconnect" diagnostic — there is no
+            and trip Lighthouse's "unused preconnect" diagnostic, there is no
             runtime request to Google Fonts to warm. */}
 
-        {/* Agent-discoverability hints — alternate machine-readable mirrors of
+        {/* Agent-discoverability hints, alternate machine-readable mirrors of
             the human site. Next 16's metadata.alternates.types only emits a
             subset of MIME types reliably, so we render these directly. */}
         <link
@@ -357,7 +357,7 @@ export default function RootLayout({
           type="text/plain"
           href="https://signals.gitdealflow.com/humans.txt"
         />
-        {/* F38 (2026-05-08) — explicit content license declaration. Surfaces
+        {/* F38 (2026-05-08), explicit content license declaration. Surfaces
             in Google Search Central reports as a structured trust signal and
             is consumed by AI-content-licensing crawlers (CCC, Anthropic-Web,
             etc.) without requiring JSON-LD parsing. */}
@@ -424,7 +424,7 @@ export default function RootLayout({
         <ReadingProgressBar />
         {/* Site chrome (Header, Footer, LaunchBanner, retargeting pixels,
             PostHog/RefGrow, web-vitals beacon) is gated off on iframe-embed
-            surfaces — `/embed/<widget>/...` paths render only `<main>` so
+            surfaces, `/embed/<widget>/...` paths render only `<main>` so
             the calculator widgets and mini-leaderboards fit inside a
             Substack/Ghost/WordPress column without bleeding the site
             chrome into the embedder. `/embed` (docs index) keeps its
@@ -452,7 +452,7 @@ export default function RootLayout({
             strategy="lazyOnload"
           />
           <PixelManager />
-          {/* Core Web Vitals beacon — ships LCP/INP/CLS/FCP/TTFB to the
+          {/* Core Web Vitals beacon, ships LCP/INP/CLS/FCP/TTFB to the
               existing PostHog EU instance. Closes the audit gap "no CWV
               measurement" (Performance: 75/100 → measurable). Honors GPC
               and DNT, no new dependency. */}
@@ -591,12 +591,12 @@ export default function RootLayout({
             </a>
     </nav>
 </section>` }} />
-        {/* Brunson Trust Bar — Dotcom Secrets Ch 7 */}
+        {/* Brunson Trust Bar, Dotcom Secrets Ch 7 */}
         <div dangerouslySetInnerHTML={{ __html: `<!-- BRUNSON TRUST BAR -- idempotency:trust-bar-v1 -->
 <section class="brunson-trust-bar" style="background:linear-gradient(135deg, #0f172a, #1e293b);color:#e8eaed;padding:40px 24px;margin:60px 0 0;border-top:3px solid #00d4aa;text-align:center;font-family:-apple-system,BlinkMacSystemFont,Segoe UI,sans-serif">
   <div style="max-width:900px;margin:0 auto">
     <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:28px;margin-bottom:28px">
-      <div><span style="font-size:1.6rem;font-weight:700;color:#00d4aa">21–47 days</span><br><span style="font-size:.82rem;color:#94a3b8">Signal Lead Time (median 31d)</span></div>
+      <div><span style="font-size:1.6rem;font-weight:700;color:#00d4aa">21-47 days</span><br><span style="font-size:.82rem;color:#94a3b8">Signal Lead Time (median 31d)</span></div>
       <div><span style="font-size:1.6rem;font-weight:700;color:#00d4aa">$80M+</span><br><span style="font-size:.82rem;color:#94a3b8">Rounds Tracked</span></div>
       <div><span style="font-size:1.6rem;font-weight:700;color:#00d4aa">90 sec</span><br><span style="font-size:.82rem;color:#94a3b8">Per Scan</span></div>
       <div><span style="font-size:1.6rem;font-weight:700;color:#00d4aa">5,000+</span><br><span style="font-size:.82rem;color:#94a3b8">Founders Tracked</span></div>

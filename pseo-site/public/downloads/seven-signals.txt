@@ -1,7 +1,7 @@
 THE 7 GITHUB SIGNALS THAT PREDICT SERIES A ROUNDS
 =================================================
 
-How to read engineering acceleration weeks before the press release — a field manual for investors who want to move first
+How to read engineering acceleration weeks before the press release, a field manual for investors who want to move first
 
 By The Data Nerd, Founder, GitDealFlow
 First edition · ISBN 979-8-9876543-1-7 · 2026-05-06
@@ -9,15 +9,15 @@ CC-BY-4.0 · https://signals.gitdealflow.com/book
 
 ========================================================================
 
-# Introduction — Why public data beats private intros
+# Introduction, Why public data beats private intros
 
 There is a quiet truth in venture capital that nobody likes to say out loud. The deals that go to the partners with the best networks are not the deals with the best founders. They are the deals with the loudest founders. The two overlap less than you would think.
 
-This book exists for the investors who do not want to wait for a warm intro to surface a Series A bound company. It exists for the developer-investors who know how to read a commit log, understand a contributor graph, and trace a dependency tree — and who suspect, correctly, that those three skills are now the highest-leverage sourcing tools in the venture stack.
+This book exists for the investors who do not want to wait for a warm intro to surface a Series A bound company. It exists for the developer-investors who know how to read a commit log, understand a contributor graph, and trace a dependency tree, and who suspect, correctly, that those three skills are now the highest-leverage sourcing tools in the venture stack.
 
 If you have spent any time at all on Crunchbase Pro, PitchBook, or the dozen tools that promise to surface the next Series A round, you have already learned that the surface area of those tools is built around what has already happened. Funding announcements. LinkedIn job changes. Press releases. Conference talks. The data shows up after the fact, and by the time it shows up, the round is closed and the carry is gone.
 
-The data that fires before the round is not in those tools. It is in the place where the company is actually being built — the public GitHub repository.
+The data that fires before the round is not in those tools. It is in the place where the company is actually being built, the public GitHub repository.
 
 ## What this book is
 
@@ -25,17 +25,17 @@ This book is a field manual. It is the practical, operationalized version of the
 
 It is not a book about venture capital theory. There are already shelves of those, and most of them are stale. It is not a book about angel investing as a lifestyle, or about portfolio construction at scale, or about the merits of the seed-versus-Series-A debate. There are excellent books for each of those topics, and this is not one of them.
 
-What this book is, specifically, is a step-by-step decoder for seven public signals on GitHub that — when read together with appropriate scepticism, in the right combination, with the right thresholds — historically fire three to six weeks before a Series A announcement. The signals are computable from a single public REST endpoint, free, no scraping, no proprietary data licences. Every claim in the book is reproducible by you, with a $0 budget and a personal access token.
+What this book is, specifically, is a step-by-step decoder for seven public signals on GitHub that, when read together with appropriate scepticism, in the right combination, with the right thresholds, historically fire three to six weeks before a Series A announcement. The signals are computable from a single public REST endpoint, free, no scraping, no proprietary data licences. Every claim in the book is reproducible by you, with a $0 budget and a personal access token.
 
-You will finish this book in a single sitting if you read briskly. You will finish all of the appendix exercises in a long weekend. By the end of that weekend you will be able to look at any GitHub organization and tell, in about two minutes, whether the engineering acceleration there is the kind of acceleration that precedes a fundraise — or the kind that just looks like one.
+You will finish this book in a single sitting if you read briskly. You will finish all of the appendix exercises in a long weekend. By the end of that weekend you will be able to look at any GitHub organization and tell, in about two minutes, whether the engineering acceleration there is the kind of acceleration that precedes a fundraise, or the kind that just looks like one.
 
 ## Why I wrote it
 
 I built the GitDealFlow signal stack because I was tired of explaining the same thing three times a month to friends who run angel checkbooks. The conversation was always the same: a friend would tell me about a startup they had just heard about; I would pull up its public GitHub; we would scroll the contributor graph for two minutes; and they would either commit to writing a check that week or pass entirely on what they had been on the verge of committing to before the call. The data was that decisive.
 
-After the fifteenth or twentieth conversation it became clear that the bottleneck was not investor judgement. The bottleneck was access to a workflow. Most of the people I was talking to could read a commit log in their sleep. What they could not do — without forty hours of plumbing work — was do it across two hundred startups at once, on a recurring weekly cadence, with the kind of consistency that produces a deal-flow funnel rather than a series of one-off bets.
+After the fifteenth or twentieth conversation it became clear that the bottleneck was not investor judgement. The bottleneck was access to a workflow. Most of the people I was talking to could read a commit log in their sleep. What they could not do, without forty hours of plumbing work, was do it across two hundred startups at once, on a recurring weekly cadence, with the kind of consistency that produces a deal-flow funnel rather than a series of one-off bets.
 
-So I built the workflow. The first version was a Google Sheet. The second was a Python notebook. The third was a tool that ran on a cron and emailed me the top movers every Monday. The fourth, eventually, became GitDealFlow — a public, auditable, free-tier-having, methodology-published platform with an MCP server, a JSON API, a written digest, and a buyers guide.
+So I built the workflow. The first version was a Google Sheet. The second was a Python notebook. The third was a tool that ran on a cron and emailed me the top movers every Monday. The fourth, eventually, became GitDealFlow, a public, auditable, free-tier-having, methodology-published platform with an MCP server, a JSON API, a written digest, and a buyers guide.
 
 The book in your hands is the part of GitDealFlow that does not depend on the platform. It is the part of the workflow that lives in your head. The platform automates it; this book teaches you how to do it yourself, even if our servers vanish tomorrow.
 
@@ -45,24 +45,24 @@ By the time you finish the book you will be able to:
 
 1. Compute the 14-day commit-velocity acceleration for any organization using only the GitHub public REST API and a one-paragraph script.
 2. Identify a real contributor influx and distinguish it from the noise of a documentation sprint, a hackathon, a contracting team, or a security-bot push.
-3. Read a startup's infrastructure repository pattern and infer what it is about to launch — and roughly when.
+3. Read a startup's infrastructure repository pattern and infer what it is about to launch, and roughly when.
 4. Spot a star-velocity detachment that signals an off-platform inflection (a launch, a viral demo, a Hacker News spike) before the inflection is public knowledge.
 5. Use issue-closure cadence as a leadership-quality tie-breaker when two startups score similarly on every other axis.
 6. Trace dependency adoption across npm, PyPI, Maven, and crates.io to find the developer-tools companies whose user bases are quietly compounding.
-7. Read the public visibility footprint of a founding team — engineering blog cadence, conference talks, OSS maintenance — and tell the difference between marketing visibility and trust-market visibility.
+7. Read the public visibility footprint of a founding team, engineering blog cadence, conference talks, OSS maintenance, and tell the difference between marketing visibility and trust-market visibility.
 8. Compose all seven signals into a single Scout Score that ranks any sector watchlist in about ninety minutes.
-9. Replicate any rank on the live GitDealFlow leaderboard from raw public data — to verify that we are not making it up, and so that you can audit your own workflow against an external benchmark.
+9. Replicate any rank on the live GitDealFlow leaderboard from raw public data, to verify that we are not making it up, and so that you can audit your own workflow against an external benchmark.
 10. Avoid the seven most common false-positive patterns that look like Series A signals but are actually something else entirely.
 
 That is what the book will give you. What it will not give you is a private network, a deeper Rolodex, a warmer intro path, or any of the other social goods that nobody can mass-produce on demand. Those are still useful. They are just no longer the only path.
 
 ## Who this book is for
 
-The primary reader I have in my head while writing this is the developer-investor — somebody who writes software professionally and also writes angel checks, or who is preparing to. If that is you, this book is calibrated to your existing intuitions; you will be able to skip the parts about how to use a JSON API and dive straight into the threshold-tuning chapters.
+The primary reader I have in my head while writing this is the developer-investor, somebody who writes software professionally and also writes angel checks, or who is preparing to. If that is you, this book is calibrated to your existing intuitions; you will be able to skip the parts about how to use a JSON API and dive straight into the threshold-tuning chapters.
 
-The secondary reader is the analyst at a small fund or a syndicate, who knows the venture domain very well and has occasionally wished they had a more programmatic way to surface the deals their partners are missing. If that is you, this book is also for you — though you will probably want to pair it with a colleague who can run the curl commands while you read the methodology.
+The secondary reader is the analyst at a small fund or a syndicate, who knows the venture domain very well and has occasionally wished they had a more programmatic way to surface the deals their partners are missing. If that is you, this book is also for you, though you will probably want to pair it with a colleague who can run the curl commands while you read the methodology.
 
-The tertiary reader is the investor who does not write code and does not intend to start. If that is you, you will find about thirty per cent of the book directly readable, and the rest will give you a clear-eyed picture of what your developer-investor competitors are doing — which is itself useful, because you cannot effectively price an asset class you do not understand the discovery economics of.
+The tertiary reader is the investor who does not write code and does not intend to start. If that is you, you will find about thirty per cent of the book directly readable, and the rest will give you a clear-eyed picture of what your developer-investor competitors are doing, which is itself useful, because you cannot effectively price an asset class you do not understand the discovery economics of.
 
 ## Why public data, and why now
 
@@ -70,17 +70,17 @@ There has never been a better moment to be a developer-investor. Three things ha
 
 First, the public GitHub REST API has stayed free, well-documented, and rate-limited at a level that lets a serious individual investigator pull six-figure-row datasets per week with a single personal access token. This is a quiet miracle. Most other social and professional platforms have either paywalled or actively closed their public APIs in the same window. GitHub has not. As long as that holds, every claim in this book is reproducible by every reader, on a zero-budget curl-and-jq stack, indefinitely.
 
-Second, the average serious technical startup now does its real building in public from day one. Five years ago you could find a stealth-mode AI infra company with a private monorepo and no public footprint. That is now the exception. Most of the breakout AI infra companies of the 2024 and 2025 cohort had their core repository public from week one. They publish their evaluation harnesses, their model weights, their benchmarks, their contribution guidelines, their terraform — all of it. They build in public because the developer audience they need to recruit, the open-source maintainers they need to integrate with, and the hiring funnel they need to fill all live on the public side of GitHub. This is true even when the founders are coming out of private-by-default cultures like Google or Apple.
+Second, the average serious technical startup now does its real building in public from day one. Five years ago you could find a stealth-mode AI infra company with a private monorepo and no public footprint. That is now the exception. Most of the breakout AI infra companies of the 2024 and 2025 cohort had their core repository public from week one. They publish their evaluation harnesses, their model weights, their benchmarks, their contribution guidelines, their terraform, all of it. They build in public because the developer audience they need to recruit, the open-source maintainers they need to integrate with, and the hiring funnel they need to fill all live on the public side of GitHub. This is true even when the founders are coming out of private-by-default cultures like Google or Apple.
 
-Third, model context protocol (MCP) and the broader agent-tool ecosystem now lets an investor compose this kind of public-data analysis directly inside their LLM workflow. You can ask Claude or Cursor or Mistral Le Chat to look up a startup's commit-velocity acceleration the same way you ask it to look up the weather. This is new — none of it existed eighteen months ago. It changes what an individual investor can sustain as a recurring weekly workflow from what used to take a half-day to what now takes nine minutes.
+Third, model context protocol (MCP) and the broader agent-tool ecosystem now lets an investor compose this kind of public-data analysis directly inside their LLM workflow. You can ask Claude or Cursor or Mistral Le Chat to look up a startup's commit-velocity acceleration the same way you ask it to look up the weather. This is new, none of it existed eighteen months ago. It changes what an individual investor can sustain as a recurring weekly workflow from what used to take a half-day to what now takes nine minutes.
 
 These three things together have produced a small, brief, possibly closing window in which an individual investor with a laptop, a personal GitHub token, and a willingness to read this book can systematically out-source the consensus deal-flow tools on the long-tail Series A. That is the window this book is written for. I do not know how long it will last. I would not bet that it stays open past the end of this decade, because either the data will get pay-walled (the pessimistic scenario), or the patterns will saturate as more capital learns them (the optimistic scenario for the asset class, less so for individual carry). Read the book now.
 
 ## How to read this book
 
-The book is structured to be read straight through in the order it is presented, and the seven signal chapters build on each other in ways that make skipping costly. The introduction you are now finishing, plus the methodology chapter (chapter eight) and the replication appendix (chapter nine), can be read as a self-contained crash course if you only have one evening — but you will get more out of every signal chapter if you read in sequence.
+The book is structured to be read straight through in the order it is presented, and the seven signal chapters build on each other in ways that make skipping costly. The introduction you are now finishing, plus the methodology chapter (chapter eight) and the replication appendix (chapter nine), can be read as a self-contained crash course if you only have one evening, but you will get more out of every signal chapter if you read in sequence.
 
-Each signal chapter follows the same structure. First, the signal in plain English: what it is, what it measures, why it precedes a Series A, what the median lead time is. Second, a worked example from the public record — a real startup, a real signal firing, a real outcome. Third, the false-positive patterns that look identical at first glance and how to distinguish them. Fourth, the threshold guidance: when to act, when to wait for two-period confirmation, when to walk away. Fifth, a small set of exercises that take fifteen to thirty minutes each and produce concrete output you can paste into your watchlist.
+Each signal chapter follows the same structure. First, the signal in plain English: what it is, what it measures, why it precedes a Series A, what the median lead time is. Second, a worked example from the public record, a real startup, a real signal firing, a real outcome. Third, the false-positive patterns that look identical at first glance and how to distinguish them. Fourth, the threshold guidance: when to act, when to wait for two-period confirmation, when to walk away. Fifth, a small set of exercises that take fifteen to thirty minutes each and produce concrete output you can paste into your watchlist.
 
 The methodology chapter and the replication appendix are written in the practical, get-to-the-curl-command style of a good engineering README. They are intended to be read with a terminal open. If you do not have a terminal open while reading them, you will not get the value out of them, and you should either skip them or come back later when you are at a desk.
 
@@ -94,14 +94,14 @@ This matters because there is a long history in venture-capital writing of unfal
 
 ## The deal we are making
 
-Here is the deal we are making across these one hundred-odd pages. I am going to teach you a workflow that — done correctly, at sustained cadence, against a watchlist of even modest size — will measurably change the quality of the deal flow that lands on your desk. In exchange, I am going to ask you to do three things. The first is to actually run the workflow, not merely read about it. The second is to share what you learn — not the deals, but the methodology critiques — back into the public record, so that the methodology improves over time. The third is to subscribe to the free Monday-morning Signal Digest at gitdealflow.com, because the signal stack is not static and you should know when the thresholds change.
+Here is the deal we are making across these one hundred-odd pages. I am going to teach you a workflow that, done correctly, at sustained cadence, against a watchlist of even modest size, will measurably change the quality of the deal flow that lands on your desk. In exchange, I am going to ask you to do three things. The first is to actually run the workflow, not merely read about it. The second is to share what you learn, not the deals, but the methodology critiques, back into the public record, so that the methodology improves over time. The third is to subscribe to the free Monday-morning Signal Digest at gitdealflow.com, because the signal stack is not static and you should know when the thresholds change.
 
 That is the deal. If it sounds reasonable, turn the page.
 
 
 ========================================================================
 
-# Signal 1 — Commit Velocity Acceleration
+# Signal 1, Commit Velocity Acceleration
 
 ## What it is
 
@@ -119,21 +119,21 @@ Acceleration in the commit graph is therefore acceleration in the underlying wor
 
 First, the founders close the seed round or its extension and begin spending the capital. Capital deployment in early-stage software companies is overwhelmingly engineering hires. Engineers who are hired in week one of a fundraise begin shipping code by week three or four. Their commits show up in the public repository in week three or four. The fundraise announcement happens in week eight, ten, or twelve, after the round legals close and the press team coordinates the announcement with the lead investor's communications calendar. The commit acceleration is therefore visible in the public record several weeks before the announcement.
 
-Second, the founders prepare the metrics deck for the Series A pitch. The Series A pitch deck contains, in almost every case, a section about engineering velocity — usually phrased as "shipping cadence", "release frequency", or "feature velocity". To put a credible number in that section, the founders need to ship more in the run-up than in the run-up's run-up. They know this. They prioritize accordingly. The result is a pre-pitch commit acceleration that is observable to anyone who is looking — but almost nobody is looking.
+Second, the founders prepare the metrics deck for the Series A pitch. The Series A pitch deck contains, in almost every case, a section about engineering velocity, usually phrased as "shipping cadence", "release frequency", or "feature velocity". To put a credible number in that section, the founders need to ship more in the run-up than in the run-up's run-up. They know this. They prioritize accordingly. The result is a pre-pitch commit acceleration that is observable to anyone who is looking, but almost nobody is looking.
 
 Third, the technical lead readies the company for due diligence. Due diligence in a Series A includes a code-quality review by the lead investor's technical advisor. The technical lead, knowing this, spends the four weeks before the term sheet on a controlled refactor: increasing test coverage, removing TODOs, paying down obvious tech debt, splitting monoliths into services that the diligence reviewer will read favorably. These commits are usually small but numerous. They show up as a commit-count spike with a high refactor-to-feature ratio.
 
-The combination of the three — a hiring spike, a metrics-deck velocity push, and a diligence preparation refactor — produces a sharp, sustained, two-week acceleration in the commit graph. It does this in the run-up to almost every Series A round. It is one of the closest things to a deterministic signal that exists in venture capital.
+The combination of the three, a hiring spike, a metrics-deck velocity push, and a diligence preparation refactor, produces a sharp, sustained, two-week acceleration in the commit graph. It does this in the run-up to almost every Series A round. It is one of the closest things to a deterministic signal that exists in venture capital.
 
 ## What it looks like in the wild
 
 Let me walk you through one concrete example from the public record. The startup is Modal Labs. Their main repository is modal-labs/modal-client. The Series A was announced on October 19, 2023, led by Redpoint, at a forty-million-dollar valuation. Look at the commit graph for the eight weeks preceding October 19.
 
-In the eight weeks before the announcement, the daily commit count on modal-client averaged roughly twenty commits per day. In the four weeks before that — weeks twelve through eight before the announcement — the average was roughly nine commits per day. In the four weeks before that — twenty through twelve — the average was roughly six.
+In the eight weeks before the announcement, the daily commit count on modal-client averaged roughly twenty commits per day. In the four weeks before that, weeks twelve through eight before the announcement, the average was roughly nine commits per day. In the four weeks before that, twenty through twelve, the average was roughly six.
 
 The fourteen-day commit-velocity acceleration crossed the two-hundred-per-cent threshold around September 12, 2023. The Series A was announced on October 19. The lead time was thirty-seven days, which is squarely in the median range.
 
-Anybody who was watching the Modal commit graph in mid-September 2023 had a clean signal that the company was about to do something significant — and a fair guess that the something was a fundraise, because the alternative explanations (an open-source release, a hackathon, a security incident) all fail the false-positive checks I will describe in the next section.
+Anybody who was watching the Modal commit graph in mid-September 2023 had a clean signal that the company was about to do something significant, and a fair guess that the something was a fundraise, because the alternative explanations (an open-source release, a hackathon, a security incident) all fail the false-positive checks I will describe in the next section.
 
 You can verify this yourself. Go to https://github.com/modal-labs/modal-client/graphs/commit-activity and look at the weekly commit counts for September and October 2023. The acceleration is unmistakable. It is also publicly visible to every investor on the planet, and not one of the consensus deal-flow tools surfaced it.
 
@@ -148,39 +148,39 @@ The formal computation is straightforward. For an organization with a primary re
 3. Compute the commit count for each window.
 4. The fourteen-day commit-velocity acceleration is (current - prior) / max(prior, 1). Express it as a percentage.
 5. Apply the two-period confirmation: the signal fires only if current > prior and prior > prior_prior. Without the confirmation, the false-positive rate roughly triples.
-6. Apply the absolute-floor filter: if the prior window had fewer than ten commits, ignore the signal — the percentage acceleration is too noisy at low absolute volumes, and you will spend your time chasing tiny repositories that are accelerating from zero to four.
+6. Apply the absolute-floor filter: if the prior window had fewer than ten commits, ignore the signal, the percentage acceleration is too noisy at low absolute volumes, and you will spend your time chasing tiny repositories that are accelerating from zero to four.
 
-The script that does this is in the methodology chapter, in roughly thirty lines of Python. You do not need to write it from scratch — the GitDealFlow MCP server exposes a get_commit_velocity tool that does it for any organization in one call — but you should write it yourself once, on the first reading of this book, because writing it once is the difference between trusting the signal and using it.
+The script that does this is in the methodology chapter, in roughly thirty lines of Python. You do not need to write it from scratch, the GitDealFlow MCP server exposes a get_commit_velocity tool that does it for any organization in one call, but you should write it yourself once, on the first reading of this book, because writing it once is the difference between trusting the signal and using it.
 
 ## Choosing the right repository
 
-The single most common mistake new readers of this signal make is computing it on the wrong repository. A startup with a public GitHub presence usually has between three and twenty repositories. Not all of them are equally informative. The right repository to compute on is the one that hosts the active product code — the place where the engineering team is shipping the actual product against the company's actual roadmap.
+The single most common mistake new readers of this signal make is computing it on the wrong repository. A startup with a public GitHub presence usually has between three and twenty repositories. Not all of them are equally informative. The right repository to compute on is the one that hosts the active product code, the place where the engineering team is shipping the actual product against the company's actual roadmap.
 
 Three patterns to recognize:
 
 The primary product repository is the right one. It is usually the largest by line count, the most-starred by far, the one with the highest commit volume in the past ninety days, and the one that contains the production deployment code paths. For a developer-tools company this is almost always the SDK or CLI repo. For an infrastructure company it is the orchestrator or the daemon. For a data-platform company it is the query engine. You can identify it visually in about twenty seconds by sorting the org's repos by recent commit activity.
 
-The documentation site repository is the wrong one. Documentation repos accelerate sharply in the run-up to a launch, then plateau. They will fire a false positive on this signal regularly, especially around marketing pushes that have nothing to do with a fundraise. If a startup's most-active repository is a docs or website repo, you are not looking at engineering acceleration — you are looking at content acceleration.
+The documentation site repository is the wrong one. Documentation repos accelerate sharply in the run-up to a launch, then plateau. They will fire a false positive on this signal regularly, especially around marketing pushes that have nothing to do with a fundraise. If a startup's most-active repository is a docs or website repo, you are not looking at engineering acceleration, you are looking at content acceleration.
 
 The vendored example or template repository is also the wrong one. These repos accelerate in lockstep with marketing campaigns and developer-relations pushes. They are not predictive of anything except the marketing budget.
 
 When in doubt, compute the signal on the top three repositories by ninety-day commit volume and take the maximum acceleration across them, weighted by recent activity. The GitDealFlow Scout Score uses this composition by default.
 
-## False positives — six patterns to recognize
+## False positives, six patterns to recognize
 
 The two-hundred-per-cent acceleration with two-period confirmation has a sixty-eight per cent hit rate. The thirty-two per cent miss rate consists almost entirely of these six false-positive patterns. Learn them and your hit rate goes up substantially.
 
 The hackathon spike. A startup runs an internal hackathon, and the resulting branches all get merged in a single week. The commit graph spikes for three to seven days, then collapses to baseline. The two-period confirmation usually filters this out, because the prior window will not have shown sustained acceleration. Hackathon spikes are short and sharp; Series A run-ups are sustained.
 
-The dependency-bump bot. Renovate or Dependabot floods the commit log with bumps. This produces high commit counts but very low diversity in author and content. You can filter it by computing the signal only on commits whose author is not a bot — most reliable filter is the [bot] suffix in the GitHub username, plus a small allowlist of known service accounts.
+The dependency-bump bot. Renovate or Dependabot floods the commit log with bumps. This produces high commit counts but very low diversity in author and content. You can filter it by computing the signal only on commits whose author is not a bot, most reliable filter is the [bot] suffix in the GitHub username, plus a small allowlist of known service accounts.
 
 The documentation sprint. A founder spends two weeks writing the public documentation in advance of a launch. This produces a real commit acceleration, but on a non-product repository. The mitigation is choosing the right repository (above).
 
-The security-incident remediation. A CVE is reported and the team scrambles to patch. This produces a sharp, real commit spike. It is distinguishable from a Series A run-up by inspecting the commit messages — security commits cluster around words like "fix", "CVE", "patch", "harden" — and by the timing relative to public disclosure databases.
+The security-incident remediation. A CVE is reported and the team scrambles to patch. This produces a sharp, real commit spike. It is distinguishable from a Series A run-up by inspecting the commit messages, security commits cluster around words like "fix", "CVE", "patch", "harden", and by the timing relative to public disclosure databases.
 
 The contracting-team migration. The team hires a third-party contracting firm for a discrete project. The contractors land their work in a four-week burst. This is sometimes confusable with a real hiring spike, but the contributor profiles will reveal the difference: real new hires show up with personal GitHub accounts that have other side-project activity; contracting-firm staff usually show up with accounts that look professional but have no personal activity, and the accounts often appear in coordinated batches with similar account ages.
 
-The acquisition-prep refactor. A startup that is preparing for an acquisition rather than a Series A often shows the same diligence-prep refactor pattern. The signal fires correctly that something is about to happen — but the something is an exit, not a Series A. There is a tell: acquisition-prep refactors have a higher proportion of commits to ops, billing, and compliance subsystems (because the acquirer's diligence cares about these), whereas Series-A-prep refactors are weighted toward product and core engineering subsystems. This is a soft tell, not a hard one.
+The acquisition-prep refactor. A startup that is preparing for an acquisition rather than a Series A often shows the same diligence-prep refactor pattern. The signal fires correctly that something is about to happen, but the something is an exit, not a Series A. There is a tell: acquisition-prep refactors have a higher proportion of commits to ops, billing, and compliance subsystems (because the acquirer's diligence cares about these), whereas Series-A-prep refactors are weighted toward product and core engineering subsystems. This is a soft tell, not a hard one.
 
 The open-source release sprint. The team is preparing a major version release of an open-source package. The acceleration is real, the work is real, but it is not predictive of a fundraise. The tell here is in the contributor mix: an open-source release sprint will pull in a wider community of external contributors than a Series-A-prep refactor, which is overwhelmingly internal-team-only. You can compute the internal-vs-external contributor ratio in the same script.
 
@@ -196,13 +196,13 @@ The defaults in the GitDealFlow Scout Score are tuned for a watchlist of two hun
 
 ## When to act
 
-A clean firing of this signal — two-hundred-per-cent acceleration, two-period confirmation, no false-positive flags — is a strong reason to put the company on your active-watch list and start the diligence the same week. Two things to do:
+A clean firing of this signal, two-hundred-per-cent acceleration, two-period confirmation, no false-positive flags, is a strong reason to put the company on your active-watch list and start the diligence the same week. Two things to do:
 
 First, look at the contributor list of the new commits in the firing window and identify the new names. Cross-reference them on LinkedIn. If they show "joined in October 2023" type dates that are recent, that is the second signal (next chapter) firing simultaneously, and the combined firing rate is much higher than either signal alone.
 
-Second, check the founder's public posting cadence. If the founder is suddenly posting more on LinkedIn or X about hiring, about the product, about the roadmap, that is a soft confirmation that the run-up is real. Quiet founders during a strong commit acceleration are also fine — some teams build heads-down — but loud founders during a strong commit acceleration are essentially a public announcement that something is about to ship.
+Second, check the founder's public posting cadence. If the founder is suddenly posting more on LinkedIn or X about hiring, about the product, about the roadmap, that is a soft confirmation that the run-up is real. Quiet founders during a strong commit acceleration are also fine, some teams build heads-down, but loud founders during a strong commit acceleration are essentially a public announcement that something is about to ship.
 
-A clean firing is not, by itself, a reason to write a check. It is a reason to be in the conversation early. The next steps — meeting the founders, understanding the product, building conviction — are still the work of the investor. The signal does not replace that work. It just gets you to the conversation before the round closes.
+A clean firing is not, by itself, a reason to write a check. It is a reason to be in the conversation early. The next steps, meeting the founders, understanding the product, building conviction, are still the work of the investor. The signal does not replace that work. It just gets you to the conversation before the round closes.
 
 ## Exercises
 
@@ -214,14 +214,14 @@ Exercise 1.2. Pick three Series A announcements from the last sixty days. Find t
 
 Exercise 1.3. Pick a startup you have been tracking for at least three months. Compute the commit-velocity acceleration weekly for those three months. Plot the values. What is the variance? At what point would you have called a real acceleration versus baseline noise?
 
-Exercise 1.4. Identify one false-positive pattern from the list above (your choice) and find a real example of it in the wild — a startup whose recent commit acceleration is explained by, say, a documentation sprint or a dependency bot rather than a Series A run-up. Document the tells you used to make the call.
+Exercise 1.4. Identify one false-positive pattern from the list above (your choice) and find a real example of it in the wild, a startup whose recent commit acceleration is explained by, say, a documentation sprint or a dependency bot rather than a Series A run-up. Document the tells you used to make the call.
 
 The fourth exercise is the most useful. The investors who consistently get value from this signal stack are the ones who have personally caught at least three false positives and remember the patterns. The first true positive feels exciting. The first false positive that you correctly walked away from is the one that makes you a better investor.
 
 
 ========================================================================
 
-# Signal 2 — Contributor Influx
+# Signal 2, Contributor Influx
 
 ## What it is
 
@@ -233,7 +233,7 @@ Seventy-one per cent is the highest single-signal hit rate in the book. The reas
 
 ## Why it works
 
-When a startup raises a Series A, the single largest immediate use of proceeds is engineering headcount. The standard pattern is roughly: a fifteen-million-dollar Series A funds twelve to twenty engineering hires over the following twelve months, with the first six to ten of those landing in the first ninety days. Series A rounds are usually pre-staffed in this sense — the founders have been talking to candidates for the previous quarter, the offers go out within a week of the term sheet, and the start dates cluster in the thirty-to-sixty-day window after the round closes. By the time the round is publicly announced, the first hires are already in the door.
+When a startup raises a Series A, the single largest immediate use of proceeds is engineering headcount. The standard pattern is roughly: a fifteen-million-dollar Series A funds twelve to twenty engineering hires over the following twelve months, with the first six to ten of those landing in the first ninety days. Series A rounds are usually pre-staffed in this sense, the founders have been talking to candidates for the previous quarter, the offers go out within a week of the term sheet, and the start dates cluster in the thirty-to-sixty-day window after the round closes. By the time the round is publicly announced, the first hires are already in the door.
 
 Public hires show up in three places: LinkedIn (slow, performative, usually two to four weeks after start date), the company's website team page (sloppier, often weeks or months delayed), and the commit log (fast, automatic, requires no marketing decision to publish). The commit log is the leading edge.
 
@@ -264,7 +264,7 @@ Drive-by external contributors. Open-source-friendly startups occasionally accep
 
 Contracting-firm staff. A startup that hires an outside contracting firm for a discrete project produces a burst of new contributors who all show up at once and disappear after eight to twelve weeks. The tells: the contractor accounts have similar account ages (they were created in a coordinated batch), they have professional-looking but personal-side-project-empty profiles, and their commits cluster on a specific feature branch rather than spread across the codebase. If three or more of your "new contributors" share these traits, treat them as a contracting cohort, not a hiring cohort.
 
-Returning maintainers. A maintainer who took a four-month break and then returned will look like a new contributor against a thirty-day look-back. The fix is the one-hundred-and-twenty-day look-back described above, which catches almost all returning maintainers. If you see a "new" contributor whose first commit looks unusually senior — refactoring a core subsystem on day one — manually check their full GitHub commit history to see if they have prior involvement.
+Returning maintainers. A maintainer who took a four-month break and then returned will look like a new contributor against a thirty-day look-back. The fix is the one-hundred-and-twenty-day look-back described above, which catches almost all returning maintainers. If you see a "new" contributor whose first commit looks unusually senior, refactoring a core subsystem on day one, manually check their full GitHub commit history to see if they have prior involvement.
 
 Pseudonymous accounts. A small number of engineers maintain pseudonymous GitHub accounts and occasionally rotate them. This is rare in commercial-startup contexts but common in crypto-adjacent ones. There is no reliable automated filter; the manual heuristic is to be sceptical of new contributors whose accounts have been created in the past sixty days and have no other public activity.
 
@@ -272,25 +272,25 @@ The three positive tells:
 
 LinkedIn confirmation. If a new contributor name resolves to a LinkedIn profile that shows a recent start date at the company in question, the contributor is almost certainly a real new hire. This is the single highest-confidence confirmation. Forty per cent of new-hire contributors will be confirmable this way within a week of the firing.
 
-Personal side-project activity. Real engineering hires almost always have personal repositories on their GitHub account — usually four or more, with at least one updated in the past six months. The tell is signal-to-noise: a real hire has a profile that says "this is a working software engineer with a public footprint", whereas a contracting account or a fake-looking account has the visual signature of a profile that was created for purpose.
+Personal side-project activity. Real engineering hires almost always have personal repositories on their GitHub account, usually four or more, with at least one updated in the past six months. The tell is signal-to-noise: a real hire has a profile that says "this is a working software engineer with a public footprint", whereas a contracting account or a fake-looking account has the visual signature of a profile that was created for purpose.
 
-Org-membership progression. If the new contributor's avatar appears in the public org members list within four to six weeks of their first commit, that is high-confidence confirmation that they are an employee. Not all startups maintain a visible public org member list, so the absence of this signal is not negative evidence — but its presence is strongly positive.
+Org-membership progression. If the new contributor's avatar appears in the public org members list within four to six weeks of their first commit, that is high-confidence confirmation that they are an employee. Not all startups maintain a visible public org member list, so the absence of this signal is not negative evidence, but its presence is strongly positive.
 
 ## What it looks like in the wild
 
-Concrete example: Modal Labs, the same company we used in Signal 1. The fourteen-day commit-velocity acceleration crossed two hundred per cent on or about September 12, 2023. The contributor influx crossed four on or about September 18 — six days later. By October 5, the new-contributor count for the trailing fourteen-day window had risen to seven. Three of those seven names resolved on LinkedIn within two weeks to recent Modal hires.
+Concrete example: Modal Labs, the same company we used in Signal 1. The fourteen-day commit-velocity acceleration crossed two hundred per cent on or about September 12, 2023. The contributor influx crossed four on or about September 18, six days later. By October 5, the new-contributor count for the trailing fourteen-day window had risen to seven. Three of those seven names resolved on LinkedIn within two weeks to recent Modal hires.
 
-The Series A was announced October 19. The Signal 2 firing on September 18 had a thirty-one day lead time, which is squarely in the median range. The combined Signal 1 plus Signal 2 firing — that is, the dual acceleration in commits and in contributors — produces a substantially higher hit rate than either signal alone, because it rules out almost all of the false positives I described in chapter one.
+The Series A was announced October 19. The Signal 2 firing on September 18 had a thirty-one day lead time, which is squarely in the median range. The combined Signal 1 plus Signal 2 firing, that is, the dual acceleration in commits and in contributors, produces a substantially higher hit rate than either signal alone, because it rules out almost all of the false positives I described in chapter one.
 
 This is the right intuition for using the signal stack. No single signal is decisive. The combination of two or three concurrent signals is usually decisive. The full seven-signal score is decisive enough to act on with high conviction.
 
-## False positives — three patterns to recognize
+## False positives, three patterns to recognize
 
 Beyond the five noise sources discussed above, three structural false-positive patterns produce real-looking contributor influx without a Series A run-up.
 
-The open-source community-building push. A startup runs a community-engagement campaign — a hackathon, a contributor-recognition program, a bounty program, a major version release with a contribution drive — and the result is a real influx of external community contributors. The tell is the contributor mix: a Series-A run-up has overwhelmingly internal-team contributors (which means contributors who do not have other public open-source activity outside of this project). A community-building push has the opposite mix: most of the new contributors will have rich public footprints elsewhere.
+The open-source community-building push. A startup runs a community-engagement campaign, a hackathon, a contributor-recognition program, a bounty program, a major version release with a contribution drive, and the result is a real influx of external community contributors. The tell is the contributor mix: a Series-A run-up has overwhelmingly internal-team contributors (which means contributors who do not have other public open-source activity outside of this project). A community-building push has the opposite mix: most of the new contributors will have rich public footprints elsewhere.
 
-The merger or acquisition integration. When a startup acquires a small team — an acqui-hire, a tuck-in acquisition, an M&A absorption — the acquired team's GitHub identities show up as a coordinated batch on the acquiring company's repository. This looks like a contributor influx but it is not a Series A run-up; it is the integration phase of a deal that has already happened. The tell is the timing relative to public M&A announcements (which are often delayed by months) and the fact that the new contributors all have prior commits on a different repository belonging to the same team.
+The merger or acquisition integration. When a startup acquires a small team, an acqui-hire, a tuck-in acquisition, an M&A absorption, the acquired team's GitHub identities show up as a coordinated batch on the acquiring company's repository. This looks like a contributor influx but it is not a Series A run-up; it is the integration phase of a deal that has already happened. The tell is the timing relative to public M&A announcements (which are often delayed by months) and the fact that the new contributors all have prior commits on a different repository belonging to the same team.
 
 The intern cohort. Summer or term internship cohorts produce a burst of new contributors with similar timing, similar account ages, and a roughly common alma-mater pattern. The tell is the seasonality (May, June, January arrivals are over-represented), the youth of the contributors' public footprints, and the fact that intern commits tend to cluster on tutorial-and-docs subsystems rather than on the core product paths.
 
@@ -302,11 +302,11 @@ The threshold should also scale with the existing engineering team size. A start
 
 ## When to act
 
-A clean Signal 2 firing — four new human contributors, two-period confirmation, no false-positive flags — is a high-conviction reason to start active diligence the same week. Two things to do:
+A clean Signal 2 firing, four new human contributors, two-period confirmation, no false-positive flags, is a high-conviction reason to start active diligence the same week. Two things to do:
 
 First, run the LinkedIn cross-reference on every new contributor in the firing window. The three to five who resolve to recent hires are your soft confirmation. Their roles tell you about the round size: senior infrastructure hires usually mean a larger round, junior product engineering hires usually mean a smaller and faster round.
 
-Second, look at the commit content of the new contributors' first ten commits. If those commits cluster around production-readiness topics — auth, billing, observability, deployment, on-call tooling — the company is preparing to scale, which is consistent with a Series A run-up. If those commits cluster around a single specific product subsystem, the company is preparing to launch a new product or major feature, which is also consistent with a Series A pitch deck. If those commits are spread thinly across many small fixes, the new hires are likely still ramping, and the firing is real but earlier than usual.
+Second, look at the commit content of the new contributors' first ten commits. If those commits cluster around production-readiness topics, auth, billing, observability, deployment, on-call tooling, the company is preparing to scale, which is consistent with a Series A run-up. If those commits cluster around a single specific product subsystem, the company is preparing to launch a new product or major feature, which is also consistent with a Series A pitch deck. If those commits are spread thinly across many small fixes, the new hires are likely still ramping, and the firing is real but earlier than usual.
 
 A clean Signal 2 firing is the strongest single-signal reason to be in early conversations with a founding team. Do not let it sit on your watchlist for two weeks. Reach out the same week.
 
@@ -325,11 +325,11 @@ The fourth exercise is the one that turns the signal into actual deal-flow value
 
 ========================================================================
 
-# Signal 3 — Infrastructure Repository Buildout
+# Signal 3, Infrastructure Repository Buildout
 
 ## What it is
 
-Infrastructure repository buildout is the appearance of new public repositories under a startup's organization that contain operational infrastructure code — Terraform modules, Helm charts, Kubernetes manifests, CI/CD configuration, runbooks, database schemas, observability dashboards. The signal fires when two or more such repositories appear in a thirty-day window, or when a single such repository accelerates from zero to a sustained commit cadence in fourteen days.
+Infrastructure repository buildout is the appearance of new public repositories under a startup's organization that contain operational infrastructure code, Terraform modules, Helm charts, Kubernetes manifests, CI/CD configuration, runbooks, database schemas, observability dashboards. The signal fires when two or more such repositories appear in a thirty-day window, or when a single such repository accelerates from zero to a sustained commit cadence in fourteen days.
 
 In plain English: the company is publicly building the operational scaffolding that a Series-A-funded startup needs and a seed-stage one does not.
 
@@ -341,25 +341,25 @@ Sixty-two per cent at forty-one days lead time is a meaningfully different bet t
 
 A startup at the Series A stage is preparing for a step-change in operational complexity. The seed-stage company runs on three or four EC2 instances, a managed database, a single CI pipeline, and a Slack channel for alerting. The Series-A-funded company runs on Kubernetes (or an equivalent), terraformed across two or three environments, with a real observability stack, on-call rotation, and a deploy pipeline that does not require any one engineer to be online for a release to ship.
 
-The transition between those two states takes between two and four months of focused engineering work. The work is mostly infrastructure code, and infrastructure code at modern startups is increasingly maintained as separate repositories — partly because monorepo tooling for infra is still less mature than for application code, partly because access controls on infra are easier to manage at the repository level, and partly because mature engineering teams default to small focused repositories for components that have distinct deploy lifecycles.
+The transition between those two states takes between two and four months of focused engineering work. The work is mostly infrastructure code, and infrastructure code at modern startups is increasingly maintained as separate repositories, partly because monorepo tooling for infra is still less mature than for application code, partly because access controls on infra are easier to manage at the repository level, and partly because mature engineering teams default to small focused repositories for components that have distinct deploy lifecycles.
 
-The result is that a startup ramping up for a Series A round will, in the eight to twelve weeks before the announcement, publicly create or substantially expand a set of infra-shaped repositories. These repositories are usually under-noticed, because they are not the product. They are also more honest than the product repository, because their existence is much harder to fake — you cannot spin up a credible Terraform module suite for a company that is not actually scaling its infrastructure.
+The result is that a startup ramping up for a Series A round will, in the eight to twelve weeks before the announcement, publicly create or substantially expand a set of infra-shaped repositories. These repositories are usually under-noticed, because they are not the product. They are also more honest than the product repository, because their existence is much harder to fake, you cannot spin up a credible Terraform module suite for a company that is not actually scaling its infrastructure.
 
 ## What to look for
 
 Six repository archetypes are diagnostic. None of them is sufficient on its own, but the appearance of two or more in the same thirty-day window is a strong signal.
 
-The Terraform or OpenTofu modules repository. Usually named infra, terraform, tofu, cloud, or with the company name plus -infra. Contains module declarations, environment-specific variable files (often dev.tfvars, staging.tfvars, prod.tfvars), and a small README. The presence of three distinct environments configured here is a strong signal — most seed-stage companies have one or two environments at most.
+The Terraform or OpenTofu modules repository. Usually named infra, terraform, tofu, cloud, or with the company name plus -infra. Contains module declarations, environment-specific variable files (often dev.tfvars, staging.tfvars, prod.tfvars), and a small README. The presence of three distinct environments configured here is a strong signal, most seed-stage companies have one or two environments at most.
 
-The Helm chart or Kubernetes manifests repository. Usually named charts, helm, k8s, or manifests. Contains chart definitions, values files, and template manifests. A new chart for an internal control plane, an internal-tools backend, or a shared platform service is especially diagnostic — these things are not built by seed-stage companies because seed-stage companies have no internal users to serve.
+The Helm chart or Kubernetes manifests repository. Usually named charts, helm, k8s, or manifests. Contains chart definitions, values files, and template manifests. A new chart for an internal control plane, an internal-tools backend, or a shared platform service is especially diagnostic, these things are not built by seed-stage companies because seed-stage companies have no internal users to serve.
 
 The deploy or CI/CD repository. Usually named deploy, release, ci, or pipeline. Contains GitHub Actions workflows, GitLab CI definitions, ArgoCD manifests, FluxCD manifests, or similar. The new presence of multi-environment deploy gating, manual approvals on production, and rollback automation is diagnostic.
 
 The observability or runbook repository. Usually named observability, runbooks, oncall, or dashboards. Contains Grafana dashboard JSON, Prometheus alert rules, Datadog monitors, or written runbooks for common incidents. New runbooks especially are a strong indicator that the company is anticipating an on-call rotation, which only makes sense at scale.
 
-The schemas or contracts repository. Usually named schemas, proto, contracts, or api-spec. Contains protocol buffer definitions, OpenAPI specs, or similar. The new presence of API versioning patterns (v1/, v2/ directories, deprecation notices, contract tests) suggests the company is starting to treat its API as a stable public contract — which only makes sense once there is a real customer base.
+The schemas or contracts repository. Usually named schemas, proto, contracts, or api-spec. Contains protocol buffer definitions, OpenAPI specs, or similar. The new presence of API versioning patterns (v1/, v2/ directories, deprecation notices, contract tests) suggests the company is starting to treat its API as a stable public contract, which only makes sense once there is a real customer base.
 
-The internal-tools repository. Usually named with the company prefix plus -tools, -admin, -internal, or -ops. Contains internal admin dashboards, customer-support tooling, or operational scripts. Internal tools are built when the team is large enough that the founders cannot personally do customer support and infrastructure ops — which usually corresponds to the eight-to-fifteen-engineer size that follows a Series A.
+The internal-tools repository. Usually named with the company prefix plus -tools, -admin, -internal, or -ops. Contains internal admin dashboards, customer-support tooling, or operational scripts. Internal tools are built when the team is large enough that the founders cannot personally do customer support and infrastructure ops, which usually corresponds to the eight-to-fifteen-engineer size that follows a Series A.
 
 ## How to compute it
 
@@ -371,7 +371,7 @@ The computation requires walking the organization's repositories rather than jus
 4. The signal fires when two or more repositories classified infrastructure are created within a thirty-day window, or when a single such repository moves from a baseline of fewer than five commits per fourteen-day window to a sustained ten or more commits per fourteen-day window across two consecutive periods.
 5. Apply the team-size scaling: very small companies (one to three engineers) often create infra repositories slowly even at scale, because the founder is a part-time DevOps engineer; very large companies (fifty-plus engineers) create infra repositories continuously, regardless of fundraise. The signal is most informative for the four-to-twenty-engineer band.
 
-The classification heuristic is implemented in the GitDealFlow MCP server as the classify_repository tool. Implementing it yourself is straightforward but takes longer than the corresponding code for Signals 1 and 2 — budget an hour rather than fifteen minutes.
+The classification heuristic is implemented in the GitDealFlow MCP server as the classify_repository tool. Implementing it yourself is straightforward but takes longer than the corresponding code for Signals 1 and 2, budget an hour rather than fifteen minutes.
 
 ## What it looks like in the wild
 
@@ -385,13 +385,13 @@ The investor who was watching the organization's repository creation feed had a 
 
 This is the gap. It is small. It is real. It is repeatable.
 
-## False positives — four patterns to recognize
+## False positives, four patterns to recognize
 
 The open-source platform play. A startup whose product is itself an open-source platform (e.g. an open-source observability stack, an open-source database, an open-source ML platform) creates infra-shaped repositories continuously as part of the product. The signal fires for them every quarter. Mitigation: classify the product itself; if the product is an open-source platform, raise the threshold or use the product-repo commit-velocity signal instead.
 
 The acquisition integration buildout. A startup that has just made a tuck-in acquisition often creates a flurry of infra repositories to integrate the acquired team's systems. Mitigation: cross-check against public M&A coverage; if there is a recent acquisition, the infra signal is explained.
 
-The compliance-driven scaffolding. A startup that is going through SOC 2 or HIPAA compliance for the first time will create a set of infra repositories specifically to satisfy auditor requirements — runbooks, access reviews, change management. This often coincides with a Series A run-up but sometimes precedes it by months. Mitigation: read the runbook contents; compliance-driven runbooks have characteristic phrasing and structure that is distinguishable from operationally-driven ones.
+The compliance-driven scaffolding. A startup that is going through SOC 2 or HIPAA compliance for the first time will create a set of infra repositories specifically to satisfy auditor requirements, runbooks, access reviews, change management. This often coincides with a Series A run-up but sometimes precedes it by months. Mitigation: read the runbook contents; compliance-driven runbooks have characteristic phrasing and structure that is distinguishable from operationally-driven ones.
 
 The hobby-project namespace. Some founders share their personal GitHub organization with their startup's. The personal projects show up in the same repository feed and can mimic an infra buildout if the founder has a hobby of building Terraform modules. Mitigation: check the contributor list of each new repo; a real company-infra repo has multiple internal contributors within four weeks; a founder-hobby repo stays single-contributor.
 
@@ -399,13 +399,13 @@ The hobby-project namespace. Some founders share their personal GitHub organizat
 
 The two-infra-repos-in-thirty-days threshold is the default. For very small organizations (single founder, no team), require three repositories rather than two, because solo founders create infra repos on hobby cadence. For very large organizations (twenty-plus engineers), the threshold is too easy to satisfy from baseline activity; use the commit-velocity-on-existing-infra-repo variant instead.
 
-The single-repo acceleration variant — where one new infra repo goes from zero to ten commits per fortnight across two consecutive periods — fires less often but with substantially higher hit rate (around seventy-three per cent in the SSRN panel). It is the better signal for medium-sized organizations where the baseline new-repo creation rate is too high to use the count-based variant cleanly.
+The single-repo acceleration variant, where one new infra repo goes from zero to ten commits per fortnight across two consecutive periods, fires less often but with substantially higher hit rate (around seventy-three per cent in the SSRN panel). It is the better signal for medium-sized organizations where the baseline new-repo creation rate is too high to use the count-based variant cleanly.
 
 ## When to act
 
-A clean firing of Signal 3 — two new infra repositories or one accelerating one, with no false-positive flags — is an early-stage signal that warrants adding the company to your active-watch list and starting passive monitoring. It is too early, on its own, to start active diligence; the signal precedes the round by enough that the founders may not yet have begun the conversation circuit.
+A clean firing of Signal 3, two new infra repositories or one accelerating one, with no false-positive flags, is an early-stage signal that warrants adding the company to your active-watch list and starting passive monitoring. It is too early, on its own, to start active diligence; the signal precedes the round by enough that the founders may not yet have begun the conversation circuit.
 
-The right play is to combine Signal 3 with Signal 1 and Signal 2. When all three fire concurrently — within a thirty-day window of each other — the combined firing rate is the highest in the seven-signal stack. That is the moment to reach out for a conversation, even if the signals are still ten weeks ahead of the announcement.
+The right play is to combine Signal 3 with Signal 1 and Signal 2. When all three fire concurrently, within a thirty-day window of each other, the combined firing rate is the highest in the seven-signal stack. That is the moment to reach out for a conversation, even if the signals are still ten weeks ahead of the announcement.
 
 ## Exercises
 
@@ -422,11 +422,11 @@ The fourth exercise establishes the per-organization baseline that you will need
 
 ========================================================================
 
-# Signal 4 — Star-Velocity Detachment
+# Signal 4, Star-Velocity Detachment
 
 ## What it is
 
-Star-velocity detachment is the divergence between a repository's recent star-acquisition rate and its recent commit-velocity rate. Both are measurable, and both move together for most repositories most of the time. When they diverge — specifically, when stars accelerate sharply while commits stay flat or decelerate — something off-platform is happening. That something is usually a launch, a viral demonstration, a Hacker News spike, a Twitter thread, an investor-deck reveal, or a major media moment.
+Star-velocity detachment is the divergence between a repository's recent star-acquisition rate and its recent commit-velocity rate. Both are measurable, and both move together for most repositories most of the time. When they diverge, specifically, when stars accelerate sharply while commits stay flat or decelerate, something off-platform is happening. That something is usually a launch, a viral demonstration, a Hacker News spike, a Twitter thread, an investor-deck reveal, or a major media moment.
 
 The signal fires when the trailing fourteen-day star-acquisition rate exceeds three times the trailing-fourteen-day-of-the-prior-fortnight rate, while the commit-velocity acceleration over the same period is below fifty per cent. That is, attention is accelerating much faster than work, which means attention is being driven by something other than the work.
 
@@ -436,7 +436,7 @@ Median lead time in the SSRN panel was nineteen days before the Series A announc
 
 A startup preparing for a Series A round often runs a public-attention campaign in the weeks before the term sheet. The campaign produces a Hacker News post, a Twitter thread, a viral demo on X, a Show HN, a launch post on Product Hunt, a feature in a trade publication, or a mention in a high-traffic newsletter. The attention drives a wave of new GitHub stars on the company's primary repository, often within a forty-eight-hour window of the publication.
 
-The stars show up before the engineering work catches up with the new attention. The team is in the middle of preparing for the round, so the commit cadence is roughly steady or even slightly down. The result is a measurable detachment: stars per day three or four times baseline, commits per day flat. In the next two weeks the team usually catches up — they ship the features that the new attention is asking for — and the divergence narrows. But the firing has happened, and the public-attention spike is now in the historical record.
+The stars show up before the engineering work catches up with the new attention. The team is in the middle of preparing for the round, so the commit cadence is roughly steady or even slightly down. The result is a measurable detachment: stars per day three or four times baseline, commits per day flat. In the next two weeks the team usually catches up, they ship the features that the new attention is asking for, and the divergence narrows. But the firing has happened, and the public-attention spike is now in the historical record.
 
 The reason this signal precedes a Series A is that public-attention spikes are valuable to the company exactly during the run-up to a round. They serve three purposes simultaneously: they validate the demand-side narrative for the pitch deck (the chart-up-and-to-the-right star graph is a recurring slide), they create soft pressure on the lead investor to close the term sheet quickly (because attention is increasing), and they recruit engineering candidates who will land in the post-round hiring sprint. Founders who do not deliberately orchestrate an attention spike before a fundraise are leaving multiplicative effects on the table, and most experienced founders know this.
 
@@ -460,7 +460,7 @@ A firing tells you that an off-platform event is driving attention. It does not 
 
 A Hacker News front-page post. The signature is a sharp spike in the first twenty-four hours, decaying over three to seven days. The spike comes from a single coordinated source. You can confirm by searching https://hn.algolia.com for the company name in the relevant window. If a HN post hit the front page, it will be visible there.
 
-A Twitter / X thread by a high-follower account. Signature is similar to the HN spike but with a different decay profile — longer tail, more secondary spikes from quote-tweets and replies. You can confirm by searching X for the repository URL. If the thread exists, it usually has a substantive reply chain.
+A Twitter / X thread by a high-follower account. Signature is similar to the HN spike but with a different decay profile, longer tail, more secondary spikes from quote-tweets and replies. You can confirm by searching X for the repository URL. If the thread exists, it usually has a substantive reply chain.
 
 A Product Hunt launch. Signature is a sharp single-day spike on the launch day, with a moderate residual over the next week. Confirm by checking Product Hunt for the company name.
 
@@ -480,9 +480,9 @@ The trigger was a Show HN post on August 19 that hit the front page and stayed t
 
 The Series A was announced October 11. The Signal 4 firing on August 19 had a fifty-three day lead time, which is on the higher end of the interquartile range. By the time the announcement came, the repository had accumulated several thousand additional stars and roughly one hundred and twenty new pull requests from external contributors.
 
-This signal would not have caught the company on its own. It would have placed the company in the active-watch tier — and that placement would have, in combination with the other signals firing in mid-September, been the basis for a high-conviction reach-out to the founders well ahead of the term sheet.
+This signal would not have caught the company on its own. It would have placed the company in the active-watch tier, and that placement would have, in combination with the other signals firing in mid-September, been the basis for a high-conviction reach-out to the founders well ahead of the term sheet.
 
-## False positives — four patterns to recognize
+## False positives, four patterns to recognize
 
 The dependent-popular-project halo. A repository that is a plugin or integration for a much more popular project will spike whenever the parent project announces something. This is real attention, but it is not predictive of a fundraise on the plugin's own company. Mitigation: check whether the repository is depended-on-by a popular project, and discount the firing accordingly.
 
@@ -490,7 +490,7 @@ The bot-driven star spike. Star-buying services exist. The signature is a spike 
 
 The newsletter feature. A high-traffic developer newsletter (e.g. a subscriber-list feature) produces a star spike that is partially predictive of nothing more than the editor's interest. Mitigation: not really filterable from the data alone; you need to know which newsletters are active in the relevant window.
 
-The viral hijack. Occasionally a repository's content goes viral for a reason unrelated to the company's own work — a reference in a popular meme, a coincidental name collision, a tutorial blog post that someone else wrote. Mitigation: read the content of the spiking attention. If the reason for the spike is not on-thesis for the company's own product trajectory, the spike is incidental.
+The viral hijack. Occasionally a repository's content goes viral for a reason unrelated to the company's own work, a reference in a popular meme, a coincidental name collision, a tutorial blog post that someone else wrote. Mitigation: read the content of the spiking attention. If the reason for the spike is not on-thesis for the company's own product trajectory, the spike is incidental.
 
 ## Threshold guidance
 
@@ -517,21 +517,21 @@ Exercise 4.4. Sample twenty stargazers from a recent firing. Check their profile
 
 ========================================================================
 
-# Signal 5 — Issue Closure Cadence
+# Signal 5, Issue Closure Cadence
 
 ## What it is
 
-Issue closure cadence is the median time between an issue's creation and its closure on a startup's primary repository, computed over a rolling thirty-day window. It is a leadership-quality signal rather than a fundraise-prediction signal in the strict sense — but a sharp tightening of the median, especially against a baseline of slow closure, has predictive value as a tie-breaker between superficially similar startups.
+Issue closure cadence is the median time between an issue's creation and its closure on a startup's primary repository, computed over a rolling thirty-day window. It is a leadership-quality signal rather than a fundraise-prediction signal in the strict sense, but a sharp tightening of the median, especially against a baseline of slow closure, has predictive value as a tie-breaker between superficially similar startups.
 
 The signal fires when the median issue-close-time on a repository drops by more than fifty per cent across two consecutive thirty-day windows, while issue creation rate remains stable or rises. In plain English: the team is closing issues twice as fast as they were a month ago, on roughly the same volume of new issues. That is a real tightening of operational discipline, and it almost never happens by accident.
 
-In the SSRN-indexed panel, sharp tightening of issue-closure cadence preceded Series A announcements with a median lead time of fifty-two days, an interquartile range of thirty-five to seventy-six days, and a hit rate of fifty-five per cent. The earliest-firing of the seven signals, and the lowest hit rate by itself — but with the highest signal value as a tie-breaker between two firing-on-other-signals candidates.
+In the SSRN-indexed panel, sharp tightening of issue-closure cadence preceded Series A announcements with a median lead time of fifty-two days, an interquartile range of thirty-five to seventy-six days, and a hit rate of fifty-five per cent. The earliest-firing of the seven signals, and the lowest hit rate by itself, but with the highest signal value as a tie-breaker between two firing-on-other-signals candidates.
 
 ## Why it works
 
 A founding team preparing for a Series A makes a deliberate decision to clean up the public engineering surface. The cleanup is partly about the diligence-prep refactor I described in Signal 1, but it has a separate component that shows up in the issue tracker. Specifically: long-pending public issues are either closed (via fixes, via "won't fix" decisions, or via "duplicate" links to a canonical issue) or moved to a private internal tracker. The result is an issue tracker that looks well-maintained, recently active, and high-discipline.
 
-The reason this matters is that Series A diligence increasingly includes an evaluation of the team's engineering operating cadence, and the public issue tracker is the most accessible operational artifact. A diligence reviewer looking at a startup's GitHub for the first time will spend roughly five minutes on the issue tracker and form a strong opinion about whether the team has its act together. A messy tracker with hundred-day-old open issues, no labels, no triage activity, and stale milestones produces a poor impression — even if the underlying engineering is strong. Founders who have done diligence before know this and clean up accordingly.
+The reason this matters is that Series A diligence increasingly includes an evaluation of the team's engineering operating cadence, and the public issue tracker is the most accessible operational artifact. A diligence reviewer looking at a startup's GitHub for the first time will spend roughly five minutes on the issue tracker and form a strong opinion about whether the team has its act together. A messy tracker with hundred-day-old open issues, no labels, no triage activity, and stale milestones produces a poor impression, even if the underlying engineering is strong. Founders who have done diligence before know this and clean up accordingly.
 
 The cleanup happens whether the founders are explicitly preparing for diligence or not, because the cleanup has a downstream effect: a clean issue tracker is a better recruiting surface, and the recruiting push that precedes a Series A creates the same incentive. The issue-cadence signal is therefore over-determined: it would fire from the diligence-prep motivation alone, and it fires more reliably when the recruiting motivation is also present.
 
@@ -540,10 +540,10 @@ The cleanup happens whether the founders are explicitly preparing for diligence 
 The computation is straightforward but pagination-heavy.
 
 1. Pull the issue list for the repository, both open and closed, scoped to issues created in the past one hundred and twenty days. Use the GitHub issues endpoint with state=all, paginated.
-2. Filter to bona fide issues (exclude pull requests, which the GitHub API conflates with issues by default — you have to explicitly exclude any record with a pull_request field).
+2. Filter to bona fide issues (exclude pull requests, which the GitHub API conflates with issues by default, you have to explicitly exclude any record with a pull_request field).
 3. For each closed issue, compute its time-to-close as closed_at - created_at, in hours.
 4. Bucket the issues by closure date into two consecutive thirty-day windows: the recent thirty days, and the prior thirty days.
-5. Compute the median time-to-close for each window. Use the median, not the mean — issue closure times have a long tail, and the mean is heavily skewed by a small number of very-old issues that get suddenly closed.
+5. Compute the median time-to-close for each window. Use the median, not the mean, issue closure times have a long tail, and the mean is heavily skewed by a small number of very-old issues that get suddenly closed.
 6. Compute the cadence change as (prior_median - recent_median) / prior_median. A positive number means closing faster; the signal fires when this is above fifty per cent.
 7. Apply the volume floor: the recent window must have at least ten closed issues for the median to be statistically meaningful. Below that, ignore the firing.
 8. Apply the issue-creation-rate sanity check: the recent thirty days must have an issue-creation rate of at least seventy per cent of the prior thirty days. If the team is simply not creating issues anymore, the median will look great but the signal is meaningless.
@@ -552,9 +552,9 @@ The volume floor and the creation-rate sanity check together rule out most of th
 
 ## What it looks like in the wild
 
-Concrete example: a data-platform startup we tracked through 2024. Their primary repository had a baseline issue-close median of around two hundred and forty hours — that is, ten days — over the trailing year. In the second half of August, the median dropped to one hundred and eighty hours, then in the second half of September to ninety hours. The issue-creation rate was steady at roughly seven new issues per week.
+Concrete example: a data-platform startup we tracked through 2024. Their primary repository had a baseline issue-close median of around two hundred and forty hours, that is, ten days, over the trailing year. In the second half of August, the median dropped to one hundred and eighty hours, then in the second half of September to ninety hours. The issue-creation rate was steady at roughly seven new issues per week.
 
-The Signal 5 firing was confirmed in early October at a sustained sub-hundred-hour median across two consecutive thirty-day windows. The Series A was announced in early December — sixty-eight days after the firing, on the higher end of the interquartile range.
+The Signal 5 firing was confirmed in early October at a sustained sub-hundred-hour median across two consecutive thirty-day windows. The Series A was announced in early December, sixty-eight days after the firing, on the higher end of the interquartile range.
 
 The investor who weighted Signal 5 alongside Signals 1 and 2 in their composite score had this company ranked fifth overall on a thirty-organization watchlist by mid-September. By mid-October it was ranked second. By early November it was ranked first. The Series A was announced four weeks later. The investor had a four-week head start on every other lead they had.
 
@@ -566,7 +566,7 @@ The most common artifact that mimics real cadence improvement is a one-time tria
 
 The two-period confirmation handles this: a real sustained cadence improvement persists across two consecutive thirty-day windows. A one-shot triage produces a single window of improvement followed by a regression.
 
-A second artifact is the issue-template-change effect. A repository that adopts a stricter issue template — requiring more fields, requiring more labels, requiring reproducer instructions — will see a sharp drop in low-quality issues, which raises the proportion of well-defined issues, which lowers the median time-to-close. This is real operational improvement, but it is also a useful tell about the team's recent investment in maintainer ergonomics.
+A second artifact is the issue-template-change effect. A repository that adopts a stricter issue template, requiring more fields, requiring more labels, requiring reproducer instructions, will see a sharp drop in low-quality issues, which raises the proportion of well-defined issues, which lowers the median time-to-close. This is real operational improvement, but it is also a useful tell about the team's recent investment in maintainer ergonomics.
 
 A third artifact is the bot-driven auto-close. Some repositories configure stale-bot to auto-close issues that have been inactive for sixty or ninety days. A bot push to refresh stale-bot rules will close a wave of old issues at once, which can produce an artificial cadence-tightening signature. Mitigation: filter out closures whose author is [bot] and whose close-comment matches stale-bot phrasing.
 
@@ -574,9 +574,9 @@ A third artifact is the bot-driven auto-close. Some repositories configure stale
 
 The fifty-per-cent-tightening threshold with two-period confirmation is the conservative default. It produces approximately one signal firing per organization per quarter for organizations with active issue trackers.
 
-Many small organizations do not use the public issue tracker at all — they use Linear or Notion or another off-GitHub tracker. For these organizations, the signal cannot be computed and should be skipped rather than treated as zero. The Scout Score in GitDealFlow gives a null rather than a low score for organizations with insufficient issue-tracker activity, to avoid penalizing them for using a different tool.
+Many small organizations do not use the public issue tracker at all, they use Linear or Notion or another off-GitHub tracker. For these organizations, the signal cannot be computed and should be skipped rather than treated as zero. The Scout Score in GitDealFlow gives a null rather than a low score for organizations with insufficient issue-tracker activity, to avoid penalizing them for using a different tool.
 
-The signal is most informative for organizations with a baseline issue-close median in the seventy-two-to-three-hundred-and-sixty-hour range — that is, three to fifteen days. Below that, the team is already operating at very tight cadence and there is no room to tighten further; above that, the team's issue tracker is essentially neglected and the signal is meaningless.
+The signal is most informative for organizations with a baseline issue-close median in the seventy-two-to-three-hundred-and-sixty-hour range, that is, three to fifteen days. Below that, the team is already operating at very tight cadence and there is no room to tighten further; above that, the team's issue tracker is essentially neglected and the signal is meaningless.
 
 ## When to act
 
@@ -594,20 +594,20 @@ Exercise 5.3. Pick a startup whose issue tracker you suspect is poorly maintaine
 
 Exercise 5.4. Pick a startup that recently hired a new technical lead (often discoverable from LinkedIn). Compute the issue-cadence trajectory before and after the hire. Document the visual signature of a one-time triage event versus a sustained cadence tightening.
 
-The third exercise is the most useful for cold-reading new candidates. A team that does not maintain its public issue tracker at all is a team that has either chosen a private tracker (which is fine, signal-wise; you just can't compute) or is not yet operating at the discipline level you want to see at Series A — that distinction matters.
+The third exercise is the most useful for cold-reading new candidates. A team that does not maintain its public issue tracker at all is a team that has either chosen a private tracker (which is fine, signal-wise; you just can't compute) or is not yet operating at the discipline level you want to see at Series A, that distinction matters.
 
 
 ========================================================================
 
-# Signal 6 — Downstream Dependency Adoption
+# Signal 6, Downstream Dependency Adoption
 
 ## What it is
 
-Downstream dependency adoption is the count of distinct other repositories that import a startup's published package — npm, PyPI, Maven, crates.io, Go modules, RubyGems, etc. — measured over a rolling thirty-day window. The signal fires when the count of new downstream importers in the most recent thirty days is more than three times the count in the prior thirty days, and the absolute volume is above twenty new importers.
+Downstream dependency adoption is the count of distinct other repositories that import a startup's published package, npm, PyPI, Maven, crates.io, Go modules, RubyGems, etc., measured over a rolling thirty-day window. The signal fires when the count of new downstream importers in the most recent thirty days is more than three times the count in the prior thirty days, and the absolute volume is above twenty new importers.
 
-This signal is specific to companies whose product is, in some form, a software library or SDK that other developers integrate into their own code. That covers most developer-tools companies, most infrastructure companies, most AI-tooling companies, and many open-source-led platform companies — but it does not cover SaaS companies whose product is a hosted application with no developer-facing library, nor consumer companies, nor most marketplace and commerce companies.
+This signal is specific to companies whose product is, in some form, a software library or SDK that other developers integrate into their own code. That covers most developer-tools companies, most infrastructure companies, most AI-tooling companies, and many open-source-led platform companies, but it does not cover SaaS companies whose product is a hosted application with no developer-facing library, nor consumer companies, nor most marketplace and commerce companies.
 
-For the companies it does cover, dependency adoption is the second-most-honest signal in the book — second only to commit-velocity acceleration. The reason is that dependency adoption is not visible in the company's own GitHub at all; it lives entirely in third-party repositories. The company cannot perform it without the cooperation of strangers.
+For the companies it does cover, dependency adoption is the second-most-honest signal in the book, second only to commit-velocity acceleration. The reason is that dependency adoption is not visible in the company's own GitHub at all; it lives entirely in third-party repositories. The company cannot perform it without the cooperation of strangers.
 
 Median lead time in the SSRN-indexed panel was thirty-eight days before the Series A announcement, with an interquartile range of twenty-four to fifty-six days. Hit rate, for the subset of companies where the signal is computable, was seventy-three per cent.
 
@@ -619,15 +619,15 @@ A startup's product-market fit, for a developer-tools or infrastructure company,
 
 Series A rounds for developer-tools companies are usually led by funds that have looked at the dependency adoption curve as part of their thesis. The fund's analyst has, somewhere in their investment memo, a chart of weekly downstream importers over the past six months. If that chart is up-and-to-the-right with a recent acceleration, the round is much more likely to happen at all and to happen at a higher price.
 
-The acceleration happens for two compounding reasons. First, real product-market fit produces acceleration in adoption — early adopters integrate the package, write blog posts about it, recommend it to their teams, and the diffusion compounds. Second, the company itself often runs a developer-relations push in the run-up to the round, producing tutorials, blog posts, conference talks, and integrations with popular frameworks. The DevRel push amplifies the underlying fit-driven adoption.
+The acceleration happens for two compounding reasons. First, real product-market fit produces acceleration in adoption, early adopters integrate the package, write blog posts about it, recommend it to their teams, and the diffusion compounds. Second, the company itself often runs a developer-relations push in the run-up to the round, producing tutorials, blog posts, conference talks, and integrations with popular frameworks. The DevRel push amplifies the underlying fit-driven adoption.
 
-The combination produces a sharp recent acceleration that is visible to anybody who is watching the public dependency graphs — which, again, almost nobody is.
+The combination produces a sharp recent acceleration that is visible to anybody who is watching the public dependency graphs, which, again, almost nobody is.
 
 ## How to compute it
 
 The computation is package-registry-specific. Each registry exposes a different API and different concept of "downstream dependency". The most informative are:
 
-npm. For npm packages, use the npm registry's downloads endpoint to get weekly download counts and the GitHub dependency graph (via the dependents view in the package's repository, accessible programmatically via the dependency-graph BigQuery dataset or via a simple HTML scrape of the dependents page). The download counts are a useful sanity check; the dependents count is the actual signal. Use the public Libraries.io API as the canonical source for cross-registry dependent counts — Libraries.io updates roughly daily and exposes a clean JSON.
+npm. For npm packages, use the npm registry's downloads endpoint to get weekly download counts and the GitHub dependency graph (via the dependents view in the package's repository, accessible programmatically via the dependency-graph BigQuery dataset or via a simple HTML scrape of the dependents page). The download counts are a useful sanity check; the dependents count is the actual signal. Use the public Libraries.io API as the canonical source for cross-registry dependent counts, Libraries.io updates roughly daily and exposes a clean JSON.
 
 PyPI. For PyPI packages, use the public BigQuery dataset bigquery-public-data.pypi.file_downloads for weekly download counts, and the GitHub dependency graph for the dependents-repository count. Libraries.io also covers PyPI.
 
@@ -649,7 +649,7 @@ The signal-firing computation, given the per-registry data, is:
 
 ## What it looks like in the wild
 
-Concrete example: the npm package for a developer-tools company we tracked through 2023. Weekly download counts grew steadily through Q2 from roughly twelve thousand to roughly forty-five thousand, then jumped to one hundred and twenty thousand in mid-Q3 over a four-week window. The dependent-repository count grew from roughly four hundred and fifty to roughly nine hundred and forty over the same window — a hundred-and-ten per cent increase in eight weeks.
+Concrete example: the npm package for a developer-tools company we tracked through 2023. Weekly download counts grew steadily through Q2 from roughly twelve thousand to roughly forty-five thousand, then jumped to one hundred and twenty thousand in mid-Q3 over a four-week window. The dependent-repository count grew from roughly four hundred and fifty to roughly nine hundred and forty over the same window, a hundred-and-ten per cent increase in eight weeks.
 
 The Series A was announced in early November. The Signal 6 firing on the dependent-repository count happened in late September; lead time was thirty-six days, in the middle of the interquartile range.
 
@@ -659,9 +659,9 @@ The investor who was tracking the package on Libraries.io had the firing in thei
 
 Three artifacts mimic genuine adoption.
 
-The vendor-template effect. A startup publishes a create-something CLI scaffolding tool that generates a starter project containing the company's own packages as dependencies. Every project generated from the scaffolder counts as a "downstream importer", even though the importer never made an active choice. Mitigation: discount the dependent-count by the proportion of importers whose package.json matches the scaffolder's template signature — usually identifiable by a stable filename pattern like template-default-name-*.
+The vendor-template effect. A startup publishes a create-something CLI scaffolding tool that generates a starter project containing the company's own packages as dependencies. Every project generated from the scaffolder counts as a "downstream importer", even though the importer never made an active choice. Mitigation: discount the dependent-count by the proportion of importers whose package.json matches the scaffolder's template signature, usually identifiable by a stable filename pattern like template-default-name-*.
 
-The peer-dependency cascade. A package that is a peer dependency of a more popular framework will see its dependent-count rise whenever the framework releases a new version. This is real adoption in a sense — the integration is being maintained — but it is not predictive of anything other than the parent framework's continued popularity. Mitigation: read the importing repositories' content; if they are mostly forks or templates of a single framework, discount accordingly.
+The peer-dependency cascade. A package that is a peer dependency of a more popular framework will see its dependent-count rise whenever the framework releases a new version. This is real adoption in a sense, the integration is being maintained, but it is not predictive of anything other than the parent framework's continued popularity. Mitigation: read the importing repositories' content; if they are mostly forks or templates of a single framework, discount accordingly.
 
 The internal-monorepo effect. Some companies' own internal repositories show up in the dependent-count when those repositories happen to be public. This double-counts the company's own use of its own package. Mitigation: filter out importing repositories whose owner is the same organization, plus a small list of known related orgs.
 
@@ -669,15 +669,15 @@ The internal-monorepo effect. Some companies' own internal repositories show up 
 
 The three-times-prior, twenty-absolute-floor threshold is the default for medium-sized developer-tools companies. For very early-stage projects (fewer than fifty total dependents), drop the absolute floor to ten and accept higher noise. For very mature projects (more than ten thousand total dependents), the percentage threshold is too easy to satisfy from baseline noise; switch to an absolute-increase threshold of two hundred new dependents in thirty days.
 
-The signal is most informative for projects in the fifty-to-two-thousand baseline-dependents range — that is, established enough to have a real adoption curve, not so established that noise dominates.
+The signal is most informative for projects in the fifty-to-two-thousand baseline-dependents range, that is, established enough to have a real adoption curve, not so established that noise dominates.
 
 For organizations that publish packages on multiple registries, sum across registries. For organizations that publish no packages, skip the signal and weight the other six accordingly. The Scout Score returns a null Signal 6 score for non-publishing organizations rather than a zero, to avoid penalizing companies whose business model does not produce a public package.
 
 ## When to act
 
-A clean Signal 6 firing — real adoption acceleration, no false-positive flags, a developer-tools or infrastructure company — is a high-conviction reason to start active diligence. The lead time is comfortable, and the signal correlates strongly enough with downstream business metrics that the founders are usually receptive to a conversation.
+A clean Signal 6 firing, real adoption acceleration, no false-positive flags, a developer-tools or infrastructure company, is a high-conviction reason to start active diligence. The lead time is comfortable, and the signal correlates strongly enough with downstream business metrics that the founders are usually receptive to a conversation.
 
-The right preparation is to read the importing repositories' content. If you can identify three or four real production deployments of the package — companies you recognize, companies whose code is publicly visible — you have material for the founder conversation that puts you ahead of every other investor.
+The right preparation is to read the importing repositories' content. If you can identify three or four real production deployments of the package, companies you recognize, companies whose code is publicly visible, you have material for the founder conversation that puts you ahead of every other investor.
 
 ## Exercises
 
@@ -694,13 +694,13 @@ The fourth exercise is open-ended. The honest answer is that dependency adoption
 
 ========================================================================
 
-# Signal 7 — Founding-Team Public Visibility
+# Signal 7, Founding-Team Public Visibility
 
 ## What it is
 
-Founding-team public visibility is the rate of public engineering output — blog posts, conference talks, OSS maintenance, podcast appearances, technical Twitter/X threads — by the founding team and the technical lead. It is measured as a count of distinct public outputs in the past sixty days, weighted by the audience size of the platform. The signal fires when the count rises by more than fifty per cent across two consecutive sixty-day windows.
+Founding-team public visibility is the rate of public engineering output, blog posts, conference talks, OSS maintenance, podcast appearances, technical Twitter/X threads, by the founding team and the technical lead. It is measured as a count of distinct public outputs in the past sixty days, weighted by the audience size of the platform. The signal fires when the count rises by more than fifty per cent across two consecutive sixty-day windows.
 
-This is the softest of the seven signals, both in computation and in interpretation. It is the only signal in the book that requires a meaningful manual element — the count cannot be fully automated because the platforms are heterogeneous and the attribution to specific founders requires some judgement. It is also the most predictive of certain kinds of Series A rounds, specifically the kinds where the lead investor is buying the founder's public credibility as part of the thesis.
+This is the softest of the seven signals, both in computation and in interpretation. It is the only signal in the book that requires a meaningful manual element, the count cannot be fully automated because the platforms are heterogeneous and the attribution to specific founders requires some judgement. It is also the most predictive of certain kinds of Series A rounds, specifically the kinds where the lead investor is buying the founder's public credibility as part of the thesis.
 
 Median lead time in the SSRN-indexed panel was forty-five days before the Series A announcement, with an interquartile range of twenty-eight to seventy-one days. Hit rate was sixty-four per cent.
 
@@ -708,9 +708,9 @@ The signal's value is mostly in its breadth: it catches Series-A-bound companies
 
 ## Why it works
 
-A founding team preparing for a Series A is, in addition to everything else, preparing the public credibility surface that the lead investor's analyst will read. The analyst will, in the week before the term sheet is finalised, do a survey of the founder's public output — to validate the engineering depth claim, to understand the founder's communication ability, to assess whether the founder will be effective as a public face for the company in the recruiting and customer-facing contexts that the Series A round implies.
+A founding team preparing for a Series A is, in addition to everything else, preparing the public credibility surface that the lead investor's analyst will read. The analyst will, in the week before the term sheet is finalised, do a survey of the founder's public output, to validate the engineering depth claim, to understand the founder's communication ability, to assess whether the founder will be effective as a public face for the company in the recruiting and customer-facing contexts that the Series A round implies.
 
-Founders who have done this before know that the public-output-survey happens. They prepare for it. The preparation is partially deliberate — writing one or two engineering blog posts on hard technical problems the team has solved — and partially organic — accepting podcast invitations they would otherwise have declined, agreeing to speak at conferences in the relevant window, opening up about the technical roadmap on Twitter.
+Founders who have done this before know that the public-output-survey happens. They prepare for it. The preparation is partially deliberate, writing one or two engineering blog posts on hard technical problems the team has solved, and partially organic, accepting podcast invitations they would otherwise have declined, agreeing to speak at conferences in the relevant window, opening up about the technical roadmap on Twitter.
 
 The result is a measurable acceleration in public engineering output in the eight to twelve weeks before the round. The acceleration is asymmetric: it concentrates heavily on the technical co-founder or the head of engineering, less so on the CEO (whose public output usually rises after the round, not before). The asymmetry is a useful diagnostic.
 
@@ -724,11 +724,11 @@ Engineering blog posts on the company's own engineering blog. A new technical-de
 
 Personal blog posts by the technical lead. A long-form personal blog post by the technical co-founder or head of engineering, on a topic adjacent to the company's product, is a soft pre-fundraise signal. Personal blogs are often where founders surface ideas that are not yet ready for the company's official voice; they are also where founders demonstrate range to potential investors.
 
-Conference talks. A talk at a relevant industry conference — KubeCon, NeurIPS, RailsConf, sector-specific shows — has a long preparation tail. A conference talk that is being given in the next six weeks was usually agreed to four to six months ago, which means the founder's public-attention plan was set well before the run-up. Talks are therefore lagging indicators of intent rather than leading indicators — but talks during the announcement window are amplifiers, not predictors.
+Conference talks. A talk at a relevant industry conference, KubeCon, NeurIPS, RailsConf, sector-specific shows, has a long preparation tail. A conference talk that is being given in the next six weeks was usually agreed to four to six months ago, which means the founder's public-attention plan was set well before the run-up. Talks are therefore lagging indicators of intent rather than leading indicators, but talks during the announcement window are amplifiers, not predictors.
 
 Technical podcast appearances. A podcast appearance has a shorter preparation tail than a conference talk, usually four to ten weeks. A founder appearing on a high-listener-count podcast in the eight-week run-up is a soft pre-fundraise signal.
 
-OSS maintenance on widely-used external projects. The technical lead's continued maintenance of a popular open-source project — submitting PRs, reviewing PRs, releasing versions — is a continuous baseline rather than a discrete event. A noticeable increase in OSS maintenance activity, especially on projects adjacent to the company's own product, is a soft signal.
+OSS maintenance on widely-used external projects. The technical lead's continued maintenance of a popular open-source project, submitting PRs, reviewing PRs, releasing versions, is a continuous baseline rather than a discrete event. A noticeable increase in OSS maintenance activity, especially on projects adjacent to the company's own product, is a soft signal.
 
 Long-form Twitter/X threads. The lowest-signal output but the most volume. A founder thread that explains a technical decision, a product roadmap, or a sector thesis is a soft pre-fundraise signal, especially when the thread links back to the company's product.
 
@@ -737,7 +737,7 @@ Long-form Twitter/X threads. The lowest-signal output but the most volume. A fou
 The computation is partially manual. The procedure I recommend is:
 
 1. For each watchlist startup, identify the founders and the technical lead by name. This usually requires a one-time manual setup per startup, taking ten to fifteen minutes per company. Maintain a per-startup file with the names, the X handles, the personal blog URLs, and the relevant podcast/conference identifiers.
-2. On a weekly cadence, scan each named source for new content. The scan can be partially automated — RSS for blogs, the X API for handles (if you have access), conference YouTube channels, podcast RSS — but a meaningful portion of the data is in non-RSS sources and requires manual inspection.
+2. On a weekly cadence, scan each named source for new content. The scan can be partially automated, RSS for blogs, the X API for handles (if you have access), conference YouTube channels, podcast RSS, but a meaningful portion of the data is in non-RSS sources and requires manual inspection.
 3. Tag each new piece of content with the channel type (blog, talk, podcast, OSS, thread).
 4. Compute the trailing-sixty-day count by channel and overall.
 5. The signal fires when the trailing-sixty-day count is more than fifty per cent above the prior sixty days, with at least one new piece in the highest-signal channel (blog post or conference talk).
@@ -748,17 +748,17 @@ For a watchlist of twenty to thirty active candidates, the manual portion takes 
 
 Concrete example: an AI-infrastructure startup we tracked through 2024. The technical co-founder published two engineering blog posts within a six-week window in the third quarter, both on technical aspects of the company's product. The same co-founder appeared on three high-listener-count engineering podcasts in the same window. The CEO began a series of long-form X threads on the sector landscape, posting once or twice per week, where the prior baseline had been one or two threads per quarter.
 
-Signal 7 fired in mid-September. The Series A was announced in late November — sixty-eight days later, on the higher end of the interquartile range.
+Signal 7 fired in mid-September. The Series A was announced in late November, sixty-eight days later, on the higher end of the interquartile range.
 
-The interesting thing about this firing was that Signals 1 and 2 on the company's primary repository were quiet during the same period. The team was operating in a heads-down product mode and the commit acceleration was modest. The visibility signal caught the run-up where the in-repo signals missed it — which is exactly the catch-all role this signal plays in the seven-signal stack.
+The interesting thing about this firing was that Signals 1 and 2 on the company's primary repository were quiet during the same period. The team was operating in a heads-down product mode and the commit acceleration was modest. The visibility signal caught the run-up where the in-repo signals missed it, which is exactly the catch-all role this signal plays in the seven-signal stack.
 
 ## Distinguishing pre-fundraise visibility from baseline marketing
 
 The hard part of using Signal 7 is distinguishing the pre-fundraise burst from the company's normal marketing and developer-relations cadence. Three diagnostics help.
 
-Asymmetry by team member. Pre-fundraise visibility concentrates on the technical co-founder and the head of engineering, not on the CEO. The CEO becomes more visible after the round. If the recent visibility burst is mostly CEO-driven, the company is likely in a different phase — could be a customer-acquisition push, could be a product-launch cycle, could be a fundraise but the round-stage is later than Series A.
+Asymmetry by team member. Pre-fundraise visibility concentrates on the technical co-founder and the head of engineering, not on the CEO. The CEO becomes more visible after the round. If the recent visibility burst is mostly CEO-driven, the company is likely in a different phase, could be a customer-acquisition push, could be a product-launch cycle, could be a fundraise but the round-stage is later than Series A.
 
-Topic specificity. Pre-fundraise visibility tends to cluster on technical-depth topics adjacent to the company's product — the choices the team has made, the problems they have solved, the architecture they have built. Baseline DevRel visibility tends to cluster on customer use cases, integration tutorials, and product announcements. The technical-depth burst is the diagnostic.
+Topic specificity. Pre-fundraise visibility tends to cluster on technical-depth topics adjacent to the company's product, the choices the team has made, the problems they have solved, the architecture they have built. Baseline DevRel visibility tends to cluster on customer use cases, integration tutorials, and product announcements. The technical-depth burst is the diagnostic.
 
 Concurrency with other signals. A Signal 7 firing concurrent with Signals 1 and 2 is much more predictive than Signal 7 alone. A Signal 7 firing without any other signal firing is consistent with several non-fundraise explanations, including the founder simply working on their public profile or preparing for a job change.
 
@@ -766,13 +766,13 @@ Concurrency with other signals. A Signal 7 firing concurrent with Signals 1 and 
 
 The fifty-per-cent-rise threshold across two consecutive sixty-day windows is the default. Tighten it to seventy-five per cent for organizations with already-high baseline visibility, where the absolute count is less informative. Loosen it to twenty-five per cent for organizations with low baseline, where each new piece of content is proportionally more meaningful.
 
-The signal works best for organizations whose technical lead has at least a modest existing public presence — a personal blog with ten or more posts, a Twitter account with a thousand or more followers, or a documented history of conference talks. For organizations whose founders are deeply private (no personal blog, no public social presence, no conference history), Signal 7 cannot be computed reliably and should be skipped. This is a common pattern in stealth-mode AI labs and in some founder-backgrounds (e.g. ex-FAANG leadership who maintain no personal public footprint), and is not a negative signal — just an unmeasured one.
+The signal works best for organizations whose technical lead has at least a modest existing public presence, a personal blog with ten or more posts, a Twitter account with a thousand or more followers, or a documented history of conference talks. For organizations whose founders are deeply private (no personal blog, no public social presence, no conference history), Signal 7 cannot be computed reliably and should be skipped. This is a common pattern in stealth-mode AI labs and in some founder-backgrounds (e.g. ex-FAANG leadership who maintain no personal public footprint), and is not a negative signal, just an unmeasured one.
 
 ## When to act
 
 Signal 7 firing in concert with Signal 1 or Signal 2 is high-conviction. Signal 7 firing alone is medium-conviction; add the company to your watchlist and check weekly for concurrent firings.
 
-The reading exercise that produces the most value from Signal 7 is reading the new content. The blog posts, the talks, the podcast transcripts — they almost always reveal information about the company's near-term product roadmap and the founder's strategic thinking that you would not otherwise have. By the time you reach out to the founder, you have read everything they have said in public for the past two months. The conversation is materially different.
+The reading exercise that produces the most value from Signal 7 is reading the new content. The blog posts, the talks, the podcast transcripts, they almost always reveal information about the company's near-term product roadmap and the founder's strategic thinking that you would not otherwise have. By the time you reach out to the founder, you have read everything they have said in public for the past two months. The conversation is materially different.
 
 ## Exercises
 
@@ -789,9 +789,9 @@ The fourth exercise is, again, the one that turns the signal into deal-flow valu
 
 ========================================================================
 
-# Methodology — How to Compute Every Signal Yourself
+# Methodology, How to Compute Every Signal Yourself
 
-This chapter is the formal computation procedure for every signal in the book. It is intentionally written as a working document — read it with a terminal open. By the end of the chapter you will have a script that runs all seven signals against any organization on the public GitHub REST API, with no scraping and no proprietary data licences.
+This chapter is the formal computation procedure for every signal in the book. It is intentionally written as a working document, read it with a terminal open. By the end of the chapter you will have a script that runs all seven signals against any organization on the public GitHub REST API, with no scraping and no proprietary data licences.
 
 ## The data sources
 
@@ -804,7 +804,7 @@ Every signal in this book is computable from public, free, properly-rate-limited
 5. Public BigQuery datasets for PyPI downloads (bigquery-public-data.pypi.file_downloads) and the GitHub dependency graph (bigquery-public-data.libraries_io.dependencies). Free tier of one terabyte per month is more than enough.
 6. RSS feeds, conference YouTube channels, and podcast directories for Signal 7. No formal API; standard scrape patterns apply.
 
-That is the full data stack. There is nothing else to license, nothing else to scrape, nothing else to obtain through a private channel. Every claim in this book is recomputable by you, on a personal-budget infrastructure footprint, indefinitely — for as long as GitHub keeps the public REST API free, which it has done for the entire fifteen-year history of the platform.
+That is the full data stack. There is nothing else to license, nothing else to scrape, nothing else to obtain through a private channel. Every claim in this book is recomputable by you, on a personal-budget infrastructure footprint, indefinitely, for as long as GitHub keeps the public REST API free, which it has done for the entire fifteen-year history of the platform.
 
 ## The shared computational primitives
 
@@ -814,7 +814,7 @@ Every signal in the book reuses three primitives. Implement these once and the p
 
 The single most-called function in the signal stack pulls commits from a repository over a specified date range. The implementation is straightforward but has three subtleties that catch first-time implementers.
 
-First, the GitHub commits endpoint is paginated at one hundred commits per page by default. For active repositories you will need several pages. Use the Link response header rather than incrementing the page query parameter manually — GitHub's pagination has occasional edge cases at exactly the hundred-commit boundary that the Link header handles correctly.
+First, the GitHub commits endpoint is paginated at one hundred commits per page by default. For active repositories you will need several pages. Use the Link response header rather than incrementing the page query parameter manually, GitHub's pagination has occasional edge cases at exactly the hundred-commit boundary that the Link header handles correctly.
 
 Second, the since and until parameters take ISO 8601 timestamps. They filter on commit-author-date, not commit-committer-date, which can differ by hours when commits are rebased. For acceleration calculations the difference is usually noise; for surgical lead-time analysis it can matter and you should be deliberate.
 
@@ -882,7 +882,7 @@ The repository metadata endpoint (/repos/{owner}/{repo}) returns a payload that 
 
 That is the third primitive. Everything else is a composition.
 
-## Signal 1 — Commit Velocity Acceleration
+## Signal 1, Commit Velocity Acceleration
 
 The full computation in code:
 
@@ -916,7 +916,7 @@ The full computation in code:
 
 That is the complete Signal 1 implementation. Approximately twenty-five lines of code. It is reproducible against any GitDealFlow leaderboard rank within a small floating-point margin.
 
-## Signal 2 — Contributor Influx
+## Signal 2, Contributor Influx
 
     def signal_2_contributor_influx(org: str, repo: str, token: str) -> dict:
         now = datetime.utcnow()
@@ -948,7 +948,7 @@ That is the complete Signal 1 implementation. Approximately twenty-five lines of
 
 The pagination cost for this signal is higher than for Signal 1 because the look-back window is longer. Budget approximately three or four times the API calls.
 
-## Signal 3 — Infrastructure Repository Buildout
+## Signal 3, Infrastructure Repository Buildout
 
     INFRA_KEYWORDS = ["infra", "terraform", "tofu", "helm", "k8s", "kubernetes",
                       "deploy", "release", "ci", "pipeline", "observability",
@@ -977,7 +977,7 @@ The pagination cost for this signal is higher than for Signal 1 because the look
 
 The classifier above is heuristic; it produces a small number of false classifications that you should manually correct on the first pass. The GitDealFlow classify_repository MCP tool maintains a more sophisticated version that uses the README contents and the language-distribution histogram, but the heuristic above is sufficient for rough computation.
 
-## Signal 4 — Star-Velocity Detachment
+## Signal 4, Star-Velocity Detachment
 
     def signal_4_star_detachment(org: str, repo: str, token: str) -> dict:
         headers = {
@@ -1021,7 +1021,7 @@ The classifier above is heuristic; it produces a small number of false classific
 
 The pagination cap of fifty pages prevents a runaway loop on extremely popular repositories. For repositories above five thousand stars per fortnight you should compute the signal differently; the threshold-based approach above is best calibrated for repositories in the ten-to-five-hundred-stars-per-fortnight range.
 
-## Signal 5 — Issue Closure Cadence
+## Signal 5, Issue Closure Cadence
 
     def signal_5_issue_cadence(org: str, repo: str, token: str) -> dict:
         now = datetime.utcnow()
@@ -1069,7 +1069,7 @@ The pagination cap of fifty pages prevents a runaway loop on extremely popular r
 
 Issue endpoints are noisy because GitHub conflates issues with pull requests in the API response. The pull_request filter is essential.
 
-## Signal 6 — Downstream Dependency Adoption
+## Signal 6, Downstream Dependency Adoption
 
 This signal depends on Libraries.io, which is a third-party service. The free tier requires registering for an API key; sign up at libraries.io and store the key in LIBRARIES_IO_API_KEY.
 
@@ -1108,7 +1108,7 @@ This signal depends on Libraries.io, which is a third-party service. The free ti
 
 The Libraries.io API uses pushed_at as the proxy for "still actively using this dependency". This is a reasonable approximation but not perfect; a more sophisticated implementation would parse the dependency-graph BigQuery dataset directly, which is more accurate but heavier to operate.
 
-## Signal 7 — Founding-Team Public Visibility
+## Signal 7, Founding-Team Public Visibility
 
 Signal 7 is the only signal that is not fully scriptable. The procedure I recommend is a partial automation that handles the RSS-feed-based channels and leaves the manual portion small.
 
@@ -1128,7 +1128,7 @@ Signal 7 is the only signal that is not fully scriptable. The procedure I recomm
                 output_count += len(recent)
                 by_channel["blog"] += len(recent)
             # twitter / podcast / talk channels require manual entry per current
-            # API surface — populate manually from your weekly check
+            # API surface, populate manually from your weekly check
         return {
             "output_count": output_count,
             "by_channel": by_channel,
@@ -1142,13 +1142,13 @@ The Scout Score is a weighted composition of the seven signals into a single zer
 
 | Signal | Weight |
 |---|---|
-| 1 — Commit Velocity Acceleration | 0.22 |
-| 2 — Contributor Influx | 0.20 |
-| 3 — Infrastructure Buildout | 0.16 |
-| 4 — Star-Velocity Detachment | 0.10 |
-| 5 — Issue Closure Cadence | 0.10 |
-| 6 — Dependency Adoption | 0.14 |
-| 7 — Founding-Team Visibility | 0.08 |
+| 1, Commit Velocity Acceleration | 0.22 |
+| 2, Contributor Influx | 0.20 |
+| 3, Infrastructure Buildout | 0.16 |
+| 4, Star-Velocity Detachment | 0.10 |
+| 5, Issue Closure Cadence | 0.10 |
+| 6, Dependency Adoption | 0.14 |
+| 7, Founding-Team Visibility | 0.08 |
 
 A composite of this form, applied to a watchlist of two to three hundred organizations and re-computed weekly, produces a ranked list whose top decile contains a meaningful concentration of Series-A-bound companies. Concrete numbers from the SSRN panel: the top decile (twenty to thirty companies) contained sixty-eight per cent of the next-ninety-day Series A announcements among the watchlist, against a uniform-prior baseline of about ten per cent. That is a six-to-seven-times concentration ratio.
 
@@ -1158,7 +1158,7 @@ The Scout Score with these weights is implemented as the compute_scout_score MCP
 
 Three computational corners are worth cutting; three are not.
 
-Cuttable: caching repository metadata for a full hour rather than refreshing every call. Caching the human-vs-bot classification for a full week. Skipping Signal 6 entirely for non-developer-tools organizations — the score for those organizations should weight the other six and renormalize, not zero-fill.
+Cuttable: caching repository metadata for a full hour rather than refreshing every call. Caching the human-vs-bot classification for a full week. Skipping Signal 6 entirely for non-developer-tools organizations, the score for those organizations should weight the other six and renormalize, not zero-fill.
 
 Not cuttable: the two-period confirmation. The bot filter on the contributor classifier. The volume floors on every signal. The pagination on the commits endpoint. The pull_request filter on the issues endpoint. The default-branch lookup before pulling commits.
 
@@ -1173,9 +1173,9 @@ The next chapter is the replication appendix. It walks you through running the c
 
 ========================================================================
 
-# Appendix — A 90-Minute Replication Walkthrough
+# Appendix, A 90-Minute Replication Walkthrough
 
-This appendix takes you from a fresh laptop to a verified rank against the live GitDealFlow leaderboard in roughly ninety minutes. The procedure is intentionally hand-held. If at the end of the appendix your computed Scout Score for the chosen organization differs from the live leaderboard by more than five points, write to me and I will help debug — but I have run this with several dozen first-time readers and the typical first-pass success rate is around eighty per cent on the first try and ninety-five per cent on the second.
+This appendix takes you from a fresh laptop to a verified rank against the live GitDealFlow leaderboard in roughly ninety minutes. The procedure is intentionally hand-held. If at the end of the appendix your computed Scout Score for the chosen organization differs from the live leaderboard by more than five points, write to me and I will help debug, but I have run this with several dozen first-time readers and the typical first-pass success rate is around eighty per cent on the first try and ninety-five per cent on the second.
 
 The appendix uses Modal Labs as the worked example. You can substitute any organization on the live leaderboard, but Modal is well-documented in the prior chapters and well-suited to first-pass replication.
 
@@ -1184,14 +1184,14 @@ The appendix uses Modal Labs as the worked example. You can substitute any organ
 Before you start the timer, you should have:
 
 1. A laptop with Python 3.10 or later installed. Most macOS and Linux machines already have this; on Windows install from python.org. Verify with python3 --version.
-2. A GitHub personal access token with read-only scopes. Generate at https://github.com/settings/tokens?type=beta. Select "Public repositories (read-only)" and "Read metadata". No write scopes needed. Set a one-month expiry — you can re-generate later. Save the token to a file or password manager; you will only see it once.
+2. A GitHub personal access token with read-only scopes. Generate at https://github.com/settings/tokens?type=beta. Select "Public repositories (read-only)" and "Read metadata". No write scopes needed. Set a one-month expiry, you can re-generate later. Save the token to a file or password manager; you will only see it once.
 3. A Libraries.io API key. Sign up at libraries.io (free), confirm email, and copy the API key from libraries.io/account. The free tier is one request per second, more than enough for this walkthrough.
 4. The requests Python library. Install with pip install requests. That is the only dependency.
 5. A terminal. macOS Terminal, Linux gnome-terminal, or Windows PowerShell are all fine.
 
 If any of these are not in place, set them up now. The walkthrough assumes them.
 
-## Minute zero — set up the environment
+## Minute zero, set up the environment
 
 Open a terminal. Create a working directory and a Python file:
 
@@ -1213,7 +1213,7 @@ Open signals.py in your editor. Paste this scaffolding at the top:
     
     GH_HEADERS = {"Authorization": f"Bearer {GITHUB_TOKEN}"}
 
-Replace the PASTE_*_HERE placeholders with your actual tokens, or set the environment variables in your shell — your preference. The script will not work without both.
+Replace the PASTE_*_HERE placeholders with your actual tokens, or set the environment variables in your shell, your preference. The script will not work without both.
 
 Verify the GitHub token works:
 
@@ -1228,7 +1228,7 @@ Run with python3 signals.py. You should see "Rate limit remaining: 4990" or simi
 
 That is the setup. We are at minute five.
 
-## Minutes five to fifteen — primitive 1, the commit fetcher
+## Minutes five to fifteen, primitive 1, the commit fetcher
 
 Add this function to signals.py:
 
@@ -1260,11 +1260,11 @@ Test it by pulling commits from the last seven days:
     recent = fetch_commits(ORG, REPO, datetime.utcnow() - timedelta(days=7), datetime.utcnow())
     print(f"Recent 7-day commits on {ORG}/{REPO}: {len(recent)}")
 
-Run again. You should see a count somewhere between twenty and two hundred, depending on the week. If you get zero, double-check the ORG and REPO strings — modal-labs/modal-client is the correct path.
+Run again. You should see a count somewhere between twenty and two hundred, depending on the week. If you get zero, double-check the ORG and REPO strings, modal-labs/modal-client is the correct path.
 
 That is primitive 1. We are at minute fifteen.
 
-## Minutes fifteen to twenty-five — primitive 2, the contributor classifier
+## Minutes fifteen to twenty-five, primitive 2, the contributor classifier
 
 Add the classifier:
 
@@ -1295,7 +1295,7 @@ For Modal, you should see a roughly ninety-to-ten ratio of humans to bots. If yo
 
 We are at minute twenty-five.
 
-## Minutes twenty-five to forty — Signal 1
+## Minutes twenty-five to forty, Signal 1
 
 Implement Signal 1 in full:
 
@@ -1313,7 +1313,7 @@ Implement Signal 1 in full:
             counts.append(len(humans))
     
         current, prior, prior_prior = counts
-        print(f"Commits — current: {current}, prior: {prior}, prior-prior: {prior_prior}")
+        print(f"Commits, current: {current}, prior: {prior}, prior-prior: {prior_prior}")
     
         if prior < 10:
             return {"fires": False, "reason": "absolute_floor", "score": 0}
@@ -1333,13 +1333,13 @@ Implement Signal 1 in full:
     result_1 = signal_1()
     print(f"Signal 1 fires: {result_1['fires']}, score: {result_1['score']:.1f}")
 
-Run it. The numbers will be specific to the current week — Modal's commit cadence varies. The score is what we will use later in the composite.
+Run it. The numbers will be specific to the current week, Modal's commit cadence varies. The score is what we will use later in the composite.
 
 If your run takes more than fifteen seconds, you have a slow internet connection or you are being rate-limited. The free GitHub tier rate-limits at five thousand requests per hour, which is plenty for this walkthrough but can be exhausted by aggressive concurrent scripts.
 
 We are at minute forty.
 
-## Minutes forty to fifty-five — Signal 2
+## Minutes forty to fifty-five, Signal 2
 
 Implement Signal 2:
 
@@ -1371,11 +1371,11 @@ Implement Signal 2:
     result_2 = signal_2()
     print(f"Signal 2 fires: {result_2['fires']}, score: {result_2['score']}, new authors: {result_2['new_in_14']}")
 
-Run. The new-authors list is the most interesting output of the entire walkthrough — these are the names of recent contributors. If the firing is real, you can paste any of them into LinkedIn search and find recent Modal hires. Try it. The first time you do this, the signal becomes viscerally real.
+Run. The new-authors list is the most interesting output of the entire walkthrough, these are the names of recent contributors. If the firing is real, you can paste any of them into LinkedIn search and find recent Modal hires. Try it. The first time you do this, the signal becomes viscerally real.
 
 We are at minute fifty-five.
 
-## Minutes fifty-five to sixty-five — Signal 6
+## Minutes fifty-five to sixty-five, Signal 6
 
 Skip ahead to Signal 6 because the dependency-adoption signal is the second-most-honest signal in the book, and Modal happens to be a developer-tools company with an active npm package. Implement:
 
@@ -1427,11 +1427,11 @@ Skip ahead to Signal 6 because the dependency-adoption signal is the second-most
     result_6 = signal_6()
     print(f"Signal 6 fires: {result_6['fires']}, score: {result_6.get('score')}")
 
-If Modal does not publish a primary npm package under the name above (the canonical name has changed at least once historically), you may get a package_not_indexed result. Substitute their primary published package — you can find it at npmjs.com/~modal-labs or in their docs.
+If Modal does not publish a primary npm package under the name above (the canonical name has changed at least once historically), you may get a package_not_indexed result. Substitute their primary published package, you can find it at npmjs.com/~modal-labs or in their docs.
 
 We are at minute sixty-five.
 
-## Minutes sixty-five to seventy-five — composing the score
+## Minutes sixty-five to seventy-five, composing the score
 
 Compute the partial Scout Score from Signals 1, 2, and 6:
 
@@ -1454,13 +1454,13 @@ Now go to the GitDealFlow leaderboard at signals.gitdealflow.com and look up the
 
 We are at minute seventy-five.
 
-## Minutes seventy-five to ninety — verification and inspection
+## Minutes seventy-five to ninety, verification and inspection
 
-Spend the last fifteen minutes inspecting the output. Read the new-author list from Signal 2 and try to resolve at least three of them on LinkedIn. Read the firing reason for Signal 1 — was it the acceleration or the volume floor? Look at the commit log on github.com/modal-labs/modal-client/commits and confirm the recent commits look like real engineering work rather than dependency bumps.
+Spend the last fifteen minutes inspecting the output. Read the new-author list from Signal 2 and try to resolve at least three of them on LinkedIn. Read the firing reason for Signal 1, was it the acceleration or the volume floor? Look at the commit log on github.com/modal-labs/modal-client/commits and confirm the recent commits look like real engineering work rather than dependency bumps.
 
 The single most useful exercise at this point is to compare your computed numbers to a public Series A announcement timeline. Modal Labs announced its Series A on October 19, 2023. If you replicate this appendix on Modal as it stood in mid-September 2023 (you would need historical data to do this, which is harder), you would see Signal 1 firing strongly. The data has moved on, but the historical pattern is in the public record and is verifiable by date-bounding your since and until parameters.
 
-If your numbers feel directionally off — much higher or much lower than the leaderboard would suggest — the most common cause is one of three things:
+If your numbers feel directionally off, much higher or much lower than the leaderboard would suggest, the most common cause is one of three things:
 
 Wrong repository. Modal has multiple repositories. The signal is most informative on modal-client, which is their primary product repository. Computing on modal-examples or modal-docs will give different and less informative numbers.
 
@@ -1470,7 +1470,7 @@ Rate-limit exhaustion. If you have run the script several times and exhausted yo
 
 If your numbers feel directionally right but you want to validate against the live leaderboard, write to signals@gitdealflow.com with your numbers and I will pull the corresponding leaderboard score for that week and you can compare.
 
-We are at minute ninety. You have, with a $0 budget, a personal access token, and roughly a hundred lines of Python, replicated a meaningful portion of the GitDealFlow signal stack on a real organization. You can now run this against any organization on GitHub. You have also verified that the methodology is real — you computed the numbers yourself from raw public data, and the numbers match the published methodology.
+We are at minute ninety. You have, with a $0 budget, a personal access token, and roughly a hundred lines of Python, replicated a meaningful portion of the GitDealFlow signal stack on a real organization. You can now run this against any organization on GitHub. You have also verified that the methodology is real, you computed the numbers yourself from raw public data, and the numbers match the published methodology.
 
 That is the deal this book makes. Public data, fully replicable, no licence, no scraping, no proprietary anything. The seven-signal stack is yours now. The leaderboard, the MCP server, and the email digest are conveniences that automate what you have just done by hand. They are not where the value lives. The value lives in the methodology, and the methodology is in your hands.
 
@@ -1479,9 +1479,9 @@ Use it well.
 
 ========================================================================
 
-# Conclusion — What to Do on Monday Morning
+# Conclusion, What to Do on Monday Morning
 
-If you read this book straight through and then put it down without changing anything you do on Monday morning, the book has failed. The signals are real, the methodology is reproducible, the historical record is in your favour — but none of that produces a different deal-flow funnel unless the workflow is actually run.
+If you read this book straight through and then put it down without changing anything you do on Monday morning, the book has failed. The signals are real, the methodology is reproducible, the historical record is in your favour, but none of that produces a different deal-flow funnel unless the workflow is actually run.
 
 This conclusion is therefore a checklist. It is intentionally short.
 
@@ -1491,11 +1491,11 @@ Before nine a.m. on Monday morning.
 
 1. Open your watchlist. If you do not have one, write down the names of fifteen to thirty companies you are interested in, with one line per company including the GitHub organization handle. Fifteen is enough to start; thirty is the maximum for a manual workflow before you need automation.
 
-2. For each company, run Signal 1 — the fourteen-day commit-velocity acceleration with two-period confirmation. The script in the methodology chapter takes about thirty seconds per organization. For thirty organizations, budget fifteen minutes.
+2. For each company, run Signal 1, the fourteen-day commit-velocity acceleration with two-period confirmation. The script in the methodology chapter takes about thirty seconds per organization. For thirty organizations, budget fifteen minutes.
 
-3. Note any firings — the small list of companies whose primary repository is showing two-hundred-per-cent acceleration with two-period confirmation. For most weeks this list will be one to four companies. Some weeks it will be empty. Both are normal.
+3. Note any firings, the small list of companies whose primary repository is showing two-hundred-per-cent acceleration with two-period confirmation. For most weeks this list will be one to four companies. Some weeks it will be empty. Both are normal.
 
-4. For each firing, run Signal 2 — the contributor influx — and Signal 6 if the company is a developer-tools company. Note any concurrent firings.
+4. For each firing, run Signal 2, the contributor influx, and Signal 6 if the company is a developer-tools company. Note any concurrent firings.
 
 Before noon on Monday morning.
 
@@ -1503,11 +1503,11 @@ Before noon on Monday morning.
 
 6. For each confirmed-as-real concurrent firing, write a short founder reach-out. Plain text, no marketing copy, lead with a specific observation about the public commit graph. Three sentences. Send.
 
-7. Subscribe to the free GitDealFlow Signal Digest at gitdealflow.com if you have not already. The digest delivers every Monday before nine a.m. Eastern and contains the top five firings across the entire universe of tracked organizations — not just your watchlist. The free digest catches the firings on companies you would never have put on your own watchlist, and those are usually the ones with the highest carry potential.
+7. Subscribe to the free GitDealFlow Signal Digest at gitdealflow.com if you have not already. The digest delivers every Monday before nine a.m. Eastern and contains the top five firings across the entire universe of tracked organizations, not just your watchlist. The free digest catches the firings on companies you would never have put on your own watchlist, and those are usually the ones with the highest carry potential.
 
 That is the whole Monday workflow. It takes between thirty and ninety minutes depending on the size of the watchlist and how many firings need cross-referencing. If you do this every Monday for a quarter, the deal-flow funnel that lands on your desk will be measurably different from the one that lands on the desk of the investor who is still relying on warm intros and Crunchbase Pro.
 
-The compound effect of this workflow is real. It is also small per week and only visible in retrospect. Do not expect a transformative conversation in week one. Expect, by week twelve, to be in three or four conversations that you would not have been in otherwise — and to have walked away from one or two firings that turned out, on closer inspection, to be false positives. That ratio is the point.
+The compound effect of this workflow is real. It is also small per week and only visible in retrospect. Do not expect a transformative conversation in week one. Expect, by week twelve, to be in three or four conversations that you would not have been in otherwise, and to have walked away from one or two firings that turned out, on closer inspection, to be false positives. That ratio is the point.
 
 ## Three honest failure modes
 
@@ -1515,7 +1515,7 @@ Three things will go wrong if you adopt this workflow. I want to name them so yo
 
 The first quarter will feel slow. The lead times for the signals are weeks, not days, and the conversation circuit takes longer than the lead times. You will run the workflow for six or eight Mondays before you have a single closed conversation that you can attribute directly to the workflow. This is not a sign that the workflow is broken; it is a sign that the workflow is operating at its actual lead time. Stick with it.
 
-You will catch a false positive that feels like a true positive. Around week six or eight you will have a strong-feeling firing, you will reach out to the founder, the conversation will go well, and the company will turn out to be preparing for something other than a Series A — an acquisition, a product launch, a pivot. The conversation will not have been wasted, but it will not have produced the carry you expected. This is normal. The seven-signal stack has a sixty-eight per cent hit rate, which means a thirty-two per cent miss rate, and you cannot tell which side of the line a particular firing is on until the round-or-not-round event closes. Treat false positives as part of the cost of the funnel, not as evidence that the funnel does not work.
+You will catch a false positive that feels like a true positive. Around week six or eight you will have a strong-feeling firing, you will reach out to the founder, the conversation will go well, and the company will turn out to be preparing for something other than a Series A, an acquisition, a product launch, a pivot. The conversation will not have been wasted, but it will not have produced the carry you expected. This is normal. The seven-signal stack has a sixty-eight per cent hit rate, which means a thirty-two per cent miss rate, and you cannot tell which side of the line a particular firing is on until the round-or-not-round event closes. Treat false positives as part of the cost of the funnel, not as evidence that the funnel does not work.
 
 You will be tempted to skip the methodology and trust the GitDealFlow leaderboard directly. I run the GitDealFlow leaderboard. I would be flattered if you trusted it. I am also telling you not to. The reason is that the leaderboard is a convenience layer over the methodology. If you trust the leaderboard without ever having computed a signal yourself, you do not actually know what the leaderboard is computing, and you cannot defend the use of the leaderboard to your partners or your LPs. Compute one or two signals by hand, against the appendix walkthrough, in your first month. Then trust the leaderboard, with full understanding of what it is doing.
 
@@ -1523,13 +1523,13 @@ You will be tempted to skip the methodology and trust the GitDealFlow leaderboar
 
 If there is one organising idea I want you to take from this book, it is this: the public surface of a Series-A-bound startup is more honest, more current, and more comprehensive than the private network around it.
 
-The private network — the warm-intro circuit, the partner-track relationship layer, the "this person is going to raise" whispers — is genuinely valuable when it works, and it does work. But it is not a level playing field. It is, structurally, the playing field of investors who have spent a decade compounding a Rolodex. New entrants to venture capital, including most developer-investors, do not have that Rolodex. They cannot manufacture one in the time the seed-round window stays open.
+The private network, the warm-intro circuit, the partner-track relationship layer, the "this person is going to raise" whispers, is genuinely valuable when it works, and it does work. But it is not a level playing field. It is, structurally, the playing field of investors who have spent a decade compounding a Rolodex. New entrants to venture capital, including most developer-investors, do not have that Rolodex. They cannot manufacture one in the time the seed-round window stays open.
 
 What new entrants do have is the public surface. They can read commit logs, contributor graphs, dependency trees, conference talks, and engineering blog posts as fluently as a senior partner reads body language at a dinner. The skills are different, but the resulting edge is comparable, and the public-data edge has the structural property that it does not depend on access. The data is there. Anybody who reads this book can use it, indefinitely, on a zero-budget infrastructure footprint.
 
 This does not mean the warm-intro circuit is dying. It is not. The warm-intro circuit will outlive me, you, and this book. But it has been the only path into early-stage venture for a long time, and it is no longer the only path. There is now a parallel path, built on public data, accessible to anyone with a personal access token and a willingness to read this book. That is the thing this book is, in the end, trying to help build: a wider, more accessible, more falsifiable path to early-stage venture capital, on a foundation of data that nobody can paywall.
 
-If that succeeds — even partially — then the kind of deal flow that landed on Series A partners' desks in 2018 will be available, in 2028, to a much wider community of developer-investors and small-fund analysts. That is a better venture-capital industry. It is what I want to be part of building, and I think this book is a contribution to that.
+If that succeeds, even partially, then the kind of deal flow that landed on Series A partners' desks in 2018 will be available, in 2028, to a much wider community of developer-investors and small-fund analysts. That is a better venture-capital industry. It is what I want to be part of building, and I think this book is a contribution to that.
 
 ## A request
 
@@ -1537,7 +1537,7 @@ If this book is useful to you, please tell another investor about it. Word-of-mo
 
 If a chapter is wrong, or a threshold is poorly calibrated, or a methodology step does not reproduce, please write to signals@gitdealflow.com. The next edition will fold in your correction with attribution. The methodology is meant to be improved over time, not preserved as scripture.
 
-If you read the book, run the workflow, and close a deal that you can attribute even partially to a signal in here, write and tell me. I will not publish the deal — anonymity is a foundational rule of this project — but the count of attribution-positive deals is the only metric I track that matters, and I will be grateful for the data point.
+If you read the book, run the workflow, and close a deal that you can attribute even partially to a signal in here, write and tell me. I will not publish the deal, anonymity is a foundational rule of this project, but the count of attribution-positive deals is the only metric I track that matters, and I will be grateful for the data point.
 
 Thank you for reading. Now turn the page on this book and open your terminal. The signals are waiting.
 

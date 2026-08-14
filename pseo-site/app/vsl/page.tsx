@@ -9,8 +9,8 @@ export const dynamic = "force-static";
 
 const SITE = "https://signals.gitdealflow.com";
 
-// Brunson Expert Secrets §3 Ch 12 — the Perfect VSL. Anonymity rule: synthetic
-// voice (Cartesia "Theo") + Remotion render — no founder face, voice, or name.
+// Brunson Expert Secrets §3 Ch 12, the Perfect VSL. Anonymity rule: synthetic
+// voice (Cartesia "Theo") + Remotion render, no founder face, voice, or name.
 //
 // Set VIDEO_ID once the workflow_dispatch render uploads to YouTube. Until
 // then the page ships as the structured Brunson transcript: Hook → Big Domino
@@ -20,9 +20,9 @@ const VIDEO_ID: string | null = null;
 const VIDEO_DURATION_ISO = "PT10M30S"; // sum of scene VOs at ~150wpm + animation buffer
 
 export const metadata: Metadata = {
-  title: script.headline + " — Video Sales Letter",
+  title: script.headline + ", Video Sales Letter",
   description:
-    "10-minute video sales letter. Single belief: GitHub commit-velocity acceleration is the most leading public signal in venture capital. 219-startup SSRN panel, 21–47 day median pre-deck lead band. €9.97/mo founding rate. Free Sunday digest. €7 First Look Pass.",
+    "10-minute video sales letter. Single belief: GitHub commit-velocity acceleration is the most leading public signal in venture capital. 219-startup SSRN panel, 21-47 day median pre-deck lead band. €9.97/mo founding rate. Free Sunday digest. €7 First Look Pass.",
   alternates: { canonical: "/vsl" },
   openGraph: {
     title: script.headline,
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
 
 const SCENES = script.scenes;
 
-// Convenience accessors — typed lookups by scene id keep the page resilient
+// Convenience accessors, typed lookups by scene id keep the page resilient
 // if the script JSON adds/reorders scenes.
 const sceneById = <T extends { id: string }>(arr: ReadonlyArray<T>, id: string) =>
   arr.find((s) => s.id === id);
@@ -70,7 +70,7 @@ export default function VslPage() {
         "@id": `${SITE}/vsl#video`,
         name: script.headline,
         description:
-          "10-minute video sales letter. Single belief: GitHub commit-velocity acceleration is the most leading public signal in venture capital. Synthetic voice (Cartesia Theo) — no founder face, voice, or name.",
+          "10-minute video sales letter. Single belief: GitHub commit-velocity acceleration is the most leading public signal in venture capital. Synthetic voice (Cartesia Theo), no founder face, voice, or name.",
         // Falls back to site icon until the workflow_dispatch render uploads
         // the Remotion-rendered ThumbnailVsl still and we can swap in a CDN URL.
         thumbnailUrl: [`${SITE}/icon.png`],
@@ -88,7 +88,7 @@ export default function VslPage() {
           name: "VC Deal Flow Signal",
           url: "https://gitdealflow.com",
         },
-        // Brunson sales-content surface — the script transcript is what
+        // Brunson sales-content surface, the script transcript is what
         // Google/agents should index.
         transcript: SCENES.filter((s) => s.vo)
           .map((s) => s.vo)
@@ -145,7 +145,7 @@ export default function VslPage() {
       <AgentMirrorLinks path="/vsl" />
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
-        {/* HERO — video + headline */}
+        {/* HERO, video + headline */}
         <header className="space-y-6" data-speakable>
           <p className="text-xs uppercase tracking-[0.18em] text-amber-700 font-bold">
             Video Sales Letter · 10 minutes · synthetic voice
@@ -157,7 +157,7 @@ export default function VslPage() {
             {script.subhead}
           </p>
 
-          {/* Video frame — embeds YouTube once render lands. Placeholder
+          {/* Video frame, embeds YouTube once render lands. Placeholder
               card while the workflow is queued. */}
           <div className="aspect-video w-full overflow-hidden rounded-2xl border border-slate-200 bg-slate-950 shadow-xl">
             {VIDEO_ID ? (
@@ -174,7 +174,7 @@ export default function VslPage() {
                   Written version below while the video finishes
                 </div>
                 <p className="text-slate-200 text-lg font-semibold max-w-md">
-                  The whole case is written out below in plain English — the same arc as the video. Most readers prefer it: you can skim it in 10 minutes and jump straight to the offer.
+                  The whole case is written out below in plain English, the same arc as the video. Most readers prefer it: you can skim it in 10 minutes and jump straight to the offer.
                 </p>
                 <div className="flex flex-wrap items-center justify-center gap-3 pt-1">
                   <a
@@ -224,12 +224,12 @@ export default function VslPage() {
           <p className="text-sm text-slate-600 leading-relaxed border-l-2 border-amber-300 pl-3">
             <span className="font-semibold text-slate-700">No code required.</span>{" "}
             You never read a line of it. We do the reading and hand you the
-            plain-English verdict — &ldquo;this team is suddenly shipping far
+            plain-English verdict, &ldquo;this team is suddenly shipping far
             more than usual,&rdquo; not a screen of statistics.
           </p>
         </header>
 
-        {/* HOOK — Brunson rule: hook hard, lead with curiosity. */}
+        {/* HOOK, Brunson rule: hook hard, lead with curiosity. */}
         {hookScene ? (
           <section id="read" className="scroll-mt-20 space-y-3 rounded-2xl border border-amber-200 bg-amber-50/60 p-6 sm:p-8">
             <h2 className="text-xs uppercase tracking-[0.18em] text-amber-700 font-bold">
@@ -240,12 +240,12 @@ export default function VslPage() {
             </p>
             <p className="text-lg text-slate-700 leading-relaxed">{hookScene.vo}</p>
             <p className="text-sm text-amber-800 font-semibold pt-1">
-              Stick with me — what comes next is mathematically falsifiable, and the proof is sitting on a public preprint server.
+              Stick with me, what comes next is mathematically falsifiable, and the proof is sitting on a public preprint server.
             </p>
           </section>
         ) : null}
 
-        {/* BIG DOMINO — Brunson Expert Secrets §2 Ch 6. */}
+        {/* BIG DOMINO, Brunson Expert Secrets §2 Ch 6. */}
         {dominoScene ? (
           <section className="space-y-3 rounded-2xl border-2 border-emerald-300 bg-emerald-50/60 p-6 sm:p-8 shadow-md" data-speakable>
             <h2 className="text-xs uppercase tracking-[0.18em] text-emerald-700 font-bold">
@@ -254,7 +254,7 @@ export default function VslPage() {
             <p className="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 leading-snug">
               If GitHub commit-velocity acceleration{" "}
               <mark className="bg-emerald-200/80 px-1 rounded">is the most leading public signal in venture capital,</mark>{" "}
-              then every other deal-flow source — pitch decks, AngelList, Crunchbase, warm intros — is a lagging indicator.
+              then every other deal-flow source, pitch decks, AngelList, Crunchbase, warm intros, is a lagging indicator.
             </p>
             <p className="text-base text-slate-600 italic">
               And that is the only thing this video is trying to prove.
@@ -262,7 +262,7 @@ export default function VslPage() {
           </section>
         ) : null}
 
-        {/* THREE SECRETS — Brunson DotCom §2 + Expert §2 Ch 11 (False Belief Patterns). */}
+        {/* THREE SECRETS, Brunson DotCom §2 + Expert §2 Ch 11 (False Belief Patterns). */}
         {secretsScene ? (
           <section className="space-y-5">
             <h2 className="text-2xl font-bold tracking-tight text-slate-900">
@@ -297,7 +297,7 @@ export default function VslPage() {
           </section>
         ) : null}
 
-        {/* PROOF — Brunson Expert Secrets §2 Ch 7 (Epiphany Bridge proof). */}
+        {/* PROOF, Brunson Expert Secrets §2 Ch 7 (Epiphany Bridge proof). */}
         {proofScene ? (
           <section className="space-y-5 rounded-2xl border border-slate-200 bg-slate-50 p-6 sm:p-8">
             <h2 className="text-2xl font-bold tracking-tight text-slate-900">
@@ -342,7 +342,7 @@ export default function VslPage() {
           </section>
         ) : null}
 
-        {/* FUTURE PACE — Brunson Expert Secrets §3 Ch 12 (Mental Movie). */}
+        {/* FUTURE PACE, Brunson Expert Secrets §3 Ch 12 (Mental Movie). */}
         {futurePaceScene ? (
           <section className="space-y-5">
             <h2 className="text-2xl font-bold tracking-tight text-slate-900">
@@ -367,7 +367,7 @@ export default function VslPage() {
           </section>
         ) : null}
 
-        {/* THE STACK — Brunson DotCom §3 Ch 12 + Expert §3 Ch 13 (Stack Slide). */}
+        {/* THE STACK, Brunson DotCom §3 Ch 12 + Expert §3 Ch 13 (Stack Slide). */}
         {stackData ? (
           <section className="space-y-4 rounded-2xl border-2 border-slate-300 bg-white p-6 sm:p-8 shadow-md">
             <div className="space-y-1 pb-3 border-b border-slate-200">
@@ -429,7 +429,7 @@ export default function VslPage() {
           </section>
         ) : null}
 
-        {/* OBJECTIONS / CLOSES — Brunson Expert Secrets §3 Ch 13 (Stack Closes). */}
+        {/* OBJECTIONS / CLOSES, Brunson Expert Secrets §3 Ch 13 (Stack Closes). */}
         {objectionsScene ? (
           <section className="space-y-4">
             <h2 className="text-2xl font-bold tracking-tight text-slate-900">
@@ -459,7 +459,7 @@ export default function VslPage() {
           </section>
         ) : null}
 
-        {/* THREE DOORS CTA — Brunson DotCom §1 Ch 2 (Value Ladder, all rungs visible). */}
+        {/* THREE DOORS CTA, Brunson DotCom §1 Ch 2 (Value Ladder, all rungs visible). */}
         {ctaScene ? (
           <section id="offer" className="scroll-mt-20 space-y-5 rounded-2xl border-2 border-emerald-300 bg-emerald-50/40 p-6 sm:p-8" data-speakable>
             <div className="space-y-1">
@@ -509,7 +509,7 @@ export default function VslPage() {
           </section>
         ) : null}
 
-        {/* ENCORE — Brunson DotCom §3 Ch 12 (If-all-this-did close). */}
+        {/* ENCORE, Brunson DotCom §3 Ch 12 (If-all-this-did close). */}
         {encoreScene ? (
           <section className="space-y-4 rounded-2xl border border-slate-200 bg-slate-50 p-6 sm:p-8">
             <h2 className="text-2xl font-bold tracking-tight text-slate-900">
@@ -528,7 +528,7 @@ export default function VslPage() {
                 >
                   <p className="text-base text-slate-900">
                     <span className="font-bold text-emerald-700 mr-2">If</span>
-                    {b.label.replace(/^If\s+/i, "")} —{" "}
+                    {b.label.replace(/^If\s+/i, "")}, {" "}
                     <span className="italic text-slate-600">would the €49/mo be worth it?</span>
                   </p>
                 </div>
@@ -540,7 +540,7 @@ export default function VslPage() {
           </section>
         ) : null}
 
-        {/* FAQ — Brunson DotCom §3 (objection pre-handling). */}
+        {/* FAQ, Brunson DotCom §3 (objection pre-handling). */}
         <section className="space-y-4">
           <h2 className="text-2xl font-bold tracking-tight text-slate-900">FAQ</h2>
           <div className="space-y-3">
@@ -560,7 +560,7 @@ export default function VslPage() {
           </div>
         </section>
 
-        {/* SISTER SURFACES — funnel-hub cross-links. */}
+        {/* SISTER SURFACES, funnel-hub cross-links. */}
         <nav className="space-y-2 border-t border-slate-200 pt-8">
           <p className="text-xs uppercase tracking-[0.18em] font-bold text-slate-500">
             Same arc, other formats
@@ -570,31 +570,31 @@ export default function VslPage() {
               <Link href="/walkthrough" className="text-emerald-700 hover:underline">
                 /walkthrough
               </Link>{" "}
-              <span className="text-slate-500">— the 12-minute written version with full Stack and FAQs.</span>
+              <span className="text-slate-500">the 12-minute written version with full Stack and FAQs.</span>
             </li>
             <li>
               <Link href="/walkthrough/5min" className="text-emerald-700 hover:underline">
                 /walkthrough/5min
               </Link>{" "}
-              <span className="text-slate-500">— condensed 5-minute frame.</span>
+              <span className="text-slate-500">condensed 5-minute frame.</span>
             </li>
             <li>
               <Link href="/watch" className="text-emerald-700 hover:underline">
                 /watch
               </Link>{" "}
-              <span className="text-slate-500">— silent 90-second visual demo.</span>
+              <span className="text-slate-500">silent 90-second visual demo.</span>
             </li>
             <li>
               <Link href="/state-of-github" className="text-emerald-700 hover:underline">
                 /state-of-github
               </Link>{" "}
-              <span className="text-slate-500">— monthly founder talk (synthetic-voice address).</span>
+              <span className="text-slate-500">monthly founder talk (synthetic-voice address).</span>
             </li>
             <li>
               <Link href="/predicted" className="text-emerald-700 hover:underline">
                 /predicted
               </Link>{" "}
-              <span className="text-slate-500">— weekly Acceleration Watch (90-second video).</span>
+              <span className="text-slate-500">weekly Acceleration Watch (90-second video).</span>
             </li>
           </ul>
         </nav>

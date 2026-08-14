@@ -7,9 +7,9 @@ import QuizForm from "./QuizForm";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Which Tier Fits You? — 90-Second Avatar Quiz",
+  title: "Which Tier Fits You?, 90-Second Avatar Quiz",
   description:
-    "Five questions, ninety seconds, and a routed recommendation. Tells you whether you're a Solo Angel, Fund GP, or Family Office Analyst — and whether the Free Acceleration Watch, the €7 First Look Pass, the €49/mo Dashboard, the €197/mo Insider Circle, or the €1,997 Sector Sweep is the right starting point.",
+    "Five questions, ninety seconds, and a routed recommendation. Tells you whether you're a Solo Angel, Fund GP, or Family Office Analyst, and whether the Free Acceleration Watch, the €7 First Look Pass, the €49/mo Dashboard, the €197/mo Insider Circle, or the €1,997 Sector Sweep is the right starting point.",
   alternates: { canonical: "/quiz" },
   openGraph: {
     title: "Which VC Deal Flow Signal tier fits you?",
@@ -27,7 +27,7 @@ export default function QuizPage() {
       {
         "@type": "Quiz",
         "@id": "https://signals.gitdealflow.com/quiz#quiz",
-        name: "VC Deal Flow Signal — Which Tier Fits You?",
+        name: "VC Deal Flow Signal, Which Tier Fits You?",
         about: "Avatar qualifier that routes the visitor to the right pricing tier",
         educationalUse: "self-assessment",
         inLanguage: "en-US",
@@ -76,7 +76,7 @@ export default function QuizPage() {
           <p className="text-gray-300 text-base leading-relaxed">
             Most people overpay for tools they barely use, or skip the one that
             would have paid for itself the first month. Four questions to size
-            the buying motion, one to name the archetype &mdash; Solo Angel,
+            the buying motion, one to name the archetype, Solo Angel,
             Fund GP, or Family Office Analyst.
           </p>
         </header>
@@ -88,7 +88,7 @@ export default function QuizPage() {
           <p className="text-gray-300 text-sm leading-relaxed">
             5 questions, about 90 seconds, no email needed to see the result.
             At the end you get the tier and the archetype that fit your check
-            size and cadence — one named recommendation with a one-line reason,
+            size and cadence, one named recommendation with a one-line reason,
             not a sales page. No code required to read any of it.
           </p>
         </div>
@@ -96,7 +96,7 @@ export default function QuizPage() {
         <QuizForm />
 
         <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-4">
-          The answers stay in your browser — nothing is sent anywhere unless
+          The answers stay in your browser, nothing is sent anywhere unless
           you click through to a checkout. No analytics events fire on the
           question screens.
         </p>

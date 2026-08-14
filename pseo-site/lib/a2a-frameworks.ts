@@ -226,7 +226,7 @@ const gitdealflow = tool({
     audience: "Builders chaining multiple tools across LLM providers",
     status: "custom-tool",
     description:
-      "LangChain has experimental MCP support via langchain-mcp-adapters, and our MCP server works out of the box with that path. For A2A specifically, the cleanest integration is a small Tool subclass that wraps the JSON-RPC call. Both paths return the same data — pick MCP if you already use it elsewhere, A2A if you want a single HTTP dependency.",
+      "LangChain has experimental MCP support via langchain-mcp-adapters, and our MCP server works out of the box with that path. For A2A specifically, the cleanest integration is a small Tool subclass that wraps the JSON-RPC call. Both paths return the same data, pick MCP if you already use it elsewhere, A2A if you want a single HTTP dependency.",
     installSnippet: `pip install langchain langchain-core
 # or
 pip install langchain-mcp-adapters  # if you prefer MCP`,
@@ -371,7 +371,7 @@ await client.close();`,
       "Inside a Server Action: write a watchlist alert email when a tracked startup hits breakout.",
     ],
     gotchas: [
-      "The tool() helper expects you to return JSON-serializable data. The .data field on artifacts is already a plain object — passing it through is safe.",
+      "The tool() helper expects you to return JSON-serializable data. The .data field on artifacts is already a plain object, passing it through is safe.",
       "If you use Edge runtime, the fetch to A2A should be on regular Node runtime since you may want to hold connections longer. Set `export const runtime = 'nodejs'`.",
     ],
     docsLinks: [
@@ -387,7 +387,7 @@ await client.close();`,
       "Builders running role-based agent crews where one agent does sourcing, another writes the memo",
     status: "custom-tool",
     description:
-      "CrewAI lets you compose specialized agents into a crew with shared context. Wrap our A2A endpoint as a BaseTool and any agent on the crew can pull live engineering signals — typical pattern is a 'scout' agent that surfaces breakouts and a 'analyst' agent that drafts the LP-ready memo.",
+      "CrewAI lets you compose specialized agents into a crew with shared context. Wrap our A2A endpoint as a BaseTool and any agent on the crew can pull live engineering signals, typical pattern is a 'scout' agent that surfaces breakouts and a 'analyst' agent that drafts the LP-ready memo.",
     installSnippet: `pip install crewai requests`,
     preferredApproach: "Custom BaseTool subclass",
     preferredCode: `from crewai_tools import BaseTool
@@ -421,7 +421,7 @@ class GitDealFlowTool(BaseTool):
       "Compose: scout → analyst → verifier → email-drafter pipeline.",
     ],
     gotchas: [
-      "CrewAI passes tool args as kwargs — declare your `_run` signature explicitly or use a Pydantic args_schema.",
+      "CrewAI passes tool args as kwargs, declare your `_run` signature explicitly or use a Pydantic args_schema.",
       "Crews default to verbose=False; turn on verbose=True the first run so you see exactly which skill the agent picked.",
     ],
     docsLinks: [
@@ -499,8 +499,8 @@ export const gitdealflowA2A = createTool({
       "Inside a multi-step agent: scout → analyst → verifier with shared context.",
     ],
     gotchas: [
-      "Mastra MCPClient holds long-lived stdio processes — call `await mcp.disconnect()` in serverless teardown to avoid orphaned children.",
-      "If your edge runtime can't spawn child processes, use the A2A fallback tool — it's pure fetch, edge-safe.",
+      "Mastra MCPClient holds long-lived stdio processes, call `await mcp.disconnect()` in serverless teardown to avoid orphaned children.",
+      "If your edge runtime can't spawn child processes, use the A2A fallback tool, it's pure fetch, edge-safe.",
     ],
     docsLinks: [
       { label: "Mastra MCP docs", url: "https://mastra.ai/docs/agents/using-tools-and-mcp" },
@@ -560,7 +560,7 @@ agent = Agent(
       "Validate output with a result_type=DealMemo Pydantic model.",
     ],
     gotchas: [
-      "Pydantic AI revalidates tool args on every call — keep your A2AArgs model lean to avoid latency.",
+      "Pydantic AI revalidates tool args on every call, keep your A2AArgs model lean to avoid latency.",
       "If you want the agent to use multiple skills in one turn, raise tool_call_limit (default 10) in Agent config.",
     ],
     docsLinks: [
@@ -605,7 +605,7 @@ slashCommands:
       "Before a meeting: 'pull last week's trending in fintech.'",
     ],
     gotchas: [
-      "Continue caches MCP responses per chat session — start a fresh chat after Monday's data refresh if you want the latest.",
+      "Continue caches MCP responses per chat session, start a fresh chat after Monday's data refresh if you want the latest.",
       "On Windows, use the absolute path to npx in the command field; PATH resolution from the IDE process is flaky.",
     ],
     docsLinks: [
@@ -652,7 +652,7 @@ slashCommands:
       "'Compare three orgs and explain the engineering tell.'",
     ],
     gotchas: [
-      "Cline runs in autonomous mode by default — review its plan view before approving multi-step workflows that include external API calls.",
+      "Cline runs in autonomous mode by default, review its plan view before approving multi-step workflows that include external API calls.",
       "MCP server output is included in Cline's context window for every subsequent step; for big trending lists, ask Cline to summarize before chaining further.",
     ],
     docsLinks: [
@@ -687,13 +687,13 @@ shell-commands:
 # Aider includes the output in its context, so the next prompt
 # can reference the returned startups by name.`,
     whatToAsk: [
-      "/signal trending — top 20 of the week, plaintext.",
-      "/signal sector fintech — sector watchlist.",
-      "/signal startup Roboflow — single-startup profile.",
-      "/signal methodology — full methodology text for citing in a doc.",
+      "/signal trending, top 20 of the week, plaintext.",
+      "/signal sector fintech, sector watchlist.",
+      "/signal startup Roboflow, single-startup profile.",
+      "/signal methodology, full methodology text for citing in a doc.",
     ],
     gotchas: [
-      "Aider's /run output is appended to context — for big payloads, pipe through `head -20` to avoid context bloat.",
+      "Aider's /run output is appended to context, for big payloads, pipe through `head -20` to avoid context bloat.",
       "If you're on Windows in PowerShell, the bash heredoc above won't work; use the inline /run with the JSON quoted as a single string.",
     ],
     docsLinks: [
@@ -709,7 +709,7 @@ shell-commands:
       "Builders running long-running, retryable agent workflows in production",
     status: "custom-tool",
     description:
-      "Inngest's AgentKit gives you durable, retryable agent workflows. Wrap our A2A endpoint as an Inngest function and chain it into multi-step flows that survive crashes and retries — perfect for 'every Monday at 9am, pull trending and email the top 5 to subscribers' type loops.",
+      "Inngest's AgentKit gives you durable, retryable agent workflows. Wrap our A2A endpoint as an Inngest function and chain it into multi-step flows that survive crashes and retries, perfect for 'every Monday at 9am, pull trending and email the top 5 to subscribers' type loops.",
     installSnippet: `npm install inngest @inngest/agent-kit`,
     preferredApproach: "Inngest function calling A2A",
     preferredCode: `import { Inngest } from "inngest";
@@ -745,7 +745,7 @@ export const weeklyDigest = inngest.createFunction(
       "Retryable batch: 'enrich 50 startups' with automatic backoff on 429s.",
     ],
     gotchas: [
-      "step.fetch retries automatically on 5xx — our endpoint returns 200 with JSON-RPC error envelopes, so check `result` vs `error` in the response, not the HTTP status.",
+      "step.fetch retries automatically on 5xx, our endpoint returns 200 with JSON-RPC error envelopes, so check `result` vs `error` in the response, not the HTTP status.",
       "AgentKit's stateful agents persist context across steps; pass only the data fields you need to the next step to keep state size sane.",
     ],
     docsLinks: [
@@ -799,8 +799,8 @@ export const weeklyDigest = inngest.createFunction(
       "Discord trigger 'is /name trending?' → A2A → reply.",
     ],
     gotchas: [
-      "n8n cloud has a default 30s HTTP timeout — our endpoint usually returns in <500ms but spike up the timeout for batch loops.",
-      "If you template the JSON body, escape user input — n8n expressions don't auto-escape strings.",
+      "n8n cloud has a default 30s HTTP timeout, our endpoint usually returns in <500ms but spike up the timeout for batch loops.",
+      "If you template the JSON body, escape user input, n8n expressions don't auto-escape strings.",
     ],
     docsLinks: [
       { label: "n8n HTTP Request docs", url: "https://docs.n8n.io/integrations/builtin/core-nodes/n8n-nodes-base.httprequest" },
@@ -815,7 +815,7 @@ export const weeklyDigest = inngest.createFunction(
       "Non-engineers who want VC signals piped into their existing stack (Notion, Airtable, Gmail, Slack)",
     status: "custom-tool",
     description:
-      "Zapier's Webhooks app POSTs JSON-RPC to our A2A endpoint with no code. Schedule trigger → Webhooks POST → Formatter (parse JSON) → Slack/Notion/Gmail. The path is uglier than n8n but Zapier reaches a much bigger surface of downstream tools — Notion databases, Google Sheets, HubSpot CRM.",
+      "Zapier's Webhooks app POSTs JSON-RPC to our A2A endpoint with no code. Schedule trigger → Webhooks POST → Formatter (parse JSON) → Slack/Notion/Gmail. The path is uglier than n8n but Zapier reaches a much bigger surface of downstream tools, Notion databases, Google Sheets, HubSpot CRM.",
     preferredApproach: "Webhooks by Zapier (POST)",
     preferredCode: `// Zap config:
 // 1. Trigger: Schedule by Zapier (every Monday 9am)
@@ -838,8 +838,8 @@ export const weeklyDigest = inngest.createFunction(
       "Email me when a tracked sector has 5+ breakouts this week.",
     ],
     gotchas: [
-      "Zapier's free plan caps Webhook calls and adds 15-min trigger delay — fine for digest use cases, painful for real-time. Upgrade to Starter ($30/mo) if you need <5min latency.",
-      "Zapier truncates large JSON responses in its UI preview; the full payload is still passed downstream — trust the field paths, not what the visual builder shows.",
+      "Zapier's free plan caps Webhook calls and adds 15-min trigger delay, fine for digest use cases, painful for real-time. Upgrade to Starter ($30/mo) if you need <5min latency.",
+      "Zapier truncates large JSON responses in its UI preview; the full payload is still passed downstream, trust the field paths, not what the visual builder shows.",
     ],
     docsLinks: [
       { label: "Zapier Webhooks docs", url: "https://help.zapier.com/hc/en-us/articles/8496326497549" },
@@ -894,7 +894,7 @@ scout = AssistantAgent(
       "Reflection loop: scout proposes, critic checks, scout revises.",
     ],
     gotchas: [
-      "AutoGen v0.4+ uses async tools — wrap requests with asyncio.to_thread or use aiohttp instead.",
+      "AutoGen v0.4+ uses async tools, wrap requests with asyncio.to_thread or use aiohttp instead.",
       "GroupChat token cost compounds quickly; cap rounds with max_turns and have the scout summarize the A2A payload before passing it onward.",
     ],
     docsLinks: [
@@ -944,7 +944,7 @@ var kernel = Kernel.CreateBuilder()
     .AddAzureOpenAIChatCompletion("<your-deployment-name>", endpoint, apiKey)
     .Build();
 kernel.Plugins.AddFromObject(new GitDealFlowPlugin());`,
-    alternativeApproach: "Python — KernelFunction decorator",
+    alternativeApproach: "Python, KernelFunction decorator",
     alternativeCode: `# pip install semantic-kernel
 import semantic_kernel as sk
 import requests
@@ -972,8 +972,8 @@ kernel.add_plugin(GitDealFlowPlugin(), plugin_name="gitdealflow")`,
     ],
     gotchas: [
       "SK's auto-function-invocation requires planner mode (`FunctionChoiceBehavior.Auto()` in C#). Manual invoke works without it but skips the LLM picking the tool.",
-      "Azure OpenAI's tool-call response format differs slightly from OpenAI's — SK abstracts this but expect occasional schema drift on minor SDK versions.",
-      "Compliance: our A2A endpoint is no-auth public — fine for read-only signal lookups but log-everything if you wire into an audited Copilot stack.",
+      "Azure OpenAI's tool-call response format differs slightly from OpenAI's, SK abstracts this but expect occasional schema drift on minor SDK versions.",
+      "Compliance: our A2A endpoint is no-auth public, fine for read-only signal lookups but log-everything if you wire into an audited Copilot stack.",
     ],
     docsLinks: [
       { label: "Semantic Kernel docs", url: "https://learn.microsoft.com/en-us/semantic-kernel/" },
@@ -1028,9 +1028,9 @@ kernel.add_plugin(GitDealFlowPlugin(), plugin_name="gitdealflow")`,
       "Ask 'cite the GitDealFlow methodology paper' to drop SSRN credibility into a doc-anchored chat.",
     ],
     gotchas: [
-      "Inkeep's tool-calling cost is billed per LLM token — keep the tool description tight to avoid response bloat.",
+      "Inkeep's tool-calling cost is billed per LLM token, keep the tool description tight to avoid response bloat.",
       "Our A2A skill enum is fixed (5 skills); don't paraphrase in the tool spec or the LLM may invent invalid skills.",
-      "If your Inkeep deployment is private (single-customer), the public A2A endpoint is still safe to call — it's read-only and rate-limited.",
+      "If your Inkeep deployment is private (single-customer), the public A2A endpoint is still safe to call, it's read-only and rate-limited.",
     ],
     docsLinks: [
       { label: "Inkeep Tools docs", url: "https://docs.inkeep.com/" },
@@ -1077,7 +1077,7 @@ call gitdealflow_query with the appropriate skill. Cite signals.gitdealflow.com.
 //   POST ${A2A_ENDPOINT}
 //   body: { jsonrpc: "2.0", id: 1, method: "message/send",
 //           params: { message: { role: "user", parts: [{kind:"data", data:{skill,args}}] }}}`,
-    alternativeApproach: "Python — mistralai SDK with tool_choice",
+    alternativeApproach: "Python, mistralai SDK with tool_choice",
     alternativeCode: `# pip install mistralai
 from mistralai import Mistral
 import os, requests
@@ -1106,8 +1106,8 @@ resp = client.chat.complete(
       "Custom workflow: 'find ai-ml startups with breakout signals' → 'summarize each in 2 sentences for our Slack.'",
     ],
     gotchas: [
-      "Le Chat Agents UI doesn't let you upload a custom OpenAPI spec — define the tool inline in the agent config.",
-      "Mistral's function-calling parameter validation is stricter than OpenAI's — mismatched schemas silently fail (no tool call). Mirror our skill enum exactly.",
+      "Le Chat Agents UI doesn't let you upload a custom OpenAPI spec, define the tool inline in the agent config.",
+      "Mistral's function-calling parameter validation is stricter than OpenAI's, mismatched schemas silently fail (no tool call). Mirror our skill enum exactly.",
       "EU-data-residency users: GitDealFlow's A2A endpoint is hosted on Vercel global edge; outbound calls leave EU. Document this in your governance review.",
     ],
     docsLinks: [
@@ -1145,8 +1145,8 @@ resp = client.chat.complete(
 }
 
 // Variables:
-//   {skill} — pulled from intent slot (one of: trending, sector, startup, methodology, receipts)
-//   {args}  — pulled from entity slot (sector slug or startup name)
+//   {skill}, pulled from intent slot (one of: trending, sector, startup, methodology, receipts)
+//   {args} , pulled from entity slot (sector slug or startup name)
 //
 // Capture response into {gitdealflow_response}, then route to:
 //   - Speak/Send Text Block: "{gitdealflow_response.artifacts[0].parts[0].data.startups[0].name} is up {...}"
@@ -1182,8 +1182,8 @@ async function gitdealflow_query(args) {
       "IVR fallback: agent says 'I'll pull the latest signal' → calls A2A → reads back top 3 names.",
     ],
     gotchas: [
-      "Voiceflow API Blocks have a 30-second timeout — our A2A typically responds in <2s but cold-start can hit 5-10s; keep request volume reasonable.",
-      "If you embed in a voice agent, add a Speak Block that says 'one moment, pulling live data' before the API Block — UX without it feels like dead air.",
+      "Voiceflow API Blocks have a 30-second timeout, our A2A typically responds in <2s but cold-start can hit 5-10s; keep request volume reasonable.",
+      "If you embed in a voice agent, add a Speak Block that says 'one moment, pulling live data' before the API Block, UX without it feels like dead air.",
       "Voiceflow's flow versioning treats Function code as project-scoped; if you fork the project, refactor Functions to a shared module so updates propagate.",
     ],
     docsLinks: [
@@ -1199,7 +1199,7 @@ async function gitdealflow_query(args) {
       "Open-source-minded builders running self-hosted chatbots for portfolio companies, internal sales agents, or community Discord bots",
     status: "custom-tool",
     description:
-      "Botpress lets you write Hooks (TypeScript snippets) that intercept conversation events and call external APIs. Wire GitDealFlow as a Hook so your Botpress chatbot can fetch live engineering signals inside any flow — answering 'what's trending in AI/ML?' or 'compare commit velocity for these two startups' with real data. Best fit for self-hosted Botpress deployments (Cloud or community edition) where you control the runtime.",
+      "Botpress lets you write Hooks (TypeScript snippets) that intercept conversation events and call external APIs. Wire GitDealFlow as a Hook so your Botpress chatbot can fetch live engineering signals inside any flow, answering 'what's trending in AI/ML?' or 'compare commit velocity for these two startups' with real data. Best fit for self-hosted Botpress deployments (Cloud or community edition) where you control the runtime.",
     preferredApproach: "Botpress Hook (TypeScript)",
     preferredCode: `// In Botpress Studio → Code → Hooks → After Incoming Message
 // (or use a Card Action / Trigger as appropriate)
@@ -1260,8 +1260,8 @@ export async function gitdealflowQuery({ skill, args }: QueryArgs) {
     ],
     gotchas: [
       "Botpress Cloud has rate-limited outbound HTTP; the community edition (self-hosted) doesn't, but cache responses if your bot has heavy concurrency.",
-      "If the bot is multi-tenant (running for many portfolio companies), respect our public rate limit — a single shared API key would burn through it; cache or stagger calls.",
-      "Botpress's older v12 syntax differs from Cloud/v13 — the Hook above targets v13+; older deployments need adapting (use the legacy `bp.http` helpers).",
+      "If the bot is multi-tenant (running for many portfolio companies), respect our public rate limit, a single shared API key would burn through it; cache or stagger calls.",
+      "Botpress's older v12 syntax differs from Cloud/v13, the Hook above targets v13+; older deployments need adapting (use the legacy `bp.http` helpers).",
     ],
     docsLinks: [
       { label: "Botpress Hooks docs", url: "https://botpress.com/docs/" },

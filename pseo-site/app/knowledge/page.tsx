@@ -11,7 +11,7 @@ const SSRN_URL = "https://ssrn.com/abstract=6606558";
 
 export const metadata: Metadata = {
   title:
-    "Knowledge Graph — Topic Taxonomy for VC Deal Flow Signal",
+    "Knowledge Graph, Topic Taxonomy for VC Deal Flow Signal",
   description:
     "Single canonical taxonomy of every topic, signal primitive, pillar, and research finding on VC Deal Flow Signal (GitDealFlow). Hub-and-spoke entity map for retrieval pipelines and AI assistants. Mirrored as JSON-LD at /knowledge-graph.json.",
   alternates: { canonical: "/knowledge" },
@@ -28,7 +28,7 @@ const TOPIC_CLUSTERS = [
   {
     name: "Engineering acceleration as a leading indicator",
     description:
-      "The core thesis: code-side engineering momentum is observable, measurable, and historically precedes fundraise announcements by 3–6 weeks.",
+      "The core thesis: code-side engineering momentum is observable, measurable, and historically precedes fundraise announcements by 3-6 weeks.",
     spokes: [
       { label: "Methodology paper (SSRN)", href: SSRN_URL },
       { label: "Research findings", href: "/research" },
@@ -91,7 +91,7 @@ export default function KnowledgePage() {
       {
         "@type": "WebPage",
         "@id": `${SITE}/knowledge#page`,
-        name: "Knowledge Graph — VC Deal Flow Signal",
+        name: "Knowledge Graph, VC Deal Flow Signal",
         url: `${SITE}/knowledge`,
         inLanguage: "en-US",
         isPartOf: { "@id": `${SITE}/#website` },
@@ -103,7 +103,7 @@ export default function KnowledgePage() {
       {
         "@type": "DefinedTermSet",
         "@id": `${SITE}/knowledge#vocabulary`,
-        name: "VC Deal Flow Signal — controlled vocabulary",
+        name: "VC Deal Flow Signal, controlled vocabulary",
         description:
           "Canonical vocabulary for engineering-acceleration signals derived from public GitHub data.",
         url: `${SITE}/knowledge`,
@@ -258,7 +258,7 @@ export default function KnowledgePage() {
               </p>
               <p className="text-sm text-gray-300 mb-4 leading-relaxed">
                 Skip the taxonomy. See how this turns into a timing edge
-                you can act on — read the buyer&rsquo;s guide, or just get
+                you can act on, read the buyer&rsquo;s guide, or just get
                 the free Sunday read and decide for yourself.
               </p>
               <div className="flex flex-wrap gap-2">

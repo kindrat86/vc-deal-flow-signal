@@ -279,7 +279,7 @@ export async function GET(req: Request) {
             >
               {Number.isFinite(result.paybackMonths)
                 ? `CAC ${formatMoney(result.cac)} / ${formatMoney(result.grossContribution)} monthly gross contribution`
-                : "Unit economics don't compute — see the calculator for diagnosis."}
+                : "Unit economics don't compute, see the calculator for diagnosis."}
             </div>
           </div>
 

@@ -1,5 +1,5 @@
 /**
- * /jsonld — index of per-page JSON-LD endpoints.
+ * /jsonld, index of per-page JSON-LD endpoints.
  *
  * The dynamic catch-all /jsonld/[...path] generates per-page schema graphs.
  * Without a base /jsonld response, agents probing the index 404. This route
@@ -21,7 +21,7 @@ export async function GET() {
     "@context": "https://schema.org",
     "@type": "Collection",
     "@id": `${SITE}/jsonld`,
-    name: "VC Deal Flow Signal — Per-Page JSON-LD Catalogue",
+    name: "VC Deal Flow Signal, Per-Page JSON-LD Catalogue",
     description:
       "Index of dynamic JSON-LD graphs available at /jsonld/{path}. Each path returns a self-contained Schema.org `@graph` for the corresponding human-facing page (Article + BreadcrumbList + ItemList + Dataset / Organization / Observation / DefinedTerm where applicable).",
     publisher: {
@@ -39,7 +39,7 @@ export async function GET() {
         name: "Stage page graph",
         urlTemplate: `${SITE}/jsonld/stage/{stageSlug}`,
         description:
-          "Schema.org graph for /stage/{stage} pages — Article + BreadcrumbList + ItemList of startups + DefinedTerm + Table.",
+          "Schema.org graph for /stage/{stage} pages, Article + BreadcrumbList + ItemList of startups + DefinedTerm + Table.",
         examples: [
           `${SITE}/jsonld/stage/seed`,
           `${SITE}/jsonld/stage/series-a`,

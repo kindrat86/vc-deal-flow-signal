@@ -1,10 +1,10 @@
 /**
- * Prebuild regression guard — makes a REGRESSED TREE UNDEPLOYABLE.
+ * Prebuild regression guard, makes a REGRESSED TREE UNDEPLOYABLE.
  *
  * Why this exists
  * ---------------
  * signals.gitdealflow.com is deployed to ONE alias-pinned Vercel project
- * (`pseo-site`) from MORE THAN ONE git lineage — `main`
+ * (`pseo-site`) from MORE THAN ONE git lineage, `main`
  * (~/Downloads/vc-deal-flow-signal) and `worldclass-signals`
  * (~/signals-worldclass), plus a third checkout on `internal-link-engine`.
  * Whichever deploys last wins, so a fix landed on one lineage is silently
@@ -16,16 +16,16 @@
  *   - `color: revert` in ux.css (money CTAs repainted UA-blue on brand bg)
  *
  * Content assertions are lineage-agnostic: any tree missing a fix fails
- * `next build`, so it cannot be deployed by ANY path — scheduled task,
+ * `next build`, so it cannot be deployed by ANY path, scheduled task,
  * agent, temp-worktree deploy, or manual. Prefer adding a check here over
  * re-fixing the same defect a third time.
  *
  * Adding a check: assert the FIXED state, keep the failure message
  * actionable, and cite the date/reason. Only assert things that are cheap
- * and unambiguous — this runs on every build.
+ * and unambiguous, this runs on every build.
  */
-import { readFileSync, existsSync } from "node:fs";
-import { join } from "node:path";
+import { readFileSync, existsSync, readdirSync, statSync } from "node:fs";
+import { join, extname } from "node:path";
 
 const ROOT = process.cwd();
 const failures: string[] = [];
@@ -74,7 +74,7 @@ const DEAD_STRIPE_LINKS = [
   }
   if (hits.length) {
     failures.push(
-      `Deactivated Stripe payment link(s) present — these bounce paying buyers.\n    ${hits.join(
+      `Deactivated Stripe payment link(s) present, these bounce paying buyers.\n    ${hits.join(
         "\n    ",
       )}\n    fix:  replace with /api/checkout/session?tier=<tier> (GET handler creates a live session)`,
     );
@@ -88,7 +88,7 @@ const DEAD_STRIPE_LINKS = [
 // ---------------------------------------------------------------------------
 // Only these four are the problem: they are pages on gitdealflow.com, so a
 // relative value resolves against the signals origin and 404s. `/summit/thanks`
-// is deliberately relative — that page DOES exist on signals (verified 200).
+// is deliberately relative, that page DOES exist on signals (verified 200).
 const ORIGIN_MISMATCHED_THANKS = [
   "firstlook-thanks",
   "dashboard-thanks",
@@ -97,7 +97,7 @@ const ORIGIN_MISMATCHED_THANKS = [
 ];
 check(
   "lib/stripe-tiers.ts",
-  "Checkout successUrl is relative for a thank-you page that does not exist on the signals origin — buyers 404 after paying.",
+  "Checkout successUrl is relative for a thank-you page that does not exist on the signals origin, buyers 404 after paying.",
   (s) => !ORIGIN_MISMATCHED_THANKS.some((p) => new RegExp(`successUrl:\\s*"/${p}`).test(s)),
   'make these absolute, e.g. successUrl: "https://gitdealflow.com/dashboard-thanks?session_id={CHECKOUT_SESSION_ID}"',
 );
@@ -106,7 +106,7 @@ check(
 // `<a href="/api/checkout/session?tier=…">` 405s.
 check(
   "app/api/checkout/session/route.ts",
-  "Checkout route lost its GET handler — tier links will 405.",
+  "Checkout route lost its GET handler, tier links will 405.",
   (s) => /export\s+async\s+function\s+GET/.test(s),
   "restore `export async function GET(req: NextRequest)` that 303-redirects to a live Stripe session",
 );
@@ -119,7 +119,7 @@ check(
 // ---------------------------------------------------------------------------
 check(
   "public/ux.css",
-  "ux.css reintroduced `color: revert` — repaints money CTAs UA-blue/visited-purple.",
+  "ux.css reintroduced `color: revert`, repaints money CTAs UA-blue/visited-purple.",
   (s) => !/color:\s*revert/.test(s),
   "delete the rule; the `a:not([class*=\"bg-\"]):not([role=\"button\"])` guard already excludes link-buttons",
 );
@@ -161,13 +161,13 @@ check(
 // ---------------------------------------------------------------------------
 check(
   "content/comparisons.ts",
-  "programmaticComparisons is no longer exported — /compare hub cannot list them.",
+  "programmaticComparisons is no longer exported, /compare hub cannot list them.",
   (s) => /export\s+const\s+programmaticComparisons/.test(s),
   "keep the `export` keyword on programmaticComparisons",
 );
 check(
   "app/compare/page.tsx",
-  "/compare hub stopped listing programmatic comparisons — 11 pages become orphans.",
+  "/compare hub stopped listing programmatic comparisons, 11 pages become orphans.",
   (s) => s.includes("programmaticComparisons"),
   "map over [...comparisons, ...programmaticComparisons]",
 );
@@ -178,7 +178,7 @@ check(
 // ---------------------------------------------------------------------------
 check(
   "app/answers/[slug]/page.tsx",
-  "QAPage markup is back on /answers — invalid for site-authored answers.",
+  "QAPage markup is back on /answers, invalid for site-authored answers.",
   (s) => !s.includes('"QAPage"'),
   "use FAQPage only; see the comment block in that file",
 );
@@ -191,15 +191,15 @@ check(
 //    A lineage that lacks this wiring silently reintroduces the pile-on.
 //
 //    Deliberately NOT asserted: lib/sector-sweep-setter.ts is EXEMPT by owner
-//    decision — it is a conversational reply to a form the prospect just
+//    decision, it is a conversational reply to a form the prospect just
 //    submitted, and its T+0/T+2h/T+12h cadence shares a calendar day, so a
 //    daily cap would drop all but one. Do not "helpfully" gate it here.
 // ---------------------------------------------------------------------------
 check(
   "lib/send-gate.ts",
-  "Shared send-gate helper is missing — marketing senders cannot enforce the one-email-per-recipient-per-day cap.",
+  "Shared send-gate helper is missing, marketing senders cannot enforce the one-email-per-recipient-per-day cap.",
   (s) => /export\s+async\s+function\s+gateAllows/.test(s),
-  "restore lib/send-gate.ts exporting gateAllows(email, sender, day?) — it must FAIL CLOSED when the gate is unreachable",
+  "restore lib/send-gate.ts exporting gateAllows(email, sender, day?), it must FAIL CLOSED when the gate is unreachable",
 );
 
 for (const [file, label] of [
@@ -209,7 +209,7 @@ for (const [file, label] of [
 ] as const) {
   check(
     file,
-    `${label} sends without claiming the shared daily send-gate slot — recipients can be mailed multiple times a day.`,
+    `${label} sends without claiming the shared daily send-gate slot, recipients can be mailed multiple times a day.`,
     (s) => s.includes("gateAllows("),
     "call `await gateAllows(<recipient>, '<sender-label>'[, deliveryDay])` before sending and skip when it returns false",
   );
@@ -220,15 +220,15 @@ for (const [file, label] of [
 // defeats the cap no matter what the gate says.
 check(
   "app/api/cron/daily-seinfeld/route.ts",
-  "daily-seinfeld is back on Resend broadcasts — a broadcast cannot exclude individuals, so the daily cap cannot apply.",
+  "daily-seinfeld is back on Resend broadcasts, a broadcast cannot exclude individuals, so the daily cap cannot apply.",
   (s) => !s.includes("api.resend.com/broadcasts"),
-  "send per recipient via /emails (gated), using injectUnsubscribeLink + listUnsubscribeHeaders — {{{RESEND_UNSUBSCRIBE_URL}}} only expands on broadcasts",
+  "send per recipient via /emails (gated), using injectUnsubscribeLink + listUnsubscribeHeaders, {{{RESEND_UNSUBSCRIBE_URL}}} only expands on broadcasts",
 );
 
 // IndexNow: a status-only log is why a 422 sat unexplained in the build output.
 check(
   "scripts/submit-indexnow.ts",
-  "IndexNow submitter no longer reports WHY a submission was rejected — a failure will be silent again.",
+  "IndexNow submitter no longer reports WHY a submission was rejected, a failure will be silent again.",
   (s) => s.includes("IndexNow body") && s.includes("IndexNow SKIPPED"),
   "log the response body on non-2xx, and preflight the key file by CONTENT (this host serves soft-404s that a status check reads as valid)",
 );
@@ -236,12 +236,12 @@ check(
 // ---------------------------------------------------------------------------
 // 7. Newsletter widget publisher attribution (2026-08-13). /embed/weekly is
 //    the co-branded "Signal of the Week" block pitched to VC newsletters.
-//    The ?pub= parameter is how each publisher's clicks are attributed —
+//    The ?pub= parameter is how each publisher's clicks are attributed -
 //    losing it silently blinds the whole newsletter-distribution funnel.
 // ---------------------------------------------------------------------------
 check(
   "app/embed/weekly/route.ts",
-  "/embed/weekly lost the ?pub= publisher-attribution script — newsletter embeds stop attributing clicks.",
+  "/embed/weekly lost the ?pub= publisher-attribution script, newsletter embeds stop attributing clicks.",
   (s) => s.includes('get("pub")') && s.includes("utm_campaign"),
   "restore the inline script that reads ?pub= from the iframe URL and appends utm_campaign/pub to the CTA link",
 );
@@ -251,7 +251,7 @@ check(
 // that the /chrome page, X thread, and LinkedIn syndication link to.
 check(
   "content/posts.ts",
-  "Blog post best-chrome-extensions-vc-deal-flow-2026 is missing — its inbound distribution links 404.",
+  "Blog post best-chrome-extensions-vc-deal-flow-2026 is missing, its inbound distribution links 404.",
   (s) => s.includes('slug: "best-chrome-extensions-vc-deal-flow-2026"'),
   "splice the post back into content/posts.ts (both lineages carried it as of 2026-08-13)",
 );
@@ -356,7 +356,7 @@ check(
 // ---------------------------------------------------------------------------
 check(
   "content/posts.ts",
-  "Stale '4200' blog slug present — URL advertises 4,200 orgs against the real 369-startup panel.",
+  "Stale '4200' blog slug present, URL advertises 4,200 orgs against the real 369-startup panel.",
   (s) =>
     !s.includes("i-tracked-4200-startup-github-orgs-six-months") &&
     s.includes("i-tracked-369-startup-github-orgs-six-months"),
@@ -364,7 +364,7 @@ check(
 );
 check(
   "next.config.ts",
-  "Missing 301 for the old '4200' blog slug — old internal links / indexed URLs would 404.",
+  "Missing 301 for the old '4200' blog slug, old internal links / indexed URLs would 404.",
   (s) =>
     s.includes("/blog/i-tracked-4200-startup-github-orgs-six-months") &&
     s.includes("/blog/i-tracked-369-startup-github-orgs-six-months"),
@@ -372,7 +372,7 @@ check(
 );
 check(
   "content/post-freshness.ts",
-  "post-freshness module missing — the quarterly blog-freshen cron has nothing to write.",
+  "post-freshness module missing, the quarterly blog-freshen cron has nothing to write.",
   (s) => s.includes("export const postFreshness") && s.includes("getPostLastUpdated"),
   "restore content/post-freshness.ts with postFreshness + getPostLastUpdated",
 );
@@ -438,13 +438,13 @@ check(
 // ---------------------------------------------------------------------------
 check(
   "content/sectors.ts",
-  "Sector hubs lost their per-sector analyst notes — near-duplicate template similarity returns.",
+  "Sector hubs lost their per-sector analyst notes, near-duplicate template similarity returns.",
   (s) => (s.match(/\bnote:\s*"/g) || []).length >= 10,
   "restore a unique `note: \"…\"` per sector in content/sectors.ts (10 sectors, data-grounded, non-empty)",
 );
 check(
   "app/sector/[slug]/page.tsx",
-  "Sector hub page no longer renders the analyst note — the field is wired but dead.",
+  "Sector hub page no longer renders the analyst note, the field is wired but dead.",
   (s) => s.includes("s.analystNote"),
   "render {s.analystNote} inside the 'Analyst note' callout below the intro",
 );
@@ -516,6 +516,44 @@ check(
 );
 
 // ---------------------------------------------------------------------------
+// 11. No em/en dashes in shipped copy (2026-08-14). Site-wide style rule:
+//     never an em dash in any output (use comma, colon, paren, or hyphen).
+//     One sweep removed ~19k em/en dashes across landing + pSEO. Any lineage
+//     that reintroduces them silently reverts the sweep; this guard makes that
+//     tree undeployable. Scans the shipped-content dirs only (not scripts/docs).
+// ---------------------------------------------------------------------------
+{
+  const DASHES = ["\u2014", "\u2013", "&" + "mdash;", "&" + "ndash;"];
+  const DIRS = [
+    "app", "lib", "content", "public", "components", "data",
+    "answers", "sectors", "mcp", "schema", "widgets",
+  ];
+  const EXTS = new Set([".ts", ".tsx", ".md", ".mdx", ".html", ".json", ".txt"]);
+  const offenders: string[] = [];
+  const walk = (dir: string) => {
+    let entries: string[];
+    try { entries = readdirSync(dir); } catch { return; }
+    for (const name of entries) {
+      const p = join(dir, name);
+      let st;
+      try { st = statSync(p); } catch { continue; }
+      if (st.isDirectory()) walk(p);
+      else if (EXTS.has(extname(name)) && !name.endsWith(".d.ts")) {
+        let s: string | null = null;
+        try { s = readFileSync(p, "utf8"); } catch { s = null; }
+        if (s !== null && DASHES.some((d) => s.includes(d))) offenders.push(p);
+      }
+    }
+  };
+  for (const d of DIRS) walk(join(ROOT, d));
+  if (offenders.length) {
+    failures.push(
+      `Em/en dash reintroduced in shipped copy (site-wide no-dash style rule).\n    files: ${offenders.slice(0, 8).join(", ")}${offenders.length > 8 ? ` (+${offenders.length - 8} more)` : ""}\n    fix:  replace \u2014 / \u2013  and their HTML entities with comma, colon, paren, or hyphen\n    reason: 2026-08-14 site-wide dash sweep`,
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +
@@ -524,7 +562,7 @@ if (failures.length) {
   );
   for (const f of failures) console.error(`  ✖ ${f}\n`);
   console.error(
-    `  If a check is genuinely obsolete, delete it here with a reason —\n` +
+    `  If a check is genuinely obsolete, delete it here with a reason, \n` +
       `  do not bypass the guard.\n`,
   );
   process.exit(1);

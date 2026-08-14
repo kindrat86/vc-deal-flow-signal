@@ -31,7 +31,7 @@ export async function generateMetadata({
 
   return {
     title:
-      "SaaS Magic Number Calculator — Sales Efficiency, Bessemer Bands",
+      "SaaS Magic Number Calculator, Sales Efficiency, Bessemer Bands",
     description:
       "Free SaaS magic number calculator. (Current ARR − prior ARR) × 4 / quarterly S&M spend, classified into the Bessemer / OpenView efficiency bands. URL-shareable for board decks and investor updates.",
     alternates: { canonical: "/tools/magic-number-calculator" },
@@ -46,7 +46,7 @@ export async function generateMetadata({
           url: ogImage,
           width: 1200,
           height: 630,
-          alt: "Magic Number Calculator — VC Deal Flow Signal",
+          alt: "Magic Number Calculator, VC Deal Flow Signal",
         },
       ],
     },
@@ -79,12 +79,12 @@ const FAQS: { question: string; answer: string }[] = [
   {
     question: "What are the standard bands?",
     answer:
-      "Bessemer and OpenView publish similar conventions: >1.5 exceptional (invest more aggressively), 1.0–1.5 good (continue investing), 0.75–1.0 OK (hold pace, watch trajectory), <0.75 bad (cut spend and find the bottleneck before investing more). Bands tighten at growth stage where the model should be tuned, and loosen at very early stage where quarterly noise dominates.",
+      "Bessemer and OpenView publish similar conventions: >1.5 exceptional (invest more aggressively), 1.0-1.5 good (continue investing), 0.75-1.0 OK (hold pace, watch trajectory), <0.75 bad (cut spend and find the bottleneck before investing more). Bands tighten at growth stage where the model should be tuned, and loosen at very early stage where quarterly noise dominates.",
   },
   {
     question: "How is this different from burn multiple?",
     answer:
-      "Burn multiple is total burn / net new ARR — it includes everything that consumes cash (R&D, G&A, infra, plus S&M). Magic number is narrower: only S&M spend in the denominator. Magic number tells you whether the GTM motion is working; burn multiple tells you whether the company as a whole is converting burn into revenue efficiently.",
+      "Burn multiple is total burn / net new ARR, it includes everything that consumes cash (R&D, G&A, infra, plus S&M). Magic number is narrower: only S&M spend in the denominator. Magic number tells you whether the GTM motion is working; burn multiple tells you whether the company as a whole is converting burn into revenue efficiently.",
   },
   {
     question: "What if ARR shrank quarter over quarter?",
@@ -94,12 +94,12 @@ const FAQS: { question: string; answer: string }[] = [
   {
     question: "What if S&M spend is zero?",
     answer:
-      "Magic number is undefined when S&M is zero — efficiency is a ratio and dividing by zero gives no signal. The calculator handles this case explicitly. Companies that grow with zero S&M (rare — usually product-led with strong virality) should look at growth rate alone rather than trying to compute an efficiency metric.",
+      "Magic number is undefined when S&M is zero, efficiency is a ratio and dividing by zero gives no signal. The calculator handles this case explicitly. Companies that grow with zero S&M (rare, usually product-led with strong virality) should look at growth rate alone rather than trying to compute an efficiency metric.",
   },
   {
     question: "Can I share my calculation?",
     answer:
-      "Yes — every input is encoded in the URL. The 'Copy share link' button copies the current URL to your clipboard. Send it to your board, head of sales, or growth-stage investor and they open the calculator with the same numbers.",
+      "Yes, every input is encoded in the URL. The 'Copy share link' button copies the current URL to your clipboard. Send it to your board, head of sales, or growth-stage investor and they open the calculator with the same numbers.",
   },
 ];
 
@@ -195,7 +195,7 @@ export default function MagicNumberPage() {
         "@type": "WebPage",
         "@id": PAGE_URL,
         url: PAGE_URL,
-        name: "SaaS Magic Number Calculator — Sales Efficiency, Bessemer Bands",
+        name: "SaaS Magic Number Calculator, Sales Efficiency, Bessemer Bands",
         description:
           "Free SaaS magic number calculator with Bessemer-band classification and shareable URLs.",
         inLanguage: "en-US",

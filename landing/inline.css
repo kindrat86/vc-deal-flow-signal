@@ -98,7 +98,7 @@ body.page-affiliates a:not([class*="btn"]):not([class*="bg-"]):not([role="button
 .note{color:#64748b;font-size:.85rem;text-align:center;margin:40px 0}
 @media(max-width:640px){.commission-box table{font-size:.85rem}}
 
-/* Self-contained page styles (same pattern as all pages — no build step) */
+/* Self-contained page styles (same pattern as all pages, no build step) */
     :root {
       --signal-500: #ff6b1a;
       --signal-400: #ff8c4d;
@@ -158,7 +158,7 @@ body.page-affiliates a:not([class*="btn"]):not([class*="bg-"]):not([role="button
       .mobile-sticky-cta .btn { white-space: nowrap; padding-left: 1rem; padding-right: 1rem; }
     }
 
-    /* Progress indicator (Brunson Ch 11 — funnel progress bar) */
+    /* Progress indicator (Brunson Ch 11, funnel progress bar) */
     .apply-progress { display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-bottom: 2rem; }
     .apply-progress .dot { width: 0.625rem; height: 0.625rem; border-radius: 999px; background: rgba(148,163,184,0.25); transition: background 250ms, transform 250ms; }
     .apply-progress .dot.active { background: var(--gold); transform: scale(1.2); box-shadow: 0 0 0 4px rgba(251,191,36,0.16); }
@@ -184,7 +184,7 @@ body.page-affiliates a:not([class*="btn"]):not([class*="bg-"]):not([role="button
     .form-input::placeholder, .form-textarea::placeholder { color: #64748b; }
     .form-textarea { min-height: 6rem; resize: vertical; }
 
-    /* Radio card selectors (Brunson Ch 13 — multi-choice qualification) */
+    /* Radio card selectors (Brunson Ch 13, multi-choice qualification) */
     .radio-group { display: grid; gap: 0.75rem; }
     .radio-card {
       display: flex; align-items: flex-start; gap: 0.75rem; padding: 1rem 1.25rem;
@@ -223,7 +223,7 @@ body.page-affiliates a:not([class*="btn"]):not([class*="bg-"]):not([role="button
       .step-panel.active { animation: none; }
     }
 
-/* Brand-page-only styles — styles.css is prebuilt (no working Tailwind
+/* Brand-page-only styles, styles.css is prebuilt (no working Tailwind
        build step), so page-specific classes live inline here. */
     .asset-card {
       border: 1px solid #334155;
@@ -320,7 +320,7 @@ html { scroll-padding-top: 6rem; }
     }
 
 /* ====================================================================
-       /dashboard-thanks — OTO: Insider Circle upsell (Brunson Ch 15)
+       /dashboard-thanks, OTO: Insider Circle upsell (Brunson Ch 15)
        One Time Offer: the buyer just subscribed to Dashboard (€49/mo).
        This page offers Insider Circle (€197/mo) with a value stack,
        honest urgency (seat cap), and a downsell.
@@ -379,7 +379,7 @@ html { scroll-padding-top: 6rem; }
       .mobile-sticky-cta .btn { white-space: nowrap; padding-left: 1rem; padding-right: 1rem; }
     }
 
-    /* OTO card — Insider purple */
+    /* OTO card, Insider purple */
     .oto-card {
       position: relative; isolation: isolate;
       border-color: rgba(168, 85, 247, 0.42) !important;
@@ -548,7 +548,7 @@ body.page-embed h2 { font-size: 1.2rem; font-weight: 600; margin: 2rem 0 1rem; c
 .footer a { color: #10B981; text-decoration: none; }
 
 /* ====================================================================
-       /firstlook-thanks — OTO: Dashboard upsell (Brunson Ch 15)
+       /firstlook-thanks, OTO: Dashboard upsell (Brunson Ch 15)
        One Time Offer: the buyer just paid €7. This page offers Dashboard
        (€49/mo) with the €7 credited via the 14-day upgrade credit window.
        Value stack + honest urgency + downsell.
@@ -709,7 +709,7 @@ body.page-embed h2 { font-size: 1.2rem; font-weight: 600; margin: 2rem 0 1rem; c
     @media (max-width: 639px) { .fm-result-big { font-size: 1.875rem; } }
 
 /* ============================================================
-       UiKit v2 — World-class UI/UX for gitdealflow.com
+       UiKit v2, World-class UI/UX for gitdealflow.com
        Principles: mobile-first, 8px grid, accessible, performant
        ============================================================ */
 
@@ -1236,7 +1236,7 @@ body.page-mcp ul{padding-left:1.5rem} body.page-mcp li{margin-bottom:0.5rem}
     font-size: 0.85rem;
   }
 
-/* Pricing-page-only styles — kept inline because styles.css is prebuilt
+/* Pricing-page-only styles, kept inline because styles.css is prebuilt
        (no working Tailwind build step) and these classes don't exist there. */
     html { scroll-padding-top: 5.5rem; }
     @media (prefers-reduced-motion: no-preference) { html { scroll-behavior: smooth; } }
@@ -1422,10 +1422,10 @@ body.page-mcp ul{padding-left:1.5rem} body.page-mcp li{margin-bottom:0.5rem}
   .auto{font-size:.7rem;color:#475569;margin-top:.5rem}
 
 /* ====================================================================
-       /thanks — world-class UI layer (presentation only).
+       /thanks, world-class UI layer (presentation only).
        Every word, id, link, data-attribute and inline handler is unchanged.
        The site ships a pre-built, purged styles.css with no build step on
-       deploy, so new Tailwind utilities can't compile — all new styling is
+       deploy, so new Tailwind utilities can't compile, all new styling is
        self-contained here, the same pattern the page already used.
        ==================================================================== */
     :root {
@@ -1510,7 +1510,7 @@ body.page-mcp ul{padding-left:1.5rem} body.page-mcp li{margin-bottom:0.5rem}
     }
     .support-card img { box-shadow: 0 12px 34px -10px rgba(255, 107, 26, 0.5); }
 
-    /* .btn-secondary is now defined globally in input.css (compiled into styles.css) —
+    /* .btn-secondary is now defined globally in input.css (compiled into styles.css) -
        inline def removed to keep a single source of truth. */
 
     /* ---- "What to do now" → quiet timeline rail ---- */
@@ -1625,7 +1625,7 @@ header nav a[aria-current="page"],
    `lg:*` was never used before, so `.lg\:hidden` / `.lg\:inline-flex`
    etc. were silently no-ops. !important is required because ux.css's
    `a.btn` selector (specificity 0,1,1) already beats a plain `.hidden`
-   class (0,1,0) regardless of source order — without it, elements like
+   class (0,1,0) regardless of source order, without it, elements like
    the header's annual-price button stay visible at every width. */
 @media (max-width: 1023.98px) {
   .lg\:inline-flex, .lg\:inline, .lg\:flex { display: none !important; }
@@ -1641,7 +1641,7 @@ header nav a[aria-current="page"],
    the sr-only <label> inside the signup form, inflating it from 1px to the
    full form width. Being position:absolute with white-space:nowrap, it then
    pushed the document to 404px against a 375px viewport. `body` has
-   overflow-x:hidden, so this never became a sideways-scrolling page — the
+   overflow-x:hidden, so this never became a sideways-scrolling page, the
    visible damage was that the *fixed* sticky CTA sized itself to that wrong
    404px, laying its contents out to x=388 and clipping ~13px of the CTA
    button off-screen on every phone. Measured after the fix: bar 375px,

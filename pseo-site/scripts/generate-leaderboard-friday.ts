@@ -1,11 +1,11 @@
 /**
- * Leaderboard Friday recap — Fri cadence in Greg Isenberg's 30-day
+ * Leaderboard Friday recap, Fri cadence in Greg Isenberg's 30-day
  * distribution play. Reads the top 3 Scouts from PocketBase and writes a
  * distribution-ready markdown doc with Twitter / Telegram / Substack /
  * LinkedIn copy. Public ranking creates competition; competition creates
  * retention.
  *
- * No auto-posting — drafts only, per division-of-labor rules.
+ * No auto-posting, drafts only, per division-of-labor rules.
  *
  * Usage:
  *   npx tsx scripts/generate-leaderboard-friday.ts          # next Friday
@@ -99,12 +99,12 @@ function buildTwitterThread(scouts: PbScout[], date: string): string[] {
   if (top.length === 0) return [];
 
   const t1 =
-    `Scout Leaderboard — week of ${date}.\n\n` +
+    `Scout Leaderboard, week of ${date}.\n\n` +
     `Top 3 devs calling startup fundraises from public GitHub signals:\n\n` +
     top
       .map(
         (s, i) =>
-          `${i + 1}. @${s.handle} — ${Math.round(s.points)} pts (${RANK_LABEL[s.rank] ?? s.rank})`,
+          `${i + 1}. @${s.handle}, ${Math.round(s.points)} pts (${RANK_LABEL[s.rank] ?? s.rank})`,
       )
       .join("\n") +
     `\n\nFull leaderboard: ${SITE}/leaderboard`;
@@ -112,7 +112,7 @@ function buildTwitterThread(scouts: PbScout[], date: string): string[] {
   const t2 =
     `How it works:\n\n` +
     `Pick any GitHub org. Predict whether they raise a Series A in 6 months. ` +
-    `Confidence 50–99%. Auto-resolves at the 6-month mark.\n\n` +
+    `Confidence 50-99%. Auto-resolves at the 6-month mark.\n\n` +
     `Correct call: +confidence/10 pts. Wrong call: -confidence/20 pts.\n\n` +
     `Play: ${SITE}/predict`;
 
@@ -120,7 +120,7 @@ function buildTwitterThread(scouts: PbScout[], date: string): string[] {
     `Top 1% earn an Oracle badge. The leaderboard refreshes every Friday.\n\n` +
     `Free tier: 3 predictions / month.\n` +
     `Dashboard (€9.97/mo): 10 / month + Sharp / Elite / Oracle eligibility.\n\n` +
-    `Why it works: SSRN-indexed methodology — ssrn.com/abstract=6606558`;
+    `Why it works: SSRN-indexed methodology, ssrn.com/abstract=6606558`;
 
   return [t1, t2, t3];
 }
@@ -128,16 +128,16 @@ function buildTwitterThread(scouts: PbScout[], date: string): string[] {
 function buildTelegramPost(scouts: PbScout[], date: string): string {
   const top = scouts.slice(0, 3);
   if (top.length === 0) {
-    return `📊 **Leaderboard recap — ${date}**\n\nQuiet week, no scoring picks resolved yet. Play the Scout Game: ${SITE}/predict`;
+    return `📊 **Leaderboard recap, ${date}**\n\nQuiet week, no scoring picks resolved yet. Play the Scout Game: ${SITE}/predict`;
   }
   const ranking = top
     .map(
       (s, i) =>
-        `${i + 1}. @${s.handle} — ${Math.round(s.points)} pts (${RANK_LABEL[s.rank] ?? s.rank})`,
+        `${i + 1}. @${s.handle}, ${Math.round(s.points)} pts (${RANK_LABEL[s.rank] ?? s.rank})`,
     )
     .join("\n");
   return (
-    `📊 **Leaderboard recap — ${date}**\n\n` +
+    `📊 **Leaderboard recap, ${date}**\n\n` +
     `Top 3 Scouts this week:\n\n${ranking}\n\n` +
     `Full ranking: ${SITE}/leaderboard\n` +
     `Play: ${SITE}/predict`
@@ -150,7 +150,7 @@ function buildSubstackNote(scouts: PbScout[], date: string): string {
     return `Scout leaderboard quiet this week. Play the Scout Game and get on next Friday's ranking: ${SITE}/predict`;
   }
   return (
-    `Scout Leaderboard — ${date}. Top spot: @${top.handle} with ${Math.round(top.points)} ` +
+    `Scout Leaderboard, ${date}. Top spot: @${top.handle} with ${Math.round(top.points)} ` +
     `points calling fundraises from GitHub signals. Top 1% earn Oracle. Play: ${SITE}/predict`
   );
 }
@@ -159,7 +159,7 @@ function buildLinkedinDraft(scouts: PbScout[], date: string): string {
   const top = scouts.slice(0, 3);
   if (top.length === 0) {
     return (
-      `Scout Game — week of ${date}. No resolved scoring picks this week.\n\n` +
+      `Scout Game, week of ${date}. No resolved scoring picks this week.\n\n` +
       `The game: predict whether a startup raises a Series A in 6 months from their GitHub signals. ` +
       `Free tier 3 picks / month, public leaderboard, Oracle badge for top 1%.\n\n` +
       `Try it: ${SITE}/predict`
@@ -168,11 +168,11 @@ function buildLinkedinDraft(scouts: PbScout[], date: string): string {
   const ranking = top
     .map(
       (s, i) =>
-        `${i + 1}. @${s.handle} — ${Math.round(s.points)} points (${RANK_LABEL[s.rank] ?? s.rank})`,
+        `${i + 1}. @${s.handle}, ${Math.round(s.points)} points (${RANK_LABEL[s.rank] ?? s.rank})`,
     )
     .join("\n");
   return (
-    `Scout Leaderboard — week of ${date}.\n\n` +
+    `Scout Leaderboard, week of ${date}.\n\n` +
     `Top 3 developers calling startup fundraises from public GitHub engineering signals:\n\n${ranking}\n\n` +
     `The game: pick any GitHub org, predict whether they raise a Series A in 6 months. ` +
     `Auto-resolves at the 6-month window. Top 1% earn an Oracle badge.\n\n` +
@@ -193,14 +193,14 @@ function renderDoc(args: {
   const fullList = scouts
     .map(
       (s, i) =>
-        `${i + 1}. @${s.handle} — ${Math.round(s.points)} pts (${RANK_LABEL[s.rank] ?? s.rank})` +
+        `${i + 1}. @${s.handle}, ${Math.round(s.points)} pts (${RANK_LABEL[s.rank] ?? s.rank})` +
         (s.predictions_correct
           ? ` · ${s.predictions_correct}W ${s.predictions_wrong ?? 0}L`
           : ""),
     )
     .join("\n");
 
-  return `# Leaderboard Friday — ${date}
+  return `# Leaderboard Friday, ${date}
 
 **Permalink:** ${SITE}/leaderboard
 **Top scouts shown:** ${scouts.length}
@@ -232,7 +232,7 @@ ${substack}
 
 ---
 
-## LinkedIn draft (USER POSTS MANUALLY — per division-of-labor rule)
+## LinkedIn draft (USER POSTS MANUALLY, per division-of-labor rule)
 
 ${linkedin}
 
@@ -240,12 +240,12 @@ ${linkedin}
 
 ## Distribution checklist
 
-- [ ] Twitter thread — auto-post via tools/twitter
-- [ ] Telegram channel post — auto-post via tools/anthropic-extension-watcher Telegram pipeline (or paste manually if low subs)
-- [ ] Substack Note — auto-post via tools/substack
-- [ ] LinkedIn — USER posts manually, no automation
-- [ ] Reddit — DO NOT POST
-- [ ] HN — skip
+- [ ] Twitter thread, auto-post via tools/twitter
+- [ ] Telegram channel post, auto-post via tools/anthropic-extension-watcher Telegram pipeline (or paste manually if low subs)
+- [ ] Substack Note, auto-post via tools/substack
+- [ ] LinkedIn, USER posts manually, no automation
+- [ ] Reddit, DO NOT POST
+- [ ] HN, skip
 
 ## Notes
 

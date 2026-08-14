@@ -311,7 +311,7 @@ export default function BadgeBuilderClient() {
             <div className="mb-5 flex items-center gap-2 flex-wrap">
               <TweetIntentButton
                 href={buildTweetIntent({
-                  text: `Tracking GitHub commit momentum on ${org.trim()}/${repo.trim()} 👇\n\nLive engineering signal — auto-updates.`,
+                  text: `Tracking GitHub commit momentum on ${org.trim()}/${repo.trim()} 👇\n\nLive engineering signal, auto-updates.`,
                   url: `${SITE}/predict?org=${encodeURIComponent(org.trim())}`,
                 })}
                 onClick={() => trackTweetIntent("momentum", `${org.trim()}/${repo.trim()}`)}
@@ -396,7 +396,7 @@ export default function BadgeBuilderClient() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src={builtWith.badgeUrl}
-            alt={`Built-With badge — ${builtWithVariant}`}
+            alt={`Built-With badge, ${builtWithVariant}`}
             className="h-5"
           />
         </div>

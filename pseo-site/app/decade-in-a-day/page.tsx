@@ -8,12 +8,12 @@ import { getHreflangLanguages } from "@/lib/hreflang";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "A Decade in a Day — Twelve Lessons on Earlier Signal and Better Timing",
+  title: "A Decade in a Day, Twelve Lessons on Earlier Signal and Better Timing",
   description:
-    "Twelve lessons on timing, proof, workflow, and signal — compressed into one day for anyone who wants a clearer way to notice startup momentum earlier.",
+    "Twelve lessons on timing, proof, workflow, and signal, compressed into one day for anyone who wants a clearer way to notice startup momentum earlier.",
   alternates: { canonical: "/decade-in-a-day" },
   openGraph: {
-    title: "A Decade in a Day — Twelve Lessons on Earlier Signal and Better Timing",
+    title: "A Decade in a Day, Twelve Lessons on Earlier Signal and Better Timing",
     description:
       "Twelve lessons. One day. A practical path to earlier signal and clearer timing.",
     url: "https://signals.gitdealflow.com/decade-in-a-day",
@@ -34,12 +34,12 @@ const MODULES: Module[] = [
   {
     n: 1,
     minutes: 25,
-    title: "Identity — name the buyer you actually are",
+    title: "Identity, name the buyer you actually are",
     question: "Why does identity precede method?",
     content:
       "If you name the problem clearly, the right tools, prices, and rhythm start making sense much faster. If you name the problem badly, you buy the wrong stack and then blame the price. That first naming move shapes everything that follows.",
     links: [
-      { label: "/about — why the signal exists", href: "/about" },
+      { label: "/about, why the signal exists", href: "/about" },
       { label: "Identity declaration on home", href: "/" },
       { label: "FOR / NOT FOR disqualifier", href: "/#disqualifier" },
     ],
@@ -47,138 +47,138 @@ const MODULES: Module[] = [
   {
     n: 2,
     minutes: 30,
-    title: "Methodology — the signal that grounds everything",
+    title: "Methodology, the signal that grounds everything",
     question: "Why commit-velocity acceleration, not commit count?",
     content:
-      "Counts are noise. Acceleration relative to a company's own baseline is a regime change. We use a 14-day rolling window, two-period confirmation, contributor-quality filter. The SSRN paper (n=219) shows the signal preceded fundraises by 21–47 days IQR. The methodology is the only durable moat — every other element on the site rests on it.",
+      "Counts are noise. Acceleration relative to a company's own baseline is a regime change. We use a 14-day rolling window, two-period confirmation, contributor-quality filter. The SSRN paper (n=219) shows the signal preceded fundraises by 21-47 days IQR. The methodology is the only durable moat, every other element on the site rests on it.",
     links: [
-      { label: "/methodology — full breakdown", href: "/methodology" },
+      { label: "/methodology, full breakdown", href: "/methodology" },
       { label: "SSRN paper abstract=6606558", href: "https://ssrn.com/abstract=6606558" },
-      { label: "/reproducibility — clone, run, replicate", href: "/reproducibility" },
+      { label: "/reproducibility, clone, run, replicate", href: "/reproducibility" },
     ],
   },
   {
     n: 3,
     minutes: 25,
-    title: "Dream customer — name the people, not the segment",
+    title: "Dream customer, name the people, not the segment",
     question: "Who is this for, in 30 seconds?",
     content:
-      "A dealmaker who evaluates companies but doesn't read code — solo angel, scout, seed fund, corp-dev, or PE operator writing €5k–€50k checks (or building an acquisition shortlist), 5–40 calls a year, who wants the engineering read translated, not raw. Three thesis axes: AI infrastructure, dev tools, technical SaaS. The disqualifier is as important as the qualifier — Series-B+ partners with six-figure data budgets are not us.",
+      "A dealmaker who evaluates companies but doesn't read code, solo angel, scout, seed fund, corp-dev, or PE operator writing €5k-€50k checks (or building an acquisition shortlist), 5-40 calls a year, who wants the engineering read translated, not raw. Three thesis axes: AI infrastructure, dev tools, technical SaaS. The disqualifier is as important as the qualifier, Series-B+ partners with six-figure data budgets are not us.",
     links: [
-      { label: "/target-list — the top 100 voices the buyer reads", href: "/target-list" },
-      { label: "/funnels — every entry point sized to the buyer", href: "/funnels" },
+      { label: "/target-list, the top 100 voices the buyer reads", href: "/target-list" },
+      { label: "/funnels, every entry point sized to the buyer", href: "/funnels" },
     ],
   },
   {
     n: 4,
     minutes: 35,
-    title: "Funnel architecture — six rungs, one ladder, one cadence",
+    title: "Funnel architecture, six rungs, one ladder, one cadence",
     question: "Why six tiers and not three? And why a monthly drop on top?",
     content:
-      "Free → €7 → €49 → €197 → €497 → €1,997. Every rung exists because the rung below it doesn't fit one specific check size or one specific cadence. Free is for cadence-builders. €7 is for thesis-testers. €49 is for the daily-rhythm buyer. €197 is for the syndicate. €497 is for the small fund. €1,997 is for the deep-dive on a single sector. Never let a buyer leave at zero commitment when there's a free rung below. Above the rungs sits the continuity layer — a net-new monthly drop (sector deep-dive, methodology release, founder essay, or tool) that turns the paid tier from a tool subscription into an anticipation engine.",
+      "Free → €7 → €49 → €197 → €497 → €1,997. Every rung exists because the rung below it doesn't fit one specific check size or one specific cadence. Free is for cadence-builders. €7 is for thesis-testers. €49 is for the daily-rhythm buyer. €197 is for the syndicate. €497 is for the small fund. €1,997 is for the deep-dive on a single sector. Never let a buyer leave at zero commitment when there's a free rung below. Above the rungs sits the continuity layer, a net-new monthly drop (sector deep-dive, methodology release, founder essay, or tool) that turns the paid tier from a tool subscription into an anticipation engine.",
     links: [
-      { label: "/funnels — the value ladder visualised", href: "/funnels" },
-      { label: "/funnels#building-blocks — the 25 components", href: "/funnels#building-blocks" },
-      { label: "/pricing — the offer side", href: "/pricing" },
-      { label: "/continuity — the monthly Insider Drop calendar", href: "/continuity" },
+      { label: "/funnels, the value ladder visualised", href: "/funnels" },
+      { label: "/funnels#building-blocks, the 25 components", href: "/funnels#building-blocks" },
+      { label: "/pricing, the offer side", href: "/pricing" },
+      { label: "/continuity, the monthly Insider Drop calendar", href: "/continuity" },
     ],
   },
   {
     n: 5,
     minutes: 25,
-    title: "Reverse-engineering — what the leaders are optimising for",
+    title: "Reverse-engineering, what the leaders are optimising for",
     question: "How do you read a competitor's funnel?",
     content:
-      "If you can explain the difference between timing and verification, the rest of the comparison work gets easier. Harmonic optimises for partner budgets. Tracxn optimises for sector breadth. Affinity optimises for warm-intro routing. The useful teardown is the one that shows which job they solve well — and which one they leave open.",
+      "If you can explain the difference between timing and verification, the rest of the comparison work gets easier. Harmonic optimises for partner budgets. Tracxn optimises for sector breadth. Affinity optimises for warm-intro routing. The useful teardown is the one that shows which job they solve well, and which one they leave open.",
     links: [
-      { label: "/funnels#reverse-engineering — full teardown", href: "/funnels#reverse-engineering" },
-      { label: "/buyers-guide — buyer-side decision tree", href: "/buyers-guide" },
-      { label: "/alternatives — what other tools exist", href: "/alternatives" },
+      { label: "/funnels#reverse-engineering, full teardown", href: "/funnels#reverse-engineering" },
+      { label: "/buyers-guide, buyer-side decision tree", href: "/buyers-guide" },
+      { label: "/alternatives, what other tools exist", href: "/alternatives" },
     ],
   },
   {
     n: 6,
     minutes: 30,
-    title: "The core claim — one belief that closes the buyer",
+    title: "The core claim, one belief that closes the buyer",
     question: "What's the single belief that, if held, makes everything else inevitable?",
     content:
-      "If commit-velocity acceleration is the most leading public signal in venture capital, every other deal-flow source — pitch decks, AngelList, Crunchbase, warm intros — is a lagging indicator. The whole investing thesis falls or stands on whether that belief is true. Once you accept it, everything we sell follows automatically. If you don't accept it, no amount of stack will move you. Find this belief for your own product before you write copy.",
+      "If commit-velocity acceleration is the most leading public signal in venture capital, every other deal-flow source, pitch decks, AngelList, Crunchbase, warm intros, is a lagging indicator. The whole investing thesis falls or stands on whether that belief is true. Once you accept it, everything we sell follows automatically. If you don't accept it, no amount of stack will move you. Find this belief for your own product before you write copy.",
     links: [
-      { label: "/walkthrough — core claim + Three Objections", href: "/walkthrough" },
-      { label: "/pitch — the same belief in 90 seconds", href: "/pitch" },
+      { label: "/walkthrough, core claim + Three Objections", href: "/walkthrough" },
+      { label: "/pitch, the same belief in 90 seconds", href: "/pitch" },
     ],
   },
   {
     n: 7,
     minutes: 30,
-    title: "The Conversion Story — five steps from belief to action",
+    title: "The Conversion Story, five steps from belief to action",
     question: "Old way → new vehicle → external → internal → frameworks. Why this order?",
     content:
-      "The canonical conversion script. (1) Name the old way the buyer was sold — for us, 'best deals come from your network.' (2) Reveal the new vehicle — engineering acceleration. (3) Remove the external struggle — you don't need fund-grade tooling. (4) Remove the internal struggle — you don't need to become a different person to source. (5) Show the frameworks — Sunday digest, Wednesday filter, end-of-quarter sweep. Each step is a beat the reader has to walk through; skip one and they bounce.",
+      "The canonical conversion script. (1) Name the old way the buyer was sold, for us, 'best deals come from your network.' (2) Reveal the new vehicle, engineering acceleration. (3) Remove the external struggle, you don't need fund-grade tooling. (4) Remove the internal struggle, you don't need to become a different person to source. (5) Show the frameworks, Sunday digest, Wednesday filter, end-of-quarter sweep. Each step is a beat the reader has to walk through; skip one and they bounce.",
     links: [
-      { label: "/walkthrough#conversion-story — full script", href: "/walkthrough#conversion-story" },
-      { label: "/walkthrough/5min — condensed version", href: "/walkthrough/5min" },
+      { label: "/walkthrough#conversion-story, full script", href: "/walkthrough#conversion-story" },
+      { label: "/walkthrough/5min, condensed version", href: "/walkthrough/5min" },
     ],
   },
   {
     n: 8,
     minutes: 25,
-    title: "The Stack — turn features into anchored value",
+    title: "The Stack, turn features into anchored value",
     question: "Why itemise standalone value before the price?",
     content:
-      "Eight objects, each with a standalone value, totalling €1,728/yr. The buyer's brain anchors on the total. The price (€49/mo = €119.64/yr) becomes a 14× discount — which is the actual story. Stack order matters: the most desirable thing first, the bonus last. Never bury the dashboard inside the methodology vault. Lead with the thing the buyer wants most.",
+      "Eight objects, each with a standalone value, totalling €1,728/yr. The buyer's brain anchors on the total. The price (€49/mo = €119.64/yr) becomes a 14× discount, which is the actual story. Stack order matters: the most desirable thing first, the bonus last. Never bury the dashboard inside the methodology vault. Lead with the thing the buyer wants most.",
     links: [
-      { label: "/walkthrough — the canonical 8-row stack", href: "/walkthrough" },
-      { label: "/pricing — stack on the offer page", href: "/pricing" },
+      { label: "/walkthrough, the canonical 8-row stack", href: "/walkthrough" },
+      { label: "/pricing, stack on the offer page", href: "/pricing" },
     ],
   },
   {
     n: 9,
     minutes: 30,
-    title: "The Closes — five named patterns, one buyer profile each",
-    question: "Money / Identity / Pricing / Urgency / Encore — when does each fire?",
+    title: "The Closes, five named patterns, one buyer profile each",
+    question: "Money / Identity / Pricing / Urgency / Encore, when does each fire?",
     content:
-      "Money close fires for the spreadsheet buyer. Identity close fires for the engineer who's tired of pretending to be a partner. Pricing close fires for the rate-anchor — €1,728 retail vs €119.64 founding. Urgency close fires for the calendar — every Monday skipped is one 21–47-day window closed. Encore is the safety net for everyone — eight lines, the whole offer in one block, before the FAQ. One of the five always lands; you don't pick, you stack.",
+      "Money close fires for the spreadsheet buyer. Identity close fires for the engineer who's tired of pretending to be a partner. Pricing close fires for the rate-anchor, €1,728 retail vs €119.64 founding. Urgency close fires for the calendar, every Monday skipped is one 21-47-day window closed. Encore is the safety net for everyone, eight lines, the whole offer in one block, before the FAQ. One of the five always lands; you don't pick, you stack.",
     links: [
-      { label: "/walkthrough — four-close grid + encore", href: "/walkthrough" },
+      { label: "/walkthrough, four-close grid + encore", href: "/walkthrough" },
     ],
   },
   {
     n: 10,
     minutes: 25,
-    title: "Traffic — earned, owned, and the one we don't pay for",
+    title: "Traffic, earned, owned, and the one we don't pay for",
     question: "Why earned and owned, not paid?",
     content:
-      "Owned: email list (free Acceleration Watch), RSS, MCP server in the buyer's IDE. Earned: Reddit AEO, dev.to long-form, Substack mirror, federated social (Bluesky / Mastodon / Farcaster), academic SSRN citation. Paid: deferred under HOLD until earned-only proof. The reason isn't ideology, it's compounding — earned channels keep paying after you stop. Paid channels stop the day the budget does.",
+      "Owned: email list (free Acceleration Watch), RSS, MCP server in the buyer's IDE. Earned: Reddit AEO, dev.to long-form, Substack mirror, federated social (Bluesky / Mastodon / Farcaster), academic SSRN citation. Paid: deferred under HOLD until earned-only proof. The reason isn't ideology, it's compounding, earned channels keep paying after you stop. Paid channels stop the day the budget does.",
     links: [
-      { label: "/distribution — every channel mapped", href: "/distribution" },
-      { label: "/target-list — top 100 voices we read on each channel", href: "/target-list" },
+      { label: "/distribution, every channel mapped", href: "/distribution" },
+      { label: "/target-list, top 100 voices we read on each channel", href: "/target-list" },
     ],
   },
   {
     n: 11,
     minutes: 30,
-    title: "Agent-side distribution — the second internet",
+    title: "Agent-side distribution, the second internet",
     question: "Why publish to /md, agents.json, llms.txt, and OpenAPI?",
     content:
-      "Half the readers in 2026 are agents, not browsers. We publish six redundant agent surfaces: /md/<path> markdown mirror, agents.json discovery, llms.txt + llms-full.txt corpus, OpenAPI 21 endpoints, knowledge-graph.json, model.json. The agent-side reader doesn't see your hero CTA — they see the schema. The site is 1,060+ pages on the human side and 1,400+ surfaces on the agent side. Both sides matter.",
+      "Half the readers in 2026 are agents, not browsers. We publish six redundant agent surfaces: /md/<path> markdown mirror, agents.json discovery, llms.txt + llms-full.txt corpus, OpenAPI 21 endpoints, knowledge-graph.json, model.json. The agent-side reader doesn't see your hero CTA, they see the schema. The site is 1,060+ pages on the human side and 1,400+ surfaces on the agent side. Both sides matter.",
     links: [
-      { label: "/install — MCP server install", href: "/install" },
-      { label: "/distribution#agent-mirrors — full agent surface map", href: "/distribution#agent-mirrors" },
-      { label: "/api/actions/openapi.json — the agent contract", href: "/api/actions/openapi.json" },
+      { label: "/install, MCP server install", href: "/install" },
+      { label: "/distribution#agent-mirrors, full agent surface map", href: "/distribution#agent-mirrors" },
+      { label: "/api/actions/openapi.json, the agent contract", href: "/api/actions/openapi.json" },
     ],
   },
   {
     n: 12,
     minutes: 30,
-    title: "Ethics + scale — the lines that don't move",
+    title: "Ethics + scale, the lines that don't move",
     question: "Where does GitDealFlow refuse to scale?",
     content:
-      "Anonymity rule: no podcasts, no founder-face content, no real-name signatures. The product is a dataset, not a personality. Methodology rule: every claim is reproducible against the public Zenodo dataset; we don't keep a private edge. Pricing rule: founding-member rate locks forever before the public hike — never renegotiated retroactively. Free-tier rule: the 5 core MCP tools are free forever; new paid tools are added alongside, never gated. Scale stops where the buyer's trust would have to.",
+      "Anonymity rule: no podcasts, no founder-face content, no real-name signatures. The product is a dataset, not a personality. Methodology rule: every claim is reproducible against the public Zenodo dataset; we don't keep a private edge. Pricing rule: founding-member rate locks forever before the public hike, never renegotiated retroactively. Free-tier rule: the 5 core MCP tools are free forever; new paid tools are added alongside, never gated. Scale stops where the buyer's trust would have to.",
     links: [
-      { label: "/manifesto — the seven pillars", href: "/manifesto" },
-      { label: "/about/founder#flaws — the three character flaws on purpose", href: "/about/founder" },
-      { label: "/compliance.json — the public commitment", href: "/compliance.json" },
+      { label: "/manifesto, the seven pillars", href: "/manifesto" },
+      { label: "/about/founder#flaws, the three character flaws on purpose", href: "/about/founder" },
+      { label: "/compliance.json, the public commitment", href: "/compliance.json" },
     ],
   },
 ];
@@ -192,7 +192,7 @@ export default function DecadePage() {
       {
         "@type": "Course",
         "@id": "https://signals.gitdealflow.com/decade-in-a-day#course",
-        name: "A Decade in a Day — the earlier-signal curriculum",
+        name: "A Decade in a Day, the earlier-signal curriculum",
         description:
           "Twelve modules condensing ten years of earlier-signal practice into one Saturday: methodology, positioning, funnel architecture, conversion story, stack, closes, traffic, distribution, and the ethical lines that don't move.",
         provider: {
@@ -243,12 +243,12 @@ export default function DecadePage() {
             A decade in a day · Applied
           </p>
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight">
-            Ten years of earlier-signal practice — <span className="text-violet-400">in twelve modules</span>.
+            Ten years of earlier-signal practice, <span className="text-violet-400">in twelve modules</span>.
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
             This is for the First Mover: a dealmaker who evaluates companies but
-            doesn&rsquo;t read code — corp-dev, PE, an angel, a scout, a seed
-            fund. You never read a line of code — the read is done for you. What
+            doesn&rsquo;t read code, corp-dev, PE, an angel, a scout, a seed
+            fund. You never read a line of code, the read is done for you. What
             you get here is the practice behind it: how to notice startup
             momentum earlier, and act on it before the round, in plain business
             English.
@@ -333,9 +333,9 @@ export default function DecadePage() {
           </section>
         ))}
 
-        {/* 30-day Quickstart — Brunson Expert Secrets Ch 22 (Decade in
+        {/* 30-day Quickstart, Brunson Expert Secrets Ch 22 (Decade in
             a Day / Fast Implementation). Replaces the previous soft "pick
-            one module" block with a literal calendar — 30 dated beats,
+            one module" block with a literal calendar, 30 dated beats,
             week-by-week, tied to existing surfaces. Audit 2026-05-09
             verdict on Ch 22 (score 92/100): "could add a more visible
             '30-day quickstart' CTA on the page itself." */}
@@ -346,7 +346,7 @@ export default function DecadePage() {
             Or, if 30 days feels heavy
           </p>
           <h2 className="text-xl sm:text-2xl font-bold text-gray-100">
-            Pick Module 6 — the core claim — and live in it for a week.
+            Pick Module 6, the core claim, and live in it for a week.
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
             The 30-day quickstart above is the disciplined path. The

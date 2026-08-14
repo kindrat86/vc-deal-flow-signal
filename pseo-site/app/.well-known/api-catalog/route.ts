@@ -1,5 +1,5 @@
 /**
- * RFC 9727 — `/.well-known/api-catalog`
+ * RFC 9727, `/.well-known/api-catalog`
  *
  * Linkset-formatted (RFC 9264) catalog of every machine-readable API
  * description offered by this service. Emerging standard for agent-driven
@@ -26,13 +26,13 @@ export async function GET() {
           {
             href: `${SITE}/api/openapi.json`,
             type: "application/openapi+json",
-            title: "OpenAPI 3.1 spec — full HTTP API surface",
+            title: "OpenAPI 3.1 spec, full HTTP API surface",
           },
           {
             href: `${SITE}/.well-known/mcp.json`,
             type: "application/json",
             title:
-              "MCP discovery manifest — 12 tools, three resources, two templates, seven prompts",
+              "MCP discovery manifest, 12 tools, three resources, two templates, seven prompts",
           },
           {
             href: `${SITE}/.well-known/agent-card.json`,
@@ -43,7 +43,7 @@ export async function GET() {
             href: `${SITE}/.well-known/ai-plugin.json`,
             type: "application/json",
             title:
-              "ChatGPT plugin manifest — references the OpenAPI spec, no auth",
+              "ChatGPT plugin manifest, references the OpenAPI spec, no auth",
           },
           {
             href: `${SITE}/api/agent/tools?format=openai`,
@@ -55,19 +55,19 @@ export async function GET() {
             href: `${SITE}/api/schema.json`,
             type: "application/openapi+json",
             title:
-              "OpenAPI 3.1 spec (alias of /api/openapi.json — redirects 308)",
+              "OpenAPI 3.1 spec (alias of /api/openapi.json, redirects 308)",
           },
           {
             href: `${SITE}/.well-known/model.json`,
             type: "application/json",
             title:
-              "Model card — dataset+API capabilities, evaluation, limitations, agent entrypoints",
+              "Model card, dataset+API capabilities, evaluation, limitations, agent entrypoints",
           },
           {
             href: `${SITE}/.well-known/compliance.json`,
             type: "application/json",
             title:
-              "Enterprise compliance descriptor — GDPR / CCPA / SOC2 / ISO27001 posture, subprocessors, DPA contact",
+              "Enterprise compliance descriptor, GDPR / CCPA / SOC2 / ISO27001 posture, subprocessors, DPA contact",
           },
         ],
         // Human-readable docs
@@ -75,7 +75,7 @@ export async function GET() {
           {
             href: `${SITE}/agents.md`,
             type: "text/markdown",
-            title: "Canonical agent reference — install + tool list + citation",
+            title: "Canonical agent reference, install + tool list + citation",
           },
           {
             href: `${SITE}/llms.txt`,
@@ -85,7 +85,7 @@ export async function GET() {
           {
             href: `${SITE}/llms-full.txt`,
             type: "text/plain",
-            title: "Full LLM context — methodology, glossary, current data",
+            title: "Full LLM context, methodology, glossary, current data",
           },
           {
             href: `${SITE}/developers`,
@@ -95,24 +95,24 @@ export async function GET() {
         ],
         // Stable tool entry points (the actual callable endpoints)
         item: [
-          { href: `${SITE}/api/signals.json`, title: "Bulk panel — JSON" },
-          { href: `${SITE}/api/signals.csv`, title: "Bulk panel — CSV" },
+          { href: `${SITE}/api/signals.json`, title: "Bulk panel, JSON" },
+          { href: `${SITE}/api/signals.csv`, title: "Bulk panel, CSV" },
           {
             href: `${SITE}/api/dataset.jsonl`,
             title:
-              "Bulk panel — JSONL (Hugging Face Datasets / RAG ingestion compatible)",
+              "Bulk panel, JSONL (Hugging Face Datasets / RAG ingestion compatible)",
           },
           {
             href: `${SITE}/api/mcp/rpc`,
-            title: "MCP server — Streamable HTTP",
+            title: "MCP server, Streamable HTTP",
           },
           {
             href: `${SITE}/api/a2a`,
-            title: "Google A2A — JSON-RPC 2.0",
+            title: "Google A2A, JSON-RPC 2.0",
           },
           {
             href: `${SITE}/api/nlweb`,
-            title: "Microsoft NLWeb — conversational",
+            title: "Microsoft NLWeb, conversational",
           },
           {
             href: `${SITE}/api/agent/call`,
@@ -129,27 +129,27 @@ export async function GET() {
           {
             href: `${SITE}/api/answers.json`,
             title:
-              "Full-content answer corpus — citation-ready Q&A in one fetch (RAG-friendly)",
+              "Full-content answer corpus, citation-ready Q&A in one fetch (RAG-friendly)",
           },
           {
             href: `${SITE}/api/agents.json`,
             title:
-              "Flat-JSON agent surfaces index — companion to this api-catalog",
+              "Flat-JSON agent surfaces index, companion to this api-catalog",
           },
           {
             href: `${SITE}/api/agents/install/{host}`,
             title:
-              "Per-host install config — claude-desktop, cursor, windsurf, zed, cline, continue, aider, openai-agents-sdk, anthropic-sdk, langchain, llamaindex, huggingface-datasets, postman, chatgpt-custom-gpt",
+              "Per-host install config, claude-desktop, cursor, windsurf, zed, cline, continue, aider, openai-agents-sdk, anthropic-sdk, langchain, llamaindex, huggingface-datasets, postman, chatgpt-custom-gpt",
           },
           {
             href: `${SITE}/.well-known/webfinger?resource=acct:gitdealflow@gitdealflow.com`,
             title:
-              "RFC 7033 WebFinger — fediverse / IndieWeb discovery for the brand identity",
+              "RFC 7033 WebFinger, fediverse / IndieWeb discovery for the brand identity",
           },
           {
             href: `${SITE}/.well-known/host-meta`,
             title:
-              "RFC 6415 host-meta XRD — host-level discovery descriptor",
+              "RFC 6415 host-meta XRD, host-level discovery descriptor",
           },
         ],
         // License + freshness pointers
@@ -157,7 +157,7 @@ export async function GET() {
           {
             href: "https://creativecommons.org/licenses/by/4.0/",
             type: "text/html",
-            title: "CC-BY 4.0 — commercial reuse with attribution",
+            title: "CC-BY 4.0, commercial reuse with attribution",
           },
         ],
       },

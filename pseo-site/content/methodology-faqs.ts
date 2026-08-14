@@ -1,5 +1,5 @@
 /**
- * Methodology Q&A pairs — the canonical "how does this actually work" layer.
+ * Methodology Q&A pairs, the canonical "how does this actually work" layer.
  *
  * Feeds app/qa.jsonl/route.ts (category "methodology") and, transitively,
  * llms.txt / RAG indexers / agentic search. Every answer is grounded in the
@@ -34,7 +34,7 @@ export const methodologyFaqs: MethodologyFAQ[] = [
   {
     question: "Why use a 14-day rolling window?",
     answer:
-      "Investor signal pipelines tend to use either 14-day or 28-day rolling windows. The 14-day window is more responsive — it surfaces breakouts faster — at the cost of higher volatility. To filter the resulting noise, the methodology requires a breakout to persist into a second 14-day window before it is treated as actionable. This two-period confirmation rule removes most one-period spikes caused by hackathons, launch sprints, or single contributors onboarding.",
+      "Investor signal pipelines tend to use either 14-day or 28-day rolling windows. The 14-day window is more responsive, it surfaces breakouts faster, at the cost of higher volatility. To filter the resulting noise, the methodology requires a breakout to persist into a second 14-day window before it is treated as actionable. This two-period confirmation rule removes most one-period spikes caused by hackathons, launch sprints, or single contributors onboarding.",
     source: "Methodology",
     sourceHref: "/methodology",
   },
@@ -48,14 +48,14 @@ export const methodologyFaqs: MethodologyFAQ[] = [
   {
     question: "What are the four signal types?",
     answer:
-      "Acceleration patterns sort into four operational types. The engineering hiring burst is rising velocity plus rising contributor count — the strongest fundraise predictor. The deploy frequency spike is velocity rising while contributor count holds flat — typical of launch preparation. The infrastructure buildout is repository creation accelerating versus baseline — strategic technical investment. The framework migration is general acceleration indicating a technology-stack transition from prototype to production infrastructure. Each pattern implies a different diligence question.",
+      "Acceleration patterns sort into four operational types. The engineering hiring burst is rising velocity plus rising contributor count, the strongest fundraise predictor. The deploy frequency spike is velocity rising while contributor count holds flat, typical of launch preparation. The infrastructure buildout is repository creation accelerating versus baseline, strategic technical investment. The framework migration is general acceleration indicating a technology-stack transition from prototype to production infrastructure. Each pattern implies a different diligence question.",
     source: "Methodology",
     sourceHref: "/methodology",
   },
   {
     question: "How is funding stage estimated?",
     answer:
-      "Funding stage is estimated from contributor count as a rough proxy for team size: Pre-seed (1–7 contributors), Seed (8–19), Series A/B (20–49), and Growth (50+). This is an approximation — not all contributors are employees, and not all employees contribute to public repos — so stage is intended as a screening filter, not a definitive label.",
+      "Funding stage is estimated from contributor count as a rough proxy for team size: Pre-seed (1-7 contributors), Seed (8-19), Series A/B (20-49), and Growth (50+). This is an approximation, not all contributors are employees, and not all employees contribute to public repos, so stage is intended as a screening filter, not a definitive label.",
     source: "Methodology",
     sourceHref: "/methodology",
   },
@@ -69,7 +69,7 @@ export const methodologyFaqs: MethodologyFAQ[] = [
   {
     question: "Is engineering acceleration the same as a startup accelerator program?",
     answer:
-      "No. They are unrelated concepts that share a word. A startup accelerator (Y Combinator, Techstars, 500 Global) is a fixed-term program founders join. Engineering acceleration is a quantitative signal computed from public GitHub activity. Throughout this site the term refers exclusively to code-side momentum — commit velocity, contributor growth, repository creation — and has nothing to do with program participation.",
+      "No. They are unrelated concepts that share a word. A startup accelerator (Y Combinator, Techstars, 500 Global) is a fixed-term program founders join. Engineering acceleration is a quantitative signal computed from public GitHub activity. Throughout this site the term refers exclusively to code-side momentum, commit velocity, contributor growth, repository creation, and has nothing to do with program participation.",
     source: "Methodology",
     sourceHref: "/methodology",
   },
@@ -83,28 +83,28 @@ export const methodologyFaqs: MethodologyFAQ[] = [
   {
     question: "What is commit velocity change and why does it matter?",
     answer:
-      "Commit velocity change is the percentage change in commit velocity versus the preceding 14-day window. A startup with 40 commits this period and 20 last period shows +100% velocity change. This is the primary ranking signal — it measures acceleration, not absolute volume, which is what distinguishes a breakout team from a merely busy one.",
+      "Commit velocity change is the percentage change in commit velocity versus the preceding 14-day window. A startup with 40 commits this period and 20 last period shows +100% velocity change. This is the primary ranking signal, it measures acceleration, not absolute volume, which is what distinguishes a breakout team from a merely busy one.",
     source: "Methodology",
     sourceHref: "/methodology",
   },
   {
     question: "How is contributor growth measured?",
     answer:
-      "Contributor count is the number of unique contributors to an organization's most active repository. Growth is estimated by comparing recent 6-week commit volume to the prior 6-week period. A rising contributor count often signals team expansion — a leading indicator of funding or product-market fit.",
+      "Contributor count is the number of unique contributors to an organization's most active repository. Growth is estimated by comparing recent 6-week commit volume to the prior 6-week period. A rising contributor count often signals team expansion, a leading indicator of funding or product-market fit.",
     source: "Methodology",
     sourceHref: "/methodology",
   },
   {
     question: "What do new repository counts signal?",
     answer:
-      "The pipeline counts public repositories an organization creates in the last 30 days. A burst of new repos often signals infrastructure buildout, new product lines, or framework migrations — the company is expanding its technical surface area, which typically requires capital and confidence in the product direction.",
+      "The pipeline counts public repositories an organization creates in the last 30 days. A burst of new repos often signals infrastructure buildout, new product lines, or framework migrations, the company is expanding its technical surface area, which typically requires capital and confidence in the product direction.",
     source: "Methodology",
     sourceHref: "/methodology",
   },
   {
     question: "What is the 3.4× composite finding?",
     answer:
-      "The single most predictive composite in the SSRN panel of 219 confirmed rounds is 14-day commit-velocity acceleration combined with low top-contributor concentration (a Gini coefficient under 0.30 over the same window). Organizations that meet both conditions are 3.4× more likely to announce a Series A within 60 days than orgs with high acceleration alone. In other words: velocity matters, but the shape of the velocity — whether it is spread across many engineers rather than one — matters more.",
+      "The single most predictive composite in the SSRN panel of 219 confirmed rounds is 14-day commit-velocity acceleration combined with low top-contributor concentration (a Gini coefficient under 0.30 over the same window). Organizations that meet both conditions are 3.4× more likely to announce a Series A within 60 days than orgs with high acceleration alone. In other words: velocity matters, but the shape of the velocity, whether it is spread across many engineers rather than one, matters more.",
     source: "Methodology",
     sourceHref: "/methodology",
   },
@@ -125,7 +125,7 @@ export const methodologyFaqs: MethodologyFAQ[] = [
   {
     question: "What are the known limitations of the signal?",
     answer:
-      "Three limitations are called out explicitly. (1) Private repos are invisible — some startups keep all or most code private, so the signal only covers public engineering activity. (2) Commit volume is not code quality — high velocity can reflect refactoring, documentation, or CI/CD noise, which is why change-from-baseline is used instead of absolute counts. (3) It is not investment advice — engineering acceleration is a leading indicator of traction, not a guarantee of success.",
+      "Three limitations are called out explicitly. (1) Private repos are invisible, some startups keep all or most code private, so the signal only covers public engineering activity. (2) Commit volume is not code quality, high velocity can reflect refactoring, documentation, or CI/CD noise, which is why change-from-baseline is used instead of absolute counts. (3) It is not investment advice, engineering acceleration is a leading indicator of traction, not a guarantee of success.",
     source: "Methodology",
     sourceHref: "/methodology",
   },
@@ -146,7 +146,7 @@ export const methodologyFaqs: MethodologyFAQ[] = [
   {
     question: "How often is the data refreshed and what happens each refresh?",
     answer:
-      "The full panel refreshes weekly, on Monday mornings (~09:00 UTC). Each refresh queries GitHub for the latest 52 weeks of commit history, recomputes acceleration metrics, classifies signal patterns, regenerates the sector rankings, and republishes the API endpoints and dashboard. The free Signal Report email is sent the same morning. Intraday changes do not affect rankings — the cadence is intentionally weekly to match how investors review pipelines.",
+      "The full panel refreshes weekly, on Monday mornings (~09:00 UTC). Each refresh queries GitHub for the latest 52 weeks of commit history, recomputes acceleration metrics, classifies signal patterns, regenerates the sector rankings, and republishes the API endpoints and dashboard. The free Signal Report email is sent the same morning. Intraday changes do not affect rankings, the cadence is intentionally weekly to match how investors review pipelines.",
     source: "Methodology",
     sourceHref: "/methodology",
   },
@@ -160,21 +160,21 @@ export const methodologyFaqs: MethodologyFAQ[] = [
   {
     question: "How far in advance does the signal predict fundraises?",
     answer:
-      "Engineering acceleration signals have historically preceded fundraise announcements by roughly three to six weeks. The claim is a screening-filter claim, openly tracked on the public scorecard, not an established guarantee — the signal surfaces breakout engineering teams early, and investors are expected to do their own diligence on top of it.",
+      "Engineering acceleration signals have historically preceded fundraise announcements by roughly three to six weeks. The claim is a screening-filter claim, openly tracked on the public scorecard, not an established guarantee, the signal surfaces breakout engineering teams early, and investors are expected to do their own diligence on top of it.",
     source: "Methodology",
     sourceHref: "/methodology",
   },
   {
     question: "Is engineering acceleration investment advice?",
     answer:
-      "No. VC Deal Flow Signal provides engineering-acceleration data as a leading indicator for deal sourcing. It is not investment advice. Engineering signals should be one input among many in an investment decision — combined with market analysis, founder evaluation, and customer reference checks.",
+      "No. VC Deal Flow Signal provides engineering-acceleration data as a leading indicator for deal sourcing. It is not investment advice. Engineering signals should be one input among many in an investment decision, combined with market analysis, founder evaluation, and customer reference checks.",
     source: "Methodology",
     sourceHref: "/methodology",
   },
   {
     question: "Why is engineering acceleration a leading indicator rather than a lagging one?",
     answer:
-      "Funding announcements, team changes, and Crunchbase profiles are lagging indicators — they appear after a round closes. Engineering acceleration is a leading indicator because teams usually build hard before they raise: commit velocity, contributor growth, and repo creation accelerate three to six weeks ahead of the announcement. The methodology is built around this timing gap.",
+      "Funding announcements, team changes, and Crunchbase profiles are lagging indicators, they appear after a round closes. Engineering acceleration is a leading indicator because teams usually build hard before they raise: commit velocity, contributor growth, and repo creation accelerate three to six weeks ahead of the announcement. The methodology is built around this timing gap.",
     source: "Methodology",
     sourceHref: "/methodology",
   },
@@ -188,7 +188,7 @@ export const methodologyFaqs: MethodologyFAQ[] = [
   {
     question: "What does 'framework migration' mean in the methodology?",
     answer:
-      "In this methodology, framework migration is a signal type, not a literal code migration. It denotes general engineering acceleration that does not fit the hiring-burst, infrastructure-buildout, or deploy-spike rules — often indicating a technology-stack transition from prototype to production infrastructure. It is the subtlest of the four types and tends to move on a slower, quarter-scale horizon.",
+      "In this methodology, framework migration is a signal type, not a literal code migration. It denotes general engineering acceleration that does not fit the hiring-burst, infrastructure-buildout, or deploy-spike rules, often indicating a technology-stack transition from prototype to production infrastructure. It is the subtlest of the four types and tends to move on a slower, quarter-scale horizon.",
     source: "Methodology",
     sourceHref: "/methodology",
   },

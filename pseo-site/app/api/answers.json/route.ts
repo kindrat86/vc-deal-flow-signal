@@ -10,11 +10,11 @@ const SITE = "https://signals.gitdealflow.com";
  *
  * One request, every answer page in machine-readable form. Each entry carries
  * the same fields the page renders (TL;DR, body, facts with sources, FAQs,
- * keywords). Built for RAG ingestion — agents that want to ground responses
+ * keywords). Built for RAG ingestion, agents that want to ground responses
  * in our citation-tuned answers can drop this into a vector store with one
  * fetch.
  *
- * Companion to /api/answers.jsonl (newline-delimited variant) — both are
+ * Companion to /api/answers.jsonl (newline-delimited variant), both are
  * generated from the same source array.
  */
 export async function GET() {
@@ -22,7 +22,7 @@ export async function GET() {
 
   const body = {
     version: "1.0.0",
-    name: "VC Deal Flow Signal — Answer Corpus",
+    name: "VC Deal Flow Signal, Answer Corpus",
     description:
       "Citation-ready answers to common AI-agent and AI-search queries about VC deal flow, GitHub momentum, MCP servers, and engineering signals. Each entry has a TL;DR, supporting facts with source URLs, a long-form body, and a FAQPage.",
     site: SITE,
@@ -30,7 +30,7 @@ export async function GET() {
       identifier: "CC-BY-4.0",
       url: "https://creativecommons.org/licenses/by/4.0/",
     },
-    citation: "VC Deal Flow Signal — Answers (signals.gitdealflow.com/answers).",
+    citation: "VC Deal Flow Signal, Answers (signals.gitdealflow.com/answers).",
     lastModified: lastModified.toISOString(),
     count: agentQueries.length,
     answers: agentQueries.map((q) => ({

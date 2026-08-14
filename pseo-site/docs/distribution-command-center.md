@@ -1,4 +1,4 @@
-# GitDealFlow — distribution command center
+# GitDealFlow, distribution command center
 
 Purpose: one file that tells you what matters right now, what to send first, what to watch next, and what to stop.
 

@@ -1,15 +1,15 @@
 /**
- * /qa.json — single-document JSON mirror of /qa.jsonl with deep-link anchors.
+ * /qa.json, single-document JSON mirror of /qa.jsonl with deep-link anchors.
  *
  * Companion to:
- *   /qa.jsonl   — newline-delimited (RAG-friendly)
- *   /qa.csv     — spreadsheet alternate
+ *   /qa.jsonl  , newline-delimited (RAG-friendly)
+ *   /qa.csv    , spreadsheet alternate
  *
  * Filter via ?category=signal-type (or general | blog | sector | research |
  * glossary). Default returns all categories.
  *
  * Distinct from /api/answers.json which serves the long-form /answers/{slug}
- * agent-query pages — this surface serves the atomic Q&A pairs that map to
+ * agent-query pages, this surface serves the atomic Q&A pairs that map to
  * /faq, /glossary, /research, and per-sector pages.
  */
 
@@ -43,7 +43,7 @@ export async function GET(request: Request) {
 
   const entries: QAEntry[] = [];
 
-  // 1. Standalone FAQs — anchored to /faq#q{i+1}
+  // 1. Standalone FAQs, anchored to /faq#q{i+1}
   standaloneFaqs.forEach((faq, i) => {
     entries.push({
       q: faq.question,
@@ -84,7 +84,7 @@ export async function GET(request: Request) {
   RESEARCH_FINDINGS.forEach((f) => {
     entries.push({
       q: f.title,
-      a: `${f.claim} — ${f.why} (Source: SSRN ssrn.com/abstract=6606558, ${f.section})`,
+      a: `${f.claim}, ${f.why} (Source: SSRN ssrn.com/abstract=6606558, ${f.section})`,
       anchor: `${SITE}/research/${f.slug}`,
       category: "research",
       source: `SSRN finding #${f.n} (${f.group})`,
@@ -98,7 +98,7 @@ export async function GET(request: Request) {
   const body = {
     "@context": "https://schema.org",
     "@type": "Dataset",
-    name: "VC Deal Flow Signal — Q&A Dataset",
+    name: "VC Deal Flow Signal, Q&A Dataset",
     description:
       "Citation-ready question/answer pairs covering methodology, sectors, signal types, and SSRN-indexed research findings. Each entry includes a deep-link anchor URL for direct attribution.",
     url: `${SITE}/qa.json`,

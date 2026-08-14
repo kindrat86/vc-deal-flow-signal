@@ -16,9 +16,9 @@ export const dynamic = "force-static";
 // and is left untouched.
 const PARABLE_PLAIN_GLOSS: Record<string, string> = {
   "wrong-reader":
-    "In plain terms: the model briefly mistook a big internal code cleanup for real momentum — and a reader caught the false alarm before we did.",
+    "In plain terms: the model briefly mistook a big internal code cleanup for real momentum, and a reader caught the false alarm before we did.",
   "tuesday-regression":
-    "In plain terms: one late-night change quietly broke the math, so a few wrong names reached the top of the list — readers flagged it, and the whole fix was made public the same week.",
+    "In plain terms: one late-night change quietly broke the math, so a few wrong names reached the top of the list, readers flagged it, and the whole fix was made public the same week.",
 };
 
 // Brunson Expert Secrets Ch 5 (Storytelling) + DCS Ch 7 (Attractive
@@ -33,12 +33,12 @@ const PARABLE_PLAIN_GLOSS: Record<string, string> = {
 // invitation to read the next one.
 
 export const metadata: Metadata = {
-  title: `Six parables — the teaching stories of ${DATA_NERD_NAME}`,
+  title: `Six parables, the teaching stories of ${DATA_NERD_NAME}`,
   description:
-    "Six parables The Data Nerd rotates through emails, videos, and the Sunday digest. Each one is a single story with a single lesson — hyperlinkable so you can send one to a friend without sending the whole character bible.",
+    "Six parables The Data Nerd rotates through emails, videos, and the Sunday digest. Each one is a single story with a single lesson, hyperlinkable so you can send one to a friend without sending the whole character bible.",
   alternates: { canonical: "/parables" },
   openGraph: {
-    title: `Six parables — ${DATA_NERD_NAME}`,
+    title: `Six parables, ${DATA_NERD_NAME}`,
     description:
       "Six teaching stories. Each one a hyperlinkable standalone page.",
     url: "https://signals.gitdealflow.com/parables",
@@ -54,7 +54,7 @@ export default function ParablesIndexPage() {
         "@type": "CollectionPage",
         "@id": "https://signals.gitdealflow.com/parables#page",
         url: "https://signals.gitdealflow.com/parables",
-        name: `Six parables — ${DATA_NERD_NAME}`,
+        name: `Six parables, ${DATA_NERD_NAME}`,
         description:
           "Index of six teaching stories the founder character rotates through emails, videos, and the Sunday digest.",
         inLanguage: "en-US",
@@ -125,14 +125,13 @@ export default function ParablesIndexPage() {
             Every core claim about engineering acceleration on this site
             traces back to one of six small stories. They&rsquo;re what I
             tell at dinner if someone asks why GitHub data leads the deal
-            flow. Each one has its own page — pick the one that fits
+            flow. Each one has its own page, pick the one that fits
             your reader and send the URL.
           </p>
           <p className="text-gray-400 text-sm leading-relaxed border-l-2 border-amber-700/40 pl-4">
-            These are for the <strong className="text-amber-200">First Mover</strong> —
-            the investor who reaches the founder before the round. The creed
+            These are for the <strong className="text-amber-200">First Mover</strong>: the investor who reaches the founder before the round. The creed
             is one line: <em>&ldquo;We move on the engineering signal before
-            the round — without reading a line of code.&rdquo;</em> You never
+            the round, without reading a line of code.&rdquo;</em> You never
             read a line of code; the read is done for you.
           </p>
         </header>
@@ -178,14 +177,14 @@ export default function ParablesIndexPage() {
 
         <SeoCta
           heading="The parables make the case. The Sunday issue is the proof."
-          blurb="Five breakout startups every Sunday — the engineering signal translated into plain English, 21 to 47 days before the deck circulates. No code-reading, no card."
-          secondary={{ label: "Or test one sector — First Look €7 →", href: "/firstlook" }}
+          blurb="Five breakout startups every Sunday, the engineering signal translated into plain English, 21 to 47 days before the deck circulates. No code-reading, no card."
+          secondary={{ label: "Or test one sector, First Look €7 →", href: "/firstlook" }}
           className="mt-4"
         />
 
         <section className="border-t border-slate-800 pt-8 space-y-3">
           <p className="text-gray-400 text-sm leading-relaxed">
-            Read more from the founder character —
+            Read more from the founder character -
           </p>
           <ul className="space-y-1.5 text-sm">
             <li>
@@ -204,7 +203,7 @@ export default function ParablesIndexPage() {
                 href="/now"
                 className="text-emerald-300 hover:text-emerald-200 underline decoration-dotted font-semibold"
               >
-                /now — what I&rsquo;m working on this week
+                /now, what I&rsquo;m working on this week
               </Link>{" "}
               (updated every Monday).
             </li>

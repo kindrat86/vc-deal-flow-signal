@@ -73,7 +73,7 @@ const STATUS_STYLES: Record<
     label: "Not in our index yet",
     bg: "bg-slate-800 border-slate-700",
     pill: "bg-slate-700 text-gray-300",
-    msg: "We track ~369 venture-backed startup orgs. Submit this one to add it to next week's index.",
+    msg: "We track 350+ venture-backed startup orgs. Submit this one to add it to next week's index.",
   },
 };
 
@@ -104,7 +104,7 @@ export default function PredictForm({ initialOrg }: { initialOrg: string }) {
       if (!res.ok) throw new Error(`Lookup failed (${res.status})`);
       const data: SignalResult = await res.json();
       setResult(data);
-      // Fire-and-forget share-intent mint — share buttons appear when ready.
+      // Fire-and-forget share-intent mint, share buttons appear when ready.
       fetchShareIntents(name, data).then(setShareIntents);
     } catch (e) {
       setError(e instanceof Error ? e.message : "Lookup failed");
@@ -194,18 +194,18 @@ function ResultCard({
             value={
               result.commitVelocity14d != null
                 ? String(result.commitVelocity14d)
-                : "—"
+                : "-"
             }
           />
           <Stat
             label="Contributors"
             value={
               result.contributors != null
-                ? `${result.contributors} (${result.contributorGrowth ?? "—"})`
-                : "—"
+                ? `${result.contributors} (${result.contributorGrowth ?? "-"})`
+                : "-"
             }
           />
-          <Stat label="Stage" value={result.stage ?? "—"} />
+          <Stat label="Stage" value={result.stage ?? "-"} />
         </div>
       )}
 
@@ -288,7 +288,7 @@ function Stat({ label, value }: { label: string; value?: string }) {
         {label}
       </p>
       <p className="text-gray-100 font-mono text-sm font-semibold">
-        {value || "—"}
+        {value || "-"}
       </p>
     </div>
   );

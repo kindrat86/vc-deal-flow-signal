@@ -16,13 +16,13 @@ export const revalidate = 604800;
 
 export const metadata: Metadata = {
   title:
-    "Build it or fund it? — The 2×2 by sector",
+    "Build it or fund it?, The 2×2 by sector",
   description:
     "For every tracked sector, the honest answer to 'should I build this or fund it?'. Cost-to-build vs deal-velocity, scored on the same engineering-signal data that powers the rest of the site.",
   alternates: { canonical: "/build-vs-invest" },
   openGraph: {
     title:
-      "Build it or fund it? — The 2×2 by sector",
+      "Build it or fund it?, The 2×2 by sector",
     description:
       "Cost-to-build vs deal-velocity, scored per sector on the same engineering-signal data that powers VC Deal Flow Signal.",
     url: `${SITE}/build-vs-invest`,
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title:
-      "Build it or fund it? — The 2×2 by sector",
+      "Build it or fund it?, The 2×2 by sector",
     description:
       "Cost-to-build vs deal-velocity, scored per sector. The honest answer for every sector we track.",
   },
@@ -86,7 +86,7 @@ export default function BuildVsInvestIndexPage() {
         "@type": "WebPage",
         "@id": `${SITE}/build-vs-invest#webpage`,
         url: `${SITE}/build-vs-invest`,
-        name: "Build it or fund it? — The 2×2 by sector",
+        name: "Build it or fund it?, The 2×2 by sector",
         description:
           "Cost-to-build vs deal-velocity, scored per sector on the same engineering-signal data that powers VC Deal Flow Signal.",
         inLanguage: "en-US",
@@ -114,7 +114,7 @@ export default function BuildVsInvestIndexPage() {
           "@type": "ListItem",
           position: i + 1,
           url: `${SITE}/build-vs-invest/${s.slug}`,
-          name: `${s.name} — ${QUADRANT_META[s.quadrant].short} quadrant`,
+          name: `${s.name}, ${QUADRANT_META[s.quadrant].short} quadrant`,
         })),
       },
       {
@@ -163,8 +163,7 @@ export default function BuildVsInvestIndexPage() {
           </p>
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight">
             Should you{" "}
-            <span className="text-emerald-400">build it</span> —
-            or <span className="text-sky-400">fund it</span>?
+            <span className="text-emerald-400">build it</span>: or <span className="text-sky-400">fund it</span>?
           </h1>
           <p
             className="text-gray-300 text-base sm:text-lg leading-relaxed"
@@ -300,7 +299,7 @@ export default function BuildVsInvestIndexPage() {
             Two numbers, one source of truth.
           </h2>
           <p className="text-gray-300 text-sm leading-relaxed">
-            <strong className="text-gray-100">Cost-to-build</strong> is a 1–100
+            <strong className="text-gray-100">Cost-to-build</strong> is a 1-100
             score blending realistic capital requirements, regulatory drag,
             hardware overhead, and team-quality bar for an indie founder
             attempting to ship a credible first product. A score of 1 means
@@ -308,7 +307,7 @@ export default function BuildVsInvestIndexPage() {
             multi-year multi-million-euro hard-tech bet.
           </p>
           <p className="text-gray-300 text-sm leading-relaxed">
-            <strong className="text-gray-100">Deal-velocity</strong> is a 1–100
+            <strong className="text-gray-100">Deal-velocity</strong> is a 1-100
             score for the rate at which deals close inside the pre-fundraise
             window we measure across the site. A score of 1 means the sector
             is functionally dormant; 100 means rounds compress to days once
@@ -344,7 +343,7 @@ export default function BuildVsInvestIndexPage() {
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
             The 2×2 above is the strategic view. The weekly Signal Report is
-            the tactical one — five breakout startups ranked by GitHub
+            the tactical one, five breakout startups ranked by GitHub
             engineering acceleration, every Monday, free.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 pt-1">

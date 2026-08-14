@@ -6,9 +6,9 @@ const SITE = "https://signals.gitdealflow.com";
 const fw = getFrameworkPositioning("vercel-ai-sdk")!;
 
 const TITLE =
-  "GitDealFlow for the Vercel AI SDK — Ship VC Signal Features in Next.js";
+  "GitDealFlow for the Vercel AI SDK, Ship VC Signal Features in Next.js";
 const DESCRIPTION =
-  "Drop GitDealFlow into a Vercel AI SDK tool() with Zod-validated args. Server Components, Route Handlers, Server Actions, AI Gateway routing — all five skills, edge-safe, free A2A endpoint, no auth.";
+  "Drop GitDealFlow into a Vercel AI SDK tool() with Zod-validated args. Server Components, Route Handlers, Server Actions, AI Gateway routing, all five skills, edge-safe, free A2A endpoint, no auth.";
 
 export const metadata: Metadata = {
   title: TITLE,

@@ -17,7 +17,7 @@ export default function TransparencyPage() {
     "@context": "https://schema.org",
     "@type": "WebPage",
     "@id": `${SITE}/transparency`,
-    name: "Annual Transparency Report — VC Deal Flow Signal",
+    name: "Annual Transparency Report, VC Deal Flow Signal",
     description: metadata.description,
     inLanguage: "en-US",
     isAccessibleForFree: true,
@@ -25,7 +25,7 @@ export default function TransparencyPage() {
     dateModified: ASOF,
     mainEntity: {
       "@type": "Report",
-      name: "VC Deal Flow Signal — Annual Transparency Report 2026",
+      name: "VC Deal Flow Signal, Annual Transparency Report 2026",
       datePublished: ASOF,
       dateModified: ASOF,
       license: "https://creativecommons.org/licenses/by/4.0/",
@@ -90,7 +90,7 @@ export default function TransparencyPage() {
           <h2 className="text-base font-semibold text-gray-100 mb-3">Standing policies</h2>
           <ul className="list-disc list-outside ml-5 space-y-1.5 text-gray-200 text-sm">
             <li>We require valid legal process for any subscriber-data request and we challenge overbroad requests.</li>
-            <li>We notify the affected user before complying — unless prohibited by court order or there is a clear and imminent risk of physical harm.</li>
+            <li>We notify the affected user before complying, unless prohibited by court order or there is a clear and imminent risk of physical harm.</li>
             <li>Median content-takedown response time: 72 hours. Frameworks honored: DMCA, GDPR Art. 17 (right to erasure), EU Digital Services Act.</li>
             <li>Breach notification SLA: 72 hours from confirmed breach (GDPR Art. 33).</li>
             <li>Law-enforcement contact appeals: <a className="text-sky-400 hover:underline" href="mailto:signals@gitdealflow.com?subject=Data%20request%20appeal">signals@gitdealflow.com</a>.</li>

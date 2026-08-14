@@ -17,11 +17,11 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 
 export const metadata: Metadata = {
-  title: "Trending Startups — Top Engineering Acceleration Across All Sectors",
+  title: "Trending Startups, Top Engineering Acceleration Across All Sectors",
   description:
-    "The top 20 trending startups ranked by GitHub engineering acceleration across all sectors. Commit velocity spikes, contributor growth, and breakout signals — updated weekly.",
+    "The top 20 trending startups ranked by GitHub engineering acceleration across all sectors. Commit velocity spikes, contributor growth, and breakout signals, updated weekly.",
   openGraph: {
-    title: "Trending Startups — Top Engineering Acceleration",
+    title: "Trending Startups, Top Engineering Acceleration",
     description:
       "Top 20 startups ranked by GitHub engineering acceleration across all sectors. Updated weekly.",
     type: "article",
@@ -29,7 +29,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Trending Startups — Top Engineering Acceleration",
+    title: "Trending Startups, Top Engineering Acceleration",
     description:
       "Top 20 startups ranked by GitHub engineering acceleration across all sectors.",
   },
@@ -100,7 +100,7 @@ export default function TrendingPage() {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/trending#webpage",
         url: "https://signals.gitdealflow.com/trending",
-        name: `Trending Startups — Top Engineering Acceleration, ${period.name}`,
+        name: `Trending Startups, Top Engineering Acceleration, ${period.name}`,
         description: `Top 20 startups across all sectors ranked by GitHub engineering acceleration in ${period.name}.`,
         inLanguage: "en-US",
         isAccessibleForFree: true,
@@ -111,7 +111,7 @@ export default function TrendingPage() {
       },
       {
         "@type": "Article",
-        headline: `Trending Startups — Top Engineering Acceleration, ${period.name}`,
+        headline: `Trending Startups, Top Engineering Acceleration, ${period.name}`,
         description: `Top 20 startups across all sectors ranked by GitHub engineering acceleration in ${period.name}.`,
         author: {
           "@type": "Organization",
@@ -128,7 +128,7 @@ export default function TrendingPage() {
           "@type": "ListItem",
           position: i + 1,
           name: s.name,
-          description: `${s.description} — ${s.commitVelocityChange} commit velocity, ${s.contributors} contributors`,
+          description: `${s.description}, ${s.commitVelocityChange} commit velocity, ${s.contributors} contributors`,
           url: s.githubUrl,
         })),
       },
@@ -196,7 +196,7 @@ export default function TrendingPage() {
         {/* Header */}
         <header className="mb-8 max-w-3xl">
           <p className="text-sky-400 text-sm font-medium mb-2 uppercase tracking-wider">
-            {period.name} — Cross-Sector
+            {period.name}, Cross-Sector
           </p>
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
             Trending Startups by Engineering Acceleration
@@ -204,7 +204,7 @@ export default function TrendingPage() {
           <p className="text-gray-400 text-base leading-relaxed">
             The top 20 startups across all {Object.keys(sectorCounts).length}{" "}
             sectors showing the highest GitHub engineering acceleration this
-            period. Ranked by commit velocity change — the rate at which
+            period. Ranked by commit velocity change, the rate at which
             engineering activity is accelerating relative to baseline. These
             patterns have historically preceded fundraise announcements by six
             to twelve weeks.
@@ -240,7 +240,7 @@ export default function TrendingPage() {
 
         {/* Charts */}
         <section className="mb-10 grid grid-cols-1 sm:grid-cols-2 gap-6" aria-label="Trending signal charts">
-          <VelocityBar startups={top20} title="Top Trending — Velocity Change" />
+          <VelocityBar startups={top20} title="Top Trending, Velocity Change" />
           <SignalDistribution startups={top20} sectorName="trending" />
         </section>
 
@@ -299,7 +299,7 @@ export default function TrendingPage() {
           </div>
         </section>
 
-        {/* "More reading" routes — demoted below the data (was above it) */}
+        {/* "More reading" routes, demoted below the data (was above it) */}
         <section className="mb-10 rounded-2xl border border-sky-700/30 bg-sky-950/20 p-6 sm:p-8">
           <p className="text-sky-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">
             Start with the highest-intent routes

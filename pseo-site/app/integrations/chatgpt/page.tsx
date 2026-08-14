@@ -10,9 +10,9 @@ const GPT_URL =
 const GPT_URL_IS_LIVE = true;
 
 const TITLE =
-  "Use VC Deal Flow Signal in ChatGPT — GitHub VC Signal GPT";
+  "Use VC Deal Flow Signal in ChatGPT, GitHub VC Signal GPT";
 const DESCRIPTION =
-  "Add the GitHub VC Signal GPT to ChatGPT in one click. Public OpenAPI Action calling signals.gitdealflow.com — find startups whose engineering is accelerating before they raise. Five tools across 15 sectors, weekly refresh, no auth, no setup.";
+  "Add the GitHub VC Signal GPT to ChatGPT in one click. Public OpenAPI Action calling signals.gitdealflow.com, find startups whose engineering is accelerating before they raise. Five tools across 15 sectors, weekly refresh, no auth, no setup.";
 
 export const metadata: Metadata = {
   title: TITLE,
@@ -47,7 +47,7 @@ const TOOLS: { name: string; summary: string }[] = [
   {
     name: "getSignalsSummary",
     summary:
-      "Tiny dataset metadata snapshot — current period, sector and startup counts, last refresh timestamp. Cheap; the GPT calls it once per session to orient.",
+      "Tiny dataset metadata snapshot, current period, sector and startup counts, last refresh timestamp. Cheap; the GPT calls it once per session to orient.",
   },
   {
     name: "getMethodology",
@@ -59,7 +59,7 @@ const TOOLS: { name: string; summary: string }[] = [
 const HOW_TO_STEPS = [
   {
     name: "Open the GPT",
-    text: "Go to chatgpt.com (Plus, Team, Enterprise, or Edu) and click the GitHub VC Signal GPT card. The Action is already configured against signals.gitdealflow.com — no setup, no auth, no install.",
+    text: "Go to chatgpt.com (Plus, Team, Enterprise, or Edu) and click the GitHub VC Signal GPT card. The Action is already configured against signals.gitdealflow.com, no setup, no auth, no install.",
   },
   {
     name: "Ask a deal-flow question",
@@ -71,11 +71,11 @@ const HOW_TO_STEPS = [
   },
   {
     name: "Drill into a single startup",
-    text: "Pick a name from any list and ask 'Tell me more about <name>'. The GPT calls getStartupSignal and returns the full profile — stage, geography, velocity, signal type, GitHub URL, optional website and LinkedIn.",
+    text: "Pick a name from any list and ask 'Tell me more about <name>'. The GPT calls getStartupSignal and returns the full profile, stage, geography, velocity, signal type, GitHub URL, optional website and LinkedIn.",
   },
   {
     name: "Cite in your memo",
-    text: "Ask the GPT to format the data as a deal memo. It will paste the citation block automatically — VC Deal Flow Signal (signals.gitdealflow.com), period name, methodology link, SSRN preprint 6606558.",
+    text: "Ask the GPT to format the data as a deal memo. It will paste the citation block automatically, VC Deal Flow Signal (signals.gitdealflow.com), period name, methodology link, SSRN preprint 6606558.",
   },
 ];
 
@@ -86,7 +86,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "What's the underlying API?",
-    a: "A public OpenAPI 3.1 Action at signals.gitdealflow.com/api/actions/openapi.json. Four GET endpoints — /api/signals.json, /api/signal, /api/changelog.json, /llms-full.txt. No authentication. Cached at the edge with s-maxage=3600. The same backend powers the MCP server (npm @gitdealflow/mcp-signal) and every other surface, so signal classifications are identical across ChatGPT, Claude.ai, Cursor, and Mistral Le Chat.",
+    a: "A public OpenAPI 3.1 Action at signals.gitdealflow.com/api/actions/openapi.json. Four GET endpoints, /api/signals.json, /api/signal, /api/changelog.json, /llms-full.txt. No authentication. Cached at the edge with s-maxage=3600. The same backend powers the MCP server (npm @gitdealflow/mcp-signal) and every other surface, so signal classifications are identical across ChatGPT, Claude.ai, Cursor, and Mistral Le Chat.",
   },
   {
     q: "How fresh is the data?",
@@ -98,15 +98,15 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "Why GitHub specifically?",
-    a: "For venture-stage software companies, the engineering org IS the company. Hiring → commits. Customer demand → infrastructure buildout → new repos. Pivot → framework migration. Fundraising → engineering hiring burst. The signal is upstream of the announcement. This is engineering signal only — pair with Crunchbase / Harmonic / your CRM for funding, revenue, headcount.",
+    a: "For venture-stage software companies, the engineering org IS the company. Hiring → commits. Customer demand → infrastructure buildout → new repos. Pivot → framework migration. Fundraising → engineering hiring burst. The signal is upstream of the announcement. This is engineering signal only, pair with Crunchbase / Harmonic / your CRM for funding, revenue, headcount.",
   },
   {
     q: "Will the GPT hallucinate startups?",
-    a: "The system prompt explicitly forbids inventing startups. When you ask about a company not in the tracked universe of ~369, the Action returns status: 'no_data' and the GPT surfaces a CTA pointing to signals.gitdealflow.com. If you spot any hallucinations, email signals@gitdealflow.com — we'll tighten the instructions.",
+    a: "The system prompt explicitly forbids inventing startups. When you ask about a company not in the tracked universe of 350+, the Action returns status: 'no_data' and the GPT surfaces a CTA pointing to signals.gitdealflow.com. If you spot any hallucinations, email signals@gitdealflow.com, we'll tighten the instructions.",
   },
   {
     q: "Can I use the same data without ChatGPT?",
-    a: "Yes — five surfaces. (1) Claude.ai connector: native MCP at signals.gitdealflow.com/api/mcp/rpc. (2) Claude Desktop / Cursor / Cline / Continue: one-line install via npx -y @gitdealflow/mcp-signal (Glama A-Tier 4.9/5.0). (3) Any stdio MCP client: npx -y @gitdealflow/mcp-signal. (4) Mistral Le Chat: Custom MCP Connector at signals.gitdealflow.com/api/mcp/rpc. (5) Raw API: signals.gitdealflow.com/api/signals.json (JSON), /api/signals.csv (CSV), /feed.xml (RSS).",
+    a: "Yes, five surfaces. (1) Claude.ai connector: native MCP at signals.gitdealflow.com/api/mcp/rpc. (2) Claude Desktop / Cursor / Cline / Continue: one-line install via npx -y @gitdealflow/mcp-signal (Glama A-Tier 4.9/5.0). (3) Any stdio MCP client: npx -y @gitdealflow/mcp-signal. (4) Mistral Le Chat: Custom MCP Connector at signals.gitdealflow.com/api/mcp/rpc. (5) Raw API: signals.gitdealflow.com/api/signals.json (JSON), /api/signals.csv (CSV), /feed.xml (RSS).",
   },
   {
     q: "How do I cite this in a memo?",
@@ -114,7 +114,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "Is there a privacy policy?",
-    a: "Yes — gitdealflow.com/privacy. The Action is read-only, queries no PII, and stores nothing server-side beyond Vercel access logs. ChatGPT's Action sandbox enforces the auth-type-None setting (no headers, no cookies, no token leakage to our backend).",
+    a: "Yes, gitdealflow.com/privacy. The Action is read-only, queries no PII, and stores nothing server-side beyond Vercel access logs. ChatGPT's Action sandbox enforces the auth-type-None setting (no headers, no cookies, no token leakage to our backend).",
   },
 ];
 
@@ -182,7 +182,7 @@ const jsonLd = {
       applicationCategory: "BusinessApplication",
       operatingSystem: "Web (ChatGPT)",
       description:
-        "ChatGPT GPT exposing the VC Deal Flow Signal dataset as a public OpenAPI Action. Find startups whose engineering is accelerating before they raise — six tools, 15 sectors, weekly refresh, no auth.",
+        "ChatGPT GPT exposing the VC Deal Flow Signal dataset as a public OpenAPI Action. Find startups whose engineering is accelerating before they raise, six tools, 15 sectors, weekly refresh, no auth.",
       offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
       author: {
         "@type": "Organization",
@@ -229,7 +229,7 @@ export default function ChatGPTIntegrationPage() {
           directly into ChatGPT. Ask &quot;who&apos;s trending in AI/ML this
           week?&quot; or &quot;is Supabase accelerating?&quot; and get a ranked
           answer with commit-velocity changes, contributor deltas, signal
-          classification, and a citation block — all powered by a public
+          classification, and a citation block, all powered by a public
           OpenAPI Action against signals.gitdealflow.com. No install. No auth.
           Five tools across 15 sectors, refreshed every Monday.
         </p>
@@ -367,7 +367,7 @@ export default function ChatGPTIntegrationPage() {
                 >
                   Mistral Le Chat
                 </Link>{" "}
-                — Custom MCP Connector at{" "}
+Custom MCP Connector at{" "}
                 <code className="font-mono text-gray-300 break-all">
                   {SITE}/api/mcp/rpc
                 </code>
@@ -379,7 +379,7 @@ export default function ChatGPTIntegrationPage() {
                 >
                   Glama
                 </Link>{" "}
-                — A-Tier MCP catalog listing (4.9/5.0 across 6 tools). One-line
+A-Tier MCP catalog listing (4.9/5.0 across 6 tools). One-line
                 install via{" "}
                 <code className="font-mono text-gray-300 text-xs">npx -y @gitdealflow/mcp-signal</code>{" "}
                 for Claude Desktop, Cursor, Cline, Continue.
@@ -391,18 +391,18 @@ export default function ChatGPTIntegrationPage() {
                 >
                   npm @gitdealflow/mcp-signal
                 </Link>{" "}
-                — stdio install for any MCP-compatible client. Run{" "}
+stdio install for any MCP-compatible client. Run{" "}
                 <code className="font-mono text-gray-300">
                   npx -y @gitdealflow/mcp-signal
                 </code>
                 .
               </li>
               <li>
-                Claude.ai connector — coming soon via Anthropic&apos;s
+                Claude.ai connector, coming soon via Anthropic&apos;s
                 Connectors Directory. Same MCP server.
               </li>
               <li>
-                Raw API —{" "}
+                Raw API, {" "}
                 <Link
                   href={`${SITE}/api/signals.json`}
                   className="text-sky-500 hover:text-sky-400 font-medium"
@@ -441,7 +441,7 @@ export default function ChatGPTIntegrationPage() {
             Stuck or hit a hallucination?
           </h2>
           <p className="text-gray-400 text-sm mb-5 max-w-lg mx-auto">
-            Email signals@gitdealflow.com with the prompt that broke it — replies
+            Email signals@gitdealflow.com with the prompt that broke it, replies
             within 24 hours, EU business time. The system prompt is tightened
             iteratively from real failures.
           </p>

@@ -14,12 +14,12 @@ import { AgentSummary } from "@/components/AgentSummary";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 
 export const metadata: Metadata = {
-  title: "Predict Startup Breakouts — Free GitHub Signal + Scout Game",
+  title: "Predict Startup Breakouts, Free GitHub Signal + Scout Game",
   description:
     "Paste any startup GitHub org. Get a breakout signal in 2 seconds, then make your own call: raise in 6 months? Earn scout rank from Curious to Oracle. Top 1% get featured.",
   alternates: { canonical: "/predict" },
   openGraph: {
-    title: "Predict Startup Breakouts — Free GitHub Signal + Scout Game",
+    title: "Predict Startup Breakouts, Free GitHub Signal + Scout Game",
     description:
       "See the signal, make the call, climb the scout ladder. Top 1% earn an Oracle badge.",
     url: "https://signals.gitdealflow.com/predict",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     site: "@sipiteno",
-    title: "Predict Startup Breakouts — Free GitHub Signal + Scout Game",
+    title: "Predict Startup Breakouts, Free GitHub Signal + Scout Game",
     description:
       "See the signal, make the call, climb the scout ladder. Top 1% earn an Oracle badge.",
     images: ["https://signals.gitdealflow.com/api/og/signal-card"],
@@ -64,7 +64,7 @@ export default async function PredictPage({
     "@graph": [
       {
         "@type": "WebApplication",
-        name: "GitDealFlow Predict — Startup Breakout Signal",
+        name: "GitDealFlow Predict, Startup Breakout Signal",
         url: "https://signals.gitdealflow.com/predict",
         applicationCategory: "BusinessApplication",
         operatingSystem: "Web",
@@ -113,7 +113,7 @@ export default async function PredictPage({
       },
       {
         "@type": "WebPage",
-        name: "GitDealFlow Predict — Startup Breakout Signal",
+        name: "GitDealFlow Predict, Startup Breakout Signal",
         url: "https://signals.gitdealflow.com/predict",
         speakable: {
           "@type": "SpeakableSpecification",
@@ -166,7 +166,7 @@ export default async function PredictPage({
             name: "Can I delete a prediction after submitting it?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "No. Predictions are immutable once submitted — that is the point. The track record is meaningful precisely because past calls cannot be edited after the fact.",
+              text: "No. Predictions are immutable once submitted, that is the point. The track record is meaningful precisely because past calls cannot be edited after the fact.",
             },
           },
           {
@@ -197,7 +197,7 @@ export default async function PredictPage({
             New · Open prediction market
           </p>
           <p className="text-gray-200 text-sm">
-            Series A Race 2026 — which 5 GitHub-flagged startups raises first by EOY?{" "}
+            Series A Race 2026, which 5 GitHub-flagged startups raises first by EOY?{" "}
             <span className="text-emerald-400 group-hover:underline">
               gitdealflow.com/markets/series-a-race-2026
             </span>
@@ -219,7 +219,7 @@ export default async function PredictPage({
         </Link>
         <header className="mb-8">
           <p className="text-sky-400 text-sm font-medium mb-3 uppercase tracking-wider">
-            Free tool — no signup
+            Free tool, no signup
           </p>
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
             Get a Startup&rsquo;s Breakout Signal in 2 Seconds
@@ -233,10 +233,10 @@ export default async function PredictPage({
         </header>
 
         <AgentSummary
-          tldr={`Predict is the forward-looking counterpart to GitHub Receipts: pick any GitHub org, call whether they raise a Series A in 6 months with a 50-99% confidence value, and we auto-resolve at the 6-month window. Free tier: 3 predictions / month. Same engine reads our ${period.name} dataset of ~369 venture-backed startups across 15 sectors. Public scout profile at /s/{handle}, leaderboard at /leaderboard.`}
+          tldr={`Predict is the forward-looking counterpart to GitHub Receipts: pick any GitHub org, call whether they raise a Series A in 6 months with a 50-99% confidence value, and we auto-resolve at the 6-month window. Free tier: 3 predictions / month. Same engine reads our ${period.name} dataset of 350+ venture-backed startups across 15 sectors. Public scout profile at /s/{handle}, leaderboard at /leaderboard.`}
           pageUrl="https://signals.gitdealflow.com/predict"
           asOf={getDataLastModified().toISOString().slice(0, 10)}
-          citeAs={`VC Deal Flow Signal — Predict (signals.gitdealflow.com/predict), ${period.name}.`}
+          citeAs={`VC Deal Flow Signal, Predict (signals.gitdealflow.com/predict), ${period.name}.`}
           facts={[
             {
               claim:
@@ -261,7 +261,7 @@ export default async function PredictPage({
 
         <section className="mb-8 rounded-xl border border-emerald-500/20 bg-emerald-500/5 p-5 sm:p-6">
           <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">
-            What you get the moment you play — free
+            What you get the moment you play, free
           </p>
           <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2 text-gray-300 text-sm leading-relaxed">
             <li className="flex items-start gap-2">
@@ -279,7 +279,7 @@ export default async function PredictPage({
                 <span className="text-gray-100 font-medium">
                   Free Weekly Signal Report
                 </span>{" "}
-                mailed every Monday — 10 breakout-tagged startups with raw GitHub metrics.
+                mailed every Monday, 10 breakout-tagged startups with raw GitHub metrics.
               </span>
             </li>
             <li className="flex items-start gap-2">
@@ -288,7 +288,7 @@ export default async function PredictPage({
                 <span className="text-gray-100 font-medium">
                   Public scout profile
                 </span>{" "}
-                at <code className="text-sky-400">/s/[handle]</code> — shareable track record, auto-resolved calls, reputation ladder.
+                at <code className="text-sky-400">/s/[handle]</code>: shareable track record, auto-resolved calls, reputation ladder.
               </span>
             </li>
             <li className="flex items-start gap-2">
@@ -315,7 +315,7 @@ export default async function PredictPage({
                 <span className="text-gray-100 font-medium">
                   SSRN-indexed methodology
                 </span>{" "}
-                — peer-reviewable paper at{" "}
+peer-reviewable paper at{" "}
                 <a
                   href="https://ssrn.com/abstract=6606558"
                   className="text-sky-400 hover:text-sky-300 underline underline"
@@ -330,7 +330,7 @@ export default async function PredictPage({
           </ul>
           <p className="mt-4 text-xs text-gray-400">
             All of it free, no card. Paste an org below to see its live breakout
-            signal — then make your own call.
+            signal, then make your own call.
           </p>
         </section>
 
@@ -404,7 +404,7 @@ export default async function PredictPage({
           <p className="mt-5 text-xs text-gray-400">
             First 100 scouts to submit a prediction earn a permanent{" "}
             <strong className="text-emerald-400">Founder Scout</strong> badge on
-            their public profile. Seeding in progress — be in the first 100.
+            their public profile. Seeding in progress, be in the first 100.
           </p>
         </section>
 

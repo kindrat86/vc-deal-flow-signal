@@ -7,14 +7,14 @@ import WalkthroughQuickRedirect from "@/components/WalkthroughQuickRedirect";
 
 export const dynamic = "force-static";
 
-// Brunson Expert Secrets §3 Ch 15 + §4 Ch 19 — Webinar Variations + Test, Test, Test.
+// Brunson Expert Secrets §3 Ch 15 + §4 Ch 19, Webinar Variations + Test, Test, Test.
 //
 // /walkthrough/quick is the A/B router between:
 //   • /walkthrough/5min (~800 words, ~5-min read)
 //   • /walkthrough/90s  (~250 words, ~90-sec read)
 //
 // Bucket assignment is 50/50, sticky in localStorage so a returning
-// visitor always lands on the same variant — anything else would
+// visitor always lands on the same variant, anything else would
 // pollute conversion data.
 //
 // SSR-safe pattern: the page renders a static "decision shell" with
@@ -34,18 +34,18 @@ export const dynamic = "force-static";
 // no cold start.
 
 export const metadata: Metadata = {
-  title: "The Walkthrough — pick your length",
+  title: "The Walkthrough, pick your length",
   description:
     "Two variants of the same argument: 90 seconds (~250 words) or 5 minutes (~800 words). Pick the one that fits your day. The 12-minute long-form is also linked.",
   alternates: { canonical: "/walkthrough/quick" },
   openGraph: {
-    title: "The Walkthrough — 90 seconds or 5 minutes",
+    title: "The Walkthrough, 90 seconds or 5 minutes",
     description:
       "Two lengths of the same argument. 90 seconds, 5 minutes, or 12 minutes. Pick what fits your day.",
     url: "https://signals.gitdealflow.com/walkthrough/quick",
     type: "article",
   },
-  // Don't index the router — both variants are the canonical surfaces.
+  // Don't index the router, both variants are the canonical surfaces.
   // We send users here from emails / quiz CTAs / Reddit ads via UTM.
   robots: {
     index: false,
@@ -62,14 +62,14 @@ export default function WalkthroughQuickPage() {
       />
       <AgentMirrorLinks path="/walkthrough/quick" />
 
-      {/* Client-side bucket assignment + redirect. Renders nothing visible —
+      {/* Client-side bucket assignment + redirect. Renders nothing visible -
           fires on mount within the same paint as the static fallback. */}
       <WalkthroughQuickRedirect />
 
       <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-7">
         <header className="space-y-3">
           <p className="text-sky-400 text-xs font-semibold uppercase tracking-wider">
-            The Walkthrough — pick a length
+            The Walkthrough, pick a length
           </p>
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 leading-[1.1] tracking-tight">
             Routing you to the right length…
@@ -107,7 +107,7 @@ export default function WalkthroughQuickPage() {
               The condensed version
             </h2>
             <p className="text-gray-400 text-sm leading-relaxed mt-2">
-              The full argument with four named closes, full stack, story —
+              The full argument with four named closes, full stack, story -
               just compressed to five minutes flat.
             </p>
           </Link>

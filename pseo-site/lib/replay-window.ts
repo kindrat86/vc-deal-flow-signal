@@ -1,15 +1,15 @@
 /**
- * Brunson Live-Replay Pressure Mechanic — cohort-window calculator.
+ * Brunson Live-Replay Pressure Mechanic, cohort-window calculator.
  *
  * Models the Perfect Webinar's open/close cycle as a recurring weekly cohort:
  *
  *   Mon 06:00 UTC  →  doors open. Live replay + fast-action bonuses available.
  *   Wed 23:59 UTC  →  fast-action bonuses expire. Founding rate still locked.
  *   Thu 23:59 UTC  →  cart closes. €9.97/mo founding link returns "doors closed".
- *   Fri – Sun      →  doors closed. Free Acceleration Watch signup still open.
+ *   Fri - Sun      →  doors closed. Free Acceleration Watch signup still open.
  *   Mon 06:00 UTC  →  next cohort begins.
  *
- * Pure deterministic function — same `now` always returns the same window.
+ * Pure deterministic function, same `now` always returns the same window.
  * Server- and client-safe; no side effects, no timezone assumptions beyond UTC.
  *
  * Brunson Expert Secrets Ch 21 ("Test, Test, Test") + Ch 14 ("The Perfect
@@ -18,9 +18,9 @@
  */
 
 export type ReplayPhase =
-  | "fast-action" // Mon 06:00 UTC – Wed 23:59 UTC: bonuses + founding rate
-  | "last-hours" //  Thu 00:00 UTC – Thu 23:59 UTC: bonuses gone, doors closing
-  | "closed"; //     Fri 00:00 UTC – Mon 05:59 UTC: doors shut, free list only
+  | "fast-action" // Mon 06:00 UTC - Wed 23:59 UTC: bonuses + founding rate
+  | "last-hours" //  Thu 00:00 UTC - Thu 23:59 UTC: bonuses gone, doors closing
+  | "closed"; //     Fri 00:00 UTC - Mon 05:59 UTC: doors shut, free list only
 
 export interface ReplayWindow {
   phase: ReplayPhase;
@@ -28,7 +28,7 @@ export interface ReplayWindow {
   deadline: Date;
   /** Human-readable label for the deadline. */
   deadlineLabel: string;
-  /** When the next cohort opens (Mon 06:00 UTC) — same as deadline if currently closed. */
+  /** When the next cohort opens (Mon 06:00 UTC), same as deadline if currently closed. */
   nextOpens: Date;
   /** Stable ISO-week identifier for this cohort: e.g. "2026-W19". */
   replayId: string;
@@ -56,7 +56,7 @@ function addDays(d: Date, n: number): Date {
   return out;
 }
 
-// ISO 8601 week — used as the cohort identifier so each week is uniquely tagged.
+// ISO 8601 week, used as the cohort identifier so each week is uniquely tagged.
 function isoWeekId(d: Date): string {
   const date = new Date(
     Date.UTC(d.getUTCFullYear(), d.getUTCMonth(), d.getUTCDate()),

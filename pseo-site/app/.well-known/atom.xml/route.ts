@@ -1,5 +1,5 @@
 /**
- * /.well-known/atom.xml — alias for /atom.xml.
+ * /.well-known/atom.xml, alias for /atom.xml.
  *
  * Some discovery agents and feed-aware bots probe `/.well-known/atom.xml`
  * (mirrored alongside the other /.well-known surfaces) before falling back

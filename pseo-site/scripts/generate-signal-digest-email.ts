@@ -1,7 +1,7 @@
 /**
  * Render the weekly Signal Digest email from data/startups.json.
  *
- * Sibling to generate-signal-report.ts — same data source, same ranking logic,
+ * Sibling to generate-signal-report.ts, same data source, same ranking logic,
  * different output surface (HTML email instead of blog post).
  *
  * Usage:
@@ -88,7 +88,7 @@ const EMOJI = /[\u2190-\u21ff\u2300-\u27bf\u2b00-\u2bff\ufe0f\u200d\u{1f000}-\u{
 const PROMO_URL = /\b(?:https?:\/\/|www\.)\S+/gi;
 // Group-/channel-recruitment markers (Chinese QQ/WeChat groups, Telegram/Discord invites).
 const GROUP_SPAM = /(群|QQ|微信|公众号|加入|加群|t\.me\/|telegram|discord\.gg)/i;
-// Scripts we never want in this email — strong junk signal, never legit here.
+// Scripts we never want in this email, strong junk signal, never legit here.
 const NON_LATIN_SCRIPT = /[\u3000-\u9fff\uac00-\ud7af\uff00-\uffef\u0400-\u04ff\u0600-\u06ff]/;
 const MAX_DESC = 140;
 
@@ -103,7 +103,7 @@ function sanitizeDescription(raw: string): string {
     .trim();
   if (!t) return "";
   if (GROUP_SPAM.test(t)) return ""; // chat-group recruitment spam
-  if (NON_LATIN_SCRIPT.test(t)) return ""; // CJK/Cyrillic/Arabic-dominant — not Marcus-facing
+  if (NON_LATIN_SCRIPT.test(t)) return ""; // CJK/Cyrillic/Arabic-dominant, not Marcus-facing
   if (t.length > MAX_DESC) {
     t = t.slice(0, MAX_DESC).replace(/\s+\S*$/, "").trim() + "…";
   }
@@ -219,7 +219,7 @@ function main() {
     heroHeadline: buildHeadline(hottestSectors),
     heroIntro: `We tracked ${allStartups.length} startups across ${sectorStats.length} sectors this week. ${topStartups
       .filter((s) => parseVelocityChange(s.commitVelocityChange) >= 100)
-      .length} of them more than doubled how fast they're shipping code versus their own normal pace — the kind of jump that usually shows up 3–6 weeks before a funding announcement.`,
+      .length} of them more than doubled how fast they're shipping code versus their own normal pace, the kind of jump that usually shows up 3-6 weeks before a funding announcement.`,
     statStartups: allStartups.length,
     statSectors: sectorStats.length,
     statTopMover: topStartups[0]?.commitVelocityChange ?? "",

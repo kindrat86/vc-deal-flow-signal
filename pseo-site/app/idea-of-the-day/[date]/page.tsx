@@ -22,7 +22,7 @@ interface PageProps {
 
 export const dynamic = "force-static";
 export const dynamicParams = false;
-// No `revalidate` — same reason as the parent: ISR shape loses to the
+// No `revalidate`, same reason as the parent: ISR shape loses to the
 // `/[locale]/[topic]` catch-all under Next 16. The dated entries never
 // change after publish anyway, so static is the correct shape.
 
@@ -38,9 +38,9 @@ export async function generateMetadata({
   if (!idea) return {};
 
   const url = `${SITE}/idea-of-the-day/${idea.slug}`;
-  const titleBase = `Idea of the day — ${formatLongDate(idea.date)}`;
+  const titleBase = `Idea of the day, ${formatLongDate(idea.date)}`;
   return {
-    title: `${titleBase} — ${idea.headline}`,
+    title: `${titleBase}, ${idea.headline}`,
     description: idea.hook,
     alternates: { canonical: `/idea-of-the-day/${idea.slug}` },
     openGraph: {
@@ -91,7 +91,7 @@ function buildJsonLd(idea: IdeaOfTheDay, lastModified: string) {
         ].join(", "),
         about: {
           "@type": "Thing",
-          name: `${idea.repo.sector} — ${idea.repo.signalType}`,
+          name: `${idea.repo.sector}, ${idea.repo.signalType}`,
         },
         publisher: {
           "@type": "Organization",
@@ -135,7 +135,7 @@ function buildJsonLd(idea: IdeaOfTheDay, lastModified: string) {
             name: `What signal is this idea reading?`,
             acceptedAnswer: {
               "@type": "Answer",
-              text: `${idea.repo.signalType} on ${idea.repo.name} — ${idea.repo.commitVelocity14d.toLocaleString()} commits over 14 days at ${idea.repo.commitVelocityChange} change, ${idea.repo.contributors} contributors (${idea.repo.contributorGrowth}). See the full reading below.`,
+              text: `${idea.repo.signalType} on ${idea.repo.name}, ${idea.repo.commitVelocity14d.toLocaleString()} commits over 14 days at ${idea.repo.commitVelocityChange} change, ${idea.repo.contributors} contributors (${idea.repo.contributorGrowth}). See the full reading below.`,
             },
           },
           {
@@ -225,13 +225,13 @@ export default async function IdeaOfTheDayDatedPage({ params }: PageProps) {
         </header>
 
         <AgentSummary
-          tldr={`${idea.headline}. Signal: ${idea.repo.signalType} on ${idea.repo.name} — ${idea.repo.commitVelocity14d.toLocaleString()} commits / 14d at ${idea.repo.commitVelocityChange}, ${idea.repo.contributors} contributors. Builder-side reframing follows below.`}
+          tldr={`${idea.headline}. Signal: ${idea.repo.signalType} on ${idea.repo.name}, ${idea.repo.commitVelocity14d.toLocaleString()} commits / 14d at ${idea.repo.commitVelocityChange}, ${idea.repo.contributors} contributors. Builder-side reframing follows below.`}
           pageUrl={url}
           asOf={idea.date}
-          citeAs={`VC Deal Flow Signal — Idea of the Day, ${formatLongDate(idea.date)}. ${url}`}
+          citeAs={`VC Deal Flow Signal, Idea of the Day, ${formatLongDate(idea.date)}. ${url}`}
           facts={[
             {
-              claim: `Repo: ${idea.repo.name} (${idea.repo.stage}, ${idea.repo.geography}). Signal: ${idea.repo.signalType} — ${idea.repo.commitVelocity14d.toLocaleString()} commits over 14 days at ${idea.repo.commitVelocityChange}.`,
+              claim: `Repo: ${idea.repo.name} (${idea.repo.stage}, ${idea.repo.geography}). Signal: ${idea.repo.signalType}, ${idea.repo.commitVelocity14d.toLocaleString()} commits over 14 days at ${idea.repo.commitVelocityChange}.`,
               sourceUrl: idea.repo.githubUrl,
               sourceLabel: `${idea.repo.name} on GitHub`,
             },
@@ -412,7 +412,7 @@ export default async function IdeaOfTheDayDatedPage({ params }: PageProps) {
 
         <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-6">
           Published {idea.publishedAt}. This is a builder-side reading of a
-          public engineering signal — not investment advice, not an
+          public engineering signal, not investment advice, not an
           endorsement of any specific startup or build. Outcomes (if any) are
           recorded post-hoc on{" "}
           <Link href="/predicted" className="text-sky-300 hover:text-sky-200">

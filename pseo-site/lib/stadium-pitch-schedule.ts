@@ -1,10 +1,10 @@
 /**
- * Stadium Pitch — drop schedule + phase computation.
+ * Stadium Pitch, drop schedule + phase computation.
  *
  * Brunson Expert Secrets §1 Ch 20 (Stadium Pitch / Mass Movement). The 2026-05-09
  * Russell-Brunson V11 audit scored this chapter 88/100 with the note: "the
  * monthly written address has the content but lacks the event." The fix is to
- * wrap the existing /state-of-github page in moment mechanics — countdown to
+ * wrap the existing /state-of-github page in moment mechanics, countdown to
  * next drop, RSVP for the email at drop time, .ics calendar invite, and a
  * 48-hour live window after each drop.
  *
@@ -24,7 +24,7 @@ export const DROP_DAY_OF_WEEK = 3; // 0=Sun, 1=Mon, 2=Tue, 3=Wed
  */
 export const LIVE_WINDOW_MS = 48 * 60 * 60 * 1000;
 
-/** ISO offset constants — not exported; only used internally. */
+/** ISO offset constants, not exported; only used internally. */
 const ONE_DAY_MS = 24 * 60 * 60 * 1000;
 
 /**
@@ -81,10 +81,10 @@ export type StadiumPhase = "live" | "replay";
 /**
  * Drop-window phase relative to the most recent address.
  *
- * - "live"   — within LIVE_WINDOW_MS of the most recent published drop.
+ * - "live"  , within LIVE_WINDOW_MS of the most recent published drop.
  *              The page should banner "JUST DROPPED" with a countdown to
  *              the end of the live window.
- * - "replay" — outside the live window. The page should banner "REPLAY"
+ * - "replay", outside the live window. The page should banner "REPLAY"
  *              and re-anchor the countdown to the next drop.
  *
  * Returns the phase plus the next "transition" time (end of live window
@@ -106,7 +106,7 @@ export function getStadiumPhase(
   const nowMs = now.getTime();
 
   // Anchor "most recent drop" on the page-supplied publishDate when present
-  // — this matches the address actually rendered in the article body, even
+  //, this matches the address actually rendered in the article body, even
   // if the in-content drop date drifts slightly off the canonical first-Wed
   // schedule for a given month.
   const recentDrop = latestPublishDate
@@ -167,7 +167,7 @@ function pad2(n: number): string {
 /**
  * Reminder schedule relative to a drop time. Each entry is a "lead time
  * before the drop" plus the kind (which the email-builder uses to pick the
- * right copy). Order is irrelevant — caller skips any whose computed sendAt
+ * right copy). Order is irrelevant, caller skips any whose computed sendAt
  * is in the past.
  */
 export interface ReminderSlot {

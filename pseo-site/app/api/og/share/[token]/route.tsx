@@ -11,19 +11,19 @@ const KIND_COPY: Record<string, { eyebrow: string; headline: string; sub: string
   scout: {
     eyebrow: "SCOUT PROFILE · SHARED",
     headline: "A scout shared their track record.",
-    sub: "See which unicorns they called early — 7-day extended preview unlocked.",
+    sub: "See which unicorns they called early, 7-day extended preview unlocked.",
     accent: "#34d399",
   },
   predict: {
     eyebrow: "PREDICTION · SHARED",
     headline: "Someone locked in a public call.",
-    sub: "Will this GitHub org raise in 6 months? Your turn — make your own call.",
+    sub: "Will this GitHub org raise in 6 months? Your turn, make your own call.",
     accent: "#fbbf24",
   },
   "signal-card": {
     eyebrow: "WEEKLY BREAKOUTS · SHARED",
     headline: "This week's GitHub breakouts unlocked.",
-    sub: "Top startups by engineering acceleration — commit velocity, contributor growth.",
+    sub: "Top startups by engineering acceleration, commit velocity, contributor growth.",
     accent: "#0ea5e9",
   },
 };

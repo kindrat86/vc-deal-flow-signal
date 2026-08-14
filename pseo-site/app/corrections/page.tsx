@@ -14,7 +14,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Corrections Policy & Log",
     description:
-      "Public log of substantive corrections to research, dataset, and methodology pages — with date, scope, and reason.",
+      "Public log of substantive corrections to research, dataset, and methodology pages, with date, scope, and reason.",
     type: "article",
     url: `${SITE}/corrections`,
   },
@@ -32,7 +32,7 @@ interface Correction {
 
 // Real, verifiable corrections drawn from project-history facts. Each entry
 // must be (a) reproducible against git history or external indexer state, and
-// (b) substantive — typo fixes do not appear here.
+// (b) substantive, typo fixes do not appear here.
 const CORRECTIONS: Correction[] = [
   {
     date: "2026-04-26",
@@ -60,7 +60,7 @@ const CORRECTIONS: Correction[] = [
     what:
       "Pricing schema initially used the generic Product type, which triggered Google Search Console Merchant errors.",
     why:
-      "Google reserves Product schema for physical-goods commerce. Migrated to SoftwareApplication with offers[] array — same rich-result eligibility, no Merchant validation errors.",
+      "Google reserves Product schema for physical-goods commerce. Migrated to SoftwareApplication with offers[] array, same rich-result eligibility, no Merchant validation errors.",
   },
   {
     date: "2026-04-19",
@@ -84,7 +84,7 @@ const CORRECTIONS: Correction[] = [
   },
 ];
 
-const POLICY = `When we discover that anything we publish is wrong, we fix it in the source, log it on this page with the date and reason, and re-push the affected machine-readable surfaces (Schema.org JSON-LD, Crossref via SSRN, OpenAlex, sitemap lastmod). We do not silently rewrite history. If a correction is material — meaning it changes a number we have published — we add a versioned annotation to the changed page so retrieval pipelines can detect it.`;
+const POLICY = `When we discover that anything we publish is wrong, we fix it in the source, log it on this page with the date and reason, and re-push the affected machine-readable surfaces (Schema.org JSON-LD, Crossref via SSRN, OpenAlex, sitemap lastmod). We do not silently rewrite history. If a correction is material, meaning it changes a number we have published, we add a versioned annotation to the changed page so retrieval pipelines can detect it.`;
 
 export default function CorrectionsPage() {
   const jsonLd = {
@@ -93,7 +93,7 @@ export default function CorrectionsPage() {
       {
         "@type": "WebPage",
         "@id": `${SITE}/corrections#page`,
-        name: "Corrections Policy & Log — VC Deal Flow Signal",
+        name: "Corrections Policy & Log, VC Deal Flow Signal",
         url: `${SITE}/corrections`,
         inLanguage: "en-US",
         isPartOf: { "@id": `${SITE}/#website` },
@@ -131,7 +131,7 @@ export default function CorrectionsPage() {
             "@type": "Comment",
             "@id": `${SITE}/corrections#${c.date}`,
             datePublished: c.date,
-            name: `${c.scope} correction — ${c.surface}`,
+            name: `${c.scope} correction, ${c.surface}`,
             text: `${c.what} ${c.why}`,
             about: c.surfaceHref
               ? {
@@ -174,11 +174,11 @@ export default function CorrectionsPage() {
         >
           Every substantive correction to research, dataset, methodology, or
           schema appears here within seven days of the fix landing in
-          production — with the date, the surface, what changed, and why.
+          production, with the date, the surface, what changed, and why.
         </p>
         <p className="text-base text-gray-400 mb-10 leading-relaxed border-l-2 border-amber-700/40 pl-4 max-w-3xl">
           The honest move is to publish the limit before you find it. This log
-          exists so you can audit every change we&rsquo;ve ever made — not the
+          exists so you can audit every change we&rsquo;ve ever made, not the
           ones we&rsquo;d have picked to show you.
         </p>
 

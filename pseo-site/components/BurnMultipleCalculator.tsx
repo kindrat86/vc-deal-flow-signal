@@ -18,7 +18,7 @@ import { useRouter, useSearchParams } from "next/navigation";
  *   1-1.5  Great
  *   1.5-2  OK / typical
  *   2-3    Suspect
- *   > 3    Bad — most investors will pass
+ *   > 3    Bad, most investors will pass
  *
  * If net new ARR is zero or negative, the multiple is undefined and the
  * UI explains the failure mode (the team consumed cash without growing
@@ -90,8 +90,8 @@ function computeBurnMultiple(inputs: Inputs): ComputedResult {
       band: "undefined",
       bandLabel:
         endArr < startArr
-          ? "ARR shrank — burn multiple is undefined (the team consumed cash and the revenue base contracted)."
-          : "Flat ARR — burn multiple is undefined (the team consumed cash without growing the revenue base).",
+          ? "ARR shrank, burn multiple is undefined (the team consumed cash and the revenue base contracted)."
+          : "Flat ARR, burn multiple is undefined (the team consumed cash without growing the revenue base).",
     };
   }
 
@@ -101,19 +101,19 @@ function computeBurnMultiple(inputs: Inputs): ComputedResult {
 
   if (burnMultiple < 1) {
     band = "exceptional";
-    bandLabel = "Exceptional — top of class.";
+    bandLabel = "Exceptional, top of class.";
   } else if (burnMultiple <= 1.5) {
     band = "great";
-    bandLabel = "Great — investors will lean in.";
+    bandLabel = "Great, investors will lean in.";
   } else if (burnMultiple <= 2) {
     band = "ok";
-    bandLabel = "OK — typical for the stage.";
+    bandLabel = "OK, typical for the stage.";
   } else if (burnMultiple <= 3) {
     band = "suspect";
-    bandLabel = "Suspect — investors will dig into unit economics.";
+    bandLabel = "Suspect, investors will dig into unit economics.";
   } else {
     band = "bad";
-    bandLabel = "Bad — most growth-stage investors will pass.";
+    bandLabel = "Bad, most growth-stage investors will pass.";
   }
 
   return {
@@ -247,14 +247,14 @@ export function BurnMultipleCalculator() {
       <div className="mt-6 rounded-lg border border-slate-800 bg-slate-950/60 p-5 text-sm text-gray-400 space-y-2">
         <p>
           <span className="text-gray-300 font-medium">Sacks bands:</span>{" "}
-          {`<1× exceptional · 1–1.5× great · 1.5–2× OK · 2–3× suspect · >3× bad.`}
+          {`<1× exceptional · 1-1.5× great · 1.5-2× OK · 2-3× suspect · >3× bad.`}
           {" "}Bands tighten at growth stage and loosen at very early stage.
         </p>
         <p>
           <span className="text-gray-300 font-medium">Why this metric:</span>{" "}
           burn multiple is the SaaS-investor heuristic for capital
           efficiency. Lower means every dollar of burn produced more ARR.
-          Always paired with growth rate — a 3× burn multiple at 200%
+          Always paired with growth rate, a 3× burn multiple at 200%
           year-on-year is different from 3× at 30%.
         </p>
       </div>
@@ -268,7 +268,7 @@ export function BurnMultipleCalculator() {
           {copied ? "Link copied" : "Copy share link"}
         </button>
         <p className="text-xs text-gray-500">
-          The URL contains your inputs — share it with your board, co-founder,
+          The URL contains your inputs, share it with your board, co-founder,
           or prospective investor.
         </p>
       </div>

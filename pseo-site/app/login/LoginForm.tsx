@@ -129,7 +129,7 @@ export default function LoginForm() {
       </form>
 
       <p className="text-gray-400 text-xs mt-4 text-center">
-        We&apos;ll email you a magic link — no password needed.
+        We&apos;ll email you a magic link, no password needed.
       </p>
     </div>
   );

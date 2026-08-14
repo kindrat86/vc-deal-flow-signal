@@ -152,7 +152,7 @@ async function chargeSubscription(
       lookupKey: cfg.firstInvoiceCouponLookupKey,
       amountOff: cfg.firstInvoiceCouponAmountOff,
       currency: cfg.currency,
-      name: `${cfg.productName} — First Look OTO first-month discount`,
+      name: `${cfg.productName}, First Look OTO first-month discount`,
     });
     discount = { coupon: coupon.id };
   }

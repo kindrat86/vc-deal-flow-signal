@@ -3,7 +3,7 @@ import "server-only";
 /**
  * Replay-prevention store backed by Vercel Runtime Cache (per-region KV with
  * TTL). Survives cold starts and is shared across function instances within a
- * region — both improvements over the in-memory Map+setInterval pattern that
+ * region, both improvements over the in-memory Map+setInterval pattern that
  * preceded this module.
  *
  * Falls back to an in-memory Map for local dev or any environment where
@@ -11,7 +11,7 @@ import "server-only";
  * the prior semantics exactly (per-process, lossy across cold starts).
  *
  * Why a thin wrapper instead of inlining the API:
- *   1. Two routes need the same shape (activate + verify) — DRY.
+ *   1. Two routes need the same shape (activate + verify), DRY.
  *   2. Tests can stub the in-memory fallback without mocking @vercel/functions.
  *   3. The async-everywhere shape forces every call site to await, which
  *      catches the foot-gun where cache lookups silently bypass on `false`-y
@@ -20,7 +20,7 @@ import "server-only";
  * Per Vercel Runtime Cache docs:
  *   - Item size limit: 2 MB (we store small marker values, no concern)
  *   - Tags per item: 64 (we use 1 tag per namespace)
- *   - TTL is in seconds (not milliseconds — convert at the call site)
+ *   - TTL is in seconds (not milliseconds, convert at the call site)
  *   - get() returns undefined for missing keys
  *   - The cache is per-region; cross-region replay is theoretically possible
  *     but Vercel's invocation routing keeps a given session pinned for
@@ -91,7 +91,7 @@ let _store: NoncesStore | null = null;
 function getStore(): NoncesStore {
   if (_store) return _store;
   // VERCEL is set at build + runtime on Vercel; absent in `next dev` locally.
-  // The Runtime Cache API requires the Vercel runtime — fall back to in-memory
+  // The Runtime Cache API requires the Vercel runtime, fall back to in-memory
   // off-platform.
   if (process.env.VERCEL) {
     _store = new RuntimeCacheNoncesStore();
@@ -113,7 +113,7 @@ export async function isNonceUsed(
 }
 
 /**
- * Marks `key` as used inside `namespace` for `ttlSeconds`. Idempotent — safe to
+ * Marks `key` as used inside `namespace` for `ttlSeconds`. Idempotent, safe to
  * call multiple times. The Vercel Runtime Cache resets the TTL on each set.
  */
 export async function markNonceUsed(

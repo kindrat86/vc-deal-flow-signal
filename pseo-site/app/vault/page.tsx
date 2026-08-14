@@ -6,7 +6,7 @@ import { getHreflangLanguages } from "@/lib/hreflang";
 
 export const dynamic = "force-static";
 
-// Brunson Audit 2026-05-08 — top rung. The Vault is the analogue of
+// Brunson Audit 2026-05-08, top rung. The Vault is the analogue of
 // Brunson's "Two Comma Club X" / inner-circle tier, redesigned for the
 // anonymity rule: no live coaching, no in-person summit, no founder voice.
 // Every deliverable is async, licensable, and reproducible.
@@ -14,7 +14,7 @@ export const dynamic = "force-static";
 const APPLY_MAILTO =
   "mailto:signals@gitdealflow.com" +
   "?subject=" +
-  encodeURIComponent("Vault — application") +
+  encodeURIComponent("Vault, application") +
   "&body=" +
   encodeURIComponent(
     [
@@ -30,7 +30,7 @@ const APPLY_MAILTO =
       "How urgent is this (months / quarters):",
       "",
       "Vault applications are reviewed within 5 business days. The Vault is",
-      "async-only — no live calls, no in-person attendance, no founder voice",
+      "async-only, no live calls, no in-person attendance, no founder voice",
       "on any recording. Capped at 2 funds in 2026.",
     ].join("\n"),
   );
@@ -46,43 +46,43 @@ const STACK = [
       "Sharp Tier baseline, custom panel construction trained on your portfolio, bespoke 50-org watchlist with monthly rebuild, white-labeled fund subdomain, quarterly synthetic founder talk, async methodology Q&A, quarterly anonymized case study, annual fund-only methodology brief. The full Methodology Partnership stack, included.",
   },
   {
-    label: "Co-Development Access — submit signal hypotheses to the pipeline",
+    label: "Co-Development Access, submit signal hypotheses to the pipeline",
     value: 36000,
     detail:
       "Your fund's analysts and engineers submit signal hypotheses (e.g., 'Does maintainer churn predict acquisition?') to the panel-construction pipeline. We run them, return the regression output, and integrate the validated ones into your fund-specific model. Approximately 24 senior-engineering hours per month at €150/hr equivalent.",
   },
   {
-    label: "Pre-Publication SSRN Preview — 6 months early",
+    label: "Pre-Publication SSRN Preview, 6 months early",
     value: 20000,
     detail:
-      "Read next year's SSRN successor paper six months before public release. Includes draft methodology, preliminary regression coefficients, and the new signal types being evaluated for the next public Dashboard. Vault funds also receive co-author byline credit on opt-in (anonymity-respecting — initials only, no fund logo).",
+      "Read next year's SSRN successor paper six months before public release. Includes draft methodology, preliminary regression coefficients, and the new signal types being evaluated for the next public Dashboard. Vault funds also receive co-author byline credit on opt-in (anonymity-respecting, initials only, no fund logo).",
   },
   {
     label: "72-Hour Signal Head-Start over public Dashboard",
     value: 18000,
     detail:
-      "Every signal flagged by the regression is delivered to Vault funds 72 hours before it appears on the public Dashboard. Twelve flags per year on average; each flag has historically preceded fundraise announcements by 21–47 days. Conservative valuation: €1,500 per flag of additional time-to-act.",
+      "Every signal flagged by the regression is delivered to Vault funds 72 hours before it appears on the public Dashboard. Twelve flags per year on average; each flag has historically preceded fundraise announcements by 21-47 days. Conservative valuation: €1,500 per flag of additional time-to-act.",
   },
   {
-    label: "Annual Methodology Summit — async, fund-branded artifacts",
+    label: "Annual Methodology Summit, async, fund-branded artifacts",
     value: 15000,
     detail:
-      "Once a year, an 8-hour async methodology summit: Remotion-rendered keynote tracks, fund-branded artifact pack, downloadable workbook, and a private dataset cut. No live attendance — Vault funds consume the summit on their own time over 1–4 weeks. Equivalent live-summit attendance from comparable methodology consultancies: €15,000–€25,000/seat.",
+      "Once a year, an 8-hour async methodology summit: Remotion-rendered keynote tracks, fund-branded artifact pack, downloadable workbook, and a private dataset cut. No live attendance, Vault funds consume the summit on their own time over 1-4 weeks. Equivalent live-summit attendance from comparable methodology consultancies: €15,000-€25,000/seat.",
   },
   {
-    label: "Methodology Source Repo — fund-only fork license",
+    label: "Methodology Source Repo, fund-only fork license",
     value: 60000,
     detail:
-      "Private fork of the entire methodology source repository. Panel construction code, regression engine, signal-type definitions, ETL pipeline, and the build harness for the founder-talk generator. MIT-license to your fund only — fork, audit, run on your own infrastructure, integrate into your CRM. Re-distribution prohibited; all updates pushed to your fork for the duration of the engagement.",
+      "Private fork of the entire methodology source repository. Panel construction code, regression engine, signal-type definitions, ETL pipeline, and the build harness for the founder-talk generator. MIT-license to your fund only, fork, audit, run on your own infrastructure, integrate into your CRM. Re-distribution prohibited; all updates pushed to your fork for the duration of the engagement.",
   },
   {
     label: "Signal-of-the-Quarter Co-Investment Alerts",
     value: 36000,
     detail:
-      "Four times a year, the regression flags one signal as the 'Signal of the Quarter' — the highest-conviction event of the period. Vault funds receive a dedicated written analysis (8–12 pages), the underlying GitHub deltas, and a co-investment readiness check (term sheet ready / IC-prep ready). Conservative valuation: €9,000 per quarter of risk-adjusted sourcing intelligence.",
+      "Four times a year, the regression flags one signal as the 'Signal of the Quarter', the highest-conviction event of the period. Vault funds receive a dedicated written analysis (8-12 pages), the underlying GitHub deltas, and a co-investment readiness check (term sheet ready / IC-prep ready). Conservative valuation: €9,000 per quarter of risk-adjusted sourcing intelligence.",
   },
   {
-    label: "Founding-rate lock — through end of 2028",
+    label: "Founding-rate lock, through end of 2028",
     value: 49997,
     detail:
       "Vault rate goes to €99,997/yr after 2026. Funds joining in 2026 keep €49,997/yr through end of 2028 as long as the engagement stays active. The rate is structured to make Vault the right rung for funds that intend to license the methodology long-term, not for one-cycle subscribers.",
@@ -94,7 +94,7 @@ const TOTAL_VALUE = STACK.reduce((s, x) => s + x.value, 0);
 const FAQS = [
   {
     q: "Why is the Vault €49,997 and not higher?",
-    a: "Three anchors. (1) The Methodology Partnership is €14,997/yr — the Vault is roughly 3.3× that, with co-development access, pre-publication paper preview, 72-hour signal head-start, and the full methodology source repo as the differentiator. (2) Equivalent fund-as-research-partner engagements from name-brand methodology consultancies quote €100,000–€300,000/year. We undercut on margin, not on quality. (3) The cap of 2 funds in 2026 means the engagement stays sustainable at €49,997 — beyond that, founder-engineering time becomes the bottleneck and the rate would need to climb to €100,000+ to maintain quality. The 2027 rate is €99,997/yr; 2026 funds keep €49,997 through end of 2028.",
+    a: "Three anchors. (1) The Methodology Partnership is €14,997/yr, the Vault is roughly 3.3× that, with co-development access, pre-publication paper preview, 72-hour signal head-start, and the full methodology source repo as the differentiator. (2) Equivalent fund-as-research-partner engagements from name-brand methodology consultancies quote €100,000-€300,000/year. We undercut on margin, not on quality. (3) The cap of 2 funds in 2026 means the engagement stays sustainable at €49,997, beyond that, founder-engineering time becomes the bottleneck and the rate would need to climb to €100,000+ to maintain quality. The 2027 rate is €99,997/yr; 2026 funds keep €49,997 through end of 2028.",
   },
   {
     q: "What does 'co-development access' mean concretely?",
@@ -102,7 +102,7 @@ const FAQS = [
   },
   {
     q: "How does the SSRN pre-publication preview work?",
-    a: "We submit a successor preprint to SSRN annually (Q3 each year) building on the 219-startup panel from the original paper. Vault funds receive the draft six months before public release: methodology section, preliminary results, regression coefficients, and the new signal types being evaluated. Vault funds may submit one signal-type proposal that gets reviewed for inclusion in the public paper, with author-credit (initials-only) on opt-in. The pre-publication preview is shared under embargo — no public re-posting until the SSRN release date.",
+    a: "We submit a successor preprint to SSRN annually (Q3 each year) building on the 219-startup panel from the original paper. Vault funds receive the draft six months before public release: methodology section, preliminary results, regression coefficients, and the new signal types being evaluated. Vault funds may submit one signal-type proposal that gets reviewed for inclusion in the public paper, with author-credit (initials-only) on opt-in. The pre-publication preview is shared under embargo, no public re-posting until the SSRN release date.",
   },
   {
     q: "What does the 72-hour signal head-start actually deliver?",
@@ -110,26 +110,26 @@ const FAQS = [
   },
   {
     q: "What's the methodology source license, exactly?",
-    a: "A private fork of the methodology repository, MIT-licensed to your fund only. You receive: the panel-construction code, the regression engine, signal-type definitions, the ETL pipeline that pulls public GitHub data, and the build harness for the founder-talk generator. You can fork, audit, run on your own infrastructure, modify, and integrate into your CRM. You cannot re-distribute, sublicense, or open-source the fork. Updates are pushed to your fork for the duration of the engagement; on engagement end, your fork stays read-only at the last delivered commit. The license is anonymity-preserving — there is no individual contributor attribution required from your end.",
+    a: "A private fork of the methodology repository, MIT-licensed to your fund only. You receive: the panel-construction code, the regression engine, signal-type definitions, the ETL pipeline that pulls public GitHub data, and the build harness for the founder-talk generator. You can fork, audit, run on your own infrastructure, modify, and integrate into your CRM. You cannot re-distribute, sublicense, or open-source the fork. Updates are pushed to your fork for the duration of the engagement; on engagement end, your fork stays read-only at the last delivered commit. The license is anonymity-preserving, there is no individual contributor attribution required from your end.",
   },
   {
     q: "What disqualifies an application?",
-    a: "(1) Reselling the methodology or data — Vault is single-fund license, not OEM. (2) Funds whose primary thesis is reselling alternative data. (3) Anything that would compromise the founder's anonymity (live in-person summit attendance, named-attribution publications featuring the founder by name, podcast appearances). (4) Funds requesting a per-deal sourcing fee or revenue share — the Vault is a flat-rate license, not a finders-fee structure. (5) Funds without an existing Sharp Tier or Methodology Partnership relationship are deprioritized — most Vault funds enter via Methodology Partnership for 6–12 months first. We turn down roughly half of net-new Vault applications on these grounds.",
+    a: "(1) Reselling the methodology or data, Vault is single-fund license, not OEM. (2) Funds whose primary thesis is reselling alternative data. (3) Anything that would compromise the founder's anonymity (live in-person summit attendance, named-attribution publications featuring the founder by name, podcast appearances). (4) Funds requesting a per-deal sourcing fee or revenue share, the Vault is a flat-rate license, not a finders-fee structure. (5) Funds without an existing Sharp Tier or Methodology Partnership relationship are deprioritized, most Vault funds enter via Methodology Partnership for 6-12 months first. We turn down roughly half of net-new Vault applications on these grounds.",
   },
   {
     q: "Is there anything above the Vault?",
-    a: "Not as a productised tier. Funds with deeper requirements — multi-year exclusive license to the methodology, dedicated engineering time, custom signal-type R&D, or co-publication of a fund-specific industry report — should email signal at gitdealflow dot com for a scoped proposal. We have done this once, for a single fund, in 2025. The Vault is the right rung for the overwhelming majority of fund partnerships; the bespoke proposal exists for genuinely outlier needs.",
+    a: "Not as a productised tier. Funds with deeper requirements, multi-year exclusive license to the methodology, dedicated engineering time, custom signal-type R&D, or co-publication of a fund-specific industry report, should email signal at gitdealflow dot com for a scoped proposal. We have done this once, for a single fund, in 2025. The Vault is the right rung for the overwhelming majority of fund partnerships; the bespoke proposal exists for genuinely outlier needs.",
   },
 ] as const;
 
 export const metadata: Metadata = {
   title:
-    "The Vault — €49,997/yr · Co-development, pre-publication SSRN, 72h signal head-start",
+    "The Vault, €49,997/yr · Co-development, pre-publication SSRN, 72h signal head-start",
   description:
     "Top-rung research partnership for active VC funds. Co-development access to the panel-construction pipeline, pre-publication SSRN preview, 72-hour signal head-start, methodology source repo (fund-only license). Async-only, anonymity-preserving. Capped at 2 funds in 2026. €49,997/yr founding rate.",
   alternates: { canonical: "/vault" },
   openGraph: {
-    title: "The Vault — €49,997/yr · GitDealFlow",
+    title: "The Vault, €49,997/yr · GitDealFlow",
     description:
       "Top rung. Methodology source license. 72-hour signal head-start. Capped at 2 funds in 2026.",
     url: "https://signals.gitdealflow.com/vault",
@@ -145,7 +145,7 @@ export default function VaultPage() {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/vault#webpage",
         url: "https://signals.gitdealflow.com/vault",
-        name: "The Vault — €49,997/yr · VC Deal Flow Signal",
+        name: "The Vault, €49,997/yr · VC Deal Flow Signal",
         isAccessibleForFree: true,
       },
       {
@@ -153,13 +153,13 @@ export default function VaultPage() {
         "@id": "https://signals.gitdealflow.com/vault#service",
         name: "The Vault",
         serviceType:
-          "Investment research partnership — methodology source license, co-development, pre-publication research access",
+          "Investment research partnership, methodology source license, co-development, pre-publication research access",
         description:
           "Twelve-month research partnership for active VC funds. Includes everything in the Methodology Partnership, plus: co-development access to the panel-construction pipeline, pre-publication SSRN preview six months early, 72-hour signal head-start over public Dashboard, annual async methodology summit, methodology source repo (fund-only fork license), Signal-of-the-Quarter co-investment alerts. Async-only, anonymity-preserving. Capped at 2 funds in 2026.",
         provider: { "@id": "https://gitdealflow.com/#organization" },
         offers: {
           "@type": "Offer",
-          name: "The Vault — annual",
+          name: "The Vault, annual",
           price: PRICE_NUMBER,
           priceCurrency: "EUR",
           priceValidUntil: "2026-12-31",
@@ -175,7 +175,7 @@ export default function VaultPage() {
       {
         "@type": "ItemList",
         "@id": "https://signals.gitdealflow.com/vault#stack",
-        name: "The Vault — value stack",
+        name: "The Vault, value stack",
         itemListOrder: "https://schema.org/ItemListOrderDescending",
         numberOfItems: STACK.length,
         itemListElement: STACK.map((s, i) => ({
@@ -272,7 +272,7 @@ export default function VaultPage() {
           <p className="text-gray-300 text-sm leading-relaxed">
             Every Sharp Tier and Methodology Partnership fund consumes the
             output of the regression. The Vault gives you the regression
-            itself &mdash; private fork of the source code, co-development
+            itself, private fork of the source code, co-development
             rights to extend it, pre-publication access to next year&rsquo;s
             paper, and 72 hours of head-start on every flag. If your fund
             intends to make GitHub-momentum signal a multi-year sourcing
@@ -346,7 +346,7 @@ export default function VaultPage() {
           </h2>
           <p className="text-gray-300 text-sm leading-relaxed">
             Application is by structured email. We respond inside 5 business
-            days &mdash; Vault applications receive a written diligence
+            days, Vault applications receive a written diligence
             review. The application is free and never auto-converts to a
             charge. Most accepted Vault funds enter via the Methodology
             Partnership first.
@@ -385,7 +385,7 @@ export default function VaultPage() {
               first month, the same as every tier: if the signal doesn&rsquo;t
               surface a fund-relevant company in the first 30 days, the first
               month is free. To be accurate, this is a month-one guarantee, not
-              a refund of the full annual fee &mdash; the front-end tiers and
+              a refund of the full annual fee, the front-end tiers and
               the early verification above exist precisely so you can confirm
               fit before the annual commitment.
             </p>
@@ -440,7 +440,7 @@ export default function VaultPage() {
             >
               Methodology Partnership (€14,997/yr)
             </Link>{" "}
-            — custom regression on your portfolio, no methodology source
+custom regression on your portfolio, no methodology source
             license, no co-development. Above: nothing as a productised tier.
             See the{" "}
             <Link

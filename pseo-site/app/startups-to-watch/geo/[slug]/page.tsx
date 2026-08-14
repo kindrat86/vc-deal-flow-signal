@@ -146,7 +146,7 @@ export default async function GeoSectorPage({ params }: PageProps) {
           {
             "@type": "ListItem",
             position: 2,
-            name: `${sector.name} — ${period.name}`,
+            name: `${sector.name}, ${period.name}`,
             item: `https://signals.gitdealflow.com/startups-to-watch/${sector.slug}-${period.slug}`,
           },
           {

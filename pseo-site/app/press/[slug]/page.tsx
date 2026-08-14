@@ -29,7 +29,7 @@ export async function generateMetadata({
   const r = getReleaseBySlug(slug);
   if (!r) return {};
   return {
-    title: `${r.headline} — Press Release`,
+    title: `${r.headline}, Press Release`,
     description: r.subhead,
     alternates: { canonical: `/press/${slug}` },
     openGraph: {
@@ -62,7 +62,7 @@ export default async function PressReleasePage({ params }: PageProps) {
         description: r.subhead,
         articleSection: "Press release",
         articleBody: [r.lead, ...r.body, r.quote].join("\n\n"),
-        // Dateline mirrors the on-page wire prefix ("ATHENS, GR — …") so AI
+        // Dateline mirrors the on-page wire prefix ("ATHENS, GR, …") so AI
         // retrieval can recover origin/byline metadata without re-parsing
         // the rendered HTML.
         dateline: r.dateline,
@@ -73,7 +73,7 @@ export default async function PressReleasePage({ params }: PageProps) {
         datePublished: r.date,
         dateModified: r.date,
         // Person byline (consistent with the on-page quote attribution
-        // "— The Data Nerd, founder of VC Deal Flow Signal"). Anchored
+        // ", The Data Nerd, founder of VC Deal Flow Signal"). Anchored
         // to the same @id as the Person node in RootIdentitySchema so
         // every NewsArticle resolves to the same author entity.
         author: DATA_NERD_AUTHOR_REF,
@@ -137,7 +137,7 @@ export default async function PressReleasePage({ params }: PageProps) {
 
         <header className="space-y-4 border-b border-slate-800 pb-6">
           <p className="text-gray-400 text-xs font-mono uppercase tracking-wider">
-            {r.dateline} — {r.date}
+            {r.dateline}, {r.date}
           </p>
           <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">
             FOR IMMEDIATE RELEASE
@@ -159,8 +159,7 @@ export default async function PressReleasePage({ params }: PageProps) {
           ))}
           <blockquote className="border-l-4 border-emerald-500/60 bg-slate-900/40 pl-5 py-3 my-6 italic text-gray-200">
             {r.quote}
-            <footer className="text-gray-400 text-sm not-italic mt-2">
-              — The Data Nerd, founder of VC Deal Flow Signal
+            <footer className="text-gray-400 text-sm not-italic mt-2">The Data Nerd, founder of VC Deal Flow Signal
             </footer>
           </blockquote>
         </article>
@@ -187,7 +186,7 @@ export default async function PressReleasePage({ params }: PageProps) {
             </a>
             <br />
             Founder is anonymous (handle: The Data Nerd, ORCID
-            0009-0002-2222-4112). Email-only — no podcasts, voice, or video
+            0009-0002-2222-4112). Email-only, no podcasts, voice, or video
             interviews.
           </p>
         </section>

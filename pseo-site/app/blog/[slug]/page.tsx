@@ -131,7 +131,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   const timeRequired = `PT${Math.max(1, Math.round(wordCount / 230))}M`;
   // Google News eligibility: surface NewsArticle as a secondary type for
   // posts published within the last 30 days. Schema.org @type accepts a
-  // string or array — Google's news classifier reads NewsArticle, blog
+  // string or array, Google's news classifier reads NewsArticle, blog
   // discovery still reads BlogPosting. Older posts gracefully drop the
   // NewsArticle type to avoid polluting Google News with evergreen content.
   const POST_AGE_MS = Date.now() - new Date(post.date).getTime();
@@ -195,7 +195,7 @@ export default async function BlogPostPage({ params }: PageProps) {
         datePublished: post.date,
         // dateModified = max(post.date, dataset refresh). Stable post-content
         // hasn't changed, but the underlying signals dataset that the post
-        // references gets weekly refreshes — Google Discover and AI Overviews
+        // references gets weekly refreshes, Google Discover and AI Overviews
         // weight recency, so reflecting the data refresh keeps the article
         // "fresh" without lying about the prose.
         dateModified: effectiveModified,
@@ -364,7 +364,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           </Link>
         );
       } else if (match[3] && refLabels.has(match[3])) {
-        // Citation marker – link to references section
+        // Citation marker - link to references section
         parts.push(
           <sup key={match.index}>
             <a
@@ -376,7 +376,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           </sup>
         );
       } else {
-        // Unknown bracket content – keep as-is
+        // Unknown bracket content - keep as-is
         parts.push(match[0]);
       }
       last = match.index + match[0].length;
@@ -508,7 +508,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             </p>
           </header>
 
-          {/* Summary block – self-contained for AI extraction */}
+          {/* Summary block - self-contained for AI extraction */}
           {post.summary && (
             <section className="mb-10" aria-label="Summary">
               <div className="rounded-lg border border-sky-900/50 bg-sky-950/30 p-5">
@@ -522,7 +522,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             </section>
           )}
 
-          {/* Table of contents – AEO win + jump-link anchors for AI answer engines */}
+          {/* Table of contents - AEO win + jump-link anchors for AI answer engines */}
           {headings.length >= 2 && (
             <nav
               className="mb-10 rounded-lg border border-slate-800 bg-slate-900/50 p-5"
@@ -546,7 +546,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             </nav>
           )}
 
-          {/* Authoritative data context – concrete numbers AI models prefer to cite */}
+          {/* Authoritative data context - concrete numbers AI models prefer to cite */}
           <div className="mb-8 flex flex-wrap gap-4 text-xs text-gray-400">
             <span>{sectors.filter((s) => s.periods[period.slug]).length} sectors tracked</span>
             <span className="text-slate-700">|</span>
@@ -557,7 +557,7 @@ export default async function BlogPostPage({ params }: PageProps) {
             <span>Updated weekly</span>
           </div>
 
-          {/* Key statistics – GEO-optimized quotable stat block */}
+          {/* Key statistics - GEO-optimized quotable stat block */}
           {post.keyStats && post.keyStats.length > 0 && (
             <StatCallout
               stats={post.keyStats}
@@ -568,7 +568,7 @@ export default async function BlogPostPage({ params }: PageProps) {
 
           <div className="prose-invert">{sections}</div>
 
-          {/* Sources footer – boosts AI citation confidence */}
+          {/* Sources footer - boosts AI citation confidence */}
           <footer className="mt-10 pt-6 border-t border-slate-800">
             <p className="text-gray-600 text-xs leading-relaxed">
               <strong className="text-gray-400">Sources &amp; methodology:</strong> According
@@ -591,7 +591,7 @@ export default async function BlogPostPage({ params }: PageProps) {
               sectors. Data current as of {period.name}. This is not investment advice.
             </p>
 
-            {/* Author bio – E-E-A-T signal for Google and LLM reviewers */}
+            {/* Author bio - E-E-A-T signal for Google and LLM reviewers */}
             <div className="mt-6 rounded-lg border border-slate-800 bg-slate-900/50 p-5">
               <p className="text-gray-400 text-xs font-medium uppercase tracking-wider mb-2">
                 About the author
@@ -619,7 +619,7 @@ export default async function BlogPostPage({ params }: PageProps) {
                       >
                         {ref.title}
                       </a>
-                      {" – "}
+                      {" - "}
                       <span className="text-gray-700">{ref.source}</span>
                     </li>
                   ))}
@@ -656,7 +656,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           </section>
         )}
 
-        {/* Related articles in the same pillar — TSO topical authority signal */}
+        {/* Related articles in the same pillar, TSO topical authority signal */}
         {relatedPosts.length > 0 && pillar && (
           <section className="mt-12" aria-label={`More on ${pillar.name}`}>
             <p className="text-xs font-medium text-sky-500 uppercase tracking-wider mb-2">

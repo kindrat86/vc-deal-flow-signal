@@ -49,7 +49,7 @@ export default async function AcquirerPage({ params }: PageProps) {
 
   const pageUrl = `https://signals.gitdealflow.com/acquirer/${slug}`;
 
-  // Pull companies from focus sectors — these are the kinds of orgs the acquirer's published focus aligns with.
+  // Pull companies from focus sectors, these are the kinds of orgs the acquirer's published focus aligns with.
   const trackedCompaniesInFocus = a.focusSectors
     .flatMap((s) => getCompaniesInSector(s))
     .reduce<{ slug: string; name: string; sector: string }[]>((acc, c) => {
@@ -67,7 +67,7 @@ export default async function AcquirerPage({ params }: PageProps) {
   const faqs = [
     {
       question: `How many acquisitions has ${a.name} made?`,
-      answer: `This page documents ${a.notableAcquisitions.length} notable public acquisitions by ${a.name} — every deal here was announced via press release, SEC filing, or both. ${a.name}'s full acquisition history may include smaller, undisclosed talent acquisitions; we list only the publicly documented deals that materially shaped their direction.`,
+      answer: `This page documents ${a.notableAcquisitions.length} notable public acquisitions by ${a.name}, every deal here was announced via press release, SEC filing, or both. ${a.name}'s full acquisition history may include smaller, undisclosed talent acquisitions; we list only the publicly documented deals that materially shaped their direction.`,
     },
     {
       question: `What does ${a.name} typically acquire?`,
@@ -83,7 +83,7 @@ export default async function AcquirerPage({ params }: PageProps) {
     },
     {
       question: `How can Corp Dev or PE teams use this page?`,
-      answer: `Two workflows. (1) Pattern matching: when scouting acquisition targets, the ${a.notableAcquisitions.length}-deal history above is a published reference for what ${a.name} actually buys — useful for triangulating "would they buy this?" judgments. (2) Sector overlap: the focus-sectors mapping connects ${a.name}'s historical M&A pattern to the engineering-signal panel we publish, so analysts can correlate acquisition pace with sector-level signal acceleration.`,
+      answer: `Two workflows. (1) Pattern matching: when scouting acquisition targets, the ${a.notableAcquisitions.length}-deal history above is a published reference for what ${a.name} actually buys, useful for triangulating "would they buy this?" judgments. (2) Sector overlap: the focus-sectors mapping connects ${a.name}'s historical M&A pattern to the engineering-signal panel we publish, so analysts can correlate acquisition pace with sector-level signal acceleration.`,
     },
   ];
 
@@ -112,7 +112,7 @@ export default async function AcquirerPage({ params }: PageProps) {
       },
       {
         "@type": "ItemList",
-        name: `${a.name} — Notable Public Acquisitions`,
+        name: `${a.name}, Notable Public Acquisitions`,
         itemListOrder: "Descending",
         numberOfItems: a.notableAcquisitions.length,
         itemListElement: a.notableAcquisitions.map((acq, i) => ({

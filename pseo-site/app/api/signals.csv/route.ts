@@ -66,7 +66,7 @@ export async function GET() {
       "Last-Modified": lastModified.toUTCString(),
       "X-Dataset-License": "CC BY 4.0",
       "X-Dataset-Citation": `VC Deal Flow Signal (signals.gitdealflow.com), ${period.name} data. DOI: 10.5281/zenodo.19650920.`,
-      // RFC 8288 — points discovery agents at Dataset JSON-LD + canonical DOI + alternates.
+      // RFC 8288, points discovery agents at Dataset JSON-LD + canonical DOI + alternates.
       Link: [
         `<${BASE_URL}/#dataset>; rel="describedby"; type="application/ld+json"`,
         `<${BASE_URL}/citations>; rel="describedby"; type="text/html"`,

@@ -6,7 +6,7 @@ import { getHreflangLanguages } from "@/lib/hreflang";
 
 export const dynamic = "force-static";
 
-// €1 Tweet Teardown — Brunson DotCom Secrets buyer-threshold breaker.
+// €1 Tweet Teardown, Brunson DotCom Secrets buyer-threshold breaker.
 // Bridges the €0 → €7 jump that Russell flagged as psychologically large.
 // One paragraph, one number, one shipped via email within 24h.
 //
@@ -21,12 +21,12 @@ const TEARDOWN_CHECKOUT =
   "https://buy.stripe.com/bJe5kC48H2d2cEKg6s0x209";
 
 export const metadata: Metadata = {
-  title: "Tweet Teardown — €1. One startup. 24-hour signal call.",
+  title: "Tweet Teardown, €1. One startup. 24-hour signal call.",
   description:
     "Pay €1 once, name one venture-backed startup, and within 24 hours get a tweet-length teardown of its GitHub momentum: signal type, 14-day acceleration %, and the kicker insight. €1 credited toward First Look Pass if you upgrade in 7 days.",
   alternates: { canonical: "/teardown" },
   openGraph: {
-    title: "Tweet Teardown — €1. One startup. 24-hour signal call.",
+    title: "Tweet Teardown, €1. One startup. 24-hour signal call.",
     description:
       "€1 once, name a startup, get a tweet-length teardown of its engineering momentum in 24h.",
     url: "https://signals.gitdealflow.com/teardown",
@@ -38,17 +38,17 @@ const STACK = [
   {
     label: "Signal classification (one of four types)",
     detail:
-      "Hiring burst, shipping sprint, infrastructure buildout, or platform migration — the same taxonomy the Dashboard uses, applied to the org you name.",
+      "Hiring burst, shipping sprint, infrastructure buildout, or platform migration, the same taxonomy the Dashboard uses, applied to the org you name.",
   },
   {
     label: "14-day acceleration delta",
     detail:
-      "Two-period commit-velocity comparison with a confirmation window — the specific number that says whether the team is speeding up or coasting.",
+      "Two-period commit-velocity comparison with a confirmation window, the specific number that says whether the team is speeding up or coasting.",
   },
   {
     label: "The kicker insight",
     detail:
-      "What the metric means for a check-writer right now. Not a generic comment — the specific edge or risk this signal implies for this team this month.",
+      "What the metric means for a check-writer right now. Not a generic comment, the specific edge or risk this signal implies for this team this month.",
   },
   {
     label: "Tweet-shaped output (≤280 chars)",
@@ -60,23 +60,23 @@ const STACK = [
 const FAQS = [
   {
     q: "Why €1?",
-    a: "The €0-to-€7 jump is psychologically larger than the €7-to-€197 jump. €1 isn't margin — it's a buyer-threshold breaker. Once you've put a card on file at any price, the next purchase is no longer a first purchase. We'd rather you trial the signal at the lowest possible cost, see whether the output reads true on a startup you already know, and then decide if the €7 First Look Pass or the €49/mo Dashboard is worth a real budget line.",
+    a: "The €0-to-€7 jump is psychologically larger than the €7-to-€197 jump. €1 isn't margin, it's a buyer-threshold breaker. Once you've put a card on file at any price, the next purchase is no longer a first purchase. We'd rather you trial the signal at the lowest possible cost, see whether the output reads true on a startup you already know, and then decide if the €7 First Look Pass or the €49/mo Dashboard is worth a real budget line.",
   },
   {
     q: "What's the deliverable, exactly?",
-    a: "One paragraph (≤280 characters) emailed to your inbox within 24h on weekdays. Three sentences: signal classification, the acceleration number, the kicker insight. No PDF. No CSV. No call. No follow-up. The whole point is brutal compression — if a signal can't be summarised in a tweet, it isn't a signal worth selling.",
+    a: "One paragraph (≤280 characters) emailed to your inbox within 24h on weekdays. Three sentences: signal classification, the acceleration number, the kicker insight. No PDF. No CSV. No call. No follow-up. The whole point is brutal compression, if a signal can't be summarised in a tweet, it isn't a signal worth selling.",
   },
   {
     q: "Can I name a private/stealth-mode startup?",
-    a: "If they have a public GitHub org, yes — that's exactly the point of the methodology. If their entire engineering footprint is private GitLab, no — there's no public commit data to analyse and we'll refund the €1 inside the same hour. Public GitHub orgs cover roughly 70% of YC, Antler, and Entrepreneur First batches by default.",
+    a: "If they have a public GitHub org, yes, that's exactly the point of the methodology. If their entire engineering footprint is private GitLab, no, there's no public commit data to analyse and we'll refund the €1 inside the same hour. Public GitHub orgs cover roughly 70% of YC, Antler, and Entrepreneur First batches by default.",
   },
   {
     q: "What happens if I upgrade?",
-    a: "The €1 is credited toward the First Look Pass (€7) if you upgrade within 7 days. Reply to the delivery email with REQUEST CREDIT and the founder applies it manually. After the First Look, the standard €7 → Dashboard upgrade credit also applies — so you can effectively start at €1 and roll the spend forward into the subscription if the signal reads true.",
+    a: "The €1 is credited toward the First Look Pass (€7) if you upgrade within 7 days. Reply to the delivery email with REQUEST CREDIT and the founder applies it manually. After the First Look, the standard €7 → Dashboard upgrade credit also applies, so you can effectively start at €1 and roll the spend forward into the subscription if the signal reads true.",
   },
   {
     q: "Is this just an AI-generated summary?",
-    a: "No — the founder writes every Teardown personally. The metrics are computed from public GitHub data with the same engine as the Dashboard, but the kicker insight (the third sentence) is a human read on what the data implies for a buyer. AI is a poor judge of which signals matter to a fund's specific thesis; a human writing a tweet about a startup the buyer already knows is the highest-signal version of this product.",
+    a: "No, the founder writes every Teardown personally. The metrics are computed from public GitHub data with the same engine as the Dashboard, but the kicker insight (the third sentence) is a human read on what the data implies for a buyer. AI is a poor judge of which signals matter to a fund's specific thesis; a human writing a tweet about a startup the buyer already knows is the highest-signal version of this product.",
   },
 ] as const;
 
@@ -89,7 +89,7 @@ export default function TeardownPage() {
         "@id": "https://signals.gitdealflow.com/teardown#product",
         name: "Tweet Teardown",
         description:
-          "€1 one-time micro-tripwire — a tweet-length (≤280 char) GitHub-momentum teardown of one startup you name, written by the founder and delivered within 24 hours.",
+          "€1 one-time micro-tripwire, a tweet-length (≤280 char) GitHub-momentum teardown of one startup you name, written by the founder and delivered within 24 hours.",
         offers: {
           "@type": "Offer",
           price: "1.00",
@@ -153,11 +153,11 @@ export default function TeardownPage() {
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
             Three sentences. One number. Hand-written by the founder, not an
             LLM. The tightest possible read of an engineering team you already
-            have a name for &mdash; for less than a vending-machine coffee.
+            have a name for, for less than a vending-machine coffee.
           </p>
         </header>
 
-        {/* WHY €1 — close the psychological gap explicitly. The visitor
+        {/* WHY €1, close the psychological gap explicitly. The visitor
             arrived here expecting the cheapest paid product to be €7;
             seeing €1 invites suspicion. Pre-empt it before the form. */}
         <aside
@@ -174,7 +174,7 @@ export default function TeardownPage() {
           <p className="text-gray-300 text-sm leading-relaxed">
             Free buyers and paying buyers are different psychological
             categories. The smallest viable charge that converts the first
-            into the second is €1 &mdash; the price of a vending-machine
+            into the second is €1, the price of a vending-machine
             coffee. After this, the €7 First Look Pass and the €49/mo
             Dashboard are no longer your first purchase; you&rsquo;re a
             returning customer at progressively larger numbers, which is the
@@ -221,7 +221,7 @@ export default function TeardownPage() {
           </div>
         </section>
 
-        {/* COMMIT — email capture matches the firstlook flow on apex.
+        {/* COMMIT, email capture matches the firstlook flow on apex.
             Stripe link is wired on the apex JS; this page is the SEO
             landing surface and the on-page CTA target. */}
         <section className="bg-gradient-to-br from-rose-950/30 via-slate-900 to-slate-950 border border-rose-700/40 rounded-xl p-6 sm:p-8 text-center space-y-4">
@@ -238,7 +238,7 @@ export default function TeardownPage() {
             href={TEARDOWN_CHECKOUT}
             className="inline-flex items-center justify-center gap-2 px-8 py-4 rounded-lg bg-rose-500 hover:bg-rose-400 text-slate-950 font-bold text-base shadow-lg shadow-rose-500/30 transition-all"
           >
-            Buy the Teardown — €1 <span aria-hidden="true">→</span>
+            Buy the Teardown, €1 <span aria-hidden="true">→</span>
           </a>
           <p className="text-gray-400 text-xs">
             Already know you want the full sector deep dive?{" "}
@@ -251,7 +251,7 @@ export default function TeardownPage() {
           </p>
         </section>
 
-        {/* UPSELL PREVIEW — what the buyer sees in the delivery email.
+        {/* UPSELL PREVIEW, what the buyer sees in the delivery email.
             Brunson DotCom Ch 12: never surprise the buyer with the upsell. */}
         <aside
           className="border border-slate-800 bg-slate-900/40 rounded-xl p-5 sm:p-6 space-y-2"
@@ -270,12 +270,12 @@ export default function TeardownPage() {
               First Look Pass
             </Link>{" "}
             for <strong className="text-gray-100">€6 instead of €7</strong>{" "}
-            &mdash; the €1 credit applies for 7 days, then expires. Decline
+the €1 credit applies for 7 days, then expires. Decline
             it and the Teardown is yours; nothing else fires.
           </p>
         </aside>
 
-        {/* DOWNSELL — never let a visitor leave at zero commitment if
+        {/* DOWNSELL, never let a visitor leave at zero commitment if
             there's a free rung below. Same Brunson rule the firstlook
             page applies to its €7 step. */}
         <aside
@@ -294,7 +294,7 @@ export default function TeardownPage() {
             >
               Acceleration Watch
             </a>{" "}
-            sends 5 startups every Monday &mdash; sector-tagged, with the
+            sends 5 startups every Monday, sector-tagged, with the
             same engine behind the Teardown. No card. Subscribe, watch the
             rhythm for two weeks, then decide whether €1 buys you something
             you can&rsquo;t already see.

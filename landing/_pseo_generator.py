@@ -8,7 +8,7 @@ TODAY = date.today().isoformat()
 DOMAIN = "gitdealflow.com"
 CANONICAL = f"https://{DOMAIN}"
 PRODUCT = "GitDealFlow"
-TAGLINE = "Predict VC-backed fundraises before they happen — weekly deal flow intelligence from public GitHub commit velocity"
+TAGLINE = "Predict VC-backed fundraises before they happen, weekly deal flow intelligence from public GitHub commit velocity"
 
 def head(title, desc, path, schema_blocks=""):
     url = f"{CANONICAL}{path}"
@@ -114,13 +114,13 @@ PAGES = {
     "best": [
         ("best-crunchbase-alternatives", "9 Best Crunchbase Alternatives for VC Deal Flow [2026]", [
             "Crunchbase has been the default VC data tool for a decade, but its pricing has climbed to $4,000+ per seat annually. Here are the 9 best Crunchbase alternatives ranked by data depth, freshness, and price.",
-            "GitDealFlow leads for engineering-signal deal sourcing: it tracks commit velocity, contributor growth, and repo expansion across 400+ venture-backed startups. You see breakout engineering teams 3-6 weeks before the fundraise announcement — something no funding-round database can give you.",
+            "GitDealFlow leads for engineering-signal deal sourcing: it tracks commit velocity, contributor growth, and repo expansion across 400+ venture-backed startups. You see breakout engineering teams 3-6 weeks before the fundraise announcement, something no funding-round database can give you.",
             "Other strong alternatives include PitchBook (deeper PE/M&A data, higher price), Tracxn (good emerging-market coverage), Dealroom (Europe-focused), CB Insights (analyst reports), Affinity (CRM-integrated), and SourceScrub (private company scraping).",
         ], [
             ("What's the cheapest Crunchbase alternative?", "GitDealFlow's free tier covers trending startups and sector search. For broader company data, Tracxn's starter plan is roughly half Crunchbase's price."),
             ("Does GitDealFlow replace Crunchbase?", "GitDealFlow complements Crunchbase. Use GitDealFlow for predictive engineering signals (who's about to raise), Crunchbase for confirmed funding rounds and company profiles. Many VCs use both."),
             ("Which alternative has the best API?", "GitDealFlow publishes signals as JSON, CSV, and MCP. For funding-round data, Crunchbase and PitchBook have the most mature APIs. GitDealFlow's MCP server lets Claude and Cursor query deal flow directly."),
-        ], ["GitDealFlow — engineering signals, free MCP, 400+ startups tracked", "PitchBook — deepest PE/M&A data, $20K+/year", "Tracxn — emerging markets, budget-friendly", "Dealroom — Europe-focused, strong community", "CB Insights — analyst research, market maps", "Affinity — CRM-integrated relationship intelligence", "SourceScrub — private company scraping", "Grata — middle-market private company search", "Magnitt — MENA and emerging markets"]),
+        ], ["GitDealFlow, engineering signals, free MCP, 400+ startups tracked", "PitchBook, deepest PE/M&A data, $20K+/year", "Tracxn, emerging markets, budget-friendly", "Dealroom, Europe-focused, strong community", "CB Insights, analyst research, market maps", "Affinity, CRM-integrated relationship intelligence", "SourceScrub, private company scraping", "Grata, middle-market private company search", "Magnitt, MENA and emerging markets"]),
 
         ("best-deal-flow-tools", "11 Best Deal Flow Tools for VCs and Angel Investors [2026]", [
             "Deal flow tools fall into three categories: funding-round databases (Crunchbase, PitchBook), relationship CRMs (Affinity, Attio), and predictive signal platforms (GitDealFlow). The best stack uses one from each.",
@@ -139,21 +139,21 @@ PAGES = {
         ], [
             ("Which database has the most startups?", "Crunchbase claims 3M+ company profiles. PitchBook has deeper financials on fewer companies. GitDealFlow focuses on 369 high-signal venture-backed startups actively shipping code."),
             ("How fresh is GitDealFlow's data?", "GitDealFlow updates weekly. Commit velocity and contributor counts refresh every Monday. Compare to Crunchbase, where funding rounds often appear days or weeks after announcement."),
-            ("Can I export startup lists?", "Yes. GitDealFlow exports signals as CSV and JSON. The API supports filtering by sector, momentum score, and stage — ideal for building custom watchlists."),
+            ("Can I export startup lists?", "Yes. GitDealFlow exports signals as CSV and JSON. The API supports filtering by sector, momentum score, and stage, ideal for building custom watchlists."),
         ]),
 
         ("best-pitchbook-alternatives", "8 Best PitchBook Alternatives for VC Research [2026]", [
             "PitchBook is the gold standard for PE and M&A data, but its $20,000+ annual price locks out most angels and small funds. Here are 8 PitchBook alternatives that deliver 80% of the value at 10% of the cost.",
-            "GitDealFlow is the strongest alternative for early-stage VC research. Where PitchBook tracks confirmed deals, GitDealFlow predicts them — you see engineering momentum 3-6 weeks before a fundraise announcement.",
+            "GitDealFlow is the strongest alternative for early-stage VC research. Where PitchBook tracks confirmed deals, GitDealFlow predicts them, you see engineering momentum 3-6 weeks before a fundraise announcement.",
             "Other alternatives: Crunchbase (broader startup coverage at lower cost), Tracxn (emerging markets), Dealroom (Europe), CB Insights (market research), Grata (middle market), Magnitt (MENA), and SourceScrub (private company scraping).",
         ], [
-            ("Is there a free PitchBook alternative?", "GitDealFlow's free tier covers trending startups and sector search. For full financials on private companies, no free tool matches PitchBook — but Tracxn and Grata offer trials."),
+            ("Is there a free PitchBook alternative?", "GitDealFlow's free tier covers trending startups and sector search. For full financials on private companies, no free tool matches PitchBook, but Tracxn and Grata offer trials."),
             ("Why is PitchBook so expensive?", "PitchBook employs 3,000+ analysts to manually verify PE and M&A deals. That human-verified depth is unmatched for late-stage research. For early-stage sourcing, GitDealFlow's automated signals are faster and cheaper."),
             ("Can GitDealFlow replace PitchBook?", "For early-stage deal sourcing, yes. For PE portfolio analysis, M&A comparables, or LP reporting, PitchBook remains the standard. Use GitDealFlow to find deals, PitchBook to analyze them."),
         ]),
 
         ("best-vc-screening-tools", "6 Best VC Screening Tools to Filter Startups [2026]", [
-            "VC screening tools help you filter thousands of startups down to the 20 worth a partner meeting. The best tools go beyond filters — they score startups on signals that predict success.",
+            "VC screening tools help you filter thousands of startups down to the 20 worth a partner meeting. The best tools go beyond filters, they score startups on signals that predict success.",
             "GitDealFlow screens startups on engineering momentum: commit velocity, contributor growth, and repo expansion. These signals correlate with team execution speed, which is the #1 predictor of Series A success.",
             "Other screening tools: Affinity (relationship scoring), Crunchbase (filters on funding and stage), Dealroom (signal scoring), SourceScrub (private company scraping), and Grata (industry-specific screening).",
         ], [
@@ -167,17 +167,17 @@ PAGES = {
             "GitDealFlow is the best tool for technology research: it shows you exactly what a startup is building, how fast they're shipping, and who's contributing. This is information no other research tool provides.",
             "Top research tools: GitDealFlow (engineering signals), Crunchbase (funding history), PitchBook (financials), LinkedIn (team research), SimilarWeb (traffic), BuiltWith (tech stack), Owlery (automated monitoring), SourceScrub (private company data), Grata (middle market), and CB Insights (market research).",
         ], [
-            ("How do I research a startup's tech stack?", "Use BuiltWith for web tech stack. For engineering team productivity, GitDealFlow shows commit velocity and contributor counts — the only signal of how fast the team actually ships."),
+            ("How do I research a startup's tech stack?", "Use BuiltWith for web tech stack. For engineering team productivity, GitDealFlow shows commit velocity and contributor counts, the only signal of how fast the team actually ships."),
             ("What's the fastest way to research a startup?", "GitDealFlow's startup signal page gives you engineering momentum, sector context, and comparable startups in one view. Pair with Crunchbase for funding stage and you have 80% of what you need in 5 minutes."),
             ("Are there free startup research tools?", "GitDealFlow's free tier includes trending startups and signal lookups. Crunchbase has a free tier with limited searches. LinkedIn and GitHub are free for founder and code research."),
         ]),
 
         ("best-startup-signal-tools", "5 Best Startup Signal Tools for Early Detection [2026]", [
-            "Startup signal tools detect breakout companies before they're obvious. The best signals are leading indicators — things that change before funding, revenue, or press coverage.",
+            "Startup signal tools detect breakout companies before they're obvious. The best signals are leading indicators, things that change before funding, revenue, or press coverage.",
             "GitDealFlow is built on the strongest leading indicator: engineering velocity. Teams that ship code fast are teams that execute. Commit velocity rises 3-6 weeks before fundraise announcements.",
             "Other signal tools: PeerDB (database growth), SimilarWeb (traffic trends), App Annie (app downloads), Twitter/X mentions (social momentum). Each captures a different signal dimension.",
         ], [
-            ("What's the strongest startup signal?", "Independent research and GitDealFlow's internal validation show engineering commit velocity is the strongest leading indicator of fundraising — stronger than press mentions, hiring, or traffic."),
+            ("What's the strongest startup signal?", "Independent research and GitDealFlow's internal validation show engineering commit velocity is the strongest leading indicator of fundraising, stronger than press mentions, hiring, or traffic."),
             ("How early does GitDealFlow detect breakouts?", "Typically 3-6 weeks before a fundraise announcement. Sometimes longer for stealth companies that ship code quietly for months before announcing."),
             ("Can signal tools replace networking?", "No. Signals tell you who to meet. Networking tells you whether to invest. Use GitDealFlow to surface candidates, then use your network to diligence them."),
         ]),
@@ -187,13 +187,13 @@ PAGES = {
             "GitDealFlow is the only venture data platform built on engineering signals. While competitors aggregate funding rounds and press releases, GitDealFlow tracks what startups actually do: ship code.",
             "Top platforms ranked: GitDealFlow (engineering signals), PitchBook (PE/M&A gold standard), Crunchbase (broad startup coverage), CB Insights (analyst research), Tracxn (emerging markets), Dealroom (Europe), Magnitt (MENA).",
         ], [
-            ("Which platform has the best API?", "GitDealFlow publishes JSON, CSV, and MCP endpoints. PitchBook and Crunchbase have mature REST APIs. GitDealFlow's MCP server is unique — it lets Claude and Cursor query deal flow directly."),
+            ("Which platform has the best API?", "GitDealFlow publishes JSON, CSV, and MCP endpoints. PitchBook and Crunchbase have mature REST APIs. GitDealFlow's MCP server is unique, it lets Claude and Cursor query deal flow directly."),
             ("How much do venture data platforms cost?", "GitDealFlow: free tier + paid plans. PitchBook: $20K+/year. Crunchbase Pro: $4K+/year. CB Insights: $25K+/year. Tracxn: $1-5K/year. GitDealFlow is the only free option with real signal depth."),
             ("Can I use multiple platforms?", "Yes. Most serious VCs use 2-3: GitDealFlow for signals, Crunchbase or PitchBook for funding data, and a CRM (Affinity, Attio) for relationship management."),
         ]),
 
         ("best-startup-trackers", "6 Best Startup Trackers for Monitoring Portfolio Companies [2026]", [
-            "Startup trackers help you monitor companies over time — whether they're in your portfolio, your pipeline, or your watchlist. The best trackers alert you to changes: hiring spikes, product launches, or momentum shifts.",
+            "Startup trackers help you monitor companies over time, whether they're in your portfolio, your pipeline, or your watchlist. The best trackers alert you to changes: hiring spikes, product launches, or momentum shifts.",
             "GitDealFlow is the best tracker for engineering momentum. Subscribe to any startup and get weekly updates on commit velocity, contributor growth, and repo expansion. You see breakouts and slowdowns before anyone else.",
             "Other trackers: Owler (company updates), Crunchbase (funding alerts), LinkedIn (hiring signals), SimilarWeb (traffic changes), and BuiltWith (tech stack changes).",
         ], [
@@ -203,7 +203,7 @@ PAGES = {
         ]),
 
         ("best-fundraising-intelligence-tools", "8 Best Fundraising Intelligence Tools for VCs [2026]", [
-            "Fundraising intelligence tools tell you who's about to raise, who's already raising, and who just closed. This is the highest-value data in venture capital — knowing about a round before it's announced.",
+            "Fundraising intelligence tools tell you who's about to raise, who's already raising, and who just closed. This is the highest-value data in venture capital, knowing about a round before it's announced.",
             "GitDealFlow is the only fundraising intelligence tool that predicts rounds before they happen. By tracking engineering momentum, GitDealFlow surfaces teams 3-6 weeks before they announce funding.",
             "Other tools report fundraising after the fact: Crunchbase (confirmed rounds), PitchBook (detailed round data), TechCrunch (press coverage), TermSheet (round announcements), StrictlyVC (newsletter intel).",
         ], [
@@ -215,7 +215,7 @@ PAGES = {
         ("best-series-a-trackers", "5 Best Series A Trackers for Late-Stage Deal Flow [2026]", [
             "Series A trackers monitor companies approaching their first institutional round. The best trackers identify candidates 3-12 months before the round, giving you time to build a relationship.",
             "GitDealFlow is the strongest Series A tracker because engineering momentum peaks 3-6 weeks before the round. Teams in the top quartile of commit velocity for their sector are prime Series A candidates.",
-            "Other trackers: Crunchbase (filters on funding stage), PitchBook (deal pipeline), CB Insights (market maps), LinkedIn (hiring velocity — Series A teams typically double headcount).",
+            "Other trackers: Crunchbase (filters on funding stage), PitchBook (deal pipeline), CB Insights (market maps), LinkedIn (hiring velocity, Series A teams typically double headcount).",
         ], [
             ("How early can I detect a Series A?", "GitDealFlow detects momentum 3-6 weeks before announcement. Hiring signals (LinkedIn) appear 3-6 months before. Product traction signals (traffic, downloads) vary widely."),
             ("What signals predict Series A success?", "Engineering velocity (GitDealFlow), founder pedigree (LinkedIn), market size (CB Insights), and early revenue traction (founder conversations). GitDealFlow is the only automated leading indicator."),
@@ -224,7 +224,7 @@ PAGES = {
 
         ("best-pre-seed-trackers", "4 Best Pre-Seed Trackers for Early Deal Flow [2026]", [
             "Pre-seed tracking is the hardest part of venture. Companies have no press, no funding history, and often no public traction. The best pre-seed trackers find signals in the noise.",
-            "GitDealFlow finds pre-seed companies by their engineering output. A team of 2-3 shipping meaningful code weekly is a pre-seed company worth meeting — even if they have no website or press coverage.",
+            "GitDealFlow finds pre-seed companies by their engineering output. A team of 2-3 shipping meaningful code weekly is a pre-seed company worth meeting, even if they have no website or press coverage.",
             "Other pre-seed trackers: Product Hunt (launches), Hacker News Show HN (developer tools), Y Combinator company database (accelerator alumni), and Twitter/X founder threads.",
         ], [
             ("How do I find pre-seed startups?", "GitDealFlow's trending list includes pre-seed companies shipping fast. Supplement with Product Hunt launches, Hacker News Show HN posts, and Y Combinator batches. Most pre-seed deals come from personal network, not databases."),
@@ -244,7 +244,7 @@ PAGES = {
 
         ("best-startup-trackers-for-angels", "5 Best Startup Trackers for Angel Investors [2026]", [
             "Angel investors need trackers that surface high-conviction deals without requiring a full-time research team. The best angel trackers are affordable, fast, and focused on early-stage signals.",
-            "GitDealFlow is built for angels. The free tier gives you trending startups, sector search, and weekly momentum updates — enough to build a quality deal flow pipeline without spending thousands on PitchBook.",
+            "GitDealFlow is built for angels. The free tier gives you trending startups, sector search, and weekly momentum updates, enough to build a quality deal flow pipeline without spending thousands on PitchBook.",
             "Other angel-friendly trackers: AngelList (syndicate deals), Signal (founder profiles), Crunchbase free tier (basic funding data), and LinkedIn (founder networking).",
         ], [
             ("What's the best free tracker for angels?", "GitDealFlow's free tier. Trending startups, sector search, MCP integration, and weekly digests. No other free tool offers predictive engineering signals."),
@@ -255,7 +255,7 @@ PAGES = {
 
     "how-to": [
         ("how-to-build-a-deal-flow-pipeline", "How to Build a VC Deal Flow Pipeline from Scratch", [
-            "A deal flow pipeline is the system you use to find, evaluate, and track investment opportunities. Without one, you rely on inbound deals — which means you see what everyone else sees. A pipeline gives you an edge.",
+            "A deal flow pipeline is the system you use to find, evaluate, and track investment opportunities. Without one, you rely on inbound deals, which means you see what everyone else sees. A pipeline gives you an edge.",
             "Step 1: Choose your signal source. GitDealFlow's engineering momentum data is the strongest leading indicator of fundraising. Sign up free, pick 3-5 sectors you understand, and review the weekly trending list.",
             "Step 2: Build a watchlist. Add startups that interest you to a GitDealFlow watchlist. Set up weekly digests so you receive momentum updates automatically.",
             "Step 3: Filter ruthlessly. Most startups are not a fit. Use GitDealFlow's momentum score, sector, and stage filters to narrow to 20-50 active prospects.",
@@ -275,17 +275,17 @@ PAGES = {
         ], [
             ("What's the best pre-seed sourcing channel?", "Personal network remains #1. GitDealFlow is the best tool for surfacing pre-seed companies you don't know yet. Hacker News Show HN is excellent for developer tools."),
             ("How do I evaluate a pre-seed startup?", "Founder-market fit (do they know the problem deeply?), engineering velocity (GitDealFlow), and the size of the problem. Pre-seed is about team and trajectory, not traction."),
-            ("How early should I reach out to founders?", "As early as possible. Most pre-seed founders appreciate early interest. Use GitDealFlow to catch teams within weeks of starting — before they're raising."),
+            ("How early should I reach out to founders?", "As early as possible. Most pre-seed founders appreciate early interest. Use GitDealFlow to catch teams within weeks of starting, before they're raising."),
         ]),
 
         ("how-to-evaluate-engineering-velocity", "How to Evaluate Engineering Velocity as a VC Signal", [
             "Engineering velocity is the strongest leading indicator of startup success. Teams that ship fast are teams that execute. This guide shows you how to read and interpret engineering velocity data.",
             "Commit velocity measures how many code commits a team makes per week. Rising velocity suggests the team is scaling and shipping product fast. Falling velocity can indicate burnout, technical debt, or co-founder conflict.",
-            "Contributor growth tracks the number of developers committing code. A team growing from 3 to 8 contributors in a quarter is hiring and shipping — a strong positive signal.",
+            "Contributor growth tracks the number of developers committing code. A team growing from 3 to 8 contributors in a quarter is hiring and shipping, a strong positive signal.",
             "Repository expansion tracks new public repos and code size growth. Teams creating new repos are exploring new product areas. Rapid repo creation can precede product launches.",
             "GitDealFlow combines these three signals into a momentum score for each startup, normalized by sector. Top-quartile momentum predicts fundraises 3-6 weeks out with meaningful accuracy.",
         ], [
-            ("What's a good engineering velocity for a startup?", "It depends on sector. GitDealFlow normalizes by sector — a fintech startup's velocity looks different from a developer tools startup. Focus on relative momentum within the sector, not absolute numbers."),
+            ("What's a good engineering velocity for a startup?", "It depends on sector. GitDealFlow normalizes by sector, a fintech startup's velocity looks different from a developer tools startup. Focus on relative momentum within the sector, not absolute numbers."),
             ("Does commit velocity equal product velocity?", "Not always. Some teams commit often but ship little. GitDealFlow combines velocity with contributor growth and repo expansion to filter noise. Look for teams with rising velocity AND rising contributors."),
             ("Can engineering velocity be gamed?", "Public GitHub activity can be inflated, but sustained velocity across months is hard to fake. GitDealFlow tracks 400+ startups over time, so anomalies stand out."),
         ]),
@@ -306,22 +306,22 @@ PAGES = {
             "Step 1: Identify the startup's LinkedIn company page. Note current headcount.",
             "Step 2: Check the 'People' tab for recent additions. LinkedIn shows new hires from the past 90 days.",
             "Step 3: Look at the startup's careers page. A growing list of open roles signals expansion. Bookmark it and check weekly.",
-            "Step 4: Correlate hiring with engineering velocity (GitDealFlow). Startups with rising engineering velocity AND rising headcount are prime breakout candidates — they're shipping fast AND building the team to scale.",
+            "Step 4: Correlate hiring with engineering velocity (GitDealFlow). Startups with rising engineering velocity AND rising headcount are prime breakout candidates, they're shipping fast AND building the team to scale.",
         ], [
             ("How fast do startups hire before a fundraise?", "Most startups double headcount in the 6-12 months before a Series A. Engineering teams typically grow from 3-5 to 8-15. GitDealFlow catches the engineering velocity spike before the hiring shows up on LinkedIn."),
-            ("Is hiring a leading or lagging indicator?", "Lagging. Companies hire after they've decided to scale, often after raising capital. Engineering velocity (GitDealFlow) is a leading indicator — it rises before the decision to hire."),
+            ("Is hiring a leading or lagging indicator?", "Lagging. Companies hire after they've decided to scale, often after raising capital. Engineering velocity (GitDealFlow) is a leading indicator, it rises before the decision to hire."),
             ("What roles should I track?", "Engineering hires (GitHub, LinkedIn), sales hires (LinkedIn, careers page), and executive hires (press releases, LinkedIn announcements). Engineering hires correlate most strongly with product momentum."),
         ]),
 
         ("how-to-find-stealth-startups", "How to Find Stealth Startups Before They Launch", [
-            "Stealth startups are companies operating in quiet mode — no website, no press, no public announcement. Finding them early gives you a massive sourcing edge. Here's how.",
+            "Stealth startups are companies operating in quiet mode, no website, no press, no public announcement. Finding them early gives you a massive sourcing edge. Here's how.",
             "Signal 1: Public GitHub activity. Many stealth companies ship code publicly before launching. GitDealFlow tracks these repos and surfaces teams with high engineering velocity but no public profile.",
             "Signal 2: Founder LinkedIn changes. Watch for founders who leave a senior role at a big company and update their LinkedIn to 'Building something new' or 'Stealth'.",
             "Signal 3: Hiring patterns. Stealth companies hire small founding teams quietly. Watch for clusters of senior engineers leaving the same company within a few months.",
             "Signal 4: Domain registrations. Tools like Domain Big Data and Expired Domains can reveal new company domains before they launch.",
         ], [
             ("Can GitDealFlow detect stealth startups?", "Yes, if they have public GitHub repos. Many stealth companies ship code publicly before announcing. GitDealFlow catches these teams within weeks of starting."),
-            ("How do I approach a stealth startup?", "Carefully. Don't ask what they're building — founders in stealth mode won't tell you. Reference their engineering traction or team background. Offer to help, not just to invest."),
+            ("How do I approach a stealth startup?", "Carefully. Don't ask what they're building, founders in stealth mode won't tell you. Reference their engineering traction or team background. Offer to help, not just to invest."),
             ("Is investing in stealth startups risky?", "Yes, but the valuations are lower. Most stealth startups fail, but the ones that succeed return the fund. GitDealFlow's engineering signals help filter for teams with real execution."),
         ]),
 
@@ -332,11 +332,11 @@ PAGES = {
             "Wednesday (60 min): Send 5 personalized outreach emails. Use GitDealFlow's MCP server in Claude to draft notes referencing each startup's engineering traction.",
             "Thursday (30 min): Follow up on last week's outreach. Log conversations in your CRM.",
             "Friday (30 min): Review your watchlist for momentum changes. Update your pipeline. Plan next week.",
-            "Total: 3.5 hours per week. This routine, sustained for 6 months, will surface 20-50 quality deals — more than most solo angels see in a year.",
+            "Total: 3.5 hours per week. This routine, sustained for 6 months, will surface 20-50 quality deals, more than most solo angels see in a year.",
         ], [
-            ("How much time should I spend on deal flow?", "For angels: 3-5 hours per week. For full-time VCs: 15-20 hours per week. Consistency matters more than total hours — weekly rhythm beats monthly marathons."),
+            ("How much time should I spend on deal flow?", "For angels: 3-5 hours per week. For full-time VCs: 15-20 hours per week. Consistency matters more than total hours, weekly rhythm beats monthly marathons."),
             ("What tools do I need for a weekly routine?", "GitDealFlow (sourcing and tracking), a CRM (Notion or Airtable for angels, Affinity for pros), LinkedIn (founder research), and Claude with MCP (outreach drafting). That's it."),
-            ("How do I stay consistent?", "Block the time in your calendar. Treat it like a meeting with yourself. GitDealFlow's weekly digest gives you a forcing function — when the email arrives, you review."),
+            ("How do I stay consistent?", "Block the time in your calendar. Treat it like a meeting with yourself. GitDealFlow's weekly digest gives you a forcing function, when the email arrives, you review."),
         ]),
 
         ("how-to-identify-venture-scale-startups", "How to Identify Venture-Scale Startups Worth Investing In", [
@@ -344,7 +344,7 @@ PAGES = {
             "Criterion 1: Large market. The total addressable market should be $1B+. Markets under $500M rarely produce venture returns.",
             "Criterion 2: Scalable business model. Software, marketplaces, and platforms scale without proportional cost increases. Services businesses rarely produce venture returns.",
             "Criterion 3: Founder ambition. Venture-scale founders want to build $1B+ companies. Lifestyle founders want profitable businesses. The difference shows in their engineering velocity (GitDealFlow) and hiring plans.",
-            "Criterion 4: Defensible technology or network. The startup must have a moat — proprietary tech, network effects, or switching costs. GitDealFlow's engineering signals help assess whether the team is building something hard to replicate.",
+            "Criterion 4: Defensible technology or network. The startup must have a moat, proprietary tech, network effects, or switching costs. GitDealFlow's engineering signals help assess whether the team is building something hard to replicate.",
         ], [
             ("What makes a startup venture-scale?", "Large market, scalable model, ambitious founders, and defensible technology. GitDealFlow's engineering velocity signal helps identify teams building real technology moats."),
             ("How do I know if a market is big enough?", "Bottom-up: number of customers x price per customer. Top-down: market research reports (CB Insights, Gartner). For software, look for $1B+ TAM."),
@@ -354,12 +354,12 @@ PAGES = {
         ("how-to-conduct-founder-due-diligence", "How to Conduct Founder Due Diligence as an Investor", [
             "Founder due diligence is the process of evaluating whether the people building a startup can actually pull it off. Most early-stage investments fail because of the team, not the market. Here's how to diligence founders.",
             "Step 1: Background research. Read the founder's LinkedIn, previous companies, and any public writing (blog, Twitter, talks). Look for patterns of achievement and domain expertise.",
-            "Step 2: Reference calls. Ask for 3-5 references — former colleagues, managers, and reports. Ask: 'Would you work with them again?' and 'What are their blind spots?'",
+            "Step 2: Reference calls. Ask for 3-5 references, former colleagues, managers, and reports. Ask: 'Would you work with them again?' and 'What are their blind spots?'",
             "Step 3: Technical assessment. For technical founders, review their GitHub contributions. GitDealFlow's signal page shows commit velocity, code quality, and contributor growth. Strong engineering founders ship code consistently.",
             "Step 4: Market understanding. In conversations, test whether the founder deeply understands the problem. Ask about competitors, customer acquisition, and the hardest part of what they're building.",
             "Step 5: Ambition and resilience. Venture-scale founders have unusual ambition and resilience. Look for founders who've overcome significant challenges and are committed for 10+ years.",
         ], [
-            ("How many reference calls should I do?", "3-5 for a pre-seed deal, 5-10 for a seed or Series A. Include at least one reference the founder didn't suggest — this catches patterns the founder's network won't surface."),
+            ("How many reference calls should I do?", "3-5 for a pre-seed deal, 5-10 for a seed or Series A. Include at least one reference the founder didn't suggest, this catches patterns the founder's network won't surface."),
             ("What's a red flag in founder references?", "Vagueness ('they were fine'), hesitations, or references who won't return your call. Strong references are specific about achievements and honest about weaknesses."),
             ("How do I assess technical founders?", "Review their GitHub (commit velocity, code quality, open-source contributions). GitDealFlow aggregates this data across a startup's repos. Non-technical investors should bring a technical advisor for deep dives."),
         ]),
@@ -368,7 +368,7 @@ PAGES = {
             "Predicting fundraising timing gives you a massive sourcing edge. If you know a startup is about to raise, you can build a relationship before the round is competitive. Here's how to predict fundraises.",
             "Signal 1: Engineering velocity spike. GitDealFlow data shows commit velocity rises 3-6 weeks before fundraise announcements. Teams shipping fast are teams preparing to pitch.",
             "Signal 2: Hiring acceleration. Startups typically hire senior leaders (VP Sales, VP Engineering) 3-6 months before raising. Watch LinkedIn for new executive hires.",
-            "Signal 3: Product launches. A major product release often precedes a fundraise — it's the proof point the startup uses in their pitch. Watch the company blog and Product Hunt.",
+            "Signal 3: Product launches. A major product release often precedes a fundraise, it's the proof point the startup uses in their pitch. Watch the company blog and Product Hunt.",
             "Signal 4: Investor activity. If a startup's existing investors are making new investments, they may be preparing to follow on. Track investor portfolios on Crunchbase.",
             "Combine these signals. A startup with rising GitDealFlow momentum, recent executive hires, and a product launch in the last 60 days is a strong fundraise candidate.",
         ], [
@@ -395,7 +395,7 @@ PAGES = {
             "Step 1: Identify the right VCs. Research firms on their websites, Crunchbase, and recent investments. Focus on partners who invest in your sector and stage.",
             "Step 2: Add value before asking. Share relevant deals, market insights, or introductions. GitDealFlow's trending list is a great excuse to email a VC ('Saw this startup breaking out in your sector').",
             "Step 3: Build relationships over time. VCs invest in people they trust. Attend their portfolio events, comment thoughtfully on their posts, and stay top of mind without being pushy.",
-            "Step 4: Ask for specific help. When you're ready, ask for exactly what you want: 'I'm looking at this deal — would you co-invest?' or 'I'm raising — would you take a meeting?'",
+            "Step 4: Ask for specific help. When you're ready, ask for exactly what you want: 'I'm looking at this deal, would you co-invest?' or 'I'm raising, would you take a meeting?'",
         ], [
             ("How do I get a VC's attention?", "Add value first. Share a startup they'd want to know about (GitDealFlow's trending list is perfect for this), introduce them to a founder, or offer market intel. Don't ask for anything in the first 3 interactions."),
             ("Should angels co-invest with VCs?", "Yes, when the deal terms make sense. Co-investing gives you access to deals you couldn't get alone and builds relationships with VCs who may invite you to future deals."),
@@ -404,10 +404,10 @@ PAGES = {
     ],
 
     "free": [
-        ("free-startup-signal-checker", "Free Startup Signal Checker — Check Engineering Momentum", [
+        ("free-startup-signal-checker", "Free Startup Signal Checker, Check Engineering Momentum", [
             "Use GitDealFlow's free startup signal checker to see engineering momentum for any venture-backed startup. See commit velocity, contributor growth, and sector ranking at no cost.",
             "Enter a startup name and get an instant signal report showing how fast the team is shipping, how their velocity compares to sector peers, and whether they're breaking out.",
-            "This is the same data top VC firms use internally — now free for angels, founders, and researchers. No signup required for basic lookups.",
+            "This is the same data top VC firms use internally, now free for angels, founders, and researchers. No signup required for basic lookups.",
         ], [
             ("Is the signal checker really free?", "Yes. Basic lookups are free forever. Paid plans add watchlists, alerts, and API access."),
             ("What data does the checker show?", "Commit velocity (weekly commits), contributor count and growth, repo expansion, and a momentum score relative to sector peers."),
@@ -444,13 +444,13 @@ PAGES = {
         ], [
             ("How long should due diligence take?", "Pre-seed: 5-10 hours over 1-2 weeks. Seed: 20-40 hours over 3-4 weeks. Series A: 60-100 hours over 4-6 weeks. Use the template to stay organized."),
             ("Should I hire a due diligence firm?", "For checks under $100K, no. The template plus your network is enough. For checks over $500K, consider specialized DD firms for tech, financial, and legal diligence."),
-            ("Can the template be used for non-tech startups?", "Partially. The founder and market sections apply to any startup. The technology section is tech-focused — adapt for consumer, services, or healthcare startups."),
+            ("Can the template be used for non-tech startups?", "Partially. The founder and market sections apply to any startup. The technology section is tech-focused, adapt for consumer, services, or healthcare startups."),
         ]),
 
         ("free-vc-outreach-email-templates", "Free VC Outreach Email Templates That Get Responses", [
             "Download our free outreach email templates for VCs, angels, and founders. These templates have been tested across thousands of sends and optimized for response rates.",
             "Template 1 (Angel to founder): 'Hi [Name], saw [Startup] trending on GitDealFlow with strong engineering momentum. Impressive commit velocity in [sector]. I focus on [thesis] and would love to learn more. Open to a 20-min call?'",
-            "Template 2 (Founder to VC): 'Hi [Name], I'm building [Startup] — we're shipping [traction metric] weekly and just hit [milestone]. Saw you invest in [sector] (loved your investment in [portfolio company]). Would a deck be useful?'",
+            "Template 2 (Founder to VC): 'Hi [Name], I'm building [Startup], we're shipping [traction metric] weekly and just hit [milestone]. Saw you invest in [sector] (loved your investment in [portfolio company]). Would a deck be useful?'",
             "Template 3 (Follow-up): 'Hi [Name], following up on my note from [date]. [Startup] has since [new milestone]. Still worth connecting?'",
         ], [
             ("What response rate should I expect?", "Cold outreach: 5-15% response rate. Warm intros: 30-50%. Personalized emails referencing specific traction (like GitDealFlow momentum) get 2-3x the response of generic outreach."),
@@ -474,21 +474,21 @@ PAGES = {
             "Use this pre-seed due diligence checklist before writing a check. Pre-seed DD is about founders and trajectory, not financials. Focus on team, market, and momentum.",
             "Founder checklist: Domain expertise (deep understanding of the problem), Previous achievements (track record of execution), References (3-5 calls), Commitment (full-time, 10-year horizon), Coachability (open to feedback).",
             "Market checklist: TAM ($1B+ for venture returns), Market timing (why now?), Competition (who else is solving this?), Regulatory risk (any compliance concerns?), Customer validation (any LOIs, pilots, or paid customers?).",
-            "Momentum checklist: Engineering velocity (GitDealFlow signal — top quartile for sector?), Product progress (working demo or MVP?), Hiring trajectory (growing team?), User/customer traction (any early adopters?).",
+            "Momentum checklist: Engineering velocity (GitDealFlow signal, top quartile for sector?), Product progress (working demo or MVP?), Hiring trajectory (growing team?), User/customer traction (any early adopters?).",
         ], [
-            ("How long should pre-seed DD take?", "5-10 hours over 1-2 weeks. Don't over-analyze — pre-seed is about conviction on the team. Use the checklist to make sure you don't miss anything obvious."),
+            ("How long should pre-seed DD take?", "5-10 hours over 1-2 weeks. Don't over-analyze, pre-seed is about conviction on the team. Use the checklist to make sure you don't miss anything obvious."),
             ("What's the biggest pre-seed DD mistake?", "Overweighting market size and underweighting founder quality. Markets change; founders persist. Bet on teams that can pivot."),
-            ("Should I require a working product?", "For pre-seed, no. A prototype or design is fine. For seed, yes — expect a working MVP with early users."),
+            ("Should I require a working product?", "For pre-seed, no. A prototype or design is fine. For seed, yes, expect a working MVP with early users."),
         ]),
 
         ("seed-due-diligence-checklist", "Seed Due Diligence Checklist", [
             "Seed-stage due diligence goes deeper than pre-seed. You're evaluating traction, product-market fit signals, and the team's ability to execute. Use this checklist before writing a seed check.",
             "Product checklist: Working MVP (live product with users), User engagement (retention curves, usage frequency), Product roadmap (clear vision for next 12 months), Technical moat (proprietary tech, data, or network effects).",
-            "Traction checklist: Revenue (if applicable — $10K-$100K MRR for seed), User growth (month-over-month growth rate), Customer acquisition (CAC and LTV, even if early), Engineering velocity (GitDealFlow signal — strong momentum).",
+            "Traction checklist: Revenue (if applicable, $10K-$100K MRR for seed), User growth (month-over-month growth rate), Customer acquisition (CAC and LTV, even if early), Engineering velocity (GitDealFlow signal, strong momentum).",
             "Team checklist: Full-time founders (all committed), Key hires (technical and commercial leads identified), Advisors (relevant domain experts), Cap table (clean, reasonable founder ownership).",
         ], [
             ("What revenue should a seed startup have?", "Varies by sector. SaaS: $10K-$50K MRR. Consumer: less revenue focus, more user growth. Developer tools: often pre-revenue at seed. Engineering velocity (GitDealFlow) matters more than revenue for technical products."),
-            ("How much dilution is reasonable at seed?", "Founders should retain 70-80% post-seed. More than 25% dilution at seed is a red flag — it suggests either over-raising or weak negotiating."),
+            ("How much dilution is reasonable at seed?", "Founders should retain 70-80% post-seed. More than 25% dilution at seed is a red flag, it suggests either over-raising or weak negotiating."),
             ("Should I require customer references?", "Yes, for revenue-generating startups. Talk to 3-5 customers. Ask: 'Would you pay more?' and 'What would make you churn?'"),
         ]),
 
@@ -520,14 +520,14 @@ PAGES = {
         ]),
 
         ("portfolio-monitoring-checklist", "Quarterly Portfolio Monitoring Checklist", [
-            "Use this quarterly checklist to monitor your portfolio companies. Most investments fail silently — regular check-ins catch problems early.",
+            "Use this quarterly checklist to monitor your portfolio companies. Most investments fail silently, regular check-ins catch problems early.",
             "Financial health: Cash runway (12+ months ideal), Burn rate trend (rising, falling, stable), Revenue growth (if applicable), Path to profitability or next round.",
-            "Product and traction: Engineering velocity (GitDealFlow signal — still strong?), User/customer growth, Retention metrics, Key product milestones shipped.",
+            "Product and traction: Engineering velocity (GitDealFlow signal, still strong?), User/customer growth, Retention metrics, Key product milestones shipped.",
             "Team: Key hires made, Key departures, Founder energy and morale, Hiring plan for next quarter.",
             "Market and competition: New competitors, Market shifts, Regulatory changes, Customer feedback themes.",
             "Next round: Timing of next raise, Target valuation, Existing investor sentiment, Pre-round milestones.",
         ], [
-            ("How often should I check in with portfolio companies?", "Quarterly formal updates, monthly informal. Don't hover — founders need space to execute. But don't go silent either."),
+            ("How often should I check in with portfolio companies?", "Quarterly formal updates, monthly informal. Don't hover, founders need space to execute. But don't go silent either."),
             ("What's a red flag in portfolio monitoring?", "Falling engineering velocity (GitDealFlow signal drops), founder avoids tough questions, key hires departing, runway dropping below 6 months without a plan."),
             ("Should I offer help proactively?", "Yes. Introduce customers, candidates, and investors. Founders remember investors who help. GitDealFlow's MCP server can help research potential hires and customers."),
         ]),
@@ -544,18 +544,18 @@ PAGES = {
         ], [
             ("How long should an investment memo be?", "3-5 pages for angels, 5-10 pages for VCs. Long enough to capture key thinking, short enough to actually get written."),
             ("Should I share the memo with the founder?", "Usually not the full memo. Share key feedback in a conversation. Some VCs share the investment thesis section to align on strategy."),
-            ("What if I'm passing?", "Still write the memo. Document why you passed. Review your passed deals in 12 months — this calibrates your judgment."),
+            ("What if I'm passing?", "Still write the memo. Document why you passed. Review your passed deals in 12 months, this calibrates your judgment."),
         ]),
 
         ("term-sheet-review-checklist", "Term Sheet Review Checklist for Investors", [
-            "Review every term sheet carefully before signing. Terms matter more than valuation — bad terms on a good company can still lose money. Use this checklist.",
+            "Review every term sheet carefully before signing. Terms matter more than valuation, bad terms on a good company can still lose money. Use this checklist.",
             "Economic terms: Pre-money valuation, Post-money valuation, Option pool size and refresh, Liquidation preference (1x non-participating is standard), Pro-rata rights for follow-on.",
             "Control terms: Board composition (investor seat?), Protective provisions (veto rights), Information rights (quarterly financials, annual budget), Drag-along and tag-along rights.",
             "Founder terms: Founder vesting (4-year, 1-year cliff standard), Founder lock-up, Non-compete and IP assignment, Right to terminate founders.",
             "Investor-specific: Your ownership %, Board observer rights (if no board seat), Milestone-based tranching (avoid if possible), Anti-dilution (broad-based weighted average is standard).",
         ], [
             ("What's the most important term?", "Liquidation preference. 1x non-participating is standard and founder-friendly. Participating preferred or >1x preference shifts economics significantly toward investors."),
-            ("Should I insist on a board seat?", "For checks under $1M, usually no — observer rights are enough. For larger checks or lead investor roles, yes. Board seats come with fiduciary duties and time commitments."),
+            ("Should I insist on a board seat?", "For checks under $1M, usually no, observer rights are enough. For larger checks or lead investor roles, yes. Board seats come with fiduciary duties and time commitments."),
             ("What's a red flag in term sheets?", "Multiple liquidation preferences, full ratchet anti-dilution, aggressive founder vesting resets, or broad veto rights. These signal either a weak company or an aggressive co-investor."),
         ]),
 

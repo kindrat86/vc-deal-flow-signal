@@ -11,12 +11,12 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 const SITE = "https://signals.gitdealflow.com";
 
 export const metadata: Metadata = {
-  title: "Top 100 GitHub-Signal Startups — Weekly Index",
+  title: "Top 100 GitHub-Signal Startups, Weekly Index",
   description:
     "Weekly index of the 100 startups with the strongest GitHub engineering signals, refreshed every Monday.",
   alternates: { canonical: "/weekly/top-100" },
   openGraph: {
-    title: "Top 100 GitHub-Signal Startups — Weekly Index",
+    title: "Top 100 GitHub-Signal Startups, Weekly Index",
     description:
       "Composite leaderboard of the 100 startups with the strongest GitHub engineering signals, refreshed every Monday.",
     type: "website",
@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Top 100 GitHub-Signal Startups — Weekly Index",
+    title: "Top 100 GitHub-Signal Startups, Weekly Index",
     description:
       "Composite leaderboard refreshed weekly. Commit velocity + contributor growth + raw scale + team size.",
   },
@@ -53,7 +53,7 @@ export default function Top100ArchivePage() {
       {
         "@type": "CollectionPage",
         "@id": `${SITE}/weekly/top-100#collection`,
-        name: "Top 100 GitHub-Signal Startups — Weekly Index",
+        name: "Top 100 GitHub-Signal Startups, Weekly Index",
         description:
           "Weekly ranked index of the 100 startups with the strongest GitHub engineering signals across 15 sectors.",
         url: `${SITE}/weekly/top-100`,
@@ -122,8 +122,8 @@ export default function Top100ArchivePage() {
         >
           A weekly composite leaderboard of the 100 startups with the strongest
           GitHub engineering signals across 15 sectors. The Signal Score
-          combines four capped components — commit velocity change, contributor
-          growth, raw commit scale, and contributor count — so no single metric
+          combines four capped components, commit velocity change, contributor
+          growth, raw commit scale, and contributor count, so no single metric
           dominates. Refreshed every Monday from the same dataset that powers
           the sector pages. If your question is which startups are moving now,
           this is the recurring shortlist page rather than a static startup
@@ -176,7 +176,7 @@ export default function Top100ArchivePage() {
                     : e.slug}
                 </p>
                 <h2 className="text-gray-100 font-semibold text-base mb-1 group-hover:text-sky-400 transition-colors">
-                  Top 100 GitHub-Signal Startups — {e.label}
+                  Top 100 GitHub-Signal Startups, {e.label}
                 </h2>
                 <p className="text-gray-400 text-sm leading-relaxed">
                   {e.totalRanked} distinct startups ranked. #1 this week:{" "}

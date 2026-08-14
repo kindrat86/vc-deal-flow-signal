@@ -10,7 +10,7 @@ import {
 } from "@/lib/sector-sweep-setter";
 
 /**
- * /api/sector-sweep-brief — Brunson DotCom Ch 18 (Cart Funnel) + Ch 23
+ * /api/sector-sweep-brief, Brunson DotCom Ch 18 (Cart Funnel) + Ch 23
  * (Application Funnel) + Expert Secrets Ch 16 (The Setter / Magic Script).
  *
  * Receives the 5-question Sector Sweep brief from /sector-sweep, validates,
@@ -23,9 +23,9 @@ import {
  *   T+0   Instant ack with thesis quoted back, specific UTC reply deadline,
  *         and a sector-tailored sample table-of-contents (delivers part of
  *         the Sweep's value at submit-time, not 24h later).
- *   T+2h  Methodology grounding — links to /methodology + /scorecard.
- *   T+12h Drafting transparency — the question being nailed before reply.
- *   T+48h Soft follow-up — "the one question I'd want answered" + SWEEP /
+ *   T+2h  Methodology grounding, links to /methodology + /scorecard.
+ *   T+12h Drafting transparency, the question being nailed before reply.
+ *   T+48h Soft follow-up, "the one question I'd want answered" + SWEEP /
  *         DASHBOARD / NEITHER one-word reply CTA.
  *
  * The T+24h human reply (manual) is sent from The Data Nerd's inbox, signed
@@ -150,15 +150,15 @@ function briefEmailHtml(fields: {
 <div style="background:#ecfdf5;border-left:4px solid #10b981;padding:14px 18px;margin:20px 0;">
 <strong style="color:#065f46;font-size:12px;letter-spacing:1px;text-transform:uppercase;">Reply checklist (24-hour SLA)</strong>
 <ol style="margin:8px 0 0;padding-left:18px;font-size:13px;color:#064e3b;line-height:1.6;">
-<li>1-page fit assessment — is the Sweep right for what they described?</li>
-<li>Tailored table of contents (10–14 sections, sector-specific)</li>
+<li>1-page fit assessment, is the Sweep right for what they described?</li>
+<li>Tailored table of contents (10-14 sections, sector-specific)</li>
 <li>Personal Stripe buy link (use existing €1,997 link or a dedicated one)</li>
 <li>Honest "don't buy this" note if Q5 says they actually need the Dashboard</li>
 </ol>
 </div>
 <hr style="border:none;border-top:1px solid #e2e8f0;margin:24px 0;">
 <p style="color:#94a3b8;font-size:12px;line-height:1.5;">Submitted from ${f.ip} (${f.ua})<br>Form: https://signals.gitdealflow.com/sector-sweep#brief</p>
-<p style="color:#94a3b8;font-size:12px;">Reply directly to <a href="mailto:${f.email}" style="color:#0ea5e9;">${f.email}</a> &mdash; that's the prospect's verified email.</p>
+<p style="color:#94a3b8;font-size:12px;">Reply directly to <a href="mailto:${f.email}" style="color:#0ea5e9;">${f.email}</a>: that's the prospect's verified email.</p>
 </div>
 </body>
 </html>`;
@@ -187,7 +187,7 @@ export async function POST(request: Request) {
   }
 
   const ip = getClientIp(request);
-  // Tighter rate limit than /subscribe — Sweep is €1,997, should not see
+  // Tighter rate limit than /subscribe, Sweep is €1,997, should not see
   // >2 attempts/hr from one IP. Mirrors /api/sharp-application limits.
   const rl = checkRateLimit(`sector-sweep-brief:${ip}`, 2, 3600_000);
   if (!rl.allowed) {
@@ -269,7 +269,7 @@ export async function POST(request: Request) {
         bcc: "sales@sipiteno.com",
         to: TO_EMAIL,
         reply_to: email,
-        subject: `[Sector Sweep Brief] ${contact_name} — ${sector.slice(0, 60)}`,
+        subject: `[Sector Sweep Brief] ${contact_name}, ${sector.slice(0, 60)}`,
         html,
       }),
     });
@@ -280,7 +280,7 @@ export async function POST(request: Request) {
       return NextResponse.json(
         {
           error:
-            "Failed to deliver brief — please email signals@gitdealflow.com directly with the same answers",
+            "Failed to deliver brief, please email signals@gitdealflow.com directly with the same answers",
         },
         { status: 500, headers },
       );
@@ -289,7 +289,7 @@ export async function POST(request: Request) {
     // Keep the prospect on the list for future sends, not just this brief.
     await addToAudience(email);
 
-    // Brunson Setter heat-build — schedule the 4-step drip to the prospect.
+    // Brunson Setter heat-build, schedule the 4-step drip to the prospect.
     // Computed once here so the response payload, the T+0 ack, and the
     // scheduled emails all reference the SAME deadline timestamp.
     const deadline = computeReplyDeadline();
@@ -309,7 +309,7 @@ export async function POST(request: Request) {
       RESEND_API_KEY,
     );
     if (setterResult.failed > 0) {
-      // Log but do NOT fail the request — the internal brief has already
+      // Log but do NOT fail the request, the internal brief has already
       // landed at signals@gitdealflow.com so the human reply path still
       // works even if the heat-build drip partially failed. The Closer
       // can recover by replying earlier than the deadline.
@@ -345,7 +345,7 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         error:
-          "Server error — please email signals@gitdealflow.com directly with the same answers",
+          "Server error, please email signals@gitdealflow.com directly with the same answers",
       },
       { status: 500, headers },
     );

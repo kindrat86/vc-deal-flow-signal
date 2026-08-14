@@ -18,7 +18,7 @@ export default function DpaPage() {
     "@context": "https://schema.org",
     "@type": "WebPage",
     "@id": `${SITE}/dpa`,
-    name: "Data Processing Agreement — VC Deal Flow Signal",
+    name: "Data Processing Agreement, VC Deal Flow Signal",
     description: metadata.description,
     inLanguage: "en-US",
     isAccessibleForFree: true,
@@ -26,7 +26,7 @@ export default function DpaPage() {
     dateModified: EFFECTIVE,
     mainEntity: {
       "@type": "DigitalDocument",
-      name: "VC Deal Flow Signal — Data Processing Agreement (GDPR Art. 28)",
+      name: "VC Deal Flow Signal, Data Processing Agreement (GDPR Art. 28)",
       datePublished: EFFECTIVE,
       dateModified: EFFECTIVE,
       version: "2026-05-08.f38",
@@ -42,14 +42,14 @@ export default function DpaPage() {
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
       <header className="mb-8">
         <p className="text-sky-400 text-xs uppercase tracking-wider mb-2 font-semibold">Data Processing Agreement</p>
-        <h1 className="text-4xl font-bold text-gray-100 mb-3 leading-tight">DPA — GDPR Article 28</h1>
+        <h1 className="text-4xl font-bold text-gray-100 mb-3 leading-tight">DPA, GDPR Article 28</h1>
         <p className="text-gray-400 text-sm">Effective {EFFECTIVE} · Version 2026-05-08.f38</p>
       </header>
 
       <section className="mb-8 rounded-xl border border-sky-700/30 bg-sky-950/20 p-5 sm:p-6">
         <p className="text-sky-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">For the buyer doing diligence</p>
         <p className="text-gray-200 text-sm leading-relaxed">
-          Need a signed DPA before your firm can pay an invoice? That&apos;s this page. The version a non-lawyer can hand to legal: we process your subscribers&apos; <strong>email and billing record</strong> and nothing sensitive — <strong>no GDPR Art. 9 special categories</strong>. Email us and a counter-signed PDF comes back within five business days.
+          Need a signed DPA before your firm can pay an invoice? That&apos;s this page. The version a non-lawyer can hand to legal: we process your subscribers&apos; <strong>email and billing record</strong> and nothing sensitive, <strong>no GDPR Art. 9 special categories</strong>. Email us and a counter-signed PDF comes back within five business days.
         </p>
       </section>
 
@@ -91,7 +91,7 @@ export default function DpaPage() {
         <ul className="list-disc list-outside ml-5 space-y-1">
           <li>Hosting (Vercel EU primary, US failover) and edge compute.</li>
           <li>Subscription billing, refunds, and tax reporting (Stripe).</li>
-          <li>Transactional email — onboarding, weekly digest, drip sequences (Resend).</li>
+          <li>Transactional email, onboarding, weekly digest, drip sequences (Resend).</li>
           <li>Subscriber records and share tokens (PocketBase on Hetzner Helsinki).</li>
           <li>Pseudonymous product analytics, no PII (PostHog EU).</li>
         </ul>
@@ -107,8 +107,8 @@ export default function DpaPage() {
         <ol className="list-decimal list-outside ml-5 space-y-1">
           <li>Process Personal Data only on documented instructions from the Controller (the subscription contract is the documented instruction).</li>
           <li>Ensure persons authorised to process the data have committed themselves to confidentiality.</li>
-          <li>Implement appropriate technical and organisational measures (TOMs) — see <Link href="/security" className="text-sky-400 hover:underline">/security</Link> and <Link href="/.well-known/security-policy.json" className="text-emerald-400 hover:underline">security-policy.json</Link>.</li>
-          <li>Engage subprocessors only with prior general authorisation and 30-day notice of additions — see <Link href="/.well-known/subprocessors.json" className="text-emerald-400 hover:underline">/.well-known/subprocessors.json</Link>.</li>
+          <li>Implement appropriate technical and organisational measures (TOMs), see <Link href="/security" className="text-sky-400 hover:underline">/security</Link> and <Link href="/.well-known/security-policy.json" className="text-emerald-400 hover:underline">security-policy.json</Link>.</li>
+          <li>Engage subprocessors only with prior general authorisation and 30-day notice of additions, see <Link href="/.well-known/subprocessors.json" className="text-emerald-400 hover:underline">/.well-known/subprocessors.json</Link>.</li>
           <li>Assist the Controller in responding to data-subject requests (access, deletion, portability, etc.).</li>
           <li>Notify the Controller without undue delay (within 72 hours) of becoming aware of a Personal Data breach.</li>
           <li>At the Controller&apos;s choice, delete or return Personal Data after the end of services and delete existing copies, unless EU or Member State law requires retention.</li>
@@ -131,7 +131,7 @@ export default function DpaPage() {
         <p>This DPA is governed by Greek law and the EU GDPR. Disputes are subject to <Link href="/terms" className="text-sky-400 hover:underline">/terms §9</Link>.</p>
       </section>
 
-      <TrustPageOutro institutional acNote="Funds that can't pay an invoice without a signed DPA are exactly who the paid tiers were built for — so send the request and I counter-sign it myself, usually inside five business days. I'm slow on Slack and fast on the paperwork that actually matters." />
+      <TrustPageOutro institutional acNote="Funds that can't pay an invoice without a signed DPA are exactly who the paid tiers were built for, so send the request and I counter-sign it myself, usually inside five business days. I'm slow on Slack and fast on the paperwork that actually matters." />
 
       <footer className="mt-10 pt-6 border-t border-slate-800 text-sm text-gray-400">
         License: <a href="https://creativecommons.org/licenses/by/4.0/" className="text-sky-400 hover:underline">CC BY 4.0</a>. Trust hub: <Link href="/trust" className="text-sky-400 hover:underline">/trust</Link>.

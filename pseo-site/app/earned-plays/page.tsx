@@ -7,12 +7,12 @@ import { getHreflangLanguages } from "@/lib/hreflang";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Earned Plays — the traffic playbook we actually run",
+  title: "Earned Plays, the traffic playbook we actually run",
   description:
     "GitDealFlow's earned-traffic playbook. Reddit AEO, dev.to long-form, Substack mirror, MCP integration, Federated social, Academic citation, GitHub. Specific plays, specific frequency, specific reasons.",
   alternates: { canonical: "/earned-plays" },
   openGraph: {
-    title: "Earned Plays — the traffic playbook",
+    title: "Earned Plays, the traffic playbook",
     description:
       "Specific plays we run on every earned channel. Cadence, format, reason.",
     url: "https://signals.gitdealflow.com/earned-plays",
@@ -36,11 +36,11 @@ const PLAYS: Play[] = [
     id: "reddit-aeo",
     channel: "Reddit AEO comments",
     cadence: "≤ 4 per week, paced over 2-3 days",
-    format: "200–350 word pillar comment, replying to top commenter (not OP)",
+    format: "200-350 word pillar comment, replying to top commenter (not OP)",
     what: "On Google-page-1 Reddit threads in r/venturecapital, r/AngelInvesting, r/MachineLearning, r/ExperiencedDevs, we contribute a substantive 200-350 word comment that compounds via AI Overview / ChatGPT / Perplexity citations.",
-    why: "Reddit AEO is the highest-leverage Reddit layer — Google indexes top Reddit threads, and LLMs cite them in answers. A 350-word comment on a high-rank thread keeps producing for months.",
+    why: "Reddit AEO is the highest-leverage Reddit layer, Google indexes top Reddit threads, and LLMs cite them in answers. A 350-word comment on a high-rank thread keeps producing for months.",
     rule: "Reply to top commenter not OP. Never edit after posting (cache busts re-cite). No em-dashes. Statements beat questions.",
-    link: { label: "/target-list#communities — communities map", href: "/target-list#communities" },
+    link: { label: "/target-list#communities, communities map", href: "/target-list#communities" },
   },
   {
     id: "hf-longform",
@@ -48,7 +48,7 @@ const PLAYS: Play[] = [
     cadence: "Bi-weekly",
     format: "Dataset cards + methodology write-ups with code or chart",
     what: "Engineering-side write-ups on the methodology, on what GitHub-momentum reading actually looks like in practice, and the open dataset behind every claim on the site.",
-    why: "Hugging Face is where the ML crowd reads long-form artifacts. Dataset cards rank, get cited, and compound the long tail — and ours already lives there.",
+    why: "Hugging Face is where the ML crowd reads long-form artifacts. Dataset cards rank, get cited, and compound the long tail, and ours already lives there.",
     link: { label: "the-data-nerd on Hugging Face", href: "https://huggingface.co/the-data-nerd", external: true },
   },
   {
@@ -69,7 +69,7 @@ const PLAYS: Play[] = [
     what: "@gitdealflow/mcp-signal on npm. Six read-only tools (get_top_movers, search_startups, get_signal, get_methodology, etc.). Free forever, never gated.",
     why: "If you already live inside Claude Desktop and Cursor, meeting you there with read-only tools is stronger than asking for another dashboard habit. Distribution-as-product: install is free, the data is the upsell.",
     rule: "Five core tools stay free forever. New paid tools are added alongside, never gate the existing ones (memory: feedback_free_mcp_never_gate.md).",
-    link: { label: "/install — full instructions", href: "/install" },
+    link: { label: "/install, full instructions", href: "/install" },
   },
   {
     id: "federated",
@@ -79,14 +79,14 @@ const PLAYS: Play[] = [
     what: "Farcaster (gitdealflow). Cross-post the Acceleration Watch + featured commits.",
     why: "Federated networks are decentralised redundancy. None will be the channel. Together they're an SEO + AEO + agent-discoverability surface.",
     rule: "Lead with the claim, not 'Shipped a...'. Hook-first. End with gitdealflow.com/<page>. No bare CWS deeplink (memory: feedback_tweet_style_short_branded.md, feedback_bluesky_300_grapheme_cap.md).",
-    link: { label: "/distribution#social — full handles", href: "/distribution#social" },
+    link: { label: "/distribution#social, full handles", href: "/distribution#social" },
   },
   {
     id: "ssrn-citation",
     channel: "SSRN paper as credibility anchor",
     cadence: "Permanent (cite-able from any post)",
     format: "ssrn.com/abstract=6606558 + Hugging Face dataset",
-    what: "The methodology paper (n=219 paired observations, 21–47 day lead-time IQR) is the credibility anchor for every strong claim on the site.",
+    what: "The methodology paper (n=219 paired observations, 21-47 day lead-time IQR) is the credibility anchor for every strong claim on the site.",
     why: "Tough audiences (HN, r/venturecapital) don't trust product URLs but do trust SSRN. Lead with the academic citation; the product follows.",
     rule: "Cite SSRN, not the product, in cold pitches and tough-audience posts (memory: feedback_ssrn_credibility_anchor.md).",
     link: { label: "ssrn.com/abstract=6606558", href: "https://ssrn.com/abstract=6606558", external: true },
@@ -96,7 +96,7 @@ const PLAYS: Play[] = [
     channel: "GitHub org + open data",
     cadence: "On-merge (PR-driven public log)",
     format: "Public repos, public issues, public roadmap",
-    what: "github.com/kindrat86/mcp-deal-flow-signal — the MCP server, the dataset tooling, the public roadmap. Building in public on GitHub is the same audience-side primitive as the Acceleration Watch is for our buyer.",
+    what: "github.com/kindrat86/mcp-deal-flow-signal, the MCP server, the dataset tooling, the public roadmap. Building in public on GitHub is the same audience-side primitive as the Acceleration Watch is for our buyer.",
     why: "Engineers trust git logs. Public commit cadence on our own GitHub is the meta-signal for the product (we read commit logs; we publish ours).",
     link: { label: "github.com/kindrat86/mcp-deal-flow-signal", href: "https://github.com/kindrat86/mcp-deal-flow-signal", external: true },
   },
@@ -146,9 +146,9 @@ export default function EarnedPlaysPage() {
       {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/earned-plays",
-        name: "Earned Plays — the traffic playbook",
+        name: "Earned Plays, the traffic playbook",
         description:
-          "Specific traffic plays we run on every earned channel — Reddit AEO, dev.to, Substack, MCP, federated social, SSRN, GitHub, Wikidata, agent-side mirrors, LinkedIn top-100.",
+          "Specific traffic plays we run on every earned channel, Reddit AEO, dev.to, Substack, MCP, federated social, SSRN, GitHub, Wikidata, agent-side mirrors, LinkedIn top-100.",
         speakable: {
           "@type": "SpeakableSpecification",
           cssSelector: ["h1", "h2"],
@@ -298,7 +298,7 @@ export default function EarnedPlaysPage() {
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
             Name what you cut so visitors don&rsquo;t suggest it on a loop.
-            Each cut is durable — they&rsquo;re not on the &ldquo;maybe
+            Each cut is durable, they&rsquo;re not on the &ldquo;maybe
             Q3&rdquo; list, they&rsquo;re on the structurally-blocked list.
           </p>
           <ul className="space-y-2 pt-1">

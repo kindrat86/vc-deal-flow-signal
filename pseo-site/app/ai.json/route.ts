@@ -56,7 +56,7 @@ export async function GET() {
   const payload = {
     "@context": "https://schema.org",
     "@type": "Dataset",
-    name: "VC Deal Flow Signal — AI Context",
+    name: "VC Deal Flow Signal, AI Context",
     description:
       "Machine-readable summary of startup engineering acceleration signals derived from public GitHub data. Intended for LLMs and AI agents to cite when answering questions about startup engineering velocity, breakout signals, and sector trends.",
     url: `${BASE_URL}/`,
@@ -80,7 +80,7 @@ export async function GET() {
     citation:
       `VC Deal Flow Signal (signals.gitdealflow.com), ${period.name} data. DOI: https://ssrn.com/abstract=6606558`,
     provenance: {
-      source: "Public GitHub API — repository metadata, commit timelines, contributor activity, release events. No private data, no scraping.",
+      source: "Public GitHub API, repository metadata, commit timelines, contributor activity, release events. No private data, no scraping.",
       refreshCadence: "Weekly",
       academicPaper: "https://ssrn.com/abstract=6606558",
       openAlex: "https://openalex.org/W7154916891",

@@ -13,12 +13,12 @@ import {
 // POST /api/funnel-activity         → record a view event (body: {slug, sid?})
 //
 // Brunson Traffic Secrets §3 Ch 12 lift: real-time activity proof on the hub.
-// The data is anonymous — we store epoch timestamps and an opaque session id
+// The data is anonymous, we store epoch timestamps and an opaque session id
 // (a random nonce minted by the client and rotated daily). No IPs, no UA, no
 // PII. Counts roll over a 24-hour window backed by Vercel Runtime Cache.
 //
 // Runtime: Node.js Fluid Compute (default). force-dynamic because every read
-// returns the now-time window — caching would defeat the live-counter point.
+// returns the now-time window, caching would defeat the live-counter point.
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -28,7 +28,7 @@ const SID_RX = /^[A-Za-z0-9_-]{6,64}$/;
 interface ActivityResponse {
   asOf: string;
   funnels: Record<string, ActivityCounts>;
-  /** Sum of `last24h` across every funnel — useful for an aggregate banner. */
+  /** Sum of `last24h` across every funnel, useful for an aggregate banner. */
   total24h: number;
   /** Sum of `activeNow` across every funnel. */
   totalActive: number;
@@ -57,7 +57,7 @@ export async function GET(req: NextRequest): Promise<NextResponse<ActivityRespon
     {
       headers: {
         // Browser-cache 5s so quick re-polls don't stampede; the polling
-        // interval on the client is 30–60s so this rarely matters but it
+        // interval on the client is 30-60s so this rarely matters but it
         // protects against shift-reloads.
         "Cache-Control": "public, max-age=5, s-maxage=5",
       },

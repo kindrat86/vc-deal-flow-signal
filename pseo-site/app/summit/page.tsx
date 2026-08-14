@@ -12,13 +12,13 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title:
-    "VC Engineering Acceleration Summit — 5 days · 20 anonymous-by-design talks · Free",
+    "VC Engineering Acceleration Summit, 5 days · 20 anonymous-by-design talks · Free",
   description:
-    "Five days, twenty talks, the new playbook for sourcing venture deals from public engineering data. Each talk is free for 24 hours after it airs. Anonymous-by-design — no founder face, only the methodology.",
+    "Five days, twenty talks, the new playbook for sourcing venture deals from public engineering data. Each talk is free for 24 hours after it airs. Anonymous-by-design, no founder face, only the methodology.",
   alternates: { canonical: "/summit" },
   openGraph: {
     title:
-      "VC Engineering Acceleration Summit — 5 days · 20 talks · Free",
+      "VC Engineering Acceleration Summit, 5 days · 20 talks · Free",
     description:
       "Five days, twenty talks. Each talk free for 24h after it airs. The core claim, the methodology, the sector deep-dives, the operationalisation, the founder talk.",
     url: `${SITE}/summit`,
@@ -27,10 +27,10 @@ export const metadata: Metadata = {
 };
 
 const STACK = [
-  { label: "20 talks, released on a rolling basis — synthetic narration, anonymous-by-design", value: "€0 free for 24h after each talk airs" },
+  { label: "20 talks, released on a rolling basis, synthetic narration, anonymous-by-design", value: "€0 free for 24h after each talk airs" },
   { label: "Full transcripts of every talk (PDF + markdown)", value: "€197 with All-Access Pass" },
   { label: "Slide decks and chart packs from every talk", value: "€197 with All-Access Pass" },
-  { label: "219-startup panel dataset — the same CC BY 4.0 file published free at /api/signals.csv; paying gets you the cleaned import-ready build and the talk walkthroughs", value: "€297 standalone, included with All-Access" },
+  { label: "219-startup panel dataset, the same CC BY 4.0 file published free at /api/signals.csv; paying gets you the cleaned import-ready build and the talk walkthroughs", value: "€297 standalone, included with All-Access" },
   { label: "Lifetime replays of every talk after the free window closes", value: "€197 with All-Access Pass" },
   { label: "Methodology vault: SSRN preprint, Zenodo dataset, regression code", value: "Free, always" },
 ] as const;
@@ -62,7 +62,7 @@ export default function SummitPage() {
         offers: [
           {
             "@type": "Offer",
-            name: "Free Pass — each talk free for 24h after it airs",
+            name: "Free Pass, each talk free for 24h after it airs",
             price: "0",
             priceCurrency: "EUR",
             availability: "https://schema.org/InStock",
@@ -71,7 +71,7 @@ export default function SummitPage() {
           },
           {
             "@type": "Offer",
-            name: "All-Access Pass — lifetime replays + transcripts + slides + 219-startup panel dataset",
+            name: "All-Access Pass, lifetime replays + transcripts + slides + 219-startup panel dataset",
             price: String(SUMMIT.allAccessPrice),
             priceCurrency: SUMMIT.allAccessCurrency,
             availability: "https://schema.org/InStock",
@@ -125,7 +125,7 @@ export default function SummitPage() {
           <span>Summit</span>
         </nav>
 
-        {/* Hero — the squeeze */}
+        {/* Hero, the squeeze */}
         <header className="space-y-5">
           <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
             20 talks · released on a rolling basis · free for 24h after each airs
@@ -135,7 +135,7 @@ export default function SummitPage() {
           </h1>
           <p className="text-gray-300 text-lg leading-relaxed" data-speakable>
             Five days, twenty talks, the entire methodology behind the SSRN
-            panel of 219 venture-backed startups — taught chapter by chapter
+            panel of 219 venture-backed startups, taught chapter by chapter
             by the data nerds who wrote it. Each talk free for 24 hours after
             it airs. Anonymous-by-design: no founder face, no founder voice,
             no real names. Synthetic narration, Remotion-rendered slides, the
@@ -152,7 +152,7 @@ export default function SummitPage() {
           </p>
         </header>
 
-        {/* Squeeze form — register for free */}
+        {/* Squeeze form, register for free */}
         <section
           id="register"
           className="rounded-xl border border-amber-700/40 bg-gradient-to-br from-amber-950/30 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-5"
@@ -162,13 +162,13 @@ export default function SummitPage() {
           </h2>
           <p className="text-sm text-gray-300 leading-relaxed">
             Talks air on a rolling basis. Register and we email you the moment
-            each one unlocks — free to watch for 24 hours after it airs. No
+            each one unlocks, free to watch for 24 hours after it airs. No
             code required to follow along. Unsubscribe in one click. We use the
             same{" "}
             <Link href="/methodology" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
               published methodology
             </Link>{" "}
-            for the talks as for the dashboard — no marketing spin, no founder
+            for the talks as for the dashboard, no marketing spin, no founder
             face, just the work.
           </p>
           <form
@@ -199,7 +199,7 @@ export default function SummitPage() {
           <p className="text-xs text-gray-400 leading-relaxed">
             By registering, you opt in to summit emails (one each time a talk
             unlocks) and the weekly Acceleration Watch digest. Both unsubscribe
-            in one click. Anonymity-preserving — we never publish attendee
+            in one click. Anonymity-preserving, we never publish attendee
             lists.
           </p>
         </section>
@@ -211,8 +211,8 @@ export default function SummitPage() {
           </h2>
           <p className="text-xl sm:text-2xl text-gray-100 leading-snug font-medium">
             If GitHub commit-velocity acceleration is the most leading public
-            signal in venture capital, then every other deal-flow source —
-            pitch decks, AngelList, Crunchbase, warm intros — is a lagging
+            signal in venture capital, then every other deal-flow source -
+            pitch decks, AngelList, Crunchbase, warm intros, is a lagging
             indicator.
           </p>
           <p className="text-sm text-gray-400 leading-relaxed">
@@ -286,7 +286,7 @@ export default function SummitPage() {
           </h2>
           <p className="text-sm text-gray-300 leading-relaxed">
             Each talk is free for 24 hours after it airs. After the window
-            closes, every talk is locked behind the All-Access Pass — €
+            closes, every talk is locked behind the All-Access Pass, €
             {SUMMIT.allAccessPrice} one-time, lifetime access to all 20 talks,
             full transcripts, slide decks, and the 219-startup panel dataset
             that the panel was built on. No subscription, no expiration.
@@ -310,7 +310,7 @@ export default function SummitPage() {
               href="/summit/all-access"
               className="rounded-lg bg-signal-500 hover:bg-signal-400 text-slate-950 font-semibold px-6 py-3 transition-colors text-center"
             >
-              Get the All-Access Pass — €{SUMMIT.allAccessPrice}
+              Get the All-Access Pass, €{SUMMIT.allAccessPrice}
             </Link>
             <a
               href="#register"
@@ -332,12 +332,12 @@ export default function SummitPage() {
               Why is everything anonymous?
             </summary>
             <p className="mt-3 text-sm text-gray-400 leading-relaxed">
-              Manifesto pillar #4 — methodology over personality. The product
+              Manifesto pillar #4, methodology over personality. The product
               is a dataset, not a personality. The work has to stand on whether
               the signal is real, not on whether the person delivering it is
-              charismatic. Speakers are pseudonymous data-nerd roles —
+              charismatic. Speakers are pseudonymous data-nerd roles -
               Methodology Lead, Quantitative Architect, Sector Analyst, Agent
-              Architect — narrated by the same synthetic Cartesia voice that
+              Architect, narrated by the same synthetic Cartesia voice that
               ships the Acceleration Watch.
             </p>
           </details>
@@ -363,8 +363,8 @@ export default function SummitPage() {
               creates a real reason to attend live (or watch within 24 hours);
               the All-Access Pass funds the production cost of running the
               summit and producing the transcripts. We never gate the
-              underlying methodology — that's published openly on /methodology
-              under CC BY 4.0, free forever — and neither is the dataset: the panel itself is published free at /api/signals.csv under the same licence.
+              underlying methodology, that's published openly on /methodology
+              under CC BY 4.0, free forever, and neither is the dataset: the panel itself is published free at /api/signals.csv under the same licence.
             </p>
           </details>
           <details className="rounded-lg border border-slate-800 bg-slate-900/40 p-4">
@@ -374,7 +374,7 @@ export default function SummitPage() {
             <p className="mt-3 text-sm text-gray-400 leading-relaxed">
               30 days, no questions asked. Reply REFUND to any email. We
               process inside two business days. The signal is reproducible
-              from public data — we'd rather refund a buyer who didn't get
+              from public data, we'd rather refund a buyer who didn't get
               value than retain a buyer who didn't.
             </p>
           </details>

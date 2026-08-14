@@ -32,7 +32,7 @@ export async function generateMetadata({
 
   const { sector, periodA, periodB } = parsed;
   const title = `${sector.name} Trend: ${periodA.name} vs ${periodB.name}`;
-  const description = `Compare ${sector.name.toLowerCase()} startup GitHub commit-velocity acceleration between ${periodA.name} and ${periodB.name}. Period-over-period commit velocity, contributor growth, and signal trends — code-side momentum metrics, not accelerator-program data.`;
+  const description = `Compare ${sector.name.toLowerCase()} startup GitHub commit-velocity acceleration between ${periodA.name} and ${periodB.name}. Period-over-period commit velocity, contributor growth, and signal trends, code-side momentum metrics, not accelerator-program data.`;
 
   return {
     title,
@@ -256,13 +256,13 @@ export default async function TrendPage({ params }: PageProps) {
               href={`/startups-to-watch/${sector.slug}-${periodA.slug}`}
               className="inline-flex items-center px-4 py-2 rounded-lg bg-sky-700 hover:bg-sky-600 text-white text-sm font-medium transition-colors"
             >
-              {sector.name} — {periodA.name} &rarr;
+              {sector.name}, {periodA.name} &rarr;
             </Link>
             <Link
               href={`/startups-to-watch/${sector.slug}-${periodB.slug}`}
               className="inline-flex items-center px-4 py-2 rounded-lg border border-slate-600 hover:border-slate-500 text-gray-300 text-sm font-medium transition-colors"
             >
-              {sector.name} — {periodB.name} &rarr;
+              {sector.name}, {periodB.name} &rarr;
             </Link>
           </div>
         </section>

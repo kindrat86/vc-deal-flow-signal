@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-pSEO MASS EXPANSION — gitdealflow.com
+pSEO MASS EXPANSION, gitdealflow.com
 Target: 50→200+ English pSEO pages with rich content, schema, OG, hreflang.
 Second phase: generate the final batch of missed pages.
 """

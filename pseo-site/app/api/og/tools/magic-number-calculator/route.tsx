@@ -259,7 +259,7 @@ export async function GET(req: Request) {
             >
               {Number.isFinite(result.magicNumber)
                 ? `${formatMoney(result.annualizedNetNewArr)} annualized ARR / ${formatMoney(inputs.quarterlySmSpend)} S&M`
-                : "S&M spend is zero — magic number undefined."}
+                : "S&M spend is zero, magic number undefined."}
             </div>
           </div>
 

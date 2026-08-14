@@ -1,5 +1,5 @@
 /**
- * /atom.xml — Atom 1.0 feed (companion to /rss.xml + /feed.xml + /feed.json).
+ * /atom.xml, Atom 1.0 feed (companion to /rss.xml + /feed.xml + /feed.json).
  *
  * Pass VII (2026-05-05). Some feed readers (Feedly, Reeder, NetNewsWire)
  * resolve /atom.xml before /rss.xml when both are advertised, and many
@@ -49,7 +49,7 @@ export async function GET() {
 
   const feed = `<?xml version="1.0" encoding="UTF-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
-  <title>VC Deal Flow Signal — Blog</title>
+  <title>VC Deal Flow Signal: Blog</title>
   <subtitle>Engineering acceleration signals for startup investors.</subtitle>
   <link href="${SITE}/atom.xml" rel="self" type="application/atom+xml"/>
   <link href="${SITE}/blog" rel="alternate" type="text/html"/>
@@ -57,7 +57,7 @@ export async function GET() {
   <link href="https://pubsubhubbub.superfeedr.com/" rel="hub"/>
   <id>${SITE}/atom.xml</id>
   <updated>${updated}</updated>
-  <rights>CC BY 4.0 — VC Deal Flow Signal</rights>
+  <rights>CC BY 4.0, VC Deal Flow Signal</rights>
   <generator uri="${SITE}">VC Deal Flow Signal</generator>
 ${entries}
 </feed>`;

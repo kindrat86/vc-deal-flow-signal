@@ -26,7 +26,7 @@ export async function generateMetadata({
   if (!fw) return {};
 
   return {
-    title: `Use GitDealFlow A2A with ${fw.name} — Free Startup Signals for Your AI`,
+    title: `Use GitDealFlow A2A with ${fw.name}, Free Startup Signals for Your AI`,
     description: `Wire ${fw.name} into the GitDealFlow A2A endpoint and let your AI query startup engineering signals (trending, sector, lookup, methodology) in real time. ${fw.tagline}. Free, no auth.`,
     alternates: { canonical: `/a2a/${fw.slug}` },
     openGraph: {

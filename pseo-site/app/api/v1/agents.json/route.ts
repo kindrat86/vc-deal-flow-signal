@@ -1,9 +1,9 @@
 /**
- * /api/v1/agents.json — versioned alias for /api/agents.json.
+ * /api/v1/agents.json, versioned alias for /api/agents.json.
  *
  * Stable v1 path for the agent-tool catalog so agent runtimes that pin
- * to v1 don't 404. Body and headers mirror the upstream; canonical URL —
- * declared via `Link: rel=canonical` — remains at /api/agents.json.
+ * to v1 don't 404. Body and headers mirror the upstream; canonical URL -
+ * declared via `Link: rel=canonical`, remains at /api/agents.json.
  */
 
 import { GET as ApiAgentsJson } from "@/app/api/agents.json/route";

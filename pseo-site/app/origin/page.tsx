@@ -11,12 +11,12 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title:
-    "Origin — Why Hearing About the Company Late Became the Problem",
+    "Origin, Why Hearing About the Company Late Became the Problem",
   description:
     "Why hearing about the company late became the real problem, and why public engineering movement became the earlier signal worth watching.",
   alternates: { canonical: "/origin" },
   openGraph: {
-    title: "Origin — Why the signal exists",
+    title: "Origin, Why the signal exists",
     description:
       "Why hearing about the company late became the problem, and what changed after that.",
     url: "https://signals.gitdealflow.com/origin",
@@ -31,7 +31,7 @@ export default function OriginPage() {
       {
         "@type": "Article",
         "@id": "https://signals.gitdealflow.com/origin#article",
-        headline: "Origin — why hearing about the company late became the problem",
+        headline: "Origin, why hearing about the company late became the problem",
         description:
           "Why hearing about the company late became the real problem, and why public engineering movement became the earlier signal worth watching.",
         url: "https://signals.gitdealflow.com/origin",
@@ -48,7 +48,7 @@ export default function OriginPage() {
           "@type": "SpeakableSpecification",
           cssSelector: ["[data-speakable]", "h1", "h2"],
         },
-        // Brunson Expert Secrets Ch 8 (Hero's Two Journeys) — the founder's
+        // Brunson Expert Secrets Ch 8 (Hero's Two Journeys), the founder's
         // arc on this page is half of the work; the buyer's arc lives at
         // /origin/your-journey. hasPart wires the symmetry into structured
         // data so an LLM reading the schema sees the two arcs as one piece.
@@ -56,7 +56,7 @@ export default function OriginPage() {
           "@type": "Article",
           "@id":
             "https://signals.gitdealflow.com/origin/your-journey#article",
-          name: "Your Journey — the buyer's arc",
+          name: "Your Journey, the buyer's arc",
           url: "https://signals.gitdealflow.com/origin/your-journey",
         },
       },
@@ -112,11 +112,11 @@ export default function OriginPage() {
             You do not need a bigger network if the real problem is that the signal reached you too late.
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed" data-speakable>
-            This is the long version of why the signal exists. The old assumption was that better deals came from better introductions. The harder lesson was that public movement was already there earlier — it just wasn’t being read clearly enough to use.
+            This is the long version of why the signal exists. The old assumption was that better deals came from better introductions. The harder lesson was that public movement was already there earlier, it just wasn’t being read clearly enough to use.
           </p>
           <DataNerdAudio
             slug="origin"
-            label="Listen — The Data Nerd tells the origin story"
+            label="Listen, The Data Nerd tells the origin story"
             subtitle="Synthetic voice (Cartesia). The same voice you'll hear on every YouTube short and every email-audio companion."
           />
         </header>
@@ -153,7 +153,7 @@ export default function OriginPage() {
             I&rsquo;m an engineer first. Fifteen years of shipping production
             code, half of those years on infrastructure or AI plumbing. I
             started writing small angel cheques somewhere around deal #5 of my
-            life — €5K to €25K, mostly into devtools and AI infra, mostly
+            life, €5K to €25K, mostly into devtools and AI infra, mostly
             through warm intros from other engineers I&rsquo;d worked with. The
             thesis was simple: I know technical founders, I can recognise good
             code, I&rsquo;ll see early-stage software companies before the
@@ -208,7 +208,7 @@ export default function OriginPage() {
           <p className="text-gray-300 text-base leading-relaxed">
             Three weeks later they announced a $4M Series A led by a top-tier
             fund. The investors who got in had either been told by a warm
-            intro — fine, but slow — or had been watching the same data I had
+            intro, fine, but slow, or had been watching the same data I had
             and acting on it. The data was free. It was public. It updated in
             real time. I didn&rsquo;t need a better network. I needed a better
             lens on data I already had access to.
@@ -221,7 +221,7 @@ export default function OriginPage() {
         {/* FALSE BELIEF 1 */}
         <section className="space-y-3">
           <p className="text-rose-400 text-xs font-semibold uppercase tracking-wider">
-            03 · False belief #1 — collapsed
+            03 · False belief #1, collapsed
           </p>
           <h2 className="text-2xl font-bold text-gray-100">
             &ldquo;The right answer is to grow my network.&rdquo;
@@ -230,7 +230,7 @@ export default function OriginPage() {
             I had spent ten years trying to fix a network problem. I went to
             conferences. I cold-DMed founders. I introduced myself in Slack
             groups. I wrote tweets. None of it solved the actual problem,
-            because the actual problem wasn&rsquo;t my network — it was the
+            because the actual problem wasn&rsquo;t my network, it was the
             sequence. By the time a deck reached me through any warm intro, no
             matter how senior, three other investors were already in the room.
             The network was getting me <em className="not-italic font-semibold">to</em>{" "}
@@ -248,7 +248,7 @@ export default function OriginPage() {
         {/* FALSE BELIEF 2 */}
         <section className="space-y-3">
           <p className="text-rose-400 text-xs font-semibold uppercase tracking-wider">
-            04 · False belief #2 — collapsed
+            04 · False belief #2, collapsed
           </p>
           <h2 className="text-2xl font-bold text-gray-100">
             &ldquo;Public data is too noisy to be useful.&rdquo;
@@ -264,7 +264,7 @@ export default function OriginPage() {
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
             But that argument falls apart the moment you stop looking at
-            absolute numbers. Quant hedge funds make billions on SEC filings —
+            absolute numbers. Quant hedge funds make billions on SEC filings -
             data anyone with a browser can read. The edge isn&rsquo;t the
             access. The edge is the lens. When you stop reading commit counts
             and start reading <strong className="text-gray-100">
@@ -273,14 +273,14 @@ export default function OriginPage() {
             ran the regression on 219 startups. The 21-to-47-day lead time
             held. SSRN-indexed it. The lens existed. Nobody had built the
             product around it. And the part that matters for you: you never read
-            a line of code — the read is done for you.
+            a line of code, the read is done for you.
           </p>
         </section>
 
         {/* FALSE BELIEF 3 */}
         <section className="space-y-3">
           <p className="text-rose-400 text-xs font-semibold uppercase tracking-wider">
-            05 · False belief #3 — collapsed
+            05 · False belief #3, collapsed
           </p>
           <h2 className="text-2xl font-bold text-gray-100">
             &ldquo;If this worked, the big incumbents would already do it.&rdquo;
@@ -293,13 +293,13 @@ export default function OriginPage() {
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
             The honest answer surprised me. The big incumbents are optimised
-            for the funnel they already monetise — the warm-intro funnel. Their
+            for the funnel they already monetise, the warm-intro funnel. Their
             customers are funds with hundreds of associates whose job is to
             work the deck queue. A 47-day lead time isn&rsquo;t a feature for
             them; it&rsquo;s a different funnel they&rsquo;d have to retrain
             their entire customer base on. The opportunity for a new product
             is precisely the funnel the incumbents won&rsquo;t cannibalise.
-            That&rsquo;s why category-creators always win the next platform —
+            That&rsquo;s why category-creators always win the next platform -
             the people serving the old one are too profitable to disrupt
             themselves.
           </p>
@@ -319,10 +319,10 @@ export default function OriginPage() {
             and emailed me the top five. I used it for myself. Sent the founder
             of #2 a three-line email about a specific repo file. He replied
             inside an hour. We talked the next week. I wrote a small cheque
-            two weeks before he started raising. That sequence — engineering
+            two weeks before he started raising. That sequence, engineering
             signal → specific email → reply → meeting → cheque <em className="not-italic">
               before
-            </em> the deck — became the new shape of how I source deals.
+            </em> the deck, became the new shape of how I source deals.
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
             The product on this site is the same script, productised. The
@@ -346,11 +346,11 @@ export default function OriginPage() {
             The shift isn&rsquo;t tactical. It&rsquo;s identity. A
             warm-intro investor optimises for who they know. A{" "}
             <strong className="text-gray-100">First Mover</strong> optimises for
-            what the engineering is doing — translated into plain English, no
+            what the engineering is doing, translated into plain English, no
             code required. The first compounds with seniority and dinners. The
             second compounds with rhythm and tooling. They feel different from
             the inside. The second one scales without your physical presence in
-            any room. We move on the engineering signal before the round —
+            any room. We move on the engineering signal before the round -
             without reading a line of code. That&rsquo;s the move I want my
             readers to make.
           </p>
@@ -367,7 +367,7 @@ export default function OriginPage() {
           <p className="text-gray-300 text-base leading-relaxed">
             If you&rsquo;ve nodded once in the last eight minutes, you&rsquo;re
             in the same place I was in early 2025. The cheap move is the free
-            weekly digest — five startups every Monday, sector-tagged, no
+            weekly digest, five startups every Monday, sector-tagged, no
             commitment. The slightly committed move is the €7 First Look on
             your thesis sector. The all-in move is the €9.97/mo founding-price
             Dashboard, which is locked forever for anyone who joins before the
@@ -378,7 +378,7 @@ export default function OriginPage() {
             you actually want to buy.
           </p>
 
-          {/* Brunson Expert Secrets Ch 8 (Hero's Two Journeys) — the
+          {/* Brunson Expert Secrets Ch 8 (Hero's Two Journeys), the
               founder's arc above is half of the work. The matching buyer's
               arc lives at /origin/your-journey. Promoted to a dedicated
               card above the CTAs so a reader who finished the founder
@@ -395,7 +395,7 @@ export default function OriginPage() {
               <span className="text-sky-400 group-hover:text-sky-300">
                 your journey
               </span>
-              {" "}— the same arc, told from your seat.
+              {" "}, the same arc, told from your seat.
               <span aria-hidden className="ml-1 inline-block transition-transform group-hover:translate-x-0.5">→</span>
             </h3>
             <p className="text-gray-300 text-sm leading-relaxed">
@@ -411,7 +411,7 @@ export default function OriginPage() {
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center mt-2 px-6 py-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold transition-colors"
           >
-            Subscribe to the Acceleration Watch — free, weekly →
+            Subscribe to the Acceleration Watch, free, weekly →
           </a>
           <p className="text-gray-400 text-xs pt-3 pl-1">
             One door is enough to start. The rest are here when you want them:
@@ -447,7 +447,7 @@ export default function OriginPage() {
           </ul>
         </section>
 
-        {/* Brunson Expert Secrets Ch 9 — The Three Core Stories.
+        {/* Brunson Expert Secrets Ch 9, The Three Core Stories.
             Audit 2026-05-09 (Ch 9 push 94→100): replace the generic
             "more reading" footer below with story-aware transition CTAs
             that move the reader explicitly into the Vehicle and Identity

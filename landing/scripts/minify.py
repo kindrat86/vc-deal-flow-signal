@@ -97,7 +97,7 @@ def main():
             with open(css_path, 'w', encoding='utf-8') as f:
                 f.write(combined_css)
             total_css = len(combined_css)
-            print(f'  → Extracted {len(unique_blocks)} CSS block(s) ({total_css:,} bytes) → inline.css')
+            print(f'  → Extracted {len(unique_blocks)} CSS block(s) ({total_css: } bytes) → inline.css')
             print(f'  → Deduplicated: {len(all_blocks)} → {len(unique_blocks)}')
 
     # ---- PASS 2: replace <style> with <link>, minify ----
@@ -119,7 +119,7 @@ def main():
                 flags=re.DOTALL | re.IGNORECASE,
             )
             # Replace first occurrence of </head> with <link href="/inline.css" rel="stylesheet"> + </head>
-            # But actually insert BEFORE </head> — handle that below
+            # But actually insert BEFORE </head>: handle that below
             html = html.replace('</head>', '<link rel="stylesheet" href="/inline.css"></head>')
 
         html = minify_html(html)
@@ -144,7 +144,7 @@ def main():
     print(f'  {"─" * 58}')
     print(f'  {"TOTAL":<38} {total_orig:>7,} → {total_new:>7,} ({total_savings:>+7,}, {total_pct}%)')
     if total_css:
-        print(f'\n  🎯 HTML reduced by {total_savings:,} bytes + {total_css:,} bytes moved to external CSS (browser-cached)')
+        print(f'\n  🎯 HTML reduced by {total_savings: } bytes + {total_css: } bytes moved to external CSS (browser-cached)')
 
 
 if __name__ == '__main__':

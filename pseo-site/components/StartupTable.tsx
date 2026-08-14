@@ -14,7 +14,7 @@ export default function StartupTable({ startups, tableName }: StartupTableProps)
         "@context": "https://schema.org",
         "@type": "Table",
         about: tableName,
-        description: `Startup rankings by engineering acceleration — commit velocity, contributor growth, and signal classification. ${startups.length} startups ranked.`,
+        description: `Startup rankings by engineering acceleration, commit velocity, contributor growth, and signal classification. ${startups.length} startups ranked.`,
       }
     : null;
 
@@ -149,7 +149,7 @@ export default function StartupTable({ startups, tableName }: StartupTableProps)
           >
             VC Deal Flow Signal
           </a>
-          {" "}— real-time GitHub engineering data for investors
+          {" "}, real-time GitHub engineering data for investors
         </span>
         <span className="text-xs text-gray-400">
           Data from public GitHub API

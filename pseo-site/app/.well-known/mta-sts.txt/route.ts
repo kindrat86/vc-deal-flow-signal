@@ -1,5 +1,5 @@
 /**
- * /.well-known/mta-sts.txt — MTA Strict Transport Security policy.
+ * /.well-known/mta-sts.txt, MTA Strict Transport Security policy.
  *
  * F38 (2026-05-08). RFC 8461. Tells sending mail servers that messages
  * destined for our domain MUST be delivered over TLS to one of the

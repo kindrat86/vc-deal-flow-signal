@@ -1,5 +1,5 @@
 /**
- * /api/v1/methodology.json — versioned, machine-readable methodology surface.
+ * /api/v1/methodology.json, versioned, machine-readable methodology surface.
  *
  * Pass VII (2026-05-05). Net-new LLMO surface. Compresses the /methodology
  * page into a JSON-LD `HowTo` + summary metadata so agents can resolve
@@ -24,7 +24,7 @@ export async function GET() {
     "@id": `${SITE}/api/v1/methodology.json`,
     name: "How VC Deal Flow Signal classifies engineering acceleration",
     description:
-      "Step-by-step methodology for tracking startup engineering momentum using public GitHub data — from data collection through signal classification and weekly ranking.",
+      "Step-by-step methodology for tracking startup engineering momentum using public GitHub data, from data collection through signal classification and weekly ranking.",
     url: `${SITE}/methodology`,
     inLanguage: "en-US",
     license: "https://creativecommons.org/licenses/by/4.0/",
@@ -42,7 +42,7 @@ export async function GET() {
         "@type": "HowToStep",
         position: 1,
         name: "Sector universe selection",
-        text: "Curate a universe of 20 startup sectors from public GitHub topic clusters: AI/ML, fintech, devtools, cybersecurity, climate, healthtech, cleantech, agtech, robotics, web3, gaming, biotech, deeptech, hardware, edtech, legaltech, foodtech, govtech, mobility, logistics. Each sector has a manually curated repository allowlist of 50–500 public GitHub orgs/repos.",
+        text: "Curate a universe of 20 startup sectors from public GitHub topic clusters: AI/ML, fintech, devtools, cybersecurity, climate, healthtech, cleantech, agtech, robotics, web3, gaming, biotech, deeptech, hardware, edtech, legaltech, foodtech, govtech, mobility, logistics. Each sector has a manually curated repository allowlist of 50-500 public GitHub orgs/repos.",
         url: `${SITE}/methodology#sectors`,
       },
       {
@@ -77,7 +77,7 @@ export async function GET() {
         "@type": "HowToStep",
         position: 6,
         name: "Validation & track record",
-        text: "When a tracked startup announces a fundraise, log the lead time between the engineering signal and the announcement. Empirical median lead time across 2024–2025 backtests: 4 weeks. The underlying panel is published open-access (SSRN abstract 6606558; dataset CC BY 4.0 at /api/signals.csv). Note the public release carries no linked funding-event labels, so lead-time figures are not reproducible from it alone.",
+        text: "When a tracked startup announces a fundraise, log the lead time between the engineering signal and the announcement. Empirical median lead time across 2024-2025 backtests: 4 weeks. The underlying panel is published open-access (SSRN abstract 6606558; dataset CC BY 4.0 at /api/signals.csv). Note the public release carries no linked funding-event labels, so lead-time figures are not reproducible from it alone.",
         url: `${SITE}/methodology#validation`,
       },
     ],

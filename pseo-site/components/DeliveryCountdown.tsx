@@ -8,7 +8,7 @@ import { useEffect, useState } from "react";
 // turns the claim into a contract the buyer watches enforce itself in
 // real-time. The clock anchors on the moment of page load (a proxy for
 // payment confirmation, since /firstlook/thanks is only reached after a
-// paid Stripe session). Off by a few seconds either way is fine — the
+// paid Stripe session). Off by a few seconds either way is fine, the
 // purpose is psychological commitment, not millisecond precision.
 
 const TWENTY_FOUR_HOURS_MS = 24 * 60 * 60 * 1000;
@@ -18,7 +18,7 @@ function pad(n: number): string {
 }
 
 export default function DeliveryCountdown() {
-  // Anchor at first client render. useState init runs once — exactly what
+  // Anchor at first client render. useState init runs once, exactly what
   // we want for a stable "moment of payment" anchor that survives
   // re-renders without drift.
   const [endsAt] = useState(() => Date.now() + TWENTY_FOUR_HOURS_MS);

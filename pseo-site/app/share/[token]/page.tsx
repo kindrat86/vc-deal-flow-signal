@@ -3,7 +3,7 @@ import Link from "next/link";
 import { verifyShareToken, type SharePayload } from "@/lib/share-token";
 import { makeShareIntents } from "@/lib/share-url";
 
-// Page mints a new share token for the chain-share CTA — must run at request
+// Page mints a new share token for the chain-share CTA, must run at request
 // time so the SECRET matches the runtime env (see feedback_hmac_share_tokens_force_dynamic).
 export const dynamic = "force-dynamic";
 
@@ -55,7 +55,7 @@ const KIND_COPY: Record<string, KindCopy> = {
     eyebrow: "SCOUT PROFILE SHARED · ACTIVATED",
     headline: "A scout shared their track record with you.",
     body: (sharer, expiresAt) =>
-      `${sharer ? `@${sharer}` : "A scout"} just shared their GitHub Receipts with you. See which unicorns they called early, then build your own scout profile in 30 seconds — your ${PREVIEW_DAYS}-day extended preview is active until ${expiresAt}.`,
+      `${sharer ? `@${sharer}` : "A scout"} just shared their GitHub Receipts with you. See which unicorns they called early, then build your own scout profile in 30 seconds, your ${PREVIEW_DAYS}-day extended preview is active until ${expiresAt}.`,
     primaryHref: "/receipts",
     primaryLabel: "Build my scout profile →",
     secondaryHref: "/leaderboard",
@@ -65,7 +65,7 @@ const KIND_COPY: Record<string, KindCopy> = {
     eyebrow: "PREDICTION SHARED · ACTIVATED",
     headline: "Someone made a public call. Your turn.",
     body: (sharer, expiresAt) =>
-      `${sharer ? `@${sharer}` : "A scout"} just locked in a prediction on whether a GitHub org raises in the next 6 months. We resolve every call automatically. Your ${PREVIEW_DAYS}-day extended preview is active until ${expiresAt} — make your own call.`,
+      `${sharer ? `@${sharer}` : "A scout"} just locked in a prediction on whether a GitHub org raises in the next 6 months. We resolve every call automatically. Your ${PREVIEW_DAYS}-day extended preview is active until ${expiresAt}, make your own call.`,
     primaryHref: "/predict",
     primaryLabel: "Make my call →",
     secondaryHref: "/leaderboard",
@@ -75,7 +75,7 @@ const KIND_COPY: Record<string, KindCopy> = {
     eyebrow: "SIGNAL SHARED · ACTIVATED",
     headline: "You just unlocked this week's breakouts.",
     body: (_sharer, expiresAt) =>
-      `Someone in your network shared a GitDealFlow signal with you. We tracked the top breakout startups by GitHub engineering acceleration this week — commit velocity, contributor growth, infrastructure buildouts. Your ${PREVIEW_DAYS}-day extended preview is active until ${expiresAt}.`,
+      `Someone in your network shared a GitDealFlow signal with you. We tracked the top breakout startups by GitHub engineering acceleration this week, commit velocity, contributor growth, infrastructure buildouts. Your ${PREVIEW_DAYS}-day extended preview is active until ${expiresAt}.`,
     primaryHref: "/",
     primaryLabel: "See this week's breakouts →",
     secondaryHref: "/predict",
@@ -91,7 +91,7 @@ export default async function SharePage({ params }: PageProps) {
   const { token } = await params;
   const payload = verifyShareToken(token);
 
-  // Next 16 disallows cookie writes from Page Server Components — the
+  // Next 16 disallows cookie writes from Page Server Components, the
   // gd_share_preview cookie is set client-side via ShareReceiptScript below.
 
   const valid = !!payload;

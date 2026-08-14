@@ -23,7 +23,7 @@ export default function AlternativesIndex() {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/alternatives#webpage",
         url: "https://signals.gitdealflow.com/alternatives",
-        name: "Deal Flow Tool Alternatives — VC Deal Flow Signal",
+        name: "Deal Flow Tool Alternatives, VC Deal Flow Signal",
         description:
           "Head-to-head alternatives comparing VC Deal Flow Signal to Harmonic.ai, Dealroom, Crunchbase, and Forager.ai.",
         inLanguage: "en-US",
@@ -98,8 +98,8 @@ export default function AlternativesIndex() {
         </h1>
         <p className="text-gray-300 text-base leading-relaxed mb-4">
           In short: the alternatives compared here are the tools investors
-          already use — PitchBook, CB Insights, Dealroom, Harmonic.ai, and
-          Crunchbase alerts — and the honest difference is timing. Those tools
+          already use, PitchBook, CB Insights, Dealroom, Harmonic.ai, and
+          Crunchbase alerts, and the honest difference is timing. Those tools
           are strongest at verification after a round is public; VC Deal Flow
           Signal ranks startups by change in 14-day GitHub commit velocity, a
           code-side signal that has historically moved three to six weeks
@@ -156,7 +156,7 @@ export default function AlternativesIndex() {
           ))}
         </div>
 
-        {/* Pricing CTA — buyer-intent block for visitors comparison-shopping */}
+        {/* Pricing CTA, buyer-intent block for visitors comparison-shopping */}
         <section className="mt-14 rounded-lg border border-sky-800 bg-sky-950/20 p-6">
           <h2 className="text-lg font-semibold text-sky-200 mb-2">
             Comparing tools? Here&rsquo;s what we cost.
@@ -179,7 +179,7 @@ export default function AlternativesIndex() {
 
         <div className="mt-10">
           <SeoCta
-            secondary={{ label: "Test one sector — First Look €7", href: "/firstlook" }}
+            secondary={{ label: "Test one sector, First Look €7", href: "/firstlook" }}
             signoffIndex={0}
           />
         </div>

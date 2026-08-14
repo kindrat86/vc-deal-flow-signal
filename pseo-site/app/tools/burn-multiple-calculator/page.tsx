@@ -31,7 +31,7 @@ export async function generateMetadata({
 
   return {
     title:
-      "Burn Multiple Calculator — SaaS Capital Efficiency, Sacks Bands",
+      "Burn Multiple Calculator, SaaS Capital Efficiency, Sacks Bands",
     description:
       "Free burn multiple calculator. Total burn divided by net new ARR, classified into the David Sacks bands (exceptional / great / OK / suspect / bad). URL-shareable results for board decks and investor updates.",
     alternates: { canonical: "/tools/burn-multiple-calculator" },
@@ -46,7 +46,7 @@ export async function generateMetadata({
           url: ogImage,
           width: 1200,
           height: 630,
-          alt: "Burn Multiple Calculator — VC Deal Flow Signal",
+          alt: "Burn Multiple Calculator, VC Deal Flow Signal",
         },
       ],
     },
@@ -79,12 +79,12 @@ const FAQS: { question: string; answer: string }[] = [
   {
     question: "Who came up with it?",
     answer:
-      "David Sacks popularised the metric in a 2020 essay arguing that growth alone is the wrong yardstick — the right yardstick is how efficiently a company is converting burn into ARR. Sacks proposed the bands (exceptional / great / OK / suspect / bad) the calculator uses below.",
+      "David Sacks popularised the metric in a 2020 essay arguing that growth alone is the wrong yardstick, the right yardstick is how efficiently a company is converting burn into ARR. Sacks proposed the bands (exceptional / great / OK / suspect / bad) the calculator uses below.",
   },
   {
     question: "What are the Sacks bands?",
     answer:
-      "Burn multiple <1× is exceptional, 1–1.5× is great, 1.5–2× is OK and typical for the stage, 2–3× is suspect (investors will dig into unit economics), >3× is bad and most growth-stage investors will pass. Bands tighten at growth stage (Series C and later) and loosen at very early stage where ARR is small enough to be noisy.",
+      "Burn multiple <1× is exceptional, 1-1.5× is great, 1.5-2× is OK and typical for the stage, 2-3× is suspect (investors will dig into unit economics), >3× is bad and most growth-stage investors will pass. Bands tighten at growth stage (Series C and later) and loosen at very early stage where ARR is small enough to be noisy.",
   },
   {
     question: "How do I pick the right period length?",
@@ -99,7 +99,7 @@ const FAQS: { question: string; answer: string }[] = [
   {
     question: "Does this account for gross margin?",
     answer:
-      "No — burn multiple is a top-line metric. Two companies with the same burn multiple can have very different unit economics. Investors always pair burn multiple with gross margin (≥75% for healthy SaaS), CAC payback (≤24 months at scale), magic number (≥1 at growth stage), and net dollar retention (≥110% for best-in-class). Use burn multiple as the headline and the others as the supporting cast.",
+      "No, burn multiple is a top-line metric. Two companies with the same burn multiple can have very different unit economics. Investors always pair burn multiple with gross margin (≥75% for healthy SaaS), CAC payback (≤24 months at scale), magic number (≥1 at growth stage), and net dollar retention (≥110% for best-in-class). Use burn multiple as the headline and the others as the supporting cast.",
   },
 ];
 
@@ -200,7 +200,7 @@ export default function BurnMultiplePage() {
         "@type": "WebPage",
         "@id": PAGE_URL,
         url: PAGE_URL,
-        name: "Burn Multiple Calculator — SaaS Capital Efficiency, Sacks Bands",
+        name: "Burn Multiple Calculator, SaaS Capital Efficiency, Sacks Bands",
         description:
           "Free SaaS burn-multiple calculator with Sacks band classification and shareable URLs.",
         inLanguage: "en-US",
@@ -310,7 +310,7 @@ export default function BurnMultiplePage() {
               What is burn rate?
             </h3>
             <p className="text-gray-400 text-sm leading-relaxed">
-              The underlying number that goes into burn multiple — gross vs
+              The underlying number that goes into burn multiple, gross vs
               net burn, and why investors care.
             </p>
           </Link>

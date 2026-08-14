@@ -5,9 +5,9 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 
 export const metadata: Metadata = {
-  title: "Use Cases — Angels, VC Analysts, Fund of Funds",
+  title: "Use Cases, Angels, VC Analysts, Fund of Funds",
   description:
-    "How angel investors, VC analysts, and fund-of-funds teams use GitDealFlow in real sourcing, diligence, and monitoring workflows — and how those workflows route into proof, compare, and buyer pages.",
+    "How angel investors, VC analysts, and fund-of-funds teams use GitDealFlow in real sourcing, diligence, and monitoring workflows, and how those workflows route into proof, compare, and buyer pages.",
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
   alternates: {
     canonical: "/use-cases",
@@ -22,7 +22,7 @@ export default function UseCasesIndex() {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/use-cases#webpage",
         url: "https://signals.gitdealflow.com/use-cases",
-        name: "Use Cases — VC Deal Flow Signal",
+        name: "Use Cases, VC Deal Flow Signal",
         description:
           "Persona-specific workflows for angel investors, VC analysts, and fund of funds / LPs.",
         inLanguage: "en-US",

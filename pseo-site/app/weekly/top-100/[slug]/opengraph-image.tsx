@@ -3,7 +3,7 @@ import { getTop100, formatIsoWeekLabel } from "@/lib/top-100";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "Top 100 GitHub-Signal Startups — Weekly Index";
+export const alt = "Top 100 GitHub-Signal Startups, Weekly Index";
 
 export default async function OGImage({
   params,
@@ -30,7 +30,7 @@ export default async function OGImage({
         }}
       >
         <div style={{ display: "flex", color: "#64748b", fontSize: 22 }}>
-          signals.gitdealflow.com — {label}
+          signals.gitdealflow.com, {label}
         </div>
         <div
           style={{

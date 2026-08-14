@@ -12,14 +12,14 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title:
-    "Insider Circle — See Every Signal 24 Hours Before The Public · €197/mo",
+    "Insider Circle, See Every Signal 24 Hours Before The Public · €197/mo",
   description:
-    "The Insider Circle walkthrough. If the public Acceleration Watch publishes Mondays at 09:00 UTC, Insiders read the same names Sunday at 09:00 UTC. The single belief: in venture, edge is time, not research. Stack value €4,206/yr — founder rate €197/mo locked forever.",
+    "The Insider Circle walkthrough. If the public Acceleration Watch publishes Mondays at 09:00 UTC, Insiders read the same names Sunday at 09:00 UTC. The single belief: in venture, edge is time, not research. Stack value €4,206/yr, founder rate €197/mo locked forever.",
   alternates: {
     canonical: "/insider",
   },
   openGraph: {
-    title: "Insider Circle — 24-Hour Lead Over The Free Tier",
+    title: "Insider Circle, 24-Hour Lead Over The Free Tier",
     description:
       "Same signal, 24h earlier. €197/mo founder rate, locked forever. Telegram + JSON/CSV API + custom watchlists + early-list. Stack value €4,206/yr.",
     url: "https://signals.gitdealflow.com/insider",
@@ -51,7 +51,7 @@ const STACK_ITEMS = [
     standalone: "€600/yr",
   },
   {
-    label: "Insider API — JSON Endpoints + Bulk CSV Pulls",
+    label: "Insider API, JSON Endpoints + Bulk CSV Pulls",
     description:
       "Authenticated /api/v1/insider/* endpoints. Pull the full ranking, filter by sector + stage, query an org by name. Bulk CSV exports for any sector slice. Rate limit: 600/hr.",
     standalone: "€1,200/yr",
@@ -59,7 +59,7 @@ const STACK_ITEMS = [
   {
     label: "Custom Watchlist Co-Built Around Your Thesis",
     description:
-      "One async exchange — you send your thesis, we send back the 10 highest-acceleration orgs that match. Re-runnable quarterly. Becomes your private feed inside the Telegram group.",
+      "One async exchange, you send your thesis, we send back the 10 highest-acceleration orgs that match. Re-runnable quarterly. Becomes your private feed inside the Telegram group.",
     standalone: "€297 once",
   },
   {
@@ -69,15 +69,15 @@ const STACK_ITEMS = [
     standalone: "Bundled (€397/yr value)",
   },
   {
-    label: "Monthly Insider Drop — net-new artefact every first Tuesday",
+    label: "Monthly Insider Drop, net-new artefact every first Tuesday",
     description:
-      "Sector deep-dive, methodology release, founder essay, or shipping tool — on a four-format rotation. First Tuesday of every month, 09:00 UTC. PDF + CSV + code + chart pack delivered the day it ships. The continuity programme that turns the subscription from a tool into an anticipation engine. Twelve-month forward calendar at /continuity.",
+      "Sector deep-dive, methodology release, founder essay, or shipping tool, on a four-format rotation. First Tuesday of every month, 09:00 UTC. PDF + CSV + code + chart pack delivered the day it ships. The continuity programme that turns the subscription from a tool into an anticipation engine. Twelve-month forward calendar at /continuity.",
     standalone: "€2,364/yr (12 drops × €197 standalone value each)",
   },
   {
     label: "Direct Founder Line For Diligence Questions",
     description:
-      "Reply to any briefing email or Telegram message. Same-day response on signal-quality questions, methodology clarifications, or 'is this org tracked' lookups. Not a sales channel — a research line.",
+      "Reply to any briefing email or Telegram message. Same-day response on signal-quality questions, methodology clarifications, or 'is this org tracked' lookups. Not a sales channel, a research line.",
     standalone: "€0 (priceless)",
   },
   {
@@ -91,15 +91,15 @@ const STACK_ITEMS = [
 const FAQS = [
   {
     q: "What does Insider get me that Dashboard doesn't?",
-    a: "Three things, in order of value. (1) The 24-hour lead — Insiders receive Sunday at 09:00 UTC the same 10 names the public Acceleration Watch publishes Monday at 09:00 UTC. (2) The Telegram group — closed, founder-moderated, where the briefing arrives with thesis + chart + percentile and you can ask follow-ups. (3) The API — authenticated JSON endpoints and bulk CSV pulls so you can wire the signal into your own stack. Dashboard is the visual tool; Insider is the time advantage plus the research relationship.",
+    a: "Three things, in order of value. (1) The 24-hour lead, Insiders receive Sunday at 09:00 UTC the same 10 names the public Acceleration Watch publishes Monday at 09:00 UTC. (2) The Telegram group, closed, founder-moderated, where the briefing arrives with thesis + chart + percentile and you can ask follow-ups. (3) The API, authenticated JSON endpoints and bulk CSV pulls so you can wire the signal into your own stack. Dashboard is the visual tool; Insider is the time advantage plus the research relationship.",
   },
   {
     q: "Is the 24-hour lead actually meaningful?",
-    a: "In venture, time-to-first-meeting is the leading variable on whether you get into a round. The SSRN-published panel has lead-time IQR 21–47 days from signal fire to fundraise announcement. Inside that window, every day of head-start compounds — you reach the founder when they have one or two investors circling, not five. The 24-hour Insider lead lets you be the first cold email of the week, not the fifth.",
+    a: "In venture, time-to-first-meeting is the leading variable on whether you get into a round. The SSRN-published panel has lead-time IQR 21-47 days from signal fire to fundraise announcement. Inside that window, every day of head-start compounds, you reach the founder when they have one or two investors circling, not five. The 24-hour Insider lead lets you be the first cold email of the week, not the fifth.",
   },
   {
     q: "Why €197/mo when Dashboard is €49 ",
-    a: "Different buyers. Dashboard is the tool for an investor who wants the ranked list and the visual interface. Insider is the tool for an investor who has thirty deal-flow conversations a week and needs the 24-hour lead, the API for their own stack, and a direct research line to the founder. The €197 is roughly the cost of one hour of associate time at a fund — the value is one extra outbound conversation per quarter that closes.",
+    a: "Different buyers. Dashboard is the tool for an investor who wants the ranked list and the visual interface. Insider is the tool for an investor who has thirty deal-flow conversations a week and needs the 24-hour lead, the API for their own stack, and a direct research line to the founder. The €197 is roughly the cost of one hour of associate time at a fund, the value is one extra outbound conversation per quarter that closes.",
   },
   {
     q: "What does the API actually return?",
@@ -111,11 +111,11 @@ const FAQS = [
   },
   {
     q: "Can I downgrade to Dashboard if Insider is too much?",
-    a: "Yes — one-click in the Stripe customer portal. The 30-day refund applies first, so if Insider isn't earning its keep, you reply REFUND and get the full €197 back rather than downgrading. After 30 days, downgrades are pro-rated against the current billing period.",
+    a: "Yes, one-click in the Stripe customer portal. The 30-day refund applies first, so if Insider isn't earning its keep, you reply REFUND and get the full €197 back rather than downgrading. After 30 days, downgrades are pro-rated against the current billing period.",
   },
   {
     q: "What's the Monthly Insider Drop and what do I actually get?",
-    a: "On the first Tuesday of every month at 09:00 UTC, every Insider gets a net-new artefact — on a four-format rotation: sector deep-dive (25-page PDF + CSV), methodology release (regression code + paper update), founder essay (4-6K-word post-mortem), or tool release (new MCP tool, API endpoint, or chart pack). Public sees the abstract; members get the full essay + member-only artefact bundle. Twelve-month forward calendar at /continuity. If a drop slips by 48 hours past its publish date, every Insider gets one month free automatically — that's how seriously the cadence is taken.",
+    a: "On the first Tuesday of every month at 09:00 UTC, every Insider gets a net-new artefact, on a four-format rotation: sector deep-dive (25-page PDF + CSV), methodology release (regression code + paper update), founder essay (4-6K-word post-mortem), or tool release (new MCP tool, API endpoint, or chart pack). Public sees the abstract; members get the full essay + member-only artefact bundle. Twelve-month forward calendar at /continuity. If a drop slips by 48 hours past its publish date, every Insider gets one month free automatically, that's how seriously the cadence is taken.",
   },
 ] as const;
 
@@ -127,7 +127,7 @@ export default function InsiderPage() {
         "@type": "Article",
         "@id": "https://signals.gitdealflow.com/insider#article",
         headline:
-          "Insider Circle — See Every Signal 24 Hours Before The Public",
+          "Insider Circle, See Every Signal 24 Hours Before The Public",
         description:
           "If venture-investing edge is time rather than research, then a 24-hour lead on a list of 10 ranked engineering accelerations is the most leveraged €197/mo an active investor can spend. Stack value €4,206/yr.",
         url: "https://signals.gitdealflow.com/insider",
@@ -157,7 +157,7 @@ export default function InsiderPage() {
       {
         "@type": "Offer",
         "@id": "https://signals.gitdealflow.com/insider#offer",
-        name: "Insider Circle — €197/mo founding-member rate",
+        name: "Insider Circle, €197/mo founding-member rate",
         description:
           "Monthly subscription at founding-member rate (€197/mo, locks for the lifetime of the subscription; list price €197/mo). Includes 24-hour lead on Acceleration Watch, private Telegram group, JSON/CSV API, custom watchlist, webhooks, founder line, and Dashboard Beta.",
         price: 97,
@@ -278,8 +278,8 @@ export default function InsiderPage() {
           <p>
             A founder I had been watching went into fundraise in February
             2025. Their commit velocity had crossed the 95th percentile two
-            Sundays earlier. The Acceleration Watch list — the public version
-            — published the following Monday at 09:00 UTC.
+            Sundays earlier. The Acceleration Watch list, the public version
+published the following Monday at 09:00 UTC.
           </p>
           <p>
             By the time I sent my outreach email Tuesday morning, the founder
@@ -291,7 +291,7 @@ export default function InsiderPage() {
           </p>
           <p>
             The signal had worked. The list had worked. The lead-time numbers
-            were correct. The thing that had failed was the calendar — Monday
+            were correct. The thing that had failed was the calendar, Monday
             morning is when every other investor opens their laptop. By
             Tuesday the round is already shaping.
           </p>
@@ -302,7 +302,7 @@ export default function InsiderPage() {
           <TrialClose tone="emerald">
             One Tuesday too late closes a round. If a single Sunday-instead-
             of-Monday cycle lands you the meeting before the four-other-
-            investors line forms — has €197/mo already justified itself?
+            investors line forms, has €197/mo already justified itself?
           </TrialClose>
         </section>
 
@@ -327,7 +327,7 @@ export default function InsiderPage() {
             That belief, if true, makes Insider the most leveraged price in
             deal-flow tooling. The data is the same. The Telegram group is a
             convenience. The API is a convenience. The 24-hour lead is the
-            product. Three secrets follow — each is one objection to that
+            product. Three secrets follow, each is one objection to that
             belief, and each gets broken.
           </p>
           <TrialClose tone="emerald">
@@ -349,7 +349,7 @@ export default function InsiderPage() {
             </h2>
           </div>
 
-          {/* SECRET 1 — VEHICLE */}
+          {/* SECRET 1, VEHICLE */}
           <div className="border-l-4 border-emerald-500 pl-5 space-y-3">
             <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">
               Secret #1 · Vehicle objection
@@ -360,10 +360,10 @@ export default function InsiderPage() {
             <p className="text-gray-300 text-base leading-relaxed">
               <strong className="text-gray-100">It does, and the SSRN panel quantifies it.</strong>{" "}
               Lead-time from a fired signal to a public fundraise announcement
-              is 21–47 days IQR. Inside that window, the round shape is
+              is 21-47 days IQR. Inside that window, the round shape is
               determined in the first 72 hours after the founder starts taking
-              meetings. Reaching out on Sunday afternoon — when the founder
-              has cleared their inbox and is loading the week — is a
+              meetings. Reaching out on Sunday afternoon, when the founder
+              has cleared their inbox and is loading the week, is a
               structurally different conversation than Tuesday morning when
               they have already committed two introductions.
             </p>
@@ -375,7 +375,7 @@ export default function InsiderPage() {
             </p>
           </div>
 
-          {/* SECRET 2 — INTERNAL */}
+          {/* SECRET 2, INTERNAL */}
           <div className="border-l-4 border-sky-500 pl-5 space-y-3">
             <p className="text-sky-400 text-xs font-semibold uppercase tracking-wider">
               Secret #2 · Internal objection
@@ -385,7 +385,7 @@ export default function InsiderPage() {
             </h3>
             <p className="text-gray-300 text-base leading-relaxed">
               <strong className="text-gray-100">The dashboard tells you the rank. The Telegram tells you whether to act.</strong>{" "}
-              The dashboard is a sortable table — useful for browsing, weak
+              The dashboard is a sortable table, useful for browsing, weak
               for triage. The Telegram briefing arrives with a one-line
               thesis, the chart, the percentile, and (when relevant) the
               specific reason this week&rsquo;s acceleration looks more like a
@@ -398,7 +398,7 @@ export default function InsiderPage() {
             </p>
           </div>
 
-          {/* SECRET 3 — EXTERNAL */}
+          {/* SECRET 3, EXTERNAL */}
           <div className="border-l-4 border-indigo-500 pl-5 space-y-3">
             <p className="text-indigo-400 text-xs font-semibold uppercase tracking-wider">
               Secret #3 · External objection
@@ -418,7 +418,7 @@ export default function InsiderPage() {
                 SSRN abstract 6606558
               </a>
               {" "}because we don&rsquo;t mind. Building the pipeline that
-              ranks 369 orgs every week, deduplicates them against fundraise
+              ranks 350+ orgs every week, deduplicates them against fundraise
               announcements, classifies the signal type, and ships the result
               by Sunday 09:00 UTC is its own job. €197/mo is roughly the cost
               of ninety minutes of that engineer&rsquo;s time. You buy the
@@ -428,7 +428,7 @@ export default function InsiderPage() {
 
           <TrialClose tone="indigo">
             Three objections, three breakdowns, methodology open at SSRN. If
-            none of those three was the real objection — what is? (That
+            none of those three was the real objection, what is? (That
             answer is the one to keep handy as the stack lands.)
           </TrialClose>
         </section>
@@ -445,7 +445,7 @@ export default function InsiderPage() {
             Sunday 09:15 UTC, you open the Telegram briefing in bed. Ten
             ranked names, one-line theses, the chart, the percentile. You pick
             two whose theses match what you&rsquo;re writing checks for this
-            quarter. You draft two cold emails — three lines each — and
+            quarter. You draft two cold emails, three lines each, and
             schedule them for Monday 07:30 in the founder&rsquo;s timezone.
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
@@ -455,14 +455,14 @@ export default function InsiderPage() {
             week of deal-flow work into thirty minutes on a Sunday.
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
-            That rhythm is the entire product. Everything else — the API, the
-            custom watchlist, the founder line — is a tool that makes the
+            That rhythm is the entire product. Everything else, the API, the
+            custom watchlist, the founder line, is a tool that makes the
             Sunday-evening rhythm easier.
           </p>
           <TrialClose tone="amber">
             Sunday 09:15 in bed, two cold emails scheduled for Monday 07:30,
             Tuesday a meeting or a polite no. If that rhythm replaced the
-            Sunday-night sourcing block you do anyway — would you swap?
+            Sunday-night sourcing block you do anyway, would you swap?
           </TrialClose>
         </section>
 
@@ -551,7 +551,7 @@ export default function InsiderPage() {
           </div>
           <TrialClose tone="violet">
             €4,206/yr standalone at €197/mo founding rate, locked through the
-            public hike to €197. If the lock itself is the asset — would you
+            public hike to €197. If the lock itself is the asset, would you
             rather wake up on the founding rate or the post-launch rate?
           </TrialClose>
         </section>
@@ -585,7 +585,7 @@ export default function InsiderPage() {
         {/* TRIAL CLOSES */}
         <section className="space-y-3">
           <h2 className="text-2xl font-bold text-gray-100">
-            Three trial closes — pick the one that sounds like you.
+            Three trial closes, pick the one that sounds like you.
           </h2>
           <ul className="space-y-3 text-gray-300 text-base leading-relaxed">
             <li className="flex items-start gap-3">
@@ -601,7 +601,7 @@ export default function InsiderPage() {
               <span className="text-emerald-400 font-bold shrink-0">2.</span>
               <span>
                 If you run a fund or a syndicate, the API alone is worth €197
-                — drop the JSON into your own pipeline and ship a one-page
+drop the JSON into your own pipeline and ship a one-page
                 Monday memo to your principal before the rest of the team has
                 opened their laptop.
               </span>
@@ -620,7 +620,7 @@ export default function InsiderPage() {
         {/* IF ALL THIS DID */}
         <section className="space-y-4">
           <h2 className="text-2xl font-bold text-gray-100">
-            And if you&rsquo;re still not sure — ask yourself this.
+            And if you&rsquo;re still not sure, ask yourself this.
           </h2>
           <ul className="space-y-3 text-gray-300 text-base leading-relaxed">
             <li className="border-l-4 border-amber-500 pl-5 py-1">
@@ -629,14 +629,14 @@ export default function InsiderPage() {
                 24-hour head-start on one founder per quarter
               </strong>
               , and that head-start meant you got the meeting before the round
-              filled — would €197/mo be worth it?
+              filled, would €197/mo be worth it?
             </li>
             <li className="border-l-4 border-amber-500 pl-5 py-1">
               If all this did was{" "}
               <strong className="text-amber-300">
                 replace your Sunday-night sourcing block
               </strong>{" "}
-              with a 15-minute Telegram briefing — would €197/mo be worth it?
+              with a 15-minute Telegram briefing, would €197/mo be worth it?
             </li>
             <li className="border-l-4 border-amber-500 pl-5 py-1">
               If all this did was let you{" "}
@@ -644,7 +644,7 @@ export default function InsiderPage() {
                 ship one cold email Sunday evening
               </strong>{" "}
               that arrived in the founder&rsquo;s inbox before any other
-              investor saw the list — would the entire stack pay for itself
+              investor saw the list, would the entire stack pay for itself
               the first quarter?
             </li>
           </ul>
@@ -656,7 +656,7 @@ export default function InsiderPage() {
           className="space-y-5 border-t border-slate-800 pt-8"
         >
           <h2 className="text-2xl font-bold text-gray-100">
-            The four closes — one of these is yours.
+            The four closes, one of these is yours.
           </h2>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -670,8 +670,8 @@ export default function InsiderPage() {
               </h3>
               <p className="text-gray-300 text-sm leading-relaxed">
                 €197/mo is €1,164/year. The expected value of one cheque you
-                wrote because you got there first — at a €5k-€50k angel range
-                with even a 3× exit multiple — is between €15k and €150k. The
+                wrote because you got there first, at a €5k-€50k angel range
+                with even a 3× exit multiple, is between €15k and €150k. The
                 math doesn&rsquo;t work the other way. You aren&rsquo;t paying
                 for data. You&rsquo;re paying for one Sunday-evening
                 head-start per quarter.
@@ -701,7 +701,7 @@ export default function InsiderPage() {
               </h3>
               <p className="text-gray-300 text-sm leading-relaxed">
                 We could charge €197/mo and the math would still work. The
-                €197 launches the day a regulated investor tool reviews us —
+                €197 launches the day a regulated investor tool reviews us -
                 the founding-member rate locks before that day. After it
                 locks, you keep €197/mo for as long as you stay subscribed.
               </p>
@@ -713,12 +713,12 @@ export default function InsiderPage() {
                 Urgency close
               </p>
               <h3 className="text-gray-100 font-semibold text-base">
-                The Telegram is capped. Not as marketing — as moderation.
+                The Telegram is capped. Not as marketing, as moderation.
               </h3>
               <p className="text-gray-300 text-sm leading-relaxed">
                 Insider Telegram is closed and one-seat-per-subscription. We
                 cap at the size where the founder can still answer threads
-                personally — currently around 50 active members. Beyond that,
+                personally, currently around 50 active members. Beyond that,
                 new sign-ups go on a waiting list while we tier the group.
                 Founding members keep their seat permanently, even if the cap
                 is later lowered.
@@ -766,7 +766,7 @@ export default function InsiderPage() {
             >
               Dashboard walkthrough
             </Link>{" "}
-            first — Insider includes everything in Dashboard.
+            first, Insider includes everything in Dashboard.
           </p>
         </section>
 
@@ -783,7 +783,7 @@ export default function InsiderPage() {
 
         {/* ENCORE */}
         <section
-          aria-label="Encore — last-chance summary"
+          aria-label="Encore, last-chance summary"
           className="rounded-xl border border-amber-500/40 bg-gradient-to-br from-amber-950/30 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-4"
         >
           <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
@@ -796,7 +796,7 @@ export default function InsiderPage() {
             <li className="flex gap-3">
               <span className="text-amber-400 shrink-0 font-bold">→</span>
               <span>
-                Sunday-09:00-UTC briefing — same ten ranked names the public
+                Sunday-09:00-UTC briefing, same ten ranked names the public
                 list publishes Monday at 09:00 UTC. 24 hours of head-start on
                 every other investor.
               </span>
@@ -804,7 +804,7 @@ export default function InsiderPage() {
             <li className="flex gap-3">
               <span className="text-amber-400 shrink-0 font-bold">→</span>
               <span>
-                Closed Insider Telegram — founder posts the briefing as the
+                Closed Insider Telegram, founder posts the briefing as the
                 anchor message; threads run all week with sector follow-ups
                 and signal-quality questions.
               </span>
@@ -819,7 +819,7 @@ export default function InsiderPage() {
             <li className="flex gap-3">
               <span className="text-amber-400 shrink-0 font-bold">→</span>
               <span>
-                Custom watchlist — async exchange, you send your thesis, we
+                Custom watchlist, async exchange, you send your thesis, we
                 send back the 10 highest-acceleration orgs that match.
                 Re-runnable quarterly.
               </span>
@@ -843,14 +843,14 @@ export default function InsiderPage() {
             <li className="flex gap-3">
               <span className="text-amber-400 shrink-0 font-bold">→</span>
               <span>
-                Everything in Dashboard Beta — 140 startups, 15 sectors,
+                Everything in Dashboard Beta, 140 startups, 15 sectors,
                 weekly refresh, both Chrome extensions, free MCP forever.
               </span>
             </li>
             <li className="flex gap-3">
               <span className="text-amber-400 shrink-0 font-bold">→</span>
               <span>
-                Monthly Insider Drop — first Tuesday of every month, 09:00
+                Monthly Insider Drop, first Tuesday of every month, 09:00
                 UTC, a net-new sector deep-dive, methodology release, founder
                 essay, or shipping tool. Twelve-month forward calendar at{" "}
                 <Link
@@ -882,7 +882,7 @@ export default function InsiderPage() {
           </div>
         </section>
 
-        {/* BUYER ROADMAP — Brunson Expert Secrets Ch 18. Four-beat
+        {/* BUYER ROADMAP, Brunson Expert Secrets Ch 18. Four-beat
             calendar (Today → Sunday+6 → first Tuesday → Day 90→1yr) so
             the €197/mo reads as a vehicle on a calendar, not a recurring
             charge. Sits between the Encore and the Final CTA so the
@@ -948,10 +948,10 @@ export default function InsiderPage() {
         </section>
 
         <AgentSummary
-          tldr="Insider Circle is the €197/mo (founding-member rate, locked forever; list €197/mo) tier of VC Deal Flow Signal. The single thing it sells is a 24-hour lead on the public Acceleration Watch — Insiders receive the same ten ranked startups Sunday at 09:00 UTC that the public list publishes Monday at 09:00 UTC. Stack also includes everything in Dashboard Beta, a closed Insider Telegram with founder briefings and threads, an authenticated API (/api/v1/insider/* + bulk CSV), custom thesis-aligned watchlist, webhook delivery on threshold triggers, and a direct founder line for diligence questions. €4,206/yr standalone value. 30-day Signal-or-It's-Free guarantee, reply REFUND."
+          tldr="Insider Circle is the €197/mo (founding-member rate, locked forever; list €197/mo) tier of VC Deal Flow Signal. The single thing it sells is a 24-hour lead on the public Acceleration Watch, Insiders receive the same ten ranked startups Sunday at 09:00 UTC that the public list publishes Monday at 09:00 UTC. Stack also includes everything in Dashboard Beta, a closed Insider Telegram with founder briefings and threads, an authenticated API (/api/v1/insider/* + bulk CSV), custom thesis-aligned watchlist, webhook delivery on threshold triggers, and a direct founder line for diligence questions. €4,206/yr standalone value. 30-day Signal-or-It's-Free guarantee, reply REFUND."
           pageUrl="https://signals.gitdealflow.com/insider"
           asOf="2026-05-05"
-          citeAs="VC Deal Flow Signal — Insider Circle (signals.gitdealflow.com/insider)."
+          citeAs="VC Deal Flow Signal, Insider Circle (signals.gitdealflow.com/insider)."
           facts={[
             {
               claim:

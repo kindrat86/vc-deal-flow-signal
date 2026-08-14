@@ -35,7 +35,7 @@ export async function generateMetadata({
   const t = getTalkBySlug(slug);
   if (!t) return {};
   return {
-    title: `${t.title} — VC Engineering Acceleration Summit`,
+    title: `${t.title}, VC Engineering Acceleration Summit`,
     description: t.abstract,
     alternates: { canonical: `/summit/${slug}` },
     openGraph: {
@@ -198,11 +198,11 @@ export default async function SummitTalkPage({ params }: PageProps) {
                     : "bg-amber-900/30 text-amber-200 border border-amber-700/40"
               }`}
             >
-              {live ? "Live now — free for 24h" : locked ? "Locked — All-Access Pass" : "Scheduled"}
+              {live ? "Live now, free for 24h" : locked ? "Locked, All-Access Pass" : "Scheduled"}
             </span>
             <span className="text-xs text-gray-400 font-mono">{t.duration}</span>
             <span className="text-xs text-gray-400">·</span>
-            <span className="text-xs text-gray-400">{t.speaker} — {t.speakerRole}</span>
+            <span className="text-xs text-gray-400">{t.speaker}, {t.speakerRole}</span>
           </div>
           <p className="text-xs text-gray-400 font-mono">
             {scheduled
@@ -213,7 +213,7 @@ export default async function SummitTalkPage({ params }: PageProps) {
           </p>
         </header>
 
-        {/* Player slot — synthetic-narrated Remotion render */}
+        {/* Player slot, synthetic-narrated Remotion render */}
         <section className="rounded-xl border border-slate-800 bg-slate-950/60 p-6 space-y-4">
           {scheduled && (
             <>
@@ -235,7 +235,7 @@ export default async function SummitTalkPage({ params }: PageProps) {
           {live && (
             <>
               <p className="text-emerald-300 text-sm font-semibold">
-                Live now — free for the next {t.freeWindowHours} hours.
+                Live now, free for the next {t.freeWindowHours} hours.
               </p>
               <div className="aspect-video rounded-lg border border-slate-700 bg-gradient-to-br from-slate-800 via-slate-900 to-slate-950 flex items-center justify-center">
                 <div className="text-center px-6 py-10 space-y-2">
@@ -268,7 +268,7 @@ export default async function SummitTalkPage({ params }: PageProps) {
                 href="/summit/all-access"
                 className="inline-block rounded-lg bg-signal-500 hover:bg-signal-400 text-slate-950 font-semibold px-5 py-2.5 transition-colors"
               >
-                Get All-Access Pass — €{SUMMIT.allAccessPrice} →
+                Get All-Access Pass, €{SUMMIT.allAccessPrice} →
               </Link>
             </>
           )}

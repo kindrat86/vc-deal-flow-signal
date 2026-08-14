@@ -6,7 +6,7 @@
 //
 // This endpoint is INTENDED to be called from the user-facing /share-approve
 // page after the user clicks "Approve". It also accepts CORS preflight from
-// the same origin. We do NOT require authentication — the security property
+// the same origin. We do NOT require authentication, the security property
 // comes from the token being bound to a SHA-256 prefix of the summary, with
 // a tight TTL.
 

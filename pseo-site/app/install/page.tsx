@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import InstallClient from "./InstallClient";
 
 const SITE = "https://signals.gitdealflow.com";
-const TITLE = "GitDealFlow Bookmarklet — See investor signal on every github.com page";
+const TITLE = "GitDealFlow Bookmarklet, See investor signal on every github.com page";
 const DESCRIPTION =
   "One drag, zero install. The GitDealFlow bookmarklet pops a momentum-and-Scout-Score card on any github.com profile or repo. Free, works in every browser, no extension store review.";
 
@@ -66,7 +66,7 @@ const jsonLd = {
           "@type": "HowToStep",
           position: 2,
           name: "Drag the GitDealFlow button to your bookmarks bar",
-          text: "On signals.gitdealflow.com/install drag the orange GitDealFlow Signal button onto your visible bookmarks bar. The browser saves it as a bookmarklet — a clickable JavaScript link.",
+          text: "On signals.gitdealflow.com/install drag the orange GitDealFlow Signal button onto your visible bookmarks bar. The browser saves it as a bookmarklet, a clickable JavaScript link.",
         },
         {
           "@type": "HowToStep",
@@ -84,7 +84,7 @@ const jsonLd = {
           name: "How is this different from the three GitDealFlow Chrome Extensions?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Four install paths, four surfaces. (1) The bookmarklet works on github.com pages — the place where engineering momentum first shows up. (2) Chrome Extension #1 overlays signal on Crunchbase and Wellfound profiles. (3) Chrome Extension #2 — VC GitHub Lookup — hovers any github.com repo or org link from any page and returns velocity in 200ms. (4) Chrome Extension #3 — VC Term Highlighter — underlines VC terms (SAFE, runway, burn multiple, commit velocity, …) on any web page and links to the full definition in the GitDealFlow glossary. Use all four, or pick whichever matches where you scout deal flow today.",
+            text: "Four install paths, four surfaces. (1) The bookmarklet works on github.com pages, the place where engineering momentum first shows up. (2) Chrome Extension #1 overlays signal on Crunchbase and Wellfound profiles. (3) Chrome Extension #2, VC GitHub Lookup, hovers any github.com repo or org link from any page and returns velocity in 200ms. (4) Chrome Extension #3, VC Term Highlighter, underlines VC terms (SAFE, runway, burn multiple, commit velocity, …) on any web page and links to the full definition in the GitDealFlow glossary. Use all four, or pick whichever matches where you scout deal flow today.",
           },
         },
         {
@@ -100,7 +100,7 @@ const jsonLd = {
           name: "Does it work in Firefox / Safari / Arc?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Yes. Bookmarklets are vanilla JavaScript saved as a bookmark, so they work in every modern browser — Chrome, Firefox, Safari, Edge, Brave, Arc, Opera, Comet, Vivaldi. No extension store review required.",
+            text: "Yes. Bookmarklets are vanilla JavaScript saved as a bookmark, so they work in every modern browser, Chrome, Firefox, Safari, Edge, Brave, Arc, Opera, Comet, Vivaldi. No extension store review required.",
           },
         },
         {
@@ -108,7 +108,7 @@ const jsonLd = {
           name: "What happens if the repo isn't tracked yet?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "You'll see an Untracked card with a Predict button. Lock in a forward call — if the repo is later validated and raises in the next 6 months, you get credit on the Scout leaderboard.",
+            text: "You'll see an Untracked card with a Predict button. Lock in a forward call, if the repo is later validated and raises in the next 6 months, you get credit on the Scout leaderboard.",
           },
         },
       ],

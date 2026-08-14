@@ -34,7 +34,7 @@ function audioObjectJsonLd(slug: string, durationSec: number) {
 
 export function DataNerdAudio({
   slug,
-  label = "Listen — The Data Nerd reads this aloud",
+  label = "Listen, The Data Nerd reads this aloud",
   subtitle,
   variant = "page",
 }: Props) {

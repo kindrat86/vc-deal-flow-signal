@@ -38,7 +38,7 @@ export default function LaunchBanner() {
     try {
       window.localStorage.setItem(STORAGE_KEY, "1");
     } catch {
-      /* private mode — fine */
+      /* private mode, fine */
     }
   };
 
@@ -63,7 +63,7 @@ export default function LaunchBanner() {
         onClick={onClick}
         className="text-amber-100 font-semibold no-underline hover:underline"
       >
-        Launch week: 50% off 3 months — code{" "}
+        Launch week: 50% off 3 months, code{" "}
         <code className="bg-amber-100/15 px-1.5 py-0.5 rounded text-[0.95em]">
           PH50OFF
         </code>

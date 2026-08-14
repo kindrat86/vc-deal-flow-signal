@@ -23,10 +23,10 @@ const BENCHMARKS: Benchmark[] = [
   {
     slug: "commit-velocity",
     name: "Commit Velocity",
-    title: "Startup Commit Velocity Benchmarks by Sector — 2026 GitHub Data",
+    title: "Startup Commit Velocity Benchmarks by Sector, 2026 GitHub Data",
     description:
       "How does your startup's GitHub commit velocity compare? Real benchmarks from 400+ venture-backed startups across 15 sectors. 14-day rolling window, refreshed weekly.",
-    h1: "Commit Velocity Benchmarks — How Your Startup Compares",
+    h1: "Commit Velocity Benchmarks, How Your Startup Compares",
     intro:
       "Commit velocity (14-day rolling commits to the most active public repo) is the core ranking metric for VC Deal Flow Signal. These benchmarks show where your startup stands relative to the sector median and top quartile.",
     tableHeaders: ["Sector", "Median commits/14d", "Top quartile"],
@@ -55,10 +55,10 @@ const BENCHMARKS: Benchmark[] = [
   {
     slug: "contributor-growth",
     name: "Contributor Growth",
-    title: "Startup Contributor Growth Benchmarks — GitHub Engineer Hiring Signals",
+    title: "Startup Contributor Growth Benchmarks, GitHub Engineer Hiring Signals",
     description:
       "How many active contributors do venture-backed startups have? Real benchmarks from 400+ tracked GitHub organizations across 15 sectors. Hiring burst detection.",
-    h1: "Contributor Growth Benchmarks — Hiring Signals by Sector",
+    h1: "Contributor Growth Benchmarks, Hiring Signals by Sector",
     intro:
       "Contributor count and 6-week growth rate are the second-strongest fundraise-precursor signal after commit velocity. A hiring burst (3+ new organizational committers in a 14-day window) frequently precedes a round announcement.",
     tableHeaders: ["Sector", "Median contributors", "Top quartile"],
@@ -80,17 +80,17 @@ const BENCHMARKS: Benchmark[] = [
     },
     faqs: [
       { q: "What counts as a contributor?", a: "A distinct GitHub user who has committed to any public repository in the startup's organization within the current tracking period." },
-      { q: "What is a hiring burst?", a: "A hiring burst signal fires when 3 or more new organizational committers (with @company.com emails) appear in a 14-day window — distinct from external drive-by contributors." },
+      { q: "What is a hiring burst?", a: "A hiring burst signal fires when 3 or more new organizational committers (with @company.com emails) appear in a 14-day window, distinct from external drive-by contributors." },
       { q: "How does contributor growth relate to fundraising?", a: "Our SSRN research found that startups showing sustained contributor growth above the sector median for 6+ weeks are 3.2× more likely to announce a round within 90 days." },
     ],
   },
   {
     slug: "signal-distribution",
     name: "Signal Distribution",
-    title: "Engineering Signal Distribution by Sector — Breakout vs Cooling 2026",
+    title: "Engineering Signal Distribution by Sector, Breakout vs Cooling 2026",
     description:
       "Which sectors have the most breakout engineering signals? Real distribution data from 400+ startups. Breakout, acceleration, steady, cooling classifications.",
-    h1: "Signal Distribution — Which Sectors Are Heating Up",
+    h1: "Signal Distribution, Which Sectors Are Heating Up",
     intro:
       "Every tracked startup is classified into one of four signal types: breakout (sudden surge), acceleration (sustained growth), steady (healthy baseline), or cooling (declining). This page shows the distribution by sector.",
     tableHeaders: ["Sector", "Breakout %", "Cooling %"],
@@ -112,7 +112,7 @@ const BENCHMARKS: Benchmark[] = [
     },
     faqs: [
       { q: "What is a breakout signal?", a: "A breakout signal fires when a startup's commit velocity increases by more than 100% over the prior 14-day window while maintaining a healthy contributor base." },
-      { q: "Which sectors have the most breakouts right now?", a: "Check the table above — it's sorted by breakout percentage, highest first. The top sectors change weekly as the dataset refreshes every Monday." },
+      { q: "Which sectors have the most breakouts right now?", a: "Check the table above, it's sorted by breakout percentage, highest first. The top sectors change weekly as the dataset refreshes every Monday." },
       { q: "How is signal type determined?", a: "A composite score from commit velocity change, contributor growth rate, and repository expansion. Full methodology at /methodology." },
     ],
   },
@@ -216,7 +216,7 @@ export default async function BenchmarkPage({ params }: PageProps) {
         </section>
 
         <section className="mb-10">
-          <h2 className="text-lg font-semibold text-gray-100 mb-4">Sector benchmarks — {period.name}</h2>
+          <h2 className="text-lg font-semibold text-gray-100 mb-4">Sector benchmarks, {period.name}</h2>
           <div className="overflow-x-auto rounded-lg border border-slate-800">
             <table className="w-full text-sm">
               <thead>

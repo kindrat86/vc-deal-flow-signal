@@ -3,7 +3,7 @@
 import { useEffect, useState } from "react";
 
 /**
- * ReadingProgressBar — Fixed top bar showing scroll progress.
+ * ReadingProgressBar, Fixed top bar showing scroll progress.
  * Signals dark theme variant (slate-900 background).
  */
 export default function ReadingProgressBar() {

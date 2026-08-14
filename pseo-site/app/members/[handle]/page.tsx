@@ -22,14 +22,14 @@ interface RouteContext {
 }
 
 /**
- * /members/[handle] — Charter member profile page.
+ * /members/[handle], Charter member profile page.
  *
- * Brunson Expert Secrets §1 Ch 4 (Mass Movement Vehicle) — visible momentum
+ * Brunson Expert Secrets §1 Ch 4 (Mass Movement Vehicle), visible momentum
  * member-side. Each profile is the primary unit of social proof in the
  * member-side track record. Static, indexed, hreflang-tagged, with Person +
  * ProfilePage JSON-LD.
  *
- * For unclaimed seats: the page is honest — it says "Open seat — claim this
+ * For unclaimed seats: the page is honest, it says "Open seat, claim this
  * archetype" and the thesis is labeled illustrative. There are no fabricated
  * picks, no fabricated scorecards. The grading rules are documented and the
  * scorecard rows are empty until a real charter member publishes.
@@ -49,7 +49,7 @@ export async function generateMetadata(
   }
   const claimedLabel = member.claimed
     ? `${member.claimedBy?.handle ?? handle}`
-    : `Open seat — ${member.archetype}`;
+    : `Open seat, ${member.archetype}`;
   return {
     title: `${claimedLabel} · Charter Cohort 2026 · VC Deal Flow Signal`,
     description: member.tagline,
@@ -74,19 +74,19 @@ export default async function MemberProfilePage(ctx: RouteContext) {
 
   const headline = member.claimed
     ? member.claimedBy?.handle ?? `@${member.handle}`
-    : `Open seat — ${member.archetype}`;
+    : `Open seat, ${member.archetype}`;
 
   const personSchema: Record<string, unknown> = {
     "@type": "Person",
     "@id": `${SITE}/members/${member.handle}#person`,
-    name: member.claimed ? member.claimedBy?.handle ?? member.handle : `Open seat — ${member.archetype}`,
+    name: member.claimed ? member.claimedBy?.handle ?? member.handle : `Open seat, ${member.archetype}`,
     description: member.tagline,
     url: `${SITE}/members/${member.handle}`,
     knowsAbout: member.sectors.map((s) => SECTOR_LABELS[s]),
     affiliation: {
       "@type": "Organization",
       "@id": "https://gitdealflow.com/#organization",
-      name: "VC Deal Flow Signal — Charter Cohort 2026",
+      name: "VC Deal Flow Signal, Charter Cohort 2026",
     },
   };
 
@@ -97,7 +97,7 @@ export default async function MemberProfilePage(ctx: RouteContext) {
         "@type": "ProfilePage",
         "@id": `${SITE}/members/${member.handle}#profilepage`,
         url: `${SITE}/members/${member.handle}`,
-        name: `${headline} — Charter Cohort 2026`,
+        name: `${headline}, Charter Cohort 2026`,
         mainEntity: { "@id": `${SITE}/members/${member.handle}#person` },
         speakable: {
           "@type": "SpeakableSpecification",
@@ -154,7 +154,7 @@ export default async function MemberProfilePage(ctx: RouteContext) {
             <span className="text-gray-400">{member.handle}</span>
           </nav>
 
-          {/* Open-seat banner — explicit honesty marker */}
+          {/* Open-seat banner, explicit honesty marker */}
           {!member.claimed && (
             <div
               role="status"
@@ -162,7 +162,7 @@ export default async function MemberProfilePage(ctx: RouteContext) {
             >
               <strong className="text-amber-300">Open seat.</strong> The thesis
               and archetype below are an illustrative template. Claim this seat
-              and the page becomes yours — your handle, your thesis, your
+              and the page becomes yours, your handle, your thesis, your
               picks, your scorecard.{" "}
               <Link
                 href="/members/join"
@@ -210,7 +210,7 @@ export default async function MemberProfilePage(ctx: RouteContext) {
           </h2>
           {!member.claimed && (
             <p className="text-gray-500 text-xs italic">
-              Illustrative — replace with your own when you claim this seat.
+              Illustrative, replace with your own when you claim this seat.
             </p>
           )}
           <p className="text-gray-200 text-base sm:text-lg leading-relaxed">
@@ -338,7 +338,7 @@ export default async function MemberProfilePage(ctx: RouteContext) {
               </Link>
               : a pick is graded Hit at the 60-day or 90-day window if a public
               fundraise lands or commit velocity sustains 4× baseline. Misses
-              and Pendings are public — that&rsquo;s the methodology rule.
+              and Pendings are public, that&rsquo;s the methodology rule.
             </p>
           </div>
         </section>

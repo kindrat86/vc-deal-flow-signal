@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const data = getSectorCity(slug, city);
   if (!data) return {};
 
-  const title = `${data.sector.name} in ${data.city.name} — Engineering & VC Signals (2026)`;
+  const title = `${data.sector.name} in ${data.city.name}, Engineering & VC Signals (2026)`;
   const description = `${data.sector.name} scouting and engineering-acceleration signal interpretation through a ${data.city.name} lens. Local VC anchors, sector signal pattern, and curated companies tracked in the ${data.sector.name.toLowerCase()} corpus.`;
 
   // HQ-backed cells carry proprietary local data and stay indexable. Editorial-
@@ -76,7 +76,7 @@ export default async function SectorInCityPage({ params }: PageProps) {
     },
     {
       question: `Which VCs are most active in ${sector.name.toLowerCase()} deals from ${cityObj.name}?`,
-      answer: `${cityObj.vcAnchors.slice(0, 5).join(", ")} are the publicly identifiable venture firms with named partners and an active engineering-aware lens in ${cityObj.name}. We do not claim these funds focus exclusively on ${sector.name.toLowerCase()} — the list is editorial inference from their published thesis material.`,
+      answer: `${cityObj.vcAnchors.slice(0, 5).join(", ")} are the publicly identifiable venture firms with named partners and an active engineering-aware lens in ${cityObj.name}. We do not claim these funds focus exclusively on ${sector.name.toLowerCase()}, the list is editorial inference from their published thesis material.`,
     },
     {
       question: `Which curated ${sector.name.toLowerCase()} companies should I watch?`,
@@ -88,7 +88,7 @@ export default async function SectorInCityPage({ params }: PageProps) {
           : `${sectorCompanies
               .slice(0, 5)
               .map((c) => c.name)
-              .join(", ")} are among the ${sector.name.toLowerCase()} companies VC Deal Flow Signal tracks globally. We do not currently document a ${cityObj.name}-HQ'd company in this sector in our curated corpus — broader regional coverage is at /startups-to-watch/region/${cityObj.parentGeoSlug}.`,
+              .join(", ")} are among the ${sector.name.toLowerCase()} companies VC Deal Flow Signal tracks globally. We do not currently document a ${cityObj.name}-HQ'd company in this sector in our curated corpus, broader regional coverage is at /startups-to-watch/region/${cityObj.parentGeoSlug}.`,
     },
     {
       question: `Why does the intersection of ${sector.name} and ${cityObj.name} matter for sourcing?`,
@@ -226,7 +226,7 @@ export default async function SectorInCityPage({ params }: PageProps) {
             /city/{city}
           </Link>{" "}
           (the local engineering scene). Use it as the lens for reading
-          {sector.name.toLowerCase()} signal in {cityObj.name} — local commit cadence,
+          {sector.name.toLowerCase()} signal in {cityObj.name}, local commit cadence,
           active VCs, scouting context. Live data resolves to coarse continents; this
           intersection is the editorial reading frame.
         </p>
@@ -271,7 +271,7 @@ export default async function SectorInCityPage({ params }: PageProps) {
             </h2>
             <p className="text-gray-500 text-xs mb-4">
               The actual {sector.name.toLowerCase()} × {cityObj.name} intersection from
-              our curated company-location map — verified primary-HQ companies, not just
+              our curated company-location map, verified primary-HQ companies, not just
               cross-sector cross-link aggregation.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">

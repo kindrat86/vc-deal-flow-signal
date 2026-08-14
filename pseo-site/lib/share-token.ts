@@ -11,7 +11,7 @@ function getSecret(): string {
 }
 
 export interface SharePayload {
-  /** Anonymous sharer identifier — handle, email hash, or "anon". */
+  /** Anonymous sharer identifier, handle, email hash, or "anon". */
   s: string;
   /** Expiration unix-ms. */
   e: number;

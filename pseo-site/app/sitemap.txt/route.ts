@@ -1,5 +1,5 @@
 /**
- * /sitemap.txt — plain-text sitemap (Google + Bing supported).
+ * /sitemap.txt, plain-text sitemap (Google + Bing supported).
  * Fast for AI crawlers that prefer simple newline-delimited URL lists
  * over XML. Mirror of sitemap.xml URL set.
  */

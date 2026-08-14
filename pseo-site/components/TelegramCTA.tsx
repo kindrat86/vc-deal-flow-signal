@@ -1,14 +1,14 @@
 import Link from "next/link";
 
 /**
- * TelegramCTA — drop-in card promoting the public Telegram channel as the
+ * TelegramCTA, drop-in card promoting the public Telegram channel as the
  * SECOND owned distribution channel (after email).
  *
- * Brunson Traffic Secrets §3 Ch 11 ("After the Slap") — Russell-style audit
+ * Brunson Traffic Secrets §3 Ch 11 ("After the Slap"), Russell-style audit
  * V8 (2026-05-09) flagged that we had a Telegram link buried in JSON-LD
  * sameAs, the footer, and one integration card, but no funnel-shape push
  * for it. Email is owned channel #1 but the rented-platform exposure is
- * still high — every Reddit/HN/Twitter cohort that ghosts email needs a
+ * still high, every Reddit/HN/Twitter cohort that ghosts email needs a
  * second owned hook. Public Telegram fits the anonymity rule (no founder
  * face, no DMs, broadcast-only, pseudonymous handle).
  *
@@ -69,14 +69,14 @@ const TELEGRAM_HREF = "https://t.me/gitdealflow";
 
 // Context-specific opener so the same component reads differently after
 // payment, after free signup, or on cold homepage traffic. The mid-line
-// stays consistent (what you get + cadence + price) — only the lead beat
+// stays consistent (what you get + cadence + price), only the lead beat
 // changes per context.
 function leadFor(ctx: Props["context"]): string {
   switch (ctx) {
     case "post-purchase":
       return "Pin the public channel while you wait for delivery";
     case "post-signup":
-      return "Mirror your email — pin the channel as the second pipe";
+      return "Mirror your email, pin the channel as the second pipe";
     case "homepage":
       return "Real-time alerts, no signup";
     case "footer":
@@ -87,13 +87,13 @@ function leadFor(ctx: Props["context"]): string {
 }
 
 // Three plain-English value lines. Each is a falsifiable claim, not a
-// marketing platitude — Russell rule: a stack item must hold up to a
+// marketing platitude, Russell rule: a stack item must hold up to a
 // "prove it" test, otherwise drop it.
 const STACK_LINES = [
   {
     label: "Mondays at 09:00 UTC",
     detail:
-      "The same five-name Acceleration Watch that hits email — mirrored to the channel within 60 seconds.",
+      "The same five-name Acceleration Watch that hits email, mirrored to the channel within 60 seconds.",
   },
   {
     label: "Mid-week sector teasers",
@@ -124,7 +124,7 @@ export default function TelegramCTA({
           Also on Telegram
         </p>
         <p className="text-gray-300 text-sm leading-relaxed flex-1">
-          Public broadcast channel — five Monday names, mid-week sector
+          Public broadcast channel, five Monday names, mid-week sector
           alerts, no signup. The second owned pipe after email.
         </p>
         <Link
@@ -141,7 +141,7 @@ export default function TelegramCTA({
 
   return (
     <section
-      aria-label="Public Telegram channel — second owned distribution pipe"
+      aria-label="Public Telegram channel, second owned distribution pipe"
       className={`rounded-xl border-2 ${t.border} bg-gradient-to-br ${t.bg} p-5 sm:p-6 space-y-4`}
     >
       <header className="space-y-2">
@@ -152,7 +152,7 @@ export default function TelegramCTA({
           Pin the public Telegram. Email + Telegram beats email alone.
         </h3>
         <p className="text-gray-300 text-sm sm:text-base leading-relaxed">
-          Email is the primary briefing. Telegram is the second pipe — same
+          Email is the primary briefing. Telegram is the second pipe, same
           five Monday names, mid-week sector pings, methodology change notes.
           Pseudonymous, broadcast-only, no DMs, no login, free forever.
         </p>
@@ -170,7 +170,7 @@ export default function TelegramCTA({
             />
             <div>
               <span className="text-gray-200 font-semibold">{line.label}</span>
-              <span className="text-gray-400"> — {line.detail}</span>
+              <span className="text-gray-400">{line.detail}</span>
             </div>
           </li>
         ))}
@@ -193,11 +193,11 @@ export default function TelegramCTA({
         </Link>
       </div>
 
-      {/* Tone-coded trial close — Russell Expert Secrets Ch 13. The line is
+      {/* Tone-coded trial close, Russell Expert Secrets Ch 13. The line is
           a thinking-prompt, not a buy-button echo, so it doesn't compete
           with the CTA above. */}
       <p className={`border-l-2 ${t.border} pl-3 italic text-sm leading-relaxed text-gray-400`}>
-        If the inbox eats too many briefings already — does a pinned channel
+        If the inbox eats too many briefings already, does a pinned channel
         you can mute when you want, but never miss when it pings, sound like
         the right second pipe?
       </p>

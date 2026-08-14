@@ -1,5 +1,5 @@
 /**
- * /api/catalog.json — machine-readable catalog of every public API endpoint.
+ * /api/catalog.json, machine-readable catalog of every public API endpoint.
  *
  * Pass VII (2026-05-05). Net-new GEO/LLMO surface. AI agents probing
  * a new domain typically need to issue 5-10 reconnaissance requests
@@ -21,7 +21,7 @@ export async function GET() {
     "@context": "https://schema.org",
     "@type": "Collection",
     "@id": `${SITE}/api/catalog.json`,
-    name: "VC Deal Flow Signal — Public API Catalog",
+    name: "VC Deal Flow Signal, Public API Catalog",
     description:
       "Index of every public JSON, JSONL, RSS, Atom, OpenAPI, and well-known surface served by signals.gitdealflow.com. Designed for one-shot agent reconnaissance: an AI assistant can fetch this catalog and resolve the full surface inventory without probing 10+ separate endpoints.",
     url: `${SITE}/api/catalog.json`,

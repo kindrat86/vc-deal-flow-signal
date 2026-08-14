@@ -1,10 +1,10 @@
 /**
  * Generate the downloadable artifacts for the Seven Signals book:
- *   public/downloads/seven-signals.md   — concatenated raw markdown
- *   public/downloads/seven-signals.txt  — plain-text rendering
- *   public/downloads/seven-signals.pdf  — basic PDF (zero deps, hand-written PDF 1.4)
- *   public/downloads/seven-signals.epub — EPUB 3 (hand-rolled zip via node:zlib)
- *   public/downloads/seven-signals-cover.svg — cover art for OG / EPUB
+ *   public/downloads/seven-signals.md  , concatenated raw markdown
+ *   public/downloads/seven-signals.txt , plain-text rendering
+ *   public/downloads/seven-signals.pdf , basic PDF (zero deps, hand-written PDF 1.4)
+ *   public/downloads/seven-signals.epub, EPUB 3 (hand-rolled zip via node:zlib)
+ *   public/downloads/seven-signals-cover.svg, cover art for OG / EPUB
  *
  * Runs as part of `prebuild` so the artifacts ship with the deploy. No
  * runtime deps; native node only.
@@ -97,7 +97,7 @@ function buildPlainText(): string {
 }
 
 // ---------------------------------------------------------------------------
-// PDF (hand-rolled, zero-dep) — a properly typeset book
+// PDF (hand-rolled, zero-dep), a properly typeset book
 //
 // A valid PDF 1.4 laid out like a real trade paperback. Real Adobe Core-14
 // font metrics drive accurate line-breaking and full text justification.
@@ -127,11 +127,11 @@ const WIDTHS: Record<string, number[]> = Object.fromEntries(
 );
 // Widths for the few high WinAnsi typographic glyphs we actually emit.
 const HIGH: Record<string, Record<string, number>> = {
-  "Times-Roman": { "—": 1000, "–": 500, "‘": 333, "’": 333, "“": 444, "”": 444, "…": 1000, "·": 250, "•": 350 },
-  "Times-Bold": { "—": 1000, "–": 500, "‘": 333, "’": 333, "“": 500, "”": 500, "…": 1000, "·": 250, "•": 350 },
-  "Times-Italic": { "—": 889, "–": 500, "‘": 333, "’": 333, "“": 556, "”": 556, "…": 889, "·": 250, "•": 350 },
-  "Helvetica": { "—": 1000, "–": 556, "‘": 222, "’": 222, "“": 333, "”": 333, "…": 1000, "·": 278, "•": 350 },
-  "Helvetica-Bold": { "—": 1000, "–": 556, "‘": 278, "’": 278, "“": 500, "”": 500, "…": 1000, "·": 278, "•": 350 },
+  "Times-Roman": { "-": 1000, "-": 500, "‘": 333, "’": 333, "“": 444, "”": 444, "…": 1000, "·": 250, "•": 350 },
+  "Times-Bold": { "-": 1000, "-": 500, "‘": 333, "’": 333, "“": 500, "”": 500, "…": 1000, "·": 250, "•": 350 },
+  "Times-Italic": { "-": 889, "-": 500, "‘": 333, "’": 333, "“": 556, "”": 556, "…": 889, "·": 250, "•": 350 },
+  "Helvetica": { "-": 1000, "-": 556, "‘": 222, "’": 222, "“": 333, "”": 333, "…": 1000, "·": 278, "•": 350 },
+  "Helvetica-Bold": { "-": 1000, "-": 556, "‘": 278, "’": 278, "“": 500, "”": 500, "…": 1000, "·": 278, "•": 350 },
 };
 const FONT_RES: Record<string, string> = {
   "Times-Roman": "F1",
@@ -192,8 +192,8 @@ function esc(s: string): string {
     .replace(/\\/g, "\\\\")
     .replace(/\(/g, "\\(")
     .replace(/\)/g, "\\)")
-    .replace(/—/g, "\\227")
-    .replace(/–/g, "\\226")
+    .replace(/-/g, "\\227")
+    .replace(/-/g, "\\226")
     .replace(/‘/g, "\\221")
     .replace(/’/g, "\\222")
     .replace(/“/g, "\\223")
@@ -502,7 +502,7 @@ function renderCodeBlock(codeLines: string[]): void {
     ops.push("BT", `/F6 ${f2(size)} Tf`, fill(C.codeink), `1 0 0 1 ${f2(ML + 8)} ${f2(y)} Tm (${esc(cl)}) Tj`, "ET");
     y -= lead;
   }
-  // bottom padding band — sit it just below the last baseline so it never
+  // bottom padding band, sit it just below the last baseline so it never
   // paints over the final code line.
   rect(ML, y + size + 1 - pad, TEXT_W, pad, C.codebg);
   y -= 8;
@@ -706,7 +706,7 @@ function kickerFor(c: (typeof BOOK.chapters)[number]): string {
   return "CHAPTER";
 }
 function displayTitle(c: (typeof BOOK.chapters)[number]): string {
-  return c.title.replace(/^Signal \d+\s*—\s*/, "").replace(/^Appendix\s*—\s*/, "");
+  return c.title.replace(/^Signal \d+\s*-\s*/, "").replace(/^Appendix\s*-\s*/, "");
 }
 
 function titlePage(): void {
@@ -742,7 +742,7 @@ function copyrightPage(): void {
     BOOK.title,
     `${BOOK.subtitle}`,
     "",
-    `By ${BOOK.authorName} — ${BOOK.authorRole}`,
+    `By ${BOOK.authorName}, ${BOOK.authorRole}`,
     "",
     `${BOOK.edition}. Published ${BOOK.publishedDate}.`,
     `ISBN ${BOOK.isbn}.`,
@@ -1020,7 +1020,7 @@ function escapeXml(s: string): string {
 
 function mdToXhtml(md: string): string {
   // Reuse the same renderer logic but emit XHTML-clean tags. Simpler than
-  // importing the lib — this is build-only.
+  // importing the lib, this is build-only.
   const lines = md.split(/\r?\n/);
   const out: string[] = [];
   let i = 0;

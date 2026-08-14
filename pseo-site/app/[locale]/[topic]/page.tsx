@@ -211,7 +211,7 @@ export default async function LocaleTopicPage({ params }: PageProps) {
   }
 
   // Article schema. Only include translationOfWork when an English
-  // canonical exists — ja-only topics (pricing) are originals, not
+  // canonical exists, ja-only topics (pricing) are originals, not
   // translations, and Schema.org translationOfWork should not point
   // at a 404.
   const articleNode: Record<string, unknown> = {

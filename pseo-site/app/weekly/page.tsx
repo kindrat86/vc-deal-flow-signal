@@ -8,7 +8,7 @@ import EmbedThisCard from "@/components/EmbedThisCard";
 import SeoCta from "@/components/SeoCta";
 
 export const metadata: Metadata = {
-  title: "Weekly Signal Reports — Engineering Acceleration Archive",
+  title: "Weekly Signal Reports, Engineering Acceleration Archive",
   description:
     "Archive of weekly startup engineering acceleration reports from VC Deal Flow Signal. Each report ranks the top 10 startups by GitHub commit velocity change across all sectors.",
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
@@ -29,7 +29,7 @@ export default function WeeklyArchivePage() {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/weekly#webpage",
         url: "https://signals.gitdealflow.com/weekly",
-        name: "Weekly Signal Reports — VC Deal Flow Signal",
+        name: "Weekly Signal Reports, VC Deal Flow Signal",
         description:
           "Archive of weekly startup engineering acceleration reports.",
         inLanguage: "en-US",
@@ -92,7 +92,7 @@ export default function WeeklyArchivePage() {
         <p className="text-gray-400 text-base leading-relaxed mb-10">
           Every week we publish the top 10 startups by engineering acceleration
           across all sectors. These reports capture a snapshot of which
-          companies are shipping the fastest — a signal that has historically
+          companies are shipping the fastest, a signal that has historically
           preceded fundraise announcements by three to six weeks. Subscribe to
           the weekly report to get each edition in your inbox. If you want the
           freshest shortlist or the proof behind it, use the routes below before

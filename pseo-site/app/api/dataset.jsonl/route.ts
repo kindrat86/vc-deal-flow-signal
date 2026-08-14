@@ -33,7 +33,7 @@ export async function GET(request: Request) {
 
   const lines: string[] = [];
 
-  // Leading metadata line — single JSON object describing the panel.
+  // Leading metadata line, single JSON object describing the panel.
   lines.push(
     JSON.stringify({
       _meta: true,

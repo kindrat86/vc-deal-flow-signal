@@ -2,14 +2,14 @@
  * Honest, deterministic per-startup projections for the email-gated
  * curiosity row (see components/CuriosityGate.tsx).
  *
- * Every output is a pure function of data ALREADY shown on the page —
+ * Every output is a pure function of data ALREADY shown on the page -
  * a startup's own commit-velocity acceleration and its classified signal
  * type. Nothing is invented:
  *   - the lead-time window is bucketed against our working lead-time
- *     hypothesis (~31-day median, 21-47d band) — under live validation on
+ *     hypothesis (~31-day median, 21-47d band), under live validation on
  *     /scorecard, NOT a result of the descriptive SSRN dataset paper;
  *   - the next milestone is the documented meaning of the signal type.
- * Both render blurred + labeled "model estimate" — the curiosity is the
+ * Both render blurred + labeled "model estimate", the curiosity is the
  * gate, the honesty is the label.
  */
 

@@ -6,7 +6,7 @@ const SITE = "https://signals.gitdealflow.com";
 const fw = getFrameworkPositioning("crewai")!;
 
 const TITLE =
-  "GitDealFlow for CrewAI — Build a Role-Based VC Scouting Crew";
+  "GitDealFlow for CrewAI, Build a Role-Based VC Scouting Crew";
 const DESCRIPTION =
   "Wire GitDealFlow into a CrewAI scout / analyst / skeptic crew. Three Python agents share live engineering-acceleration signals across 350+ venture-backed startups. Free A2A endpoint, no auth, no LLM lock-in.";
 

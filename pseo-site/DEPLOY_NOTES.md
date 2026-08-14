@@ -1,22 +1,22 @@
-# Deploy Notes — Cross-link additions to startup pages
+# Deploy Notes, Cross-link additions to startup pages
 
-## ⚠️ LINEAGE RESOLUTION 2026-08-12 — one canonical deploy lineage, guard-enforced
+## ⚠️ LINEAGE RESOLUTION 2026-08-12, one canonical deploy lineage, guard-enforced
 
 **The only tree allowed to build/deploy signals.gitdealflow.com is
 `~/signals-gitdealflow/pseo-site` on branch `main`.** A committed sentinel
 (`.deploy-lineage`, `role=CANONICAL`) is checked FIRST in `prebuild` by
 `scripts/assert-canonical-lineage.mjs`. The retired `worldclass-signals`
 checkout (`~/signals-worldclass/pseo-site`) carries `role=RETIRED` and its
-builds abort before anything compiles — covering every deploy path, including
+builds abort before anything compiles, covering every deploy path, including
 `deploy_from_commit.sh`'s git-archive export (the sentinel is committed, so it
 travels with the tree). The third historical checkout,
 `~/Downloads/vc-deal-flow-signal`, no longer exists on disk (verified
 2026-08-12). If you are in the retired checkout: land your change on `main` in
-the canonical checkout — do NOT edit `.deploy-lineage` or the guard.
+the canonical checkout, do NOT edit `.deploy-lineage` or the guard.
 NOTE: `worldclass-signals` still holds 43 commits `main` lacks (entity-graph
 fix, email send-gate guards, GSC sitemap fixes); see the backlog order to
 audit/cherry-pick them before that branch is archived.
-(Owner: AGENTS.md still needs this paragraph — agent writes to AGENTS.md are
+(Owner: AGENTS.md still needs this paragraph, agent writes to AGENTS.md are
 blocked in autonomous mode; see owner-queue.)
 
 ## What changed
@@ -36,7 +36,7 @@ All links open in new tabs (`target="_blank"`, `rel="noopener noreferrer"`) and 
 
 ## Modified file
 
-- `app/startup/[slug]/page.tsx` — added ~60 lines (new section inserted after sector rankings, before badge embed)
+- `app/startup/[slug]/page.tsx`, added ~60 lines (new section inserted after sector rankings, before badge embed)
 
 ## Deploy commands
 
@@ -61,13 +61,13 @@ git checkout worldclass-signals
 ### Step 3: Build and deploy
 
 ```bash
-# --archive=tgz is REQUIRED — the file manifest exceeds Vercel's 10 MB API limit
+# --archive=tgz is REQUIRED, the file manifest exceeds Vercel's 10 MB API limit
 vercel build --prod && vercel deploy --prebuilt --prod --yes --archive=tgz
 ```
 
 This outputs a deployment URL like `https://pseo-site-xxxxx.vercel.app`.
 
-### Step 4: Alias the domain (required — alias-pinned)
+### Step 4: Alias the domain (required, alias-pinned)
 
 ```bash
 # vercel --prod does NOT update the live domain
@@ -77,11 +77,11 @@ vercel alias <deployment-url> signals.gitdealflow.com
 
 Replace `<deployment-url>` with the URL from step 3.
 
-Do **NOT** use `vercel --prod` as a shortcut — it will not update the live domain.
+Do **NOT** use `vercel --prod` as a shortcut, it will not update the live domain.
 
 ### Step 5: Verify
 
-**Do NOT rely on `curl`** — the AGENTS.md warns that a `curl 200` can already hide an empty page due to the `require-trusted-types-for` CSP policy.
+**Do NOT rely on `curl`**, the AGENTS.md warns that a `curl 200` can already hide an empty page due to the `require-trusted-types-for` CSP policy.
 
 Verify by **screenshot**:
 - Visit `https://signals.gitdealflow.com/startup/<any-slug>` in a browser
@@ -91,8 +91,8 @@ Verify by **screenshot**:
 
 ## Known pitfalls
 
-- **Trusted Types CSP**: The site has `require-trusted-types-for` in CSP. If the page goes blank, it's a Trusted Types issue (fixed in commit 22d6de1c) — not a deploy failure.
-- **`/ux.js`**: Do NOT re-add `/ux.js` to layout.tsx — it blank-screens the site (App Router hydration wipe). `ux.css` is fine.
+- **Trusted Types CSP**: The site has `require-trusted-types-for` in CSP. If the page goes blank, it's a Trusted Types issue (fixed in commit 22d6de1c), not a deploy failure.
+- **`/ux.js`**: Do NOT re-add `/ux.js` to layout.tsx, it blank-screens the site (App Router hydration wipe). `ux.css` is fine.
 - **Non-team commit authors**: The pSEO project rejects commits from non-team git identities. Use the project owner's git identity.
-- **Vercel env vars**: If adding/modifying env vars, use `printf '%s' "$VAL" | vercel env add NAME production` — `echo` appends a newline that silently corrupts secrets.
+- **Vercel env vars**: If adding/modifying env vars, use `printf '%s' "$VAL" | vercel env add NAME production`, `echo` appends a newline that silently corrupts secrets.
 - **Swarm races**: Before deploying, check `ps aux | grep hermes` to ensure no other agent is modifying the project concurrently.

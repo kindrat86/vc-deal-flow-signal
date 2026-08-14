@@ -110,13 +110,13 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/pricing`, lastmod, changefreq: "monthly", priority: 0.9 },
       { url: `${BASE_URL}/teardown`, lastmod, changefreq: "monthly", priority: 0.85 },
       { url: `${BASE_URL}/firstlook`, lastmod, changefreq: "monthly", priority: 0.85 },
-      // Brunson DCS Secret 15 — single-purpose Lead Squeeze landing.
+      // Brunson DCS Secret 15, single-purpose Lead Squeeze landing.
       // High priority because this is the dedicated paid-traffic + cold-link
       // capture page; Sunday-digest acquisition target.
       { url: `${BASE_URL}/squeeze`, lastmod, changefreq: "monthly", priority: 0.95 },
       { url: `${BASE_URL}/buyers-guide`, lastmod, changefreq: "monthly", priority: 0.85 },
       { url: `${BASE_URL}/how-to-spot-startup-momentum-before-the-round-gets-crowded`, lastmod, changefreq: "weekly", priority: 0.9 },
-      // Book funnel — Brunson Secret 17 (2026-05-06). Free PDF + EPUB +
+      // Book funnel, Brunson Secret 17 (2026-05-06). Free PDF + EPUB +
       // €0.99 Kindle. Each chapter is its own indexable page.
       { url: `${BASE_URL}/book`, lastmod, changefreq: "monthly", priority: 0.9 },
       { url: `${BASE_URL}/book/read`, lastmod, changefreq: "monthly", priority: 0.85 },
@@ -131,17 +131,17 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/book/read/methodology`, lastmod, changefreq: "monthly", priority: 0.8 },
       { url: `${BASE_URL}/book/read/replication-appendix`, lastmod, changefreq: "monthly", priority: 0.8 },
       { url: `${BASE_URL}/book/read/conclusion`, lastmod, changefreq: "monthly", priority: 0.8 },
-      // Tweet Teardown — €1 micro-tripwire (Brunson DCS Ch 18, 2026-05-06).
+      // Tweet Teardown, €1 micro-tripwire (Brunson DCS Ch 18, 2026-05-06).
       // Canonical URL is /teardown (listed above); /tweet-teardown 308-redirects
       // there (next.config.ts), so it must not appear in the sitemap.
-      // Walkthrough — three lengths of the same Perfect Webinar argument
-      // (Brunson Expert Secrets §3 Ch 15 — Webinar Variations). The 90s
+      // Walkthrough, three lengths of the same Perfect Webinar argument
+      // (Brunson Expert Secrets §3 Ch 15, Webinar Variations). The 90s
       // and 5min variants are A/B-tested via /walkthrough/quick (router
       // is noindex; both variants are canonical).
       { url: `${BASE_URL}/walkthrough`, lastmod, changefreq: "monthly", priority: 0.9 },
       { url: `${BASE_URL}/walkthrough/5min`, lastmod, changefreq: "monthly", priority: 0.85 },
       { url: `${BASE_URL}/walkthrough/90s`, lastmod, changefreq: "monthly", priority: 0.85 },
-      // Summit Funnel — Brunson DotCom Ch 16. 20 anonymous-by-design talks
+      // Summit Funnel, Brunson DotCom Ch 16. 20 anonymous-by-design talks
       // across 5 days. /summit is the squeeze; /summit/[slug] is each talk;
       // /summit/all-access is the €97 one-time upsell.
       { url: `${BASE_URL}/summit`, lastmod, changefreq: "weekly", priority: 0.95 },
@@ -158,7 +158,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/faq`, lastmod, changefreq: "monthly", priority: 0.7 },
       { url: `${BASE_URL}/about`, lastmod, changefreq: "monthly", priority: 0.6 },
       // AEO 2026-07-18: canonical proprietary-entity pages. Both define
-      // terms AI should attach to the brand — /code-side-sourcing is the
+      // terms AI should attach to the brand, /code-side-sourcing is the
       // named category, /scout-score is the proprietary metric. Without
       // sitemap entries AI crawlers discover them only via internal links,
       // which delays citation; surfacing them in the core sitemap gives
@@ -166,7 +166,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/code-side-sourcing`, lastmod, changefreq: "monthly", priority: 0.8 },
       { url: `${BASE_URL}/scout-score`, lastmod, changefreq: "monthly", priority: 0.8 },
       { url: `${BASE_URL}/story`, lastmod, changefreq: "monthly", priority: 0.75 },
-      // Brunson Expert Secrets Ch 8 (Hero's Two Journeys) — /origin is the
+      // Brunson Expert Secrets Ch 8 (Hero's Two Journeys), /origin is the
       // founder's arc; /origin/your-journey is the buyer's arc, told beat-
       // for-beat against it. Both indexed at the same priority so search
       // engines and answer surfaces find the matched pair.
@@ -193,7 +193,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
         },
       ]),
       { url: `${BASE_URL}/signal-of-the-week`, lastmod, changefreq: "weekly", priority: 0.8 },
-      // Idea of the Day — perma-URL surface (always serves today's pick).
+      // Idea of the Day, perma-URL surface (always serves today's pick).
       // Daily cadence on the hub itself; archived dated children live in
       // the `content` shard below.
       { url: `${BASE_URL}/idea-of-the-day`, lastmod, changefreq: "daily", priority: 0.9 },
@@ -204,9 +204,9 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/integrations/chatgpt`, lastmod, changefreq: "monthly", priority: 0.85 },
       { url: `${BASE_URL}/integrations/agent-runtimes`, lastmod, changefreq: "monthly", priority: 0.85 },
       // (/integrations/best-mcp-server-for-vc-research 308-redirects to
-      //  /answers/best-mcp-server-for-vc-research — canonical URL is emitted in
+      //  /answers/best-mcp-server-for-vc-research, canonical URL is emitted in
       //  the high-intent + content shards via agentQueries, so it's not listed here.)
-      // Sector benchmark comparators — data-derived, refreshed weekly with the dataset.
+      // Sector benchmark comparators, data-derived, refreshed weekly with the dataset.
       // Live static pages under /benchmarks/[metric] (no index page); slugs mirror the
       // curated BENCHMARKS set in app/benchmarks/[metric]/page.tsx (added 2026-07-15).
       { url: `${BASE_URL}/benchmarks/commit-velocity`, lastmod, changefreq: "weekly", priority: 0.85 },
@@ -266,7 +266,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
       // sitemaps, so they are dropped from `core` (2026-08-14 dedup).
       // Wikipedia citation helper
       { url: `${BASE_URL}/wikipedia`, lastmod, changefreq: "monthly", priority: 0.7 },
-      // Wikidata Knowledge Panel claim — Brunson Audit V8 2026-05-09
+      // Wikidata Knowledge Panel claim, Brunson Audit V8 2026-05-09
       // (closes Traffic Secrets §2 Ch 9 +4-pt gap on Google).
       { url: `${BASE_URL}/wikidata`, lastmod, changefreq: "monthly", priority: 0.85 },
       { url: `${BASE_URL}/.well-known/wikidata.json`, lastmod, changefreq: "monthly", priority: 0.7 },
@@ -316,11 +316,11 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/earned-plays`, lastmod, changefreq: "monthly", priority: 0.65 },
       { url: `${BASE_URL}/scorecard`, lastmod, changefreq: "monthly", priority: 0.65 },
       { url: `${BASE_URL}/wins`, lastmod, changefreq: "monthly", priority: 0.65 },
-      // Founder character surfaces — Brunson Expert Secrets Ch 1 + 2.
+      // Founder character surfaces, Brunson Expert Secrets Ch 1 + 2.
       // The /data-nerd character bible, the /now live-status surface, the
       // /parables index + per-parable SSG pages, plus the longform
       // narrative pages (/origin, /story, /manifesto) and the /about hub.
-      // All anonymity-compatible — no founder face/voice/name.
+      // All anonymity-compatible, no founder face/voice/name.
       { url: `${BASE_URL}/data-nerd`, lastmod, changefreq: "monthly", priority: 0.85 },
       { url: `${BASE_URL}/about/founder`, lastmod, changefreq: "monthly", priority: 0.8 },
       { url: `${BASE_URL}/manifesto`, lastmod, changefreq: "monthly", priority: 0.85 },
@@ -333,7 +333,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
         changefreq: "monthly" as const,
         priority: 0.75,
       })),
-      // Charter Cohort 2026 — Brunson Expert Secrets §1 Ch 4 (Mass Movement
+      // Charter Cohort 2026, Brunson Expert Secrets §1 Ch 4 (Mass Movement
       // Vehicle). Member-side companion ledger to /wins. The four seat
       // templates are individually indexable so the cohort surface compounds
       // as members claim.
@@ -344,10 +344,10 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/members/charter-2`, lastmod, changefreq: "weekly", priority: 0.65 },
       { url: `${BASE_URL}/members/charter-3`, lastmod, changefreq: "weekly", priority: 0.65 },
       { url: `${BASE_URL}/members/charter-4`, lastmod, changefreq: "weekly", priority: 0.65 },
-      // Brunson DCS Ch 13 — Best-Bait redacted Friday-noon trailer of
+      // Brunson DCS Ch 13, Best-Bait redacted Friday-noon trailer of
       // Sunday's digest. Weekly cadence matches the data refresh.
       { url: `${BASE_URL}/friday-preview`, lastmod, changefreq: "weekly", priority: 0.8 },
-      // /explore — pSEO crawl hub (internal-link engine, 2026-07-21).
+      // /explore, pSEO crawl hub (internal-link engine, 2026-07-21).
       // Pillar page linking to every section's deep pages so crawlers
       // discover the long-tail fleet from a single high-PR entry point.
       { url: `${BASE_URL}/explore`, lastmod, changefreq: "weekly", priority: 0.85 },
@@ -399,7 +399,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
         priority: 0.7,
       })),
       // NOTE: the /showdown family (hub + ~1,582 per-pair leaves) was removed
-      // entirely in 2026-06 — the uniqueness audit flagged 100% of leaves as
+      // entirely in 2026-06, the uniqueness audit flagged 100% of leaves as
       // near-duplicates, so the route no longer exists and nothing is listed
       // here. /showdown/* redirects to the canonical comparison surfaces.
       { url: `${BASE_URL}/acquirer`, lastmod, changefreq: "weekly", priority: 0.85 },
@@ -409,10 +409,10 @@ export async function GET(_req: Request, ctx: RouteContext) {
         changefreq: "monthly",
         priority: 0.8,
       })),
-      // /sector/[slug]/in/[city] cross-pages — sector × city composition.
+      // /sector/[slug]/in/[city] cross-pages, sector × city composition.
       // ONLY the HQ-backed cells are enumerated: those carry proprietary
       // local-intersection data (≥1 company HQ'd in that city × sector). The
-      // editorial-only cells are the thin made-for-search tail — they carry
+      // editorial-only cells are the thin made-for-search tail, they carry
       // `robots: noindex,follow` (app/sector/[slug]/in/[city]/page.tsx) and are
       // omitted here so crawl budget + site quality concentrate on
       // differentiated pages. The leaves
@@ -558,7 +558,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
         changefreq: "monthly",
         priority: 0.8,
       })),
-      // Tier 1 entity-per-page expansion (2026-05-26) — per-company GitHub
+      // Tier 1 entity-per-page expansion (2026-05-26), per-company GitHub
       // signal reports, per-fund deal-flow context, and public-figure founder
       // engineering profiles. Hub indices at /signal, /fund, /founder; per-
       // entity leaves under each. Wired here so all three slug families ship
@@ -585,7 +585,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
         priority: 0.7,
       })),
       { url: `${BASE_URL}/founder/opt-out`, lastmod, changefreq: "yearly", priority: 0.3 },
-      // Build-vs-invest 2×2 by sector — Greg-Isenberg-shaped pSEO surface
+      // Build-vs-invest 2×2 by sector, Greg-Isenberg-shaped pSEO surface
       // shipped 2026-05-22. One index + per-sector slug pages mapped to the
       // canonical sector taxonomy in data/startups.json.
       { url: `${BASE_URL}/build-vs-invest`, lastmod, changefreq: "monthly", priority: 0.85 },
@@ -603,7 +603,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
       })),
       // /answers/best-mcp-server-for-vc-research is already emitted above by the
       // agentQueries map (the old /integrations/ variant here was a 308 redirect).
-      // Canonical direction only — reverse-alias slugs (VS_CANONICAL_OVERRIDE)
+      // Canonical direction only, reverse-alias slugs (VS_CANONICAL_OVERRIDE)
       // canonical to their primary, so they must NOT be advertised here.
       ...getCanonicalCompetitorVsSlugs().map((slug) => ({
         url: `${BASE_URL}/vs/${slug}`,
@@ -611,13 +611,13 @@ export async function GET(_req: Request, ctx: RouteContext) {
         changefreq: "monthly",
         priority: 0.7,
       })),
-      // Static pSEO leaves (round16/18/19) — hand-authored HTML under
+      // Static pSEO leaves (round16/18/19), hand-authored HTML under
       // public/learn/* and public/vs/*. These serve at clean URLs
-      // (companion index.html), self-canonical, index,follow — but they
+      // (companion index.html), self-canonical, index,follow, but they
       // are NOT generated by any content/* map above, so without these
       // explicit entries they were in no sitemap and reachable only by a
       // crawler stumbling into their cross-link island. NOTE: /for/* static
-      // duplicates are deliberately excluded — /for/[persona] is a real app
+      // duplicates are deliberately excluded, /for/[persona] is a real app
       // route already emitted in the `sectors` shard (getAllPersonaSlugs),
       // and family-offices/venture-scouts are persona slugs, so adding the
       // static /for/*.html twins would double-list the same canonical URL.
@@ -629,7 +629,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
         "learn/how-to-evaluate-engineering-velocity",
         "learn/how-to-build-a-startup-watchlist",
         "learn/how-to-use-startup-signals-api",
-        // Static pSEO leaves discovered orphaned 2026-08-14 — live, self-canonical,
+        // Static pSEO leaves discovered orphaned 2026-08-14, live, self-canonical,
         // index,follow, but absent from every shard (the old repo-root
         // sitemap-pseo.xml listed them but was never deployed, so these 8 pages
         // were reachable only by crawlers stumbling into a cross-link).
@@ -641,12 +641,12 @@ export async function GET(_req: Request, ctx: RouteContext) {
         "integrations/airtable",
         "integrations/crunchbase",
         "integrations/pitchbook",
-        // NOTE: /vs/crunchbase and /vs/tracxn were dropped 2026-07-20 — their
+        // NOTE: /vs/crunchbase and /vs/tracxn were dropped 2026-07-20, their
         // static public/vs/* files were removed and next.config.ts now
         // 308-redirects both to /alternatives/{crunchbase,tracxn} (already
         // emitted via getAllAlternativeSlugs). A sitemap must not advertise
         // permanently-redirecting URLs.
-        // Interactive Scout Score checker — hand-authored static tool under
+        // Interactive Scout Score checker, hand-authored static tool under
         // public/tools/scout-score/ (shipped 2026-07-20). Same orphan class as
         // the /learn and /vs static leaves above: not emitted by any content/*
         // map, so without this entry it was in no sitemap and reachable only by
@@ -667,11 +667,11 @@ export async function GET(_req: Request, ctx: RouteContext) {
         changefreq: HIGH_INTENT_ANSWER_SLUGS.has(q.slug) ? "weekly" : "weekly",
         priority: HIGH_INTENT_ANSWER_SLUGS.has(q.slug) ? 0.9 : 0.85,
       })),
-      // /tools — free-tool hub (Greg-Isenberg-style top-of-funnel).
+      // /tools, free-tool hub (Greg-Isenberg-style top-of-funnel).
       // Each tool is its own indexable page; the hub lists them. First
       // tool shipped 2026-05-27: /tools/safe-calculator.
       { url: `${BASE_URL}/tools`, lastmod, changefreq: "weekly", priority: 0.85 },
-      // /api/v1/tools.json — machine-readable catalog of all 8 calculators
+      // /api/v1/tools.json, machine-readable catalog of all 8 calculators
       // (slug, name, tagline, category, page URL, OG URL, share params,
       // bands source). Companion to /api/v1/glossary.json. Enables MCP
       // servers + AI agents + RAG pipelines to discover the toolset with
@@ -685,18 +685,18 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/tools/ltv-calculator`, lastmod, changefreq: "monthly", priority: 0.85 },
       { url: `${BASE_URL}/tools/dilution-stack`, lastmod, changefreq: "monthly", priority: 0.85 },
       { url: `${BASE_URL}/tools/quick-ratio-calculator`, lastmod, changefreq: "monthly", priority: 0.85 },
-      // /define — category-grouped index (sibling to /glossary's flat
+      // /define, category-grouped index (sibling to /glossary's flat
       // alphabetic listing). Hub for the 62 /define/[term] deep pages.
       { url: `${BASE_URL}/define`, lastmod, changefreq: "monthly", priority: 0.8 },
-      // /glossary.jsonl + /api/v1/glossary.jsonl — NDJSON dump of the
+      // /glossary.jsonl + /api/v1/glossary.jsonl, NDJSON dump of the
       // controlled vocabulary, one term per line. Sibling to the existing
       // /qa.jsonl + /dataset.jsonl apex surfaces. HF-Datasets-ready.
       { url: `${BASE_URL}/glossary.jsonl`, lastmod, changefreq: "weekly", priority: 0.7 },
       { url: `${BASE_URL}/api/v1/glossary.jsonl`, lastmod, changefreq: "weekly", priority: 0.7 },
-      // /define/[term] — one URL per glossary term, shipped 2026-05-26.
+      // /define/[term], one URL per glossary term, shipped 2026-05-26.
       // Sibling to /glossary (the flat index) and /signals/define/[type]
       // (the formal signal primitives). Wikipedia-shaped DefinedTerm pages
-      // are the strongest single AEO citation magnet — see audit notes
+      // are the strongest single AEO citation magnet, see audit notes
       // in marketing/pseo-define-archetype-2026-05-26.md.
       ...glossaryTerms.map((t) => ({
         url: `${BASE_URL}/define/${t.id}`,
@@ -704,7 +704,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
         changefreq: "monthly",
         priority: 0.75,
       })),
-      // Niche-down — Greg-style "riches are in the niches" pSEO cluster
+      // Niche-down, Greg-style "riches are in the niches" pSEO cluster
       // (2026-05-22). 1 hub + 15 sector hubs + 200 leaf pages = 221 URLs.
       // Sector → sub-niche taxonomy lives in content/niches.ts.
       { url: `${BASE_URL}/niche-down`, lastmod, changefreq: "weekly", priority: 0.8 },
@@ -720,7 +720,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
         changefreq: "monthly",
         priority: 0.7,
       })),
-      // Startup Ideas (2026-05-22) — programmatic "buildable opportunity"
+      // Startup Ideas (2026-05-22), programmatic "buildable opportunity"
       // pages, each joining live against the current-period GitHub signal
       // panel. Hub at /startup-ideas plus one page per idea slug.
       { url: `${BASE_URL}/startup-ideas`, lastmod, changefreq: "weekly", priority: 0.9 },
@@ -730,7 +730,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
         changefreq: "weekly",
         priority: 0.8,
       })),
-      // Playbooks — operator how-tos shipped 2026-05-22. Greg-Isenberg-shaped
+      // Playbooks, operator how-tos shipped 2026-05-22. Greg-Isenberg-shaped
       // micro-SaaS / indie-builder framing on top of the same scoring rubric;
       // each playbook hands off to /firstlook, /book, /methodology, or the
       // public signals feed at the natural CTA step.
@@ -741,7 +741,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
         changefreq: "monthly",
         priority: 0.8,
       })),
-      // From Stars to Seed — case-study pSEO (2026-05-22). Each entry
+      // From Stars to Seed, case-study pSEO (2026-05-22). Each entry
       // pairs a public GitHub repo with a publicly announced raise. The
       // index is high-priority because it is one of the strongest social-
       // proof surfaces on the site.
@@ -752,7 +752,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
         changefreq: "monthly",
         priority: 0.8,
       })),
-      // Idea of the Day — dated archive children. Each slug is permanent;
+      // Idea of the Day, dated archive children. Each slug is permanent;
       // the date is also the slug. `changefreq: yearly` because past entries
       // never change after publish (only the lastmod stays in sync with
       // the global data refresh).
@@ -769,7 +769,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
         changefreq: "monthly",
         priority: 0.8,
       })),
-      // /community-signal — communities ranked by deal-flow yield, indexed by
+      // /community-signal, communities ranked by deal-flow yield, indexed by
       // community type (cousin of /voices which indexes by platform). 2026-05-22.
       { url: `${BASE_URL}/community-signal`, lastmod, changefreq: "weekly", priority: 0.8 },
       ...COMMUNITY_GROUPS.map((g) => ({
@@ -778,9 +778,9 @@ export async function GET(_req: Request, ctx: RouteContext) {
         changefreq: "monthly",
         priority: 0.75,
       })),
-      // Solo-Founder Tracker (2026-05-22) — per-sector "one-person unicorn"
+      // Solo-Founder Tracker (2026-05-22), per-sector "one-person unicorn"
       // editorial pages. Index + 15 sector slugs. Distinct from /predicted
-      // (all-stage) and /startups-to-watch (ranking) — see content/
+      // (all-stage) and /startups-to-watch (ranking), see content/
       // solo-founder-tracker.ts for the rationale.
       { url: `${BASE_URL}/solo-founder-tracker`, lastmod, changefreq: "weekly", priority: 0.85 },
       ...SOLO_FOUNDER_SECTORS.map((s) => ({
@@ -791,7 +791,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
       })),
     ];
     // NOTE: the "high-intent" shard (id === "high-intent") was RETIRED
-    // 2026-07-21. All 15 of its URLs were already emitted by another shard —
+    // 2026-07-21. All 15 of its URLs were already emitted by another shard -
     // the 9 /answers via agentQueries + the 4 /compare via getAllComparisonSlugs
     // in `content` (both elevated by the HIGH_INTENT_* sets there), and
     // /how-to-spot... + /receipts in `core`. Re-listing them here duplicated the

@@ -1,8 +1,8 @@
 /**
- * /api/v1/playbooks.json — versioned alias for /api/playbooks.json.
+ * /api/v1/playbooks.json, versioned alias for /api/playbooks.json.
  *
  * Stable v1 path for the operator-playbook corpus. Body and headers mirror
- * the upstream; canonical URL — declared via `Link: rel=canonical` — remains
+ * the upstream; canonical URL, declared via `Link: rel=canonical`, remains
  * at /api/playbooks.json.
  */
 

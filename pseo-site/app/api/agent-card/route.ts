@@ -1,9 +1,9 @@
 /**
- * /api/agent-card — REST-style alias for /.well-known/agent-card.json.
+ * /api/agent-card, REST-style alias for /.well-known/agent-card.json.
  *
  * Some agent runtimes resolve discovery endpoints under /api/* rather
  * than /.well-known/*. Body and headers mirror the upstream; canonical
- * URL — declared via `Link: rel=canonical` — remains at
+ * URL, declared via `Link: rel=canonical`, remains at
  * /.well-known/agent-card.json.
  */
 

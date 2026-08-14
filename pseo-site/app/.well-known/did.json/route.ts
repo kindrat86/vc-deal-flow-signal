@@ -1,5 +1,5 @@
 /**
- * /.well-known/did.json — DID document for did:web:signals.gitdealflow.com.
+ * /.well-known/did.json, DID document for did:web:signals.gitdealflow.com.
  *
  * Anchors the AT Protocol feed generator service. The Bluesky AppView resolves
  * the feed's serviceEndpoint by GET'ing this document, finding the

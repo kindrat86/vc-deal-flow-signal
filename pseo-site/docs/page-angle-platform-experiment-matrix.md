@@ -1,4 +1,4 @@
-# GitDealFlow — page-angle-platform experiment matrix
+# GitDealFlow, page-angle-platform experiment matrix
 
 Purpose: make it easy to test which page-angle-platform combinations deserve more pressure and which should be stopped.
 

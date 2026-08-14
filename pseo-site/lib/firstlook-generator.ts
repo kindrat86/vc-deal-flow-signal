@@ -1,16 +1,16 @@
 import "server-only";
 
 /**
- * First Look Pass — sector deep dive generator (server-side runtime).
+ * First Look Pass, sector deep dive generator (server-side runtime).
  *
  * Mirrors `tools/firstlook/generate.mjs` (CLI) but inlined into the webhook
  * handler so a clean sector match auto-fulfills within seconds of payment
  * instead of waiting for a human to run the CLI.
  *
  * Confidence model:
- * - "auto-sent" — canonical sector resolved AND ≥3 records found. Webhook
+ * - "auto-sent", canonical sector resolved AND ≥3 records found. Webhook
  *   sends the buyer the full deep dive with both attachments immediately.
- * - "needs-admin" — sector unresolved OR too few records. Webhook falls
+ * - "needs-admin", sector unresolved OR too few records. Webhook falls
  *   back to manual admin-alert flow (so a human can clarify with the buyer).
  */
 
@@ -116,18 +116,18 @@ function buildMarkdown(opts: {
   const sepRow = `|---:|---|---|---|---:|---:|---:|---:|---|---|`;
   const dataRows = records
     .map((r, i) => {
-      const gh = r.GitHub_URL ? `[link](${r.GitHub_URL})` : "—";
-      return `| ${i + 1} | **${r.Startup}** | ${r.Stage || "—"} | ${r.Geography || "—"} | ${r.Commits_14d || "—"} | ${r.Velocity_Change || "—"} | ${r.Contributors || "—"} | ${r.Contributor_Growth || "—"} | ${r.Signal_Type || "—"} | ${gh} |`;
+      const gh = r.GitHub_URL ? `[link](${r.GitHub_URL})` : "-";
+      return `| ${i + 1} | **${r.Startup}** | ${r.Stage || "-"} | ${r.Geography || "-"} | ${r.Commits_14d || "-"} | ${r.Velocity_Change || "-"} | ${r.Contributors || "-"} | ${r.Contributor_Growth || "-"} | ${r.Signal_Type || "-"} | ${gh} |`;
     })
     .join("\n");
 
   const tldr = top3UnderRadar.length === 0
-    ? "_No early-stage movers in this sector right now — see the full table below for later-stage acceleration._"
+    ? "_No early-stage movers in this sector right now, see the full table below for later-stage acceleration._"
     : top3UnderRadar
-        .map((r, i) => `${i + 1}. **${r.Startup}** (${r.Stage || "stage unknown"}, ${r.Geography || "geo unknown"}) — ${r.Velocity_Change || "—"} velocity, ${r.Contributors || "—"} contributors${r.Description ? ` — ${r.Description}` : ""}${r.GitHub_URL ? ` — ${r.GitHub_URL}` : ""}`)
+        .map((r, i) => `${i + 1}. **${r.Startup}** (${r.Stage || "stage unknown"}, ${r.Geography || "geo unknown"}), ${r.Velocity_Change || "-"} velocity, ${r.Contributors || "-"} contributors${r.Description ? `, ${r.Description}` : ""}${r.GitHub_URL ? `, ${r.GitHub_URL}` : ""}`)
         .join("\n");
 
-  return `# Sector Deep Dive — ${displaySector}
+  return `# Sector Deep Dive, ${displaySector}
 
 **Buyer:** ${email}
 **Generated:** ${generatedAt}
@@ -136,15 +136,15 @@ function buildMarkdown(opts: {
 
 ---
 
-## TL;DR — top 3 under-the-radar movers
+## TL;DR, top 3 under-the-radar movers
 
-These are accelerating with smaller contributor bases (≤30) — i.e. early enough that consensus probably hasn't formed yet:
+These are accelerating with smaller contributor bases (≤30), i.e. early enough that consensus probably hasn't formed yet:
 
 ${tldr}
 
 ---
 
-## Full ranked table — top ${records.length}
+## Full ranked table, top ${records.length}
 
 Ranked by 14-day commit-velocity change, descending. Higher = more recent acceleration relative to the company's own baseline.
 
@@ -158,17 +158,17 @@ ${dataRows}
 
 - **Velocity Δ** = percent change in commits during the trailing 14 days vs the prior 14-day window for the *same* org. This is a regime-change signal, not an absolute-volume signal.
 - **Δ Contributors** = percent change in unique committers over the same window. A jump usually means hiring or the team going full-time.
-- **Signal Type** = our classifier — Framework migration, Deploy frequency spike, Contributor surge, etc. Detail in the methodology page.
+- **Signal Type** = our classifier, Framework migration, Deploy frequency spike, Contributor surge, etc. Detail in the methodology page.
 
-## Top movers — quick narrative
+## Top movers, quick narrative
 
 ${top10
   .map((r, i) => {
-    const v = r.Velocity_Change || "—";
-    const c = r.Contributors || "—";
-    const cg = r.Contributor_Growth || "—";
+    const v = r.Velocity_Change || "-";
+    const c = r.Contributors || "-";
+    const cg = r.Contributor_Growth || "-";
     const desc = r.Description ? ` ${r.Description}` : "";
-    return `**${i + 1}. ${r.Startup}** — ${v} velocity, ${c} contributors (${cg} growth), ${r.Signal_Type || "signal type unclassified"}.${desc}`;
+    return `**${i + 1}. ${r.Startup}**, ${v} velocity, ${c} contributors (${cg} growth), ${r.Signal_Type || "signal type unclassified"}.${desc}`;
   })
   .join("\n\n")}
 
@@ -177,15 +177,14 @@ ${top10
 ## What's next
 
 If you're allocating real capital into one sector and need this depth across the whole field:
-- **Custom Sector Sweep** (€1,997 one-time) — every venture-backed startup in one sector you pick, engineering acceleration ranked over four quarters, diligence prompts on each top-10 name, three early-stage targets not yet on Crunchbase or PitchBook. Written report in 7 business days, 30-minute clarifications call after delivery. Detail: https://gitdealflow.com/sector-sweep?utm_source=email&utm_medium=firstlook-delivery&utm_campaign=sector-sweep · Commission: /api/checkout/session?tier=sector_sweep
+- **Custom Sector Sweep** (€1,997 one-time), every venture-backed startup in one sector you pick, engineering acceleration ranked over four quarters, diligence prompts on each top-10 name, three early-stage targets not yet on Crunchbase or PitchBook. Written report in 7 business days, 30-minute clarifications call after delivery. Detail: https://gitdealflow.com/sector-sweep?utm_source=email&utm_medium=firstlook-delivery&utm_campaign=sector-sweep · Commission: /api/checkout/session?tier=sector_sweep
 
 If you want this every week, across all 15 sectors, with filters and the live dashboard:
-- **Dashboard** (€9.97/mo founding-member, locked forever) — https://gitdealflow.com/dashboard?utm_source=email&utm_medium=firstlook-delivery&utm_campaign=dashboard
+- **Dashboard** (€9.97/mo founding-member, locked forever), https://gitdealflow.com/dashboard?utm_source=email&utm_medium=firstlook-delivery&utm_campaign=dashboard
 - Reply to your confirmation email with **"credit me"** and your €7 First Look Pass is credited toward your first month.
 
 If you want a different sector or a follow-up on a specific name, just reply.
-
-— The Data Nerd
+The Data Nerd
 `;
 }
 
@@ -269,7 +268,7 @@ export function buildAutoFulfillmentEmailHtml(opts: {
 }): { subject: string; html: string } {
   const { displaySector, recordCount } = opts;
   return {
-    subject: `Your ${displaySector} Sector Deep Dive — First Look Pass`,
+    subject: `Your ${displaySector} Sector Deep Dive, First Look Pass`,
     html: `<!DOCTYPE html>
 <html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
 <body style="margin:0;padding:0;background:#f8fafc;color:#1e293b;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
@@ -278,18 +277,18 @@ export function buildAutoFulfillmentEmailHtml(opts: {
 <div style="font-size:16px;line-height:1.7;color:#1e293b;">
 <p>Your sector deep dive is attached. Two files:</p>
 <ul>
-<li><strong>${displaySector}-deep-dive.md</strong> — ranked Markdown report (renders nicely in any text/markdown viewer; if it's plain text in your client, download and open in VS Code or GitHub for proper formatting)</li>
-<li><strong>${displaySector}-deep-dive.csv</strong> — raw filtered CSV (open in Excel/Numbers/Sheets for your own analysis)</li>
+<li><strong>${displaySector}-deep-dive.md</strong>: ranked Markdown report (renders nicely in any text/markdown viewer; if it's plain text in your client, download and open in VS Code or GitHub for proper formatting)</li>
+<li><strong>${displaySector}-deep-dive.csv</strong>: raw filtered CSV (open in Excel/Numbers/Sheets for your own analysis)</li>
 </ul>
-<p>The report ranks <strong>${recordCount} startups in the ${displaySector} sector</strong> by 14-day commit-velocity change. The TL;DR at the top calls out the top 3 with the smallest contributor base — early-stage proxy for "not yet on Crunchbase."</p>
+<p>The report ranks <strong>${recordCount} startups in the ${displaySector} sector</strong> by 14-day commit-velocity change. The TL;DR at the top calls out the top 3 with the smallest contributor base, early-stage proxy for "not yet on Crunchbase."</p>
 <div style="margin-top:32px;padding:20px 22px;background:#fff7ed;border-left:4px solid #FF6B1A;border-radius:6px;font-size:15px;line-height:1.65;">
-<strong style="color:#9a3412;font-size:16px;display:block;margin-bottom:8px;">Allocating real capital into a sector — not just researching one?</strong>
-The <a href="https://gitdealflow.com/sector-sweep?utm_source=email&amp;utm_medium=firstlook-delivery&amp;utm_campaign=sector-sweep" style="color:#FF6B1A;font-weight:600;">Custom Sector Sweep</a> takes the same lens you just got for ${displaySector} and runs it across <em>every</em> venture-backed startup in one sector you pick &mdash; engineering acceleration ranked over four quarters, diligence prompts on each top-10 name, three early-stage targets not yet on Crunchbase or PitchBook. Written report in 7 business days, plus a 30-minute clarifications call after delivery. <strong>€1,997 one-time.</strong>
+<strong style="color:#9a3412;font-size:16px;display:block;margin-bottom:8px;">Allocating real capital into a sector, not just researching one?</strong>
+The <a href="https://gitdealflow.com/sector-sweep?utm_source=email&amp;utm_medium=firstlook-delivery&amp;utm_campaign=sector-sweep" style="color:#FF6B1A;font-weight:600;">Custom Sector Sweep</a> takes the same lens you just got for ${displaySector} and runs it across <em>every</em> venture-backed startup in one sector you pick, engineering acceleration ranked over four quarters, diligence prompts on each top-10 name, three early-stage targets not yet on Crunchbase or PitchBook. Written report in 7 business days, plus a 30-minute clarifications call after delivery. <strong>€1,997 one-time.</strong>
 <div style="margin-top:14px;"><a href="/api/checkout/session?tier=sector_sweep" style="display:block;width:100%;box-sizing:border-box;background:#FF6B1A;color:#ffffff;font-weight:700;font-size:19px;line-height:1.2;padding:18px 28px;border-radius:10px;text-decoration:none;text-align:center;box-shadow:0 4px 14px rgba(255,107,26,0.35);">Commission a Sector Sweep &rarr;</a></div>
 </div>
 <p style="margin-top:28px;"><strong>Want this every week, across all 15 sectors?</strong> Reply with <code>credit me</code> to apply your €7 toward the full Dashboard (€9.97/mo founding price, locked forever).</p>
-<p>Questions about any specific name? Reply &mdash; same email thread.</p>
-<p>— The Data Nerd</p>
+<p>Questions about any specific name? Reply, same email thread.</p>
+<p>The Data Nerd</p>
 </div>
 <div style="margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;font-size:12px;color:#94a3b8;">
 <p>Methodology: <a href="https://signals.gitdealflow.com/methodology" style="color:#0ea5e9;">signals.gitdealflow.com/methodology</a></p>

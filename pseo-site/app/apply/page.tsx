@@ -11,9 +11,9 @@ import BuyerRoadmap from "@/components/BuyerRoadmap";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Apply for the Sharp Tier — €497/mo, capped at 8 funds in 2026",
+  title: "Apply for the Sharp Tier, €497/mo, capped at 8 funds in 2026",
   description:
-    "Application-gated tier for active funds and syndicates. €497/mo, white-labeled API, custom watchlists, methodology source, quarterly review call. Capped at 8 funds in 2026 — application reviewed within 48 hours.",
+    "Application-gated tier for active funds and syndicates. €497/mo, white-labeled API, custom watchlists, methodology source, quarterly review call. Capped at 8 funds in 2026, application reviewed within 48 hours.",
   alternates: { canonical: "/apply" },
   openGraph: {
     title: "Apply for the Sharp Tier",
@@ -31,7 +31,7 @@ const STACK = [
       "Private investor Telegram, monthly live briefing, JSON/CSV API, Slack/Telegram spike alerts, quarterly trend briefing PDF, portfolio overlap report.",
   },
   {
-    label: "Custom watchlists — built and maintained for you",
+    label: "Custom watchlists, built and maintained for you",
     detail:
       "Send your thesis, your portfolio, the sectors you cover. Watchlists are rebuilt monthly against the live signal feed and pushed to your inbox + Slack.",
   },
@@ -48,7 +48,7 @@ const STACK = [
   {
     label: "Quarterly 60-minute review call",
     detail:
-      "Asynchronous prep, then a 60-minute call with the founder each quarter. Covers what the data showed, what your fund missed, and what to add to the methodology going forward. Anonymity-preserving — the founder uses initials.",
+      "Asynchronous prep, then a 60-minute call with the founder each quarter. Covers what the data showed, what your fund missed, and what to add to the methodology going forward. Anonymity-preserving, the founder uses initials.",
   },
   {
     label: "First-look on new methodology + new signal types",
@@ -60,15 +60,15 @@ const STACK = [
 const FAQS = [
   {
     q: "Why is this application-gated and not just paid?",
-    a: "Two reasons. One — the quarterly review call is real founder time. Hard cap at 8 funds in 2026 ensures every Sharp-tier fund gets meaningful attention. Two — the white-labeled API + methodology source mean we know what your fund is doing with the data. We turn down anyone whose use case doesn't fit the read-only investor-side framing of this product.",
+    a: "Two reasons. One, the quarterly review call is real founder time. Hard cap at 8 funds in 2026 ensures every Sharp-tier fund gets meaningful attention. Two, the white-labeled API + methodology source mean we know what your fund is doing with the data. We turn down anyone whose use case doesn't fit the read-only investor-side framing of this product.",
   },
   {
     q: "What's the response time after applying?",
-    a: "Application is reviewed within 48 business hours. If accepted, the founder sends a Stripe Sharp Tier invoice + an Insider Circle invitation within the same email. If declined, you get a written reason and a refund commitment if you've already prepaid (you haven't — application is free).",
+    a: "Application is reviewed within 48 business hours. If accepted, the founder sends a Stripe Sharp Tier invoice + an Insider Circle invitation within the same email. If declined, you get a written reason and a refund commitment if you've already prepaid (you haven't, application is free).",
   },
   {
     q: "What disqualifies an application?",
-    a: "(1) Reselling the data wholesale (we license, not OEM, at this tier). (2) Funds that operate as data brokers or whose primary thesis is reselling alternative data. (3) Anything that would compromise the founder's anonymity (e.g. requirements for live in-person calls, named-attribution publications, or photos). The Sharp Tier is for funds that want a sharper version of the same product — not a different product.",
+    a: "(1) Reselling the data wholesale (we license, not OEM, at this tier). (2) Funds that operate as data brokers or whose primary thesis is reselling alternative data. (3) Anything that would compromise the founder's anonymity (e.g. requirements for live in-person calls, named-attribution publications, or photos). The Sharp Tier is for funds that want a sharper version of the same product, not a different product.",
   },
   {
     q: "Can I start with Insider Circle and upgrade later?",
@@ -83,7 +83,7 @@ export default function ApplyPage() {
       {
         "@type": "Service",
         "@id": "https://signals.gitdealflow.com/apply#service",
-        name: "Sharp Tier — VC Deal Flow Signal",
+        name: "Sharp Tier, VC Deal Flow Signal",
         description:
           "Application-gated tier for active funds and syndicates. €497/mo. Capped at 8 funds in 2026.",
         provider: {
@@ -172,7 +172,7 @@ export default function ApplyPage() {
 
         <TrialClose tone="violet">
           Capped at 8 funds, application-gated, founder reviews in 48 hours.
-          If the gate itself is the trust signal — does that already tell
+          If the gate itself is the trust signal, does that already tell
           you whether the room is the room you want to be in?
         </TrialClose>
 
@@ -191,7 +191,7 @@ export default function ApplyPage() {
           </ul>
           <TrialClose tone="violet">
             White-labeled API, methodology source, quarterly review with the
-            founder — if any single one of those replaces a tool your fund
+            founder, if any single one of those replaces a tool your fund
             currently pays for, has €497/mo already done its math?
           </TrialClose>
         </section>
@@ -218,10 +218,10 @@ export default function ApplyPage() {
           <TrialClose tone="amber">
             Five fields, no demo, no calendar invite, written response in 48
             hours either way. Lower friction than the average enterprise
-            sales motion — sound right?
+            sales motion, sound right?
           </TrialClose>
 
-          {/* BUYER ROADMAP — Brunson Expert Secrets Ch 18. The Sharp Tier
+          {/* BUYER ROADMAP, Brunson Expert Secrets Ch 18. The Sharp Tier
               is the highest-stakes single decision in the funnel; the
               roadmap renders the application as the start of a quarterly
               relationship arc, not a one-off application. Sits between
@@ -243,7 +243,7 @@ export default function ApplyPage() {
           <TrialClose tone="emerald">
             Insider credit on upgrade, application-gated cap, methodology
             source under CC BY 4.0. If the structure reads as more
-            partnership than vendor-relationship — would the application
+            partnership than vendor-relationship, would the application
             itself be the next move?
           </TrialClose>
         </section>

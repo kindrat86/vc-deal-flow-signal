@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Burn Rate Analyzer — Net Burn, Growth Projection & Efficiency | GitDealFlow</title>
+<title>Burn Rate Analyzer: Net Burn, Growth Projection & Efficiency | GitDealFlow</title>
     <link rel="alternate" hreflang="en" href="https://gitdealflow.com/tools/burn-rate-analyzer">
     <link rel="alternate" hreflang="es" href="https://gitdealflow.com/es/tools/burn-rate-analyzer">
     <link rel="alternate" hreflang="de" href="https://gitdealflow.com/de/tools/burn-rate-analyzer">
@@ -18,7 +18,7 @@
 <meta name="apple-mobile-web-app-title" content="GitDealFlow">
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="GitDealFlow" />
-<meta property="og:title" content="Burn Rate Analyzer — Net Burn, Growth Projection & Efficiency | GitDealFlow" />
+<meta property="og:title" content="Burn Rate Analyzer, Net Burn, Growth Projection & Efficiency | GitDealFlow" />
 <meta property="og:description" content="Free startup burn rate analyzer. Enter MRR, churn, and monthly expenses to see your true net burn, growth trajectory, and 12-month cash projection. Spot the burn multiple and Magic Number that VCs actually look at." />
 <meta property="og:url" content="https://gitdealflow.com/es/tools/burn-rate-analyzer" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -82,14 +82,14 @@
   .back-link:hover { color:var(--accent); }
   @media (max-width:600px) { .form-row { grid-template-columns:1fr; } .chart-col .lbl { font-size:0.55rem; } }
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://gitdealflow.com/"}, {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://gitdealflow.com/es/tools"}, {"@type": "ListItem", "position": 3, "name": "Burn Rate Analyzer — Net Burn, Growth Projection & Efficiency", "item": "https://gitdealflow.com/es/tools/burn-rate-analyzer"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://gitdealflow.com/"}, {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://gitdealflow.com/es/tools"}, {"@type": "ListItem", "position": 3, "name": "Burn Rate Analyzer, Net Burn, Growth Projection & Efficiency", "item": "https://gitdealflow.com/es/tools/burn-rate-analyzer"}]}</script>
 </head>
 <body>
 <div class="container">
   <a href="/tools/" class="back-link">← All Tools</a>
   <div class="header">
     <h1>Burn Rate Analyzer</h1>
-    <p>See your true net burn and what it means for the next 12 months. Enter MRR, churn, and monthly expenses — we'll project your cash trajectory, burn multiple, and the SaaS Magic Number that investors care about.</p>
+    <p>See your true net burn and what it means for the next 12 months. Enter MRR, churn, and monthly expenses, we'll project your cash trajectory, burn multiple, and the SaaS Magic Number that investors care about.</p>
   </div>
 
   <div class="card">
@@ -114,7 +114,7 @@
       <div class="form-group">
         <label for="expenses">Monthly Operating Expenses</label>
         <div class="input-wrap"><input type="number" id="expenses" min="0" step="500" value="60000" /></div>
-        <div class="hint">Salaries, infra, tools, marketing — total monthly spend.</div>
+        <div class="hint">Salaries, infra, tools, marketing, total monthly spend.</div>
       </div>
     </div>
     <div class="form-group">
@@ -130,22 +130,22 @@
       <div class="stat-grid">
         <div class="stat" id="netBurnStat">
           <div class="label">Net Burn</div>
-          <div class="value" id="netBurn">—</div>
-          <div class="sub" id="netBurnSub">—</div>
+          <div class="value" id="netBurn"></div>
+          <div class="sub" id="netBurnSub"></div>
         </div>
         <div class="stat" id="growthStat">
           <div class="label">MRR Growth</div>
-          <div class="value" id="growth">—</div>
-          <div class="sub" id="growthSub">—</div>
+          <div class="value" id="growth"></div>
+          <div class="sub" id="growthSub"></div>
         </div>
         <div class="stat" id="burnMultStat">
           <div class="label">Burn Multiple</div>
-          <div class="value" id="burnMultiple">—</div>
+          <div class="value" id="burnMultiple"></div>
           <div class="sub">Net burn ÷ net new ARR</div>
         </div>
         <div class="stat" id="magicStat">
           <div class="label">Magic Number</div>
-          <div class="value" id="magicNumber">—</div>
+          <div class="value" id="magicNumber"></div>
           <div class="sub">ARR growth ÷ S&amp;M spend</div>
         </div>
       </div>
@@ -166,13 +166,13 @@
     <div class="card">
       <div class="insight" id="insightBox">
         <h4>What this means</h4>
-        <p id="insightText">—</p>
+        <p id="insightText"></p>
       </div>
       <div class="stat-grid" style="margin-top:16px;">
-        <div class="stat"><div class="label">Gross Burn</div><div class="value" id="grossBurn">—</div></div>
-        <div class="stat"><div class="label">Net New MRR/mo</div><div class="value" id="netNewMrr">—</div></div>
-        <div class="stat"><div class="label">Runway</div><div class="value" id="runway">—</div></div>
-        <div class="stat"><div class="label">Break-even MRR</div><div class="value" id="breakEven">—</div></div>
+        <div class="stat"><div class="label">Gross Burn</div><div class="value" id="grossBurn"></div></div>
+        <div class="stat"><div class="label">Net New MRR/mo</div><div class="value" id="netNewMrr"></div></div>
+        <div class="stat"><div class="label">Runway</div><div class="value" id="runway"></div></div>
+        <div class="stat"><div class="label">Break-even MRR</div><div class="value" id="breakEven"></div></div>
       </div>
     </div>
   </div>
@@ -181,11 +181,11 @@
     <h3 style="margin-bottom:8px;">Frequently Asked Questions</h3>
     <details>
       <summary>What is the burn multiple and why do VCs care?</summary>
-      <p>Burn Multiple = Net Burn ÷ Net New ARR. It measures capital efficiency — how many dollars you burn for each dollar of new recurring revenue. David Sacks popularized it in 2020. Under 1.0 is exceptional, 1–1.5 is good, 2+ is a red flag, 3+ means you're burning cash faster than you're growing.</p>
+      <p>Burn Multiple = Net Burn ÷ Net New ARR. It measures capital efficiency, how many dollars you burn for each dollar of new recurring revenue. David Sacks popularized it in 2020. Under 1.0 is exceptional, 1-1.5 is good, 2+ is a red flag, 3+ means you're burning cash faster than you're growing.</p>
     </details>
     <details>
       <summary>What's a good SaaS Magic Number?</summary>
-      <p>Magic Number = (Quarterly ARR growth × 4) ÷ (Sales &amp; Marketing spend over the prior quarter). Above 1.0 means you should pour more fuel on growth; 0.5–1.0 is healthy; below 0.5 suggests your sales engine is inefficient. This tool estimates an annualized version.</p>
+      <p>Magic Number = (Quarterly ARR growth × 4) ÷ (Sales &amp; Marketing spend over the prior quarter). Above 1.0 means you should pour more fuel on growth; 0.5-1.0 is healthy; below 0.5 suggests your sales engine is inefficient. This tool estimates an annualized version.</p>
     </details>
     <details>
       <summary>What counts as "net burn"?</summary>
@@ -194,7 +194,7 @@
   </div>
 
   <div class="footer">
-    <p>Powered by <a href="https://gitdealflow.com/">GitDealFlow</a> — see which startups are accelerating on GitHub 21–47 days before the round.</p>
+    <p>Powered by <a href="https://gitdealflow.com/">GitDealFlow</a>: see which startups are accelerating on GitHub 21-47 days before the round.</p>
   </div>
 </div>
 
@@ -347,15 +347,15 @@ function analyze() {
   // Insight
   let insight = "";
   if (netBurn === 0) {
-    insight = "You're at break-even — every dollar of MRR growth drops straight to the bottom line. This is the moment to decide: bank the profit or reinvest aggressively into growth.";
+    insight = "You're at break-even, every dollar of MRR growth drops straight to the bottom line. This is the moment to decide: bank the profit or reinvest aggressively into growth.";
   } else if (burnMultiple !== null && burnMultiple < 1) {
-    insight = "Capital-efficient growth. Burn multiple of " + burnMultiple.toFixed(2) + " is excellent — you add new ARR faster than you burn. Keep the pedal down.";
+    insight = "Capital-efficient growth. Burn multiple of " + burnMultiple.toFixed(2) + " is excellent, you add new ARR faster than you burn. Keep the pedal down.";
   } else if (burnMultiple !== null && burnMultiple < 2) {
     insight = "Reasonable efficiency. Burn multiple of " + burnMultiple.toFixed(2) + " is in the acceptable range, but if growth slows the burn will look worse. Watch churn closely.";
   } else if (burnMultiple !== null) {
     insight = "Inefficient burn. Burn multiple of " + burnMultiple.toFixed(2) + " means you spend more than " + burnMultiple.toFixed(0) + "× each new ARR dollar. Fix CAC or cut spend before raising on these metrics.";
   } else {
-    insight = "MRR is flat or shrinking. Focus on the underlying growth engine before worrying about burn efficiency — no amount of cost cutting fixes a product that isn't growing.";
+    insight = "MRR is flat or shrinking. Focus on the underlying growth engine before worrying about burn efficiency, no amount of cost cutting fixes a product that isn't growing.";
   }
   if (cashOutMonth !== null && cashOutMonth <= 6) {
     insight += " CRITICAL: at current trajectory you run out of cash in month " + cashOutMonth + ". Cut burn immediately and start a bridge round.";

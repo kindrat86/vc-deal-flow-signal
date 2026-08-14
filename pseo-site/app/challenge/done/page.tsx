@@ -6,13 +6,13 @@ import { CHALLENGE_DAYS } from "@/content/challenge-curriculum";
 
 export const metadata: Metadata = {
   title:
-    "You finished the 30-Day Reset — what's next",
+    "You finished the 30-Day Reset, what's next",
   description:
     "Graduation page for the 30-Day Deal Flow Reset Challenge. Three optional ways to keep using the system: free Sunday digest, €9.97/mo Dashboard, €1,997 one-time Sector Sweep. The framework + your watchlist + custom weights stay yours either way.",
   alternates: { canonical: "/challenge/done" },
   robots: { index: true, follow: true },
   openGraph: {
-    title: "You finished the 30-Day Reset — what's next",
+    title: "You finished the 30-Day Reset, what's next",
     description:
       "Three optional ways to keep using the system. Pick none of them and you still own it.",
     url: "https://signals.gitdealflow.com/challenge/done",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
 };
 
 // Stack-Slide close for the Day-30 graduation. Three rungs of the value
-// ladder — free, founding-rate Dashboard, one-time Sector Sweep — each
+// ladder, free, founding-rate Dashboard, one-time Sector Sweep, each
 // priced against the standalone retail equivalent. Total stacked retail
 // anchors the €9.97/mo founding-rate ask at ~50× value-to-price.
 const RUNGS = [
@@ -29,11 +29,11 @@ const RUNGS = [
     rung: "Rung 0",
     name: "Free Sunday Digest",
     price: "Free, forever",
-    headline: "Five named startups every Sunday — applied, not theoretical.",
+    headline: "Five named startups every Sunday, applied, not theoretical.",
     deliverables: [
       "5 named GitHub orgs surfacing this week, scored against the same 7-signal composite you just learned",
       "14-day acceleration delta + sector + stage tag for each",
-      "Direct GitHub URL — click through and run the manual exercise",
+      "Direct GitHub URL, click through and run the manual exercise",
       "Unsubscribe with a reply. No card, no upgrade pressure.",
     ],
     standaloneValue: 0,
@@ -46,14 +46,14 @@ const RUNGS = [
     name: "Dashboard",
     price: "€9.97/mo founding rate",
     headline:
-      "The 7-signal composite, computed continuously across 369 startup orgs.",
+      "The 7-signal composite, computed continuously across 350+ startup orgs.",
     deliverables: [
       "140 venture-backed startups ranked by 14-day commit-velocity acceleration, refreshed every Monday at 06:00 UTC",
       "Filter by sector, stage, geography",
-      "The 219-startup panel dataset — five quarters of historical signal-to-fundraise pairs",
+      "The 219-startup panel dataset, five quarters of historical signal-to-fundraise pairs",
       "Two free Chrome extensions (Crunchbase + Wellfound badge; VC GitHub Lookup)",
       "Free MCP server with 6 read-only tools (Claude, Cursor, Windsurf, any MCP host)",
-      "30-day Signal-or-It's-Free guarantee — reply REFUND, no questions",
+      "30-day Signal-or-It's-Free guarantee, reply REFUND, no questions",
     ],
     standaloneValue: 1431, // 348 + 297 + 198 + 588 (sum of Perfect-Webinar Stack)
     cta: "Upgrade to Dashboard",
@@ -73,7 +73,7 @@ const RUNGS = [
       "Three pre-Crunchbase breakouts named + thesis-tagged",
       "Raw CSV (every org × every metric)",
       "Async Q&A with the methodology team for 30 days post-delivery",
-      "Capped at 8 per quarter — bandwidth, not artificial scarcity",
+      "Capped at 8 per quarter, bandwidth, not artificial scarcity",
     ],
     standaloneValue: 4970,
     cta: "Book a Sector Sweep",
@@ -182,13 +182,13 @@ export default function ChallengeDonePage() {
             Thirty days. Seven atomic signals. Three real-pipeline candidates
             scored. A 10-org watchlist. A Monday rhythm. Alerts. A custom-weighted
             composite calibrated to your beat. An MCP integration that runs the
-            whole thing from your editor. The next section is optional — three
+            whole thing from your editor. The next section is optional, three
             ways to scale the system if the manual cadence doesn&rsquo;t fit
             anymore. Pick none of them and the system still works.
           </p>
         </header>
 
-        {/* What you just learned — recap chips. */}
+        {/* What you just learned, recap chips. */}
         <section className="mb-10" aria-label="What you learned">
           <h2 className="text-gray-100 font-semibold text-lg mb-4">
             The 30 days, at a glance
@@ -214,14 +214,14 @@ export default function ChallengeDonePage() {
           </div>
         </section>
 
-        {/* The three optional rungs — Brunson Stack-Slide close. */}
+        {/* The three optional rungs, Brunson Stack-Slide close. */}
         <section className="mb-10" aria-label="Three optional next steps">
           <h2 className="text-gray-100 font-semibold text-lg mb-2">
             Three optional next steps
           </h2>
           <p className="text-gray-400 text-sm leading-relaxed mb-6">
             Stacked from least to most committed. Compare the standalone retail
-            value of each rung against its price — the founding rate on the
+            value of each rung against its price, the founding rate on the
             Dashboard is locked for life and never re-priced retroactively.
           </p>
           <div className="space-y-5">
@@ -312,13 +312,13 @@ export default function ChallengeDonePage() {
             indefinitely.
           </p>
           <p className="text-gray-300 text-sm leading-relaxed">
-            We charge for scale (the live engine across 369 orgs and the
+            We charge for scale (the live engine across 350+ orgs and the
             custom Sector Sweep), not for the framework. If the manual version
             fits you, the manual version is genuinely the right answer.
           </p>
         </section>
 
-        {/* Re-engagement loop — refer a friend. */}
+        {/* Re-engagement loop, refer a friend. */}
         <section
           className="mb-10 rounded-xl border border-amber-700/40 bg-amber-950/20 p-6 sm:p-8"
           aria-label="Refer a friend"
@@ -331,7 +331,7 @@ export default function ChallengeDonePage() {
             other investor or analyst who&rsquo;d use it.
           </p>
           <p className="text-gray-400 text-sm leading-relaxed mb-4">
-            That&rsquo;s the entire ask. We don&rsquo;t run an affiliate program — we
+            That&rsquo;s the entire ask. We don&rsquo;t run an affiliate program, we
             don&rsquo;t want incentives to distort whether someone tells a friend.
           </p>
           <code className="block text-sky-300 bg-slate-950/60 px-3 py-2 rounded text-sm break-all">

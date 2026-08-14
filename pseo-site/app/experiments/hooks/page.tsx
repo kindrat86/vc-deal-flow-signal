@@ -7,12 +7,12 @@ import { getHreflangLanguages } from "@/lib/hreflang";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Hook tests — every variant, every channel, every CTR",
+  title: "Hook tests, every variant, every channel, every CTR",
   description:
     "Public log of every cold-traffic hook we've tested at GitDealFlow. The exact copy, the channel, the impressions, the clicks, the click-through rate, what we kept, what we cut. Test-the-hook in receipts form.",
   alternates: { canonical: "/experiments/hooks" },
   openGraph: {
-    title: "Hook tests — every variant, every channel, every CTR",
+    title: "Hook tests, every variant, every channel, every CTR",
     description:
       "The hook log. 14 variants tested across 6 channels, with the actual copy and the actual numbers.",
     url: "https://signals.gitdealflow.com/experiments/hooks",
@@ -39,7 +39,7 @@ const HOOKS: HookTest[] = [
   {
     id: "47-days",
     hook:
-      '"GitHub commit velocity preceded 219 startup-period observations by 21–47 days."',
+      '"GitHub commit velocity preceded 219 startup-period observations by 21-47 days."',
     channel: "Email subject + home hero + Twitter pinned",
     surface: "Apex / squeeze",
     date: "2026-04 → present",
@@ -62,7 +62,7 @@ const HOOKS: HookTest[] = [
     ctr: "6.7%",
     status: "winner",
     takeaway:
-      "Polarising enemy framing. Names the visible villain — the warm-intro game — without naming a competitor. Doubled the home scroll-to-pricing rate vs the prior 'Find startups before they raise' hook.",
+      "Polarising enemy framing. Names the visible villain, the warm-intro game, without naming a competitor. Doubled the home scroll-to-pricing rate vs the prior 'Find startups before they raise' hook.",
   },
   {
     id: "5-names-sunday",
@@ -76,7 +76,7 @@ const HOOKS: HookTest[] = [
     ctr: "8.5%",
     status: "winner",
     takeaway:
-      "Right-shaped bait hook. Specific number, specific cadence, specific shape of result. The reason this beats 'weekly intelligence digest' is that it's countable — readers can mentally complete the offer before they click.",
+      "Right-shaped bait hook. Specific number, specific cadence, specific shape of result. The reason this beats 'weekly intelligence digest' is that it's countable, readers can mentally complete the offer before they click.",
   },
   {
     id: "tuesday-august",
@@ -114,11 +114,11 @@ const HOOKS: HookTest[] = [
     surface: "Site-wide",
     date: "2026-05",
     impressions: "Site-wide background",
-    clicks: "n/a — character hook",
+    clicks: "n/a, character hook",
     ctr: "n/a",
     status: "winner",
     takeaway:
-      "Founder-character hook. Not measured per-click — measured by how often readers reply to emails by name. Reply rate roughly tripled when From-name shifted from 'GitDealFlow' to 'The Data Nerd'.",
+      "Founder-character hook. Not measured per-click, measured by how often readers reply to emails by name. Reply rate roughly tripled when From-name shifted from 'GitDealFlow' to 'The Data Nerd'.",
   },
   {
     id: "47-days-short",
@@ -131,7 +131,7 @@ const HOOKS: HookTest[] = [
     ctr: "5.2%",
     status: "running",
     takeaway:
-      "Ultra-compressed variant of the load-bearing hook. CTR is lower than the long form but qualifies harder — 1-in-3 clicks become a signup vs 1-in-5 for the long form.",
+      "Ultra-compressed variant of the load-bearing hook. CTR is lower than the long form but qualifies harder, 1-in-3 clicks become a signup vs 1-in-5 for the long form.",
   },
   {
     id: "decade-day",
@@ -145,7 +145,7 @@ const HOOKS: HookTest[] = [
     ctr: "9.0%",
     status: "winner",
     takeaway:
-      "Decade-in-a-Day frame. Compresses the time-saved value to a number the buyer recognises — 5 min vs 3 weeks. Best CTR per impression of any non-pricing hook on the site.",
+      "Decade-in-a-Day frame. Compresses the time-saved value to a number the buyer recognises, 5 min vs 3 weeks. Best CTR per impression of any non-pricing hook on the site.",
   },
   {
     id: "harmonic-affordable",
@@ -159,7 +159,7 @@ const HOOKS: HookTest[] = [
     ctr: "8.6%",
     status: "running",
     takeaway:
-      "Comparison hook. The Spotify reference is doing the heavy lift — readers translate €49 instantly. Edge case: works on the comparison page, doesn't transplant to home (too specific without setup).",
+      "Comparison hook. The Spotify reference is doing the heavy lift, readers translate €49 instantly. Edge case: works on the comparison page, doesn't transplant to home (too specific without setup).",
   },
   {
     id: "stop-bloomberg",
@@ -187,7 +187,7 @@ const HOOKS: HookTest[] = [
     ctr: "7.9%",
     status: "winner",
     takeaway:
-      "New-opportunity hook. Frames the product as a category replacement, not an upgrade. Stays the spine of the welcome-sequence D2 email — every other variant lost to it.",
+      "New-opportunity hook. Frames the product as a category replacement, not an upgrade. Stays the spine of the welcome-sequence D2 email, every other variant lost to it.",
   },
   {
     id: "agents-too",
@@ -201,7 +201,7 @@ const HOOKS: HookTest[] = [
     ctr: "11.6%",
     status: "winner",
     takeaway:
-      "Agent-audience hook — publishing where the buyer already is. Highest-CTR hook on the site, but the audience size is small. Quality: it qualifies the buyer harder than any pricing copy could.",
+      "Agent-audience hook, publishing where the buyer already is. Highest-CTR hook on the site, but the audience size is small. Quality: it qualifies the buyer harder than any pricing copy could.",
   },
   {
     id: "free-paper",
@@ -212,7 +212,7 @@ const HOOKS: HookTest[] = [
     date: "2026-05 (post-PR #33)",
     impressions: "Early measurement",
     clicks: "Early measurement",
-    ctr: "—",
+    ctr: "-",
     status: "running",
     takeaway:
       "Free+Shipping hook. Long-form anchor. Conversion data still maturing. Hypothesis: book-readers convert to Dashboard at 3× the rate of digest-only readers.",
@@ -226,10 +226,10 @@ const HOOKS: HookTest[] = [
     date: "2026-05 (post-PR #33)",
     impressions: "Early measurement",
     clicks: "Early measurement",
-    ctr: "—",
+    ctr: "-",
     status: "running",
     takeaway:
-      "Micro-tripwire hook. The €1 number is doing the qualifier — anyone who thinks €1 is too much is not the buyer. Watching whether it cannibalises €7 First Look or amplifies it.",
+      "Micro-tripwire hook. The €1 number is doing the qualifier, anyone who thinks €1 is too much is not the buyer. Watching whether it cannibalises €7 First Look or amplifies it.",
   },
 ];
 
@@ -238,19 +238,19 @@ const STATUS_META: Record<
   { label: string; classes: string }
 > = {
   winner: {
-    label: "Winner — kept",
+    label: "Winner, kept",
     classes: "border-emerald-700/40 bg-emerald-950/15 text-emerald-300",
   },
   control: {
-    label: "Control — kept",
+    label: "Control, kept",
     classes: "border-sky-700/40 bg-sky-950/15 text-sky-300",
   },
   running: {
-    label: "Running — measuring",
+    label: "Running, measuring",
     classes: "border-amber-700/40 bg-amber-950/15 text-amber-300",
   },
   killed: {
-    label: "Killed — cut",
+    label: "Killed, cut",
     classes: "border-rose-800/40 bg-rose-950/15 text-rose-300",
   },
 };
@@ -267,7 +267,7 @@ export default function HookTestsPage() {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/experiments/hooks#webpage",
         url: "https://signals.gitdealflow.com/experiments/hooks",
-        name: "Hook tests — every variant, every channel, every CTR",
+        name: "Hook tests, every variant, every channel, every CTR",
         description:
           "Public log of every cold-traffic hook tested at GitDealFlow with channel, copy, impressions, clicks, CTR, status, and takeaway.",
         inLanguage: "en-US",
@@ -293,7 +293,7 @@ export default function HookTestsPage() {
           "@type": "ListItem",
           position: i + 1,
           name: h.hook,
-          description: `${h.channel} — ${h.ctr === "—" ? "measuring" : h.ctr + " CTR"} — ${STATUS_META[h.status].label}`,
+          description: `${h.channel}, ${h.ctr === "-" ? "measuring" : h.ctr + " CTR"}, ${STATUS_META[h.status].label}`,
         })),
       },
     ],
@@ -326,7 +326,7 @@ export default function HookTestsPage() {
           data-agent-summary
         >
           The hook is the unit of test. Not the ad creative, not the landing
-          page, not the offer — the hook. So this is the hook log. Every
+          page, not the offer, the hook. So this is the hook log. Every
           variant we&apos;ve tested across every channel, with the actual
           copy, the actual impressions, the actual click-through rate, and a
           one-line takeaway. {winners} winners kept. {running} still running.
@@ -423,8 +423,8 @@ export default function HookTestsPage() {
           <ul className="text-sm text-gray-300 leading-relaxed space-y-3 list-disc list-inside marker:text-sky-400">
             <li>
               <strong className="text-gray-100">Numerically specific beats categorically true.</strong>{" "}
-              &quot;21–47 days&quot; outperformed &quot;weeks before they raise&quot; by 2.3×.
-              The number is the unit of credibility — it forces the reader to
+              &quot;21-47 days&quot; outperformed &quot;weeks before they raise&quot; by 2.3×.
+              The number is the unit of credibility, it forces the reader to
               accept or reject a falsifiable claim.
             </li>
             <li>
@@ -436,7 +436,7 @@ export default function HookTestsPage() {
             <li>
               <strong className="text-gray-100">The founder-character hook is measured in replies, not clicks.</strong>{" "}
               From-name &quot;The Data Nerd&quot; tripled email reply rate vs the
-              brand-name From. There is no CTR for character — there is reply
+              brand-name From. There is no CTR for character, there is reply
               rate.
             </li>
             <li>
@@ -445,7 +445,7 @@ export default function HookTestsPage() {
               is the irreversible scarcity; dollars are negotiable.
             </li>
             <li>
-              <strong className="text-gray-100">Disqualifier hooks repel more than they attract — and that&apos;s the point.</strong>{" "}
+              <strong className="text-gray-100">Disqualifier hooks repel more than they attract, and that&apos;s the point.</strong>{" "}
               &quot;You&apos;re not Insight Partners&quot; doesn&apos;t generate clicks; it
               shapes which clicks become signups. CTR low, signup-conversion-of-clicks high.
             </li>
@@ -490,28 +490,28 @@ export default function HookTestsPage() {
               <Link href="/experiments" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
                 The full experiments log
               </Link>{" "}
-              — funnel mechanics, not just hooks (order-bumps, closes, sequence cadence).
+funnel mechanics, not just hooks (order-bumps, closes, sequence cadence).
             </li>
             <li>
               →{" "}
               <Link href="/target-list" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
                 Top 100
               </Link>{" "}
-              — the buyer roster these hooks are pointed at.
+the buyer roster these hooks are pointed at.
             </li>
             <li>
               →{" "}
               <Link href="/distribution" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
                 Distribution map
               </Link>{" "}
-              — every channel where a hook lives.
+every channel where a hook lives.
             </li>
             <li>
               →{" "}
               <Link href="/affiliates/top-partners" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
                 Top 50 partner roster
               </Link>{" "}
-              — newsletter writers, podcast hosts, community owners we&apos;d
+newsletter writers, podcast hosts, community owners we&apos;d
               like to hear from.
             </li>
             <li>
@@ -519,7 +519,7 @@ export default function HookTestsPage() {
               <Link href="/methodology" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
                 Methodology
               </Link>{" "}
-              — the SSRN paper anchoring the load-bearing 47-days hook.
+the SSRN paper anchoring the load-bearing 47-days hook.
             </li>
           </ul>
         </section>

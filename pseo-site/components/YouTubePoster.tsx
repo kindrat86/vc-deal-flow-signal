@@ -1,11 +1,11 @@
 "use client";
 
 /**
- * <YouTubePoster /> — a click-to-YouTube facade used in place of a raw
+ * <YouTubePoster />a click-to-YouTube facade used in place of a raw
  * <iframe> embed.
  *
  * The channel's videos have "Allow embedding" turned OFF on YouTube, so a
- * youtube-nocookie <iframe> renders YouTube's grey "Error 153 — Video player
+ * youtube-nocookie <iframe> renders YouTube's grey "Error 153, Video player
  * configuration error" box instead of a player. Rather than show a broken
  * embed, we render the (always-available) thumbnail with a play button that
  * opens the real watch page on youtube.com in a new tab.
@@ -28,7 +28,7 @@ export function YouTubePoster({
 }: {
   /** Preferred (maxresdefault) thumbnail. */
   thumbnailMaxUrl: string;
-  /** Fallback (hqdefault) thumbnail — always exists for a real video. */
+  /** Fallback (hqdefault) thumbnail, always exists for a real video. */
   thumbnailUrl: string;
   /** Public youtube.com watch URL the poster links to. */
   watchUrl: string;

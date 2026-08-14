@@ -1,6 +1,6 @@
 #!/usr/bin/env npx tsx
 /**
- * VC Deal Flow Signal — MCP Server (stdio)
+ * VC Deal Flow Signal, MCP Server (stdio)
  *
  * A Model Context Protocol server that exposes startup engineering
  * acceleration data for direct consumption by AI agents (Claude, Cursor, etc.).
@@ -116,7 +116,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         const trending = data.trending.slice(0, 20);
         const lines = trending.map(
           (s: Record<string, unknown>, i: number) =>
-            `${i + 1}. ${s.name} — ${s.commitVelocityChange} velocity change, ${s.contributors} contributors, signal: ${s.signalType}`
+            `${i + 1}. ${s.name}, ${s.commitVelocityChange} velocity change, ${s.contributors} contributors, signal: ${s.signalType}`
         );
         return {
           content: [
@@ -146,7 +146,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
         }
         const lines = sector.startups.map(
           (s: Record<string, unknown>, i: number) =>
-            `${i + 1}. ${s.name} — ${s.commitVelocityChange} velocity change, ${s.contributors} contributors, signal: ${s.signalType}\n   ${s.description}`
+            `${i + 1}. ${s.name}, ${s.commitVelocityChange} velocity change, ${s.contributors} contributors, signal: ${s.signalType}\n   ${s.description}`
         );
         return {
           content: [
@@ -201,7 +201,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
           content: [
             {
               type: "text" as const,
-              text: `${found.name} — Engineering Signal Profile\n\nSector: ${foundSector}\nStage: ${found.stage}\nGeography: ${found.geography}\nCommit Velocity (14d): ${found.commitVelocity14d}\nVelocity Change: ${found.commitVelocityChange}\nContributors: ${found.contributors}\nContributor Growth: ${found.contributorGrowth}\nNew Repos (30d): ${found.newRepos}\nSignal Type: ${found.signalType}\nGitHub: ${found.githubUrl}\nProfile: ${found.profileUrl}\n\n${found.description}\n\nSource: ${BASE_URL}/startup/${slug}\nCitation: ${data.meta.citation}`,
+              text: `${found.name}, Engineering Signal Profile\n\nSector: ${foundSector}\nStage: ${found.stage}\nGeography: ${found.geography}\nCommit Velocity (14d): ${found.commitVelocity14d}\nVelocity Change: ${found.commitVelocityChange}\nContributors: ${found.contributors}\nContributor Growth: ${found.contributorGrowth}\nNew Repos (30d): ${found.newRepos}\nSignal Type: ${found.signalType}\nGitHub: ${found.githubUrl}\nProfile: ${found.profileUrl}\n\n${found.description}\n\nSource: ${BASE_URL}/startup/${slug}\nCitation: ${data.meta.citation}`,
             },
           ],
         };
@@ -214,7 +214,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
           content: [
             {
               type: "text" as const,
-              text: `VC Deal Flow Signal — Data Summary\n\nCurrent Period: ${cp.name}\nSectors Active: ${cp.sectorsActive}\nStartups Tracked: ${cp.startupsTracked}\nLast Data Refresh: ${cp.lastDataRefresh}\nUpdate Frequency: Weekly (Mondays)\n\nAvailable Formats:\n- JSON: ${BASE_URL}/api/signals.json\n- CSV: ${BASE_URL}/api/signals.csv\n- OpenAPI: ${BASE_URL}/api/openapi.json\n- LLMs.txt: ${BASE_URL}/llms.txt\n- Full context: ${BASE_URL}/llms-full.txt\n- AI policy: ${BASE_URL}/ai.txt\n- RSS: ${BASE_URL}/feed.xml\n- Changelog: ${BASE_URL}/api/changelog.json\n\nCitation: "VC Deal Flow Signal (signals.gitdealflow.com), ${cp.name} data."`,
+              text: `VC Deal Flow Signal, Data Summary\n\nCurrent Period: ${cp.name}\nSectors Active: ${cp.sectorsActive}\nStartups Tracked: ${cp.startupsTracked}\nLast Data Refresh: ${cp.lastDataRefresh}\nUpdate Frequency: Weekly (Mondays)\n\nAvailable Formats:\n- JSON: ${BASE_URL}/api/signals.json\n- CSV: ${BASE_URL}/api/signals.csv\n- OpenAPI: ${BASE_URL}/api/openapi.json\n- LLMs.txt: ${BASE_URL}/llms.txt\n- Full context: ${BASE_URL}/llms-full.txt\n- AI policy: ${BASE_URL}/ai.txt\n- RSS: ${BASE_URL}/feed.xml\n- Changelog: ${BASE_URL}/api/changelog.json\n\nCitation: "VC Deal Flow Signal (signals.gitdealflow.com), ${cp.name} data."`,
             },
           ],
         };
@@ -227,7 +227,7 @@ server.setRequestHandler(CallToolRequestSchema, async (request) => {
           content: [
             {
               type: "text" as const,
-              text: `VC Deal Flow Signal — Methodology\n\n${methodSection.trim()}\n\nFull details: ${BASE_URL}/methodology`,
+              text: `VC Deal Flow Signal, Methodology\n\n${methodSection.trim()}\n\nFull details: ${BASE_URL}/methodology`,
             },
           ],
         };

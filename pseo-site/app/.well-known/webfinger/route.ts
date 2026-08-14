@@ -1,5 +1,5 @@
 /**
- * RFC 7033 — WebFinger
+ * RFC 7033, WebFinger
  *
  * Discovery endpoint that maps an `acct:` URI (or any URI) to a JSON Resource
  * Descriptor (JRD) with links to canonical resources for the subject.

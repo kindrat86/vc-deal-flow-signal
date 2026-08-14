@@ -182,7 +182,7 @@ export function isPredictionOutcomeHit(o: PredictionOutcome): boolean {
  * Map a prediction outcome to the controlled Schema.org / Google ClaimReview
  * rating. Resolved picks use Google's fact-check vocabulary so the rendered
  * ClaimReview blocks are rich-result eligible. Pending picks emit "Unproven"
- * (Google-accepted) with ratingValue 0 — communicating "on the record, not
+ * (Google-accepted) with ratingValue 0, communicating "on the record, not
  * yet adjudicated".
  */
 export function predictionOutcomeRating(o: PredictionOutcome): {
@@ -212,9 +212,9 @@ export interface ClaimReviewBuildOptions {
 /**
  * Build top-level JSON-LD @graph ClaimReview entries for a week's picks.
  *
- * IMPORTANT — Schema rule: ClaimReview MUST sit at the top level of a JSON-LD
+ * IMPORTANT, Schema rule: ClaimReview MUST sit at the top level of a JSON-LD
  * @graph. It must NOT be nested under an Article's `review` property while
- * also carrying `itemReviewed` — that produces the "directional conflict"
+ * also carrying `itemReviewed`, that produces the "directional conflict"
  * warning Google Search Console raised on 2026-05-07. Spread the array
  * returned by this helper directly into your `@graph: [...]` array.
  */

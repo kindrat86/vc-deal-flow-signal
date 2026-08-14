@@ -47,11 +47,11 @@ export async function generateMetadata({
             (scout.correct_count + scout.wrong_count),
         )
       : null;
-  const title = `@${scout.handle} — ${RANK_LABEL[scout.rank]} Scout · ${Math.round(scout.points)} pts`;
+  const title = `@${scout.handle}, ${RANK_LABEL[scout.rank]} Scout · ${Math.round(scout.points)} pts`;
   const description =
     accuracy !== null
       ? `${scout.correct_count} correct calls · ${accuracy}% accuracy · ${Math.round(scout.points)} points. Can you beat this scout?`
-      : `${scout.pending_count} predictions pending. New scout — still building the track record.`;
+      : `${scout.pending_count} predictions pending. New scout, still building the track record.`;
   return {
     title,
     description,
@@ -98,7 +98,7 @@ export default async function ScoutProfilePage({
         ) / 10
       : null;
 
-  const shareText = `@${scout.handle} is a ${RANK_LABEL[scout.rank]} scout on gitdealflow — ${Math.round(scout.points)} pts${accuracy !== null ? ` · ${accuracy}% accuracy` : ""}. See if you can beat this call:`;
+  const shareText = `@${scout.handle} is a ${RANK_LABEL[scout.rank]} scout on gitdealflow, ${Math.round(scout.points)} pts${accuracy !== null ? ` · ${accuracy}% accuracy` : ""}. See if you can beat this call:`;
   const shareUrl = `https://signals.gitdealflow.com/s/${scout.handle}`;
   const twitterShare = `https://twitter.com/intent/tweet?text=${encodeURIComponent(shareText)}&url=${encodeURIComponent(shareUrl)}`;
   const linkedinShare = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(shareUrl)}`;
@@ -111,7 +111,7 @@ export default async function ScoutProfilePage({
         "@type": "ProfilePage",
         "@id": `${shareUrl}#page`,
         url: shareUrl,
-        name: `@${scout.handle} — Scout profile`,
+        name: `@${scout.handle}, Scout profile`,
         description: `${RANK_LABEL[scout.rank]} scout. ${Math.round(scout.points)} points${accuracy !== null ? ` · ${accuracy}% accuracy across ${totalResolved} resolved calls` : ` · ${scout.pending_count} predictions pending`}.`,
         primaryImageOfPage: {
           "@type": "ImageObject",
@@ -148,7 +148,7 @@ export default async function ScoutProfilePage({
         ratingValue: Math.round(scout.points),
         bestRating: 1000,
         worstRating: 0,
-        ratingExplanation: `Scout points — forward-looking prediction track record. ${RANK_LABEL[scout.rank]} rank${accuracy !== null ? `, ${accuracy}% accuracy` : ""}.`,
+        ratingExplanation: `Scout points, forward-looking prediction track record. ${RANK_LABEL[scout.rank]} rank${accuracy !== null ? `, ${accuracy}% accuracy` : ""}.`,
         author: {
           "@type": "Organization",
           name: "VC Deal Flow Signal",
@@ -234,7 +234,7 @@ export default async function ScoutProfilePage({
         <StatCard label="Points" value={Math.round(scout.points).toString()} tone="sky" />
         <StatCard
           label="Accuracy"
-          value={accuracy !== null ? `${accuracy}%` : "—"}
+          value={accuracy !== null ? `${accuracy}%` : "-"}
           tone="emerald"
         />
         <StatCard

@@ -20,12 +20,12 @@ const SITE = "https://signals.gitdealflow.com";
 const STRIPE_INSIDER = "https://buy.stripe.com/bJeaEWfRpcRG6gm2fC0x20d";
 
 /**
- * /continuity — Monthly Continuity Drop hub.
+ * /continuity, Monthly Continuity Drop hub.
  *
  * Brunson DotCom Secrets Ch 22 (Decade in a Day / Continuity) +
  * Expert Secrets §3 Ch 22. The 2026-05-09 audit scored Continuity at
  * 90/100 with the gap: "continuity should have a content cadence beyond
- * the dashboard." This page surfaces the cadence — first Tuesday of
+ * the dashboard." This page surfaces the cadence, first Tuesday of
  * every month, four-format rotation, public abstract + member-only
  * artefact, 90-day delayed essay-to-public opening.
  *
@@ -39,15 +39,15 @@ const STRIPE_INSIDER = "https://buy.stripe.com/bJeaEWfRpcRG6gm2fC0x20d";
 
 export const metadata: Metadata = {
   title:
-    "Monthly Insider Drop — net-new artefact every month · VC Deal Flow Signal",
+    "Monthly Insider Drop, net-new artefact every month · VC Deal Flow Signal",
   description:
-    "First Tuesday of every month, 09:00 UTC. A new sector deep-dive, methodology release, founder essay, or tool — on a four-format rotation. Members get the artefact. Public gets the abstract. Twelve-drop calendar visible forward.",
+    "First Tuesday of every month, 09:00 UTC. A new sector deep-dive, methodology release, founder essay, or tool, on a four-format rotation. Members get the artefact. Public gets the abstract. Twelve-drop calendar visible forward.",
   alternates: { canonical: "/continuity" },
   openGraph: {
     title:
-      "Monthly Insider Drop — net-new artefact every month",
+      "Monthly Insider Drop, net-new artefact every month",
     description:
-      "First Tuesday of every month, 09:00 UTC. Sector deep-dive, methodology release, founder essay, or tool — four-format rotation. Members get the artefact.",
+      "First Tuesday of every month, 09:00 UTC. Sector deep-dive, methodology release, founder essay, or tool, four-format rotation. Members get the artefact.",
     url: `${SITE}/continuity`,
     type: "website",
   },
@@ -80,9 +80,9 @@ export default function ContinuityHubPage() {
         "@type": "WebPage",
         "@id": `${SITE}/continuity#webpage`,
         url: `${SITE}/continuity`,
-        name: "Monthly Insider Drop — VC Deal Flow Signal",
+        name: "Monthly Insider Drop, VC Deal Flow Signal",
         description:
-          "Monthly continuity drop for paid members — sector deep-dive, methodology release, founder essay, or tool on a four-format rotation. First Tuesday of every month.",
+          "Monthly continuity drop for paid members, sector deep-dive, methodology release, founder essay, or tool on a four-format rotation. First Tuesday of every month.",
         inLanguage: "en-US",
         isPartOf: { "@id": `${SITE}/#website` },
       },
@@ -170,7 +170,7 @@ export default function ContinuityHubPage() {
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
             The Sunday digest is the free cadence. The Dashboard is the daily
             tool. The Insider Drop is the thing that makes the paid tier a
-            continuity programme — a brand-new sector deep-dive, methodology
+            continuity programme, a brand-new sector deep-dive, methodology
             release, founder essay, or shipping tool on the first Tuesday of
             every month. Public gets the abstract. Members get the artefact.
           </p>
@@ -187,7 +187,7 @@ export default function ContinuityHubPage() {
           </div>
         </header>
 
-        {/* THE CADENCE RULE — the contract */}
+        {/* THE CADENCE RULE, the contract */}
         <section
           aria-label="The cadence rule"
           className="rounded-xl border border-amber-700/40 bg-gradient-to-br from-amber-950/20 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-3"
@@ -202,12 +202,12 @@ export default function ContinuityHubPage() {
             Drops are dated, numbered, and pre-scheduled. The next twelve
             months are visible on this page. If a drop slips by more than 48
             hours past its publish date, every Insider gets an automatic
-            credit (one month free) — that&rsquo;s how serious the
+            credit (one month free), that&rsquo;s how serious the
             commitment is to the cadence.
           </p>
         </section>
 
-        {/* THE FORMAT ROTATION — what kinds of drops, in what order */}
+        {/* THE FORMAT ROTATION, what kinds of drops, in what order */}
         <section aria-label="The four-format rotation" className="space-y-5">
           <header className="space-y-1">
             <p className="text-violet-400 text-xs font-semibold uppercase tracking-wider">
@@ -241,7 +241,7 @@ export default function ContinuityHubPage() {
           </div>
         </section>
 
-        {/* THE CALENDAR — the drops, dated */}
+        {/* THE CALENDAR, the drops, dated */}
         <section aria-label="The drop calendar" className="space-y-5">
           <header className="space-y-1">
             <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">
@@ -318,14 +318,14 @@ export default function ContinuityHubPage() {
           </ol>
         </section>
 
-        {/* WHO GETS WHAT — public vs member */}
+        {/* WHO GETS WHAT, public vs member */}
         <section
           aria-label="Public vs member access"
           className="grid grid-cols-1 md:grid-cols-2 gap-4"
         >
           <div className="rounded-xl border border-slate-800 bg-slate-900/40 p-5 sm:p-6 space-y-3">
             <p className="text-gray-400 text-[10px] font-semibold uppercase tracking-wider">
-              Public — free forever
+              Public, free forever
             </p>
             <h3 className="text-gray-100 font-semibold text-base">
               The abstract, the topic, the cadence proof.
@@ -353,7 +353,7 @@ export default function ContinuityHubPage() {
           </div>
           <div className="rounded-xl border border-amber-700/50 bg-gradient-to-br from-amber-950/20 via-slate-900 to-slate-950 p-5 sm:p-6 space-y-3">
             <p className="text-amber-300 text-[10px] font-semibold uppercase tracking-wider">
-              Members — Insider Circle (€197/mo) and above
+              Members, Insider Circle (€197/mo) and above
             </p>
             <h3 className="text-gray-100 font-semibold text-base">
               The artefact, the day it ships.
@@ -372,7 +372,7 @@ export default function ContinuityHubPage() {
               <li className="flex gap-2">
                 <span className="text-emerald-400 shrink-0">✓</span>
                 <span>
-                  Telegram thread for the drop — sector questions, follow-ups
+                  Telegram thread for the drop, sector questions, follow-ups
                 </span>
               </li>
               <li className="flex gap-2">
@@ -391,7 +391,7 @@ export default function ContinuityHubPage() {
           </div>
         </section>
 
-        {/* WHAT THIS REPLACES — the audit-closing block */}
+        {/* WHAT THIS REPLACES, the audit-closing block */}
         <section
           aria-label="What this replaces"
           className="rounded-xl border border-violet-700/40 bg-gradient-to-br from-violet-950/15 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-4"
@@ -405,15 +405,15 @@ export default function ContinuityHubPage() {
           <p className="text-gray-300 text-base leading-relaxed">
             A subscription that gives you the same dashboard every month is a
             tool subscription. A subscription that delivers a brand-new
-            artefact every month — sector deep-dive, methodology release,
-            founder essay, or shipping tool — is a continuity programme. The
+            artefact every month, sector deep-dive, methodology release,
+            founder essay, or shipping tool, is a continuity programme. The
             difference is whether you anticipate the next renewal or just
             tolerate it.
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
             The Free Acceleration Watch is the cadence-builder. The Dashboard
             is the daily-rhythm tool. The State of GitHub is the public
-            monthly anchor. The Insider Drop — this surface — is the
+            monthly anchor. The Insider Drop, this surface, is the
             paid-tier&rsquo;s anticipation engine. First Tuesday of every
             month, something net-new lands.
           </p>

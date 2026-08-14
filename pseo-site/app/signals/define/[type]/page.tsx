@@ -32,7 +32,7 @@ export async function generateMetadata({
   const p = getPrimitiveBySlug(type);
   if (!p) return {};
 
-  const title = `${p.name} — Signal Definition, Formula &amp; Interpretation`;
+  const title = `${p.name}, Signal Definition, Formula &amp; Interpretation`;
   const description = `${p.name} measured in ${p.unit} over ${p.window}. ${p.interpretation.split(".")[0]}. Defined in the SSRN-indexed methodology paper of VC Deal Flow Signal (GitDealFlow).`;
 
   return {
@@ -83,7 +83,7 @@ export default async function SignalPrimitivePage({ params }: PageProps) {
         inDefinedTermSet: {
           "@type": "DefinedTermSet",
           "@id": `${SITE}/knowledge#vocabulary`,
-          name: "VC Deal Flow Signal — signal vocabulary",
+          name: "VC Deal Flow Signal, signal vocabulary",
           url: `${SITE}/knowledge`,
         },
         url: `${SITE}/signals/define/${type}`,
@@ -97,7 +97,7 @@ export default async function SignalPrimitivePage({ params }: PageProps) {
       {
         "@type": "TechArticle",
         "@id": `${SITE}/signals/define/${type}#article`,
-        headline: `${p.name} — definition, formula, decision rule`,
+        headline: `${p.name}, definition, formula, decision rule`,
         url: `${SITE}/signals/define/${type}`,
         inLanguage: "en-US",
         about: { "@id": `${SITE}/signals/define/${type}#term` },

@@ -7,12 +7,12 @@ import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 
 export const metadata: Metadata = {
-  title: "The Story — Why GitDealFlow Was Built",
+  title: "The Story, Why GitDealFlow Was Built",
   description:
     "The short story behind GitDealFlow: why hearing about the company late became the problem, and why public engineering movement became the signal worth watching earlier.",
   alternates: { canonical: "/story" },
   openGraph: {
-    title: "The Story — Why GitDealFlow Was Built",
+    title: "The Story, Why GitDealFlow Was Built",
     description:
       "Why hearing about the company late became the problem, and why public engineering movement became the signal worth watching earlier.",
     url: "https://signals.gitdealflow.com/story",
@@ -41,7 +41,7 @@ export default function StoryPage() {
     "@graph": [
       {
         "@type": "Article",
-        headline: "The Story — Why GitDealFlow Was Built",
+        headline: "The Story, Why GitDealFlow Was Built",
         description:
           "Why hearing about the company late became the problem, and why public engineering movement became the signal worth watching earlier.",
         author: DATA_NERD_AUTHOR_REF,
@@ -110,7 +110,7 @@ export default function StoryPage() {
 
         <section className="rounded-xl border-l-4 border-sky-500 bg-slate-900/60 p-6 space-y-4">
           <p className="text-gray-300 text-base leading-relaxed">
-            One weekend made the whole problem obvious. A small startup looked unusually alive in public engineering behavior — faster shipping, more contributors, more movement than the outside story suggested. Then the round was announced a few weeks later. The signal had been there. The workflow around it had not.
+            One weekend made the whole problem obvious. A small startup looked unusually alive in public engineering behavior, faster shipping, more contributors, more movement than the outside story suggested. Then the round was announced a few weeks later. The signal had been there. The workflow around it had not.
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
             That is why GitDealFlow exists. Not to replace every other tool. Not to become another loud platform. Just to make that earlier signal legible enough that you can use it before the round starts feeling obvious.
@@ -141,13 +141,13 @@ export default function StoryPage() {
             Best next step
           </p>
           <h2 className="text-2xl font-bold text-gray-100 leading-snug">
-            If this story feels familiar, start with the signal — not the biography.
+            If this story feels familiar, start with the signal, not the biography.
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
             The useful question now is simple: does the weekly signal give you a clearer read than the usual noise does? Start there.
           </p>
           <p className="text-gray-400 text-sm leading-relaxed">
-            This is the move of a First Mover: we move on the engineering signal before the round — without reading a line of code.
+            This is the move of a First Mover: we move on the engineering signal before the round, without reading a line of code.
           </p>
           <div className="flex flex-col sm:flex-row gap-3">
             <Link href="https://gitdealflow.com/#signup" className="inline-flex items-center justify-center rounded-lg bg-sky-700 hover:bg-sky-600 text-white text-sm font-semibold px-5 py-3 transition-colors">

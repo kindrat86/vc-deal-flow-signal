@@ -2,7 +2,7 @@ import { NextResponse } from "next/server";
 import { verifyVerifyToken } from "@/lib/verify-token";
 import { pickAudienceId } from "@/lib/resend-audience";
 
-// Mutating endpoint — never cache, run on Node (mirrors app/api/recent-signups).
+// Mutating endpoint, never cache, run on Node (mirrors app/api/recent-signups).
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
@@ -15,7 +15,7 @@ const FROM_EMAIL = process.env.FROM_EMAIL || "signals@gitdealflow.com";
  * URL carries a signed `unsubscribe` token that binds the recipient's email, so
  * no one can unsubscribe a third party.
  *
- * We only flip the contact to `unsubscribed:true` in the Resend audience — the
+ * We only flip the contact to `unsubscribed:true` in the Resend audience, the
  * source of truth. The hourly Resend->PocketBase sync
  * (monitoring/sync-resend-to-pb.py) then demotes them to status='churned', which
  * the weekly digest (filter status='active') excludes. The Vercel runtime cannot
@@ -128,7 +128,7 @@ export async function GET(request: Request) {
 function confirmationHtml(ok: boolean): string {
   const body = ok
     ? `<h1>You're unsubscribed.</h1>
-       <p>You won't receive the weekly Signal Digest anymore. No hard feelings — the data will still be here if you ever want back in.</p>`
+       <p>You won't receive the weekly Signal Digest anymore. No hard feelings, the data will still be here if you ever want back in.</p>`
     : `<h1>Hmm, that link didn't work.</h1>
        <p>The unsubscribe link looks invalid or expired. Email
        <a href="mailto:${FROM_EMAIL}?subject=Unsubscribe">${FROM_EMAIL}</a>
@@ -138,7 +138,7 @@ function confirmationHtml(ok: boolean): string {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>${ok ? "Unsubscribed" : "Unsubscribe failed"} — VC Deal Flow Signal</title>
+<title>${ok ? "Unsubscribed" : "Unsubscribe failed"}: VC Deal Flow Signal</title>
 <style>
   body{margin:0;background:#0b1120;color:#e2e8f0;font:16px/1.6 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;display:flex;min-height:100vh;align-items:center;justify-content:center}
   .card{max-width:34rem;margin:1.5rem;padding:2rem;background:#0f172a;border:1px solid #1e293b;border-radius:14px}

@@ -1,13 +1,13 @@
 /**
- * /api/health.json — uptime / health-check endpoint.
+ * /api/health.json, uptime / health-check endpoint.
  *
  * Pass VII (2026-05-05). Standard probe URL for uptime monitors
  * (UptimeRobot, BetterUptime, Datadog, Pingdom) and AI agents that verify
  * service liveness before consuming downstream endpoints. Returns
  * lightweight JSON with build commit, dataset freshness, and dependency
- * snapshot — enough for an agent to decide "skip" vs "consume."
+ * snapshot, enough for an agent to decide "skip" vs "consume."
  *
- * Cached for 60s — uptime monitors poll at 1-5min cadence; this avoids
+ * Cached for 60s, uptime monitors poll at 1-5min cadence; this avoids
  * hammering the build with each poll while still surfacing a useful
  * dataset-freshness timestamp.
  */

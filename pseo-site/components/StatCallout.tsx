@@ -1,5 +1,5 @@
 /**
- * StatCallout — renders key statistics in a visually distinct, AI-extractable format.
+ * StatCallout, renders key statistics in a visually distinct, AI-extractable format.
  * Designed for GEO: quotable, self-contained stat blocks that AI models prefer to cite.
  */
 

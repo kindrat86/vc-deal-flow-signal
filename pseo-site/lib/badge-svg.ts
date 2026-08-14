@@ -98,7 +98,7 @@ export function renderScoutBadge({ username, score, rank }: ScoutBadgeInput): st
     label: "scout score",
     value: `${score} ${rank}`,
     valueColor: RANK_HEX[rank],
-    title: `@${username} — Scout Score ${score} (${rank}) · gitdealflow`,
+    title: `@${username}, Scout Score ${score} (${rank}) · gitdealflow`,
   });
 }
 
@@ -120,7 +120,7 @@ export function renderMomentumBadge({
     label: "momentum",
     value: valueText,
     valueColor: TIER_HEX[tier],
-    title: `${org}/${repo} — ${tier}${velocityChange ? ` (${velocityChange})` : ""} · gitdealflow`,
+    title: `${org}/${repo}, ${tier}${velocityChange ? ` (${velocityChange})` : ""} · gitdealflow`,
   });
 }
 
@@ -145,10 +145,10 @@ export type CompanyMomentum =
   | "unranked";
 
 export const MOMENTUM_HEX: Record<CompanyMomentum, string> = {
-  accelerating: "#34d399", // green — positive
-  steady: "#38bdf8", // blue — neutral
-  decelerating: "#64748b", // slate — cooling
-  unranked: "#475569", // grey — no read
+  accelerating: "#34d399", // green, positive
+  steady: "#38bdf8", // blue, neutral
+  decelerating: "#64748b", // slate, cooling
+  unranked: "#475569", // grey, no read
 };
 
 export interface SignalBadgeInput {
@@ -161,7 +161,7 @@ export function renderSignalBadge({ name, momentum }: SignalBadgeInput): string 
     label: "momentum",
     value: momentum,
     valueColor: MOMENTUM_HEX[momentum],
-    title: `${name} — ${momentum} · gitdealflow`,
+    title: `${name}, ${momentum} · gitdealflow`,
   });
 }
 
@@ -195,7 +195,7 @@ export function renderBuiltWithBadge({
     label: labelText,
     value,
     valueColor: BUILTWITH_HEX,
-    title: `Built with ${value} — gitdealflow.com`,
+    title: `Built with ${value}, gitdealflow.com`,
   });
 }
 
@@ -204,6 +204,6 @@ export function renderPoweredByBadge(): string {
     label: "powered by",
     value: "gitdealflow signals",
     valueColor: BUILTWITH_HEX,
-    title: "Powered by gitdealflow signals — gitdealflow.com",
+    title: "Powered by gitdealflow signals, gitdealflow.com",
   });
 }

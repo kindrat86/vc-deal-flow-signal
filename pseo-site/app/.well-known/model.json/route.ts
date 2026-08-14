@@ -1,12 +1,12 @@
 /**
- * /.well-known/model.json — agent / dataset model card.
+ * /.well-known/model.json, agent / dataset model card.
  *
  * Convention is borrowed from HuggingFace + ML model cards. AI-procurement
  * scanners and Anthropic's "model context discovery" tools probe this path
  * to learn what kind of "model" or service lives here, what context it
  * provides, what training data it would contribute, and what evaluation
  * artifacts exist. This service is a curated dataset + retrieval API, not a
- * trained model — but the model-card schema is the closest standardized
+ * trained model, but the model-card schema is the closest standardized
  * shape for it.
  */
 
@@ -22,7 +22,7 @@ export async function GET() {
   return NextResponse.json(
     {
       // Top-level identity
-      name: "VC Deal Flow Signal — GitHub Engineering Acceleration",
+      name: "VC Deal Flow Signal, GitHub Engineering Acceleration",
       type: "dataset+api",
       version: "1.5.4",
       kind: "alternative-data",
@@ -30,7 +30,7 @@ export async function GET() {
 
       // What it is
       description:
-        "Weekly-refreshed panel of venture-backed startup engineering signals derived from public GitHub data: commit velocity, contributor growth, repository creation rate, and deploy-frequency proxies. Designed to surface fundraise-precursor momentum 3–6 weeks before announcement. Not a model in the trained-weights sense — a curated dataset + retrieval API exposed via REST, MCP, and A2A.",
+        "Weekly-refreshed panel of venture-backed startup engineering signals derived from public GitHub data: commit velocity, contributor growth, repository creation rate, and deploy-frequency proxies. Designed to surface fundraise-precursor momentum 3-6 weeks before announcement. Not a model in the trained-weights sense, a curated dataset + retrieval API exposed via REST, MCP, and A2A.",
       homepage: BASE_URL,
       documentation: `${BASE_URL}/methodology`,
       paper: "https://ssrn.com/abstract=6606558",
@@ -47,7 +47,7 @@ export async function GET() {
         coverage: {
           sectors: 20,
           startups: "panel of ~350+ venture-backed companies, weekly",
-          history: "Q1 2024 — present",
+          history: "Q1 2024, present",
           geographies: "global, no geo-filtering",
         },
         refreshCadence: "weekly (Monday 06:00 UTC)",
@@ -78,11 +78,11 @@ export async function GET() {
 
       // Bias / limitations
       limitations: [
-        "Public-GitHub-only — startups with primarily-private repositories are underrepresented",
+        "Public-GitHub-only, startups with primarily-private repositories are underrepresented",
         "Engineering-heavy companies are over-weighted vs. growth/sales-led ones",
-        "Signal-to-event lag is 3–6 weeks median; faster events are sometimes missed at refresh time",
-        "Signal does not predict outcome quality (raise size, valuation) — only event-of-some-kind",
-        '"Engineering acceleration" is a code-side momentum signal — not affiliated with startup-accelerator programs (Y Combinator, Techstars)',
+        "Signal-to-event lag is 3-6 weeks median; faster events are sometimes missed at refresh time",
+        "Signal does not predict outcome quality (raise size, valuation), only event-of-some-kind",
+        '"Engineering acceleration" is a code-side momentum signal, not affiliated with startup-accelerator programs (Y Combinator, Techstars)',
       ],
 
       // Privacy
@@ -91,7 +91,7 @@ export async function GET() {
         endUserDataStored: false,
         thirdPartyAnalytics: ["PostHog (eu.posthog.com), no PII"],
         cookies: "session-only for /dashboard auth; nothing for anonymous users",
-        gdprBasis: "Public-data-only — no personal data processed",
+        gdprBasis: "Public-data-only, no personal data processed",
         dataResidency: ["EU (Vercel fra1)", "US (Vercel iad1)"],
       },
 

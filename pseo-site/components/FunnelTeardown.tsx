@@ -1,28 +1,28 @@
 /**
- * FunnelTeardown — Brunson-style structural teardown of a competitor funnel.
+ * FunnelTeardown, Brunson-style structural teardown of a competitor funnel.
  *
  * Server Component (no 'use client'): renders inline SVG step-strip and
  * static markup. No hydration cost, prints cleanly, indexable by agents.
  *
  * Visual structure:
- *   1. Header — competitor name + tagline + source notes
- *   2. Step strip — horizontal numbered chevrons (CSS, wraps to vertical
+ *   1. Header, competitor name + tagline + source notes
+ *   2. Step strip, horizontal numbered chevrons (CSS, wraps to vertical
  *      on mobile via flex-wrap)
- *   3. Per-step detail cards — three columns (Their Mechanic / Brunson Note /
+ *   3. Per-step detail cards, three columns (Their Mechanic / Brunson Note /
  *      Our Move) per step
- *   4. Analysis triptych — What they do right / Where they leak / Our move
+ *   4. Analysis triptych, What they do right / Where they leak / Our move
  *
  * Why not literal screenshots:
- *   See competitor-teardowns.ts header — anonymity rule + IP risk.
+ *   See competitor-teardowns.ts header, anonymity rule + IP risk.
  *   Structural teardowns of publicly-observable funnel mechanics carry the
  *   same persuasive intent without the trademark friction.
  */
 
 import type { CompetitorTeardown } from "@/content/competitor-teardowns";
 
-// Hoisted regex (js-hoist-regexp): strips leading "N — " or "N - " from step
+// Hoisted regex (js-hoist-regexp): strips leading "N, " or "N - " from step
 // labels so the chevron renders the label without a duplicate step number.
-const STEP_PREFIX = /^\d+\s*[—-]\s*/;
+const STEP_PREFIX = /^\d+\s*[--]\s*/;
 
 interface FunnelTeardownProps {
   teardown: CompetitorTeardown;
@@ -49,14 +49,14 @@ export function FunnelTeardown({ teardown, withAnchor = true }: FunnelTeardownPr
           className="text-2xl sm:text-3xl font-bold text-gray-100 mb-2 leading-tight"
         >
           {teardown.competitor}
-          <span className="text-gray-500 font-normal"> — funnel architecture</span>
+          <span className="text-gray-500 font-normal">funnel architecture</span>
         </h2>
         <p className="text-gray-400 text-sm leading-relaxed max-w-3xl">
           {teardown.tagline}
         </p>
       </div>
 
-      {/* Step strip — horizontal chevrons, wraps responsively */}
+      {/* Step strip, horizontal chevrons, wraps responsively */}
       <ol
         className="flex flex-wrap gap-2 mb-8"
         aria-label={`${teardown.competitor} funnel steps, in order`}
@@ -179,7 +179,7 @@ export function FunnelTeardown({ teardown, withAnchor = true }: FunnelTeardownPr
         <p className="text-xs text-gray-500 leading-relaxed">
           <span className="font-medium text-gray-400">Sources observed:</span>{" "}
           {teardown.sources.join(" · ")}. All step descriptions reflect
-          publicly-available, logged-out funnel mechanics — no insider access,
+          publicly-available, logged-out funnel mechanics, no insider access,
           no leaked screenshots, no NDA material.
         </p>
       ) : null}

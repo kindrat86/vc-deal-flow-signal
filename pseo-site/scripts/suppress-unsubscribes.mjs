@@ -1,12 +1,12 @@
 #!/usr/bin/env node
 /**
- * suppress-unsubscribes.mjs — move manual email opt-outs into the real
+ * suppress-unsubscribes.mjs, move manual email opt-outs into the real
  * suppression store(s), and OUT of the flat file pseo-site/data/unsubscribed-emails.json.
  *
  * WHY THIS EXISTS
  * ---------------
  * Opt-out (unsubscribe) state is compliance-sensitive PII (CAN-SPAM / GDPR
- * suppression list). It must live in the systems that actually gate sends —
+ * suppression list). It must live in the systems that actually gate sends -
  * never in a flat JSON file in the repo.
  *
  * Source of truth = Resend audience (`unsubscribed: true`). The hourly
@@ -15,13 +15,13 @@
  * (email-api/send-weekly-digest.mjs, `filter=(status='active')`) reads.
  *
  * The legacy flat file pseo-site/data/unsubscribed-emails.json only fed the
- * stats dashboard (monitoring/build-dashboard.py) — it NEVER suppressed an
+ * stats dashboard (monitoring/build-dashboard.py), it NEVER suppressed an
  * actual send. So anyone who only landed in that file may still be receiving
  * the digest. This script closes that gap.
  *
  * USAGE
  * -----
- *   # Dry run (default) — reads the local flat file, shows what it WOULD do:
+ *   # Dry run (default), reads the local flat file, shows what it WOULD do:
  *   node pseo-site/scripts/suppress-unsubscribes.mjs
  *
  *   # Specific addresses instead of the file:
@@ -30,21 +30,21 @@
  *   # Apply for real (Resend + PB mirror if PB creds present):
  *   node pseo-site/scripts/suppress-unsubscribes.mjs --send
  *
- *   # Resend only (skip the PB mirror write — relies on the hourly sync):
+ *   # Resend only (skip the PB mirror write, relies on the hourly sync):
  *   node pseo-site/scripts/suppress-unsubscribes.mjs --send --no-pb
  *
  * ENV
  * ---
  *   RESEND_API_KEY        (required)
- *   RESEND_AUDIENCE_ID    (optional — else the first audience is used)
- *   POCKETBASE_URL        (optional — enables the PB `subscribers` mirror write)
+ *   RESEND_AUDIENCE_ID    (optional, else the first audience is used)
+ *   POCKETBASE_URL        (optional, enables the PB `subscribers` mirror write)
  *   POCKETBASE_ADMIN_EMAIL / POCKETBASE_ADMIN_PASSWORD  (PB superuser auth)
  *
  * SAFETY
  * ------
  *   - Dry run unless --send is passed.
  *   - Idempotent: marking an already-unsubscribed contact is a no-op.
- *   - Never prints full addresses to shared logs — emails are masked.
+ *   - Never prints full addresses to shared logs, emails are masked.
  *   - No email addresses are hardcoded in this file.
  */
 
@@ -133,7 +133,7 @@ async function pbAuth() {
     }
   );
   if (!res.ok) {
-    console.warn("⚠ PB auth failed — skipping the PB mirror write (Resend→PB hourly sync will catch up).");
+    console.warn("⚠ PB auth failed, skipping the PB mirror write (Resend→PB hourly sync will catch up).");
     return null;
   }
   return (await res.json()).token;
@@ -147,7 +147,7 @@ async function pbMarkUnsubscribed(token, email) {
   ).then((r) => (r.ok ? r.json() : { items: [] }));
   const rec = found.items?.[0];
   if (!rec) return "not-in-pb";
-  // PB status enum is active|churned|paused — there is NO 'unsubscribed' value
+  // PB status enum is active|churned|paused, there is NO 'unsubscribed' value
   // (writing it returns HTTP 400). An opt-out is represented as 'churned', which
   // the weekly digest (filter status='active') excludes.
   if (rec.status === "churned") return "already";
@@ -170,7 +170,7 @@ async function main() {
   const audienceId = await resolveAudienceId();
   const pbToken = await pbAuth();
   console.log(
-    `${SEND ? "APPLYING" : "DRY RUN"} — ${emails.length} address(es) · audience ${audienceId}` +
+    `${SEND ? "APPLYING" : "DRY RUN"}, ${emails.length} address(es) · audience ${audienceId}` +
       `${pbToken ? " · PB mirror ON" : " · PB mirror off"}\n`
   );
 
@@ -196,7 +196,7 @@ async function main() {
     console.log(`\nNothing changed. Re-run with --send to apply.`);
   } else {
     console.log(`\nDone. Verify in Resend (audience → contacts) and, if mirrored, PB subscribers.`);
-    console.log(`Then delete pseo-site/data/unsubscribed-emails.json (it is gitignored) — it no longer drives anything.`);
+    console.log(`Then delete pseo-site/data/unsubscribed-emails.json (it is gitignored), it no longer drives anything.`);
   }
 }
 

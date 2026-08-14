@@ -1,11 +1,11 @@
 /**
- * Canonical MCP tool catalog — SINGLE SOURCE OF TRUTH for the static descriptors.
+ * Canonical MCP tool catalog, SINGLE SOURCE OF TRUTH for the static descriptors.
  *
  * The live JSON-RPC endpoint defines the runtime tool implementations in
  * `app/api/mcp/rpc/route.ts` (`const TOOLS`). This module mirrors that catalog
  * (names + one-line summaries + paid/read-only flags) so every static discovery
- * surface — /.well-known/mcp.json, /.well-known/mcp/server-card.json,
- * /.well-known/discover.json, /.well-known/api-catalog, llms.txt, llms-full.txt —
+ * surface, /.well-known/mcp.json, /.well-known/mcp/server-card.json,
+ * /.well-known/discover.json, /.well-known/api-catalog, llms.txt, llms-full.txt -
  * reports the SAME counts and the SAME tool list. Prose counts, descriptor tool
  * arrays, and what `tools/list` returns can no longer drift apart.
  *
@@ -54,7 +54,7 @@ export const MCP_TOOLS: McpTool[] = [
   {
     name: "get_diligence_dossier",
     description:
-      "Public-source diligence dossier for a company or entity: M&A history, public backers, and the published engineering signal. Returns found:false with an honest note when outside the tracked corpus — never guesses.",
+      "Public-source diligence dossier for a company or entity: M&A history, public backers, and the published engineering signal. Returns found:false with an honest note when outside the tracked corpus, never guesses.",
     readOnly: true,
   },
   {
@@ -79,7 +79,7 @@ export const MCP_TOOLS: McpTool[] = [
   {
     name: "share_result",
     description:
-      "Compose a ready-to-share social post (Twitter/Bluesky/Mastodon/LinkedIn/Telegram) about a prior tool result, with per-platform char counts and intent URLs. Composes only — never posts on the user's behalf (two-step approval).",
+      "Compose a ready-to-share social post (Twitter/Bluesky/Mastodon/LinkedIn/Telegram) about a prior tool result, with per-platform char counts and intent URLs. Composes only, never posts on the user's behalf (two-step approval).",
     readOnly: true,
   },
   {

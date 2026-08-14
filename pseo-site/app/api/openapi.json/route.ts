@@ -196,7 +196,7 @@ export async function GET() {
           operationId: "getDiligenceDossier",
           summary: "Public-source diligence dossier for a company/entity",
           description:
-            "One cited dossier per entity: who acquired it (M&A history), which funds publicly backed it, and its published engineering-acceleration signal. Sources are press-release / SEC-filing / both-sides-disclosed only; returns found:false (404) with honest notes when the entity is outside the tracked corpus — never guesses. Same payload as the get_diligence_dossier MCP tool. Human mirror at /diligence.",
+            "One cited dossier per entity: who acquired it (M&A history), which funds publicly backed it, and its published engineering-acceleration signal. Sources are press-release / SEC-filing / both-sides-disclosed only; returns found:false (404) with honest notes when the entity is outside the tracked corpus, never guesses. Same payload as the get_diligence_dossier MCP tool. Human mirror at /diligence.",
           parameters: [
             { name: "company", in: "query", required: false, schema: { type: "string", maxLength: 100 }, description: "Company or entity name (target, acquirer, or tracked startup). Aliases: entity, q. Omit for a usage envelope listing the answerable universe." },
           ],
@@ -228,7 +228,7 @@ export async function GET() {
               },
             },
             "404": {
-              description: "found:false — entity outside the tracked corpus (an expected outcome, not an error)",
+              description: "found:false, entity outside the tracked corpus (an expected outcome, not an error)",
             },
           },
           "x-mcp-tool": "get_diligence_dossier",
@@ -270,7 +270,7 @@ export async function GET() {
           tags: ["agents"],
           operationId: "getAgentsCatalog",
           summary: "MCP / A2A skill catalog",
-          description: "Mirror of /.well-known/agent-card.json — full skill list with examples and tags.",
+          description: "Mirror of /.well-known/agent-card.json, full skill list with examples and tags.",
           responses: {
             "200": {
               description: "Agent skill catalog",
@@ -284,7 +284,7 @@ export async function GET() {
           tags: ["agents"],
           operationId: "getAgentTools",
           summary: "JSON-Schema tool definitions for direct LLM tool-use",
-          description: "Tool definitions in OpenAI / Anthropic tool-use format — drop into your agent runtime as-is.",
+          description: "Tool definitions in OpenAI / Anthropic tool-use format, drop into your agent runtime as-is.",
           responses: {
             "200": {
               description: "Array of tool definitions",
@@ -386,7 +386,7 @@ export async function GET() {
               description: "Market payload",
               content: { "application/json": { schema: { type: "object", additionalProperties: true } } },
             },
-            "404": { description: "Market not found — response includes the available list." },
+            "404": { description: "Market not found, response includes the available list." },
           },
         },
       },
@@ -468,7 +468,7 @@ export async function GET() {
           operationId: "getDeepSignal",
           summary: "Get deep enriched signal (paid, per-request)",
           description:
-            "PAID per-request endpoint — €0.19/call, sold in 100-credit packs at €19. Returns enriched signal beyond /api/signal: composite score, sector percentile, plain-English thesis, comparables, multi-period history. 1 credit consumed only on a successful match; misses are FREE. Credits never expire. Buy at https://signals.gitdealflow.com/agents/credits — API key delivered by email after Stripe checkout.",
+            "PAID per-request endpoint, €0.19/call, sold in 100-credit packs at €19. Returns enriched signal beyond /api/signal: composite score, sector percentile, plain-English thesis, comparables, multi-period history. 1 credit consumed only on a successful match; misses are FREE. Credits never expire. Buy at https://signals.gitdealflow.com/agents/credits, API key delivered by email after Stripe checkout.",
           "x-mcp-tool": {
             name: "get_deep_signal",
             description:
@@ -523,13 +523,13 @@ export async function GET() {
         post: {
           tags: ["deep-signal"],
           operationId: "getDeepSignalX402",
-          summary: "Get deep enriched signal (x402 — pay-per-call USDC on Base)",
+          summary: "Get deep enriched signal (x402, pay-per-call USDC on Base)",
           description:
-            "Same payload as /api/agent/deep-signal but priced and authenticated via the x402 protocol (HTTP 402 micropayments). $0.19 USDC per successful call on Base mainnet. No signup, no API key — agents pay per request via the X-PAYMENT header (EIP-3009 transferWithAuthorization). Misses (404) are not charged. Settled by the Coinbase x402 facilitator. See https://x402.org for client implementations.",
+            "Same payload as /api/agent/deep-signal but priced and authenticated via the x402 protocol (HTTP 402 micropayments). $0.19 USDC per successful call on Base mainnet. No signup, no API key, agents pay per request via the X-PAYMENT header (EIP-3009 transferWithAuthorization). Misses (404) are not charged. Settled by the Coinbase x402 facilitator. See https://x402.org for client implementations.",
           "x-mcp-tool": {
             name: "get_deep_signal",
             description:
-              "x402 variant — same MCP tool, no API key, USDC on Base. The MCP server picks the right pricing rail based on caller context.",
+              "x402 variant, same MCP tool, no API key, USDC on Base. The MCP server picks the right pricing rail based on caller context.",
             relation: "exact",
             paid: true,
             unitPrice: "USDC 0.19",
@@ -577,7 +577,7 @@ export async function GET() {
                 "Payment Required. Response body lists supported payment requirements (network, asset, payTo, price). Agent signs an EIP-3009 authorization and retries with X-PAYMENT header.",
             },
             "404": {
-              description: "Startup not in tracked universe — no settlement performed.",
+              description: "Startup not in tracked universe, no settlement performed.",
             },
             "503": {
               description: "x402 endpoint not configured (X402_PAY_TO_ADDRESS env var missing).",
@@ -589,7 +589,7 @@ export async function GET() {
         get: {
           tags: ["deep-signal"],
           operationId: "getDeepSignalSolanaTerms",
-          summary: "Solana credit top-up — payment instructions",
+          summary: "Solana credit top-up, payment instructions",
           description:
             "Returns the Solana payment requirements (cluster, USDC mint, payTo, amount, credits granted) so an agent knows how to pay. No auth required for discovery.",
           responses: {
@@ -611,7 +611,7 @@ export async function GET() {
           "x-mcp-tool": {
             name: "get_deep_signal",
             description:
-              "Solana variant — top up the same credit balance with USDC on Solana, then call get_deep_signal as usual.",
+              "Solana variant, top up the same credit balance with USDC on Solana, then call get_deep_signal as usual.",
             relation: "related",
             paid: true,
             unitPrice: "USDC 19 / 100 credits",
@@ -732,7 +732,7 @@ export async function GET() {
         get: {
           tags: ["v1", "community"],
           operationId: "getMembersV1",
-          summary: "Charter Cohort 2026 — member-side ledger (roster + leaderboard + grading rules)",
+          summary: "Charter Cohort 2026, member-side ledger (roster + leaderboard + grading rules)",
           description:
             "Programmatic mirror of /members. Returns the full Charter Cohort roster with derived per-member stats, a pre-sorted leaderboard array using the same ranking semantics as /members/leaderboard (hits → closed windows → picks → handle), aggregate cohort stats, and the public 60d/90d grading rules. Pseudonymous handles welcome under the same anonymity rule as the founder. Cached at the edge for 1 hour.",
           responses: {
@@ -791,7 +791,7 @@ export async function GET() {
         get: {
           tags: ["v1", "business-model"],
           operationId: "getAffiliatesV1",
-          summary: "Affiliate program — terms, leaderboard snapshot, swipe-kit templates",
+          summary: "Affiliate program, terms, leaderboard snapshot, swipe-kit templates",
           description:
             "Programmatic mirror of /affiliates. Returns commission terms (20% lifetime, €399/Sweep, €19.40/mo/Insider, 60-day cookie), pseudonymized top-10 leaderboard, six clone-ready swipe-kit content templates (tweet thread, LinkedIn post, blog post, newsletter mention, podcast script, 3-email sequence), aggregate program stats, and the Refgrow signup URL. Updated monthly. Cached at the edge for 1 hour.",
           responses: {
@@ -829,7 +829,7 @@ export async function GET() {
         get: {
           tags: ["v1", "brand"],
           operationId: "getSocialMascotV1",
-          summary: "Data Nerd mascot bible — voice, pillars, cadence, sample batch",
+          summary: "Data Nerd mascot bible, voice, pillars, cadence, sample batch",
           description:
             "Anonymity-respecting brand bible for the GitDealFlow social mascot. Returns channel handles + status, voice/tone rules, content pillars with target ratios, posting cadence + UTC slots, hashtag bank, and a 5-post sample batch with channel-specific bodies. Used by cross-posters, partner accounts, and AI agents that surface our content. Cached at the edge for 1 hour.",
           responses: {
@@ -905,7 +905,7 @@ export async function GET() {
           operationId: "getFaqV1",
           summary: "Standalone FAQ corpus (101 entries)",
           description:
-            "Curated FAQ corpus separate from the agent-query firehose. Stable answer slugs — safe to cite.",
+            "Curated FAQ corpus separate from the agent-query firehose. Stable answer slugs, safe to cite.",
           responses: {
             "200": {
               description: "FAQ entries",
@@ -955,7 +955,7 @@ export async function GET() {
         get: {
           tags: ["v1", "agents"],
           operationId: "getOpenapiV1",
-          summary: "This document — versioned alias of /api/openapi.json",
+          summary: "This document, versioned alias of /api/openapi.json",
           description:
             "Self-referential. Some agents pin to versioned URLs for the descriptor itself.",
           responses: {
@@ -1138,7 +1138,7 @@ export async function GET() {
         title: "VC Deal Flow Signal",
         version: "1.2.0",
         instructions:
-          "Read-only signal data on startup engineering acceleration. All data CC BY 4.0 — cite signals.gitdealflow.com when used in derivative work.",
+          "Read-only signal data on startup engineering acceleration. All data CC BY 4.0, cite signals.gitdealflow.com when used in derivative work.",
       },
       transports: [
         {
@@ -1202,7 +1202,7 @@ export async function GET() {
         },
         {
           name: "get_scout_receipts",
-          description: "Scout Score (0-100) for a GitHub user — backwards-looking proof of taste.",
+          description: "Scout Score (0-100) for a GitHub user, backwards-looking proof of taste.",
           httpAnalog: { method: "GET", path: "/api/receipts/{username}", argumentMapping: { github_username: "username" } },
           inputSchema: {
             type: "object",
@@ -1227,7 +1227,7 @@ export async function GET() {
         },
         {
           name: "get_deep_signal",
-          description: "PAID — €0.19/call (or USDC 0.19 via x402). Returns enriched signal: composite score, sector percentile, plain-English thesis, comparables, multi-period history.",
+          description: "PAID, €0.19/call (or USDC 0.19 via x402). Returns enriched signal: composite score, sector percentile, plain-English thesis, comparables, multi-period history.",
           httpAnalog: [
             { method: "POST", path: "/api/agent/deep-signal", auth: "creditPackKey", paid: true, unitPrice: "EUR 0.19" },
             { method: "POST", path: "/api/agent/deep-signal/x402", auth: "x402", paid: true, unitPrice: "USDC 0.19" },
@@ -1312,7 +1312,7 @@ export async function GET() {
         },
         {
           name: "sector_deep_dive",
-          description: "Sector intelligence brief — top movers, dark horses, thesis follow-ups.",
+          description: "Sector intelligence brief, top movers, dark horses, thesis follow-ups.",
           arguments: [{ name: "sector", description: "Sector slug.", required: true }],
         },
         {
@@ -1347,7 +1347,7 @@ export async function GET() {
         changes: [
           "Added `info.x-rate-limit` default (60/min/IP, burst 120) so paid agents discover throttling without hitting 429.",
           "Added per-operation `x-rate-limit` overrides on /api/signal (30/min/IP) and /api/receipts/{username} (10/min/IP).",
-          "Added `x-mcp.skillsManifest` and `x-mcp-server.skillsManifest` pointing to /.well-known/skills.json — Anthropic-style skills card enumerating the 5 MCP prompts as agent-callable skills with explicit invoke contracts.",
+          "Added `x-mcp.skillsManifest` and `x-mcp-server.skillsManifest` pointing to /.well-known/skills.json, Anthropic-style skills card enumerating the 5 MCP prompts as agent-callable skills with explicit invoke contracts.",
           "Added 11 extension-stripped /api/v1/<resource> aliases (signals, faq, methodology, glossary, answers, openapi, agents, changelog, dataset, pricing, uptime) for agents that strip file extensions; canonical URLs remain at .json/.jsonl variants.",
         ],
       },

@@ -1,4 +1,4 @@
-// MCP Server Card — supplementary metadata for catalog scanners (Smithery, etc.).
+// MCP Server Card, supplementary metadata for catalog scanners (Smithery, etc.).
 //
 // Spec emerging in early 2026; current shape mirrors Smithery's requested format.
 // Served at /.well-known/mcp/server-card.json (Smithery's documented fallback path

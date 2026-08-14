@@ -24,7 +24,7 @@ export const pillars: Record<string, Pillar> = {
     slug: "deal-sourcing-workflow",
     name: "Deal Sourcing Workflow",
     description:
-      "Practical sourcing playbooks — pre-seed, seed, Series A — that combine GitHub signals with the rest of an investor's stack.",
+      "Practical sourcing playbooks, pre-seed, seed, Series A, that combine GitHub signals with the rest of an investor's stack.",
     keywords: [
       "deal sourcing",
       "pre-seed sourcing",
@@ -38,7 +38,7 @@ export const pillars: Record<string, Pillar> = {
     slug: "alternative-data",
     name: "Alternative Data for VC",
     description:
-      "GitHub momentum in the broader landscape of alternative data — what it adds, what it replaces, where hiring/web/transactional data fit alongside it.",
+      "GitHub momentum in the broader landscape of alternative data, what it adds, what it replaces, where hiring/web/transactional data fit alongside it.",
     keywords: [
       "alternative data",
       "venture capital data",
@@ -52,7 +52,7 @@ export const pillars: Record<string, Pillar> = {
     slug: "sector-deep-dives",
     name: "Sector Deep Dives",
     description:
-      "Sector-specific signal patterns — what GitHub activity looks like in fintech, AI, cybersecurity, climate-tech, and other technical verticals.",
+      "Sector-specific signal patterns, what GitHub activity looks like in fintech, AI, cybersecurity, climate-tech, and other technical verticals.",
     keywords: [
       "fintech startups",
       "AI startup signals",
@@ -66,7 +66,7 @@ export const pillars: Record<string, Pillar> = {
     slug: "founder-research",
     name: "Operator Notes",
     description:
-      "First-hand notes from running the dataset — building a longitudinal panel of 369+ startup GitHub orgs, MCP server lessons, and other operator-side observations.",
+      "First-hand notes from running the dataset, building a longitudinal panel of 369+ startup GitHub orgs, MCP server lessons, and other operator-side observations.",
     keywords: [
       "GitHub dataset",
       "operator notes",

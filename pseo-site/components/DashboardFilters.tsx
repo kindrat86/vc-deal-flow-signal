@@ -6,7 +6,7 @@ import type { DashboardStartup } from "@/app/dashboard/page";
 import SignalBadge from "@/components/SignalBadge";
 import { slugify } from "@/lib/slugify";
 
-/** Current data period slug — update when rolling to a new quarter */
+/** Current data period slug, update when rolling to a new quarter */
 const CURRENT_PERIOD_SLUG = "q2-2026";
 
 interface Props {
@@ -59,10 +59,10 @@ function exportToCsv(data: DashboardStartup[], isInsider: boolean) {
     String(s.contributors),
     s.signalType,
     ...(isInsider ? [
-      s.fundingTotal ?? "—",
-      s.lastRoundType ?? "—",
-      s.teamSize ? String(s.teamSize) : "—",
-      s.foundedYear ? String(s.foundedYear) : "—",
+      s.fundingTotal ?? "-",
+      s.lastRoundType ?? "-",
+      s.teamSize ? String(s.teamSize) : "-",
+      s.foundedYear ? String(s.foundedYear) : "-",
     ] : []),
   ]);
 
@@ -401,16 +401,16 @@ export default function DashboardFilters({
                   {isInsider && (
                     <>
                       <td className="px-4 py-3 text-right font-mono text-amber-300/80 text-xs">
-                        {startup.fundingTotal ?? "—"}
+                        {startup.fundingTotal ?? "-"}
                       </td>
                       <td className="px-4 py-3 text-xs text-amber-300/60">
-                        {startup.lastRoundType ?? "—"}
+                        {startup.lastRoundType ?? "-"}
                       </td>
                       <td className="px-4 py-3 text-right font-mono text-amber-300/80 text-xs">
-                        {startup.teamSize ?? "—"}
+                        {startup.teamSize ?? "-"}
                       </td>
                       <td className="px-4 py-3 text-right font-mono text-amber-300/80 text-xs">
-                        {startup.foundedYear ?? "—"}
+                        {startup.foundedYear ?? "-"}
                       </td>
                     </>
                   )}
@@ -428,7 +428,7 @@ export default function DashboardFilters({
             >
               VC Deal Flow Signal
             </a>
-            {" "}&mdash; real-time GitHub engineering data for investors
+            {" "}, real-time GitHub engineering data for investors
           </span>
           <span className="text-[10px] text-gray-700">
             Data from public GitHub API

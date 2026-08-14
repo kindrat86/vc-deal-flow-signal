@@ -1,4 +1,4 @@
-# GitDealFlow — distribution response taxonomy
+# GitDealFlow, distribution response taxonomy
 
 Purpose: normalize outbound responses so follow-up is fast, routing is consistent, and page patches are based on real demand instead of guesses.
 

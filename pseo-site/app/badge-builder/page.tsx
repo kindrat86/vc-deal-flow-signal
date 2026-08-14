@@ -8,7 +8,7 @@ import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 const SITE = "https://signals.gitdealflow.com";
 
 export const metadata: Metadata = {
-  title: "Free Engineering Momentum Badge — Show Your Startup's GitHub Velocity",
+  title: "Free Engineering Momentum Badge, Show Your Startup's GitHub Velocity",
   description:
     "Free shields.io-style SVG badge showing your startup's engineering momentum score. Auto-updates weekly. Embed on your website, README, or pitch deck. No signup required.",
   alternates: { canonical: "/badge-builder" },
@@ -78,7 +78,7 @@ export default function BadgeBuilderPage() {
             name: "What is the engineering momentum badge?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "A free SVG badge you can embed on your startup's website, GitHub README, or pitch deck. It shows your real-time engineering momentum score based on public GitHub data — commit velocity, contributor growth, and signal type. It auto-updates weekly.",
+              text: "A free SVG badge you can embed on your startup's website, GitHub README, or pitch deck. It shows your real-time engineering momentum score based on public GitHub data, commit velocity, contributor growth, and signal type. It auto-updates weekly.",
             },
           },
           {
@@ -203,7 +203,7 @@ export default function BadgeBuilderPage() {
               },
               {
                 q: "What if my startup isn't listed?",
-                a: "We track ~369 venture-backed startups across 15 sectors. If your GitHub organization is active and you'd like to be added, reach out at signals@gitdealflow.com.",
+                a: "We track 350+ venture-backed startups across 15 sectors. If your GitHub organization is active and you'd like to be added, reach out at signals@gitdealflow.com.",
               },
               {
                 q: "Can I customize the colors?",

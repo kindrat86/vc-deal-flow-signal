@@ -3,7 +3,7 @@
 import { useEffect } from "react";
 
 /**
- * WalkthroughQuickRedirect — sticky 50/50 bucket assignment that fires on
+ * WalkthroughQuickRedirect, sticky 50/50 bucket assignment that fires on
  * mount and redirects to /walkthrough/5min or /walkthrough/90s.
  *
  * Sticky via localStorage so a returning visitor always lands on the same
@@ -11,7 +11,7 @@ import { useEffect } from "react";
  * conversion data). Logs `walkthrough_variant_assigned` to PostHog the first
  * time the bucket is set.
  *
- * Brunson Expert Secrets §4 Ch 19 — Test, Test, Test. Bucket assignment
+ * Brunson Expert Secrets §4 Ch 19, Test, Test, Test. Bucket assignment
  * happens once per visitor, then the variant tracker on the destination
  * page does the rest of the funnel-step capture.
  */
@@ -22,7 +22,7 @@ const STORAGE_KEY = "walkthrough_variant";
 const STORAGE_VERSION_KEY = "walkthrough_variant_v";
 // If we ever change the bucketing logic (e.g. add a third arm), bump this
 // to invalidate stale assignments. Brunson Ch 19: every test has a "ship
-// version" — that's what this is.
+// version", that's what this is.
 const STORAGE_VERSION = "1";
 
 function isVariant(v: unknown): v is Variant {
@@ -47,7 +47,7 @@ function persistVariant(variant: Variant) {
     window.localStorage.setItem(STORAGE_KEY, variant);
     window.localStorage.setItem(STORAGE_VERSION_KEY, STORAGE_VERSION);
   } catch {
-    // Private mode or storage full — fall through; we'll re-bucket next
+    // Private mode or storage full, fall through; we'll re-bucket next
     // visit. Acceptable degradation.
   }
 }
@@ -86,7 +86,7 @@ export default function WalkthroughQuickRedirect() {
         chosen = pickVariant();
         persistVariant(chosen);
 
-        // First-time assignment — log to PostHog.
+        // First-time assignment, log to PostHog.
         const ph = window.posthog;
         if (ph?.capture && ph.__loaded) {
           try {
@@ -114,7 +114,7 @@ export default function WalkthroughQuickRedirect() {
     const finalUrl = qs ? `${target}?${qs}` : target;
 
     // Use replace() so the router page doesn't pollute the browser's back
-    // button — pressing back should return to wherever the visitor came
+    // button, pressing back should return to wherever the visitor came
     // from, not bounce them between the router and the variant.
     window.location.replace(finalUrl);
   }, []);

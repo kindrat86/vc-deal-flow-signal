@@ -17,14 +17,14 @@ export const dynamic = "force-static";
 const SITE = "https://signals.gitdealflow.com";
 
 /**
- * /members — Charter Cohort hub.
+ * /members, Charter Cohort hub.
  *
  * Brunson Expert Secrets §1 Ch 4 (Mass Movement Vehicle). The chapter teaches
- * that a movement requires *visible momentum* — the new member sees other
+ * that a movement requires *visible momentum*, the new member sees other
  * members, not just the founder. This page is the membership-side surface
  * that pairs with /wins (the startup-side surface).
  *
- * Brunson DotCom Secrets Ch 4 (Three Core Markets) — the secondary market is
+ * Brunson DotCom Secrets Ch 4 (Three Core Markets), the secondary market is
  * Status. A public profile that ranks members by their picks delivers the
  * Status payoff that the IdentityBanner promises but doesn't operationalise.
  *
@@ -35,12 +35,12 @@ const SITE = "https://signals.gitdealflow.com";
 
 export const metadata: Metadata = {
   title:
-    "Charter Cohort 2026 — 25 founding-member seats · VC Deal Flow Signal",
+    "Charter Cohort 2026, 25 founding-member seats · VC Deal Flow Signal",
   description:
     "25 charter seats for readers who want to publish picks, track receipts, and build a public scorecard around earlier startup signal. Pseudonymous handles welcome.",
   alternates: { canonical: "/members" },
   openGraph: {
-    title: "Charter Cohort 2026 — Public picks and scorecards",
+    title: "Charter Cohort 2026, Public picks and scorecards",
     description:
       "25 founding-member seats. Public thesis, public picks, public scorecard. Pseudonymous handles welcome.",
     url: `${SITE}/members`,
@@ -87,7 +87,7 @@ export default function MembersPage() {
       },
       {
         "@type": "ItemList",
-        name: "Charter Cohort — open seats",
+        name: "Charter Cohort, open seats",
         numberOfItems: CHARTER_COHORT.length,
         itemListElement: CHARTER_COHORT.map((m, i) => ({
           "@type": "ListItem",
@@ -128,11 +128,11 @@ export default function MembersPage() {
             data-speakable
             className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight"
           >
-            Charter Cohort 2026 — <span className="text-amber-400">25 seats.</span>
+            Charter Cohort 2026, <span className="text-amber-400">25 seats.</span>
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed max-w-2xl">
             The Charter Cohort just opened. The first investors to claim a
-            public seat are the founding members — <strong>{remaining} of {CHARTER_COHORT_TOTAL_SEATS} seats open.</strong>{" "}
+            public seat are the founding members, <strong>{remaining} of {CHARTER_COHORT_TOTAL_SEATS} seats open.</strong>{" "}
             <Link
               href="/wins"
               className="text-amber-400 hover:text-amber-300 underline decoration-dotted"
@@ -201,7 +201,7 @@ export default function MembersPage() {
             <p className="text-gray-300 text-sm leading-relaxed">
               <strong className="text-gray-100">The board is empty because the cohort just opened.</strong>{" "}
               Every one of the {CHARTER_COHORT_TOTAL_SEATS} seats is still a
-              founding seat — the people who claim them now are the names the
+              founding seat, the people who claim them now are the names the
               later cohort reads. The Charter Cohort caps at{" "}
               {CHARTER_COHORT_TOTAL_SEATS} for 2026. Each seat ships a public
               profile page (this site, indexed by search engines and agent
@@ -234,7 +234,7 @@ export default function MembersPage() {
             {[
               {
                 head: "A public profile page",
-                body: "Your pseudonymous handle, your written thesis, your tracked picks, your rolling scorecard. Indexed by Google, surfaced in our /sitemap.xml, citable from external posts. The page is yours — it stays even if you cancel your subscription.",
+                body: "Your pseudonymous handle, your written thesis, your tracked picks, your rolling scorecard. Indexed by Google, surfaced in our /sitemap.xml, citable from external posts. The page is yours, it stays even if you cancel your subscription.",
               },
               {
                 head: "60d / 90d scorecard",
@@ -246,7 +246,7 @@ export default function MembersPage() {
               },
               {
                 head: "Anonymity-preserving by default",
-                body: "Pseudonymous handles welcome — same rule as @thedatanerd. Application form asks for a verifiable email + your chosen handle. Real name never required, never published.",
+                body: "Pseudonymous handles welcome, same rule as @thedatanerd. Application form asks for a verifiable email + your chosen handle. Real name never required, never published.",
               },
             ].map((item) => (
               <div
@@ -268,7 +268,7 @@ export default function MembersPage() {
         <section className="space-y-5" aria-label="Open seats">
           <div className="flex items-baseline justify-between gap-3 flex-wrap">
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
-              Open seats — claim an archetype.
+              Open seats, claim an archetype.
             </h2>
             <p className="text-gray-400 text-xs">
               Templates illustrate the format. You write your own thesis.
@@ -337,12 +337,12 @@ export default function MembersPage() {
               {
                 n: 1,
                 title: "Submit a 5-field application",
-                body: "Pseudonymous handle (or real name, your call), verifiable email, 2–4 sentence thesis, check-size band, sectors you track. The form is at /members/join. Takes about 4 minutes.",
+                body: "Pseudonymous handle (or real name, your call), verifiable email, 2-4 sentence thesis, check-size band, sectors you track. The form is at /members/join. Takes about 4 minutes.",
               },
               {
                 n: 2,
                 title: "48-hour written review",
-                body: "The founder reviews every charter application personally. You get a written reply inside 48 business hours — yes with a draft profile to confirm, or no with a written reason. No phone call. Anonymity-preserving.",
+                body: "The founder reviews every charter application personally. You get a written reply inside 48 business hours, yes with a draft profile to confirm, or no with a written reason. No phone call. Anonymity-preserving.",
               },
               {
                 n: 3,
@@ -352,7 +352,7 @@ export default function MembersPage() {
               {
                 n: 4,
                 title: "Publish picks weekly",
-                body: "Each pick is one GitHub org + a 1-sentence why. The 60-day and 90-day grading windows open automatically. Hits and misses are both public — that's the methodology rule.",
+                body: "Each pick is one GitHub org + a 1-sentence why. The 60-day and 90-day grading windows open automatically. Hits and misses are both public, that's the methodology rule.",
               },
               {
                 n: 5,

@@ -9,7 +9,7 @@ import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "First Look — one more thing.",
+  title: "First Look, one more thing.",
   robots: { index: false, follow: false },
 };
 
@@ -55,13 +55,13 @@ export default async function FirstLookDownsellPage({ searchParams }: Props) {
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
       <header className="space-y-3 border-b border-slate-800 pb-6">
         <p className="text-slate-400 text-xs font-semibold uppercase tracking-wider">
-          Sector Sweep skipped — your First Look is locked in
+          Sector Sweep skipped, your First Look is locked in
         </p>
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 leading-tight">
           One last thing before your deep dive lands.
         </h1>
         <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
-          You said no to the Sweep — fair, it&rsquo;s a different size of
+          You said no to the Sweep, fair, it&rsquo;s a different size of
           purchase. Here&rsquo;s the rung between &euro;7 and &euro;1,797 that
           most First Look buyers actually take.
         </p>
@@ -87,11 +87,11 @@ export default async function FirstLookDownsellPage({ searchParams }: Props) {
         </div>
       </section>
 
-      {/* OTO #2 — Insider monthly with first-month discount.
+      {/* OTO #2, Insider monthly with first-month discount.
           Subscription path: subscriptions.create with default_payment_method
           on the saved card and a one-shot coupon for the first invoice. */}
       <section
-        aria-label="Insider Circle — first month discount"
+        aria-label="Insider Circle, first month discount"
         className="rounded-xl border-2 border-teal-500/60 bg-gradient-to-br from-teal-950/30 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-6"
       >
         <header className="space-y-2">
@@ -105,7 +105,7 @@ export default async function FirstLookDownsellPage({ searchParams }: Props) {
             Private investor Telegram, monthly briefing call, custom watchlists,
             API access, direct line to the founder.{" "}
             <strong className="text-gray-100">{fmt(standardMonthly)}/mo</strong>{" "}
-            standard — your first month is{" "}
+            standard, your first month is{" "}
             <strong className="text-teal-200">{fmt(firstMonthAmount)}</strong>{" "}
             from this page only. Cancel any time, no clawback.
           </p>
@@ -119,11 +119,11 @@ export default async function FirstLookDownsellPage({ searchParams }: Props) {
 
         <ul className="space-y-2.5 border-t border-teal-700/40 pt-5">
           {[
-            "Private investor Telegram — daily signal flags, founder-only side channel",
-            "Monthly live briefing call — the names worth attention this month",
-            "Custom watchlists — your thesis, scored by the same engine",
-            "API access — pull the same scoring into your CRM or notebook",
-            "Direct line to the founder — reply to any briefing, get a real answer",
+            "Private investor Telegram, daily signal flags, founder-only side channel",
+            "Monthly live briefing call, the names worth attention this month",
+            "Custom watchlists, your thesis, scored by the same engine",
+            "API access, pull the same scoring into your CRM or notebook",
+            "Direct line to the founder, reply to any briefing, get a real answer",
           ].map((line) => (
             <li key={line} className="flex items-start gap-2.5 text-sm text-gray-300">
               <span aria-hidden="true" className="text-teal-400 font-bold shrink-0 mt-0.5">→</span>
@@ -135,7 +135,7 @@ export default async function FirstLookDownsellPage({ searchParams }: Props) {
         <div className="rounded-lg border border-emerald-700/40 bg-emerald-950/20 p-4 sm:p-5 text-sm text-emerald-100 leading-relaxed">
           <strong className="text-emerald-200">Cancel any time, keep the month.</strong>{" "}
           Reply <code className="bg-emerald-950/50 text-emerald-200 px-1 py-0.5 rounded text-xs">CANCEL</code>{" "}
-          to any briefing email — refund or pro-rata, your choice. The discount
+          to any briefing email, refund or pro-rata, your choice. The discount
           locks at {fmt(firstMonthAmount)}; if you stay, month two onwards is
           {" "}{fmt(standardMonthly)}.
         </div>
@@ -145,7 +145,7 @@ export default async function FirstLookDownsellPage({ searchParams }: Props) {
           oto="insider_oto2"
           acceptHref="/firstlook/done"
           declineHref="/firstlook/last-chance"
-          acceptLabel={`Yes — start Insider for ${fmt(firstMonthAmount)} this month`}
+          acceptLabel={`Yes, start Insider for ${fmt(firstMonthAmount)} this month`}
           declineLabel="No thanks, see one final option"
           acceptToneClass="bg-teal-500 hover:bg-teal-400 text-slate-950"
         />
@@ -153,7 +153,7 @@ export default async function FirstLookDownsellPage({ searchParams }: Props) {
         <p className="text-slate-500 text-xs leading-relaxed border-t border-slate-800 pt-4">
           The discount only applies on this page. Decline and the Insider
           page stays at {fmt(standardMonthly)}/mo. Same card you used for
-          the First Look — no re-entry, no second checkout.
+          the First Look, no re-entry, no second checkout.
         </p>
       </section>
 

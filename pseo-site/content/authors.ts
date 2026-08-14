@@ -2,7 +2,7 @@
  * Multi-author data for E-E-A-T. Each author becomes a schema.org Person
  * with credentials and sameAs links to public profiles.
  *
- * Default author is "the-data-nerd" — this is the established editorial voice.
+ * Default author is "the-data-nerd", this is the established editorial voice.
  * Additional personas are used selectively on posts that align with their
  * domain expertise. This lifts E-E-A-T without fabricating attribution.
  */
@@ -40,7 +40,7 @@ export const authors: Record<string, Author> = {
   },
   "engineering-research": {
     slug: "engineering-research",
-    name: "VC Deal Flow Signal — Engineering Research Desk",
+    name: "VC Deal Flow Signal, Engineering Research Desk",
     jobTitle: "Editorial Research Team",
     affiliation: "VC Deal Flow Signal",
     bio: "Collective byline for multi-author research articles synthesising public GitHub data, academic literature on alternative venture data, and industry interviews.",
@@ -58,7 +58,7 @@ export const authors: Record<string, Author> = {
   "founder-perspective": {
     slug: "founder-perspective",
     name: "Founder Perspective",
-    jobTitle: "Guest Contributor — Founder Perspective",
+    jobTitle: "Guest Contributor, Founder Perspective",
     affiliation: "VC Deal Flow Signal (guest byline)",
     bio: "Reserved byline for posts authored by venture-backed founders describing how engineering signals look from inside a startup. Each post is attributed to a specific identified founder and published with their consent.",
     credentials: [

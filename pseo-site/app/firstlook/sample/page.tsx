@@ -7,7 +7,7 @@ import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 
 export const dynamic = "force-static";
 
-// Brunson DotCom Secrets Ch 13 ("Best Bait") — the most under-deployed
+// Brunson DotCom Secrets Ch 13 ("Best Bait"), the most under-deployed
 // move in tripwire-funnel literature is the redacted-sample page. Buyers
 // hesitate at €7 because the artefact is unseen; one redacted page of the
 // real deliverable converts the imagination tax into a verification tax.
@@ -16,12 +16,12 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title:
-    "First Look — sample page (redacted). What €7 actually buys, page by page.",
+    "First Look, sample page (redacted). What €7 actually buys, page by page.",
   description:
-    "A redacted page from a real delivered First Look deep dive. The structure, the data shape, and the kind of finding the report surfaces — minus the named orgs (those stay buyer-only).",
+    "A redacted page from a real delivered First Look deep dive. The structure, the data shape, and the kind of finding the report surfaces, minus the named orgs (those stay buyer-only).",
   alternates: { canonical: "/firstlook/sample" },
   openGraph: {
-    title: "First Look — sample page (redacted)",
+    title: "First Look, sample page (redacted)",
     description:
       "A real page from a real delivered First Look. Org names redacted; everything else is the actual deliverable.",
     url: "https://signals.gitdealflow.com/firstlook/sample",
@@ -31,7 +31,7 @@ export const metadata: Metadata = {
 
 const REDACTED_ROW = (n: number) => `■■■■■■■■■■-${String(n).padStart(2, "0")}`;
 
-// Real-shape data, real claim, real ranking math — only the org names
+// Real-shape data, real claim, real ranking math, only the org names
 // redacted. Numbers come from a delivered Q2 2026 AI-infra First Look.
 const SAMPLE_RANKING = [
   { rank: 1, org: REDACTED_ROW(1), velocity: "+312%", contribInflux: 11, gini: 0.21, signalType: "infra buildout" },
@@ -53,17 +53,17 @@ const PAGE_MAP = [
   {
     page: 2,
     head: "Top-25 ranked panel (page 1 of 2)",
-    body: "Orgs 1–13 in your sector, ranked by 14-day commit-velocity acceleration with two-period confirmation. Five-column table — the shape preview is below this map.",
+    body: "Orgs 1-13 in your sector, ranked by 14-day commit-velocity acceleration with two-period confirmation. Five-column table, the shape preview is below this map.",
   },
   {
     page: 3,
     head: "Top-25 ranked panel (page 2 of 2)",
-    body: "Orgs 14–25, same shape. Bottom of page: the cutoff threshold, what got pulled and why (false-positive filter).",
+    body: "Orgs 14-25, same shape. Bottom of page: the cutoff threshold, what got pulled and why (false-positive filter).",
   },
   {
     page: 4,
     head: "Sector-specific finding · the leading-indicator beat",
-    body: "Quarter-on-quarter: which signal type leads fundraise announcements in this sector and by how many days. Numbers vary per sector — climate tech leads by ~28d, AI infra ~41d.",
+    body: "Quarter-on-quarter: which signal type leads fundraise announcements in this sector and by how many days. Numbers vary per sector, climate tech leads by ~28d, AI infra ~41d.",
   },
   {
     page: 5,
@@ -78,7 +78,7 @@ const PAGE_MAP = [
   {
     page: 7,
     head: "False-positive watchlist",
-    body: "Three to five orgs that look hot but probably aren't — usually because the velocity is concentrated in one contributor or the signal cleanly maps to a public open-source release schedule.",
+    body: "Three to five orgs that look hot but probably aren't, usually because the velocity is concentrated in one contributor or the signal cleanly maps to a public open-source release schedule.",
   },
   {
     page: 8,
@@ -125,10 +125,10 @@ export default function FirstLookSamplePage() {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/firstlook/sample#webpage",
         url: "https://signals.gitdealflow.com/firstlook/sample",
-        name: "First Look — sample page (redacted)",
+        name: "First Look, sample page (redacted)",
         isAccessibleForFree: true,
         description:
-          "A redacted real page from a delivered First Look deep dive. Structure, data shape, and finding type — minus the named orgs.",
+          "A redacted real page from a delivered First Look deep dive. Structure, data shape, and finding type, minus the named orgs.",
         mainEntity: {
           "@id": "https://signals.gitdealflow.com/firstlook#product",
         },
@@ -172,30 +172,30 @@ export default function FirstLookSamplePage() {
             Redacted sample · what €7 actually buys
           </p>
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight">
-            See the shape of the deliverable —{" "}
+            See the shape of the deliverable, {" "}
             <span className="text-amber-400">before you pay €7.</span>
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-            The org names stay buyer-only — that&rsquo;s the whole point of a
+            The org names stay buyer-only, that&rsquo;s the whole point of a
             First Look. But the structure, the data columns, the finding
             types, and the page-by-page map are right here. If anything below
             looks thinner than what you expected for €7, don&rsquo;t buy.
           </p>
           <div className="rounded-lg border border-amber-700/50 bg-amber-950/15 px-4 py-3 text-sm text-amber-100 leading-relaxed">
             <strong className="text-amber-200">Why redacted, not full?</strong>{" "}
-            Three named breakouts per report are the &mdash; literal &mdash; first-look
+            Three named breakouts per report are the, literal, first-look
             edge. Publishing them publicly destroys the artefact for every
             buyer who paid. The structure below is real; the names move from
             redacted to printed when the €7 lands.
           </div>
         </header>
 
-        {/* SAMPLE PAGE — the actual ranked panel from a delivered Q2 2026
+        {/* SAMPLE PAGE, the actual ranked panel from a delivered Q2 2026
             AI-infra report, with org names redacted. The shape (rank,
             velocity, contributor influx, Gini, signal type) is exactly
             what lands in your inbox. */}
         <section
-          aria-label="Sample ranked panel — page 2 of the delivered PDF"
+          aria-label="Sample ranked panel, page 2 of the delivered PDF"
           className="space-y-4"
         >
           <header className="space-y-1.5">
@@ -207,7 +207,7 @@ export default function FirstLookSamplePage() {
             </h2>
             <p className="text-gray-400 text-sm leading-relaxed">
               Drawn from a real Q2 2026 AI-infrastructure First Look. Eight of
-              the top 13 shown — orgs redacted. Velocity is 14-day rolling
+              the top 13 shown, orgs redacted. Velocity is 14-day rolling
               acceleration vs the 90-day baseline; contributor influx is
               30-day net-new; Gini measures top-contributor concentration
               (lower is healthier).
@@ -255,11 +255,11 @@ export default function FirstLookSamplePage() {
             In your PDF, the org column shows the actual GitHub org URL,
             clickable, plus a one-line context note (e.g. &ldquo;founded 2024,
             no public funding round, ex-Stripe team&rdquo;). The redaction is
-            visual only on this preview &mdash; the artefact ships unredacted.
+            visual only on this preview, the artefact ships unredacted.
           </p>
         </section>
 
-        {/* SAMPLE FINDING — the kind of narrative paragraph that appears on
+        {/* SAMPLE FINDING, the kind of narrative paragraph that appears on
             page 4 (sector-specific finding) of every delivered PDF. Written
             in the same voice as the actual reports, with one redacted org
             anchor. */}
@@ -271,14 +271,14 @@ export default function FirstLookSamplePage() {
             Sample · the kind of paragraph that appears on page 4
           </p>
           <h2 className="text-xl sm:text-2xl font-bold text-gray-100 leading-snug">
-            The leading-indicator beat — what surprised us this quarter.
+            The leading-indicator beat, what surprised us this quarter.
           </h2>
           <div className="text-gray-300 text-base leading-relaxed space-y-3 border-l-2 border-violet-700/50 pl-5 italic">
             <p>
               &ldquo;The most counter-intuitive finding in this quarter&rsquo;s
               AI-infra panel sits at rank #{SAMPLE_RANKING[2].rank} ({SAMPLE_RANKING[2].org}).
               Despite a {SAMPLE_RANKING[2].velocity} 14-day velocity acceleration
-              &mdash; one of the highest in the panel &mdash; the org has
+one of the highest in the panel, the org has
               <strong className="text-violet-200"> not yet announced a hiring round</strong>,
               and the contributor influx pattern (
               {SAMPLE_RANKING[2].contribInflux} new contributors in 30 days, all
@@ -289,7 +289,7 @@ export default function FirstLookSamplePage() {
               The decision rule on this one is: <strong className="text-violet-200">write the
               cold email this week</strong>, not when the announcement lands.
               Historical base rates say the announcement follows
-              this signal pattern by 31 days median (21&ndash;47 IQR), and the
+              this signal pattern by 31 days median (21-47 IQR), and the
               cap-table window is widest before the round opens publicly.&rdquo;
             </p>
           </div>
@@ -300,7 +300,7 @@ export default function FirstLookSamplePage() {
           </p>
         </section>
 
-        {/* PAGE MAP — 14 pages, one line per page. Buyers should be able
+        {/* PAGE MAP, 14 pages, one line per page. Buyers should be able
             to read this and decide whether €7 fits before they ever load
             the checkout. */}
         <section
@@ -315,7 +315,7 @@ export default function FirstLookSamplePage() {
               Every page in the delivered PDF, named.
             </h2>
             <p className="text-gray-400 text-sm leading-relaxed">
-              Every First Look ships at 14 pages exactly &mdash; the structure
+              Every First Look ships at 14 pages exactly, the structure
               holds across all 15 sectors. If you don&rsquo;t see at least three
               pages below that you&rsquo;d screenshot into a memo, the bait
               isn&rsquo;t the right shape for you and you should skip the €7.
@@ -347,7 +347,7 @@ export default function FirstLookSamplePage() {
           </ol>
         </section>
 
-        {/* CTA — back to /firstlook with the same Russell rule: every
+        {/* CTA, back to /firstlook with the same Russell rule: every
             preview has a single, clear next action. */}
         <section
           aria-label="What to do next"

@@ -31,7 +31,7 @@ export async function generateMetadata({
 
   return {
     title:
-      "LTV Calculator — Customer Lifetime Value, LTV:CAC Ratio, Standard Bands",
+      "LTV Calculator, Customer Lifetime Value, LTV:CAC Ratio, Standard Bands",
     description:
       "Free SaaS LTV calculator. (ARPC/12) × gross margin × customer lifetime in months. Optional CAC input gives the LTV:CAC ratio with industry-standard bands (>5× exceptional, 3-5× healthy, 2-3× OK, 1-2× suspect, <1× bad). URL-shareable.",
     alternates: { canonical: "/tools/ltv-calculator" },
@@ -46,7 +46,7 @@ export async function generateMetadata({
           url: ogImage,
           width: 1200,
           height: 630,
-          alt: "LTV Calculator — VC Deal Flow Signal",
+          alt: "LTV Calculator, VC Deal Flow Signal",
         },
       ],
     },
@@ -79,7 +79,7 @@ const FAQS: { question: string; answer: string }[] = [
   {
     question: "What is the standard LTV:CAC band?",
     answer:
-      "Industry consensus (SaaStr, ICONIQ, Bessemer): >5× exceptional (likely under-investing in growth), 3-5× healthy (the textbook target), 2-3× OK (typical at growth stage, watch margin/churn), 1-2× suspect (each customer barely profitable), <1× bad (losing money per customer). The 3× number is the most-cited target — it builds in margin for CAC inflation and lengthening payback at scale.",
+      "Industry consensus (SaaStr, ICONIQ, Bessemer): >5× exceptional (likely under-investing in growth), 3-5× healthy (the textbook target), 2-3× OK (typical at growth stage, watch margin/churn), 1-2× suspect (each customer barely profitable), <1× bad (losing money per customer). The 3× number is the most-cited target, it builds in margin for CAC inflation and lengthening payback at scale.",
   },
   {
     question: "Why does churn matter so much?",
@@ -89,17 +89,17 @@ const FAQS: { question: string; answer: string }[] = [
   {
     question: "When does this simple formula break down?",
     answer:
-      "When churn isn't constant. Real cohorts show heavy early churn that flattens out — month-12 retention is much higher than month-1 retention would predict using a flat churn rate. Use this calculator for back-of-envelope; use cohort-by-cohort retention curves (and net dollar retention) for diligence.",
+      "When churn isn't constant. Real cohorts show heavy early churn that flattens out, month-12 retention is much higher than month-1 retention would predict using a flat churn rate. Use this calculator for back-of-envelope; use cohort-by-cohort retention curves (and net dollar retention) for diligence.",
   },
   {
     question: "Why use gross contribution and not revenue?",
     answer:
-      "Revenue is not what pays back CAC — gross profit is. A customer paying $1,000/mo at 40% gross margin contributes $400/mo of gross profit, not $1,000. The cost of revenue (hosting, support, payment processing, licensing) comes out first. LTV with raw revenue overstates by 1/(gross margin), which is significant for low-margin SaaS.",
+      "Revenue is not what pays back CAC, gross profit is. A customer paying $1,000/mo at 40% gross margin contributes $400/mo of gross profit, not $1,000. The cost of revenue (hosting, support, payment processing, licensing) comes out first. LTV with raw revenue overstates by 1/(gross margin), which is significant for low-margin SaaS.",
   },
   {
     question: "Can I share my calculation?",
     answer:
-      "Yes — every input is encoded in the URL. The 'Copy share link' button copies the current URL to your clipboard. Send it to your board, head of growth, or investor and they open the calculator with the same numbers.",
+      "Yes, every input is encoded in the URL. The 'Copy share link' button copies the current URL to your clipboard. Send it to your board, head of growth, or investor and they open the calculator with the same numbers.",
   },
 ];
 
@@ -201,7 +201,7 @@ export default function LtvPage() {
         "@type": "WebPage",
         "@id": PAGE_URL,
         url: PAGE_URL,
-        name: "LTV Calculator — Customer Lifetime Value, LTV:CAC Ratio",
+        name: "LTV Calculator, Customer Lifetime Value, LTV:CAC Ratio",
         description:
           "Free SaaS LTV calculator with LTV:CAC ratio bands and shareable URLs.",
         inLanguage: "en-US",

@@ -1,5 +1,5 @@
 /**
- * Instagram card renderer — shared JSX for all card types.
+ * Instagram card renderer, shared JSX for all card types.
  *
  * Renders 1080×1080 PNG via next/og ImageResponse. The output is square,
  * Instagram-feed sized, anonymity-rule compatible (data-viz only, no
@@ -31,7 +31,7 @@ const PALETTE = {
 } as const;
 
 /**
- * Outer shell — used by every card. Contains the @thedatanerd chip, the
+ * Outer shell, used by every card. Contains the @thedatanerd chip, the
  * card body slot, and a falsifiability footer.
  */
 function Shell({
@@ -59,7 +59,7 @@ function Shell({
         fontFamily: "Inter, system-ui, sans-serif",
       }}
     >
-      {/* Chip — @thedatanerd brand line */}
+      {/* Chip, @thedatanerd brand line */}
       <div
         style={{
           display: "flex",
@@ -107,7 +107,7 @@ function Shell({
         {children}
       </div>
 
-      {/* Footer — brand + falsifiability */}
+      {/* Footer, brand + falsifiability */}
       <div
         style={{
           display: "flex",
@@ -278,7 +278,7 @@ function MethodologyCard({ slug }: { slug: string }): ReactElement {
       title: "Commit-Velocity Acceleration",
       formula: "14d rolling commits ÷ 60d rolling commits, normalized by org size",
       rule: "≥1.3× crossing for 3+ consecutive days = regime change",
-      lead: "21–47 days median ahead of priced round",
+      lead: "21-47 days median ahead of priced round",
     },
     "contributor-influx": {
       n: 2,
@@ -292,7 +292,7 @@ function MethodologyCard({ slug }: { slug: string }): ReactElement {
       title: "Dependent Fan-Out",
       formula: "Distinct downstream repos pinning your version, 30d, log-normalized",
       rule: "3w-over-3w growth ≥40% = ecosystem traction inflection",
-      lead: "Ground truth — harder to fake than stars",
+      lead: "Ground truth, harder to fake than stars",
     },
     "issue-cadence": {
       n: 4,
@@ -305,9 +305,9 @@ function MethodologyCard({ slug }: { slug: string }): ReactElement {
   const def = SIGNAL_DEFS[slug] ?? {
     n: 0,
     title: "Signal",
-    formula: "—",
-    rule: "—",
-    lead: "—",
+    formula: "-",
+    rule: "-",
+    lead: "-",
   };
   return (
     <Shell
@@ -526,8 +526,7 @@ function QuoteCard({
             color: PALETTE.muted,
             marginTop: "16px",
           }}
-        >
-          — Methodology paper · n=219 · peer-reviewed
+        >Methodology paper · n=219 · peer-reviewed
         </div>
       </div>
     </Shell>

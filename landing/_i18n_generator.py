@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-i18n Generator for gitdealflow.com — Spanish (es) and German (de).
+i18n Generator for gitdealflow.com, Spanish (es) and German (de).
 Reads every .html file in the landing dir, produces translated copies under /es/ and /de/
 with proper hreflang, and updates the original English pages with es/de links.
 """
@@ -176,7 +176,7 @@ def update_og_url(html, url):
     return html
 
 def update_twitter_site(html, lang):
-    """Keep twitter:site pointing to @data_nerd (brand, not language-specific)."""
+    """Keep twitter:site pointing to @sipiteno (brand, not language-specific)."""
     return html  # No change needed
 
 def translate_title_desc(html, lang):

@@ -7,7 +7,7 @@ import SeoCta from "@/components/SeoCta";
 export const metadata: Metadata = {
   title: "Founders & Public Engineering Profiles",
   description:
-    "Public engineering profiles of well-known founders, OSS maintainers, and technical executives — restricted to people who self-publish their GitHub handle on their own surface.",
+    "Public engineering profiles of well-known founders, OSS maintainers, and technical executives, restricted to people who self-publish their GitHub handle on their own surface.",
   alternates: { canonical: "/founder" },
   openGraph: {
     title: "Founders & Public Engineering Profiles",
@@ -36,7 +36,7 @@ const jsonLd = {
       url: PAGE_URL,
       name: "Founder & Public Engineering Profiles",
       description:
-        "Index of public-figure-threshold engineering profiles — founders, OSS maintainers, and technical executives who self-publish their GitHub handle on their own surface.",
+        "Index of public-figure-threshold engineering profiles, founders, OSS maintainers, and technical executives who self-publish their GitHub handle on their own surface.",
       isPartOf: {
         "@type": "WebSite",
         name: "VC Deal Flow Signal",
@@ -99,7 +99,7 @@ export default function FounderHubPage() {
           Founder &amp; Public Engineering Profiles
         </h1>
         <p className="text-sky-400 text-base leading-relaxed mb-6 font-medium">
-          {founders.length} self-published public-figure engineering identities — founders, OSS maintainers, technical executives.
+          {founders.length} self-published public-figure engineering identities, founders, OSS maintainers, technical executives.
         </p>
         <p className="text-gray-400 text-base leading-relaxed mb-10">
           Strict inclusion criteria: every profile on this index covers a public figure who self-publishes their GitHub handle on their own company website or primary social profile. No inferred-from-LinkedIn data. No private contact details. Every page carries an opt-out path at{" "}
@@ -111,8 +111,8 @@ export default function FounderHubPage() {
 
         <div className="mb-10 rounded-lg border border-amber-700/30 bg-amber-950/10 p-4 text-sm leading-relaxed text-gray-300">
           Looking for the person behind{" "}
-          <strong className="text-gray-100">The Data Nerd</strong>? That story — the
-          origin, the parables, the audio — lives at{" "}
+          <strong className="text-gray-100">The Data Nerd</strong>? That story, the
+          origin, the parables, the audio, lives at{" "}
           <Link
             href="/about/founder"
             className="text-amber-300 hover:text-amber-200 underline decoration-dotted font-semibold"
@@ -144,9 +144,9 @@ export default function FounderHubPage() {
         </section>
 
         <SeoCta
-          heading="Track engineering acceleration weekly — without reading a line of code"
-          blurb="Five breakout startups every Sunday, ranked by the engineering signal and translated into plain English — 21 to 47 days before the deck circulates. Free, no card."
-          secondary={{ label: "Or test one sector — First Look €7 →", href: "/firstlook?ref=founder-hub" }}
+          heading="Track engineering acceleration weekly, without reading a line of code"
+          blurb="Five breakout startups every Sunday, ranked by the engineering signal and translated into plain English, 21 to 47 days before the deck circulates. Free, no card."
+          secondary={{ label: "Or test one sector, First Look €7 →", href: "/firstlook?ref=founder-hub" }}
         />
       </div>
     </>

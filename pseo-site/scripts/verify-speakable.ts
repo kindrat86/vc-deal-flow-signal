@@ -1,7 +1,7 @@
 #!/usr/bin/env tsx
 /**
  * Verify every `SpeakableSpecification` in the codebase points at a real,
- * rendered element — not just a generic tag fallback.
+ * rendered element, not just a generic tag fallback.
  *
  * WHY THIS EXISTS (AEO regression guard)
  * --------------------------------------
@@ -9,14 +9,14 @@
  * assistants and answer engines read the elements named by a page's
  * `SpeakableSpecification.cssSelector` as the extractable summary of the page.
  * Across this site that contract is implemented with *semantic class*
- * selectors — `.tagline`, `.signal-summary`, `.verdict-block`,
- * `[aria-label='Key takeaway']`, `[data-speakable]`, … — each of which must
+ * selectors, `.tagline`, `.signal-summary`, `.verdict-block`,
+ * `[aria-label='Key takeaway']`, `[data-speakable]`, …, each of which must
  * resolve to an element actually rendered by the template (or a component it
  * composes).
  *
  * The failure mode this guards against is SILENT: if someone renames a
  * className in the JSX (`.signal-summary` → `.entity-summary`) but forgets to
- * update the matching `cssSelector`, the JSON-LD STILL VALIDATES — it just
+ * update the matching `cssSelector`, the JSON-LD STILL VALIDATES, it just
  * degrades to matching only the generic `h1` tag. The page keeps ranking, the
  * schema keeps passing Rich Results, but the speakable answer silently
  * collapses to the bare page title. Nothing in the build catches it today;
@@ -31,14 +31,14 @@
  *      • data-* attributes    (data-speakable, data-agent-summary)
  *  - For each `SpeakableSpecification`, parses its `cssSelector` array and
  *    classifies each token:
- *      • GENERIC  — bare tag selectors (h1, h2, p, article, …). These are a
+ *      • GENERIC , bare tag selectors (h1, h2, p, article, …). These are a
  *        fine *fallback* but do NOT count as a real extractable target.
- *      • SPECIFIC — `.class`, `[data-x]`, `[aria-label='…']`. These are the
+ *      • SPECIFIC, `.class`, `[data-x]`, `[aria-label='…']`. These are the
  *        signal-bearing targets and MUST resolve to a rendered token.
  *  - FAILS the build when a SpeakableSpecification has SPECIFIC selectors of
  *    which NONE resolve (→ it would degrade to tag/h1-only).
  *  - WARNS (non-fatal) when SOME specific selectors resolve but others are
- *    dangling (a likely typo worth fixing) — and when a spec ships with no
+ *    dangling (a likely typo worth fixing), and when a spec ships with no
  *    specific selectors at all (tag-only by construction).
  *
  * Run as part of `postbuild` alongside the pSEO uniqueness/coverage audits.
@@ -210,11 +210,11 @@ function extractSpeakable(file: string, src: string): SpeakableHit[] {
 type Resolution = "generic" | "resolved" | "dangling";
 
 function classifySelector(sel: string): { kind: Resolution; reason: string } {
-  // Generic bare-tag selector (no class/attribute) — fallback only.
+  // Generic bare-tag selector (no class/attribute), fallback only.
   if (/^[a-z][a-z0-9]*$/.test(sel)) {
     return { kind: "generic", reason: "bare tag" };
   }
-  // .class  (possibly compound like ".a .b" — check the last class token)
+  // .class  (possibly compound like ".a .b", check the last class token)
   const classMatches = [...sel.matchAll(/\.([A-Za-z0-9_-]+)/g)].map((m) => m[1]);
   if (classMatches.length) {
     const ok = classMatches.every((c) => classTokens.has(c));
@@ -311,7 +311,7 @@ async function main() {
   );
   if (tagOnly.length) {
     console.log(
-      `[verify-speakable] ${tagOnly.length} tag-only spec(s) (h1/h2 fallback, no extractable target) — fine for static/index/tool pages.`,
+      `[verify-speakable] ${tagOnly.length} tag-only spec(s) (h1/h2 fallback, no extractable target), fine for static/index/tool pages.`,
     );
   }
 
@@ -322,7 +322,7 @@ async function main() {
 
   if (failures.length) {
     console.error(
-      `\n[verify-speakable] FAIL — ${failures.length} SpeakableSpecification block(s) have NO resolvable extractable target (would degrade to tag/h1-only):\n`,
+      `\n[verify-speakable] FAIL, ${failures.length} SpeakableSpecification block(s) have NO resolvable extractable target (would degrade to tag/h1-only):\n`,
     );
     for (const f of failures) {
       console.error(`  ✗ ${f.file}`);
@@ -335,7 +335,7 @@ async function main() {
     process.exit(1);
   }
 
-  console.log("\n[verify-speakable] OK — every speakable spec resolves. ✅");
+  console.log("\n[verify-speakable] OK, every speakable spec resolves. ✅");
 }
 
 main().catch((err) => {

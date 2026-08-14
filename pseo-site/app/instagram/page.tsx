@@ -1,15 +1,15 @@
 /**
- * /instagram — pillar page for the @thedatanerd Instagram channel.
+ * /instagram, pillar page for the @thedatanerd Instagram channel.
  *
  * Russell Brunson Traffic Secrets §2 Ch 7. Anonymity-rule compatible:
  * data-viz cards only, no founder face/voice.
  *
  * Three audiences:
- *   1. Cold visitors who arrived from the IG bio link — they need to know
+ *   1. Cold visitors who arrived from the IG bio link, they need to know
  *      what we are and where to go next.
- *   2. The founder operating the queue — needs to see the next 30 posts
+ *   2. The founder operating the queue, needs to see the next 30 posts
  *      with one-click access to each card and its caption.
- *   3. Agents and crawlers — JSON-LD declares the social handle and the
+ *   3. Agents and crawlers, JSON-LD declares the social handle and the
  *      cadence, so /instagram is discoverable as a distribution surface.
  */
 import type { Metadata } from "next";
@@ -20,7 +20,7 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title:
-    "@thedatanerd on Instagram — daily data-viz cards from the engineering-velocity panel",
+    "@thedatanerd on Instagram, daily data-viz cards from the engineering-velocity panel",
   description:
     "How we run Instagram under an anonymity rule: synthetic data-viz cards, no founder face, no founder voice. Posting cadence, content types, and the live 30-day queue.",
   alternates: { canonical: "/instagram" },
@@ -50,7 +50,7 @@ const POSTING_TYPES = [
     type: "methodology",
     weekday: "Wed",
     title: "Methodology card",
-    body: "One of the six signals. Formula. Decision rule. Lead time. Replicable in 12 lines of Python — the appendix at /book/read/replication-appendix is the proof.",
+    body: "One of the six signals. Formula. Decision rule. Lead time. Replicable in 12 lines of Python, the appendix at /book/read/replication-appendix is the proof.",
   },
   {
     type: "signal-of-the-week",
@@ -62,7 +62,7 @@ const POSTING_TYPES = [
     type: "falsifiable-claim",
     weekday: "Fri",
     title: "Falsifiable claim",
-    body: "On-the-record predictions. Filed at /receipts. If we're wrong, the audit page says so — that's the whole reason this account exists.",
+    body: "On-the-record predictions. Filed at /receipts. If we're wrong, the audit page says so, that's the whole reason this account exists.",
   },
   {
     type: "quote",
@@ -132,16 +132,16 @@ export default function InstagramPillarPage() {
         <p className="leading-relaxed text-slate-300">
           The Data Nerd is a pseudonymous handle, not a person on camera.
           Every Instagram post is a 1080×1080 PNG generated server-side from
-          the live panel data — no Reels with a face, no Stories with a
+          the live panel data, no Reels with a face, no Stories with a
           voice, no Lives. The methodology is the protagonist. The handle
           is the storyteller.
         </p>
       </section>
 
-      {/* Cadence — 7 types × 7 days */}
+      {/* Cadence, 7 types × 7 days */}
       <section className="mb-12">
         <h2 className="text-2xl font-semibold mb-6">
-          Weekly cadence — one card per day
+          Weekly cadence, one card per day
         </h2>
         <div className="grid gap-4">
           {POSTING_TYPES.map((row) => (
@@ -204,7 +204,7 @@ export default function InstagramPillarPage() {
           </li>
           <li>
             <span className="font-mono text-slate-900">cadence</span>: daily
-            (Mon–Sun, 09:00 UTC)
+            (Mon-Sun, 09:00 UTC)
           </li>
           <li>
             <span className="font-mono text-slate-900">format</span>: 1080×1080
@@ -226,11 +226,11 @@ export default function InstagramPillarPage() {
         <h2 className="text-xl font-semibold mb-4">Where to go next</h2>
         <ul className="space-y-2">
           {[
-            { href: "/predicted", label: "Free Acceleration Watch — 5 names every Monday" },
-            { href: "/methodology", label: "Open methodology — replicate it yourself" },
-            { href: "/receipts", label: "Receipts — every claim graded in public" },
-            { href: "/distribution", label: "Full distribution map — every channel we publish to" },
-            { href: "/manifesto", label: "Manifesto — six pillars" },
+            { href: "/predicted", label: "Free Acceleration Watch, 5 names every Monday" },
+            { href: "/methodology", label: "Open methodology, replicate it yourself" },
+            { href: "/receipts", label: "Receipts, every claim graded in public" },
+            { href: "/distribution", label: "Full distribution map, every channel we publish to" },
+            { href: "/manifesto", label: "Manifesto, six pillars" },
           ].map((row) => (
             <li key={row.href}>
               <Link

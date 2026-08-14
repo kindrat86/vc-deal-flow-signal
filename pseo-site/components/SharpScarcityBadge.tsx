@@ -56,7 +56,7 @@ export default function SharpScarcityBadge({
             }`}
           />
         </span>
-        Sharp Tier 2026 — {SHARP_2026_TAKEN}/{SHARP_2026_CAP} spots taken,{" "}
+        Sharp Tier 2026, {SHARP_2026_TAKEN}/{SHARP_2026_CAP} spots taken,{" "}
         {SHARP_2026_REMAINING} open
       </span>
     );
@@ -111,7 +111,7 @@ export default function SharpScarcityBadge({
       </span>
       <p className="text-gray-200 text-sm">
         <strong className={toneClasses.text}>
-          Sharp Tier 2026 — {SHARP_2026_TAKEN} of {SHARP_2026_CAP} fund spots
+          Sharp Tier 2026, {SHARP_2026_TAKEN} of {SHARP_2026_CAP} fund spots
           taken
         </strong>
         <span className="text-gray-400">

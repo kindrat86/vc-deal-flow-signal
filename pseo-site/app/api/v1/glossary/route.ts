@@ -1,7 +1,7 @@
 /**
- * /api/v1/glossary — extension-stripped alias for /api/v1/glossary.json.
+ * /api/v1/glossary, extension-stripped alias for /api/v1/glossary.json.
  *
- * NOT force-static — see feedback_no_force_static_on_alias_via_import.md.
+ * NOT force-static, see feedback_no_force_static_on_alias_via_import.md.
  */
 import { GET as Upstream } from "@/app/api/v1/glossary.json/route";
 

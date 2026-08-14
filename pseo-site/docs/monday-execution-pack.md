@@ -1,4 +1,4 @@
-# GitDealFlow — Monday execution pack
+# GitDealFlow, Monday execution pack
 
 Purpose: tell you exactly what to do first when the week starts, without rethinking the system from scratch.
 
@@ -12,11 +12,11 @@ Owner: Sipi
 Do three things in this order:
 1. measure what moved
 2. decide which page deserves pressure this week
-3. execute the first 1–3 touches with the right page, not the homepage
+3. execute the first 1-3 touches with the right page, not the homepage
 
 ## Monday order of operations
 
-### Block 1 — measurement first
+### Block 1, measurement first
 Open these files first:
 - `docs/seo-command-center.md`
 - `docs/gsc-measurement-template.csv`
@@ -43,7 +43,7 @@ Metrics to fill:
 
 After measurement, choose one of these three modes:
 
-### Mode A — authority mode
+### Mode A, authority mode
 Choose this if:
 - /research gained traction
 - proof/rigor questions increased
@@ -56,7 +56,7 @@ Support pages:
 - /methodology
 - /from-stars-to-seed
 
-### Mode B — commercial mode
+### Mode B, commercial mode
 Choose this if:
 - compare/answers pages are getting impressions but weak clicks
 - people ask how GitDealFlow differs from Crunchbase or PitchBook
@@ -69,7 +69,7 @@ Support pages:
 - /answers/deal-flow-timing-vs-verification
 - /buyers-guide
 
-### Mode C — freshness mode
+### Mode C, freshness mode
 Choose this if:
 - /weekly/top-100 gets the most real interest
 - social/distribution contexts are asking “what’s moving now?”

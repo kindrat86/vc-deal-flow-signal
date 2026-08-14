@@ -3,15 +3,15 @@ import * as path from "node:path";
 
 const nextConfig: NextConfig = {
   // Pin turbopack root to this package so worktree builds (and any nested
-  // checkout layout) don't drift to a parent lockfile. Harmless on Vercel —
+  // checkout layout) don't drift to a parent lockfile. Harmless on Vercel -
   // the production root resolves to the same directory.
   turbopack: {
     root: path.resolve(__dirname),
   },
   async rewrites() {
-    // Extension-stripped aliases for /api/v1/* — generic agents that infer
+    // Extension-stripped aliases for /api/v1/*, generic agents that infer
     // REST conventions and strip ".json" from URLs hit 404 without these.
-    // Each alias is a routing-layer rewrite (NOT alias-via-import — that
+    // Each alias is a routing-layer rewrite (NOT alias-via-import, that
     // pattern silently breaks under force-static; see Pass VIII memo).
     const v1Aliases = [
       { from: "/api/v1/signals", to: "/api/v1/signals.json" },
@@ -26,17 +26,17 @@ const nextConfig: NextConfig = {
       { from: "/api/v1/uptime", to: "/api/v1/uptime.json" },
       { from: "/api/v1/citations", to: "/api/v1/citations.json" },
       { from: "/api/v1/dataset", to: "/api/v1/dataset.jsonl" },
-      // Charter Cohort 2026 — Brunson Expert Secrets §1 Ch 4 (Mass
+      // Charter Cohort 2026, Brunson Expert Secrets §1 Ch 4 (Mass
       // Movement Vehicle) + DCS Ch 13 (Best Bait, agent-side). Mirrors
       // /members hub as JSON for crawlers, agents, and MCP hosts.
       { from: "/api/v1/members", to: "/api/v1/members.json" },
-      // Platform-native opener variants — Brunson Traffic Secrets §1
+      // Platform-native opener variants, Brunson Traffic Secrets §1
       // Ch 3 (Hook, Story, Offer × Hidden Campaign). Twelve openers
       // resolving the universal product story per platform. Backs the
       // /distribution/platform-hooks HTML surface and is consumed by
       // the daily-briefing pipeline + agent retrieval.
       { from: "/api/v1/platform-hooks", to: "/api/v1/platform-hooks.json" },
-      // Playbooks — operator how-tos shipped 2026-05-22. Same shape as
+      // Playbooks, operator how-tos shipped 2026-05-22. Same shape as
       // /api/v1/answers; mirrors content/playbooks.ts into a JSON corpus
       // for RAG ingestion alongside the answers corpus.
       { from: "/api/v1/playbooks", to: "/api/v1/playbooks.json" },
@@ -76,7 +76,7 @@ const nextConfig: NextConfig = {
       {
         // Legacy pSEO generator once shadowed the real /alternatives/[slug]
         // pages with a bare-slug static file at /vs/tracxn (removed
-        // 2026-07-20 — see predeploy audit). Redirect the old inbound
+        // 2026-07-20, see predeploy audit). Redirect the old inbound
         // links/backlinks to the real page instead of 404ing.
         source: "/vs/tracxn",
         destination: "/alternatives/tracxn",
@@ -195,7 +195,7 @@ const nextConfig: NextConfig = {
       },
       {
         // /free was a soft-404: the homepage CTA "Get the Sunday issue"
-        // linked here, but no route file existed — Next.js served the 404
+        // linked here, but no route file existed, Next.js served the 404
         // page body with a 200 status + self-canonical, creating a
         // duplicate of the homepage title (audit C5) and an indexable
         // soft-404 (audit T6). Redirect to the actual free weekly issue.
@@ -259,7 +259,7 @@ const nextConfig: NextConfig = {
               // Added 2026-07-25 (portfolio audit): this was the only site in the
               // portfolio missing both. object-src blocks <object>/<embed> plugin
               // vectors the other directives do not cover, and base-uri stops an
-              // injected <base> tag re-pointing every relative URL on the page —
+              // injected <base> tag re-pointing every relative URL on the page -
               // which would defeat the script-src allowlist above by making
               // "self"-relative script paths resolve to an attacker host.
               "object-src 'none'",
@@ -278,7 +278,7 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-      // Ticker embed — allow framing from any origin (embeddable widget)
+      // Ticker embed, allow framing from any origin (embeddable widget)
       // Must come AFTER the global /(.*) rule so it overrides frame-ancestors.
       {
         source: "/ticker/embed",
@@ -310,7 +310,7 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-      // Auth-gated subtrees must never hit a shared CDN node — override SWR
+      // Auth-gated subtrees must never hit a shared CDN node, override SWR
       // with private no-store. Each prefix needs an exact + wildcard match.
       { source: "/account", headers: [{ key: "Cache-Control", value: "private, no-cache, no-store, max-age=0, must-revalidate" }] },
       { source: "/account/:path*", headers: [{ key: "Cache-Control", value: "private, no-cache, no-store, max-age=0, must-revalidate" }] },
@@ -330,10 +330,10 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-      // Iframe-friendly embed surfaces — re-open framing for the public
+      // Iframe-friendly embed surfaces, re-open framing for the public
       // embed widgets so newsletter authors / blog writers can drop them
       // into Substack, Ghost, WordPress, etc. The route handlers also set
-      // ── Embed widget farm — catch-all for all /embed/* paths ──
+      // ── Embed widget farm, catch-all for all /embed/* paths ──
       // Covers: portfolio-network, 7 calculators, define glossary, and
       // any future embeddable widgets. After the global catch-all so
       // later-wins header merging applies frame-ancestors * correctly.
@@ -417,7 +417,7 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-      // Glossary definition embeds — paste-able iframe card for any of
+      // Glossary definition embeds, paste-able iframe card for any of
       // the 84 /define/<term> entries. Tech blogs (Substack, Ghost,
       // WordPress, Notion handbooks) that mention a VC term drop a
       // single <iframe src="https://signals.gitdealflow.com/embed/define/<term>">
@@ -448,7 +448,7 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-      // Calculator embed widgets — same iframe-friendly contract as the
+      // Calculator embed widgets, same iframe-friendly contract as the
       // mini-leaderboard. Operator newsletters (Lenny's, FirstRound,
       // Sacra), founder blogs, and incubator portals drop a single
       // <iframe src="https://signals.gitdealflow.com/embed/tools/<slug>">
@@ -480,7 +480,7 @@ const nextConfig: NextConfig = {
           },
         ],
       },
-      // /embed.js — small loader that creates the iframe + listens for
+      // /embed.js, small loader that creates the iframe + listens for
       // the postMessage height handshake from <EmbedAutoHeight/>. Served
       // from the same origin so it can be `<script src=>`'d cross-origin
       // by embedder sites (Substack, Ghost, WordPress, Notion). The

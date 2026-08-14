@@ -1,4 +1,4 @@
-# GitDealFlow / VC Deal Flow Signal — Agent Reference
+# GitDealFlow / VC Deal Flow Signal, Agent Reference
 
 > Public dataset of startup engineering acceleration, derived from public GitHub activity. Free machine-readable APIs, MCP server, A2A endpoint, and Chrome extension. Updated weekly.
 
@@ -6,7 +6,7 @@ This file is the canonical "how to use me" entry point for coding agents (Codex,
 
 ## What this product does
 
-Tracks commit velocity, contributor growth, and repository expansion across ~400 startup GitHub orgs in 20 sectors. Surfaces breakout engineering teams 3–6 weeks before fundraise announcements. Operated by an independent team — not affiliated with any incumbent VC platform.
+Tracks commit velocity, contributor growth, and repository expansion across 369 startup GitHub orgs in 15 sectors. Surfaces breakout engineering teams 3-6 weeks before fundraise announcements. Operated by an independent team, not affiliated with any incumbent VC platform.
 
 ## Programmatic surfaces
 
@@ -39,12 +39,12 @@ curl -X POST https://signals.gitdealflow.com/api/nlweb \
 
 Six tools, all read-only, idempotent, no parameter validation needed beyond what's in the input schema:
 
-1. `get_trending_startups` — top 20 across all sectors
-2. `search_startups_by_sector(sector)` — sector slug ∈ 20 enumerated values
-3. `get_startup_signal(name)` — case-insensitive, normalization-tolerant
-4. `get_signals_summary` — period, freshness, format URLs
-5. `get_scout_receipts(github_username)` — compute Scout Score (0–100) for a GitHub user from their starring history vs. ~75 validated unicorns
-6. `get_methodology` — full methodology text + canonical URL
+1. `get_trending_startups`, top 20 across all sectors
+2. `search_startups_by_sector(sector)`, sector slug ∈ 20 enumerated values
+3. `get_startup_signal(name)`, case-insensitive, normalization-tolerant
+4. `get_signals_summary`, period, freshness, format URLs
+5. `get_scout_receipts(github_username)`, compute Scout Score (0-100) for a GitHub user from their starring history vs. ~75 validated unicorns
+6. `get_methodology`, full methodology text + canonical URL
 
 Distribution:
 - npm: https://www.npmjs.com/package/@gitdealflow/mcp-signal
@@ -61,7 +61,7 @@ Live AgentCard at `https://signals.gitdealflow.com/.well-known/agent-card.json` 
 | Path | What lives here |
 |---|---|
 | `mcp-server/` | TypeScript source for `@gitdealflow/mcp-signal`. Single file at `src/server.ts`. Build: `npm run build`. |
-| `pseo-site/` | Next.js App Router site at signals.gitdealflow.com. **Read `pseo-site/AGENTS.md` before editing — it's a Next.js 16 project with breaking changes.** |
+| `pseo-site/` | Next.js App Router site at signals.gitdealflow.com. **Read `pseo-site/AGENTS.md` before editing, it's a Next.js 16 project with breaking changes.** |
 | `pseo-site/app/api/a2a/route.ts` | A2A JSON-RPC 2.0 stub endpoint. |
 | `pseo-site/public/.well-known/` | `agent-card.json`, `ai-plugin.json`, `mcp.json`, `agents.md`. |
 | `landing/` | Static marketing site at gitdealflow.com (vanilla HTML/CSS, deployed as `vc-deal-flow-signal-landing` on Vercel). |
@@ -70,9 +70,9 @@ Live AgentCard at `https://signals.gitdealflow.com/.well-known/agent-card.json` 
 
 ## Working in this repo
 
-- Two Vercel projects: `vc-deal-flow-signal` (pSEO site, signals.gitdealflow.com) and `vc-deal-flow-signal-landing` (apex). Neither is git-linked — deploy via CLI: `vercel build --prod && vercel deploy --prebuilt --prod --yes`.
+- Two Vercel projects: `vc-deal-flow-signal` (pSEO site, signals.gitdealflow.com) and `vc-deal-flow-signal-landing` (apex). Neither is git-linked, deploy via CLI: `vercel build --prod && vercel deploy --prebuilt --prod --yes`.
 - pSEO project rejects non-team commit authors. Use the project owner's git identity.
-- The 5 MCP tools are free in perpetuity — never gate them. Add new paid tools on top instead.
+- The 5 MCP tools are free in perpetuity, never gate them. Add new paid tools on top instead.
 
 ## Anonymity policy
 
@@ -90,4 +90,4 @@ A formal preprint is available at SSRN: https://papers.ssrn.com/sol3/papers.cfm?
 
 - Email: signals@gitdealflow.com
 - Telegram: https://t.me/gitdealflow
-- Twitter/X: https://x.com/data_nerd
+- Twitter/X: https://x.com/sipiteno

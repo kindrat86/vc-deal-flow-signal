@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Startup Runway Calculator — Months of Cash Left & Funding Deadline | GitDealFlow</title>
+<title>Startup Runway Calculator: Months of Cash Left & Funding Deadline | GitDealFlow</title>
     <link rel="alternate" hreflang="en" href="https://gitdealflow.com/tools/runway-calculator">
     <link rel="alternate" hreflang="es" href="https://gitdealflow.com/es/tools/runway-calculator">
     <link rel="alternate" hreflang="de" href="https://gitdealflow.com/de/tools/runway-calculator">
@@ -18,7 +18,7 @@
 <meta name="apple-mobile-web-app-title" content="GitDealFlow">
 <meta property="og:type" content="website" />
 <meta property="og:site_name" content="GitDealFlow" />
-<meta property="og:title" content="Startup Runway Calculator — Months of Cash Left" />
+<meta property="og:title" content="Startup Runway Calculator, Months of Cash Left" />
 <meta property="og:description" content="Calculate startup runway from cash on hand and monthly burn. Free instant result with funding deadline date." />
 <meta property="og:url" content="https://gitdealflow.com/tools/runway-calculator.html" />
 <meta name="twitter:card" content="summary_large_image" />
@@ -83,7 +83,7 @@
   .back-link:hover { color:var(--accent); }
   @media (max-width:600px) { .form-row { grid-template-columns:1fr; } }
 </style>
-<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://gitdealflow.com/"}, {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://gitdealflow.com/tools"}, {"@type": "ListItem", "position": 3, "name": "Startup Runway Calculator — Months of Cash Left & Funding Deadline", "item": "https://gitdealflow.com/tools/runway-calculator"}]}</script>
+<script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://gitdealflow.com/"}, {"@type": "ListItem", "position": 2, "name": "Tools", "item": "https://gitdealflow.com/tools"}, {"@type": "ListItem", "position": 3, "name": "Startup Runway Calculator, Months of Cash Left & Funding Deadline", "item": "https://gitdealflow.com/tools/runway-calculator"}]}</script>
 </head>
 <body>
 <div class="container">
@@ -117,15 +117,15 @@
   <div id="results" class="results">
     <div id="urgencyBanner" class="urgency-banner">
       <div class="label">Months of Runway</div>
-      <div class="runway-months" id="runwayMonths">—</div>
-      <div class="verdict" id="verdict">—</div>
+      <div class="runway-months" id="runwayMonths"></div>
+      <div class="verdict" id="verdict"></div>
     </div>
     <div class="card">
       <div class="stat-grid">
-        <div class="stat"><div class="label">Cash Out Date</div><div class="value" id="cashOutDate">—</div></div>
-        <div class="stat"><div class="label">Start Fundraising By</div><div class="value" id="raiseByDate">—</div></div>
-        <div class="stat"><div class="label">Total Burn</div><div class="value" id="burnDisplay">—</div></div>
-        <div class="stat"><div class="label">Gross Margin</div><div class="value" id="margin">—</div></div>
+        <div class="stat"><div class="label">Cash Out Date</div><div class="value" id="cashOutDate"></div></div>
+        <div class="stat"><div class="label">Start Fundraising By</div><div class="value" id="raiseByDate"></div></div>
+        <div class="stat"><div class="label">Total Burn</div><div class="value" id="burnDisplay"></div></div>
+        <div class="stat"><div class="label">Gross Margin</div><div class="value" id="margin"></div></div>
       </div>
       <div class="timeline">
         <h4 style="margin-bottom:4px;">Runway Timeline</h4>
@@ -151,16 +151,16 @@
     </details>
     <details>
       <summary>When should I start fundraising?</summary>
-      <p>Raise when you have 9–12 months of runway left. A typical seed/Series A round takes 3–6 months from first pitch to wired cash, and investors get nervous when founders are visibly desperate. Starting at 12 months gives you leverage to walk away from bad terms.</p>
+      <p>Raise when you have 9-12 months of runway left. A typical seed/Series A round takes 3-6 months from first pitch to wired cash, and investors get nervous when founders are visibly desperate. Starting at 12 months gives you leverage to walk away from bad terms.</p>
     </details>
     <details>
       <summary>What's a "good" runway?</summary>
-      <p>Post-fund-raise, VCs expect 18–24 months of runway — enough to hit the milestones that justify the next round. Below 12 months is a yellow flag. Below 6 months is a crisis: you have weeks to close or cut burn hard.</p>
+      <p>Post-fund-raise, VCs expect 18-24 months of runway, enough to hit the milestones that justify the next round. Below 12 months is a yellow flag. Below 6 months is a crisis: you have weeks to close or cut burn hard.</p>
     </details>
   </div>
 
   <div class="footer">
-    <p>Powered by <a href="https://gitdealflow.com/">GitDealFlow</a> — see which startups are accelerating on GitHub 21–47 days before the round.</p>
+    <p>Powered by <a href="https://gitdealflow.com/">GitDealFlow</a>: see which startups are accelerating on GitHub 21-47 days before the round.</p>
   </div>
 </div>
 
@@ -216,7 +216,7 @@
 
 <script>
 function fmtMoney(n) {
-  if (!isFinite(n)) return "—";
+  if (!isFinite(n)) return "-";
   const abs = Math.abs(n);
   if (abs >= 1e6) return "$" + (n/1e6).toFixed(2) + "M";
   if (abs >= 1e3) return "$" + (n/1e3).toFixed(1) + "k";
@@ -247,10 +247,10 @@ function calculate() {
 
   // Urgency tier
   let tier = "green", verdict = "";
-  if (months >= 18) { tier = "green"; verdict = "Healthy — you have room to execute."; }
+  if (months >= 18) { tier = "green"; verdict = "Healthy, you have room to execute."; }
   else if (months >= 12) { tier = "green"; verdict = "Solid, but start your next raise now."; }
-  else if (months >= 6) { tier = "yellow"; verdict = "Yellow zone — fundraising is your top priority."; }
-  else { tier = "red"; verdict = "Critical — cut burn and raise immediately."; }
+  else if (months >= 6) { tier = "yellow"; verdict = "Yellow zone, fundraising is your top priority."; }
+  else { tier = "red"; verdict = "Critical, cut burn and raise immediately."; }
 
   document.getElementById("runwayMonths").textContent = months.toFixed(1);
   document.getElementById("urgencyBanner").className = "urgency-banner " + tier;
@@ -277,20 +277,20 @@ function calculate() {
     recs.push("You have a healthy cushion. Focus 90% on growth, 10% on investor updates.");
     recs.push("Start soft fundraising conversations at the 14-month mark to maintain leverage.");
   } else if (months >= 12) {
-    recs.push("Begin your raise now — a typical round takes 3–6 months to close.");
+    recs.push("Begin your raise now, a typical round takes 3-6 months to close.");
     recs.push("Prepare your data room, update your deck, and warm up your top 20 investors.");
   } else if (months >= 6) {
     recs.push("Fundraising is now your full-time job. Founder must own it personally.");
-    recs.push("Cut all non-essential spend. Extend runway by 2–3 months as insurance.");
+    recs.push("Cut all non-essential spend. Extend runway by 2-3 months as insurance.");
     recs.push("If you have MRR growth, lead with that metric to deflect the burn question.");
   } else {
     recs.push("Emergency mode: cut burn to the bone today. Salary cuts, deferred payments, halt hiring.");
-    recs.push("Pursue a bridge or extension round — even $250k buys 2–3 months.");
+    recs.push("Pursue a bridge or extension round, even $250k buys 2-3 months.");
     recs.push("If no path to cash in 60 days, plan an orderly wind-down or acquisition.");
   }
   if (mrr > 0) {
     const breakEvenBurn = burn - mrr;
-    if (breakEvenBurn <= 0) recs.push("Your MRR already covers net burn — you're effectively profitable. Reinvest the surplus.");
+    if (breakEvenBurn <= 0) recs.push("Your MRR already covers net burn, you're effectively profitable. Reinvest the surplus.");
     else {
       const monthsToBreakEven = Math.ceil(cash / Math.max(1, breakEvenBurn * 0.7));
       recs.push("If MRR grows 30%/mo, you reach break-even in roughly " + monthsToBreakEven + " months.");

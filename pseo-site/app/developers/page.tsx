@@ -6,7 +6,7 @@ import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 export const metadata: Metadata = {
-  title: "Developers — Deal Flow API, MCP Server, JSON & CSV Endpoints",
+  title: "Developers, Deal Flow API, MCP Server, JSON & CSV Endpoints",
   description:
     "Developer docs for GitDealFlow: MCP server, JSON/CSV API, OpenAPI, agent-ready startup-signal workflows, and routing into proof and buyer-side evaluation.",
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
@@ -23,7 +23,7 @@ export default function DevelopersPage() {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/developers#webpage",
         url: "https://signals.gitdealflow.com/developers",
-        name: "Developers — VC Deal Flow Signal API & MCP",
+        name: "Developers, VC Deal Flow Signal API & MCP",
         description:
           "MCP server, JSON/CSV API, and OpenAPI schema for building deal flow automation on top of engineering acceleration signals.",
         inLanguage: "en-US",
@@ -99,7 +99,7 @@ export default function DevelopersPage() {
             name: "How do I access the VC Deal Flow Signal API?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "The basic JSON endpoints are publicly accessible at signals.gitdealflow.com — for example signals.json returns the current weekly ranked signals, weekly returns a summary, and methodology returns the data dictionary. No authentication is required for the basic tier. For higher-volume commercial access, the Insider Circle tier (EUR 197/month) provides elevated rate limits and webhook delivery.",
+              text: "The basic JSON endpoints are publicly accessible at signals.gitdealflow.com, for example signals.json returns the current weekly ranked signals, weekly returns a summary, and methodology returns the data dictionary. No authentication is required for the basic tier. For higher-volume commercial access, the Insider Circle tier (EUR 197/month) provides elevated rate limits and webhook delivery.",
             },
           },
           {
@@ -155,7 +155,7 @@ export default function DevelopersPage() {
             name: "Is there an A2A endpoint for agent-to-agent communication?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Yes. An Agent Card is published at /.well-known/agent-card.json and the JSON-RPC stub endpoint is /api/a2a. Worked examples are provided for Claude Code, Cursor, OpenAI Agents SDK, LangChain, and Vercel AI SDK at /a2a/<framework>. The A2A surface is intentionally thin and stable — see /a2a for the full specification.",
+              text: "Yes. An Agent Card is published at /.well-known/agent-card.json and the JSON-RPC stub endpoint is /api/a2a. Worked examples are provided for Claude Code, Cursor, OpenAI Agents SDK, LangChain, and Vercel AI SDK at /a2a/<framework>. The A2A surface is intentionally thin and stable, see /a2a for the full specification.",
             },
           },
           {
@@ -163,7 +163,7 @@ export default function DevelopersPage() {
             name: "Is there per-request pricing for agents?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Yes. The new get_deep_signal MCP tool and the POST /api/agent/deep-signal HTTP endpoint are priced per-request: €0.19 per call, sold in 100-credit packs at €19. One credit is consumed per match; misses (startup not in our universe) are free. Credits never expire. The six free MCP tools stay free forever — credits only apply to get_deep_signal. Buy at signals.gitdealflow.com/agents/credits.",
+              text: "Yes. The new get_deep_signal MCP tool and the POST /api/agent/deep-signal HTTP endpoint are priced per-request: €0.19 per call, sold in 100-credit packs at €19. One credit is consumed per match; misses (startup not in our universe) are free. Credits never expire. The six free MCP tools stay free forever, credits only apply to get_deep_signal. Buy at signals.gitdealflow.com/agents/credits.",
             },
           },
         ],
@@ -298,7 +298,7 @@ export default function DevelopersPage() {
             <p className="text-gray-500 text-xs mt-4">
               Six read tools, free forever. The paid{" "}
               <code className="text-emerald-400 font-mono">get_deep_signal</code>{" "}
-              tool (scored, memo-grade output) is separate — see{" "}
+              tool (scored, memo-grade output) is separate, see{" "}
               <Link href="/agents/credits" className="text-sky-400 hover:text-sky-300">
                 agent credits
               </Link>{" "}
@@ -366,7 +366,7 @@ export default function DevelopersPage() {
                     <code className="text-emerald-400 font-mono text-xs">/api/openapi.json</code>
                   </td>
                   <td className="px-4 py-3 text-gray-400">OpenAPI 3.1</td>
-                  <td className="px-4 py-3 text-gray-400">OpenAPI schema — generate typed clients in any language.</td>
+                  <td className="px-4 py-3 text-gray-400">OpenAPI schema, generate typed clients in any language.</td>
                 </tr>
                 <tr className="border-b border-slate-800/60">
                   <td className="px-4 py-3">
@@ -410,7 +410,7 @@ export default function DevelopersPage() {
           <p className="text-gray-400 text-sm leading-relaxed mb-4">
             The free MCP tools and REST endpoints listed above stay free
             forever. For agents that need scored, ranked, comparable-aware
-            output — memo-grade signal — the new{" "}
+            output, memo-grade signal, the new{" "}
             <code className="text-emerald-400 font-mono">get_deep_signal</code>{" "}
             tool is priced per-request.
           </p>
@@ -464,7 +464,7 @@ export default function DevelopersPage() {
                   signals.gitdealflow.com
                 </Link>
                 . Redistribution as a competing product or reselling the raw
-                dataset requires written permission — contact
+                dataset requires written permission, contact
                 signals@gitdealflow.com.
               </p>
             </div>

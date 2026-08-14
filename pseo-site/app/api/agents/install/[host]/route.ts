@@ -148,7 +148,7 @@ const SPECS: Record<string, InstallSpec> = {
     displayName: "LangChain (Python / TS)",
     fileContents: `${SITE}/agents/langchain-hub-prompt.json`,
     instructions:
-      "Two paths: (1) MCP — wrap the GitDealFlow MCP server with `langchain_mcp_adapters.MultiServerMCPClient`. (2) HTTP — use the public prompt template at `gitdealflow/vc-startup-scout` on LangChain Hub (once published) which composes our REST endpoints.",
+      "Two paths: (1) MCP, wrap the GitDealFlow MCP server with `langchain_mcp_adapters.MultiServerMCPClient`. (2) HTTP, use the public prompt template at `gitdealflow/vc-startup-scout` on LangChain Hub (once published) which composes our REST endpoints.",
     alternatives: ["llamaindex", "openai-agents-sdk"],
   },
   llamaindex: {

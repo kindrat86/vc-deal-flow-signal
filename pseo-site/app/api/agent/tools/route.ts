@@ -75,7 +75,7 @@ const TOOL_DEFINITIONS = [
   {
     name: "get_diligence_dossier",
     description:
-      "Public-source diligence dossier for a company or entity, in one cited object: who acquired it (M&A history), which funds publicly backed it, and its published engineering-acceleration signal. Use mid-diligence for 'who acquired X', 'which funds backed Y', 'what's the signal on Z'. Sources are press-release / SEC-filing / both-sides-disclosed only; returns `found: false` (not an error) with honest notes when the entity is outside the tracked corpus — never guesses. Case-insensitive, normalization-tolerant.",
+      "Public-source diligence dossier for a company or entity, in one cited object: who acquired it (M&A history), which funds publicly backed it, and its published engineering-acceleration signal. Use mid-diligence for 'who acquired X', 'which funds backed Y', 'what's the signal on Z'. Sources are press-release / SEC-filing / both-sides-disclosed only; returns `found: false` (not an error) with honest notes when the entity is outside the tracked corpus, never guesses. Case-insensitive, normalization-tolerant.",
     parameters: {
       type: "object" as const,
       properties: {
@@ -94,7 +94,7 @@ const TOOL_DEFINITIONS = [
   {
     name: "get_signals_summary",
     description:
-      "High-level dataset snapshot: current period, sector and startup counts, last refresh timestamp, citation, and direct URLs to every machine-readable format. Cheap — call once per session to orient.",
+      "High-level dataset snapshot: current period, sector and startup counts, last refresh timestamp, citation, and direct URLs to every machine-readable format. Cheap, call once per session to orient.",
     parameters: {
       type: "object" as const,
       properties: {} as Record<string, unknown>,
@@ -135,7 +135,7 @@ const TOOL_DEFINITIONS = [
   {
     name: "get_deep_signal",
     description:
-      "PAID per-request tool — €0.19/call, 100 credits = €19, sold at https://signals.gitdealflow.com/agents/credits. Returns a deeply enriched signal profile beyond the free get_startup_signal: composite score (0-100), velocity/growth/novelty sub-scores, in-sector rank + percentile, plain-English investment thesis, top-3 sector comparables, and multi-period history. Requires Authorization: Bearer gdf_v2.cus_xxx.<hmac> on the call (set GITDEALFLOW_API_KEY env var). 1 credit consumed only on a successful match; misses (startup not in our universe) are FREE. Credits never expire. The 6 free tools above stay free forever — credits only apply to this tool.",
+      "PAID per-request tool, €0.19/call, 100 credits = €19, sold at https://signals.gitdealflow.com/agents/credits. Returns a deeply enriched signal profile beyond the free get_startup_signal: composite score (0-100), velocity/growth/novelty sub-scores, in-sector rank + percentile, plain-English investment thesis, top-3 sector comparables, and multi-period history. Requires Authorization: Bearer gdf_v2.cus_xxx.<hmac> on the call (set GITDEALFLOW_API_KEY env var). 1 credit consumed only on a successful match; misses (startup not in our universe) are FREE. Credits never expire. The 6 free tools above stay free forever, credits only apply to this tool.",
     parameters: {
       type: "object" as const,
       properties: {

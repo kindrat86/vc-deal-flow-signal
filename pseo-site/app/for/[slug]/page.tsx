@@ -12,7 +12,7 @@ import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 /**
  * Higher-intent buyer personas who evaluate companies for a living and have
- * budget — they get an ascension next step (paid Dashboard + Insider) beside
+ * budget, they get an ascension next step (paid Dashboard + Insider) beside
  * the free digest / First Look, not just the top-of-funnel options. Founders,
  * researchers, and journalists keep their own non-sales CTA and are excluded.
  */
@@ -229,7 +229,7 @@ export default async function PersonaPage({ params }: PageProps) {
             </h2>
             <p className="text-gray-400 text-sm leading-relaxed mb-5">
               Start free on Sunday. Move up only when the timing edge is paying
-              for itself — most {persona.shortName} land on the weekly seat, a
+              for itself, most {persona.shortName} land on the weekly seat, a
               few who run a full pipeline take the room.
             </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -261,7 +261,7 @@ export default async function PersonaPage({ params }: PageProps) {
                 </h3>
                 <p className="text-gray-300 text-xs leading-relaxed">
                   The live board, refreshed weekly, filtered to your sectors.
-                  See which teams are suddenly shipping far more than usual —
+                  See which teams are suddenly shipping far more than usual -
                   weeks before the round is on anyone&rsquo;s desk.
                 </p>
               </Link>
@@ -278,7 +278,7 @@ export default async function PersonaPage({ params }: PageProps) {
                 <p className="text-gray-300 text-xs leading-relaxed">
                   Everything in the Dashboard, plus the private room where the
                   earliest movers get the names first and the reasoning behind
-                  each one — written so you can repeat it in the meeting.
+                  each one, written so you can repeat it in the meeting.
                 </p>
               </Link>
               <Link
@@ -346,7 +346,7 @@ export default async function PersonaPage({ params }: PageProps) {
 
         <div className="rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">
           <h2 className="text-gray-100 font-semibold text-lg mb-2">
-            {persona.shortName} — get started
+            {persona.shortName}, get started
           </h2>
           <p className="text-gray-400 text-sm mb-4">
             The fastest path is the weekly digest. Filter by your specific sectors during

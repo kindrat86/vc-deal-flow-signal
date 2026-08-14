@@ -1,7 +1,7 @@
 const BASE_URL = "https://signals.gitdealflow.com";
 
 export async function GET() {
-  const body = `# AI Access Policy — VC Deal Flow Signal
+  const body = `# AI Access Policy, VC Deal Flow Signal
 # https://signals.gitdealflow.com
 # Spec: ai.txt (analogous to robots.txt for AI agents and answer engines)
 # Last reviewed: ${new Date().toISOString().slice(0, 10)}
@@ -173,7 +173,7 @@ AI-Policy-JSON: ${BASE_URL}/.well-known/ai-policy.json
 # when summarizing content from this site.
 
 # ───────────────────────────────────────────────────────────
-# Data licensing — CC BY 4.0
+# Data licensing, CC BY 4.0
 # ───────────────────────────────────────────────────────────
 # License: https://creativecommons.org/licenses/by/4.0/
 # Free for personal, editorial, AI training, and AI answer use with attribution.

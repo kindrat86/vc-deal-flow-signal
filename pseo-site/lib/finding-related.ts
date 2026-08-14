@@ -8,7 +8,7 @@
  * gains 2-3 outbound contextual links into the post cluster, plus a
  * deterministic "Read the methodology" + "Free tools" group.
  *
- * The matcher is deterministic at build time — no per-request work.
+ * The matcher is deterministic at build time, no per-request work.
  */
 import type { Finding } from "@/content/research-findings";
 import { posts, type BlogPost } from "@/content/posts";
@@ -152,7 +152,7 @@ export function getRelatedGroupsForFinding(finding: Finding): RelatedGroup[] {
       href: "/predict",
       label: "Scout game (free)",
       subtitle:
-        "Forward-looking prediction game — call a Series A in 6 months.",
+        "Forward-looking prediction game, call a Series A in 6 months.",
     },
     {
       href: "/api/signals.json",

@@ -25,7 +25,7 @@ import { getCache } from "@vercel/functions";
 
 const NAMESPACE = "recent-signups";
 const KEY = "feed";
-const TTL_SECONDS = 30 * 86_400; // 30 days — keeps the feed warm even when sparse
+const TTL_SECONDS = 30 * 86_400; // 30 days, keeps the feed warm even when sparse
 const MAX_EVENTS = 25;
 const WINDOW_MS = 30 * 24 * 60 * 60_000; // 30 days
 
@@ -80,7 +80,7 @@ function compact(events: SignupEvent[], now: number): SignupEvent[] {
 
 /**
  * Record one real signup. Best-effort: callers must wrap so a cache hiccup
- * never breaks the subscribe flow. We never store an empty city — better to
+ * never breaks the subscribe flow. We never store an empty city, better to
  * show nothing than a vague "somewhere".
  */
 export async function recordSignup(city: string, country: string): Promise<void> {
@@ -101,7 +101,7 @@ export async function readRecentSignups(limit = 12): Promise<SignupEvent[]> {
   return fresh.slice(-n).reverse();
 }
 
-/** Test-only — drop the singleton. */
+/** Test-only, drop the singleton. */
 export function __resetForTests(): void {
   _store = null;
 }

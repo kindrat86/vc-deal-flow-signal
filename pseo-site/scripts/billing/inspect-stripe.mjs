@@ -44,9 +44,9 @@ console.log(`\nactive products (${products.data.length}):`);
 for (const p of products.data) {
   const prices = await stripe.prices.list({ product: p.id, active: true, limit: 5 });
   const planMeta = p.metadata?.gdf_plan ? ` [gdf_plan=${p.metadata.gdf_plan}]` : "";
-  console.log(`  ${p.id} — ${p.name}${planMeta}`);
+  console.log(`  ${p.id}, ${p.name}${planMeta}`);
   for (const pr of prices.data) {
     const recurring = pr.recurring ? `/${pr.recurring.interval}` : "(one-time)";
-    console.log(`    ${pr.id} — ${(pr.unit_amount ?? 0) / 100} ${pr.currency.toUpperCase()} ${recurring}`);
+    console.log(`    ${pr.id}, ${(pr.unit_amount ?? 0) / 100} ${pr.currency.toUpperCase()} ${recurring}`);
   }
 }

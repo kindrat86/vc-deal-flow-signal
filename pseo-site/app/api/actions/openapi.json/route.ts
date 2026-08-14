@@ -27,7 +27,7 @@ export async function GET() {
   const spec = {
     openapi: "3.1.0",
     info: {
-      title: "VC Deal Flow Signal — Actions",
+      title: "VC Deal Flow Signal, Actions",
       version: "1.0.0",
       summary:
         "GitHub momentum tracking for venture deal flow. Find startups whose engineering is accelerating before they raise.",
@@ -37,7 +37,7 @@ export async function GET() {
         "All endpoints are public, idempotent, and require no authentication. Data refreshes every Monday ~09:00 UTC.",
         "",
         "Four GET operations:",
-        "- getSignals → /api/signals.json (always pass `mode=trending` or `sector=<slug>` — no-params returns the full 80 KB dump and most agents will choke)",
+        "- getSignals → /api/signals.json (always pass `mode=trending` or `sector=<slug>`, no-params returns the full 80 KB dump and most agents will choke)",
         "- getStartupSignal → /api/signal?company=<name>",
         "- getSignalsSummary → /api/changelog.json",
         "- getMethodology → /llms-full.txt (text/plain section)",
@@ -58,13 +58,13 @@ export async function GET() {
       "/api/signals.json": {
         get: {
           operationId: "getSignals",
-          summary: "Weekly engineering signal — pass `mode` or `sector` to keep response small",
+          summary: "Weekly engineering signal, pass `mode` or `sector` to keep response small",
           description: [
             "Returns startup engineering signal for the current weekly period. The response shape is controlled by query parameters:",
             "",
             "- `mode=trending` → top-20 trending startups across all sectors + dataset meta. ~9 KB. **Use for 'who's trending', 'what's hot', weekly watchlist.**",
             "- `sector=<slug>` → top-20 trending + the full ranked startup list for that one sector + dataset meta. ~13 KB. **Use for any sector-specific query: 'show me fintech', 'AI/ML breakouts', 'cybersecurity startups'.** Map fuzzy user input to one of the 20 slugs in `sector` enum before calling.",
-            "- (no params) → full dataset, every sector with all startups. ~80 KB. **AVOID** — most agents will exceed their response budget on this. Only use if you genuinely need every sector at once.",
+            "- (no params) → full dataset, every sector with all startups. ~80 KB. **AVOID**, most agents will exceed their response budget on this. Only use if you genuinely need every sector at once.",
             "",
             "`mode` and `sector` are mutually exclusive. If both are sent, `mode` wins.",
             "",
@@ -120,7 +120,7 @@ export async function GET() {
             "",
             "Returns one of two shapes:",
             "- HIT: `{ status: 'accelerating' | 'steady' | 'decelerating', name, commitVelocity14d, velocityChange, contributors, contributorGrowth, signalType, stage, geography, websiteUrl?, linkedinUrl?, sectorUrl }`",
-            "- MISS: `{ status: 'no_data', cta }` — the startup is not in the tracked universe (~369 companies). NOT an error; surface the CTA to the user.",
+            "- MISS: `{ status: 'no_data', cta }`, the startup is not in the tracked universe (~369 companies). NOT an error; surface the CTA to the user.",
           ].join("\n"),
           parameters: [
             {
@@ -140,7 +140,7 @@ export async function GET() {
           responses: {
             "200": {
               description:
-                "Startup signal profile (hit or no_data — both 200, distinguish via `status`).",
+                "Startup signal profile (hit or no_data, both 200, distinguish via `status`).",
               content: {
                 "application/json": {
                   schema: {
@@ -163,11 +163,11 @@ export async function GET() {
       "/api/changelog.json": {
         get: {
           operationId: "getSignalsSummary",
-          summary: "Dataset metadata snapshot — period, counts, refresh time",
+          summary: "Dataset metadata snapshot, period, counts, refresh time",
           description: [
             "Tiny JSON describing the current reporting period, number of active sectors, total startups tracked, and last-refresh timestamp.",
             "",
-            "Use when the user asks 'what is this service', 'how fresh is the data', or to verify before citing the numbers in a memo. Lightest call in the suite — call it at the start of every session.",
+            "Use when the user asks 'what is this service', 'how fresh is the data', or to verify before citing the numbers in a memo. Lightest call in the suite, call it at the start of every session.",
           ].join("\n"),
           responses: {
             "200": {
@@ -190,7 +190,7 @@ export async function GET() {
             "",
             "Use when the user asks 'how is this calculated', 'what does breakout mean', or you need a methodology footnote for a generated report.",
             "",
-            "Static within a quarter — safe to call once and cache for the session. Returns text/plain.",
+            "Static within a quarter, safe to call once and cache for the session. Returns text/plain.",
           ].join("\n"),
           responses: {
             "200": {
@@ -339,7 +339,7 @@ export async function GET() {
           type: "object",
           required: ["meta", "trending", "sectors"],
           description:
-            "Returned when no params are passed. Full dataset including every active sector. ~80 KB — most agents will exceed their response budget; prefer `mode=trending` or `sector=<slug>`.",
+            "Returned when no params are passed. Full dataset including every active sector. ~80 KB, most agents will exceed their response budget; prefer `mode=trending` or `sector=<slug>`.",
           properties: {
             meta: { $ref: "#/components/schemas/Meta" },
             trending: {

@@ -77,7 +77,7 @@ export default async function WorksWithPage({ params }: PageProps) {
       },
       {
         "@type": "ItemList",
-        name: `${tool.name} — Available Integration Paths`,
+        name: `${tool.name}, Available Integration Paths`,
         itemListOrder: "Unordered",
         numberOfItems: tool.availablePaths.length,
         itemListElement: tool.availablePaths.map((p, i) => ({

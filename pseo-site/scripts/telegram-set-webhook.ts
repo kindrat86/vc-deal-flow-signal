@@ -11,7 +11,7 @@
  *   npx tsx pseo-site/scripts/telegram-set-webhook.ts --url https://signals.gitdealflow.com/api/telegram
  *   npx tsx pseo-site/scripts/telegram-set-webhook.ts --info
  *
- * Idempotent — re-running just overwrites the existing webhook + commands.
+ * Idempotent, re-running just overwrites the existing webhook + commands.
  */
 
 import {

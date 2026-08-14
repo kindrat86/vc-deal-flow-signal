@@ -1,12 +1,12 @@
 /**
- * RFC 6415 — host-meta
+ * RFC 6415, host-meta
  *
  * XRD descriptor for the host. Older OpenID / OAuth1 / fediverse-flavored
  * discovery; some agents still hit this before WebFinger as a host-level
  * sanity check.
  *
  * Returns XRD/XML by default. The `.json` variant (RFC 6415 §3.1) is at
- * /.well-known/host-meta.json — a separate route.
+ * /.well-known/host-meta.json, a separate route.
  */
 
 export const runtime = "nodejs";

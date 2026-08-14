@@ -7,14 +7,14 @@ import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 const SITE = "https://signals.gitdealflow.com";
 
 export const metadata: Metadata = {
-  title: "Launches — Jeff Walker PLF, the four-stage way",
+  title: "Launches, Jeff Walker PLF, the four-stage way",
   description:
     "Active and archived launches. Each entry is a 4-stage Product Launch Funnel: Sideways Story, Ownership Experience, Internal Struggle, Big Idea (Open Cart).",
   alternates: { canonical: "/launch" },
   openGraph: {
     title: "Launches",
     description:
-      "Active and archived launches. Each entry is a 4-stage Product Launch Funnel — Sideways Story, Ownership Experience, Internal Struggle, Big Idea.",
+      "Active and archived launches. Each entry is a 4-stage Product Launch Funnel, Sideways Story, Ownership Experience, Internal Struggle, Big Idea.",
     type: "article",
     url: `${SITE}/launch`,
   },
@@ -62,7 +62,7 @@ export default function LaunchIndex() {
       {
         "@type": "CollectionPage",
         "@id": `${SITE}/launch#collection`,
-        name: "Launches — VC Deal Flow Signal",
+        name: "Launches, VC Deal Flow Signal",
         description:
           "Active and archived 4-stage Product Launch Funnels (Jeff Walker PLF).",
         url: `${SITE}/launch`,
@@ -103,7 +103,7 @@ export default function LaunchIndex() {
             Every launch, with the cart open or the window closed.
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-            Each entry below is a 4-stage Product Launch Funnel — Jeff
+            Each entry below is a 4-stage Product Launch Funnel, Jeff
             Walker&rsquo;s canonical sequence. Sideways Story, Ownership
             Experience, Internal Struggle, Big Idea. Permanent record so you
             can see the offer that was on the table when the window was

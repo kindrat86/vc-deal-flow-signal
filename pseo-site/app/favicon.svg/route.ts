@@ -1,5 +1,5 @@
 /**
- * /favicon.svg — vector favicon.
+ * /favicon.svg, vector favicon.
  *
  * Geometry: gradient-tile "G" mark, matching the inline brand badge in
  * <Header />. Sky-500 → Indigo-600 background, slate-950 letter, 14px corner

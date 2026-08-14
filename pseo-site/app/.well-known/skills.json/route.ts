@@ -1,5 +1,5 @@
 /**
- * /.well-known/skills.json — Anthropic-style skills card.
+ * /.well-known/skills.json, Anthropic-style skills card.
  *
  * Stable manifest of agent-callable "skills" exposed by this site. Each
  * entry maps to an MCP prompt (name + arguments + invoke contract) so a
@@ -8,10 +8,10 @@
  * the MCP server.
  *
  * Companion surfaces:
- *   /.well-known/mcp.json           — MCP server descriptor (tools)
- *   /.well-known/agent-card.json    — A2A AgentCard
- *   /api/openapi.json               — REST + MCP unified contract
- *   /api/mcp/rpc                    — JSON-RPC entrypoint
+ *   /.well-known/mcp.json          , MCP server descriptor (tools)
+ *   /.well-known/agent-card.json   , A2A AgentCard
+ *   /api/openapi.json              , REST + MCP unified contract
+ *   /api/mcp/rpc                   , JSON-RPC entrypoint
  *
  * Mirrored at /skills.json (root alias).
  */
@@ -46,7 +46,7 @@ const SKILLS = [
     name: "sector_deep_dive",
     title: "Sector Deep Dive",
     description:
-      "Sector intelligence brief — top movers, dark horses, and thesis follow-ups for a single named sector. Grounded in live signal data plus the SSRN methodology paper.",
+      "Sector intelligence brief, top movers, dark horses, and thesis follow-ups for a single named sector. Grounded in live signal data plus the SSRN methodology paper.",
     type: "mcp.prompt",
     arguments: [
       {
@@ -117,7 +117,7 @@ const SKILLS = [
     name: "diligence_dossier",
     title: "Company Diligence Dossier",
     description:
-      "One cited, public-source dossier for a company or entity: who acquired it (M&A history), which funds publicly backed it, and its published engineering-acceleration signal. Mid-diligence grounding for 'who acquired X', 'which funds backed Y', 'what's the signal on Z'. Returns found:false with an honest note when the entity is outside the tracked corpus — never guesses.",
+      "One cited, public-source dossier for a company or entity: who acquired it (M&A history), which funds publicly backed it, and its published engineering-acceleration signal. Mid-diligence grounding for 'who acquired X', 'which funds backed Y', 'what's the signal on Z'. Returns found:false with an honest note when the entity is outside the tracked corpus, never guesses.",
     type: "mcp.tool",
     arguments: [
       {
@@ -176,7 +176,7 @@ export async function GET() {
     "@context": "https://schema.org",
     "@type": "ItemList",
     "@id": `${SITE}/.well-known/skills.json`,
-    name: "VC Deal Flow Signal — Skills Manifest",
+    name: "VC Deal Flow Signal, Skills Manifest",
     description:
       "Stable manifest of agent-callable skills exposed by this site. Each skill maps to an MCP prompt with a fully-specified invoke contract (transport + method + params), an optional REST httpAnalog for non-MCP agents, declared rate limits, and explicit free/paid cost. A fresh agent can enumerate every skill in one fetch without parsing the full OpenAPI document.",
     contractVersion: "2026-05-08.f37",

@@ -16,7 +16,7 @@ function escapeHtmlAttr(s: string): string {
  * React 19 strips `javascript:` URLs from `href` attributes for XSS safety,
  * which kills bookmarklets. We render the anchor with raw HTML via
  * dangerouslySetInnerHTML so the href survives, then attach an onClick
- * handler imperatively for the "don't click — drag" hint.
+ * handler imperatively for the "don't click, drag" hint.
  */
 function BookmarkletDragSection({ href }: { href: string }) {
   const wrapRef = useRef<HTMLDivElement>(null);
@@ -26,7 +26,7 @@ function BookmarkletDragSection({ href }: { href: string }) {
     const handler = (e: Event) => {
       e.preventDefault();
       alert(
-        "Don't click — drag this button onto your bookmarks bar.\n\n" +
+        "Don't click, drag this button onto your bookmarks bar.\n\n" +
           "Tip: press Cmd/Ctrl+Shift+B first to make the bookmarks bar visible.",
       );
     };
@@ -254,7 +254,7 @@ export default function InstallClient() {
           className="rounded-xl border border-slate-800 bg-slate-900/40 hover:bg-slate-900/70 p-5 transition group"
         >
           <p className="text-[10px] uppercase tracking-wider text-purple-400 font-semibold mb-1">
-            Chrome Extension #1 — Crunchbase + Wellfound
+            Chrome Extension #1, Crunchbase + Wellfound
           </p>
           <p className="text-base font-semibold text-gray-100 group-hover:text-white">
             Momentum score on every profile →
@@ -267,7 +267,7 @@ export default function InstallClient() {
           className="rounded-xl border border-slate-800 bg-slate-900/40 hover:bg-slate-900/70 p-5 transition group"
         >
           <p className="text-[10px] uppercase tracking-wider text-emerald-400 font-semibold mb-1">
-            Chrome Extension #2 — VC GitHub Lookup
+            Chrome Extension #2, VC GitHub Lookup
           </p>
           <p className="text-base font-semibold text-gray-100 group-hover:text-white">
             Hover any GitHub repo or org for velocity →
@@ -280,7 +280,7 @@ export default function InstallClient() {
           className="rounded-xl border border-slate-800 bg-slate-900/40 hover:bg-slate-900/70 p-5 transition group"
         >
           <p className="text-[10px] uppercase tracking-wider text-cyan-400 font-semibold mb-1">
-            Chrome Extension #3 — VC Term Highlighter
+            Chrome Extension #3, VC Term Highlighter
           </p>
           <p className="text-base font-semibold text-gray-100 group-hover:text-white">
             Underline VC terms on any page →
@@ -298,15 +298,15 @@ export default function InstallClient() {
         </h2>
         <p className="text-gray-300 text-sm leading-relaxed mb-4 max-w-2xl">
           The bookmarklet is great when you already have a name to check. If you
-          want the call made for you instead &mdash; the standouts surfaced,
-          ranked, and explained in plain business language &mdash; start here.
+          want the call made for you instead, the standouts surfaced,
+          ranked, and explained in plain business language, start here.
         </p>
         <div className="flex flex-wrap gap-3">
           <Link
             href="/firstlook"
             className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-orange-500 text-white text-sm font-semibold hover:bg-orange-400 transition-colors"
           >
-            First Look &mdash; one ranked dossier, &euro;7 &rarr;
+            First Look, one ranked dossier, &euro;7 &rarr;
           </Link>
           <a
             href="https://gitdealflow.com/#signup"

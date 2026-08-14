@@ -1,7 +1,7 @@
 /**
  * Brunson Soap Opera Sequence for new scouts.
  *
- * Day 1 (immediate) = welcome + confirmation — handled inline in /api/scout/predict.
+ * Day 1 (immediate) = welcome + confirmation, handled inline in /api/scout/predict.
  * Days 2-5 below are scheduled via Resend `scheduled_at` at scout creation.
  *
  * Tone: first-person, no corporate voice, declarative, plain text feel.
@@ -39,7 +39,7 @@ ${body}
 </div>
 <div style="margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;font-size:12px;color:#94a3b8;">
 <p>You received this because you made a prediction at <a href="${SITE_URL}/predict" style="color:#0ea5e9;">signals.gitdealflow.com/predict</a>.</p>
-<p>Reply to this email to opt out of the onboarding series — you&rsquo;ll still keep your scout account and all your predictions.</p>
+<p>Reply to this email to opt out of the onboarding series, you&rsquo;ll still keep your scout account and all your predictions.</p>
 </div>
 </div>
 </body></html>`;
@@ -62,7 +62,7 @@ function day2(ctx: ScoutContext) {
 <p>If I had been watching that graph with a scout account, I would have called it at month four. Eight months early.</p>
 <p>That is what you are doing here. You are calling the ones you see.</p>
 <p>Tomorrow I will send you the five specific signals we look for. Use them on your next prediction.</p>
-<p>&mdash; The Data Nerd</p>
+<p>The Data Nerd</p>
 `,
       ctx.dashboardUrl,
     ),
@@ -75,7 +75,7 @@ function day3(ctx: ScoutContext) {
     html: wrap(
       "Day 3",
       `
-<p>@${ctx.handle} — five signals. In order of leading-ness.</p>
+<p>@${ctx.handle}, five signals. In order of leading-ness.</p>
 <ol>
 <li><strong>Contributor acceleration.</strong> A jump from 1 to 4 contributors in 90 days means they already closed a hire round.</li>
 <li><strong>Commit velocity.</strong> Median funded pre-seed runs 38 commits a week the quarter before announcement. Unfunded runs 11.</li>
@@ -85,7 +85,7 @@ function day3(ctx: ScoutContext) {
 </ol>
 <p>Run these against a GitHub org before you make your call. The scout game rewards you for calling at the earliest visible sign.</p>
 <p>Your next prediction form is here: <a href="${SITE_URL}/predict" style="color:#0ea5e9;">signals.gitdealflow.com/predict</a></p>
-<p>&mdash; The Data Nerd</p>
+<p>The Data Nerd</p>
 `,
       ctx.dashboardUrl,
     ),
@@ -98,13 +98,13 @@ function day4(ctx: ScoutContext) {
     html: wrap(
       "Day 4",
       `
-<p>@${ctx.handle} — real scout on the board right now (anonymized).</p>
+<p>@${ctx.handle}, real scout on the board right now (anonymized).</p>
 <p>Month 3 after a solo dev started pushing, she called it. Confidence 78%. Rationale: "Repo renamed from prototype to product. Contributor joined from a YC founder&rsquo;s circle."</p>
 <p>Month 10: seed round announced. She hit. +7 points. Streak continued.</p>
 <p>Her public profile is live. People share it. She does not run a fund. She runs an angel checkbook and a full-time engineering job.</p>
 <p>That is the whole game. You do not need to be at Sequoia to read the signal. The signal is public, your eyes work, and now you have a scoreboard.</p>
 <p>If you have not made a second prediction yet, pick any startup you have been quietly watching. Call it. It counts.</p>
-<p>&mdash; The Data Nerd</p>
+<p>The Data Nerd</p>
 `,
       ctx.dashboardUrl,
     ),
@@ -117,15 +117,15 @@ function day5(ctx: ScoutContext) {
     html: wrap(
       "Day 5",
       `
-<p>@${ctx.handle} — last email in the onboarding series.</p>
+<p>@${ctx.handle}, last email in the onboarding series.</p>
 <p>Free tier is 3 predictions a month. That gets you to Scout rank (10 calls, 40% accuracy) and a public profile.</p>
 <p>If you want Sharp (25 calls, 55%), Elite (50 calls, 65%), or Oracle (100 calls, 70%, top 1% globally), you need the paid Dashboard plan. EUR 9.97 per month. 10 predictions. Private mode. Weekly Top-10 Scouts email.</p>
-<p>Oracle rank gets a lifetime Founder Scout badge on your profile. The first 100 scouts to join already have it &mdash; no upgrade required &mdash; but the ladder past Scout is paid-gated by design, because we do not want farmed leaderboards.</p>
-<p>Upgrade or ignore &mdash; both are fine. Your calls keep resolving either way. We email you the moment each one hits.</p>
+<p>Oracle rank gets a lifetime Founder Scout badge on your profile. The first 100 scouts to join already have it, no upgrade required, but the ladder past Scout is paid-gated by design, because we do not want farmed leaderboards.</p>
+<p>Upgrade or ignore, both are fine. Your calls keep resolving either way. We email you the moment each one hits.</p>
 <p><a href="${SITE_URL}/dashboard" style="color:#0ea5e9;font-weight:600;">See the Dashboard plan</a></p>
-<p>&mdash; The Data Nerd</p>
+<p>The Data Nerd</p>
 <p style="color:#64748b;font-size:13px;margin-top:24px;">P.S. If you ignore this email, you will still get one more: the resolution email when your first prediction hits or expires. Then you are out of the onboarding flow and into the normal weekly Signal Digest.</p>
-<p style="color:#64748b;font-size:13px;margin-top:8px;">P.P.S. New: drop a live Scout Score badge into your GitHub README &mdash; <a href="${SITE_URL}/badge-builder?utm_source=email&utm_medium=soap_opera&utm_campaign=day5" style="color:#0ea5e9;">${SITE_URL.replace(/^https?:\/\//, "")}/badge-builder</a>. Auto-updates from your starring history, no signup, same look as Codecov or WakaTime.</p>
+<p style="color:#64748b;font-size:13px;margin-top:8px;">P.P.S. New: drop a live Scout Score badge into your GitHub README, <a href="${SITE_URL}/badge-builder?utm_source=email&utm_medium=soap_opera&utm_campaign=day5" style="color:#0ea5e9;">${SITE_URL.replace(/^https?:\/\//, "")}/badge-builder</a>. Auto-updates from your starring history, no signup, same look as Codecov or WakaTime.</p>
 `,
       ctx.dashboardUrl,
     ),
@@ -143,7 +143,7 @@ async function sendScheduled(opts: {
     return;
   }
   // These are submitted now but DELIVERED on a future day, so claim the shared
-  // daily slot for the delivery date rather than today — otherwise this would
+  // daily slot for the delivery date rather than today, otherwise this would
   // book today's slot and still land on a day another system has already used.
   // Day 1 (the confirmation) is transactional, sent inline by /api/scout/predict,
   // and deliberately does not pass through the gate.

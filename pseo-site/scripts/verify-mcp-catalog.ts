@@ -1,5 +1,5 @@
 /**
- * Build guard — the MCP tool catalog must stay internally consistent.
+ * Build guard, the MCP tool catalog must stay internally consistent.
  *
  * 1. The tool names in the live endpoint (app/api/mcp/rpc/route.ts `const TOOLS`)
  *    must exactly equal lib/mcp-tools.ts `MCP_TOOL_NAMES`. The static descriptors
@@ -63,5 +63,5 @@ if (errors.length) {
   process.exit(1);
 }
 console.log(
-  `verify-mcp-catalog OK — ${MCP_TOOL_COUNT} tools consistent across route.ts, lib/mcp-tools.ts, and the descriptors.`,
+  `verify-mcp-catalog OK, ${MCP_TOOL_COUNT} tools consistent across route.ts, lib/mcp-tools.ts, and the descriptors.`,
 );

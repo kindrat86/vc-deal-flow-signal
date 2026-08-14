@@ -10,7 +10,7 @@ import {
 import SeoCta from "@/components/SeoCta";
 
 export const metadata: Metadata = {
-  title: "Best Startups by Sector — Engineering Acceleration Rankings (2026)",
+  title: "Best Startups by Sector, Engineering Acceleration Rankings (2026)",
   description:
     "The best startups in every sector ranked by GitHub commit-velocity acceleration in 2026. AI/ML, fintech, devtools, robotics, climate, and 15 more sectors. Updated weekly.",
   alternates: {
@@ -43,7 +43,7 @@ export default function BestIndex() {
     "@graph": [
       {
         "@type": "CollectionPage",
-        name: "Best Startups by Sector — Engineering Acceleration Rankings",
+        name: "Best Startups by Sector, Engineering Acceleration Rankings",
         description:
           "Top startups by sector ranked on GitHub commit-velocity acceleration. Updated weekly.",
         url: "https://signals.gitdealflow.com/best",
@@ -104,7 +104,7 @@ export default function BestIndex() {
         <p className="text-gray-400 text-base leading-relaxed mb-3">
           Every sector we cover, ranked by GitHub commit-velocity acceleration
           in {period.name}. Each list is the breakout cohort our methodology
-          identifies for that sector — the startups showing engineering
+          identifies for that sector, the startups showing engineering
           acceleration that historically precedes a fundraise by 6-12 weeks.
           If you already know you care about timing, proof, or what to do with
           the shortlist, start with the sharper routes below first.
@@ -168,7 +168,7 @@ export default function BestIndex() {
           </div>
         </div>
 
-        {/* "More reading" routes — demoted below the lists (was above them) */}
+        {/* "More reading" routes, demoted below the lists (was above them) */}
         <section className="mb-10 rounded-2xl border border-sky-700/30 bg-sky-950/20 p-6 sm:p-8">
           <p className="text-sky-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">
             Start with the highest-intent routes

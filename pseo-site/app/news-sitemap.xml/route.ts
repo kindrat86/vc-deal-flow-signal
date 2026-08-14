@@ -21,7 +21,7 @@ const WINDOW_MS_48H = 48 * 60 * 60 * 1000;
 const MIN_FRESH_ITEMS = 3;
 const WINDOW_MS_7D = 7 * 24 * 60 * 60 * 1000;
 // Last-ditch fallback when even the 7-day window is empty. Cap at 5 most
-// recent items regardless of age — guarantees the file is never an empty
+// recent items regardless of age, guarantees the file is never an empty
 // `<urlset/>` (which Google treats as a soft error and re-attempts less
 // frequently). Items past 48 h are filtered by Google anyway.
 const ABSOLUTE_FALLBACK_LIMIT = 5;
@@ -62,7 +62,7 @@ function predictionItems(): NewsItem[] {
     loc: `${BASE_URL}/predicted/${w.slug}`,
     publishedAt: new Date(w.publishedAt).toISOString(),
     // Headline mirrors the on-page H1 / OG title for crawler consistency.
-    title: `Engineering Acceleration Watch — week of ${w.weekStart} — VC Deal Flow Signal`,
+    title: `Engineering Acceleration Watch, week of ${w.weekStart}, VC Deal Flow Signal`,
     keywords: "venture capital, GitHub, engineering signals, weekly index",
   }));
 }
@@ -75,7 +75,7 @@ function blogItems(): NewsItem[] {
   }));
 }
 
-// Idea of the Day — daily ideation pages. Each entry's publishedAt anchors
+// Idea of the Day, daily ideation pages. Each entry's publishedAt anchors
 // the news-index window; Google News drops anything past 48 h on its side
 // so the daily cron keeps a fresh item rotating through the index without
 // any extra plumbing here.
@@ -83,7 +83,7 @@ function ideaOfTheDayItems(): NewsItem[] {
   return getAllIdeas().map((idea) => ({
     loc: `${BASE_URL}/idea-of-the-day/${idea.slug}`,
     publishedAt: new Date(idea.publishedAt).toISOString(),
-    title: `Idea of the day: ${idea.headline} — VC Deal Flow Signal`,
+    title: `Idea of the day: ${idea.headline}, VC Deal Flow Signal`,
     keywords: [
       "startup ideas",
       idea.repo.sector,
@@ -125,7 +125,7 @@ export async function GET() {
   }
 
   // Tiered fallback (audit 2026-05-08): try 48 h → 7 d → 5 most recent.
-  // Newest first — Google News uses publication_date for ranking but
+  // Newest first, Google News uses publication_date for ranking but
   // sorted output is friendlier to manual auditors. Capped at the
   // Google News spec limit of 1,000 URLs per sitemap.
   let recent = filterAndSort(all, now, WINDOW_MS_48H);

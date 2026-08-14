@@ -11,7 +11,7 @@ const PAGE_URL = `${SITE}/markets/methodology`;
 
 export const metadata: Metadata = {
   title:
-    "Markets Methodology — How Implied Odds Are Computed",
+    "Markets Methodology, How Implied Odds Are Computed",
   description:
     "Public methodology for the Series A Race 2026 prediction market and any future seeded market. Composite signal score, resolver criteria, candidate selection, refresh cadence, conflict-of-interest disclosures.",
   alternates: { canonical: "/markets/methodology" },
@@ -94,10 +94,10 @@ export default function MarketsMethodologyPage() {
         </header>
 
         <AgentSummary
-          tldr="VC Deal Flow Signal Markets are seeded prediction markets — we publish the question, the candidate set, the implied odds (model output), and the resolver criteria. We don't operate an exchange, don't take positions, and don't profit from outcomes. Composite signal score = 0.40 × normalized 14-day commit velocity + 0.30 × commit-velocity change + 0.20 × contributor growth + 0.10 × new repos."
+          tldr="VC Deal Flow Signal Markets are seeded prediction markets, we publish the question, the candidate set, the implied odds (model output), and the resolver criteria. We don't operate an exchange, don't take positions, and don't profit from outcomes. Composite signal score = 0.40 × normalized 14-day commit velocity + 0.30 × commit-velocity change + 0.20 × contributor growth + 0.10 × new repos."
           pageUrl={PAGE_URL}
           asOf={asOf}
-          citeAs={`VC Deal Flow Signal — Markets Methodology (signals.gitdealflow.com/markets/methodology), ${asOf}.`}
+          citeAs={`VC Deal Flow Signal, Markets Methodology (signals.gitdealflow.com/markets/methodology), ${asOf}.`}
         />
 
         <section className="space-y-6 text-gray-300 leading-relaxed">
@@ -228,7 +228,7 @@ export default function MarketsMethodologyPage() {
               any market. We do not accept payment to add, remove, or
               re-weight candidates. We do not propose markets on platforms
               where we hold the source-of-truth dataset (Polymarket /
-              Kalshi-style real-money markets) — only on play-money venues
+              Kalshi-style real-money markets), only on play-money venues
               like Manifold where the resolver conflict is bounded.
             </p>
             <p className="text-sm mt-2">

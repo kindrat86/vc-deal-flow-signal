@@ -3,7 +3,7 @@ import { competitors, getCompetitorVsPair } from "@/content/competitor-vs";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "VC Deal Flow Signal — Vendor head-to-head";
+export const alt = "VC Deal Flow Signal, Vendor head-to-head";
 
 export default async function OGImage({
   params,
@@ -115,13 +115,13 @@ export default async function OGImage({
               Signal type
             </div>
             <div style={{ display: "flex", fontSize: 18, color: "#cbd5e1" }}>
-              {(a.signalType || "—").slice(0, 60)}
+              {(a.signalType || "-").slice(0, 60)}
             </div>
             <div style={{ display: "flex", fontSize: 14, color: "#94a3b8", marginTop: 14, marginBottom: 6 }}>
               Lead time
             </div>
             <div style={{ display: "flex", fontSize: 18, color: "#cbd5e1" }}>
-              {(a.leadTime || "—").slice(0, 50)}
+              {(a.leadTime || "-").slice(0, 50)}
             </div>
           </div>
           <div
@@ -139,13 +139,13 @@ export default async function OGImage({
               Signal type
             </div>
             <div style={{ display: "flex", fontSize: 18, color: "#cbd5e1" }}>
-              {(b.signalType || "—").slice(0, 60)}
+              {(b.signalType || "-").slice(0, 60)}
             </div>
             <div style={{ display: "flex", fontSize: 14, color: "#94a3b8", marginTop: 14, marginBottom: 6 }}>
               Lead time
             </div>
             <div style={{ display: "flex", fontSize: 18, color: "#cbd5e1" }}>
-              {(b.leadTime || "—").slice(0, 50)}
+              {(b.leadTime || "-").slice(0, 50)}
             </div>
           </div>
         </div>

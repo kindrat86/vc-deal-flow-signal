@@ -9,32 +9,32 @@ export const dynamic = "force-static";
 const SITE = "https://signals.gitdealflow.com";
 
 /**
- * /from/facebook — Pre-frame landing page for Meta-paid traffic.
+ * /from/facebook, Pre-frame landing page for Meta-paid traffic.
  *
- * Brunson DotCom Secrets §2 Ch 7 — Pre-Frame Bridge. The promise the visitor
+ * Brunson DotCom Secrets §2 Ch 7, Pre-Frame Bridge. The promise the visitor
  * just clicked on the ad needs to be ECHOED on the first paint of the
  * landing, not buried under a generic homepage. This page is the bridge:
  *   - Headline mirrors the ad copy literal (signal vs noise framing).
  *   - Trust signals collapse (SSRN n=219, 21-47d lead) shown above the fold.
- *   - One CTA — straight to /firstlook with FB UTM payload preserved through
+ *   - One CTA, straight to /firstlook with FB UTM payload preserved through
  *     the link href (already-baked) so attribution survives.
  *
  * Anonymity rule: data-only. No founder photo, no founder voice. The chart
  * is the hero. Synthetic-voice video lives at /watch (silent canvas) and
- * /vsl (Cartesia "Theo" narration) — both linked but not auto-played here
- * (FB feed sends users in fast — auto-playing video kills the bridge).
+ * /vsl (Cartesia "Theo" narration), both linked but not auto-played here
+ * (FB feed sends users in fast, auto-playing video kills the bridge).
  */
 
 export const metadata: Metadata = {
   title:
-    "From Facebook — The signal your network can't see (€7 sector deep dive)",
+    "From Facebook, The signal your network can't see (€7 sector deep dive)",
   description:
-    "You clicked a Facebook ad. Here's what the ad actually proves: in a 219-startup SSRN panel, GitHub commit-velocity acceleration shows up 21–47 days before the Series A press release. Pick a sector, €7 once, full deep dive in 24 hours.",
+    "You clicked a Facebook ad. Here's what the ad actually proves: in a 219-startup SSRN panel, GitHub commit-velocity acceleration shows up 21-47 days before the Series A press release. Pick a sector, €7 once, full deep dive in 24 hours.",
   alternates: { canonical: "/from/facebook" },
   openGraph: {
-    title: "The signal your network can't see — €7 sector deep dive",
+    title: "The signal your network can't see, €7 sector deep dive",
     description:
-      "GitHub commit-velocity acceleration leads Series A press releases by 21–47 days. SSRN-indexed panel of 219 startups. €7 once. 24-hour SLA.",
+      "GitHub commit-velocity acceleration leads Series A press releases by 21-47 days. SSRN-indexed panel of 219 startups. €7 once. 24-hour SLA.",
     url: `${SITE}/from/facebook`,
     type: "article",
     images: [
@@ -42,15 +42,15 @@ export const metadata: Metadata = {
         url: `${SITE}/firstlook/opengraph-image`,
         width: 1200,
         height: 630,
-        alt: "VC Deal Flow Signal — First Look Pass",
+        alt: "VC Deal Flow Signal, First Look Pass",
       },
     ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "The signal your network can't see — €7 sector deep dive",
+    title: "The signal your network can't see, €7 sector deep dive",
     description:
-      "21–47 days of pre-deck lead time, in a 219-startup SSRN panel. €7 once.",
+      "21-47 days of pre-deck lead time, in a 219-startup SSRN panel. €7 once.",
   },
   robots: {
     // Pre-frame landings should be discoverable but not compete with /firstlook
@@ -65,11 +65,11 @@ const PROOF_POINTS = [
   {
     label: "SSRN-indexed panel",
     value: "n = 219",
-    detail: "Confirmed Series A & B fundraises, 2023–2025",
+    detail: "Confirmed Series A & B fundraises, 2023-2025",
   },
   {
     label: "Lead-time median",
-    value: "21–47 days",
+    value: "21-47 days",
     detail: "Commit-velocity signal precedes press release",
   },
   {
@@ -86,20 +86,20 @@ const PROOF_POINTS = [
 
 const WHAT_YOU_GET = [
   "Top 25 GitHub orgs in your sector, ranked by 14-day commit-velocity acceleration",
-  "Three pre-Crunchbase breakouts — orgs surfaced before the consensus deal-flow tools indexed them",
-  "Contributor influx map (top 10 orgs × 30-day window) — predicts hiring announcements",
-  "Raw CSV (every org × every metric) — drop into your CRM or notebook",
-  "14-page written walkthrough PDF — what stood out, what's a false positive, the thesis-specific surprises",
+  "Three pre-Crunchbase breakouts, orgs surfaced before the consensus deal-flow tools indexed them",
+  "Contributor influx map (top 10 orgs × 30-day window), predicts hiring announcements",
+  "Raw CSV (every org × every metric), drop into your CRM or notebook",
+  "14-page written walkthrough PDF, what stood out, what's a false positive, the thesis-specific surprises",
 ] as const;
 
 const FAQ = [
   {
     q: "Why am I seeing this from a Facebook ad?",
-    a: "We run a small €5/day FB retargeting test. If you've visited signals.gitdealflow.com before, the pixel may have followed you here. The ad budget is intentionally small — we're testing whether the message lands, not buying scale.",
+    a: "We run a small €5/day FB retargeting test. If you've visited signals.gitdealflow.com before, the pixel may have followed you here. The ad budget is intentionally small, we're testing whether the message lands, not buying scale.",
   },
   {
     q: "Why is the founder anonymous?",
-    a: "Anonymity is a methodology guarantee. We never need a personal brand for the data to be falsifiable — the SSRN panel, the open methodology, and the reproducible regression do the work. No founder face on Facebook. No founder face anywhere.",
+    a: "Anonymity is a methodology guarantee. We never need a personal brand for the data to be falsifiable, the SSRN panel, the open methodology, and the reproducible regression do the work. No founder face on Facebook. No founder face anywhere.",
   },
   {
     q: "Is the €7 really credited toward the Dashboard?",
@@ -118,7 +118,7 @@ export default function FromFacebookPage() {
       {
         "@type": "WebPage",
         "@id": `${SITE}/from/facebook`,
-        name: "From Facebook — VC Deal Flow Signal pre-frame",
+        name: "From Facebook, VC Deal Flow Signal pre-frame",
         description:
           "Bridge page for visitors arriving from Meta-paid traffic. Restates the ad's claim (21-47d pre-deck lead time) and routes to /firstlook.",
         isPartOf: { "@id": `${SITE}/#website` },
@@ -171,7 +171,7 @@ export default function FromFacebookPage() {
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
             The Facebook ad said: <em>your network is showing you yesterday&rsquo;s
-            deals</em>. That&rsquo;s the headline. The proof is below — a
+            deals</em>. That&rsquo;s the headline. The proof is below, a
             219-startup SSRN-indexed panel where GitHub commit-velocity
             acceleration showed up 21 to 47 days <em>before</em> the Series A
             press release. Pick a sector, pay €7, get the full deep-dive PDF
@@ -179,7 +179,7 @@ export default function FromFacebookPage() {
           </p>
         </header>
 
-        {/* Proof grid — 4 cells, hero placement above fold on most viewports */}
+        {/* Proof grid, 4 cells, hero placement above fold on most viewports */}
         <section
           aria-labelledby="proof"
           className="rounded-xl border border-sky-700/30 bg-gradient-to-br from-sky-950/30 via-slate-900 to-slate-950 p-6 space-y-5"
@@ -269,7 +269,7 @@ export default function FromFacebookPage() {
           </h2>
           <p className="text-gray-300 text-sm leading-relaxed">
             VC Deal Flow Signal&rsquo;s founder is anonymous by design. No
-            founder photo, no founder voice, no real-name attribution — on
+            founder photo, no founder voice, no real-name attribution, on
             Facebook or anywhere else. The chart on the ad creative is the
             hero. The methodology paper is the bio. The reproducible regression
             is the credibility. We don&rsquo;t need a personal brand for
@@ -337,7 +337,7 @@ export default function FromFacebookPage() {
               >
                 Watch the silent 90-second demo →
               </Link>{" "}
-              The dashboard breathing — no audio, no narrator.
+              The dashboard breathing, no audio, no narrator.
             </li>
             <li>
               <Link

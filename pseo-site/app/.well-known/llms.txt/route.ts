@@ -1,10 +1,10 @@
 /**
- * /.well-known/llms.txt — direct content, not a redirect.
+ * /.well-known/llms.txt, direct content, not a redirect.
  *
  * Per the proposed convention, agents may probe `/.well-known/llms.txt`
  * before falling back to root `/llms.txt`. We previously 308-redirected to
  * keep one source of truth, but some AI crawlers don't reliably follow
- * 308s on text/plain — and any redirect is one extra hop. We now re-export
+ * 308s on text/plain, and any redirect is one extra hop. We now re-export
  * the same GET handler used by `/llms.txt`, so both routes serve the same
  * dynamically-built body with the same ETag/Last-Modified semantics, no
  * forwarding tax. A `Link: rel=canonical` header points back to the root

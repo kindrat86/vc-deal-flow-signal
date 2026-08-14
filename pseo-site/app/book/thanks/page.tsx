@@ -9,7 +9,7 @@ import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Thanks — your book is on the way",
+  title: "Thanks, your book is on the way",
   description:
     "Confirmation page for book download / Kindle purchase. Your downloads + bonus content next steps are listed here.",
   alternates: { canonical: "/book/thanks" },
@@ -85,7 +85,7 @@ export default function BookThanksPage() {
           </div>
         </section>
 
-        {/* OTO upsell — exactly one logical next move (Brunson Ladder-to-Funnel) */}
+        {/* OTO upsell, exactly one logical next move (Brunson Ladder-to-Funnel) */}
         <section className="bg-gradient-to-br from-sky-950/40 via-slate-900 to-slate-950 border border-sky-700/50 rounded-xl p-6 space-y-4">
           <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider">
             One-time offer · for book readers only
@@ -103,7 +103,7 @@ export default function BookThanksPage() {
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
             Founding-member rate of <strong className="text-sky-200">€9.97/mo locked in
-            forever</strong> — set when the Dashboard launched, never raised for
+            forever</strong>: set when the Dashboard launched, never raised for
             existing subscribers.
           </p>
           <Link

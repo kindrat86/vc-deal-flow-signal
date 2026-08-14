@@ -39,7 +39,7 @@ export async function generateMetadata({
   if (!found) return {};
   const { sector, niche } = found;
 
-  const title = `${niche.name} — niche opportunity inside ${sector.name}`;
+  const title = `${niche.name}, niche opportunity inside ${sector.name}`;
   const description = `${niche.pitch} Build cost: ${buildCostLabel(niche.buildCost)}. Deal velocity: ${dealVelocityLabel(niche.dealVelocity)}.`;
   const url = `${SITE}/niche-down/${sector.slug}/${niche.slug}`;
   return {
@@ -78,7 +78,7 @@ export default async function NicheLeafPage({ params }: PageProps) {
   // Adjacent sub-niches in the same sector (for cross-linking)
   const adjacent = sector.niches.filter((n) => n.slug !== niche.slug).slice(0, 4);
 
-  // Related sectors — pick 3 alphabetically-adjacent
+  // Related sectors, pick 3 alphabetically-adjacent
   const sectorIndex = sector ? getNicheSector(sector.slug) : null;
   void sectorIndex;
 
@@ -87,7 +87,7 @@ export default async function NicheLeafPage({ params }: PageProps) {
     "@graph": [
       {
         "@type": "Article",
-        headline: `${niche.name} — niche opportunity inside ${sector.name}`,
+        headline: `${niche.name}, niche opportunity inside ${sector.name}`,
         description: niche.pitch,
         url,
         datePublished: lastModified,
@@ -104,7 +104,7 @@ export default async function NicheLeafPage({ params }: PageProps) {
         },
         about: {
           "@type": "Thing",
-          name: `${sector.name} — ${niche.name}`,
+          name: `${sector.name}, ${niche.name}`,
         },
       },
       {
@@ -201,7 +201,7 @@ export default async function NicheLeafPage({ params }: PageProps) {
             Public examples
           </h2>
           <p className="text-gray-400 text-xs italic">
-            We name <em>public</em> projects + categories only — never founders we
+            We name <em>public</em> projects + categories only, never founders we
             track inside the paid product. The buyer&rsquo;s edge stays inside
             the product.
           </p>
@@ -271,7 +271,7 @@ export default async function NicheLeafPage({ params }: PageProps) {
                   >
                     {n.name}
                   </Link>{" "}
-                  <span className="text-gray-500 text-sm">— {n.pitch}</span>
+                  <span className="text-gray-500 text-sm">{n.pitch}</span>
                 </li>
               ))}
             </ul>

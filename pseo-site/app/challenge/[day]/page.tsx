@@ -9,7 +9,7 @@ import {
   getPrevDay,
 } from "@/content/challenge-curriculum";
 
-// SSG — one static page per challenge day. Permalinks let subscribers
+// SSG, one static page per challenge day. Permalinks let subscribers
 // re-consult outside the email and let the curriculum index in search.
 export function generateStaticParams() {
   return CHALLENGE_DAYS.map((d) => ({ day: d.slug }));
@@ -24,9 +24,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { day: slug } = await params;
   const d = getChallengeDay(slug);
-  if (!d) return { title: "Challenge — Not found" };
+  if (!d) return { title: "Challenge, Not found" };
 
-  const title = `Day ${d.day} — ${d.title} | 30-Day Deal Flow Reset Challenge`;
+  const title = `Day ${d.day}, ${d.title} | 30-Day Deal Flow Reset Challenge`;
   return {
     title,
     description: `${d.oneLine} ${d.whyItMatters.slice(0, 120)}…`,
@@ -60,10 +60,10 @@ export default async function ChallengeDayPage({
   const isLastDay = d.day === CHALLENGE_DAYS.length;
   const isPhaseEnd = d.day === 7 || d.day === 14 || d.day === 21;
   const phaseLabel: Record<typeof d.phase, string> = {
-    learn: "Week 1 — Learn",
-    apply: "Week 2 — Apply",
-    synthesize: "Week 3 — Synthesize",
-    operationalize: "Week 4 — Operationalize",
+    learn: "Week 1, Learn",
+    apply: "Week 2, Apply",
+    synthesize: "Week 3, Synthesize",
+    operationalize: "Week 4, Operationalize",
   };
 
   const jsonLd = {
@@ -71,7 +71,7 @@ export default async function ChallengeDayPage({
     "@graph": [
       {
         "@type": "LearningResource",
-        name: `Day ${d.day} — ${d.title}`,
+        name: `Day ${d.day}, ${d.title}`,
         description: d.whyItMatters,
         learningResourceType: "Lesson",
         educationalLevel: "Practitioner",
@@ -91,7 +91,7 @@ export default async function ChallengeDayPage({
       },
       {
         "@type": "HowTo",
-        name: `${d.title} — 5-minute exercise`,
+        name: `${d.title}, 5-minute exercise`,
         description: d.oneLine,
         totalTime: "PT5M",
         step: d.procedure.map((step, i) => ({
@@ -118,7 +118,7 @@ export default async function ChallengeDayPage({
           {
             "@type": "ListItem",
             position: 3,
-            name: `Day ${d.day} — ${d.title}`,
+            name: `Day ${d.day}, ${d.title}`,
             item: `https://signals.gitdealflow.com/challenge/${d.slug}`,
           },
         ],
@@ -151,11 +151,11 @@ export default async function ChallengeDayPage({
           </Link>
           <span className="mx-2">/</span>
           <span className="text-gray-400">
-            Day {d.day} — {d.title}
+            Day {d.day}, {d.title}
           </span>
         </nav>
 
-        {/* Progress dots — "where you are in the journey" device.
+        {/* Progress dots, "where you are in the journey" device.
             Compact 30-day layout with extra spacing every 7 days to visually
             separate the four week-phases (learn / apply / synthesize /
             operationalize). Current day highlighted, past days emerald,
@@ -168,7 +168,7 @@ export default async function ChallengeDayPage({
             <Link
               key={cd.day}
               href={`/challenge/${cd.slug}`}
-              aria-label={`Go to day ${cd.day} — ${cd.title}`}
+              aria-label={`Go to day ${cd.day}, ${cd.title}`}
               className={`h-2 rounded-full transition-all ${
                 cd.day === d.day
                   ? "w-6 bg-sky-400"
@@ -195,7 +195,7 @@ export default async function ChallengeDayPage({
           </p>
         </header>
 
-        {/* Yesterday recap (Brunson serial-continuity device — "the
+        {/* Yesterday recap (Brunson serial-continuity device, "the
             cliffhanger pickup"). Skipped on Day 1. */}
         {d.yesterdayRecap ? (
           <section
@@ -220,7 +220,7 @@ export default async function ChallengeDayPage({
             <p className="text-gray-300 text-sm leading-relaxed">
               Pick one startup before you read further. Any one. A founder you
               met, a company you almost-invested in, a portfolio org you want to
-              monitor. Have its GitHub URL ready — every signal in the
+              monitor. Have its GitHub URL ready, every signal in the
               following six days runs against the same org you pick today.
             </p>
           </section>
@@ -280,7 +280,7 @@ export default async function ChallengeDayPage({
           </section>
         ) : null}
 
-        {/* Tomorrow teaser — Brunson cliffhanger / open-loop. */}
+        {/* Tomorrow teaser, Brunson cliffhanger / open-loop. */}
         <section
           className="mb-12 rounded-lg border border-slate-800 bg-slate-900/60 px-5 py-4"
           aria-label="Tomorrow"
@@ -293,7 +293,7 @@ export default async function ChallengeDayPage({
           </p>
         </section>
 
-        {/* Day 30 graduation CTA — Stack-Slide close. */}
+        {/* Day 30 graduation CTA, Stack-Slide close. */}
         {isLastDay ? (
           <section
             className="mb-10 rounded-xl border border-emerald-700/40 bg-emerald-950/20 p-6 sm:p-8"
@@ -303,9 +303,9 @@ export default async function ChallengeDayPage({
               You&rsquo;ve finished the system
             </h2>
             <p className="text-gray-200 text-base leading-relaxed mb-5">
-              Thirty days. Six atomic signals. One operational sourcing system —
+              Thirty days. Six atomic signals. One operational sourcing system -
               watchlist, weekly rhythm, alerts, share template, MCP integration,
-              custom weights. Three optional ways to keep using it — pick none
+              custom weights. Three optional ways to keep using it, pick none
               of them and the system stays yours.
             </p>
             <Link
@@ -317,7 +317,7 @@ export default async function ChallengeDayPage({
           </section>
         ) : null}
 
-        {/* Phase-boundary checkpoint (Days 7, 14, 21) — celebrates the
+        {/* Phase-boundary checkpoint (Days 7, 14, 21), celebrates the
             week, primes the next phase, keeps continuity. */}
         {isPhaseEnd && !isLastDay ? (
           <section
@@ -325,11 +325,11 @@ export default async function ChallengeDayPage({
             aria-label="Week checkpoint"
           >
             <p className="text-sky-300 text-xs font-medium mb-2 uppercase tracking-wider">
-              Checkpoint — Week {Math.ceil(d.day / 7)} closes today
+              Checkpoint, Week {Math.ceil(d.day / 7)} closes today
             </p>
             <p className="text-gray-200 text-sm leading-relaxed">
               You&rsquo;re {Math.round((d.day / CHALLENGE_DAYS.length) * 100)}% through.
-              The full curriculum is permanent at every <code className="text-sky-300">/challenge/&lt;slug&gt;</code> URL —
+              The full curriculum is permanent at every <code className="text-sky-300">/challenge/&lt;slug&gt;</code> URL -
               bookmark this page if you want to revisit the procedure later.
             </p>
           </section>

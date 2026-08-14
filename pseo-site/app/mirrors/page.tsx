@@ -6,14 +6,14 @@ import SeoCta from "@/components/SeoCta";
 const SITE = "https://signals.gitdealflow.com";
 
 export const metadata: Metadata = {
-  title: "Mirrors &amp; Indexes — Where to Find VC Deal Flow Signal",
+  title: "Mirrors &amp; Indexes, Where to Find VC Deal Flow Signal",
   description:
-    "Every external mirror, registry, and index that carries VC Deal Flow Signal artifacts — methodology paper, dataset, MCP server, browser extension, source repository. One canonical directory, machine-readable.",
+    "Every external mirror, registry, and index that carries VC Deal Flow Signal artifacts, methodology paper, dataset, MCP server, browser extension, source repository. One canonical directory, machine-readable.",
   alternates: { canonical: "/mirrors" },
   openGraph: {
     title: "Mirrors &amp; Indexes",
     description:
-      "Methodology, dataset, MCP, source, extension — every external mirror and registry that carries the artifacts.",
+      "Methodology, dataset, MCP, source, extension, every external mirror and registry that carries the artifacts.",
     type: "article",
     url: `${SITE}/mirrors`,
   },
@@ -131,7 +131,7 @@ const MIRRORS: Mirror[] = [
     registry: "Glama (A-Tier, 4.9/5.0 across 6 tools)",
     href: "https://glama.ai/mcp/servers/kindrat86/mcp-deal-flow-signal",
     format: "MCP catalog listing",
-    note: "Top MCP discovery surface for our category. (Smithery delisted 2026-05-03 — needs HTTP gateway wrap.)",
+    note: "Top MCP discovery surface for our category. (Smithery delisted 2026-05-03, needs HTTP gateway wrap.)",
   },
   {
     artifact: "MCP server",
@@ -152,7 +152,7 @@ const MIRRORS: Mirror[] = [
     registry: "npm registry",
     href: "https://www.npmjs.com/package/@gitdealflow/mcp-signal",
     format: "Node package",
-    note: "npx @gitdealflow/mcp-signal — stdio + HTTP both supported.",
+    note: "npx @gitdealflow/mcp-signal, stdio + HTTP both supported.",
   },
 
   // Source repository
@@ -183,7 +183,7 @@ const MIRRORS: Mirror[] = [
   },
   {
     artifact: "Knowledge entity",
-    registry: "VC Deal Flow Signal — knowledge-graph.json",
+    registry: "VC Deal Flow Signal, knowledge-graph.json",
     href: `${SITE}/knowledge-graph.json`,
     format: "JSON-LD",
     note: "Canonical entity graph for retrieval pipelines.",
@@ -207,7 +207,7 @@ export default function MirrorsPage() {
       {
         "@type": "CollectionPage",
         "@id": `${SITE}/mirrors#page`,
-        name: "Mirrors & Indexes — VC Deal Flow Signal",
+        name: "Mirrors & Indexes, VC Deal Flow Signal",
         url: `${SITE}/mirrors`,
         inLanguage: "en-US",
         isPartOf: { "@id": `${SITE}/#website` },
@@ -224,7 +224,7 @@ export default function MirrorsPage() {
           "@type": "ListItem",
           position: i + 1,
           url: m.href,
-          name: `${m.artifact.replace(/&amp;/g, "&")} — ${m.registry}`,
+          name: `${m.artifact.replace(/&amp;/g, "&")}, ${m.registry}`,
         })),
       },
     ],
@@ -256,7 +256,7 @@ export default function MirrorsPage() {
         >
           Every external mirror, registry, and indexer that carries an
           artifact published by VC Deal Flow Signal. One canonical
-          directory — useful for citing the right host, building reverse
+          directory, useful for citing the right host, building reverse
           link maps, or discovering an indexer you haven&apos;t hit yet.
         </p>
 

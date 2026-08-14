@@ -96,7 +96,7 @@ function buildJsonLd(q: AgentQuery): object {
         dateModified: lastModifiedIso,
         license: "https://creativecommons.org/licenses/by/4.0/",
         // Speakable: voice assistants and AI Overviews read these selectors
-        // aloud. Order matters — first match wins for some agents. Keep h1
+        // aloud. Order matters, first match wins for some agents. Keep h1
         // first so the question itself is always the lead.
         speakable: {
           "@type": "SpeakableSpecification",
@@ -130,7 +130,7 @@ function buildJsonLd(q: AgentQuery): object {
         "@id": `${url}#askaction`,
         name: `Ask: ${q.h1}`,
         description:
-          "Ask this question programmatically — returns a citation-ready Answer envelope.",
+          "Ask this question programmatically, returns a citation-ready Answer envelope.",
         object: { "@id": `${url}#question` },
         result: { "@id": `${url}#answer` },
         target: [
@@ -177,7 +177,7 @@ function buildJsonLd(q: AgentQuery): object {
       },
       {
         "@type": "WebAPI",
-        name: "VC Deal Flow Signal — Public Agent API",
+        name: "VC Deal Flow Signal, Public Agent API",
         documentation: `${SITE}/api/openapi.json`,
         endpointURL: [
           `${SITE}/api/signals.json`,
@@ -256,7 +256,7 @@ export default async function AnswerPage({ params }: PageProps) {
           tldr={q.tldr}
           pageUrl={url}
           asOf={asOf}
-          citeAs={`VC Deal Flow Signal — Answers (${url}), retrieved ${asOf}.`}
+          citeAs={`VC Deal Flow Signal, Answers (${url}), retrieved ${asOf}.`}
           facts={q.facts}
         />
 

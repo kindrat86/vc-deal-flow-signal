@@ -4,8 +4,8 @@ import { PERSONAS } from "@/content/personas";
 import { HreflangLinks } from "@/components/HreflangLinks";
 
 export const metadata: Metadata = {
-  title: "For — Persona Navigation Hubs",
-  description: `${PERSONAS.length} buyer-persona pages mapping the engineering-signal panel to specific roles — Corp Dev, PE Operating Partners, Tech VPs, Emerging Managers, Founders, Researchers, Journalists.`,
+  title: "For, Persona Navigation Hubs",
+  description: `${PERSONAS.length} buyer-persona pages mapping the engineering-signal panel to specific roles, Corp Dev, PE Operating Partners, Tech VPs, Emerging Managers, Founders, Researchers, Journalists.`,
   alternates: { canonical: "/for" },
   openGraph: {
     title: "For",
@@ -31,7 +31,7 @@ export default function ForHubPage() {
       {
         "@type": "CollectionPage",
         url: PAGE_URL,
-        name: "For — Persona Navigation Hubs",
+        name: "For, Persona Navigation Hubs",
         description: `${PERSONAS.length} buyer-persona navigation hubs.`,
         isPartOf: {
           "@type": "WebSite",

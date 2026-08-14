@@ -63,16 +63,16 @@ export async function generateMetadata({
   const data = await getReceipts(username);
   if (!data.ok) {
     return {
-      title: `Receipts not found — GitDealFlow`,
+      title: `Receipts not found, GitDealFlow`,
       robots: { index: false, follow: false },
     };
   }
   const { result } = data;
-  const title = `@${username} — Scout Score ${result.score} · ${RANK_LABEL[result.rank]}`;
+  const title = `@${username}, Scout Score ${result.score} · ${RANK_LABEL[result.rank]}`;
   const description =
     result.early_count > 0
-      ? `${result.early_count} unicorn${result.early_count === 1 ? "" : "s"} called early on GitHub. Top: ${result.top_wins[0]?.name ?? "—"}. Beat this score:`
-      : `${username} has no early unicorn calls in our database — yet. Show off yours:`;
+      ? `${result.early_count} unicorn${result.early_count === 1 ? "" : "s"} called early on GitHub. Top: ${result.top_wins[0]?.name ?? "-"}. Beat this score:`
+      : `${username} has no early unicorn calls in our database, yet. Show off yours:`;
   return {
     title,
     description,
@@ -145,7 +145,7 @@ export default async function ReceiptsResultPage({
         "@type": "ProfilePage",
         "@id": `${profileUrl}#page`,
         url: profileUrl,
-        name: `@${username} — GitHub Scout Receipts`,
+        name: `@${username}, GitHub Scout Receipts`,
         description: `GitHub starring history scored against validated unicorns. Score: ${result.score}/100. Rank: ${RANK_LABEL[result.rank]}.`,
         primaryImageOfPage: {
           "@type": "ImageObject",
@@ -181,7 +181,7 @@ export default async function ReceiptsResultPage({
         ratingValue: result.score,
         bestRating: 100,
         worstRating: 0,
-        ratingExplanation: `Scout Score — taste signal computed from ${result.total_stars} starred repos vs validated unicorn list. Rank: ${RANK_LABEL[result.rank]}.`,
+        ratingExplanation: `Scout Score, taste signal computed from ${result.total_stars} starred repos vs validated unicorn list. Rank: ${RANK_LABEL[result.rank]}.`,
         author: {
           "@type": "Organization",
           name: "VC Deal Flow Signal",
@@ -335,12 +335,12 @@ export default async function ReceiptsResultPage({
           Or get the data on one sector right now
         </p>
         <h2 className="text-2xl font-bold text-gray-100 mb-3">
-          First Look Pass &mdash; €7 sector deep dive
+          First Look Pass, €7 sector deep dive
         </h2>
         <p className="text-gray-400 text-sm sm:text-base leading-relaxed mb-5 max-w-2xl">
           Receipts show your past taste. /predict tracks your forward calls. The
           First Look Pass shows you the data on <em>one sector right now</em>
-          &mdash; what&rsquo;s accelerating, who&rsquo;s quiet, who&rsquo;ll likely raise next.
+what&rsquo;s accelerating, who&rsquo;s quiet, who&rsquo;ll likely raise next.
           Ranked Markdown + CSV in your inbox within 24 hours. Pick the sector
           at checkout. Credit applies to Dashboard if you upgrade.
         </p>
@@ -350,7 +350,7 @@ export default async function ReceiptsResultPage({
           rel="noopener noreferrer"
           className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-orange-600 hover:bg-orange-500 text-white font-medium text-sm transition-colors"
         >
-          Get the First Look Pass &mdash; €7 →
+          Get the First Look Pass, €7 →
         </a>
       </section>
 

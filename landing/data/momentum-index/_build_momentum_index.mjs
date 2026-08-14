@@ -91,7 +91,7 @@ for (const full of seed) {
 
 // FAIL-SAFES
 const ratio = results.length / seed.length;
-if (results.length === 0) { console.error('FAIL: 0 repos fetched — refusing to write empty index.'); process.exit(1); }
+if (results.length === 0) { console.error('FAIL: 0 repos fetched, refusing to write empty index.'); process.exit(1); }
 if (ratio < 0.8) { console.error(`FAIL: only ${results.length}/${seed.length} fetched (<80%). Set GITHUB_TOKEN or check network. Not writing.`); process.exit(1); }
 
 results.sort((a, b) => b.score - a.score || b.stars - a.stars);
@@ -136,7 +136,7 @@ ${jsonld.map(j => `<script type="application/ld+json">${JSON.stringify(j)}</scri
 // ---- detail pages ----------------------------------------------------------
 mkdirSync(HERE, { recursive: true });
 for (const r of results) {
-  const title = `${r.owner}/${r.name} — GitHub Momentum Score ${r.score}/100 | GitDealFlow`;
+  const title = `${r.owner}/${r.name}, GitHub Momentum Score ${r.score}/100 | GitDealFlow`;
   const desc = `${r.name}: ${r.stars.toLocaleString()} stars, momentum score ${r.score}/100 as of ${TODAY}. Real GitHub engineering-activity signals from GitDealFlow.`;
   const canonical = `${BASE}${PATH}/${r.slug}`;
   const deltaTxt = r.deltaStars == null ? '<span class="muted">baseline (first snapshot)</span>'
@@ -159,8 +159,8 @@ for (const r of results) {
 <p>Momentum score as of ${TODAY}. Weekly change: ${deltaTxt}</p></div>
 <table><tr><th>Metric</th><th>Value</th><th>Sub-score</th></tr>
 <tr><td>Stars</td><td>${r.stars.toLocaleString()}</td><td>traction ${r.traction}/100</td></tr>
-<tr><td>Forks</td><td>${r.forks.toLocaleString()}</td><td>—</td></tr>
-<tr><td>Open issues</td><td>${r.issues.toLocaleString()}</td><td>—</td></tr>
+<tr><td>Forks</td><td>${r.forks.toLocaleString()}</td><td></td></tr>
+<tr><td>Open issues</td><td>${r.issues.toLocaleString()}</td><td></td></tr>
 <tr><td>Last push</td><td>${String(r.pushedAt).slice(0, 10)}</td><td>recency ${r.recency}/100</td></tr>
 <tr><td>Weekly velocity</td><td>${r.deltaStars == null ? 'baseline' : (r.deltaStars >= 0 ? '+' : '') + r.deltaStars + ' stars'}</td><td>velocity ${r.velocity}/100</td></tr></table>
 ${r.homepage ? `<p><a href="${esc(r.homepage)}" rel="nofollow noopener" target="_blank">Project site ↗</a> · <a href="https://github.com/${esc(r.full)}" rel="nofollow noopener" target="_blank">GitHub repo ↗</a></p>` : `<p><a href="https://github.com/${esc(r.full)}" rel="nofollow noopener" target="_blank">GitHub repo ↗</a></p>`}
@@ -170,7 +170,7 @@ ${r.homepage ? `<p><a href="${esc(r.homepage)}" rel="nofollow noopener" target="
 
 // ---- index / leaderboard ---------------------------------------------------
 const rows = results.map(r => {
-  const d = r.deltaStars == null ? '<span class="muted">—</span>'
+  const d = r.deltaStars == null ? '<span class="muted"></span>'
     : `<span class="${r.deltaStars >= 0 ? 'up' : 'down'}">${r.deltaStars >= 0 ? '+' : ''}${r.deltaStars.toLocaleString()}</span>`;
   return `<tr><td>${r.rank}</td><td><a href="${PATH}/${r.slug}">${esc(r.owner)}/${esc(r.name)}</a></td><td class="score">${r.score}</td><td>${r.stars.toLocaleString()}</td><td>${d}</td><td>${esc(r.language)}</td></tr>`;
 }).join('\n');
@@ -185,9 +185,9 @@ const indexBody = `<div class="crumb"><a href="/">Home</a> › <a href="/data/">
 <table><tr><th>#</th><th>Startup / Repo</th><th>Score</th><th>Stars</th><th>Δ stars/wk</th><th>Language</th></tr>
 ${rows}</table>
 <h2>How the score works</h2>
-<p>The Momentum Score (0–100) blends three transparent, public signals: <strong>traction</strong> (star count, log-scaled), <strong>recency</strong> (days since last push), and <strong>velocity</strong> (week-over-week star growth). The exact formula is printed at the bottom of every page. Nothing here is proprietary or hidden — reproduce it yourself from the <a href="${PATH}/data.json">dataset</a>.</p>`;
+<p>The Momentum Score (0-100) blends three transparent, public signals: <strong>traction</strong> (star count, log-scaled), <strong>recency</strong> (days since last push), and <strong>velocity</strong> (week-over-week star growth). The exact formula is printed at the bottom of every page. Nothing here is proprietary or hidden, reproduce it yourself from the <a href="${PATH}/data.json">dataset</a>.</p>`;
 writeFileSync(join(HERE, 'index.html'), shell({
-  title: `GitHub Startup Momentum Index — ${results.length} repos ranked | GitDealFlow`,
+  title: `GitHub Startup Momentum Index, ${results.length} repos ranked | GitDealFlow`,
   desc: `Weekly momentum ranking of ${results.length} notable startup & dev-tool GitHub repos by real engineering-activity signals. Updated ${TODAY}. Free dataset, CC BY 4.0.`,
   canonical: BASE + PATH, body: indexBody, jsonld: [dataset, itemList],
 }));

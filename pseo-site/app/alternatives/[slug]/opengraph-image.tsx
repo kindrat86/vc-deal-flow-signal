@@ -3,7 +3,7 @@ import { getAlternative } from "@/content/alternatives";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "VC Deal Flow Signal — Alternative comparison";
+export const alt = "VC Deal Flow Signal, Alternative comparison";
 
 export default async function OGImage({
   params,

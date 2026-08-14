@@ -10,8 +10,8 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
 
 export const metadata: Metadata = {
-  title: `Works with — CRM & Workflow Integrations`,
-  description: `${WORKS_WITH.length} CRM and workflow tool integration pages — Affinity, HubSpot, Salesforce, Notion, Airtable, Slack, Linear, and more. For Corp Dev, PE Operating Partners, and emerging-manager funds who want signals inside their existing stack.`,
+  title: `Works with, CRM & Workflow Integrations`,
+  description: `${WORKS_WITH.length} CRM and workflow tool integration pages, Affinity, HubSpot, Salesforce, Notion, Airtable, Slack, Linear, and more. For Corp Dev, PE Operating Partners, and emerging-manager funds who want signals inside their existing stack.`,
   alternates: { canonical: "/works-with" },
   openGraph: {
     title: "Works with",
@@ -54,8 +54,8 @@ export default function WorksWithHubPage() {
       {
         "@type": "CollectionPage",
         url: PAGE_URL,
-        name: "Works with — CRM & Workflow Integrations",
-        description: `${WORKS_WITH.length} CRM and workflow integrations for VC Deal Flow Signal — for Marcus 100 audiences who want signals inside their existing stack.`,
+        name: "Works with, CRM & Workflow Integrations",
+        description: `${WORKS_WITH.length} CRM and workflow integrations for VC Deal Flow Signal, for Marcus 100 audiences who want signals inside their existing stack.`,
         isPartOf: {
           "@type": "WebSite",
           name: "VC Deal Flow Signal",
@@ -120,7 +120,7 @@ export default function WorksWithHubPage() {
           {WORKS_WITH.length} CRM and workflow tool integrations for VC Deal Flow Signal.
         </p>
         <p className="text-gray-400 text-base leading-relaxed mb-10">
-          Each leaf describes how engineering-acceleration signals flow into the tool —
+          Each leaf describes how engineering-acceleration signals flow into the tool -
           current paths (CSV, REST API, MCP, Zapier, webhooks) plus custom integrations
           available on request. Built for Marcus 100 audiences (Corp Dev, PE Operating
           Partners, non-engineer tech VPs) who want signals inside their existing stack

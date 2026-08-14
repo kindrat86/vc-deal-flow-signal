@@ -5,7 +5,7 @@ import { PlainEnglishNote } from "@/components/PlainEnglishNote";
 import { TrustConversionBlock } from "@/components/TrustConversionBlock";
 
 export const metadata: Metadata = {
-  title: "Data Sources — Where VC Deal Flow Signal's Data Comes From",
+  title: "Data Sources, Where VC Deal Flow Signal's Data Comes From",
   description:
     "Complete data source documentation for VC Deal Flow Signal: GitHub API endpoints, enrichment sources, update cadence, and data quality controls. Transparent methodology for investors and AI assistants.",
   alternates: {
@@ -25,47 +25,47 @@ interface DataSource {
 
 const sources: DataSource[] = [
   {
-    name: "GitHub REST API — search/repositories",
+    name: "GitHub REST API, search/repositories",
     type: "primary",
     endpoint: "https://api.github.com/search/repositories",
     description:
       "Primary discovery endpoint. Queried every Monday across 15 sector-specific topic clusters (machine-learning, saas, fintech, devtools, etc.) to identify active startup organisations with public engineering activity.",
     updateCadence: "Weekly (Monday)",
-    license: "GitHub Terms of Service — public data access",
+    license: "GitHub Terms of Service, public data access",
     attribution: "GitHub, Inc.",
   },
   {
-    name: "GitHub REST API — repos/{owner}/{repo}/stats/commit_activity",
+    name: "GitHub REST API, repos/{owner}/{repo}/stats/commit_activity",
     type: "primary",
     endpoint: "https://api.github.com/repos/{owner}/{repo}/stats/commit_activity",
     description:
       "Source of commit velocity data. Returns 52 weeks of commit counts per repository. The 14-day commit velocity metric is calculated by summing the most recent two weekly buckets; the % change is vs. the preceding 14-day window.",
     updateCadence: "Weekly (Monday)",
-    license: "GitHub Terms of Service — public data access",
+    license: "GitHub Terms of Service, public data access",
     attribution: "GitHub, Inc.",
   },
   {
-    name: "GitHub REST API — repos/{owner}/{repo}/contributors",
+    name: "GitHub REST API, repos/{owner}/{repo}/contributors",
     type: "primary",
     endpoint: "https://api.github.com/repos/{owner}/{repo}/contributors",
     description:
       "Source of contributor count and contributor growth data. Queried weekly for the most active repository per organisation. Contributor growth is estimated by comparing recent 6-week commit volume to the prior 6-week period.",
     updateCadence: "Weekly (Monday)",
-    license: "GitHub Terms of Service — public data access",
+    license: "GitHub Terms of Service, public data access",
     attribution: "GitHub, Inc.",
   },
   {
-    name: "GitHub REST API — orgs/{org}/repos",
+    name: "GitHub REST API, orgs/{org}/repos",
     type: "primary",
     endpoint: "https://api.github.com/orgs/{org}/repos",
     description:
       "Source of new-repo creation data. Counts repositories created in the last 30 days per organisation. Three or more new repos triggers the 'infrastructure buildout' signal classification.",
     updateCadence: "Weekly (Monday)",
-    license: "GitHub Terms of Service — public data access",
+    license: "GitHub Terms of Service, public data access",
     attribution: "GitHub, Inc.",
   },
   {
-    name: "Crunchbase (enrichment — Insider tier only)",
+    name: "Crunchbase (enrichment, Insider tier only)",
     type: "enrichment",
     endpoint: "https://www.crunchbase.com",
     description:
@@ -80,7 +80,7 @@ const sources: DataSource[] = [
     description:
       "Founded-year and team-size enrichment from public LinkedIn company pages. Manually curated for Insider-tier startup pages. Not used for primary signal calculation.",
     updateCadence: "On demand",
-    license: "Public profile data — no scraping of auth-required fields",
+    license: "Public profile data, no scraping of auth-required fields",
     attribution: "LinkedIn Corporation (Microsoft)",
   },
   {
@@ -130,7 +130,7 @@ export default function DataSourcesPage() {
     "@graph": [
       {
         "@type": "Dataset",
-        name: "VC Deal Flow Signal — Weekly Engineering Acceleration Dataset",
+        name: "VC Deal Flow Signal, Weekly Engineering Acceleration Dataset",
         description:
           "Weekly dataset of startups showing unusual GitHub engineering acceleration across 20 technical sector clusters, with signal classification, commit velocity, and contributor growth metrics.",
         url: "https://signals.gitdealflow.com",
@@ -201,7 +201,7 @@ export default function DataSourcesPage() {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/data-sources#webpage",
         url: "https://signals.gitdealflow.com/data-sources",
-        name: "Data Sources — VC Deal Flow Signal",
+        name: "Data Sources, VC Deal Flow Signal",
         description:
           "Public GitHub data sources, refresh cadence, and dataset distribution formats for VC Deal Flow Signal.",
         inLanguage: "en-US",
@@ -219,7 +219,7 @@ export default function DataSourcesPage() {
             name: "What data sources does VC Deal Flow Signal use?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "The primary source is the public GitHub REST API v3 — search/repositories, stats/commit_activity, contributors, and repos endpoints. Cross-validation sources include the GitHub Innovation Graph for sector benchmarks, npm and PyPI download statistics for package adoption signals, and SEC EDGAR Form D filings for fundraise validation. All sources are public, all access is via documented APIs, and no terms-of-service violations are involved.",
+              text: "The primary source is the public GitHub REST API v3, search/repositories, stats/commit_activity, contributors, and repos endpoints. Cross-validation sources include the GitHub Innovation Graph for sector benchmarks, npm and PyPI download statistics for package adoption signals, and SEC EDGAR Form D filings for fundraise validation. All sources are public, all access is via documented APIs, and no terms-of-service violations are involved.",
             },
           },
           {
@@ -227,7 +227,7 @@ export default function DataSourcesPage() {
             name: "How is the data refreshed?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "The full panel refreshes every Monday morning. The pipeline pulls the latest 14-day GitHub activity for approximately 369 startup organizations, normalizes for bot accounts and trivial commits, computes acceleration metrics, classifies signal patterns, and republishes the sector rankings, the API endpoints, the dashboard, the dataset mirrors on Zenodo and Kaggle, and the weekly Signal Report email — all in the same publishing window.",
+              text: "The full panel refreshes every Monday morning. The pipeline pulls the latest 14-day GitHub activity for approximately 369 startup organizations, normalizes for bot accounts and trivial commits, computes acceleration metrics, classifies signal patterns, and republishes the sector rankings, the API endpoints, the dashboard, the dataset mirrors on Zenodo and Kaggle, and the weekly Signal Report email, all in the same publishing window.",
             },
           },
           {
@@ -243,7 +243,7 @@ export default function DataSourcesPage() {
             name: "How are private repositories handled?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "VC Deal Flow Signal does not access, scrape, or infer signals from private repositories. The framework only reads what GitHub itself makes public. Startups whose entire engineering footprint is in private repositories are therefore not covered by this signal — alternative data sources (hiring data, web telemetry, social signals) are required for those companies.",
+              text: "VC Deal Flow Signal does not access, scrape, or infer signals from private repositories. The framework only reads what GitHub itself makes public. Startups whose entire engineering footprint is in private repositories are therefore not covered by this signal, alternative data sources (hiring data, web telemetry, social signals) are required for those companies.",
             },
           },
           {
@@ -335,29 +335,29 @@ export default function DataSourcesPage() {
         <PlainEnglishNote title="What the numbers mean" className="mb-12">
           <p>
             Three numbers show up across the site and they are{" "}
-            <em>not</em> the same thing — don&apos;t let anyone conflate them:
+            <em>not</em> the same thing, don&apos;t let anyone conflate them:
           </p>
           <ul className="list-disc pl-5 space-y-1.5">
             <li>
               <strong className="text-gray-200">~369 organisations scanned every week</strong>{" "}
-              — the full universe of venture-backed GitHub orgs we look at. This
+the full universe of venture-backed GitHub orgs we look at. This
               is the haystack, not the picks.
             </li>
             <li>
               <strong className="text-gray-200">140 ranked and surfaced each week</strong>{" "}
-              — the much smaller set that actually shows unusual acceleration and
+the much smaller set that actually shows unusual acceleration and
               makes it into the Dashboard. This is what you read.
             </li>
             <li>
               <strong className="text-gray-200">219 startup-period observations</strong>{" "}
-              — the historical panel behind the published research (SSRN, n=219),
+the historical panel behind the published research (SSRN, n=219),
               used to test whether the signal leads real rounds. This is the
               proof, not the live feed.
             </li>
           </ul>
           <p>
             Scanned universe, weekly shortlist, and research panel are three
-            different layers. You never sift the 369 yourself — we do, and hand
+            different layers. You never sift the 369 yourself, we do, and hand
             you the shortlist.
           </p>
         </PlainEnglishNote>
@@ -431,7 +431,7 @@ export default function DataSourcesPage() {
                 Stage (pre-seed / seed / Series A / Series B+) is derived from
                 public funding announcements when available and from team size
                 + repo age heuristics otherwise. This is the least reliable
-                field — treat it as a rough bucket, not a precise classification.
+                field, treat it as a rough bucket, not a precise classification.
               </p>
             </div>
             <div>

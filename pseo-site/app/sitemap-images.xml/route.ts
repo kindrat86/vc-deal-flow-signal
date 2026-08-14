@@ -41,8 +41,8 @@ export async function GET() {
     pageUrl: BASE_URL,
     imageUrl: `${BASE_URL}/opengraph-image`,
     caption:
-      "VC Deal Flow Signal — startup engineering acceleration tracker (GitHub commit-velocity rankings).",
-    title: "VC Deal Flow Signal — Homepage OG card",
+      "VC Deal Flow Signal, startup engineering acceleration tracker (GitHub commit-velocity rankings).",
+    title: "VC Deal Flow Signal, Homepage OG card",
   });
 
   // Agents page (separate OG image)
@@ -50,7 +50,7 @@ export async function GET() {
     pageUrl: `${BASE_URL}/agents`,
     imageUrl: `${BASE_URL}/agents/opengraph-image`,
     caption:
-      "Agent Reference — MCP, A2A, NLWeb, function-calling, JSON / CSV / RSS surfaces for VC Deal Flow Signal.",
+      "Agent Reference, MCP, A2A, NLWeb, function-calling, JSON / CSV / RSS surfaces for VC Deal Flow Signal.",
     title: "Agent Reference",
   });
 
@@ -61,7 +61,7 @@ export async function GET() {
       pageUrl: `${BASE_URL}/startups-to-watch/${slug}`,
       imageUrl: `${BASE_URL}/startups-to-watch/${slug}/opengraph-image`,
       caption: `${sector.name} startups ranked by GitHub engineering acceleration, ${period.name}.`,
-      title: `${sector.name} — top startups by commit velocity (${period.name})`,
+      title: `${sector.name}, top startups by commit velocity (${period.name})`,
     });
   }
 
@@ -85,7 +85,7 @@ export async function GET() {
     });
   }
 
-  // Video thumbnails — both the maxres YouTube poster and the smaller hq
+  // Video thumbnails, both the maxres YouTube poster and the smaller hq
   // fallback. Anchored to the canonical /watch/[slug] page so Google can
   // join thumbnail → page → VideoObject.
   for (const v of videos) {

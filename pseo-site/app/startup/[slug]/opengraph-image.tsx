@@ -3,7 +3,7 @@ import { getStartupProfile } from "@/lib/data";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
-export const alt = "VC Deal Flow Signal — Startup engineering acceleration";
+export const alt = "VC Deal Flow Signal, Startup engineering acceleration";
 
 export default async function OGImage({
   params,
@@ -156,7 +156,7 @@ export default async function OGImage({
                 color: accent,
               }}
             >
-              {latest.commitVelocity14d ?? "—"}
+              {latest.commitVelocity14d ?? "-"}
             </div>
             <div style={{ display: "flex", fontSize: 16, color: "#64748b" }}>
               Commits / 14d

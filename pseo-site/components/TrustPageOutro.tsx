@@ -1,17 +1,17 @@
 /**
- * TrustPageOutro — shared bottom block for the legal / trust / procurement pages
+ * TrustPageOutro, shared bottom block for the legal / trust / procurement pages
  * (/privacy, /terms, /dpa, /security, /subprocessors, /disclosure, /standards).
  *
  * Brunson doctrine: there is no such thing as a non-funnel page. A buyer reading
- * a DPA or a security overview is doing vendor diligence — i.e. they are at HIGH
- * intent — yet these pages historically dead-ended with a bare footer. This block
+ * a DPA or a security overview is doing vendor diligence, i.e. they are at HIGH
+ * intent, yet these pages historically dead-ended with a bare footer. This block
  * fixes all three audit lenses at once:
  *   - Rapport (Marcus ↔ The Data Nerd): a first-person `acNote` ties the legal
  *     topic to one of the character's polarities/flaws, plus the AC signoff so the
  *     page doesn't read as faceless boilerplate.
  *   - Brunson convertibility: an honest "cleared diligence → low-risk next step"
  *     bridge to the free Sunday digest. The page now ENDS on a CTA instead of a
- *     dead end. No fake urgency, no value stack — that would burn trust on a legal
+ *     dead end. No fake urgency, no value stack, that would burn trust on a legal
  *     page, which is the opposite of the job.
  *   - Marcus fit: the next-step copy explicitly reassures the non-coding buyer
  *     ("you never have to read a line of code", "nothing here auto-charges").
@@ -26,7 +26,7 @@ import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 interface TrustPageOutroProps {
   /**
    * One or two sentences in The Data Nerd's first-person voice that connect THIS
-   * page's trust topic to a canonical polarity/flaw. Page-specific — this is the
+   * page's trust topic to a canonical polarity/flaw. Page-specific, this is the
    * line that creates rapport, so it must not read like the other six.
    */
   acNote: string;
@@ -34,7 +34,7 @@ interface TrustPageOutroProps {
    * Procurement/contract surfaces (DPA, security, terms, privacy, attestations)
    * are read by a fund's legal or IC team mid-diligence. When true, the next-step
    * block reframes for an institutional buyer and adds a higher-rung CTA to the
-   * application-gated Sharp tier (/enterprise) — so the value ladder's high end is
+   * application-gated Sharp tier (/enterprise), so the value ladder's high end is
    * offered where the highest-intent buyer is actually standing, and the block
    * stops reading like the same consumer nudge on every page.
    */
@@ -49,7 +49,7 @@ export function TrustPageOutro({
 }: TrustPageOutroProps) {
   return (
     <section className={`mt-12 space-y-6 ${className}`} aria-label="A note from the desk and your next step">
-      {/* Rapport — the character's own take on this trust topic */}
+      {/* Rapport, the character's own take on this trust topic */}
       <aside className="rounded-xl border border-amber-700/30 bg-amber-950/15 p-5 sm:p-6">
         <p className="text-amber-300 text-[10px] font-semibold uppercase tracking-wider mb-2">
           A note from the desk
@@ -57,20 +57,20 @@ export function TrustPageOutro({
         <p className="text-gray-300 text-sm leading-relaxed italic">{acNote}</p>
       </aside>
 
-      {/* Identity anchor — whose voice the reader was just reading */}
+      {/* Identity anchor, whose voice the reader was just reading */}
       <DataNerdSignoff variant="compact" />
 
-      {/* Honest next-step bridge — convert the diligence moment, end on the CTA */}
+      {/* Honest next-step bridge, convert the diligence moment, end on the CTA */}
       <div className="rounded-xl border border-emerald-500/30 bg-emerald-500/5 p-5 sm:p-6 space-y-3">
         <h2 className="text-emerald-300 font-semibold">
           {institutional
-            ? "Clearing this for a fund? Here’s the path — and the no-card way to start."
+            ? "Clearing this for a fund? Here’s the path, and the no-card way to start."
             : "Cleared the diligence? Here’s the low-risk next step."}
         </h2>
         <p className="text-gray-300 text-sm leading-relaxed">
           {institutional
-            ? "Your legal or IC team can clear this page without an engineer in the room — that’s the point. When they’re done, most funds start on the free Sunday digest to pressure-test the signal, then move to the application-gated Sharp tier once it’s earning its seat. No card to read the digest, and nothing on this site auto-charges."
-            : "You came here to vet us — fair. If it checks out, the calmest way in is the free Sunday digest: five accelerating startups a week, no card, one-click unsubscribe, and you never have to read a line of code. Nothing on this site auto-charges, and the methodology behind every pick is public."}
+            ? "Your legal or IC team can clear this page without an engineer in the room, that’s the point. When they’re done, most funds start on the free Sunday digest to pressure-test the signal, then move to the application-gated Sharp tier once it’s earning its seat. No card to read the digest, and nothing on this site auto-charges."
+            : "You came here to vet us, fair. If it checks out, the calmest way in is the free Sunday digest: five accelerating startups a week, no card, one-click unsubscribe, and you never have to read a line of code. Nothing on this site auto-charges, and the methodology behind every pick is public."}
         </p>
         <div className="flex flex-wrap gap-3">
           <a

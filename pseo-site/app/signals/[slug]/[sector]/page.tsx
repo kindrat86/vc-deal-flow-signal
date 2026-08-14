@@ -32,7 +32,7 @@ export async function generateMetadata({
   const data = getSignalSectorData(slug, sector);
   if (!data) return {};
 
-  const title = `${data.sector.name} Startups Showing ${data.signalName} — ${data.period.name}`;
+  const title = `${data.sector.name} Startups Showing ${data.signalName}, ${data.period.name}`;
   const description = `${data.startups.length} ${data.sector.name.toLowerCase()} startups currently showing ${data.signalName.toLowerCase()} signal in ${data.period.name}. ${data.signalDescription}`;
 
   return {
@@ -87,7 +87,7 @@ export default async function SignalSectorPage({ params }: PageProps) {
     "@graph": [
       {
         "@type": "Article",
-        headline: `${sectorInfo.name} Startups Showing ${signalName} — ${period.name}`,
+        headline: `${sectorInfo.name} Startups Showing ${signalName}, ${period.name}`,
         description: signalDescription,
         author: DATA_NERD_AUTHOR_REF,
         publisher: {
@@ -205,7 +205,7 @@ export default async function SignalSectorPage({ params }: PageProps) {
 
         <section className="mb-10" aria-label="Startup rankings">
           <h2 className="text-gray-100 font-semibold text-lg mb-4">
-            {sectorInfo.name} startups with {signalName.toLowerCase()} signal —{" "}
+            {sectorInfo.name} startups with {signalName.toLowerCase()} signal, {" "}
             {period.name}
           </h2>
           <StartupTable startups={startups} />

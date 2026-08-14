@@ -1,12 +1,12 @@
 /**
- * Route Canary cron — invoked by Vercel Cron at 06:00 UTC daily.
+ * Route Canary cron, invoked by Vercel Cron at 06:00 UTC daily.
  *
  * Curls every entry in CANONICAL_PROD_ROUTES against the live prod
  * alias (https://signals.gitdealflow.com) and verifies each returns
  * 2xx. Any non-2xx triggers a Resend email to signals@gitdealflow.com
  * with the regression list.
  *
- * Why this exists — `feedback_unmerged_branch_overwrites_prod.md`.
+ * Why this exists, `feedback_unmerged_branch_overwrites_prod.md`.
  * Twice in 24h on 2026-05-06 a `vercel deploy --prod` fired from a
  * source tree missing recently-merged commits, silently 404'd entire
  * batches of routes (Book Funnel + V7 launch the first time, V8/V9
@@ -62,7 +62,7 @@ async function probeOne(path: string): Promise<ProbeResult> {
   try {
     // HEAD is cheaper than GET and Vercel/Next renders identical status
     // codes for HEAD vs GET on Route Handlers and prerendered pages.
-    // Some routes (rare) only allow GET — we'd see those as 405 and
+    // Some routes (rare) only allow GET, we'd see those as 405 and
     // automatically retry with GET.
     let res = await fetch(url, {
       method: "HEAD",
@@ -111,7 +111,7 @@ async function sendAlert(failures: ProbeResult[]): Promise<void> {
     )
     .join("");
   const html = `<!DOCTYPE html><html><body style="font-family:-apple-system,sans-serif;padding:24px;color:#1e293b;">
-<h2 style="margin:0 0 8px;color:#dc2626;">Route Canary — ${failures.length} regression${failures.length === 1 ? "" : "s"}</h2>
+<h2 style="margin:0 0 8px;color:#dc2626;">Route Canary, ${failures.length} regression${failures.length === 1 ? "" : "s"}</h2>
 <p style="margin:0 0 16px;color:#475569;">Canonical production routes that returned non-2xx/3xx. Probed at ${new Date().toISOString()}.</p>
 <table style="border-collapse:collapse;width:100%;background:#fff;border:1px solid #e2e8f0;border-radius:8px;">
   <thead><tr style="background:#f8fafc;"><th style="text-align:left;padding:8px 12px;border-bottom:2px solid #e2e8f0;">Route</th><th style="text-align:right;padding:8px 12px;border-bottom:2px solid #e2e8f0;">Status</th><th style="text-align:left;padding:8px 12px;border-bottom:2px solid #e2e8f0;">Note</th></tr></thead>
@@ -158,7 +158,7 @@ export async function GET(req: Request): Promise<Response> {
   const url = new URL(req.url);
   const dry = url.searchParams.get("dry") === "1";
 
-  // Auth — Vercel Cron sends Bearer CRON_SECRET. Dry runs (manual
+  // Auth, Vercel Cron sends Bearer CRON_SECRET. Dry runs (manual
   // probes) bypass auth so this endpoint is curlable from a laptop
   // without leaking the secret to a shell history.
   if (!dry) {
@@ -194,12 +194,12 @@ export async function GET(req: Request): Promise<Response> {
     }),
   );
 
-  // Fire alert in background — don't block the cron response.
+  // Fire alert in background, don't block the cron response.
   if (failures.length > 0 && !dry) {
     waitUntil(sendAlert(failures));
   }
 
-  // 207 Multi-Status when there's a regression — keeps external uptime
+  // 207 Multi-Status when there's a regression, keeps external uptime
   // monitors happy (they alarm on 4xx/5xx) while signaling "partial
   // success" to anyone reading the response. Pure 200 means clean.
   const status = failures.length === 0 ? 200 : 207;

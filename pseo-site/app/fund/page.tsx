@@ -5,12 +5,12 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
 
 export const metadata: Metadata = {
-  title: "Venture Funds — Deal Flow Context & Engineering Signal Maps",
+  title: "Venture Funds, Deal Flow Context & Engineering Signal Maps",
   description:
     "Independent profiles of well-known venture funds. Published thesis, stage focus, and how GitHub engineering-acceleration signals map to their sourcing. Built for emerging managers and operators.",
   alternates: { canonical: "/fund" },
   openGraph: {
-    title: "Venture Funds — Deal Flow Context & Engineering Signal Maps",
+    title: "Venture Funds, Deal Flow Context & Engineering Signal Maps",
     description:
       "Independent profiles of well-known venture funds with engineering-signal mapping.",
     type: "website",
@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Venture Funds — Deal Flow Context & Engineering Signal Maps",
+    title: "Venture Funds, Deal Flow Context & Engineering Signal Maps",
     description:
       "Independent profiles of well-known venture funds with engineering-signal mapping.",
   },
@@ -36,7 +36,7 @@ const jsonLd = {
       url: PAGE_URL,
       name: "Venture Fund Profiles",
       description:
-        "Independent profiles of well-known venture funds — published thesis, stage focus, and engineering-signal sourcing map.",
+        "Independent profiles of well-known venture funds, published thesis, stage focus, and engineering-signal sourcing map.",
       isPartOf: {
         "@type": "WebSite",
         name: "VC Deal Flow Signal",
@@ -99,7 +99,7 @@ export default function FundHubPage() {
           Venture Fund Profiles
         </h1>
         <p className="text-sky-400 text-base leading-relaxed mb-6 font-medium">
-          Independent profiles of {funds.length} well-known venture funds — published thesis, stage focus, engineering-signal sourcing map.
+          Independent profiles of {funds.length} well-known venture funds, published thesis, stage focus, engineering-signal sourcing map.
         </p>
         <p className="text-gray-400 text-base leading-relaxed mb-10">
           Each page summarizes one fund's publicly stated thesis and maps it against the engineering-acceleration signal panel we publish at VC Deal Flow Signal. Useful for emerging managers studying peer thesis surfaces, operators researching co-investors, or LPs benchmarking sourcing approaches. All data is derived from each fund's own public website and partner-authored materials.

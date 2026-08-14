@@ -1,6 +1,6 @@
 // OpenID Connect Discovery 1.0 alias for our OAuth 2.1 server.
 //
-// This server is OAuth 2.1 with the client_credentials grant — NOT a full
+// This server is OAuth 2.1 with the client_credentials grant, NOT a full
 // OpenID Connect Provider. There is no id_token, no userinfo endpoint,
 // no JWKS (tokens are HMAC-SHA256 signed; symmetric key only).
 //
@@ -9,11 +9,11 @@
 // /.well-known/oauth-authorization-server AND
 // /.well-known/openid-configuration before falling back. Mirroring the
 // metadata at both paths maximizes compatibility without misrepresenting
-// capability — OIDC-only fields are advertised as empty arrays so strict
+// capability, OIDC-only fields are advertised as empty arrays so strict
 // parsers see "unsupported" rather than failing to load the document.
 //
 // Self-contained: this is NOT an alias-via-import (durable rule:
-// force-static + alias-via-import has bitten us before — see
+// force-static + alias-via-import has bitten us before, see
 // feedback_no_force_static_on_alias_via_import.md). Constants are
 // duplicated from oauth-authorization-server/route.ts on purpose.
 

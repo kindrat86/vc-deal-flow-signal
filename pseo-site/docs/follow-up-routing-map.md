@@ -1,4 +1,4 @@
-# GitDealFlow — follow-up routing map
+# GitDealFlow, follow-up routing map
 
 Purpose: define the exact next page after a first-touch page lands.
 

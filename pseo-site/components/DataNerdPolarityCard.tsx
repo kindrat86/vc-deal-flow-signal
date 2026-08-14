@@ -1,5 +1,5 @@
 /**
- * DataNerdPolarityCard — N-pillar polarity teaser.
+ * DataNerdPolarityCard, N-pillar polarity teaser.
  *
  * Brunson DCS Ch 7 + Expert Secrets Ch 5 (Cult-ure): the Attractive Character
  * polarizes. The reader has to know within ~10 seconds whether they agree.
@@ -7,7 +7,7 @@
  * reader self-qualifies before they hit the conversion path.
  *
  * Pulls live from DATA_NERD_POLARITY in lib/data-nerd.ts. Card length
- * adapts to however many polarities are declared (currently 8 — pushed
+ * adapts to however many polarities are declared (currently 8, pushed
  * from the original 4 in the 2026-05-09 character-canon expansion).
  *
  * Optional `limit` prop trims to a teaser count for above-the-fold
@@ -95,7 +95,7 @@ export function DataNerdPolarityCard({
             </>
           ) : (
             <>
-              More on the character behind the methodology —{" "}
+              More on the character behind the methodology, {" "}
               <Link
                 href="/data-nerd"
                 className="text-amber-300 hover:text-amber-200 underline decoration-dotted font-semibold"

@@ -13,7 +13,7 @@ const REPLIT_TEMPLATE_URL = `https://replit.com/new/github/${GITHUB_REPO}`;
 const REPLIT_BADGE = `https://replit.com/badge/github/${GITHUB_REPO}`;
 
 const TITLE =
-  "Run VC Deal Flow Signal on Replit — one-click MCP server + dashboard template";
+  "Run VC Deal Flow Signal on Replit, one-click MCP server + dashboard template";
 const DESCRIPTION =
   "Spin up the VC Deal Flow Signal MCP server inside Replit in under 60 seconds. Run-on-Replit button, .replit + replit.nix preconfigured, Replit Agent compatible, free Replit Core tier supported. Ideal for forking, modifying, or wiring custom Replit Agents to live engineering-acceleration data.";
 
@@ -43,7 +43,7 @@ const HOW_TO_STEPS = [
   },
   {
     name: "Wire the MCP server to Replit Agent",
-    text: "Open the AI panel in your Repl, point Replit Agent at .replit's mcp section. The six tools — trending startups, sector ranks, single-startup lookup, dataset summary, Scout receipts, methodology — appear in the agent's tool palette and become callable in the next prompt.",
+    text: "Open the AI panel in your Repl, point Replit Agent at .replit's mcp section. The six tools, trending startups, sector ranks, single-startup lookup, dataset summary, Scout receipts, methodology, appear in the agent's tool palette and become callable in the next prompt.",
   },
   {
     name: "Or use the public HTTP endpoint",
@@ -58,15 +58,15 @@ const HOW_TO_STEPS = [
 const FAQ = [
   {
     q: "Does this run on Replit's free tier?",
-    a: "Yes. The MCP server is a single-process Node 20 stdio server with ~40 MB resident memory. Fits comfortably inside Replit's free Repl quota. The Streamable-HTTP variant doesn't need a Repl at all — it's hosted at signals.gitdealflow.com.",
+    a: "Yes. The MCP server is a single-process Node 20 stdio server with ~40 MB resident memory. Fits comfortably inside Replit's free Repl quota. The Streamable-HTTP variant doesn't need a Repl at all, it's hosted at signals.gitdealflow.com.",
   },
   {
-    q: "Replit Agent vs custom Replit Agent — which can call the MCP tools?",
+    q: "Replit Agent vs custom Replit Agent, which can call the MCP tools?",
     a: "Both. Replit Agent (Replit's first-party agent) supports MCP servers declared in .replit's [mcp] block. Custom Replit Agents built on top of the Replit Agent SDK can mount MCP servers programmatically too. The six tools are read-only and idempotent, so they're safe to expose to autonomous agents.",
   },
   {
     q: "Can I post a Replit Bounty asking the community to build something with this MCP?",
-    a: "Yes. Replit Bounties accepts task posts where the deliverable is a working Repl. We pin community bounties (eg. 'Build a Replit Agent that drafts a deal memo from get_startup_signal') in the GitDealFlow community thread. Reach out at signals@gitdealflow.com to co-fund a bounty — we match up to USD 100 per accepted bounty.",
+    a: "Yes. Replit Bounties accepts task posts where the deliverable is a working Repl. We pin community bounties (eg. 'Build a Replit Agent that drafts a deal memo from get_startup_signal') in the GitDealFlow community thread. Reach out at signals@gitdealflow.com to co-fund a bounty, we match up to USD 100 per accepted bounty.",
   },
   {
     q: "Do I need a GitHub account to use the Run on Replit button?",
@@ -74,7 +74,7 @@ const FAQ = [
   },
   {
     q: "Is the same Repl listed in Replit Templates?",
-    a: "Yes — under the AI Tools / MCP Servers category. The template is auto-synced from the GitHub repo on every release tag.",
+    a: "Yes, under the AI Tools / MCP Servers category. The template is auto-synced from the GitHub repo on every release tag.",
   },
 ];
 
@@ -177,7 +177,7 @@ export default function ReplitIntegrationPage() {
             </h1>
             <p className="text-xl text-gray-300 leading-relaxed mb-8">
               Spin up the MCP server in a Replit Repl in under 60 seconds. One-click import,
-              .replit + replit.nix preconfigured, Replit Agent–compatible. Ideal for
+              .replit + replit.nix preconfigured, Replit Agent-compatible. Ideal for
               forking the server, building a custom Replit Agent on top of the six tools,
               or wiring deal-flow signals into your existing Replit dashboard.
             </p>
@@ -252,7 +252,7 @@ export default function ReplitIntegrationPage() {
             <p className="text-gray-300 mb-4 leading-relaxed">
               The repo ships with a preconfigured Replit manifest. Replit Agent reads
               the <code className="rounded bg-slate-900 px-1 py-0.5 text-xs">[mcp]</code>{" "}
-              section and auto-mounts the six tools — no SDK calls needed.
+              section and auto-mounts the six tools, no SDK calls needed.
             </p>
             <div className="rounded-xl border border-slate-800 bg-slate-900/50 p-4">
               <pre className="overflow-x-auto text-xs text-gray-300 font-mono leading-relaxed">{REPLIT_CONFIG}</pre>
@@ -278,7 +278,7 @@ export default function ReplitIntegrationPage() {
 
           <section className="mb-16 rounded-2xl border border-orange-900/40 bg-gradient-to-br from-orange-950/30 to-slate-900 p-8">
             <h2 className="text-xl font-bold text-white mb-4">
-              Replit Bounties — co-funded community quests
+              Replit Bounties, co-funded community quests
             </h2>
             <p className="text-sm text-gray-300 mb-4 leading-relaxed">
               We sponsor and match-fund Replit Bounties for community projects built on
@@ -288,7 +288,7 @@ export default function ReplitIntegrationPage() {
               <li className="flex gap-2">
                 <span className="text-orange-400">→</span>
                 <span>
-                  <strong className="text-white">Deal-memo generator</strong> — a
+                  <strong className="text-white">Deal-memo generator</strong>: a
                   Replit Agent that drafts a one-page memo from{" "}
                   <code className="rounded bg-slate-900 px-1 py-0.5 text-[11px]">get_startup_signal</code>.
                   Match up to USD 100.
@@ -297,7 +297,7 @@ export default function ReplitIntegrationPage() {
               <li className="flex gap-2">
                 <span className="text-orange-400">→</span>
                 <span>
-                  <strong className="text-white">CRM auto-enrichment Repl</strong> — a
+                  <strong className="text-white">CRM auto-enrichment Repl</strong>: a
                   cron Repl that pushes weekly trending startups into Affinity or
                   HubSpot via webhook. Match up to USD 100.
                 </span>
@@ -305,7 +305,7 @@ export default function ReplitIntegrationPage() {
               <li className="flex gap-2">
                 <span className="text-orange-400">→</span>
                 <span>
-                  <strong className="text-white">Scout-Score leaderboard widget</strong> — a
+                  <strong className="text-white">Scout-Score leaderboard widget</strong>: a
                   Repl-hosted React widget that renders any GitHub user&apos;s Scout
                   Score from{" "}
                   <code className="rounded bg-slate-900 px-1 py-0.5 text-[11px]">get_scout_receipts</code>.

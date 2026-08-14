@@ -8,40 +8,40 @@ import "server-only";
  * last hour, last 24h) so the Funnel Hub can render a "X looking right now /
  * Y joined this hour" social-proof multiplier next to every funnel card.
  *
- * Brunson Traffic Secrets §3 Ch 12 — Funnel Hub. The book recommends listing
+ * Brunson Traffic Secrets §3 Ch 12, Funnel Hub. The book recommends listing
  * every funnel; the missing piece on this site was real-time activity proof
  * next to each entry. This module is that piece.
  *
  * Design choices:
  *
- *   1. Single key per slug — one runtime-cache entry holds an append-only
+ *   1. Single key per slug, one runtime-cache entry holds an append-only
  *      array of {ts,sid} events. Read+filter+append+write on each track.
  *      Avoids the "two writers race the counter" problem of a single integer.
  *
- *   2. Capped at 500 events — runtime-cache item limit is 2 MB; a 500-element
+ *   2. Capped at 500 events, runtime-cache item limit is 2 MB; a 500-element
  *      array of {ts:number, sid:string} is ~30 KB. Headroom is huge but the
  *      cap also keeps writes fast.
  *
- *   3. TTL 25 hours — so we always have ≥24h of data even at the moment
+ *   3. TTL 25 hours, so we always have ≥24h of data even at the moment
  *      a window rolls over. Each write resets the TTL (rolling window).
  *
- *   4. Sessions deduped per 5 min — when computing "active right now", the
+ *   4. Sessions deduped per 5 min, when computing "active right now", the
  *      same sid within a 5-min window counts once. Without dedup a single
  *      visitor polling the page would spike the counter.
  *
- *   5. In-memory fallback — local `next dev` and any non-Vercel runtime
+ *   5. In-memory fallback, local `next dev` and any non-Vercel runtime
  *      uses an in-process Map. Lossy across cold starts, fine for dev.
  *
- *   6. Honest numbers, not fake — we do NOT seed the counters. On day 1 the
+ *   6. Honest numbers, not fake, we do NOT seed the counters. On day 1 the
  *      numbers are real (low). They grow with traffic. This is consistent
- *      with the project's "methodology over personality" pillar — show the
+ *      with the project's "methodology over personality" pillar, show the
  *      real number, even if small.
  */
 
 import { getCache } from "@vercel/functions";
 
 const NAMESPACE = "funnel-activity";
-const TTL_SECONDS = 25 * 3600; // 25h — always covers a 24h read window
+const TTL_SECONDS = 25 * 3600; // 25h, always covers a 24h read window
 const MAX_EVENTS = 500;
 const ACTIVE_WINDOW_MS = 5 * 60_000; // 5 min
 const HOUR_MS = 60 * 60_000;
@@ -173,7 +173,7 @@ export async function readFunnelCounts(slug: string): Promise<ActivityCounts> {
   return summarize(events, Date.now());
 }
 
-/** Read counts for many slugs in one shot — used by GET /api/funnel-activity. */
+/** Read counts for many slugs in one shot, used by GET /api/funnel-activity. */
 export async function readManyFunnelCounts(
   slugs: string[],
 ): Promise<Record<string, ActivityCounts>> {
@@ -186,7 +186,7 @@ export async function readManyFunnelCounts(
   return out;
 }
 
-/** Test-only — drop the singleton. */
+/** Test-only, drop the singleton. */
 export function __resetForTests(): void {
   _store = null;
 }

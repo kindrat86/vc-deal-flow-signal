@@ -1,5 +1,5 @@
 /**
- * /founder/[handle] entity pages — public-figure engineering profile pages.
+ * /founder/[handle] entity pages, public-figure engineering profile pages.
  *
  * Strict privacy posture: this corpus is restricted to public figures who
  *  - self-publish their GitHub handle on their own company website or
@@ -62,9 +62,9 @@ function build(p: {
     role: p.role,
     affiliation: p.affiliation,
     publicSource: p.publicSource,
-    title: `${p.name} (@${p.handle}) — Public Engineering Profile | VC Deal Flow Signal`,
+    title: `${p.name} (@${p.handle}), Public Engineering Profile | VC Deal Flow Signal`,
     metaDescription: `${p.name} is ${p.role} at ${p.affiliation}. Public engineering profile and notable open-source work, sourced exclusively from publicly self-published references.`,
-    h1: `${p.name} — Public Engineering Profile`,
+    h1: `${p.name}, Public Engineering Profile`,
     tagline: `${p.name} is ${p.role} at ${p.affiliation}. This page summarizes publicly observable engineering activity tied to the @${p.handle} GitHub handle.`,
     intro: `${p.name} (GitHub @${p.handle}) is ${p.role} at ${p.affiliation}. The @${p.handle} GitHub handle is self-published by ${p.name} at ${p.publicSource}, which is the source we rely on for the identity-to-handle mapping shown on this page. Everything below is observable from public GitHub events and from ${p.name}'s own publicly stated affiliations.`,
     notablePublicWork: p.notable,
@@ -363,7 +363,7 @@ export const founders: Founder[] = [
     sameAs: ["https://twitter.com/ezyang", "https://blog.ezyang.com"],
   }),
 
-  // --- Gaming infrastructure — Heroic Labs (Nakama) co-founders ---
+  // --- Gaming infrastructure, Heroic Labs (Nakama) co-founders ---
   // All three self-publish "Founder of @heroiclabs" on their GitHub profiles
   // and are the top public contributors to the Nakama open-source game server.
   build({

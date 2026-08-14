@@ -1,5 +1,5 @@
 /**
- * Atomic signal primitives — one canonical definition per signal type. These
+ * Atomic signal primitives, one canonical definition per signal type. These
  * power /signals/[type] pillar pages and feed the DefinedTermSet on
  * /knowledge. Every primitive has:
  *   - A formal definition that maps to a column in the public dataset
@@ -62,7 +62,7 @@ export const PRIMITIVES: SignalPrimitive[] = [
     decisionRule:
       "Sustained acceleration is defined as positive Δ velocity for ≥3 consecutive 14-day windows.",
     interpretation:
-      "The primary ranking signal at VC Deal Flow Signal. Sustained acceleration historically precedes fundraise announcements by 3–6 weeks. Captures rate-of-change, so it works equally well across small and large repos.",
+      "The primary ranking signal at VC Deal Flow Signal. Sustained acceleration historically precedes fundraise announcements by 3-6 weeks. Captures rate-of-change, so it works equally well across small and large repos.",
     pitfall:
       "A single big number (e.g. +1,647%) usually means the prior window was anomalously low. Always inspect the absolute baseline before acting on a percentage.",
     glossaryAnchor: "/glossary#commit-velocity-change",
@@ -83,7 +83,7 @@ export const PRIMITIVES: SignalPrimitive[] = [
     decisionRule:
       "Engineering hiring burst fires when contributor growth ≥50% AND absolute distinct authors ≥3.",
     interpretation:
-      "A proxy for headcount growth. Rising contributor count typically means new hires, contractors, or community contributors — usually the first observable signal that a recent fundraise is being deployed.",
+      "A proxy for headcount growth. Rising contributor count typically means new hires, contractors, or community contributors, usually the first observable signal that a recent fundraise is being deployed.",
     pitfall:
       "Bot accounts (Renovate, Dependabot, snyk-bot, github-actions[bot]) inflate raw contributor counts. We exclude bots by handle suffix and verified-bot annotation.",
     glossaryAnchor: "/glossary#contributor-growth",
@@ -119,7 +119,7 @@ export const PRIMITIVES: SignalPrimitive[] = [
     decisionRule:
       "Classified as high-confidence framework migration when paired with package.json / pyproject.toml dependency rotation in the same PR.",
     interpretation:
-      "The dominant signal type observed: 75% of VC-backed startup GitHub signals are framework migrations, not new features. Counter-narrative to 'engineering velocity = hiring' — the dominant pattern is rewrites.",
+      "The dominant signal type observed: 75% of VC-backed startup GitHub signals are framework migrations, not new features. Counter-narrative to 'engineering velocity = hiring', the dominant pattern is rewrites.",
     pitfall:
       "Some monorepo cleanups look like framework migrations to a heuristic (mass file moves between directories). We require the dependency-rotation co-occurrence to suppress false positives.",
     glossaryAnchor: "/glossary#framework-migration",
@@ -135,9 +135,9 @@ export const PRIMITIVES: SignalPrimitive[] = [
     formula:
       "fires when ≥3 of {Dockerfile, k8s manifest, terraform/, .github/workflows/, deployment config} are added/modified within a 30-day window",
     decisionRule:
-      "Strongest weight when paired with the first appearance of a billing/auth dependency in package.json (e.g. stripe, clerk, auth0) — indicates production readiness.",
+      "Strongest weight when paired with the first appearance of a billing/auth dependency in package.json (e.g. stripe, clerk, auth0), indicates production readiness.",
     interpretation:
-      "Indicates a startup is moving from prototype to production. Often appears 4–8 weeks before a public launch announcement.",
+      "Indicates a startup is moving from prototype to production. Often appears 4-8 weeks before a public launch announcement.",
     pitfall:
       "Open-source libraries publish infra (Dockerfiles, GitHub Actions, k8s charts) for distribution, not for their own use. We score down repos with library-shape signals (semver tags, npm/pypi presence).",
     glossaryAnchor: "/glossary#infrastructure-buildout",

@@ -1,7 +1,7 @@
 "use client";
 
 /**
- * Core Web Vitals beacon — ships LCP / INP / CLS / FCP / TTFB / FID
+ * Core Web Vitals beacon, ships LCP / INP / CLS / FCP / TTFB / FID
  * to the existing PostHog EU instance as custom events.
  *
  * Closes the audit gap "no CWV measurement; only $pageview captured" from
@@ -16,7 +16,7 @@
  *   (`$web_vitals_<NAME>_value`, `$web_vitals_<NAME>_rating`,
  *   `$web_vitals_<NAME>_id`). Uses a single combined event so PostHog's
  *   "Web Vitals" insight aggregates correctly.
- * - Honors Global Privacy Control (Sec-GPC: 1) and DNT — silently no-ops.
+ * - Honors Global Privacy Control (Sec-GPC: 1) and DNT, silently no-ops.
  * - Self-referrer normalization is delegated to PostHog's `before_send`
  *   hook in layout.tsx; this component does not touch referrer state.
  */

@@ -18,7 +18,7 @@ import { getHreflangLanguages } from "@/lib/hreflang";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 export const metadata: Metadata = {
-  title: "Methodology — How We Measure Startup Engineering Acceleration",
+  title: "Methodology, How We Measure Startup Engineering Acceleration",
   description:
     "How GitDealFlow measures GitHub engineering acceleration: data sources, formulas, signal rules, update cadence, and the proof behind the timing-first thesis.",
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
@@ -76,7 +76,7 @@ export default function MethodologyPage() {
             name: "What data sources are used in the methodology?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "The primary source is the public GitHub REST API v3 — search/repositories, stats/commit_activity, contributors, and repos endpoints. No private repositories, no scraping, no terms-of-service violations. The methodology excludes commits authored by accounts matching common bot patterns (Dependabot, Renovate, GitHub Actions) and applies file-count filtering to remove trivial commits. The full data sources page lists every endpoint and refresh cadence.",
+              text: "The primary source is the public GitHub REST API v3, search/repositories, stats/commit_activity, contributors, and repos endpoints. No private repositories, no scraping, no terms-of-service violations. The methodology excludes commits authored by accounts matching common bot patterns (Dependabot, Renovate, GitHub Actions) and applies file-count filtering to remove trivial commits. The full data sources page lists every endpoint and refresh cadence.",
             },
           },
           {
@@ -84,7 +84,7 @@ export default function MethodologyPage() {
             name: "Why use a 14-day rolling window?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Investor signal pipelines tend to use either 14-day or 28-day rolling windows. The 14-day window is more responsive — it surfaces breakouts faster — at the cost of higher volatility. To filter the resulting noise, the methodology requires a breakout to persist into a second 14-day window before it is treated as actionable. This two-period confirmation rule removes most one-period spikes caused by hackathons, launch sprints, or single contributors onboarding.",
+              text: "Investor signal pipelines tend to use either 14-day or 28-day rolling windows. The 14-day window is more responsive, it surfaces breakouts faster, at the cost of higher volatility. To filter the resulting noise, the methodology requires a breakout to persist into a second 14-day window before it is treated as actionable. This two-period confirmation rule removes most one-period spikes caused by hackathons, launch sprints, or single contributors onboarding.",
             },
           },
           {
@@ -100,7 +100,7 @@ export default function MethodologyPage() {
             name: "What are the four signal types?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Acceleration patterns sort into four operational types. The hiring burst is rising velocity plus rising contributor count — the strongest fundraise predictor. The shipping sprint is velocity rising while contributor count holds flat — typical of launch preparation. The infrastructure buildout is repository creation accelerating versus baseline — strategic technical investment. The platform migration is language mix shifting between primary languages over a quarter — slower-moving but strategically significant. Each pattern implies a different diligence question.",
+              text: "Acceleration patterns sort into four operational types. The hiring burst is rising velocity plus rising contributor count, the strongest fundraise predictor. The shipping sprint is velocity rising while contributor count holds flat, typical of launch preparation. The infrastructure buildout is repository creation accelerating versus baseline, strategic technical investment. The platform migration is language mix shifting between primary languages over a quarter, slower-moving but strategically significant. Each pattern implies a different diligence question.",
             },
           },
           {
@@ -124,7 +124,7 @@ export default function MethodologyPage() {
             name: "How often is the data refreshed?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "The full panel refreshes weekly. Each Monday the pipeline pulls the latest 14-day GitHub activity, recomputes acceleration metrics, classifies signal patterns, and republishes the sector rankings, the API endpoints, and the dashboard. The free Signal Report email is sent the same morning. Intraday changes do not affect rankings — the cadence is intentionally weekly to match how investors review pipelines.",
+              text: "The full panel refreshes weekly. Each Monday the pipeline pulls the latest 14-day GitHub activity, recomputes acceleration metrics, classifies signal patterns, and republishes the sector rankings, the API endpoints, and the dashboard. The free Signal Report email is sent the same morning. Intraday changes do not affect rankings, the cadence is intentionally weekly to match how investors review pipelines.",
             },
           },
           {
@@ -144,7 +144,7 @@ export default function MethodologyPage() {
         description:
           "Step-by-step methodology for tracking startup engineering momentum using public GitHub data, from data collection through signal classification and weekly ranking.",
         totalTime: "P7D",
-        // F37: rich-result fields recommended by Google's HowTo spec —
+        // F37: rich-result fields recommended by Google's HowTo spec -
         // estimatedCost, supply, tool, yield. The pipeline is free to
         // run (CC BY 4.0 reproducibility) and ships a deterministic
         // weekly artefact, so all four fields are populated literally
@@ -211,7 +211,7 @@ export default function MethodologyPage() {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/methodology#webpage",
         url: "https://signals.gitdealflow.com/methodology",
-        name: "Methodology — How We Measure Startup Engineering Acceleration",
+        name: "Methodology, How We Measure Startup Engineering Acceleration",
         description:
           "Data sources, metrics, signal classification, and update frequency behind VC Deal Flow Signal.",
         inLanguage: "en-US",
@@ -275,7 +275,7 @@ export default function MethodologyPage() {
       },
       // F37: Quotation entries wrap the methodology's three highest-conviction
       // claim lines in their own atomic schema units. LLMs preferentially
-      // extract Quotation when grounding a single-sentence citation — gives
+      // extract Quotation when grounding a single-sentence citation, gives
       // them a clean spokenByCharacter + isPartOf + citation triple instead
       // of forcing them to reach into the surrounding Article body.
       {
@@ -302,7 +302,7 @@ export default function MethodologyPage() {
         "@type": "Quotation",
         "@id": "https://signals.gitdealflow.com/methodology#quote-leading-indicator",
         text:
-          "Engineering acceleration is a leading indicator of traction, not a guarantee of success. Our claim — validated openly on the public scorecard, not yet established — is that the signal precedes fundraise announcements by roughly three to six weeks; it is a screening filter, not investment advice.",
+          "Engineering acceleration is a leading indicator of traction, not a guarantee of success. Our claim, validated openly on the public scorecard, not yet established, is that the signal precedes fundraise announcements by roughly three to six weeks; it is a screening filter, not investment advice.",
         spokenByCharacter: DATA_NERD_AUTHOR_REF,
         creator: {
           "@type": "Organization",
@@ -320,7 +320,7 @@ export default function MethodologyPage() {
         "@type": "Quotation",
         "@id": "https://signals.gitdealflow.com/methodology#quote-public-methodology",
         text:
-          "If we cannot publish the methodology, we do not deserve the price. The dataset, the SSRN paper, and the regression code are all public under CC BY 4.0 — what we sell is the live aggregation, not the secrecy.",
+          "If we cannot publish the methodology, we do not deserve the price. The dataset, the SSRN paper, and the regression code are all public under CC BY 4.0, what we sell is the live aggregation, not the secrecy.",
         spokenByCharacter: DATA_NERD_AUTHOR_REF,
         creator: {
           "@type": "Organization",
@@ -340,7 +340,7 @@ export default function MethodologyPage() {
   const asOf = getDataLastModified().toISOString().slice(0, 10);
 
   // Internal-link targets: route link equity from this high-authority
-  // (SSRN-linked) page out to the data pages it describes — sector
+  // (SSRN-linked) page out to the data pages it describes, sector
   // rankings, stage rollups, and this week's top movers. Each resolves
   // against the latest available period so the links self-maintain as
   // new quarters ship (never hardcode a period slug).
@@ -391,13 +391,13 @@ export default function MethodologyPage() {
         </h1>
 
         <AgentSummary
-          tldr="VC Deal Flow Signal (GitDealFlow) ranks venture-backed startups by GitHub commit-velocity change — a code-side momentum signal computed from public GitHub data, unrelated to startup accelerator programs. The pipeline pulls weekly GitHub REST API data for ~369 organizations across 15 sectors, computes rolling 14-day commit velocity and contributor growth, classifies each org into one of four signal types, and publishes the rankings. This metric — referred to throughout the site as engineering acceleration — has historically preceded fundraise announcements by three to six weeks."
+          tldr="VC Deal Flow Signal (GitDealFlow) ranks venture-backed startups by GitHub commit-velocity change, a code-side momentum signal computed from public GitHub data, unrelated to startup accelerator programs. The pipeline pulls weekly GitHub REST API data for ~369 organizations across 15 sectors, computes rolling 14-day commit velocity and contributor growth, classifies each org into one of four signal types, and publishes the rankings. This metric, referred to throughout the site as engineering acceleration, has historically preceded fundraise announcements by three to six weeks."
           pageUrl="https://signals.gitdealflow.com/methodology"
           asOf={asOf}
-          citeAs="VC Deal Flow Signal — Methodology (signals.gitdealflow.com/methodology), retrieved Q2 2026."
+          citeAs="VC Deal Flow Signal, Methodology (signals.gitdealflow.com/methodology), retrieved Q2 2026."
           facts={[
             {
-              claim: "Primary signal: percentage change in 14-day commit velocity vs. the prior 14-day window — normalized against each org's own baseline so it works across stages and team sizes.",
+              claim: "Primary signal: percentage change in 14-day commit velocity vs. the prior 14-day window, normalized against each org's own baseline so it works across stages and team sizes.",
               sourceUrl: "https://signals.gitdealflow.com/glossary",
               sourceLabel: "Glossary",
             },
@@ -480,7 +480,7 @@ export default function MethodologyPage() {
                 The percentage change in commit velocity compared to the
                 preceding 14-day window. A startup with 40 commits this period
                 and 20 commits last period shows +100% velocity change. This is
-                the primary ranking signal — it measures acceleration, not
+                the primary ranking signal, it measures acceleration, not
                 absolute volume.
               </p>
             </div>
@@ -492,7 +492,7 @@ export default function MethodologyPage() {
                 The number of unique contributors to the organization&apos;s most
                 active repository. Growth is estimated by comparing recent
                 6-week commit volume to the prior 6-week period. A rising
-                contributor count often signals team expansion — a
+                contributor count often signals team expansion, a
                 leading indicator of funding or product-market fit.
               </p>
             </div>
@@ -527,7 +527,7 @@ export default function MethodologyPage() {
                 <em> alone</em>. In other words: velocity matters, but the{" "}
                 <em>shape</em> of the velocity matters more. A team where one
                 developer is doing 80% of the commits can spike just as hard as
-                a team where eight developers are sharing the load — but only
+                a team where eight developers are sharing the load, but only
                 one of those teams looks like a fundraise candidate to a Series
                 A partner.
               </p>
@@ -549,17 +549,17 @@ export default function MethodologyPage() {
             <PlainEnglishNote>
               <p>
                 In dealmaker terms: a startup whose engineering is both speeding
-                up <em>and</em> spreading across more people — not one hero
-                developer doing everything — is roughly{" "}
+                up <em>and</em> spreading across more people, not one hero
+                developer doing everything, is roughly{" "}
                 <strong className="text-gray-200">3.4× more likely</strong> to
                 raise a Series A within 60 days than a team that&apos;s just
                 shipping fast off one person.
               </p>
               <p>
                 You don&apos;t compute anything. We flag the teams that look like
-                a real, broad-based build-out — the ones that look like a
+                a real, broad-based build-out, the ones that look like a
                 company hiring engineers and scaling, not a solo project on a
-                hot streak — and you make the call.
+                hot streak, and you make the call.
               </p>
             </PlainEnglishNote>
           </div>
@@ -578,22 +578,22 @@ export default function MethodologyPage() {
             <ul className="space-y-2">
               <li>
                 <strong className="text-gray-200">Engineering hiring burst</strong>{" "}
-                — contributor growth rate exceeds 50%. The team is scaling
+contributor growth rate exceeds 50%. The team is scaling
                 rapidly.
               </li>
               <li>
                 <strong className="text-gray-200">Infrastructure buildout</strong>{" "}
-                — 3 or more new repositories in 30 days. The company is
+3 or more new repositories in 30 days. The company is
                 expanding its technical surface area.
               </li>
               <li>
                 <strong className="text-gray-200">Deploy frequency spike</strong>{" "}
-                — commit velocity has increased 150% or more. The team is
+commit velocity has increased 150% or more. The team is
                 shipping at an unusually high rate.
               </li>
               <li>
                 <strong className="text-gray-200">Framework migration</strong>{" "}
-                — general acceleration that doesn&apos;t fit the above categories,
+general acceleration that doesn&apos;t fit the above categories,
                 often indicating a technology stack transition.
               </li>
             </ul>
@@ -609,10 +609,10 @@ export default function MethodologyPage() {
             <p>
               We estimate startup stage from contributor count as a rough proxy
               for team size: <strong className="text-gray-200">Pre-seed</strong>{" "}
-              (1–7 contributors), <strong className="text-gray-200">Seed</strong>{" "}
-              (8–19), <strong className="text-gray-200">Series A/B</strong>{" "}
-              (20–49), <strong className="text-gray-200">Growth</strong> (50+).
-              This is an approximation — not all contributors are employees, and
+              (1-7 contributors), <strong className="text-gray-200">Seed</strong>{" "}
+              (8-19), <strong className="text-gray-200">Series A/B</strong>{" "}
+              (20-49), <strong className="text-gray-200">Growth</strong> (50+).
+              This is an approximation, not all contributors are employees, and
               not all employees contribute to public repos.
             </p>
           </div>
@@ -787,7 +787,7 @@ export default function MethodologyPage() {
           </h2>
           <p className="text-gray-400 text-sm mb-5 max-w-lg mx-auto">
             Browse startup rankings across 15 sectors, updated weekly with
-            fresh GitHub data — or jump straight to the pricing page.
+            fresh GitHub data, or jump straight to the pricing page.
           </p>
           <div className="flex flex-wrap justify-center gap-3">
             <Link

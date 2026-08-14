@@ -9,9 +9,9 @@ import Link from "next/link";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Approve Share — VC Deal Flow Signal MCP",
+  title: "Approve Share, VC Deal Flow Signal MCP",
   description:
-    "Review the post the agent wants to compose for you. Nothing is published — this only mints a 10-minute approval token for the share_result MCP tool.",
+    "Review the post the agent wants to compose for you. Nothing is published, this only mints a 10-minute approval token for the share_result MCP tool.",
   robots: { index: false, follow: false },
 };
 
@@ -40,7 +40,7 @@ export default async function ShareApprovePage({ searchParams }: PageProps) {
         (Claude, Cursor, Cline, etc.) can&apos;t compose social-media post
         bodies for you without an explicit human checkpoint. After you
         approve, you&apos;ll get a 10-minute one-time token to paste back to
-        the agent — only then can it call <code>share_result</code>.
+        the agent, only then can it call <code>share_result</code>.
       </p>
 
       <section className="mt-8 rounded-lg border border-slate-200 bg-slate-50 p-5">
@@ -57,7 +57,7 @@ export default async function ShareApprovePage({ searchParams }: PageProps) {
         </blockquote>
         {!lenOk && proposed.length > 0 && (
           <p className="mt-3 text-sm text-red-600">
-            Summary must be {MIN_LEN}–{MAX_LEN} characters. Ask the agent to
+            Summary must be {MIN_LEN}-{MAX_LEN} characters. Ask the agent to
             shorten / expand and retry.
           </p>
         )}
@@ -84,7 +84,7 @@ export default async function ShareApprovePage({ searchParams }: PageProps) {
           </li>
           <li>Returns intent URLs that pre-fill the destination network&apos;s compose UI.</li>
           <li>
-            Does <strong>not</strong> publish on your behalf — you still click
+            Does <strong>not</strong> publish on your behalf, you still click
             Post in the destination network.
           </li>
         </ul>
@@ -105,7 +105,7 @@ export default async function ShareApprovePage({ searchParams }: PageProps) {
 function ApprovalWidget({ summary }: { summary: string }) {
   // The widget is rendered server-side and progressively enhanced by the
   // tiny inline script below. If JS is disabled the user can still POST the
-  // form directly — we render the resulting JSON as plain text in that case.
+  // form directly, we render the resulting JSON as plain text in that case.
   return (
     <div className="mt-4 space-y-4">
       <form
@@ -157,7 +157,7 @@ function ApprovalWidget({ summary }: { summary: string }) {
       </noscript>
 
       <script
-        // Minimal progressive enhancement — no framework hydration needed.
+        // Minimal progressive enhancement, no framework hydration needed.
         // eslint-disable-next-line react/no-danger
         dangerouslySetInnerHTML={{
           __html: `

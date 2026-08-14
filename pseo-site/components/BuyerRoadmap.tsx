@@ -1,12 +1,12 @@
 import Link from "next/link";
 
 /**
- * BuyerRoadmap — Brunson Expert Secrets Ch 18 (Roadmap).
+ * BuyerRoadmap, Brunson Expert Secrets Ch 18 (Roadmap).
  *
  * The chapter teaches: at the point of decision, give the buyer a
  * "where you are now → where this takes you" arc so the offer reads as
  * a vehicle, not a feature. The standalone /roadmap page exists but
- * lives outside the cart/apply flow — the 2026-05-09 audit scored Ch 18
+ * lives outside the cart/apply flow, the 2026-05-09 audit scored Ch 18
  * at 88/100 with the gap "haven't seen the roadmap integrated into the
  * buyer flow."
  *
@@ -33,7 +33,7 @@ export type RoadmapTier =
   | "sector-sweep"; // €1,997 one-time
 
 export interface RoadmapBeat {
-  /** Time horizon — short, calendar-readable. */
+  /** Time horizon, short, calendar-readable. */
   when: string;
   /** Concrete state-change at that horizon. One sentence. */
   what: string;
@@ -46,12 +46,12 @@ const BEATS_BY_TIER: Record<RoadmapTier, readonly RoadmapBeat[]> = {
     {
       when: "Today",
       what: "Pick one sector at checkout. €7 once, no subscription.",
-      why: "Your first cheque inside the system — the smallest possible test of whether the signal fits your thesis.",
+      why: "Your first cheque inside the system, the smallest possible test of whether the signal fits your thesis.",
     },
     {
       when: "Inside 24 hours",
       what: "The deep-dive PDF + raw CSV + three pre-Crunchbase breakouts land in your inbox.",
-      why: "You read the artefact during a single working session. Cold-email math says you have 21–47 days before the deck circulates on those three names.",
+      why: "You read the artefact during a single working session. Cold-email math says you have 21-47 days before the deck circulates on those three names.",
     },
     {
       when: "Day 14",
@@ -61,7 +61,7 @@ const BEATS_BY_TIER: Record<RoadmapTier, readonly RoadmapBeat[]> = {
     {
       when: "Day 90",
       what: "You either own the rhythm (Sunday digest, Wednesday filter, end-of-quarter sweep) or you have a written reason to walk.",
-      why: "By 90 days you have your own scorecard. The methodology is the only durable moat — your judgement against it is the second.",
+      why: "By 90 days you have your own scorecard. The methodology is the only durable moat, your judgement against it is the second.",
     },
   ],
   dashboard: [
@@ -78,28 +78,28 @@ const BEATS_BY_TIER: Record<RoadmapTier, readonly RoadmapBeat[]> = {
     {
       when: "Day 30",
       what: "Three to five orgs from your first month's lists are in your CRM. One has booked a meeting.",
-      why: "Lead-time IQR is 21–47 days. By Day 30 the first window has closed and the first conversation has opened. Your scorecard begins.",
+      why: "Lead-time IQR is 21-47 days. By Day 30 the first window has closed and the first conversation has opened. Your scorecard begins.",
     },
     {
       when: "Day 90 → 1 year",
       what: "Three to five sourcing wins traced back to the engine. €119.64 a year vs the expected value of one missed name at a €5K cheque (€40K).",
-      why: "The math of the Money Close is calendar-able. By twelve months you either renewed once at the same locked rate or churned with an honest reason — both are signal we use.",
+      why: "The math of the Money Close is calendar-able. By twelve months you either renewed once at the same locked rate or churned with an honest reason, both are signal we use.",
     },
   ],
   insider: [
     {
       when: "Today",
-      what: "Join the Insider Circle — €197/mo. Telegram invite + API key sent within the hour.",
+      what: "Join the Insider Circle, €197/mo. Telegram invite + API key sent within the hour.",
       why: "The 24-hour lead starts the next Sunday. Until then you have Dashboard access + the Telegram thread for the most recent briefing.",
     },
     {
       when: "Sunday + 6 days",
-      what: "First Insider briefing lands in Telegram + email at 09:00 UTC — same ten ranked names the public sees Monday at 09:00 UTC.",
+      what: "First Insider briefing lands in Telegram + email at 09:00 UTC, same ten ranked names the public sees Monday at 09:00 UTC.",
       why: "One full sourcing day before any public-list reader. You're the first cold email of the week, not the fifth.",
     },
     {
       when: "First Tuesday after",
-      what: "First Monthly Insider Drop lands — sector deep-dive, methodology release, founder essay, or tool, on rotation.",
+      what: "First Monthly Insider Drop lands, sector deep-dive, methodology release, founder essay, or tool, on rotation.",
       why: "The continuity programme. Net-new artefact every month, on a four-format rotation. Twelve-month forward calendar at /continuity.",
     },
     {
@@ -111,7 +111,7 @@ const BEATS_BY_TIER: Record<RoadmapTier, readonly RoadmapBeat[]> = {
   sharp: [
     {
       when: "Today",
-      what: "Apply via /apply — five-question diligence form. Reviewed in 48 business hours.",
+      what: "Apply via /apply, five-question diligence form. Reviewed in 48 business hours.",
       why: "Application-gated because the quarterly review call is real founder time. Hard cap at 8 funds in 2026.",
     },
     {
@@ -122,7 +122,7 @@ const BEATS_BY_TIER: Record<RoadmapTier, readonly RoadmapBeat[]> = {
     {
       when: "Day 30",
       what: "First custom watchlist delivered against your written thesis + white-labeled API endpoint live at signal.yourfund.com.",
-      why: "The Sharp Tier deliverables that don't fit the public Dashboard — your fund's thesis, your fund's subdomain, your fund's CRM integration.",
+      why: "The Sharp Tier deliverables that don't fit the public Dashboard, your fund's thesis, your fund's subdomain, your fund's CRM integration.",
     },
     {
       when: "Quarterly",
@@ -148,7 +148,7 @@ const BEATS_BY_TIER: Record<RoadmapTier, readonly RoadmapBeat[]> = {
     },
     {
       when: "Day 60",
-      what: "If you upgrade to Insider Circle, the full €1,997 credits 1:1 against your Insider monthly fee — roughly your first 20 months paid in full.",
+      what: "If you upgrade to Insider Circle, the full €1,997 credits 1:1 against your Insider monthly fee, roughly your first 20 months paid in full.",
       why: "The Sweep becomes the on-ramp, not a one-off. Most Sharp-tier funds enter via this path: Sweep → Insider → Sharp.",
     },
   ],

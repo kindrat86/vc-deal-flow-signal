@@ -1,5 +1,5 @@
 /* ═════════════════════════════════════════════════════════
-   WORLD-CLASS UX ENHANCEMENT — Mobile-First, Accessible, Premium
+   WORLD-CLASS UX ENHANCEMENT, Mobile-First, Accessible, Premium
    Deployed across all 10 portfolio domains: R16
    Adds: CSS vars theming, gradient orbs, glassmorphism,
    animated cards, gradient CTAs, reading progress, back-to-top,
@@ -13,7 +13,7 @@
 :root {
   color-scheme: light dark;
 
-  /* Colors — overridable per-site */
+  /* Colors, overridable per-site */
   --ux-primary: #0066cc;
   --ux-primary-light: #3388dd;
   --ux-primary-dark: #004499;
@@ -55,7 +55,7 @@
   --ux-safe-left: env(safe-area-inset-left, 0px);
   --ux-safe-right: env(safe-area-inset-right, 0px);
 
-  /* Motion easing — expressive */
+  /* Motion easing, expressive */
   --ux-ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
   --ux-ease-out: cubic-bezier(0.16, 1, 0.3, 1);
 }
@@ -136,7 +136,7 @@ input[type="button"], select {
   user-select: none;
 }
 
-/* R16: Native-app touch feedback — subtle scale on tap */
+/* R16: Native-app touch feedback, subtle scale on tap */
 button:active:not(:disabled), .btn:active:not(:disabled),
 [role="button"]:active, a.btn:active, a.button:active, .cta:active {
   transform: scale(0.97);
@@ -162,7 +162,7 @@ a {
 a:hover { color: var(--ux-primary-dark); }
 a:active { color: var(--ux-primary-dark); }
 
-/* ── 7. IMAGES — CLS PREVENTION ────────────────────── */
+/* ── 7. IMAGES, CLS PREVENTION ────────────────────── */
 img, video, iframe, embed { max-width: 100%; height: auto; display: block; }
 img:not([width]):not([height]) { aspect-ratio: 16/9; }
 img[loading="lazy"] { opacity: 0; transition: opacity 0.3s ease; }
@@ -199,7 +199,7 @@ label { display: block; margin-bottom: 0.375rem; font-weight: 600; font-size: 0.
 section, .section { padding: clamp(2rem, 5vw, 4rem) 1.25rem; }
 p { margin-bottom: 1.25em; }
 
-/* ── 10. TABLES — MOBILE SCROLLABLE ────────────────── */
+/* ── 10. TABLES, MOBILE SCROLLABLE ────────────────── */
 table { border-collapse: collapse; max-width: 100%; }
 @media (max-width: 640px) {
   table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
@@ -207,7 +207,7 @@ table { border-collapse: collapse; max-width: 100%; }
 th, td { text-align: left; padding: 0.5rem 0.75rem; border-bottom: 1px solid var(--ux-border); }
 
 /* ════════════════════════════════════════════════════════
-   PREMIUM PATTERNS — R15/R16 ADDITIONS
+   PREMIUM PATTERNS, R15/R16 ADDITIONS
    ════════════════════════════════════════════════════════ */
 
 /* ── 11. SKIP-TO-CONTENT ───────────────────────────── */
@@ -410,7 +410,7 @@ body.ux-has-sticky-cta #ux-back-to-top {
 .animate-stagger > *:nth-child(7) { animation-delay: 0.35s; }
 .animate-stagger > *:nth-child(8) { animation-delay: 0.4s; }
 
-/* R16: Scroll-driven reveal (progressive — no JS needed) */
+/* R16: Scroll-driven reveal (progressive, no JS needed) */
 @supports (animation-timeline: view()) {
   .ux-reveal {
     animation: uxFadeInUp 0.7s var(--ux-ease-out) both;
@@ -532,7 +532,7 @@ body.ux-has-sticky-cta #ux-back-to-top {
 }
 
 /* ════════════════════════════════════════════════════════
-   R16 NEW — MOBILE-NATIVE COMPONENTS
+   R16 NEW, MOBILE-NATIVE COMPONENTS
    ════════════════════════════════════════════════════════ */
 
 /* ── 26. MOBILE BOTTOM NAV BAR ─────────────────────── */
@@ -776,8 +776,7 @@ body.ux-sheet-open {
 
 /* ── 31. VIEW TRANSITIONS API (opt-in) ─────────────── */
 @supports (view-transition-name: none) {
-  ::view-transition-old(root),
-  ::view-transition-new(root) {
+  ::view-transition-old(root): :view-transition-new(root) {
     animation-duration: 0.25s;
   }
 }

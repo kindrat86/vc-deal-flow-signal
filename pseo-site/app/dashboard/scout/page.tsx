@@ -35,7 +35,7 @@ const RANK_COLOR: Record<string, string> = {
 };
 
 export const metadata: Metadata = {
-  title: "Scout Dashboard — Your Predictions",
+  title: "Scout Dashboard, Your Predictions",
   robots: { index: false, follow: false },
   // The page receives an auth token in the URL on first visit. no-referrer
   // prevents the token from leaking to twitter.com / external links via the
@@ -138,7 +138,7 @@ export default async function ScoutDashboardPage({
         <StatCard label="Points" value={Math.round(scout.points).toString()} tone="sky" />
         <StatCard
           label="Accuracy"
-          value={accuracy !== null ? `${accuracy}%` : "—"}
+          value={accuracy !== null ? `${accuracy}%` : "-"}
           tone="emerald"
         />
         <StatCard
@@ -238,7 +238,7 @@ function ShareSection({ scoutHandle, rankLabel }: { scoutHandle: string; rankLab
         </a>
       </div>
       <p className="text-gray-400 text-xs mt-3 leading-relaxed">
-        This link unlocks a 7-day extended preview for whoever opens it. Single-use viral loop — they get a thing, you get distribution. Token expires in 7 days.
+        This link unlocks a 7-day extended preview for whoever opens it. Single-use viral loop, they get a thing, you get distribution. Token expires in 7 days.
       </p>
     </section>
   );

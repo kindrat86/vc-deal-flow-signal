@@ -1,5 +1,5 @@
 /**
- * /sector/[slug]/in/[city] cross-pages — sector × city composition pages.
+ * /sector/[slug]/in/[city] cross-pages, sector × city composition pages.
  *
  * Each leaf is an editorial composition of one sector hub × one city
  * hub: relevant signal patterns when scouting that sector in that city,
@@ -9,7 +9,7 @@
  * Matching: city.notableSectors is free-text editorial strings; sector
  * slugs are kebab-case. We use a keyword map to bridge the two
  * taxonomies. Only generates pages where the city's notableSectors
- * contain at least one keyword for the sector — keeps pages high-signal.
+ * contain at least one keyword for the sector, keeps pages high-signal.
  */
 
 import { sectors, getSector, type Sector } from "@/content/sectors";
@@ -88,15 +88,15 @@ export function sectorCityHasLocalCompanies(
  * Index-eligible sector × city pairs: only the HQ-backed cells.
  *
  * Editorial-only cells (keyword match but no HQ-mapped company) are the
- * thin "made-for-search intersection" tail — their own copy admits "we do
+ * thin "made-for-search intersection" tail, their own copy admits "we do
  * not currently document a {city}-HQ'd company in {sector}". On a
  * low-authority domain those dilute crawl budget and site-quality without
  * a realistic shot at indexation. They remain statically generated and
  * internally linked (`noindex, follow`, see app/sector/[slug]/in/[city]/
  * page.tsx) so they keep passing equity to /signal, /sector, /city and the
- * region panels, and stay reachable for agents/MCP — they are just omitted
+ * region panels, and stay reachable for agents/MCP, they are just omitted
  * from the sitemap and the index. (The /showdown family that pioneered this
- * treatment was removed entirely in 2026-06 — 100% near-duplicate leaves.)
+ * treatment was removed entirely in 2026-06, 100% near-duplicate leaves.)
  * Fully reversible: swap this
  * back to getAllSectorCityPairs() in the sitemap to re-list every cell.
  */

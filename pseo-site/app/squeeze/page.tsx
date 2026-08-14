@@ -9,12 +9,12 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title:
-    "5 breakout startups, every Sunday — 47 days before the deck arrives",
+    "5 breakout startups, every Sunday, 47 days before the deck arrives",
   description:
     "One email a week. Five startups ranked by 14-day GitHub commit-velocity acceleration. Free forever. The same engineering signal that preceded 219 startup-period observations in our SSRN-published panel.",
   alternates: { canonical: "/squeeze" },
   openGraph: {
-    title: "5 breakout startups, every Sunday — 47 days before the deck arrives",
+    title: "5 breakout startups, every Sunday, 47 days before the deck arrives",
     description:
       "One email a week. Five startups ranked by GitHub commit-velocity acceleration. Free forever.",
     type: "website",
@@ -38,7 +38,7 @@ export default function SqueezePage() {
       <AgentMirrorLinks path="/squeeze" />
 
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16 space-y-10">
-        {/* Brunson Lead-Squeeze Funnel — DotCom Secrets Ch 15. Single-purpose
+        {/* Brunson Lead-Squeeze Funnel, DotCom Secrets Ch 15. Single-purpose
             page with one hook, one form, one CTA, no in-page links above the
             form except the (forced-static) hreflang scaffolding. The home page
             is the multi-door entry; this is the one-door dedicated capture
@@ -48,7 +48,7 @@ export default function SqueezePage() {
             Free forever · One email a week · No spam
           </p>
           <h1 className="text-4xl sm:text-5xl font-bold text-gray-100 leading-[1.05] tracking-tight">
-            5 breakout startups, every Sunday —{" "}
+            5 breakout startups, every Sunday, {" "}
             <span className="text-sky-400">47 days</span> before the
             deck arrives.
           </h1>
@@ -67,12 +67,12 @@ export default function SqueezePage() {
           </p>
         </header>
 
-        {/* Form first — Brunson rule: above the fold, before the body
+        {/* Form first, Brunson rule: above the fold, before the body
             copy. The "why" stack lives below the fold for the visitors
             who scroll past the form. */}
         <SqueezeForm />
 
-        {/* The "why" — three short reasons, one per row. Each is a
+        {/* The "why", three short reasons, one per row. Each is a
             specific, falsifiable claim. No filler. */}
         <section
           aria-label="Why investors subscribe"
@@ -89,9 +89,9 @@ export default function SqueezePage() {
               />
               <span>
                 <strong className="text-amber-300">Reaches your
-                inbox 21–47 days before</strong> the founder&rsquo;s
+                inbox 21-47 days before</strong> the founder&rsquo;s
                 deck reaches it. The window where a short, specific
-                note actually gets read — before forty other inboxes
+                note actually gets read, before forty other inboxes
                 light up with the same deck.
               </span>
             </li>
@@ -121,7 +121,7 @@ export default function SqueezePage() {
               />
               <span>
                 <strong className="text-amber-300">Costs you
-                nothing.</strong> The free Sunday digest stays free —
+                nothing.</strong> The free Sunday digest stays free -
                 forever, even after we hit 1,000 paying subscribers.
                 If the rhythm fits, the paid Dashboard sits next to
                 it; if it doesn&rsquo;t, the digest still lands every
@@ -131,7 +131,7 @@ export default function SqueezePage() {
           </ul>
         </section>
 
-        {/* Tertiary entry points — minimal, no upsell pressure. Brunson
+        {/* Tertiary entry points, minimal, no upsell pressure. Brunson
             "exit": one alternative for the visitor who doesn't want to
             sign up but still wants to look around. Single link, soft
             voice. */}

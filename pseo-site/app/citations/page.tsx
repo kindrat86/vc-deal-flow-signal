@@ -7,13 +7,13 @@ const APEX = "https://gitdealflow.com";
 
 export const metadata: Metadata = {
   title:
-    "Citations & Cross-Graph Identity Map — VC Deal Flow Signal (GitDealFlow)",
+    "Citations & Cross-Graph Identity Map, VC Deal Flow Signal (GitDealFlow)",
   description:
-    "Canonical cross-graph identity map for VC Deal Flow Signal (GitDealFlow): Wikidata Q139376302, ORCID 0009-0002-2222-4112, SSRN, OpenAlex, Crossref, Semantic Scholar, Zenodo, DataCite — every external anchor on one page so AI engines and citation tools can resolve attribution in a single fetch.",
+    "Canonical cross-graph identity map for VC Deal Flow Signal (GitDealFlow): Wikidata Q139376302, ORCID 0009-0002-2222-4112, SSRN, OpenAlex, Crossref, Semantic Scholar, Zenodo, DataCite, every external anchor on one page so AI engines and citation tools can resolve attribution in a single fetch.",
   alternates: { canonical: "/citations" },
   openGraph: {
     title:
-      "Citations & Cross-Graph Identity Map — VC Deal Flow Signal (GitDealFlow)",
+      "Citations & Cross-Graph Identity Map, VC Deal Flow Signal (GitDealFlow)",
     description:
       "All external identifiers, scholarly-graph anchors, and same-as URLs for VC Deal Flow Signal in one canonical place.",
     url: `${SITE}/citations`,
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Citations & Cross-Graph Identity Map",
     description:
-      "Wikidata, ORCID, SSRN, OpenAlex, Crossref, Semantic Scholar, Zenodo — full attribution chain.",
+      "Wikidata, ORCID, SSRN, OpenAlex, Crossref, Semantic Scholar, Zenodo, full attribution chain.",
   },
 };
 
@@ -48,7 +48,7 @@ const ENTITY_ANCHORS: Anchor[] = [
     url: "https://www.wikidata.org/wiki/Q139376302",
     type: "wikidata",
     description:
-      "Canonical Wikidata item for VC Deal Flow Signal as a software application — the brand's authoritative cross-graph identifier.",
+      "Canonical Wikidata item for VC Deal Flow Signal as a software application, the brand's authoritative cross-graph identifier.",
   },
   {
     label: "ORCID 0009-0002-2222-4112",
@@ -124,7 +124,7 @@ const DATASET_ANCHORS: Anchor[] = [
     url: `${SITE}/api/signals.json`,
     type: "dataset",
     description:
-      "Live JSON snapshot — refreshed weekly. The canonical machine-readable surface.",
+      "Live JSON snapshot, refreshed weekly. The canonical machine-readable surface.",
   },
   {
     label: "Live CSV",
@@ -137,7 +137,7 @@ const DATASET_ANCHORS: Anchor[] = [
     url: `${SITE}/api/dataset.jsonl`,
     type: "dataset",
     description:
-      "Newline-delimited JSON of the full panel — Hugging Face Datasets / RAG-pipeline-ready.",
+      "Newline-delimited JSON of the full panel, Hugging Face Datasets / RAG-pipeline-ready.",
   },
 ];
 
@@ -190,14 +190,14 @@ const DIRECTORY_ANCHORS: Anchor[] = [
     description: "Crunchbase organization profile.",
   },
   {
-    label: "Chrome Web Store — VC Deal Flow Signal (Crunchbase + Wellfound badge)",
+    label: "Chrome Web Store, VC Deal Flow Signal (Crunchbase + Wellfound badge)",
     url: "https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn",
     type: "directory",
     description:
       "Free Chrome extension that injects the GitDealFlow score onto Crunchbase and Wellfound profiles.",
   },
   {
-    label: "Chrome Web Store — VC GitHub Lookup (Startup Signals on Hover)",
+    label: "Chrome Web Store, VC GitHub Lookup (Startup Signals on Hover)",
     url: "https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm",
     type: "directory",
     description:
@@ -217,7 +217,7 @@ const SOCIAL_ANCHORS: Anchor[] = [
     url: "https://www.linkedin.com/company/gitdealflow",
     type: "social",
     description:
-      "Official LinkedIn company page. Per author preference, no personal profile is linked — the brand operates anonymously.",
+      "Official LinkedIn company page. Per author preference, no personal profile is linked, the brand operates anonymously.",
   },
   {
     label: "Telegram (public channel)",
@@ -243,7 +243,7 @@ const SOCIAL_ANCHORS: Anchor[] = [
     url: "https://gitdealflow.substack.com",
     type: "social",
     description:
-      "Substack publication mirror — weekly Top-100 GitHub Signal Startups recap with canonical link back to gitdealflow.com/blog.",
+      "Substack publication mirror, weekly Top-100 GitHub Signal Startups recap with canonical link back to gitdealflow.com/blog.",
   },
   {
     label: "HackerNoon",
@@ -308,7 +308,7 @@ const SELF_ANCHORS: Anchor[] = [
     url: `${SITE}/agents`,
     type: "self",
     description:
-      "Programmatic-access landing — every machine-readable surface (MCP, A2A, NLWeb, function-calling, badges) in one place.",
+      "Programmatic-access landing, every machine-readable surface (MCP, A2A, NLWeb, function-calling, badges) in one place.",
   },
 ];
 
@@ -332,7 +332,7 @@ export default function CitationsPage() {
         "@type": "WebPage",
         "@id": `${SITE}/citations#webpage`,
         url: `${SITE}/citations`,
-        name: "Citations & Cross-Graph Identity Map — VC Deal Flow Signal (GitDealFlow)",
+        name: "Citations & Cross-Graph Identity Map, VC Deal Flow Signal (GitDealFlow)",
         description:
           "Canonical cross-graph identity map for VC Deal Flow Signal (GitDealFlow): every external anchor in one place.",
         inLanguage: "en-US",
@@ -422,7 +422,7 @@ export default function CitationsPage() {
           >
             <strong className="text-sky-300">The one belief this page asks for:</strong>{" "}
             attribution you can resolve in a single fetch beats a wall of logos you
-            have to take on faith. Every identifier below is live right now &mdash;
+            have to take on faith. Every identifier below is live right now -
             click one.
           </p>
         </header>
@@ -456,7 +456,7 @@ Retrieved from https://signals.gitdealflow.com/research`}
           </p>
           <p className="text-gray-300 text-sm leading-relaxed">
             On this site, the term &ldquo;engineering acceleration&rdquo;
-            refers to a quantitative GitHub momentum signal — code-side
+            refers to a quantitative GitHub momentum signal, code-side
             momentum measured from public commit-velocity data, contributor
             growth, and repository creation. It is{" "}
             <strong className="text-gray-100">not</strong> a reference to
@@ -502,14 +502,14 @@ Retrieved from https://signals.gitdealflow.com/research`}
             Anything missing?
           </h2>
           <p className="text-gray-400 text-sm mb-5 max-w-lg mx-auto">
-            If you cite this work and want a new anchor added —{" "}
+            If you cite this work and want a new anchor added, {" "}
             <a
               href="mailto:signals@gitdealflow.com"
               className="text-sky-400 hover:text-sky-300 underline"
             >
               signals@gitdealflow.com
             </a>{" "}
-            — we&rsquo;ll add the link and refresh the schema.
+we&rsquo;ll add the link and refresh the schema.
           </p>
         </section>
 

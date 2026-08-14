@@ -11,7 +11,7 @@
  * work is treated as part of the scholarly graph by Google Scholar,
  * Semantic Scholar, OpenAlex, and Connected Papers. It is also the highest-
  * leverage E-E-A-T signal for an anonymous author publishing on a non-academic
- * domain — citations route trust through the cited authors back to us.
+ * domain, citations route trust through the cited authors back to us.
  *
  * Editorial rule: only add a citation if you can paste the DOI into
  * https://doi.org and the resolver returns the paper. No "loosely related"
@@ -33,17 +33,17 @@ export interface ExternalCitation {
   datePublished: string;
   /** Venue/journal/conference name. */
   venue: string;
-  /** Volume, issue, pages — optional, free-form. */
+  /** Volume, issue, pages, optional, free-form. */
   citeText?: string;
-  /** Canonical URL — typically doi.org/{doi}. */
+  /** Canonical URL, typically doi.org/{doi}. */
   url: string;
   /** Bare DOI without the resolver prefix. */
   doi?: string;
-  /** Other persistent identifiers — JSTOR, OpenAlex, Semantic Scholar, etc. */
+  /** Other persistent identifiers, JSTOR, OpenAlex, Semantic Scholar, etc. */
   identifiers?: Array<{ propertyID: string; value: string }>;
   /** Mirror URLs (publisher PDF, arXiv, OpenAlex page) for sameAs. */
   sameAs?: string[];
-  /** A one-sentence explanation of why this paper is cited — used in the
+  /** A one-sentence explanation of why this paper is cited, used in the
    *  BibTeX `note` and as a comment in the JSON-LD when verbose mode is on. */
   why: string;
   /**
@@ -71,7 +71,7 @@ export const EXTERNAL_CITATIONS: ExternalCitation[] = [
     year: 2014,
     datePublished: "2014-05-31",
     venue: "Proceedings of the 11th Working Conference on Mining Software Repositories (MSR '14)",
-    citeText: "MSR '14, pp. 92–101",
+    citeText: "MSR '14, pp. 92-101",
     url: "https://doi.org/10.1145/2597073.2597074",
     doi: "10.1145/2597073.2597074",
     identifiers: [
@@ -93,7 +93,7 @@ export const EXTERNAL_CITATIONS: ExternalCitation[] = [
     year: 2013,
     datePublished: "2013-05-18",
     venue: "10th Working Conference on Mining Software Repositories (MSR '13)",
-    citeText: "MSR '13, pp. 233–236",
+    citeText: "MSR '13, pp. 233-236",
     url: "https://doi.org/10.1109/MSR.2013.6624034",
     doi: "10.1109/MSR.2013.6624034",
     identifiers: [{ propertyID: "DOI", value: "10.1109/MSR.2013.6624034" }],
@@ -115,12 +115,12 @@ export const EXTERNAL_CITATIONS: ExternalCitation[] = [
     year: 2017,
     datePublished: "2017-04-15",
     venue: "Empirical Software Engineering",
-    citeText: "EMSE 22(6): 3219–3253",
+    citeText: "EMSE 22(6): 3219-3253",
     url: "https://doi.org/10.1007/s10664-017-9512-6",
     doi: "10.1007/s10664-017-9512-6",
     identifiers: [{ propertyID: "DOI", value: "10.1007/s10664-017-9512-6" }],
     sameAs: ["https://link.springer.com/article/10.1007/s10664-017-9512-6"],
-    why: "Filters real engineering projects from toy/personal repos at scale — methodology we apply to the venture-backed seed list.",
+    why: "Filters real engineering projects from toy/personal repos at scale, methodology we apply to the venture-backed seed list.",
     appliesTo: ["§3", "§3.1", "§3.3"],
   },
   {
@@ -136,7 +136,7 @@ export const EXTERNAL_CITATIONS: ExternalCitation[] = [
     year: 2017,
     datePublished: "2017-03-15",
     venue: "IEEE Access",
-    citeText: "IEEE Access 5: 7173–7192",
+    citeText: "IEEE Access 5: 7173-7192",
     url: "https://doi.org/10.1109/ACCESS.2017.2682323",
     doi: "10.1109/ACCESS.2017.2682323",
     identifiers: [{ propertyID: "DOI", value: "10.1109/ACCESS.2017.2682323" }],
@@ -160,12 +160,12 @@ export const EXTERNAL_CITATIONS: ExternalCitation[] = [
     datePublished: "2015-08-30",
     venue:
       "Proceedings of the 2015 10th Joint Meeting on Foundations of Software Engineering (ESEC/FSE '15)",
-    citeText: "ESEC/FSE '15, pp. 805–816",
+    citeText: "ESEC/FSE '15, pp. 805-816",
     url: "https://doi.org/10.1145/2786805.2786850",
     doi: "10.1145/2786805.2786850",
     identifiers: [{ propertyID: "DOI", value: "10.1145/2786805.2786850" }],
     sameAs: ["https://dl.acm.org/doi/10.1145/2786805.2786850"],
-    why: "Empirical link between observable GitHub workflow signals and downstream productivity — directly motivates commit-velocity as a leading indicator.",
+    why: "Empirical link between observable GitHub workflow signals and downstream productivity, directly motivates commit-velocity as a leading indicator.",
     appliesTo: ["§4.2", "§4.3"],
   },
 
@@ -179,7 +179,7 @@ export const EXTERNAL_CITATIONS: ExternalCitation[] = [
     year: 2000,
     datePublished: "2000-12-01",
     venue: "RAND Journal of Economics",
-    citeText: "RAND J. Econ. 31(4): 674–692",
+    citeText: "RAND J. Econ. 31(4): 674-692",
     url: "https://doi.org/10.2307/2696354",
     doi: "10.2307/2696354",
     identifiers: [
@@ -187,7 +187,7 @@ export const EXTERNAL_CITATIONS: ExternalCitation[] = [
       { propertyID: "JSTOR", value: "2696354" },
     ],
     sameAs: ["https://www.jstor.org/stable/2696354"],
-    why: "Canonical evidence that VC-backed firms produce disproportionate engineering output — the basis for using VC backing as a population frame.",
+    why: "Canonical evidence that VC-backed firms produce disproportionate engineering output, the basis for using VC backing as a population frame.",
     appliesTo: ["§1", "§2"],
   },
   {
@@ -199,12 +199,12 @@ export const EXTERNAL_CITATIONS: ExternalCitation[] = [
     year: 2002,
     datePublished: "2002-02-01",
     venue: "The Journal of Finance",
-    citeText: "J. Finance 57(1): 169–197",
+    citeText: "J. Finance 57(1): 169-197",
     url: "https://doi.org/10.1111/1540-6261.00419",
     doi: "10.1111/1540-6261.00419",
     identifiers: [{ propertyID: "DOI", value: "10.1111/1540-6261.00419" }],
     sameAs: ["https://onlinelibrary.wiley.com/doi/10.1111/1540-6261.00419"],
-    why: "Establishes that VC backing causes observable operational change — supporting the premise that engineering signals shift around funding events.",
+    why: "Establishes that VC backing causes observable operational change, supporting the premise that engineering signals shift around funding events.",
     appliesTo: ["§1", "§2", "§4.3"],
   },
   {
@@ -216,12 +216,12 @@ export const EXTERNAL_CITATIONS: ExternalCitation[] = [
     year: 2020,
     datePublished: "2020-01-01",
     venue: "Journal of Financial Economics",
-    citeText: "J. Financ. Econ. 135(1): 120–143",
+    citeText: "J. Financ. Econ. 135(1): 120-143",
     url: "https://doi.org/10.1016/j.jfineco.2018.04.015",
     doi: "10.1016/j.jfineco.2018.04.015",
     identifiers: [{ propertyID: "DOI", value: "10.1016/j.jfineco.2018.04.015" }],
     sameAs: ["https://www.sciencedirect.com/science/article/pii/S0304405X19301886"],
-    why: "Shows that headline VC valuations systematically overstate fair value — motivates alternative-data approaches that don't rely on self-reported metrics.",
+    why: "Shows that headline VC valuations systematically overstate fair value, motivates alternative-data approaches that don't rely on self-reported metrics.",
     appliesTo: ["§1", "§2"],
   },
   {
@@ -233,12 +233,12 @@ export const EXTERNAL_CITATIONS: ExternalCitation[] = [
     year: 2018,
     datePublished: "2018-09-01",
     venue: "Journal of Financial Economics",
-    citeText: "J. Financ. Econ. 128(3): 422–442",
+    citeText: "J. Financ. Econ. 128(3): 422-442",
     url: "https://doi.org/10.1016/j.jfineco.2018.03.001",
     doi: "10.1016/j.jfineco.2018.03.001",
     identifiers: [{ propertyID: "DOI", value: "10.1016/j.jfineco.2018.03.001" }],
     sameAs: ["https://www.sciencedirect.com/science/article/pii/S0304405X18300965"],
-    why: "Documents that the cost of validating early-stage startups has fallen dramatically — supports cheap, public-data signals like commit velocity displacing intermediated discovery.",
+    why: "Documents that the cost of validating early-stage startups has fallen dramatically, supports cheap, public-data signals like commit velocity displacing intermediated discovery.",
     appliesTo: ["§1", "§2"],
   },
   {
@@ -250,12 +250,12 @@ export const EXTERNAL_CITATIONS: ExternalCitation[] = [
     year: 2020,
     datePublished: "2020-08-01",
     venue: "Journal of Economic Perspectives",
-    citeText: "JEP 34(3): 237–261",
+    citeText: "JEP 34(3): 237-261",
     url: "https://doi.org/10.1257/jep.34.3.237",
     doi: "10.1257/jep.34.3.237",
     identifiers: [{ propertyID: "DOI", value: "10.1257/jep.34.3.237" }],
     sameAs: ["https://www.aeaweb.org/articles?id=10.1257/jep.34.3.237"],
-    why: "Comprehensive 2020 framing of VC funding patterns and information asymmetries — the policy/economics context for engineering-acceleration signals.",
+    why: "Comprehensive 2020 framing of VC funding patterns and information asymmetries, the policy/economics context for engineering-acceleration signals.",
     appliesTo: ["§1", "§2", "all"],
   },
 ];

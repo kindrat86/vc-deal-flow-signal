@@ -11,11 +11,11 @@ import { useRouter, useSearchParams } from "next/navigation";
  *   CAC_payback_months = CAC / (ARPC_monthly × gross_margin_pct)
  *
  * Bands (Bessemer / OpenView / a16z benchmarks):
- *   < 6 months   Exceptional — best-in-class PLG / infra SaaS
- *   6-12 months  Great — top quartile
- *   12-18 months Good — typical Series B+ enterprise SaaS
- *   18-24 months OK — acceptable at scale
- *   > 24 months  Bad — most growth-stage investors will pass
+ *   < 6 months   Exceptional, best-in-class PLG / infra SaaS
+ *   6-12 months  Great, top quartile
+ *   12-18 months Good, typical Series B+ enterprise SaaS
+ *   18-24 months OK, acceptable at scale
+ *   > 24 months  Bad, most growth-stage investors will pass
  *
  * Undefined when no new customers acquired or ARPC × GM is zero.
  *
@@ -95,7 +95,7 @@ function computePayback(inputs: Inputs): ComputedResult {
       paybackMonths: Number.NaN,
       band: "undefined",
       bandLabel:
-        "No new customers acquired — CAC is undefined (you can't compute cost per customer when you didn't acquire any).",
+        "No new customers acquired, CAC is undefined (you can't compute cost per customer when you didn't acquire any).",
     };
   }
 
@@ -111,7 +111,7 @@ function computePayback(inputs: Inputs): ComputedResult {
       paybackMonths: Number.NaN,
       band: "undefined",
       bandLabel:
-        "Gross contribution is zero or negative — CAC will never pay back. Fix unit economics (ARPC or gross margin) before judging payback.",
+        "Gross contribution is zero or negative, CAC will never pay back. Fix unit economics (ARPC or gross margin) before judging payback.",
     };
   }
 
@@ -122,20 +122,20 @@ function computePayback(inputs: Inputs): ComputedResult {
 
   if (paybackMonths < 6) {
     band = "exceptional";
-    bandLabel = "Exceptional — best-in-class PLG / infra SaaS territory.";
+    bandLabel = "Exceptional, best-in-class PLG / infra SaaS territory.";
   } else if (paybackMonths < 12) {
     band = "great";
-    bandLabel = "Great — top quartile, fund more.";
+    bandLabel = "Great, top quartile, fund more.";
   } else if (paybackMonths < 18) {
     band = "good";
-    bandLabel = "Good — typical Series B+ enterprise SaaS.";
+    bandLabel = "Good, typical Series B+ enterprise SaaS.";
   } else if (paybackMonths < 24) {
     band = "ok";
-    bandLabel = "OK — acceptable at scale, watch trajectory.";
+    bandLabel = "OK, acceptable at scale, watch trajectory.";
   } else {
     band = "bad";
     bandLabel =
-      "Bad — most growth-stage investors will pass at >24-month payback.";
+      "Bad, most growth-stage investors will pass at >24-month payback.";
   }
 
   return {
@@ -296,7 +296,7 @@ export function CacPaybackCalculator() {
           {copied ? "Link copied" : "Copy share link"}
         </button>
         <p className="text-xs text-gray-500">
-          The URL contains your inputs — drop into a board deck or investor
+          The URL contains your inputs, drop into a board deck or investor
           update without retyping.
         </p>
       </div>

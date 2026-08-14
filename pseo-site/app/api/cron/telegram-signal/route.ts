@@ -1,5 +1,5 @@
 /**
- * Signal of the Week — Telegram channel broadcast cron.
+ * Signal of the Week, Telegram channel broadcast cron.
  *
  * Invoked by Vercel Cron every Sunday (see vercel.json). Builds the weekly
  * "Signal of the Week" post from the current #1 mover
@@ -22,11 +22,11 @@
  *                                                     (auth)
  *
  * Env:
- *   TELEGRAM_BOT_TOKEN  — bot token from @BotFather (shared with the webhook).
- *   TELEGRAM_CHANNEL_ID — target channel: numeric id (e.g. -1001234567890) or
+ *   TELEGRAM_BOT_TOKEN , bot token from @BotFather (shared with the webhook).
+ *   TELEGRAM_CHANNEL_ID, target channel: numeric id (e.g. -1001234567890) or
  *                         @publicusername. The bot must be a channel admin
  *                         with "Post messages". See docs/telegram-bot-setup.md.
- *   CRON_SECRET         — shared Vercel Cron bearer secret.
+ *   CRON_SECRET        , shared Vercel Cron bearer secret.
  */
 
 import { NextResponse } from "next/server";
@@ -85,7 +85,7 @@ export async function GET(req: Request): Promise<Response> {
 
   // No qualifying mover this week → skip rather than post an empty signal.
   if (!post) {
-    console.warn("[telegram-signal] no qualifying mover — skipping post");
+    console.warn("[telegram-signal] no qualifying mover, skipping post");
     return NextResponse.json({ ok: true, mode: "skipped", reason: "no-mover" });
   }
 

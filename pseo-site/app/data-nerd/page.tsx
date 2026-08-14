@@ -25,14 +25,14 @@ import {
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: `${DATA_NERD_NAME} — character bible · VC Deal Flow Signal`,
+  title: `${DATA_NERD_NAME}, character bible · VC Deal Flow Signal`,
   description:
-    "The pseudonymous narrator behind VC Deal Flow Signal: identity archetype (Reluctant Reporter), backstory, six parables, eight polarities, three character flaws, seven voice rules, current weekly status, twelve-month commitments. Character bible — implemented under the anonymity rule.",
+    "The pseudonymous narrator behind VC Deal Flow Signal: identity archetype (Reluctant Reporter), backstory, six parables, eight polarities, three character flaws, seven voice rules, current weekly status, twelve-month commitments. Character bible, implemented under the anonymity rule.",
   alternates: { canonical: "/data-nerd" },
   openGraph: {
     title: `${DATA_NERD_NAME}`,
     description:
-      "The pseudonymous narrator behind the methodology. Reluctant Reporter archetype, six parables, eight polarities, three flaws, twelve-month public commitments — character without a face.",
+      "The pseudonymous narrator behind the methodology. Reluctant Reporter archetype, six parables, eight polarities, three flaws, twelve-month public commitments, character without a face.",
     url: "https://signals.gitdealflow.com/data-nerd",
     type: "profile",
   },
@@ -45,7 +45,7 @@ export default function DataNerdPage() {
       {
         "@type": "ProfilePage",
         "@id": "https://signals.gitdealflow.com/data-nerd#page",
-        name: `${DATA_NERD_NAME} — character bible`,
+        name: `${DATA_NERD_NAME}, character bible`,
         description:
           "Pseudonymous narrator profile: backstory, parables, polarity, flaws, voice rules, and synthetic-voice disclosure.",
         url: "https://signals.gitdealflow.com/data-nerd",
@@ -106,7 +106,7 @@ export default function DataNerdPage() {
           >
             I&rsquo;m {DATA_NERD_NAME}.{" "}
             <span className="text-amber-300">
-              I&rsquo;m a handle, not a person — and that&rsquo;s the whole
+              I&rsquo;m a handle, not a person, and that&rsquo;s the whole
               product.
             </span>
           </h1>
@@ -159,7 +159,7 @@ export default function DataNerdPage() {
           </p>
         </section>
 
-        {/* READER FRAMING — plain-English reassurance for the non-coding
+        {/* READER FRAMING, plain-English reassurance for the non-coding
             buyer (Marcus) BEFORE the dense character canon begins. The bible
             below is engineering-heavy by design; this box tells the reader
             they never have to decode it. Reuses the verbatim reassurance +
@@ -169,10 +169,10 @@ export default function DataNerdPage() {
             Before you read on
           </p>
           <h2 className="text-xl font-bold text-gray-100">
-            You never read a line of code — the read is done for you.
+            You never read a line of code, the read is done for you.
           </h2>
           <p className="text-gray-300 text-sm leading-relaxed">
-            This is the character bible, so it gets engineering-heavy below —
+            This is the character bible, so it gets engineering-heavy below -
             merge graphs, regressions, contributor de-duplication, the lot.
             That&rsquo;s the engine. You only ever see the translated read.
             The creed of the people this is built for:{" "}
@@ -192,7 +192,7 @@ export default function DataNerdPage() {
           </p>
         </section>
 
-        {/* ARCHETYPE — declares which of the four canonical character
+        {/* ARCHETYPE, declares which of the four canonical character
             archetypes this character occupies. The reader places the voice
             on a recognisable map before reading another paragraph. */}
         <section className="rounded-xl border border-amber-700/40 bg-gradient-to-br from-amber-950/20 via-slate-900 to-slate-950 p-6 sm:p-7 space-y-3">
@@ -227,7 +227,7 @@ export default function DataNerdPage() {
           </details>
         </section>
 
-        {/* TRIBE — name the people the reader joins by self-identifying
+        {/* TRIBE, name the people the reader joins by self-identifying
             with the character. Brunson Expert Secrets Ch 3. */}
         <section className="space-y-3">
           <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
@@ -257,7 +257,7 @@ export default function DataNerdPage() {
           </h2>
           <p className="text-gray-400 text-sm leading-relaxed">
             Eight polarities. If you nod through all eight, you&rsquo;re my
-            reader. If even one feels wrong, please save your money — this is
+            reader. If even one feels wrong, please save your money, this is
             the wrong product for you and that&rsquo;s honest.
           </p>
           <ul className="space-y-4">
@@ -285,7 +285,7 @@ export default function DataNerdPage() {
                     <span className="font-semibold">In plain English:</span>{" "}
                     the deck is what a company says about itself for the next
                     fundraise; what its engineers actually ship every day is
-                    the truer story. You watch the work, not the pitch — and
+                    the truer story. You watch the work, not the pitch, and
                     you never have to open the work yourself.
                   </p>
                 )}
@@ -340,7 +340,7 @@ export default function DataNerdPage() {
                 {p.slug === "wrong-reader" && (
                   <p className="text-sky-200 text-sm leading-relaxed border-l-2 border-sky-700/40 pl-4">
                     <span className="font-semibold">In plain English:</span>{" "}
-                    the team looked like it had suddenly tripled its output —
+                    the team looked like it had suddenly tripled its output -
                     but it was just two teams&rsquo; work getting merged into
                     one place, not real new momentum. A reader who knew the
                     company caught it; we fixed the blind spot, and our
@@ -390,7 +390,7 @@ export default function DataNerdPage() {
                 className="rounded-lg border border-rose-700/30 bg-rose-950/10 p-4"
               >
                 <p className="text-rose-300 text-sm font-bold leading-snug mb-2">
-                  Flaw {i + 1} — {f.label}
+                  Flaw {i + 1}, {f.label}
                 </p>
                 <p className="text-gray-300 text-sm leading-relaxed">
                   {f.body}
@@ -419,7 +419,7 @@ export default function DataNerdPage() {
                 className="rounded-lg border border-slate-800 bg-slate-900/40 p-4"
               >
                 <p className="text-emerald-300 text-sm font-bold leading-snug mb-2">
-                  Rule {i + 1} — {r.rule}
+                  Rule {i + 1}, {r.rule}
                 </p>
                 <p className="text-gray-300 text-sm leading-relaxed">
                   {r.body}
@@ -437,7 +437,7 @@ export default function DataNerdPage() {
             Lines I repeat until the reader can repeat them back.
           </h2>
           <p className="text-gray-400 text-sm leading-relaxed">
-            Founder voices have 5–7 verbal tells the audience can quote. These
+            Founder voices have 5-7 verbal tells the audience can quote. These
             are mine. If you&rsquo;ve been reading for more than two months
             and one of these doesn&rsquo;t sound familiar, the voice has
             drifted and someone owes you a refund.
@@ -483,13 +483,13 @@ export default function DataNerdPage() {
           </ul>
         </section>
 
-        {/* NOW — link to the live status surface. */}
+        {/* NOW, link to the live status surface. */}
         <section className="rounded-xl border border-emerald-700/30 bg-gradient-to-br from-emerald-950/15 via-slate-900 to-slate-950 p-6 sm:p-7 space-y-3">
           <p className="text-emerald-300 text-[10px] font-semibold uppercase tracking-wider">
-            09 · Live status — what I&rsquo;m doing this week
+            09 · Live status, what I&rsquo;m doing this week
           </p>
           <h2 className="text-xl font-bold text-gray-100">
-            Updated every Monday — {DATA_NERD_NOW.weekISO}.
+            Updated every Monday, {DATA_NERD_NOW.weekISO}.
           </h2>
           <p className="text-gray-300 text-sm leading-relaxed">
             The Sunday digest covers broadcast cadence; the monthly{" "}
@@ -499,7 +499,7 @@ export default function DataNerdPage() {
             >
               State of GitHub
             </Link>{" "}
-            address covers the long-form. The /now page is the in-between —
+            address covers the long-form. The /now page is the in-between -
             five fields, five minutes, every Monday. The cadence IS the
             character.
           </p>
@@ -511,7 +511,7 @@ export default function DataNerdPage() {
           </Link>
         </section>
 
-        {/* FUTURE SELF — public commitments graded May 2027. */}
+        {/* FUTURE SELF, public commitments graded May 2027. */}
         <section className="space-y-4 border-t border-slate-800 pt-8">
           <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
             10 · Twelve months from now
@@ -535,7 +535,7 @@ export default function DataNerdPage() {
                 className="rounded-lg border border-slate-800 bg-slate-900/40 p-4"
               >
                 <p className="text-amber-300 text-sm font-bold leading-snug mb-1">
-                  Commit {c.n} — {c.label}
+                  Commit {c.n}, {c.label}
                 </p>
                 <p className="text-gray-300 text-sm leading-relaxed">
                   {c.body}
@@ -547,8 +547,8 @@ export default function DataNerdPage() {
 
         <SeoCta
           heading="If the voice landed, the cheapest next step is the free Sunday issue"
-          blurb="Five breakout startups every Sunday — the engineering signal translated into plain English, 21 to 47 days before the deck circulates. No code-reading, no card."
-          secondary={{ label: "Or test one sector — First Look €7 →", href: "/firstlook" }}
+          blurb="Five breakout startups every Sunday, the engineering signal translated into plain English, 21 to 47 days before the deck circulates. No code-reading, no card."
+          secondary={{ label: "Or test one sector, First Look €7 →", href: "/firstlook" }}
           signoff={false}
           className="mb-6"
         />
@@ -613,7 +613,7 @@ export default function DataNerdPage() {
               >
                 Read the Origin
               </Link>{" "}
-              — the founder backstory, three false beliefs collapsed.
+the founder backstory, three false beliefs collapsed.
             </li>
             <li>
               →{" "}
@@ -623,14 +623,14 @@ export default function DataNerdPage() {
               >
                 Read the Founder page
               </Link>{" "}
-              — same character, slightly different angle, with audio.
+same character, slightly different angle, with audio.
             </li>
           </ul>
         </section>
 
         <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-6">
           Character framing drawn from direct-response sales canon.
-          Implemented under the anonymity rule (manifesto pillar #4) — handle,
+          Implemented under the anonymity rule (manifesto pillar #4), handle,
           synthetic voice, methodology glyph, no real face/name/voice.
         </p>
       </div>

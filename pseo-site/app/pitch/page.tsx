@@ -32,7 +32,7 @@ export default function PitchPage() {
       {
         "@type": "Article",
         "@id": "https://signals.gitdealflow.com/pitch#article",
-        headline: "The 90-Second Pitch — VC Deal Flow Signal",
+        headline: "The 90-Second Pitch, VC Deal Flow Signal",
         description:
           "Five sections, 90 seconds. The case for GitHub commit-velocity acceleration as your highest-leverage deal-flow source.",
         url: "https://signals.gitdealflow.com/pitch",
@@ -96,7 +96,7 @@ export default function PitchPage() {
           </h1>
         </header>
 
-        {/* SECTION 1 — PROBLEM */}
+        {/* SECTION 1, PROBLEM */}
         <section className="space-y-2">
           <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">
             01 · Problem
@@ -105,11 +105,11 @@ export default function PitchPage() {
             Every investor sees the same warm intros, the same AngelList
             syndicates, the same TechCrunch posts. By the time a deck reaches
             you, three other investors are already in the room. You compete on
-            reputation and speed — never on information.
+            reputation and speed, never on information.
           </p>
         </section>
 
-        {/* SECTION 2 — SHIFT */}
+        {/* SECTION 2, SHIFT */}
         <section className="space-y-2">
           <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">
             02 · The shift
@@ -126,7 +126,7 @@ export default function PitchPage() {
           </p>
         </section>
 
-        {/* SECTION 3 — PROOF */}
+        {/* SECTION 3, PROOF */}
         <section className="space-y-2">
           <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">
             03 · Proof
@@ -137,7 +137,7 @@ export default function PitchPage() {
               observations.</strong> Five quarters. Our hypothesis: companies
               showing a 2× contributor spike inside a 14-day window precede
               their fundraise announcement by{" "}
-              <strong className="text-sky-300">a few weeks</strong> — validated
+              <strong className="text-sky-300">a few weeks</strong>: validated
               openly on /scorecard, not yet established.
             </p>
             <p className="text-gray-400 text-sm">
@@ -148,12 +148,12 @@ export default function PitchPage() {
               >
                 /research
               </Link>
-              . CC BY 4.0 — replicate it yourself.
+              . CC BY 4.0, replicate it yourself.
             </p>
           </div>
         </section>
 
-        {/* SECTION 4 — OFFER */}
+        {/* SECTION 4, OFFER */}
         <section className="space-y-2">
           <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">
             04 · Offer
@@ -187,7 +187,7 @@ export default function PitchPage() {
           </ul>
         </section>
 
-        {/* SECTION 5 — CLOSE */}
+        {/* SECTION 5, CLOSE */}
         <section className="space-y-3 bg-gradient-to-br from-sky-950/40 via-slate-900 to-slate-950 border border-sky-700/40 rounded-xl p-6">
           <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider">
             05 · Close
@@ -226,7 +226,7 @@ export default function PitchPage() {
           >
             12-minute walkthrough
           </Link>{" "}
-          — same case, three objections broken, full stack reveal.
+same case, three objections broken, full stack reveal.
         </p>
 
         <div className="flex justify-center pt-2">

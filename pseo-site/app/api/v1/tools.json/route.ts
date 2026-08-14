@@ -1,5 +1,5 @@
 /**
- * /api/v1/tools.json — machine-readable catalog of the /tools archetype.
+ * /api/v1/tools.json, machine-readable catalog of the /tools archetype.
  *
  * Companion to /api/v1/glossary.json + /api/v1/dataset.jsonl. Enables
  * MCP servers, AI agents, RAG pipelines, and external curators to

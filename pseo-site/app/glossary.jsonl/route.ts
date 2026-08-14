@@ -2,7 +2,7 @@
  * Apex alias for /api/v1/glossary.jsonl.
  *
  * Background: HuggingFace dataset auto-loaders, retrieval pipelines, and
- * AI crawlers often probe the bare /glossary.jsonl path — the natural
+ * AI crawlers often probe the bare /glossary.jsonl path, the natural
  * sibling of /qa.jsonl and /dataset.jsonl which are themselves apex
  * routes. Without this alias the request fell through to Next 16's
  * [topic] catch-all and was served as text/html, breaking NDJSON

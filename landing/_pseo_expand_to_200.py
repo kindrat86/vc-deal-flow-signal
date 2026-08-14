@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-pSEO MASS EXPANSION — gitdealflow.com
+pSEO MASS EXPANSION, gitdealflow.com
 Target: 50→200+ English pSEO pages with rich content, schema, OG, hreflang.
 Generates new pages in 15 categories to fill content gaps.
 """
@@ -233,7 +233,7 @@ def write_page(section: str, slug: str, title: str, desc: str,
 
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# DATA — Comprehensive expansion data for each category
+# DATA, Comprehensive expansion data for each category
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 # Category: /best/
@@ -243,22 +243,22 @@ BEST_PAGES = [
      [
          ("Why Startup Newsletters Matter for Deal Flow",
           ["Startup newsletters are the unsung infrastructure of venture capital sourcing. While everyone obsesses over databases and CRMs, the best deals often surface in a well-curated inbox.",
-           "The top newsletters combine original research, exclusive deal mentions, and sector-specific analysis that you won't find in any database. GitDealFlow's own Signal Digest delivers engineering momentum data — commit velocity, contributor growth, and repo expansion — directly to your inbox every Monday.",
+           "The top newsletters combine original research, exclusive deal mentions, and sector-specific analysis that you won't find in any database. GitDealFlow's own Signal Digest delivers engineering momentum data, commit velocity, contributor growth, and repo expansion, directly to your inbox every Monday.",
            "For VCs and angels, a good newsletter is the difference between reactive deal flow (responding to what others have already seen) and proactive deal flow (spotting trends before they're crowded)."]),
          ("The 7 Best Startup Newsletters",
-          ["1. GitDealFlow Signal Digest — Weekly engineering momentum signals across 400+ startups. See which teams are shipping fastest before they raise. Free.",
-           "2. StrictlyVC — Connie Loizos' daily VC newsletter. Deep industry coverage and deal announcements. Paid.",
-           "3. TermSheet — Morning roundup of fundraising news and startup trends. Free.",
-           "4. The Generalist — Long-form analysis of startups, founders, and market trends. Free/paid.",
-           "5. CB Insights Research — Weekly tech market maps and industry analysis. Free/paid.",
-           "6. Aiken's Angels — Steve Aiken's curated list of early-stage investment opportunities. Free.",
-           "7. David's Snippets — Weekly collection of interesting startup and VC snippets. Free."]),
+          ["1. GitDealFlow Signal Digest, Weekly engineering momentum signals across 400+ startups. See which teams are shipping fastest before they raise. Free.",
+           "2. StrictlyVC, Connie Loizos' daily VC newsletter. Deep industry coverage and deal announcements. Paid.",
+           "3. TermSheet, Morning roundup of fundraising news and startup trends. Free.",
+           "4. The Generalist, Long-form analysis of startups, founders, and market trends. Free/paid.",
+           "5. CB Insights Research, Weekly tech market maps and industry analysis. Free/paid.",
+           "6. Aiken's Angels, Steve Aiken's curated list of early-stage investment opportunities. Free.",
+           "7. David's Snippets, Weekly collection of interesting startup and VC snippets. Free."]),
          ("How to Build Your Newsletter Stack",
           ["The most effective VCs subscribe to 3-5 newsletters and read them consistently. Start with free tier: GitDealFlow Signal Digest (engineering signals) + StrictlyVC (deal news) + The Generalist (deep context).",
            "Add sector-specific newsletters for your thesis areas (e.g., Fintech Nexus for fintech, The Batch for AI). Review your inbox daily but limit to 15 minutes. GitDealFlow's digest does the heavy lifting of surfacing breakout engineering teams."]),
      ],
      [
-         ("Are startup newsletters worth the time?", "Yes, when curated. GitDealFlow's Signal Digest is the only newsletter that delivers predictive engineering momentum data — not just funding announcements you could find anywhere else."),
+         ("Are startup newsletters worth the time?", "Yes, when curated. GitDealFlow's Signal Digest is the only newsletter that delivers predictive engineering momentum data, not just funding announcements you could find anywhere else."),
          ("How many newsletters should I read?", "3-5 max. More than that and you'll suffer from information overload. Pick one deal flow newsletter (GitDealFlow), one industry news (StrictlyVC), and one deep analysis (The Generalist)."),
          ("What's the best free startup newsletter?", "GitDealFlow Signal Digest is the only free newsletter with predictive deal flow signals. For daily news, TermSheet is excellent and free."),
      ],
@@ -275,12 +275,12 @@ BEST_PAGES = [
            "GitDealFlow integrates with VC CRMs via CSV export and API, feeding engineering momentum data directly into your deal tracking workflow. You see which startups are heating up, right inside your CRM.",
            "The gap between best-in-class and average VC firms often comes down to CRM discipline. Firms with structured deal tracking consistently outperform those without."]),
          ("Top 6 VC CRMs",
-          ["1. Affinity — Relationship intelligence with automatic contact enrichment, deal flow tracking, and team collaboration. The industry leader for mid-to-large funds. $500-1,500/seat/year.",
-           "2. Attio — Modern, flexible CRM with excellent data modeling for VC workflows. Growing quickly with smaller funds. $250-500/seat/year.",
-           "3. DealCloud — Enterprise-grade platform for PE and VC firms. Best for large funds with complex workflows. $1,000-3,000/seat/year.",
-           "4. Notion — Simple, flexible, free for small teams. Many angels and micro VCs use Notion templates for deal tracking.",
-           "5. Airtable — Spreadsheet-database hybrid with powerful filtering and views. Popular with scout programs and angel groups.",
-           "6. Google Sheets — Free, simple, and universally accessible. Many solo angels run their entire deal pipeline in Sheets."]),
+          ["1. Affinity, Relationship intelligence with automatic contact enrichment, deal flow tracking, and team collaboration. The industry leader for mid-to-large funds. $500-1,500/seat/year.",
+           "2. Attio, Modern, flexible CRM with excellent data modeling for VC workflows. Growing quickly with smaller funds. $250-500/seat/year.",
+           "3. DealCloud, Enterprise-grade platform for PE and VC firms. Best for large funds with complex workflows. $1,000-3,000/seat/year.",
+           "4. Notion, Simple, flexible, free for small teams. Many angels and micro VCs use Notion templates for deal tracking.",
+           "5. Airtable, Spreadsheet-database hybrid with powerful filtering and views. Popular with scout programs and angel groups.",
+           "6. Google Sheets, Free, simple, and universally accessible. Many solo angels run their entire deal pipeline in Sheets."]),
          ("How to Choose a VC CRM",
           ["For firms under $50M AUM: Notion or Airtable are sufficient. They're cheap, flexible, and integrate with GitDealFlow's CSV exports.",
            "For firms $50-500M AUM: Affinity or Attio. They provide relationship intelligence, email integration, and team collaboration that scale.",
@@ -304,17 +304,17 @@ BEST_PAGES = [
            "GitDealFlow's engineering momentum data adds a new dimension to valuation: teams with top-quartile commit velocity historically command 15-25% higher valuations because they execute faster.",
            "No single tool gives you the 'right' valuation. Combine 2-3 methods for a range, then negotiate within that range."]),
          ("Top 8 Valuation Tools",
-          ["1. VC Method (SaaS) — Spreadsheet-based post-money valuation estimator. Uses comparable public companies. Free.",
-           "2. Scorecard Method — Compares startups against historical data (team, market, product). Free.",
-           "3. Berkus Method — Assigns value to key risk elements (technology, execution, team). Free.",
-           "4. Risk Factor Summation — Adds/subtracts value for 12 risk factors. Free.",
-           "5. Comparable Transactions — Crunchbase and PitchBook for historical round data. Paid.",
-           "6. DCF Analysis — Discounted cash flow for later-stage startups. Free/Excel.",
-           "7. Revenue Multiple (saas) — Typical 5-15x ARR for SaaS at seed/Series A. Free calculation.",
-           "8. GitDealFlow Momentum-Adjusted — Add 15-25% premium for top-quartile engineering velocity. Free with GitDealFlow."]),
+          ["1. VC Method (SaaS), Spreadsheet-based post-money valuation estimator. Uses comparable public companies. Free.",
+           "2. Scorecard Method, Compares startups against historical data (team, market, product). Free.",
+           "3. Berkus Method, Assigns value to key risk elements (technology, execution, team). Free.",
+           "4. Risk Factor Summation, Adds/subtracts value for 12 risk factors. Free.",
+           "5. Comparable Transactions, Crunchbase and PitchBook for historical round data. Paid.",
+           "6. DCF Analysis, Discounted cash flow for later-stage startups. Free/Excel.",
+           "7. Revenue Multiple (saas), Typical 5-15x ARR for SaaS at seed/Series A. Free calculation.",
+           "8. GitDealFlow Momentum-Adjusted, Add 15-25% premium for top-quartile engineering velocity. Free with GitDealFlow."]),
      ],
      [
-         ("What's the most accurate valuation method?", "For early-stage, the VC Method and Scorecard Method are most common. The 'right' valuation is the one both parties agree to. GitDealFlow's momentum data gives you a negotiating edge — teams shipping fast expect premium valuations."),
+         ("What's the most accurate valuation method?", "For early-stage, the VC Method and Scorecard Method are most common. The 'right' valuation is the one both parties agree to. GitDealFlow's momentum data gives you a negotiating edge, teams shipping fast expect premium valuations."),
          ("How does engineering velocity affect valuation?", "GitDealFlow data shows top-quartile engineering teams raise at 15-25% higher valuations. Investors use this to justify premium pricing to LP committees."),
          ("Can I value a startup for free?", "Yes. The VC Method spreadsheet, Scorecard Method, and Berkus Method are all free. Add GitDealFlow's free tier for engineering momentum context."),
      ],
@@ -331,16 +331,16 @@ BEST_PAGES = [
            "GitDealFlow provides the engineering signal layer of market intelligence: which sectors have accelerating commit velocity, which startups are shipping fastest, and where the next batch of fundraises will come from.",
            "Combine GitDealFlow's signals with market intelligence platforms for a complete sourcing stack: signals for discovery, intelligence for diligence."]),
          ("Top 6 Platforms",
-          ["1. CB Insights — Gold standard for tech market maps, industry analysis, and private company data. $25K+/year.",
-           "2. PitchBook — Deepest PE/M&A data. Also strong on sector research. $20K+/year.",
-           "3. SimilarWeb — Web traffic data for public and private companies. Free/paid.",
-           "4. Gartner/Forrester — Analyst reports for enterprise technology markets. $30K+/year.",
-           "5. Mattermark (revived) — Startup momentum metrics and market sizing. Paid.",
-           "6. GitDealFlow — Engineering momentum by sector. See which sectors are accelerating before the analysts write about them. Free."]),
+          ["1. CB Insights, Gold standard for tech market maps, industry analysis, and private company data. $25K+/year.",
+           "2. PitchBook, Deepest PE/M&A data. Also strong on sector research. $20K+/year.",
+           "3. SimilarWeb, Web traffic data for public and private companies. Free/paid.",
+           "4. Gartner/Forrester, Analyst reports for enterprise technology markets. $30K+/year.",
+           "5. Mattermark (revived), Startup momentum metrics and market sizing. Paid.",
+           "6. GitDealFlow, Engineering momentum by sector. See which sectors are accelerating before the analysts write about them. Free."]),
      ],
      [
          ("What's the best free market intelligence tool?", "GitDealFlow's sector momentum data is free. SimilarWeb provides free traffic estimates. For deep market maps, CB Insights has limited free reports."),
-         ("How does GitDealFlow's sector data compare to CB Insights?", "CB Insights provides analyst-written market maps — backward-looking but deep. GitDealFlow provides real-time engineering momentum by sector — forward-looking but narrow to GitHub activity. Best used together."),
+         ("How does GitDealFlow's sector data compare to CB Insights?", "CB Insights provides analyst-written market maps, backward-looking but deep. GitDealFlow provides real-time engineering momentum by sector, forward-looking but narrow to GitHub activity. Best used together."),
          ("How many sectors should a VC track?", "3-5 sectors maximum. Focus on sectors where you have operational experience. GitDealFlow's sector filters help you track momentum in your target areas."),
      ],
      [("Best Deal Flow Tools", f"{CANONICAL}/best/best-deal-flow-tools"),
@@ -356,11 +356,11 @@ BEST_PAGES = [
            "Scout programs have exploded in popularity. Top-tier programs from Sequoia, Andreessen Horowitz, and others have produced some of the best venture returns of the past decade.",
            "GitDealFlow is the ideal tool for scouts: weekly trending lists help you surface deals early, and the Scout Score feature predicts which GitHub users will found valuable companies."]),
          ("Top 5 Scout Programs",
-          ["1. Sequoia Capital Scout — The most prestigious scout program. Pays carried interest on deals sourced. Requires strong network.",
-           "2. Andreessen Horowitz Scout — Strong brand and education. Pays carried interest. Focus on crypto, AI, fintech.",
-           "3. Lightspeed Venture Partners Scout — Excellent for international scouts. Pays carry and has a strong community.",
-           "4. Village Global Scout — Network-driven fund. Strong LP network for portfolio companies.",
-           "5. Soma Capital Scout — Largest scout network. $25K per deal bonus plus carry. Easy to join."]),
+          ["1. Sequoia Capital Scout, The most prestigious scout program. Pays carried interest on deals sourced. Requires strong network.",
+           "2. Andreessen Horowitz Scout, Strong brand and education. Pays carried interest. Focus on crypto, AI, fintech.",
+           "3. Lightspeed Venture Partners Scout, Excellent for international scouts. Pays carry and has a strong community.",
+           "4. Village Global Scout, Network-driven fund. Strong LP network for portfolio companies.",
+           "5. Soma Capital Scout, Largest scout network. $25K per deal bonus plus carry. Easy to join."]),
          ("How to Succeed as a Scout",
           ["Use GitDealFlow to surface deal flow before other scouts see it. The weekly trending list gives you fresh startups every Monday.",
            "Build relationships with 10-20 high-quality founders. Attend Demo Days. Read GitHub READMEs to understand what startups actually build.",
@@ -380,11 +380,11 @@ BEST_PAGES = [
 # Category: /glossary/
 GLOSSARY_PAGES = [
     ("runway", "Runway", "The amount of time a startup can operate before running out of cash, calculated as cash-on-hand divided by monthly burn rate.",
-     "Runway is the single most important financial metric for early-stage startups. It determines how much time a founder has to hit milestones, raise funding, or reach profitability.\n\nGitDealFlow tracks engineering activity, which accelerates 3-6 weeks before a fundraise — a sign that the founding team is racing against their runway.",
+     "Runway is the single most important financial metric for early-stage startups. It determines how much time a founder has to hit milestones, raise funding, or reach profitability.\n\nGitDealFlow tracks engineering activity, which accelerates 3-6 weeks before a fundraise, a sign that the founding team is racing against their runway.",
      [
          ("What is Runway?", "Runway is the amount of time a startup can continue operating at its current burn rate before exhausting its cash reserves. It's typically expressed in months."),
-         ("What's a healthy runway?", "Most VCs want to see 12-18 months of runway after a fundraise. Less than 6 months is a red flag — it suggests the startup will be forced to fundraise on unfavorable terms."),
-         ("How does GitDealFlow relate to runway?", "Startups with limited runway accelerate engineering output dramatically — GitDealFlow catches this as a commit velocity spike 3-6 weeks before a fundraise announcement."),
+         ("What's a healthy runway?", "Most VCs want to see 12-18 months of runway after a fundraise. Less than 6 months is a red flag, it suggests the startup will be forced to fundraise on unfavorable terms."),
+         ("How does GitDealFlow relate to runway?", "Startups with limited runway accelerate engineering output dramatically, GitDealFlow catches this as a commit velocity spike 3-6 weeks before a fundraise announcement."),
      ]),
 
     ("burn-rate", "Burn Rate", "The rate at which a startup spends its cash reserves, typically measured monthly. Gross burn includes all expenses; net burn subtracts revenue.",
@@ -396,7 +396,7 @@ GLOSSARY_PAGES = [
      ]),
 
     ("mrr", "MRR (Monthly Recurring Revenue)", "Monthly Recurring Revenue is the normalized monthly revenue from subscription customers. The most important SaaS metric.",
-     "MRR is the lifeblood of SaaS startups. Investors track MRR growth rate, net dollar retention, and the ratio of MRR to burn. GitDealFlow's engineering velocity often correlates with MRR growth — teams shipping fast tend to close more customers.",
+     "MRR is the lifeblood of SaaS startups. Investors track MRR growth rate, net dollar retention, and the ratio of MRR to burn. GitDealFlow's engineering velocity often correlates with MRR growth, teams shipping fast tend to close more customers.",
      [
          ("What's a good MRR growth rate?", "Top-quartile SaaS startups grow MRR 15-20% month-over-month. Average is 5-10%. GitDealFlow's engineering momentum data often signals MRR acceleration before it appears in financials."),
          ("How does GitDealFlow predict MRR growth?", "Engineering velocity rising 3-6 weeks before a fundraise often correlates with product velocity improvements that drive MRR acceleration."),
@@ -433,7 +433,7 @@ GLOSSARY_PAGES = [
      ]),
 
     ("cohort-analysis", "Cohort Analysis", "Tracking groups of customers who signed up in the same period to understand retention, engagement, and revenue patterns over time.",
-     "Cohort analysis reveals the truth about your business — whether each new customer cohort is retaining better or worse than previous ones. GitDealFlow's weekly signal updates follow a similar cohort pattern: tracking engineering momentum over time in weekly buckets.",
+     "Cohort analysis reveals the truth about your business, whether each new customer cohort is retaining better or worse than previous ones. GitDealFlow's weekly signal updates follow a similar cohort pattern: tracking engineering momentum over time in weekly buckets.",
      [
          ("What does cohort analysis tell you?", "Whether product, marketing, or sales improvements actually work. If the Jan 2026 cohort retains better than the Oct 2025 cohort, your improvements are real. If not, you have a fundamental problem."),
      ]),
@@ -450,14 +450,14 @@ GLOSSARY_PAGES = [
          ("What types of network effects exist?", "Direct (same-side): more users = more value. Indirect (cross-side): more users on side A = more value for side B. Data network effects: more users = more data = better product. GitDealFlow's startup database benefits from data network effects."),
      ]),
 
-    ("tam-sam-som", "TAM SAM SOM", "Total Addressable Market, Serviceable Addressable Market, and Serviceable Obtainable Market — the standard market sizing framework.",
-     "Market sizing is a critical part of any investment thesis. TAM ($1B+ for venture returns), SAM (the segment you can actually serve), and SOM (the revenue you can realistically capture). GitDealFlow tracks which sectors have the fastest-growing engineering teams — a leading indicator of market expansion.",
+    ("tam-sam-som", "TAM SAM SOM", "Total Addressable Market, Serviceable Addressable Market, and Serviceable Obtainable Market, the standard market sizing framework.",
+     "Market sizing is a critical part of any investment thesis. TAM ($1B+ for venture returns), SAM (the segment you can actually serve), and SOM (the revenue you can realistically capture). GitDealFlow tracks which sectors have the fastest-growing engineering teams, a leading indicator of market expansion.",
      [
          ("What TAM is needed for venture returns?", "$1B+ minimum. Markets under $500M rarely produce venture-scale returns. Engineering velocity per GitDealFlow is a leading indicator of market expansion."),
      ]),
 
     ("pivot", "Pivot", "A structured change in a startup's business model, target market, or product direction based on learning from the market.",
-     "Pivoting is not failure — it's learning. Most successful startups pivoted at least once. GitDealFlow's engineering data can detect a pivot: abrupt changes in repo creation patterns or commit focus areas signal a strategic shift.",
+     "Pivoting is not failure, it's learning. Most successful startups pivoted at least once. GitDealFlow's engineering data can detect a pivot: abrupt changes in repo creation patterns or commit focus areas signal a strategic shift.",
      [
          ("When should a startup pivot?", "When the current approach isn't generating product-market fit signals after 12-18 months of effort. GitDealFlow detects pivots through sudden shifts in engineering focus (new repo creation in different domains)."),
      ]),
@@ -469,13 +469,13 @@ GLOSSARY_PAGES = [
      ]),
 
     ("unicorn", "Unicorn", "A privately held startup valued at $1 billion or more. Term coined by Aileen Lee in 2013.",
-     "Unicorns are rare — about 1% of venture-backed startups reach $1B+ valuations. GitDealFlow's Scout Score predicts which founders might build unicorns based on their GitHub activity patterns, and its trending list surfaces breakout startups 3-6 weeks before fundraises.",
+     "Unicorns are rare, about 1% of venture-backed startups reach $1B+ valuations. GitDealFlow's Scout Score predicts which founders might build unicorns based on their GitHub activity patterns, and its trending list surfaces breakout startups 3-6 weeks before fundraises.",
      [
          ("How many unicorns exist?", "As of 2026, there are approximately 1,200+ unicorns globally. The rate of new unicorn creation peaked in 2021 and has normalized. GitDealFlow tracks engineering momentum at the pre-unicorn stage."),
      ]),
 
     ("decacorn", "Decacorn", "A privately held startup valued at $10 billion or more. Extremely rare.",
-     "Decacorns are the 0.1% of venture-backed startups. Examples include Stripe, SpaceX, Epic Games, and Shein. GitDealFlow's data shows decacorns had top-quartile engineering velocity at every stage of growth — team execution is the common thread.",
+     "Decacorns are the 0.1% of venture-backed startups. Examples include Stripe, SpaceX, Epic Games, and Shein. GitDealFlow's data shows decacorns had top-quartile engineering velocity at every stage of growth, team execution is the common thread.",
      [
          ("How many decacorns exist?", "Approximately 50-70 globally. Most are in enterprise SaaS, fintech, or AI/ML. GitDealFlow tracks engineering acceleration patterns that have historically preceded decacorn-level growth."),
      ]),
@@ -493,7 +493,7 @@ GLOSSARY_PAGES = [
      ]),
 
     ("dilution", "Dilution", "The reduction in an existing shareholder's ownership percentage caused by the issuance of new shares in a funding round.",
-     "Dilution is the cost of growth capital. Founders should expect 20-30% dilution per round. Over a company's life from founding to IPO, founders typically end up with 5-15% ownership. GitDealFlow helps founders optimize dilution timing — raise when engineering momentum is peaking for best terms.",
+     "Dilution is the cost of growth capital. Founders should expect 20-30% dilution per round. Over a company's life from founding to IPO, founders typically end up with 5-15% ownership. GitDealFlow helps founders optimize dilution timing, raise when engineering momentum is peaking for best terms.",
      [
          ("How much dilution is normal?", "Seed round: 15-25%. Series A: 20-30%. Series B: 15-25%. Series C+: 10-20%. Employee option pool: 10-20% total. GitDealFlow's momentum data helps founders raise at peak negotiating leverage."),
      ]),
@@ -517,7 +517,7 @@ GLOSSARY_PAGES = [
      ]),
 
     ("pro-rata-rights", "Pro-Rata Rights", "The right of an existing investor to participate in future funding rounds to maintain their ownership percentage.",
-     "Pro-rata rights let investors write checks in follow-on rounds to avoid dilution. Top-tier investors often demand pro-rata rights. GitDealFlow helps investors decide which companies to follow on by tracking engineering momentum — teams with rising velocity are prime follow-on candidates.",
+     "Pro-rata rights let investors write checks in follow-on rounds to avoid dilution. Top-tier investors often demand pro-rata rights. GitDealFlow helps investors decide which companies to follow on by tracking engineering momentum, teams with rising velocity are prime follow-on candidates.",
      [
          ("Should I always exercise pro-rata rights?", "Only for your best performers. GitDealFlow's momentum data helps you decide: rising engineering velocity = exercise pro-rata; declining velocity = consider passing. Reserve capital for the top 20% of your portfolio."),
      ]),
@@ -535,7 +535,7 @@ GLOSSARY_PAGES = [
      ]),
 
     ("safe-note", "SAFE Note", "A Simple Agreement for Future Equity. A convertible instrument that converts into equity at a future priced round. Created by Y Combinator.",
-     "SAFEs are the most common seed-stage instrument. They're not debt — they're warrants to buy shares in the next round. Key terms: valuation cap, discount rate, and most-favored-nation (MFN) clause. GitDealFlow tracks startups from their earliest signals — often before they've raised a SAFE.",
+     "SAFEs are the most common seed-stage instrument. They're not debt, they're warrants to buy shares in the next round. Key terms: valuation cap, discount rate, and most-favored-nation (MFN) clause. GitDealFlow tracks startups from their earliest signals, often before they've raised a SAFE.",
      [
          ("What's a typical SAFE valuation cap?", "Seed SAFE caps typically range $5M-$20M depending on traction. Pre-seed SAFEs: $5-10M. Post-seed: $10-20M. GitDealFlow's engineering momentum data provides objective traction signals for cap negotiations."),
      ]),
@@ -543,11 +543,11 @@ GLOSSARY_PAGES = [
     ("convertible-note", "Convertible Note", "A debt instrument that converts into equity at a future funding round, typically at a discount to the round price.",
      "Convertible notes are debt with an automatic conversion trigger. Unlike SAFEs, convertible notes have a maturity date (typically 18-24 months) and may accrue interest. GitDealFlow's signals can help note holders assess whether a startup is on track to raise its next round before maturity.",
      [
-         ("Convertible note vs SAFE — what's the difference?", "Notes are debt with a maturity date and interest. SAFEs are not debt — they convert at the next round with no maturity. SAFEs are simpler and more founder-friendly. Both are common at seed stage."),
+         ("Convertible note vs SAFE, what's the difference?", "Notes are debt with a maturity date and interest. SAFEs are not debt, they convert at the next round with no maturity. SAFEs are simpler and more founder-friendly. Both are common at seed stage."),
      ]),
 
     ("valuation-cap", "Valuation Cap", "The maximum valuation at which a SAFE or convertible note converts into equity. Protects early investors from excessive dilution.",
-     "The valuation cap sets a ceiling on the conversion price. If a startup raises its Series A at a $30M pre-money and you have a $10M cap, you convert at the $10M valuation — immediately getting 3x the shares of the Series A investors for the same money.",
+     "The valuation cap sets a ceiling on the conversion price. If a startup raises its Series A at a $30M pre-money and you have a $10M cap, you convert at the $10M valuation, immediately getting 3x the shares of the Series A investors for the same money.",
      [
          ("What's a typical valuation cap?", "Pre-seed: $5-10M. Seed: $10-20M. The cap should reflect traction. GitDealFlow's engineering momentum data helps justify higher caps for teams shipping fast."),
      ]),
@@ -567,7 +567,7 @@ GLOSSARY_MORE = [
 # Category: /learn/
 LEARN_EXPAND = [
     ("how-to-read-a-cap-table", "How to Read a Cap Table Like a VC",
-     "A cap table (capitalization table) shows who owns what in a startup. Here's how to read one like a VC — founders, investors, option pools, and dilution scenarios.",
+     "A cap table (capitalization table) shows who owns what in a startup. Here's how to read one like a VC, founders, investors, option pools, and dilution scenarios.",
      [
          ("What a Cap Table Tells You",
           ["A cap table reveals the ownership structure of a startup: common shares (founders, employees), preferred shares (investors), and the option pool (reserved for future hires).",
@@ -624,16 +624,16 @@ LEARN_EXPAND = [
      "A great pitch deck tells a compelling story with data. Here's a 10-point framework to evaluate any startup deck, from problem slide to ask.",
      [
          ("The 10-Point Framework",
-          ["1. Problem — Is this a real problem people will pay to solve? 'Nice to have' ideas don't make venture returns.",
-           "2. Solution — Does the solution actually solve the problem in a unique way? GitDealFlow checks: is the team building something defensible?",
-           "3. Market Size — Is the TAM $1B+? Bottom-up: how many customers × price?",
-           "4. Product — Is there a working product or compelling prototype? Screenshots > wireframes.",
-           "5. Traction — Revenue, users, engineering velocity (GitDealFlow), or partnerships. Show growth rate, not just absolute numbers.",
-           "6. Business Model — How does the startup make money? Unit economics matter more than revenue (LTV/CAC, payback period).",
-           "7. Competition — Honest competitive landscape. No 'no competition' claims.",
-           "8. Team — Why are these founders the best team? Domain expertise + execution track record.",
-           "9. Financials — 3-5 year projections with clear assumptions. GitDealFlow can validate if the engineering team is on track.",
-           "10. Ask — How much are they raising and what will they spend it on?"]),
+          ["1. Problem, Is this a real problem people will pay to solve? 'Nice to have' ideas don't make venture returns.",
+           "2. Solution, Does the solution actually solve the problem in a unique way? GitDealFlow checks: is the team building something defensible?",
+           "3. Market Size, Is the TAM $1B+? Bottom-up: how many customers × price?",
+           "4. Product, Is there a working product or compelling prototype? Screenshots > wireframes.",
+           "5. Traction, Revenue, users, engineering velocity (GitDealFlow), or partnerships. Show growth rate, not just absolute numbers.",
+           "6. Business Model, How does the startup make money? Unit economics matter more than revenue (LTV/CAC, payback period).",
+           "7. Competition, Honest competitive landscape. No 'no competition' claims.",
+           "8. Team, Why are these founders the best team? Domain expertise + execution track record.",
+           "9. Financials, 3-5 year projections with clear assumptions. GitDealFlow can validate if the engineering team is on track.",
+           "10. Ask, How much are they raising and what will they spend it on?"]),
      ],
      [
          ("What makes a great pitch deck?", "Clear problem, compelling solution, massive market, real traction, and a world-class team. GitDealFlow's engineering data validates the traction claim."),
@@ -653,7 +653,7 @@ LEARN_EXPAND = [
            "A founder's former colleagues, managers, and reports will tell you more in 30 minutes than hours of product demos."]),
          ("Who to Call",
           ["3-5 references minimum: a former manager, a former peer, a former direct report, a current employee, and a customer (if the startup has revenue).",
-           "Also call 1-2 references the founder didn't suggest — this catches blind spots the founder's network won't surface."]),
+           "Also call 1-2 references the founder didn't suggest, this catches blind spots the founder's network won't surface."]),
          ("What to Ask",
           ["Would you work with this founder again? (Watch for hesitation.)",
            "What are their blind spots? (The honest answer tells you more than any strength.)",
@@ -675,7 +675,7 @@ LEARN_EXPAND = [
      "An investment thesis is your investment strategy written down. It prevents you from making emotional decisions and helps you say no to good deals that aren't your deals.",
      [
          ("Why You Need a Thesis",
-          ["An investment thesis forces you to be disciplined. Instead of chasing every shiny deal, you invest in the areas where you have an edge — whether that's domain expertise, network access, or signal interpretation.",
+          ["An investment thesis forces you to be disciplined. Instead of chasing every shiny deal, you invest in the areas where you have an edge, whether that's domain expertise, network access, or signal interpretation.",
            "GitDealFlow helps you operationalize your thesis: filter sectors you understand, track engineering momentum in your focus areas, and build a deal pipeline that aligns with your strategy."]),
          ("Components of a Thesis",
           ["Sector focus: Which 1-3 sectors do you understand deeply enough to evaluate deals? Generalist angel investing underperforms sector-focused investing.",
@@ -730,7 +730,7 @@ FAQ_EXPAND = [
      [
          ("What determines startup valuation?", "Traction (revenue, users, growth rate), market size (TAM), team quality (founder background, engineering velocity), and market comps. GitDealFlow's engineering momentum is an objective leading indicator that correlates with higher valuations."),
          ("What's the average seed valuation?", "$8-12M pre-money has been the median for US seed rounds since 2023. Varies by sector: AI/ML companies command 20-30% premiums."),
-         ("Can a startup's valuation be too high?", "Yes. Over-valuation leads to a 'down round' next time, which demoralizes the team and makes hiring harder. GitDealFlow helps founders optimize timing — raise when momentum is peaking, not when it's declining."),
+         ("Can a startup's valuation be too high?", "Yes. Over-valuation leads to a 'down round' next time, which demoralizes the team and makes hiring harder. GitDealFlow helps founders optimize timing, raise when momentum is peaking, not when it's declining."),
      ]),
 
     ("what-is-seed-funding", "What Is Seed Funding? A Complete Guide for Founders",
@@ -752,7 +752,7 @@ FAQ_EXPAND = [
      "VCs make money through management fees (2% of AUM) and carried interest (20% of profits). Here's how the economics work.",
      [
          ("What's the 2 and 20 model?", "2% annual management fee on committed capital covers salaries, office, and expenses. 20% carried interest on profits incentivizes performance. A $500M fund generates $10M/year in fees plus potentially $100M+ in carry."),
-         ("Do most VCs make money?", "No. Top-quartile funds generate all the returns. The bottom 50% of VCs barely return capital. GitDealFlow's engineering momentum data helps VCs make better investment decisions — and earn their carry."),
+         ("Do most VCs make money?", "No. Top-quartile funds generate all the returns. The bottom 50% of VCs barely return capital. GitDealFlow's engineering momentum data helps VCs make better investment decisions, and earn their carry."),
          ("How does carry work?", "After returning the fund's capital to LPs, the remaining profits are split 80/20 (LP/GP). A fund that returns 3x on $500M generates $250M in carry for the GP team."),
      ]),
 
@@ -760,7 +760,7 @@ FAQ_EXPAND = [
      "Dilution is the reduction in ownership percentage from issuing new shares. Every funding round dilutes existing shareholders.",
      [
          ("How much dilution per round?", "Seed: 15-25%. Series A: 20-30%. Series B: 15-25%. Series C+: 10-20%. Total dilution from founding to IPO: founders typically retain 5-15%."),
-         ("Can I avoid dilution?", "No. Growth requires capital. But you can optimize timing — raise when your engineering momentum (per GitDealFlow) is peaking for the best terms and least dilution."),
+         ("Can I avoid dilution?", "No. Growth requires capital. But you can optimize timing, raise when your engineering momentum (per GitDealFlow) is peaking for the best terms and least dilution."),
      ]),
 
     ("what-is-due-diligence", "What Is Venture Capital Due Diligence?",
@@ -778,10 +778,10 @@ FAQ_EXPAND = [
      ]),
 
     ("how-do-angel-investors-make-money", "How Do Angel Investors Make Money?",
-     "Angel investors make money through exits: acquisitions or IPOs. Returns follow a power law — most returns come from 1-2 companies in a portfolio.",
+     "Angel investors make money through exits: acquisitions or IPOs. Returns follow a power law, most returns come from 1-2 companies in a portfolio.",
      [
          ("What returns do angels expect?", "10x+ on winners to compensate for losses. Typical angel portfolio: 50% fail, 30% return 1-2x, 15% return 3-5x, 5% return 10x+. GitDealFlow helps tilt the odds by identifying startups with real momentum."),
-         ("How long do angel investments take to return?", "7-10 years on average. Angel investing is illiquid — plan to hold each investment for a decade."),
+         ("How long do angel investments take to return?", "7-10 years on average. Angel investing is illiquid, plan to hold each investment for a decade."),
      ]),
 
     ("what-is-a-lead-investor", "What Is a Lead Investor in a Venture Round?",
@@ -795,7 +795,7 @@ FAQ_EXPAND = [
      "A down round is a funding round at a lower valuation than the previous round. It's painful for founders, employees, and early investors.",
      [
          ("What causes a down round?", "Missed milestones, slowing growth, market downturns, or loss of investor confidence. GitDealFlow's engineering data can predict down rounds: declining commit velocity and contributor losses precede valuation compression."),
-         ("How do you avoid a down round?", "Raise enough capital to reach clear milestones. Don't optimize for valuation — optimize for runway. GitDealFlow helps you time your raise to peak momentum."),
+         ("How do you avoid a down round?", "Raise enough capital to reach clear milestones. Don't optimize for valuation, optimize for runway. GitDealFlow helps you time your raise to peak momentum."),
      ]),
 
     ("what-is-a-bridge-round", "What Is a Bridge Round (and When Do You Need One)?",
@@ -827,13 +827,13 @@ ANSWERS_PAGES = [
      "Great VCs share common traits: pattern recognition, network, analytical rigor, and founder empathy.",
      [
          ("The 7 Qualities",
-          ["1. Pattern recognition — they've seen enough deals to know what works.",
-           "2. Network — top deals come through trusted referrals, not cold outreach.",
-           "3. Analytical rigor — they build data-backed theses, not gut-feel portfolios.",
-           "4. Founder empathy — they've been founders, operators, or worked closely with them.",
-           "5. Long-term thinking — venture returns take 7-10 years.",
-           "6. Conviction — they decide fast and commit hard.",
-           "7. Data-driven — they use tools like GitDealFlow to find deals before the herd."]),
+          ["1. Pattern recognition, they've seen enough deals to know what works.",
+           "2. Network, top deals come through trusted referrals, not cold outreach.",
+           "3. Analytical rigor, they build data-backed theses, not gut-feel portfolios.",
+           "4. Founder empathy, they've been founders, operators, or worked closely with them.",
+           "5. Long-term thinking, venture returns take 7-10 years.",
+           "6. Conviction, they decide fast and commit hard.",
+           "7. Data-driven, they use tools like GitDealFlow to find deals before the herd."]),
      ],
      [
          ("Can anyone become a great VC?", "Yes, with pattern recognition built from 500+ deal evaluations, a strong network, and systematic sourcing via tools like GitDealFlow."),
@@ -867,7 +867,7 @@ ANSWERS_PAGES = [
      ],
      [
          ("How do I know a startup is fundraising?", "GitDealFlow detects fundraising preparation 3-6 weeks before any public announcement. Watch for: rising commit velocity, network activity on LinkedIn, and increased investor meeting scheduling."),
-         ("How much time does fundraising consume?", "Founders should expect 50% of their time during a fundraise. GitDealFlow helps by reducing sourcing time — you see who's raising before the herd."),
+         ("How much time does fundraising consume?", "Founders should expect 50% of their time during a fundraise. GitDealFlow helps by reducing sourcing time, you see who's raising before the herd."),
      ]),
 
     ("what-is-a-scout-program", "What Is a VC Scout Program? Complete Guide",
@@ -889,7 +889,7 @@ ANSWERS_PAGES = [
 
 # Category: /tools/
 TOOLS_PAGES = [
-    ("startup-valuation-calculator", "Startup Valuation Calculator — Estimate Pre-Money and Post-Money Valuation",
+    ("startup-valuation-calculator", "Startup Valuation Calculator, Estimate Pre-Money and Post-Money Valuation",
      "Use this free startup valuation calculator to estimate pre-money and post-money valuation based on stage, sector, and traction.",
      [
          ("How the Calculator Works",
@@ -901,18 +901,18 @@ TOOLS_PAGES = [
          ("How accurate is the calculator?", "It provides a range, not a precise number. Use with comparable transactions for a complete picture."),
      ]),
 
-    ("cap-table-simulator", "Cap Table Simulator — See Dilution Scenarios",
+    ("cap-table-simulator", "Cap Table Simulator, See Dilution Scenarios",
      "Simulate how future funding rounds will dilute founders, employees, and investors with our free cap table simulator.",
      [
          ("What the Simulator Shows",
           ["Enter your current cap table (founder shares, option pool, investor shares). Add future rounds with valuations. See how ownership changes over time.",
-           "GitDealFlow's engineering signals help you optimize when to raise — raising at peak momentum means better valuations and less dilution."]),
+           "GitDealFlow's engineering signals help you optimize when to raise, raising at peak momentum means better valuations and less dilution."]),
      ],
      [
          ("How many rounds can I simulate?", "Up to 5 rounds from seed to Series C. Includes option pool top-ups and employee grants."),
      ]),
 
-    ("cac-ltv-calculator", "CAC / LTV Calculator — Free Unit Economics Tool",
+    ("cac-ltv-calculator", "CAC / LTV Calculator, Free Unit Economics Tool",
      "Calculate Customer Acquisition Cost and Lifetime Value to understand your startup's unit economics.",
      [
          ("What the Calculator Calculates",
@@ -923,7 +923,7 @@ TOOLS_PAGES = [
          ("What's a healthy LTV/CAC ratio?", "3x minimum, 5x+ excellent. Below 3x means you're spending too much to acquire customers."),
      ]),
 
-    ("churn-rate-calculator", "Churn Rate Calculator — Free Retention Tool",
+    ("churn-rate-calculator", "Churn Rate Calculator, Free Retention Tool",
      "Calculate customer churn and revenue churn rates for your SaaS business.",
      [
          ("What the Calculator Calculates",
@@ -933,7 +933,7 @@ TOOLS_PAGES = [
          ("What's a good churn rate?", "Monthly: <5% logo churn, <2% revenue churn. Annual: <10%. Net negative churn (NDR >100%) is the goal."),
      ]),
 
-    ("growth-rate-calculator", "Growth Rate Calculator — Free SaaS Metric Tool",
+    ("growth-rate-calculator", "Growth Rate Calculator, Free SaaS Metric Tool",
      "Calculate month-over-month and year-over-year growth rates for your startup's key metrics.",
      [
          ("How It Works",
@@ -953,7 +953,7 @@ CHECKLIST_EXPAND = [
          ("Product DD",
           ["Working product with clear PMF signals (Sean Ellis >40%)",
            "Strong retention (NDR >100%, logo churn <5%/month)",
-           "Engineering velocity data (GitDealFlow signal — sustained top-quartile commit velocity)",
+           "Engineering velocity data (GitDealFlow signal, sustained top-quartile commit velocity)",
            "Product roadmap with defensible moat (proprietary tech, network effects)"]),
          ("Financial DD",
           ["$1-2M+ ARR with 15-20% MoM growth", "Gross margin >70% for SaaS",
@@ -993,7 +993,7 @@ CHECKLIST_EXPAND = [
            "Are there single points of failure in the team (bus factor)?"]),
      ],
      [
-         ("Can non-technical investors do tech DD?", "Yes, with a technical advisor. Use GitDealFlow for the engineering velocity assessment — it's an objective, non-technical-required signal."),
+         ("Can non-technical investors do tech DD?", "Yes, with a technical advisor. Use GitDealFlow for the engineering velocity assessment, it's an objective, non-technical-required signal."),
      ]),
 
     ("market-due-diligence-checklist", "Market Due Diligence Checklist",
@@ -1050,7 +1050,7 @@ FOR_EXPAND = [
 
 # Category: /data/
 DATA_PAGES = [
-    ("vc-funding-trends", "VC Funding Trends 2026 — Data-Driven Analysis",
+    ("vc-funding-trends", "VC Funding Trends 2026, Data-Driven Analysis",
      "Analysis of 2026 venture capital funding trends across sectors, stages, and geographies, based on GitDealFlow's engineering signal data.",
      [
          ("2026 Funding Landscape",
@@ -1062,7 +1062,7 @@ DATA_PAGES = [
          ("What sectors are getting the most VC funding in 2026?", "AI/ML (~30%), climate tech (~15%), fintech (~12%), healthtech (~10%), and defense tech (~10%). GitDealFlow tracks engineering momentum in all 15 sectors."),
      ]),
 
-    ("startup-valuation-trends", "Startup Valuation Trends 2026 — Data-Backed Insights",
+    ("startup-valuation-trends", "Startup Valuation Trends 2026, Data-Backed Insights",
      "How startup valuations have evolved across stages, sectors, and geographies in 2026.",
      [
          ("Valuation Trends by Stage",
@@ -1076,7 +1076,7 @@ DATA_PAGES = [
          ("Are valuations still inflated from 2021?", "Sector-dependent. AI/ML valuations remain elevated. Late-stage has corrected significantly. Early-stage is stable and growing modestly."),
      ]),
 
-    ("github-engineering-velocity-data", "GitHub Engineering Velocity Data — Methodology and Benchmarks",
+    ("github-engineering-velocity-data", "GitHub Engineering Velocity Data, Methodology and Benchmarks",
      "GitDealFlow tracks commit velocity, contributor growth, and repo expansion across 400+ venture-backed startups. Here's the data methodology and sector benchmarks.",
      [
          ("Data Methodology",
@@ -1099,7 +1099,7 @@ DATA_PAGES = [
 
 # Category: /research/
 RESEARCH_PAGES = [
-    ("github-velocity-correlation-study", "GitHub Engineering Velocity and Fundraising — Correlation Study",
+    ("github-velocity-correlation-study", "GitHub Engineering Velocity and Fundraising, Correlation Study",
      "A peer-reviewed study on the correlation between GitHub commit velocity and startup fundraising events, published on SSRN.",
      [
          ("Study Overview",
@@ -1131,7 +1131,7 @@ RESEARCH_PAGES = [
 
 # Category: /use-cases/
 USE_CASE_EXPAND = [
-    ("deal-sourcing", "Deal Sourcing — Find Startups Before the Competition",
+    ("deal-sourcing", "Deal Sourcing, Find Startups Before the Competition",
      "Use GitDealFlow to build a systematic deal sourcing pipeline that surfaces breakout startups 3-6 weeks before fundraise announcements.",
      [
          ("The Deal Sourcing Workflow",
@@ -1145,27 +1145,27 @@ USE_CASE_EXPAND = [
          ("How many deals can I source per week?", "Quality over quantity. 3-5 deep-dives and 5 outreach emails per week is sustainable and effective."),
      ]),
 
-    ("portfolio-monitoring", "Portfolio Monitoring — Track Engineering Health of Your Startups",
+    ("portfolio-monitoring", "Portfolio Monitoring, Track Engineering Health of Your Startups",
      "Monitor your portfolio companies' engineering health with GitDealFlow's momentum tracking. See who's accelerating and who's slowing down.",
      [
          ("What Portfolio Monitoring Shows",
-          ["Weekly commit velocity for each portfolio company — who's shipping fast?",
-           "Contributor growth — are engineering teams scaling or shrinking?",
-           "Repo expansion — are they building new products or maintaining existing ones?",
-           "Momentum alerts — get notified when a portfolio company's velocity drops significantly."]),
+          ["Weekly commit velocity for each portfolio company, who's shipping fast?",
+           "Contributor growth, are engineering teams scaling or shrinking?",
+           "Repo expansion, are they building new products or maintaining existing ones?",
+           "Momentum alerts, get notified when a portfolio company's velocity drops significantly."]),
      ],
      [
-         ("How often should I check portfolio engineering health?", "Weekly. GitDealFlow's digest automates this — you get an email every Monday with portfolio updates."),
+         ("How often should I check portfolio engineering health?", "Weekly. GitDealFlow's digest automates this, you get an email every Monday with portfolio updates."),
      ]),
 
-    ("competitive-intelligence", "Competitive Intelligence — Track Competitor Engineering Activity",
+    ("competitive-intelligence", "Competitive Intelligence, Track Competitor Engineering Activity",
      "Track what competitors are building by monitoring their GitHub activity. See product direction, hiring, and velocity before press releases.",
      [
          ("What Competitive Intelligence Reveals",
-          ["Product direction — what repos are they creating? New products or maintenance?",
-           "Engineering velocity — are they shipping fast or plateauing?",
-           "Hiring signals — contributor growth indicates team expansion.",
-           "Tech stack changes — are they adopting new technologies?"]),
+          ["Product direction, what repos are they creating? New products or maintenance?",
+           "Engineering velocity, are they shipping fast or plateauing?",
+           "Hiring signals, contributor growth indicates team expansion.",
+           "Tech stack changes, are they adopting new technologies?"]),
      ],
      [
          ("Can competitors see my GitDealFlow data?", "No. GitDealFlow only tracks public GitHub data. Competitors can see the same public data, but GitDealFlow makes it organized and actionable."),
@@ -1174,7 +1174,7 @@ USE_CASE_EXPAND = [
 
 # Category: /integrations/
 INTEGRATION_EXPAND = [
-    ("gitdealflow-for-google-sheets", "GitDealFlow for Google Sheets — Build Live Deal Flow Dashboards",
+    ("gitdealflow-for-google-sheets", "GitDealFlow for Google Sheets, Build Live Deal Flow Dashboards",
      "Connect GitDealFlow signals to Google Sheets for live deal flow dashboards, automated scoring, and team collaboration.",
      [
          ("How the Integration Works",
@@ -1186,7 +1186,7 @@ INTEGRATION_EXPAND = [
          ("Is there a pre-built Google Sheets template?", "Yes. Download our free deal flow tracker template with pre-configured formulas scoring and formatting."),
      ]),
 
-    ("gitdealflow-for-slack", "GitDealFlow for Slack — Get Deal Flow Alerts in Your Team Channel",
+    ("gitdealflow-for-slack", "GitDealFlow for Slack, Get Deal Flow Alerts in Your Team Channel",
      "Receive GitDealFlow momentum alerts, weekly digest summaries, and breakout startup notifications in Slack.",
      [
          ("What Slack Integration Delivers",
@@ -1210,7 +1210,7 @@ def page_exists(section, slug):
 
 
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
-# MAIN — generate all new pages
+# MAIN, generate all new pages
 # ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
 
 def main():
@@ -1219,7 +1219,7 @@ def main():
     new_urls = []
     
     print("=" * 60)
-    print("pSEO MASS EXPANSION — gitdealflow.com")
+    print("pSEO MASS EXPANSION, gitdealflow.com")
     print("=" * 60)
     
     # ── /best/ ──

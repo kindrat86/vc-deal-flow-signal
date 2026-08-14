@@ -13,12 +13,12 @@ const PORTAL_URL = "https://gitdealflow.refgrow.com";
 
 export const metadata: Metadata = {
   title:
-    "Affiliate Swipe Kit — Clone-ready content templates | GitDealFlow",
+    "Affiliate Swipe Kit, Clone-ready content templates | GitDealFlow",
   description:
     "Six clone-ready content templates for GitDealFlow affiliates: 7-tweet thread, LinkedIn post, long-form blog post, 100-word newsletter mention, 3-min podcast script, 3-email sequence. The bait is the free 31k-word book; you funnel; the BOOK_DRIP sequence converts. 60-day cookie.",
   alternates: { canonical: "/affiliates/funnel-hack" },
   openGraph: {
-    title: "Affiliate Swipe Kit — Clone-ready templates",
+    title: "Affiliate Swipe Kit, Clone-ready templates",
     description:
       "6 ready-made content pieces. 7-tweet thread, LinkedIn post, blog post, newsletter mention, podcast script, 3-email sequence. 60-day cookie, 20% lifetime commission.",
     url: "https://signals.gitdealflow.com/affiliates/funnel-hack",
@@ -161,7 +161,7 @@ export default function AffiliateFunnelHackPage() {
           </p>
         </header>
 
-        {/* The mechanic — Brunson Sneaky Affiliate Funnel anchor. */}
+        {/* The mechanic, Brunson Sneaky Affiliate Funnel anchor. */}
         <section
           className="mb-10 rounded-xl border border-amber-700/40 bg-amber-950/20 p-6 sm:p-8"
           aria-label="The funnel mechanic"
@@ -188,7 +188,7 @@ export default function AffiliateFunnelHackPage() {
               </span>
               <span>
                 Your reader clicks through, downloads the book (free, no card),
-                and is automatically enrolled in the BOOK_DRIP follow-up — three
+                and is automatically enrolled in the BOOK_DRIP follow-up, three
                 emails over 7 days that walk through the methodology and offer
                 the three rungs (Free Sunday digest / €49/mo Dashboard /
                 €1,997 Sector Sweep).
@@ -199,8 +199,8 @@ export default function AffiliateFunnelHackPage() {
                 3
               </span>
               <span>
-                Any downstream conversion within 60 days — Dashboard upgrade,
-                Insider Circle subscription, or Sector Sweep purchase — pays
+                Any downstream conversion within 60 days, Dashboard upgrade,
+                Insider Circle subscription, or Sector Sweep purchase, pays
                 you 20% lifetime commission. €19.40/mo per Insider sub. €399 on
                 each Sector Sweep. €1.99/mo on each Dashboard sub.
               </span>
@@ -258,7 +258,7 @@ export default function AffiliateFunnelHackPage() {
             scannable but the body stays available verbatim for copy-paste. */}
         <section className="mb-12" aria-label="Swipe templates">
           <h2 className="text-gray-100 font-semibold text-lg mb-4">
-            Six templates — pick one and ship
+            Six templates, pick one and ship
           </h2>
           <div className="space-y-3">
             {SWIPE_TEMPLATES.map((t) => (
@@ -296,7 +296,7 @@ export default function AffiliateFunnelHackPage() {
                   </div>
                   <div className="rounded-lg border border-slate-800 bg-slate-950/60 p-4 mb-4">
                     <p className="text-gray-400 text-xs uppercase tracking-wider mb-3 font-medium">
-                      Body — copy verbatim, replace YOUR_AFFILIATE_ID
+                      Body, copy verbatim, replace YOUR_AFFILIATE_ID
                     </p>
                     <pre className="whitespace-pre-wrap text-gray-200 text-xs leading-relaxed font-mono">
                       {t.body}
@@ -346,7 +346,7 @@ export default function AffiliateFunnelHackPage() {
           </h2>
           <p className="text-gray-200 text-base leading-relaxed mb-5">
             20% lifetime commission. €399 on each Sector Sweep. €19.40/mo on
-            each Insider Circle sub. 60-day cookie. No approval queue — start
+            each Insider Circle sub. 60-day cookie. No approval queue, start
             sharing in 60 seconds.
           </p>
           <a

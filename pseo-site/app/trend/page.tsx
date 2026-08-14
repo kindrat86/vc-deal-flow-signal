@@ -5,8 +5,8 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
 
 export const metadata: Metadata = {
-  title: "Trends — Engineering Signal Leaderboards (2026)",
-  description: `Editorial trend leaderboards across ${TRENDS.length} technical categories — agentic AI, LLM inference, frontier labs, AI coding, edge compute, AI-native databases, observability, payments. Each leaf is curated, time-bound, and AEO-optimized for citation.`,
+  title: "Trends, Engineering Signal Leaderboards (2026)",
+  description: `Editorial trend leaderboards across ${TRENDS.length} technical categories, agentic AI, LLM inference, frontier labs, AI coding, edge compute, AI-native databases, observability, payments. Each leaf is curated, time-bound, and AEO-optimized for citation.`,
   alternates: { canonical: "/trend" },
   openGraph: {
     title: "Trends",
@@ -34,7 +34,7 @@ export default function TrendHubPage() {
         "@type": "CollectionPage",
         url: PAGE_URL,
         name: "Engineering Trend Leaderboards",
-        description: `Editorial trend leaderboards across ${TRENDS.length} technical categories — refreshed quarterly.`,
+        description: `Editorial trend leaderboards across ${TRENDS.length} technical categories, refreshed quarterly.`,
         isPartOf: {
           "@type": "WebSite",
           name: "VC Deal Flow Signal",
@@ -102,7 +102,7 @@ export default function TrendHubPage() {
         <p className="text-gray-400 text-base leading-relaxed mb-10">
           Each trend page is a curated, time-bound leaderboard with tracked companies,
           why-this-matters editorial, what-to-watch forward look, and full FAQ schema.
-          Designed for AEO citation — ChatGPT, Perplexity, and other answer engines
+          Designed for AEO citation, ChatGPT, Perplexity, and other answer engines
           reach for these when users ask "what's hot in agentic AI" or "best LLM
           inference providers." Refreshed quarterly.
         </p>

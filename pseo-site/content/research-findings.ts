@@ -9,7 +9,7 @@ export interface Finding {
 }
 
 export const FINDINGS: Finding[] = [
-  // Group A — Numerical findings
+  // Group A, Numerical findings
   {
     n: 1,
     group: "A",
@@ -25,9 +25,9 @@ export const FINDINGS: Finding[] = [
     n: 2,
     group: "A",
     slug: "mean-vs-median-commit-velocity-skew",
-    title: "Mean commit velocity is 173 — over 2.4× the median",
+    title: "Mean commit velocity is 173, over 2.4× the median",
     claim:
-      "Mean commit velocity is 173 — over 2.4× the median, indicating a heavy upper tail.",
+      "Mean commit velocity is 173, over 2.4× the median, indicating a heavy upper tail.",
     why:
       "Mean ≠ median is the signature of skewed distributions. VCs need the median, not the average.",
     section: "§4.2 Velocity distribution",
@@ -60,7 +60,7 @@ export const FINDINGS: Finding[] = [
     title: "Only 49% of VC-backed startups show positive velocity growth",
     claim: "49% of observations show positive velocity growth.",
     why:
-      "Counterintuitive. Most assume 'all venture-backed startups grow fast.' Half do, half don't — even at this stage.",
+      "Counterintuitive. Most assume 'all venture-backed startups grow fast.' Half do, half don't, even at this stage.",
     section: "§4.2 Velocity change",
   },
   {
@@ -70,7 +70,7 @@ export const FINDINGS: Finding[] = [
     title:
       "Framework migration dominates: 75% of venture-backed startup GitHub signals",
     claim:
-      "Framework migration is the dominant signal type — 75% of observations (165 of 219).",
+      "Framework migration is the dominant signal type, 75% of observations (165 of 219).",
     why:
       "Counter-narrative to 'engineering velocity = hiring.' The dominant pattern is rewrites, not headcount growth.",
     section: "§3.3 Signal classification",
@@ -92,7 +92,7 @@ export const FINDINGS: Finding[] = [
     slug: "infrastructure-buildouts-rare-4-percent",
     title: "Infrastructure buildouts are even rarer: 4% of observations",
     claim:
-      "Infrastructure buildouts are even rarer — 4% of observations (8 of 219).",
+      "Infrastructure buildouts are even rarer, 4% of observations (8 of 219).",
     why:
       "When you see infrastructure buildout, treat it as an outlier event. Possible platform pivot or enterprise launch.",
     section: "§3.3 Signal classification",
@@ -191,7 +191,7 @@ export const FINDINGS: Finding[] = [
     group: "A",
     slug: "five-quarter-vc-startup-panel",
     title:
-      "First public 5-quarter longitudinal panel for VC-backed startups (Q2 2025–Q2 2026)",
+      "First public 5-quarter longitudinal panel for VC-backed startups (Q2 2025-Q2 2026)",
     claim: "The dataset spans 5 quarters (Q2 2025 through Q2 2026).",
     why:
       "First public longitudinal panel at organizational level for venture-backed startups.",
@@ -201,8 +201,8 @@ export const FINDINGS: Finding[] = [
     n: 18,
     group: "A",
     slug: "deterministic-classifier-no-ml",
-    title: "GitHub-signal classifier is fully deterministic — no ML, no black-box",
-    claim: "The classifier is fully deterministic — no ML, no black-box.",
+    title: "GitHub-signal classifier is fully deterministic, no ML, no black-box",
+    claim: "The classifier is fully deterministic, no ML, no black-box.",
     why:
       "Auditable and replicable. Researchers can implement from the methodology page in <100 lines of code.",
     section: "§3.3 Signal classification",
@@ -216,7 +216,7 @@ export const FINDINGS: Finding[] = [
     claim:
       "The 14-day observation window is justified by Mockus, Fielding, and Herbsleb (2002).",
     why:
-      "Concrete academic anchor — empirical SE literature establishes 2-week windows smooth weekend/holiday noise.",
+      "Concrete academic anchor, empirical SE literature establishes 2-week windows smooth weekend/holiday noise.",
     section: "§2 Related work",
   },
   {
@@ -230,7 +230,7 @@ export const FINDINGS: Finding[] = [
       "No academic-only license trap. Anyone can build a competing product on this data.",
     section: "§7 Data availability",
   },
-  // Group B — Methodology + structural
+  // Group B, Methodology + structural
   {
     n: 21,
     group: "B",
@@ -308,10 +308,10 @@ export const FINDINGS: Finding[] = [
     claim:
       "The data is mirrored on Kaggle, Data.world, Zenodo, and the canonical live API.",
     why:
-      "Multiple distribution surfaces — institutional and indie researchers have a path.",
+      "Multiple distribution surfaces, institutional and indie researchers have a path.",
     section: "§7 Data availability",
   },
-  // Group C — Open questions
+  // Group C, Open questions
   {
     n: 28,
     group: "C",

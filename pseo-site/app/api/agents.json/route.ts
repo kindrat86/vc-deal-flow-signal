@@ -10,7 +10,7 @@ const SITE = "https://signals.gitdealflow.com";
  *
  * Companion to `/.well-known/api-catalog` (RFC 9727 Linkset). Same data, but
  * shaped for runtimes that prefer a familiar JSON object over Linkset's
- * link-element vocabulary. Both endpoints are kept in sync intentionally —
+ * link-element vocabulary. Both endpoints are kept in sync intentionally -
  * agents pick whichever format their toolchain handles.
  */
 export async function GET() {
@@ -18,7 +18,7 @@ export async function GET() {
 
   const body = {
     version: "1.0.0",
-    name: "VC Deal Flow Signal — Agent Surfaces Index",
+    name: "VC Deal Flow Signal, Agent Surfaces Index",
     description:
       "Free, no-auth public surfaces for AI agents. Each surface wraps the same dataset of ~369 venture-backed startups across 15 sectors, refreshed weekly.",
     site: SITE,
@@ -91,10 +91,10 @@ export async function GET() {
         cache_seconds: 86400,
       },
       community: {
-        // Brunson Expert Secrets §1 Ch 4 (Mass Movement Vehicle) — member-
+        // Brunson Expert Secrets §1 Ch 4 (Mass Movement Vehicle), member-
         // side ledger that pairs with /wins (startup-side ledger). Roster,
         // pre-sorted leaderboard, aggregate cohort stats, public 60d/90d
-        // grading rules — all in one fetch.
+        // grading rules, all in one fetch.
         endpoint: `${SITE}/api/v1/members.json`,
         web_ui: `${SITE}/members`,
         leaderboard: `${SITE}/members/leaderboard`,

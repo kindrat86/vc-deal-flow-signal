@@ -18,11 +18,11 @@ export const revalidate = 604800;
 // Index OG: reuse the same per-term route with the anchor term that
 // best represents the whole collection (code-side-sourcing is the
 // named category that defines the site). Falls back gracefully if the
-// route can't render — the page itself is still indexable.
+// route can't render, the page itself is still indexable.
 const INDEX_OG = `${SITE}/api/og/define/code-side-sourcing`;
 
 export const metadata: Metadata = {
-  title: "Definitions — VC Deal Flow Signal Vocabulary by Category",
+  title: "Definitions, VC Deal Flow Signal Vocabulary by Category",
   description:
     "Every term in the VC Deal Flow Signal vocabulary, grouped into six families: code-side sourcing, engineering acceleration, discoverability surfaces, agent infrastructure, academic citation, and venture vocabulary. Each term has its own definition page with cross-references to the SSRN methodology paper.",
   alternates: { canonical: "/define" },

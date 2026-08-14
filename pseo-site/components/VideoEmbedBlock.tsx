@@ -1,12 +1,12 @@
 /**
- * <VideoEmbedBlock slug="..." /> — drop-in YouTube embed + VideoObject
+ * <VideoEmbedBlock slug="..." />drop-in YouTube embed + VideoObject
  * JSON-LD for any page that wants to anchor a video from `content/videos.ts`.
  *
  * Renders:
  *   1. A privacy-enhanced YouTube iframe (or <video> for self-hosted).
  *   2. A separate <script type="application/ld+json"> with full VideoObject,
  *      Clip[] chapters, SeekToAction, transcript. Google merges multiple
- *      LD blocks on a page so this is additive — does not interfere with
+ *      LD blocks on a page so this is additive, does not interfere with
  *      the host page's existing @graph.
  *
  * Used by /predicted (anchors sXFZHCKkROA) and /walkthrough (anchors
@@ -90,7 +90,7 @@ export function VideoEmbedBlock({
   variant = "compact",
 }: {
   slug: string;
-  /** "compact" — smaller embed for inline use; "full" — hero-sized. */
+  /** "compact", smaller embed for inline use; "full", hero-sized. */
   variant?: "compact" | "full";
 }) {
   const v = getVideoBySlug(slug);

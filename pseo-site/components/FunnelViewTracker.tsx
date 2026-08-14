@@ -14,7 +14,7 @@ import type { FunnelSlug } from "@/content/funnel-slugs";
  *     (yyyy-mm-dd seed prefix). Stored in sessionStorage, not a cookie. No
  *     IPs, no UA tracking, no PII leaves the browser. The sid is only used
  *     to dedupe rapid reloads inside a 5-minute window for the "active now"
- *     count — anything past 5 min has no use for the sid.
+ *     count, anything past 5 min has no use for the sid.
  *
  *   - Skips entirely if the visitor has Do-Not-Track set or if window.
  *     navigator.doNotTrack is "1". Also skips on prerender.
@@ -86,7 +86,7 @@ export function FunnelViewTracker({ slug }: { slug: FunnelSlug }) {
         keepalive: true,
         credentials: "omit",
       }).catch(() => {
-        /* swallow — analytics must never throw */
+        /* swallow, analytics must never throw */
       });
     } catch {
       /* swallow */

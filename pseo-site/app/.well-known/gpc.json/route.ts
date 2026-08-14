@@ -1,5 +1,5 @@
 /**
- * /.well-known/gpc.json — Global Privacy Control signal advertisement.
+ * /.well-known/gpc.json, Global Privacy Control signal advertisement.
  *
  * Publishers that respect the GPC header (`Sec-GPC: 1`) can advertise
  * their support via this well-known file per the W3C / GPC spec. The
@@ -23,11 +23,11 @@ const BASE_URL = "https://signals.gitdealflow.com";
 export async function GET() {
   return NextResponse.json(
     {
-      // Required field — boolean flag that the site honors GPC signals.
+      // Required field, boolean flag that the site honors GPC signals.
       gpc: true,
       // Required ISO-8601 date of the most recent update.
       lastUpdate: new Date().toISOString().slice(0, 10),
-      // Optional but encouraged — link to the human-readable privacy
+      // Optional but encouraged, link to the human-readable privacy
       // policy with full GPC implementation details.
       version: 1,
       policy: `${BASE_URL}/privacy`,

@@ -6,7 +6,7 @@ export const revalidate = 3600;
 const BASE_URL = "https://signals.gitdealflow.com";
 
 /**
- * /embed/weekly — drop-in iframe widget showing the latest 5 picks from
+ * /embed/weekly, drop-in iframe widget showing the latest 5 picks from
  * the Engineering Acceleration Watch.
  *
  * Why a Route Handler (not a Page): an iframe widget has to escape the root
@@ -47,7 +47,7 @@ function fmtShortDate(iso: string): string {
 export async function GET() {
   const week = getCurrentPredictionWeek();
 
-  // Empty-state body — a graceful fallback if no week has been published yet.
+  // Empty-state body, a graceful fallback if no week has been published yet.
   // Better than a 500: the iframe still renders.
   if (!week) {
     const empty = `<!doctype html>
@@ -89,7 +89,7 @@ export async function GET() {
   const html = `<!doctype html>
 <html lang="en"><head>
 <meta charset="utf-8" />
-<title>Engineering Acceleration Watch — Week of ${fmtShortDate(week.weekStart)}</title>
+<title>Engineering Acceleration Watch: Week of ${fmtShortDate(week.weekStart)}</title>
 <meta name="viewport" content="width=device-width,initial-scale=1" />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href="${BASE_URL}/embed/weekly" />
@@ -130,7 +130,7 @@ export async function GET() {
   });
 }
 
-// Inline CSS — no external requests. Mirrors the dark slate theme of the
+// Inline CSS, no external requests. Mirrors the dark slate theme of the
 // site without pulling globals.css. Tight enough for a 380×420 iframe.
 const INLINE_CSS = `
 :root { color-scheme: dark; }

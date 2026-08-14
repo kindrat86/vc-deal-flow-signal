@@ -31,7 +31,7 @@ export async function generateMetadata({
 
   return {
     title:
-      "CAC Payback Calculator — Customer Acquisition Cost in Months",
+      "CAC Payback Calculator, Customer Acquisition Cost in Months",
     description:
       "Free CAC payback calculator. CAC / (monthly ARPC × gross margin %) in months, classified into the standard SaaS bands (<6mo exceptional / 6-12 great / 12-18 good / 18-24 OK / >24 bad). URL-shareable.",
     alternates: { canonical: "/tools/cac-payback-calculator" },
@@ -46,7 +46,7 @@ export async function generateMetadata({
           url: ogImage,
           width: 1200,
           height: 630,
-          alt: "CAC Payback Calculator — VC Deal Flow Signal",
+          alt: "CAC Payback Calculator, VC Deal Flow Signal",
         },
       ],
     },
@@ -84,7 +84,7 @@ const FAQS: { question: string; answer: string }[] = [
   {
     question: "How does this relate to magic number and burn multiple?",
     answer:
-      "All three measure SaaS efficiency from different angles: CAC payback is per-customer, magic number is per-cohort GTM input, burn multiple is the whole company's burn vs ARR. Healthy companies score well on all three. Discrepancies are diagnostic — great burn multiple + 25-month CAC payback means efficient on average but reliant on unhealthy long-tail customers; great CAC payback + poor magic number means each customer is profitable but the motion isn't scaling.",
+      "All three measure SaaS efficiency from different angles: CAC payback is per-customer, magic number is per-cohort GTM input, burn multiple is the whole company's burn vs ARR. Healthy companies score well on all three. Discrepancies are diagnostic, great burn multiple + 25-month CAC payback means efficient on average but reliant on unhealthy long-tail customers; great CAC payback + poor magic number means each customer is profitable but the motion isn't scaling.",
   },
   {
     question: "Why gross margin matters",
@@ -94,12 +94,12 @@ const FAQS: { question: string; answer: string }[] = [
   {
     question: "What if I don't acquire any new customers?",
     answer:
-      "CAC is undefined when zero new customers were acquired — there is no cost per customer to compute. The calculator flags this state explicitly. If you find yourself there, the diagnostic question is whether the spend produced no customers or whether the period was just too short to see them land.",
+      "CAC is undefined when zero new customers were acquired, there is no cost per customer to compute. The calculator flags this state explicitly. If you find yourself there, the diagnostic question is whether the spend produced no customers or whether the period was just too short to see them land.",
   },
   {
     question: "Can I share my calculation?",
     answer:
-      "Yes — every input is encoded in the URL. The 'Copy share link' button copies the current URL to your clipboard. Send it to your board, head of sales, or growth-stage investor and they open the calculator with the same numbers.",
+      "Yes, every input is encoded in the URL. The 'Copy share link' button copies the current URL to your clipboard. Send it to your board, head of sales, or growth-stage investor and they open the calculator with the same numbers.",
   },
 ];
 
@@ -201,7 +201,7 @@ export default function CacPaybackPage() {
         "@type": "WebPage",
         "@id": PAGE_URL,
         url: PAGE_URL,
-        name: "CAC Payback Calculator — Customer Acquisition Cost in Months",
+        name: "CAC Payback Calculator, Customer Acquisition Cost in Months",
         description:
           "Free SaaS CAC payback calculator with standard-band classification and shareable URLs.",
         inLanguage: "en-US",

@@ -6,8 +6,8 @@ import Link from "next/link";
 /**
  * Charter Cohort application form.
  *
- * Brunson Expert Secrets §1 Ch 4 (Mass Movement Vehicle) — the entry ritual.
- * Brunson DotCom Secrets Ch 23 (Application Funnel) — async-only equivalent
+ * Brunson Expert Secrets §1 Ch 4 (Mass Movement Vehicle), the entry ritual.
+ * Brunson DotCom Secrets Ch 23 (Application Funnel), async-only equivalent
  * of the phone-close, anonymity-preserving.
  *
  * Posts to /api/charter-application; the founder receives the application
@@ -35,10 +35,10 @@ const INITIAL: FormState = {
 };
 
 const CHECK_SIZE_OPTIONS = [
-  "€5k – €25k angel checks",
-  "€25k – €100k active angel",
-  "€100k – €500k syndicate lead",
-  "€500k – €2m small-fund principal",
+  "€5k - €25k angel checks",
+  "€25k - €100k active angel",
+  "€100k - €500k syndicate lead",
+  "€500k - €2m small-fund principal",
   "€2m+ mid-fund partner",
 ] as const;
 
@@ -102,14 +102,14 @@ export default function CharterApplicationForm({ initialArchetype }: Props) {
           Application received
         </p>
         <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
-          Thanks — your charter application is in the founder&rsquo;s queue.
+          Thanks, your charter application is in the founder&rsquo;s queue.
         </h2>
         <p className="text-gray-300 text-base leading-relaxed">
           You&rsquo;ll hear back inside 48 business hours. The reply comes from{" "}
           <code className="text-emerald-300 bg-slate-950/50 px-1.5 py-0.5 rounded text-sm">
             signals@gitdealflow.com
           </code>{" "}
-          — add it to your contacts so the draft profile doesn&rsquo;t hit
+add it to your contacts so the draft profile doesn&rsquo;t hit
           Promotions.
         </p>
         <div className="pt-2 flex flex-col sm:flex-row gap-3">
@@ -146,11 +146,11 @@ export default function CharterApplicationForm({ initialArchetype }: Props) {
             maxLength={40}
             value={form.handle}
             onChange={(e) => update("handle", e.target.value)}
-            placeholder="@your-pseudonym (or real name — your call)"
+            placeholder="@your-pseudonym (or real name, your call)"
             className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-gray-100 text-sm placeholder:text-gray-600 focus:border-amber-600 focus:outline-none"
           />
           <span className="text-gray-500 text-xs">
-            Pseudonymous handles welcome — same anonymity rule as the founder.
+            Pseudonymous handles welcome, same anonymity rule as the founder.
           </span>
         </label>
 
@@ -168,7 +168,7 @@ export default function CharterApplicationForm({ initialArchetype }: Props) {
             className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-gray-100 text-sm placeholder:text-gray-600 focus:border-amber-600 focus:outline-none"
           />
           <span className="text-gray-500 text-xs">
-            Never published — used only to verify and reply.
+            Never published, used only to verify and reply.
           </span>
         </label>
       </div>
@@ -225,7 +225,7 @@ export default function CharterApplicationForm({ initialArchetype }: Props) {
           className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-gray-100 text-sm placeholder:text-gray-600 focus:border-amber-600 focus:outline-none"
         />
         <span className="text-gray-500 text-xs">
-          Comma-separated. 1–4 sectors recommended.
+          Comma-separated. 1-4 sectors recommended.
         </span>
       </label>
 
@@ -239,7 +239,7 @@ export default function CharterApplicationForm({ initialArchetype }: Props) {
           rows={5}
           value={form.thesis}
           onChange={(e) => update("thesis", e.target.value)}
-          placeholder="2–4 sentences. The angle you write from. What you're looking for that the warm-intro flow doesn't surface."
+          placeholder="2-4 sentences. The angle you write from. What you're looking for that the warm-intro flow doesn't surface."
           className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-gray-100 text-sm placeholder:text-gray-600 focus:border-amber-600 focus:outline-none resize-y"
         />
         <span className="text-gray-500 text-xs">
@@ -256,7 +256,7 @@ export default function CharterApplicationForm({ initialArchetype }: Props) {
           rows={3}
           value={form.why_charter}
           onChange={(e) => update("why_charter", e.target.value)}
-          placeholder="What about the methodology drew you to apply? Optional — helps the founder write the welcome reply."
+          placeholder="What about the methodology drew you to apply? Optional, helps the founder write the welcome reply."
           className="w-full bg-slate-950 border border-slate-700 rounded-lg px-3 py-2 text-gray-100 text-sm placeholder:text-gray-600 focus:border-amber-600 focus:outline-none resize-y"
         />
       </label>

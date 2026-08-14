@@ -3,8 +3,8 @@
  *
  * Some discovery agents expect a top-level descriptor rather than an /api/
  * path. We serve content directly (200, not 308) because some AI bots
- * don't follow redirects on JSON descriptor probes. The canonical URL —
- * declared via the `Link: rel=canonical` header — remains under /api/.
+ * don't follow redirects on JSON descriptor probes. The canonical URL -
+ * declared via the `Link: rel=canonical` header, remains under /api/.
  */
 
 import { GET as ApiAgentsJson } from "@/app/api/agents.json/route";

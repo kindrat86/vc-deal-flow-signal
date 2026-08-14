@@ -18,7 +18,7 @@ export default function PrivacyPage() {
     "@context": "https://schema.org",
     "@type": "WebPage",
     "@id": `${SITE}/privacy`,
-    name: "Privacy Policy — VC Deal Flow Signal",
+    name: "Privacy Policy, VC Deal Flow Signal",
     description: metadata.description,
     inLanguage: "en-US",
     isAccessibleForFree: true,
@@ -48,7 +48,7 @@ export default function PrivacyPage() {
       <section className="mb-8 rounded-xl border border-sky-700/30 bg-sky-950/20 p-5 sm:p-6">
         <p className="text-sky-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">For the buyer doing diligence</p>
         <p className="text-gray-200 text-sm leading-relaxed">
-          Reviewing us for an investment committee or a procurement checklist? The one-line version: <strong>we rank public companies, not people</strong> — the only personal data we hold on <em>you</em> is the email you opted in with. No card numbers, no tracking pixels, nothing sold. Forward this page to legal; you won&apos;t need an engineer to clear it.
+          Reviewing us for an investment committee or a procurement checklist? The one-line version: <strong>we rank public companies, not people</strong>: the only personal data we hold on <em>you</em> is the email you opted in with. No card numbers, no tracking pixels, nothing sold. Forward this page to legal; you won&apos;t need an engineer to clear it.
         </p>
       </section>
 
@@ -75,11 +75,11 @@ export default function PrivacyPage() {
       <section className="mb-8 rounded-xl border border-emerald-500/30 bg-emerald-500/5 p-5">
         <h2 className="text-emerald-300 font-semibold mb-3">The short version</h2>
         <ul className="text-gray-200 text-sm leading-relaxed space-y-2 list-disc list-outside ml-5">
-          <li><strong>We rank public companies, not people.</strong> Inputs are the public GitHub events API, Wikidata, and SSRN — not individual user activity.</li>
+          <li><strong>We rank public companies, not people.</strong> Inputs are the public GitHub events API, Wikidata, and SSRN, not individual user activity.</li>
           <li><strong>Free subscribers</strong> give us only an email address; we use it to send the weekly digest and the optional drip sequence.</li>
-          <li><strong>Paid subscribers</strong> add a Stripe customer ID; Stripe handles payment data — we never see card numbers.</li>
-          <li><strong>Pseudonymous analytics</strong> via PostHog EU. We set <em>one</em> first-party cookie on <code className="text-emerald-400">.gitdealflow.com</code> so the same visitor isn&apos;t double-counted across pages — no third-party trackers. We honor <Link href="/.well-known/dnt-policy.txt" className="text-sky-400 hover:underline">DNT: 1</Link> and Global Privacy Control by auto-opting-out.</li>
-          <li><strong>No selling, no behavioural advertising,</strong> ever. CCPA "do-not-sell" is moot — there's nothing to sell.</li>
+          <li><strong>Paid subscribers</strong> add a Stripe customer ID; Stripe handles payment data, we never see card numbers.</li>
+          <li><strong>Pseudonymous analytics</strong> via PostHog EU. We set <em>one</em> first-party cookie on <code className="text-emerald-400">.gitdealflow.com</code> so the same visitor isn&apos;t double-counted across pages, no third-party trackers. We honor <Link href="/.well-known/dnt-policy.txt" className="text-sky-400 hover:underline">DNT: 1</Link> and Global Privacy Control by auto-opting-out.</li>
+          <li><strong>No selling, no behavioural advertising,</strong> ever. CCPA "do-not-sell" is moot, there's nothing to sell.</li>
           <li><strong>Email <a className="text-sky-400 hover:underline" href="mailto:signals@gitdealflow.com">signals@gitdealflow.com</a></strong> for access, deletion, or DPA execution.</li>
         </ul>
       </section>
@@ -91,17 +91,17 @@ export default function PrivacyPage() {
         <h2 className="text-xl font-semibold text-gray-100">2 · What we collect</h2>
         <p>Three categories, each with a different basis under GDPR Art. 6:</p>
         <ul className="list-disc list-outside ml-5 space-y-1">
-          <li><strong>Subscriber data</strong> — email address (free + paid), Stripe customer ID (paid), share-token records (when you create a "share my receipts" link). Legal basis: contract (Art. 6(1)(b)) for paid; consent (Art. 6(1)(a)) for free email opt-in.</li>
-          <li><strong>Server logs</strong> — request URL, IP, user-agent. Stored 30 days at Vercel (the hosting provider). Legal basis: legitimate interest (Art. 6(1)(f)) in operating the service.</li>
-          <li><strong>Pseudonymous analytics</strong> — page-view counters, sector popularity. PostHog EU; person profiles are <em>identified-only</em> (anonymous visitors never get a profile). One first-party cookie (<code className="text-emerald-400">ph_*</code>) is set on <code className="text-emerald-400">.gitdealflow.com</code> to stitch pageviews from the same visitor across our own subdomains; this cookie carries an opaque ID, never a name or email. Legal basis: legitimate interest. Browsers sending DNT or GPC are excluded automatically.</li>
+          <li><strong>Subscriber data</strong>: email address (free + paid), Stripe customer ID (paid), share-token records (when you create a "share my receipts" link). Legal basis: contract (Art. 6(1)(b)) for paid; consent (Art. 6(1)(a)) for free email opt-in.</li>
+          <li><strong>Server logs</strong>: request URL, IP, user-agent. Stored 30 days at Vercel (the hosting provider). Legal basis: legitimate interest (Art. 6(1)(f)) in operating the service.</li>
+          <li><strong>Pseudonymous analytics</strong>: page-view counters, sector popularity. PostHog EU; person profiles are <em>identified-only</em> (anonymous visitors never get a profile). One first-party cookie (<code className="text-emerald-400">ph_*</code>) is set on <code className="text-emerald-400">.gitdealflow.com</code> to stitch pageviews from the same visitor across our own subdomains; this cookie carries an opaque ID, never a name or email. Legal basis: legitimate interest. Browsers sending DNT or GPC are excluded automatically.</li>
         </ul>
 
         <h2 className="text-xl font-semibold text-gray-100">3 · What we do NOT collect</h2>
         <ul className="list-disc list-outside ml-5 space-y-1">
           <li>No payment card numbers (Stripe handles, PCI-DSS Level 1).</li>
-          <li>No password fields — we authenticate paid features via API keys and Stripe magic links, not user-passwords.</li>
+          <li>No password fields, we authenticate paid features via API keys and Stripe magic links, not user-passwords.</li>
           <li>No sensitive categories (health, biometric, ethnic, political, etc.).</li>
-          <li>No childrens' data — service not directed at users under 16.</li>
+          <li>No childrens' data, service not directed at users under 16.</li>
           <li>No cross-site tracking pixels.</li>
         </ul>
 
@@ -113,10 +113,10 @@ export default function PrivacyPage() {
 
         <h2 className="text-xl font-semibold text-gray-100">6 · Retention</h2>
         <ul className="list-disc list-outside ml-5 space-y-1">
-          <li>Subscriber email — until unsubscribe + 12 months (then deletion).</li>
-          <li>Stripe customer record — lifetime of subscription + 7 years (tax law).</li>
-          <li>Server logs — 30 days (Vercel default).</li>
-          <li>Analytics events — 30 days, no PII.</li>
+          <li>Subscriber email, until unsubscribe + 12 months (then deletion).</li>
+          <li>Stripe customer record, lifetime of subscription + 7 years (tax law).</li>
+          <li>Server logs, 30 days (Vercel default).</li>
+          <li>Analytics events, 30 days, no PII.</li>
         </ul>
 
         <h2 className="text-xl font-semibold text-gray-100">7 · Your rights</h2>
@@ -132,7 +132,7 @@ export default function PrivacyPage() {
         <p>If you believe we have mishandled your data, you may complain to your local data protection authority. Our default supervisory authority is the Hellenic Data Protection Authority (HDPA), since the operator is based in Greece.</p>
       </section>
 
-      <TrustPageOutro institutional acNote="I hold as little of your data as the product can survive on. The same instinct that keeps my face off this site keeps your inbox off everyone else's: the less I keep, the less anyone can ever take, sell, or leak. We rank public companies — not you." />
+      <TrustPageOutro institutional acNote="I hold as little of your data as the product can survive on. The same instinct that keeps my face off this site keeps your inbox off everyone else's: the less I keep, the less anyone can ever take, sell, or leak. We rank public companies, not you." />
 
       <footer className="mt-10 pt-6 border-t border-slate-800 text-sm text-gray-400">
         License: <a href="https://creativecommons.org/licenses/by/4.0/" className="text-sky-400 hover:underline">CC BY 4.0</a>. Contact: <a href="mailto:signals@gitdealflow.com" className="text-sky-400 hover:underline">signals@gitdealflow.com</a>. Trust hub: <Link href="/trust" className="text-sky-400 hover:underline">/trust</Link>.

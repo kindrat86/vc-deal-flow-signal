@@ -144,7 +144,7 @@ export async function GET(
             <StatBlock label="POINTS" value={Math.round(scout.points).toString()} />
             <StatBlock
               label="ACCURACY"
-              value={accuracy !== null ? `${accuracy}%` : "—"}
+              value={accuracy !== null ? `${accuracy}%` : "-"}
             />
             <StatBlock
               label="RESOLVED"

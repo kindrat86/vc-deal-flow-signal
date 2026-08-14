@@ -18,7 +18,7 @@ const DEFAULT_BLURB = (
   <>
     Get the free weekly engineering-acceleration rankings, or unlock the full
     Dashboard for real-time tracking, sector filters, and founder contact data.
-    Dashboard: <span className="text-gray-200 font-medium">€49/mo</span> — 30-day
+    Dashboard: <span className="text-gray-200 font-medium">€49/mo</span>: 30-day
     Signal-or-It&rsquo;s-Free guarantee.
   </>
 );
@@ -88,7 +88,7 @@ export default function CTABanner({
             >
               GitHub hover lookup
             </a>
-            {" "}&mdash; both free.
+            {" "}, both free.
           </p>
         ) : null}
       </div>

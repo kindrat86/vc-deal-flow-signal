@@ -1,4 +1,4 @@
-// /api/v1/videos.json — versioned video catalog for AI agents and crawlers.
+// /api/v1/videos.json, versioned video catalog for AI agents and crawlers.
 //
 // Single-source-of-truth for every video this site exposes. Mirrors what the
 // /sitemap-videos.xml emits but in agent-friendly JSON-LD with full chapter
@@ -81,9 +81,9 @@ export async function GET() {
     "@context": "https://schema.org",
     "@type": "ItemList",
     "@id": `${SITE}/api/v1/videos.json`,
-    name: "VC Deal Flow Signal — Video Catalog",
+    name: "VC Deal Flow Signal, Video Catalog",
     description:
-      "Every video this site exposes — YouTube uploads, self-hosted demos — with chapter timing, transcripts, and SeekToAction targets. Anonymity-safe (Cartesia synthetic voice; no founder face/voice/name).",
+      "Every video this site exposes, YouTube uploads, self-hosted demos, with chapter timing, transcripts, and SeekToAction targets. Anonymity-safe (Cartesia synthetic voice; no founder face/voice/name).",
     license: "https://creativecommons.org/licenses/by/4.0/",
     publisher: {
       "@type": "Organization",

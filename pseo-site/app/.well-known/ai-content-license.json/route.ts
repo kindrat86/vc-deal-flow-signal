@@ -1,5 +1,5 @@
 /**
- * /.well-known/ai-content-license.json — machine-readable AI training,
+ * /.well-known/ai-content-license.json, machine-readable AI training,
  * inference, and citation policy.
  *
  * Bridges the well-established CC BY 4.0 license with the AI-specific use
@@ -13,7 +13,7 @@
  * project (citation block, attribution token, exclusions).
  *
  * Audit 2026-05-08 closed gap "no rel=ai-content-license" / "no
- * machine-readable AI license file" — dimension 17 Crawl/Bot governance.
+ * machine-readable AI license file", dimension 17 Crawl/Bot governance.
  */
 
 import { NextResponse } from "next/server";
@@ -35,7 +35,7 @@ export async function GET() {
         wikidata: "https://www.wikidata.org/wiki/Q139376302",
         orcid: "https://orcid.org/0009-0002-2222-4112",
       },
-      // Primary content license — Creative Commons Attribution 4.0
+      // Primary content license, Creative Commons Attribution 4.0
       // International. Compatible with all major AI training programs
       // (OpenAI, Anthropic, Google, Meta, Mistral, Cohere) when their
       // attribution requirements are met.

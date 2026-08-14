@@ -27,7 +27,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
       $schema: "https://signals.gitdealflow.com/markets/schema.json",
       generated_at: asOf,
       license: "CC BY 4.0",
-      cite_as: `VC Deal Flow Signal — ${market.shortName} (signals.gitdealflow.com/markets/${market.slug}), as of ${asOf.slice(0, 10)}.`,
+      cite_as: `VC Deal Flow Signal, ${market.shortName} (signals.gitdealflow.com/markets/${market.slug}), as of ${asOf.slice(0, 10)}.`,
       market: {
         slug: market.slug,
         question: market.question,

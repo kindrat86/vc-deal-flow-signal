@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-i18n Generator for gitdealflow.com — Spanish (es) and German (de).
+i18n Generator for gitdealflow.com, Spanish (es) and German (de).
 V2: Fixes homepage URL mapping, cleans up schema URLs, better translation handling.
 """
 
@@ -26,37 +26,37 @@ COMMON_NAV = {
 }
 
 TITLE_TRANSLATIONS = {
-    "See Which Startups Are Heating Up 21–47 Days Before the Round — the Velocity Verdict": (
-        "Descubre qué startups se calientan 21–47 días antes de la ronda — el Veredicto de Velocidad",
-        "Entdecken Sie, welche Startups 21–47 Tage vor der Runde heiß laufen — das Velocity-Verdikt"
+    "See Which Startups Are Heating Up 21-47 Days Before the Round, the Velocity Verdict": (
+        "Descubre qué startups se calientan 21-47 días antes de la ronda, el Veredicto de Velocidad",
+        "Entdecken Sie, welche Startups 21-47 Tage vor der Runde heiß laufen, das Velocity-Verdikt"
     ),
     "Startup Signals 21-47 Days Before the Round": (
         "Señales de Startups 21-47 Días Antes de la Ronda",
         "Startup-Signale 21-47 Tage vor der Runde"
     ),
-    "The Velocity Verdict: five startups accelerating on GitHub, every Sunday — 21 to 47 days before the round.": (
-        "El Veredicto de Velocidad: cinco startups acelerando en GitHub, cada domingo — 21 a 47 días antes de la ronda.",
-        "Das Velocity-Verdikt: fünf Startups, die auf GitHub beschleunigen, jeden Sonntag — 21 bis 47 Tage vor der Runde."
+    "The Velocity Verdict: five startups accelerating on GitHub, every Sunday, 21 to 47 days before the round.": (
+        "El Veredicto de Velocidad: cinco startups acelerando en GitHub, cada domingo, 21 a 47 días antes de la ronda.",
+        "Das Velocity-Verdikt: fünf Startups, die auf GitHub beschleunigen, jeden Sonntag, 21 bis 47 Tage vor der Runde."
     ),
-    "About GitDealFlow — The Signal Behind the Velocity Verdict": (
-        "Acerca de GitDealFlow — La Señal Detrás del Veredicto de Velocidad",
-        "Über GitDealFlow — Das Signal hinter dem Velocity-Verdikt"
+    "About GitDealFlow, The Signal Behind the Velocity Verdict": (
+        "Acerca de GitDealFlow, La Señal Detrás del Veredicto de Velocidad",
+        "Über GitDealFlow, Das Signal hinter dem Velocity-Verdikt"
     ),
-    "GitDealFlow — Startup Signals 21-47 Days Before the Round": (
-        "GitDealFlow — Señales de Startups 21-47 Días Antes de la Ronda",
-        "GitDealFlow — Startup-Signale 21-47 Tage vor der Runde"
+    "GitDealFlow, Startup Signals 21-47 Days Before the Round": (
+        "GitDealFlow, Señales de Startups 21-47 Días Antes de la Ronda",
+        "GitDealFlow, Startup-Signale 21-47 Tage vor der Runde"
     ),
-    "GitDealFlow — The Velocity Verdict": (
-        "GitDealFlow — El Veredicto de Velocidad",
-        "GitDealFlow — Das Velocity-Verdikt"
+    "GitDealFlow, The Velocity Verdict": (
+        "GitDealFlow, El Veredicto de Velocidad",
+        "GitDealFlow, Das Velocity-Verdikt"
     ),
-    "GitDealFlow — Free startup signal checker": (
-        "GitDealFlow — Comprobador gratuito de señales de startups",
-        "GitDealFlow — Kostenloser Startup-Signal-Checker"
+    "GitDealFlow, Free startup signal checker": (
+        "GitDealFlow, Comprobador gratuito de señales de startups",
+        "GitDealFlow, Kostenloser Startup-Signal-Checker"
     ),
-    "GitDealFlow — VC Deal Flow Signal & Startup Tracker": (
-        "GitDealFlow — Señal de Flujo de Acuerdos VC y Rastreador de Startups",
-        "GitDealFlow — VC-Deal-Flow-Signal & Startup-Tracker"
+    "GitDealFlow, VC Deal Flow Signal & Startup Tracker": (
+        "GitDealFlow, Señal de Flujo de Acuerdos VC y Rastreador de Startups",
+        "GitDealFlow, VC-Deal-Flow-Signal & Startup-Tracker"
     ),
     "GitDealFlow | Deal Flow Signal &amp; Startup Tracker": (
         "GitDealFlow | Señal de Flujo de Acuerdos y Rastreador de Startups",

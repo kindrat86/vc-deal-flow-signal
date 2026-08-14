@@ -13,10 +13,10 @@ import WalkthroughCtaLink from "@/components/WalkthroughCtaLink";
 
 export const dynamic = "force-static";
 
-// Brunson Expert Secrets §3 Ch 15 — Webinar Variations.
+// Brunson Expert Secrets §3 Ch 15, Webinar Variations.
 // /walkthrough     → 12-minute long-form (full Perfect Webinar).
 // /walkthrough/5min → 800-word condensed.
-// /walkthrough/90s  → ~250-word "elevator" — this page.
+// /walkthrough/90s  → ~250-word "elevator", this page.
 //
 // The /90s variant exists to A/B against /5min via /walkthrough/quick. The
 // hypothesis (logged in /experiments): for cold-traffic visitors landing
@@ -25,7 +25,7 @@ export const dynamic = "force-static";
 // converts at higher rate, even though the absolute closing power is
 // weaker. Run for 30 days, then re-decide.
 //
-// Word count target: 240–280 words excluding nav/breadcrumbs/CTAs.
+// Word count target: 240-280 words excluding nav/breadcrumbs/CTAs.
 // Reading speed assumption: 200 wpm = ~75 seconds at 250 words.
 
 const STRIPE_DASHBOARD = "https://buy.stripe.com/4gMbJ07kTaJy7kqg6s0x20b";
@@ -35,12 +35,12 @@ const READ_SECONDS = 90;
 
 export const metadata: Metadata = {
   title:
-    "The 90-Second Walkthrough — GitDealFlow in 250 words",
+    "The 90-Second Walkthrough, GitDealFlow in 250 words",
   description:
     "The whole case in ninety seconds. One core claim, three objections collapsed, one stack, one close.",
   alternates: { canonical: "/walkthrough/90s" },
   openGraph: {
-    title: "The 90-Second Walkthrough — GitDealFlow",
+    title: "The 90-Second Walkthrough, GitDealFlow",
     description:
       "Ninety seconds. Single core claim, three objections, one close. Read it standing in line.",
     url: "https://signals.gitdealflow.com/walkthrough/90s",
@@ -58,7 +58,7 @@ export default function NinetySecondWalkthroughPage() {
         "@type": "Article",
         "@id": "https://signals.gitdealflow.com/walkthrough/90s#article",
         headline:
-          "The 90-Second Walkthrough — GitDealFlow in 250 words",
+          "The 90-Second Walkthrough, GitDealFlow in 250 words",
         description:
           "GitDealFlow's full sales argument condensed to 90 seconds. Core claim, three objections collapsed, stack, close.",
         url: "https://signals.gitdealflow.com/walkthrough/90s",
@@ -140,7 +140,7 @@ export default function NinetySecondWalkthroughPage() {
             The 90-Second Walkthrough
           </p>
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 leading-[1.1] tracking-tight">
-            The whole argument —{" "}
+            The whole argument, {" "}
             <span className="text-emerald-400">in 250 words.</span>
           </h1>
           <p className="text-gray-400 text-sm">
@@ -162,16 +162,15 @@ export default function NinetySecondWalkthroughPage() {
           </p>
         </header>
 
-        {/* CORE CLAIM — Big Domino, line one. */}
+        {/* CORE CLAIM, Big Domino, line one. */}
         <section
           className="border-l-4 border-emerald-500 pl-5 py-2 space-y-2"
           data-speakable
         >
           <p className="text-gray-100 text-lg sm:text-xl font-semibold leading-snug">
             Crunchbase tells you the day a startup raised. We tell you the day
-            they started preparing —{" "}
-            <span className="text-emerald-300">21 to 47 days earlier</span> —
-            by reading their public GitHub.
+            they started preparing, {" "}
+            <span className="text-emerald-300">21 to 47 days earlier</span>: by reading their public GitHub.
           </p>
           <p className="text-gray-400 text-sm leading-relaxed">
             Single SSRN-published panel, n=219, five quarters. Median 31-day
@@ -179,7 +178,7 @@ export default function NinetySecondWalkthroughPage() {
           </p>
         </section>
 
-        {/* THREE OBJECTIONS — one line each, no expansion. */}
+        {/* THREE OBJECTIONS, one line each, no expansion. */}
         <section className="space-y-3">
           <h2 className="text-lg font-bold text-gray-100">
             Three objections, three sentences:
@@ -187,7 +186,7 @@ export default function NinetySecondWalkthroughPage() {
           <ul className="space-y-2 text-gray-200 text-base leading-relaxed">
             <li className="border-l-2 border-rose-700 pl-4">
               <strong className="text-gray-100">&ldquo;GitHub data is noise.&rdquo;</strong>{" "}
-              Two-period confirmation + contributor-quality filter — 8%
+              Two-period confirmation + contributor-quality filter, 8%
               false-positive rate, published.
             </li>
             <li className="border-l-2 border-rose-700 pl-4">
@@ -204,7 +203,7 @@ export default function NinetySecondWalkthroughPage() {
           </ul>
         </section>
 
-        {/* THE STACK — four lines, not eight. */}
+        {/* THE STACK, four lines, not eight. */}
         <section className="rounded-xl border border-emerald-700/40 bg-gradient-to-br from-emerald-950/15 via-slate-900 to-slate-950 p-5 sm:p-6 space-y-3">
           <h2 className="text-lg font-bold text-gray-100">
             What €49/mo unlocks:
@@ -214,7 +213,7 @@ export default function NinetySecondWalkthroughPage() {
               → Live dashboard, refreshed every Monday at 06:00 UTC.
             </li>
             <li>
-              → 219-startup panel dataset — replicate the regression yourself.
+              → 219-startup panel dataset, replicate the regression yourself.
             </li>
             <li>
               → Monthly sector deep-dive PDF, your sector.
@@ -225,12 +224,12 @@ export default function NinetySecondWalkthroughPage() {
           </ul>
         </section>
 
-        {/* ONE CLOSE — Money. */}
+        {/* ONE CLOSE, Money. */}
         <section className="space-y-2">
           <h2 className="text-lg font-bold text-gray-100">The math:</h2>
           <p className="text-gray-200 text-base leading-relaxed">
             €119.64 a year. The expected value of one missed seed name that
-            8×&rsquo;s — at a €5k cheque — is €40,000. The price isn&rsquo;t
+            8×&rsquo;s, at a €5k cheque, is €40,000. The price isn&rsquo;t
             the cost. The deal you miss is.
           </p>
         </section>
@@ -245,7 +244,7 @@ export default function NinetySecondWalkthroughPage() {
           <p className="text-gray-100 text-base leading-relaxed">
             If all this did was surface{" "}
             <strong className="text-emerald-300">one name</strong> you would
-            have missed in the next 12 months — would €119.64 be worth it?
+            have missed in the next 12 months, would €119.64 be worth it?
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center pt-1">
             <WalkthroughCtaLink

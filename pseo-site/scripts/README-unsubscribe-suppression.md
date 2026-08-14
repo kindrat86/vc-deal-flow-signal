@@ -1,7 +1,7 @@
 # Email unsubscribe / opt-out suppression
 
 Opt-out (unsubscribe) state is compliance-sensitive PII (CAN-SPAM / GDPR
-suppression). It must live in the systems that gate sends — **never** in a flat
+suppression). It must live in the systems that gate sends, **never** in a flat
 JSON file in the repo.
 
 ## Where opt-out state actually lives
@@ -32,7 +32,7 @@ signup ─▶ Resend audience (unsubscribed: true|false)      ◀── SOURCE O
 ## 1. Suppress the opt-outs in the real stores
 
 ```bash
-# Dry run — reads the local (gitignored) flat file, shows what it would do:
+# Dry run, reads the local (gitignored) flat file, shows what it would do:
 node pseo-site/scripts/suppress-unsubscribes.mjs
 
 # Apply (needs RESEND_API_KEY; PB mirror also written if POCKETBASE_URL + admin creds set):
@@ -41,7 +41,7 @@ node pseo-site/scripts/suppress-unsubscribes.mjs --send
 
 Env: `RESEND_API_KEY` (required), `RESEND_AUDIENCE_ID` (optional),
 `POCKETBASE_URL` + `POCKETBASE_ADMIN_EMAIL` + `POCKETBASE_ADMIN_PASSWORD`
-(optional — enables the PB mirror write; otherwise the hourly Resend→PB sync
+(optional, enables the PB mirror write; otherwise the hourly Resend→PB sync
 catches up).
 
 The script is idempotent and masks addresses in its output.
@@ -60,7 +60,7 @@ reads the flat file. Replace the file read with a PB query so it derives
 unsubscribers from the source the send path uses:
 
 ```python
-# OLD — flat-file read (delete this block):
+# OLD, flat-file read (delete this block):
 # unsubscribed_emails = set()
 # _unsub_path = os.path.join(PROJECT_DIR, "pseo-site", "data", "unsubscribed-emails.json")
 # try:
@@ -70,7 +70,7 @@ unsubscribers from the source the send path uses:
 # except FileNotFoundError:
 #     pass
 
-# NEW — derive from PB subscribers (already fetched as `contacts` in this script):
+# NEW, derive from PB subscribers (already fetched as `contacts` in this script):
 unsubscribed_emails = {
     (c.get("email") or "").lower()
     for c in contacts
@@ -80,7 +80,7 @@ unsubscribed_emails = {
 
 ## 4. Delete the flat file
 
-Once steps 1–3 are done and verified:
+Once steps 1-3 are done and verified:
 
 ```bash
 rm pseo-site/data/unsubscribed-emails.json   # gitignored; no longer drives anything
@@ -90,7 +90,7 @@ rm pseo-site/data/unsubscribed-emails.json   # gitignored; no longer drives anyt
 
 Manual unsubscribes today come in as replies to `mailto:signals@gitdealflow.com
 ?subject=Unsubscribe` (the `List-Unsubscribe` header on every send). There is no
-automated handler for those — they were being hand-added to the flat file.
+automated handler for those, they were being hand-added to the flat file.
 Follow-up: either wire a one-click `List-Unsubscribe-Post` URL to the existing
 `email-api` `/unsubscribe` endpoint (which already PATCHes PB
 `subscribers.status`), or document a runbook step to mark mailto-replies

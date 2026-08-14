@@ -6,7 +6,7 @@ import type { FunnelSlug } from "@/content/funnel-slugs";
 /**
  * Live-activity badge rendered next to each funnel card on /funnels.
  *
- * Brunson Traffic Secrets §3 Ch 12 — Funnel Hub social-proof multiplier.
+ * Brunson Traffic Secrets §3 Ch 12, Funnel Hub social-proof multiplier.
  * Reads from /api/funnel-activity, polls every 45s (overlaps the
  * server-side 5s cache for a near-fresh feel without stampeding).
  *
@@ -129,7 +129,7 @@ export function FunnelLiveActivity({ slug }: { slug: FunnelSlug }) {
 }
 
 /**
- * Aggregate banner — sum across every funnel. Rendered once at the top of
+ * Aggregate banner, sum across every funnel. Rendered once at the top of
  * /funnels so even when individual cards show nothing the visitor sees the
  * overall pulse of the hub.
  */

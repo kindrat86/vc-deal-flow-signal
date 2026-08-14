@@ -1,5 +1,5 @@
 /**
- * Auto-generate the Signal of the Week – a single-startup editorial deep dive
+ * Auto-generate the Signal of the Week - a single-startup editorial deep dive
  * used as the citation engine for Dream 100 audience owners.
  *
  * Unlike the full Weekly Signal Report (top 10), this picks ONE startup the
@@ -60,7 +60,7 @@ type Ranked = Startup & { sectorName: string; sectorSlug: string; narrativeScore
 
 // Sectors ranked by investor-narrative fit. Target sectors (>= 1.0) are where
 // a citation carries the most weight with our Developer-Angel ICP. Non-target
-// sectors (< 1.0) get heavy penalties – a viral gaming repo is not what we
+// sectors (< 1.0) get heavy penalties - a viral gaming repo is not what we
 // want our Dream 100 quoting from us.
 const SECTOR_WEIGHT: Record<string, number> = {
   "cybersecurity": 2.0,
@@ -130,12 +130,12 @@ function buildNarrative(pick: Ranked, allCount: number, sectorCount: number, per
   const stageText = pick.stage && pick.stage !== "Unknown" ? `${pick.stage}-stage` : "";
 
   // Keep title tight, tweet-friendly, citation-shaped
-  const title = `Signal of the Week: ${pick.name} (${pick.sectorName}) – ${vc} commit velocity`;
+  const title = `Signal of the Week: ${pick.name} (${pick.sectorName}) - ${vc} commit velocity`;
 
   // SEO description - should read like a wire-service lead
   const description = `${pick.name} is the #1 engineering acceleration mover this week across ${allCount} tracked startups in ${sectorCount} sectors. Commit velocity is up ${vc} over 14 days on a baseline of ${pick.commitVelocity14d} commits with ${pick.contributors} contributors. Signal: ${pick.signalType}.`;
 
-  const summary = `${pick.name}, a ${stageText || "growth-stage"} ${pick.sectorName.toLowerCase()} startup${geo ? ` based in ${geo}` : ""}, is the top engineering-acceleration mover this week across ${allCount} tracked startups. Commit velocity is ${vc} over 14 days with ${pick.contributors} contributors active. The signal type is ${pick.signalType.toLowerCase()} – historically a fundraise predictor 3-6 weeks out.`;
+  const summary = `${pick.name}, a ${stageText || "growth-stage"} ${pick.sectorName.toLowerCase()} startup${geo ? ` based in ${geo}` : ""}, is the top engineering-acceleration mover this week across ${allCount} tracked startups. Commit velocity is ${vc} over 14 days with ${pick.contributors} contributors active. The signal type is ${pick.signalType.toLowerCase()} - historically a fundraise predictor 3-6 weeks out.`;
 
   const keyStats: Array<{ value: string; label: string; context?: string }> = [
     { value: vc, label: "Commit velocity change", context: "14-day vs. baseline" },
@@ -151,7 +151,7 @@ function buildNarrative(pick: Ranked, allCount: number, sectorCount: number, per
   if (pick.linkedinUrl) outbound.push(`[LinkedIn](${pick.linkedinUrl})`);
   const outboundRow = outbound.join(" · ");
 
-  const body = `${pick.name} is the #1 engineering-acceleration mover this week across ${allCount} tracked startups in ${sectorCount} sectors. Commit velocity is ${vc} over 14 days, off a baseline of ${pick.commitVelocity14d} commits with ${pick.contributors} contributors actively shipping. The dominant signal type is ${pick.signalType.toLowerCase()} – historically a 3-6 week leading indicator of fundraise announcements.
+  const body = `${pick.name} is the #1 engineering-acceleration mover this week across ${allCount} tracked startups in ${sectorCount} sectors. Commit velocity is ${vc} over 14 days, off a baseline of ${pick.commitVelocity14d} commits with ${pick.contributors} contributors actively shipping. The dominant signal type is ${pick.signalType.toLowerCase()} - historically a 3-6 week leading indicator of fundraise announcements.
 
 ${outboundRow}
 
@@ -186,7 +186,7 @@ To ask Claude or Cursor about this company directly, install the MCP server: \`n
 
 If you use this in a newsletter, podcast, or research note, we suggest:
 
-> "GitDealFlow Signal of the Week, ${periodName} – ${pick.name} shows ${vc} commit velocity change over 14 days (signals.gitdealflow.com/blog/${slug})."
+> "GitDealFlow Signal of the Week, ${periodName} - ${pick.name} shows ${vc} commit velocity change over 14 days (signals.gitdealflow.com/blog/${slug})."
 
 No permission required. Attribution appreciated.
 
@@ -276,7 +276,7 @@ function main() {
     faqs: [
       {
         question: `Why is ${pick.name} flagged as Signal of the Week?`,
-        answer: `${pick.name} had the highest investor-narrative score this week – a composite of commit velocity change (${humanizedVelocityChange(pick.commitVelocityChange)}), contributor count (${pick.contributors}), new repositories (${pick.newRepos}), and sector investor fit. The signal type is ${pick.signalType}, which historically precedes fundraise announcements by 3-6 weeks.`,
+        answer: `${pick.name} had the highest investor-narrative score this week - a composite of commit velocity change (${humanizedVelocityChange(pick.commitVelocityChange)}), contributor count (${pick.contributors}), new repositories (${pick.newRepos}), and sector investor fit. The signal type is ${pick.signalType}, which historically precedes fundraise announcements by 3-6 weeks.`,
       },
       {
         question: "Is this investment advice?",
@@ -284,13 +284,13 @@ function main() {
       },
       {
         question: "How do I cite Signal of the Week in my work?",
-        answer: `We suggest: "GitDealFlow Signal of the Week, ${currentPeriod.name} – ${pick.name} shows ${humanizedVelocityChange(pick.commitVelocityChange)} commit velocity change over 14 days." Link to signals.gitdealflow.com/blog/${slug}. No permission required; attribution appreciated.`,
+        answer: `We suggest: "GitDealFlow Signal of the Week, ${currentPeriod.name} - ${pick.name} shows ${humanizedVelocityChange(pick.commitVelocityChange)} commit velocity change over 14 days." Link to signals.gitdealflow.com/blog/${slug}. No permission required; attribution appreciated.`,
       },
     ],
     keyStats: narrative.keyStats,
   };
 
-  const output = `// Auto-generated by scripts/generate-signal-of-the-week.ts – do not edit manually
+  const output = `// Auto-generated by scripts/generate-signal-of-the-week.ts - do not edit manually
 import type { BlogPost } from "./posts";
 
 export const signalOfTheWeek: BlogPost = ${JSON.stringify(post, null, 2)};
@@ -321,9 +321,9 @@ function buildDistributionCopy(
 ): string {
   const vc = humanizedVelocityChange(pick.commitVelocityChange);
   const permalink = `https://signals.gitdealflow.com/blog/${slug}`;
-  const citation = `GitDealFlow Signal of the Week, ${periodName} – ${pick.name} shows ${vc} commit velocity change over 14 days (${permalink}).`;
+  const citation = `GitDealFlow Signal of the Week, ${periodName} - ${pick.name} shows ${vc} commit velocity change over 14 days (${permalink}).`;
 
-  return `# Signal of the Week ${dateStr} – Distribution Copy
+  return `# Signal of the Week ${dateStr} - Distribution Copy
 
 Featured startup: ${pick.name} (${pick.sectorName})
 Signal: ${pick.signalType} · ${vc} commit velocity change · ${pick.contributors} contributors
@@ -334,7 +334,7 @@ Citation block:
 
 ---
 
-## 1. Twitter / X thread (@sipiteno) – Monday ${dateStr}, 14:00 EEST
+## 1. Twitter / X thread (@sipiteno) - Monday ${dateStr}, 14:00 EEST
 
 Tweet 1 (hook, ≤280 chars):
 
@@ -353,11 +353,11 @@ Tweet 3 (why it matters):
 
 In our data, a sustained ${vc}+ velocity change with this signal type precedes announced rounds by 3-6 weeks. Not advice. Not a prediction. Just the pattern.
 
-If you invest in ${pick.sectorName.toLowerCase()} – ${pick.name} is worth 20 minutes of diligence this week.
+If you invest in ${pick.sectorName.toLowerCase()} - ${pick.name} is worth 20 minutes of diligence this week.
 
 Tweet 4 (MCP hook):
 
-Or ask Claude / Cursor directly – our MCP server is public:
+Or ask Claude / Cursor directly - our MCP server is public:
 
 \`npm install -g @gitdealflow/mcp-signal\`
 
@@ -370,16 +370,16 @@ Signal of the Week ships every Monday. Free, non-gated, citation-encouraged.
 Subscribe: https://gitdealflow.com/#signup
 Cite us: ${permalink}
 
-Tagging for amplification (Tier 1 Dream 100 – limit 2 per tweet, reply-quote not main tweet):
+Tagging for amplification (Tier 1 Dream 100 - limit 2 per tweet, reply-quote not main tweet):
 - Tweet 2 quote-reply: @GergelyOrosz @swyx
 - Tweet 3 quote-reply: @saranormous @danielgross
 - Tweet 4 quote-reply: @natfriedman @alexalbert__
 
 ---
 
-## 2. Substack Note (The Data Nerd) – Monday ${dateStr}, 15:00 EEST
+## 2. Substack Note (The Data Nerd) - Monday ${dateStr}, 15:00 EEST
 
-Signal of the Week – ${pick.name} (${pick.sectorName})
+Signal of the Week - ${pick.name} (${pick.sectorName})
 
 ${vc} commit velocity change over 14 days. ${pick.contributors} contributors. Signal type: ${pick.signalType.toLowerCase()}.
 
@@ -389,9 +389,9 @@ Full breakdown: ${permalink}
 
 ---
 
-## 3. LinkedIn company page – Monday ${dateStr}, 16:00 EEST
+## 3. LinkedIn company page - Monday ${dateStr}, 16:00 EEST
 
-🔍 Signal of the Week – ${pick.name}
+🔍 Signal of the Week - ${pick.name}
 
 This week's #1 engineering-acceleration mover across ${allCount} startup GitHub orgs: ${pick.name} (${pick.sectorName}).
 
@@ -411,9 +411,9 @@ Full breakdown + CSV: ${permalink}
 
 ---
 
-## 4. Telegram channel (@gitdealflow public) – Monday ${dateStr}, 14:30 EEST
+## 4. Telegram channel (@gitdealflow public) - Monday ${dateStr}, 14:30 EEST
 
-Signal of the Week – ${pick.name}
+Signal of the Week - ${pick.name}
 
 ${pick.sectorName} · ${vc} commit velocity · ${pick.contributors} contributors
 
@@ -423,14 +423,14 @@ Full breakdown: ${permalink}
 
 ---
 
-## 5. Cold-pitch email – send 5 max, one per Monday, to Dream 100 audience owners
+## 5. Cold-pitch email - send 5 max, one per Monday, to Dream 100 audience owners
 
 Priority send list for this week:
-1. Swyx – Latent Space (${pick.sectorName === "AI & Machine Learning" ? "PRIORITY – direct sector fit" : "secondary fit"})
-2. Gergely Orosz – Pragmatic Engineer (engineering-signal angle)
-3. Byrne Hobart – The Diff (quant-framed analysis)
-4. Packy McCormick – Not Boring (market-narrative chart)
-5. Tom Tunguz – Theory Ventures (SaaS/dev-tool correlations)
+1. Swyx - Latent Space (${pick.sectorName === "AI & Machine Learning" ? "PRIORITY - direct sector fit" : "secondary fit"})
+2. Gergely Orosz - Pragmatic Engineer (engineering-signal angle)
+3. Byrne Hobart - The Diff (quant-framed analysis)
+4. Packy McCormick - Not Boring (market-narrative chart)
+5. Tom Tunguz - Theory Ventures (SaaS/dev-tool correlations)
 
 Template:
 
@@ -438,16 +438,16 @@ Template:
 >
 > [Name],
 >
-> I run GitDealFlow – tracking ${allCount}+ startup GitHub orgs for engineering-velocity signals that historically precede fundraises by 3-6 weeks.
+> I run GitDealFlow - tracking ${allCount}+ startup GitHub orgs for engineering-velocity signals that historically precede fundraises by 3-6 weeks.
 >
-> This week's top mover is ${pick.name} (${pick.sectorName}): ${vc} commit velocity change, ${pick.contributors} contributors, signal type "${pick.signalType}". Pulled a cut tailored to your audience – full breakdown + CSV here: ${permalink}.
+> This week's top mover is ${pick.name} (${pick.sectorName}): ${vc} commit velocity change, ${pick.contributors} contributors, signal type "${pick.signalType}". Pulled a cut tailored to your audience - full breakdown + CSV here: ${permalink}.
 >
-> Use it, cite it, ignore it – whichever's useful. Not pitching a sponsorship, just think it's on-theme for [their last piece].
+> Use it, cite it, ignore it - whichever's useful. Not pitching a sponsorship, just think it's on-theme for [their last piece].
 >
 > Citation block if useful:
 > > ${citation}
 >
-> – Data Nerd, gitdealflow.com
+> - Data Nerd, gitdealflow.com
 
 Send via signals@gitdealflow.com (Zoho, warmed). Do not chase. One shot per target per week.
 
@@ -459,7 +459,7 @@ Skip for this week. Reserve Show HN for product surface launches, not weekly dat
 
 ---
 
-## 7. Reddit – skip
+## 7. Reddit - skip
 
 Per memory: Reddit automation blocked, LinkedIn/Reddit manual only. If Maryan wants to post manually, the Twitter thread hook (Tweet 1) works as an r/venturecapital comment, but the subreddit auto-removes product posts. Better to let this surface via Dream 100 amplification than to force-post.
 

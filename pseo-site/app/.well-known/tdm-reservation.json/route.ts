@@ -1,5 +1,5 @@
 /**
- * /.well-known/tdm-reservation.json — W3C TDM Reservation Protocol manifest.
+ * /.well-known/tdm-reservation.json, W3C TDM Reservation Protocol manifest.
  *
  * Implements the EU Digital Services Act / Copyright Directive Article 4
  * machine-readable opt-out mechanism for text-and-data-mining (TDM). The
@@ -19,7 +19,7 @@
  * unfamiliar with our policy URL fall back to the human-readable HTML
  * page at /citation-guide via the `humanPolicy` field.
  *
- * Audit 2026-05-08 closed gap "no TDM Reservation Protocol" — closes
+ * Audit 2026-05-08 closed gap "no TDM Reservation Protocol", closes
  * dimension 17 Crawl/Bot governance from 94 toward 99.
  */
 
@@ -41,7 +41,7 @@ export async function GET() {
       // Machine-readable license that any TDM crawler can fetch to learn
       // attribution requirements, permitted use modes, and exclusions.
       "tdm-policy": `${BASE_URL}/.well-known/ai-content-license.json`,
-      // Human-readable policy reachable from the same domain — useful for
+      // Human-readable policy reachable from the same domain, useful for
       // auditors and lawyers reviewing our position outside of automated
       // crawls.
       humanPolicy: `${BASE_URL}/citation-guide`,
@@ -61,7 +61,7 @@ export async function GET() {
     {
       headers: {
         "Content-Type": "application/json; charset=utf-8",
-        // Long cache — policy rarely changes. SWR keeps clients warm if it
+        // Long cache, policy rarely changes. SWR keeps clients warm if it
         // does, without making them wait on a revalidation request.
         "Cache-Control": "s-maxage=86400, stale-while-revalidate=604800",
         "Access-Control-Allow-Origin": "*",

@@ -26,12 +26,12 @@ export const STATUS_META: Record<
 > = {
   engage: {
     short: "Engage",
-    long: "Active engagement layer — we comment, post, or integrate.",
+    long: "Active engagement layer, we comment, post, or integrate.",
     tone: "emerald",
   },
   watch: {
     short: "Watch",
-    long: "Monitoring only — we read the signal, don't post.",
+    long: "Monitoring only, we read the signal, don't post.",
     tone: "sky",
   },
   hold: {
@@ -46,7 +46,7 @@ export const STATUS_META: Record<
   },
   blocked: {
     short: "Blocked",
-    long: "Cannot engage — platform constraint, anonymity rule, or policy.",
+    long: "Cannot engage, platform constraint, anonymity rule, or policy.",
     tone: "rose",
   },
 };
@@ -56,7 +56,7 @@ export const DREAM_100_GROUPS: Dream100Group[] = [
     id: "substacks",
     label: "10 substacks we read",
     intro:
-      "Long-form business writing the corp-dev, PE-operating-partner, and non-engineer tech-VP buyer reads to decide who's worth a meeting. Most are paywalled or comment-light — we consume, we don't dominate.",
+      "Long-form business writing the corp-dev, PE-operating-partner, and non-engineer tech-VP buyer reads to decide who's worth a meeting. Most are paywalled or comment-light, we consume, we don't dominate.",
     items: [
       {
         name: "Stratechery",
@@ -84,7 +84,7 @@ export const DREAM_100_GROUPS: Dream100Group[] = [
       },
       {
         name: "Growth Unhinged",
-        what: "Kyle Poyar's GTM / PLG benchmarks for operators — is this real traction or hype?",
+        what: "Kyle Poyar's GTM / PLG benchmarks for operators, is this real traction or hype?",
         href: "https://www.growthunhinged.com",
         status: "read",
       },
@@ -96,7 +96,7 @@ export const DREAM_100_GROUPS: Dream100Group[] = [
       },
       {
         name: "Bits about Money",
-        what: "Patrick McKenzie on how financial systems actually work — read it before any fintech thesis.",
+        what: "Patrick McKenzie on how financial systems actually work, read it before any fintech thesis.",
         href: "https://www.bitsaboutmoney.com",
         status: "read",
       },
@@ -124,7 +124,7 @@ export const DREAM_100_GROUPS: Dream100Group[] = [
     id: "podcasts",
     label: "10 podcasts we listen to",
     intro:
-      "We don't run a podcast (anonymity rule). These are the conversations corp-dev, PE, and allocator buyers play in the car. Listen-only — no audio guesting, no founder voice on tape.",
+      "We don't run a podcast (anonymity rule). These are the conversations corp-dev, PE, and allocator buyers play in the car. Listen-only, no audio guesting, no founder voice on tape.",
     items: [
       {
         name: "Acquired",
@@ -138,7 +138,7 @@ export const DREAM_100_GROUPS: Dream100Group[] = [
       },
       {
         name: "Business Breakdowns",
-        what: "Single-company business analyses — how a company actually makes money.",
+        what: "Single-company business analyses, how a company actually makes money.",
         status: "read",
       },
       {
@@ -173,7 +173,7 @@ export const DREAM_100_GROUPS: Dream100Group[] = [
       },
       {
         name: "The Twenty Minute VC",
-        what: "Short-form deal and operator commentary — the audio companion to 20VC.",
+        what: "Short-form deal and operator commentary, the audio companion to 20VC.",
         status: "read",
       },
     ],
@@ -318,7 +318,7 @@ export const DREAM_100_GROUPS: Dream100Group[] = [
     id: "conferences",
     label: "10 conferences whose attendee lists we read",
     intro:
-      "Where the corp-dev, PE, and operator crowd shows up offline. We don't speak (anonymity) — we read attendee lists and confirm momentum against who's in the room.",
+      "Where the corp-dev, PE, and operator crowd shows up offline. We don't speak (anonymity), we read attendee lists and confirm momentum against who's in the room.",
     items: [
       {
         name: "SaaStr Annual",
@@ -332,7 +332,7 @@ export const DREAM_100_GROUPS: Dream100Group[] = [
       },
       {
         name: "Web Summit",
-        what: "Broad tech-business audience — execs, investors, corp-dev.",
+        what: "Broad tech-business audience, execs, investors, corp-dev.",
         status: "read",
       },
       {
@@ -347,7 +347,7 @@ export const DREAM_100_GROUPS: Dream100Group[] = [
       },
       {
         name: "ACG (Association for Corporate Growth)",
-        what: "M&A and corporate-growth professionals — Marcus's literal trade body.",
+        what: "M&A and corporate-growth professionals, Marcus's literal trade body.",
         status: "watch",
       },
       {
@@ -367,7 +367,7 @@ export const DREAM_100_GROUPS: Dream100Group[] = [
       },
       {
         name: "NACD",
-        what: "National Association of Corporate Directors — board and governance audience.",
+        what: "National Association of Corporate Directors, board and governance audience.",
         status: "read",
       },
     ],
@@ -376,55 +376,55 @@ export const DREAM_100_GROUPS: Dream100Group[] = [
     id: "books",
     label: "10 books that shaped how we read companies",
     intro:
-      "The mental models behind the methodology — how operators, allocators, and acquirers read a company. None are about reading code; all are about reading a business.",
+      "The mental models behind the methodology, how operators, allocators, and acquirers read a company. None are about reading code; all are about reading a business.",
     items: [
       {
-        name: "The Outsiders — William Thorndike",
+        name: "The Outsiders, William Thorndike",
         what: "Eight unconventional CEOs and the capital-allocation discipline that made them.",
         status: "read",
       },
       {
-        name: "7 Powers — Hamilton Helmer",
+        name: "7 Powers, Hamilton Helmer",
         what: "The seven sources of durable competitive advantage. A buyer's moat checklist.",
         status: "read",
       },
       {
-        name: "Competition Demystified — Bruce Greenwald",
+        name: "Competition Demystified, Bruce Greenwald",
         what: "Barriers to entry as the core of strategy. How to value a moat.",
         status: "read",
       },
       {
-        name: "Expectations Investing — Michael Mauboussin",
+        name: "Expectations Investing, Michael Mauboussin",
         what: "Reading the expectations baked into price. Valuation as a corp-dev / PE lens.",
         status: "read",
       },
       {
-        name: "Zero to One — Peter Thiel",
+        name: "Zero to One, Peter Thiel",
         what: "Why the next great company is found in monopoly, not competition.",
         status: "read",
       },
       {
-        name: "The Cold Start Problem — Andrew Chen",
+        name: "The Cold Start Problem, Andrew Chen",
         what: "How network-effect businesses actually reach escape velocity.",
         status: "read",
       },
       {
-        name: "Working Backwards — Colin Bryar & Bill Carr",
-        what: "Amazon's operating playbook — how a disciplined operator scales.",
+        name: "Working Backwards, Colin Bryar & Bill Carr",
+        what: "Amazon's operating playbook, how a disciplined operator scales.",
         status: "read",
       },
       {
-        name: "High Growth Handbook — Elad Gil",
+        name: "High Growth Handbook, Elad Gil",
         what: "Operator / board business framing for scaling companies.",
         status: "read",
       },
       {
-        name: "Venture Deals — Brad Feld & Jason Mendelson",
-        what: "How venture financings actually work — the mechanics behind the cap table.",
+        name: "Venture Deals, Brad Feld & Jason Mendelson",
+        what: "How venture financings actually work, the mechanics behind the cap table.",
         status: "read",
       },
       {
-        name: "Super Founders — Ali Tamaseb",
+        name: "Super Founders, Ali Tamaseb",
         what: "Data-driven myth-busting on what actually predicts a billion-dollar company.",
         status: "read",
       },
@@ -438,7 +438,7 @@ export const DREAM_100_GROUPS: Dream100Group[] = [
     items: [
       {
         name: "Tiny (Andrew Wilkinson)",
-        what: "Acquisitions and holdco with a corp-dev mindset — who's worth acquiring.",
+        what: "Acquisitions and holdco with a corp-dev mindset, who's worth acquiring.",
         href: "https://www.tiny.com",
         status: "watch",
       },
@@ -450,7 +450,7 @@ export const DREAM_100_GROUPS: Dream100Group[] = [
       },
       {
         name: "Altimeter (Brad Gerstner)",
-        what: "Growth and public-markets capital — corp-dev-relevant theses.",
+        what: "Growth and public-markets capital, corp-dev-relevant theses.",
         href: "https://www.altimeter.com",
         status: "watch",
       },
@@ -510,7 +510,7 @@ export const DREAM_100_GROUPS: Dream100Group[] = [
       },
       {
         name: "Pavilion",
-        what: "Revenue-leader community — CROs and GTM execs across thousands of companies.",
+        what: "Revenue-leader community, CROs and GTM execs across thousands of companies.",
         status: "watch",
       },
       {
@@ -533,7 +533,7 @@ export const DREAM_100_GROUPS: Dream100Group[] = [
         what: "PE practitioner forum. We read; engagement is limited and product-shy here.",
         status: "watch",
         note:
-          "Read-leaning — practitioner forum is wary of vendor self-promotion; contribute only in plain business language.",
+          "Read-leaning, practitioner forum is wary of vendor self-promotion; contribute only in plain business language.",
       },
       {
         name: "Exit Five community",
@@ -542,7 +542,7 @@ export const DREAM_100_GROUPS: Dream100Group[] = [
       },
       {
         name: "ACG chapters",
-        what: "Association for Corporate Growth local chapters — M&A and corp-dev pros offline + online.",
+        what: "Association for Corporate Growth local chapters, M&A and corp-dev pros offline + online.",
         status: "read",
       },
       {
@@ -550,7 +550,7 @@ export const DREAM_100_GROUPS: Dream100Group[] = [
         what: "Private allocator-side conversation. Invite-only; we listen where we have access.",
         status: "watch",
         note:
-          "Closed groups — read-only where invited; no product broadcasting (anonymity + norms).",
+          "Closed groups, read-only where invited; no product broadcasting (anonymity + norms).",
       },
       {
         name: "Carta Equity community",
@@ -563,7 +563,7 @@ export const DREAM_100_GROUPS: Dream100Group[] = [
     id: "linkedin-pages",
     label: "10 LinkedIn Company Pages on our weekly cadence",
     intro:
-      "LinkedIn rule: a Company Page can only reply on other Company Pages' posts. So our layer here is the data desks and firms the buyer follows — not individuals. Cadence: 2× / week, 4-comment ceiling, manual posting only.",
+      "LinkedIn rule: a Company Page can only reply on other Company Pages' posts. So our layer here is the data desks and firms the buyer follows, not individuals. Cadence: 2× / week, 4-comment ceiling, manual posting only.",
     items: [
       {
         name: "Insight Partners",
@@ -579,7 +579,7 @@ export const DREAM_100_GROUPS: Dream100Group[] = [
       },
       {
         name: "Carta",
-        what: "Cap-table data — Peter Walker's team posts the strongest startup-data threads on LinkedIn.",
+        what: "Cap-table data, Peter Walker's team posts the strongest startup-data threads on LinkedIn.",
         href: "https://www.linkedin.com/company/carta--inc-/",
         status: "read",
       },

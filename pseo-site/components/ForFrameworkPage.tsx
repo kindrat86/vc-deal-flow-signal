@@ -6,7 +6,7 @@
  * renderer. Output is a Tailwind-styled, dark-themed page mirroring the
  * existing pSEO pattern (see app/integrations/mistral/page.tsx).
  *
- * No client state, no effects — render-only Server Component.
+ * No client state, no effects, render-only Server Component.
  */
 import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
@@ -27,7 +27,7 @@ interface Props {
 export function ForFrameworkPage({ framework: f }: Props) {
   const path = `/for-${f.slug}`;
   const url = `${SITE}${path}`;
-  const title = `Use GitDealFlow with ${f.name} — VC Engineering Signals for Your Agent`;
+  const title = `Use GitDealFlow with ${f.name}, VC Engineering Signals for Your Agent`;
   const description = `${f.hook} Free A2A endpoint, MCP server, no auth. 350+ venture-backed startups across 15 sectors, refreshed weekly.`;
 
   const others = FRAMEWORKS.filter((x) => x.slug !== f.slug);
@@ -346,7 +346,7 @@ export function ForFrameworkPage({ framework: f }: Props) {
                 >
                   MCP HTTP endpoint
                 </a>{" "}
-                — same five skills, Streamable HTTP, no auth.
+same five skills, Streamable HTTP, no auth.
               </li>
               <li>
                 <a
@@ -366,7 +366,7 @@ export function ForFrameworkPage({ framework: f }: Props) {
                   >
                     Companion: A2A wire-up for {f.name}
                   </Link>{" "}
-                  — copy/paste install snippets and the alternative-approach
+copy/paste install snippets and the alternative-approach
                   patterns.
                 </li>
               ) : null}
@@ -404,13 +404,13 @@ export function ForFrameworkPage({ framework: f }: Props) {
           </h2>
           <div className="rounded-xl border border-emerald-900/50 bg-emerald-950/20 p-6 sm:p-8">
             <p className="text-gray-300 text-base leading-relaxed mb-2 max-w-2xl">
-              The A2A and MCP endpoints above are free and ungated — that&rsquo;s
+              The A2A and MCP endpoints above are free and ungated, that&rsquo;s
               where every {f.name} agent should start. When you need report-grade
               enrichment on a named startup, the deep signal runs at{" "}
               <span className="text-emerald-300 font-semibold">
                 €0.19 / call
               </span>{" "}
-              — €19 buys 100 credits, credits never expire, and a miss (an org we
+€19 buys 100 credits, credits never expire, and a miss (an org we
               don&rsquo;t track) is free.
             </p>
             <p className="text-gray-400 text-sm leading-relaxed mb-6 max-w-2xl">
@@ -423,14 +423,14 @@ export function ForFrameworkPage({ framework: f }: Props) {
               >
                 x402
               </a>{" "}
-              — settle in USDC on Base, $0.19/call, no signup.
+settle in USDC on Base, $0.19/call, no signup.
             </p>
             <div className="flex flex-col sm:flex-row gap-3">
               <Link
                 href="/agents/credits"
                 className="inline-flex items-center justify-center px-6 py-3 rounded-lg bg-emerald-600 hover:bg-emerald-500 text-white text-sm font-semibold transition-colors"
               >
-                Buy 100 credits — €19 <span aria-hidden="true">&nbsp;→</span>
+                Buy 100 credits, €19 <span aria-hidden="true">&nbsp;→</span>
               </Link>
               <Link
                 href="/for-builders"
@@ -447,7 +447,7 @@ export function ForFrameworkPage({ framework: f }: Props) {
             Stuck on the wire-up?
           </h2>
           <p className="text-gray-400 text-sm mb-5 max-w-lg mx-auto">
-            Email signals@gitdealflow.com — replies within 24 hours, EU business
+            Email signals@gitdealflow.com, replies within 24 hours, EU business
             time. Include the framework name and the error in the message body
             and a snippet of your tool definition.
           </p>

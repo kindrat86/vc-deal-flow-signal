@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 
-// Brunson DotCom Secrets Ch 13 ("Best Bait") — pre-checkout sector capture.
+// Brunson DotCom Secrets Ch 13 ("Best Bait"), pre-checkout sector capture.
 // Every visitor who reaches this form has self-identified as
 // "I'd actually buy this if X sector is covered." Capturing email + sector
 // here, before they hit Stripe, gives us:
@@ -48,7 +48,7 @@ export default function SectorIntent({
   const [sector, setSector] = useState("");
   const [status, setStatus] = useState<Status>("idle");
   const [message, setMessage] = useState("");
-  // Honeypot — hidden from humans; bots that fill it get a silent fake
+  // Honeypot, hidden from humans; bots that fill it get a silent fake
   // success from the API (mirrors the subscribe form's "website" field).
   const [website, setWebsite] = useState("");
 
@@ -58,7 +58,7 @@ export default function SectorIntent({
 
     if (!email || !sector) {
       setStatus("error");
-      setMessage("Pick a sector and enter your email — both are required.");
+      setMessage("Pick a sector and enter your email, both are required.");
       return;
     }
 
@@ -76,23 +76,23 @@ export default function SectorIntent({
         setStatus("error");
         setMessage(
           data.error === "invalid_email"
-            ? "That email doesn't look right — check for typos."
+            ? "That email doesn't look right, check for typos."
             : data.error === "invalid_sector"
             ? "Pick one of the sectors from the list."
-            : "Something hiccupped. Skip ahead and check out — Stripe will capture your email and we can lock the sector on the order field.",
+            : "Something hiccupped. Skip ahead and check out, Stripe will capture your email and we can lock the sector on the order field.",
         );
         return;
       }
       setStatus("success");
       setMessage(
         data.replay
-          ? `Already locked — your ${SECTORS.find((s) => s.key === sector)?.label} intent is on file. Continue to checkout below.`
-          : `${SECTORS.find((s) => s.key === sector)?.label} locked. We'll pre-warm the panel — continue to checkout below.`,
+          ? `Already locked, your ${SECTORS.find((s) => s.key === sector)?.label} intent is on file. Continue to checkout below.`
+          : `${SECTORS.find((s) => s.key === sector)?.label} locked. We'll pre-warm the panel, continue to checkout below.`,
       );
     } catch {
       setStatus("error");
       setMessage(
-        "Network glitch. Skip the form and continue to checkout — Stripe will capture both fields.",
+        "Network glitch. Skip the form and continue to checkout, Stripe will capture both fields.",
       );
     }
   }
@@ -101,7 +101,7 @@ export default function SectorIntent({
 
   return (
     <section
-      aria-label="Sector pre-capture — lock your sector before checkout"
+      aria-label="Sector pre-capture, lock your sector before checkout"
       className="rounded-xl border-2 border-violet-500/40 bg-gradient-to-br from-violet-950/30 via-slate-900 to-slate-950 p-5 sm:p-7 space-y-5"
     >
       <header className="space-y-1.5">
@@ -113,7 +113,7 @@ export default function SectorIntent({
         </h2>
         <p className="text-gray-300 text-sm leading-relaxed">
           Naming the sector before checkout lets the engine pre-warm the
-          panel — your 24-hour clock starts at full speed instead of cold.
+          panel, your 24-hour clock starts at full speed instead of cold.
           The form is non-binding; you can change the sector on the Stripe
           order field if you change your mind.
         </p>
@@ -196,7 +196,7 @@ export default function SectorIntent({
             </p>
           </div>
 
-          {/* Honeypot — hidden from humans, bots fill it and get ignored */}
+          {/* Honeypot, hidden from humans, bots fill it and get ignored */}
           <div className="hidden" aria-hidden="true">
             <label htmlFor="firstlook-intent-website">Website</label>
             <input
@@ -227,7 +227,7 @@ export default function SectorIntent({
             {status === "submitting" ? "Locking sector…" : "Lock sector → continue to checkout"}
           </button>
           <p className="text-slate-500 text-xs leading-relaxed border-t border-slate-800 pt-3">
-            Skip the pre-capture if you&rsquo;re ready to check out — the
+            Skip the pre-capture if you&rsquo;re ready to check out, the
             cart below works without this step. The pre-capture is purely
             for engine warm-up and sector-segmented follow-up if you don&rsquo;t
             complete checkout today.

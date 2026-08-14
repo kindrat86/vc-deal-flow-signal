@@ -1,8 +1,8 @@
 /**
- * Daily Seinfeld cron — invoked by Vercel Cron at 14:00 UTC.
+ * Daily Seinfeld cron, invoked by Vercel Cron at 14:00 UTC.
  *
  * Brunson DotCom Secret #8. The Sunday digest trains the rhythm; this
- * keeps the list warm between Mondays. One observation, 60–90 second read,
+ * keeps the list warm between Mondays. One observation, 60-90 second read,
  * single soft CTA. Each day uses a different editorial frame, anchored to
  * today's #1 mover from `getTopMoversThisWeek(1)`.
  *
@@ -21,7 +21,7 @@
  *                                                   claiming the shared daily
  *                                                   send-gate slot first
  *
- * Restored 2026-05-06 — original cron + lib were uncommitted on
+ * Restored 2026-05-06, original cron + lib were uncommitted on
  * `claude/blissful-hamilton-6f38ab`, got overwritten when main moved.
  */
 
@@ -60,7 +60,7 @@ export async function GET(req: Request): Promise<Response> {
   const dry = url.searchParams.get("dry") === "1";
   const to = url.searchParams.get("to");
 
-  // Build the email regardless of mode — even auth failures benefit from the
+  // Build the email regardless of mode, even auth failures benefit from the
   // payload being computed so we can debug schedule misfires from logs.
   const movers = getTopMoversThisWeek(1);
   const topMover = movers.length > 0 ? movers[0] : null;
@@ -93,7 +93,7 @@ export async function GET(req: Request): Promise<Response> {
     return new Response("Resend not configured", { status: 500 });
   }
 
-  // ?to=email — single test recipient via /emails endpoint (not /broadcasts).
+  // ?to=email, single test recipient via /emails endpoint (not /broadcasts).
   if (to) {
     const sendRes = await fetch("https://api.resend.com/emails", {
       method: "POST",
@@ -143,14 +143,14 @@ export async function GET(req: Request): Promise<Response> {
   // Per-recipient fan-out instead of a Resend broadcast.
   //
   // A broadcast targets a whole audience and cannot exclude individuals at send
-  // time, so it can't honour the shared one-marketing-email-per-day cap — a
+  // time, so it can't honour the shared one-marketing-email-per-day cap, a
   // subscriber who already got a drip this morning would still receive it. The
   // audience is small (tens of contacts), and the ?to= path below already sends
   // per recipient with correct unsubscribe handling, so we reuse that shape and
   // claim each recipient's daily slot first.
   //
   // Unsubscribe: broadcasts get Resend's {{{RESEND_UNSUBSCRIBE_URL}}} macro,
-  // which does NOT expand on /emails sends — hence injectUnsubscribeLink() plus
+  // which does NOT expand on /emails sends, hence injectUnsubscribeLink() plus
   // listUnsubscribeHeaders() here, exactly as the single-recipient path does.
   const contactsRes = await fetch(
     `https://api.resend.com/audiences/${audienceId}/contacts`,

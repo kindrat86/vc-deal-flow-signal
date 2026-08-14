@@ -36,7 +36,7 @@ export async function POST(request: NextRequest) {
     );
   }
 
-  // Use session.email (trusted, from JWT) — NOT user-supplied body.email
+  // Use session.email (trusted, from JWT), NOT user-supplied body.email
   const email = session.email;
   const { watchlist } = await request.json();
 
@@ -95,7 +95,7 @@ export async function POST(request: NextRequest) {
 <p>You'll receive an email when any of these companies show a significant signal change:</p>
 <ul>${safeNames.map((name: string) => `<li><strong>${name}</strong></li>`).join("")}</ul>
 <p>You can update your watchlist anytime from the <a href="https://signals.gitdealflow.com/dashboard" style="color:#0ea5e9;">Dashboard</a>.</p>
-<p>— The Data Nerd</p>
+<p>The Data Nerd</p>
 </div>
 </div></body></html>`,
     }),

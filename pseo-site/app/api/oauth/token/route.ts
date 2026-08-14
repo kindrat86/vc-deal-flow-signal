@@ -1,7 +1,7 @@
-// OAuth 2.1 token endpoint — RFC 6749 §4.4 client_credentials grant.
+// OAuth 2.1 token endpoint, RFC 6749 §4.4 client_credentials grant.
 //
 // Issues short-lived bearer tokens for the public MCP server at /api/mcp/rpc.
-// No client authentication is required — this endpoint is open. The OAuth layer
+// No client authentication is required, this endpoint is open. The OAuth layer
 // exists purely to satisfy directory compliance (Anthropic Connectors etc.).
 //
 // Spec compliance:

@@ -14,7 +14,7 @@ const SITE = "https://signals.gitdealflow.com";
 export const metadata: Metadata = {
   title: "Status",
   description:
-    "Live status of every public surface — the marketing site, programmatic SEO, JSON APIs, MCP server, OAuth token issuer, RSS/Atom feeds, and agent-facing well-known files.",
+    "Live status of every public surface, the marketing site, programmatic SEO, JSON APIs, MCP server, OAuth token issuer, RSS/Atom feeds, and agent-facing well-known files.",
   alternates: { canonical: "/uptime" },
   openGraph: {
     title: "Status",
@@ -160,7 +160,7 @@ export default function UptimePage() {
 
         {m.incidents.length === 0 ? (
           <p className="mt-8 rounded-md border border-slate-800 bg-slate-900/40 p-4 text-sm text-slate-300">
-            No active incidents. Past incidents are not indexed here yet — when
+            No active incidents. Past incidents are not indexed here yet, when
             we have a real one we&apos;ll start an incident timeline below this
             line. Honest uptime, not a dashboard art project.
           </p>
@@ -231,14 +231,14 @@ export default function UptimePage() {
             <Link href="/api/v1/uptime.json" className="underline">
               /api/v1/uptime.json
             </Link>{" "}
-            — same data with Schema.org Service blocks; cached 60s at the
+same data with Schema.org Service blocks; cached 60s at the
             edge.
           </p>
           <p className="mt-2">
             <Link href="/.well-known/freshness.json" className="underline">
               /.well-known/freshness.json
             </Link>{" "}
-            — DataFeed manifest for retrieval pipelines (per-surface refresh
+DataFeed manifest for retrieval pipelines (per-surface refresh
             cadence + lastModified).
           </p>
           <p className="mt-4 text-xs">

@@ -8,12 +8,12 @@ import { getDataLastModified } from "@/lib/data";
 const SITE = "https://signals.gitdealflow.com";
 
 export const metadata: Metadata = {
-  title: "Agents — Every Way to Reach VC Deal Flow Signal Programmatically",
+  title: "Agents, Every Way to Reach VC Deal Flow Signal Programmatically",
   description:
     "Free, no-auth agent surfaces: MCP server, A2A endpoint, NLWeb, function-calling API, OpenAPI 3.1, Hugging Face JSONL, embeddable badges, ChatGPT plugin, RFC 9727 api-catalog. One install command per agent host.",
   alternates: { canonical: "/agents" },
   openGraph: {
-    title: "Agents — Reach VC Deal Flow Signal Programmatically",
+    title: "Agents, Reach VC Deal Flow Signal Programmatically",
     description:
       "Every machine-readable surface in one place: MCP, A2A, NLWeb, function-calling, OpenAPI, JSONL, badges, ChatGPT plugin, api-catalog.",
     type: "website",
@@ -21,7 +21,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Agents — Reach VC Deal Flow Signal Programmatically",
+    title: "Agents, Reach VC Deal Flow Signal Programmatically",
     description:
       "Every machine-readable surface in one place. Free, no auth, MIT/CC-BY 4.0.",
   },
@@ -88,7 +88,7 @@ const surfaces: Surface[] = [
   },
   {
     category: "Bulk Data",
-    name: "Full panel — JSON",
+    name: "Full panel, JSON",
     blurb:
       "Single-fetch JSON of every sector, period, and startup. CDN-cached 24h. Public, no auth.",
     invocation: "GET https://signals.gitdealflow.com/api/signals.json",
@@ -96,14 +96,14 @@ const surfaces: Surface[] = [
   },
   {
     category: "Bulk Data",
-    name: "Full panel — CSV",
+    name: "Full panel, CSV",
     blurb: "Same panel as CSV for spreadsheet and dataframe ingestion.",
     invocation: "GET https://signals.gitdealflow.com/api/signals.csv",
     url: `${SITE}/api/signals.csv`,
   },
   {
     category: "Bulk Data",
-    name: "Full panel — JSONL (HF Datasets compatible)",
+    name: "Full panel, JSONL (HF Datasets compatible)",
     blurb:
       "Newline-delimited JSON with a leading metadata line. Drop-in for Hugging Face Datasets, OpenAI Files, and most RAG ingestion pipelines.",
     invocation: "GET https://signals.gitdealflow.com/api/dataset.jsonl",
@@ -131,7 +131,7 @@ const surfaces: Surface[] = [
     category: "Discovery",
     name: "AGENTS.md",
     blurb:
-      "Canonical agent reference — install commands, tool list, citation format, anonymity policy.",
+      "Canonical agent reference, install commands, tool list, citation format, anonymity policy.",
     url: `${SITE}/AGENTS.md`,
   },
   {
@@ -180,13 +180,13 @@ const installSnippets = [
 }`,
   },
   {
-    label: "Cursor — .cursor/rules/gitdealflow.mdc",
+    label: "Cursor, .cursor/rules/gitdealflow.mdc",
     lang: "bash",
     code: `curl -L https://signals.gitdealflow.com/agents/cursor-rule.mdc \\
   -o .cursor/rules/gitdealflow.mdc`,
   },
   {
-    label: "Continue.dev — ~/.continue/config.json (merge)",
+    label: "Continue.dev, ~/.continue/config.json (merge)",
     lang: "bash",
     code: `curl -s https://signals.gitdealflow.com/agents/continue.json`,
   },
@@ -249,7 +249,7 @@ export default function AgentsLandingPage() {
         "@type": "WebPage",
         "@id": `${SITE}/agents#webpage`,
         url: `${SITE}/agents`,
-        name: "Agents — Every Way to Reach VC Deal Flow Signal Programmatically",
+        name: "Agents, Every Way to Reach VC Deal Flow Signal Programmatically",
         description:
           "Free, no-auth agent surfaces: MCP server, A2A endpoint, NLWeb, function-calling API, OpenAPI 3.1, JSONL, embeddable badges, ChatGPT plugin, RFC 9727 api-catalog.",
         inLanguage: "en-US",
@@ -266,7 +266,7 @@ export default function AgentsLandingPage() {
       },
       {
         "@type": "WebAPI",
-        name: "VC Deal Flow Signal — Public Agent API",
+        name: "VC Deal Flow Signal, Public Agent API",
         documentation: `${SITE}/api/openapi.json`,
         endpointURL: surfaces
           .filter((s) => s.url?.startsWith(`${SITE}/api/`))
@@ -288,7 +288,7 @@ export default function AgentsLandingPage() {
         installUrl: "https://www.npmjs.com/package/@gitdealflow/mcp-signal",
         softwareHelp: { "@type": "CreativeWork", url: `${SITE}/agents` },
         description:
-          "Model Context Protocol server for VC Deal Flow Signal. Read-only tools for trending startups, sector signals, startup lookup, methodology, and weekly summaries. One-line npx install in any MCP host — Claude Desktop, Claude Code, Cursor, Windsurf, Zed, Cline. No API key.",
+          "Model Context Protocol server for VC Deal Flow Signal. Read-only tools for trending startups, sector signals, startup lookup, methodology, and weekly summaries. One-line npx install in any MCP host, Claude Desktop, Claude Code, Cursor, Windsurf, Zed, Cline. No API key.",
         isAccessibleForFree: true,
         offers: { "@type": "Offer", price: "0", priceCurrency: "EUR" },
         provider: {
@@ -332,7 +332,7 @@ export default function AgentsLandingPage() {
       {
         "@type": "ItemList",
         "@id": `${SITE}/agents#surfaces`,
-        name: "VC Deal Flow Signal — machine-readable agent surfaces",
+        name: "VC Deal Flow Signal, machine-readable agent surfaces",
         description:
           "Every free, no-auth interface to the same CC-BY-4.0 deal-flow dataset: MCP, agent protocols, HTTP APIs, bulk data, embeddable badges, and discovery manifests.",
         numberOfItems: surfaces.length,
@@ -389,7 +389,7 @@ export default function AgentsLandingPage() {
             name: "Does VC Deal Flow Signal support Google's A2A protocol?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Yes — an AgentCard descriptor lives at /.well-known/agent-card.json and a JSON-RPC stub at /api/a2a. Any A2A-compatible orchestrator can route deal-flow queries here without custom integration. The AgentCard advertises capabilities (sector ranking lookup, signal classification, startup profile retrieval) and the JSON-RPC contract.",
+              text: "Yes, an AgentCard descriptor lives at /.well-known/agent-card.json and a JSON-RPC stub at /api/a2a. Any A2A-compatible orchestrator can route deal-flow queries here without custom integration. The AgentCard advertises capabilities (sector ranking lookup, signal classification, startup profile retrieval) and the JSON-RPC contract.",
             },
           },
           {
@@ -405,7 +405,7 @@ export default function AgentsLandingPage() {
             name: "Where's the OpenAPI spec?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "OpenAPI 3.1 lives at /api/openapi.json. It documents every callable route — signals.json, signals.csv, agent/tools, agent/call, a2a, nlweb, mcp/rpc, badge/scout/{username}/svg, badge/momentum/{org}/{repo}/svg. Importable into Postman, Insomnia, OpenAI function-calling, Anthropic tool-use, and Gemini function-calling SDKs.",
+              text: "OpenAPI 3.1 lives at /api/openapi.json. It documents every callable route, signals.json, signals.csv, agent/tools, agent/call, a2a, nlweb, mcp/rpc, badge/scout/{username}/svg, badge/momentum/{org}/{repo}/svg. Importable into Postman, Insomnia, OpenAI function-calling, Anthropic tool-use, and Gemini function-calling SDKs.",
             },
           },
           {
@@ -429,7 +429,7 @@ export default function AgentsLandingPage() {
             name: "How can an agent runtime auto-discover every API in one request?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Fetch /.well-known/api-catalog. It is an RFC 9727 Linkset that lists every API description we publish — OpenAPI spec, MCP manifest, A2A AgentCard, function-calling tool schemas, and bulk-data exports — from a single canonical URL, so agent runtimes can enumerate the full capability surface without hard-coded paths.",
+              text: "Fetch /.well-known/api-catalog. It is an RFC 9727 Linkset that lists every API description we publish, OpenAPI spec, MCP manifest, A2A AgentCard, function-calling tool schemas, and bulk-data exports, from a single canonical URL, so agent runtimes can enumerate the full capability surface without hard-coded paths.",
             },
           },
           {
@@ -445,7 +445,7 @@ export default function AgentsLandingPage() {
             name: "Is everything really free, and what is the paid tier?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: `All ${surfaces.length} surfaces — MCP, A2A, NLWeb, function-calling, OpenAPI, JSON/CSV/JSONL exports, badges, and discovery manifests — are free forever with no API key, no credit card, and only polite per-IP origin limits. The only paid surface is the get_deep_signal tool (€0.19/call, 100 for €19), which returns a composite score, in-sector rank, plain-English thesis, top-3 comparables, and multi-period history. Misses charge nothing and credits never expire.`,
+              text: `All ${surfaces.length} surfaces, MCP, A2A, NLWeb, function-calling, OpenAPI, JSON/CSV/JSONL exports, badges, and discovery manifests, are free forever with no API key, no credit card, and only polite per-IP origin limits. The only paid surface is the get_deep_signal tool (€0.19/call, 100 for €19), which returns a composite score, in-sector rank, plain-English thesis, top-3 comparables, and multi-period history. Misses charge nothing and credits never expire.`,
             },
           },
         ],
@@ -492,7 +492,7 @@ export default function AgentsLandingPage() {
           </h1>
           <p className="text-xs text-gray-400 mb-3 leading-relaxed">
             <strong className="text-gray-300">VC Deal Flow Signal (GitDealFlow)</strong>{" "}
-            — Wikidata{" "}
+Wikidata{" "}
             <a
               className="text-sky-400 hover:text-sky-300"
               href="https://www.wikidata.org/wiki/Q139376302"
@@ -520,12 +520,12 @@ export default function AgentsLandingPage() {
               SSRN
             </a>
             . On this site, &ldquo;engineering acceleration&rdquo; refers to a
-            quantitative GitHub momentum signal — unrelated to startup
+            quantitative GitHub momentum signal, unrelated to startup
             accelerator programs (Y Combinator, Techstars, 500 Global).
           </p>
           <p className="text-gray-400 text-base leading-relaxed max-w-2xl">
             Same dataset, {surfaces.length} interfaces. Free, no auth, no
-            credit card, no rate-limited free tier — just polite per-IP origin
+            credit card, no rate-limited free tier, just polite per-IP origin
             limits. Pick the surface that matches your runtime; pair them
             freely.
           </p>
@@ -542,7 +542,7 @@ export default function AgentsLandingPage() {
             tool. The free {surfaces.length} surfaces above stay free forever.
           </p>
           <p className="text-gray-500 text-xs leading-relaxed max-w-2xl mt-3">
-            Not wiring an agent? Get the human read —{" "}
+            Not wiring an agent? Get the human read, {" "}
             <a
               href="https://gitdealflow.com/#signup"
               className="text-gray-400 hover:text-gray-200 underline-offset-2 hover:underline"
@@ -561,10 +561,10 @@ export default function AgentsLandingPage() {
         </header>
 
         <AgentSummary
-          tldr={`VC Deal Flow Signal exposes ${surfaces.length} machine-readable surfaces — MCP server (stdio + Streamable HTTP), Google A2A, Microsoft NLWeb, function-calling API in OpenAI / Anthropic / Gemini formats, OpenAPI 3.1 spec, full JSON / CSV / JSONL panel exports, embeddable SVG badges, ChatGPT plugin manifest, and RFC 9727 api-catalog. All free, no auth, CC-BY 4.0 dataset.`}
+          tldr={`VC Deal Flow Signal exposes ${surfaces.length} machine-readable surfaces, MCP server (stdio + Streamable HTTP), Google A2A, Microsoft NLWeb, function-calling API in OpenAI / Anthropic / Gemini formats, OpenAPI 3.1 spec, full JSON / CSV / JSONL panel exports, embeddable SVG badges, ChatGPT plugin manifest, and RFC 9727 api-catalog. All free, no auth, CC-BY 4.0 dataset.`}
           pageUrl={`${SITE}/agents`}
           asOf={asOf}
-          citeAs={`VC Deal Flow Signal — Agents (signals.gitdealflow.com/agents), retrieved ${asOf}.`}
+          citeAs={`VC Deal Flow Signal, Agents (signals.gitdealflow.com/agents), retrieved ${asOf}.`}
           facts={[
             {
               claim: `${surfaces.length} agent surfaces all wrap one CC-BY-4.0 dataset of 350+ venture-backed startups across 15 sectors, refreshed weekly.`,
@@ -643,7 +643,7 @@ export default function AgentsLandingPage() {
             </span>
           </div>
           <p className="text-gray-400 text-sm leading-relaxed mb-5 max-w-2xl">
-            For agents that need scored, ranked, comparable-aware output —
+            For agents that need scored, ranked, comparable-aware output -
             programmatic callers building memos, watchlists, or pipelines.
             Outcome-shaped pricing: 1 credit per deep signal returned. Misses
             charge nothing. Credits never expire.
@@ -659,7 +659,7 @@ export default function AgentsLandingPage() {
               </p>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed mb-4">
-              Returns: composite score (0–100), in-sector rank + percentile,
+              Returns: composite score (0-100), in-sector rank + percentile,
               plain-English thesis, top-3 sector comparables, and multi-period
               history. Bypasses the shallow output of the free{" "}
               <code className="text-emerald-400 font-mono">get_startup_signal</code>{" "}
@@ -676,7 +676,7 @@ export default function AgentsLandingPage() {
                 href="/agents/credits"
                 className="inline-flex items-center justify-center px-5 py-2 rounded-lg bg-amber-600 hover:bg-amber-500 text-white text-sm font-semibold transition-colors"
               >
-                Buy 100 credits — €19 →
+                Buy 100 credits, €19 →
               </Link>
               <Link
                 href="/agents/credits"
@@ -688,7 +688,7 @@ export default function AgentsLandingPage() {
           </div>
 
           <p className="text-gray-400 text-xs leading-relaxed">
-            The {surfaces.length} surfaces above remain free forever — credits
+            The {surfaces.length} surfaces above remain free forever, credits
             only apply to <code className="text-emerald-400 font-mono">get_deep_signal</code>{" "}
             and the <code className="text-emerald-400 font-mono">/api/agent/deep-signal</code>{" "}
             HTTP endpoint. Existing free MCP installs are unaffected.

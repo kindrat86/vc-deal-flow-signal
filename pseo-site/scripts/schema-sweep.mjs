@@ -17,7 +17,7 @@ const SITEMAPS = [
 ];
 
 // Types injected on (nearly) every page by RootIdentitySchema / layout. A leaf
-// that emits ONLY these is "boilerplate-only" — no page-specific structured data.
+// that emits ONLY these is "boilerplate-only", no page-specific structured data.
 const GLOBAL_TYPES = new Set([
   "Organization", "WebSite", "WebPage", "SiteNavigationElement",
   "BreadcrumbList", "ListItem", "ContactPoint", "ImageObject",
@@ -33,7 +33,7 @@ const GLOBAL_TYPES = new Set([
 // from the PASS/FAIL verdict so the tool only fails on a REAL regression
 // (a content page that lost its structured data).
 const INTENTIONAL_MINIMAL = new Set([
-  "squeeze",        // conversion squeeze page — intentionally bare
+  "squeeze",        // conversion squeeze page, intentionally bare
   "a2a-demo",       // interactive demo, not a content target
   "friday-preview", // preview page, not a content target
 ]);
@@ -162,8 +162,8 @@ async function main() {
   console.log(`Invalid JSON-LD: ${parseFails} | Non-200: ${httpFails} | Boilerplate-only: ${boiler}`);
   const fail = parseFails + httpFails + boiler;
   console.log(fail === 0
-    ? "✅ PASS — every scored content family ships valid, page-specific structured data."
-    : "❌ FAIL — review the flagged rows above.");
+    ? "✅ PASS, every scored content family ships valid, page-specific structured data."
+    : "❌ FAIL, review the flagged rows above.");
   process.exit(fail === 0 ? 0 : 1);
 }
 

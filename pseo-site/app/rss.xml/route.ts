@@ -4,7 +4,7 @@
  * Many feed readers and AI bots probe `/rss.xml` by convention before
  * checking /feed.xml. We serve the same RSS 2.0 body directly (200, not
  * 308) because some readers don't follow redirects on feed URLs. The
- * canonical URL is /feed.xml — advertised via the `Link: rel=canonical`
+ * canonical URL is /feed.xml, advertised via the `Link: rel=canonical`
  * header.
  */
 

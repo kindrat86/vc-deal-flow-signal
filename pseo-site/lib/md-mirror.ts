@@ -1,7 +1,7 @@
 /**
  * Which page paths have a working Markdown mirror at /md/<path>?
  *
- * Mirrors the dispatch in app/md/[...path]/route.ts EXACTLY — that route
+ * Mirrors the dispatch in app/md/[...path]/route.ts EXACTLY, that route
  * only implements the families below and 404s everything else. Components
  * that advertise a <link rel="alternate" type="text/markdown"> (e.g.
  * components/AgentMirrorLinks.tsx) must check this first so we never
@@ -47,7 +47,7 @@ export function supportsMdMirror(path: string): boolean {
   // citations only renders as the exact one-segment path
   if (family === "citations") return segments.length === 1;
 
-  // niche-down renders index, sector, and leaf — nothing deeper
+  // niche-down renders index, sector, and leaf, nothing deeper
   if (family === "niche-down") return segments.length <= 3;
 
   return false;

@@ -1,5 +1,5 @@
 /**
- * /.well-known/rss.xml — alias for /rss.xml (which itself aliases /feed.xml).
+ * /.well-known/rss.xml, alias for /rss.xml (which itself aliases /feed.xml).
  *
  * Mirror of the root /rss.xml so discovery agents probing under /.well-known
  * find the feed at the conventional location alongside agent-card.json,

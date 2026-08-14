@@ -32,7 +32,7 @@ function validToken(email, token, secret) {
 }
 
 export default async function handler(req, res) {
-  // HEAD must be allowed wherever GET is — scanners HEAD links in a message, and
+  // HEAD must be allowed wherever GET is, scanners HEAD links in a message, and
   // a 405 makes them report the unsubscribe link as broken. Never mutates.
   const isHead = req.method === "HEAD";
   if (req.method !== "GET" && req.method !== "POST" && !isHead) {
@@ -52,11 +52,11 @@ export default async function handler(req, res) {
   if (!EMAIL_RE.test(email)) return sendPage(res, "error", "That does not look like a valid email address.");
 
   // SELF-HEALING HANDOFF. RESEND_API_KEY is not set on this Vercel project, so this
-  // handler cannot reach Resend at all — and links carrying ?email=&audience= are
+  // handler cannot reach Resend at all, and links carrying ?email=&audience= are
   // already sitting in recipients' inboxes, so they cannot be fixed by changing the
   // sender. Rather than telling those people to email support, hand off to
   // sipiteno.com/api/unsubscribe: the deliberate "universal" endpoint, which DOES
-  // have the key and accepts the audience as a parameter (verified live — it reaches
+  // have the key and accepts the audience as a parameter (verified live, it reaches
   // Resend and never itself redirects, so there is no loop).
   //
   // 307 preserves the method, so an RFC 8058 one-click POST stays a POST.
@@ -78,7 +78,7 @@ export default async function handler(req, res) {
 
   if (!key) {
     // No key AND no usable audience (the handoff above needs one). Say so NOW rather
-    // than rendering a confirm page whose button leads to this same dead end — a
+    // than rendering a confirm page whose button leads to this same dead end, a
     // two-step failure is worse than an immediate one.
     return sendPage(res, "error",
       `The unsubscribe service is temporarily unavailable. Email ${SUPPORT} and we will remove you by hand.`);
@@ -88,7 +88,7 @@ export default async function handler(req, res) {
   if (isHead || (req.method === "GET" && !signed)) return confirmPage(res, email, requested);
 
   // Prefer audience PATCH when an audience is available, otherwise use the
-  // Resend Suppression API (global block — correct for cold outreach where no
+  // Resend Suppression API (global block, correct for cold outreach where no
   // audience exists).
   const audFallback = process.env.RESEND_AUDIENCE_ID || "";
   const audienceId = UUID_RE.test(requested) ? requested : audFallback;
@@ -114,7 +114,7 @@ export default async function handler(req, res) {
         headers: { Authorization: *** ${key}`, "Content-Type": "application/json" },
         body: JSON.stringify({ email }),
       });
-      // 409 = already suppressed — still success.
+      // 409 = already suppressed, still success.
       ok = resp.ok || resp.status === 409;
       if (!ok) console.error("Unsubscribe suppression POST failed", resp.status, await resp.text());
     }
@@ -138,7 +138,7 @@ function shell(title, icon, heading, bodyHtml) {
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="noindex, nofollow">
-<title>${title} — GitDealFlow</title>
+<title>${title}: GitDealFlow</title>
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; }
   body {
@@ -186,7 +186,7 @@ function send(res, html) {
   res.status(200).send(html);
 }
 
-/** Explicit confirmation for unsigned GETs — still one click, but a human's. */
+/** Explicit confirmation for unsigned GETs, still one click, but a human's. */
 function confirmPage(res, email, audience) {
   const aud = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(audience)
     ? `<input type="hidden" name="audience" value="${esc(audience)}">` : "";

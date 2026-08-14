@@ -5,9 +5,9 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
 
 export const metadata: Metadata = {
-  title: "Acquirers — Public M&A Patterns",
+  title: "Acquirers, Public M&A Patterns",
   description:
-    "Independent M&A pattern pages for 20 well-known public-company tech acquirers — Microsoft, Google, Salesforce, Adobe, Apple, Amazon/AWS, Cisco, IBM, Oracle, Nvidia, Atlassian, ServiceNow, Stripe, Cloudflare, Shopify, Snowflake, Databricks, GitHub, HubSpot, Intel. For Corp Dev, PE operating partners, and competitive analysts.",
+    "Independent M&A pattern pages for 20 well-known public-company tech acquirers, Microsoft, Google, Salesforce, Adobe, Apple, Amazon/AWS, Cisco, IBM, Oracle, Nvidia, Atlassian, ServiceNow, Stripe, Cloudflare, Shopify, Snowflake, Databricks, GitHub, HubSpot, Intel. For Corp Dev, PE operating partners, and competitive analysts.",
   alternates: { canonical: "/acquirer" },
   openGraph: {
     title: "Acquirers",
@@ -40,7 +40,7 @@ export default function AcquirerHubPage() {
       {
         "@type": "CollectionPage",
         url: PAGE_URL,
-        name: "Acquirers — Public M&A Patterns",
+        name: "Acquirers, Public M&A Patterns",
         description:
           "Index of independent M&A pattern pages for 20 well-known public-company tech acquirers, with focus-sector mapping against the engineering-signal panel.",
         isPartOf: {
@@ -112,7 +112,7 @@ export default function AcquirerHubPage() {
           Each leaf maps an acquirer's M&A focus to the engineering-signal panel we
           publish. Every deal listed was announced via press release, SEC filing, or both.
           We do not publish private deals, rumored acquisitions, or speculation about
-          future targets — only documented public history and stated focus.
+          future targets, only documented public history and stated focus.
         </p>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">

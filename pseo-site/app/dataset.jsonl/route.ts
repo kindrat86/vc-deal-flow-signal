@@ -9,7 +9,7 @@
  * flagged in the Pass X audit (gap #1).
  *
  * Mirrors the established wrapper pattern used by /agents.json,
- * /.well-known/openapi.json, etc. — content served directly (200, not
+ * /.well-known/openapi.json, etc., content served directly (200, not
  * 308) because some AI bots don't follow redirects on dataset probes,
  * with a `Link: rel=canonical` header pointing at the /api/ original.
  */

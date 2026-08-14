@@ -5,7 +5,7 @@ import { getHreflangLanguages } from "@/lib/hreflang";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 
 export const metadata: Metadata = {
-  title: "Integrations — MCP, Telegram, Email, RSS, API",
+  title: "Integrations, MCP, Telegram, Email, RSS, API",
   description:
     "Plug VC Deal Flow Signal into your existing workflow. MCP server for Claude and Cursor, Telegram channel, weekly email, JSON/CSV API, RSS feed, and Zapier.",
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
@@ -42,7 +42,7 @@ const integrations: Integration[] = [
   {
     slug: "mistral",
     name: "Mistral Le Chat",
-    tagline: "Add as Custom MCP Connector — six read-only tools, no auth",
+    tagline: "Add as Custom MCP Connector, six read-only tools, no auth",
     description:
       "Workspace admins can plug VC Deal Flow Signal into Mistral Le Chat as a Custom MCP Connector in under two minutes. The public Streamable HTTP endpoint exposes the same six tools (trending startups, sector signals, startup lookup, Scout receipts, methodology, dataset snapshot) to every teammate once installed once.",
     status: "live",
@@ -54,14 +54,14 @@ const integrations: Integration[] = [
   {
     slug: "chatgpt",
     name: "ChatGPT GPT",
-    tagline: "GitHub VC Signal — public OpenAPI Action, four tools, no setup",
+    tagline: "GitHub VC Signal, public OpenAPI Action, four tools, no setup",
     description:
-      "Use the GitHub VC Signal GPT directly inside ChatGPT (Plus, Team, Enterprise, Edu). The Action calls signals.gitdealflow.com under the hood — same dataset, same classifications, same weekly refresh as the MCP server. Four read-only Actions: getAllSignals, getStartupSignal, getSignalsSummary, getMethodology. No install, no auth, no setup. OpenAPI 3.1 spec at signals.gitdealflow.com/api/actions/openapi.json for anyone building their own GPT or agent.",
+      "Use the GitHub VC Signal GPT directly inside ChatGPT (Plus, Team, Enterprise, Edu). The Action calls signals.gitdealflow.com under the hood, same dataset, same classifications, same weekly refresh as the MCP server. Four read-only Actions: getAllSignals, getStartupSignal, getSignalsSummary, getMethodology. No install, no auth, no setup. OpenAPI 3.1 spec at signals.gitdealflow.com/api/actions/openapi.json for anyone building their own GPT or agent.",
     status: "live",
     href: "https://chatgpt.com/g/g-69f76b9b3b308191b6948bff20c0fbf8-github-vc-signal",
     docsHref: "/integrations/chatgpt",
     category: "AI",
-    setup: "Open chatgpt.com/g/g-69f76b9b... — no install required",
+    setup: "Open chatgpt.com/g/g-69f76b9b..., no install required",
   },
   {
     slug: "telegram",
@@ -72,7 +72,7 @@ const integrations: Integration[] = [
     status: "live",
     href: "https://t.me/gitdealflow",
     category: "Messaging",
-    setup: "Join t.me/gitdealflow — no signup required",
+    setup: "Join t.me/gitdealflow, no signup required",
   },
   {
     slug: "email",
@@ -117,14 +117,14 @@ const integrations: Integration[] = [
     status: "beta",
     href: "https://zapier.com/",
     category: "Automation",
-    setup: "Private invite during beta — email signals@gitdealflow.com",
+    setup: "Private invite during beta, email signals@gitdealflow.com",
   },
   {
     slug: "chrome-extension",
-    name: "Chrome Extension — Crunchbase + Wellfound badge",
+    name: "Chrome Extension, Crunchbase + Wellfound badge",
     tagline: "Engineering signal badge on Crunchbase and Wellfound profiles",
     description:
-      "Inline badge that appears on Crunchbase and Wellfound company profile pages with the current engineering signal status for that startup. Works passively — no extra clicks, no login required, no telemetry.",
+      "Inline badge that appears on Crunchbase and Wellfound company profile pages with the current engineering signal status for that startup. Works passively, no extra clicks, no login required, no telemetry.",
     status: "live",
     href: "https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn",
     category: "AI",
@@ -132,7 +132,7 @@ const integrations: Integration[] = [
   },
   {
     slug: "chrome-extension-github-lookup",
-    name: "Chrome Extension — VC GitHub Lookup",
+    name: "Chrome Extension, VC GitHub Lookup",
     tagline: "Hover any GitHub repo or org for live startup signals",
     description:
       "Hover any link to github.com/<owner> or github.com/<owner>/<repo> and instantly see commit velocity (14d), velocity change, contributor count and growth, signal type (hiring burst, reorg, breakout, …), and a stage estimate. A chip is also injected on direct repo or org page loads, and the toolbar opens a manual lookup form for any GitHub URL. Manifest V3, ~16 KB, no telemetry.",
@@ -151,26 +151,26 @@ const integrations: Integration[] = [
     href: "https://signals.gitdealflow.com/llms.txt",
     docsHref: "https://signals.gitdealflow.com/llms-full.txt",
     category: "AI",
-    setup: "Automatic — AI assistants discover and use these files",
+    setup: "Automatic, AI assistants discover and use these files",
   },
   {
     slug: "agent-runtimes",
     name: "Agent runtimes (Cursor, Cline, Goose, OpenHands, Aider, Raycast)",
-    tagline: "One npm package, seven runtimes — cross-listed in every agent-runtime marketplace",
+    tagline: "One npm package, seven runtimes, cross-listed in every agent-runtime marketplace",
     description:
-      "Single hub page with copy-paste install snippets for Cursor, Cline (VS Code), Block Goose, OpenHands, Aider (via mcpm-aider), AiderDesk, and Raycast. Marketplace submissions live at cursor.directory, cline/mcp-marketplace#1491, aaif-goose/goose#8974, raycast/extensions#27618. OpenHands / Aider / AiderDesk have no marketplace surface — config-only via per-user JSON.",
+      "Single hub page with copy-paste install snippets for Cursor, Cline (VS Code), Block Goose, OpenHands, Aider (via mcpm-aider), AiderDesk, and Raycast. Marketplace submissions live at cursor.directory, cline/mcp-marketplace#1491, aaif-goose/goose#8974, raycast/extensions#27618. OpenHands / Aider / AiderDesk have no marketplace surface, config-only via per-user JSON.",
     status: "live",
     href: "/integrations/agent-runtimes",
     docsHref: "https://www.npmjs.com/package/@gitdealflow/mcp-signal",
     category: "AI",
-    setup: "npx -y @gitdealflow/mcp-signal — same command, every runtime",
+    setup: "npx -y @gitdealflow/mcp-signal, same command, every runtime",
   },
   {
     slug: "for-langchain",
     name: "GitDealFlow for LangChain",
     tagline: "Drop into ReAct loops, LangGraph state machines, langchain-mcp-adapters",
     description:
-      "Programmatic landing for LangChain builders. Includes a 20-line @tool starter, a LangGraph two-node deal-memo pipeline, FAQ, and gotchas. Works with any LangChain chat model — OpenAI, Anthropic, Mistral, Bedrock, Vertex, Cohere.",
+      "Programmatic landing for LangChain builders. Includes a 20-line @tool starter, a LangGraph two-node deal-memo pipeline, FAQ, and gotchas. Works with any LangChain chat model, OpenAI, Anthropic, Mistral, Bedrock, Vertex, Cohere.",
     status: "live",
     href: "/for-langchain",
     docsHref: "https://signals.gitdealflow.com/api/a2a",
@@ -259,7 +259,7 @@ export default function IntegrationsPage() {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/integrations#webpage",
         url: "https://signals.gitdealflow.com/integrations",
-        name: "Integrations — VC Deal Flow Signal",
+        name: "Integrations, VC Deal Flow Signal",
         description:
           "MCP server, Telegram, email, RSS, JSON/CSV API, Zapier, and Chrome extension integrations.",
         inLanguage: "en-US",
@@ -356,7 +356,7 @@ export default function IntegrationsPage() {
             name: "How do I integrate with Slack?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Two integration patterns work well. The simpler pattern uses Zapier or n8n to consume the weekly RSS or JSON endpoint and post a digest to a Slack channel every Monday morning. The more advanced pattern uses the Insider Circle webhook delivery, configured to POST to a Slack incoming webhook URL whenever a watched signal fires. Many funds run both — the digest for top-of-funnel review and the webhook for real-time alerts on portfolio companies.",
+              text: "Two integration patterns work well. The simpler pattern uses Zapier or n8n to consume the weekly RSS or JSON endpoint and post a digest to a Slack channel every Monday morning. The more advanced pattern uses the Insider Circle webhook delivery, configured to POST to a Slack incoming webhook URL whenever a watched signal fires. Many funds run both, the digest for top-of-funnel review and the webhook for real-time alerts on portfolio companies.",
             },
           },
           {
@@ -398,7 +398,7 @@ export default function IntegrationsPage() {
         </h1>
         <p className="text-gray-400 text-base leading-relaxed mb-10 max-w-2xl">
           Plug VC Deal Flow Signal into your existing workflow. Nine ways to
-          get the weekly engineering signal where you already work — your inbox,
+          get the weekly engineering signal where you already work, your inbox,
           Telegram, your feed reader, your CRM, and (if you build with AI) your
           assistant or agent. Most people never touch code; pick a no-setup lane
           below.
@@ -406,7 +406,7 @@ export default function IntegrationsPage() {
 
         <section className="mb-10 rounded-2xl border border-sky-700/30 bg-sky-950/20 p-6 sm:p-8">
           <p className="text-sky-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">
-            Most people start here — no setup
+            Most people start here, no setup
           </p>
           <p className="text-gray-300 text-sm leading-relaxed mb-4">
             You don&apos;t need to touch code to get the signal. Have it land
@@ -493,7 +493,7 @@ export default function IntegrationsPage() {
             Want an integration that isn&apos;t here?
           </h2>
           <p className="text-gray-400 text-sm mb-5 max-w-lg mx-auto">
-            Slack, Microsoft Teams, Discord webhook, n8n node, or something custom — email signals@gitdealflow.com and it will get prioritised.
+            Slack, Microsoft Teams, Discord webhook, n8n node, or something custom, email signals@gitdealflow.com and it will get prioritised.
           </p>
           <Link
             href="mailto:signals@gitdealflow.com"
@@ -503,7 +503,7 @@ export default function IntegrationsPage() {
           </Link>
         </div>
 
-        {/* Pricing CTA — most integrations evaluators are tool-shopping */}
+        {/* Pricing CTA, most integrations evaluators are tool-shopping */}
         <div className="rounded-xl border border-sky-800 bg-sky-950/20 p-6 sm:p-8 text-center mt-6">
           <h2 className="text-sky-200 font-semibold text-lg mb-2">
             What does it cost?

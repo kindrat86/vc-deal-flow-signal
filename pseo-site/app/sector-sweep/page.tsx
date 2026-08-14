@@ -15,12 +15,12 @@ const STRIPE_DIRECT_BUY = "/api/checkout/session?tier=sector_sweep";
 
 export const metadata: Metadata = {
   title:
-    "Sector Sweep — €1,997 once. 40-page custom deep-dive. Async setter, 24h brief.",
+    "Sector Sweep, €1,997 once. 40-page custom deep-dive. Async setter, 24h brief.",
   description:
     "The €1,997 Custom Sector Sweep. Pick one sector, written 40-page deep-dive in 14 days, raw CSV, three pre-Crunchbase breakouts, 14-day async Q&A. Submit a 5-question brief and get a written fit assessment + buy link inside 24 business hours, or skip the brief and go direct to Stripe.",
   alternates: { canonical: "/sector-sweep" },
   openGraph: {
-    title: "Sector Sweep — €1,997 once · VC Deal Flow Signal",
+    title: "Sector Sweep, €1,997 once · VC Deal Flow Signal",
     description:
       "40-page custom deep-dive on the sector you pick. Async-only. Brief in 24h or skip straight to checkout.",
     url: "https://signals.gitdealflow.com/sector-sweep",
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
 
 // Brunson Stack Slide (DotCom Secrets Ch 9). Each line is the standalone
 // retail value of the same artefact ordered separately, so the €1,997
-// reads as the anchor it actually is — not a per-unit estimate.
+// reads as the anchor it actually is, not a per-unit estimate.
 const VALUE_STACK = [
   {
     label: "40-page custom sector PDF (your sector, your thesis)",
@@ -51,7 +51,7 @@ const VALUE_STACK = [
       "For the five highest-acceleration orgs in your sector: contributor influx, repo-creation pattern, README freshness, dependents graph, the 30-day commit-velocity chart.",
   },
   {
-    label: "Raw CSV — every org × every metric",
+    label: "Raw CSV, every org × every metric",
     value: 290,
     detail:
       "Drop into your CRM, spreadsheet, or notebook. License-friendly. Every metric re-derivable from the public dataset.",
@@ -72,7 +72,7 @@ const VALUE_STACK = [
     label: "100% credit toward Insider Circle if you upgrade in 60 days",
     value: 582,
     detail:
-      "The full €1,997 credits 1:1 against Insider Circle — that's roughly your first 20 months of Insider, paid in full. The Sweep becomes the on-ramp, not a one-off.",
+      "The full €1,997 credits 1:1 against Insider Circle, that's roughly your first 20 months of Insider, paid in full. The Sweep becomes the on-ramp, not a one-off.",
   },
 ] as const;
 
@@ -80,22 +80,22 @@ const TOTAL_VALUE = VALUE_STACK.reduce((s, x) => s + x.value, 0);
 
 // Brunson "On the bus / Off the bus" disqualifier (Expert Secrets Ch 5).
 // Stating who the Sweep ISN'T for is the highest-trust move on a €1,997
-// page — readers who self-disqualify are readers who would have refunded.
+// page, readers who self-disqualify are readers who would have refunded.
 const ON_THE_BUS = [
   "You're a fund partner, scout, or active angel covering one specific sector intensively for the next quarter.",
-  "You want a written artefact you can drop into an IC memo or a partner discussion — not a dashboard you operate weekly.",
+  "You want a written artefact you can drop into an IC memo or a partner discussion, not a dashboard you operate weekly.",
   "You're comfortable with async-only delivery: structured brief in, written PDF + CSV out, 14-day written Q&A, no live calls.",
-  "You read methodology before you trust the output — the 40-page Sweep is built on the SSRN-published panel, all assumptions named.",
+  "You read methodology before you trust the output, the 40-page Sweep is built on the SSRN-published panel, all assumptions named.",
 ];
 
 const NOT_ON_THE_BUS = [
-  "You need a recurring weekly feed — that's the Dashboard (€49/mo). The Sweep is a one-off.",
-  "You require a scheduled phone call to make the buy decision — anonymity rule, async-only commitment.",
-  "You're sourcing across more than three sectors — at that breadth, the Dashboard subscription is the right rung, not a Sweep.",
-  "You want the Sweep to include warm intros to founders — we don't have that relationship inventory; we surface the org and the signal, you decide on outreach.",
+  "You need a recurring weekly feed, that's the Dashboard (€49/mo). The Sweep is a one-off.",
+  "You require a scheduled phone call to make the buy decision, anonymity rule, async-only commitment.",
+  "You're sourcing across more than three sectors, at that breadth, the Dashboard subscription is the right rung, not a Sweep.",
+  "You want the Sweep to include warm intros to founders, we don't have that relationship inventory; we surface the org and the signal, you decide on outreach.",
 ];
 
-// Brunson Expert Secrets Ch 12 — Trial close stack reused on /walkthrough.
+// Brunson Expert Secrets Ch 12, Trial close stack reused on /walkthrough.
 // Drop one above the form so the reader has to nod before filling 5 fields.
 const FAQS = [
   {
@@ -112,7 +112,7 @@ const FAQS = [
   },
   {
     q: "What's the 30-day Signal-or-It's-Free guarantee?",
-    a: "If, in your first 30 days after delivery, the Sweep does not surface at least three orgs you didn't already know about — or if the methodology can't be reproduced from the published panel — reply REFUND to the delivery email. Full €1,997 refund inside two business days. No exit interview, no 'wait, let me show you one more thing'.",
+    a: "If, in your first 30 days after delivery, the Sweep does not surface at least three orgs you didn't already know about, or if the methodology can't be reproduced from the published panel, reply REFUND to the delivery email. Full €1,997 refund inside two business days. No exit interview, no 'wait, let me show you one more thing'.",
   },
   {
     q: "Can I run two sectors?",
@@ -223,16 +223,16 @@ export default function SectorSweepPage() {
             ships. €1,997 once, you pick the sector, we deliver a 40-page
             written PDF + raw CSV + JSON in 14 days, plus three pre-Crunchbase
             breakouts and a 14-day async Q&amp;A window. No call required, no
-            founder voice, no live commitment — async setter in, written
+            founder voice, no live commitment, async setter in, written
             artefact out.
           </p>
         </header>
 
-        {/* PRIMARY CTA — the 7-minute brief is the one dominant path; the
+        {/* PRIMARY CTA, the 7-minute brief is the one dominant path; the
             direct-Stripe option is demoted to a small secondary text link
             directly beneath it so a ready buyer can still pay now. */}
         <section
-          aria-label="Submit the brief — or pay direct"
+          aria-label="Submit the brief, or pay direct"
           className="space-y-3"
         >
           <a
@@ -270,9 +270,9 @@ export default function SectorSweepPage() {
         </section>
 
         <TrialClose tone="amber">
-          One brief, no calendar invite, no live commitment — and a direct
+          One brief, no calendar invite, no live commitment, and a direct
           buy link right there if you&rsquo;d rather just commit. Before you
-          read a single line of the stack — does that already feel like the
+          read a single line of the stack, does that already feel like the
           right shape for how you buy?
         </TrialClose>
 
@@ -312,7 +312,7 @@ export default function SectorSweepPage() {
           </div>
           <div className="rounded-lg border-2 border-amber-500 bg-gradient-to-br from-amber-950/40 to-slate-950 p-4 flex items-baseline justify-between text-xl">
             <span className="font-bold text-gray-100">
-              Sector Sweep — founding rate
+              Sector Sweep, founding rate
             </span>
             <span className="font-mono font-bold text-amber-300 tabular-nums">
               €1,997
@@ -320,7 +320,7 @@ export default function SectorSweepPage() {
           </div>
           <p className="text-gray-400 text-xs italic">
             Founding rate is locked through Q4 2026. Cap is 8 Sweeps per
-            quarter — Q3 2026 has 7 of 8 slots open as of this page load.
+            quarter, Q3 2026 has 7 of 8 slots open as of this page load.
             After 2026 the price moves to €2,997 and the cap stays at 8.
           </p>
           <TrialClose tone="amber">
@@ -368,7 +368,7 @@ export default function SectorSweepPage() {
         <TrialClose tone="emerald">
           Self-disqualifying is the highest-trust move on a €1,997 page. If
           you nodded through the &ldquo;on the bus&rdquo; column and shook
-          your head through the other one — has the bus already left without
+          your head through the other one, has the bus already left without
           having to argue about it?
         </TrialClose>
 
@@ -450,7 +450,7 @@ export default function SectorSweepPage() {
           <SectorSweepBriefForm />
         </section>
 
-        {/* BUYER ROADMAP — Brunson Expert Secrets Ch 18. The Sweep is a
+        {/* BUYER ROADMAP, Brunson Expert Secrets Ch 18. The Sweep is a
             14-day delivery + 14-day Q&A + 60-day upgrade-credit window;
             the calendar arc renders the €1,997 as a four-beat
             relationship, not a single PDF charge. Sits between the
@@ -458,7 +458,7 @@ export default function SectorSweepPage() {
             path before the risk reversal. */}
         <BuyerRoadmap tier="sector-sweep" />
 
-        {/* GUARANTEE — Brunson Expert Secrets Ch 15. Replaced the
+        {/* GUARANTEE, Brunson Expert Secrets Ch 15. Replaced the
             paragraph block with the named badge component. The Sweep
             tier carries the strongest binary promise on the entire site:
             three orgs or refund. The badge variant makes that promise
@@ -488,7 +488,7 @@ export default function SectorSweepPage() {
           <TrialClose tone="violet">
             Brief in 7 minutes, decision in 24 hours, refund window 30 days,
             credit toward Insider for 60. If the friction profile reads as
-            lower than the average enterprise demo — has the burden of proof
+            lower than the average enterprise demo, has the burden of proof
             already shifted?
           </TrialClose>
         </section>
@@ -521,7 +521,7 @@ export default function SectorSweepPage() {
             >
               €7 (First Look Pass)
             </Link>{" "}
-            — credited toward Dashboard if you upgrade in 14 days.
+credited toward Dashboard if you upgrade in 14 days.
           </p>
         </section>
 
@@ -529,7 +529,7 @@ export default function SectorSweepPage() {
 
         <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-6">
           Application-funnel structure with an async-only intake and a written
-          closer. Pseudonymous handle on every reply — anonymity rule applies
+          closer. Pseudonymous handle on every reply, anonymity rule applies
           end-to-end.
         </p>
       </div>

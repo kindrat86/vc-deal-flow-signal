@@ -1,7 +1,7 @@
 /**
  * Wikidata QID lookup for sector slugs used by the GitHub-momentum
  * taxonomy. Drives `sameAs` enrichment in the `mentions` arrays of
- * blog post and topic JSON-LD — gives AI engines and Knowledge Graph
+ * blog post and topic JSON-LD, gives AI engines and Knowledge Graph
  * consumers a canonical entity URI instead of just a name string.
  *
  * Source: hand-mapped from Wikidata 2026-05-03. When adding a new sector,

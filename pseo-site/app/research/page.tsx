@@ -14,7 +14,7 @@ const PAPER_TITLE =
 
 export const metadata: Metadata = {
   title:
-    "GitHub Engineering Velocity for Venture-Backed Startups — 30 Findings (SSRN-Indexed)",
+    "GitHub Engineering Velocity for Venture-Backed Startups, 30 Findings (SSRN-Indexed)",
   description:
     "SSRN-indexed research panel tracking GitHub engineering signals across 55 venture-backed startups in 15 sectors. Free dataset, 30 findings, CC BY 4.0.",
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
@@ -70,7 +70,7 @@ const FAQ_ENTRIES = [
   {
     q: "How do I cite the paper?",
     a:
-      `VC Deal Flow Signal. (2026). ${PAPER_TITLE} (v1.0.0). https://gitdealflow.com — SSRN abstract=6606558.`,
+      `VC Deal Flow Signal. (2026). ${PAPER_TITLE} (v1.0.0). https://gitdealflow.com, SSRN abstract=6606558.`,
   },
 ];
 
@@ -123,7 +123,7 @@ export default function ResearchPage() {
     "@context": "https://schema.org",
     "@type": "ItemList",
     "@id": `${SITE}/research#findings`,
-    name: "30 SSRN-indexed research findings — GitHub engineering velocity panel",
+    name: "30 SSRN-indexed research findings, GitHub engineering velocity panel",
     description:
       "Per-finding citation-ready pages derived from the SSRN methodology paper. Group A: numerical findings; Group B: methodology/structural; Group C: open questions.",
     numberOfItems: FINDINGS.length,
@@ -148,7 +148,7 @@ export default function ResearchPage() {
 
   const speakableJsonLd = {
     "@context": "https://schema.org",
-    // CollectionPage signals "this is an index of N items" — strictly more
+    // CollectionPage signals "this is an index of N items", strictly more
     // informative than WebPage for a research index, and renders as a list
     // result in Google + Perplexity.
     "@type": "CollectionPage",
@@ -188,7 +188,7 @@ export default function ResearchPage() {
   const datasetJsonLd = {
     "@context": "https://schema.org",
     "@type": "Dataset",
-    name: "VC Deal Flow Signal — GitHub Engineering Acceleration Validation Panel",
+    name: "VC Deal Flow Signal, GitHub Engineering Acceleration Validation Panel",
     description:
       "A 219-startup longitudinal panel of GitHub engineering velocity signals against confirmed venture fundraises across 15 sectors. Used to validate the lead-time math published in the SSRN preprint at ssrn.com/abstract=6606558. Median lead time 5.4 weeks, top-decile precision ~65%.",
     url: "https://doi.org/10.5281/zenodo.19650920",
@@ -267,7 +267,7 @@ export default function ResearchPage() {
           name: PAPER_TITLE,
           url: SSRN_URL,
         },
-        citation: "VC Deal Flow Signal — Research panel (signals.gitdealflow.com/research). SSRN: 6606558. Zenodo: 10.5281/zenodo.19650920.",
+        citation: "VC Deal Flow Signal, Research panel (signals.gitdealflow.com/research). SSRN: 6606558. Zenodo: 10.5281/zenodo.19650920.",
         license: "https://creativecommons.org/licenses/by/4.0/",
         inLanguage: "en",
       },
@@ -275,7 +275,7 @@ export default function ResearchPage() {
         "@type": "Quotation",
         "@id": `${SITE}/research#quote-reproducibility`,
         text:
-          "If a buyer can reproduce our regression in a notebook from the same public GitHub data, that buyer is the buyer who trusts us most. Reproducibility is not a constraint on the product — it is the product.",
+          "If a buyer can reproduce our regression in a notebook from the same public GitHub data, that buyer is the buyer who trusts us most. Reproducibility is not a constraint on the product, it is the product.",
         spokenByCharacter: DATA_NERD_AUTHOR_REF,
         creator: {
           "@type": "Organization",
@@ -408,9 +408,9 @@ export default function ResearchPage() {
               The 219-observation panel is descriptive: it characterizes GitHub
               engineering-velocity (commit velocity, contributor growth, repo
               creation) across 55 venture-backed startups and deliberately
-              carries no funding-event labels. Our working hypothesis — that
+              carries no funding-event labels. Our working hypothesis, that
               sustained acceleration precedes announced venture-fundraise events
-              by roughly <strong>three to six weeks</strong> — is validated
+              by roughly <strong>three to six weeks</strong>: is validated
               openly on the{" "}
               <a href="/scorecard" className="text-sky-300 underline decoration-dotted">
                 public scorecard
@@ -433,12 +433,12 @@ export default function ResearchPage() {
               Plain version of our hypothesis: when a startup&rsquo;s public
               engineering visibly speeds up, we expect a raise to follow about{" "}
               <strong className="text-gray-200">three to six weeks later</strong>{" "}
-              — the pattern we validate in the open. The acceleration shows up
+the pattern we validate in the open. The acceleration shows up
               first; the funding headline (when it comes) follows.
             </p>
             <p>
               You read a ranked shortlist, not a regression. No statistics, no
-              code — the math below is here so anyone who wants to can check our
+              code, the math below is here so anyone who wants to can check our
               work, not because you have to run it.
             </p>
           </PlainEnglishNote>
@@ -481,7 +481,7 @@ export default function ResearchPage() {
             engineering hiring burst, infrastructure buildout, and deploy
             frequency spike. We describe the data-collection methodology,
             report descriptive statistics across sectors and geographies, and
-            document known limitations — most importantly the absence of
+            document known limitations, most importantly the absence of
             linked funding-event labels in this release. Distributed under CC
             BY 4.0.
           </p>
@@ -566,7 +566,7 @@ export default function ResearchPage() {
             Cite this paper
           </h2>
           <pre className="bg-slate-950 border border-slate-800 rounded-lg p-4 text-xs text-sky-300 font-mono overflow-x-auto whitespace-pre-wrap">
-            {`VC Deal Flow Signal. (2026). ${PAPER_TITLE} (v1.0.0). https://gitdealflow.com — SSRN abstract=6606558.`}
+            {`VC Deal Flow Signal. (2026). ${PAPER_TITLE} (v1.0.0). https://gitdealflow.com, SSRN abstract=6606558.`}
           </pre>
           <p className="text-gray-400 text-xs mt-3">
             Indexed in: Crossref · Semantic Scholar · OpenAlex (W7154916891) ·

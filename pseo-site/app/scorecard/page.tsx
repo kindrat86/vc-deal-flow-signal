@@ -10,12 +10,12 @@ import { getHreflangLanguages } from "@/lib/hreflang";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "Scorecard — Acceleration Watch grading at 60 and 90 days",
+  title: "Scorecard, Acceleration Watch grading at 60 and 90 days",
   description:
     "Public scorecard of every Acceleration Watch pick. Grading rules, hit/miss/pending counts, lead-time measurement against fundraise announcements. One-shot proof on a rolling cadence.",
   alternates: { canonical: "/scorecard" },
   openGraph: {
-    title: "Scorecard — Acceleration Watch public grading",
+    title: "Scorecard, Acceleration Watch public grading",
     description:
       "Every weekly pick, graded at 60d and 90d. Public, rolling, no cherry-picking.",
     url: "https://signals.gitdealflow.com/scorecard",
@@ -37,17 +37,17 @@ const RULES = [
   {
     n: 3,
     title: "Pending until both windows close",
-    body: "A pick is Pending until 90 days have elapsed. We never adjust a Hit retroactively after the 60d mark unless the company announces a transparent recission of the round. We never reclassify a Miss to a Hit if a fundraise lands at T+91 or later — that's a different signal beyond our methodology window.",
+    body: "A pick is Pending until 90 days have elapsed. We never adjust a Hit retroactively after the 60d mark unless the company announces a transparent recission of the round. We never reclassify a Miss to a Hit if a fundraise lands at T+91 or later, that's a different signal beyond our methodology window.",
   },
   {
     n: 4,
     title: "Public counts, not curated",
-    body: "We display ALL picks, not just the wins. Misses are the most useful row on the page — they're the methodology's calibration boundary. Removing or hiding a Miss is a violation of the core methodology rule.",
+    body: "We display ALL picks, not just the wins. Misses are the most useful row on the page, they're the methodology's calibration boundary. Removing or hiding a Miss is a violation of the core methodology rule.",
   },
   {
     n: 5,
     title: "Lead-time distribution, not single-point claim",
-    body: "The headline 21–47 day lead-time is our claim under test — NOT a result of the SSRN dataset paper, which is descriptive and carries no funding-event labels. This scorecard is where we actually validate it: each Hit's real lead-time (days from T-0 to public fundraise announcement), rolled into a quarterly distribution at the bottom.",
+    body: "The headline 21-47 day lead-time is our claim under test, NOT a result of the SSRN dataset paper, which is descriptive and carries no funding-event labels. This scorecard is where we actually validate it: each Hit's real lead-time (days from T-0 to public fundraise announcement), rolled into a quarterly distribution at the bottom.",
   },
 ];
 
@@ -56,13 +56,13 @@ type Status = "hit" | "miss" | "pending";
 const SCORE_ROWS = [
   { week: "2026-w17", picks: 10, hit: 0, miss: 0, pending: 10, note: "Grading window opens 2026-07-03 (60d) / 2026-08-02 (90d)." },
   { week: "2026-w18", picks: 10, hit: 0, miss: 0, pending: 10, note: "Grading window opens 2026-07-10 / 2026-08-09." },
-  { week: "2026-w16", picks: 10, hit: 0, miss: 0, pending: 10, note: "Backfill — first published archive week. Grading 2026-06-26 / 2026-07-26." },
+  { week: "2026-w16", picks: 10, hit: 0, miss: 0, pending: 10, note: "Backfill, first published archive week. Grading 2026-06-26 / 2026-07-26." },
 ];
 
 const HISTORICAL_HIGHLIGHT = {
-  name: "(anonymised) — small fintech infrastructure org",
+  name: "(anonymised), small fintech infrastructure org",
   picked: "T-31 (acceleration percentile crossed 95th)",
-  graded: "T+0 (Series A announced — $4M)",
+  graded: "T+0 (Series A announced, $4M)",
   leadtime: "31 days",
   context: "An illustrative historical example (not drawn from the SSRN dataset paper, which carries no funding-event labels). Contributor count went 3 → 7 in 14 days, two of the new contributors traceable to senior engineers from a Series B incumbent. Marketing site swapped from Notion to custom Next.js at T-7. The fundraise announcement landed in week T 0.",
 };
@@ -84,7 +84,7 @@ export default function ScorecardPage() {
       {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/scorecard",
-        name: "Scorecard — Acceleration Watch public grading",
+        name: "Scorecard, Acceleration Watch public grading",
         description:
           "Public scoreboard of weekly Acceleration Watch picks. Grading at 60 and 90 days against fundraise announcements.",
         speakable: {
@@ -196,12 +196,12 @@ export default function ScorecardPage() {
           <p>
             <strong className="text-gray-200">Hit</strong> means the startup we
             named announced a fundraise, or sustained 4×+ engineering
-            acceleration, inside the grading window — the call paid off.{" "}
+            acceleration, inside the grading window, the call paid off.{" "}
             <strong className="text-gray-200">Miss</strong> means neither
             happened: no raise, and the activity dropped back to baseline. We
             show the misses too.{" "}
             <strong className="text-gray-200">Pending</strong> means the
-            grading window is still open — the pick is made, the clock is
+            grading window is still open, the pick is made, the clock is
             running, and we have not earned the right to claim it either way yet.
           </p>
           <p>
@@ -215,8 +215,8 @@ export default function ScorecardPage() {
           <p className="text-gray-300 text-sm leading-relaxed">
             These are the forward picks, still grading out. If you want proof
             you can check today, the backwards-looking receipts are already
-            public — named orgs, dated engineering events, dated fundraise
-            announcements — on{" "}
+            public, named orgs, dated engineering events, dated fundraise
+            announcements, on{" "}
             <Link
               href="/wins"
               className="text-amber-300 hover:text-amber-200 underline decoration-dotted"
@@ -264,7 +264,7 @@ export default function ScorecardPage() {
 
         <section className="rounded-xl border border-amber-500/40 bg-gradient-to-br from-amber-950/25 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-3">
           <p className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
-            Historical highlight — a worked example
+            Historical highlight, a worked example
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
             One of the 219 SSRN observations, narrated.
@@ -272,7 +272,7 @@ export default function ScorecardPage() {
           <p className="text-gray-300 text-base leading-relaxed">
             The current scorecard is pre-grading-window. While we wait for
             T+60 to land, here&rsquo;s one of the 219 paired observations
-            from the methodology paper — anonymised, but reproducible
+            from the methodology paper, anonymised, but reproducible
             against the Zenodo dataset.
           </p>
           <dl className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-sm">
@@ -310,10 +310,10 @@ export default function ScorecardPage() {
           </p>
         </section>
 
-        {/* FALSE BELIEFS — Brunson Expert Secrets Ch 13 (Identifying
+        {/* FALSE BELIEFS, Brunson Expert Secrets Ch 13 (Identifying
             False Beliefs / Buyer's Roadmap intro). Audit 2026-05-09
             verdict: false-belief patterns "named" but as scattered prose.
-            This is the explicit table — three patterns (Vehicle /
+            This is the explicit table, three patterns (Vehicle /
             Internal / External), three breaks, three receipts. The
             scorecard page is the right home: the patterns most often
             attach to the "is the signal real?" beat and the scorecard
@@ -351,7 +351,7 @@ export default function ScorecardPage() {
         </section>
 
         <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-6">
-          Public-grading scorecard drawn from direct-response sales canon —
+          Public-grading scorecard drawn from direct-response sales canon -
           a rolling-demonstration variant of the one-shot proof.
         </p>
 

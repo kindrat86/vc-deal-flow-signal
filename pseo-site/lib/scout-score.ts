@@ -2,7 +2,7 @@
  * Pure scoring function for the Receipts feature.
  *
  * Given a user's starred repos (with timestamps) and the validated-wins
- * database, computes a 0-100 Scout Score and ranks the user's top "calls" —
+ * database, computes a 0-100 Scout Score and ranks the user's top "calls" -
  * unicorns / big-fundings / acquisitions they starred *before* the event.
  *
  * Deterministic. No I/O. Easy to unit-test or swap.
@@ -75,7 +75,7 @@ function rankFor(score: number): ScoutScoreResult["rank"] {
  *   2. If yes, compute months between star_date and event_date.
  *      - If star_date < event_date  → "early call", points awarded.
  *      - If star_date >= event_date → "late star", 0 points (still counted as matched).
- *   3. Dedupe by org — keep the earliest star per org (one win per company).
+ *   3. Dedupe by org, keep the earliest star per org (one win per company).
  *   4. Points = weight × min(months_early / 24, 1.0). Cap at weight.
  *   5. Total = sum of top 5 wins by points, normalized so 5 perfect wins = 100.
  */
@@ -141,7 +141,7 @@ export function generateTastePersonality(result: ScoutScoreResult): string {
   const { score, early_count, top_wins } = result;
 
   if (top_wins.length === 0) {
-    return "No early calls in our database — yet. Either you're a fresh GitHub account, your stars predate the modern OSS-VC wave, or the next unicorn you starred just isn't validated yet. Make a forward-looking call below and we'll grade you in 6 months.";
+    return "No early calls in our database, yet. Either you're a fresh GitHub account, your stars predate the modern OSS-VC wave, or the next unicorn you starred just isn't validated yet. Make a forward-looking call below and we'll grade you in 6 months.";
   }
 
   // Categorize wins
@@ -177,7 +177,7 @@ export function generateTastePersonality(result: ScoutScoreResult): string {
       return "you have a sharp eye for developer-tools companies. You were starring DX-first products before they had a Series A";
     }
     if (dominant[0] === "ops" && dominant[1] >= 2) {
-      return "you have an operator's instinct — you star observability and workflow tools, the unsexy stuff that VCs underprice";
+      return "you have an operator's instinct, you star observability and workflow tools, the unsexy stuff that VCs underprice";
     }
     return `you have a clear bias for ${top_wins[0].name}-style companies and the OSS-monetization playbook generally`;
   })();

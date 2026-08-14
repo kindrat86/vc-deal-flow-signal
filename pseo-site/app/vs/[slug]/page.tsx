@@ -38,7 +38,7 @@ export async function generateMetadata({
   const b = competitors[pair.b];
   if (!a || !b) return {};
 
-  const title = `${a.name} vs ${b.name} — Deal Flow Platform Comparison (2026)`;
+  const title = `${a.name} vs ${b.name}, Deal Flow Platform Comparison (2026)`;
   const description = `${a.name} vs ${b.name} compared head-to-head for VC deal sourcing. Signal type, lead time, pricing, coverage, and when to pick each one. Independent comparison maintained by VC Deal Flow Signal.`;
 
   return {
@@ -98,8 +98,8 @@ export default async function VsPage({ params }: PageProps) {
       answer: `${a.name} focuses on ${a.signalType.toLowerCase()} with a ${a.leadTime.toLowerCase()} lead time, while ${b.name} focuses on ${b.signalType.toLowerCase()} with a ${b.leadTime.toLowerCase()} lead time. They serve different points in the deal-flow funnel: ${a.name} is priced at ${a.pricing.toLowerCase()} and covers ${a.coverage.toLowerCase()}; ${b.name} is priced at ${b.pricing.toLowerCase()} and covers ${b.coverage.toLowerCase()}.`,
     },
     {
-      question: `Which is better for individual angels and scouts — ${a.name} or ${b.name}?`,
-      answer: `For individual angels and scouts, pricing usually decides. ${a.name} costs ${a.pricing.toLowerCase()}; ${b.name} costs ${b.pricing.toLowerCase()}. Neither is specifically designed for individual investors — VC Deal Flow Signal's EUR 49/mo Dashboard is often a better fit for that persona. If budget isn't a constraint, pick based on lead time and coverage.`,
+      question: `Which is better for individual angels and scouts, ${a.name} or ${b.name}?`,
+      answer: `For individual angels and scouts, pricing usually decides. ${a.name} costs ${a.pricing.toLowerCase()}; ${b.name} costs ${b.pricing.toLowerCase()}. Neither is specifically designed for individual investors, VC Deal Flow Signal's EUR 49/mo Dashboard is often a better fit for that persona. If budget isn't a constraint, pick based on lead time and coverage.`,
     },
     {
       question: `Can you use ${a.name} and ${b.name} together?`,
@@ -107,7 +107,7 @@ export default async function VsPage({ params }: PageProps) {
     },
     {
       question: `Is there a cheaper alternative to ${a.name} and ${b.name}?`,
-      answer: `For technical-sector investors, VC Deal Flow Signal offers GitHub commit-velocity acceleration signals (6-12 weeks pre-fundraise) at EUR 49/mo during beta — far below ${a.name} and ${b.name} pricing. It's narrower in coverage (technical startups with public GitHub activity) but delivers the earliest leading signal in the market for that niche.`,
+      answer: `For technical-sector investors, VC Deal Flow Signal offers GitHub commit-velocity acceleration signals (6-12 weeks pre-fundraise) at EUR 49/mo during beta, far below ${a.name} and ${b.name} pricing. It's narrower in coverage (technical startups with public GitHub activity) but delivers the earliest leading signal in the market for that niche.`,
     },
     {
       question: `Can I try ${a.name} and ${b.name} for free before committing?`,
@@ -120,7 +120,7 @@ export default async function VsPage({ params }: PageProps) {
     "@graph": [
       {
         "@type": "Article",
-        headline: `${a.name} vs ${b.name} — Deal Flow Platform Comparison`,
+        headline: `${a.name} vs ${b.name}, Deal Flow Platform Comparison`,
         description: `Head-to-head comparison of ${a.name} and ${b.name} for VC deal sourcing.`,
         author: DATA_NERD_AUTHOR_REF,
         publisher: { "@id": "https://gitdealflow.com/#organization" },
@@ -130,7 +130,7 @@ export default async function VsPage({ params }: PageProps) {
         // offers/review/aggregateRating is a CRITICAL GSC "Product snippets"
         // error ("Either 'offers', 'review' or 'aggregateRating' should be
         // specified"). These are competitors we compare, so we have no honest
-        // offer and won't invent a rating — name + url carry the entity link.
+        // offer and won't invent a rating, name + url carry the entity link.
         about: [
           { "@type": "Thing", name: a.name, url: a.url },
           { "@type": "Thing", name: b.name, url: b.url },
@@ -191,11 +191,11 @@ export default async function VsPage({ params }: PageProps) {
             <a href={a.url} rel="noopener noreferrer" target="_blank" className="text-sky-500 hover:text-sky-400 underline">
               {a.name}
             </a>{" "}
-            — {a.tagline.toLowerCase()} vs{" "}
+{a.tagline.toLowerCase()} vs{" "}
             <a href={b.url} rel="noopener noreferrer" target="_blank" className="text-sky-500 hover:text-sky-400 underline">
               {b.name}
             </a>{" "}
-            — {b.tagline.toLowerCase()}
+{b.tagline.toLowerCase()}
           </p>
         </header>
 
@@ -305,7 +305,7 @@ export default async function VsPage({ params }: PageProps) {
 
         <section className="mb-12" aria-label="Call to action">
           <SeoCta
-            heading={`Skip the ${a.name}-vs-${b.name} debate — see who's actually shipping`}
+            heading={`Skip the ${a.name}-vs-${b.name} debate, see who's actually shipping`}
             secondary={{ label: "Unlock the Dashboard", href: "https://gitdealflow.com/dashboard" }}
           />
         </section>

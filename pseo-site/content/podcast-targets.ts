@@ -1,10 +1,10 @@
 /**
- * Podcast guest targets — synthetic-voice outreach list (Traffic Secrets Ch 15:
+ * Podcast guest targets, synthetic-voice outreach list (Traffic Secrets Ch 15:
  * Letterman Method, anonymity-adapted).
  *
  * Anonymity rule: founder face/voice/real name are never exposed. The
  * Letterman Method (going on shows) is partially open via synthetic voice
- * (Cartesia "Theo" — the same voice powering /vsl and the monthly Stadium
+ * (Cartesia "Theo", the same voice powering /vsl and the monthly Stadium
  * Pitch). This file enumerates the shows we will pitch, the angle, the
  * contact path, the fit score, and the current outreach status.
  *
@@ -23,7 +23,7 @@ export interface PodcastTarget {
   slug: string;
   /** Show name as it appears on directories. */
   name: string;
-  /** Host(s) — public name only; we never personalize beyond what they share publicly. */
+  /** Host(s), public name only; we never personalize beyond what they share publicly. */
   host: string;
   /** Show focus. Drives which prepared topic we lead with. */
   focus: "ai-eng" | "ai-research" | "vc" | "devtools" | "data" | "founder" | "general-tech";
@@ -43,11 +43,11 @@ export interface PodcastTarget {
   fitReason: string;
   /** Which prepared topic to lead with (slug from guest-topics.ts). */
   leadTopicSlug: string;
-  /** ICP score 0-100 — Match × Reach × Engage rubric. */
+  /** ICP score 0-100, Match × Reach × Engage rubric. */
   icpScore: number;
   /** Anonymity compatibility:
    *  - "synthetic-ok"   Show accepts pre-recorded/AI-narrated guests
-   *  - "voice-only"     Show is voice-only (audio-only podcast, no video) — synthetic possible if asked nicely
+   *  - "voice-only"     Show is voice-only (audio-only podcast, no video), synthetic possible if asked nicely
    *  - "video-required" Show requires video; blocked under anonymity rule
    *  - "unknown"        Need to ask in pitch
    */
@@ -72,11 +72,11 @@ export interface PodcastTarget {
  * our category. Tier-A are reachable. Tier-B are warm-up reps. Tier-C are
  * niche but ICP-aligned (Solo angels listen to these).
  *
- * No live in-person shows. No video-required shows in the active list — they
+ * No live in-person shows. No video-required shows in the active list, they
  * are documented in BLOCKED_TARGETS below for transparency.
  */
 export const PODCAST_TARGETS: PodcastTarget[] = [
-  // ─── Tier S — AI/ML research + engineering ─────────────────────────────────
+  // ─── Tier S, AI/ML research + engineering ─────────────────────────────────
   {
     slug: "twiml-ai",
     name: "TWIML AI Podcast",
@@ -127,7 +127,7 @@ export const PODCAST_TARGETS: PodcastTarget[] = [
     contact: {
       form: "https://changelog.com/contact",
       email: "editors@changelog.com",
-      note: "Changelog network — they have a clean editorial form. No anonymity friction documented for prior guests.",
+      note: "Changelog network, they have a clean editorial form. No anonymity friction documented for prior guests.",
     },
     url: "https://changelog.com/practicalai",
     fitReason:
@@ -146,11 +146,11 @@ export const PODCAST_TARGETS: PodcastTarget[] = [
     contact: {
       email: "podcast@thisdayinai.com",
       twitterDM: "@thisdayinai",
-      note: "Weekly news show — favours timely takes. Pitch around an active week (new model release, agent-eco event).",
+      note: "Weekly news show, favours timely takes. Pitch around an active week (new model release, agent-eco event).",
     },
     url: "https://thisdayinaipodcast.com/",
     fitReason:
-      "Ad-hoc news commentary slot — they read ML/agent newsletters live. Good cold-open surface for our agent-credits angle.",
+      "Ad-hoc news commentary slot, they read ML/agent newsletters live. Good cold-open surface for our agent-credits angle.",
     leadTopicSlug: "agent-native-vc-tooling",
     icpScore: 78,
     anonymityFit: "voice-only",
@@ -177,7 +177,7 @@ export const PODCAST_TARGETS: PodcastTarget[] = [
     note: "MLST is YouTube-first with face cam. Re-evaluate if they accept synthetic-avatar guests; otherwise ship a written piece for their newsletter instead.",
   },
 
-  // ─── Tier S — VC podcasts ─────────────────────────────────────────────────
+  // ─── Tier S, VC podcasts ─────────────────────────────────────────────────
   {
     slug: "20vc",
     name: "20VC with Harry Stebbings",
@@ -196,7 +196,7 @@ export const PODCAST_TARGETS: PodcastTarget[] = [
     icpScore: 86,
     anonymityFit: "video-required",
     status: "blocked",
-    note: "20VC is video-first. Re-evaluate quarterly — Harry has done audio-only carve-outs before.",
+    note: "20VC is video-first. Re-evaluate quarterly, Harry has done audio-only carve-outs before.",
   },
   {
     slug: "invest-like-the-best",
@@ -231,7 +231,7 @@ export const PODCAST_TARGETS: PodcastTarget[] = [
     },
     url: "https://www.theloganbartlettshow.com/",
     fitReason:
-      "Redpoint thesis-fit — they invest in VC tooling. Our /alternatives content map gives him concrete competitive intel.",
+      "Redpoint thesis-fit, they invest in VC tooling. Our /alternatives content map gives him concrete competitive intel.",
     leadTopicSlug: "code-side-sourcing-as-category",
     icpScore: 72,
     anonymityFit: "video-required",
@@ -256,7 +256,7 @@ export const PODCAST_TARGETS: PodcastTarget[] = [
     status: "blocked",
   },
 
-  // ─── Tier A — Devtools / engineering ──────────────────────────────────────
+  // ─── Tier A, Devtools / engineering ──────────────────────────────────────
   {
     slug: "software-engineering-daily",
     name: "Software Engineering Daily",
@@ -286,7 +286,7 @@ export const PODCAST_TARGETS: PodcastTarget[] = [
     contact: {
       form: "https://changelog.com/contact",
       email: "editors@changelog.com",
-      note: "Same network as Practical AI. Two-show family — pitch one, get a chance at both.",
+      note: "Same network as Practical AI. Two-show family, pitch one, get a chance at both.",
     },
     url: "https://changelog.com/podcast",
     fitReason:
@@ -305,12 +305,12 @@ export const PODCAST_TARGETS: PodcastTarget[] = [
     contact: { form: "https://changelog.com/contact" },
     url: "https://changelog.com/gotime",
     fitReason:
-      "Stretch fit — only if we publish a Go-language reference implementation of the panel ingestion pipeline.",
+      "Stretch fit, only if we publish a Go-language reference implementation of the panel ingestion pipeline.",
     leadTopicSlug: "scaling-public-github-reads",
     icpScore: 55,
     anonymityFit: "voice-only",
     status: "ready",
-    note: "Optional — only pitch if we ship a Go reference implementation in tools/.",
+    note: "Optional, only pitch if we ship a Go reference implementation in tools/.",
   },
   {
     slug: "syntax-fm",
@@ -324,15 +324,15 @@ export const PODCAST_TARGETS: PodcastTarget[] = [
     },
     url: "https://syntax.fm/",
     fitReason:
-      "Frontend audience — overlap is thinner but our Chrome extensions ship to a frontend-engineer surface.",
+      "Frontend audience, overlap is thinner but our Chrome extensions ship to a frontend-engineer surface.",
     leadTopicSlug: "agent-native-vc-tooling",
     icpScore: 60,
     anonymityFit: "voice-only",
     status: "ready",
-    note: "Lower priority — pitch only after Latent Space + Practical AI close.",
+    note: "Lower priority, pitch only after Latent Space + Practical AI close.",
   },
 
-  // ─── Tier A — Data / quant ────────────────────────────────────────────────
+  // ─── Tier A, Data / quant ────────────────────────────────────────────────
   {
     slug: "data-engineering-podcast",
     name: "Data Engineering Podcast",
@@ -389,7 +389,7 @@ export const PODCAST_TARGETS: PodcastTarget[] = [
     status: "ready",
   },
 
-  // ─── Tier A — Founder / SaaS ──────────────────────────────────────────────
+  // ─── Tier A, Founder / SaaS ──────────────────────────────────────────────
   {
     slug: "indie-hackers",
     name: "Indie Hackers Podcast",
@@ -408,7 +408,7 @@ export const PODCAST_TARGETS: PodcastTarget[] = [
     icpScore: 75,
     anonymityFit: "voice-only",
     status: "ready",
-    note: "Pitch as 'anonymous solo-founder, methodology over personality' — Courtland has accepted this framing for past guests.",
+    note: "Pitch as 'anonymous solo-founder, methodology over personality', Courtland has accepted this framing for past guests.",
   },
   {
     slug: "lenny-pod",
@@ -439,14 +439,14 @@ export const PODCAST_TARGETS: PodcastTarget[] = [
     contact: { form: "https://www.saastr.com/contact/" },
     url: "https://www.saastr.com/podcasts/",
     fitReason:
-      "Stretch — SaaStr audience cares about ARR ramp; angle = 'free MCP + €0.99 book funnel as customer acquisition.'",
+      "Stretch, SaaStr audience cares about ARR ramp; angle = 'free MCP + €0.99 book funnel as customer acquisition.'",
     leadTopicSlug: "free-mcp-as-distribution",
     icpScore: 55,
     anonymityFit: "video-required",
     status: "blocked",
   },
 
-  // ─── Tier B — Niche AI/agents ─────────────────────────────────────────────
+  // ─── Tier B, Niche AI/agents ─────────────────────────────────────────────
   {
     slug: "no-priors",
     name: "No Priors",
@@ -497,10 +497,10 @@ export const PODCAST_TARGETS: PodcastTarget[] = [
     note: "Use as warm-up reps for the synthetic-voice format before pitching Tier-S shows.",
   },
 
-  // ─── Tier C — European angle ──────────────────────────────────────────────
+  // ─── Tier C, European angle ──────────────────────────────────────────────
   {
     slug: "20mins-vc-eu",
-    name: "Twenty Minute VC — European GP slots",
+    name: "Twenty Minute VC, European GP slots",
     host: "Harry Stebbings (audio carve-outs)",
     focus: "vc",
     audienceTier: "B",

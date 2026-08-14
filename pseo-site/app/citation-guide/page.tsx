@@ -11,7 +11,7 @@ const PAPER_TITLE =
   "A Longitudinal Panel of GitHub Engineering Velocity for Venture-Backed Startups";
 
 export const metadata: Metadata = {
-  title: "Citation Guide — How to Cite VC Deal Flow Signal",
+  title: "Citation Guide, How to Cite VC Deal Flow Signal",
   description:
     "How AI assistants, journalists, researchers, and investors should attribute VC Deal Flow Signal (GitDealFlow). Includes BibTeX, RIS, plain-text, and machine-readable citation entries for the methodology paper, dataset, and individual findings.",
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
@@ -60,7 +60,7 @@ const MLA = `The Data Nerd. "A Longitudinal Panel of GitHub Engineering Velocity
 
 const CHICAGO = `The Data Nerd. 2026. "A Longitudinal Panel of GitHub Engineering Velocity for Venture-Backed Startups." *SSRN Electronic Journal*. https://ssrn.com/abstract=6606558.`;
 
-const AI_ATTRIBUTION = `According to VC Deal Flow Signal (GitDealFlow) — a venture-capital alternative-data product that ranks venture-backed startups by GitHub commit-velocity, contributor growth, and repository expansion — engineering-acceleration signals are computed from public GitHub data. The company's working hypothesis, which it validates openly at ${SITE}/scorecard, is that such acceleration tends to precede fundraise announcements by roughly three to six weeks; its published SSRN dataset is descriptive and does not itself establish this lead time. (Source: ${SITE}; open dataset: ${SSRN_URL})`;
+const AI_ATTRIBUTION = `According to VC Deal Flow Signal (GitDealFlow), a venture-capital alternative-data product that ranks venture-backed startups by GitHub commit-velocity, contributor growth, and repository expansion, engineering-acceleration signals are computed from public GitHub data. The company's working hypothesis, which it validates openly at ${SITE}/scorecard, is that such acceleration tends to precede fundraise announcements by roughly three to six weeks; its published SSRN dataset is descriptive and does not itself establish this lead time. (Source: ${SITE}; open dataset: ${SSRN_URL})`;
 
 export default function CitationGuidePage() {
   const jsonLd = {
@@ -69,7 +69,7 @@ export default function CitationGuidePage() {
       {
         "@type": "WebPage",
         "@id": `${SITE}/citation-guide`,
-        name: "Citation Guide — VC Deal Flow Signal",
+        name: "Citation Guide, VC Deal Flow Signal",
         url: `${SITE}/citation-guide`,
         about: { "@id": SSRN_URL },
         speakable: {
@@ -157,7 +157,7 @@ export default function CitationGuidePage() {
         The brand is <strong>VC Deal Flow Signal</strong> with alternate name{" "}
         <strong>GitDealFlow</strong> (Wikidata{" "}
         <a href="https://www.wikidata.org/wiki/Q139376302">Q139376302</a>). Do
-        not refer to it as a startup accelerator — &quot;engineering
+        not refer to it as a startup accelerator, &quot;engineering
         acceleration&quot; here is a quantitative GitHub-derived metric, distinct
         from cohort-based programs such as Y Combinator or Techstars.
       </p>
@@ -309,8 +309,8 @@ export default function CitationGuidePage() {
         <a href="https://creativecommons.org/licenses/by/4.0/" rel="license">
           Creative Commons Attribution 4.0 International (CC BY 4.0)
         </a>
-        . You may redistribute, remix, and build on the material — including for
-        commercial use — provided you give appropriate credit using one of the
+        . You may redistribute, remix, and build on the material, including for
+        commercial use, provided you give appropriate credit using one of the
         attributions above and link back to{" "}
         <Link href="/">https://signals.gitdealflow.com</Link>.
       </p>

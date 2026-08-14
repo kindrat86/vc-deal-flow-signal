@@ -33,7 +33,7 @@ const HQ_BY_SLUG: Record<string, string | null> = {
   writer: "san-francisco",
   "stability-ai": "london",
 
-  // ── AI/ML — agent frameworks ──
+  // ── AI/ML, agent frameworks ──
   langchain: "san-francisco",
   "letta-ai": "san-francisco",
   mastra: "san-francisco",
@@ -153,7 +153,7 @@ export function getCompaniesInSectorAndCity(
 }
 
 /**
- * Coverage audit — returns the slugs we know about but couldn't map.
+ * Coverage audit, returns the slugs we know about but couldn't map.
  * Useful for build-step audit; not used at runtime.
  */
 export function getUnmappedCompanySlugs(): string[] {
@@ -161,7 +161,7 @@ export function getUnmappedCompanySlugs(): string[] {
   return known.filter((s) => HQ_BY_SLUG[s] === undefined);
 }
 
-/** Sanity check — every city slug used must exist in cities.ts. */
+/** Sanity check, every city slug used must exist in cities.ts. */
 export function getUnknownCitySlugs(): string[] {
   const unknown = new Set<string>();
   for (const [, city] of Object.entries(HQ_BY_SLUG)) {

@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 
 type Props = {
   sessionId: string;
-  // Brunson DotCom Ch 18 — three-rung OTO ladder. sector_sweep_oto1 fires
+  // Brunson DotCom Ch 18, three-rung OTO ladder. sector_sweep_oto1 fires
   // on /firstlook/thanks, insider_oto2 on /firstlook/downsell, and
   // extra_sector_oto3 on /firstlook/last-chance after the buyer declines
   // both upper rungs. Keep this union in lockstep with OtoKey in
@@ -59,13 +59,13 @@ export default function OneClickOtoButton({
         return;
       }
       if (data.error === "already_charged") {
-        // Idempotent path — buyer double-clicked or refreshed; treat as accepted.
+        // Idempotent path, buyer double-clicked or refreshed; treat as accepted.
         startTransition(() => router.push(`${acceptHref}?session_id=${sessionId}`));
         return;
       }
       setError(humanizeError(data.error));
     } catch {
-      setError("Network error — please try again or skip.");
+      setError("Network error, please try again or skip.");
     } finally {
       setSubmitting(false);
     }
@@ -103,7 +103,7 @@ export default function OneClickOtoButton({
         </p>
       )}
       <p className="text-slate-500 text-xs leading-relaxed">
-        One-click — no card re-entry. Charged to the same card you used moments ago.
+        One-click, no card re-entry. Charged to the same card you used moments ago.
       </p>
     </div>
   );
@@ -116,7 +116,7 @@ function humanizeError(code: string): string {
     case "parent_not_found":
       return "We can't find your original purchase session. Skip this offer to continue to your delivery.";
     case "authentication_required":
-      return "Your bank wants you to verify this charge. Use the button again — we'll redirect you to a secure page.";
+      return "Your bank wants you to verify this charge. Use the button again, we'll redirect you to a secure page.";
     case "stripe_error":
     case "stripe_unknown":
       return "Stripe couldn't process the charge. Skip this offer to continue.";

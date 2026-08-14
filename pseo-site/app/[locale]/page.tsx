@@ -20,7 +20,7 @@ interface PageProps {
 
 // Lock to declared locales only. Without this, any single-segment path that
 // doesn't match a static route (e.g. /random) would render this template
-// before notFound() fires — slower 404 + risk of soft-404 indexing.
+// before notFound() fires, slower 404 + risk of soft-404 indexing.
 export const dynamicParams = false;
 export const revalidate = 604800;
 
@@ -36,12 +36,12 @@ export async function generateMetadata({
   if (!l) return {};
 
   return {
-    title: `VC Deal Flow Signal — ${l.nativeName.replace(/&amp;/g, "&")} (${l.display})`,
+    title: `VC Deal Flow Signal, ${l.nativeName.replace(/&amp;/g, "&")} (${l.display})`,
     description: l.intro.slice(0, 200),
     // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
     alternates: { canonical: `/${locale}` },
     openGraph: {
-      title: `VC Deal Flow Signal — ${l.display}`,
+      title: `VC Deal Flow Signal, ${l.display}`,
       description: l.intro.slice(0, 160),
       type: "website",
       url: `${SITE}/${locale}`,
@@ -51,7 +51,7 @@ export async function generateMetadata({
           url: `${SITE}/api/og/locale/${locale}`,
           width: 1200,
           height: 630,
-          alt: `${l.display} — VC Deal Flow Signal`,
+          alt: `${l.display}, VC Deal Flow Signal`,
         },
       ],
     },
@@ -73,7 +73,7 @@ export default async function LocaleLandingPage({ params }: PageProps) {
       {
         "@type": "WebPage",
         "@id": `${SITE}/${locale}#page`,
-        name: `VC Deal Flow Signal — ${l.display}`,
+        name: `VC Deal Flow Signal, ${l.display}`,
         url: `${SITE}/${locale}`,
         inLanguage: l.code,
         isPartOf: { "@id": `${SITE}/#website` },

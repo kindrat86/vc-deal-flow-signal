@@ -58,21 +58,21 @@ export default async function WelcomePage() {
           <li className="flex items-start gap-3 text-gray-300">
             <CheckIcon className="text-sky-400" />
             <span>
-              <strong className="text-gray-100">Full Dashboard</strong> — 100+
+              <strong className="text-gray-100">Full Dashboard</strong>: 100+
               startups ranked by engineering acceleration across 15 sectors
             </span>
           </li>
           <li className="flex items-start gap-3 text-gray-300">
             <CheckIcon className="text-sky-400" />
             <span>
-              <strong className="text-gray-100">Filters</strong> — sector,
+              <strong className="text-gray-100">Filters</strong>: sector,
               stage, geography, and signal type
             </span>
           </li>
           <li className="flex items-start gap-3 text-gray-300">
             <CheckIcon className="text-sky-400" />
             <span>
-              <strong className="text-gray-100">Weekly updates</strong> — fresh
+              <strong className="text-gray-100">Weekly updates</strong>: fresh
               GitHub data every Monday
             </span>
           </li>
@@ -84,7 +84,7 @@ export default async function WelcomePage() {
                   <strong className="text-gray-100">
                     Private Telegram group
                   </strong>{" "}
-                  — direct discussion with other data-driven investors
+direct discussion with other data-driven investors
                 </span>
               </li>
               <li className="flex items-start gap-3 text-gray-300">
@@ -93,7 +93,7 @@ export default async function WelcomePage() {
                   <strong className="text-gray-100">
                     Monthly signal briefing
                   </strong>{" "}
-                  — live call covering the strongest signals
+live call covering the strongest signals
                 </span>
               </li>
               <li className="flex items-start gap-3 text-gray-300">
@@ -120,7 +120,7 @@ export default async function WelcomePage() {
           </h2>
           <p className="text-gray-300 text-sm leading-relaxed mb-4">
             The Insider Circle gets the weekly list a day ahead of the Dashboard,
-            plus the private investor room. No code required — same list, more
+            plus the private investor room. No code required, same list, more
             lead time. €197/mo.
           </p>
           <Link
@@ -146,7 +146,7 @@ export default async function WelcomePage() {
               >
                 Open the Dashboard
               </Link>{" "}
-              — browse startups, filter by what matters to you
+browse startups, filter by what matters to you
             </>,
             ...(isInsider
               ? [
@@ -154,7 +154,7 @@ export default async function WelcomePage() {
                     <strong className="text-gray-100">
                       Join the private Telegram group
                     </strong>{" "}
-                    — check your welcome email for the invite link
+check your welcome email for the invite link
                   </>,
                 ]
               : []),
@@ -162,7 +162,7 @@ export default async function WelcomePage() {
               <strong className="text-gray-100">
                 Reply to the welcome email
               </strong>{" "}
-              — tell me what sectors and stages you invest in
+tell me what sectors and stages you invest in
             </>,
           ].map((item, i) => (
             <li key={i} className="flex items-start gap-3">

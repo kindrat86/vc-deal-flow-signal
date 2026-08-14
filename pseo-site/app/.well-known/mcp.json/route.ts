@@ -1,10 +1,10 @@
 /**
- * /.well-known/mcp.json — top-level MCP descriptor.
+ * /.well-known/mcp.json, top-level MCP descriptor.
  *
  * Mirrors /.well-known/mcp/server-card.json (Smithery's nested fallback path)
  * at the canonical top-level location that ChatGPT, openai-search.json,
  * and several MCP catalog scanners probe first. Both paths must resolve to
- * structurally-equivalent JSON — keep them in sync if you edit one.
+ * structurally-equivalent JSON, keep them in sync if you edit one.
  */
 
 import { NextResponse } from "next/server";

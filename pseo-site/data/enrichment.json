@@ -73,19 +73,19 @@
   },
   "bakaphp": {
     "fundingTotal": "Bootstrapped",
-    "lastRoundType": "—",
+    "lastRoundType": "-",
     "teamSize": 5,
     "foundedYear": 2022
   },
   "FlaxEngine": {
     "fundingTotal": "Bootstrapped",
-    "lastRoundType": "—",
+    "lastRoundType": "-",
     "teamSize": 10,
     "foundedYear": 2017
   },
   "unacms": {
     "fundingTotal": "Bootstrapped",
-    "lastRoundType": "—",
+    "lastRoundType": "-",
     "teamSize": 6,
     "foundedYear": 2020
   },
@@ -97,7 +97,7 @@
   },
   "mdn": {
     "fundingTotal": "Mozilla Foundation",
-    "lastRoundType": "—",
+    "lastRoundType": "-",
     "teamSize": 40,
     "foundedYear": 2005
   }

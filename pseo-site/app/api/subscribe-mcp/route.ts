@@ -17,11 +17,11 @@ const FROM_NAME = process.env.FROM_NAME || "The Data Nerd";
 const SOS_ENROLLED_NAMESPACE = "sos-enrolled";
 const SOS_ENROLLED_TTL_SECONDS = 180 * 86_400;
 
-// Resend rejects scheduled_at >30 days out (422) — mirror verify's split.
+// Resend rejects scheduled_at >30 days out (422), mirror verify's split.
 const MAX_SCHEDULE_MS = 29 * 24 * 60 * 60 * 1000;
 
 // ---------- MCP Installation Guide Email ----------
-const MCP_SUBJECT = "Your MCP setup guide — talk to your deal flow in 2 minutes";
+const MCP_SUBJECT = "Your MCP setup guide, talk to your deal flow in 2 minutes";
 const MCP_HTML = `<!DOCTYPE html>
 <html>
 <head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
@@ -42,7 +42,7 @@ const MCP_HTML = `<!DOCTYPE html>
 <div style="margin:28px 0;padding:24px;background:#f1f5f9;border-radius:12px;border-left:4px solid #0ea5e9;">
 <h2 style="margin:0 0 16px 0;font-size:18px;color:#0f172a;">Option A: Claude Desktop App</h2>
 
-<p style="margin:0 0 8px 0;font-weight:600;color:#0f172a;">Step 1 — Open your config file</p>
+<p style="margin:0 0 8px 0;font-weight:600;color:#0f172a;">Step 1, Open your config file</p>
 <ul style="margin:0 0 16px 0;padding-left:20px;color:#334155;">
 <li><strong>Mac:</strong> Open Claude &rarr; Settings &rarr; Developer &rarr; Edit Config<br>
 <span style="font-size:14px;color:#64748b;">Or open: <code style="background:#e2e8f0;padding:2px 6px;border-radius:4px;font-size:13px;">~/Library/Application Support/Claude/claude_desktop_config.json</code></span></li>
@@ -50,7 +50,7 @@ const MCP_HTML = `<!DOCTYPE html>
 <span style="font-size:14px;color:#64748b;">Or open: <code style="background:#e2e8f0;padding:2px 6px;border-radius:4px;font-size:13px;">%APPDATA%\\Claude\\claude_desktop_config.json</code></span></li>
 </ul>
 
-<p style="margin:0 0 8px 0;font-weight:600;color:#0f172a;">Step 2 — Paste this config</p>
+<p style="margin:0 0 8px 0;font-weight:600;color:#0f172a;">Step 2, Paste this config</p>
 <div style="background:#0f172a;border-radius:8px;padding:16px;margin:0 0 16px 0;">
 <code style="color:#e2e8f0;font-size:13px;line-height:1.6;white-space:pre;font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;">{
   "mcpServers": {
@@ -63,8 +63,8 @@ const MCP_HTML = `<!DOCTYPE html>
 </div>
 <p style="font-size:14px;color:#64748b;margin:0 0 16px 0;">If you already have other MCP servers configured, add <code style="background:#e2e8f0;padding:2px 6px;border-radius:4px;font-size:13px;">"vc-deal-flow-signal": { ... }</code> inside the existing <code style="background:#e2e8f0;padding:2px 6px;border-radius:4px;font-size:13px;">mcpServers</code> object.</p>
 
-<p style="margin:0 0 8px 0;font-weight:600;color:#0f172a;">Step 3 — Restart Claude</p>
-<p style="margin:0;color:#334155;">Quit the app completely and reopen it. You should see a hammer icon (&#x1F528;) in the chat input area &mdash; that means MCP tools are loaded.</p>
+<p style="margin:0 0 8px 0;font-weight:600;color:#0f172a;">Step 3, Restart Claude</p>
+<p style="margin:0;color:#334155;">Quit the app completely and reopen it. You should see a hammer icon (&#x1F528;) in the chat input area, that means MCP tools are loaded.</p>
 </div>
 
 <!-- ============ CLAUDE CODE (CLI) ============ -->
@@ -89,7 +89,7 @@ const MCP_HTML = `<!DOCTYPE html>
 <li><em>"What methodology does VC Deal Flow Signal use?"</em></li>
 <li><em>"Give me a summary of the latest deal flow data"</em></li>
 </ul>
-<p style="margin:12px 0 0 0;font-size:14px;color:#64748b;">Each query triggers a live API call &mdash; the data updates weekly.</p>
+<p style="margin:12px 0 0 0;font-size:14px;color:#64748b;">Each query triggers a live API call, the data updates weekly.</p>
 </div>
 
 <!-- ============ 6 TOOLS ============ -->
@@ -103,7 +103,7 @@ const MCP_HTML = `<!DOCTYPE html>
 </tr>
 <tr style="border-bottom:1px solid #e2e8f0;">
 <td style="padding:10px 12px;font-weight:600;color:#0f172a;white-space:nowrap;">Sector Search</td>
-<td style="padding:10px 12px;color:#64748b;">Filter by sector &mdash; fintech, AI/ML, climate tech, cybersecurity, and 16 more</td>
+<td style="padding:10px 12px;color:#64748b;">Filter by sector, fintech, AI/ML, climate tech, cybersecurity, and 16 more</td>
 </tr>
 <tr style="border-bottom:1px solid #e2e8f0;">
 <td style="padding:10px 12px;font-weight:600;color:#0f172a;white-space:nowrap;">Startup Profiles</td>
@@ -189,14 +189,14 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: "Email service not configured" }, { status: 500, headers });
     }
 
-    // Tester / bot suppression — same policy as /api/verify.
+    // Tester / bot suppression, same policy as /api/verify.
     if (isExcluded(email)) {
       console.log(`[subscribe-mcp] suppressed excluded address: ${email}`);
       return NextResponse.json({ ok: true, message: "Guide sent" }, { headers });
     }
 
     // 1. Add to Resend audience with source attribution. NOTE: the audience
-    //    add alone does NOT start any sequence — the Soap Opera drip is
+    //    add alone does NOT start any sequence, the Soap Opera drip is
     //    explicitly scheduled in step 3 below.
     const audienceRes = await fetch("https://api.resend.com/audiences", {
       method: "GET",
@@ -230,14 +230,14 @@ export async function POST(request: Request) {
       },
       body: JSON.stringify({
         email,
-        // gdf-attr-v1 attribution bridge (same as /api/verify) — the
+        // gdf-attr-v1 attribution bridge (same as /api/verify), the
         // laptop-side sync decodes this; a bare display name would break it.
         first_name: "gdf-attr-v1:" + JSON.stringify({ source: "subscribe-mcp" }),
         unsubscribed: false,
       }),
     });
     if (!contactRes.ok) {
-      // Already a contact — re-activate so a previously-unsubscribed
+      // Already a contact, re-activate so a previously-unsubscribed
       // requester actually receives the guide follow-ups again.
       await fetch(
         `https://api.resend.com/audiences/${audienceId}/contacts/${encodeURIComponent(email)}`,
@@ -273,13 +273,13 @@ export async function POST(request: Request) {
     }
 
     // 3. Actually enroll the Soap Opera Sequence (the guide email promises
-    //    "Tomorrow I'll share the story…" — before this block existed nothing
+    //    "Tomorrow I'll share the story…", before this block existed nothing
     //    ever followed). Same pattern as /api/verify: Day-0 is skipped (the
     //    guide fills that slot), ≤29d scheduled via scheduled_at, the rest
     //    stored as drip_plan for /api/cron/drip-sender. Per-email nonce so
     //    repeat requests / prior subscribes don't double-enroll.
     if (await isNonceUsed(SOS_ENROLLED_NAMESPACE, email)) {
-      console.log(`[subscribe-mcp] ${email} already enrolled — skipping drip`);
+      console.log(`[subscribe-mcp] ${email} already enrolled, skipping drip`);
     } else {
       await markNonceUsed(SOS_ENROLLED_NAMESPACE, email, SOS_ENROLLED_TTL_SECONDS);
       const now = Date.now();

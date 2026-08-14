@@ -9,7 +9,7 @@ const SITE = "https://signals.gitdealflow.com";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: "You're in — VC Engineering Acceleration Summit",
+  title: "You're in, VC Engineering Acceleration Summit",
   description:
     "Your Free Pass is reserved. Check your inbox to confirm, then watch for one email per day during the live window with the talk that just unlocked.",
   alternates: { canonical: "/summit/thanks" },
@@ -51,10 +51,10 @@ export default function SummitThanksPage() {
           </ul>
         </section>
 
-        {/* OTO — All-Access Pass */}
+        {/* OTO, All-Access Pass */}
         <section className="rounded-xl border border-sky-700/40 bg-gradient-to-br from-sky-950/30 via-slate-900 to-slate-950 p-6 space-y-4">
           <p className="text-sky-300 text-xs font-semibold uppercase tracking-wider">
-            Skip the wait — get All-Access now
+            Skip the wait, get All-Access now
           </p>
           <h2 className="text-xl font-bold text-gray-100">
             Want every talk now, plus lifetime replays?
@@ -70,7 +70,7 @@ export default function SummitThanksPage() {
             href="/summit/all-access"
             className="inline-block rounded-lg bg-signal-500 hover:bg-signal-400 text-slate-950 font-semibold px-5 py-3 transition-colors"
           >
-            Get All-Access Pass — €{SUMMIT.allAccessPrice} →
+            Get All-Access Pass, €{SUMMIT.allAccessPrice} →
           </Link>
         </section>
 
@@ -83,25 +83,25 @@ export default function SummitThanksPage() {
               <Link href="/manifesto" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
                 Read the manifesto
               </Link>{" "}
-              — the seven pillars and the named enemy.
+the seven pillars and the named enemy.
             </li>
             <li>
               <Link href="/walkthrough" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
                 12-minute walkthrough
               </Link>{" "}
-              — the core claim, written.
+the core claim, written.
             </li>
             <li>
               <Link href="/methodology" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
                 Methodology
               </Link>{" "}
-              — every signal definition, decision rule, and pitfall.
+every signal definition, decision rule, and pitfall.
             </li>
             <li>
               <Link href="/firstlook" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
                 €7 First Look
               </Link>{" "}
-              — pick a sector, get a deep-dive in 24 hours.
+pick a sector, get a deep-dive in 24 hours.
             </li>
           </ul>
         </section>

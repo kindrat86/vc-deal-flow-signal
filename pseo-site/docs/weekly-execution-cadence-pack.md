@@ -1,4 +1,4 @@
-# GitDealFlow — weekly execution cadence pack
+# GitDealFlow, weekly execution cadence pack
 
 Purpose: define the minimum weekly rhythm so distribution stays alive without rethinking the system from zero.
 
@@ -24,7 +24,7 @@ Use:
 - `docs/distribution-scoreboard-2026-05-26.csv`
 
 Midweek job:
-- 1–2 meaningful touches per day
+- 1-2 meaningful touches per day
 - no homepage links
 - one page only per touch
 - classify replies fast

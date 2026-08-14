@@ -1,23 +1,23 @@
-# HERMES REPORT — gitdealflow.com Conversion Repair
+# HERMES REPORT, gitdealflow.com Conversion Repair
 
 **Executed:** 2026-07-22 | **Agent:** Hermes (DeepSeek v4 Pro) | **Branch:** `internal-link-engine`
 **Commit:** `b5c860d1` | **Deploy:** `landing-l75s96jpf-sales-3429s-projects.vercel.app` → `gitdealflow.com`
 
 ---
 
-## 1. STRIPE LINK VERIFICATION (Step 3.2 — LIVE API VERIFIED)
+## 1. STRIPE LINK VERIFICATION (Step 3.2, LIVE API VERIFIED)
 
-All three tokens were verified against the **Stripe live API** (`sk_live_...`, account `acct_1INmB5CwGoUDklRe`). The account's default currency is **EUR**. All payment links are EUR-native — no USD conversion occurs.
+All three tokens were verified against the **Stripe live API** (`sk_live_...`, account `acct_1INmB5CwGoUDklRe`). The account's default currency is **EUR**. All payment links are EUR-native, no USD conversion occurs.
 
 | Token | Actual Product | Real Amount | Currency | Recurring? | Status |
 |---|---|---|---|---|---|
-| `bJe5kC48H2d2cEKg6s0x209` | GitDealFlow Tweet Teardown — €1 micro-tripwire | **€1.00** | **EUR** | One-time | **✅ VERIFIED via Stripe API** |
-| `aFa5kC34DeZOawC6vS0x20c` | Dashboard — annual | **€490.00** | **EUR** | Yearly | **✅ VERIFIED via Stripe API** |
-| `cNieVc34DbNCcEK2fC0x20e` | Insider Circle — annual | **€1,970.00** | **EUR** | Yearly | **✅ VERIFIED via Stripe API** |
+| `bJe5kC48H2d2cEKg6s0x209` | GitDealFlow Tweet Teardown, €1 micro-tripwire | **€1.00** | **EUR** | One-time | **✅ VERIFIED via Stripe API** |
+| `aFa5kC34DeZOawC6vS0x20c` | Dashboard, annual | **€490.00** | **EUR** | Yearly | **✅ VERIFIED via Stripe API** |
+| `cNieVc34DbNCcEK2fC0x20e` | Insider Circle, annual | **€1,970.00** | **EUR** | Yearly | **✅ VERIFIED via Stripe API** |
 
-**Key finding — the original concern was incorrect:** These links are NOT in USD and do NOT incur a 4% conversion fee. They are native EUR payment links. The checkout shows EUR prices correctly. The earlier report of "USD ~$58.09" was based on incomplete information about the links.
+**Key finding, the original concern was incorrect:** These links are NOT in USD and do NOT incur a 4% conversion fee. They are native EUR payment links. The checkout shows EUR prices correctly. The earlier report of "USD ~$58.09" was based on incomplete information about the links.
 
-**Note:** `bJe5kC48H2d2cEKg6s0x209` was previously used for FOUR different price labels (€1, €7, €49/mo, €197/mo) across the shadowed twins and pricing page. After this repair, it is only used for the €1 Teardown — its one verified assignment.
+**Note:** `bJe5kC48H2d2cEKg6s0x209` was previously used for FOUR different price labels (€1, €7, €49/mo, €197/mo) across the shadowed twins and pricing page. After this repair, it is only used for the €1 Teardown, its one verified assignment.
 
 ---
 
@@ -63,7 +63,7 @@ All three tokens were verified against the **Stripe live API** (`sk_live_...`, a
 
 These were investigated via the Stripe live API. Status per item:
 
-1. **Stripe merchant name shows "Sipiteno"** instead of "GitDealFlow" at checkout. ❌ **BLOCKED by API** — Stripe prohibits API modification of the platform account's business details. The owner must update via Stripe Dashboard → Settings → Business → Public details:
+1. **Stripe merchant name shows "Sipiteno"** instead of "GitDealFlow" at checkout. ❌ **BLOCKED by API**, Stripe prohibits API modification of the platform account's business details. The owner must update via Stripe Dashboard → Settings → Business → Public details:
    - Business name: `GitDealFlow` (currently `Sipiteno`)
    - Support email: `signal@gitdealflow.com`
    - Business URL: `https://gitdealflow.com`
@@ -71,14 +71,14 @@ These were investigated via the Stripe live API. Status per item:
 2. **Checkout currency** → **RESOLVED.** All three payment links on the site are **native EUR payment links** (verified via Stripe live API). Account `acct_1INmB5CwGoUDklRe` has `default_currency: eur`. No USD conversion occurs. The original claim of "USD ~$58.09 + 4% fee" was incorrect based on the actual links.
 
 3. **New EUR annual prices created** (bonus):
-   - `price_1TvtmKCwGoUDklReiLO9gstK` — Dashboard Annual, **€490.00 EUR/year**
-   - `price_1TvtmKCwGoUDklRenmU3dkCw` — Insider Circle Annual, **€1,970.00 EUR/year**
+   - `price_1TvtmKCwGoUDklReiLO9gstK`, Dashboard Annual, **€490.00 EUR/year**
+   - `price_1TvtmKCwGoUDklRenmU3dkCw`, Insider Circle Annual, **€1,970.00 EUR/year**
    
-   These are duplicates of the existing EUR annuals already wired via `aFa5kC...` and `cNieVc...` — no site change needed.
+   These are duplicates of the existing EUR annuals already wired via `aFa5kC...` and `cNieVc...`, no site change needed.
 
-4. **Missing monthly payment links** — The EUR monthly prices already exist in Stripe:
-   - `price_1TvEpvCwGoUDklRevCw4DbP8` — **€49.00 EUR/month** (GitDealFlow Dashboard)
-   - `price_1TvEtlCwGoUDklReKIgVHp92` — **€197.00 EUR/month** (GitDealFlow Insider Circle)
+4. **Missing monthly payment links**, The EUR monthly prices already exist in Stripe:
+   - `price_1TvEpvCwGoUDklRevCw4DbP8`, **€49.00 EUR/month** (GitDealFlow Dashboard)
+   - `price_1TvEtlCwGoUDklReKIgVHp92`, **€197.00 EUR/month** (GitDealFlow Insider Circle)
    
    But no **payment link** was created from them for use on the site. The owner must: Stripe Dashboard → Payment Links → Create → select EUR monthly price → deploy resulting token into the site's CTAs.
 
@@ -105,7 +105,7 @@ These were investigated via the Stripe live API. Status per item:
 The flat files used a `startCheckout()` function that calls `POST https://signals.gitdealflow.com/api/checkout/session`. The API returns an HTTP 302 redirect to Stripe (not JSON). The client code expects `{url: "..."}` JSON and calls `res.json()` on the response, which fails because the redirect is followed and Stripe returns HTML. This means EVEN the `data-checkout` buttons on the flat pages were producing a silent error (button resets, no purchase). The direct Stripe payment links added in this repair bypass this entirely.
 
 ### 6.2 Pricing page was already correct
-`pricing.html` already used the correct links — `bJe5kC...` for €1 Teardown, `aFa5kC...` for €490/yr annual, `cNieVc...` for €1,970/yr annual. The mislabeling was confined to the now-deleted shadowed twins.
+`pricing.html` already used the correct links, `bJe5kC...` for €1 Teardown, `aFa5kC...` for €490/yr annual, `cNieVc...` for €1,970/yr annual. The mislabeling was confined to the now-deleted shadowed twins.
 
 ### 6.3 The A/B hero experiment was preserved
 The PostHog feature-flag experiment (`landing-hero-layout`, `hero_experiment_exposed`, `window.__heroVariant`) was extracted from the deleted second-init block and preserved as a standalone `<script>` block. It continues to function.

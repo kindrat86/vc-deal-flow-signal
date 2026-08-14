@@ -1,11 +1,11 @@
 /**
- * /api/cite/[format]/[slug] — single-finding citation generator.
+ * /api/cite/[format]/[slug], single-finding citation generator.
  *
  * Format options: bibtex, ris, apa, mla, chicago, wikipedia
  * Slug options: any /research/[slug] finding slug, or "paper" for the SSRN paper itself
  *
  * Returns text/plain so reference managers, scrapers, and Wikipedia editors
- * can curl it directly. Force-static — no per-request data.
+ * can curl it directly. Force-static, no per-request data.
  */
 
 import { FINDINGS, getFindingBySlug } from "@/content/research-findings";
@@ -50,7 +50,7 @@ function resolveSubject(slug: string): CiteSubject | null {
     return {
       slug: "dataset",
       title:
-        "VC Deal Flow Signal — Public Engineering-Velocity Panel (NDJSON, CC BY 4.0)",
+        "VC Deal Flow Signal, Public Engineering-Velocity Panel (NDJSON, CC BY 4.0)",
       isFinding: false,
       url: `${SITE}/api/dataset.jsonl`,
     };
@@ -137,7 +137,7 @@ function chicago(s: CiteSubject): string {
 }
 
 /**
- * Wikipedia template syntax — copy-paste-ready for Wikipedia editors.
+ * Wikipedia template syntax, copy-paste-ready for Wikipedia editors.
  * Uses {{cite journal}} for the paper, {{cite web}} for the dataset, and
  * {{cite journal}} pointing to the section for findings. Each carries the
  * ORCID + DOI in the appropriate field.

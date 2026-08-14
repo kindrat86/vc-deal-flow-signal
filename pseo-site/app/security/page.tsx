@@ -17,7 +17,7 @@ export default function SecurityPage() {
     "@context": "https://schema.org",
     "@type": "WebPage",
     "@id": `${SITE}/security`,
-    name: "Security Overview — VC Deal Flow Signal",
+    name: "Security Overview, VC Deal Flow Signal",
     description: metadata.description,
     inLanguage: "en-US",
     isAccessibleForFree: true,
@@ -40,7 +40,7 @@ export default function SecurityPage() {
       <section className="mb-8 rounded-xl border border-sky-700/30 bg-sky-950/20 p-5 sm:p-6">
         <p className="text-sky-300 text-xs font-semibold uppercase tracking-[0.14em] mb-2">For the buyer doing diligence</p>
         <p className="text-gray-200 text-sm leading-relaxed">
-          Not technical? Here&apos;s the only sentence your IC needs: because we rank <strong>public</strong> GitHub data, we never hold your card, your password, or anything sensitive — so the worst case of a breach is an email list, and even that is encrypted and EU-hosted. The detail below is for your security reviewer; you don&apos;t need to read it to clear us.
+          Not technical? Here&apos;s the only sentence your IC needs: because we rank <strong>public</strong> GitHub data, we never hold your card, your password, or anything sensitive, so the worst case of a breach is an email list, and even that is encrypted and EU-hosted. The detail below is for your security reviewer; you don&apos;t need to read it to clear us.
         </p>
       </section>
 
@@ -68,7 +68,7 @@ export default function SecurityPage() {
         <div className="rounded-xl border border-slate-800 bg-slate-900/40 p-5">
           <h2 className="text-base font-semibold text-gray-100 mb-2">Transport security</h2>
           <ul className="list-disc list-outside ml-5 space-y-1">
-            <li>HSTS preload (<code className="text-emerald-400">max-age=63072000; includeSubDomains; preload</code>) — included in the Chromium HSTS preload list.</li>
+            <li>HSTS preload (<code className="text-emerald-400">max-age=63072000; includeSubDomains; preload</code>), included in the Chromium HSTS preload list.</li>
             <li>TLS 1.2+ only; cipher suites curated by Vercel&apos;s edge.</li>
             <li>Strict CSP (<code className="text-emerald-400">default-src &apos;self&apos;</code>) with auditable allowlist for PostHog EU and inline scripts.</li>
             <li>X-Frame-Options: DENY (no embedding).</li>
@@ -81,7 +81,7 @@ export default function SecurityPage() {
           <h2 className="text-base font-semibold text-gray-100 mb-2">Email security</h2>
           <ul className="list-disc list-outside ml-5 space-y-1">
             <li>SPF, DKIM, DMARC <code className="text-emerald-400">p=quarantine</code> on the gitdealflow.com sending domain.</li>
-            <li>MTA-STS policy at <Link href="/.well-known/mta-sts.txt" className="text-sky-400 hover:underline">/.well-known/mta-sts.txt</Link> — inbound mail <code className="text-emerald-400">enforce</code> mode.</li>
+            <li>MTA-STS policy at <Link href="/.well-known/mta-sts.txt" className="text-sky-400 hover:underline">/.well-known/mta-sts.txt</Link>: inbound mail <code className="text-emerald-400">enforce</code> mode.</li>
             <li>TLS-RPT reporting on <code className="text-emerald-400">_smtp._tls.gitdealflow.com</code>.</li>
             <li>Resend handles transactional sends; audience hygiene tracked in <code className="text-emerald-400">lib/excluded-emails.mjs</code>.</li>
           </ul>
@@ -93,7 +93,7 @@ export default function SecurityPage() {
             <li>No user passwords. Free signups: email-only opt-in. Paid users: API keys (<code className="text-emerald-400">gdf_v2.cus_xxx.&lt;hmac&gt;</code>) bound to a Stripe customer ID.</li>
             <li>Share tokens are URL-safe random IDs scoped to a single resource, with no enumeration vector.</li>
             <li>Admin tools: hardware-key MFA on Vercel, Stripe, Resend, GitHub. No shared admin credentials.</li>
-            <li>Operator x402 wallet uses Coinbase CDP Server Wallet v2 — Wallet Secret stored in Vercel encrypted env.</li>
+            <li>Operator x402 wallet uses Coinbase CDP Server Wallet v2, Wallet Secret stored in Vercel encrypted env.</li>
           </ul>
         </div>
 
@@ -123,7 +123,7 @@ export default function SecurityPage() {
         </div>
       </section>
 
-      <TrustPageOutro institutional acNote="The smallest attack surface is the data you never collected. We rank public companies, store no card and no password, so the worst thing anyone could steal here is an email list — encrypted, EU-hosted, and not for sale. That's not a security budget; it's a design decision." />
+      <TrustPageOutro institutional acNote="The smallest attack surface is the data you never collected. We rank public companies, store no card and no password, so the worst thing anyone could steal here is an email list, encrypted, EU-hosted, and not for sale. That's not a security budget; it's a design decision." />
 
       <footer className="mt-10 pt-6 border-t border-slate-800 text-sm text-gray-400">
         Report a vulnerability: <a className="text-sky-400 hover:underline" href="mailto:signals@gitdealflow.com?subject=Security%20disclosure">signals@gitdealflow.com</a>. Trust hub: <Link href="/trust" className="text-sky-400 hover:underline">/trust</Link>.

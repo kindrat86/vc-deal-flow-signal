@@ -45,7 +45,7 @@ export const competitors: Record<string, CompetitorInfo> = {
     ],
     weaknesses: [
       "Enterprise-only pricing excludes solo angels and scouts",
-      "Team signals aren't directly observable — you trust the model",
+      "Team signals aren't directly observable, you trust the model",
       "Less useful once a company is past incorporation",
     ],
     overview: "Harmonic.ai is an AI-native sourcing platform that identifies promising startups by pattern matching founding teams and their professional networks. Rather than waiting for a funding round to be announced, it models founders' backgrounds and the density of their connections, drawing on extensive graph data about people, employers, prior collaborations, and alumni networks. Its central thesis is that strong teams cluster together, and that these patterns are already visible at the earliest stage of a company's life, in practice from the moment of incorporation. The product is aimed squarely at institutional venture firms that run dedicated sourcing teams and want to see companies before they appear in any public database. Its coverage is deliberately broad, spanning technical and non-technical sectors alike, which sets it apart from tools that only watch code repositories or engineering activity. The principal trade-off is trust: the signals it surfaces are model outputs rather than directly observable facts, so a buyer must accept Harmonic's underlying methodology on faith. Pricing is enterprise-only and sold on an annual contract, which excludes solo angels, scouts, and smaller funds. Once a company is past incorporation and operating publicly, the platform's distinctive edge also fades, making it a discovery tool for the very earliest window rather than a system of record for later stages.",
@@ -67,7 +67,7 @@ export const competitors: Record<string, CompetitorInfo> = {
       "Comprehensive funding history and portfolio mapping",
     ],
     weaknesses: [
-      "Lagging by definition — only captures already-announced rounds",
+      "Lagging by definition, only captures already-announced rounds",
       "Full access runs to hundreds-plus EUR per month",
       "Better for retrospective analysis than proactive sourcing",
     ],
@@ -101,7 +101,7 @@ export const competitors: Record<string, CompetitorInfo> = {
     key: "crunchbase",
     name: "Crunchbase",
     url: "https://www.crunchbase.com",
-    tagline: "The default startup database — comprehensive but lagging.",
+    tagline: "The default startup database, comprehensive but lagging.",
     signalType: "Funding announcements, team updates, news",
     leadTime: "0 weeks (post-announcement)",
     pricing: "$49/mo Pro; Enterprise tiered",
@@ -113,8 +113,8 @@ export const competitors: Record<string, CompetitorInfo> = {
       "Standard tool most VCs already use and trust",
     ],
     weaknesses: [
-      "Lagging indicator — alerts fire after the round is announced",
-      "Survivorship bias — you only see rounds that closed",
+      "Lagging indicator, alerts fire after the round is announced",
+      "Survivorship bias, you only see rounds that closed",
       "Limited signal quality for pre-seed and seed discovery",
     ],
     overview: "Crunchbase is the default startup database: a comprehensive, globally scoped record of funding announcements, team updates, and company news that most investors already use and trust. Its core value is reliability and context. When a round is announced, Crunchbase records it faithfully, which makes it the best-in-class reference for retrospective research, deal diligence, and building a mental map of who has raised what across every sector. It is priced accessibly at the entry level, with a Pro tier around forty-nine dollars a month and enterprise tiers above that, alongside a limited free tier of alerts and views. Its ubiquity is itself a strength, since the standard tool is the one your colleagues, founders, and counterparties already recognise. The limitation is fundamental rather than cosmetic: it is a lagging indicator. Alerts fire only after a round is announced, so Crunchbase cannot help you discover a company before the market knows about it. It also carries survivorship bias, because you only ever see the rounds that actually closed, and its signal quality for pre-seed and seed discovery is thin. For most investors it is a necessary piece of infrastructure, a verification and research layer rather than a sourcing engine, and it is best paired with a leading-signal product that surfaces companies earlier in their life.",
@@ -136,8 +136,8 @@ export const competitors: Record<string, CompetitorInfo> = {
       "Industry-standard benchmarks and rankings",
     ],
     weaknesses: [
-      "Enterprise-only pricing — impossible for solo investors or angels",
-      "Lagging by design — curated post-event data, not leading signals",
+      "Enterprise-only pricing, impossible for solo investors or angels",
+      "Lagging by design, curated post-event data, not leading signals",
       "Interface and workflow built for analysts, not operators",
     ],
     overview: "PitchBook is the institutional gold standard for private-markets data, serving LPs, GPs, investment banks, and analysts with deep coverage of fund performance, secondaries, M&A, and the wider private capital landscape. Its data model is curated and post-event, assembled by a large analyst organisation into benchmarks, rankings, and reference datasets that the industry treats as authoritative. The platform is best understood as an analytical and benchmarking layer rather than a sourcing tool: it tells you what has happened across funds and companies, with the depth and reliability that institutions require for underwriting, LP reporting, and thesis work. Its limitations follow directly from that design. It is enterprise-priced at about twenty thousand dollars a year and up, which puts it out of reach for solo investors and angels, and it offers no free tier. It lags by design, recording events after they occur rather than predicting them. Its interface and workflow are built for analysts, not operators, so it sits naturally at the research end of the stack rather than the discovery end. Its buyers are institutions with analysts on staff, and it is the reference layer against which other private-markets data is judged. It is a reference system, not an early-signal engine, and it is almost always deployed alongside sourcing tools rather than as a substitute for them.",
@@ -172,17 +172,17 @@ export const competitors: Record<string, CompetitorInfo> = {
     url: "https://www.openvc.app",
     tagline: "Free founder-side investor directory for outbound fundraising.",
     signalType: "Curated investor directory (founder-facing)",
-    leadTime: "N/A — directory, not a signal",
+    leadTime: "N/A, directory, not a signal",
     pricing: "Free core, tiered outbound CRM",
     coverage: "Thousands of VCs, angels, and funds globally",
-    freeTier: "Yes — most founder workflows free",
+    freeTier: "Yes, most founder workflows free",
     strengths: [
       "Most accessible free investor directory in the category",
       "Strong founder-side workflow tooling (intros, pitch templates)",
       "Indexed by stage, sector, and geography for targeted outreach",
     ],
     weaknesses: [
-      "Founder-side product — not a deal-sourcing tool for investors",
+      "Founder-side product, not a deal-sourcing tool for investors",
       "Static directory, not a leading or live signal",
       "Outbound CRM features are paid above the free core",
     ],
@@ -205,7 +205,7 @@ export const competitors: Record<string, CompetitorInfo> = {
       "Strong reporting for partner meetings and LP updates",
     ],
     weaknesses: [
-      "Optimises existing network — does not source net-new deals",
+      "Optimises existing network, does not source net-new deals",
       "Insights are only as good as your inbound flow",
       "Limited value for solo angels and emerging managers without an existing network",
     ],
@@ -251,7 +251,7 @@ export const competitors: Record<string, CompetitorInfo> = {
       "Data-driven approach with peer-reviewed methodology",
     ],
     weaknesses: [
-      "Useless for pre-seed or seed sourcing — different stage",
+      "Useless for pre-seed or seed sourcing, different stage",
       "Not a deal-sourcing tool; index-fund product instead",
       "No individual-investor SaaS access",
     ],
@@ -262,19 +262,19 @@ export const competitors: Record<string, CompetitorInfo> = {
     key: "fund-momentum",
     name: "Fund Momentum",
     url: "https://github.com/schneidavie/fundmomentum",
-    tagline: "MCP server for investor-side VC fund signals — match startups to active funds.",
+    tagline: "MCP server for investor-side VC fund signals, match startups to active funds.",
     signalType: "Fund/investor-side signals (GP activity, deployment status, thesis)",
     leadTime: "Current fund data (no fundraise-prediction lead time)",
     pricing: "Free API manifest; Starter $49/mo, Pro $299/mo, Agent $0.01/call, Enterprise custom",
     coverage: "960+ active VC funds (raised since Sept 2024)",
     freeTier: "API manifest only",
     strengths: [
-      "Deep investor-side data — 960+ active funds, GP signals, partner theses",
+      "Deep investor-side data, 960+ active funds, GP signals, partner theses",
       "Native MCP server, queryable directly from Claude or Cursor",
       "Usage-based Agent tier ($0.01/call) fits automated agent workflows",
     ],
     weaknesses: [
-      "Fund-side only — surfaces which funds are active, not which companies are about to raise",
+      "Fund-side only, surfaces which funds are active, not which companies are about to raise",
       "No fundraise-prediction lead time; it reflects current fund data",
       "Proprietary API (not open-source); no company-level engineering signal",
     ],
@@ -318,7 +318,7 @@ export const competitorVsPairs: CompetitorVs[] = [
     a: "fund-momentum",
     b: "harmonic-ai",
     verdict:
-      "Both are AI-accessible sourcing tools that read opposite sides of the market: Fund Momentum profiles the 960+ active VC funds (who is deploying, into what thesis), while Harmonic.ai pattern-matches founding teams at incorporation. Neither measures what a company is actually building right now — for engineering-acceleration lead time before a round, pair either with a code-side signal like VC Deal Flow Signal.",
+      "Both are AI-accessible sourcing tools that read opposite sides of the market: Fund Momentum profiles the 960+ active VC funds (who is deploying, into what thesis), while Harmonic.ai pattern-matches founding teams at incorporation. Neither measures what a company is actually building right now, for engineering-acceleration lead time before a round, pair either with a code-side signal like VC Deal Flow Signal.",
     intro: "Fund Momentum and Harmonic.ai are both AI-accessible sourcing tools, but they read opposite sides of the venture market. Fund Momentum profiles the 960-plus active VC funds, mapping which GPs are deploying capital and into what thesis. Harmonic.ai pattern-matches founding teams at the moment of incorporation, across all sectors. This page compares their signal type, lead time, pricing, and coverage, and explains where each tool is genuinely useful in a sourcing workflow.",
     decision: "Pick Fund Momentum when you are an investor or agent workflow that needs to know which funds are actively deploying capital right now, for example to route a startup to warm introductions or to identify who is hunting in your sector. Its MCP-native interface and the $0.01-per-call Agent tier suit automated agent pipelines. Pick Harmonic.ai when you are an institutional VC with an annual enterprise budget and a dedicated sourcing team that wants to catch companies at incorporation, before they surface anywhere else. Consider using both when you want the two halves of a sourcing loop: Harmonic.ai surfaces early companies, and Fund Momentum tells you which funds are likely to back them. Note that neither tool measures what a company is actually building, so neither gives you engineering-acceleration lead time ahead of a round.",
   },
@@ -327,7 +327,7 @@ export const competitorVsPairs: CompetitorVs[] = [
     a: "fund-momentum",
     b: "forager-ai",
     verdict:
-      "Fund Momentum indexes the investor side (fund activity, GP theses); Forager.ai indexes the company side via web, social, and hiring NLP signals. Fund Momentum answers 'which funds are active for this thesis'; Forager answers 'which companies are showing growth chatter'. Both are current-state reads — for a leading engineering signal ahead of the round, add VC Deal Flow Signal.",
+      "Fund Momentum indexes the investor side (fund activity, GP theses); Forager.ai indexes the company side via web, social, and hiring NLP signals. Fund Momentum answers 'which funds are active for this thesis'; Forager answers 'which companies are showing growth chatter'. Both are current-state reads, for a leading engineering signal ahead of the round, add VC Deal Flow Signal.",
     intro: "Fund Momentum and Forager.ai index opposite sides of the deal-flow equation. Fund Momentum tracks the investor side, surfacing GP activity, deployment status, and thesis across more than 960 active funds. Forager.ai tracks the company side, reading web, social, and hiring signals through NLP. This page compares their signal type, lead time, pricing, and coverage so you can decide which side of the market you need to watch first.",
     decision: "Pick Fund Momentum when your question is about investors, specifically which funds are active for a given thesis and where capital is moving now. Its free API manifest and MCP interface make it easy to query from an agent or spreadsheet, and the Starter tier begins at $49 per month. Pick Forager.ai when your question is about companies, specifically which startups are showing growth chatter two to six weeks before a fundraise, across any sector with a public web footprint. Consider using both when you want a complete picture: Forager.ai surfaces candidate companies on the way up, and Fund Momentum identifies which funds might back them. Remember that both are current-state reads, so neither predicts the actual fundraise, and neither provides engineering-level lead time.",
   },
@@ -336,7 +336,7 @@ export const competitorVsPairs: CompetitorVs[] = [
     a: "fund-momentum",
     b: "crunchbase",
     verdict:
-      "Crunchbase is a broad post-announcement company database; Fund Momentum is a narrow, MCP-native index of active VC funds and their deployment signals. Crunchbase tells you what already happened; Fund Momentum tells you which investors are moving now. Neither predicts a company's fundraise — that gap is exactly what engineering-momentum signals fill.",
+      "Crunchbase is a broad post-announcement company database; Fund Momentum is a narrow, MCP-native index of active VC funds and their deployment signals. Crunchbase tells you what already happened; Fund Momentum tells you which investors are moving now. Neither predicts a company's fundraise, that gap is exactly what engineering-momentum signals fill.",
     intro: "Fund Momentum and Crunchbase are both data tools, but they describe different things. Crunchbase is a broad company database that records funding rounds, team changes, and news after they are announced. Fund Momentum is a narrow, MCP-native index of active VC funds and their deployment signals. This page compares their signal type, lead time, pricing, and coverage to clarify which tool answers which question in a sourcing workflow.",
     decision: "Pick Fund Momentum when you want to know which investors are moving now, for example which funds have raised since September 2024 and are deploying into your sector, or which GP theses are active. Its $49 Starter tier and the $0.01-per-call Agent tier suit solo investors and automated agents. Pick Crunchbase when you want a broad, reliable record of companies and their funding history, with $49 per month Pro pricing and a familiar interface that most VCs already use. Consider using both when you need the investor side and the company side of the same market: Crunchbase for who raised and when, Fund Momentum for who is actively deploying now. Neither tool predicts a company's future fundraise, so neither offers leading engineering-momentum lead time.",
   },
@@ -345,7 +345,7 @@ export const competitorVsPairs: CompetitorVs[] = [
     a: "harmonic-ai",
     b: "dealroom",
     verdict:
-      "Harmonic.ai catches startups at incorporation with AI-powered team pattern matching; Dealroom catches them after the round is announced with the industry's deepest European database. They solve different problems — sourcing vs research. Institutional VCs with enterprise budgets often run both: Harmonic for proactive discovery, Dealroom for retrospective context. Individual angels typically can't afford either and should look at a leading-signal tool like VC Deal Flow Signal instead.",
+      "Harmonic.ai catches startups at incorporation with AI-powered team pattern matching; Dealroom catches them after the round is announced with the industry's deepest European database. They solve different problems, sourcing vs research. Institutional VCs with enterprise budgets often run both: Harmonic for proactive discovery, Dealroom for retrospective context. Individual angels typically can't afford either and should look at a leading-signal tool like VC Deal Flow Signal instead.",
     intro: "Harmonic.ai and Dealroom represent two different moments in a startup's life. Harmonic.ai catches companies at incorporation, using AI-powered team and network pattern matching across all sectors. Dealroom catches them after the round is announced, through the industry's deepest European database. This page compares their signal type, lead time, pricing, and coverage, and explains which one fits a sourcing versus a research workflow.",
     decision: "Pick Harmonic.ai when you are an institutional VC with an annual enterprise budget and a sourcing team that wants proactive discovery, flagging promising founding teams at incorporation before they raise. Pick Dealroom when you need retrospective research, portfolio mapping, and funding history, with the strongest European coverage in the industry and hundreds of subsector classifications for granular filtering. Consider using both when you can afford it: Harmonic.ai for proactive early discovery, Dealroom for the retrospective context that a sourcing memo needs. Individual angels and emerging managers typically cannot afford either, given Harmonic's enterprise-only pricing and Dealroom's hundred-plus euro monthly tiers, so they are usually better served by a leading-signal tool with accessible pricing.",
   },
@@ -390,7 +390,7 @@ export const competitorVsPairs: CompetitorVs[] = [
     a: "dealroom",
     b: "forager-ai",
     verdict:
-      "Dealroom is a curated European database — comprehensive, lagging, deep. Forager.ai is an NLP-driven web signal engine — broader, leading by 2-6 weeks, cross-sector. Pick Dealroom for European research, portfolio mapping, and retrospective analysis. Pick Forager for proactive sourcing across all sectors at individual-investor pricing. Many VCs use both: Dealroom as the reference layer, Forager as the early-signal layer.",
+      "Dealroom is a curated European database, comprehensive, lagging, deep. Forager.ai is an NLP-driven web signal engine, broader, leading by 2-6 weeks, cross-sector. Pick Dealroom for European research, portfolio mapping, and retrospective analysis. Pick Forager for proactive sourcing across all sectors at individual-investor pricing. Many VCs use both: Dealroom as the reference layer, Forager as the early-signal layer.",
     intro: "Dealroom and Forager.ai answer different versions of the same question: which startups should I look at? Dealroom answers it retrospectively, with a curated European database of announced rounds. Forager.ai answers it prospectively, with NLP-driven web, social, and hiring signals that lead a fundraise by two to six weeks. This page compares their signal type, lead time, pricing, and coverage, side by side.",
     decision: "Pick Dealroom when you need European research, portfolio mapping, and retrospective funding analysis, and you can justify its tiered Pro to Enterprise pricing. Its depth of European coverage and hundreds of subsector classifications make it the reference layer for European-focused funds and analysts. Pick Forager.ai when you want proactive, cross-sector sourcing at individual-investor pricing, reading web and social signals two to six weeks before a fundraise. Consider using both when you want a layered stack: Dealroom as the reference and research layer, Forager.ai as the early-signal layer that surfaces companies before they appear in any database. This combination is common among European funds that want both deep context and early lead time. Neither tool offers engineering-acceleration signals for technical sectors, which is a gap to fill separately.",
   },
@@ -480,7 +480,7 @@ export const competitorVsPairs: CompetitorVs[] = [
     a: "openvc",
     b: "harmonic-ai",
     verdict:
-      "OpenVC and Harmonic.ai sit on opposite sides of the fundraising market. OpenVC is a free founder-side investor directory used to find VCs to pitch; Harmonic.ai is an enterprise investor-side AI platform used to find startups to back. Almost no overlap in users — founders pick OpenVC, institutional VCs pick Harmonic. They're not competing products despite both being in the VC tools category.",
+      "OpenVC and Harmonic.ai sit on opposite sides of the fundraising market. OpenVC is a free founder-side investor directory used to find VCs to pitch; Harmonic.ai is an enterprise investor-side AI platform used to find startups to back. Almost no overlap in users, founders pick OpenVC, institutional VCs pick Harmonic. They're not competing products despite both being in the VC tools category.",
     intro: "OpenVC and Harmonic.ai sit on opposite sides of the fundraising market, despite both being grouped under VC tools. OpenVC is a free founder-side directory that helps founders find investors to pitch. Harmonic.ai is an enterprise investor-side platform that helps investors find startups to back. This page compares their signal type, lead time, pricing, and coverage, and explains why they rarely compete for the same user.",
     decision: "Pick OpenVC when you are a founder raising a round and you want a free way to map the investor universe, indexed by stage, sector, and geography, with founder-side workflow tooling for intros and pitch templates. Pick Harmonic.ai when you are an institutional VC with an enterprise budget and a sourcing team that wants AI-powered team pattern matching to surface companies at incorporation. Consider using both only if you wear both hats, for example a founder who also angel-invests, since the two products share almost no overlap in users or workflows. They are not competing products: OpenVC is a static directory with no live signal, while Harmonic is a leading-signal platform, and they price at opposite ends of the spectrum. Neither is a company-side engineering signal, so investors wanting technical lead time should look elsewhere regardless.",
   },
@@ -498,7 +498,7 @@ export const competitorVsPairs: CompetitorVs[] = [
     a: "openvc",
     b: "crunchbase",
     verdict:
-      "OpenVC is a free founder-side directory of investors; Crunchbase is the default investor-side startup database. They mirror opposite sides of the same market and almost never compete for the same user. Founders raising use OpenVC; investors and analysts use Crunchbase. Most fundraising-active companies and active investors end up using both — OpenVC for outbound mapping, Crunchbase for funding and team verification.",
+      "OpenVC is a free founder-side directory of investors; Crunchbase is the default investor-side startup database. They mirror opposite sides of the same market and almost never compete for the same user. Founders raising use OpenVC; investors and analysts use Crunchbase. Most fundraising-active companies and active investors end up using both, OpenVC for outbound mapping, Crunchbase for funding and team verification.",
     intro: "OpenVC and Crunchbase are two of the most commonly confused tools in the startup ecosystem, largely because both are widely used during fundraising. In practice they face in opposite directions. OpenVC is a free, founder-side directory that helps startups find investors to pitch. Crunchbase is the default investor-side database for researching companies, funding rounds, and teams. This page breaks down the difference, who each tool is for, and how the two are typically used together rather than instead of one another.",
     decision: "Pick OpenVC when you are a founder running outbound fundraising and need to identify and contact investors. The free tier covers most of that workflow, and the directory is indexed by stage, sector, and geography. Pick Crunchbase when you need to verify a company, research its funding history, or monitor the market as an investor, analyst, or scout. Its Pro tier costs forty nine dollars a month and is the industry default for confirmed funding events. Consider using both when you are active in a raise on either side of the table: founders often use OpenVC to build an outbound target list while simultaneously using Crunchbase to verify the investors and competitors they are mapping. The two tools mirror opposite sides of the same market, so they rarely compete for the same job.",
   },
@@ -507,7 +507,7 @@ export const competitorVsPairs: CompetitorVs[] = [
     a: "openvc",
     b: "pitchbook",
     verdict:
-      "OpenVC is free and founder-facing; PitchBook is enterprise-priced and institution-facing. They serve completely different users at completely different price points and use cases. OpenVC helps a founder identify VCs to pitch; PitchBook gives an LP or banker a comprehensive private-markets reference dataset. Not alternatives — different products in different categories.",
+      "OpenVC is free and founder-facing; PitchBook is enterprise-priced and institution-facing. They serve completely different users at completely different price points and use cases. OpenVC helps a founder identify VCs to pitch; PitchBook gives an LP or banker a comprehensive private-markets reference dataset. Not alternatives, different products in different categories.",
     intro: "On the surface OpenVC and PitchBook both belong to the private-markets software category, but they could hardly sit further apart. OpenVC is a free, founder-facing directory that helps startups find and pitch investors. PitchBook is an enterprise-priced, institution-facing data platform used by LPs, GPs, and bankers for fund performance, M&A, and valuation reference. This comparison clarifies who each product is built for and why the two almost never appear in the same buying decision.",
     decision: "Pick OpenVC when you are a founder raising capital and need to map and contact investors without paying for access. Most of its founder workflow is free, with paid outbound CRM features layered on top. Pick PitchBook when you work at an institutional firm and need the industry-standard reference dataset for private markets, including fund performance, secondaries, and LP and GP data. That depth comes at an enterprise price of around twenty thousand dollars a year and no free tier. Consider using both only in the sense that a large firm may have an analyst on PitchBook while a portfolio company founder independently uses OpenVC for outbound. They are not substitutes: one serves founders cheaply, the other serves institutions at institutional prices.",
   },
@@ -534,7 +534,7 @@ export const competitorVsPairs: CompetitorVs[] = [
     a: "affinity",
     b: "harmonic-ai",
     verdict:
-      "Affinity optimises sourcing through your firm's existing network; Harmonic.ai sources externally with AI-powered team pattern matching. They are complements, not substitutes. Most institutional VCs run both — Affinity for pipeline and warm-intro mapping, Harmonic for net-new discovery. Solo angels and emerging managers usually cannot justify either without a strong existing network or institutional budget.",
+      "Affinity optimises sourcing through your firm's existing network; Harmonic.ai sources externally with AI-powered team pattern matching. They are complements, not substitutes. Most institutional VCs run both, Affinity for pipeline and warm-intro mapping, Harmonic for net-new discovery. Solo angels and emerging managers usually cannot justify either without a strong existing network or institutional budget.",
     intro: "Affinity and Harmonic.ai are both staples of the institutional venture capital stack, but they do fundamentally different jobs. Affinity is a relationship-intelligence CRM that builds a graph from your firm's inbox and calendar, helping you work the network you already have. Harmonic.ai is an external sourcing platform that pattern-matches founding teams and networks at incorporation to surface companies you have never heard of. This page examines how the two products differ and where they fit together.",
     decision: "Pick Affinity when your firm already has a meaningful inbound deal flow and the bottleneck is organising it: tracking pipeline, mapping warm introductions, and reporting to partners and LPs. It is priced per seat and only pays off when your existing network is strong. Pick Harmonic.ai when you want net-new, proactive discovery across all sectors, including non-technical founders, and have an enterprise budget with a dedicated sourcing team. Its signals are leading, at incorporation, but the model is not directly observable, so you are trusting its team and network patterns. Consider using both together if you are an institutional VC: Harmonic expands the top of the funnel while Affinity manages and converts it. Solo angels and emerging managers often find neither justifiable without a strong network or a large budget.",
   },
@@ -543,7 +543,7 @@ export const competitorVsPairs: CompetitorVs[] = [
     a: "affinity",
     b: "pitchbook",
     verdict:
-      "Affinity is a CRM for VC pipeline and relationship management; PitchBook is a research database for fund-performance and M&A reference. Different layers of the stack and they compose cleanly. Almost every institutional firm runs both: PitchBook as the data reference, Affinity as the operational CRM. Neither helps with proactive sourcing of unknown startups — pair with a leading-signal tool if that matters.",
+      "Affinity is a CRM for VC pipeline and relationship management; PitchBook is a research database for fund-performance and M&A reference. Different layers of the stack and they compose cleanly. Almost every institutional firm runs both: PitchBook as the data reference, Affinity as the operational CRM. Neither helps with proactive sourcing of unknown startups, pair with a leading-signal tool if that matters.",
     intro: "Affinity and PitchBook both live inside institutional firms, and because both are enterprise products they are sometimes weighed against each other. They belong to different layers of the stack. Affinity is a relationship-intelligence CRM that organises pipeline and warm introductions from your firm's communication graph. PitchBook is a research database for fund performance, valuations, M&A, and LP and GP reference. This page clarifies the two roles and why most firms adopt both rather than choose between them.",
     decision: "Pick Affinity when the problem is operational: you need a system of record for pipeline, relationship mapping, and partner and LP reporting. It auto-builds a graph from inbox and calendar, but it only optimises the network you already have and does not source net-new companies. Pick PitchBook when you need the gold-standard reference dataset for private markets, from fund performance and secondaries to M&A and benchmarks, at an enterprise price of twenty thousand dollars a year and up. Consider using both, which is what almost every institutional firm does: PitchBook as the data reference, Affinity as the working CRM. Remember that neither surfaces unknown startups, so if proactive sourcing matters you will still want a leading-signal tool layered on top.",
   },
@@ -552,7 +552,7 @@ export const competitorVsPairs: CompetitorVs[] = [
     a: "affinity",
     b: "crunchbase",
     verdict:
-      "Affinity is a relationship CRM for VC pipeline; Crunchbase is a public startup database. Almost every institutional firm uses both — Crunchbase for verification and basic research, Affinity for pipeline tracking and warm intros. Solo investors with a smaller network typically pick Crunchbase Pro and a leading-signal tool over an Affinity seat.",
+      "Affinity is a relationship CRM for VC pipeline; Crunchbase is a public startup database. Almost every institutional firm uses both, Crunchbase for verification and basic research, Affinity for pipeline tracking and warm intros. Solo investors with a smaller network typically pick Crunchbase Pro and a leading-signal tool over an Affinity seat.",
     intro: "Affinity and Crunchbase appear in the same firm's tool belt so often that people naturally ask which one they need. They answer different questions. Affinity is a relationship-intelligence CRM that turns your firm's inbox and calendar into a pipeline and warm-introduction map. Crunchbase is a public startup database for verifying companies, funding rounds, and teams. This page compares the two and explains how most firms use them side by side rather than in competition.",
     decision: "Pick Affinity when your firm runs a steady inbound flow and needs to track and convert it: pipeline management, relationship mapping, and partner reporting. It is enterprise-priced per seat and is most valuable once you already have a network to organise. Pick Crunchbase when you need quick, reliable verification and basic research on companies and rounds, at forty nine dollars a month for Pro, a price point that works for individual investors and scouts. Consider using both if you are an institutional firm, since Crunchbase is the natural lookup layer while Affinity manages relationships. Solo investors and emerging managers usually get more from Crunchbase Pro plus a leading-signal tool than from paying for an Affinity seat, because Affinity cannot source deals you do not already have in flow.",
   },
@@ -570,7 +570,7 @@ export const competitorVsPairs: CompetitorVs[] = [
     a: "specter",
     b: "forager-ai",
     verdict:
-      "Both are mid-market growth-signal platforms. Specter leans heavier on web traffic and product launch data; Forager.ai leans heavier on NLP across web, social, and hiring data. Coverage is comparable. Choice usually comes down to interface fit and pricing — both are reasonable picks for emerging managers wanting cross-sector early signals at individual-investor pricing.",
+      "Both are mid-market growth-signal platforms. Specter leans heavier on web traffic and product launch data; Forager.ai leans heavier on NLP across web, social, and hiring data. Coverage is comparable. Choice usually comes down to interface fit and pricing, both are reasonable picks for emerging managers wanting cross-sector early signals at individual-investor pricing.",
     intro: "Specter and Forager.ai are the two most direct competitors in this guide, both sitting in the mid-market tier of growth-signal platforms. Specter leans on web traffic and product launch data. Forager.ai leans on natural language processing across web, social, and hiring signals. Because their coverage is broadly comparable, the decision between them often comes down to practical factors rather than a single decisive feature. This page walks through the differences that do exist.",
     decision: "Pick Specter when you want growth evidence weighted toward web traffic and product activity, particularly for consumer and SaaS plays, at pricing aimed at emerging fund managers. Pick Forager.ai when you prefer NLP-driven coverage of web, social, and hiring signals and value a lower false-positive rate from publicly validated activity, across consumer and services as well as technical companies. Both give roughly two to six weeks of lead time before a fundraise and both are accessible to individual investors, though neither is free beyond limited tiers. Consider using both only if you have budget to spare, since their coverage overlaps heavily. In practice the decision usually comes down to interface fit and exact pricing for your team size, so it is worth trialling each against your own watchlist before committing.",
   },
@@ -597,7 +597,7 @@ export const competitorVsPairs: CompetitorVs[] = [
     a: "signalrank",
     b: "harmonic-ai",
     verdict:
-      "SignalRank predicts Series-B graduation odds for already-Series-A companies; Harmonic.ai sources companies at incorporation. They sit at opposite ends of the funnel. Most institutional firms running both do so for distinct reasons — SignalRank for thesis validation on late-stage opportunities, Harmonic for proactive early-stage discovery.",
+      "SignalRank predicts Series-B graduation odds for already-Series-A companies; Harmonic.ai sources companies at incorporation. They sit at opposite ends of the funnel. Most institutional firms running both do so for distinct reasons, SignalRank for thesis validation on late-stage opportunities, Harmonic for proactive early-stage discovery.",
     intro: "SignalRank and Harmonic.ai both apply machine learning to venture capital, but they operate at opposite ends of the funding funnel. SignalRank predicts whether an already-funded Series A company will graduate to Series B. Harmonic.ai sources brand new companies at the moment of incorporation by pattern-matching founding teams and networks. This page explains how the two models differ, what each is useful for, and why they do not overlap.",
     decision: "Pick SignalRank when you are evaluating late-stage opportunities and want a data-driven view of Series B graduation odds, or when you are seeking passive index exposure. Its methodology is published and peer-reviewed, but it starts only after a Series A, so it cannot help you find early companies. Pick Harmonic.ai when you want proactive, early-stage discovery across all sectors, including non-technical founders, and have an enterprise budget and a sourcing team. Its signals fire at incorporation, before most other tools even see the company. Consider using both if you are an institutional firm that plays the full funnel: Harmonic for early discovery, SignalRank for validating the late-stage portion of the thesis. For everyone else, the stage you invest at will determine which one, if either, is relevant.",
   },
@@ -606,7 +606,7 @@ export const competitorVsPairs: CompetitorVs[] = [
     a: "harmonic-ai",
     b: "affinity",
     verdict:
-      "Harmonic.ai is a sourcing tool — it brings new companies to your attention; Affinity is a relationship-intelligence CRM — it organises and optimises the network you already have. They are complements, not alternatives. Institutional VCs typically run both: Harmonic to expand the funnel, Affinity to manage and convert it.",
+      "Harmonic.ai is a sourcing tool, it brings new companies to your attention; Affinity is a relationship-intelligence CRM, it organises and optimises the network you already have. They are complements, not alternatives. Institutional VCs typically run both: Harmonic to expand the funnel, Affinity to manage and convert it.",
     intro: "Harmonic.ai and Affinity are two of the most commonly paired tools in an institutional venture firm, which is exactly why people ask whether one can replace the other. They cannot. Harmonic.ai is a sourcing engine that surfaces new companies through team and network pattern matching. Affinity is a relationship-intelligence CRM that organises the network and pipeline you already have. This page explains the division of labour between the two.",
     decision: "Pick Harmonic.ai when your goal is net-new deal flow: finding companies you would not otherwise know about, at incorporation, across all sectors including non-technical founders. It is enterprise-priced and best suited to firms with dedicated sourcing teams. Pick Affinity when your goal is conversion: tracking pipeline, mapping warm introductions, and reporting to partners and LPs from the inbox and calendar data you already hold. Affinity optimises what you have rather than finding what you do not. Consider using both, which is the standard institutional setup: Harmonic expands the top of the funnel while Affinity manages and converts it. The two are complements, not alternatives, and neither makes sense as a replacement for the other.",
   },
@@ -672,7 +672,7 @@ export function getCanonicalVsSlug(slug: string): string {
   return VS_CANONICAL_OVERRIDE[slug] ?? slug;
 }
 
-// Comparison slugs minus the reverse aliases — the set to advertise in the
+// Comparison slugs minus the reverse aliases, the set to advertise in the
 // sitemap and internal "other comparisons" links (one URL per head-to-head).
 export function getCanonicalCompetitorVsSlugs(): string[] {
   return competitorVsPairs

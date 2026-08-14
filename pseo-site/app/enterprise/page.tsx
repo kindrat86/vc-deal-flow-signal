@@ -9,9 +9,9 @@ import { getHreflangLanguages } from "@/lib/hreflang";
 
 export const metadata: Metadata = {
   title:
-    "Enterprise — VC Deal Flow Signal for Funds (Sharp Tier €4,970/yr · Application-Gated)",
+    "Enterprise, VC Deal Flow Signal for Funds (Sharp Tier €4,970/yr · Application-Gated)",
   description:
-    "Enterprise plan for active VC funds and syndicates. Sharp Tier at €497/mo or €4,970/yr — application-gated, capped at 8 funds in 2026. Quarterly portfolio review, white-labeled API endpoint, methodology source code access, dedicated support.",
+    "Enterprise plan for active VC funds and syndicates. Sharp Tier at €497/mo or €4,970/yr, application-gated, capped at 8 funds in 2026. Quarterly portfolio review, white-labeled API endpoint, methodology source code access, dedicated support.",
   alternates: {
     canonical: "/enterprise",
   },
@@ -34,7 +34,7 @@ const sharpFeatures: EnterpriseFeature[] = [
   {
     title: "Custom thesis-aligned watchlist",
     detail:
-      "We co-build a watchlist around your fund's specific investment thesis — sector mix, stage band, geography, technical-stack preferences, anti-thesis filters. The watchlist runs against the same dataset that drives /pricing tier signals but is filtered to your investment scope. Refreshed weekly.",
+      "We co-build a watchlist around your fund's specific investment thesis, sector mix, stage band, geography, technical-stack preferences, anti-thesis filters. The watchlist runs against the same dataset that drives /pricing tier signals but is filtered to your investment scope. Refreshed weekly.",
   },
   {
     title: "White-labeled API endpoint",
@@ -59,7 +59,7 @@ const sharpFeatures: EnterpriseFeature[] = [
   {
     title: "All future paid MCP tools included",
     detail:
-      "We may add new paid MCP tools (advanced sector forecasts, founder-cluster analysis, fundraise-prediction confidence scoring) as the product matures. Sharp Tier subscribers get all future paid tools at no per-tool upcharge — the tier price covers the entire roadmap.",
+      "We may add new paid MCP tools (advanced sector forecasts, founder-cluster analysis, fundraise-prediction confidence scoring) as the product matures. Sharp Tier subscribers get all future paid tools at no per-tool upcharge, the tier price covers the entire roadmap.",
   },
 ];
 
@@ -82,7 +82,7 @@ const customScopeFeatures: EnterpriseFeature[] = [
   {
     title: "Custom sector coverage expansion",
     detail:
-      "Coverage today spans 15 sectors and 109+ venture-backed startup orgs. If your fund's thesis covers a sector or geography we don't currently track, we expand the panel to include it — typically a 2-week turnaround for sector expansion, longer for geography-specific coverage.",
+      "Coverage today spans 15 sectors and 109+ venture-backed startup orgs. If your fund's thesis covers a sector or geography we don't currently track, we expand the panel to include it, typically a 2-week turnaround for sector expansion, longer for geography-specific coverage.",
   },
   {
     title: "Multi-seat Sharp Tier",
@@ -94,27 +94,27 @@ const customScopeFeatures: EnterpriseFeature[] = [
 const enterpriseFaqs: { q: string; a: string }[] = [
   {
     q: "What does enterprise pricing for VC Deal Flow Signal look like?",
-    a: "Enterprise pricing for VC Deal Flow Signal centers on the Sharp Tier at €497 per month or €4,970 per year (saves two months on annual). Sharp Tier is application-gated, capped at 8 funds in 2026, and includes everything in Insider Circle plus quarterly portfolio review calls, custom thesis-aligned watchlists, a white-labeled API endpoint at /api/v1/sharp/<your-fund>, direct methodology source code access via private repo invite, same-day signal questions, data-room exports for LP updates, and all future paid MCP tools at no per-tool upcharge. Funds with deeper custom requirements — white-label fund-branded UI, dedicated Slack channel, on-call fundraise diligence, custom sector coverage expansion, multi-seat agreements — are scoped per fund starting at €15,000 per year. The Sector Sweep at €1,997 one-time is the lower-commitment on-ramp; many funds commission a Sweep first and upgrade if the signal quality matches their thesis.",
+    a: "Enterprise pricing for VC Deal Flow Signal centers on the Sharp Tier at €497 per month or €4,970 per year (saves two months on annual). Sharp Tier is application-gated, capped at 8 funds in 2026, and includes everything in Insider Circle plus quarterly portfolio review calls, custom thesis-aligned watchlists, a white-labeled API endpoint at /api/v1/sharp/<your-fund>, direct methodology source code access via private repo invite, same-day signal questions, data-room exports for LP updates, and all future paid MCP tools at no per-tool upcharge. Funds with deeper custom requirements, white-label fund-branded UI, dedicated Slack channel, on-call fundraise diligence, custom sector coverage expansion, multi-seat agreements, are scoped per fund starting at €15,000 per year. The Sector Sweep at €1,997 one-time is the lower-commitment on-ramp; many funds commission a Sweep first and upgrade if the signal quality matches their thesis.",
   },
   {
     q: "Why is Sharp Tier capped at 8 funds in 2026?",
-    a: "Sharp Tier includes the parts of the work that don't scale — quarterly review calls, custom watchlist co-build, same-day signal questions. Capping at 8 funds in 2026 keeps the response window honest and the relationship-quality high. The cap is policy, not capacity — the underlying data infrastructure can support thousands of subscribers, but the human-touch components have a real ceiling. As the company grows operations, the cap will be reviewed annually.",
+    a: "Sharp Tier includes the parts of the work that don't scale, quarterly review calls, custom watchlist co-build, same-day signal questions. Capping at 8 funds in 2026 keeps the response window honest and the relationship-quality high. The cap is policy, not capacity, the underlying data infrastructure can support thousands of subscribers, but the human-touch components have a real ceiling. As the company grows operations, the cap will be reviewed annually.",
   },
   {
     q: "How does the application process work?",
-    a: "Send an email to signal at gitdealflow dot com with the subject line 'Sharp Tier Application — [Your Fund]' (the apply button on /pricing prefills this). Include fund or syndicate name, AUM or annual deals, thesis focus, how you heard about us, and one thing you'd want the quarterly review call to cover. We reply within 48 hours with a 20-minute intro call. If there's a fit, we onboard the same week — Stripe checkout, white-labeled endpoint provisioned, methodology repo invite sent.",
+    a: "Send an email to signal at gitdealflow dot com with the subject line 'Sharp Tier Application, [Your Fund]' (the apply button on /pricing prefills this). Include fund or syndicate name, AUM or annual deals, thesis focus, how you heard about us, and one thing you'd want the quarterly review call to cover. We reply within 48 hours with a 20-minute intro call. If there's a fit, we onboard the same week, Stripe checkout, white-labeled endpoint provisioned, methodology repo invite sent.",
   },
   {
     q: "What happens if I cancel Sharp Tier?",
-    a: "Sharp Tier follows the same month-to-month cancellation policy as Dashboard and Insider Circle — no minimum term, no cancellation fee, prorated against the current billing period. Cancel from your Stripe customer portal or by email. The white-labeled API endpoint stays live until the end of the current billing period, then returns 410 Gone. The methodology source code access (private repo invite) stays valid — once you've forked it, you keep the fork. The 30-day Signal-or-It's-Free guarantee applies to your first month: if the signal doesn't surface a startup you find genuinely interesting, full refund within 30 days.",
+    a: "Sharp Tier follows the same month-to-month cancellation policy as Dashboard and Insider Circle, no minimum term, no cancellation fee, prorated against the current billing period. Cancel from your Stripe customer portal or by email. The white-labeled API endpoint stays live until the end of the current billing period, then returns 410 Gone. The methodology source code access (private repo invite) stays valid, once you've forked it, you keep the fork. The 30-day Signal-or-It's-Free guarantee applies to your first month: if the signal doesn't surface a startup you find genuinely interesting, full refund within 30 days.",
   },
   {
     q: "Can my engineers contribute to the methodology?",
-    a: "Yes — methodology source code access is a private repo invite, so your engineers can fork, audit, and contribute back. We don't accept blind PRs (the methodology is opinionated and any change needs to round-trip through the published SSRN paper at abstract id 6606558), but we do take suggestions seriously and credit contributors in the changelog. Several Sharp Tier subscribers have suggested filtering refinements that ended up shipping in the public methodology.",
+    a: "Yes, methodology source code access is a private repo invite, so your engineers can fork, audit, and contribute back. We don't accept blind PRs (the methodology is opinionated and any change needs to round-trip through the published SSRN paper at abstract id 6606558), but we do take suggestions seriously and credit contributors in the changelog. Several Sharp Tier subscribers have suggested filtering refinements that ended up shipping in the public methodology.",
   },
   {
     q: "Does Sharp Tier include the Sector Sweep?",
-    a: "No — Sector Sweep is a separate one-time engagement at €1,997. Sharp Tier subscribers can commission a Sweep at the same price as anyone else; the two are designed to compose. The typical pattern is Sweep → Sharp Tier: a fund commissions a Sweep on a thesis-relevant sector, validates the signal quality on a deep written report, and upgrades to Sharp for ongoing dashboard + custom watchlist + quarterly review.",
+    a: "No, Sector Sweep is a separate one-time engagement at €1,997. Sharp Tier subscribers can commission a Sweep at the same price as anyone else; the two are designed to compose. The typical pattern is Sweep → Sharp Tier: a fund commissions a Sweep on a thesis-relevant sector, validates the signal quality on a deep written report, and upgrades to Sharp for ongoing dashboard + custom watchlist + quarterly review.",
   },
   {
     q: "Is there a multi-seat or team plan?",
@@ -136,7 +136,7 @@ export default function EnterprisePage() {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/enterprise#webpage",
         url: "https://signals.gitdealflow.com/enterprise",
-        name: "VC Deal Flow Signal — Enterprise Plan for Funds",
+        name: "VC Deal Flow Signal, Enterprise Plan for Funds",
         description:
           "Sharp Tier and custom enterprise scope for active VC funds and syndicates. Application-gated, capped at 8 funds in 2026.",
         inLanguage: "en-US",
@@ -210,13 +210,13 @@ export default function EnterprisePage() {
         </nav>
 
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
-          Enterprise — VC Deal Flow Signal for Funds
+          Enterprise, VC Deal Flow Signal for Funds
         </h1>
 
         <p className="text-gray-400 text-base leading-relaxed mb-6">
           Two paths for active funds: the application-gated{" "}
           <strong className="text-gray-200">Sharp Tier</strong> at &euro;497
-          per month (&euro;4,970 per year saves two months &mdash; capped at 8
+          per month (&euro;4,970 per year saves two months, capped at 8
           funds in 2026), or a fully-scoped{" "}
           <strong className="text-gray-200">custom enterprise engagement</strong>{" "}
           starting at &euro;15,000 per year for funds needing white-label UI,
@@ -228,7 +228,7 @@ export default function EnterprisePage() {
           tldr="Enterprise pricing for VC Deal Flow Signal (GitDealFlow) is structured as the Sharp Tier at €497/mo (€4,970/yr saves two months) plus a fully-scoped custom enterprise engagement starting at €15,000/yr. Sharp Tier is application-gated, capped at 8 funds in 2026, and includes everything in Insider Circle plus quarterly portfolio review calls, custom thesis-aligned watchlists, white-labeled API endpoint at /api/v1/sharp/<your-fund>, methodology source code access, same-day signal questions, data-room exports for LP updates, and all future paid MCP tools at no per-tool upcharge. Custom enterprise scope adds white-label fund-branded UI, dedicated Slack channel, on-call fundraise diligence, custom sector coverage expansion, and multi-seat agreements. Application: email signal at gitdealflow dot com with fund name, AUM, thesis, and intent. 48-hour reply window, 20-minute intro call, same-week onboarding if there's a fit. Cancellation is month-to-month with no minimum term."
           pageUrl="https://signals.gitdealflow.com/enterprise"
           asOf={asOf}
-          citeAs="VC Deal Flow Signal — Enterprise (signals.gitdealflow.com/enterprise), retrieved Q2 2026."
+          citeAs="VC Deal Flow Signal, Enterprise (signals.gitdealflow.com/enterprise), retrieved Q2 2026."
           facts={[
             {
               claim:
@@ -253,7 +253,7 @@ export default function EnterprisePage() {
               claim:
                 "Cancellation policy is month-to-month with no minimum term and no cancellation fee. White-labeled API endpoint sunsets at end of billing period; methodology repo fork stays valid.",
               sourceUrl: "https://signals.gitdealflow.com/pricing#sharp-tier",
-              sourceLabel: "Pricing FAQ — cancellation",
+              sourceLabel: "Pricing FAQ, cancellation",
             },
           ]}
         />
@@ -270,7 +270,7 @@ export default function EnterprisePage() {
           </div>
           <p className="text-gray-300 text-sm leading-relaxed mb-5">
             Everything in the Insider Circle (€197/mo tier) plus the parts of
-            the work that don&rsquo;t scale &mdash; quarterly portfolio
+            the work that don&rsquo;t scale, quarterly portfolio
             review calls, custom thesis-aligned watchlist co-built with your
             fund, white-labeled API endpoint at{" "}
             <code className="text-yellow-200 bg-yellow-500/10 px-1.5 py-0.5 rounded text-xs">
@@ -367,7 +367,7 @@ export default function EnterprisePage() {
               We reply within 48 hours with a 20-minute intro call invite.
             </li>
             <li>
-              If there&rsquo;s a fit, we onboard the same week &mdash;
+              If there&rsquo;s a fit, we onboard the same week -
               Stripe checkout, white-labeled endpoint provisioned, methodology
               repo invite sent.
             </li>
@@ -380,7 +380,7 @@ export default function EnterprisePage() {
             Need to compare against the lower tiers?
           </h2>
           <p className="text-gray-400 text-sm mb-4">
-            See all six pricing tiers side by side &mdash; Free Signal Digest,
+            See all six pricing tiers side by side, Free Signal Digest,
             &euro;7 First Look Pass, &euro;49/mo Dashboard Beta, &euro;197/mo
             Insider Circle, Sharp Tier, and &euro;1,997 Sector Sweep.
           </p>
