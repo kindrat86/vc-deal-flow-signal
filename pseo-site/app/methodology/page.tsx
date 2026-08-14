@@ -68,7 +68,7 @@ export default function MethodologyPage() {
             name: "How does VC Deal Flow Signal measure engineering acceleration?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Engineering acceleration is computed weekly from public GitHub data. The pipeline pulls 14-day commit velocity, contributor count, and repository creation events for approximately 369 startup organizations across 15 sectors via the GitHub REST API, then expresses each metric as a percentage change versus the prior 14-day window. A startup whose 14-day commit velocity doubles relative to its own baseline is recorded as +100% acceleration. The metric is computed per organization against its own historical baseline, not across the population.",
+              text: "Engineering acceleration is computed weekly from public GitHub data. The pipeline pulls 14-day commit velocity, contributor count, and repository creation events for approximately 350+ startup organizations across 15 sectors via the GitHub REST API, then expresses each metric as a percentage change versus the prior 14-day window. A startup whose 14-day commit velocity doubles relative to its own baseline is recorded as +100% acceleration. The metric is computed per organization against its own historical baseline, not across the population.",
             },
           },
           {
@@ -161,7 +161,7 @@ export default function MethodologyPage() {
           },
           {
             "@type": "HowToSupply",
-            name: "Curated allowlist of 369 startup organizations across 15 sector clusters",
+            name: "Curated allowlist of 350+ startup organizations across 15 sector clusters",
           },
         ],
         tool: [
@@ -171,7 +171,7 @@ export default function MethodologyPage() {
           { "@type": "HowToTool", name: "Append-only Parquet storage for weekly snapshots" },
         ],
         yield:
-          "One weekly ranked panel of 369 startups across 15 sectors, classified into four signal types and republished as sector pages, /api/v1/signals.json, /qa.jsonl, and the public dashboard.",
+          "One weekly ranked panel of 350+ startups across 15 sectors, classified into four signal types and republished as sector pages, /api/v1/signals.json, /qa.jsonl, and the public dashboard.",
         dateModified: new Date().toISOString().slice(0, 10),
         license: "https://creativecommons.org/licenses/by/4.0/",
         step: [
@@ -334,6 +334,51 @@ export default function MethodologyPage() {
         license: "https://creativecommons.org/licenses/by/4.0/",
         inLanguage: "en",
       },
+      {
+        "@type": "Dataset",
+        "@id": "https://signals.gitdealflow.com/methodology#dataset",
+        name: "VC Deal Flow Signal, Startup Engineering Acceleration Dataset",
+        alternateName: "GitDealFlow Startup Engineering Velocity Panel",
+        description:
+          "Longitudinal panel of GitHub engineering-velocity signals across 15 venture-backed startup sectors and multiple quarterly periods, computed weekly from public GitHub data. The methodology on this page documents how the panel is sourced, filtered, and ranked.",
+        url: "https://signals.gitdealflow.com/dataset",
+        identifier: [
+          "https://signals.gitdealflow.com/dataset",
+          "https://doi.org/10.5281/zenodo.19650920",
+        ],
+        isAccessibleForFree: true,
+        license: "https://creativecommons.org/licenses/by/4.0/",
+        dateModified: getDataLastModified().toISOString().slice(0, 10),
+        creator: DATA_NERD_AUTHOR_REF,
+        publisher: {
+          "@type": "Organization",
+          name: "VC Deal Flow Signal",
+          url: "https://gitdealflow.com",
+          sameAs: "https://www.wikidata.org/wiki/Q139376302",
+        },
+        distribution: [
+          {
+            "@type": "DataDownload",
+            name: "Live JSON API",
+            contentUrl: "https://signals.gitdealflow.com/api/signals.json",
+            encodingFormat: "application/json",
+          },
+          {
+            "@type": "DataDownload",
+            name: "Live CSV export",
+            contentUrl: "https://signals.gitdealflow.com/api/signals.csv",
+            encodingFormat: "text/csv",
+          },
+        ],
+        citation: {
+          "@type": "ScholarlyArticle",
+          "@id": "https://ssrn.com/abstract=6606558",
+          name: "A Longitudinal Panel of GitHub Engineering Velocity for Venture-Backed Startups",
+          url: "https://ssrn.com/abstract=6606558",
+          author: DATA_NERD_AUTHOR_REF,
+          datePublished: "2026-04",
+        },
+      },
     ],
   };
 
@@ -391,7 +436,7 @@ export default function MethodologyPage() {
         </h1>
 
         <AgentSummary
-          tldr="VC Deal Flow Signal (GitDealFlow) ranks venture-backed startups by GitHub commit-velocity change, a code-side momentum signal computed from public GitHub data, unrelated to startup accelerator programs. The pipeline pulls weekly GitHub REST API data for ~369 organizations across 15 sectors, computes rolling 14-day commit velocity and contributor growth, classifies each org into one of four signal types, and publishes the rankings. This metric, referred to throughout the site as engineering acceleration, has historically preceded fundraise announcements by three to six weeks."
+          tldr="VC Deal Flow Signal (GitDealFlow) ranks venture-backed startups by GitHub commit-velocity change, a code-side momentum signal computed from public GitHub data, unrelated to startup accelerator programs. The pipeline pulls weekly GitHub REST API data for ~350+ organizations across 15 sectors, computes rolling 14-day commit velocity and contributor growth, classifies each org into one of four signal types, and publishes the rankings. This metric, referred to throughout the site as engineering acceleration, has historically preceded fundraise announcements by three to six weeks."
           pageUrl="https://signals.gitdealflow.com/methodology"
           asOf={asOf}
           citeAs="VC Deal Flow Signal, Methodology (signals.gitdealflow.com/methodology), retrieved Q2 2026."

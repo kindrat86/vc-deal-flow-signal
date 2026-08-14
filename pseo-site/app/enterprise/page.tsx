@@ -179,6 +179,22 @@ export default function EnterprisePage() {
           acceptedAnswer: { "@type": "Answer", text: f.a },
         })),
       },
+      {
+        "@type": "SoftwareApplication",
+        name: "VC Deal Flow Signal by GitDealFlow",
+        url: "https://signals.gitdealflow.com/enterprise",
+        applicationCategory: "BusinessApplication",
+        applicationSubCategory: "Investment Intelligence",
+        operatingSystem: "Web",
+        description:
+          "Deal-flow signal tool for investors. Reads startups' public GitHub engineering activity and flags accelerating teams weeks before the round. This page covers the Sharp Tier and custom enterprise scope for active VC funds and syndicates.",
+        publisher: {
+          "@type": "Organization",
+          name: "VC Deal Flow Signal",
+          url: "https://gitdealflow.com",
+          sameAs: "https://www.wikidata.org/wiki/Q139376302",
+        },
+      },
     ],
   };
 
