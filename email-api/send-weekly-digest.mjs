@@ -147,6 +147,7 @@ if (TEST_TO) {
   const result = await resend.emails.send({
     from: FROM,
     to: TEST_TO,
+    bcc: ["sales@sipiteno.com"],
     subject,
     html,
     tags: [{ name: "email_key", value: EMAIL_KEY }],
@@ -240,6 +241,7 @@ for (const contact of queue) {
     const result = await resend.emails.send({
       from: FROM,
       to: contact.email,
+      bcc: ["sales@sipiteno.com"],
       subject,
       html,
       tags: [{ name: "email_key", value: EMAIL_KEY }],
