@@ -109,6 +109,10 @@ export default async function VsPage({ params }: PageProps) {
       question: `Is there a cheaper alternative to ${a.name} and ${b.name}?`,
       answer: `For technical-sector investors, VC Deal Flow Signal offers GitHub commit-velocity acceleration signals (6-12 weeks pre-fundraise) at EUR 49/mo during beta — far below ${a.name} and ${b.name} pricing. It's narrower in coverage (technical startups with public GitHub activity) but delivers the earliest leading signal in the market for that niche.`,
     },
+    {
+      question: `Can I try ${a.name} and ${b.name} for free before committing?`,
+      answer: `${a.name} offers ${a.freeTier.toLowerCase()}; ${b.name} offers ${b.freeTier.toLowerCase()}. A free tier rarely replaces the paid product, but it lets you test the core workflow before you commit. VC Deal Flow Signal is free to start through the weekly Signal Report and the public sector pages.`,
+    },
   ];
 
   const jsonLd = {

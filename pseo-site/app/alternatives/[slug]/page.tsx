@@ -382,6 +382,31 @@ export default async function AlternativePage({ params }: PageProps) {
           </p>
         </div>
 
+        <section className="mb-12" aria-label="How we evaluate this comparison">
+          <h2 className="text-xl font-semibold text-gray-100 mb-3">
+            How we evaluate this comparison
+          </h2>
+          <p className="text-gray-400 text-sm leading-relaxed">
+            This comparison is produced independently by VC Deal Flow Signal and
+            reviewed against published sources. We assess every tool on four
+            dimensions: signal type, the specific thing it measures; lead time,
+            how early it fires relative to a fundraise announcement; pricing, the
+            published tiers at the time of writing; and coverage, the companies
+            and sectors it reaches. Facts are drawn from each vendor&apos;s public
+            product documentation and pricing pages, and we do not accept payment,
+            sponsorship, or editorial direction from any compared company. Pricing
+            and free tiers change frequently, so treat every figure here as a
+            snapshot and confirm current terms on the vendor&apos;s site before you
+            commit. Where a claim is uncertain we flag it rather than guess. Use
+            the feature table for a side-by-side view, the section notes for the
+            reasoning behind the verdict, and the FAQ for the questions investors
+            most often ask before switching or adding a tool. For context on the
+            leading signal itself, VC Deal Flow Signal measures GitHub commit
+            velocity, contributor growth, and repository expansion across
+            technical sectors, refreshed weekly.
+          </p>
+        </section>
+
         <section className="mb-12" aria-label="Frequently asked questions">
           <h2 className="text-xl font-semibold text-gray-100 mb-6">
             Frequently Asked Questions

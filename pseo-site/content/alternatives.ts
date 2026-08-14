@@ -413,6 +413,10 @@ export const alternatives: Alternative[] = [
         heading: "Why lagging alerts still matter",
         body: "Lagging is not the same as useless. A confirmed funding alert is high-precision data with almost no false positives, and it is the cleanest trigger for follow-up research, portfolio tracking, and competitive mapping. The problem is only that an alert tells you a deal is already moving, which is too late if your strategy is to get in before the round. Keeping a lagging alert layer while adding a leading engineering signal gives you both precision on confirmed events and lead time on the next ones.",
       },
+      {
+        heading: "What Crunchbase alerts do well",
+        body: "Crunchbase alerts are the most reliable confirmation layer in the category. When an alert fires, it fires on a confirmed, curated funding event with almost no false positives, which makes it the cleanest trigger for follow-up research, portfolio tracking, and competitive mapping. The data is also extremely well integrated across the platform, so a single alert links cleanly into company profiles, team data, and funding history. The limitation is structural rather than a quality issue: an alert only fires once a round is public, which is too late if your strategy is to get in before the round is competitive. That is precisely the gap a leading engineering signal fills.",
+      },
     ],
     featureTable: {
       tools: ["VC Deal Flow Signal", "Crunchbase Alerts"],
@@ -481,6 +485,10 @@ export const alternatives: Alternative[] = [
         heading: "The budget math, in plain terms",
         body: "A single PitchBook seat typically runs twenty thousand dollars or more a year. VC Deal Flow Signal's full Dashboard is EUR 49 a month, roughly six hundred euros a year, with a permanent free weekly-report tier. For an angel or emerging manager, VC Deal Flow Signal plus Crunchbase's free tier covers most of the actionable sourcing workflow at under one percent of a PitchBook seat. PitchBook earns its price for institutional teams that genuinely need fund-performance benchmarks and LP reporting; for everyone else the gap between price and value is hard to justify.",
       },
+      {
+        heading: "What PitchBook does well",
+        body: "PitchBook is the reference standard for institutional private-markets data, and it earns that position on depth. Fund-performance benchmarks, LP-GP relationships, valuation comparables, and exit data are collected and curated to a standard that a lighter tool cannot match, which is why it remains the default for due diligence, market mapping, and LP reporting at serious firms. If your job involves producing defensible numbers for a committee or a limited partner, PitchBook is hard to substitute. The tradeoff is price and shape: it is a five-figure annual seat built for research teams, and it is a lagging reference layer, so it does not surface which technical startup is accelerating right now.",
+      },
     ],
     featureTable: {
       tools: ["VC Deal Flow Signal", "PitchBook"],
@@ -548,6 +556,10 @@ export const alternatives: Alternative[] = [
         heading: "Who should buy CB Insights instead",
         body: "If you lead corporate development, run a platform team that publishes sector theses, or manage a consulting practice that resells research, CB Insights earns its price on the editorial product alone. The Mosaic Score and the analyst-written landscapes are genuinely hard to replicate. But if you are one person or a small fund deciding which technical startups to meet, that editorial layer is mostly overhead you will not read, and a focused engineering signal will move your sourcing more than a research subscription will.",
       },
+      {
+        heading: "What CB Insights does well",
+        body: "CB Insights is best understood as a research product first and a data product second. Its analyst-written sector landscapes, market-sizing reports, and technology maps are genuinely hard to replicate, and the Mosaic Score gives a defensible stage-level health read that a raw signal does not. For a corporate development team, a platform group that publishes theses, or a consulting practice that resells research, the editorial layer alone justifies the price. The limitation is audience fit: that editorial depth is expensive overhead for a solo investor or small fund whose real job each week is deciding which technical startups to meet, rather than which markets to enter.",
+      },
     ],
     featureTable: {
       tools: ["VC Deal Flow Signal", "CB Insights"],
@@ -612,6 +624,10 @@ export const alternatives: Alternative[] = [
       {
         heading: "A combined workflow, step by step",
         body: "The compounding pattern is simple. Each Monday the Signal Report surfaces a handful of accelerating technical startups. You drop the company name into Affinity to check whether anyone at your firm already knows the founders, a partner, an advisor, or a portfolio CEO. If yes, you have a warm-intro path before the round is competitive. If no, you have a cold-outreach opener grounded in the founder's actual engineering work. Neither tool alone gives you that full cycle; together they do.",
+      },
+      {
+        heading: "What Affinity does well",
+        body: "Affinity is the category leader at what it does: turning a firm's inbox and calendar into a relationship graph. It tells you who at your firm already knows a founder, who last spoke to them, and who can make the warm introduction, which is exactly the information that converts a cold name into a meeting. For a fund with strong existing deal flow and a distributed team, that pipeline intelligence is close to essential and hard to replicate with spreadsheets. The honest limitation is that Affinity can only surface relationships you already have. It is a conversion and management layer, not a discovery layer, which is why it pairs cleanly with a sourcing signal.",
       },
     ],
     featureTable: {
@@ -678,6 +694,10 @@ export const alternatives: Alternative[] = [
         heading: "Why lead time decides the debate for early-stage investors",
         body: "For a pre-seed or seed investor, the whole game is seeing a company before the rest of the market. A curated database, however deep, only knows what has been announced, so by the time a breakout appears in Tracxn the round is already moving. Engineering acceleration is visible in public commit activity weeks earlier, which is the window where early-stage edge is actually made. That single difference, lead time, outweighs taxonomy depth for most early-stage technical investors.",
       },
+      {
+        heading: "What Tracxn does well",
+        body: "Tracxn's real moat is depth of sector mapping. Every company in its universe is tagged into a curated taxonomy with analyst notes and comparator lists, which makes it excellent for the 'show me every company in this niche' question that most databases answer poorly. That depth is especially strong in India, Southeast Asia, and other emerging markets where conventional platforms are thin. For a team doing market landscaping, competitor mapping, or thesis development, Tracxn's editorial layer saves real analyst hours. The tradeoff is timeliness: curation takes time, so the freshest breakouts tend to appear in Tracxn after their engineering signal has already been visible elsewhere for weeks.",
+      },
     ],
     featureTable: {
       tools: ["VC Deal Flow Signal", "Tracxn"],
@@ -743,6 +763,10 @@ export const alternatives: Alternative[] = [
         heading: "What a composite score cannot tell you",
         body: "A momentum composite tells you a company is being talked about, but not necessarily that the product is being built. Marketing and hiring can spike without a corresponding increase in actual shipping. GitHub activity is harder to fake and harder to spin: a sustained commit-velocity and contributor surge is direct evidence of engineering output. That distinction is why technical investors often treat a composite as a filter and the engineering signal as the confirmation.",
       },
+      {
+        heading: "What Specter does well",
+        body: "Specter's genuine strength is breadth with signal. It watches product launches, hiring activity, web traffic, and social mentions together, which means a consumer app, a marketplace, or a services business surfaces as readily as a SaaS product. For a fund that invests across categories, one dashboard replaces several point tools. The composite also filters noise reasonably well: a company has to show momentum on more than one channel before it ranks, which cuts down on single-spike false positives. The cost of that breadth is opacity, because the score is harder to audit than a raw channel and you cannot always see exactly which inputs drove a ranking. For wide-net early coverage across sectors, Specter is one of the strongest tools in the category and a sensible complement to a deep engineering signal.",
+      },
     ],
     featureTable: {
       tools: ["VC Deal Flow Signal", "Specter"],
@@ -804,6 +828,10 @@ export const alternatives: Alternative[] = [
         heading: "Why they almost never compete for the same user",
         body: "OpenVC's database is investors; VC Deal Flow Signal's data is startups. A founder's workflow is outbound, identifying who to pitch; an investor's workflow is inbound-first, identifying what to evaluate. The two tools optimise opposite sides of the same transaction, which is why they are complements in the market rather than competitors. The only real overlap is a technical founder who uses OpenVC to raise while also checking the free Signal Report to see whether their own engineering activity is firing visibly enough to attract inbound interest.",
       },
+      {
+        heading: "What OpenVC does well",
+        body: "OpenVC is one of the best free tools in the fundraising market for the founder side. Its investor directory is broad, searchable by stage, sector, and geography, and it pairs that with practical outbound assets like intro templates and pitch guidance. For a founder mapping which VCs to approach, it removes most of the legwork for free, which is rare in this category. The limitation is direction: OpenVC's data is investors, not startups, so it does not help an investor decide which companies to back. That asymmetry is exactly why the two products do not compete, a founder uses OpenVC to find investors, an investor uses a signal engine to find founders early.",
+      },
     ],
     featureTable: {
       tools: ["VC Deal Flow Signal", "OpenVC"],
@@ -858,6 +886,10 @@ export const alternatives: Alternative[] = [
       {
         heading: "Can a predictive model replace a leading signal?",
         body: "No, and the two do not try to replace each other. A graduation model optimises for a different outcome, Series-B success, using different inputs, funding patterns and round timing. A leading engineering signal optimises for imminent fundraise probability using public code activity. They sometimes correlate, but correlation does not make them substitutes. A firm running a hybrid strategy might use SignalRank's published methodology as one input on late-stage opportunities while running a leading signal for early-stage sourcing.",
+      },
+      {
+        heading: "What SignalRank does well",
+        body: "SignalRank's real strength is rigour at the stage most firms struggle to model. A Series-B graduation probability is a genuinely hard prediction, and SignalRank tackles it with a published, peer-reviewable methodology rather than a black box. For an LP, a fund-of-funds, or a late-stage allocator who wants a systematic read on which Series-A companies are most likely to cross the Series-B threshold, that is a valuable and hard-to-replicate input. It is also a useful sanity check on a thesis you already hold. The limitation is simply scope: the model does not reach down to pre-seed or seed, which is why it complements rather than competes with an early-stage engineering signal.",
       },
     ],
     featureTable: {
