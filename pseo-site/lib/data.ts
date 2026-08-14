@@ -1296,6 +1296,92 @@ export function getSectorLatestPeriod(sectorSlug: string): Period | null {
   return data.periods.find((p) => p.slug === latest) ?? null;
 }
 
+export interface CrossSectorPeer {
+  name: string;
+  slug: string;
+  stage: string;
+  sectorName: string;
+  sectorSlug: string;
+  signalType: string;
+  commitVelocityChange: string;
+}
+
+/**
+ * Returns startups from OTHER sectors that share this startup's stage,
+ * preferring the sector's declared adjacent sectors (sector.relatedSlugs).
+ *
+ * Why this exists: the related-startups module links each startup to 6
+ * same-sector peers, which leaves the long tail as ~20 disconnected sector
+ * clusters. This module links each startup to same-stage peers in adjacent
+ * sectors, so an investor can traverse from a Seed AI/ML startup to a Seed
+ * Developer Tools startup (cross-sector + same-stage is the strongest
+ * "similar momentum" signal) and the clusters become one connected graph.
+ */
+export function getCrossSectorPeers(
+  startupSlug: string,
+  limit = 3
+): CrossSectorPeer[] {
+  const index = getStartupIndex();
+  const profile = index.get(startupSlug);
+  if (!profile) return [];
+
+  const primary = profile.history[0];
+  if (!primary) return [];
+
+  // All sectors this startup belongs to: exclude same-sector candidates
+  // (they already surface via getRelatedStartups).
+  const mySectorSlugs = new Set(profile.history.map((h) => h.sectorSlug));
+
+  // The sector's declared adjacent sectors are the preferred cross-sector pool.
+  const sector = data.sectors.find((s) => s.slug === primary.sectorSlug);
+  const relatedSectorSlugs = new Set(sector?.relatedSlugs ?? []);
+
+  const targetStage = profile.latestStage;
+
+  const scored: Array<CrossSectorPeer & { score: number }> = [];
+  for (const [slug, other] of index) {
+    if (slug === startupSlug) continue;
+    const otherPrimary = other.history[0];
+    if (!otherPrimary) continue;
+    if (other.history.some((h) => mySectorSlugs.has(h.sectorSlug))) continue;
+
+    const otherStage = other.latestStage;
+    let score = 0;
+    if (relatedSectorSlugs.has(otherPrimary.sectorSlug)) score += 2;
+    if (otherStage === targetStage) score += 1;
+
+    scored.push({
+      name: other.name,
+      slug,
+      stage: otherStage,
+      sectorName: otherPrimary.sectorName,
+      sectorSlug: otherPrimary.sectorSlug,
+      signalType: otherPrimary.signalType,
+      commitVelocityChange: otherPrimary.commitVelocityChange,
+      score,
+    });
+  }
+
+  scored.sort((a, b) => {
+    if (b.score !== a.score) return b.score - a.score;
+    const aV =
+      parseInt(a.commitVelocityChange.replace(/[^0-9-]/g, ""), 10) || 0;
+    const bV =
+      parseInt(b.commitVelocityChange.replace(/[^0-9-]/g, ""), 10) || 0;
+    return bV - aV;
+  });
+
+  return scored.slice(0, limit).map((p) => ({
+    name: p.name,
+    slug: p.slug,
+    stage: p.stage,
+    sectorName: p.sectorName,
+    sectorSlug: p.sectorSlug,
+    signalType: p.signalType,
+    commitVelocityChange: p.commitVelocityChange,
+  }));
+}
+
 /**
  * The latest period that has a valid geo snapshot for a sector+geo combo.
  * Resolves from data.periods (newest-first), so it self-maintains as quarters

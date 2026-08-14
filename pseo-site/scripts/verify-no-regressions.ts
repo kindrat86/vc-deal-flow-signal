@@ -348,6 +348,28 @@ check(
 );
 
 // ---------------------------------------------------------------------------
+// 11. Cross-sector peers module (2026-08-14). Without it the startup long
+//     tail is ~20 disconnected same-sector clusters: every page links to 6
+//     same-sector peers but never to startups in adjacent sectors. This
+//     module links each startup to same-stage peers in its sector's declared
+//     related sectors, turning the clusters into one connected graph.
+// ---------------------------------------------------------------------------
+check(
+  "lib/data.ts",
+  "getCrossSectorPeers missing from lib/data.ts.",
+  (s) => s.includes("export function getCrossSectorPeers("),
+  "restore the cross-sector peers function (see 2026-08-14 internal-link fix)",
+);
+check(
+  "app/startup/[slug]/page.tsx",
+  "startup profile page lost the cross-sector peers module: sector clusters re-siloed.",
+  (s) =>
+    s.includes("getCrossSectorPeers(slug, 3)") &&
+    s.includes('aria-label="Similar momentum in other sectors"'),
+  "restore the crossSectorPeers computation and the Similar Momentum section",
+);
+
+// ---------------------------------------------------------------------------
 // 9. Blog freshness + stale-count slug (2026-08-14). The post URL still
 //    advertised "4,200" orgs after the title/body were corrected to the real
 //    369-startup panel. A regression that resurrects the old slug (or drops
@@ -552,6 +574,21 @@ check(
     );
   }
 }
+
+// ---------------------------------------------------------------------------
+// 12. Crawl-delay throttling in robots.txt (2026-08-14). A Crawl-delay: 10
+//     directive was throttling four AI/search discovery bots (Bytespider,
+//     Amazonbot, PetalBot, ImagesiftBot) at 10s per request, slowing
+//     answer-engine ingestion and search indexing for no benefit on a
+//     serverless edge host. Removed 2026-08-14; a lineage that re-adds any
+//     Crawl-delay silently re-throttles discovery, so fail the build.
+// ---------------------------------------------------------------------------
+check(
+  "public/robots.txt",
+  "robots.txt reintroduced a Crawl-delay directive, re-throttling AI/search discovery bots.",
+  (s) => !/Crawl-delay\s*:/i.test(s),
+  "remove the Crawl-delay line; discovery bots (Bytespider, Amazonbot, PetalBot, ImagesiftBot) should crawl unthrottled",
+);
 
 // ---------------------------------------------------------------------------
 if (failures.length) {
