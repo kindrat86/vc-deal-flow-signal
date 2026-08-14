@@ -660,10 +660,6 @@ export default function Home() {
         canonical="https://signals.gitdealflow.com/"
         languages={getHomepageHreflang()}
       />
-      <script
-        type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
-      />
       <AgentMirrorLinks path="/" />
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 sm:py-12 space-y-8 sm:space-y-10">
       {/* Hero, specific outcome H1 + one-line subhead. Greg audit 2026-05-02:
@@ -1930,6 +1926,17 @@ one calm read every Sunday. The other two lanes are only for when a
           /data-nerd character bible and /about/founder backstory. */}
       <DataNerdSignoff variant="long" />
 
+      {/* JSON-LD relocated to page-end (LCP, 2026-08-15). This ~15KB graph
+          used to stream immediately BEFORE the hero H1, which is the LCP
+          element (the homepage has no hero image, 0 <img> tags). Google and
+          all major schema parsers accept application/ld+json in <body>; the
+          entities are byte-identical, only stream position changes. Moving
+          it after the content cut the pre-H1 byte stream by ~60% on mobile.
+          Guarded in verify-no-regressions.ts (check 16). */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
     </div>
     </>
   );

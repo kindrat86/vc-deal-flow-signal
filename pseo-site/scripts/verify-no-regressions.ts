@@ -819,6 +819,39 @@ check(
 );
 
 // ---------------------------------------------------------------------------
+// 15. JSON-LD must stream AFTER the content, not before it (LCP, 2026-08-15).
+//     The LCP element on the homepage is the hero H1 text (there is no hero
+//     image, 0 <img> tags). The RootIdentitySchema graph (~14KB) used to sit
+//     in <head> and the homepage graph (~15KB) immediately before the hero,
+//     together ~63% of the pre-H1 byte stream on a 465KB page. Google parses
+//     application/ld+json anywhere in head OR body, so end-of-body placement
+//     is byte-identical for entity extraction while cutting bytes-before-LCP
+//     by ~60%. A lineage that moves these back into <head> re-slows LCP for
+//     every one of ~4,830 pages.
+// ---------------------------------------------------------------------------
+check(
+  "app/layout.tsx",
+  "layout.tsx renders RootIdentitySchema/BreadcrumbsSchema in <head> again; the ~14KB identity graph streams before the LCP element and slows Largest Contentful Paint site-wide.",
+  (s) => {
+    const headEnd = s.indexOf("</head>");
+    const schemaAt = s.indexOf("<RootIdentitySchema />");
+    return headEnd === -1 || schemaAt === -1 ? false : schemaAt > headEnd;
+  },
+  "keep <RootIdentitySchema /> and <BreadcrumbsSchema /> at end-of-body; JSON-LD parses fine there and stops gating LCP",
+);
+
+check(
+  "app/page.tsx",
+  "app/page.tsx emits the ~15KB homepage JSON-LD graph before the hero H1 (the LCP element); it must stream after the page content.",
+  (s) => {
+    const h1 = s.indexOf("<h1");
+    const script = s.indexOf('type="application/ld+json"');
+    return h1 === -1 || script === -1 ? false : script > h1;
+  },
+  "emit the homepage jsonLd <script type=application/ld+json> after the content (page-end), never before the hero H1",
+);
+
+// ---------------------------------------------------------------------------
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +

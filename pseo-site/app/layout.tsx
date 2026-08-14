@@ -433,8 +433,6 @@ export default function RootLayout({
           href="https://signals.gitdealflow.com/api/ask?q={query}"
           title="Multi-result fuzzy answer search"
         />
-        <RootIdentitySchema />
-        <BreadcrumbsSchema />
       </head>
       <body className={`${inter.className} min-h-full flex flex-col bg-slate-950 text-gray-100`}>
         <ReadingProgressBar />
@@ -622,6 +620,14 @@ export default function RootLayout({
     <p style="margin-top:18px;font-size:.78rem;color:#6b7178">Free weekly digest. Cancel anytime. No spam, no VC pitches just data.</p>
   </div>
 </section>` }} />
+        {/* JSON-LD relocated from <head> to end-of-body (LCP, 2026-08-15).
+            Google parses application/ld+json anywhere in head OR body, but
+            these two graphs (~14KB) streamed before the hero, delaying the
+            LCP element (the H1 text, no hero image exists) by ~60% of the
+            pre-content byte stream on mobile. Content unchanged, placement
+            only. Guarded in verify-no-regressions.ts (check 15). */}
+        <RootIdentitySchema />
+        <BreadcrumbsSchema />
       </body>
     </html>
   );
