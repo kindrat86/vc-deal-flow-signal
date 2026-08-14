@@ -29,6 +29,9 @@ export interface Comparison {
   faqs?: ComparisonFAQ[];
   proofLinks?: ComparisonLink[];
   nextReadLinks?: ComparisonLink[];
+  /** True for templated competitor-vs-competitor pages that don't feature
+   *  GitDealFlow (keyword parking) — kept crawlable but noindex. */
+  noindex?: boolean;
 }
 
 export const comparisons: Comparison[] = [
@@ -2238,7 +2241,11 @@ const crossComparisons = crossPairs
     const a = competitors.find((c) => c.slug === aSlug);
     const b = competitors.find((c) => c.slug === bSlug);
     if (!a || !b) return null;
-    return generateVsComparison(a, b);
+    // Competitor-vs-competitor pages don't feature GitDealFlow; they are
+    // templated keyword parking, so mark noindex (crawlable, out of the index).
+    const comp = generateVsComparison(a, b);
+    comp.noindex = true;
+    return comp;
   })
   .filter((c): c is Comparison => c !== null);
 
@@ -2256,4 +2263,9 @@ export function getComparison(slug: string): Comparison | undefined {
 
 export function getAllComparisonSlugs(): string[] {
   return allComparisons.map((c) => c.slug);
+}
+
+/** Slugs that should be advertised in sitemaps (excludes noindex cross pages). */
+export function getIndexableComparisonSlugs(): string[] {
+  return allComparisons.filter((c) => !c.noindex).map((c) => c.slug);
 }

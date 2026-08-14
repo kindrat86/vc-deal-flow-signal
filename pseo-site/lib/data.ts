@@ -1296,6 +1296,35 @@ export function getSectorLatestPeriod(sectorSlug: string): Period | null {
   return data.periods.find((p) => p.slug === latest) ?? null;
 }
 
+/**
+ * The latest period that has a valid geo snapshot for a sector+geo combo.
+ * Resolves from data.periods (newest-first), so it self-maintains as quarters
+ * ship: the moment a new geo quarter is generated, older ones re-point to it.
+ */
+export function getGeoLatestPeriod(sectorSlug: string, geoSlug: string): Period | null {
+  const periodOrder = data.periods.map((p) => p.slug);
+  for (const periodSlug of periodOrder) {
+    if (parseGeoPageSlug(`${sectorSlug}-${geoSlug}-${periodSlug}`) !== null) {
+      return data.periods.find((p) => p.slug === periodSlug) ?? null;
+    }
+  }
+  return null;
+}
+
+/**
+ * The latest period that has a valid region rollup for a geography.
+ * Same self-maintaining semantics as getGeoLatestPeriod.
+ */
+export function getRegionLatestPeriod(geoSlug: string): Period | null {
+  const periodOrder = data.periods.map((p) => p.slug);
+  for (const periodSlug of periodOrder) {
+    if (parseRegionPageSlug(`${geoSlug}-${periodSlug}`) !== null) {
+      return data.periods.find((p) => p.slug === periodSlug) ?? null;
+    }
+  }
+  return null;
+}
+
 // ---------------------------------------------------------------------------
 // Velocity score (0-100)
 // ---------------------------------------------------------------------------

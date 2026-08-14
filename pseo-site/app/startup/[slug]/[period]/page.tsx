@@ -37,6 +37,19 @@ export async function generateMetadata({
   return {
     title,
     description,
+    // Index-bloat control (2026-08-14): the ~1,700 period pages are
+    // historical snapshots that already consolidate ranking signals to the
+    // evergreen /startup/[slug] hub via the canonical below. noindex keeps
+    // them OUT of the Google/Bing index (and they are dropped from the
+    // sitemap — see app/sitemap/[id]/route.ts), while `follow` preserves the
+    // prev/next + related-startups crawl paths so link equity still flows to
+    // the base pages and sibling startups. Machine-readable mirrors (/md/,
+    // /jsonld/, /api/signals.json) still expose the per-period data to
+    // agents and AI crawlers.
+    robots: {
+      index: false,
+      follow: true,
+    },
     openGraph: { title, description, type: "article", url: `/startup/${slug}/${period}` },
     twitter: { card: "summary_large_image", title, description },
     alternates: {

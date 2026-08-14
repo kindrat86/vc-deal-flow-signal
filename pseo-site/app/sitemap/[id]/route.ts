@@ -12,10 +12,9 @@ import {
   getAllStageSectorPairs,
   getAllSignalSectorPairs,
   getAllStageSignalPairs,
-  getAllStartupPeriodPairs,
 } from "@/lib/data";
 import { getAllPostSlugs } from "@/content/posts";
-import { getAllComparisonSlugs } from "@/content/comparisons";
+import { getIndexableComparisonSlugs } from "@/content/comparisons";
 import { getAllAlternativeSlugs } from "@/content/alternatives";
 import { getAllUseCaseSlugs } from "@/content/use-cases";
 import { getCanonicalCompetitorVsSlugs } from "@/content/competitor-vs";
@@ -522,12 +521,12 @@ export async function GET(_req: Request, ctx: RouteContext) {
         changefreq: "weekly",
         priority: 0.7,
       })),
-      ...getAllStartupPeriodPairs().map(({ slug, period }) => ({
-        url: `${BASE_URL}/startup/${slug}/${period}`,
-        lastmod,
-        changefreq: "monthly",
-        priority: 0.5,
-      })),
+      // Index-bloat control (2026-08-14): the ~1,700 quarterly period pages
+      // (/startup/{slug}/{period}) are noindex,follow (see the [period] page
+      // metadata) and canonicalize to their evergreen /startup/{slug} base.
+      // A sitemap must advertise only canonical, indexable URLs, so the
+      // period-pair entries are dropped here. The period pages stay reachable
+      // to crawlers via internal prev/next + related-startups links.
     ];
   } else if (id === "content") {
     entries = [
@@ -547,7 +546,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
         changefreq: "monthly",
         priority: 0.7,
       })),
-      ...getAllComparisonSlugs().map((slug) => ({
+      ...getIndexableComparisonSlugs().map((slug) => ({
         url: `${BASE_URL}/compare/${slug}`,
         lastmod,
         changefreq: HIGH_INTENT_COMPARE_SLUGS.has(slug) ? "weekly" : "monthly",

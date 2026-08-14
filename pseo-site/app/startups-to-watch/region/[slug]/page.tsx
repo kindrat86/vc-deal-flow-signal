@@ -5,6 +5,7 @@ import {
   getAllRegionPageSlugs,
   parseRegionPageSlug,
   getDataLastModified,
+  getRegionLatestPeriod,
 } from "@/lib/data";
 import StartupTable from "@/components/StartupTable";
 import SeoCta from "@/components/SeoCta";
@@ -28,9 +29,18 @@ export async function generateMetadata({
   const parsed = parseRegionPageSlug(slug);
   if (!parsed) return {};
 
-  const { geoName, period } = parsed;
+  const { geoSlug, geoName, period } = parsed;
   const title = `${geoName} Startups to Watch — ${period.name} Engineering Signals`;
   const description = `All tracked startups in ${geoName} ranked by GitHub engineering acceleration across every sector. ${parsed.startups.length} startups, ${parsed.sectorBreakdown.length} sectors, updated weekly.`;
+
+  // Cannibalization guard: old region quarters canonicalize to the latest
+  // region quarter, so the quarterly variants don't split the "startups in X"
+  // head keyword. Self-maintaining (see getRegionLatestPeriod).
+  const latest = getRegionLatestPeriod(geoSlug);
+  const canonicalTarget =
+    latest && latest.slug !== period.slug
+      ? `/startups-to-watch/region/${geoSlug}-${latest.slug}`
+      : `/startups-to-watch/region/${slug}`;
 
   return {
     title,
@@ -38,7 +48,7 @@ export async function generateMetadata({
     openGraph: { title, description, type: "article", url: `/startups-to-watch/region/${slug}` },
     twitter: { card: "summary_large_image", title, description },
     alternates: {
-      canonical: `/startups-to-watch/region/${slug}`,
+      canonical: canonicalTarget,
     },
   };
 }

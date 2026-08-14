@@ -7,6 +7,7 @@ import {
   getSortedStartups,
   getDataLastModified,
   getRelatedSectors,
+  getGeoLatestPeriod,
 } from "@/lib/data";
 import StartupTable from "@/components/StartupTable";
 import SeoCta from "@/components/SeoCta";
@@ -32,9 +33,18 @@ export async function generateMetadata({
   const parsed = parseGeoPageSlug(slug);
   if (!parsed) return {};
 
-  const { geoName, sector, period } = parsed;
+  const { geoSlug, geoName, sector, period } = parsed;
   const title = `${sector.name} Startups in ${geoName} to Watch, ${period.name}`;
   const description = `Ranked list of ${sector.name} startups in ${geoName} showing the highest GitHub engineering acceleration in ${period.name}. Commit velocity, contributor growth, and breakout signals for investors.`;
+
+  // Cannibalization guard: old geo quarters canonicalize to the latest geo
+  // quarter for the same sector+geo, so the quarterly variants don't split the
+  // "X startups in Y" head keyword. Self-maintaining (see getGeoLatestPeriod).
+  const latest = getGeoLatestPeriod(sector.slug, geoSlug);
+  const canonicalTarget =
+    latest && latest.slug !== period.slug
+      ? `/startups-to-watch/geo/${sector.slug}-${geoSlug}-${latest.slug}`
+      : `/startups-to-watch/geo/${slug}`;
 
   return {
     title,
@@ -51,7 +61,7 @@ export async function generateMetadata({
       description,
     },
     alternates: {
-      canonical: `/startups-to-watch/geo/${slug}`,
+      canonical: canonicalTarget,
     },
   };
 }

@@ -36,6 +36,7 @@ export async function generateMetadata({
   return {
     title: comp.title,
     description: clampDescription(comp.description),
+    ...(comp.noindex ? { robots: { index: false } } : {}),
     openGraph: {
       title: comp.title,
       description: clampDescription(comp.description),

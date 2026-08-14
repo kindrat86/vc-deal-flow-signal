@@ -400,6 +400,76 @@ check(
   "canonicalize old quarters to the latest quarter via getSectorLatestPeriod(sector.slug); keep only the latest self-canonical",
 );
 
+check(
+  "app/startups-to-watch/geo/[slug]/page.tsx",
+  "geo quarter pages self-canonicalize (old geo quarters compete with the latest for the same sector+geo keyword).",
+  (s) => !/canonical:\s*`\/startups-to-watch\/geo\/\$\{slug\}`/.test(s) && s.includes("getGeoLatestPeriod"),
+  "canonicalize old geo quarters to the latest geo quarter via getGeoLatestPeriod(sector.slug, geoSlug)",
+);
+
+check(
+  "app/startups-to-watch/region/[slug]/page.tsx",
+  "region quarter pages self-canonicalize (old region quarters compete with the latest).",
+  (s) => !/canonical:\s*`\/startups-to-watch\/region\/\$\{slug\}`/.test(s) && s.includes("getRegionLatestPeriod"),
+  "canonicalize old region quarters to the latest region quarter via getRegionLatestPeriod(geoSlug)",
+);
+
+check(
+  "content/comparisons.ts",
+  "competitor-vs-competitor cross pages are indexable again (templated keyword parking without GitDealFlow re-enters the index).",
+  (s) => s.includes("comp.noindex = true"),
+  "mark crossComparisons (competitor-vs-competitor, GitDealFlow absent) with comp.noindex = true",
+);
+
+check(
+  "app/compare/[slug]/page.tsx",
+  "compare page ignores the noindex flag (cross pages become indexable again).",
+  (s) => s.includes("comp.noindex"),
+  "emit robots: { index: false } when comp.noindex is set",
+);
+
+// ---------------------------------------------------------------------------
+// Per-sector analyst notes (2026-08-14). The 10 /sector/[slug] hubs shared
+// byte-identical `whatWeTrack` methodology boilerplate and a single templated
+// `intro`, so every hub read as near-duplicate template content (F24/F17).
+// Each hub now carries a unique, data-grounded `note` (analyst commentary).
+// A lineage that loses these reintroduces the duplication that the pSEO
+// uniqueness audit flags.
+// ---------------------------------------------------------------------------
+check(
+  "content/sectors.ts",
+  "Sector hubs lost their per-sector analyst notes — near-duplicate template similarity returns.",
+  (s) => (s.match(/\bnote:\s*"/g) || []).length >= 10,
+  "restore a unique `note: \"…\"` per sector in content/sectors.ts (10 sectors, data-grounded, non-empty)",
+);
+check(
+  "app/sector/[slug]/page.tsx",
+  "Sector hub page no longer renders the analyst note — the field is wired but dead.",
+  (s) => s.includes("s.analystNote"),
+  "render {s.analystNote} inside the 'Analyst note' callout below the intro",
+);
+
+// ---------------------------------------------------------------------------
+// Index-bloat control (2026-08-14). The ~1,700 quarterly startup period pages
+// are noindex,follow AND dropped from the `startups` sitemap shard (a sitemap
+// must only advertise canonical, indexable URLs). A regression that re-lists
+// them, or drops the noindex, re-bloats the Google/Bing index with a
+// near-duplicate fleet that cannibalizes the base /startup/[slug] hubs.
+// ---------------------------------------------------------------------------
+check(
+  "app/startup/[slug]/[period]/page.tsx",
+  "startup period pages are indexable again (noindex dropped): the ~1,700 period pages re-enter the Google/Bing index and cannibalize their base /startup/[slug] page.",
+  (s) => s.includes("index: false") && s.includes("follow: true"),
+  "restore robots: { index: false, follow: true } to the period page metadata",
+);
+check(
+  "app/sitemap/[id]/route.ts",
+  "startup period URLs re-listed in the sitemap: a sitemap must advertise only canonical, indexable URLs (period pages are noindex + canonicalize to base).",
+  (s) => !s.includes("${BASE_URL}/startup/${slug}/${period}"),
+  "drop the period-pair entries from the `startups` shard",
+);
+
+
 // ---------------------------------------------------------------------------
 if (failures.length) {
   console.error(
