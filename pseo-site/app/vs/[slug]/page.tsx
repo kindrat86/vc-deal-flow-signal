@@ -7,6 +7,7 @@ import {
   getCanonicalCompetitorVsSlugs,
   getCanonicalVsSlug,
   getCompetitorVsPair,
+  METHODOLOGY,
 } from "@/content/competitor-vs";
 import { getDataLastModified } from "@/lib/data";
 import SeoCta from "@/components/SeoCta";
@@ -194,6 +195,10 @@ export default async function VsPage({ params }: PageProps) {
           </p>
         </header>
 
+        <section className="mb-10" aria-label="Introduction">
+          <p className="text-gray-300 text-base leading-relaxed">{pair.intro}</p>
+        </section>
+
         <section className="mb-10" aria-label="Feature comparison">
           <h2 className="text-gray-100 font-semibold text-lg mb-4">
             Feature-by-feature comparison
@@ -218,6 +223,26 @@ export default async function VsPage({ params }: PageProps) {
               </tbody>
             </table>
           </div>
+        </section>
+
+        <section className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10" aria-label="Tool overviews">
+          {[a, b].map((c) => (
+            <article
+              key={`overview-${c.key}`}
+              className="rounded-lg border border-slate-800 bg-slate-900 p-6"
+            >
+              <h2 className="text-gray-100 font-semibold text-lg mb-3">
+                What is {c.name}?
+              </h2>
+              <p className="text-gray-400 text-sm leading-relaxed mb-4">
+                {c.overview}
+              </p>
+              <p className="text-xs text-sky-400 leading-relaxed">
+                <span className="font-medium uppercase tracking-wider">Best for: </span>
+                {c.bestFor}
+              </p>
+            </article>
+          ))}
         </section>
 
         <section className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-10">
@@ -246,6 +271,20 @@ export default async function VsPage({ params }: PageProps) {
               </ul>
             </article>
           ))}
+        </section>
+
+        <section className="mb-10" aria-label="Which one should you choose">
+          <h2 className="text-gray-100 font-semibold text-lg mb-3">
+            Which one should you choose?
+          </h2>
+          <p className="text-gray-400 text-sm leading-relaxed">{pair.decision}</p>
+        </section>
+
+        <section className="mb-10" aria-label="How we evaluate these tools">
+          <h2 className="text-gray-100 font-semibold text-lg mb-3">
+            How we evaluate these tools
+          </h2>
+          <p className="text-gray-400 text-sm leading-relaxed">{METHODOLOGY}</p>
         </section>
 
         <section

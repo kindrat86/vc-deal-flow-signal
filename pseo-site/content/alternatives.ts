@@ -92,6 +92,10 @@ export const alternatives: Alternative[] = [
         heading: "Coverage",
         body: "Harmonic covers founders across all sectors, including companies with little public code (healthtech, biotech, consumer brands, fintech services). VC Deal Flow Signal covers technical startups with public engineering activity — primarily AI/ML, dev tools, enterprise SaaS, infrastructure, and similar sectors. If you invest in non-technical founders, Harmonic is the better fit. If you invest in technical startups, GitHub signals are a more direct measurement of traction.",
       },
+      {
+        heading: "How to decide between Harmonic.ai and VC Deal Flow Signal",
+        body: "Harmonic.ai is the right call when your mandate spans every sector and you have the budget and a sourcing team to act on team-and-network signals at incorporation. VC Deal Flow Signal is the right call when you back technical startups, want a signal you can verify in a browser, and prefer a subscription that costs less than a single enterprise seat. The decision reduces to three questions. First, does your thesis include non-technical companies? If yes, lean Harmonic. Second, is lead time or early confidence more important to you? Harmonic fires earlier at incorporation but with more uncertainty; the engineering signal fires a few weeks later with more proof points. Third, what does the budget allow? For under EUR 60 a month, VC Deal Flow Signal plus a free database covers most angel workflows, while Harmonic requires a five-figure annual commitment.",
+      },
     ],
     featureTable: {
       tools: ["VC Deal Flow Signal", "Harmonic.ai"],
@@ -117,6 +121,8 @@ export const alternatives: Alternative[] = [
       { question: "Why is VC Deal Flow Signal so much cheaper than Harmonic.ai?", answer: "Different data sources and different target customers. Harmonic licenses and curates broad data from many providers and sells to enterprise VCs. VC Deal Flow Signal pulls directly from GitHub's public API, focuses on a narrower signal, and is priced for individual investors and smaller funds." },
       { question: "Can I use both Harmonic.ai and VC Deal Flow Signal?", answer: "Yes, and many investors do. Harmonic is strong for broad candidate generation across all sectors; VC Deal Flow Signal is strong as a confirming engineering signal on technical startups. They answer different questions and their signals rarely overlap." },
       { question: "How does VC Deal Flow Signal compare to Harmonic.ai on coverage?", answer: "Harmonic covers all sectors, including non-technical. VC Deal Flow Signal covers only technical startups with public GitHub activity — roughly 15 sector clusters in AI/ML, infrastructure, dev tools, and enterprise SaaS. If you invest in consumer brands or healthtech, Harmonic has broader reach." },
+      { question: "What data does Harmonic.ai use that VC Deal Flow Signal does not?", answer: "Harmonic.ai aggregates LinkedIn, news, startup databases, and proprietary network graphs to model founding teams and hiring patterns. VC Deal Flow Signal reads public GitHub activity only. The trade is breadth against verifiability: Harmonic's data covers non-technical companies but relies on a model you cannot fully audit, while every commit and contributor VC Deal Flow Signal reports is public and timestamped." },
+      { question: "Is VC Deal Flow Signal a strong Harmonic.ai alternative for a solo angel?", answer: "Yes, on the technical-sourcing layer. A solo angel backing AI, dev-tools, or infrastructure startups gets the core value, an early engineering signal, at EUR 49 a month instead of an enterprise contract. What you give up is Harmonic's cross-sector reach and its team-and-network modelling, which a solo angel rarely needs at that price." },
     ],
     relatedSectors: ["ai-ml", "enterprise-saas", "developer-tools"],
   },
@@ -152,6 +158,14 @@ export const alternatives: Alternative[] = [
       {
         heading: "When each is right",
         body: "Use Dealroom for portfolio mapping, retrospective sector analysis, and finding every company that matches a set of criteria. Use VC Deal Flow Signal for weekly deal flow, early conviction-building, and deciding where to focus outreach right now.",
+      },
+      {
+        heading: "How to decide between Dealroom and VC Deal Flow Signal",
+        body: "The choice comes down to whether you need a complete map of what has happened or an early pointer at what is happening now. Dealroom is the better tool when you answer 'find every company that matches these criteria' across a deep European sector taxonomy, or when you build portfolio maps and retrospective analysis. VC Deal Flow Signal is the better tool when your week starts with 'which technical startups should I look at before they raise'. In practice most European investors run both: Dealroom as the reference database, VC Deal Flow Signal as the early-signal feed that tells them which names to pull up in Dealroom first.",
+      },
+      {
+        heading: "A closer look at Dealroom's strengths and limits",
+        body: "Dealroom's genuine strengths are its sector depth and European coverage. Hundreds of subsector classifications and comprehensive funding history make it the most useful reference layer for Europe-focused funds, and its curation is careful. The structural limit is inherent to any database: a round appears once it is announced, so the tool is strongest for research and weakest for proactive sourcing. It also gets expensive quickly, with full access running to hundreds or thousands of euros a month. None of that is a flaw in execution; it is the nature of a curated post-raise database, and it is exactly the gap an engineering-acceleration signal is built to fill.",
       },
     ],
     featureTable: {
@@ -209,6 +223,14 @@ export const alternatives: Alternative[] = [
         heading: "Pricing and access",
         body: "Forager.ai offers tiered pricing with a limited free tier. VC Deal Flow Signal offers a free weekly Signal Report plus a EUR 49/month Dashboard during beta. Both are accessible to individual investors, though the Dashboard is priced to be affordable for scouts and solo GPs specifically.",
       },
+      {
+        heading: "How to decide between Forager.ai and VC Deal Flow Signal",
+        body: "Forager.ai is the better fit when you invest across sectors and want early web, social, and hiring signals on any company with a public footprint, including consumer and services businesses. VC Deal Flow Signal is the better fit when you invest in technical startups and want the earliest possible read on the product itself, before press or hiring chatter exists. The two rarely surface the same company at the same moment, which is the strongest argument for running both. If you must pick one, let the sector decide: non-technical theses point to Forager, technical theses point to the engineering signal.",
+      },
+      {
+        heading: "Where the two signals overlap (and where they do not)",
+        body: "Overlap is narrower than it first looks. Forager's NLP reads product launches, social mentions, and hiring patterns, which cluster around the moment a company starts marketing itself. GitHub acceleration often begins before any of that, sometimes weeks before the first launch post. The companies they catch also differ: Forager's wide net includes consumer brands and services with little public code, while VC Deal Flow Signal concentrates on AI, dev-tools, infrastructure, and enterprise SaaS where engineering activity is the honest leading indicator. Treat them as adjacent layers of the same funnel rather than substitutes for each other.",
+      },
     ],
     featureTable: {
       tools: ["VC Deal Flow Signal", "Forager.ai"],
@@ -233,6 +255,7 @@ export const alternatives: Alternative[] = [
       { question: "Which has earlier signals?", answer: "VC Deal Flow Signal typically has 2-6 weeks more lead time because engineering acceleration usually precedes public-facing launches and hiring surges. The tradeoff is that engineering signals are slightly noisier and require a technical lens to interpret." },
       { question: "Can Forager.ai cover startups that VC Deal Flow Signal misses?", answer: "Yes, especially non-technical companies and services businesses that have minimal public GitHub footprint. Forager covers any company with a public web presence, which is a much broader universe than technical startups with open-source activity." },
       { question: "Is VC Deal Flow Signal a Forager.ai alternative or complement?", answer: "Most investors treat them as complements. If you invest across all sectors and want one tool, Forager covers more ground. If you invest in technical startups and want the earliest possible signal on engineering traction, VC Deal Flow Signal is a direct fit." },
+      { question: "Can Forager.ai and VC Deal Flow Signal run side by side?", answer: "Yes, and they compose cleanly. Forager surfaces broad public momentum across sectors; VC Deal Flow Signal confirms technical traction at the code level and adds lead time. An investor who runs both gets a wider top of funnel plus a deeper verification layer on the technical names that matter most." },
     ],
     relatedSectors: ["ai-ml", "developer-tools", "enterprise-saas"],
   },
@@ -345,6 +368,7 @@ export const alternatives: Alternative[] = [
       { question: "How much cheaper is VC Deal Flow Signal than Crunchbase Pro?", answer: "VC Deal Flow Signal Dashboard is EUR 49/month during beta vs Crunchbase Pro at $49-$99/month for individual investors. The free tier of VC Deal Flow Signal (weekly Signal Report plus 15 sector pages) is also more substantial than Crunchbase's free tier." },
       { question: "Which is better for non-technical sectors?", answer: "Crunchbase. VC Deal Flow Signal only covers technical startups with public GitHub activity. For consumer brands, healthtech, fintech services, or hardware companies without meaningful open-source presence, Crunchbase's coverage is much broader and more relevant." },
       { question: "Can I see VC Deal Flow Signal data through a Crunchbase profile?", answer: "Not currently. The two products are independent. The standard workflow is to use VC Deal Flow Signal to identify accelerating technical startups, then look up their Crunchbase profile separately for funding history and team context." },
+      { question: "What is the single biggest difference between Crunchbase and VC Deal Flow Signal?", answer: "Timing. Crunchbase is the authoritative record of what has already happened, a round appears in it after the announcement. VC Deal Flow Signal surfaces engineering acceleration that typically begins six to twelve weeks before the round is announced. One is the reference layer, the other is the early-warning layer, and that is why most technical investors use both rather than choosing between them." },
     ],
     relatedSectors: ["ai-ml", "enterprise-saas", "developer-tools"],
   },
@@ -380,6 +404,14 @@ export const alternatives: Alternative[] = [
       {
         heading: "Using them together",
         body: "The most common workflow: use VC Deal Flow Signal to surface engineering acceleration on technical startups, then use Crunchbase to pull funding history, team details, and investor context on the companies you want to approach. Leading signal plus lagging context — they compose well and each is cheap on its own.",
+      },
+      {
+        heading: "How to decide between Crunchbase alerts and VC Deal Flow Signal",
+        body: "If your edge depends on getting into rounds before they are competitive, the engineering signal wins on timing, because it fires six to twelve weeks before the alert that announces the round. If your workflow is research-first and post-announcement timing already suits you, Crunchbase alerts remain the most reliable confirmation layer in the category. The honest answer for most technical investors is both: VC Deal Flow Signal to catch the names early, Crunchbase alerts to confirm funding and pull context once a company raises.",
+      },
+      {
+        heading: "Why lagging alerts still matter",
+        body: "Lagging is not the same as useless. A confirmed funding alert is high-precision data with almost no false positives, and it is the cleanest trigger for follow-up research, portfolio tracking, and competitive mapping. The problem is only that an alert tells you a deal is already moving, which is too late if your strategy is to get in before the round. Keeping a lagging alert layer while adding a leading engineering signal gives you both precision on confirmed events and lead time on the next ones.",
       },
     ],
     featureTable: {
@@ -441,6 +473,14 @@ export const alternatives: Alternative[] = [
         heading: "Using them together",
         body: "Funds that can afford PitchBook typically run both: VC Deal Flow Signal for the leading engineering signal on technical startups, PitchBook for funding history, valuations, and competitive context once a name comes up. The two are complementary and the combined budget is dominated by the PitchBook line item.",
       },
+      {
+        heading: "How to decide between PitchBook and VC Deal Flow Signal",
+        body: "PitchBook is the right tool if you run a research function, cover non-technical sectors, and need one canonical database for funding history, valuations, and exit comparables, and you have the budget for it. VC Deal Flow Signal is the right tool if you source technical startups and want a leading engineering signal for the price of two lunches a month. The decision is mostly a budget and mandate question rather than a features question: the two products overlap so little that the real choice is which one matches your fund's stage and sector focus.",
+      },
+      {
+        heading: "The budget math, in plain terms",
+        body: "A single PitchBook seat typically runs twenty thousand dollars or more a year. VC Deal Flow Signal's full Dashboard is EUR 49 a month, roughly six hundred euros a year, with a permanent free weekly-report tier. For an angel or emerging manager, VC Deal Flow Signal plus Crunchbase's free tier covers most of the actionable sourcing workflow at under one percent of a PitchBook seat. PitchBook earns its price for institutional teams that genuinely need fund-performance benchmarks and LP reporting; for everyone else the gap between price and value is hard to justify.",
+      },
     ],
     featureTable: {
       tools: ["VC Deal Flow Signal", "PitchBook"],
@@ -496,6 +536,18 @@ export const alternatives: Alternative[] = [
         heading: "Research depth vs raw signal",
         body: "CB Insights publishes hundreds of analyst-written reports per year — sector deep-dives, technology landscapes, competitive battlecards. VC Deal Flow Signal does not write reports; it publishes raw weekly signals and the methodology that produced them. If you need narrative research, CB Insights wins; if you want the signal itself, VC Deal Flow Signal is more direct.",
       },
+      {
+        heading: "How to decide between CB Insights and VC Deal Flow Signal",
+        body: "CB Insights is the right call for corporate strategy teams, large VCs, and consultancies that need analyst-written sector reports, the Mosaic Score, and market-sizing research, and can justify a five-figure annual cost. VC Deal Flow Signal is the right call for angels, scouts, and small funds that want a weekly, verifiable leading signal on technical startups. If your question is 'which sector is worth entering', CB Insights answers it. If your question is 'which company should I look at this week', the engineering signal answers it faster and cheaper.",
+      },
+      {
+        heading: "Market intelligence vs deal sourcing: what you actually need",
+        body: "The two products serve different jobs. Market intelligence is top-down: it tells you where a market is going, which categories are heating up, and how competitors stack up. Deal sourcing is bottom-up: it tells you which specific companies are accelerating right now. An early-stage investor spends most of every week on the bottom-up job, which is why a sourcing signal delivers more day-to-day value than a research platform at one percent of the price. The report is the luxury; the pipeline is the necessity.",
+      },
+      {
+        heading: "Who should buy CB Insights instead",
+        body: "If you lead corporate development, run a platform team that publishes sector theses, or manage a consulting practice that resells research, CB Insights earns its price on the editorial product alone. The Mosaic Score and the analyst-written landscapes are genuinely hard to replicate. But if you are one person or a small fund deciding which technical startups to meet, that editorial layer is mostly overhead you will not read, and a focused engineering signal will move your sourcing more than a research subscription will.",
+      },
     ],
     featureTable: {
       tools: ["VC Deal Flow Signal", "CB Insights"],
@@ -548,6 +600,18 @@ export const alternatives: Alternative[] = [
       {
         heading: "Combining them",
         body: "The standard workflow: VC Deal Flow Signal surfaces a breakout startup in your sector. You drop the GitHub org or company name into Affinity and check whether anyone in your firm — partners, advisors, scouts, portfolio founders — already knows the team. If yes, you have a warm-intro path before the round is competitive. If no, you have a cold-outreach opener grounded in their engineering work. The combined cycle is hard to replicate with either tool alone.",
+      },
+      {
+        heading: "How to decide between Affinity and VC Deal Flow Signal",
+        body: "Buy Affinity when you already have deal flow and need to organise it, surface warm intros, and track every founder interaction across a team. Buy VC Deal Flow Signal when you need deal flow you do not already have, on technical startups, with a quantitative signal each week. They sit on different sides of the word pipeline: Affinity manages the pipeline, VC Deal Flow Signal fills it. The cleanest answer for a fund with budget for both is to run both.",
+      },
+      {
+        heading: "Why Affinity cannot source net-new deals",
+        body: "Affinity's value is entirely a function of the network you already have. It maps your firm's email and calendar to tell you who knows whom, but it has no view of companies outside your existing relationships, and it has no public-data signal. That is not a deficiency; it is a category boundary. A relationship CRM is the wrong tool for discovery, in the same way a deal-sourcing signal is the wrong tool for managing warm introductions. Confusing the two is the most common buying mistake in this category.",
+      },
+      {
+        heading: "A combined workflow, step by step",
+        body: "The compounding pattern is simple. Each Monday the Signal Report surfaces a handful of accelerating technical startups. You drop the company name into Affinity to check whether anyone at your firm already knows the founders, a partner, an advisor, or a portfolio CEO. If yes, you have a warm-intro path before the round is competitive. If no, you have a cold-outreach opener grounded in the founder's actual engineering work. Neither tool alone gives you that full cycle; together they do.",
       },
     ],
     featureTable: {
@@ -602,6 +666,18 @@ export const alternatives: Alternative[] = [
         heading: "Coverage shape",
         body: "Tracxn covers all sectors with breadth. VC Deal Flow Signal covers technical startups with public engineering activity — about 15 sector clusters. For non-technical investing (consumer, services, healthtech delivery), Tracxn is the better fit. For technical sector sourcing, GitHub signals are closer to the actual product work.",
       },
+      {
+        heading: "How to decide between Tracxn and VC Deal Flow Signal",
+        body: "Tracxn is the better fit when you need analyst-curated sector landscapes, broad coverage including strong emerging-market depth, and a mid-priced research tier for a team. VC Deal Flow Signal is the better fit when you source technical startups and want a leading engineering signal refreshed weekly at angel-friendly pricing. For early-stage technical investing, the deciding factor is lead time: Tracxn's data lands after a round is announced, while the engineering signal fires weeks before. If sector research and emerging markets are the priority, Tracxn; if weekly early deal flow is the priority, the signal.",
+      },
+      {
+        heading: "A closer look at Tracxn's sector taxonomy",
+        body: "Tracxn's real moat is its taxonomy. Each company is tagged into a curated sector map with analyst notes and comparator lists, which makes it excellent for 'show me every company in this niche' questions, especially in India and Southeast Asia where conventional databases are thin. The trade is that curation takes time, so the freshest startups tend to lag their engineering activity. For mapping a market, that depth is worth paying for. For catching a breakout before anyone else tags it, a raw weekly signal is faster.",
+      },
+      {
+        heading: "Why lead time decides the debate for early-stage investors",
+        body: "For a pre-seed or seed investor, the whole game is seeing a company before the rest of the market. A curated database, however deep, only knows what has been announced, so by the time a breakout appears in Tracxn the round is already moving. Engineering acceleration is visible in public commit activity weeks earlier, which is the window where early-stage edge is actually made. That single difference, lead time, outweighs taxonomy depth for most early-stage technical investors.",
+      },
     ],
     featureTable: {
       tools: ["VC Deal Flow Signal", "Tracxn"],
@@ -622,6 +698,7 @@ export const alternatives: Alternative[] = [
     faqs: [
       { question: "Does Tracxn cover GitHub data?", answer: "Tracxn surfaces basic technology stack and engineering metadata in some profiles, but it is not a leading-signal engine — engineering acceleration is not a tracked dimension. The two products complement each other for technical-sector sourcing." },
       { question: "Is Tracxn better for emerging markets?", answer: "For analyst-curated coverage in India, Southeast Asia, and similar markets, yes — Tracxn has invested heavily in emerging-market depth. VC Deal Flow Signal is geography-agnostic but covers only technical startups with public GitHub activity, which is a smaller universe in some emerging markets." },
+      { question: "Does Tracxn track engineering activity?", answer: "Tracxn surfaces basic technology-stack and engineering metadata on some profiles, but engineering acceleration is not a tracked dimension, and it is not a leading-signal engine. For a code-side view of which technical startups are accelerating, a dedicated engineering signal like VC Deal Flow Signal is the complementary layer." },
     ],
     relatedSectors: ["ai-ml", "enterprise-saas", "fintech"],
   },
@@ -654,6 +731,18 @@ export const alternatives: Alternative[] = [
         heading: "Pricing",
         body: "Specter has tiered pricing scaled by usage and team size, with paid plans starting in the low-hundreds-per-month range and enterprise tiers above. VC Deal Flow Signal is a flat EUR 49/month for the Dashboard with a permanent free tier.",
       },
+      {
+        heading: "How to decide between Specter and VC Deal Flow Signal",
+        body: "Specter is the better fit when you source broadly across consumer, services, and B2B and want a multi-channel composite that surfaces early momentum regardless of whether a company has public engineering activity. VC Deal Flow Signal is the better fit when you source technical startups and want a single, deep, verifiable channel with a tighter lead-time story. The overlap is real on technical B2B, where both fire, but they are built for different mandates: broad momentum versus deep engineering signal.",
+      },
+      {
+        heading: "Broad momentum vs deep engineering signal",
+        body: "A composite score trades depth for coverage. Specter blends product launches, hiring, web traffic, and social mentions, which makes it useful across every sector but also makes it harder to know exactly why a company scored highly. A single-channel engineering signal is the opposite: it covers fewer companies but every data point is a public commit or contributor you can open in a browser and verify. For technical investors who want to interrogate the signal before acting, the deep channel is the more trustworthy one.",
+      },
+      {
+        heading: "What a composite score cannot tell you",
+        body: "A momentum composite tells you a company is being talked about, but not necessarily that the product is being built. Marketing and hiring can spike without a corresponding increase in actual shipping. GitHub activity is harder to fake and harder to spin: a sustained commit-velocity and contributor surge is direct evidence of engineering output. That distinction is why technical investors often treat a composite as a filter and the engineering signal as the confirmation.",
+      },
     ],
     featureTable: {
       tools: ["VC Deal Flow Signal", "Specter"],
@@ -674,6 +763,7 @@ export const alternatives: Alternative[] = [
     faqs: [
       { question: "Does Specter cover GitHub data?", answer: "Specter surfaces some engineering-side metadata but does not run a dedicated GitHub-engineering-acceleration signal. The two products are complements, not substitutes, for technical-sector sourcing." },
       { question: "Is Specter cheaper than VC Deal Flow Signal?", answer: "No. Specter's paid plans start in the low-hundreds-per-month range, scaling to enterprise tiers. VC Deal Flow Signal is a flat EUR 49/month with a permanent free tier — it is the cheapest paid layer in the category for technical-sector sourcing." },
+      { question: "Can Specter detect GitHub engineering acceleration?", answer: "Specter surfaces some engineering-side metadata, but it does not run a dedicated GitHub acceleration signal, and its momentum score is built across many non-code channels. For a focused, verifiable read on engineering activity specifically, VC Deal Flow Signal is the complementary tool." },
     ],
     relatedSectors: ["ai-ml", "enterprise-saas", "developer-tools"],
   },
@@ -705,6 +795,14 @@ export const alternatives: Alternative[] = [
       {
         heading: "Using them together",
         body: "Founders raising a technical-startup round can use both: OpenVC to identify investors that match their thesis, plus VC Deal Flow Signal's free tier to monitor whether their own engineering signals are firing visibly. Investors can use both: VC Deal Flow Signal to surface startups, plus OpenVC for the inverse view of how founders are positioning themselves in the same market.",
+      },
+      {
+        heading: "How to decide between OpenVC and VC Deal Flow Signal",
+        body: "The answer depends entirely on which side of the fundraising market you sit on. Founders raising a round should use OpenVC to map which investors match their stage, sector, and geography. Investors sourcing technical startups should use VC Deal Flow Signal to see which companies are accelerating before they raise. The products are mirror images: OpenVC helps founders find investors, VC Deal Flow Signal helps investors find founders early. Almost no one needs to choose between them, because almost no one sits on both sides at once.",
+      },
+      {
+        heading: "Why they almost never compete for the same user",
+        body: "OpenVC's database is investors; VC Deal Flow Signal's data is startups. A founder's workflow is outbound, identifying who to pitch; an investor's workflow is inbound-first, identifying what to evaluate. The two tools optimise opposite sides of the same transaction, which is why they are complements in the market rather than competitors. The only real overlap is a technical founder who uses OpenVC to raise while also checking the free Signal Report to see whether their own engineering activity is firing visibly enough to attract inbound interest.",
       },
     ],
     featureTable: {
@@ -749,6 +847,18 @@ export const alternatives: Alternative[] = [
       { heading: "Signal type", body: "SignalRank uses funding patterns, prior round timing, and team or company graduation signals to model probability of late-stage success. VC Deal Flow Signal uses GitHub commit velocity, contributor growth, and infrastructure scaling to model probability of imminent fundraise. Different inputs, different outputs." },
       { heading: "Output and access", body: "SignalRank is primarily an index-fund product — its output is portfolio allocation, not individual company alerts. VC Deal Flow Signal is a SaaS tool — its output is a weekly ranked list of breakout startups plus a real-time Dashboard. They are not substitutes for the same workflow." },
       { heading: "Who should use which", body: "SignalRank is for late-stage thesis validation, fund-of-funds, and passive index exposure. VC Deal Flow Signal is for any active investor sourcing technical pre-seed, seed, or Series A deals. Most active investors will get more value from VC Deal Flow Signal; LPs and passive allocators may get more from SignalRank." },
+      {
+        heading: "How to decide between SignalRank and VC Deal Flow Signal",
+        body: "SignalRank is a late-stage thesis-validation and index-exposure product: it scores already-Series-A companies on their odds of reaching Series B. VC Deal Flow Signal is an early-stage sourcing tool that surfaces technical startups before they raise. They answer questions at opposite ends of the funnel, so the decision is not 'which is better' but 'which stage are you allocating to'. Active pre-seed and seed investors get more from the leading signal; passive late-stage allocators get more from SignalRank.",
+      },
+      {
+        heading: "Early-stage vs late-stage: the funnel split",
+        body: "The two products do not share a single workflow step. SignalRank operates on companies that already have Series A funding and predicts graduation; VC Deal Flow Signal operates on companies that have not raised yet and predicts imminent fundraise from engineering activity. An investor cannot use a Series-B graduation model to source pre-seed deals, any more than they can use a pre-fundraise signal to validate a late-stage thesis. They are non-overlapping tools for non-overlapping decisions.",
+      },
+      {
+        heading: "Can a predictive model replace a leading signal?",
+        body: "No, and the two do not try to replace each other. A graduation model optimises for a different outcome, Series-B success, using different inputs, funding patterns and round timing. A leading engineering signal optimises for imminent fundraise probability using public code activity. They sometimes correlate, but correlation does not make them substitutes. A firm running a hybrid strategy might use SignalRank's published methodology as one input on late-stage opportunities while running a leading signal for early-stage sourcing.",
+      },
     ],
     featureTable: {
       tools: ["VC Deal Flow Signal", "SignalRank"],
@@ -770,6 +880,7 @@ export const alternatives: Alternative[] = [
       { question: "Is VC Deal Flow Signal an alternative to SignalRank?", answer: "Not really — they cover different stages and different decisions. VC Deal Flow Signal is for active early-stage sourcing; SignalRank is for passive late-stage index exposure. They can coexist in a fund-of-funds or hybrid strategy but they don't substitute for one another." },
       { question: "Does SignalRank source pre-seed deals?", answer: "No. SignalRank's model operates on already-Series-A companies and predicts their odds of reaching Series B. For pre-seed and seed sourcing, you need a different signal type — VC Deal Flow Signal's engineering-acceleration signal is empirically validated for that stage." },
       { question: "Can I get a SignalRank-style score from VC Deal Flow Signal?", answer: "Different signal type. VC Deal Flow Signal scores engineering acceleration relative to sector baseline and historical fundraise correlation. It doesn't predict Series-B graduation probability — it predicts imminent fundraise probability for early-stage technical startups." },
+      { question: "Does SignalRank help with pre-seed sourcing?", answer: "No. SignalRank's model operates on already-Series-A companies and predicts their odds of reaching Series B. For pre-seed and seed sourcing you need a different signal type, one that reads pre-fundraise activity like engineering acceleration, which is the gap VC Deal Flow Signal fills." },
     ],
     relatedSectors: ["ai-ml", "enterprise-saas", "developer-tools"],
   },
