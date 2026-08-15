@@ -2794,6 +2794,25 @@ check(
 );
 
 // ---------------------------------------------------------------------------
+// Momentum page section headings (2026-08-16 traffic audit, HTML-semantics
+// item). The /momentum/[org]/[repo] template's content cards (tier, metrics,
+// tracked-as, untracked status) carried NO H2s, only the CTA cards were
+// headed, so the page read as a flat stack with no sectioning for crawlers
+// or answer engines. Each content card must keep its H2.
+// ---------------------------------------------------------------------------
+check(
+  "app/momentum/[org]/[repo]/page.tsx",
+  "Momentum pages lost their section H2s (Momentum tier / Signal metrics / Tracked as / Not yet tracked); the template reverted to a flat card stack.",
+  (s) =>
+    s.includes("Momentum tier") &&
+    s.includes("Signal metrics") &&
+    s.includes("Tracked as") &&
+    s.includes("Not yet tracked") &&
+    (s.match(/<h2/g) ?? []).length >= 7,
+  "re-section the page: add H2s for the tier card, metrics grid, tracked-as card, and untracked status card",
+);
+
+// ---------------------------------------------------------------------------
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +

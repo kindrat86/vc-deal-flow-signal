@@ -174,11 +174,11 @@ export default async function MomentumPage({
       {startup && tierData ? (
         <>
           <section className="mb-8 rounded-2xl border border-slate-800 bg-gradient-to-br from-slate-900/80 to-slate-950 p-7 sm:p-9">
+            <h2 className="text-xl font-semibold text-gray-100 mb-3">
+              Momentum tier
+            </h2>
             <div className="flex flex-col sm:flex-row items-start sm:items-end gap-4 sm:gap-6 mb-4">
               <div>
-                <p className="text-xs text-gray-400 uppercase tracking-wider mb-1 font-semibold">
-                  Momentum tier
-                </p>
                 <p className={`text-5xl sm:text-6xl font-bold leading-none ${tierData.color}`}>
                   {tierData.label}
                 </p>
@@ -197,17 +197,18 @@ export default async function MomentumPage({
             </p>
           </section>
 
-          <section className="mb-8 grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
-            <Stat label="Velocity (14d)" value={String(startup.commitVelocity14d)} />
-            <Stat label="Contributors" value={String(startup.contributors)} />
-            <Stat label="Contributor growth" value={startup.contributorGrowth} />
-            <Stat label="New repos" value={String(startup.newRepos)} />
+          <section className="mb-8" aria-label="Signal metrics">
+            <h2 className="text-xl font-semibold text-gray-100 mb-3">Signal metrics</h2>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 sm:gap-4">
+              <Stat label="Velocity (14d)" value={String(startup.commitVelocity14d)} />
+              <Stat label="Contributors" value={String(startup.contributors)} />
+              <Stat label="Contributor growth" value={startup.contributorGrowth} />
+              <Stat label="New repos" value={String(startup.newRepos)} />
+            </div>
           </section>
 
           <section className="mb-8 rounded-xl border border-slate-800 bg-slate-900/50 p-5 sm:p-6">
-            <p className="text-xs text-gray-400 uppercase tracking-wider mb-2 font-semibold">
-              Tracked as
-            </p>
+            <h2 className="text-xl font-semibold text-gray-100 mb-2">Tracked as</h2>
             <p className="text-lg font-semibold text-gray-100 mb-1">{startup.name}</p>
             <p className="text-sm text-gray-400 mb-3">{startup.description}</p>
             <p className="text-xs text-gray-400">
@@ -242,9 +243,7 @@ export default async function MomentumPage({
       ) : (
         <>
           <section className="mb-8 rounded-2xl border border-slate-800 bg-slate-900/50 p-7 sm:p-9">
-            <p className="text-xs text-gray-400 uppercase tracking-wider mb-1 font-semibold">
-              Status
-            </p>
+            <h2 className="text-xl font-semibold text-gray-100 mb-1">Not yet tracked</h2>
             <p className="text-3xl font-bold text-slate-300 mb-3">Untracked</p>
             <p className="text-gray-400 text-sm leading-relaxed">
               We don&rsquo;t have a tracked-startup record matching{" "}
