@@ -2506,6 +2506,113 @@ check(
   ]);
 }
 
+// §27 harmonic entity-cluster internal linking (2026-08-17, audit PA-30 win):
+// 5 of the 12 /vs/harmonic-ai-* pages had <=4 in-links (specter/signalrank/
+// cb-insights had 1) because token-overlap linking cannot see entity
+// relationships, and the donor templates (compare/answers/alternatives/blog)
+// never rendered the link graph at all. Fix: equity-aware entity-cluster
+// pass in build-internal-links.ts (weakest /vs/ pages get link slots first)
+// + RelatedLinks rendered on the four donor templates. A reverted tree
+// starves the harmonic cluster back to 1-4 in-links and drops page authority
+// on the highest-value comparison cluster (harmonic-vs-pitchbook alone holds
+// 3.4K impressions @ pos 4.7).
+{
+  const builder = read("scripts/build-internal-links.ts");
+  if (builder === null) {
+    failures.push("§27 scripts/build-internal-links.ts missing");
+  } else {
+    for (const needle of ["ENTITY_TOKENS", "Head-to-head comparisons"]) {
+      if (!builder.includes(needle)) {
+        failures.push(
+          `§27 entity-cluster pass lost from build-internal-links.ts (needle: ${needle})\n` +
+            `    fix:  restore the equity-aware entity-cluster layer (audit PA-30 win, 2026-08-17)`,
+        );
+      }
+    }
+  }
+
+  // The four donor templates carry the harmonic-adjacent pages
+  // (/alternatives/harmonic-ai, /answers/free-harmonic-ai-*, /compare/*-harmonic-*,
+  // /blog/source-startup-deals-before-crunchbase) and must render the graph.
+  const donorRender = (rel: string, pathPrefix: string) => {
+    const s = read(rel);
+    if (s === null) {
+      failures.push(`§27 ${rel} missing`);
+      return;
+    }
+    if (!s.includes("RelatedLinks") || !s.includes(`getRelatedGroups(\`${pathPrefix}`)) {
+      failures.push(
+        `§27 ${rel} no longer renders RelatedLinks for ${pathPrefix}\n` +
+          `    fix:  restore the RelatedLinks render call (audit PA-30 win, 2026-08-17)`,
+      );
+    }
+  };
+  donorRender("app/compare/[slug]/page.tsx", "/compare/");
+  donorRender("app/answers/[slug]/page.tsx", "/answers/");
+  donorRender("app/alternatives/[slug]/page.tsx", "/alternatives/");
+  donorRender("app/blog/[slug]/page.tsx", "/blog/");
+
+  // In-degree floor: every live /vs/harmonic-ai-* page must hold >=10 in-links
+  // in the committed graph. Measured after the fix: weakest = 16. Before the
+  // fix, five pages sat at 1-4. (harmonic-ai-vs-affinity is excluded: it is
+  // canonicalized to affinity-vs-harmonic-ai and not in the sitemap.)
+  const linksRaw = read("data/internal-links.json");
+  if (linksRaw !== null) {
+    try {
+      const graph = JSON.parse(linksRaw) as Record<string, Array<{ links?: Array<{ href: string }> }>>;
+      const HARMONIC_VS = [
+        "/vs/fund-momentum-vs-harmonic-ai",
+        "/vs/harmonic-ai-vs-crunchbase",
+        "/vs/harmonic-ai-vs-pitchbook",
+        "/vs/harmonic-ai-vs-forager-ai",
+        "/vs/harmonic-ai-vs-dealroom",
+        "/vs/harmonic-ai-vs-tracxn",
+        "/vs/openvc-vs-harmonic-ai",
+        "/vs/affinity-vs-harmonic-ai",
+        "/vs/specter-vs-harmonic-ai",
+        "/vs/signalrank-vs-harmonic-ai",
+        "/vs/harmonic-ai-vs-cb-insights",
+      ];
+      const indeg: Record<string, number> = {};
+      for (const groups of Object.values(graph)) {
+        if (!Array.isArray(groups)) continue;
+        for (const g of groups) {
+          for (const l of g.links || []) indeg[l.href] = (indeg[l.href] || 0) + 1;
+        }
+      }
+      for (const h of HARMONIC_VS) {
+        if ((indeg[h] || 0) < 10) {
+          failures.push(
+            `§27 ${h} dropped to ${indeg[h] || 0} in-links (floor: 10)\n` +
+              `    file: data/internal-links.json\n` +
+              `    fix:  rerun scripts/build-internal-links.ts (entity-cluster pass must survive regeneration)`,
+          );
+        }
+      }
+    } catch {
+      failures.push("§27 data/internal-links.json is not valid JSON");
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// §27 embed widget brand (2026-08-15, brand-search win): the POPULATED
+// Engineering Acceleration Watch widget must render the GitDealFlow brand and
+// a branded CTA. Verified live 2026-08-15: the populated state showed only
+// "Engineering Acceleration Watch" with no brand, so a newsletter cross-promo
+// placement would drive zero brand searches. (The empty state already had it.)
+// ---------------------------------------------------------------------------
+check(
+  "app/embed/weekly/route.ts",
+  "embed widget populated state must show the GitDealFlow brand + branded CTA",
+  (s) =>
+    s.includes(
+      '<span class="brand">GitDealFlow · Engineering Acceleration Watch</span>',
+    ) &&
+    s.includes("See the full 10 + scorecard at GitDealFlow →"),
+  "restore the GitDealFlow brand span and branded CTA in the populated widget header/footer",
+);
+
 // ---------------------------------------------------------------------------
 if (failures.length) {
   console.error(
