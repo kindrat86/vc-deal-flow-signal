@@ -86,8 +86,20 @@ const STAT_BADGES: Record<string, { label: string; value: string; color: string 
   "stats-m16": { label: "Deals meeting or exceeding synergy targets", value: "60%", color: "#34d399" },
   "stats-m17": { label: "Announcement to close, average", value: "4-6 months", color: "#60a5fa" },
   "stats-m18": { label: "Engineering signal lead time", value: "3-6 weeks", color: "#fbbf24" },
-  "stats-m19": { label: "Tracked sectors for deal signals", value: "20", color: "#818cf8" },
-  "stats-m20": { label: "Correlation rate, signal to announcement", value: "72%", color: "#fbbf24" },
+  "stats-m19": { label: "Tracked sectors for deal signals", value: "15", color: "#818cf8" },
+  "stats-m20": { label: "Top-decile signal precision", value: "~65%", color: "#34d399" },
+  // /stats hub (signals.gitdealflow.com) cards stat-s1..s10. Keep in sync with
+  // pseo-site/public/stats/index.html (the human companion of /stats.json).
+  "stats-s1": { label: "Tracked startup organizations", value: "350+", color: "#60a5fa" },
+  "stats-s2": { label: "Tracked industry sectors", value: "15", color: "#818cf8" },
+  "stats-s3": { label: "Engineering signal lead time", value: "3-6 weeks", color: "#fbbf24" },
+  "stats-s4": { label: "Top-decile signal precision", value: "~65%", color: "#34d399" },
+  "stats-s5": { label: "Global M&A volume Q1 2026", value: "$861.1B", color: "#34d399" },
+  "stats-s6": { label: "Global M&A deal value 2025", value: "$4.9T", color: "#34d399" },
+  "stats-s7": { label: "M&A activity increase in 2025", value: "+43%", color: "#34d399" },
+  "stats-s8": { label: "Free API tools (MCP server)", value: "6", color: "#60a5fa" },
+  "stats-s9": { label: "Programmatic access surfaces", value: "5", color: "#60a5fa" },
+  "stats-s10": { label: "Scout Score range", value: "0-100", color: "#a78bfa" },
 };
 
 export async function GET(

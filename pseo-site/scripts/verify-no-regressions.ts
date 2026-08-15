@@ -2340,6 +2340,94 @@ check(
 }
 
 // ---------------------------------------------------------------------------
+// §24 Stats-hub badge + claim integrity (2026-08-16). Three invariants:
+//   (a) the /stats hub (signals) references exactly the badges that exist:
+//       every stats-s<N> img in public/stats/index.html must be a key in
+//       STAT_BADGES, or the card renders the grey "not tracked" fallback.
+//   (b) the same for the landing hub's stats-m<N> family (which the §20
+//       count check covers structurally; here we assert the cross-file sync
+//       invariant for the labels this fix corrected).
+//   (c) the "72% correlation" claim is retired everywhere: it is not
+//       grounded in the SSRN panel language. The grounded numbers are
+//       ~65% top-decile precision / 219 observations / 55 startups. Any
+//       stats surface reintroducing it must be updated to the grounded
+//       claim, not re-added verbatim.
+{
+  const hubStats = read("public/stats/index.html");
+  const badgeRoute = read("app/api/badge/[name]/route.tsx");
+  const statsJson = read("app/stats.json/route.ts");
+  if (hubStats !== null && badgeRoute !== null) {
+    // (a) advertised badges must exist in STAT_BADGES
+    const hubBadgeIds = [...hubStats.matchAll(/stats-(s\d+)\.svg/g)].map(
+      (m) => `stats-${m[1] as string}`,
+    );
+    const uniqueHubBadgeIds = [...new Set(hubBadgeIds)];
+    if (uniqueHubBadgeIds.length !== 10) {
+      failures.push(
+        `§24 /stats hub badge set changed: expected 10 stats-s<N> badge refs, found ${uniqueHubBadgeIds.length}`,
+      );
+    }
+    for (const id of uniqueHubBadgeIds) {
+      if (!badgeRoute.includes(`"${id}":`)) {
+        failures.push(
+          `§24 /stats hub badge ${id} not in STAT_BADGES: the card renders the grey "not tracked" fallback`,
+        );
+      }
+    }
+    // (b) landing hub family stays wired (§20 counts the 20 m-entries; here we
+    // spot-assert the entries this fix corrected stay present and grounded.
+    const advertisedIdsInMap = ["stats-m1", "stats-m19", "stats-m20"];
+    for (const id of advertisedIdsInMap) {
+      if (!badgeRoute.includes(`"${id}":`)) {
+        failures.push(
+          `§24 STAT_BADGES lost the ${id} entry the landing /stats hub advertises`,
+        );
+      }
+    }
+    if (!badgeRoute.includes('"stats-m19": { label: "Tracked sectors for deal signals", value: "15"')) {
+      failures.push(
+        `§24 stats-m19 must say 15 sectors (live /api/signals.json truth), not a stale count`,
+      );
+    }
+    // (c) the ungrounded "72% correlation" claim stays retired. Grounded
+    // language: ~65% top-decile precision, 219 obs / 55 startups, SSRN 6606558.
+    if (hubStats.includes("72% correlation") || badgeRoute.includes("72%")) {
+      failures.push(
+        `§24 ungrounded "72% correlation" claim reappeared: use ~65% top-decile precision (219 obs / 55 startups, SSRN 6606558)`,
+      );
+    }
+    if (
+      !badgeRoute.includes(
+        '"stats-s4": { label: "Top-decile signal precision", value: "~65%"',
+      )
+    ) {
+      failures.push(
+        `§24 stats-s4 badge must carry the grounded ~65% top-decile precision, not a correlation rate`,
+      );
+    }
+    if (statsJson !== null && !statsJson.includes("topDecilePrecisionPct: 65")) {
+      failures.push(
+        `§24 stats.json PANEL lost topDecilePrecisionPct: 65, the canonical grounded precision constant`,
+      );
+    }
+    // Landing mirrors (read() resolves ../ outside ROOT; skipped silently in
+    // deploy archives where only the pseo-site subtree exists.
+    for (const rel of [
+      "../landing/stats/index.html",
+      "../landing/de/stats/index.html",
+      "../landing/es/stats/index.html",
+    ]) {
+      const s = read(rel);
+      if (s !== null && s.includes("72% correlation")) {
+        failures.push(
+          `§24 ungrounded "72% correlation" claim reappeared in ${rel}`,
+        );
+      }
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +
