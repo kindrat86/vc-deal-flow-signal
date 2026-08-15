@@ -1,163 +1,235 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:media="http://search.yahoo.com/mrss/">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:dc="http://purl.org/dc/elements/1.1/" xmlns:media="http://search.yahoo.com/mrss/">
   <channel>
     <title>GitDealFlow</title>
     <link>https://gitdealflow.com</link>
-    <description>GitDealFlow flags startups accelerating on GitHub before the round. Weekly signals from 350+ orgs for investors who want leading indicators, not lagging.</description>
+    <description>GitDealFlow: Startup Signals 21-47 Days Before the Round</description>
     <language>en</language>
+    <lastBuildDate>Sat, 15 Aug 2026 18:04:16 GMT</lastBuildDate>
+    <generator>Hermes WebSub Feed Generator</generator>
+    <ttl>60</ttl>
     <atom:link href="https://gitdealflow.com/feed.xml" rel="self" type="application/rss+xml"/>
+    <atom:link href="https://gitdealflow.com/rss.xml" rel="alternate" type="application/rss+xml"/>
     <atom:link href="https://gitdealflow.com/feed.json" rel="alternate" type="application/json"/>
     <atom:link href="https://pubsubhubbub.appspot.com/" rel="hub"/>
     <atom:link href="https://pubsubhubbub.superfeedr.com/" rel="hub"/>
     <atom:link href="https://websubhub.com/" rel="hub"/>
-    <lastBuildDate>Sat, 15 Aug 2026 11:02:14 GMT</lastBuildDate>
-  <item>
-    <title>GitDealFlow: Startup Signals 21-47 Days Before the Round</title>
-    <link>https://gitdealflow.com</link>
-    <guid isPermaLink="true">https://gitdealflow.com</guid>
-    <description><![CDATA[The Velocity Verdict: GitDealFlow reads 350+ startup GitHub orgs, flags the ones accelerating, and sends you five names every Sunday, 21 to 47 days before the round.]]></description>
-    <pubDate>Sat, 15 Aug 2026 11:02:14 GMT</pubDate>
-    <enclosure url="https://signals.gitdealflow.com/opengraph-image" type="image/png" length="0"/>
-  </item>
-  <item>
-    <title>About VC Deal Flow Signal, Why It Exists and Why You Might Trust It | VC Deal Flow Signal</title>
-    <link>https://signals.gitdealflow.com/about</link>
-    <guid isPermaLink="true">https://signals.gitdealflow.com/about</guid>
-    <description><![CDATA[Why this exists, what it tracks, and why the signal is built to be checked in public.]]></description>
-    <pubDate>Sat, 15 Aug 2026 11:02:14 GMT</pubDate>
-  </item>
-  <item>
-    <title>Pricing, Start free, go deeper only when you need it | VC Deal Flow Signal</title>
-    <link>https://signals.gitdealflow.com/pricing</link>
-    <guid isPermaLink="true">https://signals.gitdealflow.com/pricing</guid>
-    <description><![CDATA[VC Deal Flow Signal pricing, start free, test one sector, work the full field, or go deeper only when the question gets expensive. Research partnership layers sit above the weekly workflow, not in front of it.]]></description>
-    <pubDate>Sat, 15 Aug 2026 11:02:14 GMT</pubDate>
-  </item>
-  <item>
-    <title>Methodology, How We Measure Startup Engineering Acceleration | VC Deal Flow Signal</title>
-    <link>https://signals.gitdealflow.com/methodology</link>
-    <guid isPermaLink="true">https://signals.gitdealflow.com/methodology</guid>
-    <description><![CDATA[How GitDealFlow measures GitHub engineering acceleration: data sources, formulas, signal rules, update cadence, and the proof behind the timing-first thesis.]]></description>
-    <pubDate>Sat, 15 Aug 2026 11:02:14 GMT</pubDate>
-    <enclosure url="https://signals.gitdealflow.com/opengraph-image?d517d1de5cf81f19" type="image/png" length="0"/>
-  </item>
-  <item>
-    <title>The Velocity Verdict Cheat Sheet: the 14-day pattern that predicts a raise | GitDealFlow</title>
-    <link>https://gitdealflow.com/cheatsheet</link>
-    <guid isPermaLink="true">https://gitdealflow.com/cheatsheet</guid>
-    <description><![CDATA[The three signals, the 14-day window, and the 21-to-47-day lead time, on one page. Free.]]></description>
-    <pubDate>Sat, 15 Aug 2026 11:02:14 GMT</pubDate>
-    <enclosure url="https://signals.gitdealflow.com/opengraph-image" type="image/png" length="0"/>
-  </item>
-  <item>
-    <title>Sample report: GitDealFlow built on VC Deal Flow Signal</title>
-    <link>https://gitdealflow.com/report</link>
-    <guid isPermaLink="true">https://gitdealflow.com/report</guid>
-    <description><![CDATA[See what GitDealFlow surfaces before you sign up, the startups heating up early, and how it connects back to the VC Deal Flow Signal proof stack.]]></description>
-    <pubDate>Sat, 15 Aug 2026 11:02:14 GMT</pubDate>
-    <enclosure url="https://signals.gitdealflow.com/opengraph-image" type="image/png" length="0"/>
-  </item>
-  <item>
-    <title>VC Deal Flow Signal: Find breakout startups via GitHub momentum</title>
-    <link>https://signals.gitdealflow.com</link>
-    <guid isPermaLink="true">https://signals.gitdealflow.com</guid>
-    <description><![CDATA[A deal-flow signal tool for investors, not a fund. See which startups are accelerating before the round feels obvious, public engineering signals, calmer timing, and direct proof.]]></description>
-    <pubDate>Mon, 06 Jul 2026 09:05:22 GMT</pubDate>
-    <enclosure url="https://signals.gitdealflow.com/opengraph-image?d517d1de5cf81f19" type="image/png" length="0"/>
-  </item>
-  <item>
-    <title>VC Deal Flow Signal, 简体中文 (Chinese (Simplified))</title>
-    <link>https://signals.gitdealflow.com/zh</link>
-    <guid isPermaLink="true">https://signals.gitdealflow.com/zh</guid>
-    <description><![CDATA[VC Deal Flow Signal（GitDealFlow）通过追踪 GitHub 公开数据中的提交速率、贡献者增长和仓库扩张，识别处于工程加速期的初创公司。我们的研究表明，此类信号通常在融资公告前 3 至 6 周出现。方法论已在 SSRN 公开发表（DOI 10.2139/ssrn.6606558，CC BY 4]]></description>
-    <pubDate>Sat, 15 Aug 2026 11:02:14 GMT</pubDate>
-    <enclosure url="https://signals.gitdealflow.com/api/og/locale/zh" type="image/png" length="0"/>
-  </item>
-  <item>
-    <title>Year in Review, Engineering Signals &amp; Venture Patterns | VC Deal Flow Signal</title>
-    <link>https://signals.gitdealflow.com/year-in-review</link>
-    <guid isPermaLink="true">https://signals.gitdealflow.com/year-in-review</guid>
-    <description><![CDATA[Annual editorial roundups of engineering signals and venture patterns.]]></description>
-    <pubDate>Sat, 15 Aug 2026 11:02:14 GMT</pubDate>
-  </item>
-  <item>
-    <title>Works with, CRM &amp; Workflow Integrations | VC Deal Flow Signal</title>
-    <link>https://signals.gitdealflow.com/works-with</link>
-    <guid isPermaLink="true">https://signals.gitdealflow.com/works-with</guid>
-    <description><![CDATA[CRM and workflow tool integrations for VC Deal Flow Signal.]]></description>
-    <pubDate>Sat, 15 Aug 2026 11:02:14 GMT</pubDate>
-  </item>
-  <item>
-    <title>Underwriting Receipts, Public Ledger of Validated GitHub Signals · €0 | VC Deal Flow Signal</title>
-    <link>https://signals.gitdealflow.com/wins</link>
-    <guid isPermaLink="true">https://signals.gitdealflow.com/wins</guid>
-    <description><![CDATA[Every venture-backed startup our signal pattern surfaced before the round announcement. Public ledger, post-hoc validated against funding news.]]></description>
-    <pubDate>Sat, 15 Aug 2026 11:02:14 GMT</pubDate>
-  </item>
-  <item>
-    <title>Wikipedia Citation Helper | VC Deal Flow Signal</title>
-    <link>https://signals.gitdealflow.com/wikipedia</link>
-    <guid isPermaLink="true">https://signals.gitdealflow.com/wikipedia</guid>
-    <description><![CDATA[Copy-paste {{cite journal}} / {{cite web}} snippets for paper, dataset, every research finding. CC BY 4.0.]]></description>
-    <pubDate>Sat, 15 Aug 2026 11:02:14 GMT</pubDate>
-  </item>
-  <item>
-    <title>Wikidata Knowledge Panel claim, VC Deal Flow Signal (Q139376302) | VC Deal Flow Signal</title>
-    <link>https://signals.gitdealflow.com/wikidata</link>
-    <guid isPermaLink="true">https://signals.gitdealflow.com/wikidata</guid>
-    <description><![CDATA[Bidirectional binding between Wikidata Q139376302 and signals.gitdealflow.com. SPARQL-verifiable.]]></description>
-    <pubDate>Sat, 15 Aug 2026 11:02:14 GMT</pubDate>
-  </item>
-  <item>
-    <title>Weekly Signal Reports, Engineering Acceleration Archive | VC Deal Flow Signal</title>
-    <link>https://signals.gitdealflow.com/weekly</link>
-    <guid isPermaLink="true">https://signals.gitdealflow.com/weekly</guid>
-    <description><![CDATA[Archive of weekly startup engineering acceleration reports from VC Deal Flow Signal. Each report ranks the top 10 startups by GitHub commit velocity change across all sectors.]]></description>
-    <pubDate>Sat, 15 Aug 2026 11:02:14 GMT</pubDate>
-    <enclosure url="https://signals.gitdealflow.com/opengraph-image?d517d1de5cf81f19" type="image/png" length="0"/>
-  </item>
-  <item>
-    <title>Watch, VC Deal Flow Signal in 90 seconds (silent demo) | VC Deal Flow Signal</title>
-    <link>https://signals.gitdealflow.com/watch</link>
-    <guid isPermaLink="true">https://signals.gitdealflow.com/watch</guid>
-    <description><![CDATA[Silent visual walkthrough of the VC Deal Flow Signal engine. No audio, no narrator. Dashboard breathing in real time.]]></description>
-    <pubDate>Sat, 15 Aug 2026 11:02:14 GMT</pubDate>
-  </item>
-  <item>
-    <title>How to Spot a Series A Weeks Before the Deck Lands, 12-Minute Walkthrough | VC Deal Flow Signal</title>
-    <link>https://signals.gitdealflow.com/walkthrough</link>
-    <guid isPermaLink="true">https://signals.gitdealflow.com/walkthrough</guid>
-    <description><![CDATA[If commit-velocity acceleration is the most leading signal in VC, every other deal-flow tool becomes a lagging indicator. Here is the proof.]]></description>
-    <pubDate>Sat, 15 Aug 2026 11:02:14 GMT</pubDate>
-  </item>
-  <item>
-    <title>Use Cases, Angels, VC Analysts, Fund of Funds | VC Deal Flow Signal</title>
-    <link>https://signals.gitdealflow.com/use-cases</link>
-    <guid isPermaLink="true">https://signals.gitdealflow.com/use-cases</guid>
-    <description><![CDATA[How angel investors, VC analysts, and fund-of-funds teams use GitDealFlow in real sourcing, diligence, and monitoring workflows, and how those workflows route into proof, compare, and buyer pages.]]></description>
-    <pubDate>Sat, 15 Aug 2026 11:02:14 GMT</pubDate>
-    <enclosure url="https://signals.gitdealflow.com/opengraph-image?d517d1de5cf81f19" type="image/png" length="0"/>
-  </item>
-  <item>
-    <title>Tweet Teardown, €1. One startup. 24-hour signal call. | VC Deal Flow Signal</title>
-    <link>https://signals.gitdealflow.com/tweet-teardown</link>
-    <guid isPermaLink="true">https://signals.gitdealflow.com/tweet-teardown</guid>
-    <description><![CDATA[€1 once, name a startup, get a tweet-length teardown of its engineering momentum in 24h.]]></description>
-    <pubDate>Sat, 15 Aug 2026 11:02:14 GMT</pubDate>
-  </item>
-  <item>
-    <title>Trending Startups, Top Engineering Acceleration Across All Sectors | VC Deal Flow Signal</title>
-    <link>https://signals.gitdealflow.com/trending</link>
-    <guid isPermaLink="true">https://signals.gitdealflow.com/trending</guid>
-    <description><![CDATA[Top 20 startups ranked by GitHub engineering acceleration across all sectors. Updated weekly.]]></description>
-    <pubDate>Sat, 15 Aug 2026 11:02:14 GMT</pubDate>
-  </item>
-  <item>
-    <title>Trends, Engineering Signal Leaderboards (2026) | VC Deal Flow Signal</title>
-    <link>https://signals.gitdealflow.com/trend</link>
-    <guid isPermaLink="true">https://signals.gitdealflow.com/trend</guid>
-    <description><![CDATA[Editorial engineering trend leaderboards across technical categories.]]></description>
-    <pubDate>Sat, 15 Aug 2026 11:02:14 GMT</pubDate>
-  </item>
+    <item>
+      <title>GitDealFlow: Startup Signals 21-47 Days Before the Round</title>
+      <link>https://gitdealflow.com</link>
+      <guid isPermaLink="true">https://gitdealflow.com</guid>
+      <description>GitDealFlow flags startups accelerating on GitHub before the round. Weekly signals from 350+ orgs for investors who want leading indicators, not lagging.</description>
+      <dc:creator>GitDealFlow</dc:creator>
+      <pubDate>Sat, 15 Aug 2026 18:04:16 GMT</pubDate>
+      <media:content url="https://signals.gitdealflow.com/opengraph-image" medium="image"/>
+    </item>
+    <item>
+      <title>Does Harmonic Integrate with Affinity? Yes, Native Sync</title>
+      <link>https://gitdealflow.com/answers/does-harmonic-integrate-with-affinity</link>
+      <guid isPermaLink="true">https://gitdealflow.com/answers/does-harmonic-integrate-with-affinity</guid>
+      <description>Yes. Harmonic.ai has a native Affinity integration with two-way sync: push newly founded companies to Affinity, and reverse-sync relationship context back to Harmonic. How it works and how to set it up.</description>
+      <dc:creator>GitDealFlow</dc:creator>
+      <pubDate>Fri, 14 Aug 2026 21:00:00 GMT</pubDate>
+      <media:content url="https://signals.gitdealflow.com/opengraph-image" medium="image"/>
+    </item>
+    <item>
+      <title>Deal Flow in Europe: How Angels and VCs Source Deals</title>
+      <link>https://gitdealflow.com/answers/deal-flow-in-europe</link>
+      <guid isPermaLink="true">https://gitdealflow.com/answers/deal-flow-in-europe</guid>
+      <description>How European angels and VCs build deal flow in 2026: Dealroom, local networks, accelerators, and GitHub engineering signal. The tools, the costs, and the forward-looking layer most European investors miss.</description>
+      <dc:creator>GitDealFlow</dc:creator>
+      <pubDate>Fri, 14 Aug 2026 21:00:00 GMT</pubDate>
+      <media:content url="https://signals.gitdealflow.com/opengraph-image" medium="image"/>
+    </item>
+    <item>
+      <title>How to Get Scouted on GitHub: The 2026 Playbook</title>
+      <link>https://gitdealflow.com/answers/how-to-get-scouted-on-github</link>
+      <guid isPermaLink="true">https://gitdealflow.com/answers/how-to-get-scouted-on-github</guid>
+      <description>How to get scouted on GitHub in 2026: build in public, contribute to breakout repos, and get on scouts</description>
+      <dc:creator>GitDealFlow</dc:creator>
+      <pubDate>Fri, 14 Aug 2026 21:00:00 GMT</pubDate>
+      <media:content url="https://signals.gitdealflow.com/opengraph-image" medium="image"/>
+    </item>
+    <item>
+      <title>Deep Space Startup Deal Flow: Where Space-Tech Deals Come From</title>
+      <link>https://gitdealflow.com/answers/deep-space-startup-deal-flow</link>
+      <guid isPermaLink="true">https://gitdealflow.com/answers/deep-space-startup-deal-flow</guid>
+      <description>Where deep space startup deal flow comes from in 2026: mission software, ground stations, debris tracking, and EO data. The software layer is the investable wedge, and GitHub signal finds it early.</description>
+      <dc:creator>GitDealFlow</dc:creator>
+      <pubDate>Fri, 14 Aug 2026 21:00:00 GMT</pubDate>
+      <media:content url="https://signals.gitdealflow.com/opengraph-image" medium="image"/>
+    </item>
+    <item>
+      <title>E-commerce Infrastructure for Startups: The Software Layer</title>
+      <link>https://gitdealflow.com/answers/ecommerce-infrastructure-for-startups</link>
+      <guid isPermaLink="true">https://gitdealflow.com/answers/ecommerce-infrastructure-for-startups</guid>
+      <description>E-commerce infrastructure for startups in 2026: headless CMS, checkout, inventory, post-purchase, and multi-channel sync. The software layer is the investable wedge, and GitHub signal finds it early.</description>
+      <dc:creator>GitDealFlow</dc:creator>
+      <pubDate>Fri, 14 Aug 2026 21:00:00 GMT</pubDate>
+      <media:content url="https://signals.gitdealflow.com/opengraph-image" medium="image"/>
+    </item>
+    <item>
+      <title>GitDealFlow vs Alternatives: Compare Deal Flow Tools | GitDealFlow</title>
+      <link>https://gitdealflow.com/vs</link>
+      <guid isPermaLink="true">https://gitdealflow.com/vs</guid>
+      <description>See how GitDealFlow compares to Crunchbase, PitchBook, CB Insights, Dealroom, Tracxn, AngelList, and Private Equity Wire. Engineering signals vs funding databases.</description>
+      <dc:creator>GitDealFlow</dc:creator>
+      <pubDate>Mon, 03 Aug 2026 18:04:16 GMT</pubDate>
+    </item>
+    <item>
+      <title>Use Cases | GitDealFlow</title>
+      <link>https://gitdealflow.com/use-cases</link>
+      <guid isPermaLink="true">https://gitdealflow.com/use-cases</guid>
+      <description>Explore how VCs, angel investors, corporate venture teams, and other investors use GitDealFlow for deal sourcing, portfolio monitoring, and competitive intelligence.</description>
+      <dc:creator>GitDealFlow</dc:creator>
+      <pubDate>Sat, 01 Aug 2026 18:04:16 GMT</pubDate>
+    </item>
+    <item>
+      <title>GitDealFlow in Toronto: See which startups are heating up before they raise.</title>
+      <link>https://gitdealflow.com/toronto</link>
+      <guid isPermaLink="true">https://gitdealflow.com/toronto</guid>
+      <description>GitDealFlow for Toronto: see which Toronto startups are heating up on GitHub before they raise. See breakout startups weeks before fundraise announcements, all from public GitHub activity.</description>
+      <dc:creator>GitDealFlow</dc:creator>
+      <pubDate>Thu, 30 Jul 2026 18:04:16 GMT</pubDate>
+      <media:content url="https://signals.gitdealflow.com/opengraph-image" medium="image"/>
+    </item>
+    <item>
+      <title>Free VC &amp; Startup Financial Tools: Runway, Burn Rate, Deal Flow | GitDealFlow</title>
+      <link>https://gitdealflow.com/tools</link>
+      <guid isPermaLink="true">https://gitdealflow.com/tools</guid>
+      <description>Three free interactive tools for founders and VCs: startup runway calculator, burn rate analyzer (with Burn Multiple and Magic Number), and VC deal flow funnel calculator. No signup.</description>
+      <dc:creator>GitDealFlow</dc:creator>
+      <pubDate>Tue, 28 Jul 2026 18:04:16 GMT</pubDate>
+    </item>
+    <item>
+      <title>Terms of Service: GitDealFlow</title>
+      <link>https://gitdealflow.com/terms</link>
+      <guid isPermaLink="true">https://gitdealflow.com/terms</guid>
+      <description>Terms of Service for GitDealFlow. Read our terms and conditions for using our services.</description>
+      <dc:creator>GitDealFlow</dc:creator>
+      <pubDate>Sun, 26 Jul 2026 18:04:16 GMT</pubDate>
+      <media:content url="https://signals.gitdealflow.com/opengraph-image" medium="image"/>
+    </item>
+    <item>
+      <title>GitDealFlow in Tel Aviv: See which startups are heating up before they raise.</title>
+      <link>https://gitdealflow.com/tel-aviv</link>
+      <guid isPermaLink="true">https://gitdealflow.com/tel-aviv</guid>
+      <description>GitDealFlow for Tel Aviv: see which Tel Aviv startups are heating up on GitHub before they raise. See breakout startups weeks before fundraise announcements, all from public GitHub activity.</description>
+      <dc:creator>GitDealFlow</dc:creator>
+      <pubDate>Fri, 24 Jul 2026 18:04:16 GMT</pubDate>
+    </item>
+    <item>
+      <title>M&amp;A Deal Flow Statistics 2026: GitDealFlow</title>
+      <link>https://gitdealflow.com/stats</link>
+      <guid isPermaLink="true">https://gitdealflow.com/stats</guid>
+      <description>Key data points on global M&amp;A activity, deal volumes, valuations, and sector trends, sourced from PwC, Bain, McKinsey, Bloomberg, and S&amp;P Global. Updated for the 2025-2026 deal cycle.</description>
+      <dc:creator>GitDealFlow</dc:creator>
+      <pubDate>Wed, 22 Jul 2026 18:04:16 GMT</pubDate>
+    </item>
+    <item>
+      <title>Start Here: What is GitDealFlow? | Plain-English Intro for New Investors</title>
+      <link>https://gitdealflow.com/start-here</link>
+      <guid isPermaLink="true">https://gitdealflow.com/start-here</guid>
+      <description>New to GitDealFlow? Start here. Learn what we do, who it</description>
+      <dc:creator>GitDealFlow</dc:creator>
+      <pubDate>Mon, 20 Jul 2026 18:04:16 GMT</pubDate>
+    </item>
+    <item>
+      <title>GitDealFlow in Singapore: See which startups are heating up before they raise.</title>
+      <link>https://gitdealflow.com/singapore</link>
+      <guid isPermaLink="true">https://gitdealflow.com/singapore</guid>
+      <description>GitDealFlow for Singapore: see which Singapore startups are heating up on GitHub before they raise. See breakout startups weeks before fundraise announcements, all from public GitHub activity.</description>
+      <dc:creator>GitDealFlow</dc:creator>
+      <pubDate>Sat, 18 Jul 2026 18:04:16 GMT</pubDate>
+      <media:content url="https://signals.gitdealflow.com/opengraph-image" medium="image"/>
+    </item>
+    <item>
+      <title>Startup Sectors: Track Funding Signals by Industry | GitDealFlow</title>
+      <link>https://gitdealflow.com/sectors</link>
+      <guid isPermaLink="true">https://gitdealflow.com/sectors</guid>
+      <description>Browse startup sectors tracked by GitDealFlow, from AI/ML, fintech, and climate tech to web3 and robotics. Sector-by-sector funding signals, commit velocity, and deal flow.</description>
+      <dc:creator>GitDealFlow</dc:creator>
+      <pubDate>Thu, 16 Jul 2026 18:04:16 GMT</pubDate>
+    </item>
+    <item>
+      <title>GitDealFlow for Seattle: Track PNW Tech Startups</title>
+      <link>https://gitdealflow.com/seattle</link>
+      <guid isPermaLink="true">https://gitdealflow.com/seattle</guid>
+      <description>GitDealFlow covers Seattle: cloud infra, enterprise SaaS, and gaming startup momentum. PNW deal flow radar.</description>
+      <dc:creator>GitDealFlow</dc:creator>
+      <pubDate>Tue, 14 Jul 2026 18:04:16 GMT</pubDate>
+      <media:content url="https://signals.gitdealflow.com/opengraph-image" medium="image"/>
+    </item>
+    <item>
+      <title>Scout Pass: Free Dashboard for VC Scouts | GitDealFlow</title>
+      <link>https://gitdealflow.com/scout-pass</link>
+      <guid isPermaLink="true">https://gitdealflow.com/scout-pass</guid>
+      <description>Free GitDealFlow Dashboard access (€49/mo value) for verified VC scouts and active angels. See engineering acceleration 21-47 days before the round, without a $20K PitchBook subscription.</description>
+      <dc:creator>GitDealFlow</dc:creator>
+      <pubDate>Sun, 12 Jul 2026 18:04:16 GMT</pubDate>
+      <media:content url="https://signals.gitdealflow.com/opengraph-image" medium="image"/>
+    </item>
+    <item>
+      <title>GitDealFlow in San Francisco: See which startups are heating up before they raise.</title>
+      <link>https://gitdealflow.com/san-francisco</link>
+      <guid isPermaLink="true">https://gitdealflow.com/san-francisco</guid>
+      <description>GitDealFlow for San Francisco: see which San Francisco startups are heating up on GitHub before they raise. See breakout startups weeks before fundraise announcements, all from public GitHub activity.</description>
+      <dc:creator>GitDealFlow</dc:creator>
+      <pubDate>Fri, 10 Jul 2026 18:04:16 GMT</pubDate>
+      <media:content url="https://signals.gitdealflow.com/opengraph-image" medium="image"/>
+    </item>
+    <item>
+      <title>Research &amp; Data: GitDealFlow</title>
+      <link>https://gitdealflow.com/research</link>
+      <guid isPermaLink="true">https://gitdealflow.com/research</guid>
+      <description>Free, open datasets and research reports from GitDealFlow. All data under CC BY 4.0. Download CSV and JSON.</description>
+      <dc:creator>GitDealFlow</dc:creator>
+      <pubDate>Wed, 08 Jul 2026 18:04:16 GMT</pubDate>
+    </item>
+    <item>
+      <title>Privacy Policy: GitDealFlow</title>
+      <link>https://gitdealflow.com/privacy</link>
+      <guid isPermaLink="true">https://gitdealflow.com/privacy</guid>
+      <description>Privacy Policy for GitDealFlow. Learn how we collect, use, and protect your data.</description>
+      <dc:creator>GitDealFlow</dc:creator>
+      <pubDate>Mon, 06 Jul 2026 18:04:16 GMT</pubDate>
+      <media:content url="https://signals.gitdealflow.com/opengraph-image" medium="image"/>
+    </item>
+    <item>
+      <title>Pricing: GitDealFlow</title>
+      <link>https://gitdealflow.com/pricing</link>
+      <guid isPermaLink="true">https://gitdealflow.com/pricing</guid>
+      <description>Every rung of the VC Deal Flow Signal ladder: free Sunday digest, €1 Tweet Teardown, €7 First Look Pass, Dashboard €49/mo, Insider Circle €197/mo, Custom Sector Sweep €1,997. 30-day Signal-or-It</description>
+      <dc:creator>GitDealFlow</dc:creator>
+      <pubDate>Sat, 04 Jul 2026 18:04:16 GMT</pubDate>
+      <media:content url="https://signals.gitdealflow.com/opengraph-image" medium="image"/>
+    </item>
+    <item>
+      <title>The 12-Minute Walkthrough: See Startups Before They Raise | GitDealFlow</title>
+      <link>https://gitdealflow.com/perfect-webinar</link>
+      <guid isPermaLink="true">https://gitdealflow.com/perfect-webinar</guid>
+      <description>A 12-minute structured walkthrough of the Velocity Verdict framework: how engineering acceleration signals a fundraise 21 to 47 days early. Watch, read, and decide.</description>
+      <dc:creator>GitDealFlow</dc:creator>
+      <pubDate>Thu, 02 Jul 2026 18:04:16 GMT</pubDate>
+      <media:content url="https://signals.gitdealflow.com/opengraph-image" medium="image"/>
+    </item>
+    <item>
+      <title>Partners: JV &amp; Affiliate Program | GitDealFlow</title>
+      <link>https://gitdealflow.com/partners</link>
+      <guid isPermaLink="true">https://gitdealflow.com/partners</guid>
+      <description>Bring GitDealFlow to your audience. JV partners get 50% revenue share and a co-branded landing page. Affiliates get 30% recurring.</description>
+      <dc:creator>GitDealFlow</dc:creator>
+      <pubDate>Tue, 30 Jun 2026 18:04:16 GMT</pubDate>
+      <media:content url="https://signals.gitdealflow.com/opengraph-image" medium="image"/>
+    </item>
+    <item>
+      <title>GitDealFlow in New York: See which startups are heating up before they raise.</title>
+      <link>https://gitdealflow.com/new-york</link>
+      <guid isPermaLink="true">https://gitdealflow.com/new-york</guid>
+      <description>GitDealFlow for New York: see which New York startups are heating up on GitHub before they raise. See breakout startups weeks before fundraise announcements, all from public GitHub activity.</description>
+      <dc:creator>GitDealFlow</dc:creator>
+      <pubDate>Sun, 28 Jun 2026 18:04:16 GMT</pubDate>
+      <media:content url="https://signals.gitdealflow.com/opengraph-image" medium="image"/>
+    </item>
   </channel>
 </rss>
