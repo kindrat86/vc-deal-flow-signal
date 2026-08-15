@@ -40,7 +40,7 @@ All links open in new tabs (`target="_blank"`, `rel="noopener noreferrer"`) and 
 
 ## Deploy commands
 
-The signals site has specific deployment constraints: the domain is **alias-pinned**, the live source branch is `worldclass-signals` (via worktree, not main), and the file manifest exceeds the 10 MB API upload limit.
+The signals site has specific deployment constraints: the domain is **alias-pinned**, the live source is the canonical lineage `~/signals-gitdealflow/pseo-site` on `main` (sentinel-enforced since 2026-08-12), and the file manifest exceeds the 10 MB API upload limit.
 
 ### Step 1: Ensure clean tree
 
@@ -54,8 +54,8 @@ git status
 ### Step 2: Switch to the correct branch
 
 ```bash
-# Live source is worldclass-signals via worktree, not main
-git checkout worldclass-signals
+# Canonical lineage: main in ~/signals-gitdealflow/pseo-site (sentinel-enforced)
+git checkout main
 ```
 
 ### Step 3: Build and deploy

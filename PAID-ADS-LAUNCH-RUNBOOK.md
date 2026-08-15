@@ -36,21 +36,24 @@ below: copy, targeting, budgets, destination URLs, and conversion tracking.
 - **PixelManager** (components/PixelManager.tsx) ships Meta / Google / LinkedIn /
   Twitter / TikTok / Reddit / Quora / Pinterest / MS-UET loaders, each gated on its
   `NEXT_PUBLIC_*` env var. Set the var in Vercel and the pixel starts firing, no code change.
-- **Conversion events** now fire on the thanks pages (deployed + live-verified
-  2026-08-15): `generate_lead` on `/subscribe-thanks`, and `purchase` with dynamic
-  value on `/firstlook-thanks` (7), `/dashboard-thanks` (49), `/insider-thanks`
-  (197), `/sector-sweep-thanks` (1997). Each fires via gtag with a sessionStorage
-  dedupe guard. These are the events the Google Ads conversion actions in STEP 2
-  map to, so attribution is measured, not guessed.
+- **Conversion events** (corrected 2026-08-15): the apex `gitdealflow.com` thanks
+  pages fire `generate_lead` on `/subscribe-thanks` (newsletter) and `purchase` on
+  `/dashboard-thanks` (49), `/insider-thanks` (197), `/sector-sweep-thanks` (1997)
+  via gtag with a sessionStorage dedupe guard. These are the Stripe success URLs
+  for the dashboard/insider/sector_sweep tiers (see `lib/stripe-tiers.ts`). The
+  EUR 7 First Look success page is `signals.gitdealflow.com/firstlook/thanks`; a
+  `purchase` event there is deployed + live-verified 2026-08-15
+  (`components/PurchaseConversionEvent.tsx`, deployment dpl_FRPXPiaWpJTzNmRhSa1EcSn5SLkf).
+  `gitdealflow.com/firstlook-thanks` is a legacy page, NOT the live EUR 7 success target.
 
 ## Bugs fixed this session
 
 - Google Ads `harmonic` campaign pointed at `/alternatives/harmonic`, which 404s.
   The live slug is `/alternatives/harmonic-ai`. Fixed in `lib/paid-acquisition.ts`
-  (both `~/signals-gitdealflow` and `~/signals-worldclass` lineages), plus the cited
+  (canonical `~/signals-gitdealflow/pseo-site` on `main`, sentinel-enforced), plus the cited
   `sourceUrl` in `content/agent-queries.ts` and two surfaces in
   `app/experiments/hooks/page.tsx`. A regression guard was added to
-  `scripts/verify-no-regressions.ts` so no lineage can reintroduce the 404.
+  `scripts/verify-no-regressions.ts` so no deploy can reintroduce the 404.
 
 ---
 
@@ -84,32 +87,32 @@ For all 6 ad groups: **objective = Traffic**, **destination = the `/r/<slug>` UR
 ### Ad group `vc` — targeting r/venturecapital
 - **URL:** `https://signals.gitdealflow.com/r/vc`
 - **Headline:** I tracked 369 startups' GitHub commits for 6 months. Here's what predicts a raise.
-- **Body:** Commit velocity spikes 21-47 days before the deck hits. Free Sunday email sends you the 5 startups accelerating hardest this week, before TechCrunch writes about them. Methodology on SSRN (n=219).
+- **Body:** Commit velocity spikes 21-47 days before the deck hits. Test the signal on your own thesis for €7: pick a sector, get a ranked deep-dive (top 25 orgs + 3 pre-Crunchbase breakouts) in 24h. Or start free with the Sunday digest. SSRN method (n=219).
 
 ### Ad group `angel` — targeting r/AngelInvestors
 - **URL:** `https://signals.gitdealflow.com/r/angel`
-- **Headline:** The 5 startups accelerating hardest on GitHub right now (free, weekly).
-- **Body:** See which teams are shipping faster than their round. Free Sunday Signal Digest: 5 names, the signal type, the acceleration %. No API key, no signup wall, no card.
+- **Headline:** The 5 startups accelerating hardest on GitHub right now.
+- **Body:** See which teams are shipping faster than their round. €7 gets you a one-sector ranked deep-dive in 24h, credited toward Dashboard if you upgrade within 14 days. Free Sunday digest also available, no card.
 
 ### Ad group `devtools` — targeting r/devtools
 - **URL:** `https://signals.gitdealflow.com/r/devtools`
 - **Headline:** I reverse-engineered which GitHub signals actually predict a fundraise.
-- **Body:** Commit velocity, contributor growth, repo expansion. I tracked 369 orgs weekly for 6 months and published the method on SSRN. Free weekly digest with the 5 fastest-accelerating teams.
+- **Body:** Commit velocity, contributor growth, repo expansion across 369 orgs, published on SSRN. €7 deep-dive on any sector, delivered in 24h (PDF + raw CSV). Or the free weekly digest with the 5 fastest teams.
 
 ### Ad group `programming` — targeting r/programming
 - **URL:** `https://signals.gitdealflow.com/r/programming`
 - **Headline:** A public dataset of 369 startups' GitHub acceleration, updated weekly.
-- **Body:** Free machine-readable API + MCP server, no key required. Commit velocity and contributor growth across 15 sectors. The 5 breakout teams every Sunday.
+- **Body:** Free machine-readable API + MCP server, no key required. For a ranked sector report: €7, 24h, PDF + raw CSV. Or the free Sunday digest, 5 breakout teams every week.
 
 ### Ad group `ml` — targeting r/MachineLearning
 - **URL:** `https://signals.gitdealflow.com/r/ml`
 - **Headline:** Which AI startups are accelerating on GitHub right now?
-- **Body:** AI/ML drives most breakout signals in my dataset. Free weekly digest ranks the 5 fastest-accelerating teams by commit velocity and contributor growth.
+- **Body:** AI/ML drives most breakout signals in the dataset. €7 one-sector deep-dive ranks the fastest teams by commit velocity and contributor growth, in 24h. Free weekly digest also available.
 
 ### Ad group `startups` — targeting r/startups
 - **URL:** `https://signals.gitdealflow.com/r/startups`
 - **Headline:** Founders: your GitHub activity is your pitch before you pitch.
-- **Body:** I track 369 startups' public GitHub and surface acceleration 21-47 days before rounds. If your angels don't see it, your competitors will. Free weekly digest.
+- **Body:** I track 369 startups' public GitHub and surface acceleration 21-47 days before rounds. €7 First Look ranks one sector in 24h. If your angels don't see it, your competitors will. Free weekly digest available too.
 
 ---
 

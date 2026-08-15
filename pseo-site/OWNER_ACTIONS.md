@@ -39,7 +39,7 @@ tree lacking these undeployable rather than merely re-landing them.
 ### Pre-deploy checks (from AGENTS.md, do not skip)
 
 1. **Swarm race.** `ps aux | grep hermes`, there were **18** hermes processes
-   running when this was prepared. Another lineage deploying after you silently
+   running when this was prepared. A newer `main` deploy after you silently
    reverts this. Deploy when the swarm is quiet, and re-check the live pages
    afterwards (below), not just at deploy time.
 2. **Do not deploy from `~/signals-gitdealflow/pseo-site`'s working tree**, it
@@ -105,7 +105,7 @@ these in a real browser and look at them:
   (a real screenshot, not an empty bordered box) below the squeeze form
 
 Re-check both again ~10 minutes later. A pass immediately after deploy proves
-only that moment; the failure mode here is another lineage aliasing over you.
+only that moment; the failure mode here is a newer `main` deploy aliasing over you.
 
 ### ⚠️ Landmine found while doing this, deliberately NOT fixed here
 
@@ -232,7 +232,7 @@ caught the bug).
 ### Pre-deploy checks (from AGENTS.md, do not skip)
 
 1. **Swarm race.** `ps aux | grep hermes`, **10** hermes processes were running
-   when this was prepared. Another lineage deploying after you silently reverts
+   when this was prepared. A newer `main` deploy after you silently reverts
    this. Deploy when the swarm is quiet and re-check the live pages afterwards,
    not just at deploy time.
 2. **Do not deploy from `~/signals-gitdealflow/pseo-site`'s working tree**, it
@@ -292,7 +292,7 @@ these in a real browser, scroll to the bottom so the lazy images load, and look:
   image is visible, not an empty box
 
 Re-check ~10 minutes later. A pass immediately after deploy proves only that
-moment; the failure mode here is another lineage aliasing over you.
+moment; the failure mode here is a newer `main` deploy aliasing over you.
 ---
 
 ## 2026-08-13, internal links into the /research-paper silo (striking-distance work on /research-paper/hu-2021-lora-low-rank-adaptation)
@@ -329,12 +329,11 @@ would be overwritten on the next run.
 
 ### Pre-deploy checks (AGENTS.md)
 
-- **Which lineage is live?** The domain is alias-pinned and deployed from at
-  least three checkouts (`~/Downloads/vc-deal-flow-signal` on `main`,
-  `~/signals-worldclass` on `worldclass-signals`, `~/signals-gitdealflow` on
-  `internal-link-engine`). Whichever aliases last wins. `20e761e4` is built on
-  `1b1ad5a0`; if production has moved past that, cherry-pick rather than alias
-  over the newer lineage.
+- **Which lineage is live?** Exactly one (sentinel-enforced since 2026-08-12):
+  `~/signals-gitdealflow/pseo-site` on `main`. The `~/signals-worldclass`
+  (worldclass-signals) and `~/Downloads/vc-deal-flow-signal` checkouts are
+  RETIRED and cannot build. `20e761e4` is built on `1b1ad5a0`; if production has
+  moved past that, cherry-pick rather than alias over the newer work.
 - **Check for swarm races first:** `ps aux | grep hermes`, another agent
   mid-deploy will silently revert this.
 - `prebuild` runs `verify-no-regressions.ts`, which now asserts this section
@@ -367,7 +366,7 @@ Then re-alias: `npx vercel alias <deployment-url> signals.gitdealflow.com`.
   → still renders (non-blank), unchanged by this diff
 
 Re-check ~10 minutes later. A pass immediately after deploy proves only that
-moment; the failure mode here is another lineage aliasing over you.
+moment; the failure mode here is a newer `main` deploy aliasing over you.
 
 ### Notes
 
