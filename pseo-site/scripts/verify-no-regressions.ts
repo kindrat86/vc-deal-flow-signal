@@ -257,6 +257,45 @@ check(
 );
 
 // ---------------------------------------------------------------------------
+// 8. Per-sector analyst notes (2026-08-14). The 10 /sector/[slug] hubs shared
+//    byte-identical `whatWeTrack` methodology boilerplate and a single templated
+//    `intro`, so every hub read as near-duplicate template content (F24/F17).
+//    Each hub now carries a unique, data-grounded `note` (analyst commentary).
+//    A lineage that loses these reintroduces the duplication that the pSEO
+//    uniqueness audit flags.
+// ---------------------------------------------------------------------------
+check(
+  "content/sectors.ts",
+  "Sector hubs lost their per-sector analyst notes — near-duplicate template similarity returns.",
+  (s) => (s.match(/\bnote:\s*"/g) || []).length >= 10,
+  "restore a unique `note: \"…\"` per sector in content/sectors.ts (10 sectors, data-grounded, non-empty)",
+);
+check(
+  "app/sector/[slug]/page.tsx",
+  "Sector hub page no longer renders the analyst note — the field is wired but dead.",
+  (s) => s.includes("s.analystNote"),
+  "render {s.analystNote} inside the 'Analyst note' callout below the intro",
+);
+
+// ---------------------------------------------------------------------------
+// §27 embed widget brand (2026-08-15, brand-search win): the POPULATED
+// Engineering Acceleration Watch widget must render the GitDealFlow brand and
+// a branded CTA. Verified live 2026-08-15: the populated state showed only
+// "Engineering Acceleration Watch" with no brand, so a newsletter cross-promo
+// placement would drive zero brand searches. (The empty state already had it.)
+// ---------------------------------------------------------------------------
+check(
+  "app/embed/weekly/route.ts",
+  "embed widget populated state must show the GitDealFlow brand + branded CTA",
+  (s) =>
+    s.includes(
+      '<span class="brand">GitDealFlow · Engineering Acceleration Watch</span>',
+    ) &&
+    s.includes("See the full 10 + scorecard at GitDealFlow →"),
+  "restore the GitDealFlow brand span and branded CTA in the populated widget header/footer",
+);
+
+// ---------------------------------------------------------------------------
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +

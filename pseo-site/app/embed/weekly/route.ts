@@ -98,12 +98,12 @@ export async function GET() {
 <body>
 <main class="card" role="region" aria-label="Engineering Acceleration Watch">
   <div class="hd">
-    <span class="brand">Engineering Acceleration Watch</span>
+    <span class="brand">GitDealFlow · Engineering Acceleration Watch</span>
     <span class="wk">Week of ${fmtShortDate(week.weekStart)}</span>
   </div>
   <ol class="rows">${rows}</ol>
   <a class="ft" id="gdf-ft" href="${weekUrl}?utm_source=embed&utm_medium=widget" target="_top" rel="noopener">
-    See full 10 + scorecard at gitdealflow.com →
+    See the full 10 + scorecard at GitDealFlow →
   </a>
 </main>
 <script>
