@@ -10,6 +10,7 @@ import {
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { FRESH_YEAR_PLAIN } from "@/lib/freshness-year";
 
 const SITE = "https://signals.gitdealflow.com";
 
@@ -17,14 +18,11 @@ export const dynamic = "force-static";
 export const revalidate = 604800;
 
 export const metadata: Metadata = {
-  title:
-    "Startup Ideas 2026, buildable opportunities with the repos already trying",
-  description:
-    "Fifty-plus buildable startup ideas for 2026, AI-native CRM, browser-use agents, vertical AI, dev tools, vibe-coding micro-SaaS. Each one paired with the three repos already accelerating against it, pulled live from our GitHub signal panel.",
+  title: `Startup Ideas ${FRESH_YEAR_PLAIN}, buildable opportunities with the repos already trying`,
+  description: `Fifty-plus buildable startup ideas for ${FRESH_YEAR_PLAIN}, AI-native CRM, browser-use agents, vertical AI, dev tools, vibe-coding micro-SaaS. Each one paired with the three repos already accelerating against it, pulled live from our GitHub signal panel.`,
   alternates: { canonical: "/startup-ideas" },
   openGraph: {
-    title:
-      "Startup Ideas 2026, buildable opportunities with the repos already trying",
+    title: `Startup Ideas ${FRESH_YEAR_PLAIN}, buildable opportunities with the repos already trying`,
     description:
       "Fifty-plus buildable startup ideas, each paired with the three repos already accelerating against it. Pulled live from GitHub commit velocity.",
     url: `${SITE}/startup-ideas`,
@@ -32,7 +30,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Startup Ideas 2026, buildable opportunities, live signal",
+    title: `Startup Ideas ${FRESH_YEAR_PLAIN}, buildable opportunities, live signal`,
     description:
       "Fifty-plus buildable startup ideas. Each one with the three repos already accelerating against it.",
   },
@@ -81,7 +79,7 @@ export default function StartupIdeasHubPage() {
       {
         "@type": "CollectionPage",
         "@id": `${SITE}/startup-ideas#collection`,
-        name: "Startup Ideas 2026, buildable opportunities with the repos already trying",
+        name: `Startup Ideas ${FRESH_YEAR_PLAIN}, buildable opportunities with the repos already trying`,
         description:
           "A curated set of buildable startup ideas for 2026, each paired with the top three GitHub repos already accelerating against it.",
         url: `${SITE}/startup-ideas`,

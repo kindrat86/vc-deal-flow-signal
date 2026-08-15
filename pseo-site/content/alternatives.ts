@@ -1,3 +1,4 @@
+import { FRESH_YEAR_STR } from "@/lib/freshness-year";
 export interface AlternativeFeature {
   feature: string;
   values: Record<string, string>;
@@ -63,7 +64,7 @@ export const alternatives: Alternative[] = [
     slug: "harmonic-ai",
     competitor: "Harmonic.ai",
     competitorUrl: "https://www.harmonic.ai",
-    title: "Harmonic.ai Alternative (2026)",
+    title: `Harmonic.ai Alternative ${FRESH_YEAR_STR}`,
     description:
       "Looking for a Harmonic.ai alternative? VC Deal Flow Signal uses GitHub engineering acceleration to surface breakout startups 6-12 weeks before a fundraise, at a fraction of the enterprise price.",
     h1: "VC Deal Flow Signal vs Harmonic.ai",
@@ -130,7 +131,7 @@ export const alternatives: Alternative[] = [
     slug: "dealroom",
     competitor: "Dealroom",
     competitorUrl: "https://dealroom.co",
-    title: "Dealroom Alternative (2026)",
+    title: `Dealroom Alternative ${FRESH_YEAR_STR}`,
     description:
       "A Dealroom alternative focused on leading indicators, not curated post-raise data. VC Deal Flow Signal surfaces engineering acceleration 6-12 weeks before fundraise announcements.",
     h1: "VC Deal Flow Signal vs Dealroom",
@@ -198,7 +199,7 @@ export const alternatives: Alternative[] = [
     slug: "forager-ai",
     competitor: "Forager.ai",
     competitorUrl: "https://forager.ai",
-    title: "Forager.ai Alternative (2026)",
+    title: `Forager.ai Alternative ${FRESH_YEAR_STR}`,
     description:
       "Compare Forager.ai vs VC Deal Flow Signal. Different signals (web/social vs GitHub engineering), different lead times, and two distinct approaches to early-stage sourcing.",
     h1: "VC Deal Flow Signal vs Forager.ai",
@@ -263,7 +264,7 @@ export const alternatives: Alternative[] = [
     slug: "crunchbase",
     competitor: "Crunchbase",
     competitorUrl: "https://www.crunchbase.com",
-    title: "Crunchbase Alternative (2026)",
+    title: `Crunchbase Alternative ${FRESH_YEAR_STR}`,
     description:
       "Looking for a Crunchbase alternative? VC Deal Flow Signal surfaces breakout technical startups from public GitHub engineering acceleration, leading signal vs Crunchbase's funding-event database. EUR 49/mo vs Crunchbase Pro at $49+.",
     h1: "VC Deal Flow Signal vs Crunchbase",
@@ -272,7 +273,7 @@ export const alternatives: Alternative[] = [
     intro:
       "Crunchbase is the default startup database for most investors, 100M+ company profiles, comprehensive funding history, integrated search and lists. It is the reference layer of private markets. It is also, structurally, a lagging signal: a company shows up cleanly in Crunchbase after the round closes and the press release fires. VC Deal Flow Signal sits one layer earlier. Public GitHub engineering acceleration, commit velocity, contributor influx, infrastructure buildouts, typically precedes fundraise announcements by 6-12 weeks. Here is how the two compose.",
     roundup: {
-      heading: "Free Crunchbase alternatives for GitHub-based sourcing (2026)",
+      heading: `Free Crunchbase alternatives for GitHub-based sourcing ${FRESH_YEAR_STR}`,
       intro:
         "Most \"free Crunchbase alternative\" lists split into two camps: free investor/company databases, and raw GitHub-activity trackers. The gap between them is a free tool that turns public GitHub activity into an early fundraise signal, which is the slot VC Deal Flow Signal fills. Here is an honest side-by-side of the free and freemium options.",
       tools: [
@@ -376,7 +377,7 @@ export const alternatives: Alternative[] = [
     slug: "crunchbase-alerts",
     competitor: "Crunchbase",
     competitorUrl: "https://www.crunchbase.com",
-    title: "Crunchbase Alternative for Early Deal Flow (2026)",
+    title: `Crunchbase Alternative for Early Deal Flow ${FRESH_YEAR_STR}`,
     description:
       "A Crunchbase alerts alternative that surfaces startup acceleration 6-12 weeks before fundraise announcements, not after. GitHub engineering signals vs Crunchbase funding alerts.",
     h1: "VC Deal Flow Signal vs Crunchbase Alerts",
@@ -448,7 +449,7 @@ export const alternatives: Alternative[] = [
     slug: "pitchbook",
     competitor: "PitchBook",
     competitorUrl: "https://pitchbook.com",
-    title: "PitchBook Alternative (2026)",
+    title: `PitchBook Alternative ${FRESH_YEAR_STR}`,
     description:
       "Looking for a PitchBook alternative? VC Deal Flow Signal trades research-platform breadth for engineering-side leading signals at 1/2,000th the price.",
     h1: "VC Deal Flow Signal vs PitchBook",
@@ -519,7 +520,7 @@ export const alternatives: Alternative[] = [
     slug: "cb-insights",
     competitor: "CB Insights",
     competitorUrl: "https://cbinsights.com",
-    title: "CB Insights Alternative (2026)",
+    title: `CB Insights Alternative ${FRESH_YEAR_STR}`,
     description:
       "Looking for a CB Insights alternative? VC Deal Flow Signal trades market-intelligence reports for engineering-side leading signals at less than 1% of the price.",
     h1: "VC Deal Flow Signal vs CB Insights",
@@ -588,7 +589,7 @@ export const alternatives: Alternative[] = [
     slug: "affinity",
     competitor: "Affinity",
     competitorUrl: "https://affinity.co",
-    title: "Affinity Alternative (2026)",
+    title: `Affinity Alternative ${FRESH_YEAR_STR}`,
     description:
       "Affinity is a relationship-intelligence CRM, not a deal-sourcing engine. VC Deal Flow Signal complements it with leading GitHub signals, most funds run both.",
     h1: "VC Deal Flow Signal vs Affinity",
@@ -657,7 +658,7 @@ export const alternatives: Alternative[] = [
     slug: "tracxn",
     competitor: "Tracxn",
     competitorUrl: "https://tracxn.com",
-    title: "Tracxn Alternative (2026)",
+    title: `Tracxn Alternative ${FRESH_YEAR_STR}`,
     description:
       "A Tracxn alternative that focuses on engineering-side leading signals rather than analyst-curated sector taxonomies. Free weekly tier, EUR 49/mo Dashboard.",
     h1: "VC Deal Flow Signal vs Tracxn",
@@ -726,7 +727,7 @@ export const alternatives: Alternative[] = [
     slug: "specter",
     competitor: "Specter",
     competitorUrl: "https://tryspecter.com",
-    title: "Specter Alternative (2026)",
+    title: `Specter Alternative ${FRESH_YEAR_STR}`,
     description:
       "A Specter alternative for engineering-side leading signals. Specter focuses on web/social signals; VC Deal Flow Signal focuses on GitHub engineering acceleration. Most investors use both.",
     h1: "VC Deal Flow Signal vs Specter",
@@ -795,7 +796,7 @@ export const alternatives: Alternative[] = [
     slug: "openvc",
     competitor: "OpenVC",
     competitorUrl: "https://www.openvc.app",
-    title: "OpenVC Alternative (2026)",
+    title: `OpenVC Alternative ${FRESH_YEAR_STR}`,
     description:
       "OpenVC is an investor directory built for founders raising rounds. VC Deal Flow Signal is built for the opposite side, investors sourcing startups. The two work well together; they answer different questions.",
     h1: "VC Deal Flow Signal vs OpenVC",
@@ -862,7 +863,7 @@ export const alternatives: Alternative[] = [
     slug: "signalrank",
     competitor: "SignalRank",
     competitorUrl: "https://signalrank.ai",
-    title: "SignalRank Alternative (2026)",
+    title: `SignalRank Alternative ${FRESH_YEAR_STR}`,
     description:
       "SignalRank predicts Series-B graduation odds. VC Deal Flow Signal surfaces engineering acceleration 6-12 weeks pre-fundraise. Different stages, different signal types, here is when each one is the right tool.",
     h1: "VC Deal Flow Signal vs SignalRank",

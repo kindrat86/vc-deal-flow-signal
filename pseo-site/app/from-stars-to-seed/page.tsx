@@ -5,6 +5,7 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { DEFAULT_HREFLANG_LANGUAGES } from "@/lib/hreflang";
+import { FRESH_YEAR_STR } from "@/lib/freshness-year";
 
 export const dynamic = "force-static";
 
@@ -14,7 +15,7 @@ const PAGE_URL = `${SITE}/from-stars-to-seed`;
 // CTR hook (GSC 90d: 1,179 imps, 1 click, 0.08% at pos 12.9): the old title
 // was 105 chars and truncated mid-thought in SERPs. Count hook is computed so
 // it can never go stale when cases are added.
-const pageTitle = `GitHub Stars to Startup Funding: ${starsCases.length} Case Studies (2026)`;
+const pageTitle = `GitHub Stars to Startup Funding: ${starsCases.length} Case Studies ${FRESH_YEAR_STR}`;
 
 export const metadata: Metadata = {
   // absolute: old title + template suffix hit 105ch; this is 55ch un-truncated.

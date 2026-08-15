@@ -15,6 +15,7 @@ import { companies, type Company } from "@/content/companies";
 import { funds, type Fund } from "@/content/funds";
 import { founders, type Founder } from "@/content/founders";
 import { glossaryTerms, type GlossaryTerm } from "@/content/glossary";
+import { FRESH_YEAR_STR } from "@/lib/freshness-year";
 
 export interface SectorFAQ {
   question: string;
@@ -94,7 +95,7 @@ function build(s: {
   return {
     slug: s.slug,
     name: s.name,
-    title: `${companyCount} ${s.name} Companies & ${fundCount} Active Funds: Engineering Signals (2026)`,
+    title: `${companyCount} ${s.name} Companies & ${fundCount} Active Funds: Engineering Signals ${FRESH_YEAR_STR}`,
     metaDescription: `Curated ${s.name.toLowerCase()} sector hub: ${companyCount} tracked companies, ${fundCount} active funds, notable engineering leaders, and the metrics we use to read momentum. Built for Corp Dev, PE operating partners, and emerging managers.`,
     h1: `${s.name}: Engineering Signals & Deal Flow`,
     tagline: `${s.short} A single page mapping who builds, who funds, and who leads in ${s.name.toLowerCase()}.`,

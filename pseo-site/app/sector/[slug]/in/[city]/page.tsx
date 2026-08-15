@@ -11,6 +11,7 @@ import { REGION_LABELS } from "@/content/cities";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { FRESH_YEAR_STR } from "@/lib/freshness-year";
 
 interface PageProps {
   params: Promise<{ slug: string; city: string }>;
@@ -31,7 +32,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const data = getSectorCity(slug, city);
   if (!data) return {};
 
-  const title = `${data.sector.name} in ${data.city.name}, Engineering & VC Signals (2026)`;
+  const title = `${data.sector.name} in ${data.city.name}, Engineering & VC Signals ${FRESH_YEAR_STR}`;
   const description = `${data.sector.name} scouting and engineering-acceleration signal interpretation through a ${data.city.name} lens. Local VC anchors, sector signal pattern, and curated companies tracked in the ${data.sector.name.toLowerCase()} corpus.`;
 
   // HQ-backed cells carry proprietary local data and stay indexable. Editorial-

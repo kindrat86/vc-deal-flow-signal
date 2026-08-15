@@ -16,6 +16,7 @@
  * populate live numbers. The page renders identically either way.
  */
 
+import { FRESH_YEAR_STR } from "@/lib/freshness-year";
 export interface CompanyFAQ {
   question: string;
   answer: string;
@@ -92,7 +93,7 @@ function build(c: {
     sector: c.sector,
     stage: c.stage,
     description: `${c.name} (${c.sector}, ${stageLabel}), GitHub org github.com/${c.githubOrg}. ${c.what}`,
-    title: `${c.name} GitHub Engineering Signals (2026)`,
+    title: `${c.name} GitHub Engineering Signals ${FRESH_YEAR_STR}`,
     metaDescription: `${c.name} public GitHub engineering profile, sector, stage, repo footprint, and language bias, curated as a ${c.sector} benchmark for investors and operators. Reference profile, reviewed ${REFERENCE_PROFILE_REVIEWED}.`,
     h1: `${c.name} GitHub Engineering Signals`,
     tagline: `A quantitative view of ${c.name}'s public engineering activity, what we track and why investors watch it.`,

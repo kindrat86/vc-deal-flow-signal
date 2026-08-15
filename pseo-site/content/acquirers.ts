@@ -19,6 +19,7 @@
  * non-engineer tech VPs benchmarking their employer's M&A cadence.
  */
 
+import { FRESH_YEAR_STR } from "@/lib/freshness-year";
 export interface NotableAcquisition {
   /** Acquired company name as publicly announced. */
   name: string;
@@ -66,7 +67,7 @@ function build(a: {
     hq: a.hq,
     // CTR hook: count of documented deals replaces the vague "& M&A Pattern".
     // `acqCount` is already computed; title stays 40-58ch across all 21 acquirers.
-    title: `${a.name} Acquisitions: ${acqCount} Notable Deals (2026)`,
+    title: `${a.name} Acquisitions: ${acqCount} Notable Deals ${FRESH_YEAR_STR}`,
     metaDescription: `${a.name}'s public acquisition history, M&A focus areas, and the engineering-signal patterns we track in their target sectors. ${acqCount} notable acquisitions documented. Built for Corp Dev, PE operating partners, and competitive analysts.`,
     h1: `${a.name}, Acquisitions & M&A Pattern`,
     tagline: `${a.name}'s public acquisition history (${acqCount} notable deals) mapped against the engineering-signal panel we publish.`,

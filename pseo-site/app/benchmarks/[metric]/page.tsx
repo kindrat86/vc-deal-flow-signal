@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { getAllSectors, getCurrentPeriod } from "@/lib/data";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { FRESH_YEAR_PLAIN } from "@/lib/freshness-year";
 
 const SITE = "https://signals.gitdealflow.com";
 
@@ -23,7 +24,7 @@ const BENCHMARKS: Benchmark[] = [
   {
     slug: "commit-velocity",
     name: "Commit Velocity",
-    title: "Startup Commit Velocity Benchmarks by Sector, 2026 GitHub Data",
+    title: `Startup Commit Velocity Benchmarks by Sector, ${FRESH_YEAR_PLAIN} GitHub Data`,
     description:
       "How does your startup's GitHub commit velocity compare? Real benchmarks from 400+ venture-backed startups across 15 sectors. 14-day rolling window, refreshed weekly.",
     h1: "Commit Velocity Benchmarks, How Your Startup Compares",
@@ -87,7 +88,7 @@ const BENCHMARKS: Benchmark[] = [
   {
     slug: "signal-distribution",
     name: "Signal Distribution",
-    title: "Engineering Signal Distribution by Sector, Breakout vs Cooling 2026",
+    title: `Engineering Signal Distribution by Sector, Breakout vs Cooling ${FRESH_YEAR_PLAIN}`,
     description:
       "Which sectors have the most breakout engineering signals? Real distribution data from 400+ startups. Breakout, acceleration, steady, cooling classifications.",
     h1: "Signal Distribution, Which Sectors Are Heating Up",

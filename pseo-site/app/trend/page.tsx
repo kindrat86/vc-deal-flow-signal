@@ -3,9 +3,10 @@ import Link from "next/link";
 import { TRENDS } from "@/content/trend-leaderboards";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
+import { FRESH_YEAR_STR, FRESH_YEAR_PLAIN } from "@/lib/freshness-year";
 
 export const metadata: Metadata = {
-  title: "Trends, Engineering Signal Leaderboards (2026)",
+  title: `Trends, Engineering Signal Leaderboards ${FRESH_YEAR_STR}`,
   description: `Editorial trend leaderboards across ${TRENDS.length} technical categories, agentic AI, LLM inference, frontier labs, AI coding, edge compute, AI-native databases, observability, payments. Each leaf is curated, time-bound, and AEO-optimized for citation.`,
   alternates: { canonical: "/trend" },
   openGraph: {
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "Trends",
-    description: "Editorial trend leaderboards for engineering categories in 2026.",
+    description: `Editorial trend leaderboards for engineering categories in ${FRESH_YEAR_PLAIN}.`,
   },
 };
 

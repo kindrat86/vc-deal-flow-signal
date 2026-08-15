@@ -16,6 +16,7 @@
  * conversation starter.
  */
 
+import { FRESH_YEAR_STR } from "@/lib/freshness-year";
 export interface FundFAQ {
   question: string;
   answer: string;
@@ -58,7 +59,7 @@ function build(f: {
     hq: f.hq,
     stageFocus: f.stage,
     description: `${f.name} is a ${f.hq}-based venture fund focused on ${f.stage}. ${f.what}`,
-    title: `${f.name}, Deal Flow Context & Engineering Signal Map (2026)`,
+    title: `${f.name}, Deal Flow Context & Engineering Signal Map ${FRESH_YEAR_STR}`,
     metaDescription: `${f.name} thesis, stage focus, and how GitHub engineering-acceleration signals map to their sourcing process. Built for emerging managers and operators studying ${f.name}'s public investment patterns.`,
     h1: `${f.name} Deal Flow Context`,
     tagline: `${f.name}'s public thesis mapped against engineering-acceleration signals, for emerging managers, operators, and LPs studying their sourcing.`,

@@ -8,6 +8,7 @@ import {
 } from "@/content/fund-portfolio";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
+import { FRESH_YEAR_STR } from "@/lib/freshness-year";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -26,7 +27,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!fund) return {};
 
   const portfolio = getFundPortfolio(slug);
-  const title = `${fund.name} Portfolio, Companies We Track (2026) | VC Deal Flow Signal`;
+  const title = `${fund.name} Portfolio, Companies We Track ${FRESH_YEAR_STR} | VC Deal Flow Signal`;
   const description = `${portfolio.length} companies from ${fund.name}'s publicly disclosed portfolio that we track in the VC Deal Flow Signal engineering-signal panel. Independent, sources are press releases and Crunchbase only.`;
 
   return {

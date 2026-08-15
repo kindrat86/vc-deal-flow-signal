@@ -8,11 +8,11 @@ import {
   getDataLastModified,
 } from "@/lib/data";
 import SeoCta from "@/components/SeoCta";
+import { FRESH_YEAR_STR, FRESH_YEAR_PLAIN } from "@/lib/freshness-year";
 
 export const metadata: Metadata = {
-  title: "Best Startups by Sector, Engineering Acceleration Rankings (2026)",
-  description:
-    "The best startups in every sector ranked by GitHub commit-velocity acceleration in 2026. AI/ML, fintech, devtools, robotics, climate, and 15 more sectors. Updated weekly.",
+  title: `Best Startups by Sector, Engineering Acceleration Rankings ${FRESH_YEAR_STR}`,
+  description: `The best startups in every sector ranked by GitHub commit-velocity acceleration in ${FRESH_YEAR_PLAIN}. AI/ML, fintech, devtools, robotics, climate, and 15 more sectors. Updated weekly.`,
   alternates: {
     canonical: "/best",
   },

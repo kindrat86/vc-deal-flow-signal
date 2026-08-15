@@ -10,6 +10,7 @@ import {
 import { getCompaniesInCity } from "@/content/company-locations";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
+import { FRESH_YEAR_STR } from "@/lib/freshness-year";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -27,7 +28,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const city = getCityBySlug(slug);
   if (!city) return {};
 
-  const title = `${city.name} Engineering & VC Signals (2026), VC Deal Flow Signal`;
+  const title = `${city.name} Engineering & VC Signals ${FRESH_YEAR_STR}, VC Deal Flow Signal`;
   const description = `${city.name}, ${city.country}: engineering acceleration signals, notable scaleups, active VC anchors, and the local commit-cadence pattern. Editorial interpretation for Corp Dev, PE operating partners, and emerging managers.`;
 
   return {
