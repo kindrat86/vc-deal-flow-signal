@@ -30,7 +30,7 @@ Organization node, never on the Person.
 
 # Деплой і граблі (signals.gitdealflow.com)
 
-- Live source = гілка `worldclass-signals` через worktree, НЕ main
+- Канонічний лайнідж: `main` у `~/signals-gitdealflow` (див. секцію "One canonical deploy lineage" нижче); worldclass-signals та Downloads RETIRED 2026-08-12
 - Домен ALIAS-PINNED: `vercel --prod` НЕ оновлює live, треба `vercel alias` на новий деплой
 - CSP `require-trusted-types-for` → React-сайт стає ПОРОЖНІМ без Trusted Types policy (fix у commit 22d6de1c). Це протилежний фікс до gitdealflow/churnlens PostHog-кейсу
 - `/ux.js` у layout.tsx блank-скринив сайт (App Router hydration wipe), видалено, НЕ повертати; ux.css можна
@@ -38,26 +38,65 @@ Organization node, never on the Person.
 - Auto-deploy loop ВИМКНЕНО навмисно, не вмикати
 - Верифікація ТІЛЬКИ скріншотом: curl 200 вже приховував порожню сторінку
 - Гейти деплою: чисте дерево, clean-tree gate; перед правками перевір `ps aux | grep hermes` (сворм-гонки)
-  which case keep HEAD's version and discard your stale stashed copy.
 
-# signals.gitdealflow.com is deployed from MORE THAN ONE lineage, read this before fixing anything
+# Multiple agents share this worktree, check before you commit/deploy
 
-The domain is an alias-pinned Vercel project (`pseo-site`) that is deployed
-from at least three checkouts, on three different branches:
+2026-07-24: two independent Claude Code sessions worked in the same
+worktree at the same time with zero coordination, one fixing `/pricing`
+founding-rate copy, the other doing GSC schema fixes and an MCP-catalog
+build-guard fix. It mostly resolved fine because the file-level changes did
+not overlap, but along the way: three separate `vercel deploy --prebuilt
+--prod` processes queued concurrently against the same project (real
+contention, nothing progressing for minutes), the live
+`signals.gitdealflow.com` alias changed to an unrecognized deployment
+mid-session with no warning, and a blind `git stash pop` grabbed the other
+session's WIP stash instead of mine (recoverable via `git stash list`, but
+only because I checked before assuming).
 
-| checkout | branch |
-|---|---|
-| `~/Downloads/vc-deal-flow-signal/pseo-site` | `main` |
-| `~/signals-worldclass/pseo-site` | `worldclass-signals` |
-| `~/signals-gitdealflow/pseo-site` | `internal-link-engine` |
+**Before you touch this worktree:**
+- `ps aux | grep -E "vercel (deploy|build)"`: if a deploy is already
+  running for this project, wait or coordinate rather than queueing a
+  second concurrent one.
+- `git stash list` BEFORE any `git stash pop`: if there is more than one
+  entry, pop by explicit `stash@{n}` (matched by its message), never a bare
+  `pop`. A bare pop grabs whichever stash landed most recently, which may
+  not be yours.
+- After any deploy attempt, re-check `vercel inspect signals.gitdealflow.com`
+  before assuming your build is what is live. Another process may have
+  deployed first; cancel your redundant queued build with
+  `vercel remove <url> --yes` rather than racing the alias.
+- If a stash pop conflicts on a file you never intentionally edited, check
+  `git log -- <file>` first. HEAD may already carry a real committed fix
+  from another session; keep HEAD's version and discard your stale stashed
+  copy.
 
-**Whichever deploys last wins.** A fix landed on one lineage is silently
-reverted the moment another lineage deploys. This is not theoretical, on
-2026-08-03/04 it put deactivated Stripe payment links and post-payment 404s
-back into production, days after they were fixed and verified live.
+# One canonical deploy lineage (sentinel-enforced since 2026-08-12)
 
-**Therefore: a fix is not done when it is deployed. It is done when a tree
-that lacks it cannot build.**
+The domain is an alias-pinned Vercel project (`pseo-site`). It used to be
+deployed from multiple checkouts on multiple branches, and whichever deploy
+ran last silently reverted the others' fixes (on 2026-08-03/04 that put
+deactivated Stripe payment links and post-payment 404s back into
+production). That era is over: on 2026-08-12 the lineages were resolved
+down to ONE canonical tree, and a sentinel file makes it impossible to
+deploy from a stale one.
+
+| checkout | branch | role |
+|---|---|---|
+| `~/signals-gitdealflow/pseo-site` | `main` | **CANONICAL. Work and deploy from here only.** |
+| `~/signals-worldclass/pseo-site` | `worldclass-signals` | RETIRED 2026-08-12. Do not work here, do not deploy from it. |
+| `~/Downloads/vc-deal-flow-signal` | (checkout removed) | RETIRED. Do not deploy from any stray copy. |
+
+Every checkout carries `pseo-site/.deploy-lineage` (sentinel with
+`role=CANONICAL` or `role=RETIRED`). `scripts/assert-canonical-lineage.mjs`
+checks it FIRST in `prebuild`: a missing or RETIRED sentinel fails the
+build, so no stale tree can deploy through any path.
+
+Do not edit `.deploy-lineage` or the lineage guard to make a build pass.
+That is fixing the test, not the tree. If that failure appears, you are in
+the wrong checkout: switch to `~/signals-gitdealflow/pseo-site` on `main`.
+
+**A fix is not done when it is deployed. It is done when a tree that lacks
+it cannot build.**
 
 `scripts/verify-no-regressions.ts` runs in `prebuild`, so every deploy path
 (scheduled task, agent, temp-worktree deploy via
