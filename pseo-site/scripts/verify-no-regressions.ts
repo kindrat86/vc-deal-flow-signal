@@ -2257,6 +2257,32 @@ check(
 }
 
 // ---------------------------------------------------------------------------
+// §31 /md markdown Vary: Accept (2026-08-16, LLM-optimization cache fix).
+// The /md route handlers serve text/markdown via Accept negotiation (proxy.ts
+// rewrites Accept: text/markdown to /md/<path>). Next.js overwrites a
+// middleware-set Vary on the final response, so the HTML and markdown
+// representations of the same URL shared one edge-cache entry and could
+// cross-serve within the 1h s-maxage window. Fix sets "Vary": "Accept" on the
+// route handlers' own Responses (the response origin), which Next.js preserves
+// (verified live: the transcripts route pattern survives; the middleware-set
+// one does not). A reverted tree that only sets Vary in proxy.ts (or not at
+// all) re-enables the cross-serve, so assert the authoritative header lives in
+// both /md handlers.
+// ---------------------------------------------------------------------------
+check(
+  "app/md/route.ts",
+  "§31 /md route lost its Vary: Accept header: HTML and markdown representations can cross-serve from the shared edge cache (Next.js drops the middleware-set Vary).",
+  (s) => s.includes('"Vary": "Accept"'),
+  'restore "Vary": "Accept" on the route handler Response in app/md/route.ts (set at the response origin, not in proxy.ts)',
+);
+check(
+  "app/md/[...path]/route.ts",
+  "§31 /md/[...path] route lost its Vary: Accept header: HTML and markdown representations can cross-serve from the shared edge cache (Next.js drops the middleware-set Vary).",
+  (s) => s.includes('"Vary": "Accept"'),
+  'restore "Vary": "Accept" on the route handler Response in app/md/[...path]/route.ts (set at the response origin, not in proxy.ts)',
+);
+
+// ---------------------------------------------------------------------------
 // §24 Verdict-first leads on /vs H2 sections (2026-08-16). Quotable-structure
 // fix from the traffic audit: three H2s (feature table, FAQ, other
 // comparisons) dropped straight into a table, FAQ cards, or link chips with

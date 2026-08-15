@@ -276,6 +276,10 @@ export async function proxy(request: NextRequest) {
     // client doesn't get the markdown payload (or vice-versa) from a shared
     // edge cache.
     mdResponse.headers.set("Vary", "Accept");
+    // NOTE: Next.js overwrites this middleware-set Vary on the final response,
+    // so it is belt-and-suspenders only. The authoritative "Vary": "Accept"
+    // lives on the /md route handler Responses (app/md/route.ts and
+    // app/md/[...path]/route.ts), which Next.js preserves.
     // Canonical still points to the HTML URL, markdown is an alternate
     // representation, not a competing page.
     const canonical = `${BASE_URL}${pathname}`;

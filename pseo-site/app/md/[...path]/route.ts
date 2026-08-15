@@ -102,6 +102,11 @@ export async function GET(_request: Request, ctx: RouteContext) {
   return new Response(body, {
     headers: {
       "Content-Type": "text/markdown; charset=utf-8",
+      // Content negotiation: the HTML and markdown representations of the
+      // same URL must not share an edge-cache entry. Set here (the response
+      // origin), not in proxy.ts: Next.js overwrites a middleware-set Vary on
+      // the final response, dropping the Accept variant marker.
+      "Vary": "Accept",
       "Cache-Control": "s-maxage=3600, stale-while-revalidate=86400",
       "X-Robots-Tag": "index, follow",
     },
