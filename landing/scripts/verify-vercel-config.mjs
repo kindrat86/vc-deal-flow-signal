@@ -61,6 +61,25 @@ for (const [src, dst] of Object.entries(localeCatchAlls)) {
   }
 }
 
+// ---------------------------------------------------------------------------
+// /api/badge must rewrite to signals, not 404 (2026-08-16)
+// ---------------------------------------------------------------------------
+// The /stats hub's 20 stat cards embed gitdealflow.com/api/badge/stats-m<N>.svg.
+// The landing is static with no API routes; without this rewrite every one of
+// those badge requests 404s (broken image + layout shift on a buyer-intent
+// page). A tree missing the rewrite must not deploy.
+const badgeRewrite = (parsed.rewrites || []).find(
+  (r) => r.source === "/api/badge/:path*",
+);
+if (
+  !badgeRewrite ||
+  badgeRewrite.destination !== "https://signals.gitdealflow.com/api/badge/:path*"
+) {
+  fail(
+    '/api/badge/stats-m*.svg 404s again: the { "source": "/api/badge/:path*", "destination": "https://signals.gitdealflow.com/api/badge/:path*" } rewrite is missing from vercel.json rewrites[].',
+  );
+}
+
 if (failures.length) {
   console.error(
     `\n❌ verify-vercel-config: ${failures.length} config regression(s) detected:`,
