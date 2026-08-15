@@ -38,6 +38,10 @@ export interface AgentQuery {
   description: string;
   /** TL;DR, speakable, lifted into Speakable schema, 1-2 sentences. */
   tldr: string;
+  /** 40-60 word direct-answer block (AIO/AEO extraction target), optional. */
+  definition?: string;
+  /** Ordered method steps; rendered as a semantic <ol> + HowTo JSON-LD, optional. */
+  steps?: { name: string; text: string }[];
   /** Long-form answer body (markdown-ish, rendered as paragraphs). */
   body: string;
   /** Supporting facts shown as citable bullets in the AgentSummary block. */
@@ -768,25 +772,58 @@ npx -y @gitdealflow/mcp-signal
   },
   {
     slug: "how-to-find-startups-before-they-fundraise",
-    query: "How to find startups before they fundraise",
-    h1: "How to Find Startups Before They Fundraise",
+    // 2026-08-15 AIO rebuild (traffic audit, AIO readiness 60): targets the
+    // exact phrase "how to find startups before they raise"; "fundraise"
+    // variants stay covered in body + FAQ so existing phrasings keep ranking.
+    query: "How to find startups before they raise",
+    h1: "How to Find Startups Before They Raise",
     description:
-      "Track engineering acceleration on GitHub, commit velocity, hiring bursts, infrastructure buildouts. Patterns that historically precede fundraise announcements by 3-6 weeks. Free public API.",
+      "How to find startups before they raise: track commit velocity, contributor growth, and infra buildout. Signals lead announcements by 21-47 days. Free API.",
     tldr:
-      "The most reliable way to find venture-backed startups before they fundraise is to track engineering acceleration on public GitHub: commit velocity change, contributor growth, and infrastructure expansion. These signals have historically preceded fundraise announcements by three to six weeks. GitDealFlow turns them into a free public API so any investor can run this lens without building the pipeline.",
-    body: `Founders preparing to close a venture round don't broadcast their plans, but they do make the hidden work visible: more hiring, more deploys, more infrastructure. The cheapest place to see that work in real time is a startup's public GitHub presence.
+      "GitDealFlow computes these public GitHub signals across the tracked venture-backed orgs every week and exposes them as a free API, MCP server, and Sunday feed, so any investor can run the pre-fundraise lens without building the pipeline first.",
+    definition:
+      "To find startups before they raise, track engineering acceleration on public GitHub: commit-velocity change, contributor growth, and infrastructure buildout. Across a 219-startup panel, these signals surfaced 21 to 47 days before the fundraise announcement, and free weekly feeds make the method reproducible without a paid database.",
+    steps: [
+      {
+        name: "Watch commit velocity, not announcements",
+        text: "Compare each startup's commits over a rolling 14-day window against the prior window. A 100%+ delta sustained across multiple windows is the strongest single predictor in the panel.",
+      },
+      {
+        name: "Confirm the team is scaling",
+        text: "Check unique-contributor growth above 50% over six weeks. Contributors are a leakier signal than commits because OSS contributors may not be employees, but velocity plus contributors together is strong.",
+      },
+      {
+        name: "Look for infrastructure buildout",
+        text: "Three or more new public repositories in 30 days, especially auth, observability, and billing repos, usually means a company building to scale ahead of a round.",
+      },
+      {
+        name: "Pull the weekly feed instead of building it",
+        text: "GET /api/signals.json returns the top accelerating orgs across all sectors, and get_startup_signal drills into any org by name. The MCP server runs the same workflow inside Claude, Cursor, or any agent on a schedule.",
+      },
+      {
+        name: "Verify with databases after, not before",
+        text: "Cross-reference the shortlist in Crunchbase or PitchBook to confirm stage and ownership. Databases verify leads; public engineering signals generate them 21-47 days earlier.",
+      },
+    ],
+    body: `Founders rarely announce a round before it closes, but the preparation is public: hiring accelerates, deploys get more frequent, and infrastructure appears weeks before any press release. Startups show that work on GitHub whether they intend to or not, which makes engineering activity the earliest broadly available signal that a company is about to raise.
 
 **The four signal patterns to watch.**
 
 1. **Commit-velocity acceleration.** Total commits over a rolling 14-day window, vs. the prior window. A 100%+ delta sustained across multiple windows is the strongest single predictor.
 2. **Engineering hiring burst.** Unique-contributor count growing >50% over a 6-week period. Contributors are a leakier signal than commits because OSS contributors may not be employees, but combined with velocity it's strong.
 3. **Infrastructure buildout.** Three or more new public repositories in 30 days. Companies preparing to scale create infrastructure repos (auth, observability, billing) ahead of the round.
-4. **Framework migration.** General acceleration not fitting the other categories, often indicates a tech-stack shift that founders want to ship before they raise.
+4. **Framework migration.** General acceleration not fitting the other categories, often indicating a tech-stack shift that founders want to ship before they raise.
 
-**The three-step workflow.** (1) Pull the GitDealFlow trending feed weekly: \`GET /api/signals.json\` returns the top 20 across all sectors. (2) Drill into individual orgs that catch your eye: \`GET /api/signal?name=NAME\`. (3) Cross-reference confirmed events in Crunchbase / PitchBook to validate the lead-time claim and refine your filter.
+**How much lead time this buys.** Across the 219-startup longitudinal panel (SSRN-indexed methodology, CC BY 4.0), engineering acceleration surfaced 21 to 47 days before the fundraise announcement. That window is where a scout can open a conversation while the round is still quiet, instead of competing with everyone who reads the same funding database each morning.
 
-**For fully automated discovery,** wire the MCP server into a Claude / Cursor / OpenAI-Agents agent that runs the workflow on a schedule. The function-calling API is at \`/api/agent/tools\` for non-MCP runtimes.`,
+**For fully automated discovery,** wire the MCP server into a Claude / Cursor / OpenAI-Agents workflow that runs on a schedule. The function-calling API is at /api/agent/tools for non-MCP runtimes.`,
     facts: [
+      {
+        claim:
+          "Engineering acceleration surfaced fundraises 21 to 47 days early across a 219-startup longitudinal panel.",
+        sourceUrl: "https://signals.gitdealflow.com/methodology",
+        sourceLabel: "Methodology (219-startup panel)",
+      },
       {
         claim:
           "The strongest single predictor is commit-velocity change sustained across multiple 14-day windows.",
@@ -795,25 +832,27 @@ npx -y @gitdealflow/mcp-signal
       },
       {
         claim:
-          "Four signal sub-types are tracked: hiring burst, infrastructure buildout, deploy frequency spike, framework migration.",
-        sourceUrl: "https://signals.gitdealflow.com/llms-full.txt",
-        sourceLabel: "llms-full.txt",
-      },
-      {
-        claim:
-          "GitHub-derived engineering signals have historically preceded fundraise announcements by 3-6 weeks across the dataset.",
-        sourceUrl: "https://signals.gitdealflow.com/llms-full.txt",
-        sourceLabel: "Lead-time discussion",
+          "All signals derive from public GitHub activity; the methodology is published, reproducible, and falsifiable.",
+        sourceUrl: "https://signals.gitdealflow.com/reproducibility",
+        sourceLabel: "Reproducibility",
       },
     ],
     faqs: [
       {
-        q: "How often does this approach actually work?",
-        a: "The 3-6 week lead time is a population-level statistic, it works for the majority of venture-backed startups whose engineering activity is at least partially public. Stealth-mode startups and companies with fully private monorepos are invisible to this method.",
+        q: "How do you find startups before they raise?",
+        a: "Track public engineering acceleration: commit-velocity change over rolling 14-day windows, contributor growth above 50% over six weeks, and new infrastructure repositories. Across the 219-startup panel these patterns appeared 21 to 47 days before fundraise announcements, before most databases listed the round.",
       },
       {
-        q: "Is this insider trading or unfair information?",
+        q: "How far ahead can you detect a fundraise?",
+        a: "The measured lead time is 21 to 47 days between sustained engineering acceleration and the fundraise announcement. It is a population-level statistic: it holds for startups with meaningful public GitHub activity and does not apply to stealth companies or fully private monorepos.",
+      },
+      {
+        q: "Is using GitHub signals insider trading or unfair information?",
         a: "No. All signals are derived from fully public GitHub activity that anyone can observe. The advantage is in the systematic pipeline, most investors don't bother to compute rolling 14-day velocity across hundreds of orgs every week.",
+      },
+      {
+        q: "What tools find startups before they raise?",
+        a: "Purpose-built feeds include GitDealFlow, a free public API and MCP server built on this methodology. General databases such as Crunchbase and PitchBook confirm rounds after they become known; for pre-announcement discovery you need leading signals rather than listing databases.",
       },
       {
         q: "What if I don't want to use a paid platform?",
@@ -827,12 +866,38 @@ npx -y @gitdealflow/mcp-signal
       "github-data-for-startup-investors",
       "vc-deal-sourcing-via-github",
     ],
+    proofLinks: [
+      {
+        label: "Methodology (219-startup panel, CC BY 4.0)",
+        url: "/methodology",
+      },
+      {
+        label: "Reproducibility notes",
+        url: "/reproducibility",
+      },
+      {
+        label: "SSRN preprint",
+        url: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558",
+      },
+    ],
+    nextReadLinks: [
+      {
+        label: "Spotting momentum before the round gets crowded (timing guide)",
+        url: "/how-to-spot-startup-momentum-before-the-round-gets-crowded",
+      },
+      {
+        label: "This week's top accelerating startups",
+        url: "/trending",
+      },
+    ],
     keywords: [
-      "find startups before fundraise",
-      "pre-fundraise discovery",
+      "how to find startups before they raise",
+      "find startups before they fundraise",
+      "pre-fundraise startup sourcing",
+      "startup screening before funding announcement",
+      "GitHub momentum signals",
+      "engineering acceleration",
       "deal sourcing",
-      "GitHub momentum",
-      "engineering signals",
       "lead indicators",
     ],
   },

@@ -185,6 +185,34 @@ check(
 );
 
 // ---------------------------------------------------------------------------
+// 7. AIO-ready flagship answer (2026-08-15 traffic audit, AIO item). The
+//    "how to find startups before they raise" answer must keep its 40-60 word
+//    definition block, semantic step list, and HowTo schema. A lineage that
+//    regresses this loses the extraction surface the page was rebuilt for.
+// ---------------------------------------------------------------------------
+check(
+  "content/agent-queries.ts",
+  "how-to-find-startups-before-they-fundraise lost its AIO structure (definition + steps + exact phrase).",
+  (s) => {
+    const i = s.indexOf('slug: "how-to-find-startups-before-they-fundraise"');
+    if (i === -1) return false;
+    const chunk = s.slice(i, i + 11000);
+    return (
+      chunk.includes("definition:") &&
+      chunk.includes("steps:") &&
+      chunk.includes("before they raise")
+    );
+  },
+  "restore the definition block, the 5 steps, and the phrase 'before they raise' on that entry",
+);
+check(
+  "app/answers/[slug]/page.tsx",
+  "answers template lost the direct-answer block or HowTo rendering.",
+  (s) => s.includes("data-direct-answer") && s.includes("HowToStep"),
+  "re-add the definition block, the semantic <ol> steps, and the HowTo JSON-LD subgraph",
+);
+
+// ---------------------------------------------------------------------------
 // N. Shared send-gate wiring (2026-08-04). A 14-day audit found real
 //    subscribers receiving 3-4 emails in one day: ~6 independent systems mail
 //    the same people and each only tracked its own state. Every MARKETING

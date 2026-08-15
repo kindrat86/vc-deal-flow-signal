@@ -102,6 +102,7 @@ function buildJsonLd(q: AgentQuery): object {
           "@type": "SpeakableSpecification",
           cssSelector: [
             "h1",
+            "[data-direct-answer]",
             "[data-speakable]",
             "[data-agent-summary]",
             ".speakable",
@@ -175,6 +176,25 @@ function buildJsonLd(q: AgentQuery): object {
           },
         })),
       },
+      // HowTo (2026-08-15 AIO rebuild): semantic step list for answer
+      // engines and AI Overviews. Only emitted when the entry defines steps.
+      ...(q.steps && q.steps.length > 0
+        ? [
+            {
+              "@type": "HowTo",
+              "@id": `${url}#howto`,
+              name: q.h1,
+              description: q.definition ?? q.description,
+              step: q.steps.map((s, i) => ({
+                "@type": "HowToStep",
+                position: i + 1,
+                name: s.name,
+                text: s.text,
+                url: `${url}#step-${i + 1}`,
+              })),
+            },
+          ]
+        : []),
       {
         "@type": "WebAPI",
         name: "VC Deal Flow Signal, Public Agent API",
@@ -252,6 +272,21 @@ export default async function AnswerPage({ params }: PageProps) {
           </p>
         </header>
 
+        {q.definition ? (
+          <div
+            data-direct-answer
+            data-speakable="definition"
+            className="mb-8 rounded-xl border border-slate-700 bg-slate-900/70 px-5 py-4 sm:px-6 sm:py-5"
+          >
+            <p className="text-sky-400 text-[10px] font-semibold uppercase tracking-wider mb-2">
+              Direct answer
+            </p>
+            <p className="text-gray-100 text-base sm:text-lg leading-relaxed">
+              {q.definition}
+            </p>
+          </div>
+        ) : null}
+
         <AgentSummary
           tldr={q.tldr}
           pageUrl={url}
@@ -276,6 +311,26 @@ export default async function AnswerPage({ params }: PageProps) {
             </p>
           ))}
         </section>
+
+        {q.steps && q.steps.length > 0 ? (
+          <section className="mb-10" aria-label="Step-by-step method">
+            <h2 className="text-xl font-semibold text-gray-100 mb-4">
+              The method, step by step
+            </h2>
+            <ol className="list-decimal list-outside space-y-5 pl-5">
+              {q.steps.map((s, i) => (
+                <li
+                  key={i}
+                  id={`step-${i + 1}`}
+                  className="text-gray-300 leading-relaxed"
+                >
+                  <span className="font-semibold text-gray-100">{s.name}.</span>{" "}
+                  {s.text}
+                </li>
+              ))}
+            </ol>
+          </section>
+        ) : null}
 
         <section className="mb-10 rounded-xl border border-amber-500/30 bg-amber-500/5 p-6 sm:p-8">
           <p className="text-amber-300 text-xs uppercase tracking-wider mb-2 font-semibold">

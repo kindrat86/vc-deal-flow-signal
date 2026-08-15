@@ -295,6 +295,7 @@ export default function StartupMomentumGuidePage() {
             <li><Link href="/answers/what-is-startup-engineering-momentum" className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm">What startup engineering momentum means</Link></li>
             <li><Link href="/compare/crunchbase-alternative-for-angel-investors" className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm">A better Crunchbase alternative when timing matters</Link></li>
             <li><Link href="https://gitdealflow.com/report" className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm">Read a sample Sunday watchlist</Link></li>
+            <li><Link href="/answers/how-to-find-startups-before-they-fundraise" className="text-sky-400 hover:text-sky-300 underline underline-offset-2 text-sm">The full method: how to find startups before they raise</Link></li>
           </ul>
         </section>
 
