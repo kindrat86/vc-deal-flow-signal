@@ -48,6 +48,10 @@ EXCLUDE_FILES = {
     # sitemap as self-canonical entries (validator: canonical mismatch).
     "best/best-crunchbase-alternatives.html",
     "best/best-pitchbook-alternatives.html",
+    # Canonicalized dupe (memory: keywords-100 consolidation): the page
+    # canonicals to best/best-deal-flow-tools, so it must not sit in the
+    # sitemap as a self-canonical entry (validator: canonical mismatch).
+    "best/best-deal-flow-software.html",
 
     # Error pages
     "404.html",
