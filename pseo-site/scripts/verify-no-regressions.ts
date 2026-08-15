@@ -2876,6 +2876,23 @@ check(
   "restore the CURATED_BREADCRUMB_FAMILIES list and the exact-or-child skip in BreadcrumbsSchema.tsx",
 );
 
+check(
+  "app/pricing/page.tsx",
+  "§33 pricing rich-result schema (2026-08-17, audit item \"Add Product/Offer with price on /pricing\"): the offers-bearing SoftwareApplication must carry image (GSC merchant-listing CRITICAL field, 08-06 incident) and priceValidUntil must derive from FRESH_YEAR, never a hardcoded year",
+  (s) =>
+    s.includes('image: "https://signals.gitdealflow.com/opengraph-image"') &&
+    s.includes("FRESH_YEAR + 1") &&
+    !s.includes('"2026-12-31"') &&
+    s.includes('import { FRESH_YEAR } from "@/lib/freshness-year"'),
+  "restore the opengraph-image on the #softwareapplication node and the FRESH_YEAR-derived priceValidUntil (both offer sites)",
+);
+check(
+  "components/RootIdentitySchema.tsx",
+  "§33 the site-wide #software node (offers 0/49/197) must carry image (merchant-listing critical field)",
+  (s) => s.includes("image: [`${SITE}/opengraph-image`],"),
+  "restore image: [`${SITE}/opengraph-image`] on the #software SoftwareApplication node",
+);
+
 // ---------------------------------------------------------------------------
 if (failures.length) {
   console.error(
