@@ -42,7 +42,6 @@ import {
 } from "@/content/niches";
 import { startupIdeas } from "@/content/startup-ideas";
 import { playbooks } from "@/content/playbooks";
-import { getAllIdeaSlugs } from "@/lib/ideas-of-the-day";
 import { starsCases } from "@/content/from-stars-to-seed";
 import { FINDINGS as RESEARCH_FINDINGS } from "@/content/research-findings";
 import { PRIMITIVES } from "@/content/signal-primitives";
@@ -241,10 +240,9 @@ export async function GET(_req: Request, ctx: RouteContext) {
         },
       ]),
       { url: `${BASE_URL}/signal-of-the-week`, lastmod, changefreq: "weekly", priority: 0.8 },
-      // Idea of the Day, perma-URL surface (always serves today's pick).
-      // Daily cadence on the hub itself; archived dated children live in
-      // the `content` shard below.
-      { url: `${BASE_URL}/idea-of-the-day`, lastmod, changefreq: "daily", priority: 0.9 },
+      // (/idea-of-the-day hub retired 2026-08-16, §22: 129 imps / 0 clicks
+      //  in GSC 90d across hub + archive; 301s to /startup-ideas. Archived
+      //  dated children were listed in the `content` shard; also removed.)
       { url: `${BASE_URL}/alternatives`, lastmod, changefreq: "monthly", priority: 0.8 },
       { url: `${BASE_URL}/use-cases`, lastmod, changefreq: "monthly", priority: 0.8 },
       { url: `${BASE_URL}/integrations`, lastmod, changefreq: "monthly", priority: 0.8 },
@@ -736,25 +734,15 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/tools/ltv-calculator`, lastmod, changefreq: "monthly", priority: 0.85 },
       { url: `${BASE_URL}/tools/dilution-stack`, lastmod, changefreq: "monthly", priority: 0.85 },
       { url: `${BASE_URL}/tools/quick-ratio-calculator`, lastmod, changefreq: "monthly", priority: 0.85 },
-      // /define, category-grouped index (sibling to /glossary's flat
-      // alphabetic listing). Hub for the 62 /define/[term] deep pages.
-      { url: `${BASE_URL}/define`, lastmod, changefreq: "monthly", priority: 0.8 },
       // /glossary.jsonl + /api/v1/glossary.jsonl, NDJSON dump of the
       // controlled vocabulary, one term per line. Sibling to the existing
       // /qa.jsonl + /dataset.jsonl apex surfaces. HF-Datasets-ready.
       { url: `${BASE_URL}/glossary.jsonl`, lastmod, changefreq: "weekly", priority: 0.7 },
       { url: `${BASE_URL}/api/v1/glossary.jsonl`, lastmod, changefreq: "weekly", priority: 0.7 },
-      // /define/[term], one URL per glossary term, shipped 2026-05-26.
-      // Sibling to /glossary (the flat index) and /signals/define/[type]
-      // (the formal signal primitives). Wikipedia-shaped DefinedTerm pages
-      // are the strongest single AEO citation magnet, see audit notes
-      // in marketing/pseo-define-archetype-2026-05-26.md.
-      ...glossaryTerms.map((t) => ({
-        url: `${BASE_URL}/define/${t.id}`,
-        lastmod,
-        changefreq: "monthly",
-        priority: 0.75,
-      })),
+      // (/define index + /define/[term] pages retired 2026-08-16, see §22 in
+      //  next.config.ts: 134 thin glossary twins, 2,940 imps / 1 click / pos
+      //  57-93 in GSC 90d. Terms live on /glossary#<id> anchors; old URLs
+      //  301 there. Do NOT re-add here or in any template.)
       // Niche-down, Greg-style "riches are in the niches" pSEO cluster
       // (2026-05-22). 1 hub + 15 sector hubs + 200 leaf pages = 221 URLs.
       // Sector → sub-niche taxonomy lives in content/niches.ts.
@@ -803,16 +791,9 @@ export async function GET(_req: Request, ctx: RouteContext) {
         changefreq: "monthly",
         priority: 0.8,
       })),
-      // Idea of the Day, dated archive children. Each slug is permanent;
-      // the date is also the slug. `changefreq: yearly` because past entries
-      // never change after publish (only the lastmod stays in sync with
-      // the global data refresh).
-      ...getAllIdeaSlugs().map((slug) => ({
-        url: `${BASE_URL}/idea-of-the-day/${slug}`,
-        lastmod,
-        changefreq: "yearly",
-        priority: 0.7,
-      })),
+      // Idea of the Day archive children retired with the template
+      // (2026-08-16, §22 next.config.ts). Old dated URLs 301 to
+      // /startup-ideas; do not re-add.
       { url: `${BASE_URL}/research`, lastmod, changefreq: "weekly", priority: 0.9 },
       ...RESEARCH_FINDINGS.map((f) => ({
         url: `${BASE_URL}/research/${f.slug}`,

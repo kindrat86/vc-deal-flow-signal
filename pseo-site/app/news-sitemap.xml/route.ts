@@ -1,7 +1,6 @@
 import { posts } from "@/content/posts";
 import { PRESS_RELEASES } from "@/content/press-releases";
 import { getAllPredictionWeeks } from "@/lib/predictions";
-import { getAllIdeas } from "@/lib/ideas-of-the-day";
 
 export const dynamic = "force-dynamic";
 
@@ -75,23 +74,9 @@ function blogItems(): NewsItem[] {
   }));
 }
 
-// Idea of the Day, daily ideation pages. Each entry's publishedAt anchors
-// the news-index window; Google News drops anything past 48 h on its side
-// so the daily cron keeps a fresh item rotating through the index without
-// any extra plumbing here.
-function ideaOfTheDayItems(): NewsItem[] {
-  return getAllIdeas().map((idea) => ({
-    loc: `${BASE_URL}/idea-of-the-day/${idea.slug}`,
-    publishedAt: new Date(idea.publishedAt).toISOString(),
-    title: `Idea of the day: ${idea.headline}, VC Deal Flow Signal`,
-    keywords: [
-      "startup ideas",
-      idea.repo.sector,
-      idea.repo.signalType,
-      "GitHub momentum",
-    ].join(", "),
-  }));
-}
+// Idea of the Day news items removed with the template (2026-08-16, §22
+// next.config.ts): 129 imps / 0 clicks in GSC 90d. Old URLs 301 to
+// /startup-ideas, which is not a news surface.
 
 function filterAndSort(items: NewsItem[], now: number, windowMs: number): NewsItem[] {
   const cutoff = now - windowMs;
@@ -114,7 +99,6 @@ export async function GET() {
       ...blogItems(),
       ...pressItems(),
       ...predictionItems(),
-      ...ideaOfTheDayItems(),
     ];
   } catch (err) {
     // Module-level data imports are sync, but if any helper throws during

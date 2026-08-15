@@ -113,21 +113,15 @@ export async function GET() {
     });
   }
 
-  // ── 2. Glossary, hub + every DefinedTerm page ───────────────────────────
+  // ── 2. Glossary, hub carries every DefinedTerm on #anchors ────────────
+  // (/define/[term] deep pages retired 2026-08-16, §22 next.config.ts;
+  //  the glossary hub itself is the citable unit for every term.)
   entries.push({
     url: `${BASE_URL}/glossary`,
     lastmod,
     changefreq: "monthly",
     priority: 0.85,
   });
-  for (const t of glossaryTerms) {
-    entries.push({
-      url: `${BASE_URL}/define/${t.id}`,
-      lastmod,
-      changefreq: "monthly",
-      priority: 0.8,
-    });
-  }
 
   // ── 3. Sector deep-dives ────────────────────────────────────────────────
   // Curated /sector/[slug] hubs (unique analyst note + aggregated corpora).

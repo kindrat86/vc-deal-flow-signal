@@ -132,7 +132,8 @@ const PRIORITY_LINK_BLOCKS = [
       { href: "/predicted", label: "Predicted", icon: "🔮" },
       { href: "/trending", label: "Trending", icon: "🔥" },
       { href: "/startup-ideas", label: "Startup Ideas", icon: "💡" },
-      { href: "/idea-of-the-day", label: "Idea of the Day", icon: "📅" },
+      // (/idea-of-the-day retired 2026-08-16 §22: 129 imps / 0 clicks in
+      //  GSC 90d; its URL 301s to /startup-ideas.)
     ],
   },
 ] as const;

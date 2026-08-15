@@ -294,7 +294,7 @@ export default function RunwayCalculatorPage() {
 
         <section className="mt-12 grid sm:grid-cols-2 gap-4">
           <Link
-            href="/define/runway"
+            href="/glossary#runway"
             className="group block rounded-lg border border-slate-800 bg-slate-900 p-5 hover:border-slate-600 transition-all"
           >
             <p className="text-xs uppercase tracking-wider text-sky-400 font-medium mb-1">
@@ -309,7 +309,7 @@ export default function RunwayCalculatorPage() {
             </p>
           </Link>
           <Link
-            href="/define/burn-rate"
+            href="/glossary#burn-rate"
             className="group block rounded-lg border border-slate-800 bg-slate-900 p-5 hover:border-slate-600 transition-all"
           >
             <p className="text-xs uppercase tracking-wider text-sky-400 font-medium mb-1">

@@ -1207,12 +1207,13 @@ check(
   "render {t.snippet} right after each question h2 and use t.snippet ?? t.definition in the FAQPage schema",
 );
 
-check(
-  "app/define/[term]/page.tsx",
-  "definition term pages lost the snippet lede or the snippet-backed FAQ answer.",
-  (s) => s.includes("{t.snippet}") && s.includes("t.snippet ?? t.definition"),
-  "render {t.snippet} as the direct-answer lede after the h1 and use it in the FAQPage acceptedAnswer",
-);
+// DELETED 2026-08-16 (§22 retirement): this check asserted the /define/[term]
+// snippet-lede on a template that §22 intentionally deletes in the same
+// changeset (125 URLs, 2,940 imps, 1 click, pos 57-93). The snippet-backed
+// direct-answer intent lives on at the hub: the app/glossary/page.tsx check
+// above still requires {t.snippet} as the first answer paragraph and the
+// glossary.jsonl check below still exposes the snippet field, so the
+// extractable-answer invariant survives the template's retirement.
 
 check(
   "app/methodology/page.tsx",
@@ -2013,6 +2014,144 @@ check(
     (s) => s.includes("lastModified.getFullYear()"),
     "keep const year = lastModified.getFullYear() in the /vs generateMetadata",
   );
+}
+
+// ---------------------------------------------------------------------------
+// 11. Thin-content word-floor guard wired into postbuild (2026-08-15 audit,
+//     "Thin-content risk 40/100"). No indexable prerendered page under 400
+//     visible words; pre-existing thin pages pinned in
+//     data/thin-content-baseline.json. These assertions make a tree that
+//     silently DROPS the guard undeployable (multi-lineage protection).
+// ---------------------------------------------------------------------------
+{
+  const guard = read("scripts/verify-word-floor.mjs");
+  if (guard === null) {
+    failures.push(
+      `Word-floor guard deleted (thin-content protection gone).\n    file not found: scripts/verify-word-floor.mjs\n    fix:  restore it from git history (commit that wired it into postbuild, 2026-08-15)`,
+    );
+  } else {
+    if (!/const FLOOR = 400/.test(guard)) {
+      failures.push(
+        `Word-floor guard FLOOR changed from 400.\n    file: scripts/verify-word-floor.mjs\n    fix:  raising the floor requires enriching every family it would strand; land the enrichment first, then update the baseline in the same commit`,
+      );
+    }
+    if (!/--update-baseline/.test(guard)) {
+      failures.push(
+        `Word-floor guard lost its --update-baseline maintenance path.\n    file: scripts/verify-word-floor.mjs\n    fix:  keep baseline regeneration available so enrichments can retire pinned rows`,
+      );
+    }
+  }
+  check(
+    "package.json",
+    "postbuild no longer runs the word-floor guard (thin pages would ship silently).",
+    (s) => {
+      try {
+        return /verify-word-floor\.mjs/.test(JSON.parse(s).scripts.postbuild);
+      } catch {
+        return false;
+      }
+    },
+    `keep "node scripts/verify-word-floor.mjs" as the FIRST step of postbuild`,
+  );
+  check(
+    "data/thin-content-baseline.json",
+    "Thin-content baseline file missing (unregistered thin pages would hard-fail the build).",
+    (s) => {
+      try {
+        const j = JSON.parse(s);
+        return j.floor === 400 && j.pages && typeof j.pages === "object";
+      } catch {
+        return false;
+      }
+    },
+    `regenerate with: node scripts/verify-word-floor.mjs --update-baseline`,
+  );
+}
+
+// ---------------------------------------------------------------------------
+// §22 Weakest-template retirement, /define + /idea-of-the-day (2026-08-16).
+// GSC 90d evidence: /define/* = 125 URLs, 2,940 impressions, 1 click, avg
+// positions 57-93 on dictionary head terms owned by Investopedia/Wikipedia;
+// the /glossary hub already renders every term as an anchored DefinedTerm.
+// /idea-of-the-day/* = hub + ~105 archive pages, 129 impressions, 0 clicks.
+// Both templates' generation was deleted (app/define, app/idea-of-the-day,
+// lib/ideas-of-the-day.ts, scripts/generate-idea-of-the-day.mjs,
+// app/api/og/define) and every retired URL 301s to /glossary#<term> or
+// /startup-ideas. A tree that regenerates either template reintroduces
+// ~240 thin pages that split crawl budget and dilute the glossary hub.
+// ---------------------------------------------------------------------------
+{
+  const cfg = read("next.config.ts");
+  if (cfg === null) {
+    failures.push("§22 next.config.ts missing");
+  } else {
+    for (const pair of [
+      ['"/define"', '"/glossary"'],
+      ['"/define/:term"', '"/glossary#:term"'],
+      ['"/idea-of-the-day"', '"/startup-ideas"'],
+      ['"/idea-of-the-day/:date"', '"/startup-ideas"'],
+    ] as const) {
+      if (!cfg.includes(pair[0]) || !cfg.includes(pair[1])) {
+        failures.push(
+          `§22 retirement redirect missing: ${pair[0]} → ${pair[1]}\n` +
+            `    file: next.config.ts\n` +
+            `    fix:  restore the permanent §22 redirects (see the §22 comment block)`,
+        );
+      }
+    }
+  }
+  // Generation must stay deleted. existsSync on the template dirs /
+  // data file catches a lineage that still carries them.
+  for (const gone of [
+    "app/define",
+    "app/idea-of-the-day",
+    "app/api/og/define",
+    "lib/ideas-of-the-day.ts",
+    "data/ideas-of-the-day.json",
+    "scripts/generate-idea-of-the-day.mjs",
+  ]) {
+    if (existsSync(join(ROOT, gone))) {
+      failures.push(
+        `§22 retired template still present: ${gone}\n` +
+          `    fix:  delete it (GDEALFLOW §22 retirement, 2026-08-16; /define deep pages were 1-click thin twins of /glossary anchors, idea-of-the-day was 0-click)`,
+      );
+    }
+  }
+  // Sitemaps must not advertise retired URLs (would re-submit 301 targets
+  // to Google and burn crawl on redirects).
+  const sm = read("app/sitemap/[id]/route.ts");
+  if (sm !== null && /url: `\$\{BASE_URL\}\/(define|idea-of-the-day)/.test(sm)) {
+    failures.push(
+      `§22 sitemap still lists retired /define or /idea-of-the-day URLs\n` +
+        `    file: app/sitemap/[id]/route.ts\n` +
+        `    fix:  remove the retired template entries (old URLs 301; sitemap lists canonicals only)`,
+    );
+  }
+  const smllm = read("app/sitemap-llm.xml/route.ts");
+  if (smllm !== null && /url: `\$\{BASE_URL\}\/define\//.test(smllm)) {
+    failures.push(
+      `§22 LLM sitemap still lists retired /define/ URLs\n` +
+        `    fix:  the glossary hub (with #anchors) is the citable unit; drop per-term entries`,
+    );
+  }
+  // Internal-link graph must not route through retired URLs.
+  const linksRaw = read("data/internal-links.json");
+  if (linksRaw !== null) {
+    if (linksRaw.includes('"#/define/') || /"\/define\//.test(linksRaw)) {
+      failures.push(
+        `§22 internal-link graph still routes through retired /define/ URLs\n` +
+          `    file: data/internal-links.json\n` +
+          `    fix:  repoint entries to /glossary#<term> and rerun scripts/build-internal-links.ts`,
+      );
+    }
+    if (/"\/idea-of-the-day/.test(linksRaw)) {
+      failures.push(
+        `§22 internal-link graph still routes through retired /idea-of-the-day URLs\n` +
+          `    file: data/internal-links.json\n` +
+          `    fix:  rerun scripts/build-internal-links.ts against the cleaned sitemap`,
+      );
+    }
+  }
 }
 
 // ---------------------------------------------------------------------------

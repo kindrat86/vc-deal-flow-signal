@@ -305,7 +305,7 @@ export default async function ResearchPaperPage({ params }: PageProps) {
               {relatedTerms.map((g) => (
                 <Link
                   key={g.id}
-                  href={`/define/${g.id}`}
+                  href={`/glossary#${g.id}`}
                   className="rounded-full border border-slate-800 bg-slate-900 px-3 py-1 text-xs text-gray-300 hover:border-slate-600 hover:text-sky-400 transition-all"
                 >
                   {g.term}

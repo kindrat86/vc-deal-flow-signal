@@ -268,12 +268,15 @@ export default function GlossaryPage() {
               >
                 {t.definition}
               </p>
-              <Link
-                href={`/define/${t.id}`}
+              {/* Term deep pages (/define/[id]) retired 2026-08-16 (§22);
+                  the entry above IS the full entry. Permalink scrolls to
+                  the anchored entry and is the shareable/citable URL. */}
+              <a
+                href={`#${t.id}`}
                 className="mt-3 inline-block text-sky-400 text-sm font-medium hover:text-sky-300 transition-colors"
               >
-                Open term page →
-              </Link>
+                Permalink to this term →
+              </a>
               <link
                 itemProp="url"
                 href={`https://signals.gitdealflow.com/glossary#${t.id}`}
@@ -282,15 +285,15 @@ export default function GlossaryPage() {
           ))}
         </div>
 
-        {/* Sister hub, de-orphans the category-grouped /define index (and the
-            individual term pages it links) from this well-linked page. */}
+        {/* Sister hub to the signal primitives (the /define category index
+            was retired with the term pages, 2026-08-16 §22). */}
         <p className="mt-10 text-sm text-gray-400">
-          Prefer to browse by category?{" "}
+          Prefer signal deep-dives?{" "}
           <Link
-            href="/define"
+            href="/signals"
             className="text-sky-400 font-medium hover:text-sky-300 transition-colors"
           >
-            See all {terms.length} terms grouped by topic →
+            See the six atomic signals, each formally defined →
           </Link>
         </p>
 

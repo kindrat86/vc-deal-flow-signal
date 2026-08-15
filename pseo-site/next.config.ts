@@ -135,6 +135,36 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        // ---- §22 template retirement, 2026-08-16 (pSEO audit Win: kill the
+        // two weakest templates). GSC 90d evidence: /define/* = 125 URLs,
+        // 2,940 impressions, 1 click, positions 57-93 on dictionary head
+        // terms we never win (Investopedia/Wikipedia own them); the /glossary
+        // hub already renders every term as an anchored DefinedTerm, so the
+        // 134 deep pages were a thin duplicate layer. /idea-of-the-day/* =
+        // hub + ~105 archive pages, 129 impressions, 0 clicks (40 URLs got
+        // impressions at all). Generation removed (app/define, app/idea-of-
+        // the-day, lib/ideas-of-the-day, generator script, og route); these
+        // 301s preserve equity and keep every old URL working.
+        source: "/define",
+        destination: "/glossary",
+        permanent: true,
+      },
+      {
+        source: "/define/:term",
+        destination: "/glossary#:term",
+        permanent: true,
+      },
+      {
+        source: "/idea-of-the-day",
+        destination: "/startup-ideas",
+        permanent: true,
+      },
+      {
+        source: "/idea-of-the-day/:date",
+        destination: "/startup-ideas",
+        permanent: true,
+      },
+      {
         // Legacy pSEO generator once shadowed the real /alternatives/[slug]
         // pages with a bare-slug static file at /vs/tracxn (removed
         // 2026-07-20, see predeploy audit). Redirect the old inbound

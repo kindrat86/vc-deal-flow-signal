@@ -36,7 +36,9 @@ export async function GET() {
       definition: t.definition,
       category: category,
       category_label: CATEGORY_META[category].label,
-      url: `${SITE}/define/${t.id}`,
+      // /define/[id] retired 2026-08-16 (§22): the anchored glossary hub is
+      // the canonical URL for every term; keep url + cite_as aligned to it.
+      url: `${SITE}/glossary#${t.id}`,
       glossary_anchor: `${SITE}/glossary#${t.id}`,
       signal_primitive_url: signalSlug
         ? `${SITE}/signals/define/${signalSlug}`
@@ -44,7 +46,7 @@ export async function GET() {
       license: "CC-BY-4.0",
       source: "VC Deal Flow Signal",
       source_url: "https://signals.gitdealflow.com",
-      cite_as: `The Data Nerd. "${t.term}." VC Deal Flow Signal Glossary, ${SITE}/define/${t.id}.`,
+      cite_as: `The Data Nerd. "${t.term}." VC Deal Flow Signal Glossary, ${SITE}/glossary#${t.id}.`,
     });
   });
 

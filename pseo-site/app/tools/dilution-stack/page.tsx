@@ -306,7 +306,7 @@ export default function DilutionStackPage() {
             </p>
           </Link>
           <Link
-            href="/define/safe"
+            href="/glossary#safe"
             className="group block rounded-lg border border-slate-800 bg-slate-900 p-5 hover:border-slate-600 transition-all"
           >
             <p className="text-xs uppercase tracking-wider text-sky-400 font-medium mb-1">

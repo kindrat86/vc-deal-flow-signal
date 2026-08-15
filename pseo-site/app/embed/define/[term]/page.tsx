@@ -78,7 +78,10 @@ export default async function EmbedDefinePage({ params }: PageProps) {
   const t = getTerm(term);
   if (!t) notFound();
 
-  const deepLink = `${SITE}/define/${term}?utm_source=embed&utm_medium=iframe&utm_campaign=glossary-embed`;
+  // Attribution target: /define/[term] retired 2026-08-16 (§22); the
+  // anchored glossary entry is now the canonical (and indexable) URL that
+  // receives embed backlink equity.
+  const deepLink = `${SITE}/glossary?utm_source=embed&utm_medium=iframe&utm_campaign=glossary-embed#${term}`;
 
   return (
     <>

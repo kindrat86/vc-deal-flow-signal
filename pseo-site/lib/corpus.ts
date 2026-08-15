@@ -171,7 +171,7 @@ function buildGlossaryRecords(): CorpusRecord[] {
       id: t.id,
       type: "DefinedTerm",
       name: t.term,
-      url: `${SITE}/define/${t.id}`,
+      url: `${SITE}/glossary#${t.id}`,
       definition: t.definition,
     }),
   );
