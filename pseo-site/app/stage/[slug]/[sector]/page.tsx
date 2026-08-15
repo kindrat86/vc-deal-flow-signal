@@ -213,8 +213,9 @@ export default async function StageSectorPage({ params }: PageProps) {
 
         <section className="mb-10" aria-label="Startup rankings">
           <h2 className="text-gray-100 font-semibold text-lg mb-4">
-            Ranked {stageName.toLowerCase()} {sectorInfo.name.toLowerCase()}{" "}
-            startups, {period.name}
+            Which {sectorInfo.name.toLowerCase()} startups at{" "}
+            {stageName.toLowerCase()} stage are accelerating fastest on GitHub
+            in {period.name}?
           </h2>
           <StartupTable startups={startups} />
           <p className="mt-3 text-gray-400 text-xs">

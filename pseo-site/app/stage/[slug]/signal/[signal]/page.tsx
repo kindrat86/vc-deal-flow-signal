@@ -203,7 +203,7 @@ export default async function StageSignalPage({ params }: PageProps) {
 
         <section className="mb-10" aria-label="Sector breakdown">
           <h2 className="text-gray-100 font-semibold text-lg mb-4">
-            Sector breakdown
+            Which sectors do these {signalName.toLowerCase()} startups span?
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
             {sectorBreakdown.map((s) => (
@@ -223,8 +223,8 @@ export default async function StageSignalPage({ params }: PageProps) {
 
         <section className="mb-10" aria-label="Startup rankings">
           <h2 className="text-gray-100 font-semibold text-lg mb-4">
-            Ranked {stageName.toLowerCase()} startups with{" "}
-            {signalName.toLowerCase()}, {period.name}
+            Which {stageName.toLowerCase()}-stage startups are showing{" "}
+            {signalName.toLowerCase()} in {period.name}?
           </h2>
           <StartupTable startups={startups} />
           <p className="mt-3 text-gray-400 text-xs">

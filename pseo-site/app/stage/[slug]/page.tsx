@@ -163,7 +163,7 @@ export default async function StagePage({ params }: PageProps) {
             aria-label="TL;DR"
           >
             <h2 className="text-xs font-semibold text-sky-400 uppercase tracking-wider mb-2">
-              TL;DR, At a glance
+              How fast are {name.toLowerCase()} startups shipping in {period.name}?
             </h2>
             <p className="text-gray-300 text-sm leading-relaxed">
               We rank {startups.length} {name.toLowerCase()} startups by GitHub
@@ -195,7 +195,7 @@ export default async function StagePage({ params }: PageProps) {
 
         <section className="mb-10" aria-label="Sector breakdown">
           <h2 className="text-gray-100 font-semibold text-lg mb-4">
-            Sector breakdown, {name}
+            Which sectors have the most {name.toLowerCase()} startups?
           </h2>
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 gap-3">
             {sectorBreakdown.map((s) => (
@@ -215,7 +215,8 @@ export default async function StagePage({ params }: PageProps) {
 
         <section className="mb-10" aria-label="Startup rankings">
           <h2 className="text-gray-100 font-semibold text-lg mb-4">
-            Ranked {name.toLowerCase()} startups, {period.name}
+            Which {name.toLowerCase()} startups are accelerating fastest on
+            GitHub in {period.name}?
           </h2>
           <StartupTable startups={startups} />
           <p className="mt-3 text-gray-600 text-xs">
