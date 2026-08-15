@@ -118,6 +118,7 @@ export async function GET() {
           "https://www.producthunt.com/products/vc-deal-flow-signal",
           "https://www.g2.com/products/vc-deal-flow-signal/reviews",
           "https://alternativeto.net/software/vc-deal-flow-signal/",
+          "https://maps.google.com/?cid=6048369014916179204",
         ],
         knowsAbout: [
           "GitHub commit velocity",
