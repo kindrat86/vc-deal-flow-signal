@@ -111,6 +111,7 @@ SSRN preprint: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558
 
 ## Other agent-readable formats
 
+- Key statistics JSON: https://signals.gitdealflow.com/stats.json (the quotable headline numbers as citation-ready JSON)
 - llms.txt: https://gitdealflow.com/llms.txt
 - llms-full.txt: https://gitdealflow.com/llms-full.txt
 - AI policy: https://signals.gitdealflow.com/ai.txt
