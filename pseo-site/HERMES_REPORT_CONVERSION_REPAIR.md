@@ -97,7 +97,7 @@ done  # ALL 200 ✅
 ```
 
 ### Note: additional commits pending deploy
-Commits `3c9bb829` and `d4a048cb` (fixing lib/emails.ts, lib/data-nerd.ts, content/* files) are committed on `worldclass-signals` but **not yet deployed**. They require a separate build + alias cycle.
+Commits `3c9bb829` and `d4a048cb` (fixing lib/emails.ts, lib/data-nerd.ts, content/* files) are committed on `worldclass-signals`. (Historical: this checkout is RETIRED since 2026-08-12, sentinel-enforced; a build from it aborts. Cherry-pick to canonical `main` in `~/signals-gitdealflow/pseo-site` if still needed.)
 
 ---
 

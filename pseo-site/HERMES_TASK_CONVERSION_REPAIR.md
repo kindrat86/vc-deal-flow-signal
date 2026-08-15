@@ -1,5 +1,10 @@
 # HERMES TASK — signals.gitdealflow.com Conversion Repair
 
+> ⚠️ **HISTORICAL (authored 2026-07-22). Do NOT execute.** This checkout
+> (`~/signals-worldclass`) is RETIRED since 2026-08-12 (sentinel-enforced:
+> its builds abort in prebuild). Canonical live source:
+> `~/signals-gitdealflow/pseo-site` on `main`. This file is kept for archaeology.
+
 **Target site:** signals.gitdealflow.com — **64% of all portfolio traffic** (5,843 pageviews / 5,178 sessions in 90 days, **93.4% bounce**, ~0 conversions)
 **Repo / worktree:** `~/signals-worldclass/pseo-site` — Next.js **App Router**, branch **`worldclass-signals`**
 **Vercel project:** `pseo-site` / `prj_s0JL6C4uFTmt83OnzAZDgeMDnlaU`
@@ -19,16 +24,16 @@ There are **two worktrees** of this repo on this machine:
 
 | Path | Branch | Status |
 |---|---|---|
-| `~/signals-gitdealflow` | `internal-link-engine` | **NOT LIVE.** Carries ~24 uncommitted files under `pseo-site/` from a different, in-progress task. |
-| `~/signals-worldclass` | `worldclass-signals` | **THIS IS THE LIVE SOURCE.** Work here. |
+| `~/signals-gitdealflow` | `main` (was `internal-link-engine`) | **CANONICAL since 2026-08-12.** Work and deploy from here only. |
+| `~/signals-worldclass` | `worldclass-signals` | **RETIRED 2026-08-12.** NOT live. Historical only. |
 
 ```bash
 git worktree list
-# /Users/sipi/signals-gitdealflow  [internal-link-engine]   <- DO NOT TOUCH pseo-site/ HERE
-# /Users/sipi/signals-worldclass   [worldclass-signals]     <- WORK HERE
+# /Users/sipi/signals-gitdealflow  [main]                 <- CANONICAL since 2026-08-12; work and deploy from here only
+# /Users/sipi/signals-worldclass   [worldclass-signals]   <- RETIRED 2026-08-12; historical only
 ```
 
-Editing `~/signals-gitdealflow/pseo-site/` will (a) not reach production and (b) collide with another agent's uncommitted work on `app/page.tsx`, `app/layout.tsx`, `components/PricingLadder.tsx`, `public/ux.js`, `next.config.ts` and 19 other files. **Every path in this document is relative to `~/signals-worldclass/pseo-site`.** Verify before your first edit:
+(Historical.) Editing this retired checkout (`~/signals-worldclass/pseo-site/`) will not reach production (its builds abort via the sentinel). Canonical live source: `~/signals-gitdealflow/pseo-site` on `main`. Every path in this document was relative to the now-retired `~/signals-worldclass/pseo-site`.
 ```bash
 cd ~/signals-worldclass/pseo-site && git branch --show-current   # MUST print: worldclass-signals
 ```
