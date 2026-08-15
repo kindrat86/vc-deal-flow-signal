@@ -4,6 +4,7 @@ import {
   getAllDirectorySectors,
   getAllDirectoryRegions,
 } from "@/lib/directory";
+import DirectoryAbout from "@/components/DirectoryAbout";
 import { FRESH_YEAR_STR } from "@/lib/freshness-year";
 
 export const metadata: Metadata = {
@@ -92,22 +93,24 @@ export default function StartupDirectoryIndexPage() {
           <span className="text-gray-400">Startup Directory</span>
         </nav>
 
-        <header className="mb-10 max-w-3xl">
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
+        <header className="mb-6 max-w-3xl">
+          <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 leading-tight">
             Startup Directory
           </h1>
-          <p className="text-gray-400 text-base leading-relaxed">
-            Every tracked startup across {sectors.length} sectors, browseable by
-            sector and geography. Each sector and region opens a paginated
-            directory so the full corpus is reachable without a search box.
-          </p>
-          <p className="text-gray-500 text-sm mt-3">
-            {totalStartups} startup entries link out to their live signal
-            profiles. Data refreshes weekly from public GitHub activity.
-          </p>
         </header>
 
-        <section className="mb-12" aria-label="Browse by sector">
+        <section className="mb-8 max-w-3xl" aria-label="About this directory">
+          <p className="text-gray-400 text-base leading-relaxed">
+            VC Deal Flow Signal tracks {totalStartups} startups across{" "}
+            {sectors.length} sectors and {regions.length} regions in the current
+            quarter. This directory is the fastest way to browse the full corpus
+            without a search box: pick a sector or a region below and you get a
+            paginated list where every company links to its live signal profile,
+            ranked by GitHub engineering acceleration.
+          </p>
+        </section>
+
+        <section className="mb-10" aria-label="Browse by sector">
           <h2 className="text-xl font-semibold text-gray-100 mb-4">
             Browse by sector
           </h2>
@@ -129,7 +132,7 @@ export default function StartupDirectoryIndexPage() {
           </div>
         </section>
 
-        <section aria-label="Browse by geography">
+        <section className="mb-10" aria-label="Browse by geography">
           <h2 className="text-xl font-semibold text-gray-100 mb-4">
             Browse by geography
           </h2>
@@ -150,6 +153,46 @@ export default function StartupDirectoryIndexPage() {
             ))}
           </div>
         </section>
+
+        <section className="mb-8 max-w-3xl" aria-label="How to use this directory">
+          <h2 className="text-xl font-semibold text-gray-100 mb-3">
+            How to use this directory
+          </h2>
+          <p className="text-gray-400 text-sm leading-relaxed">
+            Browse by sector when you want every tracked company in one category,
+            from data infrastructure to social platforms, ranked so the
+            fastest-accelerating teams surface first. Browse by geography when
+            you care about a specific region: the United States, Europe,
+            Asia-Pacific, the United Kingdom, Canada, or Latin America. Each
+            directory page splits its list into pages of 24, with clear next and
+            previous links, so the full long tail is reachable in bounded steps
+            rather than one endless table.
+          </p>
+        </section>
+
+        <section className="mb-10 max-w-3xl" aria-label="Data source and methodology">
+          <h2 className="text-xl font-semibold text-gray-100 mb-3">
+            Data source and methodology
+          </h2>
+          <p className="text-gray-400 text-sm leading-relaxed">
+            Every ranking is computed from public GitHub activity and refreshes
+            weekly. The primary signal is commit velocity change over a rolling
+            14-day window, measured against each company&apos;s own baseline; we
+            surface contributor influx, repository creation pulse, and language
+            bias drift as supporting primitives. A sustained acceleration has
+            historically preceded fundraise announcements by three to six weeks.
+            No single metric is a buy signal. The full methodology, the
+            six-signal panel, and its empirical tie to fundraise probability are
+            documented on the{" "}
+            <Link href="/methodology" className="text-sky-400 hover:text-sky-300 underline">
+              methodology page
+            </Link>
+            , with an SSRN preprint (6606558) and a CC BY 4.0 dataset available
+            for independent verification.
+          </p>
+        </section>
+
+        <DirectoryAbout />
       </div>
     </>
   );

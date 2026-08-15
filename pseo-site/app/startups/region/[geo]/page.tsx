@@ -53,6 +53,8 @@ export default async function RegionDirectoryPage({ params }: PageProps) {
       startups={pageStartups}
       page={1}
       totalPages={totalPages}
+      periodName={d.period.name}
+      totalCount={d.startups.length}
       basePath={`/startups/region/${geo}`}
       breadcrumb={[
         { label: "Home", href: "/" },

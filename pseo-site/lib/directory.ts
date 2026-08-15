@@ -3,8 +3,7 @@ import {
   getAllSectors,
   getAllRegionGeos,
   getSortedStartups,
-  getSectorLatestPeriod,
-  getRegionLatestPeriod,
+  getCurrentPeriod,
   parseRegionPageSlug,
   type Startup,
   type Period,
@@ -22,11 +21,12 @@ import {
  *
  * These helpers power the /startups/[sector]/[page] and
  * /startups/region/[geo]/[page] directory routes. Each directory is keyed to
- * its LATEST available period (getSectorLatestPeriod / getRegionLatestPeriod),
- * matching the quarter-canonicalization convention already used by the
- * ranked-list templates, so frozen sectors (ai-ml, fintech, climate-tech,
- * developer-tools, cybersecurity) still surface their last snapshot rather
- * than dropping out of the directory.
+ * the CURRENT period (getCurrentPeriod), matching the live API and the
+ * canonical "15 active sectors" truth: the five legacy sectors that froze at
+ * q2-2026 (ai-ml, fintech, climate-tech, developer-tools, cybersecurity) have
+ * no current-period snapshot and therefore no directory, keeping the
+ * directory fresh and free of stale/fresh mixes. Their startups remain
+ * discoverable via the quarter-canonicalized ranked lists.
  */
 
 export const DIRECTORY_PAGE_SIZE = 24;
@@ -60,19 +60,16 @@ export function totalPagesFor(count: number, perPage = DIRECTORY_PAGE_SIZE): num
 export function getSectorDirectory(slug: string): SectorDirectory | null {
   const sector = getAllSectors().find((s) => s.slug === slug);
   if (!sector) return null;
-  const latest = getSectorLatestPeriod(slug);
-  if (!latest) return null;
-  const snapshot = sector.periods[latest.slug];
+  const period = getCurrentPeriod();
+  const snapshot = sector.periods[period.slug];
   if (!snapshot) return null;
   const startups = getSortedStartups(snapshot.startups);
   if (startups.length < MIN_DIRECTORY_SIZE) return null;
-  return { slug, name: sector.name, period: latest, startups };
+  return { slug, name: sector.name, period, startups };
 }
 
 export function getRegionDirectory(geoSlug: string): RegionDirectory | null {
-  const latest = getRegionLatestPeriod(geoSlug);
-  if (!latest) return null;
-  const parsed = parseRegionPageSlug(`${geoSlug}-${latest.slug}`);
+  const parsed = parseRegionPageSlug(`${geoSlug}-${getCurrentPeriod().slug}`);
   if (!parsed || parsed.startups.length < MIN_DIRECTORY_SIZE) return null;
   const startups = [...parsed.startups].sort((a, b) => {
     const av = parseInt(a.commitVelocityChange.replace(/[^0-9-]/g, ""), 10) || 0;

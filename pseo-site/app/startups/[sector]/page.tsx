@@ -53,6 +53,8 @@ export default async function SectorDirectoryPage({ params }: PageProps) {
       startups={pageStartups}
       page={1}
       totalPages={totalPages}
+      periodName={d.period.name}
+      totalCount={d.startups.length}
       basePath={`/startups/${sector}`}
       breadcrumb={[
         { label: "Home", href: "/" },
