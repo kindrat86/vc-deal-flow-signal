@@ -255,6 +255,13 @@ export default async function VsPage({ params }: PageProps) {
           <h2 className="text-gray-100 font-semibold text-lg mb-4">
             Feature-by-feature comparison
           </h2>
+          <p className="text-gray-400 text-sm leading-relaxed mb-4">
+            The core difference in one sentence: {a.name} is{" "}
+            {a.signalType.toLowerCase()}, priced at {a.pricing.toLowerCase()},
+            while {b.name} is {b.signalType.toLowerCase()}, priced at{" "}
+            {b.pricing.toLowerCase()}. Everything else in the table refines
+            that choice.
+          </p>
           <div className="overflow-x-auto rounded-lg border border-slate-800">
             <table className="w-full text-sm">
               <thead>
@@ -362,6 +369,14 @@ export default async function VsPage({ params }: PageProps) {
           <h2 className="text-xl font-semibold text-gray-100 mb-6">
             Frequently Asked Questions
           </h2>
+          <p className="text-gray-400 text-sm leading-relaxed mb-6">
+            Direct answers: most of these comparisons come down to budget
+            ({a.pricing.toLowerCase()} vs {b.pricing.toLowerCase()}) and to the
+            signal type you need first ({a.signalType.toLowerCase()} vs{" "}
+            {b.signalType.toLowerCase()}). The questions below cover both, plus
+            free tiers, using the two tools together, and cheaper options for
+            individual investors.
+          </p>
           <div className="space-y-6">
             {faqs.map((f) => (
               <div
@@ -379,6 +394,10 @@ export default async function VsPage({ params }: PageProps) {
           <h2 className="text-lg font-semibold text-gray-100 mb-4">
             Other head-to-head comparisons
           </h2>
+          <p className="text-gray-400 text-sm leading-relaxed mb-4">
+            If neither {a.name} nor {b.name} fits, the comparisons below cover
+            the other major deal-sourcing platforms profiled in this series.
+          </p>
           <div className="flex flex-wrap gap-2">
             {getCanonicalCompetitorVsSlugs()
               .filter((s) => s !== getCanonicalVsSlug(slug))

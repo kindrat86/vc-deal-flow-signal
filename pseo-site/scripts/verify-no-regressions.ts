@@ -2257,6 +2257,28 @@ check(
 }
 
 // ---------------------------------------------------------------------------
+// §24 Verdict-first leads on /vs H2 sections (2026-08-16). Quotable-structure
+// fix from the traffic audit: three H2s (feature table, FAQ, other
+// comparisons) dropped straight into a table, FAQ cards, or link chips with
+// zero extractable sentence, so answer engines lifting those sections got raw
+// markup instead of an answer. Every H2 now opens with a data-derived verdict
+// sentence BEFORE the structured block. The remaining H2s (What is X?, Which
+// one should you choose?, How we evaluate) already open with overview /
+// pair.decision / METHODOLOGY prose.
+// ---------------------------------------------------------------------------
+check(
+  "app/vs/[slug]/page.tsx",
+  "§24 verdict-first leads dropped: /vs feature-table, FAQ, and other-comparisons H2s no longer open with an extractable sentence (answer engines get raw table/card markup).",
+  (s) =>
+    s.includes("The core difference in one sentence") &&
+    s.includes(
+      "Direct answers: most of these comparisons come down to budget",
+    ) &&
+    s.includes("If neither {a.name} nor {b.name} fits"),
+  "restore the verdict-first lead paragraphs under the feature-table, FAQ, and other-comparisons H2s (see §24, 2026-08-16)",
+);
+
+// ---------------------------------------------------------------------------
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +
