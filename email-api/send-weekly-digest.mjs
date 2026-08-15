@@ -195,14 +195,21 @@ const SENT_LOG_FILE = join(SENT_LOG_DIR, `${EMAIL_KEY}.json`);
 
 function loadSentLog() {
   try {
-    return new Set(JSON.parse(readFileSync(SENT_LOG_FILE, "utf-8")));
+    const raw = JSON.parse(readFileSync(SENT_LOG_FILE, "utf-8"));
+    // Backward-compat: older logs were a bare array of email addresses.
+    if (Array.isArray(raw)) {
+      const m = {};
+      for (const e of raw) m[String(e).toLowerCase()] = null;
+      return m;
+    }
+    return raw && typeof raw === "object" ? raw : {};
   } catch {
-    return new Set();
+    return {};
   }
 }
-function saveSentLog(set) {
+function saveSentLog(map) {
   mkdirSync(SENT_LOG_DIR, { recursive: true });
-  writeFileSync(SENT_LOG_FILE, JSON.stringify([...set].sort(), null, 2));
+  writeFileSync(SENT_LOG_FILE, JSON.stringify(map, null, 2));
 }
 
 const audienceId = await resolveAudienceId();
@@ -215,7 +222,7 @@ if (excludedHits.length) {
   console.log(`Skipping ${excludedHits.length} excluded address(es): ${excludedHits.join(", ")}`);
 }
 let queue = active.filter(
-  (c) => !isExcluded(c.email) && !sentLog.has(String(c.email).toLowerCase()),
+  (c) => !isExcluded(c.email) && !(String(c.email).toLowerCase() in sentLog),
 );
 if (LIMIT > 0) queue = queue.slice(0, LIMIT);
 
@@ -224,7 +231,7 @@ console.log(`Subject:     ${subject}`);
 console.log(`Email key:   ${EMAIL_KEY}`);
 console.log(`Audience:    ${audienceId}`);
 console.log(`Contacts:    ${contacts.length} total, ${active.length} active (not unsubscribed)`);
-console.log(`Already sent this issue (local log): ${sentLog.size}`);
+console.log(`Already sent this issue (local log): ${Object.keys(sentLog).length}`);
 console.log(`Queued to send: ${queue.length}${LIMIT ? ` (capped by --limit ${LIMIT})` : ""}`);
 if (queue.length) {
   console.log(`First few:   ${queue.slice(0, 5).map((c) => c.email).join(", ")}`);
@@ -258,7 +265,9 @@ for (const contact of queue) {
     if (result.error) throw new Error(result.error.message || String(result.error));
 
     // Persist after every success so a crash mid-broadcast stays idempotent.
-    sentLog.add(String(contact.email).toLowerCase());
+    // Store the Resend send id keyed by email so the engagement report can
+    // resolve each digest send's open/click/bounce via GET /emails/{id}.
+    sentLog[String(contact.email).toLowerCase()] = result.id || null;
     saveSentLog(sentLog);
 
     okCount++;
@@ -271,4 +280,4 @@ for (const contact of queue) {
   }
 }
 
-console.log(`\nDone. sent=${okCount} failed=${errCount} previously_sent=${sentLog.size - okCount} total_active=${active.length}`);
+console.log(`\nDone. sent=${okCount} failed=${errCount} previously_sent=${Object.keys(sentLog).length - okCount} total_active=${active.length}`);

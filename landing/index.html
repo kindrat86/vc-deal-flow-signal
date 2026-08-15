@@ -1681,7 +1681,9 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&t.getAttrib
       if (data.ok) {
         if (window.posthog) posthog.capture('exit_popup_signup', {placement:'exit-popup'});
         try { sessionStorage.setItem('gdf_email', email); } catch(e) {}
-        window.location.href = '/subscribe-thanks';
+        // Deliver the promised cheat sheet immediately (it lives at /cheatsheet)
+        // while the Sunday-digest double-opt-in confirmation email still lands.
+        window.location.href = '/cheatsheet';
         return;
       }
       throw new Error(data.error || 'Failed');
