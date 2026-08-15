@@ -43,6 +43,12 @@ EXCLUDE_DIRS = {
 
 # Specific files to exclude (non-indexable)
 EXCLUDE_FILES = {
+    # Canonicalized cross-dupes (commit cbb6c68e): these /best/ pages
+    # canonical to /alternatives-to/*, so they must not sit in the
+    # sitemap as self-canonical entries (validator: canonical mismatch).
+    "best/best-crunchbase-alternatives.html",
+    "best/best-pitchbook-alternatives.html",
+
     # Error pages
     "404.html",
     # Verification files
@@ -352,18 +358,20 @@ def main():
     print(f"    Without <lastmod>:   {without_lm}")
     print(f"    File written:        {'yes' if changed else 'no (unchanged)'}")
 
-    # Also rebuild image sitemap from the same page inventory
-    rebuild_image_sitemap(pages, changed)
+    # Image sitemap RETIRED (2026-08-16): it held a single URL (homepage +
+    # data-nerd.png), which is discoverable via the page itself and sitemap-
+    # pages.xml. A 1-URL image sitemap is pure overhead. Do not regenerate.
+    # rebuild_image_sitemap(pages, changed)
 
 
 def rebuild_image_sitemap(pages, pages_changed):
-    """Rebuild image-sitemap.xml from file inventory.
-    
-    Only includes pages that have at least one real content image
-    (excludes the shared OG image, tracking pixels, data URIs,
-    and icon/logos).  Each qualifying page gets one <image:image>
-    entry per real image found in its HTML.
+    """RETIRED 2026-08-16. Kept for history; the caller no longer invokes it.
+
+    The image sitemap held exactly one URL (homepage + data-nerd.png), which
+    Google discovers via the page and its meta/OG tags anyway. A 1-entry
+    image sitemap is a wasted child submission.
     """
+    return
     img_path = BASE / "image-sitemap.xml"
     
     # Discover pages with real images

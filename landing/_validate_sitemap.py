@@ -363,10 +363,38 @@ def validate_full(args) -> int:
             page_urls_by_child[sm_file.name] = list(dict.fromkeys(locs))
             print(f"📄 {sm_file.name}: urlset with {len(locs)} URLs")
     
+    # ── Step 1.5: Cross-child duplicate URL gate (2026-08-16) ──
+    # A URL listed in 2+ child sitemaps is a duplicate submission: Google
+    # sees conflicting <priority>/<changefreq> and wastes crawl budget. This
+    # is what sitemap-pseo.xml + sitemap-momentum.xml (100% subsets of
+    # sitemap-pages.xml) did before retirement. The i18n-style sitemaps that
+    # intentionally re-list EN canonicals WITH hreflang annotations are
+    # exempt: their blocks carry xhtml:link alternates (not bare <loc>).
+    bare_children = {
+        name: urls for name, urls in page_urls_by_child.items()
+        if "i18n" not in name.lower()
+    }
+    url_owner: dict = {}
+    cross_dupes = []
+    for child_name, urls in bare_children.items():
+        for u in urls:
+            if u in url_owner and url_owner[u] != child_name:
+                cross_dupes.append((u, url_owner[u], child_name))
+            else:
+                url_owner[u] = child_name
+    if cross_dupes:
+        print(f"\n❌ Cross-child duplicate URLs ({len(cross_dupes)}):")
+        for u, a, b in cross_dupes[:20]:
+            print(f"      {u}  in BOTH {a} + {b}")
+        all_errors.append(
+            f"Cross-child duplicate URLs: {len(cross_dupes)} "
+            f"(first: {cross_dupes[0][0]} in {cross_dupes[0][1]} + {cross_dupes[0][2]})"
+        )
+
     if not child_sitemaps:
         print("❌ No valid child sitemaps found")
         return 1
-    
+
     # ── Step 2: Validate all page URLs ─────────────────────────
     total_urls = sum(len(v) for v in page_urls_by_child.values())
     print(f"\n🔍 Validating {total_urls} page URLs across {len(child_sitemaps)} sitemap(s)...\n")

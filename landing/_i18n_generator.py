@@ -412,14 +412,14 @@ def build():
             f.write('\n'.join(lines) + '\n')
         print(f"  {filename}: {len(urls)} URLs")
     
-    # sitemap-index.xml with all three sitemaps
+    # sitemap-index.xml (2026-08-16: sitemap-pseo.xml/image-sitemap.xml lines
+    # REMOVED - pseo was a 100% subset of sitemap-pages.xml, image sitemap
+    # held a single URL. Do not re-add retired children here.)
     index = ['<?xml version="1.0" encoding="UTF-8"?>',
              '<sitemapindex xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',
              f'  <sitemap><loc>https://{DOMAIN}/sitemap-pages.xml</loc><lastmod>{TODAY}</lastmod></sitemap>',
-             f'  <sitemap><loc>https://{DOMAIN}/sitemap-pseo.xml</loc><lastmod>{TODAY}</lastmod></sitemap>',
              f'  <sitemap><loc>https://{DOMAIN}/sitemap-es.xml</loc><lastmod>{TODAY}</lastmod></sitemap>',
              f'  <sitemap><loc>https://{DOMAIN}/sitemap-de.xml</loc><lastmod>{TODAY}</lastmod></sitemap>',
-             f'  <sitemap><loc>https://{DOMAIN}/image-sitemap.xml</loc><lastmod>{TODAY}</lastmod></sitemap>',
              '</sitemapindex>']
     
     with open(os.path.join(BASE, 'sitemap-index.xml'), 'w') as f:

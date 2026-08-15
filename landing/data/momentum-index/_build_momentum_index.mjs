@@ -7,7 +7,7 @@
  * Run from repo root:  node data/momentum-index/_build_momentum_index.mjs
  * Optional: GITHUB_TOKEN env for 5000/hr rate limit.
  */
-import { readFileSync, writeFileSync, existsSync, mkdirSync } from 'node:fs';
+import { readFileSync, writeFileSync, existsSync, mkdirSync, rmSync } from 'node:fs';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -200,19 +200,24 @@ writeFileSync(join(HERE, 'data.json'), JSON.stringify({
   items: results.map(r => ({ rank: r.rank, repo: r.full, score: r.score, stars: r.stars, forks: r.forks, open_issues: r.issues, last_push: r.pushedAt, language: r.language, delta_stars_week: r.deltaStars, weekly_growth_pct: r.weeklyGrowthPct })),
 }, null, 2));
 
-// ---- sitemap-momentum.xml + register in sitemap-index.xml ------------------
-const urls = [PATH, ...results.map(r => `${PATH}/${r.slug}`)];
-const sm = `<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n` +
-  urls.map(u => `  <url><loc>${BASE}${u}</loc><lastmod>${TODAY}</lastmod><changefreq>weekly</changefreq></url>`).join('\n') +
-  `\n</urlset>\n`;
-writeFileSync(join(ROOT, 'sitemap-momentum.xml'), sm);
-
-const siPath = join(ROOT, 'sitemap-index.xml');
-if (existsSync(siPath)) {
-  let si = readFileSync(siPath, 'utf8');
-  if (!si.includes('sitemap-momentum.xml')) {
-    si = si.replace('</sitemapindex>', `  <sitemap>\n    <loc>${BASE}/sitemap-momentum.xml</loc>\n    <lastmod>${TODAY}</lastmod>\n  </sitemap>\n</sitemapindex>`);
-    writeFileSync(siPath, si);
+// ---- sitemap hygiene (2026-08-16) ------------------------------------------
+// sitemap-momentum.xml is RETIRED: its URLs (hub + per-repo leaves) are plain
+// deployable pages, so _rebuild_sitemap.py already lists every one of them in
+// sitemap-pages.xml (verified 100% subset, 41/41). Listing them twice made
+// Google treat the same <loc> across two children as duplicate submissions.
+// Self-heal: if a stale sitemap-momentum.xml file or index registration from
+// an older run exists, remove both.
+{
+  const staleSm = join(ROOT, 'sitemap-momentum.xml');
+  if (existsSync(staleSm)) rmSync(staleSm);
+  for (const siName of ['sitemap.xml', 'sitemap-index.xml']) {
+    const siPath = join(ROOT, siName);
+    if (existsSync(siPath)) {
+      let si = readFileSync(siPath, 'utf8');
+      const before = si;
+      si = si.replace(/  <sitemap>\s*\n\s*<loc>[^<]*sitemap-momentum\.xml<\/loc>\s*\n\s*(<lastmod>[^<]*<\/lastmod>\s*\n\s*)?<\/sitemap>\s*\n?/g, '');
+      if (si !== before) writeFileSync(siPath, si);
+    }
   }
 }
 
