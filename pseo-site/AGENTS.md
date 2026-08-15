@@ -60,24 +60,33 @@ had both — but only because I checked before assuming).
   version may already be a real, committed fix from the other session, in
   which case keep HEAD's version and discard your stale stashed copy.
 
-# signals.gitdealflow.com is deployed from MORE THAN ONE lineage — read this before fixing anything
+# One canonical deploy lineage (sentinel-enforced since 2026-08-12)
 
-The domain is an alias-pinned Vercel project (`pseo-site`) that is deployed
-from at least three checkouts, on three different branches:
+The domain is an alias-pinned Vercel project (`pseo-site`). It used to be
+deployed from multiple checkouts on multiple branches, and whichever deploy
+ran last silently reverted the others' fixes (on 2026-08-03/04 that put
+deactivated Stripe payment links and post-payment 404s back into
+production). That era is over: on 2026-08-12 the lineages were resolved
+down to ONE canonical tree, and a sentinel file makes it impossible to
+deploy from a stale one.
 
-| checkout | branch |
-|---|---|
-| `~/Downloads/vc-deal-flow-signal/pseo-site` | `main` |
-| `~/signals-worldclass/pseo-site` | `worldclass-signals` |
-| `~/signals-gitdealflow/pseo-site` | `internal-link-engine` |
+| checkout | branch | role |
+|---|---|---|
+| `~/signals-gitdealflow/pseo-site` | `main` | **CANONICAL. Work and deploy from here only.** |
+| `~/signals-worldclass/pseo-site` | `worldclass-signals` | RETIRED 2026-08-12. Do not work here, do not deploy from it. This checkout exists only for archaeology. |
+| `~/Downloads/vc-deal-flow-signal` | (checkout removed) | RETIRED. Do not deploy from any stray copy. |
 
-**Whichever deploys last wins.** A fix landed on one lineage is silently
-reverted the moment another lineage deploys. This is not theoretical — on
-2026-08-03/04 it put deactivated Stripe payment links and post-payment 404s
-back into production, days after they were fixed and verified live.
+Every checkout carries `pseo-site/.deploy-lineage` (sentinel with
+`role=CANONICAL` or `role=RETIRED`). `scripts/assert-canonical-lineage.mjs`
+checks it FIRST in `prebuild`: a missing or RETIRED sentinel fails the
+build, so no stale tree can deploy through any path.
 
-**Therefore: a fix is not done when it is deployed. It is done when a tree
-that lacks it cannot build.**
+Do not edit `.deploy-lineage` or the lineage guard to make a build pass.
+That is fixing the test, not the tree. If that failure appears, you are in
+the wrong checkout: switch to `~/signals-gitdealflow/pseo-site` on `main`.
+
+**A fix is not done when it is deployed. It is done when a tree that lacks
+it cannot build.**
 
 `scripts/verify-no-regressions.ts` runs in `prebuild`, so every deploy path
 (scheduled task, agent, temp-worktree deploy via
