@@ -2437,32 +2437,74 @@ check(
 //   c) the stats pages re-grounded in 3258b029 must not regress to a stale
 //      freshness date: dateModified/last-updated move with every re-grounding.
 // ---------------------------------------------------------------------------
-check(
-  "../landing/llms-full.txt",
-  "§25 apex llms-full.txt lost the Key Statistics machine-readable JSON section (agents that deep-crawl only llms-full can no longer discover /stats.json)",
-  (s) =>
-    s.includes("https://signals.gitdealflow.com/stats.json") &&
-    s.includes("Key Statistics, machine-readable JSON"),
-  "restore the '# Key Statistics, machine-readable JSON' section at the end of llms-full.txt (see git 3a898791)",
-);
+// Null-guarded: commit-scoped exports (deploy_from_commit.sh REF:pseo-site)
+// contain only the pseo-site subtree, so ../landing/* is absent there; the
+// check then runs in full-repo contexts only (same pattern as §24).
+if (read("../landing/llms-full.txt") !== null) {
+  check(
+    "../landing/llms-full.txt",
+    "§25 apex llms-full.txt lost the Key Statistics machine-readable JSON section (agents that deep-crawl only llms-full can no longer discover /stats.json)",
+    (s) =>
+      s.includes("https://signals.gitdealflow.com/stats.json") &&
+      s.includes("Key Statistics, machine-readable JSON"),
+    "restore the '# Key Statistics, machine-readable JSON' section at the end of llms-full.txt (see git 3a898791)",
+  );
+}
 check(
   "public/agents.md",
   "§25 agents.md no longer lists the /stats.json key-statistics endpoint under Other agent-readable formats",
   (s) => s.includes("https://signals.gitdealflow.com/stats.json"),
   "restore the 'Key statistics JSON' bullet under Other agent-readable formats (see git 3a898791)",
 );
-check(
-  "../landing/stats/index.html",
-  "§25 landing /stats hub carries a stale freshness date: stat cards were re-grounded 2026-08-16 (3258b029/3a898791), dateModified/last-updated must move with re-groundings",
-  (s) => !s.includes('"dateModified": "2026-07-19"'),
-  "refresh dateModified and the last-updated line whenever stat cards are re-grounded",
-);
+if (read("../landing/stats/index.html") !== null) {
+  check(
+    "../landing/stats/index.html",
+    "§25 landing /stats hub carries a stale freshness date: stat cards were re-grounded 2026-08-16 (3258b029/3a898791), dateModified/last-updated must move with re-groundings",
+    (s) => !s.includes('"dateModified": "2026-07-19"'),
+    "refresh dateModified and the last-updated line whenever stat cards are re-grounded",
+  );
+}
 check(
   "public/stats/index.html",
   "§25 signals /stats hub carries a stale freshness date: stat cards were re-grounded 2026-08-16, dateModified/last-updated must move with re-groundings",
   (s) => !s.includes('"dateModified": "2026-07-19"'),
   "refresh dateModified and the last-updated line whenever stat cards are re-grounded",
 );
+
+// §26 template-family enrichment (2026-08-17, audit thin-content follow-up):
+// the four remaining English thin families were enriched with computed,
+// data-interpolated sections. These checks pin the enrichment so a lineage
+// that lacks it cannot build (reverting them re-thins 54 pages below the
+// 400-word floor and drops them back into baseline debt).
+{
+  const fam = (label, file, needles) => {
+    const s = read(file);
+    const missing = needles.filter((n) => !s.includes(n));
+    if (missing.length) {
+      failures.push(
+        `§26 ${label} lost its enrichment section(s): ${missing.join(", ")} (audit 08-15 thin-content follow-up; reverting re-thins the family below the 400-word floor)`,
+      );
+    }
+  };
+  fam(
+    "from-stars-to-seed leaf",
+    "app/from-stars-to-seed/[slug]/page.tsx",
+    ['aria-label="How the timeline read"', "Read them side by side"],
+  );
+  fam("topics hub", "app/topics/[slug]/page.tsx", [
+    "How this pillar fits together",
+    "newest first below",
+  ]);
+  fam("a2a framework leaf", "app/a2a/[framework]/page.tsx", [
+    "Endpoint facts for",
+    "When to pick which path",
+  ]);
+  fam("continuity drop leaf", "app/continuity/[slug]/page.tsx", [
+    "What this drop format ships",
+    "nextFormatLabel",
+    "FORMAT_MEANING",
+  ]);
+}
 
 // ---------------------------------------------------------------------------
 if (failures.length) {
