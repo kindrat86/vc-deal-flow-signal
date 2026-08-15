@@ -8,6 +8,8 @@ import {
   getCanonicalVsSlug,
   getCompetitorVsPair,
   METHODOLOGY,
+  VS_TITLE_HOOKS,
+  competitorPriceNote,
 } from "@/content/competitor-vs";
 import { getDataLastModified } from "@/lib/data";
 import SeoCta from "@/components/SeoCta";
@@ -38,23 +40,62 @@ export async function generateMetadata({
   const b = competitors[pair.b];
   if (!a || !b) return {};
 
-  const title = `${a.name} vs ${b.name}, Deal Flow Platform Comparison (2026)`;
-  const description = `${a.name} vs ${b.name} compared head-to-head for VC deal sourcing. Signal type, lead time, pricing, coverage, and when to pick each one. Independent comparison maintained by VC Deal Flow Signal.`;
+  const lastModified = getDataLastModified();
+
+  // CTR-hooked titles (2026-08-16). The old generic tail
+  // ", Deal Flow Platform Comparison (2026)" drew 0.09-0.23% CTR while
+  // holding positions 4-8 (GSC 90d: dealroom-vs-pitchbook 4,274 imps /
+  // 4 clicks; harmonic-ai-vs-pitchbook 3,466 / 8). The proven winners on
+  // this site carry a concrete price/verdict hook
+  // (answers/free-harmonic-ai-alternative-2026: 1.22%,
+  // vs/specter-vs-harmonic-ai: 1.99%, compare/best-free-deal-flow-tools:
+  // 1.75%). Hooks come from VS_TITLE_HOOKS (hand-curated, price figures
+  // sourced from the competitors' pricing fields); unhooked pairs fall
+  // back to a generic builder that still injects any concrete $ price.
+  // Year is dynamic so titles never carry a stale year.
+  const canonicalSlug = getCanonicalVsSlug(slug);
+  const year = lastModified.getFullYear();
+  const hook = VS_TITLE_HOOKS[canonicalSlug];
+  const priceA = competitorPriceNote(a);
+  const priceB = competitorPriceNote(b);
+  const fallbackTitle = `${a.name} vs ${b.name}: ${
+    priceA || priceB ? `${priceA ?? "Enterprise"} vs ${priceB ?? "Enterprise"} Pricing` : "Deal Sourcing Compared"
+  }`;
+  const baseTitle = hook ?? fallbackTitle;
+  // Hard cap 60 chars (Bing-safe with the " (YEAR)" suffix, stays under
+  // the 70-char pixel threshold even after the "| VC Deal Flow Signal"
+  // template appends on non-brand pairs).
+  const title =
+    baseTitle.length + 7 > 60
+      ? `${baseTitle.slice(0, 52).replace(/\s+\S+$/, "").trimEnd()} (${year})`
+      : `${baseTitle} (${year})`;
+  const priceLead = [priceA, priceB].filter(Boolean).join(" vs ");
+  // At most one "vs" join: with two competitor prices the trailing
+  // "vs EUR 49/mo" would make a three-way ("$49/mo vs $49/mo vs EUR 49/mo").
+  const priceClause = priceLead
+    ? ` (${priceLead}${priceA && priceB ? "" : " vs EUR 49/mo"})`
+    : "";
+  const description = `${a.name} vs ${b.name} head-to-head${priceClause}: signal type, lead time, pricing, coverage, and when to pick each. Independent comparison, updated ${lastModified.toLocaleDateString("en-US", { month: "long", year: "numeric" })}.`;
 
   return {
-    title,
+    // Absolute: bypass the "| VC Deal Flow Signal" template suffix. With the
+    // suffix, rendered titles hit ~78 chars and Google truncates mid-suffix;
+    // the hook + year must render in full to earn the click (house precedent:
+    // compare/[slug] does the same). The OG/Twitter cards below already carry
+    // the brand via og:site_name.
+    title: { absolute: title },
     description,
     openGraph: {
       title,
       description,
       type: "article",
-      url: `/vs/${getCanonicalVsSlug(slug)}`,
+      url: `/vs/${canonicalSlug}`,
     },
     twitter: { card: "summary_large_image", title, description },
     alternates: {
       // Reverse-alias slugs consolidate onto the canonical direction; primary
       // slugs remain self-canonical.
-      canonical: `/vs/${getCanonicalVsSlug(slug)}`,
+      canonical: `/vs/${canonicalSlug}`,
     },
   };
 }
@@ -120,7 +161,14 @@ export default async function VsPage({ params }: PageProps) {
     "@graph": [
       {
         "@type": "Article",
-        headline: `${a.name} vs ${b.name}, Deal Flow Platform Comparison`,
+        // Mirror the CTR-hooked <title> (VS_TITLE_HOOKS / price fallback)
+        // so the schema headline and the SERP title never diverge.
+        headline: `${a.name} vs ${b.name} (${lastModified.getFullYear()}): ${
+          VS_TITLE_HOOKS[getCanonicalVsSlug(slug)]?.split(": ").slice(1).join(": ") ??
+          (competitorPriceNote(a) || competitorPriceNote(b)
+            ? `pricing, lead time, and fit for VC deal sourcing`
+            : `deal sourcing head-to-head`)
+        }`,
         description: `Head-to-head comparison of ${a.name} and ${b.name} for VC deal sourcing.`,
         author: DATA_NERD_AUTHOR_REF,
         publisher: { "@id": "https://gitdealflow.com/#organization" },

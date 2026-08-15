@@ -74,6 +74,47 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       {
+        // Consolidate thin noindex /compare cross mirrors into their rich
+        // /vs/ twins (2026-08-16). The mirrors still earned GSC impressions
+        // (868/482/210/115 in 90d) while splitting ranking signals against
+        // the /vs/ pages that hold positions 4-8 for the same queries.
+        // Generation was removed in content/comparisons.ts; these 301s
+        // forward the old URLs (and any equity/backlinks) to the twins.
+        source: "/compare/pitchbook-vs-cb-insights",
+        destination: "/vs/pitchbook-vs-cb-insights",
+        permanent: true,
+      },
+      {
+        source: "/compare/crunchbase-vs-cb-insights",
+        destination: "/vs/crunchbase-vs-cb-insights",
+        permanent: true,
+      },
+      {
+        source: "/compare/pitchbook-vs-crunchbase",
+        destination: "/vs/crunchbase-vs-pitchbook",
+        permanent: true,
+      },
+      {
+        source: "/compare/crunchbase-vs-dealroom",
+        destination: "/vs/dealroom-vs-crunchbase",
+        permanent: true,
+      },
+      {
+        source: "/compare/pitchbook-vs-dealroom",
+        destination: "/vs/dealroom-vs-pitchbook",
+        permanent: true,
+      },
+      {
+        source: "/compare/harmonic-ai-vs-dealroom",
+        destination: "/vs/harmonic-ai-vs-dealroom",
+        permanent: true,
+      },
+      {
+        source: "/compare/harmonic-ai-vs-forager-ai",
+        destination: "/vs/harmonic-ai-vs-forager-ai",
+        permanent: true,
+      },
+      {
         // /contact never existed as a page; contact happens via
         // signals@gitdealflow.com (surfaced on /about). Investors, AI
         // crawlers, and diligence flows probing the conventional /contact

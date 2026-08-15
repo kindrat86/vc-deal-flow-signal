@@ -2225,15 +2225,18 @@ const vsDealFlow = competitors
   .filter((c) => c.slug !== "vc-deal-flow-signal")
   .map((c) => generateVsComparison(competitors[0], c));
 
+// Cross pairs that duplicate a rich /vs/ twin (2026-08-16). These thin,
+// noindex /compare mirrors still soaked up GSC impressions at pos 16-55
+// (pitchbook-vs-cb-insights 868 imps, crunchbase-vs-cb-insights 482,
+// pitchbook-vs-crunchbase 210, crunchbase-vs-dealroom 115) while their
+// content-complete /vs/ twins held pos 4-8 for the same queries. Generating
+// them stopped here; next.config.ts 301s each removed slug to its /vs/ twin
+// so the accumulated equity consolidates instead of 404ing. Keep this list
+// and the redirects in next.config.ts in sync (guarded in
+// scripts/verify-no-regressions.ts).
+// Remaining pair cb-insights/dealroom has NO /vs/ twin, so it stays.
 const crossPairs: [string, string][] = [
-  ["pitchbook", "crunchbase"],
-  ["pitchbook", "cb-insights"],
-  ["harmonic-ai", "dealroom"],
-  ["crunchbase", "dealroom"],
-  ["harmonic-ai", "forager-ai"],
-  ["pitchbook", "dealroom"],
   ["cb-insights", "dealroom"],
-  ["crunchbase", "cb-insights"],
 ];
 
 const crossComparisons = crossPairs

@@ -1532,6 +1532,82 @@ check(
 );
 
 // ---------------------------------------------------------------------------
+// CTR-hooked /vs titles + /compare-to-/vs consolidation (2026-08-16).
+// GSC 90d: generic "X vs Y, Deal Flow Platform Comparison (2026)" titles
+// drew 0.09-0.23% CTR on positions 4-8 (dealroom-vs-pitchbook 4,274 imps /
+// 4 clicks; harmonic-ai-vs-pitchbook 3,466 / 8) while price-hooked titles
+// on this site drew 1.2-2.0%. A lineage losing this reverts to the
+// click-starved generic titles and re-splits ranking signals with the
+// noindex /compare mirrors.
+// ---------------------------------------------------------------------------
+check(
+  "content/competitor-vs.ts",
+  "VS_TITLE_HOOKS dropped: /vs titles revert to the 0.09% CTR generic pattern.",
+  (s) =>
+    s.includes("VS_TITLE_HOOKS") &&
+    s.includes('"dealroom-vs-pitchbook"') &&
+    s.includes('"harmonic-ai-vs-pitchbook"') &&
+    s.includes("competitorPriceNote"),
+  "restore VS_TITLE_HOOKS (with the two highest-impression hooks) + competitorPriceNote in content/competitor-vs.ts",
+);
+check(
+  "app/vs/[slug]/page.tsx",
+  "/vs generateMetadata no longer uses the CTR hooks (titles revert to generic).",
+  (s) =>
+    s.includes("VS_TITLE_HOOKS[canonicalSlug]") &&
+    s.includes("hook ?? fallbackTitle") &&
+    s.includes("const title =\n    baseTitle.length + 7 > 60"),
+  "import VS_TITLE_HOOKS + competitorPriceNote and build titles from them (see 2026-08-16 CTR fix)",
+);
+{
+  // Every removed cross pair must 301 to its /vs/ twin, and must NOT be
+  // regenerated in comparisons.ts.
+  const CONSOLIDATED: [string, string][] = [
+    ["/compare/pitchbook-vs-cb-insights", "/vs/pitchbook-vs-cb-insights"],
+    ["/compare/crunchbase-vs-cb-insights", "/vs/crunchbase-vs-cb-insights"],
+    ["/compare/pitchbook-vs-crunchbase", "/vs/crunchbase-vs-pitchbook"],
+    ["/compare/crunchbase-vs-dealroom", "/vs/dealroom-vs-crunchbase"],
+    ["/compare/pitchbook-vs-dealroom", "/vs/dealroom-vs-pitchbook"],
+    ["/compare/harmonic-ai-vs-dealroom", "/vs/harmonic-ai-vs-dealroom"],
+    ["/compare/harmonic-ai-vs-forager-ai", "/vs/harmonic-ai-vs-forager-ai"],
+  ];
+  const cfg = read("next.config.ts");
+  const comps = read("content/comparisons.ts");
+  for (const [src, dst] of CONSOLIDATED) {
+    if (cfg && !cfg.includes(`source: "${src}"`)) {
+      failures.push(
+        `Consolidation redirect missing: ${src} -> ${dst}\n    file: next.config.ts\n    fix:  restore the 301 (thin noindex mirror was removed from generation, without the redirect it 404s)`,
+      );
+    }
+  }
+  // The cross pairs are generated from slug tuples, not literal slugs, so
+  // detect regeneration by the tuple entries inside the crossPairs array.
+  if (comps) {
+    const block = comps.slice(
+      comps.indexOf("const crossPairs"),
+      comps.indexOf("];", comps.indexOf("const crossPairs")),
+    );
+    const REMOVED_TUPLES = [
+      '["pitchbook", "crunchbase"]',
+      '["pitchbook", "cb-insights"]',
+      '["harmonic-ai", "dealroom"]',
+      '["crunchbase", "dealroom"]',
+      '["harmonic-ai", "forager-ai"]',
+      '["pitchbook", "dealroom"]',
+      '["crunchbase", "cb-insights"]',
+    ];
+    for (const t of REMOVED_TUPLES) {
+      if (block.includes(t)) {
+        const slug = t.match(/"([^"]+)"[^"]*"([^"]+)"/);
+        failures.push(
+          `Cross pair regenerated: ${t} (would create /compare/${slug?.[1]}-vs-${slug?.[2]}, a thin noindex mirror that splits the /vs/ twin)\n    file: content/comparisons.ts\n    fix:  remove it from crossPairs; the /compare/ URL 301s to its /vs/ twin (see next.config.ts)`,
+        );
+      }
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +

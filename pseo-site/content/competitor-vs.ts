@@ -648,6 +648,62 @@ export const competitorVsPairs: CompetitorVs[] = [
   },
 ];
 
+// Hand-curated CTR hooks, one per canonical pair, keyed by canonical slug.
+// WHY (2026-08-16, GSC 90d to 2026-08-12): the generic template title
+// "X vs Y, Deal Flow Platform Comparison (2026)" drew 0.09-0.23% CTR on
+// positions 4-8 (dealroom-vs-pitchbook: 4,274 imps / 4 clicks;
+// harmonic-ai-vs-pitchbook: 3,466 / 8) while price/verdict-hooked titles on
+// this site drew 1.2-2.0% (answers/free-harmonic-ai-alternative 1.22%,
+// vs/specter-vs-harmonic-ai 1.99%, compare/best-free-deal-flow-tools 1.75%).
+// Each hook names the concrete differentiator ($ figures straight from the
+// pricing fields above) that decides the comparison. Keys without a hook
+// fall back to the improved generic builder in app/vs/[slug]/page.tsx.
+// Keep hooks <= 53 chars to leave room for the year, hard cap 60.
+export const VS_TITLE_HOOKS: Record<string, string> = {
+  "fund-momentum-vs-harmonic-ai": "Fund Momentum vs Harmonic.ai: Funds vs Teams",
+  "fund-momentum-vs-forager-ai": "Fund Momentum vs Forager.ai: Funds vs Startups",
+  "fund-momentum-vs-crunchbase": "Fund Momentum vs Crunchbase ($49/mo): Funds vs Data",
+  "harmonic-ai-vs-dealroom": "Harmonic.ai vs Dealroom: Incorporation vs Post-Round",
+  "harmonic-ai-vs-forager-ai": "Harmonic.ai vs Forager.ai: Team vs Web Signals",
+  "harmonic-ai-vs-crunchbase": "Harmonic.ai vs Crunchbase ($49/mo): Sourcing",
+  "harmonic-ai-vs-pitchbook": "Harmonic.ai vs PitchBook ($20k+/yr): Sourcing",
+  "harmonic-ai-vs-tracxn": "Harmonic.ai vs Tracxn: Team Signals vs Sector Maps",
+  "dealroom-vs-forager-ai": "Dealroom vs Forager.ai: EU Database vs Web Signals",
+  "dealroom-vs-crunchbase": "Dealroom vs Crunchbase ($49/mo): EU Depth vs Default",
+  "dealroom-vs-pitchbook": "Dealroom vs PitchBook ($20k+/yr): Deal Sourcing",
+  "dealroom-vs-tracxn": "Dealroom vs Tracxn: European vs Asian Startup Depth",
+  "forager-ai-vs-crunchbase": "Forager.ai vs Crunchbase ($49/mo): Web Signals vs Data",
+  "forager-ai-vs-pitchbook": "Forager.ai vs PitchBook ($20k+/yr): Web vs Fund Data",
+  "forager-ai-vs-tracxn": "Forager.ai vs Tracxn: Web Signals vs Sector Maps",
+  "crunchbase-vs-pitchbook": "Crunchbase ($49/mo) vs PitchBook ($20k+/yr)",
+  "crunchbase-vs-tracxn": "Crunchbase ($49/mo) vs Tracxn: Global vs Asia Depth",
+  "crunchbase-vs-cb-insights": "Crunchbase ($49/mo) vs CB Insights ($35k+/yr)",
+  "pitchbook-vs-tracxn": "PitchBook vs Tracxn: Fund Data vs 2,000+ Sector Maps",
+  "pitchbook-vs-cb-insights": "PitchBook ($20k+/yr) vs CB Insights ($35k+/yr)",
+  "openvc-vs-harmonic-ai": "OpenVC vs Harmonic.ai: Founder Side vs VC Side",
+  "openvc-vs-dealroom": "OpenVC vs Dealroom: Founder Side vs Investor Side",
+  "openvc-vs-crunchbase": "OpenVC (Free) vs Crunchbase ($49/mo): Two Sides",
+  "openvc-vs-pitchbook": "OpenVC (Free) vs PitchBook ($20k+/yr)",
+  "openvc-vs-forager-ai": "OpenVC vs Forager.ai: Founders vs Investors",
+  "openvc-vs-tracxn": "OpenVC vs Tracxn: Founder Tool vs Analyst Tool",
+  "affinity-vs-harmonic-ai": "Affinity vs Harmonic.ai: Pipeline CRM vs Sourcing",
+  "affinity-vs-pitchbook": "Affinity vs PitchBook: CRM vs Fund Database",
+  "affinity-vs-crunchbase": "Affinity vs Crunchbase ($49/mo): CRM vs Database",
+  "specter-vs-harmonic-ai": "Specter vs Harmonic.ai: Growth vs Team Signals",
+  "specter-vs-forager-ai": "Specter vs Forager.ai: Growth vs NLP Signals",
+  "specter-vs-crunchbase": "Specter vs Crunchbase ($49/mo): Leading vs Lagging",
+  "signalrank-vs-pitchbook": "SignalRank vs PitchBook: Series B Odds vs Fund Data",
+  "signalrank-vs-harmonic-ai": "SignalRank vs Harmonic.ai: Series B vs Incorporation",
+  "harmonic-ai-vs-cb-insights": "Harmonic.ai vs CB Insights ($35k+/yr): Sourcing",
+};
+
+/** First concrete $ figure in a competitor's pricing string, e.g. "$49/mo",
+ *  "$20k+/yr", or null when pricing is non-numeric ("Tiered", "Enterprise"). */
+export function competitorPriceNote(c: CompetitorInfo): string | null {
+  const m = c.pricing.match(/\$\d[\dk]*[\d.,]*(?:\s*\/\s*[a-z]+)?\+?/i);
+  return m ? m[0].replace(/\s+/g, "") : null;
+}
+
 export function getCompetitorVsPair(slug: string): CompetitorVs | undefined {
   return competitorVsPairs.find((p) => p.slug === slug);
 }
