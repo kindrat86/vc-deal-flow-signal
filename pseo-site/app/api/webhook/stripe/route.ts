@@ -586,12 +586,12 @@ export async function POST(request: NextRequest) {
       console.error("[reddit-capi] Purchase dispatch error:", capiErr);
     }
 
-    // Server-side PostHog capture — this webhook fired zero analytics
+    // Server-side PostHog capture, this webhook fired zero analytics
     // before. Mirrors the Reddit CAPI call above: fire-and-forget, wrapped
     // so a PostHog-side failure never 5xxs the webhook (Stripe would retry
     // → double-credit). distinct_id is the buyer's email (no client-side
     // distinct_id is threaded through checkout metadata here yet, so this
-    // doesn't join the pre-purchase funnel — same gap as before, just no
+    // doesn't join the pre-purchase funnel, same gap as before, just no
     // longer completely dark).
     try {
       const utm = (fullSession.metadata || {}) as Record<string, string>;
