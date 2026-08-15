@@ -47,6 +47,32 @@ const FORMAT_BADGE_CLASSES: Record<DropFormat, string> = {
   "tool-release": "text-amber-300 border-amber-700/40 bg-amber-950/30",
 };
 
+/** What each drop format actually delivers, from the continuity registry. */
+const FORMAT_MEANING: Record<DropFormat, string> = {
+  "sector-deep-dive":
+    "a 25-page ranked sector read: top 25 orgs by composite signal, raw CSV behind it, and the pattern read for the month",
+  methodology:
+    "a formal methodology release: the regression or scoring change, the code that implements it, and the paper update that documents it",
+  "founder-essay":
+    "a 4-6K word analytical post-mortem: what the longitudinal panel taught us since the last essay, argued from the data",
+  "tool-release":
+    "a new tool or artefact: an MCP tool, an API endpoint, or a chart pack members can run the same day",
+};
+
+/** Rotation order, matches the cadence documented in continuity-drops.ts. */
+const ROTATION: DropFormat[] = [
+  "sector-deep-dive",
+  "methodology",
+  "founder-essay",
+  "tool-release",
+];
+
+/** Display label of the format that follows this drop in the rotation. */
+function nextFormatLabel(format: DropFormat): string {
+  const next = ROTATION[(ROTATION.indexOf(format) + 1) % ROTATION.length];
+  return FORMAT_LABELS[next];
+}
+
 type Params = Promise<{ slug: string }>;
 
 export async function generateStaticParams(): Promise<{ slug: string }[]> {
@@ -221,6 +247,54 @@ export default async function ContinuityDropPage({
           </blockquote>
         )}
 
+        <section
+          aria-label="What this format ships"
+          className="rounded-xl border border-slate-800 bg-slate-900/40 p-5 sm:p-6 space-y-3"
+        >
+          <h2 className="text-lg font-bold text-gray-100">
+            What this drop format ships
+          </h2>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            This is drop #{String(drop.n).padStart(3, "0")} in the series,
+            delivered as a{" "}
+            <strong className="text-gray-100">
+              {FORMAT_LABELS[drop.format]}
+            </strong>
+            : {FORMAT_MEANING[drop.format]}. The format is fixed by the
+            four-month rotation, so the shape of this artefact was committed
+            to before the topic was chosen; what changes month to month is
+            the sector, the method, or the tool, never the delivery
+            guarantee.
+          </p>
+          <p className="text-gray-400 text-sm leading-relaxed">
+            Access follows the tier rules: the public abstract and (after 90
+            days) the full essay are free; the member artefact, the CSV, the
+            code, the PDF, stays gated to Insider and above, pulled via the
+            per-drop API endpoint.
+          </p>
+          {(() => {
+            const prev = CONTINUITY_DROPS.find((d) => d.n === drop.n - 1);
+            const sameFormatCount = CONTINUITY_DROPS.filter(
+              (d) => d.format === drop.format,
+            ).length;
+            return (
+              <p className="text-gray-400 text-sm leading-relaxed">
+                Series context:{" "}
+                {prev
+                  ? `it follows drop #${String(prev.n).padStart(3, "0")} (${FORMAT_LABELS[prev.format]}, ${prev.publishDate})`
+                  : "it is the inaugural drop of the series"}
+                , and it is one of {sameFormatCount}{" "}
+                {FORMAT_LABELS[drop.format]} drops on the published calendar.
+                The essay opens to the public 90 days after the drop date;
+                the artefact never does. If a drop ever slips more than 48
+                hours past its announced Tuesday, every Insider member gets a
+                one-month credit automatically, that promise is part of the
+                cadence, not a support policy.
+              </p>
+            );
+          })()}
+        </section>
+
         {!isLive && (
           <section
             aria-label="Scheduled drop"
@@ -345,6 +419,16 @@ export default async function ContinuityDropPage({
             <span className="text-sky-300">Methodology</span> →{" "}
             <span className="text-violet-300">Founder Essay</span> →{" "}
             <span className="text-amber-300">Tool Release</span>.
+          </p>
+          <p className="text-gray-400 text-sm leading-relaxed">
+            Drop #{String(drop.n).padStart(3, "0")} of {CONTINUITY_DROPS.length}{" "}
+            on the published forward calendar, landing{" "}
+            {new Date(drop.publishDate).toLocaleDateString("en-US", {
+              month: "long",
+              year: "numeric",
+            })}
+            . The format that follows this one in the rotation:{" "}
+            {nextFormatLabel(drop.format)}.
           </p>
           <Link
             href="/continuity"

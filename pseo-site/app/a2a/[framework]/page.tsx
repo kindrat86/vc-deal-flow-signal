@@ -139,6 +139,49 @@ export default async function A2AFrameworkPage({ params }: PageProps) {
         <p style={{ fontSize: 16, color: "#334155", lineHeight: 1.65 }}>{fw.description}</p>
       </section>
 
+      <section style={{ marginBottom: 40 }}>
+        <h2 style={{ fontSize: 22, color: "#0f172a", letterSpacing: -0.3, marginBottom: 12 }}>
+          Endpoint facts for {fw.name} users
+        </h2>
+        <p style={{ fontSize: 15, color: "#334155", lineHeight: 1.65, marginBottom: 14 }}>
+          Whatever wiring you choose, the target is the same single endpoint.
+          These are the fixed facts; nothing on this page changes them:
+        </p>
+        <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 14 }}>
+          <tbody>
+            <tr>
+              <td style={{ padding: "8px 12px", borderBottom: "1px solid #e2e8f0", color: "#64748b", width: "38%" }}>Protocol</td>
+              <td style={{ padding: "8px 12px", borderBottom: "1px solid #e2e8f0", color: "#0f172a" }}>A2A JSON-RPC 2.0 (protocolVersion 0.3.0)</td>
+            </tr>
+            <tr>
+              <td style={{ padding: "8px 12px", borderBottom: "1px solid #e2e8f0", color: "#64748b" }}>Endpoint URL</td>
+              <td style={{ padding: "8px 12px", borderBottom: "1px solid #e2e8f0", color: "#0f172a" }}><code>https://signals.gitdealflow.com/api/a2a</code></td>
+            </tr>
+            <tr>
+              <td style={{ padding: "8px 12px", borderBottom: "1px solid #e2e8f0", color: "#64748b" }}>Skills exposed</td>
+              <td style={{ padding: "8px 12px", borderBottom: "1px solid #e2e8f0", color: "#0f172a" }}>5, mirrored 1:1 with the MCP server tools (trending, sector, lookup, summary, methodology)</td>
+            </tr>
+            <tr>
+              <td style={{ padding: "8px 12px", borderBottom: "1px solid #e2e8f0", color: "#64748b" }}>Auth</td>
+              <td style={{ padding: "8px 12px", borderBottom: "1px solid #e2e8f0", color: "#0f172a" }}>None; free in perpetuity, read-only</td>
+           
+            </tr>
+            <tr>
+              <td style={{ padding: "8px 12px", borderBottom: "1px solid #e2e8f0", color: "#64748b" }}>Freshness</td>
+              <td style={{ padding: "8px 12px", borderBottom: "1px solid #e2e8f0", color: "#0f172a" }}>Recomputed weekly; responses carry the data-as-of date</td>
+            </tr>
+            <tr>
+              <td style={{ padding: "8px 12px", color: "#64748b" }}>Best {fw.name} path</td>
+              <td style={{ padding: "8px 12px", color: "#0f172a" }}>
+                {fw.status === "first-class-mcp"
+                  ? `${fw.name} speaks MCP natively, so the MCP server is the shortest path (below); raw A2A remains available for sub-agents and curl.`
+                  : `${fw.name} has no native MCP client yet, so the custom-tool path below (a thin JSON-RPC call) is the way in.`}
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </section>
+
       {fw.installSnippet ? (
         <section style={{ marginBottom: 40 }}>
           <h2 style={{ fontSize: 22, color: "#0f172a", letterSpacing: -0.3, marginBottom: 12 }}>
@@ -184,6 +227,41 @@ export default async function A2AFrameworkPage({ params }: PageProps) {
             <li key={item}>{item}</li>
           ))}
         </ul>
+      </section>
+
+      <section style={{ marginBottom: 40 }}>
+        <h2 style={{ fontSize: 22, color: "#0f172a", letterSpacing: -0.3, marginBottom: 12 }}>
+          When to pick which path
+        </h2>
+        <p style={{ fontSize: 15, color: "#334155", lineHeight: 1.65, marginBottom: 12 }}>
+          {fw.status === "first-class-mcp" ? (
+            <>
+              Because {fw.name} supports MCP natively, the split is simple:
+              use the <strong>MCP server</strong> for anything you want
+              persistent and always-available (it reconnects, caches, and
+              shows up as first-class tools), and the <strong>raw A2A
+              endpoint</strong> for one-off curls, sub-agents without MCP
+              access, or quick tests from CI.
+            </>
+          ) : (
+            <>
+              Because {fw.name} currently lacks a native MCP client, your two
+              options are the <strong>custom tool</strong> below (a thin
+              JSON-RPC wrapper you register once) or switching the session to
+              an MCP-capable host when you need the richer tool surface. For
+              scheduled jobs and pipelines, the raw endpoint is usually the
+              sturdier dependency: no client versioning to track.
+            </>
+          )}
+        </p>
+        <p style={{ fontSize: 15, color: "#334155", lineHeight: 1.65 }}>
+          {fw.whatToAsk.length} example prompts are listed under &quot;What
+          you can ask&quot; below, and the gotchas section covers the{" "}
+          {fw.gotchas.length} known {fw.gotchas.length === 1 ? "failure mode" : "failure modes"}{" "}
+          {fw.name} users hit with this endpoint. If a prompt fails, check the
+          gotchas first: most misses are shape mismatches, not endpoint
+          outages.
+        </p>
       </section>
 
       <section style={{ marginBottom: 40 }}>

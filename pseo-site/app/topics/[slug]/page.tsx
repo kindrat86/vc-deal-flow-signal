@@ -229,9 +229,16 @@ export default async function TopicHubPage({ params }: PageProps) {
         </header>
 
         <section className="mb-12" aria-label={`Articles in ${pillar.name}`}>
-          <h2 className="text-xl font-semibold text-gray-100 mb-6">
+          <h2 className="text-xl font-semibold text-gray-100 mb-2">
             Articles in this series ({pillarPosts.length})
           </h2>
+          <p className="text-gray-400 text-sm leading-relaxed mb-6">
+            {pillarPosts.length === 1
+              ? "This series opens with a single foundational post; the pillar map below shows where the series goes next."
+              : `The series runs ${pillarPosts[pillarPosts.length - 1]?.date} through ${pillarPosts[0]?.date}, ${pillarPosts.length} posts so far, newest first below.`}
+            {pillarPosts.length >= 2 &&
+              ` The spread of publish dates is the cadence: the pillar is maintained, not a one-off essay collection.`}
+          </p>
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
             {pillarPosts.map((p) => (
               <Link
@@ -254,6 +261,39 @@ export default async function TopicHubPage({ params }: PageProps) {
               </Link>
             ))}
           </div>
+        </section>
+
+        <section
+          className="mb-12 rounded-xl border border-slate-800 bg-slate-900/40 p-5 sm:p-6"
+          aria-label="How this pillar fits together"
+        >
+          <h2 className="text-xl font-semibold text-gray-100 mb-3">
+            How this pillar fits together
+          </h2>
+          <p className="text-gray-300 text-sm leading-relaxed mb-3">
+            &quot;{pillar.name}&quot; is one of{" "}
+            {Object.keys(pillars).length} topical series on the site, and its
+            scope is deliberately narrow: {pillar.description.toLowerCase()}{" "}
+            The keyword set ({pillar.keywords.slice(0, 4).join(", ")}) marks
+            the edges of that scope.
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed mb-3">
+            {pillarPosts.length >= 2
+              ? `Each post in the grid above covers one slice of that scope, and together the ${pillarPosts.length} posts sequence from measurement (what the signals are) to workflow (what an investor does with them). Read them in publish order if you are new to the series; jump to the newest if you already run a sourcing stack.`
+              : "The post in the grid above opens the sequence from measurement (what the signals are) to workflow (what an investor does with them)."}
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            The pillar interlocks with the dataset itself: every claim in the
+            series cites the same weekly-recomputed{" "}
+            <Link
+              href="/methodology"
+              className="text-sky-400 hover:text-sky-300 underline underline-offset-2"
+            >
+              methodology
+            </Link>{" "}
+            and the same machine-readable feeds, so the essays age as data
+            updates rather than as opinions.
+          </p>
         </section>
 
         <div className="mt-12 rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">

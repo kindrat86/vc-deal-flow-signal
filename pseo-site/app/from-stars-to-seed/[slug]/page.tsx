@@ -328,6 +328,40 @@ export default async function FromStarsToSeedPage({ params }: PageProps) {
 
         <section
           className="mb-10 rounded-xl border border-slate-800 bg-slate-900/40 p-5 sm:p-6"
+          aria-label="How the timeline read"
+        >
+          <h2 className="text-xs font-semibold uppercase tracking-wider text-sky-400 mb-3">
+            How the timeline read
+          </h2>
+          <p className="text-gray-300 text-sm leading-relaxed mb-3">
+            The engineering acceleration was observable during{" "}
+            <strong className="text-gray-100">
+              {c.triggerWindow.toLowerCase()}
+            </strong>
+            , while any fundraising paperwork was still private. The announced
+            event,{" "}
+            <strong className="text-gray-100">
+              {c.raise} on {c.raiseDate}
+            </strong>
+            , landed after the signal window: {c.timeToMoney}. That ordering is
+            the entire thesis of this series: by the time a round appears in a
+            funding digest, the repositories were already telling the story at{" "}
+            {c.starsAtTrigger.toLowerCase()}.
+          </p>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            In practice, that is what a weekly monitoring cadence buys you. VC
+            Deal Flow Signal re-scores this sector ({c.sector}) every week
+            across{" "}
+            {c.repos.length > 1
+              ? `${c.repos.length} tracked repositories, so a window like this one surfaces as a compounding composite rather than a single spike you had to be lucky to catch`
+              : "its tracked repository, so a window like this one surfaces as a rising trend rather than a single spike you had to be lucky to catch"}
+            . The pre-raise signals listed above are the rows that moved while
+            the press stayed quiet.
+          </p>
+        </section>
+
+        <section
+          className="mb-10 rounded-xl border border-slate-800 bg-slate-900/40 p-5 sm:p-6"
           aria-label="Repositories"
         >
           <h2 className="text-xs font-semibold uppercase tracking-wider text-sky-400 mb-3">
@@ -405,6 +439,25 @@ export default async function FromStarsToSeedPage({ params }: PageProps) {
                   </li>
                 ))}
             </ul>
+            {(() => {
+              const rels = c.related
+                .map((relSlug) => getStarsCaseBySlug(relSlug))
+                .filter((r): r is StarsCase => Boolean(r));
+              if (rels.length === 0) return null;
+              const sectors = Array.from(
+                new Set(rels.map((r) => r.sector).filter(Boolean)),
+              );
+              return (
+                <p className="text-gray-400 text-sm leading-relaxed mt-3">
+                  Read them side by side: these related cases span{" "}
+                  {sectors.join(", ")}, each with its own trigger window and
+                  raise event, and the same pre-raise signal shape held in every
+                  one. A pattern that repeats across different sectors and
+                  different windows is what separates a repeatable signal from
+                  an after-the-fact story.
+                </p>
+              );
+            })()}
           </section>
         )}
       </article>
