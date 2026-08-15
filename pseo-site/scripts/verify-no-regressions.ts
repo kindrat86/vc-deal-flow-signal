@@ -1614,6 +1614,14 @@ check(
     s.includes("const title =\n    baseTitle.length + 7 > 60"),
   "import VS_TITLE_HOOKS + competitorPriceNote and build titles from them (see 2026-08-16 CTR fix)",
 );
+check(
+  "app/vs/[slug]/page.tsx",
+  "/vs meta description re-injected GDF's own EUR 49/mo price as a competitor's price (false attribution, 2026-08-16).",
+  (s) =>
+    s.includes("const priceClause = priceA && priceB") &&
+    !s.includes("const priceLead"),
+  "restore the both-prices-only priceClause; never append ' vs EUR 49/mo' to a single-price pair (17 pages were mislabelled)",
+);
 {
   // Every removed cross pair must 301 to its /vs/ twin, and must NOT be
   // regenerated in comparisons.ts.

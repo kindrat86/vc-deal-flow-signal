@@ -69,12 +69,13 @@ export async function generateMetadata({
     baseTitle.length + 7 > 60
       ? `${baseTitle.slice(0, 52).replace(/\s+\S+$/, "").trimEnd()} (${year})`
       : `${baseTitle} (${year})`;
-  const priceLead = [priceA, priceB].filter(Boolean).join(" vs ");
-  // At most one "vs" join: with two competitor prices the trailing
-  // "vs EUR 49/mo" would make a three-way ("$49/mo vs $49/mo vs EUR 49/mo").
-  const priceClause = priceLead
-    ? ` (${priceLead}${priceA && priceB ? "" : " vs EUR 49/mo"})`
-    : "";
+  // Price parenthetical only when BOTH competitors carry a concrete numeric
+  // price, so "$49/mo vs $20k+/yr" maps unambiguously A-vs-B. The old
+  // single-price fallback appended GDF's own " vs EUR 49/mo" as if it were
+  // the unnamed competitor's price ("Dealroom vs PitchBook ($20k+ vs EUR
+  // 49/mo)" read as Dealroom=$20k+, PitchBook=EUR 49/mo, both false). The
+  // GDF affordability hook stays in the FAQ, correctly attributed.
+  const priceClause = priceA && priceB ? ` (${priceA} vs ${priceB})` : "";
   const description = `${a.name} vs ${b.name} head-to-head${priceClause}: signal type, lead time, pricing, coverage, and when to pick each. Independent comparison, updated ${lastModified.toLocaleDateString("en-US", { month: "long", year: "numeric" })}.`;
 
   return {
