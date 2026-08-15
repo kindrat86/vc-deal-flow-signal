@@ -127,12 +127,12 @@ def make_page(tid, family, learn_link):
 
     # Related cross-links
     related_links = [
-        {"href": SIGNALS + f"/define/{tid}", "label": f"{term} — full signal definition"},
+        {"href": SIGNALS + f"/define/{tid}", "label": f"{term} : full signal definition"},
         {"href": SIGNALS + "/methodology", "label": "Methodology (SSRN panel)"},
         {"href": SITE + "/glossary/", "label": "Glossary index"},
     ]
     if learn_link:
-        related_links.insert(0, {"href": SITE + learn_link, "label": f"{term} — practical guide"})
+        related_links.insert(0, {"href": SITE + learn_link, "label": f"{term} : practical guide"})
 
     related_html = "\n".join(
         f'<li><a href="{l["href"]}" style="color:#0066cc">{esc(l["label"])}</a></li>'
