@@ -2183,6 +2183,80 @@ check(
 }
 
 // ---------------------------------------------------------------------------
+// §23 Machine-readable /stats.json endpoint (2026-08-16). RAG-readiness fix:
+// the key statistics (21-47 day lead time, panel size, velocity distribution,
+// signal mix, live coverage) must exist as structured, citation-ready JSON at
+// /stats.json, referenced from llms.txt and llms-full.txt so LLMs and answer
+// engines can fetch one URL and quote the numbers with attribution. Guards
+// both directions: the route must exist AND every LLM surface that advertises
+// it must keep advertising it (advertised-URL-must-exist invariant).
+{
+  const statsRoute = read("app/stats.json/route.ts");
+  if (statsRoute === null) {
+    failures.push(
+      `§23 /stats.json route deleted\n` +
+        `    file: app/stats.json/route.ts\n` +
+        `    fix:  restore it (RAG-readiness: machine-readable key statistics endpoint; llms.txt + llms-full.txt advertise it)`,
+    );
+  } else {
+    const required = [
+      "leadTimeRangeDays",
+      "21 to 47",
+      "219",
+      "medianVelocityCommits14d",
+      "frameworkMigrationPct",
+      "keyStatistics",
+      "headlineStatistic",
+      "currentCoverage",
+      '"@type": "Dataset"',
+      "Access-Control-Allow-Origin",
+      "X-Robots-Tag",
+      "stale-while-revalidate",
+    ];
+    for (const needle of required) {
+      if (!statsRoute.includes(needle)) {
+        failures.push(
+          `§23 /stats.json route lost required content: ${needle}\n` +
+            `    file: app/stats.json/route.ts\n` +
+            `    fix:  keep the ${needle} field/claim (RAG payload integrity: LLMs quote these numbers verbatim)`,
+        );
+      }
+    }
+    // Live counts must be computed from lib/data, never hardcoded, or the
+    // endpoint drifts from /api/signals.json the next weekly refresh.
+    if (
+      !statsRoute.includes("getAllSectors") ||
+      !statsRoute.includes("getCurrentPeriod") ||
+      !statsRoute.includes("getDataLastModified")
+    ) {
+      failures.push(
+        `§23 /stats.json live coverage not derived from lib/data\n` +
+          `    file: app/stats.json/route.ts\n` +
+          `    fix:  keep getAllSectors/getCurrentPeriod/getDataLastModified so tracked-org and sector counts track the weekly refresh`,
+      );
+    }
+  }
+
+  const llmsTxtRoute = read("app/llms.txt/route.ts");
+  if (llmsTxtRoute !== null && !llmsTxtRoute.includes("stats.json")) {
+    failures.push(
+      `§23 llms.txt no longer references /stats.json\n` +
+        `    file: app/llms.txt/route.ts\n` +
+        `    fix:  keep the [stats.json] bullet in the machine-readable section (agents discover the endpoint through llms.txt)`,
+    );
+  }
+
+  const llmsFullRoute = read("app/llms-full.txt/route.ts");
+  if (llmsFullRoute !== null && !llmsFullRoute.includes("stats.json")) {
+    failures.push(
+      `§23 llms-full.txt no longer references /stats.json\n` +
+        `    file: app/llms-full.txt/route.ts\n` +
+        `    fix:  keep the /stats.json line in Machine-Readable Surfaces`,
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +

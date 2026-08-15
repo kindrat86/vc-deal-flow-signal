@@ -284,6 +284,7 @@ Every page on this site has at least one machine-readable mirror. The full menu:
 - ${BASE_URL}/api/answers.json, long-form Answer corpus from /answers/{slug}
 - ${BASE_URL}/api/signals.json, live JSON of all sectors and startups
 - ${BASE_URL}/api/signals.csv, live CSV alternate
+- ${BASE_URL}/stats.json, machine-readable key statistics (lead time, precision, panel, velocity distribution, signal mix, live coverage) as citation-ready JSON with per-stat source URLs and a copy-paste markdown block
 - ${BASE_URL}/api/llms-search?q={terms}, lexical JSON search
 - ${BASE_URL}/api/openapi.json, OpenAPI 3.1 spec
 - ${BASE_URL}/research/citations.bib, BibTeX export (paper, dataset, 30 atomic findings)
