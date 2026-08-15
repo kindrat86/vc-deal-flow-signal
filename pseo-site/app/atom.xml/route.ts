@@ -9,6 +9,7 @@
 
 import { posts } from "@/content/posts";
 import { getDataLastModified } from "@/lib/data";
+import { renderPostBodyHtml } from "@/lib/feed-content";
 
 export const dynamic = "force-static";
 export const runtime = "nodejs";
@@ -42,6 +43,7 @@ export async function GET() {
     <updated>${isoDate}</updated>
     <published>${isoDate}</published>
     <summary>${escapeXml(p.description)}</summary>
+    <content type="html">${escapeXml(renderPostBodyHtml(p))}</content>
     <author><name>VC Deal Flow Signal</name></author>
   </entry>`;
     })

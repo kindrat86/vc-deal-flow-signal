@@ -1,5 +1,6 @@
 import { posts } from "@/content/posts";
 import { getDataLastModified } from "@/lib/data";
+import { renderPostBodyHtml } from "@/lib/feed-content";
 
 export const dynamic = "force-static";
 export const revalidate = 3600;
@@ -18,13 +19,14 @@ export async function GET() {
       <link>${BASE_URL}/blog/${post.slug}</link>
       <guid isPermaLink="true">${BASE_URL}/blog/${post.slug}</guid>
       <description><![CDATA[${post.description}]]></description>
+      <content:encoded><![CDATA[${renderPostBodyHtml(post)}]]></content:encoded>
       <pubDate>${new Date(post.date).toUTCString()}</pubDate>
     </item>`
     )
     .join("\n");
 
   const feed = `<?xml version="1.0" encoding="UTF-8"?>
-<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
     <title>VC Deal Flow Signal: Blog</title>
     <link>${BASE_URL}/blog</link>

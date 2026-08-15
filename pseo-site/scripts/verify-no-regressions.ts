@@ -1435,6 +1435,37 @@ check(
 );
 
 // ---------------------------------------------------------------------------
+// Full-text feed items (2026-08-15). Flipboard's RSS guidelines require
+// full-text content, not excerpts; excerpt-only feeds fail their human
+// review. feed.xml must carry content:encoded and atom.xml a <content>
+// element, both powered by the shared lib/feed-content.ts renderer.
+check(
+  "app/feed.xml/route.ts",
+  "feed.xml lost full-text items: no content:encoded element. Flipboard/Publisher review rejects excerpt-only feeds.",
+  (s) =>
+    s.includes("content:encoded") &&
+    s.includes("renderPostBodyHtml") &&
+    s.includes('xmlns:content="http://purl.org/rss/1.0/modules/content/"'),
+  "keep <content:encoded> from lib/feed-content.ts renderPostBodyHtml and the content-module namespace on <rss>",
+);
+check(
+  "app/atom.xml/route.ts",
+  "atom.xml lost full-text entries: no <content type=\"html\"> element. Feed readers and Flipboard would see excerpt-only.",
+  (s) =>
+    s.includes('<content type="html">') &&
+    s.includes("renderPostBodyHtml"),
+  "keep <content type=\"html\"> built from renderPostBodyHtml in every atom entry",
+);
+check(
+  "lib/feed-content.ts",
+  "shared full-text feed renderer deleted; feed routes would need duplication or silently drop back to excerpts.",
+  (s) =>
+    s.includes("export function renderPostBodyHtml") &&
+    s.includes("Flipboard"),
+  "keep lib/feed-content.ts exporting renderPostBodyHtml (shared by feed.xml + atom.xml)",
+);
+
+// ---------------------------------------------------------------------------
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +
