@@ -132,6 +132,50 @@ for (const spoke of ["learn/deal-flow/index.html", "faq/what-is-seed-funding.htm
   }
 }
 
+// ---------------------------------------------------------------------------
+// Grounded precision claims: no invented 82% raise-rate (2026-08-16)
+// ---------------------------------------------------------------------------
+// cheatsheet.html and perfect-webinar.html (plus the de/es tree copies) claimed
+// the three-signal pattern "preceded a raise 82% of the time" in the research
+// panel. The SSRN-published finding is a median lead time of 5.4 weeks with
+// ~65% top-decile precision; 82% appears nowhere in the methodology. A tree
+// that reintroduces the invented number must not deploy.
+const claimFiles = [
+  "cheatsheet.html",
+  "perfect-webinar.html",
+  "de/cheatsheet.html",
+  "de/perfect-webinar.html",
+  "es/cheatsheet.html",
+  "es/perfect-webinar.html",
+];
+for (const f of claimFiles) {
+  let html;
+  try {
+    html = readFileSync(f, "utf8");
+  } catch {
+    fail(`${f} is missing: the grounded-stats funnel page must exist (2026-08-16).`);
+    continue;
+  }
+  if (html.includes("82%")) {
+    fail(`${f} reintroduced the ungrounded 82% raise-rate claim (2026-08-16 grounding: 5.4 weeks median lead, ~65% top-decile precision).`);
+  }
+  if (!html.includes("top-decile precision of ~65%")) {
+    fail(`${f} lost the grounded lead-time wording (median 5.4 weeks, ~65% top-decile precision).`);
+  }
+}
+{
+  let txt;
+  try {
+    txt = readFileSync("llms-full.txt", "utf8");
+  } catch {
+    fail("llms-full.txt is missing (2026-08-16).");
+    txt = "";
+  }
+  if (txt.includes("82%")) {
+    fail("llms-full.txt reintroduced the ungrounded 82% raise-rate claim (2026-08-16).");
+  }
+}
+
 if (failures.length) {
   console.error(
     `\n❌ verify-vercel-config: ${failures.length} config regression(s) detected:`,
