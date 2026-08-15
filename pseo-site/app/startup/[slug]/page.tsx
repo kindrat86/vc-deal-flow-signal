@@ -15,6 +15,7 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import CuriosityGate from "@/components/CuriosityGate";
 import SeoCta from "@/components/SeoCta";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { BADGE_LABEL, BADGE_HEIGHT, badgeWidth, badgeValue } from "@/lib/badge-dims";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -204,7 +205,9 @@ export default async function StartupPage({ params }: PageProps) {
         },
         primaryImageOfPage: {
           "@type": "ImageObject",
-          url: `https://signals.gitdealflow.com/api/og/startup/${slug}.png`,
+          url: `https://signals.gitdealflow.com/startup/${slug}/opengraph-image`,
+          width: 1200,
+          height: 630,
         },
       },
       {
@@ -214,7 +217,7 @@ export default async function StartupPage({ params }: PageProps) {
         description: profile.description,
         image: {
           "@type": "ImageObject",
-          url: `https://signals.gitdealflow.com/api/og/startup/${slug}.png`,
+          url: `https://signals.gitdealflow.com/startup/${slug}/opengraph-image`,
           width: 1200,
           height: 630,
         },
@@ -368,7 +371,7 @@ export default async function StartupPage({ params }: PageProps) {
                 {avatarUrl && (
                   <img
                     src={avatarUrl}
-                    alt={`${profile.name} logo`}
+                    alt={`${profile.name} ${latest.sectorName} startup logo`}
                     width={48}
                     height={48}
                     className="h-12 w-12 rounded-lg object-cover shrink-0"
@@ -993,8 +996,8 @@ export default async function StartupPage({ params }: PageProps) {
             <img
               src={`/api/badge/${slug}`}
               alt={`${profile.name} engineering momentum badge: ${latest.signalType} signal, ${latest.commitVelocity14d} commits in 14 days`}
-              width={408}
-              height={28}
+              width={badgeWidth(BADGE_LABEL, badgeValue(latest.commitVelocity14d || 0, latest.signalType || "steady"))}
+              height={BADGE_HEIGHT}
               className="h-7 w-auto"
               loading="lazy"
             />

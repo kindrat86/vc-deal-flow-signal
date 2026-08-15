@@ -895,7 +895,7 @@ check(
   "app/stage/[slug]/page.tsx",
   "Stage landing section H2s reverted to generic labels; question-form passage headings are gone.",
   (s) => {
-    const n = s.replace(/\{\" \"/g, " ").replace(/\s+/g, " ");
+    const n = s.split('{" "}').join(" ").replace(/\s+/g, " ");
     return (
       n.includes("How fast are {name.toLowerCase()} startups shipping in {period.name}?") &&
       n.includes("Which sectors have the most {name.toLowerCase()} startups?") &&
@@ -908,7 +908,7 @@ check(
   "app/stage/[slug]/[sector]/page.tsx",
   "Stage-sector rankings H2 reverted to a generic 'Ranked ...' label; question-form passage heading is gone.",
   (s) => {
-    const n = s.replace(/\{\" \"/g, " ").replace(/\s+/g, " ");
+    const n = s.split('{" "}').join(" ").replace(/\s+/g, " ");
     return n.includes("Which {sectorInfo.name.toLowerCase()} startups at {stageName.toLowerCase()} stage are accelerating fastest on GitHub in {period.name}?");
   },
   "keep the question-form rankings H2 on stage-sector pages",
@@ -917,7 +917,7 @@ check(
   "app/stage/[slug]/signal/[signal]/page.tsx",
   "Stage-signal section H2s reverted to generic labels; question-form passage headings are gone.",
   (s) => {
-    const n = s.replace(/\{\" \"/g, " ").replace(/\s+/g, " ");
+    const n = s.split('{" "}').join(" ").replace(/\s+/g, " ");
     return (
       n.includes("Which sectors do these {signalName.toLowerCase()} startups span?") &&
       n.includes("Which {stageName.toLowerCase()}-stage startups are showing {signalName.toLowerCase()} in {period.name}?")
@@ -1327,6 +1327,34 @@ check(
   "/breakout-startups-this-week is missing from the core sitemap shard (crawlers cannot discover it).",
   (s) => s.includes("/breakout-startups-this-week"),
   're-add { url: `${BASE_URL}/breakout-startups-this-week`, lastmod, changefreq: "weekly", priority: 0.9 } to the core shard',
+);
+
+// ---------------------------------------------------------------------------
+// §19 Image SEO: startup OG image URL in JSON-LD (2026-08-16). The startup
+//    and period pages pointed their primaryImageOfPage / Article.image /
+//    ImageObject at /api/og/startup/<slug>.png, a route that does not exist
+//    (404). Google crawled a dead image URL on ~2,290 startup pages plus
+//    every quarterly variant. The real OG card lives at the Next.js
+//    opengraph-image route (/startup/<slug>/opengraph-image and
+//    .../[period]/opengraph-image). A lineage that re-points the schema at
+//    the dead /api/og/startup path reintroduces the 404 and breaks image
+//    discovery.
+// ---------------------------------------------------------------------------
+check(
+  "app/startup/[slug]/page.tsx",
+  "startup page ImageObject re-pointed at the dead /api/og/startup/<slug>.png route (404); Google would crawl a broken primary image on ~2,290 pages.",
+  (s) =>
+    s.includes("startup/${slug}/opengraph-image") &&
+    !s.includes("api/og/startup/"),
+  "keep primaryImageOfPage.url and Article.image.url on /startup/<slug>/opengraph-image (the live Next.js OG route), not /api/og/startup/<slug>.png",
+);
+check(
+  "app/startup/[slug]/[period]/page.tsx",
+  "period page ImageObject re-pointed at the dead /api/og/startup/<slug>.png route (404); Google would crawl a broken primary image on every quarterly startup variant.",
+  (s) =>
+    s.includes("startup/${slug}/${period}/opengraph-image") &&
+    !s.includes("api/og/startup/"),
+  "keep image.url on /startup/<slug>/<period>/opengraph-image (the live Next.js OG route), not /api/og/startup/<slug>.png",
 );
 
 // ---------------------------------------------------------------------------
