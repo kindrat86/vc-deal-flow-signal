@@ -2614,6 +2614,31 @@ check(
 );
 
 // ---------------------------------------------------------------------------
+// §28 footer hub block (2026-08-17, internal-link graph win): the site-wide
+// Footer must link all 8 hub routes (/glossary /faq /for /tools /answers
+// /use-cases /integrations /research). Before this, /for /tools /integrations
+// had no home-nav or footer path (only 25/348 sitemap URLs were reachable
+// from home). A reverted tree re-orphans those three hubs and re-opens the
+// internal-link-graph gap (audit score 48).
+// ---------------------------------------------------------------------------
+check(
+  "components/Footer.tsx",
+  "Footer hub block lost a hub link; one or more of /glossary /faq /for /tools /answers /use-cases /integrations /research is orphaned again.",
+  (s) =>
+    [
+      "/glossary",
+      "/faq",
+      "/for",
+      "/tools",
+      "/answers",
+      "/use-cases",
+      "/integrations",
+      "/research",
+    ].every((h) => s.includes(`href="${h}"`)),
+  "restore all 8 hub links (href=\"/glossary\" etc.) in the site-wide Footer (internal-link-graph win)",
+);
+
+// ---------------------------------------------------------------------------
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +

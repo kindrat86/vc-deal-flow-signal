@@ -67,6 +67,8 @@ export default function Footer() {
               <Link href="/alternatives" className="hover:text-gray-200 transition-colors">Alternatives</Link>
               <Link href="/vs" className="hover:text-gray-200 transition-colors">VS</Link>
               <Link href="/use-cases" className="hover:text-gray-200 transition-colors">Use Cases</Link>
+              <Link href="/tools" className="hover:text-gray-200 transition-colors">Free Tools</Link>
+              <Link href="/integrations" className="hover:text-gray-200 transition-colors">Integrations</Link>
               <Link href="/enterprise" className="hover:text-gray-200 transition-colors">Enterprise</Link>
             </nav>
           </div>
@@ -91,6 +93,7 @@ export default function Footer() {
               <Link href="/" className="hover:text-gray-200 transition-colors">All Sectors</Link>
               <Link href="/trending" className="hover:text-gray-200 transition-colors">Trending</Link>
               <Link href="/stage/seed" className="hover:text-gray-200 transition-colors">By Stage</Link>
+              <Link href="/for" className="hover:text-gray-200 transition-colors">Who It's For</Link>
               <Link href="/vs/harmonic-ai-vs-dealroom" className="hover:text-gray-200 transition-colors">Head-to-Head</Link>
               <Link href="/blog" className="hover:text-gray-200 transition-colors">Blog</Link>
               <Link href="/book" className="hover:text-gray-200 transition-colors">Book: 7 Signals</Link>
