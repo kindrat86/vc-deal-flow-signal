@@ -1466,7 +1466,7 @@ check(
 );
 
 // ---------------------------------------------------------------------------
-// §19 Badge CLS + stats badges (2026-08-16). Two fixes live here:
+// §20 Badge CLS + stats badges (2026-08-16). Two fixes live here:
 //   (a) every img rendering a badge SVG must carry intrinsic width/height so
 //       the browser reserves the box pre-load (CLS contribution zero). The
 //       dims come from lib/badge-dims.ts, the SAME math the badge API uses.
