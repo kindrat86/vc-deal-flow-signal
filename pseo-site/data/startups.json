@@ -21922,12 +21922,12 @@
             {
               "name": "qualcomm",
               "description": "At Qualcomm Technologies, Inc., we transform how the world connects, computes and communicates.",
-              "stage": "Growth",
+              "stage": "Series A/B",
               "geography": "Unknown",
-              "commitVelocity14d": 3091,
-              "commitVelocityChange": "-10%",
-              "contributors": 100,
-              "contributorGrowth": "+5%",
+              "commitVelocity14d": 40,
+              "commitVelocityChange": "-15%",
+              "contributors": 39,
+              "contributorGrowth": "+41%",
               "newRepos": 0,
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/qualcomm",
@@ -22164,7 +22164,7 @@
           "faqs": [
             {
               "question": "What engineering signals are proptech startups showing in Q3 2026?",
-              "answer": "In Q3 2026, we are tracking 23 proptech startups with measurable GitHub engineering signals. 9 of 23 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 12 of the tracked companies. The average 14-day commit velocity across the sector is 179 commits, with liberusoftware leading at 135 commits (+3275% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q3 2026, we are tracking 23 proptech startups with measurable GitHub engineering signals. 9 of 23 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 12 of the tracked companies. The average 14-day commit velocity across the sector is 46 commits, with liberusoftware leading at 135 commits (+3275% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which proptech startup has the highest engineering acceleration in Q3 2026?",
@@ -22223,12 +22223,12 @@
             {
               "name": "qualcomm",
               "description": "At Qualcomm Technologies, Inc., we transform how the world connects, computes and communicates.",
-              "stage": "Growth",
+              "stage": "Series A/B",
               "geography": "Unknown",
-              "commitVelocity14d": 2954,
-              "commitVelocityChange": "-11%",
-              "contributors": 100,
-              "contributorGrowth": "+5%",
+              "commitVelocity14d": 27,
+              "commitVelocityChange": "+50%",
+              "contributors": 39,
+              "contributorGrowth": "+41%",
               "newRepos": 0,
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/qualcomm",
@@ -22439,7 +22439,7 @@
           "faqs": [
             {
               "question": "What engineering signals are proptech startups showing in Q2 2026?",
-              "answer": "In Q2 2026, we are tracking 19 proptech startups with measurable GitHub engineering signals. 10 of 19 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 13 of the tracked companies. The average 14-day commit velocity across the sector is 207 commits, with ahacker-1 leading at 17 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q2 2026, we are tracking 19 proptech startups with measurable GitHub engineering signals. 11 of 19 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 13 of the tracked companies. The average 14-day commit velocity across the sector is 53 commits, with ahacker-1 leading at 17 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which proptech startup has the highest engineering acceleration in Q2 2026?",
@@ -22498,12 +22498,12 @@
             {
               "name": "qualcomm",
               "description": "At Qualcomm Technologies, Inc., we transform how the world connects, computes and communicates.",
-              "stage": "Growth",
+              "stage": "Series A/B",
               "geography": "Unknown",
-              "commitVelocity14d": 85,
-              "commitVelocityChange": "+29%",
-              "contributors": 100,
-              "contributorGrowth": "+5%",
+              "commitVelocity14d": 44,
+              "commitVelocityChange": "+69%",
+              "contributors": 39,
+              "contributorGrowth": "+41%",
               "newRepos": 0,
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/qualcomm",
@@ -22674,7 +22674,7 @@
           "faqs": [
             {
               "question": "What engineering signals are proptech startups showing in Q1 2026?",
-              "answer": "In Q1 2026, we are tracking 16 proptech startups with measurable GitHub engineering signals. 9 of 16 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 10 of the tracked companies. The average 14-day commit velocity across the sector is 70 commits, with WillowInc leading at 6 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q1 2026, we are tracking 16 proptech startups with measurable GitHub engineering signals. 9 of 16 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 10 of the tracked companies. The average 14-day commit velocity across the sector is 67 commits, with WillowInc leading at 6 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which proptech startup has the highest engineering acceleration in Q1 2026?",
@@ -22733,14 +22733,14 @@
             {
               "name": "qualcomm",
               "description": "At Qualcomm Technologies, Inc., we transform how the world connects, computes and communicates.",
-              "stage": "Growth",
+              "stage": "Series A/B",
               "geography": "Unknown",
-              "commitVelocity14d": 41,
-              "commitVelocityChange": "+46%",
-              "contributors": 100,
-              "contributorGrowth": "+5%",
+              "commitVelocity14d": 36,
+              "commitVelocityChange": "+200%",
+              "contributors": 39,
+              "contributorGrowth": "+41%",
               "newRepos": 0,
-              "signalType": "Framework migration",
+              "signalType": "Deploy frequency spike",
               "githubUrl": "https://github.com/qualcomm",
               "websiteUrl": "https://qualcomm.com/developer"
             },
@@ -22896,7 +22896,7 @@
           "faqs": [
             {
               "question": "What engineering signals are proptech startups showing in Q4 2025?",
-              "answer": "In Q4 2025, we are tracking 15 proptech startups with measurable GitHub engineering signals. 10 of 15 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 10 of the tracked companies. The average 14-day commit velocity across the sector is 23 commits, with WillowInc leading at 6 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q4 2025, we are tracking 15 proptech startups with measurable GitHub engineering signals. 10 of 15 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 9 of the tracked companies. The average 14-day commit velocity across the sector is 22 commits, with WillowInc leading at 6 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which proptech startup has the highest engineering acceleration in Q4 2025?",
@@ -22958,12 +22958,12 @@
             {
               "name": "Realistic-Farming",
               "description": "A connected suite of realism mods for Farming Simulator 25: economy, soil, livestock, labor, and markets on shared core",
-              "stage": "Seed",
+              "stage": "Pre-seed",
               "geography": "Unknown",
-              "commitVelocity14d": 61,
-              "commitVelocityChange": "-27%",
-              "contributors": 10,
-              "contributorGrowth": "+0%",
+              "commitVelocity14d": 9,
+              "commitVelocityChange": "+50%",
+              "contributors": 6,
+              "contributorGrowth": "+18%",
               "newRepos": 4,
               "signalType": "Infrastructure buildout",
               "githubUrl": "https://github.com/Realistic-Farming"
@@ -23178,7 +23178,7 @@
           "faqs": [
             {
               "question": "What engineering signals are agtech startups showing in Q3 2026?",
-              "answer": "In Q3 2026, we are tracking 16 agtech startups with measurable GitHub engineering signals. 7 of 16 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 7 of the tracked companies. The average 14-day commit velocity across the sector is 33 commits, with ARPA-SIMC leading at 1 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q3 2026, we are tracking 16 agtech startups with measurable GitHub engineering signals. 8 of 16 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 7 of the tracked companies. The average 14-day commit velocity across the sector is 29 commits, with ARPA-SIMC leading at 1 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which agtech startup has the highest engineering acceleration in Q3 2026?",
@@ -23196,12 +23196,12 @@
             {
               "name": "Realistic-Farming",
               "description": "A connected suite of realism mods for Farming Simulator 25: economy, soil, livestock, labor, and markets on shared core",
-              "stage": "Seed",
+              "stage": "Pre-seed",
               "geography": "Unknown",
-              "commitVelocity14d": 146,
-              "commitVelocityChange": "+3%",
-              "contributors": 10,
-              "contributorGrowth": "+0%",
+              "commitVelocity14d": 16,
+              "commitVelocityChange": "+700%",
+              "contributors": 6,
+              "contributorGrowth": "+18%",
               "newRepos": 4,
               "signalType": "Infrastructure buildout",
               "githubUrl": "https://github.com/Realistic-Farming"
@@ -23418,7 +23418,7 @@
           "faqs": [
             {
               "question": "What engineering signals are agtech startups showing in Q2 2026?",
-              "answer": "In Q2 2026, we are tracking 16 agtech startups with measurable GitHub engineering signals. 8 of 16 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 8 of the tracked companies. The average 14-day commit velocity across the sector is 48 commits, with AgMIP-GGCMI leading at 4 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q2 2026, we are tracking 16 agtech startups with measurable GitHub engineering signals. 8 of 16 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 8 of the tracked companies. The average 14-day commit velocity across the sector is 40 commits, with AgMIP-GGCMI leading at 4 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which agtech startup has the highest engineering acceleration in Q2 2026?",
@@ -23436,12 +23436,12 @@
             {
               "name": "Realistic-Farming",
               "description": "A connected suite of realism mods for Farming Simulator 25: economy, soil, livestock, labor, and markets on shared core",
-              "stage": "Seed",
+              "stage": "Pre-seed",
               "geography": "Unknown",
-              "commitVelocity14d": 20,
+              "commitVelocity14d": 77,
               "commitVelocityChange": "+999%",
-              "contributors": 10,
-              "contributorGrowth": "+0%",
+              "contributors": 6,
+              "contributorGrowth": "+18%",
               "newRepos": 4,
               "signalType": "Infrastructure buildout",
               "githubUrl": "https://github.com/Realistic-Farming"
@@ -23684,11 +23684,11 @@
           "faqs": [
             {
               "question": "What engineering signals are agtech startups showing in Q1 2026?",
-              "answer": "In Q1 2026, we are tracking 18 agtech startups with measurable GitHub engineering signals. 13 of 18 show positive commit velocity growth. The most common signal type is \"Deploy frequency spike\", observed in 8 of the tracked companies. The average 14-day commit velocity across the sector is 30 commits, with Realistic-Farming leading at 20 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q1 2026, we are tracking 18 agtech startups with measurable GitHub engineering signals. 13 of 18 show positive commit velocity growth. The most common signal type is \"Deploy frequency spike\", observed in 8 of the tracked companies. The average 14-day commit velocity across the sector is 33 commits, with Realistic-Farming leading at 77 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which agtech startup has the highest engineering acceleration in Q1 2026?",
-              "answer": "Realistic-Farming leads the agtech sector in Q1 2026 with 20 commits over a 14-day window, representing a +999% change from the prior period. With 10 active contributors and 4 new repositories, Realistic-Farming is showing a \"Infrastructure buildout\" pattern, one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "Realistic-Farming leads the agtech sector in Q1 2026 with 77 commits over a 14-day window, representing a +999% change from the prior period. With 6 active contributors and 4 new repositories, Realistic-Farming is showing a \"Infrastructure buildout\" pattern, one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active agtech engineering teams located?",
@@ -23973,14 +23973,14 @@
             {
               "name": "chickensoft-games",
               "description": "Open source tools for C# and Godot.",
-              "stage": "Series A/B",
+              "stage": "Pre-seed",
               "geography": "US",
-              "commitVelocity14d": 4,
-              "commitVelocityChange": "+33%",
-              "contributors": 20,
-              "contributorGrowth": "+100%",
+              "commitVelocity14d": 2,
+              "commitVelocityChange": "+100%",
+              "contributors": 4,
+              "contributorGrowth": "+29%",
               "newRepos": 0,
-              "signalType": "Engineering hiring burst",
+              "signalType": "Framework migration",
               "githubUrl": "https://github.com/chickensoft-games",
               "websiteUrl": "https://chickensoft.games"
             },
@@ -24025,6 +24025,20 @@
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/TaloDev",
               "websiteUrl": "https://trytalo.com"
+            },
+            {
+              "name": "rive-app",
+              "description": "",
+              "stage": "Pre-seed",
+              "geography": "US",
+              "commitVelocity14d": 78,
+              "commitVelocityChange": "-7%",
+              "contributors": 3,
+              "contributorGrowth": "+152%",
+              "newRepos": 2,
+              "signalType": "Engineering hiring burst",
+              "githubUrl": "https://github.com/rive-app",
+              "websiteUrl": "https://rive.app"
             },
             {
               "name": "game-ci",
@@ -24110,6 +24124,33 @@
               "websiteUrl": "https://stereolabs.com"
             },
             {
+              "name": "luanti-org",
+              "description": "Building an open source voxel game-creation platform and game",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 27,
+              "commitVelocityChange": "+0%",
+              "contributors": 100,
+              "contributorGrowth": "+1%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/luanti-org",
+              "websiteUrl": "https://www.luanti.org"
+            },
+            {
+              "name": "TheVessels",
+              "description": "Yeah, so, basically, we do the things",
+              "stage": "Pre-seed",
+              "geography": "Unknown",
+              "commitVelocity14d": 5,
+              "commitVelocityChange": "-58%",
+              "contributors": 5,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/TheVessels"
+            },
+            {
               "name": "crownengine",
               "description": "Crown is a complete and cross-platform game engine designed for flexibility, performance and fast iteration.",
               "stage": "Seed",
@@ -24122,20 +24163,6 @@
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/crownengine",
               "websiteUrl": "https://www.crownengine.org"
-            },
-            {
-              "name": "doriaxengine",
-              "description": "",
-              "stage": "Pre-seed",
-              "geography": "Unknown",
-              "commitVelocity14d": 80,
-              "commitVelocityChange": "-18%",
-              "contributors": 4,
-              "contributorGrowth": "+39%",
-              "newRepos": 3,
-              "signalType": "Infrastructure buildout",
-              "githubUrl": "https://github.com/doriaxengine",
-              "websiteUrl": "https://www.doriax.com"
             },
             {
               "name": "NBlood",
@@ -24206,6 +24233,19 @@
               "githubUrl": "https://github.com/o2-engine"
             },
             {
+              "name": "InvadingOctopus",
+              "description": "Godot template and component-based framework for 2D games.",
+              "stage": "Pre-seed",
+              "geography": "Unknown",
+              "commitVelocity14d": 63,
+              "commitVelocityChange": "+24%",
+              "contributors": 3,
+              "contributorGrowth": "+65%",
+              "newRepos": 0,
+              "signalType": "Engineering hiring burst",
+              "githubUrl": "https://github.com/InvadingOctopus"
+            },
+            {
               "name": "untrustedmodders",
               "description": "",
               "stage": "Pre-seed",
@@ -24273,6 +24313,20 @@
               "signalType": "Engineering hiring burst",
               "githubUrl": "https://github.com/space-wizards",
               "websiteUrl": "https://spacestation14.com"
+            },
+            {
+              "name": "doriaxengine",
+              "description": "",
+              "stage": "Pre-seed",
+              "geography": "Unknown",
+              "commitVelocity14d": 80,
+              "commitVelocityChange": "-18%",
+              "contributors": 4,
+              "contributorGrowth": "+39%",
+              "newRepos": 3,
+              "signalType": "Infrastructure buildout",
+              "githubUrl": "https://github.com/doriaxengine",
+              "websiteUrl": "https://www.doriax.com"
             },
             {
               "name": "Black-Tek",
@@ -24413,19 +24467,6 @@
               "websiteUrl": "https://wohlsoft.ru/projects/TheXTech/"
             },
             {
-              "name": "TheVessels",
-              "description": "Yeah, so, basically, we do the things",
-              "stage": "Pre-seed",
-              "geography": "Unknown",
-              "commitVelocity14d": 55,
-              "commitVelocityChange": "+358%",
-              "contributors": 5,
-              "contributorGrowth": "+37%",
-              "newRepos": 0,
-              "signalType": "Deploy frequency spike",
-              "githubUrl": "https://github.com/TheVessels"
-            },
-            {
               "name": "boardgameio",
               "description": "State Management and Multiplayer Networking for Turn-Based Games",
               "stage": "Growth",
@@ -24471,7 +24512,7 @@
           "faqs": [
             {
               "question": "What engineering signals are gaming startups showing in Q3 2026?",
-              "answer": "In Q3 2026, we are tracking 36 gaming startups with measurable GitHub engineering signals. 17 of 36 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 15 of the tracked companies. The average 14-day commit velocity across the sector is 49 commits, with untrustedmodders leading at 30 commits (+2900% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q3 2026, we are tracking 39 gaming startups with measurable GitHub engineering signals. 17 of 39 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 18 of the tracked companies. The average 14-day commit velocity across the sector is 48 commits, with untrustedmodders leading at 30 commits (+2900% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which gaming startup has the highest engineering acceleration in Q3 2026?",
@@ -24479,7 +24520,7 @@
             },
             {
               "question": "Where are the most active gaming engineering teams located?",
-              "answer": "Among the 36 gaming startups we track, US accounts for the highest concentration with 7 teams. Startups building game engines, multiplayer infrastructure, and gaming analytics. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 39 gaming startups we track, US accounts for the highest concentration with 8 teams. Startups building game engines, multiplayer infrastructure, and gaming analytics. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         },
@@ -24489,14 +24530,14 @@
             {
               "name": "chickensoft-games",
               "description": "Open source tools for C# and Godot.",
-              "stage": "Series A/B",
+              "stage": "Pre-seed",
               "geography": "US",
-              "commitVelocity14d": 6,
-              "commitVelocityChange": "+0%",
-              "contributors": 20,
-              "contributorGrowth": "+100%",
+              "commitVelocity14d": 2,
+              "commitVelocityChange": "+999%",
+              "contributors": 4,
+              "contributorGrowth": "+29%",
               "newRepos": 0,
-              "signalType": "Engineering hiring burst",
+              "signalType": "Deploy frequency spike",
               "githubUrl": "https://github.com/chickensoft-games",
               "websiteUrl": "https://chickensoft.games"
             },
@@ -24527,6 +24568,20 @@
               "signalType": "Deploy frequency spike",
               "githubUrl": "https://github.com/TaloDev",
               "websiteUrl": "https://trytalo.com"
+            },
+            {
+              "name": "rive-app",
+              "description": "",
+              "stage": "Pre-seed",
+              "geography": "US",
+              "commitVelocity14d": 102,
+              "commitVelocityChange": "+46%",
+              "contributors": 3,
+              "contributorGrowth": "+152%",
+              "newRepos": 2,
+              "signalType": "Engineering hiring burst",
+              "githubUrl": "https://github.com/rive-app",
+              "websiteUrl": "https://rive.app"
             },
             {
               "name": "game-ci",
@@ -24611,6 +24666,33 @@
               "githubUrl": "https://github.com/MothCocoon"
             },
             {
+              "name": "luanti-org",
+              "description": "Building an open source voxel game-creation platform and game",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 32,
+              "commitVelocityChange": "+100%",
+              "contributors": 100,
+              "contributorGrowth": "+1%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/luanti-org",
+              "websiteUrl": "https://www.luanti.org"
+            },
+            {
+              "name": "TheVessels",
+              "description": "Yeah, so, basically, we do the things",
+              "stage": "Pre-seed",
+              "geography": "Unknown",
+              "commitVelocity14d": 30,
+              "commitVelocityChange": "+1400%",
+              "contributors": 5,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Deploy frequency spike",
+              "githubUrl": "https://github.com/TheVessels"
+            },
+            {
               "name": "crownengine",
               "description": "Crown is a complete and cross-platform game engine designed for flexibility, performance and fast iteration.",
               "stage": "Seed",
@@ -24623,20 +24705,6 @@
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/crownengine",
               "websiteUrl": "https://www.crownengine.org"
-            },
-            {
-              "name": "doriaxengine",
-              "description": "",
-              "stage": "Pre-seed",
-              "geography": "Unknown",
-              "commitVelocity14d": 45,
-              "commitVelocityChange": "-26%",
-              "contributors": 4,
-              "contributorGrowth": "+39%",
-              "newRepos": 3,
-              "signalType": "Infrastructure buildout",
-              "githubUrl": "https://github.com/doriaxengine",
-              "websiteUrl": "https://www.doriax.com"
             },
             {
               "name": "NBlood",
@@ -24721,6 +24789,19 @@
               "githubUrl": "https://github.com/o2-engine"
             },
             {
+              "name": "InvadingOctopus",
+              "description": "Godot template and component-based framework for 2D games.",
+              "stage": "Pre-seed",
+              "geography": "Unknown",
+              "commitVelocity14d": 22,
+              "commitVelocityChange": "-72%",
+              "contributors": 3,
+              "contributorGrowth": "+65%",
+              "newRepos": 0,
+              "signalType": "Engineering hiring burst",
+              "githubUrl": "https://github.com/InvadingOctopus"
+            },
+            {
               "name": "Far-Beyond-Pulsar",
               "description": "",
               "stage": "Growth",
@@ -24775,6 +24856,20 @@
               "signalType": "Engineering hiring burst",
               "githubUrl": "https://github.com/space-wizards",
               "websiteUrl": "https://spacestation14.com"
+            },
+            {
+              "name": "doriaxengine",
+              "description": "",
+              "stage": "Pre-seed",
+              "geography": "Unknown",
+              "commitVelocity14d": 45,
+              "commitVelocityChange": "-26%",
+              "contributors": 4,
+              "contributorGrowth": "+39%",
+              "newRepos": 3,
+              "signalType": "Infrastructure buildout",
+              "githubUrl": "https://github.com/doriaxengine",
+              "websiteUrl": "https://www.doriax.com"
             },
             {
               "name": "Mountea-Framework",
@@ -25004,7 +25099,7 @@
           "faqs": [
             {
               "question": "What engineering signals are gaming startups showing in Q2 2026?",
-              "answer": "In Q2 2026, we are tracking 37 gaming startups with measurable GitHub engineering signals. 18 of 37 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 16 of the tracked companies. The average 14-day commit velocity across the sector is 60 commits, with Mountea-Framework leading at 35 commits (+3400% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q2 2026, we are tracking 41 gaming startups with measurable GitHub engineering signals. 22 of 41 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 17 of the tracked companies. The average 14-day commit velocity across the sector is 59 commits, with Mountea-Framework leading at 35 commits (+3400% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which gaming startup has the highest engineering acceleration in Q2 2026?",
@@ -25012,7 +25107,7 @@
             },
             {
               "question": "Where are the most active gaming engineering teams located?",
-              "answer": "Among the 37 gaming startups we track, US accounts for the highest concentration with 7 teams. Startups building game engines, multiplayer infrastructure, and gaming analytics. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 41 gaming startups we track, US accounts for the highest concentration with 8 teams. Startups building game engines, multiplayer infrastructure, and gaming analytics. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         },
@@ -25022,14 +25117,14 @@
             {
               "name": "chickensoft-games",
               "description": "Open source tools for C# and Godot.",
-              "stage": "Series A/B",
+              "stage": "Pre-seed",
               "geography": "US",
-              "commitVelocity14d": 5,
-              "commitVelocityChange": "+25%",
-              "contributors": 20,
-              "contributorGrowth": "+100%",
+              "commitVelocity14d": 18,
+              "commitVelocityChange": "+1700%",
+              "contributors": 4,
+              "contributorGrowth": "+29%",
               "newRepos": 0,
-              "signalType": "Engineering hiring burst",
+              "signalType": "Deploy frequency spike",
               "githubUrl": "https://github.com/chickensoft-games",
               "websiteUrl": "https://chickensoft.games"
             },
@@ -25074,6 +25169,20 @@
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/TaloDev",
               "websiteUrl": "https://trytalo.com"
+            },
+            {
+              "name": "rive-app",
+              "description": "",
+              "stage": "Pre-seed",
+              "geography": "US",
+              "commitVelocity14d": 54,
+              "commitVelocityChange": "+13%",
+              "contributors": 3,
+              "contributorGrowth": "+152%",
+              "newRepos": 2,
+              "signalType": "Engineering hiring burst",
+              "githubUrl": "https://github.com/rive-app",
+              "websiteUrl": "https://rive.app"
             },
             {
               "name": "Balatro-Multiplayer",
@@ -25144,6 +25253,33 @@
               "githubUrl": "https://github.com/MothCocoon"
             },
             {
+              "name": "luanti-org",
+              "description": "Building an open source voxel game-creation platform and game",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 28,
+              "commitVelocityChange": "-10%",
+              "contributors": 100,
+              "contributorGrowth": "+1%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/luanti-org",
+              "websiteUrl": "https://www.luanti.org"
+            },
+            {
+              "name": "TheVessels",
+              "description": "Yeah, so, basically, we do the things",
+              "stage": "Pre-seed",
+              "geography": "Unknown",
+              "commitVelocity14d": 1,
+              "commitVelocityChange": "+999%",
+              "contributors": 5,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Deploy frequency spike",
+              "githubUrl": "https://github.com/TheVessels"
+            },
+            {
               "name": "crownengine",
               "description": "Crown is a complete and cross-platform game engine designed for flexibility, performance and fast iteration.",
               "stage": "Seed",
@@ -25156,20 +25292,6 @@
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/crownengine",
               "websiteUrl": "https://www.crownengine.org"
-            },
-            {
-              "name": "doriaxengine",
-              "description": "",
-              "stage": "Pre-seed",
-              "geography": "Unknown",
-              "commitVelocity14d": 9,
-              "commitVelocityChange": "+200%",
-              "contributors": 4,
-              "contributorGrowth": "+39%",
-              "newRepos": 3,
-              "signalType": "Infrastructure buildout",
-              "githubUrl": "https://github.com/doriaxengine",
-              "websiteUrl": "https://www.doriax.com"
             },
             {
               "name": "NBlood",
@@ -25240,6 +25362,19 @@
               "githubUrl": "https://github.com/o2-engine"
             },
             {
+              "name": "InvadingOctopus",
+              "description": "Godot template and component-based framework for 2D games.",
+              "stage": "Pre-seed",
+              "geography": "Unknown",
+              "commitVelocity14d": 30,
+              "commitVelocityChange": "+67%",
+              "contributors": 3,
+              "contributorGrowth": "+65%",
+              "newRepos": 0,
+              "signalType": "Engineering hiring burst",
+              "githubUrl": "https://github.com/InvadingOctopus"
+            },
+            {
               "name": "untrustedmodders",
               "description": "",
               "stage": "Pre-seed",
@@ -25307,6 +25442,20 @@
               "signalType": "Engineering hiring burst",
               "githubUrl": "https://github.com/space-wizards",
               "websiteUrl": "https://spacestation14.com"
+            },
+            {
+              "name": "doriaxengine",
+              "description": "",
+              "stage": "Pre-seed",
+              "geography": "Unknown",
+              "commitVelocity14d": 9,
+              "commitVelocityChange": "+200%",
+              "contributors": 4,
+              "contributorGrowth": "+39%",
+              "newRepos": 3,
+              "signalType": "Infrastructure buildout",
+              "githubUrl": "https://github.com/doriaxengine",
+              "websiteUrl": "https://www.doriax.com"
             },
             {
               "name": "Black-Tek",
@@ -25404,19 +25553,6 @@
               "signalType": "Engineering hiring burst",
               "githubUrl": "https://github.com/TheXTech",
               "websiteUrl": "https://wohlsoft.ru/projects/TheXTech/"
-            },
-            {
-              "name": "TheVessels",
-              "description": "Yeah, so, basically, we do the things",
-              "stage": "Pre-seed",
-              "geography": "Unknown",
-              "commitVelocity14d": 2,
-              "commitVelocityChange": "+0%",
-              "contributors": 5,
-              "contributorGrowth": "+37%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/TheVessels"
             },
             {
               "name": "gurkenlabs",
@@ -25520,7 +25656,7 @@
           "faqs": [
             {
               "question": "What engineering signals are gaming startups showing in Q1 2026?",
-              "answer": "In Q1 2026, we are tracking 36 gaming startups with measurable GitHub engineering signals. 19 of 36 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 22 of the tracked companies. The average 14-day commit velocity across the sector is 48 commits, with ryzom leading at 163 commits (+8050% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q1 2026, we are tracking 39 gaming startups with measurable GitHub engineering signals. 22 of 39 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 22 of the tracked companies. The average 14-day commit velocity across the sector is 47 commits, with ryzom leading at 163 commits (+8050% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which gaming startup has the highest engineering acceleration in Q1 2026?",
@@ -25528,7 +25664,7 @@
             },
             {
               "question": "Where are the most active gaming engineering teams located?",
-              "answer": "Among the 36 gaming startups we track, US accounts for the highest concentration with 6 teams. Startups building game engines, multiplayer infrastructure, and gaming analytics. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 39 gaming startups we track, US accounts for the highest concentration with 7 teams. Startups building game engines, multiplayer infrastructure, and gaming analytics. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         },
@@ -25538,14 +25674,14 @@
             {
               "name": "chickensoft-games",
               "description": "Open source tools for C# and Godot.",
-              "stage": "Series A/B",
+              "stage": "Pre-seed",
               "geography": "US",
               "commitVelocity14d": 6,
-              "commitVelocityChange": "-25%",
-              "contributors": 20,
-              "contributorGrowth": "+100%",
+              "commitVelocityChange": "+999%",
+              "contributors": 4,
+              "contributorGrowth": "+29%",
               "newRepos": 0,
-              "signalType": "Engineering hiring burst",
+              "signalType": "Deploy frequency spike",
               "githubUrl": "https://github.com/chickensoft-games",
               "websiteUrl": "https://chickensoft.games"
             },
@@ -25590,6 +25726,20 @@
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/TaloDev",
               "websiteUrl": "https://trytalo.com"
+            },
+            {
+              "name": "rive-app",
+              "description": "",
+              "stage": "Pre-seed",
+              "geography": "US",
+              "commitVelocity14d": 58,
+              "commitVelocityChange": "-25%",
+              "contributors": 3,
+              "contributorGrowth": "+152%",
+              "newRepos": 2,
+              "signalType": "Engineering hiring burst",
+              "githubUrl": "https://github.com/rive-app",
+              "websiteUrl": "https://rive.app"
             },
             {
               "name": "Balatro-Multiplayer",
@@ -25647,6 +25797,20 @@
               "websiteUrl": "https://stereolabs.com"
             },
             {
+              "name": "luanti-org",
+              "description": "Building an open source voxel game-creation platform and game",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 35,
+              "commitVelocityChange": "+40%",
+              "contributors": 100,
+              "contributorGrowth": "+1%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/luanti-org",
+              "websiteUrl": "https://www.luanti.org"
+            },
+            {
               "name": "crownengine",
               "description": "Crown is a complete and cross-platform game engine designed for flexibility, performance and fast iteration.",
               "stage": "Seed",
@@ -25659,20 +25823,6 @@
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/crownengine",
               "websiteUrl": "https://www.crownengine.org"
-            },
-            {
-              "name": "doriaxengine",
-              "description": "",
-              "stage": "Pre-seed",
-              "geography": "Unknown",
-              "commitVelocity14d": 7,
-              "commitVelocityChange": "-22%",
-              "contributors": 4,
-              "contributorGrowth": "+39%",
-              "newRepos": 3,
-              "signalType": "Infrastructure buildout",
-              "githubUrl": "https://github.com/doriaxengine",
-              "websiteUrl": "https://www.doriax.com"
             },
             {
               "name": "NBlood",
@@ -25796,6 +25946,20 @@
               "signalType": "Engineering hiring burst",
               "githubUrl": "https://github.com/space-wizards",
               "websiteUrl": "https://spacestation14.com"
+            },
+            {
+              "name": "doriaxengine",
+              "description": "",
+              "stage": "Pre-seed",
+              "geography": "Unknown",
+              "commitVelocity14d": 7,
+              "commitVelocityChange": "-22%",
+              "contributors": 4,
+              "contributorGrowth": "+39%",
+              "newRepos": 3,
+              "signalType": "Infrastructure buildout",
+              "githubUrl": "https://github.com/doriaxengine",
+              "websiteUrl": "https://www.doriax.com"
             },
             {
               "name": "Black-Tek",
@@ -26022,15 +26186,15 @@
           "faqs": [
             {
               "question": "What engineering signals are gaming startups showing in Q4 2025?",
-              "answer": "In Q4 2025, we are tracking 35 gaming startups with measurable GitHub engineering signals. 16 of 35 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 19 of the tracked companies. The average 14-day commit velocity across the sector is 34 commits, with DiligentGraphics leading at 2 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q4 2025, we are tracking 37 gaming startups with measurable GitHub engineering signals. 18 of 37 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 20 of the tracked companies. The average 14-day commit velocity across the sector is 35 commits, with chickensoft-games leading at 6 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which gaming startup has the highest engineering acceleration in Q4 2025?",
-              "answer": "DiligentGraphics leads the gaming sector in Q4 2025 with 2 commits over a 14-day window, representing a +999% change from the prior period. With 8 active contributors, DiligentGraphics is showing a \"Deploy frequency spike\" pattern, one of the more reliable leading indicators of a significant product milestone or fundraise."
+              "answer": "chickensoft-games leads the gaming sector in Q4 2025 with 6 commits over a 14-day window, representing a +999% change from the prior period. With 4 active contributors, chickensoft-games is showing a \"Deploy frequency spike\" pattern, one of the more reliable leading indicators of a significant product milestone or fundraise."
             },
             {
               "question": "Where are the most active gaming engineering teams located?",
-              "answer": "Among the 35 gaming startups we track, US accounts for the highest concentration with 7 teams. Startups building game engines, multiplayer infrastructure, and gaming analytics. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
+              "answer": "Among the 37 gaming startups we track, US accounts for the highest concentration with 8 teams. Startups building game engines, multiplayer infrastructure, and gaming analytics. Geographic distribution matters for investors because engineering talent clusters correlate with sector-specific domain expertise and proximity to early adopter customers."
             }
           ]
         },
@@ -26317,6 +26481,20 @@
               "websiteUrl": "http://ccsdspy.org"
             },
             {
+              "name": "mx-space",
+              "description": "混合空间 Mix Space",
+              "stage": "Series A/B",
+              "geography": "APAC",
+              "commitVelocity14d": 130,
+              "commitVelocityChange": "+141%",
+              "contributors": 27,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/mx-space",
+              "websiteUrl": "https://mx-space.js.org"
+            },
+            {
               "name": "OpenCSGs",
               "description": "OpenCSG of AI, by AI, for AI",
               "stage": "Pre-seed",
@@ -26442,20 +26620,6 @@
               "websiteUrl": "https://www.spedas.org"
             },
             {
-              "name": "mx-space",
-              "description": "混合空间 Mix Space",
-              "stage": "Series A/B",
-              "geography": "APAC",
-              "commitVelocity14d": 36,
-              "commitVelocityChange": "-22%",
-              "contributors": 26,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/mx-space",
-              "websiteUrl": "https://mx-space.js.org"
-            },
-            {
               "name": "SatDump",
               "description": "Sat Dump is aspace tech growth startup, shipping product updates at an accelerated pace.",
               "stage": "Growth",
@@ -26486,7 +26650,7 @@
           "faqs": [
             {
               "question": "What engineering signals are space tech startups showing in Q3 2026?",
-              "answer": "In Q3 2026, we are tracking 23 space tech startups with measurable GitHub engineering signals. 13 of 23 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 11 of the tracked companies. The average 14-day commit velocity across the sector is 30 commits, with ossimlabs leading at 1 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q3 2026, we are tracking 23 space tech startups with measurable GitHub engineering signals. 14 of 23 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 11 of the tracked companies. The average 14-day commit velocity across the sector is 34 commits, with ossimlabs leading at 1 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which space tech startup has the highest engineering acceleration in Q3 2026?",
@@ -26640,6 +26804,20 @@
               "websiteUrl": "http://ccsdspy.org"
             },
             {
+              "name": "mx-space",
+              "description": "混合空间 Mix Space",
+              "stage": "Series A/B",
+              "geography": "APAC",
+              "commitVelocity14d": 180,
+              "commitVelocityChange": "+96%",
+              "contributors": 27,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/mx-space",
+              "websiteUrl": "https://mx-space.js.org"
+            },
+            {
               "name": "OpenCSGs",
               "description": "OpenCSG of AI, by AI, for AI",
               "stage": "Pre-seed",
@@ -26765,20 +26943,6 @@
               "websiteUrl": "https://www.spedas.org"
             },
             {
-              "name": "mx-space",
-              "description": "混合空间 Mix Space",
-              "stage": "Series A/B",
-              "geography": "APAC",
-              "commitVelocity14d": 34,
-              "commitVelocityChange": "-44%",
-              "contributors": 26,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/mx-space",
-              "websiteUrl": "https://mx-space.js.org"
-            },
-            {
               "name": "SatDump",
               "description": "Sat Dump is aspace tech growth startup, shipping product updates at an accelerated pace.",
               "stage": "Growth",
@@ -26823,7 +26987,7 @@
           "faqs": [
             {
               "question": "What engineering signals are space tech startups showing in Q2 2026?",
-              "answer": "In Q2 2026, we are tracking 23 space tech startups with measurable GitHub engineering signals. 8 of 23 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 17 of the tracked companies. The average 14-day commit velocity across the sector is 29 commits, with iff-gsc leading at 1 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q2 2026, we are tracking 23 space tech startups with measurable GitHub engineering signals. 9 of 23 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 17 of the tracked companies. The average 14-day commit velocity across the sector is 35 commits, with iff-gsc leading at 1 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which space tech startup has the highest engineering acceleration in Q2 2026?",
@@ -26977,6 +27141,20 @@
               "websiteUrl": "http://ccsdspy.org"
             },
             {
+              "name": "mx-space",
+              "description": "混合空间 Mix Space",
+              "stage": "Series A/B",
+              "geography": "APAC",
+              "commitVelocity14d": 53,
+              "commitVelocityChange": "-55%",
+              "contributors": 27,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Framework migration",
+              "githubUrl": "https://github.com/mx-space",
+              "websiteUrl": "https://mx-space.js.org"
+            },
+            {
               "name": "Official-MoonDao",
               "description": "MoonDAO is accelerating our multiplanetary future with an open platform to fund, collaborate, and compete on challenges",
               "stage": "Series A/B",
@@ -27046,20 +27224,6 @@
               "websiteUrl": "https://www.spedas.org"
             },
             {
-              "name": "mx-space",
-              "description": "混合空间 Mix Space",
-              "stage": "Series A/B",
-              "geography": "APAC",
-              "commitVelocity14d": 45,
-              "commitVelocityChange": "+137%",
-              "contributors": 26,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/mx-space",
-              "websiteUrl": "https://mx-space.js.org"
-            },
-            {
               "name": "SatDump",
               "description": "Sat Dump is aspace tech growth startup, shipping product updates at an accelerated pace.",
               "stage": "Growth",
@@ -27090,7 +27254,7 @@
           "faqs": [
             {
               "question": "What engineering signals are space tech startups showing in Q1 2026?",
-              "answer": "In Q1 2026, we are tracking 18 space tech startups with measurable GitHub engineering signals. 9 of 18 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 12 of the tracked companies. The average 14-day commit velocity across the sector is 42 commits, with orbitalindex leading at 1 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q1 2026, we are tracking 18 space tech startups with measurable GitHub engineering signals. 8 of 18 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 12 of the tracked companies. The average 14-day commit velocity across the sector is 42 commits, with orbitalindex leading at 1 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which space tech startup has the highest engineering acceleration in Q1 2026?",
@@ -27230,6 +27394,20 @@
               "websiteUrl": "http://ccsdspy.org"
             },
             {
+              "name": "mx-space",
+              "description": "混合空间 Mix Space",
+              "stage": "Series A/B",
+              "geography": "APAC",
+              "commitVelocity14d": 5,
+              "commitVelocityChange": "+999%",
+              "contributors": 27,
+              "contributorGrowth": "+0%",
+              "newRepos": 0,
+              "signalType": "Deploy frequency spike",
+              "githubUrl": "https://github.com/mx-space",
+              "websiteUrl": "https://mx-space.js.org"
+            },
+            {
               "name": "Official-MoonDao",
               "description": "MoonDAO is accelerating our multiplanetary future with an open platform to fund, collaborate, and compete on challenges",
               "stage": "Series A/B",
@@ -27327,20 +27505,6 @@
               "websiteUrl": "https://www.spedas.org"
             },
             {
-              "name": "mx-space",
-              "description": "混合空间 Mix Space",
-              "stage": "Series A/B",
-              "geography": "APAC",
-              "commitVelocity14d": 1,
-              "commitVelocityChange": "-86%",
-              "contributors": 26,
-              "contributorGrowth": "+0%",
-              "newRepos": 0,
-              "signalType": "Framework migration",
-              "githubUrl": "https://github.com/mx-space",
-              "websiteUrl": "https://mx-space.js.org"
-            },
-            {
               "name": "SatDump",
               "description": "Sat Dump is aspace tech growth startup, shipping product updates at an accelerated pace.",
               "stage": "Growth",
@@ -27371,7 +27535,7 @@
           "faqs": [
             {
               "question": "What engineering signals are space tech startups showing in Q4 2025?",
-              "answer": "In Q4 2025, we are tracking 19 space tech startups with measurable GitHub engineering signals. 7 of 19 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 14 of the tracked companies. The average 14-day commit velocity across the sector is 32 commits, with CCSDSPy leading at 1 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q4 2025, we are tracking 19 space tech startups with measurable GitHub engineering signals. 8 of 19 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 13 of the tracked companies. The average 14-day commit velocity across the sector is 32 commits, with CCSDSPy leading at 1 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which space tech startup has the highest engineering acceleration in Q4 2025?",
@@ -27477,14 +27641,27 @@
               "description": "📱☁️💻 A safe home for all your data, community-driven, free & open source 👏",
               "stage": "Growth",
               "geography": "Unknown",
-              "commitVelocity14d": 78,
-              "commitVelocityChange": "+50%",
+              "commitVelocity14d": 338,
+              "commitVelocityChange": "+0%",
               "contributors": 100,
-              "contributorGrowth": "+21%",
+              "contributorGrowth": "+4%",
               "newRepos": 0,
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/nextcloud",
               "websiteUrl": "https://nextcloud.com"
+            },
+            {
+              "name": "eclipse-zenoh",
+              "description": "",
+              "stage": "Series A/B",
+              "geography": "Unknown",
+              "commitVelocity14d": 13,
+              "commitVelocityChange": "+63%",
+              "contributors": 45,
+              "contributorGrowth": "+400%",
+              "newRepos": 0,
+              "signalType": "Engineering hiring burst",
+              "githubUrl": "https://github.com/eclipse-zenoh"
             },
             {
               "name": "Mininglamp-OSS",
@@ -27499,19 +27676,6 @@
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/Mininglamp-OSS",
               "websiteUrl": "https://github.com/Mininglamp-OSS"
-            },
-            {
-              "name": "eclipse-zenoh",
-              "description": "",
-              "stage": "Series A/B",
-              "geography": "Unknown",
-              "commitVelocity14d": 13,
-              "commitVelocityChange": "+44%",
-              "contributors": 31,
-              "contributorGrowth": "+400%",
-              "newRepos": 0,
-              "signalType": "Engineering hiring burst",
-              "githubUrl": "https://github.com/eclipse-zenoh"
             },
             {
               "name": "GetStream",
@@ -27780,7 +27944,7 @@
           "faqs": [
             {
               "question": "What engineering signals are social & community startups showing in Q3 2026?",
-              "answer": "In Q3 2026, we are tracking 22 social & community startups with measurable GitHub engineering signals. 13 of 22 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 11 of the tracked companies. The average 14-day commit velocity across the sector is 54 commits, with GetStream leading at 7 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q3 2026, we are tracking 22 social & community startups with measurable GitHub engineering signals. 12 of 22 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 11 of the tracked companies. The average 14-day commit velocity across the sector is 66 commits, with GetStream leading at 7 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which social & community startup has the highest engineering acceleration in Q3 2026?",
@@ -27800,14 +27964,27 @@
               "description": "📱☁️💻 A safe home for all your data, community-driven, free & open source 👏",
               "stage": "Growth",
               "geography": "Unknown",
-              "commitVelocity14d": 67,
-              "commitVelocityChange": "-7%",
+              "commitVelocity14d": 332,
+              "commitVelocityChange": "-11%",
               "contributors": 100,
-              "contributorGrowth": "+21%",
+              "contributorGrowth": "+4%",
               "newRepos": 0,
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/nextcloud",
               "websiteUrl": "https://nextcloud.com"
+            },
+            {
+              "name": "eclipse-zenoh",
+              "description": "",
+              "stage": "Series A/B",
+              "geography": "Unknown",
+              "commitVelocity14d": 1,
+              "commitVelocityChange": "+0%",
+              "contributors": 45,
+              "contributorGrowth": "+400%",
+              "newRepos": 0,
+              "signalType": "Engineering hiring burst",
+              "githubUrl": "https://github.com/eclipse-zenoh"
             },
             {
               "name": "Mininglamp-OSS",
@@ -27822,19 +27999,6 @@
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/Mininglamp-OSS",
               "websiteUrl": "https://github.com/Mininglamp-OSS"
-            },
-            {
-              "name": "eclipse-zenoh",
-              "description": "",
-              "stage": "Series A/B",
-              "geography": "Unknown",
-              "commitVelocity14d": 2,
-              "commitVelocityChange": "+100%",
-              "contributors": 31,
-              "contributorGrowth": "+400%",
-              "newRepos": 0,
-              "signalType": "Engineering hiring burst",
-              "githubUrl": "https://github.com/eclipse-zenoh"
             },
             {
               "name": "GetStream",
@@ -28076,7 +28240,7 @@
           "faqs": [
             {
               "question": "What engineering signals are social & community startups showing in Q2 2026?",
-              "answer": "In Q2 2026, we are tracking 20 social & community startups with measurable GitHub engineering signals. 9 of 20 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 12 of the tracked companies. The average 14-day commit velocity across the sector is 81 commits, with HopHubProject leading at 35 commits (+1067% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q2 2026, we are tracking 20 social & community startups with measurable GitHub engineering signals. 8 of 20 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 12 of the tracked companies. The average 14-day commit velocity across the sector is 94 commits, with HopHubProject leading at 35 commits (+1067% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which social & community startup has the highest engineering acceleration in Q2 2026?",
@@ -28096,27 +28260,14 @@
               "description": "📱☁️💻 A safe home for all your data, community-driven, free & open source 👏",
               "stage": "Growth",
               "geography": "Unknown",
-              "commitVelocity14d": 41,
-              "commitVelocityChange": "-41%",
+              "commitVelocity14d": 308,
+              "commitVelocityChange": "-7%",
               "contributors": 100,
-              "contributorGrowth": "+21%",
+              "contributorGrowth": "+4%",
               "newRepos": 0,
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/nextcloud",
               "websiteUrl": "https://nextcloud.com"
-            },
-            {
-              "name": "eclipse-zenoh",
-              "description": "",
-              "stage": "Series A/B",
-              "geography": "Unknown",
-              "commitVelocity14d": 1,
-              "commitVelocityChange": "-80%",
-              "contributors": 31,
-              "contributorGrowth": "+400%",
-              "newRepos": 0,
-              "signalType": "Engineering hiring burst",
-              "githubUrl": "https://github.com/eclipse-zenoh"
             },
             {
               "name": "GetStream",
@@ -28272,6 +28423,19 @@
               "websiteUrl": "https://hophub.xyz"
             },
             {
+              "name": "eclipse-zenoh",
+              "description": "",
+              "stage": "Series A/B",
+              "geography": "Unknown",
+              "commitVelocity14d": 1,
+              "commitVelocityChange": "-80%",
+              "contributors": 31,
+              "contributorGrowth": "+400%",
+              "newRepos": 0,
+              "signalType": "Engineering hiring burst",
+              "githubUrl": "https://github.com/eclipse-zenoh"
+            },
+            {
               "name": "opensensorhub",
               "description": "Java-based middleware for building better Sensor Webs and the Internet of Things",
               "stage": "Series A/B",
@@ -28373,7 +28537,7 @@
           "faqs": [
             {
               "question": "What engineering signals are social & community startups showing in Q1 2026?",
-              "answer": "In Q1 2026, we are tracking 20 social & community startups with measurable GitHub engineering signals. 13 of 20 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 11 of the tracked companies. The average 14-day commit velocity across the sector is 48 commits, with poziomki-app leading at 50 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q1 2026, we are tracking 20 social & community startups with measurable GitHub engineering signals. 13 of 20 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 11 of the tracked companies. The average 14-day commit velocity across the sector is 62 commits, with poziomki-app leading at 50 commits (+999% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which social & community startup has the highest engineering acceleration in Q1 2026?",
@@ -28393,10 +28557,10 @@
               "description": "📱☁️💻 A safe home for all your data, community-driven, free & open source 👏",
               "stage": "Growth",
               "geography": "Unknown",
-              "commitVelocity14d": 50,
-              "commitVelocityChange": "+19%",
+              "commitVelocity14d": 210,
+              "commitVelocityChange": "-25%",
               "contributors": 100,
-              "contributorGrowth": "+21%",
+              "contributorGrowth": "+4%",
               "newRepos": 0,
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/nextcloud",
@@ -28408,8 +28572,8 @@
               "stage": "Series A/B",
               "geography": "Unknown",
               "commitVelocity14d": 9,
-              "commitVelocityChange": "+80%",
-              "contributors": 31,
+              "commitVelocityChange": "+29%",
+              "contributors": 45,
               "contributorGrowth": "+400%",
               "newRepos": 0,
               "signalType": "Engineering hiring burst",
@@ -28642,7 +28806,7 @@
           "faqs": [
             {
               "question": "What engineering signals are social & community startups showing in Q4 2025?",
-              "answer": "In Q4 2025, we are tracking 18 social & community startups with measurable GitHub engineering signals. 15 of 18 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 11 of the tracked companies. The average 14-day commit velocity across the sector is 89 commits, with YunoHost-Apps leading at 24 commits (+1100% change). These patterns have historically preceded fundraise announcements by three to six weeks."
+              "answer": "In Q4 2025, we are tracking 18 social & community startups with measurable GitHub engineering signals. 14 of 18 show positive commit velocity growth. The most common signal type is \"Framework migration\", observed in 11 of the tracked companies. The average 14-day commit velocity across the sector is 98 commits, with YunoHost-Apps leading at 24 commits (+1100% change). These patterns have historically preceded fundraise announcements by three to six weeks."
             },
             {
               "question": "Which social & community startup has the highest engineering acceleration in Q4 2025?",
