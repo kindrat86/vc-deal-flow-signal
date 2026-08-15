@@ -1773,6 +1773,54 @@ check(
   }
 }
 
+// §21 Research-paper search-intent fix (2026-08-16). GSC 90d: /research-paper/
+// leaves drew ~19K impressions at ~0 clicks on citation-hunter queries
+// (author-year-venue strings, "bibtex", page-number lookups): the arriving
+// audience is ML researchers, not the investor ICP. Fix: investor-angle lede
+// ("Why investors care", grounded in ourContext) top-of-page + sector-aware
+// CTA routing into /sector/[slug] deal-flow hubs. If a lineage reverts the
+// template or drops the investorAngle content field, the lede block renders
+// empty or TS fails; this makes such a tree undeployable.
+{
+  const content = read("content/research-papers.ts");
+  if (content === null) {
+    failures.push("research-papers.ts missing entirely");
+  } else {
+    if (!content.includes("investorAngle: string;")) {
+      failures.push(
+        `research-paper investorAngle field dropped from the ResearchPaper interface.\n` +
+          `    fix:  restore investorAngle: string; in content/research-papers.ts (required on every paper)`,
+      );
+    }
+    const instances = content.split("investorAngle:").length - 1;
+    if (instances < 10) {
+      failures.push(
+        `research-paper investorAngle instances: ${instances} (need 10 = interface + 9 papers).\n` +
+          `    fix:  every RESEARCH_PAPERS entry must carry a grounded investorAngle lede`,
+      );
+    }
+  }
+  const leaf = read("app/research-paper/[slug]/page.tsx");
+  if (leaf === null) {
+    failures.push("research-paper leaf template missing");
+  } else {
+    if (!(leaf.includes("paper.investorAngle") && leaf.includes("Why investors care"))) {
+      failures.push(
+        `research-paper leaf lost the investor-angle lede box (search-intent fix reverted).\n` +
+          `    fix:  restore the "Why investors care" aside rendering paper.investorAngle above the venue line`,
+      );
+    }
+    if (
+      !(leaf.includes("See who is building on this") && leaf.includes("/sector/"))
+    ) {
+      failures.push(
+        `research-paper leaf lost the sector-aware CTA module.\n` +
+          `    fix:  restore the relatedSectors CTA section linking /sector/[slug] before SeoCta`,
+      );
+    }
+  }
+}
+
 // ---------------------------------------------------------------------------
 if (failures.length) {
   console.error(

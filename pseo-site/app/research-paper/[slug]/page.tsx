@@ -151,6 +151,26 @@ export default async function ResearchPaperPage({ params }: PageProps) {
           <span className="text-gray-400">{paper.title}</span>
         </nav>
 
+        {/* Investor-angle lede (search-intent fix 2026-08-16). GSC 90d: these
+            pages drew ~19K impressions at ~0 clicks on citation-hunter queries
+            (author-year-venue strings, "bibtex", "pages 1877-1901"), so the
+            arriving audience is ML researchers, not our ICP. Two changes:
+            (1) the ICP that does land gets an investor frame in the first
+            screenful instead of below the fold; (2) the researcher still gets
+            the paper facts. Investor voice is grounded in the paper's
+            ourContext, no invented claims. */}
+        <aside
+          className="mb-8 rounded-xl border border-signal-500/30 bg-signal-500/5 p-5 sm:p-6"
+          aria-label="Why investors care"
+        >
+          <p className="text-signal-400 text-xs uppercase tracking-wider font-semibold mb-2">
+            Why investors care
+          </p>
+          <p className="text-gray-200 text-sm leading-relaxed">
+            {paper.investorAngle}
+          </p>
+        </aside>
+
         <p className="text-sky-400 text-xs uppercase tracking-wider font-medium mb-3">
           {paper.venue} &middot; {paper.year}
         </p>
@@ -318,6 +338,39 @@ export default async function ResearchPaperPage({ params }: PageProps) {
             ))}
           </div>
         </section>
+
+        {/* Sector-aware CTA (search-intent fix 2026-08-16): the old generic
+            digest block wasted the warmest moment on the page (an investor who
+            just read why the paper matters). Route to the deal-flow surface
+            the paper actually informs, then keep the digest capture below. */}
+        {relatedSectors.length > 0 && (
+          <section
+            className="mb-8 rounded-xl border border-slate-800 bg-gradient-to-br from-slate-900 to-slate-950 p-6 sm:p-8"
+            aria-label="Apply this to deal flow"
+          >
+            <h2 className="text-gray-100 font-semibold text-lg mb-2 leading-snug">
+              See who is building on this, before the round prices it in
+            </h2>
+            <p className="text-gray-400 text-sm leading-relaxed mb-5 max-w-2xl">
+              We track engineering acceleration across the{" "}
+              {relatedSectors.map((s) => s.name).join(" and ")} sector
+              {relatedSectors.length > 1 ? "s" : ""} this paper informs: commit
+              velocity, contributor influx, and repo-creation pulse, surfacing
+              breakout teams 21 to 47 days before the fundraise is public.
+            </p>
+            <div className="flex flex-col sm:flex-row sm:flex-wrap gap-3">
+              {relatedSectors.map((s) => (
+                <Link
+                  key={s.slug}
+                  href={`/sector/${s.slug}`}
+                  className="inline-block rounded-md bg-signal-500 px-5 py-2 text-sm font-semibold text-slate-950 hover:bg-signal-400 transition-colors"
+                >
+                  {s.name} sector →
+                </Link>
+              ))}
+            </div>
+          </section>
+        )}
 
         <SeoCta className="mb-12" />
 
