@@ -189,17 +189,51 @@ export default function DatasetPage() {
   const jsonLd = {
     "@context": "https://schema.org",
     "@type": "Dataset",
+    "@id": "https://signals.gitdealflow.com/dataset#dataset",
     name: "VC Deal Flow Signal, Startup Engineering Acceleration Dataset",
     alternateName: "GitDealFlow Startup Engineering Velocity Panel",
     description:
       `Open longitudinal panel of GitHub engineering-velocity signals across ${sectors.length} venture-backed startup sectors and ${allPeriods.length} quarterly periods. Tracks 14-day commit velocity, contributor growth, repository expansion, and acceleration-signal classification. Designed for venture-capital deal sourcing, portfolio monitoring, and academic research on alternative data in venture capital.`,
     url: "https://signals.gitdealflow.com/dataset",
     identifier: [
-      "https://signals.gitdealflow.com/dataset",
-      "https://doi.org/10.5281/zenodo.19650920",
-      "https://doi.org/10.5281/zenodo.19650919",
+      {
+        "@type": "PropertyValue",
+        propertyID: "https://www.wikidata.org/wiki/Property:P356",
+        name: "DOI",
+        value: "10.5281/zenodo.19650920",
+        url: "https://doi.org/10.5281/zenodo.19650920",
+      },
+      {
+        "@type": "PropertyValue",
+        propertyID: "https://www.wikidata.org/wiki/Property:P356",
+        name: "Concept DOI",
+        value: "10.5281/zenodo.19650919",
+        url: "https://doi.org/10.5281/zenodo.19650919",
+      },
+      {
+        "@type": "PropertyValue",
+        propertyID: "https://www.wikidata.org/wiki/Property:P4901",
+        name: "Zenodo record ID",
+        value: "19650920",
+        url: "https://zenodo.org/records/19650920",
+      },
+      {
+        "@type": "PropertyValue",
+        propertyID: "https://www.wikidata.org/wiki/Property:P893",
+        name: "SSRN paper ID",
+        value: "6606558",
+        url: "https://ssrn.com/abstract=6606558",
+      },
+      {
+        "@type": "PropertyValue",
+        propertyID: "https://www.wikidata.org/wiki/Property:P856",
+        name: "Official website",
+        value: "https://signals.gitdealflow.com/dataset",
+        url: "https://signals.gitdealflow.com/dataset",
+      },
     ],
     sameAs: [
+      "https://www.wikidata.org/wiki/Q139493250",
       "https://huggingface.co/datasets/the-data-nerd/vc-deal-flow-signal",
       "https://www.kaggle.com/datasets/thedatanerd2026/vc-deal-flow-signal",
       "https://zenodo.org/records/19650920",
@@ -209,7 +243,17 @@ export default function DatasetPage() {
     datePublished: "2026-04-19",
     dateModified: lastModified,
     isAccessibleForFree: true,
-    license: "https://creativecommons.org/licenses/by/4.0/",
+    license: {
+      "@type": "CreativeWork",
+      name: "Creative Commons Attribution 4.0 International",
+      url: "https://creativecommons.org/licenses/by/4.0/",
+      identifier: {
+        "@type": "PropertyValue",
+        propertyID: "https://www.wikidata.org/wiki/Property:P275",
+        value: "CC BY 4.0",
+        url: "https://www.wikidata.org/wiki/Q20007257",
+      },
+    },
     keywords: [
       "venture capital",
       "startups",
@@ -260,6 +304,10 @@ export default function DatasetPage() {
       url: "https://ssrn.com/abstract=6606558",
       author: DATA_NERD_AUTHOR_REF,
       datePublished: "2026-04",
+      sameAs: [
+        "https://www.wikidata.org/wiki/Q139493250",
+        "https://doi.org/10.2139/SSRN.6606558",
+      ],
     },
   };
 
