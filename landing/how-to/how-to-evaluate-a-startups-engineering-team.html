@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>How to Evaluate a Startup's Engineering Team Before You Invest | GitDealFlow</title>
+<link rel="alternate" hreflang="en" href="https://gitdealflow.com/how-to/how-to-evaluate-a-startups-engineering-team">
+<link rel="alternate" hreflang="x-default" href="https://gitdealflow.com/how-to/how-to-evaluate-a-startups-engineering-team">
+<link rel="stylesheet" href="/ux.css?v=20260808-2">
+<meta name="theme-color" content="#ffffff">
+<meta name="color-scheme" content="light">
+<meta name="description" content="A four-step framework for evaluating a startup's engineering team using public GitHub data: footprint, velocity, repository expansion, and cross-checking.">
+<link rel="canonical" href="https://gitdealflow.com/how-to/how-to-evaluate-a-startups-engineering-team">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="GitDealFlow">
+<meta property="og:title" content="How to Evaluate a Startup's Engineering Team Before You Invest | GitDealFlow">
+<meta property="og:description" content="A four-step framework for evaluating a startup's engineering team using public GitHub data: footprint, velocity, repository expansion, and cross-checking.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://signals.gitdealflow.com/opengraph-image">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://gitdealflow.com/how-to/how-to-evaluate-a-startups-engineering-team">
+<meta property="og:site_name" content="GitDealFlow">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://signals.gitdealflow.com/opengraph-image">
+<meta name="twitter:title" content="How to Evaluate a Startup's Engineering Team Before You Invest | GitDealFlow">
+<meta name="twitter:description" content="A four-step framework for evaluating a startup's engineering team using public GitHub data: footprint, velocity, repository expansion, and cross-checking.">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How to Evaluate a Startup's Engineering Team Before You Invest","description":"A four-step framework for evaluating a startup's engineering team using public GitHub data: footprint, velocity, repository expansion, and cross-checking.","author":{"@type":"Organization","name":"GitDealFlow","url":"https://gitdealflow.com"},"publisher":{"@type":"Organization","name":"GitDealFlow","url":"https://gitdealflow.com"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://gitdealflow.com/how-to/how-to-evaluate-a-startups-engineering-team"},"datePublished":"2026-08-14","dateModified":"2026-08-14"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://gitdealflow.com"},{"@type":"ListItem","position":2,"name":"How-To","item":"https://gitdealflow.com/how-to"},{"@type":"ListItem","position":3,"name":"How to Evaluate a Startup's Engineering Team","item":"https://gitdealflow.com/how-to/how-to-evaluate-a-startups-engineering-team"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What if the startup's code is all in private repos?","acceptedAnswer":{"@type":"Answer","text":"Then the public signal is limited, and you should weight qualitative diligence more heavily. The public footprint is a data source, not the only one. A thin footprint is not proof of a weak team, but it removes one of your cheapest checks."}},{"@type":"Question","name":"How long a history do I need before I trust the signal?","acceptedAnswer":{"@type":"Answer","text":"Twelve weeks of weekly data is the practical minimum to see a trend. Anything shorter is a snapshot, and snapshots mislead. GitDealFlow tracks teams continuously so the history is already there when you need it."}},{"@type":"Question","name":"Is commit velocity a substitute for a technical interview?","acceptedAnswer":{"@type":"Answer","text":"No. It is evidence of execution pace, not of architecture judgment or code quality. Use it to decide who is worth a deeper look, then do the qualitative work on the shortlist."}},{"@type":"Question","name":"How do I evaluate a team that is not on GitHub at all?","acceptedAnswer":{"@type":"Answer","text":"Treat it as a thin public footprint. Ask for a code walkthrough, read the product and hiring signals, and lean on references who can speak to execution. You lose the public record, so you compensate with more direct evidence."}},{"@type":"Question","name":"Should I weight this differently at seed vs Series A?","acceptedAnswer":{"@type":"Answer","text":"Yes. At seed the question is 'can they ship at all', so velocity trend and contributor concentration dominate. At Series A the question is 'can they scale', so contributor growth and process quality matter more. The same public evidence answers both; you just weight it differently."}},{"@type":"Question","name":"What if I am not technical at all?","acceptedAnswer":{"@type":"Answer","text":"You do not need to read code, only trends: is velocity rising, is the team growing, is the process disciplined? A data layer like GitDealFlow hands you those trends as scores, so the analysis is judgment rather than arithmetic."}}]}</script>
+<script src="/ux.js" defer></script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"HowTo","name":"How to Evaluate a Startup's Engineering Team Before You Invest","description":"A four-step framework for evaluating a startup's engineering team using public GitHub data: footprint, velocity, repository expansion, and cross-checking.","url":"https://gitdealflow.com/how-to/how-to-evaluate-a-startups-engineering-team","step":[{"@type":"HowToStep","position":1,"name":"Map the public engineering footprint","text":"Start by finding what the team actually builds in public. Locate the company's GitHub organization, list its repositories, and classify each as active or dormant. The footprint itself is informative: a team with one active repo is different from one with a dozen, and a team whose core product is open source is different from one that keeps everything private. Four things to record at this stage: Which..."},{"@type":"HowToStep","position":2,"name":"Read velocity and contributor growth over time","text":"Pull commit velocity and contributor counts for the last 12 weeks, not the last week. Look for three things: Is velocity trending up, flat, or down? A rising 4-week average is execution evidence; a falling one is a warning. Is the work spread across a team, or concentrated in one founder? Concentration is fragility, regardless of how fast that founder ships. Is contributor count growing? Team expansion is..."},{"@type":"HowToStep","position":3,"name":"Check repository expansion and architecture signals","text":"New repositories are a window into where the team is heading. Teams create new repos when they start new product lines, spin out tooling, or open-source a component. A cluster of new repos often precedes a product launch. Also read the structural signals that reveal process quality: How issues and pull requests are handled, and whether code review actually happens before merges. Whether there is a test suite and..."},{"@type":"HowToStep","position":4,"name":"Triangulate with non-GitHub signals","text":"Engineering evidence is one input, not the whole picture. Cross-check it against four external signals: Hiring: are they actually adding the engineers their public activity implies, or is the org chart aspirational? Product: does the shipped product match the claimed roadmap, or is the deck ahead of the code? Funding and network: do the founders have the access and relationships to actually raise? Narrative: does..."}]}</script>
+</head>
+<body style="font-family:-apple-system,system-ui,sans-serif;max-width:760px;margin:60px auto;padding:0 20px;line-height:1.7;color:#1a1a1a;background:#fff">
+<header style="margin-bottom:40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem"><a href="https://gitdealflow.com" style="font-weight:800;font-size:1.1rem;color:#1a1a1a;text-decoration:none;min-height:44px;display:inline-flex;align-items:center">GitDealFlow</a><nav aria-label="Primary navigation" style="display:flex;gap:1.25rem"><a href="https://gitdealflow.com/pricing" style="color:#0066cc;text-decoration:none;min-height:44px;display:inline-flex;align-items:center">Pricing</a><a href="https://signals.gitdealflow.com" style="color:#0066cc;text-decoration:none;min-height:44px;display:inline-flex;align-items:center">Live signals</a></nav></header>
+<main>
+<h1 style="font-size:2em;font-weight:800;margin-bottom:.5em;line-height:1.2">How to Evaluate a Startup's Engineering Team</h1>
+<p style="font-size:1.1em;color:#555;margin-bottom:2em">You cannot sit in on a team's standups before you invest, but you can read the public record of how they build. This guide is a complete, four-step framework for evaluating a startup's engineering team using evidence anyone can inspect on GitHub, plus a worked example and a scoring rubric, so you walk away with a repeatable process rather than a checklist of vibes.</p>
+<h2>Step 1: Map the public engineering footprint</h2>
+<p>Start by finding what the team actually builds in public. Locate the company's GitHub organization, list its repositories, and classify each as active or dormant. The footprint itself is informative: a team with one active repo is different from one with a dozen, and a team whose core product is open source is different from one that keeps everything private.</p>
+<p>Four things to record at this stage:</p>
+<ul><li>Which repositories exist, and which are actually being worked on right now.</li>
+<li>Whether the core product is public, private, or a mix.</li>
+<li>How old the organization is and how the commit activity is distributed across repos.</li>
+<li>Whether the public footprint matches the product the founder described in the pitch.</li></ul>
+<p>If the core product is private, note it explicitly and lean on the remaining steps plus qualitative diligence. A thin public footprint is a data limitation, not a verdict.</p>
+<h2>Step 2: Read velocity and contributor growth over time</h2>
+<p>Pull commit velocity and contributor counts for the last 12 weeks, not the last week. Look for three things:</p>
+<ul><li>Is velocity trending up, flat, or down? A rising 4-week average is execution evidence; a falling one is a warning.</li>
+<li>Is the work spread across a team, or concentrated in one founder? Concentration is fragility, regardless of how fast that founder ships.</li>
+<li>Is contributor count growing? Team expansion is conviction made visible: a founder adding engineers is betting cash and equity on the roadmap.</li></ul>
+<p>GitDealFlow computes these signals weekly and normalizes them by sector, so you get a comparable momentum score instead of raw numbers you have to interpret yourself. If you are doing it by hand, the Insights tab on each repository is where the raw data lives.</p>
+<h2>Step 3: Check repository expansion and architecture signals</h2>
+<p>New repositories are a window into where the team is heading. Teams create new repos when they start new product lines, spin out tooling, or open-source a component. A cluster of new repos often precedes a product launch.</p>
+<p>Also read the structural signals that reveal process quality:</p>
+<ul><li>How issues and pull requests are handled, and whether code review actually happens before merges.</li>
+<li>Whether there is a test suite and whether it is run.</li>
+<li>Whether releases are tagged and versioned with discipline.</li>
+<li>Whether the commit history is coherent, or a series of vague 'fix' messages.</li></ul>
+<p>Sloppy process in public is usually sloppy process in private too. A team that merges unreviewed code with no tests is a team whose technical debt will compound as it scales.</p>
+<h2>Step 4: Triangulate with non-GitHub signals</h2>
+<p>Engineering evidence is one input, not the whole picture. Cross-check it against four external signals:</p>
+<ul><li>Hiring: are they actually adding the engineers their public activity implies, or is the org chart aspirational?</li>
+<li>Product: does the shipped product match the claimed roadmap, or is the deck ahead of the code?</li>
+<li>Funding and network: do the founders have the access and relationships to actually raise?</li>
+<li>Narrative: does the founder's story match the public record of their work?</li></ul>
+<p>When the GitHub evidence and the founder's claims disagree, believe the GitHub evidence. It is the one record the founder did not write for you.</p>
+<h2>A worked example: evaluating a seed-stage team</h2>
+<p>To make the framework concrete, here is how it runs on a clearly hypothetical seed-stage developer-tools startup. None of these numbers are real; the point is the method.</p>
+<ul><li>Footprint: the organization has six public repositories; four are active, two are dormant. The core product is open source, which is normal for developer tools and gives you a full public record to read.</li>
+<li>Velocity: the 4-week commit average rose from roughly 14 to roughly 26 over the quarter, a genuine breakout rather than a one-week spike.</li>
+<li>Contributor growth: contributors grew from 3 to 7 in the same window, with the work spread across the team rather than concentrated in one founder.</li>
+<li>Repository expansion: two new repositories appeared in the last six weeks, consistent with a new product push.</li>
+<li>Process: pull requests are reviewed, there is a test suite, and releases are tagged. Red flags are minimal.</li></ul>
+<p>Reading: this team ships, is scaling, and is building toward something new, with disciplined process. On the scoring rubric below, it would clear the bar comfortably. The framework's value is that every one of those observations came from public evidence you could re-derive in an afternoon.</p>
+<h2>How to document your evaluation</h2>
+<p>Write down the evaluation as you go, because an undocumented assessment is just a memory. For each of the four steps, record one or two sentences of evidence and your read on it, then assign the five scores from the rubric. The result is a one-page evaluation you can attach to the memo and defend later.</p>
+<p>Documentation matters for two reasons: it forces you to ground each judgment in evidence, and it gives you a baseline to compare against when you re-evaluate the team in six months. A team that scored 20 at seed and 14 at Series A is a different story than one that held steady.</p>
+<h2>Common mistakes when evaluating engineering teams</h2>
+<p>Investors most often go wrong in four ways. First, reading a single-week snapshot instead of a trend, which mistakes noise for signal. Second, comparing across sectors instead of within them, which produces meaningless verdicts. Third, overweighting commit counts while ignoring contributor concentration, which mistakes a busy founder for a real team. Fourth, assuming no public footprint means no engineering, which mistakes a data limitation for a red flag.</p>
+<p>The antidote to all four is the same: read trends over 8 to 12 weeks, normalize within sector, weight both pace and team composition, and treat a thin footprint as a prompt for more qualitative diligence rather than a conclusion.</p>
+<h2>A simple scoring framework</h2>
+<p>Rate the team on five dimensions, each from 1 to 5: footprint and product match, velocity trend, contributor growth and distribution, repository expansion and process, and non-GitHub triangulation. A total of 20 or more out of 25 is a strong signal; 13 to 19 is mixed and warrants a founder conversation; below 13 means the engineering evidence does not support the deal.</p>
+<p>The number is not the point; the discipline is. Forcing every claim through a public-evidence filter, with a score you can defend in the memo, is what separates a repeatable evaluation process from a gut feeling with extra steps.</p>
+<p style="margin-top:1.5em"><a href="https://gitdealflow.com/#signup" style="display:inline-block;background:#00d4aa;color:#04130e;padding:.8rem 1.5rem;border-radius:.5rem;font-weight:700;text-decoration:none">Start tracking for free &rarr;</a></p>
+<section class="faq" style="margin-top:40px">
+<h2 style="font-size:1.4em;font-weight:700;margin-bottom:20px;border-bottom:2px solid #e5e7eb;padding-bottom:.3rem">Frequently Asked Questions</h2>
+<details><summary>What if the startup's code is all in private repos?</summary><p>Then the public signal is limited, and you should weight qualitative diligence more heavily. The public footprint is a data source, not the only one. A thin footprint is not proof of a weak team, but it removes one of your cheapest checks.</p></details>
+<details><summary>How long a history do I need before I trust the signal?</summary><p>Twelve weeks of weekly data is the practical minimum to see a trend. Anything shorter is a snapshot, and snapshots mislead. GitDealFlow tracks teams continuously so the history is already there when you need it.</p></details>
+<details><summary>Is commit velocity a substitute for a technical interview?</summary><p>No. It is evidence of execution pace, not of architecture judgment or code quality. Use it to decide who is worth a deeper look, then do the qualitative work on the shortlist.</p></details>
+<details><summary>How do I evaluate a team that is not on GitHub at all?</summary><p>Treat it as a thin public footprint. Ask for a code walkthrough, read the product and hiring signals, and lean on references who can speak to execution. You lose the public record, so you compensate with more direct evidence.</p></details>
+<details><summary>Should I weight this differently at seed vs Series A?</summary><p>Yes. At seed the question is 'can they ship at all', so velocity trend and contributor concentration dominate. At Series A the question is 'can they scale', so contributor growth and process quality matter more. The same public evidence answers both; you just weight it differently.</p></details>
+<details><summary>What if I am not technical at all?</summary><p>You do not need to read code, only trends: is velocity rising, is the team growing, is the process disciplined? A data layer like GitDealFlow hands you those trends as scores, so the analysis is judgment rather than arithmetic.</p></details>
+</section>
+</main>
+<section style="margin-top:40px;padding-top:20px;border-top:1px solid #e0e0e0">
+<h3 style="font-size:1.1em;font-weight:700;margin-bottom:12px">Related pages</h3>
+<ul style="list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px"><li><a href="https://gitdealflow.com/learn/what-is-engineering-velocity" style="color:#0066cc">What Is Engineering Velocity?</a></li>
+<li><a href="https://gitdealflow.com/learn/what-is-contributor-growth" style="color:#0066cc">What Is Contributor Growth?</a></li>
+<li><a href="https://gitdealflow.com/checklists/github-due-diligence-checklist" style="color:#0066cc">GitHub Due Diligence Checklist</a></li>
+<li><a href="https://gitdealflow.com/how-to/how-to-do-technical-due-diligence-on-a-startup" style="color:#0066cc">How to Do Technical Due Diligence on a Startup</a></li></ul>
+</section>
+<section style="margin-top:30px;padding:20px;background:#f0f7ff;border-radius:8px;border-left:4px solid #0066cc">
+<p style="margin:0;font-weight:600">&#128269; See live startup momentum data at <a href="https://signals.gitdealflow.com" style="color:#0066cc">signals.gitdealflow.com</a> - free API, MCP server, and real-time GitHub acceleration tracking.</p>
+</section>
+<footer style="margin-top:60px;padding-top:20px;border-top:1px solid #e0e0e0;color:#888;font-size:.85em">
+<p><strong>GitDealFlow</strong> - See which startups are heating up before they raise.</p>
+<p><a href="https://gitdealflow.com" style="color:#555">Home</a> &middot; <a href="https://gitdealflow.com/pricing" style="color:#555">Pricing</a> &middot; <a href="https://signals.gitdealflow.com" style="color:#555">Live signals</a></p>
+</footer>
+<!-- BRUNSON TRUST BAR - idempotency:trust-bar-v1 -->
+<!-- /BRUNSON TRUST BAR -->
+</body>
+</html>

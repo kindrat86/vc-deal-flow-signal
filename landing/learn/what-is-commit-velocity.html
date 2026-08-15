@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>What Is Commit Velocity? Definition and Why It Predicts Fundraising | GitDealFlow</title>
+<link rel="alternate" hreflang="en" href="https://gitdealflow.com/learn/what-is-commit-velocity">
+<link rel="alternate" hreflang="x-default" href="https://gitdealflow.com/learn/what-is-commit-velocity">
+<link rel="stylesheet" href="/ux.css?v=20260808-2">
+<meta name="theme-color" content="#ffffff">
+<meta name="color-scheme" content="light">
+<meta name="description" content="Commit velocity measures how fast a startup's engineering team ships code. Learn what it is, how to read it, and why it predicts fundraises 3 to 6 weeks early.">
+<link rel="canonical" href="https://gitdealflow.com/learn/what-is-commit-velocity">
+<link rel="manifest" href="/site.webmanifest">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="GitDealFlow">
+<meta property="og:title" content="What Is Commit Velocity? Definition and Why It Predicts Fundraising | GitDealFlow">
+<meta property="og:description" content="Commit velocity measures how fast a startup's engineering team ships code. Learn what it is, how to read it, and why it predicts fundraises 3 to 6 weeks early.">
+<meta property="og:type" content="article">
+<meta property="og:image" content="https://signals.gitdealflow.com/opengraph-image">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:url" content="https://gitdealflow.com/learn/what-is-commit-velocity">
+<meta property="og:site_name" content="GitDealFlow">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://signals.gitdealflow.com/opengraph-image">
+<meta name="twitter:title" content="What Is Commit Velocity? Definition and Why It Predicts Fundraising | GitDealFlow">
+<meta name="twitter:description" content="Commit velocity measures how fast a startup's engineering team ships code. Learn what it is, how to read it, and why it predicts fundraises 3 to 6 weeks early.">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"What Is Commit Velocity? Definition and Why It Predicts Fundraising","description":"Commit velocity measures how fast a startup's engineering team ships code. Learn what it is, how to read it, and why it predicts fundraises 3 to 6 weeks early.","author":{"@type":"Organization","name":"GitDealFlow","url":"https://gitdealflow.com"},"publisher":{"@type":"Organization","name":"GitDealFlow","url":"https://gitdealflow.com"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://gitdealflow.com/learn/what-is-commit-velocity"},"datePublished":"2026-08-14","dateModified":"2026-08-14"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://gitdealflow.com"},{"@type":"ListItem","position":2,"name":"Learn","item":"https://gitdealflow.com/learn"},{"@type":"ListItem","position":3,"name":"What Is Commit Velocity?","item":"https://gitdealflow.com/learn/what-is-commit-velocity"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"What is a good commit velocity for a startup?","acceptedAnswer":{"@type":"Answer","text":"There is no universal number. Velocity is meaningful only as a trend and relative to sector. GitDealFlow normalizes by sector, so a fintech team and a developer-tools team are comparable on the same relative scale. Focus on rising 4-week averages over 8 to 12 weeks, not absolute counts."}},{"@type":"Question","name":"How is commit velocity calculated?","acceptedAnswer":{"@type":"Answer","text":"Count commits per repository per week, then smooth with a rolling 4-week average. The signal is the slope of that smoothed line over 8 to 12 weeks. A sustained rise is a breakout; a single-week spike is noise."}},{"@type":"Question","name":"Can commit velocity be faked?","acceptedAnswer":{"@type":"Answer","text":"Single-week spikes can be inflated with trivial commits, but sustained velocity across months is hard to fake. GitDealFlow tracks 350+ startups over time, so anomalies and one-off spikes stand out against each team's own history."}},{"@type":"Question","name":"Does commit velocity equal product velocity?","acceptedAnswer":{"@type":"Answer","text":"Not always. Some teams commit often but ship little, and some ship a lot with fewer commits. That is why GitDealFlow combines velocity with contributor growth and repository expansion to filter noise. Look for rising velocity with rising contributors, not velocity alone."}},{"@type":"Question","name":"Where do I see commit velocity on GitHub?","acceptedAnswer":{"@type":"Answer","text":"On any repository, open the Insights tab and use the Contributors and Pulse views. Contributors shows commits per author over time; Pulse shows the last week and month of activity. For a whole organization, repeat this across its active repositories, or use a signal layer that aggregates it for you."}}]}</script>
+<script src="/ux.js" defer></script>
+</head>
+<body style="font-family:-apple-system,system-ui,sans-serif;max-width:760px;margin:60px auto;padding:0 20px;line-height:1.7;color:#1a1a1a;background:#fff">
+<header style="margin-bottom:40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem"><a href="https://gitdealflow.com" style="font-weight:800;font-size:1.1rem;color:#1a1a1a;text-decoration:none;min-height:44px;display:inline-flex;align-items:center">GitDealFlow</a><nav aria-label="Primary navigation" style="display:flex;gap:1.25rem"><a href="https://gitdealflow.com/pricing" style="color:#0066cc;text-decoration:none;min-height:44px;display:inline-flex;align-items:center">Pricing</a><a href="https://signals.gitdealflow.com" style="color:#0066cc;text-decoration:none;min-height:44px;display:inline-flex;align-items:center">Live signals</a></nav></header>
+<main>
+<h1 style="font-size:2em;font-weight:800;margin-bottom:.5em;line-height:1.2">What Is Commit Velocity?</h1>
+<p style="font-size:1.1em;color:#555;margin-bottom:2em">Commit velocity is the rate at which a startup's engineers commit code to public repositories, usually measured in commits per week. It is one of the few leading indicators of startup traction you can read for free, and it has historically risen 3 to 6 weeks before a fundraise is announced. This guide is the definitive reference: what commit velocity is, how to calculate and read it yourself on GitHub, what it can and cannot prove, and how to fold it into a real sourcing and diligence process.</p>
+<h2>What commit velocity actually measures</h2>
+<p>Commit velocity counts how frequently a team pushes code to its public repositories. A team shipping daily commits far more often than one that pushes once a month, and that difference shows up immediately in the commit graph. The raw number is noisy, so the useful form is the trend over time: is velocity rising, flat, or falling across 4 to 12 weeks?</p>
+<p>Velocity is a proxy for execution, not for code quality. A team that ships constantly is answering the question investors care about most at the earliest stages: can this team actually build and iterate? When revenue and product-market fit are unproven, shipping speed is one of the best available signals of execution capacity.</p>
+<p>Three nuances matter from the start. First, velocity is a rate, not a total: commits per unit of time, not lifetime commits. Second, it is a team property, not a single author's: a healthy velocity is spread across contributors, not concentrated in one founder. Third, it is only meaningful as a trend: a single week is a snapshot, and snapshots mislead.</p>
+<h2>How to calculate commit velocity</h2>
+<p>The mechanics are simple enough to do by hand. Pick a repository, count the commits in each of the last 12 weeks, and plot them. Then smooth the noise with a rolling 4-week average. The signal you read is the slope of that smoothed line, not any individual point.</p>
+<p>A worked example, using a clearly hypothetical repository:</p>
+<ul><li>Week 1 to 4: 8, 9, 10, 9 commits, a 4-week average of 9.</li>
+<li>Week 5 to 8: 12, 14, 15, 16 commits, a 4-week average of roughly 14.</li>
+<li>Week 9 to 12: 20, 22, 24, 25 commits, a 4-week average of roughly 23.</li></ul>
+<p>That trajectory, from a 9 average to a 23 average over a quarter, is a breakout. A single 25-commit week with no surrounding trend is not. The slope over 8 to 12 weeks is the signal; the rest is noise.</p>
+<p>You do not need to do this arithmetic yourself. GitDealFlow computes velocity weekly across 350+ startups and normalizes it by sector, so the breakout shows up as a comparable momentum score rather than a raw count you have to interpret by hand.</p>
+<h2>Why commit velocity predicts fundraising</h2>
+<p>The pattern is causal, not just correlational. When a startup prepares to raise, it accelerates. Founders push to ship the roadmap items they will demo, engineers race to close the gaps diligence will expose, and the team front-loads work before the distraction of a fundraise process absorbs everyone's attention.</p>
+<p>That acceleration shows up in public GitHub activity before it shows up anywhere else. A round announcement, a press hit, or a Crunchbase entry is a lagging indicator; the commit spike that preceded it is the leading indicator. GitDealFlow's published methodology (SSRN abstract 6606558, CC BY 4.0) documents this lead time across a research panel of 219 fundraises, with signals typically appearing 21 to 47 days before the round hits the press.</p>
+<p>The mechanism is intuitive once you see it: fundraising compresses the roadmap, and a compressed roadmap looks like a velocity spike in the commit graph. It is not that founders fabricate activity; it is that the weeks before a raise are genuinely the busiest weeks a team has.</p>
+<h2>How to read commit velocity on GitHub yourself</h2>
+<p>You can verify any velocity claim in a few minutes without any special tooling. On any public repository, open the Insights tab and look at two views:</p>
+<ul><li>Contributors: shows commits per author over time, which reveals both the pace and the concentration of the work.</li>
+<li>Pulse: shows the recent activity summary, including how many commits, pull requests, and issues changed in the last week and month.</li></ul>
+<p>The Contributors view is the more useful of the two for velocity. Look at the trailing 4-week bars for each author: is the total rising across the team, and is the work spread across multiple people? A rising total spread across a growing team is the healthy pattern.</p>
+<p>For a whole organization rather than a single repo, the process is the same but slower: visit each active repository and read its Contributors graph. This is exactly the aggregation GitDealFlow automates, because doing it by hand across a portfolio of dozens of companies is not sustainable.</p>
+<h2>What commit velocity does NOT tell you</h2>
+<p>Commit velocity has real limits, and a good investor holds all of them in mind:</p>
+<ul><li>It can be gamed: teams can inflate commits with trivial changes. Sustained velocity over months is hard to fake, but single-week spikes are not evidence of anything.</li>
+<li>It is blind to private work: a team that moved development to private repositories or internal tools disappears from the public signal.</li>
+<li>It says nothing about quality: shipping fast and shipping well are different. Velocity is an execution signal, not a code-quality audit.</li>
+<li>It is sector-dependent: a developer-tools team commits differently from a fintech or biotech team, so raw counts are not comparable across sectors.</li></ul>
+<p>This is why commit velocity should never be used alone. The strongest readings combine velocity with contributor growth and repository expansion, the other two signals GitDealFlow tracks, and then cross-check against qualitative diligence.</p>
+<h2>Commit velocity vs other GitHub signals</h2>
+<p>GitHub exposes several public signals, and they mean different things. Stars and forks measure popularity, not shipping. A repository can accumulate stars while development stalls, and a heavily-forked repo can be abandoned. Stars tell you what other developers found interesting; they say little about whether the team is still building.</p>
+<p>Contributor growth measures team expansion, repository creation measures direction, and commit velocity measures pace. Of the three, velocity is the most direct execution signal, but it is most valuable when all three move together: a team that is shipping faster, with a growing team, into new product areas.</p>
+<h2>Common misconceptions about commit velocity</h2>
+<p>Three misconceptions come up constantly. The first is that more commits always means a better team; it does not, because commit quality and product relevance matter more than raw count. The second is that a low public commit count means a slow team; it may just mean private repositories or a different workflow. The third is that velocity is a ranking score; it is a trend you read in context, not a number you compare in isolation.</p>
+<p>Each misconception traces to the same error: treating velocity as an absolute metric rather than a relative, contextual signal. Velocity is meaningful as a slope over time, normalized within sector, and read alongside contributor growth and repository expansion. Strip away that context and the number misleads.</p>
+<h2>Using commit velocity in your process</h2>
+<p>Investors use commit velocity in three places. In sourcing, it finds teams whose velocity just broke out before the market notices. In screening, it quickly ranks a long list of candidates by execution evidence. In diligence, it confirms that a founder's claims about momentum match the public record.</p>
+<p>The weekly GitDealFlow digest surfaces the five startups with the strongest velocity breakouts each Sunday, so the signal arrives pre-packaged rather than requiring you to run the numbers yourself. Start with the free digest, then graduate to a watchlist with alerts as your process matures.</p>
+<p style="margin-top:1.5em"><a href="https://gitdealflow.com/#signup" style="display:inline-block;background:#00d4aa;color:#04130e;padding:.8rem 1.5rem;border-radius:.5rem;font-weight:700;text-decoration:none">Start tracking for free &rarr;</a></p>
+<section class="faq" style="margin-top:40px">
+<h2 style="font-size:1.4em;font-weight:700;margin-bottom:20px;border-bottom:2px solid #e5e7eb;padding-bottom:.3rem">Frequently Asked Questions</h2>
+<details><summary>What is a good commit velocity for a startup?</summary><p>There is no universal number. Velocity is meaningful only as a trend and relative to sector. GitDealFlow normalizes by sector, so a fintech team and a developer-tools team are comparable on the same relative scale. Focus on rising 4-week averages over 8 to 12 weeks, not absolute counts.</p></details>
+<details><summary>How is commit velocity calculated?</summary><p>Count commits per repository per week, then smooth with a rolling 4-week average. The signal is the slope of that smoothed line over 8 to 12 weeks. A sustained rise is a breakout; a single-week spike is noise.</p></details>
+<details><summary>Can commit velocity be faked?</summary><p>Single-week spikes can be inflated with trivial commits, but sustained velocity across months is hard to fake. GitDealFlow tracks 350+ startups over time, so anomalies and one-off spikes stand out against each team's own history.</p></details>
+<details><summary>Does commit velocity equal product velocity?</summary><p>Not always. Some teams commit often but ship little, and some ship a lot with fewer commits. That is why GitDealFlow combines velocity with contributor growth and repository expansion to filter noise. Look for rising velocity with rising contributors, not velocity alone.</p></details>
+<details><summary>Where do I see commit velocity on GitHub?</summary><p>On any repository, open the Insights tab and use the Contributors and Pulse views. Contributors shows commits per author over time; Pulse shows the last week and month of activity. For a whole organization, repeat this across its active repositories, or use a signal layer that aggregates it for you.</p></details>
+</section>
+</main>
+<section style="margin-top:40px;padding-top:20px;border-top:1px solid #e0e0e0">
+<h3 style="font-size:1.1em;font-weight:700;margin-bottom:12px">Related pages</h3>
+<ul style="list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px"><li><a href="https://gitdealflow.com/learn/what-is-engineering-velocity" style="color:#0066cc">What Is Engineering Velocity?</a></li>
+<li><a href="https://gitdealflow.com/learn/what-is-contributor-growth" style="color:#0066cc">What Is Contributor Growth?</a></li>
+<li><a href="https://gitdealflow.com/learn/engineering-benchmarks-by-stage" style="color:#0066cc">Engineering Benchmarks by Stage</a></li>
+<li><a href="https://gitdealflow.com/checklists/github-due-diligence-checklist" style="color:#0066cc">GitHub Due Diligence Checklist</a></li></ul>
+</section>
+<section style="margin-top:30px;padding:20px;background:#f0f7ff;border-radius:8px;border-left:4px solid #0066cc">
+<p style="margin:0;font-weight:600">&#128269; See live startup momentum data at <a href="https://signals.gitdealflow.com" style="color:#0066cc">signals.gitdealflow.com</a> - free API, MCP server, and real-time GitHub acceleration tracking.</p>
+</section>
+<footer style="margin-top:60px;padding-top:20px;border-top:1px solid #e0e0e0;color:#888;font-size:.85em">
+<p><strong>GitDealFlow</strong> - See which startups are heating up before they raise.</p>
+<p><a href="https://gitdealflow.com" style="color:#555">Home</a> &middot; <a href="https://gitdealflow.com/pricing" style="color:#555">Pricing</a> &middot; <a href="https://signals.gitdealflow.com" style="color:#555">Live signals</a></p>
+</footer>
+<!-- BRUNSON TRUST BAR - idempotency:trust-bar-v1 -->
+<!-- /BRUNSON TRUST BAR -->
+</body>
+</html>
