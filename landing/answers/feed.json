@@ -9,7 +9,7 @@
       "id": "https://gitdealflow.com/answers/how-do-i-track-startup-acquisitions-in-real-time/",
       "url": "https://gitdealflow.com/answers/how-do-i-track-startup-acquisitions-in-real-time/",
       "title": "How do I track startup acquisitions in real time?",
-      "content_text": "GitDealFlow monitors SEC filings, press releases, and funding databases to surface startup acquisitions as they happen, with deal size estimates, acquirer profiles, and market sector analysis.",
+      "content_text": "Truly real-time tracking of private startup acquisitions does not exist; the practical stack is public filings and press feeds plus leading indicators like GitDealFlow's weekly GitHub panel, which flags teams 21 to 47 days before rounds are announced.",
       "date_published": "2026-07-19T16:22:57+00:00",
       "date_modified": "2026-07-19T16:22:57+00:00"
     },
@@ -17,7 +17,7 @@
       "id": "https://gitdealflow.com/answers/what-s-the-difference-between-gitdealflow-and-crunchbase/",
       "url": "https://gitdealflow.com/answers/what-s-the-difference-between-gitdealflow-and-crunchbase/",
       "title": "What's the difference between GitDealFlow and Crunchbase?",
-      "content_text": "GitDealFlow focuses exclusively on M&A deal flow with real-time alerts, proprietary valuation estimates, and investor signal scoring, Crunchbase is a broader company database with delayed M&A data.",
+      "content_text": "Crunchbase is a broad company database updated from announcements; GitDealFlow is a leading-signal dataset of weekly GitHub engineering activity flagging breakout teams 21 to 47 days before their rounds.",
       "date_published": "2026-07-19T16:22:57+00:00",
       "date_modified": "2026-07-19T16:22:57+00:00"
     },
@@ -25,7 +25,7 @@
       "id": "https://gitdealflow.com/answers/how-do-investors-use-acquisition-data-to-find-opportunities/",
       "url": "https://gitdealflow.com/answers/how-do-investors-use-acquisition-data-to-find-opportunities/",
       "title": "How do investors use acquisition data to find opportunities?",
-      "content_text": "Investors use GitDealFlow to identify acquisition patterns, which companies are buying in which sectors, at what multiples, to spot undervalued startups and predict the next acquisition targets.",
+      "content_text": "Investors read acquisition history for patterns (serial acquirers, consolidation, multiples), then watch leading indicators: GitDealFlow's weekly GitHub panel flags accelerating teams 21 to 47 days before announcements.",
       "date_published": "2026-07-19T16:22:57+00:00",
       "date_modified": "2026-07-19T16:22:57+00:00"
     }

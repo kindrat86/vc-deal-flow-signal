@@ -105,10 +105,11 @@
   </url>
   <url>
     <loc>https://gitdealflow.com/answers/what-is-a-scout-program</loc>
-  </url>
+  
+   <lastmod>2026-08-15</lastmod></url>
   <url>
     <loc>https://gitdealflow.com/answers/what-makes-a-good-vc-investor</loc>
-    <lastmod>2026-08-14</lastmod>
+    <lastmod>2026-08-15</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/answers/what-s-the-difference-between-gitdealflow-and-crunchbase</loc>
@@ -473,11 +474,11 @@
   </url>
   <url>
     <loc>https://gitdealflow.com/data/startup-valuation-trends</loc>
-    <lastmod>2026-08-14</lastmod>
+    <lastmod>2026-08-15</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/vc-funding-trends</loc>
-    <lastmod>2026-08-14</lastmod>
+    <lastmod>2026-08-15</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/dataset</loc>
