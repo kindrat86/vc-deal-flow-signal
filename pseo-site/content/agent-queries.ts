@@ -780,7 +780,7 @@ npx -y @gitdealflow/mcp-signal
     description:
       "How to find startups before they raise: track commit velocity, contributor growth, and infra buildout. Signals lead announcements by 21-47 days. Free API.",
     tldr:
-      "GitDealFlow computes these public GitHub signals across the tracked venture-backed orgs every week and exposes them as a free API, MCP server, and Sunday feed, so any investor can run the pre-fundraise lens without building the pipeline first.",
+      "The most reliable way to find startups before they raise is to track engineering acceleration on public GitHub: commit-velocity change, contributor growth, and infrastructure buildout. Across the 219-startup panel these signals preceded fundraise announcements by 21 to 47 days, and GitDealFlow exposes them as a free API and MCP server.",
     definition:
       "To find startups before they raise, track engineering acceleration on public GitHub: commit-velocity change, contributor growth, and infrastructure buildout. Across a 219-startup panel, these signals surfaced 21 to 47 days before the fundraise announcement, and free weekly feeds make the method reproducible without a paid database.",
     steps: [
