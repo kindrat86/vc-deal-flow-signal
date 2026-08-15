@@ -3733,7 +3733,7 @@ The 2026 thesis (cf. Greg Isenberg's "Agents Are the New SaaS") is that the agen
       {
         claim:
           "Harmonic AI is used by 200+ VC funds for stealth-founder detection from LinkedIn, GitHub, patents, and domain registrations.",
-        sourceUrl: "https://signals.gitdealflow.com/alternatives/harmonic",
+        sourceUrl: "https://signals.gitdealflow.com/alternatives/harmonic-ai",
         sourceLabel: "Harmonic comparison",
       },
     ],

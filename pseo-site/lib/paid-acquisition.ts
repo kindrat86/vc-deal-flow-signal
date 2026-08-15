@@ -168,7 +168,7 @@ export const CAMPAIGNS: Campaign[] = [
   {
     slug: "harmonic",
     channel: "google",
-    destination: "/alternatives/harmonic",
+    destination: "/alternatives/harmonic-ai",
     utm: {
       source: "google",
       medium: "cpc",
@@ -176,7 +176,7 @@ export const CAMPAIGNS: Campaign[] = [
       content: "harmonic-alternative",
     },
     hypothesis:
-      "Highest commercial intent keyword in our space. Bid only on bottom-funnel terms; landing already exists at /alternatives/harmonic.",
+      "Highest commercial intent keyword in our space. Bid only on bottom-funnel terms; landing already exists at /alternatives/harmonic-ai.",
     status: "draft",
   },
   {

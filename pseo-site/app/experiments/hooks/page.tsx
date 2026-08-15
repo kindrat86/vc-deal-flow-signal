@@ -151,8 +151,8 @@ const HOOKS: HookTest[] = [
     id: "harmonic-affordable",
     hook:
       '"The Harmonic dataset, at the price of a Spotify subscription."',
-    channel: "Pricing page subhead + /alternatives/harmonic",
-    surface: "/pricing + /alternatives/harmonic",
+    channel: "Pricing page subhead + /alternatives/harmonic-ai",
+    surface: "/pricing + /alternatives/harmonic-ai",
     date: "2026-05",
     impressions: "~1,800",
     clicks: "~155",
