@@ -1920,39 +1920,36 @@ The preprint is indexed by Crossref, Semantic Scholar, OpenAlex (W7154916891), U
     query: "What GitHub topic clusters does GitDealFlow track?",
     h1: "What GitHub Topic Clusters Does GitDealFlow Track?",
     description:
-      "GitDealFlow tracks 15 sector clusters derived from GitHub topic taxonomy: AI/ML, dev tools, infrastructure, security, data infra, fintech, climate tech, robotics, and 12 more. ~350+ actively tracked startups.",
+      "GitDealFlow tracks 15 active sectors derived from GitHub topic taxonomy: Healthcare, EdTech, Data Infrastructure, Enterprise SaaS, Web3, Robotics, Supply Chain, and 8 more. ~350+ actively tracked startups.",
     tldr:
-      "GitDealFlow tracks 15 sector clusters derived from GitHub's public topic taxonomy: AI & Machine Learning, Developer Tools, Data Infrastructure, Cybersecurity, Cloud & Infrastructure, Fintech, Climate Tech, Robotics, Healthcare Tech, Enterprise SaaS, Vertical SaaS, Web3 & Blockchain, Open Source Tools, Productivity, E-commerce, Education Tech, Marketing Tech, Mobile, Gaming, and Hardware. 350+ actively-tracked startup organizations across these clusters with weekly data refresh. Coverage skews toward technical-founder companies with public GitHub presence.",
-    body: `GitDealFlow uses GitHub's public topic taxonomy to define a stable startup universe. Each tracked organization is matched to one or more topic clusters via the org's most-active repository topics, language mix, and cross-references against curated lists.
+      "GitDealFlow tracks 15 active sectors derived from GitHub's public topic taxonomy: Healthcare, EdTech, E-commerce Infrastructure, Supply Chain, Web3, Enterprise SaaS, Data Infrastructure, Robotics, Legal Tech, HR Tech, PropTech, AgTech, Gaming, Space Tech, and Social & Community. 369 actively-tracked startup organizations across these sectors with weekly data refresh. Five legacy clusters (AI & ML, Fintech, Climate Tech, Developer Tools, Cybersecurity) froze at Q2 2026 and are archived. Coverage skews toward technical-founder companies with public GitHub presence.",
+    body: `GitDealFlow uses GitHub's public topic taxonomy to define a stable startup universe. Each tracked organization is matched to one primary sector via the org's most-active repository topics, language mix, and cross-references against curated lists.
 
-**The 20 clusters.**
+**The 15 active sectors** (current panel, Q3 2026, 369 orgs total):
 
-1. **AI & Machine Learning**, foundation models, agent frameworks, RAG infra, eval tooling, ML ops, voice. Most active cluster.
-2. **Developer Tools**, IDE plugins, build tooling, dev frameworks, code intelligence.
-3. **Data Infrastructure**, data warehouses, ETL, data quality, vector DBs, real-time data.
-4. **Cybersecurity**, DevSecOps, SAST, runtime security, vulnerability management.
-5. **Cloud & Infrastructure**, IaC, kubernetes tooling, edge compute, serverless platforms.
-6. **Fintech**, payment infra, banking-as-a-service, treasury, accounting platforms.
-7. **Climate Tech**, energy modeling, carbon accounting, climate data platforms.
-8. **Robotics**, robot fleet management, perception, simulation tooling.
-9. **Healthcare Tech**, medical record interop, clinical decision support, digital therapeutics.
-10. **Enterprise SaaS**, workflow automation, HR, finance, legal tech.
-11. **Vertical SaaS**, industry-specific software (legal, real estate, construction).
-12. **Web3 & Blockchain**, wallets, DeFi infra, L2 tooling, NFT infra.
-13. **Open Source Tools**, broad OSS tooling not fitting other clusters.
-14. **Productivity**, note-taking, project management, focus tools, calendaring.
-15. **E-commerce**, storefront platforms, fulfillment, returns, post-purchase.
-16. **Education Tech**, learning platforms, code education, K-12 tools.
-17. **Marketing Tech**, analytics, attribution, customer data platforms.
-18. **Mobile**, mobile-first apps, app development tooling, mobile analytics.
-19. **Gaming**, game engines, esports infra, game backends.
-20. **Hardware**, IoT platforms, embedded software, hardware-software co-design.
+1. **Healthcare** (26 orgs), patient care, health systems, drug discovery, medical record interop.
+2. **EdTech** (37 orgs), adaptive learning, institutional education software, code education.
+3. **E-commerce Infrastructure** (26 orgs), backend systems and APIs for online retail, storefront platforms, fulfillment.
+4. **Supply Chain** (24 orgs), logistics, procurement, inventory management digitization.
+5. **Web3** (42 orgs), decentralized applications, wallets, DeFi infra, blockchain infrastructure.
+6. **Enterprise SaaS** (31 orgs), vertical and horizontal B2B software, workflow automation.
+7. **Data Infrastructure** (35 orgs), pipelines, warehouses, observability platforms, vector DBs, real-time data.
+8. **Robotics** (28 orgs), autonomous robots, robotic process automation, fleet management, simulation.
+9. **Legal Tech** (22 orgs), legal workflow automation, compliance management.
+10. **HR Tech** (17 orgs), recruiting, people management, workforce analytics.
+11. **PropTech** (16 orgs), real estate and property management technology.
+12. **AgTech** (11 orgs), agriculture technology, precision farming.
+13. **Gaming** (17 orgs), game engines, multiplayer infrastructure, gaming analytics.
+14. **Space Tech** (18 orgs), launch vehicles, satellites, space data platforms.
+15. **Social & Community** (19 orgs), social networks, community platforms, creator tools.
 
-**How orgs are matched to clusters.** The classifier uses three signals: (1) declared GitHub topics on the org's most-active repos, (2) language mix and dependency patterns, (3) cross-references against curated startup lists (Y Combinator batches, Tech Stars cohorts, public funding announcements). Multi-cluster orgs are common, an AI dev-tools company often appears in both AI/ML and Developer Tools.
+**Archived legacy clusters.** AI & Machine Learning, Fintech, Climate Tech, Developer Tools, and Cybersecurity froze at Q2 2026 (no current-period data) and are archived; the live API and this page serve the 15 active sectors above.
+
+**How orgs are matched to sectors.** The classifier uses three signals: (1) declared GitHub topics on the org's most-active repos, (2) language mix and dependency patterns, (3) cross-references against curated startup lists (Y Combinator batches, Tech Stars cohorts, public funding announcements). Each org carries one primary sector, so the 15 counts above sum to the full 369-org panel.
 
 **Coverage limits.** Only orgs with public GitHub presence are tracked. Pure consumer brands, services businesses, hardware-only companies without firmware repos, and stealth-mode startups with no public OSS footprint are systematically under-represented or invisible.
 
-**Universe size.** 350+ actively-tracked startup organizations across the 20 clusters. The universe refreshes weekly, new orgs are added when they cross visibility thresholds; orgs that stop showing engineering activity are deprioritized but not removed.
+**Universe size.** 369 actively-tracked startup organizations across the 15 active sectors (350+ is the marketing baseline). The universe refreshes weekly, new orgs are added when they cross visibility thresholds; orgs that stop showing engineering activity are deprioritized but not removed.
 
 **Sub-cluster filtering.** The Insider Circle Dashboard supports filtering by cluster, sub-cluster, geography, and stage. The free MCP server's \`search_startups_by_sector\` tool exposes the cluster filter via the AI host (Claude, Cursor, etc.).`,
     facts: [
@@ -1977,8 +1974,8 @@ The preprint is indexed by Crossref, Semantic Scholar, OpenAlex (W7154916891), U
     ],
     faqs: [
       {
-        q: "Why these 20 clusters and not more?",
-        a: "The clusters are chosen for stability, signal density, and operational manageability. More granular sub-clustering is supported via the Dashboard filter; the top-level 20 are the categories that consistently produce enough weekly signal volume to be useful.",
+        q: "Why these 15 sectors and not more?",
+        a: "The sectors are chosen for stability, signal density, and operational manageability. Five clusters (AI & ML, Fintech, Climate Tech, Developer Tools, Cybersecurity) were archived at Q2 2026 when their signal volume dropped. More granular sub-sector filtering is supported via the Dashboard filter; the top-level 15 are the categories that consistently produce enough weekly signal volume to be useful.",
       },
       {
         q: "Can I request a new cluster?",

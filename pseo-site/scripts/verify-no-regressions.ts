@@ -421,6 +421,45 @@ check(
     s.includes("15 sectors"),
   "set the sector count back to 15 in public/agents.md (and public/AGENTS.md + MCP tool schemas)",
 );
+
+// ---------------------------------------------------------------------------
+// 10b. Sector-NAME reconciliation (2026-08-15). The stale "20 clusters"
+//      taxonomy (AI & ML, Cloud & Infrastructure, Vertical SaaS, Open Source
+//      Tools, Productivity, Mobile, Hardware, ...) contradicted the live
+//      15-sector panel served by /api/signals.json. Any surface that answers
+//      "what sectors do you track" must list the 15 ACTIVE sector names
+//      (Healthcare, EdTech, E-commerce Infrastructure, Supply Chain, Web3,
+//      Enterprise SaaS, Data Infrastructure, Robotics, Legal Tech, HR Tech,
+//      PropTech, AgTech, Gaming, Space Tech, Social & Community) and may
+//      mention the 5 frozen legacy clusters (ai-ml, fintech, climate-tech,
+//      developer-tools, cybersecurity) ONLY as archived-at-Q2-2026.
+// ---------------------------------------------------------------------------
+check(
+  "content/standalone-faqs.ts",
+  "stale 20-cluster taxonomy in the sector-coverage FAQ: the live API serves 15 active sectors (369 orgs), not the archived 20-cluster list.",
+  (s) =>
+    !s.includes("Vertical SaaS, Web3 & Blockchain, Open Source Tools") &&
+    !s.includes("20 clusters") &&
+    s.includes("Healthcare, EdTech, E-commerce Infrastructure, Supply Chain, Web3, Enterprise SaaS, Data Infrastructure, Robotics, Legal Tech, HR Tech, PropTech, AgTech, Gaming, Space Tech, and Social & Community"),
+  "reconcile the sector-coverage FAQ to the 15 live API sector names (see verify §10b)",
+);
+check(
+  "content/agent-queries.ts",
+  "answer page what-github-topic-clusters-does-gitdealflow-track still carries the stale 20-cluster list (description/tldr/body numbered list).",
+  (s) =>
+    !s.includes("The 20 clusters.") &&
+    !s.includes("and 12 more") &&
+    !s.includes("across the 20 clusters") &&
+    s.includes("The 15 active sectors") &&
+    s.includes("Space Tech** (18 orgs)"),
+  "rewrite the answer to the 15 live API sector names with per-sector org counts (see verify §10b)",
+);
+check(
+  "content/alternatives.ts",
+  "comparison tables still advertise '20 clusters' sector coverage.",
+  (s) => !s.includes("20 clusters") && s.includes("15 active sectors"),
+  "set comparison-table sector-coverage cells to '15 active sectors' (see verify §10b)",
+);
 check(
   "content/post-freshness.ts",
   "post-freshness module missing, the quarterly blog-freshen cron has nothing to write.",

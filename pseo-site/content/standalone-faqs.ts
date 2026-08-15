@@ -219,7 +219,7 @@ export const standaloneFaqs: StandaloneFAQ[] = [
   {
     question: "What 15 sector clusters does VC Deal Flow Signal track?",
     answer:
-      "AI & Machine Learning, Developer Tools, Data Infrastructure, Cybersecurity, Cloud & Infrastructure, Fintech, Climate Tech, Robotics, Healthcare Tech, Enterprise SaaS, Vertical SaaS, Web3 & Blockchain, Open Source Tools, Productivity, E-commerce, Education Tech, Marketing Tech, Mobile, Gaming, and Hardware. Coverage is 350+ actively-tracked startup organizations refreshed weekly. Each org is matched to clusters via GitHub topics, language mix, and curated startup-list cross-references; multi-cluster orgs are common. Only orgs with public GitHub presence are tracked, pure consumer brands, services businesses, and stealth-mode startups are systematically under-represented.",
+      "Healthcare, EdTech, E-commerce Infrastructure, Supply Chain, Web3, Enterprise SaaS, Data Infrastructure, Robotics, Legal Tech, HR Tech, PropTech, AgTech, Gaming, Space Tech, and Social & Community. Coverage is 350+ actively-tracked startup organizations (369 in the current panel) refreshed weekly. Each org is matched to exactly one primary sector via GitHub topics, language mix, and curated startup-list cross-references. Five legacy clusters (AI & ML, Fintech, Climate Tech, Developer Tools, Cybersecurity) froze at Q2 2026 and are archived, the live API serves the 15 active sectors. Only orgs with public GitHub presence are tracked, pure consumer brands, services businesses, and stealth-mode startups are systematically under-represented.",
     source: "Sector Coverage",
     sourceHref: "/answers/what-github-topic-clusters-does-gitdealflow-track",
   },
