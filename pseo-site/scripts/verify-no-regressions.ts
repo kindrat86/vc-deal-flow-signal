@@ -984,9 +984,10 @@ check(
 // beating mt-1.5) and their hit boxes sat only 4px apart (gap-5 minus 2x8px
 // negative margins), so fat-finger taps hit the wrong target. Also fixed:
 // the CuriosityGate disclaimer at 10px, its Insider-preview chip at 10px,
-// and the SignalDistribution donut label at 8px, all below the 12px mobile
-// readability floor. A lineage that reverts any of these re-introduces
-// overlapping tap targets or micro-fonts.
+// the SignalDistribution donut label at 8px, and the site header 'signals'
+// badge at 10px, all below the 12px mobile readability floor. A lineage
+// that reverts any of these re-introduces overlapping tap targets or
+// micro-fonts.
 // ---------------------------------------------------------------------------
 check(
   "components/StartupTable.tsx",
@@ -1007,6 +1008,13 @@ check(
   "SignalDistribution donut label reverted to 8px (below the 12px mobile readability floor, measured 2026-08-15).",
   (s) => !s.includes("fontSize={8}"),
   "keep the 'startups' donut sub-label at fontSize={10} or larger",
+);
+
+check(
+  "components/Header.tsx",
+  "Header 'signals' badge reverted to 10px (site-wide font floor, measured 2026-08-15).",
+  (s) => !s.includes("text-[10px]"),
+  "keep the 'signals' brand badge at text-[11px] or larger",
 );
 
 // ---------------------------------------------------------------------------

@@ -58,7 +58,7 @@ export default function Header() {
             G
           </span>
           <span>GitDealFlow</span>
-          <span className="rounded bg-slate-800 px-1.5 py-0.5 text-[10px] font-semibold uppercase tracking-wider text-sky-400">
+          <span className="rounded bg-slate-800 px-1.5 py-0.5 text-[11px] font-semibold uppercase tracking-wider text-sky-400">
             signals
           </span>
         </Link>
