@@ -195,6 +195,15 @@ function computePeriodMetrics(ca: WeeklyCommit[], weekOffset: number, ctR: numbe
   return { commitVelocity14d: cur, commitVelocityChange: change, signalType: classifySignal(ratio, ctR, nR) };
 }
 
+// Site-wide style rule: never an em/en dash in shipped copy (2026-08-14).
+// GitHub repo descriptions/bios are third-party text that routinely contain
+// em dashes (U+2014) and en dashes (U+2013); these flow verbatim into
+// data/startups.json and then into rendered HTML. Normalize to a comma so a
+// fresh data fetch does not silently revert the dash sweep.
+function normalizeDashes(s: string): string {
+  return s.replace(/[\u2014\u2013]/g, ",").replace(/\s+,/g, ",").replace(/,\s*,/g, ",");
+}
+
 async function fetchOrgData(orgLogin: string, fallbackDesc: string, searchRepos: GhRepo[]): Promise<OrgData | null> {
   console.log(`    Processing: ${orgLogin}`);
   if (BLOCKLIST.has(orgLogin)) { console.log(`      Skipped (blocklist)`); return null; }
@@ -267,7 +276,7 @@ async function fetchOrgData(orgLogin: string, fallbackDesc: string, searchRepos:
   }
 
   const geography = GEO_OVERRIDES[orgLogin] || deriveGeography(orgLoc);
-  return { orgLogin, description: orgDesc.trim(), geography, contributorCount: Math.max(1, contribs.length), contributorGrowth, newRepos, commitActivity: ca, githubUrl: `https://github.com/${orgLogin}`, websiteUrl: orgBlog };
+  return { orgLogin, description: normalizeDashes(orgDesc).trim(), geography, contributorCount: Math.max(1, contribs.length), contributorGrowth, newRepos, commitActivity: ca, githubUrl: `https://github.com/${orgLogin}`, websiteUrl: orgBlog };
 }
 
 function generateFaqs(name: string, desc: string, pName: string, startups: StartupOutput[]): FAQ[] {
