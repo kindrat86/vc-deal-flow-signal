@@ -312,9 +312,11 @@ function ToolCardContent({ tool }: { tool: Tool }) {
           <p className="text-xs uppercase tracking-wider text-sky-400 font-medium mb-1">
             {tool.category}
           </p>
-          <h3 className="text-gray-100 font-semibold text-lg mb-1">
+          {/* H2 not H3: these cards render directly under the page H1 with
+              no H2 between, an H1->H3 skip (heading audit 2026-08-15). */}
+          <h2 className="text-gray-100 font-semibold text-lg mb-1">
             {tool.name}
-          </h3>
+          </h2>
           <p className="text-gray-300 text-sm font-medium mb-2">
             {tool.tagline}
           </p>

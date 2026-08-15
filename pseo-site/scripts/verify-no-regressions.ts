@@ -436,7 +436,7 @@ check(
 // ---------------------------------------------------------------------------
 check(
   "content/standalone-faqs.ts",
-  "stale 20-cluster taxonomy in the sector-coverage FAQ: the live API serves 15 active sectors (369 orgs), not the archived 20-cluster list.",
+  "stale 20-cluster taxonomy in the sector-coverage FAQ: the live API serves 15 active sectors (350+ orgs), not the archived 20-cluster list.",
   (s) =>
     !s.includes("Vertical SaaS, Web3 & Blockchain, Open Source Tools") &&
     !s.includes("20 clusters") &&
@@ -453,6 +453,24 @@ check(
     s.includes("The 15 active sectors") &&
     s.includes("Space Tech** (18 orgs)"),
   "rewrite the answer to the 15 live API sector names with per-sector org counts (see verify §10b)",
+);
+
+// ---------------------------------------------------------------------------
+// 10c. Org-count reconciliation (2026-08-15). The live /api/signals.json
+//      serves 15 sectors and 356 UNIQUE orgs (369 raw sector-sum double-counts
+//      12 orgs across sectors). The canonical claim is "350+" (stable floor).
+//      A regression that resurrects "369 venture-backed startups" (or "~400")
+//      re-publishes a number a technical reader can fact-check against the
+//      live API. Keep the blog slug "i-tracked-369-…" (URL + 301 redirect).
+// ---------------------------------------------------------------------------
+check(
+  "app/about/page.tsx",
+  "org-count regressed: canonical AI-description block must claim '350+ venture-backed startups', not 369/~400.",
+  (s) =>
+    s.includes("350+ venture-backed startups") &&
+    !s.includes("369 venture-backed startups") &&
+    !s.includes("~400"),
+  "restore '350+ venture-backed startups' in the /about canonical AI-description block",
 );
 check(
   "content/alternatives.ts",
@@ -934,6 +952,12 @@ check(
   "Book renderer stopped stripping the chapter md H1: double-H1 is back on /book/read/*.",
   (s) => s.includes("leading H1 line is dropped here"),
   "renderChapterHtml must drop the md's first `# ` line (both templates render chapter.title themselves)",
+);
+check(
+  "app/tools/page.tsx",
+  "Tools index cards reverted to H3: the eight ToolCardContent titles render directly under the H1 (H1->H3 skip).",
+  (s) => !/<h3[\s>]/.test(s),
+  "keep the tool card titles as H2; the page has no H2 wrapper above the card grid",
 );
 
 // ---------------------------------------------------------------------------
