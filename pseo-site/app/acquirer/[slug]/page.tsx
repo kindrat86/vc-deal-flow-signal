@@ -30,7 +30,9 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!a) return {};
 
   return {
-    title: a.title,
+    // absolute: title already carries name+count+year; the 22ch template
+    // suffix would push every acquirer page over 60ch.
+    title: { absolute: a.title },
     description: a.metaDescription,
     openGraph: { title: a.title, description: a.metaDescription, type: "article", url: `/acquirer/${slug}` },
     twitter: { card: "summary_large_image", title: a.title, description: a.metaDescription },

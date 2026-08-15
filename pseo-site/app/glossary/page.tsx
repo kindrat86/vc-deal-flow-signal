@@ -6,8 +6,12 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { glossaryTerms, type GlossaryTerm } from "@/content/glossary";
 import SeoCta from "@/components/SeoCta";
 
+// CTR hook (GSC 90d: 537 imps, 0 clicks, pos 12.3): old title + suffix
+// brand-doubled to 72ch. Count is computed from the content source.
+const pageTitle = `VC & Startup Glossary: ${glossaryTerms.length} Terms (Deal Flow, Signals)`;
+
 export const metadata: Metadata = {
-  title: "Glossary, VC Deal Flow Signal Terms & Definitions",
+  title: { absolute: pageTitle },
   description:
     "Definitions of key terms used in startup deal flow signal analysis: commit velocity, engineering acceleration, contributor growth, signal types, and more. A reference for investors using GitHub data for deal sourcing.",
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).

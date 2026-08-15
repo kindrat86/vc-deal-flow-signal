@@ -12,8 +12,9 @@ const SITE = "https://signals.gitdealflow.com";
 const PAGE_URL = `${SITE}/markets`;
 
 export const metadata: Metadata = {
-  title:
-    "Open Prediction Markets on Startup Funding",
+  // CTR hook (GSC 90d: 336 imps, pos 7.1): old title + template suffix hit
+  // 65ch with a redundant trailing concept. absolute keeps it at 52ch.
+  title: { absolute: "Startup Funding Prediction Markets: Live Odds (2026)" },
   description:
     "Seeded prediction markets on startup funding events, sourced from GitHub commit-velocity signals. Free, citation-encouraged, machine-readable. Currently live: Series A Race 2026.",
   alternates: { canonical: "/markets" },

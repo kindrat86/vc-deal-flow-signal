@@ -38,7 +38,9 @@ export async function generateMetadata({
   const url = `${SITE}/from-stars-to-seed/${slug}`;
   const description = clampDescription(c.tagline);
   return {
-    title: c.headline,
+    // absolute: headlines already carry the funding-figure hook ("$3.25B
+    // Series E") and run 43-70ch; the 22ch template suffix truncated them.
+    title: { absolute: c.headline },
     description,
     keywords: c.keywords.join(", "),
     alternates: { canonical: `/from-stars-to-seed/${slug}` },

@@ -8,7 +8,11 @@ import SeoCta from "@/components/SeoCta";
 import { getHreflangLanguages } from "@/lib/hreflang";
 
 export const metadata: Metadata = {
-  title: "Frequently Asked Questions",
+  // CTR hook (GSC 90d: 631 imps, 0.16% at pos 7.3): "Frequently Asked
+  // Questions" + suffix carries zero query-relevant information.
+  title: {
+    absolute: "FAQ: GitHub Signals, Commit Velocity & VC Deal Sourcing",
+  },
   description:
     "Answers to common questions about GitHub engineering signals, startup deal sourcing, commit velocity, engineering acceleration, and how investors use VC Deal Flow Signal to find breakout startups.",
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).

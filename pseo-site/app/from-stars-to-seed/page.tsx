@@ -11,15 +11,19 @@ export const dynamic = "force-static";
 const SITE = "https://signals.gitdealflow.com";
 const PAGE_URL = `${SITE}/from-stars-to-seed`;
 
+// CTR hook (GSC 90d: 1,179 imps, 1 click, 0.08% at pos 12.9): the old title
+// was 105 chars and truncated mid-thought in SERPs. Count hook is computed so
+// it can never go stale when cases are added.
+const pageTitle = `GitHub Stars to Startup Funding: ${starsCases.length} Case Studies (2026)`;
+
 export const metadata: Metadata = {
-  title:
-    "From Stars to Seed, case studies of GitHub repos that became funded companies",
+  // absolute: old title + template suffix hit 105ch; this is 55ch un-truncated.
+  title: { absolute: pageTitle },
   description:
     "Case studies where GitHub engineering acceleration showed up before the public round, from Vercel and LangChain to Cursor, Groq, and Modal.",
   alternates: { canonical: "/from-stars-to-seed" },
   openGraph: {
-    title:
-      "From Stars to Seed, GitHub momentum case studies that led to priced rounds",
+    title: pageTitle,
     description:
       "Repo-level engineering acceleration preceded the priced rounds at Vercel, LangChain, Hugging Face, Cursor, Groq, and more. The case studies are public; the signal is reproducible.",
     url: PAGE_URL,

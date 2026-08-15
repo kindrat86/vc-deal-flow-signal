@@ -24,7 +24,7 @@ const inter = Inter({ subsets: ["latin"], display: "swap" });
 export const metadata: Metadata = {
   title: {
     default:
-      "VC Deal Flow Signal: Find breakout startups via GitHub momentum",
+      "GitHub Momentum 3-6 Weeks Pre-Round | VC Deal Flow Signal",
     template: "%s | VC Deal Flow Signal",
   },
   description:
@@ -119,7 +119,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     site: "@sipiteno",
-    title: "VC Deal Flow Signal: GitHub Momentum Tracking for Investors",
+    title: "GitHub Momentum 3-6 Weeks Pre-Round | VC Deal Flow Signal",
     description:
       "GitHub commit-velocity tracking across 20 startup sectors. Code-side momentum (not accelerator programs): surface venture-backed startups 3-6 weeks before fundraise.",
   },

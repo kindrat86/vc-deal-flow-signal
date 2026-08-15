@@ -1663,6 +1663,117 @@ check(
 }
 
 // ---------------------------------------------------------------------------
+// 2026-08-16 CTR title hooks — template families (home, from-stars-to-seed,
+// faq, glossary, markets, acquirer, from-stars-to-seed leaves)
+// GSC 90d baseline: 21 clicks / 7,455 imps. These pages held 4,712 imps with
+// 7 clicks (0.15%) on truncated or zero-information titles. Guards assert the
+// FIX IS PRESENT (new title shape), not absence of the old string, so the
+// guard never trips on its own comments.
+{
+  const read = (p: string) => {
+    try {
+      return readFileSync(p, "utf8");
+    } catch {
+      return "";
+    }
+  };
+
+  // Home (layout.tsx): default title must lead with the timing hook.
+  {
+    const s = read("app/layout.tsx");
+    if (!s.includes("GitHub Momentum 3-6 Weeks Pre-Round")) {
+      failures.push(
+        `home default title reverted to the low-CTR descriptive form.\n` +
+          `    fix:  restore "GitHub Momentum 3-6 Weeks Pre-Round | VC Deal Flow Signal" in app/layout.tsx`,
+      );
+    }
+  }
+
+  // /from-stars-to-seed hub: computed count hook, absolute (old was 105ch + suffix).
+  {
+    const s = read("app/from-stars-to-seed/page.tsx");
+    if (
+      !(s.includes("GitHub Stars to Startup Funding") && s.includes("${starsCases.length} Case Studies"))
+    ) {
+      failures.push(
+        `from-stars-to-seed hub title lost its count hook or computed length.\n` +
+          `    fix:  restore pageTitle = \`GitHub Stars to Startup Funding: \${starsCases.length} Case Studies (2026)\` with title: { absolute: pageTitle }`,
+      );
+    }
+    if (!s.includes("title: { absolute: pageTitle }")) {
+      failures.push(
+        `from-stars-to-seed hub title is template-suffixed again (would re-truncate).\n` +
+          `    fix:  keep title: { absolute: pageTitle } in app/from-stars-to-seed/page.tsx`,
+      );
+    }
+  }
+
+  // /faq: keyword-bearing absolute title (old: "Frequently Asked Questions" + suffix).
+  {
+    const s = read("app/faq/page.tsx");
+    if (!s.includes("FAQ: GitHub Signals, Commit Velocity & VC Deal Sourcing")) {
+      failures.push(
+        `faq title reverted to the zero-information "Frequently Asked Questions" form.\n` +
+          `    fix:  restore the absolute keyword-bearing title in app/faq/page.tsx`,
+      );
+    }
+  }
+
+  // /glossary: computed count hook (134 terms), absolute.
+  {
+    const s = read("app/glossary/page.tsx");
+    if (
+      !(s.includes("VC & Startup Glossary") && s.includes("${glossaryTerms.length} Terms"))
+    ) {
+      failures.push(
+        `glossary title lost its computed count hook.\n` +
+          `    fix:  restore pageTitle from glossaryTerms.length in app/glossary/page.tsx`,
+      );
+    }
+  }
+
+  // /markets: hook title, absolute.
+  {
+    const s = read("app/markets/page.tsx");
+    if (!s.includes("Startup Funding Prediction Markets: Live Odds (2026)")) {
+      failures.push(
+        `markets title reverted to the generic "Open Prediction Markets" form.\n` +
+          `    fix:  restore the hook title in app/markets/page.tsx`,
+      );
+    }
+  }
+
+  // Acquirer family (21 pages): count hook in build(), absolute in [slug].
+  {
+    const s = read("content/acquirers.ts");
+    if (!s.includes("${a.name} Acquisitions: ${acqCount} Notable Deals")) {
+      failures.push(
+        `acquirer titles lost the deal-count hook ("& M&A Pattern" form reverted).\n` +
+          `    fix:  restore title: \`\${a.name} Acquisitions: \${acqCount} Notable Deals (2026)\` in content/acquirers.ts build()`,
+      );
+    }
+    const leaf = read("app/acquirer/[slug]/page.tsx");
+    if (!leaf.includes("title: { absolute: a.title }")) {
+      failures.push(
+        `acquirer leaf title is template-suffixed again (22ch suffix re-truncates).\n` +
+          `    fix:  keep title: { absolute: a.title } in app/acquirer/[slug]/page.tsx`,
+      );
+    }
+  }
+
+  // from-stars-to-seed leaves (48 pages): absolute so funding-figure hooks render in full.
+  {
+    const s = read("app/from-stars-to-seed/[slug]/page.tsx");
+    if (!s.includes("title: { absolute: c.headline }")) {
+      failures.push(
+        `from-stars-to-seed leaf titles are template-suffixed again (91ch, truncated).\n` +
+          `    fix:  keep title: { absolute: c.headline } in app/from-stars-to-seed/[slug]/page.tsx`,
+      );
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +
