@@ -80,6 +80,31 @@ if (
   );
 }
 
+// ---------------------------------------------------------------------------
+// /best/ duplicate-canonical consolidation (2026-08-16)
+// ---------------------------------------------------------------------------
+// best/best-crunchbase-alternatives.html and best/best-pitchbook-alternatives.html
+// duplicate the alternatives-to/* intent under different URLs. They must
+// canonicalize to the /alternatives-to/ counterparts so Google consolidates
+// ranking signals instead of splitting them (crunchbase-alternatives was stuck
+// at position 76 with the /best/ page self-canonical).
+const canonPairs = [
+  ["best/best-crunchbase-alternatives.html", "https://gitdealflow.com/alternatives-to/crunchbase-alternatives"],
+  ["best/best-pitchbook-alternatives.html", "https://gitdealflow.com/alternatives-to/pitchbook-alternatives"],
+];
+for (const [file, target] of canonPairs) {
+  let html;
+  try {
+    html = readFileSync(file, "utf8");
+  } catch {
+    fail(`${file} is missing: the /best/ duplicate page must exist and canonicalize to ${target}.`);
+    continue;
+  }
+  if (!html.includes(`rel="canonical" href="${target}"`)) {
+    fail(`${file} no longer canonicalizes to ${target}: duplicate-content cannibalization has returned.`);
+  }
+}
+
 if (failures.length) {
   console.error(
     `\n❌ verify-vercel-config: ${failures.length} config regression(s) detected:`,
