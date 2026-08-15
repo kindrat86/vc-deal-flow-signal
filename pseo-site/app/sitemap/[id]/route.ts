@@ -82,6 +82,51 @@ interface Entry {
   priority: number;
 }
 
+// ---------------------------------------------------------------------------
+// Canonical-only sitemap listing for quarter-suffixed pSEO families
+// (2026-08-15). The sector/geo/region page templates canonicalize every
+// older quarter to the group's LATEST quarter (cannibalization guard, see
+// generateMetadata in app/startups-to-watch/[slug]/page.tsx and the geo/
+// region equivalents). Listing those non-canonical URLs in the sitemap
+// contradicts the canonical signal and spends crawl budget on pages Google
+// is explicitly asked to discard. Keep exactly one URL per prefix group
+// (the newest quarter, matching the page template's own latest-period
+// resolution) and pass through every non-quarter slug untouched.
+// ---------------------------------------------------------------------------
+const QUARTER_SUFFIX_RE = /-(q[1-4]-\d{4})$/;
+
+function quarterSortKey(slug: string): [number, number] {
+  const m = slug.match(QUARTER_SUFFIX_RE);
+  if (!m) return [0, 0];
+  const q = Number(m[1][1]);
+  const year = Number(m[1].slice(3));
+  return [year, q];
+}
+
+function latestQuarterSlugsOnly(slugs: string[]): string[] {
+  const groups = new Map<string, string[]>();
+  const passthrough: string[] = [];
+  for (const slug of slugs) {
+    if (!QUARTER_SUFFIX_RE.test(slug)) {
+      passthrough.push(slug);
+      continue;
+    }
+    const prefix = slug.replace(QUARTER_SUFFIX_RE, "");
+    const bucket = groups.get(prefix);
+    if (bucket) bucket.push(slug);
+    else groups.set(prefix, [slug]);
+  }
+  const latest = [...groups.values()].map(
+    (bucket) =>
+      bucket.sort((a, b) => {
+        const [ay, aq] = quarterSortKey(a);
+        const [by, bq] = quarterSortKey(b);
+        return ay !== by ? ay - by : aq - bq;
+      })[bucket.length - 1],
+  );
+  return [...passthrough, ...latest];
+}
+
 interface RouteContext {
   params: Promise<{ id: string }>;
 }
@@ -357,19 +402,19 @@ export async function GET(_req: Request, ctx: RouteContext) {
     ];
   } else if (id === "sectors") {
     entries = [
-      ...getAllPageSlugs().map((slug) => ({
+      ...latestQuarterSlugsOnly(getAllPageSlugs()).map((slug) => ({
         url: `${BASE_URL}/startups-to-watch/${slug}`,
         lastmod,
         changefreq: "weekly",
         priority: 0.8,
       })),
-      ...getAllGeoPageSlugs().map((slug) => ({
+      ...latestQuarterSlugsOnly(getAllGeoPageSlugs()).map((slug) => ({
         url: `${BASE_URL}/startups-to-watch/geo/${slug}`,
         lastmod,
         changefreq: "weekly",
         priority: 0.6,
       })),
-      ...getAllRegionPageSlugs().map((slug) => ({
+      ...latestQuarterSlugsOnly(getAllRegionPageSlugs()).map((slug) => ({
         url: `${BASE_URL}/startups-to-watch/region/${slug}`,
         lastmod,
         changefreq: "weekly",
