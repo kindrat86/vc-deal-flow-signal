@@ -157,6 +157,13 @@ export default async function VsPage({ params }: PageProps) {
     },
   ];
 
+  // §32 (2026-08-17): merge per-pair, query-matched FAQs (pair.faqs: real GSC
+  // queries with impressions, individually sourced answers) AHEAD of the
+  // template-generated set. Both the visible FAQ section and the FAQPage
+  // JSON-LD render from mergedFaqs, so a query-matched Q&A is simultaneously
+  // human-visible and machine-extractable for PAA / AI Overviews.
+  const mergedFaqs = [...(pair.faqs ?? []), ...faqs];
+
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -199,7 +206,7 @@ export default async function VsPage({ params }: PageProps) {
       },
       {
         "@type": "FAQPage",
-        mainEntity: faqs.map((f) => ({
+        mainEntity: mergedFaqs.map((f) => ({
           "@type": "Question",
           name: f.question,
           acceptedAnswer: { "@type": "Answer", text: f.answer },
@@ -379,7 +386,7 @@ export default async function VsPage({ params }: PageProps) {
             individual investors.
           </p>
           <div className="space-y-6">
-            {faqs.map((f) => (
+            {mergedFaqs.map((f) => (
               <div
                 key={f.question}
                 className="rounded-lg border border-slate-800 bg-slate-900 p-5"

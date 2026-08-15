@@ -21,6 +21,15 @@ export interface CompetitorVs {
   verdict: string;
   intro: string;
   decision: string;
+  /**
+   * Per-pair, query-matched FAQs (§32, 2026-08-17 rich-result win). Each entry
+   * must map to a REAL GSC query with impressions, and each answer must be
+   * sourced from public vendor documentation before it is written here:
+   * never auto-generate integration or pricing claims for pairs that were not
+   * individually verified. Rendered first (ahead of template FAQs) in both the
+   * visible FAQ section and the FAQPage JSON-LD on app/vs/[slug]/page.tsx.
+   */
+  faqs?: { question: string; answer: string }[];
 }
 
 /** How these head-to-head comparisons are evaluated. */
@@ -537,6 +546,20 @@ export const competitorVsPairs: CompetitorVs[] = [
       "Affinity optimises sourcing through your firm's existing network; Harmonic.ai sources externally with AI-powered team pattern matching. They are complements, not substitutes. Most institutional VCs run both, Affinity for pipeline and warm-intro mapping, Harmonic for net-new discovery. Solo angels and emerging managers usually cannot justify either without a strong existing network or institutional budget.",
     intro: "Affinity and Harmonic.ai are both staples of the institutional venture capital stack, but they do fundamentally different jobs. Affinity is a relationship-intelligence CRM that builds a graph from your firm's inbox and calendar, helping you work the network you already have. Harmonic.ai is an external sourcing platform that pattern-matches founding teams and networks at incorporation to surface companies you have never heard of. This page examines how the two products differ and where they fit together.",
     decision: "Pick Affinity when your firm already has a meaningful inbound deal flow and the bottleneck is organising it: tracking pipeline, mapping warm introductions, and reporting to partners and LPs. It is priced per seat and only pays off when your existing network is strong. Pick Harmonic.ai when you want net-new, proactive discovery across all sectors, including non-technical founders, and have an enterprise budget with a dedicated sourcing team. Its signals are leading, at incorporation, but the model is not directly observable, so you are trusting its team and network patterns. Consider using both together if you are an institutional VC: Harmonic expands the top of the funnel while Affinity manages and converts it. Solo angels and emerging managers often find neither justifiable without a strong network or a large budget.",
+    faqs: [
+      {
+        // GSC 90d (pulled 2026-08-16): "does harmonic integrate with affinity?"
+        // 121 impressions, position 6.7, 0 clicks. The #1 question-shaped
+        // query and a top-10 query overall; the literal token "integrate"
+        // appeared on ZERO /vs pages, so Google had nothing here to lift into
+        // PAA/AIO for it. Answer is sourced: harmonic.ai integration docs
+        // (native Affinity integration; other CRMs via Polytomic) and the
+        // Valo Ventures case study (reverse sync Affinity -> Harmonic).
+        question: "Does Harmonic.ai integrate with Affinity?",
+        answer:
+          "Yes. Harmonic.ai ships a native Affinity integration: watchlists and newly surfaced companies sync into Affinity, and a reverse sync pushes Affinity records back into Harmonic (documented in Harmonic's Valo Ventures case study). Harmonic connects to other CRMs through Polytomic. The native Affinity sync needs no middleware.",
+      },
+    ],
   },
   {
     slug: "affinity-vs-pitchbook",

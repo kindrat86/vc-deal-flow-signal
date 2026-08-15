@@ -103,6 +103,22 @@ const HOMEPAGE_NAME = "VC Deal Flow Signal";
 
 // Skip pages that don't benefit from breadcrumbs or already have authoritative
 // breadcrumbs that we don't want to dilute. Compared as path prefixes.
+// §32: route families whose templates emit a curated BreadcrumbList. The auto
+// breadcrumb in this component yields on these paths (hub and children) so each
+// URL carries exactly ONE BreadcrumbList. Add a family here ONLY after
+// live-verifying both its hub and a child page emit the curated trail.
+const CURATED_BREADCRUMB_FAMILIES = [
+  "/vs",
+  "/compare",
+  "/answers",
+  "/alternatives",
+  "/best",
+  "/city",
+  "/sector",
+  "/tools",
+  "/faq",
+];
+
 const SKIP_PREFIXES = [
   "/api/", // API routes never serve HTML
   "/md/", // Markdown mirror
@@ -143,6 +159,15 @@ export default function BreadcrumbsSchema() {
   // prerendered /_not-found shell.
   if (pathname.startsWith("/_")) return null;
   if (SKIP_PREFIXES.some((prefix) => pathname.startsWith(prefix))) return null;
+  // §32 (2026-08-17): template families that render their own curated
+  // BreadcrumbList (live-verified 2026-08-17: every one of these emitted TWO
+  // BreadcrumbList nodes, the curated trail with proper names like "Affinity
+  // vs Harmonic.ai" plus this auto trail title-casing the slug to "Affinity Vs
+  // Harmonic Ai"). Duplicate breadcrumb markup is a GSC rich-result error and
+  // risks Google picking the machine-cased trail. Exact-or-child matching so
+  // "/vs" does NOT swallow the unrelated /vsl route.
+  if (CURATED_BREADCRUMB_FAMILIES.some((f) => pathname === f || pathname.startsWith(f + "/")))
+    return null;
 
   // Strip query/hash if any made it into the header.
   const cleanPath = pathname.split("?")[0].split("#")[0];
