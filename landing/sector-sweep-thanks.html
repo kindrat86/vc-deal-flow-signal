@@ -132,5 +132,25 @@
     })();
   </script>
 
+  <script>
+    /* Ad-attribution conversion: paid purchase (Sector Sweep €1997). */
+    (function () {
+      function fire() {
+        try {
+          var k = 'gdf_conv_sector_sweep';
+          if (sessionStorage.getItem(k)) return;
+          sessionStorage.setItem(k, '1');
+          if (window.gtag) window.gtag('event', 'purchase', {
+            currency: 'EUR',
+            value: 1997,
+            transaction_id: 'sectorsweep-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8)
+          });
+        } catch (e) {}
+      }
+      var tries = 0;
+      (function ready() { if (window.gtag) { fire(); return; } if (++tries > 50) return; setTimeout(ready, 100); })();
+    })();
+  </script>
+
   </body>
 </html>

@@ -168,5 +168,30 @@
     })();
   </script>
 
+  <script>
+    /* Ad-attribution conversion: paid purchase (Dashboard €49).
+       gtag is set up by /pixels.js (loads async above); poll until ready.
+       Feeds GA4 now, Google Ads automatically once the AW- conversion ID is
+       added to pixels.js. sessionStorage guard prevents double-count on
+       refresh. LinkedIn conversion = URL-based rule on this page in
+       Campaign Manager (no code change needed). */
+    (function () {
+      function fire() {
+        try {
+          var k = 'gdf_conv_dashboard';
+          if (sessionStorage.getItem(k)) return;
+          sessionStorage.setItem(k, '1');
+          if (window.gtag) window.gtag('event', 'purchase', {
+            currency: 'EUR',
+            value: 49,
+            transaction_id: 'dashboard-' + Date.now() + '-' + Math.random().toString(36).slice(2, 8)
+          });
+        } catch (e) {}
+      }
+      var tries = 0;
+      (function ready() { if (window.gtag) { fire(); return; } if (++tries > 50) return; setTimeout(ready, 100); })();
+    })();
+  </script>
+
   </body>
 </html>
