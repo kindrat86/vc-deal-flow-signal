@@ -4,6 +4,7 @@ import startupsData from "@/data/startups.json";
 import { getAllSectors, getCurrentPeriod } from "@/lib/data";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { BADGE_LABEL, BADGE_HEIGHT, badgeWidth, badgeValue } from "@/lib/badge-dims";
 
 const SITE = "https://signals.gitdealflow.com";
 
@@ -178,7 +179,9 @@ export default function BadgeBuilderPage() {
                 <img
                   src={`/api/badge/${s.slug}`}
                   alt={`${s.name} momentum badge`}
-                  className="h-7"
+                  width={badgeWidth(BADGE_LABEL, badgeValue(s.velocity, s.signal))}
+                  height={BADGE_HEIGHT}
+                  className="h-7 w-auto"
                   loading="lazy"
                 />
                 <span className="text-gray-400 text-xs">{s.name}</span>

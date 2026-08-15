@@ -23,3 +23,47 @@ export function badgeValue(velocity: number, signalType: string): string {
   const word = (signalType || "steady").replace(/ .+/, "");
   return `${word} ${velocity} commits`;
 }
+
+// ---------------------------------------------------------------------------
+// badge-svg family (lib/badge-svg.ts), height 20. That module is
+// "server-only", so client components (BadgeBuilderClient) import the width
+// math from HERE. Keep the char-width table byte-identical to
+// lib/badge-svg.ts (that file re-exports these; do not fork a second copy).
+// ---------------------------------------------------------------------------
+
+export const SMALL_BADGE_HEIGHT = 20;
+
+const THIN_CHARS = "ilI|.,;:'\"";
+
+/** Per-char width estimate, mirrors renderBadge in lib/badge-svg.ts. */
+export function approxTextWidth(text: string, fontSize = 11): number {
+  let w = 0;
+  for (const ch of text) {
+    if (THIN_CHARS.includes(ch)) w += 3;
+    else if ("MWmw".includes(ch)) w += 9;
+    else if (ch >= "0" && ch <= "9") w += 6.5;
+    else if (ch === " ") w += 4;
+    else w += 6.5;
+  }
+  return Math.ceil(w * (fontSize / 11));
+}
+
+/** Total intrinsic width of a badge-svg pill (padX 6 each side, both halves). */
+export function smallBadgeWidth(label: string, value: string): number {
+  return approxTextWidth(label) + 12 + approxTextWidth(value) + 12;
+}
+
+/** Right-hand value text per built-with variant (must match renderBuiltWithBadge). */
+export const BUILT_WITH_VARIANT_VALUE: Record<
+  "default" | "compact" | "long",
+  string
+> = {
+  default: "gitdealflow MCP",
+  compact: "gitdealflow",
+  long: "@gitdealflow/mcp-signal",
+};
+
+/** Exact intrinsic width of a built-with badge variant (label is "built with"). */
+export function builtWithWidth(variant: "default" | "compact" | "long"): number {
+  return smallBadgeWidth("built with", BUILT_WITH_VARIANT_VALUE[variant]);
+}

@@ -1096,7 +1096,7 @@ check(
     /<img\s[^>]*api\/badge\/\$\{slug\}[\s\S]*?width=\{badgeWidth\(/.test(s) &&
     /api\/badge\/\$\{slug\}[\s\S]*?height=\{BADGE_HEIGHT\}/.test(s) &&
     !/api\/badge\/\$\{slug\}[\s\S]*?width=\{408\}/.test(s),
-  "keep width={badgeWidth(BADGE_LABEL, badgeValue(...))} height={BADGE_HEIGHT} on the /api/badge/<slug> img — the badge is variable-width (label.length*8+24 + value.length*8+24, see lib/badge-dims.ts), so a hardcoded 408 is wrong for most startups and reintroduces CLS",
+  "keep width={badgeWidth(BADGE_LABEL, badgeValue(...))} height={BADGE_HEIGHT} on the /api/badge/<slug> img: the badge is variable-width (label.length*8+24 + value.length*8+24, see lib/badge-dims.ts), so a hardcoded 408 is wrong for most startups and reintroduces CLS",
 );
 
 // ---------------------------------------------------------------------------
@@ -1463,6 +1463,72 @@ check(
     s.includes("export function renderPostBodyHtml") &&
     s.includes("Flipboard"),
   "keep lib/feed-content.ts exporting renderPostBodyHtml (shared by feed.xml + atom.xml)",
+);
+
+// ---------------------------------------------------------------------------
+// §19 Badge CLS + stats badges (2026-08-16). Two fixes live here:
+//   (a) every img rendering a badge SVG must carry intrinsic width/height so
+//       the browser reserves the box pre-load (CLS contribution zero). The
+//       dims come from lib/badge-dims.ts, the SAME math the badge API uses.
+//   (b) /api/badge/stats-m<N> serves real citable stat badges (the /stats
+//       hub's 20 cards referenced them via the landing vercel.json rewrite,
+//       which used to 404 and even on signals rendered the grey
+//       "not tracked" fallback). Keep STAT_BADGES in sync with
+//       landing/stats/index.html stat cards.
+check(
+  "lib/badge-dims.ts",
+  "shared badge dimension math lost a helper, every badge img would need hand-rolled widths again.",
+  (s) =>
+    s.includes("export function badgeWidth") &&
+    s.includes("export function smallBadgeWidth") &&
+    s.includes("export function builtWithWidth") &&
+    s.includes("export const SMALL_BADGE_HEIGHT = 20") &&
+    s.includes("export const BADGE_HEIGHT = 28"),
+  "keep badgeWidth/badgeValue (h28 [name] family), smallBadgeWidth/approxTextWidth/builtWithWidth (h20 badge-svg family) in lib/badge-dims.ts",
+);
+
+check(
+  "app/api/badge/[name]/route.tsx",
+  "stats badges regressed: STAT_BADGES map or the .svg-suffix strip was dropped, /stats hub cards 404 again.",
+  (s) =>
+    s.includes("const STAT_BADGES") &&
+    (s.match(/"stats-m\d+":/g) || []).length === 20 &&
+    s.includes("/\\.svg$/i") &&
+    s.includes("esc("),
+  "keep the 20-entry STAT_BADGES map, the .svg suffix strip, and the esc() XML-escape in the [name] badge route",
+);
+
+check(
+  "app/badge-builder/BadgeBuilderClient.tsx",
+  "badge-builder previews lost intrinsic dims (h-5 class alone), typing a handle re-introduces layout shift.",
+  (s) =>
+    s.includes('width={smallBadgeWidth("scout score", "100 oracle")}') &&
+    s.includes('width={smallBadgeWidth("momentum", "breakout +999%")}') &&
+    s.includes("width={builtWithWidth(builtWithVariant)}") &&
+    s.includes("height={SMALL_BADGE_HEIGHT}") &&
+    !/className="h-5"/.test(s),
+  'keep width={smallBadgeWidth(...)} / builtWithWidth(...) + height={SMALL_BADGE_HEIGHT} on all three preview imgs (add w-auto)',
+);
+
+check(
+  "app/built-with/page.tsx",
+  "built-with variant previews lost intrinsic dims, the three badge imgs shift on load.",
+  (s) =>
+    s.includes("width={builtWithWidth(v.name)}") &&
+    s.includes("height={SMALL_BADGE_HEIGHT}") &&
+    !/className="h-5"/.test(s),
+  "keep width={builtWithWidth(v.name)} height={SMALL_BADGE_HEIGHT} on the VARIANTS preview imgs (add w-auto)",
+);
+
+check(
+  "app/embed/page.tsx",
+  "embed catalog previews lost previewW/previewH, OG cards shift ~255px post-load again.",
+  (s) =>
+    s.includes("previewW") &&
+    s.includes("previewH") &&
+    /width=\{e\.previewW(?: \?\? 1200)?\}/.test(s) &&
+    /height=\{e\.previewH(?: \?\? 630)?\}/.test(s),
+  "keep previewW/previewH on every embed entry and width={e.previewW} height={e.previewH} on the img (fallbacks ?? 1200/630)",
 );
 
 // ---------------------------------------------------------------------------

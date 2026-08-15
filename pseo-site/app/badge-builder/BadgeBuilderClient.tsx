@@ -1,6 +1,11 @@
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
+import {
+  SMALL_BADGE_HEIGHT,
+  builtWithWidth,
+  smallBadgeWidth,
+} from "@/lib/badge-dims";
 
 const SITE = "https://signals.gitdealflow.com";
 
@@ -216,7 +221,9 @@ export default function BadgeBuilderClient() {
               <img
                 src={scout.badgeUrl}
                 alt="Scout Score badge preview"
-                className="h-5"
+                width={smallBadgeWidth("scout score", "100 oracle")}
+                height={SMALL_BADGE_HEIGHT}
+                className="h-5 w-auto"
               />
             </div>
             <div className="mb-5 flex items-center gap-2 flex-wrap">
@@ -305,7 +312,9 @@ export default function BadgeBuilderClient() {
               <img
                 src={momentum.badgeUrl}
                 alt="Commit Momentum badge preview"
-                className="h-5"
+                width={smallBadgeWidth("momentum", "breakout +999%")}
+                height={SMALL_BADGE_HEIGHT}
+                className="h-5 w-auto"
               />
             </div>
             <div className="mb-5 flex items-center gap-2 flex-wrap">
@@ -397,7 +406,9 @@ export default function BadgeBuilderClient() {
           <img
             src={builtWith.badgeUrl}
             alt={`Built-With badge, ${builtWithVariant}`}
-            className="h-5"
+            width={builtWithWidth(builtWithVariant)}
+            height={SMALL_BADGE_HEIGHT}
+            className="h-5 w-auto"
           />
         </div>
         <CopyBlock

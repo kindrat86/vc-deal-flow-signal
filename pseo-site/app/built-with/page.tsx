@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { SMALL_BADGE_HEIGHT, builtWithWidth } from "@/lib/badge-dims";
 
 const SITE = "https://signals.gitdealflow.com";
 const TITLE = "Built with @gitdealflow/mcp-signal, embed badge for MCP integrators";
@@ -233,7 +234,9 @@ export default function BuiltWithPage() {
                 <img
                   src={v.url}
                   alt={`Built-With badge, ${v.name}`}
-                  className="h-5"
+                  width={builtWithWidth(v.name)}
+                  height={SMALL_BADGE_HEIGHT}
+                  className="h-5 w-auto"
                   loading="lazy"
                 />
                 <span className="text-[10px] uppercase tracking-wider text-gray-400">

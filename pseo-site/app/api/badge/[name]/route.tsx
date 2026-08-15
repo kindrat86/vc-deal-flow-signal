@@ -38,12 +38,18 @@ function signalColor(signalType: string): string {
   return SIGNAL_COLORS.steady || "#60a5fa";
 }
 
+// XML-escape badge text. Stat labels contain "&" (e.g. "Energy & resources")
+// which would produce an unparseable SVG if emitted raw.
+function esc(s: string): string {
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
 function badgeSvg(label: string, value: string, color: string) {
   const leftW = label.length * 8 + 24;
   const rightW = value.length * 8 + 24;
   const totalW = leftW + rightW;
   return `<svg xmlns="http://www.w3.org/2000/svg" width="${totalW}" height="28" role="img">
-  <title>VC Deal Flow Signal: ${label}</title>
+  <title>VC Deal Flow Signal: ${esc(label)}</title>
   <linearGradient id="bg" x2="0" y2="100%">
     <stop offset="0" stop-color="#1e293b"/>
     <stop offset="1" stop-color="#0f172a"/>
@@ -52,16 +58,57 @@ function badgeSvg(label: string, value: string, color: string) {
   <rect width="${leftW}" height="28" rx="0" fill="#334155"/>
   <rect x="${leftW}" width="${rightW}" height="28" rx="0" fill="${color}" fill-opacity="0.15"/>
   <rect x="${leftW}" width="${rightW}" height="28" rx="0" fill="${color}" fill-opacity="0.08"/>
-  <text x="${leftW / 2}" y="19" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="700" fill="#e2e8f0">${label}</text>
-  <text x="${leftW + rightW / 2}" y="19" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="700" fill="${color}">${value}</text>
+  <text x="${leftW / 2}" y="19" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="700" fill="#e2e8f0">${esc(label)}</text>
+  <text x="${leftW + rightW / 2}" y="19" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="700" fill="${color}">${esc(value)}</text>
 </svg>`;
 }
+
+// Citable stats from the /stats hub (gitdealflow.com/stats). Served as
+// shields.io-style badges so the stat cards' badge rows resolve to real
+// values instead of 404s or the grey "not tracked" fallback. Keep labels
+// in sync with landing/stats/index.html stat cards.
+const STAT_BADGES: Record<string, { label: string; value: string; color: string }> = {
+  "stats-m1": { label: "Global M&A deal value in 2025", value: "$4.9T", color: "#34d399" },
+  "stats-m2": { label: "Projected global M&A deal value 2026", value: "$4T", color: "#60a5fa" },
+  "stats-m3": { label: "Global M&A volume in Q1 2026", value: "$861.1B", color: "#34d399" },
+  "stats-m4": { label: "M&A activity increase in 2025", value: "43%", color: "#34d399" },
+  "stats-m5": { label: "Total M&A transactions since 2000", value: "790,000+", color: "#60a5fa" },
+  "stats-m6": { label: "Projected number of deals in 2026", value: "~42,000", color: "#60a5fa" },
+  "stats-m7": { label: "Mega-deal threshold driving growth", value: "$10B+", color: "#fbbf24" },
+  "stats-m8": { label: "Most active M&A sector 2025-26", value: "Technology", color: "#818cf8" },
+  "stats-m9": { label: "Energy & resources deal value growth", value: "+40%", color: "#34d399" },
+  "stats-m10": { label: "Median EV/EBITDA multiple (2025)", value: "12.5x", color: "#a78bfa" },
+  "stats-m11": { label: "Share of billion-dollar acquisitions", value: "33%", color: "#60a5fa" },
+  "stats-m12": { label: "Average mega-deal size Q1 2026", value: "$4.2B", color: "#fbbf24" },
+  "stats-m13": { label: "Cross-border deal share in 2025", value: "32%", color: "#60a5fa" },
+  "stats-m14": { label: "PE dry powder available for M&A", value: "$1.2T", color: "#34d399" },
+  "stats-m15": { label: "PE share of total M&A in 2025", value: "28%", color: "#60a5fa" },
+  "stats-m16": { label: "Deals meeting or exceeding synergy targets", value: "60%", color: "#34d399" },
+  "stats-m17": { label: "Announcement to close, average", value: "4-6 months", color: "#60a5fa" },
+  "stats-m18": { label: "Engineering signal lead time", value: "3-6 weeks", color: "#fbbf24" },
+  "stats-m19": { label: "Tracked sectors for deal signals", value: "20", color: "#818cf8" },
+  "stats-m20": { label: "Correlation rate, signal to announcement", value: "72%", color: "#fbbf24" },
+};
 
 export async function GET(
   _request: NextRequest,
   { params }: { params: Promise<{ name: string }> }
 ) {
-  const { name } = await params;
+  const rawName = (await params).name;
+  // Accept both "stats-m1" and "stats-m1.svg" (the /stats hub uses .svg).
+  const name = rawName.replace(/\.svg$/i, "");
+
+  const stat = STAT_BADGES[name];
+  if (stat) {
+    return new Response(badgeSvg(stat.label, stat.value, stat.color), {
+      headers: {
+        "Content-Type": "image/svg+xml",
+        "Cache-Control": "public, max-age=3600, s-maxage=86400",
+        "CDN-Cache-Control": "public, max-age=86400",
+      },
+    });
+  }
+
   const startup = findStartup(name);
 
   if (!startup) {
@@ -96,8 +143,9 @@ export async function GET(
 }
 
 export async function generateStaticParams() {
-  // Pre-render badges for all tracked startups
-  const slugs: { name: string }[] = [];
+  // Pre-render badges for all tracked startups, plus the /stats hub badges
+  // (gitdealflow.com/stats embeds all 20 via its badge rows).
+  const slugs: { name: string }[] = Object.keys(STAT_BADGES).map((k) => ({ name: k }));
   const seen = new Set<string>();
   for (const sector of (startupsData as any).sectors) {
     for (const [, snapshot] of Object.entries(sector.periods || {})) {
