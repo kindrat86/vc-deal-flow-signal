@@ -9,6 +9,8 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 import SeoCta from "@/components/SeoCta";
 import SignalDisclaimer from "@/components/SignalDisclaimer";
+import RelatedLinks from "@/components/RelatedLinks";
+import { getRelatedGroups } from "@/lib/related-links";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -509,6 +511,8 @@ export default async function AlternativePage({ params }: PageProps) {
               ))}
           </div>
         </section>
+
+        <RelatedLinks groups={getRelatedGroups(`/alternatives/${slug}`)} heading="Related comparisons" />
 
         <div className="rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">
           <h2 className="text-gray-100 font-semibold text-lg mb-2">

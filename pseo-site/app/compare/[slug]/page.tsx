@@ -10,6 +10,8 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 import SeoCta from "@/components/SeoCta";
 import SignalDisclaimer from "@/components/SignalDisclaimer";
+import RelatedLinks from "@/components/RelatedLinks";
+import { getRelatedGroups } from "@/lib/related-links";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -458,6 +460,7 @@ export default async function ComparisonPage({ params }: PageProps) {
         ) : null}
 
         {/* CTA, free digest primary, First Look secondary, AC signoff; methodology demoted to a text link */}
+        <RelatedLinks groups={getRelatedGroups(`/compare/${slug}`)} heading="Related comparisons" />
         <SeoCta
           heading="Skip the debate, see who's actually shipping"
           signoffIndex={6}

@@ -4,7 +4,15 @@
  * signals.gitdealflow.com from the site's OWN sitemaps (every URL is real).
  *
  * Output: data/internal-links.json  ->  { [pathname]: RelatedGroup[] }
- * Consumed by lib/related-links.ts + the /explore hub + (Phase 2) page templates.
+ * Consumed by lib/related-links.ts + the /explore hub + page templates.
+ *
+ * Two-pass design (audit PA-30 fix, 2026-08-17):
+ *  Pass 1 builds sibling + cross-section groups by token overlap and
+ *  measures per-URL in-degree.
+ *  Pass 2 adds the entity-cluster group, ranking candidates by ASCENDING
+ *  base in-degree so the weakest /vs/ pages receive the most new in-links
+ *  (equity-aware internal linking; token overlap alone left 5 of 12
+ *  harmonic pages with <=4 in-links).
  *
  * Fail-safe: aborts if it can't collect a meaningful URL set.
  */
@@ -67,9 +75,11 @@ function overlap(a: string, b: string): number {
   return n / Math.max(1, Math.min(ta.size, tb.size));
 }
 
-// ---- build graph -----------------------------------------------------------
-const graph: Record<string, RelatedGroup[]> = {};
+// ---- pass 1: sibling + cross-section groups, then base in-degree -----------
 const MAX_PER_GROUP = 6;
+const graph: Record<string, RelatedGroup[]> = {};
+const indeg = new Map<string, number>();
+for (const p of paths) indeg.set(p, 0);
 
 for (const p of paths) {
   const section = sectionOf(p);
@@ -95,9 +105,49 @@ for (const p of paths) {
   if (cross.length >= 2)
     groups.push({ title: "Related topics", links: cross.map((x) => ({ href: x.q, label: titleCase(x.q) })) });
 
+  graph[p] = groups;
+  for (const g of groups) for (const l of g.links) indeg.set(l.href, (indeg.get(l.href) || 0) + 1);
+}
+
+// ---- pass 2: entity-cluster groups, equity-aware (weak pages first) --------
+// Every page whose path mentions a tracked competitor entity gets explicit
+// head-to-head links to that entity's /vs/ pages. Candidates are ranked by
+// ASCENDING base in-degree (pages with fewest in-links win slots first),
+// then brand-first slugs outrank reverse-direction slugs, then token overlap,
+// then alphabetical for determinism.
+const ENTITY_TOKENS = ["harmonic", "pitchbook", "crunchbase", "dealroom", "tracxn", "cb-insights", "affinity", "forager", "specter", "signalrank", "openvc"];
+const mentionsEntity = (q: string, e: string) => q.toLowerCase().includes(e);
+
+for (const p of paths) {
+  const groups = graph[p];
+  const seenHrefs = new Set<string>();
+  for (const g of groups) for (const l of g.links) seenHrefs.add(l.href);
+  const entityLinks: Link[] = [];
+  for (const e of ENTITY_TOKENS) {
+    if (!mentionsEntity(p, e)) continue;
+    const candidates = paths
+      .filter((q) => q !== p && q.startsWith("/vs/") && mentionsEntity(q, e))
+      .map((q) => ({
+        q,
+        rank: indeg.get(q) || 0,
+        brand: q.startsWith(`/vs/${e}`) ? 1 : 0,
+        score: overlap(p, q),
+      }))
+      .sort((a, b) => a.rank - b.rank || b.brand - a.brand || b.score - a.score || a.q.localeCompare(b.q))
+      .slice(0, MAX_PER_GROUP);
+    for (const c of candidates) {
+      if (!seenHrefs.has(c.q)) {
+        entityLinks.push({ href: c.q, label: titleCase(c.q) });
+        seenHrefs.add(c.q);
+      }
+    }
+  }
+  if (entityLinks.length >= 2)
+    groups.push({ title: "Head-to-head comparisons", links: entityLinks.slice(0, MAX_PER_GROUP) });
+
   // Group 3, always offer a path up to the section hub + explore
   const hub: Link[] = [];
-  if (paths.includes(`/${section}`)) hub.push({ href: `/${section}`, label: `All ${titleCase("/" + section)}` });
+  if (paths.includes(`/${sectionOf(p)}`)) hub.push({ href: `/${sectionOf(p)}`, label: `All ${titleCase("/" + sectionOf(p))}` });
   hub.push({ href: "/explore", label: "Explore all signals" });
   groups.push({ title: "Browse", links: hub });
 
