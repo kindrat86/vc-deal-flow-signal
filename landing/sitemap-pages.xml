@@ -2,6 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://gitdealflow.com</loc>
+    <lastmod>2026-08-15</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/2025</loc>
@@ -469,7 +470,7 @@
   </url>
   <url>
     <loc>https://gitdealflow.com/dataset</loc>
-    <lastmod>2026-08-14</lastmod>
+    <lastmod>2026-08-15</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/datasets</loc>
@@ -673,7 +674,6 @@
   </url>
   <url>
     <loc>https://gitdealflow.com/glossary</loc>
-    <lastmod>2026-08-14</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/glossary/anti-dilution</loc>
@@ -686,6 +686,9 @@
   <url>
     <loc>https://gitdealflow.com/glossary/board-seats</loc>
     <lastmod>2026-08-14</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/bot-filter</loc>
   </url>
   <url>
     <loc>https://gitdealflow.com/glossary/burn-multiple</loc>
@@ -704,16 +707,37 @@
     <lastmod>2026-08-14</lastmod>
   </url>
   <url>
+    <loc>https://gitdealflow.com/glossary/code-side-sourcing</loc>
+  </url>
+  <url>
     <loc>https://gitdealflow.com/glossary/cohort-analysis</loc>
     <lastmod>2026-08-14</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/commit-velocity</loc>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/commit-velocity-acceleration-engine</loc>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/commit-velocity-change</loc>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/contributor-growth</loc>
   </url>
   <url>
     <loc>https://gitdealflow.com/glossary/convertible-note</loc>
     <lastmod>2026-08-14</lastmod>
   </url>
   <url>
+    <loc>https://gitdealflow.com/glossary/deal-flow-signal</loc>
+  </url>
+  <url>
     <loc>https://gitdealflow.com/glossary/decacorn</loc>
     <lastmod>2026-08-14</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/deploy-frequency-spike</loc>
   </url>
   <url>
     <loc>https://gitdealflow.com/glossary/dilution</loc>
@@ -724,8 +748,20 @@
     <lastmod>2026-08-14</lastmod>
   </url>
   <url>
+    <loc>https://gitdealflow.com/glossary/engineering-acceleration</loc>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/engineering-hiring-burst</loc>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/framework-migration</loc>
+  </url>
+  <url>
     <loc>https://gitdealflow.com/glossary/information-rights</loc>
     <lastmod>2026-08-14</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/infrastructure-buildout</loc>
   </url>
   <url>
     <loc>https://gitdealflow.com/glossary/liquidation-preference</loc>
@@ -800,6 +836,9 @@
     <lastmod>2026-08-14</lastmod>
   </url>
   <url>
+    <loc>https://gitdealflow.com/glossary/scout-score</loc>
+  </url>
+  <url>
     <loc>https://gitdealflow.com/glossary/seed-round</loc>
     <lastmod>2026-08-14</lastmod>
   </url>
@@ -826,6 +865,12 @@
   <url>
     <loc>https://gitdealflow.com/glossary/term-sheet</loc>
     <lastmod>2026-08-14</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/top-contributor-concentration</loc>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/glossary/two-period-confirmation</loc>
   </url>
   <url>
     <loc>https://gitdealflow.com/glossary/unicorn</loc>
