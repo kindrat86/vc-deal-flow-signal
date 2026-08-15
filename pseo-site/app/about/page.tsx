@@ -249,7 +249,7 @@ export default function AboutPage() {
             of Code-Side Sourcing, the practice of using public GitHub
             repository-velocity data as a leading indicator of venture-stage
             outcomes. It tracks commit velocity, contributor growth, and
-            repository expansion across 369 venture-backed startups in 15 sectors, surfacing breakout engineering teams 3-6 weeks before
+            repository expansion across 350+ venture-backed startups in 15 sectors, surfacing breakout engineering teams 3-6 weeks before
             fundraise announcements. The methodology is published on SSRN
             under CC BY 4.0. The founder operates under the pseudonym The
             Data Nerd (ORCID 0009-0002-2222-4112, Wikidata Q139376302).
