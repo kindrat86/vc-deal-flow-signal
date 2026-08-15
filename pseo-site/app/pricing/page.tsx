@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentSummary } from "@/components/AgentSummary";
 import { getDataLastModified } from "@/lib/data";
+import { FRESH_YEAR } from "@/lib/freshness-year";
 import PSEOFooterNav from "@/components/PSEOFooterNav";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { HreflangLinks } from "@/components/HreflangLinks";
@@ -367,7 +368,9 @@ function tierToOffer(tier: Tier) {
     availability: "https://schema.org/InStock",
     category: tier.priceCadence === "one-time" ? "one-time" : "subscription",
     seller: { "@id": "https://gitdealflow.com/#organization" },
-    ...(priceNumber > 0 ? { priceValidUntil: "2026-12-31" } : {}),
+    ...(priceNumber > 0
+      ? { priceValidUntil: `${FRESH_YEAR + 1}-12-31` }
+      : {}),
   };
 
   if (tier.priceCadence === "/mo" || tier.priceCadence === "/yr") {
@@ -421,6 +424,9 @@ export default function PricingPage() {
         "@id": "https://signals.gitdealflow.com/#softwareapplication",
         name: "VC Deal Flow Signal",
         alternateName: "GitDealFlow",
+        // 2026-08-17 traffic-audit fix: offers-bearing nodes get classified as
+        // Merchant listings by GSC; image is the CRITICAL field (08-06 incident).
+        image: "https://signals.gitdealflow.com/opengraph-image",
         applicationCategory: "BusinessApplication",
         applicationSubCategory: "Investment Research",
         operatingSystem: "Web, MCP-compatible AI clients (Claude, Cursor, Windsurf)",
@@ -434,7 +440,7 @@ export default function PricingPage() {
           lowPrice,
           highPrice,
           offerCount: tiers.length,
-          priceValidUntil: "2026-12-31",
+          priceValidUntil: `${FRESH_YEAR + 1}-12-31`,
           availability: "https://schema.org/InStock",
           offers,
         },

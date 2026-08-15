@@ -433,6 +433,9 @@ export function RootIdentitySchema() {
         applicationSubCategory: "Venture Capital Alternative Data",
         operatingSystem: "Web",
         url: `${SITE}/dashboard`,
+        // 2026-08-17: image on the offers-bearing site-wide software node
+        // (merchant-listing classification requires it; critical GSC field).
+        image: [`${SITE}/opengraph-image`],
         // SoftwareApplication-level Wikidata claim, Q7397 = "software".
         // identifier carries the publisher-side Wikidata QID for graph
         // collapse with the Organization node.
