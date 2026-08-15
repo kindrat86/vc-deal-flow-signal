@@ -26,6 +26,7 @@ const TOPICS = [
   `${BASE_URL}/feed.xml`,
   `${BASE_URL}/atom.xml`,
   `${BASE_URL}/rss.xml`,
+  `${BASE_URL}/feed.json`,
 ];
 
 async function notify(hub: string, topic: string): Promise<void> {

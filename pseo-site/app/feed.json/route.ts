@@ -157,7 +157,6 @@ export async function GET() {
     hubs: [
       { type: "WebSub", url: "https://pubsubhubbub.appspot.com/" },
       { type: "WebSub", url: "https://pubsubhubbub.superfeedr.com/" },
-      { type: "WebSub", url: "https://websubhub.com/" },
     ],
   };
 

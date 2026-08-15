@@ -13,8 +13,7 @@
   ],
   "_hubs": [
     "https://pubsubhubbub.appspot.com/",
-    "https://pubsubhubbub.superfeedr.com/",
-    "https://websubhub.com/"
+    "https://pubsubhubbub.superfeedr.com/"
   ],
   "_site": {
     "domain": "gitdealflow.com",

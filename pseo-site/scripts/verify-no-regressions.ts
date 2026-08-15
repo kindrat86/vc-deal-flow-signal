@@ -2674,12 +2674,12 @@ check(
 
 // ---------------------------------------------------------------------------
 // §29 locale-topic summary noindex (2026-08-17, hreflang/i18n audit win).
-// 74 of 96 locale topic pages are short hand-written summaries (98-262 body
+// 77 of 96 locale topic pages are short hand-written summaries (98-397 body
 // words) that were competing with the English canonical for thin/duplicate
 // content. They are now NOINDEXED + canonicalized to English, and dropped from
-// hreflang + the i18n sitemap; only the 22 full long-form translations
-// (ja/ko all-8, zh methodology/signals/research/about, es/fr signals) and the
-// 12 hand-curated homepages stay indexable. A reverted tree re-indexes 74 thin
+// hreflang + the i18n sitemap; only the 19 full long-form translations
+// (ja all-8, ko 7, zh methodology/signals/research/about) and the
+// 12 hand-curated homepages stay indexable. A reverted tree re-indexes 77 thin
 // pages and re-opens the canonical ambiguity the site's own /translations
 // policy warns against.
 // ---------------------------------------------------------------------------
@@ -2692,9 +2692,9 @@ check(
     s.includes('"ja/methodology"') &&
     s.includes('"ko/signals"') &&
     s.includes('"zh/about"') &&
-    s.includes('"es/signals"') &&
-    s.includes('"fr/signals"'),
-  "restore FULL_TRANSLATION_TOPICS (22 full translations) + isLocaleTopicSummary() in content/locale-topics.ts",
+    !s.includes('"es/signals"') &&
+    !s.includes('"fr/signals"'),
+  "restore FULL_TRANSLATION_TOPICS (19 full translations) + isLocaleTopicSummary() in content/locale-topics.ts (es/signals + fr/signals are summaries, not full)",
 );
 check(
   "app/[locale]/[topic]/page.tsx",
@@ -2818,6 +2818,58 @@ check(
     s.includes("Not yet tracked") &&
     (s.match(/<h2/g) ?? []).length >= 7,
   "re-section the page: add H2s for the tier card, metrics grid, tracked-as card, and untracked status card",
+);
+
+
+// ---------------------------------------------------------------------------
+// Dead WebSub hub + missing JSON Feed ping (2026-08-16). websubhub.com
+// returns 404 on publish; only pubsubhubbub.appspot.com and
+// pubsubhubbub.superfeedr.com are functioning hubs. A declared-but-dead hub
+// in feed discovery makes strict WebSub readers fail subscription instead of
+// falling back to a live hub. The generator
+// (~/portfolio/scripts/websub-feed-generator.py) was fixed the same day;
+// these checks keep any lineage from reintroducing either defect.
+// ---------------------------------------------------------------------------
+check(
+  "app/feed.json/route.ts",
+  "Dead WebSub hub websubhub.com re-declared in /feed.json hub discovery",
+  (s) => !s.includes("websubhub.com"),
+  "remove the websubhub.com entry; keep only pubsubhubbub.appspot.com + pubsubhubbub.superfeedr.com",
+);
+check(
+  "scripts/submit-websub.ts",
+  "WebSub publish ping no longer covers /feed.json (the agent-native feed)",
+  (s) => s.includes("${BASE_URL}/feed.json"),
+  "add `${BASE_URL}/feed.json` to the TOPICS array so JSON Feed subscribers receive publish notifications",
+);
+
+// ---------------------------------------------------------------------------
+// §32 query-matched FAQ rich results + single BreadcrumbList on /vs+/compare
+// (2026-08-17, audit "rich-result eligibility 65" execution). GSC 90d showed
+// "does harmonic integrate with affinity?" at 121 impressions / position 6.7 /
+// 0 clicks with the token "integrate" absent from every /vs page; and /vs +
+// /compare URLs emitted TWO BreadcrumbList nodes (curated + auto), a GSC
+// duplicate-breadcrumb rich-result error. Reverting either re-opens the gap.
+// ---------------------------------------------------------------------------
+check(
+  "content/competitor-vs.ts",
+  "§32 the query-matched integration FAQ on affinity-vs-harmonic-ai was dropped (the GSC top-10 question query loses its only extractable answer on this domain)",
+  (s) =>
+    s.includes("Does Harmonic.ai integrate with Affinity?") &&
+    s.includes("faqs?: { question: string; answer: string }[]"),
+  "restore the faqs? field on CompetitorVs and the sourced integration FAQ on the affinity-vs-harmonic-ai pair",
+);
+check(
+  "app/vs/[slug]/page.tsx",
+  "§32 the /vs template no longer renders per-pair FAQs (pair.faqs orphaned in data, query-matched Q&A invisible to users and FAQPage JSON-LD)",
+  (s) => s.includes("[...(pair.faqs ?? []), ...faqs]") && s.includes("mergedFaqs.map"),
+  "restore the mergedFaqs merge and render both the FAQPage mainEntity and the visible FAQ list from mergedFaqs",
+);
+check(
+  "components/BreadcrumbsSchema.tsx",
+  "§32 the auto BreadcrumbList no longer yields to the curated /vs + /compare trails (duplicate-breadcrumb rich-result error is back on the highest-value comparison pages)",
+  (s) => s.includes('"/vs/"') && s.includes('"/compare/"') && s.includes('pathname === "/vs"'),
+  "restore the /vs/ and /compare/ SKIP_PREFIXES entries and the exact-path hub skip",
 );
 
 // ---------------------------------------------------------------------------
