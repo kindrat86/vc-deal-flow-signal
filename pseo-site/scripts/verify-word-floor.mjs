@@ -63,7 +63,18 @@ function visibleWords(html) {
     .replace(/&amp;/g, "&")
     .replace(/&nbsp;/g, " ");
   t = t.replace(/\s+/g, " ").trim();
-  return t ? t.split(" ").length : 0;
+  if (!t) return 0;
+  const latinWords = t.split(" ").length;
+  // CJK scripts (Chinese hanzi, Japanese kana, Korean Hangul) do not
+  // separate words with spaces, so a whitespace-split count understates
+  // them by 10-30x. Count each ideograph/kana/Hangul syllable as one word
+  // (character-as-word proxy). This only ever RAISES a page's count, so it
+  // can retire false thin-positives (e.g. ja/methodology, ~2000 words of
+  // native Japanese measuring 264) but never lets a genuinely thin page
+  // slip under the floor.
+  const cjk = (t.match(/[\u3040-\u30ff\u3400-\u9fff\uac00-\ud7af]/g) || [])
+    .length;
+  return latinWords + cjk;
 }
 
 function isNoindex(html) {
