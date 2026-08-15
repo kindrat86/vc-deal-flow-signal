@@ -2867,9 +2867,13 @@ check(
 );
 check(
   "components/BreadcrumbsSchema.tsx",
-  "§32 the auto BreadcrumbList no longer yields to the curated /vs + /compare trails (duplicate-breadcrumb rich-result error is back on the highest-value comparison pages)",
-  (s) => s.includes('"/vs/"') && s.includes('"/compare/"') && s.includes('pathname === "/vs"'),
-  "restore the /vs/ and /compare/ SKIP_PREFIXES entries and the exact-path hub skip",
+  "§32 the auto BreadcrumbList no longer yields to curated breadcrumb families (duplicate-breadcrumb rich-result error returns: every /vs, /compare, /answers, /alternatives, /best, /city, /sector, /tools, /faq URL would emit two BreadcrumbList nodes)",
+  (s) =>
+    s.includes("CURATED_BREADCRUMB_FAMILIES") &&
+    s.includes('"/vs"') &&
+    s.includes('"/faq"') &&
+    s.includes("pathname === f || pathname.startsWith(f + \"/\")"),
+  "restore the CURATED_BREADCRUMB_FAMILIES list and the exact-or-child skip in BreadcrumbsSchema.tsx",
 );
 
 // ---------------------------------------------------------------------------

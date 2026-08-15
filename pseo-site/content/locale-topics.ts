@@ -1603,7 +1603,11 @@ En VC Deal Flow Signal, una **señal** es un cambio observable y medible en la a
 
 ## Por qué importa el cambio, no el valor absoluto
 
-Una empresa con 5 commits diarios que pasa a 50 emite una señal mucho más fuerte que una con 200 commits diarios estables. La metodología completa, el cuaderno de réplica y la justificación estadística están publicados en SSRN (DOI 10.2139/ssrn.6606558, CC BY 4.0).`,
+Una empresa con 5 commits diarios que pasa a 50 emite una señal mucho más fuerte que una con 200 commits diarios estables. La metodología completa, el cuaderno de réplica y la justificación estadística están publicados en SSRN (DOI 10.2139/ssrn.6606558, CC BY 4.0).
+
+## Cómo interpretar estas señales en conjunto
+
+Ninguna señal individual es una orden de compra. El valor está en la convergencia: una aceleración de velocidad junto a crecimiento de contribuyentes y nuevos repositorios es más informativa que cualquiera de ellas por separado. Cruce siempre con fuentes externas como Crunchbase, anuncios de contratación y menciones de la comunidad antes de tomar una decisión.`,
     englishLinkLabel: "Glosario completo de señales (en inglés)",
     readTimeLabel: "≈ 2 min",
   },
@@ -3043,12 +3047,14 @@ export function getAllLocaleTopicPairs(): { locale: string; topic: string }[] {
  * Policy (content/locales.ts header + /translations): "we do NOT ship
  * machine-translated full-site copy" and Google penalizes thin/translated
  * pages. Only these locales received full long-form translations (rendered
- * ≥400 words, above the word-floor guard): Japanese and Korean (all 8 topics
- * each), Chinese (methodology/signals/research/about), and Spanish/French
- * (signals only). The other 74 locale-topic pages render at 98-262 body words
- * and are summaries by design.
+ * ≥400 words, above the word-floor guard, verified 08-16 against the actual
+ * word-floor build output): Japanese (all 8 topics), Korean (all 8 except
+ * citations), and Chinese (methodology/signals/research/about). es/signals,
+ * fr/signals and ko/citations render 380-395 words, under the 400 floor,
+ * so they are summaries, not full translations. The other 77 locale-topic
+ * pages render at 98-397 body words and are summaries by design.
  *
- * The 74 summaries are NOINDEXED (robots meta) and dropped from hreflang +
+ * The 77 summaries are NOINDEXED (robots meta) and dropped from hreflang +
  * the i18n sitemap, so they cannot compete with the English canonical for
  * thin/duplicate content. The 12 hand-curated homepages (app/[locale]) stay
  * indexable: they are the intended landing surface. This is the exact
@@ -3065,13 +3071,12 @@ export const FULL_TRANSLATION_TOPICS: ReadonlySet<string> = new Set([
   "ja/citations",
   "ja/pricing",
   "ja/about",
-  // ko: all 8 topics
+  // ko: 7 topics (citations renders 380 words, under floor -> summary)
   "ko/methodology",
   "ko/glossary",
   "ko/faq",
   "ko/signals",
   "ko/research",
-  "ko/citations",
   "ko/pricing",
   "ko/about",
   // zh: methodology/signals/research/about are full; the other 4 are summaries
@@ -3079,9 +3084,6 @@ export const FULL_TRANSLATION_TOPICS: ReadonlySet<string> = new Set([
   "zh/signals",
   "zh/research",
   "zh/about",
-  // es / fr: signals only reached full length
-  "es/signals",
-  "fr/signals",
 ]);
 
 /** True when a locale topic page is a summary (noindex), not a full translation. */
