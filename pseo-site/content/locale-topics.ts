@@ -3035,3 +3035,56 @@ export function getLocaleTopic(
 export function getAllLocaleTopicPairs(): { locale: string; topic: string }[] {
   return LOCALE_TOPICS.map((t) => ({ locale: t.locale, topic: t.topic }));
 }
+
+/**
+ * Full-translation topics (indexable). Everything else in LOCALE_TOPICS is a
+ * short hand-written summary that links back to the canonical English page.
+ *
+ * Policy (content/locales.ts header + /translations): "we do NOT ship
+ * machine-translated full-site copy" and Google penalizes thin/translated
+ * pages. Only these locales received full long-form translations (rendered
+ * ≥400 words, above the word-floor guard): Japanese and Korean (all 8 topics
+ * each), Chinese (methodology/signals/research/about), and Spanish/French
+ * (signals only). The other 74 locale-topic pages render at 98-262 body words
+ * and are summaries by design.
+ *
+ * The 74 summaries are NOINDEXED (robots meta) and dropped from hreflang +
+ * the i18n sitemap, so they cannot compete with the English canonical for
+ * thin/duplicate content. The 12 hand-curated homepages (app/[locale]) stay
+ * indexable: they are the intended landing surface. This is the exact
+ * "trim to the languages that matter" resolution from the 2026-08-15 audit's
+ * hreflang finding (score 68), not a translation pass.
+ */
+export const FULL_TRANSLATION_TOPICS: ReadonlySet<string> = new Set([
+  // ja: all 8 topics are full long-form (911-1933 body words)
+  "ja/methodology",
+  "ja/glossary",
+  "ja/faq",
+  "ja/signals",
+  "ja/research",
+  "ja/citations",
+  "ja/pricing",
+  "ja/about",
+  // ko: all 8 topics
+  "ko/methodology",
+  "ko/glossary",
+  "ko/faq",
+  "ko/signals",
+  "ko/research",
+  "ko/citations",
+  "ko/pricing",
+  "ko/about",
+  // zh: methodology/signals/research/about are full; the other 4 are summaries
+  "zh/methodology",
+  "zh/signals",
+  "zh/research",
+  "zh/about",
+  // es / fr: signals only reached full length
+  "es/signals",
+  "fr/signals",
+]);
+
+/** True when a locale topic page is a summary (noindex), not a full translation. */
+export function isLocaleTopicSummary(locale: string, topic: string): boolean {
+  return !FULL_TRANSLATION_TOPICS.has(`${locale}/${topic}`);
+}

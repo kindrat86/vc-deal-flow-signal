@@ -5,6 +5,7 @@ import {
   getLocaleTopic,
   getAllLocaleTopicPairs,
   LOCALE_TOPICS,
+  isLocaleTopicSummary,
 } from "@/content/locale-topics";
 import { LOCALES, getLocaleByCode } from "@/content/locales";
 import { topicEnPath } from "@/lib/hreflang";
@@ -33,6 +34,8 @@ export async function generateMetadata({
   if (!t) return {};
   const localeMeta = getLocaleByCode(locale);
   if (!localeMeta) return {};
+  const summary = isLocaleTopicSummary(locale, topic);
+  const enPath = topicEnPath(topic);
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
   return {
     // absolute: titles that already name the brand (11 localized About pages)
@@ -41,7 +44,13 @@ export async function generateMetadata({
       ? { absolute: t.title }
       : t.title,
     description: t.intro,
-    alternates: { canonical: `/${locale}/${topic}` },
+    // A summary page is noindexed and points its canonical at the English
+    // source of truth, so it can never compete with /<topic> for the same
+    // query (thin/duplicate-content + canonical ambiguity, see /translations).
+    alternates: {
+      canonical: summary && enPath ? enPath : `/${locale}/${topic}`,
+    },
+    ...(summary ? { robots: { index: false, follow: true } } : {}),
     openGraph: {
       title: t.title,
       description: t.intro,
@@ -194,24 +203,34 @@ export default async function LocaleTopicPage({ params }: PageProps) {
   if (!localeMeta) notFound();
 
   const englishCanonical = topicEnPath(topic);
-  // Sibling locales that have THIS topic (for inter-locale switcher)
+  const summary = isLocaleTopicSummary(locale, topic);
+  // Sibling locales that have THIS topic as a full translation (for the
+  // inter-locale switcher). Summary siblings are excluded: a noindexed page
+  // must not be advertised as a language alternate.
   const siblings = LOCALE_TOPICS.filter(
-    (x) => x.topic === topic && x.locale !== locale,
+    (x) =>
+      x.topic === topic && x.locale !== locale && !isLocaleTopicSummary(x.locale, x.topic),
   );
 
   // Hreflang map: Next 16 drops metadata.alternates.languages, so we
   // emit <link rel="alternate" hreflang> directly in the page tree.
+  // A summary page advertises NO alternates (it is noindexed and canonicalized
+  // to English); a full translation advertises English + every full sibling.
   const hreflangMap: Record<string, string> = {};
-  if (englishCanonical) {
-    hreflangMap.en = `${SITE}${englishCanonical}`;
-    hreflangMap["en-US"] = `${SITE}${englishCanonical}`;
-    hreflangMap["x-default"] = `${SITE}${englishCanonical}`;
-  } else {
-    hreflangMap["x-default"] = `${SITE}/${locale}/${topic}`;
-  }
-  // Add every sibling locale that has this topic (incl. self for clarity).
-  for (const x of LOCALE_TOPICS.filter((y) => y.topic === topic)) {
-    hreflangMap[x.locale] = `${SITE}/${x.locale}/${topic}`;
+  if (!summary) {
+    if (englishCanonical) {
+      hreflangMap.en = `${SITE}${englishCanonical}`;
+      hreflangMap["en-US"] = `${SITE}${englishCanonical}`;
+      hreflangMap["x-default"] = `${SITE}${englishCanonical}`;
+    } else {
+      hreflangMap["x-default"] = `${SITE}/${locale}/${topic}`;
+    }
+    // Add every full-translation locale that has this topic (incl. self).
+    for (const x of LOCALE_TOPICS.filter(
+      (y) => y.topic === topic && !isLocaleTopicSummary(y.locale, y.topic),
+    )) {
+      hreflangMap[x.locale] = `${SITE}/${x.locale}/${topic}`;
+    }
   }
 
   // Article schema. Only include translationOfWork when an English

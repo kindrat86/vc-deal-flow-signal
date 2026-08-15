@@ -2665,6 +2665,48 @@ check(
 );
 
 // ---------------------------------------------------------------------------
+// §29 locale-topic summary noindex (2026-08-17, hreflang/i18n audit win).
+// 74 of 96 locale topic pages are short hand-written summaries (98-262 body
+// words) that were competing with the English canonical for thin/duplicate
+// content. They are now NOINDEXED + canonicalized to English, and dropped from
+// hreflang + the i18n sitemap; only the 22 full long-form translations
+// (ja/ko all-8, zh methodology/signals/research/about, es/fr signals) and the
+// 12 hand-curated homepages stay indexable. A reverted tree re-indexes 74 thin
+// pages and re-opens the canonical ambiguity the site's own /translations
+// policy warns against.
+// ---------------------------------------------------------------------------
+check(
+  "content/locale-topics.ts",
+  "locale-topic summary allowlist/helper missing (FULL_TRANSLATION_TOPICS or isLocaleTopicSummary)",
+  (s) =>
+    s.includes("export const FULL_TRANSLATION_TOPICS") &&
+    s.includes("export function isLocaleTopicSummary") &&
+    s.includes('"ja/methodology"') &&
+    s.includes('"ko/signals"') &&
+    s.includes('"zh/about"') &&
+    s.includes('"es/signals"') &&
+    s.includes('"fr/signals"'),
+  "restore FULL_TRANSLATION_TOPICS (22 full translations) + isLocaleTopicSummary() in content/locale-topics.ts",
+);
+check(
+  "app/[locale]/[topic]/page.tsx",
+  "locale-topic page lost the summary noindex + canonical-to-English + hreflang filter",
+  (s) =>
+    s.includes("isLocaleTopicSummary") &&
+    s.includes("robots: { index: false, follow: true }") &&
+    s.includes("canonical: summary && enPath ? enPath"),
+  "restore the summary noindex, English canonical, and full-translation-only hreflang map in the locale-topic page",
+);
+check(
+  "lib/hreflang.ts",
+  "hreflang / i18n-sitemap no longer filter summary topics",
+  (s) =>
+    s.includes("isLocaleTopicSummary") &&
+    s.includes("!isLocaleTopicSummary(t.locale, t.topic)"),
+  "filter summary topics out of getHreflangLanguages + getI18nSitemapEntries via isLocaleTopicSummary",
+);
+
+// ---------------------------------------------------------------------------
 // §30 paginated startup directory (2026-08-17, audit "Pagination 60" win).
 // The ~495 live /startup/[slug] profiles had no paginated hub discovery: the
 // sector/city hubs pointed at the curated /signal corpus, and the ranked

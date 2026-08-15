@@ -17,7 +17,7 @@
  * Together this satisfies Google's mutual-link requirement on both sides.
  */
 
-import { LOCALE_TOPICS } from "@/content/locale-topics";
+import { LOCALE_TOPICS, isLocaleTopicSummary } from "@/content/locale-topics";
 import { JA_FINDINGS } from "@/content/ja-research";
 import { LOCALES } from "@/content/locales";
 
@@ -81,7 +81,9 @@ export function getHreflangLanguages(
   };
   const topic = PATH_TO_TOPIC[englishPath];
   if (topic) {
-    for (const lt of LOCALE_TOPICS.filter((t) => t.topic === topic)) {
+    for (const lt of LOCALE_TOPICS.filter(
+      (t) => t.topic === topic && !isLocaleTopicSummary(t.locale, t.topic),
+    )) {
       out[lt.locale] = `${SITE}/${lt.locale}/${topic}`;
     }
   }
@@ -145,7 +147,9 @@ export function getI18nSitemapEntries(): {
         { hreflang: "x-default", href: enUrl },
       );
     }
-    for (const lt of LOCALE_TOPICS.filter((t) => t.topic === topic)) {
+    for (const lt of LOCALE_TOPICS.filter(
+      (t) => t.topic === topic && !isLocaleTopicSummary(t.locale, t.topic),
+    )) {
       alternates.push({
         hreflang: lt.locale,
         href: `${SITE}/${lt.locale}/${topic}`,
