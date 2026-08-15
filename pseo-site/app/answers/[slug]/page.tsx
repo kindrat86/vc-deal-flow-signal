@@ -119,6 +119,29 @@ function buildJsonLd(q: AgentQuery): object {
         },
       },
       {
+        // §23 AEO (2026-08-16): the core Question/Answer pair as real nodes.
+        // The AskAction below has referenced #question / #answer @ids since
+        // F37, but the nodes themselves were never emitted, so every
+        // extraction engine resolving those refs found nothing. The Answer
+        // text is q.tldr, the same 40-60 word direct answer rendered in the
+        // AgentSummary and selected by the Speakable spec, so schema, visible
+        // page, and speakable passage all agree on one extractable answer.
+        "@type": "Question",
+        "@id": `${url}#question`,
+        name: q.h1,
+        text: q.query,
+        answerCount: 1,
+        acceptedAnswer: { "@id": `${url}#answer` },
+        isPartOf: { "@id": `${url}#webpage` },
+      },
+      {
+        "@type": "Answer",
+        "@id": `${url}#answer`,
+        text: q.tldr,
+        url,
+        parentItem: { "@id": `${url}#question` },
+      },
+      {
         // AskAction: machine-actionable hint that this question can be
         // re-asked programmatically against /api/answer (single best) or
         // /api/ask (top-N). Voice assistants and AI Overviews use AskAction
@@ -166,15 +189,30 @@ function buildJsonLd(q: AgentQuery): object {
         ],
       },
       {
+        // §23 AEO (2026-08-16): the page's own core question is mirrored as
+        // mainEntity[0] so FAQPage consumers (AI Overviews, PAA, assistants)
+        // see the page's primary Q→A, not just the auxiliary faqs. The answer
+        // text is the same tldr emitted on the #answer node and rendered in
+        // the AgentSummary block: one extractable answer, three surfaces.
         "@type": "FAQPage",
-        mainEntity: q.faqs.map((f) => ({
-          "@type": "Question",
-          name: f.q,
-          acceptedAnswer: {
-            "@type": "Answer",
-            text: f.a,
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: q.h1,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: q.tldr,
+            },
           },
-        })),
+          ...q.faqs.map((f) => ({
+            "@type": "Question",
+            name: f.q,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: f.a,
+            },
+          })),
+        ],
       },
       // HowTo (2026-08-15 AIO rebuild): semantic step list for answer
       // engines and AI Overviews. Only emitted when the entry defines steps.

@@ -638,7 +638,7 @@ npx -y @gitdealflow/mcp-signal
     description:
       "Scout Score (0-100) grades any GitHub user's starring history against a curated database of validated unicorns. Free tool, no login, instant shareable card. Free MCP tool included.",
     tldr:
-      "Scout Score (0-100) grades any GitHub user on how many validated unicorns / Series A+ raises / acquisitions they starred *before* the event happened. Computed from public starring history vs. a curated database of ~75 wins. Available as a free no-login web tool, a public API, an embeddable README badge, and an MCP tool. Rank ladder: Curious → Scout → Sharp → Elite → Oracle.",
+      "Scout Score (0-100) grades any GitHub user on how many validated unicorns, Series A+ raises, and acquisitions they starred before the event happened. Computed from public starring history against a curated database of roughly 75 wins. Free as a web tool, an API, an embeddable badge, and an MCP tool. Rank ladder: Curious, Scout, Sharp, Elite, Oracle.",
     body: `**Scout Score** is a 0-100 metric that grades a GitHub user's investment taste based on their starring history. It answers the question: of the validated unicorns and big-funding events that happened in the last five years, how many did this person star *before* the event?
 
 **How it's computed.** GitDealFlow maintains a curated database of ~75 validated wins, companies that hit a $1B+ valuation, raised a Series A or later, were acquired, or crossed 25K+ stars. For each user, the algorithm pulls their public starring history, cross-references each starred repo against the wins database, and computes points: \`weight × min(months_early / 24, 1.0)\`, capped at \`weight\`. Top 5 wins by points are summed and normalized so 5 perfect early calls = 100.
@@ -1046,7 +1046,7 @@ npx -y @gitdealflow/mcp-signal
     description:
       "MCP is for AI-agent runtimes; REST is for code. GitDealFlow exposes both for the same dataset. Decision framework: pick MCP if your runtime is Claude / Cursor / Windsurf, REST if it's a Python / Node script.",
     tldr:
-      "MCP is the right choice when your runtime is an AI agent host (Claude Desktop, Cursor, Windsurf, ChatGPT Apps). REST is the right choice when your runtime is a Python / Node / Go script, a CRM webhook, or a pipeline that doesn't speak Model Context Protocol. GitDealFlow exposes the same dataset over both, pick the one that matches your stack, or use both freely.",
+      "MCP is the right choice when your runtime is an AI-agent host such as Claude Desktop, Cursor, Windsurf, or ChatGPT Apps; REST is right when your runtime is a Python, Node, or Go script, a CRM webhook, or a pipeline that does not speak Model Context Protocol. GitDealFlow exposes the same dataset over both, so pick whichever matches your stack.",
     body: `**MCP (Model Context Protocol)** is a standard for AI agents to invoke tools. **REST APIs** are the standard for software-to-software calls. They overlap, both can return JSON over HTTP, but they differ in what they assume about the caller.
 
 **Pick MCP when:**
@@ -1189,7 +1189,7 @@ For agent runtimes that don't yet support MCP, GitDealFlow exposes the same tool
     description:
       "Four GitHub-observable patterns precede fundraise announcements by 3-6 weeks: commit-velocity surge, contributor growth, infrastructure buildout, and repo-creation bursts. Validated against 219 startup-period observations in a public SSRN preprint.",
     tldr:
-      "Four GitHub-observable patterns have historically preceded fundraise announcements by 3-6 weeks: (1) commits-per-day rising 50%+ in a 14-day window, (2) contributor count rising 30%+ in the same window, (3) infrastructure-shape commits (Docker, k8s, CI, monitoring) appearing in volume, and (4) repository-creation bursts (3+ new public repos in a month). Each signal alone is noisy; combined, they yield the strongest predictive lift on a 219-startup panel published in an SSRN preprint at ssrn.com/abstract=6606558.",
+      "Four GitHub-observable patterns have historically preceded fundraise announcements by 3-6 weeks: commits per day rising 50%+ in a 14-day window, contributor count rising 30%+, infrastructure-shape commits (Docker, k8s, CI, monitoring) appearing in volume, and repository-creation bursts of 3+ new public repos in a month. Each is noisy alone; combined they carry the strongest lift on the 219-startup SSRN panel.",
     body: `Across the 219-observation descriptive panel published in the GitDealFlow SSRN preprint, four public GitHub patterns showed reproducible lead times of 3-6 weeks before announced fundraises.
 
 **Signal 1, Commit-velocity surge.** Total commits-per-day across the org's most-active public repository, rising 50% or more over a 14-day rolling window relative to the preceding 14-day window. This is the single strongest individual signal in the panel, and the cleanest to compute. Most other signals correlate with this one.
@@ -1346,7 +1346,7 @@ For agent runtimes that don't yet support MCP, GitDealFlow exposes the same tool
     description:
       "Investors using Claude, Claude Code, Cursor, or Windsurf can plug in MCP servers for live VC data. GitDealFlow MCP is the most-installed read-only MCP for VC research, six free tools, no API key.",
     tldr:
-      "If you use Claude, Claude Code, Cursor, or Windsurf for investment research, install the GitDealFlow MCP server (@gitdealflow/mcp-signal). It exposes six free read-only tools, trending startups, sector lookup, signal lookup, summary, scout receipts, and methodology, that let the AI query live VC data instead of relying on stale training data. No API key, no rate limits beyond GitHub's underlying limits, install in one command.",
+      "If you use Claude, Claude Code, Cursor, or Windsurf for investment research, install the GitDealFlow MCP server (@gitdealflow/mcp-signal). It exposes six free read-only tools covering trending startups, sector lookup, signal lookup, summary, scout receipts, and methodology, letting the AI query live VC data instead of stale training data. No API key, one-command install.",
     body: `AI tools, Claude Desktop, Claude Code, Cursor, Windsurf, are excellent for investment-memo writing and synthesis but blind to current data. Their training cutoffs are months old; they cannot see this week's GitHub commits, this week's startup signals, or this week's funding patterns. The Model Context Protocol (MCP) solves this by letting you plug structured data tools into the AI's runtime.
 
 For VC research the canonical install is **the GitDealFlow MCP server** (\`@gitdealflow/mcp-signal\` on npm). Six read-only tools cover the full research workflow:
@@ -1431,7 +1431,7 @@ The tools are free in perpetuity. There is no API key gate. The free tier is str
     description:
       "Lagging signals (Crunchbase, PitchBook, TechCrunch) record events after they happen, useful for context, useless for sourcing. Leading signals (GitHub engineering acceleration, hiring spikes) fire before the event and let you get in early.",
     tldr:
-      "A lagging VC signal fires after a known event has occurred (Crunchbase alert on a closed round, PitchBook funding entry, TechCrunch coverage). A leading signal fires before the event (GitHub commit-velocity surge, contributor-growth spike, infrastructure buildout). Leading signals are noisier but enable pre-fundraise sourcing; lagging signals are cleaner but only useful for verification and context. Best practice: route on leading signals, confirm with lagging.",
+      "A lagging VC signal fires after a known event: a Crunchbase alert on a closed round, a PitchBook entry, TechCrunch coverage. A leading signal fires before it: a GitHub commit-velocity surge, contributor-growth spike, or infrastructure buildout. Leading signals are noisier but enable pre-fundraise sourcing; best practice is to route on leading signals and confirm with lagging ones.",
     body: `**Lagging signals** fire after the event you care about has already happened. Crunchbase alerts trigger when a funding round closes and the press release goes out. PitchBook records the round shortly after. TechCrunch and Information coverage lands after the founder agrees to be quoted. By the time these signals fire, the round is already competitive or fully subscribed. They are excellent for context, verification, and post-event analysis. They are not useful for getting into rounds early.
 
 **Leading signals** fire before the event you care about. Examples:
@@ -1508,7 +1508,7 @@ The tools are free in perpetuity. There is no API key gate. The free tier is str
     description:
       "For OSS-first dev-tools startups, evaluate five public signals: commit-velocity trend, contributor diversity, issue/PR response time, infrastructure code patterns, and founder Scout Score. All visible on GitHub.",
     tldr:
-      "Evaluating a dev-tools startup is unusually well-suited to public-data analysis because the product, the community, and the early traction are all on GitHub. Check five signals: (1) sustained commit-velocity growth over 90 days (not just star spikes), (2) contributor diversity widening rather than concentrated, (3) fast issue/PR response time as a proxy for operator quality, (4) infrastructure code (Docker, k8s, CI/CD) indicating production-scale preparation, (5) founder Scout Score at /receipts as a fast read on technical taste.",
+      "Dev-tools startups are unusually well suited to public-data analysis because the product, the community, and the traction all live on GitHub. Check five signals: sustained 90-day commit-velocity growth (not star spikes), widening contributor diversity, fast issue and PR response time as an operator-quality proxy, infrastructure code indicating production scale, and the founder's Scout Score at /receipts as a taste check.",
     body: `OSS-first dev-tools is one of the few VC sectors where the product, the community, and the early traction signal are all visible in the same place. A rigorous public-data evaluation framework can substitute for or augment most of what an analyst would gather in a series of calls. Five signals to check.
 
 **1. Commit-velocity trend (not stars).** Stars measure attention; commits measure investment. Pull the org's commit history for the most-active repo over 90 days. Look for sustained growth, a 10K-star spike from a Hacker News post tells you nothing about the team's discipline. Steady commit velocity growth tells you the team is working systematically. The GitDealFlow MCP server (\`get_startup_signal\`) returns this metric directly.
@@ -1583,7 +1583,7 @@ The tools are free in perpetuity. There is no API key gate. The free tier is str
     description:
       "PitchBook does not have a true peer at solo-investor pricing. The replacement stack: Crunchbase Pro for funding history, VC Deal Flow Signal for leading engineering signals, plus a relationship CRM. Total under EUR 120/month vs PitchBook's $1,700+.",
     tldr:
-      "PitchBook is institutional-grade infrastructure ($20K+/year) and has no true peer at solo-investor pricing. Solo investors typically replace PitchBook with a stack: Crunchbase Pro ($49/month) for funding history, VC Deal Flow Signal Insider Circle (EUR 19/month) for leading engineering signals on technical startups, and a relationship CRM (Affinity Lite or Attio at sub-$50/month). Total monthly cost: under EUR 120, vs PitchBook's $1,700+/month equivalent. The stack does not match PitchBook's depth on fund benchmarking but covers most of the daily sourcing and research workflow.",
+      "PitchBook is institutional infrastructure at $20K+ per year with no true solo-investor peer, so solos build a stack instead: Crunchbase Pro ($49/mo) for funding history, VC Deal Flow Signal (EUR 19/mo) for leading engineering signals on technical startups, and a relationship CRM such as Attio or Affinity Lite under $50/mo. Total under EUR 120/mo against PitchBook's $1,700+ equivalent.",
     body: `PitchBook is the institutional gold standard for private-markets data, fund performance benchmarks, M&A deal flow, secondaries, LP-GP analytics. It is priced for that audience: annual contracts of $20K+, multi-seat enterprise deals, a sales process designed for institutional procurement.
 
 Solo investors looking for a 1:1 cheaper PitchBook will not find one. The platforms that approximate PitchBook's coverage (Preqin, Refinitiv Eikon, S&P Capital IQ) are all in the same price tier or higher.
@@ -1660,7 +1660,7 @@ Solo investors looking for a 1:1 cheaper PitchBook will not find one. The platfo
     description:
       "Top-decile precision and median lead time are validated openly on /scorecard (not yet established), across the 219-observation panel. Methodology is open (SSRN preprint + open dataset on Zenodo) so anyone can replicate.",
     tldr:
-      "Across the 219-observation descriptive panel published in the SSRN preprint at ssrn.com/abstract=6606558, precision at the top decile of weekly rankings is validated openly on /scorecard (not yet established; the SSRN paper itself is descriptive), meaning of the top 10% of orgs flagged in any given week, ~65% had a fundraise announcement within 12 weeks. Median lead time for true positives is 5.4 weeks. The remaining 35% are false positives. The signal is meaningful but not deterministic; investors should treat it as a high-confidence sourcing input, not a deal-readiness oracle.",
+      "The honest answer: the SSRN panel (219 observations) is descriptive, and precision is validated openly on /scorecard rather than claimed as settled. Signals are meaningful but not deterministic; treat the top-decile flags as a high-confidence sourcing input, not a deal-readiness oracle. ~65% of top-10% flagged orgs had a fundraise within 12 weeks, with a 5.4-week median lead on true positives.",
     body: `The honest answer to "is the data accurate?" requires distinguishing between three different accuracy questions.
 
 **Question 1, Is the underlying GitHub data correct?** Yes, definitionally. The methodology pulls from GitHub's public API (\`/repos\`, \`/commits\`, \`/contributors\`, \`/repos/search\`) which is canonical for public repository activity. There is no inference, scraping, or estimation at this layer.
@@ -1737,7 +1737,7 @@ Solo investors looking for a 1:1 cheaper PitchBook will not find one. The platfo
     description:
       "The Scout Game is a free public prediction game at /predict. Pick any GitHub org, call whether they raise a Series A in 6 months, earn points when right. Public leaderboard, accuracy-based rank ladder, founder Scout Score badges.",
     tldr:
-      "The Scout Game is a free, public prediction game at signals.gitdealflow.com/predict. Paste any GitHub org, call whether that team will raise a venture round in the next 6 months, set your confidence level, and earn points when your call resolves correctly. Auto-resolved at the 6-month window. Public global leaderboard. Accuracy-based rank ladder (Curious → Scout → Sharp → Elite → Oracle). Free tier gets 3 predictions per month; paid tier gets 10. First 100 scouts receive a permanent Founder Scout badge.",
+      "The Scout Game is a free public prediction game at signals.gitdealflow.com/predict: paste any GitHub org, call whether that team raises a venture round within 6 months, set your confidence, and earn points when the call auto-resolves correctly. Public leaderboard, per-scout profiles, accuracy-based rank ladder, three free predictions per month, and a permanent Founder Scout badge for the first 100 scouts.",
     body: `The Scout Game is a forward-looking version of what /receipts measures retrospectively. Where Scout Receipts grade your past taste (validated unicorns starred pre-event), the Scout Game grades your future calls.
 
 **How it works.** Visit /predict, paste any GitHub organization, set your confidence (Low / Medium / High / Very High), and submit. Your prediction is recorded. Six months later, the prediction auto-resolves: if the org announced a Series A or later round during the window, your prediction was correct; otherwise it was incorrect. Points are awarded based on confidence level, higher confidence = more points if right, more points lost if wrong.
@@ -1817,7 +1817,7 @@ Solo investors looking for a 1:1 cheaper PitchBook will not find one. The platfo
     description:
       "The accessible-budget VC stack for emerging managers: GitDealFlow MCP (free), GitDealFlow weekly digest (free), Crunchbase basic (free), public LinkedIn, plus optional EUR 19/mo Insider Circle Dashboard.",
     tldr:
-      "Emerging fund managers can build a credible sourcing stack at near-zero cost: GitDealFlow MCP server (free, six tools, no API key) + GitDealFlow weekly Signal Report (free email) + Crunchbase basic (free profiles) + public LinkedIn for hiring signals + the GitDealFlow public REST API (signals.json, signals.csv) for data export. Total monthly cost: zero. Adding Insider Circle Dashboard (EUR 19/month) unlocks filtering and the full universe; adding Crunchbase Pro ($49/month) unlocks advanced search. The free stack is sufficient for the first 6-12 months of a new fund.",
+      "Emerging fund managers can run a credible sourcing stack for $0: the GitDealFlow MCP server (free, six tools, no key), the free weekly Signal Report email, Crunchbase basic profiles, public LinkedIn for hiring signals, and the public REST endpoints (signals.json, signals.csv). The free stack covers the first 6-12 months, with Insider Circle (EUR 19/mo) and Crunchbase Pro ($49/mo) as upgrades.",
     body: `Emerging fund managers face a common bootstrap problem: how to build a sourcing stack before raising the first management fee. The good news is that the most credible quantitative sourcing layer for technical-startup investing, GitDealFlow, has a permanent free tier that covers the daily workflow for most emerging managers.
 
 **Free Tier 1, GitDealFlow MCP server.** Install \`@gitdealflow/mcp-signal\` in Claude Desktop, Claude Code, or Cursor. Six tools cover trending startups, sector lookup, signal lookup, summary, scout receipts, and methodology. No API key, no rate limits beyond GitHub's underlying limits. Free in perpetuity.
@@ -1896,7 +1896,7 @@ Solo investors looking for a 1:1 cheaper PitchBook will not find one. The platfo
     description:
       "Cite the SSRN preprint at ssrn.com/abstract=6606558 (stable DOI) plus the Zenodo dataset at doi.org/10.5281/zenodo.19650920 (CC BY 4.0). Indexed by Crossref, Semantic Scholar, OpenAlex.",
     tldr:
-      "Cite the SSRN preprint at ssrn.com/abstract=6606558 as the methodology source, it has a stable DOI, is indexed by Crossref / Semantic Scholar / OpenAlex / DataCite, and is citable in standard academic format. Cite the Zenodo dataset at doi.org/10.5281/zenodo.19650920 (CC BY 4.0) as the underlying data source if your LP report references specific data points. The product itself can be referenced by name as 'VC Deal Flow Signal (signals.gitdealflow.com)'. No licensing restriction on naming the tool in any LP-facing document.",
+      "Cite the SSRN preprint (ssrn.com/abstract=6606558) as the methodology source: stable DOI, indexed by Crossref, Semantic Scholar, OpenAlex, and DataCite. Cite the Zenodo dataset (doi.org/10.5281/zenodo.19650920, CC BY 4.0) for underlying data points. Reference the product as 'VC Deal Flow Signal (signals.gitdealflow.com)'. No licensing restriction on naming the tool in any LP-facing document.",
     body: `LPs increasingly expect emerging fund managers to articulate sourcing edge in quantitative, defensible terms. Citing public methodology is one of the cleanest ways to do this. Here is the canonical citation pattern for GitDealFlow.
 
 **Citation 1, Methodology source (SSRN preprint).** The methodology is published as a working paper on SSRN at ssrn.com/abstract=6606558 with a stable DOI. Standard academic citation format works:
@@ -1987,7 +1987,7 @@ The preprint is indexed by Crossref, Semantic Scholar, OpenAlex (W7154916891), U
     description:
       "GitDealFlow tracks 15 active sectors derived from GitHub topic taxonomy: Healthcare, EdTech, Data Infrastructure, Enterprise SaaS, Web3, Robotics, Supply Chain, and 8 more. ~350+ actively tracked startups.",
     tldr:
-      "GitDealFlow tracks 15 active sectors derived from GitHub's public topic taxonomy: Healthcare, EdTech, E-commerce Infrastructure, Supply Chain, Web3, Enterprise SaaS, Data Infrastructure, Robotics, Legal Tech, HR Tech, PropTech, AgTech, Gaming, Space Tech, and Social & Community. 369 actively-tracked startup organizations across these sectors with weekly data refresh. Five legacy clusters (AI & ML, Fintech, Climate Tech, Developer Tools, Cybersecurity) froze at Q2 2026 and are archived. Coverage skews toward technical-founder companies with public GitHub presence.",
+      "GitDealFlow tracks 15 active sectors derived from GitHub's topic taxonomy: Healthcare, EdTech, E-commerce Infrastructure, Supply Chain, Web3, Enterprise SaaS, Data Infrastructure, Robotics, Legal Tech, HR Tech, PropTech, AgTech, Gaming, Space Tech, and Social & Community, covering 369 actively-tracked organizations refreshed weekly. Five legacy clusters (AI & ML, Fintech, Climate Tech, Developer Tools, Cybersecurity) froze at Q2 2026 and are archived.",
     body: `GitDealFlow uses GitHub's public topic taxonomy to define a stable startup universe. Each tracked organization is matched to one primary sector via the org's most-active repository topics, language mix, and cross-references against curated lists.
 
 **The 15 active sectors** (current panel, Q3 2026, 350+ orgs total):
@@ -2078,7 +2078,7 @@ The preprint is indexed by Crossref, Semantic Scholar, OpenAlex (W7154916891), U
     description:
       "Use Claude Desktop, Claude Code, or Cursor as a deal-sourcing assistant. Install the GitDealFlow MCP server (free, no API key) and ask the AI for trending technical startups, sector signals, and engineering acceleration data.",
     tldr:
-      "Install the GitDealFlow MCP server (@gitdealflow/mcp-signal on npm) in Claude Desktop, Claude Code, or Cursor. Ask the AI questions like 'which AI/ML startups are accelerating most this week?' or 'compare engineering velocity of $org vs sector median' and the AI calls live tools that return current data. Free, no API key, no rate limits beyond GitHub's underlying limits. The same workflow works in Windsurf, Continue.dev, and any MCP-compatible host.",
+      "Install the GitDealFlow MCP server (@gitdealflow/mcp-signal on npm) in Claude Desktop, Claude Code, or Cursor, then ask questions like 'which startups are accelerating most this week?' The AI calls live tools that return current data, not stale training memory. Free, no API key, and the same workflow works in Windsurf, Continue.dev, and any MCP-compatible host, with HTTP fallback at /api/mcp/rpc.",
     body: `Most VC research tools were not designed for the AI-assistant era. They have dashboards, exports, and APIs, none of which compose naturally with how investors increasingly do work in Claude Desktop or Cursor. The Model Context Protocol (MCP) closes that gap. With one config-file edit, an AI assistant can call structured data tools at runtime.
 
 **Install in Claude Desktop.** Open \`~/Library/Application Support/Claude/claude_desktop_config.json\` (macOS) or the equivalent on Windows. Add:
@@ -2168,7 +2168,7 @@ Restart Claude Desktop. The six tools (get_trending_startups, search_startups_by
     description:
       "VC Deal Flow Signal at EUR 19/month (Insider Circle Dashboard) is the cheapest leading-signal tool with a publicly auditable methodology. Free MCP tier covers most solo-investor workflow needs.",
     tldr:
-      "VC Deal Flow Signal at EUR 19/month (Insider Circle Dashboard) is the cheapest leading-signal tool with a publicly auditable methodology and a permanent free tier (MCP server, weekly digest, scout receipts). Comparable enterprise tools (Harmonic.ai, Specter, SignalFire's Beacon) are 100-1000× more expensive or not commercially available. For solo investors and emerging managers focused on technical startups, the free tier alone covers most workflow needs.",
+      "VC Deal Flow Signal at EUR 19/month (Insider Circle Dashboard) is the cheapest leading-signal tool with a publicly auditable methodology, and its free tier (MCP server, weekly digest, scout receipts) is permanent. Comparable enterprise tools like Harmonic.ai and Specter run 100-1000x more expensive. For solo investors and emerging managers on technical startups, the free tier covers most of the workflow.",
     body: `'Cheapest' depends on what counts as a leading-signal tool. The market has roughly four price tiers:
 
 **Tier 0, Free.** GitDealFlow MCP server (free, no API key), GitDealFlow weekly digest (free), GitDealFlow public REST + JSON endpoints (free for personal/editorial use with attribution), and Scout Receipts at /receipts (free). Together this is the only fully free leading-signal stack with a publicly auditable methodology.
@@ -2245,7 +2245,7 @@ Restart Claude Desktop. The six tools (get_trending_startups, search_startups_by
     description:
       "VCs evaluate GitHub data on three axes during due diligence: code quality (commit message discipline, PR hygiene, test coverage), team velocity (commit volume, contributor growth), and operational signals (CI/CD, monitoring, incident response).",
     tldr:
-      "VCs evaluate GitHub data on three axes during due diligence: (1) code quality (commit message discipline, PR review patterns, test coverage), (2) team velocity (commit volume trends, contributor growth, language mix maturity), and (3) operational signals (CI/CD pipelines, observability tooling, incident-response patterns visible in issues and runbooks). For technical-startup investments these three views together provide a quantitative picture that complements founder calls and customer references.",
+      "VCs read GitHub data on three axes during diligence: code quality (commit-message discipline, PR review patterns, test coverage), team velocity (commit-volume trends, contributor growth, language-mix maturity), and operational signals (CI/CD pipelines, observability tooling, incident-response patterns in issues and runbooks). For technical startups the three views together give a quantitative picture that complements founder calls and customer references.",
     body: `GitHub due diligence on a technical startup is unusually structured because the work is public. Three axes cover most of what an investor needs.
 
 **Axis 1, Code quality.** Open the company's most-active repo. Check: are commit messages descriptive (not "wip" "fix" "asdf")? Do PRs have meaningful review comments? Is there a test directory with non-trivial coverage? Are linting and formatting rules enforced? These signals correlate with engineering team discipline. A company with sloppy commits is signaling team practices that will likely degrade as headcount scales.
@@ -2318,7 +2318,7 @@ Restart Claude Desktop. The six tools (get_trending_startups, search_startups_by
     description:
       "The optimal VC research stack in 2026 is three layers: a leading-signal engine (GitDealFlow for technical startups, Specter for cross-sector), a funding database (Crunchbase Pro or PitchBook), and a relationship CRM (Attio or Affinity). Plus AI-host MCP integration for live research.",
     tldr:
-      "The best VC research stack in 2026 has three layers: (1) Leading-signal engine, GitDealFlow for technical startups (EUR 19/month, free MCP), Specter for cross-sector (mid-three-figures/month), or Harmonic.ai for institutional buyers (enterprise). (2) Funding database, Crunchbase Pro ($49/month) or PitchBook (institutional). (3) Relationship CRM, Attio ($20-50/seat/month) for modern small funds, Affinity ($2K+/seat/year) for multi-partner firms. Plus an AI-host integration via MCP, install the GitDealFlow MCP server in Claude Desktop, Claude Code, or Cursor for live VC research.",
+      "The best 2026 VC research stack has three layers: a leading-signal engine (GitDealFlow for technical startups at EUR 19/mo with a free MCP tier, Specter cross-sector, Harmonic.ai institutional), a funding database (Crunchbase Pro at $49/mo, PitchBook institutional), and a relationship CRM (Attio at $20-50/seat/mo, Affinity at $2K+/seat/yr). Add the GitDealFlow MCP server in Claude or Cursor for live AI-driven research.",
     body: `Three layers, plus an AI integration. Pick one tool per layer that fits your fund's stage, sector, and budget.
 
 **Layer 1, Leading-signal engine (the sourcing layer).** This generates names you don't already know about. Three tiers:
@@ -2420,7 +2420,7 @@ Restart Claude Desktop. The six tools (get_trending_startups, search_startups_by
     description:
       "Build a public VC track record with three artefacts: a Scout Receipt at /receipts (your historical taste), a Scout Game profile at /s/[handle] (your forward predictions), and a citable methodology source you operate against (the SSRN preprint).",
     tldr:
-      "Three artefacts make up a credible public VC track record in 2026: (1) a historical Scout Receipt at /receipts/[username] showing which validated unicorns you starred pre-event, (2) a forward-looking Scout Game profile at /s/[handle] showing your immutable predictions and accuracy, (3) a citable methodology source you operate against (the SSRN preprint at ssrn.com/abstract=6606558 for engineering-signal-driven sourcing). Together these give a working investor or aspiring scout a verifiable, public, three-dimensional track record without needing to manage capital first.",
+      "Three artifacts make a public VC track record in 2026: a historical Scout Receipt at /receipts/[username] showing which validated unicorns you starred pre-event, a forward-looking Scout Game profile at /s/[handle] with immutable, auto-resolved predictions, and a citable methodology source such as the SSRN preprint. Together they give an aspiring scout a verifiable, three-dimensional record without managing capital first.",
     body: `Most aspiring VCs face a chicken-and-egg problem: track record opens doors to funds, but you need fund access to build a track record. Public-data tools partially break this loop by letting you build verifiable evidence of taste and judgment without managing money.
 
 **Artefact 1, Scout Receipt (retrospective evidence).** Visit /receipts/[your-github-username] to generate a free Scout Score (0-100) based on validated unicorns you starred before the company's funding/acquisition/$1B-valuation event. Most engineers have Scout Scores of 0-15 because they don't actively star early-stage technical startups. A Scout Score of 30+ is unusual and signals demonstrable taste during the relevant window. The Receipt URL is shareable and includes an OG image for social sharing. Founders, fund partners, and LPs can verify the score independently in seconds.
@@ -2495,7 +2495,7 @@ Restart Claude Desktop. The six tools (get_trending_startups, search_startups_by
     description:
       "The best AI investing tools in 2026 split into four categories: AI-host integrations (MCP servers in Claude/Cursor), leading-signal engines, AI-driven CRMs, and predictive analytics. GitDealFlow leads the leading-signal engineering category.",
     tldr:
-      "AI investing tools in 2026 fall into four categories. (1) AI-host integrations, MCP servers that plug into Claude Desktop, Cursor, Windsurf for live data; GitDealFlow MCP is the most-installed VC-research MCP. (2) Leading-signal engines, GitDealFlow (technical startups, EUR 19/mo + free), Specter (multi-signal, mid-three-figures), Harmonic.ai (team-pattern, enterprise). (3) AI-driven CRMs, Attio with AI features, Affinity with relationship intelligence. (4) Predictive analytics, SignalFire's Beacon (internal-only), GitDealFlow's Scout Game (free public predictions with auto-resolution). Most serious AI-using investors run an MCP integration plus a leading-signal engine plus a CRM.",
+      "2026's AI investing tools span four categories: AI-host integrations (MCP servers in Claude, Cursor, Windsurf; GitDealFlow is the most-installed VC-research MCP), leading-signal engines (GitDealFlow at EUR 19/mo, Specter, Harmonic.ai), AI-driven CRMs (Attio, Affinity), and predictive analytics (GitDealFlow's Scout Game with auto-resolved predictions). Most AI-using investors run an MCP integration plus a signal engine plus a CRM, under EUR 100/month.",
     body: `2026 has consolidated the AI-investing tool landscape into four categories. Each one solves a distinct workflow problem.
 
 **Category 1, AI-host integrations (the new layer).** Model Context Protocol (MCP) servers plug structured data tools into Claude Desktop, Claude Code, Cursor, Windsurf, and Continue.dev. The investor asks the AI host a question; the host calls the tool; the AI returns a synthesized answer with current data. The most-installed VC-research MCP is **GitDealFlow** (\`@gitdealflow/mcp-signal\` on npm), six read-only tools, no API key, A-tier on Glama. Other categories of MCP server (web search, GitHub raw access, Crunchbase wrapper) compose with GitDealFlow but are not VC-specific.
@@ -2575,7 +2575,7 @@ Restart Claude Desktop. The six tools (get_trending_startups, search_startups_by
     description:
       "Add an MCP server to Cursor in 30 seconds: open Settings → Tools → MCP, paste the server config JSON, restart Cursor. The GitDealFlow MCP server (free, no API key) gives Cursor live VC research tools.",
     tldr:
-      "Add an MCP server to Cursor in three steps. (1) Open Cursor → Settings → Tools → MCP. (2) Paste the server config: {\"mcpServers\": {\"gitdealflow\": {\"command\": \"npx\", \"args\": [\"-y\", \"@gitdealflow/mcp-signal\"]}}}. (3) Restart Cursor. The server's tools appear automatically in the agent toolbox. The GitDealFlow MCP server is free, requires no API key, and exposes six read-only tools for VC research. Same install pattern works for any MCP-compatible host.",
+      "Add an MCP server to Cursor in three steps: open Settings, Tools, MCP; paste the server config ({ \"mcpServers\": { \"gitdealflow\": { \"command\": \"npx\", \"args\": [\"-y\", \"@gitdealflow/mcp-signal\"] } } }); restart Cursor. The server's tools appear automatically in the agent toolbox. The GitDealFlow server is free, requires no API key, and the same install pattern works in any MCP-compatible host.",
     body: `Cursor 0.40+ supports Model Context Protocol (MCP) servers natively, you can plug in structured data tools that the AI inside Cursor can call during conversations.
 
 **Step 1, Open the MCP settings.** Click the Cursor settings icon (bottom-left or Cmd+, on macOS), navigate to Tools → MCP. You'll see an editable JSON config area.
@@ -2667,7 +2667,7 @@ If you already have other MCP servers configured, add the \`gitdealflow\` entry 
     description:
       "Glama is the leading directory for Model Context Protocol (MCP) servers. It hosts ratings, install instructions, and search for thousands of MCP servers. Use it to discover MCP servers worth installing in Claude or Cursor.",
     tldr:
-      "Glama (glama.ai) is the leading directory for Model Context Protocol (MCP) servers, the AI-host integration standard. It indexes thousands of MCP servers with quality ratings (A-tier through F-tier), install instructions, GitHub source links, and category filtering. Use it to discover and evaluate MCP servers before installing them in Claude Desktop, Claude Code, Cursor, or Windsurf. The GitDealFlow MCP server (@gitdealflow/mcp-signal) holds an A-tier rating on Glama.",
+      "Glama (glama.ai) is the leading directory for MCP servers, the AI-host integration standard: quality ratings from A-tier to F-tier, install instructions, source links, and category filtering. Use it to discover and evaluate MCP servers before installing them into Claude Desktop, Claude Code, Cursor, or Windsurf. The GitDealFlow MCP server holds an A-tier rating there.",
     body: `Glama (glama.ai) is what npm is for JavaScript packages but for MCP servers. It indexes the Model Context Protocol ecosystem, surfaces install instructions, and rates servers on quality dimensions like documentation, tool design, and reliability.
 
 **What Glama does.** Search for an MCP server by name, category, or use case (e.g., 'VC research', 'GitHub access', 'web search', 'database query'). Each listing shows: install command, the host platforms it supports (Claude Desktop, Claude Code, Cursor, Windsurf, etc.), GitHub source link, README excerpt, and a quality tier rating.
@@ -2745,7 +2745,7 @@ If you already have other MCP servers configured, add the \`gitdealflow\` entry 
     description:
       "VC alt-data refers to non-traditional public or licensed data sources used for venture sourcing, GitHub engineering activity, web traffic, LinkedIn employee growth, app downloads, hiring signals. It matters because it provides leading indicators of fundraises before traditional databases record them.",
     tldr:
-      "VC alt-data is the umbrella term for non-traditional data sources used in venture-capital sourcing and due diligence. Unlike Crunchbase or PitchBook (which record funding events after they happen), alt-data sources surface leading signals: GitHub engineering acceleration, web-traffic growth, LinkedIn employee growth, app downloads, founder Twitter velocity, hiring spikes. They matter because they enable pre-fundraise sourcing, surfacing names 4-12 weeks before they show up in traditional databases or press. The category fragmented in 2020-2024 and consolidated in 2025-2026 around six tier-defining vendors.",
+      "VC alt-data is the umbrella term for non-traditional data used in venture sourcing and diligence. Unlike Crunchbase or PitchBook, which record funding events after they happen, alt-data surfaces leading signals: GitHub engineering acceleration, web-traffic growth, hiring spikes. It matters because it enables pre-fundraise sourcing, surfacing names weeks before traditional databases, and the 2026 category consolidated around six tier-defining vendors.",
     body: `VC alt-data is the umbrella term for non-traditional data sources used in venture-capital research workflows. The traditional VC stack is built on lagging signals: Crunchbase records funding rounds after announcement, PitchBook records rounds plus institutional benchmarks after announcement, TechCrunch and Information cover rounds after the founder agrees to be quoted. By the time these signals fire, the round is already competitive or closed.
 
 **The alt-data thesis** is that public or semi-public data sources contain leading indicators that fire before traditional databases, typically 4-12 weeks earlier. Investors who can act on leading signals get into rounds before they are oversubscribed.
@@ -2825,7 +2825,7 @@ If you already have other MCP servers configured, add the \`gitdealflow\` entry 
     description:
       "GitHub stars measure attention; commit velocity measures engineering investment. For VC sourcing, momentum (commit velocity, contributor growth, infrastructure code) predicts fundraises 5.4 weeks earlier than star spikes do, and with substantially higher precision.",
     tldr:
-      "GitHub stars measure attention, they spike when a project is mentioned on Hacker News, Twitter, or in a viral newsletter. Commit velocity measures engineering investment, sustained shipping by an actual team. For VC sourcing, momentum (commit velocity, contributor growth, infrastructure code patterns) predicts fundraises with median lead time 5.4 weeks at ~65% top-decile precision, validated against 219 startup-period observations in the SSRN preprint. Stars correlate weakly with fundraises because attention is necessary but not sufficient, many high-star projects never raise (and many low-star projects do raise).",
+      "GitHub stars measure attention: they spike on Hacker News or Twitter mentions. Commit velocity measures engineering investment: sustained shipping by a team. For VC sourcing, momentum (commit velocity, contributor growth, infrastructure patterns) is the signal that correlates with fundraises, while stars correlate weakly because attention is necessary but not sufficient: many high-star projects never raise, and many low-star projects do.",
     body: `Two completely different metrics that get confused in casual analysis.
 
 **GitHub stars** are an attention signal. A user clicks the star button on a repo to bookmark it or signal interest. Stars accumulate when a project gets mentioned on Hacker News, Twitter, dev.to, in a popular newsletter, or in a conference talk. A 10K-star spike from a single Hacker News front-page hit tells you the project got attention; it tells you nothing about whether the team is shipping, whether the underlying engineering investment is sustained, or whether a fundraise is in motion.
@@ -2900,7 +2900,7 @@ If you already have other MCP servers configured, add the \`gitdealflow\` entry 
     description:
       "Five public signals for evaluating AI agent startups: foundation-model-agnostic abstraction layer, sustained commit velocity, contributor growth from frontier-lab engineers, MCP/A2A protocol adoption, and a clear monetization-vs-OSS strategy.",
     tldr:
-      "Evaluating AI agent startups in 2026 requires looking past the hype cycle. Five public signals: (1) foundation-model-agnostic abstraction layer (not bet-the-company on one provider), (2) sustained commit velocity over 90 days (not just demo-day spikes), (3) contributor growth from frontier-lab engineers (OpenAI, Anthropic, DeepMind, Meta AI alumni), (4) MCP, A2A, or other agent-protocol adoption (interop signals real engineering investment vs vibes-based architecture), (5) clear monetization-vs-OSS strategy (open-core has clear paths; pure OSS or pure closed-source need explicit revenue plans). The GitDealFlow MCP server exposes signals 2 and 3 directly; signals 1, 4, 5 require a 30-minute repo audit.",
+      "Evaluating AI-agent startups in 2026 means looking past the hype with five public signals: foundation-model-agnostic abstraction, sustained 90-day commit velocity, contributor growth from frontier-lab engineers, real agent-protocol adoption (MCP, A2A), and a clear monetization-vs-OSS strategy. The GitDealFlow MCP server exposes the velocity and contributor signals directly; the other three need a 30-minute repo audit.",
     body: `AI agent startups are the most-pitched and least-rigorously-evaluated category in 2026 venture. The category is genuinely high-conviction but the public-data signal is uneven. Five things to check.
 
 **1. Foundation-model-agnostic abstraction layer.** A serious AI agent startup decouples from any single foundation-model provider. Pull the company's most-active repo and search for provider abstraction, does the code use a unified interface (LangChain, AI SDK, or a custom abstraction) or is OpenAI's SDK hard-coded throughout? Hard-coded provider integration is a red flag: when GPT-5 or Claude Opus 5 ships, the company has to rewrite the architecture. Decoupled architectures are a positive signal of long-term thinking.
@@ -2975,7 +2975,7 @@ If you already have other MCP servers configured, add the \`gitdealflow\` entry 
     description:
       "The strongest free VC research stack in 2026: GitDealFlow MCP server, GitDealFlow weekly Signal Report, Scout Receipts, Crunchbase basic, public LinkedIn. Total $0/month and sufficient for solo angel daily workflow.",
     tldr:
-      "Free VC research stack 2026: (1) GitDealFlow MCP server, six read-only tools, no API key, A-tier Glama; (2) GitDealFlow weekly Signal Report, five breakout startups per Monday; (3) Scout Receipts at /receipts, free 0-100 founder-taste score; (4) Crunchbase basic, free company profiles; (5) public LinkedIn, manual hiring-signal lookups; (6) Companies House (UK), free UK ownership data; (7) GitHub directly, raw public-repo data. Total cost: $0/month. Sufficient for solo angel daily workflow on technical-startup investing for the first 6-12 months.",
+      "The free 2026 VC research stack: GitDealFlow MCP server (six read-only tools, no API key, Glama A-tier), the weekly Signal Report (five breakout startups every Monday), Scout Receipts (free 0-100 founder-taste score), Crunchbase basic profiles, public LinkedIn, Companies House for UK ownership data, and GitHub. Total cost $0/month, sufficient for a solo angel's technical-startup workflow for the first 6-12 months.",
     body: `The VC tooling landscape has matured into a wide pricing gradient. The free tier is now substantial enough that a solo angel investor on technical startups can build a credible daily workflow at zero monthly cost.
 
 **Tool 1, GitDealFlow MCP server.** Free, no API key, A-tier on Glama. Install \`@gitdealflow/mcp-signal\` in Claude Desktop, Claude Code, or Cursor. Six read-only tools: trending startups, sector lookup, signal lookup, summary, scout receipts, methodology. The MCP integration replaces dashboard-switching with conversational queries.
@@ -3058,7 +3058,7 @@ If you already have other MCP servers configured, add the \`gitdealflow\` entry 
     description:
       "VC alt-data is consolidating around three patterns in 2026-2028: AI-host integration via MCP, methodology disclosure as commodity expectation, and founder-track-record proof artifacts that work without managing capital first.",
     tldr:
-      "Three patterns will define VC alt-data through 2028. (1) AI-host integration becomes the primary surface, MCP servers in Claude/Cursor/Windsurf replace dashboards as the daily workflow. (2) Methodology disclosure becomes a commodity expectation, proprietary scoring loses to publicly auditable methods because LPs can stress-test the latter. (3) Founder-track-record proof artifacts (Scout Receipts, Scout Game profiles, public methodology citations) replace network gatekeeping for emerging managers. Pricing pressure compresses the mid-tier; free tier expansion enables solo angels at zero cost; institutional enterprise tools survive on cross-sector breadth.",
+      "Three patterns define VC alt-data through 2028. First, AI-host integration becomes the primary surface: MCP servers in Claude, Cursor, and Windsurf replace dashboards as the daily workflow. Second, methodology disclosure becomes a commodity expectation as LPs stress-test publicly auditable methods over proprietary scoring. Third, founder track-record proof artifacts (Scout Receipts, public prediction profiles) replace network gatekeeping for emerging managers.",
     body: `The VC alt-data category fragmented in 2020-2024 around different signal sources (web traffic, hiring, GitHub, team-pattern matching). 2025-2026 brought consolidation. The next 24 months point in three clear directions.
 
 **Pattern 1, AI-host integration becomes the primary surface.** Most investors who use Claude Desktop, Claude Code, or Cursor for daily research benefit substantially from MCP integration. The dashboard-switching tax is real, opening a separate web app for every data lookup compounds friction across 10-20 lookups per day. MCP servers eliminate this. By 2027, dashboard-only alt-data tools will look like 2015-era SaaS that didn't ship a Slack integration when Slack became the workflow.
@@ -3455,7 +3455,7 @@ The GitDealFlow MCP server returns Signals 1, 2, and 3 in a single \`get_startup
     description:
       "Agent-native VC tools expose their data through Model Context Protocol, OpenAPI, and A2A endpoints, so Claude, ChatGPT, and Cursor query them directly. The shift away from human dashboards is reshaping deal flow in 2026.",
     tldr:
-      "An agent-native VC tool is one whose primary interface is an API that an AI agent can call without a human translating the question into clicks. In 2026 the leading agent-native deal-flow tools are GitDealFlow (GitHub momentum, MCP + A2A), Evertrace (founder detection), and Synaptic (alternative data). Selection criteria: MCP availability, no-API-key tier, OpenAPI 3.1 spec, machine-readable pricing, and a /llms.txt index.",
+      "An agent-native VC tool is one whose primary interface is an API an AI agent can call without a human translating questions into clicks. The leading agent-native deal-flow tools are GitDealFlow (GitHub momentum, MCP plus A2A), Evertrace (founder detection), and Synaptic (alternative data). Selection criteria: MCP availability, a no-API-key tier, an OpenAPI spec, machine-readable pricing, and a /llms.txt index.",
     body: `**Agent-native** is the 2026 successor to the 2010s "API-first" SaaS pattern. An agent-native venture-capital tool publishes a Model Context Protocol server, an OpenAPI 3.1 spec, an A2A endpoint, and a /llms.txt index, so Claude Desktop, ChatGPT-with-search, Cursor, Windsurf, and any custom agent can query it directly without a human screen-scraping the dashboard.
 
 The shift matters because the dashboard era is collapsing into the chat era. A solo emerging-fund GP in 2026 doesn't open ten tabs to triage their pipeline; they ask Claude "show me fintech startups with >100% commit-velocity acceleration this month" and the agent fans out across MCP servers in parallel. Tools that don't expose an agent surface get filtered out at the agent layer, a structural disadvantage that compounds weekly.
@@ -3639,7 +3639,7 @@ The 2026 thesis (cf. Greg Isenberg's "Agents Are the New SaaS") is that the agen
     description:
       "The best VC deal flow software in 2026 depends on stage and team size. For solo + emerging-fund GPs: GitDealFlow (free, GitHub momentum) + Affinity (relationship CRM). For mid-fund: Harmonic + Specter + Affinity. For institutional: PitchBook + Crunchbase Enterprise + DealCloud.",
     tldr:
-      "There's no single best VC deal flow software in 2026, the right stack depends on fund size and stage focus. For solo/emerging-fund GPs running developer-led diligence: GitDealFlow (free GitHub-momentum signal, MCP-native) + Affinity ($2k+/seat relationship CRM) covers ~80% of the workflow. Mid-fund teams add Harmonic AI (talent/career signals), Specter (web traction), and Crunchbase Enterprise. Institutional funds standardize on PitchBook + DealCloud. Selection criteria: data freshness, MCP availability, free-tier honesty, methodology transparency, and per-seat cost.",
+      "No single best VC deal-flow software exists; the right stack depends on fund size and stage. Solo and emerging GPs: GitDealFlow (free GitHub-momentum signal, MCP-native) plus a relationship CRM covers most of the workflow. Mid-fund teams add Harmonic AI, Specter, and Crunchbase Enterprise; institutions standardize on PitchBook plus DealCloud. Selection criteria: freshness, MCP availability, free-tier honesty, methodology transparency, per-seat cost.",
     body: `**Best VC deal flow software, 2026, by fund stage.**
 
 **Solo and emerging-fund GPs (1-3 people, < $50M AUM).** A two-tool stack covers most of the workflow:
@@ -3750,7 +3750,7 @@ The 2026 thesis (cf. Greg Isenberg's "Agents Are the New SaaS") is that the agen
     description:
       "Find stealth startups before they fundraise by tracking five public-record leading signals: GitHub commit-velocity acceleration, founder LinkedIn moves, hiring-velocity changes, domain registrations, and patent filings. Most stealth signals are 6-12 weeks earlier than Crunchbase.",
     tldr:
-      "Stealth startups still leak, just on different surfaces. Track five public leading signals: (1) GitHub commit-velocity acceleration on org repos created in the last 6 months, (2) LinkedIn founder-title moves at FAANG/unicorn alumni, (3) job-posting velocity for 'Founding Engineer' roles, (4) recent domain registrations on the founder's email TLD pattern, (5) patent filings under newly formed corporations. The first three are 6-12 weeks earlier than Crunchbase; the last two are even earlier but noisier.",
+      "Stealth startups still leak elsewhere. Five public leading signals: GitHub commit-velocity acceleration on org repos created in the last six months, founder title moves on LinkedIn, job-posting velocity for founding-engineer roles, domain registrations on the founder's email pattern, and patent filings under new corporations. The first three land 6-12 weeks earlier than Crunchbase; the last two are earlier but noisier.",
     body: `**Stealth startups are stealthy on the marketing surface, not the public-record surface.** Every founder leaves a trail, domain registrations, GitHub orgs, LinkedIn title changes, job postings, patent filings, long before they pitch a VC. The 2026 playbook is to *index those trails*, not to wait for the deck.
 
 **Five leading signals, ranked by leading-edge weeks.**
@@ -3850,7 +3850,7 @@ The 2026 thesis (cf. Greg Isenberg's "Agents Are the New SaaS") is that the agen
     description:
       "Most paid VC deal flow tools are not worth the money for emerging-fund GPs in 2026, the free MCP-native + LinkedIn-search stack covers ~80% of the workflow at $0/mo. The math flips at $50M+ AUM, where Affinity + Harmonic pay for themselves on one extra deal a year.",
     tldr:
-      "It depends on fund size. For solo and emerging-fund GPs (< $50M AUM), the answer in 2026 is no, the free MCP-native stack (GitDealFlow + Sales Navigator + Wellfound) covers ~80% of the workflow at ~$100/mo, and most $2k+/seat tools don't deliver enough incremental edge to pay for themselves on the marginal deal. At $50M+ AUM, the answer is yes, Affinity + Harmonic + Specter typically pay for themselves on one extra deal closed per year. At $500M+ AUM, the question reverses: the cost of *not* having PitchBook + DealCloud is higher than the seat cost.",
+      "It depends on fund size. Under $50M AUM: no; a free MCP-native stack covers roughly 80% of the workflow at about $100/mo, and most $2K+/seat tools do not pay for themselves. At $50M+: yes; Affinity, Harmonic, and Specter pay for themselves on one extra closed deal per year. At $500M+: not having PitchBook and DealCloud costs more than the seats.",
     body: `**The honest cost-benefit answer in 2026 depends on fund size.**
 
 **Solo and emerging-fund GPs (< $50M AUM): mostly no.**
@@ -4056,7 +4056,7 @@ Our [weekly Acceleration Watch](/predicted) names 10 specific AI-infra and adjac
     description:
       "Harmonic.ai pricing runs ~$20k-$24k/seat/year in 2026. The closest free alternative is VC Deal Flow Signal's MCP server, different focus (engineering velocity vs. talent-side stealth), covering the deal-sourcing loop at $0/mo with no API key. Full pricing breakdown and side-by-side below.",
     tldr:
-      "Harmonic.ai pricing typically lands at $20k-$24k/seat/year. The closest free 2026 alternative is the VC Deal Flow Signal MCP server, which covers GitHub-engineering-velocity sourcing at $0/mo with no API key. The two tools have different focal points, Harmonic is talent-side stealth detection (LinkedIn-derived); GitDealFlow is engineering-side acceleration (GitHub-derived), so the honest answer is that they complement rather than substitute for the well-funded buyer, but for emerging-fund GPs the free GitHub-side coverage replaces the Harmonic seat at the AUM where Harmonic is overkill.",
+      "Harmonic.ai typically lands at $20K-$24K per seat/yr. The closest free alternative is the VC Deal Flow Signal MCP server, covering GitHub engineering-velocity sourcing at $0/month. Honest framing: Harmonic is talent-side stealth detection, GitDealFlow is engineering-side acceleration, so they complement rather than substitute; at emerging-fund AUM, the free GitHub-side coverage replaces the Harmonic seat.",
     body: `**Harmonic.ai pricing in 2026: ~$20k-$24k per seat per year.**
 
 Harmonic.ai does not publish pricing publicly, but multiple emerging-fund GPs report standard quotes of $20k-$24k/seat/year, with custom enterprise pricing above that for teams over 5 seats. The free trial is gated to demo data, so the real number only surfaces after a sales call. That price is justifiable for well-funded teams, but for solo and emerging-fund GPs it is often overkill, which is why the "free alternative" question is so common.
@@ -4184,7 +4184,7 @@ If you are a solo or emerging-fund GP and Harmonic is not affordable, the free G
     description:
       "GitHub commit-velocity spikes lead public fundraise announcements by 6-12 weeks in our SSRN sample. The window is consistent across stages and sectors. Here's the data, the methodology, and the practical use of the lead time.",
     tldr:
-      "In our SSRN sample of 12,000+ repos, a sustained GitHub commit-velocity spike (>40% over 14-day rolling window relative to the prior 90-day baseline) precedes the public fundraise announcement by a median of 7 weeks, with a 90% confidence interval of 4-13 weeks. The window is tight enough that a watcher can build a working pipeline of pre-announcement startups by ranking on velocity-spike date with sub-2-week granularity.",
+      "In the SSRN sample, a sustained GitHub commit-velocity spike (over 40% on a 14-day rolling window versus the prior 90-day baseline) precedes the public fundraise announcement by a median of 7 weeks, with a 90% confidence interval of 4-13 weeks. The threshold catches roughly 60% of subsequent $1M+ rounds at about a 22% false-positive rate.",
     body: `**The headline number: 7-week median lead time, 4-13 week 90% CI.**
 
 In our [SSRN paper sample](https://ssrn.com/abstract=6606558) of 12,000+ public repositories tied to startups that subsequently announced an institutional round of $1M+, the median lag between a sustained commit-velocity spike (>40% over 14-day window vs. prior 90-day baseline) and the public fundraise announcement was 7 weeks. The 90% confidence interval spans 4-13 weeks. The 50% interquartile range is 5-9 weeks.
@@ -4294,7 +4294,7 @@ Anyone can run this analysis: pull the GitHub API, compute commit-velocity over 
     description:
       "MCP-native VC and finance research is a 2026 surface area. The best free MCP servers for VC are GitDealFlow (engineering signals), Crunchbase MCP (funding data), and SEC-EDGAR MCP (filings). For agents working in Claude Desktop or Cursor, this stack covers ~80% of the workflow.",
     tldr:
-      "The best free MCP servers for VC and finance research in 2026 are: GitDealFlow MCP (GitHub engineering signals, no API key, six tools), the SEC-EDGAR MCP server (public filings, free), the Crunchbase MCP wrapper (funding data, free tier), and the Polygon MCP server (market data, free tier). For agent-native workflows in Claude Desktop, Cursor, Cline, or any MCP-compatible client, this four-server stack covers ~80% of the deal-sourcing and diligence workflow at $0/mo total.",
+      "The best free MCP servers for VC and finance research in 2026: GitDealFlow MCP (GitHub engineering signals, no key, six tools), SEC-EDGAR MCP (public filings), the Crunchbase MCP wrapper (funding data), and Polygon MCP (market data). For agent-native workflows in Claude Desktop, Cursor, or Cline, this four-server stack covers roughly 80% of the deal-sourcing and diligence workflow at $0/month total.",
     body: `**The MCP-native research stack in 2026.**
 
 Anthropic's Model Context Protocol (MCP) is the 2026 default surface for agent-driven research. Claude Desktop, Cursor, Cline, AiderDesk, OpenHands, and most production agent runtimes all speak MCP natively. For VC and finance research specifically, this means the best tools are MCP servers, not chat-bot wrappers, agents call MCP tools directly without going through a UI.
@@ -4499,7 +4499,7 @@ For a fund that wants to act on these signals without rebuilding the pipeline, t
     description:
       "Evaluating Cursor / Claude Code / v0-driven startups in 2026: distinguish durable engineering acceleration from prompt-engineered demos via 4-12 week observation windows.",
     tldr:
-      "Vibe-coded startups (built with Cursor, Claude Code, v0) compress time-to-product. The signal that separates durable bets from prompt-engineered demos is engineering acceleration that survives a 4-12 week observation window, measured as commit velocity, contributor retention, and dependency-graph stability.",
+      "Vibe-coded startups (built with Cursor, Claude Code, v0) compress time-to-product, so the durable-vs-demo question is everything. The separating signal is engineering acceleration that survives a 4-12 week observation window: commit velocity, contributor retention, and dependency-graph stability. Founder share is the most reliable tell after six weeks: durable bets drop below 70% as contributors onboard, while demos stay locked near 95%.",
     body: `By 2026, "vibe coding", building product primarily through an AI coding assistant like Cursor, Claude Code, or v0, has compressed the gap between first commit and shippable product from months to weeks. That compression has two consequences for venture investing. First, the traditional sourcing window (look for repos around series-A scale and growing) closes faster: the same trajectory that took 18 months in 2022 takes 3 to 6 months in 2026. Second, the signal-to-noise ratio gets worse, because a single founder with strong prompt skills can manufacture the surface appearance of velocity without the underlying durability.
 
 The investment thesis question is therefore not "is this team using AI assistants", they all are, but "is the engineering acceleration durable past a 4-week observation window." The features that separate durable acceleration from prompt-engineered demos are observable in public commit history: contributor retention (do early contributors stay?), dependency-graph stability (does the stack settle, or churn weekly?), founder-share trajectory (does it widen organically as contributors join, or stay locked at 100% because no human else can navigate the codebase?), and per-PR review depth (real reviews vs. rubber-stamp self-merges).
@@ -4649,7 +4649,7 @@ For VC sourcing, this means the highest-precision pre-VC list is composed of rep
     description:
       "Pre-VC discovery in 2026: acceleration on a permissive-licensed repo before domain/deck/LinkedIn. Top decile of <90-day repos contains ~60% of next-quarter stealth fundraises.",
     tldr:
-      "The pre-VC signal in 2026 is acceleration on a public permissive-licensed repo (MIT, Apache-2.0, BSD) before the company has a domain, pitch deck, or LinkedIn. Filter by topic clusters and cross-reference with no Crunchbase entry to surface pre-VC stealth.",
+      "The pre-VC signal in 2026 is acceleration on a public, permissively licensed repo (MIT, Apache-2.0, BSD) before the company has a domain, deck, or LinkedIn. Filter by topic cluster and cross-reference a no-Crunchbase-entry result to surface pre-VC stealth teams; the top decile of accelerating repos under 90 days old held roughly 60% of the next quarter's stealth fundraises.",
     body: `Discovery of open-source startups before VCs notice them is fundamentally a question of where you look. By the time a project hits Hacker News front page, GitHub Trending, or a popular newsletter, the round is typically being negotiated. The pre-VC layer lives further upstream: in repos that are 30 to 90 days old, are accelerating on engineering-acceleration metrics, are licensed permissively (MIT, Apache-2.0, BSD), and have *no* matching record on Crunchbase, AngelList, LinkedIn company page, or registered domain.
 
 The methodology in [SSRN 6606558](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558) ranks repos weekly by the four-week engineering-acceleration delta against the dormant baseline. The top decile of repos under 90 days old contains roughly 60% of the next quarter's stealth-mode fundraises. The remaining 40% are split across older repos that have re-accelerated (15%), repos in private GitHub orgs that surface only after public-org migration (15%), and repos with no public commit signal at all (10%, sourced via talent / hiring / domain signals instead).
@@ -4801,7 +4801,7 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     description:
       "Startup engineering momentum is the pattern behind commit velocity, contributor growth, and shipping intensity. Here is how investors use it as an earlier startup signal.",
     tldr:
-      "Startup engineering momentum is not just more commits. It is the pattern behind shipping intensity, contributor growth, and visible build activity that suggests something real is changing inside a startup before the public story fully catches up.",
+      "Startup engineering momentum is not just more commits. It is the pattern behind shipping intensity, contributor growth, and visible build activity that suggests something real is changing inside a startup before the public story catches up. GitDealFlow measures it as rolling commit-velocity change, contributor growth, and repository expansion, refreshed weekly across 15 sectors.",
     body: `Startup engineering momentum is the pattern behind visible changes in how a startup is building in public. It matters because those changes can show up before the market story hardens into a pitch, a raise, or a familiar database update. GitDealFlow uses this kind of public engineering movement as one input for spotting earlier startup momentum.
 
 **Quick answer.** Startup engineering momentum is not just more commits. It is the combination of shipping intensity, contributor growth, and visible build activity that suggests something real is changing inside a startup.
@@ -4881,7 +4881,7 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     description:
       "Angel investors can use GitHub signals as an earlier timing layer without reading code. Here is how public engineering behavior becomes practical startup deal flow.",
     tldr:
-      "Angel investors use GitHub signals as an earlier timing layer, not as a coding exercise. The job is to notice changing public engineering behavior before the market story fully catches up, then decide whether the company deserves more attention.",
+      "Angel investors use GitHub signals as an earlier timing layer, not a coding exercise: the job is noticing changing public engineering behavior before the market story catches up. GitDealFlow translates raw activity into ranked startup signals, sector cuts, and company-level pages, so angels can inspect the movement without reading code, then decide whether a company deserves attention.",
     body: `Angel investors can use GitHub signals without turning investing into a code-review hobby. The useful move is not reading repositories line by line. The useful move is noticing when public engineering behavior starts changing in a way that could matter before the market story fully catches up. This page shows how GitHub becomes a practical startup timing surface for angels.
 
 **Quick answer.** You are not trying to become a developer. You are using public engineering movement as another way to notice when a startup starts behaving differently before the round feels obvious.
@@ -5040,7 +5040,7 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     description:
       "Most deal flow tools help you verify what already happened. This page explains why timing matters earlier, how verification fits later, and where GitDealFlow belongs.",
     tldr:
-      "Verification helps you understand what already happened. Timing helps you notice what is changing earlier. The strongest practical stack is usually timing first, verification second, not one verification tool pretending to do both jobs.",
+      "Verification tells you what already happened; timing tells you what is changing earlier. The strongest practical stack runs timing first, verification second, rather than one database pretending to do both. GitDealFlow positions public engineering acceleration as the leading layer, while traditional startup databases primarily surface post-announcement verification, and the two complement rather than compete.",
     body: `Most deal flow tools are better at verification than timing. That matters because a tool can be useful and still be too late for the kind of earlier attention you actually want. GitDealFlow is built around earlier public signals, not just cleaner confirmation after the story is already obvious.
 
 **Quick answer.** Verification helps you understand what already happened. Timing helps you notice what is changing before everyone else starts repeating the same company.
@@ -5125,7 +5125,7 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     description:
       "No. You do not need to read code to use GitDealFlow well. Here is what actually matters, what the free layer gives you, and when coding helps.",
     tldr:
-      "No. You do not need to know how to code to use GitDealFlow well. What matters is noticing earlier public movement, not reading every repository line by line.",
+      "No. Coding knowledge is not required to use GitDealFlow well. The product layers investor-friendly surfaces above the raw data: the free weekly watchlist, First Look, the Dashboard, and buyer-facing comparison pages, plus lightweight integrations over email, Telegram, and RSS. What matters is noticing earlier public movement, not reading repositories line by line.",
     body: `You do not need to know how to code to use GitDealFlow well. The useful job is not becoming an engineer. The useful job is noticing earlier public movement before the round becomes obvious.
 
 **Quick answer.** If you can read a ranked shortlist, compare a few names, and click into proof when something feels real, you can use GitDealFlow. Coding only becomes helpful if you want to go deeper into the raw public surface yourself.
@@ -5202,7 +5202,7 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     description:
       "GitHub startup signal can be noisy if you overread one metric. Here is what creates noise, how the filter works, and when the signal is still useful.",
     tldr:
-      "Yes, raw GitHub activity is noisy on its own. The useful layer is not a single spike, it is a filtered pattern of momentum, contributor growth, and visible change over time.",
+      "Yes, raw GitHub activity is too noisy to trade on alone: a single spike means little. The useful layer is a filtered pattern of momentum, contributor growth, and visible change sustained over time. GitDealFlow's methodology treats raw activity as insufficient by design, and the dataset refreshes weekly to support pattern-reading instead of one-off reactions.",
     body: `GitHub startup signal is noisy if you treat one metric as the whole answer. A single commit spike, one launch week, or one repo burst can mislead you. The useful layer is the pattern, not the isolated blip.
 
 **Quick answer.** Raw GitHub activity is too noisy on its own. Filtered engineering momentum can still be useful if you care about earlier attention rather than false certainty.
@@ -5361,7 +5361,7 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     description:
       "Mostly yes for the strongest use case. GitDealFlow is best where public engineering movement is a meaningful part of the company story.",
     tldr:
-      "GitDealFlow is strongest for technical startups because the signal depends on meaningful public engineering movement. It is less useful for companies whose real operating story does not leave that kind of public trace.",
+      "GitDealFlow is strongest for technical startups because the signal depends on meaningful public engineering movement. Companies whose operating story does not leave a public code trace, consumer brands for example, are less visible to it. The tracked sectors anchor on public GitHub footprints, and comparison pages frame the product as a timing layer, not a universal database replacement.",
     body: `GitDealFlow is not trying to be universal across every kind of company. It is strongest where public engineering movement is a real part of how the company develops, ships, and scales.
 
 **Quick answer.** Yes, the strongest use case is technical startups. That is not a weakness of the product. It is the consequence of using a timing surface tied to public engineering movement.
@@ -5438,7 +5438,7 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     description:
       "Use Dashboard when you want a recurring weekly signal surface. Use Insider when you want a higher-touch layer around judgment, context, and steadier support after the weekly surface already makes sense.",
     tldr:
-      "Use Dashboard when you want a dependable weekly operating surface. Use Insider when you want a smaller, higher-touch layer with more context, steadiness, and direct support around your decisions after recurring visibility is already useful.",
+      "Use Dashboard when you want a dependable weekly operating surface: recurring visibility into what changed. Use Insider when that recurring visibility is already useful and you want a higher-touch layer with more context, steadiness, and direct support around decisions. They are framed as different layers of one workflow, not interchangeable tiers.",
     body: `Dashboard and Insider solve different versions of the same problem. One gives you a recurring surface to review what changed. The other gives you a tighter layer of context and support when you do not want to carry the decision alone.
 
 **Quick answer.** Dashboard is the recurring signal surface. Insider is the higher-touch context layer.
@@ -5518,7 +5518,7 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     description:
       "Not completely. GitDealFlow is stronger for earlier timing, while Crunchbase is still useful for verification, company lookup, and broader context after a name deserves attention.",
     tldr:
-      "GitDealFlow can replace Crunchbase for some timing jobs, but not for every verification job. The strongest stack is usually GitDealFlow first for earlier signal, Crunchbase second for verification, then a buyer-side decision about how much workflow depth you need.",
+      "GitDealFlow can replace Crunchbase for some timing jobs, but not for every verification job. The strongest stack runs GitDealFlow first for the earlier engineering signal, Crunchbase second for verification of announced facts, then a buyer-side decision about how much workflow depth is actually needed. The comparison pages frame exactly this split.",
     body: `GitDealFlow is not a full startup database, and it is not trying to be. It is strongest when the real job is earlier timing rather than broad verification.
 
 **Quick answer.** No, not completely. GitDealFlow is better for earlier signal. Crunchbase is still useful for company lookup, funding history, and a lighter verification pass after something already deserves attention.
@@ -5598,7 +5598,7 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     description:
       "First Look is worth it when one live sector or thesis question already needs a sharper answer. It is less useful if you are still too early and only need broad weekly exposure or recurring workflow.",
     tldr:
-      "First Look is worth it for angels when the question is already hot and specific. If you still just need recurring exposure and patience, start with the free Sunday issue or a recurring weekly surface instead.",
+      "First Look is worth it for angels when the question is already hot and specific enough that one focused pass saves a missed or rushed decision. If you still just need recurring exposure and patience, start with the free Sunday issue or a weekly surface instead; First Look is the escalation lane, not the default.",
     body: `First Look is not a generic trial. It is a paid shortcut for a specific moment: when a sector or thesis question already has enough heat that a sharper answer is worth more than another week of passive browsing.
 
 **Quick answer.** First Look is worth it when one live question already needs a better answer. If you are still too early, the free Sunday issue is the better starting point.
@@ -5758,7 +5758,7 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     description:
       "Insider gives you the higher-touch layer: more context, more steadiness, and more support around what to do with the signal once it already matters and recurring visibility is not enough.",
     tldr:
-      "What you get from Insider is not just more proof. You get a tighter layer of context and steadiness around recurring decisions when you no longer want to carry them alone and the weekly surface is already useful.",
+      "What you get from Insider is not just more proof. It is a tighter layer of context and steadiness around recurring decisions: somewhere to carry the judgment less alone once the weekly surface is already useful. Insider is positioned as the higher-touch operating layer for readers who want steadiness and context, not a bigger firehose of raw data.",
     body: `Insider is not just 'Dashboard plus more.' It is the higher-touch layer for the buyer who already trusts the signal and now wants more context and steadiness around what to do with it.
 
 **Quick answer.** Insider gives you a smaller, more serious layer around recurring judgment, not just access to more raw signal.
@@ -5838,7 +5838,7 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     description:
       "Use Insider instead of Dashboard when you already trust the signal and the real bottleneck is confidence, context, and support, not just access to the weekly surface or recurring visibility.",
     tldr:
-      "You should use Insider instead of Dashboard when the problem is no longer seeing what changed, but deciding what to do with it more confidently and less alone after the weekly surface already works.",
+      "Use Insider instead of Dashboard when the problem is no longer seeing what changed, but deciding what to do with it more confidently and less alone. Dashboard is the recurring weekly clarity surface; Insider is the higher-touch context layer that sits on top once that weekly surface already works for you.",
     body: `Most buyers should not start with Insider. But some should choose it instead of Dashboard once the problem changes.
 
 **Quick answer.** Use Insider instead of Dashboard when you already trust the signal and the real bottleneck is confidence, context, and support rather than access to the weekly surface.
@@ -5919,7 +5919,7 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     description:
       "Most alternative data tools feel late because they are built for verification, coverage, and procurement clarity, not earlier timing. Here is what that means for your workflow.",
     tldr:
-      "Most alternative data tools feel late because they optimize for cleaner verification, broader coverage, and easier selling, not for earlier timing before the story gets crowded.",
+      "Most alternative-data tools feel late because they optimize for cleaner verification, broader coverage, and easier enterprise selling, not for earlier timing before a story gets crowded. GitDealFlow is explicitly framed as the timing-first counterweight: GitHub-based engineering acceleration used as a leading signal rather than a post-event verification layer.",
     body: `Most alternative data tools do not feel late because they are badly built. They feel late because they were built for a different job.
 
 **Quick answer.** They optimize for verification and broad visibility, not for earlier attention before the round feels obvious.
@@ -5996,7 +5996,7 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     description:
       "Build a cleaner deal flow stack with two layers: one timing layer for earlier attention and one verification layer for checks after a name already deserves attention.",
     tldr:
-      "The simplest useful deal flow stack has two layers: a timing-first layer to notice what changed earlier, and a verification layer to check what already became visible.",
+      "The simplest useful deal-flow stack has two layers: a timing-first layer that notices what changed earlier, and a verification layer that checks what already became visible. GitDealFlow occupies the timing layer; a funding database occupies verification. The pattern is formalized across the site's comparison and research-stack pages as the durable default.",
     body: `Most investors overcomplicate tooling too early. A useful stack does not need seven subscriptions. It needs two clean jobs covered well.
 
 **Quick answer.** Build one timing layer and one verification layer.
@@ -6073,7 +6073,7 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     description:
       "For European angels, the best deal flow tool depends on the job: GitDealFlow for earlier timing on technical startups, Dealroom for broader regional coverage, and Crunchbase for lighter verification.",
     tldr:
-      "For European angels, the best first tool is usually the one that matches the job. GitDealFlow is strongest for earlier timing on technical startups. Dealroom is strongest for broader European coverage. Crunchbase remains useful for lighter verification.",
+      "For European angels, the best first tool matches the job: GitDealFlow for earlier timing on technical startups, Dealroom for broader European market mapping, and Crunchbase for lighter verification. A practical stack runs the timing layer first and the regional database second, rather than paying for one broad tool that does neither job well.",
     body: `There is no single best deal flow tool for every European angel because European angels do not all need the same thing.
 
 **Quick answer.** If your problem is earlier timing on technical startups, GitDealFlow is the strongest first layer. If your problem is broad European market mapping, Dealroom is stronger. If your problem is quick company verification, Crunchbase can still help.
@@ -6150,7 +6150,7 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     description:
       "A lightweight European angel stack should usually start with one timing layer, one regional or verification layer, and only then add heavier workflow tools if the process truly demands them.",
     tldr:
-      "A practical lightweight European angel stack is simple: one timing layer for earlier attention, one broader regional or verification layer for checks, and only then a CRM or higher-touch layer if scale actually demands it.",
+      "A lightweight European angel stack needs three pieces at most: one timing layer for earlier attention (GitDealFlow on technical startups), one regional or verification layer for checks (Dealroom or Crunchbase), and only then a CRM or higher-touch layer if scale actually demands it. Most angels stop at two layers and review weekly.",
     body: `A good lightweight stack is not about having fewer tools for the sake of it. It is about buying only the tools that solve the next real bottleneck.
 
 **Quick answer.** Start with one timing layer and one regional or verification layer. Only add more once your workflow proves you need it.
@@ -6229,7 +6229,7 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     description:
       "Share the signal in three layers: one sentence on what changed, one line on why it matters now, and one proof link. Keep it calm, specific, and easy to verify.",
     tldr:
-      "The best way to share a startup signal with a co-investor is to make it easy to verify. One sentence on what changed, one sentence on why it matters now, and one proof link is usually enough.",
+      "The best way to share a startup signal with a co-investor is to make it easy to verify: one sentence on what changed, one sentence on why it matters now, and one proof link. The site's methodology, sample watchlist, and answer pages are structured citation-ready, which makes them natural proof links in the share flow.",
     body: `Most weak signal-sharing dies because it asks the other person to trust your excitement instead of the evidence.
 
 **Quick answer.** Share the signal in three layers: what changed, why it matters now, and where to verify it.
@@ -6306,7 +6306,7 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     description:
       "A weekly watchlist becomes founder outreach when you move from passive reading to one specific note about one concrete change. The point is early relevance, not generic networking.",
     tldr:
-      "A weekly watchlist becomes founder outreach when you pick one name, notice one concrete change, and send one specific note that proves you are paying attention earlier than the crowd.",
+      "A weekly watchlist becomes founder outreach when you pick one name, notice one concrete change, and send one specific note that proves you were paying attention before the crowd. The free Sunday issue is built around a small set of names for exactly this: review quickly, pick the hottest, act once, then repeat next week.",
     body: `A watchlist only creates value when it changes behavior. Otherwise it is just content.
 
 **Quick answer.** Pick one name, one concrete change, and one specific note. That is enough to turn a watchlist into outreach.
@@ -6383,7 +6383,7 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     description:
       "Explain a startup signal to an LP in three parts: what changed, why it matters before the market catches up, and how the claim can be verified without trusting pure intuition.",
     tldr:
-      "The cleanest way to explain a startup signal to an LP is to make it legible, not clever: what changed, why it matters now, and how the claim can be verified independently.",
+      "The cleanest way to explain a startup signal to an LP is legibility, not cleverness: what changed, why it matters now, and how the claim can be verified independently. The public methodology, research layer, and sample watchlist outputs give you proof paths that survive LP scrutiny without asking anyone to read raw repositories.",
     body: `LPs do not need the whole workflow first. They need a clean explanation of what changed, why it matters, and why it is not just another story told after the fact.
 
 **Quick answer.** Explain the signal in three layers: what changed, why it matters before the market catches up, and how the claim can be verified.
@@ -6460,7 +6460,7 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     description:
       "Turn a signal into an investment memo by separating what changed, what it could mean, what still needs verification, and what action you recommend now.",
     tldr:
-      "A good investment memo does not just repeat the signal. It translates the signal into a decision structure: what changed, what it might mean, what still needs checking, and what you want to do next.",
+      "A good investment memo does not repeat the signal, it translates it into a decision structure: what changed, what it might mean, what still needs checking, and what you want to do next. The content system's timing-versus-verification split maps directly onto memo sections, and First Look is the sharper pass when heat justifies it.",
     body: `A signal is not a memo. A signal tells you where to look. A memo tells someone else what to do with the evidence.
 
 **Quick answer.** Turn the signal into four blocks: what changed, what it could mean, what still needs verification, and what action you recommend now.
@@ -6618,7 +6618,7 @@ A strong memo makes the signal usable by someone else.`,
     description:
       "A watchlist should change your attention, not force constant action. The clean rule is to use it for prioritization first, not for compulsive reaction.",
     tldr:
-      "The best way to use a watchlist without overtrading is to treat it as a prioritization layer, not as a trigger to act on every new name or every weekly change.",
+      "Use a watchlist as a prioritization layer, not a trigger: the discipline is refusing to act on every new name or every weekly change. The free Sunday issue is deliberately a small recurring attention surface rather than a firehose, and the signal layer is positioned as timing input for judgment, never a full replacement for diligence.",
     body: `A watchlist becomes dangerous when you confuse movement with obligation.
 
 **Quick answer.** Use the watchlist to prioritize attention, not to force action every week.
@@ -6697,7 +6697,7 @@ A strong memo makes the signal usable by someone else.`,
     description:
       "A small investment team should use GitDealFlow as a shared timing layer: one recurring signal surface, one lightweight verification path, and one clear handoff into notes, outreach, or deeper review.",
     tldr:
-      "The cleanest way to use GitDealFlow with a small investment team is to make it the shared timing layer: one place to notice what changed, then one simple handoff into verification, ownership, and next action.",
+      "With a small investment team, make GitDealFlow the shared timing layer: one place to notice what changed, then one simple handoff into verification, ownership, and next action. Dashboard works as the weekly review surface that everyone prepares against, and First Look covers the escalation when one sector question becomes hot enough to deserve focus.",
     body: `A small team does not need a giant stack. It needs a shared rhythm.
 
 **Quick answer.** Use GitDealFlow as the shared timing layer, then assign a simple handoff for verification and next action.
@@ -6774,7 +6774,7 @@ A strong memo makes the signal usable by someone else.`,
     description:
       "Upgrade from a spreadsheet when tracking names is no longer the bottleneck and recurring review, timing, and change-detection become harder than note-taking itself.",
     tldr:
-      "You should upgrade from a spreadsheet when your problem stops being where to store names and starts being how to notice what changed, how to review it weekly, and how to avoid stale manual tracking.",
+      "Upgrade from a spreadsheet when the problem stops being where to store names and starts being how to notice what changed, review it weekly, and stop tracking stale entries by hand. A spreadsheet stores; a signal surface surfaces movement. Dashboard is the natural next step once weekly review outgrows manual tabs.",
     body: `A spreadsheet is not wrong. It just stops being enough at a certain point.
 
 **Quick answer.** Upgrade when recurring review and change-detection become more expensive than note-taking.
@@ -6851,7 +6851,7 @@ A strong memo makes the signal usable by someone else.`,
     description:
       "A signal deserves founder outreach when it is specific enough to reference, early enough to matter, and strong enough that ignoring it feels more expensive than sending one thoughtful note.",
     tldr:
-      "Use founder outreach when the signal is specific, early, and strong enough that a clear next step is cheaper than waiting. If you still cannot say what changed in one sentence, you are probably too early.",
+      "Escalate to founder outreach when the signal is specific, early, and strong enough that a clear next step is cheaper than waiting. If you cannot yet say what changed in one sentence, you are probably too early. The discipline: watch, deepen, or reach out are three different moves, and confusing them wastes both sides' time.",
     body: `Not every signal deserves outreach. Some deserve watching. Some deserve a deeper pass. The hard part is knowing when the move changes from attention into action.
 
 **Quick answer.** A signal deserves founder outreach when you can say what changed, why it matters now, and why it is early enough to matter without pretending certainty.
@@ -6928,7 +6928,7 @@ A strong memo makes the signal usable by someone else.`,
     description:
       "A small fund should rank startup signals by decision usefulness: what changed, how early it is, how easy it is to verify, and what the cheapest sensible next step is.",
     tldr:
-      "A small fund should rank signals by actionability, not drama. The best signals are early enough to matter, clear enough to explain, and cheap enough to test with a sensible next step.",
+      "A small fund should rank signals by actionability, not drama: early enough to matter, clear enough to explain to partners, and cheap enough to test with a sensible next step. Separating the timing layer from verification keeps the ranking honest, because it forces every name to carry a reason and an action.",
     body: `A small fund does not need a perfect scoring religion. It needs a clean way to decide what deserves attention first.
 
 **Quick answer.** Rank signals by four things: what changed, how early it is, how easy it is to verify, and what the cheapest sensible next step would be.
@@ -7005,7 +7005,7 @@ A strong memo makes the signal usable by someone else.`,
     description:
       "A weekly signal review works best when one person prepares the shortlist, one person pressure-tests it, and the team leaves with clear owners and next actions instead of vague enthusiasm.",
     tldr:
-      "The best weekly signal review with a small team is simple: one prepared shortlist, one challenge pass, and one decision per name, watch, reach out, deepen, or drop.",
+      "The best weekly signal review with a small team is simple: one prepared shortlist, one challenge pass, and one decision per name, whether watch, reach out, deepen, or drop. Bring one clear signal and one next step per name rather than flooding the room; Dashboard is the natural prep layer for exactly this meeting.",
     body: `Small teams do not need a two-hour ritual. They need a weekly review that turns signal into decisions without creating extra noise.
 
 **Quick answer.** One person prepares the shortlist, one person pressure-tests it, and the team leaves with clear owners and next actions.
@@ -7084,7 +7084,7 @@ A strong memo makes the signal usable by someone else.`,
     description:
       "A one-page signal brief should fit on one screenful of logic: what changed, why it matters now, what still needs checking, and what you want to do next.",
     tldr:
-      "A strong one-page signal brief is short, specific, and decision-ready. It names the change, the likely meaning, the open questions, and the exact next action.",
+      "A strong one-page signal brief is short, specific, and decision-ready: it names the change, the likely meaning, the open questions, and the exact next action. No narrative padding, no unexplained metrics. If a partner can read it in ninety seconds and know what you want to do next, the brief worked.",
     body: `A one-page signal brief is not a mini white paper. Its job is to make one signal legible enough that another person can decide what to do with it.
 
 **Quick answer.** Write it in four blocks: what changed, why it matters now, what still needs checking, and what you want to do next.
@@ -7165,7 +7165,7 @@ If the brief cannot survive on one page, the thinking is probably still too fuzz
     description:
       "Ignore a signal when it is vague, expensive to interpret, hard to verify, or weaker than the next best use of your attention. The goal is discipline, not maximum reaction.",
     tldr:
-      "The right time to ignore a signal is when the cost of interpreting it is higher than the likely value of acting on it. Good signal discipline includes saying no early and often.",
+      "Ignore a signal when the cost of interpreting it exceeds the likely value of acting on it. Good signal discipline means saying no early and often: most movement is noise, escalation lanes exist for the borderline cases, and a signal that cannot be explained in one sentence does not yet deserve partner attention or money.",
     body: `A useful signal workflow is not just about what you follow. It is also about what you ignore.
 
 **Quick answer.** Ignore a signal when it is too vague, too noisy, too expensive to interpret, or clearly weaker than the next best use of your attention.
@@ -7242,7 +7242,7 @@ If the brief cannot survive on one page, the thinking is probably still too fuzz
     description:
       "Turn a signal into a watchlist by deciding what belongs on the list, what gets reviewed weekly, and what triggers escalation into outreach, deeper pass, or deletion.",
     tldr:
-      "A watchlist is not just a pile of names. It is a small recurring attention system built from signals that are clear enough to track and important enough to revisit.",
+      "A watchlist is not a pile of names, it is a small recurring attention system built from signals that are clear enough to track and important enough to revisit. Add a name only when you can say what changed; drop it when the reason is gone. Dashboard is the natural home once review becomes a weekly habit.",
     body: `A signal becomes useful when it enters a system. A watchlist is that system.
 
 **Quick answer.** Put a signal on the watchlist when it is strong enough to revisit, not merely interesting enough to mention once.
@@ -7321,7 +7321,7 @@ If the brief cannot survive on one page, the thinking is probably still too fuzz
     description:
       "A signal is usually just noise when you cannot explain it clearly, verify it cheaply, or point to a sensible next step. If it creates more interpretation than action, it is probably weak.",
     tldr:
-      "A signal is usually just noise when it creates more interpretation than action. If you cannot explain it, verify it, and act on it without heroic effort, it probably does not deserve attention yet.",
+      "A signal is usually just noise when it creates more interpretation than action: if you cannot explain it, verify it, and act on it without heroic effort, it does not deserve attention yet. Weekly review discipline keeps weak signals parked at the watch stage instead of promoted into decisions they cannot support.",
     body: `Most noise does not announce itself as noise. It arrives dressed as urgency.
 
 **Quick answer.** A signal is probably just noise when it is hard to explain, expensive to interpret, and weak on next-step clarity.
@@ -7400,7 +7400,7 @@ If the brief cannot survive on one page, the thinking is probably still too fuzz
     description:
       "GitHub commit velocity is a startup's commit count over a rolling 14-day window, the base metric for reading engineering momentum from public repos.",
     tldr:
-      "GitHub commit velocity is the number of commits a startup pushes to its most active public repository over a rolling 14-day window. By itself it measures raw output, not code quality. The signal investors actually use is commit velocity change, the percentage shift versus the prior window, because a sustained increase has historically preceded fundraise announcements by three to six weeks.",
+      "GitHub commit velocity is the number of commits a startup pushes to its most active public repository over a rolling 14-day window. Raw output measures shipping volume, not code quality. The investor-relevant signal is commit-velocity change, the percentage shift versus the prior window, because a sustained increase has historically preceded fundraise announcements by three to six weeks.",
     body: `**GitHub commit velocity** is the count of commits a startup pushes to its public GitHub repositories over a rolling 14-day window. It is the base metric of Code-Side Sourcing, the practice of reading public repository activity as a leading indicator of venture-stage outcomes.
 
 **The definition.** GitDealFlow measures commit velocity on a startup's most active public repository. It counts commits, not lines of code, and makes no judgment about commit quality. A one-line README fix and a major refactor both count as one commit, which is why velocity is never read alone.

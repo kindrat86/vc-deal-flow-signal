@@ -1,6 +1,6 @@
 {
   "outputDirectory": ".",
-  "buildCommand": "node scripts/verify-vercel-config.mjs && node scripts/verify-jsonld.mjs . && node scripts/verify-word-floor.mjs",
+  "buildCommand": "node scripts/verify-vercel-config.mjs && node scripts/verify-jsonld.mjs . && node scripts/verify-word-floor.mjs && node scripts/verify-direct-answers.mjs",
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [

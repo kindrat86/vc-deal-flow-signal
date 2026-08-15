@@ -2279,6 +2279,67 @@ check(
 );
 
 // ---------------------------------------------------------------------------
+// §23 AEO direct-answer blocks (2026-08-16). Audit 08-15 scored AEO 66:
+// FAQPage present everywhere but answer pages were not THE extractable
+// answer. Fix has three legs, all guarded here:
+//   a) every /answers tldr is a 40-60 word direct answer (was 25-98);
+//   b) the template emits real #question / #answer nodes (the AskAction had
+//      referenced them since F37 without the nodes existing);
+//   c) the core Q→A is mirrored as FAQPage mainEntity[0].
+// One tldr, three surfaces (visible TL;DR block, Answer node, FAQPage
+// mirror) so schema, page, and Speakable selector all agree.
+// ---------------------------------------------------------------------------
+{
+  const aq = read("content/agent-queries.ts");
+  if (aq !== null) {
+    // (a) word window: match tldr: "..." across newlines, unescape \" only
+    const re = /tldr:\s*\n?\s*"((?:[^"\\]|\\.)*)"/g;
+    let m: RegExpExecArray | null;
+    const out: string[] = [];
+    let n = 0;
+    while ((m = re.exec(aq)) !== null) {
+      n += 1;
+      const words = m[1].replace(/\\(.)/g, "$1").split(/\s+/).filter(Boolean).length;
+      if (words < 40 || words > 60) out.push(`${words}w`);
+    }
+    if (n < 90) {
+      failures.push(
+        `§23 tldr regex matched only ${n} entries in content/agent-queries.ts (expected 92)\n` +
+          `    fix:  the tldr field format changed; update this guard's regex`,
+      );
+    }
+    if (out.length) {
+      failures.push(
+        `§23 ${out.length} /answers tldrs outside the 40-60 word direct-answer window\n` +
+          `    file: content/agent-queries.ts\n` +
+          `    fix:  rewrite each tldr into 40-60 words (compress from the entry's own facts)\n` +
+          `          without inventing claims; the tldr is the extractable answer on three surfaces`,
+      );
+    }
+  }
+  // (b) template emits real Question/Answer nodes wired to the AskAction refs
+  check(
+    "app/answers/[slug]/page.tsx",
+    "§23 /answers template no longer emits the #question/#answer schema nodes the AskAction references",
+    (s) =>
+      s.includes('`${url}#question`') &&
+      s.includes('`${url}#answer`') &&
+      s.includes('"@type": "Question"') &&
+      s.includes('"@type": "Answer"') &&
+      s.includes("text: q.tldr"),
+    "restore the §23 Question/Answer node pair (see the §23 comment block in the template)",
+  );
+  // (c) FAQPage mirrors the core Q→A as mainEntity[0]
+  check(
+    "app/answers/[slug]/page.tsx",
+    "§23 FAQPage no longer mirrors the core question as mainEntity[0]",
+    (s) =>
+      /mainEntity:\s*\[\s*\{\s*"@type": "Question",\s*name: q\.h1/.test(s),
+    "restore the §23 core-question mirror at the head of FAQPage mainEntity",
+  );
+}
+
+// ---------------------------------------------------------------------------
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +
