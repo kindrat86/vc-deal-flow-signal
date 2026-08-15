@@ -2,7 +2,7 @@
   "_comment": "Thin-content baseline (2026-08-15 audit). Pages below the 400-word floor, pinned at their measured counts: they may not get THINNER (floor = count - 10). Pages absent from this file must meet the hard 400 floor. Enrich a template, then regenerate with `node scripts/verify-word-floor.mjs --update-baseline` so its rows drop out. Never hand-edit counts downward.",
   "floor": 400,
   "buffer": 10,
-  "generatedAt": "2026-08-15T22:00:11.105Z",
+  "generatedAt": "2026-08-15T22:20:40.224Z",
   "pages": {
     "authors/founder-perspective.html": 140,
     "authors/engineering-research.html": 162,
