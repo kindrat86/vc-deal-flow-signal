@@ -23,6 +23,10 @@ interface Embed {
   name: string;
   href: string;
   preview?: string;
+  /** Intrinsic preview width (SVG badges are tiny, OG PNGs are 1200x630). */
+  previewW?: number;
+  /** Intrinsic preview height, emitted as height={...} to reserve layout space (CLS). */
+  previewH?: number;
   example: string;
   description: string;
   copy: string;
@@ -102,6 +106,8 @@ const CALCULATOR_EMBEDS: Embed[] = (
   name: `${name} (iframe)`,
   href: `${SITE}/embed/tools/${slug}`,
   preview: `${SITE}/api/og/tools/${slug}`,
+  previewW: 1200,
+  previewH: 630,
   example: `${SITE}/embed/tools/${slug}`,
   description: `${description} Dark theme, CC BY 4.0 attribution baked in, auto-resize via /embed.js. Full standalone tool at /tools/${slug}.`,
   copy: `<iframe src="https://signals.gitdealflow.com/embed/tools/${slug}" width="100%" height="${height}" frameborder="0" loading="lazy" title="${name}, GitDealFlow"></iframe>`,
@@ -118,6 +124,8 @@ const EMBEDS: Embed[] = [
     name: "Scout Score badge",
     href: `${SITE}/api/badge/scout/{username}/svg`,
     preview: `${SITE}/api/badge/scout/torvalds/svg`,
+    previewW: 146,
+    previewH: 20,
     example: `${SITE}/api/badge/scout/torvalds/svg`,
     description:
       "0-100 Scout Score for any GitHub username. Rendered as shields.io-style SVG. Replace {username} with a GitHub handle.",
@@ -128,6 +136,8 @@ const EMBEDS: Embed[] = [
     name: "Repo momentum badge",
     href: `${SITE}/api/badge/momentum/{org}/{repo}/svg`,
     preview: `${SITE}/api/badge/momentum/vercel/next.js/svg`,
+    previewW: 143,
+    previewH: 20,
     example: `${SITE}/api/badge/momentum/vercel/next.js/svg`,
     description:
       "GitHub momentum (Δ commit velocity, color-coded) for any public repo. Auto-refreshes weekly. Drop into a README.",
@@ -138,10 +148,36 @@ const EMBEDS: Embed[] = [
     name: "Built-With badge",
     href: `${SITE}/api/badge/built-with/svg`,
     preview: `${SITE}/api/badge/built-with/svg`,
+    previewW: 169,
+    previewH: 20,
     example: `${SITE}/api/badge/built-with/svg?variant=long`,
     description:
       "'Built with @gitdealflow/mcp-signal' badge for any project that calls our MCP server, signals JSON, or dataset API. Three variants, default, compact, long, via ?variant=. One ask, permanent backlink. Full landing at /built-with.",
     copy: `[![Built with gitdealflow MCP](https://signals.gitdealflow.com/api/badge/built-with/svg)](https://signals.gitdealflow.com/built-with)`,
+  },
+  {
+    group: "Badges",
+    name: "Sector signal badge",
+    href: `${SITE}/api/badge/sector/{sector-slug}/svg`,
+    preview: `${SITE}/api/badge/sector/healthcare/svg`,
+    previewW: 160,
+    previewH: 20,
+    example: `${SITE}/api/badge/sector/healthcare/svg`,
+    description:
+      "Compact shields-style badge showing a tracked sector's startup count, color-coded by aggregate momentum. One URL per sector, live from the weekly signal corpus. Replace {sector-slug} with any tracked sector (healthcare, fintech, web3, ...).",
+    copy: `[![Healthcare: 26 startups tracked](https://signals.gitdealflow.com/api/badge/sector/{sector-slug}/svg)](https://signals.gitdealflow.com/startups-to-watch/{sector-slug}-q3-2026)`,
+  },
+  {
+    group: "Badges",
+    name: "Sector momentum chart",
+    href: `${SITE}/api/chart/sector/{sector-slug}/svg`,
+    preview: `${SITE}/api/chart/sector/healthcare/svg`,
+    previewW: 760,
+    previewH: 494,
+    example: `${SITE}/api/chart/sector/healthcare/svg`,
+    description:
+      "760px bar chart of a sector's top 8 startups by 14-day commit velocity, with aggregate stats (startup count, breakout count, average velocity change) and a Powered-by attribution line. Drop one <img> into a Substack, Ghost, or Notion post. Self-updates weekly.",
+    copy: `[![Healthcare sector momentum](https://signals.gitdealflow.com/api/chart/sector/{sector-slug}/svg)](https://signals.gitdealflow.com/startups-to-watch/{sector-slug}-q3-2026)`,
   },
 
   // OG cards
@@ -150,6 +186,8 @@ const EMBEDS: Embed[] = [
     name: "Signal-of-the-week OG card",
     href: `${SITE}/api/og/signal-card?org={org}&metric={metric}&delta={delta}`,
     preview: `${SITE}/api/og/signal-card`,
+    previewW: 1200,
+    previewH: 630,
     example: `${SITE}/api/og/signal-card?org=Acme&metric=Δ%20Velocity&delta=%2B142%25`,
     description:
       "1200×630 OG image showing an org name, the chosen metric, and a delta. Use as Twitter card, LinkedIn share image, or blog hero. Fresh image on every share.",
@@ -165,15 +203,6 @@ const EMBEDS: Embed[] = [
     description:
       "Drop-in iframe widget showing the top 5 picks from this week's Engineering Acceleration Watch. Updates every Monday. CDN-cached, sandbox-safe, and styled with the same fixed dark palette as the site. Pulls from the same dataset as /predicted and /predicted/feed.json.",
     copy: `<iframe src="https://signals.gitdealflow.com/embed/weekly?pub=your-newsletter" width="380" height="420" frameborder="0" loading="lazy" title="Engineering Acceleration Watch, top 5 this week"></iframe>`,
-  },
-  {
-    group: "Mini-widgets",
-    name: "Sector mini-leaderboard (iframe)",
-    href: `${SITE}/embed/leaderboard/{sector-slug}`,
-    example: `${SITE}/embed/leaderboard/ai-ml`,
-    description:
-      "Compact iframe-friendly leaderboard for a single sector. Shows top 5 startups by current 14-day commit velocity. Sandbox-safe.",
-    copy: `<iframe src="https://signals.gitdealflow.com/embed/leaderboard/ai-ml" width="380" height="320" frameborder="0" loading="lazy"></iframe>`,
   },
   {
     group: "Mini-widgets",
@@ -311,7 +340,9 @@ export default function EmbedPage() {
                           src={e.preview}
                           alt={`Preview of ${e.name}`}
                           loading="lazy"
-                          className="max-w-full"
+                          width={e.previewW ?? 1200}
+                          height={e.previewH ?? 630}
+                          className="max-w-full h-auto"
                         />
                       </div>
                     ) : null}

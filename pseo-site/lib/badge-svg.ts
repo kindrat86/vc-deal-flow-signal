@@ -165,6 +165,25 @@ export function renderSignalBadge({ name, momentum }: SignalBadgeInput): string 
   });
 }
 
+export interface SectorBadgeInput {
+  name: string;
+  startupCount: number;
+  momentum: MomentumTier;
+}
+
+export function renderSectorBadge({
+  name,
+  startupCount,
+  momentum,
+}: SectorBadgeInput): string {
+  return renderBadge({
+    label: name,
+    value: `${startupCount} startups`,
+    valueColor: TIER_HEX[momentum],
+    title: `${name}: ${startupCount} startups tracked, ${momentum} momentum · gitdealflow`,
+  });
+}
+
 export function tierFromVelocityChange(change: string): MomentumTier {
   const num = parseInt(change.replace(/[^0-9-]/g, ""), 10) || 0;
   if (num >= 200) return "breakout";
