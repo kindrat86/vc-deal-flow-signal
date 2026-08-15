@@ -78,6 +78,28 @@ export default async function NicheLeafPage({ params }: PageProps) {
   // Adjacent sub-niches in the same sector (for cross-linking)
   const adjacent = sector.niches.filter((n) => n.slug !== niche.slug).slice(0, 4);
 
+  // Computed context, derived from this niche's own labels so every
+  // page in the family carries niche-specific substance.
+  const buildCostMeaning: Record<BuildCost, string> = {
+    weekend:
+      "a solo builder can ship a credible v1 over a weekend or two, capital cost near zero",
+    month:
+      "one focused builder needs roughly a month of full-time work before the tool is usable by a stranger",
+    quarter:
+      "expect a quarter of sustained build time, usually two or three people, before first external users",
+    team:
+      "only makes sense as a team bet, multiple quarters of salary before any revenue, the kind of project incumbents are better positioned to start",
+  };
+  const dealVelocityMeaning: Record<DealVelocity, string> = {
+    trickle: "few rounds land in this category in a given year, buyers are rare",
+    steady:
+      "a round closes somewhere in this category most quarters, neither hot nor dead",
+    hot: "multiple funded companies are landing in this category per quarter right now",
+    frothy:
+      "capital is crowding in faster than the category can absorb, expect a shake-out",
+  };
+  const exampleCount = niche.examples.length;
+
   // Related sectors, pick 3 alphabetically-adjacent
   const sectorIndex = sector ? getNicheSector(sector.slug) : null;
   void sectorIndex;
@@ -176,7 +198,28 @@ export default async function NicheLeafPage({ params }: PageProps) {
               {dealVelocityLabel(niche.dealVelocity)}
             </span>
           </div>
+          <p className="text-gray-400 text-sm leading-relaxed pt-3">
+            Reading the two labels: {buildCostLabel(niche.buildCost).toLowerCase()}{" "}
+            build cost means {buildCostMeaning[niche.buildCost]}.{" "}
+            {dealVelocityLabel(niche.dealVelocity).charAt(0).toUpperCase() +
+              dealVelocityLabel(niche.dealVelocity).slice(1).toLowerCase()}{" "}
+            deal velocity means {dealVelocityMeaning[niche.dealVelocity]}.
+          </p>
         </header>
+
+        <section
+          className="rounded-lg border border-sky-700/40 bg-sky-950/20 px-5 py-4"
+          aria-label="Quick take"
+          data-speakable
+        >
+          <p className="text-gray-300 text-base leading-relaxed">
+            <strong className="text-gray-100">Quick take:</strong> {niche.name}{" "}
+            is a {buildCostLabel(niche.buildCost).toLowerCase()}-cost,{" "}
+            {dealVelocityLabel(niche.dealVelocity).toLowerCase()}-velocity
+            opportunity inside {sector.name}, with {exampleCount} public
+            reference points. {niche.ourTake}
+          </p>
+        </section>
 
         <section className="space-y-3" aria-label="Why now">
           <h2 className="text-xs text-amber-300 font-semibold uppercase tracking-wider">
@@ -218,6 +261,47 @@ export default async function NicheLeafPage({ params }: PageProps) {
           </h2>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
             {niche.competingFor}
+          </p>
+        </section>
+
+        <section
+          className="space-y-4"
+          aria-label="How to validate this niche with data"
+        >
+          <h2 className="text-xs text-emerald-300 font-semibold uppercase tracking-wider">
+            How to validate it in an afternoon
+          </h2>
+          <p className="text-gray-300 text-base leading-relaxed">
+            Before committing build time or a thesis memo to{" "}
+            {niche.name.toLowerCase()}, run three cheap checks against public
+            engineering activity. Each takes minutes and none require access
+            to private data.
+          </p>
+          <ol className="list-decimal pl-5 space-y-2.5 text-gray-300 text-base leading-relaxed marker:text-emerald-400">
+            <li>
+              Count active builders. Search GitHub for repositories matching
+              this category, then check how many accepted commits in the last
+              14 days. More than a handful of active teams means the category
+              has energy, not just mentions.
+            </li>
+            <li>
+              Look for the {dealVelocityLabel(niche.dealVelocity).toLowerCase()}{" "}
+              pattern in funding. If funded companies keep appearing here,{" "}
+              {dealVelocityMeaning[niche.dealVelocity]}. Cross-check the
+              {" "}{sector.name.toLowerCase()} leaderboard to see whether any
+              of the accelerators sit adjacent to this niche.
+            </li>
+            <li>
+              Test the {buildCostLabel(niche.buildCost).toLowerCase()} cost
+              assumption honestly: {buildCostMeaning[niche.buildCost]}. If your
+              calendar cannot absorb that, the opportunity is real but not
+              yours yet.
+            </li>
+          </ol>
+          <p className="text-gray-400 text-sm leading-relaxed">
+            The weekly signal feed tracks {sector.niches.length}{" "}
+            {sector.name} sub-niches including this one, so the cohort side of
+            this check can run continuously instead of manually.
           </p>
         </section>
 

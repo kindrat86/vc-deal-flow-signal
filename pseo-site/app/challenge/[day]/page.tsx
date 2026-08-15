@@ -65,6 +65,16 @@ export default async function ChallengeDayPage({
     synthesize: "Week 3, Synthesize",
     operationalize: "Week 4, Operationalize",
   };
+  const phaseIntro: Record<typeof d.phase, string> = {
+    learn:
+      "Week 1 teaches the six atomic signals one at a time, each on the org you picked on day one.",
+    apply:
+      "Week 2 combines the atomic signals into a composite score and runs it against real candidate orgs.",
+    synthesize:
+      "Week 3 turns daily checks into a watchlist and a weekly rhythm you can keep.",
+    operationalize:
+      "Week 4 wires the system into alerts, sharing, and agent integrations so it runs without you.",
+  };
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -99,6 +109,35 @@ export default async function ChallengeDayPage({
           position: i + 1,
           text: step,
         })),
+      },
+      {
+        "@type": "FAQPage",
+        mainEntity: [
+          {
+            "@type": "Question",
+            name: `How long does day ${d.day} of the 30-day challenge take?`,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "About five minutes of hands-on work against the org you picked on day one, plus two or three minutes of reading. If you are short on time the exercise alone still delivers the day's point.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: `Do I need any tools or paid data for ${d.title.toLowerCase()}?`,
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "No. Every exercise in the challenge runs on public GitHub data and a browser. The feed that automates the same checks is available, but the curriculum itself is deliberately tool-free so the habit lands before the tooling.",
+            },
+          },
+          {
+            "@type": "Question",
+            name: "What if I miss a day of the 30-day deal flow challenge?",
+            acceptedAnswer: {
+              "@type": "Answer",
+              text: "Every day is permanent at its own URL, so you can pick up exactly where you stopped. The sequence matters, each day builds on the previous one's artifact, but the pace is yours.",
+            },
+          },
+        ],
       },
       {
         "@type": "BreadcrumbList",
@@ -193,7 +232,40 @@ export default async function ChallengeDayPage({
           <p className="text-sky-300 text-base leading-relaxed font-medium">
             {d.oneLine}
           </p>
+          <div
+            className="mt-4 rounded-lg border border-sky-700/40 bg-sky-950/20 px-5 py-4"
+            data-speakable
+          >
+            <p className="text-gray-300 text-base leading-relaxed">
+              <strong className="text-gray-100">
+                Day {d.day} in one paragraph:
+              </strong>{" "}
+              {d.whyItMatters} You will spend about five minutes, end with a
+              concrete artifact, and the whole curriculum stays free at this
+              URL permanently.
+            </p>
+          </div>
         </header>
+
+        {/* Where this day sits, computed from real curriculum fields */}
+        <section className="mb-8" aria-label="Where this day sits">
+          <h2 className="text-gray-100 font-semibold text-lg mb-3">
+            Where this day sits in the 30
+          </h2>
+          <p className="text-gray-300 text-sm leading-relaxed mb-3">
+            {phaseIntro[d.phase]} Day {d.day} of {CHALLENGE_DAYS.length} sits{" "}
+            {Math.round((d.day / CHALLENGE_DAYS.length) * 100)}% of the way
+            through, in{" "}
+            {phaseLabel[d.phase].toLowerCase()}, one of four one-week phases.
+            {d.bonus
+              ? " This day also carries a bonus exercise for anyone with extra time."
+              : " The exercise is deliberately tight, five minutes, so it fits a working day."}{" "}
+            Everything in this challenge is built from public GitHub signals,
+            the same data that powers the weekly deal-flow feed, and the
+            day&apos;s lesson is worth roughly €{d.retailValue} in equivalent
+            consulting time by the anchoring we use across the curriculum.
+          </p>
+        </section>
 
         {/* Yesterday recap (Brunson serial-continuity device, "the
             cliffhanger pickup"). Skipped on Day 1. */}
@@ -334,6 +406,49 @@ export default async function ChallengeDayPage({
             </p>
           </section>
         ) : null}
+
+        {/* Visible FAQ, mirrors FAQPage JSON-LD */}
+        <section className="mb-8" aria-label="Frequently asked questions">
+          <h2 className="text-gray-100 font-semibold text-lg mb-4">
+            Common questions about day {d.day}
+          </h2>
+          <dl className="space-y-4">
+            <div className="border-l-2 border-slate-700 pl-4 space-y-1.5">
+              <dt className="text-gray-100 font-semibold text-base">
+                How long does day {d.day} take?
+              </dt>
+              <dd className="text-gray-300 text-base leading-relaxed">
+                About five minutes of hands-on work against the org you picked
+                on day one. The reading adds another two or three. If you are
+                short on time the exercise alone still delivers the day&apos;s
+                point.
+              </dd>
+            </div>
+            <div className="border-l-2 border-slate-700 pl-4 space-y-1.5">
+              <dt className="text-gray-100 font-semibold text-base">
+                Do I need any tools or paid data for {d.title.toLowerCase()}?
+              </dt>
+              <dd className="text-gray-300 text-base leading-relaxed">
+                No. Every exercise in the challenge runs on public GitHub data
+                and a browser. The feed that automates the same checks is
+                available, but the curriculum itself is deliberately
+                tool-free so the habit lands before the tooling.
+              </dd>
+            </div>
+            <div className="border-l-2 border-slate-700 pl-4 space-y-1.5">
+              <dt className="text-gray-100 font-semibold text-base">
+                What if I miss a day?
+              </dt>
+              <dd className="text-gray-300 text-base leading-relaxed">
+                Every day is permanent at its own URL, so you can pick up
+                exactly where you stopped. The sequence matters, each day
+                builds on the previous one&apos;s artifact, but the pace is
+                yours. Many people run the 30 days across six or seven weeks
+                instead of four.
+              </dd>
+            </div>
+          </dl>
+        </section>
 
         {/* Prev / next navigation. */}
         <nav
