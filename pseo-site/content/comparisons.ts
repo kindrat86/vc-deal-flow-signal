@@ -1,3 +1,4 @@
+import { FRESH_YEAR_STR, FRESH_YEAR_PLAIN } from "@/lib/freshness-year";
 export interface ComparisonFeature {
   feature: string;
   values: Record<string, string>;
@@ -103,7 +104,7 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: "best-deal-flow-tools-angel-investors",
-    title: "Best Deal Flow Tools for Angel Investors (2026)",
+    title: `Best Deal Flow Tools for Angel Investors ${FRESH_YEAR_STR}`,
     description:
       "Compare the best deal flow tools for angel investors in 2026 by timing, verification, workflow fit, and price, including GitDealFlow, Harmonic.ai, Dealroom, and Forager.ai.",
     h1: "Best Deal Flow Tools for Angel Investors",
@@ -221,7 +222,7 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: "best-deal-flow-tools-seed-investors",
-    title: "Best Deal Flow Tools for Seed-Stage Investors (2026)",
+    title: `Best Deal Flow Tools for Seed-Stage Investors ${FRESH_YEAR_STR}`,
     description:
       "Compare the best deal flow tools for seed-stage investors, from engineering signals to AI sourcing and startup databases.",
     h1: "Best Deal Flow Tools for Seed-Stage Investors",
@@ -418,7 +419,7 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: "best-free-deal-flow-tools-2026",
-    title: "Best Free Deal Flow Tools for Investors (2026)",
+    title: `Best Free Deal Flow Tools for Investors ${FRESH_YEAR_STR}`,
     description:
       "Compare the best free deal flow tools in 2026, including GitDealFlow, Crunchbase Free, Product Hunt, and Hacker News.",
     h1: "Best Free Deal Flow Tools for Investors",
@@ -456,7 +457,7 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: "best-deal-flow-tools-vc-firms-2026",
-    title: "Best Deal Flow Tools for VC Firms (2026)",
+    title: `Best Deal Flow Tools for VC Firms ${FRESH_YEAR_STR}`,
     description:
       "Compare the top deal flow tools for VC firms in 2026, including PitchBook, Harmonic.ai, CB Insights, Dealroom, GitDealFlow, and Affinity.",
     h1: "Best Deal Flow Tools for VC Firms",
@@ -498,7 +499,7 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: "best-deal-flow-tools-solo-gp",
-    title: "Best Deal Flow Tools for Solo GPs (2026)",
+    title: `Best Deal Flow Tools for Solo GPs ${FRESH_YEAR_STR}`,
     description:
       "Best deal flow tools for solo GPs: compare GitDealFlow, Crunchbase, and lightweight CRM options for high signal per dollar.",
     h1: "Best Deal Flow Tools for Solo GPs",
@@ -542,7 +543,7 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: "best-deal-flow-tools-european-investors",
-    title: "Best Deal Flow Tools for European Investors (2026)",
+    title: `Best Deal Flow Tools for European Investors ${FRESH_YEAR_STR}`,
     description:
       "Compare the best deal flow tools for European investors, including Dealroom, Tracxn, GitDealFlow, and Crunchbase.",
     h1: "Best Deal Flow Tools for European Investors",
@@ -586,7 +587,7 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: "best-deal-flow-tools-emerging-fund-managers",
-    title: "Best Deal Flow Tools for Emerging Fund Managers (2026)",
+    title: `Best Deal Flow Tools for Emerging Fund Managers ${FRESH_YEAR_STR}`,
     description:
       "Best deal flow tools for emerging fund managers: compare GitDealFlow, Harmonic.ai, Forager.ai, and lightweight CRM options.",
     h1: "Best Deal Flow Tools for Emerging Fund Managers",
@@ -629,7 +630,7 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: "best-deal-flow-tools-ai-investors",
-    title: "Best Deal Flow Tools for AI Investors (2026)",
+    title: `Best Deal Flow Tools for AI Investors ${FRESH_YEAR_STR}`,
     description:
       "Compare the best AI deal sourcing tools for investors, including GitDealFlow, Hugging Face Trending, GitHub Trending, and Papers With Code.",
     h1: "Best Deal Flow Tools for AI Investors",
@@ -673,7 +674,7 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: "best-ai-deal-sourcing-tools-2026",
-    title: "Best AI Deal Sourcing Tools for VCs (2026)",
+    title: `Best AI Deal Sourcing Tools for VCs ${FRESH_YEAR_STR}`,
     description:
       "Compare the leading AI-powered deal sourcing tools in 2026, including GitDealFlow, Harmonic.ai, Specter, Forager.ai, and CB Insights.",
     h1: "Best AI Deal Sourcing Tools for VCs",
@@ -707,7 +708,7 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: "best-github-deal-flow-tools-2026",
-    title: "Best GitHub-Based Deal Flow Tools for VCs (2026)",
+    title: `Best GitHub-Based Deal Flow Tools for VCs ${FRESH_YEAR_STR}`,
     description:
       "Compare the best GitHub-based deal flow tools for VCs, including GitDealFlow, GitHub Trending, and OSS Insight.",
     h1: "Best GitHub-Based Deal Flow Tools for VCs",
@@ -740,7 +741,7 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: "best-deal-flow-tools-developer-investors-2026",
-    title: "Best Deal Flow Tools for Developer-Investors (2026)",
+    title: `Best Deal Flow Tools for Developer-Investors ${FRESH_YEAR_STR}`,
     description:
       "Best deal flow tools for developer-investors: compare GitDealFlow MCP, GitHub-native workflows, and lightweight CRM options.",
     h1: "Best Deal Flow Tools for Developer-Investors",
@@ -872,7 +873,7 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: "vc-deal-flow-signal-vs-affinity-relationship-intelligence",
-    title: "VC Deal Flow Signal vs Affinity for Deal Sourcing (2026)",
+    title: `VC Deal Flow Signal vs Affinity for Deal Sourcing ${FRESH_YEAR_STR}`,
     description:
       "Compare GitDealFlow with Affinity for deal sourcing: relationship-led CRM vs engineering-signal discovery.",
     h1: "VC Deal Flow Signal vs Affinity",
@@ -917,10 +918,10 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: "best-alternative-data-tools-for-angel-investors",
-    title: "Best Alternative Data Tools for Angel Investors (2026)",
+    title: `Best Alternative Data Tools for Angel Investors ${FRESH_YEAR_STR}`,
     description:
       "Compare alternative data tools for angel investors by timing, verification, workflow fit, and cost, and see where GitDealFlow helps earlier, not just later.",
-    h1: "The best alternative data tools for angel investors in 2026",
+    h1: `The best alternative data tools for angel investors in ${FRESH_YEAR_PLAIN}`,
     intro:
       "If you are an angel investor, the real problem is not finding more startup data. It is finding the kind of signal that helps you move earlier without drowning in noise. The best alternative data tools do not just show you a bigger list. They give you better timing, cleaner judgment, and faster trust in what deserves attention now, and they route you into a usable stack instead of a bigger mess.",
     sections: [
@@ -1036,10 +1037,10 @@ export const comparisons: Comparison[] = [
   },
   {
     slug: "best-startup-signal-tools-for-investors",
-    title: "Best Startup Signal Tools for Investors (2026)",
+    title: `Best Startup Signal Tools for Investors ${FRESH_YEAR_STR}`,
     description:
       "Compare startup signal tools for investors: which help with timing, which help with verification, and where GitDealFlow fits.",
-    h1: "The best startup signal tools for investors in 2026",
+    h1: `The best startup signal tools for investors in ${FRESH_YEAR_PLAIN}`,
     intro:
       "Not every investor wants more data. Many want better signal. This page compares startup signal tools by what they actually help you do: verify, monitor, or notice earlier momentum.",
     sections: [
@@ -2220,9 +2221,16 @@ function generateVsComparison(a: Competitor, b: Competitor): Comparison {
 }
 
 // Generate "vs" pages for VC Deal Flow Signal against every competitor,
-// plus select high-value cross-competitor pairs
+// plus select high-value cross-competitor pairs.
+// Cannibalization guard (2026-08-16): a competitor whose head-to-head already
+// exists as a RICH editorial page under a longer slug must NOT also get the
+// thin programmatic twin (GSC 90d had both ranking for "vc deal flow signal
+// vs affinity": thin twin pos 20.7 / 16 imps vs editorial twin pos 7.9 / 284
+// imps, splitting the query). The twin is 301'd to the editorial page in
+// next.config.ts (guarded in scripts/verify-no-regressions.ts §21).
+const programmaticVsExcluded = new Set(["affinity"]);
 const vsDealFlow = competitors
-  .filter((c) => c.slug !== "vc-deal-flow-signal")
+  .filter((c) => c.slug !== "vc-deal-flow-signal" && !programmaticVsExcluded.has(c.slug))
   .map((c) => generateVsComparison(competitors[0], c));
 
 // Cross pairs that duplicate a rich /vs/ twin (2026-08-16). These thin,

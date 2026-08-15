@@ -115,6 +115,16 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        // Thin programmatic twin of the rich editorial Affinity page
+        // (2026-08-16). Both ranked for "vc deal flow signal vs affinity"
+        // (twin pos 20.7/16 imps vs editorial pos 7.9/284 imps). Generation
+        // stopped in content/comparisons.ts (programmaticVsExcluded); this
+        // 301 consolidates the twin's equity into the editorial page.
+        source: "/compare/vc-deal-flow-signal-vs-affinity",
+        destination: "/compare/vc-deal-flow-signal-vs-affinity-relationship-intelligence",
+        permanent: true,
+      },
+      {
         // /contact never existed as a page; contact happens via
         // signals@gitdealflow.com (surfaced on /about). Investors, AI
         // crawlers, and diligence flows probing the conventional /contact

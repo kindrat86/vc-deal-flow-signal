@@ -1735,7 +1735,14 @@ check(
   // /markets: hook title, absolute.
   {
     const s = read("app/markets/page.tsx");
-    if (!s.includes("Startup Funding Prediction Markets: Live Odds (2026)")) {
+    // Hook title must survive in either year form: the original hardcoded
+    // "(2026)" or the FRESH_YEAR_STR interpolation (auto-year rollover
+    // 2026-08-16; what must NOT come back is the generic
+    // "Open Prediction Markets" form).
+    const hookOk =
+      s.includes("Startup Funding Prediction Markets: Live Odds (2026)") ||
+      s.includes("Startup Funding Prediction Markets: Live Odds ${FRESH_YEAR_STR}");
+    if (!hookOk) {
       failures.push(
         `markets title reverted to the generic "Open Prediction Markets" form.\n` +
           `    fix:  restore the hook title in app/markets/page.tsx`,
@@ -1819,6 +1826,193 @@ check(
       );
     }
   }
+}
+
+// ---------------------------------------------------------------------------
+// §21 /compare vs /vs cannibalization consolidation (2026-08-16). GSC 90d
+// showed the same entity-pairs split across both templates (7 mirror pairs,
+// e.g. /compare/pitchbook-vs-cb-insights 868 imps @ pos 22.7 competing with
+// /vs/pitchbook-vs-cb-insights; /compare/harmonic-ai-vs-dealroom 97 imps
+// vs /vs/ twin at 478). Consolidation: generation removed from
+// content/comparisons.ts, next.config.ts 301s every retired URL to its
+// /vs/ twin, sitemaps advertise only the /vs/ twins, and the internal-link
+// graph (data/internal-links.json) points at the /vs/ URLs only.
+// A reverted tree would resurrect duplicate pages competing for the same
+// queries (or resurrect internal links through the 301s, wasting crawl).
+// ---------------------------------------------------------------------------
+{
+  const RETIRED: Array<[string, string]> = [
+    ["/compare/pitchbook-vs-cb-insights", "/vs/pitchbook-vs-cb-insights"],
+    ["/compare/crunchbase-vs-cb-insights", "/vs/crunchbase-vs-cb-insights"],
+    ["/compare/pitchbook-vs-crunchbase", "/vs/crunchbase-vs-pitchbook"],
+    ["/compare/crunchbase-vs-dealroom", "/vs/dealroom-vs-crunchbase"],
+    ["/compare/pitchbook-vs-dealroom", "/vs/dealroom-vs-pitchbook"],
+    ["/compare/harmonic-ai-vs-dealroom", "/vs/harmonic-ai-vs-dealroom"],
+    ["/compare/harmonic-ai-vs-forager-ai", "/vs/harmonic-ai-vs-forager-ai"],
+  ];
+  const cfg = read("next.config.ts");
+  if (cfg === null) {
+    failures.push("§21 next.config.ts missing");
+  } else {
+    for (const [oldUrl, newUrl] of RETIRED) {
+      if (!cfg.includes(`"${oldUrl}"`) || !cfg.includes(`"${newUrl}"`)) {
+        failures.push(
+          `§21 /compare→/vs consolidation redirect missing for ${oldUrl} → ${newUrl}\n` +
+            `    file: next.config.ts\n` +
+            `    fix:  restore the permanent redirect pair (see §21 comment block)`,
+        );
+      }
+    }
+  }
+  const comparisons = read("content/comparisons.ts");
+  if (comparisons !== null && RETIRED.some(([o]) => comparisons.includes(`slug: "${o.replace("/compare/", "")}"`))) {
+    failures.push(
+      `§21 retired /compare mirror pages re-added to content/comparisons.ts\n` +
+        `    fix:  remove the mirror comparison objects; the head-to-head lives on /vs/ only`,
+    );
+  }
+  const linksRaw = read("data/internal-links.json");
+  if (linksRaw !== null) {
+    for (const [oldUrl] of RETIRED) {
+      if (linksRaw.includes(`"${oldUrl}"`)) {
+        failures.push(
+          `§21 internal-link graph still routes through retired ${oldUrl}\n` +
+            `    file: data/internal-links.json\n` +
+            `    fix:  point the link at the canonical /vs/ URL (rerun scripts/build-internal-links.ts against the clean sitemap)`,
+        );
+      }
+    }
+    if (linksRaw.includes('"/compare/vc-deal-flow-signal-vs-affinity"')) {
+      failures.push(
+        `§21 internal-link graph still routes through the retired thin Affinity twin\n` +
+          `    file: data/internal-links.json\n` +
+          `    fix:  point the link at /compare/vc-deal-flow-signal-vs-affinity-relationship-intelligence`,
+      );
+    }
+  }
+  // Thin programmatic twin of the rich editorial Affinity head-to-head. The
+  // competitors-array generator must keep excluding `affinity` or both pages
+  // come back and split "vc deal flow signal vs affinity" again (90d: twin
+  // pos 20.7/16 imps vs editorial pos 7.9/284 imps).
+  const comparisonsSrc = read("content/comparisons.ts");
+  if (comparisonsSrc !== null) {
+    if (!comparisonsSrc.includes("programmaticVsExcluded")) {
+      failures.push(
+        `§21 programmaticVsExcluded set missing from content/comparisons.ts\n` +
+          `    fix:  restore the exclusion set so the thin /compare/vc-deal-flow-signal-vs-affinity twin is not generated next to the rich editorial page`,
+      );
+    }
+    if (cfg !== null && !cfg.includes('"/compare/vc-deal-flow-signal-vs-affinity"')) {
+      failures.push(
+        `§21 redirect for the retired thin Affinity twin missing\n` +
+          `    file: next.config.ts\n` +
+          `    fix:  restore the permanent redirect /compare/vc-deal-flow-signal-vs-affinity → /compare/vc-deal-flow-signal-vs-affinity-relationship-intelligence`,
+      );
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Auto-year title rollover (2026-08-16, traffic audit "content freshness 55").
+// "(YEAR)" tokens in SERP titles decay the moment the calendar rolls: a stale
+// year is both a CTR liability and an intent mismatch (queries carry the
+// current year). Every ROTATABLE title/h1/og year token now interpolates
+// FRESH_YEAR_STR / FRESH_YEAR_PLAIN from lib/freshness-year.ts (build-time
+// year, NEXT_PUBLIC_FRESH_YEAR override for proof builds / hold-backs).
+// FROZEN years (citations "The Data Nerd. (2026).", named editions like
+// "Series A Race 2026" / "Charter Cohort 2026" / "2026 State of Engineering
+// Velocity", year-bound pricing claims) must NOT be rolled automatically.
+// ---------------------------------------------------------------------------
+check(
+  "lib/freshness-year.ts",
+  "Freshness-year single source of truth lost or broken: rotatable titles fall back to hardcoded years and decay on Jan 1.",
+  (s) =>
+    s.includes("export function freshYear") &&
+    s.includes("NEXT_PUBLIC_FRESH_YEAR") &&
+    s.includes("export const FRESH_YEAR_STR") &&
+    s.includes("export const FRESH_YEAR_PLAIN"),
+  "restore lib/freshness-year.ts (freshYear + FRESH_YEAR_STR + FRESH_YEAR_PLAIN) and re-wire the ROTATABLE list below",
+);
+{
+  const ROTATABLE = [
+    "content/alternatives.ts",
+    "content/comparisons.ts",
+    "content/use-cases.ts",
+    "content/sectors.ts",
+    "content/companies.ts",
+    "content/acquirers.ts",
+    "content/funds.ts",
+    "content/works-with.ts",
+    "app/city/[slug]/page.tsx",
+    "app/sector/[slug]/in/[city]/page.tsx",
+    "app/fund/[slug]/portfolio/page.tsx",
+    "app/trend/page.tsx",
+    "app/best/page.tsx",
+    "app/markets/page.tsx",
+    "app/from-stars-to-seed/page.tsx",
+    "app/benchmarks/[metric]/page.tsx",
+    "app/startup-ideas/page.tsx",
+    "app/llms-search.json/route.ts",
+  ];
+  for (const rel of ROTATABLE) {
+    const s = read(rel);
+    if (s === null) {
+      failures.push(`auto-year: rotatable file missing: ${rel}`);
+      continue;
+    }
+    if (!s.includes('from "@/lib/freshness-year"')) {
+      failures.push(
+        `auto-year: ${rel} no longer imports freshness-year; its title year is hardcoded again (decays on Jan 1).\n` +
+          `    fix:  import { FRESH_YEAR_STR } (or FRESH_YEAR_PLAIN) from "@/lib/freshness-year" and interpolate the year token`,
+      );
+    }
+  }
+  // Registry files: a double-quoted title/h1 with a literal "(2026)" is the
+  // pre-rollover form. Interpolated template literals are required.
+  for (const rel of [
+    "content/alternatives.ts",
+    "content/comparisons.ts",
+    "content/use-cases.ts",
+  ]) {
+    const s = read(rel);
+    if (s === null) continue;
+    if (/^\s*(title|h1):\s*"[^"\n]*\(202\d\)"/m.test(s)) {
+      failures.push(
+        `auto-year: ${rel} has a hardcoded "(YEAR)" title/h1 literal again.\n` +
+          `    fix:  interpolate \${FRESH_YEAR_STR} from @/lib/freshness-year`,
+      );
+    }
+  }
+  // Frozen-year sentinels: citation / edition years must NEVER roll. If one
+  // of these files ever imports freshness-year, someone "finished" the
+  // rollout onto immutable years.
+  const FROZEN = [
+    "app/citation-guide/page.tsx",
+    "app/citations/page.tsx",
+    "app/dataset/page.tsx",
+    "app/research/page.tsx",
+    "app/wikipedia/page.tsx",
+    "app/api/cite/[format]/[slug]/route.ts",
+    "content/state-of-engineering-velocity.ts",
+    "app/members/page.tsx",
+    "app/markets/series-a-race-2026/page.tsx",
+  ];
+  for (const rel of FROZEN) {
+    const s = read(rel);
+    if (s !== null && s.includes('from "@/lib/freshness-year"')) {
+      failures.push(
+        `auto-year: ${rel} imports freshness-year but its years are FROZEN (citation/edition years must not roll).\n` +
+          `    fix:  remove the import; keep the literal year and re-verify the claim manually`,
+      );
+    }
+  }
+  // /vs template: keep deriving its year from content freshness, not a literal.
+  check(
+    "app/vs/[slug]/page.tsx",
+    "/vs titles regressed to a hardcoded year (was: lastModified.getFullYear()).",
+    (s) => s.includes("lastModified.getFullYear()"),
+    "keep const year = lastModified.getFullYear() in the /vs generateMetadata",
+  );
 }
 
 // ---------------------------------------------------------------------------
