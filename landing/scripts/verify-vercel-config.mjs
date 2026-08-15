@@ -105,6 +105,33 @@ for (const [file, target] of canonPairs) {
   }
 }
 
+
+// ---------------------------------------------------------------------------
+// Topical-authority hubs must exist and be wired (2026-08-15)
+// ---------------------------------------------------------------------------
+// /faq, /for, /integrations had spokes in the sitemap but no hub (404), and
+// /learn was a dead end. Any tree missing the hubs or the mesh must not deploy.
+import { existsSync, readFileSync as _rf } from "node:fs";
+const hubChecks = [
+  ["faq/index.html", "https://gitdealflow.com/faq"],
+  ["for/index.html", "https://gitdealflow.com/for"],
+  ["integrations/index.html", "https://gitdealflow.com/integrations"],
+];
+for (const [file, url] of hubChecks) {
+  if (!existsSync(file)) {
+    fail(`${file} missing: the ${url} topical hub 404s again (2026-08-15 hub-and-spoke build).`);
+  }
+}
+const learnIdx = readFileSync("learn/index.html", "utf8");
+if (!learnIdx.includes("ItemList")) {
+  fail("learn/index.html lost its ItemList guide index (2026-08-15 pillar rebuild).");
+}
+for (const spoke of ["learn/deal-flow/index.html", "faq/what-is-seed-funding.html", "for/angel-investors/index.html"]) {
+  if (existsSync(spoke) && !readFileSync(spoke, "utf8").includes("topical-mesh")) {
+    fail(`${spoke} lost its topical-mesh cross-links (2026-08-15).`);
+  }
+}
+
 if (failures.length) {
   console.error(
     `\n❌ verify-vercel-config: ${failures.length} config regression(s) detected:`,

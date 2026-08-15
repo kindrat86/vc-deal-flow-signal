@@ -2,7 +2,6 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://gitdealflow.com</loc>
-    <lastmod>2026-08-15</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/2025</loc>
@@ -114,6 +113,7 @@
   </url>
   <url>
     <loc>https://gitdealflow.com/best</loc>
+    <lastmod>2026-08-15</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/best/best-angel-investment-platforms</loc>
@@ -201,6 +201,7 @@
   </url>
   <url>
     <loc>https://gitdealflow.com/checklists</loc>
+    <lastmod>2026-08-15</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/checklists/deal-flow-sourcing-checklist</loc>
@@ -276,6 +277,7 @@
   </url>
   <url>
     <loc>https://gitdealflow.com/data</loc>
+    <lastmod>2026-08-15</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/github-engineering-velocity-data</loc>
@@ -483,6 +485,7 @@
   </url>
   <url>
     <loc>https://gitdealflow.com/faq</loc>
+    <lastmod>2026-08-15</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/faq/can-you-predict-startup-funding</loc>
@@ -670,9 +673,11 @@
   </url>
   <url>
     <loc>https://gitdealflow.com/fund-scout</loc>
+    <lastmod>2026-08-15</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/glossary</loc>
+    <lastmod>2026-08-15</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/glossary/anti-dilution</loc>
@@ -904,6 +909,7 @@
   </url>
   <url>
     <loc>https://gitdealflow.com/how-to</loc>
+    <lastmod>2026-08-15</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/how-to/evaluate-startup-traction</loc>
@@ -1118,6 +1124,7 @@
   </url>
   <url>
     <loc>https://gitdealflow.com/pricing/crunchbase-pricing</loc>
+    <lastmod>2026-08-15</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/pricing/crunchbase-pricing-vs-gitdealflow</loc>
@@ -1125,6 +1132,7 @@
   </url>
   <url>
     <loc>https://gitdealflow.com/pricing/pitchbook-pricing</loc>
+    <lastmod>2026-08-15</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/pricing/pitchbook-pricing-vs-gitdealflow</loc>
@@ -1296,7 +1304,6 @@
   </url>
   <url>
     <loc>https://gitdealflow.com/tools</loc>
-    <lastmod>2026-08-15</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/tools/burn-rate-analyzer</loc>
@@ -1340,6 +1347,7 @@
   </url>
   <url>
     <loc>https://gitdealflow.com/use-cases</loc>
+    <lastmod>2026-08-15</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/use-cases/angel-investors</loc>
@@ -1379,6 +1387,12 @@
   <url>
     <loc>https://gitdealflow.com/vs/crunchbase</loc>
     <lastmod>2026-08-15</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/vs/crunchbase-vs-fundable</loc>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/vs/dealcloud-vs-affinity</loc>
   </url>
   <url>
     <loc>https://gitdealflow.com/vs/dealroom</loc>
