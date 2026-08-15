@@ -2674,12 +2674,13 @@ check(
 
 // ---------------------------------------------------------------------------
 // §29 locale-topic summary noindex (2026-08-17, hreflang/i18n audit win).
-// 77 of 96 locale topic pages are short hand-written summaries (98-397 body
+// 74 of 96 locale topic pages are short hand-written summaries (98-397 body
 // words) that were competing with the English canonical for thin/duplicate
 // content. They are now NOINDEXED + canonicalized to English, and dropped from
-// hreflang + the i18n sitemap; only the 19 full long-form translations
-// (ja all-8, ko 7, zh methodology/signals/research/about) and the
-// 12 hand-curated homepages stay indexable. A reverted tree re-indexes 77 thin
+// hreflang + the i18n sitemap; only the 22 full long-form translations
+// (ja all-8, ko all-8, zh methodology/signals/research/about, es/signals,
+// fr/signals: the last two enriched 2026-08-16 past the word floor) and the
+// 12 hand-curated homepages stay indexable. A reverted tree re-indexes 74 thin
 // pages and re-opens the canonical ambiguity the site's own /translations
 // policy warns against.
 // ---------------------------------------------------------------------------
@@ -2692,9 +2693,10 @@ check(
     s.includes('"ja/methodology"') &&
     s.includes('"ko/signals"') &&
     s.includes('"zh/about"') &&
-    !s.includes('"es/signals"') &&
-    !s.includes('"fr/signals"'),
-  "restore FULL_TRANSLATION_TOPICS (19 full translations) + isLocaleTopicSummary() in content/locale-topics.ts (es/signals + fr/signals are summaries, not full)",
+    s.includes('"es/signals"') &&
+    s.includes('"fr/signals"') &&
+    s.includes('"ko/citations"'),
+  "restore FULL_TRANSLATION_TOPICS (22 full translations incl. enriched es/signals, fr/signals, ko/citations) + isLocaleTopicSummary() in content/locale-topics.ts",
 );
 check(
   "app/[locale]/[topic]/page.tsx",

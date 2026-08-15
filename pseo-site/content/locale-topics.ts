@@ -1607,7 +1607,11 @@ Una empresa con 5 commits diarios que pasa a 50 emite una señal mucho más fuer
 
 ## Cómo interpretar estas señales en conjunto
 
-Ninguna señal individual es una orden de compra. El valor está en la convergencia: una aceleración de velocidad junto a crecimiento de contribuyentes y nuevos repositorios es más informativa que cualquiera de ellas por separado. Cruce siempre con fuentes externas como Crunchbase, anuncios de contratación y menciones de la comunidad antes de tomar una decisión.`,
+Ninguna señal individual es una orden de compra. El valor está en la convergencia: una aceleración de velocidad junto a crecimiento de contribuyentes y nuevos repositorios es más informativa que cualquiera de ellas por separado. Cruce siempre con fuentes externas como Crunchbase, anuncios de contratación y menciones de la comunidad antes de tomar una decisión.
+
+## Dónde ver estas señales
+
+Las seis señales se publican cada semana en el índice de momentum por organización y repositorio, en la página de tendencias y en el resumen semanal por correo. Los datos brutos están disponibles sin registro en \`signals.json\` y en CSV, con licencia CC BY 4.0, y el servidor MCP gratuito expone herramientas de solo lectura para consultar startups, sectores y recibos de scouting desde cualquier agente. Para la metodología completa y el cuaderno de réplica, consulte la guía en inglés.`,
     englishLinkLabel: "Glosario completo de señales (en inglés)",
     readTimeLabel: "≈ 2 min",
   },
@@ -1663,7 +1667,15 @@ Chez VC Deal Flow Signal, un **signal** est un changement observable et mesurabl
 
 ## Pourquoi le changement compte, pas la valeur absolue
 
-Une entreprise passant de 5 commits par jour à 50 émet un signal bien plus fort qu'une autre stable à 200 commits par jour. La méthodologie complète, le notebook de réplication et la justification statistique sont publiés sur SSRN (DOI 10.2139/ssrn.6606558, CC BY 4.0).`,
+Une entreprise passant de 5 commits par jour à 50 émet un signal bien plus fort qu'une autre stable à 200 commits par jour. La méthodologie complète, le notebook de réplication et la justification statistique sont publiés sur SSRN (DOI 10.2139/ssrn.6606558, CC BY 4.0).
+
+## Comment interpréter ces signaux ensemble
+
+Aucun signal isolé n'est un ordre d'achat. La valeur réside dans la convergence : une accélération de la vélocité couplée à une croissance des contributeurs et à de nouveaux dépôts est bien plus informative que chacun de ces signaux pris séparément. Croisez toujours avec des sources externes comme Crunchbase, les annonces de recrutement et les mentions communautaires avant de décider.
+
+## Où consulter ces signaux
+
+Les six signaux sont publiés chaque semaine dans l'index de momentum par organisation et par dépôt, sur la page des tendances et dans le résumé hebdomadaire par e-mail. Les données brutes sont accessibles sans inscription en \`signals.json\` et en CSV, sous licence CC BY 4.0, et le serveur MCP gratuit expose des outils en lecture seule pour interroger startups, secteurs et reçus de scouting depuis n'importe quel agent. Pour la méthodologie complète et le notebook de réplication, consultez le guide en anglais.`,
     englishLinkLabel: "Glossaire complet des signaux (en anglais)",
     readTimeLabel: "≈ 2 min",
   },
@@ -2782,7 +2794,15 @@ Kondratyuk, M. (2026). VC Deal Flow Signal: GitHub Engineering Acceleration as a
 
 ## 기타 형식 및 인용 API
 
-MLA 9, Chicago 17, BibTeX, RIS는 전체 가이드에서 제공합니다. 각 발견 페이지는 \`/api/cite/{format}/{slug}\` 인용 API를 제공하며 \`apa\`, \`mla\`, \`chicago\`, \`bibtex\`, \`ris\`, \`json\` 형식을 지원합니다. 전체 가이드는 [/citation-guide](/citation-guide)에 있습니다.`,
+MLA 9, Chicago 17, BibTeX, RIS는 전체 가이드에서 제공합니다. 각 발견 페이지는 \`/api/cite/{format}/{slug}\` 인용 API를 제공하며 \`apa\`, \`mla\`, \`chicago\`, \`bibtex\`, \`ris\`, \`json\` 형식을 지원합니다. 전체 가이드는 [/citation-guide](/citation-guide)에 있습니다.
+
+## 인용 시 유의사항
+
+데이터는 주간 갱신되므로 특정 수치를 인용할 때는 조회 시점의 스냅샷을 함께 표기하십시오. 데이터셋은 CC BY 4.0 라이선스이며, 출처 링크를 남기면 자유롭게 재사용할 수 있습니다.
+
+## 데이터셋 인용
+
+전체 데이터셋은 Hugging Face(vc-deal-flow-signal)와 Zenodo(DOI 10.5281/zenodo.19650920)에 공개되어 있으며, Kaggle 미러도 제공합니다. 논문의 보충 자료로 사용할 경우 SSRN 인용과 함께 원본 데이터 출처를 병기하십시오. 재현을 위한 패널 구성, 관측 기간, 신호 정의는 방법론 페이지에 상세히 기술되어 있습니다.`,
     englishLinkLabel: "전체 인용 가이드(영어)",
     readTimeLabel: "약 2분 분량",
   },
@@ -3046,15 +3066,15 @@ export function getAllLocaleTopicPairs(): { locale: string; topic: string }[] {
  *
  * Policy (content/locales.ts header + /translations): "we do NOT ship
  * machine-translated full-site copy" and Google penalizes thin/translated
- * pages. Only these locales received full long-form translations (rendered
+ * pages. Only these locales carry full long-form translations (rendered
  * ≥400 words, above the word-floor guard, verified 08-16 against the actual
- * word-floor build output): Japanese (all 8 topics), Korean (all 8 except
- * citations), and Chinese (methodology/signals/research/about). es/signals,
- * fr/signals and ko/citations render 380-395 words, under the 400 floor,
- * so they are summaries, not full translations. The other 77 locale-topic
- * pages render at 98-397 body words and are summaries by design.
+ * word-floor build output): Japanese (all 8 topics), Korean (all 8 topics),
+ * Chinese (methodology/signals/research/about), and es/signals, fr/signals
+ * (both enriched 2026-08-16 past the 400-word floor). The other 74
+ * locale-topic pages render at 98-397 body words and are summaries by
+ * design.
  *
- * The 77 summaries are NOINDEXED (robots meta) and dropped from hreflang +
+ * The 74 summaries are NOINDEXED (robots meta) and dropped from hreflang +
  * the i18n sitemap, so they cannot compete with the English canonical for
  * thin/duplicate content. The 12 hand-curated homepages (app/[locale]) stay
  * indexable: they are the intended landing surface. This is the exact
@@ -3071,12 +3091,13 @@ export const FULL_TRANSLATION_TOPICS: ReadonlySet<string> = new Set([
   "ja/citations",
   "ja/pricing",
   "ja/about",
-  // ko: 7 topics (citations renders 380 words, under floor -> summary)
+  // ko: all 8 topics (citations enriched 2026-08-16 to clear the floor)
   "ko/methodology",
   "ko/glossary",
   "ko/faq",
   "ko/signals",
   "ko/research",
+  "ko/citations",
   "ko/pricing",
   "ko/about",
   // zh: methodology/signals/research/about are full; the other 4 are summaries
@@ -3084,6 +3105,9 @@ export const FULL_TRANSLATION_TOPICS: ReadonlySet<string> = new Set([
   "zh/signals",
   "zh/research",
   "zh/about",
+  // es/signals + fr/signals: enriched 2026-08-16 to clear the 400-word floor
+  "es/signals",
+  "fr/signals",
 ]);
 
 /** True when a locale topic page is a summary (noindex), not a full translation. */
