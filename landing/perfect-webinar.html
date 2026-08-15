@@ -222,8 +222,12 @@
             <p class="text-gray-300 text-xs">Getting the read before everyone else is just how you source now.</p>
           </div>
         </div>
-        <a href="/#signup" class="btn btn-primary btn-xl w-full sm:w-auto"><span>Get this Sunday&rsquo;s 5 names for free</span><span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
-        <p class="text-gray-400 text-sm mt-3">No card. One email a week. Unsubscribe in one click.</p>
+        <form id="signup-webinar" class="js-signup-form flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" data-source="perfect_webinar">
+          <label for="pw-email" class="sr-only">Email address</label>
+          <input type="email" id="pw-email" required inputmode="email" autocomplete="email" enterkeyhint="send" placeholder="you@example.com" class="flex-1 px-5 py-4 rounded-lg bg-dark-800 border border-gray-600 text-gray-100 placeholder-gray-400 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 text-lg">
+          <button type="submit" class="btn btn-primary btn-xl w-full sm:w-auto"><span>Get this Sunday&rsquo;s 5 names for free</span><span aria-hidden="true" class="btn-arrow">&rarr;</span></button>
+        </form>
+        <p role="status" class="js-signup-msg text-gray-400 text-sm mt-3 text-center">No card. One email a week. Unsubscribe in one click.</p>
       </div>
     </section>
 
@@ -252,5 +256,44 @@
     })();
   </script>
 
-  </body>
+  
+    <script>
+    // Brunson audit fix 2026-08-16: inline email capture on the webinar close.
+    // Mirrors the site-wide js-signup-form handler from the homepage.
+    (function () {
+      document.querySelectorAll('form.js-signup-form').forEach(function (form) {
+        form.addEventListener('submit', async function (e) {
+          e.preventDefault();
+          var btn = form.querySelector('button[type="submit"]');
+          var msg = form.querySelector('.js-signup-msg') || (form.parentElement && form.parentElement.querySelector('.js-signup-msg'));
+          var emailEl = form.querySelector('input[type="email"]');
+          var email = (emailEl && emailEl.value || '').trim();
+          if (!email) return;
+          var orig = btn ? btn.innerHTML : '';
+          if (btn) { btn.disabled = true; btn.setAttribute('aria-busy', 'true'); btn.innerHTML = 'Sending&hellip;'; }
+          try {
+            var attr = {};
+            if (window.GDFattribution) attr = window.GDFattribution(form.getAttribute('data-source') || 'perfect_webinar');
+            var res = await fetch('https://signals.gitdealflow.com/api/subscribe', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(Object.assign({ email: email }, attr))
+            });
+            var data = await res.json();
+            if (data.ok) {
+              if (window.posthog) posthog.capture('signup_verify_sent', { placement: 'perfect_webinar' });
+              try { sessionStorage.setItem('gdf_email', email); } catch (err) {}
+              window.location.href = '/subscribe-thanks';
+              return;
+            }
+            throw new Error(data.error || 'Failed');
+          } catch (err) {
+            if (msg) { msg.textContent = 'Something went wrong. Try again or email signal@gitdealflow.com'; msg.className = 'js-signup-msg text-red-400 text-sm mt-3 text-center'; }
+            if (btn) { btn.disabled = false; btn.removeAttribute('aria-busy'); btn.innerHTML = orig; }
+          }
+        });
+      });
+    })();
+    </script>
+</body>
 </html>

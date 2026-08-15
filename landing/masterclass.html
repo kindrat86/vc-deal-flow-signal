@@ -72,7 +72,12 @@
       <strong>FREE FOREVER, NO CREDIT CARD.</strong> The weekly Acceleration Watch is completely free. The MCP server is free. The JSON API is free. We make money from premium dashboards and insider tools for professional investors. The signals are free because we believe access to early-stage data shouldn't be gated behind a paywall.
     </div>
 
-    <a href="https://gitdealflow.com/#subscribe" class="cta-btn">GET THE FREE WEEKLY SIGNALS, EVERY SUNDAY</a>
+    <form id="signup-masterclass" class="js-signup-form mc-capture" data-source="masterclass" style="max-width:520px;margin:1.6rem auto 0;display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center">
+      <label for="mc-email" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Email address</label>
+      <input type="email" id="mc-email" required inputmode="email" autocomplete="email" enterkeyhint="send" placeholder="you@example.com" style="flex:1 1 240px;padding:.95rem 1.2rem;border-radius:.6rem;border:1px solid #4b5563;background:#111827;color:#f3f4f6;font-size:1.05rem">
+      <button type="submit" class="cta-btn" style="flex:0 1 auto;margin:0">GET THE FREE WEEKLY SIGNALS, EVERY SUNDAY</button>
+    </form>
+    <p role="status" class="js-signup-msg" style="text-align:center;color:#9ca3af;font-size:.9rem;margin-top:.6rem">No card. One email a week. Unsubscribe in one click.</p>
   </div>
 
   <div class="rally">
@@ -94,5 +99,43 @@
     })();
   </script>
 
-  </body>
+  
+    <script>
+    // Brunson audit fix 2026-08-16: inline email capture at the masterclass close.
+    (function () {
+      document.querySelectorAll('form.js-signup-form').forEach(function (form) {
+        form.addEventListener('submit', async function (e) {
+          e.preventDefault();
+          var btn = form.querySelector('button[type="submit"]');
+          var msg = form.querySelector('.js-signup-msg') || (form.parentElement && form.parentElement.querySelector('.js-signup-msg'));
+          var emailEl = form.querySelector('input[type="email"]');
+          var email = (emailEl && emailEl.value || '').trim();
+          if (!email) return;
+          var orig = btn ? btn.textContent : '';
+          if (btn) { btn.disabled = true; btn.setAttribute('aria-busy', 'true'); btn.textContent = 'Sending...'; }
+          try {
+            var attr = {};
+            if (window.GDFattribution) attr = window.GDFattribution(form.getAttribute('data-source') || 'masterclass');
+            var res = await fetch('https://signals.gitdealflow.com/api/subscribe', {
+              method: 'POST',
+              headers: { 'Content-Type': 'application/json' },
+              body: JSON.stringify(Object.assign({ email: email }, attr))
+            });
+            var data = await res.json();
+            if (data.ok) {
+              if (window.posthog) posthog.capture('signup_verify_sent', { placement: 'masterclass' });
+              try { sessionStorage.setItem('gdf_email', email); } catch (err) {}
+              window.location.href = '/subscribe-thanks';
+              return;
+            }
+            throw new Error(data.error || 'Failed');
+          } catch (err) {
+            if (msg) { msg.textContent = 'Something went wrong. Try again or email signal@gitdealflow.com'; msg.style.color = '#f87171'; }
+            if (btn) { btn.disabled = false; btn.removeAttribute('aria-busy'); btn.textContent = orig; }
+          }
+        });
+      });
+    })();
+    </script>
+</body>
 </html>
