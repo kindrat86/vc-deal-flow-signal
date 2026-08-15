@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import LeadConversionEvent from "@/components/LeadConversionEvent";
 
 // Brunson DotCom Secrets Ch 13 ("Best Bait"), pre-checkout sector capture.
 // Every visitor who reaches this form has self-identified as
@@ -121,6 +122,7 @@ export default function SectorIntent({
 
       {isSuccess ? (
         <div className="rounded-lg border-2 border-emerald-500/50 bg-emerald-950/30 p-4 sm:p-5 space-y-2">
+          <LeadConversionEvent />
           <p className="text-emerald-300 text-[10px] sm:text-xs font-semibold uppercase tracking-wider">
             ✓ Sector locked · pre-warm started
           </p>

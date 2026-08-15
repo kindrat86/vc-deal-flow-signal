@@ -6,6 +6,7 @@ import { OTO_TIERS } from "@/lib/stripe-tiers";
 import OneClickOtoButton from "@/components/OneClickOtoButton";
 import DeliveryCountdown from "@/components/DeliveryCountdown";
 import TelegramCTA from "@/components/TelegramCTA";
+import PurchaseConversionEvent from "@/components/PurchaseConversionEvent";
 
 export const dynamic = "force-dynamic";
 
@@ -54,6 +55,11 @@ export default async function FirstLookThanksPage({ searchParams }: Props) {
 
   return (
     <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
+      <PurchaseConversionEvent
+        valueCents={session.amount}
+        currency="EUR"
+        transactionId={session.id}
+      />
       <header className="space-y-3 border-b border-slate-800 pb-6">
         <p className="text-emerald-400 text-xs font-semibold uppercase tracking-wider">
           ✓ Payment confirmed · €7 · {session.email || "your inbox"}

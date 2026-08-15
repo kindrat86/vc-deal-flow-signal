@@ -1925,7 +1925,7 @@ The preprint is indexed by Crossref, Semantic Scholar, OpenAlex (W7154916891), U
       "GitDealFlow tracks 15 active sectors derived from GitHub's public topic taxonomy: Healthcare, EdTech, E-commerce Infrastructure, Supply Chain, Web3, Enterprise SaaS, Data Infrastructure, Robotics, Legal Tech, HR Tech, PropTech, AgTech, Gaming, Space Tech, and Social & Community. 369 actively-tracked startup organizations across these sectors with weekly data refresh. Five legacy clusters (AI & ML, Fintech, Climate Tech, Developer Tools, Cybersecurity) froze at Q2 2026 and are archived. Coverage skews toward technical-founder companies with public GitHub presence.",
     body: `GitDealFlow uses GitHub's public topic taxonomy to define a stable startup universe. Each tracked organization is matched to one primary sector via the org's most-active repository topics, language mix, and cross-references against curated lists.
 
-**The 15 active sectors** (current panel, Q3 2026, 369 orgs total):
+**The 15 active sectors** (current panel, Q3 2026, 350+ orgs total):
 
 1. **Healthcare** (26 orgs), patient care, health systems, drug discovery, medical record interop.
 2. **EdTech** (37 orgs), adaptive learning, institutional education software, code education.
@@ -1945,7 +1945,7 @@ The preprint is indexed by Crossref, Semantic Scholar, OpenAlex (W7154916891), U
 
 **Archived legacy clusters.** AI & Machine Learning, Fintech, Climate Tech, Developer Tools, and Cybersecurity froze at Q2 2026 (no current-period data) and are archived; the live API and this page serve the 15 active sectors above.
 
-**How orgs are matched to sectors.** The classifier uses three signals: (1) declared GitHub topics on the org's most-active repos, (2) language mix and dependency patterns, (3) cross-references against curated startup lists (Y Combinator batches, Tech Stars cohorts, public funding announcements). Each org carries one primary sector, so the 15 counts above sum to the full 369-org panel.
+**How orgs are matched to sectors.** The classifier uses three signals: (1) declared GitHub topics on the org's most-active repos, (2) language mix and dependency patterns, (3) cross-references against curated startup lists (Y Combinator batches, Tech Stars cohorts, public funding announcements). Each org carries one primary sector, so the 15 counts above sum to the full 350+-org panel.
 
 **Coverage limits.** Only orgs with public GitHub presence are tracked. Pure consumer brands, services businesses, hardware-only companies without firmware repos, and stealth-mode startups with no public OSS footprint are systematically under-represented or invisible.
 

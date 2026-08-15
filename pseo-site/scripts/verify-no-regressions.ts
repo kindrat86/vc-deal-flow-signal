@@ -1532,6 +1532,32 @@ check(
 );
 
 // ---------------------------------------------------------------------------
+// GA4 `generate_lead` event must fire on the two lead-capture surfaces
+// (2026-08-15). Without it, Google Ads has no "lead" conversion to import,
+// so Quality Score / CPA are unmeasurable for the Reddit -> /firstlook and
+// Google -> /alternatives paid campaigns. `purchase` already fires on
+// /firstlook/thanks; this covers the free-signup and pre-checkout leads.
+// ---------------------------------------------------------------------------
+check(
+  "components/LeadConversionEvent.tsx",
+  "LeadConversionEvent missing: Google Ads has no generate_lead conversion to import for paid campaigns.",
+  (s) => s.includes('gtag("event", "generate_lead")'),
+  "restore components/LeadConversionEvent.tsx (fires gtag generate_lead with the gtag-wait poll)",
+);
+check(
+  "components/SqueezeSuccess.tsx",
+  "Free-signup lead event dropped: SqueezeSuccess no longer mounts LeadConversionEvent.",
+  (s) => s.includes("LeadConversionEvent") && s.includes("<LeadConversionEvent />"),
+  "mount <LeadConversionEvent /> in SqueezeSuccess",
+);
+check(
+  "components/SectorIntent.tsx",
+  "Pre-checkout lead event dropped: SectorIntent no longer mounts LeadConversionEvent.",
+  (s) => s.includes("LeadConversionEvent") && s.includes("<LeadConversionEvent />"),
+  "mount <LeadConversionEvent /> in SectorIntent's success branch",
+);
+
+// ---------------------------------------------------------------------------
 // CTR-hooked /vs titles + /compare-to-/vs consolidation (2026-08-16).
 // GSC 90d: generic "X vs Y, Deal Flow Platform Comparison (2026)" titles
 // drew 0.09-0.23% CTR on positions 4-8 (dealroom-vs-pitchbook 4,274 imps /
@@ -1603,6 +1629,35 @@ check(
           `Cross pair regenerated: ${t} (would create /compare/${slug?.[1]}-vs-${slug?.[2]}, a thin noindex mirror that splits the /vs/ twin)\n    file: content/comparisons.ts\n    fix:  remove it from crossPairs; the /compare/ URL 301s to its /vs/ twin (see next.config.ts)`,
         );
       }
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Sitemap core shard must list each URL exactly once (2026-08-16). /origin
+// was hand-listed twice (priorities 0.75 and 0.8), emitting a duplicate
+// <loc> inside sitemap/core.xml. The render-time dedupe filter in the route
+// masks runtime duplicates, so this guard asserts the SOURCE stays clean
+// too: exactly one literal /origin entry in the entries list. A lineage
+// that re-adds the duplicate (or drops /origin entirely) fails here.
+// ---------------------------------------------------------------------------
+{
+  const src = read("app/sitemap/[id]/route.ts");
+  if (src !== null) {
+    const matches = src.match(/BASE_URL}\/origin`/g) || [];
+    if (matches.length !== 1) {
+      failures.push(
+        `core sitemap lists /origin ${matches.length}x (must be exactly 1).\n` +
+          `    fix:  keep the single E-E-A-T block entry (priority 0.75); the render-time\n` +
+          `          dedupe filter is a safety net, not a license to list URLs twice`,
+      );
+    }
+    if (!src.includes("entries = entries.filter(")) {
+      failures.push(
+        `core sitemap render-time dedupe filter was removed.\n` +
+          `    fix:  restore the entries.filter() first-occurrence-wins dedupe before\n` +
+          `          urlsXml is rendered (2026-08-16 sitemap hygiene)`,
+      );
     }
   }
 }

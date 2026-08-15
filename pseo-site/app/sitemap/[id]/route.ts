@@ -369,10 +369,13 @@ export async function GET(_req: Request, ctx: RouteContext) {
       // /parables index + per-parable SSG pages, plus the longform
       // narrative pages (/origin, /story, /manifesto) and the /about hub.
       // All anonymity-compatible, no founder face/voice/name.
+      // NOTE: /origin is already emitted above in the E-E-A-T trust block
+      // (priority 0.75). It was re-listed here (priority 0.8) until
+      // 2026-08-16, emitting the same <loc> twice inside this shard with
+      // conflicting priorities; a sitemap must advertise each URL once.
       { url: `${BASE_URL}/data-nerd`, lastmod, changefreq: "monthly", priority: 0.85 },
       { url: `${BASE_URL}/about/founder`, lastmod, changefreq: "monthly", priority: 0.8 },
       { url: `${BASE_URL}/manifesto`, lastmod, changefreq: "monthly", priority: 0.85 },
-      { url: `${BASE_URL}/origin`, lastmod, changefreq: "monthly", priority: 0.8 },
       { url: `${BASE_URL}/now`, lastmod, changefreq: "weekly", priority: 0.85 },
       { url: `${BASE_URL}/parables`, lastmod, changefreq: "monthly", priority: 0.85 },
       ...DATA_NERD_PARABLES.map((p) => ({
@@ -850,6 +853,15 @@ export async function GET(_req: Request, ctx: RouteContext) {
   } else {
     return new Response("Not Found", { status: 404 });
   }
+
+  // Render-time dedupe (2026-08-16): a URL must be advertised exactly once
+  // per shard. Hand-maintained lists above drift (this is how /origin got
+  // listed twice with conflicting priorities 0.75/0.8), so enforce it at
+  // render regardless of how the entries array was assembled. First
+  // occurrence wins.
+  entries = entries.filter(
+    (e, i, arr) => arr.findIndex((x) => x.url === e.url) === i,
+  );
 
   const urlsXml = entries
     .map(

@@ -1,6 +1,7 @@
 "use client";
 
 import { TEASER_VISIBLE, TEASER_LOCKED_COUNT } from "@/lib/teaser-signals";
+import LeadConversionEvent from "@/components/LeadConversionEvent";
 
 // Brunson "Almost there" bridge page, shared by HomeSqueezeForm and the
 // /squeeze SqueezeForm. It replaces the old thin "One last step / check your
@@ -29,6 +30,7 @@ export default function SqueezeSuccess({
 
   return (
     <div className="space-y-5">
+      <LeadConversionEvent />
       {/* 1 + value-gap payoff: real names, right now */}
       <div className="rounded-xl border border-emerald-700/40 bg-emerald-950/30 p-6 sm:p-8 space-y-4">
         <div className="space-y-1">

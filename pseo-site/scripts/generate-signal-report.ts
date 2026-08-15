@@ -142,7 +142,7 @@ function main() {
   const dateStr = today.toISOString().slice(0, 10);
   const slug = `weekly-signal-report-${dateStr}`;
   const title = `Weekly Signal Report, ${currentPeriod.name}`;
-  const description = `This week's top 10 startups by engineering acceleration across ${sectorStats.length} sectors. ${globalTop10[0]?.name} leads with ${globalTop10[0]?.commitVelocityChange} commit velocity change. Data from ${allStartups.length} tracked startups.`;
+  const description = `This week's top 10 startups by engineering acceleration across ${sectorStats.length} sectors. ${globalTop10[0]?.name} leads with ${globalTop10[0]?.commitVelocityChange} commit velocity change. Data from 350+ tracked startups.`;
 
   // Build the body
   const top10Section = globalTop10
@@ -181,7 +181,7 @@ ${sectorSection}
 
 ## Signal Breakdown
 
-Across all ${allStartups.length} tracked startups: ${signalBreakdown}.
+Across all tracked startups: ${signalBreakdown}.
 
 ## Geography
 

@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-14T15:46:48.214Z",
+  "generatedAt": "2026-08-15T14:56:42.520Z",
   "config": {
     "hammingThreshold": 9,
     "globalThresholdPct": 5,
@@ -12,7 +12,7 @@
   },
   "observational": {
     "entries": 262,
-    "flagged": 49
+    "flagged": 65
   },
   "verdict": "PASS",
   "surfaces": [
@@ -38,9 +38,9 @@
       "flaggedEntries": 0,
       "flaggedPct": 0,
       "shingleCounts": {
-        "min": 864,
-        "max": 1076,
-        "mean": 926
+        "min": 861,
+        "max": 1074,
+        "mean": 924
       },
       "pairs": []
     },
@@ -147,68 +147,91 @@
       "basePath": "/signal",
       "reportOnly": true,
       "totalEntries": 165,
-      "flaggedEntries": 2,
-      "flaggedPct": 1.2,
+      "flaggedEntries": 0,
+      "flaggedPct": 0,
       "shingleCounts": {
-        "min": 320,
-        "max": 394,
-        "mean": 353
+        "min": 317,
+        "max": 391,
+        "mean": 350
       },
-      "pairs": [
-        {
-          "a": "honeycomb",
-          "b": "weights-biases",
-          "hamming": 9,
-          "similarity": 85.9
-        }
-      ]
+      "pairs": []
     },
     {
       "name": "sector-city",
       "basePath": "/sector",
       "reportOnly": true,
       "totalEntries": 97,
-      "flaggedEntries": 47,
-      "flaggedPct": 48.5,
+      "flaggedEntries": 65,
+      "flaggedPct": 67,
       "shingleCounts": {
-        "min": 761,
-        "max": 14820,
-        "mean": 1498
+        "min": 876,
+        "max": 14824,
+        "mean": 1611
       },
       "pairs": [
         {
-          "a": "developer-tools/in/san-francisco",
-          "b": "infrastructure/in/san-francisco",
+          "a": "ai-infra/in/montreal",
+          "b": "ai-infra/in/tokyo",
+          "hamming": 3,
+          "similarity": 95.3
+        },
+        {
+          "a": "ai-infra/in/montreal",
+          "b": "ai-infra/in/bangalore",
+          "hamming": 3,
+          "similarity": 95.3
+        },
+        {
+          "a": "ai-infra/in/tel-aviv",
+          "b": "ai-infra/in/tokyo",
+          "hamming": 3,
+          "similarity": 95.3
+        },
+        {
+          "a": "ai-infra/in/tel-aviv",
+          "b": "ai-infra/in/bangalore",
           "hamming": 3,
           "similarity": 95.3
         },
         {
           "a": "developer-tools/in/new-york",
           "b": "infrastructure/in/new-york",
-          "hamming": 4,
-          "similarity": 93.8
+          "hamming": 3,
+          "similarity": 95.3
         },
         {
-          "a": "fintech/in/stockholm",
-          "b": "fintech/in/copenhagen",
-          "hamming": 4,
-          "similarity": 93.8
+          "a": "developer-tools/in/tel-aviv",
+          "b": "developer-tools/in/sydney",
+          "hamming": 3,
+          "similarity": 95.3
         },
         {
-          "a": "ai-infra/in/montreal",
-          "b": "ai-infra/in/tel-aviv",
-          "hamming": 5,
-          "similarity": 92.2
+          "a": "fintech/in/toronto",
+          "b": "fintech/in/singapore",
+          "hamming": 3,
+          "similarity": 95.3
         },
         {
-          "a": "ai-infra/in/montreal",
+          "a": "ai-infra/in/london",
           "b": "ai-infra/in/bangalore",
+          "hamming": 4,
+          "similarity": 93.8
+        },
+        {
+          "a": "ai-infra/in/tokyo",
+          "b": "ai-infra/in/bangalore",
+          "hamming": 4,
+          "similarity": 93.8
+        },
+        {
+          "a": "ai-infra/in/london",
+          "b": "ai-infra/in/montreal",
           "hamming": 5,
           "similarity": 92.2
         },
         {
-          "a": "ai-ml/in/seoul",
-          "b": "ai-ml/in/bangalore",
+          "a": "ai-infra/in/zurich",
+          "b": "ai-infra/in/montreal",
           "hamming": 5,
           "similarity": 92.2
         },
@@ -219,26 +242,26 @@
           "similarity": 92.2
         },
         {
-          "a": "fintech/in/stockholm",
-          "b": "fintech/in/dublin",
-          "hamming": 5,
-          "similarity": 92.2
-        },
-        {
           "a": "fintech/in/dublin",
-          "b": "fintech/in/copenhagen",
-          "hamming": 5,
-          "similarity": 92.2
-        },
-        {
-          "a": "fintech/in/madrid",
           "b": "fintech/in/singapore",
           "hamming": 5,
           "similarity": 92.2
         },
         {
+          "a": "fintech/in/madrid",
+          "b": "fintech/in/bogota",
+          "hamming": 5,
+          "similarity": 92.2
+        },
+        {
+          "a": "fintech/in/toronto",
+          "b": "fintech/in/hong-kong",
+          "hamming": 5,
+          "similarity": 92.2
+        },
+        {
           "a": "ai-infra/in/london",
-          "b": "ai-infra/in/montreal",
+          "b": "ai-infra/in/zurich",
           "hamming": 6,
           "similarity": 90.6
         },
@@ -249,52 +272,22 @@
           "similarity": 90.6
         },
         {
-          "a": "ai-infra/in/tel-aviv",
+          "a": "ai-infra/in/zurich",
+          "b": "ai-infra/in/tokyo",
+          "hamming": 6,
+          "similarity": 90.6
+        },
+        {
+          "a": "ai-infra/in/zurich",
           "b": "ai-infra/in/bangalore",
           "hamming": 6,
           "similarity": 90.6
         },
         {
-          "a": "ai-infra/in/tokyo",
-          "b": "ai-infra/in/seoul",
+          "a": "ai-infra/in/montreal",
+          "b": "ai-infra/in/tel-aviv",
           "hamming": 6,
           "similarity": 90.6
-        },
-        {
-          "a": "infrastructure/in/san-francisco",
-          "b": "database/in/san-francisco",
-          "hamming": 6,
-          "similarity": 90.6
-        },
-        {
-          "a": "fintech/in/stockholm",
-          "b": "fintech/in/singapore",
-          "hamming": 6,
-          "similarity": 90.6
-        },
-        {
-          "a": "fintech/in/barcelona",
-          "b": "fintech/in/copenhagen",
-          "hamming": 6,
-          "similarity": 90.6
-        },
-        {
-          "a": "fintech/in/copenhagen",
-          "b": "fintech/in/hong-kong",
-          "hamming": 6,
-          "similarity": 90.6
-        },
-        {
-          "a": "ai-infra/in/london",
-          "b": "ai-infra/in/bangalore",
-          "hamming": 7,
-          "similarity": 89.1
-        },
-        {
-          "a": "ai-infra/in/toronto",
-          "b": "ai-infra/in/bangalore",
-          "hamming": 7,
-          "similarity": 89.1
         }
       ]
     }
