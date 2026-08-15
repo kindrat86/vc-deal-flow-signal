@@ -884,6 +884,49 @@ check(
 );
 
 // ---------------------------------------------------------------------------
+// Passage-indexing headings (2026-08-16). The stage family's content-section
+// H2s were generic labels ("Sector breakdown, Seed", "Ranked seed startups,
+// Q3 2026") that dilute passage relevance on long pages (stage/seed is ~585KB).
+// Question-form H2s map each passage to a specific investor query, which is
+// what Google's passage indexing and AI answer engines extract. A lineage that
+// reverts to generic labels silently re-opens the passage-relevance gap.
+// ---------------------------------------------------------------------------
+check(
+  "app/stage/[slug]/page.tsx",
+  "Stage landing section H2s reverted to generic labels; question-form passage headings are gone.",
+  (s) => {
+    const n = s.replace(/\{\" \"/g, " ").replace(/\s+/g, " ");
+    return (
+      n.includes("How fast are {name.toLowerCase()} startups shipping in {period.name}?") &&
+      n.includes("Which sectors have the most {name.toLowerCase()} startups?") &&
+      n.includes("Which {name.toLowerCase()} startups are accelerating fastest on GitHub in {period.name}?")
+    );
+  },
+  "keep question-form section H2s on the stage landing, not generic TL;DR / Sector breakdown / Ranked labels",
+);
+check(
+  "app/stage/[slug]/[sector]/page.tsx",
+  "Stage-sector rankings H2 reverted to a generic 'Ranked ...' label; question-form passage heading is gone.",
+  (s) => {
+    const n = s.replace(/\{\" \"/g, " ").replace(/\s+/g, " ");
+    return n.includes("Which {sectorInfo.name.toLowerCase()} startups at {stageName.toLowerCase()} stage are accelerating fastest on GitHub in {period.name}?");
+  },
+  "keep the question-form rankings H2 on stage-sector pages",
+);
+check(
+  "app/stage/[slug]/signal/[signal]/page.tsx",
+  "Stage-signal section H2s reverted to generic labels; question-form passage headings are gone.",
+  (s) => {
+    const n = s.replace(/\{\" \"/g, " ").replace(/\s+/g, " ");
+    return (
+      n.includes("Which sectors do these {signalName.toLowerCase()} startups span?") &&
+      n.includes("Which {stageName.toLowerCase()}-stage startups are showing {signalName.toLowerCase()} in {period.name}?")
+    );
+  },
+  "keep question-form section H2s on stage-signal pages",
+);
+
+// ---------------------------------------------------------------------------
 // 15. JSON-LD must stream AFTER the content, not before it (LCP, 2026-08-15).
 //     The LCP element on the homepage is the hero H1 text (there is no hero
 //     image, 0 <img> tags). The RootIdentitySchema graph (~14KB) used to sit
@@ -971,9 +1014,12 @@ check(
 
 check(
   "app/startup/[slug]/page.tsx",
-  "app/startup/[slug]/page.tsx momentum badge <img> lost its width/height attributes; the badge loads without reserved space and shifts layout (CLS) on every startup page.",
-  (s) => /<img\s[^>]*api\/badge\/\$\{slug\}[\s\S]*?width=\{408\}/.test(s) && /api\/badge\/\$\{slug\}[\s\S]*?height=\{28\}/.test(s),
-  "keep width={408} height={28} on the /api/badge/<slug> img (intrinsic SVG size, reserves layout space)",
+  "app/startup/[slug]/page.tsx momentum badge <img> lost its computed intrinsic width/height; without reserved space the badge shifts layout (CLS) on every startup page.",
+  (s) =>
+    /<img\s[^>]*api\/badge\/\$\{slug\}[\s\S]*?width=\{badgeWidth\(/.test(s) &&
+    /api\/badge\/\$\{slug\}[\s\S]*?height=\{BADGE_HEIGHT\}/.test(s) &&
+    !/api\/badge\/\$\{slug\}[\s\S]*?width=\{408\}/.test(s),
+  "keep width={badgeWidth(BADGE_LABEL, badgeValue(...))} height={BADGE_HEIGHT} on the /api/badge/<slug> img — the badge is variable-width (label.length*8+24 + value.length*8+24, see lib/badge-dims.ts), so a hardcoded 408 is wrong for most startups and reintroduces CLS",
 );
 
 // ---------------------------------------------------------------------------
@@ -1243,6 +1289,44 @@ check(
   "/contact 404s again: the /contact -> /about permanent redirect is missing from next.config.ts redirects().",
   (s) => s.includes('source: "/contact"') && s.includes('destination: "/about"'),
   'restore the { source: "/contact", destination: "/about", permanent: true } entry in redirects()',
+);
+
+// ---------------------------------------------------------------------------
+// Google Ads "harmonic" campaign must point at the live slug (2026-08-15).
+// lib/paid-acquisition.ts routed /r/harmonic to /alternatives/harmonic, which
+// 404s (the real slug is harmonic-ai). Every 308 that lands on a 404 wastes a
+// paid click, so this makes a stale-slug tree undeployable.
+// ---------------------------------------------------------------------------
+check(
+  "lib/paid-acquisition.ts",
+  "harmonic campaign destination is stale: /r/harmonic redirects to the 404 /alternatives/harmonic (live slug is harmonic-ai).",
+  (s) =>
+    s.includes('destination: "/alternatives/harmonic-ai"') &&
+    !s.includes('destination: "/alternatives/harmonic"'),
+  'point the harmonic campaign destination at "/alternatives/harmonic-ai" (and fix the agent-queries sourceUrl + experiments/hooks surfaces in the same sweep)',
+);
+
+// ---------------------------------------------------------------------------
+// Google Discover breakout roundup (2026-08-15). /breakout-startups-this-week
+// is the weekly story-driven editorial that Discover surfaces. It must keep
+// its Discover gate: news_keywords + article:tag (openGraph.tags) metadata and
+// an Article ImageObject (1200x630) in the JSON-LD, plus a core-sitemap entry
+// so crawlers can find it. A tree missing any of these is Discover-blind.
+// ---------------------------------------------------------------------------
+check(
+  "app/breakout-startups-this-week/page.tsx",
+  "Google Discover breakout roundup lost its gate: news_keywords / article:tag / ImageObject missing from app/breakout-startups-this-week/page.tsx.",
+  (s) =>
+    s.includes("news_keywords") &&
+    s.includes("tags: discoverTags") &&
+    s.includes('"@type": "ImageObject"'),
+  "restore the news_keywords + openGraph.tags (article:tag) + Article ImageObject block in the breakout roundup page",
+);
+check(
+  "app/sitemap/[id]/route.ts",
+  "/breakout-startups-this-week is missing from the core sitemap shard (crawlers cannot discover it).",
+  (s) => s.includes("/breakout-startups-this-week"),
+  're-add { url: `${BASE_URL}/breakout-startups-this-week`, lastmod, changefreq: "weekly", priority: 0.9 } to the core shard',
 );
 
 // ---------------------------------------------------------------------------

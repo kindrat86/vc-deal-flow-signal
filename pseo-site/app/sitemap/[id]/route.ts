@@ -106,6 +106,9 @@ export async function GET(_req: Request, ctx: RouteContext) {
     entries = [
       { url: BASE_URL, lastmod, changefreq: "weekly", priority: 1.0 },
       { url: `${BASE_URL}/trending`, lastmod, changefreq: "weekly", priority: 0.9 },
+      // Weekly Discover/AEO editorial: the breakout roundup surfaces the
+      // fastest-accelerating teams in story form, with a leaderboard OG image.
+      { url: `${BASE_URL}/breakout-startups-this-week`, lastmod, changefreq: "weekly", priority: 0.9 },
       { url: `${BASE_URL}/methodology`, lastmod, changefreq: "monthly", priority: 0.8 },
       { url: `${BASE_URL}/pricing`, lastmod, changefreq: "monthly", priority: 0.9 },
       { url: `${BASE_URL}/teardown`, lastmod, changefreq: "monthly", priority: 0.85 },

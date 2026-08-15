@@ -64,6 +64,7 @@ export default function PSEOFooterNav({
         {link("/from-stars-to-seed", "Proof before the round")}
         {link("/buyers-guide", "How to evaluate the tool")}
         {link("/weekly/top-100", "What startups are moving now")}
+        {link("/breakout-startups-this-week", "Breakout startups this week")}
         {link("/compare/best-alternative-data-tools-for-angel-investors", "Best alternative data tools")}
         {link("/integrations/best-mcp-server-for-vc-research", "Best MCP server for VC research")}
       </div>

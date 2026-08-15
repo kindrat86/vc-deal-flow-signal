@@ -308,6 +308,9 @@ export default function TrendingPage() {
             If the real question is whether these movers matter, how to compare them against database workflows, or what to do with the shortlist next, these are the fastest starting pages.
           </p>
           <div className="flex flex-wrap gap-3">
+            <Link href="/breakout-startups-this-week" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-signal-500 text-slate-950 text-sm font-semibold hover:bg-signal-600 transition-colors">
+              Breakout startups this week →
+            </Link>
             <Link href="/research" className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-signal-500 text-slate-950 text-sm font-semibold hover:bg-signal-600 transition-colors">
               Read the research panel →
             </Link>
