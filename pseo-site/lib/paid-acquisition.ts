@@ -193,6 +193,34 @@ export const CAMPAIGNS: Campaign[] = [
       "Lower volume than harmonic but higher conversion in EU (Tracxn pricing pain is concentrated there).",
     status: "draft",
   },
+  {
+    slug: "crunchbase",
+    channel: "google",
+    destination: "/alternatives/crunchbase",
+    utm: {
+      source: "google",
+      medium: "cpc",
+      campaign: "alt-2026-05",
+      content: "crunchbase-alternative",
+    },
+    hypothesis:
+      "Largest search volume of the three alternatives (Crunchbase Pro pricing pain is the top buyer trigger). Landing exists at /alternatives/crunchbase. Phrase match + negatives per runbook; expect highest CPC of the set, cap at EUR 5/day until QS >= 6.",
+    status: "draft",
+  },
+  {
+    slug: "dealflowtools",
+    channel: "google",
+    destination: "/compare/best-free-deal-flow-tools-2026",
+    utm: {
+      source: "google",
+      medium: "cpc",
+      campaign: "alt-2026-05",
+      content: "deal-flow-tools",
+    },
+    hypothesis:
+      "Category query ('deal flow tools', 'best deal flow tools') captures shoppers comparing all vendors, not just one alternative. Landing exists at /compare/best-free-deal-flow-tools-2026. Broader intent than the alternatives set, watch CPA closely.",
+    status: "draft",
+  },
 
   // ────────────────────────────── NEWSLETTER SPONSORSHIP (Tier 2) ──────
   {
