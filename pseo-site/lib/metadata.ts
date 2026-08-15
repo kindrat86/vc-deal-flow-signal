@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 
+import { getEditorialOverride } from "./editorial";
+
 /**
  * Central metadata helper. Every `page.tsx` should produce its `metadata`
  * export through this function so that title, description, canonical URL,
@@ -83,6 +85,11 @@ function absoluteUrl(path: string): string {
  *     }
  */
 export function defineMetadata(input: DefineMetadataInput): Metadata {
+  const override = getEditorialOverride(input.path);
+  const title = override?.title ?? input.title;
+  const description = override?.description ?? input.description;
+  const keywords = override?.keywords ?? input.keywords;
+  const noindex = override?.noindex ?? input.noindex;
   const canonical = absoluteUrl(input.path);
   // OG/Twitter image resolution (audit 2026-07-20):
   // Previously this hard-coded `${canonical}/opengraph-image` as the default,
@@ -97,8 +104,8 @@ export function defineMetadata(input: DefineMetadataInput): Metadata {
   // else the inherited root `/opengraph-image`.
   const ogImage = input.ogImage;
   const meta: Metadata = {
-    title: input.title,
-    description: input.description,
+    title,
+    description,
     alternates: {
       canonical,
       ...(input.alternateLanguages
@@ -106,8 +113,8 @@ export function defineMetadata(input: DefineMetadataInput): Metadata {
         : {}),
     },
     openGraph: {
-      title: input.title,
-      description: input.description,
+      title,
+      description,
       url: canonical,
       siteName: SITE_NAME,
       type: "website",
@@ -117,17 +124,17 @@ export function defineMetadata(input: DefineMetadataInput): Metadata {
     twitter: {
       card: "summary_large_image",
       site: "@sipiteno",
-      title: input.twitterTitle ?? input.title,
-      description: input.twitterDescription ?? input.description,
+      title: input.twitterTitle ?? title,
+      description: input.twitterDescription ?? description,
       ...(ogImage ? { images: [ogImage] } : {}),
     },
   };
 
-  if (input.keywords && input.keywords.length > 0) {
-    meta.keywords = input.keywords;
+  if (keywords && keywords.length > 0) {
+    meta.keywords = keywords;
   }
 
-  if (input.noindex) {
+  if (noindex) {
     meta.robots = { index: false, follow: true };
   }
 

@@ -1,0 +1,4 @@
+{
+  "$comment": "Human-editable editorial/meta overrides. Edit this ONE file to change a page's title, description, or index status WITHOUT touching code or hunting through content/*.ts. Key = route path (leading slash, no domain). Supported fields: title (brand-free, the layout appends the site name), description (120-180 chars), noindex (true hides the page from search), keywords (array, replaces the page's own). Example: \"/methodology\": { \"title\": \"How We Score Engineering Velocity\", \"description\": \"The Scout Score method explained: commit velocity, contributor growth, and repo expansion across 15 sectors.\" }. Empty overrides object = no active overrides.",
+  "overrides": {}
+}
