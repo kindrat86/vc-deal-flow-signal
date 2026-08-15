@@ -635,6 +635,20 @@ check(
 );
 
 // ---------------------------------------------------------------------------
+// Self-hosted "How GitDealFlow Works" explainer must stay in the video catalog
+// (2026-08-15). content/videos.ts is the single source of truth for the video
+// sitemap, /api/v1/videos.json, and /watch/[slug]. A lineage that reverts the
+// catalog to the earlier 5-video state silently drops the self-hosted explainer
+// and its VideoObject + Clip schema. Assert the slug survives.
+// ---------------------------------------------------------------------------
+check(
+  "content/videos.ts",
+  "Self-hosted 'how-gitdealflow-works' explainer missing from the video catalog (reverted to 5-video state).",
+  (s) => s.includes('slug: "how-gitdealflow-works"'),
+  "re-add the how-gitdealflow-works SiteVideo entry to content/videos.ts",
+);
+
+// ---------------------------------------------------------------------------
 // 13. hreflang topic parity (2026-08-14). Every localized topic must exist
 //     in all 12 locales, or hreflang breaks bidirectional: Google's
 //     International Targeting report flags a "no return tags" error when an

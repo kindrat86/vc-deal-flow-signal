@@ -291,6 +291,58 @@ export const videos: SiteVideo[] = [
     ],
     embeddedOn: ["/mcp-demo", "/watch/mcp-claude-desktop-demo"],
   },
+
+  // ─────────── 6. How GitDealFlow Works, 60s self-hosted explainer (landscape)
+  // Self-hosted MP4 (edge-tts synthetic narration, anonymity-safe). The
+  // evergreen top-of-funnel "what is this product" video, distinct from the
+  // YouTube-hosted methodology explainer (entry 1) and the 3-min sales VSL.
+  {
+    slug: "how-gitdealflow-works",
+    youtubeId: null,
+    contentUrl: `${APEX}/how-gitdealflow-works.mp4`,
+    thumbnailUrl: `${APEX}/how-gitdealflow-works.jpg`,
+    thumbnailMaxUrl: `${APEX}/how-gitdealflow-works.jpg`,
+    title: "How GitDealFlow Works in 60 Seconds, VC Deal Flow Signal",
+    description:
+      "What GitDealFlow does in under a minute: it reads commit velocity, contributor growth, and repository expansion across hundreds of venture-backed startups in 15 sectors, then surfaces the five accelerating fastest every Monday, typically 21 to 47 days before the fundraise announcement. Based on a longitudinal panel of 219 startup-period observations (SSRN-indexed methodology, CC BY 4.0).",
+    uploadDate: "2026-08-15T00:00:00+00:00",
+    durationSeconds: 57,
+    format: "landscape",
+    category: "Science & Technology",
+    tags: [
+      "how it works",
+      "explainer",
+      "venture capital",
+      "vc deal flow",
+      "github commit velocity",
+      "engineering acceleration",
+      "alternative data vc",
+      "startup signals",
+      "deal flow software",
+      "vc tools",
+      "series a prediction",
+      "ssrn venture capital",
+      "the data nerd",
+      "gitdealflow",
+    ],
+    chapters: [
+      { start: 0, end: 9, name: "Hook, every VC finds the same Crunchbase deal" },
+      { start: 9, end: 15, name: "The signal fires weeks earlier, in public GitHub data" },
+      { start: 15, end: 27, name: "What GitDealFlow tracks, 15 sectors" },
+      { start: 27, end: 38, name: "219-observation panel, 21 to 47 day lead" },
+      { start: 38, end: 51, name: "Five breakouts every Monday, dashboard, extensions, MCP" },
+      { start: 51, end: 57, name: "Spot the breakout before the deck" },
+    ],
+    transcriptParagraphs: [
+      "Every VC finds the same deal on Crunchbase, on the same morning. By then, the round has already closed.",
+      "The signal that mattered fired three to six weeks earlier, hiding in public GitHub data. Commit velocity, contributor growth, repository expansion.",
+      "GitDealFlow reads that signal. It tracks commit velocity, contributor growth, and repository expansion across hundreds of venture-backed startups, across fifteen sectors.",
+      "A longitudinal panel of two hundred nineteen startup-period observations shows engineering acceleration precedes the fundraise announcement by twenty-one to forty-seven days.",
+      "Every Monday we publish five breakout startups, free, before they hit the press. There is a live dashboard, two Chrome extensions, and a free MCP server your AI agents can call.",
+      "Spot the breakout before the deck. GitDealFlow dot com.",
+    ],
+    embeddedOn: ["/watch/how-gitdealflow-works"],
+  },
 ];
 
 /** ISO-8601 duration helper, `90` → `"PT1M30S"`. */
