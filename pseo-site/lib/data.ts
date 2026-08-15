@@ -1421,6 +1421,15 @@ export function getRegionLatestPeriod(geoSlug: string): Period | null {
   return null;
 }
 
+/**
+ * Region slugs + display names for the paginated startup directory
+ * (/startups/region/[geo]). GEO_DEFINITIONS is module-private, so this is the
+ * enumeration entry point for any caller outside lib/data.ts.
+ */
+export function getAllRegionGeos(): { slug: string; name: string }[] {
+  return GEO_DEFINITIONS.map((g) => ({ slug: g.slug, name: g.name }));
+}
+
 // ---------------------------------------------------------------------------
 // Velocity score (0-100)
 // ---------------------------------------------------------------------------

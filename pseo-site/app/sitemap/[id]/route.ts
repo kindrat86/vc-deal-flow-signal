@@ -52,6 +52,10 @@ import { getMarketSlugs } from "@/lib/markets";
 import { getAllTop100Slugs } from "@/lib/top-100";
 import { getAllPredictionWeekSlugs } from "@/lib/predictions";
 import { DATA_NERD_PARABLES } from "@/lib/data-nerd";
+import {
+  getAllDirectorySectors,
+  getAllDirectoryRegions,
+} from "@/lib/directory";
 
 const BASE_URL = "https://signals.gitdealflow.com";
 
@@ -420,6 +424,26 @@ export async function GET(_req: Request, ctx: RouteContext) {
         lastmod,
         changefreq: "weekly",
         priority: 0.7,
+      })),
+      // Paginated startup directory (2026-08-17, pagination win): each sector
+      // and region gets a page-1 directory entry. Deeper pages (page 2+) are
+      // reachable via rel=next/prev from page 1 and are deliberately omitted
+      // from the sitemap (list the canonical entry, let crawlers follow the
+      // pagination chain rather than spending crawl budget on continuation
+      // pages).
+      { url: `${BASE_URL}/startups`, lastmod, changefreq: "weekly", priority: 0.7 },
+      ...getAllDirectorySectors().map((s) => ({
+        url: `${BASE_URL}/startups/${s.slug}`,
+        lastmod,
+        changefreq: "weekly",
+        priority: 0.6,
+      })),
+      { url: `${BASE_URL}/startups/region`, lastmod, changefreq: "weekly", priority: 0.65 },
+      ...getAllDirectoryRegions().map((r) => ({
+        url: `${BASE_URL}/startups/region/${r.geoSlug}`,
+        lastmod,
+        changefreq: "weekly",
+        priority: 0.6,
       })),
       ...getAllBestSectorSlugs().map((slug) => ({
         url: `${BASE_URL}/best/${slug}`,

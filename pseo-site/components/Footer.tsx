@@ -91,6 +91,7 @@ export default function Footer() {
             <p className="text-xs font-semibold text-gray-300 uppercase tracking-wider mb-3">Browse</p>
             <nav aria-label="Footer: Browse" className="flex flex-col gap-2 text-sm text-gray-400">
               <Link href="/" className="hover:text-gray-200 transition-colors">All Sectors</Link>
+              <Link href="/startups" className="hover:text-gray-200 transition-colors">Startup Directory</Link>
               <Link href="/trending" className="hover:text-gray-200 transition-colors">Trending</Link>
               <Link href="/stage/seed" className="hover:text-gray-200 transition-colors">By Stage</Link>
               <Link href="/for" className="hover:text-gray-200 transition-colors">Who It's For</Link>

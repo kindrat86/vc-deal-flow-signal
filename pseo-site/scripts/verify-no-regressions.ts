@@ -2639,6 +2639,93 @@ check(
 );
 
 // ---------------------------------------------------------------------------
+// §30 paginated startup directory (2026-08-17, audit "Pagination 60" win).
+// The ~495 live /startup/[slug] profiles had no paginated hub discovery: the
+// sector/city hubs pointed at the curated /signal corpus, and the ranked
+// lists rendered one giant un-paginated table. This shipped a paginated
+// /startups/[sector]/[page] + /startups/region/[geo]/[page] directory with
+// rel=next/prev, wired from the ranked lists, the footer, and the sitemap. A
+// reverted tree re-orphans the long tail, so assert every load-bearing piece.
+// ---------------------------------------------------------------------------
+check(
+  "lib/directory.ts",
+  "lib/directory.ts missing: paginated directory helpers gone, /startups re-orphans the startup long tail.",
+  (s) =>
+    s.includes("getSectorDirectory") &&
+    s.includes("getRegionDirectory") &&
+    s.includes("getAllSectorDirectoryPages") &&
+    s.includes("getAllRegionDirectoryPages") &&
+    s.includes("DIRECTORY_PAGE_SIZE"),
+  "restore lib/directory.ts (sector + region directory helpers with pagination)",
+);
+check(
+  "lib/data.ts",
+  "lib/data.ts lost getAllRegionGeos: directory region enumeration has no source of truth.",
+  (s) => s.includes("export function getAllRegionGeos"),
+  "restore getAllRegionGeos() in lib/data.ts (returns GEO_DEFINITIONS slugs + names)",
+);
+check(
+  "components/StartupDirectory.tsx",
+  "StartupDirectory lost its rel=prev/rel=next pagination links: the long tail has no bounded crawl path again.",
+  (s) => s.includes('rel="prev"') && s.includes('rel="next"'),
+  "restore rel=prev / rel=next <link> emission in components/StartupDirectory.tsx",
+);
+check(
+  "app/startups/[sector]/page.tsx",
+  "app/startups/[sector]/page.tsx missing: sector directory page 1 gone.",
+  (s) => s.includes("StartupDirectory") && s.includes("getSectorDirectory"),
+  "restore app/startups/[sector]/page.tsx",
+);
+check(
+  "app/startups/[sector]/[page]/page.tsx",
+  "app/startups/[sector]/[page]/page.tsx missing: sector directory pagination gone.",
+  (s) => s.includes("getAllSectorDirectoryPages"),
+  "restore app/startups/[sector]/[page]/page.tsx",
+);
+check(
+  "app/startups/region/[geo]/page.tsx",
+  "app/startups/region/[geo]/page.tsx missing: region directory page 1 gone.",
+  (s) => s.includes("StartupDirectory") && s.includes("getRegionDirectory"),
+  "restore app/startups/region/[geo]/page.tsx",
+);
+check(
+  "app/startups/region/[geo]/[page]/page.tsx",
+  "app/startups/region/[geo]/[page]/page.tsx missing: region directory pagination gone.",
+  (s) => s.includes("getAllRegionDirectoryPages"),
+  "restore app/startups/region/[geo]/[page]/page.tsx",
+);
+check(
+  "app/startups/page.tsx",
+  "app/startups/page.tsx missing: directory index gone.",
+  (s) => s.includes("getAllDirectorySectors") && s.includes("getAllDirectoryRegions"),
+  "restore app/startups/page.tsx (sector + region directory index)",
+);
+check(
+  "app/startups-to-watch/[slug]/page.tsx",
+  "Sector ranked list lost its link to the /startups directory: the long tail is orphaned from the ranked pages.",
+  (s) => s.includes("/startups/"),
+  "restore the 'Browse the full {sector} directory' link to /startups/[sector]",
+);
+check(
+  "app/startups-to-watch/region/[slug]/page.tsx",
+  "Region ranked list lost its link to the /startups region directory.",
+  (s) => s.includes("/startups/region/"),
+  "restore the 'Browse all {geo} startups' link to /startups/region/[geo]",
+);
+check(
+  "components/Footer.tsx",
+  "Footer lost the /startups directory link: the directory index is orphaned from site-wide navigation.",
+  (s) => s.includes('href="/startups"'),
+  "restore the 'Startup Directory' link (href=\"/startups\") in the Footer Browse column",
+);
+check(
+  "app/sitemap/[id]/route.ts",
+  "Sitemap lost the /startups directory entries: new directory pages are no longer directly discoverable.",
+  (s) => s.includes("getAllDirectorySectors") && s.includes("getAllDirectoryRegions"),
+  "restore getAllDirectorySectors/getAllDirectoryRegions sitemap entries in the sectors shard",
+);
+
+// ---------------------------------------------------------------------------
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +

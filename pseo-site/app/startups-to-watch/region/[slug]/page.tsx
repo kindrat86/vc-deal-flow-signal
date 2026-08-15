@@ -198,6 +198,15 @@ export default async function RegionPage({ params }: PageProps) {
           </p>
         </section>
 
+        <section className="mb-10" aria-label="Browse full directory">
+          <Link
+            href={`/startups/region/${geoSlug}`}
+            className="inline-flex items-center gap-1.5 rounded-md border border-slate-800 bg-slate-900 px-4 py-2 text-sm text-gray-300 hover:text-sky-400 hover:border-slate-600 transition-colors"
+          >
+            Browse all {geoName} startups: {startups.length} tracked, paginated
+          </Link>
+        </section>
+
         <section className="mb-12" aria-label="Call to action">
           <SeoCta secondary={{ label: "Unlock the Dashboard", href: "https://gitdealflow.com/dashboard" }} />
         </section>
