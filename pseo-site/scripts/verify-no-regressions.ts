@@ -2428,6 +2428,43 @@ check(
 }
 
 // ---------------------------------------------------------------------------
+// §25 stats.json surface completion, wave 2 (2026-08-16, git 3a898791):
+//   a) apex llms-full.txt must carry the Key Statistics machine-readable JSON
+//      section (llms.txt has had it since 56e9c778; llms-full is the
+//      deep-crawl surface where agents that read only llms-full discover it);
+//   b) public/agents.md (served at /agents.md) must list /stats.json under
+//      Other agent-readable formats;
+//   c) the stats pages re-grounded in 3258b029 must not regress to a stale
+//      freshness date: dateModified/last-updated move with every re-grounding.
+// ---------------------------------------------------------------------------
+check(
+  "../landing/llms-full.txt",
+  "§25 apex llms-full.txt lost the Key Statistics machine-readable JSON section (agents that deep-crawl only llms-full can no longer discover /stats.json)",
+  (s) =>
+    s.includes("https://signals.gitdealflow.com/stats.json") &&
+    s.includes("Key Statistics, machine-readable JSON"),
+  "restore the '# Key Statistics, machine-readable JSON' section at the end of llms-full.txt (see git 3a898791)",
+);
+check(
+  "public/agents.md",
+  "§25 agents.md no longer lists the /stats.json key-statistics endpoint under Other agent-readable formats",
+  (s) => s.includes("https://signals.gitdealflow.com/stats.json"),
+  "restore the 'Key statistics JSON' bullet under Other agent-readable formats (see git 3a898791)",
+);
+check(
+  "../landing/stats/index.html",
+  "§25 landing /stats hub carries a stale freshness date: stat cards were re-grounded 2026-08-16 (3258b029/3a898791), dateModified/last-updated must move with re-groundings",
+  (s) => !s.includes('"dateModified": "2026-07-19"'),
+  "refresh dateModified and the last-updated line whenever stat cards are re-grounded",
+);
+check(
+  "public/stats/index.html",
+  "§25 signals /stats hub carries a stale freshness date: stat cards were re-grounded 2026-08-16, dateModified/last-updated must move with re-groundings",
+  (s) => !s.includes('"dateModified": "2026-07-19"'),
+  "refresh dateModified and the last-updated line whenever stat cards are re-grounded",
+);
+
+// ---------------------------------------------------------------------------
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +
