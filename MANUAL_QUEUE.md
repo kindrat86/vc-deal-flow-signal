@@ -101,29 +101,33 @@ Priority-review ("Get reviewed sooner") exists on that page if you want to pay t
 
 ---
 
-## SWITCH 3: Pixel IDs — 10 minutes, human-only
+## SWITCH 3: Ad-account pixels & audiences: what remains is human-only
 
-**Why this is here:** The agent CANNOT create Meta Pixel IDs or LinkedIn Partner IDs. These require human ad account logins.
+**Why this is here:** The agent CANNOT create ad accounts, Meta Pixel IDs, LinkedIn Partner IDs, or retargeting audiences. These require human ad account logins.
 
-### Step 1: Create a Meta Pixel (5 minutes)
+### DONE, verified live (2026-08-15, do not redo)
+
+- **LinkedIn Insight Tag** Partner ID `10702217`: firing on BOTH surfaces (landing `pixels.js` + pSEO `PixelManager`, confirmed in served HTML). No action needed.
+- **GA4** `G-7SV2SNZE4C`: firing on both surfaces, conversion events live on all thanks-pages.
+- Standing rule: **no LinkedIn campaigns, ever** (organic or paid). The pixel builds the retargeting audience only.
+
+### Step 1: Create a Meta Pixel (5 minutes) (STILL OPEN)
 1. Go to https://business.facebook.com/events_manager2
 2. Click "Connect Data Sources" → "Web" → "Meta Pixel"
 3. Name it "GitDealFlow"
-4. Copy the numeric Pixel ID (e.g., `1234567890123456`)
-5. In `landing/index.html`, find: `META_PIXEL_ID_REPLACE` → replace with your Pixel ID
-6. Also find the `fbq('init', 'META_PIXEL_ID_REPLACE')` line and replace
+4. Copy the numeric Pixel ID
+5. Set it in `landing/pixels.js` → `PIXEL_IDS.meta` (edit the file, deploy)
+6. Set `NEXT_PUBLIC_META_PIXEL_ID` on the pSEO Vercel project, then `npx vercel redeploy <live-dpl-id>`
 
-### Step 2: Create LinkedIn Insight Tag (5 minutes)
+### Step 2: Create the LinkedIn retargeting audience (5 minutes) (NEW, unblocks retargeting)
+The pixel fires but no audience exists yet, so it is not building anything.
 1. Go to https://www.linkedin.com/campaignmanager/accounts
-2. Click "Analyze" → "Insight Tag"
-3. Click "Install my Insight Tag"
-4. Copy the Partner ID (numeric, e.g., `1234567`)
-5. In `landing/index.html`, find: `LINKEDIN_PARTNER_ID_REPLACE` → replace with your Partner ID
+2. "Analyze" → "Insight Tag" → confirm tag shows **Verified** (may take a day of real traffic)
+3. Create a **Matched Audience** → "Website" → rule: **all pages** of `signals.gitdealflow.com` + `gitdealflow.com`, window 90 days, name it "GitDealFlow site visitors"
+4. Stop there. No campaign creation (standing rule). The audience populates passively; it will be ready when/if the no-LinkedIn rule is ever revisited.
 
-### Step 3: Redeploy
-```bash
-cd /Users/sipi/signals-gitdealflow/landing && vercel --prod --yes
-```
+### Step 3: (optional) Google Ads account + card
+See `PAID-ADS-LAUNCH-RUNBOOK.md` for the full launch sequence: Reddit first, Google second, campaigns and UTMs already configured in `lib/paid-acquisition.ts` (6 Reddit + 4 Google draft campaigns incl. crunchbase + deal-flow-tools).
 
 ---
 
@@ -370,3 +374,84 @@ Companion extension: "VC Deal Flow Signal — GitHub Startup Signals" overlays t
 Once the Resend key is refreshed, send to the Digest list (day-14 of campaign):
 Subject: `30 seconds: an honest review of the badge?`
 Body: at `~/gitdealflow-distribution/06-chrome-extensions/review-campaign.md` (section "Lever 2").
+
+---
+
+## SWITCH 7: Launch paid ads — 30 minutes, human-only (card + launch click)
+
+**Full paste-ready runbook:** `~/signals-gitdealflow/PAID-ADS-LAUNCH-RUNBOOK.md`
+
+Why human-only: ad platforms have no API for account creation, card entry, or the
+final Launch click. Everything else (pixels, `/r/` redirects, landing pages, UTM
+capture, ad copy, targeting, budgets) is already done and verified live.
+
+Order: **Reddit Ads first** (€5/day, no lock-in, no Quality Score needed), then
+**Google Search** (Quality Score lives here, run only after Reddit proves
+`/firstlook` >2% conv), then Meta retargeting (needs SWITCH 3 pixel), then
+newsletter sponsorship.
+
+1. https://ads.reddit.com → create account + card → paste the 6 ad groups from the runbook → Launch.
+2. https://ads.google.com → create account + card → link GA4 `G-7SV2SNZE4C` → paste the harmonic + tracxn RSAs → Launch.
+
+
+## OPEN: GoodFirms DR86 dofollow — 10-second human click (Screen Sharing)
+
+**STATUS: Parked 2026-08-15 after autonomous run reached the CAPTCHA wall.**
+
+What's done (autonomous):
+- Safari window 1 is open at myaccount.goodfirms.co/users/register
+- ALL 7 signup fields pre-filled (The Data Nerd / GitDealFlow / signals@gitdealflow.com / shared vault password)
+- Cloudflare Turnstile will not render under do-JavaScript automation (widget spawn blocked, error 400020 on manual render)
+
+What the human does (~10 sec via Screen Sharing):
+1. Click **Sign Up** in the pre-filled Safari window
+2. Solve the visual challenge if one appears
+
+Then the agent finishes autonomously:
+- Verification email lands in the himalaya inbox (mkondratyuk86@gmail.com)
+- Post-verification: fill the vendor profile from goodfirms-packet.md (category: Investment Management Software)
+- Verify listing live via curl before flipping status to "live" in opportunities.json
+
+## OPEN: Enable Analytics Admin API in GCP (2 min, unblocks GA4 reporting)
+
+**STATUS: Human-gated. SA cannot enable APIs (403 serviceusage).**
+
+GA4 tag is LIVE on gitdealflow.com (pixels.js, all 1,525 pages) and GSC is VERIFIED
+(sc-domain + URL-prefix, siteOwner). The only gap: programmatic GA4 reporting.
+
+1. Open https://console.cloud.google.com/apis/api/analyticsadmin.googleapis.com/overview?project=hermes-gws-492604
+2. Click **Enable**
+3. Also grant the SA property access: GA4 Admin -> property G-7SV2SNZE4C -> Property Access -> add
+   sipiteno-gsc@hermes-gws-492604.iam.gserviceaccount.com as Viewer
+4. The north-star script's GA4 leg (fetch_north_star.py) auto-activates after that; no code changes needed
+
+---
+
+## QUEUED NEXT: CTR title/meta rewrite (autonomous, gated on deploy-settle)
+
+**STATUS: Queued 2026-08-15. Agent-executable. Fires via Hermes cron `gdf-ctr-title-meta-rewrite`
+(30m monitor gate: `~/.hermes/scripts/gdf-ctr-rewrite-gate.py`). Do NOT start manually
+while the gate says PENDING.**
+
+Gate flips to READY when: live signals CSP header includes `googletagmanager`
+(GA4 deploy landed) AND the pseo-site tree is clean. On READY the cron agent runs
+the rewrite. Applied state is marked by guard §17 CTR in verify-no-regressions.ts.
+
+Why: 28d GSC baseline = ~32K impressions at avg pos 11.1 with 928 top-10 URLs,
+but only ~63 clicks (0.2% CTR). Pages rank; snippets don't sell.
+
+Scope (priority order): `/startups-to-watch/*` (617), `/stage/*` + `/signals/*`
+(121), `/startup/*` (2,290), apex `alternatives-to`/`best` pages, core hubs.
+Prefer generator-level fixes (lib/data.ts templates) over per-page hardcoding.
+Titles ≤60 chars with numbers/brackets/specificity; metas 140-155 chars with a
+real data point. Derive every number from data/startups.json or page content
+only. No em dashes. Titles/meta only: never touch body copy, headings, schema,
+or FAQ blocks.
+
+Guard-first: add the §17 CTR assertion to scripts/verify-no-regressions.ts BEFORE
+deploy; run `npm run verify:no-regressions` standalone. Deploy only with clean
+tree + no active swarm (`ps aux | grep hermes`), via
+`vercel build --prod && vercel deploy --prebuilt --prod --yes --archive=tgz`.
+Post-deploy: curl-verify new titles live, re-submit sitemap via SA
+(google-search-console-api skill), record baseline in
+~/.hermes/scripts/gitdealflow-rank-tracker/, recheck CTR after 28d.
