@@ -1,3 +1,4 @@
+import { FRESH_YEAR_STR } from "@/lib/freshness-year";
 export interface UseCaseFAQ {
   question: string;
   answer: string;
@@ -30,7 +31,7 @@ export const useCases: UseCase[] = [
   {
     slug: "angel-investors",
     persona: "Angel investor",
-    title: "Deal Flow Signals for Angel Investors (2026)",
+    title: `Deal Flow Signals for Angel Investors ${FRESH_YEAR_STR}`,
     description:
       "How angel investors use VC Deal Flow Signal to find technical startups 6-12 weeks before the round is competitive. Free weekly signals, EUR 49/mo Dashboard, no enterprise contracts.",
     h1: "VC Deal Flow Signal for Angel Investors",
@@ -87,7 +88,7 @@ export const useCases: UseCase[] = [
   {
     slug: "vc-analysts",
     persona: "VC analyst",
-    title: "Deal Flow Signals for VC Analysts (2026)",
+    title: `Deal Flow Signals for VC Analysts ${FRESH_YEAR_STR}`,
     description:
       "How VC analysts use VC Deal Flow Signal to scale weekly deal sourcing, reduce manual GitHub spelunking, and build sector-specific watchlists that refresh automatically.",
     h1: "VC Deal Flow Signal for VC Analysts",
@@ -144,7 +145,7 @@ export const useCases: UseCase[] = [
   {
     slug: "fund-of-funds",
     persona: "Fund of funds / LP",
-    title: "Deal Flow Signals for Fund of Funds & LPs (2026)",
+    title: `Deal Flow Signals for Fund of Funds & LPs ${FRESH_YEAR_STR}`,
     description:
       "How fund of funds and LPs use VC Deal Flow Signal to benchmark portfolio VCs' sourcing quality, validate GP sector thesis, and spot emerging GPs with better deal flow.",
     h1: "VC Deal Flow Signal for Fund of Funds & LPs",
@@ -201,7 +202,7 @@ export const useCases: UseCase[] = [
   {
     slug: "scout-investors",
     persona: "Scout investor",
-    title: "Deal Flow Signals for Scout Investors (2026)",
+    title: `Deal Flow Signals for Scout Investors ${FRESH_YEAR_STR}`,
     description:
       "How scouts at Sequoia, Lightspeed, a16z, and similar programs use VC Deal Flow Signal to surface technical startups in their networks before the round consolidates.",
     h1: "VC Deal Flow Signal for Scout Investors",
@@ -255,7 +256,7 @@ export const useCases: UseCase[] = [
   {
     slug: "solo-gps",
     persona: "Solo GP",
-    title: "Deal Flow Signals for Solo GPs (2026)",
+    title: `Deal Flow Signals for Solo GPs ${FRESH_YEAR_STR}`,
     description:
       "How solo GPs running rolling funds, syndicates, or first-time funds use VC Deal Flow Signal to compete with institutional sourcing teams without an institutional budget.",
     h1: "VC Deal Flow Signal for Solo GPs",
@@ -309,7 +310,7 @@ export const useCases: UseCase[] = [
   {
     slug: "corporate-vc",
     persona: "Corporate VC",
-    title: "Deal Flow Signals for Corporate Venture (2026)",
+    title: `Deal Flow Signals for Corporate Venture ${FRESH_YEAR_STR}`,
     description:
       "How corporate venture teams use VC Deal Flow Signal to identify acquisition targets and strategic investment candidates before institutional VCs allocate the round.",
     h1: "VC Deal Flow Signal for Corporate Venture",
@@ -363,7 +364,7 @@ export const useCases: UseCase[] = [
   {
     slug: "accelerator-scouts",
     persona: "Accelerator program scout",
-    title: "Deal Flow Signals for Accelerator and Incubator Scouts (2026)",
+    title: `Deal Flow Signals for Accelerator and Incubator Scouts ${FRESH_YEAR_STR}`,
     description:
       "How scouts at YC, Techstars, Antler, Entrepreneur First, and other accelerator programs use VC Deal Flow Signal to identify program-fit founders before applications open.",
     h1: "VC Deal Flow Signal for Accelerator Program Scouts",
@@ -417,7 +418,7 @@ export const useCases: UseCase[] = [
   {
     slug: "portfolio-monitoring",
     persona: "Portfolio operator",
-    title: "Deal Flow Signals for Portfolio Monitoring (2026)",
+    title: `Deal Flow Signals for Portfolio Monitoring ${FRESH_YEAR_STR}`,
     description:
       "How fund operators and platform teams use VC Deal Flow Signal to monitor portfolio company engineering momentum and flag follow-on opportunities or stress signals.",
     h1: "VC Deal Flow Signal for Portfolio Monitoring",
@@ -471,7 +472,7 @@ export const useCases: UseCase[] = [
   {
     slug: "due-diligence",
     persona: "Due diligence analyst",
-    title: "Deal Flow Signals for Technical Due Diligence (2026)",
+    title: `Deal Flow Signals for Technical Due Diligence ${FRESH_YEAR_STR}`,
     description:
       "How investment teams use VC Deal Flow Signal during diligence to validate engineering claims, benchmark against sector peers, and verify shipping pace before term sheet.",
     h1: "VC Deal Flow Signal for Technical Due Diligence",
@@ -525,7 +526,7 @@ export const useCases: UseCase[] = [
   {
     slug: "lp-research",
     persona: "LP research analyst",
-    title: "Deal Flow Signals for LP Research (2026)",
+    title: `Deal Flow Signals for LP Research ${FRESH_YEAR_STR}`,
     description:
       "How LPs at endowments, family offices, and fund-of-funds use VC Deal Flow Signal to evaluate GP sourcing methodology, portfolio construction, and sector allocation.",
     h1: "VC Deal Flow Signal for LP Research",
@@ -579,7 +580,7 @@ export const useCases: UseCase[] = [
   {
     slug: "seed-funds",
     persona: "Seed-stage fund partner",
-    title: "Deal Flow Signals for Seed-Stage Funds (2026)",
+    title: `Deal Flow Signals for Seed-Stage Funds ${FRESH_YEAR_STR}`,
     description:
       "How seed-stage fund partners use VC Deal Flow Signal to source breakout startups during the seed-to-Series-A transition window when leverage is highest.",
     h1: "VC Deal Flow Signal for Seed-Stage Funds",
@@ -633,7 +634,7 @@ export const useCases: UseCase[] = [
   {
     slug: "series-a-funds",
     persona: "Series A fund partner",
-    title: "Deal Flow Signals for Series A Funds (2026)",
+    title: `Deal Flow Signals for Series A Funds ${FRESH_YEAR_STR}`,
     description:
       "How Series A fund partners use VC Deal Flow Signal to source breakout startups in the seed-to-Series-A handoff and benchmark candidates against sector peers.",
     h1: "VC Deal Flow Signal for Series A Funds",

@@ -18,6 +18,7 @@
  * CTA rather than promising features that don't exist.
  */
 
+import { FRESH_YEAR_STR } from "@/lib/freshness-year";
 export interface WorksWithFAQ {
   question: string;
   answer: string;
@@ -107,7 +108,7 @@ function build(t: {
     name: t.name,
     homepageUrl: t.homepage,
     category: t.category,
-    title: `${t.name} + VC Deal Flow Signal, Integration & Workflows (2026)`,
+    title: `${t.name} + VC Deal Flow Signal, Integration & Workflows ${FRESH_YEAR_STR}`,
     metaDescription: `How VC Deal Flow Signal engineering-acceleration signals flow into ${t.name}. ${t.paths.length} integration paths available today, ${t.paths.map(pathLabel).join(", ")}.`,
     h1: `VC Deal Flow Signal + ${t.name}`,
     tagline: `${t.short} ${t.paths.length} integration paths available today.`,
