@@ -3476,6 +3476,114 @@ landingCheck(
   "restore the hooked apex free-tools title",
 );
 
+
+// §43 striking-distance cohort internal linking (2026-08-18, audit item
+// "Average position 40"): 56 URLs at pos 6.5-12.5 held 38.7K impressions with
+// whole families at ZERO in-links (acquirer/from-stars-to-seed/signal/best;
+// single-token slugs can never win token-overlap links, and the §27 equity
+// pass only fired on 11 competitor entities). Fix: pass-3 striking-distance
+// floors + same-section fallback in build-internal-links.ts (RENDER_SECTIONS),
+// RelatedLinks on 4 templates, 3 consolidation 308s, footer hub links.
+// A reverted tree re-orphans ~40 pages holding 30K+ impressions.
+{
+  const builder = read("scripts/build-internal-links.ts");
+  if (builder === null) {
+    failures.push("§43 scripts/build-internal-links.ts missing");
+  } else {
+    for (const needle of ["striking-distance.json", "RENDER_SECTIONS", "equity tie-break"]) {
+      if (!builder.includes(needle)) {
+        failures.push(
+          `§43 striking-distance pass lost from build-internal-links.ts (needle: ${needle})\n` +
+            `    fix:  restore pass-3 floors + same-section fallback (audit avg-position-40 win, 2026-08-18)`,
+        );
+      }
+    }
+  }
+
+  const cohortRender = (rel: string, pathPrefix: string) => {
+    const s = read(rel);
+    if (s === null) {
+      failures.push(`§43 ${rel} missing`);
+      return;
+    }
+    if (!s.includes("RelatedLinks")) {
+      failures.push(
+        `§43 ${rel} no longer renders RelatedLinks\n` +
+          `    fix:  restore the RelatedLinks render (audit avg-position-40 win, 2026-08-18)`,
+      );
+    }
+  };
+  cohortRender("app/signal/[slug]/page.tsx");
+  cohortRender("app/from-stars-to-seed/[slug]/page.tsx");
+  cohortRender("app/best/[slug]/page.tsx");
+  cohortRender("app/research/[slug]/page.tsx");
+
+  const nextcfg = read("next.config.ts");
+  if (nextcfg === null) {
+    failures.push("§43 next.config.ts missing");
+  } else {
+    for (const needle of [
+      "/vs/harmonic-ai-vs-affinity",
+      "/vs/cb-insights-vs-crunchbase",
+      "/best/developer-tools-2026",
+    ]) {
+      if (!nextcfg.includes(needle)) {
+        failures.push(
+          `§43 consolidation 308 lost from next.config.ts (needle: ${needle})\n` +
+            `    fix:  restore the 308 (conflicting-canonical / 404 leak fix, 2026-08-18)`,
+        );
+      }
+    }
+  }
+
+  const footer = read("components/Footer.tsx");
+  if (footer === null) {
+    failures.push("§43 components/Footer.tsx missing");
+  } else {
+    for (const needle of ["/markets", "/predict", "/receipts"]) {
+      if (!footer.includes(needle)) {
+        failures.push(
+          `§43 footer hub link lost (needle: ${needle})\n` +
+            `    fix:  restore the footer link to the near-orphan hub (2026-08-18)`,
+        );
+      }
+    }
+  }
+
+  // In-degree floors: every cohort page must hold >= its floor in the
+  // committed graph. Measured after the fix: all 56 met (worst = 2 on
+  // /receipts, which matches its honest floor). Before: 40+ pages at 0.
+  const linksRaw = read("data/internal-links.json");
+  if (linksRaw !== null) {
+    try {
+      const graph = JSON.parse(linksRaw) as Record<string, Array<{ links?: Array<{ href: string }> }>>;
+      const cohortRaw = read("data/striking-distance.json");
+      if (cohortRaw !== null) {
+        const cohort = JSON.parse(cohortRaw) as Array<{ href: string; floor: number }>;
+        const indeg: Record<string, number> = {};
+        for (const groups of Object.values(graph)) {
+          if (!Array.isArray(groups)) continue;
+          for (const g of groups) {
+            for (const l of g.links || []) indeg[l.href] = (indeg[l.href] || 0) + 1;
+          }
+        }
+        for (const c of cohort) {
+          if ((indeg[c.href] || 0) < c.floor) {
+            failures.push(
+              `§43 ${c.href} dropped to ${indeg[c.href] || 0} in-links (floor: ${c.floor})\n` +
+                `    file: data/internal-links.json\n` +
+                `    fix:  rerun scripts/build-internal-links.ts (pass-3 floors must survive regeneration)`,
+            );
+          }
+        }
+      }
+    } catch {
+      failures.push("§43 data/internal-links.json is not valid JSON");
+    }
+  }
+}
+
+
 // ---------------------------------------------------------------------------
 if (failures.length) {
   console.error(
