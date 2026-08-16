@@ -10,8 +10,9 @@
  * working and a future re-tier can re-add any URL by re-running this script.
  *
  * Rule: prune when a URL is (a) advertised by one of the 5 page shards,
- * (b) in a prune-eligible leaf family, (c) ZERO impressions AND zero clicks in
- * GSC over the trailing 90d window, and (d) not protected. Protected:
+ * (b) in a prune-eligible leaf family, (c) BELOW the impression threshold in
+ * GSC over the trailing 90d window (default: zero impressions AND zero clicks;
+ * --min-imps 10 prunes <10-impression pages), and (d) not protected. Protected:
  *  - young tokens in the path (current month/week/quarter: 2026-08, 2026-w3x,
  *    -q3-2026) so freshly shipped pages can never be pruned before their first
  *    crawl-verdict window;
@@ -25,6 +26,7 @@
  * Run from pseo-site (cwd = pseo-site):
  *   npx tsx scripts/build-pruned-pages.ts
  *   npx tsx scripts/build-pruned-pages.ts --dry-run
+ *   npx tsx scripts/build-pruned-pages.ts --min-imps 10 --dry-run
  *   npx tsx scripts/build-pruned-pages.ts --gsc <path> --inventory <path>
  *
  * Re-run quarterly or after template retirements. The output is committed and
@@ -96,6 +98,7 @@ interface Args {
   inventory: string | null;
   out: string;
   dryRun: boolean;
+  minImps: number;
 }
 
 function parseArgs(argv: string[]): Args {
@@ -104,30 +107,39 @@ function parseArgs(argv: string[]): Args {
     inventory: null,
     out: "content/pruned-pages.ts",
     dryRun: false,
+    minImps: 1,
   };
   for (let i = 0; i < argv.length; i++) {
     if (argv[i] === "--gsc") a.gsc = argv[++i];
     else if (argv[i] === "--inventory") a.inventory = argv[++i];
     else if (argv[i] === "--out") a.out = argv[++i];
+    else if (argv[i] === "--min-imps") a.minImps = Number(argv[++i]);
     else if (argv[i] === "--dry-run") a.dryRun = true;
   }
   return a;
 }
 
-/** Blog posts too young to prune: date >= YOUNG_BLOG_DATE in posts.ts, plus
- * the claims-frozen i-tracked-369 slug (always). Flat slug->date regex: entry
- * blocks contain nested braces (faqs arrays etc.), so block-based parsing
- * fails; the non-greedy scan matches slug with the next date in the file. */
+/** Blog posts too young to prune: date >= YOUNG_BLOG_DATE across ALL
+ * content/*.ts files (posts.ts plus merged clusters like
+ * posts-sourcing-cluster.ts and TOFU that define posts OUTSIDE posts.ts as
+ * literals — a prior blind spot that could prune freshly-shipped cluster
+ * content on a re-run). Flat slug->date regex: entry blocks contain nested
+ * braces (faqs arrays etc.), so block-based parsing fails; the non-greedy
+ * scan matches slug with the next date in the file. Over-protection (false
+ * positives) is safe; under-protection is not. */
 function youngBlogPaths(): Set<string> {
-  const p = path.join(process.cwd(), "content/posts.ts");
-  if (!fs.existsSync(p)) fail("content/posts.ts not found (run from pseo-site)");
-  const raw = fs.readFileSync(p, "utf8");
+  const dir = path.join(process.cwd(), "content");
+  if (!fs.existsSync(dir)) fail("content/ not found (run from pseo-site)");
   const out = new Set<string>();
   for (const s of FROZEN_BLOG_SLUGS) out.add("/blog/" + s);
   const re = /slug:\s*"([^"]+)"[^}]*?date:\s*"([\d-]+)"/gs;
-  let m: RegExpExecArray | null;
-  while ((m = re.exec(raw)) !== null) {
-    if (m[2] >= YOUNG_BLOG_DATE) out.add("/blog/" + m[1]);
+  for (const f of fs.readdirSync(dir)) {
+    if (!f.endsWith(".ts")) continue;
+    const raw = fs.readFileSync(path.join(dir, f), "utf8");
+    let m: RegExpExecArray | null;
+    while ((m = re.exec(raw)) !== null) {
+      if (m[2] >= YOUNG_BLOG_DATE) out.add("/blog/" + m[1]);
+    }
   }
   return out;
 }
@@ -181,13 +193,22 @@ function inventoryFromFile(fp: string): Set<string> {
   return urls;
 }
 
-/** URLs with any GSC presence in the 90d window (never pruned). */
-function gscWithImps(fp: string): Set<string> {
+/** URLs with >= minImps GSC impressions in the 90d window (kept; pruned only
+ * when below the threshold). minImps=1 = prune zero-imp only (default, the
+ * 08-16 pass); --min-imps 10 = prune <10-imp pages (the audit's "<10-imp"
+ * tier). GSC by-page lists only URLs with >=1 impression, so zero-imp URLs are
+ * simply absent from the dict. */
+function gscWithMinImps(fp: string, minImps: number): Set<string> {
   if (!fs.existsSync(fp)) fail("GSC snapshot missing: " + fp);
   const raw = JSON.parse(fs.readFileSync(fp, "utf8"));
   const pages = raw?.["90"]?.["pages"];
   if (!pages) fail("GSC snapshot missing [90].pages");
-  return new Set(Object.keys(pages));
+  const out = new Set<string>();
+  for (const [url, meta] of Object.entries(pages)) {
+    const i = (meta as { i?: number })?.i ?? 0;
+    if (i >= minImps) out.add(url);
+  }
+  return out;
 }
 
 function renderModule(pruned: string[], generated: string): string {
@@ -216,7 +237,7 @@ function renderModule(pruned: string[], generated: string): string {
 
 async function main(): Promise<void> {
   const a = parseArgs(process.argv.slice(2));
-  const gsc = gscWithImps(a.gsc);
+  const gsc = gscWithMinImps(a.gsc, a.minImps);
   const inv = a.inventory ? inventoryFromFile(a.inventory) : await liveInventory();
   const youngBlog = youngBlogPaths();
   const localeRe = new RegExp("^/(" + LOCALES.join("|") + ")(/|$)");
