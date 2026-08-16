@@ -1004,7 +1004,7 @@ export const startupIdeas: StartupIdea[] = [
   {
     slug: "ai-code-review",
     category: "Dev Tools",
-    title: "AI code review: the GitHub Action that doesn't ship junk PRs",
+    title: "AI Code Review: Under 3 Comments per PR",
     metaDescription:
       "AI code review tools are crowded. The buildable opportunity is the model-graded review that ships only useful comments.",
     oneLiner:
@@ -1840,7 +1840,7 @@ export const startupIdeas: StartupIdea[] = [
   {
     slug: "open-source-funding-platforms",
     category: "Open Source / Community",
-    title: "Open-source funding platforms: B2B OSS wedge",
+    title: "Open-Source Funding Platforms: 3 Repos",
     metaDescription:
       "Open-source funding platforms turn 'we use this library' into a one-click B2B subscription with invoice and impact reporting, a buildable 2026 wedge with three OSS repos already showing the velocity pattern.",
     oneLiner:

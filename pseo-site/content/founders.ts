@@ -47,6 +47,22 @@ export interface Founder {
   sameAs: string[];
 }
 
+// CTR hooks for /founder/[handle] (2026-08-16 wave 6b). Figure-free role +
+// affiliation verdicts only: every string is sourced from the same entry's
+// public role/affiliation fields. Unmapped founders fall back to the generic
+// title below. No em dashes; no years (profiles are evergreen).
+export const FOUNDER_TITLE_HOOKS: Record<string, string> = {
+  leerob: "Lee Robinson (@leerob): Vercel VP of Product",
+  levelsio: "Pieter Levels (@levelsio): Founder, Nomad List",
+  mitchellh: "Mitchell Hashimoto (@mitchellh): HashiCorp Co-Founder",
+  patio11: "Patrick McKenzie (@patio11): Software Business Writer",
+  gaearon: "Dan Abramov (@gaearon): Former React Core",
+  yyx990803: "Evan You (@yyx990803): Vue.js Creator",
+  tj: "TJ Holowaychuk (@tj): Express.js Author",
+  ezyang: "Edward Z. Yang (@ezyang): PyTorch Core Engineer",
+  "transitive-bullshit": "Travis Fischer (@transitive-bullshit): Agentic Founder",
+};
+
 function build(p: {
   handle: string;
   name: string;
@@ -62,7 +78,9 @@ function build(p: {
     role: p.role,
     affiliation: p.affiliation,
     publicSource: p.publicSource,
-    title: `${p.name} (@${p.handle}), Public Engineering Profile`,
+    title:
+      FOUNDER_TITLE_HOOKS[p.handle] ??
+      `${p.name} (@${p.handle}), Public Engineering Profile`,
     metaDescription: `${p.name} is ${p.role} at ${p.affiliation}. Public engineering profile and notable open-source work, sourced exclusively from publicly self-published references.`,
     h1: `${p.name}, Public Engineering Profile`,
     tagline: `${p.name} is ${p.role} at ${p.affiliation}. This page summarizes publicly observable engineering activity tied to the @${p.handle} GitHub handle.`,

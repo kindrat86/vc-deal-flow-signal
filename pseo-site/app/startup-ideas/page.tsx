@@ -18,7 +18,7 @@ export const dynamic = "force-static";
 export const revalidate = 604800;
 
 export const metadata: Metadata = {
-  title: `Startup Ideas ${FRESH_YEAR_PLAIN}, buildable opportunities with the repos already trying`,
+  title: { absolute: `52 Startup Ideas ${FRESH_YEAR_PLAIN}: Buildable, Live Repos` },
   description: `Fifty-plus buildable startup ideas for ${FRESH_YEAR_PLAIN}, AI-native CRM, browser-use agents, vertical AI, dev tools, vibe-coding micro-SaaS. Each one paired with the three repos already accelerating against it, pulled live from our GitHub signal panel.`,
   alternates: { canonical: "/startup-ideas" },
   openGraph: {

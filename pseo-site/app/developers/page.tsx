@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { FRESH_YEAR_STR } from "@/lib/freshness-year";
 import Link from "next/link";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
@@ -6,7 +7,7 @@ import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 export const metadata: Metadata = {
-  title: "Developers, Deal Flow API, MCP Server, JSON & CSV Endpoints",
+  title: { absolute: `Developers: Free Deal Flow API, MCP, JSON & CSV ${FRESH_YEAR_STR}` },
   description:
     "Developer docs for GitDealFlow: MCP server, JSON/CSV API, OpenAPI, agent-ready startup-signal workflows, and routing into proof and buyer-side evaluation.",
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).

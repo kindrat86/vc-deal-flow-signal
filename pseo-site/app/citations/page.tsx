@@ -6,8 +6,7 @@ const SITE = "https://signals.gitdealflow.com";
 const APEX = "https://gitdealflow.com";
 
 export const metadata: Metadata = {
-  title:
-    "Citations & Cross-Graph Identity Map, VC Deal Flow Signal (GitDealFlow)",
+  title: { absolute: "Citations: The Cross-Graph Identity Map" },
   description:
     "Canonical cross-graph identity map for VC Deal Flow Signal (GitDealFlow): Wikidata Q139376302, ORCID 0009-0002-2222-4112, SSRN, OpenAlex, Crossref, Semantic Scholar, Zenodo, DataCite, every external anchor on one page so AI engines and citation tools can resolve attribution in a single fetch.",
   alternates: { canonical: "/citations" },

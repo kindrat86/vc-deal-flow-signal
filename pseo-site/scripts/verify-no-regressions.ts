@@ -4633,6 +4633,102 @@ landingCheck(
   }
 }
 
+// §56 CTR wave 6b (2026-08-16): portfolio count hooks, 3 founder handles,
+// 5 answers metaTitles, 11 hub titles, 2 startup-idea titles. Every figure
+// derives from the same content files (portfolio length, public roles, page
+// copy), never invented. Fails closed if any lineage reverts a wave-6b title.
+{
+  {
+    const pf = read("../app/fund/[slug]/portfolio/page.tsx");
+    if (pf) {
+      for (const needle of [
+        "Portfolio: ${nCompanies} Tracked",
+        "title: { absolute: title }",
+        "nCompanies === 1 ? \"company\" : \"companies\"",
+      ]) {
+        if (!pf.includes(needle)) {
+          failures.push(
+            `§56 portfolio title hook reverted (missing needle: ${needle.slice(0, 60)}...).\n    file: app/fund/[slug]/portfolio/page.tsx\n    fix:  restore the wave-6b count hook + absolute title + plural fix`,
+          );
+        }
+      }
+      if (pf.includes("Portfolio, Companies We Track")) {
+        failures.push(
+          `§56 portfolio title regressed to the generic form.\n    file: app/fund/[slug]/portfolio/page.tsx\n    fix:  restore the wave-6b count-hook title`,
+        );
+      }
+    }
+    const founders = read("../content/founders.ts");
+    if (founders) {
+      for (const needle of [
+        'tj: "TJ Holowaychuk (@tj): Express.js Author"',
+        '"transitive-bullshit": "Travis Fischer (@transitive-bullshit): Agentic Founder"',
+        'ezyang: "Edward Z. Yang (@ezyang): PyTorch Core Engineer"',
+      ]) {
+        if (!founders.includes(needle)) {
+          failures.push(
+            `§56 founder handle hook lost (missing needle: ${needle.slice(0, 60)}...).\n    file: content/founders.ts\n    fix:  restore the wave-6b founder handles`,
+          );
+        }
+      }
+    }
+    const answers = read("../content/agent-queries.ts");
+    if (answers) {
+      for (const needle of [
+        "metaTitle: `Best VC Deal Sourcing Tools: 3-Bucket Stack ${FRESH_YEAR_STR}`",
+        "metaTitle: `How Angels Use GitHub Signals: No Code Needed ${FRESH_YEAR_STR}`",
+        "metaTitle: `Find Stealth Startups: 5 Public Signals ${FRESH_YEAR_STR}`",
+        "metaTitle: `Best VC Deal Flow Software by Fund Size ${FRESH_YEAR_STR}`",
+        "metaTitle: `AI Investing Tools: 4 Categories Compared ${FRESH_YEAR_STR}`",
+      ]) {
+        if (!answers.includes(needle)) {
+          failures.push(
+            `§56 answers metaTitle hook lost: ${needle.slice(9, 60)}...\n    file: content/agent-queries.ts\n    fix:  restore the wave-6b metaTitle on the matching answers entry`,
+          );
+        }
+      }
+    }
+    const hubNeedles: Array<[string, string]> = [
+      ["app/founder/page.tsx", "33 Founders: Public Engineering Profiles ${FRESH_YEAR_STR}"],
+      ["app/integrations/page.tsx", "Integrations: MCP, Telegram, Email, RSS, Free API ${FRESH_YEAR_STR}"],
+      ["app/wikipedia/page.tsx", "Wikipedia Citation Helper: Ready Citations"],
+      ["app/citations/page.tsx", "Citations: The Cross-Graph Identity Map"],
+      ["app/predicted/page.tsx", "10 Predicted Breakouts Weekly, Graded at 60 Days ${FRESH_YEAR_STR}"],
+      ["app/developers/page.tsx", "Developers: Free Deal Flow API, MCP, JSON & CSV ${FRESH_YEAR_STR}"],
+      ["app/standards/page.tsx", "Standards: Schema.org, OpenAPI 3.1, MCP, A2A, FAIR ${FRESH_YEAR_STR}"],
+      ["app/data-sources/page.tsx", "Data Sources: GitHub API, Enrichment, Cadence ${FRESH_YEAR_STR}"],
+      ["app/alternatives/page.tsx", "Alternatives to Harmonic.ai, Dealroom, Crunchbase ${FRESH_YEAR_STR}"],
+      ["app/predict/page.tsx", "Predict Startup Breakouts: Free Signal, 2 Seconds ${FRESH_YEAR_STR}"],
+      ["app/startup-ideas/page.tsx", "52 Startup Ideas ${FRESH_YEAR_PLAIN}: Buildable, Live Repos"],
+      ["app/blog/page.tsx", "VC Deal Flow Blog: GitHub Signals & Startup Data ${FRESH_YEAR_STR}"],
+      ["app/answers/page.tsx", "98 Citation-Ready Answers on VC Deal Flow ${FRESH_YEAR_STR}"],
+    ];
+    for (const [path, needle] of hubNeedles) {
+      const src = read(`../${path}`);
+      if (src && !src.includes(needle)) {
+        failures.push(
+          `§56 hub title hook reverted.\n    file: ${path}\n    fix:  restore the wave-6b title "${needle}"`,
+        );
+      }
+    }
+    const ideas = read("../content/startup-ideas.ts");
+    if (ideas) {
+      for (const needle of [
+        'title: "Open-Source Funding Platforms: 3 Repos"',
+        'title: "AI Code Review: Under 3 Comments per PR"',
+      ]) {
+        if (!ideas.includes(needle)) {
+          failures.push(
+            `§56 startup-idea title hook lost (missing needle: ${needle.slice(0, 60)}...).\n    file: content/startup-ideas.ts\n    fix:  restore the wave-6b idea titles`,
+          );
+        }
+      }
+    }
+  }
+}
+
+
+
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +

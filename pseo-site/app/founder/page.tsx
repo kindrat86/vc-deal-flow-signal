@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
+import { FRESH_YEAR_STR } from "@/lib/freshness-year";
 import Link from "next/link";
 import { founders } from "@/content/founders";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
 
 export const metadata: Metadata = {
-  title: "Founders & Public Engineering Profiles",
+  title: { absolute: `33 Founders: Public Engineering Profiles ${FRESH_YEAR_STR}` },
   description:
     "Public engineering profiles of well-known founders, OSS maintainers, and technical executives, restricted to people who self-publish their GitHub handle on their own surface.",
   alternates: { canonical: "/founder" },

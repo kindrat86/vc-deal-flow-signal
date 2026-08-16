@@ -27,11 +27,16 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!fund) return {};
 
   const portfolio = getFundPortfolio(slug);
-  const title = `${fund.name} Portfolio, Companies We Track ${FRESH_YEAR_STR} | VC Deal Flow Signal`;
-  const description = `${portfolio.length} companies from ${fund.name}'s publicly disclosed portfolio that we track in the VC Deal Flow Signal engineering-signal panel. Independent, sources are press releases and Crunchbase only.`;
+  // CTR wave 6b (2026-08-16): count hook in the title, plural-aware, absolute
+  // so the 22-char layout suffix never truncates it. Count comes from the
+  // live FUND_PORTFOLIO data, never invented.
+  const nCompanies = portfolio.length;
+  const companyLabel = nCompanies === 1 ? "company" : "companies";
+  const title = `${fund.name} Portfolio: ${nCompanies} Tracked ${nCompanies === 1 ? "Company" : "Companies"} ${FRESH_YEAR_STR}`;
+  const description = `${nCompanies} ${companyLabel} from ${fund.name}'s publicly disclosed portfolio that we track in the VC Deal Flow Signal engineering-signal panel. Independent, sources are press releases and Crunchbase only.`;
 
   return {
-    title,
+    title: { absolute: title },
     description,
     openGraph: { title, description, type: "article", url: `/fund/${slug}/portfolio` },
     twitter: { card: "summary_large_image", title, description },
@@ -74,7 +79,7 @@ export default async function FundPortfolioPage({ params }: PageProps) {
   const faqs = [
     {
       question: `How many ${fund.name} portfolio companies does VC Deal Flow Signal track?`,
-      answer: `We track ${portfolio.length} ${fund.name} portfolio companies in our /signal/ corpus, these are companies where ${fund.name} has publicly disclosed their investor relationship via press release, the fund's own portfolio page, or both. ${fund.name}'s full portfolio is larger; this page only shows the intersection with our curated tracked set.`,
+      answer: `We track ${portfolio.length} ${fund.name} portfolio ${portfolio.length === 1 ? "company" : "companies"} in our /signal/ corpus, these are companies where ${fund.name} has publicly disclosed their investor relationship via press release, the fund's own portfolio page, or both. ${fund.name}'s full portfolio is larger; this page only shows the intersection with our curated tracked set.`,
     },
     {
       question: `How was this portfolio list sourced?`,
@@ -101,7 +106,7 @@ export default async function FundPortfolioPage({ params }: PageProps) {
         "@type": "CollectionPage",
         url: pageUrl,
         name: `${fund.name} Portfolio, Companies We Track`,
-        description: `${portfolio.length} ${fund.name} portfolio companies tracked in the VC Deal Flow Signal engineering-signal panel.`,
+        description: `${portfolio.length} ${fund.name} portfolio ${portfolio.length === 1 ? "company" : "companies"} tracked in the VC Deal Flow Signal engineering-signal panel.`,
         isPartOf: {
           "@type": "WebSite",
           name: "VC Deal Flow Signal",
@@ -197,7 +202,7 @@ export default async function FundPortfolioPage({ params }: PageProps) {
           {fund.name}, Portfolio Companies We Track
         </h1>
         <p className="text-sky-400 text-base leading-relaxed mb-6 font-medium">
-          {portfolio.length} publicly disclosed {fund.name} portfolio companies in the
+          {portfolio.length} publicly disclosed {fund.name} portfolio {portfolio.length === 1 ? "company" : "companies"} in the
           VC Deal Flow Signal engineering-signal corpus.
         </p>
         <p className="text-gray-400 text-base leading-relaxed mb-10">

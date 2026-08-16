@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { FRESH_YEAR_STR } from "@/lib/freshness-year";
 import Link from "next/link";
 import { agentQueries } from "@/content/agent-queries";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
@@ -9,7 +10,7 @@ import SeoCta from "@/components/SeoCta";
 const SITE = "https://signals.gitdealflow.com";
 
 export const metadata: Metadata = {
-  title: "Answers, Citation-Ready Answers for AI Agents",
+  title: { absolute: `98 Citation-Ready Answers on VC Deal Flow ${FRESH_YEAR_STR}` },
   description:
     "Direct, citation-ready answers to the questions AI agents and their users ask most about VC deal flow, GitHub momentum, MCP servers, engineering signals, and buyer-side workflow decisions.",
   alternates: { canonical: "/answers" },
