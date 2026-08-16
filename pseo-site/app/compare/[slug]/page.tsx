@@ -6,6 +6,7 @@ import { FRESH_YEAR_STR } from "@/lib/freshness-year";
 import { getTeardownsForSlug } from "@/content/competitor-teardowns";
 import { getAllSectors, getCurrentPeriod, getDataLastModified } from "@/lib/data";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import DefinitionBlock from "@/components/DefinitionBlock";
 import { FunnelTeardown } from "@/components/FunnelTeardown";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
@@ -13,6 +14,8 @@ import SeoCta from "@/components/SeoCta";
 import SignalDisclaimer from "@/components/SignalDisclaimer";
 import RelatedLinks from "@/components/RelatedLinks";
 import { getRelatedGroups } from "@/lib/related-links";
+import CitableStat from "@/components/CitableStat";
+import { citableStat } from "@/lib/citable-stats";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -230,6 +233,10 @@ export default async function ComparisonPage({ params }: PageProps) {
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
           {comp.h1}
         </h1>
+        <DefinitionBlock
+          text={`${comp.featureTable?.tools.join(", ") ?? comp.h1} compared for startup deal sourcing: signal type, lead time, coverage, and pricing. Use this side-by-side to pick the tool that matches your investment stage and sector.`}
+        />
+        <CitableStat {...citableStat("compare")} template="compare" />
         <aside
           className="mb-4 rounded-xl border border-sky-500/25 bg-sky-500/5 px-5 py-4"
           aria-label="At a glance"

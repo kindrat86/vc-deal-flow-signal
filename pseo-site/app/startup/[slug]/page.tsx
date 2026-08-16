@@ -14,8 +14,12 @@ import {
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import CuriosityGate from "@/components/CuriosityGate";
 import SeoCta from "@/components/SeoCta";
+import DefinitionBlock from "@/components/DefinitionBlock";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 import { BADGE_LABEL, BADGE_HEIGHT, badgeWidth, badgeValue } from "@/lib/badge-dims";
+import CitableStat from "@/components/CitableStat";
+import { citableStat } from "@/lib/citable-stats";
+import { buildSourceTruthDataset } from "@/lib/dataset-schema";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -230,7 +234,7 @@ export default async function StartupPage({ params }: PageProps) {
         dateModified: new Date().toISOString().slice(0, 10),
         speakable: {
           "@type": "SpeakableSpecification",
-          cssSelector: ["[aria-label='Key takeaway']", "h1"],
+          cssSelector: ["[aria-label='Key takeaway']", "h1", "[data-direct-answer]"],
         },
         about: {
           "@id": `https://signals.gitdealflow.com/startup/${slug}#org`,
@@ -335,6 +339,18 @@ export default async function StartupPage({ params }: PageProps) {
             },
           ]
         : []),
+      buildSourceTruthDataset({
+        url: `https://signals.gitdealflow.com/startup/${slug}`,
+        name: `${profile.name}: Engineering Signal Dataset`,
+        description: `Engineering-velocity signal record for ${profile.name}, tracked by the VC Deal Flow Signal (GitDealFlow) GitHub panel. ${profile.description}`,
+        variableMeasured: [
+          { name: "Commit velocity (14d)", value: latest.commitVelocity14d, unitText: "commits" },
+          { name: "Commit velocity change", value: latest.commitVelocityChange },
+          { name: "Active contributors", value: latest.contributors },
+          { name: "Signal type", value: latest.signalType },
+        ],
+        temporalCoverage: latest.periodName,
+      }),
     ],
   };
 
@@ -385,6 +401,9 @@ export default async function StartupPage({ params }: PageProps) {
               <p className="text-gray-400 text-base mt-2 leading-relaxed">
                 {profile.description}
               </p>
+              <DefinitionBlock
+                text={`${profile.name} is a startup tracked by VC Deal Flow Signal through its public GitHub activity. This profile records its commit velocity, contributors, and signal type as a benchmark for investors.`}
+              />
             </div>
             {/* Mobile-first fix: actions row must wrap under the name on 360-390px
                 phones (was shrink-0, pushed scrollWidth to 417px vs 390 viewport) */}
@@ -443,6 +462,8 @@ export default async function StartupPage({ params }: PageProps) {
             ))}
           </div>
         </header>
+
+        <CitableStat {...citableStat("startup")} template="startup" />
 
         {/* Key Takeaway */}
         <section className="mb-8" aria-label="Key takeaway">

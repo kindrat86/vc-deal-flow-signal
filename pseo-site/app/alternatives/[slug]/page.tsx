@@ -6,12 +6,15 @@ import { FRESH_YEAR_STR } from "@/lib/freshness-year";
 import { useCases } from "@/content/use-cases";
 import { getAllSectors, getCurrentPeriod, getDataLastModified } from "@/lib/data";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import DefinitionBlock from "@/components/DefinitionBlock";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 import SeoCta from "@/components/SeoCta";
 import SignalDisclaimer from "@/components/SignalDisclaimer";
 import RelatedLinks from "@/components/RelatedLinks";
 import { getRelatedGroups } from "@/lib/related-links";
+import CitableStat from "@/components/CitableStat";
+import { citableStat } from "@/lib/citable-stats";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -257,12 +260,16 @@ export default async function AlternativePage({ params }: PageProps) {
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
           {alt.h1}
         </h1>
+        <DefinitionBlock
+          text={`${alt.h1}: the strongest alternatives ranked by signal type, lead time, coverage, and pricing. This roundup helps investors and scouts find the sourcing tool that fits their workflow and budget.`}
+        />
         <p data-speakable className="tagline text-sky-400 text-base leading-relaxed mb-6 font-medium">
           {alt.tagline}
         </p>
         <p className="text-gray-400 text-base leading-relaxed mb-3">
           {alt.intro}
         </p>
+        <CitableStat {...citableStat("alternatives")} template="alternatives" />
         <p className="text-xs text-gray-500 mb-1">
           Data refreshed:{" "}
           {lastModified.toLocaleDateString("en-US", {

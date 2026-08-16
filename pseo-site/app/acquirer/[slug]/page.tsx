@@ -9,9 +9,13 @@ import {
 import { getSector, getCompaniesInSector } from "@/content/sectors";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
+import DefinitionBlock from "@/components/DefinitionBlock";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 import RelatedLinks from "@/components/RelatedLinks";
 import { getRelatedGroups } from "@/lib/related-links";
+import CitableStat from "@/components/CitableStat";
+import { citableStat } from "@/lib/citable-stats";
+import { buildSourceTruthDataset } from "@/lib/dataset-schema";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -124,7 +128,7 @@ export default async function AcquirerPage({ params }: PageProps) {
         },
         speakable: {
           "@type": "SpeakableSpecification",
-          cssSelector: ["h1", ".tagline", ".acquisition-strategy"],
+          cssSelector: ["h1", "[data-direct-answer]", ".tagline", ".acquisition-strategy"],
         },
       },
       {
@@ -173,6 +177,16 @@ export default async function AcquirerPage({ params }: PageProps) {
           acceptedAnswer: { "@type": "Answer", text: faq.answer },
         })),
       },
+      buildSourceTruthDataset({
+        url: pageUrl,
+        name: `${a.name}: Acquirer M&A Profile`,
+        description: `M&A and focus-sector profile for ${a.name}, mapped to the VC Deal Flow Signal (GitDealFlow) GitHub engineering-velocity panel. ${a.metaDescription}`,
+        variableMeasured: [
+          { name: "Notable acquisitions", value: a.notableAcquisitions.length },
+          { name: "Focus sectors", value: a.focusSectors.length },
+          { name: "Tracked companies in focus sectors", value: trackedCompaniesInFocus.length },
+        ],
+      }),
     ],
   };
 
@@ -203,10 +217,15 @@ export default async function AcquirerPage({ params }: PageProps) {
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
           {a.h1}
         </h1>
+        <DefinitionBlock
+          text={`${a.name} is a public-company acquirer whose M&A cadence shapes the technical-startup exit landscape. This page summarizes its disclosed acquisitions and how they map to engineering-acceleration signals.`}
+        />
         <p className="tagline text-sky-400 text-base leading-relaxed mb-6 font-medium">
           {a.tagline}
         </p>
         <p className="text-gray-400 text-base leading-relaxed mb-10">{a.intro}</p>
+
+        <CitableStat {...citableStat("acquirer")} template="acquirer" />
 
         <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 mb-10">
           <div className="rounded-lg border border-slate-800 bg-slate-900 p-4 text-center">

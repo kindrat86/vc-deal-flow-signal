@@ -10,11 +10,14 @@ import {
   getRelatedSectors,
 } from "@/lib/data";
 import StartupTable from "@/components/StartupTable";
+import DefinitionBlock from "@/components/DefinitionBlock";
 import SeoCta from "@/components/SeoCta";
 import RelatedLinks from "@/components/RelatedLinks";
 import { getRelatedGroups } from "@/lib/related-links";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import CitableStat from "@/components/CitableStat";
+import { citableStat } from "@/lib/citable-stats";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -87,7 +90,7 @@ export default async function BestSectorPage({ params }: PageProps) {
         dateModified: lastModified.toISOString().slice(0, 10),
         speakable: {
           "@type": "SpeakableSpecification",
-          cssSelector: ["[aria-label='Key takeaway']", "h1"],
+          cssSelector: ["[aria-label='Key takeaway']", "h1", "[data-direct-answer]"],
         },
       },
       {
@@ -124,6 +127,7 @@ export default async function BestSectorPage({ params }: PageProps) {
         name: `Best ${sector.name} Startups ${year}, Engineering Acceleration Dataset`,
         description: `Ranked dataset of ${sorted.length} ${sectorLower} startups in ${year}, scored by GitHub commit velocity change, contributor growth, new repository count, and signal classification. Sourced from public GitHub API data.`,
         url: `https://signals.gitdealflow.com/best/${slug}`,
+        isBasedOn: { "@id": "https://signals.gitdealflow.com/dataset#dataset" },
         identifier: `gitdealflow:best:${slug}`,
         keywords: [
           sector.name,
@@ -205,13 +209,12 @@ export default async function BestSectorPage({ params }: PageProps) {
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
             Best {sector.name} Startups {year}
           </h1>
-          <p className="text-gray-400 text-base leading-relaxed">
-            The top {sectorLower} startups in {year}, ranked by GitHub
-            engineering acceleration. These are the companies whose engineering
-            teams are shipping the fastest, a signal that has historically
-            preceded fundraise announcements by three to six weeks.
-          </p>
+          <DefinitionBlock
+            text={`The top ${sectorLower} startups in ${year}, ranked by GitHub engineering acceleration. These are the companies whose engineering teams are shipping the fastest, a signal that has historically preceded fundraise announcements by three to six weeks.`}
+          />
         </header>
+
+        <CitableStat {...citableStat("best")} template="best" />
 
         {takeaway && (
           <section className="mb-8" aria-label="Key takeaway">

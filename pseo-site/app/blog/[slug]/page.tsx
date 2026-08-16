@@ -11,9 +11,12 @@ import { getPillarForPost, getPostsInPillar } from "@/content/pillars";
 import figureRegistry from "@/components/figures";
 import StatCallout from "@/components/StatCallout";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import DefinitionBlock from "@/components/DefinitionBlock";
 import SeoCta from "@/components/SeoCta";
 import RelatedLinks from "@/components/RelatedLinks";
 import { getRelatedGroups } from "@/lib/related-links";
+import CitableStat from "@/components/CitableStat";
+import { citableStat } from "@/lib/citable-stats";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -517,7 +520,12 @@ export default async function BlogPostPage({ params }: PageProps) {
                 <p className="text-xs font-medium text-sky-400 uppercase tracking-wider mb-2">
                   Key Takeaway
                 </p>
-                <p className="text-gray-300 text-sm leading-relaxed">
+                <p
+                  className="text-gray-300 text-sm leading-relaxed"
+                  data-direct-answer
+                  data-speakable
+                  data-agent-summary
+                >
                   {post.summary}
                 </p>
               </div>
@@ -560,12 +568,14 @@ export default async function BlogPostPage({ params }: PageProps) {
           </div>
 
           {/* Key statistics - GEO-optimized quotable stat block */}
-          {post.keyStats && post.keyStats.length > 0 && (
+          {post.keyStats && post.keyStats.length > 0 ? (
             <StatCallout
               stats={post.keyStats}
               source="VC Deal Flow Signal"
               sourceHref="https://signals.gitdealflow.com"
             />
+          ) : (
+            <CitableStat {...citableStat("blog")} template="blog" />
           )}
 
           <div className="prose-invert">{sections}</div>

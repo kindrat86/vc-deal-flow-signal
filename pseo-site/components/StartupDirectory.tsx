@@ -2,6 +2,8 @@ import Link from "next/link";
 import type { Startup } from "@/lib/data";
 import SignalBadge from "@/components/SignalBadge";
 import { slugify } from "@/lib/slugify";
+import CitableStat from "@/components/CitableStat";
+import { citableStat } from "@/lib/citable-stats";
 
 const BASE_URL = "https://signals.gitdealflow.com";
 
@@ -107,8 +109,17 @@ export default function StartupDirectory({
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
             {title}
           </h1>
-          <p className="text-gray-400 text-base leading-relaxed">{subtitle}</p>
+          <p
+            className="text-gray-400 text-base leading-relaxed"
+            data-direct-answer
+            data-speakable
+            data-agent-summary
+          >
+            {subtitle}
+          </p>
         </header>
+
+        <CitableStat {...citableStat("startups")} template="startups" />
 
         <section className="mb-8 max-w-3xl" aria-label="About this directory">
           <p className="text-gray-400 text-base leading-relaxed">
