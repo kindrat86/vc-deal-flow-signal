@@ -15,7 +15,7 @@
   "sentinels": [
     {
       "id": "robots-directive-max-snippet",
-      "what": "Full X-Robots-Tag directive restored on signals.gitdealflow.com (2026-08-18): middleware (proxy.ts) was flattening vercel.json's 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' to bare 'index, follow' site-wide; 404 HTML carried index,follow header with no noindex meta. max-snippet:-1 governs AI-Overview/answer-engine extraction length.",
+      "what": "Full X-Robots-Tag directive restored on signals.gitdealflow.com (2026-08-16): middleware (proxy.ts) was flattening vercel.json's 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' to bare 'index, follow' site-wide; 404 HTML carried index,follow header with no noindex meta. max-snippet:-1 governs AI-Overview/answer-engine extraction length.",
       "fixCommit": "c39974e759055b590cb0c7e52457a2c246a23da6",
       "ancestryExpected": true,
       "contentNeedles": [
@@ -132,7 +132,7 @@
     },
     {
       "id": "hsts-preload-headers",
-      "what": "HSTS preload guard: verify-no-regressions asserts Strict-Transport-Security: max-age=63072000; includeSubDomains; preload survives on BOTH pseo config surfaces (vercel.json headers[] + next.config.ts headers()). Header live on every response class of both hosts 2026-08-18; gitdealflow.com status=pending on hstspreload.org; preload removal costs months, so a config refactor dropping it must fail the build (the beacon-orphaning failure mode). Landed via 06cf56d4 (sibling commit swept the patched file; content verified at HEAD).",
+      "what": "HSTS preload guard: verify-no-regressions asserts Strict-Transport-Security: max-age=63072000; includeSubDomains; preload survives on BOTH pseo config surfaces (vercel.json headers[] + next.config.ts headers()). Header live on every response class of both hosts 2026-08-16; gitdealflow.com status=pending on hstspreload.org; preload removal costs months, so a config refactor dropping it must fail the build (the beacon-orphaning failure mode). Landed via 06cf56d4 (sibling commit swept the patched file; content verified at HEAD).",
       "fixCommit": "06cf56d42c839b6cf9160a57d251d21c106e0167",
       "ancestryExpected": true,
       "contentNeedles": [

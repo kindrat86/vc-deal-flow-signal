@@ -3146,7 +3146,7 @@ check(
 );
 
 // ---------------------------------------------------------------------------
-// §38 Working search surface (2026-08-18, audit item "sitelinks 55").
+// §38 Working search surface (2026-08-16, audit item "sitelinks 55").
 // The WebSite SearchAction + opensearch.xml had a dead human path: browsers
 // registering the site as a search engine were sent to /?q=... which the
 // homepage ignored, and Google deprecated the sitelinks search box in Nov
@@ -3262,7 +3262,7 @@ check(
 }
 
 // ---------------------------------------------------------------------------
-// §40 Verbatim PAA/GSC questions as on-page H3s (2026-08-18, audit item
+// §40 Verbatim PAA/GSC questions as on-page H3s (2026-08-16, audit item
 // "People Also Ask 30"). Harvest: 13 live Google SERPs (headed Chrome,
 // consent-dismissed, hl=en&gl=us) -> 30 unique verbatim PAA questions,
 // cross-referenced with 28d GSC query+page data (14 question-shaped queries,
@@ -3291,7 +3291,7 @@ check(
   "content/competitor-vs.ts",
   "§40 PAA: the CB Insights entity questions (reputable / cost per year / who owns / what kind of company) were dropped; they appear verbatim as PAA on 2 SERPs and are entity-SEO surface",
   (s) => {
-    // Slug-bound since 2026-08-18: the questions must live on the CANONICAL
+    // Slug-bound since 2026-08-16: the questions must live on the CANONICAL
     // pair block (crunchbase-vs-cb-insights). A direction-consolidation 308
     // (next.config.ts) stranded them on the redirected cb-insights-vs-crunchbase
     // block once, rendering them nowhere. This binding makes that fail-closed.
@@ -3357,7 +3357,7 @@ check(
 
 
 // ---------------------------------------------------------------------------
-// §42 CTR title hooks site-wide (2026-08-18, audit item "Title/meta CTR
+// §42 CTR title hooks site-wide (2026-08-16, audit item "Title/meta CTR
 // levers 25"). Phase 2 of the SERP-CTR win: the proven /vs/ price-hook
 // pattern extended to /compare/, /alternatives/, research-paper leaves,
 // from-stars-to-seed leaves, /methodology, and /answers. Figures come ONLY
@@ -3484,7 +3484,7 @@ landingCheck(
 );
 
 
-// §43 striking-distance cohort internal linking (2026-08-18, audit item
+// §43 striking-distance cohort internal linking (2026-08-16, audit item
 // "Average position 40"): 56 URLs at pos 6.5-12.5 held 38.7K impressions with
 // whole families at ZERO in-links (acquirer/from-stars-to-seed/signal/best;
 // single-token slugs can never win token-overlap links, and the §27 equity
@@ -3501,7 +3501,7 @@ landingCheck(
       if (!builder.includes(needle)) {
         failures.push(
           `§43 striking-distance pass lost from build-internal-links.ts (needle: ${needle})\n` +
-            `    fix:  restore pass-3 floors + same-section fallback (audit avg-position-40 win, 2026-08-18)`,
+            `    fix:  restore pass-3 floors + same-section fallback (audit avg-position-40 win, 2026-08-16)`,
         );
       }
     }
@@ -3516,7 +3516,7 @@ landingCheck(
     if (!s.includes("RelatedLinks")) {
       failures.push(
         `§43 ${rel} no longer renders RelatedLinks\n` +
-          `    fix:  restore the RelatedLinks render (audit avg-position-40 win, 2026-08-18)`,
+          `    fix:  restore the RelatedLinks render (audit avg-position-40 win, 2026-08-16)`,
       );
     }
   };
@@ -3537,7 +3537,7 @@ landingCheck(
       if (!nextcfg.includes(needle)) {
         failures.push(
           `§43 consolidation 308 lost from next.config.ts (needle: ${needle})\n` +
-            `    fix:  restore the 308 (conflicting-canonical / 404 leak fix, 2026-08-18)`,
+            `    fix:  restore the 308 (conflicting-canonical / 404 leak fix, 2026-08-16)`,
         );
       }
     }
@@ -3551,7 +3551,7 @@ landingCheck(
       if (!footer.includes(needle)) {
         failures.push(
           `§43 footer hub link lost (needle: ${needle})\n` +
-            `    fix:  restore the footer link to the near-orphan hub (2026-08-18)`,
+            `    fix:  restore the footer link to the near-orphan hub (2026-08-16)`,
         );
       }
     }
@@ -3592,7 +3592,7 @@ landingCheck(
 
 
 // ---------------------------------------------------------------------------
-// §44 Lineage-ancestry sentinels (2026-08-18, lineage-reset hazard, bitten
+// §44 Lineage-ancestry sentinels (2026-08-16, lineage-reset hazard, bitten
 // twice: 2026-08-16 definitions drop, 2026-08-03/04 Stripe/payment links).
 // A swarm sibling's reset/ff silently dropped committed fixes from main; the
 // tree still built and deployed, regressing production. §44 makes that ritual
@@ -3666,7 +3666,7 @@ landingCheck(
 }
 
 // ---------------------------------------------------------------------------
-// HSTS preload header on both config surfaces (2026-08-18)
+// HSTS preload header on both config surfaces (2026-08-16)
 // ---------------------------------------------------------------------------
 // signals.gitdealflow.com serves
 // Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
@@ -3703,7 +3703,7 @@ landingCheck(
   }
   if (!vjOk) {
     failures.push(
-      `HSTS lost from vercel.json: headers[] must keep a "/(.*)" block with Strict-Transport-Security: "${HSTS}" (2026-08-18; hstspreload.org submission pending on the parent domain, weakening costs months to undo).`,
+      `HSTS lost from vercel.json: headers[] must keep a "/(.*)" block with Strict-Transport-Security: "${HSTS}" (2026-08-16; hstspreload.org submission pending on the parent domain, weakening costs months to undo).`,
     );
   }
   if (vjBad.length) {
@@ -3717,12 +3717,12 @@ landingCheck(
     (s) =>
       s.includes('key: "Strict-Transport-Security"') &&
       s.includes(`value: "${HSTS}"`),
-    `keep the headers() entry Strict-Transport-Security: "${HSTS}" in next.config.ts (2026-08-18 belt-and-braces with vercel.json; if intentionally consolidated, update this check with a reason)`,
+    `keep the headers() entry Strict-Transport-Security: "${HSTS}" in next.config.ts (2026-08-16 belt-and-braces with vercel.json; if intentionally consolidated, update this check with a reason)`,
   );
 }
 
 // ---------------------------------------------------------------------------
-// §47 Robots-directive integrity + 404 noindex (2026-08-18, headless/rendering
+// §47 Robots-directive integrity + 404 noindex (2026-08-16, headless/rendering
 // audit row). Two defects found live: (a) proxy.ts (middleware = deterministic
 // LAST header writer) overwrote vercel.json's rich X-Robots-Tag with bare
 // "index, follow", silently dropping max-snippet:-1 / max-image-preview:large /
