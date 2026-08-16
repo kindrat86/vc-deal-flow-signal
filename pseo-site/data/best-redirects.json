@@ -10,12 +10,24 @@
       "destination": "/startups-to-watch/ai-ml-q4-2025"
     },
     {
+      "source": "/best/ai-ml-2026",
+      "destination": "/startups-to-watch/ai-ml-q2-2026"
+    },
+    {
       "source": "/best/climate-tech-2025",
       "destination": "/startups-to-watch/climate-tech-q4-2025"
     },
     {
+      "source": "/best/climate-tech-2026",
+      "destination": "/startups-to-watch/climate-tech-q2-2026"
+    },
+    {
       "source": "/best/cybersecurity-2025",
       "destination": "/startups-to-watch/cybersecurity-q4-2025"
+    },
+    {
+      "source": "/best/cybersecurity-2026",
+      "destination": "/startups-to-watch/cybersecurity-q2-2026"
     },
     {
       "source": "/best/data-infrastructure-2025",
@@ -24,6 +36,10 @@
     {
       "source": "/best/developer-tools-2025",
       "destination": "/startups-to-watch/developer-tools-q4-2025"
+    },
+    {
+      "source": "/best/developer-tools-2026",
+      "destination": "/sectors/developer-tools"
     },
     {
       "source": "/best/ecommerce-infrastructure-2025",
@@ -40,6 +56,10 @@
     {
       "source": "/best/fintech-2025",
       "destination": "/startups-to-watch/fintech-q4-2025"
+    },
+    {
+      "source": "/best/fintech-2026",
+      "destination": "/startups-to-watch/fintech-q2-2026"
     },
     {
       "source": "/best/gaming-2025",

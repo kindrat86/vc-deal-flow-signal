@@ -1,201 +1,202 @@
 {
-  "$comment": [
-    "Ledger of sentinel fixes for scripts/verify-ancestry.ts (verify-no-regressions section 44).",
-    "Each entry pins a commit that carried a production-content fix that was",
-    "previously (or could be) dropped from main by a lineage reset, plus",
-    "content needles proving the fix survives at HEAD.",
-    "Enforced: fixCommit ancestry of HEAD (unless ancestryExpected=false) and",
-    "every contentNeedle present in the file at HEAD (read via git show, so a",
-    "dirty worktree cannot mask a regressed HEAD).",
-    "Protocol: when you land a fix that would be expensive to re-discover,",
-    "add an entry here IN THE SAME COMMIT. When a needle becomes obsolete",
-    "(content legitimately rewritten), update the entry with a supersededBy",
-    "note. Never delete history: mark obsolete, do not erase."
-  ],
-  "sentinels": [
+ "$comment": [
+  "Ledger of sentinel fixes for scripts/verify-ancestry.ts (verify-no-regressions section 44).",
+  "Each entry pins a commit that carried a production-content fix that was",
+  "previously (or could be) dropped from main by a lineage reset, plus",
+  "content needles proving the fix survives at HEAD.",
+  "Enforced: fixCommit ancestry of HEAD (unless ancestryExpected=false) and",
+  "every contentNeedle present in the file at HEAD (read via git show, so a",
+  "dirty worktree cannot mask a regressed HEAD).",
+  "Protocol: when you land a fix that would be expensive to re-discover,",
+  "add an entry here IN THE SAME COMMIT. When a needle becomes obsolete",
+  "(content legitimately rewritten), update the entry with a supersededBy",
+  "note. Never delete history: mark obsolete, do not erase."
+ ],
+ "sentinels": [
+  {
+   "id": "robots-directive-max-snippet",
+   "what": "Full X-Robots-Tag directive restored on signals.gitdealflow.com (2026-08-16): middleware (proxy.ts) was flattening vercel.json's 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' to bare 'index, follow' site-wide; 404 HTML carried index,follow header with no noindex meta. max-snippet:-1 governs AI-Overview/answer-engine extraction length.",
+   "fixCommit": "c39974e759055b590cb0c7e52457a2c246a23da6",
+   "ancestryExpected": true,
+   "contentNeedles": [
     {
-      "id": "robots-directive-max-snippet",
-      "what": "Full X-Robots-Tag directive restored on signals.gitdealflow.com (2026-08-16): middleware (proxy.ts) was flattening vercel.json's 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' to bare 'index, follow' site-wide; 404 HTML carried index,follow header with no noindex meta. max-snippet:-1 governs AI-Overview/answer-engine extraction length.",
-      "fixCommit": "c39974e759055b590cb0c7e52457a2c246a23da6",
-      "ancestryExpected": true,
-      "contentNeedles": [
-        {
-          "file": "pseo-site/proxy.ts",
-          "pattern": "INDEX_ROBOTS_DIRECTIVE"
-        },
-        {
-          "file": "pseo-site/proxy.ts",
-          "pattern": "robotsDirectiveFor\\(pathname\\)",
-          "minCount": 2
-        },
-        {
-          "file": "pseo-site/app/not-found.tsx",
-          "pattern": "noindex, follow"
-        }
-      ]
+     "file": "pseo-site/proxy.ts",
+     "pattern": "INDEX_ROBOTS_DIRECTIVE"
     },
     {
-      "id": "direct-answers-92",
-      "what": "92 authored direct-answer definitions on /answers (featured-snippet rebuild, audit 2026-08-16). Dropped once by the 58f99447 lineage reset (silently re-shipped 1/92); restored by e59c4e36.",
-      "fixCommit": "e59c4e36c488c6a2184b320383c3c38f63f04833",
-      "ancestryExpected": true,
-      "contentNeedles": [
-        {
-          "file": "pseo-site/content/agent-queries.ts",
-          "pattern": "^\\s+definition:",
-          "minCount": 92
-        }
-      ]
+     "file": "pseo-site/proxy.ts",
+     "pattern": "robotsDirectiveFor\\(pathname\\)",
+     "minCount": 2
     },
     {
-      "id": "guard-direct-answers",
-      "what": "verify-direct-answers.ts guard (100% definition coverage floor, 40-60 word window) wired into prebuild.",
-      "fixCommit": "e59c4e36c488c6a2184b320383c3c38f63f04833",
-      "ancestryExpected": true,
-      "contentNeedles": [
-        {
-          "file": "pseo-site/scripts/verify-direct-answers.ts",
-          "pattern": "MIN_COVERAGE",
-          "minCount": 1
-        },
-        {
-          "file": "pseo-site/package.json",
-          "pattern": "verify-direct-answers",
-          "minCount": 1
-        }
-      ]
-    },
-    {
-      "id": "paa-verbatim-faqs",
-      "what": "28 verbatim PAA/GSC question FAQs as H3+FAQPage pairs. Landed via 5afe457f (merged as cf6c4d9c); SWARM_STATE warns the paa-40 branch also carries this live content.",
-      "fixCommit": "5afe457f5416f277ba52e8bdfd5f56a3cca2396e",
-      "ancestryExpected": true,
-      "contentNeedles": [
-        {
-          "file": "pseo-site/content/competitor-vs.ts",
-          "pattern": "verbatim PAA",
-          "minCount": 8
-        }
-      ]
-    },
-    {
-      "id": "ctr-title-hooks",
-      "auditLine": "SERP CTR 15 / Title-meta CTR levers 25 (audit 2026-08-16)",
-      "what": "Per-slug price/verdict CTR hooks: COMPARE_TITLE_HOOKS (48 slugs), ALTERNATIVES_TITLE_HOOKS (12), research-paper Explained metaTitles, from-stars figures, methodology 21-47d claim, answers metaTitle field.",
-      "fixCommit": "bf53580a003e3dc33ced2932cbf91acb4dbf7b5d",
-      "ancestryExpected": true,
-      "contentNeedles": [
-        {
-          "file": "pseo-site/content/comparisons.ts",
-          "pattern": "COMPARE_TITLE_HOOKS",
-          "minCount": 1
-        }
-      ]
-    },
-    {
-      "id": "striking-distance-links",
-      "auditLine": "Internal-link graph 48 / Orphan pages 42 (audit 2026-08-16)",
-      "what": "Striking-distance cohort internal-link push (56 URLs pos 6.5-12.5): build-internal-links.ts floors + RENDER_SECTIONS + RelatedLinks render + footer hub + next.config 308 consolidation + data/internal-links.json.",
-      "fixCommit": "ca140ec01284cb8a4b334c21645755f5028990af",
-      "ancestryExpected": true,
-      "contentNeedles": [
-        {
-          "file": "pseo-site/data/striking-distance.json",
-          "pattern": "floor",
-          "minCount": 1
-        },
-        {
-          "file": "pseo-site/scripts/build-internal-links.ts",
-          "pattern": "RENDER_SECTIONS",
-          "minCount": 1
-        },
-        {
-          "file": "pseo-site/data/internal-links.json",
-          "pipeline": true
-        }
-      ]
-    },
-    {
-      "id": "landing-ctr-sweep",
-      "auditLine": "SERP CTR 15 (audit 2026-08-16)",
-      "what": "Landing (apex) CTR title/meta sweep + preload completion + x-default cleanup + Google Fonts removal; restored main to deployable after the guard ship.",
-      "fixCommit": "45e00ac118943cea4bdabe94002174c901a2a12c",
-      "ancestryExpected": true,
-      "contentNeedles": [
-        {
-          "file": "landing/scripts/verify-css-preloads.mjs",
-          "pattern": "preload",
-          "minCount": 1,
-          "tree": "landing"
-        }
-      ]
-    },
-    {
-      "id": "hsts-preload-headers",
-      "what": "HSTS preload guard: verify-no-regressions asserts Strict-Transport-Security: max-age=63072000; includeSubDomains; preload survives on BOTH pseo config surfaces (vercel.json headers[] + next.config.ts headers()). Header live on every response class of both hosts 2026-08-16; gitdealflow.com status=pending on hstspreload.org; preload removal costs months, so a config refactor dropping it must fail the build (the beacon-orphaning failure mode). Landed via 06cf56d4 (sibling commit swept the patched file; content verified at HEAD).",
-      "fixCommit": "06cf56d42c839b6cf9160a57d251d21c106e0167",
-      "ancestryExpected": true,
-      "contentNeedles": [
-        {
-          "file": "pseo-site/scripts/verify-no-regressions.ts",
-          "pattern": "HSTS preload header on both config surfaces",
-          "minCount": 1
-        },
-        {
-          "file": "pseo-site/vercel.json",
-          "pattern": "max-age=63072000; includeSubDomains; preload",
-          "minCount": 1
-        },
-        {
-          "file": "pseo-site/next.config.ts",
-          "pattern": "max-age=63072000; includeSubDomains; preload",
-          "minCount": 1
-        }
-      ]
-    },
-    {
-      "id": "hsts-preload-landing",
-      "what": "HSTS preload guard on the landing host: verify-vercel-config.mjs (runs in vercel.json buildCommand on every landing deploy) asserts the '/(.*)' Strict-Transport-Security preload block stays in landing/vercel.json headers[]. Same audit fix as hsts-preload-headers, apex side (gitdealflow.com).",
-      "fixCommit": "760156411f0c1c3e8ea8afa0e13ed6101596fb2b",
-      "ancestryExpected": true,
-      "contentNeedles": [
-        {
-          "file": "landing/scripts/verify-vercel-config.mjs",
-          "pattern": "hstspreload.org submission pending",
-          "minCount": 1,
-          "tree": "landing"
-        },
-        {
-          "file": "landing/vercel.json",
-          "pattern": "max-age=63072000; includeSubDomains; preload",
-          "minCount": 1,
-          "tree": "landing"
-        }
-      ]
-    },
-    {
-      "id": "frozen-best-redirects",
-      "auditLine": "Keyword cannibalization 38 / URL structure 78 (audit 2026-08-16, win #2 residuals)",
-      "what": "301s for the five Q2-2026 frozen-sector /best/ URLs: developer-tools -> /sectors/developer-tools (sibling), plus ai-ml/fintech/climate-tech/cybersecurity -> /startups-to-watch/<slug>-q2-2026 (GSC 90d on the 404s: 48/25/23/22 impressions). verify-no-regressions asserts both source and destination of all five; a lineage that drops or retargets any of them fails the build.",
-      "fixCommit": "e2219db040f05d31049149232423566d3c173ba3",
-      "ancestryExpected": true,
-      "contentNeedles": [
-        {
-          "file": "pseo-site/next.config.ts",
-          "pattern": "source: \"/best/ai-ml-2026\"",
-          "minCount": 1
-        },
-        {
-          "file": "pseo-site/next.config.ts",
-          "pattern": "destination: \"/startups-to-watch/climate-tech-q2-2026\"",
-          "minCount": 1
-        },
-        {
-          "file": "pseo-site/scripts/verify-no-regressions.ts",
-          "pattern": "FROZEN_BEST",
-          "minCount": 1
-        }
-      ]
+     "file": "pseo-site/app/not-found.tsx",
+     "pattern": "noindex, follow"
     }
-  ]
+   ]
+  },
+  {
+   "id": "direct-answers-92",
+   "what": "92 authored direct-answer definitions on /answers (featured-snippet rebuild, audit 2026-08-16). Dropped once by the 58f99447 lineage reset (silently re-shipped 1/92); restored by e59c4e36.",
+   "fixCommit": "e59c4e36c488c6a2184b320383c3c38f63f04833",
+   "ancestryExpected": true,
+   "contentNeedles": [
+    {
+     "file": "pseo-site/content/agent-queries.ts",
+     "pattern": "^\\s+definition:",
+     "minCount": 92
+    }
+   ]
+  },
+  {
+   "id": "guard-direct-answers",
+   "what": "verify-direct-answers.ts guard (100% definition coverage floor, 40-60 word window) wired into prebuild.",
+   "fixCommit": "e59c4e36c488c6a2184b320383c3c38f63f04833",
+   "ancestryExpected": true,
+   "contentNeedles": [
+    {
+     "file": "pseo-site/scripts/verify-direct-answers.ts",
+     "pattern": "MIN_COVERAGE",
+     "minCount": 1
+    },
+    {
+     "file": "pseo-site/package.json",
+     "pattern": "verify-direct-answers",
+     "minCount": 1
+    }
+   ]
+  },
+  {
+   "id": "paa-verbatim-faqs",
+   "what": "28 verbatim PAA/GSC question FAQs as H3+FAQPage pairs. Landed via 5afe457f (merged as cf6c4d9c); SWARM_STATE warns the paa-40 branch also carries this live content.",
+   "fixCommit": "5afe457f5416f277ba52e8bdfd5f56a3cca2396e",
+   "ancestryExpected": true,
+   "contentNeedles": [
+    {
+     "file": "pseo-site/content/competitor-vs.ts",
+     "pattern": "verbatim PAA",
+     "minCount": 8
+    }
+   ]
+  },
+  {
+   "id": "ctr-title-hooks",
+   "auditLine": "SERP CTR 15 / Title-meta CTR levers 25 (audit 2026-08-16)",
+   "what": "Per-slug price/verdict CTR hooks: COMPARE_TITLE_HOOKS (48 slugs), ALTERNATIVES_TITLE_HOOKS (12), research-paper Explained metaTitles, from-stars figures, methodology 21-47d claim, answers metaTitle field.",
+   "fixCommit": "bf53580a003e3dc33ced2932cbf91acb4dbf7b5d",
+   "ancestryExpected": true,
+   "contentNeedles": [
+    {
+     "file": "pseo-site/content/comparisons.ts",
+     "pattern": "COMPARE_TITLE_HOOKS",
+     "minCount": 1
+    }
+   ]
+  },
+  {
+   "id": "striking-distance-links",
+   "auditLine": "Internal-link graph 48 / Orphan pages 42 (audit 2026-08-16)",
+   "what": "Striking-distance cohort internal-link push (56 URLs pos 6.5-12.5): build-internal-links.ts floors + RENDER_SECTIONS + RelatedLinks render + footer hub + next.config 308 consolidation + data/internal-links.json.",
+   "fixCommit": "ca140ec01284cb8a4b334c21645755f5028990af",
+   "ancestryExpected": true,
+   "contentNeedles": [
+    {
+     "file": "pseo-site/data/striking-distance.json",
+     "pattern": "floor",
+     "minCount": 1
+    },
+    {
+     "file": "pseo-site/scripts/build-internal-links.ts",
+     "pattern": "RENDER_SECTIONS",
+     "minCount": 1
+    },
+    {
+     "file": "pseo-site/data/internal-links.json",
+     "pipeline": true
+    }
+   ]
+  },
+  {
+   "id": "landing-ctr-sweep",
+   "auditLine": "SERP CTR 15 (audit 2026-08-16)",
+   "what": "Landing (apex) CTR title/meta sweep + preload completion + x-default cleanup + Google Fonts removal; restored main to deployable after the guard ship.",
+   "fixCommit": "45e00ac118943cea4bdabe94002174c901a2a12c",
+   "ancestryExpected": true,
+   "contentNeedles": [
+    {
+     "file": "landing/scripts/verify-css-preloads.mjs",
+     "pattern": "preload",
+     "minCount": 1,
+     "tree": "landing"
+    }
+   ]
+  },
+  {
+   "id": "hsts-preload-headers",
+   "what": "HSTS preload guard: verify-no-regressions asserts Strict-Transport-Security: max-age=63072000; includeSubDomains; preload survives on BOTH pseo config surfaces (vercel.json headers[] + next.config.ts headers()). Header live on every response class of both hosts 2026-08-16; gitdealflow.com status=pending on hstspreload.org; preload removal costs months, so a config refactor dropping it must fail the build (the beacon-orphaning failure mode). Landed via 06cf56d4 (sibling commit swept the patched file; content verified at HEAD).",
+   "fixCommit": "06cf56d42c839b6cf9160a57d251d21c106e0167",
+   "ancestryExpected": true,
+   "contentNeedles": [
+    {
+     "file": "pseo-site/scripts/verify-no-regressions.ts",
+     "pattern": "HSTS preload header on both config surfaces",
+     "minCount": 1
+    },
+    {
+     "file": "pseo-site/vercel.json",
+     "pattern": "max-age=63072000; includeSubDomains; preload",
+     "minCount": 1
+    },
+    {
+     "file": "pseo-site/next.config.ts",
+     "pattern": "max-age=63072000; includeSubDomains; preload",
+     "minCount": 1
+    }
+   ]
+  },
+  {
+   "id": "hsts-preload-landing",
+   "what": "HSTS preload guard on the landing host: verify-vercel-config.mjs (runs in vercel.json buildCommand on every landing deploy) asserts the '/(.*)' Strict-Transport-Security preload block stays in landing/vercel.json headers[]. Same audit fix as hsts-preload-headers, apex side (gitdealflow.com).",
+   "fixCommit": "760156411f0c1c3e8ea8afa0e13ed6101596fb2b",
+   "ancestryExpected": true,
+   "contentNeedles": [
+    {
+     "file": "landing/scripts/verify-vercel-config.mjs",
+     "pattern": "hstspreload.org submission pending",
+     "minCount": 1,
+     "tree": "landing"
+    },
+    {
+     "file": "landing/vercel.json",
+     "pattern": "max-age=63072000; includeSubDomains; preload",
+     "minCount": 1,
+     "tree": "landing"
+    }
+   ]
+  },
+  {
+   "id": "frozen-best-redirects",
+   "auditLine": "Keyword cannibalization 38 / URL structure 78 (audit 2026-08-16, win #2 residuals)",
+   "what": "308s for the five Q2-2026 frozen-sector /best/ URLs (data-derived since 2026-08-16): developer-tools -> /sectors/developer-tools, plus ai-ml/fintech/climate-tech/cybersecurity -> /startups-to-watch/<slug>-q2-2026. GSC 90d on the original 404s: 48/25/23/22 impressions. Derived by scripts/best-redirect-lib.ts into data/best-redirects.json (prebuild); a lineage that drops or retargets any of the five fails the build.",
+   "fixCommit": "e2219db040f05d31049149232423566d3c173ba3",
+   "ancestryExpected": true,
+   "contentNeedles": [
+    {
+     "file": "pseo-site/data/best-redirects.json",
+     "pattern": "\"source\": \"/best/ai-ml-2026\"",
+     "minCount": 1
+    },
+    {
+     "file": "pseo-site/data/best-redirects.json",
+     "pattern": "\"destination\": \"/startups-to-watch/climate-tech-q2-2026\"",
+     "minCount": 1
+    },
+    {
+     "file": "pseo-site/scripts/verify-no-regressions.ts",
+     "pattern": "FROZEN_BEST",
+     "minCount": 1
+    }
+   ],
+   "note": "2026-08-16: needles retargeted from hardcoded next.config.ts entries to the data-derived data/best-redirects.json table (the sibling 2026-08-16 quarterly freshness rewrite legitimately moved the redirects). The FROZEN_BEST verify-no-regressions block asserts the same five pairs on disk."
+  }
+ ]
 }

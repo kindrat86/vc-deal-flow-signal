@@ -13,6 +13,7 @@ import { FINDINGS as RESEARCH_FINDINGS } from "@/content/research-findings";
 import { pillars } from "@/content/pillars";
 import { agentQueries } from "@/content/agent-queries";
 import { startupIdeas } from "@/content/startup-ideas";
+import { isPagePruned } from "@/content/pruned-pages";
 
 const SITE = "https://signals.gitdealflow.com";
 
@@ -97,7 +98,11 @@ export async function GET() {
   for (const q of agentQueries) urls.push(`${SITE}/answers/${q.slug}`);
   for (const i of startupIdeas) urls.push(`${SITE}/startup-ideas/${i.slug}`);
 
-  const body = urls.join("\n") + "\n";
+  // §55 zero-impression prune: same set as the XML sitemap shards (filter at
+  // render; `urls` stays const).
+  const body = urls
+    .filter((u) => !isPagePruned(new URL(u).pathname))
+    .join("\n") + "\n";
 
   return new Response(body, {
     headers: {

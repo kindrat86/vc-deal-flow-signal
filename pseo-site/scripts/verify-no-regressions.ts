@@ -1724,13 +1724,16 @@ check(
 }
 
 // ---------------------------------------------------------------------------
-// Frozen-sector /best/ redirects (2026-08-16, audit win #2 residuals). The
-// five Q2-2026 sectors stopped generating /best/<slug>-2026 pages; four of
-// them 404ed while still holding GSC 90d equity (ai-ml 48, fintech 25,
-// climate-tech 23, cybersecurity 22 impressions). Each must keep its 301 to
-// the live startups-to-watch Q2 snapshot (developer-tools goes to its
-// dedicated /sectors/ hub). A lineage that drops any of these redirects
-// (or changes the target to something weaker than the snapshot) fails here.
+// Frozen-sector /best/ redirects (2026-08-16, audit win #2 residuals; guard
+// re-asserted 2026-08-16 against the data-derived form). The five Q2-2026
+// sectors stopped generating /best/<slug>-2026 pages; they held GSC 90d
+// equity (ai-ml 48, fintech 25, climate-tech 23, cybersecurity 22 imps).
+// Redirects are DERIVED from data/startups.json into data/best-redirects.json
+// (prebuild: scripts/generate-best-redirects.ts) and spread into
+// next.config.ts redirects(). This guard pins the derived table: the five
+// frozen sources must exist with their pinned destinations (developer-tools
+// routes to its dedicated /sectors/ hub, the rest to their Q2 snapshots).
+// A lineage that drops any of these or retargets them fails here.
 // ---------------------------------------------------------------------------
 {
   const FROZEN_BEST: [string, string][] = [
@@ -1740,18 +1743,36 @@ check(
     ["/best/climate-tech-2026", "/startups-to-watch/climate-tech-q2-2026"],
     ["/best/cybersecurity-2026", "/startups-to-watch/cybersecurity-q2-2026"],
   ];
+  const json = read("data/best-redirects.json");
+  if (json === null) {
+    failures.push(
+      `Frozen-sector redirect table missing.\n    file: data/best-redirects.json\n    fix:  run npx tsx scripts/generate-best-redirects.ts (prebuild regenerates it from data/startups.json)`,
+    );
+  } else {
+    for (const [src, dst] of FROZEN_BEST) {
+      if (!json.includes(`"source": "${src}"`)) {
+        failures.push(
+          `Frozen-sector redirect missing: ${src} -> ${dst}\n    file: data/best-redirects.json\n    fix:  re-run the generator; the /best/ page froze in Q2-2026 and 404s without it while GSC still shows impressions on the URL`,
+        );
+      }
+      if (!json.includes(`"destination": "${dst}"`)) {
+        failures.push(
+          `Frozen-sector redirect retargeted: ${src} no longer points at ${dst}\n    file: data/best-redirects.json\n    fix:  restore the pinned destination (the Q2 snapshot / dedicated hub is the live intent-matched page)`,
+        );
+      }
+    }
+  }
   const cfg = read("next.config.ts");
-  for (const [src, dst] of FROZEN_BEST) {
-    if (cfg && !cfg.includes(`source: "${src}"`)) {
-      failures.push(
-        `Frozen-sector redirect missing: ${src} -> ${dst}\n    file: next.config.ts\n    fix:  restore the 301 (the /best/ page froze in Q2-2026 and 404s without it, while GSC still shows impressions on the URL)`,
-      );
-    }
-    if (cfg && !cfg.includes(`destination: "${dst}"`)) {
-      failures.push(
-        `Frozen-sector redirect retargeted: ${src} no longer points at ${dst}\n    file: next.config.ts\n    fix:  restore the destination; the Q2 startups-to-watch snapshot is the live intent-matched page`,
-      );
-    }
+  if (cfg === null || !cfg.includes("best-redirects.json")) {
+    failures.push(
+      `next.config.ts no longer consumes the best-redirects table.\n    file: next.config.ts\n    fix:  restore the bestRedirects spread into redirects() (permanent: true)`,
+    );
+  }
+  const lib = read("scripts/best-redirect-lib.ts");
+  if (lib === null || !lib.includes("DESTINATION_OVERRIDES")) {
+    failures.push(
+      `best-redirect-lib.ts lost the frozen destination override.\n    file: scripts/best-redirect-lib.ts\n    fix:  restore DESTINATION_OVERRIDES (/best/developer-tools-2026 -> /sectors/developer-tools)`,
+    );
   }
 }
 
@@ -3580,7 +3601,9 @@ landingCheck(
     for (const needle of [
       "/vs/harmonic-ai-vs-affinity",
       "/vs/cb-insights-vs-crunchbase",
-      "/best/developer-tools-2026",
+      // (/best/developer-tools-2026 moved to the frozen-redirects block: the
+      // five frozen /best/ 308s are now DATA-DERIVED via
+      // data/best-redirects.json, asserted there, not hardcoded here.)
     ]) {
       if (!nextcfg.includes(needle)) {
         failures.push(
@@ -4241,7 +4264,7 @@ landingCheck(
     const needles: Array<[string, string]> = [
       ['slug: "best-startup-database"', "best-startup-database entry missing"],
       ['slug: "deal-flow-crm"', "deal-flow-crm entry missing"],
-      ['"Crunchbase Pro ($49/month) is the broadest', "database definition reverted"],
+            // NOTE (2026-08-16): needle corrected, the leading quote was a typo in\n      // the original commit; the definition string in agent-queries.ts never\n      // carried a quote before "Crunchbase" (live text verified at the\n      // best-startup-database entry, definition field).\n      ['Crunchbase Pro ($49/month) is the broadest', "database definition reverted"],
       ['"A deal flow CRM is pipeline software', "CRM definition reverted"],
       ['"What is the best free startup database?"', "database FAQ head question lost"],
       ['"Do solo angels need a deal flow CRM?"', "CRM FAQ head question lost"],
@@ -4357,6 +4380,103 @@ landingCheck(
         }
       }
     }
+  }
+}
+
+
+// ---------------------------------------------------------------------------
+// 55. Sitemap zero-impression prune (2026-08-16, audit items "technical SEO",
+//     "index-bloat control", "content pruning at scale"): 474 leaf URLs with
+//     ZERO GSC impressions/clicks over 90d leave the sitemaps. Prune =
+//     sitemap removal ONLY (pages stay live, internally linked, crawlable;
+//     same convention as §48 niche-down). content/pruned-pages.ts is the
+//     generated source of truth (scripts/build-pruned-pages.ts); the [id]
+//     shard route and sitemap.txt must consume it or the index re-inflates.
+// ---------------------------------------------------------------------------
+{
+  const src = read("content/pruned-pages.ts");
+  const gen = read("scripts/build-pruned-pages.ts");
+  const shard = read("app/sitemap/[id]/route.ts");
+  const txt = read("app/sitemap.txt/route.ts");
+  if (src === null) {
+    failures.push(
+      `§55 pruned-pages module missing.\n    file: content/pruned-pages.ts\n    fix: run npx tsx scripts/build-pruned-pages.ts from pseo-site`,
+    );
+  } else {
+    if (
+      !src.includes("PRUNED_PAGE_PATHS") ||
+      !src.includes("isPagePruned") ||
+      !src.includes("PRUNE_COUNT")
+    ) {
+      failures.push(
+        `§55 pruned-pages module lost its exports.\n    fix: restore content/pruned-pages.ts (generated by scripts/build-pruned-pages.ts)`,
+      );
+    }
+    const m = /PRUNE_COUNT\s*=\s*(\d+)/.exec(src);
+    const count = m ? Number(m[1]) : 0;
+    if (count < 350 || count > 700) {
+      failures.push(
+        `§55 PRUNE_COUNT ${count} outside the 350..700 band.\n    fix: re-run npx tsx scripts/build-pruned-pages.ts and inspect the family split`,
+      );
+    }
+    const IN_SET = [
+      "/city/athens",
+      "/stage/growth/agtech",
+      "/signals/deploy-frequency-spike/data-infrastructure",
+      "/startup/3d-vision-world",
+      "/trends/agtech-q1-2026-vs-q4-2025",
+    ];
+    for (const p of IN_SET) {
+      if (!src.includes(`"${p}"`)) {
+        failures.push(
+          `§55 prune canary ${p} missing from PRUNED_PAGE_PATHS.\n    fix: re-run the generator; a stale generated file must not deploy`,
+        );
+      }
+    }
+    const NOT_IN = [
+      "/",
+      "/ja",
+      "/vs/harmonic-ai-vs-pitchbook",
+      "/startups",
+      "/research-paper",
+      "/answers/how-to-find-startups-before-they-fundraise",
+      "/summit",
+      "/blog/i-tracked-369-startup-github-orgs-six-months",
+      "/blog/free-vc-data-sources-guide",
+      "/signals/define/contributor-growth",
+    ];
+    for (const p of NOT_IN) {
+      if (src.includes(`"${p}"`)) {
+        failures.push(
+          `§55 protected path ${p} must never be pruned.\n    fix: re-run the generator (protection lists regressed)`,
+        );
+      }
+    }
+    const young = /2026-08|2026-w3\d|-q3-2026/;
+    const pathRe = /"(\/[^"]+)"/g;
+    let pm: RegExpExecArray | null;
+    while ((pm = pathRe.exec(src)) !== null) {
+      if (young.test(pm[1])) {
+        failures.push(
+          `§55 young path ${pm[1]} in PRUNED_PAGE_PATHS.\n    fix: re-run the generator (young-token guard regressed)`,
+        );
+      }
+    }
+  }
+  if (gen === null) {
+    failures.push(
+      `§55 prune generator script missing.\n    file: scripts/build-pruned-pages.ts\n    fix: restore it from git history`,
+    );
+  }
+  if (shard === null || !shard.includes("isPagePruned")) {
+    failures.push(
+      `§55 sitemap shard route must consume isPagePruned.\n    file: app/sitemap/[id]/route.ts\n    fix: re-apply the §55 filter after the render-time dedupe`,
+    );
+  }
+  if (txt === null || !txt.includes("isPagePruned")) {
+    failures.push(
+      `§55 sitemap.txt route must consume isPagePruned.\n    file: app/sitemap.txt/route.ts\n    fix: re-apply the §55 filter at render`,
+    );
   }
 }
 

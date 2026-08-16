@@ -58,6 +58,7 @@ import {
   getAllDirectorySectors,
   getAllDirectoryRegions,
 } from "@/lib/directory";
+import { isPagePruned } from "@/content/pruned-pages";
 
 const BASE_URL = "https://signals.gitdealflow.com";
 
@@ -880,6 +881,12 @@ export async function GET(_req: Request, ctx: RouteContext) {
   entries = entries.filter(
     (e, i, arr) => arr.findIndex((x) => x.url === e.url) === i,
   );
+
+  // §55 zero-impression prune (2026-08-16): dead-weight leaves leave the
+  // sitemap. Pages stay live, internally linked, and crawlable (same
+  // convention as the §48 niche-down prune). The generated set lives in
+  // content/pruned-pages.ts; re-run scripts/build-pruned-pages.ts quarterly.
+  entries = entries.filter((e) => !isPagePruned(new URL(e.url).pathname));
 
   const urlsXml = entries
     .map(

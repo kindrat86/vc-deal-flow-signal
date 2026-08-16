@@ -52,6 +52,14 @@ export interface StartupsData {
 
 const YEAR_RE = /\d{4}/;
 
+// Frozen special case (preserves the live behavior of the original hardcoded
+// fix, 2026-08-16): /best/developer-tools-2026 routes to its dedicated
+// /sectors/ hub, not the quarter snapshot. All other frozen sectors use
+// their most recent snapshot (derived above).
+const DESTINATION_OVERRIDES: Record<string, string> = {
+  "/best/developer-tools-2026": "/sectors/developer-tools",
+};
+
 export function loadStartupsData(): StartupsData {
   return startupsData as unknown as StartupsData;
 }
@@ -84,5 +92,11 @@ export function deriveBestRedirects(data: StartupsData): BestRedirect[] {
       });
     }
   }
-  return out.sort((a, b) => a.source.localeCompare(b.source));
+  return out
+    .map((r) =>
+      DESTINATION_OVERRIDES[r.source]
+        ? { source: r.source, destination: DESTINATION_OVERRIDES[r.source] }
+        : r,
+    )
+    .sort((a, b) => a.source.localeCompare(b.source));
 }
