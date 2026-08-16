@@ -362,7 +362,7 @@ export default function YourJourneyPage() {
             tool, getting it 60% of the way there, then putting it down
             because the cron broke or the GitHub API rate-limited you or you
             got busy at work. Building the lens once is doable. Maintaining
-            it weekly across 400+ venture-backed orgs is a job. There&rsquo;s
+            it weekly across 350+ venture-backed orgs is a job. There&rsquo;s
             a difference between &ldquo;I could build it&rdquo; and &ldquo;I
             actually have it running every Monday at 06:00 UTC.&rdquo;
           </p>
@@ -515,7 +515,7 @@ export default function YourJourneyPage() {
               >
                 Lock the founding-rate Dashboard
               </Link>
-              {" "}, 400+ ranked orgs, refreshed weekly, founding rate locked
+              {" "}, 140 ranked orgs, refreshed weekly, founding rate locked
               forever. The all-in version of the rhythm in §06.
             </li>
           </ul>

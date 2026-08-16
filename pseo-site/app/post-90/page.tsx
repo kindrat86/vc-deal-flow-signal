@@ -69,7 +69,7 @@ const RITUALS = [
     title: "The monthly founder talk",
     medium: "Synthetic-voice video · 8-12 min · YouTube + RSS",
     body:
-      "The monthly address, what the panel showed across 400+ venture-backed orgs, what shifted in the false-positive rate, and one falsifiable prediction on the record. Same content cadence as State of GitHub, now scheduled in your calendar so it lands as an event, not an email surprise.",
+      "The monthly address, what the panel showed across 350+ venture-backed orgs, what shifted in the false-positive rate, and one falsifiable prediction on the record. Same content cadence as State of GitHub, now scheduled in your calendar so it lands as an event, not an email surprise.",
     cta: "Add to calendar",
     href: "/post-90/calendar.ics",
     accent: "sky",

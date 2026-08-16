@@ -25,7 +25,7 @@ configs:
 
 # VC Deal Flow Signal, Startup Engineering Signals
 
-GitHub-derived engineering acceleration panel for ~400+ venture-backed startup organizations across 15 sectors, refreshed weekly. Includes commit-velocity change, contributor count, signal-type classification, estimated funding stage, and per-sector rankings.
+GitHub-derived engineering acceleration panel for ~350+ venture-backed startup organizations across 15 sectors, refreshed weekly. Includes commit-velocity change, contributor count, signal-type classification, estimated funding stage, and per-sector rankings.
 
 ## Schema
 

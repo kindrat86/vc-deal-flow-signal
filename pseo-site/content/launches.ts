@@ -180,7 +180,7 @@ export const LAUNCHES: Launch[] = [
         headline:
           "‘Just sell us a higher seat tier’ doesn’t work. Agents have a different consumption shape than humans.",
         body: [
-          "I tried two fixes before I built this one. First, I tried higher Insider tiers (€197 → €197 → €497). The math broke immediately: a single agent scaling across 400+ orgs ends up running ~30,000 deep-signal calls in a weekend. €497/month doesn’t cover the GitHub-API cost layer underneath, let alone the regression compute.",
+          "I tried two fixes before I built this one. First, I tried higher Insider tiers (€197 → €197 → €497). The math broke immediately: a single agent scaling across 350+ orgs ends up running ~30,000 deep-signal calls in a weekend. €497/month doesn’t cover the GitHub-API cost layer underneath, let alone the regression compute.",
           "Second, I tried a flat ‘fair-use ceiling.’ That’s the SaaS-pricing equivalent of duct tape. The honest agents stay polite at 200 calls/month. The dishonest ones blow through 30,000 the first week and the ceiling becomes the entire ceiling, at which point the only honest move is to cut their API access, which is a worse experience than just charging them per call up front.",
           "What this product needed was the simplest economic model in software: a credit. Pay for the call, get the result, walk away. No subscription, no overage drama, no per-seat fiction. The fix had to be priced by what an agent actually does, not by what a human looks like to a billing system.",
         ],
@@ -212,7 +212,7 @@ export const LAUNCHES: Launch[] = [
     faq: [
       {
         q: "What counts as a ‘deep-signal call’?",
-        a: "One call returns the full signal panel for one GitHub org, commit-velocity acceleration, contributor-diversity Gini, dependents-graph external count, README-freshness diff size, new-repo-creation rate, issue-to-PR ratio, and the composite score. Calls against orgs not in our universe (400+ venture-backed startup orgs) are misses and don’t decrement your balance.",
+        a: "One call returns the full signal panel for one GitHub org, commit-velocity acceleration, contributor-diversity Gini, dependents-graph external count, README-freshness diff size, new-repo-creation rate, issue-to-PR ratio, and the composite score. Calls against orgs not in our universe (350+ venture-backed startup orgs) are misses and don’t decrement your balance.",
       },
       {
         q: "Is this rate-limited?",
@@ -240,7 +240,7 @@ export const LAUNCHES: Launch[] = [
       "Founding-100 is the rate seat for the first 100 paying members of GitDealFlow. €9.97/month, locked for the lifetime of the subscription. Includes the live Dashboard, weekly Acceleration Watch, monthly Sector Deep-Dive PDF, both Chrome extensions, and the free MCP server. After 100 spots fill, the public rate is €49/month for new buyers. Founding members keep €9.97 forever, through company growth, price hikes, and feature expansion.",
     stack: [
       {
-        label: "Live Dashboard, 400+ venture-backed startups, refreshed weekly",
+        label: "Live Dashboard, 140 venture-backed startups, refreshed weekly",
         standalone: "€348/yr",
       },
       {
@@ -446,7 +446,7 @@ export const LAUNCHES: Launch[] = [
         body: [
           "The 47-page PDF opens with the executive summary: top 5 movers, top 3 breakouts, the regression statistics that backed the picks, and the false-positive caveat list. If you read nothing else, the first 4 pages set the watchlist for the quarter.",
           "Pages 5-32 are the ranked top 25, one page each: org name, GitHub URL, 14-day commit-velocity delta, contributor influx (30-day), dependents graph, README freshness, and a 60-word thesis paragraph on why this org is on the list. The contributor influx map is a network diagram with the 30-day joiners highlighted.",
-          "Pages 33-47 are the breakout dossier: 8-12 named pre-Crunchbase orgs we believe will register a fundraise in 21-47 days. Each gets a 1.5-page memo with thesis tags, the specific signals that triggered the pick, and a confidence score. The raw CSV mirrors every metric for the entire universe (400+ orgs) so you can re-rank by any criterion.",
+          "Pages 33-47 are the breakout dossier: 8-12 named pre-Crunchbase orgs we believe will register a fundraise in 21-47 days. Each gets a 1.5-page memo with thesis tags, the specific signals that triggered the pick, and a confidence score. The raw CSV mirrors every metric for the entire universe (350+ orgs) so you can re-rank by any criterion.",
           "The 12-minute synthetic-voice walkthrough is a guided audio tour through the top 5 picks, what stood out, what we’re unsure about, what the data is saying that the headlines aren’t. Played at 1.5× over Monday breakfast, you’re fully briefed by 09:15.",
         ],
         videoCue: {

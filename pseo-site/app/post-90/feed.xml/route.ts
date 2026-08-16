@@ -97,7 +97,7 @@ function buildEpisodes(now: Date): Episode[] {
       guid: `${SITE}/post-90/sunday-brief/${slug}`,
       title: `Sunday Brief, week of ${slug}`,
       description:
-        "Five-minute synthetic-voice voice memo. The week's single sharpest GitHub-acceleration break across 400+ venture-backed orgs. What shifted on the panel. One thing to put on the radar before Monday's public Acceleration Watch.",
+        "Five-minute synthetic-voice voice memo. The week's single sharpest GitHub-acceleration break across 350+ venture-backed orgs. What shifted on the panel. One thing to put on the radar before Monday's public Acceleration Watch.",
       pubDate: s,
       link: `${SITE}/weekly`,
       duration: "5:00",
@@ -113,7 +113,7 @@ function buildEpisodes(now: Date): Episode[] {
       guid: `${SITE}/state-of-github/${t.toISOString().slice(0, 7)}`,
       title: `Founder talk, ${monthLabel}`,
       description:
-        "Monthly address. What the panel showed across 400+ venture-backed orgs this month, what shifted in the false-positive rate, and one falsifiable prediction on the record. Same content cadence as the State of GitHub written archive, now in audio + scheduled-event form.",
+        "Monthly address. What the panel showed across 350+ venture-backed orgs this month, what shifted in the false-positive rate, and one falsifiable prediction on the record. Same content cadence as the State of GitHub written archive, now in audio + scheduled-event form.",
       pubDate: t,
       link: `${SITE}/state-of-github`,
       duration: "10:00",

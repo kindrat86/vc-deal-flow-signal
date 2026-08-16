@@ -82,7 +82,7 @@ export const PLATFORM_HOOKS: PlatformHook[] = [
     openerPattern:
       "Vulnerable-builder frame. 'I built this for myself, here's what I found.' Lead with the discovery, not the product.",
     exampleOpener:
-      "I spent six months reading commit logs of 400+ startups. Here's what I learned.",
+      "I spent six months reading commit logs of 350+ startups. Here's what I learned.",
     storyAngle:
       "Numbered findings, methodology disclosed inline, ask-for-help at the close. Subreddit-match the framing, r/startups gets the build-in-public version, r/AngelInvesting gets the deal-side version.",
     offerPhrasing:
@@ -321,7 +321,7 @@ export const UNIVERSAL_STORY = {
   opener:
     "Warm-intro deal flow is slow. GitHub commit data is fast.",
   narrative:
-    "Public commit-velocity acceleration crosses a falsifiable threshold 21-47 days before a Series A round closes. We track 400+ orgs, methodology peer-indexed (SSRN 6606558), n=219 paired observations, 68% hit rate at 33-day median lead.",
+    "Public commit-velocity acceleration crosses a falsifiable threshold 21-47 days before a Series A round closes. We track 350+ orgs, methodology peer-indexed (SSRN 6606558), n=219 paired observations, 68% hit rate at 33-day median lead.",
   offer:
     "Free Acceleration Watch, five names every Monday. Or jump the queue with a €7 First Look Pass on a sector you pick.",
 } as const;

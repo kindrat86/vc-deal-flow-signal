@@ -53,7 +53,7 @@ const ADDRESSES: ReadonlyArray<{
     title:
       "AI-Native Devtools Are the Loudest Sector of 2026. Verifiable Compute Is the Most Consequential.",
     summary:
-      "What 400+ GitHub orgs and 219 startup-period observations looked like across the first quarter of the year, what the panel got right, and the one structural shift I think every investor reading code-side signals should be planning around.",
+      "What 350+ GitHub orgs and 219 startup-period observations looked like across the first quarter of the year, what the panel got right, and the one structural shift I think every investor reading code-side signals should be planning around.",
     sections: [
       {
         heading: "The single sentence I would give a partner this month",
@@ -65,7 +65,7 @@ const ADDRESSES: ReadonlyArray<{
       {
         heading: "What the panel showed",
         body: [
-          "Across 400+ venture-backed startup GitHub organizations and 12 weekly observation windows ending May 5, 2026, the panel surfaced 47 fundraise-precursor profiles, orgs scoring 5 of 6 on the composite. Of those 47, 18 announced a Series A or Series B round inside the 90-day window. Another 11 raised silently, executed a strategic transaction, or shipped a major platform launch. The remaining 18 are either still in the open window or represent organizations where no public material event occurred during observation.",
+          "Across 350+ venture-backed startup GitHub organizations and 12 weekly observation windows ending May 5, 2026, the panel surfaced 47 fundraise-precursor profiles, orgs scoring 5 of 6 on the composite. Of those 47, 18 announced a Series A or Series B round inside the 90-day window. Another 11 raised silently, executed a strategic transaction, or shipped a major platform launch. The remaining 18 are either still in the open window or represent organizations where no public material event occurred during observation.",
           "False-positive fraction this quarter: 22 percent, against our earlier working estimate (the SSRN dataset itself carries no funding-event labels). The narrowing is consistent with the 2026 panel having more contributor-quality stratification than the original 2025 cut. Lead-time band tightened by two days at the upper bound, the IQR is now 21 to 45 days for combined stages, with Series A clustering at 23 to 36 days and Series B at 38 to 52.",
         ],
       },

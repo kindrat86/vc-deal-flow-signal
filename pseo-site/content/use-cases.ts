@@ -52,7 +52,7 @@ export const useCases: UseCase[] = [
       {
         step: 2,
         name: "Filter by your sector focus",
-        body: "Open the Dashboard (EUR 49/mo beta) and filter 400+ ranked startups by AI/ML, enterprise SaaS, dev tools, fintech, or any of 15 sectors. Layer on stage and geography if you focus geographically.",
+        body: "Open the Dashboard (EUR 49/mo beta) and filter 140 ranked startups by AI/ML, enterprise SaaS, dev tools, fintech, or any of 15 sectors. Layer on stage and geography if you focus geographically.",
       },
       {
         step: 3,
@@ -266,7 +266,7 @@ export const useCases: UseCase[] = [
     problem:
       "Solo GPs operate against the same competitive landscape as institutional funds: same companies, same rounds, same allocation pressure. But the labor model is fundamentally different, one person cannot manually monitor GitHub activity across thousands of companies. Without an external screening layer, the solo GP either narrows their fund's surface area or ends up sourcing from the same Twitter feed as everyone else.",
     solution:
-      "An automated weekly feed of breakout engineering signals across 15 sectors. The Dashboard ranks 400+ startups every Monday by acceleration magnitude, filterable by stage and geography. Pipe the signal into your existing CRM (Affinity, HubSpot, Notion) via API or RSS. The screening pipeline runs while you are reviewing decks; you arrive at meetings with a longer warm list than peers.",
+      "An automated weekly feed of breakout engineering signals across 15 sectors. The Dashboard ranks 50+ startups every Monday by acceleration magnitude, filterable by stage and geography. Pipe the signal into your existing CRM (Affinity, HubSpot, Notion) via API or RSS. The screening pipeline runs while you are reviewing decks; you arrive at meetings with a longer warm list than peers.",
     workflow: [
       {
         step: 1,

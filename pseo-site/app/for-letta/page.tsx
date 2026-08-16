@@ -8,7 +8,7 @@ const fw = getFrameworkPositioning("letta")!;
 const TITLE =
   "GitDealFlow for Letta, Stateful VC Analyst Agents with Persistent Memory";
 const DESCRIPTION =
-  "Build a Letta agent that remembers every startup it has scouted. Wire GitDealFlow's A2A endpoint as a tool, get persistent watchlist memory across sessions. Five skills, 400+ startups, weekly refresh, no auth.";
+  "Build a Letta agent that remembers every startup it has scouted. Wire GitDealFlow's A2A endpoint as a tool, get persistent watchlist memory across sessions. Five skills, 350+ startups, weekly refresh, no auth.";
 
 export const metadata: Metadata = {
   title: TITLE,

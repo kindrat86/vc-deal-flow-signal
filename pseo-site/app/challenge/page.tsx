@@ -395,7 +395,7 @@ export default function ChallengePage() {
             </a>
             . The Challenge delivers the framework as a 30-day cadence and
             adds the operational practice around it, we charge for scale (the
-            live engine across 400+ orgs and the custom Sector Sweep), not for
+            live engine across 350+ orgs and the custom Sector Sweep), not for
             the framework.
           </p>
         </section>

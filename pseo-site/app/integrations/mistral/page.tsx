@@ -99,7 +99,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "What data does it return?",
-    a: "Six tools backed by a 400+-row dataset refreshed weekly: trending startups across 15 sectors, sector-filtered rankings, single-startup deep lookups, dataset metadata, GitHub Scout Score for any user, and the full methodology. Every record includes commit velocity (14-day window), contributor delta, repo expansion, sector, and signal classification (Engineering Acceleration / Contributor Growth / Infrastructure Buildout).",
+    a: "Six tools backed by a 350+-row dataset refreshed weekly: trending startups across 15 sectors, sector-filtered rankings, single-startup deep lookups, dataset metadata, GitHub Scout Score for any user, and the full methodology. Every record includes commit velocity (14-day window), contributor delta, repo expansion, sector, and signal classification (Engineering Acceleration / Contributor Growth / Infrastructure Buildout).",
   },
   {
     q: "Does Le Chat support dynamic tool discovery?",
@@ -179,7 +179,7 @@ const jsonLd = {
       applicationCategory: "DeveloperApplication",
       operatingSystem: "Web (Streamable HTTP)",
       description:
-        "MCP server exposing six read-only tools over engineering-acceleration signals for 400+ venture-backed startups across 15 sectors. Streamable HTTP, no auth, public dataset.",
+        "MCP server exposing six read-only tools over engineering-acceleration signals for 350+ venture-backed startups across 15 sectors. Streamable HTTP, no auth, public dataset.",
       offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
       author: {
         "@type": "Organization",

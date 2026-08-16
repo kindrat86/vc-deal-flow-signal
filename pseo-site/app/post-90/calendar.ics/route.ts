@@ -90,7 +90,7 @@ function buildEvents(now: Date): Event[] {
       start: t,
       end,
       summary: `Founder talk, ${monthLabel}`,
-      description: `Monthly address from VC Deal Flow Signal. What the panel showed across 400+ venture-backed orgs this month, what shifted in the false-positive rate, and one falsifiable prediction on the record. Drops as a synthetic-voice video on the Engine Room podcast feed and the State of GitHub archive at signals.gitdealflow.com/state-of-github.`,
+      description: `Monthly address from VC Deal Flow Signal. What the panel showed across 350+ venture-backed orgs this month, what shifted in the false-positive rate, and one falsifiable prediction on the record. Drops as a synthetic-voice video on the Engine Room podcast feed and the State of GitHub archive at signals.gitdealflow.com/state-of-github.`,
       url: `${SITE}/state-of-github`,
     });
   }

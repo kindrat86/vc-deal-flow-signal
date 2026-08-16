@@ -516,7 +516,7 @@ check(
 // ---------------------------------------------------------------------------
 check(
   "content/standalone-faqs.ts",
-  "stale 20-cluster taxonomy in the sector-coverage FAQ: the live API serves 15 active sectors (400+ orgs), not the archived 20-cluster list.",
+  "stale 20-cluster taxonomy in the sector-coverage FAQ: the live API serves 15 active sectors (350+ orgs), not the archived 20-cluster list.",
   (s) =>
     !s.includes("Vertical SaaS, Web3 & Blockchain, Open Source Tools") &&
     !s.includes("20 clusters") &&
@@ -536,24 +536,21 @@ check(
 );
 
 // ---------------------------------------------------------------------------
-// 10c. Org-count reconciliation (2026-08-16). The live /api/signals.json
-//      serves 15 sectors and 411 orgs (meta.totalStartups). The canonical
-//      claim is "400+" (derived at build via lib/canonical-stats.ts, band-safe
-//      through the next weekly refresh). A regression that resurrects "369" or
-//      "350+" (stale floors) or "~400" (tilde overclaim) re-publishes a number
-//      a technical reader can fact-check against the live API. Keep the blog
-//      slug "i-tracked-369-…" (URL + 301 redirect; the slug is a historical
-//      URL artifact, NOT a panel claim).
+// 10c. Org-count reconciliation (2026-08-15). The live /api/signals.json
+//      serves 15 sectors and 356 UNIQUE orgs (369 raw sector-sum double-counts
+//      12 orgs across sectors). The canonical claim is "350+" (stable floor).
+//      A regression that resurrects "369 venture-backed startups" (or "~400")
+//      re-publishes a number a technical reader can fact-check against the
+//      live API. Keep the blog slug "i-tracked-369-…" (URL + 301 redirect).
 // ---------------------------------------------------------------------------
 check(
   "app/about/page.tsx",
-  "org-count regressed: canonical AI-description block must claim '400+ venture-backed startups', not 369/350+/~400.",
+  "org-count regressed: canonical AI-description block must claim '350+ venture-backed startups', not 369/~400.",
   (s) =>
-    s.includes("400+ venture-backed startups") &&
+    s.includes("350+ venture-backed startups") &&
     !s.includes("369 venture-backed startups") &&
-    !s.includes("350+ venture-backed startups") &&
     !s.includes("~400"),
-  "restore '400+ venture-backed startups' in the /about canonical AI-description block",
+  "restore '350+ venture-backed startups' in the /about canonical AI-description block",
 );
 check(
   "content/alternatives.ts",

@@ -56,7 +56,7 @@ export const GUEST_TOPICS: GuestTopic[] = [
       "The replication appendix: how anyone can reproduce the panel against the public dataset in one afternoon.",
     ],
     transcriptOpening:
-      "Most of what gets called venture deal flow is rumor with a calendar invite attached. Warm intros, partner-meeting syncs, the curated Slack of founders who already raised. None of it is leading. By the time it reaches you it's already lagging, and you're either the third call the founder takes or you're not in the room. So we built a panel. Two hundred and nineteen confirmed Series A and Series B fundraises, observed weekly across 400+ venture-backed startup GitHub organizations for five quarters. We measured commit velocity, contributor influx, dependents-graph fan-out, repository creation rate, and two more primitives. Then we asked: how far in advance does the engineering signal fire? The answer was a median 21 to 47 days. Not in retrospect, at the time. The paper is on SSRN. The dataset is open. This segment is the operator-level walk-through. I'm The Data Nerd, founder of VC Deal Flow Signal, narrating in synthetic voice because the methodology matters more than my face. Here's the seven-minute version.",
+      "Most of what gets called venture deal flow is rumor with a calendar invite attached. Warm intros, partner-meeting syncs, the curated Slack of founders who already raised. None of it is leading. By the time it reaches you it's already lagging, and you're either the third call the founder takes or you're not in the room. So we built a panel. Two hundred and nineteen confirmed Series A and Series B fundraises, observed weekly across 350+ venture-backed startup GitHub organizations for five quarters. We measured commit velocity, contributor influx, dependents-graph fan-out, repository creation rate, and two more primitives. Then we asked: how far in advance does the engineering signal fire? The answer was a median 21 to 47 days. Not in retrospect, at the time. The paper is on SSRN. The dataset is open. This segment is the operator-level walk-through. I'm The Data Nerd, founder of VC Deal Flow Signal, narrating in synthetic voice because the methodology matters more than my face. Here's the seven-minute version.",
     hostQuestions: [
       "If GitHub velocity is leading, why hasn't every fund already built this?",
       "What's the failure mode, when does this signal lie to you?",
@@ -175,7 +175,7 @@ export const GUEST_TOPICS: GuestTopic[] = [
   {
     slug: "scaling-public-github-reads",
     title:
-      "How to Read 400+ GitHub Organizations a Week Without Getting Rate-Limited Into Oblivion",
+      "How to Read 350+ GitHub Organizations a Week Without Getting Rate-Limited Into Oblivion",
     subheadline:
       "The systems story behind the panel, five primitives, three layers of caching, one war with the secondary-rate-limit ledger.",
     length: 10,
@@ -190,7 +190,7 @@ export const GUEST_TOPICS: GuestTopic[] = [
       "The three pipeline failure modes that cost us the most time, and how we'd architect the next version.",
     ],
     transcriptOpening:
-      "Rate limits on the GitHub API are documented in three places, and only two of them are accurate. The third is the secondary rate limit, which is documented as 'don't make too many concurrent requests' but is actually a sliding-window counter on a per-resource basis that resets at variable intervals depending on how the underlying service is feeling. Reading 400+ organizations a week, across two API surfaces, with five primitives per organization, gets you into a sustained negotiation with this third rate limit. We lost about three months of engineering time to it. I want to walk through what we learned, including the embarrassing parts. Ten minutes, systems-first, no marketing. I'm The Data Nerd, narrating in synthetic voice, the technical content is the same.",
+      "Rate limits on the GitHub API are documented in three places, and only two of them are accurate. The third is the secondary rate limit, which is documented as 'don't make too many concurrent requests' but is actually a sliding-window counter on a per-resource basis that resets at variable intervals depending on how the underlying service is feeling. Reading 350+ organizations a week, across two API surfaces, with five primitives per organization, gets you into a sustained negotiation with this third rate limit. We lost about three months of engineering time to it. I want to walk through what we learned, including the embarrassing parts. Ten minutes, systems-first, no marketing. I'm The Data Nerd, narrating in synthetic voice, the technical content is the same.",
     hostQuestions: [
       "What's the cheapest hardware you can run this pipeline on?",
       "Did you consider GitHub Archive instead of live API reads?",

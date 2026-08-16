@@ -175,7 +175,7 @@
       link.setAttribute('href', 'https://signals.gitdealflow.com');
       link.setAttribute('target', '_blank');
       link.setAttribute('rel', 'noopener noreferrer');
-      link.textContent = "Browse 400+ tracked startups \u2192";
+      link.textContent = "Browse 100+ tracked startups \u2192";
       tooltip.appendChild(link);
 
       badge.appendChild(tooltip);

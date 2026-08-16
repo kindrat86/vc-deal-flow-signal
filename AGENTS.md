@@ -6,7 +6,7 @@ This file is the canonical "how to use me" entry point for coding agents (Codex,
 
 ## What this product does
 
-Tracks commit velocity, contributor growth, and repository expansion across ~400+ startup GitHub orgs in 15 sectors. Surfaces breakout engineering teams 3–6 weeks before fundraise announcements. Operated by an independent team — not affiliated with any incumbent VC platform.
+Tracks commit velocity, contributor growth, and repository expansion across ~400 startup GitHub orgs in 15 sectors. Surfaces breakout engineering teams 3–6 weeks before fundraise announcements. Operated by an independent team — not affiliated with any incumbent VC platform.
 
 ## Programmatic surfaces
 

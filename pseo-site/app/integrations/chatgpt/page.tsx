@@ -102,7 +102,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "Will the GPT hallucinate startups?",
-    a: "The system prompt explicitly forbids inventing startups. When you ask about a company not in the tracked universe of 400+, the Action returns status: 'no_data' and the GPT surfaces a CTA pointing to signals.gitdealflow.com. If you spot any hallucinations, email signals@gitdealflow.com, we'll tighten the instructions.",
+    a: "The system prompt explicitly forbids inventing startups. When you ask about a company not in the tracked universe of 350+, the Action returns status: 'no_data' and the GPT surfaces a CTA pointing to signals.gitdealflow.com. If you spot any hallucinations, email signals@gitdealflow.com, we'll tighten the instructions.",
   },
   {
     q: "Can I use the same data without ChatGPT?",

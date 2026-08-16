@@ -265,7 +265,7 @@ export default async function SeriesARace2026Page() {
             name: "What is the Series A Race 2026 prediction market?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: `An open question, "${market.question}", with live implied odds for each of the 5 candidates. Odds are derived from GitHub commit velocity, contributor growth, and signal classification in our Q2-2026 dataset of 400+ tracked startups. Free to read, citation-encouraged, machine-readable at /api/markets/${SLUG}.json.`,
+              text: `An open question, "${market.question}", with live implied odds for each of the 5 candidates. Odds are derived from GitHub commit velocity, contributor growth, and signal classification in our Q2-2026 dataset of 350+ tracked startups. Free to read, citation-encouraged, machine-readable at /api/markets/${SLUG}.json.`,
             },
           },
           {
@@ -331,7 +331,7 @@ export default async function SeriesARace2026Page() {
           <p className="text-gray-400 text-base leading-relaxed">
             Live implied odds derived from GitHub commit-velocity, contributor
             growth, and signal classification across our Q2-2026 dataset of
-            400+ tracked startups. Free to read, machine-readable, citation
+            350+ tracked startups. Free to read, machine-readable, citation
             encouraged. Not investment advice.
           </p>
         </header>

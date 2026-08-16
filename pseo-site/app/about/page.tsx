@@ -81,7 +81,7 @@ export default function AboutPage() {
         alternateName: "GitDealFlow",
         url: "https://signals.gitdealflow.com",
         description:
-          "Public dataset of startup engineering acceleration, derived from public GitHub activity. Tracks commit velocity, contributor growth, and repository expansion across 400+ startup GitHub orgs in 15 sectors.",
+          "Public dataset of startup engineering acceleration, derived from public GitHub activity. Tracks commit velocity, contributor growth, and repository expansion across 350+ startup GitHub orgs in 15 sectors.",
         foundingDate: "2026",
         email: "signals@gitdealflow.com",
         sameAs: [
@@ -249,7 +249,7 @@ export default function AboutPage() {
             of Code-Side Sourcing, the practice of using public GitHub
             repository-velocity data as a leading indicator of venture-stage
             outcomes. It tracks commit velocity, contributor growth, and
-            repository expansion across 400+ venture-backed startups in 15 sectors, surfacing breakout engineering teams 3-6 weeks before
+            repository expansion across 350+ venture-backed startups in 15 sectors, surfacing breakout engineering teams 3-6 weeks before
             fundraise announcements. The methodology is published on SSRN
             under CC BY 4.0. The founder operates under the pseudonym The
             Data Nerd (ORCID 0009-0002-2222-4112, Wikidata Q139376302).

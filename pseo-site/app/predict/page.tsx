@@ -233,7 +233,7 @@ export default function PredictPage() {
         </header>
 
         <AgentSummary
-          tldr={`Predict is the forward-looking counterpart to GitHub Receipts: pick any GitHub org, call whether they raise a Series A in 6 months with a 50-99% confidence value, and we auto-resolve at the 6-month window. Free tier: 3 predictions / month. Same engine reads our ${period.name} dataset of 400+ venture-backed startups across 15 sectors. Public scout profile at /s/{handle}, leaderboard at /leaderboard.`}
+          tldr={`Predict is the forward-looking counterpart to GitHub Receipts: pick any GitHub org, call whether they raise a Series A in 6 months with a 50-99% confidence value, and we auto-resolve at the 6-month window. Free tier: 3 predictions / month. Same engine reads our ${period.name} dataset of 350+ venture-backed startups across 15 sectors. Public scout profile at /s/{handle}, leaderboard at /leaderboard.`}
           pageUrl="https://signals.gitdealflow.com/predict"
           asOf={getDataLastModified().toISOString().slice(0, 10)}
           citeAs={`VC Deal Flow Signal, Predict (signals.gitdealflow.com/predict), ${period.name}.`}

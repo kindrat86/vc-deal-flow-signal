@@ -5,7 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Smithery](https://smithery.ai/badge/kindrat86/vc-deal-flow-signal)](https://smithery.ai/server/kindrat86/vc-deal-flow-signal)
 
-**MCP server for searching, shortlisting, comparing, and predicting startup engineering acceleration across 15 sectors.** Tracks commit velocity, contributor growth, and repository expansion for 400+ GitHub orgs. Built for VCs, angels, scouts, and technical operators who need transparent, citable deal-flow signals before they show up in traditional channels.
+**MCP server for searching, shortlisting, comparing, and predicting startup engineering acceleration across 15 sectors.** Tracks commit velocity, contributor growth, and repository expansion for 369 GitHub orgs. Built for VCs, angels, scouts, and technical operators who need transparent, citable deal-flow signals before they show up in traditional channels.
 
 > One-click install for Claude Desktop / Cursor / Cline / Continue via Smithery — verified, 98/100 quality score.
 >

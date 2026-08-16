@@ -6,7 +6,7 @@ This file is the canonical "how to use me" entry point for any retrieval agent o
 
 ## What this product does
 
-Sweeps ~400+ candidate startup GitHub orgs every Sunday and publishes the top 85+ ranked across 15 sectors by commit velocity, contributor growth, and repository expansion. Surfaces breakout engineering teams 3-6 weeks before fundraise announcements. Independent, not affiliated with any incumbent VC platform.
+Sweeps ~350+ candidate startup GitHub orgs every Sunday and publishes the top 85+ ranked across 15 sectors by commit velocity, contributor growth, and repository expansion. Surfaces breakout engineering teams 3-6 weeks before fundraise announcements. Independent, not affiliated with any incumbent VC platform.
 
 ## Programmatic surfaces
 

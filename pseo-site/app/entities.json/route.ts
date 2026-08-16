@@ -142,7 +142,7 @@ const SOFTWARE_APPLICATIONS: Entity[] = [
     type: "SoftwareApplication",
     url: `${SITE}/dashboard`,
     description:
-      "Web dashboard surfacing weekly engineering-acceleration signals for 400+ venture-backed startups. Sector, stage, and signal-type filters; CSV/JSON export.",
+      "Web dashboard surfacing weekly engineering-acceleration signals for 350+ venture-backed startups. Sector, stage, and signal-type filters; CSV/JSON export.",
     identifiers: [
       {
         propertyID: "wikidata",
@@ -199,7 +199,7 @@ const DATASETS: Entity[] = [
     type: "Dataset",
     url: `${SITE}/dataset`,
     description:
-      "Open weekly dataset of GitHub-derived engineering-acceleration signals across 400+ venture-backed startups. CC BY 4.0. Available as JSON, JSONL, CSV.",
+      "Open weekly dataset of GitHub-derived engineering-acceleration signals across 350+ venture-backed startups. CC BY 4.0. Available as JSON, JSONL, CSV.",
     identifiers: [
       {
         propertyID: "DOI",
