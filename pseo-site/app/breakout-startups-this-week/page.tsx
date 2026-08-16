@@ -9,6 +9,7 @@ import {
   type TopMover,
 } from "@/lib/data";
 import { getAuthor } from "@/content/authors";
+import { panelClaimFloor } from "@/lib/canonical-claims";
 import StatCallout from "@/components/StatCallout";
 import PSEOFooterNav from "@/components/PSEOFooterNav";
 import SeoCta from "@/components/SeoCta";
@@ -77,6 +78,7 @@ function getBreakoutRoundup(): BreakoutRoundup {
 export async function generateMetadata(): Promise<Metadata> {
   const { breakouts, totalTracked, sectorCount, periodName } =
     getBreakoutRoundup();
+  const panelClaim = panelClaimFloor(totalTracked);
   const n = breakouts.length;
   const top = breakouts[0];
   const title =
@@ -84,7 +86,7 @@ export async function generateMetadata(): Promise<Metadata> {
       ? `Breakout Startups This Week: ${n} Engineering Teams Accelerating Fastest`
       : "Breakout Startups This Week: Fastest-Accelerating Engineering Teams";
 
-  const description = `${n} startups across ${sectorCount} sectors posted the fastest GitHub engineering acceleration this week${top ? `, led by ${top.name} at ${top.commitVelocityChange} commit velocity` : ""}. Data from ${totalTracked} tracked orgs.`;
+  const description = `${n} startups across ${sectorCount} sectors posted the fastest GitHub engineering acceleration this week${top ? `, led by ${top.name} at ${top.commitVelocityChange} commit velocity` : ""}. Data from ${panelClaim} tracked orgs.`;
 
   const discoverTags = breakouts
     .slice(0, 5)

@@ -4359,6 +4359,29 @@ landingCheck(
       );
     }
   }
+  // pSEO static surfaces (public/guide/* etc.) obey the SAME claim lock. The
+  // landing walk above only covers the gitdealflow.com static tree; the
+  // Next.js public/ dir is a separate surface and leaked "400+ startup orgs"
+  // into two guide pages uncaught until 2026-08-16. Sweep it here too.
+  const publicRoot = join(ROOT, "public");
+  if (existsSync(publicRoot)) {
+    for (const p of walk(publicRoot)) {
+      let s: string;
+      try {
+        s = readFileSync(p, "utf8");
+      } catch {
+        continue;
+      }
+      for (const banned of BANNED) {
+        if (s.includes(banned)) {
+          failures.push(
+            `§51 pSEO static claim lock: banned panel claim "${banned}" (canonical = "350+ / 15 sectors", user lock 2026-08-16).\n    file: ${p}\n    fix:  sweep to "350+" (panel); see AGENTS.md "Canonical claims (LOCKED)"`,
+          );
+          break; // one failure per file is enough
+        }
+      }
+    }
+  }
 }
 
 // §52 MOFU hubs (2026-08-16, audit "content gaps 45"): two missing
