@@ -204,7 +204,7 @@ export default function AnimatedDemo() {
       <div className="rounded-xl overflow-hidden border border-slate-800 bg-slate-950 shadow-lg shadow-fuchsia-500/5">
         <div className="flex items-center justify-between px-4 py-2 border-b border-slate-800 bg-slate-900/60">
           <p className="text-gray-400 text-[11px] font-mono">
-            example_org · 350+ org universe · panel-style render
+            example_org · 400+ org universe · panel-style render
           </p>
           <button
             type="button"

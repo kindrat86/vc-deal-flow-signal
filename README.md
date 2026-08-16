@@ -1,6 +1,6 @@
 # VC Deal Flow Signal
 
-Track 369 venture-backed startup GitHub organizations across 15 sectors using
+Track 400+ venture-backed startup GitHub organizations across 15 sectors using
 engineering-velocity data. Open methodology, live dashboard, MCP server.
 
 **The finding:** engineering acceleration plus low contributor concentration

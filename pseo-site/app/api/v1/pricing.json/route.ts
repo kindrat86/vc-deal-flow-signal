@@ -123,11 +123,11 @@ const tiers: PricingTier[] = [
     applicationGated: false,
     capacity: null,
     oneLine:
-      "140 startups ranked across 15 sectors, refreshed weekly, with sector filters and historical period comparisons.",
+      "400+ startups ranked across 15 sectors, refreshed weekly, with sector filters and historical period comparisons.",
     forWho:
       "Active investors and small funds who want the full ranking, not just the top five.",
     bullets: [
-      "140 ranked startups across 15 sectors, refreshed weekly",
+      "400+ ranked startups across 15 sectors, refreshed weekly",
       "Sector filters with five-quarter historical comparison",
       "All four signal types (hiring burst, shipping sprint, infrastructure buildout, platform migration)",
       "Watchlists and saved filters",

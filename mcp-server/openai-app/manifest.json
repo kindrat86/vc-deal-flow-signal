@@ -2,7 +2,7 @@
   "schema_version": "1.0",
   "name": "VC Deal Flow Signal",
   "short_description": "Track startup engineering acceleration from public GitHub data.",
-  "description": "Surface breakout startups before they hit the news. VC Deal Flow Signal tracks commit velocity, contributor growth, and repository expansion across 369 startup GitHub orgs in 15 sectors. Engineering acceleration has historically preceded fundraise announcements by 3-6 weeks. Free, no auth — backed by an open MCP server with 13 tools, 3 resources, and 7 reusable prompts. Beyond lookups it returns transparent, citable funding-likelihood predictions with full evidence chains (predict_funding), one-call signal shortlists (shortlist_signals), head-to-head comparisons (compare_signals), and public-source diligence dossiers (get_diligence_dossier).",
+  "description": "Surface breakout startups before they hit the news. VC Deal Flow Signal tracks commit velocity, contributor growth, and repository expansion across 400+ startup GitHub orgs in 15 sectors. Engineering acceleration has historically preceded fundraise announcements by 3-6 weeks. Free, no auth — backed by an open MCP server with 13 tools, 3 resources, and 7 reusable prompts. Beyond lookups it returns transparent, citable funding-likelihood predictions with full evidence chains (predict_funding), one-call signal shortlists (shortlist_signals), head-to-head comparisons (compare_signals), and public-source diligence dossiers (get_diligence_dossier).",
   "publisher": {
     "name": "GitDealFlow",
     "url": "https://gitdealflow.com",

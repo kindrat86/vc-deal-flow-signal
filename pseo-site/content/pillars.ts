@@ -66,7 +66,7 @@ export const pillars: Record<string, Pillar> = {
     slug: "founder-research",
     name: "Operator Notes",
     description:
-      "First-hand notes from running the dataset, building a longitudinal panel of 350++ startup GitHub orgs, MCP server lessons, and other operator-side observations.",
+      "First-hand notes from running the dataset, building a longitudinal panel of 400+ startup GitHub orgs, MCP server lessons, and other operator-side observations.",
     keywords: [
       "GitHub dataset",
       "operator notes",
@@ -175,7 +175,7 @@ export const postPillars: Record<string, string> = {
   "cybersecurity-startup-signals": "sector-deep-dives",
   "climate-tech-engineering-signals": "sector-deep-dives",
 
-  "i-tracked-369-startup-github-orgs-six-months": "founder-research",
+  "i-tracked-400+-startup-github-orgs-six-months": "founder-research",
   "mcp-server-tool-count-war-story": "founder-research",
   "a2a-launched": "founder-research",
   "receipts-launched": "founder-research",

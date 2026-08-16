@@ -5,7 +5,7 @@
  * llms.txt / RAG indexers / agentic search. Every answer is grounded in the
  * live /methodology page and /data-sources; do not add a claim here that is
  * not already stated on a public page. Canonical figures: 15 active sectors,
- * ~350+ tracked organizations, 4 signal types, weekly Monday refresh, rolling
+ * 400+ tracked organizations (derived; see lib/canonical-stats.ts), 4 signal types, weekly Monday refresh, rolling
  * 14-day window, three-to-six-week lead, SSRN preprint 6606558, CC BY 4.0.
  */
 
@@ -20,7 +20,7 @@ export const methodologyFaqs: MethodologyFAQ[] = [
   {
     question: "How does VC Deal Flow Signal measure engineering acceleration?",
     answer:
-      "Engineering acceleration is computed weekly from public GitHub data. The pipeline pulls 14-day commit velocity, contributor count, and repository-creation events for roughly 350+ startup organizations across 15 sectors via the GitHub REST API, then expresses each metric as a percentage change versus the prior 14-day window. A startup whose 14-day commit velocity doubles relative to its own baseline is recorded as +100% acceleration. The metric is computed per organization against its own historical baseline, not across the population.",
+      "Engineering acceleration is computed weekly from public GitHub data. The pipeline pulls 14-day commit velocity, contributor count, and repository-creation events for roughly 400+ startup organizations across 15 sectors via the GitHub REST API, then expresses each metric as a percentage change versus the prior 14-day window. A startup whose 14-day commit velocity doubles relative to its own baseline is recorded as +100% acceleration. The metric is computed per organization against its own historical baseline, not across the population.",
     source: "Methodology",
     sourceHref: "/methodology",
   },

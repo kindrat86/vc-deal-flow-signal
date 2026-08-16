@@ -22,6 +22,8 @@
  * Signal (GitDealFlow)" with ORCID identifier. No real-name attribution.
  */
 
+import { CUMULATIVE_ORG_COUNT } from "../lib/canonical-stats";
+
 export interface AnnualReportSection {
   /** Stable id used for #anchors in the HTML page and bookmarks in the PDF. */
   id: string;
@@ -79,13 +81,13 @@ const REPORT_2026: AnnualReport = {
   headline:
     "The 2026 State of Engineering Velocity, AI-Native Devtools Were the Loudest Sector. Verifiable Compute Was the Most Consequential.",
   executiveSummary:
-    "Across 4,800 venture-backed GitHub organizations and 52 weekly observation windows, three sector-level structural shifts dominated 2026. AI-native developer tools sustained the highest median commit-velocity acceleration of any tracked sector for 39 of 52 weeks. On-device inference infrastructure saw a contributor-diversity Gini coefficient drop from 0.42 to 0.31, indicating broadening team composition consistent with capital deployment. Verifiable-compute infrastructure saw a 3.7x year-over-year increase in new-repo creation rate. The full panel surfaced 219 startup-period observations with a 22 percent false-positive fraction at a 90-day horizon, a 16-point improvement over the 2025 panel. This report is the first in an annual series.",
+    "Across 500+ venture-backed GitHub organizations and 52 weekly observation windows, three sector-level structural shifts dominated 2026. AI-native developer tools sustained the highest median commit-velocity acceleration of any tracked sector for 39 of 52 weeks. On-device inference infrastructure saw a contributor-diversity Gini coefficient drop from 0.42 to 0.31, indicating broadening team composition consistent with capital deployment. Verifiable-compute infrastructure saw a 3.7x year-over-year increase in new-repo creation rate. The full panel surfaced 219 startup-period observations with a 22 percent false-positive fraction at a 90-day horizon, a 16-point improvement over the 2025 panel. This report is the first in an annual series.",
   sections: [
     {
       id: "framing",
       heading: "Framing, what an annual report of engineering velocity is for",
       body: [
-        "Every individual week of the engineering-velocity panel is noisy. Every quarterly snapshot is contestable. But across 52 weeks of 4,800 venture-backed GitHub organizations, the structural shifts in where engineering capital is concentrating become unambiguous. That is what an annual State of Engineering Velocity report exists to publish.",
+        "Every individual week of the engineering-velocity panel is noisy. Every quarterly snapshot is contestable. But across 52 weeks of 500+ venture-backed GitHub organizations, the structural shifts in where engineering capital is concentrating become unambiguous. That is what an annual State of Engineering Velocity report exists to publish.",
         "Three audiences should read this document end to end. First, venture investors who source code-side and want a yearly framework for sizing sector bets. Second, founders who want to understand which categories the panel says are most underweight relative to engineering activity. Third, researchers and journalists who want a citable longitudinal artifact under a Creative Commons license, with reproducible source data, that they can reference in their own work without permission.",
         "Like the underlying SSRN-indexed methodology paper, this report is released under CC BY 4.0. Quote it. Reproduce its tables. Build derivative work on top of it. The condition is attribution to VC Deal Flow Signal (GitDealFlow), DOI 10.5281/zenodo.SOEV2026, with the year noted.",
       ],
@@ -94,7 +96,7 @@ const REPORT_2026: AnnualReport = {
       id: "panel-summary",
       heading: "Panel summary, what 2026 looked like at the surface",
       body: [
-        "The 2026 panel covered 4,800 venture-backed startup GitHub organizations and 52 weekly observation windows ending November 24, 2026. It surfaced 219 startup-period observations during the observation window, distinct fundraise events whose announcement date fell within the panel's 90-day post-flag window. That is a 47 percent increase in confirmed fundraises over the 2025 panel (149) and a 109 percent increase over the 2024 panel (105).",
+        "The 2026 panel covered 500+ venture-backed startup GitHub organizations and 52 weekly observation windows ending November 24, 2026. It surfaced 219 startup-period observations during the observation window, distinct fundraise events whose announcement date fell within the panel's 90-day post-flag window. That is a 47 percent increase in confirmed fundraises over the 2025 panel (149) and a 109 percent increase over the 2024 panel (105).",
         "Our core hypothesis continues to look directionally consistent in this period's data (the SSRN dataset itself is descriptive; we validate the claim openly on /scorecard). A 2x contributor-influx coupled with a 14-day commit-velocity acceleration precedes the announced fundraise by a median 21 to 47 days, with 78 percent precision at a 90-day horizon. The precision figure is up from 62 percent in the original 2025 panel, primarily because the 2026 sample includes the contributor-quality stratification that separates organizational committers from external drive-by contributors.",
         "False-positive fraction this year: 22 percent. Of those, 71 percent represent organizations that raised silently, extension rounds, secondaries, or strategic check-ins that did not appear on Crunchbase or Pitchbook. 17 percent had a major product launch, platform release, or acquisition in the same window. Only 12 percent represent organizations where no material public event occurred during observation. That decomposition is broadly consistent with the original SSRN panel, but the absolute false-positive fraction has narrowed by 16 points.",
         "Lead-time IQR has tightened. Combined Series A + Series B is now 19 to 44 days, against 21 to 47 in 2025 and 24 to 51 in 2024. Series A clusters at 22 to 36 days. Series B clusters at 36 to 51 days. The narrowing is consistent with a maturing methodology applied at larger sample size.",
@@ -289,7 +291,7 @@ const REPORT_2026: AnnualReport = {
       note: "Sample sparse. Public GitHub footprint underrepresents private-repo activity.",
     },
   ],
-  panelOrgsTracked: 4800,
+  panelOrgsTracked: CUMULATIVE_ORG_COUNT,
   confirmedFundraises: 219,
   falsePositivePct: 22,
   leadTimeIqrDays: [19, 44],

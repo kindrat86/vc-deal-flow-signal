@@ -45,7 +45,7 @@ export const TOP_BLOG_POSTS: string[] = [
   "ai-startup-signals-2026", // 965 inbound internal links, dominant sector deep-dive
   "source-startup-deals-before-crunchbase", // 340, deal-sourcing cornerstone
   "startup-engineering-metrics-investors-should-track", // 338, methodology cornerstone
-  "i-tracked-369-startup-github-orgs-six-months", // 336, operator-notes flagship
+  "i-tracked-400+-startup-github-orgs-six-months", // 336, operator-notes flagship
   "how-vcs-track-engineering-acceleration-2026-playbook", // 7,043 words, flagship playbook
   "what-is-deal-flow-signal", // 20, core definition, high query match
   "47-alternative-data-sources-angel-investors-2026", // 2,493 words, long-form reference

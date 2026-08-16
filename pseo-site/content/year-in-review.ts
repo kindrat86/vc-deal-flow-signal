@@ -166,7 +166,7 @@ export const YEARS_IN_REVIEW: YearInReview[] = [
       },
       {
         heading: "Code-Side Sourcing footprint expands",
-        body: "VC Deal Flow Signal's category footprint expanded measurably in 2026: SSRN paper citations grew, Wikidata entity established (Q139376302), MCP server distribution crossed key adoption thresholds (Smithery Verified 98/100, Glama A-tier), and the public dataset (350+ tracked startups) became the canonical reference for engineering-acceleration signals in the venture context.",
+        body: "VC Deal Flow Signal's category footprint expanded measurably in 2026: SSRN paper citations grew, Wikidata entity established (Q139376302), MCP server distribution crossed key adoption thresholds (Smithery Verified 98/100, Glama A-tier), and the public dataset (400+ tracked startups) became the canonical reference for engineering-acceleration signals in the venture context.",
       },
       {
         heading: "Answer engines as primary distribution",

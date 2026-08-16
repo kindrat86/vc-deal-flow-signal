@@ -1487,7 +1487,7 @@ export const companies: Company[] = [
     homepage: "https://airbyte.com",
     sector: "analytics",
     stage: "series-b",
-    what: "Open-source data integration platform with 350+ connectors. The OSS challenger to Fivetran with strong community-built connector momentum.",
+    what: "Open-source data integration platform with 400+ connectors. The OSS challenger to Fivetran with strong community-built connector momentum.",
     // Downgraded 2026-05-30: current-period (q2-2026) public commit velocity -89%.
     momentum: "steady",
     repos: "100+ public repos",

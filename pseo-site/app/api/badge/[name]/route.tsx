@@ -90,7 +90,7 @@ const STAT_BADGES: Record<string, { label: string; value: string; color: string 
   "stats-m20": { label: "Top-decile signal precision", value: "~65%", color: "#34d399" },
   // /stats hub (signals.gitdealflow.com) cards stat-s1..s10. Keep in sync with
   // pseo-site/public/stats/index.html (the human companion of /stats.json).
-  "stats-s1": { label: "Tracked startup organizations", value: "350+", color: "#60a5fa" },
+  "stats-s1": { label: "Tracked startup organizations", value: "400+", color: "#60a5fa" },
   "stats-s2": { label: "Tracked industry sectors", value: "15", color: "#818cf8" },
   "stats-s3": { label: "Engineering signal lead time", value: "3-6 weeks", color: "#fbbf24" },
   "stats-s4": { label: "Top-decile signal precision", value: "~65%", color: "#34d399" },

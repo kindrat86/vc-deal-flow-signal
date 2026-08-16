@@ -320,7 +320,7 @@ Hi [Name],
 
 Big fan of [Newsletter], [specific recent piece reference].
 
-I run GitDealFlow. Short version: we scan 350+ venture-backed startup GitHub orgs every Sunday and surface the ones whose engineering velocity just spiked. The methodology is on SSRN with a panel of 219 startup-period observations that the signal preceded by 21-47 days. Free Sunday digest, 5 names a week.
+I run GitDealFlow. Short version: we scan 400+ venture-backed startup GitHub orgs every Sunday and surface the ones whose engineering velocity just spiked. The methodology is on SSRN with a panel of 219 startup-period observations that the signal preceded by 21-47 days. Free Sunday digest, 5 names a week.
 
 I don't want a paid placement. I want a one-time recommendation block in a future issue, only if your readers are the kind of people who would actually use this, readers who care about earlier startup signal, clearer timing, and proof they can inspect.
 
@@ -378,7 +378,7 @@ Hi [Name],
 
 You've written about [specific overlapping topic], I have a dataset that may be useful for your next piece on it.
 
-GitDealFlow tracks engineering acceleration across 350+ venture-backed startups. The full panel + methodology is open: SSRN paper (n=219), Zenodo dataset, public methodology page. CC-BY-4.0, no permission needed.
+GitDealFlow tracks engineering acceleration across 400+ venture-backed startups. The full panel + methodology is open: SSRN paper (n=219), Zenodo dataset, public methodology page. CC-BY-4.0, no permission needed.
 
 If you want a custom cut for your piece, e.g., "the 10 fastest-accelerating [sector] startups in Q3 2026", I'll generate it for free. No paywall, no asterisks. The product is downstream of the public methodology; the paper helps the product whether or not anyone clicks the affiliate link.
 

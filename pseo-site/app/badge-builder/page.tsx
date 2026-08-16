@@ -206,7 +206,7 @@ export default function BadgeBuilderPage() {
               },
               {
                 q: "What if my startup isn't listed?",
-                a: "We track 350+ venture-backed startups across 15 sectors. If your GitHub organization is active and you'd like to be added, reach out at signals@gitdealflow.com.",
+                a: "We track 400+ venture-backed startups across 15 sectors. If your GitHub organization is active and you'd like to be added, reach out at signals@gitdealflow.com.",
               },
               {
                 q: "Can I customize the colors?",

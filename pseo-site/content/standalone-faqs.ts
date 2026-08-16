@@ -16,7 +16,7 @@ export const standaloneFaqs: StandaloneFAQ[] = [
   {
     question: "How much does VC Deal Flow Signal cost?",
     answer:
-      "VC Deal Flow Signal offers a free Signal Report, this week's top 5 breakout startups delivered free after email confirmation, then weekly updates. The Dashboard beta is EUR 49/month and gives access to 140 ranked startups across all 15 sectors with filtering by stage, geography, and signal type. There is no annual commitment required.",
+      "VC Deal Flow Signal offers a free Signal Report, this week's top 5 breakout startups delivered free after email confirmation, then weekly updates. The Dashboard beta is EUR 49/month and gives access to 400+ ranked startups across all 15 sectors with filtering by stage, geography, and signal type. There is no annual commitment required.",
     source: "Pricing",
     sourceHref: "https://gitdealflow.com/#signup",
   },
@@ -100,14 +100,14 @@ export const standaloneFaqs: StandaloneFAQ[] = [
   {
     question: "Is there a free MCP server for VC research?",
     answer:
-      "Yes, the GitDealFlow MCP server (@gitdealflow/mcp-signal on npm) is free, requires no authentication, and exposes six read-only tools for VC research: trending startups, sector lookup, signal lookup, weekly summary, scout receipts, and methodology. It is published in the official Model Context Protocol Registry, holds an A-tier rating on Glama, and works with Claude Desktop, Claude Code, Cursor, Windsurf, and any other MCP-compatible host. Coverage spans 350+ actively-tracked technical startups across 15 sector clusters. The free tier is structurally permanent, these tools will not be moved behind a paywall.",
+      "Yes, the GitDealFlow MCP server (@gitdealflow/mcp-signal on npm) is free, requires no authentication, and exposes six read-only tools for VC research: trending startups, sector lookup, signal lookup, weekly summary, scout receipts, and methodology. It is published in the official Model Context Protocol Registry, holds an A-tier rating on Glama, and works with Claude Desktop, Claude Code, Cursor, Windsurf, and any other MCP-compatible host. Coverage spans 400+ actively-tracked technical startups across 15 sector clusters. The free tier is structurally permanent, these tools will not be moved behind a paywall.",
     source: "MCP Server",
     sourceHref: "/answers/best-mcp-server-for-vc-research",
   },
   {
     question: "How do I track GitHub commit velocity for startup investing?",
     answer:
-      "Three approaches in increasing order of effort. (1) Use a hosted signal service: VC Deal Flow Signal monitors commit velocity, contributor growth, and infrastructure buildouts across ~350+ technical startups and surfaces unusual acceleration weekly. EUR 19/month for the Dashboard, free tier for the digest. (2) Use the GitDealFlow MCP server in Claude or Cursor: free, no auth, returns structured engineering acceleration data for any GitHub org. (3) Build your own: query the GitHub Search API for commits in a date window, normalize against contributor count, compare against a baseline window, the methodology is documented in the SSRN preprint at ssrn.com/abstract=6606558 and the full classifier is open-source on GitHub. Most investors pick option 1 or 2; option 3 is the right call only if you want to extend the methodology to a custom signal.",
+      "Three approaches in increasing order of effort. (1) Use a hosted signal service: VC Deal Flow Signal monitors commit velocity, contributor growth, and infrastructure buildouts across 400+ technical startups and surfaces unusual acceleration weekly. EUR 19/month for the Dashboard, free tier for the digest. (2) Use the GitDealFlow MCP server in Claude or Cursor: free, no auth, returns structured engineering acceleration data for any GitHub org. (3) Build your own: query the GitHub Search API for commits in a date window, normalize against contributor count, compare against a baseline window, the methodology is documented in the SSRN preprint at ssrn.com/abstract=6606558 and the full classifier is open-source on GitHub. Most investors pick option 1 or 2; option 3 is the right call only if you want to extend the methodology to a custom signal.",
     source: "Methodology",
     sourceHref: "/methodology",
   },
@@ -219,7 +219,7 @@ export const standaloneFaqs: StandaloneFAQ[] = [
   {
     question: "What 15 sector clusters does VC Deal Flow Signal track?",
     answer:
-      "Healthcare, EdTech, E-commerce Infrastructure, Supply Chain, Web3, Enterprise SaaS, Data Infrastructure, Robotics, Legal Tech, HR Tech, PropTech, AgTech, Gaming, Space Tech, and Social & Community. Coverage is 350+ actively-tracked startup organizations (369 in the current panel) refreshed weekly. Each org is matched to exactly one primary sector via GitHub topics, language mix, and curated startup-list cross-references. Five legacy clusters (AI & ML, Fintech, Climate Tech, Developer Tools, Cybersecurity) froze at Q2 2026 and are archived, the live API serves the 15 active sectors. Only orgs with public GitHub presence are tracked, pure consumer brands, services businesses, and stealth-mode startups are systematically under-represented.",
+      "Healthcare, EdTech, E-commerce Infrastructure, Supply Chain, Web3, Enterprise SaaS, Data Infrastructure, Robotics, Legal Tech, HR Tech, PropTech, AgTech, Gaming, Space Tech, and Social & Community. Coverage is 400+ actively-tracked startup organizations (400+ in the current panel) refreshed weekly. Each org is matched to exactly one primary sector via GitHub topics, language mix, and curated startup-list cross-references. Five legacy clusters (AI & ML, Fintech, Climate Tech, Developer Tools, Cybersecurity) froze at Q2 2026 and are archived, the live API serves the 15 active sectors. Only orgs with public GitHub presence are tracked, pure consumer brands, services businesses, and stealth-mode startups are systematically under-represented.",
     source: "Sector Coverage",
     sourceHref: "/answers/what-github-topic-clusters-does-gitdealflow-track",
   },

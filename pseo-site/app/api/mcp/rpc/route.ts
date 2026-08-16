@@ -1549,7 +1549,7 @@ async function handleToolsCall(
         });
       }
       if (wantTelegram) {
-        const body = `${summary}\n\nFrom the GitDealFlow MCP server, free, install with: ${installCommand}\n\nThe methodology is published on SSRN with a 219-startup panel: ${ssrn}\nProduct: ${site}\n\nGitDealFlow tracks 350+ startup GitHub orgs and ranks them by commit velocity acceleration, weekly. The pattern preceded confirmed fundraises by 21 to 47 days.`.slice(0, 995);
+        const body = `${summary}\n\nFrom the GitDealFlow MCP server, free, install with: ${installCommand}\n\nThe methodology is published on SSRN with a 219-startup panel: ${ssrn}\nProduct: ${site}\n\nGitDealFlow tracks 400+ startup GitHub orgs and ranks them by commit velocity acceleration, weekly. The pattern preceded confirmed fundraises by 21 to 47 days.`.slice(0, 995);
         posts.push({
           network: "telegram",
           body,

@@ -11,7 +11,7 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title:
-    "For AI Agent Builders, Don't Re-Read Crunchbase. Plug Into 350+ GitHub Orgs.",
+    "For AI Agent Builders, Don't Re-Read Crunchbase. Plug Into 400+ GitHub Orgs.",
   description:
     "If you're shipping an AI agent that scouts startups, sources deal flow, or briefs investors, your data layer shouldn't be Crunchbase scraping. It should be live GitHub engineering acceleration. Free MCP server (6 tools), then €19/100 calls for deep enrichment. Zero rate limits inside quota.",
   alternates: {
@@ -19,7 +19,7 @@ export const metadata: Metadata = {
   },
   openGraph: {
     title:
-      "For AI Agent Builders, Plug Into 350+ GitHub Orgs Of Live Signal",
+      "For AI Agent Builders, Plug Into 400+ GitHub Orgs Of Live Signal",
     description:
       "Free MCP. €19/100 calls for deep_signal. €0.19/call. Misses are free. Same data layer that powers the SSRN methodology paper.",
     url: "https://signals.gitdealflow.com/for-builders",
@@ -45,7 +45,7 @@ const FREE_TOOLS = [
   },
   {
     name: "search_startups_by_sector",
-    desc: "Filter the 350+ org universe by sector slug + stage + geography. Returns ranked list.",
+    desc: "Filter the 400+ org universe by sector slug + stage + geography. Returns ranked list.",
   },
   {
     name: "get_startup_signal",
@@ -104,7 +104,7 @@ export default function ForBuildersPage() {
         "@type": "Article",
         "@id": "https://signals.gitdealflow.com/for-builders#article",
         headline:
-          "For AI Agent Builders, Don't Re-Read Crunchbase. Plug Into 350+ GitHub Orgs.",
+          "For AI Agent Builders, Don't Re-Read Crunchbase. Plug Into 400+ GitHub Orgs.",
         description:
           "Live GitHub engineering acceleration as a data layer for AI agents. Six free MCP tools, then €19/100 calls for deep enrichment.",
         url: "https://signals.gitdealflow.com/for-builders",
@@ -182,7 +182,7 @@ export default function ForBuildersPage() {
           >
             Your AI agent shouldn&rsquo;t re-read{" "}
             <span className="text-amber-400">Crunchbase</span>.<br />
-            Plug into 350+ GitHub orgs of live signal.
+            Plug into 400+ GitHub orgs of live signal.
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed" data-speakable>
             If you&rsquo;re shipping a deal-flow agent, an investor-briefing
@@ -538,7 +538,7 @@ switching surfaces does not change tool names or signatures.
             },
             {
               claim:
-                "Universe size is 350+ venture-backed GitHub orgs across 15 sectors; methodology is open at SSRN abstract 6606558 with Zenodo dataset mirror.",
+                "Universe size is 400+ venture-backed GitHub orgs across 15 sectors; methodology is open at SSRN abstract 6606558 with Zenodo dataset mirror.",
               sourceUrl: "https://ssrn.com/abstract=6606558",
               sourceLabel: "SSRN preprint",
             },

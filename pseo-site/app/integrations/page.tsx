@@ -68,7 +68,7 @@ const integrations: Integration[] = [
     name: "Telegram Channel",
     tagline: "Weekly breakout startups, pushed to your Telegram",
     description:
-      "Public @gitdealflow channel delivers the weekly Signal Report and sector alerts. The paid Insider Circle is a separate private Telegram group with 140 ranked startups per week, filter-ready data, and a direct line to the founder.",
+      "Public @gitdealflow channel delivers the weekly Signal Report and sector alerts. The paid Insider Circle is a separate private Telegram group with 400+ ranked startups per week, filter-ready data, and a direct line to the founder.",
     status: "live",
     href: "https://t.me/gitdealflow",
     category: "Messaging",

@@ -73,7 +73,7 @@ const STATUS_STYLES: Record<
     label: "Not in our index yet",
     bg: "bg-slate-800 border-slate-700",
     pill: "bg-slate-700 text-gray-300",
-    msg: "We track 350+ venture-backed startup orgs. Submit this one to add it to next week's index.",
+    msg: "We track 400+ venture-backed startup orgs. Submit this one to add it to next week's index.",
   },
 };
 

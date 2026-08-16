@@ -45,7 +45,7 @@ const standaloneFaqs: FAQEntry[] = [
   {
     question: "How much does VC Deal Flow Signal cost?",
     answer:
-      "VC Deal Flow Signal offers a free Signal Report, this week's top 5 breakout startups delivered free after email confirmation, then weekly updates. The Dashboard beta is EUR 49/month: roughly 350+ venture-backed GitHub orgs are scanned every week, and the 140 that show real engineering acceleration are ranked and surfaced across all 15 sectors with filtering by stage, geography, and signal type. There is no annual commitment required.",
+      "VC Deal Flow Signal offers a free Signal Report, this week's top 5 breakout startups delivered free after email confirmation, then weekly updates. The Dashboard beta is EUR 49/month: roughly 400+ venture-backed GitHub orgs are scanned every week, and the 140 that show real engineering acceleration are ranked and surfaced across all 15 sectors with filtering by stage, geography, and signal type. There is no annual commitment required.",
     source: "Pricing",
     sourceHref: "https://gitdealflow.com/#signup",
   },

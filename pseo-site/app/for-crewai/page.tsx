@@ -8,7 +8,7 @@ const fw = getFrameworkPositioning("crewai")!;
 const TITLE =
   "GitDealFlow for CrewAI, Build a Role-Based VC Scouting Crew";
 const DESCRIPTION =
-  "Wire GitDealFlow into a CrewAI scout / analyst / skeptic crew. Three Python agents share live engineering-acceleration signals across 350+ venture-backed startups. Free A2A endpoint, no auth, no LLM lock-in.";
+  "Wire GitDealFlow into a CrewAI scout / analyst / skeptic crew. Three Python agents share live engineering-acceleration signals across 400+ venture-backed startups. Free A2A endpoint, no auth, no LLM lock-in.";
 
 export const metadata: Metadata = {
   title: TITLE,

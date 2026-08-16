@@ -50,7 +50,7 @@ const BENCHMARKS: Benchmark[] = [
     faqs: [
       { q: "What is commit velocity?", a: "Commit velocity is the total number of commits to a startup's most active public repository over a rolling 14-day window. It's a direct measure of engineering throughput." },
       { q: "What's a good commit velocity?", a: "It depends heavily on sector and language. A Rust infrastructure startup with 50 commits/14d may be outperforming a JavaScript SaaS startup with 200 commits. Compare against the sector median, not an absolute number." },
-      { q: "How is this data collected?", a: "Public GitHub data only. We sweep ~350+ candidate orgs every Sunday and publish the top 85+ across 15 sectors. Full methodology at /methodology." },
+      { q: "How is this data collected?", a: "Public GitHub data only. We sweep 400+ candidate orgs every Sunday and publish the top 85+ across 15 sectors. Full methodology at /methodology." },
     ],
   },
   {
@@ -211,7 +211,7 @@ export default async function BenchmarkPage({ params }: PageProps) {
         <section aria-label="TL;DR" className="mb-8 rounded-lg border border-slate-800 bg-slate-900/60 p-4">
           <p className="text-xs font-semibold text-sky-400 uppercase tracking-wider mb-2">TL;DR</p>
           <p className="text-gray-300 text-sm leading-relaxed">
-            Real benchmark data from ~350+ venture-backed startups across 15 sectors. Refreshed weekly every Monday.
+            Real benchmark data from 400+ venture-backed startups across 15 sectors. Refreshed weekly every Monday.
             Data from {period.name}. Free under CC BY 4.0.
           </p>
         </section>

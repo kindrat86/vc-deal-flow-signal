@@ -8,7 +8,7 @@ const fw = getFrameworkPositioning("mastra")!;
 const TITLE =
   "GitDealFlow for Mastra, Type-Safe VC Signal Agents in Your Next.js App";
 const DESCRIPTION =
-  "Drop GitDealFlow signals into a Mastra agent inside your Next.js or Hono codebase. First-class MCP via @gitdealflow/mcp-signal, edge-safe A2A fallback, Zod-validated tools. 350+ startups, refreshed weekly.";
+  "Drop GitDealFlow signals into a Mastra agent inside your Next.js or Hono codebase. First-class MCP via @gitdealflow/mcp-signal, edge-safe A2A fallback, Zod-validated tools. 400+ startups, refreshed weekly.";
 
 export const metadata: Metadata = {
   title: TITLE,

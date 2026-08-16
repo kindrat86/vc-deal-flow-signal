@@ -6,7 +6,7 @@ import SeoCta from "@/components/SeoCta";
 export const metadata: Metadata = {
   title: "Signal of the Week - Weekly Startup Engineering Acceleration Deep Dive",
   description:
-    "A single-startup editorial each Monday. One company, one signal, one story - drawn from our ranking of 350++ startup GitHub orgs by engineering acceleration. Free, non-gated, citation-encouraged.",
+    "A single-startup editorial each Monday. One company, one signal, one story - drawn from our ranking of 400+ startup GitHub orgs by engineering acceleration. Free, non-gated, citation-encouraged.",
   alternates: {
     canonical: "/signal-of-the-week",
   },
@@ -69,7 +69,7 @@ export default function SignalOfTheWeekArchivePage() {
             name: "What is Signal of the Week?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "A single-startup editorial published every Monday, one company, one signal, one story. The pick is the #1 engineering-acceleration mover across the 350+-org tracking set for the week. Free, non-gated, citation-encouraged. Use it in newsletters, podcasts, or research notes; suggested citation appears at the bottom of each edition.",
+              text: "A single-startup editorial published every Monday, one company, one signal, one story. The pick is the #1 engineering-acceleration mover across the 400+-org tracking set for the week. Free, non-gated, citation-encouraged. Use it in newsletters, podcasts, or research notes; suggested citation appears at the bottom of each edition.",
             },
           },
           {
@@ -114,7 +114,7 @@ export default function SignalOfTheWeekArchivePage() {
         </h1>
         <p className="text-gray-400 text-base leading-relaxed mb-4">
           Every Monday we publish a single-startup editorial - the #1
-          engineering-acceleration mover across our 350+-org tracking set. One
+          engineering-acceleration mover across our 400+-org tracking set. One
           company, one signal, one story. Free, non-gated, and citation-encouraged.
         </p>
         <p className="text-gray-400 text-sm leading-relaxed mb-10">

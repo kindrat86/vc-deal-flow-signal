@@ -110,7 +110,7 @@ export default function MarketsMethodologyPage() {
               <code className="text-sky-300 bg-slate-900 px-1 py-0.5 rounded">
                 q2-2026
               </code>
-              ) of ~350+ tracked startup GitHub orgs. For a Series A market,
+              ) of 400+ tracked startup GitHub orgs. For a Series A market,
               the eligible pool is filtered to:
             </p>
             <ul className="mt-2 space-y-1 list-disc list-inside text-sm">

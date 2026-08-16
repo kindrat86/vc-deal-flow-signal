@@ -201,7 +201,7 @@ export const CHALLENGE_DAYS: readonly ChallengeDay[] = [
     yesterdayRecap:
       "Yesterday's repo-creation reading told you whether the team is building outward. Today's tells you whether they're keeping up with the inbound at the same time.",
     tomorrowTeaser:
-      "Tomorrow is the wrap. I'll show you how to compose all six signals into a single score, and how to run it across 350+ startup orgs in four seconds.",
+      "Tomorrow is the wrap. I'll show you how to compose all six signals into a single score, and how to run it across 400+ startup orgs in four seconds.",
     retailValue: 89,
   },
   {
@@ -209,7 +209,7 @@ export const CHALLENGE_DAYS: readonly ChallengeDay[] = [
     slug: "composite-score",
     phase: "learn",
     title: "The composite + the fast version",
-    oneLine: "Six signals → one score → 350+ orgs in 4 seconds.",
+    oneLine: "Six signals → one score → 400+ orgs in 4 seconds.",
     whyItMatters:
       "The composite is the framework. A startup scoring 5/6 with sustained acceleration over 14 days closes within 21-47 days about 38% of the time, roughly 5x the base rate from the SSRN panel.",
     procedure: [
@@ -225,7 +225,7 @@ export const CHALLENGE_DAYS: readonly ChallengeDay[] = [
     edgeCase:
       "A startup scoring 6/6 on a single repo but the org-level reading is 2/6, that's a single product break-out inside an otherwise quiet org. Different bet than an org-wide acceleration. Read both layers.",
     bonus:
-      "Manual version takes ~30 minutes per startup. Monitoring 30 startups manually is a 15-hour week. The fast version runs the same six signals plus a seventh (signal-type classification, hiring burst vs infra buildout vs deploy spike vs framework migration) across 350+ orgs continuously. Same framework, different scale.",
+      "Manual version takes ~30 minutes per startup. Monitoring 30 startups manually is a 15-hour week. The fast version runs the same six signals plus a seventh (signal-type classification, hiring burst vs infra buildout vs deploy spike vs framework migration) across 400+ orgs continuously. Same framework, different scale.",
     yesterdayRecap:
       "Yesterday you learned the last of the six atomic signals. Today they assemble.",
     tomorrowTeaser:
@@ -496,7 +496,7 @@ export const CHALLENGE_DAYS: readonly ChallengeDay[] = [
     edgeCase:
       "If the sector is small (<25 orgs with public GitHub), score what exists and supplement with private-repo intelligence, that gap itself is positioning data on the sector.",
     bonus:
-      "This is the procedure the live engine runs every Monday at 06:00 UTC across 350+ orgs in 4 seconds. You're learning the manual version so you can defend any number the engine produces.",
+      "This is the procedure the live engine runs every Monday at 06:00 UTC across 400+ orgs in 4 seconds. You're learning the manual version so you can defend any number the engine produces.",
     yesterdayRecap:
       "Yesterday you set the weekly rhythm. Today you build the high-throughput version of the same procedure for sector-heat moments.",
     tomorrowTeaser:
@@ -784,7 +784,7 @@ export const CHALLENGE_DAYS: readonly ChallengeDay[] = [
     filterFor:
       "A self-running cadence: 1 fully-composite-scored org per week, 4 newly-glanced orgs per week, watchlist refreshing automatically. ~25 min/week sustained.",
     edgeCase:
-      "If the Sunday digest doesn't fit your sector, the underlying engine has 350+ orgs and 30+ sector tags. The Dashboard rung filters by your sector, same five-orgs-per-week rhythm.",
+      "If the Sunday digest doesn't fit your sector, the underlying engine has 400+ orgs and 30+ sector tags. The Dashboard rung filters by your sector, same five-orgs-per-week rhythm.",
     bonus:
       "Three months of Sundays = 60 newly-scored orgs into your awareness funnel. That's already more deal flow surface than most angel investors see in a year of warm intros alone.",
     yesterdayRecap:

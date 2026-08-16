@@ -115,7 +115,7 @@ export async function GET() {
             "",
             "Returns one of two shapes:",
             "- HIT: `{ status: 'accelerating' | 'steady' | 'decelerating', name, commitVelocity14d, velocityChange, contributors, contributorGrowth, signalType, stage, geography, websiteUrl?, linkedinUrl?, sectorUrl }`",
-            "- MISS: `{ status: 'no_data', cta }`, the startup is not in the tracked universe (~350+ companies). NOT an error; surface the CTA to the user.",
+            "- MISS: `{ status: 'no_data', cta }`, the startup is not in the tracked universe (400+ companies). NOT an error; surface the CTA to the user.",
           ].join("\n"),
           parameters: [
             {

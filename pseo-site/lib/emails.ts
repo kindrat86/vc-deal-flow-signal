@@ -102,7 +102,7 @@ export const SOAP_OPERA_EMAILS = [
 <p>I flagged it in my notes. Then I closed the laptop and went to bed, because I was tired and the founder hadn't replied to my last cold email and frankly I wasn't sure I'd earned the right to write that cheque.</p>
 <p>Three weeks later, they announced a $4M Series A led by a top-tier fund.</p>
 <p>That was the wall. The investors who got in had seen exactly what I'd seen, they just didn't talk themselves out of it. The early engineering signal was right there in public, free, updating in real time. The only thing missing was someone willing to read it before everyone else did.</p>
-<p>So instead of writing another apologetic cold email, I built a system that reads that public engineering activity for me. Across 350+ venture-backed orgs. Every week. Mechanically. Without the talking-myself-out part. No code-reading on your end, it surfaces the startups heating up, you make the calls.</p>
+<p>So instead of writing another apologetic cold email, I built a system that reads that public engineering activity for me. Across 400+ venture-backed orgs. Every week. Mechanically. Without the talking-myself-out part. No code-reading on your end, it surfaces the startups heating up, you make the calls.</p>
 <p>Every Sunday from here on, I'll send you five startups in your sectors that are quietly taking off, teams shipping faster, contributors piling in, new infrastructure going up. The patterns that tend to show up 21 to 47 days before the deck circulates.</p>
 <p>Tomorrow, I want to challenge something you probably believe about whether public engineering data is even worth reading. Most of the people you trust on this are wrong, and the reason they're wrong is also why your current deal flow looks the way it does.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
@@ -523,10 +523,10 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
 <p>If the Sunday digest has settled into a rhythm, that's already the win. The 21-email welcome and daily-story sequence I started with on Day 0 ends here, the relationship doesn't, but the way it lands in your day is going to change, on purpose.</p>
 <p>Reading the same kind of email in the same inbox for ninety days is how rhythms die. The next phase of the engine lives in three different surfaces, deliberately outside email:</p>
 <p><strong>1. Sunday Brief, in your podcast app.</strong> A 4-to-6-minute synthetic-voice voice memo. The week's single sharpest GitHub-acceleration break, what shifted on the panel, one thing to put on the radar before Monday. Lands in Apple Podcasts / Spotify / Overcast / any RSS reader. The voice is the same Cartesia model that powers the State-of-GitHub video, anonymous by design, methodology over personality.</p>
-<p><strong>2. The monthly State-of-the-Engine talk, on your calendar.</strong> First Tuesday of every month at 16:00 UTC. The monthly address, what the panel showed across 350+ venture-backed orgs, what shifted in the false-positive rate, and one falsifiable prediction on the record. Subscribe to the calendar feed once and the talk lands as a scheduled event, not an email surprise.</p>
+<p><strong>2. The monthly State-of-the-Engine talk, on your calendar.</strong> First Tuesday of every month at 16:00 UTC. The monthly address, what the panel showed across 400+ venture-backed orgs, what shifted in the false-positive rate, and one falsifiable prediction on the record. Subscribe to the calendar feed once and the talk lands as a scheduled event, not an email surprise.</p>
 <p><strong>3. State-of-the-Engine post-mortem, on the public Receipts ledger.</strong> Every 90 days, the prediction resolves on <a href="${SIGNALS}/wins" style="color:#0ea5e9;">${SIGNALS}/wins</a> in the same append-only format the panel-validation entries use. Public, no opinions, names + dates only.</p>
 <p>The cohort home with all three subscribe links is at <a href="${SIGNALS}/post-90" style="color:#0ea5e9;">${SIGNALS}/post-90</a>. Two URLs to paste, the RSS feed into your podcast app, the .ics feed into your calendar, and the rhythm continues without me having to send you another email about it.</p>
-<p>Since Day 0 the engine has indexed 350+ venture-backed GitHub orgs continuously, surfaced ~12 Sunday digests of 5 ranked acceleration signals (≈60 names on your radar before consensus formed), published 3 monthly Sector Deep Dives, and logged confirmed funding / launch / re-rating events against panel orgs that hit acceleration threshold during the window. The Receipts ledger has the names + dates: <a href="${SIGNALS}/wins" style="color:#0ea5e9;">${SIGNALS}/wins</a>.</p>
+<p>Since Day 0 the engine has indexed 400+ venture-backed GitHub orgs continuously, surfaced ~12 Sunday digests of 5 ranked acceleration signals (≈60 names on your radar before consensus formed), published 3 monthly Sector Deep Dives, and logged confirmed funding / launch / re-rating events against panel orgs that hit acceleration threshold during the window. The Receipts ledger has the names + dates: <a href="${SIGNALS}/wins" style="color:#0ea5e9;">${SIGNALS}/wins</a>.</p>
 <p><strong>And the first specific prediction, on the record, for the next 90 days:</strong></p>
 <p>The four orgs sitting at the top of this Monday's panel that haven't shown up on Crunchbase yet, the ones with sustained 14-day commit-velocity acceleration above 2× their 90-day baseline AND contributor-Gini under 0.30, at least three of those four will resolve into a funding round, a meaningful product launch, or a senior-engineering re-rating between now and Day 180. I'll write the post-mortem live on /wins when each one resolves. The post-mortem audio drops on the Engine Room feed at Day 180. The next inbox email I send is the Day 120 nudge and then the Day 180 wrap-up, even those are recaps of what already played out in the new channels.</p>
 <p>If you'd rather stay inbox-only, the free Sunday Acceleration Watch keeps coming. The change-of-environment is an opt-in, not a forced migration.</p>
@@ -716,7 +716,7 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
  *   Week 3 (Days 15-21), Synthesize: 10-org watchlist + Monday rhythm + Q&A
  *   Week 4 (Days 22-30), Operationalize: alerts, share template, MCP, weights
  *
- * Day 30 reveals "or run it across 350+ orgs in 4 seconds with the MCP" and
+ * Day 30 reveals "or run it across 400+ orgs in 4 seconds with the MCP" and
  * stacks the three CTAs (Free digest / Dashboard / Sector Sweep) as a
  * Stack-Slide close.
  *
@@ -879,14 +879,14 @@ export const CHALLENGE_EMAILS = [
 <p><strong>What you're filtering for:</strong> a ratio of ~1.5 or higher (more PRs closing than issues opening). Below ~0.7 means feedback is piling up faster than the team can ship.</p>
 <p><strong>What this tells you about the round:</strong> a team that ships faster than its inbox is one that can absorb the next round's hire and accelerate further. A team buried in issues is one that needs the round to hire a triage layer first, the round is firefighting, not acceleration.</p>
 <p><strong>Edge case:</strong> some teams use a separate issue tracker (Linear, Jira) and only use GitHub Issues for community reports. In that case, the ratio is misleading. Look at PR count alone, 10+ PRs closed in 30 days is healthy, &lt;3 is dormant.</p>
-<p>Tomorrow is the wrap. I'll show you how to compose all six signals into a single score, and how to run it across 350+ startup orgs in four seconds.</p>
+<p>Tomorrow is the wrap. I'll show you how to compose all six signals into a single score, and how to run it across 400+ startup orgs in four seconds.</p>
 <p>Talk soon, <br>${FROM_NAME}</p>
 `),
   },
 
   // Day 7, Composite + Stack-Slide close
   {
-    subject: "Day 7, The composite, and 350+ orgs in 4 seconds",
+    subject: "Day 7, The composite, and 400+ orgs in 4 seconds",
     delayMs: 15 * 60 * 1000 + 7 * ONE_DAY,
     html: wrap(`
 <p><strong>Yesterday's read:</strong> the issue-to-PR ratio gave you the last of the six atomic signals. Today they assemble.</p>
@@ -915,11 +915,11 @@ export const CHALLENGE_EMAILS = [
 <tr style="border-top:1px solid #334155;"><td style="padding-top:8px;"><strong>Total retail value</strong></td><td style="text-align:right;color:#a7f3d0;font-family:monospace;font-weight:700;padding-top:8px;">€791</td></tr>
 <tr><td><strong>You paid</strong></td><td style="text-align:right;color:#34d399;font-family:monospace;font-weight:700;font-size:18px;">€0</td></tr>
 </table>
-<p>Free because the methodology is published CC BY 4.0 at <a href="https://ssrn.com/abstract=6606558" style="color:#0ea5e9;">ssrn.com/abstract=6606558</a>. We charge for scale (the live engine across 350+ orgs and the custom Sector Sweep), not for the framework.</p>
+<p>Free because the methodology is published CC BY 4.0 at <a href="https://ssrn.com/abstract=6606558" style="color:#0ea5e9;">ssrn.com/abstract=6606558</a>. We charge for scale (the live engine across 400+ orgs and the custom Sector Sweep), not for the framework.</p>
 <hr style="border:none;border-top:1px solid #1e293b;margin:24px 0;">
 <p><strong>Three optional rungs from here.</strong> Stacked from least to most committed. Pick none and the framework is still yours.</p>
 <p><strong>Rung 0, Free Sunday Digest.</strong> Five named GitHub orgs every Sunday, scored against the same 7-signal composite you just learned. <a href="${SITE}/#signup" style="color:#0ea5e9;">${SITE}/#signup</a>. Free forever, no upgrade pressure.</p>
-<p><strong>Rung 1, Dashboard, €9.97/mo founding rate.</strong> 140 venture-backed startups ranked by 14-day commit-velocity acceleration, refreshed every Monday at 06:00 UTC. Filter by sector, stage, geography. The 219-startup panel dataset. Two free Chrome extensions. The free MCP server (6 tools across Claude / Cursor / Windsurf). 30-day Signal-or-It's-Free guarantee, reply REFUND, no questions. Standalone retail of the components: ~€1,431/yr. Founding rate locks for life. <a href="${SITE}/pricing#dashboard" style="color:#0ea5e9;">${SITE}/pricing#dashboard</a></p>
+<p><strong>Rung 1, Dashboard, €9.97/mo founding rate.</strong> 400+ venture-backed startups ranked by 14-day commit-velocity acceleration, refreshed every Monday at 06:00 UTC. Filter by sector, stage, geography. The 219-startup panel dataset. Two free Chrome extensions. The free MCP server (6 tools across Claude / Cursor / Windsurf). 30-day Signal-or-It's-Free guarantee, reply REFUND, no questions. Standalone retail of the components: ~€1,431/yr. Founding rate locks for life. <a href="${SITE}/pricing#dashboard" style="color:#0ea5e9;">${SITE}/pricing#dashboard</a></p>
 <p><strong>Rung 2, Custom Sector Sweep, €1,997 one-time.</strong> Pick one sector, we deliver the 40-page written deep-dive in 5 business days: top 25 ranked orgs, contributor maps, three pre-Crunchbase breakouts, raw CSV, 30-day async Q&A. Capped at 8 per quarter, bandwidth, not artificial scarcity. <a href="${SIGNALS}/sector-sweep" style="color:#0ea5e9;">${SIGNALS}/sector-sweep</a></p>
 <p>Or pick none. Whatever you do, even if you just keep running the manual version yourself, you now have a sourcing process that works without paying anyone. That's the point of the week.</p>
 <p>Tomorrow: a Day-8 recap with one ask, and what to expect from this address from here on.</p>
@@ -1111,7 +1111,7 @@ export const CHALLENGE_EMAILS = [
 <li>Sort top 5. For those 5, run the full composite, 75 minutes total.</li>
 <li>Top 1-2 from the sweep get a meeting request the same week.</li>
 </ol>
-<p>This is the procedure the live engine runs every Monday at 06:00 UTC across 350+ orgs in 4 seconds. You're learning the manual version so you can defend any number the engine produces.</p>
+<p>This is the procedure the live engine runs every Monday at 06:00 UTC across 400+ orgs in 4 seconds. You're learning the manual version so you can defend any number the engine produces.</p>
 <p><strong>Tomorrow:</strong> using the composite as the founder Q&amp;A frame, turning a score into a question.</p>
 <p>Talk soon, <br>${FROM_NAME}</p>
 `),
@@ -1332,7 +1332,7 @@ export const CHALLENGE_EMAILS = [
 <li>Every 4 Sundays, review the watchlist for promotion to outreach.</li>
 </ol>
 <p>~25 min/week sustained. Three months of Sundays = 60 newly-scored orgs into your awareness funnel. That's already more deal flow surface than most angel investors see in a year of warm intros alone.</p>
-<p>If the Sunday digest doesn't fit your sector, the underlying engine has 350+ orgs and 30+ sector tags. The Dashboard rung filters by your sector with the same five-orgs-per-week rhythm.</p>
+<p>If the Sunday digest doesn't fit your sector, the underlying engine has 400+ orgs and 30+ sector tags. The Dashboard rung filters by your sector with the same five-orgs-per-week rhythm.</p>
 <p><strong>Tomorrow:</strong> the rung decision. Three optional ways to keep using the system. Pick one or pick none, the framework stays yours either way.</p>
 <p>Talk soon, <br>${FROM_NAME}</p>
 `),
@@ -1370,7 +1370,7 @@ export const CHALLENGE_EMAILS = [
 <hr style="border:none;border-top:1px solid #1e293b;margin:24px 0;">
 <p><strong>Three optional rungs from here.</strong> Stacked from least to most committed. Pick none and the system is still yours.</p>
 <p><strong>Rung 0, Free Sunday Digest.</strong> Five named startups every Sunday, scored against the same 7-signal composite you just learned. <a href="${SITE}/#signup" style="color:#0ea5e9;">${SITE}/#signup</a>. Free forever, no upgrade pressure.</p>
-<p><strong>Rung 1, Dashboard, €9.97/mo founding rate.</strong> 140 venture-backed startups ranked by 14-day commit-velocity acceleration, refreshed every Monday at 06:00 UTC. Filter by sector, stage, geography. The 219-startup panel dataset. Two free Chrome extensions. The free MCP server. 30-day Signal-or-It's-Free guarantee. Founding rate locks for life. <a href="${SITE}/pricing#dashboard" style="color:#0ea5e9;">${SITE}/pricing#dashboard</a></p>
+<p><strong>Rung 1, Dashboard, €9.97/mo founding rate.</strong> 400+ venture-backed startups ranked by 14-day commit-velocity acceleration, refreshed every Monday at 06:00 UTC. Filter by sector, stage, geography. The 219-startup panel dataset. Two free Chrome extensions. The free MCP server. 30-day Signal-or-It's-Free guarantee. Founding rate locks for life. <a href="${SITE}/pricing#dashboard" style="color:#0ea5e9;">${SITE}/pricing#dashboard</a></p>
 <p><strong>Rung 2, Custom Sector Sweep, €1,997 one-time.</strong> Pick one sector, we deliver the 40-page written deep-dive in 5 business days: top 25 ranked orgs, contributor maps, three pre-Crunchbase breakouts, raw CSV, 30-day async Q&amp;A. Capped at 8 per quarter. <a href="${SIGNALS}/sector-sweep" style="color:#0ea5e9;">${SIGNALS}/sector-sweep</a></p>
 <p>Or pick none. The framework is licensed CC BY 4.0; nothing about the rung selection changes your ownership.</p>
 <hr style="border:none;border-top:1px solid #1e293b;margin:24px 0;">
@@ -1415,7 +1415,7 @@ export const LAUNCH_EMAILS = [
     delayMs: THIRTY_MIN + 2 * ONE_DAY,
     html: wrap(`
 <p><strong>Stage 2, why every current fix fails.</strong></p>
-<p>I tried two fixes before I built Agent Credits. First, I tried higher Insider tiers, €197 → €197 → €497. The math broke immediately: a single agent scaling across 350+ orgs ends up running ~30,000 deep-signal calls in a weekend. €497/month doesn't cover the GitHub-API cost layer underneath, let alone the regression compute.</p>
+<p>I tried two fixes before I built Agent Credits. First, I tried higher Insider tiers, €197 → €197 → €497. The math broke immediately: a single agent scaling across 400+ orgs ends up running ~30,000 deep-signal calls in a weekend. €497/month doesn't cover the GitHub-API cost layer underneath, let alone the regression compute.</p>
 <p>Second, I tried a flat ‘fair-use ceiling.’ That's the SaaS-pricing equivalent of duct tape. The honest agents stay polite at 200 calls/month. The dishonest ones blow through 30,000 the first week and the ceiling becomes the entire ceiling, at which point the only honest move is to cut their API access, which is a worse experience than charging them per call up front.</p>
 <p>What this product needed was the simplest economic model in software: <strong>a credit. Pay for the call, get the result, walk away.</strong> No subscription, no overage drama, no per-seat fiction.</p>
 <p>The fix had to be priced by what an agent actually does, not by what a human looks like to a billing system. Tomorrow's email is Stage 3, what I shipped.</p>
@@ -1749,7 +1749,7 @@ const D0_F: SoapOperaEmail = {
 <p>Welcome. Let me be clear up front, because people get confused: GitDealFlow is a tool, not a fund. I'm not a VC, I'm not competing with you for the deal. It reads startups' public GitHub engineering activity and flags the ones heating up in your sectors, before they raise or hit the press. You don't crunch anything, it surfaces them, you just look.</p>
 <p>You told me on the quiz that you've written 0-1 angel checks in the past year, exploring, learning, maybe one day. Important: <strong>the free Sunday digest is the version for your tier, full stop.</strong></p>
 <p>I built this after I missed a Series A I'd flagged in my own notebook three weeks before it announced. The team was clearly shipping faster, four new contributors, three new infrastructure repos in fourteen days, all sitting in plain sight on a public GitHub org. I'd talked myself out of writing the cheque. The investors who got in had read exactly the same early engineering signal and didn't.</p>
-<p>So I built a system that reads that public activity for me. Across 350+ venture-backed orgs. Every week. Mechanically. Your free Sunday digest is the top five startups heating up in your sectors, ranked, sector-tagged, no commitment.</p>
+<p>So I built a system that reads that public activity for me. Across 400+ venture-backed orgs. Every week. Mechanically. Your free Sunday digest is the top five startups heating up in your sectors, ranked, sector-tagged, no commitment.</p>
 <p>For someone in your tier, that's enough. Read for ten years and write your first cheque informed. The &euro;7 First Look Pass exists if your cadence ever picks up to 2-5 checks/year, but I'd rather you read for free for a long time than upgrade once and resent it.</p>
 <p>Tomorrow I'll challenge something most people in your tier believe: that public GitHub data is too noisy to read. It isn't. The framing is wrong, and once you see it the Sunday digest becomes a thirty-second read instead of a five-minute one.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
@@ -1779,7 +1779,7 @@ const D0_I: SoapOperaEmail = {
   html: wrap(`
 <p>Welcome. First, plainly, so there's no confusion: GitDealFlow is a tool, not a fund. I'm not a VC, not competing with you for the deal, it reads startups' public GitHub activity and flags the ones heating up in your sectors before they raise. You told me on the quiz that you write 20+ checks per year, run a fund, or run a syndicate. The &euro;49/mo Dashboard is too small to register on your operating budget, so I'm going to spend the next 90 days speaking to the rungs that matter at your scale: the <strong>Insider Circle</strong> (&euro;197/mo, 24-hour lead) and the <strong>Sector Sweep</strong> (&euro;1,997 one-time, 100% credited toward Insider).</p>
 <p>The tool started with a missed Series A. A fintech-infra startup that was suddenly shipping faster, four new senior contributors, three new infrastructure repos in a fortnight. I'd flagged it in my notebook. The investors who actually wrote the cheque had read the same public GitHub signal, they just had a system that made the read mechanical instead of episodic.</p>
-<p>Across 350+ venture-backed orgs, that system is now the panel that powers two products at your tier. The Insider Circle ships next Sunday's five picks <em>24 hours before</em> the public Monday digest, one full sourcing day before any other investor sees them, plus closed Telegram, JSON/CSV API, and a custom watchlist co-built around your fund thesis. The Sector Sweep is a 40-page custom PDF on your chosen sector, three pre-Crunchbase early-stage targets, 14-day Q&amp;A, useful as IC-memo material at fund scale, and the &euro;1,997 credits 100% to Insider if you upgrade within 60 days.</p>
+<p>Across 400+ venture-backed orgs, that system is now the panel that powers two products at your tier. The Insider Circle ships next Sunday's five picks <em>24 hours before</em> the public Monday digest, one full sourcing day before any other investor sees them, plus closed Telegram, JSON/CSV API, and a custom watchlist co-built around your fund thesis. The Sector Sweep is a 40-page custom PDF on your chosen sector, three pre-Crunchbase early-stage targets, 14-day Q&amp;A, useful as IC-memo material at fund scale, and the &euro;1,997 credits 100% to Insider if you upgrade within 60 days.</p>
 <p>The math at your check volume: one founder per quarter that you reached because you had a Sunday-night head-start, at angel-range with even a 3&times; exit on one in five, lands at &euro;15k-&euro;150k of expected value per head-start. &euro;1,164/yr of Insider versus that calculus is a no-brainer if the rhythm fits.</p>
 <p>Tomorrow: why the "public GitHub data is noise" objection is wrong at your tier specifically, the noise floor matters more for low-volume sourcing, not the kind you're running.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
