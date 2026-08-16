@@ -5367,6 +5367,49 @@ landingCheck(
   }
 }
 
+// ---------------------------------------------------------------------------
+// §53 Reddit $20 probe guard (2026-08-16). Three invariants:
+//   a) The six Reddit /r/ campaigns carry the probe cohort tag
+//      utm_campaign=reddit-probe-2026-08 (the May tags vc-2026-05/dev-2026-05
+//      were stale before any spend ever ran and would split the probe's GA4
+//      cohort into two mislabeled months).
+//   b) PaidTrafficBanner copy never claims a banned panel count. "219" may
+//      appear ONLY as "219 startup-period observations" (the honest form;
+//      "219-startup panel" overstates the SSRN panel, which is 55 startups).
+//   c) The banner stays mounted on /firstlook (paid traffic needs the
+//      channel-scent headline; a lineage that drops the mount wastes clicks).
+// ---------------------------------------------------------------------------
+{
+  const pa = read("lib/paid-acquisition.ts");
+  if (pa) {
+    const probeCount = (pa.match(/campaign: "reddit-probe-2026-08"/g) || []).length;
+    if (probeCount !== 6) {
+      failures.push(
+        `§53 Reddit probe tags: expected 6 campaigns with utm_campaign "reddit-probe-2026-08", found ${probeCount}.\n    file: lib/paid-acquisition.ts\n    fix:  restore the probe cohort tag on all six Reddit campaigns (vc/angel/startups/devtools/programming/ml); the May tags were never live-spent and are stale`,
+      );
+    }
+    if (pa.includes('campaign: "vc-2026-05"') || pa.includes('campaign: "dev-2026-05"')) {
+      failures.push(
+        `§53 Reddit probe tags: stale May campaign tags (vc-2026-05/dev-2026-05) are back in lib/paid-acquisition.ts.\n    fix:  all six Reddit campaigns share "reddit-probe-2026-08"; utm_content segments the subreddit`,
+      );
+    }
+  }
+  const banner = read("components/PaidTrafficBanner.tsx");
+  if (banner) {
+    if (/219-startup panel/.test(banner)) {
+      failures.push(
+        `§53 banner claim: PaidTrafficBanner says "219-startup panel" (banned overstatement; the SSRN panel is 55 startups, 219 is the observation count).\n    file: components/PaidTrafficBanner.tsx\n    fix:  use "219 startup-period observations" or the "350+ orgs" panel floor`,
+      );
+    }
+  }
+  const firstlook = read("app/firstlook/page.tsx");
+  if (firstlook && !firstlook.includes("<PaidTrafficBanner />")) {
+    failures.push(
+      `§53 banner mount: PaidTrafficBanner is no longer mounted on /firstlook. Paid traffic loses the channel-scent headline (Brunson scent rule).\n    file: app/firstlook/page.tsx\n    fix:  restore the import + <PaidTrafficBanner /> node`,
+    );
+  }
+}
+
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +
