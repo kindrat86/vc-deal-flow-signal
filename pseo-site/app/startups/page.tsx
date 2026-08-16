@@ -4,6 +4,7 @@ import {
   getAllDirectorySectors,
   getAllDirectoryRegions,
 } from "@/lib/directory";
+import { PANEL_CLAIM } from "@/lib/canonical-claims";
 import DirectoryAbout from "@/components/DirectoryAbout";
 import { FRESH_YEAR_STR } from "@/lib/freshness-year";
 
@@ -101,7 +102,7 @@ export default function StartupDirectoryIndexPage() {
 
         <section className="mb-8 max-w-3xl" aria-label="About this directory">
           <p className="text-gray-400 text-base leading-relaxed">
-            VC Deal Flow Signal tracks {totalStartups} startups across{" "}
+            VC Deal Flow Signal tracks {PANEL_CLAIM} startups across{" "}
             {sectors.length} sectors and {regions.length} regions in the current
             quarter. This directory is the fastest way to browse the full corpus
             without a search box: pick a sector or a region below and you get a

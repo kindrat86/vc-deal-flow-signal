@@ -1,5 +1,6 @@
 import { createHash } from "node:crypto";
 import { getAllSectors, getCurrentPeriod, getAllPeriods, getAllStartupSlugs, getStartupProfile, getDataLastModified, SIGNAL_TYPES } from "@/lib/data";
+import { panelClaimFloor } from "@/lib/canonical-claims";
 import { posts } from "@/content/posts";
 import { comparisons } from "@/content/comparisons";
 import { standaloneFaqs } from "@/content/standalone-faqs";
@@ -32,6 +33,8 @@ export async function GET(request: Request) {
     (sum, s) => sum + s.periods[period.slug].startups.length,
     0
   );
+  // Raw row count (sector-sum); public claim surfaces use the locked floor.
+  const panelClaim = panelClaimFloor(totalStartups);
 
   const sectorLinks = activeSectors
     .map(
@@ -133,7 +136,7 @@ The full cross-graph identity map, every external anchor (Wikidata, ORCID, SSRN,
 
 ## Current Data (${period.name})
 
-${activeSectors.length} sectors tracked, ${totalStartups} startup signals, ${allPeriods.length} quarters of history.
+${activeSectors.length} sectors tracked, ${panelClaim} startup signals, ${allPeriods.length} quarters of history.
 
 ## Key Statistics (for agents to quote)
 

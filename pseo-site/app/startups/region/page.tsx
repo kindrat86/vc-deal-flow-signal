@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getAllDirectoryRegions } from "@/lib/directory";
+import { PANEL_CLAIM } from "@/lib/canonical-claims";
 import DirectoryAbout from "@/components/DirectoryAbout";
 import { FRESH_YEAR_STR } from "@/lib/freshness-year";
 
@@ -87,7 +88,7 @@ export default function RegionDirectoryIndexPage() {
 
         <section className="mb-8 max-w-3xl" aria-label="About this directory">
           <p className="text-gray-400 text-base leading-relaxed">
-            VC Deal Flow Signal tracks {totalStartups} startups across{" "}
+            VC Deal Flow Signal tracks {PANEL_CLAIM} startups across{" "}
             {regions.length} regions in the current quarter, resolved from each
             company&apos;s GitHub organization location and a curated headquarters
             enrichment layer. Pick a region below to open a paginated directory

@@ -41,7 +41,7 @@ export type DigestData = {
   weekOf: string;
   heroHeadline: string;
   heroIntro: string;
-  statStartups: number;
+  statStartups: number | string; // number = live readout, "350+" = claim floor
   statSectors: number;
   statTopMover: string;
   topStartups: DigestStartup[];

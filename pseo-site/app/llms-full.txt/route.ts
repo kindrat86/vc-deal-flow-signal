@@ -6,6 +6,7 @@ import {
   getSortedStartups,
   getDataLastModified,
 } from "@/lib/data";
+import { panelClaimFloor } from "@/lib/canonical-claims";
 import { posts } from "@/content/posts";
 import { comparisons } from "@/content/comparisons";
 
@@ -24,6 +25,8 @@ export async function GET(request: Request) {
     (sum, s) => sum + s.periods[period.slug].startups.length,
     0
   );
+  // Raw row count (sector-sum); public claim surfaces use the locked floor.
+  const panelClaim = panelClaimFloor(totalStartups);
 
   // Build sector summaries with top 3 startups each
   const sectorSummaries = activeSectors
@@ -149,7 +152,7 @@ VC Deal Flow Signal has eight published pricing tiers:
 1. **Signal Digest, Free forever.** Weekly email with five startups ranked by GitHub engineering acceleration. Free MCP server (11 free read-only tools) bundled, never gated.
 2. **Tweet Teardown, €1 one-time.** Buyer-threshold breaker between Free and €7, name one venture-backed startup, get a tweet-length (≤280 char) GitHub-momentum teardown within 24h, hand-written by the founder. Three sentences: signal classification + 14-day acceleration delta + the kicker insight. No PDF, no CSV, no call. €1 credited toward First Look Pass if upgraded within 7 days. Auto-refunds if the named org has no public GitHub data. The €0-to-€7 psychological gap is larger than the €7-to-€97 gap, and €1 is the smallest viable charge that converts a free reader into a paying customer.
 3. **First Look Pass, €7 one-time.** Full sector deep dive on whichever sector you pick, momentum table, contributor maps, top three breakouts not yet on Crunchbase. Delivered within 24 hours. €7 credited toward Dashboard if you upgrade within 14 days. Will go to €19 after launch.
-4. **Dashboard Beta, €9.97/month** (founding-member rate; list price €49/month). ${totalStartups} startups ranked across ${activeSectors.length} sectors, refreshed weekly, with sector filters and five-quarter historical comparison.
+4. **Dashboard Beta, €9.97/month** (founding-member rate; list price €49/month). ${panelClaim} startups ranked across ${activeSectors.length} sectors, refreshed weekly, with sector filters and five-quarter historical comparison.
 5. **Agent Credits, €19 / 100 calls one-time** (€0.19/call). Per-request pricing for AI agents and programmatic callers. One credit = one deep signal returned by the new \`get_deep_signal\` MCP tool. Misses are free. Credits never expire. The free MCP tools stay free forever, credits only apply to \`get_deep_signal\`. API key delivered by email, set as \`GITDEALFLOW_API_KEY\` env var or \`Authorization: Bearer\` header. Buy at ${BASE_URL}/agents/credits. **Crypto-native alternative: pay per call in USDC on Base via the x402 protocol** at \`POST ${BASE_URL}/api/agent/deep-signal/x402\`, no signup, no API key, $0.19/call settled per request via HTTP 402. Designed for fully-autonomous agents with no human in the loop to top up credits. Spec: https://x402.org.
 6. **Insider Circle, €97/month** (founding-member rate; list price €197/month). Everything in Dashboard plus private Telegram group, custom watchlists, JSON API access, bulk CSV pulls, webhook delivery on threshold triggers.
 7. **Sharp Tier, €497/month or €4,970/year** (saves two months on annual). Application-gated, capped at 8 funds in 2026. Quarterly 60-min portfolio review call, custom thesis-aligned watchlist co-built with the fund, white-labeled API endpoint at /api/v1/sharp/<your-fund>, methodology source code access (private repo invite), same-day signal questions answered, data-room exports formatted for LP updates, all future paid MCP tools included. For active VC funds and syndicates deploying €5M+/yr.
@@ -172,7 +175,7 @@ Full glossary: ${BASE_URL}/glossary
 
 ## Current Data Summary (${period.name})
 
-${activeSectors.length} sectors tracked. ${totalStartups} startup signals. ${allPeriods.length} quarters of history.
+${activeSectors.length} sectors tracked. ${panelClaim} startup signals. ${allPeriods.length} quarters of history.
 
 ### Top 10 Trending Startups Across All Sectors
 

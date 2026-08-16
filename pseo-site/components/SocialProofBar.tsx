@@ -1,5 +1,6 @@
 interface SocialProofBarProps {
-  startupCount: number;
+  // number = live readout, string = claim floor ("350+"); see lib/canonical-claims.ts
+  startupCount: number | string;
   sectorCount: number;
 }
 

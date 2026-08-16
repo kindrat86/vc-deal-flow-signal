@@ -231,14 +231,18 @@ function main() {
   const today = new Date();
   const dateStr = today.toISOString().slice(0, 10);
 
+  // Panel-size claim: locked "350+" floor (AGENTS.md / CLAIMS-LEDGER.md).
+  // allStartups.length is a raw sector-sum, not the unique-org count.
+  const panelClaim = allStartups.length >= 350 ? "350+" : String(allStartups.length);
+
   const digest: DigestData = {
     issueNumber: raw.meta?.issueNumber ?? 1,
     weekOf: formatWeekOf(today),
     heroHeadline: buildHeadline(hottestSectors),
-    heroIntro: `We tracked ${allStartups.length} startups across ${sectorStats.length} sectors this week. ${topStartups
+    heroIntro: `We tracked ${panelClaim} startups across ${sectorStats.length} sectors this week. ${topStartups
       .filter((s) => parseVelocityChange(s.commitVelocityChange) >= 100)
       .length} of them more than doubled how fast they're shipping code versus their own normal pace, the kind of jump that usually shows up 3-6 weeks before a funding announcement.`,
-    statStartups: allStartups.length,
+    statStartups: panelClaim,
     statSectors: sectorStats.length,
     statTopMover: topStartups[0]?.commitVelocityChange ?? "",
     topStartups,

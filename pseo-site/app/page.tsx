@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { panelClaimFloor } from "@/lib/canonical-claims";
 import Link from "next/link";
 import {
   getAllSectors,
@@ -145,6 +146,11 @@ export default function Home() {
   const allPeriods = getAllPeriods();
   const topMovers = getTopMoversThisWeek(3);
   const totalTracked = getTotalTrackedThisWeek();
+  // Public panel-size claim: locked "350+" floor, never the raw sector-sum
+  // count (deduped unique orgs sit under 400; see lib/canonical-claims.ts).
+  const panelClaim = panelClaimFloor(totalTracked);
+  // Public panel-size claim: locked "350+" floor, never the raw sector-sum
+  // count (deduped unique orgs sit under 400; see lib/canonical-claims.ts).
   const activeSectorCount = sectors.filter((s) => s.periods[period.slug]).length;
   const asOf = getDataLastModified().toISOString().slice(0, 10);
 
@@ -775,7 +781,7 @@ export default function Home() {
         </dl>
 
         <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-          {totalTracked} venture-backed GitHub orgs ranked every week by commit
+          {panelClaim} venture-backed GitHub orgs ranked every week by commit
           velocity <strong className="text-gray-100">and contributor diversity</strong>: the two signals that, combined, drove the{" "}
           <a
             href="/methodology#3-4x-finding"
@@ -887,7 +893,7 @@ so even the free content respects your attention.
       <EpiphanyBridgeCondensed />
 
       <SocialProofBar
-        startupCount={totalTracked}
+        startupCount={panelClaim}
         sectorCount={activeSectorCount}
       />
 
@@ -1645,7 +1651,7 @@ one calm read every Sunday. The other two lanes are only for when a
             All sectors we track
           </h2>
           <p className="text-gray-400 text-xs">
-            {activeSectorCount} sectors · {totalTracked} venture-backed
+            {activeSectorCount} sectors · {panelClaim} venture-backed
             startups · refreshed weekly
           </p>
         </div>

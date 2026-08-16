@@ -12,6 +12,7 @@ import {
   parsePageSlug,
   SIGNAL_TYPES,
 } from "@/lib/data";
+import { panelClaimFloor } from "@/lib/canonical-claims";
 import { agentQueries, getAgentQueryBySlug } from "@/content/agent-queries";
 import { alternatives, getAlternative } from "@/content/alternatives";
 import {
@@ -140,6 +141,8 @@ function renderHome(): string {
     (sum, s) => sum + s.periods[period.slug].startups.length,
     0
   );
+  // Raw row count (sector-sum); public claim surfaces use the locked floor.
+  const panelClaim = panelClaimFloor(totalStartups);
 
   return (
     frontmatter({
@@ -150,7 +153,7 @@ function renderHome(): string {
     }) +
     `# VC Deal Flow Signal\n\n` +
     `Engineering acceleration signals from public GitHub data across ${active.length} startup sectors.\n\n` +
-    `## Current Period\n\n${period.name}. ${totalStartups} startup signals across ${active.length} sectors. ${allPeriods.length} quarters of history.\n\n` +
+    `## Current Period\n\n${period.name}. ${panelClaim} startup signals across ${active.length} sectors. ${allPeriods.length} quarters of history.\n\n` +
     `## Sectors\n\n${active
       .map((s) => `- [${s.name}](${BASE_URL}/startups-to-watch/${s.slug}-${period.slug})`)
       .join("\n")}\n\n` +

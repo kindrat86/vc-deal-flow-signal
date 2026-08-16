@@ -4547,6 +4547,92 @@ landingCheck(
   }
 }
 
+// ---------------------------------------------------------------------------
+// §56 Claim reconciliation (2026-08-16, audit "claim consistency" win #6).
+// The canonical panel-size claim is the STABLE FLOOR "350+" (user decision,
+// AGENTS.md + CLAIMS-LEDGER.md). Raw sector-sum row counts (411, 540) drift
+// weekly and OVERSTATE the deduped unique-org count (< 400), so any surface
+// that states panel size must use the floor, never a raw/computed count.
+// Banned tokens: 400+, ~400, 4,200+/4,800 orgs, exact counts as claims
+// (369, 411, 540). Live data readouts (API meta, per-sector tables, sourced
+// claim rows) are exempt: they are data, not marketing claims.
+// ---------------------------------------------------------------------------
+{
+  // 1. The canonical-claims module must exist with the locked floor + guard fn.
+  const cc = readFileSync(join(ROOT, "lib", "canonical-claims.ts"), "utf8");
+  if (!cc.includes('export const PANEL_CLAIM = "350+"') || !cc.includes("export function panelClaimFloor")) {
+    failures.push(
+      "§56 lib/canonical-claims.ts lost the locked claim floor (PANEL_CLAIM / panelClaimFloor).\n    file: lib/canonical-claims.ts\n    fix:  restore 350+ floor + panelClaimFloor(); user-locked 2026-08-16, see AGENTS.md",
+    );
+  }
+
+  // 2. Claim surfaces must phrase panel size via the floor.
+  const claimSurfaces: Array<[string, string]> = [
+    ["app/page.tsx", "panelClaimFloor(totalTracked)"],
+    ["app/llms.txt/route.ts", "panelClaimFloor(totalStartups)"],
+    ["app/llms-full.txt/route.ts", "panelClaimFloor(totalStartups)"],
+    ["app/md/route.ts", "panelClaimFloor(totalStartups)"],
+    ["app/md/[...path]/route.ts", "panelClaimFloor(totalStartups)"],
+    ["app/startups/page.tsx", "PANEL_CLAIM"],
+    ["app/startups/region/page.tsx", "PANEL_CLAIM"],
+    ["scripts/generate-signal-report.ts", "panelClaim = allStartups.length >= 350"],
+    ["scripts/generate-signal-digest-email.ts", "panelClaim = allStartups.length >= 350"],
+  ];
+  for (const [file, needle] of claimSurfaces) {
+    const src = readFileSync(join(ROOT, file), "utf8");
+    if (!src.includes(needle)) {
+      failures.push(
+        `§56 ${file} dropped the claim-floor phrasing (${needle}).\n    file: ${file}\n    fix:  restore lib/canonical-claims usage; panel size is the locked 350+ floor, never the raw sector-sum`,
+      );
+    }
+  }
+
+  // 3. No banned exact-count tokens in claim copy. Anchored on claim language
+  //    so live-data readouts stay exempt; this file is self-exempt.
+  const bannedExact = /\b(?:400\+|~400|4,200\+|4,800)\s+(?:venture-backed\s+)?(?:startup|org|tracked|GitHub)/i;
+  const bannedClaimCtx = /(?:tracks?|across|of|von)\s+(?:400\+|369|411|540)\s+(?:startups?|orgs?|Unternehmen)/i;
+  const bannedHits: string[] = [];
+  function scanClaims(relDir: string) {
+    const abs = join(ROOT, relDir);
+    if (!existsSync(abs)) return;
+    for (const ent of readdirSync(abs)) {
+      const rel = join(relDir, ent);
+      const absEnt = join(ROOT, rel);
+      if (statSync(absEnt).isDirectory()) {
+        scanClaims(rel);
+      } else if ([".ts", ".tsx", ".md", ".json", ".html", ".js", ".mjs"].includes(extname(ent)) && ent !== "verify-no-regressions.ts") {
+        const src = readFileSync(absEnt, "utf8");
+        if (bannedExact.test(src) || bannedClaimCtx.test(src)) {
+          bannedHits.push(rel);
+        }
+      }
+    }
+  }
+  scanClaims("app");
+  scanClaims("content");
+  scanClaims("lib");
+  scanClaims("components");
+  scanClaims("scripts");
+  if (bannedHits.length) {
+    failures.push(
+      `§56 banned exact-count panel claims found in: ${bannedHits.join(", ")}\n    file: (multiple)\n    fix:  replace with the locked 350+ floor (lib/canonical-claims.ts); live data readouts are exempt`,
+    );
+  }
+
+  // 4. The committed weekly-report copy must not carry a stale claim while it
+  //    sits in the tree between deploys (prebuild regenerates it anyway).
+  try {
+    const srl = readFileSync(join(ROOT, "content", "signal-report-latest.ts"), "utf8");
+    if (/Data from 400\+ tracked startups|Data from 4[0-9]{2} tracked startups|across 20 sectors showed measurable/.test(srl)) {
+      failures.push(
+        "§56 content/signal-report-latest.ts carries a banned/stale panel claim (exact count or 20 sectors).\n    file: content/signal-report-latest.ts\n    fix:  re-run npx tsx scripts/generate-signal-report.ts (prebuild does this on every deploy)",
+      );
+    }
+  } catch {
+    // file absent = fine, prebuild regenerates it
+  }
+}
+
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +
