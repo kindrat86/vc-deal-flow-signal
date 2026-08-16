@@ -192,11 +192,11 @@
     },
     {
      "file": "pseo-site/scripts/verify-no-regressions.ts",
-     "pattern": "FROZEN_BEST",
+     "pattern": "deriveBestRedirects",
      "minCount": 1
     }
    ],
-   "note": "2026-08-16: needles retargeted from hardcoded next.config.ts entries to the data-derived data/best-redirects.json table (the sibling 2026-08-16 quarterly freshness rewrite legitimately moved the redirects). The FROZEN_BEST verify-no-regressions block asserts the same five pairs on disk."
+   "note": "2026-08-16: needles retargeted from hardcoded next.config.ts entries to the data-derived data/best-redirects.json table (the sibling 2026-08-16 quarterly freshness rewrite legitimately moved the redirects). 2026-08-16 (claims session): the verify-no-regressions FROZEN_BEST needle was retargeted to deriveBestRedirects after 2a852952 replaced the hardcoded five-pair block with the data-derived drift check (same five pairs, now derived for every sector-year); the literal FROZEN_BEST identifier no longer exists at HEAD. Ancestry + JSON needles unchanged."
   }
  ]
 }
