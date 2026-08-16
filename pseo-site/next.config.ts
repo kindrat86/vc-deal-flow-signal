@@ -179,6 +179,34 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        // Reverse-alias /vs/ slug (2026-08-18): the pair renders BOTH
+        // directions (harmonic-ai-vs-affinity AND affinity-vs-harmonic-ai),
+        // with the HTML canonical pointing at the primary. But proxy.ts adds
+        // a self-referential `Link: <self>; rel=canonical` header to every
+        // response, contradicting the HTML canonical. Google chose the
+        // reverse URL: GSC 90d shows /vs/harmonic-ai-vs-affinity at pos 6.7
+        // with 348 impressions while the primary sits unranked for the pair.
+        // 308 consolidates both directions into ONE URL (same pattern as the
+        // /compare/ mirror consolidation above).
+        source: "/vs/harmonic-ai-vs-affinity",
+        destination: "/vs/affinity-vs-harmonic-ai",
+        permanent: true,
+      },
+      {
+        // Same reverse-alias consolidation, second overridden pair.
+        source: "/vs/cb-insights-vs-crunchbase",
+        destination: "/vs/crunchbase-vs-cb-insights",
+        permanent: true,
+      },
+      {
+        // developer-tools sector froze in Q2-2026, so its /best/ page no
+        // longer generates, but GSC 90d still shows 123 impressions at
+        // pos 10.1 on the 404. Point the stale URL at the live sector hub.
+        source: "/best/developer-tools-2026",
+        destination: "/sectors/developer-tools",
+        permanent: true,
+      },
+      {
         // Legacy sitemap path (retired 2026-07-21): the "high-intent" pSEO shard
         // was consolidated into the /sitemap/[id] shards, but the old URL still
         // 404s and any stale crawler/bookmark/GSC reference points at it. 301 to

@@ -6,17 +6,23 @@
  * Output: data/internal-links.json  ->  { [pathname]: RelatedGroup[] }
  * Consumed by lib/related-links.ts + the /explore hub + page templates.
  *
- * Two-pass design (audit PA-30 fix, 2026-08-17):
+ * Three-pass design:
  *  Pass 1 builds sibling + cross-section groups by token overlap and
  *  measures per-URL in-degree.
  *  Pass 2 adds the entity-cluster group, ranking candidates by ASCENDING
  *  base in-degree so the weakest /vs/ pages receive the most new in-links
  *  (equity-aware internal linking; token overlap alone left 5 of 12
  *  harmonic pages with <=4 in-links).
+ *  Pass 3 (audit "striking distance" fix, 2026-08-18): reads the GSC-derived
+ *  data/striking-distance.json (56 URLs at pos 6.5-12.5, 38.7K imps/90d) and
+ *  guarantees each a floor of in-links from the most token-overlapping donor
+ *  pages that actually RENDER the graph. Fixes the zero-in-link families:
+ *  /acquirer/*, /from-stars-to-seed/*, /signal/* single-token slugs that
+ *  token overlap can never match.
  *
  * Fail-safe: aborts if it can't collect a meaningful URL set.
  */
-import { writeFileSync } from "node:fs";
+import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 const BASE = process.env.LINKS_BASE || "https://signals.gitdealflow.com";
@@ -85,11 +91,19 @@ for (const p of paths) {
   const section = sectionOf(p);
   const groups: RelatedGroup[] = [];
 
-  // Group 1, siblings in the same section, ranked by token similarity
+  // Group 1, siblings in the same section, ranked by token similarity with an
+  // equity tie-break: on equal score (single-token families like /acquirer/*
+  // all tie at 0.5), ASCENDING in-degree wins so weak pages get link slots
+  // instead of the first-6-in-sitemap-order hogging every sibling group.
   const siblings = (bySection.get(section) || [])
     .filter((q) => q !== p)
     .map((q) => ({ q, score: overlap(p, q) }))
-    .sort((a, b) => b.score - a.score)
+    .sort(
+      (a, b) =>
+        b.score - a.score ||
+        (indeg.get(a.q) || 0) - (indeg.get(b.q) || 0) ||
+        a.q.localeCompare(b.q),
+    )
     .slice(0, MAX_PER_GROUP)
     .filter((x) => x.score > 0);
   if (siblings.length >= 2)
@@ -100,7 +114,12 @@ for (const p of paths) {
     .filter((q) => q !== p && sectionOf(q) !== section)
     .map((q) => ({ q, score: overlap(p, q) }))
     .filter((x) => x.score >= 0.34)
-    .sort((a, b) => b.score - a.score)
+    .sort(
+      (a, b) =>
+        b.score - a.score ||
+        (indeg.get(a.q) || 0) - (indeg.get(b.q) || 0) ||
+        a.q.localeCompare(b.q),
+    )
     .slice(0, MAX_PER_GROUP);
   if (cross.length >= 2)
     groups.push({ title: "Related topics", links: cross.map((x) => ({ href: x.q, label: titleCase(x.q) })) });
@@ -152,6 +171,74 @@ for (const p of paths) {
   groups.push({ title: "Browse", links: hub });
 
   if (groups.some((g) => g.links.length > 0)) graph[p] = groups;
+}
+
+// ---- pass 3: striking-distance floor (GSC pos 6.5-12.5 cohort) -------------
+// The 56 URLs in data/striking-distance.json sit one hop from page 1
+// (38.7K impressions/90d). Several families have ZERO in-links because
+// token overlap cannot match single-token slugs (/acquirer/stripe has
+// tokens {acquirer,stripe}, /acquirer/cloudflare shares only "acquirer" ->
+// overlap 1/2 = 0.5 passes 0.34, but /signal/clickhouse vs peers often
+// shares nothing). For each cohort page below its floor, add links from the
+// most token-overlapping donor pages (overlap desc, then donor in-degree
+// desc so strong pages pass equity), skipping donors that already link it.
+//
+// Donors are restricted to sections whose templates RENDER the graph
+// (RelatedLinks), so every added edge is visible in HTML, not just JSON.
+const RENDER_SECTIONS = new Set([
+  "research", "vs", "continuity", "acquirer", "answers", "blog", "explore",
+  "compare", "alternatives", "topics", "from-stars-to-seed", "best",
+  "research-paper", "signal",
+]);
+const MAX_NEW_LINKS_PER_DONOR = 4; // keep any one donor from turning into a farm
+const donorLoad = new Map<string, number>();
+
+let cohort: Array<{ href: string; floor: number; imps?: number }> = [];
+try {
+  cohort = JSON.parse(
+    readFileSync(join(process.cwd(), "data/striking-distance.json"), "utf8"),
+  ) as typeof cohort;
+} catch {
+  console.warn("  (striking-distance.json missing/unparsable - pass 3 skipped)");
+}
+
+for (const t of cohort) {
+  const need = (t.floor ?? 8) - (indeg.get(t.href) || 0);
+  if (need <= 0) continue;
+  const targetPath = t.href;
+  const donors = paths
+    .filter(
+      (q) =>
+        q !== targetPath &&
+        RENDER_SECTIONS.has(sectionOf(q)) &&
+        !(graph[q] || []).some((g) => g.links.some((l) => l.href === targetPath)),
+    )
+    .map((q) => ({ q, score: overlap(q, targetPath), rank: indeg.get(q) || 0 }))
+    .filter((x) => x.score >= 0.3)
+    .sort((a, b) => b.score - a.score || b.rank - a.rank || a.q.localeCompare(b.q));
+
+  let added = 0;
+  for (const d of donors) {
+    if (added >= need) break;
+    if ((donorLoad.get(d.q) || 0) >= MAX_NEW_LINKS_PER_DONOR) continue;
+    const groups = graph[d.q];
+    if (!groups) continue;
+    let g = groups.find((x) => x.title === "Related topics");
+    if (!g) {
+      g = { title: "Related topics", links: [] };
+      groups.push(g);
+    }
+    if (g.links.length >= 6) continue; // respect the group cap
+    g.links.push({ href: targetPath, label: titleCase(targetPath) });
+    donorLoad.set(d.q, (donorLoad.get(d.q) || 0) + 1);
+    indeg.set(targetPath, (indeg.get(targetPath) || 0) + 1);
+    added++;
+  }
+  if (added < need) {
+    console.warn(
+      `  (striking-distance: ${targetPath} floor ${t.floor}, added ${added}/${need} in-links)`,
+    );
+  }
 }
 
 writeFileSync(join(process.cwd(), "data/internal-links.json"), JSON.stringify(graph, null, 0));

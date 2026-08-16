@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import { companies, getCompany, getAllCompanySlugs } from "@/content/companies";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import RelatedLinks from "@/components/RelatedLinks";
+import { getRelatedGroups } from "@/lib/related-links";
 import SeoCta from "@/components/SeoCta";
 
 interface PageProps {
@@ -239,6 +241,8 @@ export default async function CompanySignalPage({ params }: PageProps) {
               ))}
           </div>
         </section>
+
+        <RelatedLinks groups={getRelatedGroups(`/signal/${slug}`)} heading="Related signals" />
 
         <SeoCta
           signoffIndex={3}

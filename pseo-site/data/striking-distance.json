@@ -1,0 +1,394 @@
+[
+ {
+  "href": "/research-paper/hu-2021-lora-low-rank-adaptation",
+  "imps": 11149,
+  "clicks": 2,
+  "pos": 9.3,
+  "floor": 7
+ },
+ {
+  "href": "/research-paper/ouyang-2022-instructgpt-rlhf",
+  "imps": 6093,
+  "clicks": 2,
+  "pos": 8.7,
+  "floor": 10
+ },
+ {
+  "href": "/vs/dealroom-vs-pitchbook",
+  "imps": 4274,
+  "clicks": 4,
+  "pos": 7.7,
+  "floor": 10
+ },
+ {
+  "href": "/vs/harmonic-ai-vs-pitchbook",
+  "imps": 3466,
+  "clicks": 8,
+  "pos": 7.1,
+  "floor": 10
+ },
+ {
+  "href": "/research-paper/bai-2022-constitutional-ai",
+  "imps": 1862,
+  "clicks": 2,
+  "pos": 9.2,
+  "floor": 9
+ },
+ {
+  "href": "/answers/free-harmonic-ai-alternative-2026",
+  "imps": 898,
+  "clicks": 11,
+  "pos": 9.8,
+  "floor": 10
+ },
+ {
+  "href": "/faq",
+  "imps": 631,
+  "clicks": 1,
+  "pos": 7.3,
+  "floor": 3
+ },
+ {
+  "href": "/compare/best-ai-deal-sourcing-tools-2026",
+  "imps": 561,
+  "clicks": 3,
+  "pos": 11.8,
+  "floor": 10
+ },
+ {
+  "href": "/glossary",
+  "imps": 537,
+  "clicks": 0,
+  "pos": 12.3,
+  "floor": 6
+ },
+ {
+  "href": "/vs/pitchbook-vs-tracxn",
+  "imps": 414,
+  "clicks": 2,
+  "pos": 10.3,
+  "floor": 10
+ },
+ {
+  "href": "/acquirer/google",
+  "imps": 386,
+  "clicks": 1,
+  "pos": 11.8,
+  "floor": 10
+ },
+ {
+  "href": "/compare/best-alternative-data-tools-for-angel-investors",
+  "imps": 380,
+  "clicks": 1,
+  "pos": 10.4,
+  "floor": 10
+ },
+ {
+  "href": "/markets",
+  "imps": 336,
+  "clicks": 0,
+  "pos": 7.1,
+  "floor": 5
+ },
+ {
+  "href": "/answers/what-is-glama-mcp-and-how-do-i-use-it",
+  "imps": 311,
+  "clicks": 1,
+  "pos": 7.7,
+  "floor": 10
+ },
+ {
+  "href": "/acquirer/stripe",
+  "imps": 310,
+  "clicks": 0,
+  "pos": 9.0,
+  "floor": 10
+ },
+ {
+  "href": "/acquirer/cloudflare",
+  "imps": 308,
+  "clicks": 0,
+  "pos": 8.4,
+  "floor": 10
+ },
+ {
+  "href": "/compare/vc-deal-flow-signal-vs-affinity-relationship-intelligence",
+  "imps": 284,
+  "clicks": 0,
+  "pos": 7.9,
+  "floor": 8
+ },
+ {
+  "href": "/acquirer/okta",
+  "imps": 262,
+  "clicks": 0,
+  "pos": 7.7,
+  "floor": 8
+ },
+ {
+  "href": "/from-stars-to-seed/remotion",
+  "imps": 261,
+  "clicks": 0,
+  "pos": 9.0,
+  "floor": 8
+ },
+ {
+  "href": "/vs/dealroom-vs-crunchbase",
+  "imps": 251,
+  "clicks": 1,
+  "pos": 11.5,
+  "floor": 8
+ },
+ {
+  "href": "/blog/47-alternative-data-sources-angel-investors-2026",
+  "imps": 250,
+  "clicks": 0,
+  "pos": 7.0,
+  "floor": 8
+ },
+ {
+  "href": "/compare/vc-deal-flow-signal-vs-signalfire-beacon",
+  "imps": 249,
+  "clicks": 1,
+  "pos": 7.7,
+  "floor": 8
+ },
+ {
+  "href": "/acquirer/snowflake",
+  "imps": 242,
+  "clicks": 0,
+  "pos": 9.3,
+  "floor": 8
+ },
+ {
+  "href": "/from-stars-to-seed/qdrant",
+  "imps": 235,
+  "clicks": 0,
+  "pos": 8.0,
+  "floor": 8
+ },
+ {
+  "href": "/from-stars-to-seed/shadcn-ui",
+  "imps": 232,
+  "clicks": 0,
+  "pos": 6.6,
+  "floor": 8
+ },
+ {
+  "href": "/methodology",
+  "imps": 231,
+  "clicks": 0,
+  "pos": 7.4,
+  "floor": 8
+ },
+ {
+  "href": "/vs/dealroom-vs-tracxn",
+  "imps": 202,
+  "clicks": 1,
+  "pos": 10.4,
+  "floor": 8
+ },
+ {
+  "href": "/predict",
+  "imps": 201,
+  "clicks": 1,
+  "pos": 8.6,
+  "floor": 3
+ },
+ {
+  "href": "/acquirer/databricks",
+  "imps": 195,
+  "clicks": 2,
+  "pos": 9.1,
+  "floor": 8
+ },
+ {
+  "href": "/answers/github-data-for-startup-investors",
+  "imps": 193,
+  "clicks": 0,
+  "pos": 9.4,
+  "floor": 8
+ },
+ {
+  "href": "/vs/specter-vs-crunchbase",
+  "imps": 190,
+  "clicks": 1,
+  "pos": 10.0,
+  "floor": 8
+ },
+ {
+  "href": "/acquirer/oracle",
+  "imps": 189,
+  "clicks": 0,
+  "pos": 9.2,
+  "floor": 8
+ },
+ {
+  "href": "/acquirer/adobe",
+  "imps": 177,
+  "clicks": 1,
+  "pos": 10.0,
+  "floor": 8
+ },
+ {
+  "href": "/blog",
+  "imps": 168,
+  "clicks": 1,
+  "pos": 12.1,
+  "floor": 8
+ },
+ {
+  "href": "/pricing",
+  "imps": 160,
+  "clicks": 1,
+  "pos": 8.1,
+  "floor": 4
+ },
+ {
+  "href": "/acquirer/veeva",
+  "imps": 158,
+  "clicks": 0,
+  "pos": 9.2,
+  "floor": 8
+ },
+ {
+  "href": "/vs/openvc-vs-crunchbase",
+  "imps": 153,
+  "clicks": 1,
+  "pos": 10.7,
+  "floor": 8
+ },
+ {
+  "href": "/acquirer/atlassian",
+  "imps": 147,
+  "clicks": 0,
+  "pos": 9.6,
+  "floor": 8
+ },
+ {
+  "href": "/compare/best-deal-flow-tools-ai-investors",
+  "imps": 142,
+  "clicks": 0,
+  "pos": 11.3,
+  "floor": 8
+ },
+ {
+  "href": "/compare/vc-deal-flow-signal-vs-dealroom",
+  "imps": 142,
+  "clicks": 0,
+  "pos": 8.2,
+  "floor": 8
+ },
+ {
+  "href": "/fund/sequoia/portfolio",
+  "imps": 141,
+  "clicks": 0,
+  "pos": 9.3,
+  "floor": 4
+ },
+ {
+  "href": "/acquirer/meta",
+  "imps": 138,
+  "clicks": 2,
+  "pos": 10.0,
+  "floor": 8
+ },
+ {
+  "href": "/from-stars-to-seed/lobechat",
+  "imps": 138,
+  "clicks": 0,
+  "pos": 7.8,
+  "floor": 8
+ },
+ {
+  "href": "/acquirer/ibm",
+  "imps": 123,
+  "clicks": 0,
+  "pos": 12.3,
+  "floor": 8
+ },
+ {
+  "href": "/receipts",
+  "imps": 122,
+  "clicks": 3,
+  "pos": 10.8,
+  "floor": 2
+ },
+ {
+  "href": "/compare/gitdealflow-vs-crunchbase-for-solo-angels",
+  "imps": 122,
+  "clicks": 0,
+  "pos": 7.2,
+  "floor": 8
+ },
+ {
+  "href": "/acquirer/workday",
+  "imps": 116,
+  "clicks": 0,
+  "pos": 9.7,
+  "floor": 8
+ },
+ {
+  "href": "/compare/best-free-deal-flow-tools-2026",
+  "imps": 114,
+  "clicks": 2,
+  "pos": 8.6,
+  "floor": 8
+ },
+ {
+  "href": "/acquirer/block",
+  "imps": 113,
+  "clicks": 0,
+  "pos": 8.7,
+  "floor": 8
+ },
+ {
+  "href": "/signal/clickhouse",
+  "imps": 110,
+  "clicks": 2,
+  "pos": 9.9,
+  "floor": 8
+ },
+ {
+  "href": "/compare/best-deal-flow-tools-european-investors",
+  "imps": 109,
+  "clicks": 0,
+  "pos": 9.3,
+  "floor": 8
+ },
+ {
+  "href": "/from-stars-to-seed/together-ai",
+  "imps": 108,
+  "clicks": 0,
+  "pos": 9.5,
+  "floor": 8
+ },
+ {
+  "href": "/acquirer/nvidia",
+  "imps": 105,
+  "clicks": 1,
+  "pos": 8.9,
+  "floor": 8
+ },
+ {
+  "href": "/acquirer/hubspot",
+  "imps": 103,
+  "clicks": 1,
+  "pos": 7.6,
+  "floor": 8
+ },
+ {
+  "href": "/acquirer/amazon-aws",
+  "imps": 102,
+  "clicks": 0,
+  "pos": 11.8,
+  "floor": 8
+ },
+ {
+  "href": "/founder/leerob",
+  "imps": 100,
+  "clicks": 0,
+  "pos": 8.3,
+  "floor": 8
+ }
+]

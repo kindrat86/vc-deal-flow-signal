@@ -11,6 +11,8 @@ import {
 } from "@/lib/data";
 import StartupTable from "@/components/StartupTable";
 import SeoCta from "@/components/SeoCta";
+import RelatedLinks from "@/components/RelatedLinks";
+import { getRelatedGroups } from "@/lib/related-links";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
@@ -34,11 +36,15 @@ export async function generateMetadata({
 
   const { sector, year } = parsed;
   const sectorLower = sector.name.toLowerCase();
-  const title = `Best ${sector.name} Startups ${year}, Top Engineering Momentum`;
+  // CTR hook (2026-08-16): 'Free' is the highest-CTR modifier measured on
+  // this site (compare/best-free-deal-flow-tools 1.75% CTR); rankings are
+  // genuinely free (weekly report, no paywall). Absolute title: the layout
+  // template suffix would push sector names past 60 rendered chars.
+  const title = `Best ${sector.name} Startups ${year}: Free Weekly Rankings`;
   const description = `The best ${sectorLower} startups in ${year} ranked by GitHub commit-velocity acceleration. Commit velocity, contributor growth, and breakout signals for investors looking at ${sectorLower}.`;
 
   return {
-    title,
+    title: { absolute: title },
     description,
     openGraph: { title, description, type: "article", url: `/best/${slug}` },
     twitter: { card: "summary_large_image", title, description },
@@ -301,6 +307,8 @@ export default async function BestSectorPage({ params }: PageProps) {
             </div>
           </section>
         )}
+
+        <RelatedLinks groups={getRelatedGroups(`/best/${slug}`)} heading="Related sectors" />
       </div>
     </>
   );

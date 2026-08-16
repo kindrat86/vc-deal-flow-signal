@@ -8,6 +8,8 @@ import {
 } from "@/content/from-stars-to-seed";
 import { getDataLastModified } from "@/lib/data";
 import { AgentSummary } from "@/components/AgentSummary";
+import RelatedLinks from "@/components/RelatedLinks";
+import { getRelatedGroups } from "@/lib/related-links";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 
@@ -460,6 +462,8 @@ export default async function FromStarsToSeedPage({ params }: PageProps) {
             })()}
           </section>
         )}
+
+        <RelatedLinks groups={getRelatedGroups(`/from-stars-to-seed/${slug}`)} heading="Related proof stories" />
       </article>
     </>
   );

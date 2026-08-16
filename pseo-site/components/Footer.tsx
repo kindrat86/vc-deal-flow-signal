@@ -70,6 +70,9 @@ export default function Footer() {
               <Link href="/tools" className="hover:text-gray-200 transition-colors">Free Tools</Link>
               <Link href="/integrations" className="hover:text-gray-200 transition-colors">Integrations</Link>
               <Link href="/enterprise" className="hover:text-gray-200 transition-colors">Enterprise</Link>
+              <Link href="/markets" className="hover:text-gray-200 transition-colors">Markets</Link>
+              <Link href="/predict" className="hover:text-gray-200 transition-colors">Predictions</Link>
+              <Link href="/receipts" className="hover:text-gray-200 transition-colors">Scout Receipts</Link>
             </nav>
           </div>
           <div>

@@ -10,6 +10,8 @@ import { glossaryTerms } from "@/content/glossary";
 import { getSector } from "@/content/sectors";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
+import RelatedLinks from "@/components/RelatedLinks";
+import { getRelatedGroups } from "@/lib/related-links";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -410,6 +412,8 @@ export default async function ResearchPaperPage({ params }: PageProps) {
             Read /methodology
           </Link>
         </div>
+
+        <RelatedLinks groups={getRelatedGroups(`/research-paper/${slug}`)} heading="Related papers" />
       </div>
     </>
   );
