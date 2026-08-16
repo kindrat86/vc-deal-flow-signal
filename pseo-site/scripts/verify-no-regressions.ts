@@ -5410,6 +5410,37 @@ landingCheck(
   }
 }
 
+// ---------------------------------------------------------------------------
+// §65 Digest email UTM attribution (2026-08-16, audit item "email as traffic
+//     source 58"). The Sunday digest's outbound links to OUR OWN domain must
+//     carry utm_source=email so the north-star (fetch_north_star.py) classifies
+//     digest clicks as "email" rather than "direct". Email clients strip the
+//     referrer, so without the tag every digest click is miscounted as direct
+//     and the newsletter-swap play's only success metric reads zero. The
+//     track() helper tags only gitdealflow.com/signals.gitdealflow.com links
+//     and leaves external links (partner slot, social footer) untouched.
+// ---------------------------------------------------------------------------
+{
+  const de = read("lib/digest-email.ts");
+  if (de !== null) {
+    if (!de.includes("function track(href: string): string")) {
+      failures.push(
+        "§65 digest email lost the track() UTM helper.\n    file: lib/digest-email.ts\n    fix: restore the track(href) function that appends utm_source=email&utm_medium=email&utm_campaign=signal-digest to gitdealflow.com links",
+      );
+    }
+    if (!de.includes("utm_source=email&utm_medium=email&utm_campaign=signal-digest")) {
+      failures.push(
+        "§65 digest email UTM params lost from track().\n    file: lib/digest-email.ts\n    fix: restore the utm_source=email&utm_medium=email&utm_campaign=signal-digest query in track()",
+      );
+    }
+    if (!de.includes('track(`https://signals.gitdealflow.com/startup/${escape(s.slug)}`)')) {
+      failures.push(
+        "§65 digest startup cards lost UTM tagging.\n    file: lib/digest-email.ts\n    fix: wrap the startup-card href in track() so email clicks attribute to the email source",
+      );
+    }
+  }
+}
+
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +
