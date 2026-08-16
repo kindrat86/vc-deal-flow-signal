@@ -4924,6 +4924,16 @@ landingCheck(
         "§56 posts.ts lost the allPosts.push(...SOURCING_POSTS) splice.\n    file: content/posts.ts\n    fix: restore the push; without it the 10 posts 404",
       );
     }
+    // (f) 2026-08-18 resolution hardening: the legacy `posts` export must
+    // carry the full merged set. Before this fix `posts` re-exported only the
+    // 39 base entries, so every `posts` importer (topics hub, llms.txt,
+    // llms-full, feed/atom, qa.* corpus, llms-search, news-sitemap) silently
+    // dropped TOFU + sourcing-cluster posts: pillars resolved 4/18.
+    if (!postsSrc.includes("const baseSlugs = new Set(posts.map((p) => p.slug))")) {
+      failures.push(
+        "§56 posts.ts lost the legacy-posts sync block (posts = full merged set).\n    file: content/posts.ts\n    fix: restore the 'const baseSlugs' in-place sync after the allPosts sort; hub + AI-corpus importers read `posts`",
+      );
+    }
   }
   const pillarsSrc = read("content/pillars.ts");
   if (pillarsSrc) {
