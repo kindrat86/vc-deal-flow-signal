@@ -11,7 +11,7 @@ const URLS = [
   "/vs/specter-vs-harmonic-ai",
   "/vs/harmonic-ai-vs-tracxn",
   "/vs/harmonic-ai-vs-crunchbase",
-  "/vs/crunchbase-vs-cb-insights",
+  "/vs/cb-insights-vs-crunchbase",
   "/vs/crunchbase-vs-pitchbook",
   "/vs/dealroom-vs-pitchbook",
   "/vs/pitchbook-vs-tracxn",

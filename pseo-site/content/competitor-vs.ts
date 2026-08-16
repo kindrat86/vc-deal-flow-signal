@@ -792,16 +792,6 @@ export const competitorVsPairs: CompetitorVs[] = [
       "Crunchbase is a startup database best for company verification and basic research. CB Insights is a market intelligence platform with Mosaic scoring, industry analytics, and strategic research. Crunchbase costs $49/mo and is accessible to individual investors. CB Insights costs $35k+/yr and is built for institutional research teams. For deal sourcing with a budget, Crunchbase plus a leading-signal tool like VC Deal Flow Signal covers most individual-investor workflows.",
     intro: "Crunchbase and CB Insights are both household names in private-market data, but they serve different buyers at very different price points. Crunchbase is a startup database built for company verification and basic research. CB Insights is a market-intelligence platform with proprietary Mosaic scoring, industry analytics, and strategic research briefs. This comparison weighs the two on coverage, signal type, and cost, and explains which investor each one fits.",
     decision: "Pick Crunchbase when you need affordable, reliable verification of companies, funding rounds, and teams. At forty nine dollars a month for Pro, it is accessible to individual investors and scouts and is the default lookup tool for most of the market. Pick CB Insights when you need market intelligence rather than deal sourcing: Mosaic scores, industry analytics, market sizing, and curated research briefs, at an enterprise price of thirty five thousand dollars a year and up, built for institutional strategy teams. Consider using both only if you are a large firm that needs a research layer on top of a verification layer. For most individual investors, Crunchbase combined with a leading-signal tool covers the same workflow at a fraction of the cost, because CB Insights is broad market intelligence rather than a deal-flow sourcing engine.",
-    faqs: [
-        // verbatim PAA, harvested 2026-08-17 (cb insights vs crunchbase SERP)
-        { question: "Is CB Insights reputable?", answer: "Yes, as a research institution. CB Insights is an independent, venture-backed market-intelligence company founded by Anand Sanwal; its State of Venture reports and data briefs are widely cited by investors and press. Its Mosaic scoring model is proprietary, so reputation rests on published research quality rather than auditable methodology. For deal sourcing specifically, it is a research layer rather than a discovery engine." },
-        // verbatim PAA 2026-08-17
-        { question: "How much does CB Insights cost per year?", answer: "CB Insights does not publish list pricing. It is enterprise-only, typically around $35,000 per year and up depending on seats and modules, sold through a sales team, with no self-serve tier or free trial. Individual investors are outside its target market; its buyers are institutional strategy and research teams." },
-        // verbatim PAA 2026-08-17
-        { question: "Who owns CB Insights?", answer: "CB Insights is an independent, privately held company, not a subsidiary of a larger data conglomerate. It was co-founded by Anand Sanwal, who led it as CEO into 2024 and remains Executive Chairman. It has raised venture funding over the years, including early support tied to the National Science Foundation's SBIR program." },
-        // verbatim PAA 2026-08-17
-        { question: "What kind of company is CB Insights?", answer: "A market-intelligence company, often described as a Bloomberg for private markets. Its centrepiece is the Mosaic Score, a proprietary health-and-trajectory model for private companies, wrapped in industry analytics, market sizing, and research briefs. It serves strategy, corporate-development, and investor teams rather than individual investors." },
-    ],
   },
   {
     slug: "pitchbook-vs-cb-insights",
@@ -821,7 +811,18 @@ export const competitorVsPairs: CompetitorVs[] = [
     intro: "CB Insights and Crunchbase are often named in the same sentence about startup data, but they occupy different tiers of the market. CB Insights is an enterprise market-intelligence platform with proprietary Mosaic scores, industry analytics, and research briefs. Crunchbase is a comprehensive startup database priced for individual users. This page compares the two on signal, coverage, and cost, and helps you decide which layer you actually need.",
     decision: "Pick CB Insights when you are an institutional strategy team that needs market intelligence: Mosaic scores, market sizing, and analyst research on emerging categories, at thirty five thousand dollars a year and up. Pick Crunchbase when you need a reliable, affordable startup database for verification and basic research, at forty nine dollars a month for Pro, a price that suits individual investors and scouts. Consider using both only if your firm needs a research layer on top of a verification layer. For most solo investors and small funds, the practical answer is Crunchbase plus a free leading-signal tool, which covers the same sourcing and verification workflow at a fraction of the cost. CB Insights is broad market intelligence, not a deal-flow sourcing engine, so it tends to be overkill for anyone whose main job is finding and checking companies.",    
 
+    faqs: [
+        // verbatim PAA, harvested 2026-08-17 (cb insights vs crunchbase SERP)
+        { question: "Is CB Insights reputable?", answer: "Yes, as a research institution. CB Insights is an independent, venture-backed market-intelligence company founded by Anand Sanwal; its State of Venture reports and data briefs are widely cited by investors and press. Its Mosaic scoring model is proprietary, so reputation rests on published research quality rather than auditable methodology. For deal sourcing specifically, it is a research layer rather than a discovery engine." },
+        // verbatim PAA 2026-08-17
+        { question: "How much does CB Insights cost per year?", answer: "CB Insights does not publish list pricing. It is enterprise-only, typically around $35,000 per year and up depending on seats and modules, sold through a sales team, with no self-serve tier or free trial. Individual investors are outside its target market; its buyers are institutional strategy and research teams." },
+        // verbatim PAA 2026-08-17
+        { question: "Who owns CB Insights?", answer: "CB Insights is an independent, privately held company, not a subsidiary of a larger data conglomerate. It was co-founded by Anand Sanwal, who led it as CEO into 2024 and remains Executive Chairman. It has raised venture funding over the years, including early support tied to the National Science Foundation's SBIR program." },
+        // verbatim PAA 2026-08-17
+        { question: "What kind of company is CB Insights?", answer: "A market-intelligence company, often described as a Bloomberg for private markets. Its centrepiece is the Mosaic Score, a proprietary health-and-trajectory model for private companies, wrapped in industry analytics, market sizing, and research briefs. It serves strategy, corporate-development, and investor teams rather than individual investors." },
+    ],
   },
+
   {
     slug: "harmonic-ai-vs-cb-insights",
     a: "harmonic-ai",
@@ -862,7 +863,7 @@ export const VS_TITLE_HOOKS: Record<string, string> = {
   "forager-ai-vs-tracxn": "Forager.ai vs Tracxn: Web Signals vs Sector Maps",
   "crunchbase-vs-pitchbook": "Crunchbase ($49/mo) vs PitchBook ($20k+/yr)",
   "crunchbase-vs-tracxn": "Crunchbase ($49/mo) vs Tracxn: Global vs Asia Depth",
-  "crunchbase-vs-cb-insights": "Crunchbase ($49/mo) vs CB Insights ($35k+/yr)",
+  "cb-insights-vs-crunchbase": "CB Insights ($35k+/yr) vs Crunchbase ($49/mo)",
   "pitchbook-vs-tracxn": "PitchBook vs Tracxn: Fund Data vs 2,000+ Sector Maps",
   "pitchbook-vs-cb-insights": "PitchBook ($20k+/yr) vs CB Insights ($35k+/yr)",
   "openvc-vs-harmonic-ai": "OpenVC vs Harmonic.ai: Founder Side vs VC Side",
@@ -906,7 +907,7 @@ export function getAllCompetitorVsSlugs(): string[] {
 // canonical -> primary, excluded from the sitemap and internal cross-links.
 export const VS_CANONICAL_OVERRIDE: Record<string, string> = {
   "harmonic-ai-vs-affinity": "affinity-vs-harmonic-ai",
-  "cb-insights-vs-crunchbase": "crunchbase-vs-cb-insights",
+  "crunchbase-vs-cb-insights": "cb-insights-vs-crunchbase",
 };
 
 // The canonical slug for a comparison (itself, unless it is a reverse alias).
