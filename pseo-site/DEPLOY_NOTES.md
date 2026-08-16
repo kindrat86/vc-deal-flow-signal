@@ -13,9 +13,12 @@ travels with the tree). The third historical checkout,
 `~/Downloads/vc-deal-flow-signal`, no longer exists on disk (verified
 2026-08-12). If you are in the retired checkout: land your change on `main` in
 the canonical checkout, do NOT edit `.deploy-lineage` or the guard.
-NOTE: `worldclass-signals` still holds 43 commits `main` lacks (entity-graph
-fix, email send-gate guards, GSC sitemap fixes); see the backlog order to
-audit/cherry-pick them before that branch is archived.
+NOTE: `worldclass-signals` is now fully reconciled into `main`
+(verified 2026-08-16: all 56 commits in `main..worldclass-signals` are
+tree-identical on main; the branch is tagged
+`archive/worldclass-signals-2026-08-16`). The retired checkout
+`~/signals-worldclass` still holds the branch checked out; delete that
+checkout + branch only after owner sign-off (see owner-queue).
 (Owner: AGENTS.md still needs this paragraph, agent writes to AGENTS.md are
 blocked in autonomous mode; see owner-queue.)
 
