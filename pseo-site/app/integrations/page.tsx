@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import { FRESH_YEAR_STR } from "@/lib/freshness-year";
 import Link from "next/link";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 
 export const metadata: Metadata = {
-  title: { absolute: `Integrations: MCP, Telegram, Email, RSS, Free API ${FRESH_YEAR_STR}` },
+  title: "Integrations, MCP, Telegram, Email, RSS, API",
   description:
     "Plug VC Deal Flow Signal into your existing workflow. MCP server for Claude and Cursor, Telegram channel, weekly email, JSON/CSV API, RSS feed, and Zapier.",
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).

@@ -1,12 +1,11 @@
 import type { Metadata } from "next";
-import { FRESH_YEAR_STR } from "@/lib/freshness-year";
 import Link from "next/link";
 import { getAllSectors, getCurrentPeriod, getDataLastModified } from "@/lib/data";
 import { PlainEnglishNote } from "@/components/PlainEnglishNote";
 import { TrustConversionBlock } from "@/components/TrustConversionBlock";
 
 export const metadata: Metadata = {
-  title: { absolute: `Data Sources: GitHub API, Enrichment, Cadence ${FRESH_YEAR_STR}` },
+  title: "Data Sources, Where VC Deal Flow Signal's Data Comes From",
   description:
     "Complete data source documentation for VC Deal Flow Signal: GitHub API endpoints, enrichment sources, update cadence, and data quality controls. Transparent methodology for investors and AI assistants.",
   alternates: {

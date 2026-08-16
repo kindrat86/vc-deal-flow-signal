@@ -5,7 +5,6 @@ import {
   getAllPeriods,
   getDataLastModified,
 } from "@/lib/data";
-import { panelClaimFloor } from "@/lib/canonical-claims";
 
 export const dynamic = "force-static";
 export const revalidate = 3600;
@@ -61,8 +60,6 @@ export async function GET(request: Request) {
     (sum, s) => sum + s.periods[period.slug].startups.length,
     0
   );
-  // Public claim surface: locked 350+ floor, never the raw sector-sum row count.
-  const panelClaim = panelClaimFloor(totalStartups);
 
   const keyStatistics: Stat[] = [
     {
@@ -118,10 +115,10 @@ export async function GET(request: Request) {
     {
       id: "live-coverage",
       label: "Currently tracked startups",
-      value: `${panelClaim} orgs across ${active.length} sectors`,
+      value: `${totalStartups} orgs across ${active.length} sectors`,
       unit: "organizations",
       claim:
-        `The live panel tracks ${panelClaim} startup GitHub organizations across ${active.length} sectors (${period.name}), refreshed weekly.`,
+        `The live panel tracks ${totalStartups} startup GitHub organizations across ${active.length} sectors (${period.name}), refreshed weekly.`,
       sourceUrl: `${BASE_URL}/api/signals.json`,
       sourceName: "VC Deal Flow Signal live API",
     },

@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { FRESH_YEAR_STR } from "@/lib/freshness-year";
 import Link from "next/link";
 import { alternatives } from "@/content/alternatives";
 import { HreflangLinks } from "@/components/HreflangLinks";
@@ -7,7 +6,7 @@ import { getHreflangLanguages } from "@/lib/hreflang";
 import SeoCta from "@/components/SeoCta";
 
 export const metadata: Metadata = {
-  title: { absolute: `Alternatives to Harmonic.ai, Dealroom, Crunchbase ${FRESH_YEAR_STR}` },
+  title: "Alternatives to Harmonic.ai, Dealroom, Crunchbase & Forager.ai",
   description:
     "Compare GitDealFlow with Harmonic.ai, Dealroom, Crunchbase alerts, and Forager.ai for earlier engineering-signal deal flow.",
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).

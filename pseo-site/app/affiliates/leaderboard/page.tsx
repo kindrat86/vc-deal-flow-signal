@@ -15,7 +15,7 @@ const PORTAL_URL = "https://gitdealflow.refgrow.com";
 
 export const metadata: Metadata = {
   title:
-    "Affiliate Leaderboard, Top 10 Earners (2026) | GitDealFlow",
+    "Affiliate Leaderboard, Top 10 Earners (May 2026) | GitDealFlow",
   description:
     "Public, anonymized leaderboard of GitDealFlow's top affiliates. €5,000+ earned by Platinum tier; 11.3% top conversion rate from an Agent integration; ~140 affiliates active. Updated monthly.",
   alternates: { canonical: "/affiliates/leaderboard" },

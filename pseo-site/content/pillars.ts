@@ -66,7 +66,7 @@ export const pillars: Record<string, Pillar> = {
     slug: "founder-research",
     name: "Operator Notes",
     description:
-      "First-hand notes from running the dataset, building a longitudinal panel of 350+ startup GitHub orgs, MCP server lessons, and other operator-side observations.",
+      "First-hand notes from running the dataset, building a longitudinal panel of 350++ startup GitHub orgs, MCP server lessons, and other operator-side observations.",
     keywords: [
       "GitHub dataset",
       "operator notes",

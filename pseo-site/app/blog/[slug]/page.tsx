@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPost, getAllPostSlugs, posts } from "@/content/posts";
-import { panelClaimFloor } from "@/lib/canonical-claims";
 import { getPostLastUpdated } from "@/content/post-freshness";
 import { getAllSectors, getCurrentPeriod, getDataLastModified } from "@/lib/data";
 import { getAuthor } from "@/content/authors";
@@ -553,7 +552,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           <div className="mb-8 flex flex-wrap gap-4 text-xs text-gray-400">
             <span>{sectors.filter((s) => s.periods[period.slug]).length} sectors tracked</span>
             <span className="text-slate-700">|</span>
-            <span>{panelClaimFloor(sectors.filter((s) => s.periods[period.slug]).reduce((sum, s) => sum + s.periods[period.slug].startups.length, 0))} startup signals</span>
+            <span>{sectors.filter((s) => s.periods[period.slug]).reduce((sum, s) => sum + s.periods[period.slug].startups.length, 0)} startup signals</span>
             <span className="text-slate-700">|</span>
             <span>Data: {period.name}</span>
             <span className="text-slate-700">|</span>

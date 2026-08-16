@@ -22,7 +22,7 @@ Rationale: "350+" is a stable floor that survives the weekly refresh. Exact coun
 ## Surfaces
 
 - landing (gitdealflow.com): "350+", "Q3 2026". Deployed and verified.
-- pseo-site (signals.gitdealflow.com): "350+", "Q3 2026". DEPLOYED + LIVE-VERIFIED 2026-08-19 (24/24 needles, both hosts): llms.txt, /md, llms-full, homepage, stats.json (citation stat now floors), blog byline, and the 350++ typo fleet all derive lib/canonical-claims.ts (§56 guard extended: stats.json + blog claimSurfaces, 350++ banned token, apex llms-full floor+quarter needle). Deployed from union 78da4cfe after a foreign-lineage revert; redeployed as last writer.
+- pseo-site (signals.gitdealflow.com): "350+", "Q3 2026". Source fixed 2026-08-16 (dynamically-counted surfaces now derive the locked floor via lib/canonical-claims.ts, never the raw sector-sum; §56 guard); redeploy required.
 - mcp-server (npm @gitdealflow/mcp-signal): README "350+", server.ts "350+", openai-app manifest "350+". Source fixed (2.2.2); npm whoami OK again, publish pending.
 - Glama repo (kindrat86/mcp-deal-flow-signal): "350+ / 15 sectors". Pushed 25dabab.
 - signal-engine repo (kindrat86/gitdealflow-signal-engine): re-locked to "350+" (commit b924d80) and pushed to origin/main 2026-08-16.

@@ -93,12 +93,7 @@ function build(c: {
     sector: c.sector,
     stage: c.stage,
     description: `${c.name} (${c.sector}, ${stageLabel}), GitHub org github.com/${c.githubOrg}. ${c.what}`,
-    title: `${c.name} GitHub Engineering Signals${
-      c.momentum === "accelerating" &&
-      `${c.name} GitHub Engineering Signals: Accelerating`.length <= 60
-        ? ": Accelerating"
-        : ""
-    } ${FRESH_YEAR_STR}`,
+    title: `${c.name} GitHub Engineering Signals ${FRESH_YEAR_STR}`,
     metaDescription: `${c.name} public GitHub engineering profile, sector, stage, repo footprint, and language bias, curated as a ${c.sector} benchmark for investors and operators. Reference profile, reviewed ${REFERENCE_PROFILE_REVIEWED}.`,
     h1: `${c.name} GitHub Engineering Signals`,
     tagline: `A quantitative view of ${c.name}'s public engineering activity, what we track and why investors watch it.`,

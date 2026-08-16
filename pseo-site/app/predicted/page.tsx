@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { FRESH_YEAR_STR } from "@/lib/freshness-year";
 import Link from "next/link";
 import SignalBadge from "@/components/SignalBadge";
 import ShareBar from "@/components/ShareBar";
@@ -18,7 +17,8 @@ import {
 } from "@/lib/predictions";
 
 export const metadata: Metadata = {
-  title: { absolute: `10 Predicted Breakouts Weekly, Graded at 60 Days ${FRESH_YEAR_STR}` },
+  title:
+    "Engineering Acceleration Watch, Weekly Data Index (Not an Accelerator Program)",
   description:
     "A weekly public data feed, not an accelerator program. Every Monday we name 10 startups whose GitHub engineering acceleration crossed the signal threshold. Each pick is graded post-hoc against public fundraise news at 60 and 90 days.",
   alternates: { canonical: "/predicted" },
