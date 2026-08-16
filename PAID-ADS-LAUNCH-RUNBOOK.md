@@ -91,6 +91,71 @@ below: copy, targeting, budgets, destination URLs, and conversion tracking.
 
 ---
 
+## Reddit audience list (pre-built 2026-08-16)
+
+> Researched against the ICP (angels, scouts, seed funds, plus the technical/analyst
+> side that values a GitHub-signal dataset). This supersedes the single-subreddit
+> "targeting r/X" line under each ad group below: every group now has a community set,
+> an interest layer, a keyword layer, and an exclusion set. Subscriber sizes are
+> directional from public 2026 community indexes; the Ads Manager "Communities"
+> typeahead shows live "est. N users" reach, which is the number that actually
+> matters. The $20 probe runs ONLY the `vc` group, so `vc` is the only audience you
+> must build correctly on launch day; the other five are staged for when the verdict
+> raises budget.
+
+### ICP segments and their subreddits
+
+| Segment | Why they convert | Subreddits (approx size, directional) | Intent tier |
+|---|---|---|---|
+| Investor (angels, scouts, seed funds) | Buy the signal directly | r/venturecapital (~60-70k), r/angelinvesting (~65k), r/AngelInvestors (smaller, secondary) | P1 |
+| Founder (raising; many also scout) | Buy for their own raise + to spot peers | r/startups (~1.5M), r/startup (~500k), r/Entrepreneur (~3.2M, broad) | P1-P2 |
+| Technical/data (analyst angels, data buyers, eng-to-investor) | The product's mechanism is GitHub data | r/datasets (~400k), r/datascience (~2.5M), r/MachineLearning (~3M), r/programming (~6M), r/devops (~1M), r/ExperiencedDevs (~600k), r/github (~100k), r/opensource, r/SideProject | P1-P2 |
+| Sector scout (niche funds, sector analysts) | Sector-sweep angle | r/fintech (~300k), r/SaaS (~2M), r/artificial (~1M), r/biotech, r/HealthTech (~100k) | P2 |
+
+### Per-ad-group audience build
+
+| Group | Communities (primary + secondary) | Interest layer | Keyword layer | Exclude |
+|---|---|---|---|---|
+| vc (RUN FIRST) | r/venturecapital + r/angelinvesting + r/AngelInvestors | Venture Capital, Investing, Startups | "deal flow", "venture capital", "angel investing", "seed round", "deal sourcing" | r/investing, r/wallstreetbets, existing site visitors |
+| angel | r/angelinvesting + r/AngelInvestors + r/venturecapital | Angel Investing (if listed), Venture Capital, Investing | "angel investing", "pre-seed", "seed round", "deal flow" | r/investing, existing site visitors |
+| devtools | r/github + r/opensource + r/devops + r/ExperiencedDevs | Software Development, Programming | "github api", "developer tools", "open source data" | r/programming (keep separate), existing site visitors |
+| programming | r/programming + r/datasets + r/datascience | Programming, Data Science | "github dataset", "public dataset", "startup api" | existing site visitors |
+| ml | r/MachineLearning + r/artificial + r/datascience | Artificial Intelligence, Machine Learning | "ai startup", "ml dataset", "github ai" | existing site visitors |
+| startups | r/startups + r/startup + r/EntrepreneurRideAlong | Startups, Entrepreneurship, Small Business | "raising", "funding", "investor", "pitch" | r/Entrepreneur (too broad), existing site visitors |
+
+### Interest targeting stack (Reddit expanded taxonomy, ~152 categories)
+
+Exact labels vary across the 2024-2026 rollout. In the Ads Manager "Interests"
+typeahead, pick the closest live name; these are the canonical categories to seek:
+
+- Core investor interests: Venture Capital, Startups, Investing (NOT Personal Finance), Business & Entrepreneurship, Angel Investing (if listed).
+- Technical/data interests (for devtools/programming/ml): Software Development, Programming, Data Science, Artificial Intelligence, Machine Learning.
+- Exclusion interests (subtract to protect the $20): Personal Finance, Gaming, Cryptocurrency, Sports, Memes.
+
+### Keyword targeting (optional second layer)
+
+Reddit lets you AND a keyword layer onto interest or community targeting for
+immediate intent. For the `vc` probe, adding the keyword terms above tightens to
+people discussing deal flow right now. Trade-off: narrower reach, higher relevance,
+higher CPC. Given a $20 cap over ~4 days, prefer community + interest WITHOUT
+keywords on the first run so the group can spend; add keywords only if day-1 CTR is
+below 0.15%.
+
+### Exclusions to set on every group
+
+- Communities: r/investing, r/wallstreetbets, r/personalfinance, r/stocks, r/CryptoCurrency, r/funny, r/memes, r/gaming.
+- Custom audience: exclude website visitors (30-90d) so the probe measures cold ICP, not warm retargeting.
+- Placement: leave default; conversation placement is where B2B clicks are cheapest, but headlines must stay under 100 chars (already enforced in the ad copy).
+
+### r/SaaS caution
+
+The organic posting account u/Worth_Wealth_6811 is banned from r/SaaS for organic
+posting. That ban does NOT apply to ad targeting, which runs under the ad account
+and can still target r/SaaS subscribers. Keep r/SaaS in the sector-scout tier for
+the sector-sweep angle, but do not attempt organic posting there.
+
+---
+
 ## STEP 1 — Reddit Ads (FIRST, ~€5/day)
 
 **Account:** https://ads.reddit.com → Sign up → add card.
