@@ -2950,6 +2950,31 @@ check(
 );
 
 // ---------------------------------------------------------------------------
+// §36 Mobile tap-target floor (2026-08-17, audit item "mobile-friendliness").
+// Live 375px/360px rendered audit found structural link rows (footer column
+// navs, breadcrumbs, aside lists, RelatedLinks cards) at 15-20px tall, under
+// the WCAG 2.5.8 / Google 24px minimum. Two layers hold the fix:
+//   1. globals.css :where(footer nav a, nav[aria-label="Breadcrumb"] a,
+//      aside ul a) media block (mobile-only, zero-specificity lift).
+//   2. RelatedLinks.tsx min-h-[24px] py-1 on card links (outside footer/aside
+//      scope, so it needs the utility classes).
+// A lineage that reverts either re-ships undersized tap targets on ~3,000 pages.
+check(
+  "app/globals.css",
+  "§36 mobile tap-target floor: the :where(footer nav a, nav[Breadcrumb] a, aside ul a) mobile media block was dropped, re-shipping 15-20px structural link rows",
+  (s) =>
+    s.includes('nav[aria-label="Breadcrumb"] a') &&
+    s.includes("min-height: 24px") &&
+    s.includes("@media (max-width: 767px)"),
+  "restore the mobile tap-target floor block in app/globals.css (see §36 comment)",
+);
+check(
+  "components/RelatedLinks.tsx",
+  "§36 mobile tap-target floor: RelatedLinks card links lost min-h-[24px] py-1",
+  (s) => s.includes("min-h-[24px] py-1"),
+  "restore min-h-[24px] py-1 on the RelatedLinks card Link className",
+);
+
 // §35 Mobile-first indexing parity (2026-08-17). GSC URL Inspection confirms
 // crawledAs=MOBILE on both hosts; a 237-URL live sweep proved byte-identical
 // responses for Googlebot Smartphone / Desktop / Chrome Mobile (only diff:
