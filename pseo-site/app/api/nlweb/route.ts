@@ -1,4 +1,5 @@
 import { NextRequest } from "next/server";
+import { captureAgentRequest } from "@/lib/agent-traffic";
 import {
   getAllSectors,
   getCurrentPeriod,
@@ -435,6 +436,7 @@ export async function OPTIONS() {
 }
 
 export async function POST(request: NextRequest) {
+  await captureAgentRequest("nlweb", request);
   let body: NLWebRequest;
   try {
     body = (await request.json()) as NLWebRequest;

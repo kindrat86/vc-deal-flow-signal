@@ -1,4 +1,5 @@
 import { NextRequest } from "next/server";
+import { captureAgentRequest } from "@/lib/agent-traffic";
 import { randomUUID } from "node:crypto";
 import {
   getAllSectors,
@@ -798,6 +799,7 @@ export async function OPTIONS() {
 }
 
 export async function POST(request: NextRequest) {
+  await captureAgentRequest("a2a", request);
   let body: JsonRpcRequest;
   try {
     body = (await request.json()) as JsonRpcRequest;

@@ -1,4 +1,5 @@
 import { NextRequest } from "next/server";
+import { captureAgentRequest } from "@/lib/agent-traffic";
 import {
   getAllSectors,
   getCurrentPeriod,
@@ -2111,6 +2112,7 @@ export async function OPTIONS() {
 }
 
 export async function POST(request: NextRequest) {
+  await captureAgentRequest("mcp", request);
   // OPTIONAL OAuth 2.1 bearer-token verification.
   // - If Authorization header is present, the token MUST be valid (else 401).
   // - If absent, request is allowed anyway, preserves backward compat for
