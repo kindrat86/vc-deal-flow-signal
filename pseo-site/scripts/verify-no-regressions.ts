@@ -4633,7 +4633,7 @@ landingCheck(
   }
 }
 
-// §56 CTR wave 6b (2026-08-16): portfolio count hooks, 3 founder handles,
+// §57 CTR wave 6b (2026-08-16): portfolio count hooks, 3 founder handles,
 // 5 answers metaTitles, 11 hub titles, 2 startup-idea titles. Every figure
 // derives from the same content files (portfolio length, public roles, page
 // copy), never invented. Fails closed if any lineage reverts a wave-6b title.
@@ -4648,13 +4648,13 @@ landingCheck(
       ]) {
         if (!pf.includes(needle)) {
           failures.push(
-            `§56 portfolio title hook reverted (missing needle: ${needle.slice(0, 60)}...).\n    file: app/fund/[slug]/portfolio/page.tsx\n    fix:  restore the wave-6b count hook + absolute title + plural fix`,
+            `§57 portfolio title hook reverted (missing needle: ${needle.slice(0, 60)}...).\n    file: app/fund/[slug]/portfolio/page.tsx\n    fix:  restore the wave-6b count hook + absolute title + plural fix`,
           );
         }
       }
       if (pf.includes("Portfolio, Companies We Track")) {
         failures.push(
-          `§56 portfolio title regressed to the generic form.\n    file: app/fund/[slug]/portfolio/page.tsx\n    fix:  restore the wave-6b count-hook title`,
+          `§57 portfolio title regressed to the generic form.\n    file: app/fund/[slug]/portfolio/page.tsx\n    fix:  restore the wave-6b count-hook title`,
         );
       }
     }
@@ -4667,7 +4667,7 @@ landingCheck(
       ]) {
         if (!founders.includes(needle)) {
           failures.push(
-            `§56 founder handle hook lost (missing needle: ${needle.slice(0, 60)}...).\n    file: content/founders.ts\n    fix:  restore the wave-6b founder handles`,
+            `§57 founder handle hook lost (missing needle: ${needle.slice(0, 60)}...).\n    file: content/founders.ts\n    fix:  restore the wave-6b founder handles`,
           );
         }
       }
@@ -4683,7 +4683,7 @@ landingCheck(
       ]) {
         if (!answers.includes(needle)) {
           failures.push(
-            `§56 answers metaTitle hook lost: ${needle.slice(9, 60)}...\n    file: content/agent-queries.ts\n    fix:  restore the wave-6b metaTitle on the matching answers entry`,
+            `§57 answers metaTitle hook lost: ${needle.slice(9, 60)}...\n    file: content/agent-queries.ts\n    fix:  restore the wave-6b metaTitle on the matching answers entry`,
           );
         }
       }
@@ -4707,7 +4707,7 @@ landingCheck(
       const src = read(`../${path}`);
       if (src && !src.includes(needle)) {
         failures.push(
-          `§56 hub title hook reverted.\n    file: ${path}\n    fix:  restore the wave-6b title "${needle}"`,
+          `§57 hub title hook reverted.\n    file: ${path}\n    fix:  restore the wave-6b title "${needle}"`,
         );
       }
     }
@@ -4719,13 +4719,14 @@ landingCheck(
       ]) {
         if (!ideas.includes(needle)) {
           failures.push(
-            `§56 startup-idea title hook lost (missing needle: ${needle.slice(0, 60)}...).\n    file: content/startup-ideas.ts\n    fix:  restore the wave-6b idea titles`,
+            `§57 startup-idea title hook lost (missing needle: ${needle.slice(0, 60)}...).\n    file: content/startup-ideas.ts\n    fix:  restore the wave-6b idea titles`,
           );
         }
       }
     }
   }
 }
+
 
 
 
