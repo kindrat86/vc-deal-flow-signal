@@ -194,6 +194,18 @@ export const postPillars: Record<string, string> = {
   "commit-velocity-benchmark-numbers": "engineering-velocity-benchmarks",
   "how-to-evaluate-startup-founders": "founder-evaluation",
   "technical-founder-assessment-github": "founder-evaluation",
+
+  // TOFU pillar cluster (2026-08-16)
+  "venture-scout-programs-how-to-join": "venture-scouting",
+  "pre-seed-vs-seed-vs-series-a": "deal-sourcing-workflow",
+  "what-is-deal-flow-in-venture-capital": "deal-flow-management",
+  "investing-in-open-source-startups": "alternative-data",
+  "vc-signals-signal-vs-noise": "github-signals-methodology",
+  "emerging-manager-deal-sourcing-playbook": "deal-sourcing-workflow",
+  "free-vc-data-sources-guide": "alternative-data",
+  "github-due-diligence-checklist-20-minutes": "startup-due-diligence",
+  "ai-in-vc-deal-sourcing-practical-guide": "deal-sourcing-workflow",
+  "how-to-track-startups-before-they-announce": "deal-sourcing-workflow",
 };
 
 export function getPillarForPost(slug: string): Pillar | undefined {

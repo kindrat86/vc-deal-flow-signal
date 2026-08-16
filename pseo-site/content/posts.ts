@@ -3634,6 +3634,590 @@ Founder evaluation is a judgment call, but it is a judgment call you can now mak
 // Merge in the auto-generated signal report + signal of the week if they exist,
 // then sort newest-first.
 let allPosts = [...posts];
+// ---- TOFU pillar cluster (funnel-coverage win, 2026-08-16; §49-guarded) ----
+const TOFU_POSTS: BlogPost[] = [
+  {
+    slug: "venture-scout-programs-how-to-join",
+    title: "Venture Scout Programs: How to Join One and Actually Earn Carry",
+    description:
+      "A practical guide to venture scout programs: what they are, which funds run them, what they pay, and the five-step process to get selected, including how to build verifiable sourcing receipts before you apply.",
+    summary:
+      "Venture scout programs let community insiders earn carry on deals they refer to funds, and the selection bar is demonstrated deal access, not credentials. This guide covers program mechanics, the major funds running scouts, compensation models from carry to allocated checks, and a five-step application playbook whose core is building a verifiable track record of finding startups before their rounds are announced.",
+    date: "2026-08-16",
+    body: "Venture scout programs have quietly become one of the most common side gigs in technology. A scout finds promising startups, sends them to a fund, and earns carry or cash when the fund invests. No capital required, no full-time role, no office hours. Because scouts see deals before they are announced, the skill that separates a productive scout from a decorative one is almost entirely about timing: you need to reach founders before the round is visible to everyone else.\n\nThis guide explains what venture scout programs are, which funds run the largest ones, what they pay, and, most importantly, how to actually get picked. It is written for engineers, community operators, and early operators who want a structured path into venture without quitting their day job.\n\n## What is a venture scout program?\n\nA venture scout program is a structured arrangement where a venture capital fund compensates outsourced deal finders, called scouts, for startup referrals that convert into investments. Instead of hiring ten analysts, a fund arms a hundred scouts with small checks and asks them to source deals in places the partners do not naturally reach: open-source communities, university labs, niche industry forums, and product-led developer ecosystems.\n\nThe mechanics vary by fund. In a carry model, the scout earns a percentage of fund profits on investments they sourced, commonly 5 to 10 percent of the carry on that deal. In a cash model, the scout receives a finder fee when the fund closes the round, often a few thousand dollars. In an allocated-check model, popularized by [Sequoia's scout program](/blog/venture-scouting-guide), the fund gives each scout a pool of capital to invest directly under the fund's LP structure.\n\n## Which funds run scout programs\n\nMost large funds and many mid-size funds now run some version of scouting. The programs with meaningful scale include Sequoia, Andreessen Horowitz, Accel, Lightspeed, Greylock, Index, and Battery in the United States, alongside newer structured programs from funds like Hustle Fund and Precursor that are explicitly built around community scouts. In Europe, LocalGlobe, Speedinvest, and Seedcamp operate scout networks tuned to their regional ecosystems.\n\nA maintained list of active programs, application links, and compensation structures is kept in the [scout programs directory](https://gitdealflow.com/best/best-scout-programs), which is updated as funds open and close cohorts.\n\n## What scouts actually do all day\n\nThe job has three parts. First, discovery: finding startups that are pre-announcement, typically through communities you already belong to. Second, conviction: forming a view on whether the team is accelerating, since most scouts cannot run a full diligence process. Third, transmission: getting the deal to the fund's pipeline in a form partners will read in under two minutes.\n\nMost scouts fail at the first part, not the second. Waiting for a founder to announce a round on Twitter means competing with every other scout who saw the same post. The scouts who consistently earn carry operate on [leading indicators](/answers/leading-vs-lagging-vc-signals): hiring sprees, open-source activity, product usage shifts, and engineering momentum that precede the announcement by weeks.\n\n## How to get picked for a scout program\n\nFunds select scouts for reach and judgment, in that order. The application itself is short. What gets you selected is demonstrated deal access:\n\n1. Build a track record first. Write publicly about a niche ecosystem, maintain a community, or ship a tool investors use. Scout applications that say \"I know a lot of founders\" get rejected; ones that show a specific, verifiable niche do not.\n2. Show receipts, not claims. The strongest single artifact a scout candidate can hold is a [scout track record](/learn/scout-score-guide) that proves you found companies before their rounds, with dates.\n3. Apply wide, not deep. Scout cohorts run 50 to 200 people. Apply to every program in the [directory](https://gitdealflow.com/best/best-scout-programs); acceptance is a numbers game in a way partner-track hiring never is.\n4. Start scouting without a badge. Send deals to associates at target funds before you have the title. Fund Remembered = fund that reads your emails. A scout who arrives with three sourced deals already forwarded is a scout who gets the next email.\n5. Pick communities where you have unfair access. If you are a maintainer, a conference organizer, or a deep user of a specific tool, your edge lives there, not in generic startup Twitter.\n\n## What scout programs pay\n\nCompensation clusters into three bands. Carry models pay 5 to 10 percent of deal carry, which on a typical seed check of a few hundred thousand dollars compounds into meaningful money only after several years. Cash finder fees are typically 0.5 to 1 percent of the check or a flat 2,000 to 5,000 dollars. Allocated-check models give the scout 25,000 to 100,000 dollars per deal to deploy at their discretion, with the fund as an LP.\n\nThe honest math: most scouts earn nothing. The distribution is power-law, and the median scout sources zero investments per year. The scouts who do well treat it as a systematic sourcing practice, not a lottery ticket.\n\n## The GitHub edge most scouts ignore\n\nEngineering teams preparing to raise behave in observable ways on GitHub before anyone writes a term sheet: commit velocity climbs, contributor count expands, and new repositories appear as the team builds what the pitch deck will demo. Public data of this kind is the cheapest [deal flow signal](/blog/what-is-deal-flow-signal) available to scouts, because it is free, updated weekly, and visible before funding databases record anything.\n\nA practical workflow: monitor the GitHub organizations of startups in your niche, watch for acceleration across commits, contributors, and repositories, and reach out while the round is still forming. The full method, including how to separate real acceleration from a hack-week burst, is documented in the [pre-seed sourcing with GitHub signals](/blog/pre-seed-deal-sourcing-github) playbook.\n\n## Common mistakes and how to avoid them\n\nThree mistakes dominate. Sending deals with no context: partners triage in seconds, so lead with the one-line reason this company, why now. Only forwarding announced rounds: by then the fund has already seen it. And over-indexing on follower counts and press: those are trailing signals. The [investor mistakes post](/blog/investor-mistakes-github-signals) catalogues the full set with the data behind each.\n\n## Key takeaways\n\nVenture scout programs are a real, accessible entry point into venture for people with community access and systematic habits. Getting picked is mostly about demonstrated sourcing ability: receipts from having found companies early. Public engineering signals are the cheapest leading indicator a scout can build on, and the ones who operationalize them consistently outperform the ones who rely on network luck.",
+    relatedSectors: ["enterprise-saas", "ai-ml", "developer-tools"],
+    faqs: [
+      {
+        question: "What is a venture scout program?",
+        answer:
+          "A venture scout program is a structured arrangement where a VC fund compensates external deal finders for startup referrals that convert into investments. Scouts typically earn 5-10 percent carry on deals they source, a cash finder fee, or an allocated check of 25,000 to 100,000 dollars they invest on the fund's behalf.",
+      },
+      {
+        question: "How do I get into a venture scout program?",
+        answer:
+          "Build verifiable sourcing receipts first: a public niche, deals forwarded to funds before announcement, and a track record with dates. Then apply widely, since cohorts run 50-200 people and acceptance is a numbers game. Funds select for reach and demonstrated judgment, not credentials.",
+      },
+      {
+        question: "How much do venture scouts earn?",
+        answer:
+          "Most scouts earn nothing; outcomes are power-law distributed. Productive scouts typically earn 5-10 percent of the carry on sourced deals, 0.5-1 percent cash finder fees, or deploy allocated checks. Carry compounds over years as the portfolio matures.",
+      },
+      {
+        question: "Do I need capital to be a venture scout?",
+        answer:
+          "No. Scout programs exist precisely because funds want your deal access without you risking capital. In carry and finder-fee models the fund's capital is invested; in allocated-check models the fund provides the pool. Your contribution is sourcing and judgment.",
+      },
+      {
+        question: "How do scouts find startups before their round is announced?",
+        answer:
+          "Through leading indicators: GitHub engineering acceleration, hiring bursts, product launches in niche communities, and founder activity in operator networks. Public engineering data is the cheapest leading signal because it updates weekly and precedes funding database entries by weeks.",
+      },
+    ],
+    keyStats: [
+      {
+        value: "5-10%",
+        label:
+          "Typical scout carry on sourced deals",
+      },
+      {
+        value: "25-100k",
+        label:
+          "Allocated check range in direct-invest models",
+      },
+      {
+        value: "50-200",
+        label:
+          "Scouts per cohort at major funds",
+      },
+    ],
+    references: [
+      {
+        label: "1",
+        title: "Venture Scouting: How Scouts and Angels Source Deals Before the Databases",
+        url:
+          "https://signals.gitdealflow.com/blog/venture-scouting-guide",
+        source: "GitDealFlow",
+      },
+      {
+        label: "2",
+        title: "Scout Programs Directory",
+        url:
+          "https://gitdealflow.com/best/best-scout-programs",
+        source: "GitDealFlow",
+      },
+      {
+        label: "3",
+        title: "Engineering Acceleration as a VC Deal Flow Signal",
+        url:
+          "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558",
+        source: "SSRN",
+      },
+    ],
+  },
+  {
+    slug: "pre-seed-vs-seed-vs-series-a",
+    title: "Pre-Seed vs Seed vs Series A: Stage Definitions, Round Sizes, and What Changes for Investors",
+    description:
+      "Clear definitions of pre-seed, seed, and Series A with 2026 round-size and valuation benchmarks from Carta, the investor question each stage asks, and the engineering signals that map to each stage.",
+    summary:
+      "Pre-seed, seed, and Series A are best defined by the question each round answers: can they build, is there a wedge, is there a machine. This guide sets the definitions, anchors them with 2026 Carta benchmarks (median seed 3.1M, median seed post-money 24M, Series A post-money 78.7M), and maps the observable engineering signals that precede each stage transition.",
+    date: "2026-08-16",
+    body: "Investors throw around pre-seed, seed, and Series A as if the boundaries were obvious. They are not. The same company can be pre-seed by check size, seed by valuation, and Series A by traction, depending on who you ask. This guide fixes the definitions, shows the current round-size benchmarks for each stage, and explains what changes in an investor's job at each step.\n\n## The three stages, defined\n\nA [pre-seed round](/blog/pre-seed-deal-sourcing-github) is the first external capital, typically 100,000 to 1 million dollars, often on a SAFE, used to prove that a team can ship anything at all. The product is usually a prototype, the team is founders plus maybe one or two engineers, and the question an investor answers is: can this specific group build?\n\nA seed round, 2 to 5 million dollars at current medians, is about proving the wedge. The company has a working product and some usage; the investor question becomes: is there a repeatable customer motion hiding in here? A [Series A](/blog/series-a-signals-github-data) is about proving the machine: 1.5 to 3 million dollars of annual recurring revenue or the equivalent in usage growth, a hiring plan, and a repeatable sales or growth motion.\n\n## Round sizes and valuations in 2026\n\nBenchmarks shift; these are the 2026 numbers worth knowing. The median US seed round is approximately 3.1 million dollars with a median post-money around 24 million, per Carta's quarterly data. The median Series A post-money has climbed to roughly 78.7 million dollars. Pre-seed rounds are getting smaller and more numerous: Carta's Q1 2026 pre-seed report shows rounds under 1 million now dominate, while the 1 to 2.5 million dollar middle is shrinking.\n\nTwo distortions run through these medians. AI companies raise 30 to 40 percent above the baseline at every stage, pulling averages up while medians hold. And regional variance is large: European medians run 10 to 20 percent below US figures at the same stage labels.\n\n## What each stage asks of an investor\n\nPre-seed is a people bet. Diligence is a founder conversation plus a technical sanity check; the [founder evaluation](/blog/how-to-evaluate-startup-founders) does most of the work. Seed adds product evidence: usage, retention shape, and early engineering velocity, because at 3 million dollars you are funding 18 months of build. Series A diligence is an operating review: cohort retention, unit economics, pipeline coverage, and the [engineering benchmarks](/blog/engineering-velocity-benchmarks-by-stage) of a team that should already look like a company.\n\nWhat does not change across stages: the value of seeing the company before the round is competitive. Every stage's best returns come from being early into the [deal sourcing](/topics/deal-sourcing-workflow) process, not from winning the announced deal at a higher price.\n\n## Signals that map to each stage\n\nThe observable leading signals differ by stage. Pre-seed: founding-team commit history, a first burst of repository creation, founder visibility in technical communities. Seed: sustained commit-velocity growth, first external contributors, the integration-and-SDK buildout that precedes a platform push. Series A: contributor count compounding quarter over quarter, repository expansion into new product surfaces, and hiring-burst patterns in engineering roles. The [engineering acceleration guide](/blog/what-is-engineering-acceleration) walks through reading these patterns honestly, including how often they fire without a round following.\n\n## Key takeaways\n\nUse the definitions by question, not by dollars: pre-seed asks can they build, seed asks is there a wedge, Series A asks is there a machine. Anchor round-size expectations to 2026 medians, roughly 1 million or less at pre-seed, 3.1 million at seed, and 12 to 18 million at Series A, with an AI premium layered on top. And whatever the stage, the edge comes from arriving before the announcement, which is a sourcing problem, not a valuation problem.\n\n## How investors misprice stage labels\n\nThe labels drift upward in hot markets. What was called a Series A in 2021, 15 million dollars on 2 million of ARR, would be labeled a seed today by half the market. The drift matters because comparables leak across labels: an investor benchmarking a seed deal against 2021 \"Series A\" metrics will systematically over- or under-price. The defense is to price on evidence, engineering traction, revenue shape, team completeness, and treat the label as marketing.\n\nThe reverse error is cheaper to make and more common: passing on a \"seed\" that is really a Series A in disguise. When a company raises 4 million dollars with revenue, a complete team, and compounding [engineering velocity](/blog/what-is-engineering-acceleration), the label on the round does not change what you own. Investors who read evidence first and labels second catch these; label-first investors discover them at the next round at triple the price.\n\n## A worked example of the three questions\n\nConsider one company at three moments. Month 0: two founders, a prototype, 90 days of commit history, no users. That is a pre-seed bet: the question is whether this team ships, and the commit history plus [founder evaluation](/blog/how-to-evaluate-startup-founders) is most of the diligence. Month 9: product live, first paying teams, commit velocity doubling, first external contributor. That is a seed: the wedge question, answered partly by usage and partly by the [engineering acceleration](/blog/how-to-read-github-signals-for-startup-investing) that signals a team building beyond its headcount. Month 22: 2 million ARR, 18 engineers, contributor graph compounding. That is a Series A priced on the machine.\n\nThe same company, three different diligence stacks, and the investor who knows which question they are answering spends diligence time on the right evidence every time.\n\n## Stage-strategy fit for small funds\n\nSmall funds and angels have a structural edge at pre-seed and a structural disadvantage at Series A and later. The edge: pre-seed decisions are people-and-artifact decisions, exactly what a solo investor with deep technical or community knowledge does well, and check sizes are small enough that access is not gated. The disadvantage: by Series A, price and access are set by lead funds with platforms. The strategic implication is to concentrate sourcing effort where the edge lives, and the [pre-seed sourcing playbook](/blog/pre-seed-deal-sourcing-github) operationalizes exactly that with public engineering data.",
+    relatedSectors: ["ai-ml", "enterprise-saas", "fintech"],
+    faqs: [
+      {
+        question: "What is the difference between pre-seed and seed?",
+        answer:
+          "Pre-seed is the first external capital, typically under 1 million dollars, proving a team can build; the diligence question is about the founders. Seed is typically 2-5 million dollars proving a repeatable wedge exists; the question is about product-market fit signals. Series A then asks whether the motion is a machine, with revenue or usage proof.",
+      },
+      {
+        question: "What is the median seed round size in 2026?",
+        answer:
+          "The median US seed round is approximately 3.1 million dollars, with median post-money around 24 million dollars per Carta data. AI companies raise roughly 30-40 percent above these baselines, and European medians run 10-20 percent below US figures.",
+      },
+      {
+        question: "How much is a typical Series A in 2026?",
+        answer:
+          "A typical US Series A in 2026 raises 10-20 million dollars at a median post-money of roughly 78.7 million dollars. Companies arriving at A typically show 1.5-3 million ARR or equivalent usage growth, with a repeatable growth motion.",
+      },
+      {
+        question: "Which stage is riskiest for investors?",
+        answer:
+          "Per-dollar, pre-seed carries the highest failure rate but the lowest check size and earliest price; power-law returns depend more on entering before momentum is priced. Seed concentrates pricing risk: the wedge may be real but the market may pay seed prices for pre-seed evidence. Series A concentrates competition risk, since visible traction attracts every fund.",
+      },
+      {
+        question: "What engineering signals appear before each stage?",
+        answer:
+          "Before pre-seed announcements: founding-team commit history and first repository bursts. Before seed: sustained commit-velocity growth and first external contributors. Before Series A: contributor compounding, repository expansion into new product surfaces, and engineering hiring bursts. All are observable in public GitHub data weeks before announcements.",
+      },
+    ],
+    keyStats: [
+      {
+        value: "3.1M",
+        label:
+          "Median US seed round (Carta 2026)",
+      },
+      {
+        value: "24M",
+        label:
+          "Median seed post-money",
+      },
+      {
+        value: "78.7M",
+        label:
+          "Median Series A post-money",
+      },
+    ],
+    references: [
+      {
+        label: "1",
+        title: "Record-Setting Early Stage Valuations",
+        url:
+          "https://carta.com/data/record-setting-valuations",
+        source: "Carta",
+      },
+      {
+        label: "2",
+        title: "State of Pre-Seed: Q1 2026",
+        url:
+          "https://carta.com/data/state-of-pre-seed-q1-2026",
+        source: "Carta",
+      },
+      {
+        label: "3",
+        title: "Engineering Acceleration as a VC Deal Flow Signal",
+        url:
+          "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558",
+        source: "SSRN",
+      },
+    ],
+  },
+  {
+    slug: "what-is-deal-flow-in-venture-capital",
+    title: "What Is Deal Flow in Venture Capital? Definition, Sources, and How to Measure It",
+    description:
+      "A precise definition of deal flow in VC, the four sources (inbound, referral, outbound, proprietary data), the three quality dimensions, and the four monthly metrics that show whether your pipeline is improving.",
+    summary:
+      "Deal flow is the stream of investment opportunities an investor evaluates, and its quality reduces to fit, timing, and conversion. This guide defines the term precisely, breaks down the four sourcing channels from inbound to proprietary data, and gives the four monthly metrics, led by pre-announcement share, that separate a compounding pipeline from a volume illusion.",
+    date: "2026-08-16",
+    body: "Deal flow is the stream of investment opportunities that reaches an investor over time. In venture capital, it is the raw material of the business: no pipeline, no returns. But the term is used loosely, and the difference between high-quality and low-quality deal flow is the difference between a fund that compounds and one that pays fees for optionality. This guide defines deal flow precisely, explains the quality dimensions that matter, and shows how to measure whether yours is improving.\n\n## Deal flow defined\n\nFormally, deal flow is the set of startup investment opportunities an investor evaluates in a period. It has a volume component, how many opportunities, and a quality component, how many are the kind of companies this investor should actually own. A solo angel reviewing 40 pitches a month and a 2-billion-dollar fund reviewing 4,000 have deal flow; only one of them has a filter that turns volume into returns.\n\nThe industry shorthand [deal flow signal](/blog/what-is-deal-flow-signal) refers to any indicator that surfaces a company early enough to matter. Signals differ from flow: flow is what arrives, signals are what you hunt. The investors with the best outcomes hunt.\n\n## The four sources of deal flow\n\nOpportunities arrive through four channels. Inbound: founders apply directly or through platforms. Referral: networks, other founders, and [scouts](/blog/venture-scouting-guide) send deals. Outbound: the investor identifies and contacts companies. Proprietary data: the investor observes the company through a channel others do not monitor, such as public engineering activity on GitHub. The [47 alternative data sources guide](/blog/47-alternative-data-sources-angel-investors-2026) catalogues the observable web exhaust startups emit between rounds.\n\nThe strategic difference: inbound and referral are contested and arrive priced. Outbound and proprietary are earned and arrive early. Funds that systematically beat their thesis returns skew heavily toward the last two.\n\n## Quality: the three dimensions\n\nVolume is easy to grow and mostly worthless alone. Quality has three measurable dimensions. Fit: the fraction of opportunities matching stage, sector, and geography mandate. Timing: the fraction arriving before announcement or before momentum is visible to every other fund. Conversion: sourced-to-invested ratio, which measures whether your filter works. A [deal flow scoring framework](/blog/deal-flow-scoring-framework) makes these explicit; a [management system](/blog/deal-flow-management-for-early-stage-investors) keeps them from rotting quarter to quarter.\n\n## How to measure deal flow honestly\n\nTrack four numbers monthly: opportunities reviewed, fit rate, pre-announcement share, and sourced-to-invested conversion. The most diagnostic is pre-announcement share, the percentage of opportunities you saw before the round was public. It collapses the whole sourcing strategy into one number: inbound-heavy investors sit near 10 percent; signal-driven investors run 50 percent and higher. Public [engineering signals](/blog/how-to-read-github-signals-for-startup-investing) are the cheapest way to lift it, because commit, contributor, and repository trends are observable weeks before any database records the round.\n\n## Key takeaways\n\nDeal flow is the input stream; signal quality is what makes it investable. Grow the pre-announcement share of your pipeline and the other metrics follow. Measure monthly, score consistently, and prefer proprietary observation over contested inbound: those three habits are the entire difference between having deal flow and having a funnel that compounds.\n\n## The economics of deal flow\n\nDeal flow quality compounds like interest. An investor whose pipeline is 30 percent pre-announcement this year sees companies at prices set before competition; the winners of that vintage enter the network as founders who refer the next generation, improving referral quality two years out. Volume does the opposite: more unfiltered inbound means more hours per decision and no improvement in what arrives. This is why the [deal flow management guide](/blog/deal-flow-management-for-early-stage-investors) treats the pipeline as a system with a weekly rhythm rather than an inbox.\n\nThe metric that captures the compounding is sourced-deal concentration: what share of your investments came from channels you built rather than channels that found you. Funds that track it discover the same pattern the [47-source catalogue](/blog/47-alternative-data-sources-angel-investors-2026) implies: the built channels, monitoring, community, proprietary data, supply the deals with the best entry timing, while the found channels, inbound and cold referral, supply the most competitive ones.\n\n## Common deal flow myths\n\nThree myths do damage. \"More deal flow is better\": true only up to the point where review capacity thins; beyond that, added volume degrades decisions. \"Warm intros guarantee quality\": they guarantee effort by the introducer, not fit, and they filter out founders without networks, which is a real bias with real cost. \"Proprietary deal flow means secret deals\": in practice it means proprietary observation, seeing a company through a channel others ignore, like public engineering data, rather than exclusive access. Each myth pushes investors toward volume and contest; the correction in every case is timing, fit, and receipts.\n\n## From definition to practice\n\nThe definition is the easy part. The practice is a [weekly workflow](/blog/deal-sourcing-workflow-weekly): a monitored universe, a detection pass, a triage rubric, and outreach with logged evidence. Investors who install the loop report the same shift: the pipeline stops being something that happens to them and becomes something they operate. That operational posture, more than any single source, is what the term deal flow was always pointing at.",
+    relatedSectors: ["enterprise-saas", "fintech", "ai-ml"],
+    faqs: [
+      {
+        question: "What is deal flow in venture capital?",
+        answer:
+          "Deal flow is the stream of investment opportunities an investor evaluates over a period. It has a volume dimension (how many opportunities) and a quality dimension (fit, timing, and conversion). The term is often misused for volume alone; in practice, quality-adjusted deal flow is what drives returns.",
+      },
+      {
+        question: "What are the main sources of VC deal flow?",
+        answer:
+          "Four sources: inbound (founders applying directly), referral (networks, founders, scouts), outbound (investor-initiated contact), and proprietary data (observing companies through channels others do not monitor, like public GitHub engineering activity). Inbound and referral are contested and arrive priced; outbound and proprietary arrive early.",
+      },
+      {
+        question: "How do you measure deal flow quality?",
+        answer:
+          "Track four numbers monthly: opportunities reviewed, fit rate, pre-announcement share, and sourced-to-invested conversion. Pre-announcement share is the most diagnostic: the percentage of opportunities seen before the round was public. Inbound-heavy investors sit near 10 percent; signal-driven investors exceed 50 percent.",
+      },
+      {
+        question: "Why does deal flow matter more than picking skill?",
+        answer:
+          "Because entry timing dominates pricing. The best returns come from seeing companies before momentum is priced in, which is a sourcing outcome, not a selection outcome. An investor with mediocre picking but a 60 percent pre-announcement pipeline will outperform a brilliant picker fed by announced deals.",
+      },
+    ],
+    keyStats: [
+      {
+        value: "4",
+        label:
+          "Deal flow sources: inbound, referral, outbound, proprietary",
+      },
+      {
+        value: "3",
+        label:
+          "Quality dimensions: fit, timing, conversion",
+      },
+      {
+        value: "50%+",
+        label:
+          "Pre-announcement share of signal-driven pipelines",
+      },
+    ],
+    references: [
+      {
+        label: "1",
+        title: "What Is Deal Flow Signal?",
+        url:
+          "https://signals.gitdealflow.com/blog/what-is-deal-flow-signal",
+        source: "GitDealFlow",
+      },
+      {
+        label: "2",
+        title: "A Deal Flow Scoring Framework",
+        url:
+          "https://signals.gitdealflow.com/blog/deal-flow-scoring-framework",
+        source: "GitDealFlow",
+      },
+    ],
+  },
+  {
+    slug: "investing-in-open-source-startups",
+    title: "Investing in Open-Source Startups: The Metrics That Predict Fundraises",
+    description:
+      "How investors read open-source activity as an asset class: the structural shifts that made repositories investable, the momentum metrics with predictive content, and the weekly workflow to operationalize sourcing from public data.",
+    summary:
+      "Open source became an investable asset class when revenue models matured and the engineering data stayed public. This guide separates signal from noise: commit velocity, contributor breadth, and dependency adoption as the momentum composite that precedes fundraises, the gameability caveats, and the weekly workflow for sourcing open-source startups from public data.",
+    date: "2026-08-16",
+    body: "Open source used to be a cost center investors tolerated. Now it is a category-defining investment thesis: developer-tools companies, AI infrastructure, and entire infrastructure stacks are built in public repositories, and the companies that build them well exhibit measurable engineering behavior before their fundraises. This guide is for investors who want to read open-source activity as an asset class signal, not as a novelty.\n\n## Why open source became investable\n\nThree structural shifts. First, revenue models matured: open-core, managed cloud, and enterprise support turned repositories into businesses. Second, distribution moved into the repositories themselves: a library that reaches a million downloads carries its own go-to-market. Third, the observable data got rich: commits, contributors, issues, and dependency adoption are all public, which means diligence and [sourcing](/blog/source-startup-deals-before-crunchbase) can run on evidence rather than narrative. The [open-source startup investor guide](/blog/open-source-startups-investor-guide) covers the full framework.\n\n## The metrics that matter\n\nStar counts are marketing. The metrics with predictive content are usage and momentum: weekly commit velocity and its slope, distinct active contributors and their growth, dependency adoption inside other projects, and issue-to-resolution cadence. The [engineering metrics investors should track](/blog/startup-engineering-metrics-investors-should-track) post defines each precisely. Two composite views matter most: acceleration, multiple metrics rising together over a 28-day window, and breadth, growth spreading across repositories rather than concentrated in one.\n\nThe honest caveat: open-source activity is gameable, and the [investor mistakes post](/blog/investor-mistakes-github-signals) details the failure modes. Hack weeks, grant-funded bursts, and bounty-driven contributor counts all mimic acceleration. The defense is multi-metric confirmation: velocity plus contributors plus dependency adoption moving together is far harder to fake than any single number.\n\n## Case pattern: what a pre-round open-source company looks like\n\nAcross the tracked panel, companies within weeks of a fundraise tend to show: commit velocity up 40 percent or more over their trailing baseline, contributor count expanding past the founding team, new repositories appearing for integrations or SDKs, and issue cadence tightening as the team preps for the launch that will anchor the round. None of this guarantees a round; all of it narrows the search space from thousands of orgs to dozens.\n\n## How to operationalize it\n\nYou do not need to build scrapers. The public panel tracks hundreds of startup GitHub organizations across 15 sectors with weekly refreshes, free [APIs and an MCP server](https://gitdealflow.com/best/best-deal-flow-tools), and a [momentum ranking](/startups) that surfaces who is accelerating now. The workflow: weekly review of sector movers, cross-check against your thesis, then founder outreach while the round is still forming. The [weekly sourcing workflow](/blog/deal-sourcing-workflow-weekly) templates the cadence.\n\n## Key takeaways\n\nOpen source is now an investable, observable asset class. Read momentum, not stars: commit velocity, contributor breadth, and dependency adoption moving together. Expect gameability and defend with multi-metric confirmation. And operationalize with a weekly cadence, because the signal decays: the company accelerating this week is the company being pitched to every fund next month.\n\n## Sector patterns in open-source momentum\n\nMomentum reads differently by sector, and unnormalized comparison is the most common analytical error. Developer-tools companies live in public: high commit counts, fast dependency adoption, contributor communities that include users. AI-infrastructure companies show burst patterns tied to research releases. Data infrastructure shows steady, high-cadence engineering with slower but very sticky adoption. Enterprise SaaS, as the [sector taxonomy post](/blog/enterprise-saas-github-signal-patterns) documents, runs 35 to 60 percent lower baseline velocity than AI at the same stage, which means a 50 percent velocity increase at an enterprise SaaS company is a stronger signal than the same move at an AI startup.\n\nThe practical rule: benchmark within sector, then read the slope. The [engineering velocity benchmarks by stage](/blog/engineering-velocity-benchmarks-by-stage) provide the reference distributions, and the weekly [sector movers](/startups) ranking does the normalization work up front.\n\n## Valuation and diligence adjustments\n\nOpen-source companies carry three diligence questions closed-source companies do not. Conversion: is there evidence of paid conversion on the free base, usage telemetry, enterprise features, support contracts. Concentration: is adoption concentrated in a few large accounts that could churn as a bloc. Governance: who holds maintainership, and can a fork threaten the position. None of these appear in star counts; all of them appear in the combination of repository data, [engineering metrics](/blog/startup-engineering-metrics-investors-should-track), and customer conversations.\n\nThe valuation upside is structural: open-source distribution lowers customer acquisition cost, and the public data lowers investor information cost. When both hold, open-source companies deserve to trade at a premium to their closed peers at the same traction level, and increasingly do.",
+    relatedSectors: ["developer-tools", "ai-ml", "data-infrastructure"],
+    faqs: [
+      {
+        question: "Is GitHub stars a good investment signal?",
+        answer:
+          "No. Star counts are marketing artifacts: easy to farm, slow to decay, and weakly correlated with product usage. The metrics with predictive content are weekly commit velocity and its slope, distinct active contributor growth, dependency adoption in downstream projects, and issue-resolution cadence.",
+      },
+      {
+        question: "Which GitHub metrics predict fundraising?",
+        answer:
+          "The composite that matters is acceleration: commit velocity up 40 percent or more over baseline, contributor count expanding beyond the founding team, new integration or SDK repositories appearing, and issue cadence tightening, all within the same multi-week window. No single metric predicts; the joint movement does.",
+      },
+      {
+        question: "Can GitHub signals be gamed?",
+        answer:
+          "Yes. Hack weeks, grant-funded activity bursts, and bounty-driven contributor counts can mimic acceleration on a single metric. The defense is multi-metric confirmation: velocity, contributors, and dependency adoption rising together is far harder to fake. Repository segmentation, checking which repos accelerate, separates compliance work from product push.",
+      },
+      {
+        question: "How do I track open-source startups for investing?",
+        answer:
+          "Track GitHub organizations as assets: weekly commit velocity, contributor counts, and repository expansion, refreshed on a fixed cadence. The public GitDealFlow panel covers hundreds of startup orgs across 15 sectors with free APIs and an MCP server; the workflow is weekly sector review, thesis cross-check, then outreach while rounds are still forming.",
+      },
+    ],
+    keyStats: [
+      {
+        value: "40%+",
+        label:
+          "Commit-velocity lift typical of pre-round acceleration",
+      },
+    ],
+    references: [
+      {
+        label: "1",
+        title: "Open-Source Startups: An Investor Guide",
+        url:
+          "https://signals.gitdealflow.com/blog/open-source-startups-investor-guide",
+        source: "GitDealFlow",
+      },
+      {
+        label: "2",
+        title: "5 GitHub Patterns That Predict Fundraises",
+        url:
+          "https://signals.gitdealflow.com/blog/5-github-patterns-that-predict-fundraises",
+        source: "GitDealFlow",
+      },
+    ],
+  },
+  {
+    slug: "vc-signals-signal-vs-noise",
+    title: "VC Signals: Separating Signal from Noise in Startup Data",
+    description:
+      "How to evaluate VC signals: the three properties of a useful signal (observable early, costly to fake, sector-normalized), the four signal families ranked by lead time, and the three tests that keep noise off your scorecard.",
+    summary:
+      "Not every moving number is a signal. This guide defines what makes a VC signal useful, lead time, costly-to-fake, and sector-normalized movement, ranks the four signal families from engineering to market data, and gives three tests (dated receipts, base rates, fakeability cost) that separate investable signal from dashboard decoration.",
+    date: "2026-08-16",
+    body: "Every investor has signals; few have a filter. The difference decides returns. A signal is any observable that correlates with an outcome you care about, and noise is everything else. In early-stage venture, the outcome is usually fundraise quality or company survival, and the discipline is separating observables that carry information from ones that merely move together with attention.\n\n## Signals vs noise: the definitions that matter\n\nA useful signal has three properties: it is observable before the outcome, it is costly to fake, and it survives sector normalization. Press coverage fails all three, it arrives after the fact, is bought, and means different things in fintech versus dev tools. Engineering activity passes: commit, contributor, and repository trends are public, updated continuously, and expensive to sustainably fake. The [leading vs lagging VC signals](/answers/leading-vs-lagging-vc-signals) breakdown formalizes the taxonomy.\n\n## The four families of VC signal\n\nPractically, signals cluster into four families. Engineering signals: GitHub activity, the longest lead time at three to six weeks pre-announcement and the hardest to game. Hiring signals: job postings and team expansion, two to eight weeks. Product signals: launches, changelogs, dependency adoption. Market signals: press, funding-database entries, social spikes, all trailing. The [deal flow signal guide](/blog/what-is-deal-flow-signal) ranks the families by lead time and gameability, and the [alternative data overview](/blog/alternative-data-venture-capital) situates them in the broader data landscape.\n\n## How to test whether a signal is real\n\nThree tests. Lead-time test: does the observable move before the outcome, dated receipts, not retrospective stories. Base-rate test: what fraction of the time does the signal fire without the outcome following; a [signal that fires without a round](/blog/investor-mistakes-github-signals) half the time still narrows the funnel enormously, but you must know the base rate. Costly-to-fake test: could a founder induce the observable for under 1,000 dollars; if yes, discount it. Signals passing all three earn a place in the [scoring framework](/blog/deal-flow-scoring-framework); the rest are dashboard decoration.\n\n## Normalization: why raw numbers mislead\n\nRaw activity levels are sector-confounded. AI startups commit more than enterprise SaaS at every stage; comparing them unnormalized rewards the wrong companies. Normalize within sector and stage, read the slope not the level, and weight breadth, multiple metrics moving together, over any single series. The [engineering velocity benchmarks by stage](/blog/engineering-velocity-benchmarks-by-stage) and [sector taxonomy post](/blog/enterprise-saas-github-signal-patterns) provide the reference distributions.\n\n## Key takeaways\n\nSignal quality is defined by lead time, fakeability cost, and sector-normalized movement. Engineering signals dominate on all three axes, which is why they anchor most systematic sourcing stacks. Test every candidate signal against dated receipts and base rates before it enters your scorecard, and normalize within sector and stage before comparing any two companies.\n\n## A worked example of signal decay\n\nSignals decay as they get adopted. Job-posting data was a genuine edge for sourcing in the early 2010s; by the time every fund scraped the same boards, the lead time compressed toward zero and the signal became table stakes. The pattern repeats: press mentions, Product Hunt rankings, app-store rank tracking, each was an edge, then a feature, then noise. The implication is not cynicism, it is portfolio thinking about signals themselves: hold several, measure each one's base rate continuously, and expect today's proprietary observable to be next year's commodity.\n\nEngineering signals are earlier in this lifecycle than hiring or web-traffic data, partly because reading them requires more interpretation. Interpretation cost is a moat: the observables are free, but the sector-normalized reading of them is work. That gap between raw access and usable signal is where the current edge lives, and the [how-to-read guide](/blog/how-to-read-github-signals-for-startup-investing) exists to close it for you faster than the market closes it for everyone.\n\n## Building a personal signal register\n\nThe durable practice is a register: a written list of every observable you use, with for each its lead time, its base rate from your own logged history, its fakeability cost, and its sector caveats. The register turns signal evaluation from vibes into maintenance: when a signal's base rate degrades, you see it in the numbers and demote it. Most investors never write this down, which is why most investors run the same decaying signals for a decade. The [scoring framework](/blog/deal-flow-scoring-framework) gives the structure; the register is the habit that keeps it honest.\n\n## The base-rate discipline\n\nWhen a signal fires, ask: of the last hundred times something like this fired, how many rounds followed within eight weeks. If you have not been logging, start now, because the register's value accrues from your own data, not from industry averages. Six months of honest logging beats any borrowed benchmark, and the companies you logged and passed on are the control group that makes the whole exercise scientific rather than anecdotal.",
+    relatedSectors: ["ai-AA", "enterprise-saas", "fintech"],
+    faqs: [
+      {
+        question: "What is the difference between a VC signal and noise?",
+        answer:
+          "A signal is an observable that correlates with an outcome and moves before it; noise is correlation without information. Practically, a useful VC signal is observable before the outcome, costly to fake, and survives sector normalization. Press coverage and follower counts typically fail these tests; engineering activity passes them.",
+      },
+      {
+        question: "Which VC signals have the longest lead time?",
+        answer:
+          "Engineering signals from public GitHub data lead fundraise announcements by three to six weeks in the tracked panel, the longest of the four families. Hiring signals lead two to eight weeks, product signals two to four, and market signals like press and funding databases are trailing, arriving with or after the announcement.",
+      },
+      {
+        question: "How do you test if a startup signal is real?",
+        answer:
+          "Three tests: the lead-time test (dated receipts showing the observable moved before the outcome), the base-rate test (how often the signal fires with nothing following), and the costly-to-fake test (whether a founder could induce it cheaply). Only signals passing all three belong on a scorecard.",
+      },
+    ],
+    keyStats: [
+      {
+        value: "3",
+        label:
+          "Properties of a useful signal: early, costly to fake, normalized",
+      },
+    ],
+    references: [
+      {
+        label: "1",
+        title: "Leading vs Lagging VC Signals",
+        url:
+          "https://signals.gitdealflow.com/answers/leading-vs-lagging-vc-signals",
+        source: "GitDealFlow",
+      },
+    ],
+  },
+  {
+    slug: "emerging-manager-deal-sourcing-playbook",
+    title: "The Emerging-Manager Deal Sourcing Playbook: Building Proprietary Deal Flow on Public Data",
+    description:
+      "A 90-day playbook for emerging managers: build a sourcing engine on public engineering data, run detection-triage-outreach in two hours a week, and produce the dated receipts LP diligence actually asks for.",
+    summary:
+      "Emerging managers cannot out-network platform funds; they out-observe them. This playbook builds the three-part engine, coverage of thesis-sector GitHub orgs, weekly momentum detection, and a scoring triage, on public data in under two hours a week, installs it over 90 days with calibration before outreach, and produces the dated pre-announcement receipts that LP sourcing diligence rewards.",
+    date: "2026-08-16",
+    body: "Emerging managers, funds one through three, raise on track record they do not yet have. The pitch to LPs is process: a repeatable sourcing engine, a disciplined filter, and receipts showing the process found real companies early. This guide is the playbook for building that engine on public data instead of headcount.\n\n## The emerging-manager sourcing problem\n\nAn emerging manager's constraint is not ideas; it is coverage with zero analysts. You cannot out-network Sequoia, and you cannot out-research a platform fund. What you can do is out-observe: monitor the public exhaust of thousands of startups, engineering activity, hiring, product changes, and arrive at the interesting ones before the network hears about them. The [deals-before-databases approach](/blog/source-startup-deals-before-crunchbase) is the core pattern: proprietary observation beats contested referrals.\n\n## Building the engine on public data\n\nThe engine has three components. Coverage: a monitored universe, in practice the GitHub organizations of startups in your thesis sectors. Detection: weekly momentum scoring across commits, contributors, and repositories, normalized within sector and stage; the [momentum ranking](/startups) does this across 15 sectors with a free [API](/api/signals.json). Triage: a scoring rubric that converts detections into outreach decisions, templated in the [deal flow scoring framework](/blog/deal-flow-scoring-framework). The whole loop runs in under two hours a week, which is the point: it must survive fundraising season.\n\n## What LPs actually ask about sourcing\n\nIn diligence, LPs ask three sourcing questions: how do you see deals others do not, what is your pre-announcement share, and show me the receipts. The third is the differentiator. A dated log of companies identified before their rounds, with the signal snapshot at identification, is an artifact almost no emerging manager has. The [scout receipts](/learn/scout-score-guide) pattern, verifiable identification before announcement, is directly transplantable to fund diligence.\n\n## The 90-day installation plan\n\nInstall in quarters. Days 1-30: pick two sectors, subscribe to the weekly panel, and run detection-only; no outreach, just calibration of what acceleration looks like in your niche. Days 31-60: add triage and a simple [pipeline system](/blog/deal-flow-management-for-early-stage-investors), begin outreach on the top decile. Days 61-90: publish the cadence internally, log receipts, and cut what you have not used. The failure mode is starting outreach in week one, when every signal looks actionable and the base rates are unknown.\n\n## Key takeaways\n\nEmerging managers win by out-observing, not out-networking. The engine is coverage, detection, triage on public data, installed over 90 days with calibration before outreach. And the LP-diligence artifact that closes is receipts: a dated, verifiable log of companies you identified before their announcements.\n\n## Case pattern: the first fundable discovery\n\nWhat does success look like in month two. A manager tracking developer-tools sees an org appear in the weekly [movers list](/startups): commit velocity up 60 percent over its trailing baseline, two new integration repositories, first external contributor. Cross-check adds an engineering job posting posted nine days ago. The manager reaches out referencing the integration work, learns a launch and a round are both in motion, and gets a meeting a month before the round is announced. That single dated receipt, signal snapshot, outreach date, meeting outcome, is worth more in the next LP conversation than a thesis deck, because it demonstrates the engine working end to end.\n\nThis is the pattern repeated: detection from public data, cross-check on a second layer, evidence-first outreach. The [deals-before-databases guide](/blog/source-startup-deals-before-crunchbase) walks the same loop with more operational detail.\n\n## Budget and tooling reality\n\nThe engine runs on free tiers: the public [signals API](/api/signals.json) and MCP server for coverage, job boards and changelogs for cross-checks, a spreadsheet for the pipeline until volume justifies a CRM. The paid stack, contact enrichment, panel history, becomes worth it only when outbound volume makes manual lookups the bottleneck; the [free VC tools answer](/answers/free-vc-tools-for-emerging-fund-managers) and the [deal flow tools comparison](https://gitdealflow.com/best/best-deal-flow-tools) price those upgrade points honestly. Until then, the constraint is never data cost; it is cadence.\n\n## Failure modes for new managers\n\nThree failures recur. Starting outreach before calibration: week-one signals all look actionable, and burned outreach cannot be un-burned. Monitoring too wide: fifteen sectors with no thesis is a dashboard, not a strategy; two sectors read deeply beats fifteen scanned. And stopping the log: the receipts file is the compounding asset, and it only compounds if every outreach, hit or miss, gets an entry. The managers who keep the log through the boring weeks are the ones holding LP-grade evidence at month eighteen.",
+    relatedSectors: ["enterprise-saas", "ai-ml", "fintech"],
+    faqs: [
+      {
+        question: "How do emerging managers build proprietary deal flow?",
+        answer:
+          "By out-observing rather than out-networking: monitor the public engineering activity of startups in thesis sectors, detect momentum weekly with sector-normalized scoring, and reach out before rounds are announced. Public GitHub data is the cheapest coverage layer because it updates weekly and precedes funding databases by weeks.",
+      },
+      {
+        question: "What do LPs ask about an emerging manager's sourcing?",
+        answer:
+          "Three questions: how do you see deals others do not, what share of your pipeline arrives pre-announcement, and can you show receipts. A dated log of companies identified before their rounds, with the signal snapshot at identification, is the strongest sourcing artifact an emerging manager can present.",
+      },
+      {
+        question: "How long does it take to install a signal-driven sourcing engine?",
+        answer:
+          "About 90 days: days 1-30 detection-only calibration in two sectors, days 31-60 add triage and top-decile outreach, days 61-90 systematize, log receipts, and prune unused coverage. The common failure is starting outreach in week one, before base rates are calibrated.",
+      },
+    ],
+    keyStats: [
+      {
+        value: "2 hrs/wk",
+        label:
+          "Time to run the full detection-triage loop",
+      },
+      {
+        value: "90 days",
+        label:
+          "Installation window: calibrate, then outreach",
+      },
+    ],
+    references: [
+      {
+        label: "1",
+        title: "Source Startup Deals Before the Databases",
+        url:
+          "https://signals.gitdealflow.com/blog/source-startup-deals-before-crunchbase",
+        source: "GitDealFlow",
+      },
+      {
+        label: "2",
+        title: "Deal Flow Management for Early-Stage Investors",
+        url:
+          "https://signals.gitdealflow.com/blog/deal-flow-management-for-early-stage-investors",
+        source: "GitDealFlow",
+      },
+    ],
+  },
+  {
+    slug: "free-vc-data-sources-guide",
+    title: "Free VC Data Sources: The Complete Guide for Early-Stage Investors",
+    description:
+      "A complete map of free startup data for investors: the coverage/verification/monitoring/tooling layers, what free data honestly cannot do, the two-hour weekly workflow built on it, and the trigger points for paying.",
+    summary:
+      "Most data an early-stage investor needs is free. This guide layers the free stack, GitHub and public signals APIs for coverage, Crunchbase free tier and Form D filings for verification, momentum rankings and job boards for monitoring, and defines the honest limits (open-source over-representation, thin history, round-data lag) plus the trigger points at which paying for enrichment beats free.",
+    date: "2026-08-16",
+    body: "The expensive platforms are good at what they do, but a majority of the data an early-stage investor needs is free. This guide maps the free tier of the startup-data world: what each source actually covers, what it cannot do, and how to combine them into a working stack that costs nothing and beats a naive expensive stack at sourcing timing.\n\n## The free stack, by layer\n\nCoverage layer, who exists: GitHub itself, the org pages of every startup that builds in public, plus the public signals API at [/api/signals.json](/api/signals.json) which aggregates hundreds of startup orgs across 15 sectors weekly. Verification layer, who raised: Crunchbase's free tier, announced rounds on TechCrunch and DealRoom, and SEC Form D filings for US deals. Monitoring layer, what changed: GitHub watch lists, the weekly [momentum ranking](/startups), and job boards for hiring signals. Tooling layer: the [best startup signal tools](https://gitdealflow.com/best/best-startup-signal-tools) list separates the free-core tools from paid ones honestly.\n\n## What free data cannot do\n\nHonest limits. Coverage: free sources over-represent open-source and developer-facing companies and under-represent stealth and enterprise-internal builds. History: free tiers rarely give panel history, so slope calculations need your own logging or a public archive. Freshness on rounds: funding databases lag announcements by days to weeks. None of these limits touch the core job, finding companies before the round, where free engineering data actually leads the paid databases.\n\n## Combining them into a workflow\n\nThe free stack as a workflow: Monday, pull the weekly movers from the [momentum panel](/startups), note sector and stage. Wednesday, cross-check the top decile against job boards and product surfaces. Friday, outreach to the two or three companies that cleared triage, logging the [receipt](/learn/scout-score-guide) for each. Two hours total. The [weekly sourcing workflow](/blog/deal-sourcing-workflow-weekly) template formalizes it, and the [free VC tools for emerging managers](/answers/free-vc-tools-for-emerging-fund-managers) answer covers the tooling layer.\n\n## When to graduate to paid\n\nPay when a specific job breaks, not for coverage FOMO. The trigger points: investor-contact enrichment when outbound volume makes manual lookup uneconomic, panel history when slope analysis becomes central, and relationship intelligence when a fund's process demands it. Until those hit, the free stack covers sourcing timing, which is where returns are made. The [PitchBook alternatives](https://gitdealflow.com/best/best-pitchbook-alternatives) and [Crunchbase alternatives](https://gitdealflow.com/best/best-crunchbase-alternatives) comparisons price the upgrade paths.\n\n## Key takeaways\n\nSourcing timing is free; enrichment is paid. Build the stack in layers, coverage, verification, monitoring, tooling, and pay only when a job breaks. The two-hour weekly workflow on free public data outperforms an expensive stack used passively, because the edge is cadence, not subscription tier.\n\n## The source catalogue at a glance\n\nThe core free sources worth knowing cold. GitHub itself: org pages, commit history, contributor graphs, dependency manifests, the primary coverage layer for anything open-source adjacent. The public [signals API](/api/signals.json): hundreds of tracked startup orgs, 15 sectors, weekly momentum, no key required, plus CSV and an MCP server for agent runtimes. SEC EDGAR: Form D filings, the authoritative record of US rounds, free, lagging announcements by days to weeks. Crunchbase free tier: round and company verification with rate limits. Job boards, LinkedIn company pages, and careers pages: the hiring layer, two to eight weeks of lead time. Product surfaces: changelogs, docs, status pages, release feeds. Community: founder activity on X and Hacker News, conference programs. The [47-source catalogue](/blog/47-alternative-data-sources-angel-investors-2026) indexes all of these with coverage notes and lag times.\n\n## Data hygiene rules\n\nFree data needs discipline paid data pretends to not need. Date every capture: slope is the signal, and slopes require timestamps, so log weekly snapshots rather than relying on live views. Record the source with the fact: \"funding per Form D\" and \"funding per TechCrunch\" have different reliability, and conflating them poisons benchmarks. Never mix bases: a company can have 40 GitHub contributors and 4 engineers; the numbers measure different things, and the [metrics guide](/blog/startup-engineering-metrics-investors-should-track) defines each precisely. And deduplicate entities ruthlessly: free sources are full of renamed companies and stale profiles, and one wrong join can double-count a company into a trend.\n\n## The two cultures: free-stack vs paid-stack investors\n\nThere is a real cultural split in the market. Paid-stack investors treat data as a subscription problem and get depth, standardization, and support. Free-stack investors treat data as a workflow problem and get timing, flexibility, and zero marginal cost. For sourcing specifically, timing wins: the free engineering layer leads the paid funding databases by weeks, which is exactly the window where sourcing happens. The mature position uses both, free for discovery, paid for enrichment, and the [signal tools comparison](https://gitdealflow.com/best/best-startup-signal-tools) maps which tools belong on which side.",
+    relatedSectors: ["developer-tools", "ai-ml", "data-infrastructure"],
+    faqs: [
+      {
+        question: "What are the best free VC data sources?",
+        answer:
+          "The free stack by layer: coverage via GitHub org pages and the public signals.gitdealflow.com API (hundreds of startup orgs across 15 sectors, weekly); verification via Crunchbase free tier, TechCrunch/DealRoom announcements, and SEC Form D; monitoring via the weekly momentum ranking and job boards; tooling via the free-tier signal tools list.",
+      },
+      {
+        question: "Is free startup data good enough for deal sourcing?",
+        answer:
+          "For sourcing timing, yes: free engineering data leads paid funding databases by weeks because it shows pre-round behavior rather than announced rounds. Free data is weaker at enrichment (contacts, financials), panel history, and stealth-company coverage. Pay when enrichment volume or history depth becomes the binding constraint.",
+      },
+      {
+        question: "What is the best free alternative to PitchBook?",
+        answer:
+          "For round verification, combine Crunchbase free tier, SEC Form D filings, and announced-round coverage on TechCrunch and DealRoom. For pre-round sourcing, public GitHub activity via the free signals API leads all of them on timing. See the PitchBook and Crunchbase alternatives comparisons for the priced upgrade paths.",
+      },
+    ],
+    keyStats: [
+      {
+        value: "2 hrs",
+        label:
+          "Weekly workflow time on the free stack",
+      },
+      {
+        value: "15",
+        label:
+          "Sectors covered by the free public panel",
+      },
+    ],
+    references: [
+      {
+        label: "1",
+        title: "47 Alternative Data Sources for Angel Investors",
+        url:
+          "https://signals.gitdealflow.com/blog/47-alternative-data-sources-angel-investors-2026",
+        source: "GitDealFlow",
+      },
+    ],
+  },
+  {
+    slug: "github-due-diligence-checklist-20-minutes",
+    title: "The 20-Minute GitHub Due Diligence Checklist for Startup Investors",
+    description:
+      "A five-check GitHub due-diligence checklist for investors: org pulse, commit-cadence slope, contributor trend, repository events, and release discipline, what each finding means, and the four traps that fool casual readers.",
+    summary:
+      "GitHub diligence in 20 minutes: org pulse, weekly cadence slope, contributor trend, new-repo events, and release discipline, each mapped to its investment-case meaning, from pre-round buildout to cadence cliffs. Includes the four failure modes (single-repo reads, star gravity, hack-week spikes, unnormalized comparison) and how checklist findings become founder-conversation questions.",
+    date: "2026-08-16",
+    body: "Most investors look at a startup's GitHub once, count stars, and move on. A structured read takes 20 minutes and produces better questions for the founder conversation than any deck. This guide gives the exact checklist: what to open, what to compute, and what each answer means for the investment case, with the failure modes that fool casual readers.\n\n## The 20-minute GitHub due-diligence checklist\n\nOpen the org, not a single repo, and work through five checks:\n\n1. Org pulse. Repositories, total and active in 90 days. A healthy building company has most engineering in few repos; a sprawl of dormant repos suggests abandoned experiments.\n2. Commit cadence by week, last 12 weeks. You want the slope, not the level: flat-high is steady state, rising is acceleration, cliff-drops pre-date layoffs or pivots more often than rewrites.\n3. Contributors active per week and their trend. Contributor growth beyond the founding team is the single most expensive thing to fake sustainably.\n4. Repository events. New repos in the last 60 days: integration, SDK, and infra repos clustering together is the classic pre-round buildout.\n5. Issue and release cadence. Releases shipping on a stable cadence with issues closing indicate operating discipline, not launch theater.\n\nScore what you find; the [deal flow scoring framework](/blog/deal-flow-scoring-framework) shows how engineering evidence slots into a four-factor scorecard, and the [technical due diligence](/blog/technical-due-diligence-with-github-data) guide goes deeper per check.\n\n## What each finding means\n\nRising cadence plus contributor growth plus new-repo clusters reads as preparation: hiring, building toward a launch, frequently a round. Flat everything reads as steady state, neutral for survival, uninformative for timing. Cadence cliff plus contributor drop is the strongest negative observable in public data, it precedes trouble announcements by months. High stars plus low cadence is marketing-ahead-of-product: discount the stars entirely.\n\n## Failure modes that fool casual readers\n\nFour traps. Single-repo reads: the flagship repo can be quiet while the real build happens in new repos, always read the org. Star gravity: stars are lagging marketing metrics. Hack-week spikes: a one-week velocity burst without breadth is noise, [multi-metric confirmation](/blog/investor-mistakes-github-signals) is the defense. And unnormalized comparison: an AI startup and an enterprise SaaS company at the same stage have different baselines, use [stage and sector benchmarks](/blog/engineering-velocity-benchmarks-by-stage) before judging either.\n\n## From checklist to founder conversation\n\nThe checklist's output is not a verdict, it is questions. New SDK repos with no launch: what ships next quarter. Contributor growth ahead of announced hiring: how are you recruiting. Cadence flat while the deck claims hypergrowth: where does the claimed growth live. Founders respond visibly better to evidence-based questions than to generic diligence theater, and the answers are checkable against the public record.\n\n## Key takeaways\n\nRead the org, not the repo; read slopes, not levels; require multi-metric confirmation; normalize by sector and stage. Twenty minutes on the public record produces founder questions that decks cannot rehearse away, and the cadence cliff is the single most actionable negative observable in public data.\n\n## Beyond engineering: corroborating layers\n\nThe GitHub read is strongest when it fails or passes alongside other layers. Corroborate with hiring: engineering postings appearing while contributor count rises confirms growth is real and budgeted. Corroborate with product: a changelog that ships on the same cadence as the commits indicates the activity reaches users rather than accumulating in branches. Corroborate with the round record: acceleration with no round following is common and fine; the [investor mistakes guide](/blog/investor-mistakes-github-signals) quantifies how often signals fire without events, which is exactly the base rate you need before treating a pass or a pursue as evidence-based. Multi-layer confirmation is the whole game: any single observable can be produced by causes unrelated to the investment case, but cadence, contributors, hiring, and shipping moving together has few innocent explanations.\n\n## When to walk away\n\nTwo public-data patterns justify walking away before any call. The sustained cliff: commits and contributors falling together across a quarter, which in the tracked panel precedes public trouble by months. And the hollow graph: stars and forks accumulating while cadence stays flat and issues rot, the signature of marketing-ahead-of-product. Neither is proof; both shift the burden of proof to the founder conversation, and if the conversation does not dissolve the pattern, the pattern wins. Discipline here saves more capital than any positive screen earns, because the cost of a zero is total.\n\n## Turning the checklist into a habit\n\nThe checklist takes twenty minutes and repays it in better founder conversations. The habit that makes it compound: file every read, verdict plus date, in the pipeline log, so your personal base rates accumulate. After a quarter you stop needing borrowed benchmarks, because you own something better, your own distribution of what acceleration looked like in the deals you won, the ones you lost, and the ones you passed on. That owned distribution is the difference between an investor who reads GitHub and an investor whose GitHub reads are evidence.",
+    relatedSectors: ["developer-tools", "ai-sl", "enterprise-saas"],
+    faqs: [
+      {
+        question: "How do you do due diligence on GitHub?",
+        answer:
+          "Read the organization, not one repository, across five checks: org pulse (active repos in 90 days), weekly commit-cadence slope over 12 weeks, contributor trend beyond the founding team, new-repository events in 60 days, and release and issue cadence. Slopes and breadth beat levels and star counts.",
+      },
+      {
+        question: "What does rising GitHub activity mean for investors?",
+        answer:
+          "Rising cadence plus contributor growth plus clustered new integration or SDK repositories typically reads as preparation: building toward a launch, and frequently a round. It is not proof; base rates matter, and multi-metric confirmation is required before treating it as a timing signal.",
+      },
+      {
+        question: "Can GitHub activity be faked for investors?",
+        answer:
+          "Single metrics can: one-week velocity bursts, bounty-driven contributor counts, star campaigns. Sustained multi-metric acceleration is expensive to fake because commits, contributors, and repository expansion must move together for weeks. Repository segmentation also exposes compliance-driven bursts that leave product repos flat.",
+      },
+      {
+        question: "What is the biggest red flag in public GitHub data?",
+        answer:
+          "The cadence cliff: weekly commit volume and active contributors dropping together over multiple weeks. In the tracked panel it precedes public trouble announcements, layoffs, pivots, distress, by months, making it the most actionable negative observable in free public data.",
+      },
+    ],
+    keyStats: [
+      {
+        value: "5",
+        label:
+          "Checks in the 20-minute read",
+      },
+      {
+        value: "12 weeks",
+        label:
+          "Cadence window to judge slope",
+      },
+    ],
+    references: [
+      {
+        label: "1",
+        title: "Technical Due Diligence with GitHub Data",
+        url:
+          "https://signals.gitdealflow.com/blog/technical-due-diligence-with-github-data",
+        source: "GitDealFlow",
+      },
+    ],
+  },
+  {
+    slug: "ai-in-vc-deal-sourcing-practical-guide",
+    title: "AI in VC Deal Sourcing: A Practical Guide to What Works",
+    description:
+      "Where AI genuinely helps VC deal sourcing (enrichment, monitoring, triage, drafting), where it is theater (autonomous selection), and the MCP-plus-agent weekly loop that runs discovery on proprietary data in under an hour of human time.",
+    summary:
+      "AI collapsed analysis cost but not discovery cost. This practical guide maps the four jobs AI does well in deal sourcing, exposes the circularity failure of autonomous deal selection, and details the working pattern: an MCP server feeding company data to an agent runtime that monitors, enriches, and drafts while the human keeps judgment, all in a weekly loop under one hour.",
+    date: "2026-08-16",
+    body: "AI has collapsed the cost of analysis and left the cost of discovery almost untouched. Every fund can now summarize a deck in seconds; almost none have fixed the harder problem of knowing which company to look at next week. This guide is a sober map of where AI genuinely helps in deal sourcing, where it is theater, and how to wire the useful parts into a weekly loop with agents and APIs.\n\n## Where AI actually helps in sourcing\n\nFour jobs, in descending order of proven value. Enrichment: filling company records from public data, agents are excellent at this. Monitoring: watching a universe of companies and flagging changes, velocity, hiring, product, reliably mechanical. Triage support: ranking a shortlist against a written thesis, useful when the rubric is explicit. Outreach drafting: first drafts at volume, with human review. The [AI deal-sourcing tools](/answers/best-alt-data-tools-for-venture-capital) landscape and the [Claude/Cursor sourcing walkthrough](/answers/how-to-source-deals-with-claude-or-cursor) show the tooling in practice.\n\n## Where it is theater\n\nAutonomous deal selection. The failure mode is circularity: the model ranks what the funding databases already contain, so the \"AI-sourced\" list is the announced-deals list with better formatting. Discovery, the job that determines returns, still runs on proprietary observables, [engineering momentum](/blog/what-is-engineering-acceleration) among them, fed to the model as data rather than delegated to it.\n\n## The agent-stack pattern that works\n\nThe working pattern pairs an MCP server for data access with an agent runtime for the workflow. The [VC MCP server](/agents) exposes trending, sector search, single-company lookup, and methodology as tools; Claude, Cursor, or any MCP host orchestrates: monitor, fetch movers, cross-check against thesis, draft the outreach. Setup takes minutes: `npx -y @gitdealflow/mcp-signal` in any MCP host. The [agent-native sourcing walkthrough](/mcp-demo) covers the full installation across runtimes.\n\n## The weekly loop\n\nMonday: agents pull weekly movers by sector and compute the delta. Wednesday: human reviews the top decile against thesis; agents enrich the survivors with job postings and product surfaces. Friday: outreach to the clears, with the agent drafting against the evidence file. Total human time under an hour; the agents do enrichment and drafting, the human does judgment. This mirrors the [weekly sourcing workflow](/blog/deal-sourcing-workflow-weekly) with the agent layer doing what spreadsheets used to.\n\n## Key takeaways\n\nUse AI for enrichment, monitoring, triage support, and drafting; keep discovery on proprietary data the model cannot already see. The MCP-plus-agent-runtime pattern makes the useful parts a 20-minute install. And judge any AI sourcing tool by one question: does its shortlist contain companies the funding databases do not have yet.\n\n## A concrete agent session, walked through\n\nMonday, in Cursor or Claude Desktop with the [MCP server](/agents) connected: \"Pull this week's top movers in developer-tools and fintech, and for the top five, summarize what changed week over week.\" The agent calls the trending and sector-search tools, returns a table with deltas. Follow-up: \"For these three, draft outreach that references the specific repositories that accelerated.\" The agent drafts; you edit the one line that matters and send. Total elapsed time for a sourcing pass that used to take an afternoon: under twenty minutes, most of it your judgment. The [agent-runtime installation guide](/mcp-demo) covers setup across Claude, Cursor, and any MCP host.\n\nThe reason this works is the data boundary: the agent reasons over live panel data through tools, not over stale training-data memories of companies. An AI that \"knows\" a startup from its training cutoff is a liability in sourcing; an AI that fetches this week's numbers and computes deltas is an analyst that never sleeps.\n\n## Costs, limits, and failure modes\n\nThe honest limits. Hallucination risk survives tool use: agents occasionally over-interpret a quiet week as a decline, so treat agent summaries as pointers to check, not verdicts. Context limits mean the cross-check layer, job boards, changelogs, still needs either more tool calls or your own eyes on the strongest candidates. Cost is negligible at sourcing scale; token spend is trivial next to any paid data subscription. The structural limit bears repeating: the agent can only reason over what its tools expose, which is why discovery still belongs to whoever owns the proprietary observable, and enrichment and drafting, the mechanical layers, are where the agents earn their keep.\n\n## What to build next\n\nFor a fund, the natural next step after the weekly loop is a standing monitor: a scheduled agent pass that writes the weekly movers into a channel or sheet, so the Monday scan is waiting when you sit down. That is a half-day build with existing pieces, the [API](/api/signals.json) plus any scheduler, and it removes the last excuse, remembering to look.",
+    relatedSectors: ["ai-ml", "developer-tools", "enterprise-saas"],
+    faqs: [
+      {
+        question: "Can AI source venture deals autonomously?",
+        answer:
+          "Not yet, and the failure is structural: models rank what their training and tool data already contain, which is dominated by announced rounds, so autonomous shortlists collapse onto the contested deals every fund already sees. Discovery still runs on proprietary observables fed to the model as data; enrichment, monitoring, and drafting are where agents deliver proven value today.",
+      },
+      {
+        question: "What is an MCP server for VC deal sourcing?",
+        answer:
+          "MCP (Model Context Protocol) is an open standard that lets AI agents call external tools. A VC MCP server exposes startup data, trending companies, sector search, company lookup, methodology, as agent-callable tools, so Claude, Cursor, or any MCP host can pull live deal-flow data inside a conversation instead of via copy-paste.",
+      },
+      {
+        question: "How do VCs use AI in deal sourcing today?",
+        answer:
+          "In four proven jobs: enrichment of company records from public data, change monitoring across a watched universe, triage ranking against an explicit thesis rubric, and outreach drafting at volume. Judgment and discovery remain human and data-driven respectively; the agents compress the mechanical work around them.",
+      },
+    ],
+    keyStats: [
+      {
+        value: "4",
+        label:
+          "Jobs where AI provenly helps: enrich, monitor, triage, draft",
+      },
+    ],
+    references: [
+      {
+        label: "1",
+        title: "Install the VC Deal Flow Signal MCP Server in Any Agent Runtime",
+        url:
+          "https://signals.gitdealflow.com/blog/install-vc-deal-flow-signal-mcp-in-any-agent-runtime",
+        source: "GitDealFlow",
+      },
+    ],
+  },
+  {
+    slug: "how-to-track-startups-before-they-announce",
+    title: "How to Track Startups Before They Announce: The Six-Layer Observability Guide",
+    description:
+      "The six observable layers of a pre-round startup, engineering, hiring, product, dependency, community, registry, ranked by lead time, plus the one-hour weekly routine that converts public traces into sourced deals.",
+    summary:
+      "Everything a startup does before announcing a round leaves public traces across six layers: engineering, hiring, product, dependency, community, and registry. This guide ranks the layers by lead time (engineering first at 3-6 weeks), defines the honest limits, and templates the one-hour weekly scan-cross-check-act routine that turns free observability into sourced deals with receipts.",
+    date: "2026-08-16",
+    body: "The most valuable window in early-stage investing is the weeks before a round becomes public, and almost everything that happens in that window is observable for free. Startups cannot build in secret anymore: they commit code, hire engineers, ship changelogs, and adopt dependencies, and each action leaves a public trace ahead of the announcement. This guide assembles the full observability map and the weekly routine that turns it into sourced deals.\n\n## The six observable layers of a pre-round startup\n\n1. Engineering layer: commit velocity, contributor growth, repository expansion on GitHub, the richest and earliest trace, covered in the [GitHub patterns guide](/blog/5-github-patterns-that-predict-fundraises).\n2. Hiring layer: engineering job postings, usually two to eight weeks ahead of the announcement.\n3. Product layer: changelogs, release notes, docs expansion, feature flags flipping on.\n4. Dependency layer: new libraries appearing in package manifests as the stack grows.\n5. Community layer: founder posting cadence, conference talks, meetup appearances.\n6. Registry layer: the round itself entering Crunchbase and Form D, trailing everything else.\n\nEach layer is free; the [47-source catalogue](/blog/47-alternative-data-sources-angel-investors-2026) indexes them with limits and lag times.\n\n## Lead times, ranked\n\nEngineering signals lead announcements by three to six weeks in the tracked panel; hiring two to eight; product one to four; community zero to two; registry negative, it trails. The ordering is stable across sectors, though absolute levels differ; sector-normalized reading is required before comparing an AI company with an enterprise SaaS company. The [leading vs lagging taxonomy](/answers/leading-vs-lagging-vc-signals) formalizes which observables belong in a sourcing stack and which belong in verification.\n\n## The weekly routine\n\nOne hour, three steps. Scan: pull the weekly [momentum movers](/startups) and the sector cut. Cross-check: for the top decile, layer hiring and product traces onto the engineering read, keep only multi-layer confirmations. Act: outreach with the evidence in the first line; log the [receipt](/learn/scout-score-guide). The routine's power is cadence: single observations are noise, weekly sequences are evidence, a discipline the [sourcing workflow guide](/blog/deal-sourcing-workflow-weekly) templates hour by hour.\n\n## What this cannot do\n\nObservability is coverage-biased: open-source and developer-facing companies are over-represented, stealth hardware and enterprise-internal builds under-represented. It is evidence of preparation, not proof of a round, base rates matter and multi-layer confirmation is mandatory. And it decays: the company accelerating this week is being pitched everywhere next month, so the routine is worthless without the weekly cadence.\n\n## Key takeaways\n\nSix free layers, engineering, hiring, product, dependency, community, registry, ordered by lead time, with engineering earliest at three to six weeks. The routine is scan, cross-check, act in one weekly hour, keeping only multi-layer confirmations. Observability does not replace judgment; it schedules it, putting your attention on the right companies at the only moment the price of attention is still low.\n\n## Receipts and base rates: the honesty layer\n\nThe routine only compounds if it is logged. For every outreach, record: the company, the layers that fired, the date, and later, the outcome, round announced or not, when. Two things come from that file. First, your own base rates: after a quarter you know what a real precursor looks like in your sectors, not in aggregate. Second, receipts: dated evidence you identified companies before announcement, which is the single most persuasive artifact in [scout program applications](/blog/venture-scout-programs-how-to-join), LP conversations, and founder outreach alike. The logging is the difference between a routine and an asset.\n\nThe discipline that keeps it honest: log the misses too. The company you flagged that never raised, the acceleration that turned out to be a hack week, these are not embarrassments, they are the denominator. Without them, every retrospective becomes a highlight reel and the base rates rot.\n\n## Tooling the routine\n\nEverything the routine needs is free. The weekly [movers list](/startups) and the [signals API](/api/signals.json) cover the engineering layer with sector cuts and deltas. Job boards and careers pages cover hiring. Changelogs and release feeds cover product. For the agent-inclined, the [MCP server](/agents) puts the whole panel inside Claude or Cursor, and the [AI sourcing guide](/blog/ai-in-vc-deal-sourcing-practical-guide) shows the Monday-loop pattern that compresses the scan to minutes. The spreadsheet is yours to build; the [weekly workflow template](/blog/deal-sourcing-workflow-weekly) provides the column structure that has survived real use.\n\n## The competitive context\n\nThis observability window is not secret, but it is underused, because exploiting it requires cadence rather than budget. Funds with data budgets tend to buy the trailing layers, the databases that record what already happened, because those come standardized. The leading layers, engineering, hiring, product, remain the province of whoever runs the weekly routine. That asymmetry, budget buys the past, cadence buys the future, is the entire strategic argument for the observability stack, and it holds until the market standardizes on it, which the base-rate history of every previous signal says will eventually happen.",
+    relatedSectors: ["developer-tools", "ai-ml", "fintech"],
+    faqs: [
+      {
+        question: "How do I find startups before they announce funding?",
+        answer:
+          "Track the six observable layers in order of lead time: GitHub engineering activity (3-6 weeks ahead), hiring postings (2-8), product changelogs (1-4), dependency adoption, founder community activity, and registry entries (trailing). A weekly scan-cross-check-act routine over these layers converts public traces into pre-announcement outreach.",
+      },
+      {
+        question: "What GitHub activity happens before a fundraise?",
+        answer:
+          "The recurring pre-round pattern is multi-metric acceleration: commit velocity rising 40 percent or more over baseline, contributor count expanding beyond the founding team, and new integration or SDK repositories clustering within weeks. No single metric is proof; the joint movement is the signal, and it precedes announcement by 3-6 weeks.",
+      },
+      {
+        question: "Is it legal to track startups via public GitHub data?",
+        answer:
+          "Yes. Commits, contributors, repositories, and dependency manifests are published by the companies themselves. Reading public repositories is standard practice; the data is public by the company's own choice. Respect license terms for any code use, and treat activity data as sourcing evidence, not inside information.",
+      },
+      {
+        question: "How far in advance does GitHub activity predict a round?",
+        answer:
+          "In the tracked panel, engineering acceleration leads fundraise announcements by a median 21-47 days depending on sector, with 3-6 weeks a reasonable working range. The signal is evidence of preparation, not proof; base rates require multi-layer confirmation with hiring or product traces before outreach.",
+      },
+    ],
+    keyStats: [
+      {
+        value: "6",
+        label:
+          "Observable layers ranked by lead time",
+      },
+      {
+        value: "3-6 wks",
+        label:
+          "Engineering lead time over announcements",
+      },
+    ],
+    references: [
+      {
+        label: "1",
+        title: "5 GitHub Patterns That Predict Fundraises",
+        url:
+          "https://signals.gitdealflow.com/blog/5-github-patterns-that-predict-fundraises",
+        source: "GitDealFlow",
+      },
+    ],
+  },
+];
+allPosts.push(...TOFU_POSTS);
+
 try {
   // eslint-disable-next-line @typescript-eslint/no-require-imports
   const { signalReport } = require("./signal-report-latest");

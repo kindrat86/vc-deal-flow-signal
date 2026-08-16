@@ -3955,6 +3955,144 @@ landingCheck(
   }
 }
 
+// ---------------------------------------------------------------------------
+// §49 TOFU pillar cluster (funnel-coverage win, 2026-08-16)
+// 10 TOFU pillar posts in content/posts.ts (TOFU_POSTS array), pillar-wired in
+// content/pillars.ts. A tree that loses them re-opens the audit item
+// "funnel coverage TOFU/MOFU/BOFU 60: TOFU weakest". Guard asserts:
+//  (a) all 10 slugs exist in posts.ts inside the TOFU_POSTS array,
+//  (b) each body >= 700 words (thin TOFU was the audit complaint),
+//  (c) each has >= 3 FAQs (AEO surface),
+//  (d) each body carries >= 3 internal links (money-page wiring),
+//  (e) no em/en dashes anywhere in the cluster (site-wide style rule),
+//  (f) all 10 pillar assignments present in pillars.ts,
+//  (g) no link to a known-dead target (/mcp, install-vc-deal-flow post).
+// ---------------------------------------------------------------------------
+{
+  const posts = read("content/posts.ts");
+  if (posts) {
+    const TOFU_SLUGS = [
+      "venture-scout-programs-how-to-join",
+      "pre-seed-vs-seed-vs-series-a",
+      "what-is-deal-flow-in-venture-capital",
+      "investing-in-open-source-startups",
+      "vc-signals-signal-vs-noise",
+      "emerging-manager-deal-sourcing-playbook",
+      "free-vc-data-sources-guide",
+      "github-due-diligence-checklist-20-minutes",
+      "ai-in-vc-deal-sourcing-practical-guide",
+      "how-to-track-startups-before-they-announce",
+    ];
+    const clusterStart = posts.indexOf("TOFU_POSTS: BlogPost[] = [");
+    if (clusterStart === -1) {
+      failures.push(
+        `§49 content/posts.ts lost the TOFU_POSTS array (10 pillar posts, funnel-coverage win 2026-08-16).\n    file: content/posts.ts\n    fix:  restore the TOFU_POSTS array + allPosts.push(...TOFU_POSTS) splice; do not delete pillar posts to shrink the file`,
+      );
+    } else {
+      // window from cluster start to the closing "];" of TOFU_POSTS
+      const windowEnd = posts.indexOf("\n];", clusterStart);
+      const cluster = posts.slice(clusterStart, windowEnd);
+      const slugRe = /slug:\s*"([^"]+)"/g;
+      const found: string[] = [];
+      let m: RegExpExecArray | null;
+      while ((m = slugRe.exec(cluster)) !== null) found.push(m[1]);
+      const missing = TOFU_SLUGS.filter((s) => !found.includes(s));
+      if (missing.length) {
+        failures.push(
+          `§49 TOFU cluster lost post(s): ${missing.join(", ")}.\n    file: content/posts.ts\n    fix:  restore the missing TOFU_POSTS entries (they are pillar-interlinked; partial removal orphans the money-page links)`,
+        );
+      }
+      if (found.length > 10) {
+        failures.push(
+          `§49 TOFU_POSTS array carries ${found.length} slugs (expected 10): extra entries blur the pillar boundary.\n    file: content/posts.ts\n    fix:  keep TOFU_POSTS to the 10 funnel-coverage posts; new posts go to the main posts array`,
+        );
+      }
+      // per-post body checks: body string literal + word floor + link floor + FAQ floor
+      for (const slug of TOFU_SLUGS) {
+        const at = cluster.indexOf(`slug: "${slug}"`);
+        if (at === -1) continue;
+        // find this post's body field (between this slug and the next slug or array end)
+        const nextSlug = cluster.indexOf('slug: "', at + 10);
+        const seg = cluster.slice(at, nextSlug === -1 ? undefined : nextSlug);
+        const bodyMatch = seg.match(/body:\s*"((?:[^"\\]|\\.)*)"/);
+        if (!bodyMatch) {
+          failures.push(
+            `§49 TOFU post ${slug} lost its body field.\n    file: content/posts.ts\n    fix:  restore the post body; a post without body renders empty`,
+          );
+          continue;
+        }
+        const body = JSON.parse(`"${bodyMatch[1]}"`) as string;
+        const words = body.trim().split(/\s+/).length;
+        if (words < 700) {
+          failures.push(
+            `§49 TOFU post ${slug} body fell to ${words} words (floor 700; thin TOFU was the audit complaint).\n    file: content/posts.ts\n    fix:  restore pillar depth or remove the post entirely; a thin pillar post is index-bloat, not coverage`,
+          );
+        }
+        const links = (body.match(/\]\((\/[^)]+|https:\/\/gitdealflow\.com[^)]*)\)/g) || []).length;
+        if (links < 3) {
+          failures.push(
+            `§49 TOFU post ${slug} carries only ${links} internal links (floor 3; the win is TOFU→money-page wiring).\n    file: content/posts.ts\n    fix:  restore contextual links to /vs/, /answers/, /best/ or /blog/ money pages`,
+          );
+        }
+        if (/]\(\/mcp\)/.test(body) || body.includes("](/blog/install-vc-deal-flow-signal-mcp-in-any-agent-runtime)")) {
+          failures.push(
+            `§49 TOFU post ${slug} links a dead target (/mcp or the unpublished install post 404 live).\n    file: content/posts.ts\n    fix:  use /agents or /mcp-demo for MCP references`,
+          );
+        }
+        const faqCount = (seg.match(/question:\s*"/g) || []).length;
+        if (faqCount < 3) {
+          failures.push(
+            `§49 TOFU post ${slug} has only ${faqCount} FAQs (floor 3; FAQPage JSON-LD is the AEO surface).\n    file: content/posts.ts\n    fix:  restore the FAQs; they are the answer-engine extraction surface`,
+          );
+        }
+        // style: no em/en dashes inside the post segment (titles, body, faqs)
+        if (/[\u2014\u2013]/.test(seg)) {
+          failures.push(
+            `§49 TOFU post ${slug} contains an em/en dash (site-wide style rule, verify-no-dashes).\n    file: content/posts.ts\n    fix:  replace with commas, colons, or parentheses`,
+          );
+        }
+      }
+    }
+    // cluster-wide style scan
+    if (posts.includes("\u2014") && posts.indexOf("\u2014") > posts.indexOf("TOFU_POSTS")) {
+      // only flag if the em dash is inside our cluster window
+      const wEnd = posts.indexOf("\n];", posts.indexOf("TOFU_POSTS"));
+      const wStart = posts.indexOf("TOFU_POSTS");
+      if (wStart !== -1 && wEnd !== -1 && posts.slice(wStart, wEnd).includes("\u2014")) {
+        failures.push(
+          `§49 TOFU cluster contains an em dash (verify-no-dashes blocks HEAD anyway; this names the cluster).\n    file: content/posts.ts\n    fix:  strip em dashes from the TOFU_POSTS window`,
+        );
+      }
+    }
+    // pillars wiring
+    const pillarsSrc = read("content/pillars.ts");
+    if (pillarsSrc) {
+      const needed: Array<[string, string]> = [
+        ["venture-scout-programs-how-to-join", "venture-scouting"],
+        ["pre-seed-vs-seed-vs-series-a", "deal-sourcing-workflow"],
+        ["what-is-deal-flow-in-venture-capital", "deal-flow-management"],
+        ["investing-in-open-source-startups", "alternative-data"],
+        ["vc-signals-signal-vs-noise", "github-signals-methodology"],
+        ["emerging-manager-deal-sourcing-playbook", "deal-sourcing-workflow"],
+        ["free-vc-data-sources-guide", "alternative-data"],
+        ["github-due-diligence-checklist-20-minutes", "startup-due-diligence"],
+        ["ai-in-vc-deal-sourcing-practical-guide", "deal-sourcing-workflow"],
+        ["how-to-track-startups-before-they-announce", "deal-sourcing-workflow"],
+      ];
+      for (const [slug, pillar] of needed) {
+        const needle = `"${slug}": "${pillar}"`;
+        if (!pillarsSrc.includes(needle)) {
+          failures.push(
+            `§49 pillars.ts lost the pillar assignment ${needle}.\n    file: content/pillars.ts\n    fix:  restore the assignment; unwired posts lose articleSection, pillar related-posts, and topics-page grouping`,
+          );
+        }
+      }
+    }
+  }
+}
+
+
+
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +
