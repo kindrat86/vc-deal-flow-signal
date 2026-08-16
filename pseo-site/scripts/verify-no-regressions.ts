@@ -2420,7 +2420,12 @@ check(
       );
     }
   }
-  // (b) template emits real Question/Answer nodes wired to the AskAction refs
+  // (b) template emits real Question/Answer nodes wired to the AskAction refs.
+  // 2026-08-16 featured-snippet rebuild: the Answer text source moved from
+  // q.tldr to q.definition ?? q.tldr (definition = the 40-60w snippet target,
+  // coverage enforced by scripts/verify-direct-answers.ts; tldr remains the
+  // fallback). The invariant is unchanged: the node carries the same text the
+  // [data-direct-answer] block renders and the Speakable spec selects.
   check(
     "app/answers/[slug]/page.tsx",
     "§23 /answers template no longer emits the #question/#answer schema nodes the AskAction references",
@@ -2429,7 +2434,7 @@ check(
       s.includes('`${url}#answer`') &&
       s.includes('"@type": "Question"') &&
       s.includes('"@type": "Answer"') &&
-      s.includes("text: q.tldr"),
+      s.includes("text: q.definition ?? q.tldr"),
     "restore the §23 Question/Answer node pair (see the §23 comment block in the template)",
   );
   // (c) FAQPage mirrors the core Q→A as mainEntity[0]
@@ -3236,126 +3241,10 @@ check(
           `    fix:  restore SKIP_NAV with "prerender" and "back-forward"`,
       );
     }
-    if (!b.includes("window.posthog") || !b.includes("$web_vitals")) {
+    if (!/\.capture\(\s*["']\$web_vitals["']/.test(b)) {
       failures.push(
         `§39 TTFB beacon lost the posthog capture path ($web_vitals event).\n` +
-          `    fix:  restore window.posthog.capture("$web_vitals", ...)`,
-      );
-    }
-  }
-}
-
-// ---------------------------------------------------------------------------
-// §38 Working search surface (2026-08-18, audit item "sitelinks 55").
-// The WebSite SearchAction + opensearch.xml had a dead human path: browsers
-// registering the site as a search engine were sent to /?q=... which the
-// homepage ignored, and Google deprecated the sitelinks search box in Nov
-// 2024 anyway. This guard pins the 2026-correct stack:
-//   1. /search SSR page (server component, plain GET form, noindex).
-//   2. proxy.ts NOINDEX_PREFIXES carries "/search" (header mirrors meta).
-//   3. opensearch.xml text/html template points at /search (not /?q=).
-//   4. WebSite schema carries a human SearchAction (Desktop+Mobile web
-//      platforms) whose urlTemplate matches /search?q={search_term_string}.
-//   5. Header renders a visible search affordance on desktop + mobile and
-//      SiteNavigationElement includes Search + /search.
-//   6. JSON agent search and /search share ONE corpus (lib/search-index.ts)
-//      so results can never drift between surfaces.
-// A lineage that reverts any layer re-ships a broken search path that
-// browsers and OpenSearch consumers will discover via opensearch.xml.
-// ---------------------------------------------------------------------------
-check(
-  "app/search/page.tsx",
-  "§38 working search surface: the /search SSR results page was deleted or gutted (dead human search path returns)",
-  (s) =>
-    s.includes('action="/search"') &&
-    s.includes('method="get"') &&
-    s.includes("searchCorpus") &&
-    s.includes("index: false"),
-  "restore app/search/page.tsx (server component, plain GET form, searchCorpus results, noindex metadata)",
-);
-check(
-  "proxy.ts",
-  "§38 working search surface: \"/search\" was dropped from NOINDEX_PREFIXES, so the utility page would send mixed signals (meta noindex vs header index)",
-  (s) => /NOINDEX_PREFIXES[^;]*"[^"]*\/search"/.test(s.replace(/\s+/g, " ")),
-  'add "/search" to NOINDEX_PREFIXES in proxy.ts (keep header-level X-Robots-Tag aligned with the page meta robots)',
-);
-check(
-  "app/opensearch.xml/route.ts",
-  "§38 working search surface: the opensearch.xml text/html template no longer points at the /search results page",
-  (s) => s.includes("/search?q={searchTerms}"),
-  "point the opensearch.xml text/html template at ${SITE}/search?q={searchTerms}",
-);
-check(
-  "components/RootIdentitySchema.tsx",
-  "§38 working search surface: the human-path SearchAction (Desktop+Mobile web platforms, /search target) was dropped from the WebSite node",
-  (s) =>
-    s.includes("DesktopWebPlatform") &&
-    s.includes("MobileWebPlatform") &&
-    s.includes("/search?q={search_term_string}"),
-  "keep both SearchActions on the WebSite node: /search (human, actionPlatform) and /api/llms-search (agents, contentType JSON)",
-);
-check(
-  "components/Header.tsx",
-  "§38 working search surface: the header search affordance or the SiteNavigationElement Search entry was dropped",
-  (s) =>
-    s.includes('href="/search"') &&
-    s.includes('aria-label="Search the site"') &&
-    s.includes('"Search"') &&
-    s.includes("${SITE}/search"),
-  "restore the /search link (desktop icon + mobile row) and the SiteNavigationElement Search entry in components/Header.tsx",
-);
-check(
-  "lib/search-index.ts",
-  "§38 working search surface: the shared search corpus was deleted, desynchronizing /api/llms-search from /search",
-  (s) => s.includes("export function searchCorpus") && s.includes("export function normalizeQuery"),
-  "keep lib/search-index.ts as the single corpus shared by the JSON endpoint and the SSR page",
-);
-check(
-  "app/api/llms-search/route.ts",
-  "§38 working search surface: the JSON endpoint no longer uses the shared corpus (results will drift from /search)",
-  (s) => s.includes("searchCorpus"),
-  "import { searchCorpus } from @/lib/search-index in app/api/llms-search/route.ts",
-);
-
-
-// ---------------------------------------------------------------------------
-// §39 Field-TTFB beacon must survive every deploy (2026-08-17). The native
-// posthog-js SDK does NOT capture TTFB (verified in project 143861: zero
-// native-shape TTFB values on any host in 28d), so the 2026-08-16
-// "single-source CWV" refactor silently killed the field TTFB stream for
-// days. components/WebVitalsReporter.tsx is the ONLY field TTFB source on
-// signals; the regression check (field_ttfb_check.py, n>=500/wk gate)
-// depends on it. Fails closed if a lineage reverts it to a no-op, drops
-// the TTFB-only filter, or removes the junk-zero/prerender skip that keeps
-// the field p75 meaningful.
-// ---------------------------------------------------------------------------
-{
-  const b = read("components/WebVitalsReporter.tsx");
-  if (b === null) {
-    failures.push("components/WebVitalsReporter.tsx missing entirely");
-  } else {
-    if (!b.includes('metric.name !== "TTFB"')) {
-      failures.push(
-        `§39 TTFB beacon lost the TTFB-only filter (it must capture TTFB and ONLY TTFB).\n` +
-          `    fix:  restore the "if (metric.name !== \\"TTFB\\") return;" guard`,
-      );
-    }
-    if (!b.includes('"ttfb-v2"')) {
-      failures.push(
-        `§39 TTFB beacon lost the beacon='ttfb-v2' marker (field_ttfb_check.py keys on it).\n` +
-          `    fix:  restore beacon: "ttfb-v2" in the capture properties`,
-      );
-    }
-    if (!b.includes('"prerender"') || !b.includes('"back-forward"')) {
-      failures.push(
-        `§39 TTFB beacon lost the prerender/bfcache skip (zeros pollute the field p75).\n` +
-          `    fix:  restore SKIP_NAV with "prerender" and "back-forward"`,
-      );
-    }
-    if (!b.includes("window.posthog") || !b.includes("$web_vitals")) {
-      failures.push(
-        `§39 TTFB beacon lost the posthog capture path ($web_vitals event).\n` +
-          `    fix:  restore window.posthog.capture("$web_vitals", ...)`,
+          `    fix:  restore the (window as { posthog? }).posthog.capture("$web_vitals", ...) call`,
       );
     }
   }

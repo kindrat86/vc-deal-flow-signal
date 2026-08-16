@@ -34,20 +34,19 @@
  */
 import { useReportWebVitals } from "next/web-vitals";
 
-declare global {
-  interface Window {
-    posthog?: {
-      capture?: (event: string, properties?: Record<string, unknown>) => void;
-    };
-  }
-}
+// Structural type only (no `declare global`): PostHogPageView.tsx reads
+// window.posthog the same way; a global augmentation would clash with
+// other declarations of the same window property.
+type PostHogLike = {
+  capture?: (event: string, props?: Record<string, unknown>) => void;
+};
 
 const SKIP_NAV = new Set(["prerender", "back-forward"]);
 const CAPTURE_TRIES = 30; // ~15s max wait for lazyOnload posthog to be ready
 
 function captureTtfb(props: Record<string, unknown>, attempt = 0) {
   try {
-    const ph = window.posthog;
+    const ph = (window as unknown as { posthog?: PostHogLike }).posthog;
     if (ph && typeof ph.capture === "function") {
       ph.capture("$web_vitals", props);
       return;
