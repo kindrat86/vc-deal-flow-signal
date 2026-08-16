@@ -4727,6 +4727,53 @@ landingCheck(
   }
 }
 
+// §59 Price-ladder + stale-era panel-count drift (2026-08-16, audit follow-up).
+// Live truth (api/v1/pricing.json): Dashboard €49/mo, Insider €197/mo; the
+// €9.97/€97 founding rates closed 2026-06-30 (grandfathered for life). Agent
+// surfaces (llms.txt, llms-full), API strings, and current-offer funnel pages
+// quote the CURRENT ladder. Historical/grandfathering narrative is exempt.
+{
+  {
+    const priceNeedles: Array<[string, string]> = [
+      ["../app/llms.txt/route.ts", "€49/mo Dashboard, €197/mo Insider Circle"],
+      ["../app/llms-full.txt/route.ts", "Dashboard, €49/month"],
+      ["../app/alternatives/page.tsx", "&euro;49/mo Dashboard"],
+      ["../app/api/scout/predict/route.ts", "EUR 49/mo"],
+      ["../app/api/webhook/stripe/route.ts", "&euro;49/mo"],
+      ["../app/start-here/page.tsx", 'price: "€49/mo"'],
+      ["../app/vsl/page.tsx", "€49/mo</p>"],
+      ["../app/pitch/page.tsx", "350+ startups, 15 sectors"],
+      ["../app/code-side-sourcing/page.tsx", "350+ ranked orgs"],
+    ];
+    for (const [path, needle] of priceNeedles) {
+      const src = read(path);
+      if (src && !src.includes(needle)) {
+        failures.push(
+          `§59 current-price/panel needle missing: ${needle.slice(0, 50)} in ${path}.\n    fix:  restore the 2026-08-16 price-ladder sweep (Dashboard €49/mo, Insider €197/mo, founding closed 2026-06-30)`,
+        );
+      }
+    }
+    const priceBans: Array<[string, RegExp]> = [
+      ["../app/llms.txt/route.ts", /€9\.97\/mo Dashboard|€97\/mo Insider/],
+      ["../app/llms-full.txt/route.ts", /Paid \(€9\.97\/mo Dashboard\)/],
+      ["../app/api/scout/predict/route.ts", /EUR 9\.97\/mo/],
+      ["../app/api/webhook/stripe/route.ts", /&euro;9\.97\/mo is locked in forever/],
+      ["../app/tweet-teardown/thanks/page.tsx", /four thousand two hundred/],
+      ["../app/pitch/page.tsx", /140 startups/],
+      ["../app/code-side-sourcing/page.tsx", /109\+ ranked orgs/],
+    ];
+    for (const [path, rx] of priceBans) {
+      const src = read(path);
+      if (src && rx.test(src)) {
+        failures.push(
+          `§59 stale price/era-count token in ${path} (${rx.source}).\n    fix:  current ladder is €49/mo Dashboard / €197/mo Insider; founding closed 2026-06-30; panel claim is 350+`,
+        );
+      }
+    }
+  }
+}
+
+
 
 
 

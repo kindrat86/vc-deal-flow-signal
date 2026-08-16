@@ -141,8 +141,8 @@ const DELIVERABLES = [
   },
   {
     name: "Live Dashboard",
-    cadence: "€9.97/mo founding",
-    what: "109+ ranked orgs across 15 sectors, refreshed Mondays 06:00 UTC. Sector filters, watchlists, the full acceleration ranking, the operational surface for a fund running Code-Side Sourcing as a weekly motion.",
+    cadence: "€49/mo",
+    what: "350+ ranked orgs across 15 sectors, refreshed Mondays 06:00 UTC. Sector filters, watchlists, the full acceleration ranking, the operational surface for a fund running Code-Side Sourcing as a weekly motion.",
     href: "/pricing",
   },
   {

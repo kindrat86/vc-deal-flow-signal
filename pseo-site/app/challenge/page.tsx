@@ -145,7 +145,7 @@ export default function ChallengePage() {
             name: "What does the 30-Day Deal Flow Reset Challenge cost?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Free. No credit card. No upgrade trial. Thirty daily emails are the entire course; on Day 30 we mention three optional ways to keep using the system (free Sunday digest, €9.97/mo Dashboard, €1,997 one-time Sector Sweep) but you keep the framework either way.",
+              text: "Free. No credit card. No upgrade trial. Thirty daily emails are the entire course; on Day 30 we mention three optional ways to keep using the system (free Sunday digest, €49/mo Dashboard, €1,997 one-time Sector Sweep) but you keep the framework either way.",
             },
           },
           {
@@ -437,7 +437,7 @@ export default function ChallengePage() {
             <li className="flex gap-3">
               <span className="text-emerald-400 mt-0.5">✓</span>Three optional
               next steps if you want to scale the framework: free Sunday
-              digest, €9.97/mo Dashboard, €1,997 one-time Sector Sweep, no
+              digest, €49/mo Dashboard, €1,997 one-time Sector Sweep, no
               upgrade pressure if you keep it manual
             </li>
           </ul>

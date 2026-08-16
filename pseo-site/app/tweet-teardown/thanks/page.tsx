@@ -98,8 +98,7 @@ export default function TeardownThanksPage() {
             Skip the one-tweet bottleneck. Get the ranked panel every Sunday.
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
-            The €1 teardown answers one tweet. The €9.97/mo Dashboard answers
-            four thousand two hundred orgs continuously, with the same Scout
+            The €1 teardown answers one tweet. The €49/mo Dashboard answers a 350+-org panel continuously, with the same Scout
             Score, refreshed every Monday at 09:00 UTC. Founding-member rate
             locked forever for the cohort closing in days, not weeks.
           </p>

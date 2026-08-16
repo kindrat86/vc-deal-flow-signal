@@ -149,7 +149,7 @@ const FUNNELS: Funnel[] = [
     activitySlug: "dashboard",
     href: "/pricing",
     tier: "Core ascension",
-    price: "€9.97/mo founding price (locked forever)",
+    price: "€49/mo (founding rate closed 2026-06-30)",
     hook: "The full live dashboard, refreshed every Monday at 06:00 UTC.",
     who: "Active angel investors, GP scouts, syndicate leads.",
     offer: "8-item stack: live dashboard, 219-startup panel dataset, monthly sector deep-dive PDF, two free Chrome extensions, free MCP server, async watchlist build, methodology vault, 30-day Signal-or-It's-Free guarantee. €1,728/yr standalone value at €9.97/mo.",
@@ -391,7 +391,7 @@ five startups a week, in plain English. If a specific question is
               tests whether the data fits your thesis.
             </li>
             <li>
-              <span className="text-sky-400 font-mono text-xs mr-2">[€9.97/mo]</span>
+              <span className="text-sky-400 font-mono text-xs mr-2">[€49/mo]</span>
               <strong className="text-gray-100">Dashboard</strong>: daily-rhythm tool,
               the founding price is locked forever.
             </li>

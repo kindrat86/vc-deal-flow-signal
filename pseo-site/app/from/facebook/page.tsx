@@ -103,7 +103,7 @@ const FAQ = [
   },
   {
     q: "Is the €7 really credited toward the Dashboard?",
-    a: "Yes. If you upgrade to Dashboard (€9.97/mo founding rate) within 14 days of the First Look purchase, the €7 is credited. If you don't, the deep dive is yours regardless.",
+    a: "Yes. If you upgrade to Dashboard (€49/mo; the €9.97 founding rate closed 2026-06-30) within 14 days of the First Look purchase, the €7 is credited. If you don't, the deep dive is yours regardless.",
   },
   {
     q: "What if the report doesn't surface a useful signal?",
@@ -222,7 +222,7 @@ export default function FromFacebookPage() {
           <p className="text-gray-300 text-base leading-relaxed">
             That&rsquo;s the whole offer. You pick a tracked sector at
             checkout, we ship the deep-dive PDF + CSV + JSON inside 24 business
-            hours. €7 credited toward Dashboard (€9.97/mo founding rate) if you
+            hours. €7 credited toward Dashboard (€49/mo; the €9.97 founding rate closed 2026-06-30) if you
             upgrade in 14 days. 30-day Signal-or-It&rsquo;s-Free guarantee.
           </p>
           <ul className="space-y-2">

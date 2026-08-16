@@ -86,7 +86,7 @@ function downloadEmailHtml(email: string): string {
 
 <p style="color:#64748b;font-size:14px;">P.S. The €0.99 Kindle copy at <a href="${SITE_URL}/book" style="color:#0ea5e9;">${SITE_URL}/book</a> includes three bonus emails the free copy doesn&rsquo;t, a worked walkthrough of the most recent Series A catch, a private link to the unedited investor interviews, and a direct line to me for thirty days. Same content, different bonus stack.</p>
 
-<p style="color:#64748b;font-size:14px;">P.P.S. If you want the methodology run for you on a 250+ org universe every Monday, the Dashboard locks in <a href="${SITE_URL}/pricing#dashboard-beta" style="color:#0ea5e9;">€9.97/mo founding-member rate</a>. The methodology is in the book; the Dashboard is the methodology executed.</p>
+<p style="color:#64748b;font-size:14px;">P.P.S. If you want the methodology run for you on a 250+ org universe every Monday, the Dashboard runs at <a href="${SITE_URL}/pricing#dashboard-beta" style="color:#0ea5e9;">€49/mo. The €9.97 founding rate closed 2026-06-30. </a>. The methodology is in the book; the Dashboard is the methodology executed.</p>
 </div>
 <div style="margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;font-size:12px;color:#94a3b8;">
 <p>You requested this download at <a href="${SITE_URL}/book" style="color:#0ea5e9;">${SITE_URL}/book</a> with the email ${escapeHtml(email)}.</p>
