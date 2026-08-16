@@ -4156,6 +4156,78 @@ landingCheck(
   }
 }
 
+// ---------------------------------------------------------------------------
+// 51. Landing claim lock (2026-08-16 user decision). Canonical panel claim =
+//     "350+ startups/orgs across 15 sectors" (stable floor). "400+" and exact
+//     counts (369/411) as CURRENT size are BANNED on all landing surfaces:
+//     398 deduped unique orgs < 400, so "400+" overclaims, and exact counts
+//     break on weekly panel churn. Re-introduced 08-16 via a stale deploy +
+//     unswept generators; this guard makes such a tree undeployable.
+//     Exempt: third-party product claims ("400+ integrations" for n8n) and
+//     the frozen blog slug i-tracked-369- (URL identifier, not a count).
+// ---------------------------------------------------------------------------
+{
+  const BANNED = [
+    "400+ startups",
+    "400+ venture-backed",
+    "400+ startup",
+    "400+ tracked",
+    "400+ orgs",
+    "Tracks 400+",
+    "369 startups",
+    "411 startups",
+  ];
+  const EXTS = new Set([".html", ".py", ".txt", ".md", ".json", ".xml"]);
+  const SKIP = new Set([".vercel", ".git", "node_modules", ".DS_Store"]);
+  const walk = (dir: string, out: string[] = []): string[] => {
+    let names: string[];
+    try {
+      names = readdirSync(dir);
+    } catch {
+      return out;
+    }
+    for (const name of names) {
+      if (SKIP.has(name)) continue;
+      const p = join(dir, name);
+      let isDir = false;
+      try {
+        isDir = statSync(p).isDirectory();
+      } catch {
+        continue;
+      }
+      if (isDir) walk(p, out);
+      else if (EXTS.has(extname(name).toLowerCase())) out.push(p);
+    }
+    return out;
+  };
+  const landingRoot = join(ROOT, "..", "landing");
+  if (existsSync(landingRoot)) {
+    for (const p of walk(landingRoot)) {
+      let s: string;
+      try {
+        s = readFileSync(p, "utf8");
+      } catch {
+        continue;
+      }
+      for (const banned of BANNED) {
+        if (s.includes(banned)) {
+          failures.push(
+            `§51 landing claim lock: banned panel claim "${banned}" (canonical = "350+ / 15 sectors", user lock 2026-08-16).\n    file: ${p}\n    fix:  sweep to "350+" (panel) or the product-tier truth (pricing Dashboard = 140+); see AGENTS.md "Canonical claims (LOCKED)"`,
+          );
+          break; // one failure per file is enough
+        }
+      }
+    }
+    // pricing tier truth: the Dashboard product line must stay product-accurate
+    const pricing = read("../../../landing/pricing.html");
+    if (pricing && !pricing.includes("140+ startups, 15 sectors")) {
+      failures.push(
+        `§51 pricing Dashboard tier lost the product-truth line "140+ startups, 15 sectors".\n    file: landing/pricing.html\n    fix:  restore the tier line; the paid Dashboard field is ~140 startups, NOT the 350+ panel`,
+      );
+    }
+  }
+}
+
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +

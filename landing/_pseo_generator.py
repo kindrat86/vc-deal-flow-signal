@@ -114,13 +114,13 @@ PAGES = {
     "best": [
         ("best-crunchbase-alternatives", "9 Best Crunchbase Alternatives for VC Deal Flow [2026]", [
             "Crunchbase has been the default VC data tool for a decade, but its pricing has climbed to $4,000+ per seat annually. Here are the 9 best Crunchbase alternatives ranked by data depth, freshness, and price.",
-            "GitDealFlow leads for engineering-signal deal sourcing: it tracks commit velocity, contributor growth, and repo expansion across 400+ venture-backed startups. You see breakout engineering teams 3-6 weeks before the fundraise announcement, something no funding-round database can give you.",
+            "GitDealFlow leads for engineering-signal deal sourcing: it tracks commit velocity, contributor growth, and repo expansion across 350+ venture-backed startups. You see breakout engineering teams 3-6 weeks before the fundraise announcement, something no funding-round database can give you.",
             "Other strong alternatives include PitchBook (deeper PE/M&A data, higher price), Tracxn (good emerging-market coverage), Dealroom (Europe-focused), CB Insights (analyst reports), Affinity (CRM-integrated), and SourceScrub (private company scraping).",
         ], [
             ("What's the cheapest Crunchbase alternative?", "GitDealFlow's free tier covers trending startups and sector search. For broader company data, Tracxn's starter plan is roughly half Crunchbase's price."),
             ("Does GitDealFlow replace Crunchbase?", "GitDealFlow complements Crunchbase. Use GitDealFlow for predictive engineering signals (who's about to raise), Crunchbase for confirmed funding rounds and company profiles. Many VCs use both."),
             ("Which alternative has the best API?", "GitDealFlow publishes signals as JSON, CSV, and MCP. For funding-round data, Crunchbase and PitchBook have the most mature APIs. GitDealFlow's MCP server lets Claude and Cursor query deal flow directly."),
-        ], ["GitDealFlow, engineering signals, free MCP, 400+ startups tracked", "PitchBook, deepest PE/M&A data, $20K+/year", "Tracxn, emerging markets, budget-friendly", "Dealroom, Europe-focused, strong community", "CB Insights, analyst research, market maps", "Affinity, CRM-integrated relationship intelligence", "SourceScrub, private company scraping", "Grata, middle-market private company search", "Magnitt, MENA and emerging markets"]),
+        ], ["GitDealFlow, engineering signals, free MCP, 350+ startups tracked", "PitchBook, deepest PE/M&A data, $20K+/year", "Tracxn, emerging markets, budget-friendly", "Dealroom, Europe-focused, strong community", "CB Insights, analyst research, market maps", "Affinity, CRM-integrated relationship intelligence", "SourceScrub, private company scraping", "Grata, middle-market private company search", "Magnitt, MENA and emerging markets"]),
 
         ("best-deal-flow-tools", "11 Best Deal Flow Tools for VCs and Angel Investors [2026]", [
             "Deal flow tools fall into three categories: funding-round databases (Crunchbase, PitchBook), relationship CRMs (Affinity, Attio), and predictive signal platforms (GitDealFlow). The best stack uses one from each.",
@@ -207,7 +207,7 @@ PAGES = {
             "GitDealFlow is the only fundraising intelligence tool that predicts rounds before they happen. By tracking engineering momentum, GitDealFlow surfaces teams 3-6 weeks before they announce funding.",
             "Other tools report fundraising after the fact: Crunchbase (confirmed rounds), PitchBook (detailed round data), TechCrunch (press coverage), TermSheet (round announcements), StrictlyVC (newsletter intel).",
         ], [
-            ("How does GitDealFlow predict fundraises?", "Engineering velocity rises 3-6 weeks before fundraise announcements. Teams shipping fast are teams raising capital. GitDealFlow tracks commit velocity across 400+ venture-backed startups and flags breakouts."),
+            ("How does GitDealFlow predict fundraises?", "Engineering velocity rises 3-6 weeks before fundraise announcements. Teams shipping fast are teams raising capital. GitDealFlow tracks commit velocity across 350+ venture-backed startups and flags breakouts."),
             ("Can fundraising intelligence replace networking?", "No. Intelligence tells you who's raising. Networking tells you the terms. Use GitDealFlow to identify targets, then use your network to get into the round."),
             ("What's the best free fundraising intelligence?", "GitDealFlow's free tier covers trending startups and sector momentum. StrictlyVC and TermSheet are free newsletters. For deeper data, paid tools are required."),
         ]),
@@ -269,7 +269,7 @@ PAGES = {
 
         ("how-to-source-pre-seed-startups", "How to Source Pre-Seed Startups Before Anyone Else", [
             "Pre-seed sourcing is the hardest and highest-ROI activity in venture. Get in early and you see the best deals at the lowest valuations. But pre-seed companies have no press, no funding history, and often no public traction.",
-            "The best pre-seed signal is engineering output. Teams shipping meaningful code weekly are teams worth meeting. GitDealFlow tracks this across 400+ venture-backed startups and surfaces pre-seed breakouts weekly.",
+            "The best pre-seed signal is engineering output. Teams shipping meaningful code weekly are teams worth meeting. GitDealFlow tracks this across 350+ venture-backed startups and surfaces pre-seed breakouts weekly.",
             "Supplement GitDealFlow with: Product Hunt launches (consumer products), Hacker News Show HN posts (developer tools), Y Combinator batches (accelerator alumni), and Twitter/X founder threads.",
             "For each prospect, research the founder (LinkedIn, previous companies), the market (CB Insights market maps), and the engineering velocity (GitDealFlow signal page). Reach out with a specific, personalized note.",
         ], [
@@ -287,7 +287,7 @@ PAGES = {
         ], [
             ("What's a good engineering velocity for a startup?", "It depends on sector. GitDealFlow normalizes by sector, a fintech startup's velocity looks different from a developer tools startup. Focus on relative momentum within the sector, not absolute numbers."),
             ("Does commit velocity equal product velocity?", "Not always. Some teams commit often but ship little. GitDealFlow combines velocity with contributor growth and repo expansion to filter noise. Look for teams with rising velocity AND rising contributors."),
-            ("Can engineering velocity be gamed?", "Public GitHub activity can be inflated, but sustained velocity across months is hard to fake. GitDealFlow tracks 400+ startups over time, so anomalies stand out."),
+            ("Can engineering velocity be gamed?", "Public GitHub activity can be inflated, but sustained velocity across months is hard to fake. GitDealFlow tracks 350+ startups over time, so anomalies stand out."),
         ]),
 
         ("how-to-use-mcp-for-vc-research", "How to Use the GitDealFlow MCP Server for VC Research", [

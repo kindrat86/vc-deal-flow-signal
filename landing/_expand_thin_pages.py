@@ -179,7 +179,7 @@ def build_for_page(audience, description, use_case):
         <p>{use_case}</p>
         
         <h2>How GitDealFlow Works for {audience}</h2>
-        <p>Every Monday, GitDealFlow scans public GitHub activity across 400+ venture-backed startup organizations in 15 sectors. We surface teams with accelerating commit velocity, growing contributor bases, and expanding repositories, the engineering signals that historically precede fundraising.</p>
+        <p>Every Monday, GitDealFlow scans public GitHub activity across 350+ venture-backed startup organizations in 15 sectors. We surface teams with accelerating commit velocity, growing contributor bases, and expanding repositories, the engineering signals that historically precede fundraising.</p>
         <p>For {audience}, this means you can build a watchlist of high-momentum startups, receive weekly updates on velocity changes, and reach out to founders before their rounds become competitive.</p>
         
         <h2>Getting Started</h2>
@@ -270,7 +270,7 @@ def build_learn_page(slug, topic, description, paragraphs):
     
     faqs = [
         ("How does GitDealFlow help with this?",
-         "GitDealFlow provides weekly engineering momentum signals, commit velocity, contributor growth, and repository expansion, across 400+ venture-backed startups. This data operationalizes the strategy described on this page."),
+         "GitDealFlow provides weekly engineering momentum signals, commit velocity, contributor growth, and repository expansion, across 350+ venture-backed startups. This data operationalizes the strategy described on this page."),
         ("Is this data available for free?",
          "Yes. GitDealFlow's free tier includes trending startups, sector search, and MCP server access. Premium plans add watchlists, alerts, and API access."),
         ("How often is the data updated?",
@@ -386,7 +386,7 @@ FOR_PAGES = [
     ("Hedge Funds", "add engineering momentum to your cross-over investment research stack",
      "Hedge funds investing in late-stage private companies need leading indicators beyond financials. GitDealFlow's engineering momentum data provides an objective signal of team execution speed, the #1 predictor of post-IPO performance for tech companies."),
     ("Micro VCs", "build a proprietary deal pipeline without a large analyst team",
-     "Micro VCs compete with larger funds on deal access. GitDealFlow gives you a systematic sourcing engine: track 400+ startups across 15 sectors, surface breakout teams weekly, and reach out before larger funds spot them."),
+     "Micro VCs compete with larger funds on deal access. GitDealFlow gives you a systematic sourcing engine: track 350+ startups across 15 sectors, surface breakout teams weekly, and reach out before larger funds spot them."),
     ("Startup Studios", "find founding teams and technical co-founders through GitHub activity",
      "Startup studios need strong technical founders. GitDealFlow surfaces engineers who are already shipping meaningful code, the ideal candidates for studio-backed ventures. Track GitHub activity to identify potential founders before they start fundraising."),
     ("Venture Scouts", "surface the highest-signal deals for your VC firm's Monday meeting",
@@ -408,7 +408,7 @@ LEARN_PAGES = [
      "The best investors don't wait for pitch decks, they find startups before anyone knows they're raising. This guide covers the signals, tools, and workflow to build a pre-announcement deal pipeline.",
      [
          "Finding startups before they announce funding is the single highest-ROI activity in venture capital. The 3-6 weeks between when a startup starts preparing to raise and when the round becomes public is the window where proprietary deal flow is built.",
-         "GitDealFlow operationalizes this by tracking three engineering signals across 400+ venture-backed startups: commit velocity (weekly commits), contributor growth (team scaling), and repository expansion (new products and infrastructure). When all three rise simultaneously, the team is likely in fundraising mode.",
+         "GitDealFlow operationalizes this by tracking three engineering signals across 350+ venture-backed startups: commit velocity (weekly commits), contributor growth (team scaling), and repository expansion (new products and infrastructure). When all three rise simultaneously, the team is likely in fundraising mode.",
          "The workflow: every Monday, review GitDealFlow's trending list. Filter by sectors you understand. Add 5-10 startups to your watchlist. For the top 3, research the founder on LinkedIn and draft a personalized outreach note. Within 4-6 weeks, you'll have a pipeline of 20-50 quality prospects, all sourced before any press release.",
          "Supplement GitDealFlow with LinkedIn hiring signals (teams doubling headcount are often mid-raise), Product Hunt launches (consumer products in growth mode), and GitHub trending repositories (developer tools gaining traction). Together these signals create a 360-degree view of startup momentum.",
      ]),
@@ -416,7 +416,7 @@ LEARN_PAGES = [
      "Startup momentum is the rate of change in a company's key metrics. VCs track it to identify breakout teams, time investments, and monitor portfolio health. Here's the framework.",
      [
          "Momentum tracking separates reactive investors from proactive ones. Instead of waiting for funding announcements, you monitor leading indicators that change before capital events. The three most predictive signals: engineering velocity (GitHub commits), hiring velocity (LinkedIn headcount), and product velocity (shipping cadence).",
-         "Engineering velocity is the earliest and most objective signal. GitDealFlow tracks this across 400+ startups: commit counts, contributor growth, and new repository creation. A team that goes from 12 commits/week to 45 commits/week while growing from 3 to 7 contributors is in breakout mode, and typically within 3-6 weeks of a fundraise.",
+         "Engineering velocity is the earliest and most objective signal. GitDealFlow tracks this across 350+ startups: commit counts, contributor growth, and new repository creation. A team that goes from 12 commits/week to 45 commits/week while growing from 3 to 7 contributors is in breakout mode, and typically within 3-6 weeks of a fundraise.",
          "Hiring velocity is a confirmatory signal. Check a startup's LinkedIn page monthly. Teams adding 2+ engineers per quarter are scaling, especially if those hires are senior (Staff, Principal, VP-level). Pair this with GitDealFlow's engineering data to confirm the hiring is translating to shipping.",
          "Product velocity completes the picture. Monitor the startup's changelog, blog, and GitHub releases. A startup that ships a major feature, doubles headcount, AND has rising engineering velocity is a prime investment candidate. GitDealFlow's MCP server can help you query this data directly in Claude or Cursor.",
      ]),
@@ -560,7 +560,7 @@ OTHER_PAGES = [
     ("2025", "Startup Engineering Signals, 2025 Year in Review | GitDealFlow",
      "A look back at the strongest startup engineering signals of 2025, which sectors accelerated, which teams broke out, and what the GitHub data revealed before the funding rounds.",
      f'''<h2>2025 Startup Engineering Signals: Year in Review</h2>
-        <p>2025 was a breakout year for engineering-first deal sourcing. Across 400+ tracked startups, GitDealFlow's signals identified 219 fundraises 21-47 days before announcement. AI/ML, fintech, and climate tech led sector momentum; developer tools and cybersecurity showed the strongest consistency.</p>
+        <p>2025 was a breakout year for engineering-first deal sourcing. Across 350+ tracked startups, GitDealFlow's signals identified 219 fundraises 21-47 days before announcement. AI/ML, fintech, and climate tech led sector momentum; developer tools and cybersecurity showed the strongest consistency.</p>
         <h2>Top Sectors by Engineering Velocity</h2>
         <p>AI/ML startups shipped at 2.3x the commit velocity of the average tracked startup. Fintech followed at 1.7x, driven by stablecoin infrastructure and embedded lending. Climate tech showed the fastest acceleration, Q4 2025 velocity was 3x Q1 2025.</p>
         <h2>Key Signal Patterns</h2>
@@ -575,16 +575,16 @@ OTHER_PAGES = [
      [("2026 Startup Signals", f"{CANONICAL}/2026"), ("Best Deal Flow Tools", f"{CANONICAL}/best/best-deal-flow-tools"), ("How to Track Startup Momentum", f"{CANONICAL}/learn/how-to-track-startup-momentum")]),
     
     ("2026", "Startup Engineering Signals, 2026 Live | GitDealFlow",
-     "Real-time startup engineering signals for 2026. Track commit velocity, contributor growth, and repo expansion across 400+ venture-backed startups in 15 sectors.",
+     "Real-time startup engineering signals for 2026. Track commit velocity, contributor growth, and repo expansion across 350+ venture-backed startups in 15 sectors.",
      f'''<h2>2026 Startup Engineering Signals: Live Tracking</h2>
-        <p>2026 is shaping up as the year engineering momentum data goes mainstream in venture capital. GitDealFlow now tracks 400+ startups across 15 sectors, with weekly signal updates every Monday. The live dashboard at signals.gitdealflow.com shows real-time momentum rankings.</p>
+        <p>2026 is shaping up as the year engineering momentum data goes mainstream in venture capital. GitDealFlow now tracks 350+ startups across 15 sectors, with weekly signal updates every Monday. The live dashboard at signals.gitdealflow.com shows real-time momentum rankings.</p>
         <h2>What's New in 2026</h2>
         <p>This year we added: MCP server integration (query deal flow directly in Claude and Cursor), A2A and NLWeb endpoints for agent-native access, the Scout Game (predict which startups will raise), and expanded sector coverage including climate tech, biotech, and robotics.</p>
         <h2>How to Use 2026 Signals</h2>
         <p>Start with the free weekly Signal Digest. Pick 3-5 sectors. Every Monday, review the trending list and add 5-10 startups to your watchlist. Within 4 weeks, you'll have a quality pipeline of 20-50 prospects sourced from engineering signals, not inbound decks.</p>
         <p><a href="{CANONICAL}/#signup" style="display:inline-block;background:#00d4aa;color:#04130e;padding:.8rem 1.5rem;border-radius:.5rem;font-weight:700;text-decoration:none;margin-top:1rem">Get free 2026 signals →</a></p>''',
      [
-         ("How many startups does GitDealFlow track in 2026?", "400+ venture-backed startups across 15 sectors. Coverage expands weekly as new startups ship code publicly on GitHub."),
+         ("How many startups does GitDealFlow track in 2026?", "350+ venture-backed startups across 15 sectors. Coverage expands weekly as new startups ship code publicly on GitHub."),
          ("How often is 2026 data updated?", "Weekly. New signals appear every Monday based on the prior week's GitHub activity. The live dashboard updates in real-time."),
          ("Is there a free way to track 2026 signals?", "Yes. GitDealFlow's free tier includes trending startups, sector search, MCP server, and the weekly Signal Digest. Upgrade for watchlists, alerts, and API access."),
      ],

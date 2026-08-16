@@ -246,7 +246,7 @@ BEST_PAGES = [
            "The top newsletters combine original research, exclusive deal mentions, and sector-specific analysis that you won't find in any database. GitDealFlow's own Signal Digest delivers engineering momentum data, commit velocity, contributor growth, and repo expansion, directly to your inbox every Monday.",
            "For VCs and angels, a good newsletter is the difference between reactive deal flow (responding to what others have already seen) and proactive deal flow (spotting trends before they're crowded)."]),
          ("The 7 Best Startup Newsletters",
-          ["1. GitDealFlow Signal Digest, Weekly engineering momentum signals across 400+ startups. See which teams are shipping fastest before they raise. Free.",
+          ["1. GitDealFlow Signal Digest, Weekly engineering momentum signals across 350+ startups. See which teams are shipping fastest before they raise. Free.",
            "2. StrictlyVC, Connie Loizos' daily VC newsletter. Deep industry coverage and deal announcements. Paid.",
            "3. TermSheet, Morning roundup of fundraising news and startup trends. Free.",
            "4. The Generalist, Long-form analysis of startups, founders, and market trends. Free/paid.",
@@ -1077,7 +1077,7 @@ DATA_PAGES = [
      ]),
 
     ("github-engineering-velocity-data", "GitHub Engineering Velocity Data, Methodology and Benchmarks",
-     "GitDealFlow tracks commit velocity, contributor growth, and repo expansion across 400+ venture-backed startups. Here's the data methodology and sector benchmarks.",
+     "GitDealFlow tracks commit velocity, contributor growth, and repo expansion across 350+ venture-backed startups. Here's the data methodology and sector benchmarks.",
      [
          ("Data Methodology",
           ["GitDealFlow scans public GitHub organizations for 350+ venture-backed startups across 15 sectors.",

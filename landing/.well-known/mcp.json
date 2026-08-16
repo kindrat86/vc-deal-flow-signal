@@ -1,7 +1,7 @@
 {
   "version": "1.0",
   "name": "GitDealFlow",
-  "description": "Public dataset of startup engineering acceleration. Track 400+ startups across 15 sectors before they raise.",
+  "description": "Public dataset of startup engineering acceleration. Track 350+ startups across 15 sectors before they raise.",
   "url": "https://gitdealflow.com",
   "mcpServers": [
     {
