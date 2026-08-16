@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { alternatives, getAlternative, getAllAlternativeSlugs, type AlternativeFAQ } from "@/content/alternatives";
+import { alternatives, getAlternative, getAllAlternativeSlugs, type AlternativeFAQ, ALTERNATIVES_TITLE_HOOKS } from "@/content/alternatives";
+import { FRESH_YEAR_STR } from "@/lib/freshness-year";
 import { useCases } from "@/content/use-cases";
 import { getAllSectors, getCurrentPeriod, getDataLastModified } from "@/lib/data";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
@@ -30,18 +31,24 @@ export async function generateMetadata({
   const alt = getAlternative(slug);
   if (!alt) return {};
 
+  // CTR hook (2026-08-16 SERP CTR win): per-slug hook from
+  // ALTERNATIVES_TITLE_HOOKS wins as an absolute title (no template suffix
+  // truncation); content title stays the H1/og fallback.
+  const hookedTitle = ALTERNATIVES_TITLE_HOOKS[slug];
   return {
-    title: alt.title,
+    ...(hookedTitle
+      ? { title: { absolute: `${hookedTitle} (${FRESH_YEAR_STR})` } }
+      : { title: alt.title }),
     description: alt.description,
     openGraph: {
-      title: alt.title,
+      title: hookedTitle ? `${hookedTitle} (${FRESH_YEAR_STR})` : alt.title,
       description: alt.description,
       type: "article",
       url: `/alternatives/${slug}`,
     },
     twitter: {
       card: "summary_large_image",
-      title: alt.title,
+      title: hookedTitle ? `${hookedTitle} (${FRESH_YEAR_STR})` : alt.title,
       description: alt.description,
     },
     alternates: {

@@ -365,8 +365,7 @@ export const starsCases: StarsCase[] = [
     leadInvestor: "Series B (Accel, Sequoia, others)",
     timeToMoney:
       "Linear is the rare case where the GitHub presence is intentionally minimal, the signal lived in mentions and integrations",
-    headline:
-      "Linear, when the signal lives in OSS integrations, not stars",
+    headline: "Linear to a $35M Series B: Signal in Integrations, Not Stars",
     tagline:
       "Linear's $35M Series B is the case study for companies whose GitHub signal is downstream, visible in tutorials, plugins, and dev-tool integrations.",
     tldr:
@@ -1782,7 +1781,7 @@ export const starsCases: StarsCase[] = [
     raiseDate: "2024-01-01",
     leadInvestor: "VC-backed (community-funded + private)",
     timeToMoney: "Steady star slope + programmatic-video category creation",
-    headline: "Remotion, programmatic video to mass adoption",
+    headline: "Remotion: React Programmatic Video, 0 to 17K Stars",
     tagline:
       "Remotion built the programmatic-video category from scratch; the GitHub signal compounded for years.",
     tldr:
@@ -2363,7 +2362,7 @@ export const starsCases: StarsCase[] = [
     raiseDate: "2024-09-01",
     leadInvestor: "Reported Series A",
     timeToMoney: "Star slope + local-LLM tutorial density led the round",
-    headline: "Ollama: local LLM runtime to Series A",
+    headline: "Ollama: Local LLM Runtime, ~50K Stars to Series A",
     tagline:
       "Ollama crossed 50K stars and became the default local LLM runtime cited in nearly every open-weights tutorial before its reported Series A in mid-2024, the star slope and tutorial-default signal had been visible for three quarters.",
     tldr:

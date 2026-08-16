@@ -676,7 +676,7 @@ export const comparisons: Comparison[] = [
     slug: "best-ai-deal-sourcing-tools-2026",
     title: `Best AI Deal Sourcing Tools for VCs ${FRESH_YEAR_STR}`,
     description:
-      "Compare the leading AI-powered deal sourcing tools in 2026, including GitDealFlow, Harmonic.ai, Specter, Forager.ai, and CB Insights.",
+      "AI deal sourcing tools compared on signal type, lead time, and pricing: GitDealFlow free weekly signals to CB Insights at $35k+/yr. Includes Harmonic, Specter, Forager.",
     h1: "Best AI Deal Sourcing Tools for VCs",
     intro:
       "AI-powered deal sourcing tools have become table-stakes for institutional VCs and a budget-friendly weapon for emerging managers. The category splits into three buckets: leading-signal tools (engineering, growth, hiring) that surface companies pre-fundraise, AI team pattern matchers that score founders at incorporation, and lagging-database aggregators that auto-summarise public news. Here is how the leading options compare in 2026.",
@@ -2265,6 +2265,82 @@ const editorialSlugs = new Set(comparisons.map((c) => c.slug));
 export const programmaticComparisons = [...vsDealFlow, ...crossComparisons].filter(
   (c) => !editorialSlugs.has(c.slug)
 );
+
+// CTR hooks (2026-08-16): title override per slug, consumed by
+// app/compare/[slug]/page.tsx generateMetadata. See hook map header for
+// sourcing rules. Unhooked slugs fall back to the plain content title.
+// Hand-curated CTR hooks for /compare/ + /alternatives/ titles
+// (2026-08-16 SERP CTR win, phase 2: extend the proven /vs/ price-hook
+// pattern site-wide). Figures sourced ONLY from the site's own published
+// pricing fields (content/competitor-vs.ts) and the live GDF ladder
+// (free / EUR 1 / 7 / 49 / 197 / 497 / 14997). Hook + " (YEAR)" fits
+// 60 chars. No em dashes. Year appended at render time, never hardcoded.
+export const COMPARE_TITLE_HOOKS: Record<string, string> = {
+  "best-ai-deal-sourcing-tools-2026": "Best AI Deal Sourcing Tools: Free to $35k+",
+  "best-alternative-data-tools-for-angel-investors": "Best Alt-Data Tools for Angels: From $0",
+  "best-deal-flow-tools-ai-investors": "Best Deal Flow Tools for AI Investors: Free + Paid",
+  "best-deal-flow-tools-angel-investors": "Best Deal Flow Tools for Angels: Free + Paid",
+  "best-deal-flow-tools-developer-investors-2026": "Best Deal Flow Tools for Dev-Investors: $0 Start",
+  "best-deal-flow-tools-emerging-fund-managers": "Best Deal Flow Tools for Emerging Mgrs: From $0",
+  "best-deal-flow-tools-european-investors": "Best Deal Flow Tools for EU Investors: From $0",
+  "best-deal-flow-tools-seed-investors": "Best Deal Flow Tools for Seed: Free + Paid",
+  "best-deal-flow-tools-solo-gp": "Best Deal Flow Tools for Solo GPs: From $0",
+  "best-deal-flow-tools-vc-firms-2026": "Best Deal Flow Tools for VC Firms: $0 to $35k+",
+  "best-free-deal-flow-tools-2026": "Best Free Deal Flow Tools: 3 Actually Free",
+  "best-github-deal-flow-tools-2026": "Best GitHub Deal Flow Tools: 2 Free, 1 at EUR 49",
+  "best-startup-signal-tools-for-investors": "Best Startup Signal Tools: Free to $35k+",
+  "crunchbase-alternative-for-angel-investors": "Crunchbase Alternative for Angels: From $0",
+  "dashboard-vs-a-custom-airtable-deal-flow-board": "Dashboard vs an Airtable Board: EUR 49 vs $0",
+  "dashboard-vs-a-free-crm-for-early-sourcing": "Dashboard vs a Free CRM: EUR 49 vs $0",
+  "dashboard-vs-a-notion-watchlist": "Dashboard vs a Notion Watchlist: EUR 49 vs $0",
+  "dashboard-vs-crunchbase-pro-for-early-timing": "Dashboard vs Crunchbase Pro: EUR 49 vs $49/mo",
+  "dashboard-vs-insider-for-conviction-support": "Dashboard vs Insider: EUR 49 vs EUR 197/mo",
+  "dashboard-vs-insider-for-weekly-workflow": "Dashboard vs Insider: EUR 49 vs EUR 197",
+  "first-look-vs-a-partner-brainstorm-session": "First Look vs a Partner Brainstorm: EUR 7",
+  "first-look-vs-dashboard-for-live-theses": "First Look vs Dashboard: EUR 7 vs EUR 49/mo",
+  "first-look-vs-startup-database-for-live-theses": "First Look (EUR 7) vs a Startup Database",
+  "gitdealflow-vs-a-consultant-style-sector-report": "GitDealFlow vs a Sector Report: EUR 49 vs $5k+",
+  "gitdealflow-vs-a-manual-github-check-every-monday": "GitDealFlow vs Manual GitHub Checks: 400 vs 5",
+  "gitdealflow-vs-a-shared-google-sheet-for-deal-flow": "GitDealFlow vs a Google Sheet: Weekly vs Manual",
+  "gitdealflow-vs-a-twitter-list-for-early-sourcing": "GitDealFlow vs a Twitter List: Signal vs Noise",
+  "gitdealflow-vs-affinity-for-discovery-vs-crm": "GitDealFlow vs Affinity: Discovery vs CRM",
+  "gitdealflow-vs-crunchbase-for-solo-angels": "GitDealFlow vs Crunchbase for Solo Angels: $0 Start",
+  "gitdealflow-vs-dealroom-for-european-angels": "GitDealFlow vs Dealroom for EU Angels: From $0",
+  "gitdealflow-vs-harmonic-for-solo-angels": "GitDealFlow vs Harmonic.ai for Solo Angels: $0 Start",
+  "gitdealflow-vs-pitchbook-for-european-micro-funds": "GitDealFlow vs PitchBook: EUR 49 vs $20k+/yr",
+  "gitdealflow-vs-pitchbook-for-small-funds": "GitDealFlow vs PitchBook for Small Funds: $0 vs $20k+",
+  "github-signals-vs-crunchbase-alerts": "GitHub Signals vs Crunchbase Alerts: $0 vs $49/mo",
+  "insider-vs-a-generic-slack-group-for-investors": "Insider vs a Slack Group: EUR 197 vs $0",
+  "insider-vs-a-paid-newsletter-for-investors": "Insider vs a Paid Newsletter: EUR 197 vs $30",
+  "insider-vs-a-whatsapp-group-for-co-investors": "Insider vs a WhatsApp Group: EUR 197 vs $0",
+  "vc-deal-flow-signal-vs-affinity-relationship-intelligence": "VC Deal Flow Signal vs Affinity: Signal vs CRM",
+  "vc-deal-flow-signal-vs-cb-insights": "VC Deal Flow Signal vs CB Insights: $0 vs $35k+/yr",
+  "vc-deal-flow-signal-vs-crunchbase": "VC Deal Flow Signal vs Crunchbase: $0 vs $49/mo",
+  "vc-deal-flow-signal-vs-dealroom": "VC Deal Flow Signal vs Dealroom: Free Tier vs Tiered",
+  "vc-deal-flow-signal-vs-forager-ai": "VC Deal Flow Signal vs Forager.ai: Free vs Tiered",
+  "vc-deal-flow-signal-vs-fund-momentum": "VC Deal Flow Signal vs Fund Momentum: $0 vs $49/mo",
+  "vc-deal-flow-signal-vs-harmonic-ai": "VC Deal Flow Signal vs Harmonic: Free vs Enterprise",
+  "vc-deal-flow-signal-vs-pitchbook": "VC Deal Flow Signal vs PitchBook: $0 vs $20k+/yr",
+  "vc-deal-flow-signal-vs-signalfire-beacon": "VC Deal Flow Signal vs SignalFire: $0 vs Enterprise",
+  "vc-deal-flow-signal-vs-tribe-capital-magnify": "VC Deal Flow Signal vs Tribe: $0 vs Enterprise",
+  "weekly-watchlist-vs-a-static-startup-database": "Weekly Watchlist vs a Static Database: $0",
+};
+
+// Hooks for /alternatives/[slug]; key = competitor slug.
+export const ALTERNATIVES_TITLE_HOOKS: Record<string, string> = {
+  "affinity": "Affinity Alternative: Sourcing vs CRM",
+  "cb-insights": "CB Insights Alternative: $0 vs $35k+/yr",
+  "crunchbase": "Crunchbase Alternative: $0 vs $49/mo",
+  "crunchbase-alerts": "Crunchbase Alerts Alternative: From $0",
+  "dealroom": "Dealroom Alternative: From $0, EU Depth",
+  "forager-ai": "Forager.ai Alternative: Free Tier + Paid",
+  "harmonic-ai": "Harmonic.ai Alternative: Free Tier + Paid",
+  "openvc": "OpenVC Alternative: Both Free",
+  "pitchbook": "PitchBook Alternative: From $0 vs $20k+/yr",
+  "signalrank": "SignalRank Alternative: Free vs Index Fund",
+  "specter": "Specter Alternative: From $0",
+  "tracxn": "Tracxn Alternative: From $0, GitHub-Native",
+};
 
 const allComparisons = [...comparisons, ...programmaticComparisons];
 

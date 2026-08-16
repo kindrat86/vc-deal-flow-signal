@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
-import { getComparison, getAllComparisonSlugs, type ComparisonFAQ, type ComparisonLink } from "@/content/comparisons";
+import { getComparison, getAllComparisonSlugs, COMPARE_TITLE_HOOKS, type ComparisonFAQ, type ComparisonLink } from "@/content/comparisons";
+import { FRESH_YEAR_STR } from "@/lib/freshness-year";
 import { getTeardownsForSlug } from "@/content/competitor-teardowns";
 import { getAllSectors, getCurrentPeriod, getDataLastModified } from "@/lib/data";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
@@ -35,23 +36,29 @@ export async function generateMetadata({
   const comp = getComparison(slug);
   if (!comp) return {};
 
-  // Titles that already name the brand (e.g. "VC Deal Flow Signal vs X") use
-  // absolute to bypass the "| VC Deal Flow Signal" template (brand doubling fix).
-  return {
-    title: comp.title.includes("VC Deal Flow Signal")
+  // CTR hook (2026-08-16 SERP CTR win): per-slug hook from
+  // COMPARE_TITLE_HOOKS wins as an absolute title (no template suffix
+  // truncation); brand-named content titles stay absolute (no doubling);
+  // everything else keeps the template suffix.
+  const hookedTitle = COMPARE_TITLE_HOOKS[slug];
+  const pageTitle = hookedTitle
+    ? { absolute: `${hookedTitle} (${FRESH_YEAR_STR})` }
+    : comp.title.includes("VC Deal Flow Signal")
       ? { absolute: comp.title }
-      : comp.title,
+      : comp.title;
+  return {
+    title: pageTitle,
     description: clampDescription(comp.description),
     ...(comp.noindex ? { robots: { index: false } } : {}),
     openGraph: {
-      title: comp.title,
+      title: hookedTitle ? `${hookedTitle} (${FRESH_YEAR_STR})` : comp.title,
       description: clampDescription(comp.description),
       type: "article",
       url: `/compare/${slug}`,
     },
     twitter: {
       card: "summary_large_image",
-      title: comp.title,
+      title: hookedTitle ? `${hookedTitle} (${FRESH_YEAR_STR})` : comp.title,
       description: clampDescription(comp.description),
     },
     alternates: {

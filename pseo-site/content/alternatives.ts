@@ -926,3 +926,19 @@ export function getAlternative(slug: string): Alternative | undefined {
 export function getAllAlternativeSlugs(): string[] {
   return alternatives.map((a) => a.slug);
 }
+
+// Hooks for /alternatives/[slug]; key = competitor slug.
+export const ALTERNATIVES_TITLE_HOOKS: Record<string, string> = {
+  "affinity": "Affinity Alternative: Sourcing vs CRM",
+  "cb-insights": "CB Insights Alternative: $0 vs $35k+/yr",
+  "crunchbase": "Crunchbase Alternative: $0 vs $49/mo",
+  "crunchbase-alerts": "Crunchbase Alerts Alternative: From $0",
+  "dealroom": "Dealroom Alternative: From $0, EU Depth",
+  "forager-ai": "Forager.ai Alternative: Free Tier + Paid",
+  "harmonic-ai": "Harmonic.ai Alternative: Free Tier + Paid",
+  "openvc": "OpenVC Alternative: Both Free",
+  "pitchbook": "PitchBook Alternative: From $0 vs $20k+/yr",
+  "signalrank": "SignalRank Alternative: Free vs Index Fund",
+  "specter": "Specter Alternative: From $0",
+  "tracxn": "Tracxn Alternative: From $0, GitHub-Native",
+};

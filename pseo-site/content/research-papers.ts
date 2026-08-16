@@ -87,7 +87,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "https://www.semanticscholar.org/paper/204e3073870fae3d05bcbc2f6a8e263d9b72e776",
       "https://openalex.org/works/W2963403868",
     ],
-    metaTitle: "Attention Is All You Need Paper (Vaswani et al., 2017): arXiv 1706.03762",
+    metaTitle: "Attention Is All You Need Paper, Explained (Vaswani 2017)",
     /**
      * Investor-angle lede (search-intent fix 2026-08-16): investor-voiced,
      * grounded in ourContext. Rendered top-of-page in the "Why investors
@@ -151,7 +151,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "https://arxiv.org/abs/2005.14165",
       "https://www.semanticscholar.org/paper/90abbc2cf38462b954ae1b772fac9532e2ccd8b0",
     ],
-    metaTitle: "GPT-3 Paper: Language Models Are Few-Shot Learners (Brown et al., 2020)",
+    metaTitle: "GPT-3 Paper Explained: Language Models Are Few-Shot Learners",
     /**
      * Investor-angle lede (search-intent fix 2026-08-16): investor-voiced,
      * grounded in ourContext. Rendered top-of-page in the "Why investors
@@ -215,7 +215,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "https://arxiv.org/abs/2203.02155",
       "https://www.semanticscholar.org/paper/d766bffc357127e0dc86dd69561d5aeb520d6f4c",
     ],
-    metaTitle: "InstructGPT Paper (Ouyang et al., 2022): RLHF and Instruction Tuning",
+    metaTitle: "InstructGPT Explained: RLHF and Instruction Tuning (Ouyang 2022)",
     /**
      * Investor-angle lede (search-intent fix 2026-08-16): investor-voiced,
      * grounded in ourContext. Rendered top-of-page in the "Why investors
@@ -279,7 +279,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "https://arxiv.org/abs/2005.11401",
       "https://www.semanticscholar.org/paper/58ed1fbaabe027345f7bb3a6312d41c5aac63e22",
     ],
-    metaTitle: "RAG Paper: Retrieval-Augmented Generation (Lewis et al., 2020)",
+    metaTitle: "RAG Paper Explained: Retrieval-Augmented Generation (Lewis 2020)",
     /**
      * Investor-angle lede (search-intent fix 2026-08-16): investor-voiced,
      * grounded in ourContext. Rendered top-of-page in the "Why investors
@@ -343,7 +343,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "https://arxiv.org/abs/2106.09685",
       "https://www.semanticscholar.org/paper/a8ca46b171467ceb2d7652fbb7e5e2f4631c4ac0",
     ],
-    metaTitle: "LoRA Paper: Low-Rank Adaptation (Hu et al., 2021): arXiv 2106.09685",
+    metaTitle: "LoRA Paper Explained: Low-Rank Adaptation (Hu et al., 2021)",
     /**
      * Investor-angle lede (search-intent fix 2026-08-16): investor-voiced,
      * grounded in ourContext. Rendered top-of-page in the "Why investors
@@ -407,7 +407,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "https://arxiv.org/abs/2212.08073",
       "https://www.semanticscholar.org/paper/5c4d44eb4b0d9c1eeed03a8bcccef957fce8a06b",
     ],
-    metaTitle: "Constitutional AI Paper (Bai et al., 2022): arXiv 2212.08073",
+    metaTitle: "Constitutional AI Explained: Harmlessness (Bai et al., 2022)",
     /**
      * Investor-angle lede (search-intent fix 2026-08-16): investor-voiced,
      * grounded in ourContext. Rendered top-of-page in the "Why investors
@@ -471,7 +471,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "https://arxiv.org/abs/2201.11903",
       "https://www.semanticscholar.org/paper/1b6e810ce0afd0dd093f789d2b2742d047e316d5",
     ],
-    metaTitle: "Chain-of-Thought Prompting Paper (Wei et al., 2022): NeurIPS 2022",
+    metaTitle: "Chain-of-Thought Prompting Explained (Wei et al., 2022)",
     /**
      * Investor-angle lede (search-intent fix 2026-08-16): investor-voiced,
      * grounded in ourContext. Rendered top-of-page in the "Why investors
@@ -531,7 +531,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "https://dora.dev/",
       "https://services.google.com/fh/files/misc/state-of-devops-2023.pdf",
     ],
-    metaTitle: "DORA Metrics Paper: Accelerate Research (Forsgren et al., 2018)",
+    metaTitle: "DORA Metrics Explained: The Four Keys (Forsgren 2018)",
     /**
      * Investor-angle lede (search-intent fix 2026-08-16): investor-voiced,
      * grounded in ourContext. Rendered top-of-page in the "Why investors
@@ -597,7 +597,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "https://www.semanticscholar.org/paper/3a07552649a9d04e10293aa4f895f959bf8f3d1d",
       "https://openalex.org/works/W2740393300",
     ],
-    metaTitle: "Mixture of Experts Paper (Shazeer et al., 2017)",
+    metaTitle: "Mixture of Experts Paper Explained: Sparse MoE (Shazeer 2017)",
     /**
      * Investor-angle lede (search-intent fix 2026-08-16): investor-voiced,
      * grounded in ourContext. Rendered top-of-page in the "Why investors

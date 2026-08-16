@@ -18,7 +18,7 @@ import { getHreflangLanguages } from "@/lib/hreflang";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 
 export const metadata: Metadata = {
-  title: "Methodology, How We Measure Startup Engineering Acceleration",
+  title: "GitDealFlow Methodology: Signals 21-47 Days Before the Round",
   description:
     "How GitDealFlow measures GitHub engineering acceleration: data sources, formulas, signal rules, update cadence, and the proof behind the timing-first thesis.",
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).

@@ -3338,6 +3338,88 @@ check(
   "restore the conditional Vista PAA FAQ in the acquirer template",
 );
 
+
+// ---------------------------------------------------------------------------
+// §42 CTR title hooks site-wide (2026-08-18, audit item "Title/meta CTR
+// levers 25"). Phase 2 of the SERP-CTR win: the proven /vs/ price-hook
+// pattern extended to /compare/, /alternatives/, research-paper leaves,
+// from-stars-to-seed leaves, /methodology, and /answers. Figures come ONLY
+// from the site's own published pricing (competitor-vs.ts) and the GDF
+// ladder. Years render via FRESH_YEAR_STR, never hardcoded. A lineage that
+// loses these reverts every hooked <title> to the generic catalog form
+// that earned 21 clicks / 7,455 impressions (0.28% CTR).
+// ---------------------------------------------------------------------------
+check(
+  "content/comparisons.ts",
+  "§42 CTR: the COMPARE_TITLE_HOOKS map was dropped (per-slug price/verdict hooks for /compare listicles)",
+  (s) =>
+    s.includes("export const COMPARE_TITLE_HOOKS") &&
+    s.includes("Best AI Deal Sourcing Tools: Free to $35k+") &&
+    s.includes("EUR 49 vs $49/mo"),
+  "restore COMPARE_TITLE_HOOKS in content/comparisons.ts (48 slug hooks)",
+);
+check(
+  "app/compare/[slug]/page.tsx",
+  "§42 CTR: the compare builder no longer consumes the hook map (title falls back to generic)",
+  (s) =>
+    s.includes("COMPARE_TITLE_HOOKS[slug]") &&
+    s.includes("FRESH_YEAR_STR})`"),
+  "restore hook-map consumption in app/compare/[slug]/page.tsx generateMetadata",
+);
+check(
+  "content/alternatives.ts",
+  "§42 CTR: the ALTERNATIVES_TITLE_HOOKS map was dropped",
+  (s) => s.includes("export const ALTERNATIVES_TITLE_HOOKS"),
+  "restore ALTERNATIVES_TITLE_HOOKS in content/alternatives.ts",
+);
+check(
+  "app/alternatives/[slug]/page.tsx",
+  "§42 CTR: the alternatives builder no longer consumes the hook map",
+  (s) => s.includes("ALTERNATIVES_TITLE_HOOKS[slug]"),
+  "restore hook-map consumption in app/alternatives/[slug]/page.tsx generateMetadata",
+);
+check(
+  "content/research-papers.ts",
+  "§42 CTR: research-paper metaTitles reverted to catalog form (the 19.6K-impression pool's only CTR lever)",
+  (s) =>
+    s.includes("LoRA Paper Explained: Low-Rank Adaptation (Hu et al., 2021)") &&
+    s.includes("GPT-3 Paper Explained: Language Models Are Few-Shot Learners") &&
+    s.includes("RAG Paper Explained: Retrieval-Augmented Generation (Lewis 2020)") &&
+    s.includes("Constitutional AI Explained: Harmlessness (Bai et al., 2022)"),
+  "restore the Explained-hook metaTitles across content/research-papers.ts (9 papers)",
+);
+check(
+  "content/from-stars-to-seed.ts",
+  "§42 CTR: from-stars-to-seed headlines lost their $ / star figures",
+  (s) =>
+    s.includes("Linear to a $35M Series B: Signal in Integrations, Not Stars") &&
+    s.includes("Remotion: React Programmatic Video, 0 to 17K Stars") &&
+    s.includes("Ollama: Local LLM Runtime, ~50K Stars to Series A"),
+  "restore the figure-bearing headlines in content/from-stars-to-seed.ts",
+);
+check(
+  "app/methodology/page.tsx",
+  "§42 CTR: the methodology title lost its 21-47 day validated-claim hook",
+  (s) =>
+    s.includes("GitDealFlow Methodology: Signals 21-47 Days Before the Round"),
+  "restore the hooked methodology title",
+);
+check(
+  "content/agent-queries.ts",
+  "§42 CTR: the answers metaTitle override field or its first use was dropped",
+  (s) =>
+    s.includes("metaTitle?: string") &&
+    s.includes("GitHub Data for Startup Investors: Free Weekly Signals"),
+  "restore metaTitle support in content/agent-queries.ts",
+);
+check(
+  "app/answers/[slug]/page.tsx",
+  "§42 CTR: the answers builder no longer consumes metaTitle",
+  (s) => s.includes("? { title: { absolute: q.metaTitle } }") &&
+    s.includes("q.metaTitle ?? q.h1"),
+  "restore metaTitle consumption in app/answers/[slug]/page.tsx generateMetadata",
+);
+
 // ---------------------------------------------------------------------------
 if (failures.length) {
   console.error(
