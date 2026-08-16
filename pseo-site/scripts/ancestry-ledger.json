@@ -1,0 +1,77 @@
+{
+  "$comment": [
+    "Ledger of sentinel fixes for scripts/verify-ancestry.ts (verify-no-regressions section 44).",
+    "Each entry pins a commit that carried a production-content fix that was",
+    "previously (or could be) dropped from main by a lineage reset, plus",
+    "content needles proving the fix survives at HEAD.",
+    "Enforced: fixCommit ancestry of HEAD (unless ancestryExpected=false) and",
+    "every contentNeedle present in the file at HEAD (read via git show, so a",
+    "dirty worktree cannot mask a regressed HEAD).",
+    "Protocol: when you land a fix that would be expensive to re-discover,",
+    "add an entry here IN THE SAME COMMIT. When a needle becomes obsolete",
+    "(content legitimately rewritten), update the entry with a supersededBy",
+    "note. Never delete history: mark obsolete, do not erase."
+  ],
+  "sentinels": [
+    {
+      "id": "direct-answers-92",
+      "what": "92 authored direct-answer definitions on /answers (featured-snippet rebuild, audit 2026-08-16). Dropped once by the 58f99447 lineage reset (silently re-shipped 1/92); restored by e59c4e36.",
+      "fixCommit": "e59c4e36c488c6a2184b320383c3c38f63f04833",
+      "ancestryExpected": true,
+      "contentNeedles": [
+        { "file": "pseo-site/content/agent-queries.ts", "pattern": "^\\s+definition:", "minCount": 92 }
+      ]
+    },
+    {
+      "id": "guard-direct-answers",
+      "what": "verify-direct-answers.ts guard (100% definition coverage floor, 40-60 word window) wired into prebuild.",
+      "fixCommit": "e59c4e36c488c6a2184b320383c3c38f63f04833",
+      "ancestryExpected": true,
+      "contentNeedles": [
+        { "file": "pseo-site/scripts/verify-direct-answers.ts", "pattern": "MIN_COVERAGE", "minCount": 1 },
+        { "file": "pseo-site/package.json", "pattern": "verify-direct-answers", "minCount": 1 }
+      ]
+    },
+    {
+      "id": "paa-verbatim-faqs",
+      "what": "28 verbatim PAA/GSC question FAQs as H3+FAQPage pairs. Landed via 5afe457f (merged as cf6c4d9c); SWARM_STATE warns the paa-40 branch also carries this live content.",
+      "fixCommit": "5afe457f5416f277ba52e8bdfd5f56a3cca2396e",
+      "ancestryExpected": true,
+      "contentNeedles": [
+        { "file": "pseo-site/content/competitor-vs.ts", "pattern": "verbatim PAA", "minCount": 8 }
+      ]
+    },
+    {
+      "id": "ctr-title-hooks",
+      "auditLine": "SERP CTR 15 / Title-meta CTR levers 25 (audit 2026-08-16)",
+      "what": "Per-slug price/verdict CTR hooks: COMPARE_TITLE_HOOKS (48 slugs), ALTERNATIVES_TITLE_HOOKS (12), research-paper Explained metaTitles, from-stars figures, methodology 21-47d claim, answers metaTitle field.",
+      "fixCommit": "bf53580a003e3dc33ced2932cbf91acb4dbf7b5d",
+      "ancestryExpected": true,
+      "contentNeedles": [
+        { "file": "pseo-site/content/comparisons.ts", "pattern": "COMPARE_TITLE_HOOKS", "minCount": 1 }
+      ]
+    },
+    {
+      "id": "striking-distance-links",
+      "auditLine": "Internal-link graph 48 / Orphan pages 42 (audit 2026-08-16)",
+      "what": "Striking-distance cohort internal-link push (56 URLs pos 6.5-12.5): build-internal-links.ts floors + RENDER_SECTIONS + RelatedLinks render + footer hub + next.config 308 consolidation + data/internal-links.json.",
+      "fixCommit": "ca140ec01284cb8a4b334c21645755f5028990af",
+      "ancestryExpected": true,
+      "contentNeedles": [
+        { "file": "pseo-site/data/striking-distance.json", "pattern": "floor", "minCount": 1 },
+        { "file": "pseo-site/scripts/build-internal-links.ts", "pattern": "RENDER_SECTIONS", "minCount": 1 },
+        { "file": "pseo-site/data/internal-links.json", "pipeline": true }
+      ]
+    },
+    {
+      "id": "landing-ctr-sweep",
+      "auditLine": "SERP CTR 15 (audit 2026-08-16)",
+      "what": "Landing (apex) CTR title/meta sweep + preload completion + x-default cleanup + Google Fonts removal; restored main to deployable after the guard ship.",
+      "fixCommit": "45e00ac118943cea4bdabe94002174c901a2a12c",
+      "ancestryExpected": true,
+      "contentNeedles": [
+        { "file": "landing/scripts/verify-css-preloads.mjs", "pattern": "preload", "minCount": 1, "tree": "landing" }
+      ]
+    }
+  ]
+}

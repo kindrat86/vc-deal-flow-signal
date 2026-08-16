@@ -27,6 +27,7 @@
 import { readFileSync, existsSync, readdirSync, statSync } from "node:fs";
 import { join, extname } from "node:path";
 import { createHash } from "node:crypto";
+import { runAncestryGuard } from "./verify-ancestry";
 
 const ROOT = process.cwd();
 const failures: string[] = [];
@@ -3589,6 +3590,24 @@ landingCheck(
   }
 }
 
+
+// ---------------------------------------------------------------------------
+// §44 Lineage-ancestry sentinels (2026-08-18, lineage-reset hazard, bitten
+// twice: 2026-08-16 definitions drop, 2026-08-03/04 Stripe/payment links).
+// A swarm sibling's reset/ff silently dropped committed fixes from main; the
+// tree still built and deployed, regressing production. §44 makes that ritual
+// mechanical: every sentinel in scripts/ancestry-ledger.json must (a) be an
+// ancestor of HEAD and (b) survive at HEAD as content needles (read via
+// `git show`, never the worktree). Ledger protocol: add an entry in the SAME
+// commit as the fix it protects. Full docs: scripts/verify-ancestry.ts.
+{
+  const ancestry = runAncestryGuard();
+  if (ancestry.failures.length > 0) {
+    for (const f of ancestry.failures) failures.push(f);
+  } else {
+    console.log(`  §44 ${ancestry.summary}`);
+  }
+}
 
 // ---------------------------------------------------------------------------
 if (failures.length) {
