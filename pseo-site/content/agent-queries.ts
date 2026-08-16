@@ -8365,6 +8365,603 @@ If the brief cannot survive on one page, the thinking is probably still too fuzz
       "CRM for venture capital",
       "free deal flow CRM",
     ],
+  },  {
+    // 2026-08-16 gap-hub (audit content-gaps-45 follow-on): "cybersecurity-deal-flow".
+    slug: "cybersecurity-deal-flow",
+    metaTitle: `Cybersecurity Deal Flow: Track Cyber Startup Momentum (2026)`,
+    query: "Cybersecurity deal flow",
+    h1: "Cybersecurity Deal Flow: How to Track Cyber Startup Momentum",
+    description: "How investors track cybersecurity deal flow: GitHub engineering signals vs funding databases, what commit velocity reveals, and a free weekly signal feed.",
+    tldr: "Cybersecurity deal flow is the pipeline of investable security startups an investor sees. Funding databases surface cyber rounds after announcement; engineering signals like GitHub commit-velocity acceleration surface the same startups three to six weeks earlier. The GitDealFlow panel tracks 350+ venture-backed startups across 15 sectors with weekly refresh.",
+    definition: "Cybersecurity deal flow is the stream of investable security-startup opportunities reaching an investor over a period. Investors track it with funding databases, community scouting, and pre-announcement engineering signals; GitHub commit-velocity acceleration has preceded fundraise announcements by three to six weeks across the GitDealFlow panel.",
+    steps: [
+      {
+        name: "Define the cyber thesis",
+        text: "Narrow to a slice: application security, identity, cloud security posture, detection, or compliance automation. Cyber is crowded; thesis specificity is the filter that keeps the pipeline reviewable.",
+      },
+      {
+        name: "Set up announcement monitoring",
+        text: "Wire Crunchbase or Dealroom alerts for security categories. This catches rounds after they are public and gives the market map of who already raised.",
+      },
+      {
+        name: "Add pre-announcement engineering signals",
+        text: "Track commit velocity, contributor growth, and new-repo creation in public GitHub orgs of cyber startups. Hiring bursts and velocity spikes typically precede the announcement window.",
+      },
+      {
+        name: "Cross-check with community scouting",
+        text: "Security is community-driven: monitor open-source security tooling, conference talks, and disclosed bug bounties. Many seed-stage cyber startups open-source first and raise later.",
+      },
+      {
+        name: "Score weekly against a written rubric",
+        text: "Rate every startup on the same axes: engineering tempo, founder-market fit, wedge clarity, and distribution path. A written rubric turns an unreviewable firehose into a ranked list.",
+      },
+    ],
+    body: `**What cybersecurity deal flow actually is.** The pipeline of investable security-startup opportunities that reaches an investor over a period. Good cyber deal flow is specific: a thesis (app-sec, identity, cloud posture, detection, GRC automation), a repeatable discovery method, and a scoring rubric. Without the thesis the category drowns you, security is one of the most crowded verticals in venture, with thousands of funded startups and a long tail of pre-seed tooling repos.
+
+**Why funding databases are not enough.** Crunchbase, Dealroom, and PitchBook record rounds after announcement. For cyber that is late: competitive seed rounds are decided in two to three weeks, and the best cyber seed deals are found while the product is still an open-source repo with accelerating commits. Databases give the market map; signals give the timing.
+
+**What GitHub engineering signals reveal about cyber startups.** Security engineering is public by default: tooling, SDKs, detection rules, and exploit research ship as open source. Across the historical GitDealFlow panel, top-quintile commit-velocity acceleration preceded fundraise announcements by three to six weeks. Contributor growth is the second signal: a seed cyber team going from 2 to 6 active committers is usually hiring ahead of a raise. New-repo creation signals product-line expansion.
+
+**The honest coverage note.** The GitDealFlow panel does not currently include a dedicated cybersecurity sector. It tracks 350+ venture-backed startups across 15 sectors, and cyber startups appear adjacent to its infrastructure and developer-tools coverage rather than as a named vertical. The method on this page is the same one the panel uses, and the free weekly feed covers every sector it does track.
+
+**How to combine the layers.** Use a database for the market map and post-announcement records. Use community scouting for discovery. Use engineering signals for timing. A cyber investor running all three sees a startup three times: as an accelerating repo, as a community mention, and finally as a public round. The investors who win competitive rounds act on the first sighting, and the free weekly feed at the CTA below covers the sectors the panel tracks.`,
+    facts: [
+      {
+        claim: "Top-quintile GitHub commit-velocity acceleration preceded fundraise announcements by 3-6 weeks across the historical GitDealFlow panel.",
+        sourceUrl: "/methodology",
+        sourceLabel: "GitDealFlow methodology",
+      },
+      {
+        claim: "The GitDealFlow panel tracks 350+ venture-backed startups across 15 sectors with weekly refresh; cybersecurity is not a named sector in the panel.",
+        sourceUrl: "/dataset",
+        sourceLabel: "GitDealFlow dataset",
+      },
+      {
+        claim: "Crunchbase Pro starts at $49/month for individual users, the affordable entry point for funding-round monitoring.",
+        sourceUrl: "https://www.crunchbase.com/pricing",
+        sourceLabel: "Crunchbase pricing",
+      },
+    ],
+    faqs: [
+      {
+        q: "What is cybersecurity deal flow?",
+        a: "The stream of investable security-startup opportunities reaching an investor. It is built from a narrow thesis, announcement monitoring, community scouting, and pre-announcement engineering signals, scored weekly against a written rubric.",
+      },
+      {
+        q: "Does GitDealFlow cover cybersecurity startups?",
+        a: "Not as a named sector. The panel tracks 350+ venture-backed startups across 15 sectors; cyber startups appear adjacent to its infrastructure and developer-tools coverage. The free weekly feed covers every sector it does track.",
+      },
+      {
+        q: "How early do GitHub signals precede a cyber fundraise?",
+        a: "Across the historical panel, top-quintile commit-velocity acceleration preceded announcements by three to six weeks. That window is the difference between reacting to a public round and meeting the team before it.",
+      },
+      {
+        q: "What are the best free cyber deal-flow sources?",
+        a: "GitHub security orgs themselves, conference talk schedules, disclosed bug-bounty programs, and the GitDealFlow free JSON/CSV feed for the sectors it covers.",
+      },
+      {
+        q: "Should solo angels specialize in cyber?",
+        a: "Only with an operator background or a community wedge. Cyber is crowded, evaluation requires technical depth, and distribution is community-driven. Generalists get adverse selection in the category.",
+      },
+    ],
+    ctaUrl: "/dataset",
+    ctaLabel: "Get the free weekly signal feed",
+    related: ["github-metrics-that-predict-startup-fundraising", "how-to-find-startups-before-they-fundraise", "best-startup-database"],
+    keywords: ["cybersecurity deal flow", "cyber deal flow", "security startup deal flow", "cybersecurity VC investing", "cybersecurity venture capital", "GitHub signals for VCs", "pre-announcement startup signals"],
+  },
+  {
+    // 2026-08-16 gap-hub (audit content-gaps-45 follow-on): "companies-like-crunchbase".
+    slug: "companies-like-crunchbase",
+    metaTitle: `7 Companies Like Crunchbase for Sourcing Startups (2026)`,
+    query: "Companies like Crunchbase",
+    h1: "7 Companies Like Crunchbase for Sourcing Startups",
+    description: "Crunchbase, Dealroom, PitchBook, Tracxn, Wellfound, Harmonic and the free GitDealFlow dataset compared on coverage, price, API access, and freshness.",
+    tldr: "The closest companies like Crunchbase are Dealroom (European depth), PitchBook (venture financials), Tracxn (emerging markets), Wellfound (free early-stage), Harmonic (founder networks), and GitDealFlow (free engineering-signal feed). Crunchbase remains the broadest affordable base layer at $49/month; the free GitDealFlow dataset adds pre-announcement GitHub signals on 350+ startups.",
+    definition: "The main companies like Crunchbase are Dealroom for European depth, PitchBook for venture financials, Tracxn for emerging markets, Wellfound for free early-stage profiles, Harmonic for founder networks, and GitDealFlow for free weekly GitHub engineering signals covering more than 350 venture-backed startups across 15 sectors.",
+    steps: [
+      {
+        name: "Start with the layer you actually need",
+        text: "Decide whether you need breadth (Crunchbase), depth (PitchBook), geography (Dealroom, Tracxn), people (Harmonic, Wellfound), or timing (signal feeds). Most investors overbuy breadth and underbuy timing.",
+      },
+      {
+        name: "Price the layer honestly",
+        text: "Crunchbase Pro is $49/month; firm-tier platforms are annual contracts. Match the subscription to how often you will actually query it, not to the logo on the invoice.",
+      },
+      {
+        name: "Test API and export formats",
+        text: "If you automate screening, verify JSON and CSV endpoints and rate limits before paying. Free APIs with weekly refresh beat manual export workflows at any price.",
+      },
+      {
+        name: "Add a timing layer",
+        text: "Databases record rounds after announcement. A signal feed that moves before announcements, like GitHub commit-velocity acceleration, is what turns a database subscription into deal flow.",
+      },
+    ],
+    body: `**The landscape of Crunchbase-like companies.** No single company covers every layer of startup sourcing, so investors stack them. The six names below plus Crunchbase itself span the full stack: curated databases (Crunchbase, Dealroom, PitchBook, Tracxn), relationship platforms (Wellfound), founder-network graphs (Harmonic), and engineering-signal feeds (GitDealFlow). Knowing which layer a company serves tells you whether it belongs in your stack.
+
+**Dealroom.** The default for European and deep-tech coverage. EU-focused funds treat it as the system of record; US-first investors usually pair it with Crunchbase for breadth. Dealroom also exposes an API for teams that automate screening.
+
+**PitchBook.** Owned by Morningstar since 2016, it has the deepest venture financials and fund data in the market, at firm-level budgets. Where Crunchbase answers who raised, PitchBook answers at what valuation, from which fund, with what ownership history.
+
+**Tracxn.** Profiles sectors and geographies Western platforms under-cover, especially emerging markets. For a thesis on India, Southeast Asia, LatAm, or Africa, Tracxn is the breadth layer Crunchbase is for the West.
+
+**Wellfound (formerly AngelList Talent).** Free profiles, strong for early-stage hiring signals and founder discovery. For pre-seed and seed, a team's hiring surface often says more than its funding record.
+
+**Harmonic.** Models founder and employee networks from incorporation onward. When the thesis is people-first, serial founders, repeat teams, portfolio-company alumni, the network graph finds companies databases miss because nothing has been announced yet.
+
+**GitDealFlow.** The free engineering-signal feed: 350+ venture-backed startups across 15 sectors, weekly refresh, JSON/CSV/MCP access with no signup. Across the historical panel, top-quintile commit-velocity acceleration preceded fundraise announcements by three to six weeks. It is the timing layer: pair it with any database above.
+
+**How to assemble a stack in five minutes.** Solo US angel: Crunchbase Pro plus the free signal feed. EU-focused fund: Dealroom plus the signal feed. Institution: PitchBook or Tracxn plus Harmonic plus the signal feed. The pattern is one breadth layer, one depth layer, one timing layer; subscriptions beyond that are shelfware.`,
+    facts: [
+      {
+        claim: "PitchBook has been owned by Morningstar since 2016, giving it the deepest financial-side coverage of the discovery market.",
+        sourceUrl: "https://pitchbook.com/about",
+        sourceLabel: "PitchBook About",
+      },
+      {
+        claim: "Crunchbase Pro starts at $49/month for individual users, the broadest affordable database tier.",
+        sourceUrl: "https://www.crunchbase.com/pricing",
+        sourceLabel: "Crunchbase pricing",
+      },
+      {
+        claim: "GitHub commit-velocity acceleration in the top quintile preceded fundraise announcements by 3-6 weeks across the historical GitDealFlow panel.",
+        sourceUrl: "/methodology",
+        sourceLabel: "GitDealFlow methodology",
+      },
+    ],
+    faqs: [
+      {
+        q: "What companies are like Crunchbase?",
+        a: "Dealroom, PitchBook, Tracxn, Wellfound, Harmonic, and GitDealFlow. Each wins a different layer: European depth, venture financials, emerging markets, free early-stage, founder networks, and free engineering signals respectively.",
+      },
+      {
+        q: "What is the best free Crunchbase alternative?",
+        a: "For funded-round records, Wellfound profiles are free. For pre-announcement engineering signals on 350+ venture-backed startups, the GitDealFlow JSON/CSV dataset is free with no signup.",
+      },
+      {
+        q: "Wellfound vs Crunchbase for angel investors?",
+        a: "Different layers. Wellfound is free and strongest at pre-seed hiring and founder discovery; Crunchbase is the breadth layer for funded-round records at $49/month. Many angels use both.",
+      },
+      {
+        q: "Does Dealroom cover the US?",
+        a: "Dealroom covers US and global rounds but leads on European and deep-tech depth. US-first investors usually pair it with Crunchbase.",
+      },
+      {
+        q: "Which Crunchbase-like company has a free API?",
+        a: "GitDealFlow serves free JSON, CSV, and OpenAPI endpoints with no API key on its 350+ startup panel, plus an MCP server that AI agents can call directly.",
+      },
+    ],
+    ctaUrl: "/dataset",
+    ctaLabel: "Get the free weekly signal feed",
+    related: ["best-startup-database", "deal-flow-crm", "can-gitdealflow-replace-crunchbase", "best-mcp-server-for-vc-research"],
+    keywords: ["companies like crunchbase", "crunchbase alternatives", "crunchbase competitors", "sites like crunchbase", "crunchbase similar companies", "startup database comparison"],
+  },
+  {
+    // 2026-08-16 gap-hub (audit content-gaps-45 follow-on): "affinity-integrations".
+    slug: "affinity-integrations",
+    metaTitle: `Affinity Integrations for Deal Sourcing: What Works (2026)`,
+    query: "Affinity integrations for deal sourcing",
+    h1: "Affinity Integrations for Deal Sourcing: What Actually Works",
+    description: "Which Affinity integrations matter for deal sourcing: email capture, calendar, enrichment, and the free GitDealFlow MCP server and API for signals.",
+    tldr: "Affinity's deal-sourcing value comes from a handful of integrations: Outlook/Gmail capture for relationship history, calendar sync for meeting signals, enrichment APIs for firmographics, and Zapier for custom feeds. The missing layer is pre-announcement sourcing; the free GitDealFlow MCP server and JSON API pipe weekly engineering-acceleration signals on 350+ startups into any CRM or script.",
+    definition: "The Affinity integrations that matter for deal sourcing are email and calendar capture for relationship history, data-enrichment providers for firmographics, Zapier for custom pipelines, and external signal feeds. GitDealFlow's free MCP server and JSON API deliver weekly engineering-acceleration signals into any Affinity-backed workflow.",
+    steps: [
+      {
+        name: "Audit what Affinity already captures",
+        text: "Affinity's core value is automatic relationship intelligence from email and calendar. Confirm Outlook or Gmail capture and calendar sync are on for every deal-team member before adding anything.",
+      },
+      {
+        name: "Add enrichment for firmographics",
+        text: "Enrichment providers fill sector, stage, and headcount fields. Wire one enrichment source and let it backfill the historical pipeline before considering a second.",
+      },
+      {
+        name: "Pipe in a pre-announcement signal feed",
+        text: "Affinity records relationships, not discovery. The GitDealFlow JSON API and MCP server serve weekly commit-velocity and contributor-growth signals on 350+ startups free, no API key, for intake lists and screening scripts.",
+      },
+      {
+        name: "Automate intake with Zapier or scripts",
+        text: "Use Zapier for no-code flows or the API for scripts: new signal entries become pipeline rows with the GitHub URL, sector, and velocity delta attached.",
+      },
+      {
+        name: "Review weekly, not on alert",
+        text: "Signal feeds are noisy day-to-day. A weekly review of ranked acceleration against the relationship graph is where sourcing actually happens.",
+      },
+    ],
+    body: `**What Affinity is, honestly.** Affinity is a relationship-intelligence CRM: it builds the graph of who your fund actually knows from email and calendar metadata, then layers deal flow on top. It is strong at remembering relationships and weak at discovering startups you have never met. Its integrations decide which of those two jobs it does well.
+
+**The integrations that carry deal sourcing.** Email capture (Outlook, Gmail) and calendar sync are the foundation; without them the relationship graph is manual. Data-enrichment integrations (sector, stage, headcount) keep the pipeline filterable. Zapier and the API connect outside feeds. Everything else is downstream of those three.
+
+**The gap Affinity does not fill.** A CRM records what arrived. Sourcing needs what is coming: startups accelerating before anyone has met them. That is an external feed problem, and it is where most Affinity stacks are thinnest.
+
+**The free fix: engineering signals via MCP or API.** The GitDealFlow panel tracks 350+ venture-backed startups across 15 sectors with weekly refresh. The JSON and CSV endpoints need no API key, and the MCP server (npm @gitdealflow/mcp-signal) lets AI agents query trending startups, sector sweeps, and single-startup signals directly. Across the historical panel, top-quintile commit-velocity acceleration preceded fundraise announcements by three to six weeks, the window where a first meeting is still cheap.
+
+**A concrete weekly workflow.** Monday: pull the week's top acceleration entries by sector from the JSON API. Cross-reference against the Affinity relationship graph: no path in, flag for warm-up. Add the shortlist to the pipeline with GitHub URL and velocity delta attached. Friday: review rubric scores. This turns a relationship CRM into a sourcing system without changing what Affinity is.`,
+    facts: [
+      {
+        claim: "Affinity builds relationship intelligence automatically from email and calendar metadata, the foundation of its deal-flow graph.",
+        sourceUrl: "https://www.affinity.co/",
+        sourceLabel: "Affinity product",
+      },
+      {
+        claim: "The GitDealFlow MCP server (@gitdealflow/mcp-signal on npm) exposes six free read-only tools for VC research with no API key.",
+        sourceUrl: "/developers",
+        sourceLabel: "GitDealFlow developers",
+      },
+      {
+        claim: "Top-quintile commit-velocity acceleration preceded fundraise announcements by 3-6 weeks across the historical GitDealFlow panel.",
+        sourceUrl: "/methodology",
+        sourceLabel: "GitDealFlow methodology",
+      },
+    ],
+    faqs: [
+      {
+        q: "Which Affinity integrations matter most for deal sourcing?",
+        a: "Email capture (Outlook, Gmail) and calendar sync first, one data-enrichment provider second, then an external signal feed. Everything else is downstream of those three.",
+      },
+      {
+        q: "Does Affinity have an API?",
+        a: "Yes, Affinity exposes a CRM API for programs and automations on team plans. For pre-announcement signals, the GitDealFlow JSON API and MCP server are free with no API key.",
+      },
+      {
+        q: "Can AI agents query deal-sourcing data inside Affinity?",
+        a: "Affinity's own AI features summarize relationships. For sourcing research, agents can call the GitDealFlow MCP server directly for trending startups, sector sweeps, and single-startup signals, free.",
+      },
+      {
+        q: "How do I get GitHub signals into Affinity?",
+        a: "Pull the weekly GitDealFlow JSON feed into a Zapier catch or a small script, and create pipeline rows with GitHub URL, sector, and velocity delta attached.",
+      },
+      {
+        q: "What does GitDealFlow cost?",
+        a: "The dataset, JSON/CSV endpoints, and MCP server are free with no signup. There is no paid tier to evaluate.",
+      },
+    ],
+    ctaUrl: "/developers",
+    ctaLabel: "Get the free API and MCP server",
+    related: ["deal-flow-crm", "best-mcp-server-for-vc-research", "best-startup-database"],
+    keywords: ["affinity integrations", "affinity deal sourcing", "affinity crm integrations", "affinity api", "affinity mcp", "deal sourcing automation", "vc crm integrations"],
+  },
+  {
+    // 2026-08-16 gap-hub (audit content-gaps-45 follow-on): "data-infrastructure-startups-to-watch".
+    slug: "data-infrastructure-startups-to-watch",
+    metaTitle: `Data Infrastructure Startups to Watch: GitHub-Signal Ranking (2026)`,
+    query: "Data infrastructure startups to watch",
+    h1: "Data Infrastructure Startups to Watch: The GitHub-Signal Ranking",
+    description: "A data-grounded ranking of data infrastructure startups to watch by GitHub commit velocity and contributor growth, from the free 35-org panel.",
+    tldr: "The GitDealFlow panel tracks 35 data-infrastructure orgs by weekly GitHub signals. By 14-day commit velocity the busiest are PostHog (1,621 commits) and Airbyte (1,031), but the watchlist signal is acceleration: ConduitIO's velocity is up 421% with contributor growth, the kind of pre-announcement pattern that historically preceded fundraise announcements by three to six weeks.",
+    definition: "Data infrastructure startups to watch are ranked by GitHub engineering signals from the GitDealFlow panel: 14-day commit velocity, velocity change, and contributor growth across 35 tracked data-infrastructure orgs. The ranking refreshes weekly from public activity and ships free as JSON and CSV with no signup required.",
+    steps: [
+      {
+        name: "Rank by velocity, not fame",
+        text: "Commit velocity measures engineering tempo. The panel's top data-infra orgs by 14-day velocity include PostHog and Airbyte, but the ranking's job is to surface the names you did not already know.",
+      },
+      {
+        name: "Watch the delta, not the level",
+        text: "A high level means established; a rising delta means something changed. ConduitIO at +421% velocity change with 23 contributors is the archetype: mid-scale team accelerating fast.",
+      },
+      {
+        name: "Check contributor growth alongside",
+        text: "Velocity spikes with flat contributors can be a migration or a crunch; velocity with contributor growth is usually hiring ahead of expansion, the classic pre-raise shape.",
+      },
+      {
+        name: "Filter by stage and geography",
+        text: "The panel tags stage and geography per org, so a seed-stage US data-infra filter is one query. Seed teams like rocky-data (9 contributors) and slothflowlabs (8 contributors) are where pre-announcement timing pays most.",
+      },
+      {
+        name: "Pull the feed weekly",
+        text: "Signals decay in days. The JSON and CSV endpoints are free with no signup, refreshed weekly; a Monday pull is the cadence the method assumes.",
+      },
+    ],
+    body: `**How this ranking is built.** The GitDealFlow panel tracks 35 data-infrastructure orgs from public GitHub activity: 14-day commit velocity, velocity change, contributor counts and growth, new-repo creation, and stage/geography tags, refreshed weekly. This page reads from the live panel, so the names and numbers reflect the latest weekly refresh.
+
+**The current velocity leaders.** PostHog leads at 1,621 commits per 14 days with 100 contributors, followed by Airbyte at 1,031. These are established, growth-stage products; their presence validates the sector's engineering intensity but they are not discoveries. dbt Labs, Redpanda, Cilium, Langfuse, and Debezium form the next tier at 50-100 commits per 14 days.
+
+**The actual watchlist: acceleration, not level.** The signal that historically preceded fundraise announcements by three to six weeks is top-quintile velocity acceleration. In the current refresh, ConduitIO stands out: 73 commits per 14 days but up 421% on the previous window with 23 contributors at Series A/B stage, the mid-scale team accelerating fast that the method flags first.
+
+**Seed-stage names worth a manual look.** rocky-data (9 contributors, Seed) and slothflowlabs (8 contributors, Seed, US) show the small-team pattern where a velocity delta is hardest to fake and earliest to matter. Neither is a recommendation; both are the kind of name the ranking exists to surface for diligence.
+
+**What this method cannot tell you.** GitHub signals measure engineering tempo, not revenue, retention, or founder quality. A quiet repo can be a focused team; a busy repo can be a rewrite. The method's edge is timing, three to six weeks of it, not judgment. Use it to decide where to spend diligence time, not as a substitute for it.
+
+**Get the data yourself.** The full 35-org data-infra panel plus 15 sectors total is free as JSON and CSV with no signup, refreshed weekly, and queryable by AI agents through the MCP server. The numbers on this page are a snapshot; the feed is the product.`,
+    facts: [
+      {
+        claim: "The GitDealFlow panel tracks 35 data-infrastructure orgs with weekly refresh; sector leaders by 14-day commit velocity include PostHog (1,621 commits, 100 contributors) and Airbyte (1,031 commits).",
+        sourceUrl: "/dataset",
+        sourceLabel: "GitDealFlow dataset",
+      },
+      {
+        claim: "In the current weekly refresh, ConduitIO shows 421% commit-velocity growth with 23 contributors at Series A/B stage, the acceleration pattern the methodology flags.",
+        sourceUrl: "/methodology",
+        sourceLabel: "GitDealFlow methodology",
+      },
+      {
+        claim: "Top-quintile commit-velocity acceleration preceded fundraise announcements by 3-6 weeks across the historical GitDealFlow panel.",
+        sourceUrl: "/methodology",
+        sourceLabel: "GitDealFlow methodology",
+      },
+    ],
+    faqs: [
+      {
+        q: "Which data infrastructure startups are worth watching?",
+        a: "By GitHub acceleration in the current GitDealFlow refresh: ConduitIO (+421% velocity, 23 contributors, Series A/B) is the standout flag, with seed-stage rocky-data and slothflowlabs showing the small-team pattern. Levels: PostHog and Airbyte lead absolute velocity.",
+      },
+      {
+        q: "How is this ranking calculated?",
+        a: "Weekly GitHub signals across 35 tracked data-infra orgs: 14-day commit velocity, velocity change, contributor growth, and new-repo creation. No editorial weighting; the numbers come straight from the panel.",
+      },
+      {
+        q: "How often does the data refresh?",
+        a: "Weekly. The JSON and CSV endpoints are free with no signup, so the ranking on this page is a snapshot of a living feed.",
+      },
+      {
+        q: "Does a velocity spike mean a startup is raising?",
+        a: "Not by itself. Historically, top-quintile acceleration preceded announcements by three to six weeks across the panel, but a spike can also be a migration or a crunch. Contributor growth alongside velocity is the stronger signal.",
+      },
+      {
+        q: "Can I filter by stage and geography?",
+        a: "Yes. Every org in the feed carries stage and geography tags; a seed-stage US data-infra filter is one query against the JSON API.",
+      },
+    ],
+    ctaUrl: "/dataset",
+    ctaLabel: "Get the free weekly data-infra feed",
+    related: ["github-metrics-that-predict-startup-fundraising", "how-to-find-startups-before-they-fundraise", "github-deal-flow-for-investors"],
+    keywords: ["data infrastructure startups", "data infrastructure startups to watch", "data infra startups", "open source data infrastructure", "GitHub signals startups", "startup commit velocity", "data tools startups 2026"],
+  },
+  {
+    // 2026-08-16 gap-hub (audit content-gaps-45 follow-on): "dealroom-api-and-funding-data".
+    slug: "dealroom-api-and-funding-data",
+    metaTitle: `Dealroom API & Funding Data: What It Covers vs GitHub Signal (2026)`,
+    query: "Dealroom API and startup funding data",
+    h1: "Dealroom API and Funding Data: What It Covers, and What It Misses",
+    description: "What the Dealroom API covers for funding data, its limits, and how the free GitDealFlow JSON API adds weekly GitHub engineering signals.",
+    tldr: "Dealroom's API serves its curated funding database: rounds, valuations, investors, and company profiles with European depth, available on request for teams that automate screening. What it cannot serve is pre-announcement signal; funding data exists after the round. The free GitDealFlow JSON API covers that gap with weekly GitHub engineering signals on 350+ venture-backed startups.",
+    definition: "The Dealroom API provides programmatic access to Dealroom's curated funding database, including rounds, valuations, investors, and company profiles with European depth. The free GitDealFlow JSON API complements it with weekly GitHub engineering signals on more than 350 venture-backed startups before their announcements.",
+    steps: [
+      {
+        name: "Establish what you need from funding data",
+        text: "Funding data answers who raised, at what valuation, from whom. If your workflow is market mapping and post-round outreach, Dealroom's API is designed for exactly that.",
+      },
+      {
+        name: "Request Dealroom API access and scope it",
+        text: "Dealroom API access is granted per plan and use case; scope your request to the endpoints you will actually call, or onboarding drags.",
+      },
+      {
+        name: "Cache aggressively",
+        text: "Curated funding data changes slowly. Cache responses and poll weekly at most; funding APIs are priced and rate-limited for occasional pulls, not hot paths.",
+      },
+      {
+        name: "Add a pre-announcement layer",
+        text: "Funding records exist after announcement. For the three-to-six-week window before, pipe GitHub engineering signals: the GitDealFlow JSON API is free, no API key, weekly refresh.",
+      },
+      {
+        name: "Join the two feeds on company identity",
+        text: "Match on GitHub org, domain, and name-normalized aliases. Keep the join table in your own store; neither API will do the identity resolution for you.",
+      },
+    ],
+    body: `**What Dealroom is.** One of the three curated funding databases investors treat as systems of record (with Crunchbase and PitchBook), strongest on European and deep-tech coverage. Its API exposes that database programmatically: rounds, valuations, investors, team, and company profiles.
+
+**What the Dealroom API covers well.** Post-announcement funding data with European depth, investor and portfolio graphs, and growth signals derived from curated data. For an EU-focused fund automating market maps or monitoring portfolio adjacencies, it is the natural first call.
+
+**What it structurally cannot cover.** A funding database records events that already happened. Pre-announcement, a startup exists only as engineering activity: commits, contributors, new repos. No funding API serves that window because there is nothing announced to serve.
+
+**The complement: engineering signals.** The GitDealFlow panel tracks 350+ venture-backed startups across 15 sectors by weekly GitHub signals. Across the historical panel, top-quintile commit-velocity acceleration preceded fundraise announcements by three to six weeks. The JSON and CSV endpoints are free with no API key, and the MCP server lets AI agents query it conversationally.
+
+**How the two fit together.** Use Dealroom for the record: who raised what, when, from whom. Use GitDealFlow for the timing: which of the 350+ tracked orgs is accelerating now. Join them on company identity in your own store and you have both halves of the sourcing loop: discovery before the round, confirmation after.
+
+**A note on cost.** Dealroom API pricing is plan-based and quoted per use case. The GitDealFlow API and MCP server are free with no signup. A common pattern is to prototype the signal workflow on the free feed, then budget the curated API once the workflow proves itself.`,
+    facts: [
+      {
+        claim: "Dealroom exposes a programmatic API for its curated funding database, with access granted per plan and use case.",
+        sourceUrl: "https://dealroom.co/api",
+        sourceLabel: "Dealroom API",
+      },
+      {
+        claim: "The GitDealFlow JSON and CSV API serves weekly GitHub engineering signals on 350+ venture-backed startups with no API key or signup.",
+        sourceUrl: "/developers",
+        sourceLabel: "GitDealFlow developers",
+      },
+      {
+        claim: "Top-quintile commit-velocity acceleration preceded fundraise announcements by 3-6 weeks across the historical GitDealFlow panel.",
+        sourceUrl: "/methodology",
+        sourceLabel: "GitDealFlow methodology",
+      },
+    ],
+    faqs: [
+      {
+        q: "Does Dealroom have an API?",
+        a: "Yes. Dealroom exposes its curated funding database programmatically; access is granted per plan and use case through their API page.",
+      },
+      {
+        q: "How much does the Dealroom API cost?",
+        a: "Pricing is plan-based and quoted per use case; there is no public rate card. For a free programmatic alternative on engineering signals, the GitDealFlow JSON/CSV API has no key and no signup.",
+      },
+      {
+        q: "What funding data does Dealroom cover best?",
+        a: "Rounds, valuations, investors, and company profiles with European and deep-tech depth, the strongest EU coverage among the major curated databases.",
+      },
+      {
+        q: "Can I get pre-funding signals from Dealroom?",
+        a: "No funding database covers the pre-announcement window; there is no round to record yet. GitHub engineering signals fill that gap, and GitDealFlow serves them free.",
+      },
+      {
+        q: "What is the best free Dealroom API alternative?",
+        a: "For engineering-acceleration signals on 350+ venture-backed startups, the GitDealFlow JSON/CSV API and MCP server are free with no signup.",
+      },
+    ],
+    ctaUrl: "/developers",
+    ctaLabel: "Get the free signals API",
+    related: ["best-startup-database", "companies-like-crunchbase", "github-metrics-that-predict-startup-fundraising"],
+    keywords: ["dealroom api", "dealroom funding data", "dealroom startup data", "startup funding data api", "dealroom pricing", "vc data api", "free startup data api"],
+  },
+  {
+    // 2026-08-16 gap-hub (audit content-gaps-45 follow-on): "deal-sourcing-automation".
+    slug: "deal-sourcing-automation",
+    metaTitle: `Deal Sourcing Automation: How VCs Automate Deal Flow (2026 Guide)`,
+    query: "Deal sourcing automation",
+    h1: "Deal Sourcing Automation: How VCs Actually Automate Deal Flow",
+    description: "How venture teams automate deal sourcing: signal feeds, screening scripts, CRM intake, and AI agents, with a free weekly signal API.",
+    tldr: "Deal sourcing automation wires four layers: discovery feeds, screening logic, CRM intake, and review cadence. The discovery layer is the hardest to automate well because funding databases only fire after announcements. The free GitDealFlow API solves that layer with weekly GitHub engineering signals on 350+ venture-backed startups, queryable by scripts or AI agents with no API key.",
+    definition: "Deal sourcing automation connects discovery feeds, screening logic, CRM intake, and a weekly review cadence into one pipeline. The discovery layer runs on pre-announcement signals such as GitHub commit-velocity acceleration, which GitDealFlow serves free on more than 350 venture-backed startups through its JSON API and MCP server.",
+    steps: [
+      {
+        name: "Pick the discovery layer first",
+        text: "Everything downstream depends on what the feed serves. Funding-database alerts fire after announcement; engineering signals fire three to six weeks before, historically, across the GitDealFlow panel. Most teams start with both.",
+      },
+      {
+        name: "Write the screening rubric as code",
+        text: "Translate your thesis into filters: sector, stage, geography, contributor floor, velocity delta threshold. A rubric that lives as code is testable, versioned, and honest about what it rejects.",
+      },
+      {
+        name: "Automate CRM intake, not judgment",
+        text: "Passing screens should create pipeline rows automatically with evidence attached (GitHub URL, sector, velocity delta). The decision to meet stays human; the data entry should not exist.",
+      },
+      {
+        name: "Let agents do the summarization",
+        text: "AI agents via the MCP server can pull sector sweeps, single-startup signals, and methodology on demand, turning a raw feed into pre-read summaries before the weekly review.",
+      },
+      {
+        name: "Keep a weekly review cadence",
+        text: "Signals decay in days and noise is real. One ranked review per week with the relationship graph open beats alert-driven thrash every time.",
+      },
+    ],
+    body: `**What deal sourcing automation actually is.** Not auto-investing and not auto-outreach. It is removing the manual data motion between a startup becoming visible and a partner deciding to look at it: discovery feeds, screening logic, CRM intake, and review cadence. Teams that automate the motion keep the judgment; teams that automate the judgment stop being venture investors.
+
+**The discovery layer is the bottleneck.** Most pipelines start with funding-database alerts, which fire after announcement when the round is already competitive. Community scouting scales badly. The pre-announcement layer is where automation earns its keep: GitHub engineering signals. Across the historical GitDealFlow panel, top-quintile commit-velocity acceleration preceded fundraise announcements by three to six weeks.
+
+**The screening layer: rubric as code.** A thesis expressed as filters (sector, stage, geography, contributor floor, velocity delta) is testable against last quarter's data and honest about what it rejects. A thesis expressed as a partner's intuition is neither. The best automation teams version their rubric like code.
+
+**The intake layer: evidence attached.** When a startup passes, the pipeline row should arrive complete: GitHub URL, sector, stage, velocity numbers, and the date the flag fired. Manual re-entry is where evidence gets lost and where most CRM discipline dies.
+
+**The agent layer.** The GitDealFlow MCP server (npm @gitdealflow/mcp-signal) lets AI assistants pull trending startups, sector sweeps, and single-startup signals conversationally. The practical use is pre-reads: an agent summarizes the week's flags before the Monday review, with receipts from the methodology page.
+
+**The cadence layer.** Weekly review, ranked by acceleration, with the relationship graph open. Signals decay in days; noise is real; a written rubric turns both into a ranked list. The free API below serves every layer of this stack with no key and no signup.`,
+    facts: [
+      {
+        claim: "Top-quintile GitHub commit-velocity acceleration preceded fundraise announcements by 3-6 weeks across the historical GitDealFlow panel.",
+        sourceUrl: "/methodology",
+        sourceLabel: "GitDealFlow methodology",
+      },
+      {
+        claim: "The GitDealFlow JSON/CSV API serves weekly signals on 350+ venture-backed startups with no API key, and the MCP server adds agent-native access.",
+        sourceUrl: "/developers",
+        sourceLabel: "GitDealFlow developers",
+      },
+      {
+        claim: "The GitDealFlow MCP server (@gitdealflow/mcp-signal on npm) is A-tier on Glama and published in the official MCP Registry.",
+        sourceUrl: "https://www.npmjs.com/package/@gitdealflow/mcp-signal",
+        sourceLabel: "npm registry",
+      },
+    ],
+    faqs: [
+      {
+        q: "What is deal sourcing automation?",
+        a: "Automating the data motion in sourcing: discovery feeds, screening logic, CRM intake, and review cadence. The judgment stays human; the data entry should not exist.",
+      },
+      {
+        q: "Can VCs really automate deal sourcing?",
+        a: "The motion, yes; the judgment, no. Filters, intake, and summaries automate well. Deciding which accelerating team deserves a meeting is the job.",
+      },
+      {
+        q: "What data should feed the discovery layer?",
+        a: "Funding-database alerts for the record, plus pre-announcement engineering signals: GitHub commit velocity and contributor growth, which historically preceded announcements by three to six weeks.",
+      },
+      {
+        q: "How do AI agents fit into deal sourcing?",
+        a: "Agents query signal feeds conversationally via MCP and draft pre-reads for the weekly review. The GitDealFlow MCP server is free, read-only, and needs no API key.",
+      },
+      {
+        q: "What does it cost to start?",
+        a: "The GitDealFlow signal API and MCP server are free with no signup. Curated database APIs are plan-based; prototype on the free feed first.",
+      },
+    ],
+    ctaUrl: "/developers",
+    ctaLabel: "Get the free signals API",
+    related: ["github-deal-flow-for-investors", "how-to-find-startups-before-they-fundraise", "deal-flow-crm"],
+    keywords: ["deal sourcing automation", "automated deal sourcing", "vc deal flow automation", "deal flow automation", "vc sourcing tools", "automated deal flow", "ai deal sourcing"],
+  },
+  {
+    // 2026-08-16 gap-hub (audit content-gaps-45 follow-on): "affordable-pitchbook-alternatives-for-small-funds".
+    slug: "affordable-pitchbook-alternatives-for-small-funds",
+    metaTitle: `Affordable PitchBook Alternatives for Small Funds (2026)`,
+    query: "Affordable PitchBook alternatives for small funds",
+    h1: "Affordable PitchBook Alternatives for Small Funds",
+    description: "PitchBook alternatives a small fund can afford: Crunchbase Pro at $49/month, Dealroom, Tracxn, Wellfound free, and the free GitDealFlow dataset.",
+    tldr: "PitchBook is priced for institutions (annual contracts), so small funds substitute in layers: Crunchbase Pro at $49/month for breadth, Dealroom for European depth, Tracxn for emerging markets, Wellfound free for early-stage, and the free GitDealFlow dataset for pre-announcement engineering signals on 350+ startups. The whole stack costs less than one month of a firm-tier platform.",
+    definition: "Affordable PitchBook alternatives for small funds are Crunchbase Pro at $49/month for global breadth, Dealroom for European depth, Tracxn for emerging markets, Wellfound free for early-stage profiles, and GitDealFlow's free weekly GitHub engineering signals covering more than 350 venture-backed startups across 15 sectors.",
+    steps: [
+      {
+        name: "Accept the layer trade-off",
+        text: "PitchBook's edge is venture financials: valuations, fund data, ownership history. A small budget cannot replicate that depth; it can cover breadth, geography, and timing, which is what sourcing actually runs on.",
+      },
+      {
+        name: "Buy one breadth layer",
+        text: "Crunchbase Pro at $49/month is the default: global profiles and round records. That single subscription replaces most of what a small fund queries PitchBook for.",
+      },
+      {
+        name: "Add geography only if the thesis needs it",
+        text: "EU thesis: Dealroom. Emerging markets: Tracxn. If the fund invests where Crunchbase is strong, skip the second database entirely.",
+      },
+      {
+        name: "Take the free layers",
+        text: "Wellfound is free for early-stage profiles and hiring. GitDealFlow is free for weekly engineering signals on 350+ venture-backed startups, JSON/CSV/MCP, no signup.",
+      },
+      {
+        name: "Revisit depth at fund two",
+        text: "When LP reporting or secondaries make venture financials a weekly need, that is the moment a firm-tier platform pays for itself. Before that, it is shelfware with a logo.",
+      },
+    ],
+    body: `**Why small funds look for PitchBook alternatives.** PitchBook is owned by Morningstar and priced for institutions: annual contracts, per-seat pricing, and depth (venture financials, fund data, ownership history) that a pre-seed or seed fund rarely queries weekly. The alternative is not a cheaper clone; it is a stack of affordable layers that covers what a small fund actually does: discover, screen, and track.
+
+**The breadth layer: Crunchbase Pro.** At $49/month it is the global system of record for rounds and profiles. For most small funds this single subscription replaces the majority of PitchBook queries. The API is a paid add-on; the free GitDealFlow JSON feed covers the programmatic need at zero cost.
+
+**The geography layers.** Dealroom for European and deep-tech depth, Tracxn for emerging markets. Buy one only if the thesis demands it; a generic fund does not need either.
+
+**The free layers.** Wellfound: free early-stage profiles, hiring signals, founder discovery. GitDealFlow: free weekly engineering signals on 350+ venture-backed startups across 15 sectors, with JSON, CSV, and MCP access and no signup. Across the historical panel, top-quintile commit-velocity acceleration preceded fundraise announcements by three to six weeks, the timing layer no curated database sells at any price.
+
+**What a $49/month stack looks like.** Crunchbase Pro for the record, Wellfound for early-stage people, GitDealFlow for pre-announcement timing, and a deal-flow CRM (native, flexible, or a simple Airtable board) to hold it. Total: under $50/month against five figures a year for a firm-tier platform, with the timing layer included free.
+
+**When PitchBook is worth it.** Venture financials at weekly frequency: valuation benchmarks for LP reporting, fund performance data, ownership and secondaries analysis. If the fund's stage or reporting obligations create that need, pay for it. If not, the affordable stack is not a compromise; it is the better tool for the job.`,
+    facts: [
+      {
+        claim: "PitchBook has been owned by Morningstar since 2016 and is priced for institutional budgets on annual contracts.",
+        sourceUrl: "https://pitchbook.com/about",
+        sourceLabel: "PitchBook About",
+      },
+      {
+        claim: "Crunchbase Pro starts at $49/month for individual users, the broadest affordable breadth layer.",
+        sourceUrl: "https://www.crunchbase.com/pricing",
+        sourceLabel: "Crunchbase pricing",
+      },
+      {
+        claim: "The GitDealFlow dataset: 350+ venture-backed startups, 15 sectors, weekly refresh, free JSON/CSV/MCP access with no signup.",
+        sourceUrl: "/dataset",
+        sourceLabel: "GitDealFlow dataset",
+      },
+    ],
+    faqs: [
+      {
+        q: "What is the cheapest PitchBook alternative?",
+        a: "A layered stack: Crunchbase Pro at $49/month for breadth, Wellfound free for early-stage, and the free GitDealFlow feed for pre-announcement engineering signals. Under $50/month total.",
+      },
+      {
+        q: "Is PitchBook worth it for a small fund?",
+        a: "Only if the fund needs venture financials weekly: valuation benchmarks, fund data, ownership history. Otherwise a breadth-plus-timing stack covers small-fund sourcing for under $50/month.",
+      },
+      {
+        q: "What is the best free PitchBook alternative?",
+        a: "For funded-round records, Wellfound profiles are free. For pre-announcement signals on 350+ venture-backed startups, GitDealFlow's JSON/CSV dataset and MCP server are free with no signup.",
+      },
+      {
+        q: "Does Crunchbase compare to PitchBook?",
+        a: "On breadth yes, on depth no. Crunchbase Pro ($49/month) covers global rounds and profiles; PitchBook's venture financials and fund data remain institutional-grade. Most small funds need the former.",
+      },
+      {
+        q: "How do I get startup signals for free?",
+        a: "The GitDealFlow weekly feed: commit velocity, contributor growth, and breakout signals on 350+ venture-backed startups, free as JSON and CSV with no API key.",
+      },
+    ],
+    ctaUrl: "/dataset",
+    ctaLabel: "Get the free weekly signal feed",
+    related: ["best-startup-database", "companies-like-crunchbase", "deal-flow-crm"],
+    keywords: ["pitchbook alternatives", "affordable pitchbook", "pitchbook alternative small fund", "cheap pitchbook", "pitchbook vs crunchbase price", "startup database for small funds", "free pitchbook alternative"],
   },
 ];
 

@@ -2896,6 +2896,67 @@ check(
 }
 
 // ---------------------------------------------------------------------------
+// §53 internal-link graph /vs/ coverage (2026-08-16, programmatic-internal-
+// linking execution): data/internal-links.json is a COMMITTED artifact that
+// only regenerates when scripts/build-internal-links.ts is run manually
+// against the live sitemap. Nothing in the deploy path rebuilds it, so the
+// moment a NEW /vs/ pair ships in content/competitor-vs.ts (without a graph
+// rebuild) that page goes live with ZERO in-links and no equity from the
+// link graph, silently. The §27 in-degree floor only pins 11 hardcoded
+// harmonic pages. This guard derives the canonical /vs/ set from the SAME
+// source function (getCanonicalCompetitorVsSlugs) and fails the build if any
+// canonical /vs/ page is absent from the graph or holds 0 in-links, so a new
+// pair, or a lost/stale graph, cannot deploy. Verified green on 2026-08-16
+// tree: 36 canonical /vs/ pages, 0 missing, 0 orphaned.
+// ---------------------------------------------------------------------------
+{
+  const vsSlugs = getCanonicalCompetitorVsSlugs();
+  const linksRaw = read("data/internal-links.json");
+  if (linksRaw !== null) {
+    try {
+      const graph = JSON.parse(linksRaw) as Record<
+        string,
+        Array<{ links?: Array<{ href: string }> }>
+      >;
+      const indeg: Record<string, number> = {};
+      for (const groups of Object.values(graph)) {
+        if (!Array.isArray(groups)) continue;
+        for (const g of groups) {
+          for (const l of g.links || []) indeg[l.href] = (indeg[l.href] || 0) + 1;
+        }
+      }
+
+      const missing: string[] = [];
+      const orphaned: string[] = [];
+      for (const slug of vsSlugs) {
+        const href = `/vs/${slug}`;
+        if (!(href in graph)) missing.push(href);
+        else if ((indeg[href] || 0) < 1) orphaned.push(href);
+      }
+
+      if (missing.length > 0) {
+        failures.push(
+          `§53 internal-link graph missing ${missing.length} canonical /vs/ page(s):\n` +
+            `    file: data/internal-links.json\n` +
+            `    missing: ${missing.join(", ")}\n` +
+            `    fix:  rerun scripts/build-internal-links.ts against the live sitemap and commit the regenerated graph (a new /vs/ pair shipped without a graph rebuild)`,
+        );
+      }
+      if (orphaned.length > 0) {
+        failures.push(
+          `§53 internal-link graph orphans ${orphaned.length} canonical /vs/ page(s) (0 in-links):\n` +
+            `    file: data/internal-links.json\n` +
+            `    orphaned: ${orphaned.join(", ")}\n` +
+            `    fix:  rerun scripts/build-internal-links.ts (equity-aware passes must link every canonical /vs/ page)`,
+        );
+      }
+    } catch {
+      failures.push("§53 data/internal-links.json is not valid JSON (coverage guard)");
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
 // §27 embed widget brand (2026-08-15, brand-search win): the POPULATED
 // Engineering Acceleration Watch widget must render the GitDealFlow brand and
 // a branded CTA. Verified live 2026-08-15: the populated state showed only
