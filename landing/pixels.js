@@ -104,7 +104,11 @@
     try {
       if (navigator.globalPrivacyControl === true || navigator.doNotTrack === "1") return;
       var PH_KEY = "phc_lyZCgvTpicjLzAO3rY2GhxuX5WUc5jQjP8ZVwwJqauX";
-      var PH_URL = "https://eu.i.posthog.com/i/v2/e/";
+      // 2026-08-16 fix: was https://eu.i.posthog.com/i/v2/e/ which returns
+      // 404 (verified live): every beacon since 2026-08-15 died silently
+      // (0 $web_vitals events in PostHog over 10 days). /e/ is posthog-js's
+      // capture endpoint and returns 200 {"status":"Ok"} (verified).
+      var PH_URL = "https://eu.i.posthog.com/e/";
       var TH = { LCP: [2500, 4000], INP: [200, 500], CLS: [0.1, 0.25], FCP: [1800, 3000], TTFB: [800, 1800] };
       var DID = "cwv-" + Math.random().toString(36).slice(2, 10);
       function rate(n, v) { var t = TH[n]; if (!t) return "good"; return v <= t[0] ? "good" : v <= t[1] ? "needs-improvement" : "poor"; }

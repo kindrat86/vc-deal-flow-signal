@@ -21,6 +21,7 @@
  *   hook in layout.tsx; this component does not touch referrer state.
  */
 
+import { useEffect } from "react";
 import { useReportWebVitals } from "next/web-vitals";
 
 type PostHog = {
@@ -68,6 +69,13 @@ function rate(
 // internal `useEffect` is keyed on `[reportWebVitalsFn]`). Defining the
 // handler outside the component guarantees a single registration for the
 // lifetime of the page.
+// Metrics that arrive before PostHog is ready are buffered here and flushed
+// once it loads. PostHog is strategy=lazyOnload (layout.tsx), so it appears
+// AFTER window.onload, while next/web-vitals reports TTFB/FCP/CLS at first
+// paint - the old early-return silently dropped every pre-load metric
+// (0 $web_vitals events for 10 days after the beacon shipped).
+let buffer: WebVitalsMetric[] | null = null;
+
 function report(metric: WebVitalsMetric) {
   if (typeof window === "undefined") return;
 
@@ -82,7 +90,13 @@ function report(metric: WebVitalsMetric) {
   }
 
   const ph = window.posthog;
-  if (!ph?.capture || !ph.__loaded) return;
+  if (!ph?.capture || !ph.__loaded) {
+    // PostHog is strategy=lazyOnload: it materializes after window.onload,
+    // while TTFB/FCP/CLS report at first paint. Buffer early metrics; the
+    // flush loop in the component sends them once PostHog is ready.
+    (buffer ??= []).push(metric);
+    return;
+  }
 
   const { name, value, id, delta } = metric;
   const rating = rate(name, value);
@@ -108,5 +122,28 @@ function report(metric: WebVitalsMetric) {
 
 export default function WebVitalsReporter() {
   useReportWebVitals(report);
+
+  // Flush metrics buffered before lazyOnload PostHog appeared. Poll every
+  // 500ms for up to 30s (slow connections), then stop; metrics arriving
+  // after PostHog is ready pass straight through report().
+  useEffect(() => {
+    let tries = 0;
+    const timer = setInterval(() => {
+      const ph = window.posthog;
+      if (buffer && buffer.length > 0 && ph?.capture && ph.__loaded) {
+        const pending = buffer;
+        buffer = null;
+        pending.forEach(report);
+      }
+      tries += 1;
+      // Stop once flushed, or after 60 tries (30s): PostHog never arriving
+      // must not keep a timer alive forever.
+      if ((!buffer || tries >= 60) && !(buffer?.length && tries < 60)) {
+        clearInterval(timer);
+      }
+    }, 500);
+    return () => clearInterval(timer);
+  }, []);
+
   return null;
 }

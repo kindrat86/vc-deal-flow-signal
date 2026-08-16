@@ -47,6 +47,32 @@ function check(rel: string, label: string, ok: (s: string) => boolean, hint: str
 }
 
 // ---------------------------------------------------------------------------
+// 0. CWV beacon integrity (2026-08-16). The $web_vitals beacon shipped
+//    2026-08-15 posting to a 404 endpoint (eu.i.posthog.com/i/v2/e/); every
+//    beacon died silently for a day (0 events in PostHog). Also, the signals
+//    reporter dropped metrics that fired before lazyOnload PostHog appeared.
+// ---------------------------------------------------------------------------
+{
+  const reporter = read("components/WebVitalsReporter.tsx");
+  if (!reporter || !/let buffer/.test(reporter)) {
+    failures.push(
+      `WebVitalsReporter lost its early-metric buffer: metrics firing before lazyOnload PostHog would be silently dropped again.\n    file: components/WebVitalsReporter.tsx\n    fix:  keep the buffer + flush loop (2026-08-16 fix)`,
+    );
+  }
+  try {
+    const landingPixels = readFileSync(join(ROOT, "..", "landing", "pixels.js"), "utf8");
+    if (/PH_URL\s*=\s*"https:\/\/eu\.i\.posthog\.com\/i\/v2\/e\//.test(landingPixels)) {
+      failures.push(
+        `CWV beacon posts to 404 endpoint eu.i.posthog.com/i/v2/e/.\n    file: ../landing/pixels.js\n    fix:  use https://eu.i.posthog.com/e/ (verified 200 on 2026-08-16)`,
+      );
+    }
+  } catch {
+    // landing/ not present in this checkout (CI runs at pseo-site root
+    // from a standalone clone); the apex deploy path checks it instead.
+  }
+}
+
+// ---------------------------------------------------------------------------
 // 1. Deactivated Stripe payment links (2026-07-31). These five links are
 //    switched off in Stripe: a click 3s-redirects to a homepage with no
 //    checkout, so every one is a silently lost sale.
