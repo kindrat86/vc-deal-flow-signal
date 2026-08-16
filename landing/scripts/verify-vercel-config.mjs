@@ -222,6 +222,38 @@ if (
   }
 }
 
+// ---------------------------------------------------------------------------
+// HSTS preload header must survive any vercel.json rewrite (2026-08-18)
+// ---------------------------------------------------------------------------
+// gitdealflow.com serves
+// Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+// on every HTTPS response class (verified live: pages, 404s, assets, XML,
+// llms.txt), and the domain is status=pending on hstspreload.org. The header
+// was added 2026-08-16 by the traffic-audit SSL/HTTPS follow-up; this repo
+// has already once orphaned a live fix through a config refactor (the §39
+// CWV TTFB beacon). Getting OFF the preload list afterwards takes months of
+// deliberate effort, so a tree that drops or weakens the header must not
+// deploy. If the header is ever intentionally consolidated to ONE source
+// block, update this check in the same commit with a reason.
+{
+  const HSTS = "max-age=63072000; includeSubDomains; preload";
+  const entries = (parsed.headers || []).flatMap((b) =>
+    (b.headers || []).map((x) => ({ src: b.source, key: x.key, value: x.value })),
+  );
+  const hsts = entries.filter((x) => x.key === "Strict-Transport-Security");
+  if (!hsts.some((x) => x.src === "/(.*)" && x.value === HSTS)) {
+    fail(
+      `Strict-Transport-Security lost or misplaced: vercel.json headers[] must keep a { "source": "/(.*)" } block with Strict-Transport-Security: "${HSTS}" (hstspreload.org submission pending 2026-08-18; preload removal costs months).`,
+    );
+  }
+  const weakened = hsts.filter((x) => x.value !== HSTS);
+  if (weakened.length) {
+    fail(
+      `Strict-Transport-Security weakened: found ${weakened.map((x) => `"${x.src}" -> "${x.value}"`).join(", ")}, but the preload-compliant value is exactly "${HSTS}".`,
+    );
+  }
+}
+
 if (failures.length) {
   console.error(
     `\n❌ verify-vercel-config: ${failures.length} config regression(s) detected:`,
