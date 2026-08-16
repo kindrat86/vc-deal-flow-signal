@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/"
+                      xmlns:moz="http://www.mozilla.org/2006/browser/search/">
+  <ShortName>GitDealFlow</ShortName>
+  <LongName>VC Deal Flow Signal, startup engineering acceleration search</LongName>
+  <Description>Search venture-backed startups by GitHub engineering acceleration, sector, signal type, and period.</Description>
+  <InputEncoding>UTF-8</InputEncoding>
+  <Image height="32" width="32" type="image/png">https://signals.gitdealflow.com/icon.png</Image>
+  <Image height="64" width="64" type="image/png">https://signals.gitdealflow.com/icon.png</Image>
+  <Url type="text/html"
+       method="get"
+       template="https://signals.gitdealflow.com/search?q={searchTerms}"/>
+  <Url type="application/x-suggestions+json"
+       method="get"
+       template="https://signals.gitdealflow.com/api/llms-search?q={searchTerms}&amp;format=opensearch"/>
+  <Url type="application/json"
+       method="get"
+       template="https://signals.gitdealflow.com/api/llms-search?q={searchTerms}"
+       rel="results"/>
+  <Url type="application/opensearchdescription+xml"
+       rel="self"
+       template="https://gitdealflow.com/opensearch.xml"/>
+  <moz:SearchForm>https://signals.gitdealflow.com/search</moz:SearchForm>
+  <Developer>The Data Nerd</Developer>
+  <Contact>signals@gitdealflow.com</Contact>
+  <Tags>vc startups github investors deal-flow alternative-data</Tags>
+  <Attribution>VC Deal Flow Signal (signals.gitdealflow.com), CC BY 4.0.</Attribution>
+  <SyndicationRight>open</SyndicationRight>
+</OpenSearchDescription>
