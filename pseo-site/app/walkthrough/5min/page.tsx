@@ -231,7 +231,7 @@ export default function FiveMinPerfectWebinarPage() {
               <p className="text-emerald-400 text-[10px] font-semibold uppercase tracking-wider">Money</p>
               <p className="text-gray-200 text-sm leading-relaxed mt-1">
                 The price isn&rsquo;t the cost. The deal you miss is.
-                €119.64/yr vs €40k expected loss on one missed seed name.
+                €588/yr vs €40k expected loss on one missed seed name.
               </p>
             </div>
             <div className="rounded-lg border border-sky-700/40 bg-sky-950/10 p-4">
@@ -244,7 +244,7 @@ export default function FiveMinPerfectWebinarPage() {
             <div className="rounded-lg border border-indigo-700/40 bg-indigo-950/10 p-4">
               <p className="text-indigo-400 text-[10px] font-semibold uppercase tracking-wider">Pricing</p>
               <p className="text-gray-200 text-sm leading-relaxed mt-1">
-                €1,728/yr stack, €119.64 founding-member rate, locked before
+                €1,728/yr stack, €588 current rate, locked while subscribed
                 public launch hike to €49/mo.
               </p>
             </div>
@@ -268,7 +268,7 @@ export default function FiveMinPerfectWebinarPage() {
           <p className="text-gray-100 text-base sm:text-lg leading-relaxed">
             If all this did was surface <strong className="text-amber-300">one
             name</strong> you would have missed in the next 12 months, would
-            €119.64 be worth it?
+            €588 be worth it?
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
             <WalkthroughCtaLink

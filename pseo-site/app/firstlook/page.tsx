@@ -151,7 +151,7 @@ const OTO_LADDER = [
   {
     rung: "Rung 4",
     label: "Dashboard (annual)",
-    price: "€119.64 / yr",
+    price: "€588 / yr",
     purpose: "All sectors, real-time scoring. The retention seat.",
     href: "/pricing",
     tone: "sky",

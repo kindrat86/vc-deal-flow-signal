@@ -5263,6 +5263,17 @@ landingCheck(
       ["app/state-of-github/page.tsx", "€97/month founding price"],
       ["app/pitch/page.tsx", "Founding-member price"],
       ["app/tweet-teardown/thanks/page.tsx", "cohort closing in days"],
+      ["app/quiz/QuizForm.tsx", "Lock €9.97/mo founder price"],
+      ["components/FastActionBonuses.tsx", "€9.97 founding-member checkout is paused"],
+      ["components/FastActionBonuses.tsx", "Founding-rate ratchet"],
+      ["components/BuyerRoadmap.tsx", "Lock €9.97/mo founding price"],
+      ["components/BuyerRoadmap.tsx", "€119.64"],
+      ["app/walkthrough/page.tsx", "picked €9.97"],
+      ["app/walkthrough/page.tsx", "€119.64"],
+      ["app/walkthrough/90s/page.tsx", "€119.64"],
+      ["app/walkthrough/5min/page.tsx", "€119.64"],
+      ["app/firstlook/page.tsx", "€119.64 / yr"],
+      ["content/launches.ts", "Lock €9.97/mo"],
     ];
     const hits62: string[] = [];
     for (const [rel, tok] of banned62) {

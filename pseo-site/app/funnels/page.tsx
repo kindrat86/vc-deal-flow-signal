@@ -541,7 +541,7 @@ six read-only tools inside Claude, Cursor, or any MCP host. Free
               { n: 10, name: "Trial Closes (\"if all this did was…\")", where: "/walkthrough, 3-line cluster" },
               { n: 11, name: "Money Close", where: "/walkthrough, \"the deal you miss is the cost\"" },
               { n: 12, name: "Identity Close", where: "/walkthrough + home, earlier-signal framing" },
-              { n: 13, name: "Pricing Close", where: "/walkthrough, \"€1,728/yr stack at €119.64\"" },
+              { n: 13, name: "Pricing Close", where: "/walkthrough, \"€1,728/yr stack at €588\"" },
               { n: 14, name: "Urgency / Scarcity Close", where: "/walkthrough, founding-rate lock" },
               { n: 15, name: "Encore Close", where: "/walkthrough, 8-line summary at the end" },
               { n: 16, name: "Order Form Bump", where: "/firstlook, interactive cart preview, toggleable bump (€7 → €1,797), running total" },

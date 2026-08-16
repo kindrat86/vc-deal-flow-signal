@@ -58,7 +58,7 @@ const FALSE_BELIEFS: FalseBelief[] = [
     origin:
       "Switching costs are real. Procurement cycles are real. The partner who signed the existing contract is real and may not want to be told their tool isn't enough.",
     breakLine:
-      "The signal is additive, not replacement. Run it for €119.64/yr alongside whatever you already have, on a 30-day refund. Six months in, either the leading-indicator column changed how you triage, or it didn't, and you cancel without touching the existing stack.",
+      "The signal is additive, not replacement. Run it for €588/yr alongside whatever you already have, on a 30-day refund. Six months in, either the leading-indicator column changed how you triage, or it didn't, and you cancel without touching the existing stack.",
     proof: { label: "/alternatives, additive, not replacement", href: "/alternatives" },
   },
 ];

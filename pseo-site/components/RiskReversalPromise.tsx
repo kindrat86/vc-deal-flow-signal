@@ -72,7 +72,7 @@ const SPEC: Record<RiskReversalTier, PromiseSpec> = {
     process:
       "Reply REFUND to any Insider email. Full payment back inside two business days. The MCP server stays free regardless of refund decision.",
     receipt:
-      "Founding-rate ratchet means the rate locks to entry, not tenure. Even after refund, the founding price is preserved if you ever come back.",
+      "The rate lock means your price locks to entry, not tenure. Even after refund, your locked price is preserved if you ever come back.",
     windowDays: 30,
   },
   sharp: {
