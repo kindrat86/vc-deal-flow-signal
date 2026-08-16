@@ -60,15 +60,43 @@ function build(a: {
   acquisitions: NotableAcquisition[];
 }): Acquirer {
   const acqCount = a.acquisitions.length;
+  // CTR hook wave 5 (zero-click, 2026-08-16): count-only titles earned
+  // 4,455 imps / 15 clicks (0.34%) over 90d at pos 8-13. The biggest
+  // disclosed deal (WhatsApp $19B, Red Hat $34B, VMware $69B) is a stronger
+  // figure hook than the count. Display figure = the clean $NB token from
+  // the amount string (drops "(with Elliott)" / " AUD" qualifiers; the full
+  // amount stays in the table below). Fallback ladder, 60ch cap throughout,
+  // count form always safe.
+  const num = (s: string) => {
+    const m = s.match(/~?\$([\d.]+)\s*([KMB])/);
+    if (!m) return parseFloat(s.replace(/[^0-9.]/g, "")) || 0;
+    const v = parseFloat(m[1]) || 0;
+    return m[2] === "B" ? v * 1000 : m[2] === "M" ? v : v / 1000;
+  };
+  const big = a.acquisitions
+    .filter((d) => d.announcedAmount && /^~?\$/.test(d.announcedAmount))
+    .sort((x, y) => num(y.announcedAmount!) - num(x.announcedAmount!))[0];
+  const amt =
+    big && (big.announcedAmount!.match(/~?\$[\d.]+[KMB]/) || [big.announcedAmount!])[0];
+  const countTitle = `${a.name} Acquisitions: ${acqCount} Notable Deals ${FRESH_YEAR_STR}`;
+  const candidates = big && amt
+    ? [
+        `${a.name} Acquisitions: ${big.name} ${amt} & ${acqCount - 1} More ${FRESH_YEAR_STR}`,
+        `${a.name} Acquisitions: ${big.name} ${amt} ${FRESH_YEAR_STR}`,
+        `${a.name} Acquisitions: ${big.name} ${amt} & ${acqCount - 1} More`,
+        `${a.name} Acquisitions: ${big.name} ${amt}`,
+      ]
+    : [];
+  const title = candidates.find((t) => t.length <= 60) || countTitle;
   return {
     slug: a.slug,
     name: a.name,
     homepageUrl: a.homepage,
     hq: a.hq,
-    // CTR hook: count of documented deals replaces the vague "& M&A Pattern".
-    // `acqCount` is already computed; title stays 40-58ch across all 21 acquirers.
-    title: `${a.name} Acquisitions: ${acqCount} Notable Deals ${FRESH_YEAR_STR}`,
-    metaDescription: `${a.name}'s public acquisition history, M&A focus areas, and the engineering-signal patterns we track in their target sectors. ${acqCount} notable acquisitions documented. Built for Corp Dev, PE operating partners, and competitive analysts.`,
+    title,
+    metaDescription: big && amt
+      ? `${a.name}'s acquisition history from ${big.name} (${amt}) down, M&A focus areas, and the engineering-signal patterns we track in their target sectors. ${acqCount} notable deals documented. Built for Corp Dev, PE operating partners, and competitive analysts.`
+      : `${a.name}'s public acquisition history, M&A focus areas, and the engineering-signal patterns we track in their target sectors. ${acqCount} notable acquisitions documented. Built for Corp Dev, PE operating partners, and competitive analysts.`,
     h1: `${a.name}, Acquisitions & M&A Pattern`,
     tagline: `${a.name}'s public acquisition history (${acqCount} notable deals) mapped against the engineering-signal panel we publish.`,
     intro: `${a.name} (HQ ${a.hq}) is one of the public-company acquirers whose M&A cadence shapes the technical-startup exit landscape. This page summarizes their publicly disclosed acquisitions, their stated focus areas, and how those map against the engineering-acceleration signals VC Deal Flow Signal tracks. ${a.strategy} No private data is published here, every deal listed below was announced via press release, SEC filing, or both.`,

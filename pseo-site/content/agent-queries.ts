@@ -2769,6 +2769,10 @@ Restart Claude Desktop. The six tools (get_trending_startups, search_startups_by
     slug: "what-is-glama-mcp-and-how-do-i-use-it",
     query: "What is Glama MCP and how do I use it?",
     h1: "What Is Glama MCP and How Do I Use It?",
+    // CTR hook wave 5 (zero-click, 2026-08-16): 311 imps/90d, 1 click.
+    // Question-form title competes with Glama's own domain; the npm analogy
+    // + A-tier figures are the differentiators searchers actually see.
+    metaTitle: "What Is Glama MCP? The npm of AI Servers (A-F Tiers)",
     description:
       "Glama is the leading directory for Model Context Protocol (MCP) servers. It hosts ratings, install instructions, and search for thousands of MCP servers. Use it to discover MCP servers worth installing in Claude or Cursor.",
     tldr:

@@ -11,8 +11,13 @@ import SharpScarcityBadge from "@/components/SharpScarcityBadge";
 import TrialClose from "@/components/TrialClose";
 
 export const metadata: Metadata = {
-  title:
-    "Pricing, Start free, go deeper only when you need it",
+  // CTR hook wave 5 (zero-click, 2026-08-16): 171 imps/90d at pos 6.3, 1
+  // click on a generic title. The apex twin carries a price-ladder title
+  // (live-verified 08-16); mirror that form here with the EUR tiers.
+  title: {
+    absolute:
+      "GitDealFlow Pricing: Free Weekly Digest, EUR 49 Dashboard, EUR 197 Insider",
+  },
   description:
     "VC Deal Flow Signal pricing, start free, test one sector, move to the full field, or go deeper only when the question justifies it. Founding-member rates locked. 30-day Signal-or-It's-Free guarantee on every paid plan above €1.",
   alternates: {

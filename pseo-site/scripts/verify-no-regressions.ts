@@ -3819,6 +3819,55 @@ landingCheck(
 }
 
 // ---------------------------------------------------------------------------
+// §49 Zero-click wave 5 (2026-08-16): figure-hook titles for the missed gap
+// pool. /acquirer/* was the largest un-hooked family (4,455 imps/90d, 0.34%
+// CTR at pos 8-13); the biggest-deal figure (WhatsApp $19B, Red Hat $34B,
+// VMware $69B) must stay in the title build, not just the count. Signals
+// /pricing mirrors the apex price-ladder form. Glama answer carries a
+// metaTitle hook.
+{
+  {
+    const s = read("content/acquirers.ts");
+    const needles = [
+      "const big =",
+      "candidates.find((t) => t.length <= 60) || countTitle",
+      "Acquisitions: ${big.name} ${amt}",
+    ];
+    for (const n of needles) {
+      if (!s.includes(n)) {
+        failures.push(
+          `§49 acquirer figure-hook title reverted to count-only form.\n    file: content/acquirers.ts\n    fix:  restore the wave-5 builder (biggest-deal hook, unit-aware num(), 60ch ladder, count fallback): ${n}`,
+        );
+      }
+    }
+    // Unit-aware comparator: a bare parseFloat picks $500M over $32B.
+    if (s === null || !s.includes("? v * 1000 :")) {
+      failures.push(
+        `§49 acquirer builder lost the unit-aware amount comparator.\n    file: content/acquirers.ts\n    fix:  keep the K/M/B-aware num(); without it the title cites the wrong "biggest" deal`,
+      );
+    }
+  }
+  {
+    const s = read("app/pricing/page.tsx");
+    if (
+      !s.includes("GitDealFlow Pricing: Free Weekly Digest, EUR 49 Dashboard, EUR 197 Insider")
+    ) {
+      failures.push(
+        `§49 signals /pricing title reverted to the generic "Start free" form.\n    file: app/pricing/page.tsx\n    fix:  keep the absolute price-ladder title (mirrors the apex twin that already earns the clicks)`,
+      );
+    }
+  }
+  {
+    const s = read("content/agent-queries.ts");
+    if (!s.includes('metaTitle: "What Is Glama MCP? The npm of AI Servers (A-F Tiers)"')) {
+      failures.push(
+        `§49 glama answer lost its metaTitle CTR hook.\n    file: content/agent-queries.ts\n    fix:  keep metaTitle on slug what-is-glama-mcp-and-how-do-i-use-it`,
+      );
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
 // §48 Niche-down index-prune policy (2026-08-16, audit "content pruning 55").
 // Ground truth: fresh GSC 90d page-filtered pull (2026-08-16): 200 leaves,
 // 109 rows, 828 imps, 1 click; cluster live since 2026-05-22 (86d seasoning).
