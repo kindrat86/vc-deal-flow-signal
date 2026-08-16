@@ -5290,6 +5290,7 @@ landingCheck(
 }
 
 // ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
 // §63 Article landmark on the quotable data/editorial templates (2026-08-16,
 //     audit item "HTML semantics 82"). blog already wraps its body in
 //     <article>; the four highest-citation-value templates (startup profile,
@@ -5297,8 +5298,7 @@ landingCheck(
 //     bare <section>s directly under <main>. Readability.js (Perplexity /
 //     ChatGPT / Gemini / Claude browsing) and RAG pipelines use <article> to
 //     locate the self-contained citable content, so a template that loses the
-//     wrapper becomes unquotable — the site's #1 discovery deficit (citation
-//     share 25/100). Assert each wraps its body in <article>.
+//     wrapper becomes unquotable. Assert each wraps its body in <article>.
 // ---------------------------------------------------------------------------
 {
   const articleWrapped = [
@@ -5311,12 +5311,50 @@ landingCheck(
     const s = read(rel);
     if (s && (!s.includes("<article>") || !s.includes("</article>"))) {
       failures.push(
-        `§63 ${rel} lost its <article> wrapper.\n    fix: wrap the quotable body (after the breadcrumb <nav>) in <article>…</article> so answer-engine extractors can find the citable content`,
+        `§63 ${rel} lost its <article> wrapper.\n    fix: wrap the quotable body (after the breadcrumb <nav>) in <article></article> so answer-engine extractors can find the citable content`,
       );
     }
   }
 }
 
+// ---------------------------------------------------------------------------
+// §64 Product/Offer rich-result integrity (2026-08-19, audit item "schema 88").
+//     Both pricing surfaces nested a free price:0 offer INSIDE the
+//     AggregateOffer, which forces lowPrice:0. A $0 aggregate offer is how
+//     Google suppresses or drops the price-based rich result (Product on the
+//     apex, SoftwareApplication on the pSEO host). The free tier stays visible
+//     on the page but is excluded from the offer aggregate: lowPrice must equal
+//     the lowest PAID price and offerCount must equal the paid-offer count.
+// ---------------------------------------------------------------------------
+{
+  // pSEO /pricing (signals.gitdealflow.com): SoftwareApplication AggregateOffer
+  check(
+    "app/pricing/page.tsx",
+    "§64 pSEO /pricing reintroduced a $0 offer in the AggregateOffer (lowPrice:0 suppresses the price rich result)",
+    (s) =>
+      !s.includes("const lowPrice = 0") &&
+      s.includes("const paidTiers = tiers.filter") &&
+      s.includes("offerCount: paidTiers.length") &&
+      s.includes("paidTiers.map(tierToOffer)"),
+    "exclude the Free tier from the offer aggregate: compute paidTiers, map only paidTiers to offers, lowPrice = min(paid), offerCount = paidTiers.length",
+  );
+
+  // apex /pricing (gitdealflow.com): Product AggregateOffer
+  const pricingPath = join(ROOT, "..", "landing", "pricing.html");
+  if (existsSync(pricingPath)) {
+    const pricing = readFileSync(pricingPath, "utf8");
+    if (pricing.includes('"lowPrice": 0')) {
+      failures.push(
+        '§64 landing /pricing AggregateOffer lowPrice reverted to 0.\n    file: landing/pricing.html\n    fix:  restore "lowPrice": 1 (lowest PAID rung, EUR 1 Tweet Teardown); keep the free digest out of the offers array',
+      );
+    }
+    if (pricing.includes('"price": 0')) {
+      failures.push(
+        '§64 landing /pricing reintroduced a free $0 offer inside the AggregateOffer.\n    file: landing/pricing.html\n    fix:  remove the price:0 Offer from the aggregate offers array (the free tier stays visible on-page only)',
+      );
+    }
+  }
+}
 
 if (failures.length) {
   console.error(

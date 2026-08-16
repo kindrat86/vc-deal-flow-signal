@@ -393,11 +393,15 @@ function tierToOffer(tier: Tier) {
 
 export default function PricingPage() {
   const asOf = getDataLastModified().toISOString().slice(0, 10);
-  const offers = tiers.map(tierToOffer);
-  const paidPrices = tiers
-    .filter((t) => t.priceLabel !== "Free")
-    .map((t) => parseFloat(t.priceLabel.replace(/[€,]/g, "")));
-  const lowPrice = 0;
+  // Free tier stays visible on the page but is excluded from the
+  // AggregateOffer: a $0 offer inside an aggregate forces lowPrice to 0,
+  // which suppresses the price-based rich result (GSC merchant listings).
+  const paidTiers = tiers.filter((t) => t.priceLabel !== "Free");
+  const offers = paidTiers.map(tierToOffer);
+  const paidPrices = paidTiers.map((t) =>
+    parseFloat(t.priceLabel.replace(/[€,]/g, "")),
+  );
+  const lowPrice = Math.min(...paidPrices);
   const highPrice = Math.max(...paidPrices);
 
   const jsonLd = {
@@ -444,7 +448,7 @@ export default function PricingPage() {
           priceCurrency: "EUR",
           lowPrice,
           highPrice,
-          offerCount: tiers.length,
+          offerCount: paidTiers.length,
           priceValidUntil: `${FRESH_YEAR + 1}-12-31`,
           availability: "https://schema.org/InStock",
           offers,
