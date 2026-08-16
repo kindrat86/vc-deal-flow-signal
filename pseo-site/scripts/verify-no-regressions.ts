@@ -3473,6 +3473,17 @@ check(
     s.includes("how-to-find-startups-before-they-fundraise"),
   "restore the verbatim 'How to find early stage startups?' FAQ on how-to-find-startups-before-they-fundraise",
 );
+
+check(
+  "content/alternatives.ts",
+  "§40 PAA wave-2: the third-party Harmonic-comparison Q&As (Grata/Eilla/SourceScrub/Synaptic) were dropped from the harmonic-ai alternatives entry (verbatim PAA on 4 page-1 SERPs, ~36 imps/28d, 0 clicks pre-wave-2)",
+  (s) =>
+    s.includes("How does Harmonic compare to Grata for deal sourcing?") &&
+    s.includes("How does Harmonic compare to Eilla AI?") &&
+    s.includes("How does Harmonic compare to SourceScrub?") &&
+    s.includes("How does Harmonic compare to Synaptic?"),
+  "restore the 4 appended third-party Harmonic-comparison FAQs on the harmonic-ai alternatives entry",
+);
 check(
   "app/acquirer/[slug]/page.tsx",
   "§40 PBA: the conditional Vista Equity operational-changes question was dropped (top question-shaped GSC query on /acquirer, 18 imps/28d pos 13.1)",
