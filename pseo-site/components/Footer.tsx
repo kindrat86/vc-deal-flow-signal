@@ -147,6 +147,7 @@ export default function Footer() {
               <a href="https://t.me/gitdealflow" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">Telegram</a>
               <a href="https://x.com/sipiteno" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">Twitter/X</a>
               <a href="https://www.linkedin.com/company/gitdealflow" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+              <a href="https://flipboard.com/@thedatanerd/vc-deal-flow-signal-github-signals-for-investors-8lhbsalrz" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">Flipboard</a>
               <a href="https://www.npmjs.com/package/@gitdealflow/mcp-signal" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">npm (MCP)</a>
             </nav>
           </div>
