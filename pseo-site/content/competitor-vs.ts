@@ -129,6 +129,29 @@ export const competitors: Record<string, CompetitorInfo> = {
     overview: "Crunchbase is the default startup database: a comprehensive, globally scoped record of funding announcements, team updates, and company news that most investors already use and trust. Its core value is reliability and context. When a round is announced, Crunchbase records it faithfully, which makes it the best-in-class reference for retrospective research, deal diligence, and building a mental map of who has raised what across every sector. It is priced accessibly at the entry level, with a Pro tier around forty-nine dollars a month and enterprise tiers above that, alongside a limited free tier of alerts and views. Its ubiquity is itself a strength, since the standard tool is the one your colleagues, founders, and counterparties already recognise. The limitation is fundamental rather than cosmetic: it is a lagging indicator. Alerts fire only after a round is announced, so Crunchbase cannot help you discover a company before the market knows about it. It also carries survivorship bias, because you only ever see the rounds that actually closed, and its signal quality for pre-seed and seed discovery is thin. For most investors it is a necessary piece of infrastructure, a verification and research layer rather than a sourcing engine, and it is best paired with a leading-signal product that surfaces companies earlier in their life.",
     bestFor: "Best for investors who need a reliable, affordable record of confirmed funding events for research and retrospective context.",
   },
+  fundable: {
+    key: "fundable",
+    name: "Fundable",
+    url: "https://www.fundable.com",
+    tagline: "Equity and rewards crowdfunding platform for startups.",
+    signalType: "Company-submitted fundraise listings",
+    leadTime: "None (founder-initiated, not a discovery feed)",
+    pricing: "$179/mo to fundraise; no success fees",
+    coverage: "Startups that choose to list on Fundable",
+    freeTier: "Free company profile before launch",
+    strengths: [
+      "Flat $179/mo with zero success fees, cheap for larger raises",
+      "Dual-track: equity from accredited investors plus rewards campaigns",
+      "Founder-controlled: you run the campaign, messaging, and terms",
+    ],
+    weaknesses: [
+      "Not a discovery database: you bring the investor audience",
+      "Equity raises are accredited-investor only and close off-platform",
+      "No market-wide coverage, signals, or research data",
+    ],
+    overview: "Fundable is a crowdfunding platform, not a deal-flow database. Startups use it to host their own fundraising campaigns: an equity track aimed at accredited investors and a rewards track along Kickstarter lines. The model is software-as-a-service, a flat 179 dollars per month to run a raise with no success fee, plus a payment-processing fee on rewards contributions. Profiles can be built free before launch. The platform is deliberately founder-controlled: the company sets its own terms, runs its own marketing, and negotiates directly with investors, because Fundable is not a broker-dealer and the actual investment transactions close between the company and each investor off-platform. The trade-off follows from that design. Fundable does not surface deals to investors, it hosts companies that already have an audience. An investor browsing Fundable sees only the startups that chose to list there, and the platform carries no engineering, hiring, or web signals, no market coverage data, and no pre-announcement intelligence. It is a low-cost capital-raising venue for founders with a warm network, not a sourcing tool for investors, and it occupies a completely different part of the venture workflow than a startup database.",
+    bestFor: "Best for startups with an existing audience that want a low-cost hosted campaign to raise from accredited investors, not for investors looking for deal flow.",
+  },
   pitchbook: {
     key: "pitchbook",
     name: "PitchBook",
@@ -348,6 +371,15 @@ export const competitorVsPairs: CompetitorVs[] = [
       "Crunchbase is a broad post-announcement company database; Fund Momentum is a narrow, MCP-native index of active VC funds and their deployment signals. Crunchbase tells you what already happened; Fund Momentum tells you which investors are moving now. Neither predicts a company's fundraise, that gap is exactly what engineering-momentum signals fill.",
     intro: "Fund Momentum and Crunchbase are both data tools, but they describe different things. Crunchbase is a broad company database that records funding rounds, team changes, and news after they are announced. Fund Momentum is a narrow, MCP-native index of active VC funds and their deployment signals. This page compares their signal type, lead time, pricing, and coverage to clarify which tool answers which question in a sourcing workflow.",
     decision: "Pick Fund Momentum when you want to know which investors are moving now, for example which funds have raised since September 2024 and are deploying into your sector, or which GP theses are active. Its $49 Starter tier and the $0.01-per-call Agent tier suit solo investors and automated agents. Pick Crunchbase when you want a broad, reliable record of companies and their funding history, with $49 per month Pro pricing and a familiar interface that most VCs already use. Consider using both when you need the investor side and the company side of the same market: Crunchbase for who raised and when, Fund Momentum for who is actively deploying now. Neither tool predicts a company's future fundraise, so neither offers leading engineering-momentum lead time.",
+  },
+  {
+    slug: "crunchbase-vs-fundable",
+    a: "crunchbase",
+    b: "fundable",
+    verdict:
+      "Crunchbase and Fundable are different products on different sides of the market. Crunchbase is a startup database that records rounds, teams, and news after they are announced; Fundable is a crowdfunding venue where startups host their own raises. An investor evaluating deal flow needs Crunchbase, not Fundable; a founder raising from a warm network may need the opposite.",
+    intro: "Crunchbase and Fundable share startup-industry branding but almost nothing else. Crunchbase is a global startup database: a reliable, lagging record of funding announcements, team changes, and company news used for research and diligence. Fundable is a crowdfunding platform: a venue where startups run their own equity or rewards campaigns for 179 dollars per month. This page compares their signal type, lead time, pricing, and coverage to clarify which one fits which side of the deal-flow workflow.",
+    decision: "Pick Crunchbase when you are an investor, analyst, or founder researching the market: it is the standard database for confirmed funding events at 49 dollars per month for Pro, with global coverage across all sectors. Pick Fundable when you are a founder who wants to host a raise: 179 dollars per month flat with no success fee, dual equity and rewards tracks, and full control of your campaign, provided you can bring the audience yourself. They rarely compete, since Crunchbase is a research tool and Fundable is a fundraising venue, but note the mismatch if you land on this comparison as an investor: Fundable will not surface deal flow to you, and Crunchbase will not raise capital for you. For investors who want early deal flow before rounds are announced, neither product offers leading signals.",
   },
   {
     slug: "harmonic-ai-vs-dealroom",
@@ -791,6 +823,7 @@ export const VS_TITLE_HOOKS: Record<string, string> = {
   "signalrank-vs-pitchbook": "SignalRank vs PitchBook: Series B Odds vs Fund Data",
   "signalrank-vs-harmonic-ai": "SignalRank vs Harmonic.ai: Series B vs Incorporation",
   "harmonic-ai-vs-cb-insights": "Harmonic.ai vs CB Insights ($35k+/yr): Sourcing",
+  "crunchbase-vs-fundable": "Crunchbase vs Fundable ($179/mo): Data vs Raise",
 };
 
 /** First concrete $ figure in a competitor's pricing string, e.g. "$49/mo",
