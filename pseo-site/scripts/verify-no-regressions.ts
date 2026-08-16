@@ -3015,6 +3015,55 @@ check(
   "restore min-h-[24px] py-1 on the RelatedLinks card Link className",
 );
 
+// ---------------------------------------------------------------------------
+// §37 SERP feature coverage: definition+list answer for "what is deal flow
+// signal" (2026-08-17). GSC 90d: "vc deal flow signal" = 144 imps pos 8.4,
+// split across /faq (72 imps), /blog/what-is-deal-flow-signal (52 imps,
+// pos 13.8), home, and others. The blog post is the snippet vehicle: it must
+// keep the 46-word direct definition immediately under the title, the
+// four-type ordered list directly after it (before "Why Is Traditional"),
+// and the exact-phrase FAQ question. A tree that loses any of these
+// silently forfeits the featured-snippet / PAA capture this fix buys.
+// ---------------------------------------------------------------------------
+{
+  const s = read("content/posts.ts");
+  if (s !== null) {
+    const slugAt = s.indexOf('slug: "what-is-deal-flow-signal"');
+    if (slugAt === -1) {
+      failures.push(
+        `§37 snippet post missing: content/posts.ts lacks slug "what-is-deal-flow-signal".\n    fix:  restore the post (definition + four-type ordered list + exact-phrase FAQ).`,
+      );
+    } else {
+      const nextAt = s.indexOf('slug: "', slugAt + 10);
+      const post = s.slice(slugAt, nextAt > -1 ? nextAt : slugAt + 9000);
+      const defAt = post.indexOf("A deal flow signal is any data-driven indicator");
+      const typesAt = post.indexOf("## What Are the Main Types of Deal Flow Signal?");
+      const whyAt = post.indexOf("## Why Is Traditional Deal Flow Not Enough?");
+      const listOk = [
+        "1. Engineering signals (6-12 weeks lead time)",
+        "2. Hiring signals (4-8 weeks)",
+        "3. Web traffic signals (4-6 weeks)",
+        "4. Social signals (1-2 weeks)",
+      ].every((n) => post.includes(n));
+      const faqExact = post.includes('question: "What is a deal flow signal?"');
+      if (
+        !(defAt > -1 && typesAt > -1 && whyAt > -1 && defAt < typesAt &&
+          typesAt < whyAt && listOk && faqExact)
+      ) {
+        failures.push(
+          `§37 definition+list structure degraded on what-is-deal-flow-signal.\n    file: content/posts.ts\n    fix:  keep the 46-word definition under the title, the four-type ordered list immediately after it (before "Why Is Traditional"), and the exact-phrase FAQ question "What is a deal flow signal?".`,
+        );
+      }
+    }
+  }
+}
+check(
+  "content/post-freshness.ts",
+  "§37 postFreshness revision entry for what-is-deal-flow-signal missing.",
+  (s) => s.includes('"what-is-deal-flow-signal"') && s.includes('lastUpdated: "2026-08-17"'),
+  "restore the 2026-08-17 revision entry (snippet restructure) in postFreshness",
+);
+
 // §35 Mobile-first indexing parity (2026-08-17). GSC URL Inspection confirms
 // crawledAs=MOBILE on both hosts; a 237-URL live sweep proved byte-identical
 // responses for Googlebot Smartphone / Desktop / Chrome Mobile (only diff:

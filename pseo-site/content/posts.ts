@@ -792,6 +792,10 @@ Browse the sector rankings to see which startups are accelerating right now.`,
     relatedSectors: ["enterprise-saas", "fintech", "ai-ml"],
     faqs: [
       {
+        question: "What is a deal flow signal?",
+        answer: "A deal flow signal is any data-driven indicator that helps an investor identify a promising startup before traditional deal sourcing channels surface it. The four main types are engineering signals (6-12 weeks lead time), hiring signals (4-8 weeks), web traffic signals (4-6 weeks), and social signals (1-2 weeks). Engineering signals from GitHub provide the longest lead time and are the hardest to game.",
+      },
+      {
         question: "What is deal flow signal in venture capital?",
         answer: "Deal flow signal is any data-driven indicator that helps an investor identify a promising startup before traditional deal sourcing channels - warm introductions, pitch decks, demo days, and press coverage - surface it. The most common types include engineering signals (GitHub commit velocity), hiring signals (job postings), web traffic signals, and social signals. Engineering signals provide the longest lead time at 6-12 weeks before fundraise announcements.",
       },
@@ -804,25 +808,22 @@ Browse the sector rankings to see which startups are accelerating right now.`,
         answer: "Engineering signals from GitHub typically provide 6-12 weeks of lead time over traditional deal flow channels. Traditional deal flow - Crunchbase alerts, warm introductions, press coverage - surfaces companies after they have already raised or are well into a competitive round. Engineering acceleration signals appear when the team starts building, which is weeks before any public announcement.",
       },
     ],
-    body: `Deal flow signal is any data-driven indicator that helps an investor identify a promising startup before traditional deal sourcing channels surface it. Traditional deal flow relies on warm introductions, pitch decks, demo days, and industry press. Deal flow signal supplements this with quantitative, real-time data.
+    body: `A deal flow signal is any data-driven indicator that helps an investor identify a promising startup before traditional channels surface it. Traditional deal flow relies on warm introductions, pitch decks, and press coverage; signals supplement it with quantitative, real-time data that appears weeks or months earlier.
+
+## What Are the Main Types of Deal Flow Signal?
+
+There are four main types of deal flow signal, each with a different lead time before a fundraise announcement:
+
+1. Engineering signals (6-12 weeks lead time): changes in a startup's public GitHub activity, commit velocity, contributor growth, and repository creation. Engineering acceleration precedes product milestones, which precede fundraise decisions.
+2. Hiring signals (4-8 weeks): job postings, especially for senior engineering and go-to-market roles, indicate growth plans and budget.
+3. Web traffic signals (4-6 weeks): rapid growth in a startup's web traffic can indicate product-market fit before revenue shows up in databases.
+4. Social signals (1-2 weeks): mentions on Twitter, Hacker News, Product Hunt, and industry forums. By the time a startup trends on social media, most investors are already aware.
 
 ## Why Is Traditional Deal Flow Not Enough?
 
 Most VCs source deals through their network. The problem is that networks are shared. By the time a startup is making the rounds at demo day or landing in your inbox via a warm intro, it is also landing in every other investor's inbox.
 
 The result is that competitive deals - the ones most likely to generate outsized returns - are identified late and negotiated under pressure. The investor who arrives first has a structural advantage: they set the terms, they build the relationship before the founder is overwhelmed with options. This is why [alternative data is becoming essential for venture capital](/blog/alternative-data-venture-capital).
-
-## What Are the Main Types of Deal Flow Signal?
-
-There are several categories of deal flow signal, each with different lead times and reliability:
-
-Engineering signals (highest lead time): Changes in a startup's public engineering activity - commit velocity, contributor growth, repository creation. These signals appear 6-12 weeks before fundraise announcements because engineering acceleration precedes product milestones, which precede fundraise decisions.
-
-Hiring signals (medium lead time): Job postings, especially for senior engineering and go-to-market roles, indicate growth plans. Lead time is typically 4-8 weeks.
-
-Web traffic signals (medium lead time): Rapid growth in a startup's web traffic can indicate product-market fit. Lead time is 4-6 weeks.
-
-Social signals (low lead time): Mentions on Twitter, Hacker News, Product Hunt, and industry forums. By the time a startup trends on social media, most investors are already aware.
 
 ## Why Are GitHub Signals the Best Leading Indicator?
 
