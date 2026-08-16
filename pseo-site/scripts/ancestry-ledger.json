@@ -14,12 +14,37 @@
   ],
   "sentinels": [
     {
+      "id": "robots-directive-max-snippet",
+      "what": "Full X-Robots-Tag directive restored on signals.gitdealflow.com (2026-08-18): middleware (proxy.ts) was flattening vercel.json's 'index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1' to bare 'index, follow' site-wide; 404 HTML carried index,follow header with no noindex meta. max-snippet:-1 governs AI-Overview/answer-engine extraction length.",
+      "fixCommit": "c39974e759055b590cb0c7e52457a2c246a23da6",
+      "ancestryExpected": true,
+      "contentNeedles": [
+        {
+          "file": "pseo-site/proxy.ts",
+          "pattern": "INDEX_ROBOTS_DIRECTIVE"
+        },
+        {
+          "file": "pseo-site/proxy.ts",
+          "pattern": "robotsDirectiveFor\\(pathname\\)",
+          "minCount": 2
+        },
+        {
+          "file": "pseo-site/app/not-found.tsx",
+          "pattern": "noindex, follow"
+        }
+      ]
+    },
+    {
       "id": "direct-answers-92",
       "what": "92 authored direct-answer definitions on /answers (featured-snippet rebuild, audit 2026-08-16). Dropped once by the 58f99447 lineage reset (silently re-shipped 1/92); restored by e59c4e36.",
       "fixCommit": "e59c4e36c488c6a2184b320383c3c38f63f04833",
       "ancestryExpected": true,
       "contentNeedles": [
-        { "file": "pseo-site/content/agent-queries.ts", "pattern": "^\\s+definition:", "minCount": 92 }
+        {
+          "file": "pseo-site/content/agent-queries.ts",
+          "pattern": "^\\s+definition:",
+          "minCount": 92
+        }
       ]
     },
     {
@@ -28,8 +53,16 @@
       "fixCommit": "e59c4e36c488c6a2184b320383c3c38f63f04833",
       "ancestryExpected": true,
       "contentNeedles": [
-        { "file": "pseo-site/scripts/verify-direct-answers.ts", "pattern": "MIN_COVERAGE", "minCount": 1 },
-        { "file": "pseo-site/package.json", "pattern": "verify-direct-answers", "minCount": 1 }
+        {
+          "file": "pseo-site/scripts/verify-direct-answers.ts",
+          "pattern": "MIN_COVERAGE",
+          "minCount": 1
+        },
+        {
+          "file": "pseo-site/package.json",
+          "pattern": "verify-direct-answers",
+          "minCount": 1
+        }
       ]
     },
     {
@@ -38,7 +71,11 @@
       "fixCommit": "5afe457f5416f277ba52e8bdfd5f56a3cca2396e",
       "ancestryExpected": true,
       "contentNeedles": [
-        { "file": "pseo-site/content/competitor-vs.ts", "pattern": "verbatim PAA", "minCount": 8 }
+        {
+          "file": "pseo-site/content/competitor-vs.ts",
+          "pattern": "verbatim PAA",
+          "minCount": 8
+        }
       ]
     },
     {
@@ -48,7 +85,11 @@
       "fixCommit": "bf53580a003e3dc33ced2932cbf91acb4dbf7b5d",
       "ancestryExpected": true,
       "contentNeedles": [
-        { "file": "pseo-site/content/comparisons.ts", "pattern": "COMPARE_TITLE_HOOKS", "minCount": 1 }
+        {
+          "file": "pseo-site/content/comparisons.ts",
+          "pattern": "COMPARE_TITLE_HOOKS",
+          "minCount": 1
+        }
       ]
     },
     {
@@ -58,9 +99,20 @@
       "fixCommit": "ca140ec01284cb8a4b334c21645755f5028990af",
       "ancestryExpected": true,
       "contentNeedles": [
-        { "file": "pseo-site/data/striking-distance.json", "pattern": "floor", "minCount": 1 },
-        { "file": "pseo-site/scripts/build-internal-links.ts", "pattern": "RENDER_SECTIONS", "minCount": 1 },
-        { "file": "pseo-site/data/internal-links.json", "pipeline": true }
+        {
+          "file": "pseo-site/data/striking-distance.json",
+          "pattern": "floor",
+          "minCount": 1
+        },
+        {
+          "file": "pseo-site/scripts/build-internal-links.ts",
+          "pattern": "RENDER_SECTIONS",
+          "minCount": 1
+        },
+        {
+          "file": "pseo-site/data/internal-links.json",
+          "pipeline": true
+        }
       ]
     },
     {
@@ -70,7 +122,55 @@
       "fixCommit": "45e00ac118943cea4bdabe94002174c901a2a12c",
       "ancestryExpected": true,
       "contentNeedles": [
-        { "file": "landing/scripts/verify-css-preloads.mjs", "pattern": "preload", "minCount": 1, "tree": "landing" }
+        {
+          "file": "landing/scripts/verify-css-preloads.mjs",
+          "pattern": "preload",
+          "minCount": 1,
+          "tree": "landing"
+        }
+      ]
+    },
+    {
+      "id": "hsts-preload-headers",
+      "what": "HSTS preload guard: verify-no-regressions asserts Strict-Transport-Security: max-age=63072000; includeSubDomains; preload survives on BOTH pseo config surfaces (vercel.json headers[] + next.config.ts headers()). Header live on every response class of both hosts 2026-08-18; gitdealflow.com status=pending on hstspreload.org; preload removal costs months, so a config refactor dropping it must fail the build (the beacon-orphaning failure mode). Landed via 06cf56d4 (sibling commit swept the patched file; content verified at HEAD).",
+      "fixCommit": "06cf56d42c839b6cf9160a57d251d21c106e0167",
+      "ancestryExpected": true,
+      "contentNeedles": [
+        {
+          "file": "pseo-site/scripts/verify-no-regressions.ts",
+          "pattern": "HSTS preload header on both config surfaces",
+          "minCount": 1
+        },
+        {
+          "file": "pseo-site/vercel.json",
+          "pattern": "max-age=63072000; includeSubDomains; preload",
+          "minCount": 1
+        },
+        {
+          "file": "pseo-site/next.config.ts",
+          "pattern": "max-age=63072000; includeSubDomains; preload",
+          "minCount": 1
+        }
+      ]
+    },
+    {
+      "id": "hsts-preload-landing",
+      "what": "HSTS preload guard on the landing host: verify-vercel-config.mjs (runs in vercel.json buildCommand on every landing deploy) asserts the '/(.*)' Strict-Transport-Security preload block stays in landing/vercel.json headers[]. Same audit fix as hsts-preload-headers, apex side (gitdealflow.com).",
+      "fixCommit": "760156411f0c1c3e8ea8afa0e13ed6101596fb2b",
+      "ancestryExpected": true,
+      "contentNeedles": [
+        {
+          "file": "landing/scripts/verify-vercel-config.mjs",
+          "pattern": "hstspreload.org submission pending",
+          "minCount": 1,
+          "tree": "landing"
+        },
+        {
+          "file": "landing/vercel.json",
+          "pattern": "max-age=63072000; includeSubDomains; preload",
+          "minCount": 1,
+          "tree": "landing"
+        }
       ]
     }
   ]
