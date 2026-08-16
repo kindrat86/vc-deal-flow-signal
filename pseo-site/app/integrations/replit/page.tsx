@@ -91,7 +91,7 @@ run = ["sh", "-c", "npx -y ${NPM}"]
 
 [mcp]
 name = "vc-deal-flow-signal"
-description = "Live GitHub engineering-acceleration signals across 20 startup sectors. Six free read-only tools."
+description = "Live GitHub engineering-acceleration signals across 15 startup sectors. Six free read-only tools."
 transport = "stdio"
 command = "npx"
 args = ["-y", "${NPM}"]

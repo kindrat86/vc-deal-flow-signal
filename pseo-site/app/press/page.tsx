@@ -37,7 +37,7 @@ const FACT_SHEET = [
 
 const HEADLINES = [
   "VC Deal Flow Signal tracks GitHub commit velocity to surface breakout startups 3-6 weeks before fundraise announcements.",
-  "Engineering acceleration, measured from public GitHub data, is a leading indicator that VC Deal Flow Signal turns into ranked weekly signals across 20 startup sectors.",
+  "Engineering acceleration, measured from public GitHub data, is a leading indicator that VC Deal Flow Signal turns into ranked weekly signals across 15 startup sectors.",
   "Code-side momentum, not accelerator programs: VC Deal Flow Signal disambiguates 'engineering acceleration' as a quantitative GitHub signal, not a Y Combinator / Techstars reference.",
 ];
 

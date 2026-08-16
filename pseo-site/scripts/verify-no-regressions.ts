@@ -5062,6 +5062,89 @@ landingCheck(
 
 
 
+// ---------------------------------------------------------------------------
+// 60. Static-surface claim lock completion (2026-08-16, audit follow-up).
+//     The 08-16 sweeps (12ee6195, 956bb30c) fixed dynamic surfaces but missed
+//     static ones: public/guide/* ("400+ startup orgs"), enterprise FAQ
+//     ("109+ orgs"), and nine "20 startup sectors" surfaces (live panel = 15
+//     active sectors, 5 archived at Q2; committed data q3-2026: 15 active,
+//     411 raw / 398 deduped orgs, so "400+" overclaims and 350+ is the floor).
+//     This section bans those tokens across ALL pseo-site source dirs
+//     (including public/, which §56 skipped) and pins landing/llms.txt
+//     pricing to current rates with founding rates marked closed.
+// ---------------------------------------------------------------------------
+{
+  const bannedTokens60 = [
+    "400+ startup orgs",
+    "109+ venture-backed startup orgs",
+    "109+ venture-backed startup organizations",
+  ];
+  const sectorClaim60 =
+    /(?:across|track|tracks|universe of|Curate)\s+20\s+(?:startup\s+)?sectors/i;
+  const exts60 = new Set([".ts", ".tsx", ".md", ".json", ".html", ".js", ".mjs", ".txt"]);
+  const skip60 = new Set([".vercel", ".git", "node_modules", ".DS_Store"]);
+  const walk60 = (dir: string, out: string[] = []): string[] => {
+    let names: string[];
+    try {
+      names = readdirSync(dir);
+    } catch {
+      return out;
+    }
+    for (const name of names) {
+      if (skip60.has(name)) continue;
+      const fp = join(dir, name);
+      let isDir = false;
+      try {
+        isDir = statSync(fp).isDirectory();
+      } catch {
+        continue;
+      }
+      if (isDir) walk60(fp, out);
+      else if (exts60.has(extname(name).toLowerCase())) out.push(fp);
+    }
+    return out;
+  };
+  const hits60: string[] = [];
+  for (const dir of ["app", "content", "lib", "components", "scripts", "public"]) {
+    const abs = join(ROOT, dir);
+    if (!existsSync(abs)) continue;
+    for (const fp of walk60(abs)) {
+      if (fp.endsWith("verify-no-regressions.ts")) continue;
+      let src: string;
+      try {
+        src = readFileSync(fp, "utf8");
+      } catch {
+        continue;
+      }
+      const tok = bannedTokens60.find((t) => src.includes(t));
+      if (tok || sectorClaim60.test(src)) {
+        hits60.push(`${fp} (${tok ?? "20-sector claim"})`);
+      }
+    }
+  }
+  if (hits60.length) {
+    failures.push(
+      `§60 static-surface claim lock: banned panel/sector claims found in: ${hits60.join("; ")}\n    file: (multiple)\n    fix:  sweep to PANEL_CLAIM ("350+") via lib/canonical-claims.ts and "15 startup sectors"; legacy clusters are archived at Q2 2026 (user lock 2026-08-16, AGENTS.md)`,
+    );
+  }
+  // landing/llms.txt must present CURRENT pricing with founding rates closed.
+  const llmsPath = join(ROOT, "..", "landing", "llms.txt");
+  if (existsSync(llmsPath)) {
+    const ls = readFileSync(llmsPath, "utf8");
+    const stalePrice =
+      ls.includes("- Dashboard Beta: EUR 9.97/month") ||
+      ls.includes("- Insider Circle: EUR 97/month,");
+    const hasCurrent =
+      ls.includes("- Dashboard: EUR 49/month") &&
+      ls.includes("- Insider Circle: EUR 197/month");
+    if (stalePrice || !hasCurrent) {
+      failures.push(
+        "§60 landing/llms.txt pricing stale: founding rates (9.97/97) must be marked closed; current rates 49/197 required.\n    file: landing/llms.txt\n    fix:  mirror the live /pricing ladder (founding window closed 2026-06-30)",
+      );
+    }
+  }
+}
+
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +

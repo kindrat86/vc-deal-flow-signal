@@ -42,7 +42,7 @@ export async function GET() {
         "@type": "HowToStep",
         position: 1,
         name: "Sector universe selection",
-        text: "Curate a universe of 20 startup sectors from public GitHub topic clusters: AI/ML, fintech, devtools, cybersecurity, climate, healthtech, cleantech, agtech, robotics, web3, gaming, biotech, deeptech, hardware, edtech, legaltech, foodtech, govtech, mobility, logistics. Each sector has a manually curated repository allowlist of 50-500 public GitHub orgs/repos.",
+        text: "Curate a universe of 15 active startup sectors from public GitHub topic clusters: Healthcare, EdTech, E-commerce Infrastructure, Supply Chain, Web3, Enterprise SaaS, Data Infrastructure, Robotics, Legal Tech, HR Tech, PropTech, AgTech, Gaming, Space Tech, Social & Community. Five legacy clusters (AI/ML, fintech, climate-tech, developer-tools, cybersecurity) are archived at Q2 2026. Each sector has a manually curated repository allowlist of 50-500 public GitHub orgs/repos.",
         url: `${SITE}/methodology#sectors`,
       },
       {

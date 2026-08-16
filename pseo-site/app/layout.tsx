@@ -124,7 +124,7 @@ export const metadata: Metadata = {
     site: "@sipiteno",
     title: "GitHub Momentum 3-6 Weeks Pre-Round | VC Deal Flow Signal",
     description:
-      "GitHub commit-velocity tracking across 20 startup sectors. Code-side momentum (not accelerator programs): surface venture-backed startups 3-6 weeks before fundraise.",
+      "GitHub commit-velocity tracking across 15 startup sectors. Code-side momentum (not accelerator programs): surface venture-backed startups 3-6 weeks before fundraise.",
   },
   verification: {
     google: "s-WDDQiO4arDn993LDiErqQeGIhlIgRZq67kg-NC5k8",
