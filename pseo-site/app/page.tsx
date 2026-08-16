@@ -185,7 +185,7 @@ export default function Home() {
         alternateName: "GitDealFlow Startup Engineering Velocity Panel",
         description:
           "Quarterly longitudinal panel of GitHub engineering-velocity signals across venture-backed startups. Covers commit velocity, contributor growth, repository expansion, and acceleration-signal classification across " +
-          sectors.length +
+          activeSectorCount +
           " startup sectors and " +
           allPeriods.length +
           " quarterly periods. Designed for venture-capital deal sourcing, portfolio monitoring, and academic research on alternative data in venture capital.",

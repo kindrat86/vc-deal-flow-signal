@@ -5105,6 +5105,18 @@ landingCheck(
     return out;
   };
   const hits60: string[] = [];
+  // Derived-count check: homepage Dataset JSON-LD must derive the ACTIVE
+  // sector count (activeSectorCount), never raw sectors.length (counts the
+  // 5 archived clusters -> renders "20 startup sectors" in schema output).
+  {
+    const hp = join(ROOT, "app", "page.tsx");
+    if (existsSync(hp)) {
+      const hs = readFileSync(hp, "utf8");
+      if (hs.includes("sectors.length +\n          \" startup sectors")) {
+        hits60.push("app/page.tsx (derived sector count: sectors.length in Dataset description)");
+      }
+    }
+  }
   for (const dir of ["app", "content", "lib", "components", "scripts", "public"]) {
     const abs = join(ROOT, dir);
     if (!existsSync(abs)) continue;
