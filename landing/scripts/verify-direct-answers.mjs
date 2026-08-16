@@ -75,6 +75,17 @@ function checkPage(path, html) {
 // index page is a hub, not an answer page
 const SKIP = new Set(["index.html", "feed.json"]);
 
+// 2026-08-16 AI-citation lift (citation/mention share 25): the four AIO-visible
+// buyer-intent pages outside /answers (p1/p3/p5/p7 of the ai-citations probe set)
+// now carry the same 40-60w "Direct answer:" callout. Guarded here so a lineage
+// revert cannot strip them silently.
+const QUOTABLE_TARGETS = [
+  "alternatives-to/pitchbook-alternatives/index.html",
+  "best/best-deal-flow-tools.html",
+  "pricing/pitchbook-pricing/index.html",
+  "alternatives-to/crunchbase-alternatives/index.html",
+];
+
 function walk(dir) {
   for (const e of readdirSync(dir, { withFileTypes: true })) {
     const p = join(dir, e.name);
@@ -92,6 +103,13 @@ if (!existsSync(ANSWERS_DIR)) {
   process.exit(1);
 }
 walk(ANSWERS_DIR);
+
+// 2026-08-16: also enforce the quotable direct-answer block on the four
+// AIO-visible buyer-intent pages (see QUOTABLE_TARGETS above).
+for (const t of QUOTABLE_TARGETS) {
+  if (existsSync(t)) checkPage(t, readFileSync(t, "utf8"));
+  else failures.push(`${t}: missing file (quotable-target guard)`);
+}
 
 if (failures.length) {
   console.error(`\n✖ verify-direct-answers: ${failures.length} violation(s):\n`);
