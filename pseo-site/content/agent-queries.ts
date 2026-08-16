@@ -713,7 +713,7 @@ npx -y @gitdealflow/mcp-signal
     query: "GitHub data for startup investors",
     // CTR hook (GSC 90d: 193 imps, 0 clicks, pos 9.4): h1 + brand suffix
     // truncates at 78ch; metaTitle carries the free/no-auth hook.
-    metaTitle: `GitHub Data for Startup Investors: Free Weekly Signals (${FRESH_YEAR_STR})`,
+    metaTitle: `GitHub Data for Startup Investors: Free Weekly Signals ${FRESH_YEAR_STR}`,
     h1: "GitHub Data for Startup Investors",
     description:
       "How venture investors use public GitHub data, commit velocity, contributor growth, repository expansion, to surface breakout startups three to six weeks before fundraise announcements.",
