@@ -3609,6 +3609,31 @@ landingCheck(
   }
 }
 
+// §45 Partner-recommendation slot in the Sunday digest (2026-08-16, email-as-
+// traffic-source swap play). Three surfaces must stay wired: the renderer
+// template, the generator's loading logic, and the rotation data file. A tree
+// that drops any of them silently removes the reciprocal real estate every
+// newsletter swap offer promises partners.
+{
+  const de = readFileSync("lib/digest-email.ts", "utf8");
+  const gen = readFileSync("scripts/generate-signal-digest-email.ts", "utf8");
+  const pdata = readFileSync("data/partner-recommendations.json", "utf8");
+  const needles45: ReadonlyArray<[string, string, string]> = [
+    [de, "This week we're reading", "renderer partner-slot header"],
+    [de, "DigestPartner", "renderer DigestPartner type"],
+    [de, "data.partnerPick", "renderer partnerPick render gate"],
+    [gen, "partner-recommendations.json", "generator partner data load"],
+    [gen, 'p.status === "featured"', "generator featured-first rotation"],
+    [pdata, '"status": "featured"', "data file has a featured entry"],
+    [pdata, "confluencevcweekly.beehiiv.com", "data file live partner URL"],
+  ];
+  for (const [src, needle, label] of needles45) {
+    if (!src.includes(needle)) {
+      failures.push(`§45 partner-slot ${label} lost (needle: ${needle})`);
+    }
+  }
+}
+
 // ---------------------------------------------------------------------------
 if (failures.length) {
   console.error(
