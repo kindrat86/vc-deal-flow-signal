@@ -9,6 +9,7 @@ import {
   getAllNichePairs,
   getNiche,
   getNicheSector,
+  isNichePruned,
   buildCostLabel,
   dealVelocityLabel,
   type BuildCost,
@@ -39,12 +40,16 @@ export async function generateMetadata({
   if (!found) return {};
   const { sector, niche } = found;
 
+  // Index-prune policy (§48): zero-value leaves drop out of the index but
+  // stay live (200, follow) so browse + link equity survive.
+  const pruned = isNichePruned(sectorSlug, nicheSlug);
   const title = `${niche.name}, niche opportunity inside ${sector.name}`;
   const description = `${niche.pitch} Build cost: ${buildCostLabel(niche.buildCost)}. Deal velocity: ${dealVelocityLabel(niche.dealVelocity)}.`;
   const url = `${SITE}/niche-down/${sector.slug}/${niche.slug}`;
   return {
     title,
     description,
+    ...(pruned ? { robots: { index: false, follow: true } } : {}),
     alternates: {
       canonical: `/niche-down/${sector.slug}/${niche.slug}`,
     },

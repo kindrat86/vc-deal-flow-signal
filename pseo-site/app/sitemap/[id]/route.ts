@@ -39,6 +39,7 @@ import { glossaryTerms } from "@/content/glossary";
 import {
   nicheSectors,
   getAllNichePairs as getAllNicheDownPairs,
+  isNichePruned,
 } from "@/content/niches";
 import { startupIdeas } from "@/content/startup-ideas";
 import { playbooks } from "@/content/playbooks";
@@ -777,12 +778,17 @@ export async function GET(_req: Request, ctx: RouteContext) {
         changefreq: "weekly",
         priority: 0.75,
       })),
-      ...getAllNicheDownPairs().map(({ sector, subniche }) => ({
-        url: `${BASE_URL}/niche-down/${sector}/${subniche}`,
-        lastmod,
-        changefreq: "monthly",
-        priority: 0.7,
-      })),
+      // §48: index-pruned leaves (zero clicks + unwinnable positions in GSC
+      // 90d, see content/niches.ts NICHE_PRUNE_2026_08) stay live but leave
+      // the sitemap so the index converges on the 94 earning leaves.
+      ...getAllNicheDownPairs()
+        .filter(({ sector, subniche }) => !isNichePruned(sector, subniche))
+        .map(({ sector, subniche }) => ({
+          url: `${BASE_URL}/niche-down/${sector}/${subniche}`,
+          lastmod,
+          changefreq: "monthly",
+          priority: 0.7,
+        })),
       // Startup Ideas (2026-05-22), programmatic "buildable opportunity"
       // pages, each joining live against the current-period GitHub signal
       // panel. Hub at /startup-ideas plus one page per idea slug.
