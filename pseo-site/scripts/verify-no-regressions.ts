@@ -4588,6 +4588,16 @@ landingCheck(
       `§55 sitemap.txt route must consume isPagePruned.\n    file: app/sitemap.txt/route.ts\n    fix: re-apply the §55 filter at render`,
     );
   }
+  const proxy = read("proxy.ts");
+  if (proxy === null) {
+    failures.push(
+      `§55b proxy.ts missing (prune noindex).\n    file: proxy.ts\n    fix: restore it from git history`,
+    );
+  } else if (!proxy.includes("isPagePruned(pathname)")) {
+    failures.push(
+      `§55b proxy.ts shouldNoindex no longer delegates to isPagePruned(pathname).\n    file: proxy.ts\n    fix: add isPagePruned(pathname) to shouldNoindex() so pruned pages get X-Robots-Tag: noindex, follow (not just sitemap removal)`,
+    );
+  }
 }
 
 // ---------------------------------------------------------------------------

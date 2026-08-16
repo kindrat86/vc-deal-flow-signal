@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { detectAgentBot } from "@/lib/agent-bots";
 import { researchPaperLeafNoindexByPath } from "@/content/research-paper-policy";
+import { isPagePruned } from "@/content/pruned-pages";
 
 const BASE_URL = "https://signals.gitdealflow.com";
 const CANONICAL_HOST = "signals.gitdealflow.com";
@@ -137,7 +138,13 @@ function shouldNoindex(pathname: string): boolean {
   if (NOINDEX_PREFIXES.some((prefix) => pathname.startsWith(prefix))) {
     return true;
   }
-  return researchPaperNoindex(pathname);
+  if (researchPaperNoindex(pathname)) {
+    return true;
+  }
+  // §55b: zero-impression pruned pages (content/pruned-pages.ts) are noindex
+  // too, so the sitemap cut also actually removes them from the index. Pages
+  // stay live (200, follow) for direct/referral/agent traffic.
+  return isPagePruned(pathname);
 }
 
 /**
