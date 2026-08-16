@@ -379,6 +379,7 @@ export default async function StartupPage({ params }: PageProps) {
           <span className="text-gray-400">{profile.name}</span>
         </nav>
 
+        <article>
         {/* Header */}
         <header className="mb-8">
           <div className="flex items-start justify-between gap-4 mb-4">
@@ -1040,6 +1041,8 @@ export default async function StartupPage({ params }: PageProps) {
             See all badge styles →
           </Link>
         </section>
+
+        </article>
 
         {/* CTA */}
         <SeoCta secondary={{ label: "See a €7 First Look sample", href: "/firstlook" }} />
