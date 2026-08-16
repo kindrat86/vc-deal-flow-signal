@@ -210,6 +210,24 @@ function main() {
 
   const hottestSectors = [...sectorStats].sort((a, b) => b.avgVelocity - a.avgVelocity).slice(0, 3);
 
+  // Partner-recommendation slot (§45): rotate through data/partner-recommendations.json.
+  // Preference: status === "featured" (the current swap partner being courted),
+  // else the first "queued" entry. Absent file => no slot rendered.
+  let partnerPick: DigestData["partnerPick"];
+  const partnerPath = path.join(process.cwd(), "data", "partner-recommendations.json");
+  if (fs.existsSync(partnerPath)) {
+    try {
+      const partners: Array<{ status?: string; name: string; author: string; url: string; blurb: string }> =
+        JSON.parse(fs.readFileSync(partnerPath, "utf8"));
+      const pick = partners.find((p) => p.status === "featured") ?? partners[0];
+      if (pick?.name && pick?.url) {
+        partnerPick = { name: pick.name, author: pick.author, url: pick.url, blurb: pick.blurb };
+      }
+    } catch {
+      // malformed file: render digest without the slot, never fail the send on it
+    }
+  }
+
   const today = new Date();
   const dateStr = today.toISOString().slice(0, 10);
 
@@ -225,6 +243,7 @@ function main() {
     statTopMover: topStartups[0]?.commitVelocityChange ?? "",
     topStartups,
     hottestSectors,
+    ...(partnerPick ? { partnerPick } : {}),
   };
 
   const esp = parseEsp(process.argv.slice(2));

@@ -29,6 +29,13 @@ export type DigestSector = {
   avgVelocity: number;
 };
 
+export type DigestPartner = {
+  name: string;
+  author: string;
+  url: string;
+  blurb: string;
+};
+
 export type DigestData = {
   issueNumber: number;
   weekOf: string;
@@ -39,6 +46,8 @@ export type DigestData = {
   statTopMover: string;
   topStartups: DigestStartup[];
   hottestSectors: DigestSector[];
+  /** Optional reader-recommendation slot (newsletter swap partners, §45). */
+  partnerPick?: DigestPartner;
 };
 
 export type DigestOptions = {
@@ -311,6 +320,23 @@ export function renderDigestEmail(data: DigestData, opts: DigestOptions = {}): s
               </p>
             </td>
           </tr>
+
+          <!-- PARTNER PICK (newsletter swap slot, §45) -->
+          ${data.partnerPick ? `
+          <tr><td style="height:32px;line-height:32px;font-size:0;">&nbsp;</td></tr>
+          <tr>
+            <td class="bg-card brd px-outer" style="background:${BRAND.card};border:1px solid ${BRAND.border};border-radius:12px;padding:20px;">
+              <div class="tx-mut" style="color:${BRAND.textMut};font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;">This week we're reading</div>
+              <div class="tx-pri" style="color:${BRAND.textPri};font-size:16px;font-weight:700;margin-top:8px;">${escape(data.partnerPick.name)}</div>
+              <p class="tx-sec" style="margin:4px 0 0 0;color:${BRAND.textSec};font-size:14px;line-height:22px;">
+                ${escape(data.partnerPick.blurb)}
+                <a href="${escape(data.partnerPick.url)}" style="color:${BRAND.accentLight};font-weight:600;">Read it here &rarr;</a>
+              </p>
+              <p class="tx-mut" style="margin:10px 0 0 0;color:${BRAND.textFade};font-size:12px;line-height:18px;">
+                By ${escape(data.partnerPick.author)}. We read a lot of VC writing; this earned the recommendation. Not paid, not affiliated.
+              </p>
+            </td>
+          </tr>` : ""}
 
           <!-- FOOTER -->
           <tr><td style="height:32px;line-height:32px;font-size:0;">&nbsp;</td></tr>

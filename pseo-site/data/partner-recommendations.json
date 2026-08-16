@@ -1,0 +1,32 @@
+[
+  {
+    "slug": "confluence-vc",
+    "name": "Confluence.VC Weekly",
+    "author": "Clay Norris",
+    "url": "https://confluencevcweekly.beehiiv.com/p/sequoia-part-iii",
+    "blurb": "His Sequoia series is the best firm teardown being written today. Part III dissects the actual mechanisms (the onboarding book, the single-no rule, partner manufacturing) that let judgment survive succession. If you study how top firms source and decide, start here.",
+    "featuredIssue": 2026,
+    "status": "featured",
+    "notes": "Swap pitch sent 2026-08-16 via X DM brief (no public email; beehiiv community page). Size-comparable: ~10k+ subs vs our ~30. EU/US investor audience overlap high."
+  },
+  {
+    "slug": "strebulaev-rankings",
+    "name": "Startups and VC: Insights from Stanford Professor",
+    "author": "Ilya Strebulaev",
+    "url": "https://ilyastrebulaev.substack.com/p/the-2026-venture-ranking-the-top-1f6",
+    "blurb": "The first fully data-driven ranking of the top 100 US VC firms, built on the largest academic unicorn dataset in existence (4,000+ unicorns, 10,000+ funds). The methodology appendix alone is worth your time.",
+    "featuredIssue": null,
+    "status": "queued",
+    "notes": "Email verified: istrebulaev@stanford.edu (faculty page). Data-collab fit: he builds academic VC datasets; our SSRN panel is a natural guest-research angle. Swap pitch sent 2026-08-16."
+  },
+  {
+    "slug": "angel-academe",
+    "name": "Angel Academe Newsletter",
+    "author": "Sarah Turner, Yee Mun Thum, Michelle McQueen, Simon Hopkins",
+    "url": "https://angelacademe.substack.com/",
+    "blurb": "The UK's most active female-angel network, hand-crafting a genuinely good monthly read: founder spotlights, angel-process insights, portfolio news. Their angel-education content pairs naturally with early-signal sourcing.",
+    "featuredIssue": null,
+    "status": "queued",
+    "notes": "Substack DM via angelacademe.substack.com (no public email found; contact form WIX-gated). UK angel audience = ICP overlap. Pitch queued for next rotation."
+  }
+]
