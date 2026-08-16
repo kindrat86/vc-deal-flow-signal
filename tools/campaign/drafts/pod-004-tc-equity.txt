@@ -2,7 +2,7 @@ Subject: Recurring GitHub data source for Equity episode prep — written tips, 
 
 Hi Equity team,
 
-I run a free public GitHub engineering signal tracker that monitors commit velocity and contributor activity across 100 startups and 19 sectors — updated weekly. The dataset surfaces companies accelerating engineering output before they announce fundraises or launches.
+I run a free public GitHub engineering signal tracker that monitors commit velocity and contributor activity across 350+ startups and 15 sectors — updated weekly. The dataset surfaces companies accelerating engineering output before they announce fundraises or launches.
 
 This week's sharpest signal: airbytehq (data infrastructure) hit +866% commit velocity in 14 days, 1,864 commits, 100 active contributors. Full data: https://signals.gitdealflow.com/blog/signal-of-the-week-2026-05-04
 

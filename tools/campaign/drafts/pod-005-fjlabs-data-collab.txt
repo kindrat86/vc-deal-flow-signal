@@ -2,7 +2,7 @@ Subject: Private GitHub-signal pulls for FJ Labs portfolio — anonymous data co
 
 Hi Fabrice,
 
-I run a free public dataset that tracks GitHub engineering activity across 100 startups and 19 sectors — ranked weekly by commit velocity acceleration. The thesis: a simultaneous spike in commits and active contributors is a reliable leading indicator of a fundraise or breakout launch, typically by 3-6 weeks.
+I run a free public dataset that tracks GitHub engineering activity across 350+ startups and 15 sectors — ranked weekly by commit velocity acceleration. The thesis: a simultaneous spike in commits and active contributors is a reliable leading indicator of a fundraise or breakout launch, typically by 3-6 weeks.
 
 Current week: airbytehq hit +866% commit velocity over 14 days — 1,864 commits, 100 contributors. Full leaderboard: https://signals.gitdealflow.com
 

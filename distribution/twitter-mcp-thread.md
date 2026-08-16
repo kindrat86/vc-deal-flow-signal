@@ -31,7 +31,7 @@ TWEET 4:
 What it can do:
 
 - get_trending_startups: top 20 by engineering acceleration
-- search_startups_by_sector: 20 sectors (AI, fintech, healthcare...)
+- search_startups_by_sector: 15 sectors (AI, fintech, healthcare...)
 - get_startup_signal: deep profile on any tracked startup
 - get_methodology: how the signals work
 

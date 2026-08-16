@@ -51,7 +51,7 @@
 ### Submission template
 
 **Name:** VC Deal Flow Signal
-**Description:** Startup engineering acceleration signals for VC investors. Tracks commit velocity, contributor growth, and repo expansion across 20 sectors. No API key required.
+**Description:** Startup engineering acceleration signals for VC investors. Tracks commit velocity, contributor growth, and repo expansion across 15 sectors. No API key required.
 **npm:** @gitdealflow/mcp-signal
 **Install:** npx @gitdealflow/mcp-signal
 **GitHub:** https://github.com/kindrat86/vc-deal-flow-signal/tree/main/mcp-server

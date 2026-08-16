@@ -6,7 +6,7 @@ A Claude Skill that turns Claude into a VC deal-flow analyst grounded in live Gi
 
 Claude becomes a deal-flow analyst that:
 - Surfaces breakout startups before they hit Crunchbase / PitchBook
-- Ranks startups across 20 sectors by engineering acceleration (commit velocity, contributor growth, new repos)
+- Ranks startups across 15 sectors by engineering acceleration (commit velocity, contributor growth, new repos)
 - Drafts one-page deal memos, sector deep dives, dark-horse picks, and head-to-head comparisons
 - Cites every claim with the canonical citation string and refresh date
 
