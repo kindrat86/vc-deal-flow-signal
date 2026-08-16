@@ -254,6 +254,7 @@ export default async function AlternativePage({ params }: PageProps) {
           <span className="text-gray-400">{alt.h1}</span>
         </nav>
 
+        <article>
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
           {alt.h1}
         </h1>
@@ -520,6 +521,8 @@ export default async function AlternativePage({ params }: PageProps) {
         </section>
 
         <RelatedLinks groups={getRelatedGroups(`/alternatives/${slug}`)} heading="Related comparisons" />
+
+        </article>
 
         <div className="rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">
           <h2 className="text-gray-100 font-semibold text-lg mb-2">

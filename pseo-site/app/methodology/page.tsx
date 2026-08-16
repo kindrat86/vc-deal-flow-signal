@@ -410,6 +410,7 @@ export default function MethodologyPage() {
           <span className="text-gray-400">Methodology</span>
         </nav>
 
+        <article>
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-6 leading-tight">
           How We Measure Startup Engineering Acceleration
         </h1>
@@ -848,6 +849,8 @@ general acceleration that doesn&apos;t fit the above categories,
         />
 
         <PSEOFooterNav excludeHrefs={["/methodology"]} />
+
+        </article>
 
         {/* CTA */}
         <div className="rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">

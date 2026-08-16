@@ -5289,6 +5289,35 @@ landingCheck(
   }
 }
 
+// ---------------------------------------------------------------------------
+// §63 Article landmark on the quotable data/editorial templates (2026-08-16,
+//     audit item "HTML semantics 82"). blog already wraps its body in
+//     <article>; the four highest-citation-value templates (startup profile,
+//     startups-to-watch ranking, methodology, alternatives roundup) rendered as
+//     bare <section>s directly under <main>. Readability.js (Perplexity /
+//     ChatGPT / Gemini / Claude browsing) and RAG pipelines use <article> to
+//     locate the self-contained citable content, so a template that loses the
+//     wrapper becomes unquotable — the site's #1 discovery deficit (citation
+//     share 25/100). Assert each wraps its body in <article>.
+// ---------------------------------------------------------------------------
+{
+  const articleWrapped = [
+    "app/startup/[slug]/page.tsx",
+    "app/startups-to-watch/[slug]/page.tsx",
+    "app/methodology/page.tsx",
+    "app/alternatives/[slug]/page.tsx",
+  ];
+  for (const rel of articleWrapped) {
+    const s = read(rel);
+    if (s && (!s.includes("<article>") || !s.includes("</article>"))) {
+      failures.push(
+        `§63 ${rel} lost its <article> wrapper.\n    fix: wrap the quotable body (after the breadcrumb <nav>) in <article>…</article> so answer-engine extractors can find the citable content`,
+      );
+    }
+  }
+}
+
+
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +

@@ -225,6 +225,7 @@ export default async function SectorPage({ params }: PageProps) {
           </span>
         </nav>
 
+        <article>
         {/* Page header */}
         <header className="mb-8 max-w-3xl">
           <p className="text-sky-400 text-sm font-medium mb-2 uppercase tracking-wider">
@@ -430,6 +431,7 @@ export default async function SectorPage({ params }: PageProps) {
             </div>
           </section>
         )}
+        </article>
       </div>
     </>
   );
