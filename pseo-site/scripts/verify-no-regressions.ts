@@ -1723,6 +1723,38 @@ check(
 }
 
 // ---------------------------------------------------------------------------
+// Frozen-sector /best/ redirects (2026-08-16, audit win #2 residuals). The
+// five Q2-2026 sectors stopped generating /best/<slug>-2026 pages; four of
+// them 404ed while still holding GSC 90d equity (ai-ml 48, fintech 25,
+// climate-tech 23, cybersecurity 22 impressions). Each must keep its 301 to
+// the live startups-to-watch Q2 snapshot (developer-tools goes to its
+// dedicated /sectors/ hub). A lineage that drops any of these redirects
+// (or changes the target to something weaker than the snapshot) fails here.
+// ---------------------------------------------------------------------------
+{
+  const FROZEN_BEST: [string, string][] = [
+    ["/best/developer-tools-2026", "/sectors/developer-tools"],
+    ["/best/ai-ml-2026", "/startups-to-watch/ai-ml-q2-2026"],
+    ["/best/fintech-2026", "/startups-to-watch/fintech-q2-2026"],
+    ["/best/climate-tech-2026", "/startups-to-watch/climate-tech-q2-2026"],
+    ["/best/cybersecurity-2026", "/startups-to-watch/cybersecurity-q2-2026"],
+  ];
+  const cfg = read("next.config.ts");
+  for (const [src, dst] of FROZEN_BEST) {
+    if (cfg && !cfg.includes(`source: "${src}"`)) {
+      failures.push(
+        `Frozen-sector redirect missing: ${src} -> ${dst}\n    file: next.config.ts\n    fix:  restore the 301 (the /best/ page froze in Q2-2026 and 404s without it, while GSC still shows impressions on the URL)`,
+      );
+    }
+    if (cfg && !cfg.includes(`destination: "${dst}"`)) {
+      failures.push(
+        `Frozen-sector redirect retargeted: ${src} no longer points at ${dst}\n    file: next.config.ts\n    fix:  restore the destination; the Q2 startups-to-watch snapshot is the live intent-matched page`,
+      );
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Sitemap core shard must list each URL exactly once (2026-08-16). /origin
 // was hand-listed twice (priorities 0.75 and 0.8), emitting a duplicate
 // <loc> inside sitemap/core.xml. The render-time dedupe filter in the route
@@ -3787,6 +3819,93 @@ landingCheck(
 }
 
 // ---------------------------------------------------------------------------
+// §48 Niche-down index-prune policy (2026-08-16, audit "content pruning 55").
+// Ground truth: fresh GSC 90d page-filtered pull (2026-08-16): 200 leaves,
+// 109 rows, 828 imps, 1 click; cluster live since 2026-05-22 (86d seasoning).
+// Policy (content/niches.ts NICHE_PRUNE_2026_08): KEEP a leaf with clicks>0
+// OR imps>=10 OR pos<=30; NOINDEX the rest. Kept 94 leaves carry 91% of leaf
+// impressions; pruned 106 carry ZERO clicks. Pages stay LIVE (200, follow);
+// they exit only the index (robots meta) and the sitemap. Hub + 20 sector
+// hubs always indexable. Re-run quarterly with fresh GSC.
+{
+  const niches = read("content/niches.ts");
+  if (niches === null) {
+    failures.push("§48 content/niches.ts missing");
+  } else {
+    if (!/export const NICHE_PRUNE_2026_08/.test(niches)) {
+      failures.push(
+        "§48 NICHE_PRUNE_2026_08 set missing from content/niches.ts\n    fix:  restore the index-prune policy (audit content-pruning-55, 2026-08-16)",
+      );
+    }
+    // exact-size canary: a format change or mass un-prune must fail loudly,
+    // never pass vacuously on a regex that stopped matching
+    const setStart = niches.indexOf("export const NICHE_PRUNE_2026_08");
+    const setEnd = niches.indexOf("]);", setStart);
+    if (setStart >= 0 && setEnd > setStart) {
+      const body = niches.slice(setStart, setEnd);
+      const n = (body.match(/"[a-z0-9-]+\/[a-z0-9-]+"/g) || []).length;
+      if (n !== 106) {
+        failures.push(
+          "§48 NICHE_PRUNE_2026_08 size drift: expected 106 entries, found " + n + ".\n    fix:  data-driven policy; refresh the GSC pull, recompute tiers, update the Set AND this count together",
+        );
+      }
+      // malformed slugs must fail the build instead of silently noindexing nothing
+      const slugs = body.match(/"([^"]+)"/g) || [];
+      const bad = slugs.filter((s) => s.slice(1, -1).split("/").length !== 2);
+      if (bad.length > 0) {
+        failures.push(
+          "§48 NICHE_PRUNE_2026_08 contains malformed slugs (need sector/sub): " + bad.slice(0, 3).join(", "),
+        );
+      }
+    }
+    if (!/isNichePruned\(/.test(niches)) {
+      failures.push("§48 isNichePruned helper missing from content/niches.ts");
+    }
+  }
+
+  // leaf template wiring: import + conditional robots noindex
+  const leaf = read("app/niche-down/[sector]/[subniche]/page.tsx");
+  if (leaf === null) {
+    failures.push("§48 app/niche-down/[sector]/[subniche]/page.tsx missing");
+  } else {
+    for (const needle of ["isNichePruned", "robots: { index: false, follow: true }"]) {
+      if (!leaf.includes(needle)) {
+        failures.push(
+          "§48 leaf template lost the prune wiring (needle: " + needle + ").\n    file: app/niche-down/[sector]/[subniche]/page.tsx\n    fix:  restore import isNichePruned + the conditional robots spread",
+        );
+      }
+    }
+    if (!/const pruned = isNichePruned\(sectorSlug, nicheSlug\);/.test(leaf)) {
+      failures.push("§48 leaf pruned-variable wiring changed form; update §48 needles");
+    }
+    if (!/\.\.\.\(pruned \? \{ robots: \{ index: false, follow: true \} \} : \{\}\)/.test(leaf)) {
+      failures.push("§48 leaf conditional-robots spread changed form; update §48 needles");
+    }
+    // pruned pages keep self-canonical (live + canonical, no consolidation)
+    if (!leaf.includes("canonical: `/niche-down/${sector.slug}/${niche.slug}`")) {
+      failures.push("§48 leaf lost self-canonical (pruned pages stay live+canonical, no redirect consolidation)");
+    }
+  }
+
+  // sitemap builder: pruned leaves absent, hubs present
+  const smRoute = read("app/sitemap/[id]/route.ts");
+  if (smRoute === null) {
+    failures.push("§48 app/sitemap/[id]/route.ts missing");
+  } else {
+    if (!smRoute.includes("isNichePruned")) {
+      failures.push(
+        "§48 sitemap builder lost the prune filter: index-pruned leaves must not be listed",
+      );
+    }
+    if (!/getAllNicheDownPairs\(\)\s*\.filter\(\(\{ sector, subniche \}\) => !isNichePruned\(sector, subniche\)\)/.test(smRoute)) {
+      failures.push("§48 sitemap builder filter changed form; update §48 needles (or the filter was removed)");
+    }
+    if (!smRoute.includes("nicheSectors.map((s) => ({")) {
+      failures.push("§48 sitemap sector-hub mapping lost (hubs must stay listed)");
+    }
+  }
+}
+
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +

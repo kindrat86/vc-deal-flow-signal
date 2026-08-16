@@ -207,6 +207,33 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        // Same freeze, remaining four Q2-2026 sectors (2026-08-16, audit
+        // win #2 residuals). GSC 90d on the 404s: ai-ml 48 imps pos 13.0,
+        // fintech 25 imps pos 28.8, climate-tech 23 imps pos 12.3,
+        // cybersecurity 22 imps pos 17.4. No /sectors/ hub exists for these
+        // four (only developer-tools has one), so point at their live Q2
+        // startups-to-watch snapshots - same "best startups in X" intent
+        // and the q2->q3 roll pattern above already handles future freezes.
+        source: "/best/ai-ml-2026",
+        destination: "/startups-to-watch/ai-ml-q2-2026",
+        permanent: true,
+      },
+      {
+        source: "/best/fintech-2026",
+        destination: "/startups-to-watch/fintech-q2-2026",
+        permanent: true,
+      },
+      {
+        source: "/best/climate-tech-2026",
+        destination: "/startups-to-watch/climate-tech-q2-2026",
+        permanent: true,
+      },
+      {
+        source: "/best/cybersecurity-2026",
+        destination: "/startups-to-watch/cybersecurity-q2-2026",
+        permanent: true,
+      },
+      {
         // Legacy sitemap path (retired 2026-07-21): the "high-intent" pSEO shard
         // was consolidated into the /sitemap/[id] shards, but the old URL still
         // 404s and any stale crawler/bookmark/GSC reference points at it. 301 to
