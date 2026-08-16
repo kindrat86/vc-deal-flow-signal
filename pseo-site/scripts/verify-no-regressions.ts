@@ -2896,6 +2896,66 @@ check(
 );
 
 // ---------------------------------------------------------------------------
+// §35 Mobile-first indexing parity (2026-08-17). GSC URL Inspection confirms
+// crawledAs=MOBILE on both hosts; a 237-URL live sweep proved byte-identical
+// responses for Googlebot Smartphone / Desktop / Chrome Mobile (only diff:
+// per-request signed share tokens, not UA-based). The regressions that could
+// silently end this, and must never ship:
+//   a) "googlebot" added to AGENT_BOT_TOKENS (would fork Google's crawler
+//      into the agent-aware rendering path via x-agent-bot),
+//   b) proxy.ts branching on a Googlebot UA anywhere outside the PostHog
+//      bot_crawl monitoring table,
+//   c) the viewport export dropped from the root layout (mobile-first render),
+//   d) the live parity detector deleted or unwired.
+// Live proof tool: npm run verify:mobile-parity (detector, NOT a build gate).
+// ---------------------------------------------------------------------------
+check(
+  "lib/agent-bots.ts",
+  "§35 mobile-first indexing: a Googlebot token was added to AGENT_BOT_TOKENS, which routes Google's crawler into the x-agent-bot rendering path. Googlebot must see exactly what mobile Chrome sees (crawledAs=MOBILE, verified 2026-08-17); AI-agent rendering is for GPTBot/ClaudeBot/etc. only.",
+  (s) => {
+    const m = s.match(/AGENT_BOT_TOKENS\s*=\s*\[([\s\S]*?)\]\s*as const/);
+    return m !== null && !/googlebot/i.test(m[1]);
+  },
+  "remove the Googlebot entry from AGENT_BOT_TOKENS in lib/agent-bots.ts (bot-crawl monitoring belongs in proxy.ts SEARCH_AND_GENERIC_BOTS, which never branches rendering)",
+);
+
+check(
+  "proxy.ts",
+  "§35 mobile-first indexing: proxy.ts now branches on a Googlebot UA outside the bot_crawl monitoring table. Googlebot must never be rewritten, agent-rendered, or content-negotiated differently from a mobile browser.",
+  (s) => {
+    if (!s.includes("const detectedBot = detectAgentBot(ua);")) return false;
+    const withoutMonitoringRow = s.split('["googlebot", "Googlebot"],').join("");
+    return !/googlebot/i.test(withoutMonitoringRow);
+  },
+  "keep agent-aware branching sourced ONLY from detectAgentBot() (AI bots), and keep the sole Googlebot reference as the PostHog monitoring row [\"googlebot\", \"Googlebot\"]",
+);
+
+check(
+  "app/layout.tsx",
+  "§35 mobile-first indexing: the root layout viewport export lost width: \"device-width\". Without it the mobile-first-indexed render degenerates to desktop layout on phones.",
+  (s) => /viewport[\s\S]{0,400}width:\s*["']device-width["']/.test(s),
+  'restore the Next.js viewport export with width: "device-width" (and initialScale) in app/layout.tsx',
+);
+
+check(
+  "scripts/verify-mobile-parity.mjs",
+  "§35 mobile-first indexing: the live 3-UA parity detector was deleted or gutted (it proves Googlebot-Smartphone == Chrome-Mobile == Googlebot-Desktop across every template family).",
+  (s) =>
+    s.includes("Googlebot/2.1") &&
+    s.includes("device-width") &&
+    s.includes("process.exit(1)") &&
+    s.includes("«TOKEN»"),
+  "restore scripts/verify-mobile-parity.mjs (3-UA fetch + JWT masking + viewport assertion, exit 1 only on confirmed divergence)",
+);
+
+check(
+  "package.json",
+  "§35 mobile-first indexing: the verify:mobile-parity npm script (live parity detector wiring) is missing.",
+  (s) => s.includes("verify:mobile-parity"),
+  'restore the "verify:mobile-parity" script pointing at scripts/verify-mobile-parity.mjs',
+);
+
+// ---------------------------------------------------------------------------
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +

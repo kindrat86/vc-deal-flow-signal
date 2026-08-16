@@ -21,6 +21,7 @@
     "a11y:local": "BASE_URL=http://localhost:3000 node scripts/a11y-audit.mjs",
     "deploy:prod": "bash scripts/deploy-prod.sh",
     "verify:jsonld": "node scripts/verify-jsonld.mjs .next",
+    "verify:mobile-parity": "node scripts/verify-mobile-parity.mjs",
     "verify:no-regressions": "npx tsx scripts/verify-no-regressions.ts"
   },
   "dependencies": {
