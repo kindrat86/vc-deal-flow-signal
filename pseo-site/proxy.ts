@@ -121,6 +121,24 @@ function shouldNoindex(pathname: string): boolean {
   return NOINDEX_PREFIXES.some((prefix) => pathname.startsWith(prefix));
 }
 
+/**
+ * Full robots directive for a path. Middleware is the deterministic LAST
+ * writer of X-Robots-Tag, so vercel.json's global directive
+ * (index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1)
+ * was silently flattened to bare "index, follow" on every signals page —
+ * apex gitdealflow.com (no middleware) served the full directive while
+ * signals.gitdealflow.com did not (live-verified 2026-08-18). max-snippet:-1
+ * matters for AI Overviews / answer-engine extraction length,
+ * max-image-preview:large for Discover-style surfaces. All THREE set-sites
+ * (markdown rewrite, agent-bot branch, default branch) must use this helper.
+ */
+const INDEX_ROBOTS_DIRECTIVE =
+  "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
+
+function robotsDirectiveFor(pathname: string): string {
+  return shouldNoindex(pathname) ? "noindex, follow" : INDEX_ROBOTS_DIRECTIVE;
+}
+
 function publicHtmlCacheControl(pathname: string): string {
   // Public marketing / pSEO pages are effectively static between deploys or
   // weekly data refreshes, so edge-cache them aggressively for crawlers and
@@ -285,10 +303,7 @@ export async function proxy(request: NextRequest) {
     // representation, not a competing page.
     const canonical = `${BASE_URL}${pathname}`;
     mdResponse.headers.set("Link", `<${canonical}>; rel="canonical"`);
-    mdResponse.headers.set(
-      "X-Robots-Tag",
-      shouldNoindex(pathname) ? "noindex, follow" : "index, follow",
-    );
+    mdResponse.headers.set("X-Robots-Tag", robotsDirectiveFor(pathname));
     mdResponse.headers.set("Cache-Control", publicHtmlCacheControl(pathname));
     return mdResponse;
   }
@@ -326,10 +341,7 @@ export async function proxy(request: NextRequest) {
   // Header-level robots directive must mirror per-page meta robots so a
   // crawler reading only headers (e.g. some image/preview fetchers) gets the
   // same indexing decision as one parsing the HTML.
-  response.headers.set(
-    "X-Robots-Tag",
-    shouldNoindex(pathname) ? "noindex, follow" : "index, follow",
-  );
+  response.headers.set("X-Robots-Tag", robotsDirectiveFor(pathname));
   response.headers.set("Cache-Control", publicHtmlCacheControl(pathname));
   return response;
 }

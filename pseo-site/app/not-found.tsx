@@ -1,6 +1,12 @@
 import Link from "next/link";
 import { getAllSectors, getCurrentPeriod } from "@/lib/data";
 
+// 404 pages must never be indexed. not-found.tsx has no Metadata export in
+// Next 16, so we emit a raw meta tag - React 19 hoists it into <head> during
+// SSR. The proxy also stamps X-Robots-Tag: index, follow on every response
+// including 404s (middleware runs before routing), so the meta tag is the
+// authoritative per-HTML signal; the true 404 status is the primary
+// mechanism. Belt-and-suspenders against soft-404 indexing (2026-08-18).
 export default function NotFound() {
   const sectors = getAllSectors();
   const period = getCurrentPeriod();
@@ -16,6 +22,7 @@ export default function NotFound() {
       <h1 className="text-3xl font-bold text-gray-100 mb-4">
         Page not found
       </h1>
+      <meta name="robots" content="noindex, follow" />
       <p className="text-gray-400 text-base mb-10 max-w-md mx-auto">
         The page you&apos;re looking for doesn&apos;t exist or has been moved.
         Try browsing our sector rankings instead.

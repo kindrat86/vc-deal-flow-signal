@@ -3722,6 +3722,54 @@ landingCheck(
 }
 
 // ---------------------------------------------------------------------------
+// §46 Robots-directive integrity + 404 noindex (2026-08-18, headless/rendering
+// audit row). Two defects found live: (a) proxy.ts (middleware = deterministic
+// LAST header writer) overwrote vercel.json's rich X-Robots-Tag with bare
+// "index, follow", silently dropping max-snippet:-1 / max-image-preview:large /
+// max-video-preview:-1 from every signals page (the apex had them, the subdomain
+// did not — AI-Overview extraction length depends on max-snippet); (b) 404 HTML
+// carried "index, follow" header + no noindex meta (soft-404 risk).
+// ---------------------------------------------------------------------------
+{
+  const proxy = read("proxy.ts");
+  if (proxy) {
+    const full = "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
+    if (!proxy.includes(full)) {
+      failures.push(
+        `§46 proxy.ts lost the full index robots directive (${full}).\n    file: proxy.ts\n    fix:  keep INDEX_ROBOTS_DIRECTIVE exactly as the vercel.json global directive; middleware is the last writer and a bare "index, follow" silently drops max-snippet:-1 site-wide`,
+      );
+    }
+    const setSites = (proxy.match(/headers\.set\(\s*"X-Robots-Tag"/g) || []).length;
+    const helperSites = (proxy.match(/headers\.set\("X-Robots-Tag", robotsDirectiveFor\(pathname\)\)/g) || []).length;
+    // Two set-sites in proxy.ts (markdown rewrite + default branch); both must
+    // route through robotsDirectiveFor so noindex paths keep their directive.
+    if (setSites !== 2 || helperSites !== 2) {
+      failures.push(
+        `§46 proxy.ts X-Robots-Tag set-sites drifted: ${helperSites}/${setSites} use robotsDirectiveFor(pathname).\n    file: proxy.ts\n    fix:  every X-Robots-Tag set in proxy.ts must use robotsDirectiveFor(pathname) (noindex split + full directive); found ${helperSites} helper calls across ${setSites} set-sites`,
+      );
+    }
+    if (/headers\.set\(\s*"X-Robots-Tag",\s*"index, follow"\s*\)/.test(proxy)) {
+      failures.push(
+        `§46 proxy.ts sets a literal bare "index, follow" X-Robots-Tag.\n    file: proxy.ts\n    fix:  use robotsDirectiveFor(pathname) so the full directive (max-snippet:-1 etc.) survives the middleware overwrite`,
+      );
+    }
+    // vercel.json is the documented source of the directive; keep both in sync.
+    const vercelJson = read("vercel.json");
+    if (vercelJson && !vercelJson.includes("max-snippet:-1")) {
+      failures.push(
+        `§46 vercel.json global X-Robots-Tag lost max-snippet:-1 — proxy.ts INDEX_ROBOTS_DIRECTIVE and the vercel.json header must stay identical.\n    file: vercel.json\n    fix:  restore "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" on the /(.*?) source`,
+      );
+    }
+  }
+  const notFound = read("app/not-found.tsx");
+  if (notFound && !notFound.includes('<meta name="robots" content="noindex, follow" />')) {
+    failures.push(
+      `§46 app/not-found.tsx lost its noindex meta tag (404 HTML was indexable HTML with an "index, follow" header).\n    file: app/not-found.tsx\n    fix:  keep the raw <meta name="robots" content="noindex, follow" /> in the component (React 19 hoists it to <head>; not-found.tsx has no Metadata export)`,
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +
