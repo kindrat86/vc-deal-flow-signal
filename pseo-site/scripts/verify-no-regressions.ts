@@ -5288,6 +5288,51 @@ landingCheck(
 }
 
 
+// §64 gap-hub fleet (2026-08-16, audit "content gaps 45" follow-on; RESTORED
+// 08-16 after a claims-union merge reverted commit 14e27c65). Seven /answers/
+// entries shipped from the honest gap queue (51 gaps -> 8 clusters: 7 pages +
+// 1 glossary anchor). Pins each slug, its 40-60w definition head, and the
+// family head-term keyword so the fleet can't be silently dropped or thinned.
+// Entry-count ratchet: >= 105.
+{
+  const s = read("content/agent-queries.ts");
+  const needles: Array<[string, string]> = [
+    ['slug: "cybersecurity-deal-flow"', "cybersecurity-deal-flow entry missing"],
+    ['slug: "companies-like-crunchbase"', "companies-like-crunchbase entry missing"],
+    ['slug: "affinity-integrations"', "affinity-integrations entry missing"],
+    ['slug: "data-infrastructure-startups-to-watch"', "data-infrastructure-startups-to-watch entry missing"],
+    ['slug: "dealroom-api-and-funding-data"', "dealroom-api-and-funding-data entry missing"],
+    ['slug: "deal-sourcing-automation"', "deal-sourcing-automation entry missing"],
+    ['slug: "affordable-pitchbook-alternatives-for-small-funds"', "affordable-pitchbook-alternatives entry missing"],
+    ['"Cybersecurity deal flow is the stream of investable security-startup opportunities', "cyber definition reverted"],
+    ['"The main companies like Crunchbase are Dealroom for European depth', "companies-like definition reverted"],
+    ['"The Affinity integrations that matter for deal sourcing are email and calendar capture', "affinity-integrations definition reverted"],
+    ['"Data infrastructure startups to watch are ranked by GitHub engineering signals', "data-infra definition reverted"],
+    ['"The Dealroom API provides programmatic access', "dealroom-api definition reverted"],
+    ['"Deal sourcing automation connects discovery feeds', "deal-sourcing-automation definition reverted"],
+    ['"Affordable PitchBook alternatives for small funds are Crunchbase Pro at $49/month', "pitchbook-alts definition reverted"],
+    ['"cybersecurity deal flow"', "cyber head-term keyword lost"],
+    ['"companies like crunchbase"', "companies-like head-term keyword lost"],
+    ['"deal sourcing automation"', "deal-sourcing-automation head-term keyword lost"],
+    ['"pitchbook alternatives"', "pitchbook-alts head-term keyword lost"],
+    ['"data infrastructure startups to watch"', "data-infra head-term keyword lost"],
+  ];
+  for (const [needle, msg] of needles) {
+    if (s === null || !s.includes(needle)) {
+      failures.push(
+        `§64 gap-hub fleet: ${msg}\n    file: content/agent-queries.ts\n    fix: restore the entry (gap-queue 2026-08-16): ${needle}`,
+      );
+    }
+  }
+  const slugCount = s === null ? 0 : (s.match(/slug: "/g) || []).length;
+  if (s !== null && slugCount < 105) {
+    failures.push(
+      `§64 gap-hub fleet: agent-queries entry count fell below 105 (${slugCount}).\n    file: content/agent-queries.ts\n    fix: entries are append-only; restore removed entries or lower the floor in the same commit that documents why`,
+    );
+  }
+}
+
+
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +
