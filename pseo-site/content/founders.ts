@@ -58,6 +58,8 @@ export const FOUNDER_TITLE_HOOKS: Record<string, string> = {
   patio11: "Patrick McKenzie (@patio11): Software Business Writer",
   gaearon: "Dan Abramov (@gaearon): Former React Core",
   yyx990803: "Evan You (@yyx990803): Vue.js Creator",
+  adamwathan: "Adam Wathan (@adamwathan): Tailwind CSS Creator",
+  dhh: "DHH (@dhh): Rails Creator, 37signals CTO",
   tj: "TJ Holowaychuk (@tj): Express.js Author",
   ezyang: "Edward Z. Yang (@ezyang): PyTorch Core Engineer",
   "transitive-bullshit": "Travis Fischer (@transitive-bullshit): Agentic Founder",
@@ -80,7 +82,11 @@ function build(p: {
     publicSource: p.publicSource,
     title:
       FOUNDER_TITLE_HOOKS[p.handle] ??
-      `${p.name} (@${p.handle}), Public Engineering Profile`,
+      (`${p.name} (@${p.handle}): ${p.role}`.length <= 60
+        ? `${p.name} (@${p.handle}): ${p.role}`
+        : `${p.name} (@${p.handle}), GitHub Profile`.length <= 60
+          ? `${p.name} (@${p.handle}), GitHub Profile`
+          : `${p.name} (@${p.handle}), Public Engineering Profile`),
     metaDescription: `${p.name} is ${p.role} at ${p.affiliation}. Public engineering profile and notable open-source work, sourced exclusively from publicly self-published references.`,
     h1: `${p.name}, Public Engineering Profile`,
     tagline: `${p.name} is ${p.role} at ${p.affiliation}. This page summarizes publicly observable engineering activity tied to the @${p.handle} GitHub handle.`,

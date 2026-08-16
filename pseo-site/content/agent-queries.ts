@@ -1662,6 +1662,8 @@ The tools are free in perpetuity. There is no API key gate. The free tier is str
     slug: "best-pitchbook-alternative-for-solo-investors",
     query: "Best PitchBook alternative for solo investors",
     h1: "Best PitchBook Alternative for Solo Investors",
+    metaTitle: "Best PitchBook Alternative for Solos: Under EUR 120/mo",
+
     description:
       "PitchBook does not have a true peer at solo-investor pricing. The replacement stack: Crunchbase Pro for funding history, VC Deal Flow Signal for leading engineering signals, plus a relationship CRM. Total under EUR 120/month vs PitchBook's $1,700+.",
     tldr:
@@ -2687,6 +2689,8 @@ Restart Claude Desktop. The six tools (get_trending_startups, search_startups_by
     slug: "how-to-add-mcp-server-to-cursor",
     query: "How to add an MCP server to Cursor",
     h1: "How to Add an MCP Server to Cursor",
+    metaTitle: "How to Add an MCP Server to Cursor: 3 Steps (2026)",
+
     description:
       "Add an MCP server to Cursor in 30 seconds: open Settings → Tools → MCP, paste the server config JSON, restart Cursor. The GitDealFlow MCP server (free, no API key) gives Cursor live VC research tools.",
     tldr:
@@ -4433,6 +4437,8 @@ Anyone can run this analysis: pull the GitHub API, compute commit-velocity over 
     slug: "best-mcp-servers-for-vc-and-finance-research-2026",
     query: "What are the best MCP servers for VC and finance research in 2026?",
     h1: "Best MCP Servers for VC and Finance Research in 2026",
+    metaTitle: "Best MCP Servers for VC Research: 4 Are Free (2026)",
+
     description:
       "MCP-native VC and finance research is a 2026 surface area. The best free MCP servers for VC are GitDealFlow (engineering signals), Crunchbase MCP (funding data), and SEC-EDGAR MCP (filings). For agents working in Claude Desktop or Cursor, this stack covers ~80% of the workflow.",
     tldr:

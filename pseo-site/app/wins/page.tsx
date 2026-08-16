@@ -11,7 +11,7 @@ export const dynamic = "force-static";
 
 export const metadata: Metadata = {
   title:
-    "Underwriting Receipts, Public Ledger of Validated GitHub Signals · €0",
+    "Underwriting Receipts: Validated GitHub Signals Ledger (2026)",
   description:
     "Public ledger of every venture-backed startup whose GitHub engineering acceleration matched our signal pattern before the funding round, acquisition, or valuation announcement. Anonymous-founder, evidence-first track record. No testimonials, just receipts.",
   alternates: {

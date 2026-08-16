@@ -4730,8 +4730,97 @@ landingCheck(
 
 
 
+  // §58 wave-6 title hooks (2026-08-16, union w/ §57 wave-6b): founder role hooks, signal
+  // momentum verdicts, fund stage hooks, 3 answers metaTitles, 3 hub
+  // titles. All strings are derived from the same content files' public
+  // fields (role/affiliation/momentum/stage/page copy), never invented
+  // figures. Fails closed if any lineage reverts a wave-6 title.
+  {
+    const founders = read("content/founders.ts");
+    if (founders) {
+      if (!founders.includes("export const FOUNDER_TITLE_HOOKS")) {
+        failures.push(
+          `§58 founder hook map dropped.\n    file: content/founders.ts\n    fix:  restore FOUNDER_TITLE_HOOKS (wave-6 role+affiliation title hooks)`,
+        );
+      }
+      for (const needle of [
+        'leerob: "Lee Robinson (@leerob): Vercel VP of Product"',
+        'dhh: "DHH (@dhh): Rails Creator, 37signals CTO"',
+        'yyx990803: "Evan You (@yyx990803): Vue.js Creator"',
+        "FOUNDER_TITLE_HOOKS[p.handle] ??",
+        "FOUNDER_TITLE_HOOKS[p.handle] ??",
+      ]) {
+        if (needle && !founders.includes(needle)) {
+          failures.push(
+            `§58 founder hook reverted (missing needle: ${needle.slice(0, 60)}...).\n    file: content/founders.ts\n    fix:  restore the wave-6 founder title builder (hook map + 60ch role fallback)`,
+          );
+        }
+      }
+    }
+    const companies = read("content/companies.ts");
+    if (
+      companies &&
+      !companies.includes('"accelerating" &&') &&
+      !companies.includes('": Accelerating"')
+    ) {
+      failures.push(
+        `§58 signal momentum verdict reverted.\n    file: content/companies.ts\n    fix:  restore the wave-6 title suffix ("GitHub Engineering Signals: Accelerating (YEAR)" for accelerating profiles only)`,
+      );
+    }
+    const funds = read("content/funds.ts");
+    if (funds) {
+      if (!funds.includes("export const FUND_TITLE_HOOKS")) {
+        failures.push(
+          `§58 fund hook map dropped.\n    file: content/funds.ts\n    fix:  restore FUND_TITLE_HOOKS (wave-6 stage-focus title hooks)`,
+        );
+      }
+      for (const needle of [
+        'iconiq: "ICONIQ Capital: Late-Stage Software Signals"',
+        'm12: "M12 (Microsoft Ventures): Series A to Growth Signals"',
+        "FUND_TITLE_HOOKS[f.slug]",
+      ]) {
+        if (!funds.includes(needle)) {
+          failures.push(
+            `§58 fund hook reverted (missing needle: ${needle.slice(0, 60)}...).\n    file: content/funds.ts\n    fix:  restore the wave-6 fund title map + consumption`,
+          );
+        }
+      }
+    }
+    const answers = read("../content/agent-queries.ts");
+    if (answers) {
+      for (const needle of [
+        "metaTitle: \"Best MCP Servers for VC Research: 4 Are Free (2026)\"",
+        "metaTitle: \"Best PitchBook Alternative for Solos: Under EUR 120/mo\"",
+        "metaTitle: \"How to Add an MCP Server to Cursor: 3 Steps (2026)\"",
+      ]) {
+        if (!answers.includes(needle)) {
+          failures.push(
+            `§58 answers metaTitle hook lost: ${needle.slice(9, 60)}...\n    file: content/agent-queries.ts\n    fix:  restore the wave-6 metaTitle on the matching answers entry`,
+          );
+        }
+      }
+    }
+    const hubNeedles: Array<[string, string]> = [
+      ["app/wins/page.tsx", "Underwriting Receipts: Validated GitHub Signals Ledger (2026)"],
+      ["app/reproducibility/page.tsx", "Reproducibility: Open Data, Verifiable Methods"],
+    ];
+    for (const [path, needle] of hubNeedles) {
+      const src = read(`../${path}`);
+      if (src && !src.includes(needle)) {
+        failures.push(
+          `§58 hub title hook reverted.\n    file: ${path}\n    fix:  restore the wave-6 title "${needle}"`,
+        );
+      }
+    }
+    const leaderboard = read("../app/affiliates/leaderboard/page.tsx");
+    if (leaderboard && leaderboard.includes("(May 2026)")) {
+      failures.push(
+        `§58 affiliate leaderboard title carries the stale month again.\n    file: app/affiliates/leaderboard/page.tsx\n    fix:  keep "(2026)" (dynamic-ish); "(May 2026)" decays within weeks`,
+      );
+    }
+  }
 
-// §58 "How VCs source deals" cluster (topical-authority win, 2026-08-16)
+// §56 "How VCs source deals" cluster (topical-authority win, 2026-08-16)
 // 10 sourcing-cluster posts in content/posts-sourcing-cluster.ts, spliced into
 // allPosts and pillar-wired in content/pillars.ts. Closes the audit item
 // "topical authority 48: deep on the GitHub-signals island, thin across the
@@ -4757,14 +4846,14 @@ landingCheck(
   ];
   if (!SRC) {
     failures.push(
-      "§58 content/posts-sourcing-cluster.ts missing (10-post 'how VCs source deals' cluster, topical-authority win 2026-08-16).\n    fix: restore the cluster file; do not delete sourcing posts to shrink the codebase",
+      "§56 content/posts-sourcing-cluster.ts missing (10-post 'how VCs source deals' cluster, topical-authority win 2026-08-16).\n    fix: restore the cluster file; do not delete sourcing posts to shrink the codebase",
     );
   } else {
     const found = SLUGS.filter((x) => SRC.includes(`slug: "${x}"`));
     const missing = SLUGS.filter((x) => !found.includes(x));
     if (missing.length) {
       failures.push(
-        `§58 sourcing cluster lost post(s): ${missing.join(", ")}.\n    file: content/posts-sourcing-cluster.ts\n    fix: restore the missing entries (they are cross-interlinked; partial removal orphans the cluster)`,
+        `§56 sourcing cluster lost post(s): ${missing.join(", ")}.\n    file: content/posts-sourcing-cluster.ts\n    fix: restore the missing entries (they are cross-interlinked; partial removal orphans the cluster)`,
       );
     }
     // per-post window checks: split on '  {' at slug boundaries
@@ -4776,7 +4865,7 @@ landingCheck(
       const bodyMatch = window.match(/body: "([\s\S]*?)",\n    relatedSectors/);
       if (!bodyMatch) {
         failures.push(
-          `§58 sourcing post ${slug} lost its body field.\n    file: content/posts-sourcing-cluster.ts\n    fix: restore the post body; a post without body renders empty`,
+          `§56 sourcing post ${slug} lost its body field.\n    file: content/posts-sourcing-cluster.ts\n    fix: restore the post body; a post without body renders empty`,
         );
         continue;
       }
@@ -4784,24 +4873,24 @@ landingCheck(
       const words = body.split(/\s+/).filter(Boolean).length;
       if (words < 700) {
         failures.push(
-          `§58 sourcing post ${slug} body fell to ${words} words (floor 700; thin cluster posts are index-bloat).\n    file: content/posts-sourcing-cluster.ts\n    fix: restore depth or remove the post entirely`,
+          `§56 sourcing post ${slug} body fell to ${words} words (floor 700; thin cluster posts are index-bloat).\n    file: content/posts-sourcing-cluster.ts\n    fix: restore depth or remove the post entirely`,
         );
       }
       const links = [...body.matchAll(/\]\((\/[^)]+)\)/g)].map((m) => m[1]);
       if (links.length < 3) {
         failures.push(
-          `§58 sourcing post ${slug} carries only ${links.length} internal links (floor 3; the win is cluster-to-money-page wiring).\n    file: content/posts-sourcing-cluster.ts\n    fix: restore contextual links to /blog/, /vs/, /answers/, /methodology or /startups`,
+          `§56 sourcing post ${slug} carries only ${links.length} internal links (floor 3; the win is cluster-to-money-page wiring).\n    file: content/posts-sourcing-cluster.ts\n    fix: restore contextual links to /blog/, /vs/, /answers/, /methodology or /startups`,
         );
       }
       const faqCount = (window.match(/question: "/g) || []).length;
       if (faqCount < 4) {
         failures.push(
-          `§58 sourcing post ${slug} has only ${faqCount} FAQs (floor 4; FAQPage JSON-LD is the AEO surface).\n    file: content/posts-sourcing-cluster.ts\n    fix: restore the FAQs; they are the answer-engine extraction surface`,
+          `§56 sourcing post ${slug} has only ${faqCount} FAQs (floor 4; FAQPage JSON-LD is the AEO surface).\n    file: content/posts-sourcing-cluster.ts\n    fix: restore the FAQs; they are the answer-engine extraction surface`,
         );
       }
       if (/[\u2014\u2013]/.test(window)) {
         failures.push(
-          `§58 sourcing post ${slug} contains an em/en dash (site-wide style rule).\n    file: content/posts-sourcing-cluster.ts\n    fix: replace with commas, colons, or parentheses`,
+          `§56 sourcing post ${slug} contains an em/en dash (site-wide style rule).\n    file: content/posts-sourcing-cluster.ts\n    fix: replace with commas, colons, or parentheses`,
         );
       }
       // internal link targets must be live route families
@@ -4813,13 +4902,13 @@ landingCheck(
       );
       if (bad.length) {
         failures.push(
-          `§58 sourcing post ${slug} links unknown route family: ${bad.join(", ")}.\n    file: content/posts-sourcing-cluster.ts\n    fix: point at a live signals route family`,
+          `§56 sourcing post ${slug} links unknown route family: ${bad.join(", ")}.\n    file: content/posts-sourcing-cluster.ts\n    fix: point at a live signals route family`,
         );
       }
     }
     if (/[\u2014\u2013]/.test(SRC)) {
       failures.push(
-        "§58 sourcing cluster contains an em/en dash anywhere in the file.\n    file: content/posts/posts-sourcing-cluster.ts\n    fix: strip em/en dashes",
+        "§56 sourcing cluster contains an em/en dash anywhere in the file.\n    file: content/posts/posts-sourcing-cluster.ts\n    fix: strip em/en dashes",
       );
     }
   }
@@ -4827,12 +4916,12 @@ landingCheck(
   if (postsSrc) {
     if (!postsSrc.includes('import { SOURCING_POSTS } from "@/content/posts-sourcing-cluster"')) {
       failures.push(
-        "§58 posts.ts lost the SOURCING_POSTS import (the cluster would vanish from allPosts).\n    file: content/posts.ts\n    fix: restore the import + allPosts.push(...SOURCING_POSTS)",
+        "§56 posts.ts lost the SOURCING_POSTS import (the cluster would vanish from allPosts).\n    file: content/posts.ts\n    fix: restore the import + allPosts.push(...SOURCING_POSTS)",
       );
     }
     if (!postsSrc.includes("allPosts.push(...SOURCING_POSTS)")) {
       failures.push(
-        "§58 posts.ts lost the allPosts.push(...SOURCING_POSTS) splice.\n    file: content/posts.ts\n    fix: restore the push; without it the 10 posts 404",
+        "§56 posts.ts lost the allPosts.push(...SOURCING_POSTS) splice.\n    file: content/posts.ts\n    fix: restore the push; without it the 10 posts 404",
       );
     }
   }
@@ -4852,13 +4941,11 @@ landingCheck(
     ].filter((x) => !pillarsSrc.includes(`"${x}":`));
     if (missingP.length) {
       failures.push(
-        `§58 pillars.ts lost postPillars mapping(s): ${missingP.join(", ")}.\n    file: content/pillars.ts\n    fix: restore the cluster-to-pillar wiring (deal-sourcing-workflow / deal-flow-management)`,
+        `§56 pillars.ts lost postPillars mapping(s): ${missingP.join(", ")}.\n    file: content/pillars.ts\n    fix: restore the cluster-to-pillar wiring (deal-sourcing-workflow / deal-flow-management)`,
       );
     }
   }
 }
-
-
 
 if (failures.length) {
   console.error(
