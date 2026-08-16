@@ -28,6 +28,11 @@ import { readFileSync, existsSync, readdirSync, statSync } from "node:fs";
 import { join, extname } from "node:path";
 import { createHash } from "node:crypto";
 import { runAncestryGuard } from "./verify-ancestry";
+import {
+  deriveBestRedirects,
+  loadStartupsData,
+  type BestRedirect,
+} from "./best-redirect-lib";
 
 const ROOT = process.cwd();
 const failures: string[] = [];
@@ -1724,56 +1729,115 @@ check(
 }
 
 // ---------------------------------------------------------------------------
-// Frozen-sector /best/ redirects (2026-08-16, audit win #2 residuals; guard
-// re-asserted 2026-08-16 against the data-derived form). The five Q2-2026
-// sectors stopped generating /best/<slug>-2026 pages; they held GSC 90d
-// equity (ai-ml 48, fintech 25, climate-tech 23, cybersecurity 22 imps).
-// Redirects are DERIVED from data/startups.json into data/best-redirects.json
-// (prebuild: scripts/generate-best-redirects.ts) and spread into
-// next.config.ts redirects(). This guard pins the derived table: the five
-// frozen sources must exist with their pinned destinations (developer-tools
-// routes to its dedicated /sectors/ hub, the rest to their Q2 snapshots).
-// A lineage that drops any of these or retargets them fails here.
+// ---------------------------------------------------------------------------
+// Data-derived historical /best/ redirects (2026-08-16 data-derived form +
+// 2026-08-19 hardening). /best/<sector>-<year> pages generate only for
+// sectors with a CURRENT-period snapshot; a freeze or a year rollover turns
+// the URL into a 404 while it still holds GSC equity. Redirects are DERIVED
+// from data/startups.json into data/best-redirects.json at prebuild
+// (scripts/generate-best-redirects.ts) and spread into next.config.ts. The
+// 08-19 incident: hardcoded 308s in next.config.ts kept serving stale Q2
+// snapshots after newer data had Q3 for those sectors (shadowing live
+// pages). Hardcoded /best/ redirects are therefore BANNED; the derivation is
+// the single source of truth. NOTE for the future: when the data pipeline
+// commits q3-2026 snapshots for the five frozen sectors, the derivation
+// stops emitting their 2026-slug redirects and the §44 ledger sentinel
+// (pattern "destination": "/startups-to-watch/climate-tech-q2-2026") must be
+// marked supersededBy in scripts/ancestry-ledger.json in the SAME commit.
 // ---------------------------------------------------------------------------
 {
-  const FROZEN_BEST: [string, string][] = [
-    ["/best/developer-tools-2026", "/sectors/developer-tools"],
-    ["/best/ai-ml-2026", "/startups-to-watch/ai-ml-q2-2026"],
-    ["/best/fintech-2026", "/startups-to-watch/fintech-q2-2026"],
-    ["/best/climate-tech-2026", "/startups-to-watch/climate-tech-q2-2026"],
-    ["/best/cybersecurity-2026", "/startups-to-watch/cybersecurity-q2-2026"],
-  ];
-  const json = read("data/best-redirects.json");
-  if (json === null) {
+  const data = loadStartupsData();
+  const expected = deriveBestRedirects(data);
+  let committed: BestRedirect[] | null = null;
+  try {
+    committed =
+      JSON.parse(read("data/best-redirects.json") ?? "null")?.redirects ??
+      null;
+  } catch {
+    committed = null;
+  }
+  if (committed === null || JSON.stringify(committed) !== JSON.stringify(expected)) {
     failures.push(
-      `Frozen-sector redirect table missing.\n    file: data/best-redirects.json\n    fix:  run npx tsx scripts/generate-best-redirects.ts (prebuild regenerates it from data/startups.json)`,
+      `data/best-redirects.json drifted from data/startups.json\n    expected ${expected.length} derived entries, found ${committed === null ? "unparseable or missing file" : committed.length}\n    file: data/best-redirects.json\n    fix:  npx tsx scripts/generate-best-redirects.ts (prebuild does this; never hand-edit the JSON)`,
     );
-  } else {
-    for (const [src, dst] of FROZEN_BEST) {
-      if (!json.includes(`"source": "${src}"`)) {
-        failures.push(
-          `Frozen-sector redirect missing: ${src} -> ${dst}\n    file: data/best-redirects.json\n    fix:  re-run the generator; the /best/ page froze in Q2-2026 and 404s without it while GSC still shows impressions on the URL`,
-        );
-      }
-      if (!json.includes(`"destination": "${dst}"`)) {
-        failures.push(
-          `Frozen-sector redirect retargeted: ${src} no longer points at ${dst}\n    file: data/best-redirects.json\n    fix:  restore the pinned destination (the Q2 snapshot / dedicated hub is the live intent-matched page)`,
-        );
-      }
-    }
   }
   const cfg = read("next.config.ts");
-  if (cfg === null || !cfg.includes("best-redirects.json")) {
+  if (cfg && !cfg.includes("...bestRedirects.map(")) {
     failures.push(
-      `next.config.ts no longer consumes the best-redirects table.\n    file: next.config.ts\n    fix:  restore the bestRedirects spread into redirects() (permanent: true)`,
+      `next.config.ts does not spread the data-derived best redirects\n    file: next.config.ts\n    fix:  restore the ...bestRedirects.map((r) => ...) entry inside redirects()`,
+    );
+  }
+  if (cfg && /source:\s*"\/best\//.test(cfg)) {
+    failures.push(
+      `next.config.ts hardcodes a /best/ redirect (banned since 2026-08-19: hardcodes shadowed live Q3 pages)\n    file: next.config.ts\n    fix:  delete the hardcoded entry; the prebuild derivation owns every /best/ redirect`,
     );
   }
   const lib = read("scripts/best-redirect-lib.ts");
   if (lib === null || !lib.includes("DESTINATION_OVERRIDES")) {
     failures.push(
-      `best-redirect-lib.ts lost the frozen destination override.\n    file: scripts/best-redirect-lib.ts\n    fix:  restore DESTINATION_OVERRIDES (/best/developer-tools-2026 -> /sectors/developer-tools)`,
+      `best-redirect-lib.ts lost the frozen destination override\n    file: scripts/best-redirect-lib.ts\n    fix:  restore DESTINATION_OVERRIDES (/best/developer-tools-2026 -> /sectors/developer-tools)`,
     );
   }
+  const current = data.periods.find((p) => p.current) ?? data.periods[0];
+  const curYear = current.name.match(/\d{4}/)?.[0] ?? "";
+  const generating = new Set(
+    data.sectors
+      .filter((s) => s.periods[current.slug])
+      .map((s) => `/best/${s.slug}-${curYear}`),
+  );
+  for (const r of expected) {
+    if (generating.has(r.source)) {
+      failures.push(
+        `Derived /best/ redirect shadows a generating page: ${r.source} -> ${r.destination}\n    fix:  derivation bug in scripts/best-redirect-lib.ts (a redirect must never cover a slug the data still generates)`,
+      );
+    }
+    const snapTarget = r.destination.match(/^\/startups-to-watch\/([a-z0-9-]+)-(q\d-\d{4})$/);
+    const hubTarget = r.destination.match(/^\/sectors\/([a-z0-9-]+)$/);
+    if (!snapTarget && !hubTarget) {
+      failures.push(
+        `Derived /best/ redirect target invalid: ${r.source} -> ${r.destination}`,
+      );
+      continue;
+    }
+    if (snapTarget) {
+      const [, sectorSlug, periodSlug] = snapTarget;
+      const sector = data.sectors.find((s) => s.slug === sectorSlug);
+      if (!sector || !sector.periods[periodSlug]) {
+        failures.push(
+          `Derived /best/ redirect target missing in data: ${r.source} -> ${r.destination}\n    fix:  the target snapshot must exist in data/startups.json (redirecting to a 404 is worse than the 404 it replaces)`,
+        );
+      }
+    } else if (hubTarget) {
+      const sector = data.sectors.find((s) => s.slug === hubTarget[1]);
+      if (!sector) {
+        failures.push(
+          `Derived /best/ redirect hub target unknown: ${r.source} -> ${r.destination}`,
+        );
+      }
+    }
+
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Quarterly citeAs period tokens (2026-08-19, same freshness pass). The
+// enterprise + receipts AgentSummary citeAs strings hardcoded "Q2 2026" and
+// froze as the data period advanced to Q3. The quarter must derive from
+// getCurrentPeriod(), like every other data-period surface on the site.
+// ---------------------------------------------------------------------------
+{
+  check(
+    "app/enterprise/page.tsx",
+    "enterprise citeAs quarter derives from the data period",
+    (s) => !s.includes('"Q2 2026') && s.includes("retrieved ${period.name}"),
+    "fix: derive the citeAs quarter from getCurrentPeriod(); never hardcode a quarter in citeAs copy",
+  );
+  check(
+    "app/receipts/page.tsx",
+    "receipts citeAs quarter derives from the data period",
+    (s) => !s.includes('"Q2 2026') && s.includes("${period.name}"),
+    "fix: derive the citeAs quarter from getCurrentPeriod(); never hardcode a quarter in citeAs copy",
+  );
 }
 
 // ---------------------------------------------------------------------------
@@ -3601,9 +3665,12 @@ landingCheck(
     for (const needle of [
       "/vs/harmonic-ai-vs-affinity",
       "/vs/cb-insights-vs-crunchbase",
-      // (/best/developer-tools-2026 moved to the frozen-redirects block: the
-      // five frozen /best/ 308s are now DATA-DERIVED via
-      // data/best-redirects.json, asserted there, not hardcoded here.)
+      // NOTE 2026-08-19: the old "/best/developer-tools-2026" needle was
+      // REMOVED on purpose. That 308 (and the other four frozen-sector
+      // /best/ 308s) is now DATA-DERIVED by scripts/generate-best-redirects.ts
+      // and spread into next.config.ts; hardcoding it back would shadow the
+      // live page once data catches up. The "Data-derived historical /best/
+      // redirects" guard block owns that surface now.
     ]) {
       if (!nextcfg.includes(needle)) {
         failures.push(

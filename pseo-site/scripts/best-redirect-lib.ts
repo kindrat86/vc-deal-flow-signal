@@ -1,5 +1,5 @@
 /**
- * Shared derivation for historical /best/ redirects (2026-08-19, quarterly
+ * Shared derivation for historical /best/ redirects (2026-08-16/19, quarterly
  * freshness fix).
  *
  * WHY THIS EXISTS
@@ -8,13 +8,12 @@
  * of the CURRENT data period (app/best/[slug]/page.tsx uses dynamicParams =
  * false + getAllBestSectorSlugs()). When a sector freezes at a quarter
  * rollover, or when the calendar year advances, those URLs stop generating and
- * 404 while still holding GSC equity. The first freeze (Q2-2026 -> Q3-2026)
- * was patched with five HARDCODED 308s that, once the data caught up, started
- * SHADOWING five live Q3 pages (they kept serving stale Q2 snapshots).
- *
- * Redirects are now derived from data/startups.json: every /best/ URL that no
- * longer generates 308s to the intent-matched quarter snapshot on
- * /startups-to-watch/. Nothing to hand-maintain at quarter boundaries.
+ * 404 while still holding GSC equity. Redirects are derived from
+ * data/startups.json: every /best/ URL that no longer generates 308s to the
+ * intent-matched quarter snapshot on /startups-to-watch/. Nothing to
+ * hand-maintain at quarter boundaries, and no hardcoded 308s in next.config.ts
+ * (hardcodes shadowed live Q3 pages once the data caught up; the guard bans
+ * them).
  *
  * Consumers:
  *   - scripts/generate-best-redirects.ts  writes data/best-redirects.json (prebuild)
@@ -55,7 +54,10 @@ const YEAR_RE = /\d{4}/;
 // Frozen special case (preserves the live behavior of the original hardcoded
 // fix, 2026-08-16): /best/developer-tools-2026 routes to its dedicated
 // /sectors/ hub, not the quarter snapshot. All other frozen sectors use
-// their most recent snapshot (derived above).
+// their most recent snapshot (derived above). The override is DORMANT unless
+// the derivation actually emits the source (i.e. developer-tools has no
+// current-period snapshot): once the data catches up, the page generates
+// again and no redirect covers it.
 const DESTINATION_OVERRIDES: Record<string, string> = {
   "/best/developer-tools-2026": "/sectors/developer-tools",
 };
