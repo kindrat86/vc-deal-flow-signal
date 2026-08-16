@@ -77,4 +77,18 @@ node scripts/verify-jsonld.mjs .vercel/output
 echo "▶ Deploying to production with --archive=tgz..."
 npx vercel deploy --prebuilt --prod --archive=tgz
 
-echo "✔ Production deploy complete. Verify with: curl -I https://signals.gitdealflow.com/"
+# Step 5 - post-deploy content-marker verification (2026-08-19).
+# A deploy returning 0 does not prove the site is live and rendered: an
+# empty/blank 200 still exits 0 (CSP trusted-types blank shell, stale empty
+# artifact). Curl the live homepage and assert HTTP 200 + a brand needle + a
+# minimum body size so a blank deploy fails loudly instead of "succeeding".
+# This replaces the old status-only `curl -I` hint, which missed empty pages.
+VERIFY_HELPER="${GITDEALFLOW_VERIFY_HELPER:-$HOME/growth-loop/lib/verify-live-deploy.sh}"
+if [ -f "$VERIFY_HELPER" ]; then
+  # shellcheck disable=SC1090
+  source "$VERIFY_HELPER"
+  verify_live_deploy "https://signals.gitdealflow.com/" "VC Deal Flow Signal" 20000
+else
+  echo "⚠ verify-live-deploy.sh not found at $VERIFY_HELPER, skipping live verification."
+fi
+
