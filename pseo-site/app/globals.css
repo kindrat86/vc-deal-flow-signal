@@ -344,7 +344,7 @@ main code * {
    style on an anchor keeps winning; this only lifts bare structural links.
    ========================================================================== */
 @media (max-width: 767px) {
-  :where(footer a, nav[aria-label="Breadcrumb"] a, aside ul a) {
+  :where(footer a, nav[aria-label="Breadcrumb"] a, aside a, table a, section .flex a) {
     display: inline-block;
     min-height: 24px;
     padding-block: 3px;
