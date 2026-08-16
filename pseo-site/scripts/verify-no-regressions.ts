@@ -3449,8 +3449,9 @@ check(
 landingCheck(
   "vs/pitchbook/index.html",
   "\u00a742 CTR: apex vs/pitchbook title reverted to the generic pre-hook form",
-  (s) => /<title>GitDealFlow vs PitchBook: EUR 49 vs \$20k\+\/yr<\/title>/.test(s),
-  "restore the 2026-08-16 hooked apex title (44-file landing wave)",
+  (s) =>
+    /<title>GitDealFlow vs PitchBook: EUR 49 vs \$20k\+\/yr \(2026\)<\/title>/.test(s),
+  "restore the 2026-08-16 hooked apex title + 2026-08-18 year token (44-file landing wave)",
 );
 landingCheck(
   "vs/gitdealflow-vs-crunchbase/index.html",
@@ -3472,6 +3473,20 @@ landingCheck(
   (s) =>
     /<title>Best Deal Flow Tools 2026: EUR 49 vs \$20k\+ \(Compared\)<\/title>/.test(s),
   "restore the hooked apex best/ title",
+);
+
+landingCheck(
+  "vs/tracxn/index.html",
+  "\u00a742 CTR: apex year-token sweep reverted (9 static /vs/ titles lost (2026))",
+  (s) => /<title>GitDealFlow vs Tracxn: EUR 49 vs \$6k\+\/yr \(2026\)<\/title>/.test(s),
+  "restore the year token on the static apex /vs/ fleet (freshness watchdog apex family)",
+);
+landingCheck(
+  "best/best-venture-data-platforms.html",
+  "\u00a742 CTR: apex best-listicle year token reverted",
+  (s) =>
+    /<title>Best Venture Data Platforms: \$0 to \$50k \(2026\)<\/title>/.test(s),
+  "restore the year token on the static apex best/ listicles",
 );
 landingCheck(
   "best/best-free-deal-flow-tools.html",

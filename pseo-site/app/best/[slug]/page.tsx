@@ -40,7 +40,15 @@ export async function generateMetadata({
   // this site (compare/best-free-deal-flow-tools 1.75% CTR); rankings are
   // genuinely free (weekly report, no paywall). Absolute title: the layout
   // template suffix would push sector names past 60 rendered chars.
-  const title = `Best ${sector.name} Startups ${year}: Free Weekly Rankings`;
+  // Length cap (2026-08-18): long sector names (AI & Machine Learning,
+  // E-commerce Infrastructure) pushed the full form to 66 chars and SERP
+  // truncation; degrade the hook tail to ": Free Rankings" instead of
+  // truncating mid-word. Year always renders (freshness watchdog family).
+  const bestBase = `Best ${sector.name} Startups ${year}`;
+  const title =
+    `${bestBase}: Free Weekly Rankings`.length <= 60
+      ? `${bestBase}: Free Weekly Rankings`
+      : `${bestBase}: Free Rankings`;
   const description = `The best ${sectorLower} startups in ${year} ranked by GitHub commit-velocity acceleration. Commit velocity, contributor growth, and breakout signals for investors looking at ${sectorLower}.`;
 
   return {
