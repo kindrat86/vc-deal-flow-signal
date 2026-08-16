@@ -14,13 +14,28 @@ and the final "Launch" click. There is no API for any of the three, and no
 agent can spend your money. Everything up to those three clicks is prepared
 below: copy, targeting, budgets, destination URLs, and conversion tracking.
 
-**Total human time: ~30 minutes. Budget at launch: €5–10/day.**
+**Total human time: ~15 min for the Reddit probe. Hard budget cap: $20 lifetime.**
 
 | # | Human step | Time |
 |---|---|---|
 | 1 | Create Reddit Ads account + card | 10 min |
-| 2 | Create Google Ads account + card, link GA4 | 15 min |
-| 3 | Click Launch (Reddit first) | 1 min |
+| 2 | Click Launch (campaign 1 only) | 1 min |
+| 3 | (Later, only if Reddit probe converts) Google Ads account + GA4 link | 15 min |
+
+> **$20 PROBE MODE (2026-08-16): the section below replaces the original six-group €5/day
+> open-ended spec for the first spend.** The $20 experiment supports ONE campaign,
+> ONE ad group. Reddit's platform floor is $5/day and ~$20-25 minimum lifetime
+> budget, so $20 = one group running ~4 days, roughly 10-40 clicks at the
+> $0.50-$2.00 B2B CPC range. That is a CTR + landing- quality signal, NOT a
+> conversion-statistics experiment: at 2% expected conversion, 10-40 clicks
+> gives 0-1 conversions, expected value ~0.4. The verdict it CAN deliver:
+> (a) which subreddit audience cheapest delivers a click, (b) whether paid
+> visitors engage the landing (GA4 engaged sessions, scroll, outbound clicks),
+> (c) whether Reddit traffic subscribes to the free Sunday digest (the low-
+> friction conversion already instrumented as generate_lead).
+> Success bar for unlocking Google Stage 2: any paid-sourced signup OR
+> engaged-session rate >= 40%. Kill rule: zero clicks by day 4 = pause, the
+> creative/subreddit pairing is wrong; do not re-run without new copy.
 
 ---
 
@@ -80,39 +95,41 @@ below: copy, targeting, budgets, destination URLs, and conversion tracking.
 
 **Account:** https://ads.reddit.com → Sign up → add card.
 
-For all 6 ad groups: **objective = Traffic**, **destination = the `/r/<slug>` URL**,
+Original six-group spec (all parked except `vc` until the probe verdict): **objective = Traffic**, **destination = the `/r/<slug>` URL**,
 **schedule = continuous**, **budget = €5/day per ad group** (pause any group under
-0.8% CTR after 3 days).
+0.8% CTR after 3 days). The $20 probe runs ONLY the `vc` group with a $20 lifetime cap.
 
-### Ad group `vc` — targeting r/venturecapital
+### Ad group `vc` — targeting r/venturecapital  ← RUN THIS ONE FIRST ($20 probe)
 - **URL:** `https://signals.gitdealflow.com/r/vc`
-- **Headline:** I tracked 369 startups' GitHub commits for 6 months. Here's what predicts a raise.
-- **Body:** Commit velocity spikes 21-47 days before the deck hits. Test the signal on your own thesis for €7: pick a sector, get a ranked deep-dive (top 25 orgs + 3 pre-Crunchbase breakouts) in 24h. Or start free with the Sunday digest. SSRN method (n=219).
+- **Budget:** $5/day, **lifetime cap $20**, objective = Traffic, bid = max pay per click auto.
+- **Headline (100 char max):** I tracked 350+ startups' GitHub commits for 6 months. Here's what predicts a raise.
+  (87 chars — under the 100-char mobile/conversation cutoff)
+- **Body:** Commit velocity spikes 21-47 days before the deck hits. Test the signal on your own thesis for €7: pick a sector, get a ranked deep-dive (top 25 orgs + 3 pre-Crunchbase breakouts) in 24h. Or start free with the Sunday digest. SSRN method (n=219 obs).
 
-### Ad group `angel` — targeting r/AngelInvestors
+### Ad group `angel` — targeting r/AngelInvestors (SECOND, if probe budget is later raised)
 - **URL:** `https://signals.gitdealflow.com/r/angel`
 - **Headline:** The 5 startups accelerating hardest on GitHub right now.
 - **Body:** See which teams are shipping faster than their round. €7 gets you a one-sector ranked deep-dive in 24h, credited toward Dashboard if you upgrade within 14 days. Free Sunday digest also available, no card.
 
-### Ad group `devtools` — targeting r/devtools
+### Ad group `devtools` — targeting r/devtools (parked: engineer-side, test after investor-side proves out)
 - **URL:** `https://signals.gitdealflow.com/r/devtools`
 - **Headline:** I reverse-engineered which GitHub signals actually predict a fundraise.
-- **Body:** Commit velocity, contributor growth, repo expansion across 369 orgs, published on SSRN. €7 deep-dive on any sector, delivered in 24h (PDF + raw CSV). Or the free weekly digest with the 5 fastest teams.
+- **Body:** Commit velocity, contributor growth, repo expansion across 350+ orgs, published on SSRN. €7 deep-dive on any sector, delivered in 24h (PDF + raw CSV). Or the free weekly digest with the 5 fastest teams.
 
-### Ad group `programming` — targeting r/programming
+### Ad group `programming` — targeting r/programming (parked)
 - **URL:** `https://signals.gitdealflow.com/r/programming`
-- **Headline:** A public dataset of 369 startups' GitHub acceleration, updated weekly.
+- **Headline:** A public dataset of 350+ startups' GitHub acceleration, updated weekly.
 - **Body:** Free machine-readable API + MCP server, no key required. For a ranked sector report: €7, 24h, PDF + raw CSV. Or the free Sunday digest, 5 breakout teams every week.
 
-### Ad group `ml` — targeting r/MachineLearning
+### Ad group `ml` — targeting r/MachineLearning (parked)
 - **URL:** `https://signals.gitdealflow.com/r/ml`
 - **Headline:** Which AI startups are accelerating on GitHub right now?
 - **Body:** AI/ML drives most breakout signals in the dataset. €7 one-sector deep-dive ranks the fastest teams by commit velocity and contributor growth, in 24h. Free weekly digest also available.
 
-### Ad group `startups` — targeting r/startups
+### Ad group `startups` — targeting r/startups (parked)
 - **URL:** `https://signals.gitdealflow.com/r/startups`
 - **Headline:** Founders: your GitHub activity is your pitch before you pitch.
-- **Body:** I track 369 startups' public GitHub and surface acceleration 21-47 days before rounds. €7 First Look ranks one sector in 24h. If your angels don't see it, your competitors will. Free weekly digest available too.
+- **Body:** I track 350+ startups' public GitHub and surface acceleration 21-47 days before rounds. €7 First Look ranks one sector in 24h. If your angels don't see it, your competitors will. Free weekly digest available too.
 
 ---
 
@@ -148,7 +165,7 @@ the `purchase` event on the paid thanks pages.
 15. Free Sunday Signal Digest
 
 **Descriptions (paste all 4):**
-1. Tracks 369 startups' GitHub commits weekly. Surfaces stealth teams a LinkedIn-first lens misses. Free tier, no API key.
+1. Tracks 350+ startups' GitHub commits weekly. Surfaces stealth teams a LinkedIn-first lens misses. Free tier, no API key.
 2. Commit velocity, contributor growth, repo expansion. See breakouts 21-47 days before the round. SSRN method (n=219).
 3. $7 First Look Pass, free Sunday digest. MCP server, JSON API, Chrome extension. No card to start.
 4. The GitHub-native alternative to Harmonic. Free machine-readable API, updated weekly across 15 sectors.
@@ -180,7 +197,7 @@ the `purchase` event on the paid thanks pages.
 15. Free Sunday Signal Digest
 
 **Descriptions (paste all 4):**
-1. Tracks 369 startups' GitHub commits weekly. Surfaces engineering acceleration before it hits the funding lists. Free tier, no API key.
+1. Tracks 350+ startups' GitHub commits weekly. Surfaces engineering acceleration before it hits the funding lists. Free tier, no API key.
 2. Commit velocity, contributor growth, repo expansion. Breakouts 21-47 days before the round. SSRN method (n=219).
 3. $7 First Look Pass, free Sunday digest. MCP server, JSON API, Chrome extension. No card to start.
 4. The GitHub-native alternative to Tracxn. Free machine-readable API, updated weekly across 15 sectors.
@@ -251,7 +268,7 @@ Three retargeting ad sets (70% of budget) + three cold/lookalike (30%):
 
 | Stage | Channel | Budget | Success bar | Kill rule |
 |---|---|---|---|---|
-| 1 | Reddit (6 groups) | €5/day each | /firstlook conv >2%, CTR >0.8% | pause any group <0.8% CTR after 3 days |
+| 1 | Reddit ($20 probe: `vc` group ONLY) | $5/day, $20 lifetime cap | any paid-sourced signup OR engaged-session rate >= 40% | zero clicks by day 4 = pause; CTR < 0.15% after ~5k imps = pause |
 | 2 | Google Search (4 campaigns) | €5/day per campaign (€20/day total) | CPA < €15 per signup, QS ≥ 6 by week 2 | pause keyword if QS <4 after 2 weeks |
 | 3 | Meta retargeting | €5/day | CPA < €4 | kill if CPA > €10 |
 | 4 | Newsletter | one-shot | conv >2% | n/a (pre-paid slot) |
