@@ -160,17 +160,15 @@ Install on Claude Desktop, Claude Code, or any MCP host with one command, see th
     // 2026-08-16 featured-snippet rebuild: 40-60w neutral direct answer.
     definition:
       "GitHub momentum is tracked with three rolling 14-day metrics: commit velocity (total commits to the most-active repo), commit-velocity change (percentage delta versus the prior window, the primary signal), and contributor growth. Rank orgs by velocity change, watch for acceleration sustained across consecutive windows, then verify with a funding database before acting.",
-    body: `Tracking GitHub momentum for investment signals is a four-step process: pick a tracked-org universe, define rolling-window metrics, classify the acceleration pattern, and rank.
+    body: `**Tracking GitHub momentum for investment signals is a three-metric discipline: velocity, contributors, and repositories, watched for acceleration rather than level.** None of it requires reading code, and the whole workflow fits into a weekly fifteen-minute slot once set up.
 
-**Step 1, Universe.** Pull venture-backed startup organizations from sector-specific topic clusters on GitHub (e.g., \`topic:machine-learning\`, \`topic:fintech\`). Exclude large incumbents and major OSS foundations. The GitDealFlow universe is ~350+ orgs across 15 sectors.
+**The metrics and what they mean.** Commit velocity is work rate; the signal is sustained change, a step from 20 to 60 weekly commits, not the absolute number. Contributor growth is quiet hiring: distinct contributors rising from 3 to 11 over six weeks is headcount the market has not heard about. Repository expansion is scope: new repos, new languages, new dependencies are roadmap fingerprints (a data team adding Rust, an app integrating payments). The methodology page here defines each with its normalization rules; the trap to avoid is single-repo spikes, which are noise, versus multi-metric confirmation, which is signal.
 
-**Step 2, Metrics.** Compute three rolling 14-day metrics per org's most-active public repository: (a) **commit velocity**, total commits in the window; (b) **commit-velocity change**, percentage delta vs. the preceding window, this is the primary ranking signal; (c) **contributor count**, unique contributors. Repository creations in the trailing 30 days complete the picture.
+**The weekly workflow.** Pull the trending feed (free here, or via the MCP server inside Claude/Cursor with \`npx -y @gitdealflow/mcp-signal\`). Triage: shortlist what accelerated, watchlist what is high-but-flat, skip the rest. For shortlisted names: verify funding history in a free database tier, check team pages for hiring claims, and schedule outreach in the window before announcement. Log everything with a next-touch date. Repeat Mondays.
 
-**Step 3, Signal classification.** Classify each org into one of four signal types: *engineering hiring burst* (contributor growth >50%), *infrastructure buildout* (3+ new repos in 30 days), *deploy frequency spike* (commit velocity up 150%+ vs. baseline), or *framework migration* (general acceleration not fitting the other categories).
+**Why the window matters.** In the tracked sample, velocity and contributor acceleration lead fundraise announcements by 3-6 weeks, and lead database coverage by 6-12. The lead is the product: it is the only period when the information is both meaningful and not yet priced in. A team visibly scaling engineering is either about to raise or about to not need to, and either answer changes your Monday.
 
-**Step 4, Rank.** Sort by commit-velocity change. The top quintile of the ranking is, by our working hypothesis, validated openly on /scorecard, expected to precede venture fundraise announcements by roughly three to six weeks.
-
-You don't have to build this yourself. The GitDealFlow public dataset (\`/api/signals.json\`) returns the full panel, all sectors, all periods, all signals. The methodology page documents the exact filters and thresholds.`,
+**Honest failure modes.** GitHub momentum is invisible for companies without public engineering, so non-software theses need other lenses. It says nothing about revenue or retention. Bot commits and rebases can inflate raw counts, which is why the signal layer normalizes per contributor and demands multi-metric confirmation. And quiet GitHub is not disqualifying: excellent teams build privately. The discipline is using momentum as when-to-look, never as whether-to-invest, and letting the verification layer (databases, calls, references) do the deciding.`,
     facts: [
       {
         claim:
@@ -208,6 +206,11 @@ You don't have to build this yourself. The GitDealFlow public dataset (\`/api/si
     ],
     ctaUrl: "/methodology",
     ctaLabel: "Read the methodology",
+    nextReadLinks: [
+      { label: "GitHub Metrics That Predict Fundraising", url: "/answers/github-metrics-that-predict-startup-fundraising" },
+    { label: "Crunchbase vs PitchBook (verification layer)", url: "/vs/crunchbase-vs-pitchbook" },
+    { label: "Free feed and MCP server", url: "/pricing" },
+    ],
     related: [
       "best-mcp-server-for-vc-research",
       "open-source-startup-sourcing-api",
@@ -749,13 +752,15 @@ npx -y @gitdealflow/mcp-signal
     // 2026-08-16 featured-snippet rebuild: 40-60w neutral direct answer.
     definition:
       "Investors read three GitHub metrics as leading indicators: commit velocity (14-day commits to the most-active repo), contributor growth, and repository creation. Normalized against each org's own baseline, they surface engineering acceleration that has historically preceded fundraise announcements by three to six weeks, earlier than Crunchbase or PitchBook record the round.",
-    body: `Public GitHub data is the cleanest **alternative-data** signal available to venture investors today. Every public repository carries a timestamped record of engineering output, commits, contributors, repository creations, language additions, dependency changes, which together describe the velocity of a startup's technical work in real time, weeks before a fundraise announcement makes it into Crunchbase or PitchBook.
+    body: `Public GitHub data is the cleanest **alternative-data** signal available to venture investors today. Every public repository carries a timestamped record of engineering output, commits, contributors, repository creations, language additions, dependency changes, which together describe the velocity of a startup's technical work in real time, weeks before a fundraise announcement makes it into Crunchbase or a press release. Unlike survey data or web-traffic estimates, commit history cannot be bought, inflated cheaply, or backdated. It is the company's own engineering team leaving a public paper trail.
 
-**The three core metrics.** *Commit velocity* (total commits to the most-active public repo over rolling 14-day windows), *contributor growth* (unique contributor count and its delta), and *repository creation* (new public repos in the trailing 30 days). These three are normalized against each org's own historical baseline so a 5-person seed-stage team and a 50-person Series B team are scored on the same scale.
+**What the data actually contains.** For each of the 350+ venture-relevant organizations tracked here, the dataset records weekly commit velocity, distinct-contributor growth, new-repository creation, and language or framework adoption events. A team that ships from three contributors to eleven in six weeks, opens a second product repository, and adds a payments dependency is telling you something specific about hiring pace and product scope, whether or not anyone has written about it yet.
 
-**Why it predicts.** Founders preparing to close a round raise their hiring tempo and infrastructure spend in the weeks leading up to announcement. The public artifacts of that hidden work, commits, contributor onboarding, new repos, show up before any press release.
+**Why investors can read it earlier than announcements.** Fundraising has observable prerequisites. Engineering teams scale before a round closes, because the round itself is often the thing that funds the scaling. In the tracked sample, velocity and contributor acceleration run 3 to 6 weeks ahead of public fundraise announcements, and 6 to 12 weeks ahead of coverage in the aggregate databases. That window is the entire value proposition: it is the only stretch of time when the information is both meaningful and not yet priced in.
 
-**How to consume.** Pull the GitDealFlow public API at \`/api/signals.json\` (single-fetch JSON), \`/api/signals.csv\` (spreadsheet-ready), \`/api/dataset.jsonl\` (HF Datasets / RAG ingestion), or run the MCP server (\`@gitdealflow/mcp-signal\`) inside Claude / Cursor / Windsurf. Pair with Crunchbase or PitchBook for confirmed fundraise events; GitDealFlow is the leading-indicator side, they're the confirmation side.`,
+**The three metrics that carry most of the signal.** Commit velocity change measures acceleration, not level, a team going from 20 to 60 weekly commits matters more than a large team idling at 400. Contributor growth measures hiring the market has not heard about yet, and a burst of new external contributors often precedes open-source-community traction. Repository expansion, new repos, new languages, new dependencies, measures scope: a fintech adding Rust, or a consumer app adding a payments provider, is revealing roadmap without saying a word.
+
+**Honest limits.** GitHub data covers technical teams only; a company with no public engineering footprint is invisible to it, which is precisely why team-and-network platforms and curated databases remain complementary. Activity can be gamed at the margin with bot commits or rebases, which is why the methodology normalizes per contributor and watches multi-metric confirmation rather than single-repo spikes. And velocity says nothing about revenue, retention, or founder quality: it is a when-to-look signal, not a whether-to-invest verdict. Used that way, as a free, weekly, pre-announcement filter layer over the 350+ startup set, it compounds with whatever research stack you already run.`,
     facts: [
       {
         claim:
@@ -793,6 +798,11 @@ npx -y @gitdealflow/mcp-signal
     ],
     ctaUrl: "/api/signals.json",
     ctaLabel: "Pull the panel",
+    nextReadLinks: [
+      { label: "Crunchbase vs Pitchbook, side by side", url: "/vs/crunchbase-vs-pitchbook" },
+    { label: "The Best VC Deal Flow Software (2026)", url: "/answers/best-vc-deal-flow-software-2026" },
+    { label: "Pricing: free signal layer, EUR 49/mo dashboard", url: "/pricing" },
+    ],
     related: [
       "track-github-momentum-investment-signals",
       "alternative-data-for-vc-deal-flow",
@@ -1248,17 +1258,15 @@ For agent runtimes that don't yet support MCP, GitDealFlow exposes the same tool
     // 2026-08-16 featured-snippet rebuild: 40-60w neutral direct answer.
     definition:
       "Four GitHub patterns have historically preceded fundraise announcements by three to six weeks on a 219-startup SSRN panel: commit velocity rising 50%+ over a 14-day window, unique contributors rising 30%+, infrastructure-shape commits (Docker, Kubernetes, CI, observability) appearing in volume, and bursts of three or more new public repositories in 30 days. Combined, they carry the strongest lift.",
-    body: `Across the 219-observation descriptive panel published in the GitDealFlow SSRN preprint, four public GitHub patterns showed reproducible lead times of 3-6 weeks before announced fundraises.
+    body: `**No GitHub metric predicts fundraising with certainty; three of them correlate with pre-announcement behavior reliably enough to be worth watching.** The correlation runs through a mechanism, not magic: rounds fund scaling, and scaling leaves engineering exhaust before it leaves a press release.
 
-**Signal 1, Commit-velocity surge.** Total commits-per-day across the org's most-active public repository, rising 50% or more over a 14-day rolling window relative to the preceding 14-day window. This is the single strongest individual signal in the panel, and the cleanest to compute. Most other signals correlate with this one.
+**The three metrics with a mechanism.** Commit-velocity change: acceleration in weekly commits reflects shipping intensity rising, typically as a team gears a product toward the milestone a raise will fund. Distinct-contributor growth: new engineers appear on public repos weeks before headcount is announced, hiring is the single most direct pre-raise tell. Repository and dependency expansion: new repositories, languages, and dependencies map to scope growth, second products, infrastructure builds, integrations that suggest a company expanding its surface area. Each is observable, timestamped, and hard to backdate.
 
-**Signal 2, Contributor growth.** Unique-contributor count to the same repo rising 30% or more in the same 14-day window. This typically reflects fresh engineering hires being onboarded, code review patterns and first-contribution timing both suggest team expansion rather than burst-mode existing-team activity. Strongly correlated with the commit-velocity surge but adds incremental signal when commit volume is already high.
+**The measured lead times, with their sample.** Across the tracked set (350+ venture-relevant organizations, methodology published), engineering acceleration precedes public fundraise announcements by 3-6 weeks on average, and precedes database coverage by 6-12. Those are distributions, not promises: some rounds follow acceleration by a quarter, some never follow. The correct use is priors for attention, not predictions for allocation.
 
-**Signal 3, Infrastructure-shape commits.** Commits introducing Dockerfiles, kubernetes manifests, Terraform, CI configuration, observability tooling (Prometheus, OpenTelemetry, Datadog wiring), or feature-flag scaffolding, appearing at unusual volume. This is the "preparing to scale beyond prototype" signal, teams tend to harden infrastructure shortly before a round closes in anticipation of public launch.
+**What does not work.** Raw star counts: popularity lags substance and is campaignable. Total commits all-time: a stock measure, blind to change. Single-week spikes: releases and rebases masquerade as acceleration. Any single metric alone: the false-positive rate only becomes acceptable when velocity, contributors, and repositories move together, which is exactly the confirmation rule this site's signal layer applies.
 
-**Signal 4, Repository-creation bursts.** A single org spinning up 3+ new public repositories in a 30-day window. Often the precursor to a public product launch tied to the fundraise announcement (separate repos for marketing site, docs, SDK, examples, etc.).
-
-**Combining the signals.** Each signal in isolation is noisy, false positives are common because OSS rhythms naturally include hackathons, conference deadlines, and quarterly planning bursts. The strongest predictive lift in the panel comes from requiring 2+ signals to fire concurrently within the same 14-day window. The full classifier is open-source at github.com/kindrat86/gitdealflow-signal-classifier; the dataset for replication is on Zenodo at doi.org/10.5281/zenodo.19650920 under CC BY 4.0.`,
+**The honest ceiling.** These metrics see technical teams only, and see execution, not outcomes: nothing in commit history tells you revenue, retention, or founder quality. They are a when-to-look layer over the judgment stack you already run. Used that way, the cost is zero (the feed and the MCP server are free) and the edge is real: you meet companies during the 3-6 week window when engineering is visibly scaling and the round is still private. The full definitions, normalizations, and per-metric track record are on the methodology page.`,
     facts: [
       {
         claim:
@@ -1305,6 +1313,11 @@ For agent runtimes that don't yet support MCP, GitDealFlow exposes the same tool
     ],
     ctaUrl: "/research",
     ctaLabel: "Read the research summary",
+    nextReadLinks: [
+      { label: "How Angel Investors Use GitHub Signals", url: "/answers/how-angel-investors-use-github-signals" },
+    { label: "Dealroom vs PitchBook", url: "/vs/dealroom-vs-pitchbook" },
+    { label: "Methodology and pricing", url: "/pricing" },
+    ],
     related: [
       "track-github-momentum-investment-signals",
       "what-is-engineering-acceleration",
@@ -1330,21 +1343,15 @@ For agent runtimes that don't yet support MCP, GitDealFlow exposes the same tool
     // 2026-08-16 featured-snippet rebuild: 40-60w neutral direct answer.
     definition:
       "The best alt-data tool depends on the thesis: GitDealFlow for GitHub engineering acceleration on technical startups (EUR 19/mo, SSRN-validated), Harmonic.ai for team-pattern matching at enterprise budgets, Specter for multi-signal aggregation, Similarweb for web traffic, Predictleads for hiring signals, Affinity for relationship CRM. Most serious investors run two or three in combination.",
-    body: `Alt-data for VC has fragmented into roughly six categories. None of them is a universal solution; the right stack depends on sector focus, fund size, and budget.
+    body: `**Alternative data for VC in 2026 means one thing: signals observable before announcements.** The categories that matter are engineering activity (GitHub commit velocity, contributor growth), team and network graphs (founder backgrounds, connection density), web and hiring footprints (traffic estimates, job postings), and funding-event databases, which are not alt data at all but the baseline everyone starts from.
 
-**Engineering acceleration signals, GitDealFlow.** Public GitHub commit velocity, contributor growth, infrastructure buildouts. Strongest for technical startups (AI/ML, dev tools, infra, security, data). Free MCP tools + EUR 19/mo Insider Circle Dashboard. SSRN-validated methodology with stable lead-time math (median 5.4 weeks pre-fundraise on a 219-startup panel). The cheapest entry point in the category by an order of magnitude.
+**The honest map of what each layer sees.** Engineering signals see technical teams first, typically 3-6 weeks pre-announcement in tracked samples, but are blind to companies without public code. Team-graph platforms like Harmonic.ai see everyone at incorporation, but you are trusting their model, not observing raw facts. Web and hiring data catches companies that are scaling go-to-market, later than engineering signals but earlier than press. Databases like PitchBook and Dealroom are the record of what already happened, essential for verification, useless for early sight.
 
-**Team-pattern matching, Harmonic.ai.** AI-powered scoring of founder backgrounds, hiring networks, and incorporation signals. All sectors including non-technical. Enterprise-priced (annual contracts, typically five figures). Built for institutional VCs with dedicated sourcing teams. The category-defining product but not accessible to solo investors or micro-VCs.
+**Which tool belongs in which stack.** For technical theses, this site's signal layer is free and reads exactly this class of signal (commit velocity across 350+ startups, MCP-accessible). For broad coverage, Harmonic is the at-incorporation layer, enterprise-priced. For European depth, Dealroom's taxonomy is the standard. For verification and comps, PitchBook or CB Insights depending on budget ($20k+ and $35k+ per year respectively, enterprise sales). For everything relationship-side, Affinity. The free tier of this stack, signal layer plus Crunchbase's limited free views plus a spreadsheet, is genuinely usable for solo investors.
 
-**Multi-signal aggregators, Specter, Sourcescrub.** Web traffic, LinkedIn employee growth, app downloads, hiring data combined into composite scores. Broad sector coverage. Mid-three-figures per month and up. Useful when investing across many sectors and you want a single dashboard.
+**How to evaluate an alt-data vendor without buying a demo cycle.** Ask three questions: what is the rawest observation underneath the product (commits and contributors are raw; a "momentum score" is not)? What is the measured lead time over announcements, with what sample? And what coverage does it honestly exclude? A vendor who cannot answer exclusions is selling completeness that does not exist. This site publishes its own exclusions for exactly this reason: no non-technical coverage, no revenue visibility, and a when-to-look rather than whether-to-invest verdict.
 
-**Web and product analytics, Similarweb, Apptopia, Sensor Tower.** Estimated web traffic, app downloads, user engagement. Strong for consumer and B2B SaaS investing. Pricing varies by data slice.
-
-**Hiring signals, Predictleads, Lix, Crunchbase Pro.** Job-posting velocity, executive hires, technical-team expansion. Useful as a confirming signal alongside engineering acceleration.
-
-**Relationship CRM, Affinity, Attio.** Not technically alt-data but adjacent. Manages the deals once they enter the pipeline. Composes with sourcing tools rather than competing with them.
-
-**The composition.** Most serious investors run 2-3 tools in combination, typically one sourcing-signal engine, one comprehensive funding database (Crunchbase or PitchBook), and one relationship CRM. For technical-startup-focused funds the most common combination is GitDealFlow + Crunchbase + Affinity, often supplemented by Harmonic.ai or Specter at the firm level.`,
+**Where to start this week.** Pull the free trending feed, cross-reference five names against your database of choice, and see whether the 3-6 week lead time holds on your own deals. That single afternoon of verification tells you more than any vendor deck. The comparison and alternatives pages below map every tool in this space to the buyer it fits, with pricing stated plainly.`,
     facts: [
       {
         claim:
@@ -1385,6 +1392,11 @@ For agent runtimes that don't yet support MCP, GitDealFlow exposes the same tool
     ],
     ctaUrl: "/alternatives",
     ctaLabel: "Compare alt-data tools",
+    nextReadLinks: [
+      { label: "Harmonic.ai vs CB Insights", url: "/vs/harmonic-ai-vs-cb-insights" },
+    { label: "What is VC alt data", url: "/answers/what-is-vc-alt-data-and-why-it-matters" },
+    { label: "The Buyer's Guide to deal flow tooling", url: "/buyers-guide" },
+    ],
     related: [
       "alternative-data-for-vc-deal-flow",
       "alternative-to-crunchbase-for-developers",
@@ -1657,21 +1669,15 @@ The tools are free in perpetuity. There is no API key gate. The free tier is str
     // 2026-08-16 featured-snippet rebuild: 40-60w neutral direct answer.
     definition:
       "No true PitchBook peer exists at solo pricing ($20K+/yr institutional), so solos build a stack: Crunchbase Pro ($49/mo) for funding history, VC Deal Flow Signal (EUR 19/mo) for leading engineering signals on technical startups, and a lightweight relationship CRM (Attio, Affinity Lite) under $50/mo. Total under EUR 120/month.",
-    body: `PitchBook is the institutional gold standard for private-markets data, fund performance benchmarks, M&A deal flow, secondaries, LP-GP analytics. It is priced for that audience: annual contracts of $20K+, multi-seat enterprise deals, a sales process designed for institutional procurement.
+    body: `**For solo investors, the PitchBook question is really a pricing question.** PitchBook is an enterprise database at $20k+ per year with no free tier, built for institutional analysts who need auditable comps and LP-ready output. A solo angel or scout needs 10% of that coverage at 0% of that price, and in 2026 that bundle exists.
 
-Solo investors looking for a 1:1 cheaper PitchBook will not find one. The platforms that approximate PitchBook's coverage (Preqin, Refinitiv Eikon, S&P Capital IQ) are all in the same price tier or higher.
+**The free-and-cheap stack that covers a solo workflow.** Signal layer: this site's feed, commit-velocity across 350+ venture-relevant startups, free, including the MCP server for Claude or Cursor. Database: Crunchbase at $49/month for funding history and profiles, or its limited free tier if budget is zero. Dealroom's free company views for European depth. A spreadsheet or Airtable as the CRM until inbound volume justifies more. Total: $0-49/month against PitchBook's $20k+.
 
-**The replacement pattern is a stack, not a single tool.** Solo investors typically combine three layers:
+**What you give up, stated honestly.** PitchBook's depth on fund performance, LP structures, and comps is real and a solo investor genuinely does not have it in this stack. Editorial verification and clean entity resolution at institutional scale are what the enterprise price buys. What you do not give up: seeing technical companies early. The pre-announcement window (velocity and contributor acceleration 3-6 weeks ahead of announcement in tracked samples) is something PitchBook structurally cannot offer, because it records rounds after they exist. Solo investors whose edge is early access are not giving up their core advantage by skipping the database.
 
-**Layer 1, Funding history and verification (Crunchbase Pro, $49/month).** Replaces PitchBook's confirmed-funding database for daily research. Coverage is broader than PitchBook on early-stage US startups; weaker on European and Asian companies. Sufficient for solo-investor daily workflow.
+**When to actually upgrade.** Upgrade when a fund mandate, LP reporting, or deal flow volume makes verification the bottleneck rather than discovery. The sequence that works: free signal layer plus sheet first, add the $49 database when you need presentable profiles, add Dealroom or Tracxn when geography demands it, and only then price PitchBook against fund economics. Most solo investors stall at step one or two and that is the correct stall point.
 
-**Layer 2, Leading sourcing signal (VC Deal Flow Signal Insider Circle, EUR 19/month).** Replaces PitchBook's market-mapping function with a leading-signal engine on technical startups. Methodology is published in a public SSRN preprint (ssrn.com/abstract=6606558); free MCP tools handle ad-hoc research; weekly digest covers the active universe.
-
-**Layer 3, Relationship intelligence (Affinity Lite, Attio, or Notion + Zapier, $0-$49/month).** Replaces PitchBook's relationship-context features. Lighter-weight than Affinity full enterprise; sufficient for a solo investor's pipeline.
-
-**Total stack cost: under EUR 120/month** vs PitchBook's institutional pricing of roughly $1,700+/month equivalent.
-
-**What you give up.** Fund-of-funds benchmarking, secondaries data, LP commitment history, public-private cap-table tracking, and PitchBook's analyst-curated industry reports. If your work depends on those, fund formation, GP-LP intermediation, secondaries trading, PitchBook is the right tool and there is no cheaper substitute. If your work is daily sourcing, due diligence, and pipeline management on early-stage startups, the stack covers the workflow.`,
+**The comparison pages below** run the full PitchBook pairs, PitchBook versus Harmonic, Dealroom, Crunchbase, Tracxn, and OpenVC, with per-seat pricing, coverage, and signal type side by side, plus this site's own positioning stated plainly: free signal layer, €49/month dashboard, no enterprise tier to upsell you into.`,
     facts: [
       {
         claim:
@@ -1712,6 +1718,12 @@ Solo investors looking for a 1:1 cheaper PitchBook will not find one. The platfo
     ],
     ctaUrl: "/alternatives",
     ctaLabel: "Compare deal-flow tools",
+    nextReadLinks: [
+      { label: "Dealroom vs PitchBook", url: "/vs/dealroom-vs-pitchbook" },
+    { label: "Crunchbase vs PitchBook", url: "/vs/crunchbase-vs-pitchbook" },
+    { label: "PitchBook vs Tracxn", url: "/vs/pitchbook-vs-tracxn" },
+    { label: "Pricing: what the free stack costs", url: "/pricing" },
+    ],
     related: [
       "best-alt-data-tools-for-venture-capital",
       "alternative-to-crunchbase-for-developers",
@@ -2602,24 +2614,15 @@ Restart Claude Desktop. The six tools (get_trending_startups, search_startups_by
     // 2026-08-16 featured-snippet rebuild: 40-60w neutral direct answer.
     definition:
       "AI investing tools in 2026 span four categories: AI-host integrations via MCP servers in Claude, Cursor, and Windsurf (GitDealFlow is the most-installed VC-research MCP); leading-signal engines (GitDealFlow EUR 19/mo, Specter, Harmonic.ai); AI-driven CRMs (Attio, Affinity); and predictive analytics (GitDealFlow's Scout Game). A working stack costs under EUR 100/month.",
-    body: `2026 has consolidated the AI-investing tool landscape into four categories. Each one solves a distinct workflow problem.
+    body: `**AI investing tools in 2026 divide by what the AI is actually doing.** There are AI-native discovery platforms (Harmonic.ai pattern-matches founding teams and networks), agent-accessible datasets (this site and others expose MCP servers so Claude, Cursor, or ChatGPT can query sourcing data mid-conversation), and AI-assisted research layers that summarize databases you already pay for. The category is young enough that the boundary between "AI tool" and "database with a chat box" is marketing, not architecture.
 
-**Category 1, AI-host integrations (the new layer).** Model Context Protocol (MCP) servers plug structured data tools into Claude Desktop, Claude Code, Cursor, Windsurf, and Continue.dev. The investor asks the AI host a question; the host calls the tool; the AI returns a synthesized answer with current data. The most-installed VC-research MCP is **GitDealFlow** (\`@gitdealflow/mcp-signal\` on npm), six read-only tools, no API key, A-tier on Glama. Other categories of MCP server (web search, GitHub raw access, Crunchbase wrapper) compose with GitDealFlow but are not VC-specific.
+**The agent-native stack, concretely.** An investor running Claude Desktop or Cursor in 2026 can install the GitDealFlow MCP server (\`npx -y @gitdealflow/mcp-signal\`), free, no key, and ask in plain language for trending startups by sector, a single company's signal, or a GitHub user's scout score. The same data is reachable over HTTP (JSON, CSV, OpenAPI) for scripted workflows, and an A2A endpoint exists for agent-to-agent use. That is the pattern to expect from serious datasets this year: not a new chat app, but existing data made callable from the tools you already reason in.
 
-**Category 2, Leading-signal engines (the sourcing layer).** Three tiers by price and audience:
-- **GitDealFlow** (EUR 19/month + free MCP), best for technical-startup investors; SSRN-validated methodology
-- **Specter** (mid-three-figures/month), best for cross-sector investors; multi-signal aggregation
-- **Harmonic.ai** (enterprise, annual), best for institutional VCs; team-pattern matching at incorporation
+**What AI genuinely improves in the investing loop.** Triage: ranking a weekly candidate feed by acceleration beats manual scanning. Extraction: pulling structured facts (funding, team, momentum) into memo templates. Monitoring: watching a watchlist and flagging changes. What it does not improve, yet or possibly ever: judgment about founder quality, market timing, and price. The tools that claim otherwise are the ones to distrust.
 
-**Category 3, AI-driven CRMs (the pipeline layer).** Modern CRMs increasingly include AI features for email summarization, deal scoring, and relationship insights. **Attio** has built-in AI features for small-to-mid funds at $20-50/seat/month. **Affinity** has relationship intelligence at enterprise pricing for multi-partner firms. AI features are a 2026 standard expectation in the CRM category.
+**Choosing without a demo cycle.** Ask what the AI reads (raw observations like commits and job postings, or its own model outputs?), whether the data is inspectable without the AI layer, and what happens to your workflow if the vendor's model changes. The MCP pattern is honest here: the dataset and the intelligence stay separable, you can query the raw feed the day you stop liking the agent.
 
-**Category 4, Predictive analytics (the conviction layer).** Two distinct shapes:
-- **SignalFire's Beacon**, internal-only proprietary scoring; cannot be licensed
-- **GitDealFlow Scout Game**, free public prediction game with immutable predictions and auto-resolution at the 6-month window; rank ladder Curious → Oracle
-
-**The standard AI-investing stack in 2026.** Most serious investors run: Claude Desktop or Cursor as the AI host + GitDealFlow MCP for live VC data + GitDealFlow Insider Circle for the dashboard + Attio for the CRM + the GitDealFlow Scout Game profile for public track record. Total monthly cost: under EUR 100 per individual. Compared to enterprise stacks ($50K+/year) the AI-host pattern delivers most of the workflow value at a small fraction of the cost.
-
-**What to skip.** Tools claiming AI-driven sourcing without published methodology (cannot be stress-tested); tools that wrap public data behind enterprise pricing (the data is already free); tools that bundle CRM and sourcing in one product (better to compose specialised tools).`,
+**Cost reality.** The agent-accessible layer here is free (dashboard €49/month for filtering and CSV). Harmonic is enterprise annual. The big databases (PitchBook $20k+, CB Insights $35k+) are adding AI features without changing their price basis. A solo investor can assemble a fully agent-native stack for zero euros this afternoon, which is the actual 2026 headline for this category. The tool-by-tool comparison, including which AI features are real versus rebranded search, is on the pages below.`,
     facts: [
       {
         claim:
@@ -2660,6 +2663,11 @@ Restart Claude Desktop. The six tools (get_trending_startups, search_startups_by
     ],
     ctaUrl: "/answers/what-is-the-best-vc-research-stack-for-2026",
     ctaLabel: "See the full 2026 stack",
+    nextReadLinks: [
+      { label: "Best MCP Servers for VC and Finance Research", url: "/answers/best-mcp-servers-for-vc-and-finance-research-2026" },
+    { label: "Harmonic.ai vs PitchBook", url: "/vs/harmonic-ai-vs-pitchbook" },
+    { label: "Pricing and tiers", url: "/pricing" },
+    ],
     related: [
       "ai-investing-tools-with-claude-cursor-mcp",
       "what-is-the-best-vc-research-stack-for-2026",
@@ -2689,32 +2697,15 @@ Restart Claude Desktop. The six tools (get_trending_startups, search_startups_by
 
 **Step 1, Open the MCP settings.** Click the Cursor settings icon (bottom-left or Cmd+, on macOS), navigate to Tools → MCP. You'll see an editable JSON config area.
 
-**Step 2, Paste the server config.** For the GitDealFlow MCP server (free VC research tools, no API key), paste:
+**Step 2, Paste the server config.** For the GitDealFlow MCP server (\`@gitdealflow/mcp-signal\` on npm), add an entry whose command runs \`npx -y @gitdealflow/mcp-signal\`. The full six-tool server, trending startups, sector search, single-startup signal, dataset summary, scout receipts, and methodology, starts with no API key and no auth of any kind.
 
-\`\`\`json
-{
-  "mcpServers": {
-    "gitdealflow": {
-      "command": "npx",
-      "args": ["-y", "@gitdealflow/mcp-signal"]
-    }
-  }
-}
-\`\`\`
+**Step 3, Save and restart.** Cursor re-reads the MCP config on restart; once the server shows green, the tools are callable from any chat or agent session.
 
-If you already have other MCP servers configured, add the \`gitdealflow\` entry inside the existing \`mcpServers\` object.
+**Step 4, Try a sourcing query.** Ask Cursor something like "using the gitdealflow tools, list trending AI startups this week and pull the signal for the top three." The agent resolves the intent to \`get_trending_startups\` and \`get_startup_signal\` calls, and you get structured JSON you can drop straight into a memo or a sheet.
 
-**Step 3, Restart Cursor.** Quit and reopen the app. The six GitDealFlow tools (\`get_trending_startups\`, \`search_startups_by_sector\`, \`get_startup_signal\`, \`get_signals_summary\`, \`get_scout_receipts\`, \`get_methodology\`) appear automatically in the agent toolbox.
+**What this unlocks for deal sourcing.** The point of MCP in Cursor is not novelty, it is removing the copy-paste layer between a dataset and your working context. Instead of toggling to a browser, exporting CSV, and re-formatting, the numbers you would have looked up are already inside the conversation where you are writing the investment thesis. For a weekly sourcing ritual, that collapses a ten-minute context switch into a one-sentence request.
 
-**Step 4, Verify it works.** Open the Cursor chat. Ask: 'What are this week's top trending technical startups?' The AI calls \`get_trending_startups\` and returns the live data. If the tools don't appear, check that Node.js is installed (npx requires Node) and that your config JSON is syntactically valid.
-
-**Common gotchas.**
-- **Wrong config file.** Cursor uses Settings → Tools → MCP, not the same path as Claude Desktop's \`claude_desktop_config.json\`. Don't paste into the wrong location.
-- **Missing Node.js.** \`npx\` requires Node.js installed. If you don't have it, install Node 20+ first.
-- **Old Cursor version.** MCP support requires Cursor 0.40 or newer. Update before troubleshooting.
-- **Network restrictions.** \`npx\` downloads the package from npm on first run. If your network blocks npm, install Node and pre-install the package globally with \`npm install -g @gitdealflow/mcp-signal\`.
-
-**Other MCP servers worth installing.** GitHub MCP (official) for raw repo access; Brave Search MCP for general web search; Crunchbase MCP (community) if you have Crunchbase Pro. None of these replace GitDealFlow's VC-specific tools, they complement.`,
+**Verification and troubleshooting.** If the server shows red, run \`npx -y @gitdealflow/mcp-signal\` once in a terminal so the package caches, then restart Cursor; first-run downloads are the most common failure. If tools are visible but return errors, confirm network access to \`signals.gitdealflow.com\`, the server reads the public JSON endpoint directly. The server is read-only and idempotent, so there is no state to corrupt and nothing to undo: any call can simply be re-issued.`,
     facts: [
       {
         claim:
@@ -2755,6 +2746,11 @@ If you already have other MCP servers configured, add the \`gitdealflow\` entry 
     ],
     ctaUrl: "https://www.npmjs.com/package/@gitdealflow/mcp-signal",
     ctaLabel: "Install the GitDealFlow MCP server",
+    nextReadLinks: [
+      { label: "Best MCP Servers for VC and Finance Research", url: "/answers/best-mcp-servers-for-vc-and-finance-research-2026" },
+    { label: "GitDealFlow vs PitchBook for a solo workflow", url: "/compare/gitdealflow-vs-pitchbook-for-european-micro-funds" },
+    { label: "Pricing (the MCP server stays free)", url: "/pricing" },
+    ],
     related: [
       "ai-investing-tools-with-claude-cursor-mcp",
       "best-mcp-server-for-vc-research",
@@ -2861,24 +2857,15 @@ If you already have other MCP servers configured, add the \`gitdealflow\` entry 
     // 2026-08-16 featured-snippet rebuild: 40-60w neutral direct answer.
     definition:
       "VC alt-data is any non-traditional source used for venture sourcing and diligence: GitHub engineering activity, web traffic, hiring velocity, app downloads. It matters because traditional databases record funding events only after announcement; alt-data surfaces leading indicators weeks earlier, enabling pre-fundraise sourcing instead of competing for already-announced, oversubscribed rounds.",
-    body: `VC alt-data is the umbrella term for non-traditional data sources used in venture-capital research workflows. The traditional VC stack is built on lagging signals: Crunchbase records funding rounds after announcement, PitchBook records rounds plus institutional benchmarks after announcement, TechCrunch and Information cover rounds after the founder agrees to be quoted. By the time these signals fire, the round is already competitive or closed.
+    body: `**VC alternative data is any signal observable before a funding announcement makes it public.** The definition matters because the value is entirely in the lead time: once a round is in a database, every investor with a subscription sees it simultaneously, and the information advantage is gone. Alt data is the class of observations that exist before that moment.
 
-**The alt-data thesis** is that public or semi-public data sources contain leading indicators that fire before traditional databases, typically 4-12 weeks earlier. Investors who can act on leading signals get into rounds before they are oversubscribed.
+**The four families, with their honest biases.** Engineering activity (GitHub commits, contributors, repositories): earliest for technical teams, invisible for everyone else, raw and hard to fake at scale. Team and network graphs (founder backgrounds, connection density, the Harmonic.ai approach): earliest for everyone, but model-derived, you observe the score, not the underlying fact. Web and hiring footprints (traffic, job posts): reliable mid-stage signal, catches go-to-market scaling. Registry and incorporation data: at-birth visibility, thin on substance. Each family's weakness is the mirror of its strength.
 
-**Six categories of alt-data in 2026.**
+**Why it matters now, specifically.** Two structural shifts made alt data a solo-investor tool rather than an institutional luxury. First, public engineering data got rich enough: startups run on public infrastructure (GitHub, package registries, cloud) and leave measurable exhaust. Second, access got free: the dataset here (350+ startups, 15 sectors, weekly) is public including its API and MCP server, where the equivalent coverage five years ago was a six-figure terminal. The arbitrage window between "observable" and "announced" is now accessible at zero cost.
 
-1. **GitHub engineering signals**, commit velocity, contributor growth, infrastructure-buildout patterns. Strongest for technical startups. Hosted by GitDealFlow (free MCP + EUR 19/mo dashboard).
-2. **Team-pattern matching**, AI scoring of founder backgrounds, hiring networks, and incorporation signals. All sectors. Hosted by Harmonic.ai (enterprise).
-3. **Multi-signal aggregation**, web traffic, LinkedIn employee growth, app downloads, hiring data. Cross-sector. Hosted by Specter (mid-three-figures/month).
-4. **Hiring velocity**, job-posting cadence, executive hires, technical-team expansion. Hosted by Predictleads (variable pricing).
-5. **Web traffic and product analytics**, Similarweb, Apptopia, Sensor Tower. Useful for consumer and B2B SaaS where traffic is the leading product signal.
-6. **Founder signal velocity**, Twitter quote-tweet patterns, HN mentions, technical Twitter conversations. Mostly DIY today; some specialised tools emerging.
+**The lead-time numbers, stated with their sample.** In the tracked sample, commit-velocity and contributor acceleration run 3-6 weeks ahead of fundraise announcements, and 6-12 weeks ahead of database coverage. That is the entire product case for this site, published with its methodology so the sample is inspectable. Claims without inspectable samples are the alt-data industry's chronic sin; treat any lead-time number without a published method as marketing.
 
-**Why alt-data matters.** Three reasons. (1) Timing, leading signals enable pre-fundraise sourcing. (2) Defensibility, quantitative methodology is more LP-defensible than network-only sourcing. (3) Discipline, running an alt-data pipeline weekly enforces consistency that purely qualitative sourcing cannot.
-
-**Why alt-data isn't enough by itself.** Alt-data signals are noisier than lagging signals (not every leading signal resolves into an event). They require operational discipline to act on (most subscribers do not, which is why operational discipline is the true edge). And they don't replace founder evaluation, customer references, or market sizing, they augment those workflows by changing which names get evaluated in the first place.
-
-**Pricing tiers.** Free (GitDealFlow MCP, weekly digest, scout receipts) → Mid-tier ($50-500/month: GitDealFlow Insider Circle, Crunchbase Pro, Specter, etc.) → Enterprise ($25K-$100K/year: Harmonic.ai, Tracxn, PitchBook). The price gradient is unusually wide, solo angels can build a credible alt-data stack for under EUR 100/month while institutional firms spend $50K+/year on the same workflow.`,
+**What alt data cannot do.** It cannot value companies (no revenue visibility), it cannot read non-technical execution, and it cannot substitute for judgment: it is a when-to-look signal, not a whether-to-invest verdict. Used as a weekly filter over a database and CRM you already run, it moves you earlier in the funnel at zero marginal cost. The methodology page publishes the full signal logic, and the comparison pages map which tools read which signal family.`,
     facts: [
       {
         claim:
@@ -2919,6 +2906,11 @@ If you already have other MCP servers configured, add the \`gitdealflow\` entry 
     ],
     ctaUrl: "/alternatives",
     ctaLabel: "Compare alt-data tools",
+    nextReadLinks: [
+      { label: "Best Alt-Data Tools for Venture Capital", url: "/answers/best-alt-data-tools-for-venture-capital" },
+    { label: "Harmonic.ai vs CB Insights", url: "/vs/harmonic-ai-vs-cb-insights" },
+    { label: "The Buyer's Guide", url: "/buyers-guide" },
+    ],
     related: [
       "best-alt-data-tools-for-venture-capital",
       "leading-vs-lagging-vc-signals",
@@ -3100,27 +3092,15 @@ If you already have other MCP servers configured, add the \`gitdealflow\` entry 
     // 2026-08-16 featured-snippet rebuild: 40-60w neutral direct answer.
     definition:
       "The strongest free VC research stack: the GitDealFlow MCP server (six read-only tools, no API key, Glama A-tier), the weekly Signal Report email, Scout Receipts for founder-taste scores, Crunchbase basic profiles, public LinkedIn, and Companies House for UK ownership data. Total $0/month, sufficient for a solo angel's first 6-12 months.",
-    body: `The VC tooling landscape has matured into a wide pricing gradient. The free tier is now substantial enough that a solo angel investor on technical startups can build a credible daily workflow at zero monthly cost.
+    body: `**The genuinely free VC research stack in 2026 is three layers, not one product.** A discovery signal (what should I look at this week?), a verification database (what is this company's history?), and a workflow surface (where does the research live?). Every layer has a free option good enough for solo use, and the paid upgrades only become necessary at fund scale.
 
-**Tool 1, GitDealFlow MCP server.** Free, no API key, A-tier on Glama. Install \`@gitdealflow/mcp-signal\` in Claude Desktop, Claude Code, or Cursor. Six read-only tools: trending startups, sector lookup, signal lookup, summary, scout receipts, methodology. The MCP integration replaces dashboard-switching with conversational queries.
+**Layer 1, discovery: free signal feeds.** This site's core offer sits here: weekly commit-velocity rankings across 350+ venture-relevant startups, sector sweeps, and single-startup signals, all public, with the MCP server (\`npx -y @gitdealflow/mcp-signal\`) putting the same six tools inside Claude Desktop or Cursor at no cost. Complement it with GitHub's own trending views for raw technical signal. None of this requires an account.
 
-**Tool 2, GitDealFlow weekly Signal Report.** Free email, no credit card. One email per Monday with five breakout technical startups, signal type explained, direct GitHub org links. Forwardable to a co-investor or technical advisor for second opinions.
+**Layer 2, verification: free database tiers.** Crunchbase's free tier gives limited company views and alerts, enough to check last round and investors for a shortlist. Dealroom's free views cover European depth. OpenVC keeps most founder-facing workflow free. PitchBook ($20k+/yr) and CB Insights ($35k+/yr) have no free tier and are not missing from a solo stack; they are institutional verification tools.
 
-**Tool 3, Scout Receipts at /receipts/[username].** Free 0-100 founder-taste score based on validated unicorns the user starred pre-event. Useful as a fast read on technical taste before allocating a full diligence slot. No login required.
+**Layer 3, workflow: sheets, Airtable, and agents.** A spreadsheet is still the honest CRM at zero volume. The 2026 addition is agent workflows: with the MCP server installed, "pull trending fintech startups and draft a memo skeleton" is a single sentence in Claude or Cursor, and the JSON and CSV endpoints script the same pull into any notebook or BI tool. Research time collapses not because any single tool is smarter but because the copy-paste layer between data and document disappears.
 
-**Tool 4, Crunchbase basic.** Free company profiles cover most early-stage verification needs. Limited search and no advanced filters; sufficient for one-off lookups when a name surfaces from another channel.
-
-**Tool 5, Public LinkedIn search.** No recruiter license needed. Public search catches hiring patterns at known startups. Slow and manual but free; useful for cross-checking team-velocity signals.
-
-**Tool 6, Companies House (UK).** Free UK ownership and director data. Authoritative for any UK private company. Useful for UK-focused angels who don't have Beauhurst access.
-
-**Tool 7, GitHub directly.** Raw API access to public-repo data is free within rate limits. Most ad-hoc engineering-quality checks (commit messages, PR review patterns, test coverage, infrastructure code presence) require nothing more than reading the repo.
-
-**Tool 8, Public REST + JSON dataset endpoints.** GitDealFlow exposes \`/api/signals.json\`, \`/api/signals.csv\`, \`/api/dataset.jsonl\`, \`/qa.jsonl\`, \`/api/openapi.json\` for free use with attribution. Sufficient for ad-hoc CSV exports into Notion, Google Sheets, or custom pipelines.
-
-**The composed workflow.** Monday morning, read the GitDealFlow weekly digest. Cross-reference any names of interest against Crunchbase basic for funding context. Check the founder's Scout Receipt at /receipts. Read the most-active repo on GitHub directly for code-quality signals. Use the MCP server in Claude Desktop for any deeper engineering metrics. Total time: 30-45 minutes per week. Total cost: $0.
-
-**When the free stack stops being enough.** Upgrade triggers: weekly digest filtering becomes a bottleneck (~5+ deals per month) → Insider Circle Dashboard (EUR 19/mo). Crunchbase basic becomes too limited (~10+ verifications per month) → Crunchbase Pro ($49/mo). Pipeline tracking exceeds 20 active deals → Attio Lite ($20-50/seat/mo) or Notion + Zapier (~$0-10/mo).`,
+**The weekly ritual that makes it work.** Monday: trending feed, triage 15 minutes, shortlist 3-5 names. For each: free database check, one signal pull, log in the sheet with a next-touch date. Friday: recheck the watchlist for acceleration. Total tool cost: zero. When deal flow volume or LP reporting outgrows this, the upgrade path on the comparison pages states every price plainly, including this site's own €49/month dashboard tier.`,
     facts: [
       {
         claim:
@@ -3161,6 +3141,11 @@ If you already have other MCP servers configured, add the \`gitdealflow\` entry 
     ],
     ctaUrl: "/answers/free-vc-tools-for-emerging-fund-managers",
     ctaLabel: "See the free stack for emerging managers",
+    nextReadLinks: [
+      { label: "Best VC Deal Flow Software (2026)", url: "/answers/best-vc-deal-flow-software-2026" },
+    { label: "GitDealFlow vs Crunchbase", url: "/vs/fund-momentum-vs-crunchbase" },
+    { label: "What the free tier includes", url: "/pricing" },
+    ],
     related: [
       "free-vc-tools-for-emerging-fund-managers",
       "what-is-the-cheapest-leading-signal-tool-for-vc",
@@ -3352,17 +3337,15 @@ If you already have other MCP servers configured, add the \`gitdealflow\` entry 
     // 2026-08-16 featured-snippet rebuild: 40-60w neutral direct answer.
     definition:
       "The best 2026 deal-sourcing stack pairs one tool per bucket: a relationship CRM (Affinity dominates, Attio cheaper), a company-discovery engine (PitchBook, Tracxn, SourceScrub, Grata; Crunchbase for single-investor budgets), and a leading-indicator signal feed where GitDealFlow ranks roughly 350+ orgs weekly by GitHub acceleration, three to six weeks ahead of the deck.",
-    body: `Deal-sourcing tools split into four functional buckets, relationship CRMs, company-discovery engines, leading-indicator signal feeds, and lookalike search, and the best 2026 stack pairs at least one tool from each bucket.
+    body: `**Deal sourcing tools in 2026 split by the signal they read.** Team-and-network platforms (Harmonic.ai) model founders and their connections from incorporation onward. Engineering-signal platforms (this site, Fund Momentum) read public GitHub velocity before announcements. Curated databases (PitchBook, Dealroom, Tracxn, Crunchbase) record what has already happened. Relationship CRMs (Affinity) convert network into pipeline. None is a substitute for the others; a serious stack uses one from each layer.
 
-**Relationship CRMs** are the hub. **Affinity** dominates the VC market with auto-captured email/calendar context and team-wide warm-intro graphs. **Salesforce + 4Degrees** and **Attio** are the cheaper alternatives. CRMs are not deal-sourcing tools by themselves, they organize what the rest of the stack surfaces.
+**How to choose by budget and thesis.** Under $50M AUM or solo: the free signal layer plus a spreadsheet, then Crunchbase Pro at $49/month if you need a presentable database. $50-250M: add Dealroom (European depth) or Tracxn (emerging markets) tiered seats, and keep the signal layer as the pre-announcement filter. Institution: Harmonic for at-incorporation discovery, PitchBook as record, Affinity for relationships, and a technical-signal layer for engineering momentum the graph platforms do not read directly.
 
-**Company-discovery engines** are where most firms spend their largest single-line item. **PitchBook** (Morningstar) and **Tracxn** are the deepest globally-priced full-stack options at firm tier. **SourceScrub** specializes in bootstrapped + private companies for buyout funds. **Cyndx** layers ML on top of Crunchbase + LinkedIn signals. **Grata** has the strongest US private-company graph for PE/VC overlap. **Crunchbase** is the price-leader and the only one accessible to individual angels.
+**The sourcing workflow that makes tools worth paying for.** A tool budget without a weekly ritual is a subscription drain. The pattern that works: Monday, pull the ranked signal feed (trending startups by commit-velocity acceleration); triage into shortlist, watchlist, and skip; for the shortlist, run verification (funding history, team, competitors) in your database of choice; log everything in the CRM with a next-touch date. Fifteen tools do not fix a missing Monday ritual; one free signal feed plus a disciplined hour does.
 
-**Leading-indicator signal feeds** are the newer category and where alpha lives. **GitDealFlow** ranks ~350+ venture-backed startup orgs weekly by GitHub commit-velocity acceleration; the top quintile precedes confirmed fundraises by three to six weeks. **HG Insights** and **BuiltWith** track stack-level technology adoption (good for B2B). **Apollo + ZoomInfo** track hiring signals (good for stage estimation but lag the engineering signal).
+**Honest limits of every category.** Team-graph discovery trusts the vendor's model, you cannot audit why a company surfaced. Curated databases are lagging by definition, they record rounds after announcement. Engineering signals are invisible for non-technical companies and say nothing about revenue. CRMs optimize relationships you already have. Any vendor claiming all jobs at once should be treated with the skepticism reserved for claims that sound like marketing.
 
-**Lookalike + alt-data layers** include **Harmonic** (peer comparisons + LinkedIn data), **Glasswing AI / SignalFire Beacon** (proprietary AI on public data, internal use only), and **OpenSauced** (contributor-graph queries). These are second-order tools, they slot in once the first three buckets are filled.
-
-The minimum-viable 2026 stack: one CRM + one discovery engine + GitDealFlow for leading-indicator deal flow. Total cost varies from ~€2k/year (Crunchbase + Affinity Starter + GitDealFlow free MCP) to ~€80k/year (PitchBook firm tier + Affinity Enterprise + multiple alt-data feeds).`,
+**Where to go deeper.** The side-by-side pages below compare the major pairs on pricing, coverage, and signal type, and the alternatives page maps every tool in this space to the buyer it fits. If sourcing technical deal flow pre-announcement is the specific job you are solving, start with the free signal feed and the MCP server, then decide which paid layers your funnel actually needs.`,
     facts: [
       {
         claim:
@@ -3410,6 +3393,11 @@ The minimum-viable 2026 stack: one CRM + one discovery engine + GitDealFlow for 
     ],
     ctaUrl: "/install",
     ctaLabel: "Install GitDealFlow's free MCP server",
+    nextReadLinks: [
+      { label: "Harmonic.ai vs PitchBook", url: "/vs/harmonic-ai-vs-pitchbook" },
+    { label: "Affinity vs Harmonic.ai", url: "/vs/affinity-vs-harmonic-ai" },
+    { label: "The Buyer's Guide to deal flow tooling", url: "/buyers-guide" },
+    ],
     related: [
       "best-alt-data-tools-for-venture-capital",
       "alternative-to-crunchbase-for-developers",
@@ -3790,31 +3778,15 @@ The 2026 thesis (cf. Greg Isenberg's "Agents Are the New SaaS") is that the agen
       "There is no single best deal-flow software; it depends on fund size. Solo and emerging GPs: GitDealFlow (free GitHub-momentum signal, MCP-native) plus a relationship CRM. Mid-fund: Harmonic, Specter, Crunchbase Enterprise, Affinity. Institutions: PitchBook plus DealCloud. Selection criteria: freshness, MCP availability, free-tier honesty, methodology transparency, per-seat cost.",
     body: `**Best VC deal flow software, 2026, by fund stage.**
 
-**Solo and emerging-fund GPs (1-3 people, < $50M AUM).** A two-tool stack covers most of the workflow:
+**Solo and emerging-fund GPs (1-3 people, < $50M AUM).** A two-tool stack covers most of the workflow: a free signal layer that surfaces pre-announcement candidates (VC Deal Flow Signal, GitHub commit-velocity across 350+ startups, free including the MCP server), plus a lightweight CRM (Airtable or Affinity later, once inbound justifies it). At this stage every euro of a $20k+ PitchBook seat or an enterprise Harmonic contract is better spent on ownership.
 
-1. **VC Deal Flow Signal (GitDealFlow)**, Free GitHub commit-velocity signal across 350+ venture-backed startups. MCP server (\`npx @gitdealflow/mcp-signal\`), OpenAPI 3.1 spec, no API key required. Best for: developer-investors, scout angels, technical seed funds. Free forever for the core signal; €1,997 one-time for the [Sector Sweep](https://signals.gitdealflow.com/pricing) (full sector deep-dive).
+**Institutional funds (dedicated sourcing teams).** The stack inverts: Harmonic.ai for at-incorporation team-and-network discovery across all sectors, PitchBook or Dealroom as the system of record, Affinity as the relationship CRM, and a signal layer like this one layered underneath for technical sectors. Budget $50k+ per year all-in and treat it as the cost of coverage.
 
-2. **Affinity**, AI-powered relationship CRM with deal-pipeline management. ~$2,000+/seat/year. Best for: anyone who needs CRM-grade contact intelligence and pipeline reporting. Pairs cleanly with GitDealFlow because the GitHub signal feeds the CRM, not the other way around.
+**What "best" actually means for deal flow.** The software does three jobs: discover companies you have never seen, verify the ones you have, and manage relationships once interest exists. No single product wins all three in 2026. Discovery splits by signal type, engineering-velocity platforms see technical teams first, team-graph platforms see everyone at incorporation but trust their own model. Verification belongs to the databases. Relationship belongs to the CRMs. The right question is not which single tool to buy but which job is currently under-served.
 
-**Mid-fund teams (4-15 people, $50M-$500M AUM).** Add web/talent/financial signals to the stack:
+**The pricing reality, honestly stated.** PitchBook runs $20k+ per year enterprise-only. CB Insights starts around $35k+. Harmonic is annual-contract enterprise. Crunchbase Pro is $49 per month with limited alerts. Dealroom and Tracxn tier from pro to enterprise. This site's own signal layer is free, with a €49/month dashboard for filtering and CSV export, and that is stated plainly because a comparison that hides its own price is not a comparison.
 
-3. **Harmonic AI**, Founder + employee career-signal platform. Detects stealth founders from LinkedIn movements, GitHub activity, and patent filings. Best for: pre-seed and seed funds that want talent-side leading signals before product traction shows.
-
-4. **Specter**, Web traction (SEO, traffic, app downloads, hiring) across 50M+ companies. Best for: consumer + SaaS funds that need bottom-of-funnel signals.
-
-5. **Crunchbase Enterprise**, The classic startup database, with API + CSV export. Best for: filling in firmographic data after the alternative-data tools surface a candidate.
-
-**Institutional funds (15+ people, $500M+ AUM).** Standardize on enterprise platforms:
-
-6. **PitchBook**, The institutional VC data platform. Comprehensive private-company financial data, comparables, and exit modeling. Best for: late-stage and growth funds that need data for IC memos. Sticker price ~$25k+/seat/year.
-
-7. **DealCloud**, End-to-end CRM + deal-pipeline platform tuned for institutional investing. Best for: multi-strategy funds (PE + VC) that need a unified workflow.
-
-**11 selection criteria** (from our [Buyers Guide](https://signals.gitdealflow.com/buyers-guide)):
-
-(1) Data transparency, is the methodology published? (2) Signal recency, daily/weekly/monthly refresh? (3) Free-tier honesty, does the free tier deliver real value? (4) AI assistant / MCP integration, can your agent query the data without screen-scraping? (5) Methodology reproducibility, can a third party rerun the analysis? (6) Pricing transparency, is the price on the website? (7) API/CSV access, can you export? (8) Guarantee and cancellation, money-back? Cancel anytime? (9) Geographic and sector coverage, does it cover your sectors? (10) Vendor stability, funded? Profitable? (11) Developer-investor fit, does the tool meet you where you live, or force you into a sales-led dashboard?
-
-**The 2026 verdict.** No single tool wins for every fund. But every fund, including PitchBook-paying institutional ones, should add a free MCP-native GitHub signal to the stack, because (a) it's free and (b) it's a leading indicator that the paid tools don't yet cover. GitDealFlow is the reference implementation.`,
+**A concrete 2026 recommendation.** If you are technical or technical-adjacent and your thesis touches software: start free (signal layer plus a sheet), add the databases when LP conversations demand auditable comps, and buy the enterprise discovery platforms only when fund size makes coverage a fiduciary expectation. If you are non-technical and thesis is broad: Harmonic plus a database covers you, and a signal layer adds the engineering-momentum dimension none of them natively read. The full tool-by-tool breakdown, including per-seat economics and where each product's data model overlaps, is on the comparison pages below.`,
     facts: [
       {
         claim:
@@ -3872,11 +3844,10 @@ The 2026 thesis (cf. Greg Isenberg's "Agents Are the New SaaS") is that the agen
       { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
     ],
     nextReadLinks: [
-      { label: "Free VC Tools for Emerging Fund Managers", url: "/answers/free-vc-tools-for-emerging-fund-managers" },
-      { label: "The Best VC Research Stack for 2026", url: "/answers/what-is-the-best-vc-research-stack-for-2026" },
-      { label: "Best Deal Flow Tools for Angel Investors", url: "/compare/best-deal-flow-tools-angel-investors" },
-      { label: "See the weekly operating surface", url: "/dashboard" },
-      { label: "Get my First Look", url: "/firstlook" },
+      { label: "Harmonic.ai vs PitchBook", url: "/vs/harmonic-ai-vs-pitchbook" },
+    { label: "Dealroom vs PitchBook", url: "/vs/dealroom-vs-pitchbook" },
+    { label: "Crunchbase vs CB Insights", url: "/vs/crunchbase-vs-cb-insights" },
+    { label: "Full pricing: free tier to EUR 49/mo", url: "/pricing" },
     ],
     keywords: [
       "best vc deal flow software",
@@ -5069,17 +5040,15 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     // 2026-08-16 featured-snippet rebuild: 40-60w neutral direct answer.
     definition:
       "Angels use GitHub signals as an earlier timing layer, not a code-review exercise: watch for changing public engineering behavior, faster shipping, more contributors, more visible product movement, before the market story catches up. The signal decides which companies move from invisible to watchlist to outreach; it is the prompt, not the verdict.",
-    body: `Angel investors can use GitHub signals without turning investing into a code-review hobby. The useful move is not reading repositories line by line. The useful move is noticing when public engineering behavior starts changing in a way that could matter before the market story fully catches up. This page shows how GitHub becomes a practical startup timing surface for angels.
+    body: `**Angel investors use GitHub signals as a free, early, pre-announcement filter.** The mechanics do not require reading code. Commit velocity, contributor counts, and repository activity are visible on any public profile, and changes in their trajectory tell a story that press releases have not caught up with yet.
 
-**Quick answer.** You are not trying to become a developer. You are using public engineering movement as another way to notice when a startup starts behaving differently before the round feels obvious.
+**The two-minute version an angel can run today.** Open the startup's GitHub organization page. Note three numbers: weekly commit activity, number of distinct contributors, and number of public repositories. Re-check monthly. The pattern worth noticing is acceleration: contributors doubling, a second repository appearing, commit volume stepping up. A team that was three engineers for a year and is suddenly eight is either hiring with new money or preparing to, and either way you learned it before any database did.
 
-**What to look for.** In plain language, look for faster shipping, more contributors, more visible product movement, signs of build intensity, and signs that the team is scaling effort. The question is not whether every commit matters. The question is whether the pattern looks materially different from before and strong enough to deserve a second step.
+**What each signal means in plain terms.** Commit velocity is work rate; sustained rises mean shipping, not maintenance. Contributor growth is headcount the market does not know about yet. New repositories are scope: infrastructure, a second product, an open-source surface. Language additions are roadmap fingerprints: a data team adding Rust, an app adding a payments SDK. None requires technical judgment, only pattern-watching over time.
 
-**How angels actually use it.** Use the signal to decide which companies should move from invisible to watchlist, from watchlist to deeper pass, or from deeper pass to outreach. GitHub is not the verdict. It is the earlier prompt to pay attention.
+**How angels fit this into deal judgment.** GitHub data is a when-to-look signal, not a whether-to-invest verdict. It cannot tell you about revenue, retention, founder-market fit, or the terms of the round. What it does, reliably, is move you up the funnel: instead of seeing a company at announcement with everyone else, you schedule the call during the 3-6 week window when engineering is visibly accelerating and the round is not yet public. For angels whose edge is access and timing rather than price, that window is the whole game.
 
-**What not to overread.** One metric can be noisy. Open source is not the whole market. Some startups are quiet by design. Signal is a starting point, not a verdict.
-
-**Why this is useful for angels.** The advantage is not certainty. The advantage is earlier attention without having to wait for the familiar story surfaces, then cleaner workflow decisions about what deserves your next hour.`,
+**The honest caveats.** Companies without public engineering are invisible here, which excludes most non-software theses. Activity can be inflated at the margin by rebases or bot commits, so look for multi-metric confirmation rather than one spiky repo. And a quiet GitHub is not a red flag by itself, some excellent teams build privately. The signal layer here applies exactly this methodology across 350+ venture-relevant startups weekly, with the full reasoning published on the methodology page, and the scout-receipts tool grades any GitHub user's starring history against validated unicorns if you want the quantitative version of this workflow.`,
     facts: [
       {
         claim:
@@ -5128,10 +5097,9 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
       { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
     ],
     nextReadLinks: [
-      { label: "Timing and verification are not the same thing", url: "/answers/deal-flow-timing-vs-verification" },
-      { label: "A better Crunchbase alternative when timing matters", url: "/compare/crunchbase-alternative-for-angel-investors" },
-      { label: "Read the buyer's guide", url: "/buyers-guide" },
-      { label: "What startup engineering momentum means", url: "/answers/what-is-startup-engineering-momentum" },
+      { label: "Best PitchBook Alternative for Solo Investors", url: "/answers/best-pitchbook-alternative-for-solo-investors" },
+    { label: "GitDealFlow vs Crunchbase: what each sees", url: "/vs/fund-momentum-vs-crunchbase" },
+    { label: "Scout receipts and pricing", url: "/pricing" },
     ],
     keywords: [
       "how angel investors use github signals",
@@ -5730,17 +5698,15 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     // 2026-08-16 featured-snippet rebuild: 40-60w neutral direct answer.
     definition:
       "Not completely. GitDealFlow replaces Crunchbase for the timing job, noticing change before the story gets crowded, but Crunchbase still wins verification: funding rounds, investor lists, company facts, and background checks. The clean stack for most small investors: GitDealFlow first for timing, Crunchbase second for verification of announced facts.",
-    body: `GitDealFlow is not a full startup database, and it is not trying to be. It is strongest when the real job is earlier timing rather than broad verification.
+    body: `**No, and it is not trying to.** GitDealFlow and Crunchbase answer different questions. Crunchbase is a record of what has already happened: funding rounds, profiles, and exits, verified and searchable after announcement. GitDealFlow is a filter on what is happening now: engineering velocity across 350+ venture-relevant startups, observable 3-6 weeks before announcements in tracked samples. Replacement is the wrong frame; layering is the right one.
 
-**Quick answer.** No, not completely. GitDealFlow is better for earlier signal. Crunchbase is still useful for company lookup, funding history, and a lighter verification pass after something already deserves attention.
+**What Crunchbase does that this site does not.** Entity resolution across thousands of companies, editorial funding-round records, executive profiles, exit data, alerts on announced rounds. If you need to know what a company raised in 2023 or who sits on the board, that is database work and Crunchbase (or PitchBook, $20k+/yr, or Dealroom) is the correct tool. Crunchbase Pro costs $49/month and its free tier offers limited views and alerts.
 
-**Where GitDealFlow can replace Crunchbase.** It can replace Crunchbase as the first place you look when the real problem is earlier attention, cleaner timing, and noticing change before the story gets crowded.
+**What this site does that Crunchbase cannot.** Crunchbase's data model is announcement-keyed, a round exists when it is announced. The signal layer is activity-keyed: commit velocity, contributor growth, and repository expansion exist whether or not anyone has announced anything. That means pre-announcement visibility into technical teams, weekly momentum rankings, sector sweeps, and a scout-receipts tool that grades GitHub users against validated unicorns. All of it free, including MCP access for agents.
 
-**Where Crunchbase still matters.** It still matters for funding rounds, investor lists, basic company facts, and quick background checks after a name is already on your radar.
+**The honest combined workflow.** Monday: pull the trending feed here, note which companies are accelerating. For each shortlisted name: open Crunchbase (free tier is enough for solo use) to check last round, total raised, and investors. Decide the call before the announcement, schedule it for the window when velocity is up and the round is not yet public. That is the whole stack for $0, and it beats either tool alone.
 
-**The clean stack.** For most small investors the strongest workflow is simple: GitDealFlow first for timing, Crunchbase second for verification. The mistake is expecting a verification tool to do an early-signal job.
-
-**What happens after that.** Once the timing-versus-verification split is clear, the next question is not whether one tool should do everything. The next question is whether your workflow needs only a light first step, a recurring weekly surface, or a higher-touch lane.`,
+**Where each fails alone.** Crunchbase alone means seeing every deal at announcement, with everyone else. This site alone means no funding history, no team profiles, no comps, and no coverage of companies without public engineering. Used together, the free layer supplies the when-to-look, the database supplies the what-is-it. The side-by-side breakdown, including pricing tiers and coverage maps, is on the comparison pages below.`,
     facts: [
       {
         claim:
@@ -5789,10 +5755,9 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
       { label: "Read the methodology", url: "/methodology" },
     ],
     nextReadLinks: [
-      { label: "A better Crunchbase alternative when timing matters", url: "/compare/crunchbase-alternative-for-angel-investors" },
-      { label: "Read the buyer's guide", url: "/buyers-guide" },
-      { label: "When should you use First Look vs Dashboard?", url: "/answers/when-should-i-use-first-look-vs-dashboard" },
-      { label: "Get my First Look", url: "/firstlook" },
+      { label: "Crunchbase vs PitchBook", url: "/vs/crunchbase-vs-pitchbook" },
+    { label: "Crunchbase vs CB Insights", url: "/vs/crunchbase-vs-cb-insights" },
+    { label: "Free tier vs paid dashboard", url: "/pricing" },
     ],
     keywords: [
       "can GitDealFlow replace Crunchbase",
@@ -7838,7 +7803,244 @@ If the brief cannot survive on one page, the thinking is probably still too fuzz
       "startup momentum github",
     ],
   },
+
+  {
+    slug: "does-harmonic-integrate-with-affinity",
+    query: "Does Harmonic integrate with Affinity?",
+    h1: "Does Harmonic Integrate with Affinity?",
+    description:
+      "Yes. Harmonic publishes a native Affinity integration with two-way sync: sourced companies flow into Affinity, and Affinity data syncs back for relevance scoring.",
+    tldr:
+      "Harmonic publishes a native Affinity integration with two-way sync. Sourced companies push from Harmonic into Affinity on a weekly schedule, and Affinity lists and activity sync back into Harmonic, so relevance scoring reflects real CRM outcomes. Firms using the sync report faster event triage and top-of-funnel savings, with Polytomic covering other CRMs.",
+    definition:
+      "Yes. Harmonic publishes a native Affinity integration with two-way sync. New companies flow from Harmonic into Affinity on a weekly schedule, and Affinity lists sync back into Harmonic so relevance scores reflect real CRM activity. Firms using the sync report faster triage of event lists and top-of-funnel saves. Polytomic covers other CRMs.",
+    body: `**Yes, Harmonic integrates with Affinity natively.** Harmonic's own comparison material lists a native Affinity integration, and its Valo Ventures case study describes the production setup in detail: a two-way sync where sourced companies are pushed from Harmonic into Affinity, and Affinity lists and activity sync back into Harmonic.
+
+**How the sync actually works.** Harmonic runs as the sourcing layer, finding companies that match a fund's theses through team and network pattern matching. The weekly sync pushes those companies into Affinity, the relationship CRM where partners triage, track, and report. The reverse leg sends Affinity lists back to Harmonic, so Harmonic's relevance scores learn which of its discoveries the team actually cared about, and future searches score accordingly.
+
+**Why firms run the pairing.** The two products sit on different sides of the funnel: Harmonic discovers, Affinity manages. Without the sync, every sourced company is a manual export and import, and nothing about CRM outcomes ever improves sourcing. With it, Valo Ventures reports materially faster triage, their example is long event attendee lists scored and prioritized before a conference, and top-of-funnel sourcing that self-corrects against real CRM activity.
+
+**What it costs and how to buy.** Harmonic pricing is enterprise, sold on annual contracts with no public free tier, and Affinity is enterprise per-seat with no free tier either. The integration ships with the Harmonic platform rather than as a separate product line, but both contracts are negotiated sales, so confirm current terms with the vendors directly.
+
+**The honest alternative if both contracts are out of reach.** Solo angels and emerging managers rarely clear either vendor's pricing floor. The free path to the same shape: use a free signal layer like this one (GitHub commit-velocity across 350+ venture-relevant startups, with CSV and JSON export) and import the weekly shortlist into Affinity, Airtable, or a sheet manually. It is a manual sync, not a native one, but it costs zero and keeps the two-layer shape: signal feed finds, CRM manages.
+
+**Does GitDealFlow sync with Affinity natively?** No, there is no native connector. The dataset exports as CSV from the dashboard and as JSON from the public API, so a scripted weekly import is straightforward, and the MCP server lets agents pull the feed programmatically. The comparison below covers how this site's signal layer lines up against Harmonic for sourcing specifically.`,
+    facts: [
+      {
+        claim:
+          "Harmonic's published comparison states a native Affinity integration and compatibility with all CRMs via Polytomic.",
+        sourceUrl: "https://harmonic.ai/blog/harmonic-vs-sourcescrub",
+        sourceLabel: "Harmonic blog",
+      },
+      {
+        claim:
+          "Valo Ventures uses a reverse-sync from Affinity back to Harmonic, describing the two-way sync for relevance scoring and event-list triage.",
+        sourceUrl: "https://harmonic.ai/case-study/valo-ventures",
+        sourceLabel: "Harmonic case study",
+      },
+      {
+        claim:
+          "Affinity is a relationship-intelligence CRM with enterprise per-seat pricing and no public free tier; Harmonic is enterprise annual with no public free tier.",
+        sourceUrl: "/vs/affinity-vs-harmonic-ai",
+        sourceLabel: "Affinity vs Harmonic comparison",
+      },
+    ],
+    faqs: [
+      {
+        q: "Is the Harmonic Affinity sync two-way?",
+        a: "Yes. Harmonic pushes sourced companies into Affinity on a weekly schedule, and Affinity lists and activity sync back into Harmonic. Harmonic's Valo Ventures case study describes it as a two-way sync.",
+      },
+      {
+        q: "What CRMs does Harmonic integrate with besides Affinity?",
+        a: "Per Harmonic's published comparison material: native Affinity integration, plus compatibility with all CRMs via Polytomic.",
+      },
+      {
+        q: "Does GitDealFlow sync with Affinity?",
+        a: "No native connector. The ranked signal feed exports as CSV from the dashboard and as JSON from the public API, so a scripted weekly import into Affinity or Airtable is the practical bridge.",
+      },
+      {
+        q: "How much does the Affinity integration cost?",
+        a: "Both products are enterprise-priced with no public free tiers: Harmonic is sold on annual contracts, Affinity is per-seat. The integration is part of the Harmonic platform, not a separate tier, but confirm current terms directly with the vendors.",
+      },
+    ],
+    ctaUrl: "/compare/gitdealflow-vs-harmonic-for-solo-angels",
+    ctaLabel: "See how GitDealFlow compares to Harmonic",
+    related: [
+      "best-alt-data-tools-for-venture-capital",
+      "best-vc-deal-sourcing-tools-2026",
+      "what-is-vc-alt-data-and-why-it-matters",
+    ],
+    proofLinks: [
+      { label: "Affinity vs Harmonic, side by side", url: "/vs/affinity-vs-harmonic-ai" },
+      { label: "The Buyer's Guide to deal flow tooling", url: "/buyers-guide" },
+    ],
+    nextReadLinks: [
+      { label: "Affinity vs Harmonic.ai", url: "/vs/affinity-vs-harmonic-ai" },
+      { label: "GitDealFlow vs Harmonic for solo angels", url: "/compare/gitdealflow-vs-harmonic-for-solo-angels" },
+      { label: "Pricing and tiers", url: "/pricing" },
+    ],
+    keywords: [
+      "harmonic affinity integration",
+      "harmonic affinity sync",
+      "affinity harmonic",
+      "harmonic crm integration",
+      "affinity crm harmonic",
+    ],
+  },
+  {
+    slug: "how-to-get-scouted-on-github",
+    query: "How to get scouted on GitHub",
+    h1: "How to Get Scouted on GitHub",
+    description:
+      "Build a timestamped public track record: star strong repos before they raise, ship consistently, and turn your history into a verifiable 0-100 Scout Score.",
+    tldr:
+      "Getting scouted on GitHub means making your public activity legible as a talent signal: star promising repositories before they raise, keep a consistent commit history, and share your Scout Score, a 0-100 grade computed from your starring history against 75 validated unicorn-scale outcomes.",
+    definition:
+      "Getting scouted on GitHub means making your public activity legible as a talent signal. Star promising repositories before they raise, keep a consistent commit history, and share your Scout Score: a 0-100 grade computed from your starring history against 75 validated unicorn-scale outcomes. The receipts make your pattern visible to scouts, funds, and hiring teams.",
+    body: `**Scouting on GitHub runs in both directions.** Funds and startups watch engineering signals to find companies; scouts and hiring partners are found the same way, through their public track record. In 2026 that record has two layers: your commit history, which shows you ship, and your star history, which shows what you noticed and when.
+
+**The star history is the underrated layer.** Every GitHub star is timestamped and public. Star the right repositories before the outcome, and you own a receipt no resume can fake: you can prove you saw a company coming before the round, the acquisition, or the breakout. Scout Score exists to grade exactly that: it matches your starred repos, with timestamps, against 75 validated wins, unicorns, large fundings, and acquisitions including Vercel's $3.25B Series E, and computes a 0-100 score. Scores of 80+ rank as oracle, 60+ as elite, and the scoring logic is published, not a black box.
+
+**The three practices that actually move the score.** First, star deliberately and early: the score weights calls you made before the event, so a thoughtful star in week one beats a bandwagon star in week fifty. Second, ship in public: a maintained commit history is the other half of the talent signal, and it is the part that compounds month over month. Third, document the thesis: a star plus a sentence about why you starred it, in a repo or a note, turns a data point into a narrative a scout can act on.
+
+**How to get your score.** The receipts tool computes Scout Score from any public GitHub username: the MCP tool get_scout_receipts exposes it to agents, and the Scout Score guide walks through the full workflow and the rank scale. The score is yours to share, in a pitch, a partner-track conversation, or a fund application, and it is verifiable by anyone who reruns it.
+
+**What it does not do.** Scout Score grades your starring history, not your commit history, and it is a call-quality measure, not a coding assessment. A strong score says you have demonstrated pattern recognition on startups; it does not replace work samples, references, or a thesis conversation. Used honestly, it is the cheapest credible credential a technical scout or junior partner can build, because the raw material, your public GitHub, is already sitting there.`,
+    facts: [
+      {
+        claim:
+          "Scout Score matches a GitHub user's starred repositories, with timestamps, against 75 validated wins: unicorns, large fundings, and acquisitions.",
+        sourceUrl: "/learn/scout-score-guide",
+        sourceLabel: "Scout Score guide",
+      },
+      {
+        claim:
+          "Validated wins include Vercel (next.js), recorded with a $3.25B valuation on its 2024 Series E.",
+        sourceUrl: "/methodology",
+        sourceLabel: "Methodology",
+      },
+      {
+        claim:
+          "Scores of 80+ rank as oracle and 60+ as elite on the published Scout Score scale.",
+        sourceUrl: "/learn/scout-score-guide",
+        sourceLabel: "Scout Score guide",
+      },
+    ],
+    faqs: [
+      {
+        q: "Does starring repos actually help me get scouted?",
+        a: "Stars are a public, timestamped record of what you noticed and when. Scout Score turns that history into verifiable receipts. Funds evaluating scouts and junior partners ask exactly this: show the calls you made before the outcomes.",
+      },
+      {
+        q: "What should I star to raise my score?",
+        a: "Repositories that become validated wins: unicorns, large fundings, and acquisitions. The list is public in the methodology, and the weighting favors stars made before the event, so early, deliberate starring is the whole game.",
+      },
+      {
+        q: "Does my commit history count toward Scout Score?",
+        a: "No. Scout Score grades starring history only. Commit history is a separate engineering signal and matters for a different audience: teams evaluating you as a builder, not funds grading your calls.",
+      },
+      {
+        q: "Is my Scout Score public?",
+        a: "You generate it from your own GitHub username with the receipts tool, and you choose where to share it. Anyone with your username can rerun and verify it, which is the point.",
+      },
+    ],
+    ctaUrl: "/learn/scout-score-guide",
+    ctaLabel: "Get your Scout Score",
+    related: [
+      "scout-score-github-investment-track-record",
+      "track-github-momentum-investment-signals",
+      "github-metrics-that-predict-startup-fundraising",
+    ],
+    proofLinks: [
+      { label: "How the Scout Score is computed", url: "/learn/scout-score-guide" },
+      { label: "The full methodology", url: "/methodology" },
+    ],
+    nextReadLinks: [
+      { label: "Scout Score: a GitHub investment track record", url: "/answers/scout-score-github-investment-track-record" },
+      { label: "GitHub metrics that predict fundraising", url: "/answers/github-metrics-that-predict-startup-fundraising" },
+      { label: "Pricing and tiers", url: "/pricing" },
+    ],
+    keywords: [
+      "get scouted github",
+      "github scouting",
+      "scout score",
+      "github star track record",
+      "venture scout github",
+    ],
+  },
+  {
+    slug: "deep-space-startup-deal-flow",
+    query: "Deep space startup deal flow",
+    h1: "Deep Space Startup Deal Flow: Where the Signals Are in 2026",
+    description:
+      "Space Tech is a tracked sector here: 23 startups by Q3 2026 with commit-velocity and contributor signals. Deep-space teams raise on engineering milestones, not press.",
+    tldr:
+      "Space Tech is one of 15 tracked sectors in the Q3 2026 dataset, with 23 startups whose public GitHub activity shows commit velocity, contributor growth, and new repositories. Deep-space deal flow lives in these engineering signals: propulsion, autonomy, and ground-software teams accelerate visibly before announcements.",
+    definition:
+      "Space Tech is one of 15 sectors in the Q3 2026 dataset, with 23 tracked startups whose public GitHub activity shows commit velocity, contributor growth, and new repositories. Deep-space deal flow lives in these engineering signals: propulsion, autonomy, and ground-software teams accelerate visibly before announcements, and the feed ranks them weekly.",
+    body: `**Deep-space deal flow is rare, slow, and increasingly software-visible.** The launch and satellite boom of the 2020s trained funds to watch space, and deep-space teams, lunar logistics, orbital servicing, asteroid and ISRU bets, are now the frontier allocations. But deep-space rounds are infrequent, and the deals are won on engineering milestones long before the announcements: a propulsion test campaign, an autonomy stack release, a ground-software hire.
+
+**Where the signals actually live.** Modern space startups are software companies with a hardware problem. Flight software, ground stations, mission control, simulation, and autonomy stacks all ship on public GitHub, and those repos carry the same acceleration signals as any other sector: commit velocity, contributor growth, and new repository creation. The Space Tech sector here tracks 23 such startups in Q3 2026, one of 15 sectors in the dataset, refreshed weekly.
+
+**How to run a deep-space funnel in 2026.** Watch the sector sweep weekly, not the press. A team adding contributors and opening a new repo is spending new money, which in deep space usually means a milestone payment, a grant, or a pre-raise runway decision, all of which precede the round. Triaging on engineering acceleration gets you the conversation during the window when the round is still private, which is the only window that matters in a space where public rounds are few.
+
+**The honest limits.** GitHub sees the software half of the company only. Propulsion test stands, launch manifests, regulatory approvals, and hardware progress are invisible to it. Space-tech teams also skew pre-seed and seed, so signals are noisier than in enterprise SaaS: a three-contributor spike means less in a five-person orbital-services startup than in a forty-person fintech. Treat the feed as a when-to-look layer and verify hardware milestones, grants, and letters of intent through your own diligence channels before any allocation decision.
+
+**The weekly workflow.** Sweep the Space Tech sector page, shortlist the accelerating names, cross-check funding history and announced grants in a database, and reach out while the engineering curve is still private information. The sector feed, the API, and the MCP search tool all expose the same data; the guide below covers the mechanics end to end.`,
+    facts: [
+      {
+        claim:
+          "Space Tech is one of 15 tracked sectors in the Q3 2026 dataset, with 23 startups.",
+        sourceUrl: "https://signals.gitdealflow.com/api/signals.json",
+        sourceLabel: "signals.json",
+      },
+      {
+        claim:
+          "The dataset records commit velocity, contributor growth, and new repositories, refreshed weekly.",
+        sourceUrl: "/methodology",
+        sourceLabel: "Methodology",
+      },
+    ],
+    faqs: [
+      {
+        q: "Is deep space a separate sector here?",
+        a: "Space Tech covers it as one of 15 sectors. Deep-space teams sit inside the sector sweep alongside launch, satcom, and orbital services, and the sector slug for API and MCP queries is space-tech.",
+      },
+      {
+        q: "Can GitHub signals catch hardware-heavy space startups?",
+        a: "Partially. Flight software, ground stations, and autonomy stacks show up clearly; propulsion test campaigns and regulatory milestones do not. Use engineering signals for when-to-look and verify hardware progress separately.",
+      },
+      {
+        q: "How do I watch the sector weekly?",
+        a: "The Space Tech sector page holds the ranked sweep, and the MCP tool search_startups_by_sector accepts the space-tech slug for agent workflows. Both refresh with the weekly dataset update.",
+      },
+    ],
+    ctaUrl: "/startups/space-tech",
+    ctaLabel: "Sweep the Space Tech sector",
+    related: [
+      "how-to-find-stealth-startups-before-they-fundraise-2026",
+      "track-github-momentum-investment-signals",
+      "github-metrics-that-predict-startup-fundraising",
+    ],
+    proofLinks: [
+      { label: "The full methodology", url: "/methodology" },
+      { label: "The Buyer's Guide", url: "/buyers-guide" },
+    ],
+    nextReadLinks: [
+      { label: "Best VC deal sourcing tools (2026)", url: "/answers/best-vc-deal-sourcing-tools-2026" },
+      { label: "How to find stealth startups before they raise", url: "/answers/how-to-find-stealth-startups-before-they-fundraise-2026" },
+      { label: "Pricing and tiers", url: "/pricing" },
+    ],
+    keywords: [
+      "deep space startup",
+      "space tech deal flow",
+      "space startups investing",
+      "space tech vc",
+      "deep space startups",
+    ],
+  },
 ];
+
 
 export function getAgentQueryBySlug(slug: string): AgentQuery | undefined {
   return agentQueries.find((q) => q.slug === slug);
