@@ -67,7 +67,9 @@ Long-form educational guides for investors, scouts, and analysts. Written to be 
 - [Venture Scouting: Best Practices](https://gitdealflow.com/learn/venture-scouting-best-practices): leading indicators, weekly routine, receipts, access.
 - [GitHub Signals for VC Due Diligence](https://gitdealflow.com/learn/github-signals-for-vc-due-diligence): what the three signals can and cannot prove.
 - [Engineering Benchmarks by Funding Stage](https://gitdealflow.com/learn/engineering-benchmarks-by-stage): maturity patterns from pre-seed to Series B.
-- [Best Deal Flow Software](https://gitdealflow.com/best/best-deal-flow-software): CRM and pipeline tools, and where a signal layer fits.
+- [Best Deal Flow Tools & Software for Angel Investors 2026](https://gitdealflow.com/best/best-deal-flow-tools): prices and lead times for GitDealFlow ($0-$49/mo, GitHub momentum 3-6 weeks pre-round), PitchBook, Harmonic, Crunchbase, Affinity; verdicts per budget tier; free-tier options.
+- [What is deal flow software? Definition for investors](https://gitdealflow.com/best/best-deal-flow-tools#definition): deal flow software defined in one paragraph, with the 2026 price/lead-time table (GitDealFlow, PitchBook, Harmonic, Crunchbase, Affinity).
+- [PitchBook Alternatives for Angel Investors](https://gitdealflow.com/alternatives-to/pitchbook-alternatives): cheaper alternatives with prices: GitDealFlow free tier, Crunchbase Pro $49/mo, Tracxn, Dealroom, plus what you lose vs PitchBook at $20k+/yr.
 
 ## Pricing
 

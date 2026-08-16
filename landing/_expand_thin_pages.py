@@ -431,13 +431,13 @@ LEARN_PAGES = [
 ]
 
 SECTOR_PAGES = [
-    ("ai--machine-learning-startups", "AI & Machine Learning",
+    ("ai-machine-learning-startups", "AI & Machine Learning",
      "AI/ML is the most active startup sector globally in 2026. Teams are building foundation models, inference infrastructure, agent orchestration frameworks, and vertical AI applications at unprecedented velocity.",
      "AI/ML momentum signals concentrate in training-framework commits, inference-serving infrastructure, eval harness activity, and agent-orchestration repo growth. GitDealFlow weights eval and serving repos highest, they correlate with production deployment, not just research output."),
-    ("climate--energy-startups", "Climate & Energy",
+    ("climate-energy-startups", "Climate & Energy",
      "Climate tech has grown into one of the largest startup sectors, spanning carbon accounting, grid optimization, renewables asset management, and sustainability infrastructure.",
      "Climate-tech momentum shows up as carbon-accounting platform commits, grid-optimization service work, and ESG-reporting integration growth. GitDealFlow weights regulatory-reporting module commits highest, they correlate with enterprise procurement."),
-    ("crypto--web3-startups", "Crypto & Web3",
+    ("crypto-web3-startups", "Crypto & Web3",
      "Crypto and Web3 startups continue building infrastructure across DeFi protocols, L2 scaling solutions, wallet infrastructure, and on-chain data analytics.",
      "Crypto/web3 momentum signals come from protocol commits, smart-contract deployment frequency, and developer SDK releases. GitDealFlow weights protocol and SDK repos highest, they indicate ecosystem adoption."),
     ("cybersecurity-startups", "Cybersecurity",
