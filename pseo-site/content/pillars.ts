@@ -206,6 +206,18 @@ export const postPillars: Record<string, string> = {
   "github-due-diligence-checklist-20-minutes": "startup-due-diligence",
   "ai-in-vc-deal-sourcing-practical-guide": "deal-sourcing-workflow",
   "how-to-track-startups-before-they-announce": "deal-sourcing-workflow",
+
+  // ---- "How VCs source deals" cluster (2026-08-16, §51) ----
+  "how-do-vcs-source-deals": "deal-sourcing-workflow",
+  "how-vc-firms-find-startups-before-everyone-else": "deal-sourcing-workflow",
+  "proprietary-deal-flow-what-it-actually-means": "deal-sourcing-workflow",
+  "vc-deal-pipeline-stages-explained": "deal-flow-management",
+  "warm-introductions-startup-fundraising": "deal-sourcing-workflow",
+  "how-do-demo-days-work-for-investors": "deal-sourcing-workflow",
+  "deal-sourcing-network-how-to-build-one": "deal-sourcing-workflow",
+  "vc-sourcing-analyst-playbook": "deal-sourcing-workflow",
+  "deal-sourcing-best-practices-vc": "deal-sourcing-workflow",
+  "inbound-vs-outbound-deal-sourcing": "deal-sourcing-workflow",
 };
 
 export function getPillarForPost(slug: string): Pillar | undefined {

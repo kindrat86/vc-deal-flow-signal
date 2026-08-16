@@ -1,0 +1,85 @@
+{
+  "currentPeriod": "q3-2026",
+  "redirects": [
+    {
+      "source": "/best/agtech-2025",
+      "destination": "/startups-to-watch/agtech-q4-2025"
+    },
+    {
+      "source": "/best/ai-ml-2025",
+      "destination": "/startups-to-watch/ai-ml-q4-2025"
+    },
+    {
+      "source": "/best/climate-tech-2025",
+      "destination": "/startups-to-watch/climate-tech-q4-2025"
+    },
+    {
+      "source": "/best/cybersecurity-2025",
+      "destination": "/startups-to-watch/cybersecurity-q4-2025"
+    },
+    {
+      "source": "/best/data-infrastructure-2025",
+      "destination": "/startups-to-watch/data-infrastructure-q4-2025"
+    },
+    {
+      "source": "/best/developer-tools-2025",
+      "destination": "/startups-to-watch/developer-tools-q4-2025"
+    },
+    {
+      "source": "/best/ecommerce-infrastructure-2025",
+      "destination": "/startups-to-watch/ecommerce-infrastructure-q4-2025"
+    },
+    {
+      "source": "/best/edtech-2025",
+      "destination": "/startups-to-watch/edtech-q4-2025"
+    },
+    {
+      "source": "/best/enterprise-saas-2025",
+      "destination": "/startups-to-watch/enterprise-saas-q4-2025"
+    },
+    {
+      "source": "/best/fintech-2025",
+      "destination": "/startups-to-watch/fintech-q4-2025"
+    },
+    {
+      "source": "/best/gaming-2025",
+      "destination": "/startups-to-watch/gaming-q4-2025"
+    },
+    {
+      "source": "/best/healthcare-2025",
+      "destination": "/startups-to-watch/healthcare-q4-2025"
+    },
+    {
+      "source": "/best/hr-tech-2025",
+      "destination": "/startups-to-watch/hr-tech-q4-2025"
+    },
+    {
+      "source": "/best/legal-tech-2025",
+      "destination": "/startups-to-watch/legal-tech-q4-2025"
+    },
+    {
+      "source": "/best/proptech-2025",
+      "destination": "/startups-to-watch/proptech-q4-2025"
+    },
+    {
+      "source": "/best/robotics-2025",
+      "destination": "/startups-to-watch/robotics-q4-2025"
+    },
+    {
+      "source": "/best/social-community-2025",
+      "destination": "/startups-to-watch/social-community-q4-2025"
+    },
+    {
+      "source": "/best/space-tech-2025",
+      "destination": "/startups-to-watch/space-tech-q4-2025"
+    },
+    {
+      "source": "/best/supply-chain-2025",
+      "destination": "/startups-to-watch/supply-chain-q4-2025"
+    },
+    {
+      "source": "/best/web3-2025",
+      "destination": "/startups-to-watch/web3-q4-2025"
+    }
+  ]
+}

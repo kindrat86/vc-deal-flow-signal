@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentSummary } from "@/components/AgentSummary";
-import { getDataLastModified } from "@/lib/data";
+import { getDataLastModified, getCurrentPeriod } from "@/lib/data";
 import PSEOFooterNav from "@/components/PSEOFooterNav";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { HreflangLinks } from "@/components/HreflangLinks";
@@ -128,6 +128,7 @@ const enterpriseFaqs: { q: string; a: string }[] = [
 
 export default function EnterprisePage() {
   const asOf = getDataLastModified().toISOString().slice(0, 10);
+  const period = getCurrentPeriod();
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -244,7 +245,7 @@ export default function EnterprisePage() {
           tldr="Enterprise pricing for VC Deal Flow Signal (GitDealFlow) is structured as the Sharp Tier at €497/mo (€4,970/yr saves two months) plus a fully-scoped custom enterprise engagement starting at €15,000/yr. Sharp Tier is application-gated, capped at 8 funds in 2026, and includes everything in Insider Circle plus quarterly portfolio review calls, custom thesis-aligned watchlists, white-labeled API endpoint at /api/v1/sharp/<your-fund>, methodology source code access, same-day signal questions, data-room exports for LP updates, and all future paid MCP tools at no per-tool upcharge. Custom enterprise scope adds white-label fund-branded UI, dedicated Slack channel, on-call fundraise diligence, custom sector coverage expansion, and multi-seat agreements. Application: email signal at gitdealflow dot com with fund name, AUM, thesis, and intent. 48-hour reply window, 20-minute intro call, same-week onboarding if there's a fit. Cancellation is month-to-month with no minimum term."
           pageUrl="https://signals.gitdealflow.com/enterprise"
           asOf={asOf}
-          citeAs="VC Deal Flow Signal, Enterprise (signals.gitdealflow.com/enterprise), retrieved Q2 2026."
+          citeAs={`VC Deal Flow Signal, Enterprise (signals.gitdealflow.com/enterprise), retrieved ${period.name}.`}
           facts={[
             {
               claim:

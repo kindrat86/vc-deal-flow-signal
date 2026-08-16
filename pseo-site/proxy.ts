@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { detectAgentBot } from "@/lib/agent-bots";
+import { researchPaperLeafNoindexByPath } from "@/content/research-paper-policy";
 
 const BASE_URL = "https://signals.gitdealflow.com";
 const CANONICAL_HOST = "signals.gitdealflow.com";
@@ -117,8 +118,26 @@ const NOINDEX_PREFIXES = [
   "/search",
 ];
 
+/**
+ * §54: research-paper leaf noindex is slug-driven, not prefix-driven (the
+ * keepIndexable leaves + the /research-paper index hub must keep serving
+ * `index, follow`). Registered here so robotsDirectiveFor stays the single
+ * X-Robots-Tag decision point. Inert while policy decision = "retain".
+ * Imported lazily inside the matcher to keep the middleware edge bundle lean.
+ */
+function researchPaperNoindex(pathname: string): boolean {
+  // Inline the policy read: proxy runs in the edge runtime, content modules
+  // with large data imports are tree-shaken away if referenced lazily. The
+  // policy module is tiny (no data imports) so a static import is safe, but
+  // keep the indirection explicit for the §54 guard.
+  return researchPaperLeafNoindexByPath(pathname);
+}
+
 function shouldNoindex(pathname: string): boolean {
-  return NOINDEX_PREFIXES.some((prefix) => pathname.startsWith(prefix));
+  if (NOINDEX_PREFIXES.some((prefix) => pathname.startsWith(prefix))) {
+    return true;
+  }
+  return researchPaperNoindex(pathname);
 }
 
 /**

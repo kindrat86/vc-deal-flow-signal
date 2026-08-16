@@ -116,6 +116,11 @@
     "destination": "https://signals.gitdealflow.com/citations",
     "permanent": true
   },
+  {
+    "source": "/blog",
+    "destination": "https://signals.gitdealflow.com/blog",
+    "permanent": true
+  },
     {
       "source": "/ai--machine-learning-startups/:path*",
       "destination": "/ai-machine-learning-startups/:path*",

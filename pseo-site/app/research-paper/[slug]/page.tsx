@@ -8,6 +8,7 @@ import {
 } from "@/content/research-papers";
 import { glossaryTerms } from "@/content/glossary";
 import { getSector } from "@/content/sectors";
+import { researchPaperLeafIndexable } from "@/content/research-paper-policy";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
 import RelatedLinks from "@/components/RelatedLinks";
@@ -39,6 +40,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     openGraph: { title: p.metaTitle, description: p.metaDescription, type: "article", url: `/research-paper/${slug}` },
     twitter: { card: "summary_large_image", title: p.metaTitle, description: p.metaDescription },
     alternates: { canonical: `/research-paper/${slug}` },
+    // §54: data-driven noindex (content/research-paper-policy.ts). Inert while
+    // decision = "retain"; the evaluator cron flips it on the pre-registered
+    // post-lede CTR rule (>= 3000 imps AND < 0.20% CTR). noindex,follow with
+    // self-canonical: unique content, link equity keeps flowing to siblings.
+    robots: researchPaperLeafIndexable(slug)
+      ? { index: true, follow: true }
+      : { index: false, follow: true },
   };
 }
 

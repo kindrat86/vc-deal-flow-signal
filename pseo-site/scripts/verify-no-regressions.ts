@@ -4241,7 +4241,7 @@ landingCheck(
     const needles: Array<[string, string]> = [
       ['slug: "best-startup-database"', "best-startup-database entry missing"],
       ['slug: "deal-flow-crm"', "deal-flow-crm entry missing"],
-      ['Crunchbase Pro ($49/month) is the broadest', "database definition reverted"],
+      ['"Crunchbase Pro ($49/month) is the broadest', "database definition reverted"],
       ['"A deal flow CRM is pipeline software', "CRM definition reverted"],
       ['"What is the best free startup database?"', "database FAQ head question lost"],
       ['"Do solo angels need a deal flow CRM?"', "CRM FAQ head question lost"],
@@ -4262,46 +4262,101 @@ landingCheck(
   }
 }
 
-// ---------------------------------------------------------------------------
-// §53 Reddit $20 probe guard (2026-08-16). Three invariants:
-//   a) The six Reddit /r/ campaigns carry the probe cohort tag
-//      utm_campaign=reddit-probe-2026-08 (the May tags vc-2026-05/dev-2026-05
-//      were stale before any spend ever ran and would split the probe's GA4
-//      cohort into two mislabeled months).
-//   b) PaidTrafficBanner copy never claims a banned panel count. "219" may
-//      appear ONLY as "219 startup-period observations" (the honest form;
-//      "219-startup panel" overstates the SSRN panel, which is 55 startups).
-//   c) The banner stays mounted on /firstlook (paid traffic needs the
-//      channel-scent headline; a lineage that drops the mount wastes clicks).
+
+// 54. Research-paper cluster noindex machinery (audit: search-intent match
+//     42, "if CTR stays ~0, noindex the pure-bibliography leaves"). Ground
+//     truth 08-16: 28d = 20,085 imps / 3 clicks / 0.015% CTR (pre-lede). The
+//     investor lede went live 08-15 evening; verdict = post-lede CTR.
+//     This guard pins the MACHINERY (all three layers wired to the single
+//     policy file), not the decision. Decision = "retain" today; the
+//     evaluator cron flips it on the pre-registered rule (>= 3000 post-lede
+//     imps AND < 0.20% CTR -> noindex, keepIndexable leaves exempt). A tree
+//     missing any layer is undeployable in BOTH states, so the flip can
+//     never land half-wired.
 // ---------------------------------------------------------------------------
 {
-  const pa = read("lib/paid-acquisition.ts");
-  if (pa) {
-    const probeCount = (pa.match(/campaign: "reddit-probe-2026-08"/g) || []).length;
-    if (probeCount !== 6) {
-      failures.push(
-        `§53 Reddit probe tags: expected 6 campaigns with utm_campaign "reddit-probe-2026-08", found ${probeCount}.\n    file: lib/paid-acquisition.ts\n    fix:  restore the probe cohort tag on all six Reddit campaigns (vc/angel/startups/devtools/programming/ml); the May tags were never live-spent and are stale`,
-      );
-    }
-    if (pa.includes('campaign: "vc-2026-05"') || pa.includes('campaign: "dev-2026-05"')) {
-      failures.push(
-        `§53 Reddit probe tags: stale May campaign tags (vc-2026-05/dev-2026-05) are back in lib/paid-acquisition.ts.\n    fix:  all six Reddit campaigns share "reddit-probe-2026-08"; utm_content segments the subreddit`,
-      );
-    }
-  }
-  const banner = read("components/PaidTrafficBanner.tsx");
-  if (banner) {
-    if (/219-startup panel/.test(banner)) {
-      failures.push(
-        `§53 banner claim: PaidTrafficBanner says "219-startup panel" (banned overstatement; the SSRN panel is 55 startups, 219 is the observation count).\n    file: components/PaidTrafficBanner.tsx\n    fix:  use "219 startup-period observations" or the "350+ orgs" panel floor`,
-      );
-    }
-  }
-  const firstlook = read("app/firstlook/page.tsx");
-  if (firstlook && !firstlook.includes("<PaidTrafficBanner />")) {
+  const policy = read("content/research-paper-policy.ts");
+  if (!policy) {
     failures.push(
-      `§53 banner mount: PaidTrafficBanner is no longer mounted on /firstlook. Paid traffic loses the channel-scent headline (Brunson scent rule).\n    file: app/firstlook/page.tsx\n    fix:  restore the import + <PaidTrafficBanner /> node`,
+      `§54 research-paper policy: content/research-paper-policy.ts is missing.\n    fix:  restore it from git; the noindex decision cannot be data-driven without it`,
     );
+  } else {
+    // Policy file must carry the pre-registered rule + both keepIndexable
+    // leaves (DORA = methodology lineage; Vaswani = §37 hub-bridge href).
+    // NOTE: the decision field itself is validated as EITHER state (the
+    // evaluator cron flips it on GSC data; the guard pins the machinery,
+    // not the state, or the flip could never deploy).
+    for (const needle of [
+      "minImpressions: 3000",
+      "maxCtr: 0.002",
+      '"forsgren-2018-accelerate-dora-research"',
+      '"vaswani-2017-attention-is-all-you-need"',
+    ]) {
+      if (!policy.includes(needle)) {
+        failures.push(
+          `§54 research-paper policy lost needle "${needle}".\n    file: content/research-paper-policy.ts\n    fix:  restore the pre-registered rule / keepIndexable set (evaluator cron + guard depend on the exact literals)`,
+        );
+      }
+    }
+    if (!/decision: "(retain|noindex)",/.test(policy)) {
+      failures.push(
+        `§54 research-paper policy lost the decision field (must be "retain" or "noindex").\n    fix:  restore the decision literal; only the evaluator cron may change it`,
+      );
+    }
+    if (/"retain"\s*\|\s*"noindex"/.test(policy) === false) {
+      failures.push(
+        `§54 research-paper policy lost the ResearchPaperDecision union ("retain" | "noindex").\n    fix:  restore the type union; a single-state policy cannot be flipped`,
+      );
+    }
+    // Layer 1: leaf metadata robots wired to the policy.
+    const leaf = read("app/research-paper/[slug]/page.tsx");
+    if (
+      !leaf ||
+      !leaf.includes("researchPaperLeafIndexable") ||
+      !leaf.includes("{ index: false, follow: true }")
+    ) {
+      failures.push(
+        `§54 research-paper leaf metadata not wired to the policy.\n    file: app/research-paper/[slug]/page.tsx\n    fix:  restore robots: researchPaperLeafIndexable(slug) ? index : noindex,follow in generateMetadata`,
+      );
+    }
+    // Layer 2: proxy X-Robots-Tag slug-driven noindex wired.
+    const proxy = read("proxy.ts");
+    if (
+      !proxy ||
+      !proxy.includes("researchPaperLeafNoindexByPath") ||
+      !proxy.includes("researchPaperNoindex(pathname)")
+    ) {
+      failures.push(
+        `§54 proxy.ts lost the research-paper slug-driven noindex hook.\n    fix:  restore researchPaperNoindex() + the shouldNoindex delegation in proxy.ts`,
+      );
+    }
+    // Layer 3: sitemap membership filtered by the policy.
+    const sitemap = read("app/sitemap/[id]/route.ts");
+    if (
+      !sitemap ||
+      !sitemap.includes("researchPaperLeafIndexable") ||
+      !sitemap.includes(".filter((slug) => researchPaperLeafIndexable(slug))")
+    ) {
+      failures.push(
+        `§54 sitemap content-shard lost the research-paper indexability filter.\n    file: app/sitemap/[id]/route.ts\n    fix:  restore .filter((slug) => researchPaperLeafIndexable(slug)) on the leaf spread`,
+      );
+    }
+    // keepIndexable entries must be REAL slugs (guards against typos in the
+    // exempt set: a typo silently noindexes a keep-leaf on flip, or worse,
+    // exempts nothing).
+    const papers = read("content/research-papers.ts");
+    if (papers) {
+      for (const slug of [
+        "forsgren-2018-accelerate-dora-research",
+        "vaswani-2017-attention-is-all-you-need",
+      ]) {
+        if (!papers.includes(`slug: "${slug}"`)) {
+          failures.push(
+            `§54 keepIndexable slug "${slug}" does not exist in content/research-papers.ts.\n    fix:  correct the slug in content/research-paper-policy.ts`,
+          );
+        }
+      }
+    }
   }
 }
 

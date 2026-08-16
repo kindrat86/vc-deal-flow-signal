@@ -1,5 +1,22 @@
 import type { NextConfig } from "next";
 import * as path from "node:path";
+import { readFileSync } from "node:fs";
+
+// Historical /best/ redirects are DATA-DERIVED (2026-08-19, quarterly
+// freshness fix): scripts/generate-best-redirects.ts writes
+// data/best-redirects.json in prebuild from data/startups.json, and
+// verify-no-regressions.ts fails any tree where the JSON drifted from the
+// data or where a /best/ redirect is hardcoded. Before this, the five
+// hardcoded Q2-freeze redirects silently shadowed five live Q3 pages.
+const bestRedirects: { source: string; destination: string }[] = (() => {
+  try {
+    return JSON.parse(
+      readFileSync(path.join(__dirname, "data", "best-redirects.json"), "utf8"),
+    ).redirects;
+  } catch {
+    return []; // missing only in bare dev checkouts; the prebuild guard owns correctness
+  }
+})();
 
 const nextConfig: NextConfig = {
   // Pin turbopack root to this package so worktree builds (and any nested
@@ -198,41 +215,16 @@ const nextConfig: NextConfig = {
         destination: "/vs/crunchbase-vs-cb-insights",
         permanent: true,
       },
-      {
-        // developer-tools sector froze in Q2-2026, so its /best/ page no
-        // longer generates, but GSC 90d still shows 123 impressions at
-        // pos 10.1 on the 404. Point the stale URL at the live sector hub.
-        source: "/best/developer-tools-2026",
-        destination: "/sectors/developer-tools",
+      // Historical /best/ slugs (data-derived, see the bestRedirects const at
+      // the top of this file). A /best/ URL that stops generating (sector
+      // freeze or year rollover) keeps its GSC equity via a 308 to the
+      // intent-matched quarter snapshot. Empty today (all sectors carry the
+      // current period), self-maintains at every future quarter rollover.
+      ...bestRedirects.map((r) => ({
+        source: r.source,
+        destination: r.destination,
         permanent: true,
-      },
-      {
-        // Same freeze, remaining four Q2-2026 sectors (2026-08-16, audit
-        // win #2 residuals). GSC 90d on the 404s: ai-ml 48 imps pos 13.0,
-        // fintech 25 imps pos 28.8, climate-tech 23 imps pos 12.3,
-        // cybersecurity 22 imps pos 17.4. No /sectors/ hub exists for these
-        // four (only developer-tools has one), so point at their live Q2
-        // startups-to-watch snapshots - same "best startups in X" intent
-        // and the q2->q3 roll pattern above already handles future freezes.
-        source: "/best/ai-ml-2026",
-        destination: "/startups-to-watch/ai-ml-q2-2026",
-        permanent: true,
-      },
-      {
-        source: "/best/fintech-2026",
-        destination: "/startups-to-watch/fintech-q2-2026",
-        permanent: true,
-      },
-      {
-        source: "/best/climate-tech-2026",
-        destination: "/startups-to-watch/climate-tech-q2-2026",
-        permanent: true,
-      },
-      {
-        source: "/best/cybersecurity-2026",
-        destination: "/startups-to-watch/cybersecurity-q2-2026",
-        permanent: true,
-      },
+      })),
       {
         // Legacy sitemap path (retired 2026-07-21): the "high-intent" pSEO shard
         // was consolidated into the /sitemap/[id] shards, but the old URL still

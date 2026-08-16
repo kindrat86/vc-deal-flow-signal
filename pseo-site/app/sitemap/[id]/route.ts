@@ -33,6 +33,7 @@ import { getAllYearInReviewSlugs } from "@/content/year-in-review";
 import { getAllPersonaSlugs } from "@/content/personas";
 import { getAllCaseStudySlugs } from "@/content/case-studies";
 import { getAllResearchPaperSlugs } from "@/content/research-papers";
+import { researchPaperLeafIndexable } from "@/content/research-paper-policy";
 import { pillars } from "@/content/pillars";
 import { agentQueries } from "@/content/agent-queries";
 import { glossaryTerms } from "@/content/glossary";
@@ -546,13 +547,19 @@ export async function GET(_req: Request, ctx: RouteContext) {
         priority: 0.8,
       })),
       // /research-paper/[slug] external academic references
+      // §54: noindexed leaves leave the sitemap (a sitemap is a crawl+index
+      // directive; listing a noindex URL wastes crawl budget and contradicts
+      // the meta). Index hub always listed. Driven by
+      // content/research-paper-policy.ts (inert while decision = "retain").
       { url: `${BASE_URL}/research-paper`, lastmod, changefreq: "monthly", priority: 0.85 },
-      ...getAllResearchPaperSlugs().map((slug) => ({
-        url: `${BASE_URL}/research-paper/${slug}`,
-        lastmod,
-        changefreq: "monthly",
-        priority: 0.8,
-      })),
+      ...getAllResearchPaperSlugs()
+        .filter((slug) => researchPaperLeafIndexable(slug))
+        .map((slug) => ({
+          url: `${BASE_URL}/research-paper/${slug}`,
+          lastmod,
+          changefreq: "monthly",
+          priority: 0.8,
+        })),
     ];
   } else if (id === "crossings") {
     entries = [

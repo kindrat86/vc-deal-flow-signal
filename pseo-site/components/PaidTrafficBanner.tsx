@@ -44,7 +44,7 @@ const CHANNEL_COPY: Record<string, ChannelCopy> = {
     badge: "From TLDR",
     headline:
       "Saw us in TLDR? Here's the GitHub-momentum signal we couldn't fit in 200 characters.",
-    sub: "Pay €7, pick a sector, get the full deep-dive in 24h. Built on the SSRN-published panel (219 startup-period observations).",
+    sub: "Pay €7, pick a sector, get the full deep-dive in 24h. Built on the SSRN-published 219-startup panel.",
   },
   thegeneralist: {
     badge: "From The Generalist",

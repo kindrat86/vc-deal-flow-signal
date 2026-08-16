@@ -1,3 +1,6 @@
+// ---- "How VCs source deals" cluster (topical-authority win, 2026-08-16; §51-guarded) ----
+import { SOURCING_POSTS } from "@/content/posts-sourcing-cluster";
+
 export interface BlogFAQ {
   question: string;
   answer: string;
@@ -4217,6 +4220,7 @@ const TOFU_POSTS: BlogPost[] = [
   },
 ];
 allPosts.push(...TOFU_POSTS);
+allPosts.push(...SOURCING_POSTS); // §51 sourcing cluster
 
 try {
   // eslint-disable-next-line @typescript-eslint/no-require-imports

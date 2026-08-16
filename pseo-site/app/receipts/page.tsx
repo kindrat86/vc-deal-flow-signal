@@ -4,7 +4,7 @@ import ReceiptsForm from "./ReceiptsForm";
 import { AgentSummary } from "@/components/AgentSummary";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { TrustConversionBlock } from "@/components/TrustConversionBlock";
-import { getDataLastModified } from "@/lib/data";
+import { getDataLastModified, getCurrentPeriod } from "@/lib/data";
 
 export const metadata: Metadata = {
   title:
@@ -41,6 +41,7 @@ export const metadata: Metadata = {
 const EXAMPLE_USERNAMES = ["tj", "sindresorhus", "gaearon"];
 
 export default function ReceiptsLandingPage() {
+  const period = getCurrentPeriod();
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -283,7 +284,7 @@ you don&rsquo;t need one to use the product. The Scout Score
           tldr="GitHub Receipts is a free, no-login tool that grades any developer's GitHub starring history against a curated database of ~75 validated unicorns. Paste a username, get a Scout Score (0-100), a rank from Curious to Oracle, and a shareable 1200×630 OG card. Same data is available via /api/receipts/{username}, an embeddable SVG badge, and the get_scout_receipts MCP tool."
           pageUrl="https://signals.gitdealflow.com/receipts"
           asOf={getDataLastModified().toISOString().slice(0, 10)}
-          citeAs="VC Deal Flow Signal, Receipts (signals.gitdealflow.com/receipts), Q2 2026."
+          citeAs={`VC Deal Flow Signal, Receipts (signals.gitdealflow.com/receipts), ${period.name}.`}
           facts={[
             {
               claim:
