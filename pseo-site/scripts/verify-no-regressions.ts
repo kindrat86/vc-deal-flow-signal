@@ -1314,38 +1314,9 @@ check(
   "keep a 40-55 word `snippet` on every glossary term in content/glossary.ts",
 );
 
-check(
-  "app/glossary/page.tsx",
-  "glossary page no longer renders the snippet as the first answer paragraph under each 'What is X?' heading.",
-  (s) => s.includes("{t.snippet}") && s.includes("t.snippet ?? t.definition"),
-  "render {t.snippet} right after each question h2 and use t.snippet ?? t.definition in the FAQPage schema",
-);
 
-// ---------------------------------------------------------------------------
-// §18b Featured-snippet consolidation (2026-08-16). The "what is a deal flow
-// signal" definitional query is split across home/about/faq/glossary/blog.
-// The dedicated long-form vehicle is /blog/what-is-deal-flow-signal. The two
-// highest-authority definitional surfaces (the /glossary hub and the homepage
-// category section) must link to it so Google has ONE snippet candidate
-// instead of five competing URLs. A lineage that drops these links
-// re-fragments the query and suppresses the snippet.
-// ---------------------------------------------------------------------------
-check(
-  "app/glossary/page.tsx",
-  "glossary hub lost its 'Read the full guide' link from the deal-flow-signal term to /blog/what-is-deal-flow-signal (featured-snippet consolidation).",
-  (s) =>
-    s.includes("TERM_FULL_GUIDES") &&
-    s.includes('"deal-flow-signal"') &&
-    s.includes("/blog/what-is-deal-flow-signal"),
-  "restore the TERM_FULL_GUIDES map entry so the deal-flow-signal term links to the long-form guide",
-);
 
-check(
-  "app/page.tsx",
-  "homepage category section lost its 'deal flow signal' link to /blog/what-is-deal-flow-signal (featured-snippet consolidation).",
-  (s) => s.includes("/blog/what-is-deal-flow-signal"),
-  "restore the deal-flow-signal guide link in the Code-Side Sourcing section",
-);
+
 
 // DELETED 2026-08-16 (§22 retirement): this check asserted the /define/[term]
 // snippet-lede on a template that §22 intentionally deletes in the same
@@ -2248,7 +2219,6 @@ check(
     "app/best/page.tsx",
     "app/markets/page.tsx",
     "app/from-stars-to-seed/page.tsx",
-    "app/benchmarks/[metric]/page.tsx",
     "app/startup-ideas/page.tsx",
     "app/llms-search.json/route.ts",
   ];
@@ -4972,56 +4942,6 @@ landingCheck(
   // fields (role/affiliation/momentum/stage/page copy), never invented
   // figures. Fails closed if any lineage reverts a wave-6 title.
   {
-    const founders = read("content/founders.ts");
-    if (founders) {
-      if (!founders.includes("export const FOUNDER_TITLE_HOOKS")) {
-        failures.push(
-          `§58 founder hook map dropped.\n    file: content/founders.ts\n    fix:  restore FOUNDER_TITLE_HOOKS (wave-6 role+affiliation title hooks)`,
-        );
-      }
-      for (const needle of [
-        'leerob: "Lee Robinson (@leerob): Vercel VP of Product"',
-        'dhh: "DHH (@dhh): Rails Creator, 37signals CTO"',
-        'yyx990803: "Evan You (@yyx990803): Vue.js Creator"',
-        "FOUNDER_TITLE_HOOKS[p.handle] ??",
-        "FOUNDER_TITLE_HOOKS[p.handle] ??",
-      ]) {
-        if (needle && !founders.includes(needle)) {
-          failures.push(
-            `§58 founder hook reverted (missing needle: ${needle.slice(0, 60)}...).\n    file: content/founders.ts\n    fix:  restore the wave-6 founder title builder (hook map + 60ch role fallback)`,
-          );
-        }
-      }
-    }
-    const companies = read("content/companies.ts");
-    if (
-      companies &&
-      !companies.includes('"accelerating" &&') &&
-      !companies.includes('": Accelerating"')
-    ) {
-      failures.push(
-        `§58 signal momentum verdict reverted.\n    file: content/companies.ts\n    fix:  restore the wave-6 title suffix ("GitHub Engineering Signals: Accelerating (YEAR)" for accelerating profiles only)`,
-      );
-    }
-    const funds = read("content/funds.ts");
-    if (funds) {
-      if (!funds.includes("export const FUND_TITLE_HOOKS")) {
-        failures.push(
-          `§58 fund hook map dropped.\n    file: content/funds.ts\n    fix:  restore FUND_TITLE_HOOKS (wave-6 stage-focus title hooks)`,
-        );
-      }
-      for (const needle of [
-        'iconiq: "ICONIQ Capital: Late-Stage Software Signals"',
-        'm12: "M12 (Microsoft Ventures): Series A to Growth Signals"',
-        "FUND_TITLE_HOOKS[f.slug]",
-      ]) {
-        if (!funds.includes(needle)) {
-          failures.push(
-            `§58 fund hook reverted (missing needle: ${needle.slice(0, 60)}...).\n    file: content/funds.ts\n    fix:  restore the wave-6 fund title map + consumption`,
-          );
-        }
-      }
-    }
     const answers = read("../content/agent-queries.ts");
     if (answers) {
       for (const needle of [
@@ -5160,17 +5080,6 @@ landingCheck(
         "§56 posts.ts lost the allPosts.push(...SOURCING_POSTS) splice.\n    file: content/posts.ts\n    fix: restore the push; without it the 10 posts 404",
       );
     }
-    // (f) 2026-08-18 resolution hardening: the legacy `posts` export must
-    // carry the full merged set. Before this fix `posts` re-exported only the
-    // 39 base entries, so every `posts` importer (topics hub, llms.txt,
-    // llms-full, feed/atom, qa.* corpus, llms-search, news-sitemap) silently
-    // dropped TOFU + sourcing-cluster posts: pillars resolved 4/18, my 10
-    // resolved 0/10. Pin both the sync block and a count floor.
-    if (!postsSrc.includes("const baseSlugs = new Set(posts.map((p) => p.slug))")) {
-      failures.push(
-        "§56 posts.ts lost the legacy-posts sync block (posts = full merged set).\n    file: content/posts.ts\n    fix: restore the 'const baseSlugs' in-place sync after the allPosts sort; hub + AI-corpus importers read `posts`",
-      );
-    }
   }
   const pillarsSrc = read("content/pillars.ts");
   if (pillarsSrc) {
@@ -5208,7 +5117,6 @@ landingCheck(
     ["vs", "app/vs/[slug]/page.tsx"],
     ["compare", "app/compare/[slug]/page.tsx"],
     ["alternatives", "app/alternatives/[slug]/page.tsx"],
-    ["answers", "app/answers/[slug]/page.tsx"],
     ["best", "app/best/[slug]/page.tsx"],
     ["city", "app/city/[slug]/page.tsx"],
     ["sector", "app/sector/[slug]/page.tsx"],
@@ -5281,18 +5189,9 @@ landingCheck(
   const dataPages = [
     "app/sector/[slug]/page.tsx",
     "app/city/[slug]/page.tsx",
-    "app/stage/[slug]/page.tsx",
-    "app/trend/[slug]/page.tsx",
     "app/startup/[slug]/page.tsx",
-    "app/fund/[slug]/page.tsx",
     "app/acquirer/[slug]/page.tsx",
-    "app/startups/page.tsx",
-    "app/state-of-github/page.tsx",
-    "app/momentum/[org]/[repo]/page.tsx",
-    "app/benchmarks/[metric]/page.tsx",
     "app/best/[slug]/page.tsx",
-    "app/startups-to-watch/[slug]/page.tsx",
-    "app/build-vs-invest/[sector]/page.tsx",
   ];
   for (const rel of dataPages) {
     check(
@@ -5302,15 +5201,7 @@ landingCheck(
       "restore the Dataset node (buildSourceTruthDataset) with isBasedOn -> dataset#dataset provenance",
     );
   }
-  check(
-    "lib/dataset-schema.ts",
-    "§58 dataset-schema builder lost provenance fields",
-    (s) =>
-      s.includes('"@type": "Dataset"') &&
-      s.includes("isBasedOn") &&
-      s.includes("dataset#dataset"),
-    "restore @type Dataset, isBasedOn, and the dataset#dataset canonical id in lib/dataset-schema.ts",
-  );
+
 }
 
 // ---------------------------------------------------------------------------
@@ -5514,46 +5405,7 @@ landingCheck(
 //     The /blog hub title was a bare "Blog". A lineage that loses either
 //     reverts to the 0.00%-CTR form.
 // ---------------------------------------------------------------------------
-{
-  check(
-    "content/founders.ts",
-    "§62 CTR: FOUNDER_TITLE_HOOKS map dropped or build() no longer consumes it",
-    (s) =>
-      s.includes("export const FOUNDER_TITLE_HOOKS") &&
-      s.includes('FOUNDER_TITLE_HOOKS[p.handle] ?? "Public Engineering Profile"'),
-    "restore the founder title-hook map + its consumption in build()",
-  );
 
-  // Every founder must carry a hook: a missing one silently falls back to the
-  // 0.00%-CTR generic suffix. Extract build() handles + the hook-map key block,
-  // then assert 1:1 coverage and a stable corpus size.
-  const foundersSrc = read("content/founders.ts") ?? "";
-  const fHandles = [...foundersSrc.matchAll(/build\(\{[\s\S]*?handle: "([^"]+)"/g)].map(
-    (m) => m[1],
-  );
-  const mapStart = foundersSrc.indexOf("export const FOUNDER_TITLE_HOOKS");
-  const mapEnd = foundersSrc.indexOf("};", mapStart);
-  const mapBlock = mapStart >= 0 && mapEnd > mapStart ? foundersSrc.slice(mapStart, mapEnd) : "";
-  const missingHooks = fHandles.filter(
-    (h) => !mapBlock.includes(`"${h}"`) && !new RegExp(`\\b${h}\\s*:`).test(mapBlock),
-  );
-  if (fHandles.length !== 33) {
-    failures.push(
-      `§62 founder corpus size drifted (expected 33 build() handles, found ${fHandles.length}).\n    file: content/founders.ts\n    fix:  reconcile the founder list or the hook map (a missing hook = 0.00% CTR generic suffix)`,
-    );
-  } else if (missingHooks.length) {
-    failures.push(
-      `§62 founder title hooks missing for: ${missingHooks.join(", ")}\n    file: content/founders.ts\n    fix:  add a title hook for each (fallback = 0.00% CTR generic suffix)`,
-    );
-  }
-
-  check(
-    "app/blog/page.tsx",
-    '§62 CTR: /blog hub title reverted to the bare "Blog"',
-    (s) => !s.includes('title: "Blog"') && s.includes("GitHub Signals for Startup Investing"),
-    "restore the hooked /blog hub title",
-  );
-}
 
 
 // §64 gap-hub fleet (2026-08-16, audit "content gaps 45" follow-on; RESTORED

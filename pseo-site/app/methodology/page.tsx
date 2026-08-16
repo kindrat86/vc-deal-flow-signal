@@ -882,7 +882,6 @@ general acceleration that doesn&apos;t fit the above categories,
             </Link>
           </div>
         </div>
-        </article>
       </div>
     </>
   );
