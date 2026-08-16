@@ -2685,6 +2685,15 @@ if (read("../landing/llms-full.txt") !== null) {
       s.includes("https://signals.gitdealflow.com/stats.json") &&
       s.includes("Key Statistics, machine-readable JSON"),
     "restore the '# Key Statistics, machine-readable JSON' section at the end of llms-full.txt (see git 3a898791)",
+  );  check(
+    "../landing/llms-full.txt",
+    "§56 apex llms-full.txt regressed the panel-size claim (350++ typo or a banned exact count); canonical is the 350+ floor, and the citation quarter must be current (Q3 2026)",
+    (s) =>
+      !s.includes("350++") &&
+      !/\b(?:400\+|~400|4,200\+|4,800)\s+(?:venture-backed\s+)?(?:startup|org|tracked|GitHub)/i.test(s) &&
+      !/(?:tracks?|across|of)\s+(?:400\+|369|411|540)\s+(?:startups?|orgs?)/i.test(s) &&
+      s.includes("signals.gitdealflow.com), Q3 2026 data."),
+    "sweep to the locked 350+ floor and the current data quarter (lib/canonical-claims.ts, CLAIMS-LEDGER.md)",
   );
 }
 check(
@@ -4591,6 +4600,7 @@ landingCheck(
   //    so live-data readouts stay exempt; this file is self-exempt.
   const bannedExact = /\b(?:400\+|~400|4,200\+|4,800)\s+(?:venture-backed\s+)?(?:startup|org|tracked|GitHub)/i;
   const bannedClaimCtx = /(?:tracks?|across|of|von)\s+(?:400\+|369|411|540)\s+(?:startups?|orgs?|Unternehmen)/i;
+  const bannedDoublePlus = /350\+\+/; // typo-grade double-plus form of the floor claim
   const bannedHits: string[] = [];
   function scanClaims(relDir: string) {
     const abs = join(ROOT, relDir);
@@ -4602,7 +4612,7 @@ landingCheck(
         scanClaims(rel);
       } else if ([".ts", ".tsx", ".md", ".json", ".html", ".js", ".mjs"].includes(extname(ent)) && ent !== "verify-no-regressions.ts") {
         const src = readFileSync(absEnt, "utf8");
-        if (bannedExact.test(src) || bannedClaimCtx.test(src)) {
+        if (bannedExact.test(src) || bannedClaimCtx.test(src) || bannedDoublePlus.test(src)) {
           bannedHits.push(rel);
         }
       }
@@ -4989,6 +4999,16 @@ landingCheck(
     if (!postsSrc.includes("allPosts.push(...SOURCING_POSTS)")) {
       failures.push(
         "§56 posts.ts lost the allPosts.push(...SOURCING_POSTS) splice.\n    file: content/posts.ts\n    fix: restore the push; without it the 10 posts 404",
+      );
+    }
+    // (f) 2026-08-18 resolution hardening: the legacy `posts` export must
+    // carry the full merged set. Before this fix `posts` re-exported only the
+    // 39 base entries, so every `posts` importer (topics hub, llms.txt,
+    // llms-full, feed/atom, qa.* corpus, llms-search, news-sitemap) silently
+    // dropped TOFU + sourcing-cluster posts: pillars resolved 4/18.
+    if (!postsSrc.includes("const baseSlugs = new Set(posts.map((p) => p.slug))")) {
+      failures.push(
+        "§56 posts.ts lost the legacy-posts sync block (posts = full merged set).\n    file: content/posts.ts\n    fix: restore the 'const baseSlugs' in-place sync after the allPosts sort; hub + AI-corpus importers read `posts`",
       );
     }
   }

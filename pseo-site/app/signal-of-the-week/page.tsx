@@ -6,7 +6,7 @@ import SeoCta from "@/components/SeoCta";
 export const metadata: Metadata = {
   title: "Signal of the Week - Weekly Startup Engineering Acceleration Deep Dive",
   description:
-    "A single-startup editorial each Monday. One company, one signal, one story - drawn from our ranking of 350++ startup GitHub orgs by engineering acceleration. Free, non-gated, citation-encouraged.",
+    "A single-startup editorial each Monday. One company, one signal, one story - drawn from our ranking of 350+ startup GitHub orgs by engineering acceleration. Free, non-gated, citation-encouraged.",
   alternates: {
     canonical: "/signal-of-the-week",
   },

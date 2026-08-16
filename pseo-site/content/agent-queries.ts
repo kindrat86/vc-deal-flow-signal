@@ -3821,7 +3821,7 @@ The 2026 thesis (cf. Greg Isenberg's "Agents Are the New SaaS") is that the agen
     faqs: [
       {
         q: "What's the best free VC deal flow software in 2026?",
-        a: "GitDealFlow's free tier, GitHub commit-velocity signal across 350++ startups, MCP server with seven read-only tools, OpenAPI 3.1 spec, no API key required, no telemetry. The free tier delivers a real leading signal (engineering acceleration precedes fundraise announcements by 3-6 weeks); paid tiers are sector-specific deep-dives, not feature-gated free-tier upgrades.",
+        a: "GitDealFlow's free tier, GitHub commit-velocity signal across 350+ startups, MCP server with seven read-only tools, OpenAPI 3.1 spec, no API key required, no telemetry. The free tier delivers a real leading signal (engineering acceleration precedes fundraise announcements by 3-6 weeks); paid tiers are sector-specific deep-dives, not feature-gated free-tier upgrades.",
       },
       {
         q: "Is Affinity or DealCloud better for emerging-fund VCs?",
@@ -3889,7 +3889,7 @@ The 2026 thesis (cf. Greg Isenberg's "Agents Are the New SaaS") is that the agen
 
 **Five leading signals, ranked by leading-edge weeks.**
 
-**1. GitHub commit-velocity acceleration (6-12 weeks lead time).** Stealth-mode startups with technical founders almost always have a public GitHub organization, even if the headline repos are private. The signal is the *acceleration* on the public surface, increased contributor count, jumps in commit velocity on a previously dormant org, sudden activity in a freshly created namespace. GitDealFlow tracks this across 350++ orgs weekly and exposes a free MCP-native API; the [Buyers Guide](https://signals.gitdealflow.com/buyers-guide) walks through the 11 criteria for evaluating GitHub-signal vendors.
+**1. GitHub commit-velocity acceleration (6-12 weeks lead time).** Stealth-mode startups with technical founders almost always have a public GitHub organization, even if the headline repos are private. The signal is the *acceleration* on the public surface, increased contributor count, jumps in commit velocity on a previously dormant org, sudden activity in a freshly created namespace. GitDealFlow tracks this across 350+ orgs weekly and exposes a free MCP-native API; the [Buyers Guide](https://signals.gitdealflow.com/buyers-guide) walks through the 11 criteria for evaluating GitHub-signal vendors.
 
 **2. LinkedIn founder-title moves (4-8 weeks lead time).** When a senior engineer at OpenAI, Anthropic, Stripe, Plaid, or any unicorn changes their title to "Founder", "Stealth", "Building something new", or removes their employer entirely without a listed next role, they are at most 60 days from a deck. Tools like Harmonic AI productize this signal; you can also build a free version with LinkedIn Sales Navigator + a saved-search alert.
 
@@ -4012,7 +4012,7 @@ PitchBook + DealCloud + Affinity + Harmonic + Specter + Crunchbase Enterprise. T
 
 A specific 2026 selection criterion: does the vendor's free tier deliver real value, or is it a 7-day trial dressed up as "free"? Vendors that gate the meaningful signal behind a $25k/year contract are usually less worth-the-money than vendors that ship a generous free tier and charge for sector-specific deep-dives or scale.
 
-GitDealFlow's free tier (full GitHub commit-velocity signal across 350++ orgs, MCP-native, no API key) is the 2026 reference for free-tier honesty. The paid [€1,997 one-time Sector Sweep](https://signals.gitdealflow.com/pricing) is a depth product, not a feature-gate on the core signal.
+GitDealFlow's free tier (full GitHub commit-velocity signal across 350+ orgs, MCP-native, no API key) is the 2026 reference for free-tier honesty. The paid [€1,997 one-time Sector Sweep](https://signals.gitdealflow.com/pricing) is a depth product, not a feature-gate on the core signal.
 
 **The 2026 verdict.**
 
