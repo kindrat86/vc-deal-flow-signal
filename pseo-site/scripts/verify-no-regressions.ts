@@ -5233,6 +5233,49 @@ landingCheck(
       );
     }
   }
+  // -------------------------------------------------------------------------
+  // §62 homepage/funnel current-rate lock (user lock 2026-08-16): sales
+  //     surfaces must present the CURRENT ladder (EUR 49/197). Founding-era
+  //     rates (9.97/97) may appear only in closed-window grandfather
+  //     framing, never as a buyable offer. The homepage schema counter
+  //     must use the numeric floor, never the raw sector-sum count.
+  // -------------------------------------------------------------------------
+  {
+    const req62: Array<[string, string, string]> = [
+      [join(ROOT, "app", "page.tsx"), "userInteractionCount: PANEL_FLOOR_NUM", "homepage counter floor"],
+    ];
+    for (const [fp, needle, label] of req62) {
+      if (existsSync(fp) && !readFileSync(fp, "utf8").includes(needle)) {
+        failures.push(
+          `§62 ${label} missing in app/page.tsx\n    fix:  schema counters must use PANEL_FLOOR_NUM (350), never raw counts`,
+        );
+      }
+    }
+    const banned62: Array<[string, string]> = [
+      ["components/HomeOfferStack.tsx", "€9.97 / month, locked forever"],
+      ["lib/data-nerd.ts", "€9.97/mo is a feature"],
+      ["lib/data-nerd.ts", "price is €9.97/mo"],
+      ["app/about/founder/page.tsx", "€9.97/mo is a feature"],
+      ["app/walkthrough/5min/page.tsx", "€9.97/mo"],
+      ["app/walkthrough/page.tsx", "€9.97/mo"],
+      ["app/roadmap/page.tsx", "€9.97/mo founding price"],
+      ["app/start-here/page.tsx", "Founding-member price locked forever"],
+      ["app/state-of-github/page.tsx", "€97/month founding price"],
+      ["app/pitch/page.tsx", "Founding-member price"],
+      ["app/tweet-teardown/thanks/page.tsx", "cohort closing in days"],
+    ];
+    const hits62: string[] = [];
+    for (const [rel, tok] of banned62) {
+      const fp = join(ROOT, rel);
+      if (!existsSync(fp)) continue;
+      if (readFileSync(fp, "utf8").includes(tok)) hits62.push(`${rel}: "${tok}"`);
+    }
+    if (hits62.length) {
+      failures.push(
+        `§62 stale founding-rate offers in: ${hits62.join("; ")}\n    file: (multiple)\n    fix:  present the current ladder (49/197); founding rates only in closed-window grandfather framing`,
+      );
+    }
+  }
 }
 
 if (failures.length) {

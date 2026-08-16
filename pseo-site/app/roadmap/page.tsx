@@ -30,7 +30,7 @@ type Item = {
 const SHIPPED_Q2 = [
   { title: "Acceleration Watch (free weekly)", desc: "5 named startups every Monday with sector + percentile + decision rule.", link: "/predicted" },
   { title: "First Look Pass, €7 tripwire", desc: "Pick a sector, pay €7 once, get the 24-hour deep dive PDF + CSV.", link: "/firstlook" },
-  { title: "Dashboard at €9.97/mo founding price", desc: "Live dashboard, refreshed Mondays. Founding-member rate locked forever.", link: "/pricing" },
+  { title: "Dashboard at €49/mo", desc: "Live dashboard, refreshed Mondays. Current rate, locked while subscribed.", link: "/pricing" },
   { title: "Sector Sweep, €1,997 stack", desc: "Full panel, three time windows, 60-min walkthrough call.", link: "/pricing#sector-sweep" },
   { title: "MCP server v1.6.0 published", desc: "Six read-only tools inside Claude / Cursor / any MCP host. npm: @gitdealflow/mcp-signal.", link: "https://www.npmjs.com/package/@gitdealflow/mcp-signal", external: true },
   { title: "ChatGPT GPT Store listing", desc: "VC Deal Flow Signal GPT, OpenAPI Action mounted, publisher-verified domain.", link: "https://chat.openai.com/g/g-vc-deal-flow-signal", external: true },

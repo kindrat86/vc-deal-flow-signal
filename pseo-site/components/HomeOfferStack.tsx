@@ -69,21 +69,19 @@ export default function HomeOfferStack() {
     >
       <div className="max-w-3xl">
         <p className="text-emerald-300 text-[11px] uppercase tracking-wider font-semibold mb-2">
-          The stack &middot; Founding-member rate
+          The stack &middot; Current rate
         </p>
         <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 mb-3 leading-tight tracking-tight">
           €{PRICED_TOTAL.toLocaleString()} of priced artefacts.{" "}
           <span className="text-emerald-400">
-            €9.97 / month, locked forever.
+            €49 / month.
           </span>
         </h2>
         <p className="text-gray-400 text-sm sm:text-base mb-6 leading-relaxed">
           Each line is anchored against what the same artefact costs elsewhere
 Pitchbook for the dashboard tier, McKinsey-grade for the deep
           dives, hand-built for the watchlist. The total below is what a fund
-          would spend assembling each piece standalone. The founding
-          rate is what you pay once to lock the whole stack
-          in before the public price hike.
+          would spend assembling each piece standalone. Founding members who joined before 2026-06-30 keep their rate for life; today the stack is €49/month.
         </p>
         <ul className="space-y-1 mb-6">
           {STACK.map((item) => (

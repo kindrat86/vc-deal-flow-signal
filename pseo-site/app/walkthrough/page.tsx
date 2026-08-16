@@ -751,8 +751,7 @@ using public repository-velocity data as a leading indicator
             That&rsquo;s the August Tuesday. The cadence isn&rsquo;t a tool
             you operate, it&rsquo;s a room you live in. The Stack below is
             the instrument that produces it. The price below is what the
-            instrument costs to lease per month, founding-member rate,
-            locked forever.
+            instrument costs to lease per month.
           </p>
           <TrialClose tone="violet">
             Can you picture it? The Sunday digest, the Tuesday email, the
@@ -769,11 +768,10 @@ using public repository-velocity data as a leading indicator
             </p>
             <h2 className="text-2xl sm:text-3xl font-bold text-gray-100">
               Here is everything you get for{" "}
-              <span className="text-sky-400">€9.97/mo</span>.
+              <span className="text-sky-400">€49/mo</span>.
             </h2>
             <p className="text-gray-400 text-sm">
-              Eight objects. Four-figure standalone value. Founding-member
-              price locked forever.
+              Eight objects. Four-figure standalone value. Founding members who joined before 2026-06-30 keep their rate for life.
             </p>
           </div>
 
@@ -852,13 +850,11 @@ using public repository-velocity data as a leading indicator
               <span className="line-through">€588/yr</span>
             </div>
             <div className="flex items-baseline justify-between text-2xl font-bold text-gray-100 pt-3 border-t border-slate-800">
-              <span>Founding-member price, locked forever</span>
-              <span className="text-sky-400">€9.97/mo</span>
+              <span>Dashboard, current rate</span>
+              <span className="text-sky-400">€49/mo</span>
             </div>
             <p className="text-gray-400 text-xs">
-              That is €119.64/year, or roughly the cost of one missed seed
-              deal. The price stays €49 for as long as you stay subscribed,
-              even after the public launch hike to €49/mo.
+              That is €588/year, or roughly the cost of one missed seed deal. Your rate stays locked for as long as you stay subscribed.
             </p>
           </div>
           <TrialClose tone="amber">
@@ -941,7 +937,7 @@ using public repository-velocity data as a leading indicator
               If all this did was give you a{" "}
               <strong className="text-amber-300">15-minute Monday rhythm</strong>{" "}
               you actually keep, instead of three open tabs you don&rsquo;t -
-              would €9.97/mo be worth it?
+              would €49/mo be worth it?
             </li>
             <li className="border-l-4 border-amber-500 pl-5 py-1">
               If all this did was let you{" "}
@@ -1236,7 +1232,7 @@ credited toward Dashboard if you upgrade in 14 days.
             </li>
             <li className="flex gap-3">
               <span className="text-amber-400 shrink-0 font-bold">→</span>
-              <span>Founding-member price <strong className="text-amber-300">locked forever</strong> at €9.97/mo. Public hike to €49/mo lands the day a regulated investor tool reviews us.</span>
+              <span>Founding-member price <strong className="text-amber-300">locked forever</strong> at €49/mo. Public hike to €49/mo lands the day a regulated investor tool reviews us.</span>
             </li>
             <li className="flex gap-3">
               <span className="text-amber-400 shrink-0 font-bold">→</span>
@@ -1249,7 +1245,7 @@ credited toward Dashboard if you upgrade in 14 days.
           </div>
           <div className="flex items-baseline justify-between text-2xl font-bold">
             <span className="text-gray-100">Your founding-member rate</span>
-            <span className="text-amber-300">€9.97/mo</span>
+            <span className="text-amber-300">€49/mo</span>
           </div>
         </section>
 
@@ -1294,7 +1290,7 @@ credited toward Dashboard if you upgrade in 14 days.
         <DataNerdCharacterCard seed="walkthrough" />
 
         <AgentSummary
-          tldr="The 12-minute walkthrough lays out the single belief, commit-velocity acceleration is the most leading public signal in venture capital, and supports it by breaking three classic objections (vehicle: GitHub data is noise; internal: I already have deal flow; external: public data has no edge). Closes on the €9.97/mo Dashboard tier (founding-member, locked forever) with a 30-day Signal-or-It's-Free guarantee. Built on the 219-startup SSRN-published panel with a 21-47 day median lead time over fundraise announcements."
+          tldr="The 12-minute walkthrough lays out the single belief, commit-velocity acceleration is the most leading public signal in venture capital, and supports it by breaking three classic objections (vehicle: GitHub data is noise; internal: I already have deal flow; external: public data has no edge). Closes on the €49/mo Dashboard tier (founding-member, locked forever) with a 30-day Signal-or-It's-Free guarantee. Built on the 219-startup SSRN-published panel with a 21-47 day median lead time over fundraise announcements."
           pageUrl="https://signals.gitdealflow.com/walkthrough"
           asOf="2026-05-05"
           citeAs="VC Deal Flow Signal, 12-Minute Walkthrough (signals.gitdealflow.com/walkthrough)."
@@ -1307,7 +1303,7 @@ credited toward Dashboard if you upgrade in 14 days.
             },
             {
               claim:
-                "Dashboard founding-member price (€9.97/mo) is locked forever and survives the public-launch hike to €49/mo.",
+                "Dashboard founding-member price (€49/mo) is locked forever and survives the public-launch hike to €49/mo.",
               sourceUrl: "https://signals.gitdealflow.com/pricing",
               sourceLabel: "Pricing page",
             },

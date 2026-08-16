@@ -1,5 +1,5 @@
 import type { Metadata } from "next";
-import { panelClaimFloor } from "@/lib/canonical-claims";
+import { panelClaimFloor, PANEL_FLOOR_NUM } from "@/lib/canonical-claims";
 import Link from "next/link";
 import {
   getAllSectors,
@@ -416,9 +416,7 @@ export default function Home() {
             "@type": "InteractionCounter",
             interactionType: "https://schema.org/ViewAction",
             name: "Startups tracked in current period",
-            userInteractionCount: sectors
-              .filter((s) => s.periods[period.slug])
-              .reduce((sum, s) => sum + s.periods[period.slug].startups.length, 0),
+            userInteractionCount: PANEL_FLOOR_NUM,
           },
           {
             "@type": "InteractionCounter",
@@ -1145,7 +1143,7 @@ fine, but slow, or had been reading the same
           on /firstlook + /walkthrough but the home reader (who never
           clicks through) saw price tiers without value anchors. Eight
           stack lines, anchored against standalone equivalents, total
-          €1,728 vs €9.97/mo founding rate. Risk-reversal sticker
+          €1,728 vs €49/mo current rate. Risk-reversal sticker
           (30-day guarantee) included as final stack line. */}
       <HomeOfferStack />
 

@@ -215,11 +215,11 @@ export default function FiveMinPerfectWebinarPage() {
             <span className="text-gray-400 line-through">€1,728/yr</span>
           </div>
           <div className="flex items-baseline justify-between text-lg font-bold pt-1">
-            <span className="text-gray-100">Founding-member price</span>
-            <span className="text-amber-400">€9.97/mo · locked forever</span>
+            <span className="text-gray-100">Current rate</span>
+            <span className="text-amber-400">€49/mo</span>
           </div>
           <TrialClose tone="amber">
-            €1,728 of standalone artefacts at €9.97/mo. If even half the
+            €1,728 of standalone artefacts at €49/mo. If even half the
             stack reads as real, has the math already done itself?
           </TrialClose>
         </section>
