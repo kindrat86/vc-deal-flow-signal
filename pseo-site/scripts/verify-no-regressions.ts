@@ -2974,7 +2974,10 @@ check(
   (s) =>
     s.includes('nav[aria-label="Breadcrumb"] a') &&
     s.includes("min-height: 24px") &&
-    s.includes("@media (max-width: 767px)"),
+    s.includes("@media (max-width: 767px)") &&
+    s.includes("section .flex a") &&
+    s.includes("table a") &&
+    s.includes("aside a"),
   "restore the mobile tap-target floor block in app/globals.css (see §36 comment)",
 );
 check(
