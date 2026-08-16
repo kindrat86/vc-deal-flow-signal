@@ -946,3 +946,25 @@ p[style*="text-align: center"] {
     overflow-wrap: anywhere;
   }
 }
+
+/* ==========================================================================
+   Mobile tap-target floor (2026-08-17). GDF mobile-friendliness audit: this
+   static site's per-page inline styles render structural anchors (breadcrumb
+   navs, footer link rows, related-lists, portfolio-network tiles) at 15-18px
+   tall on phones, under the WCAG 2.5.8 / Google 24px minimum. :where() keeps
+   specificity at zero so any inline min-height/padding already present keeps
+   winning. Scoped to structural containers, never body-prose links.
+   ========================================================================== */
+@media (max-width: 767px) {
+  :where(footer a,
+         header nav a,
+         body > nav a,
+         main ul a,
+         body > section ul a,
+         body > section > p a,
+         .network-grid a) {
+    display: inline-block;
+    min-height: 24px;
+    padding-block: 3px;
+  }
+}

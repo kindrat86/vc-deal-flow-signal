@@ -197,6 +197,30 @@ if (
   );
 }
 
+// ---------------------------------------------------------------------------
+// Mobile tap-target floor in ux.css (2026-08-17)
+// ---------------------------------------------------------------------------
+// The 375px/360px rendered audit found structural anchors (breadcrumbs, footer
+// rows, related-lists, network tiles) at 15-18px tall on this static site,
+// under the WCAG 2.5.8 / Google 24px minimum. The fix lives in ux.css (the
+// only stylesheet every page family loads). A tree that drops the block
+// re-ships undersized tap targets on ~360 pages.
+{
+  const css = (() => {
+    try {
+      return readFileSync("ux.css", "utf8");
+    } catch {
+      return "";
+    }
+  })();
+  if (!css.includes("@media (max-width: 767px)") ||
+      !css.includes("min-height: 24px") ||
+      !css.includes(":where(footer a") ||
+      !css.includes(".network-grid a)")) {
+    fail("ux.css lost the mobile tap-target floor block (:where(footer a, header nav a, ... .network-grid a) min-height 24px, 2026-08-17); footer/breadcrumb/related anchors drop back to 15-18px on phones.");
+  }
+}
+
 if (failures.length) {
   console.error(
     `\n❌ verify-vercel-config: ${failures.length} config regression(s) detected:`,
