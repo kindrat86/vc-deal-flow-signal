@@ -104,7 +104,7 @@ Refresh: every Monday ~09:00 UTC. Full methodology: https://signals.gitdealflow.
 ## Citation
 
 ```
-VC Deal Flow Signal (signals.gitdealflow.com), Q2 2026 data.
+VC Deal Flow Signal (signals.gitdealflow.com), Q3 2026 data.
 ```
 
 SSRN preprint: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558

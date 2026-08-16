@@ -26,7 +26,7 @@ const BENCHMARKS: Benchmark[] = [
     name: "Commit Velocity",
     title: `Startup Commit Velocity Benchmarks by Sector, ${FRESH_YEAR_PLAIN} GitHub Data`,
     description:
-      "How does your startup's GitHub commit velocity compare? Real benchmarks from 400+ venture-backed startups across 15 sectors. 14-day rolling window, refreshed weekly.",
+      "How does your startup's GitHub commit velocity compare? Real benchmarks from 350+ venture-backed startups across 15 sectors. 14-day rolling window, refreshed weekly.",
     h1: "Commit Velocity Benchmarks, How Your Startup Compares",
     intro:
       "Commit velocity (14-day rolling commits to the most active public repo) is the core ranking metric for VC Deal Flow Signal. These benchmarks show where your startup stands relative to the sector median and top quartile.",
@@ -58,7 +58,7 @@ const BENCHMARKS: Benchmark[] = [
     name: "Contributor Growth",
     title: "Startup Contributor Growth Benchmarks, GitHub Engineer Hiring Signals",
     description:
-      "How many active contributors do venture-backed startups have? Real benchmarks from 400+ tracked GitHub organizations across 15 sectors. Hiring burst detection.",
+      "How many active contributors do venture-backed startups have? Real benchmarks from 350+ tracked GitHub organizations across 15 sectors. Hiring burst detection.",
     h1: "Contributor Growth Benchmarks, Hiring Signals by Sector",
     intro:
       "Contributor count and 6-week growth rate are the second-strongest fundraise-precursor signal after commit velocity. A hiring burst (3+ new organizational committers in a 14-day window) frequently precedes a round announcement.",
@@ -90,7 +90,7 @@ const BENCHMARKS: Benchmark[] = [
     name: "Signal Distribution",
     title: `Engineering Signal Distribution by Sector, Breakout vs Cooling ${FRESH_YEAR_PLAIN}`,
     description:
-      "Which sectors have the most breakout engineering signals? Real distribution data from 400+ startups. Breakout, acceleration, steady, cooling classifications.",
+      "Which sectors have the most breakout engineering signals? Real distribution data from 350+ startups. Breakout, acceleration, steady, cooling classifications.",
     h1: "Signal Distribution, Which Sectors Are Heating Up",
     intro:
       "Every tracked startup is classified into one of four signal types: breakout (sudden surge), acceleration (sustained growth), steady (healthy baseline), or cooling (declining). This page shows the distribution by sector.",

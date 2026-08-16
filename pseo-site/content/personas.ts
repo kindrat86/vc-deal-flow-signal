@@ -509,7 +509,7 @@ export const PERSONAS: Persona[] = [
     tagline:
       "Spot pre-seed breakouts 3-6 weeks before the round gets crowded, using public GitHub commit velocity as the earliest engineering-momentum signal.",
     intro:
-      "Angel investors need signals before the round gets crowded. Commit velocity is the earliest public indicator of engineering momentum, visible weeks before pitch decks circulate, press hits, or SEC filings appear. VC Deal Flow Signal tracks 400+ startups across 15 sectors, refreshed weekly.",
+      "Angel investors need signals before the round gets crowded. Commit velocity is the earliest public indicator of engineering momentum, visible weeks before pitch decks circulate, press hits, or SEC filings appear. VC Deal Flow Signal tracks 350+ startups across 15 sectors, refreshed weekly.",
     workflows: [
       {
         name: "Pre-seed breakout detection",

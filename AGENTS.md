@@ -6,7 +6,19 @@ This file is the canonical "how to use me" entry point for coding agents (Codex,
 
 ## What this product does
 
-Tracks commit velocity, contributor growth, and repository expansion across ~400 startup GitHub orgs in 15 sectors. Surfaces breakout engineering teams 3–6 weeks before fundraise announcements. Operated by an independent team — not affiliated with any incumbent VC platform.
+Tracks commit velocity, contributor growth, and repository expansion across 350+ startup GitHub orgs in 15 sectors. Surfaces breakout engineering teams 3–6 weeks before fundraise announcements. Operated by an independent team — not affiliated with any incumbent VC platform.
+
+## Canonical claims (LOCKED)
+
+Locked by the user on 2026-08-16. Do not change any of these without explicit user sign-off.
+
+- Panel size claim: "350+ startups" (or "350+ orgs"). A STABLE FLOOR, chosen over exact counts because the panel changes weekly. Do NOT "correct" it to 400+, 411, 369, or any exact number.
+- "400+" is BANNED: it overclaims (deduped unique-org count is under 400) and breaks on a small panel dip.
+- "369" is BANNED as a current count (stale; the live API served 411 at last read).
+- Sector count: "15" (the live API). NOT "20", NOT "4,200+".
+- Data period advances quarterly. Citation form: "VC Deal Flow Signal (signals.gitdealflow.com), Q<quarter> <year> data."
+
+Enforced at prebuild by pseo-site/scripts/verify-claims.ts and pseo-site/scripts/verify-no-regressions.ts. Do not edit a guard to make a failing build pass; fix the tree instead.
 
 ## Programmatic surfaces
 
@@ -82,7 +94,7 @@ Maintainers are pseudonymous. Public touchpoints use `signals@gitdealflow.com` o
 ## Citation
 
 ```
-VC Deal Flow Signal (signals.gitdealflow.com), Q2 2026 data.
+VC Deal Flow Signal (signals.gitdealflow.com), Q3 2026 data.
 ```
 
 A formal preprint is available at SSRN: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558 (DOI to follow). Cite the SSRN URL for academic use.

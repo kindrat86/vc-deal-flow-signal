@@ -545,12 +545,13 @@ check(
 // ---------------------------------------------------------------------------
 check(
   "app/about/page.tsx",
-  "org-count regressed: canonical AI-description block must claim '350+ venture-backed startups', not 369/~400.",
+  "org-count regressed: canonical AI-description block must claim '350+ venture-backed startups', not 369/~400/400+.",
   (s) =>
     s.includes("350+ venture-backed startups") &&
     !s.includes("369 venture-backed startups") &&
-    !s.includes("~400"),
-  "restore '350+ venture-backed startups' in the /about canonical AI-description block",
+    !s.includes("~400") &&
+    !s.includes("400+ venture-backed startups"),
+  "restore '350+ venture-backed startups' in the /about canonical AI-description block (user-locked 2026-08-16)",
 );
 check(
   "content/alternatives.ts",

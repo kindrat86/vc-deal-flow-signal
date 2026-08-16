@@ -2084,10 +2084,10 @@ The preprint is indexed by Crossref, Semantic Scholar, OpenAlex (W7154916891), U
     description:
       "GitDealFlow tracks 15 active sectors derived from GitHub topic taxonomy: Healthcare, EdTech, Data Infrastructure, Enterprise SaaS, Web3, Robotics, Supply Chain, and 8 more. ~350+ actively tracked startups.",
     tldr:
-      "GitDealFlow tracks 15 active sectors derived from GitHub's topic taxonomy: Healthcare, EdTech, E-commerce Infrastructure, Supply Chain, Web3, Enterprise SaaS, Data Infrastructure, Robotics, Legal Tech, HR Tech, PropTech, AgTech, Gaming, Space Tech, and Social & Community, covering 369 actively-tracked organizations refreshed weekly. Five legacy clusters (AI & ML, Fintech, Climate Tech, Developer Tools, Cybersecurity) froze at Q2 2026 and are archived.",
+      "GitDealFlow tracks 15 active sectors derived from GitHub's topic taxonomy: Healthcare, EdTech, E-commerce Infrastructure, Supply Chain, Web3, Enterprise SaaS, Data Infrastructure, Robotics, Legal Tech, HR Tech, PropTech, AgTech, Gaming, Space Tech, and Social & Community, covering 350+ actively-tracked organizations refreshed weekly. Five legacy clusters (AI & ML, Fintech, Climate Tech, Developer Tools, Cybersecurity) froze at Q2 2026 and are archived.",
     // 2026-08-16 featured-snippet rebuild: 40-60w neutral direct answer.
     definition:
-      "GitDealFlow tracks 15 active sectors derived from GitHub's topic taxonomy, Healthcare, EdTech, E-commerce Infrastructure, Supply Chain, Web3, Enterprise SaaS, Data Infrastructure, Robotics, Legal Tech, HR Tech, PropTech, AgTech, Gaming, Space Tech, and Social & Community, covering 369 actively tracked organizations refreshed weekly. Five legacy clusters froze at Q2 2026.",
+      "GitDealFlow tracks 15 active sectors derived from GitHub's topic taxonomy, Healthcare, EdTech, E-commerce Infrastructure, Supply Chain, Web3, Enterprise SaaS, Data Infrastructure, Robotics, Legal Tech, HR Tech, PropTech, AgTech, Gaming, Space Tech, and Social & Community, covering 350+ actively tracked organizations refreshed weekly. Five legacy clusters froze at Q2 2026.",
     body: `GitDealFlow uses GitHub's public topic taxonomy to define a stable startup universe. Each tracked organization is matched to one primary sector via the org's most-active repository topics, language mix, and cross-references against curated lists.
 
 **The 15 active sectors** (current panel, Q3 2026, 350+ orgs total):
@@ -2114,7 +2114,7 @@ The preprint is indexed by Crossref, Semantic Scholar, OpenAlex (W7154916891), U
 
 **Coverage limits.** Only orgs with public GitHub presence are tracked. Pure consumer brands, services businesses, hardware-only companies without firmware repos, and stealth-mode startups with no public OSS footprint are systematically under-represented or invisible.
 
-**Universe size.** 369 actively-tracked startup organizations across the 15 active sectors (350+ is the marketing baseline). The universe refreshes weekly, new orgs are added when they cross visibility thresholds; orgs that stop showing engineering activity are deprioritized but not removed.
+**Universe size.** 350+ actively-tracked startup organizations across the 15 active sectors. The universe refreshes weekly, new orgs are added when they cross visibility thresholds; orgs that stop showing engineering activity are deprioritized but not removed.
 
 **Sub-cluster filtering.** The Insider Circle Dashboard supports filtering by cluster, sub-cluster, geography, and stage. The free MCP server's \`search_startups_by_sector\` tool exposes the cluster filter via the AI host (Claude, Cursor, etc.).`,
     facts: [
