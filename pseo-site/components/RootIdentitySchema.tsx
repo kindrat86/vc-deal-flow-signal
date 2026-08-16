@@ -82,10 +82,28 @@ export function RootIdentitySchema() {
         license: "https://creativecommons.org/licenses/by/4.0/",
         potentialAction: [
           {
+            // Human path: SSR results page at /search (no JS needed).
+            // Google deprecated the sitelinks search box in Nov 2024; this
+            // SearchAction still powers browser/opensearch + entity-graph
+            // search discovery for humans and agents alike.
+            "@type": "SearchAction",
+            target: {
+              "@type": "EntryPoint",
+              urlTemplate: `${SITE}/search?q={search_term_string}`,
+              actionPlatform: [
+                "https://schema.org/DesktopWebPlatform",
+                "https://schema.org/MobileWebPlatform",
+              ],
+            },
+            "query-input": "required name=search_term_string",
+          },
+          {
+            // Agent path: JSON results (llms.txt / opensearch.json flavor).
             "@type": "SearchAction",
             target: {
               "@type": "EntryPoint",
               urlTemplate: `${SITE}/api/llms-search?q={search_term_string}`,
+              contentType: "application/json",
             },
             "query-input": "required name=search_term_string",
           },

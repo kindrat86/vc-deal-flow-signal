@@ -23,10 +23,13 @@ const NAV_JSONLD = {
   "@context": "https://schema.org",
   "@type": "SiteNavigationElement",
   "@id": `${SITE}#navigation`,
-  name: NAV.map((n) => n.label),
-  url: NAV.map((n) =>
-    n.href.startsWith("http") ? n.href : `${SITE}${n.href}`
-  ),
+  name: [...NAV.map((n) => n.label), "Search"],
+  url: [
+    ...NAV.map((n) =>
+      n.href.startsWith("http") ? n.href : `${SITE}${n.href}`
+    ),
+    `${SITE}/search`,
+  ],
 };
 
 function isActive(pathname: string | null, href: string) {
@@ -101,6 +104,25 @@ export default function Header() {
               </Link>
             );
           })}
+          {/* Site search: links to the SSR /search results page (works
+              without JS; matches the WebSite SearchAction target). */}
+          <Link
+            href="/search"
+            aria-label="Search the site"
+            title="Search"
+            className="text-gray-400 hover:text-gray-100 hover:bg-slate-800/40 transition-colors px-2.5 py-1.5 rounded-md"
+          >
+            <svg
+              className="w-4 h-4"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  strokeWidth={2}
+                  aria-hidden="true"
+                >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
+            </svg>
+          </Link>
           <Link
             href="https://gitdealflow.com/#signup"
             className="ml-2 inline-flex items-center gap-1 text-sm bg-[#ff6b1a] hover:bg-[#ff8c4d] text-slate-950 px-3 py-1.5 rounded-md transition-colors font-semibold shadow-sm shadow-[#ff6b1a]/30"
@@ -135,6 +157,23 @@ export default function Header() {
               </Link>
             );
           })}
+          <Link
+            href="/search"
+            onClick={() => setOpen(false)}
+            className="text-gray-400 hover:text-gray-100 hover:bg-slate-800/60 transition-colors py-2.5 px-3 rounded-md inline-flex items-center gap-2"
+          >
+            <svg
+              className="w-4 h-4"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              strokeWidth={2}
+              aria-hidden="true"
+            >
+              <path strokeLinecap="round" strokeLinejoin="round" d="M21 21l-4.35-4.35M17 11a6 6 0 11-12 0 6 6 0 0112 0z" />
+            </svg>
+            Search
+          </Link>
           <Link
             href="https://gitdealflow.com/#signup"
             onClick={() => setOpen(false)}

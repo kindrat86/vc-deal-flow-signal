@@ -114,6 +114,7 @@ const NOINDEX_PREFIXES = [
   "/welcome",
   "/dashboard",
   "/login",
+  "/search",
 ];
 
 function shouldNoindex(pathname: string): boolean {

@@ -1,6 +1,6 @@
 {
   "outputDirectory": ".",
-  "buildCommand": "node scripts/verify-vercel-config.mjs && node scripts/verify-jsonld.mjs . && node scripts/verify-word-floor.mjs && node scripts/verify-direct-answers.mjs && node scripts/verify-no-dashes.mjs",
+  "buildCommand": "node scripts/verify-vercel-config.mjs && node scripts/verify-jsonld.mjs . && node scripts/verify-word-floor.mjs && node scripts/verify-direct-answers.mjs && node scripts/verify-no-dashes.mjs && node scripts/verify-css-preloads.mjs",
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
@@ -333,7 +333,7 @@
       "headers": [
         {
           "key": "Cache-Control",
-          "value": "public, max-age=3600, stale-while-revalidate=86400"
+          "value": "public, max-age=86400, stale-while-revalidate=604800"
         }
       ]
     },
@@ -580,6 +580,15 @@
         {
           "key": "X-Robots-Tag",
           "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/fonts/(.*\\.woff2)",
+      "headers": [
+        {
+          "key": "Cache-Control",
+          "value": "public, max-age=31536000, immutable"
         }
       ]
     }

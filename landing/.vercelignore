@@ -60,6 +60,7 @@ scripts/*
 !scripts/verify-word-floor.mjs
 !scripts/verify-direct-answers.mjs
 !scripts/verify-no-dashes.mjs
+!scripts/verify-css-preloads.mjs
 
 # NEVER add a bare `scripts/` line. It reads like the right hardening, churnlens
 # and carshake both have one, and here it fails every deploy — see above.

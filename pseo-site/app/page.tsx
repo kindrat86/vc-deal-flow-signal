@@ -18,6 +18,7 @@ import { AgentSummary } from "@/components/AgentSummary";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHomepageHreflang } from "@/lib/hreflang";
+import { SITE } from "@/lib/corpus";
 import SignalLeader from "@/components/SignalLeader";
 import HomeSqueeze from "@/components/HomeSqueeze";
 import IdentityBanner from "@/components/IdentityBanner";
@@ -495,9 +496,7 @@ export default function Home() {
           url: "https://signals.gitdealflow.com/opengraph-image",
         },
         isPartOf: {
-          "@type": "WebSite",
-          name: "VC Deal Flow Signal",
-          url: "https://signals.gitdealflow.com",
+          "@id": `${SITE}/#website`,
         },
         // Named-entity disambiguation, anchor to Wikidata so AI engines can
         // cross-reference. Competitors, platforms, and concepts mentioned on

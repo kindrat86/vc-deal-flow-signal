@@ -23,7 +23,7 @@ export async function GET() {
   <Image height="64" width="64" type="image/png">${SITE}/icon.png</Image>
   <Url type="text/html"
        method="get"
-       template="${SITE}/?q={searchTerms}"/>
+       template="${SITE}/search?q={searchTerms}"/>
   <Url type="application/x-suggestions+json"
        method="get"
        template="${SITE}/api/llms-search?q={searchTerms}&amp;format=opensearch"/>

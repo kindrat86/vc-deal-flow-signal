@@ -1,33 +1,90 @@
 "use client";
 
 /**
- * CWV instrumentation architecture note (updated 2026-08-16).
+ * Field TTFB beacon (rewritten 2026-08-17).
  *
- * posthog-js 1.417 (loaded via layout.tsx, strategy=lazyOnload)
- * auto-captures $web_vitals natively: that is the SINGLE source of CWV
- * truth for signals.gitdealflow.com in PostHog project 143861. It has
- * been streaming since deployment (2,276 events in the 14d before this
- * note, metric_ids intact, p75 FCP 229ms / LCP median 903ms).
+ * WHY THIS EXISTS: the 2026-08-16 "single-source CWV" refactor made this
+ * component a no-op because posthog-js 1.417 natively captures
+ * $web_vitals for LCP/FCP/CLS/INP. That was correct for those four
+ * metrics but ORPHANED TTFB: the native SDK does not capture TTFB at all
+ * (verified in PostHog project 143861: zero native-shape TTFB values
+ * across 10+ hosts in 28 days). The field TTFB stream went dark on
+ * 2026-08-16 and nothing noticed for days.
  *
- * This component is intentionally a NO-OP. The earlier custom capture
- * path here double-reported metrics: next/web-vitals + this capture()
- * ran IN ADDITION to the SDK's native collection, polluting PostHog's
- * CWV insight with duplicate $web_vitals events under different ids.
- * Verified in PostHog before this change (see 2026-08-16 CWV audit:
- * native events present on every portfolio host running posthog-js
- * 1.417, custom beacon contributed 0 until a same-day endpoint fix).
+ * So this beacon reports TTFB ONLY, via window.posthog.capture with
+ * metric_name='TTFB' (the "named" event shape cwv_field.py already
+ * reads). No double-count risk: the native SDK never emits TTFB, and
+ * this component sends no other metric. Do NOT re-add LCP/FCP/CLS/INP
+ * capture here; that genuinely double-counts against the native SDK
+ * (see the 2026-08-16 CWV audit note in git history).
  *
- * The apex beacon (landing/pixels.js) forwards CWV to GA4 only;
- * PostHog there is likewise served by the native SDK.
+ * MEASUREMENT VALIDITY: the web-vitals library reports TTFB of ~0 for
+ * prerendered pages (responseStart precedes activationStart) and stale
+ * values for back-forward (bfcache) restores. Both pollute a field p75
+ * with meaningless zeros; the pre-08-16 stream showed p75 of 23-52ms
+ * for exactly that reason. This beacon therefore reports ONLY
+ * navigate/reload/restore navigations with value > 0: real
+ * server-response waits. That is the stream the field TTFB regression
+ * check consumes.
  *
- * Do not re-add a capture() here without first checking for native
- * $web_vitals events in PostHog, or you will double-count again.
+ * Consumed by: gitdealflow-rank-tracker/field_ttfb_check.py (the
+ * n >= 500/week gated regression check feeding the daily north-star
+ * digest and the weekly rank board).
+ * Guarded by: scripts/verify-no-regressions.ts section 39.
  */
-
 import { useReportWebVitals } from "next/web-vitals";
 
+declare global {
+  interface Window {
+    posthog?: {
+      capture?: (event: string, properties?: Record<string, unknown>) => void;
+    };
+  }
+}
+
+const SKIP_NAV = new Set(["prerender", "back-forward"]);
+const CAPTURE_TRIES = 30; // ~15s max wait for lazyOnload posthog to be ready
+
+function captureTtfb(props: Record<string, unknown>, attempt = 0) {
+  try {
+    const ph = window.posthog;
+    if (ph && typeof ph.capture === "function") {
+      ph.capture("$web_vitals", props);
+      return;
+    }
+    // posthog is strategy=lazyOnload but TTFB fires at hydration: the
+    // value is already measured, so retrying late costs nothing and
+    // closes the race that would otherwise drop early TTFB beacons.
+    if (attempt < CAPTURE_TRIES) {
+      window.setTimeout(() => captureTtfb(props, attempt + 1), 500);
+    }
+  } catch {
+    /* the beacon must never throw */
+  }
+}
+
 export default function WebVitalsReporter() {
-  // Intentionally not reporting: see architecture note above.
-  useReportWebVitals(() => {});
+  useReportWebVitals((metric) => {
+    try {
+      if (metric.name !== "TTFB") return;
+      const navType =
+        (metric as { navigationType?: string }).navigationType ?? "navigate";
+      if (SKIP_NAV.has(navType)) return;
+      const v = Number(metric.value);
+      if (!isFinite(v) || v <= 0) return;
+      captureTtfb({
+        $pathname: window.location.pathname,
+        $current_url: window.location.href,
+        metric_name: "TTFB",
+        metric_value: v,
+        metric_rating: metric.rating ?? (v <= 800 ? "good" : v <= 1800 ? "needs-improvement" : "poor"),
+        metric_id: metric.id,
+        navigation_type: navType,
+        beacon: "ttfb-v2",
+      });
+    } catch {
+      /* the beacon must never throw */
+    }
+  });
   return null;
 }

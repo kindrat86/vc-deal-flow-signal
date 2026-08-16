@@ -47,22 +47,28 @@ function check(rel: string, label: string, ok: (s: string) => boolean, hint: str
 }
 
 // ---------------------------------------------------------------------------
-// 0. CWV single-source invariant (2026-08-16). posthog-js 1.417 auto-captures
-//    $web_vitals natively; the custom capture path in WebVitalsReporter
-//    double-reported every load. Reporter must stay a no-op, and no page
-//    may call posthog.capture("$web_vitals") outside the SDK itself.
+// 0. CWV single-source invariant (amended 2026-08-17 with field evidence).
+//    posthog-js 1.417 auto-captures $web_vitals natively for LCP/FCP/CLS/INP
+//    ONLY: it does NOT capture TTFB (verified in project 143861 on
+//    2026-08-17: zero native-shape TTFB values on any of 10+ hosts in 28d;
+//    the SDK's metric set excludes TTFB). The original 2026-08-16 guard
+//    below enforced a blanket no-op on the reporter, which silently killed
+//    the field TTFB stream for days (25 events/7d, 12 of them junk zeros).
+//    Policy now: the reporter captures TTFB ONLY (marker beacon='ttfb-v2',
+//    prerender/bfcache skipped, values > 0); capturing LCP/FCP/CLS/INP in
+//    the reporter still double-counts and stays forbidden. See §39 for the
+//    full beacon-content guard.
 // ---------------------------------------------------------------------------
 {
   const reporter = read("components/WebVitalsReporter.tsx");
-  if (!reporter || !/Intentionally not reporting/.test(reporter)) {
-    failures.push(
-      `WebVitalsReporter re-activated custom CWV capture: posthog-js 1.417 already auto-captures \$web_vitals, a second capture path double-counts.\n    file: components/WebVitalsReporter.tsx\n    fix:  keep the documented no-op (2026-08-16 architecture note)`,
-    );
-  }
   if (reporter && /capture\(\s*["']\$web_vitals["']/.test(reporter)) {
-    failures.push(
-      `Direct capture("$web_vitals") in the reporter duplicates the SDK's native collection.\n    file: components/WebVitalsReporter.tsx\n    fix:  remove the custom capture, rely on posthog-js 1.417`,
-    );
+    // TTFB-only capture is required (§39 checks content in detail).
+    // Any OTHER metric captured directly double-counts the native SDK.
+    if (/metric\.name\s*===\s*["'](LCP|FCP|CLS|INP)["']/.test(reporter)) {
+      failures.push(
+        `WebVitalsReporter captures SDK-covered metrics (LCP/FCP/CLS/INP): the native SDK already collects these, a second path double-counts.\n    file: components/WebVitalsReporter.tsx\n    fix:  keep the reporter TTFB-only (see §39; TTFB is the one metric the SDK omits)`,
+      );
+    }
   }
   try {
     const landingPixels = readFileSync(join(ROOT, "..", "landing", "pixels.js"), "utf8");
@@ -3122,6 +3128,122 @@ check(
   (s) => s.includes("verify:mobile-parity"),
   'restore the "verify:mobile-parity" script pointing at scripts/verify-mobile-parity.mjs',
 );
+
+// ---------------------------------------------------------------------------
+// §38 Working search surface (2026-08-18, audit item "sitelinks 55").
+// The WebSite SearchAction + opensearch.xml had a dead human path: browsers
+// registering the site as a search engine were sent to /?q=... which the
+// homepage ignored, and Google deprecated the sitelinks search box in Nov
+// 2024 anyway. This guard pins the 2026-correct stack:
+//   1. /search SSR page (server component, plain GET form, noindex).
+//   2. proxy.ts NOINDEX_PREFIXES carries "/search" (header mirrors meta).
+//   3. opensearch.xml text/html template points at /search (not /?q=).
+//   4. WebSite schema carries a human SearchAction (Desktop+Mobile web
+//      platforms) whose urlTemplate matches /search?q={search_term_string}.
+//   5. Header renders a visible search affordance on desktop + mobile and
+//      SiteNavigationElement includes Search + /search.
+//   6. JSON agent search and /search share ONE corpus (lib/search-index.ts)
+//      so results can never drift between surfaces.
+// A lineage that reverts any layer re-ships a broken search path that
+// browsers and OpenSearch consumers will discover via opensearch.xml.
+// ---------------------------------------------------------------------------
+check(
+  "app/search/page.tsx",
+  "§38 working search surface: the /search SSR results page was deleted or gutted (dead human search path returns)",
+  (s) =>
+    s.includes('action="/search"') &&
+    s.includes('method="get"') &&
+    s.includes("searchCorpus") &&
+    s.includes("index: false"),
+  "restore app/search/page.tsx (server component, plain GET form, searchCorpus results, noindex metadata)",
+);
+check(
+  "proxy.ts",
+  "§38 working search surface: \"/search\" was dropped from NOINDEX_PREFIXES, so the utility page would send mixed signals (meta noindex vs header index)",
+  (s) => /NOINDEX_PREFIXES[^;]*"[^"]*\/search"/.test(s.replace(/\s+/g, " ")),
+  'add "/search" to NOINDEX_PREFIXES in proxy.ts (keep header-level X-Robots-Tag aligned with the page meta robots)',
+);
+check(
+  "app/opensearch.xml/route.ts",
+  "§38 working search surface: the opensearch.xml text/html template no longer points at the /search results page",
+  (s) => s.includes("/search?q={searchTerms}"),
+  "point the opensearch.xml text/html template at ${SITE}/search?q={searchTerms}",
+);
+check(
+  "components/RootIdentitySchema.tsx",
+  "§38 working search surface: the human-path SearchAction (Desktop+Mobile web platforms, /search target) was dropped from the WebSite node",
+  (s) =>
+    s.includes("DesktopWebPlatform") &&
+    s.includes("MobileWebPlatform") &&
+    s.includes("/search?q={search_term_string}"),
+  "keep both SearchActions on the WebSite node: /search (human, actionPlatform) and /api/llms-search (agents, contentType JSON)",
+);
+check(
+  "components/Header.tsx",
+  "§38 working search surface: the header search affordance or the SiteNavigationElement Search entry was dropped",
+  (s) =>
+    s.includes('href="/search"') &&
+    s.includes('aria-label="Search the site"') &&
+    s.includes('"Search"') &&
+    s.includes("${SITE}/search"),
+  "restore the /search link (desktop icon + mobile row) and the SiteNavigationElement Search entry in components/Header.tsx",
+);
+check(
+  "lib/search-index.ts",
+  "§38 working search surface: the shared search corpus was deleted, desynchronizing /api/llms-search from /search",
+  (s) => s.includes("export function searchCorpus") && s.includes("export function normalizeQuery"),
+  "keep lib/search-index.ts as the single corpus shared by the JSON endpoint and the SSR page",
+);
+check(
+  "app/api/llms-search/route.ts",
+  "§38 working search surface: the JSON endpoint no longer uses the shared corpus (results will drift from /search)",
+  (s) => s.includes("searchCorpus"),
+  "import { searchCorpus } from @/lib/search-index in app/api/llms-search/route.ts",
+);
+
+
+// ---------------------------------------------------------------------------
+// §39 Field-TTFB beacon must survive every deploy (2026-08-17). The native
+// posthog-js SDK does NOT capture TTFB (verified in project 143861: zero
+// native-shape TTFB values on any host in 28d), so the 2026-08-16
+// "single-source CWV" refactor silently killed the field TTFB stream for
+// days. components/WebVitalsReporter.tsx is the ONLY field TTFB source on
+// signals; the regression check (field_ttfb_check.py, n>=500/wk gate)
+// depends on it. Fails closed if a lineage reverts it to a no-op, drops
+// the TTFB-only filter, or removes the junk-zero/prerender skip that keeps
+// the field p75 meaningful.
+// ---------------------------------------------------------------------------
+{
+  const b = read("components/WebVitalsReporter.tsx");
+  if (b === null) {
+    failures.push("components/WebVitalsReporter.tsx missing entirely");
+  } else {
+    if (!b.includes('metric.name !== "TTFB"')) {
+      failures.push(
+        `§39 TTFB beacon lost the TTFB-only filter (it must capture TTFB and ONLY TTFB).\n` +
+          `    fix:  restore the "if (metric.name !== \\"TTFB\\") return;" guard`,
+      );
+    }
+    if (!b.includes('"ttfb-v2"')) {
+      failures.push(
+        `§39 TTFB beacon lost the beacon='ttfb-v2' marker (field_ttfb_check.py keys on it).\n` +
+          `    fix:  restore beacon: "ttfb-v2" in the capture properties`,
+      );
+    }
+    if (!b.includes('"prerender"') || !b.includes('"back-forward"')) {
+      failures.push(
+        `§39 TTFB beacon lost the prerender/bfcache skip (zeros pollute the field p75).\n` +
+          `    fix:  restore SKIP_NAV with "prerender" and "back-forward"`,
+      );
+    }
+    if (!b.includes("window.posthog") || !b.includes("$web_vitals")) {
+      failures.push(
+        `§39 TTFB beacon lost the posthog capture path ($web_vitals event).\n` +
+          `    fix:  restore window.posthog.capture("$web_vitals", ...)`,
+      );
+    }
+  }
+}
 
 // ---------------------------------------------------------------------------
 if (failures.length) {
