@@ -130,6 +130,7 @@ ${jsonld.map(j => `<script type="application/ld+json">${JSON.stringify(j)}</scri
 </head><body><div class="wrap">${body}
 <p class="disc"><strong>Methodology & disclaimer.</strong> ${esc(DISCLAIMER)} Data source: GitHub public REST API, refreshed as of ${TODAY}. Score = round(0.40·traction + 0.35·recency + 0.25·velocity), where traction=100·log10(stars+1)/5, recency is a step function of days since last push, and velocity reflects week-over-week star growth (falls back to traction on first snapshot). Full dataset: <a href="${PATH}/data.json">data.json</a> (CC BY 4.0).</p>
 <p class="disc"><a href="/data/">← GitDealFlow Research Datasets</a> · <a href="/">gitdealflow.com</a></p>
+<p class="disc">By <a href="https://signals.gitdealflow.com/data-nerd" rel="author">The Data Nerd</a> · <a href="https://orcid.org/0009-0002-2222-4112" rel="me author">ORCID 0009-0002-2222-4112</a> · <a href="https://ssrn.com/abstract=6606558">SSRN preprint</a></p>
 </div></body></html>`;
 }
 
