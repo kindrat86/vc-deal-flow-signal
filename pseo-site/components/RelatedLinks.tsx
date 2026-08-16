@@ -43,7 +43,7 @@ export default function RelatedLinks({
                 <li key={l.href}>
                   <Link
                     href={l.href}
-                    className="group block text-sm text-gray-300 hover:text-sky-400 transition-colors"
+                    className="group block text-sm text-gray-300 hover:text-sky-400 transition-colors min-h-[24px] py-1"
                   >
                     <span className="group-hover:underline">{l.label}</span>
                     {l.subtitle && (

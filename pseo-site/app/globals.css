@@ -335,3 +335,18 @@ main code * {
     break-before: page;
   }
 }
+
+/* ==========================================================================
+   §36 Mobile tap-target floor (2026-08-17). GDF mobile-friendliness audit:
+   footer column/legal navs, breadcrumb trails and aside link lists rendered
+   15-20px-tall anchors on phones (WCAG 2.5.8 / Google 24px minimum).
+   :where() = zero specificity, so any Tailwind padding utility or inline
+   style on an anchor keeps winning; this only lifts bare structural links.
+   ========================================================================== */
+@media (max-width: 767px) {
+  :where(footer a, nav[aria-label="Breadcrumb"] a, aside ul a) {
+    display: inline-block;
+    min-height: 24px;
+    padding-block: 3px;
+  }
+}
