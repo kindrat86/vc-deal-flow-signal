@@ -3363,7 +3363,8 @@ check(
   "§42 CTR: the compare builder no longer consumes the hook map (title falls back to generic)",
   (s) =>
     s.includes("COMPARE_TITLE_HOOKS[slug]") &&
-    s.includes("FRESH_YEAR_STR})`"),
+    s.includes("hookedTitle} ${FRESH_YEAR_STR}`") &&
+    !s.includes("(${FRESH_YEAR_STR})"),
   "restore hook-map consumption in app/compare/[slug]/page.tsx generateMetadata",
 );
 check(
@@ -3375,7 +3376,7 @@ check(
 check(
   "app/alternatives/[slug]/page.tsx",
   "§42 CTR: the alternatives builder no longer consumes the hook map",
-  (s) => s.includes("ALTERNATIVES_TITLE_HOOKS[slug]"),
+  (s) => s.includes("ALTERNATIVES_TITLE_HOOKS[slug]") && !s.includes("(${FRESH_YEAR_STR})"),
   "restore hook-map consumption in app/alternatives/[slug]/page.tsx generateMetadata",
 );
 check(

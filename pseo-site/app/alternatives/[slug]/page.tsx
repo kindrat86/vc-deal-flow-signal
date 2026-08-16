@@ -37,18 +37,18 @@ export async function generateMetadata({
   const hookedTitle = ALTERNATIVES_TITLE_HOOKS[slug];
   return {
     ...(hookedTitle
-      ? { title: { absolute: `${hookedTitle} (${FRESH_YEAR_STR})` } }
+      ? { title: { absolute: `${hookedTitle} ${FRESH_YEAR_STR}` } }
       : { title: alt.title }),
     description: alt.description,
     openGraph: {
-      title: hookedTitle ? `${hookedTitle} (${FRESH_YEAR_STR})` : alt.title,
+      title: hookedTitle ? `${hookedTitle} ${FRESH_YEAR_STR}` : alt.title,
       description: alt.description,
       type: "article",
       url: `/alternatives/${slug}`,
     },
     twitter: {
       card: "summary_large_image",
-      title: hookedTitle ? `${hookedTitle} (${FRESH_YEAR_STR})` : alt.title,
+      title: hookedTitle ? `${hookedTitle} ${FRESH_YEAR_STR}` : alt.title,
       description: alt.description,
     },
     alternates: {

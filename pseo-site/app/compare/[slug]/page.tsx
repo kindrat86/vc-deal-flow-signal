@@ -42,7 +42,7 @@ export async function generateMetadata({
   // everything else keeps the template suffix.
   const hookedTitle = COMPARE_TITLE_HOOKS[slug];
   const pageTitle = hookedTitle
-    ? { absolute: `${hookedTitle} (${FRESH_YEAR_STR})` }
+    ? { absolute: `${hookedTitle} ${FRESH_YEAR_STR}` }
     : comp.title.includes("VC Deal Flow Signal")
       ? { absolute: comp.title }
       : comp.title;
@@ -51,14 +51,14 @@ export async function generateMetadata({
     description: clampDescription(comp.description),
     ...(comp.noindex ? { robots: { index: false } } : {}),
     openGraph: {
-      title: hookedTitle ? `${hookedTitle} (${FRESH_YEAR_STR})` : comp.title,
+      title: hookedTitle ? `${hookedTitle} ${FRESH_YEAR_STR}` : comp.title,
       description: clampDescription(comp.description),
       type: "article",
       url: `/compare/${slug}`,
     },
     twitter: {
       card: "summary_large_image",
-      title: hookedTitle ? `${hookedTitle} (${FRESH_YEAR_STR})` : comp.title,
+      title: hookedTitle ? `${hookedTitle} ${FRESH_YEAR_STR}` : comp.title,
       description: clampDescription(comp.description),
     },
     alternates: {
