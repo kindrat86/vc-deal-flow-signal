@@ -3140,8 +3140,11 @@ check(
 //      NEW component with fresh deadline logic; do not resurrect this one.
 //   2. GA4 gtag: afterInteractive made Next inject a <link rel=preload> for
 //      gtag.js into <head>, pulling a third-party script into the LCP
-//      window. lazyOnload keeps GA4 (secondary view) out of the critical
-//      path; PostHog (north star) remains the primary tracker.
+//      window. lazyOnload keeps the gtag.js LIBRARY (gtag-loader) out of the
+//      critical path. The gtag-init CONFIG push is now afterInteractive (not
+//      lazyOnload): it must precede the qualified_visit event or gtag.js drops
+//      the event for having no prior config (qualifier-ordering fix 08-19).
+//      PostHog (north star) remains the primary tracker.
 // ---------------------------------------------------------------------------
 check(
   "app/layout.tsx",
@@ -3151,11 +3154,11 @@ check(
 );
 check(
   "components/PixelManager.tsx",
-  "§34 CWV trim: GA4 gtag reverted to afterInteractive, which re-injects the gtag.js preload into the LCP window",
+  "§34 CWV trim + GA4 qualifier ordering: gtag-loader must stay lazyOnload (afterInteractive re-injects the gtag.js <link rel=preload> into the LCP window), but gtag-init must be afterInteractive so the config command lands in dataLayer BEFORE the qualifier's qualified_visit event (a lazyOnload config is pushed after the event, and gtag.js silently drops an event with no prior config).",
   (s) =>
     /id="gtag-loader"[\s\S]{0,120}?strategy="lazyOnload"/.test(s) &&
-    /id="gtag-init"[\s\S]{0,120}?strategy="lazyOnload"/.test(s),
-  "keep gtag-loader/gtag-init on lazyOnload (GA4 is the secondary tracker; PostHog is north star)",
+    /id="gtag-init"[\s\S]{0,120}?strategy="afterInteractive"/.test(s),
+  "keep gtag-loader on lazyOnload (library out of the LCP window) and gtag-init on afterInteractive (config must precede the qualified_visit event push)",
 );
 
 // ---------------------------------------------------------------------------
