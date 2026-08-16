@@ -172,6 +172,30 @@
           "tree": "landing"
         }
       ]
+    },
+    {
+      "id": "frozen-best-redirects",
+      "auditLine": "Keyword cannibalization 38 / URL structure 78 (audit 2026-08-16, win #2 residuals)",
+      "what": "301s for the five Q2-2026 frozen-sector /best/ URLs: developer-tools -> /sectors/developer-tools (sibling), plus ai-ml/fintech/climate-tech/cybersecurity -> /startups-to-watch/<slug>-q2-2026 (GSC 90d on the 404s: 48/25/23/22 impressions). verify-no-regressions asserts both source and destination of all five; a lineage that drops or retargets any of them fails the build.",
+      "fixCommit": "e2219db0",
+      "ancestryExpected": true,
+      "contentNeedles": [
+        {
+          "file": "pseo-site/next.config.ts",
+          "pattern": "\"source\": \"/best/ai-ml-2026\"",
+          "minCount": 1
+        },
+        {
+          "file": "pseo-site/next.config.ts",
+          "pattern": "\"destination\": \"/startups-to-watch/climate-tech-q2-2026\"",
+          "minCount": 1
+        },
+        {
+          "file": "pseo-site/scripts/verify-no-regressions.ts",
+          "pattern": "FROZEN_BEST",
+          "minCount": 1
+        }
+      ]
     }
   ]
 }
