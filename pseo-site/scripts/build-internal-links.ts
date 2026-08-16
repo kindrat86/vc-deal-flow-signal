@@ -26,7 +26,7 @@ import { readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 
 const BASE = process.env.LINKS_BASE || "https://signals.gitdealflow.com";
-const SITEMAP_IDS = ["core", "high-intent", "sectors", "crossings", "startups", "content"];
+const SITEMAP_IDS = ["core", "sectors", "crossings", "startups", "content"];
 
 interface Link { href: string; label: string }
 interface RelatedGroup { title: string; links: Link[] }
