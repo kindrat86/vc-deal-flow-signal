@@ -176,6 +176,27 @@ for (const f of claimFiles) {
   }
 }
 
+// ---------------------------------------------------------------------------
+// /teardown must redirect to signals, not 404 (2026-08-17)
+// ---------------------------------------------------------------------------
+// Outreach emails and preflight-health-check.py link gitdealflow.com/teardown,
+// but the teardown offer page only exists on signals.gitdealflow.com (Next.js).
+// Every human click from those emails (RUM: /teardown?utm_source=outreach,
+// 5 clicks/30d) landed on a 404. A tree missing this redirect must not deploy.
+const teardownRedirect = (parsed.redirects || []).find(
+  (r) => r.source === "/teardown",
+);
+if (
+  !teardownRedirect ||
+  teardownRedirect.destination !==
+    "https://signals.gitdealflow.com/teardown" ||
+  teardownRedirect.permanent !== true
+) {
+  fail(
+    '/teardown 404s again: the { "source": "/teardown", "destination": "https://signals.gitdealflow.com/teardown", "permanent": true } redirect is missing from vercel.json redirects[] (outreach emails link this URL; 2026-08-17 fix).',
+  );
+}
+
 if (failures.length) {
   console.error(
     `\n❌ verify-vercel-config: ${failures.length} config regression(s) detected:`,

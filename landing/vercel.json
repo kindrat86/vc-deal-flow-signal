@@ -107,6 +107,56 @@
   ],
   "redirects": [
     {
+      "source": "/teardown",
+      "destination": "https://signals.gitdealflow.com/teardown",
+      "permanent": true
+    },
+    {
+      "source": "/ai--machine-learning-startups/:path*",
+      "destination": "/ai-machine-learning-startups/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/de/ai--machine-learning-startups/:path*",
+      "destination": "/de/ai-machine-learning-startups/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/es/ai--machine-learning-startups/:path*",
+      "destination": "/es/ai-machine-learning-startups/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/climate--energy-startups/:path*",
+      "destination": "/climate-energy-startups/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/de/climate--energy-startups/:path*",
+      "destination": "/de/climate-energy-startups/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/es/climate--energy-startups/:path*",
+      "destination": "/es/climate-energy-startups/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/crypto--web3-startups/:path*",
+      "destination": "/crypto-web3-startups/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/de/crypto--web3-startups/:path*",
+      "destination": "/de/crypto-web3-startups/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/es/crypto--web3-startups/:path*",
+      "destination": "/es/crypto-web3-startups/:path*",
+      "permanent": true
+    },
+    {
       "source": "/sitemap-pseo.xml",
       "destination": "/sitemap.xml",
       "permanent": true
