@@ -198,6 +198,51 @@ if (
 }
 
 // ---------------------------------------------------------------------------
+// /citations must redirect to the canonical identity map, not 404 (2026-08-19)
+// ---------------------------------------------------------------------------
+// Brand-SERP win: the canonical citations/identity-map page lives on signals
+// (5k words, self-canonical, linked from /about and llms.txt). The apex 404
+// split the brand surface: Wikidata P973 and outreach copy point at
+// signals.gitdealflow.com/citations while humans typing gitdealflow.com/citations
+// hit a dead end. Single-hop 308, canonical stays on signals.
+const citationsRedirect = (parsed.redirects || []).find(
+  (r) => r.source === "/citations",
+);
+if (
+  !citationsRedirect ||
+  citationsRedirect.destination !==
+    "https://signals.gitdealflow.com/citations" ||
+  citationsRedirect.permanent !== true
+) {
+  fail(
+    '/citations 404s again: the { "source": "/citations", "destination": "https://signals.gitdealflow.com/citations", "permanent": true } redirect is missing from vercel.json redirects[] (canonical identity map must stay reachable from the apex; 2026-08-19 fix).',
+  );
+}
+
+// ---------------------------------------------------------------------------
+// Organization logo on the apex home JSON-LD (2026-08-19)
+// ---------------------------------------------------------------------------
+// Knowledge-Panel eligibility: logo is a recommended Organization field and
+// the apex home org node shipped without one (about.html had it; the home
+// node did not, so the two definitions of #organization disagreed). A tree
+// that loses the home-page logo must not deploy.
+{
+  let home;
+  try {
+    home = readFileSync("index.html", "utf8");
+  } catch {
+    home = "";
+  }
+  const orgAt = home.indexOf('"https://gitdealflow.com/#organization"');
+  const window = home.slice(orgAt, orgAt + 2500);
+  if (orgAt === -1 || !window.includes('"logo"')) {
+    fail(
+      'index.html Organization node (#organization) lost its "logo" ImageObject (Knowledge-Panel recommended field; 2026-08-19 fix).',
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Mobile tap-target floor in ux.css (2026-08-17)
 // ---------------------------------------------------------------------------
 // The 375px/360px rendered audit found structural anchors (breadcrumbs, footer

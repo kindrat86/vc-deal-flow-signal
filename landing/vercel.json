@@ -106,11 +106,16 @@
     }
   ],
   "redirects": [
-    {
-      "source": "/teardown",
-      "destination": "https://signals.gitdealflow.com/teardown",
-      "permanent": true
-    },
+  {
+    "source": "/teardown",
+    "destination": "https://signals.gitdealflow.com/teardown",
+    "permanent": true
+  },
+  {
+    "source": "/citations",
+    "destination": "https://signals.gitdealflow.com/citations",
+    "permanent": true
+  },
     {
       "source": "/ai--machine-learning-startups/:path*",
       "destination": "/ai-machine-learning-startups/:path*",
