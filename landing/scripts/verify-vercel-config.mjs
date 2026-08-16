@@ -216,6 +216,7 @@ if (
   if (!css.includes("@media (max-width: 767px)") ||
       !css.includes("min-height: 24px") ||
       !css.includes(":where(footer a") ||
+      !css.includes("body > ul a,") ||
       !css.includes(".network-grid a)")) {
     fail("ux.css lost the mobile tap-target floor block (:where(footer a, header nav a, ... .network-grid a) min-height 24px, 2026-08-17); footer/breadcrumb/related anchors drop back to 15-18px on phones.");
   }
