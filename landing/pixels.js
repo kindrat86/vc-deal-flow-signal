@@ -158,4 +158,79 @@
       document.head.appendChild(s);
     } catch (e) { /* beacon must never throw */ }
   })();
+
+  // ------------------------------------------------------------------
+  // GA4 qualified-visitor mirror (added 2026-08-16). Mirrors the PostHog
+  // north-star definition in ~/portfolio/scripts/fetch_north_star.py into
+  // GA4 (G-7SV2SNZE4C) so GA4's "Qualified Visitors" audience + Looker
+  // Studio dashboard mirror the PostHog number and feed Google Ads /
+  // LinkedIn retargeting (the highest-value use of the qualified set).
+  // Fires a once-per-session `qualified_visit` event and forwards the
+  // qualifying conversion/engagement events. Deliberately does NOT mirror
+  // $pageview (GA4 already collects its own page_view) and never
+  // double-counts: the posthog.capture wrap is idempotent and re-applies
+  // only if posthog-js replaces its snippet stub with the real instance.
+  // ------------------------------------------------------------------
+  (function () {
+    var CONV = ["signup_verify_sent", "beta_signup", "lead_submitted", "subscribed",
+      "analysis_purchased", "purchase_confirmed", "lead_magnet_requested",
+      "exit_intent_subscribed", "tools_subscribe_submitted"];
+    var ENG = ["concierge_opened", "exit_modal_opened", "exit_modal_submitted"];
+    var EVAL_RE = /(\/pricing|\/vs\/|alternatives-to|\/methodology|\/mcp|\/api|\/docs)/;
+    var qFired = false;
+
+    function pushGtag() {
+      try {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push(Array.prototype.slice.call(arguments));
+      } catch (e) { /* never throw */ }
+    }
+    function qualified(source) {
+      var K = "gdf_qualified_visit";
+      if (qFired) return;
+      try {
+        if (sessionStorage.getItem(K)) return;
+        sessionStorage.setItem(K, "1");
+      } catch (e) { /* private mode: fall through to the volatile qFired guard */ }
+      qFired = true;
+      pushGtag("event", "qualified_visit", { path: location.pathname, source: source || "unknown" });
+    }
+    function mirror(name, props) {
+      if (!name) return;
+      var params = { source: location.pathname };
+      if (props && typeof props === "object") {
+        for (var k in props) {
+          var v = props[k];
+          if (v === null || v === undefined) continue;
+          if (typeof v === "string" || typeof v === "number" || typeof v === "boolean") params[k] = v;
+        }
+      }
+      if (ENG.indexOf(name) >= 0) {
+        pushGtag("event", name, params);
+        qualified("engagement");
+      } else if (CONV.indexOf(name) >= 0) {
+        pushGtag("event", name, params);
+        qualified("conversion");
+      }
+    }
+    function wrapCapture() {
+      var ph = window.posthog;
+      if (!ph || typeof ph.capture !== "function" || ph.__gdfMirrorWrapped) return;
+      var orig = ph.capture;
+      ph.capture = function () {
+        try { mirror(arguments[0], arguments[1]); } catch (e) {}
+        return orig.apply(ph, arguments);
+      };
+      try { ph.__gdfMirrorWrapped = true; } catch (e) {}
+    }
+    if (EVAL_RE.test(location.pathname)) qualified("eval_path");
+    wrapCapture();
+    var tries = 0;
+    var timer = setInterval(function () {
+      // posthog-js swaps its snippet stub for the real instance after
+      // array.js loads; re-wrap whenever the mark is gone (idempotent).
+      wrapCapture();
+      if (++tries > 600) clearInterval(timer);  // ~60s; array.js loads in <2s
+    }, 100);
+  })();
 })();

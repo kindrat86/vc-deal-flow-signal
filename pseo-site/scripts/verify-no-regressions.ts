@@ -104,6 +104,29 @@ function landingCheck(rel: string, label: string, ok: (s: string) => boolean, hi
 }
 
 // ---------------------------------------------------------------------------
+// 0.5 GA4 qualified-visitor mirror (2026-08-16). GA4 is the acquisition and
+//     remarketing mirror of the PostHog north-star. The qualifier bridge fires
+//     a once-per-session qualified_visit event and forwards the qualifying
+//     conversion/engagement events (via a wrapped posthog.capture) so GA4's
+//     "Qualified Visitors" audience + Looker Studio mirror the PostHog number.
+//     A lineage that drops it silently reverts GA4 to raw activeUsers (no
+//     qualified set, no retargeting audience). BOTH surfaces must carry it:
+//     the static landing (pixels.js) and the pSEO app (PixelManager.tsx).
+// ---------------------------------------------------------------------------
+check(
+  "components/PixelManager.tsx",
+  "GA4 qualified-visitor qualifier missing from PixelManager: GA4 reverts to raw activeUsers, no qualified_visit event, no retargeting audience.",
+  (s) => s.includes("qualified_visit") && s.includes("__gdfMirrorWrapped"),
+  "restore the gdf-ga4-qualifier script (qualified_visit + posthog.capture mirror) in components/PixelManager.tsx",
+);
+landingCheck(
+  "pixels.js",
+  "GA4 qualified-visitor qualifier missing from landing/pixels.js: the apex site stops mirroring qualified visits into GA4.",
+  (s) => s.includes("qualified_visit") && s.includes("__gdfMirrorWrapped"),
+  "restore the GA4 qualified-visitor bridge at the end of landing/pixels.js",
+);
+
+// ---------------------------------------------------------------------------
 // 1. Deactivated Stripe payment links (2026-07-31). These five links are
 //    switched off in Stripe: a click 3s-redirects to a homepage with no
 //    checkout, so every one is a silently lost sale.
