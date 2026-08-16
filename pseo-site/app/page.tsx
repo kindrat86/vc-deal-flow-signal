@@ -1234,7 +1234,7 @@ fine, but slow, or had been reading the same
             sourceLabel: "agents.md",
           },
           {
-            claim: `${totalTracked} startup signals across ${activeSectorCount} sectors and ${allPeriods.length} quarterly periods of history.`,
+            claim: `${panelClaim} startup signals across ${activeSectorCount} sectors and ${allPeriods.length} quarterly periods of history.`,
             sourceUrl: "https://signals.gitdealflow.com/api/signals.json",
             sourceLabel: "signals.json",
           },

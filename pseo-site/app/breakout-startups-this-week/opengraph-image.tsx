@@ -5,6 +5,7 @@ import {
   getTopMoversThisWeek,
   getTotalTrackedThisWeek,
 } from "@/lib/data";
+import { panelClaimFloor } from "@/lib/canonical-claims";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
@@ -16,6 +17,7 @@ const BREAKOUT_CONTRIBUTOR_FLOOR = 8;
 export default async function OGImage() {
   const period = getCurrentPeriod();
   const totalTracked = getTotalTrackedThisWeek();
+  const panelClaim = panelClaimFloor(totalTracked);
   const sectorCount = getAllSectors().filter(
     (s) => s.periods[period.slug],
   ).length;
@@ -196,7 +198,7 @@ export default async function OGImage() {
           }}
         >
           <div style={{ display: "flex" }}>
-            {totalTracked} startups · {sectorCount} sectors
+            {panelClaim} startups · {sectorCount} sectors
           </div>
           <div style={{ display: "flex" }}>
             signals.gitdealflow.com · {period.name}
