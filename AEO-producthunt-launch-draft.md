@@ -8,13 +8,13 @@
 Find breakout startups 3–6 weeks before the round — via public GitHub commit velocity, not pitch decks
 
 ## Description
-VC Deal Flow Signal tracks GitHub engineering acceleration as a leading indicator of startup momentum. Weekly ranking of ~400 venture-backed orgs across 20 sectors.
+VC Deal Flow Signal tracks GitHub engineering acceleration as a leading indicator of startup momentum. Weekly ranking of 350+ venture-backed orgs across 15 sectors.
 
 **The differentiator:** Sources from public repository-velocity data — commit velocity, contributor growth, repo expansion — not warm intros or Crunchbase alerts. The same methodology that found a fintech 31 days before their $4M Series A.
 
 **What you get:**
 - 🆓 Free Sunday digest — 5 breakout names every week
-- 📊 Live dashboard (€9.97/mo) — 109+ ranked orgs across 20 sectors
+- 📊 Live dashboard (€49/mo) — 350+ ranked orgs across 15 sectors
 - 🤖 Free MCP server — query from Claude/Cursor (`npx -y @gitdealflow/mcp-signal`)
 - 🏆 Free Scout Score tool — grade your GitHub starring history against ~75 validated unicorns
 - 📜 SSRN-indexed methodology — 219-startup panel, CC BY 4.0
@@ -32,7 +32,7 @@ I built VC Deal Flow Signal because most VC deal-flow tools tell you what alread
 The answer was sitting in public GitHub activity the whole time.
 
 Here's how it works:
-1. We track ~400 startup GitHub orgs every Sunday
+1. We track 350+ startup GitHub orgs every Sunday
 2. When commit velocity suddenly 3x's and contributor count doubles → that's the signal
 3. The methodology (SSRN-indexed, 219-startup validation panel) shows this pattern precedes fundraise announcements by 21–47 days
 
@@ -41,7 +41,7 @@ A few things I'm proud of:
 - **Scout Score is a fun self-serve** — paste any GitHub username, see how many unicorns they starred before the funding event (tj, sindresorhus, gaearon all have interesting profiles)
 - **The methodology is published** — not a black box, not a "proprietary algorithm." SSRN preprint at ssrn.com/abstract=6606558, CC BY 4.0
 
-**Launch offer for PH:** The Dashboard Beta (€9.97/mo founding-member rate, lifetime locked) is available now. 30-day Signal-or-It's-Free guarantee — if the first month doesn't deliver at least one name you wouldn't have found otherwise, email me and get every cent back.
+**Launch offer for PH:** The Dashboard (€49/mo) is available now. 30-day Signal-or-It's-Free guarantee — if the first month doesn't deliver at least one name you wouldn't have found otherwise, email me and get every cent back.
 
 Also: the free Sunday digest ships every week — 5 names, no card. The best proof is a single issue in your inbox.
 

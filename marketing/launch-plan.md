@@ -8,7 +8,7 @@ Two free entry rungs on the Brunson value ladder. Mention BOTH in every launch a
 1. **Chrome extension** — injects a green "Accelerating" badge on Crunchbase, AngelList, and PitchBook startup profiles. Install: https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn. Audience: traditional VCs doing deal research in the browser.
 2. **Claude MCP server** — serves signals inside Claude Desktop, Claude Code, Cursor, and any MCP-compatible AI assistant. Install: `npx @gitdealflow/mcp-signal`. Audience: dev-investors and AI-native workflows.
 
-Both are free, both drive signups to the weekly digest, which feeds the EUR 9.97/mo dashboard and EUR 97/mo Insider Circle conversions.
+Both are free, both drive signups to the weekly digest, which feeds the EUR 49/mo dashboard and EUR 197/mo Insider Circle conversions.
 
 ## Launch Strategy: Consolidated single-day launch (Sunday April 26)
 
@@ -64,11 +64,11 @@ Technical audience that angel invests. HN respects novel data approaches. The Gi
 - **Title:** "Show HN: VC Deal Flow Signal, GitHub engineering momentum as a leading indicator for investors"
 - **URL:** gitdealflow.com (or signals.gitdealflow.com for the data-rich pSEO site)
 - **First comment (by you, immediately after posting):**
-  "Hey HN. I noticed that startups showing commit velocity spikes on GitHub tend to announce raises or product launches 3 to 6 weeks later. So I built a system that monitors thousands of GitHub orgs and ranks them by engineering acceleration for investors.
+  "Hey HN. I noticed that startups showing commit velocity spikes on GitHub tend to announce raises or product launches 3 to 6 weeks later. So I built a system that monitors 350+ venture-backed GitHub orgs and ranks them by engineering acceleration for investors.
 
   The data pipeline scrapes GitHub activity weekly, enriches with funding stage and team size, and publishes sector-by-sector rankings.
 
-  Free weekly digest or a EUR 9.97/mo dashboard beta. Would love feedback on the methodology. Is commit velocity a real signal, or am I overfitting?"
+  Free weekly digest or a EUR 49/mo dashboard. Would love feedback on the methodology. Is commit velocity a real signal, or am I overfitting?"
 
 ### HN best practices
 - Post between 8am and 10am ET (highest traffic)
@@ -87,7 +87,7 @@ Product Hunt gives you one shot at a clean launch. Use learnings from Wave 1 and
 - [ ] Create a Product Hunt maker profile
 - [ ] Prepare 5 images: hero screenshot, sector ranking table, sample signal card, pricing comparison, Data Nerd character intro
 - [ ] Write tagline (under 60 chars): "Spot breakout startups 3 weeks early via GitHub"
-- [ ] Write description (under 260 chars): "We monitor GitHub engineering activity across thousands of startup orgs and surface the ones showing unusual acceleration. Free weekly digest or a EUR 9.97/mo dashboard. Built for seed/Series A investors."
+- [ ] Write description (under 260 chars): "We monitor GitHub engineering activity across 350+ venture-backed startup orgs and surface the ones showing unusual acceleration. Free weekly digest or a EUR 49/mo dashboard. Built for seed/Series A investors."
 - [ ] Prepare a "first comment" as maker (your story, what you learned from HN and IH)
 - [ ] Line up 5-10 supporters to comment and upvote in the first hour
 - [ ] DM Ryan Hoover (@rrhoover) with a heads-up if you've built any engagement with him

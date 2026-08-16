@@ -18,7 +18,7 @@ What's in it:
 - **Free Scout Score tool** — paste any GitHub username, see how many unicorns they starred *before* the funding event (backwards-looking taste metric from public star history)
 - **SSRN-indexed methodology** with a 219-startup panel — median lead time 31 days between signal spike and fundraise announcement
 - **CC BY 4.0** — dataset downloadable as CSV/JSON/JSONL, plus mirrors on Hugging Face, Zenodo (DOI), Kaggle
-- **Price**: free weekly digest (5 names every Sunday), €9.97/mo dashboard, free MCP server forever
+- **Price**: free weekly digest (5 names every Sunday), €49/mo dashboard, free MCP server forever
 
 Why I think HN might find this interesting:
 1. It's an alternative-data approach to a space (VC deal flow) that's historically been driven by warm intros and pitch decks — the signal is purely code-side

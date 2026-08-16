@@ -5175,6 +5175,62 @@ landingCheck(
       );
     }
   }
+  // -------------------------------------------------------------------------
+  // §61 forward-copy claim lock (user lock 2026-08-16): launch drafts,
+  //     outreach emails, and affiliate recruiting copy must quote CURRENT
+  //     facts only: panel "350+", 15 sectors, EUR 49/197. Founding-era rates
+  //     (9.97/97) may appear only with the closed-window framing. These
+  //     files are future-facing: stale numbers become public claims the
+  //     moment they are posted or sent.
+  // -------------------------------------------------------------------------
+  {
+    const fwdFiles61: Array<[string, string]> = [
+      ["AEO-producthunt-launch-draft.md", "PH launch draft"],
+      ["AEO-hn-show-hn-draft.md", "HN Show HN draft"],
+      ["marketing/launch-plan.md", "launch plan"],
+      ["marketing/outreach-emails-final.md", "outreach emails"],
+      ["marketing/alternatives-cluster-geo-2026-05-31/assets/listicle-outreach-email.md", "listicle outreach"],
+      ["marketing/twitter-post-launch-week.md", "launch-week tweets"],
+      ["tools/campaign/drafts/affiliate-recruit-01-pragmatic-engineer.txt", "affiliate draft 01"],
+      ["tools/campaign/drafts/affiliate-recruit-06-devtools-fyi.txt", "affiliate draft 06"],
+      ["tools/campaign/drafts/affiliate-recruit-08-lenny-newsletter.txt", "affiliate draft 08"],
+    ];
+    const banned61 = [
+      "9.97",
+      "€97/mo",
+      "EUR 97/mo",
+      "€19.40",
+      "109+",
+      "~400",
+      "400+ startup",
+      "20 sectors",
+      "thousands of",
+      "140 ranked",
+      "4,200",
+      "4,800 orgs",
+    ];
+    const exempt61 = /closed|2026-06-30|founding|Founding|archived/i;
+    const hits61: string[] = [];
+    for (const [rel, label] of fwdFiles61) {
+      const fp = join(ROOT, "..", rel);
+      if (!existsSync(fp)) continue;
+      const ls = readFileSync(fp, "utf8").split(/\r?\n/);
+      ls.forEach((line, idx) => {
+        if (exempt61.test(line)) return;
+        for (const tok of banned61) {
+          if (line.includes(tok)) {
+            hits61.push(`${label} (${rel}:${idx + 1}): "${tok}"`);
+            break;
+          }
+        }
+      });
+    }
+    if (hits61.length) {
+      failures.push(
+        `§61 forward-copy claim violations in: ${hits61.join("; ")}\n    file: (multiple)\n    fix:  sweep launch/outreach/affiliate drafts to PANEL_CLAIM (350+), 15 sectors, EUR 49/197; founding rates only with closed-window framing`,
+      );
+    }
+  }
 }
 
 if (failures.length) {
