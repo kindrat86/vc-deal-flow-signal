@@ -181,9 +181,23 @@
 
     function pushGtag() {
       try {
-        window.dataLayer = window.dataLayer || [];
-        window.dataLayer.push(Array.prototype.slice.call(arguments));
+        if (window.gtag && typeof window.gtag === "function") {
+          window.gtag.apply(window, arguments);
+        } else {
+          window.dataLayer = window.dataLayer || [];
+          window.dataLayer.push(Array.prototype.slice.call(arguments));
+        }
       } catch (e) { /* never throw */ }
+    }
+    function gtagReady() {
+      try {
+        var dl = window.dataLayer || [];
+        for (var i = 0; i < dl.length; i++) {
+          if (dl[i] && typeof dl[i].event === "string" && dl[i].event.indexOf("gtm.") === 0) return true;
+        }
+        if (window.google_tag_manager && Object.keys(window.google_tag_manager).length > 0) return true;
+      } catch (e) { /* fall through to not-ready */ }
+      return false;
     }
     function qualified(source) {
       var K = "gdf_qualified_visit";
@@ -193,7 +207,15 @@
         sessionStorage.setItem(K, "1");
       } catch (e) { /* private mode: fall through to the volatile qFired guard */ }
       qFired = true;
-      pushGtag("event", "qualified_visit", { path: location.pathname, source: source || "unknown" });
+      var payload = { path: location.pathname, source: source || "unknown" };
+      if (gtagReady()) { pushGtag("event", "qualified_visit", payload); return; }
+      // gtag.js loads lazily (onload); a push made before it loads is not
+      // reliably replayed, so defer until the library has configured itself.
+      var qTries = 0;
+      var qTimer = setInterval(function () {
+        if (gtagReady()) { pushGtag("event", "qualified_visit", payload); clearInterval(qTimer); }
+        else if (++qTries > 600) { clearInterval(qTimer); }
+      }, 100);
     }
     function mirror(name, props) {
       if (!name) return;
