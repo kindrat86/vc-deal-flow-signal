@@ -4453,7 +4453,7 @@ landingCheck(
 
 // ---------------------------------------------------------------------------
 // 55. Sitemap zero-impression prune (2026-08-16, audit items "technical SEO",
-//     "index-bloat control", "content pruning at scale"): 474 leaf URLs with
+//     "index-bloat control", "content pruning at scale"): 477 leaf URLs with
 //     ZERO GSC impressions/clicks over 90d leave the sitemaps. Prune =
 //     sitemap removal ONLY (pages stay live, internally linked, crawlable;
 //     same convention as §48 niche-down). content/pruned-pages.ts is the
@@ -4966,7 +4966,7 @@ landingCheck(
 }
 
 // ---------------------------------------------------------------------------
-// §57 Quotable definition pattern on every template head (2026-08-19).
+// §60 Quotable definition pattern on every template head (2026-08-19).
 //    Audit item "quotable/extractable structure 68": every indexable template
 //    head must carry ONE 40-60 word, self-contained, AI-extractable definition
 //    (data-direct-answer). Component templates import DefinitionBlock; the
@@ -4977,7 +4977,7 @@ landingCheck(
   const defBlock = read("components/DefinitionBlock.tsx");
   if (!defBlock || !defBlock.includes("data-direct-answer")) {
     failures.push(
-      "§57 DefinitionBlock component missing or lost its data-direct-answer marker.\n    file: components/DefinitionBlock.tsx\n    fix: restore the component emitting data-direct-answer + data-speakable + data-agent-summary",
+      "§60 DefinitionBlock component missing or lost its data-direct-answer marker.\n    file: components/DefinitionBlock.tsx\n    fix: restore the component emitting data-direct-answer + data-speakable + data-agent-summary",
     );
   }
   const importTemplates = [
@@ -4996,7 +4996,7 @@ landingCheck(
     const s = read(rel);
     if (s && !s.includes("DefinitionBlock")) {
       failures.push(
-        `§57 ${rel} lost the DefinitionBlock head definition.\n    fix: restore the DefinitionBlock render under the H1`,
+        `§60 ${rel} lost the DefinitionBlock head definition.\n    fix: restore the DefinitionBlock render under the H1`,
       );
     }
   }
@@ -5011,7 +5011,7 @@ landingCheck(
     const s = read(rel);
     if (s && !s.includes("data-direct-answer")) {
       failures.push(
-        `§57 ${rel} lost the data-direct-answer marker on its quotable lead.\n    fix: restore data-direct-answer on the definition/summary/abstract block`,
+        `§60 ${rel} lost the data-direct-answer marker on its quotable lead.\n    fix: restore data-direct-answer on the definition/summary/abstract block`,
       );
     }
   }

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { DATA_NERD_NAME, DATA_NERD_ORCID } from "@/lib/data-nerd";
 
 export default function Footer() {
   return (
@@ -22,6 +23,25 @@ export default function Footer() {
             </span>
           </div>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-gray-400">
+            <span>
+              By{" "}
+              <Link
+                href="/data-nerd"
+                className="text-amber-300 hover:text-amber-200 underline decoration-dotted font-semibold"
+              >
+                {DATA_NERD_NAME}
+              </Link>
+            </span>
+            <span aria-hidden="true">·</span>
+            <a
+              href={`https://orcid.org/${DATA_NERD_ORCID}`}
+              rel="me author"
+              target="_blank"
+              className="text-emerald-400 hover:text-emerald-300 transition-colors"
+            >
+              ORCID {DATA_NERD_ORCID}
+            </a>
+            <span aria-hidden="true">·</span>
             <a
               href="https://ssrn.com/abstract=6606558"
               rel="noopener noreferrer"
