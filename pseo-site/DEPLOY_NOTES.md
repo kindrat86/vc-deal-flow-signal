@@ -70,17 +70,16 @@ vercel build --prod && vercel deploy --prebuilt --prod --yes --archive=tgz
 
 This outputs a deployment URL like `https://pseo-site-xxxxx.vercel.app`.
 
-### Step 4: Alias the domain (required, alias-pinned)
+### Step 4: Alias happens automatically; verify who is live
+
+`vercel deploy --prebuilt --prod` auto-aliases to `signals.gitdealflow.com`
+(the "▲ Aliased" line, verified 08-16 and 08-18). A separate manual
+`vercel alias` is redundant and racy under swarm contention. After deploy,
+verify YOUR deployment is the one live:
 
 ```bash
-# vercel --prod does NOT update the live domain
-# You MUST explicitly alias the new deployment
-vercel alias <deployment-url> signals.gitdealflow.com
+vercel inspect signals.gitdealflow.com
 ```
-
-Replace `<deployment-url>` with the URL from step 3.
-
-Do **NOT** use `vercel --prod` as a shortcut, it will not update the live domain.
 
 ### Step 5: Verify
 

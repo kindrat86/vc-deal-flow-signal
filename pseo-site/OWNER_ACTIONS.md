@@ -45,8 +45,9 @@ tree lacking these undeployable rather than merely re-landing them.
 2. **Do not deploy from `~/signals-gitdealflow/pseo-site`'s working tree**, it
    had **471 uncommitted files** when this was prepared. A working-tree deploy
    ships all of them. Use the export-based command below.
-3. **The domain is ALIAS-PINNED.** `vercel --prod` alone does **not** move the
-   live site; you must `vercel alias` afterwards.
+3. **`vercel --prod` auto-aliases** (the "▲ Aliased" line, verified 08-16/08-18).
+   A separate manual `vercel alias` is redundant and racy; after deploy, verify
+   with `vercel inspect signals.gitdealflow.com`.
 4. **`.env.local` is gitignored**, so the commit export will not contain it. It
    exists only at `/Users/sipi/signals-gitdealflow/pseo-site/.env.local`. If the
    build needs it, copy it into the export or run `vercel pull`.
@@ -88,10 +89,11 @@ The script gates on a clean tree, runs `prebuild` (which runs
 uploaded, and keeps the export directory on failure, inspect the printed path
 rather than re-running blindly.
 
-**Then re-alias** (note the deployment URL the command prints):
+**Verify who is live** (`--prod` already auto-aliased; a manual alias is
+redundant/racy):
 
 ```bash
-npx vercel alias <deployment-url> signals.gitdealflow.com
+vercel inspect signals.gitdealflow.com
 ```
 
 ### Verify AFTER aliasing, screenshot only
@@ -238,8 +240,9 @@ caught the bug).
 2. **Do not deploy from `~/signals-gitdealflow/pseo-site`'s working tree**, it
    had **427 uncommitted files** when this was prepared. Use the export-based
    command below.
-3. **The domain is ALIAS-PINNED.** `vercel --prod` alone does not move the live
-   site; you must `vercel alias` afterwards.
+3. **`vercel --prod` auto-aliases** (the "▲ Aliased" line, verified 08-16/08-18).
+   A separate manual `vercel alias` is redundant and racy; after deploy, verify
+   with `vercel inspect signals.gitdealflow.com`.
 4. **Ordering vs. the 2026-08-10 entry.** `318240a0` is **not** an ancestor of
    this commit (checked), so `d83a338d` does not contain T2/T3, no
    `InlineSubscribe` on `/explore`, no home thumbnail, and none of that entry's
@@ -274,10 +277,11 @@ If `npm ci` fails at puppeteer's postinstall (blocked browser download, npm then
 rolls back `node_modules` entirely), prefix the build with
 `PUPPETEER_SKIP_DOWNLOAD=1`.
 
-**Then re-alias** (note the deployment URL the command prints):
+**Verify who is live** (`--prod` already auto-aliased; a manual alias is
+redundant/racy):
 
 ```bash
-npx vercel alias <deployment-url> signals.gitdealflow.com
+vercel inspect signals.gitdealflow.com
 ```
 
 ### Verify AFTER aliasing, screenshot only
@@ -353,7 +357,7 @@ would be overwritten on the next run.
   --repo-path /Users/sipi/signals-gitdealflow/pseo-site
 ```
 
-Then re-alias: `npx vercel alias <deployment-url> signals.gitdealflow.com`.
+`--prod` already auto-aliased; verify with `vercel inspect signals.gitdealflow.com`.
 
 ### Verify AFTER aliasing, screenshot only
 
