@@ -5,7 +5,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 [![Smithery](https://smithery.ai/badge/kindrat86/vc-deal-flow-signal)](https://smithery.ai/server/kindrat86/vc-deal-flow-signal)
 
-**MCP server for searching, shortlisting, comparing, and predicting startup engineering acceleration across 15 sectors.** Tracks commit velocity, contributor growth, and repository expansion for 369 GitHub orgs. Built for VCs, angels, scouts, and technical operators who need transparent, citable deal-flow signals before they show up in traditional channels.
+**MCP server for searching, shortlisting, comparing, and predicting startup engineering acceleration across 15 sectors.** Tracks commit velocity, contributor growth, and repository expansion for 350+ GitHub orgs. Built for VCs, angels, scouts, and technical operators who need transparent, citable deal-flow signals before they show up in traditional channels.
 
 > One-click install for Claude Desktop / Cursor / Cline / Continue via Smithery — verified, 98/100 quality score.
 >
@@ -50,7 +50,7 @@ POST https://signals.gitdealflow.com/api/mcp/rpc
 | Who | How they use it |
 |---|---|
 | **VCs & Angel Investors** | Screen Crunchbase profiles against live engineering velocity data. Use `predict_funding` for transparent, citable funding-likelihood scores with full evidence chains. |
-| **Startup Founders** | Benchmark your own engineering velocity against 400+ tracked startups across your sector. Identify acquisition targets or partnership opportunities. |
+| **Startup Founders** | Benchmark your own engineering velocity against 350+ tracked startups across your sector. Identify acquisition targets or partnership opportunities. |
 | **Recruiters & Hiring Teams** | Find startups with accelerating engineering teams — the teams that are building fast and hiring. |
 | **Scouts & Syndicate Leads** | Run `shortlist_signals` with sector/geography filters to surface the strongest deals in your thesis area. Use `get_scout_receipts` to validate your pattern recognition against 75+ unicorns. |
 | **Corp Dev & M&A Teams** | Monitor competitor velocity trends and identify breakout acquisition targets 3–6 weeks before fundraise announcements. |
