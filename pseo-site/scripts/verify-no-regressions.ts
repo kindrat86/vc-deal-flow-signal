@@ -3289,11 +3289,17 @@ check(
 check(
   "content/competitor-vs.ts",
   "§40 PAA: the CB Insights entity questions (reputable / cost per year / who owns / what kind of company) were dropped; they appear verbatim as PAA on 2 SERPs and are entity-SEO surface",
-  (s) =>
-    s.includes("Is CB Insights reputable?") &&
-    s.includes("How much does CB Insights cost per year?") &&
-    s.includes("Who owns CB Insights?") &&
-    s.includes("What kind of company is CB Insights?"),
+  (s) => {
+    // Slug-bound since 2026-08-18: the questions must live on the CANONICAL
+    // pair block (crunchbase-vs-cb-insights). A direction-consolidation 308
+    // (next.config.ts) stranded them on the redirected cb-insights-vs-crunchbase
+    // block once, rendering them nowhere. This binding makes that fail-closed.
+    const blk = s.slice(s.indexOf('slug: "crunchbase-vs-cb-insights"'), s.indexOf('slug: "', s.indexOf('slug: "crunchbase-vs-cb-insights"') + 10));
+    return blk.includes("Is CB Insights reputable?") &&
+      blk.includes("How much does CB Insights cost per year?") &&
+      blk.includes("Who owns CB Insights?") &&
+      blk.includes("What kind of company is CB Insights?");
+  },
   "restore the 4 CB Insights entity-question FAQs on the cb-insights-vs-crunchbase pair (facts: independent, Sanwal-founded, ~$35k+/yr enterprise)",
 );
 check(
