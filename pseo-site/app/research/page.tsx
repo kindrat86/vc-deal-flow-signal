@@ -561,6 +561,44 @@ the pattern we validate in the open. The acceleration shows up
           </dl>
         </section>
 
+        <section className="mb-12 rounded-xl border border-slate-800 bg-slate-900/40 p-6 sm:p-8">
+          <p className="text-sky-400 text-xs font-semibold mb-2 uppercase tracking-wider">
+            Foundational papers
+          </p>
+          <h2 className="text-gray-100 font-bold text-xl mb-3">
+            The external research this work stands on
+          </h2>
+          <p className="text-gray-300 text-sm sm:text-base leading-relaxed mb-4 max-w-3xl">
+            The classification stack and the velocity interpretation build on
+            two bodies of published work: the ML foundation papers (transformer
+            architecture, RAG, LoRA, and the training runs behind modern
+            models) and the DORA research on engineering velocity as a
+            performance signal. Every paper page carries a plain-language
+            summary, a note on why investors care, and canonical links for
+            citation.
+          </p>
+          <div className="flex flex-wrap items-center gap-3 text-sm">
+            <Link
+              href="/research-paper"
+              className="inline-flex items-center rounded-lg bg-amber-400 px-4 py-2 font-semibold text-slate-950 hover:bg-amber-300 transition-colors"
+            >
+              Browse the paper index
+            </Link>
+            <Link
+              href="/research-paper/forsgren-2018-accelerate-dora-research"
+              className="inline-flex items-center rounded-lg border border-slate-700 px-4 py-2 text-gray-200 hover:border-slate-500 hover:bg-slate-800/60 transition-colors"
+            >
+              DORA velocity research
+            </Link>
+            <Link
+              href="/research-paper/vaswani-2017-attention-is-all-you-need"
+              className="inline-flex items-center rounded-lg border border-slate-700 px-4 py-2 text-gray-200 hover:border-slate-500 hover:bg-slate-800/60 transition-colors"
+            >
+              Transformer paper
+            </Link>
+          </div>
+        </section>
+
         <section className="mb-12 rounded-xl border border-sky-500/30 bg-sky-500/5 p-6 sm:p-8">
           <h2 className="text-gray-100 font-bold text-xl mb-3">
             Cite this paper

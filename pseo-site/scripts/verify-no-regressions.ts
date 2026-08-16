@@ -1900,6 +1900,34 @@ check(
   }
 }
 
+// §37 Research-paper cluster bridge from /research hub (2026-08-17). The
+// /research-paper/* leaves earn ~19K impressions on citation-hunter queries
+// (§21 lede + CTA converts arrivals); this bridge gives the hub's investor
+// audience a visible path into the cluster and the cluster crawl context,
+// not just the internal-links.json data edges. Fails closed if the section
+// or any of its three links is dropped from the hub template.
+{
+  const hub = read("app/research/page.tsx");
+  if (hub === null) {
+    failures.push("app/research/page.tsx missing entirely");
+  } else {
+    const needles = [
+      "Foundational papers",
+      'href="/research-paper"',
+      'href="/research-paper/forsgren-2018-accelerate-dora-research"',
+      'href="/research-paper/vaswani-2017-attention-is-all-you-need"',
+    ];
+    for (const n of needles) {
+      if (!hub.includes(n)) {
+        failures.push(
+          `§37 /research hub lost the research-paper bridge (missing ${n}).\n` +
+            `    fix:  restore the "Foundational papers" section in app/research/page.tsx linking /research-paper`,
+        );
+      }
+    }
+  }
+}
+
 // ---------------------------------------------------------------------------
 // §21 /compare vs /vs cannibalization consolidation (2026-08-16). GSC 90d
 // showed the same entity-pairs split across both templates (7 mirror pairs,
