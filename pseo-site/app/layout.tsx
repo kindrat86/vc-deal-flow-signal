@@ -10,8 +10,11 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ReadingProgressBar from "@/components/ReadingProgressBar";
 import BackToTop from "@/components/BackToTop";
-import LaunchBanner from "@/components/LaunchBanner";
 import PixelManager from "@/components/PixelManager";
+// LaunchBanner REMOVED 2026-08-16: the launch-week deadline (2026-06-25) passed
+// weeks ago, so the component rendered null for every visitor while still
+// shipping its client chunk, hydration, and a 30s interval on every page.
+// Re-add a banner via a fresh component with its own deadline logic.
 import { RootIdentitySchema } from "@/components/RootIdentitySchema";
 import BreadcrumbsSchema from "@/components/BreadcrumbsSchema";
 import WebVitalsReporter from "@/components/WebVitalsReporter";
@@ -453,7 +456,7 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} min-h-full flex flex-col bg-slate-950 text-gray-100`}>
         <ReadingProgressBar />
-        {/* Site chrome (Header, Footer, LaunchBanner, retargeting pixels,
+        {/* Site chrome (Header, Footer, retargeting pixels,
             PostHog/RefGrow, web-vitals beacon) is gated off on iframe-embed
             surfaces, `/embed/<widget>/...` paths render only `<main>` so
             the calculator widgets and mini-leaderboards fit inside a
@@ -462,7 +465,6 @@ export default function RootLayout({
             chrome because users browse there standalone. Contract:
             components/NotInEmbed.tsx. */}
         <NotInEmbed>
-          <LaunchBanner />
           <Header />
         </NotInEmbed>
         <main className="flex-1">{children}</main>

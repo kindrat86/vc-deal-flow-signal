@@ -2896,6 +2896,34 @@ check(
 );
 
 // ---------------------------------------------------------------------------
+// §34 CWV trim 2026-08-16 (audit item "CWV 62: trim signals home"). Two
+// defects found by live PSI + source inspection, both layout-level (hit all
+// ~3,000 pages). A lineage that reverts either re-ships the perf cost:
+//   1. LaunchBanner: deadline 2026-06-25 passed; the client component
+//      rendered null for every visitor while still shipping its chunk,
+//      hydration, and a 30s interval. If a future banner is needed, write a
+//      NEW component with fresh deadline logic; do not resurrect this one.
+//   2. GA4 gtag: afterInteractive made Next inject a <link rel=preload> for
+//      gtag.js into <head>, pulling a third-party script into the LCP
+//      window. lazyOnload keeps GA4 (secondary view) out of the critical
+//      path; PostHog (north star) remains the primary tracker.
+// ---------------------------------------------------------------------------
+check(
+  "app/layout.tsx",
+  "§34 CWV trim: LaunchBanner was re-added after its 2026-06-25 deadline passed; it renders null for all visitors while shipping its client chunk, hydration, and a 30s interval on every page",
+  (s) => !s.includes("import LaunchBanner") && !s.includes("<LaunchBanner />"),
+  "keep LaunchBanner out of the root layout (deadline passed 2026-06-25); build a fresh banner component for future campaigns",
+);
+check(
+  "components/PixelManager.tsx",
+  "§34 CWV trim: GA4 gtag reverted to afterInteractive, which re-injects the gtag.js preload into the LCP window",
+  (s) =>
+    /id="gtag-loader"[\s\S]{0,120}?strategy="lazyOnload"/.test(s) &&
+    /id="gtag-init"[\s\S]{0,120}?strategy="lazyOnload"/.test(s),
+  "keep gtag-loader/gtag-init on lazyOnload (GA4 is the secondary tracker; PostHog is north star)",
+);
+
+// ---------------------------------------------------------------------------
 // §35 Mobile-first indexing parity (2026-08-17). GSC URL Inspection confirms
 // crawledAs=MOBILE on both hosts; a 237-URL live sweep proved byte-identical
 // responses for Googlebot Smartphone / Desktop / Chrome Mobile (only diff:

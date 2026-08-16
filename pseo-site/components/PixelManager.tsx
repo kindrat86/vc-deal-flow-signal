@@ -43,14 +43,21 @@ export default function PixelManager() {
 
       {gtagId && (
         <>
+          {/* lazyOnload (perf fix 2026-08-16): afterInteractive made Next
+              inject a <link rel=preload> for gtag.js into <head>, pulling a
+              third-party script into the LCP window on every page. PostHog
+              (the north-star tracker) already runs lazyOnload; GA4 is the
+              secondary acquisition view and can load after window.onload.
+              Trade-off: sessions that bounce before load completes are not
+              recorded by GA4 (PostHog still sees them). */}
           <Script
             id="gtag-loader"
-            strategy="afterInteractive"
+            strategy="lazyOnload"
             src={`https://www.googletagmanager.com/gtag/js?id=${gtagId}`}
           />
           <Script
             id="gtag-init"
-            strategy="afterInteractive"
+            strategy="lazyOnload"
             dangerouslySetInnerHTML={{
               __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments)}gtag('js',new Date());${ga4 ? `gtag('config','${ga4}');` : ""}${googleAds ? `gtag('config','${googleAds}');` : ""}`,
             }}
