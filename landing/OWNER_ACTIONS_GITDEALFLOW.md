@@ -196,7 +196,7 @@ The following changes were deployed to gitdealflow.com on 2026-07-23:
 | Footer crosslink added | "Research & startup signals → signals.gitdealflow.com" |
 | llms-full.txt updated | 11 pages (homepage + top 10), verbatim text |
 | IndexNow key deployed | `22f462164f53aacbb1d0b771d018bcf1.txt` |
-| IndexNow ping script | `scripts/indexnow-ping.sh` |
+| IndexNow ping script | `scripts/indexnow-ping.mjs` (auto-wired into build via `scripts/verify-all.mjs`) |
 | Sitemap lastmod removed | All 3 sitemaps cleaned of identical lastmod dates |
 | TL;DR block | `<section id="tldr">` with 2-sentence extractable summary |
 
@@ -228,7 +228,7 @@ curl -s https://gitdealflow.com/22f462164f53aacbb1d0b771d018bcf1.txt
 # → must return the key string
 
 # Run IndexNow ping
-bash scripts/indexnow-ping.sh
+node scripts/indexnow-ping.mjs
 # → expected 200 or 202
 ```
 

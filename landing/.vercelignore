@@ -25,7 +25,7 @@ OWNER_*.md
 
 # --- internal tooling: pSEO / i18n generators and ops scripts ---------------
 # These were served publicly too. No credentials were found in them — the
-# IndexNow key in scripts/indexnow-ping.sh is public by design, served at
+# IndexNow key in scripts/indexnow-ping.mjs is public by design, served at
 # /<key>.txt as the verification mechanism — so this was information disclosure
 # rather than credential exposure.
 _*.py

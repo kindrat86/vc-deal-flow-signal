@@ -27,3 +27,12 @@ for (const args of steps) {
   }
 }
 console.log('[verify-all] all 8 checks passed');
+
+// IndexNow ping: non-fatal. It is a crawl hint, not a correctness gate, and a
+// failed/skipped submission must never block an otherwise-good deploy. The
+// script itself always exits 0; the ignored status is belt-and-suspenders.
+const ping = spawnSync('node', ['scripts/indexnow-ping.mjs'], { cwd: landingRoot, stdio: 'inherit' });
+if (ping.status !== 0) {
+  console.warn(`[verify-all] indexnow-ping exited ${ping.status} (non-fatal, continuing)`);
+}
+
