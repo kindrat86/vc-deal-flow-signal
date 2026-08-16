@@ -4730,6 +4730,136 @@ landingCheck(
 
 
 
+
+// §58 "How VCs source deals" cluster (topical-authority win, 2026-08-16)
+// 10 sourcing-cluster posts in content/posts-sourcing-cluster.ts, spliced into
+// allPosts and pillar-wired in content/pillars.ts. Closes the audit item
+// "topical authority 48: deep on the GitHub-signals island, thin across the
+// wider VC-sourcing topic graph". Guard asserts:
+//  (a) the file exists and carries all 10 slugs,
+//  (b) each body >= 700 words, >= 3 internal links, >= 4 FAQs, no em/en dash,
+//  (c) every internal href target is a known live route family,
+//  (d) all 10 pillar assignments present in pillars.ts postPillars,
+//  (e) posts.ts still imports SOURCING_POSTS and pushes it into allPosts.
+{
+  const SRC = read("content/posts-sourcing-cluster.ts");
+  const SLUGS = [
+    "how-do-vcs-source-deals",
+    "how-vc-firms-find-startups-before-everyone-else",
+    "proprietary-deal-flow-what-it-actually-means",
+    "vc-deal-pipeline-stages-explained",
+    "warm-introductions-startup-fundraising",
+    "how-do-demo-days-work-for-investors",
+    "deal-sourcing-network-how-to-build-one",
+    "vc-sourcing-analyst-playbook",
+    "deal-sourcing-best-practices-vc",
+    "inbound-vs-outbound-deal-sourcing",
+  ];
+  if (!SRC) {
+    failures.push(
+      "§58 content/posts-sourcing-cluster.ts missing (10-post 'how VCs source deals' cluster, topical-authority win 2026-08-16).\n    fix: restore the cluster file; do not delete sourcing posts to shrink the codebase",
+    );
+  } else {
+    const found = SLUGS.filter((x) => SRC.includes(`slug: "${x}"`));
+    const missing = SLUGS.filter((x) => !found.includes(x));
+    if (missing.length) {
+      failures.push(
+        `§58 sourcing cluster lost post(s): ${missing.join(", ")}.\n    file: content/posts-sourcing-cluster.ts\n    fix: restore the missing entries (they are cross-interlinked; partial removal orphans the cluster)`,
+      );
+    }
+    // per-post window checks: split on '  {' at slug boundaries
+    for (const slug of SLUGS) {
+      const start = SRC.indexOf(`slug: "${slug}"`);
+      if (start < 0) continue;
+      const nextSlug = SRC.indexOf("slug: \"", start + 10);
+      const window = SRC.slice(start, nextSlug > 0 ? nextSlug : undefined);
+      const bodyMatch = window.match(/body: "([\s\S]*?)",\n    relatedSectors/);
+      if (!bodyMatch) {
+        failures.push(
+          `§58 sourcing post ${slug} lost its body field.\n    file: content/posts-sourcing-cluster.ts\n    fix: restore the post body; a post without body renders empty`,
+        );
+        continue;
+      }
+      const body = bodyMatch[1];
+      const words = body.split(/\s+/).filter(Boolean).length;
+      if (words < 700) {
+        failures.push(
+          `§58 sourcing post ${slug} body fell to ${words} words (floor 700; thin cluster posts are index-bloat).\n    file: content/posts-sourcing-cluster.ts\n    fix: restore depth or remove the post entirely`,
+        );
+      }
+      const links = [...body.matchAll(/\]\((\/[^)]+)\)/g)].map((m) => m[1]);
+      if (links.length < 3) {
+        failures.push(
+          `§58 sourcing post ${slug} carries only ${links.length} internal links (floor 3; the win is cluster-to-money-page wiring).\n    file: content/posts-sourcing-cluster.ts\n    fix: restore contextual links to /blog/, /vs/, /answers/, /methodology or /startups`,
+        );
+      }
+      const faqCount = (window.match(/question: "/g) || []).length;
+      if (faqCount < 4) {
+        failures.push(
+          `§58 sourcing post ${slug} has only ${faqCount} FAQs (floor 4; FAQPage JSON-LD is the AEO surface).\n    file: content/posts-sourcing-cluster.ts\n    fix: restore the FAQs; they are the answer-engine extraction surface`,
+        );
+      }
+      if (/[\u2014\u2013]/.test(window)) {
+        failures.push(
+          `§58 sourcing post ${slug} contains an em/en dash (site-wide style rule).\n    file: content/posts-sourcing-cluster.ts\n    fix: replace with commas, colons, or parentheses`,
+        );
+      }
+      // internal link targets must be live route families
+      const bad = links.filter(
+        (h) =>
+          !/^\/($|blog\/|vs\/|answers\/|best\/|methodology|startups|learn\/|guide\/|compare\/|alternatives\/)/.test(
+            h,
+          ),
+      );
+      if (bad.length) {
+        failures.push(
+          `§58 sourcing post ${slug} links unknown route family: ${bad.join(", ")}.\n    file: content/posts-sourcing-cluster.ts\n    fix: point at a live signals route family`,
+        );
+      }
+    }
+    if (/[\u2014\u2013]/.test(SRC)) {
+      failures.push(
+        "§58 sourcing cluster contains an em/en dash anywhere in the file.\n    file: content/posts/posts-sourcing-cluster.ts\n    fix: strip em/en dashes",
+      );
+    }
+  }
+  const postsSrc = read("content/posts.ts");
+  if (postsSrc) {
+    if (!postsSrc.includes('import { SOURCING_POSTS } from "@/content/posts-sourcing-cluster"')) {
+      failures.push(
+        "§58 posts.ts lost the SOURCING_POSTS import (the cluster would vanish from allPosts).\n    file: content/posts.ts\n    fix: restore the import + allPosts.push(...SOURCING_POSTS)",
+      );
+    }
+    if (!postsSrc.includes("allPosts.push(...SOURCING_POSTS)")) {
+      failures.push(
+        "§58 posts.ts lost the allPosts.push(...SOURCING_POSTS) splice.\n    file: content/posts.ts\n    fix: restore the push; without it the 10 posts 404",
+      );
+    }
+  }
+  const pillarsSrc = read("content/pillars.ts");
+  if (pillarsSrc) {
+    const missingP = [
+      "how-do-vcs-source-deals",
+      "how-vc-firms-find-startups-before-everyone-else",
+      "proprietary-deal-flow-what-it-actually-means",
+      "vc-deal-pipeline-stages-explained",
+      "warm-introductions-startup-fundraising",
+      "how-do-demo-days-work-for-investors",
+      `deal-sourcing-network-how-to-build-one`,
+      "vc-sourcing-analyst-playbook",
+      "deal-sourcing-best-practices-vc",
+      "inbound-vs-outbound-deal-sourcing",
+    ].filter((x) => !pillarsSrc.includes(`"${x}":`));
+    if (missingP.length) {
+      failures.push(
+        `§58 pillars.ts lost postPillars mapping(s): ${missingP.join(", ")}.\n    file: content/pillars.ts\n    fix: restore the cluster-to-pillar wiring (deal-sourcing-workflow / deal-flow-management)`,
+      );
+    }
+  }
+}
+
+
+
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +
