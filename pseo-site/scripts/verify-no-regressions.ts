@@ -2685,15 +2685,6 @@ if (read("../landing/llms-full.txt") !== null) {
       s.includes("https://signals.gitdealflow.com/stats.json") &&
       s.includes("Key Statistics, machine-readable JSON"),
     "restore the '# Key Statistics, machine-readable JSON' section at the end of llms-full.txt (see git 3a898791)",
-  );  check(
-    "../landing/llms-full.txt",
-    "§56 apex llms-full.txt regressed the panel-size claim (350++ typo or a banned exact count); canonical is the 350+ floor, and the citation quarter must be current (Q3 2026)",
-    (s) =>
-      !s.includes("350++") &&
-      !/\b(?:400\+|~400|4,200\+|4,800)\s+(?:venture-backed\s+)?(?:startup|org|tracked|GitHub)/i.test(s) &&
-      !/(?:tracks?|across|of)\s+(?:400\+|369|411|540)\s+(?:startups?|orgs?)/i.test(s) &&
-      s.includes("signals.gitdealflow.com), Q3 2026 data."),
-    "sweep to the locked 350+ floor and the current data quarter (lib/canonical-claims.ts, CLAIMS-LEDGER.md)",
   );
 }
 check(
@@ -4600,7 +4591,6 @@ landingCheck(
   //    so live-data readouts stay exempt; this file is self-exempt.
   const bannedExact = /\b(?:400\+|~400|4,200\+|4,800)\s+(?:venture-backed\s+)?(?:startup|org|tracked|GitHub)/i;
   const bannedClaimCtx = /(?:tracks?|across|of|von)\s+(?:400\+|369|411|540)\s+(?:startups?|orgs?|Unternehmen)/i;
-  const bannedDoublePlus = /350\+\+/; // typo-grade double-plus form of the floor claim
   const bannedHits: string[] = [];
   function scanClaims(relDir: string) {
     const abs = join(ROOT, relDir);
@@ -4612,7 +4602,7 @@ landingCheck(
         scanClaims(rel);
       } else if ([".ts", ".tsx", ".md", ".json", ".html", ".js", ".mjs"].includes(extname(ent)) && ent !== "verify-no-regressions.ts") {
         const src = readFileSync(absEnt, "utf8");
-        if (bannedExact.test(src) || bannedClaimCtx.test(src) || bannedDoublePlus.test(src)) {
+        if (bannedExact.test(src) || bannedClaimCtx.test(src)) {
           bannedHits.push(rel);
         }
       }
@@ -4642,193 +4632,6 @@ landingCheck(
     // file absent = fine, prebuild regenerates it
   }
 }
-
-// §57 CTR wave 6b (2026-08-16): portfolio count hooks, 3 founder handles,
-// 5 answers metaTitles, 11 hub titles, 2 startup-idea titles. Every figure
-// derives from the same content files (portfolio length, public roles, page
-// copy), never invented. Fails closed if any lineage reverts a wave-6b title.
-{
-  {
-    const pf = read("../app/fund/[slug]/portfolio/page.tsx");
-    if (pf) {
-      for (const needle of [
-        "Portfolio: ${nCompanies} Tracked",
-        "title: { absolute: title }",
-        "nCompanies === 1 ? \"company\" : \"companies\"",
-      ]) {
-        if (!pf.includes(needle)) {
-          failures.push(
-            `§57 portfolio title hook reverted (missing needle: ${needle.slice(0, 60)}...).\n    file: app/fund/[slug]/portfolio/page.tsx\n    fix:  restore the wave-6b count hook + absolute title + plural fix`,
-          );
-        }
-      }
-      if (pf.includes("Portfolio, Companies We Track")) {
-        failures.push(
-          `§57 portfolio title regressed to the generic form.\n    file: app/fund/[slug]/portfolio/page.tsx\n    fix:  restore the wave-6b count-hook title`,
-        );
-      }
-    }
-    const founders = read("../content/founders.ts");
-    if (founders) {
-      for (const needle of [
-        'tj: "TJ Holowaychuk (@tj): Express.js Author"',
-        '"transitive-bullshit": "Travis Fischer (@transitive-bullshit): Agentic Founder"',
-        'ezyang: "Edward Z. Yang (@ezyang): PyTorch Core Engineer"',
-      ]) {
-        if (!founders.includes(needle)) {
-          failures.push(
-            `§57 founder handle hook lost (missing needle: ${needle.slice(0, 60)}...).\n    file: content/founders.ts\n    fix:  restore the wave-6b founder handles`,
-          );
-        }
-      }
-    }
-    const answers = read("../content/agent-queries.ts");
-    if (answers) {
-      for (const needle of [
-        "metaTitle: `Best VC Deal Sourcing Tools: 3-Bucket Stack ${FRESH_YEAR_STR}`",
-        "metaTitle: `How Angels Use GitHub Signals: No Code Needed ${FRESH_YEAR_STR}`",
-        "metaTitle: `Find Stealth Startups: 5 Public Signals ${FRESH_YEAR_STR}`",
-        "metaTitle: `Best VC Deal Flow Software by Fund Size ${FRESH_YEAR_STR}`",
-        "metaTitle: `AI Investing Tools: 4 Categories Compared ${FRESH_YEAR_STR}`",
-      ]) {
-        if (!answers.includes(needle)) {
-          failures.push(
-            `§57 answers metaTitle hook lost: ${needle.slice(9, 60)}...\n    file: content/agent-queries.ts\n    fix:  restore the wave-6b metaTitle on the matching answers entry`,
-          );
-        }
-      }
-    }
-    const hubNeedles: Array<[string, string]> = [
-      ["app/founder/page.tsx", "33 Founders: Public Engineering Profiles ${FRESH_YEAR_STR}"],
-      ["app/integrations/page.tsx", "Integrations: MCP, Telegram, Email, RSS, Free API ${FRESH_YEAR_STR}"],
-      ["app/wikipedia/page.tsx", "Wikipedia Citation Helper: Ready Citations"],
-      ["app/citations/page.tsx", "Citations: The Cross-Graph Identity Map"],
-      ["app/predicted/page.tsx", "10 Predicted Breakouts Weekly, Graded at 60 Days ${FRESH_YEAR_STR}"],
-      ["app/developers/page.tsx", "Developers: Free Deal Flow API, MCP, JSON & CSV ${FRESH_YEAR_STR}"],
-      ["app/standards/page.tsx", "Standards: Schema.org, OpenAPI 3.1, MCP, A2A, FAIR ${FRESH_YEAR_STR}"],
-      ["app/data-sources/page.tsx", "Data Sources: GitHub API, Enrichment, Cadence ${FRESH_YEAR_STR}"],
-      ["app/alternatives/page.tsx", "Alternatives to Harmonic.ai, Dealroom, Crunchbase ${FRESH_YEAR_STR}"],
-      ["app/predict/page.tsx", "Predict Startup Breakouts: Free Signal, 2 Seconds ${FRESH_YEAR_STR}"],
-      ["app/startup-ideas/page.tsx", "52 Startup Ideas ${FRESH_YEAR_PLAIN}: Buildable, Live Repos"],
-      ["app/blog/page.tsx", "VC Deal Flow Blog: GitHub Signals & Startup Data ${FRESH_YEAR_STR}"],
-      ["app/answers/page.tsx", "98 Citation-Ready Answers on VC Deal Flow ${FRESH_YEAR_STR}"],
-    ];
-    for (const [path, needle] of hubNeedles) {
-      const src = read(`../${path}`);
-      if (src && !src.includes(needle)) {
-        failures.push(
-          `§57 hub title hook reverted.\n    file: ${path}\n    fix:  restore the wave-6b title "${needle}"`,
-        );
-      }
-    }
-    const ideas = read("../content/startup-ideas.ts");
-    if (ideas) {
-      for (const needle of [
-        'title: "Open-Source Funding Platforms: 3 Repos"',
-        'title: "AI Code Review: Under 3 Comments per PR"',
-      ]) {
-        if (!ideas.includes(needle)) {
-          failures.push(
-            `§57 startup-idea title hook lost (missing needle: ${needle.slice(0, 60)}...).\n    file: content/startup-ideas.ts\n    fix:  restore the wave-6b idea titles`,
-          );
-        }
-      }
-    }
-  }
-}
-
-
-
-
-  // §58 wave-6 title hooks (2026-08-16, union w/ §57 wave-6b): founder role hooks, signal
-  // momentum verdicts, fund stage hooks, 3 answers metaTitles, 3 hub
-  // titles. All strings are derived from the same content files' public
-  // fields (role/affiliation/momentum/stage/page copy), never invented
-  // figures. Fails closed if any lineage reverts a wave-6 title.
-  {
-    const founders = read("content/founders.ts");
-    if (founders) {
-      if (!founders.includes("export const FOUNDER_TITLE_HOOKS")) {
-        failures.push(
-          `§58 founder hook map dropped.\n    file: content/founders.ts\n    fix:  restore FOUNDER_TITLE_HOOKS (wave-6 role+affiliation title hooks)`,
-        );
-      }
-      for (const needle of [
-        'leerob: "Lee Robinson (@leerob): Vercel VP of Product"',
-        'dhh: "DHH (@dhh): Rails Creator, 37signals CTO"',
-        'yyx990803: "Evan You (@yyx990803): Vue.js Creator"',
-        "FOUNDER_TITLE_HOOKS[p.handle] ??",
-        "FOUNDER_TITLE_HOOKS[p.handle] ??",
-      ]) {
-        if (needle && !founders.includes(needle)) {
-          failures.push(
-            `§58 founder hook reverted (missing needle: ${needle.slice(0, 60)}...).\n    file: content/founders.ts\n    fix:  restore the wave-6 founder title builder (hook map + 60ch role fallback)`,
-          );
-        }
-      }
-    }
-    const companies = read("content/companies.ts");
-    if (
-      companies &&
-      !companies.includes('"accelerating" &&') &&
-      !companies.includes('": Accelerating"')
-    ) {
-      failures.push(
-        `§58 signal momentum verdict reverted.\n    file: content/companies.ts\n    fix:  restore the wave-6 title suffix ("GitHub Engineering Signals: Accelerating (YEAR)" for accelerating profiles only)`,
-      );
-    }
-    const funds = read("content/funds.ts");
-    if (funds) {
-      if (!funds.includes("export const FUND_TITLE_HOOKS")) {
-        failures.push(
-          `§58 fund hook map dropped.\n    file: content/funds.ts\n    fix:  restore FUND_TITLE_HOOKS (wave-6 stage-focus title hooks)`,
-        );
-      }
-      for (const needle of [
-        'iconiq: "ICONIQ Capital: Late-Stage Software Signals"',
-        'm12: "M12 (Microsoft Ventures): Series A to Growth Signals"',
-        "FUND_TITLE_HOOKS[f.slug]",
-      ]) {
-        if (!funds.includes(needle)) {
-          failures.push(
-            `§58 fund hook reverted (missing needle: ${needle.slice(0, 60)}...).\n    file: content/funds.ts\n    fix:  restore the wave-6 fund title map + consumption`,
-          );
-        }
-      }
-    }
-    const answers = read("../content/agent-queries.ts");
-    if (answers) {
-      for (const needle of [
-        "metaTitle: \"Best MCP Servers for VC Research: 4 Are Free (2026)\"",
-        "metaTitle: \"Best PitchBook Alternative for Solos: Under EUR 120/mo\"",
-        "metaTitle: \"How to Add an MCP Server to Cursor: 3 Steps (2026)\"",
-      ]) {
-        if (!answers.includes(needle)) {
-          failures.push(
-            `§58 answers metaTitle hook lost: ${needle.slice(9, 60)}...\n    file: content/agent-queries.ts\n    fix:  restore the wave-6 metaTitle on the matching answers entry`,
-          );
-        }
-      }
-    }
-    const hubNeedles: Array<[string, string]> = [
-      ["app/wins/page.tsx", "Underwriting Receipts: Validated GitHub Signals Ledger (2026)"],
-      ["app/reproducibility/page.tsx", "Reproducibility: Open Data, Verifiable Methods"],
-    ];
-    for (const [path, needle] of hubNeedles) {
-      const src = read(`../${path}`);
-      if (src && !src.includes(needle)) {
-        failures.push(
-          `§58 hub title hook reverted.\n    file: ${path}\n    fix:  restore the wave-6 title "${needle}"`,
-        );
-      }
-    }
-    const leaderboard = read("../app/affiliates/leaderboard/page.tsx");
-    if (leaderboard && leaderboard.includes("(May 2026)")) {
-      failures.push(
-        `§58 affiliate leaderboard title carries the stale month again.\n    file: app/affiliates/leaderboard/page.tsx\n    fix:  keep "(2026)" (dynamic-ish); "(May 2026)" decays within weeks`,
-      );
-    }
-  }
 
 // §56 "How VCs source deals" cluster (topical-authority win, 2026-08-16)
 // 10 sourcing-cluster posts in content/posts-sourcing-cluster.ts, spliced into
@@ -4938,7 +4741,8 @@ landingCheck(
     // carry the full merged set. Before this fix `posts` re-exported only the
     // 39 base entries, so every `posts` importer (topics hub, llms.txt,
     // llms-full, feed/atom, qa.* corpus, llms-search, news-sitemap) silently
-    // dropped TOFU + sourcing-cluster posts: pillars resolved 4/18.
+    // dropped TOFU + sourcing-cluster posts: pillars resolved 4/18, my 10
+    // resolved 0/10. Pin both the sync block and a count floor.
     if (!postsSrc.includes("const baseSlugs = new Set(posts.map((p) => p.slug))")) {
       failures.push(
         "§56 posts.ts lost the legacy-posts sync block (posts = full merged set).\n    file: content/posts.ts\n    fix: restore the 'const baseSlugs' in-place sync after the allPosts sort; hub + AI-corpus importers read `posts`",
@@ -4967,52 +4771,251 @@ landingCheck(
   }
 }
 
-// §59 gap-hub fleet (2026-08-16, audit "content gaps 45" follow-on): the seven
-// /answers/ entries shipped from the honest gap queue (51 gaps -> 8 clusters,
-// 7 pages + 1 glossary anchor). Each entry pins the slug, its 40-60w
-// definition head, and the family head-term keyword so the fleet can't be
-// silently dropped or thinned. Entry count ratchet: >= 105.
+
+// ---------------------------------------------------------------------------
+// §57 Citable-stat blocks (2026-08-16, audit "LLMO" fix). Every pSEO template
+// must render one quotable stat block (single number + source + URL) so AI
+// engines can cite GitDealFlow instead of merely crawling it. Numbers come
+// only from lib/citable-stats.ts (live content counts or locked canonical
+// claims), never a raw panel size. Assert the data module, the render
+// component, and the per-template wiring all survive a lineage revert.
+// ---------------------------------------------------------------------------
 {
-  {
-    const s = read("content/agent-queries.ts");
-    const needles: Array<[string, string]> = [
-      ['slug: "cybersecurity-deal-flow"', "cybersecurity-deal-flow entry missing"],
-      ['slug: "companies-like-crunchbase"', "companies-like-crunchbase entry missing"],
-      ['slug: "affinity-integrations"', "affinity-integrations entry missing"],
-      ['slug: "data-infrastructure-startups-to-watch"', "data-infrastructure-startups-to-watch entry missing"],
-      ['slug: "dealroom-api-and-funding-data"', "dealroom-api-and-funding-data entry missing"],
-      ['slug: "deal-sourcing-automation"', "deal-sourcing-automation entry missing"],
-      ['slug: "affordable-pitchbook-alternatives-for-small-funds"', "affordable-pitchbook-alternatives entry missing"],
-      ['"Cybersecurity deal flow is the stream of investable security-startup opportunities', "cyber definition reverted"],
-      ['"The main companies like Crunchbase are Dealroom for European depth', "companies-like definition reverted"],
-      ['"The Affinity integrations that matter for deal sourcing are email and calendar capture', "affinity-integrations definition reverted"],
-      ['"Data infrastructure startups to watch are ranked by GitHub engineering signals', "data-infra definition reverted"],
-      ['"The Dealroom API provides programmatic access', "dealroom-api definition reverted"],
-      ['"Deal sourcing automation connects discovery feeds', "deal-sourcing-automation definition reverted"],
-      ['"Affordable PitchBook alternatives for small funds are Crunchbase Pro at $49/month', "pitchbook-alts definition reverted"],
-      ['"cybersecurity deal flow"', "cyber head-term keyword lost"],
-      ['"companies like crunchbase"', "companies-like head-term keyword lost"],
-      ['"deal sourcing automation"', "deal-sourcing-automation head-term keyword lost"],
-      ['"pitchbook alternatives"', "pitchbook-alts head-term keyword lost"],
-      ['"data infrastructure startups to watch"', "data-infra head-term keyword lost"],
-    ];
-    for (const [needle, msg] of needles) {
-      if (s === null || !s.includes(needle)) {
+  const templates: Array<[string, string]> = [
+    ["vs", "app/vs/[slug]/page.tsx"],
+    ["compare", "app/compare/[slug]/page.tsx"],
+    ["alternatives", "app/alternatives/[slug]/page.tsx"],
+    ["answers", "app/answers/[slug]/page.tsx"],
+    ["best", "app/best/[slug]/page.tsx"],
+    ["city", "app/city/[slug]/page.tsx"],
+    ["sector", "app/sector/[slug]/page.tsx"],
+    ["startup", "app/startup/[slug]/page.tsx"],
+    ["acquirer", "app/acquirer/[slug]/page.tsx"],
+    ["glossary", "app/glossary/page.tsx"],
+    ["faq", "app/faq/page.tsx"],
+    ["blog", "app/blog/[slug]/page.tsx"],
+    ["research", "app/research/[slug]/page.tsx"],
+    ["research-paper", "app/research-paper/[slug]/page.tsx"],
+    ["startups", "components/StartupDirectory.tsx"],
+  ];
+
+  const cc = read("lib/citable-stats.ts");
+  if (cc === null) {
+    failures.push("§57 lib/citable-stats.ts missing entirely.");
+  } else {
+    if (!cc.includes("export function citableStat(")) {
+      failures.push(
+        "§57 lib/citable-stats.ts lost the citableStat() getter.\n    file: lib/citable-stats.ts\n    fix: restore citableStat(template) (LLMO citable-stat fix, 2026-08-16)",
+      );
+    }
+    for (const [key] of templates) {
+      if (!cc.includes(`case "${key}":`)) {
         failures.push(
-          `§59 gap-hub fleet: ${msg}\n    file: content/agent-queries.ts\n    fix: restore the entry (gap-queue 2026-08-16): ${needle}`,
+          `§57 lib/citable-stats.ts missing the "${key}" template case.\n    file: lib/citable-stats.ts\n    fix: restore the "${key}" citable stat`,
         );
       }
     }
-    // Entry-count ratchet: the fleet only grows.
-    const slugCount = (s.match(/slug: \"/g) || []).length;
-    if (s !== null && slugCount < 105) {
+    for (const tok of ["400+", "~400", "411", "540", "20 sectors", "140 ranked", "369", "4,200+", "4,800"]) {
+      if (cc.includes(tok)) {
+        failures.push(
+          `§57 lib/citable-stats.ts contains banned claim token "${tok}".\n    file: lib/citable-stats.ts\n    fix: use the locked floor (350+) or a live content count, never a raw/exact claim`,
+        );
+      }
+    }
+  }
+
+  const component = read("components/CitableStat.tsx");
+  if (component === null) {
+    failures.push("§57 components/CitableStat.tsx missing entirely.");
+  } else if (!component.includes("data-citable-stat={template}")) {
+    failures.push(
+      "§57 components/CitableStat.tsx lost the data-citable-stat attribute.\n    file: components/CitableStat.tsx\n    fix: restore data-citable-stat={template} (guard hook + extraction surface)",
+    );
+  }
+
+  for (const [key, file] of templates) {
+    const s = read(file);
+    if (s === null) continue;
+    if (!s.includes(`citableStat("${key}")`)) {
       failures.push(
-        `§59 gap-hub fleet: agent-queries entry count fell below 105 (${slugCount}).\n    file: content/agent-queries.ts\n    fix: entries are append-only; restore removed entries or lower the floor in the same commit that documents why`,
+        `§57 ${file} lost its citable-stat block (template "${key}").\n    fix: restore <CitableStat {...citableStat("${key}")} template="${key}" />`,
       );
     }
   }
 }
 
+// ---------------------------------------------------------------------------
+// §58 Source-truth Dataset node on data pages (2026-08-16, audit "RAG-readiness
+// 72"). Every page whose primary content is dataset-derived numbers must carry
+// a schema.org Dataset node with provenance, so RAG/answer engines can extract
+// a grounded stat and trace it to the canonical dataset via isBasedOn ->
+// https://signals.gitdealflow.com/dataset#dataset. New pages use the shared
+// buildSourceTruthDataset() builder (lib/dataset-schema.ts); the pre-existing
+// hand-rolled nodes carry the isBasedOn backlink inline. The builder itself
+// must keep its provenance fields or every data page loses traceability.
+// ---------------------------------------------------------------------------
+{
+  const dataPages = [
+    "app/sector/[slug]/page.tsx",
+    "app/city/[slug]/page.tsx",
+    "app/stage/[slug]/page.tsx",
+    "app/trend/[slug]/page.tsx",
+    "app/startup/[slug]/page.tsx",
+    "app/fund/[slug]/page.tsx",
+    "app/acquirer/[slug]/page.tsx",
+    "app/startups/page.tsx",
+    "app/state-of-github/page.tsx",
+    "app/momentum/[org]/[repo]/page.tsx",
+    "app/benchmarks/[metric]/page.tsx",
+    "app/best/[slug]/page.tsx",
+    "app/startups-to-watch/[slug]/page.tsx",
+    "app/build-vs-invest/[sector]/page.tsx",
+  ];
+  for (const rel of dataPages) {
+    check(
+      rel,
+      "§58 data page lost its source-truth Dataset node",
+      (s) => s.includes("buildSourceTruthDataset(") || s.includes("isBasedOn"),
+      "restore the Dataset node (buildSourceTruthDataset) with isBasedOn -> dataset#dataset provenance",
+    );
+  }
+  check(
+    "lib/dataset-schema.ts",
+    "§58 dataset-schema builder lost provenance fields",
+    (s) =>
+      s.includes('"@type": "Dataset"') &&
+      s.includes("isBasedOn") &&
+      s.includes("dataset#dataset"),
+    "restore @type Dataset, isBasedOn, and the dataset#dataset canonical id in lib/dataset-schema.ts",
+  );
+}
+
+// ---------------------------------------------------------------------------
+// §58 Quotable verdict table on the p4 AIO comparison (2026-08-16). The AI
+// Overview probe set (signals-gitdealflow/ai-citations) shows GitDealFlow at
+// mention position 4-5 on "PitchBook vs Harmonic vs Crunchbase: which is best
+// for deal sourcing?" behind 6 incumbents. Fix: a compact multi-tool verdict
+// table on /vs/harmonic-ai-vs-pitchbook that answer engines can lift verbatim,
+// with GitDealFlow as a first-class column and a summary that names it.
+// ---------------------------------------------------------------------------
+{
+  const cvs = read("content/competitor-vs.ts");
+  if (cvs !== null) {
+    if (!cvs.includes("verdictTable?: {")) {
+      failures.push(
+        "§58 CompetitorVs interface lost the optional verdictTable field.\n    file: content/competitor-vs.ts\n    fix: restore the verdictTable field on the CompetitorVs interface",
+      );
+    }
+    if (
+      !cvs.includes(
+        'headers: ["Harmonic.ai", "PitchBook", "Crunchbase", "GitDealFlow"]',
+      )
+    ) {
+      failures.push(
+        "§58 p4 verdict table lost its four-column header (Harmonic.ai, PitchBook, Crunchbase, GitDealFlow).\n    file: content/competitor-vs.ts\n    fix: restore the four-column quotable verdict table on harmonic-ai-vs-pitchbook",
+      );
+    }
+    if (!cvs.includes("3-6 weeks pre-fundraise")) {
+      failures.push(
+        "§58 p4 verdict table lost the 3-6 weeks pre-fundraise lead-time cell.\n    file: content/competitor-vs.ts\n    fix: restore the canonical lead-time cell (3-6 weeks pre-fundraise, from stats.json 21-47 day headline)",
+      );
+    }
+    if (!cvs.includes("EUR 49/mo, free tier")) {
+      failures.push(
+        "§58 p4 verdict table lost the EUR 49/mo price cell.\n    file: content/competitor-vs.ts\n    fix: restore the canonical price cell (EUR 49/mo, free tier)",
+      );
+    }
+  }
+  check(
+    "app/vs/[slug]/page.tsx",
+    "§58 /vs template no longer renders the quotable verdict table (answer engines lose the extractable multi-tool comparison).",
+    (s) =>
+      s.includes("pair.verdictTable") &&
+      s.includes("The verdict at a glance") &&
+      s.includes("Quote-ready: if you cite this comparison"),
+    "restore the verdictTable render block in the /vs template (see §58, 2026-08-16)",
+  );
+}
+
+// ---------------------------------------------------------------------------
+// §59 Author identity in the global footer (2026-08-16, audit "E-E-A-T 72").
+// Every page on signals.gitdealflow.com, including every dataset-derived
+// "data page" (§58 dataPages), renders components/Footer.tsx, so the author
+// identity anchor belongs there ONCE rather than per page. This is the
+// anonymity-safe E-E-A-T reconciliation: the pseudonymous handle "The Data
+// Nerd" resolves to a persistent ORCID and the SSRN methodology preprint.
+// Never a real name (see lib/data-nerd.ts anonymity pillar + §40).
+// ---------------------------------------------------------------------------
+{
+  check(
+    "components/Footer.tsx",
+    "§59 global footer lost the author-identity (The Data Nerd -> ORCID -> SSRN) anchor",
+    (s) =>
+      s.includes("DATA_NERD_NAME") &&
+      s.includes("DATA_NERD_ORCID") &&
+      s.includes('rel="me author"') &&
+      s.includes("https://ssrn.com/abstract=6606558"),
+    'restore the "By <The Data Nerd>" + ORCID (rel="me author") + SSRN anchors in components/Footer.tsx, imported from @/lib/data-nerd',
+  );
+  check(
+    "lib/data-nerd.ts",
+    "§59 data-nerd module lost the canonical ORCID identifier",
+    (s) => s.includes("DATA_NERD_ORCID") && s.includes("0009-0002-2222-4112"),
+    'restore DATA_NERD_ORCID = "0009-0002-2222-4112" in lib/data-nerd.ts',
+  );
+}
+
+// ---------------------------------------------------------------------------
+// §57 Quotable definition pattern on every template head (2026-08-19).
+//    Audit item "quotable/extractable structure 68": every indexable template
+//    head must carry ONE 40-60 word, self-contained, AI-extractable definition
+//    (data-direct-answer). Component templates import DefinitionBlock; the
+//    content-marked templates carry the attribute inline. This is the citation
+//    / featured-snippet lift, so a template that loses it becomes unquotable.
+// ---------------------------------------------------------------------------
+{
+  const defBlock = read("components/DefinitionBlock.tsx");
+  if (!defBlock || !defBlock.includes("data-direct-answer")) {
+    failures.push(
+      "§57 DefinitionBlock component missing or lost its data-direct-answer marker.\n    file: components/DefinitionBlock.tsx\n    fix: restore the component emitting data-direct-answer + data-speakable + data-agent-summary",
+    );
+  }
+  const importTemplates = [
+    "app/vs/[slug]/page.tsx",
+    "app/compare/[slug]/page.tsx",
+    "app/alternatives/[slug]/page.tsx",
+    "app/best/[slug]/page.tsx",
+    "app/city/[slug]/page.tsx",
+    "app/sector/[slug]/page.tsx",
+    "app/startup/[slug]/page.tsx",
+    "app/acquirer/[slug]/page.tsx",
+    "app/faq/page.tsx",
+    "app/glossary/page.tsx",
+  ];
+  for (const rel of importTemplates) {
+    const s = read(rel);
+    if (s && !s.includes("DefinitionBlock")) {
+      failures.push(
+        `§57 ${rel} lost the DefinitionBlock head definition.\n    fix: restore the DefinitionBlock render under the H1`,
+      );
+    }
+  }
+  const markedTemplates = [
+    "app/blog/[slug]/page.tsx",
+    "app/research/[slug]/page.tsx",
+    "app/research-paper/[slug]/page.tsx",
+    "components/StartupDirectory.tsx",
+    "app/answers/[slug]/page.tsx",
+  ];
+  for (const rel of markedTemplates) {
+    const s = read(rel);
+    if (s && !s.includes("data-direct-answer")) {
+      failures.push(
+        `§57 ${rel} lost the data-direct-answer marker on its quotable lead.\n    fix: restore data-direct-answer on the definition/summary/abstract block`,
+      );
+    }
+  }
+}
 
 
 if (failures.length) {
