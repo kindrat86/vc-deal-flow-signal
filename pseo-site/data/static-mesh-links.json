@@ -1,0 +1,242 @@
+{
+ "/learn/github-momentum-signals": [
+  "/learn/tracking-github-trends",
+  "/learn/how-to-find-acquisition-targets-on-github",
+  "/learn/startup-momentum-scoring",
+  "/learn/how-to-use-startup-signals-api",
+  "/learn/scout-score-guide",
+  "/learn/what-is-commit-velocity"
+ ],
+ "/learn/how-to-build-a-startup-watchlist": [
+  "/learn/how-to-use-startup-signals-api",
+  "/learn/how-to-evaluate-startups",
+  "/learn/startup-momentum-scoring",
+  "/learn/how-to-find-acquisition-targets-on-github",
+  "/learn/how-to-evaluate-engineering-velocity",
+  "/learn/scout-score-guide"
+ ],
+ "/learn/how-to-evaluate-engineering-velocity": [
+  "/learn/how-to-evaluate-startups",
+  "/learn/what-is-commit-velocity",
+  "/learn/how-to-find-acquisition-targets-on-github",
+  "/learn/how-to-build-a-startup-watchlist",
+  "/learn/how-to-use-startup-signals-api",
+  "/learn/scout-score-guide"
+ ],
+ "/learn/how-to-evaluate-startups": [
+  "/learn/how-to-evaluate-engineering-velocity",
+  "/learn/how-to-find-acquisition-targets-on-github",
+  "/learn/how-to-build-a-startup-watchlist",
+  "/learn/how-to-use-startup-signals-api",
+  "/learn/github-momentum-signals",
+  "/learn/scout-score-guide"
+ ],
+ "/learn/how-to-find-acquisition-targets-on-github": [
+  "/learn/github-momentum-signals",
+  "/learn/tracking-github-trends",
+  "/learn/how-to-evaluate-startups",
+  "/learn/how-to-evaluate-engineering-velocity",
+  "/learn/how-to-build-a-startup-watchlist",
+  "/learn/how-to-use-startup-signals-api"
+ ],
+ "/learn/how-to-use-startup-signals-api": [
+  "/learn/how-to-build-a-startup-watchlist",
+  "/learn/github-momentum-signals",
+  "/learn/how-to-evaluate-startups",
+  "/learn/startup-momentum-scoring",
+  "/learn/how-to-evaluate-engineering-velocity",
+  "/learn/how-to-find-acquisition-targets-on-github"
+ ],
+ "/learn/scout-score-guide": [
+  "/learn/how-to-find-acquisition-targets-on-github",
+  "/learn/github-momentum-signals",
+  "/learn/tracking-github-trends",
+  "/learn/what-is-commit-velocity",
+  "/learn/how-to-evaluate-startups",
+  "/learn/how-to-evaluate-engineering-velocity"
+ ],
+ "/learn/startup-momentum-scoring": [
+  "/learn/github-momentum-signals",
+  "/learn/how-to-build-a-startup-watchlist",
+  "/learn/how-to-use-startup-signals-api",
+  "/learn/how-to-find-acquisition-targets-on-github",
+  "/learn/scout-score-guide",
+  "/learn/tracking-github-trends"
+ ],
+ "/learn/tracking-github-trends": [
+  "/learn/how-to-find-acquisition-targets-on-github",
+  "/learn/github-momentum-signals",
+  "/learn/scout-score-guide",
+  "/learn/what-is-commit-velocity",
+  "/learn/how-to-evaluate-startups",
+  "/learn/how-to-evaluate-engineering-velocity"
+ ],
+ "/learn/what-is-commit-velocity": [
+  "/learn/how-to-evaluate-engineering-velocity",
+  "/learn/tracking-github-trends",
+  "/learn/github-momentum-signals",
+  "/learn/scout-score-guide",
+  "/learn/how-to-find-acquisition-targets-on-github",
+  "/learn/how-to-evaluate-startups"
+ ],
+ "/free/github-momentum-checker": [
+  "/answers/github-momentum-vs-stars-which-matters",
+  "/answers/track-github-momentum-investment-signals",
+  "/startup/the-momentum",
+  "/learn/github-momentum-signals",
+  "/state-of-github",
+  "/acquirer/github"
+ ],
+ "/free/startup-screener": [
+  "/startup/ar-io",
+  "/startup/akaunting",
+  "/startup/aleksnestu",
+  "/startup/alloy-rs",
+  "/startup/andes",
+  "/startup/aphp"
+ ],
+ "/tools/scout-score": [
+  "/tools",
+  "/tools/burn-multiple-calculator",
+  "/tools/cac-payback-calculator",
+  "/tools/dilution-stack",
+  "/tools/ltv-calculator",
+  "/tools/magic-number-calculator"
+ ],
+ "/sectors/agritech": [
+  "/sectors/ai-infrastructure",
+  "/sectors/biotech",
+  "/sectors/biotech-informatics-startups",
+  "/sectors/climate-tech",
+  "/sectors/defense-tech",
+  "/startups"
+ ],
+ "/sectors/ai-infrastructure": [
+  "/sectors/biotech",
+  "/sectors/biotech-informatics-startups",
+  "/sectors/climate-tech",
+  "/sectors/defense-tech",
+  "/sectors/developer-tools",
+  "/startups"
+ ],
+ "/sectors/biotech": [
+  "/sectors/biotech-informatics-startups",
+  "/sectors/climate-tech",
+  "/sectors/defense-tech",
+  "/sectors/developer-tools",
+  "/sectors/edtech",
+  "/startups"
+ ],
+ "/sectors/biotech-informatics-startups": [
+  "/sectors/climate-tech",
+  "/sectors/defense-tech",
+  "/sectors/developer-tools",
+  "/sectors/edtech",
+  "/sectors/gaming-studios",
+  "/startups"
+ ],
+ "/sectors/climate-tech": [
+  "/sectors/defense-tech",
+  "/sectors/developer-tools",
+  "/sectors/edtech",
+  "/sectors/gaming-studios",
+  "/sectors/logistics-supply-chain",
+  "/startups"
+ ],
+ "/sectors/defense-tech": [
+  "/sectors/developer-tools",
+  "/sectors/edtech",
+  "/sectors/gaming-studios",
+  "/sectors/logistics-supply-chain",
+  "/sectors/quantum-computing",
+  "/startups"
+ ],
+ "/sectors/developer-tools": [
+  "/sectors/edtech",
+  "/sectors/gaming-studios",
+  "/sectors/logistics-supply-chain",
+  "/sectors/quantum-computing",
+  "/sectors/robotics",
+  "/startups"
+ ],
+ "/sectors/edtech": [
+  "/sectors/gaming-studios",
+  "/sectors/logistics-supply-chain",
+  "/sectors/quantum-computing",
+  "/sectors/robotics",
+  "/sectors/space-tech",
+  "/startups"
+ ],
+ "/sectors/gaming-studios": [
+  "/sectors/logistics-supply-chain",
+  "/sectors/quantum-computing",
+  "/sectors/robotics",
+  "/sectors/space-tech",
+  "/sectors/spacetech-startups",
+  "/startups"
+ ],
+ "/sectors/logistics-supply-chain": [
+  "/sectors/quantum-computing",
+  "/sectors/robotics",
+  "/sectors/space-tech",
+  "/sectors/spacetech-startups",
+  "/sectors/agritech",
+  "/startups"
+ ],
+ "/sectors/quantum-computing": [
+  "/sectors/robotics",
+  "/sectors/space-tech",
+  "/sectors/spacetech-startups",
+  "/sectors/agritech",
+  "/sectors/ai-infrastructure",
+  "/startups"
+ ],
+ "/sectors/robotics": [
+  "/sectors/space-tech",
+  "/sectors/spacetech-startups",
+  "/sectors/agritech",
+  "/sectors/ai-infrastructure",
+  "/sectors/biotech",
+  "/startups"
+ ],
+ "/sectors/space-tech": [
+  "/sectors/spacetech-startups",
+  "/sectors/agritech",
+  "/sectors/ai-infrastructure",
+  "/sectors/biotech",
+  "/sectors/biotech-informatics-startups",
+  "/startups"
+ ],
+ "/sectors/spacetech-startups": [
+  "/sectors/agritech",
+  "/sectors/ai-infrastructure",
+  "/sectors/biotech",
+  "/sectors/biotech-informatics-startups",
+  "/sectors/climate-tech",
+  "/startups"
+ ],
+ "/guide/how-vcs-use-github-signals": [
+  "/learn/how-to-evaluate-engineering-velocity",
+  "/learn/tracking-github-trends",
+  "/learn/startup-momentum-scoring",
+  "/learn/github-momentum-signals",
+  "/research",
+  "/glossary"
+ ],
+ "/network": [
+  "/stats",
+  "/research",
+  "/methodology",
+  "/startups",
+  "/glossary",
+  "/free/startup-screener"
+ ],
+ "/stats": [
+  "/network",
+  "/research",
+  "/methodology",
+  "/pricing",
+  "/glossary",
+  "/learn/how-to-evaluate-engineering-velocity"
+ ]
+}

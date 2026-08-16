@@ -4093,6 +4093,68 @@ landingCheck(
 
 
 
+// ---------------------------------------------------------------------------
+// §50 Static-page mesh links (2026-08-19, audit item "programmatic internal
+// linking"): public/ statics (learn, free, tools, sectors, guide, network,
+// stats) cannot import the RelatedLinks graph, so
+// scripts/build-static-mesh-links.mjs injects a curated "Related resources"
+// block from data/static-mesh-links.json into each serving file. Guard fails
+// closed on any serving static that loses the block or a curated link.
+{
+  const manifestRaw = read("data/static-mesh-links.json");
+  if (manifestRaw === null) {
+    failures.push(
+      `§50 static mesh manifest missing.\n    file: data/static-mesh-links.json\n    fix: restore the committed manifest (30 static URLs)`,
+    );
+  } else {
+    let manifest: Record<string, string[]> = {};
+    try {
+      manifest = JSON.parse(manifestRaw) as Record<string, string[]>;
+    } catch {
+      failures.push(
+        `§50 static mesh manifest is not valid JSON.\n    file: data/static-mesh-links.json`,
+      );
+    }
+    for (const [path, hrefs] of Object.entries(manifest)) {
+      const rel = path.replace(/^\//, "");
+      const s = read(`public/${rel}/index.html`) ?? read(`public/${rel}.html`);
+      if (s === null) {
+        failures.push(
+          `§50 static mesh: no serving file for ${path}.\n    fix: restore public/${rel}/index.html (or ${rel}.html) and run node scripts/build-static-mesh-links.mjs`,
+        );
+        continue;
+      }
+      if (!s.includes('data-mesh="v2"')) {
+        failures.push(
+          `§50 static mesh block missing on ${path}.\n    fix: node scripts/build-static-mesh-links.mjs`,
+        );
+        continue;
+      }
+      const start = s.indexOf("<!--MESH:v2:START-->");
+      const end = s.indexOf("<!--MESH:v2:END-->");
+      const block = start >= 0 && end > start ? s.slice(start, end) : "";
+      const count = (block.match(/href="\//g) || []).length;
+      if (count < 5) {
+        failures.push(
+          `§50 static mesh on ${path} has only ${count} internal links (floor 5).\n    fix: extend the manifest entry in data/static-mesh-links.json`,
+        );
+      }
+      for (const h of hrefs) {
+        if (!s.includes(`href="${h}"`)) {
+          failures.push(
+            `§50 static mesh on ${path} lost curated link ${h}.\n    fix: node scripts/build-static-mesh-links.mjs`,
+          );
+        }
+      }
+      if (/[—–]/.test(block)) {
+        failures.push(
+          `§50 static mesh on ${path} contains an em/en dash.\n    fix: clean the manifest labels or target titles, then re-run node scripts/build-static-mesh-links.mjs`,
+        );
+      }
+    }
+  }
+}
+
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +
