@@ -11,6 +11,8 @@
  * they go into IndexNow on `postbuild`, so renames break inbound citations.
  */
 
+import { FRESH_YEAR_STR } from "@/lib/freshness-year";
+
 export interface AgentQueryFAQ {
   q: string;
   a: string;
@@ -28,6 +30,8 @@ export interface AgentQueryLink {
 }
 
 export interface AgentQuery {
+  /** Optional CTR-hooked <title> override (absolute, no template suffix). */
+  metaTitle?: string;
   /** URL slug at /answers/[slug]. */
   slug: string;
   /** The natural-language query this page targets, verbatim. */
@@ -707,6 +711,9 @@ npx -y @gitdealflow/mcp-signal
   {
     slug: "github-data-for-startup-investors",
     query: "GitHub data for startup investors",
+    // CTR hook (GSC 90d: 193 imps, 0 clicks, pos 9.4): h1 + brand suffix
+    // truncates at 78ch; metaTitle carries the free/no-auth hook.
+    metaTitle: `GitHub Data for Startup Investors: Free Weekly Signals (${FRESH_YEAR_STR})`,
     h1: "GitHub Data for Startup Investors",
     description:
       "How venture investors use public GitHub data, commit velocity, contributor growth, repository expansion, to surface breakout startups three to six weeks before fundraise announcements.",
@@ -838,6 +845,12 @@ npx -y @gitdealflow/mcp-signal
       },
     ],
     faqs: [
+      {
+        // verbatim PAA (harvested 2026-08-17, "how to find startups before
+        // they raise" SERP); GSC-adjacent demand also in the answers cluster.
+        q: "How to find early stage startups?",
+        a: "Combine three sources: public engineering activity (commit velocity, contributor growth, new infrastructure repositories on GitHub), formation signals (incorporation filings, first hires), and community traces (niche forums, open-source release notes). On the 219-observation panel behind this site, sustained engineering acceleration appeared 21 to 47 days before the fundraise announcement, which is why code-level signals are the earliest automatable layer.",
+      },
       {
         q: "How do you find startups before they raise?",
         a: "Track public engineering acceleration: commit-velocity change over rolling 14-day windows, contributor growth above 50% over six weeks, and new infrastructure repositories. Across the 219-startup panel these patterns appeared 21 to 47 days before fundraise announcements, before most databases listed the round.",

@@ -35,19 +35,23 @@ export async function generateMetadata({
   if (!q) return {};
 
   return {
-    title: q.h1,
+    // metaTitle (CTR hook) overrides h1 when set; absolute so the 22ch
+    // template suffix never truncates a hooked title.
+    ...(q.metaTitle
+      ? { title: { absolute: q.metaTitle } }
+      : { title: q.h1 }),
     description: q.description,
     keywords: q.keywords.join(", "),
     alternates: { canonical: `/answers/${slug}` },
     openGraph: {
-      title: q.h1,
+      title: q.metaTitle ?? q.h1,
       description: q.description,
       url: `${SITE}/answers/${slug}`,
       type: "article",
     },
     twitter: {
       card: "summary_large_image",
-      title: q.h1,
+      title: q.metaTitle ?? q.h1,
       description: q.description,
     },
   };
@@ -124,10 +128,12 @@ function buildJsonLd(q: AgentQuery): object {
         // §23 AEO (2026-08-16): the core Question/Answer pair as real nodes.
         // The AskAction below has referenced #question / #answer @ids since
         // F37, but the nodes themselves were never emitted, so every
-        // extraction engine resolving those refs found nothing. The Answer
-        // text is q.tldr, the same 40-60 word direct answer rendered in the
-        // AgentSummary and selected by the Speakable spec, so schema, visible
-        // page, and speakable passage all agree on one extractable answer.
+        // extraction engine resolving those refs found nothing. The
+        // text is directAnswer, the 40-60 word definition when present
+        // (featured-snippet target, 2026-08-16 rebuild) falling back to
+        // q.tldr, rendered in the [data-direct-answer] block and selected by
+        // the Speakable spec, so schema, visible page, and speakable passage
+        // all agree on one extractable answer.
         "@type": "Question",
         "@id": `${url}#question`,
         name: q.h1,
@@ -139,7 +145,7 @@ function buildJsonLd(q: AgentQuery): object {
       {
         "@type": "Answer",
         "@id": `${url}#answer`,
-        text: q.tldr,
+        text: q.definition ?? q.tldr,
         url,
         parentItem: { "@id": `${url}#question` },
       },
@@ -194,8 +200,9 @@ function buildJsonLd(q: AgentQuery): object {
         // §23 AEO (2026-08-16): the page's own core question is mirrored as
         // mainEntity[0] so FAQPage consumers (AI Overviews, PAA, assistants)
         // see the page's primary Q→A, not just the auxiliary faqs. The answer
-        // text is the same tldr emitted on the #answer node and rendered in
-        // the AgentSummary block: one extractable answer, three surfaces.
+        // text is the same directAnswer (definition ?? tldr) emitted on the
+        // #answer node and rendered in the [data-direct-answer] block: one
+        // extractable answer, three surfaces.
         "@type": "FAQPage",
         mainEntity: [
           {
@@ -203,7 +210,7 @@ function buildJsonLd(q: AgentQuery): object {
             name: q.h1,
             acceptedAnswer: {
               "@type": "Answer",
-              text: q.tldr,
+              text: q.definition ?? q.tldr,
             },
           },
           ...q.faqs.map((f) => ({

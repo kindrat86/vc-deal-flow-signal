@@ -3251,6 +3251,94 @@ check(
 }
 
 // ---------------------------------------------------------------------------
+// §40 Verbatim PAA/GSC questions as on-page H3s (2026-08-18, audit item
+// "People Also Ask 30"). Harvest: 13 live Google SERPs (headed Chrome,
+// consent-dismissed, hl=en&gl=us) -> 30 unique verbatim PAA questions,
+// cross-referenced with 28d GSC query+page data (14 question-shaped queries,
+// ~450 impressions, positions 3.4-9.8, ZERO clicks -> the exact SERP feature
+// this content targets). Answers: entity facts verified vs 3+ independent
+// sources each (two-Harmonics disambiguation, Affinity valuation-undisclosed,
+// CB Insights independent/Sanwal, harmonic.ai founders Casey+Sohmshetty).
+// The /vs template renders FAQ questions as <h3> + FAQPage JSON-LD from
+// mergedFaqs, so these are simultaneously human-visible H3s and machine-
+// extractable Question/Answer pairs. Reverting drops the only on-domain
+// verbatim match for Google's actual PAA/GSC questions.
+// ---------------------------------------------------------------------------
+check(
+  "content/competitor-vs.ts",
+  "§40 PAA: the verbatim question cluster was dropped from harmonic-ai-vs-pitchbook (6 questions, ~200 impressions/28d, the single largest question-demand pool on the domain)",
+  (s) =>
+    s.includes("How does Harmonic.ai compare to PitchBook?") &&
+    s.includes("How does Harmonic's pricing compare to PitchBook's?") &&
+    s.includes("How does Harmonic's data quality compare to PitchBook's?") &&
+    s.includes("How does Harmonic's Scout AI compare to PitchBook's search?") &&
+    s.includes("How does PitchBook's data freshness compare to Harmonic's?") &&
+    s.includes("Which has better people data: Harmonic or PitchBook?"),
+  "restore the 6 verbatim question FAQs on the harmonic-ai-vs-pitchbook pair (GSC 28d + PAA harvest 2026-08-17)",
+);
+check(
+  "content/competitor-vs.ts",
+  "§40 PAA: the CB Insights entity questions (reputable / cost per year / who owns / what kind of company) were dropped; they appear verbatim as PAA on 2 SERPs and are entity-SEO surface",
+  (s) =>
+    s.includes("Is CB Insights reputable?") &&
+    s.includes("How much does CB Insights cost per year?") &&
+    s.includes("Who owns CB Insights?") &&
+    s.includes("What kind of company is CB Insights?"),
+  "restore the 4 CB Insights entity-question FAQs on the cb-insights-vs-crunchbase pair (facts: independent, Sanwal-founded, ~$35k+/yr enterprise)",
+);
+check(
+  "content/competitor-vs.ts",
+  "§40 PAA: the free-alternatives and PitchBook-competitors questions were dropped (verbatim PAA on 4 SERPs each, the highest-frequency cross-SERP questions)",
+  (s) =>
+    s.includes("Is there a free alternative to PitchBook?") &&
+    s.includes("Who are PitchBook's main competitors?") &&
+    s.includes("What is better, PitchBook or Crunchbase?") &&
+    s.includes("Is a PitchBook worth it?"),
+  "restore the 4 PitchBook-vs-Crunchbase PAA FAQs (crunchbase-vs-pitchbook pair)",
+);
+check(
+  "content/competitor-vs.ts",
+  "§40 PAA: the affinity-vs-harmonic-ai pricing and founders-disambiguation questions were dropped (harmonic ai pricing SERP PAA; the founders question disambiguates the two Harmonic companies)",
+  (s) =>
+    s.includes("How much does Harmonic.ai cost?") &&
+    s.includes("Who are the founders of Harmonic.ai?") &&
+    s.includes("What are some alternatives to Harmonic.ai?"),
+  "restore the 3 appended FAQs on affinity-vs-harmonic-ai (pricing, alternatives, founders-disambiguation)",
+);
+check(
+  "content/competitor-vs.ts",
+  "§40 PAA: the remaining verbatim cluster questions were dropped (dealroom/specter/tracxn/crunchbase comparisons, PitchBook free version, Tracxn-vs-PitchBook, Affinity valuation + free-alternatives, PitchBook reputable)",
+  (s) =>
+    s.includes("How does Harmonic compare to Dealroom?") &&
+    s.includes("How does Harmonic compare to Specter?") &&
+    s.includes("How does Harmonic compare to Tracxn?") &&
+    s.includes("How does Harmonic compare to Crunchbase for startup data?") &&
+    s.includes("What is Affinity.co's valuation?") &&
+    s.includes("Is there a free version of PitchBook?") &&
+    s.includes("Is Tracxn better than PitchBook?") &&
+    s.includes("Is PitchBook reputable?") &&
+    s.includes("What are some free alternatives to PitchBook?"),
+  "restore the remaining verbatim comparison FAQs across harmonic-ai-vs-dealroom, specter-vs-harmonic-ai, harmonic-ai-vs-tracxn, harmonic-ai-vs-crunchbase, dealroom-vs-pitchbook, pitchbook-vs-tracxn, affinity-vs-pitchbook",
+);
+
+check(
+  "content/agent-queries.ts",
+  "§40 PAA: the verbatim early-stage-startups question was dropped from the how-to-find answer page (verbatim PAA on the seed SERP for the repo's core TOFU query)",
+  (s) =>
+    s.includes("How to find early stage startups?") &&
+    s.includes("how-to-find-startups-before-they-fundraise"),
+  "restore the verbatim 'How to find early stage startups?' FAQ on how-to-find-startups-before-they-fundraise",
+);
+check(
+  "app/acquirer/[slug]/page.tsx",
+  "§40 PBA: the conditional Vista Equity operational-changes question was dropped (top question-shaped GSC query on /acquirer, 18 imps/28d pos 13.1)",
+  (s) =>
+    s.includes("vista-equity-partners") &&
+    s.includes("What kind of operational changes does Vista Equity Partners make after acquiring a software company?"),
+  "restore the conditional Vista PAA FAQ in the acquirer template",
+);
+
+// ---------------------------------------------------------------------------
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +

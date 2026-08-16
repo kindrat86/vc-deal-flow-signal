@@ -67,6 +67,21 @@ export default async function AcquirerPage({ params }: PageProps) {
   const otherAcquirers = ACQUIRERS.filter((o) => o.slug !== a.slug).slice(0, 6);
 
   const faqs = [
+    // PAA (harvested 2026-08-17): "what kind of operational changes does vista
+    // equity partners typically make after acquiring a software company" is the
+    // top question-shaped GSC query on /acquirer (18 imps/28d, pos 23.1, 0 clicks).
+    // Conditional: the question is entity-specific, only Vista's page answers it.
+    ...(a.slug === "vista-equity-partners"
+      ? [
+          {
+            question:
+              "What kind of operational changes does Vista Equity Partners make after acquiring a software company?",
+            answer:
+              "Vista's documented playbook is operational, not product-led: after closing it applies its Standard Operating Procedure, best-practice playbooks for pricing, sales, marketing, and engineering metrics, aiming to lift margins and recurring revenue before exit. Coverage of its deals (Tibco, Marketo, Apptio) consistently describes operational consolidation and pricing discipline rather than product re-platforming in year one.",
+          },
+        ]
+      : []),
+
     {
       question: `How many acquisitions has ${a.name} made?`,
       answer: `This page documents ${a.notableAcquisitions.length} notable public acquisitions by ${a.name}, every deal here was announced via press release, SEC filing, or both. ${a.name}'s full acquisition history may include smaller, undisclosed talent acquisitions; we list only the publicly documented deals that materially shaped their direction.`,
