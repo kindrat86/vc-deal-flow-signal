@@ -1,4 +1,5 @@
 #!/usr/bin/env node
+
 // Single entry point for all landing prebuild verify checks.
 // Keeps vercel.json buildCommand under Vercel's 256-char limit.
 // Runs each check in order; fails the build (non-zero) on the first failure.
@@ -35,4 +36,3 @@ const ping = spawnSync('node', ['scripts/indexnow-ping.mjs'], { cwd: landingRoot
 if (ping.status !== 0) {
   console.warn(`[verify-all] indexnow-ping exited ${ping.status} (non-fatal, continuing)`);
 }
-

@@ -17,6 +17,9 @@
  */
 export const PANEL_CLAIM = "350+";
 
+/** Numeric form of the floor for schema.org counters (userInteractionCount etc.), where a "+" suffix is invalid. */
+export const PANEL_FLOOR_NUM = 350;
+
 /** Claim form of a measured count: the locked floor once the panel clears it. */
 export function panelClaimFloor(count: number): string {
   return count >= 350 ? PANEL_CLAIM : String(count);

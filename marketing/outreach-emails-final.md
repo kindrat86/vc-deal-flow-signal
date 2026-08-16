@@ -23,11 +23,11 @@
 
 Hi Connie,
 
-I track GitHub engineering activity across thousands of startups and rank them by commit velocity change — the rate engineering work is accelerating.
+I track GitHub engineering activity across 350+ venture-backed startups and rank them by commit velocity change — the rate engineering work is accelerating.
 
 A pattern keeps showing up: when a startup's contributor count jumps 50%+ in two weeks and commit velocity doubles, a fundraise announcement follows within 3-6 weeks. This week, carlos-emr (healthcare) hit +199% velocity change with 94 contributors — the kind of spike that precedes a headline.
 
-I built a free weekly leaderboard that ranks the top startups by engineering acceleration across 20 sectors: https://signals.gitdealflow.com
+I built a free weekly leaderboard that ranks the top startups by engineering acceleration across 15 sectors: https://signals.gitdealflow.com
 
 I think your readers would find this useful as a leading indicator alongside the deal announcements you cover. Happy to share specific data points for any upcoming StrictlyVC issue — a "what the GitHub data says this week" sidebar could be an interesting angle.
 
@@ -51,7 +51,7 @@ Hi Packy,
 
 Hedge funds spent a decade building edges from satellite imagery and credit card data. The VC equivalent has been sitting in the open the whole time: GitHub.
 
-I built a system that monitors commit velocity across thousands of startup GitHub orgs and ranks them by engineering acceleration. The signal is surprisingly predictive — a 2x contributor spike within 14 days has preceded fundraise announcements or major launches by 3-6 weeks in our data. This week, the top mover is carlos-emr (healthcare EMR) at +199% velocity change with 94 contributors.
+I built a system that monitors commit velocity across 350+ venture-backed startup GitHub orgs and ranks them by engineering acceleration. The signal is surprisingly predictive — a 2x contributor spike within 14 days has preceded fundraise announcements or major launches by 3-6 weeks in our data. This week, the top mover is carlos-emr (healthcare EMR) at +199% velocity change with 94 contributors.
 
 The full leaderboard is free: https://signals.gitdealflow.com
 
@@ -82,7 +82,7 @@ But there is an interesting flip side your readers would care about: what does y
 I could write a guest piece for The Pragmatic Engineer covering:
 - What investors specifically look for on a startup's GitHub profile (5-minute checklist)
 - The four patterns that flag a company as "accelerating" — and what engineering teams can and cannot control about their public signal
-- Real examples from our data tracking thousands of startup orgs across 20 sectors
+- Real examples from our data tracking 350+ venture-backed startup orgs across 15 sectors
 
 The angle is for engineers and engineering leaders, not investors. Most engineering teams have no idea their public repos are being read this way.
 
@@ -104,7 +104,7 @@ https://gitdealflow.com
 
 Hi Lenny,
 
-I built a system that tracks GitHub engineering activity across thousands of startups and surfaces the ones accelerating fastest. The data is meant for investors, but the patterns are equally useful for product leaders evaluating partners, competitors, or acquisition targets.
+I built a system that tracks GitHub engineering activity across 350+ venture-backed startups and surfaces the ones accelerating fastest. The data is meant for investors, but the patterns are equally useful for product leaders evaluating partners, competitors, or acquisition targets.
 
 Specific patterns that show up:
 - **Engineering hiring burst** (contributor count jumps 50%+ in two weeks) — a team scaling up headcount, often right after a seed or Series A closes.
@@ -136,7 +136,7 @@ Hi Elizabeth,
 
 I built a free tool designed for exactly the kind of investor Angel Squad serves: active angels who want to source deals with data, not just warm intros.
 
-It monitors GitHub engineering activity across thousands of startups and ranks them by commit velocity change — the rate their engineering work is accelerating. In our data, these acceleration patterns precede fundraise announcements by 3-6 weeks. The full leaderboard across 20 sectors is free and updated weekly: https://signals.gitdealflow.com
+It monitors GitHub engineering activity across 350+ venture-backed startups and ranks them by commit velocity change — the rate their engineering work is accelerating. In our data, these acceleration patterns precede fundraise announcements by 3-6 weeks. The full leaderboard across 15 sectors is free and updated weekly: https://signals.gitdealflow.com
 
 I could write a practical piece for your community: "How to use GitHub as a deal flow signal," with a step-by-step methodology and real examples. Specifically:
 1. Pick 2-3 sectors you invest in

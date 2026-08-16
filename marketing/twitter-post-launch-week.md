@@ -12,7 +12,7 @@ Cadence shifts to **3x/week (Mon/Wed/Fri data observations) + 2 reactive slots (
 
 Yesterday I shipped VC Deal Flow Signal. Day-1 numbers:
 
-- 60+ startups across 20 sectors live in the dashboard
+- 60+ startups across 15 sectors live in the dashboard
 - #1 mover: orbiternassp (+329% commit velocity, Space Tech)
 - #1 sector: Cybersecurity, akto-api-security shipping 267 commits in 14 days
 

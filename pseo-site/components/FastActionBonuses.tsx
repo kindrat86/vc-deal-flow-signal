@@ -34,10 +34,10 @@ const FAST_ACTION_BONUSES = [
     value: "€1,797 → same week",
   },
   {
-    label: "Bonus #2, Founding-rate ratchet (€9.97 anchored to today)",
+    label: "Bonus #2, Rate lock (€49 anchored to today)",
     detail:
-      "Lock now and the €9.97/mo rate is contractually anchored to your checkout date. Even if next cohort opens at €19/mo or the public price hits €49/mo, your seat doesn't move. Lock-in is dated to entry, not to tenure.",
-    value: "€39/mo saved year-1",
+      "Lock now and the €49/mo rate is anchored to your checkout date. Even if the public price moves later, your seat doesn't move. Lock-in is dated to entry, not to tenure.",
+    value: "Price-lock guarantee",
   },
   {
     label: "Bonus #3, Twelve historical Sunday digests",
@@ -67,14 +67,10 @@ export function FastActionBonuses({ initialWindow, signupUrl = "https://gitdealf
           Cart closed · This cohort
         </p>
         <h2 className="text-xl sm:text-2xl font-bold text-gray-100 leading-snug">
-          The €9.97 founding-member checkout is paused until Monday 06:00 UTC.
+          Dashboard checkout is €49/mo, open 24/7.
         </h2>
         <p className="text-gray-300 text-sm leading-relaxed">
-          Live replays open Monday 06:00 UTC and close Thursday 23:59 UTC,
-          every cohort. The founding-member rate is only checkoutable while
-          doors are open, that&rsquo;s how the price stays locked for the
-          people who are already in. The free Acceleration Watch is
-          unaffected.
+          The founding-member window (€9.97/mo) closed 2026-06-30 and is not coming back; members who joined before then keep that rate for life. The current rate is €49/mo, locked for as long as you stay subscribed. The free Acceleration Watch is unaffected.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 pt-2">
           <a
@@ -115,7 +111,7 @@ export function FastActionBonuses({ initialWindow, signupUrl = "https://gitdealf
         </h2>
         <p className="text-gray-300 text-sm leading-relaxed">
           The three fast-action bonuses (same-week Sector Sweep slot +
-          founding-rate ratchet + twelve historical Sunday digests) expired
+          rate lock + twelve historical Sunday digests) expired
           Wednesday 23:59 UTC. The seat itself is still on the table, but
           only until tonight. Tomorrow morning the link returns the
           waitlist screen.

@@ -3596,6 +3596,17 @@ check(
     s.includes("how-to-find-startups-before-they-fundraise"),
   "restore the verbatim 'How to find early stage startups?' FAQ on how-to-find-startups-before-they-fundraise",
 );
+
+check(
+  "content/alternatives.ts",
+  "§40 PAA wave-2: the third-party Harmonic-comparison Q&As (Grata/Eilla/SourceScrub/Synaptic) were dropped from the harmonic-ai alternatives entry (verbatim PAA on 4 page-1 SERPs, ~36 imps/28d, 0 clicks pre-wave-2)",
+  (s) =>
+    s.includes("How does Harmonic compare to Grata for deal sourcing?") &&
+    s.includes("How does Harmonic compare to Eilla AI?") &&
+    s.includes("How does Harmonic compare to SourceScrub?") &&
+    s.includes("How does Harmonic compare to Synaptic?"),
+  "restore the 4 appended third-party Harmonic-comparison FAQs on the harmonic-ai alternatives entry",
+);
 check(
   "app/acquirer/[slug]/page.tsx",
   "§40 PBA: the conditional Vista Equity operational-changes question was dropped (top question-shaped GSC query on /acquirer, 18 imps/28d pos 13.1)",
@@ -4788,6 +4799,263 @@ landingCheck(
   }
 }
 
+
+// §57 CTR wave 6b (2026-08-16): portfolio count hooks, 3 founder handles,
+// 5 answers metaTitles, 11 hub titles, 2 startup-idea titles. Every figure
+// derives from the same content files (portfolio length, public roles, page
+// copy), never invented. Fails closed if any lineage reverts a wave-6b title.
+{
+  {
+    const pf = read("../app/fund/[slug]/portfolio/page.tsx");
+    if (pf) {
+      for (const needle of [
+        "Portfolio: ${nCompanies} Tracked",
+        "title: { absolute: title }",
+        "nCompanies === 1 ? \"company\" : \"companies\"",
+      ]) {
+        if (!pf.includes(needle)) {
+          failures.push(
+            `§57 portfolio title hook reverted (missing needle: ${needle.slice(0, 60)}...).\n    file: app/fund/[slug]/portfolio/page.tsx\n    fix:  restore the wave-6b count hook + absolute title + plural fix`,
+          );
+        }
+      }
+      if (pf.includes("Portfolio, Companies We Track")) {
+        failures.push(
+          `§57 portfolio title regressed to the generic form.\n    file: app/fund/[slug]/portfolio/page.tsx\n    fix:  restore the wave-6b count-hook title`,
+        );
+      }
+    }
+    const founders = read("../content/founders.ts");
+    if (founders) {
+      for (const needle of [
+        'tj: "TJ Holowaychuk (@tj): Express.js Author"',
+        '"transitive-bullshit": "Travis Fischer (@transitive-bullshit): Agentic Founder"',
+        'ezyang: "Edward Z. Yang (@ezyang): PyTorch Core Engineer"',
+      ]) {
+        if (!founders.includes(needle)) {
+          failures.push(
+            `§57 founder handle hook lost (missing needle: ${needle.slice(0, 60)}...).\n    file: content/founders.ts\n    fix:  restore the wave-6b founder handles`,
+          );
+        }
+      }
+    }
+    const answers = read("../content/agent-queries.ts");
+    if (answers) {
+      for (const needle of [
+        "metaTitle: `Best VC Deal Sourcing Tools: 3-Bucket Stack ${FRESH_YEAR_STR}`",
+        "metaTitle: `How Angels Use GitHub Signals: No Code Needed ${FRESH_YEAR_STR}`",
+        "metaTitle: `Find Stealth Startups: 5 Public Signals ${FRESH_YEAR_STR}`",
+        "metaTitle: `Best VC Deal Flow Software by Fund Size ${FRESH_YEAR_STR}`",
+        "metaTitle: `AI Investing Tools: 4 Categories Compared ${FRESH_YEAR_STR}`",
+      ]) {
+        if (!answers.includes(needle)) {
+          failures.push(
+            `§57 answers metaTitle hook lost: ${needle.slice(9, 60)}...\n    file: content/agent-queries.ts\n    fix:  restore the wave-6b metaTitle on the matching answers entry`,
+          );
+        }
+      }
+    }
+    const hubNeedles: Array<[string, string]> = [
+      ["app/founder/page.tsx", "33 Founders: Public Engineering Profiles ${FRESH_YEAR_STR}"],
+      ["app/integrations/page.tsx", "Integrations: MCP, Telegram, Email, RSS, Free API ${FRESH_YEAR_STR}"],
+      ["app/wikipedia/page.tsx", "Wikipedia Citation Helper: Ready Citations"],
+      ["app/citations/page.tsx", "Citations: The Cross-Graph Identity Map"],
+      ["app/predicted/page.tsx", "10 Predicted Breakouts Weekly, Graded at 60 Days ${FRESH_YEAR_STR}"],
+      ["app/developers/page.tsx", "Developers: Free Deal Flow API, MCP, JSON & CSV ${FRESH_YEAR_STR}"],
+      ["app/standards/page.tsx", "Standards: Schema.org, OpenAPI 3.1, MCP, A2A, FAIR ${FRESH_YEAR_STR}"],
+      ["app/data-sources/page.tsx", "Data Sources: GitHub API, Enrichment, Cadence ${FRESH_YEAR_STR}"],
+      ["app/alternatives/page.tsx", "Alternatives to Harmonic.ai, Dealroom, Crunchbase ${FRESH_YEAR_STR}"],
+      ["app/predict/page.tsx", "Predict Startup Breakouts: Free Signal, 2 Seconds ${FRESH_YEAR_STR}"],
+      ["app/startup-ideas/page.tsx", "52 Startup Ideas ${FRESH_YEAR_PLAIN}: Buildable, Live Repos"],
+      ["app/blog/page.tsx", "VC Deal Flow Blog: GitHub Signals & Startup Data ${FRESH_YEAR_STR}"],
+      ["app/answers/page.tsx", "98 Citation-Ready Answers on VC Deal Flow ${FRESH_YEAR_STR}"],
+    ];
+    for (const [path, needle] of hubNeedles) {
+      const src = read(`../${path}`);
+      if (src && !src.includes(needle)) {
+        failures.push(
+          `§57 hub title hook reverted.\n    file: ${path}\n    fix:  restore the wave-6b title "${needle}"`,
+        );
+      }
+    }
+    const ideas = read("../content/startup-ideas.ts");
+    if (ideas) {
+      for (const needle of [
+        'title: "Open-Source Funding Platforms: 3 Repos"',
+        'title: "AI Code Review: Under 3 Comments per PR"',
+      ]) {
+        if (!ideas.includes(needle)) {
+          failures.push(
+            `§57 startup-idea title hook lost (missing needle: ${needle.slice(0, 60)}...).\n    file: content/startup-ideas.ts\n    fix:  restore the wave-6b idea titles`,
+          );
+        }
+      }
+    }
+  }
+}
+
+// §59 Price-ladder + stale-era panel-count drift (2026-08-16, audit follow-up).
+// Live truth (api/v1/pricing.json): Dashboard €49/mo, Insider €197/mo; the
+// €9.97/€97 founding rates closed 2026-06-30 (grandfathered for life). Agent
+// surfaces (llms.txt, llms-full), API strings, and current-offer funnel pages
+// quote the CURRENT ladder. Historical/grandfathering narrative is exempt.
+{
+  {
+    const priceNeedles: Array<[string, string]> = [
+      ["../app/llms.txt/route.ts", "€49/mo Dashboard, €197/mo Insider Circle"],
+      ["../app/llms-full.txt/route.ts", "Dashboard, €49/month"],
+      ["../app/alternatives/page.tsx", "&euro;49/mo Dashboard"],
+      ["../app/api/scout/predict/route.ts", "EUR 49/mo"],
+      ["../app/api/webhook/stripe/route.ts", "&euro;49/mo"],
+      ["../app/start-here/page.tsx", 'price: "€49/mo"'],
+      ["../app/vsl/page.tsx", "€49/mo</p>"],
+      ["../app/pitch/page.tsx", "350+ startups, 15 sectors"],
+      ["../app/code-side-sourcing/page.tsx", "350+ ranked orgs"],
+      ["../app/page.tsx", "claim: `${panelClaim} startup signals across"],
+      ["../app/opengraph-image.tsx", "panelClaimFloor(totalStartups)"],
+      ["../app/llms.txt/route.ts", "the 350+ ranked startups"],
+    ];
+    for (const [path, needle] of priceNeedles) {
+      const src = read(path);
+      if (src && !src.includes(needle)) {
+        failures.push(
+          `§59 current-price/panel needle missing: ${needle.slice(0, 50)} in ${path}.\n    fix:  restore the 2026-08-16 price-ladder sweep (Dashboard €49/mo, Insider €197/mo, founding closed 2026-06-30)`,
+        );
+      }
+    }
+    const priceBans: Array<[string, RegExp]> = [
+      ["../content/agent-queries.ts", /EUR 19\/mo|EUR 19\/month|100-1000x/],
+      ["../content/standalone-faqs.ts", /EUR 19\/mo|EUR 19\/month|100-1000×/],
+      ["../app/llms.txt/route.ts", /€9\.97\/mo Dashboard|€97\/mo Insider/],
+      ["../app/llms-full.txt/route.ts", /Paid \(€9\.97\/mo Dashboard\)/],
+      ["../app/api/scout/predict/route.ts", /EUR 9\.97\/mo/],
+      ["../app/api/webhook/stripe/route.ts", /&euro;9\.97\/mo is locked in forever/],
+      ["../app/tweet-teardown/thanks/page.tsx", /four thousand two hundred/],
+      ["../app/pitch/page.tsx", /140 startups/],
+      ["../app/code-side-sourcing/page.tsx", /109\+ ranked orgs/],
+      ["../app/page.tsx", /\$\{totalTracked\} startup signals/],
+      ["../app/opengraph-image.tsx", /\{totalStartups\}\+/],
+      ["../app/llms.txt/route.ts", /140 ranked startups/],
+      ["../app/research/[slug]/page.tsx", /20\+ startup sectors/],
+      ["../content/comparisons.ts", /20 startup sectors/],
+      ["../content/comparisons.ts", /EUR 9\.97\/month/],
+      ["../app/integrations/page.tsx", /140 ranked/],
+      ["../app/api/v1/pricing.json/route.ts", /140 ranked/],
+      ["../app/origin/your-journey/page.tsx", /140 ranked/],
+      ["../app/alternatives/[slug]/page.tsx", /140 ranked/],
+      ["../app/data-sources/page.tsx", /140 ranked/],
+      ["../app/pricing/page.tsx", /140 ranked/],
+      ["../content/vsl-script.json", /140 ranked/],
+      ["../content/standalone-faqs.ts", /140 ranked/],
+      ["../content/use-cases.ts", /140 ranked/],
+      ["../content/comparisons.ts", /140 ranked/],
+      ["../components/HomeOfferStack.tsx", /140 ranked/],
+    ];
+    for (const [path, rx] of priceBans) {
+      const src = read(path);
+      if (src && rx.test(src)) {
+        failures.push(
+          `§59 stale price/era-count token in ${path} (${rx.source}).\n    fix:  current ladder is €49/mo Dashboard / €197/mo Insider; founding closed 2026-06-30; panel claim is 350+`,
+        );
+      }
+    }
+  }
+}
+
+
+
+
+
+  // §58 wave-6 title hooks (2026-08-16, union w/ §57 wave-6b): founder role hooks, signal
+  // momentum verdicts, fund stage hooks, 3 answers metaTitles, 3 hub
+  // titles. All strings are derived from the same content files' public
+  // fields (role/affiliation/momentum/stage/page copy), never invented
+  // figures. Fails closed if any lineage reverts a wave-6 title.
+  {
+    const founders = read("content/founders.ts");
+    if (founders) {
+      if (!founders.includes("export const FOUNDER_TITLE_HOOKS")) {
+        failures.push(
+          `§58 founder hook map dropped.\n    file: content/founders.ts\n    fix:  restore FOUNDER_TITLE_HOOKS (wave-6 role+affiliation title hooks)`,
+        );
+      }
+      for (const needle of [
+        'leerob: "Lee Robinson (@leerob): Vercel VP of Product"',
+        'dhh: "DHH (@dhh): Rails Creator, 37signals CTO"',
+        'yyx990803: "Evan You (@yyx990803): Vue.js Creator"',
+        "FOUNDER_TITLE_HOOKS[p.handle] ??",
+        "FOUNDER_TITLE_HOOKS[p.handle] ??",
+      ]) {
+        if (needle && !founders.includes(needle)) {
+          failures.push(
+            `§58 founder hook reverted (missing needle: ${needle.slice(0, 60)}...).\n    file: content/founders.ts\n    fix:  restore the wave-6 founder title builder (hook map + 60ch role fallback)`,
+          );
+        }
+      }
+    }
+    const companies = read("content/companies.ts");
+    if (
+      companies &&
+      !companies.includes('"accelerating" &&') &&
+      !companies.includes('": Accelerating"')
+    ) {
+      failures.push(
+        `§58 signal momentum verdict reverted.\n    file: content/companies.ts\n    fix:  restore the wave-6 title suffix ("GitHub Engineering Signals: Accelerating (YEAR)" for accelerating profiles only)`,
+      );
+    }
+    const funds = read("content/funds.ts");
+    if (funds) {
+      if (!funds.includes("export const FUND_TITLE_HOOKS")) {
+        failures.push(
+          `§58 fund hook map dropped.\n    file: content/funds.ts\n    fix:  restore FUND_TITLE_HOOKS (wave-6 stage-focus title hooks)`,
+        );
+      }
+      for (const needle of [
+        'iconiq: "ICONIQ Capital: Late-Stage Software Signals"',
+        'm12: "M12 (Microsoft Ventures): Series A to Growth Signals"',
+        "FUND_TITLE_HOOKS[f.slug]",
+      ]) {
+        if (!funds.includes(needle)) {
+          failures.push(
+            `§58 fund hook reverted (missing needle: ${needle.slice(0, 60)}...).\n    file: content/funds.ts\n    fix:  restore the wave-6 fund title map + consumption`,
+          );
+        }
+      }
+    }
+    const answers = read("../content/agent-queries.ts");
+    if (answers) {
+      for (const needle of [
+        "metaTitle: \"Best MCP Servers for VC Research: 4 Are Free (2026)\"",
+        "metaTitle: \"Best PitchBook Alternative for Solos: Under EUR 120/mo\"",
+        "metaTitle: \"How to Add an MCP Server to Cursor: 3 Steps (2026)\"",
+      ]) {
+        if (!answers.includes(needle)) {
+          failures.push(
+            `§58 answers metaTitle hook lost: ${needle.slice(9, 60)}...\n    file: content/agent-queries.ts\n    fix:  restore the wave-6 metaTitle on the matching answers entry`,
+          );
+        }
+      }
+    }
+    const hubNeedles: Array<[string, string]> = [
+      ["app/wins/page.tsx", "Underwriting Receipts: Validated GitHub Signals Ledger (2026)"],
+      ["app/reproducibility/page.tsx", "Reproducibility: Open Data, Verifiable Methods"],
+    ];
+    for (const [path, needle] of hubNeedles) {
+      const src = read(`../${path}`);
+      if (src && !src.includes(needle)) {
+        failures.push(
+          `§58 hub title hook reverted.\n    file: ${path}\n    fix:  restore the wave-6 title "${needle}"`,
+        );
+      }
+    }
+    const leaderboard = read("../app/affiliates/leaderboard/page.tsx");
+    if (leaderboard && leaderboard.includes("(May 2026)")) {
+      failures.push(
+        `§58 affiliate leaderboard title carries the stale month again.\n    file: app/affiliates/leaderboard/page.tsx\n    fix:  keep "(2026)" (dynamic-ish); "(May 2026)" decays within weeks`,
+      );
+    }
+  }
+
 // §56 "How VCs source deals" cluster (topical-authority win, 2026-08-16)
 // 10 sourcing-cluster posts in content/posts-sourcing-cluster.ts, spliced into
 // allPosts and pillar-wired in content/pillars.ts. Closes the audit item
@@ -5332,6 +5600,321 @@ landingCheck(
   }
 }
 
+
+// ---------------------------------------------------------------------------
+// 60. Static-surface claim lock completion (2026-08-16, audit follow-up).
+//     The 08-16 sweeps (12ee6195, 956bb30c) fixed dynamic surfaces but missed
+//     static ones: public/guide/* ("400+ startup orgs"), enterprise FAQ
+//     ("109+ orgs"), and nine "20 startup sectors" surfaces (live panel = 15
+//     active sectors, 5 archived at Q2; committed data q3-2026: 15 active,
+//     411 raw / 398 deduped orgs, so "400+" overclaims and 350+ is the floor).
+//     This section bans those tokens across ALL pseo-site source dirs
+//     (including public/, which §56 skipped) and pins landing/llms.txt
+//     pricing to current rates with founding rates marked closed.
+// ---------------------------------------------------------------------------
+{
+  const bannedTokens60 = [
+    "400+ startup orgs",
+    "109+ venture-backed startup orgs",
+    "109+ venture-backed startup organizations",
+  ];
+  const sectorClaim60 =
+    /(?:across|track|tracks|universe of|Curate)\s+20\s+(?:startup\s+)?sectors/i;
+  const exts60 = new Set([".ts", ".tsx", ".md", ".json", ".html", ".js", ".mjs", ".txt"]);
+  const skip60 = new Set([".vercel", ".git", "node_modules", ".DS_Store"]);
+  const walk60 = (dir: string, out: string[] = []): string[] => {
+    let names: string[];
+    try {
+      names = readdirSync(dir);
+    } catch {
+      return out;
+    }
+    for (const name of names) {
+      if (skip60.has(name)) continue;
+      const fp = join(dir, name);
+      let isDir = false;
+      try {
+        isDir = statSync(fp).isDirectory();
+      } catch {
+        continue;
+      }
+      if (isDir) walk60(fp, out);
+      else if (exts60.has(extname(name).toLowerCase())) out.push(fp);
+    }
+    return out;
+  };
+  const hits60: string[] = [];
+  // Derived-count check: homepage Dataset JSON-LD must derive the ACTIVE
+  // sector count (activeSectorCount), never raw sectors.length (counts the
+  // 5 archived clusters -> renders "20 startup sectors" in schema output).
+  {
+    const hp = join(ROOT, "app", "page.tsx");
+    if (existsSync(hp)) {
+      const hs = readFileSync(hp, "utf8");
+      if (hs.includes("sectors.length +\n          \" startup sectors")) {
+        hits60.push("app/page.tsx (derived sector count: sectors.length in Dataset description)");
+      }
+    }
+  }
+  for (const dir of ["app", "content", "lib", "components", "scripts", "public"]) {
+    const abs = join(ROOT, dir);
+    if (!existsSync(abs)) continue;
+    for (const fp of walk60(abs)) {
+      if (fp.endsWith("verify-no-regressions.ts")) continue;
+      let src: string;
+      try {
+        src = readFileSync(fp, "utf8");
+      } catch {
+        continue;
+      }
+      const tok = bannedTokens60.find((t) => src.includes(t));
+      if (tok || sectorClaim60.test(src)) {
+        hits60.push(`${fp} (${tok ?? "20-sector claim"})`);
+      }
+    }
+  }
+  if (hits60.length) {
+    failures.push(
+      `§60 static-surface claim lock: banned panel/sector claims found in: ${hits60.join("; ")}\n    file: (multiple)\n    fix:  sweep to PANEL_CLAIM ("350+") via lib/canonical-claims.ts and "15 startup sectors"; legacy clusters are archived at Q2 2026 (user lock 2026-08-16, AGENTS.md)`,
+    );
+  }
+  // landing/llms.txt must present CURRENT pricing with founding rates closed.
+  const llmsPath = join(ROOT, "..", "landing", "llms.txt");
+  if (existsSync(llmsPath)) {
+    const ls = readFileSync(llmsPath, "utf8");
+    const stalePrice =
+      ls.includes("- Dashboard Beta: EUR 9.97/month") ||
+      ls.includes("- Insider Circle: EUR 97/month,");
+    const hasCurrent =
+      ls.includes("- Dashboard: EUR 49/month") &&
+      ls.includes("- Insider Circle: EUR 197/month");
+    if (stalePrice || !hasCurrent) {
+      failures.push(
+        "§60 landing/llms.txt pricing stale: founding rates (9.97/97) must be marked closed; current rates 49/197 required.\n    file: landing/llms.txt\n    fix:  mirror the live /pricing ladder (founding window closed 2026-06-30)",
+      );
+    }
+  }
+  // -------------------------------------------------------------------------
+  // §61 forward-copy claim lock (user lock 2026-08-16): launch drafts,
+  //     outreach emails, and affiliate recruiting copy must quote CURRENT
+  //     facts only: panel "350+", 15 sectors, EUR 49/197. Founding-era rates
+  //     (9.97/97) may appear only with the closed-window framing. These
+  //     files are future-facing: stale numbers become public claims the
+  //     moment they are posted or sent.
+  // -------------------------------------------------------------------------
+  {
+    const fwdFiles61: Array<[string, string]> = [
+      ["AEO-producthunt-launch-draft.md", "PH launch draft"],
+      ["AEO-hn-show-hn-draft.md", "HN Show HN draft"],
+      ["marketing/launch-plan.md", "launch plan"],
+      ["marketing/outreach-emails-final.md", "outreach emails"],
+      ["marketing/alternatives-cluster-geo-2026-05-31/assets/listicle-outreach-email.md", "listicle outreach"],
+      ["marketing/twitter-post-launch-week.md", "launch-week tweets"],
+      ["tools/campaign/drafts/affiliate-recruit-01-pragmatic-engineer.txt", "affiliate draft 01"],
+      ["tools/campaign/drafts/affiliate-recruit-06-devtools-fyi.txt", "affiliate draft 06"],
+      ["tools/campaign/drafts/affiliate-recruit-08-lenny-newsletter.txt", "affiliate draft 08"],
+    ];
+    const banned61 = [
+      "9.97",
+      "€97/mo",
+      "EUR 97/mo",
+      "€19.40",
+      "109+",
+      "~400",
+      "400+ startup",
+      "20 sectors",
+      "thousands of",
+      "140 ranked",
+      "4,200",
+      "4,800 orgs",
+    ];
+    const exempt61 = /closed|2026-06-30|founding|Founding|archived/i;
+    const hits61: string[] = [];
+    for (const [rel, label] of fwdFiles61) {
+      const fp = join(ROOT, "..", rel);
+      if (!existsSync(fp)) continue;
+      const ls = readFileSync(fp, "utf8").split(/\r?\n/);
+      ls.forEach((line, idx) => {
+        if (exempt61.test(line)) return;
+        for (const tok of banned61) {
+          if (line.includes(tok)) {
+            hits61.push(`${label} (${rel}:${idx + 1}): "${tok}"`);
+            break;
+          }
+        }
+      });
+    }
+    if (hits61.length) {
+      failures.push(
+        `§61 forward-copy claim violations in: ${hits61.join("; ")}\n    file: (multiple)\n    fix:  sweep launch/outreach/affiliate drafts to PANEL_CLAIM (350+), 15 sectors, EUR 49/197; founding rates only with closed-window framing`,
+      );
+    }
+  }
+  // -------------------------------------------------------------------------
+  // §62 homepage/funnel current-rate lock (user lock 2026-08-16): sales
+  //     surfaces must present the CURRENT ladder (EUR 49/197). Founding-era
+  //     rates (9.97/97) may appear only in closed-window grandfather
+  //     framing, never as a buyable offer. The homepage schema counter
+  //     must use the numeric floor, never the raw sector-sum count.
+  // -------------------------------------------------------------------------
+  {
+    const req62: Array<[string, string, string]> = [
+      [join(ROOT, "app", "page.tsx"), "userInteractionCount: PANEL_FLOOR_NUM", "homepage counter floor"],
+    ];
+    for (const [fp, needle, label] of req62) {
+      if (existsSync(fp) && !readFileSync(fp, "utf8").includes(needle)) {
+        failures.push(
+          `§62 ${label} missing in app/page.tsx\n    fix:  schema counters must use PANEL_FLOOR_NUM (350), never raw counts`,
+        );
+      }
+    }
+    const banned62: Array<[string, string]> = [
+      ["components/HomeOfferStack.tsx", "€9.97 / month, locked forever"],
+      ["lib/data-nerd.ts", "€9.97/mo is a feature"],
+      ["lib/data-nerd.ts", "price is €9.97/mo"],
+      ["app/about/founder/page.tsx", "€9.97/mo is a feature"],
+      ["app/walkthrough/5min/page.tsx", "€9.97/mo"],
+      ["app/walkthrough/page.tsx", "€9.97/mo"],
+      ["app/roadmap/page.tsx", "€9.97/mo founding price"],
+      ["app/start-here/page.tsx", "Founding-member price locked forever"],
+      ["app/state-of-github/page.tsx", "€97/month founding price"],
+      ["app/pitch/page.tsx", "Founding-member price"],
+      ["app/tweet-teardown/thanks/page.tsx", "cohort closing in days"],
+      ["app/quiz/QuizForm.tsx", "Lock €9.97/mo founder price"],
+      ["components/FastActionBonuses.tsx", "€9.97 founding-member checkout is paused"],
+      ["components/FastActionBonuses.tsx", "Founding-rate ratchet"],
+      ["components/BuyerRoadmap.tsx", "Lock €9.97/mo founding price"],
+      ["components/BuyerRoadmap.tsx", "€119.64"],
+      ["app/walkthrough/page.tsx", "picked €9.97"],
+      ["app/walkthrough/page.tsx", "€119.64"],
+      ["app/walkthrough/90s/page.tsx", "€119.64"],
+      ["app/walkthrough/5min/page.tsx", "€119.64"],
+      ["app/firstlook/page.tsx", "€119.64 / yr"],
+      ["content/launches.ts", "Lock €9.97/mo"],
+    ];
+    const hits62: string[] = [];
+    for (const [rel, tok] of banned62) {
+      const fp = join(ROOT, rel);
+      if (!existsSync(fp)) continue;
+      if (readFileSync(fp, "utf8").includes(tok)) hits62.push(`${rel}: "${tok}"`);
+    }
+    if (hits62.length) {
+      failures.push(
+        `§62 stale founding-rate offers in: ${hits62.join("; ")}\n    file: (multiple)\n    fix:  present the current ladder (49/197); founding rates only in closed-window grandfather framing`,
+      );
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// ---------------------------------------------------------------------------
+// §63 Article landmark on the quotable data/editorial templates (2026-08-16,
+//     audit item "HTML semantics 82"). blog already wraps its body in
+//     <article>; the four highest-citation-value templates (startup profile,
+//     startups-to-watch ranking, methodology, alternatives roundup) rendered as
+//     bare <section>s directly under <main>. Readability.js (Perplexity /
+//     ChatGPT / Gemini / Claude browsing) and RAG pipelines use <article> to
+//     locate the self-contained citable content, so a template that loses the
+//     wrapper becomes unquotable. Assert each wraps its body in <article>.
+// ---------------------------------------------------------------------------
+{
+  const articleWrapped = [
+    "app/startup/[slug]/page.tsx",
+    "app/startups-to-watch/[slug]/page.tsx",
+    "app/methodology/page.tsx",
+    "app/alternatives/[slug]/page.tsx",
+  ];
+  for (const rel of articleWrapped) {
+    const s = read(rel);
+    if (s && (!s.includes("<article>") || !s.includes("</article>"))) {
+      failures.push(
+        `§63 ${rel} lost its <article> wrapper.\n    fix: wrap the quotable body (after the breadcrumb <nav>) in <article></article> so answer-engine extractors can find the citable content`,
+      );
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// §64 Product/Offer rich-result integrity (2026-08-19, audit item "schema 88").
+//     Both pricing surfaces nested a free price:0 offer INSIDE the
+//     AggregateOffer, which forces lowPrice:0. A $0 aggregate offer is how
+//     Google suppresses or drops the price-based rich result (Product on the
+//     apex, SoftwareApplication on the pSEO host). The free tier stays visible
+//     on the page but is excluded from the offer aggregate: lowPrice must equal
+//     the lowest PAID price and offerCount must equal the paid-offer count.
+// ---------------------------------------------------------------------------
+{
+  // pSEO /pricing (signals.gitdealflow.com): SoftwareApplication AggregateOffer
+  check(
+    "app/pricing/page.tsx",
+    "§64 pSEO /pricing reintroduced a $0 offer in the AggregateOffer (lowPrice:0 suppresses the price rich result)",
+    (s) =>
+      !s.includes("const lowPrice = 0") &&
+      s.includes("const paidTiers = tiers.filter") &&
+      s.includes("offerCount: paidTiers.length") &&
+      s.includes("paidTiers.map(tierToOffer)"),
+    "exclude the Free tier from the offer aggregate: compute paidTiers, map only paidTiers to offers, lowPrice = min(paid), offerCount = paidTiers.length",
+  );
+
+  // apex /pricing (gitdealflow.com): Product AggregateOffer
+  const pricingPath = join(ROOT, "..", "landing", "pricing.html");
+  if (existsSync(pricingPath)) {
+    const pricing = readFileSync(pricingPath, "utf8");
+    if (pricing.includes('"lowPrice": 0')) {
+      failures.push(
+        '§64 landing /pricing AggregateOffer lowPrice reverted to 0.\n    file: landing/pricing.html\n    fix:  restore "lowPrice": 1 (lowest PAID rung, EUR 1 Tweet Teardown); keep the free digest out of the offers array',
+      );
+    }
+    if (pricing.includes('"price": 0')) {
+      failures.push(
+        '§64 landing /pricing reintroduced a free $0 offer inside the AggregateOffer.\n    file: landing/pricing.html\n    fix:  remove the price:0 Offer from the aggregate offers array (the free tier stays visible on-page only)',
+      );
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// §53 Reddit $20 probe guard (2026-08-16). Three invariants:
+//   a) The six Reddit /r/ campaigns carry the probe cohort tag
+//      utm_campaign=reddit-probe-2026-08 (the May tags vc-2026-05/dev-2026-05
+//      were stale before any spend ever ran and would split the probe's GA4
+//      cohort into two mislabeled months).
+//   b) PaidTrafficBanner copy never claims a banned panel count. "219" may
+//      appear ONLY as "219 startup-period observations" (the honest form;
+//      "219-startup panel" overstates the SSRN panel, which is 55 startups).
+//   c) The banner stays mounted on /firstlook (paid traffic needs the
+//      channel-scent headline; a lineage that drops the mount wastes clicks).
+// ---------------------------------------------------------------------------
+{
+  const pa = read("lib/paid-acquisition.ts");
+  if (pa) {
+    const probeCount = (pa.match(/campaign: "reddit-probe-2026-08"/g) || []).length;
+    if (probeCount !== 6) {
+      failures.push(
+        `§53 Reddit probe tags: expected 6 campaigns with utm_campaign "reddit-probe-2026-08", found ${probeCount}.\n    file: lib/paid-acquisition.ts\n    fix:  restore the probe cohort tag on all six Reddit campaigns (vc/angel/startups/devtools/programming/ml); the May tags were never live-spent and are stale`,
+      );
+    }
+    if (pa.includes('campaign: "vc-2026-05"') || pa.includes('campaign: "dev-2026-05"')) {
+      failures.push(
+        `§53 Reddit probe tags: stale May campaign tags (vc-2026-05/dev-2026-05) are back in lib/paid-acquisition.ts.\n    fix:  all six Reddit campaigns share "reddit-probe-2026-08"; utm_content segments the subreddit`,
+      );
+    }
+  }
+  const banner = read("components/PaidTrafficBanner.tsx");
+  if (banner) {
+    if (/219-startup panel/.test(banner)) {
+      failures.push(
+        `§53 banner claim: PaidTrafficBanner says "219-startup panel" (banned overstatement; the SSRN panel is 55 startups, 219 is the observation count).\n    file: components/PaidTrafficBanner.tsx\n    fix:  use "219 startup-period observations" or the "350+ orgs" panel floor`,
+      );
+    }
+  }
+  const firstlook = read("app/firstlook/page.tsx");
+  if (firstlook && !firstlook.includes("<PaidTrafficBanner />")) {
+    failures.push(
+      `§53 banner mount: PaidTrafficBanner is no longer mounted on /firstlook. Paid traffic loses the channel-scent headline (Brunson scent rule).\n    file: app/firstlook/page.tsx\n    fix:  restore the import + <PaidTrafficBanner /> node`,
+    );
+  }
+}
 
 if (failures.length) {
   console.error(

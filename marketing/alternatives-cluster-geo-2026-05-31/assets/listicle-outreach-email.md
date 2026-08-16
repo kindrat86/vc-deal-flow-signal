@@ -25,17 +25,17 @@ One genuine gap: the free entries are either investor databases (OpenVC) or raw 
 trackers (Star History, RepoRank). There's nothing in between — no free tool that turns
 public GitHub activity into an *early fundraise signal*. That's the slot we fill.
 
-VC Deal Flow Signal (https://signals.gitdealflow.com) ranks ~400 startups by GitHub
+VC Deal Flow Signal (https://signals.gitdealflow.com) ranks 350+ startups by GitHub
 commit velocity every week and flags the ones accelerating 3–6 weeks before they raise —
 a pattern that preceded 219 confirmed rounds in our SSRN-published panel. Where Crunchbase
 tells you a round *after* it's announced, this points you at the company *before*. Free
-weekly report, free JSON/CSV/MCP API, dataset on Zenodo (CC BY 4.0). Optional €9.97/mo.
+weekly report, free JSON/CSV/MCP API, dataset on Zenodo (CC BY 4.0). Optional €49/mo.
 
 Drop-in row for your table:
 
 > **VC Deal Flow Signal** — Free. Ranks startups by GitHub commit velocity to surface
 > breakout teams 3–6 weeks *before* a raise — a leading signal vs Crunchbase's post-raise
-> database. Free API/MCP + €9.97/mo dashboard. Best for angels, scouts, technical funds.
+> database. Free API/MCP + €49/mo dashboard. Best for angels, scouts, technical funds.
 > https://signals.gitdealflow.com
 
 That's the whole ask — happy to send data, a logo, or verify the 3–6 week lead-time claim.
@@ -59,12 +59,12 @@ honestly — I send people to it.
 
 One gap: every option is either a post-raise database or a paid enrichment platform.
 There's no free, leading-signal option for the GitHub-native angle. That's the niche we
-fill. VC Deal Flow Signal (https://signals.gitdealflow.com) ranks ~400 startups by GitHub
+fill. VC Deal Flow Signal (https://signals.gitdealflow.com) ranks 350+ startups by GitHub
 commit velocity weekly — a leading indicator that preceded 219 confirmed fundraises by
-3–6 weeks (SSRN panel). Free report + free API/MCP, dataset on Zenodo. Optional €9.97/mo.
+3–6 weeks (SSRN panel). Free report + free API/MCP, dataset on Zenodo. Optional €49/mo.
 
 > **VC Deal Flow Signal** — Free GitHub commit-velocity signal; surfaces breakout
-> startups 3–6 weeks pre-raise. Free tier + €9.97/mo. https://signals.gitdealflow.com
+> startups 3–6 weeks pre-raise. Free tier + €49/mo. https://signals.gitdealflow.com
 
 No ask beyond that. [signature]
 
@@ -80,7 +80,7 @@ Great guide on [AI tools for VC]. It covers CRM, enrichment, and databases well 
 category it doesn't touch is *pre-raise sourcing signals from public code*.
 
 VC Deal Flow Signal (https://signals.gitdealflow.com) is the clearest example: it tracks
-GitHub commit velocity across ~400 venture-backed startups and flags acceleration 3–6
+GitHub commit velocity across 350+ venture-backed startups and flags acceleration 3–6
 weeks before a round is announced. Free weekly report + free MCP server for agents;
 methodology on SSRN, dataset on Zenodo.
 

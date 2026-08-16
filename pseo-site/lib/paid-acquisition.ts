@@ -14,9 +14,9 @@
  *     This file describes campaigns; it does not launch them.
  *
  * Wiring:
- *   - `app/r/[campaign]/page.tsx` reads CAMPAIGNS by slug and 308-redirects
+ *   - `app/r/[campaign]/route.ts` reads CAMPAIGNS by slug and 308-redirects
  *     to the destination with UTMs appended, so ad URLs stay short
- *     (`signals.gitdealflow.com/r/vc-2026-05`) and the destination remains
+ *     (`signals.gitdealflow.com/r/vc`) and the destination remains
  *     a single static landing.
  *   - `components/PaidTrafficBanner.tsx` is ready to mount on `/firstlook`
  *     (one import + one JSX node) and will swap the headline if
@@ -77,6 +77,10 @@ const SITE = "https://signals.gitdealflow.com";
  */
 export const CAMPAIGNS: Campaign[] = [
   // ───────────────────────────────────────────── REDDIT, INVESTOR-SIDE ─
+  // 2026-08-16: utm_campaign refreshed from the stale May tags (vc-2026-05 /
+  // dev-2026-05) to the $20 probe cohort tag (reddit-probe-2026-08). The six
+  // Reddit groups now share ONE campaign tag so GA4 reports the probe as a
+  // single cohort; utm_content still segments each subreddit.
   {
     slug: "vc",
     channel: "reddit",
@@ -84,7 +88,7 @@ export const CAMPAIGNS: Campaign[] = [
     utm: {
       source: "reddit",
       medium: "cpc",
-      campaign: "vc-2026-05",
+      campaign: "reddit-probe-2026-08",
       content: "venturecapital",
     },
     hypothesis:
@@ -98,7 +102,7 @@ export const CAMPAIGNS: Campaign[] = [
     utm: {
       source: "reddit",
       medium: "cpc",
-      campaign: "vc-2026-05",
+      campaign: "reddit-probe-2026-08",
       content: "angelinvestors",
     },
     hypothesis:
@@ -112,7 +116,7 @@ export const CAMPAIGNS: Campaign[] = [
     utm: {
       source: "reddit",
       medium: "cpc",
-      campaign: "vc-2026-05",
+      campaign: "reddit-probe-2026-08",
       content: "startups",
     },
     hypothesis:
@@ -128,7 +132,7 @@ export const CAMPAIGNS: Campaign[] = [
     utm: {
       source: "reddit",
       medium: "cpc",
-      campaign: "dev-2026-05",
+      campaign: "reddit-probe-2026-08",
       content: "devtools",
     },
     hypothesis:
@@ -142,7 +146,7 @@ export const CAMPAIGNS: Campaign[] = [
     utm: {
       source: "reddit",
       medium: "cpc",
-      campaign: "dev-2026-05",
+      campaign: "reddit-probe-2026-08",
       content: "programming",
     },
     hypothesis:
@@ -156,7 +160,7 @@ export const CAMPAIGNS: Campaign[] = [
     utm: {
       source: "reddit",
       medium: "cpc",
-      campaign: "dev-2026-05",
+      campaign: "reddit-probe-2026-08",
       content: "machinelearning",
     },
     hypothesis:

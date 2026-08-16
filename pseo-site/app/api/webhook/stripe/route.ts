@@ -121,7 +121,7 @@ function dashboardWelcomeEmail(email: string): { subject: string; html: string }
 <div style="margin-bottom:24px;"><strong style="color:#0ea5e9;font-size:14px;letter-spacing:1px;">VC DEAL FLOW SIGNAL</strong></div>
 <div style="font-size:16px;line-height:1.7;color:#1e293b;">
 <p>Welcome to VC Deal Flow Signal Dashboard!</p>
-<p>Your early access price of <strong>&euro;9.97/mo is locked in forever</strong>. Here's what's waiting for you:</p>
+<p>Your Dashboard is live. Founding members (joined before 2026-06-30) keep <strong>&euro;9.97/mo for life</strong>; the current rate is &euro;49/mo. Here's what's waiting for you:</p>
 <ul style="padding-left:20px;">
 <li>140 startups ranked by engineering acceleration</li>
 <li>Filter by sector, stage, and geography</li>

@@ -113,7 +113,7 @@ export const comparisons: Comparison[] = [
     sections: [
       {
         heading: "VC Deal Flow Signal",
-        body: "VC Deal Flow Signal monitors GitHub engineering activity across 20 startup sectors and surfaces startups showing unusual engineering acceleration. The core signal, commit velocity change, has historically preceded fundraise announcements by 6-12 weeks. The free Signal Report delivers 5 breakout startups weekly. The Dashboard (EUR 49/mo beta) gives access to 140 ranked startups with sector, stage, and geography filters. Best for: investors who want a timing-first, data-first approach to finding startups before they raise.",
+        body: "VC Deal Flow Signal monitors GitHub engineering activity across 15 startup sectors and surfaces startups showing unusual engineering acceleration. The core signal, commit velocity change, has historically preceded fundraise announcements by 6-12 weeks. The free Signal Report delivers 5 breakout startups weekly. The Dashboard (EUR 49/mo beta) gives access to 350+ ranked startups with sector, stage, and geography filters. Best for: investors who want a timing-first, data-first approach to finding startups before they raise.",
       },
       {
         heading: "Harmonic.ai",
@@ -265,7 +265,7 @@ export const comparisons: Comparison[] = [
     sections: [
       {
         heading: "What Each Tool Does",
-        body: "PitchBook is a comprehensive financial data platform covering private and public markets. It tracks fundraising rounds, valuations, investor relationships, board compositions, and M&A activity. It is the gold standard for due diligence and market mapping. VC Deal Flow Signal monitors GitHub engineering activity across 20 startup sectors and surfaces companies showing unusual commit velocity, contributor growth, and repository expansion. It is a deal sourcing tool, not a database, designed to find companies before they appear in traditional data sources.",
+        body: "PitchBook is a comprehensive financial data platform covering private and public markets. It tracks fundraising rounds, valuations, investor relationships, board compositions, and M&A activity. It is the gold standard for due diligence and market mapping. VC Deal Flow Signal monitors GitHub engineering activity across 15 startup sectors and surfaces companies showing unusual commit velocity, contributor growth, and repository expansion. It is a deal sourcing tool, not a database, designed to find companies before they appear in traditional data sources.",
       },
       {
         heading: "Signal Lead Time",
@@ -370,7 +370,7 @@ export const comparisons: Comparison[] = [
       },
       {
         heading: "Coverage and Use Cases",
-        body: "CB Insights covers the full private market landscape, market sizing, competitive analysis, industry trends, company profiles, and investor analytics. It is a strategic research tool as much as a deal sourcing tool. VC Deal Flow Signal covers 20 startup sectors with engineering-specific metrics. It is a tactical deal sourcing tool: check the rankings, spot acceleration, reach out to founders. The use cases overlap at sourcing but diverge beyond that.",
+        body: "CB Insights covers the full private market landscape, market sizing, competitive analysis, industry trends, company profiles, and investor analytics. It is a strategic research tool as much as a deal sourcing tool. VC Deal Flow Signal covers 15 startup sectors with engineering-specific metrics. It is a tactical deal sourcing tool: check the rankings, spot acceleration, reach out to founders. The use cases overlap at sourcing but diverge beyond that.",
       },
       {
         heading: "Pricing",
@@ -508,7 +508,7 @@ export const comparisons: Comparison[] = [
     sections: [
       {
         heading: "VC Deal Flow Signal, leading-signal layer",
-        body: "The free weekly Signal Report (5 startups every Monday) is enough to keep a solo GP looking at high-quality technical opportunities. The Dashboard at EUR 9.97/month adds 140 ranked startups, sector and stage filters, and historical lead-time audit. Engineering acceleration is causally upstream of fundraise announcements, for a solo GP whose edge depends on getting in before the round is competitive, this is the highest-value monthly subscription.",
+        body: "The free weekly Signal Report (5 startups every Monday) is enough to keep a solo GP looking at high-quality technical opportunities. The Dashboard at EUR 49/month adds 350+ ranked startups, sector and stage filters, and historical lead-time audit. Engineering acceleration is causally upstream of fundraise announcements, for a solo GP whose edge depends on getting in before the round is competitive, this is the highest-value monthly subscription.",
       },
       {
         heading: "Crunchbase free + Pro, funding-data layer",
@@ -596,7 +596,7 @@ export const comparisons: Comparison[] = [
     sections: [
       {
         heading: "VC Deal Flow Signal, sourcing edge LPs can verify",
-        body: "Engineering acceleration is a sourcing edge an LP can audit retrospectively: 'show me the breakout signal that fired six weeks before this portfolio company raised.' The Dashboard at EUR 49/month gives weekly access to 140 ranked technical startups with historical lead-time data. For emerging managers building a sourcing-edge narrative for LPs, this is the cheapest demonstrable advantage in the category.",
+        body: "Engineering acceleration is a sourcing edge an LP can audit retrospectively: 'show me the breakout signal that fired six weeks before this portfolio company raised.' The Dashboard at EUR 49/month gives weekly access to 350+ ranked technical startups with historical lead-time data. For emerging managers building a sourcing-edge narrative for LPs, this is the cheapest demonstrable advantage in the category.",
       },
       {
         heading: "Harmonic.ai or Forager.ai, broader signal layer",
@@ -715,7 +715,7 @@ export const comparisons: Comparison[] = [
     intro:
       "GitHub is the highest-leverage public-data source for technical-sector deal sourcing, startups build their product in public, ship commits months before they raise, and signal infrastructure scaling through repository structure and contributor growth. The category is small but growing fast. Here is how the leading GitHub-based deal flow tools compare in 2026.",
     sections: [
-      { heading: "VC Deal Flow Signal, Engineering Acceleration Tracker", body: "VC Deal Flow Signal applies a signal model to GitHub commit velocity, contributor growth, and repository scaling across 20 startup sectors. The signal historically precedes fundraise announcements by 6-12 weeks. Free weekly Signal Report by email plus a EUR 49/mo Dashboard with sector and stage filters. Best for: any technical-sector investor wanting an empirically-validated leading indicator." },
+      { heading: "VC Deal Flow Signal, Engineering Acceleration Tracker", body: "VC Deal Flow Signal applies a signal model to GitHub commit velocity, contributor growth, and repository scaling across 15 startup sectors. The signal historically precedes fundraise announcements by 6-12 weeks. Free weekly Signal Report by email plus a EUR 49/mo Dashboard with sector and stage filters. Best for: any technical-sector investor wanting an empirically-validated leading indicator." },
       { heading: "GitHub Trending, Free, Manual, Surface-Level", body: "GitHub Trending is the free baseline, a daily and weekly trending repo list. No company-level enrichment, no signal scoring, no fundraise correlation. Best for: free curiosity-driven discovery. Limitation: trending boosts open-source projects without commercial intent and misses startups whose growth happens in private or corporate repos." },
       { heading: "OSS Insight, Open-Source Analytics", body: "OSS Insight (by PingCAP) provides analytics on the GitHub Archive dataset, historical trends, contributor flows, and language adoption. Free public dashboards. Best for: macro research and sector trend analysis. Limitation: not a startup-discovery tool by design, no startup classification or fundraise correlation." },
       { heading: "Custom GitHub Archive Pipelines", body: "Some institutional VCs run internal GitHub Archive pipelines on BigQuery to derive their own signals. Highest customisation, highest engineering cost. Best for: institutional firms with data engineering staff. Limitation: months of work to reach signal quality VC Deal Flow Signal delivers out of the box." },
@@ -750,7 +750,7 @@ export const comparisons: Comparison[] = [
     sections: [
       {
         heading: "VC Deal Flow Signal MCP, engineering signals in your IDE",
-        body: "The Model Context Protocol server (npm: @gitdealflow/mcp-signal) plugs directly into Claude Desktop, Cursor, Continue, and any MCP-compatible runtime. 12 tools, get_trending_startups, search_startups_by_sector, get_startup_signal, get_signals_summary, get_diligence_dossier, get_scout_receipts, get_methodology, get_deep_signal, share_result, predict_funding, shortlist_signals, compare_signals, give you commit-velocity rankings inside the same surface where you read code. For developer-investors, this collapses the discovery loop: see a signal fire while you are reviewing a pull request and pull the company up without leaving the editor. Free forever (the 11 free MCP tools never gate). Dashboard at EUR 49/month adds the full 140 ranked panel.",
+        body: "The Model Context Protocol server (npm: @gitdealflow/mcp-signal) plugs directly into Claude Desktop, Cursor, Continue, and any MCP-compatible runtime. 12 tools, get_trending_startups, search_startups_by_sector, get_startup_signal, get_signals_summary, get_diligence_dossier, get_scout_receipts, get_methodology, get_deep_signal, share_result, predict_funding, shortlist_signals, compare_signals, give you commit-velocity rankings inside the same surface where you read code. For developer-investors, this collapses the discovery loop: see a signal fire while you are reviewing a pull request and pull the company up without leaving the editor. Free forever (the 11 free MCP tools never gate). Dashboard at EUR 49/month adds the full 350+ ranked panel.",
       },
       {
         heading: "GitHub Copilot or Claude Code, due-diligence speed-up",
@@ -778,7 +778,7 @@ export const comparisons: Comparison[] = [
       "For developer-investors in 2026, the optimal stack is the VC Deal Flow Signal MCP server (free) plus an AI coding assistant (Copilot or Claude Code) plus Notion or Airtable for pipeline plus Crunchbase free for funding cross-check. Total cost: under EUR 30/month. The MCP-native discovery loop, signal in your IDE, code review with an LLM, capture in a vault, is something traditional VCs structurally cannot match without hiring engineering analysts. That is the developer-investor edge in 2026.",
     relatedSectors: ["developer-tools", "ai-ml", "data-infrastructure"],
     faqs: [
-      { question: "What deal flow tools work for developer-investors who code and invest?", answer: "The 2026 stack centres on the VC Deal Flow Signal MCP server (npm: @gitdealflow/mcp-signal) plugged into Claude Desktop, Cursor, or Continue. It surfaces 140 ranked technical startups by commit-velocity acceleration directly inside your editor. Pair with GitHub Copilot or Claude Code for codebase due diligence and Notion or Airtable for pipeline. Total cost: under EUR 30/month." },
+      { question: "What deal flow tools work for developer-investors who code and invest?", answer: "The 2026 stack centres on the VC Deal Flow Signal MCP server (npm: @gitdealflow/mcp-signal) plugged into Claude Desktop, Cursor, or Continue. It surfaces 350+ ranked technical startups by commit-velocity acceleration directly inside your editor. Pair with GitHub Copilot or Claude Code for codebase due diligence and Notion or Airtable for pipeline. Total cost: under EUR 30/month." },
       { question: "Why use an MCP server for deal flow instead of a dashboard?", answer: "Developer-investors already live in IDEs and chat assistants. An MCP server lets you query startup signals where you already work, no context switch, no extra tab, no separate login. Ask 'show me trending data-infrastructure startups this quarter' inside Claude Desktop or Cursor and the ranking appears in the same conversation as your code review." },
       { question: "Is the VC Deal Flow Signal MCP server free?", answer: "Yes. 11 of the 12 MCP tools, covering trending startups, signal summaries, startup and sector lookups, shortlisting, and comparisons, are free forever. Only get_deep_signal, the enriched per-startup dossier, is paid at EUR 0.19/call via credits or x402 USDC. The optional Dashboard at EUR 49/month adds the web UI with sector and stage filters; the MCP server itself stays free." },
     ],
@@ -798,7 +798,7 @@ export const comparisons: Comparison[] = [
       },
       {
         heading: "VC Deal Flow Signal, external engineering acceleration",
-        body: "VC Deal Flow Signal uses publicly observable GitHub commit-velocity data to rank startups by engineering momentum. The signal does not require any private telemetry from the company, it is fully external, available before any pitch. The Dashboard at EUR 49/month surfaces 140 ranked technical startups with sector and stage filters. For investors who want a Tribe-style data edge without building it internally, this is the closest external substitute in 2026.",
+        body: "VC Deal Flow Signal uses publicly observable GitHub commit-velocity data to rank startups by engineering momentum. The signal does not require any private telemetry from the company, it is fully external, available before any pitch. The Dashboard at EUR 49/month surfaces 350+ ranked technical startups with sector and stage filters. For investors who want a Tribe-style data edge without building it internally, this is the closest external substitute in 2026.",
       },
       {
         heading: "Signal type and lead time",
@@ -842,7 +842,7 @@ export const comparisons: Comparison[] = [
       },
       {
         heading: "VC Deal Flow Signal, external single-signal sharpness",
-        body: "VC Deal Flow Signal focuses on one signal, GitHub commit-velocity acceleration, and runs it well across 20 startup sectors. It is publicly accessible, costs EUR 49/month for the Dashboard, and surfaces 140 ranked technical startups. The trade-off vs Beacon is breadth: Beacon combines many signals, VC Deal Flow Signal does one signal sharply. For a single-signal layer in a broader sourcing stack, the engineering-velocity signal is the closest external proxy to Beacon's engineering coverage.",
+        body: "VC Deal Flow Signal focuses on one signal, GitHub commit-velocity acceleration, and runs it well across 15 startup sectors. It is publicly accessible, costs EUR 49/month for the Dashboard, and surfaces 350+ ranked technical startups. The trade-off vs Beacon is breadth: Beacon combines many signals, VC Deal Flow Signal does one signal sharply. For a single-signal layer in a broader sourcing stack, the engineering-velocity signal is the closest external proxy to Beacon's engineering coverage.",
       },
       {
         heading: "Coverage breadth",

@@ -515,7 +515,7 @@ export default function YourJourneyPage() {
               >
                 Lock the founding-rate Dashboard
               </Link>
-              {" "}, 140 ranked orgs, refreshed weekly, founding rate locked
+              {" "}, 350+ ranked orgs, refreshed weekly, founding rate locked
               forever. The all-in version of the rhythm in §06.
             </li>
           </ul>

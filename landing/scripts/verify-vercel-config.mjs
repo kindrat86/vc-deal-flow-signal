@@ -177,6 +177,27 @@ for (const f of claimFiles) {
 }
 
 // ---------------------------------------------------------------------------
+// llms.txt pricing must be CURRENT (2026-08-16). Founding rates (EUR 9.97 /
+// 97) closed 2026-06-30; presenting them as current prices misleads agents
+// that quote llms.txt. A stale-tree landing deploy must fail closed.
+// ---------------------------------------------------------------------------
+{
+  let l;
+  try {
+    l = readFileSync("llms.txt", "utf8");
+  } catch {
+    fail("llms.txt is missing (2026-08-16).");
+    l = "";
+  }
+  if (l.includes("- Dashboard Beta: EUR 9.97/month") || l.includes("- Insider Circle: EUR 97/month,")) {
+    fail("llms.txt presents founding rates (9.97/97) as current (2026-08-16). Current: EUR 49/mo Dashboard, EUR 197/mo Insider Circle; founding rates closed 2026-06-30.");
+  }
+  if (!l.includes("- Dashboard: EUR 49/month") || !l.includes("- Insider Circle: EUR 197/month")) {
+    fail("llms.txt lost current pricing lines (EUR 49/197) (2026-08-16).");
+  }
+}
+
+// ---------------------------------------------------------------------------
 // /teardown must redirect to signals, not 404 (2026-08-17)
 // ---------------------------------------------------------------------------
 // Outreach emails and preflight-health-check.py link gitdealflow.com/teardown,

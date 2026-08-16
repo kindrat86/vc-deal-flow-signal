@@ -124,10 +124,10 @@ export const DATA_NERD_POLARITY = [
   },
   {
     n: 4,
-    for: "€9.97/mo is a feature, not a price ceiling.",
+    for: "€49/mo is a feature, not a price ceiling.",
     against: "Six-figure data subscriptions for six-person funds.",
     body:
-      "We'd rather have a thousand readers who tell five friends than a hundred enterprise contracts. The founding price is locked forever.",
+      "We'd rather have a thousand readers who tell five friends than a hundred enterprise contracts. Founding members who joined before 2026-06-30 keep their price locked forever.",
   },
   {
     n: 5,
@@ -251,7 +251,7 @@ export const DATA_NERD_PARABLES = [
     body:
       "On a Tuesday in February I refactored the velocity computation 'just to clean it up.' Pushed at 9pm. Wednesday morning the digest went out with three orgs ranked at the top that did not belong there, a hackathon, a bot-heavy security tool, a vendor's documentation repo. Thirty subscribers replied. I rolled back, ran the panel against the prior week's truth set, found the off-by-one in the contributor-deduplication step, shipped the fix Thursday at 3am, posted the post-mortem at /uptime Friday morning.",
     lesson:
-      "The methodology is more interesting than the wins. When something breaks, the post-mortem goes public the same week. The regression code, the truth set, the fix commit, all linkable, all CC BY 4.0. That's the whole reason the price is €9.97/mo and not €9,970.",
+      "The methodology is more interesting than the wins. When something breaks, the post-mortem goes public the same week. The regression code, the truth set, the fix commit, all linkable, all CC BY 4.0. That's the whole reason the price is €49/mo and not €4,900.",
   },
 ] as const;
 

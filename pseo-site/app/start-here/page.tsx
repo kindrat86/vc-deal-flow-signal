@@ -82,9 +82,9 @@ const ENTRY_POINTS = [
     color: "amber",
   },
   {
-    price: "€9.97/mo",
+    price: "€49/mo",
     name: "Dashboard",
-    desc: "Live dashboard refreshed every Monday. Filter by sector, stage, geography. Founding-member price locked forever before the public hike to €49/mo.",
+    desc: "Live dashboard refreshed every Monday. Filter by sector, stage, geography. Current rate €49/mo; founding members who joined before 2026-06-30 keep their rate for life.",
     href: "/pricing",
     external: false,
     color: "sky",

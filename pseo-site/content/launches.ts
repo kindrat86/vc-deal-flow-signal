@@ -347,7 +347,7 @@ export const LAUNCHES: Launch[] = [
       },
     ],
     buyUrl: "https://buy.stripe.com/4gMbJ07kTaJy7kqg6s0x20b",
-    ctaLabel: "Lock €9.97/mo, claim a founding spot →",
+    ctaLabel: "Lock €49/mo Dashboard →",
     cohort: "launch-founding-100",
     faq: [
       {

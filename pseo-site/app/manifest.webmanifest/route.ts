@@ -5,7 +5,7 @@ export async function GET() {
     name: "VC Deal Flow Signal, GitHub Momentum Tracking for Investors",
     short_name: "GitDealFlow",
     description:
-      "GitHub commit-velocity tracking across 20 startup sectors. Code-side momentum signals, surface venture-backed startups 3-6 weeks before fundraise.",
+      "GitHub commit-velocity tracking across 15 startup sectors. Code-side momentum signals, surface venture-backed startups 3-6 weeks before fundraise.",
     start_url: "/",
     scope: "/",
     display: "standalone",

@@ -773,7 +773,7 @@ The worst thing you can do with this data is use it as a replacement for judgmen
 
 ## Where Can I Start Watching?
 
-We track engineering acceleration across 20 startup sectors, updated weekly. Each sector page ranks the top startups by commit velocity change and classifies their signal type.
+We track engineering acceleration across 15 startup sectors, updated weekly. Each sector page ranks the top startups by commit velocity change and classifies their signal type.
 
 Browse the sector rankings to see which startups are accelerating right now.`,
   },
@@ -839,7 +839,7 @@ GitHub engineering activity has unique properties that make it the most reliable
 
 ## How Does VC Deal Flow Signal Work?
 
-We monitor GitHub engineering activity across 20 startup sectors. For each sector, we:
+We monitor GitHub engineering activity across 15 startup sectors. For each sector, we:
 
 1. Identify active startup organizations using topic-based search.
 2. Pull commit activity, contributor data, and repository creation data.
@@ -1028,7 +1028,7 @@ What to look for: commit velocity that exceeds the 6-month average by 100% or mo
 
 The patterns above are most powerful in combination. A startup showing Pattern 1 (contributor jump) and Pattern 5 (velocity regime change) simultaneously is almost certainly in the middle of a fundraise or has just closed one.
 
-VC Deal Flow Signal tracks all five patterns across 20 startup sectors and classifies them into four signal types: engineering hiring burst, infrastructure buildout, deploy frequency spike, and framework migration. For the full metrics checklist, see [7 engineering metrics every investor should track](/blog/startup-engineering-metrics-investors-should-track). Browse the sector rankings to see which startups are showing these patterns right now.`,
+VC Deal Flow Signal tracks all five patterns across 15 startup sectors and classifies them into four signal types: engineering hiring burst, infrastructure buildout, deploy frequency spike, and framework migration. For the full metrics checklist, see [7 engineering metrics every investor should track](/blog/startup-engineering-metrics-investors-should-track). Browse the sector rankings to see which startups are showing these patterns right now.`,
   },
   {
     slug: "alternative-data-venture-capital",

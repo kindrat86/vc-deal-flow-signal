@@ -63,6 +63,8 @@ scripts/*
 !scripts/verify-css-preloads.mjs
 !scripts/verify-pricing-offers.mjs
 
+!scripts/verify-all.mjs
+
 # NEVER add a bare `scripts/` line. It reads like the right hardening, churnlens
 # and carshake both have one, and here it fails every deploy — see above.
 #

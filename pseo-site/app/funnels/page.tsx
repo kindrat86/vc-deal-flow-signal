@@ -149,7 +149,7 @@ const FUNNELS: Funnel[] = [
     activitySlug: "dashboard",
     href: "/pricing",
     tier: "Core ascension",
-    price: "€9.97/mo founding price (locked forever)",
+    price: "€49/mo (founding rate closed 2026-06-30)",
     hook: "The full live dashboard, refreshed every Monday at 06:00 UTC.",
     who: "Active angel investors, GP scouts, syndicate leads.",
     offer: "8-item stack: live dashboard, 219-startup panel dataset, monthly sector deep-dive PDF, two free Chrome extensions, free MCP server, async watchlist build, methodology vault, 30-day Signal-or-It's-Free guarantee. €1,728/yr standalone value at €9.97/mo.",
@@ -391,7 +391,7 @@ five startups a week, in plain English. If a specific question is
               tests whether the data fits your thesis.
             </li>
             <li>
-              <span className="text-sky-400 font-mono text-xs mr-2">[€9.97/mo]</span>
+              <span className="text-sky-400 font-mono text-xs mr-2">[€49/mo]</span>
               <strong className="text-gray-100">Dashboard</strong>: daily-rhythm tool,
               the founding price is locked forever.
             </li>
@@ -541,7 +541,7 @@ six read-only tools inside Claude, Cursor, or any MCP host. Free
               { n: 10, name: "Trial Closes (\"if all this did was…\")", where: "/walkthrough, 3-line cluster" },
               { n: 11, name: "Money Close", where: "/walkthrough, \"the deal you miss is the cost\"" },
               { n: 12, name: "Identity Close", where: "/walkthrough + home, earlier-signal framing" },
-              { n: 13, name: "Pricing Close", where: "/walkthrough, \"€1,728/yr stack at €119.64\"" },
+              { n: 13, name: "Pricing Close", where: "/walkthrough, \"€1,728/yr stack at €588\"" },
               { n: 14, name: "Urgency / Scarcity Close", where: "/walkthrough, founding-rate lock" },
               { n: 15, name: "Encore Close", where: "/walkthrough, 8-line summary at the end" },
               { n: 16, name: "Order Form Bump", where: "/firstlook, interactive cart preview, toggleable bump (€7 → €1,797), running total" },

@@ -6,6 +6,7 @@ import PSEOFooterNav from "@/components/PSEOFooterNav";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { PANEL_CLAIM } from "@/lib/canonical-claims";
 
 export const metadata: Metadata = {
   title:
@@ -82,7 +83,7 @@ const customScopeFeatures: EnterpriseFeature[] = [
   {
     title: "Custom sector coverage expansion",
     detail:
-      "Coverage today spans 15 sectors and 109+ venture-backed startup orgs. If your fund's thesis covers a sector or geography we don't currently track, we expand the panel to include it, typically a 2-week turnaround for sector expansion, longer for geography-specific coverage.",
+      `Coverage today spans 15 sectors and ${PANEL_CLAIM} venture-backed startup orgs. If your fund's thesis covers a sector or geography we don't currently track, we expand the panel to include it, typically a 2-week turnaround for sector expansion, longer for geography-specific coverage.`,
   },
   {
     title: "Multi-seat Sharp Tier",
@@ -122,7 +123,7 @@ const enterpriseFaqs: { q: string; a: string }[] = [
   },
   {
     q: "What if my fund needs custom sector coverage we don't currently track?",
-    a: "Coverage today spans 15 sectors with 109+ venture-backed startup orgs. If your thesis is in an adjacent sector we don't currently track (for example, climate-tech sub-sectors, bio-infrastructure, or specific geographic clusters), we can expand the panel to include it. Sector expansion is typically a 2-week turnaround; geography-specific coverage takes longer because we have to validate that the orgs in that geography satisfy the venture-backed-startup heuristic. This is included in custom enterprise scope, not in standard Sharp Tier.",
+    a: `Coverage today spans 15 sectors with ${PANEL_CLAIM} venture-backed startup orgs. If your thesis is in an adjacent sector we don't currently track (for example, climate-tech sub-sectors, bio-infrastructure, or specific geographic clusters), we can expand the panel to include it. Sector expansion is typically a 2-week turnaround; geography-specific coverage takes longer because we have to validate that the orgs in that geography satisfy the venture-backed-startup heuristic. This is included in custom enterprise scope, not in standard Sharp Tier.`,
   },
 ];
 

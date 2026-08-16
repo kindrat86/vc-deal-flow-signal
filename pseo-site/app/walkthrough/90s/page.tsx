@@ -228,7 +228,7 @@ export default function NinetySecondWalkthroughPage() {
         <section className="space-y-2">
           <h2 className="text-lg font-bold text-gray-100">The math:</h2>
           <p className="text-gray-200 text-base leading-relaxed">
-            €119.64 a year. The expected value of one missed seed name that
+            €588 a year. The expected value of one missed seed name that
             8×&rsquo;s, at a €5k cheque, is €40,000. The price isn&rsquo;t
             the cost. The deal you miss is.
           </p>
@@ -244,7 +244,7 @@ export default function NinetySecondWalkthroughPage() {
           <p className="text-gray-100 text-base leading-relaxed">
             If all this did was surface{" "}
             <strong className="text-emerald-300">one name</strong> you would
-            have missed in the next 12 months, would €119.64 be worth it?
+            have missed in the next 12 months, would €588 be worth it?
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center pt-1">
             <WalkthroughCtaLink

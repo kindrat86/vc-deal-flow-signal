@@ -850,6 +850,8 @@ general acceleration that doesn&apos;t fit the above categories,
 
         <PSEOFooterNav excludeHrefs={["/methodology"]} />
 
+        </article>
+
         {/* CTA */}
         <div className="rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">
           <h2 className="text-gray-100 font-semibold text-lg mb-2">
