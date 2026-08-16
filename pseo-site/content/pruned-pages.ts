@@ -7,9 +7,12 @@
 // after template retirements. §53 guard pins canaries + size band.
 
 export const PRUNE_GENERATED = "2026-08-16";
-export const PRUNE_COUNT = 474;
+export const PRUNE_COUNT = 477;
 export const PRUNED_PAGE_PATHS: ReadonlySet<string> = new Set([
   "/acquirer/palo-alto-networks",
+  "/benchmarks/commit-velocity",
+  "/benchmarks/contributor-growth",
+  "/benchmarks/signal-distribution",
   "/build-vs-invest/ai-ml",
   "/build-vs-invest/climate-tech",
   "/build-vs-invest/edtech",

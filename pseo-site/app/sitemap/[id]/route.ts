@@ -230,22 +230,16 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/compare`, lastmod, changefreq: "monthly", priority: 0.6 },
       { url: `${BASE_URL}/weekly`, lastmod, changefreq: "weekly", priority: 0.6 },
       { url: `${BASE_URL}/weekly/top-100`, lastmod, changefreq: "weekly", priority: 0.85 },
-      { url: `${BASE_URL}/weekly/top-100/data.json`, lastmod, changefreq: "weekly", priority: 0.7 },
-      { url: `${BASE_URL}/weekly/top-100/feed.xml`, lastmod, changefreq: "weekly", priority: 0.7 },
-      ...getAllTop100Slugs().flatMap((slug) => [
-        {
-          url: `${BASE_URL}/weekly/top-100/${slug}`,
-          lastmod,
-          changefreq: "weekly" as const,
-          priority: 0.8,
-        },
-        {
-          url: `${BASE_URL}/weekly/top-100/${slug}/data.json`,
-          lastmod,
-          changefreq: "weekly" as const,
-          priority: 0.65,
-        },
-      ]),
+      // Data-feed children (/weekly/top-100/data.json, /feed.xml, per-week
+      // data.json) removed 2026-08-16: data feeds don't belong in a page
+      // sitemap, they waste crawl budget. The HTML hub + per-week HTML pages
+      // stay listed; the JSON/XML feeds remain live for API/RSS consumers.
+      ...getAllTop100Slugs().map((slug) => ({
+        url: `${BASE_URL}/weekly/top-100/${slug}`,
+        lastmod,
+        changefreq: "weekly" as const,
+        priority: 0.8,
+      })),
       { url: `${BASE_URL}/signal-of-the-week`, lastmod, changefreq: "weekly", priority: 0.8 },
       // (/idea-of-the-day hub retired 2026-08-16, §22: 129 imps / 0 clicks
       //  in GSC 90d across hub + archive; 301s to /startup-ideas. Archived
