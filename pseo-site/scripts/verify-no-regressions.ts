@@ -46,6 +46,16 @@ function check(rel: string, label: string, ok: (s: string) => boolean, hint: str
   if (!ok(s)) failures.push(`${label}\n    file: ${rel}\n    fix:  ${hint}`);
 }
 
+/** Landing-tree variant: `rel` is landing/-relative; skips silently when the
+ *  landing tree is absent from this checkout (CI standalone clone), matching
+ *  the §1 CWV-beacon landing read pattern. */
+function landingCheck(rel: string, label: string, ok: (s: string) => boolean, hint: string) {
+  const p = join(ROOT, "..", "landing", rel);
+  if (!existsSync(p)) return; // landing/ absent in this checkout
+  const s = readFileSync(p, "utf8");
+  if (!ok(s)) failures.push(`${label}\n    file: landing/${rel}\n    fix:  ${hint}`);
+}
+
 // ---------------------------------------------------------------------------
 // 0. CWV single-source invariant (amended 2026-08-17 with field evidence).
 //    posthog-js 1.417 auto-captures $web_vitals natively for LCP/FCP/CLS/INP
@@ -3419,6 +3429,51 @@ check(
   (s) => s.includes("? { title: { absolute: q.metaTitle } }") &&
     s.includes("q.metaTitle ?? q.h1"),
   "restore metaTitle consumption in app/answers/[slug]/page.tsx generateMetadata",
+);
+
+check(
+  "app/best/[slug]/page.tsx",
+  "\u00a742 CTR: the /best/ sector builder lost its 'Free Weekly Rankings' hook + absolute-title form",
+  (s) =>
+    s.includes("Free Weekly Rankings") &&
+    s.includes("title: { absolute: title }"),
+  "restore the hooked + absolute title in app/best/[slug]/page.tsx generateMetadata",
+);
+landingCheck(
+  "vs/pitchbook/index.html",
+  "\u00a742 CTR: apex vs/pitchbook title reverted to the generic pre-hook form",
+  (s) => /<title>GitDealFlow vs PitchBook: EUR 49 vs \$20k\+\/yr<\/title>/.test(s),
+  "restore the 2026-08-16 hooked apex title (44-file landing wave)",
+);
+landingCheck(
+  "vs/gitdealflow-vs-crunchbase/index.html",
+  "\u00a742 CTR: apex gitdealflow-vs-crunchbase lost its 21-47d lead-time hook",
+  (s) => /<title>GitDealFlow vs Crunchbase: 21-47 Days Earlier<\/title>/.test(s),
+  "restore the hooked title on the duplicate-pair primary",
+);
+landingCheck(
+  "alternatives-to/crunchbase-alternatives/index.html",
+  "\u00a742 CTR: apex crunchbase-alternatives lost its price-band hook",
+  (s) =>
+    /<title>Best Crunchbase Alternatives: 4 Under \$50\/mo<\/title>/.test(s) ||
+    /<title>Crunchbase Alternatives: Free GitHub Signals<\/title>/.test(s),
+  "restore the hooked apex alternatives-to title",
+);
+landingCheck(
+  "best/best-deal-flow-tools.html",
+  "\u00a742 CTR: apex best-deal-flow-tools lost its price-comparison hook",
+  (s) =>
+    /<title>Best Deal Flow Tools 2026: EUR 49 vs \$20k\+ \(Compared\)<\/title>/.test(s),
+  "restore the hooked apex best/ title",
+);
+landingCheck(
+  "best/best-free-deal-flow-tools.html",
+  "\u00a742 CTR: apex best-free-deal-flow-tools lost its free-tier hook",
+  (s) => {
+    const m = s.match(/<title>([^<]*)<\/title>/);
+    return !!m && /vs \$|EUR |Free|\$\d/.test(m[1]);
+  },
+  "restore the hooked apex free-tools title",
 );
 
 // ---------------------------------------------------------------------------
