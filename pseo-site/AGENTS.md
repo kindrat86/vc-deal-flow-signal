@@ -31,7 +31,7 @@ Organization node, never on the Person.
 # Деплой і граблі (signals.gitdealflow.com)
 
 - Канонічний лайнідж: `main` у `~/signals-gitdealflow` (див. секцію "One canonical deploy lineage" нижче); worldclass-signals та Downloads RETIRED 2026-08-12
-- Домен ALIAS-PINNED: `vercel --prod` НЕ оновлює live, треба `vercel alias` на новий деплой
+- Домен: `vercel deploy --prebuilt --prod` САМ аліасить live (рядок "▲ Aliased", перевірено 08-16/08-18) → окремий `vercel alias` ЗАЙВИЙ і створює гонку. Після деплою перевір `vercel inspect signals.gitdealflow.com`, бо сворм може обігнати (last-deploy-wins)
 - CSP `require-trusted-types-for` → React-сайт стає ПОРОЖНІМ без Trusted Types policy (fix у commit 22d6de1c). Це протилежний фікс до gitdealflow/churnlens PostHog-кейсу
 - `/ux.js` у layout.tsx блank-скринив сайт (App Router hydration wipe), видалено, НЕ повертати; ux.css можна
 - Headings/heroes ЦЕНТРОВАНІ, body-текст ЛІВОРУЧ, свідома система вирівнювання
