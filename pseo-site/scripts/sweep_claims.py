@@ -19,11 +19,17 @@ PSEO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 ROOT = os.path.dirname(PSEO)
 NEW = "400+"
 
+# Frozen blog URL slug: the Q1/Q2-2026 window had 369 orgs. The URL +
+# 301 redirect are frozen; "369" here is a dated URL segment, NOT a current
+# panel claim. Never rename it in a claim sweep.
+SLUG = "i-tracked-369-startup-github-orgs-six-months"
+SLUG_MASK = "@@KEEP-SLUG@@"
+
 report = {"landing_files": 0, "landing_subs": 0, "pseo_files": 0, "pseo_subs": 0,
           "skipped": [], "unmatched": []}
 
 # ── landing sweep ────────────────────────────────────────────────────────────
-KEEP_EXACT = ("350+ clicks", "350+ MCP servers")
+KEEP_EXACT = ("350+ clicks", "350+ MCP servers", SLUG)
 
 LANDING_RULES = [
     # (pattern, replacement, note)
@@ -149,6 +155,8 @@ PSEO_RULES = {
 def generic_pass(txt: str) -> tuple[str, int]:
     """Stale panel tokens valid on any pseo TS surface."""
     n = 0
+    # Protect the frozen blog slug from the naive 369 -> 400+ replace below.
+    txt = txt.replace(SLUG, SLUG_MASK)
     txt, k = re.subn(r"350\+\+", "400+", txt); n += k
     txt, k = re.subn(r"(?<![0-9])369(?![0-9])", "400+", txt); n += k
     txt, k = re.subn(r"\b140 (startups|ranked|venture-backed)", r"400+ \1", txt); n += k
@@ -163,6 +171,7 @@ def generic_pass(txt: str) -> tuple[str, int]:
     txt, k = re.subn(r"The 2026 report covers 4,800 venture-backed",
                      "The 2026 report covers 500+ cumulative venture-backed", txt); n += k
     txt, k = re.subn(r"~?350\+", "400+", txt); n += k
+    txt = txt.replace(SLUG_MASK, SLUG)
     return txt, n
 
 

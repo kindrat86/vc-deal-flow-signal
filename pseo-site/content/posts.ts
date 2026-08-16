@@ -1987,7 +1987,7 @@ The signal gets you to the table early. The decision still requires founder conv
 For the full screening framework, see the [7 engineering metrics every investor should track](/blog/startup-engineering-metrics-investors-should-track).`,
   },
   {
-    slug: "i-tracked-400+-startup-github-orgs-six-months",
+    slug: "i-tracked-369-startup-github-orgs-six-months",
     title: "I Tracked 400+ Startup GitHub Orgs for Six Months. Here's What Predicts a Series A.",
     description:
       "Six months of public GitHub data across 400+ startup organizations. Which commit patterns actually predict a Series A round? Plus the public Q3 2026 watchlist - bookmark and verify.",

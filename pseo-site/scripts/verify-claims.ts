@@ -74,10 +74,12 @@ for (const root of CODE_ROOTS) {
     if (rel === "scripts/verify-claims.ts" || rel === "lib/canonical-stats.ts") continue;
     const srcRaw = read(f);
     if (!srcRaw) continue;
-    // skip lines where 4,800 is a URL count, not an org count (different metric)
+    // skip lines where 4,800 is a URL count, not an org count (different metric),
+    // and the frozen blog slug "i-tracked-369-…" (a dated URL segment from the
+    // Q1/Q2-2026 window, NOT a current panel claim).
     const src = srcRaw
       .split("\n")
-      .filter((line) => !/4,?800[- ](URL|url)|long tail|sitemap-llm/.test(line))
+      .filter((line) => !/4,?800[- ](URL|url)|long tail|sitemap-llm|i-tracked-369-/.test(line))
       .join("\n");
     for (const [rx, why] of STALE_TOKENS) {
       if (rel === "scripts/verify-no-regressions.ts" && why.startsWith("stale count 369")) continue; // guard needle

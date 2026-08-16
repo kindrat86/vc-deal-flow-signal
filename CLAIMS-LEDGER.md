@@ -33,6 +33,11 @@
 `350+` remains legitimate **only** in period-labelled historical prose
 ("350+ orgs in the Q1 2026 window").
 
+`369` remains legitimate **only** as the frozen blog URL slug
+"i-tracked-369-startup-github-orgs-six-months" (the Q1/Q2-2026 window had
+369 orgs; the URL + 301 redirect are frozen). Protected by both
+scripts/sweep_claims.py and scripts/verify-claims.ts - never rename it.
+
 ## Surface → canonical mapping (what changed today, 2026-08-16)
 
 | Surface | Before | After |
