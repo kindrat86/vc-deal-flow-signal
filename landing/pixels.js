@@ -126,7 +126,7 @@
         props["$web_vitals_" + name + "_event_id"] = id;
         // 2026-08-16: direct-to-PostHog send REMOVED. posthog-js 1.417
         // (loaded by this site) auto-captures $web_vitals natively with
-        // proper metric_ids — the custom send double-counted every load
+        // proper metric_ids: the custom send double-counted every load
         // under different distinct_ids (cwv-*), polluting PostHog's CWV
         // insight. PostHog = native SDK only; this beacon now serves GA4.
         // Forward the same metric to GA4 (G-7SV2SNZE4C) with Google's standard
