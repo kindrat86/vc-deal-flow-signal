@@ -47,28 +47,37 @@ function check(rel: string, label: string, ok: (s: string) => boolean, hint: str
 }
 
 // ---------------------------------------------------------------------------
-// 0. CWV beacon integrity (2026-08-16). The $web_vitals beacon shipped
-//    2026-08-15 posting to a 404 endpoint (eu.i.posthog.com/i/v2/e/); every
-//    beacon died silently for a day (0 events in PostHog). Also, the signals
-//    reporter dropped metrics that fired before lazyOnload PostHog appeared.
+// 0. CWV single-source invariant (2026-08-16). posthog-js 1.417 auto-captures
+//    $web_vitals natively; the custom capture path in WebVitalsReporter
+//    double-reported every load. Reporter must stay a no-op, and no page
+//    may call posthog.capture("$web_vitals") outside the SDK itself.
 // ---------------------------------------------------------------------------
 {
   const reporter = read("components/WebVitalsReporter.tsx");
-  if (!reporter || !/let buffer/.test(reporter)) {
+  if (!reporter || !/Intentionally not reporting/.test(reporter)) {
     failures.push(
-      `WebVitalsReporter lost its early-metric buffer: metrics firing before lazyOnload PostHog would be silently dropped again.\n    file: components/WebVitalsReporter.tsx\n    fix:  keep the buffer + flush loop (2026-08-16 fix)`,
+      `WebVitalsReporter re-activated custom CWV capture: posthog-js 1.417 already auto-captures \$web_vitals, a second capture path double-counts.\n    file: components/WebVitalsReporter.tsx\n    fix:  keep the documented no-op (2026-08-16 architecture note)`,
+    );
+  }
+  if (reporter && /capture\(\s*["']\$web_vitals["']/.test(reporter)) {
+    failures.push(
+      `Direct capture("$web_vitals") in the reporter duplicates the SDK's native collection.\n    file: components/WebVitalsReporter.tsx\n    fix:  remove the custom capture, rely on posthog-js 1.417`,
     );
   }
   try {
     const landingPixels = readFileSync(join(ROOT, "..", "landing", "pixels.js"), "utf8");
     if (/PH_URL\s*=\s*"https:\/\/eu\.i\.posthog\.com\/i\/v2\/e\//.test(landingPixels)) {
       failures.push(
-        `CWV beacon posts to 404 endpoint eu.i.posthog.com/i/v2/e/.\n    file: ../landing/pixels.js\n    fix:  use https://eu.i.posthog.com/e/ (verified 200 on 2026-08-16)`,
+        `CWV beacon posts to 404 endpoint eu.i.posthog.com/i/v2/e/.\n    file: ../landing/pixels.js\n    fix:  posthog-js native collection is the single source; the beacon only forwards to GA4`,
+      );
+    }
+    if (/sendBeacon\(PH_URL/.test(landingPixels)) {
+      failures.push(
+        `CWV beacon still POSTs directly to PostHog: double-counts native SDK events.\n    file: ../landing/pixels.js\n    fix:  remove the direct send (2026-08-16), keep the GA4 gtag forward only`,
       );
     }
   } catch {
-    // landing/ not present in this checkout (CI runs at pseo-site root
-    // from a standalone clone); the apex deploy path checks it instead.
+    // landing/ absent in this checkout (CI standalone clone).
   }
 }
 

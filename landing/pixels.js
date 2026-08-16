@@ -103,18 +103,15 @@
   (function () {
     try {
       if (navigator.globalPrivacyControl === true || navigator.doNotTrack === "1") return;
-      var PH_KEY = "phc_lyZCgvTpicjLzAO3rY2GhxuX5WUc5jQjP8ZVwwJqauX";
       // 2026-08-16 fix: was https://eu.i.posthog.com/i/v2/e/ which returns
       // 404 (verified live): every beacon since 2026-08-15 died silently
       // (0 $web_vitals events in PostHog over 10 days). /e/ is posthog-js's
       // capture endpoint and returns 200 {"status":"Ok"} (verified).
-      var PH_URL = "https://eu.i.posthog.com/e/";
       var TH = { LCP: [2500, 4000], INP: [200, 500], CLS: [0.1, 0.25], FCP: [1800, 3000], TTFB: [800, 1800] };
-      var DID = "cwv-" + Math.random().toString(36).slice(2, 10);
       function rate(n, v) { var t = TH[n]; if (!t) return "good"; return v <= t[0] ? "good" : v <= t[1] ? "needs-improvement" : "poor"; }
       function send(name, value, id) {
         var props = {
-          distinct_id: DID,
+          distinct_id: "ga4-cwv-forward",
           $pathname: location.pathname,
           $current_url: location.href,
           $process_person_profile: false,
@@ -127,8 +124,11 @@
         props["$web_vitals_" + name + "_value"] = value;
         props["$web_vitals_" + name + "_rating"] = rate(name, value);
         props["$web_vitals_" + name + "_event_id"] = id;
-        var body = JSON.stringify({ api_key: PH_KEY, batch: [{ event: "$web_vitals", properties: props, timestamp: new Date().toISOString() }] });
-        try { if (navigator.sendBeacon) { navigator.sendBeacon(PH_URL, new Blob([body], { type: "application/json" })); } } catch (e) { try { fetch(PH_URL, { method: "POST", body: body, keepalive: true, headers: { "Content-Type": "application/json" } }); } catch (e) {} }
+        // 2026-08-16: direct-to-PostHog send REMOVED. posthog-js 1.417
+        // (loaded by this site) auto-captures $web_vitals natively with
+        // proper metric_ids — the custom send double-counted every load
+        // under different distinct_ids (cwv-*), polluting PostHog's CWV
+        // insight. PostHog = native SDK only; this beacon now serves GA4.
         // Forward the same metric to GA4 (G-7SV2SNZE4C) with Google's standard
         // event params so GA4's Core Web Vitals reporting fills up alongside
         // PostHog. gtag is loaded by this same file; a no-op if it is absent.
