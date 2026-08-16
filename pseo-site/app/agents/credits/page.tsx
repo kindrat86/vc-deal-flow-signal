@@ -10,13 +10,13 @@ const STRIPE_LINK =
 export const metadata: Metadata = {
   title: "Agent Credits, Pay Per Deep Signal",
   description:
-    "Per-request pricing for AI agents and programmatic callers. €19 = 100 deep-signal calls (€0.19 each). One credit per deep signal returned. The 6 free MCP tools stay free.",
+    "Per-request pricing for AI agents and programmatic callers. €19 = 100 deep-signal calls (€0.19 each). One credit per deep signal returned. The free MCP tools stay free.",
   alternates: { canonical: "/agents/credits" },
   robots: { index: true, follow: true },
   openGraph: {
     title: "Agent Credits, Pay Per Deep Signal",
     description:
-      "100 deep-signal calls for €19. €0.19 per call. The 6 free MCP tools are unaffected.",
+      "100 deep-signal calls for €19. €0.19 per call. The free MCP tools are unaffected.",
     type: "website",
     url: `${SITE}/agents/credits`,
   },
@@ -39,7 +39,7 @@ export default async function AgentCreditsPage({
         url: `${SITE}/agents/credits`,
         name: "Agent Credits, Pay Per Deep Signal",
         description:
-          "Per-request pricing for AI agents. €19 = 100 deep-signal calls. The 6 free tools stay free.",
+          "Per-request pricing for AI agents. €19 = 100 deep-signal calls. The free tools stay free.",
         isPartOf: {
           "@type": "WebSite",
           name: "VC Deal Flow Signal",

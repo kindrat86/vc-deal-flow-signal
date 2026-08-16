@@ -130,7 +130,7 @@ const TOOL_DEFINITIONS = [
   {
     name: "get_deep_signal",
     description:
-      "PAID per-request tool, €0.19/call, 100 credits = €19, sold at https://signals.gitdealflow.com/agents/credits. Returns a deeply enriched signal profile beyond the free get_startup_signal: composite score (0-100), velocity/growth/novelty sub-scores, in-sector rank + percentile, plain-English investment thesis, top-3 sector comparables, and multi-period history. Requires Authorization: Bearer gdf_v2.cus_xxx.<hmac> on the call (set GITDEALFLOW_API_KEY env var). 1 credit consumed only on a successful match; misses (startup not in our universe) are FREE. Credits never expire. The 6 free tools above stay free forever, credits only apply to this tool.",
+      "PAID per-request tool, €0.19/call, 100 credits = €19, sold at https://signals.gitdealflow.com/agents/credits. Returns a deeply enriched signal profile beyond the free get_startup_signal: composite score (0-100), velocity/growth/novelty sub-scores, in-sector rank + percentile, plain-English investment thesis, top-3 sector comparables, and multi-period history. Requires Authorization: Bearer gdf_v2.cus_xxx.<hmac> on the call (set GITDEALFLOW_API_KEY env var). 1 credit consumed only on a successful match; misses (startup not in our universe) are FREE. Credits never expire. The free tools above stay free forever, credits only apply to this tool.",
     parameters: {
       type: "object" as const,
       properties: {

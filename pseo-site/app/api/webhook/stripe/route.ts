@@ -252,7 +252,7 @@ function creditPackWelcomeEmail(
   -H "Authorization: Bearer ${safeKey}"</pre>
 <ul style="padding-left:20px;">
 <li><strong>1 credit = 1 deep signal returned.</strong> Misses (startup not in our universe) are free.</li>
-<li><strong>The 6 free MCP tools stay free</strong>: credits only apply to <code>get_deep_signal</code> and the <code>/api/agent/deep-signal</code> endpoint.</li>
+<li><strong>The free MCP tools stay free</strong>: credits only apply to <code>get_deep_signal</code> and the <code>/api/agent/deep-signal</code> endpoint.</li>
 <li><strong>Credits never expire</strong>. Use them when you need them.</li>
 <li><strong>Top up</strong> any time at <a href="https://signals.gitdealflow.com/agents/credits" style="color:#0ea5e9;">signals.gitdealflow.com/agents/credits</a>.</li>
 </ul>

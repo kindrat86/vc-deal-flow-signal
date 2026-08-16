@@ -3634,6 +3634,93 @@ landingCheck(
   }
 }
 
+// §46 Free-tool-count claims must stay count-free (2026-08-16, HackerNoon
+// editorial fact-check surface). The tool roster grows across surfaces
+// (npm 10-free, hosted MCP 11-free, function API 7-free) and hardcoded
+// counts drift stale within weeks. Any surface that names a specific
+// free-tool count invites a one-click contradiction for an editor or
+// reader comparing surfaces. Count-free phrasing only.
+{
+  const surfaces: ReadonlyArray<[string, string]> = [
+    ["app/agents/credits/page.tsx", "credits page"],
+    ["app/llms-full.txt/route.ts", "llms-full.txt"],
+    ["app/api/webhook/stripe/route.ts", "stripe webhook email"],
+    ["app/api/agent/tools/route.ts", "agent tools API"],
+  ];
+  for (const [p, label] of surfaces) {
+    let src: string | null = null;
+    try { src = readFileSync(p, "utf8"); } catch { src = null; }
+    if (src === null) {
+      failures.push(`§46 count-free claims: ${label} file missing (${p})`);
+      continue;
+    }
+    // any "N free" phrasing with a hardcoded digit is the regression
+    if (/\b\d+ free (MCP )?tools?\b/i.test(src) || /\bthe \d+ free\b/i.test(src)) {
+      failures.push(`§46 count-free claims: ${label} still hardcodes a free-tool count (${p})`);
+    }
+    // positive needles: the corrected phrasing must be present
+    if (p === "app/agents/credits/page.tsx" && !src.includes("The free MCP tools stay free")) {
+      failures.push("§46 count-free claims: credits page corrected phrase lost");
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// HSTS preload header on both config surfaces (2026-08-18)
+// ---------------------------------------------------------------------------
+// signals.gitdealflow.com serves
+// Strict-Transport-Security: max-age=63072000; includeSubDomains; preload
+// (verified live across 200/404/API/XML/embed response classes), and the
+// parent domain gitdealflow.com is status=pending on hstspreload.org with
+// includeSubDomains, so this host must keep the exact preload-compliant
+// value on BOTH surfaces that can emit it: vercel.json headers[] (applies
+// to every route, including static) and next.config.ts headers() (Next
+// route responses). Dropping or weakening either re-ships an HSTS-less
+// site, and getting off the preload list afterwards takes months. If these
+// are ever intentionally consolidated to ONE surface, update this check in
+// the same commit with a reason — do not bypass it.
+{
+  const HSTS = "max-age=63072000; includeSubDomains; preload";
+  const vj = read("vercel.json");
+  let vjOk = false;
+  const vjBad: string[] = [];
+  if (vj === null) {
+    vjBad.push("vercel.json not found");
+  } else {
+    try {
+      const parsed = JSON.parse(vj) as { headers?: { source?: string; headers?: { key?: string; value?: string }[] }[] };
+      const entries = (parsed.headers || []).flatMap((b) =>
+        (b.headers || []).map((x) => ({ src: b.source, key: x.key, value: x.value })),
+      );
+      const hsts = entries.filter((x) => x.key === "Strict-Transport-Security");
+      vjOk = hsts.some((x) => x.src === "/(.*)" && x.value === HSTS);
+      for (const x of hsts.filter((x) => x.value !== HSTS)) {
+        vjBad.push(`"${x.src}" -> "${x.value}"`);
+      }
+    } catch (e) {
+      vjBad.push(`vercel.json does not parse as JSON (${e})`);
+    }
+  }
+  if (!vjOk) {
+    failures.push(
+      `HSTS lost from vercel.json: headers[] must keep a "/(.*)" block with Strict-Transport-Security: "${HSTS}" (2026-08-18; hstspreload.org submission pending on the parent domain, weakening costs months to undo).`,
+    );
+  }
+  if (vjBad.length) {
+    failures.push(
+      `HSTS invalid or weakened entries in vercel.json: ${vjBad.join("; ")}; the only accepted value is "${HSTS}".`,
+    );
+  }
+  check(
+    "next.config.ts",
+    "next.config.ts HSTS header",
+    (s) =>
+      s.includes('key: "Strict-Transport-Security"') &&
+      s.includes(`value: "${HSTS}"`),
+    `keep the headers() entry Strict-Transport-Security: "${HSTS}" in next.config.ts (2026-08-18 belt-and-braces with vercel.json; if intentionally consolidated, update this check with a reason)`,
+  );
+}
+
 // ---------------------------------------------------------------------------
 if (failures.length) {
   console.error(
