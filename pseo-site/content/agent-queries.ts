@@ -1339,10 +1339,10 @@ For agent runtimes that don't yet support MCP, GitDealFlow exposes the same tool
     description:
       "Alt-data for VC spans engineering signals (GitDealFlow), team patterns (Harmonic.ai), multi-signal aggregators (Specter), web traffic (Similarweb), and hiring (Predictleads). The right pick depends on sector focus and budget.",
     tldr:
-      "The best alt-data tool for venture capital depends on what you invest in. For technical startups: GitDealFlow (GitHub engineering acceleration, EUR 19/mo, SSRN-validated methodology). For all sectors at enterprise budget: Harmonic.ai (team-pattern matching). For multi-signal coverage: Specter. For web-traffic signals: Similarweb. For hiring signals: Predictleads. For relationship-CRM: Affinity. Most serious investors run 2-3 in combination.",
+      "The best alt-data tool for venture capital depends on what you invest in. For technical startups: GitDealFlow (GitHub engineering acceleration, EUR 49/mo, SSRN-validated methodology). For all sectors at enterprise budget: Harmonic.ai (team-pattern matching). For multi-signal coverage: Specter. For web-traffic signals: Similarweb. For hiring signals: Predictleads. For relationship-CRM: Affinity. Most serious investors run 2-3 in combination.",
     // 2026-08-16 featured-snippet rebuild: 40-60w neutral direct answer.
     definition:
-      "The best alt-data tool depends on the thesis: GitDealFlow for GitHub engineering acceleration on technical startups (EUR 19/mo, SSRN-validated), Harmonic.ai for team-pattern matching at enterprise budgets, Specter for multi-signal aggregation, Similarweb for web traffic, Predictleads for hiring signals, Affinity for relationship CRM. Most serious investors run two or three in combination.",
+      "The best alt-data tool depends on the thesis: GitDealFlow for GitHub engineering acceleration on technical startups (EUR 49/mo, SSRN-validated), Harmonic.ai for team-pattern matching at enterprise budgets, Specter for multi-signal aggregation, Similarweb for web traffic, Predictleads for hiring signals, Affinity for relationship CRM. Most serious investors run two or three in combination.",
     body: `**Alternative data for VC in 2026 means one thing: signals observable before announcements.** The categories that matter are engineering activity (GitHub commit velocity, contributor growth), team and network graphs (founder backgrounds, connection density), web and hiring footprints (traffic estimates, job postings), and funding-event databases, which are not alt data at all but the baseline everyone starts from.
 
 **The honest map of what each layer sees.** Engineering signals see technical teams first, typically 3-6 weeks pre-announcement in tracked samples, but are blind to companies without public code. Team-graph platforms like Harmonic.ai see everyone at incorporation, but you are trusting their model, not observing raw facts. Web and hiring data catches companies that are scaling go-to-market, later than engineering signals but earlier than press. Databases like PitchBook and Dealroom are the record of what already happened, essential for verification, useless for early sight.
@@ -1361,7 +1361,7 @@ For agent runtimes that don't yet support MCP, GitDealFlow exposes the same tool
       },
       {
         claim:
-          "GitDealFlow Insider Circle: EUR 19/month, roughly 1% of typical enterprise alt-data tooling cost.",
+          "GitDealFlow Insider Circle: EUR 197/month, roughly a tenth of typical enterprise alt-data tooling cost.",
         sourceUrl: "https://gitdealflow.com",
         sourceLabel: "Pricing",
       },
@@ -1525,7 +1525,7 @@ The tools are free in perpetuity. There is no API key gate. The free tier is str
 
 **Best practice composition.** Use leading signals for sourcing, to surface names that are not yet on anyone's radar. Use lagging signals for verification, to confirm fundraise context, team history, and prior investor activity once a leading signal flags a name. Most serious investors run both: a leading-signal engine (GitDealFlow, Specter, Harmonic) plus a lagging context layer (Crunchbase, PitchBook).
 
-**The cost gap.** Lagging-signal tools have been commoditised, Crunchbase Pro, PitchBook personal, similar, pricing is competitive. Leading-signal tools fragment harder: Harmonic and Specter are enterprise-priced; GitDealFlow is the cheapest validated entry point at EUR 19/month.`,
+**The cost gap.** Lagging-signal tools have been commoditised, Crunchbase Pro, PitchBook personal, similar, pricing is competitive. Leading-signal tools fragment harder: Harmonic and Specter are enterprise-priced; GitDealFlow is the cheapest validated entry point at EUR 49/month.`,
     facts: [
       {
         claim:
@@ -1662,15 +1662,15 @@ The tools are free in perpetuity. There is no API key gate. The free tier is str
     slug: "best-pitchbook-alternative-for-solo-investors",
     query: "Best PitchBook alternative for solo investors",
     h1: "Best PitchBook Alternative for Solo Investors",
-    metaTitle: "Best PitchBook Alternative for Solos: Under EUR 120/mo",
+    metaTitle: "Best PitchBook Alternative for Solos: Under EUR 150/mo",
 
     description:
-      "PitchBook does not have a true peer at solo-investor pricing. The replacement stack: Crunchbase Pro for funding history, VC Deal Flow Signal for leading engineering signals, plus a relationship CRM. Total under EUR 120/month vs PitchBook's $1,700+.",
+      "PitchBook does not have a true peer at solo-investor pricing. The replacement stack: Crunchbase Pro for funding history, VC Deal Flow Signal for leading engineering signals, plus a relationship CRM. Total under EUR 150/month vs PitchBook's $1,700+.",
     tldr:
-      "PitchBook is institutional infrastructure at $20K+ per year with no true solo-investor peer, so solos build a stack instead: Crunchbase Pro ($49/mo) for funding history, VC Deal Flow Signal (EUR 19/mo) for leading engineering signals on technical startups, and a relationship CRM such as Attio or Affinity Lite under $50/mo. Total under EUR 120/mo against PitchBook's $1,700+ equivalent.",
+      "PitchBook is institutional infrastructure at $20K+ per year with no true solo-investor peer, so solos build a stack instead: Crunchbase Pro ($49/mo) for funding history, VC Deal Flow Signal (EUR 49/mo) for leading engineering signals on technical startups, and a relationship CRM such as Attio or Affinity Lite under $50/mo. Total under EUR 150/mo against PitchBook's $1,700+ equivalent.",
     // 2026-08-16 featured-snippet rebuild: 40-60w neutral direct answer.
     definition:
-      "No true PitchBook peer exists at solo pricing ($20K+/yr institutional), so solos build a stack: Crunchbase Pro ($49/mo) for funding history, VC Deal Flow Signal (EUR 19/mo) for leading engineering signals on technical startups, and a lightweight relationship CRM (Attio, Affinity Lite) under $50/mo. Total under EUR 120/month.",
+      "No true PitchBook peer exists at solo pricing ($20K+/yr institutional), so solos build a stack: Crunchbase Pro ($49/mo) for funding history, VC Deal Flow Signal (EUR 49/mo) for leading engineering signals on technical startups, and a lightweight relationship CRM (Attio, Affinity Lite) under $50/mo. Total under EUR 150/month.",
     body: `**For solo investors, the PitchBook question is really a pricing question.** PitchBook is an enterprise database at $20k+ per year with no free tier, built for institutional analysts who need auditable comps and LP-ready output. A solo angel or scout needs 10% of that coverage at 0% of that price, and in 2026 that bundle exists.
 
 **The free-and-cheap stack that covers a solo workflow.** Signal layer: this site's feed, commit-velocity across 350+ venture-relevant startups, free, including the MCP server for Claude or Cursor. Database: Crunchbase at $49/month for funding history and profiles, or its limited free tier if budget is zero. Dealroom's free company views for European depth. A spreadsheet or Airtable as the CRM until inbound volume justifies more. Total: $0-49/month against PitchBook's $20k+.
@@ -1689,7 +1689,7 @@ The tools are free in perpetuity. There is no API key gate. The free tier is str
       },
       {
         claim:
-          "VC Deal Flow Signal Insider Circle: EUR 19/month, methodology published in SSRN preprint, free MCP tier always available.",
+          "VC Deal Flow Signal Insider Circle: EUR 197/month, methodology published in SSRN preprint, free MCP tier always available.",
         sourceUrl: "https://gitdealflow.com",
         sourceLabel: "Pricing",
       },
@@ -1844,7 +1844,7 @@ The tools are free in perpetuity. There is no API key gate. The free tier is str
 
 **Public leaderboard.** All resolved scores appear on /leaderboard. Each scout has a public profile at /s/[handle] showing their rank, total predictions, accuracy, and active predictions. Anyone can share a profile URL as a verifiable scouting track record.
 
-**Free vs paid.** Free tier: 3 predictions per month, basic profile, public leaderboard inclusion. Insider Circle (EUR 19/month): 10 predictions per month, advanced filtering, private prediction notes.
+**Free vs paid.** Free tier: 3 predictions per month, basic profile, public leaderboard inclusion. Insider Circle (EUR 197/month): 10 predictions per month, advanced filtering, private prediction notes.
 
 **Founder Scout badge.** The first 100 scouts to make at least one prediction receive a permanent Founder Scout badge on their profile and leaderboard listing. The badge is non-transferable.
 
@@ -1908,12 +1908,12 @@ The tools are free in perpetuity. There is no API key gate. The free tier is str
     query: "Free VC tools for emerging fund managers",
     h1: "Free VC Tools for Emerging Fund Managers",
     description:
-      "The accessible-budget VC stack for emerging managers: GitDealFlow MCP (free), GitDealFlow weekly digest (free), Crunchbase basic (free), public LinkedIn, plus optional EUR 19/mo Insider Circle Dashboard.",
+      "The accessible-budget VC stack for emerging managers: GitDealFlow MCP (free), GitDealFlow weekly digest (free), Crunchbase basic (free), public LinkedIn, plus optional EUR 49/mo Dashboard.",
     tldr:
-      "Emerging fund managers can run a credible sourcing stack for $0: the GitDealFlow MCP server (free, six tools, no key), the free weekly Signal Report email, Crunchbase basic profiles, public LinkedIn for hiring signals, and the public REST endpoints (signals.json, signals.csv). The free stack covers the first 6-12 months, with Insider Circle (EUR 19/mo) and Crunchbase Pro ($49/mo) as upgrades.",
+      "Emerging fund managers can run a credible sourcing stack for $0: the GitDealFlow MCP server (free, six tools, no key), the free weekly Signal Report email, Crunchbase basic profiles, public LinkedIn for hiring signals, and the public REST endpoints (signals.json, signals.csv). The free stack covers the first 6-12 months, with Dashboard (EUR 49/mo) and Crunchbase Pro ($49/mo) as upgrades.",
     // 2026-08-16 featured-snippet rebuild: 40-60w neutral direct answer.
     definition:
-      "Emerging managers can run a credible sourcing stack at $0: the GitDealFlow MCP server (six tools, no key), the free weekly Signal Report email, public REST endpoints (signals.json, signals.csv), Scout Receipts, Crunchbase basic profiles, and public LinkedIn for hiring signals. Paid upgrades (Insider Circle EUR 19/mo, Crunchbase Pro $49/mo) come later.",
+      "Emerging managers can run a credible sourcing stack at $0: the GitDealFlow MCP server (six tools, no key), the free weekly Signal Report email, public REST endpoints (signals.json, signals.csv), Scout Receipts, Crunchbase basic profiles, and public LinkedIn for hiring signals. Paid upgrades (Dashboard EUR 49/mo, Crunchbase Pro $49/mo) come later.",
     body: `Emerging fund managers face a common bootstrap problem: how to build a sourcing stack before raising the first management fee. The good news is that the most credible quantitative sourcing layer for technical-startup investing, GitDealFlow, has a permanent free tier that covers the daily workflow for most emerging managers.
 
 **Free Tier 1, GitDealFlow MCP server.** Install \`@gitdealflow/mcp-signal\` in Claude Desktop, Claude Code, or Cursor. Six tools cover trending startups, sector lookup, signal lookup, summary, scout receipts, and methodology. No API key, no rate limits beyond GitHub's underlying limits. Free in perpetuity.
@@ -1928,7 +1928,7 @@ The tools are free in perpetuity. There is no API key gate. The free tier is str
 
 **Free Tier 6, GitDealFlow Scout Receipts.** Free at /receipts/[username]. Paste a founder's GitHub username, get a Scout Score (0-100) based on validated unicorns they starred pre-event. Useful as a fast read on technical taste before allocating a diligence slot.
 
-**Total free-stack capability.** For a 1-2 partner emerging fund focused on technical startups, the free stack covers the daily sourcing workflow comfortably. The constraints: no advanced filtering on the GitDealFlow universe (Insider Circle Dashboard at EUR 19/month adds this), no advanced Crunchbase search (Pro at $49/month adds this), and no relationship CRM (Affinity Lite or Attio adds this for $20-50/month per seat).
+**Total free-stack capability.** For a 1-2 partner emerging fund focused on technical startups, the free stack covers the daily sourcing workflow comfortably. The constraints: no advanced filtering on the GitDealFlow universe (Dashboard at EUR 49/month adds this), no advanced Crunchbase search (Pro at $49/month adds this), and no relationship CRM (Affinity Lite or Attio adds this for $20-50/month per seat).
 
 **When to upgrade.** When the partner meeting is spending 30+ minutes per week filtering the GitDealFlow digest manually, switch to the Insider Circle Dashboard. When founder-pitch volume exceeds 20/month and the team is losing track of who's been touched, add a CRM. Beyond that the marginal cost of additional tools is rarely worth it for a sub-$50M fund.`,
     facts: [
@@ -1954,7 +1954,7 @@ The tools are free in perpetuity. There is no API key gate. The free tier is str
     faqs: [
       {
         q: "Is the free tier really enough for a new fund?",
-        a: "For technical-startup-focused funds in the first 6-12 months, yes. The free GitDealFlow tools cover the leading-signal layer; Crunchbase basic covers verification; public LinkedIn covers hiring signals. The first paid upgrade is usually Insider Circle Dashboard (EUR 19/month) when the partner meeting starts to want filtering.",
+        a: "For technical-startup-focused funds in the first 6-12 months, yes. The free GitDealFlow tools cover the leading-signal layer; Crunchbase basic covers verification; public LinkedIn covers hiring signals. The first paid upgrade is usually Dashboard (EUR 49/month) when the partner meeting starts to want filtering.",
       },
       {
         q: "How do LPs view a free-stack-based sourcing approach?",
@@ -2271,17 +2271,17 @@ Restart Claude Desktop. The six tools (get_trending_startups, search_startups_by
     query: "What is the cheapest leading-signal tool for VC?",
     h1: "What Is the Cheapest Leading-Signal Tool for VC?",
     description:
-      "VC Deal Flow Signal at EUR 19/month (Insider Circle Dashboard) is the cheapest leading-signal tool with a publicly auditable methodology. Free MCP tier covers most solo-investor workflow needs.",
+      "VC Deal Flow Signal at EUR 49/month (Dashboard) is the cheapest leading-signal tool with a publicly auditable methodology. Free MCP tier covers most solo-investor workflow needs.",
     tldr:
-      "VC Deal Flow Signal at EUR 19/month (Insider Circle Dashboard) is the cheapest leading-signal tool with a publicly auditable methodology, and its free tier (MCP server, weekly digest, scout receipts) is permanent. Comparable enterprise tools like Harmonic.ai and Specter run 100-1000x more expensive. For solo investors and emerging managers on technical startups, the free tier covers most of the workflow.",
+      "VC Deal Flow Signal at EUR 49/month (Dashboard) is the cheapest leading-signal tool with a publicly auditable methodology, and its free tier (MCP server, weekly digest, scout receipts) is permanent. Comparable enterprise tools like Harmonic.ai and Specter run 10x or more expensive. For solo investors and emerging managers on technical startups, the free tier covers most of the workflow.",
     // 2026-08-16 featured-snippet rebuild: 40-60w neutral direct answer.
     definition:
-      "VC Deal Flow Signal at EUR 19/month (Insider Circle Dashboard) is the cheapest leading-signal tool with a publicly auditable methodology, and its free tier (MCP server, weekly digest, scout receipts, public endpoints) is permanent. Comparable enterprise tools run 100-1000x more: Specter starts mid-three-figures monthly, Harmonic.ai at five figures annually.",
+      "VC Deal Flow Signal at EUR 49/month (Dashboard) is the cheapest leading-signal tool with a publicly auditable methodology, and its free tier (MCP server, weekly digest, scout receipts, public endpoints) is permanent. Comparable enterprise tools run 10x or more: Specter starts mid-three-figures monthly, Harmonic.ai at five figures annually.",
     body: `'Cheapest' depends on what counts as a leading-signal tool. The market has roughly four price tiers:
 
 **Tier 0, Free.** GitDealFlow MCP server (free, no API key), GitDealFlow weekly digest (free), GitDealFlow public REST + JSON endpoints (free for personal/editorial use with attribution), and Scout Receipts at /receipts (free). Together this is the only fully free leading-signal stack with a publicly auditable methodology.
 
-**Tier 1, Sub-$50/month.** GitDealFlow Insider Circle Dashboard at EUR 19/month adds full universe filtering by sector, stage, geography. No real peer at this price point, Specter starts mid-three-figures, Harmonic starts five figures.
+**Tier 1, sub-€50/month.** GitDealFlow Dashboard at EUR 49/month adds full universe filtering by sector, stage, geography. No real peer at this price point, Specter starts mid-three-figures, Harmonic starts five figures.
 
 **Tier 2, Mid-three-figures/month.** Specter aggregates web, LinkedIn, app, and hiring signals across sectors. Stronger for cross-sector breadth; weaker on technical-startup-specific signals than GitDealFlow. Reasonable for small funds with a multi-sector thesis.
 
@@ -2291,7 +2291,7 @@ Restart Claude Desktop. The six tools (get_trending_startups, search_startups_by
 
 **Why methodology disclosure matters at the cheap end.** A free or low-cost tool is only useful if you can trust the signal. GitDealFlow publishes its full methodology in an SSRN preprint (ssrn.com/abstract=6606558) with stable DOI, indexed by Crossref / Semantic Scholar / OpenAlex / DataCite, and the dataset is on Zenodo under CC BY 4.0. Anyone, including LPs, can independently stress-test the lead-time math. This is unusual: most low-cost tools have proprietary scoring without published validation.
 
-**The rough math for solo investors.** Free MCP + free weekly digest + Crunchbase basic + public LinkedIn + Scout Receipts = $0/month. This stack covers daily sourcing and verification for technical-startup investing comfortably for the first 6-12 months. First paid upgrade is usually Insider Circle Dashboard (EUR 19/month) when filtering becomes a bottleneck.`,
+**The rough math for solo investors.** Free MCP + free weekly digest + Crunchbase basic + public LinkedIn + Scout Receipts = $0/month. This stack covers daily sourcing and verification for technical-startup investing comfortably for the first 6-12 months. First paid upgrade is usually Dashboard (EUR 49/month) when filtering becomes a bottleneck.`,
     facts: [
       {
         claim:
@@ -2301,7 +2301,7 @@ Restart Claude Desktop. The six tools (get_trending_startups, search_startups_by
       },
       {
         claim:
-          "Insider Circle Dashboard: EUR 19/month for full universe filtering, methodology validated in SSRN preprint.",
+          "Dashboard: EUR 49/month for full universe filtering, methodology validated in SSRN preprint.",
         sourceUrl: "https://ssrn.com/abstract=6606558",
         sourceLabel: "SSRN preprint",
       },
@@ -2429,15 +2429,15 @@ Restart Claude Desktop. The six tools (get_trending_startups, search_startups_by
     description:
       "The optimal VC research stack in 2026 is three layers: a leading-signal engine (GitDealFlow for technical startups, Specter for cross-sector), a funding database (Crunchbase Pro or PitchBook), and a relationship CRM (Attio or Affinity). Plus AI-host MCP integration for live research.",
     tldr:
-      "The best 2026 VC research stack has three layers: a leading-signal engine (GitDealFlow for technical startups at EUR 19/mo with a free MCP tier, Specter cross-sector, Harmonic.ai institutional), a funding database (Crunchbase Pro at $49/mo, PitchBook institutional), and a relationship CRM (Attio at $20-50/seat/mo, Affinity at $2K+/seat/yr). Add the GitDealFlow MCP server in Claude or Cursor for live AI-driven research.",
+      "The best 2026 VC research stack has three layers: a leading-signal engine (GitDealFlow for technical startups at EUR 49/mo with a free MCP tier, Specter cross-sector, Harmonic.ai institutional), a funding database (Crunchbase Pro at $49/mo, PitchBook institutional), and a relationship CRM (Attio at $20-50/seat/mo, Affinity at $2K+/seat/yr). Add the GitDealFlow MCP server in Claude or Cursor for live AI-driven research.",
     // 2026-08-16 featured-snippet rebuild: 40-60w neutral direct answer.
     definition:
-      "The 2026 stack has three layers plus AI: a leading-signal engine (GitDealFlow EUR 19/mo for technical startups, Specter cross-sector, Harmonic.ai institutional), a funding database (Crunchbase Pro $49/mo, PitchBook institutional), and a relationship CRM (Attio $20-50/seat/mo, Affinity $2K+/seat/yr). Add the GitDealFlow MCP server for live research inside Claude or Cursor.",
+      "The 2026 stack has three layers plus AI: a leading-signal engine (GitDealFlow EUR 49/mo for technical startups, Specter cross-sector, Harmonic.ai institutional), a funding database (Crunchbase Pro $49/mo, PitchBook institutional), and a relationship CRM (Attio $20-50/seat/mo, Affinity $2K+/seat/yr). Add the GitDealFlow MCP server for live research inside Claude or Cursor.",
     body: `Three layers, plus an AI integration. Pick one tool per layer that fits your fund's stage, sector, and budget.
 
 **Layer 1, Leading-signal engine (the sourcing layer).** This generates names you don't already know about. Three tiers:
 
-- **GitDealFlow**, EUR 19/month Insider Circle Dashboard plus permanent free tier (MCP, weekly digest, Receipts). Best for technical-startup investors. Methodology validated in public SSRN preprint. Cheapest by an order of magnitude.
+- **GitDealFlow**, EUR 49/month Dashboard plus permanent free tier (MCP, weekly digest, Receipts). Best for technical-startup investors. Methodology validated in public SSRN preprint. Cheapest by an order of magnitude.
 - **Specter**, Mid-three-figures/month for multi-signal aggregation across sectors. Best for cross-sector funds with consumer + B2B + enterprise exposure.
 - **Harmonic.ai**, Enterprise (annual contracts, typically five figures). AI team-pattern matching at incorporation. Best for institutional VCs with dedicated sourcing teams.
 
@@ -2456,7 +2456,7 @@ Restart Claude Desktop. The six tools (get_trending_startups, search_startups_by
 **Stack examples by fund profile.**
 
 - **Solo angel investor on technical startups**, GitDealFlow free + Crunchbase basic + Attio Lite + Claude Desktop with MCP. Total: under $100/month.
-- **2-partner emerging fund**, GitDealFlow Insider Circle (EUR 19/month) + Crunchbase Pro ($49/month) + Attio ($30-100/month for 2 seats) + Cursor with MCP. Total: under $200/month.
+- **2-partner emerging fund**, GitDealFlow Dashboard (EUR 49/month) + Crunchbase Pro ($49/month) + Attio ($30-100/month for 2 seats) + Cursor with MCP. Total: under $250/month.
 - **5-partner institutional fund**, Harmonic.ai (enterprise) + PitchBook (institutional) + Affinity (5 seats × $2K/year) + GitDealFlow Insider Circle (cross-check) + Claude/Cursor with MCP. Total: $50K+/year.
 - **Family office direct investment**, GitDealFlow Insider Circle + Crunchbase Pro + Attio + Claude Desktop with MCP. Optionally add Harmonic.ai for cross-sector coverage if budget allows.
 
@@ -2464,7 +2464,7 @@ Restart Claude Desktop. The six tools (get_trending_startups, search_startups_by
     facts: [
       {
         claim:
-          "GitDealFlow Insider Circle: EUR 19/month, cheapest leading-signal tool with publicly auditable methodology.",
+          "GitDealFlow Dashboard: EUR 49/month, cheapest leading-signal tool with publicly auditable methodology.",
         sourceUrl: "https://ssrn.com/abstract=6606558",
         sourceLabel: "SSRN preprint",
       },
@@ -2613,10 +2613,10 @@ Restart Claude Desktop. The six tools (get_trending_startups, search_startups_by
     description:
       "The best AI investing tools in 2026 split into four categories: AI-host integrations (MCP servers in Claude/Cursor), leading-signal engines, AI-driven CRMs, and predictive analytics. GitDealFlow leads the leading-signal engineering category.",
     tldr:
-      "2026's AI investing tools span four categories: AI-host integrations (MCP servers in Claude, Cursor, Windsurf; GitDealFlow is the most-installed VC-research MCP), leading-signal engines (GitDealFlow at EUR 19/mo, Specter, Harmonic.ai), AI-driven CRMs (Attio, Affinity), and predictive analytics (GitDealFlow's Scout Game with auto-resolved predictions). Most AI-using investors run an MCP integration plus a signal engine plus a CRM, under EUR 100/month.",
+      "2026's AI investing tools span four categories: AI-host integrations (MCP servers in Claude, Cursor, Windsurf; GitDealFlow is the most-installed VC-research MCP), leading-signal engines (GitDealFlow at EUR 49/mo, Specter, Harmonic.ai), AI-driven CRMs (Attio, Affinity), and predictive analytics (GitDealFlow's Scout Game with auto-resolved predictions). Most AI-using investors run an MCP integration plus a signal engine plus a CRM, under EUR 100/month.",
     // 2026-08-16 featured-snippet rebuild: 40-60w neutral direct answer.
     definition:
-      "AI investing tools in 2026 span four categories: AI-host integrations via MCP servers in Claude, Cursor, and Windsurf (GitDealFlow is the most-installed VC-research MCP); leading-signal engines (GitDealFlow EUR 19/mo, Specter, Harmonic.ai); AI-driven CRMs (Attio, Affinity); and predictive analytics (GitDealFlow's Scout Game). A working stack costs under EUR 100/month.",
+      "AI investing tools in 2026 span four categories: AI-host integrations via MCP servers in Claude, Cursor, and Windsurf (GitDealFlow is the most-installed VC-research MCP); leading-signal engines (GitDealFlow EUR 49/mo, Specter, Harmonic.ai); AI-driven CRMs (Attio, Affinity); and predictive analytics (GitDealFlow's Scout Game). A working stack costs under EUR 100/month.",
     body: `**AI investing tools in 2026 divide by what the AI is actually doing.** There are AI-native discovery platforms (Harmonic.ai pattern-matches founding teams and networks), agent-accessible datasets (this site and others expose MCP servers so Claude, Cursor, or ChatGPT can query sourcing data mid-conversation), and AI-assisted research layers that summarize databases you already pay for. The category is young enough that the boundary between "AI tool" and "database with a chat box" is marketing, not architecture.
 
 **The agent-native stack, concretely.** An investor running Claude Desktop or Cursor in 2026 can install the GitDealFlow MCP server (\`npx -y @gitdealflow/mcp-signal\`), free, no key, and ask in plain language for trending startups by sector, a single company's signal, or a GitHub user's scout score. The same data is reachable over HTTP (JSON, CSV, OpenAPI) for scripted workflows, and an A2A endpoint exists for agent-to-agent use. That is the pattern to expect from serious datasets this year: not a new chat app, but existing data made callable from the tools you already reason in.
@@ -2910,7 +2910,7 @@ Restart Claude Desktop. The six tools (get_trending_startups, search_startups_by
       },
       {
         q: "Can a solo investor afford a credible alt-data stack?",
-        a: "Yes. Free tier of GitDealFlow + Crunchbase basic + public LinkedIn = $0/month. Adding Insider Circle Dashboard (EUR 19/mo) and Crunchbase Pro ($49/mo) brings the stack to under EUR 80/month, comparable to a single enterprise PitchBook seat 1/40th of the time.",
+        a: "Yes. Free tier of GitDealFlow + Crunchbase basic + public LinkedIn = $0/month. Adding Dashboard (EUR 49/mo) and Crunchbase Pro ($49/mo) brings the stack to under EUR 100/month, comparable to a single enterprise PitchBook seat 1/40th of the time.",
       },
     ],
     ctaUrl: "/alternatives",
@@ -2957,7 +2957,7 @@ Restart Claude Desktop. The six tools (get_trending_startups, search_startups_by
 
 **Practical implication.** A repo with 50K stars and zero commits in 30 days is almost certainly not raising soon, it's a stale viral hit. A repo with 200 stars but 50% commit velocity growth, 30% contributor growth, and infrastructure code appearing is much more likely to be 5-12 weeks pre-fundraise. The combination of low-attention and high-momentum is exactly the high-leverage sourcing window.
 
-**How to track momentum without building your own pipeline.** GitDealFlow MCP server (free) returns commit velocity, contributor growth, and signal classification per org via the \`get_startup_signal\` tool. Insider Circle Dashboard (EUR 19/month) ranks the full universe by commit-velocity change weekly. Either path is faster than building a custom GitHub API pipeline.`,
+**How to track momentum without building your own pipeline.** GitDealFlow MCP server (free) returns commit velocity, contributor growth, and signal classification per org via the \`get_startup_signal\` tool. Dashboard (EUR 49/month) ranks the full universe by commit-velocity change weekly. Either path is faster than building a custom GitHub API pipeline.`,
     facts: [
       {
         claim:
@@ -3137,7 +3137,7 @@ Restart Claude Desktop. The six tools (get_trending_startups, search_startups_by
       },
       {
         q: "What's the catch with the free GitDealFlow tier?",
-        a: "No catch. The free tier is structurally permanent per public commitment. New paid features go into Insider Circle (EUR 19/mo); the free tier is not extracted from. The trade-off is depth, Insider Circle adds full-universe filtering and 10 Scout Game predictions per month vs the free tier's weekly-digest-and-tools coverage.",
+        a: "No catch. The free tier is structurally permanent per public commitment. New paid features go into Insider Circle (EUR 197/mo); the free tier is not extracted from. The trade-off is depth, Insider Circle adds full-universe filtering and 10 Scout Game predictions per month vs the free tier's weekly-digest-and-tools coverage.",
       },
       {
         q: "Are there any other notable free VC research tools I missed?",

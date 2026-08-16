@@ -4767,6 +4767,8 @@ landingCheck(
       }
     }
     const priceBans: Array<[string, RegExp]> = [
+      ["../content/agent-queries.ts", /EUR 19\/mo|EUR 19\/month|100-1000x/],
+      ["../content/standalone-faqs.ts", /EUR 19\/mo|EUR 19\/month|100-1000×/],
       ["../app/llms.txt/route.ts", /€9\.97\/mo Dashboard|€97\/mo Insider/],
       ["../app/llms-full.txt/route.ts", /Paid \(€9\.97\/mo Dashboard\)/],
       ["../app/api/scout/predict/route.ts", /EUR 9\.97\/mo/],
