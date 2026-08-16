@@ -5467,6 +5467,44 @@ landingCheck(
   }
 }
 
+// §66 Apex bot-crawl relay (2026-08-17). gitdealflow.com (static Vercel
+//     project) cannot land bot_crawl events directly in PostHog 143861: its
+//     Node-function egress is ACKed "200 Ok" but silently dropped by
+//     ingestion (proven 2026-08-16; only edge-runtime-origin captures land).
+//     The apex api/crawl-proxy.js relays its detections to
+//     /__relay/bot-crawl in this middleware, which emits them via the proven
+//     capture path with source="apex-relay". Guards both sides.
+// ---------------------------------------------------------------------------
+{
+  check(
+    "proxy.ts",
+    "§66 apex bot-crawl relay: the /__relay/bot-crawl branch was dropped from proxy.ts (the apex gitdealflow.com crawl blind spot reopens silently: zero bot_crawl events with host=gitdealflow.com).",
+    (s) =>
+      s.includes('pathname === "/__relay/bot-crawl"') &&
+      s.includes('source: "apex-relay"') &&
+      s.includes("APEX_RELAY_SECRET") &&
+      s.includes("relayed"),
+    "restore the /__relay/bot-crawl branch at the TOP of proxy() (secret-gated, emits bot_crawl with source=apex-relay via the proven capture path)",
+  );
+  // Soft check: landing/ may be absent in a pseo-site-only checkout
+  // (same semantics as landingCheck). When the apex function IS present it
+  // must relay, never egress directly.
+  {
+    const apex = read("../landing/api/crawl-proxy.js");
+    if (apex !== null) {
+      if (
+        !apex.includes("signals.gitdealflow.com/__relay/bot-crawl") ||
+        !apex.includes("x-relay-secret") ||
+        !apex.includes("APEX_RELAY_SECRET")
+      ) {
+        failures.push(
+          `§66 apex side: landing/api/crawl-proxy.js lost the relay call (direct PostHog egress is silently dropped from non-edge sources, proven 2026-08-16).\n    file: landing/api/crawl-proxy.js\n    fix:  restore the relay fetch (GET signals.gitdealflow.com/__relay/bot-crawl with x-relay-secret from env APEX_RELAY_SECRET)`,
+        );
+      }
+    }
+  }
+}
+
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +

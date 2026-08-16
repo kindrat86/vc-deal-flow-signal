@@ -221,6 +221,80 @@ function isCanonicalOrAllowedHost(host: string | null): boolean {
 export async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
+  // --- Apex bot-crawl relay (2026-08-17) -----------------------------------
+  // gitdealflow.com (the apex, a static Vercel project) cannot land bot_crawl
+  // events in PostHog directly: its Node function egress to eu.i.posthog.com
+  // is ACKed ("200 Ok") but the events are silently dropped by ingestion
+  // (proven 2026-08-16: identical key/payload/endpoint from THIS edge
+  // middleware lands 13k+/day; from Vercel Node functions and residential
+  // IPs, zero events land across /capture/ and /batch/ with every client
+  // tested). The apex api/crawl-proxy.js therefore RELAYS its bot detections
+  // here, and this middleware, the proven capture path, emits them with
+  // host = the apex host (from the signed query param, not the relay's own
+  // host) and source = "apex-relay". Secret-gated so third parties cannot
+  // forge crawl analytics. Must stay FIRST in proxy(): it returns before the
+  // host-redirect and never falls through to the page pipeline.
+  if (pathname === "/__relay/bot-crawl") {
+    const relaySecret = process.env.APEX_RELAY_SECRET;
+    const auth = request.headers.get("x-relay-secret") || "";
+    if (!relaySecret || auth !== relaySecret) {
+      return new NextResponse("forbidden", { status: 403 });
+    }
+    const q = request.nextUrl.searchParams;
+    const bot = (q.get("bot") || "").slice(0, 64);
+    const host = (q.get("host") || "gitdealflow.com").slice(0, 128);
+    const botPath = (q.get("path") || "").slice(0, 512);
+    const method = (q.get("method") || "GET").slice(0, 8);
+    const ua = (q.get("ua") || "").slice(0, 512);
+    // The crawler's original x-forwarded-for, forwarded by the apex function:
+    // lets PostHog GeoIP the CRAWLER (same enrichment the direct path gets),
+    // not the relay egress.
+    const ip = (q.get("ip") || "").slice(0, 64);
+    const ts = q.get("ts") || new Date().toISOString();
+    let relayed = 0;
+    if (bot) {
+      relayed = 1;
+      // Exact shape of the proven captureBotCrawl payload below; only the
+      // source marker and forwarded fields differ. Same 1500ms abort guard
+      // so a hanging capture never hangs the middleware.
+      const controller = new AbortController();
+      const timer = setTimeout(() => controller.abort(), 1500);
+      try {
+        await fetch(POSTHOG_CAPTURE, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            api_key: POSTHOG_KEY,
+            event: "bot_crawl",
+            distinct_id: bot,
+            properties: {
+              bot,
+              host,
+              path: botPath,
+              method,
+              user_agent: ua,
+              $ip: ip,
+              source: "apex-relay",
+            },
+            timestamp: ts,
+          }),
+          signal: controller.signal,
+        });
+      } catch {
+        // Best-effort monitoring: never fail the relay response.
+      } finally {
+        clearTimeout(timer);
+      }
+    }
+    return new NextResponse(JSON.stringify({ ok: true, relayed }), {
+      status: 200,
+      headers: {
+        "content-type": "application/json",
+        "cache-control": "no-store",
+      },
+    });
+  }
+
   // Canonical-host enforcement runs FIRST so all non-canonical hosts redirect
   // before we waste compute building the markdown rewrite, agent-bot headers,
   // or canonical Link header. 308 preserves method + body (and search params)
