@@ -3027,7 +3027,7 @@ check(
 );
 
 // ---------------------------------------------------------------------------
-// §37 SERP feature coverage: definition+list answer for "what is deal flow
+// §41 SERP feature coverage: definition+list answer for "what is deal flow
 // signal" (2026-08-17). GSC 90d: "vc deal flow signal" = 144 imps pos 8.4,
 // split across /faq (72 imps), /blog/what-is-deal-flow-signal (52 imps,
 // pos 13.8), home, and others. The blog post is the snippet vehicle: it must
@@ -3042,7 +3042,7 @@ check(
     const slugAt = s.indexOf('slug: "what-is-deal-flow-signal"');
     if (slugAt === -1) {
       failures.push(
-        `§37 snippet post missing: content/posts.ts lacks slug "what-is-deal-flow-signal".\n    fix:  restore the post (definition + four-type ordered list + exact-phrase FAQ).`,
+        `§41 snippet post missing: content/posts.ts lacks slug "what-is-deal-flow-signal".\n    fix:  restore the post (definition + four-type ordered list + exact-phrase FAQ).`,
       );
     } else {
       const nextAt = s.indexOf('slug: "', slugAt + 10);
@@ -3062,7 +3062,7 @@ check(
           typesAt < whyAt && listOk && faqExact)
       ) {
         failures.push(
-          `§37 definition+list structure degraded on what-is-deal-flow-signal.\n    file: content/posts.ts\n    fix:  keep the 46-word definition under the title, the four-type ordered list immediately after it (before "Why Is Traditional"), and the exact-phrase FAQ question "What is a deal flow signal?".`,
+          `§41 definition+list structure degraded on what-is-deal-flow-signal.\n    file: content/posts.ts\n    fix:  keep the 46-word definition under the title, the four-type ordered list immediately after it (before "Why Is Traditional"), and the exact-phrase FAQ question "What is a deal flow signal?".`,
         );
       }
     }
@@ -3070,7 +3070,7 @@ check(
 }
 check(
   "content/post-freshness.ts",
-  "§37 postFreshness revision entry for what-is-deal-flow-signal missing.",
+  "§41 postFreshness revision entry for what-is-deal-flow-signal missing.",
   (s) => s.includes('"what-is-deal-flow-signal"') && s.includes('lastUpdated: "2026-08-17"'),
   "restore the 2026-08-17 revision entry (snippet restructure) in postFreshness",
 );
