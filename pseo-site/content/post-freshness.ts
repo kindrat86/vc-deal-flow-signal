@@ -28,7 +28,11 @@ export interface PostFreshness {
 }
 
 export const postFreshness: Record<string, PostFreshness> = {
-  // Populated by the quarterly gitdealflow-blog-freshen cron and/or manual edits.
+  "what-is-deal-flow-signal": {
+    lastUpdated: "2026-08-17",
+    refreshNote:
+      "SERP feature coverage fix: 46-word direct definition under the title, four-type ordered list moved directly after it, exact-phrase FAQ added.",
+  },
 };
 
 /**
