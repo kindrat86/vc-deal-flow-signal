@@ -33,6 +33,7 @@ import {
   loadStartupsData,
   type BestRedirect,
 } from "./best-redirect-lib";
+import { getCanonicalCompetitorVsSlugs } from "../content/competitor-vs";
 
 const ROOT = process.cwd();
 const failures: string[] = [];
@@ -63,26 +64,30 @@ function landingCheck(rel: string, label: string, ok: (s: string) => boolean, hi
 }
 
 // ---------------------------------------------------------------------------
-// 0. CWV single-source invariant (amended 2026-08-17 with field evidence).
+// 0. CWV single-source invariant (amended 2026-08-17, revised 2026-08-19).
 //    posthog-js 1.417 auto-captures $web_vitals natively for LCP/FCP/CLS/INP
 //    ONLY: it does NOT capture TTFB (verified in project 143861 on
 //    2026-08-17: zero native-shape TTFB values on any of 10+ hosts in 28d;
 //    the SDK's metric set excludes TTFB). The original 2026-08-16 guard
 //    below enforced a blanket no-op on the reporter, which silently killed
 //    the field TTFB stream for days (25 events/7d, 12 of them junk zeros).
-//    Policy now: the reporter captures TTFB ONLY (marker beacon='ttfb-v2',
-//    prerender/bfcache skipped, values > 0); capturing LCP/FCP/CLS/INP in
-//    the reporter still double-counts and stays forbidden. See §39 for the
-//    full beacon-content guard.
+//    2026-08-19 revision: the reporter now captures LCP + FCP + TTFB. The
+//    native SDK's DESKTOP LCP/FCP carry background-tab dwell (email/X/HN
+//    links cmd-clicked open; paint fires only on tab focus: measured apex
+//    LCP p75 3016ms / FCP 3110ms vs true mobile ~489ms) because the SDK
+//    lacks web-vitals' firstHiddenTime guard. The reporter's LCP/FCP run
+//    through useReportWebVitals (web-vitals v4 drops dwell-deferred paints)
+//    and carry beacon='dwell-filtered'. CLS/INP stay forbidden here: they
+//    are not dwell-contaminated and a second path double-counts. See §39.
 // ---------------------------------------------------------------------------
 {
   const reporter = read("components/WebVitalsReporter.tsx");
   if (reporter && /capture\(\s*["']\$web_vitals["']/.test(reporter)) {
-    // TTFB-only capture is required (§39 checks content in detail).
-    // Any OTHER metric captured directly double-counts the native SDK.
-    if (/metric\.name\s*===\s*["'](LCP|FCP|CLS|INP)["']/.test(reporter)) {
+    // CLS/INP must stay on the native SDK (not dwell-contaminated; a second
+    // capture path double-counts). LCP/FCP/TTFB are the reporter's job (§39).
+    if (/metric\.name\s*===\s*["'](CLS|INP)["']/.test(reporter)) {
       failures.push(
-        `WebVitalsReporter captures SDK-covered metrics (LCP/FCP/CLS/INP): the native SDK already collects these, a second path double-counts.\n    file: components/WebVitalsReporter.tsx\n    fix:  keep the reporter TTFB-only (see §39; TTFB is the one metric the SDK omits)`,
+        `WebVitalsReporter captures SDK-covered metrics (CLS/INP): the native SDK already collects these cleanly, a second path double-counts.\n    file: components/WebVitalsReporter.tsx\n    fix:  keep CLS/INP out of the reporter (report LCP/FCP/TTFB only; see §39)`,
       );
     }
   }
@@ -1293,6 +1298,32 @@ check(
   "render {t.snippet} right after each question h2 and use t.snippet ?? t.definition in the FAQPage schema",
 );
 
+// ---------------------------------------------------------------------------
+// §18b Featured-snippet consolidation (2026-08-16). The "what is a deal flow
+// signal" definitional query is split across home/about/faq/glossary/blog.
+// The dedicated long-form vehicle is /blog/what-is-deal-flow-signal. The two
+// highest-authority definitional surfaces (the /glossary hub and the homepage
+// category section) must link to it so Google has ONE snippet candidate
+// instead of five competing URLs. A lineage that drops these links
+// re-fragments the query and suppresses the snippet.
+// ---------------------------------------------------------------------------
+check(
+  "app/glossary/page.tsx",
+  "glossary hub lost its 'Read the full guide' link from the deal-flow-signal term to /blog/what-is-deal-flow-signal (featured-snippet consolidation).",
+  (s) =>
+    s.includes("TERM_FULL_GUIDES") &&
+    s.includes('"deal-flow-signal"') &&
+    s.includes("/blog/what-is-deal-flow-signal"),
+  "restore the TERM_FULL_GUIDES map entry so the deal-flow-signal term links to the long-form guide",
+);
+
+check(
+  "app/page.tsx",
+  "homepage category section lost its 'deal flow signal' link to /blog/what-is-deal-flow-signal (featured-snippet consolidation).",
+  (s) => s.includes("/blog/what-is-deal-flow-signal"),
+  "restore the deal-flow-signal guide link in the Code-Side Sourcing section",
+);
+
 // DELETED 2026-08-16 (§22 retirement): this check asserted the /define/[term]
 // snippet-lede on a template that §22 intentionally deletes in the same
 // changeset (125 URLs, 2,940 imps, 1 click, pos 57-93). The snippet-backed
@@ -1595,6 +1626,15 @@ check(
     s.includes("height={SMALL_BADGE_HEIGHT}") &&
     !/className="h-5"/.test(s),
   'keep width={smallBadgeWidth(...)} / builtWithWidth(...) + height={SMALL_BADGE_HEIGHT} on all three preview imgs (add w-auto)',
+);
+
+check(
+  "app/badge-builder/page.tsx",
+  "badge-builder sample grid lost intrinsic dims, the sample badge imgs shift on load.",
+  (s) =>
+    s.includes("width={badgeWidth(BADGE_LABEL, badgeValue(s.velocity, s.signal))}") &&
+    s.includes("height={BADGE_HEIGHT}"),
+  "keep width={badgeWidth(BADGE_LABEL, badgeValue(s.velocity, s.signal))} height={BADGE_HEIGHT} on the sample-grid badge imgs (map over samples)",
 );
 
 check(
@@ -3337,31 +3377,39 @@ check(
 
 
 // ---------------------------------------------------------------------------
-// §39 Field-TTFB beacon must survive every deploy (2026-08-17). The native
-// posthog-js SDK does NOT capture TTFB (verified in project 143861: zero
-// native-shape TTFB values on any host in 28d), so the 2026-08-16
-// "single-source CWV" refactor silently killed the field TTFB stream for
-// days. components/WebVitalsReporter.tsx is the ONLY field TTFB source on
-// signals; the regression check (field_ttfb_check.py, n>=500/wk gate)
-// depends on it. Fails closed if a lineage reverts it to a no-op, drops
-// the TTFB-only filter, or removes the junk-zero/prerender skip that keeps
-// the field p75 meaningful.
+// §39 Field CWV beacon must survive every deploy (2026-08-17, revised
+// 2026-08-19). The native posthog-js SDK does NOT capture TTFB (verified in
+// project 143861: zero native-shape TTFB values on any host in 28d), and its
+// DESKTOP LCP/FCP carry background-tab dwell (the SDK lacks web-vitals'
+// firstHiddenTime guard: measured apex LCP p75 3016ms / FCP 3110ms vs true
+// mobile ~489ms). components/WebVitalsReporter.tsx is therefore the ONLY
+// clean field source for TTFB + desktop LCP/FCP on signals; the regression
+// checks (field_ttfb_check.py n>=500/wk gate + cwv_field.py lcp_basis/
+// fcp_basis) depend on it. Fails closed if a lineage reverts it to a no-op,
+// drops the LCP/FCP/TTFB filter, drops the dwell-filtered/ttfb-v2 markers,
+// or removes the junk-zero/prerender skip that keeps the field p75 meaningful.
 // ---------------------------------------------------------------------------
 {
   const b = read("components/WebVitalsReporter.tsx");
   if (b === null) {
     failures.push("components/WebVitalsReporter.tsx missing entirely");
   } else {
-    if (!b.includes('metric.name !== "TTFB"')) {
+    if (!b.includes('metric.name !== "LCP" && metric.name !== "FCP" && metric.name !== "TTFB"')) {
       failures.push(
-        `§39 TTFB beacon lost the TTFB-only filter (it must capture TTFB and ONLY TTFB).\n` +
-          `    fix:  restore the "if (metric.name !== \\"TTFB\\") return;" guard`,
+        `§39 beacon lost the LCP/FCP/TTFB filter (it must capture LCP, FCP and TTFB, nothing else).\n` +
+          `    fix:  restore the "if (metric.name !== \"LCP\" && metric.name !== \"FCP\" && metric.name !== \"TTFB\") return;" guard`,
       );
     }
     if (!b.includes('"ttfb-v2"')) {
       failures.push(
         `§39 TTFB beacon lost the beacon='ttfb-v2' marker (field_ttfb_check.py keys on it).\n` +
           `    fix:  restore beacon: "ttfb-v2" in the capture properties`,
+      );
+    }
+    if (!b.includes('"dwell-filtered"')) {
+      failures.push(
+        `§39 beacon lost the beacon='dwell-filtered' marker for LCP/FCP (cwv_field.py lcp_basis/fcp_basis keys on the clean beacon). ` +
+          `    fix:  restore beacon: "dwell-filtered" for LCP/FCP in the capture properties`,
       );
     }
     if (!b.includes('"prerender"') || !b.includes('"back-forward"')) {
@@ -5081,6 +5129,55 @@ landingCheck(
       );
     }
   }
+}
+
+
+// §62 Founder + blog title hooks (2026-08-16, SERP CTR wave 2). The generic
+//     "Public Engineering Profile" title suffix drew 0.00% CTR across 219
+//     impressions / 28d (founder family, GSC 28d). Hooks surface each person's
+//     already-vetted public role + primary affiliation in the SERP title.
+//     The /blog hub title was a bare "Blog". A lineage that loses either
+//     reverts to the 0.00%-CTR form.
+// ---------------------------------------------------------------------------
+{
+  check(
+    "content/founders.ts",
+    "§62 CTR: FOUNDER_TITLE_HOOKS map dropped or build() no longer consumes it",
+    (s) =>
+      s.includes("export const FOUNDER_TITLE_HOOKS") &&
+      s.includes('FOUNDER_TITLE_HOOKS[p.handle] ?? "Public Engineering Profile"'),
+    "restore the founder title-hook map + its consumption in build()",
+  );
+
+  // Every founder must carry a hook: a missing one silently falls back to the
+  // 0.00%-CTR generic suffix. Extract build() handles + the hook-map key block,
+  // then assert 1:1 coverage and a stable corpus size.
+  const foundersSrc = read("content/founders.ts") ?? "";
+  const fHandles = [...foundersSrc.matchAll(/build\(\{[\s\S]*?handle: "([^"]+)"/g)].map(
+    (m) => m[1],
+  );
+  const mapStart = foundersSrc.indexOf("export const FOUNDER_TITLE_HOOKS");
+  const mapEnd = foundersSrc.indexOf("};", mapStart);
+  const mapBlock = mapStart >= 0 && mapEnd > mapStart ? foundersSrc.slice(mapStart, mapEnd) : "";
+  const missingHooks = fHandles.filter(
+    (h) => !mapBlock.includes(`"${h}"`) && !new RegExp(`\\b${h}\\s*:`).test(mapBlock),
+  );
+  if (fHandles.length !== 33) {
+    failures.push(
+      `§62 founder corpus size drifted (expected 33 build() handles, found ${fHandles.length}).\n    file: content/founders.ts\n    fix:  reconcile the founder list or the hook map (a missing hook = 0.00% CTR generic suffix)`,
+    );
+  } else if (missingHooks.length) {
+    failures.push(
+      `§62 founder title hooks missing for: ${missingHooks.join(", ")}\n    file: content/founders.ts\n    fix:  add a title hook for each (fallback = 0.00% CTR generic suffix)`,
+    );
+  }
+
+  check(
+    "app/blog/page.tsx",
+    '§62 CTR: /blog hub title reverted to the bare "Blog"',
+    (s) => !s.includes('title: "Blog"') && s.includes("GitHub Signals for Startup Investing"),
+    "restore the hooked /blog hub title",
+  );
 }
 
 

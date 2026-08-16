@@ -124,11 +124,34 @@
         props["$web_vitals_" + name + "_value"] = value;
         props["$web_vitals_" + name + "_rating"] = rate(name, value);
         props["$web_vitals_" + name + "_event_id"] = id;
-        // 2026-08-16: direct-to-PostHog send REMOVED. posthog-js 1.417
-        // (loaded by this site) auto-captures $web_vitals natively with
-        // proper metric_ids: the custom send double-counted every load
-        // under different distinct_ids (cwv-*), polluting PostHog's CWV
-        // insight. PostHog = native SDK only; this beacon now serves GA4.
+        // 2026-08-16: direct-to-PostHog send REMOVED (posthog-js auto-captures
+        // $web_vitals natively and the custom send double-counted under
+        // different distinct_ids). 2026-08-19: RE-ADDED for LCP + FCP ONLY,
+        // because the native SDK's DESKTOP LCP/FCP carry background-tab dwell
+        // (email/X/HN links cmd-clicked open; the paint fires on tab focus so
+        // the metric includes unread-tab time: measured apex LCP p75 3016ms /
+        // FCP 3110ms vs true mobile ~489ms). This beacon runs on web-vitals
+        // 4.2.4, whose onLCP/onFCP apply the firstHiddenTime guard
+        // (entry.startTime < firstHiddenTime) and drop dwell-deferred paints.
+        // The dwell-filtered LCP/FCP carry metric_name so the collector
+        // (cwv_field.py lcp_basis/fcp_basis) can quote them instead of the
+        // contaminated SDK blend. INP/CLS/TTFB stay on the native SDK / GA4
+        // to avoid double-counting.
+        if ((name === "LCP" || name === "FCP") && window.posthog && window.posthog.capture) {
+          try {
+            window.posthog.capture("$web_vitals", {
+              distinct_id: "ga4-cwv-forward",
+              $process_person_profile: false,
+              $pathname: location.pathname,
+              $current_url: location.href,
+              metric_name: name,
+              metric_value: value,
+              metric_rating: rate(name, value),
+              metric_id: id,
+              beacon: "dwell-filtered"
+            });
+          } catch (e) {}
+        }
         // Forward the same metric to GA4 (G-7SV2SNZE4C) with Google's standard
         // event params so GA4's Core Web Vitals reporting fills up alongside
         // PostHog. gtag is loaded by this same file; a no-op if it is absent.
@@ -157,5 +180,80 @@
       s.src = "/web-vitals.js"; s.async = true; s.onload = start;
       document.head.appendChild(s);
     } catch (e) { /* beacon must never throw */ }
+  })();
+
+  // ------------------------------------------------------------------
+  // GA4 qualified-visitor mirror (added 2026-08-16). Mirrors the PostHog
+  // north-star definition in ~/portfolio/scripts/fetch_north_star.py into
+  // GA4 (G-7SV2SNZE4C) so GA4's "Qualified Visitors" audience + Looker
+  // Studio dashboard mirror the PostHog number and feed Google Ads /
+  // LinkedIn retargeting (the highest-value use of the qualified set).
+  // Fires a once-per-session `qualified_visit` event and forwards the
+  // qualifying conversion/engagement events. Deliberately does NOT mirror
+  // $pageview (GA4 already collects its own page_view) and never
+  // double-counts: the posthog.capture wrap is idempotent and re-applies
+  // only if posthog-js replaces its snippet stub with the real instance.
+  // ------------------------------------------------------------------
+  (function () {
+    var CONV = ["signup_verify_sent", "beta_signup", "lead_submitted", "subscribed",
+      "analysis_purchased", "purchase_confirmed", "lead_magnet_requested",
+      "exit_intent_subscribed", "tools_subscribe_submitted"];
+    var ENG = ["concierge_opened", "exit_modal_opened", "exit_modal_submitted"];
+    var EVAL_RE = /(\/pricing|\/vs\/|alternatives-to|\/methodology|\/mcp|\/api|\/docs)/;
+    var qFired = false;
+
+    function pushGtag() {
+      try {
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push(Array.prototype.slice.call(arguments));
+      } catch (e) { /* never throw */ }
+    }
+    function qualified(source) {
+      var K = "gdf_qualified_visit";
+      if (qFired) return;
+      try {
+        if (sessionStorage.getItem(K)) return;
+        sessionStorage.setItem(K, "1");
+      } catch (e) { /* private mode: fall through to the volatile qFired guard */ }
+      qFired = true;
+      pushGtag("event", "qualified_visit", { path: location.pathname, source: source || "unknown" });
+    }
+    function mirror(name, props) {
+      if (!name) return;
+      var params = { source: location.pathname };
+      if (props && typeof props === "object") {
+        for (var k in props) {
+          var v = props[k];
+          if (v === null || v === undefined) continue;
+          if (typeof v === "string" || typeof v === "number" || typeof v === "boolean") params[k] = v;
+        }
+      }
+      if (ENG.indexOf(name) >= 0) {
+        pushGtag("event", name, params);
+        qualified("engagement");
+      } else if (CONV.indexOf(name) >= 0) {
+        pushGtag("event", name, params);
+        qualified("conversion");
+      }
+    }
+    function wrapCapture() {
+      var ph = window.posthog;
+      if (!ph || typeof ph.capture !== "function" || ph.__gdfMirrorWrapped) return;
+      var orig = ph.capture;
+      ph.capture = function () {
+        try { mirror(arguments[0], arguments[1]); } catch (e) {}
+        return orig.apply(ph, arguments);
+      };
+      try { ph.__gdfMirrorWrapped = true; } catch (e) {}
+    }
+    if (EVAL_RE.test(location.pathname)) qualified("eval_path");
+    wrapCapture();
+    var tries = 0;
+    var timer = setInterval(function () {
+      // posthog-js swaps its snippet stub for the real instance after
+      // array.js loads; re-wrap whenever the mark is gone (idempotent).
+      wrapCapture();
+      if (++tries > 600) clearInterval(timer);  // ~60s; array.js loads in <2s
+    }, 100);
   })();
 })();
