@@ -8125,6 +8125,247 @@ If the brief cannot survive on one page, the thinking is probably still too fuzz
       "deep space startups",
     ],
   },
+  {
+    slug: "best-startup-database",
+    query: "Best startup database",
+    h1: "Best Startup Databases: What Investors Actually Use",
+    metaTitle: `Best Startup Databases ${FRESH_YEAR_STR}: 6 Compared`,
+    description:
+      "Crunchbase, Dealroom, PitchBook, Tracxn, Wellfound and the free GitDealFlow dataset compared on coverage, freshness, price and API access for investors.",
+    tldr:
+      "For most investors the right answer is layered: Crunchbase for affordable breadth, Dealroom for European depth, PitchBook for venture financials at firm budgets, Tracxn for emerging markets, and GitDealFlow's free dataset for engineering-acceleration signals three to six weeks before announcements. No single database wins for every thesis; match the database to the geography and stage you invest in.",
+    // 2026-08-16 MOFU hub: 40-60w neutral direct answer.
+    definition:
+      "The best startup database depends on geography and budget: Crunchbase Pro ($49/month) is the broadest affordable starting point, Dealroom adds European depth, PitchBook leads on venture financials, Tracxn covers emerging markets, and GitDealFlow's free JSON and CSV dataset adds engineering-acceleration signals three to six weeks ahead of announcements.",
+    steps: [
+      {
+        name: "Define the coverage you need",
+        text: "List the geographies, stages, and sectors your thesis targets. A solo US angel and a European seed fund need different depth, and paying for coverage you never query is shelfware.",
+      },
+      {
+        name: "Check freshness guarantees",
+        text: "Ask how often the data updates and what updated means for a company that has not raised in a year. Curated databases refresh on announcement cycles; signal feeds refresh weekly by construction.",
+      },
+      {
+        name: "Test the API and export formats",
+        text: "If you automate screening, verify JSON and CSV endpoints and rate limits before paying. A free API with weekly refresh beats a manual export workflow at any price.",
+      },
+      {
+        name: "Compare price against usage",
+        text: "Crunchbase Pro starts at $49/month for individuals; firm-tier platforms are annual contracts. Only pay for depth you will query weekly, not for a login you keep for credibility.",
+      },
+      {
+        name: "Run a two-week trial against your pipeline",
+        text: "Load your current watchlist, count coverage gaps, and check whether the database surfaces at least one startup you would otherwise have missed. If it does not, it is the wrong layer.",
+      },
+    ],
+    body: `**Startup databases split by the layer they serve.** Curated databases (Crunchbase, Dealroom, PitchBook, Tracxn) record what has already happened: rounds, hires, news, and company profiles. Signal feeds (this site, Harmonic's employment graph) measure what is changing now. Relationship platforms (Wellfound, LinkedIn) connect you to founders directly. A serious sourcing stack uses one from each layer, and this page positions the database layer against the alternatives honestly.
+
+**The databases investors actually use, honestly positioned.** Crunchbase is the broadest affordable entry point, with Crunchbase Pro at $49/month and strong global company profiles. Dealroom leads on European and deep-tech coverage and is the default for EU-focused funds. PitchBook, owned by Morningstar, has the deepest venture financials and fund data at firm-level budgets. Tracxn profiles sectors and geographies Western platforms under-cover, especially emerging markets. Wellfound (formerly AngelList Talent) is free and strong for early-stage hiring and founder discovery. Harmonic models founder and employee networks from incorporation onward, useful when the thesis is people-first.
+
+**What free actually gets you.** Crunchbase's free tier shows basic profiles but gates financials and search depth. Wellfound profiles are free. GitDealFlow's dataset is free with no signup: JSON and CSV endpoints covering 350+ startup orgs across 15 sectors, refreshed weekly. Free is enough to start sourcing; pay when search depth or API volume becomes the bottleneck.
+
+**The startup database API question.** If you automate screening, the API matters more than the UI. Crunchbase's API is paid and tiered, and most firm platforms gate APIs behind annual contracts. GitDealFlow serves free JSON, CSV, and OpenAPI endpoints with no API key, plus an MCP server agents can call directly. For a solo investor building a screening script, the free API is the practical starting point.
+
+**Freshness is the hidden spec.** Ask every vendor how often data updates and what updated means for a company that has not raised in a year. Curated databases refresh funding data on announcement cycles, and some profile fields go stale for quarters. Signal feeds refresh weekly by construction. If the thesis is pre-announcement timing, freshness beats breadth.
+
+**Where a database ends and deal flow begins.** A database answers what happened; deal flow answers what happens next. Across the historical GitDealFlow panel, top-quintile commit-velocity acceleration preceded fundraise announcements by three to six weeks; curated databases typically record the round after it closes. That gap is the difference between reacting to a public round and meeting the team before it.
+
+**How to choose in five minutes.** List your thesis geographies and stages. Solo US angel: Crunchbase Pro plus the free signal feed. EU-focused fund: Dealroom plus the signal feed. Institution: PitchBook or Tracxn plus Harmonic plus the signal feed. Then run the two-week trial above: load your watchlist, count coverage gaps, and check whether the database surfaces at least one startup you would otherwise have missed. If not, the subscription is shelfware.`,
+    facts: [
+      {
+        claim:
+          "PitchBook has been owned by Morningstar since 2016, which gave it the deepest financial-side coverage of the discovery-engine market.",
+        sourceUrl: "https://pitchbook.com/about",
+        sourceLabel: "PitchBook About",
+      },
+      {
+        claim:
+          "Crunchbase Pro starts at $49/month for individual users, the broadest affordable database tier.",
+        sourceUrl: "https://www.crunchbase.com/pricing",
+        sourceLabel: "Crunchbase pricing",
+      },
+      {
+        claim:
+          "GitHub commit-velocity acceleration in the top quintile preceded fundraise announcements by 3-6 weeks across the historical GitDealFlow panel.",
+        sourceUrl:
+          "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558",
+        sourceLabel: "SSRN preprint",
+      },
+      {
+        claim:
+          "The GitDealFlow dataset is free: JSON and CSV endpoints cover 350+ startup orgs across 15 sectors, refreshed weekly, with no API key.",
+        sourceUrl: "https://signals.gitdealflow.com/api/signals.json",
+        sourceLabel: "GitDealFlow signals API",
+      },
+    ],
+    faqs: [
+      {
+        q: "What is the best free startup database?",
+        a: "GitDealFlow's dataset (JSON and CSV, 350+ orgs, 15 sectors, refreshed weekly) and Wellfound's startup profiles are the strongest free layers; Crunchbase's free tier covers the basics. Free depth means reading engineering and hiring signals directly rather than waiting for curated round announcements.",
+      },
+      {
+        q: "Is there a free startup database API?",
+        a: "Yes: GitDealFlow serves free JSON and CSV endpoints with no API key, plus an OpenAPI spec and an MCP server. Crunchbase's API is paid and tiered, and most firm platforms gate APIs behind enterprise contracts.",
+      },
+      {
+        q: "Which startup database do VCs actually use?",
+        a: "PitchBook, Crunchbase, Dealroom, and Tracxn are the common curated databases; Affinity for CRM; and GitDealFlow or Harmonic-style signal feeds for early discovery. Most firms layer one database with one signal feed rather than paying for two databases.",
+      },
+      {
+        q: "Is Crunchbase worth paying for?",
+        a: "For a solo investor or early fund, yes: Crunchbase Pro at $49/month is the cheapest presentable database. At firm budgets, PitchBook's financial depth or Dealroom's European coverage usually earns the higher price.",
+      },
+      {
+        q: "What is the difference between a startup database and deal flow signals?",
+        a: "A database records what has already happened: rounds, hires, and news. Deal flow signals measure what is changing now, such as commit acceleration and contributor growth, three to six weeks before announcements. The two are complements, not substitutes.",
+      },
+    ],
+    ctaUrl: "/dataset",
+    ctaLabel: "Explore the free startup dataset",
+    nextReadLinks: [
+      { label: "Crunchbase alternative for angel investors", url: "/compare/crunchbase-alternative-for-angel-investors" },
+      { label: "First Look vs a startup database", url: "/compare/first-look-vs-startup-database-for-live-theses" },
+      { label: "The buyer's guide to deal flow tooling", url: "/buyers-guide" },
+    ],
+    related: [
+      "best-vc-deal-sourcing-tools-2026",
+      "best-pitchbook-alternative-for-solo-investors",
+      "alternative-to-crunchbase-for-developers",
+      "free-vc-tools-for-emerging-fund-managers",
+    ],
+    keywords: [
+      "best startup database",
+      "startup database API",
+      "startup database free",
+      "VC startup database",
+      "Crunchbase alternative free",
+      "Dealroom vs PitchBook",
+      "Tracxn vs Crunchbase",
+      "startup data for investors",
+      "engineering acceleration signals",
+    ],
+  },
+  {
+    slug: "deal-flow-crm",
+    query: "Deal flow CRM",
+    h1: "Deal Flow CRM: What Early-Stage Investors Actually Use",
+    metaTitle: `Deal Flow CRM ${FRESH_YEAR_STR}: Affinity, Attio, or Airtable?`,
+    description:
+      "Affinity, Attio, Airtable and Notion compared for VC deal flow CRM, plus how a free signal feed fills the top of the funnel no CRM can source.",
+    tldr:
+      "A deal flow CRM tracks sourced startups, founder touchpoints, and next-touch dates in a pipeline. Affinity dominates VC-native teams, Attio is the flexible lower-cost option, Airtable and Notion work as DIY boards, and a free signal feed like GitDealFlow supplies the candidates the CRM then records.",
+    // 2026-08-16 MOFU hub: 40-60w neutral direct answer.
+    definition:
+      "A deal flow CRM is pipeline software for tracking sourced startups: founder contact points, meeting notes, funding status, and next-touch dates. VC-native options include Affinity (dominant above $250M AUM), Attio (flexible, lower cost), and DIY boards in Airtable or Notion; a free signal feed such as GitDealFlow supplies the top-of-funnel candidates the CRM records.",
+    steps: [
+      {
+        name: "Pick the shape: native CRM, flexible CRM, or DIY board",
+        text: "Affinity for relationship intelligence at firm scale, Attio for custom fields on a budget, Airtable or Notion while the pipeline is under fifty companies.",
+      },
+      {
+        name: "Define pipeline stages before configuring",
+        text: "Sourced, contacted, first meeting, diligence, IC, passed, portfolio. Naming the stages first prevents a rebuild two months in, when a year of history is already inside.",
+      },
+      {
+        name: "Map signal sources into the CRM",
+        text: "Networks, events, inbound, and a weekly signal feed. A free CSV or API source turns a ranked watchlist into CRM rows without manual entry.",
+      },
+      {
+        name: "Log every touch with a next-touch date",
+        text: "The only unforgivable sin in a deal flow CRM is a stalled company with no next action. Every note ends with a date, or the note does not ship.",
+      },
+      {
+        name: "Review weekly and prune",
+        text: "A weekly pipeline review keeps the CRM honest: close or archive companies with no movement for 90 days, and the pipeline stops pretending to be a museum.",
+      },
+    ],
+    body: `**What a deal flow CRM is, and is not.** A deal flow CRM is the record of your sourcing process: every founder you meet, every note, every next-touch date. It is not a discovery engine and not a database; it only contains what you put in. That distinction drives the whole buying decision: the CRM optimizes the pipeline you already have, while sourcing fills the pipeline the CRM then records.
+
+**The 2026 landscape, honestly positioned.** Affinity is the VC-native standard and holds the largest share among US firms above $250M AUM, priced at firm-level annual contracts. Attio is the flexible challenger: custom data models, a free plan, and per-seat pricing that suits small funds. Airtable and Notion are the DIY route, free to start, unlimited flexibility, but they will not deduplicate relationships or enrich company data for you. HubSpot's free CRM covers generic pipeline tracking. Specialist tools like 4Degrees and Zapflow sit between the DIY and enterprise tiers.
+
+**Affinity vs Attio vs Airtable: the actual decision.** Pick Affinity when relationship intelligence and automatic data enrichment justify the contract, typically once the fund manages hundreds of live relationships. Pick Attio when you want a real CRM but need custom fields and a lower bill. Pick Airtable or Notion while the pipeline is under fifty companies and one person owns the process. The trap is staying in the spreadsheet too long: after a year of sourcing, a year of founder history has accumulated, and migration gets expensive.
+
+**What the CRM still cannot do.** No CRM sources deal flow; it records. The top of the funnel comes from networks, events, inbound, and signal feeds. A free weekly signal feed (350+ startup orgs, 15 sectors, ranked by GitHub commit-velocity acceleration) plugs into any CRM via API, MCP, or CSV, so the CRM receives a ranked list of companies to track instead of waiting for the network to deliver them.
+
+**The spreadsheet and template route.** For first-time fund managers, an Excel or Airtable template is the right starting point: pipeline stage, founder, contact, source, next-touch date, notes. The free digest and CSV export make the template easy to seed each week. Move to a native CRM when deduplication and relationship history stop being manageable by hand, usually around fifty live companies.
+
+**How GitDealFlow fits.** GitDealFlow is a signal feed, not a CRM, and it does not compete with Affinity or Attio. It feeds whichever CRM you use: the weekly digest, free API, and MCP server push ranked engineering-acceleration lists that become CRM rows. The comparison that matters is signal feed plus CRM versus CRM alone, because the CRM alone cannot see a company before it announces.`,
+    facts: [
+      {
+        claim:
+          "Affinity holds the largest market share among VC-specialized CRMs, used by a majority of US-based VC firms with $250M+ AUM.",
+        sourceUrl: "https://www.affinity.co/customers",
+        sourceLabel: "Affinity customers",
+      },
+      {
+        claim:
+          "HubSpot's free CRM tier covers basic pipeline tracking with no per-seat cost.",
+        sourceUrl: "https://www.hubspot.com/products/crm",
+        sourceLabel: "HubSpot CRM",
+      },
+      {
+        claim:
+          "GitHub commit-velocity acceleration in the top quintile preceded fundraise announcements by 3-6 weeks across the historical GitDealFlow panel.",
+        sourceUrl:
+          "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558",
+        sourceLabel: "SSRN preprint",
+      },
+      {
+        claim:
+          "GitDealFlow is a signal feed, not a CRM: its free API, MCP server, and weekly digest push ranked startup lists into whichever CRM you already use.",
+        sourceUrl: "https://signals.gitdealflow.com/install",
+        sourceLabel: "GitDealFlow install",
+      },
+    ],
+    faqs: [
+      {
+        q: "Do solo angels need a deal flow CRM?",
+        a: "Not on day one. A spreadsheet or Airtable board covers a pipeline under fifty companies, then Attio's free plan or HubSpot's free CRM as it grows. A CRM pays for itself once deals from your network exceed what memory and a spreadsheet can hold.",
+      },
+      {
+        q: "What is the best free deal flow CRM?",
+        a: "Attio's free plan, Airtable's free tier, or HubSpot's free CRM, depending on how much structure you want. GitDealFlow's free signal feed covers the sourcing half no CRM does, and the two together cost nothing.",
+      },
+      {
+        q: "Is Affinity worth the price?",
+        a: "For firms above roughly $250M AUM managing hundreds of relationships: usually yes, because automatic enrichment and relationship intelligence replace manual data entry. Below that scale, Attio or Airtable covers the same job for a fraction of the cost.",
+      },
+      {
+        q: "Can I use Notion or Airtable as a deal flow CRM?",
+        a: "Yes, and it is the right move while the pipeline is simple. They break down on relationship deduplication, automatic company-data enrichment, and shared pipeline views at scale, which is when native CRMs earn their price.",
+      },
+      {
+        q: "What is the difference between a deal flow CRM and a startup database?",
+        a: "The CRM tracks your pipeline and your relationships: who you met, what you said, what happens next. The database is the reference layer you query about the market. One records your process, the other records the market.",
+      },
+    ],
+    ctaUrl: "/compare/gitdealflow-vs-affinity-for-discovery-vs-crm",
+    ctaLabel: "See how the signal feed feeds your CRM",
+    nextReadLinks: [
+      { label: "GitDealFlow vs Affinity: discovery vs CRM", url: "/compare/gitdealflow-vs-affinity-for-discovery-vs-crm" },
+      { label: "Dashboard vs a free CRM for early sourcing", url: "/compare/dashboard-vs-a-free-crm-for-early-sourcing" },
+      { label: "Deal flow management, topical series", url: "/topics/deal-flow-management" },
+    ],
+    related: [
+      "are-vc-deal-flow-tools-worth-the-money",
+      "best-vc-deal-flow-software-2026",
+      "best-vc-deal-sourcing-tools-2026",
+      "github-deal-flow-for-investors",
+    ],
+    keywords: [
+      "deal flow CRM",
+      "VC deal flow CRM",
+      "deal flow CRM software",
+      "Affinity vs Attio",
+      "Airtable deal flow template",
+      "deal flow Excel template",
+      "deal flow pipeline software",
+      "deal flow management",
+      "CRM for venture capital",
+      "free deal flow CRM",
+    ],
+  },
 ];
 
 

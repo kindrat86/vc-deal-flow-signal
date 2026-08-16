@@ -4228,6 +4228,40 @@ landingCheck(
   }
 }
 
+// §52 MOFU hubs (2026-08-16, audit "content gaps 45"): two missing
+// middle-of-funnel hubs from the gap-keywords autocomplete mine.
+// /answers/best-startup-database targets the "startup database" family
+// (best startup database / startup database API / startup database free /
+// VC startup database / Crunchbase alternative free); /answers/deal-flow-crm
+// targets "deal flow crm" / "vc deal flow crm". Both must keep the direct
+// answer, the HowTo steps, the 5 FAQs, and the family head terms.
+{
+  {
+    const s = read("content/agent-queries.ts");
+    const needles: Array<[string, string]> = [
+      ['slug: "best-startup-database"', "best-startup-database entry missing"],
+      ['slug: "deal-flow-crm"', "deal-flow-crm entry missing"],
+      ['Crunchbase Pro ($49/month) is the broadest', "database definition reverted"],
+      ['"A deal flow CRM is pipeline software', "CRM definition reverted"],
+      ['"What is the best free startup database?"', "database FAQ head question lost"],
+      ['"Do solo angels need a deal flow CRM?"', "CRM FAQ head question lost"],
+      ['name: "Define the coverage you need"', "database HowTo steps reverted"],
+      ['name: "Pick the shape: native CRM, flexible CRM, or DIY board"', "CRM HowTo steps reverted"],
+      ['"best startup database"', "database keywords lost the family head term"],
+      ['"deal flow CRM"', "CRM keywords lost the family head term"],
+      ['ctaUrl: "/dataset"', "database CTA reverted"],
+      ['ctaUrl: "/compare/gitdealflow-vs-affinity-for-discovery-vs-crm"', "CRM CTA reverted"],
+    ];
+    for (const [needle, msg] of needles) {
+      if (s === null || !s.includes(needle)) {
+        failures.push(
+          `§52 MOFU hub: ${msg}\n    file: content/agent-queries.ts\n    fix: restore the entry (audit content-gaps-45, 2026-08-16): ${needle}`,
+        );
+      }
+    }
+  }
+}
+
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +
