@@ -4744,6 +4744,9 @@ landingCheck(
       ["../app/vsl/page.tsx", "€49/mo</p>"],
       ["../app/pitch/page.tsx", "350+ startups, 15 sectors"],
       ["../app/code-side-sourcing/page.tsx", "350+ ranked orgs"],
+      ["../app/page.tsx", "claim: `${panelClaim} startup signals across"],
+      ["../app/opengraph-image.tsx", "panelClaimFloor(totalStartups)"],
+      ["../app/llms.txt/route.ts", "the 350+ ranked startups"],
     ];
     for (const [path, needle] of priceNeedles) {
       const src = read(path);
@@ -4761,6 +4764,23 @@ landingCheck(
       ["../app/tweet-teardown/thanks/page.tsx", /four thousand two hundred/],
       ["../app/pitch/page.tsx", /140 startups/],
       ["../app/code-side-sourcing/page.tsx", /109\+ ranked orgs/],
+      ["../app/page.tsx", /\$\{totalTracked\} startup signals/],
+      ["../app/opengraph-image.tsx", /\{totalStartups\}\+/],
+      ["../app/llms.txt/route.ts", /140 ranked startups/],
+      ["../app/research/[slug]/page.tsx", /20\+ startup sectors/],
+      ["../content/comparisons.ts", /20 startup sectors/],
+      ["../content/comparisons.ts", /EUR 9\.97\/month/],
+      ["../app/integrations/page.tsx", /140 ranked/],
+      ["../app/api/v1/pricing.json/route.ts", /140 ranked/],
+      ["../app/origin/your-journey/page.tsx", /140 ranked/],
+      ["../app/alternatives/[slug]/page.tsx", /140 ranked/],
+      ["../app/data-sources/page.tsx", /140 ranked/],
+      ["../app/pricing/page.tsx", /140 ranked/],
+      ["../content/vsl-script.json", /140 ranked/],
+      ["../content/standalone-faqs.ts", /140 ranked/],
+      ["../content/use-cases.ts", /140 ranked/],
+      ["../content/comparisons.ts", /140 ranked/],
+      ["../components/HomeOfferStack.tsx", /140 ranked/],
     ];
     for (const [path, rx] of priceBans) {
       const src = read(path);

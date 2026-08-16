@@ -345,7 +345,7 @@ the full universe of venture-backed GitHub orgs we look at. This
               is the haystack, not the picks.
             </li>
             <li>
-              <strong className="text-gray-200">140 ranked and surfaced each week</strong>{" "}
+              <strong className="text-gray-200">350+ ranked and surfaced each week</strong>{" "}
 the much smaller set that actually shows unusual acceleration and
               makes it into the Dashboard. This is what you read.
             </li>

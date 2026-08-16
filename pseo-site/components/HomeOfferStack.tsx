@@ -18,7 +18,7 @@ type StackLine = {
 
 const STACK: readonly StackLine[] = [
   {
-    label: "Live Dashboard, 140 ranked orgs, refreshed Mondays 06:00 UTC",
+    label: "Live Dashboard, 350+ ranked orgs, refreshed Mondays 06:00 UTC",
     anchor: "€348 / yr",
     priced: 348,
   },

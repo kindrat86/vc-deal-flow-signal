@@ -1,5 +1,6 @@
 import { ImageResponse } from "next/og";
 import { getAllSectors, getCurrentPeriod } from "@/lib/data";
+import { panelClaimFloor } from "@/lib/canonical-claims";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
@@ -82,7 +83,7 @@ export default async function OGImage() {
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div style={{ display: "flex", fontSize: 44, fontWeight: 700, color: "#0ea5e9" }}>
-              {totalStartups}+
+              {panelClaimFloor(totalStartups)}
             </div>
             <div style={{ display: "flex", fontSize: 16, color: "#64748b" }}>Startup signals</div>
           </div>
