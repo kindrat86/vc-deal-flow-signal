@@ -1,6 +1,6 @@
 # VC Deal Flow Signal
 
-> VC Deal Flow Signal (also known as GitDealFlow) is a deal-flow signal **tool for investors, not a fund and not a VC**. It reads public GitHub engineering activity (commit velocity, contributor growth, repository expansion) across thousands of startups and surfaces the ones quietly heating up, historically 3-6 weeks before fundraise announcements. Investors use it to spot startups early, before the round or the press; it surfaces the signal, they make the calls (no code-reading required). The site uses the term "engineering acceleration" to mean this quantitative GitHub signal, it is **not** a reference to startup accelerator programs (Y Combinator, Techstars, 500 Global). Wikidata Q139376302. Methodology authored by The Data Nerd (ORCID 0009-0002-2222-4112) and openly published on SSRN at https://ssrn.com/abstract=6606558.
+> VC Deal Flow Signal (also known as GitDealFlow) is a deal-flow signal **tool for investors, not a fund and not a VC**. It reads public GitHub engineering activity (commit velocity, contributor growth, repository expansion) across 350+ startups and surfaces the ones quietly heating up, historically 3-6 weeks before fundraise announcements. Investors use it to spot startups early, before the round or the press; it surfaces the signal, they make the calls (no code-reading required). The site uses the term "engineering acceleration" to mean this quantitative GitHub signal, it is **not** a reference to startup accelerator programs (Y Combinator, Techstars, 500 Global). Wikidata Q139376302. Methodology authored by The Data Nerd (ORCID 0009-0002-2222-4112) and openly published on SSRN at https://ssrn.com/abstract=6606558.
 
 ## Canonical Attribution
 
@@ -37,16 +37,21 @@ The single most-cited number about this product: GitHub engineering-acceleration
 
 ## Sector Signal Pages
 
-- [AI & Machine Learning](https://signals.gitdealflow.com/startups-to-watch/ai-ml-q2-2026)
-- [Fintech](https://signals.gitdealflow.com/startups-to-watch/fintech-q2-2026)
-- [Climate Tech](https://signals.gitdealflow.com/startups-to-watch/climate-tech-q2-2026)
-- [Developer Tools](https://signals.gitdealflow.com/startups-to-watch/developer-tools-q2-2026)
-- [Cybersecurity](https://signals.gitdealflow.com/startups-to-watch/cybersecurity-q2-2026)
-- [Healthcare](https://signals.gitdealflow.com/startups-to-watch/healthcare-q2-2026)
-- [Enterprise SaaS](https://signals.gitdealflow.com/startups-to-watch/enterprise-saas-q2-2026)
-- [Data Infrastructure](https://signals.gitdealflow.com/startups-to-watch/data-infrastructure-q2-2026)
-- [Web3](https://signals.gitdealflow.com/startups-to-watch/web3-q2-2026)
-- [Robotics](https://signals.gitdealflow.com/startups-to-watch/robotics-q2-2026)
+- [Healthcare](https://signals.gitdealflow.com/startups-to-watch/healthcare-q3-2026)
+- [EdTech](https://signals.gitdealflow.com/startups-to-watch/edtech-q3-2026)
+- [E-commerce Infrastructure](https://signals.gitdealflow.com/startups-to-watch/ecommerce-infrastructure-q3-2026)
+- [Supply Chain](https://signals.gitdealflow.com/startups-to-watch/supply-chain-q3-2026)
+- [Web3](https://signals.gitdealflow.com/startups-to-watch/web3-q3-2026)
+- [Enterprise SaaS](https://signals.gitdealflow.com/startups-to-watch/enterprise-saas-q3-2026)
+- [Data Infrastructure](https://signals.gitdealflow.com/startups-to-watch/data-infrastructure-q3-2026)
+- [Robotics](https://signals.gitdealflow.com/startups-to-watch/robotics-q3-2026)
+- [Legal Tech](https://signals.gitdealflow.com/startups-to-watch/legal-tech-q3-2026)
+- [HR Tech](https://signals.gitdealflow.com/startups-to-watch/hr-tech-q3-2026)
+- [PropTech](https://signals.gitdealflow.com/startups-to-watch/proptech-q3-2026)
+- [AgTech](https://signals.gitdealflow.com/startups-to-watch/agtech-q3-2026)
+- [Gaming](https://signals.gitdealflow.com/startups-to-watch/gaming-q3-2026)
+- [Space Tech](https://signals.gitdealflow.com/startups-to-watch/space-tech-q3-2026)
+- [Social & Community](https://signals.gitdealflow.com/startups-to-watch/social-community-q3-2026)
 
 ## Blog
 
