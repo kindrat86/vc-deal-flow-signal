@@ -962,6 +962,7 @@ p[style*="text-align: center"] {
          main ul a,
          body > section ul a,
          body > section > p a,
+         body > ul a,
          .network-grid a) {
     display: inline-block;
     min-height: 24px;
