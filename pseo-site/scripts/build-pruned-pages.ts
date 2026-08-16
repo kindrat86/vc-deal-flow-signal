@@ -59,6 +59,7 @@ const PAGE_SHARDS = [
 // Prune-eligible leaf families. Hub/index pages, curated statics, strategic
 // families, and the quarterly niche-down surface are deliberately absent.
 const ELIGIBLE: RegExp[] = [
+  /^\/benchmarks\/[^/]+$/,
   /^\/city\/[^/]+$/,
   /^\/best\/[^/]+$/,
   /^\/stage\/[^/]+\/[^/]+$/,
