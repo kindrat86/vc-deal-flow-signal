@@ -43,6 +43,7 @@ type CheckoutInput = {
   bump: string | null;
   variant: string | null;
   email: string | null;
+  ph_distinct_id: string | null;
 };
 
 async function readInput(req: NextRequest): Promise<CheckoutInput> {
@@ -54,15 +55,17 @@ async function readInput(req: NextRequest): Promise<CheckoutInput> {
         bump?: unknown;
         variant?: unknown;
         email?: unknown;
+        ph_distinct_id?: unknown;
       };
       return {
         tier: typeof body.tier === "string" ? body.tier : null,
         bump: typeof body.bump === "string" ? body.bump : null,
         variant: typeof body.variant === "string" ? body.variant : null,
         email: typeof body.email === "string" ? body.email : null,
+        ph_distinct_id: typeof body.ph_distinct_id === "string" ? body.ph_distinct_id : null,
       };
     } catch {
-      return { tier: null, bump: null, variant: null, email: null };
+      return { tier: null, bump: null, variant: null, email: null, ph_distinct_id: null };
     }
   }
   if (
@@ -74,11 +77,13 @@ async function readInput(req: NextRequest): Promise<CheckoutInput> {
     const bump = fd.get("bump");
     const variant = fd.get("variant");
     const email = fd.get("email");
+    const ph_distinct_id = fd.get("ph_distinct_id");
     return {
       tier: typeof tier === "string" ? tier : null,
       bump: typeof bump === "string" && bump !== "" ? bump : null,
       variant: typeof variant === "string" && variant !== "" ? variant : null,
       email: typeof email === "string" && email !== "" ? email : null,
+      ph_distinct_id: typeof ph_distinct_id === "string" && ph_distinct_id !== "" ? ph_distinct_id : null,
     };
   }
   const sp = req.nextUrl.searchParams;
@@ -87,11 +92,12 @@ async function readInput(req: NextRequest): Promise<CheckoutInput> {
     bump: sp.get("bump"),
     variant: sp.get("variant"),
     email: sp.get("email"),
+    ph_distinct_id: sp.get("ph_distinct_id"),
   };
 }
 
 export async function POST(req: NextRequest) {
-  const { tier, bump: rawBump, variant: rawVariant, email } = await readInput(req);
+  const { tier, bump: rawBump, variant: rawVariant, email, ph_distinct_id } = await readInput(req);
   const headers = corsHeaders(req.headers.get("origin"));
   if (!tier || !isEntryTier(tier)) {
     return NextResponse.json({ error: "invalid_tier" }, { status: 400, headers });
@@ -175,6 +181,7 @@ export async function POST(req: NextRequest) {
     flow: "entry_checkout",
     ...(bump ? { bump } : {}),
     ...(variant ? { variant } : {}),
+    ...(ph_distinct_id ? { ph_distinct_id: ph_distinct_id.slice(0, 64) } : {}),
   };
 
   let session: Stripe.Checkout.Session;
