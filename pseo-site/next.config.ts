@@ -103,7 +103,14 @@ const nextConfig: NextConfig = {
       },
       {
         source: "/compare/crunchbase-vs-cb-insights",
-        destination: "/vs/crunchbase-vs-cb-insights",
+        destination: "/vs/cb-insights-vs-crunchbase",
+        permanent: true,
+      },
+      {
+        // Reverse /compare/ mirror for the same pair (was a 404 trust leak).
+        // Both word-orders consolidate onto the natural-order canonical.
+        source: "/compare/cb-insights-vs-crunchbase",
+        destination: "/vs/cb-insights-vs-crunchbase",
         permanent: true,
       },
       {
@@ -210,9 +217,12 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
-        // Same reverse-alias consolidation, second overridden pair.
-        source: "/vs/cb-insights-vs-crunchbase",
-        destination: "/vs/crunchbase-vs-cb-insights",
+        // Reverse-alias direction FLIPPED 2026-08-16: GSC 90d shows Google
+        // ranks /vs/cb-insights-vs-crunchbase at pos 14.4 on the dominant query
+        // "cb insights vs crunchbase" vs the reversed slug at 38.7. Canonical is
+        // the query-word-order slug; the reversed direction 308s into it.
+        source: "/vs/crunchbase-vs-cb-insights",
+        destination: "/vs/cb-insights-vs-crunchbase",
         permanent: true,
       },
       // Historical /best/ slugs (data-derived, see the bestRedirects const at

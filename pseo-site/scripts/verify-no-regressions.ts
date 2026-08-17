@@ -1708,7 +1708,7 @@ check(
   // regenerated in comparisons.ts.
   const CONSOLIDATED: [string, string][] = [
     ["/compare/pitchbook-vs-cb-insights", "/vs/pitchbook-vs-cb-insights"],
-    ["/compare/crunchbase-vs-cb-insights", "/vs/crunchbase-vs-cb-insights"],
+    ["/compare/crunchbase-vs-cb-insights", "/vs/cb-insights-vs-crunchbase"],
     ["/compare/pitchbook-vs-crunchbase", "/vs/crunchbase-vs-pitchbook"],
     ["/compare/crunchbase-vs-dealroom", "/vs/dealroom-vs-crunchbase"],
     ["/compare/pitchbook-vs-dealroom", "/vs/dealroom-vs-pitchbook"],
@@ -2101,7 +2101,7 @@ check(
 {
   const RETIRED: Array<[string, string]> = [
     ["/compare/pitchbook-vs-cb-insights", "/vs/pitchbook-vs-cb-insights"],
-    ["/compare/crunchbase-vs-cb-insights", "/vs/crunchbase-vs-cb-insights"],
+    ["/compare/crunchbase-vs-cb-insights", "/vs/cb-insights-vs-crunchbase"],
     ["/compare/pitchbook-vs-crunchbase", "/vs/crunchbase-vs-pitchbook"],
     ["/compare/crunchbase-vs-dealroom", "/vs/dealroom-vs-crunchbase"],
     ["/compare/pitchbook-vs-dealroom", "/vs/dealroom-vs-pitchbook"],
@@ -3445,10 +3445,10 @@ check(
   "§40 PAA: the CB Insights entity questions (reputable / cost per year / who owns / what kind of company) were dropped; they appear verbatim as PAA on 2 SERPs and are entity-SEO surface",
   (s) => {
     // Slug-bound since 2026-08-16: the questions must live on the CANONICAL
-    // pair block (crunchbase-vs-cb-insights). A direction-consolidation 308
-    // (next.config.ts) stranded them on the redirected cb-insights-vs-crunchbase
+    // pair block (cb-insights-vs-crunchbase). A direction-consolidation 308
+    // (next.config.ts) stranded them on the redirected crunchbase-vs-cb-insights
     // block once, rendering them nowhere. This binding makes that fail-closed.
-    const blk = s.slice(s.indexOf('slug: "crunchbase-vs-cb-insights"'), s.indexOf('slug: "', s.indexOf('slug: "crunchbase-vs-cb-insights"') + 10));
+    const blk = s.slice(s.indexOf('slug: "cb-insights-vs-crunchbase"'), s.indexOf('slug: "', s.indexOf('slug: "cb-insights-vs-crunchbase"') + 10));
     return blk.includes("Is CB Insights reputable?") &&
       blk.includes("How much does CB Insights cost per year?") &&
       blk.includes("Who owns CB Insights?") &&
@@ -3710,7 +3710,7 @@ landingCheck(
   } else {
     for (const needle of [
       "/vs/harmonic-ai-vs-affinity",
-      "/vs/cb-insights-vs-crunchbase",
+      "/vs/crunchbase-vs-cb-insights",
       // NOTE 2026-08-19: the old "/best/developer-tools-2026" needle was
       // REMOVED on purpose. That 308 (and the other four frozen-sector
       // /best/ 308s) is now DATA-DERIVED by scripts/generate-best-redirects.ts

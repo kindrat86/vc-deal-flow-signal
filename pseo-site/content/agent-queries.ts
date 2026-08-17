@@ -3857,7 +3857,7 @@ The 2026 thesis (cf. Greg Isenberg's "Agents Are the New SaaS") is that the agen
     nextReadLinks: [
       { label: "Harmonic.ai vs PitchBook", url: "/vs/harmonic-ai-vs-pitchbook" },
     { label: "Dealroom vs PitchBook", url: "/vs/dealroom-vs-pitchbook" },
-    { label: "Crunchbase vs CB Insights", url: "/vs/crunchbase-vs-cb-insights" },
+    { label: "CB Insights vs Crunchbase", url: "/vs/cb-insights-vs-crunchbase" },
     { label: "Full pricing: free tier to EUR 49/mo", url: "/pricing" },
     ],
     keywords: [
@@ -5771,7 +5771,7 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     ],
     nextReadLinks: [
       { label: "Crunchbase vs PitchBook", url: "/vs/crunchbase-vs-pitchbook" },
-    { label: "Crunchbase vs CB Insights", url: "/vs/crunchbase-vs-cb-insights" },
+    { label: "CB Insights vs Crunchbase", url: "/vs/cb-insights-vs-crunchbase" },
     { label: "Free tier vs paid dashboard", url: "/pricing" },
     ],
     keywords: [
