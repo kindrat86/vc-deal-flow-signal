@@ -357,7 +357,7 @@
       fetch('https://signals.gitdealflow.com/api/checkout/session', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ tier: 'firstlook', variant: gdfVariant(), bump: bump })
+        body: JSON.stringify({ tier: 'firstlook', variant: gdfVariant(), bump: bump, ph_distinct_id: (window.posthog && window.posthog.get_distinct_id) ? window.posthog.get_distinct_id() : null })
       }).then(function(res){ return res.json(); }).then(function(data){
         if (!data || !data.url) throw new Error('Missing checkout URL');
         window.location.href = data.url;
