@@ -26,6 +26,18 @@ export interface PaperFAQ {
   answer: string;
 }
 
+/** One paper-specific quotable figure (audit item #5, §69 guard). */
+export interface PaperKeyStat {
+  /** The quotable figure, verbatim (a number or short phrase). */
+  value: string;
+  /** What the figure measures. */
+  label: string;
+  /** Attribution name (arXiv id or canonical source). */
+  source: string;
+  /** Canonical URL substantiating the figure. */
+  sourceHref: string;
+}
+
 export interface ResearchPaper {
   slug: string;
   title: string;
@@ -50,6 +62,9 @@ export interface ResearchPaper {
 
   /** 40-60w quotable direct answer (§65 guard) */
   definition: string;
+
+  /** One paper-specific quotable figure (§69 guard): citable number + source. */
+  keyStat: PaperKeyStat;
   /** Our editorial context, why we cite this paper. */
   ourContext: string;
   /**
@@ -109,6 +124,12 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
      */
     definition:
       "Attention Is All You Need (Vaswani et al., NeurIPS 2017) introduced the Transformer, a neural architecture built entirely on self-attention with no recurrence or convolution. It matched or beat recurrent translation models at far lower training cost, and every modern frontier LLM, GPT, Claude, Gemini, Llama, still runs on it.",
+    keyStat: {
+      value: "Self-attention",
+      label: "architecture with no recurrence or convolution, the basis of every modern frontier LLM",
+      source: "arXiv:1706.03762",
+      sourceHref: "https://arxiv.org/abs/1706.03762",
+    },
     abstractSummary:
       "Introduces the Transformer architecture: a sequence-to-sequence model based entirely on attention mechanisms, dispensing with recurrence and convolutions. Demonstrates state-of-the-art results on English-to-German and English-to-French translation benchmarks with significantly less training time than the prior recurrent encoder-decoder models. The architecture's self-attention mechanism allows parallel processing of sequence elements and scales effectively with model size and data.",
     ourContext:
@@ -182,6 +203,12 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
      */
     definition:
       "Language Models are Few-Shot Learners (Brown et al., NeurIPS 2020) introduced GPT-3, a 175B-parameter Transformer, and showed that scale alone produces few-shot in-context learning: one model performs many NLP tasks from a handful of prompt examples with no fine-tuning. The paper is the empirical foundation of the foundation-model scaling era.",
+    keyStat: {
+      value: "175B",
+      label: "parameters; few-shot in-context learning emerges from scale alone",
+      source: "arXiv:2005.14165",
+      sourceHref: "https://arxiv.org/abs/2005.14165",
+    },
     abstractSummary:
       "Introduces GPT-3, a 175B-parameter autoregressive language model, and demonstrates that scaling up a Transformer LM produces emergent few-shot in-context learning capability. Shows that a single model can perform many NLP tasks competitively without fine-tuning, simply by being shown a few examples in the prompt. Documents capability and scaling behaviors that defined the LLM era.",
     ourContext:
@@ -255,6 +282,12 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
      */
     definition:
       "InstructGPT (Ouyang et al., 2022) introduced the RLHF pipeline behind ChatGPT-style models: supervised fine-tuning on human demonstrations, a reward model trained on human preference comparisons, then PPO optimization against it. The 1.3B InstructGPT outputs were preferred over 175B GPT-3, showing alignment training beats raw scale for instructions.",
+    keyStat: {
+      value: "1.3B",
+      label: "parameters preferred over 175B GPT-3 after RLHF",
+      source: "arXiv:2203.02155",
+      sourceHref: "https://arxiv.org/abs/2203.02155",
+    },
     abstractSummary:
       "Introduces InstructGPT and the RLHF (Reinforcement Learning from Human Feedback) pipeline: (1) collect demonstrations from human labelers for supervised fine-tuning, (2) collect human preference comparisons over model outputs to train a reward model, (3) optimize the LM against the reward model via PPO. Shows that this pipeline dramatically improves helpfulness, truthfulness, and harmlessness compared to the raw GPT-3 baseline, at a fraction of the parameter count.",
     ourContext:
@@ -328,6 +361,12 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
      */
     definition:
       "Retrieval-Augmented Generation (Lewis et al., NeurIPS 2020) combined a seq2seq model with a non-parametric memory: a dense passage retrieval index over Wikipedia that the generator consults before answering. RAG matched or beat fine-tuned baselines on knowledge-intensive tasks while letting each answer cite the documents that informed it.",
+    keyStat: {
+      value: "Retrieve-then-generate",
+      label: "parametric and non-parametric memory with a cited source for every answer",
+      source: "arXiv:2005.11401",
+      sourceHref: "https://arxiv.org/abs/2005.11401",
+    },
     abstractSummary:
       "Introduces Retrieval-Augmented Generation (RAG): an architecture that combines a pretrained sequence-to-sequence model (BART) with a non-parametric memory (a Dense Passage Retrieval index over Wikipedia). Demonstrates strong performance on knowledge-intensive NLP tasks while providing transparency about which documents informed each generation. Establishes the design pattern of retrieving documents before generating.",
     ourContext:
@@ -401,6 +440,12 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
      */
     definition:
       "LoRA (Hu et al., 2021) freezes a pretrained model and adds small trainable low-rank matrices to attention weights, matching full fine-tuning on benchmarks while updating only 0.1% to 1% of parameters. GPU memory and storage drop by orders of magnitude, so per-task fine-tunes ship as small shareable files.",
+    keyStat: {
+      value: "0.1%-1%",
+      label: "of parameters updated to match full fine-tuning",
+      source: "arXiv:2106.09685",
+      sourceHref: "https://arxiv.org/abs/2106.09685",
+    },
     abstractSummary:
       "Introduces Low-Rank Adaptation (LoRA): a parameter-efficient fine-tuning technique that adds small low-rank matrices to a frozen base model. Demonstrates that LoRA matches full fine-tuning performance on multiple benchmarks while updating only 0.1%-1% of parameters. Reduces GPU memory requirements and storage footprint by orders of magnitude.",
     ourContext:
@@ -474,6 +519,12 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
      */
     definition:
       "Constitutional AI (Bai et al., 2022) replaces human feedback with a written constitution: the model critiques and revises its own outputs against those principles, then a reward model trained on this AI feedback drives reinforcement learning (RLAIF). Anthropic showed the result is both more helpful and less harmful than RLHF.",
+    keyStat: {
+      value: "RLAIF",
+      label: "AI feedback replaces human labeling to scale alignment",
+      source: "arXiv:2212.08073",
+      sourceHref: "https://arxiv.org/abs/2212.08073",
+    },
     abstractSummary:
       "Introduces Constitutional AI (CAI): an alignment approach where an LLM critiques and revises its own outputs according to a written constitution of principles, with reinforcement learning from AI feedback (RLAIF) replacing the human-labeling step. Demonstrates that RLAIF can produce models that are both more helpful AND more harmless than RLHF baselines, while scaling alignment without proportional human labeling effort.",
     ourContext:
@@ -547,6 +598,12 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
      */
     definition:
       "Chain-of-thought prompting (Wei et al., 2022) asks an LLM to write intermediate reasoning steps before its final answer, sharply improving math, logic, and multi-step benchmark accuracy. The gain emerges only at sufficient model scale, and the paper established step-by-step reasoning as a standard capability elicitation technique.",
+    keyStat: {
+      value: "~100B",
+      label: "parameters, the scale where chain-of-thought reasoning emerges",
+      source: "arXiv:2201.11903",
+      sourceHref: "https://arxiv.org/abs/2201.11903",
+    },
     abstractSummary:
       "Demonstrates that prompting LLMs to articulate intermediate reasoning steps before producing a final answer ('chain-of-thought prompting') dramatically improves accuracy on math, logic, and multi-step problem-solving benchmarks. The improvement scales with model size and emerges only at sufficient scale. Establishes step-by-step reasoning as a critical prompting technique and a foundation for later 'reasoning model' designs.",
     ourContext:
@@ -616,6 +673,12 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
      */
     definition:
       "Accelerate (Forsgren, Humble, and Kim, 2018) published the DORA research: four metrics, deployment frequency, lead time for changes, change failure rate, and time to restore, empirically predict software delivery and organizational performance. It is the canonical evidence base for measuring engineering velocity, which is what our deal-flow signals track.",
+    keyStat: {
+      value: "200x / 100x",
+      label: "high performers deploy 200x more often with 100x shorter lead times",
+      source: "dora.dev",
+      sourceHref: "https://dora.dev/",
+    },
     abstractSummary:
       "Documents the multi-year DevOps Research and Assessment (DORA) research showing that four metrics, deployment frequency, lead time for changes, change failure rate, and mean time to recovery, empirically predict software-organization performance. Establishes the empirical foundation for engineering-velocity measurement as a research discipline.",
     ourContext:
@@ -691,6 +754,12 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
      */
     definition:
       "Outrageously Large Neural Networks (Shazeer et al., ICLR 2017) introduced the sparsely-gated mixture-of-experts layer: a trainable gating network routes each input to a small subset of expert subnetworks, achieving over 1,000x more model capacity with minimal added computation. Sparse MoE later became a standard frontier-LLM efficiency technique.",
+    keyStat: {
+      value: "1,000x",
+      label: "more model capacity with minimal added compute",
+      source: "arXiv:1701.06538",
+      sourceHref: "https://arxiv.org/abs/1701.06538",
+    },
     abstractSummary:
       "Introduces a sparsely-gated mixture-of-experts (MoE) layer for deep neural networks that achieves over 1,000x improvement in model capacity with minimal computational overhead. A trainable gating network routes each input to a small subset of expert sub-networks, enabling models with billions of parameters while keeping inference compute tractable. The architecture achieved state-of-the-art results on language modeling and machine translation benchmarks.",
     ourContext:

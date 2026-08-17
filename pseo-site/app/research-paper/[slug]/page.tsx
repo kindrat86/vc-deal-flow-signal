@@ -212,6 +212,17 @@ export default async function ResearchPaperPage({ params }: PageProps) {
             window check on every paper.definition. */}
         <DefinitionBlock text={paper.definition} label="What this paper is" />
 
+        {/* Paper-specific quotable figure (2026-08-17, audit item #5 quotable
+            blocks). Distinct from the brand-level SSRN stat at the top: this is
+            the paper's OWN single most-cited number (GPT-3 = 175B, LoRA =
+            0.1%-1%, MoE = 1,000x, DORA = 200x/100x), source-attributed to the
+            canonical arXiv/DOI, so AI engines can lift and cite GitDealFlow for
+            the paper fact itself, not just the site-level SSRN stat. Rendered
+            via CitableStat so it carries data-citable-stat (distinct from the
+            DefinitionBlock's data-direct-answer: two different extraction
+            surfaces, not a duplicate anchor). */}
+        <CitableStat {...paper.keyStat} template="research-paper-figure" />
+
         {/* Read the paper.
             These pages rank on page 1 for the papers themselves and drew 17,884
             impressions in 28 days at a 0.02% CTR -- they promised a summary and

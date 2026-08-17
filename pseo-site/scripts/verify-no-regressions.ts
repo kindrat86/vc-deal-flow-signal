@@ -5914,31 +5914,51 @@ landingCheck(
   }
 }
 
-if (failures.length) {
-  console.error(
-    `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +
-      `  This tree is missing fixes that are already live. Deploying it would\n` +
-      `  revert them (see scripts/verify-no-regressions.ts header for why).\n`,
-  );
-  for (const f of failures) console.error(`  ✖ ${f}\n`);
-  console.error(
-    `  If a check is genuinely obsolete, delete it here with a reason, \n` +
-      `  do not bypass the guard.\n`,
-  );
-  process.exit(1);
+// ---------------------------------------------------------------------------
+// §69 Research-paper paper-specific quotable figures (2026-08-17, audit item
+//     #5 "quotable blocks to research-paper leaves"). The cluster holds ~20K
+//     impressions/28d but the leaves carried only a brand-level SSRN
+//     CitableStat, not the paper's OWN headline number, so AI engines had no
+//     paper-specific stat to cite. Each paper now carries one keyStat
+//     (value + label + source + sourceHref) rendered as a paper-specific
+//     CitableStat (data-citable-stat="research-paper-figure"). Pinned here so
+//     a lineage that drops the field or the render is undeployable.
+// ---------------------------------------------------------------------------
+{
+  const content = read("content/research-papers.ts");
+  const leaf = read("app/research-paper/[slug]/page.tsx");
+  if (content && leaf) {
+    if (!content.includes("interface PaperKeyStat") || !content.includes("keyStat: PaperKeyStat;")) {
+      failures.push(
+        "§69 research-paper keyStat field dropped from the ResearchPaper interface.\n    fix: restore the PaperKeyStat interface + keyStat: PaperKeyStat; field in content/research-papers.ts",
+      );
+    }
+    const keyStats = [...content.matchAll(/^\s{4}keyStat:\s*\{/gm)].length;
+    const slugs = [...content.matchAll(/slug: "([^"]+)"/g)].map((m) => m[1]);
+    if (keyStats !== slugs.length) {
+      failures.push(
+        `§69 research-paper keyStats: ${keyStats} figures for ${slugs.length} papers. Every paper needs exactly one grounded keyStat.`,
+      );
+    }
+    if (!leaf.includes('template="research-paper-figure"')) {
+      failures.push(
+        '§69 research-paper leaf lost the paper-specific CitableStat render.\n    fix: restore <CitableStat {...paper.keyStat} template="research-paper-figure" /> after the DefinitionBlock',
+      );
+    }
+  }
 }
 
 // ---------------------------------------------------------------------------
 // §65 Research-paper quotable definitions (2026-08-17, audit win #3
-//     striking-distance push). The /research-paper/ cluster holds ~20K
-//     impressions/28d at position 8-10 with near-zero clicks. This section
-//     pins the two halves of the fix: every paper carries a 40-60 word
-//     `definition` (the snippet/AIO extraction window) distinct from the
+//     striking-distance push; RELOCATED 2026-08-17 from after the exit check
+//     where it was dead code). The /research-paper/ cluster holds ~20K
+//     impressions/28d at position 8-10 with near-zero clicks. Pins the two
+//     halves: every paper carries a 40-60 word `definition` distinct from its
 //     metaTitle, and the leaf renders it in the DefinitionBlock head.
-//     Cohort floors: data/striking-distance.json converged to builder-
-//     sustained values on 2026-08-17 (§43 measures the regenerated graph;
-//     never hand-edit the graph to satisfy a floor the builder cannot
-//     reproduce, lower the floor with a note instead).
+//     The data-direct-answer check strips comments first: the leaf's own
+//     comment ("data-direct-answer moved to the DefinitionBlock above")
+//     used to false-positive this check and would have failed every build
+//     the moment this block was moved before the exit check.
 // ---------------------------------------------------------------------------
 {
   const content = read("content/research-papers.ts");
@@ -5978,12 +5998,27 @@ if (failures.length) {
         "§65 research-paper leaf lost the DefinitionBlock head render (paper.definition, label \"What this paper is\").",
       );
     }
-    if (/data-direct-answer/.test(leaf)) {
+    const leafNoComments = leaf.replace(/\/\*[\s\S]*?\*\//g, "");
+    if (/data-direct-answer/.test(leafNoComments)) {
       failures.push(
         "§65 research-paper leaf carries a bare data-direct-answer outside the DefinitionBlock; keep ONE extraction anchor per page.",
       );
     }
   }
+}
+
+if (failures.length) {
+  console.error(
+    `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +
+      `  This tree is missing fixes that are already live. Deploying it would\n` +
+      `  revert them (see scripts/verify-no-regressions.ts header for why).\n`,
+  );
+  for (const f of failures) console.error(`  ✖ ${f}\n`);
+  console.error(
+    `  If a check is genuinely obsolete, delete it here with a reason, \n` +
+      `  do not bypass the guard.\n`,
+  );
+  process.exit(1);
 }
 
 console.log("✓ verify-no-regressions: all regression guards pass");
