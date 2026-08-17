@@ -322,6 +322,27 @@ export default async function MomentumPage({
             </p>
           </section>
 
+          <section className="mb-8 prose prose-invert prose-slate max-w-none text-gray-300 leading-relaxed">
+            <h2 className="text-xl font-semibold text-gray-100 mb-3">
+              How to act on this signal
+            </h2>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              Three moves, in order. First, qualify: a {tierData?.label.toLowerCase()} tier
+              combined with a {startup.signalType.toLowerCase()} is strongest when the 14-day
+              volume is meaningful ({startup.commitVelocity14d} commits here) rather than a
+              percent spike on a near-zero base. Second, time it: for a {startup.stage} startup,
+              {stageContext ?? "read the stage context"} Third, record it: scout {org} on the
+              prediction board so the call is dated, public, and attributable, then revisit in a
+              month to see whether the acceleration held or faded.
+            </p>
+            <p className="text-gray-400 text-sm leading-relaxed">
+              One caution: momentum tiers describe engineering cadence, not company quality.
+              A hot repo can belong to a bad business, and a cold repo can belong to a
+              profitable one. Treat this card as a source filter and a timing hint, never as
+              the diligence itself.
+            </p>
+          </section>
+
           <section className="mb-8 rounded-xl border border-slate-800 bg-slate-900/50 p-5 sm:p-6">
             <h2 className="text-xl font-semibold text-gray-100 mb-2">Tracked as</h2>
             <p className="text-lg font-semibold text-gray-100 mb-1">{startup.name}</p>
@@ -390,6 +411,19 @@ export default async function MomentumPage({
               not mean the project is inactive: it means it is outside the tracked-startup universe
               for this period. Browse the sector pages or the live panel to find a comparable
               tracked org and read its signal instead.
+            </p>
+            <p className="text-gray-400 text-sm leading-relaxed mt-3">
+              How the panel is built: each quarter GitDealFlow selects venture-backed startup orgs
+              across 15 sectors, pulls 14-day commit volume from the public GitHub REST API with the
+              bot filter applied, and publishes the acceleration deltas. If {path} later enters the
+              tracked universe, this same URL will show its live momentum card automatically, no
+              action needed.
+            </p>
+            <p className="text-gray-400 text-sm leading-relaxed mt-3">
+              Meanwhile, three things you can still do: run the bookmarklet on any github.com page
+              to read momentum wherever you browse, embed a badge in a README to watch a repo over
+              time, or predict the next round from this page so your call is dated before the panel
+              picks the org up.
             </p>
           </section>
 
