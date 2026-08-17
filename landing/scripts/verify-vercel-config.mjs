@@ -185,9 +185,9 @@ for (const f of claimFiles) {
 {
   let l;
   try {
-    l = readFileSync("llms.txt", "utf8");
+    l = readFileSync("llms.src.txt", "utf8");
   } catch {
-    fail("llms.txt is missing (2026-08-16).");
+    fail("llms.src.txt is missing (2026-08-16; renamed from llms.txt by the crawl-proxy commit f8f7e45e).");
     l = "";
   }
   if (l.includes("- Dashboard Beta: EUR 9.97/month") || l.includes("- Insider Circle: EUR 97/month,")) {
