@@ -3561,6 +3561,19 @@ check(
   "restore hook-map consumption in app/alternatives/[slug]/page.tsx generateMetadata",
 );
 check(
+  "content/comparisons.ts",
+  "\u00a767 BOFU compare: a GDF-vs-competitor head-to-head was dropped (tracxn / forager-ai / specter / signalrank)",
+  (s) =>
+    s.includes('slug: "vc-deal-flow-signal-vs-tracxn"') &&
+    s.includes('slug: "vc-deal-flow-signal-vs-forager-ai"') &&
+    s.includes('slug: "vc-deal-flow-signal-vs-specter"') &&
+    s.includes('slug: "vc-deal-flow-signal-vs-signalrank"') &&
+    s.includes('"vc-deal-flow-signal-vs-signalrank": "VC Deal Flow Signal vs SignalRank: $0 vs Index Fund"') &&
+    s.includes('"vc-deal-flow-signal-vs-specter": "VC Deal Flow Signal vs Specter: Free Tier vs Tiered"') &&
+    s.includes('"vc-deal-flow-signal-vs-tracxn": "VC Deal Flow Signal vs Tracxn: Free Tier vs Tiered"'),
+  "restore the 4 BOFU GDF-vs-competitor comparison entries + their COMPARE_TITLE_HOOKS in content/comparisons.ts",
+);
+check(
   "content/research-papers.ts",
   "§42 CTR: research-paper metaTitles reverted to catalog form (the 19.6K-impression pool's only CTR lever)",
   (s) =>
