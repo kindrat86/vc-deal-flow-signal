@@ -3,6 +3,9 @@ import Link from "next/link";
 import { RESEARCH_PAPERS } from "@/content/research-papers";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { TrustConversionBlock } from "@/components/TrustConversionBlock";
+import DefinitionBlock from "@/components/DefinitionBlock";
+import CitableStat from "@/components/CitableStat";
+import { citableStat } from "@/lib/citable-stats";
 
 export const metadata: Metadata = {
   title: "Research Papers, External Academic References",
@@ -96,6 +99,10 @@ export default function ResearchPaperHubPage() {
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
           Research Papers
         </h1>
+        <DefinitionBlock
+          text="VC Deal Flow Signal maintains a citation-ready index of the external academic papers that ground its code-side sourcing method (Transformer, GPT-3, RLHF, RAG, LoRA, DORA and more), each summarized in its own words with canonical arXiv, Semantic Scholar, and OpenAlex links."
+        />
+        <CitableStat {...citableStat("research-paper")} template="research-paper" />
         <p className="text-sky-400 text-base leading-relaxed mb-6 font-medium">
           {RESEARCH_PAPERS.length} external academic papers we cite, ML/AI foundations
           and engineering-velocity research.

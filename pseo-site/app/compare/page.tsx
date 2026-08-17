@@ -5,6 +5,7 @@ import PSEOFooterNav from "@/components/PSEOFooterNav";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import SeoCta from "@/components/SeoCta";
+import DefinitionBlock from "@/components/DefinitionBlock";
 
 export const metadata: Metadata = {
   title: "Compare Deal Flow Tools",
@@ -88,6 +89,9 @@ export default function CompareIndex() {
       <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
         Compare Deal Flow Tools
       </h1>
+      <DefinitionBlock
+        text="VC Deal Flow Signal publishes side-by-side comparisons of the deal-sourcing tools investors already use (PitchBook, CB Insights, Dealroom, Harmonic.ai, Crunchbase and more) against its code-side timing signal, across signal philosophy, lead time, coverage, and pricing."
+      />
       <aside
         className="mb-4 rounded-xl border border-sky-500/25 bg-sky-500/5 px-5 py-4"
         aria-label="At a glance"
@@ -95,7 +99,7 @@ export default function CompareIndex() {
         <h2 className="text-xs font-semibold text-sky-400 uppercase tracking-wider mb-2">
           At a glance
         </h2>
-        <p className="text-sky-100 text-sm leading-relaxed">
+        <p data-speakable className="text-sky-100 text-sm leading-relaxed">
           TL;DR, {(comparisons.length + programmaticComparisons.length)} side-by-side comparisons, each pitting a
           tool investors already use (PitchBook, CB Insights, Dealroom,
           Harmonic.ai, Crunchbase alerts and more) against VC Deal Flow
