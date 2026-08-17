@@ -3,7 +3,28 @@
   "buildCommand": "node scripts/verify-all.mjs",
   "cleanUrls": true,
   "trailingSlash": false,
+  "functions": {
+    "api/crawl-proxy.js": {
+      "includeFiles": "{llms.src.txt,llms-full.src.txt,ai.src.txt,agents.src.txt}"
+    }
+  },
   "rewrites": [
+    {
+      "source": "/llms.txt",
+      "destination": "/api/crawl-proxy?f=llms.txt"
+    },
+    {
+      "source": "/llms-full.txt",
+      "destination": "/api/crawl-proxy?f=llms-full.txt"
+    },
+    {
+      "source": "/ai.txt",
+      "destination": "/api/crawl-proxy?f=ai.txt"
+    },
+    {
+      "source": "/agents.txt",
+      "destination": "/api/crawl-proxy?f=agents.txt"
+    },
     {
       "source": "/mcp",
       "destination": "/mcp.html"
