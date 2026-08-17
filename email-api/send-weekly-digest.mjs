@@ -267,7 +267,10 @@ for (const contact of queue) {
     // Persist after every success so a crash mid-broadcast stays idempotent.
     // Store the Resend send id keyed by email so the engagement report can
     // resolve each digest send's open/click/bounce via GET /emails/{id}.
-    sentLog[String(contact.email).toLowerCase()] = result.id || null;
+    // Resend SDK v6 returns { data: { id }, error, headers }, NOT a bare { id }:
+    // reading result.id here stored null for every send, which zeroed the
+    // open/click/delivered report forever. Read result.data.id instead.
+    sentLog[String(contact.email).toLowerCase()] = result.data?.id || null;
     saveSentLog(sentLog);
 
     okCount++;
