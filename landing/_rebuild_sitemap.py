@@ -69,9 +69,7 @@ EXCLUDE_FILES = {
     # Transactional/thanks pages
     "sector-sweep.html",
     "sector-sweep-thanks.html",
-    "insider.html",
     "insider-thanks.html",
-    "firstlook.html",
     "firstlook-thanks.html",
     "dashboard.html",
     "dashboard-thanks.html",

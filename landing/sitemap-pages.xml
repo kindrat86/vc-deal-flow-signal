@@ -2,7 +2,7 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://gitdealflow.com</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/2025</loc>
@@ -14,7 +14,7 @@
   </url>
   <url>
     <loc>https://gitdealflow.com/about</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/affiliates</loc>
@@ -218,7 +218,7 @@
   </url>
   <url>
     <loc>https://gitdealflow.com/checklists</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/checklists/deal-flow-sourcing-checklist</loc>
@@ -294,7 +294,7 @@
   </url>
   <url>
     <loc>https://gitdealflow.com/data</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/average-seed-round-size</loc>
@@ -306,130 +306,171 @@
   </url>
   <url>
     <loc>https://gitdealflow.com/data/momentum-index</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/momentum-index/activepieces-activepieces</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/momentum-index/appsmithorg-appsmith</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/momentum-index/appwrite-appwrite</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/momentum-index/calcom-cal-com</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/momentum-index/chroma-core-chroma</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/momentum-index/cline-cline</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/momentum-index/coollabsio-coolify</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/momentum-index/denoland-deno</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/momentum-index/directus-directus</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/momentum-index/documenso-documenso</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/momentum-index/formbricks-formbricks</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/momentum-index/go-gitea-gitea</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/momentum-index/hoppscotch-hoppscotch</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/momentum-index/immich-app-immich</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/momentum-index/langchain-ai-langchain</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/momentum-index/medusajs-medusa</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/momentum-index/meilisearch-meilisearch</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/momentum-index/mindsdb-mindsdb</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/momentum-index/n8n-io-n8n</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/momentum-index/nocodb-nocodb</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/momentum-index/novuhq-novu</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/momentum-index/ollama-ollama</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/momentum-index/oven-sh-bun</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/momentum-index/plausible-analytics</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/momentum-index/pocketbase-pocketbase</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/momentum-index/posthog-posthog</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/momentum-index/qdrant-qdrant</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/momentum-index/refinedev-refine</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/momentum-index/run-llama-llama-index</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/momentum-index/strapi-strapi</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/momentum-index/supabase-supabase</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/momentum-index/tauri-apps-tauri</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/momentum-index/triggerdotdev-trigger-dev</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/momentum-index/twentyhq-twenty</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/momentum-index/typesense-typesense</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/momentum-index/umami-software-umami</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/momentum-index/unkeyed-unkey</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/momentum-index/vercel-next-js</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/momentum-index/weaviate-weaviate</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/momentum-index/windmill-labs-windmill</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/startup-ma-statistics</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/data/startup-valuation-trends</loc>
@@ -657,7 +698,7 @@
   </url>
   <url>
     <loc>https://gitdealflow.com/glossary</loc>
-    <lastmod>2026-08-15</lastmod>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/glossary/anti-dilution</loc>
@@ -889,7 +930,7 @@
   </url>
   <url>
     <loc>https://gitdealflow.com/how-to</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/how-to/evaluate-startup-traction</loc>
@@ -997,64 +1038,83 @@
   </url>
   <url>
     <loc>https://gitdealflow.com/leaderboard</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/leaderboard/acceleration</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/leaderboard/breakout</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/leaderboard/sector/agtech</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/leaderboard/sector/data-infrastructure</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/leaderboard/sector/ecommerce-infrastructure</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/leaderboard/sector/edtech</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/leaderboard/sector/enterprise-saas</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/leaderboard/sector/gaming</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/leaderboard/sector/healthcare</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/leaderboard/sector/hr-tech</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/leaderboard/sector/legal-tech</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/leaderboard/sector/proptech</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/leaderboard/sector/robotics</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/leaderboard/sector/social-community</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/leaderboard/sector/space-tech</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/leaderboard/sector/supply-chain</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/leaderboard/sector/web3</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/leaderboard/velocity</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/learn</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/learn/deal-flow</loc>
@@ -1154,7 +1214,7 @@
   </url>
   <url>
     <loc>https://gitdealflow.com/pricing</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/pricing/cb-insights-pricing-vs-gitdealflow</loc>
@@ -1218,7 +1278,7 @@
   </url>
   <url>
     <loc>https://gitdealflow.com/sectors</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/sectors/agritech</loc>
@@ -1418,7 +1478,7 @@
   </url>
   <url>
     <loc>https://gitdealflow.com/vs</loc>
-    <lastmod>2026-08-16</lastmod>
+    <lastmod>2026-08-17</lastmod>
   </url>
   <url>
     <loc>https://gitdealflow.com/vs/angellist</loc>
@@ -1455,5 +1515,13 @@
   <url>
     <loc>https://gitdealflow.com/vs/tracxn</loc>
     <lastmod>2026-08-16</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/firstlook</loc>
+    <lastmod>2026-08-17</lastmod>
+  </url>
+  <url>
+    <loc>https://gitdealflow.com/insider</loc>
+    <lastmod>2026-08-17</lastmod>
   </url>
 </urlset>
