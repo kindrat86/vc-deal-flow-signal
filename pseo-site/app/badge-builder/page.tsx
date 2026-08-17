@@ -146,7 +146,7 @@ export default function BadgeBuilderPage() {
               </p>
               <pre className="rounded-lg bg-slate-950 border border-slate-800 p-4 text-sm text-gray-300 overflow-x-auto">
                 <code>
-                  {`[![engineering momentum](https://signals.gitdealflow.com/api/badge/YOUR_STARTUP_NAME)](https://signals.gitdealflow.com/badge-builder)`}
+                  {`[![engineering momentum](https://signals.gitdealflow.com/api/badge/YOUR_STARTUP_NAME)](https://signals.gitdealflow.com/startup/YOUR_STARTUP_NAME)`}
                 </code>
               </pre>
             </div>
@@ -154,7 +154,7 @@ export default function BadgeBuilderPage() {
               <p className="text-sm text-gray-400 mb-2 font-medium">HTML:</p>
               <pre className="rounded-lg bg-slate-950 border border-slate-800 p-4 text-sm text-gray-300 overflow-x-auto">
                 <code>
-                  {`<a href="https://signals.gitdealflow.com/badge-builder">`}
+                  {`<a href="https://signals.gitdealflow.com/startup/YOUR_STARTUP_NAME">`}
                   {"\n"}
                   {`  <img src="https://signals.gitdealflow.com/api/badge/YOUR_STARTUP_NAME" alt="engineering momentum badge" />`}
                   {"\n"}

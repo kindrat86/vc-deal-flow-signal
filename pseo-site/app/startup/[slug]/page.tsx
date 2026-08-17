@@ -1032,7 +1032,7 @@ export default async function StartupPage({ params }: PageProps) {
             READMEs, websites, and pitch decks.
           </p>
           <pre className="rounded-lg bg-slate-950 border border-slate-800 p-3 text-xs text-gray-300 overflow-x-auto">
-            <code>{`[![momentum](https://signals.gitdealflow.com/api/badge/${slug})](https://signals.gitdealflow.com/badge-builder)`}</code>
+            <code>{`[![momentum](https://signals.gitdealflow.com/api/badge/${slug})](https://signals.gitdealflow.com/startup/${slug})`}</code>
           </pre>
           <Link
             href="/badge-builder"

@@ -6019,6 +6019,36 @@ landingCheck(
   }
 }
 
+// ---------------------------------------------------------------------------
+// §70 Embeddable badge backlink target (2026-08-17, audit win #10 zero-click
+//     harvesting). The per-startup "engineering momentum" badge embeds carry a
+//     dofollow backlink that must point at the org's OWN /startup/{slug} profile
+//     (411 distinct indexable targets), never the self-referential /badge-builder
+//     which collapses every embed onto one URL and wastes the link-earning value.
+//     Also pins the badge's llms.txt discovery entry so GPTBot, ClaudeBot, and
+//     PerplexityBot learn the endpoint exists.
+// ---------------------------------------------------------------------------
+{
+  const startupLeaf = read("app/startup/[slug]/page.tsx");
+  if (startupLeaf && !startupLeaf.includes("](https://signals.gitdealflow.com/startup/${slug})")) {
+    failures.push(
+      "§70 /startup/[slug] badge snippet lost its per-org backlink: the markdown embed must link to https://signals.gitdealflow.com/startup/${slug}, not /badge-builder.",
+    );
+  }
+  const builder = read("app/badge-builder/page.tsx");
+  if (builder && !builder.includes("https://signals.gitdealflow.com/startup/YOUR_STARTUP_NAME")) {
+    failures.push(
+      "§70 /badge-builder snippets lost the per-org backlink target (must link /startup/YOUR_STARTUP_NAME, not /badge-builder).",
+    );
+  }
+  const llms = read("app/llms.txt/route.ts");
+  if (llms && !llms.includes("Engineering Momentum badge](${BASE_URL}/api/badge/{name})")) {
+    failures.push(
+      "§70 llms.txt Embeddable Badges section is missing the per-startup Engineering Momentum badge (/api/badge/{name}); AI crawlers cannot discover it.",
+    );
+  }
+}
+
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +
