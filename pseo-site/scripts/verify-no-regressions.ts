@@ -4707,6 +4707,18 @@ landingCheck(
       `§55b proxy.ts shouldNoindex no longer delegates to isPagePruned(pathname).\n    file: proxy.ts\n    fix: add isPagePruned(pathname) to shouldNoindex() so pruned pages get X-Robots-Tag: noindex, follow (not just sitemap removal)`,
     );
   }
+  // §55c: cache privacy must NOT key off shouldNoindex(). noindex is an
+  // indexing decision; pruned pages are public and must keep s-maxage so they
+  // don't thrash the origin (TTFB regression, watchdog 2026-08-17).
+  if (
+    proxy !== null &&
+    (proxy.includes("if (shouldNoindex(pathname)) {\n    return \"private") ||
+      !proxy.includes("isPrivateNoStorePath(pathname)"))
+  ) {
+    failures.push(
+      `§55c proxy.ts publicHtmlCacheControl keys private,no-store off shouldNoindex() (or lost isPrivateNoStorePath).\n    file: proxy.ts\n    fix: gate the no-store branch on isPrivateNoStorePath() (the NOINDEX_PREFIXES set), NOT shouldNoindex(), so pruned noindex pages keep public s-maxage and stop thrashing the origin`,
+    );
+  }
 }
 
 // ---------------------------------------------------------------------------
