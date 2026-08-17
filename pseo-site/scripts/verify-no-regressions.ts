@@ -5862,6 +5862,37 @@ landingCheck(
     }
   }
 }
+// ---------------------------------------------------------------------------
+// §68 Assistant-originated traffic instrumentation (2026-08-16, audit item
+//     "agent-surface distribution 65": track assistant-originated traffic as
+//     its own north-star source). The four agent-programmable POST surfaces
+//     (MCP / A2A / NLWeb / function-calling API) must emit the `agent_request`
+//     PostHog event so the north-star can measure real agent adoption
+//     separately from human qualified visitors and from bot_crawl. A tree that
+//     drops the capture silently zeroes the metric.
+// ---------------------------------------------------------------------------
+{
+  const libSrc = read("lib/agent-traffic.ts");
+  if (!libSrc || !libSrc.includes('event: "agent_request"')) {
+    failures.push(
+      "§68 lib/agent-traffic.ts missing or lost the agent_request event.\n    fix: restore lib/agent-traffic.ts (PostHog agent_request capture for the agent surfaces)",
+    );
+  }
+  const surfaces: Array<[string, string]> = [
+    ["app/api/mcp/rpc/route.ts", 'await captureAgentRequest("mcp", request)'],
+    ["app/api/a2a/route.ts", 'await captureAgentRequest("a2a", request)'],
+    ["app/api/nlweb/route.ts", 'await captureAgentRequest("nlweb", request)'],
+    ["app/api/agent/call/route.ts", 'await captureAgentRequest("function_api", request)'],
+  ];
+  for (const [rel, needle] of surfaces) {
+    const s = read(rel);
+    if (s && !s.includes(needle)) {
+      failures.push(
+        `§68 ${rel} lost the ${needle} capture call.\n    fix: restore await captureAgentRequest(...) at the top of the POST handler (void = fire-and-forget that Vercel freezes before the PostHog POST lands)`,
+      );
+    }
+  }
+}
 
 if (failures.length) {
   console.error(
