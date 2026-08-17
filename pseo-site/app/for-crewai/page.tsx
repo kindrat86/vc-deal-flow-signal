@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ForFrameworkPage } from "@/components/ForFrameworkPage";
 import { getFrameworkPositioning } from "@/lib/for-framework-data";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 const fw = getFrameworkPositioning("crewai")!;
@@ -10,7 +11,7 @@ const TITLE =
 const DESCRIPTION =
   "Wire GitDealFlow into a CrewAI scout / analyst / skeptic crew. Three Python agents share live engineering-acceleration signals across 350+ venture-backed startups. Free A2A endpoint, no auth, no LLM lock-in.";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: TITLE,
   description: DESCRIPTION,
   keywords: [
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
     title: TITLE,
     description: DESCRIPTION,
   },
-};
+});
 
 export default function ForCrewAIPage() {
   return <ForFrameworkPage framework={fw} />;

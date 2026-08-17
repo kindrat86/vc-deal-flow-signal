@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { TrustPageOutro } from "@/components/TrustPageOutro";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Attestations, Where VC Deal Flow Signal Is Indexed &amp; Verified",
   description:
     "Every third-party indexer, registry, and review platform that has independently verified VC Deal Flow Signal (GitDealFlow). SSRN, Crossref, Semantic Scholar, OpenAlex, DataCite, Zenodo, Wikidata, Glama (A-Tier 4.9/5.0), Cursor Directory, npm, GitHub, Chrome Web Store, ProductHunt, G2, AlternativeTo, SaaSHub.",
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
     type: "article",
     url: `${SITE}/attestations`,
   },
-};
+});
 
 interface Attestation {
   group: "Academic" | "Agent &amp; protocol" | "Distribution" | "Review &amp; directory" | "Knowledge graph";

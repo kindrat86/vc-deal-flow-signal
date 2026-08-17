@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { withEditorialOverride } from "@/lib/metadata";
 
 // Server-rendered each request: the page reads the proposed `summary` from
 // the URL, displays it for the user to review, and an inline form lets the
@@ -8,12 +9,12 @@ import Link from "next/link";
 // share_result with the token included.
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Approve Share, VC Deal Flow Signal MCP",
   description:
     "Review the post the agent wants to compose for you. Nothing is published, this only mints a 10-minute approval token for the share_result MCP tool.",
   robots: { index: false, follow: false },
-};
+});
 
 const MAX_LEN = 200;
 const MIN_LEN = 10;

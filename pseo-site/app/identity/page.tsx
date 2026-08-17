@@ -7,6 +7,7 @@ import IdentityBanner from "@/components/IdentityBanner";
 import { EMOTIONAL_CAUSE_LINES } from "@/content/cause";
 import ThreeCoreStoriesNav from "@/components/ThreeCoreStoriesNav";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
@@ -30,7 +31,7 @@ export const dynamic = "force-static";
  * Static RSC. All copy at module scope. Single CTA pair at the bottom.
  */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "Who you become, moving earlier with a clearer signal",
   description:
@@ -43,7 +44,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/identity",
     type: "article",
   },
-};
+});
 
 const BEFORE_AFTER = [
   {

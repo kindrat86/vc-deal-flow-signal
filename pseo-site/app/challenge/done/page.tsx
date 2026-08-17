@@ -3,8 +3,9 @@ import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { CHALLENGE_DAYS } from "@/content/challenge-curriculum";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "You finished the 30-Day Reset, what's next",
   description:
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/challenge/done",
     type: "article",
   },
-};
+});
 
 // Stack-Slide close for the Day-30 graduation. Three rungs of the value
 // ladder, free, founding-rate Dashboard, one-time Sector Sweep, each

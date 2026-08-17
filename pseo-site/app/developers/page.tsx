@@ -4,8 +4,9 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Developers, Deal Flow API, MCP Server, JSON & CSV Endpoints",
   description:
     "Developer docs for GitDealFlow: MCP server, JSON/CSV API, OpenAPI, agent-ready startup-signal workflows, and routing into proof and buyer-side evaluation.",
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/developers",
   },
-};
+});
 
 export default function DevelopersPage() {
   const jsonLd = {

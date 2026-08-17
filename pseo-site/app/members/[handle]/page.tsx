@@ -11,6 +11,7 @@ import {
   getAllCharterHandles,
   getCharterMember,
 } from "@/content/charter-cohort";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 export const dynamicParams = false;
@@ -45,12 +46,12 @@ export async function generateMetadata(
   const { handle } = await ctx.params;
   const member = getCharterMember(handle);
   if (!member) {
-    return { title: "Member not found · VC Deal Flow Signal" };
+    return withEditorialOverride({ title: "Member not found · VC Deal Flow Signal" });
   }
   const claimedLabel = member.claimed
     ? `${member.claimedBy?.handle ?? handle}`
     : `Open seat, ${member.archetype}`;
-  return {
+  return withEditorialOverride({
     // absolute: title already names the brand, bypass the layout template
     // (brand-doubling fix 2026-08-15)
     title: { absolute: `${claimedLabel} · Charter Cohort 2026 · VC Deal Flow Signal` },
@@ -66,7 +67,7 @@ export async function generateMetadata(
       index: true,
       follow: true,
     },
-  };
+  });
 }
 
 export default async function MemberProfilePage(ctx: RouteContext) {

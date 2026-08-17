@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { verifyShareToken, type SharePayload } from "@/lib/share-token";
 import { makeShareIntents } from "@/lib/share-url";
+import { withEditorialOverride } from "@/lib/metadata";
 
 // Page mints a new share token for the chain-share CTA, must run at request
 // time so the SECRET matches the runtime env (see feedback_hmac_share_tokens_force_dynamic).
@@ -21,7 +22,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const title = "Your Signal Preview is Ready";
   const description =
     "Someone shared their VC engineering signal with you. Unlock 7-day extended preview of GitDealFlow's weekly breakouts.";
-  return {
+  return withEditorialOverride({
     title,
     description,
     robots: { index: false, follow: false },
@@ -37,7 +38,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       description,
       images: [ogImage],
     },
-  };
+  });
 }
 
 interface KindCopy {

@@ -4,6 +4,7 @@ import { notFound } from "next/navigation";
 import { authors, getAllAuthors } from "@/content/authors";
 import { allPosts as posts } from "@/content/posts";
 import SeoCta from "@/components/SeoCta";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const BASE_URL = "https://signals.gitdealflow.com";
 
@@ -21,8 +22,8 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const author = authors[slug];
-  if (!author) return { title: "Author not found" };
-  return {
+  if (!author) return withEditorialOverride({ title: "Author not found" });
+  return withEditorialOverride({
     title: `${author.name}, Author at VC Deal Flow Signal`,
     description: author.bio,
     alternates: { canonical: `/authors/${author.slug}` },
@@ -32,7 +33,7 @@ export async function generateMetadata({
       url: `${BASE_URL}/authors/${author.slug}`,
       type: "profile",
     },
-  };
+  });
 }
 
 export default async function AuthorPage({

@@ -4,10 +4,11 @@ import { AgentSummary } from "@/components/AgentSummary";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { getDataLastModified } from "@/lib/data";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Agents, Every Way to Reach VC Deal Flow Signal Programmatically",
   description:
     "Free, no-auth agent surfaces: MCP server, A2A endpoint, NLWeb, function-calling API, OpenAPI 3.1, Hugging Face JSONL, embeddable badges, ChatGPT plugin, RFC 9727 api-catalog. One install command per agent host.",
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
     description:
       "Every machine-readable surface in one place. Free, no auth, MIT/CC-BY 4.0.",
   },
-};
+});
 
 interface Surface {
   category: "MCP" | "Agent Protocol" | "HTTP API" | "Bulk Data" | "Embeddable" | "Discovery";

@@ -3,8 +3,9 @@ import Link from "next/link";
 import { CITIES, CITIES_BY_REGION, REGION_LABELS, type CityRegion } from "@/content/cities";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Cities, Engineering & VC Signals",
   description:
     "Editorial city pages mapping engineering acceleration to local VC ecosystems across 41 hubs in Europe, North America, Asia-Pacific, Latin America, and MEA. Built for Corp Dev, PE operating partners, and emerging managers.",
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
     description:
       "41 venture hubs mapped to engineering acceleration signals through a local lens.",
   },
-};
+});
 
 export const revalidate = 604800;
 

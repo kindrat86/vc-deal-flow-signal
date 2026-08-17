@@ -11,6 +11,7 @@ import {
 import StartupTable from "@/components/StartupTable";
 import SeoCta from "@/components/SeoCta";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -45,7 +46,7 @@ export async function generateMetadata({
       ? `/startups-to-watch/region/${geoSlug}-${latest.slug}`
       : `/startups-to-watch/region/${slug}`;
 
-  return {
+  return withEditorialOverride({
     title,
     description,
     openGraph: { title, description, type: "article", url: `/startups-to-watch/region/${slug}` },
@@ -53,7 +54,7 @@ export async function generateMetadata({
     alternates: {
       canonical: canonicalTarget,
     },
-  };
+  });
 }
 
 export default async function RegionPage({ params }: PageProps) {

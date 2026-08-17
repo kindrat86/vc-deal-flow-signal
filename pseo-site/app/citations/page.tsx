@@ -1,11 +1,12 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { TrustConversionBlock } from "@/components/TrustConversionBlock";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 const APEX = "https://gitdealflow.com";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "Citations & Cross-Graph Identity Map, VC Deal Flow Signal (GitDealFlow)",
   description:
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
     description:
       "Wikidata, ORCID, SSRN, OpenAlex, Crossref, Semantic Scholar, Zenodo, full attribution chain.",
   },
-};
+});
 
 interface Anchor {
   label: string;

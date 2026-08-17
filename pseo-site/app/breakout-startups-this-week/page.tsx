@@ -13,6 +13,7 @@ import { panelClaimFloor } from "@/lib/canonical-claims";
 import StatCallout from "@/components/StatCallout";
 import PSEOFooterNav from "@/components/PSEOFooterNav";
 import SeoCta from "@/components/SeoCta";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const revalidate = 3600;
 
@@ -103,7 +104,7 @@ export async function generateMetadata(): Promise<Metadata> {
     .filter(Boolean)
     .join(", ");
 
-  return {
+  return withEditorialOverride({
     title,
     description,
     robots: {
@@ -134,7 +135,7 @@ export async function generateMetadata(): Promise<Metadata> {
     other: {
       news_keywords: newsKeywords,
     },
-  };
+  });
 }
 
 export default function BreakoutStartupsThisWeekPage() {

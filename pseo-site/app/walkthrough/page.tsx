@@ -17,10 +17,11 @@ import ThreeCoreStoriesNav from "@/components/ThreeCoreStoriesNav";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { getReplayWindowSnapshot } from "@/lib/replay-window";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "How to Spot a Series A Weeks Before the Deck Lands, 12-Minute Walkthrough",
   description:
@@ -36,7 +37,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/walkthrough",
     type: "article",
   },
-};
+});
 
 const STRIPE_DASHBOARD = "https://buy.stripe.com/4gMbJ07kTaJy7kqg6s0x20b";
 const SIGNUP_URL = "https://gitdealflow.com/#signup";

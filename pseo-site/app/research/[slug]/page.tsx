@@ -16,6 +16,7 @@ import { getRelatedGroupsForFinding } from "@/lib/finding-related";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 import CitableStat from "@/components/CitableStat";
 import { citableStat } from "@/lib/citable-stats";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 const SSRN_URL = "https://ssrn.com/abstract=6606558";
@@ -48,7 +49,7 @@ export async function generateMetadata({
 
   // hreflang emitted via <HreflangLinks/> in the page body (Next 16 +
   // explicit <head> in layout double-emit when both metadata + JSX set it).
-  return {
+  return withEditorialOverride({
     title: pageTitle,
     description,
     alternates: { canonical: `/research/${slug}` },
@@ -91,7 +92,7 @@ export async function generateMetadata({
         "venture capital, alternative data, GitHub commit velocity, engineering acceleration",
       "DC.rights": "Creative Commons Attribution 4.0 International",
     },
-  };
+  });
 }
 
 const GROUP_LABELS: Record<"A" | "B" | "C", string> = {

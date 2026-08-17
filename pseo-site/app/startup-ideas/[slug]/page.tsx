@@ -15,6 +15,7 @@ import { getDataLastModified } from "@/lib/data";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -49,7 +50,7 @@ export async function generateMetadata({
   if (!idea) return {};
 
   const description = buildIdeaDescription(idea);
-  return {
+  return withEditorialOverride({
     title: idea.title,
     description,
     keywords: idea.keywords.join(", "),
@@ -65,7 +66,7 @@ export async function generateMetadata({
       title: idea.title,
       description,
     },
-  };
+  });
 }
 
 function buildJsonLd(

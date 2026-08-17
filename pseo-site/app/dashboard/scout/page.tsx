@@ -11,6 +11,7 @@ import {
 } from "@/lib/pocketbase";
 import { getScoutSession } from "@/lib/scout-session";
 import { makeShareIntents } from "@/lib/share-url";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface SearchParams {
   email?: string;
@@ -34,14 +35,14 @@ const RANK_COLOR: Record<string, string> = {
   oracle: "text-rose-400",
 };
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Scout Dashboard, Your Predictions",
   robots: { index: false, follow: false },
   // The page receives an auth token in the URL on first visit. no-referrer
   // prevents the token from leaking to twitter.com / external links via the
   // Referer header. After first visit, an httpOnly cookie replaces URL auth.
   referrer: "no-referrer",
-};
+});
 
 interface PbList<T> {
   items: T[];

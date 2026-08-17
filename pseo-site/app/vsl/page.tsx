@@ -4,6 +4,7 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import script from "@/content/vsl-script.json";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
@@ -19,7 +20,7 @@ const SITE = "https://signals.gitdealflow.com";
 const VIDEO_ID: string | null = null;
 const VIDEO_DURATION_ISO = "PT10M30S"; // sum of scene VOs at ~150wpm + animation buffer
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: script.headline + ", Video Sales Letter",
   description:
     "10-minute video sales letter. Single belief: GitHub commit-velocity acceleration is the most leading public signal in venture capital. 219-startup SSRN panel, 21-47 day median pre-deck lead band. €49/mo founding rate. Free Sunday digest. €7 First Look Pass.",
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
     title: script.headline,
     description: script.subhead,
   },
-};
+});
 
 const SCENES = script.scenes;
 

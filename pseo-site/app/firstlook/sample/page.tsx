@@ -4,6 +4,7 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
@@ -14,7 +15,7 @@ export const dynamic = "force-static";
 // This is THAT page: the actual structure of a delivered First Look PDF,
 // with the org names redacted to preserve the buyer-only edge.
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "First Look, sample page (redacted). What €7 actually buys, page by page.",
   description:
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/firstlook/sample",
     type: "article",
   },
-};
+});
 
 const REDACTED_ROW = (n: number) => `■■■■■■■■■■-${String(n).padStart(2, "0")}`;
 

@@ -5,16 +5,17 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import TelegramCTA from "@/components/TelegramCTA";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Sector Sweep commissioned. Reply with your thesis.",
   description:
     "Founder-written onboarding for Custom Sector Sweep buyers. Three things to send so the deliverable is sharp.",
   alternates: { canonical: "/thanks/sector-sweep" },
   robots: { index: false, follow: false },
-};
+});
 
 const STEPS = [
   {

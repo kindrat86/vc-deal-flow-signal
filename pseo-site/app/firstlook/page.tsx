@@ -9,6 +9,7 @@ import TrialClose from "@/components/TrialClose";
 import { DataNerdCharacterCard } from "@/components/DataNerdCharacterCard";
 import BuyerRoadmap from "@/components/BuyerRoadmap";
 import PaidTrafficBanner from "@/components/PaidTrafficBanner";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
@@ -26,7 +27,7 @@ const QUEUE_TYPICAL_DEPTH = "0-4";
 // what makes the one-click OTO on /firstlook/thanks possible.
 const FIRSTLOOK_OFFER_URL = "https://signals.gitdealflow.com/firstlook";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "First Look Pass, €7. One sector. 24-hour deep dive.",
   description:
     "Pay €7 once, pick any of 19 tracked sectors, and within 24 hours get a written sector deep dive: top 25 ranked GitHub orgs, 14-day acceleration deltas, contributor maps, and three pre-Crunchbase breakouts. Credited toward Dashboard if you upgrade in 14 days.",
@@ -45,7 +46,7 @@ export const metadata: Metadata = {
     description:
       "€7 once, pick a sector, get the full GitHub-momentum deep dive in 24h.",
   },
-};
+});
 
 // CURIOSITY LOOPS, Brunson DotCom Secrets Ch 12 (23 Building Blocks),
 // Building Block #3: "What you'll discover" bullets. Each line opens a loop

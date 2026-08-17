@@ -10,6 +10,7 @@ import {
   DATA_NERD_TRIBE,
 } from "@/lib/data-nerd";
 import SeoCta from "@/components/SeoCta";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 // Block requests for slugs not pre-rendered at build time. Brunson DCS
@@ -36,12 +37,12 @@ export async function generateMetadata({
   const { slug } = await params;
   const parable = findParable(slug);
   if (!parable) {
-    return {
+    return withEditorialOverride({
       title: "Parable not found",
       robots: { index: false, follow: false },
-    };
+    });
   }
-  return {
+  return withEditorialOverride({
     title: `${parable.title}, a parable from ${DATA_NERD_NAME}`,
     description: parable.lesson,
     alternates: { canonical: `/parables/${parable.slug}` },
@@ -51,7 +52,7 @@ export async function generateMetadata({
       url: `https://signals.gitdealflow.com/parables/${parable.slug}`,
       type: "article",
     },
-  };
+  });
 }
 
 export default async function ParablePage({ params }: { params: Params }) {

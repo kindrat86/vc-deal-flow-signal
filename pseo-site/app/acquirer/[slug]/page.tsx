@@ -16,6 +16,7 @@ import { getRelatedGroups } from "@/lib/related-links";
 import CitableStat from "@/components/CitableStat";
 import { citableStat } from "@/lib/citable-stats";
 import { buildSourceTruthDataset } from "@/lib/dataset-schema";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -33,7 +34,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const a = getAcquirer(slug);
   if (!a) return {};
 
-  return {
+  return withEditorialOverride({
     // absolute: title already carries name+count+year; the 22ch template
     // suffix would push every acquirer page over 60ch.
     title: { absolute: a.title },
@@ -41,7 +42,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     openGraph: { title: a.title, description: a.metaDescription, type: "article", url: `/acquirer/${slug}` },
     twitter: { card: "summary_large_image", title: a.title, description: a.metaDescription },
     alternates: { canonical: `/acquirer/${slug}` },
-  };
+  });
 }
 
 export default async function AcquirerPage({ params }: PageProps) {

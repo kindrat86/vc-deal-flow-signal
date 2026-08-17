@@ -16,6 +16,7 @@ import RelatedLinks from "@/components/RelatedLinks";
 import { getRelatedGroups } from "@/lib/related-links";
 import CitableStat from "@/components/CitableStat";
 import { citableStat } from "@/lib/citable-stats";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -49,7 +50,7 @@ export async function generateMetadata({
     : comp.title.includes("VC Deal Flow Signal")
       ? { absolute: comp.title }
       : comp.title;
-  return {
+  return withEditorialOverride({
     title: pageTitle,
     description: clampDescription(comp.description),
     ...(comp.noindex ? { robots: { index: false } } : {}),
@@ -67,7 +68,7 @@ export async function generateMetadata({
     alternates: {
       canonical: `/compare/${slug}`,
     },
-  };
+  });
 }
 
 export default async function ComparisonPage({ params }: PageProps) {

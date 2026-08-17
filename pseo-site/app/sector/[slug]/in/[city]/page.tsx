@@ -12,6 +12,7 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 import { FRESH_YEAR_STR } from "@/lib/freshness-year";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface PageProps {
   params: Promise<{ slug: string; city: string }>;
@@ -42,7 +43,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const hasLocalCompanies =
     getCompaniesInSectorAndCity(slug, city).length > 0;
 
-  return {
+  return withEditorialOverride({
     title,
     description,
     openGraph: { title, description, type: "article", url: `/sector/${slug}/in/${city}` },
@@ -51,7 +52,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     ...(hasLocalCompanies
       ? {}
       : { robots: { index: false, follow: true } }),
-  };
+  });
 }
 
 export default async function SectorInCityPage({ params }: PageProps) {

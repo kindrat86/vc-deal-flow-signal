@@ -8,6 +8,7 @@ import {
   getNextDay,
   getPrevDay,
 } from "@/content/challenge-curriculum";
+import { withEditorialOverride } from "@/lib/metadata";
 
 // SSG, one static page per challenge day. Permalinks let subscribers
 // re-consult outside the email and let the curriculum index in search.
@@ -24,10 +25,10 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { day: slug } = await params;
   const d = getChallengeDay(slug);
-  if (!d) return { title: "Challenge, Not found" };
+  if (!d) return withEditorialOverride({ title: "Challenge, Not found" });
 
   const title = `Day ${d.day}, ${d.title} | 30-Day Deal Flow Reset Challenge`;
-  return {
+  return withEditorialOverride({
     title,
     description: `${d.oneLine} ${d.whyItMatters.slice(0, 120)}…`,
     alternates: { canonical: `/challenge/${d.slug}` },
@@ -43,7 +44,7 @@ export async function generateMetadata({
       title,
       description: d.oneLine,
     },
-  };
+  });
 }
 
 export default async function ChallengeDayPage({

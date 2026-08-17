@@ -6,6 +6,7 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { DEFAULT_HREFLANG_LANGUAGES } from "@/lib/hreflang";
 import { FRESH_YEAR_STR } from "@/lib/freshness-year";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
@@ -17,7 +18,7 @@ const PAGE_URL = `${SITE}/from-stars-to-seed`;
 // it can never go stale when cases are added.
 const pageTitle = `GitHub Stars to Startup Funding: ${starsCases.length} Case Studies ${FRESH_YEAR_STR}`;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   // absolute: old title + template suffix hit 105ch; this is 55ch un-truncated.
   title: { absolute: pageTitle },
   description:
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
     url: PAGE_URL,
     type: "article",
   },
-};
+});
 
 export default function FromStarsToSeedIndexPage() {
   const totalCases = starsCases.length;

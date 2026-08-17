@@ -4,10 +4,11 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import StadiumPitchHero from "@/components/StadiumPitchHero";
 import StadiumPitchRsvp from "@/components/StadiumPitchRsvp";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "State of GitHub Engineering Velocity, Monthly Address · Drops first Wed of every month",
   description:
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
     description:
       "First Wednesday of every month. RSVP for the live drop window; .ics calendar invite makes it recurring.",
   },
-};
+});
 
 export const dynamic = "force-static";
 

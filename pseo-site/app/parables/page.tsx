@@ -5,6 +5,7 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { DATA_NERD_NAME, DATA_NERD_PARABLES } from "@/lib/data-nerd";
 import SeoCta from "@/components/SeoCta";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
@@ -32,7 +33,7 @@ const PARABLE_PLAIN_GLOSS: Record<string, string> = {
 // the lesson, the email anchor where it first surfaced, and an
 // invitation to read the next one.
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: `Six parables, the teaching stories of ${DATA_NERD_NAME}`,
   description:
     "Six parables The Data Nerd rotates through emails, videos, and the Sunday digest. Each one is a single story with a single lesson, hyperlinkable so you can send one to a friend without sending the whole character bible.",
@@ -44,7 +45,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/parables",
     type: "article",
   },
-};
+});
 
 export default function ParablesIndexPage() {
   const jsonLd = {

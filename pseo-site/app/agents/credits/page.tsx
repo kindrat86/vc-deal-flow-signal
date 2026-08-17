@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 
@@ -7,7 +8,7 @@ const STRIPE_LINK =
   process.env.NEXT_PUBLIC_STRIPE_AGENT_CREDITS_LINK ??
   "https://buy.stripe.com/00w4gyfRpg3SbAGcUg0x205";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Agent Credits, Pay Per Deep Signal",
   description:
     "Per-request pricing for AI agents and programmatic callers. €19 = 100 deep-signal calls (€0.19 each). One credit per deep signal returned. The free MCP tools stay free.",
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
     type: "website",
     url: `${SITE}/agents/credits`,
   },
-};
+});
 
 export default async function AgentCreditsPage({
   searchParams,

@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Free 5-Call Sample, Agent Credits",
   description:
     "Try get_deep_signal before buying credits: drop your email, get an API key with 5 free deep-signal calls within 24 hours. No card, no subscription.",
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
     type: "website",
     url: `${SITE}/agents/credits/sample`,
   },
-};
+});
 
 export default async function AgentCreditsSamplePage({
   searchParams,

@@ -6,13 +6,14 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 import { PlainEnglishNote } from "@/components/PlainEnglishNote";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 const SSRN_URL = "https://ssrn.com/abstract=6606558";
 const PAPER_TITLE =
   "A Longitudinal Panel of GitHub Engineering Velocity for Venture-Backed Startups";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "GitHub Engineering Velocity for Venture-Backed Startups, 30 Findings (SSRN-Indexed)",
   description:
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
       "30 findings from a 219-observation panel of venture-backed startup GitHub activity. SSRN-indexed.",
     images: [`${SITE}/api/og/signal-card`],
   },
-};
+});
 
 const FAQ_ENTRIES = [
   {

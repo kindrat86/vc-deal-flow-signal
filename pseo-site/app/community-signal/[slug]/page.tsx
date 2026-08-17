@@ -17,6 +17,7 @@ import {
   type CommunityStatus,
   type YieldTier,
 } from "@/content/community-signal";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 export const dynamicParams = false;
@@ -42,12 +43,12 @@ export async function generateMetadata({
   const { slug } = await params;
   const g = getCommunityGroup(slug);
   if (!g) {
-    return {
+    return withEditorialOverride({
       title: "Community roster not found",
       robots: { index: false, follow: false },
-    };
+    });
   }
-  return {
+  return withEditorialOverride({
     title: `${g.label}, communities ranked by deal-flow yield`,
     description: `${g.tagline} ${g.cadence}`,
     keywords: [
@@ -71,7 +72,7 @@ export async function generateMetadata({
       title: `${g.label}, ranked by deal-flow yield`,
       description: g.tagline,
     },
-  };
+  });
 }
 
 const YIELD_BADGE_CLASS: Record<YieldTier, string> = {

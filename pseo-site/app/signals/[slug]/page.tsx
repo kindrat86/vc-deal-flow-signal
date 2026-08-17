@@ -13,6 +13,7 @@ import FreshnessWatermark from "@/components/FreshnessWatermark";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -36,13 +37,13 @@ export async function generateMetadata({
   const title = `${signalData.name} Signal, Startups Showing ${signalData.name}, ${period.name}`;
   const description = `${signalData.totalAcrossSectors} startups showing "${signalData.name.toLowerCase()}" signal across all sectors in ${period.name}. ${signalData.description}`;
 
-  return {
+  return withEditorialOverride({
     title,
     description,
     openGraph: { title, description, type: "article", url: `/signals/${slug}` },
     twitter: { card: "summary_large_image", title, description },
     alternates: { canonical: `/signals/${slug}` },
-  };
+  });
 }
 
 export default async function SignalTypePage({ params }: PageProps) {

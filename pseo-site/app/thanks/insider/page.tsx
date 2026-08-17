@@ -5,16 +5,17 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import TelegramCTA from "@/components/TelegramCTA";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "You're in the Insider Circle.",
   description:
     "Founder-written onboarding for Insider Circle members. Telegram invitation, API key generation, and the rhythm.",
   alternates: { canonical: "/thanks/insider" },
   robots: { index: false, follow: false },
-};
+});
 
 const STEPS = [
   {

@@ -4,6 +4,7 @@ import TelegramCTA from "@/components/TelegramCTA";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 export const revalidate = 86400;
@@ -14,7 +15,7 @@ const DESCRIPTION =
 const CANONICAL = "https://signals.gitdealflow.com/telegram";
 const TELEGRAM_HREF = "https://t.me/gitdealflow";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: "/telegram" },
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
     "venture capital telegram channel",
     "startup signal telegram",
   ],
-};
+});
 
 // Brunson Traffic Secrets §3 Ch 11, "After the Slap", V8 audit (2026-05-09)
 // flagged Telegram as a buried second owned channel. This page is the

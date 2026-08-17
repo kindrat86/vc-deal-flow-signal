@@ -11,6 +11,7 @@ import {
 import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -30,7 +31,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   // Titles embed the brand mid-string ("X + VC Deal Flow Signal, ..."), use
   // absolute to bypass the "| VC Deal Flow Signal" template (brand doubling fix).
-  return {
+  return withEditorialOverride({
     title: t.title.includes("VC Deal Flow Signal")
       ? { absolute: t.title }
       : t.title,
@@ -38,7 +39,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     openGraph: { title: t.title, description: t.metaDescription, type: "article", url: `/works-with/${slug}` },
     twitter: { card: "summary_large_image", title: t.title, description: t.metaDescription },
     alternates: { canonical: `/works-with/${slug}` },
-  };
+  });
 }
 
 export default async function WorksWithPage({ params }: PageProps) {

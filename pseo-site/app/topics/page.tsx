@@ -4,14 +4,15 @@ import { pillars, getPostsInPillar } from "@/content/pillars";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import SeoCta from "@/components/SeoCta";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Topics",
   description:
     "Browse VC Deal Flow Signal articles by topical series, GitHub signals methodology, deal sourcing workflows, alternative data for VC, sector deep dives, and operator notes.",
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
   alternates: { canonical: "/topics" },
-};
+});
 
 export default function TopicsIndexPage() {
   const entries = Object.values(pillars).map((p) => ({

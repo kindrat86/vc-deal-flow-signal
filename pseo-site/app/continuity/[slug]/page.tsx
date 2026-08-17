@@ -14,6 +14,7 @@ import {
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 import RelatedLinks from "@/components/RelatedLinks";
 import { getRelatedGroups } from "@/lib/related-links";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
@@ -87,10 +88,10 @@ export async function generateMetadata({
   const { slug } = await params;
   const drop = getDropBySlug(slug);
   if (!drop) {
-    return { title: "Insider Drop not found" };
+    return withEditorialOverride({ title: "Insider Drop not found" });
   }
   const url = `${SITE}/continuity/${drop.slug}`;
-  return {
+  return withEditorialOverride({
     title: `${drop.title}, Insider Drop #${String(drop.n).padStart(3, "0")}`,
     description: drop.abstract,
     alternates: { canonical: `/continuity/${drop.slug}` },
@@ -106,7 +107,7 @@ export async function generateMetadata({
       title: drop.title,
       description: drop.subtitle,
     },
-  };
+  });
 }
 
 function buildJsonLd(drop: ContinuityDrop) {

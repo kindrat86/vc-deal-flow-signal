@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ForFrameworkPage } from "@/components/ForFrameworkPage";
 import { getFrameworkPositioning } from "@/lib/for-framework-data";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 const fw = getFrameworkPositioning("letta")!;
@@ -10,7 +11,7 @@ const TITLE =
 const DESCRIPTION =
   "Build a Letta agent that remembers every startup it has scouted. Wire GitDealFlow's A2A endpoint as a tool, get persistent watchlist memory across sessions. Five skills, 350+ startups, weekly refresh, no auth.";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: TITLE,
   description: DESCRIPTION,
   keywords: [
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
     title: TITLE,
     description: DESCRIPTION,
   },
-};
+});
 
 export default function ForLettaPage() {
   return <ForFrameworkPage framework={fw} />;

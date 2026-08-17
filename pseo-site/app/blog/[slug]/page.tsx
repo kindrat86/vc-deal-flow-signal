@@ -17,6 +17,7 @@ import RelatedLinks from "@/components/RelatedLinks";
 import { getRelatedGroups } from "@/lib/related-links";
 import CitableStat from "@/components/CitableStat";
 import { citableStat } from "@/lib/citable-stats";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -54,7 +55,7 @@ export async function generateMetadata({
   const contentMod = getPostLastUpdated(slug, post.date);
   const modifiedTime = [post.date, contentMod, dataLastMod].sort().pop()!;
 
-  return {
+  return withEditorialOverride({
     title: post.title,
     description: post.description,
     openGraph: {
@@ -74,7 +75,7 @@ export async function generateMetadata({
     alternates: {
       canonical: `/blog/${slug}`,
     },
-  };
+  });
 }
 
 export default async function BlogPostPage({ params }: PageProps) {

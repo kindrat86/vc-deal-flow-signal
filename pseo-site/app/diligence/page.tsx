@@ -14,12 +14,13 @@ import { ACQUIRERS } from "@/content/acquirers";
 import { companies } from "@/content/companies";
 import { getInvestorsForCompany } from "@/content/fund-portfolio";
 import { TrustConversionBlock } from "@/components/TrustConversionBlock";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 
 export const revalidate = 86400;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "Diligence Answers for AI Agents, Who Acquired X, Who Backed Y, Signal on Z",
   description:
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
     description:
       "Who acquired X · which funds backed Y · what's the signal on Z. Public-source, machine-readable grounding for AI agents.",
   },
-};
+});
 
 /**
  * Pick three worked examples that always resolve against live data, so the

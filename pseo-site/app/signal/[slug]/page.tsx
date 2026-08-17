@@ -7,6 +7,7 @@ import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 import RelatedLinks from "@/components/RelatedLinks";
 import { getRelatedGroups } from "@/lib/related-links";
 import SeoCta from "@/components/SeoCta";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -24,7 +25,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const c = getCompany(slug);
   if (!c) return {};
 
-  return {
+  return withEditorialOverride({
     title: c.title,
     description: c.metaDescription,
     openGraph: {
@@ -41,7 +42,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     alternates: {
       canonical: `/signal/${slug}`,
     },
-  };
+  });
 }
 
 export default async function CompanySignalPage({ params }: PageProps) {

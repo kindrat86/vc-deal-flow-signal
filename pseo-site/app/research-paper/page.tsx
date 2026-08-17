@@ -6,8 +6,9 @@ import { TrustConversionBlock } from "@/components/TrustConversionBlock";
 import DefinitionBlock from "@/components/DefinitionBlock";
 import CitableStat from "@/components/CitableStat";
 import { citableStat } from "@/lib/citable-stats";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Research Papers, External Academic References",
   description: `${RESEARCH_PAPERS.length} external academic papers we cite, foundational ML/AI references (Transformer, GPT-3, RLHF, RAG, LoRA, Constitutional AI, CoT), the DORA research on engineering velocity, and more. Citation-ready summaries with canonical sameAs links.`,
   alternates: { canonical: "/research-paper" },
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
     title: "Research Papers",
     description: "External academic papers we cite.",
   },
-};
+});
 
 export const revalidate = 604800;
 

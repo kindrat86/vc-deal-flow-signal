@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { glossaryTerms } from "@/content/glossary";
 import { EmbedAutoHeight } from "@/components/EmbedAutoHeight";
+import { withEditorialOverride } from "@/lib/metadata";
 
 /**
  * /embed/define/[term], iframe-embeddable glossary card.
@@ -53,14 +54,14 @@ export async function generateMetadata({
   const t = getTerm(term);
   if (!t) return {};
   const url = `${SITE}/embed/define/${term}`;
-  return {
+  return withEditorialOverride({
     title: `${t.term}, Embed`,
     description: `Embeddable glossary card for "${t.term}". ${firstSentence(t.definition)} CC BY 4.0.`,
     alternates: { canonical: url },
     // Iframe surface, keep it out of search so it doesn't compete with
     // the canonical /define/<term> page for the same head terms.
     robots: { index: false, follow: false },
-  };
+  });
 }
 
 const FOUC_STYLE = `

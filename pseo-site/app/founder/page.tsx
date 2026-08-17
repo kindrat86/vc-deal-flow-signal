@@ -3,8 +3,9 @@ import Link from "next/link";
 import { founders } from "@/content/founders";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Founders & Public Engineering Profiles",
   description:
     "Public engineering profiles of well-known founders, OSS maintainers, and technical executives, restricted to people who self-publish their GitHub handle on their own surface.",
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
     description:
       "Public engineering profiles restricted to self-published, public-figure-threshold identities.",
   },
-};
+});
 
 export const revalidate = 604800;
 

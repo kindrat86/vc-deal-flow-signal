@@ -5,15 +5,16 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { DEFAULT_HREFLANG_LANGUAGES } from "@/lib/hreflang";
 import SeoCta from "@/components/SeoCta";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Answers, Citation-Ready Answers for AI Agents",
   description:
     "Direct, citation-ready answers to the questions AI agents and their users ask most about VC deal flow, GitHub momentum, MCP servers, engineering signals, and buyer-side workflow decisions.",
   alternates: { canonical: "/answers" },
-};
+});
 
 export default function AnswersIndexPage() {
   const jsonLd = {

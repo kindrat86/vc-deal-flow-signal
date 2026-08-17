@@ -5,11 +5,12 @@ import { pillars } from "@/content/pillars";
 import { FINDINGS } from "@/content/research-findings";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 const SSRN_URL = "https://ssrn.com/abstract=6606558";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "Knowledge Graph, Topic Taxonomy for VC Deal Flow Signal",
   description:
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
     type: "article",
     url: `${SITE}/knowledge`,
   },
-};
+});
 
 const TOPIC_CLUSTERS = [
   {

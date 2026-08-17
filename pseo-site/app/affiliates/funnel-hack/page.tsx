@@ -6,12 +6,13 @@ import {
   SWIPE_KIT_META,
   type SwipeArchetype,
 } from "@/content/affiliate-swipe-kit";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
 const PORTAL_URL = "https://gitdealflow.refgrow.com";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "Affiliate Swipe Kit, Clone-ready content templates | GitDealFlow",
   description:
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/affiliates/funnel-hack",
     type: "article",
   },
-};
+});
 
 const ARCHETYPE_LABELS: Record<SwipeArchetype, string> = {
   "tweet-thread": "Twitter / X thread",

@@ -12,10 +12,11 @@ import {
   type Dream100Status,
 } from "@/content/target-list";
 import { assertCoverage } from "@/content/target-list-icp";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "Top 100, the publications, communities, and research desks worth paying attention to",
   description:
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/target-list",
     type: "article",
   },
-};
+});
 
 const STATUS_BADGE_CLASS: Record<Dream100Status, string> = {
   engage: "bg-emerald-500/15 text-emerald-300 border-emerald-500/30",

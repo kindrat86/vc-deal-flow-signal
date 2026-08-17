@@ -5,6 +5,7 @@ import { RunwayCalculator } from "@/components/RunwayCalculator";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import EmbedThisCard from "@/components/EmbedThisCard";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 const PAGE_URL = `${SITE}/tools/runway-calculator`;
@@ -17,7 +18,7 @@ const PAGE_URL = `${SITE}/tools/runway-calculator`;
 export function generateMetadata(): Metadata {
   const ogImage = `${SITE}/api/og/tools/runway-calculator`;
 
-  return {
+  return withEditorialOverride({
     title:
       "Runway Calculator, Cash, Burn, Headcount Scenarios for Startups",
     description:
@@ -55,7 +56,7 @@ export function generateMetadata(): Metadata {
       "headcount cost calculator",
       "startup financial model",
     ],
-  };
+  });
 }
 
 const FAQS: { question: string; answer: string }[] = [

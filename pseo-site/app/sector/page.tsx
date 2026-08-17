@@ -8,8 +8,9 @@ import {
 } from "@/content/sectors";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Sector Hubs, Engineering Signals & VC Deal Flow",
   description:
     "Curated sector hubs aggregating tracked companies, active venture funds, engineering leaders, and metrics across AI infra, AI/ML, developer tools, cloud infrastructure, databases, observability, analytics, fintech, and productivity.",
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
     description:
       "Curated sector hubs for Corp Dev, PE operating partners, and emerging managers.",
   },
-};
+});
 
 export const revalidate = 604800;
 

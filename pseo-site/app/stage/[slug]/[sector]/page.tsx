@@ -11,6 +11,7 @@ import StartupTable from "@/components/StartupTable";
 import SeoCta from "@/components/SeoCta";
 import FreshnessWatermark from "@/components/FreshnessWatermark";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface PageProps {
   params: Promise<{ slug: string; sector: string }>;
@@ -36,7 +37,7 @@ export async function generateMetadata({
   const title = `${countLead(data.startups.length, `${data.stageName} ${data.sector.name} Startups`)} Accelerating on GitHub (${data.period.name})`;
   const description = `${data.startups.length} ${data.sector.name.toLowerCase()} startups at ${data.stageName.toLowerCase()} stage, ranked by GitHub engineering acceleration in ${data.period.name}. Free, no signup.`;
 
-  return {
+  return withEditorialOverride({
     title,
     description,
     openGraph: { title, description, type: "article", url: `/stage/${slug}/${sector}` },
@@ -48,7 +49,7 @@ export async function generateMetadata({
         "application/ld+json": `/jsonld/stage/${slug}/${sector}`,
       },
     },
-  };
+  });
 }
 
 export default async function StageSectorPage({ params }: PageProps) {

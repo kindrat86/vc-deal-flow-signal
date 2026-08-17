@@ -4,6 +4,7 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { PLATFORM_HOOKS, UNIVERSAL_STORY } from "@/content/platform-hooks";
+import { withEditorialOverride } from "@/lib/metadata";
 
 // Brunson Traffic Secrets §1 Ch 3, platform-native opener variants.
 // Twelve resolutions of one universal story (commit-velocity =
@@ -20,7 +21,7 @@ export const dynamic = "force-static";
 
 const CANONICAL = "https://signals.gitdealflow.com/distribution/platform-hooks";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Platform-native openers, twelve ways to introduce the same signal",
   description:
     "How the same product story (commit-velocity acceleration as a 21-47-day pre-fundraise signal) gets reframed for each of the twelve platforms we publish on. Twitter / Reddit / Hacker News / dev.to / Hashnode / Discord / LinkedIn / Email / AngelList / Product Hunt / Indie Hackers / Telegram. Each variant carries an opener pattern, audience signal, format constraint, timing window, and the platform-specific landmine.",
@@ -33,7 +34,7 @@ export const metadata: Metadata = {
     url: CANONICAL,
     type: "article",
   },
-};
+});
 
 const TEMPERATURE_LABEL: Record<string, { label: string; tone: string }> = {
   cold: {

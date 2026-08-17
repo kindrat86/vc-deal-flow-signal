@@ -11,6 +11,7 @@ import { getSector } from "@/content/sectors";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -28,13 +29,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const t = getTrendLeaderboard(slug);
   if (!t) return {};
 
-  return {
+  return withEditorialOverride({
     title: t.title,
     description: t.metaDescription,
     openGraph: { title: t.title, description: t.metaDescription, type: "article", url: `/trend/${slug}` },
     twitter: { card: "summary_large_image", title: t.title, description: t.metaDescription },
     alternates: { canonical: `/trend/${slug}` },
-  };
+  });
 }
 
 export default async function TrendLeaderboardPage({ params }: PageProps) {

@@ -3,10 +3,11 @@ import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { TrustConversionBlock } from "@/components/TrustConversionBlock";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Corrections Policy &amp; Log",
   description:
     "Public corrections policy and timestamped corrections log for VC Deal Flow Signal (GitDealFlow). Every substantive correction to the SSRN paper, the public dataset, methodology pages, and research findings is logged here with the date, what changed, and why.",
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
     type: "article",
     url: `${SITE}/corrections`,
   },
-};
+});
 
 interface Correction {
   date: string; // ISO 8601

@@ -1,12 +1,13 @@
 import type { Metadata } from "next";
 import InstallClient from "./InstallClient";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 const TITLE = "GitDealFlow Bookmarklet, See investor signal on every github.com page";
 const DESCRIPTION =
   "One drag, zero install. The GitDealFlow bookmarklet pops a momentum-and-Scout-Score card on any github.com profile or repo. Free, works in every browser, no extension store review.";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: "/install" },
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
     images: [`${SITE}/api/og/badge-builder`],
   },
-};
+});
 
 const jsonLd = {
   "@context": "https://schema.org",

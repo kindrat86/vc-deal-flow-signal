@@ -19,6 +19,7 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface PageProps {
   params: Promise<{ sector: string }>;
@@ -44,7 +45,7 @@ export async function generateMetadata({
   const title = `${entry.name}: build it or fund it?, ${meta.short} quadrant`;
   const description = entry.headline;
 
-  return {
+  return withEditorialOverride({
     title,
     description,
     alternates: { canonical: `/build-vs-invest/${sector}` },
@@ -59,7 +60,7 @@ export async function generateMetadata({
       title,
       description,
     },
-  };
+  });
 }
 
 const QUADRANT_TONE: Record<

@@ -13,6 +13,7 @@ import {
   type BuildCost,
   type DealVelocity,
 } from "@/content/niches";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 
@@ -38,13 +39,13 @@ export async function generateMetadata({
   const title = `${sector.name}, ${sector.niches.length} niche-down opportunities`;
   const description = `${sector.shortPitch}, ${sector.niches.length} specific sub-niches inside ${sector.name}, each tagged with build cost, deal velocity, and a build-vs-invest call.`;
   const url = `${SITE}/niche-down/${sector.slug}`;
-  return {
+  return withEditorialOverride({
     title,
     description,
     alternates: { canonical: `/niche-down/${sector.slug}` },
     openGraph: { title, description, url, type: "article" },
     twitter: { card: "summary_large_image", title, description },
-  };
+  });
 }
 
 const BUILD_COST_TONE: Record<BuildCost, string> = {

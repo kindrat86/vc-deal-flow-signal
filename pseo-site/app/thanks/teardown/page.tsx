@@ -5,16 +5,17 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import TelegramCTA from "@/components/TelegramCTA";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Tweet Teardown confirmed. Reply with the startup name.",
   description:
     "Founder-written onboarding for Tweet Teardown buyers. Name a startup, get the tweet-length teardown in 24 hours.",
   alternates: { canonical: "/thanks/teardown" },
   robots: { index: false, follow: false },
-};
+});
 
 export default function ThanksTeardown() {
   return (

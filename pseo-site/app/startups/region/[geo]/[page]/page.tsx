@@ -9,6 +9,7 @@ import {
 } from "@/lib/directory";
 import StartupDirectory from "@/components/StartupDirectory";
 import { FRESH_YEAR_STR } from "@/lib/freshness-year";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface PageProps {
   params: Promise<{ geo: string; page: string }>;
@@ -36,13 +37,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const title = `${d.geoName} Startups Directory, Page ${page} (${FRESH_YEAR_STR})`;
   const description = `Page ${page} of the ${d.geoName} startups directory: tracked ${d.geoName} startups ranked by GitHub engineering acceleration, every company links to its live signal profile.`;
 
-  return {
+  return withEditorialOverride({
     title,
     description,
     openGraph: { title, description, type: "website", url: `/startups/region/${geo}/${page}` },
     twitter: { card: "summary_large_image", title, description },
     alternates: { canonical: `/startups/region/${geo}/${page}` },
-  };
+  });
 }
 
 export default async function RegionDirectorySubPage({ params }: PageProps) {

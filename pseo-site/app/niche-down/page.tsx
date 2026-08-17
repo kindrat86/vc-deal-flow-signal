@@ -8,13 +8,14 @@ import {
   countNiches,
   countSectors,
 } from "@/content/niches";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 
 export const dynamic = "force-static";
 export const revalidate = 604800;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: `Niche-down, ${countNiches()} small specific opportunities, indexed by sector`,
   description:
     "The riches are in the niches. We took the GitHub-signal sector map and split each sector into the small, specific opportunities a builder could ship or an early-stage VC could back. 15 sectors, 200 sub-niches, every entry status-flagged for build-vs-invest.",
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
     description:
       "The riches are in the niches, 200 specific opportunities a builder or VC could move on this quarter.",
   },
-};
+});
 
 export default function NicheDownHubPage() {
   const totalNiches = countNiches();

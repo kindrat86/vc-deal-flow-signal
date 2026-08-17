@@ -20,6 +20,7 @@ import RelatedLinks from "@/components/RelatedLinks";
 import { getRelatedGroups } from "@/lib/related-links";
 import CitableStat from "@/components/CitableStat";
 import { citableStat } from "@/lib/citable-stats";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -81,7 +82,7 @@ export async function generateMetadata({
   const priceClause = priceA && priceB ? ` (${priceA} vs ${priceB})` : "";
   const description = `${a.name} vs ${b.name} head-to-head${priceClause}: signal type, lead time, pricing, coverage, and when to pick each. Independent comparison, updated ${lastModified.toLocaleDateString("en-US", { month: "long", year: "numeric" })}.`;
 
-  return {
+  return withEditorialOverride({
     // Absolute: bypass the "| VC Deal Flow Signal" template suffix. With the
     // suffix, rendered titles hit ~78 chars and Google truncates mid-suffix;
     // the hook + year must render in full to earn the click (house precedent:
@@ -101,7 +102,7 @@ export async function generateMetadata({
       // slugs remain self-canonical.
       canonical: `/vs/${canonicalSlug}`,
     },
-  };
+  });
 }
 
 export default async function VsPage({ params }: PageProps) {

@@ -4,10 +4,11 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Where to find us, every channel, mirror, and feed",
   description:
     "GitDealFlow on the open web: RSS, MCP, GitHub, social mirrors, agent surfaces, SSRN, Zenodo, llms.txt, and OpenAPI. The full distribution map.",
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/distribution",
     type: "article",
   },
-};
+});
 
 type Channel = {
   name: string;

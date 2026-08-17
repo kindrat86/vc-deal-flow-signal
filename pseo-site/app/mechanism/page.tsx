@@ -4,6 +4,7 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import ThreeCoreStoriesNav from "@/components/ThreeCoreStoriesNav";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
@@ -17,7 +18,7 @@ export const dynamic = "force-static";
 // This is the canonical "Named Mechanism" page. Linked from home pillar
 // links, manifesto, and the walkthrough core-claim narrative.
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "How the Signal Works, The Commit-Velocity Acceleration Engine",
   description:
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/mechanism",
     type: "article",
   },
-};
+});
 
 const FORMULA_STEPS = [
   {

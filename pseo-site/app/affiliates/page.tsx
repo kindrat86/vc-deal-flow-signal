@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const PORTAL_URL = "https://gitdealflow.refgrow.com";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Affiliate Program, 20% Lifetime Commission on GitDealFlow",
   description:
     "Earn 20% lifetime recurring commission promoting VC Deal Flow Signal. €399 per Sector Sweep referral. €19.40/mo per Insider Circle subscriber, forever. 60-day cookie. Monthly payouts via Stripe.",
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
       "20% lifetime commission. €399 per Sector Sweep, €19.40/mo per Insider sub. 60-day cookie. Monthly Stripe payouts.",
     url: "https://signals.gitdealflow.com/affiliates",
   },
-};
+});
 
 export default function AffiliatesPage() {
   const jsonLd = {

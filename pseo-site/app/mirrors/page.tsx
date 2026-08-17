@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import SeoCta from "@/components/SeoCta";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Mirrors &amp; Indexes, Where to Find VC Deal Flow Signal",
   description:
     "Every external mirror, registry, and index that carries VC Deal Flow Signal artifacts, methodology paper, dataset, MCP server, browser extension, source repository. One canonical directory, machine-readable.",
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
     type: "article",
     url: `${SITE}/mirrors`,
   },
-};
+});
 
 interface Mirror {
   artifact:

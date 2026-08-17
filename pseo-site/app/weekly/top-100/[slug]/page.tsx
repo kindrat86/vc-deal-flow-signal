@@ -9,6 +9,7 @@ import {
 } from "@/lib/top-100";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 
@@ -34,7 +35,7 @@ export async function generateMetadata({
   const description = top
     ? `Composite leaderboard of ${snap.summary.totalRanked} distinct startups ranked by GitHub engineering signal, ${label}. #1 this week: ${top.name} (Signal Score ${top.signalScore}, ${top.commitVelocityChange} commit velocity, ${top.contributorGrowth} contributor growth).`
     : `Top 100 GitHub-Signal Startups for ${label}.`;
-  return {
+  return withEditorialOverride({
     title: `Top 100 GitHub-Signal Startups, ${label}`,
     description,
     alternates: { canonical: `/weekly/top-100/${slug}` },
@@ -49,7 +50,7 @@ export async function generateMetadata({
       title: `Top 100 GitHub-Signal Startups, ${label}`,
       description,
     },
-  };
+  });
 }
 
 function ScoreBar({ score, max }: { score: number; max: number }) {

@@ -6,10 +6,11 @@ import { FalseBeliefBreaker } from "@/components/FalseBeliefBreaker";
 import { PlainEnglishNote } from "@/components/PlainEnglishNote";
 import { TrustConversionBlock } from "@/components/TrustConversionBlock";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Scorecard, Acceleration Watch grading at 60 and 90 days",
   description:
     "Public scorecard of every Acceleration Watch pick. Grading rules, hit/miss/pending counts, lead-time measurement against fundraise announcements. One-shot proof on a rolling cadence.",
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/scorecard",
     type: "article",
   },
-};
+});
 
 const RULES = [
   {

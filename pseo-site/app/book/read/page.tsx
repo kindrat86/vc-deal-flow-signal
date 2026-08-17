@@ -4,12 +4,13 @@ import { BOOK } from "@/lib/book";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
 const PAGE_URL = "https://signals.gitdealflow.com/book/read";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: `Read online, ${BOOK.title}`,
   description: `Free, full-text web edition of ${BOOK.title}. ${BOOK.pages}-page book on reading public GitHub data to predict Series A rounds.`,
   alternates: { canonical: "/book/read" },
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
     url: PAGE_URL,
     type: "article",
   },
-};
+});
 
 export default function BookReadIndex() {
   return (

@@ -6,6 +6,7 @@ import {
   listScoutPredictions,
   type Prediction,
 } from "@/lib/pocketbase";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface Params {
   handle: string;
@@ -35,10 +36,10 @@ export async function generateMetadata({
   const { handle } = await params;
   const scout = await getScoutByHandle(handle).catch(() => null);
   if (!scout) {
-    return {
+    return withEditorialOverride({
       title: `Scout not found`,
       robots: { index: false, follow: false },
-    };
+    });
   }
   const accuracy =
     scout.correct_count + scout.wrong_count > 0
@@ -52,7 +53,7 @@ export async function generateMetadata({
     accuracy !== null
       ? `${scout.correct_count} correct calls · ${accuracy}% accuracy · ${Math.round(scout.points)} points. Can you beat this scout?`
       : `${scout.pending_count} predictions pending. New scout, still building the track record.`;
-  return {
+  return withEditorialOverride({
     title,
     description,
     alternates: { canonical: `/s/${scout.handle}` },
@@ -75,7 +76,7 @@ export async function generateMetadata({
       description,
       images: [`https://signals.gitdealflow.com/api/og/scout/${scout.handle}`],
     },
-  };
+  });
 }
 
 export default async function ScoutProfilePage({

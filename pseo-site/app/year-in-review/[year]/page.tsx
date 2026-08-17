@@ -11,6 +11,7 @@ import { getCompany } from "@/content/companies";
 import { getAcquirer } from "@/content/acquirers";
 import { getTrendLeaderboard } from "@/content/trend-leaderboards";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface PageProps {
   params: Promise<{ year: string }>;
@@ -28,13 +29,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const y = getYearInReview(year);
   if (!y) return {};
 
-  return {
+  return withEditorialOverride({
     title: y.title,
     description: y.metaDescription,
     openGraph: { title: y.title, description: y.metaDescription, type: "article", url: `/year-in-review/${year}` },
     twitter: { card: "summary_large_image", title: y.title, description: y.metaDescription },
     alternates: { canonical: `/year-in-review/${year}` },
-  };
+  });
 }
 
 export default async function YearInReviewPage({ params }: PageProps) {

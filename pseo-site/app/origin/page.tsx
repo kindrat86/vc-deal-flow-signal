@@ -6,10 +6,11 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import ThreeCoreStoriesNav from "@/components/ThreeCoreStoriesNav";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "Origin, Why Hearing About the Company Late Became the Problem",
   description:
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/origin",
     type: "article",
   },
-};
+});
 
 export default function OriginPage() {
   const jsonLd = {

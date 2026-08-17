@@ -10,6 +10,7 @@ import {
 } from "@/lib/scout-score";
 import { makeShareIntents } from "@/lib/share-url";
 import ShareGate from "./ShareGate";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface Params {
   username: string;
@@ -62,10 +63,10 @@ export async function generateMetadata({
   const { username } = await params;
   const data = await getReceipts(username);
   if (!data.ok) {
-    return {
+    return withEditorialOverride({
       title: `Receipts not found, GitDealFlow`,
       robots: { index: false, follow: false },
-    };
+    });
   }
   const { result } = data;
   const title = `@${username}, Scout Score ${result.score} · ${RANK_LABEL[result.rank]}`;
@@ -73,7 +74,7 @@ export async function generateMetadata({
     result.early_count > 0
       ? `${result.early_count} unicorn${result.early_count === 1 ? "" : "s"} called early on GitHub. Top: ${result.top_wins[0]?.name ?? "-"}. Beat this score:`
       : `${username} has no early unicorn calls in our database, yet. Show off yours:`;
-  return {
+  return withEditorialOverride({
     title,
     description,
     alternates: { canonical: `/receipts/${username}` },
@@ -93,7 +94,7 @@ export async function generateMetadata({
       description,
       images: [`${SITE}/api/og/receipts/${username}`],
     },
-  };
+  });
 }
 
 export default async function ReceiptsResultPage({

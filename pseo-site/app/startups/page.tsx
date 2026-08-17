@@ -7,8 +7,9 @@ import {
 import { PANEL_CLAIM } from "@/lib/canonical-claims";
 import DirectoryAbout from "@/components/DirectoryAbout";
 import { FRESH_YEAR_STR } from "@/lib/freshness-year";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: `Startup Directory (${FRESH_YEAR_STR})`,
   description:
     "Browse every tracked startup by sector and geography. Paginated directory of GitHub engineering-acceleration signals, every company links to its live signal profile. Free, no signup.",
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
     title: "Startup Directory",
     description: "Every tracked startup, browse by sector and geography.",
   },
-};
+});
 
 export const revalidate = 604800;
 

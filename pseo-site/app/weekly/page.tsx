@@ -6,8 +6,9 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import EmbedThisCard from "@/components/EmbedThisCard";
 import SeoCta from "@/components/SeoCta";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Weekly Signal Reports, Engineering Acceleration Archive",
   description:
     "Archive of weekly startup engineering acceleration reports from VC Deal Flow Signal. Each report ranks the top 10 startups by GitHub commit velocity change across all sectors.",
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/weekly",
   },
-};
+});
 
 export default function WeeklyArchivePage() {
   const weeklyPosts = allPosts.filter((p) =>

@@ -16,6 +16,7 @@ import DefinitionBlock from "@/components/DefinitionBlock";
 import { getRelatedGroups } from "@/lib/related-links";
 import CitableStat from "@/components/CitableStat";
 import { citableStat } from "@/lib/citable-stats";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -33,7 +34,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const p = getResearchPaper(slug);
   if (!p) return {};
 
-  return {
+  return withEditorialOverride({
     // `absolute` bypasses the "| VC Deal Flow Signal" template suffix. The
     // research-paper leaves serve a scholarly/technical audience searching for
     // paper names (RAG, LoRA, InstructGPT, …), where a VC-branded suffix is a
@@ -50,7 +51,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     robots: researchPaperLeafIndexable(slug)
       ? { index: true, follow: true }
       : { index: false, follow: true },
-  };
+  });
 }
 
 export default async function ResearchPaperPage({ params }: PageProps) {

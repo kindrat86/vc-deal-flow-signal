@@ -4,6 +4,7 @@ import { listLeaderboard, type Scout } from "@/lib/pocketbase";
 import { makeShareIntents } from "@/lib/share-url";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import SeoCta from "@/components/SeoCta";
+import { withEditorialOverride } from "@/lib/metadata";
 
 // Token must be minted at request time with the RUNTIME SHARE_TOKEN_SECRET,
 // not at build time with the local-machine secret, or /share/[token] and
@@ -29,7 +30,7 @@ const RANK_LABEL: Record<string, string> = {
   oracle: "Oracle",
 };
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Scout Leaderboard, Top 100 VC Deal Flow Scouts",
   description:
     "Live leaderboard of the top 100 scouts calling startup fundraises from public GitHub engineering signals. Points come from correct calls, wrong calls subtract. Top 1% earn an Oracle badge.",
@@ -41,7 +42,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/leaderboard",
     type: "website",
   },
-};
+});
 
 export default async function LeaderboardPage() {
   const scouts = await listLeaderboard(100).catch(() => [] as Scout[]);

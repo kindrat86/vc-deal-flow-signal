@@ -12,6 +12,7 @@ import RelatedLinks from "@/components/RelatedLinks";
 import { getRelatedGroups } from "@/lib/related-links";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -39,7 +40,7 @@ export async function generateMetadata({
 
   const url = `${SITE}/from-stars-to-seed/${slug}`;
   const description = clampDescription(c.tagline);
-  return {
+  return withEditorialOverride({
     // absolute: headlines already carry the funding-figure hook ("$3.25B
     // Series E") and run 43-70ch; the 22ch template suffix truncated them.
     title: { absolute: c.headline },
@@ -57,7 +58,7 @@ export async function generateMetadata({
       title: c.headline,
       description,
     },
-  };
+  });
 }
 
 function buildJsonLd(c: StarsCase): object {

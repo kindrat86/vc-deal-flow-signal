@@ -4,13 +4,14 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { SUMMIT, summitDays, isTalkLive, isTalkLocked } from "@/content/summit";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 
 export const dynamic = "force-static";
 export const revalidate = 3600;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "VC Engineering Acceleration Summit, 5 days · 20 anonymous-by-design talks · Free",
   description:
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
     url: `${SITE}/summit`,
     type: "article",
   },
-};
+});
 
 const STACK = [
   { label: "20 talks, released on a rolling basis, synthetic narration, anonymous-by-design", value: "€0 free for 24h after each talk airs" },

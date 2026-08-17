@@ -12,6 +12,7 @@ import { topicEnPath } from "@/lib/hreflang";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 
@@ -37,7 +38,7 @@ export async function generateMetadata({
   const summary = isLocaleTopicSummary(locale, topic);
   const enPath = topicEnPath(topic);
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
-  return {
+  return withEditorialOverride({
     // absolute: titles that already name the brand (11 localized About pages)
     // bypass the "| VC Deal Flow Signal" template, otherwise the brand doubles.
     title: t.title.includes("VC Deal Flow Signal")
@@ -58,7 +59,7 @@ export async function generateMetadata({
       url: `${SITE}/${locale}/${topic}`,
       locale,
     },
-  };
+  });
 }
 
 /**

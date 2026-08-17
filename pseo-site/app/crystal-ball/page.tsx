@@ -6,10 +6,11 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import SeoCta from "@/components/SeoCta";
 import CrystalBallForm from "./CrystalBallForm";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "The Crystal Ball, Public Underwriting Game · Predict A Series A In 90 Days",
   description:
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
     description:
       "Public underwriting game. Pick a GitHub org, predict the round, leaderboard tracks your accuracy.",
   },
-};
+});
 
 const SEEDED_PICKS: {
   handle: string;

@@ -3,10 +3,11 @@ import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "How to Spot Startup Momentum Before the Round Gets Crowded",
   description:
     "A direct guide to spotting startup momentum before the round feels obvious. Learn which public signals matter, which tools are late, and how to get a calmer read on timing.",
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
     description:
       "What to look for when you want earlier signal, less noise, and clearer timing before a startup round turns into consensus.",
   },
-};
+});
 
 const SIGNS = [
   {

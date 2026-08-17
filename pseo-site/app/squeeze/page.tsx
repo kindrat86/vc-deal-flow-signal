@@ -4,10 +4,11 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import SqueezeForm from "./SqueezeForm";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "5 breakout startups, every Sunday, 47 days before the deck arrives",
   description:
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
     description:
       "47 days before the deck arrives. Free forever, one email a week.",
   },
-};
+});
 
 export default function SqueezePage() {
   return (

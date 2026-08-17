@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 
@@ -33,7 +34,7 @@ const SITE = "https://signals.gitdealflow.com";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Engine Room, the post-90 cohort home",
   description:
     "You crossed Day 90. The Engine Room is where the rhythm continues, Sunday voice memo in your podcast app, monthly founder talk on your calendar, quarterly State-of-the-Engine post-mortem on the record. Three subscribe links. No more inbox-only.",
@@ -51,7 +52,7 @@ export const metadata: Metadata = {
     description:
       "Sunday voice memo, monthly founder talk, quarterly post-mortem. Channel-shift from inbox to podcast app and calendar.",
   },
-};
+});
 
 const RITUALS = [
   {

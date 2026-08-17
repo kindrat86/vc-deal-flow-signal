@@ -11,6 +11,7 @@ import {
   getClaimedCount,
   getRemainingSeats,
 } from "@/content/charter-cohort";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
@@ -33,7 +34,7 @@ const SITE = "https://signals.gitdealflow.com";
  * scorecards are Pending. No fabricated members, no fabricated hit rates.
  */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "Charter Cohort 2026, 25 founding-member seats · VC Deal Flow Signal",
   description:
@@ -46,7 +47,7 @@ export const metadata: Metadata = {
     url: `${SITE}/members`,
     type: "website",
   },
-};
+});
 
 export default function MembersPage() {
   const claimed = getClaimedCount();

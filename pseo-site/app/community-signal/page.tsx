@@ -14,6 +14,7 @@ import {
   type CommunityStatus,
   type YieldTier,
 } from "@/content/community-signal";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
@@ -24,7 +25,7 @@ assertCommunityCounts();
 
 const SITE = "https://signals.gitdealflow.com";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "Community Signal, communities ranked by deal-flow yield, indexed by type",
   description:
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
     url: `${SITE}/community-signal`,
     type: "article",
   },
-};
+});
 
 const YIELD_BADGE_CLASS: Record<YieldTier, string> = {
   primary: "bg-emerald-500/15 text-emerald-300 border-emerald-500/30",

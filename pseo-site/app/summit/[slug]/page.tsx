@@ -14,6 +14,7 @@ import {
   SUMMIT,
   TALKS,
 } from "@/content/summit";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 
@@ -34,7 +35,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const t = getTalkBySlug(slug);
   if (!t) return {};
-  return {
+  return withEditorialOverride({
     title: `${t.title}, VC Engineering Acceleration Summit`,
     description: t.abstract,
     alternates: { canonical: `/summit/${slug}` },
@@ -49,7 +50,7 @@ export async function generateMetadata({
       title: t.title,
       description: t.abstract,
     },
-  };
+  });
 }
 
 export default async function SummitTalkPage({ params }: PageProps) {

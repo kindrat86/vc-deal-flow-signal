@@ -12,6 +12,7 @@ import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import TrialClose from "@/components/TrialClose";
 import WalkthroughVariantTracker from "@/components/WalkthroughVariantTracker";
 import WalkthroughCtaLink from "@/components/WalkthroughCtaLink";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
@@ -22,7 +23,7 @@ export const dynamic = "force-static";
 const WORD_COUNT = 820;
 const READ_SECONDS = 300;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "The 5-Minute Walkthrough, GitDealFlow in 800 words",
   description:
     "The full case, condensed. Core claim, three objections, direct proof, and the weekly signal stack, in five minutes flat.",
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/walkthrough/5min",
     type: "article",
   },
-};
+});
 
 const STRIPE_DASHBOARD = "https://buy.stripe.com/4gMbJ07kTaJy7kqg6s0x20b";
 const SIGNUP_URL = "https://gitdealflow.com/#signup";

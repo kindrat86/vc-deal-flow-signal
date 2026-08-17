@@ -4,8 +4,9 @@ import { getAllDirectoryRegions } from "@/lib/directory";
 import { PANEL_CLAIM } from "@/lib/canonical-claims";
 import DirectoryAbout from "@/components/DirectoryAbout";
 import { FRESH_YEAR_STR } from "@/lib/freshness-year";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: `Startup Directory by Geography (${FRESH_YEAR_STR})`,
   description:
     "Browse every tracked startup by region. Paginated directories of GitHub engineering-acceleration signals for the US, Europe, APAC, UK, Canada, and Latin America.",
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
     title: "Startup Directory by Geography",
     description: "Browse every tracked startup by region.",
   },
-};
+});
 
 export const revalidate = 604800;
 

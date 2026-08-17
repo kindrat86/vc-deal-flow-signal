@@ -11,8 +11,9 @@ import {
   DATA_NERD_BIO_MEDIUM,
   DATA_NERD_TRIBE,
 } from "@/lib/data-nerd";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "About VC Deal Flow Signal, Why It Exists and Why You Might Trust It",
   description:
     "Why VC Deal Flow Signal exists, what it tracks, and why its public methodology and data surfaces are built to help you trust the signal faster.",
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
     description:
       "Why this exists, what it tracks, and why the signal is built to be checked in public.",
   },
-};
+});
 
 const PRINCIPLES = [
   {

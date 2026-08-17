@@ -3,19 +3,20 @@ import Link from "next/link";
 import { getDataLastModified } from "@/lib/data";
 import { AgentSummary } from "@/components/AgentSummary";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
 const SITE = "https://signals.gitdealflow.com";
 const PAGE_URL = `${SITE}/markets/methodology`;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "Markets Methodology, How Implied Odds Are Computed",
   description:
     "Public methodology for the Series A Race 2026 prediction market and any future seeded market. Composite signal score, resolver criteria, candidate selection, refresh cadence, conflict-of-interest disclosures.",
   alternates: { canonical: "/markets/methodology" },
-};
+});
 
 export default function MarketsMethodologyPage() {
   const asOf = getDataLastModified().toISOString().slice(0, 10);

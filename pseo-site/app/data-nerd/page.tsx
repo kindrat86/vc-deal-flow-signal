@@ -21,10 +21,11 @@ import {
   DATA_NERD_FUTURE_SELF,
   DATA_NERD_NOW,
 } from "@/lib/data-nerd";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: `${DATA_NERD_NAME}, character bible · VC Deal Flow Signal`,
   description:
     "The pseudonymous narrator behind VC Deal Flow Signal: identity archetype (Reluctant Reporter), backstory, six parables, eight polarities, three character flaws, seven voice rules, current weekly status, twelve-month commitments. Character bible, implemented under the anonymity rule.",
@@ -36,7 +37,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/data-nerd",
     type: "profile",
   },
-};
+});
 
 export default function DataNerdPage() {
   const jsonLd = {

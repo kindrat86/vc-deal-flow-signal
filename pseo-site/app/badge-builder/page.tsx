@@ -5,10 +5,11 @@ import { getAllSectors, getCurrentPeriod } from "@/lib/data";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 import { BADGE_LABEL, BADGE_HEIGHT, badgeWidth, badgeValue } from "@/lib/badge-dims";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Free Engineering Momentum Badge, Show Your Startup's GitHub Velocity",
   description:
     "Free shields.io-style SVG badge showing your startup's engineering momentum score. Auto-updates weekly. Embed on your website, README, or pitch deck. No signup required.",
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
     type: "website",
     url: `${SITE}/badge-builder`,
   },
-};
+});
 
 interface StartupBadge {
   name: string;

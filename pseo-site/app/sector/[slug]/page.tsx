@@ -19,6 +19,7 @@ import DefinitionBlock from "@/components/DefinitionBlock";
 import { buildSourceTruthDataset } from "@/lib/dataset-schema";
 import CitableStat from "@/components/CitableStat";
 import { citableStat } from "@/lib/citable-stats";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -36,7 +37,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const s = getSector(slug);
   if (!s) return {};
 
-  return {
+  return withEditorialOverride({
     title: s.title,
     description: s.metaDescription,
     openGraph: {
@@ -53,7 +54,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     alternates: {
       canonical: `/sector/${slug}`,
     },
-  };
+  });
 }
 
 export default async function SectorHubPage({ params }: PageProps) {

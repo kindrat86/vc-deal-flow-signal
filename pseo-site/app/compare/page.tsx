@@ -6,8 +6,9 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import SeoCta from "@/components/SeoCta";
 import DefinitionBlock from "@/components/DefinitionBlock";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Compare Deal Flow Tools",
   description:
     "Compare the best deal flow tools for investors: GitHub engineering signals, AI-powered sourcing, startup databases, and buyer-side workflow choices. Find the right tool for timing, verification, and strategy.",
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/compare",
   },
-};
+});
 
 export default function CompareIndex() {
   const jsonLd = {

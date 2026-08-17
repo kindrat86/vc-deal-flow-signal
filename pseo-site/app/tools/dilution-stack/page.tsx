@@ -5,6 +5,7 @@ import { DilutionStackCalculator } from "@/components/DilutionStackCalculator";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import EmbedThisCard from "@/components/EmbedThisCard";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 const PAGE_URL = `${SITE}/tools/dilution-stack`;
@@ -17,7 +18,7 @@ const PAGE_URL = `${SITE}/tools/dilution-stack`;
 export function generateMetadata(): Metadata {
   const ogImage = `${SITE}/api/og/tools/dilution-stack`;
 
-  return {
+  return withEditorialOverride({
     title:
       "Dilution Stack Calculator, Multiple SAFEs + Series A + Option Pool",
     description:
@@ -56,7 +57,7 @@ export function generateMetadata(): Metadata {
       "cap table calculator",
       "post-money SAFE conversion",
     ],
-  };
+  });
 }
 
 const FAQS: { question: string; answer: string }[] = [

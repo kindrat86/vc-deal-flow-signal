@@ -4,11 +4,12 @@ import { redirect } from "next/navigation";
 import { getSession } from "@/lib/auth";
 import { generateApiKey } from "@/lib/api-key";
 import ApiKeyDisplay from "./ApiKeyDisplay";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "API Keys",
   robots: { index: false },
-};
+});
 
 export default async function ApiKeysPage() {
   const session = await getSession();

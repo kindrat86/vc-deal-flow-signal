@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 
@@ -151,12 +152,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { tool } = await params;
   const i = INTEGRATIONS.find((x) => x.slug === tool);
   if (!i) return {};
-  return {
+  return withEditorialOverride({
     title: i.title,
     description: i.description,
     alternates: { canonical: `/integrations/${tool}` },
     openGraph: { title: i.title, description: i.description, type: "article", url: `${SITE}/integrations/${tool}` },
-  };
+  });
 }
 
 export default async function IntegrationPage({ params }: PageProps) {

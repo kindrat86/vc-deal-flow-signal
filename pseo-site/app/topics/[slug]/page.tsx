@@ -9,6 +9,7 @@ import { getHreflangLanguages } from "@/lib/hreflang";
 import SeoCta from "@/components/SeoCta";
 import RelatedLinks from "@/components/RelatedLinks";
 import { getRelatedGroups } from "@/lib/related-links";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -28,7 +29,7 @@ export async function generateMetadata({
   const pillar = pillars[slug];
   if (!pillar) return {};
 
-  return {
+  return withEditorialOverride({
     title: `${pillar.name}, Topical Series`,
     description: pillar.description,
     keywords: pillar.keywords.join(", "),
@@ -46,7 +47,7 @@ export async function generateMetadata({
     alternates: {
       canonical: `/topics/${slug}`,
     },
-  };
+  });
 }
 
 function getPostsForPillar(pillar: Pillar): BlogPost[] {

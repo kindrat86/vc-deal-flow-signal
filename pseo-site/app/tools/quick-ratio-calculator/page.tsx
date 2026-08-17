@@ -5,6 +5,7 @@ import { QuickRatioCalculator } from "@/components/QuickRatioCalculator";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import EmbedThisCard from "@/components/EmbedThisCard";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 const PAGE_URL = `${SITE}/tools/quick-ratio-calculator`;
@@ -17,7 +18,7 @@ const PAGE_URL = `${SITE}/tools/quick-ratio-calculator`;
 export function generateMetadata(): Metadata {
   const ogImage = `${SITE}/api/og/tools/quick-ratio-calculator`;
 
-  return {
+  return withEditorialOverride({
     title:
       "SaaS Quick Ratio Calculator, Growth Efficiency, Kleiner Perkins Bands",
     description:
@@ -55,7 +56,7 @@ export function generateMetadata(): Metadata {
       "expansion ARR calculator",
       "churned ARR calculator",
     ],
-  };
+  });
 }
 
 const FAQS: { question: string; answer: string }[] = [

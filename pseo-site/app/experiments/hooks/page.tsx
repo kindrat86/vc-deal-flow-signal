@@ -3,10 +3,11 @@ import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Hook tests, every variant, every channel, every CTR",
   description:
     "Public log of every cold-traffic hook we've tested at GitDealFlow. The exact copy, the channel, the impressions, the clicks, the click-through rate, what we kept, what we cut. Test-the-hook in receipts form.",
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/experiments/hooks",
     type: "article",
   },
-};
+});
 
 type HookStatus = "winner" | "control" | "running" | "killed";
 

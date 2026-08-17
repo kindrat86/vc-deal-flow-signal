@@ -14,6 +14,7 @@ import {
   buildClaimReviewItems,
   type PredictionOutcome,
 } from "@/lib/predictions";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface RouteContext {
   params: Promise<{ week: string }>;
@@ -31,8 +32,8 @@ export async function generateMetadata({
 }: RouteContext): Promise<Metadata> {
   const { week: slug } = await params;
   const week = getPredictionWeek(slug);
-  if (!week) return { title: "Week not found" };
-  return {
+  if (!week) return withEditorialOverride({ title: "Week not found" });
+  return withEditorialOverride({
     title: `Acceleration Watch, Week of ${fmtLongDate(week.weekStart)}`,
     description: `10 startups whose GitHub engineering acceleration crossed the signal threshold the week of ${fmtLongDate(week.weekStart)}. Public bet, graded post-hoc against fundraise / acquisition news at ${week.windowDays} days.`,
     alternates: { canonical: `/predicted/${week.slug}` },
@@ -48,7 +49,7 @@ export async function generateMetadata({
       title: `Acceleration Watch, Week of ${fmtLongDate(week.weekStart)}`,
       description: `10 named startups, graded post-hoc. Window closes ${fmtLongDate(week.gradingDueAt)}.`,
     },
-  };
+  });
 }
 
 const OUTCOME_LABEL: Record<NonNullable<PredictionOutcome>, string> = {

@@ -3,8 +3,9 @@ import Link from "next/link";
 import { funds } from "@/content/funds";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Venture Funds, Deal Flow Context & Engineering Signal Maps",
   description:
     "Independent profiles of well-known venture funds. Published thesis, stage focus, and how GitHub engineering-acceleration signals map to their sourcing. Built for emerging managers and operators.",
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
     description:
       "Independent profiles of well-known venture funds with engineering-signal mapping.",
   },
-};
+});
 
 export const revalidate = 604800;
 

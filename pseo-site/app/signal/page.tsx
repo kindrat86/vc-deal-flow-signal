@@ -3,8 +3,9 @@ import Link from "next/link";
 import { companies } from "@/content/companies";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Company GitHub Signals",
   description:
     "Per-company GitHub engineering signal reports. Commit velocity, contributor influx, repo creation pulse, and language bias across well-known public tech companies. Built for investors and operators.",
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
     description:
       "Per-company GitHub engineering signal reports for investors and operators.",
   },
-};
+});
 
 export const revalidate = 604800;
 

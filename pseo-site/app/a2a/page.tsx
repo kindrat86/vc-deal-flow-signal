@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { A2A_FRAMEWORKS } from "@/lib/a2a-frameworks";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "GitDealFlow A2A, Free Startup Signals for Your AI Agent",
   description:
     "Plug GitDealFlow's startup engineering signals into Claude Code, Cursor, OpenAI Agents SDK, LangChain, and Vercel AI SDK via the Agent2Agent protocol. Free, no auth, no rate limit.",
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
     description:
       "Crunchbase API: $20K/yr. GitDealFlow A2A: free. AgentCard, JSON-RPC endpoint, and 5 framework recipes.",
   },
-};
+});
 
 export default function A2AHubPage() {
   const jsonLd = {

@@ -10,6 +10,7 @@ import { getDataLastModified } from "@/lib/data";
 import { AgentSummary } from "@/components/AgentSummary";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -31,7 +32,7 @@ export async function generateMetadata({
   const p = getPlaybookBySlug(slug);
   if (!p) return {};
 
-  return {
+  return withEditorialOverride({
     title: p.h1,
     description: p.description,
     keywords: p.keywords.join(", "),
@@ -47,7 +48,7 @@ export async function generateMetadata({
       title: p.h1,
       description: p.description,
     },
-  };
+  });
 }
 
 function formatDuration(iso: string): string {

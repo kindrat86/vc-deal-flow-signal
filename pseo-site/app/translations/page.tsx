@@ -3,10 +3,11 @@ import Link from "next/link";
 import { LOCALES } from "@/content/locales";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import SeoCta from "@/components/SeoCta";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Translations &amp; Internationalization Policy",
   description:
     "Internationalization policy for VC Deal Flow Signal. We do not ship machine-translated marketing pages. Hand-curated landing pages exist in 6 languages; structured data carries multilingual labels; canonical content stays in English. hreflang map for crawlers.",
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
     type: "article",
     url: `${SITE}/translations`,
   },
-};
+});
 
 export default function TranslationsPage() {
   const jsonLd = {

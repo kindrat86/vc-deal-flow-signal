@@ -6,8 +6,9 @@ import {
   CHALLENGE_DAYS,
   CHALLENGE_TOTAL_RETAIL_VALUE,
 } from "@/content/challenge-curriculum";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "30-Day Deal Flow Reset Challenge, Free Email Course",
   description:
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
     description:
       "Free 30-day course building a real sourcing system from public GitHub data. SSRN methodology, paste-ready procedures.",
   },
-};
+});
 
 // Public-pledge commitment device. Stating the pledge before signup
 // has roughly doubled next-day open rates in our internal A/B (31%→62%).

@@ -20,6 +20,7 @@ import { BADGE_LABEL, BADGE_HEIGHT, badgeWidth, badgeValue } from "@/lib/badge-d
 import CitableStat from "@/components/CitableStat";
 import { citableStat } from "@/lib/citable-stats";
 import { buildSourceTruthDataset } from "@/lib/dataset-schema";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -76,7 +77,7 @@ export async function generateMetadata({
     .filter(Boolean)
     .join(", ");
 
-  return {
+  return withEditorialOverride({
     title,
     description,
     robots: {
@@ -102,7 +103,7 @@ export async function generateMetadata({
     other: {
       "news_keywords": newsKeywords,
     },
-  };
+  });
 }
 
 export default async function StartupPage({ params }: PageProps) {

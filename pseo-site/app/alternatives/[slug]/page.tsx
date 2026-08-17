@@ -15,6 +15,7 @@ import RelatedLinks from "@/components/RelatedLinks";
 import { getRelatedGroups } from "@/lib/related-links";
 import CitableStat from "@/components/CitableStat";
 import { citableStat } from "@/lib/citable-stats";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -38,7 +39,7 @@ export async function generateMetadata({
   // ALTERNATIVES_TITLE_HOOKS wins as an absolute title (no template suffix
   // truncation); content title stays the H1/og fallback.
   const hookedTitle = ALTERNATIVES_TITLE_HOOKS[slug];
-  return {
+  return withEditorialOverride({
     ...(hookedTitle
       ? { title: { absolute: `${hookedTitle} ${FRESH_YEAR_STR}` } }
       : { title: alt.title }),
@@ -57,7 +58,7 @@ export async function generateMetadata({
     alternates: {
       canonical: `/alternatives/${slug}`,
     },
-  };
+  });
 }
 
 export default async function AlternativePage({ params }: PageProps) {

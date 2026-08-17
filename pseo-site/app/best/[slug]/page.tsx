@@ -18,6 +18,7 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 import CitableStat from "@/components/CitableStat";
 import { citableStat } from "@/lib/citable-stats";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -54,13 +55,13 @@ export async function generateMetadata({
       : `${bestBase}: Free Rankings`;
   const description = `The best ${sectorLower} startups in ${year} ranked by GitHub commit-velocity acceleration. Commit velocity, contributor growth, and breakout signals for investors looking at ${sectorLower}.`;
 
-  return {
+  return withEditorialOverride({
     title: { absolute: title },
     description,
     openGraph: { title, description, type: "article", url: `/best/${slug}` },
     twitter: { card: "summary_large_image", title, description },
     alternates: { canonical: `/best/${slug}` },
-  };
+  });
 }
 
 export default async function BestSectorPage({ params }: PageProps) {

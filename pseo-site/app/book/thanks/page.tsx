@@ -5,16 +5,17 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Thanks, your book is on the way",
   description:
     "Confirmation page for book download / Kindle purchase. Your downloads + bonus content next steps are listed here.",
   alternates: { canonical: "/book/thanks" },
   robots: { index: false, follow: false },
-};
+});
 
 export default function BookThanksPage() {
   return (

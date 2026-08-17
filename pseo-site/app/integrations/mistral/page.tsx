@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 const MCP_URL = `${SITE}/api/mcp/rpc`;
@@ -9,7 +10,7 @@ const TITLE =
 const DESCRIPTION =
   "Add the VC Deal Flow Signal MCP server to Mistral Le Chat as a Custom MCP Connector in under two minutes. Public Streamable HTTP endpoint, no auth required, six read-only tools for venture-backed startup engineering signals across 15 sectors.";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: "/integrations/mistral" },
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
     title: TITLE,
     description: DESCRIPTION,
   },
-};
+});
 
 const TOOLS: { name: string; summary: string }[] = [
   {

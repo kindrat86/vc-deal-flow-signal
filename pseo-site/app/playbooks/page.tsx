@@ -4,13 +4,14 @@ import { playbooks } from "@/content/playbooks";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { DEFAULT_HREFLANG_LANGUAGES } from "@/lib/hreflang";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 
 export const dynamic = "force-static";
 export const revalidate = 604800;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "Playbooks, operator how-tos for VC deal flow via GitHub signals",
   description:
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
     description:
       "Reproducible how-tos for operator-investors, scouts, solo founders, and angels.",
   },
-};
+});
 
 const DIFFICULTY_BADGE: Record<
   "beginner" | "intermediate" | "advanced",

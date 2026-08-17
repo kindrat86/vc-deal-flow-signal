@@ -10,6 +10,7 @@ import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import WalkthroughVariantTracker from "@/components/WalkthroughVariantTracker";
 import WalkthroughCtaLink from "@/components/WalkthroughCtaLink";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
@@ -33,7 +34,7 @@ const SIGNUP_URL = "https://gitdealflow.com/#signup";
 const WORD_COUNT = 250;
 const READ_SECONDS = 90;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "The 90-Second Walkthrough, GitDealFlow in 250 words",
   description:
@@ -46,7 +47,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/walkthrough/90s",
     type: "article",
   },
-};
+});
 
 export default function NinetySecondWalkthroughPage() {
   const replaySnapshot = getReplayWindowSnapshot();

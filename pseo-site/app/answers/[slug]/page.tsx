@@ -13,6 +13,7 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import RelatedLinks from "@/components/RelatedLinks";
 import { getRelatedGroups } from "@/lib/related-links";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -34,7 +35,7 @@ export async function generateMetadata({
   const q = getAgentQueryBySlug(slug);
   if (!q) return {};
 
-  return {
+  return withEditorialOverride({
     // metaTitle (CTR hook) overrides h1 when set; absolute so the 22ch
     // template suffix never truncates a hooked title.
     ...(q.metaTitle
@@ -54,7 +55,7 @@ export async function generateMetadata({
       title: q.metaTitle ?? q.h1,
       description: q.description,
     },
-  };
+  });
 }
 
 function buildJsonLd(q: AgentQuery): object {

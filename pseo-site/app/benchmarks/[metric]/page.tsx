@@ -5,6 +5,7 @@ import { getAllSectors, getCurrentPeriod } from "@/lib/data";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 import { FRESH_YEAR_PLAIN } from "@/lib/freshness-year";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 
@@ -133,12 +134,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const { metric } = await params;
   const b = BENCHMARKS.find((x) => x.slug === metric);
   if (!b) return {};
-  return {
+  return withEditorialOverride({
     title: b.title,
     description: b.description,
     alternates: { canonical: `/benchmarks/${metric}` },
     openGraph: { title: b.title, description: b.description, type: "article", url: `${SITE}/benchmarks/${metric}` },
-  };
+  });
 }
 
 export default async function BenchmarkPage({ params }: PageProps) {

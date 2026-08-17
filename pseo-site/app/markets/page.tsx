@@ -6,13 +6,14 @@ import { AgentSummary } from "@/components/AgentSummary";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import SeoCta from "@/components/SeoCta";
 import { FRESH_YEAR_STR } from "@/lib/freshness-year";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
 const SITE = "https://signals.gitdealflow.com";
 const PAGE_URL = `${SITE}/markets`;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   // CTR hook (GSC 90d: 336 imps, pos 7.1): old title + template suffix hit
   // 65ch with a redundant trailing concept. absolute keeps it at 52ch.
   title: { absolute: `Startup Funding Prediction Markets: Live Odds ${FRESH_YEAR_STR}` },
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
     site: "@sipiteno",
     title: "Open Prediction Markets on Startup Funding",
   },
-};
+});
 
 export default async function MarketsIndexPage() {
   const markets = getAllMarkets();

@@ -9,14 +9,15 @@ import {
 } from "@/lib/data";
 import SeoCta from "@/components/SeoCta";
 import { FRESH_YEAR_STR, FRESH_YEAR_PLAIN } from "@/lib/freshness-year";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: `Best Startups by Sector, Engineering Acceleration Rankings ${FRESH_YEAR_STR}`,
   description: `The best startups in every sector ranked by GitHub commit-velocity acceleration in ${FRESH_YEAR_PLAIN}. AI/ML, fintech, devtools, robotics, climate, and 15 more sectors. Updated weekly.`,
   alternates: {
     canonical: "/best",
   },
-};
+});
 
 export default function BestIndex() {
   const period = getCurrentPeriod();

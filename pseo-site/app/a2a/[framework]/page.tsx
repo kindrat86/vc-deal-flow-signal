@@ -6,6 +6,7 @@ import {
   getFramework,
   getAllFrameworkSlugs,
 } from "@/lib/a2a-frameworks";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface PageProps {
   params: Promise<{ framework: string }>;
@@ -25,7 +26,7 @@ export async function generateMetadata({
   const fw = getFramework(framework);
   if (!fw) return {};
 
-  return {
+  return withEditorialOverride({
     title: `Use GitDealFlow A2A with ${fw.name}, Free Startup Signals for Your AI`,
     description: `Wire ${fw.name} into the GitDealFlow A2A endpoint and let your AI query startup engineering signals (trending, sector, lookup, methodology) in real time. ${fw.tagline}. Free, no auth.`,
     alternates: { canonical: `/a2a/${fw.slug}` },
@@ -34,7 +35,7 @@ export async function generateMetadata({
       description: `Crunchbase API: $20K/yr. GitDealFlow A2A: free. Plug ${fw.name} into our agent in 5 minutes.`,
       url: `/a2a/${fw.slug}`,
     },
-  };
+  });
 }
 
 export default async function A2AFrameworkPage({ params }: PageProps) {

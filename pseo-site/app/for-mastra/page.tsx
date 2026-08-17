@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ForFrameworkPage } from "@/components/ForFrameworkPage";
 import { getFrameworkPositioning } from "@/lib/for-framework-data";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 const fw = getFrameworkPositioning("mastra")!;
@@ -10,7 +11,7 @@ const TITLE =
 const DESCRIPTION =
   "Drop GitDealFlow signals into a Mastra agent inside your Next.js or Hono codebase. First-class MCP via @gitdealflow/mcp-signal, edge-safe A2A fallback, Zod-validated tools. 350+ startups, refreshed weekly.";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: TITLE,
   description: DESCRIPTION,
   keywords: [
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
     title: TITLE,
     description: DESCRIPTION,
   },
-};
+});
 
 export default function ForMastraPage() {
   return <ForFrameworkPage framework={fw} />;

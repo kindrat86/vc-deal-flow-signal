@@ -4,10 +4,11 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Where to Start, Pick the GitDealFlow Layer That Fits Right Now",
   description:
     "Pick the GitDealFlow layer that fits the way you source right now. Start free, test one sector, move to the full field, or go deeper when the question gets expensive.",
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/who-this-is-for",
     type: "website",
   },
-};
+});
 
 const STEPS = [
   {

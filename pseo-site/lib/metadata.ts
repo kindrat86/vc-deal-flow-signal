@@ -149,6 +149,50 @@ export function defineMetadata(input: DefineMetadataInput): Metadata {
 }
 
 /**
+ * Wrap an already-complete `Metadata` object so it flows through the same
+ * editorial-override layer as `defineMetadata`, WITHOUT restructuring the
+ * object. Used to fold the ~260 legacy pages that declare a raw
+ * `export const metadata = { ... }` / `generateMetadata` return object into
+ * the override pipeline: the object is preserved verbatim and the override
+ * key is derived from the page's own `alternates.canonical`, so no path
+ * argument (and no chance of a stale key) is required.
+ */
+export function withEditorialOverride(meta: Metadata): Metadata {
+  const path = canonicalPath(meta);
+  if (!path) return meta;
+  const override = getEditorialOverride(path);
+  if (!override) return meta;
+  const out: Metadata = { ...meta };
+  if (override.title !== undefined) out.title = override.title;
+  if (override.description !== undefined) out.description = override.description;
+  if (override.keywords !== undefined) out.keywords = override.keywords;
+  if (override.noindex !== undefined) {
+    const existing = meta.robots;
+    out.robots = {
+      ...(existing && typeof existing === "object" ? existing : {}),
+      index: !override.noindex,
+    };
+  }
+  return out;
+}
+
+/** Derive the route path from a page's self-declared canonical URL. */
+function canonicalPath(meta: Metadata): string | undefined {
+  const c = meta.alternates?.canonical;
+  if (!c) return undefined;
+  if (c instanceof URL) return c.pathname || undefined;
+  const s = String(c);
+  if (s.startsWith("http://") || s.startsWith("https://")) {
+    try {
+      return new URL(s).pathname || undefined;
+    } catch {
+      return undefined;
+    }
+  }
+  return s.startsWith("/") ? s : `/${s}`;
+}
+
+/**
  * Helper to construct the `alternateLanguages` map for hreflang-bearing pages.
  * Pass the canonical English path and a map of locale→localized-path; returns
  * a fully-qualified URL map suitable for `defineMetadata({alternateLanguages})`.

@@ -10,8 +10,9 @@ import {
   EMOTIONAL_CAUSE_HEADLINE,
   EMOTIONAL_CAUSE_LINES,
 } from "@/content/cause";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "What GitDealFlow Believes, and What It Refuses to Become",
   description:
     "What GitDealFlow believes about timing, proof, and signal, and what it refuses to become while helping you move earlier with less noise.",
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/manifesto",
     type: "article",
   },
-};
+});
 
 const BELIEFS = [
   "You should be able to verify the claim in public.",

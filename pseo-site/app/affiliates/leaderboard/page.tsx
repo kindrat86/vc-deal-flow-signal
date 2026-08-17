@@ -8,12 +8,13 @@ import {
   TIER_META,
   ARCHETYPE_LABEL,
 } from "@/content/affiliate-leaderboard";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
 const PORTAL_URL = "https://gitdealflow.refgrow.com";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "Affiliate Leaderboard, Top 10 Earners (May 2026) | GitDealFlow",
   description:
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/affiliates/leaderboard",
     type: "article",
   },
-};
+});
 
 const SORTED_LEADERBOARD = [...LEADERBOARD].sort((a, b) => {
   const tierOrder: Record<string, number> = {

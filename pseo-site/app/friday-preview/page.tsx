@@ -5,6 +5,7 @@ import { getHreflangLanguages } from "@/lib/hreflang";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { getTopMoversThisWeek } from "@/lib/data";
 import SqueezeForm from "../squeeze/SqueezeForm";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
@@ -28,7 +29,7 @@ export const dynamic = "force-static";
  * top-5 the Sunday email will reveal. No special cron, no live data
  * fetch, pure static off the existing data pipeline.
  */
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Friday preview, what lands Sunday at 09:00 UTC",
   description:
     "Trailer for the Sunday digest. Sector, stage, velocity delta, signal type for the five orgs about to publish. Names redacted, subscribe to get the actual list.",
@@ -41,7 +42,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/friday-preview",
     type: "article",
   },
-};
+});
 
 // Sector → stage band → velocity bucket → signal-type taxonomy. The
 // Friday-noon trailer shows all four; org name is intentionally redacted.

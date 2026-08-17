@@ -3,10 +3,11 @@ import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 import { TrustPageOutro } from "@/components/TrustPageOutro";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Standards, Specifications VC Deal Flow Signal Conforms To",
   description:
     "Every published specification, schema, and standard VC Deal Flow Signal (GitDealFlow) implements end-to-end, Schema.org, Dublin Core, Highwire Press, DCAT 3, FAIR, OpenAPI 3.1, MCP, A2A, llms.txt, security.txt, IndieWeb. Each entry links to the spec and to the surface that exposes it.",
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
     type: "article",
     url: `${SITE}/standards`,
   },
-};
+});
 
 interface Standard {
   group:

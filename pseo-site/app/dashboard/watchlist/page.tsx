@@ -3,11 +3,12 @@ import Link from "next/link";
 import { redirect } from "next/navigation";
 import { getSession } from "@/lib/auth";
 import WatchlistManager from "./WatchlistManager";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Watchlist",
   robots: { index: false },
-};
+});
 
 export default async function WatchlistPage() {
   const session = await getSession();

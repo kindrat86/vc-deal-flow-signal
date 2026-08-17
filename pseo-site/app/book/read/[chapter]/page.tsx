@@ -12,6 +12,7 @@ import {
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 export const dynamicParams = false;
@@ -30,7 +31,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   if (!chapter) return {};
 
   const url = `https://signals.gitdealflow.com/book/read/${chapter.slug}`;
-  return {
+  return withEditorialOverride({
     title: `${chapter.title}, ${BOOK.title}`,
     description: chapter.summary,
     alternates: { canonical: `/book/read/${chapter.slug}` },
@@ -41,7 +42,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       type: "article",
       authors: [BOOK.authorName],
     },
-  };
+  });
 }
 
 export default async function ChapterPage({ params }: PageProps) {

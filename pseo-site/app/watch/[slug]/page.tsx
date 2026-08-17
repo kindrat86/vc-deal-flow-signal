@@ -30,6 +30,7 @@ import {
   type SiteVideo,
 } from "@/content/videos";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 const APEX = "https://gitdealflow.com";
@@ -48,9 +49,9 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { slug } = await params;
   const v = getVideoBySlug(slug);
-  if (!v) return { title: "Video not found" };
+  if (!v) return withEditorialOverride({ title: "Video not found" });
   const url = watchPageUrl(slug);
-  return {
+  return withEditorialOverride({
     title: v.title,
     description: v.description,
     alternates: { canonical: `/watch/${slug}` },
@@ -90,7 +91,7 @@ export async function generateMetadata({
       description: v.description,
       images: [v.thumbnailMaxUrl],
     },
-  };
+  });
 }
 
 function buildVideoJsonLd(v: SiteVideo) {

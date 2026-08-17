@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Embed, Free Widgets, Badges &amp; OG Cards",
   description:
     "Free embeddable widgets and badges from VC Deal Flow Signal. Scout Score badges, repo momentum badges, signal-of-the-week OG cards. Drop a single URL into a README, blog post, or social card. CC BY 4.0, attribution baked into the asset.",
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
     type: "article",
     url: `${SITE}/embed`,
   },
-};
+});
 
 interface Embed {
   group: "Calculators" | "Badges" | "OG cards" | "Mini-widgets";
