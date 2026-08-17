@@ -79,6 +79,8 @@ const HIGH_INTENT_ANSWER_SLUGS = new Set([
   "best-vc-deal-flow-software-2026",
   "free-vc-tools-for-emerging-fund-managers",
   "what-is-the-best-vc-research-stack-for-2026",
+  "what-is-deal-flow-software",
+  "best-free-deal-flow-tracker-for-angel-investors",
 ]);
 
 interface Entry {
