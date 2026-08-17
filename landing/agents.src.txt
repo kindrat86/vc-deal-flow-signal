@@ -7,7 +7,7 @@
 Site: https://gitdealflow.com
 Subdomain: https://signals.gitdealflow.com
 Publisher: VC Deal Flow Signal (GitDealFlow)
-Contact: mailto:signal@gitdealflow.com
+Contact: mailto:signals@gitdealflow.com
 Wikidata: https://www.wikidata.org/wiki/Q139376302
 ORCID: https://orcid.org/0009-0002-2222-4112
 SSRN: https://ssrn.com/abstract=6606558

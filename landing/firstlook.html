@@ -328,7 +328,7 @@
         <a href="/sector-sweep" class="hover:text-gray-300">Sector Sweep</a>
         <a href="/privacy" class="hover:text-gray-300">Privacy</a>
       </div>
-      <p class="text-gray-400 text-xs">&copy; 2026 GitDealFlow &middot; signal@gitdealflow.com</p>
+      <p class="text-gray-400 text-xs">&copy; 2026 GitDealFlow &middot; signals@gitdealflow.com</p>
     </div>
   </footer>
 
@@ -366,7 +366,7 @@
         if (trigger && original !== null) { trigger.removeAttribute('aria-busy'); trigger.innerHTML = original; }
         var msg = document.getElementById('firstlook-msg');
         if (msg) {
-          msg.textContent = 'Something went wrong opening checkout. Try again, or email signal@gitdealflow.com';
+          msg.textContent = 'Something went wrong opening checkout. Try again, or email signals@gitdealflow.com';
           msg.className = 'text-red-400 text-sm mt-4';
         }
       });
@@ -458,7 +458,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&t.getAttrib
             try { sessionStorage.setItem('gdf_email', email); } catch (err) {}
             window.location.href = '/thanks';
           }).catch(function () {
-            if (msg) { msg.textContent = 'Something went wrong. Try again or email signal@gitdealflow.com'; msg.className = 'gdf-inline-msg text-red-400 text-xs mt-3'; }
+            if (msg) { msg.textContent = 'Something went wrong. Try again or email signals@gitdealflow.com'; msg.className = 'gdf-inline-msg text-red-400 text-xs mt-3'; }
             if (btn) { btn.disabled = false; btn.removeAttribute('aria-busy'); btn.innerHTML = orig; }
           });
         });
@@ -532,7 +532,7 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&t.getAttrib
           try { sessionStorage.setItem('gdf_email', email); } catch (err) {}
           window.location.href = '/thanks';
         }).catch(function () {
-          msg.textContent = 'Something went wrong. Try again or email signal@gitdealflow.com';
+          msg.textContent = 'Something went wrong. Try again or email signals@gitdealflow.com';
           msg.className = 'text-red-400 text-xs text-center mt-3';
           btn.disabled = false;
           btn.textContent = 'Get this Sunday’s 5 names →';

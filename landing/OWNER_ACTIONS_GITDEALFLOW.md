@@ -57,7 +57,7 @@ Already configured: Bing API key is set in your environment (`BING_WEBMASTER_API
 - **Description:** GitDealFlow is a deal-flow signal tool for investors (not a fund). It reads public GitHub engineering activity, commit velocity, contributor growth, and repository expansion, across 350+ venture-backed startups in 15 sectors. Every Sunday, subscribers get five named startups with sector, stage, and a plain-English note on why each is moving. The methodology is published on SSRN (DOI 10.2139/ssrn.6606558). Free tier available; paid tiers start at €49/mo.
 - **Category:** Investment Intelligence / Alternative Data
 - **Pricing:** Free (Sunday Signal Digest), €49/mo (Dashboard), €197/mo (Insider Circle)
-- **Support email:** signal@gitdealflow.com
+- **Support email:** signals@gitdealflow.com
 
 ### 3.2 Capterra
 - **URL:** https://www.capterra.com/ (search for "GitDealFlow" or submit new listing)
@@ -66,7 +66,7 @@ Already configured: Bing API key is set in your environment (`BING_WEBMASTER_API
 - **Description:** GitDealFlow tracks commit velocity, contributor growth, and repository expansion across 350++ startup GitHub organizations. It flags breakout engineering teams 3-6 weeks before fundraise announcements, delivering five named startups every Sunday with plain-English analysis. Designed for angels, scouts, seed funds, and corporate development teams who want leading indicators, not lagging databases.
 - **Category:** Investment Management / Financial Research
 - **Pricing:** Free, €49/mo, €197/mo
-- **Support email:** signal@gitdealflow.com
+- **Support email:** signals@gitdealflow.com
 
 ### 3.3 AlternativeTo
 - **URL:** https://alternativeto.net/software/vc-deal-flow-signal/

@@ -9,7 +9,7 @@ Plain-text mirror of https://gitdealflow.com/glossary (Content-Type: text/markdo
 
 # Glossary
 
-Clear definitions of terms GitDealFlow uses. Written for investors, no code, no jargon. If a term you're looking for isn't here, [tell us](mailto:signal@gitdealflow.com).
+Clear definitions of terms GitDealFlow uses. Written for investors, no code, no jargon. If a term you're looking for isn't here, [tell us](mailto:signals@gitdealflow.com).
 
 ## GitDealFlow's proprietary signals
 

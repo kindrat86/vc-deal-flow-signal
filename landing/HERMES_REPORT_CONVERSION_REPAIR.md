@@ -65,7 +65,7 @@ These were investigated via the Stripe live API. Status per item:
 
 1. **Stripe merchant name shows "Sipiteno"** instead of "GitDealFlow" at checkout. ❌ **BLOCKED by API**, Stripe prohibits API modification of the platform account's business details. The owner must update via Stripe Dashboard → Settings → Business → Public details:
    - Business name: `GitDealFlow` (currently `Sipiteno`)
-   - Support email: `signal@gitdealflow.com`
+   - Support email: `signals@gitdealflow.com`
    - Business URL: `https://gitdealflow.com`
 
 2. **Checkout currency** → **RESOLVED.** All three payment links on the site are **native EUR payment links** (verified via Stripe live API). Account `acct_1INmB5CwGoUDklRe` has `default_currency: eur`. No USD conversion occurs. The original claim of "USD ~$58.09 + 4% fee" was incorrect based on the actual links.

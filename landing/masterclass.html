@@ -131,7 +131,7 @@
             }
             throw new Error(data.error || 'Failed');
           } catch (err) {
-            if (msg) { msg.textContent = 'Something went wrong. Try again or email signal@gitdealflow.com'; msg.style.color = '#f87171'; }
+            if (msg) { msg.textContent = 'Something went wrong. Try again or email signals@gitdealflow.com'; msg.style.color = '#f87171'; }
             if (btn) { btn.disabled = false; btn.removeAttribute('aria-busy'); btn.textContent = orig; }
           }
         });
