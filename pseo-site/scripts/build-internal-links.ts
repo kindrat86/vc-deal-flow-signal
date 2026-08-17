@@ -189,6 +189,11 @@ const RENDER_SECTIONS = new Set([
   "research", "vs", "continuity", "acquirer", "answers", "blog", "explore",
   "compare", "alternatives", "topics", "from-stars-to-seed", "best",
   "research-paper", "signal",
+  // Founder/solo-founder pages render the graph in HTML (verified live
+  // 2026-08-17: /founder/tj ships the /founder/leerob link) and are the only
+  // token-overlapping donors for founder cohorts, which otherwise exhaust the
+  // render-section pool and drop below their striking-distance floor.
+  "founder", "solo-founder-tracker",
 ]);
 const MAX_NEW_LINKS_PER_DONOR = 4; // keep any one donor from turning into a farm
 const donorLoad = new Map<string, number>();
