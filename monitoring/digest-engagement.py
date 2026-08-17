@@ -153,6 +153,7 @@ def main():
     for idx, (date, emap) in enumerate(logs):
         sent_count = len(emap)
         ids = [v for v in emap.values() if v]
+        measured = False
         if ids:
             events = []
             for email_id in ids:
@@ -160,20 +161,25 @@ def main():
                 if ev:
                     events.append(ev)
             counts = classify(events)
+            measured = True
         elif idx == 0 and not fallback_used:
             # Newest issue, no ids: subject-filter fallback.
             events = subject_filter_fallback()
             if events:
                 counts = classify(events)
                 fallback_used = True
+                measured = True
             else:
                 counts = classify([])
         else:
             counts = classify([])
         # The sent-log always knows how many were sent, even when engagement
         # could not be resolved (ids missing / window scrolled). Report that
-        # honestly rather than a misleading 0.
+        # honestly rather than a misleading 0. Distinguish "unmeasured" (ids
+        # null / window scrolled) from a genuine zero so a 0/0/0 report is
+        # never misread as "nobody opened it" when we simply could not see it.
         counts["sent"] = sent_count
+        counts["measured"] = measured
         issues.append((date, counts))
 
     os.makedirs(MON, exist_ok=True)
@@ -217,7 +223,10 @@ def main():
         lines.append(f"- Opened: **{counts['opened']}** · Clicked: **{counts['clicked']}** · Delivered (no open): {counts['delivered']}")
         lines.append(f"- Bounced: {counts['bounced']} · Suppressed: {counts['suppressed']}")
         lines.append(f"- **Open rate: {fmt_pct(counts['open_rate'])}** · **Click rate: {fmt_pct(counts['click_rate'])}** · Bounce rate: {fmt_pct(counts['bounce_rate'])}")
-        if fallback_used:
+        if not counts.get("measured"):
+            lines.append("")
+            lines.append("_⚠️ Engagement UNMEASURED for this issue: the send ids were not captured (or the window scrolled). The 0 values above mean \"we could not see it\", not \"nobody opened it\"._")
+        elif fallback_used:
             lines.append("")
             lines.append("_Measured via subject fallback; per-id tracking starts with the next Sunday send._")
     else:
@@ -237,11 +246,18 @@ def main():
     # One-line stdout summary for cron delivery.
     if latest:
         date, counts = latest
-        print(
-            f"GitDealFlow digest {date}: sent={counts['sent']} "
-            f"open={fmt_pct(counts['open_rate'])} click={fmt_pct(counts['click_rate'])} "
-            f"bounce={fmt_pct(counts['bounce_rate'])} (clicked {counts['clicked']}/{counts['sent']})."
-        )
+        if counts.get("measured"):
+            print(
+                f"GitDealFlow digest {date}: sent={counts['sent']} "
+                f"open={fmt_pct(counts['open_rate'])} click={fmt_pct(counts['click_rate'])} "
+                f"bounce={fmt_pct(counts['bounce_rate'])} (clicked {counts['clicked']}/{counts['sent']})."
+            )
+        else:
+            print(
+                f"GitDealFlow digest {date}: sent={counts['sent']} "
+                f"engagement UNMEASURED (send ids not captured). "
+                f"Open/click numbers will be real from the next Sunday send."
+            )
     else:
         print("GitDealFlow digest: no sent issues found yet.")
 
