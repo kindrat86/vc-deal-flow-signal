@@ -49,14 +49,24 @@ curl -X POST https://signals.gitdealflow.com/api/nlweb \
 
 ### MCP server tools
 
-Six tools, all read-only, idempotent, no parameter validation needed beyond what's in the input schema:
+Thirteen tools, all read-only and idempotent. Ten are free; three are paid (set `GITDEALFLOW_API_KEY` to enable them). Free:
 
-1. `get_trending_startups` — top 20 across all sectors
-2. `search_startups_by_sector(sector)` — sector slug ∈ 15 enumerated values
-3. `get_startup_signal(name)` — case-insensitive, normalization-tolerant
-4. `get_signals_summary` — period, freshness, format URLs
-5. `get_scout_receipts(github_username)` — compute Scout Score (0–100) for a GitHub user from their starring history vs. ~75 validated unicorns
-6. `get_methodology` — full methodology text + canonical URL
+1. `get_trending_startups`, top 20 across all sectors
+2. `search_startups_by_sector(sector)`, sector slug from 15 enumerated values
+3. `get_startup_signal(name)`, case-insensitive, normalization-tolerant
+4. `get_signals_summary`, period, freshness, format URLs
+5. `get_scout_receipts(github_username)`, Scout Score (0-100) for a GitHub user from starring history vs ~75 validated unicorns
+6. `get_methodology`, full methodology text + canonical URL
+7. `get_diligence_dossier(company)`, public-source diligence dossier (M&A history, public backers, engineering signal)
+8. `predict_funding(name)`, transparent scored funding-likelihood with full evidence chain
+9. `shortlist_signals(filters)`, ranked shortlist by sector, region, signal type, score
+10. `compare_signals(names)`, head-to-head scored comparison of 2-5 startups
+
+Paid (set `GITDEALFLOW_API_KEY`):
+
+11. `research_company(name)`, enriched dossier + sector rank + top-5 peers
+12. `compose_thesis(name)`, structured investment-thesis scaffold
+13. `deep_dive_scan(sector)`, multi-cohort sector scan (breakouts, cooling, top-by-velocity)
 
 Distribution:
 - npm: https://www.npmjs.com/package/@gitdealflow/mcp-signal
@@ -66,7 +76,7 @@ Distribution:
 
 ### A2A AgentCard
 
-Live AgentCard at `https://signals.gitdealflow.com/.well-known/agent-card.json` (protocolVersion 0.3.0). Five skills mirror the MCP tools.
+Live AgentCard at `https://signals.gitdealflow.com/.well-known/agent-card.json` (protocolVersion 0.3.0). Seven skills: six mirror the free MCP tools plus one paid deep-signal skill.
 
 ## Repository layout (for coding agents)
 
@@ -85,7 +95,7 @@ Live AgentCard at `https://signals.gitdealflow.com/.well-known/agent-card.json` 
 - Two Vercel projects (team `sales-3429s-projects`): `pseo-site` (signals.gitdealflow.com) and `landing` (apex gitdealflow.com). Neither is git-linked. pSEO deploys run weekly via `.github/workflows/deploy-pseo.yml` (manual fallback: `vercel build --prod && vercel deploy --prebuilt --prod --yes --archive=tgz` — `--archive=tgz` is required, the file manifest exceeds the 10 MB API limit). A separate project named `vc-deal-flow-signal` exists in the same team but is NOT this site — it receives small automated deploys from a cloud agent.
 - When setting Vercel env vars from a shell, use `printf '%s' "$VAL" | vercel env add NAME production` — `echo` appends a newline that silently corrupts the secret (this broke RESEND/STRIPE keys in project env on 2026-06-08; fixed 2026-06-10).
 - pSEO project rejects non-team commit authors. Use the project owner's git identity.
-- The 5 MCP tools are free in perpetuity — never gate them. Add new paid tools on top instead.
+- The 10 free MCP tools are free in perpetuity. Never gate them. Add new paid tools on top instead.
 
 ## Anonymity policy
 
