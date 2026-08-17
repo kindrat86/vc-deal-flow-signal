@@ -19,9 +19,15 @@ export function badgeWidth(label: string, value: string): number {
 }
 
 /** Value string exactly as app/api/badge/[name]/route.tsx builds it. */
+const SHORT_SIGNAL: Record<string, string> = {
+  "Engineering hiring burst": "hiring burst",
+  "Framework migration": "framework migration",
+  "Deploy frequency spike": "deploy spike",
+  "Infrastructure buildout": "infra buildout",
+};
 export function badgeValue(velocity: number, signalType: string): string {
-  const word = (signalType || "steady").replace(/ .+/, "");
-  return `${word} ${velocity} commits`;
+  const label = SHORT_SIGNAL[signalType] || (signalType || "steady").replace(/ .+/, "");
+  return `${label} ${velocity} commits`;
 }
 
 // ---------------------------------------------------------------------------

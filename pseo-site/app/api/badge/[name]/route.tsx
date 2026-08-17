@@ -31,6 +31,18 @@ function findStartup(name: string) {
   return null;
 }
 
+// Short badge value labels per signal type (kept in sync with
+// lib/badge-dims.ts). The raw signalType is a long phrase like
+// "Engineering hiring burst"; its FIRST word ("Engineering") read
+// redundantly next to the "engineering momentum" label, so map to a
+// clean short phrase.
+const SHORT_SIGNAL: Record<string, string> = {
+  "Engineering hiring burst": "hiring burst",
+  "Framework migration": "framework migration",
+  "Deploy frequency spike": "deploy spike",
+  "Infrastructure buildout": "infra buildout",
+};
+
 function signalColor(signalType: string): string {
   for (const [key, color] of Object.entries(SIGNAL_COLORS)) {
     if ((signalType || "").toLowerCase().includes(key.toLowerCase())) return color;
@@ -139,8 +151,8 @@ export async function GET(
   const signal = startup.signalType || "steady";
   const color = signalColor(signal);
 
-  // Build badge value: signal + velocity
-  const value = `${signal.replace(/ .+/, "")} ${vel} commits`;
+  // Build badge value: short signal label + velocity
+  const value = `${SHORT_SIGNAL[signal] || signal.replace(/ .+/, "")} ${vel} commits`;
 
   const label = "engineering momentum";
   const svg = badgeSvg(label, value, color);
