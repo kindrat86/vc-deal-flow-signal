@@ -62,6 +62,7 @@ scripts/*
 !scripts/verify-no-dashes.mjs
 !scripts/verify-css-preloads.mjs
 !scripts/verify-pricing-offers.mjs
+!scripts/verify-author-identity.mjs
 
 !scripts/verify-all.mjs
 
