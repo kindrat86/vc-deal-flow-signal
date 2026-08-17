@@ -2835,6 +2835,7 @@ Restart Claude Desktop. The six tools (get_trending_startups, search_startups_by
     slug: "how-to-add-mcp-server-to-cursor",
     query: "How to add an MCP server to Cursor",
     h1: "How to Add an MCP Server to Cursor",
+    metaTitle: `How to Add an MCP Server to Cursor: 3 Steps ${FRESH_YEAR_STR}`,
     description:
       "Add an MCP server to Cursor in 30 seconds: open Settings → Tools → MCP, paste the server config JSON, restart Cursor. The GitDealFlow MCP server (free, no API key) gives Cursor live VC research tools.",
     tldr:
@@ -3483,6 +3484,7 @@ Restart Claude Desktop. The six tools (get_trending_startups, search_startups_by
     slug: "best-vc-deal-sourcing-tools-2026",
     query: "Best VC deal sourcing tools 2026",
     h1: "Best VC Deal Sourcing Tools (2026 Comparison)",
+    metaTitle: `Best VC Deal Sourcing Tools: 3-Bucket Stack ${FRESH_YEAR_STR}`,
     description:
       "The 2026 deal-sourcing stack: Affinity, SourceScrub, Cyndx, Grata, Tracxn, PitchBook, Crunchbase, and GitDealFlow compared on data freshness, lead time, price, and developer-investor fit.",
     tldr:
@@ -3922,6 +3924,7 @@ The 2026 thesis (cf. Greg Isenberg's "Agents Are the New SaaS") is that the agen
     slug: "best-vc-deal-flow-software-2026",
     query: "What is the best VC deal flow software in 2026?",
     h1: "Best VC Deal Flow Software 2026, A 2026 Comparison",
+    metaTitle: `Best VC Deal Flow Software by Fund Size ${FRESH_YEAR_STR}`,
     description:
       "The best VC deal flow software in 2026 depends on stage and team size. For solo + emerging-fund GPs: GitDealFlow (free, GitHub momentum) + Affinity (relationship CRM). For mid-fund: Harmonic + Specter + Affinity. For institutional: PitchBook + Crunchbase Enterprise + DealCloud.",
     tldr:
@@ -4019,6 +4022,7 @@ The 2026 thesis (cf. Greg Isenberg's "Agents Are the New SaaS") is that the agen
     slug: "how-to-find-stealth-startups-before-they-fundraise-2026",
     query: "How do I find stealth startups before they fundraise in 2026?",
     h1: "How to Find Stealth Startups Before They Fundraise, A 2026 Playbook",
+    metaTitle: `Find Stealth Startups: 5 Public Signals ${FRESH_YEAR_STR}`,
     description:
       "Find stealth startups before they fundraise by tracking five public-record leading signals: GitHub commit-velocity acceleration, founder LinkedIn moves, hiring-velocity changes, domain registrations, and patent filings. Most stealth signals are 6-12 weeks earlier than Crunchbase.",
     tldr:
@@ -4578,6 +4582,7 @@ Anyone can run this analysis: pull the GitHub API, compute commit-velocity over 
     slug: "best-mcp-servers-for-vc-and-finance-research-2026",
     query: "What are the best MCP servers for VC and finance research in 2026?",
     h1: "Best MCP Servers for VC and Finance Research in 2026",
+    metaTitle: `Best MCP Servers for VC Research: 4 Are Free ${FRESH_YEAR_STR}`,
     description:
       "MCP-native VC and finance research is a 2026 surface area. The best free MCP servers for VC are GitDealFlow (engineering signals), Crunchbase MCP (funding data), and SEC-EDGAR MCP (filings). For agents working in Claude Desktop or Cursor, this stack covers ~80% of the workflow.",
     tldr:
@@ -5186,6 +5191,7 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     slug: "how-angel-investors-use-github-signals",
     query: "How do angel investors use GitHub signals?",
     h1: "How angel investors can use GitHub signals without reading code",
+    metaTitle: `How Angels Use GitHub Signals: No Code Needed ${FRESH_YEAR_STR}`,
     description:
       "Angel investors can use GitHub signals as an earlier timing layer without reading code. Here is how public engineering behavior becomes practical startup deal flow.",
     tldr:

@@ -4835,14 +4835,16 @@ landingCheck(
         }
       }
     }
-    const answers = read("../content/agent-queries.ts");
+    const answers = read("content/agent-queries.ts");
     if (answers) {
       for (const needle of [
         "metaTitle: `Best VC Deal Sourcing Tools: 3-Bucket Stack ${FRESH_YEAR_STR}`",
         "metaTitle: `How Angels Use GitHub Signals: No Code Needed ${FRESH_YEAR_STR}`",
         "metaTitle: `Find Stealth Startups: 5 Public Signals ${FRESH_YEAR_STR}`",
         "metaTitle: `Best VC Deal Flow Software by Fund Size ${FRESH_YEAR_STR}`",
-        "metaTitle: `AI Investing Tools: 4 Categories Compared ${FRESH_YEAR_STR}`",
+        // 2026-08-17: "AI Investing Tools: 4 Categories Compared" removed — its slug
+        // (ai-investing-tools-2026) was pruned to 404 by the 08-16 zero-imp leaf
+        // prune; the needle would permanently fail on a page that no longer exists.
       ]) {
         if (!answers.includes(needle)) {
           failures.push(
@@ -4968,12 +4970,12 @@ landingCheck(
   // fields (role/affiliation/momentum/stage/page copy), never invented
   // figures. Fails closed if any lineage reverts a wave-6 title.
   {
-    const answers = read("../content/agent-queries.ts");
+    const answers = read("content/agent-queries.ts");
     if (answers) {
       for (const needle of [
-        "metaTitle: \"Best MCP Servers for VC Research: 4 Are Free (2026)\"",
-        "metaTitle: \"Best PitchBook Alternative for Solos: Under EUR 120/mo\"",
-        "metaTitle: \"How to Add an MCP Server to Cursor: 3 Steps (2026)\"",
+        "metaTitle: `Best MCP Servers for VC Research: 4 Are Free ${FRESH_YEAR_STR}`",
+        "metaTitle: \"Best PitchBook Alternative for Solos: Under EUR 150/mo\"",
+        "metaTitle: `How to Add an MCP Server to Cursor: 3 Steps ${FRESH_YEAR_STR}`",
       ]) {
         if (!answers.includes(needle)) {
           failures.push(
@@ -4999,6 +5001,24 @@ landingCheck(
       failures.push(
         `§58 affiliate leaderboard title carries the stale month again.\n    file: app/affiliates/leaderboard/page.tsx\n    fix:  keep "(2026)" (dynamic-ish); "(May 2026)" decays within weeks`,
       );
+    }
+    // 2026-08-17 regression repair: sibling 9d659655 (citable-stat sweep) reverted
+    // the wave-6 /signal/ momentum conditional on 62 accelerating profiles; nothing
+    // asserted companies.ts so the revert shipped silently. These needles pin the
+    // restored conditional so any future lineage that drops it fails the build.
+    const companies = read("content/companies.ts");
+    if (companies) {
+      for (const needle of [
+        'c.momentum === "accelerating"',
+        '`${c.name} GitHub Engineering Signals: Accelerating`.length <= 60',
+        '? ": Accelerating"',
+      ]) {
+        if (!companies.includes(needle)) {
+          failures.push(
+            `§58 /signal/ momentum title conditional reverted (missing needle: ${needle.slice(0, 50)}...).\n    file: content/companies.ts\n    fix:  restore the wave-6 conditional suffix (62 accelerating profiles lost it once via 9d659655)`,
+          );
+        }
+      }
     }
   }
 
@@ -5329,6 +5349,7 @@ landingCheck(
     "app/sector/[slug]/page.tsx",
     "app/startup/[slug]/page.tsx",
     "app/acquirer/[slug]/page.tsx",
+    "app/research-paper/[slug]/page.tsx",
     "app/faq/page.tsx",
     "app/glossary/page.tsx",
   ];
@@ -5343,7 +5364,6 @@ landingCheck(
   const markedTemplates = [
     "app/blog/[slug]/page.tsx",
     "app/research/[slug]/page.tsx",
-    "app/research-paper/[slug]/page.tsx",
     "components/StartupDirectory.tsx",
     "app/answers/[slug]/page.tsx",
   ];
@@ -5907,4 +5927,63 @@ if (failures.length) {
   );
   process.exit(1);
 }
+
+// ---------------------------------------------------------------------------
+// §65 Research-paper quotable definitions (2026-08-17, audit win #3
+//     striking-distance push). The /research-paper/ cluster holds ~20K
+//     impressions/28d at position 8-10 with near-zero clicks. This section
+//     pins the two halves of the fix: every paper carries a 40-60 word
+//     `definition` (the snippet/AIO extraction window) distinct from the
+//     metaTitle, and the leaf renders it in the DefinitionBlock head.
+//     Cohort floors: data/striking-distance.json converged to builder-
+//     sustained values on 2026-08-17 (§43 measures the regenerated graph;
+//     never hand-edit the graph to satisfy a floor the builder cannot
+//     reproduce, lower the floor with a note instead).
+// ---------------------------------------------------------------------------
+{
+  const content = read("content/research-papers.ts");
+  const leaf = read("app/research-paper/[slug]/page.tsx");
+  if (content && leaf) {
+    const defs = [...content.matchAll(/^\s{4}definition:\s*\n\s*"([^"]*)"/gm)].map(
+      (m) => m[1],
+    );
+    const slugs = [...content.matchAll(/slug: "([^"]+)"/g)].map((m) => m[1]);
+    const metaTitles = [...content.matchAll(/metaTitle:\s*\n?\s*"([^"]*)"/g)].map(
+      (m) => m[1],
+    );
+
+    if (defs.length !== slugs.length) {
+      failures.push(
+        `§65 research-paper definitions: ${defs.length} definition fields for ${slugs.length} papers. Every paper needs exactly one 40-60 word definition.`,
+      );
+    }
+    for (const d of defs) {
+      const wc = d.trim().split(/\s+/).filter(Boolean).length;
+      if (wc < 40 || wc > 60) {
+        failures.push(
+          `§65 research-paper definition outside the 40-60 word snippet window (${wc} words): "${d.slice(0, 60)}..."`,
+        );
+      }
+      if (metaTitles.some((mt) => mt.trim() === d.trim())) {
+        failures.push(
+          `§65 research-paper definition identical to a metaTitle (redundant extraction): "${d.slice(0, 60)}..."`,
+        );
+      }
+    }
+    if (
+      !leaf.includes("<DefinitionBlock text={paper.definition}") ||
+      !leaf.includes('label="What this paper is"')
+    ) {
+      failures.push(
+        "§65 research-paper leaf lost the DefinitionBlock head render (paper.definition, label \"What this paper is\").",
+      );
+    }
+    if (/data-direct-answer/.test(leaf)) {
+      failures.push(
+        "§65 research-paper leaf carries a bare data-direct-answer outside the DefinitionBlock; keep ONE extraction anchor per page.",
+      );
+    }
+  }
+}
+
 console.log("✓ verify-no-regressions: all regression guards pass");
