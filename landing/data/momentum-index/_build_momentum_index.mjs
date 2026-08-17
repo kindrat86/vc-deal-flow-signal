@@ -22,7 +22,9 @@ const DISCLAIMER = 'The Momentum Score reflects public software-engineering acti
 const seed = JSON.parse(readFileSync(join(HERE, 'seed.json'), 'utf8')).repos;
 
 // ---- helpers ---------------------------------------------------------------
-const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
+const esc = (s) => String(s)
+  .replace(/\u2014/g, ', ').replace(/\u2013/g, '-')   // site-wide no-dash style rule
+  .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;');
 const clamp = (n, lo = 0, hi = 100) => Math.max(lo, Math.min(hi, n));
 const slugify = (full) => full.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 const daysBetween = (a, b) => Math.max(0, (a - b) / 86400000);
@@ -41,7 +43,7 @@ async function ghFetch(full) {
     stars: d.stargazers_count || 0, forks: d.forks_count || 0,
     issues: d.open_issues_count || 0, watchers: d.subscribers_count || 0,
     pushedAt: d.pushed_at, createdAt: d.created_at,
-    description: d.description || '', language: d.language || '',
+    description: (d.description || '').replace(/[\u2013\u2014]/g, '-'), language: d.language || '',
     homepage: d.homepage || '', license: d.license?.spdx_id || '',
   };
 }
@@ -222,4 +224,4 @@ writeFileSync(join(HERE, 'data.json'), JSON.stringify({
   }
 }
 
-console.log(`✓ momentum-index: ${results.length} repos, ${urls.length} URLs, snapshot ${TODAY}. Fetch ratio ${(ratio * 100).toFixed(0)}%.`);
+console.log(`✓ momentum-index: ${results.length} repos, ${results.length + 1} pages, snapshot ${TODAY}. Fetch ratio ${(ratio * 100).toFixed(0)}%.`);
