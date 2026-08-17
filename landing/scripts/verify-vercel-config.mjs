@@ -251,7 +251,7 @@ if (
 {
   let home;
   try {
-    home = readFileSync("index.src.html", "utf8");
+    home = readFileSync("index.html", "utf8");
   } catch {
     home = "";
   }
@@ -416,33 +416,29 @@ if (
 // text/markdown content negotiation must survive (2026-08-17)
 // ---------------------------------------------------------------------------
 // The apex is static (framework null): a static index.html cannot answer
-// "Accept: text/markdown", and `has`-conditional rewrites are silently dropped
-// on this preset. The fix removes the home page's static twin
-// (index.html -> index.src.html) so a vercel.json rewrite can route "/" to
-// api/home.js, which answers Content-Type: text/markdown for markdown clients
-// and the real HTML for everyone else (seofixprompt AIO/LLMO finding 2026-08-17:
-// home page returned text/html for Accept: text/markdown). A tree missing the
-// rewrite, the function, or the source file silently re-sends HTML to every
-// assistant that asks for markdown.
+// "Accept: text/markdown", and `has`-conditional REWRITES are silently dropped
+// on this preset (verified 2026-08-17: a "/" -> "/api/home" rewrite was dropped
+// and a "/:path*" rewrite was dropped). `has`-conditional REDIRECTS do compile
+// (the www->apex host redirect proves it). So markdown clients are redirected
+// to the home-page markdown mirror /md/index.md (served text/markdown), while
+// everyone else keeps the static HTML. A tree missing this redirect silently
+// re-sends HTML to every assistant that asks for markdown.
 {
-  const homeRewrite = (parsed.rewrites || []).find((r) => r.source === "/");
-  if (!homeRewrite || homeRewrite.destination !== "/api/home") {
+  const mdRedirect = (parsed.redirects || []).find(
+    (r) => r.source === "/" && Array.isArray(r.has),
+  );
+  const hasAcceptMd =
+    mdRedirect &&
+    mdRedirect.has.some(
+      (h) => h.type === "header" && h.key === "accept" && h.value === "text/markdown",
+    );
+  if (!mdRedirect || !hasAcceptMd || mdRedirect.destination !== "/md/index.md") {
     fail(
-      'home-page text/markdown negotiation lost: vercel.json rewrites[] must keep { "source": "/", "destination": "/api/home" } (2026-08-17 AIO/LLMO fix).',
+      'text/markdown negotiation lost: vercel.json redirects[] must keep { "source": "/", "has": [{ "type": "header", "key": "accept", "value": "text/markdown" }], "destination": "/md/index.md", "permanent": false } (2026-08-17 AIO/LLMO fix).',
     );
   }
-  const homeFn = (() => {
-    try {
-      return readFileSync("api/home.js", "utf8");
-    } catch {
-      return "";
-    }
-  })();
-  if (!homeFn.includes("text/markdown; charset=utf-8") || !homeFn.includes("index.src.html")) {
-    fail("api/home.js missing or lost its text/markdown negotiation (2026-08-17 AIO/LLMO fix).");
-  }
-  if (!existsSync("index.src.html")) {
-    fail("index.src.html missing: the home page's static twin was removed for the rewrite, but its source file is gone (2026-08-17 AIO/LLMO fix).");
+  if (!existsSync("md/index.md")) {
+    fail("md/index.md missing: the home-page markdown mirror the redirect targets is gone (2026-08-17 AIO/LLMO fix).");
   }
 }
 

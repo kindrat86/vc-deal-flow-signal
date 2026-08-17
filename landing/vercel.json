@@ -6,9 +6,6 @@
   "functions": {
     "api/crawl-proxy.js": {
       "includeFiles": "{llms.src.txt,llms-full.src.txt,ai.src.txt,agents.src.txt}"
-    },
-    "api/home.js": {
-      "includeFiles": "index.src.html"
     }
   },
   "rewrites": [
@@ -127,15 +124,23 @@
     {
       "source": "/.well-known/security.txt",
       "destination": "https://signals.gitdealflow.com/.well-known/security.txt"
-    },
-    {
-      "source": "/",
-      "destination": "/api/home"
     }
   ],
   "redirects": [
-    {
-      "source": "/teardown",
+  {
+    "source": "/",
+    "has": [
+      {
+        "type": "header",
+        "key": "accept",
+        "value": "text/markdown"
+      }
+    ],
+    "destination": "/md/index.md",
+    "permanent": false
+  },
+  {
+    "source": "/teardown",
       "destination": "https://signals.gitdealflow.com/teardown",
       "permanent": true
     },
@@ -551,15 +556,6 @@
     },
     {
       "source": "/schema/(.*)",
-      "headers": [
-        {
-          "key": "X-Robots-Tag",
-          "value": "noindex, nofollow"
-        }
-      ]
-    },
-    {
-      "source": "/index.src.html",
       "headers": [
         {
           "key": "X-Robots-Tag",
