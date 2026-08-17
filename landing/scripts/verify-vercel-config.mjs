@@ -251,7 +251,7 @@ if (
 {
   let home;
   try {
-    home = readFileSync("index.html", "utf8");
+    home = readFileSync("index.src.html", "utf8");
   } catch {
     home = "";
   }
@@ -415,36 +415,34 @@ if (
 // ---------------------------------------------------------------------------
 // text/markdown content negotiation must survive (2026-08-17)
 // ---------------------------------------------------------------------------
-// The apex is static (framework null), so "Accept: text/markdown" cannot be
-// answered by a static file. A rewrite (has: header accept ~ text/markdown)
-// routes markdown-asking clients to api/markdown.js, which answers
-// Content-Type: text/markdown instead of forcing an assistant to parse browser
-// HTML (seofixprompt AIO/LLMO finding 2026-08-17: home page returned text/html
-// for Accept: text/markdown). A tree missing either the rewrite or the
-// function silently re-sends HTML to every assistant that asks for markdown.
+// The apex is static (framework null): a static index.html cannot answer
+// "Accept: text/markdown", and `has`-conditional rewrites are silently dropped
+// on this preset. The fix removes the home page's static twin
+// (index.html -> index.src.html) so a vercel.json rewrite can route "/" to
+// api/home.js, which answers Content-Type: text/markdown for markdown clients
+// and the real HTML for everyone else (seofixprompt AIO/LLMO finding 2026-08-17:
+// home page returned text/html for Accept: text/markdown). A tree missing the
+// rewrite, the function, or the source file silently re-sends HTML to every
+// assistant that asks for markdown.
 {
-  const mdRewrite = (parsed.rewrites || []).find(
-    (r) => r.source === "/:path*" && Array.isArray(r.has),
-  );
-  const hasAcceptMd =
-    mdRewrite &&
-    mdRewrite.has.some(
-      (h) => h.type === "header" && h.key === "accept" && h.value === "text/markdown",
-    );
-  if (!mdRewrite || !hasAcceptMd || mdRewrite.destination !== "/api/markdown?path=:path") {
+  const homeRewrite = (parsed.rewrites || []).find((r) => r.source === "/");
+  if (!homeRewrite || homeRewrite.destination !== "/api/home") {
     fail(
-      'text/markdown negotiation lost: vercel.json rewrites[] must keep { "source": "/:path*", "has": [{ "type": "header", "key": "accept", "value": "text/markdown" }], "destination": "/api/markdown?path=:path" } (2026-08-17 AIO/LLMO fix).',
+      'home-page text/markdown negotiation lost: vercel.json rewrites[] must keep { "source": "/", "destination": "/api/home" } (2026-08-17 AIO/LLMO fix).',
     );
   }
-  const mdFn = (() => {
+  const homeFn = (() => {
     try {
-      return readFileSync("api/markdown.js", "utf8");
+      return readFileSync("api/home.js", "utf8");
     } catch {
       return "";
     }
   })();
-  if (!mdFn.includes("text/markdown; charset=utf-8") || !mdFn.includes("content-type")) {
-    fail("api/markdown.js missing or lost its text/markdown content-type (2026-08-17 AIO/LLMO fix).");
+  if (!homeFn.includes("text/markdown; charset=utf-8") || !homeFn.includes("index.src.html")) {
+    fail("api/home.js missing or lost its text/markdown negotiation (2026-08-17 AIO/LLMO fix).");
+  }
+  if (!existsSync("index.src.html")) {
+    fail("index.src.html missing: the home page's static twin was removed for the rewrite, but its source file is gone (2026-08-17 AIO/LLMO fix).");
   }
 }
 

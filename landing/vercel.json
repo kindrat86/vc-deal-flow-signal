@@ -6,6 +6,9 @@
   "functions": {
     "api/crawl-proxy.js": {
       "includeFiles": "{llms.src.txt,llms-full.src.txt,ai.src.txt,agents.src.txt}"
+    },
+    "api/home.js": {
+      "includeFiles": "index.src.html"
     }
   },
   "rewrites": [
@@ -126,15 +129,8 @@
       "destination": "https://signals.gitdealflow.com/.well-known/security.txt"
     },
     {
-      "source": "/:path*",
-      "has": [
-        {
-          "type": "header",
-          "key": "accept",
-          "value": "text/markdown"
-        }
-      ],
-      "destination": "/api/markdown?path=:path"
+      "source": "/",
+      "destination": "/api/home"
     }
   ],
   "redirects": [
@@ -555,6 +551,15 @@
     },
     {
       "source": "/schema/(.*)",
+      "headers": [
+        {
+          "key": "X-Robots-Tag",
+          "value": "noindex, nofollow"
+        }
+      ]
+    },
+    {
+      "source": "/index.src.html",
       "headers": [
         {
           "key": "X-Robots-Tag",
