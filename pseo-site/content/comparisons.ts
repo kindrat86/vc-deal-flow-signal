@@ -2127,6 +2127,242 @@ export const comparisons: Comparison[] = [
       { label: "Dashboard vs a custom Airtable deal flow board", url: "/compare/dashboard-vs-a-custom-airtable-deal-flow-board" },
     ],
   },
+  {
+    slug: "vc-deal-flow-signal-vs-tracxn",
+    title: "VC Deal Flow Signal vs Tracxn for Sector-Focused Startup Research",
+    description:
+      "Compare VC Deal Flow Signal and Tracxn for deal sourcing: engineering-momentum signals vs analyst-curated sector maps, lead time, coverage, and pricing.",
+    h1: "VC Deal Flow Signal vs Tracxn",
+    intro:
+      "Tracxn is a global, sector-focused research platform known for its deep sector maps and strong Asian startup coverage. VC Deal Flow Signal is a GitHub-engineering signal engine that surfaces technical startups by their commit velocity. They answer different questions: Tracxn maps an entire sector after the fact, while VC Deal Flow Signal flags which companies are accelerating right now, typically 3-6 weeks before a round.",
+    sections: [
+      {
+        heading: "What each one reads",
+        body: "Tracxn is analyst-curated: teams build structured taxonomies for more than two thousand industries, attach company and funding data to them, and publish research reports with market context. VC Deal Flow Signal is fully automated, reading commit velocity, contributor growth, and repository expansion from public GitHub activity. Tracxn tells you the shape of a market; VC Deal Flow Signal tells you which technical teams are building faster week over week.",
+      },
+      {
+        heading: "Lead time",
+        body: "Tracxn records companies and rounds after they are announced, so it is a lagging indicator by design. VC Deal Flow Signal is a leading indicator: engineering acceleration typically shows up 3-6 weeks before a round is announced, and historically up to 6-12 weeks in the underlying panel. If the goal is to reach a company before the round is priced, the code-side signal is the one with lead time.",
+      },
+      {
+        heading: "Coverage",
+        body: "Tracxn spans more than two thousand industries with genuinely strong coverage of Asian ecosystems, a differentiator in a category that often skews Europe and North America. VC Deal Flow Signal tracks 350+ startups across 15 sectors on public GitHub, which is strongest for software, infrastructure, and developer-tools companies and thinner for sectors with little public engineering activity.",
+      },
+      {
+        heading: "Pricing",
+        body: "Tracxn is tiered from Pro through to enterprise, with limited free access, and its workflow is oriented to analyst teams doing systematic sector reviews. VC Deal Flow Signal offers a free weekly Signal Report, a Dashboard at EUR 49 per month, and an open-source MCP server for self-hosting. For an individual investor or scout, VC Deal Flow Signal is the cheaper entry.",
+      },
+      {
+        heading: "Which to use",
+        body: "Use Tracxn for sector research, competitive landscaping, and understanding an emerging Asian market before committing capital. Use VC Deal Flow Signal for pre-round discovery of technical startups showing engineering acceleration. Many analyst-driven teams run both: Tracxn for the market map and VC Deal Flow Signal to catch the companies before they appear in any database.",
+      },
+    ],
+    featureTable: {
+      tools: ["VC Deal Flow Signal", "Tracxn"],
+      features: [
+        { feature: "Signal type", values: { "VC Deal Flow Signal": "Engineering acceleration (GitHub)", "Tracxn": "Analyst-curated sector maps" } },
+        { feature: "Lead time", values: { "VC Deal Flow Signal": "3-6 weeks pre-fundraise", "Tracxn": "Post-announcement" } },
+        { feature: "Coverage", values: { "VC Deal Flow Signal": "15 sectors, 350+ startups", "Tracxn": "2,000+ industries, global" } },
+        { feature: "Entry pricing", values: { "VC Deal Flow Signal": "Free / EUR 49/mo", "Tracxn": "Tiered (Pro to Enterprise)" } },
+        { feature: "Free tier", values: { "VC Deal Flow Signal": "Weekly Signal Report", "Tracxn": "Limited" } },
+        { feature: "Best for", values: { "VC Deal Flow Signal": "Pre-round technical discovery", "Tracxn": "Sector research and Asia mapping" } },
+      ],
+    },
+    verdict:
+      "Tracxn is the stronger tool for mapping an entire sector and researching Asian ecosystems after the fact. VC Deal Flow Signal is the only one of the two with a leading signal: engineering acceleration 3-6 weeks before a round. For pre-round sourcing of technical startups, use the GitHub signal; for retrospective sector mapping and competitive landscaping, use Tracxn. Analyst-driven teams typically run both.",
+    relatedSectors: ["fintech", "enterprise-saas", "ai-ml"],
+    faqs: [
+      { question: "Is Tracxn a competitor to VC Deal Flow Signal?", answer: "Partially. Tracxn is an analyst-curated, post-announcement database with deep sector maps and strong Asia coverage. VC Deal Flow Signal is a leading GitHub-engineering signal that flags technical startups 3-6 weeks before a round. They read different parts of the timeline and compose well." },
+      { question: "Which gives earlier warning of a fundraise?", answer: "VC Deal Flow Signal. Engineering acceleration typically precedes a round by 3-6 weeks. Tracxn records rounds after they are announced, so it is a lagging indicator by design." },
+      { question: "Does Tracxn read GitHub engineering signals?", answer: "No. Tracxn is a curated database of companies, funding, and sector taxonomies, not a code-level signal. If you want commit-velocity and contributor-growth signals, VC Deal Flow Signal reads those directly from public GitHub." },
+    ],
+    proofLinks: [
+      { label: "Read the methodology", url: "/methodology" },
+      { label: "VC Deal Flow Signal MCP server", url: "/mcp" },
+    ],
+    nextReadLinks: [
+      { label: "Tracxn Alternative: From $0, GitHub-Native", url: "/alternatives/tracxn" },
+      { label: "Best deal flow tools for emerging fund managers", url: "/compare/best-deal-flow-tools-emerging-fund-managers" },
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+    ],
+  },
+  {
+    slug: "vc-deal-flow-signal-vs-forager-ai",
+    title: "VC Deal Flow Signal vs Forager.ai for Early-Stage Sourcing",
+    description:
+      "Compare VC Deal Flow Signal and Forager.ai for deal sourcing: GitHub engineering momentum vs web, social, and hiring NLP signals, lead time, coverage, and pricing.",
+    h1: "VC Deal Flow Signal vs Forager.ai",
+    intro:
+      "Forager.ai is an NLP-driven sourcing engine that reads web, social, and hiring signals to surface companies gaining public traction. VC Deal Flow Signal reads GitHub engineering acceleration to flag technical startups before they raise. Both aim for early discovery, but they listen to different channels, which changes which startups each one finds.",
+    sections: [
+      {
+        heading: "What each one reads",
+        body: "Forager.ai scans the public internet: hiring sprees, social activity, product launches, and other growth chatter that tends to precede a fundraise. VC Deal Flow Signal reads commit velocity, contributor growth, and repository expansion from public GitHub. Forager hears what a company is saying and hiring; VC Deal Flow Signal sees what a company is actually building and shipping.",
+      },
+      {
+        heading: "Lead time",
+        body: "Forager.ai advertises a lead time of about 2-6 weeks before a raise, because it acts on signals that are already publicly visible. VC Deal Flow Signal is a leading indicator that typically shows engineering acceleration 3-6 weeks before a round is announced, and historically up to 6-12 weeks in the panel. The code-side signal tends to fire earlier for technical teams.",
+      },
+      {
+        heading: "Coverage",
+        body: "Forager.ai covers any company with a public web footprint, including consumer and services businesses that never touch GitHub. VC Deal Flow Signal tracks 350+ startups across 15 sectors and is strongest for software, infrastructure, and developer tools. If you source consumer or non-technical companies, Forager is broader; if you source technical startups, the GitHub signal is the stronger leading indicator.",
+      },
+      {
+        heading: "Pricing",
+        body: "Forager.ai is tiered with a limited free tier. VC Deal Flow Signal offers a free weekly Signal Report, a Dashboard at EUR 49 per month, and an open-source MCP server. Both are accessible to individual investors, unlike the enterprise-only platforms in the category.",
+      },
+      {
+        heading: "Which to use",
+        body: "Use Forager.ai for a wide net across consumer and services startups where web and social activity is the clearest early indicator. Use VC Deal Flow Signal when you invest in technical startups and want the earliest code-level signal. They are complementary: Forager catches public momentum, VC Deal Flow Signal catches engineering acceleration before it becomes public.",
+      },
+    ],
+    featureTable: {
+      tools: ["VC Deal Flow Signal", "Forager.ai"],
+      features: [
+        { feature: "Signal type", values: { "VC Deal Flow Signal": "Engineering acceleration (GitHub)", "Forager.ai": "Web, social, and hiring (NLP)" } },
+        { feature: "Lead time", values: { "VC Deal Flow Signal": "3-6 weeks pre-fundraise", "Forager.ai": "2-6 weeks pre-fundraise" } },
+        { feature: "Coverage", values: { "VC Deal Flow Signal": "15 sectors, 350+ startups", "Forager.ai": "Any public web footprint" } },
+        { feature: "Entry pricing", values: { "VC Deal Flow Signal": "Free / EUR 49/mo", "Forager.ai": "Tiered" } },
+        { feature: "Free tier", values: { "VC Deal Flow Signal": "Weekly Signal Report", "Forager.ai": "Limited" } },
+        { feature: "Best for", values: { "VC Deal Flow Signal": "Technical startup discovery", "Forager.ai": "Wide-net public momentum" } },
+      ],
+    },
+    verdict:
+      "Forager.ai and VC Deal Flow Signal both surface companies early, but from different channels. Forager.ai is the wider net, catching public web, social, and hiring momentum across consumer and non-technical companies. VC Deal Flow Signal is the earlier and deeper signal for technical startups, reading engineering acceleration 3-6 weeks before a round. Pick Forager for breadth across non-technical sectors; pick the GitHub signal for technical pre-round discovery, and run both if you source across the whole market.",
+    relatedSectors: ["ai-ml", "enterprise-saas", "fintech"],
+    faqs: [
+      { question: "How does Forager.ai compare to VC Deal Flow Signal?", answer: "Forager.ai reads public web, social, and hiring signals with a 2-6 week lead time and broad non-technical coverage. VC Deal Flow Signal reads GitHub engineering acceleration with a 3-6 week lead time and is strongest for technical startups. They listen to different channels and compose well for a wide sourcing stack." },
+      { question: "Which has a longer lead time?", answer: "VC Deal Flow Signal typically leads by 3-6 weeks on engineering activity, and historically up to 6-12 weeks in the panel. Forager.ai advertises 2-6 weeks because it acts on signals that are already publicly visible." },
+      { question: "Can Forager.ai see GitHub commit velocity?", answer: "No. Forager.ai reads web, social, and hiring signals through NLP, not code activity. For commit-velocity and contributor-growth signals, VC Deal Flow Signal reads public GitHub directly." },
+    ],
+    proofLinks: [
+      { label: "Read the methodology", url: "/methodology" },
+      { label: "VC Deal Flow Signal MCP server", url: "/mcp" },
+    ],
+    nextReadLinks: [
+      { label: "Forager.ai Alternative: Free Tier + Paid", url: "/alternatives/forager-ai" },
+      { label: "Best deal flow tools for angel investors", url: "/compare/best-deal-flow-tools-angel-investors" },
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+    ],
+  },
+  {
+    slug: "vc-deal-flow-signal-vs-specter",
+    title: "VC Deal Flow Signal vs Specter for Growth-Signal Sourcing",
+    description:
+      "Compare VC Deal Flow Signal and Specter for deal sourcing: GitHub engineering momentum vs web, hiring, and product growth signals, lead time, coverage, and pricing.",
+    h1: "VC Deal Flow Signal vs Specter",
+    intro:
+      "Specter is a growth-signal platform that tracks web traffic, hiring, and product activity to surface companies gaining momentum. VC Deal Flow Signal tracks GitHub engineering acceleration to flag technical startups before a round. Both are leading indicators aimed at emerging fund managers, but they read different signals and cover different kinds of companies.",
+    sections: [
+      {
+        heading: "What each one reads",
+        body: "Specter combines several growth channels: web traffic, hiring, and product activity, which reduces reliance on any single signal and catches momentum a purely technical scanner would miss. VC Deal Flow Signal reads commit velocity, contributor growth, and repository expansion from public GitHub. Specter sees market traction; VC Deal Flow Signal sees engineering acceleration.",
+      },
+      {
+        heading: "Lead time",
+        body: "Specter advertises a lead time of about 2-6 weeks before a fundraise. VC Deal Flow Signal is a leading indicator that typically shows engineering acceleration 3-6 weeks before a round is announced, and historically up to 6-12 weeks in the panel. For deep-tech and infrastructure companies, the code-side signal is the more decisive early indicator.",
+      },
+      {
+        heading: "Coverage",
+        body: "Specter is strongest in consumer and SaaS, focused on English-speaking markets, and shallower in deep-tech and infrastructure, precisely where engineering acceleration matters most. VC Deal Flow Signal tracks 350+ startups across 15 sectors on public GitHub, which is strongest in software, infrastructure, and developer tools.",
+      },
+      {
+        heading: "Pricing",
+        body: "Specter is tiered at mid-market pricing aimed at emerging fund managers, with limited free dataset access. VC Deal Flow Signal offers a free weekly Signal Report, a Dashboard at EUR 49 per month, and an open-source MCP server, a lighter entry for a solo angel, scout, or first-time fund.",
+      },
+      {
+        heading: "Which to use",
+        body: "Use Specter when you source consumer and SaaS companies and want cross-channel growth signals at an approachable price. Use VC Deal Flow Signal when you invest in technical or infrastructure startups and want the earliest code-level signal. They overlap on SaaS, where either works, and diverge on deep-tech, where the GitHub signal leads.",
+      },
+    ],
+    featureTable: {
+      tools: ["VC Deal Flow Signal", "Specter"],
+      features: [
+        { feature: "Signal type", values: { "VC Deal Flow Signal": "Engineering acceleration (GitHub)", "Specter": "Web, hiring, and product growth" } },
+        { feature: "Lead time", values: { "VC Deal Flow Signal": "3-6 weeks pre-fundraise", "Specter": "2-6 weeks pre-fundraise" } },
+        { feature: "Coverage", values: { "VC Deal Flow Signal": "15 sectors, 350+ startups", "Specter": "Consumer and SaaS, EN markets" } },
+        { feature: "Entry pricing", values: { "VC Deal Flow Signal": "Free / EUR 49/mo", "Specter": "Tiered (mid-market)" } },
+        { feature: "Free tier", values: { "VC Deal Flow Signal": "Weekly Signal Report", "Specter": "Limited dataset" } },
+        { feature: "Best for", values: { "VC Deal Flow Signal": "Technical startup discovery", "Specter": "Consumer and SaaS growth" } },
+      ],
+    },
+    verdict:
+      "Specter and VC Deal Flow Signal are both leading indicators for emerging fund managers, but they optimize for different corners of the market. Specter is the broader growth-signal net for consumer and SaaS companies; VC Deal Flow Signal is the earlier, more decisive signal for technical and infrastructure startups, reading engineering acceleration 3-6 weeks before a round. Pick by sector: Specter for consumer and SaaS momentum, the GitHub signal for deep-tech pre-round discovery, and both if you source across both.",
+    relatedSectors: ["enterprise-saas", "ai-ml", "developer-tools"],
+    faqs: [
+      { question: "How does Specter compare to VC Deal Flow Signal?", answer: "Specter reads web traffic, hiring, and product growth signals, strongest in consumer and SaaS, with a 2-6 week lead time. VC Deal Flow Signal reads GitHub engineering acceleration, strongest in technical and infrastructure sectors, with a 3-6 week lead time. Both target emerging fund managers but cover different corners of the market." },
+      { question: "Which is better for deep-tech investing?", answer: "VC Deal Flow Signal. Specter's coverage of deep-tech and infrastructure is shallow, while commit velocity and contributor growth on GitHub are exactly the signals that lead in those sectors." },
+      { question: "Do they overlap?", answer: "They overlap on SaaS, where either tool works. They diverge on deep-tech and infrastructure, where VC Deal Flow Signal leads, and on consumer, where Specter's cross-channel growth signals are the better fit." },
+    ],
+    proofLinks: [
+      { label: "Read the methodology", url: "/methodology" },
+      { label: "VC Deal Flow Signal MCP server", url: "/mcp" },
+    ],
+    nextReadLinks: [
+      { label: "Specter Alternative: From $0", url: "/alternatives/specter" },
+      { label: "Best deal flow tools for AI investors", url: "/compare/best-deal-flow-tools-ai-investors" },
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+    ],
+  },
+  {
+    slug: "vc-deal-flow-signal-vs-signalrank",
+    title: "VC Deal Flow Signal vs SignalRank: Early Sourcing vs Series-B Prediction",
+    description:
+      "Compare VC Deal Flow Signal and SignalRank: early-stage GitHub engineering momentum vs a late-stage Series-B prediction model, stage fit, and pricing.",
+    h1: "VC Deal Flow Signal vs SignalRank",
+    intro:
+      "SignalRank is a predictive model that estimates a startup's odds of graduating from Series A to Series B, packaged as an index-fund product. VC Deal Flow Signal is an early-stage sourcing engine that flags technical startups by GitHub engineering acceleration. They target opposite ends of the funding lifecycle, so they rarely compete directly.",
+    sections: [
+      {
+        heading: "What each one does",
+        body: "SignalRank scores companies that are already post-Series A, projecting their later-stage trajectory rather than flagging early opportunities. VC Deal Flow Signal reads commit velocity, contributor growth, and repository expansion to surface pre-seed and seed technical startups 3-6 weeks before a round. One validates the growth stage; the other discovers the earliest stage.",
+      },
+      {
+        heading: "Stage fit",
+        body: "SignalRank is stage-bound: it is of no use for pre-seed or seed sourcing, which is a different problem entirely. VC Deal Flow Signal is built for exactly that early window, where engineering acceleration is the clearest leading signal before a round is announced.",
+      },
+      {
+        heading: "Coverage",
+        body: "SignalRank covers Series A to B graduations globally and publishes a peer-reviewed methodology, but its output is a score, not a list of companies to contact. VC Deal Flow Signal tracks 350+ startups across 15 sectors on public GitHub and outputs a ranked list of accelerating companies.",
+      },
+      {
+        heading: "Pricing and access",
+        body: "SignalRank is not a conventional SaaS subscription: it is an index-fund product with no individual-investor SaaS access, so a solo angel cannot adopt it as a workflow. VC Deal Flow Signal offers a free weekly Signal Report, a Dashboard at EUR 49 per month, and an open-source MCP server for individual investors and scouts.",
+      },
+      {
+        heading: "Which to use",
+        body: "Use SignalRank for late-stage thesis validation and systematic data-driven exposure to the growth-stage segment. Use VC Deal Flow Signal for pre-seed and seed sourcing of technical startups. They are complementary across a full lifecycle: the GitHub signal finds companies early, and SignalRank scores them later.",
+      },
+    ],
+    featureTable: {
+      tools: ["VC Deal Flow Signal", "SignalRank"],
+      features: [
+        { feature: "What it does", values: { "VC Deal Flow Signal": "Early-stage sourcing signal", "SignalRank": "Series-B graduation prediction" } },
+        { feature: "Stage", values: { "VC Deal Flow Signal": "Pre-seed and seed", "SignalRank": "Post-Series A to B" } },
+        { feature: "Lead time", values: { "VC Deal Flow Signal": "3-6 weeks pre-fundraise", "SignalRank": "Forward-looking, late stage" } },
+        { feature: "Coverage", values: { "VC Deal Flow Signal": "15 sectors, 350+ startups", "SignalRank": "Series A-B graduations globally" } },
+        { feature: "Access", values: { "VC Deal Flow Signal": "Free / EUR 49/mo SaaS", "SignalRank": "Index-fund product" } },
+        { feature: "Best for", values: { "VC Deal Flow Signal": "Early technical discovery", "SignalRank": "Growth-stage validation" } },
+      ],
+    },
+    verdict:
+      "SignalRank and VC Deal Flow Signal occupy different stages of the venture lifecycle and rarely compete. SignalRank is a late-stage prediction model for Series-B graduation odds, packaged as an index fund with no individual SaaS access. VC Deal Flow Signal is an early-stage sourcing engine that flags pre-seed and seed technical startups by engineering acceleration 3-6 weeks before a round. Use the GitHub signal for early discovery and SignalRank for growth-stage validation; a full lifecycle stack uses both.",
+    relatedSectors: ["ai-ml", "fintech", "enterprise-saas"],
+    faqs: [
+      { question: "Is SignalRank a competitor to VC Deal Flow Signal?", answer: "Only at the edges. SignalRank predicts Series-B graduation odds for late-stage companies and is sold as an index fund. VC Deal Flow Signal discovers pre-seed and seed technical startups by GitHub engineering acceleration. They target opposite stages and compose across a full lifecycle." },
+      { question: "Can a solo angel use SignalRank?", answer: "No. SignalRank has no individual-investor SaaS access, its product is an index fund. VC Deal Flow Signal offers a free Signal Report and a EUR 49 per month Dashboard built for solo angels and scouts." },
+      { question: "Which one finds startups earlier?", answer: "VC Deal Flow Signal, by a wide margin. It flags engineering acceleration 3-6 weeks before a round at the pre-seed and seed stage. SignalRank only scores companies that are already post-Series A." },
+    ],
+    proofLinks: [
+      { label: "Read the methodology", url: "/methodology" },
+      { label: "VC Deal Flow Signal MCP server", url: "/mcp" },
+    ],
+    nextReadLinks: [
+      { label: "SignalRank Alternative: Free vs Index Fund", url: "/alternatives/signalrank" },
+      { label: "Best deal flow tools for VC firms", url: "/compare/best-deal-flow-tools-vc-firms-2026" },
+      { label: "Read a sample Sunday watchlist", url: "https://gitdealflow.com/report" },
+    ],
+  },
 ];
  
  // ---------------------------------------------------------------------------
@@ -2318,6 +2554,9 @@ export const COMPARE_TITLE_HOOKS: Record<string, string> = {
   "vc-deal-flow-signal-vs-crunchbase": "VC Deal Flow Signal vs Crunchbase: $0 vs $49/mo",
   "vc-deal-flow-signal-vs-dealroom": "VC Deal Flow Signal vs Dealroom: Free Tier vs Tiered",
   "vc-deal-flow-signal-vs-forager-ai": "VC Deal Flow Signal vs Forager.ai: Free vs Tiered",
+  "vc-deal-flow-signal-vs-signalrank": "VC Deal Flow Signal vs SignalRank: $0 vs Index Fund",
+  "vc-deal-flow-signal-vs-specter": "VC Deal Flow Signal vs Specter: Free Tier vs Tiered",
+  "vc-deal-flow-signal-vs-tracxn": "VC Deal Flow Signal vs Tracxn: Free Tier vs Tiered",
   "vc-deal-flow-signal-vs-fund-momentum": "VC Deal Flow Signal vs Fund Momentum: $0 vs $49/mo",
   "vc-deal-flow-signal-vs-harmonic-ai": "VC Deal Flow Signal vs Harmonic: Free vs Enterprise",
   "vc-deal-flow-signal-vs-pitchbook": "VC Deal Flow Signal vs PitchBook: $0 vs $20k+/yr",
