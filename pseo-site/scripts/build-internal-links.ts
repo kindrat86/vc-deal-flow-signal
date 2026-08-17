@@ -239,6 +239,41 @@ for (const t of cohort) {
     indeg.set(targetPath, (indeg.get(targetPath) || 0) + 1);
     added++;
   }
+
+  // Fallback tier (2026-08-17): token overlap cannot match sibling pages inside
+  // multi-token families (two research papers share only "research"+"paper" =
+  // 0.25 < 0.3), so the heaviest cohort leaves stalled under their floors.
+  // Same-SECTION donors are topically adjacent by construction; rank them by
+  // donor in-degree (strong pages pass equity), same caps as the main tier.
+  if (added < need) {
+    const targetSection = sectionOf(targetPath);
+    const fallback = paths
+      .filter(
+        (q) =>
+          q !== targetPath &&
+          sectionOf(q) === targetSection &&
+          RENDER_SECTIONS.has(targetSection) &&
+          !(graph[q] || []).some((g) => g.links.some((l) => l.href === targetPath)),
+      )
+      .map((q) => ({ q, rank: indeg.get(q) || 0 }))
+      .sort((a, b) => b.rank - a.rank || a.q.localeCompare(b.q));
+    for (const d of fallback) {
+      if (added >= need) break;
+      if ((donorLoad.get(d.q) || 0) >= MAX_NEW_LINKS_PER_DONOR) continue;
+      const groups = graph[d.q];
+      if (!groups) continue;
+      let g = groups.find((x) => x.title === "Related topics");
+      if (!g) {
+        g = { title: "Related topics", links: [] };
+        groups.push(g);
+      }
+      if (g.links.length >= 6) continue;
+      g.links.push({ href: targetPath, label: titleCase(targetPath) });
+      donorLoad.set(d.q, (donorLoad.get(d.q) || 0) + 1);
+      indeg.set(targetPath, (indeg.get(targetPath) || 0) + 1);
+      added++;
+    }
+  }
   if (added < need) {
     console.warn(
       `  (striking-distance: ${targetPath} floor ${t.floor}, added ${added}/${need} in-links)`,

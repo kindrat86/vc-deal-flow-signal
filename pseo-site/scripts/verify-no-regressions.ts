@@ -5349,6 +5349,7 @@ landingCheck(
     "app/sector/[slug]/page.tsx",
     "app/startup/[slug]/page.tsx",
     "app/acquirer/[slug]/page.tsx",
+    "app/research-paper/[slug]/page.tsx",
     "app/faq/page.tsx",
     "app/glossary/page.tsx",
   ];
@@ -5363,7 +5364,6 @@ landingCheck(
   const markedTemplates = [
     "app/blog/[slug]/page.tsx",
     "app/research/[slug]/page.tsx",
-    "app/research-paper/[slug]/page.tsx",
     "components/StartupDirectory.tsx",
     "app/answers/[slug]/page.tsx",
   ];
@@ -5927,4 +5927,63 @@ if (failures.length) {
   );
   process.exit(1);
 }
+
+// ---------------------------------------------------------------------------
+// §65 Research-paper quotable definitions (2026-08-17, audit win #3
+//     striking-distance push). The /research-paper/ cluster holds ~20K
+//     impressions/28d at position 8-10 with near-zero clicks. This section
+//     pins the two halves of the fix: every paper carries a 40-60 word
+//     `definition` (the snippet/AIO extraction window) distinct from the
+//     metaTitle, and the leaf renders it in the DefinitionBlock head.
+//     Cohort floors: data/striking-distance.json converged to builder-
+//     sustained values on 2026-08-17 (§43 measures the regenerated graph;
+//     never hand-edit the graph to satisfy a floor the builder cannot
+//     reproduce, lower the floor with a note instead).
+// ---------------------------------------------------------------------------
+{
+  const content = read("content/research-papers.ts");
+  const leaf = read("app/research-paper/[slug]/page.tsx");
+  if (content && leaf) {
+    const defs = [...content.matchAll(/^\s{4}definition:\s*\n\s*"([^"]*)"/gm)].map(
+      (m) => m[1],
+    );
+    const slugs = [...content.matchAll(/slug: "([^"]+)"/g)].map((m) => m[1]);
+    const metaTitles = [...content.matchAll(/metaTitle:\s*\n?\s*"([^"]*)"/g)].map(
+      (m) => m[1],
+    );
+
+    if (defs.length !== slugs.length) {
+      failures.push(
+        `§65 research-paper definitions: ${defs.length} definition fields for ${slugs.length} papers. Every paper needs exactly one 40-60 word definition.`,
+      );
+    }
+    for (const d of defs) {
+      const wc = d.trim().split(/\s+/).filter(Boolean).length;
+      if (wc < 40 || wc > 60) {
+        failures.push(
+          `§65 research-paper definition outside the 40-60 word snippet window (${wc} words): "${d.slice(0, 60)}..."`,
+        );
+      }
+      if (metaTitles.some((mt) => mt.trim() === d.trim())) {
+        failures.push(
+          `§65 research-paper definition identical to a metaTitle (redundant extraction): "${d.slice(0, 60)}..."`,
+        );
+      }
+    }
+    if (
+      !leaf.includes("<DefinitionBlock text={paper.definition}") ||
+      !leaf.includes('label="What this paper is"')
+    ) {
+      failures.push(
+        "§65 research-paper leaf lost the DefinitionBlock head render (paper.definition, label \"What this paper is\").",
+      );
+    }
+    if (/data-direct-answer/.test(leaf)) {
+      failures.push(
+        "§65 research-paper leaf carries a bare data-direct-answer outside the DefinitionBlock; keep ONE extraction anchor per page.",
+      );
+    }
+  }
+}
+
 console.log("✓ verify-no-regressions: all regression guards pass");

@@ -202,6 +202,16 @@ export default async function ResearchPaperPage({ params }: PageProps) {
           </p>
         )}
 
+        {/* Quotable direct answer (2026-08-17, audit win #3 striking-distance
+            push). The research-paper cluster holds ~20K impressions/28d at
+            position 8-10 with near-zero clicks; the one element every
+            snippet/AIO study rewards, a self-contained 40-60 word answer
+            lifted verbatim, was missing from the head. Renders ABOVE the
+            abstract; the abstract paragraph below stays plain prose.
+            Pinned by verify-no-regressions §65 (render) and the 40-60w
+            window check on every paper.definition. */}
+        <DefinitionBlock text={paper.definition} label="What this paper is" />
+
         {/* Read the paper.
             These pages rank on page 1 for the papers themselves and drew 17,884
             impressions in 28 days at a 0.02% CTR -- they promised a summary and
@@ -242,12 +252,9 @@ export default async function ResearchPaperPage({ params }: PageProps) {
 
         <section className="mb-10" aria-label="Abstract summary">
           <h2 className="text-xl font-semibold text-gray-100 mb-3">Abstract summary</h2>
-          <p
-            className="text-gray-400 text-sm leading-relaxed"
-            data-direct-answer
-            data-speakable
-            data-agent-summary
-          >
+          {/* data-direct-answer moved to the DefinitionBlock above (single
+              extraction anchor per page; the abstract is supporting prose). */}
+          <p className="text-gray-400 text-sm leading-relaxed">
             {paper.abstractSummary}
           </p>
           <p className="text-gray-500 text-xs mt-3 italic">

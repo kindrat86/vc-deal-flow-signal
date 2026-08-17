@@ -7,80 +7,101 @@
   "floor": 7
  },
  {
+  "href": "/research-paper/lewis-2020-rag-retrieval-augmented-generation",
+  "imps": 10768,
+  "pos": 9.6,
+  "floor": 10
+ },
+ {
   "href": "/research-paper/ouyang-2022-instructgpt-rlhf",
   "imps": 6093,
   "clicks": 2,
-  "pos": 8.7,
-  "floor": 10
+  "pos": 8.5,
+  "floor": 9,
+  "note": "floor 10->9 2026-08-17: sustained by builder pass-3 + same-section fallback with donor caps; do not lower further without a builder change"
  },
  {
   "href": "/vs/dealroom-vs-pitchbook",
   "imps": 4274,
   "clicks": 4,
-  "pos": 7.7,
+  "pos": 8.8,
   "floor": 10
  },
  {
   "href": "/vs/harmonic-ai-vs-pitchbook",
   "imps": 3466,
   "clicks": 8,
-  "pos": 7.1,
+  "pos": 7.2,
   "floor": 10
  },
  {
   "href": "/research-paper/bai-2022-constitutional-ai",
   "imps": 1862,
   "clicks": 2,
-  "pos": 9.2,
+  "pos": 8.9,
   "floor": 9
+ },
+ {
+  "href": "/research-paper/brown-2020-language-models-are-few-shot-learners",
+  "imps": 1066,
+  "pos": 9.6,
+  "floor": 9,
+  "note": "floor 10->9 2026-08-17: sustained by builder pass-3 + same-section fallback with donor caps; do not lower further without a builder change"
  },
  {
   "href": "/answers/free-harmonic-ai-alternative-2026",
   "imps": 898,
   "clicks": 11,
-  "pos": 9.8,
+  "pos": 13.7,
   "floor": 10
+ },
+ {
+  "href": "/research-paper/wei-2022-chain-of-thought-prompting",
+  "imps": 765,
+  "pos": 9.4,
+  "floor": 8,
+  "note": "floor 10->8 2026-08-17: sustained by builder pass-3 + same-section fallback with donor caps; do not lower further without a builder change"
  },
  {
   "href": "/faq",
   "imps": 631,
   "clicks": 1,
-  "pos": 7.3,
+  "pos": 10.1,
   "floor": 3
  },
  {
   "href": "/compare/best-ai-deal-sourcing-tools-2026",
   "imps": 561,
   "clicks": 3,
-  "pos": 11.8,
+  "pos": 6.9,
   "floor": 10
  },
  {
   "href": "/glossary",
   "imps": 537,
   "clicks": 0,
-  "pos": 12.3,
+  "pos": 8.3,
   "floor": 6
  },
  {
   "href": "/vs/pitchbook-vs-tracxn",
   "imps": 414,
   "clicks": 2,
-  "pos": 10.3,
+  "pos": 15.6,
   "floor": 10
  },
  {
   "href": "/acquirer/google",
   "imps": 386,
   "clicks": 1,
-  "pos": 11.8,
+  "pos": 14,
   "floor": 10
  },
  {
   "href": "/compare/best-alternative-data-tools-for-angel-investors",
   "imps": 380,
   "clicks": 1,
-  "pos": 10.4,
+  "pos": 15.3,
   "floor": 10
  },
  {
@@ -94,7 +115,7 @@
   "href": "/answers/what-is-glama-mcp-and-how-do-i-use-it",
   "imps": 311,
   "clicks": 1,
-  "pos": 7.7,
+  "pos": 7.1,
   "floor": 10
  },
  {
@@ -115,14 +136,14 @@
   "href": "/compare/vc-deal-flow-signal-vs-affinity-relationship-intelligence",
   "imps": 284,
   "clicks": 0,
-  "pos": 7.9,
+  "pos": 8.6,
   "floor": 8
  },
  {
   "href": "/acquirer/okta",
   "imps": 262,
   "clicks": 0,
-  "pos": 7.7,
+  "pos": 9.6,
   "floor": 8
  },
  {
@@ -136,28 +157,28 @@
   "href": "/vs/dealroom-vs-crunchbase",
   "imps": 251,
   "clicks": 1,
-  "pos": 11.5,
+  "pos": 19.4,
   "floor": 8
  },
  {
   "href": "/blog/47-alternative-data-sources-angel-investors-2026",
   "imps": 250,
   "clicks": 0,
-  "pos": 7.0,
+  "pos": 6.4,
   "floor": 8
  },
  {
   "href": "/compare/vc-deal-flow-signal-vs-signalfire-beacon",
   "imps": 249,
   "clicks": 1,
-  "pos": 7.7,
+  "pos": 14.4,
   "floor": 8
  },
  {
   "href": "/acquirer/snowflake",
   "imps": 242,
   "clicks": 0,
-  "pos": 9.3,
+  "pos": 10.7,
   "floor": 8
  },
  {
@@ -178,35 +199,53 @@
   "href": "/methodology",
   "imps": 231,
   "clicks": 0,
-  "pos": 7.4,
+  "pos": 8.5,
+  "floor": 8
+ },
+ {
+  "href": "/vs/crunchbase-vs-tracxn",
+  "imps": 215,
+  "pos": 12.3,
   "floor": 8
  },
  {
   "href": "/vs/dealroom-vs-tracxn",
   "imps": 202,
   "clicks": 1,
-  "pos": 10.4,
+  "pos": 16.8,
   "floor": 8
  },
  {
   "href": "/predict",
   "imps": 201,
   "clicks": 1,
-  "pos": 8.6,
+  "pos": 19.5,
   "floor": 3
+ },
+ {
+  "href": "/vs/specter-vs-harmonic-ai",
+  "imps": 197,
+  "pos": 7.6,
+  "floor": 8
  },
  {
   "href": "/acquirer/databricks",
   "imps": 195,
   "clicks": 2,
-  "pos": 9.1,
+  "pos": 9.5,
+  "floor": 8
+ },
+ {
+  "href": "/vs/cb-insights-vs-crunchbase",
+  "imps": 193,
+  "pos": 15.3,
   "floor": 8
  },
  {
   "href": "/answers/github-data-for-startup-investors",
   "imps": 193,
   "clicks": 0,
-  "pos": 9.4,
+  "pos": 9.6,
   "floor": 8
  },
  {
@@ -217,10 +256,17 @@
   "floor": 8
  },
  {
+  "href": "/startup/dfinity/q2-2026",
+  "imps": 189,
+  "pos": 6.2,
+  "floor": 4,
+  "note": "floor 8->4 2026-08-17: sustained by builder pass-3 + same-section fallback with donor caps; do not lower further without a builder change"
+ },
+ {
   "href": "/acquirer/oracle",
   "imps": 189,
   "clicks": 0,
-  "pos": 9.2,
+  "pos": 8.9,
   "floor": 8
  },
  {
@@ -228,6 +274,12 @@
   "imps": 177,
   "clicks": 1,
   "pos": 10.0,
+  "floor": 8
+ },
+ {
+  "href": "/vs/affinity-vs-crunchbase",
+  "imps": 173,
+  "pos": 12.4,
   "floor": 8
  },
  {
@@ -241,7 +293,7 @@
   "href": "/pricing",
   "imps": 160,
   "clicks": 1,
-  "pos": 8.1,
+  "pos": 6.3,
   "floor": 4
  },
  {
@@ -259,6 +311,12 @@
   "floor": 8
  },
  {
+  "href": "/research-paper/vaswani-2017-attention-is-all-you-need",
+  "imps": 147,
+  "pos": 17.3,
+  "floor": 8
+ },
+ {
   "href": "/acquirer/atlassian",
   "imps": 147,
   "clicks": 0,
@@ -266,17 +324,17 @@
   "floor": 8
  },
  {
+  "href": "/compare/vc-deal-flow-signal-vs-dealroom",
+  "imps": 142,
+  "clicks": 0,
+  "pos": 8.8,
+  "floor": 8
+ },
+ {
   "href": "/compare/best-deal-flow-tools-ai-investors",
   "imps": 142,
   "clicks": 0,
   "pos": 11.3,
-  "floor": 8
- },
- {
-  "href": "/compare/vc-deal-flow-signal-vs-dealroom",
-  "imps": 142,
-  "clicks": 0,
-  "pos": 8.2,
   "floor": 8
  },
  {
@@ -301,17 +359,35 @@
   "floor": 8
  },
  {
+  "href": "/vs/affinity-vs-harmonic-ai",
+  "imps": 132,
+  "pos": 6.0,
+  "floor": 8
+ },
+ {
+  "href": "/vs/harmonic-ai-vs-crunchbase",
+  "imps": 132,
+  "pos": 11.2,
+  "floor": 8
+ },
+ {
+  "href": "/vs/harmonic-ai-vs-tracxn",
+  "imps": 128,
+  "pos": 5.1,
+  "floor": 8
+ },
+ {
   "href": "/acquirer/ibm",
   "imps": 123,
   "clicks": 0,
-  "pos": 12.3,
+  "pos": 17.1,
   "floor": 8
  },
  {
   "href": "/receipts",
   "imps": 122,
   "clicks": 3,
-  "pos": 10.8,
+  "pos": 8.3,
   "floor": 2
  },
  {
@@ -325,35 +401,35 @@
   "href": "/acquirer/workday",
   "imps": 116,
   "clicks": 0,
-  "pos": 9.7,
+  "pos": 11.0,
   "floor": 8
  },
  {
   "href": "/compare/best-free-deal-flow-tools-2026",
   "imps": 114,
   "clicks": 2,
-  "pos": 8.6,
+  "pos": 5.3,
   "floor": 8
  },
  {
   "href": "/acquirer/block",
   "imps": 113,
   "clicks": 0,
-  "pos": 8.7,
+  "pos": 9.8,
   "floor": 8
  },
  {
   "href": "/signal/clickhouse",
   "imps": 110,
   "clicks": 2,
-  "pos": 9.9,
+  "pos": 13,
   "floor": 8
  },
  {
   "href": "/compare/best-deal-flow-tools-european-investors",
   "imps": 109,
   "clicks": 0,
-  "pos": 9.3,
+  "pos": 12.3,
   "floor": 8
  },
  {
@@ -367,7 +443,7 @@
   "href": "/acquirer/nvidia",
   "imps": 105,
   "clicks": 1,
-  "pos": 8.9,
+  "pos": 9.4,
   "floor": 8
  },
  {
@@ -381,14 +457,288 @@
   "href": "/acquirer/amazon-aws",
   "imps": 102,
   "clicks": 0,
-  "pos": 11.8,
+  "pos": 11.1,
+  "floor": 8
+ },
+ {
+  "href": "/from-stars-to-seed",
+  "imps": 100,
+  "pos": 13.3,
   "floor": 8
  },
  {
   "href": "/founder/leerob",
   "imps": 100,
   "clicks": 0,
-  "pos": 8.3,
+  "pos": 7.6,
   "floor": 8
+ },
+ {
+  "href": "/vs/harmonic-ai-vs-dealroom",
+  "imps": 87,
+  "pos": 6.9,
+  "floor": 8
+ },
+ {
+  "href": "/alternatives",
+  "imps": 68,
+  "pos": 16.6,
+  "floor": 8
+ },
+ {
+  "href": "/wins",
+  "imps": 65,
+  "pos": 11.8,
+  "floor": 1,
+  "note": "floor 8->1 2026-08-17: sustained by builder pass-3 + same-section fallback with donor caps; do not lower further without a builder change"
+ },
+ {
+  "href": "/alternatives/harmonic-ai",
+  "imps": 58,
+  "pos": 19.1,
+  "floor": 8
+ },
+ {
+  "href": "/answers",
+  "imps": 56,
+  "pos": 13.7,
+  "floor": 8
+ },
+ {
+  "href": "/predicted",
+  "imps": 45,
+  "pos": 8.8,
+  "floor": 5,
+  "note": "floor 8->5 2026-08-17: sustained by builder pass-3 + same-section fallback with donor caps; do not lower further without a builder change"
+ },
+ {
+  "href": "/startup/margelo",
+  "imps": 45,
+  "pos": 10.2,
+  "floor": 7,
+  "note": "floor 8->7 2026-08-17: sustained by builder pass-3 + same-section fallback with donor caps; do not lower further without a builder change"
+ },
+ {
+  "href": "/compare/best-deal-flow-tools-angel-investors",
+  "imps": 39,
+  "pos": 12.0,
+  "floor": 8
+ },
+ {
+  "href": "/vs/forager-ai-vs-crunchbase",
+  "imps": 39,
+  "pos": 7.7,
+  "floor": 8
+ },
+ {
+  "href": "/compare/vc-deal-flow-signal-vs-harmonic-ai",
+  "imps": 38,
+  "pos": 10.6,
+  "floor": 8
+ },
+ {
+  "href": "/answers/best-pitchbook-alternative-for-solo-investors",
+  "imps": 34,
+  "pos": 9.5,
+  "floor": 8
+ },
+ {
+  "href": "/blog/what-is-deal-flow-signal",
+  "imps": 33,
+  "pos": 10.9,
+  "floor": 8
+ },
+ {
+  "href": "/citations",
+  "imps": 33,
+  "pos": 12.3,
+  "floor": 3,
+  "note": "floor 8->3 2026-08-17: sustained by builder pass-3 + same-section fallback with donor caps; do not lower further without a builder change"
+ },
+ {
+  "href": "/acquirer/intel",
+  "imps": 32,
+  "pos": 17.9,
+  "floor": 8
+ },
+ {
+  "href": "/funnels",
+  "imps": 30,
+  "pos": 17.7,
+  "floor": 1,
+  "note": "floor 8->1 2026-08-17: sustained by builder pass-3 + same-section fallback with donor caps; do not lower further without a builder change"
+ },
+ {
+  "href": "/vs/harmonic-ai-vs-affinity",
+  "imps": 30,
+  "pos": 6.9,
+  "floor": 6,
+  "note": "floor 8->6 2026-08-17: sustained by builder pass-3 + same-section fallback with donor caps; do not lower further without a builder change"
+ },
+ {
+  "href": "/compare/best-deal-flow-tools-vc-firms-2026",
+  "imps": 28,
+  "pos": 10.0,
+  "floor": 8
+ },
+ {
+  "href": "/zh/about",
+  "imps": 28,
+  "pos": 14.4,
+  "floor": 4,
+  "note": "floor 8->4 2026-08-17: sustained by builder pass-3 + same-section fallback with donor caps; do not lower further without a builder change"
+ },
+ {
+  "href": "/signal/lovable",
+  "imps": 27,
+  "pos": 8.4,
+  "floor": 8
+ },
+ {
+  "href": "/blog/i-tracked-4200-startup-github-orgs-six-months",
+  "imps": 26,
+  "pos": 7.5,
+  "floor": 8
+ },
+ {
+  "href": "/about/founder",
+  "imps": 25,
+  "pos": 16.2,
+  "floor": 8
+ },
+ {
+  "href": "/book",
+  "imps": 25,
+  "pos": 17.3,
+  "floor": 8
+ },
+ {
+  "href": "/compare/vc-deal-flow-signal-vs-pitchbook",
+  "imps": 25,
+  "pos": 16.4,
+  "floor": 8
+ },
+ {
+  "href": "/founder/levelsio",
+  "imps": 25,
+  "pos": 13.3,
+  "floor": 8
+ },
+ {
+  "href": "/standards",
+  "imps": 25,
+  "pos": 15.3,
+  "floor": 1,
+  "note": "floor 8->1 2026-08-17: sustained by builder pass-3 + same-section fallback with donor caps; do not lower further without a builder change"
+ },
+ {
+  "href": "/answers/how-to-add-mcp-server-to-cursor",
+  "imps": 24,
+  "pos": 17.0,
+  "floor": 8
+ },
+ {
+  "href": "/enterprise",
+  "imps": 24,
+  "pos": 8.2,
+  "floor": 8
+ },
+ {
+  "href": "/founder/mitchellh",
+  "imps": 24,
+  "pos": 16.2,
+  "floor": 8
+ },
+ {
+  "href": "/wikidata",
+  "imps": 24,
+  "pos": 15.8,
+  "floor": 1,
+  "note": "floor 8->1 2026-08-17: sustained by builder pass-3 + same-section fallback with donor caps; do not lower further without a builder change"
+ },
+ {
+  "href": "/press",
+  "imps": 23,
+  "pos": 9.4,
+  "floor": 7,
+  "note": "floor 8->7 2026-08-17: sustained by builder pass-3 + same-section fallback with donor caps; do not lower further without a builder change"
+ },
+ {
+  "href": "/a2a/vercel-ai-sdk",
+  "imps": 22,
+  "pos": 8.2,
+  "floor": 8
+ },
+ {
+  "href": "/acquirer/servicenow",
+  "imps": 22,
+  "pos": 9.4,
+  "floor": 8
+ },
+ {
+  "href": "/fund/iconiq",
+  "imps": 22,
+  "pos": 18.4,
+  "floor": 5,
+  "note": "floor 8->5 2026-08-17: sustained by builder pass-3 + same-section fallback with donor caps; do not lower further without a builder change"
+ },
+ {
+  "href": "/zh/methodology",
+  "imps": 22,
+  "pos": 11.8,
+  "floor": 6,
+  "note": "floor 8->6 2026-08-17: sustained by builder pass-3 + same-section fallback with donor caps; do not lower further without a builder change"
+ },
+ {
+  "href": "/acquirer/apple",
+  "imps": 21,
+  "pos": 12.5,
+  "floor": 8
+ },
+ {
+  "href": "/compare/best-deal-flow-tools-seed-investors",
+  "imps": 21,
+  "pos": 10.6,
+  "floor": 8
+ },
+ {
+  "href": "/compare/crunchbase-alternative-for-angel-investors",
+  "imps": 21,
+  "pos": 17.7,
+  "floor": 8
+ },
+ {
+  "href": "/developers",
+  "imps": 21,
+  "pos": 4,
+  "floor": 2,
+  "note": "floor 8->2 2026-08-17: sustained by builder pass-3 + same-section fallback with donor caps; do not lower further without a builder change"
+ },
+ {
+  "href": "/mirrors",
+  "imps": 21,
+  "pos": 14.9,
+  "floor": 1,
+  "note": "floor 8->1 2026-08-17: sustained by builder pass-3 + same-section fallback with donor caps; do not lower further without a builder change"
+ },
+ {
+  "href": "/research",
+  "imps": 21,
+  "pos": 20,
+  "floor": 8
+ },
+ {
+  "href": "/startup/bigprof-software",
+  "imps": 21,
+  "pos": 19.8,
+  "floor": 6,
+  "note": "floor 8->6 2026-08-17: sustained by builder pass-3 + same-section fallback with donor caps; do not lower further without a builder change"
+ },
+ {
+  "href": "/partners",
+  "imps": 20,
+  "pos": 10.1,
+  "floor": 1,
+  "note": "floor 8->1 2026-08-17: sustained by builder pass-3 + same-section fallback with donor caps; do not lower further without a builder change"
  }
 ]
