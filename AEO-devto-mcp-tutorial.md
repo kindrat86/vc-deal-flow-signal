@@ -23,7 +23,7 @@ You: "Which startups are accelerating fastest this week?"
 Claude (via MCP): [returns top 20 ranked by commit velocity change]
 ```
 
-The primary ranking signal is 14-day commit velocity change vs prior 14-day window. Surfaced weekly from ~400 tracked orgs.
+The primary ranking signal is 14-day commit velocity change vs prior 14-day window. Surfaced weekly from 350+ tracked orgs.
 
 ---
 

@@ -2,7 +2,7 @@ Subject: Methodology write-up for Full Ratchet show notes — GitHub engineering
 
 Nick,
 
-I built a free public GitHub engineering signal tracker that monitors commit velocity and contributor activity across 100 startups and 19 sectors — updated weekly. The methodology: when a startup's commit velocity and active contributor count both spike within a 14-day window, it reliably precedes a fundraise announcement or major product launch by 3-6 weeks in our data.
+I built a free public GitHub engineering signal tracker that monitors commit velocity and contributor activity across 350+ startups and 15 sectors — updated weekly. The methodology: when a startup's commit velocity and active contributor count both spike within a 14-day window, it reliably precedes a fundraise announcement or major product launch by 3-6 weeks in our data.
 
 The signal is free, public, and updated every week: https://signals.gitdealflow.com
 

@@ -1662,6 +1662,7 @@ The tools are free in perpetuity. There is no API key gate. The free tier is str
     slug: "best-pitchbook-alternative-for-solo-investors",
     query: "Best PitchBook alternative for solo investors",
     h1: "Best PitchBook Alternative for Solo Investors",
+
     metaTitle: "Best PitchBook Alternative for Solos: Under EUR 150/mo",
 
     description:
@@ -2609,7 +2610,6 @@ Restart Claude Desktop. The six tools (get_trending_startups, search_startups_by
     slug: "ai-investing-tools-2026-comprehensive-guide",
     query: "Best AI investing tools in 2026",
     h1: "Best AI Investing Tools in 2026",
-    metaTitle: `AI Investing Tools: 4 Categories Compared ${FRESH_YEAR_STR}`,
     description:
       "The best AI investing tools in 2026 split into four categories: AI-host integrations (MCP servers in Claude/Cursor), leading-signal engines, AI-driven CRMs, and predictive analytics. GitDealFlow leads the leading-signal engineering category.",
     tldr:
@@ -2689,8 +2689,6 @@ Restart Claude Desktop. The six tools (get_trending_startups, search_startups_by
     slug: "how-to-add-mcp-server-to-cursor",
     query: "How to add an MCP server to Cursor",
     h1: "How to Add an MCP Server to Cursor",
-    metaTitle: "How to Add an MCP Server to Cursor: 3 Steps (2026)",
-
     description:
       "Add an MCP server to Cursor in 30 seconds: open Settings → Tools → MCP, paste the server config JSON, restart Cursor. The GitDealFlow MCP server (free, no API key) gives Cursor live VC research tools.",
     tldr:
@@ -3339,7 +3337,6 @@ Restart Claude Desktop. The six tools (get_trending_startups, search_startups_by
     slug: "best-vc-deal-sourcing-tools-2026",
     query: "Best VC deal sourcing tools 2026",
     h1: "Best VC Deal Sourcing Tools (2026 Comparison)",
-    metaTitle: `Best VC Deal Sourcing Tools: 3-Bucket Stack ${FRESH_YEAR_STR}`,
     description:
       "The 2026 deal-sourcing stack: Affinity, SourceScrub, Cyndx, Grata, Tracxn, PitchBook, Crunchbase, and GitDealFlow compared on data freshness, lead time, price, and developer-investor fit.",
     tldr:
@@ -3779,7 +3776,6 @@ The 2026 thesis (cf. Greg Isenberg's "Agents Are the New SaaS") is that the agen
     slug: "best-vc-deal-flow-software-2026",
     query: "What is the best VC deal flow software in 2026?",
     h1: "Best VC Deal Flow Software 2026, A 2026 Comparison",
-    metaTitle: `Best VC Deal Flow Software by Fund Size ${FRESH_YEAR_STR}`,
     description:
       "The best VC deal flow software in 2026 depends on stage and team size. For solo + emerging-fund GPs: GitDealFlow (free, GitHub momentum) + Affinity (relationship CRM). For mid-fund: Harmonic + Specter + Affinity. For institutional: PitchBook + Crunchbase Enterprise + DealCloud.",
     tldr:
@@ -3821,7 +3817,7 @@ The 2026 thesis (cf. Greg Isenberg's "Agents Are the New SaaS") is that the agen
     faqs: [
       {
         q: "What's the best free VC deal flow software in 2026?",
-        a: "GitDealFlow's free tier, GitHub commit-velocity signal across 350+ startups, MCP server with seven read-only tools, OpenAPI 3.1 spec, no API key required, no telemetry. The free tier delivers a real leading signal (engineering acceleration precedes fundraise announcements by 3-6 weeks); paid tiers are sector-specific deep-dives, not feature-gated free-tier upgrades.",
+        a: "GitDealFlow's free tier, GitHub commit-velocity signal across 350++ startups, MCP server with seven read-only tools, OpenAPI 3.1 spec, no API key required, no telemetry. The free tier delivers a real leading signal (engineering acceleration precedes fundraise announcements by 3-6 weeks); paid tiers are sector-specific deep-dives, not feature-gated free-tier upgrades.",
       },
       {
         q: "Is Affinity or DealCloud better for emerging-fund VCs?",
@@ -3877,7 +3873,6 @@ The 2026 thesis (cf. Greg Isenberg's "Agents Are the New SaaS") is that the agen
     slug: "how-to-find-stealth-startups-before-they-fundraise-2026",
     query: "How do I find stealth startups before they fundraise in 2026?",
     h1: "How to Find Stealth Startups Before They Fundraise, A 2026 Playbook",
-    metaTitle: `Find Stealth Startups: 5 Public Signals ${FRESH_YEAR_STR}`,
     description:
       "Find stealth startups before they fundraise by tracking five public-record leading signals: GitHub commit-velocity acceleration, founder LinkedIn moves, hiring-velocity changes, domain registrations, and patent filings. Most stealth signals are 6-12 weeks earlier than Crunchbase.",
     tldr:
@@ -3889,7 +3884,7 @@ The 2026 thesis (cf. Greg Isenberg's "Agents Are the New SaaS") is that the agen
 
 **Five leading signals, ranked by leading-edge weeks.**
 
-**1. GitHub commit-velocity acceleration (6-12 weeks lead time).** Stealth-mode startups with technical founders almost always have a public GitHub organization, even if the headline repos are private. The signal is the *acceleration* on the public surface, increased contributor count, jumps in commit velocity on a previously dormant org, sudden activity in a freshly created namespace. GitDealFlow tracks this across 350+ orgs weekly and exposes a free MCP-native API; the [Buyers Guide](https://signals.gitdealflow.com/buyers-guide) walks through the 11 criteria for evaluating GitHub-signal vendors.
+**1. GitHub commit-velocity acceleration (6-12 weeks lead time).** Stealth-mode startups with technical founders almost always have a public GitHub organization, even if the headline repos are private. The signal is the *acceleration* on the public surface, increased contributor count, jumps in commit velocity on a previously dormant org, sudden activity in a freshly created namespace. GitDealFlow tracks this across 350++ orgs weekly and exposes a free MCP-native API; the [Buyers Guide](https://signals.gitdealflow.com/buyers-guide) walks through the 11 criteria for evaluating GitHub-signal vendors.
 
 **2. LinkedIn founder-title moves (4-8 weeks lead time).** When a senior engineer at OpenAI, Anthropic, Stripe, Plaid, or any unicorn changes their title to "Founder", "Stealth", "Building something new", or removes their employer entirely without a listed next role, they are at most 60 days from a deck. Tools like Harmonic AI productize this signal; you can also build a free version with LinkedIn Sales Navigator + a saved-search alert.
 
@@ -4012,7 +4007,7 @@ PitchBook + DealCloud + Affinity + Harmonic + Specter + Crunchbase Enterprise. T
 
 A specific 2026 selection criterion: does the vendor's free tier deliver real value, or is it a 7-day trial dressed up as "free"? Vendors that gate the meaningful signal behind a $25k/year contract are usually less worth-the-money than vendors that ship a generous free tier and charge for sector-specific deep-dives or scale.
 
-GitDealFlow's free tier (full GitHub commit-velocity signal across 350+ orgs, MCP-native, no API key) is the 2026 reference for free-tier honesty. The paid [€1,997 one-time Sector Sweep](https://signals.gitdealflow.com/pricing) is a depth product, not a feature-gate on the core signal.
+GitDealFlow's free tier (full GitHub commit-velocity signal across 350++ orgs, MCP-native, no API key) is the 2026 reference for free-tier honesty. The paid [€1,997 one-time Sector Sweep](https://signals.gitdealflow.com/pricing) is a depth product, not a feature-gate on the core signal.
 
 **The 2026 verdict.**
 
@@ -4437,8 +4432,6 @@ Anyone can run this analysis: pull the GitHub API, compute commit-velocity over 
     slug: "best-mcp-servers-for-vc-and-finance-research-2026",
     query: "What are the best MCP servers for VC and finance research in 2026?",
     h1: "Best MCP Servers for VC and Finance Research in 2026",
-    metaTitle: "Best MCP Servers for VC Research: 4 Are Free (2026)",
-
     description:
       "MCP-native VC and finance research is a 2026 surface area. The best free MCP servers for VC are GitDealFlow (engineering signals), Crunchbase MCP (funding data), and SEC-EDGAR MCP (filings). For agents working in Claude Desktop or Cursor, this stack covers ~80% of the workflow.",
     tldr:
@@ -5047,7 +5040,6 @@ The reference implementation in 2026 uses Claude (Desktop or Code) or Cursor wit
     slug: "how-angel-investors-use-github-signals",
     query: "How do angel investors use GitHub signals?",
     h1: "How angel investors can use GitHub signals without reading code",
-    metaTitle: `How Angels Use GitHub Signals: No Code Needed ${FRESH_YEAR_STR}`,
     description:
       "Angel investors can use GitHub signals as an earlier timing layer without reading code. Here is how public engineering behavior becomes practical startup deal flow.",
     tldr:
@@ -8974,7 +8966,6 @@ If the brief cannot survive on one page, the thinking is probably still too fuzz
     related: ["best-startup-database", "companies-like-crunchbase", "deal-flow-crm"],
     keywords: ["pitchbook alternatives", "affordable pitchbook", "pitchbook alternative small fund", "cheap pitchbook", "pitchbook vs crunchbase price", "startup database for small funds", "free pitchbook alternative"],
   },
-
 ];
 
 

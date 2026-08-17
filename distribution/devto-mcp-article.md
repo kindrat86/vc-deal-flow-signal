@@ -42,7 +42,7 @@ The MCP server exposes 5 tools:
 | Tool | What it does |
 |---|---|
 | `get_trending_startups` | Top 20 startups by engineering acceleration |
-| `search_startups_by_sector` | Startups ranked within a specific sector (20 sectors) |
+| `search_startups_by_sector` | Startups ranked within a specific sector (15 sectors) |
 | `get_startup_signal` | Signal profile for a specific startup |
 | `get_signals_summary` | Dataset overview, formats, and links |
 | `get_methodology` | How the signals are calculated |

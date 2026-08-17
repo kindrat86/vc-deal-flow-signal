@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { FRESH_YEAR_STR } from "@/lib/freshness-year";
 import Link from "next/link";
 import {
   getAllSectors,
@@ -16,7 +15,7 @@ import { AgentSummary } from "@/components/AgentSummary";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 
 export const metadata: Metadata = {
-  title: { absolute: `Predict Startup Breakouts: Free Signal, 2 Seconds ${FRESH_YEAR_STR}` },
+  title: "Predict Startup Breakouts, Free GitHub Signal + Scout Game",
   description:
     "Paste any startup GitHub org. Get a breakout signal in 2 seconds, then make your own call: raise in 6 months? Earn scout rank from Curious to Oracle. Top 1% get featured.",
   alternates: { canonical: "/predict" },

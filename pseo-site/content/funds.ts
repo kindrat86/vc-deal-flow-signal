@@ -42,19 +42,6 @@ export interface Fund {
   relatedSectors: string[];
 }
 
-// CTR hooks for /fund/[slug] (2026-08-16 wave 6). Stage-focus verdicts
-// derived from each fund's own `stage` field; unmapped funds keep the
-// generic "Deal Flow Context & Engineering Signal Map" form. Year appended
-// at build time via FRESH_YEAR_STR, never hardcoded. No em dashes.
-export const FUND_TITLE_HOOKS: Record<string, string> = {
-  sequoia: "Sequoia Capital: Seed to Growth Signals",
-  iconiq: "ICONIQ Capital: Late-Stage Software Signals",
-  "insight-partners": "Insight Partners: Growth-Stage Software Signals",
-  "founders-inc": "Founders Inc: Pre-Seed & Seed Signals",
-  m12: "M12 (Microsoft Ventures): Series A to Growth Signals",
-  "thrive-capital": "Thrive Capital: Series A to Growth Signals",
-};
-
 function build(f: {
   slug: string;
   name: string;
@@ -72,9 +59,7 @@ function build(f: {
     hq: f.hq,
     stageFocus: f.stage,
     description: `${f.name} is a ${f.hq}-based venture fund focused on ${f.stage}. ${f.what}`,
-    title: FUND_TITLE_HOOKS[f.slug]
-      ? `${FUND_TITLE_HOOKS[f.slug]} ${FRESH_YEAR_STR}`
-      : `${f.name}, Deal Flow Context & Engineering Signal Map ${FRESH_YEAR_STR}`,
+    title: `${f.name}, Deal Flow Context & Engineering Signal Map ${FRESH_YEAR_STR}`,
     metaDescription: `${f.name} thesis, stage focus, and how GitHub engineering-acceleration signals map to their sourcing process. Built for emerging managers and operators studying ${f.name}'s public investment patterns.`,
     h1: `${f.name} Deal Flow Context`,
     tagline: `${f.name}'s public thesis mapped against engineering-acceleration signals, for emerging managers, operators, and LPs studying their sourcing.`,

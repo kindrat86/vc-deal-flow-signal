@@ -11,6 +11,7 @@
  * offers, no offer.price === 0.
  *
  * This is the landing half of the site-wide rule; the pSEO half lives in
+
  * scripts/verify-no-regressions.ts section 63.
  *
  * Usage: node scripts/verify-pricing-offers.mjs   (exit 1 on violation)

@@ -15,6 +15,10 @@ import { REFERENCE_PROFILE_REVIEWED } from "@/content/companies";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
 import SignalDisclaimer from "@/components/SignalDisclaimer";
+import DefinitionBlock from "@/components/DefinitionBlock";
+import { buildSourceTruthDataset } from "@/lib/dataset-schema";
+import CitableStat from "@/components/CitableStat";
+import { citableStat } from "@/lib/citable-stats";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -137,6 +141,17 @@ export default async function SectorHubPage({ params }: PageProps) {
           },
         })),
       },
+      buildSourceTruthDataset({
+        url: pageUrl,
+        name: `${s.name}: Engineering Velocity Signals`,
+        description: `Derived engineering-velocity statistics for ${s.name} venture-backed startups tracked by the VC Deal Flow Signal (GitDealFlow) GitHub panel. ${s.metaDescription}`,
+        variableMeasured: keyStats.map((k) => ({
+          name: k.label,
+          value: k.value,
+          description: k.detail,
+        })),
+        keywords: [s.name, "venture capital", "engineering velocity", "GitHub", "startups"],
+      }),
     ],
   };
 
@@ -171,10 +186,14 @@ export default async function SectorHubPage({ params }: PageProps) {
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
           {s.h1}
         </h1>
+        <DefinitionBlock
+          text={`${s.name} startups tracked by public GitHub engineering acceleration: commit velocity, contributor growth, and repository expansion. This hub lists the sector's leading teams and the metrics investors use to read momentum.`}
+        />
         <p data-speakable className="tagline text-sky-400 text-base leading-relaxed mb-6 font-medium">
           {s.tagline}
         </p>
         <p className="text-gray-400 text-base leading-relaxed mb-3">{s.intro}</p>
+        <CitableStat {...citableStat("sector")} template="sector" />
         <div className="mb-8 rounded-lg border border-sky-900/60 bg-sky-950/30 p-4 sm:p-5">
           <p className="mb-2 text-xs font-semibold uppercase tracking-wider text-sky-400">
             Analyst note

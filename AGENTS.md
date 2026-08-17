@@ -18,7 +18,7 @@ Locked by the user on 2026-08-16. Do not change any of these without explicit us
 - Sector count: "15" (the live API). NOT "20", NOT "4,200+".
 - Data period advances quarterly. Citation form: "VC Deal Flow Signal (signals.gitdealflow.com), Q<quarter> <year> data."
 
-Enforced at prebuild by pseo-site/scripts/verify-no-regressions.ts (SS56: lib/canonical-claims.ts floor module + claim-surface needles + banned-token scan; SS51: landing claim lock). The older pseo-site/scripts/verify-claims.ts was REMOVED in revert f2c842b0 - do not reference or recreate it. Do not edit a guard to make a failing build pass; fix the tree instead.
+Enforced at prebuild by pseo-site/scripts/verify-claims.ts and pseo-site/scripts/verify-no-regressions.ts. Do not edit a guard to make a failing build pass; fix the tree instead.
 
 ## Programmatic surfaces
 

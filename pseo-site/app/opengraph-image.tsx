@@ -21,6 +21,7 @@ export default async function OGImage() {
       ),
     0
   );
+  const panelClaim = panelClaimFloor(totalStartups);
 
   return new ImageResponse(
     (
@@ -83,6 +84,7 @@ export default async function OGImage() {
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div style={{ display: "flex", fontSize: 44, fontWeight: 700, color: "#0ea5e9" }}>
+
               {panelClaimFloor(totalStartups)}
             </div>
             <div style={{ display: "flex", fontSize: 16, color: "#64748b" }}>Startup signals</div>

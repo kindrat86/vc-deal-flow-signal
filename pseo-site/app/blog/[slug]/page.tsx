@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { getPost, getAllPostSlugs, posts } from "@/content/posts";
-import { panelClaimFloor } from "@/lib/canonical-claims";
 import { getPostLastUpdated } from "@/content/post-freshness";
 import { getAllSectors, getCurrentPeriod, getDataLastModified } from "@/lib/data";
 import { getAuthor } from "@/content/authors";
@@ -12,9 +11,12 @@ import { getPillarForPost, getPostsInPillar } from "@/content/pillars";
 import figureRegistry from "@/components/figures";
 import StatCallout from "@/components/StatCallout";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import DefinitionBlock from "@/components/DefinitionBlock";
 import SeoCta from "@/components/SeoCta";
 import RelatedLinks from "@/components/RelatedLinks";
 import { getRelatedGroups } from "@/lib/related-links";
+import CitableStat from "@/components/CitableStat";
+import { citableStat } from "@/lib/citable-stats";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -518,7 +520,12 @@ export default async function BlogPostPage({ params }: PageProps) {
                 <p className="text-xs font-medium text-sky-400 uppercase tracking-wider mb-2">
                   Key Takeaway
                 </p>
-                <p className="text-gray-300 text-sm leading-relaxed">
+                <p
+                  className="text-gray-300 text-sm leading-relaxed"
+                  data-direct-answer
+                  data-speakable
+                  data-agent-summary
+                >
                   {post.summary}
                 </p>
               </div>
@@ -553,7 +560,7 @@ export default async function BlogPostPage({ params }: PageProps) {
           <div className="mb-8 flex flex-wrap gap-4 text-xs text-gray-400">
             <span>{sectors.filter((s) => s.periods[period.slug]).length} sectors tracked</span>
             <span className="text-slate-700">|</span>
-            <span>{panelClaimFloor(sectors.filter((s) => s.periods[period.slug]).reduce((sum, s) => sum + s.periods[period.slug].startups.length, 0))} startup signals</span>
+            <span>{sectors.filter((s) => s.periods[period.slug]).reduce((sum, s) => sum + s.periods[period.slug].startups.length, 0)} startup signals</span>
             <span className="text-slate-700">|</span>
             <span>Data: {period.name}</span>
             <span className="text-slate-700">|</span>
@@ -561,12 +568,14 @@ export default async function BlogPostPage({ params }: PageProps) {
           </div>
 
           {/* Key statistics - GEO-optimized quotable stat block */}
-          {post.keyStats && post.keyStats.length > 0 && (
+          {post.keyStats && post.keyStats.length > 0 ? (
             <StatCallout
               stats={post.keyStats}
               source="VC Deal Flow Signal"
               sourceHref="https://signals.gitdealflow.com"
             />
+          ) : (
+            <CitableStat {...citableStat("blog")} template="blog" />
           )}
 
           <div className="prose-invert">{sections}</div>

@@ -4247,20 +4247,6 @@ allPosts.sort(
   (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
 );
 
-// Sync the legacy `posts` export to the full merged set (2026-08-18).
-// Historical bug: `posts` re-exported only the 39 base entries while allPosts
-// carried TOFU + sourcing-cluster + dynamic posts. Every consumer importing
-// `posts` (topics hub, llms.txt, llms-full, feed.xml, atom.xml, qa.* AEO
-// corpus, llms-search, news-sitemap) silently dropped the newer 20+ posts.
-// Mutating in place keeps the const binding and fixes all importers at once.
-const baseSlugs = new Set(posts.map((p) => p.slug));
-for (const p of allPosts) {
-  if (!baseSlugs.has(p.slug)) posts.push(p);
-}
-posts.sort(
-  (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
-);
-
 function isPublished(post: BlogPost): boolean {
   const today = new Date().toISOString().slice(0, 10);
   return post.date <= today;

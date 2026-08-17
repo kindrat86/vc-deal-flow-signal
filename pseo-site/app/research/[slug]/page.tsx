@@ -11,8 +11,11 @@ import { getDataLastModified } from "@/lib/data";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import RelatedLinks from "@/components/RelatedLinks";
+import DefinitionBlock from "@/components/DefinitionBlock";
 import { getRelatedGroupsForFinding } from "@/lib/finding-related";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import CitableStat from "@/components/CitableStat";
+import { citableStat } from "@/lib/citable-stats";
 
 const SITE = "https://signals.gitdealflow.com";
 const SSRN_URL = "https://ssrn.com/abstract=6606558";
@@ -415,6 +418,8 @@ export default async function ResearchFindingPage({ params }: PageProps) {
           </p>
         </header>
 
+        <CitableStat {...citableStat("research")} template="research" />
+
         <section
           aria-label="TL;DR"
           className="mb-8 rounded-lg border border-slate-800 bg-slate-900/60 p-4"
@@ -438,7 +443,13 @@ export default async function ResearchFindingPage({ params }: PageProps) {
           </p>
         </section>
 
-        <p className="text-gray-400 text-sm leading-relaxed mb-6" aria-label="Definition">
+        <p
+          className="text-gray-400 text-sm leading-relaxed mb-6"
+          aria-label="Definition"
+          data-direct-answer
+          data-speakable
+          data-agent-summary
+        >
           <strong className="text-gray-200">Commit velocity</strong> is a
           14-day rolling count of commits to a startup&rsquo;s most active
           public repository, the earliest public signal of engineering

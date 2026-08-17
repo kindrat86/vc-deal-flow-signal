@@ -5,7 +5,10 @@ import { getAllSectors, getCurrentPeriod } from "@/lib/data";
 import PSEOFooterNav from "@/components/PSEOFooterNav";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
+import DefinitionBlock from "@/components/DefinitionBlock";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import CitableStat from "@/components/CitableStat";
+import { citableStat } from "@/lib/citable-stats";
 
 export const metadata: Metadata = {
   // CTR hook (GSC 90d: 631 imps, 0.16% at pos 7.3): "Frequently Asked
@@ -170,6 +173,9 @@ export default function FAQPage() {
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
           Frequently Asked Questions
         </h1>
+        <DefinitionBlock
+          text={`VC Deal Flow Signal is a data product that tracks startup engineering acceleration from public GitHub data, surfacing breakout teams weeks before fundraise announcements. These are the most common questions about how it works, what it costs, and how investors use it.`}
+        />
         <p className="text-gray-400 text-base leading-relaxed mb-4" data-speakable>
           Answers to common questions about GitHub engineering signals, startup
           deal sourcing, commit velocity, and how investors use VC Deal Flow
@@ -177,6 +183,8 @@ export default function FAQPage() {
           refreshed weekly. If you already know your question is proof, comparison,
           or buyer-side fit, start with the sharper routes below.
         </p>
+
+        <CitableStat {...citableStat("faq")} template="faq" />
 
         <aside
           className="mb-10 rounded-xl border border-sky-500/25 bg-sky-500/5 px-5 py-4"

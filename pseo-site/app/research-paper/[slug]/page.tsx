@@ -12,7 +12,10 @@ import { researchPaperLeafIndexable } from "@/content/research-paper-policy";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
 import RelatedLinks from "@/components/RelatedLinks";
+import DefinitionBlock from "@/components/DefinitionBlock";
 import { getRelatedGroups } from "@/lib/related-links";
+import CitableStat from "@/components/CitableStat";
+import { citableStat } from "@/lib/citable-stats";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -181,6 +184,8 @@ export default async function ResearchPaperPage({ params }: PageProps) {
           </p>
         </aside>
 
+        <CitableStat {...citableStat("research-paper")} template="research-paper" />
+
         <p className="text-sky-400 text-xs uppercase tracking-wider font-medium mb-3">
           {paper.venue} &middot; {paper.year}
         </p>
@@ -237,7 +242,12 @@ export default async function ResearchPaperPage({ params }: PageProps) {
 
         <section className="mb-10" aria-label="Abstract summary">
           <h2 className="text-xl font-semibold text-gray-100 mb-3">Abstract summary</h2>
-          <p className="text-gray-400 text-sm leading-relaxed">
+          <p
+            className="text-gray-400 text-sm leading-relaxed"
+            data-direct-answer
+            data-speakable
+            data-agent-summary
+          >
             {paper.abstractSummary}
           </p>
           <p className="text-gray-500 text-xs mt-3 italic">

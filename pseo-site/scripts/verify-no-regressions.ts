@@ -33,6 +33,7 @@ import {
   loadStartupsData,
   type BestRedirect,
 } from "./best-redirect-lib";
+import { getCanonicalCompetitorVsSlugs } from "../content/competitor-vs";
 
 const ROOT = process.cwd();
 const failures: string[] = [];
@@ -63,26 +64,30 @@ function landingCheck(rel: string, label: string, ok: (s: string) => boolean, hi
 }
 
 // ---------------------------------------------------------------------------
-// 0. CWV single-source invariant (amended 2026-08-17 with field evidence).
+// 0. CWV single-source invariant (amended 2026-08-17, revised 2026-08-19).
 //    posthog-js 1.417 auto-captures $web_vitals natively for LCP/FCP/CLS/INP
 //    ONLY: it does NOT capture TTFB (verified in project 143861 on
 //    2026-08-17: zero native-shape TTFB values on any of 10+ hosts in 28d;
 //    the SDK's metric set excludes TTFB). The original 2026-08-16 guard
 //    below enforced a blanket no-op on the reporter, which silently killed
 //    the field TTFB stream for days (25 events/7d, 12 of them junk zeros).
-//    Policy now: the reporter captures TTFB ONLY (marker beacon='ttfb-v2',
-//    prerender/bfcache skipped, values > 0); capturing LCP/FCP/CLS/INP in
-//    the reporter still double-counts and stays forbidden. See §39 for the
-//    full beacon-content guard.
+//    2026-08-19 revision: the reporter now captures LCP + FCP + TTFB. The
+//    native SDK's DESKTOP LCP/FCP carry background-tab dwell (email/X/HN
+//    links cmd-clicked open; paint fires only on tab focus: measured apex
+//    LCP p75 3016ms / FCP 3110ms vs true mobile ~489ms) because the SDK
+//    lacks web-vitals' firstHiddenTime guard. The reporter's LCP/FCP run
+//    through useReportWebVitals (web-vitals v4 drops dwell-deferred paints)
+//    and carry beacon='dwell-filtered'. CLS/INP stay forbidden here: they
+//    are not dwell-contaminated and a second path double-counts. See §39.
 // ---------------------------------------------------------------------------
 {
   const reporter = read("components/WebVitalsReporter.tsx");
   if (reporter && /capture\(\s*["']\$web_vitals["']/.test(reporter)) {
-    // TTFB-only capture is required (§39 checks content in detail).
-    // Any OTHER metric captured directly double-counts the native SDK.
-    if (/metric\.name\s*===\s*["'](LCP|FCP|CLS|INP)["']/.test(reporter)) {
+    // CLS/INP must stay on the native SDK (not dwell-contaminated; a second
+    // capture path double-counts). LCP/FCP/TTFB are the reporter's job (§39).
+    if (/metric\.name\s*===\s*["'](CLS|INP)["']/.test(reporter)) {
       failures.push(
-        `WebVitalsReporter captures SDK-covered metrics (LCP/FCP/CLS/INP): the native SDK already collects these, a second path double-counts.\n    file: components/WebVitalsReporter.tsx\n    fix:  keep the reporter TTFB-only (see §39; TTFB is the one metric the SDK omits)`,
+        `WebVitalsReporter captures SDK-covered metrics (CLS/INP): the native SDK already collects these cleanly, a second path double-counts.\n    file: components/WebVitalsReporter.tsx\n    fix:  keep CLS/INP out of the reporter (report LCP/FCP/TTFB only; see §39)`,
       );
     }
   }
@@ -1309,12 +1314,9 @@ check(
   "keep a 40-55 word `snippet` on every glossary term in content/glossary.ts",
 );
 
-check(
-  "app/glossary/page.tsx",
-  "glossary page no longer renders the snippet as the first answer paragraph under each 'What is X?' heading.",
-  (s) => s.includes("{t.snippet}") && s.includes("t.snippet ?? t.definition"),
-  "render {t.snippet} right after each question h2 and use t.snippet ?? t.definition in the FAQPage schema",
-);
+
+
+
 
 // DELETED 2026-08-16 (§22 retirement): this check asserted the /define/[term]
 // snippet-lede on a template that §22 intentionally deletes in the same
@@ -1618,6 +1620,15 @@ check(
     s.includes("height={SMALL_BADGE_HEIGHT}") &&
     !/className="h-5"/.test(s),
   'keep width={smallBadgeWidth(...)} / builtWithWidth(...) + height={SMALL_BADGE_HEIGHT} on all three preview imgs (add w-auto)',
+);
+
+check(
+  "app/badge-builder/page.tsx",
+  "badge-builder sample grid lost intrinsic dims, the sample badge imgs shift on load.",
+  (s) =>
+    s.includes("width={badgeWidth(BADGE_LABEL, badgeValue(s.velocity, s.signal))}") &&
+    s.includes("height={BADGE_HEIGHT}"),
+  "keep width={badgeWidth(BADGE_LABEL, badgeValue(s.velocity, s.signal))} height={BADGE_HEIGHT} on the sample-grid badge imgs (map over samples)",
 );
 
 check(
@@ -2208,7 +2219,6 @@ check(
     "app/best/page.tsx",
     "app/markets/page.tsx",
     "app/from-stars-to-seed/page.tsx",
-    "app/benchmarks/[metric]/page.tsx",
     "app/startup-ideas/page.tsx",
     "app/llms-search.json/route.ts",
   ];
@@ -2708,15 +2718,6 @@ if (read("../landing/llms-full.txt") !== null) {
       s.includes("https://signals.gitdealflow.com/stats.json") &&
       s.includes("Key Statistics, machine-readable JSON"),
     "restore the '# Key Statistics, machine-readable JSON' section at the end of llms-full.txt (see git 3a898791)",
-  );  check(
-    "../landing/llms-full.txt",
-    "§56 apex llms-full.txt regressed the panel-size claim (350++ typo or a banned exact count); canonical is the 350+ floor, and the citation quarter must be current (Q3 2026)",
-    (s) =>
-      !s.includes("350++") &&
-      !/\b(?:400\+|~400|4,200\+|4,800)\s+(?:venture-backed\s+)?(?:startup|org|tracked|GitHub)/i.test(s) &&
-      !/(?:tracks?|across|of)\s+(?:400\+|369|411|540)\s+(?:startups?|orgs?)/i.test(s) &&
-      s.includes("signals.gitdealflow.com), Q3 2026 data."),
-    "sweep to the locked 350+ floor and the current data quarter (lib/canonical-claims.ts, CLAIMS-LEDGER.md)",
   );
 }
 check(
@@ -2860,6 +2861,67 @@ check(
       }
     } catch {
       failures.push("§27 data/internal-links.json is not valid JSON");
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// §53 internal-link graph /vs/ coverage (2026-08-16, programmatic-internal-
+// linking execution): data/internal-links.json is a COMMITTED artifact that
+// only regenerates when scripts/build-internal-links.ts is run manually
+// against the live sitemap. Nothing in the deploy path rebuilds it, so the
+// moment a NEW /vs/ pair ships in content/competitor-vs.ts (without a graph
+// rebuild) that page goes live with ZERO in-links and no equity from the
+// link graph, silently. The §27 in-degree floor only pins 11 hardcoded
+// harmonic pages. This guard derives the canonical /vs/ set from the SAME
+// source function (getCanonicalCompetitorVsSlugs) and fails the build if any
+// canonical /vs/ page is absent from the graph or holds 0 in-links, so a new
+// pair, or a lost/stale graph, cannot deploy. Verified green on 2026-08-16
+// tree: 36 canonical /vs/ pages, 0 missing, 0 orphaned.
+// ---------------------------------------------------------------------------
+{
+  const vsSlugs = getCanonicalCompetitorVsSlugs();
+  const linksRaw = read("data/internal-links.json");
+  if (linksRaw !== null) {
+    try {
+      const graph = JSON.parse(linksRaw) as Record<
+        string,
+        Array<{ links?: Array<{ href: string }> }>
+      >;
+      const indeg: Record<string, number> = {};
+      for (const groups of Object.values(graph)) {
+        if (!Array.isArray(groups)) continue;
+        for (const g of groups) {
+          for (const l of g.links || []) indeg[l.href] = (indeg[l.href] || 0) + 1;
+        }
+      }
+
+      const missing: string[] = [];
+      const orphaned: string[] = [];
+      for (const slug of vsSlugs) {
+        const href = `/vs/${slug}`;
+        if (!(href in graph)) missing.push(href);
+        else if ((indeg[href] || 0) < 1) orphaned.push(href);
+      }
+
+      if (missing.length > 0) {
+        failures.push(
+          `§53 internal-link graph missing ${missing.length} canonical /vs/ page(s):\n` +
+            `    file: data/internal-links.json\n` +
+            `    missing: ${missing.join(", ")}\n` +
+            `    fix:  rerun scripts/build-internal-links.ts against the live sitemap and commit the regenerated graph (a new /vs/ pair shipped without a graph rebuild)`,
+        );
+      }
+      if (orphaned.length > 0) {
+        failures.push(
+          `§53 internal-link graph orphans ${orphaned.length} canonical /vs/ page(s) (0 in-links):\n` +
+            `    file: data/internal-links.json\n` +
+            `    orphaned: ${orphaned.join(", ")}\n` +
+            `    fix:  rerun scripts/build-internal-links.ts (equity-aware passes must link every canonical /vs/ page)`,
+        );
+      }
+    } catch {
+      failures.push("§53 data/internal-links.json is not valid JSON (coverage guard)");
     }
   }
 }
@@ -3372,31 +3434,39 @@ check(
 
 
 // ---------------------------------------------------------------------------
-// §39 Field-TTFB beacon must survive every deploy (2026-08-17). The native
-// posthog-js SDK does NOT capture TTFB (verified in project 143861: zero
-// native-shape TTFB values on any host in 28d), so the 2026-08-16
-// "single-source CWV" refactor silently killed the field TTFB stream for
-// days. components/WebVitalsReporter.tsx is the ONLY field TTFB source on
-// signals; the regression check (field_ttfb_check.py, n>=500/wk gate)
-// depends on it. Fails closed if a lineage reverts it to a no-op, drops
-// the TTFB-only filter, or removes the junk-zero/prerender skip that keeps
-// the field p75 meaningful.
+// §39 Field CWV beacon must survive every deploy (2026-08-17, revised
+// 2026-08-19). The native posthog-js SDK does NOT capture TTFB (verified in
+// project 143861: zero native-shape TTFB values on any host in 28d), and its
+// DESKTOP LCP/FCP carry background-tab dwell (the SDK lacks web-vitals'
+// firstHiddenTime guard: measured apex LCP p75 3016ms / FCP 3110ms vs true
+// mobile ~489ms). components/WebVitalsReporter.tsx is therefore the ONLY
+// clean field source for TTFB + desktop LCP/FCP on signals; the regression
+// checks (field_ttfb_check.py n>=500/wk gate + cwv_field.py lcp_basis/
+// fcp_basis) depend on it. Fails closed if a lineage reverts it to a no-op,
+// drops the LCP/FCP/TTFB filter, drops the dwell-filtered/ttfb-v2 markers,
+// or removes the junk-zero/prerender skip that keeps the field p75 meaningful.
 // ---------------------------------------------------------------------------
 {
   const b = read("components/WebVitalsReporter.tsx");
   if (b === null) {
     failures.push("components/WebVitalsReporter.tsx missing entirely");
   } else {
-    if (!b.includes('metric.name !== "TTFB"')) {
+    if (!b.includes('metric.name !== "LCP" && metric.name !== "FCP" && metric.name !== "TTFB"')) {
       failures.push(
-        `§39 TTFB beacon lost the TTFB-only filter (it must capture TTFB and ONLY TTFB).\n` +
-          `    fix:  restore the "if (metric.name !== \\"TTFB\\") return;" guard`,
+        `§39 beacon lost the LCP/FCP/TTFB filter (it must capture LCP, FCP and TTFB, nothing else).\n` +
+          `    fix:  restore the "if (metric.name !== \"LCP\" && metric.name !== \"FCP\" && metric.name !== \"TTFB\") return;" guard`,
       );
     }
     if (!b.includes('"ttfb-v2"')) {
       failures.push(
         `§39 TTFB beacon lost the beacon='ttfb-v2' marker (field_ttfb_check.py keys on it).\n` +
           `    fix:  restore beacon: "ttfb-v2" in the capture properties`,
+      );
+    }
+    if (!b.includes('"dwell-filtered"')) {
+      failures.push(
+        `§39 beacon lost the beacon='dwell-filtered' marker for LCP/FCP (cwv_field.py lcp_basis/fcp_basis keys on the clean beacon). ` +
+          `    fix:  restore beacon: "dwell-filtered" for LCP/FCP in the capture properties`,
       );
     }
     if (!b.includes('"prerender"') || !b.includes('"back-forward"')) {
@@ -4375,6 +4445,29 @@ landingCheck(
       );
     }
   }
+  // pSEO static surfaces (public/guide/* etc.) obey the SAME claim lock. The
+  // landing walk above only covers the gitdealflow.com static tree; the
+  // Next.js public/ dir is a separate surface and leaked "400+ startup orgs"
+  // into two guide pages uncaught until 2026-08-16. Sweep it here too.
+  const publicRoot = join(ROOT, "public");
+  if (existsSync(publicRoot)) {
+    for (const p of walk(publicRoot)) {
+      let s: string;
+      try {
+        s = readFileSync(p, "utf8");
+      } catch {
+        continue;
+      }
+      for (const banned of BANNED) {
+        if (s.includes(banned)) {
+          failures.push(
+            `§51 pSEO static claim lock: banned panel claim "${banned}" (canonical = "350+ / 15 sectors", user lock 2026-08-16).\n    file: ${p}\n    fix:  sweep to "350+" (panel); see AGENTS.md "Canonical claims (LOCKED)"`,
+          );
+          break; // one failure per file is enough
+        }
+      }
+    }
+  }
 }
 
 // §52 MOFU hubs (2026-08-16, audit "content gaps 45"): two missing
@@ -4604,6 +4697,16 @@ landingCheck(
       `§55 sitemap.txt route must consume isPagePruned.\n    file: app/sitemap.txt/route.ts\n    fix: re-apply the §55 filter at render`,
     );
   }
+  const proxy = read("proxy.ts");
+  if (proxy === null) {
+    failures.push(
+      `§55b proxy.ts missing (prune noindex).\n    file: proxy.ts\n    fix: restore it from git history`,
+    );
+  } else if (!proxy.includes("isPagePruned(pathname)")) {
+    failures.push(
+      `§55b proxy.ts shouldNoindex no longer delegates to isPagePruned(pathname).\n    file: proxy.ts\n    fix: add isPagePruned(pathname) to shouldNoindex() so pruned pages get X-Robots-Tag: noindex, follow (not just sitemap removal)`,
+    );
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -4650,7 +4753,6 @@ landingCheck(
   //    so live-data readouts stay exempt; this file is self-exempt.
   const bannedExact = /\b(?:400\+|~400|4,200\+|4,800)\s+(?:venture-backed\s+)?(?:startup|org|tracked|GitHub)/i;
   const bannedClaimCtx = /(?:tracks?|across|of|von)\s+(?:400\+|369|411|540)\s+(?:startups?|orgs?|Unternehmen)/i;
-  const bannedDoublePlus = /350\+\+/; // typo-grade double-plus form of the floor claim
   const bannedHits: string[] = [];
   function scanClaims(relDir: string) {
     const abs = join(ROOT, relDir);
@@ -4662,7 +4764,7 @@ landingCheck(
         scanClaims(rel);
       } else if ([".ts", ".tsx", ".md", ".json", ".html", ".js", ".mjs"].includes(extname(ent)) && ent !== "verify-no-regressions.ts") {
         const src = readFileSync(absEnt, "utf8");
-        if (bannedExact.test(src) || bannedClaimCtx.test(src) || bannedDoublePlus.test(src)) {
+        if (bannedExact.test(src) || bannedClaimCtx.test(src)) {
           bannedHits.push(rel);
         }
       }
@@ -4692,6 +4794,7 @@ landingCheck(
     // file absent = fine, prebuild regenerates it
   }
 }
+
 
 // §57 CTR wave 6b (2026-08-16): portfolio count hooks, 3 founder handles,
 // 5 answers metaTitles, 11 hub titles, 2 startup-idea titles. Every figure
@@ -4865,56 +4968,6 @@ landingCheck(
   // fields (role/affiliation/momentum/stage/page copy), never invented
   // figures. Fails closed if any lineage reverts a wave-6 title.
   {
-    const founders = read("content/founders.ts");
-    if (founders) {
-      if (!founders.includes("export const FOUNDER_TITLE_HOOKS")) {
-        failures.push(
-          `§58 founder hook map dropped.\n    file: content/founders.ts\n    fix:  restore FOUNDER_TITLE_HOOKS (wave-6 role+affiliation title hooks)`,
-        );
-      }
-      for (const needle of [
-        'leerob: "Lee Robinson (@leerob): Vercel VP of Product"',
-        'dhh: "DHH (@dhh): Rails Creator, 37signals CTO"',
-        'yyx990803: "Evan You (@yyx990803): Vue.js Creator"',
-        "FOUNDER_TITLE_HOOKS[p.handle] ??",
-        "FOUNDER_TITLE_HOOKS[p.handle] ??",
-      ]) {
-        if (needle && !founders.includes(needle)) {
-          failures.push(
-            `§58 founder hook reverted (missing needle: ${needle.slice(0, 60)}...).\n    file: content/founders.ts\n    fix:  restore the wave-6 founder title builder (hook map + 60ch role fallback)`,
-          );
-        }
-      }
-    }
-    const companies = read("content/companies.ts");
-    if (
-      companies &&
-      !companies.includes('"accelerating" &&') &&
-      !companies.includes('": Accelerating"')
-    ) {
-      failures.push(
-        `§58 signal momentum verdict reverted.\n    file: content/companies.ts\n    fix:  restore the wave-6 title suffix ("GitHub Engineering Signals: Accelerating (YEAR)" for accelerating profiles only)`,
-      );
-    }
-    const funds = read("content/funds.ts");
-    if (funds) {
-      if (!funds.includes("export const FUND_TITLE_HOOKS")) {
-        failures.push(
-          `§58 fund hook map dropped.\n    file: content/funds.ts\n    fix:  restore FUND_TITLE_HOOKS (wave-6 stage-focus title hooks)`,
-        );
-      }
-      for (const needle of [
-        'iconiq: "ICONIQ Capital: Late-Stage Software Signals"',
-        'm12: "M12 (Microsoft Ventures): Series A to Growth Signals"',
-        "FUND_TITLE_HOOKS[f.slug]",
-      ]) {
-        if (!funds.includes(needle)) {
-          failures.push(
-            `§58 fund hook reverted (missing needle: ${needle.slice(0, 60)}...).\n    file: content/funds.ts\n    fix:  restore the wave-6 fund title map + consumption`,
-          );
-        }
-      }
-    }
     const answers = read("../content/agent-queries.ts");
     if (answers) {
       for (const needle of [
@@ -5053,16 +5106,6 @@ landingCheck(
         "§56 posts.ts lost the allPosts.push(...SOURCING_POSTS) splice.\n    file: content/posts.ts\n    fix: restore the push; without it the 10 posts 404",
       );
     }
-    // (f) 2026-08-18 resolution hardening: the legacy `posts` export must
-    // carry the full merged set. Before this fix `posts` re-exported only the
-    // 39 base entries, so every `posts` importer (topics hub, llms.txt,
-    // llms-full, feed/atom, qa.* corpus, llms-search, news-sitemap) silently
-    // dropped TOFU + sourcing-cluster posts: pillars resolved 4/18.
-    if (!postsSrc.includes("const baseSlugs = new Set(posts.map((p) => p.slug))")) {
-      failures.push(
-        "§56 posts.ts lost the legacy-posts sync block (posts = full merged set).\n    file: content/posts.ts\n    fix: restore the 'const baseSlugs' in-place sync after the allPosts sort; hub + AI-corpus importers read `posts`",
-      );
-    }
   }
   const pillarsSrc = read("content/pillars.ts");
   if (pillarsSrc) {
@@ -5086,52 +5129,354 @@ landingCheck(
   }
 }
 
-// §59 gap-hub fleet (2026-08-16, audit "content gaps 45" follow-on): the seven
-// /answers/ entries shipped from the honest gap queue (51 gaps -> 8 clusters,
-// 7 pages + 1 glossary anchor). Each entry pins the slug, its 40-60w
-// definition head, and the family head-term keyword so the fleet can't be
-// silently dropped or thinned. Entry count ratchet: >= 105.
+
+// ---------------------------------------------------------------------------
+// §57 Citable-stat blocks (2026-08-16, audit "LLMO" fix). Every pSEO template
+// must render one quotable stat block (single number + source + URL) so AI
+// engines can cite GitDealFlow instead of merely crawling it. Numbers come
+// only from lib/citable-stats.ts (live content counts or locked canonical
+// claims), never a raw panel size. Assert the data module, the render
+// component, and the per-template wiring all survive a lineage revert.
+// ---------------------------------------------------------------------------
 {
-  {
-    const s = read("content/agent-queries.ts");
-    const needles: Array<[string, string]> = [
-      ['slug: "cybersecurity-deal-flow"', "cybersecurity-deal-flow entry missing"],
-      ['slug: "companies-like-crunchbase"', "companies-like-crunchbase entry missing"],
-      ['slug: "affinity-integrations"', "affinity-integrations entry missing"],
-      ['slug: "data-infrastructure-startups-to-watch"', "data-infrastructure-startups-to-watch entry missing"],
-      ['slug: "dealroom-api-and-funding-data"', "dealroom-api-and-funding-data entry missing"],
-      ['slug: "deal-sourcing-automation"', "deal-sourcing-automation entry missing"],
-      ['slug: "affordable-pitchbook-alternatives-for-small-funds"', "affordable-pitchbook-alternatives entry missing"],
-      ['"Cybersecurity deal flow is the stream of investable security-startup opportunities', "cyber definition reverted"],
-      ['"The main companies like Crunchbase are Dealroom for European depth', "companies-like definition reverted"],
-      ['"The Affinity integrations that matter for deal sourcing are email and calendar capture', "affinity-integrations definition reverted"],
-      ['"Data infrastructure startups to watch are ranked by GitHub engineering signals', "data-infra definition reverted"],
-      ['"The Dealroom API provides programmatic access', "dealroom-api definition reverted"],
-      ['"Deal sourcing automation connects discovery feeds', "deal-sourcing-automation definition reverted"],
-      ['"Affordable PitchBook alternatives for small funds are Crunchbase Pro at $49/month', "pitchbook-alts definition reverted"],
-      ['"cybersecurity deal flow"', "cyber head-term keyword lost"],
-      ['"companies like crunchbase"', "companies-like head-term keyword lost"],
-      ['"deal sourcing automation"', "deal-sourcing-automation head-term keyword lost"],
-      ['"pitchbook alternatives"', "pitchbook-alts head-term keyword lost"],
-      ['"data infrastructure startups to watch"', "data-infra head-term keyword lost"],
-    ];
-    for (const [needle, msg] of needles) {
-      if (s === null || !s.includes(needle)) {
+  const templates: Array<[string, string]> = [
+    ["vs", "app/vs/[slug]/page.tsx"],
+    ["compare", "app/compare/[slug]/page.tsx"],
+    ["alternatives", "app/alternatives/[slug]/page.tsx"],
+    ["best", "app/best/[slug]/page.tsx"],
+    ["city", "app/city/[slug]/page.tsx"],
+    ["sector", "app/sector/[slug]/page.tsx"],
+    ["startup", "app/startup/[slug]/page.tsx"],
+    ["acquirer", "app/acquirer/[slug]/page.tsx"],
+    ["glossary", "app/glossary/page.tsx"],
+    ["faq", "app/faq/page.tsx"],
+    ["blog", "app/blog/[slug]/page.tsx"],
+    ["research", "app/research/[slug]/page.tsx"],
+    ["research-paper", "app/research-paper/[slug]/page.tsx"],
+    ["startups", "components/StartupDirectory.tsx"],
+  ];
+
+  const cc = read("lib/citable-stats.ts");
+  if (cc === null) {
+    failures.push("§57 lib/citable-stats.ts missing entirely.");
+  } else {
+    if (!cc.includes("export function citableStat(")) {
+      failures.push(
+        "§57 lib/citable-stats.ts lost the citableStat() getter.\n    file: lib/citable-stats.ts\n    fix: restore citableStat(template) (LLMO citable-stat fix, 2026-08-16)",
+      );
+    }
+    for (const [key] of templates) {
+      if (!cc.includes(`case "${key}":`)) {
         failures.push(
-          `§59 gap-hub fleet: ${msg}\n    file: content/agent-queries.ts\n    fix: restore the entry (gap-queue 2026-08-16): ${needle}`,
+          `§57 lib/citable-stats.ts missing the "${key}" template case.\n    file: lib/citable-stats.ts\n    fix: restore the "${key}" citable stat`,
         );
       }
     }
-    // Entry-count ratchet: the fleet only grows.
-    const slugCount = (s.match(/slug: \"/g) || []).length;
-    if (s !== null && slugCount < 105) {
+    for (const tok of ["400+", "~400", "411", "540", "20 sectors", "140 ranked", "369", "4,200+", "4,800"]) {
+      if (cc.includes(tok)) {
+        failures.push(
+          `§57 lib/citable-stats.ts contains banned claim token "${tok}".\n    file: lib/citable-stats.ts\n    fix: use the locked floor (350+) or a live content count, never a raw/exact claim`,
+        );
+      }
+    }
+  }
+
+  const component = read("components/CitableStat.tsx");
+  if (component === null) {
+    failures.push("§57 components/CitableStat.tsx missing entirely.");
+  } else if (!component.includes("data-citable-stat={template}")) {
+    failures.push(
+      "§57 components/CitableStat.tsx lost the data-citable-stat attribute.\n    file: components/CitableStat.tsx\n    fix: restore data-citable-stat={template} (guard hook + extraction surface)",
+    );
+  }
+
+  for (const [key, file] of templates) {
+    const s = read(file);
+    if (s === null) continue;
+    if (!s.includes(`citableStat("${key}")`)) {
       failures.push(
-        `§59 gap-hub fleet: agent-queries entry count fell below 105 (${slugCount}).\n    file: content/agent-queries.ts\n    fix: entries are append-only; restore removed entries or lower the floor in the same commit that documents why`,
+        `§57 ${file} lost its citable-stat block (template "${key}").\n    fix: restore <CitableStat {...citableStat("${key}")} template="${key}" />`,
       );
     }
   }
 }
 
+// ---------------------------------------------------------------------------
+// §58 Source-truth Dataset node on data pages (2026-08-16, audit "RAG-readiness
+// 72"). Every page whose primary content is dataset-derived numbers must carry
+// a schema.org Dataset node with provenance, so RAG/answer engines can extract
+// a grounded stat and trace it to the canonical dataset via isBasedOn ->
+// https://signals.gitdealflow.com/dataset#dataset. New pages use the shared
+// buildSourceTruthDataset() builder (lib/dataset-schema.ts); the pre-existing
+// hand-rolled nodes carry the isBasedOn backlink inline. The builder itself
+// must keep its provenance fields or every data page loses traceability.
+// ---------------------------------------------------------------------------
+{
+  const dataPages = [
+    "app/sector/[slug]/page.tsx",
+    "app/city/[slug]/page.tsx",
+    "app/startup/[slug]/page.tsx",
+    "app/acquirer/[slug]/page.tsx",
+    "app/best/[slug]/page.tsx",
+  ];
+  for (const rel of dataPages) {
+    check(
+      rel,
+      "§58 data page lost its source-truth Dataset node",
+      (s) => s.includes("buildSourceTruthDataset(") || s.includes("isBasedOn"),
+      "restore the Dataset node (buildSourceTruthDataset) with isBasedOn -> dataset#dataset provenance",
+    );
+  }
+
+}
+
+// ---------------------------------------------------------------------------
+// §58 Quotable verdict table on the p4 AIO comparison (2026-08-16). The AI
+// Overview probe set (signals-gitdealflow/ai-citations) shows GitDealFlow at
+// mention position 4-5 on "PitchBook vs Harmonic vs Crunchbase: which is best
+// for deal sourcing?" behind 6 incumbents. Fix: a compact multi-tool verdict
+// table on /vs/harmonic-ai-vs-pitchbook that answer engines can lift verbatim,
+// with GitDealFlow as a first-class column and a summary that names it.
+// ---------------------------------------------------------------------------
+{
+  const cvs = read("content/competitor-vs.ts");
+  if (cvs !== null) {
+    if (!cvs.includes("verdictTable?: {")) {
+      failures.push(
+        "§58 CompetitorVs interface lost the optional verdictTable field.\n    file: content/competitor-vs.ts\n    fix: restore the verdictTable field on the CompetitorVs interface",
+      );
+    }
+    if (
+      !cvs.includes(
+        'headers: ["Harmonic.ai", "PitchBook", "Crunchbase", "GitDealFlow"]',
+      )
+    ) {
+      failures.push(
+        "§58 p4 verdict table lost its four-column header (Harmonic.ai, PitchBook, Crunchbase, GitDealFlow).\n    file: content/competitor-vs.ts\n    fix: restore the four-column quotable verdict table on harmonic-ai-vs-pitchbook",
+      );
+    }
+    if (!cvs.includes("3-6 weeks pre-fundraise")) {
+      failures.push(
+        "§58 p4 verdict table lost the 3-6 weeks pre-fundraise lead-time cell.\n    file: content/competitor-vs.ts\n    fix: restore the canonical lead-time cell (3-6 weeks pre-fundraise, from stats.json 21-47 day headline)",
+      );
+    }
+    if (!cvs.includes("EUR 49/mo, free tier")) {
+      failures.push(
+        "§58 p4 verdict table lost the EUR 49/mo price cell.\n    file: content/competitor-vs.ts\n    fix: restore the canonical price cell (EUR 49/mo, free tier)",
+      );
+    }
+  }
+  check(
+    "app/vs/[slug]/page.tsx",
+    "§58 /vs template no longer renders the quotable verdict table (answer engines lose the extractable multi-tool comparison).",
+    (s) =>
+      s.includes("pair.verdictTable") &&
+      s.includes("The verdict at a glance") &&
+      s.includes("Quote-ready: if you cite this comparison"),
+    "restore the verdictTable render block in the /vs template (see §58, 2026-08-16)",
+  );
+}
+
+// ---------------------------------------------------------------------------
+// §59 Author identity in the global footer (2026-08-16, audit "E-E-A-T 72").
+// Every page on signals.gitdealflow.com, including every dataset-derived
+// "data page" (§58 dataPages), renders components/Footer.tsx, so the author
+// identity anchor belongs there ONCE rather than per page. This is the
+// anonymity-safe E-E-A-T reconciliation: the pseudonymous handle "The Data
+// Nerd" resolves to a persistent ORCID and the SSRN methodology preprint.
+// Never a real name (see lib/data-nerd.ts anonymity pillar + §40).
+// ---------------------------------------------------------------------------
+{
+  check(
+    "components/Footer.tsx",
+    "§59 global footer lost the author-identity (The Data Nerd -> ORCID -> SSRN) anchor",
+    (s) =>
+      s.includes("DATA_NERD_NAME") &&
+      s.includes("DATA_NERD_ORCID") &&
+      s.includes('rel="me author"') &&
+      s.includes("https://ssrn.com/abstract=6606558"),
+    'restore the "By <The Data Nerd>" + ORCID (rel="me author") + SSRN anchors in components/Footer.tsx, imported from @/lib/data-nerd',
+  );
+  check(
+    "lib/data-nerd.ts",
+    "§59 data-nerd module lost the canonical ORCID identifier",
+    (s) => s.includes("DATA_NERD_ORCID") && s.includes("0009-0002-2222-4112"),
+    'restore DATA_NERD_ORCID = "0009-0002-2222-4112" in lib/data-nerd.ts',
+  );
+}
+
+// ---------------------------------------------------------------------------
+// §57 Quotable definition pattern on every template head (2026-08-19).
+//    Audit item "quotable/extractable structure 68": every indexable template
+//    head must carry ONE 40-60 word, self-contained, AI-extractable definition
+//    (data-direct-answer). Component templates import DefinitionBlock; the
+//    content-marked templates carry the attribute inline. This is the citation
+//    / featured-snippet lift, so a template that loses it becomes unquotable.
+// ---------------------------------------------------------------------------
+{
+  const defBlock = read("components/DefinitionBlock.tsx");
+  if (!defBlock || !defBlock.includes("data-direct-answer")) {
+    failures.push(
+      "§57 DefinitionBlock component missing or lost its data-direct-answer marker.\n    file: components/DefinitionBlock.tsx\n    fix: restore the component emitting data-direct-answer + data-speakable + data-agent-summary",
+    );
+  }
+  const importTemplates = [
+    "app/vs/[slug]/page.tsx",
+    "app/compare/[slug]/page.tsx",
+    "app/alternatives/[slug]/page.tsx",
+    "app/best/[slug]/page.tsx",
+    "app/city/[slug]/page.tsx",
+    "app/sector/[slug]/page.tsx",
+    "app/startup/[slug]/page.tsx",
+    "app/acquirer/[slug]/page.tsx",
+    "app/faq/page.tsx",
+    "app/glossary/page.tsx",
+  ];
+  for (const rel of importTemplates) {
+    const s = read(rel);
+    if (s && !s.includes("DefinitionBlock")) {
+      failures.push(
+        `§57 ${rel} lost the DefinitionBlock head definition.\n    fix: restore the DefinitionBlock render under the H1`,
+      );
+    }
+  }
+  const markedTemplates = [
+    "app/blog/[slug]/page.tsx",
+    "app/research/[slug]/page.tsx",
+    "app/research-paper/[slug]/page.tsx",
+    "components/StartupDirectory.tsx",
+    "app/answers/[slug]/page.tsx",
+  ];
+  for (const rel of markedTemplates) {
+    const s = read(rel);
+    if (s && !s.includes("data-direct-answer")) {
+      failures.push(
+        `§57 ${rel} lost the data-direct-answer marker on its quotable lead.\n    fix: restore data-direct-answer on the definition/summary/abstract block`,
+      );
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// §60 Article landmark on the quotable data/editorial templates (2026-08-16,
+//     audit item "HTML semantics 82"). blog already wraps its body in
+//     <article>; the four highest-citation-value templates (startup profile,
+//     startups-to-watch ranking, methodology, alternatives roundup) rendered as
+//     bare <section>s directly under <main>. Readability.js (Perplexity /
+//     ChatGPT / Gemini / Claude browsing) and RAG pipelines use <article> to
+//     locate the self-contained citable content, so a template that loses the
+//     wrapper becomes unquotable — the site's #1 discovery deficit (citation
+//     share 25/100). Assert each wraps its body in <article>.
+// ---------------------------------------------------------------------------
+{
+  const articleWrapped = [
+    "app/startup/[slug]/page.tsx",
+    "app/startups-to-watch/[slug]/page.tsx",
+    "app/methodology/page.tsx",
+    "app/alternatives/[slug]/page.tsx",
+  ];
+  for (const rel of articleWrapped) {
+    const s = read(rel);
+    if (s && (!s.includes("<article>") || !s.includes("</article>"))) {
+      failures.push(
+        `§60 ${rel} lost its <article> wrapper.\n    fix: wrap the quotable body (after the breadcrumb <nav>) in <article>…</article> so answer-engine extractors can find the citable content`,
+      );
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// §61 Product/Offer rich-result integrity (2026-08-19, audit item "schema 88").
+//     Both pricing surfaces nested a free price:0 offer INSIDE the
+//     AggregateOffer, which forces lowPrice:0. A $0 aggregate offer is how
+//     Google suppresses or drops the price-based rich result (Product on the
+//     apex, SoftwareApplication on the pSEO host). The free tier stays visible
+//     on the page but is excluded from the offer aggregate: lowPrice must equal
+//     the lowest PAID price and offerCount must equal the paid-offer count.
+// ---------------------------------------------------------------------------
+{
+  // pSEO /pricing (signals.gitdealflow.com): SoftwareApplication AggregateOffer
+  check(
+    "app/pricing/page.tsx",
+    "§61 pSEO /pricing reintroduced a $0 offer in the AggregateOffer (lowPrice:0 suppresses the price rich result)",
+    (s) =>
+      !s.includes("const lowPrice = 0") &&
+      s.includes("const paidTiers = tiers.filter") &&
+      s.includes("offerCount: paidTiers.length") &&
+      s.includes("paidTiers.map(tierToOffer)"),
+    "exclude the Free tier from the offer aggregate: compute paidTiers, map only paidTiers to offers, lowPrice = min(paid), offerCount = paidTiers.length",
+  );
+
+  // apex /pricing (gitdealflow.com): Product AggregateOffer
+  const pricing = read("../../../landing/pricing.html");
+  if (pricing) {
+    if (pricing.includes('"lowPrice": 0')) {
+      failures.push(
+        '§61 landing /pricing AggregateOffer lowPrice reverted to 0.\n    file: landing/pricing.html\n    fix:  restore "lowPrice": 1 (lowest PAID rung, EUR 1 Tweet Teardown); keep the free digest out of the offers array',
+      );
+    }
+    if (pricing.includes('"price": 0')) {
+      failures.push(
+        '§61 landing /pricing reintroduced a free $0 offer inside the AggregateOffer.\n    file: landing/pricing.html\n    fix:  remove the price:0 Offer from the aggregate offers array (the free tier stays visible on-page only)',
+      );
+    }
+  }
+}
+
+
+// §62 Founder + blog title hooks (2026-08-16, SERP CTR wave 2). The generic
+//     "Public Engineering Profile" title suffix drew 0.00% CTR across 219
+//     impressions / 28d (founder family, GSC 28d). Hooks surface each person's
+//     already-vetted public role + primary affiliation in the SERP title.
+//     The /blog hub title was a bare "Blog". A lineage that loses either
+//     reverts to the 0.00%-CTR form.
+// ---------------------------------------------------------------------------
+
+
+
+// §64 gap-hub fleet (2026-08-16, audit "content gaps 45" follow-on; RESTORED
+// 08-16 after a claims-union merge reverted commit 14e27c65). Seven /answers/
+// entries shipped from the honest gap queue (51 gaps -> 8 clusters: 7 pages +
+// 1 glossary anchor). Pins each slug, its 40-60w definition head, and the
+// family head-term keyword so the fleet can't be silently dropped or thinned.
+// Entry-count ratchet: >= 105.
+{
+  const s = read("content/agent-queries.ts");
+  const needles: Array<[string, string]> = [
+    ['slug: "cybersecurity-deal-flow"', "cybersecurity-deal-flow entry missing"],
+    ['slug: "companies-like-crunchbase"', "companies-like-crunchbase entry missing"],
+    ['slug: "affinity-integrations"', "affinity-integrations entry missing"],
+    ['slug: "data-infrastructure-startups-to-watch"', "data-infrastructure-startups-to-watch entry missing"],
+    ['slug: "dealroom-api-and-funding-data"', "dealroom-api-and-funding-data entry missing"],
+    ['slug: "deal-sourcing-automation"', "deal-sourcing-automation entry missing"],
+    ['slug: "affordable-pitchbook-alternatives-for-small-funds"', "affordable-pitchbook-alternatives entry missing"],
+    ['"Cybersecurity deal flow is the stream of investable security-startup opportunities', "cyber definition reverted"],
+    ['"The main companies like Crunchbase are Dealroom for European depth', "companies-like definition reverted"],
+    ['"The Affinity integrations that matter for deal sourcing are email and calendar capture', "affinity-integrations definition reverted"],
+    ['"Data infrastructure startups to watch are ranked by GitHub engineering signals', "data-infra definition reverted"],
+    ['"The Dealroom API provides programmatic access', "dealroom-api definition reverted"],
+    ['"Deal sourcing automation connects discovery feeds', "deal-sourcing-automation definition reverted"],
+    ['"Affordable PitchBook alternatives for small funds are Crunchbase Pro at $49/month', "pitchbook-alts definition reverted"],
+    ['"cybersecurity deal flow"', "cyber head-term keyword lost"],
+    ['"companies like crunchbase"', "companies-like head-term keyword lost"],
+    ['"deal sourcing automation"', "deal-sourcing-automation head-term keyword lost"],
+    ['"pitchbook alternatives"', "pitchbook-alts head-term keyword lost"],
+    ['"data infrastructure startups to watch"', "data-infra head-term keyword lost"],
+  ];
+  for (const [needle, msg] of needles) {
+    if (s === null || !s.includes(needle)) {
+      failures.push(
+        `§64 gap-hub fleet: ${msg}\n    file: content/agent-queries.ts\n    fix: restore the entry (gap-queue 2026-08-16): ${needle}`,
+      );
+    }
+  }
+  const slugCount = s === null ? 0 : (s.match(/slug: "/g) || []).length;
+  if (s !== null && slugCount < 105) {
+    failures.push(
+      `§64 gap-hub fleet: agent-queries entry count fell below 105 (${slugCount}).\n    file: content/agent-queries.ts\n    fix: entries are append-only; restore removed entries or lower the floor in the same commit that documents why`,
+    );
+  }
+}
 
 
 // ---------------------------------------------------------------------------

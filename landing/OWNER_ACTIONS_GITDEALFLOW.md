@@ -63,7 +63,7 @@ Already configured: Bing API key is set in your environment (`BING_WEBMASTER_API
 - **URL:** https://www.capterra.com/ (search for "GitDealFlow" or submit new listing)
 - **Name:** GitDealFlow
 - **One-liner:** Pre-fundraise startup detection via public GitHub engineering signals, 21-47 days before the round.
-- **Description:** GitDealFlow tracks commit velocity, contributor growth, and repository expansion across 350+ startup GitHub organizations. It flags breakout engineering teams 3-6 weeks before fundraise announcements, delivering five named startups every Sunday with plain-English analysis. Designed for angels, scouts, seed funds, and corporate development teams who want leading indicators, not lagging databases.
+- **Description:** GitDealFlow tracks commit velocity, contributor growth, and repository expansion across 350++ startup GitHub organizations. It flags breakout engineering teams 3-6 weeks before fundraise announcements, delivering five named startups every Sunday with plain-English analysis. Designed for angels, scouts, seed funds, and corporate development teams who want leading indicators, not lagging databases.
 - **Category:** Investment Management / Financial Research
 - **Pricing:** Free, €49/mo, €197/mo
 - **Support email:** signal@gitdealflow.com
@@ -109,7 +109,7 @@ The Momentum Score (0-100) blends three transparent signals:
 - **Recency** (days since last push)
 - **Velocity** (week-over-week star growth)
 
-This is a companion to GitDealFlow's main product, a deal-flow signal tool that tracks commit velocity, contributor growth, and repository expansion across 350+ startup orgs. The core finding (published on SSRN: https://ssrn.com/abstract=6606558) is that GitHub engineering acceleration historically precedes fundraise announcements by 3-6 weeks.
+This is a companion to GitDealFlow's main product, a deal-flow signal tool that tracks commit velocity, contributor growth, and repository expansion across 350++ startup orgs. The core finding (published on SSRN: https://ssrn.com/abstract=6606558) is that GitHub engineering acceleration historically precedes fundraise announcements by 3-6 weeks.
 
 The index is:
 - Free, no login
@@ -196,7 +196,7 @@ The following changes were deployed to gitdealflow.com on 2026-07-23:
 | Footer crosslink added | "Research & startup signals → signals.gitdealflow.com" |
 | llms-full.txt updated | 11 pages (homepage + top 10), verbatim text |
 | IndexNow key deployed | `22f462164f53aacbb1d0b771d018bcf1.txt` |
-| IndexNow ping script | `scripts/indexnow-ping.sh` |
+| IndexNow ping script | `scripts/indexnow-ping.mjs` (auto-wired into build via `scripts/verify-all.mjs`) |
 | Sitemap lastmod removed | All 3 sitemaps cleaned of identical lastmod dates |
 | TL;DR block | `<section id="tldr">` with 2-sentence extractable summary |
 
@@ -228,7 +228,7 @@ curl -s https://gitdealflow.com/22f462164f53aacbb1d0b771d018bcf1.txt
 # → must return the key string
 
 # Run IndexNow ping
-bash scripts/indexnow-ping.sh
+node scripts/indexnow-ping.mjs
 # → expected 200 or 202
 ```
 

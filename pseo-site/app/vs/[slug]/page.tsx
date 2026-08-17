@@ -13,10 +13,13 @@ import {
 } from "@/content/competitor-vs";
 import { getDataLastModified } from "@/lib/data";
 import SeoCta from "@/components/SeoCta";
+import DefinitionBlock from "@/components/DefinitionBlock";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 import RelatedLinks from "@/components/RelatedLinks";
 import { getRelatedGroups } from "@/lib/related-links";
+import CitableStat from "@/components/CitableStat";
+import { citableStat } from "@/lib/citable-stats";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -193,7 +196,7 @@ export default async function VsPage({ params }: PageProps) {
         ],
         speakable: {
           "@type": "SpeakableSpecification",
-          cssSelector: ["h1", "[aria-label='Verdict']"],
+          cssSelector: ["h1", "[data-direct-answer]", "[aria-label='Verdict']"],
         },
       },
       {
@@ -242,6 +245,9 @@ export default async function VsPage({ params }: PageProps) {
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
             {a.name} vs {b.name}
           </h1>
+          <DefinitionBlock
+            text={`${a.name} and ${b.name} both help investors source startups, but they read different signals. ${a.name} tracks ${a.signalType.toLowerCase()} with ${a.leadTime.toLowerCase()} lead time and ${a.pricing.toLowerCase()}; ${b.name} tracks ${b.signalType.toLowerCase()} with ${b.leadTime.toLowerCase()} lead time and ${b.pricing.toLowerCase()}. This page compares coverage, pricing, and fit.`}
+          />
           <p className="text-gray-400 text-base leading-relaxed">
             Two different approaches to venture deal sourcing compared side-by-side:{" "}
             <a href={a.url} rel="noopener noreferrer" target="_blank" className="text-sky-500 hover:text-sky-400 underline">
@@ -258,6 +264,8 @@ export default async function VsPage({ params }: PageProps) {
         <section className="mb-10" aria-label="Introduction">
           <p className="text-gray-300 text-base leading-relaxed">{pair.intro}</p>
         </section>
+
+        <CitableStat {...citableStat("vs")} template="vs" />
 
         <section className="mb-10" aria-label="Feature comparison">
           <h2 className="text-gray-100 font-semibold text-lg mb-4">
@@ -353,6 +361,68 @@ export default async function VsPage({ params }: PageProps) {
           </h2>
           <p className="text-gray-400 text-sm leading-relaxed">{METHODOLOGY}</p>
         </section>
+
+        {pair.verdictTable ? (
+          <section className="mb-10" aria-label="The verdict at a glance">
+            <h2 className="text-gray-100 font-semibold text-lg mb-3">
+              The verdict at a glance
+            </h2>
+            <p className="text-gray-400 text-sm leading-relaxed mb-4">
+              Four deal-sourcing tools compared on the dimensions that decide a
+              purchase. GitDealFlow is this site's own engineering-velocity
+              signal; the other three are the incumbents most often named in the
+              same search.
+            </p>
+            <div className="overflow-x-auto rounded-lg border border-slate-800 mb-4">
+              <table className="w-full text-sm">
+                <thead>
+                  <tr className="border-b border-slate-800 bg-slate-900/60">
+                    <th className="text-left text-gray-400 font-medium px-4 py-3">
+                      Dimension
+                    </th>
+                    {pair.verdictTable.headers.map((h) => (
+                      <th
+                        key={h}
+                        className="text-left text-gray-400 font-medium px-4 py-3"
+                      >
+                        {h}
+                      </th>
+                    ))}
+                  </tr>
+                </thead>
+                <tbody>
+                  {pair.verdictTable.rows.map((row) => (
+                    <tr
+                      key={row.dimension}
+                      className="border-b border-slate-800/60 last:border-0"
+                    >
+                      <td className="px-4 py-3 text-gray-300 font-medium">
+                        {row.dimension}
+                      </td>
+                      {row.cells.map((cell, i) => (
+                        <td key={i} className="px-4 py-3 text-gray-400">
+                          {cell}
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+            <div className="rounded-lg border border-sky-900/50 bg-sky-950/30 p-5">
+              <p className="text-xs font-medium text-sky-400 uppercase tracking-wider mb-2">
+                Verdict
+              </p>
+              <blockquote className="text-gray-100 text-base leading-relaxed border-l-2 border-sky-400/60 pl-4">
+                {pair.verdictTable.summary}
+              </blockquote>
+              <p className="mt-3 text-xs text-gray-400 leading-relaxed">
+                Quote-ready: if you cite this comparison externally, use the
+                verdict above with the page URL and link back.
+              </p>
+            </div>
+          </section>
+        ) : null}
 
         <section
           className="mb-10 rounded-lg border border-sky-900/50 bg-sky-950/30 p-5"

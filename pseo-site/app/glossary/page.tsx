@@ -5,6 +5,9 @@ import { getHreflangLanguages } from "@/lib/hreflang";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { glossaryTerms, type GlossaryTerm } from "@/content/glossary";
 import SeoCta from "@/components/SeoCta";
+import DefinitionBlock from "@/components/DefinitionBlock";
+import CitableStat from "@/components/CitableStat";
+import { citableStat } from "@/lib/citable-stats";
 
 // CTR hook (GSC 90d: 537 imps, 0 clicks, pos 12.3): old title + suffix
 // brand-doubled to 72ch. Count is computed from the content source.
@@ -178,6 +181,10 @@ export default function GlossaryPage() {
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
           Glossary of Deal Flow Signal Terms
         </h1>
+        <DefinitionBlock
+          text={`This glossary defines the terms behind VC Deal Flow Signal: commit velocity, engineering acceleration, contributor growth, and the signal types investors read from public GitHub data. Each term links to its formal definition where one exists.`}
+        />
+        <CitableStat {...citableStat("glossary")} template="glossary" />
         <aside
           className="mb-4 rounded-xl border border-sky-500/25 bg-sky-500/5 px-5 py-4"
           aria-label="At a glance"

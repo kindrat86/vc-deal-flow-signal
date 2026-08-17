@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { DATA_NERD_NAME, DATA_NERD_ORCID } from "@/lib/data-nerd";
 
 export default function Footer() {
   return (
@@ -22,6 +23,25 @@ export default function Footer() {
             </span>
           </div>
           <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-xs text-gray-400">
+            <span>
+              By{" "}
+              <Link
+                href="/data-nerd"
+                className="text-amber-300 hover:text-amber-200 underline decoration-dotted font-semibold"
+              >
+                {DATA_NERD_NAME}
+              </Link>
+            </span>
+            <span aria-hidden="true">·</span>
+            <a
+              href={`https://orcid.org/${DATA_NERD_ORCID}`}
+              rel="me author"
+              target="_blank"
+              className="text-emerald-400 hover:text-emerald-300 transition-colors"
+            >
+              ORCID {DATA_NERD_ORCID}
+            </a>
+            <span aria-hidden="true">·</span>
             <a
               href="https://ssrn.com/abstract=6606558"
               rel="noopener noreferrer"
@@ -127,6 +147,7 @@ export default function Footer() {
               <a href="https://t.me/gitdealflow" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">Telegram</a>
               <a href="https://x.com/sipiteno" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">Twitter/X</a>
               <a href="https://www.linkedin.com/company/gitdealflow" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">LinkedIn</a>
+              <a href="https://flipboard.com/@thedatanerd/vc-deal-flow-signal-github-signals-for-investors-8lhbsalrz" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">Flipboard</a>
               <a href="https://www.npmjs.com/package/@gitdealflow/mcp-signal" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">npm (MCP)</a>
             </nav>
           </div>

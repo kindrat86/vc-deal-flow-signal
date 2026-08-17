@@ -25,7 +25,7 @@ The MCP server took ~2 hours to build. 250 lines of TypeScript.
 
 It exposes 5 tools:
 → trending startups by acceleration
-→ sector search (20 sectors)
+→ sector search (15 sectors)
 → individual startup profiles
 → dataset overview
 → methodology

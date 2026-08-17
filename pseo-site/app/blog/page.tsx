@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import { FRESH_YEAR_STR } from "@/lib/freshness-year";
 import Link from "next/link";
 import { allPosts as posts } from "@/content/posts";
 import { getPostLastUpdated } from "@/content/post-freshness";
@@ -9,7 +8,7 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 
 export const metadata: Metadata = {
-  title: { absolute: `VC Deal Flow Blog: GitHub Signals & Startup Data ${FRESH_YEAR_STR}` },
+  title: "Blog",
   description:
     "Insights on using GitHub engineering signals for startup investing. Practical guides for VCs and angel investors on reading engineering momentum as a leading indicator of traction.",
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).

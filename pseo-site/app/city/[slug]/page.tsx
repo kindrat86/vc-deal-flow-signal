@@ -9,8 +9,12 @@ import {
 } from "@/content/cities";
 import { getCompaniesInCity } from "@/content/company-locations";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import DefinitionBlock from "@/components/DefinitionBlock";
 import SeoCta from "@/components/SeoCta";
 import { FRESH_YEAR_STR } from "@/lib/freshness-year";
+import CitableStat from "@/components/CitableStat";
+import { citableStat } from "@/lib/citable-stats";
+import { buildSourceTruthDataset } from "@/lib/dataset-schema";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -110,7 +114,7 @@ export default async function CityPage({ params }: PageProps) {
         },
         speakable: {
           "@type": "SpeakableSpecification",
-          cssSelector: ["h1", ".ecosystem", ".why-matters"],
+          cssSelector: ["h1", "[data-direct-answer]", ".ecosystem", ".why-matters"],
         },
       },
       {
@@ -161,6 +165,17 @@ export default async function CityPage({ params }: PageProps) {
           acceptedAnswer: { "@type": "Answer", text: faq.answer },
         })),
       },
+      buildSourceTruthDataset({
+        url: pageUrl,
+        name: `${city.name}: Engineering & VC Signals`,
+        description: `Engineering-velocity and venture-capital ecosystem statistics for ${city.name}, ${city.country}, tracked by the VC Deal Flow Signal (GitDealFlow) GitHub panel. ${city.ecosystem}`,
+        variableMeasured: [
+          { name: "Tracked engineering orgs", value: trackedCompaniesInCity.length },
+          { name: "Notable orgs", value: city.notableOrgs.length },
+          { name: "VC anchors", value: city.vcAnchors.length },
+        ],
+        keywords: [city.name, city.country, "engineering velocity", "venture capital", "GitHub"],
+      }),
     ],
   };
 
@@ -191,6 +206,9 @@ export default async function CityPage({ params }: PageProps) {
         <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
           {city.name}, Engineering & VC Signals
         </h1>
+        <DefinitionBlock
+          text={`${city.name} is a startup hub where public GitHub engineering signals surface breakout companies before their rounds are announced. This page maps the city's active scaleups, VC anchors, and local commit-cadence pattern so investors can source earlier.`}
+        />
         <p className="text-sky-400 text-base leading-relaxed mb-6 font-medium">
           {city.country} &middot; {REGION_LABELS[city.region]} &middot; established as a
           tracked hub {city.established}
@@ -199,6 +217,8 @@ export default async function CityPage({ params }: PageProps) {
         <p className="ecosystem text-gray-400 text-base leading-relaxed mb-10">
           {city.ecosystem}
         </p>
+
+        <CitableStat {...citableStat("city")} template="city" />
 
         <div className="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-10">
           <div className="rounded-lg border border-slate-800 bg-slate-900 p-4 text-center">
