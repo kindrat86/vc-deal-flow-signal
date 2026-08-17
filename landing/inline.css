@@ -1683,3 +1683,31 @@ header nav a[aria-current="page"],
     overflow-wrap: anywhere;
   }
 }
+
+/* ============================================================
+   MOBILE CODE/CTA OVERFLOW REPAIR (2026-08-16)
+   Long unbreakable tokens (citation strings, API URLs) inside
+   <pre>/<code> blocks overflowed the 360-390px viewport on
+   /dataset (citation <pre> + "GET https://...json/csv" code),
+   /mcp, and the /sectors pages. The /dataset <section class="cta">
+   is also display:inline-flex (leaked from the 404-page .cta
+   button rule) so its two nowrap buttons overflowed too. Fix:
+   break long tokens, wrap <pre> whitespace, and let CTA buttons
+   wrap/stack on phones. Mobile-first indexing crawls the
+   smartphone render, so this was the indexed version.
+   ============================================================ */
+@media (max-width: 640px) {
+  pre,
+  code {
+    overflow-wrap: anywhere;
+  }
+  pre {
+    white-space: pre-wrap;
+  }
+  section.cta {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.75rem;
+  }
+}

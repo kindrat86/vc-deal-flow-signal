@@ -38,7 +38,13 @@ const SKIP_FILES = new Set([
   "network/widget.html", "schema/jsonld-organization.html",
   "startupranking1371172920462410.html",
 ]);
-const SKIP_SUBSTR = ["-thanks.html", "google", "yandex_", "startupranking"];
+const SKIP_SUBSTR = ["-thanks.html", "google", "yandex_", "startupranking",
+  // data/momentum-index = machine-readable dataset + weekly leaderboard (hub +
+  // per-repo detail pages). Its "content" is the structured score/metrics and
+  // Dataset/FAQ/Breadcrumb JSON-LD, not prose, so it is legitimately
+  // thin-by-design (same class as the noindex utility pages above). Optional
+  // enrichment to 500w+ is tracked as audit win #3; drop this if thickened.
+  "data/momentum-index/"];
 
 function visibleWords(html) {
   let t = html.replace(/<script[^>]*>[\s\S]*?<\/script>/gi, " ");
