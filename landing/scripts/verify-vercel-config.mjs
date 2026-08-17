@@ -412,6 +412,42 @@ if (
   }
 }
 
+// ---------------------------------------------------------------------------
+// text/markdown content negotiation must survive (2026-08-17)
+// ---------------------------------------------------------------------------
+// The apex is static (framework null), so "Accept: text/markdown" cannot be
+// answered by a static file. A rewrite (has: header accept ~ text/markdown)
+// routes markdown-asking clients to api/markdown.js, which answers
+// Content-Type: text/markdown instead of forcing an assistant to parse browser
+// HTML (seofixprompt AIO/LLMO finding 2026-08-17: home page returned text/html
+// for Accept: text/markdown). A tree missing either the rewrite or the
+// function silently re-sends HTML to every assistant that asks for markdown.
+{
+  const mdRewrite = (parsed.rewrites || []).find(
+    (r) => r.source === "/:path*" && Array.isArray(r.has),
+  );
+  const hasAcceptMd =
+    mdRewrite &&
+    mdRewrite.has.some(
+      (h) => h.type === "header" && h.key === "accept" && h.value === "text/markdown",
+    );
+  if (!mdRewrite || !hasAcceptMd || mdRewrite.destination !== "/api/markdown?path=:path") {
+    fail(
+      'text/markdown negotiation lost: vercel.json rewrites[] must keep { "source": "/:path*", "has": [{ "type": "header", "key": "accept", "value": "text/markdown" }], "destination": "/api/markdown?path=:path" } (2026-08-17 AIO/LLMO fix).',
+    );
+  }
+  const mdFn = (() => {
+    try {
+      return readFileSync("api/markdown.js", "utf8");
+    } catch {
+      return "";
+    }
+  })();
+  if (!mdFn.includes("text/markdown; charset=utf-8") || !mdFn.includes("content-type")) {
+    fail("api/markdown.js missing or lost its text/markdown content-type (2026-08-17 AIO/LLMO fix).");
+  }
+}
+
 if (failures.length) {
   console.error(
     `\n❌ verify-vercel-config: ${failures.length} config regression(s) detected:`,

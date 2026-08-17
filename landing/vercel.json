@@ -124,6 +124,17 @@
     {
       "source": "/.well-known/security.txt",
       "destination": "https://signals.gitdealflow.com/.well-known/security.txt"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": "text/markdown"
+        }
+      ],
+      "destination": "/api/markdown?path=:path"
     }
   ],
   "redirects": [
