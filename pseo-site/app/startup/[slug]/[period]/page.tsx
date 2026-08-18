@@ -355,13 +355,18 @@ export default async function StartupPeriodPage({ params }: PageProps) {
             </p>
             <p>
               <strong className="text-gray-200">Signal classification:</strong>{" "}
-              {entry.signalType}, {" "}
-              <Link
-                href={`/signals/${signalSlug(entry.signalType)}`}
-                className="text-sky-500 hover:text-sky-400 underline transition-colors"
-              >
-                learn what this signal means
-              </Link>
+              {entry.signalType}
+              {signalSlug(entry.signalType) && (
+                <>
+                  {", "}
+                  <Link
+                    href={`/signals/${signalSlug(entry.signalType)}`}
+                    className="text-sky-500 hover:text-sky-400 underline transition-colors"
+                  >
+                    learn what this signal means
+                  </Link>
+                </>
+              )}
             </p>
           </div>
         </section>
@@ -511,12 +516,14 @@ export default async function StartupPeriodPage({ params }: PageProps) {
   );
 }
 
-function signalSlug(signalType: string): string {
+function signalSlug(signalType: string): string | null {
   const map: Record<string, string> = {
     "Engineering hiring burst": "hiring-burst",
     "Infrastructure buildout": "infrastructure-buildout",
     "Deploy frequency spike": "deploy-frequency-spike",
     "Framework migration": "framework-migration",
   };
-  return map[signalType] ?? "hiring-burst";
+  // "Deceleration" has no dedicated /signals page yet (the four signal pages
+  // are the acceleration taxonomy); return null so the caller omits the link.
+  return map[signalType] ?? null;
 }

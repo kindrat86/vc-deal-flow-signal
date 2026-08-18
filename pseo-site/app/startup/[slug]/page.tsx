@@ -53,6 +53,7 @@ export async function generateMetadata({
     "Infrastructure buildout": "New repository creation indicating platform investment and product expansion",
     "Deploy frequency spike": "Accelerated shipping cadence indicating product launch or competitive response",
     "Framework migration": "Technology stack transition indicating shift from exploration to production",
+    "Deceleration": "Commit velocity declining versus the prior window",
   };
   const signalDesc = signalDescriptions[latest.signalType] || `Engineering acceleration signal detected in ${profile.sectors[0] || latest.sectorName} sector`;
 

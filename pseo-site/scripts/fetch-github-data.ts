@@ -133,6 +133,35 @@ async function ghApiFetch(endpoint: string): Promise<unknown> {
   return [];
 }
 
+/**
+ * Paginated fetch: follows the `Link: rel="next"` header until the list is
+ * exhausted (or maxPages is hit). GitHub caps list endpoints at per_page=100,
+ * so any org/repo with more than 100 rows was silently truncated by the old
+ * single-page fetch — this is the root cause of the `contributors === 100`
+ * data defect. `maxPages` is a hard safety bound against runaway pagination.
+ */
+async function ghApiFetchAllPages(endpoint: string, maxPages = 10): Promise<unknown[]> {
+  const url = endpoint.startsWith("https://") ? endpoint : `https://api.github.com/${endpoint}`;
+  const headers = { Authorization: `token ${GITHUB_TOKEN}`, Accept: "application/vnd.github.v3+json", "User-Agent": "vc-deal-flow-signal" };
+  const all: unknown[] = [];
+  let current: string = url;
+  for (let page = 0; page < maxPages; page++) {
+    const res: Response = await fetch(current, { headers });
+    if (res.status === 202) { await sleep(2500); continue; }
+    if (!res.ok) throw new Error(`GitHub API ${res.status}: ${res.statusText} for ${current}`);
+    const body: unknown = await res.json();
+    if (!Array.isArray(body)) break;
+    all.push(...(body as unknown[]));
+    const link = res.headers.get("link");
+    const m = link ? /<([^>]+)>\s*;\s*rel="next"/.exec(link) : null;
+    const nextUrl = m?.[1];
+    if (!nextUrl) break;
+    current = nextUrl;
+    await sleep(300);
+  }
+  return all;
+}
+
 async function ghApiSearchMultiTopic(topics: string[], extra: string, perPage = 20): Promise<GhRepo[]> {
   const all: Map<number, GhRepo> = new Map();
   for (const topic of topics) {
@@ -181,7 +210,7 @@ function deriveGeography(loc: string | null): string {
   return "Unknown";
 }
 
-function classifySignal(cR: number, ctR: number, nR: number): string { if (ctR >= 1.5) return "Engineering hiring burst"; if (nR >= 3) return "Infrastructure buildout"; if (cR >= 2.5) return "Deploy frequency spike"; return "Framework migration"; }
+function classifySignal(cR: number, ctR: number, nR: number): string { if (cR < 1) return "Deceleration"; if (ctR >= 1.5) return "Engineering hiring burst"; if (nR >= 3) return "Infrastructure buildout"; if (cR >= 2.5) return "Deploy frequency spike"; return "Framework migration"; }
 function classifyStage(c: number): string { if (c >= 50) return "Growth"; if (c >= 20) return "Series A/B"; if (c >= 8) return "Seed"; return "Pre-seed"; }
 
 function computePeriodMetrics(ca: WeeklyCommit[], weekOffset: number, ctR: number, nR: number): { commitVelocity14d: number; commitVelocityChange: string; signalType: string } | null {
@@ -260,7 +289,7 @@ async function fetchOrgData(orgLogin: string, fallbackDesc: string, searchRepos:
 
   await sleep(300);
   let contribs: Contributor[] = [];
-  try { contribs = (await ghApiFetch(`repos/${orgLogin}/${top.name}/contributors?per_page=100`)) as Contributor[]; if (!Array.isArray(contribs)) contribs = []; } catch { contribs = []; }
+  try { contribs = (await ghApiFetchAllPages(`repos/${orgLogin}/${top.name}/contributors?per_page=100`)) as Contributor[]; if (!Array.isArray(contribs)) contribs = []; } catch { contribs = []; }
 
   // Skip orgs with too few contributors (personal projects, not startups)
   if (contribs.length < MIN_CONTRIBUTORS) {
