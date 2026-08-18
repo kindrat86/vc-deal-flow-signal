@@ -57,8 +57,11 @@
     "osf_socarxiv": {
       "draft": "submissions/02-osf-socarxiv.md",
       "script": "submissions/scripts/submit-osf.mjs (Steel template)",
-      "status": "draft_ready",
-      "blocker": "needs OSF account creation",
+      "status": "resubmitted_pending_moderation",
+      "preprint_id": "9b8fv",
+      "url": "https://osf.io/preprints/socarxiv/9b8fv_v1",
+      "author": "Maryan Kindrat",
+      "blocker": "none; awaiting SocArXiv moderator review. REJECTED 2nd time 2026-08-18 ('Strong suspicion of violation of our AI policy', Klaus Pforr). FIXED: paper v1.0.1 + Section 9 Declarations (AI-use disclosure per socopen.org/ai-policy: machine-assisted analysis, copy-editing, pre-writing; human-supervision attestation, sources verified, no AI co-author). paper.pdf replaced via waterbutler PUT (version 3, 22492 bytes) + review_actions submit (rejected->pending). Awaiting moderator review (3 days typical).",
       "priority": "P0"
     },
     "researchgate": {
@@ -75,7 +78,7 @@
       "orcid_id": "0009-0002-2222-4112",
       "profile_url": "https://orcid.org/0009-0002-2222-4112",
       "created_on": "2026-04-21",
-      "name_on_record": "The Data Nerd",
+      "name_on_record": "Maryan Kindrat (renamed from The Data Nerd 2026-08-18; linked to OSF account)",
       "next_action": "Add works via Works → Add works → Search & link → DataCite (pulls Zenodo auto) + manual SSRN entry",
       "priority": "P0"
     },
@@ -88,10 +91,34 @@
     },
     "repec_mpra": {
       "draft": "submissions/06-repec.md",
-      "script": "submissions/scripts/submit-mpra.mjs (Steel template)",
-      "status": "draft_ready",
-      "blocker": "needs MPRA account",
-      "priority": "P1"
+      "script": "Path A self-hosted ReDIF archive (repec/ in gitdealflow-signal-engine repo) + email repec@repec.org",
+      "status": "deposited_in_review",
+      "submitted_at": "2026-08-16",
+      "resend_id": "9b19ba82-87ec-4d99-9e2b-7223af616a35",
+      "handle_proposed": "RePEc:gdf",
+      "url_base": "https://raw.githubusercontent.com/kindrat86/gitdealflow-signal-engine/main/repec/arch/",
+      "templates_live": true,
+      "verify_in": "~7 days: IDEAS/EconPapers search 'engineering velocity venture' or https://ideas.repec.org/p/gdf/",
+      "priority": "P1",
+      "selfhosted_result": "declined 2026-08-17: RePEc archive concept applies to institutions, not individuals (Christian Z., RePEc Authors Team)",
+      "individual_route": "MPRA (Munich Personal RePEc Archive)",
+      "author_name": "Maryan Kindrat",
+      "web_registration": "blocked_on_recaptcha_v2 (human gate, not bypassed)",
+      "editor_email_sent_at": "2026-08-17",
+      "editor_email_resend_id": "75145834-52c0-41f4-b915-372bdc4ed6a5",
+      "editor_email_to": "mpra@ub.uni-muenchen.de",
+      "editor_email_request": "deposit on behalf OR register account; full metadata + PDF link included",
+      "item_id": "130499",
+      "uri": "https://mpra.ub.uni-muenchen.de/id/eprint/130499",
+      "deposited_at": "2026-08-17",
+      "author_name_confirmed": "Maryan Kindrat",
+      "jel_codes_confirmed": [
+        "C81",
+        "G24",
+        "L26",
+        "O32"
+      ],
+      "next_step": "editor review -> public on MPRA -> propagates to RePEc/EconPapers/IDEAS"
     },
     "figshare": {
       "draft": "submissions/07-figshare.md",
@@ -103,8 +130,8 @@
     "harvard_dataverse": {
       "draft": "submissions/08-harvard-dataverse.md",
       "script": "submissions/scripts/submit-harvard-dataverse.mjs (ready, needs HARVARD_DATAVERSE_TOKEN)",
-      "status": "draft_ready",
-      "blocker": "needs Harvard Dataverse account + API token + create dataverse collection",
+      "status": "rejected_duplicate_of_zenodo_2026-08-18",
+      "note": "Deposit (DOI 10.7910/DVN/CETNSH, DRAFT) returned by curator as mirror of Zenodo 10.5281/zenodo.19650920 (same 3 CSVs); deposit removed, never published. Do NOT re-attempt: Harvard Dataverse rejects mirrors. Canonical data archive = Zenodo DOI.",
       "priority": "P1"
     },
     "mendeley_data": {

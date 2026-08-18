@@ -1,10 +1,10 @@
 ---
 title: "A Longitudinal Panel of GitHub Engineering Velocity for Venture-Backed Startups: Dataset and Early Observations"
 author:
-  - name: "The Data Nerd"
+  - name: "Maryan Kindrat"
     affiliation: "VC Deal Flow Signal"
     email: "signal@gitdealflow.com"
-    orcid: "[pending]"
+    orcid: "0009-0002-2222-4112"
 date: "2026-04-19"
 abstract: |
   We release a quarterly longitudinal panel of GitHub engineering-velocity
@@ -16,7 +16,7 @@ abstract: |
   framework migration, engineering hiring burst, infrastructure buildout,
   and deploy frequency spike. We describe the data-collection methodology,
   report descriptive statistics across sectors and geographies, and
-  document known limitations — most importantly the absence of linked
+  document known limitations, most importantly the absence of linked
   funding-event labels in this release. The dataset is distributed under
   CC BY 4.0 at https://signals.gitdealflow.com/api/signals.csv and
   mirrored on Kaggle, Data.world, and Zenodo. Our goal is to provide a
@@ -72,8 +72,8 @@ intersection of three strands.
 the heuristics VCs apply when screening early-stage opportunities;
 Gompers et al. (2020) update this evidence with a large survey of
 practicing investors and highlight the role of proprietary sourcing as
-the dominant channel for highest-quality deal flow. Alternative data —
-signals collected outside traditional filings and founder self-reports —
+the dominant channel for highest-quality deal flow. Alternative data (
+signals collected outside traditional filings and founder self-reports)
 has become the mechanism by which many sourcing teams attempt to
 industrialize that proprietary edge.
 
@@ -83,12 +83,12 @@ and repository structure as observables with predictable temporal
 dynamics (Mockus, Fielding, and Herbsleb, 2002; Vasilescu, Filkov, and
 Serebrenik, 2013). This work establishes that organizational-level
 GitHub activity is noisy at daily timescales but stable at two-week or
-longer windows — a finding that directly informs our choice of a rolling
+longer windows, a finding that directly informs our choice of a rolling
 14-day observation window.
 
 **Alternative data in finance.** A growing literature examines the
-information content of non-traditional signals — web traffic, app
-downloads, satellite imagery, hiring postings — for firm-level outcomes.
+information content of non-traditional signals, web traffic, app
+downloads, satellite imagery, hiring postings, for firm-level outcomes.
 Public-GitHub activity has received attention as a proxy for engineering
 hiring and product velocity, though systematic longitudinal panels at
 venture scale are not, to our knowledge, publicly available.
@@ -100,8 +100,8 @@ venture scale are not, to our knowledge, publicly available.
 The 55 organizations in the dataset were selected to satisfy three
 criteria: (a) a primary GitHub presence with at least one public
 repository receiving commits in the observation year; (b) independent,
-venture-backed status — public-company and non-VC-backed open-source
-projects were excluded; (c) sector coverage — we balance the sample
+venture-backed status, public-company and non-VC-backed open-source
+projects were excluded; (c) sector coverage, we balance the sample
 across 20 sectors from AI/ML through Gaming, Robotics, and Legal Tech to
 avoid over-weighting the developer-tools category that dominates most
 GitHub panels.
@@ -158,14 +158,14 @@ classifications against this baseline.
 The dataset is distributed as three CSV files with a Frictionless Data
 schema:
 
-- `startup_signals.csv` — primary observation table, 219 rows. Primary
+- `startup_signals.csv`, primary observation table, 219 rows. Primary
   key `(period, startup_name)`. Columns: period, sector_slug,
   sector_name, startup_name, stage, geography, commit_velocity_14d,
   commit_velocity_change_pct, contributors, contributor_growth_pct,
   new_repos, signal_type, github_url.
-- `sector_aggregates.csv` — sector-level aggregates per quarter, 72
+- `sector_aggregates.csv`, sector-level aggregates per quarter, 72
   rows. Primary key `(period, sector_slug)`.
-- `signal_type_timeseries.csv` — distribution of signal types per
+- `signal_type_timeseries.csv`, distribution of signal types per
   period, 15 rows.
 
 ### 4.2 Summary statistics
@@ -178,7 +178,7 @@ a handful of high-throughput infrastructure projects.
 **Velocity change.** Quarter-over-quarter commit-velocity change ranges
 from −94% to +1,647% with a median near zero (−1%). 49% of observations
 show positive velocity growth. Extreme positive outliers concentrate in
-two sectors — Gaming and Space Tech — which also contain the two
+two sectors, Gaming and Space Tech, which also contain the two
 highest-velocity-change observations in the most recent period
 (castle-engine at +344%, orbiternassp at +329%).
 
@@ -216,7 +216,7 @@ The dataset supports several cross-sectional questions out of the box:
 3. **Geography × signal-type interactions.** Preliminary inspection
    suggests US observations skew toward hiring-burst and
    deploy-frequency-spike classifications, while EU observations skew
-   toward framework-migration — but the sample is too small for strong
+   toward framework-migration, but the sample is too small for strong
    claims.
 
 We deliberately do not pre-report statistical tests on these questions;
@@ -310,9 +310,40 @@ Machine-readable citation metadata is available in the bundle's
    crowdsourced knowledge. In *2013 International Conference on Social
    Computing*, 188–195.
 
----
+## 9. Declarations
 
-*Corresponding author: signal@gitdealflow.com. No external funding.
-No competing interests declared beyond the author's commercial interest
-in the VC Deal Flow Signal product, which is built on the data described
-here.*
+**Artificial intelligence use disclosure.** In accordance with the
+SocArXiv AI policy (https://socopen.org/ai-policy/), the author
+discloses the following uses of AI-assisted tools in the preparation of
+this work:
+
+- **Machine-assisted data analysis.** Large language models were used
+  as coding and analysis assistants for parts of the collection and
+  classification pipeline that produced the dataset. The pipeline is
+  deterministic, version-controlled, and public
+  (https://github.com/kindrat86/gitdealflow-signal-classifier), and its
+  outputs were verified by the author against the live panel at
+  https://signals.gitdealflow.com/api/signals.csv.
+- **Copy-editing and formatting.** AI-assisted tools were used to copy
+  edit and format the manuscript.
+- **Pre-writing assistance.** AI-assisted tools were used for literature
+  searches and organization of ideas. This manuscript reports on
+  original research conducted by the author.
+
+The author attests to thorough human supervision of all AI-assisted
+work. Every cited source was verified by the author to exist and is
+accurately characterized. The dataset, statistics, and results reported
+here were produced from the author's own data collection via the public
+GitHub API; they are not simulated or fabricated. All AI-assisted output
+was thoroughly reviewed, edited, and confirmed by the author before
+inclusion, and the author accepts full responsibility for the content of
+this manuscript. No AI tool or language model is an author or co-author
+of this work.
+
+**Funding.** This research received no external funding.
+
+**Competing interests.** The author has a commercial interest in the VC
+Deal Flow Signal product, which is built on the data described here. No
+other competing interests are declared.
+
+**Correspondence.** signal@gitdealflow.com
