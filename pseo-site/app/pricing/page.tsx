@@ -170,7 +170,7 @@ const tiers: Tier[] = [
     bullets: [
       "350+ ranked startups across 15 sectors, refreshed weekly",
       "Sector filters with five-quarter historical comparison",
-      "All four signal types per startup (hiring burst, shipping sprint, infrastructure buildout, platform migration)",
+      "All five signal types per startup (hiring burst, deploy frequency spike, infrastructure buildout, framework migration, deceleration)",
       "Watchlists and saved filters",
       "Free Chrome extensions, Crunchbase + Wellfound badge and GitHub-native hover lookup",
       "30-day Signal-or-It's-Free guarantee",

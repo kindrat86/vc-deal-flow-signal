@@ -630,6 +630,15 @@ export const SIGNAL_TYPES = [
     investorInsight:
       "Framework migrations are the subtlest signal type but can indicate the shift from exploration to exploitation, a key milestone in startup development that often precedes fundraising.",
   },
+  {
+    slug: "deceleration",
+    name: "Deceleration",
+    match: "Deceleration",
+    description:
+      "Startups whose 14-day commit velocity fell versus the prior window, a measurable slowdown that can mean a shipped milestone, a team transition, or a strategic pivot.",
+    investorInsight:
+      "Deceleration is not automatically a red flag. A team that just shipped a major release often slows down to regroup. Read it alongside contributor growth and new repositories: falling velocity with stable or rising contributors usually means a finished push, while falling velocity and falling contributors together can flag turnover or a stalled roadmap.",
+  },
 ] as const;
 
 export type SignalTypeSlug = (typeof SIGNAL_TYPES)[number]["slug"];

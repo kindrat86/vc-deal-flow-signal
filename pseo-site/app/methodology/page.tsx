@@ -84,10 +84,10 @@ export default function MethodologyPage() {
           },
           {
             "@type": "Question",
-            name: "What are the four signal types?",
+            name: "What are the five signal types?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Each accelerated startup is classified into one of four signal types: engineering hiring burst, when contributor growth exceeds 50%; infrastructure buildout, when three or more new repositories appear in 30 days; deploy frequency spike, when commit velocity rises 150% or more; and framework migration, for general acceleration that fits none of the above.",
+              text: "Each tracked startup is classified into one of five signal types: engineering hiring burst, when contributor growth exceeds 50%; infrastructure buildout, when three or more new repositories appear in 30 days; deploy frequency spike, when commit velocity rises 150% or more; framework migration, for general acceleration that fits none of the above; and deceleration, when commit velocity falls below the prior 14-day window.",
             },
           },
           {
@@ -150,7 +150,7 @@ export default function MethodologyPage() {
           { "@type": "HowToTool", name: "Append-only Parquet storage for weekly snapshots" },
         ],
         yield:
-          "One weekly ranked panel of 350+ startups across 15 sectors, classified into four signal types and republished as sector pages, /api/v1/signals.json, /qa.jsonl, and the public dashboard.",
+          "One weekly ranked panel of 350+ startups across 15 sectors, classified into five signal types and republished as sector pages, /api/v1/signals.json, /qa.jsonl, and the public dashboard.",
         dateModified: new Date().toISOString().slice(0, 10),
         license: "https://creativecommons.org/licenses/by/4.0/",
         step: [
@@ -176,7 +176,7 @@ export default function MethodologyPage() {
             "@type": "HowToStep",
             position: 4,
             name: "Classify signal type",
-            text: "Assign each startup one of four signal types: Engineering hiring burst (contributor growth >50%), Infrastructure buildout (3+ new repos in 30 days), Deploy frequency spike (commit velocity +150%+), or Framework migration (general acceleration).",
+            text: "Assign each startup one of five signal types: Engineering hiring burst (contributor growth >50%), Infrastructure buildout (3+ new repos in 30 days), Deploy frequency spike (commit velocity +150%+), Framework migration (general acceleration), or Deceleration (commit velocity falling below the prior window).",
           },
           {
             "@type": "HowToStep",
@@ -234,7 +234,7 @@ export default function MethodologyPage() {
         teaches: [
           "Define a startup-org universe across GitHub topic clusters",
           "Compute rolling commit-velocity and contributor-growth metrics",
-          "Classify acceleration patterns into four signal types",
+          "Classify acceleration patterns into five signal types",
           "Rank startups weekly by acceleration score",
           "Validate the leading-signal hypothesis against confirmed fundraises",
         ],
@@ -416,7 +416,7 @@ export default function MethodologyPage() {
         </h1>
 
         <AgentSummary
-          tldr="VC Deal Flow Signal (GitDealFlow) ranks venture-backed startups by GitHub commit-velocity change, a code-side momentum signal computed from public GitHub data, unrelated to startup accelerator programs. The pipeline pulls weekly GitHub REST API data for ~350+ organizations across 15 sectors, computes rolling 14-day commit velocity and contributor growth, classifies each org into one of four signal types, and publishes the rankings. This metric, referred to throughout the site as engineering acceleration, has historically preceded fundraise announcements by three to six weeks."
+          tldr="VC Deal Flow Signal (GitDealFlow) ranks venture-backed startups by GitHub commit-velocity change, a code-side momentum signal computed from public GitHub data, unrelated to startup accelerator programs. The pipeline pulls weekly GitHub REST API data for ~350+ organizations across 15 sectors, computes rolling 14-day commit velocity and contributor growth, classifies each org into one of five signal types, and publishes the rankings. This metric, referred to throughout the site as engineering acceleration, has historically preceded fundraise announcements by three to six weeks."
           pageUrl="https://signals.gitdealflow.com/methodology"
           asOf={asOf}
           citeAs="VC Deal Flow Signal, Methodology (signals.gitdealflow.com/methodology), retrieved Q2 2026."
@@ -427,7 +427,7 @@ export default function MethodologyPage() {
               sourceLabel: "Glossary",
             },
             {
-              claim: "Four signal types: engineering hiring burst, infrastructure buildout, deploy frequency spike, framework migration.",
+              claim: "Five signal types: engineering hiring burst, infrastructure buildout, deploy frequency spike, framework migration, deceleration.",
               sourceUrl: "https://signals.gitdealflow.com/llms-full.txt",
               sourceLabel: "llms-full.txt",
             },
@@ -609,20 +609,21 @@ export default function MethodologyPage() {
         {/* Signal Classification */}
         <section className="mb-10">
           <h2 className="text-xl font-semibold text-gray-100 mb-4">
-            What are the four signal types?
+            What are the five signal types?
           </h2>
           <p className="text-gray-200 text-base leading-relaxed mb-4" data-speakable>
-            Each accelerated startup is classified into one of four signal
+            Each tracked startup is classified into one of five signal
             types: engineering hiring burst, when contributor growth exceeds
             50%; infrastructure buildout, when three or more new repositories
             appear in 30 days; deploy frequency spike, when commit velocity
-            rises 150% or more; and framework migration, for general
-            acceleration that fits none of the above.
+            rises 150% or more; framework migration, for general
+            acceleration that fits none of the above; and deceleration, when
+            commit velocity falls below the prior 14-day window.
           </p>
           <div className="rounded-lg border border-slate-800 bg-slate-900 p-6 text-gray-400 text-sm leading-relaxed">
             <p className="mb-4">
-              Each startup is assigned one of four signal types based on which
-              metric is driving the acceleration:
+              Each startup is assigned one of five signal types based on which
+              metric is driving the signal:
             </p>
             <ul className="space-y-2">
               <li>
@@ -644,6 +645,12 @@ commit velocity has increased 150% or more. The team is
                 <strong className="text-gray-200">Framework migration</strong>{" "}
 general acceleration that doesn&apos;t fit the above categories,
                 often indicating a technology stack transition.
+              </li>
+              <li>
+                <strong className="text-gray-200">Deceleration</strong>{" "}
+commit velocity falls below the prior 14-day window. The team
+                may have shipped a milestone and is regrouping, or is
+                slowing ahead of a pivot or a pause.
               </li>
             </ul>
           </div>

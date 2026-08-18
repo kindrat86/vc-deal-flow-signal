@@ -88,11 +88,12 @@ The percentage change in commit velocity compared to the preceding 14-day window
 A sustained increase in a startup's engineering output relative to its own historical baseline. The core concept behind the rankings.
 
 ### Signal Types
-Each startup is classified into one of four signal types based on which metric drives the acceleration:
+Each startup is classified into one of five signal types based on which metric drives the signal:
 - Engineering hiring burst: contributor growth rate exceeds 50%. Team is scaling rapidly.
 - Infrastructure buildout: 3+ new repositories in 30 days. Company is expanding technical surface area.
 - Deploy frequency spike: commit velocity increased 150%+ versus baseline. Team is shipping at an unusually high rate.
 - Framework migration: general acceleration not fitting other categories, often indicating a technology stack transition.
+- Deceleration: commit velocity falls below the prior window. Team may be regrouping after a milestone, or stalling.
 
 ### Stage Estimation
 Estimated from contributor count: Pre-seed (1-7), Seed (8-19), Series A/B (20-49), Growth (50+). This is an approximation.`;
@@ -136,7 +137,7 @@ We exclude large tech companies (Google, Microsoft, Meta, etc.), major open-sour
 - New Repositories: public repos created in the last 30 days.
 
 ### Signal Classification
-Each startup is assigned one of four signal types: engineering hiring burst, infrastructure buildout, deploy frequency spike, or framework migration. See glossary below for definitions.
+Each startup is assigned one of five signal types: engineering hiring burst, infrastructure buildout, deploy frequency spike, framework migration, or deceleration. See glossary below for definitions.
 
 ### Known Limitations
 - Private repos are invisible. Some startups keep all code private.

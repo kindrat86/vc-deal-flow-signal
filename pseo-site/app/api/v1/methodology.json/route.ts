@@ -63,7 +63,7 @@ export async function GET() {
         "@type": "HowToStep",
         position: 4,
         name: "Signal classification",
-        text: "Classify each accelerating startup into one of four signal types based on rule-based decision logic: Engineering Hiring Burst (contributor growth >50% in 30 days), Infrastructure Buildout (≥3 new public repos in 30 days), Deploy Frequency Spike (commit velocity ≥150% baseline), or Framework Migration (general acceleration not matching the prior three).",
+        text: "Classify each tracked startup into one of five signal types based on rule-based decision logic: Engineering Hiring Burst (contributor growth >50% in 30 days), Infrastructure Buildout (≥3 new public repos in 30 days), Deploy Frequency Spike (commit velocity ≥150% baseline), Framework Migration (general acceleration not matching the prior three), or Deceleration (commit velocity falling below the prior window).",
         url: `${SITE}/methodology#classification`,
       },
       {

@@ -35,9 +35,9 @@ export const glossaryTerms: GlossaryTerm[] = [
     term: "Commit-Velocity Acceleration Engine",
     id: "commit-velocity-acceleration-engine",
     snippet:
-      "The Commit-Velocity Acceleration Engine is the published mechanism behind VC Deal Flow Signal. It pulls 14-day commit volume per organization from the public GitHub REST API, computes the percentage change against the prior window, requires two-period confirmation, scores contributor concentration with a Gini coefficient, then classifies each breakout into one of four signal types.",
+      "The Commit-Velocity Acceleration Engine is the published mechanism behind VC Deal Flow Signal. It pulls 14-day commit volume per organization from the public GitHub REST API, computes the percentage change against the prior window, requires two-period confirmation, scores contributor concentration with a Gini coefficient, then classifies each breakout into one of five signal types.",
     definition:
-      "The named mechanism behind VC Deal Flow Signal. Five deterministic steps: (1) pull 14-day commit volume per organization from the public GitHub REST API with the bot filter applied, (2) compute the percentage delta against the prior 14-day window, (3) require two-period confirmation before a breakout becomes actionable, (4) score contributor concentration with the Gini coefficient, (5) classify the breakout into one of four signal types (Hiring Burst, Infrastructure Buildout, Deploy Spike, Framework Migration). The engine is published, sourced, and reproducible, see /mechanism for the full formula and the SSRN proof panel. The engine is the formal implementation of the broader category: Code-Side Sourcing.",
+      "The named mechanism behind VC Deal Flow Signal. Five deterministic steps: (1) pull 14-day commit volume per organization from the public GitHub REST API with the bot filter applied, (2) compute the percentage delta against the prior 14-day window, (3) require two-period confirmation before a breakout becomes actionable, (4) score contributor concentration with the Gini coefficient, (5) classify the breakout into one of five signal types (Hiring Burst, Infrastructure Buildout, Deploy Spike, Framework Migration, Deceleration). The engine is published, sourced, and reproducible, see /mechanism for the full formula and the SSRN proof panel. The engine is the formal implementation of the broader category: Code-Side Sourcing.",
   },
   {
     term: "Commit Velocity",
@@ -85,7 +85,7 @@ export const glossaryTerms: GlossaryTerm[] = [
     snippet:
       "An engineering hiring burst is a signal type triggered when a startup's contributor growth rate exceeds 50% in a short window. It typically means the company recently closed a round and is scaling fast. For investors, it can mean being too late for the current round but well timed for the next.",
     definition:
-      "A signal type indicating that a startup's contributor growth rate exceeds 50% in a short window. Engineering hiring bursts typically mean the company has recently closed a funding round and is rapidly scaling the team. For investors, this signal may indicate you are too late for the current round but perfectly timed for the next one. It is one of four signal types tracked by VC Deal Flow Signal.",
+      "A signal type indicating that a startup's contributor growth rate exceeds 50% in a short window. Engineering hiring bursts typically mean the company has recently closed a funding round and is rapidly scaling the team. For investors, this signal may indicate you are too late for the current round but perfectly timed for the next one. It is one of five signal types tracked by VC Deal Flow Signal.",
   },
   {
     term: "Infrastructure Buildout",
@@ -110,6 +110,14 @@ export const glossaryTerms: GlossaryTerm[] = [
       "A framework migration is a signal type for general engineering acceleration that does not fit the hiring burst, infrastructure buildout, or deploy spike categories. It often indicates a technology stack transition, such as moving from a prototype stack to a production stack.",
     definition:
       "A signal type indicating general engineering acceleration that does not fit the hiring burst, infrastructure buildout, or deploy spike categories. Framework migrations often indicate a technology stack transition, moving from a prototype stack to a production stack, or adopting new infrastructure. This is the subtlest signal type but can indicate the shift from exploration to exploitation, a key milestone in startup development.",
+  },
+  {
+    term: "Deceleration",
+    id: "deceleration",
+    snippet:
+      "Deceleration is a signal type triggered when a startup's 14-day commit velocity falls below the prior window. It is not automatically a red flag: a team that just shipped a milestone often slows down to regroup, but a sustained drop paired with falling contributors can flag turnover or a stalled roadmap.",
+    definition:
+      "A signal type indicating that a startup's 14-day commit velocity fell versus the prior window. Deceleration is not automatically negative: it can mean a shipped milestone, a team transition, or a strategic pivot. Read it alongside contributor growth and new repositories: falling velocity with stable or rising contributors usually means a finished push, while falling velocity and falling contributors together can flag turnover or a stalled roadmap. It is one of five signal types tracked by VC Deal Flow Signal.",
   },
   {
     term: "Bot Filter",

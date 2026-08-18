@@ -362,7 +362,7 @@ export const comparisons: Comparison[] = [
     sections: [
       {
         heading: "Data and Signal Type",
-        body: "CB Insights aggregates data from news, patents, funding rounds, earnings calls, job postings, and web traffic into a unified market intelligence platform. Their Mosaic Score uses machine learning to predict startup health. VC Deal Flow Signal focuses on a single, high-signal data source: public GitHub engineering activity. We measure commit velocity change, contributor growth, repository expansion, and classify startups into four signal types. The approaches are complementary: CB Insights provides breadth, VC Deal Flow Signal provides a specific leading indicator that CB Insights does not track.",
+        body: "CB Insights aggregates data from news, patents, funding rounds, earnings calls, job postings, and web traffic into a unified market intelligence platform. Their Mosaic Score uses machine learning to predict startup health. VC Deal Flow Signal focuses on a single, high-signal data source: public GitHub engineering activity. We measure commit velocity change, contributor growth, repository expansion, and classify startups into five signal types. The approaches are complementary: CB Insights provides breadth, VC Deal Flow Signal provides a specific leading indicator that CB Insights does not track.",
       },
       {
         heading: "Lead Time",

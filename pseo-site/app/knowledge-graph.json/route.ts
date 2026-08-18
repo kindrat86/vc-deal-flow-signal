@@ -47,7 +47,7 @@ const METHODOLOGY_STEPS: Array<{ name: string; text: string; anchor: string }> =
     },
     {
       name: "Signal classification",
-      text: "Classify each accelerating startup into one of four signal types (Engineering Hiring Burst, Infrastructure Buildout, Deploy Frequency Spike, Framework Migration) via rule-based decision logic.",
+      text: "Classify each tracked startup into one of five signal types (Engineering Hiring Burst, Infrastructure Buildout, Deploy Frequency Spike, Framework Migration, Deceleration) via rule-based decision logic.",
       anchor: "classification",
     },
     {

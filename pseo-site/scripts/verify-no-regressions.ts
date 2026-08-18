@@ -1331,9 +1331,9 @@ check(
   "methodology page reverted to declarative section headings and lost the visible direct-answer paragraphs (featured-snippet blocks).",
   (s) =>
     s.includes("What data sources does VC Deal Flow Signal use?") &&
-    s.includes("What are the four signal types?") &&
+    s.includes("What are the five signal types?") &&
     s.includes("How often is the data updated?") &&
-    s.includes("Each accelerated startup is classified into one of four signal"),
+    s.includes("Each tracked startup is classified into one of five signal"),
   "keep question-form h2s plus visible 40-55 word direct-answer paragraphs on the methodology page",
 );
 

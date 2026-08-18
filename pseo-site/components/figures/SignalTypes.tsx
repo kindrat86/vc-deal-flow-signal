@@ -1,5 +1,5 @@
 /**
- * SVG diagram showing the four engineering signal types with descriptions.
+ * SVG diagram showing the five engineering signal types with descriptions.
  * Used in posts about signal classification.
  */
 export default function SignalTypes() {
@@ -32,12 +32,19 @@ export default function SignalTypes() {
       bg: "#451a03",
       desc: "Stack transition",
     },
+    {
+      name: "Deceleration",
+      metric: "Velocity < prior",
+      color: "#fb7185",
+      bg: "#4c0519",
+      desc: "Pace falling",
+    },
   ];
 
   return (
-    <figure className="my-8" role="img" aria-label="Four types of engineering acceleration signals: hiring burst, infrastructure buildout, deploy frequency spike, and framework migration">
+    <figure className="my-8" role="img" aria-label="Five types of engineering acceleration signals: hiring burst, infrastructure buildout, deploy frequency spike, framework migration, and deceleration">
       <svg
-        viewBox="0 0 720 160"
+        viewBox="0 0 884 160"
         className="w-full rounded-lg border border-slate-800 bg-slate-900 p-2"
         xmlns="http://www.w3.org/2000/svg"
       >
@@ -62,7 +69,7 @@ export default function SignalTypes() {
         })}
       </svg>
       <figcaption className="mt-2 text-center text-gray-400 text-xs">
-        Each startup is classified into one of four signal types based on which
+        Each startup is classified into one of five signal types based on which
         metric drives the acceleration. The classification helps investors
         understand what phase the company is in.
       </figcaption>

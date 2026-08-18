@@ -738,7 +738,7 @@ For a single-fetch RAG context payload, see \`/ai.json\` and \`/llms-full.txt\`.
       "GitDealFlow's public API returns rolling 14-day GitHub commit velocity pre-computed across roughly 350+ venture-backed startup organizations in 15 sectors, refreshed weekly. Access is free and unauthenticated: /api/signals.json for JSON, /api/signals.csv for CSV, plus MCP, A2A, and function-calling formats, all exposing the same panel with per-org velocity, velocity change, and signal classification.",
     body: `For agents and pipelines that need a turn-key **GitHub commit velocity tracker API**, GitDealFlow's public endpoints return the metric pre-computed across ~350+ venture-backed startup organizations spanning 15 sectors.
 
-**What's in the panel.** Every tracked startup carries: \`commitVelocity\` (total commits in the rolling 14-day window), \`commitVelocityChange\` (percentage delta vs. the prior window, the primary ranking signal), \`contributors\` (unique contributor count), \`signalType\` (one of four classification categories), an estimated \`stage\`, a \`sector\` slug, and a list of \`recentRepos\` for the 30-day repository-creation window.
+**What's in the panel.** Every tracked startup carries: \`commitVelocity\` (total commits in the rolling 14-day window), \`commitVelocityChange\` (percentage delta vs. the prior window, the primary ranking signal), \`contributors\` (unique contributor count), \`signalType\` (one of five classification categories), an estimated \`stage\`, a \`sector\` slug, and a list of \`recentRepos\` for the 30-day repository-creation window.
 
 **Access patterns.**
 
@@ -1745,7 +1745,7 @@ The tools are free in perpetuity. There is no API key gate. The free tier is str
 
 **3. Issue and PR response time.** Open the org's most-active repo and look at the last 20 closed issues. Median time-to-first-response is the single best public proxy for operator quality. Sub-24-hour median says the team is engaged and operational. Multi-week median says the team is either drowning or not prioritising community, both are warning signs in OSS-first dev tools where community trust is the moat.
 
-**4. Infrastructure code patterns.** A dev-tools startup that is genuinely preparing to scale has Dockerfiles, kubernetes manifests, Terraform, CI/CD pipelines, observability hooks (Prometheus, OpenTelemetry, Datadog wiring), and feature-flag scaffolding in the repo. A prototype-stage startup has none of these. The presence of infrastructure code is one of the four signals VC Deal Flow Signal classifies (see /signals/infrastructure-buildout).
+**4. Infrastructure code patterns.** A dev-tools startup that is genuinely preparing to scale has Dockerfiles, kubernetes manifests, Terraform, CI/CD pipelines, observability hooks (Prometheus, OpenTelemetry, Datadog wiring), and feature-flag scaffolding in the repo. A prototype-stage startup has none of these. The presence of infrastructure code is one of the five signals VC Deal Flow Signal classifies (see /signals/infrastructure-buildout).
 
 **5. Founder Scout Score.** Free at /receipts/[username]. Pre-fundraise stars on validated unicorns are a fast read on the founder's technical taste. A founder with a Scout Score of 0 is not necessarily bad, they may simply not star. A Scout Score of 30+ is a real signal of attention to the right kinds of technical startups during the right window.
 

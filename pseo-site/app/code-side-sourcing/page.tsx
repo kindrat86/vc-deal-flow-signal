@@ -96,7 +96,7 @@ const FIRST_PRINCIPLES = [
   {
     n: 4,
     title: "Classification over scoring",
-    body: "A composite score collapses information. Code-Side Sourcing classifies each breakout into one of four signal types, Engineering Hiring Burst, Infrastructure Buildout, Deploy Frequency Spike, Framework Migration, because each carries a distinct fundraise-lead-time distribution. The classification is the prediction; the score is just the headline.",
+    body: "A composite score collapses information. Code-Side Sourcing classifies each breakout into one of five signal types, Engineering Hiring Burst, Infrastructure Buildout, Deploy Frequency Spike, Framework Migration, Deceleration, because each carries a distinct fundraise-lead-time distribution. The classification is the prediction; the score is just the headline.",
   },
   {
     n: 5,

@@ -46,9 +46,9 @@ export const methodologyFaqs: MethodologyFAQ[] = [
     sourceHref: "/methodology",
   },
   {
-    question: "What are the four signal types?",
+    question: "What are the five signal types?",
     answer:
-      "Acceleration patterns sort into four operational types. The engineering hiring burst is rising velocity plus rising contributor count, the strongest fundraise predictor. The deploy frequency spike is velocity rising while contributor count holds flat, typical of launch preparation. The infrastructure buildout is repository creation accelerating versus baseline, strategic technical investment. The framework migration is general acceleration indicating a technology-stack transition from prototype to production infrastructure. Each pattern implies a different diligence question.",
+      "Tracked startups sort into five signal types. The engineering hiring burst is rising velocity plus rising contributor count, the strongest fundraise predictor. The deploy frequency spike is velocity rising while contributor count holds flat, typical of launch preparation. The infrastructure buildout is repository creation accelerating versus baseline, strategic technical investment. The framework migration is general acceleration indicating a technology-stack transition from prototype to production infrastructure. Deceleration is commit velocity falling versus the prior window, which can mean a shipped milestone, a team transition, or a strategic pivot. Each pattern implies a different diligence question.",
     source: "Methodology",
     sourceHref: "/methodology",
   },
@@ -181,14 +181,14 @@ export const methodologyFaqs: MethodologyFAQ[] = [
   {
     question: "How is a startup classified into exactly one signal type?",
     answer:
-      "Each startup is assigned one of four signal types based on which metric is driving the acceleration. Contributor growth above 50% maps to engineering hiring burst; three or more new repos in 30 days maps to infrastructure buildout; commit velocity up 150% or more maps to deploy frequency spike; and general acceleration that does not fit the first three is classified as framework migration. The classification is deterministic and re-run weekly.",
+      "Each startup is assigned one of five signal types based on which metric is driving the signal. Contributor growth above 50% maps to engineering hiring burst; three or more new repos in 30 days maps to infrastructure buildout; commit velocity up 150% or more maps to deploy frequency spike; general acceleration that does not fit the first three is classified as framework migration; and commit velocity falling below the prior window is classified as deceleration. The classification is deterministic and re-run weekly.",
     source: "Methodology",
     sourceHref: "/methodology",
   },
   {
     question: "What does 'framework migration' mean in the methodology?",
     answer:
-      "In this methodology, framework migration is a signal type, not a literal code migration. It denotes general engineering acceleration that does not fit the hiring-burst, infrastructure-buildout, or deploy-spike rules, often indicating a technology-stack transition from prototype to production infrastructure. It is the subtlest of the four types and tends to move on a slower, quarter-scale horizon.",
+      "In this methodology, framework migration is a signal type, not a literal code migration. It denotes general engineering acceleration that does not fit the hiring-burst, infrastructure-buildout, or deploy-spike rules, often indicating a technology-stack transition from prototype to production infrastructure. It is the subtlest of the acceleration types and tends to move on a slower, quarter-scale horizon.",
     source: "Methodology",
     sourceHref: "/methodology",
   },

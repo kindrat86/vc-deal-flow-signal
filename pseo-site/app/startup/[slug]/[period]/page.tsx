@@ -522,8 +522,7 @@ function signalSlug(signalType: string): string | null {
     "Infrastructure buildout": "infrastructure-buildout",
     "Deploy frequency spike": "deploy-frequency-spike",
     "Framework migration": "framework-migration",
+    "Deceleration": "deceleration",
   };
-  // "Deceleration" has no dedicated /signals page yet (the four signal pages
-  // are the acceleration taxonomy); return null so the caller omits the link.
   return map[signalType] ?? null;
 }

@@ -45,6 +45,7 @@ const SIGNAL_TYPES: { slug: string; match: string }[] = [
   { slug: "infrastructure-buildout", match: "Infrastructure buildout" },
   { slug: "deploy-frequency-spike", match: "Deploy frequency spike" },
   { slug: "framework-migration", match: "Framework migration" },
+  { slug: "deceleration", match: "Deceleration" },
 ];
 
 // ---------- types ----------

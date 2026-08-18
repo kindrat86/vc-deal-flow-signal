@@ -36,9 +36,9 @@ export const metadata: Metadata = {
 
 const STACK = [
   {
-    label: "Signal classification (one of four types)",
+    label: "Signal classification (one of five types)",
     detail:
-      "Hiring burst, shipping sprint, infrastructure buildout, or platform migration, the same taxonomy the Dashboard uses, applied to the org you name.",
+      "Engineering hiring burst, infrastructure buildout, deploy frequency spike, framework migration, or deceleration, the same taxonomy the Dashboard uses, applied to the org you name.",
   },
   {
     label: "14-day acceleration delta",

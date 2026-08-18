@@ -281,7 +281,19 @@ async function fetchOrgData(orgLogin: string, fallbackDesc: string, searchRepos:
 
   const thirtyDaysAgo = Date.now() - 30 * 86400000;
   const newRepos = repos.filter((r) => new Date(r.created_at).getTime() > thirtyDaysAgo).length;
-  const top = repos[0];
+  // Primary repo = most-starred NON-FORK among the org's public repos. The
+  // org listing endpoint has no sort=stars, so taking repos[0]
+  // (most-recently-pushed) lands on docs sites, .github meta repos, homebrew
+  // taps and testdata for a meaningful share of orgs; the highest-starred
+  // repo is the actual product repo whose commit activity and contributor
+  // count are meaningful. Mirrors scripts/rederive-data-integrity.mjs.
+  let top = repos.find((r) => !(r as GhRepo & { fork?: boolean }).fork) ?? repos[0];
+  let bestStars = -1;
+  for (const r of repos) {
+    if ((r as GhRepo & { fork?: boolean }).fork) continue;
+    const stars = r.stargazers_count ?? 0;
+    if (stars > bestStars) { bestStars = stars; top = r; }
+  }
 
   await sleep(300);
   let ca: WeeklyCommit[] = [];

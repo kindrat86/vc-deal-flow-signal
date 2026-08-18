@@ -44,9 +44,9 @@ export const signalTypeFaqs: SignalTypeFAQ[] = [
   },
   {
     slug: "hiring-burst",
-    question: "How is a hiring burst different from the other three signal types?",
+    question: "How is a hiring burst different from the other acceleration signal types?",
     answer:
-      "A hiring burst is the only signal driven primarily by people (contributor growth above 50%) rather than code volume or repo count. It is also the strongest single fundraise predictor of the four, because scaling headcount implies capital already committed. Deploy spikes and infrastructure buildouts are code-side; framework migration is a slower stack-transition signal.",
+      "A hiring burst is the only signal driven primarily by people (contributor growth above 50%) rather than code volume or repo count. It is also the strongest single fundraise predictor of the acceleration types, because scaling headcount implies capital already committed. Deploy spikes and infrastructure buildouts are code-side; framework migration is a slower stack-transition signal.",
   },
   {
     slug: "hiring-burst",
@@ -84,7 +84,7 @@ export const signalTypeFaqs: SignalTypeFAQ[] = [
   },
   {
     slug: "infrastructure-buildout",
-    question: "How is an infrastructure buildout different from the other three signal types?",
+    question: "How is an infrastructure buildout different from the other acceleration signal types?",
     answer:
       "An infrastructure buildout is driven by repo creation (3+ new repos in 30 days), whereas a hiring burst is driven by contributor growth, a deploy spike by commit-velocity change, and a framework migration by general acceleration. Buildout signals strategic technical investment rather than raw shipping speed.",
   },
@@ -124,7 +124,7 @@ export const signalTypeFaqs: SignalTypeFAQ[] = [
   },
   {
     slug: "deploy-frequency-spike",
-    question: "How is a deploy frequency spike different from the other three signal types?",
+    question: "How is a deploy frequency spike different from the other acceleration signal types?",
     answer:
       "A deploy spike is the purest velocity signal: it is driven by commit-velocity change (+150% or more) with contributor count roughly flat. A hiring burst requires rising contributors, an infrastructure buildout requires new repos, and a framework migration is the residual catch-all for general acceleration.",
   },
@@ -154,7 +154,7 @@ export const signalTypeFaqs: SignalTypeFAQ[] = [
     slug: "framework-migration",
     question: "Which funding stage does a framework migration usually indicate?",
     answer:
-      "Framework migration most often maps to seed through Series A, where a startup transitions from prototype to production infrastructure, moving from exploration to exploitation, a milestone that frequently precedes fundraising. It is a slower, quarter-scale signal than the other three.",
+      "Framework migration most often maps to seed through Series A, where a startup transitions from prototype to production infrastructure, moving from exploration to exploitation, a milestone that frequently precedes fundraising. It is a slower, quarter-scale signal than the other acceleration types.",
   },
   {
     slug: "framework-migration",
@@ -164,14 +164,54 @@ export const signalTypeFaqs: SignalTypeFAQ[] = [
   },
   {
     slug: "framework-migration",
-    question: "How is a framework migration different from the other three signal types?",
+    question: "How is a framework migration different from the other acceleration signal types?",
     answer:
-      "Framework migration is the subtlest of the four types and the only residual one: it is general acceleration that does not meet the contributor-growth, repo-creation, or velocity thresholds. Where the other three point at a specific mechanism (hiring, building, shipping), framework migration points at a phase change in the technology stack.",
+      "Framework migration is the subtlest of the acceleration types and the only residual one: it is general acceleration that does not meet the contributor-growth, repo-creation, or velocity thresholds. Where the other acceleration types point at a specific mechanism (hiring, building, shipping), framework migration points at a phase change in the technology stack.",
   },
   {
     slug: "framework-migration",
     question: "What should an investor do after spotting a framework migration signal?",
     answer:
       "Treat it as an invitation to look deeper rather than a specific call. A framework migration suggests a startup is professionalizing its stack, which is worth a diligence conversation about architecture, technical debt, and whether the migration is enabling scale or hiding instability.",
+  },
+
+  // -------------------------------------------------------------------------
+  // Deceleration
+  // -------------------------------------------------------------------------
+  {
+    slug: "deceleration",
+    question: "How is the Deceleration signal detected?",
+    answer:
+      "A startup is classified as decelerating when its 14-day commit velocity falls below the prior 14-day window, a velocity ratio below 1.0. It is the inverse of the acceleration signals and is computed from the same public commit-activity endpoint.",
+  },
+  {
+    slug: "deceleration",
+    question: "What can falsely trigger a deceleration signal?",
+    answer:
+      "Sprint-cycle lumpiness is the main false positive: a team that works in two-week sprints can post a quiet planning week that reads as deceleration. A single quiet window should be read as noise until it persists. Holidays, seasonal dips, and post-launch regrouping are common non-negative causes.",
+  },
+  {
+    slug: "deceleration",
+    question: "Which funding stage does deceleration usually indicate?",
+    answer:
+      "Deceleration is not stage-specific. A post-launch slowdown is common at any stage, but a sustained drop paired with falling contributor count is most worrying at seed and Series A/B, where a shrinking team can signal runway pressure or a stalled roadmap.",
+  },
+  {
+    slug: "deceleration",
+    question: "How does deceleration relate to fundraise timing?",
+    answer:
+      "Deceleration is usually a neutral or negative timing signal: a team that just shipped a milestone often slows down to regroup before the next push. It becomes a red flag only when it is sustained and paired with declining contributors, which can indicate turnover or a strategic stall ahead of a difficult round.",
+  },
+  {
+    slug: "deceleration",
+    question: "How is deceleration different from the other four signal types?",
+    answer:
+      "Deceleration is the only cooling signal: the four acceleration types (hiring burst, infrastructure buildout, deploy frequency spike, framework migration) all flag rising activity, while deceleration flags falling commit velocity. It is read as the inverse axis and pairs most usefully with the contributor and repository signals to tell a finished push from a stalled team.",
+  },
+  {
+    slug: "deceleration",
+    question: "What should an investor do after spotting a deceleration signal?",
+    answer:
+      "Do not treat it as a sell signal. Check whether the slowdown is isolated to commits or accompanied by falling contributors and a pause in new repositories. A finished milestone with a stable team is normal; a broad-based slowdown is worth a founder conversation about roadmap, runway, and whether the team is regrouping or stalling.",
   },
 ];

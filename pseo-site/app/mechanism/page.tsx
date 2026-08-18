@@ -64,11 +64,11 @@ const FORMULA_STEPS = [
   },
   {
     n: 5,
-    title: "Classify the breakout into one of four signal types",
+    title: "Classify the breakout into one of five signal types",
     detail:
-      "Engineering Hiring Burst (≥50% contributor growth), Infrastructure Buildout (≥3 new public repos in 30 days), Deploy Frequency Spike (≥150% velocity), or Framework Migration (general acceleration that fits none of the above). Each type carries a distinct fundraise-lead-time distribution, so the classification is not cosmetic, it is the prediction.",
+      "Engineering Hiring Burst (≥50% contributor growth), Infrastructure Buildout (≥3 new public repos in 30 days), Deploy Frequency Spike (≥150% velocity), Framework Migration (general acceleration that fits none of the above), or Deceleration (commit velocity falling below the prior window). Each type carries a distinct fundraise-lead-time distribution, so the classification is not cosmetic, it is the prediction.",
     plain:
-      "In plain terms: we tell you which kind of move it is, they just hired a wave of engineers, they're building scaling infrastructure, they're shipping to production far faster, or they're re-platforming. Each kind tends to lead a raise by a different amount of time, so the label is also the timing estimate.",
+      "In plain terms: we tell you which kind of move it is, they just hired a wave of engineers, they're building scaling infrastructure, they're shipping to production far faster, they're re-platforming, or their pace is slowing. Each kind tends to lead a raise by a different amount of time, so the label is also the timing estimate.",
   },
 ] as const;
 

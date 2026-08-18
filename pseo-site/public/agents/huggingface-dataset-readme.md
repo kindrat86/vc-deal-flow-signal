@@ -62,7 +62,7 @@ See [AGENTS.md](https://signals.gitdealflow.com/AGENTS.md) for the full agent su
 
 ## Methodology
 
-The pipeline pulls weekly GitHub REST API data, computes rolling 14-day commit velocity per organization, classifies each into one of four signal types based on which metric drives the acceleration, and ranks within sectors. Engineering acceleration measured this way has historically preceded venture fundraise announcements by three to six weeks.
+The pipeline pulls weekly GitHub REST API data, computes rolling 14-day commit velocity per organization, classifies each into one of five signal types based on which metric drives the signal, and ranks within sectors. Engineering acceleration measured this way has historically preceded venture fundraise announcements by three to six weeks.
 
 Full methodology: <https://signals.gitdealflow.com/methodology>
 SSRN preprint: <https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558>
