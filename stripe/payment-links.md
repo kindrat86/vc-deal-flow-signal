@@ -17,18 +17,20 @@ Verified live in Stripe Checkout on 2026-07-13.
 | Book (Kindle) | 7 GitHub Signals book | EUR 0.99 one-time | https://buy.stripe.com/cNi5kCax52d29sy1by0x208 | ACTIVE |
 | Readers Pack bump | Book + CSV + notebook bundle | EUR 5.96 one-time | https://buy.stripe.com/eVqdR8bB9aJygV0cUg0x20a | ACTIVE |
 
-## Retired founding-rate links — DEACTIVATE IN STRIPE DASHBOARD (still live as of 2026-07-13!)
+## Retired founding-rate links — ALL DEACTIVATED
 
-These must never appear on any page. They still accept checkouts at the closed
-founding rates; deactivating a payment link does NOT affect existing
-subscriptions (founding members keep their grandfathered rates).
+Deactivation verified 2026-08-19 via the Stripe API (`active=false` on every
+link below) and a rendered-checkout check ("The link is no longer active.").
+They no longer accept checkouts at the closed founding rates. Deactivating a
+payment link does NOT affect existing subscriptions (founding members keep
+their grandfathered rates).
 
 | Tier | Price | Link | Status |
 |---|---|---|---|
-| Dashboard founding monthly | EUR 9.97/mo | https://buy.stripe.com/28E7sK48H04U8ou07u0x200 | ⚠️ STILL ACTIVE — deactivate |
-| Insider founding monthly | EUR 97.00/mo | https://buy.stripe.com/4gM00ifRpcRG2069I40x202 | ⚠️ STILL ACTIVE — deactivate |
-| Dashboard founding annual | EUR 99.00/yr | https://buy.stripe.com/aFa28qgVt3h65ci8E00x206 | ⚠️ STILL ACTIVE — deactivate |
-| Insider founding annual | EUR 970.00/yr | https://buy.stripe.com/9B628q8oX7xmcEK9I40x207 | ⚠️ STILL ACTIVE — deactivate |
+| Dashboard founding monthly | EUR 9.97/mo | https://buy.stripe.com/28E7sK48H04U8ou07u0x200 | ✅ DEACTIVATED |
+| Insider founding monthly | EUR 97.00/mo | https://buy.stripe.com/4gM00ifRpcRG2069I40x202 | ✅ DEACTIVATED |
+| Dashboard founding annual | EUR 99.00/yr | https://buy.stripe.com/aFa28qgVt3h65ci8E00x206 | ✅ DEACTIVATED |
+| Insider founding annual | EUR 970.00/yr | https://buy.stripe.com/9B628q8oX7xmcEK9I40x207 | ✅ DEACTIVATED |
 | ~~Premium~~ | ~~EUR 49.00/mo~~ | ~~https://buy.stripe.com/eVq8wO20z5peeMS1by0x201~~ | DEACTIVATED |
 
-Created: 2026-04-13. Last audited: 2026-07-13 (browser-verified each link).
+Created: 2026-04-13. Last audited: 2026-08-19 (API `active` field + rendered page).
