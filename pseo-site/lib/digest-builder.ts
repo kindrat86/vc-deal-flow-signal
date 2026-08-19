@@ -11,11 +11,11 @@ import {
  * Shared "latest Signal Digest" builder.
  *
  * Two consumers:
- *   1. /api/verify — sends the latest issue immediately on email verification,
+ *   1. /api/verify: sends the latest issue immediately on email verification,
  *      closing the up-to-7-day TTV gap (a verified subscriber used to wait
  *      until the next Sunday broadcast for the Top-5 data the verification
  *      email promises). Added 2026-08-19 per the conversion-audit Top-10 win.
- *   2. scripts/generate-signal-digest-email.ts — renders the weekly broadcast
+ *   2. scripts/generate-signal-digest-email.ts: renders the weekly broadcast
  *      HTML files (emails/signal-digest-<date>.html + -latest.html).
  *
  * Uses RELATIVE imports (not the @/ alias) so it resolves identically under
@@ -239,7 +239,7 @@ export function buildLatestDigest(): LatestDigest {
   const titleMatch = html.match(/<title>([^<]+)<\/title>/);
   const subject = titleMatch
     ? titleMatch[1].trim()
-    : `Signal Digest — Week of ${digest.weekOf}`;
+    : `Signal Digest: Week of ${digest.weekOf}`;
 
   return {
     subject,
