@@ -104,7 +104,7 @@ const BEATS_BY_TIER: Record<RoadmapTier, readonly RoadmapBeat[]> = {
     },
     {
       when: "Day 90 → 1 year",
-      what: "Twelve drops shipped, twelve weekly Insider lists, the API integrated into your stack. One renewal at locked rate.",
+      what: "Twelve drops shipped, twelve weekly Insider lists, the API integrated into your stack. One renewal, one churn decision.",
       why: "By twelve months you've crossed the lead-time × cadence × volume threshold where one extra outbound conversation per quarter compounds the cheque math.",
     },
   ],
