@@ -6,7 +6,7 @@
 
 URL: https://gitdealflow.com/
 
-GitDealFlow, Startup Signals 21-47 Days Before the Round. For angels who source outside a fund, and the scouts & seed funds who serve them. Every Sunday you wait is a round you'll hear about a week too late. That gap is your whole edge. See which startups are heating up 21 to 47 days before the round — I call it the Velocity Verdict. GitDealFlow reads the public GitHub activity of 350+ startups, spots the ones accelerating, and sends you five names every Sunday so you reach the founder before the round exists, not after the press announces it. Three signals that together predict a fundraise: velocity surge, contributor spike, infrastructure buildout. Free Sunday Signal Digest. Dashboard EUR 49/mo. Insider Circle EUR 197/mo. Chrome extension free on Crunchbase + Wellfound. Open-source signal engine at github.com/kindrat86/gitdealflow-signal-engine. SSRN 6606558.
+GitDealFlow, Startup Signals 21-47 Days Before the Round. For angels who source outside a fund, and the scouts & seed funds who serve them. Every Sunday you wait is a round you'll hear about a week too late. That gap is your whole edge. See which startups are heating up 21 to 47 days before the round - I call it the Velocity Verdict. GitDealFlow reads the public GitHub activity of 350+ startups, spots the ones accelerating, and sends you five names every Sunday so you reach the founder before the round exists, not after the press announces it. Three signals that together predict a fundraise: velocity surge, contributor spike, infrastructure buildout. Free Sunday Signal Digest. Dashboard EUR 49/mo. Insider Circle EUR 197/mo. Chrome extension free on Crunchbase + Wellfound. Open-source signal engine at github.com/kindrat86/gitdealflow-signal-engine. SSRN 6606558.
 
 ---
 
@@ -14,7 +14,7 @@ GitDealFlow, Startup Signals 21-47 Days Before the Round. For angels who source 
 
 URL: https://gitdealflow.com/about
 
-About GitDealFlow, The Signal Behind the Velocity Verdict. GitDealFlow is a deal-flow signal tool, not a fund, not a VC, and not a startup database. It reads the public GitHub engineering activity of 350+ venture-backed startups and flags the ones accelerating weeks before the round or the press. The signal is called the Velocity Verdict: commit velocity, contributor growth, and infrastructure buildout tracked quantitatively over time. The Data Nerd built it — an engineer and occasional angel investor based in Athens, not San Francisco. Full origin story on the page. Methodology published on SSRN with an open dataset.
+About GitDealFlow, The Signal Behind the Velocity Verdict. GitDealFlow is a deal-flow signal tool, not a fund, not a VC, and not a startup database. It reads the public GitHub engineering activity of 350+ venture-backed startups and flags the ones accelerating weeks before the round or the press. The signal is called the Velocity Verdict: commit velocity, contributor growth, and infrastructure buildout tracked quantitatively over time. The Data Nerd built it - an engineer and occasional angel investor based in Athens, not San Francisco. Full origin story on the page. Methodology published on SSRN with an open dataset.
 
 ---
 
@@ -22,7 +22,7 @@ About GitDealFlow, The Signal Behind the Velocity Verdict. GitDealFlow is a deal
 
 URL: https://gitdealflow.com/pricing
 
-Pricing, GitDealFlow. One ladder, no surprises. Start free every Sunday. Pay EUR 1 to test judgment. Go deeper only when the signal has already earned it. Signal Digest free forever. Dashboard EUR 49/mo, 60+ startups, 15 sectors, refreshed weekly. Insider Circle EUR 197/mo, capped at ~50 seats. First Look Pass EUR 7 one-time, one sector, 24-hour deep dive. Tweet Teardown EUR 1 one-time. Founding rates locked for life since June 30 2026. 30-day Signal-or-It's-Free guarantee on every paid rung.
+Pricing, GitDealFlow. One ladder, no surprises. Start free every Sunday. Pay EUR 1 to test judgment. Go deeper only when the signal has already earned it. Signal Digest free forever. Dashboard EUR 49/mo, 140+ startups, 15 sectors, refreshed weekly. Insider Circle EUR 197/mo, capped at ~50 seats. First Look Pass EUR 7 one-time, one sector, 24-hour deep dive. Tweet Teardown EUR 1 one-time. Founding rates locked for life since June 30 2026. 30-day Signal-or-It's-Free guarantee on every paid rung.
 
 ---
 
@@ -30,7 +30,7 @@ Pricing, GitDealFlow. One ladder, no surprises. Start free every Sunday. Pay EUR
 
 URL: https://gitdealflow.com/dashboard
 
-Dashboard, GitDealFlow. The weekly operating layer. TL;DR: GitDealFlow Dashboard is the full ranked field of 60+ startups across 15 sectors, refreshed weekly in plain English. It extends the free Sunday email into a weekly operating layer. EUR 49/mo, 30-day Signal-or-It's-Free guarantee, cancel in one click. Each name lands with a one-line, plain-English reason it's moving. Signal history so you can watch acceleration build week over week.
+Dashboard, GitDealFlow. The weekly operating layer. TL;DR: GitDealFlow Dashboard is the full ranked field of 140+ startups across 15 sectors, refreshed weekly in plain English. It extends the free Sunday email into a weekly operating layer. EUR 49/mo, 30-day Signal-or-It's-Free guarantee, cancel in one click. Each name lands with a one-line, plain-English reason it's moving. Signal history so you can watch acceleration build week over week.
 
 ---
 
@@ -54,7 +54,7 @@ First Look Pass, GitDealFlow. Lowest-friction paid step. One sector. One deep di
 
 URL: https://gitdealflow.com/chrome
 
-Chrome Extension, GitDealFlow. Free lens. Puts the signal where you already look — Crunchbase and Wellfound profiles. No account, no telemetry, no cookies. Manifest V3, ~30 KB. Install: https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn
+Chrome Extension, GitDealFlow. Free lens. Puts the signal where you already look - Crunchbase and Wellfound profiles. No account, no telemetry, no cookies. Manifest V3, ~30 KB. Install: https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn
 
 ---
 

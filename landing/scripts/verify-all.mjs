@@ -4,10 +4,41 @@
 // Keeps vercel.json buildCommand under Vercel's 256-char limit.
 // Runs each check in order; fails the build (non-zero) on the first failure.
 import { spawnSync } from 'child_process';
+import { readFileSync } from 'fs';
 import { fileURLToPath } from 'url';
 import { dirname, join } from 'path';
 
 const landingRoot = join(dirname(fileURLToPath(import.meta.url)), '..');
+
+// Activation funnel guard (2026-08-19). The free product is delivered as soon
+// as verification succeeds. Keep that promise visible and keep the anonymous
+// landing events joined to the email-keyed Resend events.
+const activationChecks = [
+  ['index.html', [
+    'in your inbox the moment you confirm',
+    'posthog.identify(email)',
+    "sessionStorage.setItem('gdf_email', email)",
+  ]],
+  ['subscribe-thanks.html', [
+    "o='init capture identify register",
+    'posthog.identify(e)',
+    "posthog.capture('subscribe_thanks_viewed')",
+  ]],
+  ['confirmed.html', [
+    'The five names are already there.',
+    'Check spam or promotions',
+    'posthog.identify(identEmail)',
+    "posthog.capture('signup_confirmed_viewed'",
+  ]],
+];
+for (const [rel, needles] of activationChecks) {
+  const src = readFileSync(join(landingRoot, rel), 'utf8');
+  const missing = needles.filter((needle) => !src.includes(needle));
+  if (missing.length) {
+    console.error(`[verify-all] activation regression in ${rel}: missing ${missing.join(', ')}`);
+    process.exit(1);
+  }
+}
 
 const steps = [
   ['node', 'scripts/verify-vercel-config.mjs'],
@@ -27,7 +58,7 @@ for (const args of steps) {
     process.exit(r.status ?? 1);
   }
 }
-console.log('[verify-all] all 8 checks passed');
+console.log('[verify-all] all checks passed (activation guard + 8 scripts)');
 
 // IndexNow ping: non-fatal. It is a crawl hint, not a correctness gate, and a
 // failed/skipped submission must never block an otherwise-good deploy. The

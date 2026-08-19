@@ -1080,7 +1080,7 @@
             <button type="submit" id="signup-btn" class="btn btn-primary btn-lg w-full sm:w-auto">Get this Sunday&apos;s 5 names <span aria-hidden="true" class="btn-arrow">&rarr;</span></button>
           </div>
         </form>
-        <p class="text-gray-400 text-sm mt-4 text-center">Drop your email and <strong class="text-white">check your inbox to confirm</strong>: then the five names land <strong class="text-white">this Sunday morning</strong>.</p>
+        <p class="text-gray-400 text-sm mt-4 text-center">Drop your email and <strong class="text-white">check your inbox to confirm</strong>: then the five names land <strong class="text-white">in your inbox the moment you confirm</strong>.</p>
         <p class="text-gray-400 text-sm mt-2 text-center">Read every Sunday by angels, scouts, and seed funds sourcing before the crowd.</p>
         <p id="signup-msg" role="status" class="js-signup-msg text-center text-gray-400 text-sm mt-2">
           <span class="text-emerald-400">✓</span> One email, every Sunday &nbsp; <span class="text-emerald-400">✓</span> Unsubscribe in one click &nbsp; <span class="text-emerald-400">✓</span> Keep every issue you got
@@ -1286,7 +1286,7 @@
           });
           const data = await res.json();
           if (data.ok) {
-            if (window.posthog) posthog.capture('signup_verify_sent', { placement: form.getAttribute('data-source') || 'landing-page', hero_variant: window.__heroVariant || 'unknown' });
+            if (window.posthog) { try { posthog.identify(email); } catch (e) {} posthog.capture('signup_verify_sent', { placement: form.getAttribute('data-source') || 'landing-page', hero_variant: window.__heroVariant || 'unknown' }); }
             try { sessionStorage.setItem('gdf_email', email); } catch (e) {}
             window.location.href = '/subscribe-thanks';
             return;

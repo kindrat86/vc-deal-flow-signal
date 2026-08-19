@@ -74,8 +74,8 @@
 
     <section class="max-w-3xl mx-auto text-center mb-10 mobile-section-pad">
       <p class="text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">&#10003; Confirmed &middot; you&rsquo;re on the list</p>
-      <h1 id="confirmed-title" class="text-4xl sm:text-5xl font-bold tracking-tight mb-5">You&rsquo;re in. Sunday is covered.</h1>
-      <p id="confirmed-copy" class="text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto">Your first signal lands this Sunday, five names worth watching and why. You don&rsquo;t need to sign up again. But before you close this tab, read this one note from me.</p>
+      <h1 id="confirmed-title" class="text-4xl sm:text-5xl font-bold tracking-tight mb-5">Check your inbox. The five names are already there.</h1>
+      <p id="confirmed-copy" class="text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto">Your first issue just landed from <strong class="text-white">signal@gitdealflow.com</strong>: five names with the why. Didn&rsquo;t see it? Check spam or promotions and mark it not spam. Then read this one note from me.</p>
     </section>
 
     <section class="max-w-3xl mx-auto mb-12 mobile-section-pad">
@@ -145,7 +145,7 @@
 
     <section class="max-w-3xl mx-auto mobile-section-pad">
       <div class="mobile-card mobile-card-pad rounded-3xl border border-gray-800 bg-dark-800/70 p-7 sm:p-8 text-center">
-        <p class="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-3">Or, honestly, just wait for Sunday</p>
+        <p class="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-3">Already reading your first issue?</p>
         <h2 id="next-move-title" class="text-2xl font-bold mb-3">If you don&rsquo;t have a live question yet, don&rsquo;t buy anything.</h2>
         <p id="next-move-copy" class="text-gray-300 leading-relaxed max-w-xl mx-auto mb-6">Let the free issue prove itself first. Read a past one, check how I actually build the signal, and First Look will still be here the week your question gets loud.</p>
         <div class="flex flex-col sm:flex-row gap-3 justify-center mobile-cta-stack">
@@ -174,8 +174,8 @@
       // Higher-intent quiz routes keep First Look as the entry point but add a "jump straight up" path.
       const config = {
         F: {
-          title: "You're in. Sunday is covered.",
-          copy: "Your first signal lands this Sunday, five names worth watching and why. You don't need to sign up again. But before you close this tab, read this one note from me.",
+          title: "Check your inbox. The five names are already there.",
+          copy: "Your first issue just landed from signal@gitdealflow.com: five names with the why. Didn't see it? Check spam or promotions and mark it not spam. Then read this one note from me.",
           guidance: "Then the week takes over, and the question goes cold. If that's you right now, you don't have to wait for the weekly list to catch up to it. There's a faster way, and since you just joined, it's the right moment to tell you about it.",
           offerEyebrow: "Your fastest next step · First Look",
           offerTitle: "One sector. One deep dive. One day.",
@@ -189,7 +189,7 @@
         },
         T: {
           title: "You're in. And it sounds like the question is already live.",
-          copy: "Sunday is covered, but if the real thesis is already alive, you don't need to wait for it. Here's the fastest answer I can give you.",
+          copy: "Your first issue is in your inbox, but if the real thesis is already alive, you don't need to wait for it. Here's the fastest answer I can give you.",
           guidance: "You already told me the pressure is real. First Look exists for exactly this moment: one fast answer before the market catches up.",
           offerEyebrow: "Built for where you are · First Look",
           offerTitle: "One sector. One live pass. One fast answer.",
@@ -203,7 +203,7 @@
         },
         D: {
           title: "You're in. Now decide if five names are enough.",
-          copy: "Sunday is covered. But if you already know you need the full field, First Look is the cheapest way to feel the difference first.",
+          copy: "Your first issue is in your inbox. But if you already know you need the full field, First Look is the cheapest way to feel the difference first.",
           guidance: "Dashboard is for the moment when not knowing where to look every week starts costing you real attention. First Look lets you test that on one thesis for €7, fully credited if you upgrade.",
           offerEyebrow: "Test before you commit · First Look",
           offerTitle: "One sector. One deep dive. One day.",
@@ -217,7 +217,7 @@
         },
         I: {
           title: "You're in. Now choose how close you want the signal.",
-          copy: "Sunday is covered. If the pressure is already real, First Look is the honest first test before you pick a closer level of support.",
+          copy: "Your first issue is in your inbox. If the pressure is already real, First Look is the honest first test before you pick a closer level of support.",
           guidance: "Some buyers need a list. Some need a room. Some need one serious custom answer. First Look is the smallest, truest way to find out which one you are.",
           offerEyebrow: "The honest first test · First Look",
           offerTitle: "One sector. One deep dive. One day.",
@@ -245,7 +245,7 @@
       if (primary) { primary.href = c.primaryHref; primary.textContent = c.primaryText; }
       const sticky = document.getElementById('sticky-link');
       if (sticky) { sticky.href = c.stickyHref; }
-      (function fireConfirm(n){ n = n || 0; if (window.posthog && window.posthog.capture) { posthog.capture('signup_confirmed_viewed', { route: route }); } else if (n < 100) { setTimeout(function(){ fireConfirm(n + 1); }, 100); } })();
+      (function fireConfirm(n){ n = n || 0; if (window.posthog && window.posthog.capture) { try { var ce = new URLSearchParams(window.location.search).get('email') || ''; var se = ''; try { se = sessionStorage.getItem('gdf_email') || ''; } catch(_){} var identEmail = ce || se; if (identEmail) posthog.identify(identEmail); } catch(_){} posthog.capture('signup_confirmed_viewed', { route: route }); } else if (n < 100) { setTimeout(function(){ fireConfirm(n + 1); }, 100); } })();
       // Track intent clicks on the primary upsell so we can measure confirm-page conversion.
       if (primary) primary.addEventListener('click', function(){ if (window.posthog) posthog.capture('confirmed_upsell_clicked', { route: route, tier: 'firstlook' }); });
       if (sticky) sticky.addEventListener('click', function(){ if (window.posthog) posthog.capture('confirmed_upsell_clicked', { route: route, tier: 'firstlook', surface: 'sticky' }); });
