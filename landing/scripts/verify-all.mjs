@@ -27,6 +27,8 @@ const activationChecks = [
   ['confirmed.html', [
     'The five names are already there.',
     'Check spam or promotions',
+    "u.searchParams.delete('email')",
+    'history.replaceState',
     'posthog.identify(identEmail)',
     "posthog.capture('signup_confirmed_viewed'",
   ]],

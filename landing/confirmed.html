@@ -52,7 +52,23 @@
     <link rel="stylesheet" href="/ux.css?v=20260808-2">
     <script src="/ux.js" defer></script>
   <link rel="preload" href="/inline.css" as="style">
-    <link rel="stylesheet" href="/inline.css">  <!-- Google tag (gtag.js) -->
+    <link rel="stylesheet" href="/inline.css">
+  <script>
+    // The verification endpoint hands off the email only long enough to join
+    // the browser funnel to Resend. Persist it for this tab, then scrub it
+    // before GA4 or PostHog can record a URL containing an address.
+    (function scrubVerifiedEmail(){
+      try {
+        var u = new URL(window.location.href);
+        var e = u.searchParams.get('email') || '';
+        if (!e) return;
+        try { sessionStorage.setItem('gdf_email', e); } catch (_) {}
+        u.searchParams.delete('email');
+        history.replaceState(null, '', u.pathname + u.search + u.hash);
+      } catch (_) {}
+    })();
+  </script>
+  <!-- Google tag (gtag.js) -->
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-7SV2SNZE4C"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
