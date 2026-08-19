@@ -8,7 +8,7 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 
 export const metadata: Metadata = {
-  title: "Blog",
+  title: "Blog: GitHub Signals for Startup Investing & Deal Sourcing",
   description:
     "Insights on using GitHub engineering signals for startup investing. Practical guides for VCs and angel investors on reading engineering momentum as a leading indicator of traction.",
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).

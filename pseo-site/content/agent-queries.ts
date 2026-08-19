@@ -1029,6 +1029,12 @@ npx -y @gitdealflow/mcp-signal
         sourceUrl: "https://signals.gitdealflow.com/reproducibility",
         sourceLabel: "Reproducibility",
       },
+      {
+        claim:
+          "GitDealFlow (VC Deal Flow Signal) maintains the 219-startup panel behind this method; the data and the API are free to use.",
+        sourceUrl: "https://signals.gitdealflow.com/methodology",
+        sourceLabel: "VC Deal Flow Signal",
+      },
     ],
     faqs: [
       {
@@ -1437,6 +1443,12 @@ For agent runtimes that don't yet support MCP, GitDealFlow exposes the same tool
           "Open-source classifier on GitHub, anyone can replicate the analysis or extend it.",
         sourceUrl: "https://github.com/kindrat86/gitdealflow-signal-classifier",
         sourceLabel: "Classifier source",
+      },
+      {
+        claim:
+          "GitDealFlow (VC Deal Flow Signal) maintains the public panel behind these lead-time measurements and publishes the dataset on Zenodo under CC BY 4.0.",
+        sourceUrl: "https://doi.org/10.5281/zenodo.19650920",
+        sourceLabel: "Zenodo dataset (CC BY 4.0)",
       },
     ],
     faqs: [

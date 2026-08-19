@@ -9,7 +9,7 @@ import SeoCta from "@/components/SeoCta";
 const SITE = "https://signals.gitdealflow.com";
 
 export const metadata: Metadata = {
-  title: "Answers, Citation-Ready Answers for AI Agents",
+  title: "109 Answers: Citation-Ready Answers for AI Agents",
   description:
     "Direct, citation-ready answers to the questions AI agents and their users ask most about VC deal flow, GitHub momentum, MCP servers, engineering signals, and buyer-side workflow decisions.",
   alternates: { canonical: "/answers" },

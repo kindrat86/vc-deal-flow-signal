@@ -779,7 +779,7 @@ Browse the sector rankings to see which startups are accelerating right now.`,
   },
   {
     slug: "what-is-deal-flow-signal",
-    title: "What Is Deal Flow Signal? A Guide for Investors",
+    title: "What Is Deal Flow Signal? 4 Signal Types, 6-12 Week Lead Time (2026)",
     description:
       "Deal flow signal refers to data-driven indicators that help investors identify promising startups before traditional channels surface them. Learn how engineering momentum serves as a leading indicator of traction.",
     references: [

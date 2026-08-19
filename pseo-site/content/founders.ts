@@ -62,7 +62,7 @@ function build(p: {
     role: p.role,
     affiliation: p.affiliation,
     publicSource: p.publicSource,
-    title: `${p.name} (@${p.handle}), Public Engineering Profile`,
+    title: `${p.name} (@${p.handle}), ${p.role}`,
     metaDescription: `${p.name} is ${p.role} at ${p.affiliation}. Public engineering profile and notable open-source work, sourced exclusively from publicly self-published references.`,
     h1: `${p.name}, Public Engineering Profile`,
     tagline: `${p.name} is ${p.role} at ${p.affiliation}. This page summarizes publicly observable engineering activity tied to the @${p.handle} GitHub handle.`,
