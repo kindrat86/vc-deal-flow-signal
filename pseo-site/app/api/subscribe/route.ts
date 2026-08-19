@@ -5,6 +5,7 @@ import { signVerifyToken } from "@/lib/verify-token";
 import { fireRedditLead } from "@/lib/reddit-conversions-api";
 import { recordSignup } from "@/lib/recent-signups";
 import { listUnsubscribeHeaders, injectUnsubscribeLink } from "@/lib/list-unsubscribe";
+import { isInvestorLane } from "@/lib/investor-lanes";
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY!;
 const FROM_EMAIL = process.env.FROM_EMAIL || "signals@gitdealflow.com";
@@ -179,12 +180,22 @@ export async function POST(request: Request) {
       landing_path: clip(body.landing_path, 500),
     };
 
-    // Phase 3 (Qualify Subs), quiz_route is the avatar tier the visitor
-    // self-selected before email capture. Whitelisted to F/T/D/I; anything
-    // else degrades to "" so an unqualified email never silently gets a
-    // wrong-tier label downstream.
-    const rawRoute = clip(body.quiz_route, 4);
-    const quiz_route = ["F", "T", "D", "I"].includes(rawRoute) ? rawRoute : "";
+    // quiz_route carries ONE OF TWO taxonomies from the landing:
+    //   (a) an investor lane (angel/scout/fund/corpdev/builder/other) from
+    //       the hero-quiz "tell me your lane" cards, OR
+    //   (b) a 4-tier avatar (F/T/D/I) from the pseo quiz, used to fork the
+    //       drip pitch sequence.
+    // They are separate dimensions. A lane is stored as `lane` and drives
+    // first-issue tailoring; an avatar tier stays `quiz_route` and drives
+    // the drip fork. Anything else degrades to "" so an unqualified value
+    // never silently gets a wrong label downstream.
+    const rawRoute = clip(body.quiz_route, 16);
+    const lane = isInvestorLane(rawRoute) ? rawRoute : "";
+    const quiz_route = lane
+      ? ""
+      : ["F", "T", "D", "I"].includes(rawRoute)
+        ? rawRoute
+        : "";
     const quiz_route_label = quiz_route ? clip(body.quiz_route_label, 120) : "";
 
     // Cohort dispatches the post-verify drip sequence. Default = "soap-opera"
@@ -219,6 +230,7 @@ export async function POST(request: Request) {
     }
     if (quiz_route) params.set("quiz_route", quiz_route);
     if (quiz_route_label) params.set("quiz_route_label", quiz_route_label);
+    if (lane) params.set("lane", lane);
     if (tz) params.set("tz", tz);
     const verifyUrl = `${VERIFY_BASE_URL}/api/verify?${params.toString()}`;
 

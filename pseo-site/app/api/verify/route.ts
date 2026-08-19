@@ -15,6 +15,7 @@ import { isNonceUsed, markNonceUsed } from "@/lib/runtime-cache";
 import { listUnsubscribeHeaders, injectUnsubscribeLink } from "@/lib/list-unsubscribe";
 import { pickAudienceId } from "@/lib/resend-audience";
 import { buildLatestDigest } from "@/lib/digest-builder";
+import { isInvestorLane } from "@/lib/investor-lanes";
 
 // Single-use tracking for v2 verify-subscribe nonces. Once a v2 token's nonce
 // is consumed, any replay (link prefetcher, leaked URL replay) becomes a
@@ -65,6 +66,7 @@ interface Attribution {
   landing_path: string;
   quiz_route: string;
   quiz_route_label: string;
+  lane: string;
 }
 
 // Marker we prepend to the JSON-encoded attribution we stash in Resend's
@@ -134,6 +136,8 @@ export async function GET(request: Request) {
   const clip = (v: string | null, max: number): string =>
     (v || "").slice(0, max);
   const rawRoute = clip(url.searchParams.get("quiz_route"), 4);
+  const rawLane = clip(url.searchParams.get("lane"), 16);
+  const lane = isInvestorLane(rawLane) ? rawLane : "";
   const attribution: Attribution = {
     source: clip(url.searchParams.get("source"), 100),
     utm_source: clip(url.searchParams.get("utm_source"), 100),
@@ -143,6 +147,7 @@ export async function GET(request: Request) {
     landing_path: clip(url.searchParams.get("landing_path"), 500),
     quiz_route: ["F", "T", "D", "I"].includes(rawRoute) ? rawRoute : "",
     quiz_route_label: clip(url.searchParams.get("quiz_route_label"), 120),
+    lane,
   };
   const tzRaw = clip(url.searchParams.get("tz"), 64);
   const tz = tzRaw.includes("/") ? tzRaw : "";
@@ -224,7 +229,7 @@ export async function GET(request: Request) {
   //    7-Day Deal Flow Reset; `cohort=launch` routes to the 5-email Brunson
   //    Product Launch Funnel. Otherwise we fork on `quiz_route` (F/T/D/I) so
   //    the value-ladder pitch matches what the visitor self-described on
-  //    /landing#signup, pre-buyers (F) skip the €7/€9.97/€97 pitch days,
+  //    /landing#signup, pre-buyers (F) skip the €7/€49/€197 pitch days,
   //    First-Look (T) gets €7 + Dashboard, Dashboard (D) gets the modal
   //    sequence, Insider (I) skips the small denominations and emphasises
   //    €97 + €1,997. Missing/unknown route falls back to SOAP_OPERA_EMAILS
@@ -362,7 +367,7 @@ export async function GET(request: Request) {
   //     that up-to-7-day TTV gap. Best-effort: a render/send failure must
   //     never break verification or the drip schedule.
   try {
-    const latest = buildLatestDigest();
+    const latest = buildLatestDigest(lane || undefined);
     const digestRes = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {

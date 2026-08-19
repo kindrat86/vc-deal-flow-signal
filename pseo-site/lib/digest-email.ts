@@ -46,6 +46,8 @@ export type DigestData = {
   statTopMover: string;
   topStartups: DigestStartup[];
   hottestSectors: DigestSector[];
+  /** Optional lane-specific "tuned for you" intro line (investor lanes). */
+  laneIntro?: string;
   /** Optional reader-recommendation slot (newsletter swap partners, §45). */
   partnerPick?: DigestPartner;
 };
@@ -250,7 +252,15 @@ export function renderDigestEmail(data: DigestData, opts: DigestOptions = {}): s
                 Signal Digest &middot; Issue #${data.issueNumber}
               </p>
               <h1 class="hero-h1 tx-pri" style="margin:0 0 16px 0;color:${BRAND.textPri};font-size:32px;line-height:40px;font-weight:800;letter-spacing:-0.02em;">${escape(data.heroHeadline)}</h1>
-              <p class="tx-sec" style="margin:0 0 24px 0;color:${BRAND.textSec};font-size:16px;line-height:24px;">${escape(data.heroIntro)}</p>
+              <p class="tx-sec" style="margin:0 0 24px 0;color:${BRAND.textSec};font-size:16px;line-height:24px;">${escape(data.heroIntro)}</p>${data.laneIntro ? `
+              <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin:0 0 24px 0;">
+                <tr>
+                  <td style="background:rgba(14,165,233,0.10);border:1px solid rgba(14,165,233,0.30);border-radius:10px;padding:14px 16px;">
+                    <div style="color:${BRAND.accentLight};font-size:11px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:4px;">Tuned for you</div>
+                    <p class="tx-sec" style="margin:0;color:${BRAND.textSec};font-size:14px;line-height:21px;">${escape(data.laneIntro)}</p>
+                  </td>
+                </tr>
+              </table>` : ""}
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" style="margin-top:8px;">
                 <tr>
                   <td class="stack" width="33%" style="vertical-align:top;padding-right:8px;">

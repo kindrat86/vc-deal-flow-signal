@@ -6,6 +6,7 @@ import {
   type DigestSector,
   type DigestStartup,
 } from "./digest-email";
+import { isInvestorLane, laneIntro } from "./investor-lanes";
 
 /**
  * Shared "latest Signal Digest" builder.
@@ -138,7 +139,7 @@ export interface LatestDigest {
   sectorCount: number;
 }
 
-export function buildLatestDigest(): LatestDigest {
+export function buildLatestDigest(lane?: string): LatestDigest {
   const raw = startupsData as unknown as StartupsData;
   const period = raw.periods.find((p) => p.current) ?? raw.periods[0];
   if (!period) throw new Error("No current period in startups.json.");
@@ -228,6 +229,7 @@ export function buildLatestDigest(): LatestDigest {
     statTopMover: topStartups[0]?.commitVelocityChange ?? "",
     topStartups,
     hottestSectors,
+    ...(lane && isInvestorLane(lane) ? { laneIntro: laneIntro(lane) } : {}),
     ...(partnerPick ? { partnerPick } : {}),
   };
 
