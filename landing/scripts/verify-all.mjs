@@ -10,6 +10,18 @@ import { dirname, join } from 'path';
 
 const landingRoot = join(dirname(fileURLToPath(import.meta.url)), '..');
 
+// Static Vercel deploy inputs that used to exist only in the dirty primary
+// checkout. Without them a clean commit deploy either fails the function glob
+// or drops the AI discovery and markdown routes.
+for (const rel of ['api/crawl-proxy.js', 'api/markdown.js', 'ai.src.txt', 'agents.src.txt']) {
+  try {
+    readFileSync(join(landingRoot, rel), 'utf8');
+  } catch {
+    console.error(`[verify-all] required deploy input is missing: ${rel}`);
+    process.exit(1);
+  }
+}
+
 // Activation funnel guard (2026-08-19). The free product is delivered as soon
 // as verification succeeds. Keep that promise visible and keep the anonymous
 // landing events joined to the email-keyed Resend events.
