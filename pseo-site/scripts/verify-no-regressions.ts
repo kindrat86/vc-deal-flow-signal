@@ -5373,6 +5373,7 @@ landingCheck(
     "app/sector/[slug]/page.tsx",
     "app/startup/[slug]/page.tsx",
     "app/acquirer/[slug]/page.tsx",
+    "app/research-paper/[slug]/page.tsx",
     "app/faq/page.tsx",
     "app/glossary/page.tsx",
   ];
@@ -5387,7 +5388,6 @@ landingCheck(
   const markedTemplates = [
     "app/blog/[slug]/page.tsx",
     "app/research/[slug]/page.tsx",
-    "app/research-paper/[slug]/page.tsx",
     "components/StartupDirectory.tsx",
     "app/answers/[slug]/page.tsx",
   ];
