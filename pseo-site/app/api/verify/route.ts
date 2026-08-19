@@ -14,6 +14,7 @@ import { isExcluded } from "@/lib/excluded-emails";
 import { isNonceUsed, markNonceUsed } from "@/lib/runtime-cache";
 import { listUnsubscribeHeaders, injectUnsubscribeLink } from "@/lib/list-unsubscribe";
 import { pickAudienceId } from "@/lib/resend-audience";
+import { buildLatestDigest } from "@/lib/digest-builder";
 
 // Single-use tracking for v2 verify-subscribe nonces. Once a v2 token's nonce
 // is consumed, any replay (link prefetcher, leaked URL replay) becomes a
@@ -352,6 +353,39 @@ export async function GET(request: Request) {
     } catch (err) {
       console.error(`[verify] failed to store deferred drip plan:`, err);
     }
+  }
+
+  // 2.5 Send the latest Signal Digest immediately. Before this, a verified
+  //     subscriber got the drip story in ~30 min but had to wait until the
+  //     next Sunday broadcast for the Top-5 breakout data the verification
+  //     email promises ("This Week's Top 5 Breakout Startups"). This closes
+  //     that up-to-7-day TTV gap. Best-effort: a render/send failure must
+  //     never break verification or the drip schedule.
+  try {
+    const latest = buildLatestDigest();
+    const digestRes = await fetch("https://api.resend.com/emails", {
+      method: "POST",
+      headers: {
+        Authorization: `Bearer ${RESEND_API_KEY}`,
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        from: `${FROM_NAME} <${FROM_EMAIL}>`,
+        bcc: "sales@sipiteno.com",
+        to: email,
+        subject: latest.subject,
+        html: injectUnsubscribeLink(latest.html, email),
+        headers: listUnsubscribeHeaders(email),
+      }),
+    });
+    if (!digestRes.ok) {
+      const errText = await digestRes.text();
+      console.error(`[verify] failed to send immediate digest to ${email}:`, errText);
+    } else {
+      console.log(`[verify] sent immediate digest (${latest.subject}) to ${email}`);
+    }
+  } catch (digestErr) {
+    console.error(`[verify] immediate digest error for ${email}:`, digestErr);
   }
 
   // 3. Redirect, challenge cohort lands on /challenge/started so the user
