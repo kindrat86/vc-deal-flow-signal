@@ -1,6 +1,8 @@
 import { NextResponse } from "next/server";
 import { checkRateLimit, getClientIp, rateLimitHeaders } from "@/lib/rate-limit";
 import { isValidEmail, isAllowedOrigin } from "@/lib/validation";
+import { pb } from "@/lib/pocketbase";
+import { computeSharpReplyDeadline, normalizeSharpApplication } from "@/lib/sharp-pipeline";
 
 /**
  * /api/sharp-application, Russell audit fix 2026-05-05 (DotCom Secrets §23).
@@ -131,32 +133,25 @@ export async function POST(request: Request) {
       raw = Object.fromEntries(fd.entries());
     }
 
-    const fund_name = clip(raw.fund_name, 200);
-    const contact_name = clip(raw.contact_name, 100);
-    const email = clip(raw.email, 200).toLowerCase();
-    const aum = clip(raw.aum, 200);
-    const thesis = clip(raw.thesis, 1000);
-    const how_heard = clip(raw.how_heard, 50);
-    const quarterly_question = clip(raw.quarterly_question, 1500);
-    // Brunson high-ticket five-question diligence (DotCom Secrets Ch 22).
-    const dream_state = clip(raw.dream_state, 800);
-    const current_state = clip(raw.current_state, 800);
-    const gap = clip(raw.gap, 800);
-    const money_value = clip(raw.money_value, 800);
-    const urgency = clip(raw.urgency, 800);
-
-    if (!fund_name || !contact_name || !email || !thesis) {
-      return NextResponse.json(
-        { error: "fund_name, contact_name, email, and thesis are required" },
-        { status: 400, headers },
-      );
+    const submittedAt = new Date();
+    let pipeline;
+    try {
+      pipeline = normalizeSharpApplication({
+        fund_name: clip(raw.fund_name, 200), contact_name: clip(raw.contact_name, 120),
+        email: clip(raw.email, 200), aum_or_deal_count: clip(raw.aum_or_deal_count, 200),
+        thesis: clip(raw.thesis, 1000), sectors: clip(raw.sectors, 500), team_size: clip(raw.team_size, 100),
+        intended_use: clip(raw.intended_use, 1000), budget_range: clip(raw.budget_range, 40) as never,
+        buyer_type: clip(raw.buyer_type, 40) as never, requested_tier: clip(raw.requested_tier, 40) as never,
+        urgency: clip(raw.urgency, 500), source: "sharp-apply",
+      }, submittedAt);
+    } catch (error) {
+      return NextResponse.json({ error: error instanceof Error ? error.message : "Invalid application" }, { status: 400, headers });
     }
-    if (!isValidEmail(email)) {
-      return NextResponse.json(
-        { error: "Invalid email" },
-        { status: 400, headers },
-      );
-    }
+    const { fund_name, contact_name, email, thesis, urgency } = pipeline;
+    const aum = pipeline.aum_or_deal_count;
+    const how_heard = "";
+    const quarterly_question = pipeline.intended_use;
+    const dream_state = ""; const current_state = ""; const gap = ""; const money_value = "";
 
     if (!RESEND_API_KEY) {
       console.error("RESEND_API_KEY is not configured");
@@ -166,6 +161,16 @@ export async function POST(request: Request) {
       );
     }
 
+    const deadline = computeSharpReplyDeadline(submittedAt);
+    try {
+      await pb("/api/collections/sales_applications/records", { method: "POST", body: pipeline });
+    } catch (error) {
+      console.error("Failed to store Sharp application:", error);
+      return NextResponse.json({ error: "Could not record application" }, { status: 500, headers });
+    }
+    const receiptHtml = `<p>Hi${contact_name ? ` ${escapeHtml(contact_name)}` : ""},</p><p>Thanks for your inquiry about Sharp Tier. We received it.</p><p>One of the team will review it and send a written decision <strong>${escapeHtml(deadline.display)}</strong> (Europe/Athens).</p><p>That decision will either confirm fit and offer a 20-minute intro, ask a short follow-up, or recommend a lower tier.</p><p>If you need to reach us sooner, reply to this email.</p><p>GitDealFlow team</p>`;
+    const receipt = await fetch("https://api.resend.com/emails", { method: "POST", headers: { Authorization: `Bearer ${RESEND_API_KEY}`, "Content-Type": "application/json" }, body: JSON.stringify({ from: `${FROM_NAME} <${FROM_EMAIL}>`, bcc: "sales@sipiteno.com", to: email, reply_to: TO_EMAIL, subject: "GitDealFlow - Sharp Tier inquiry received", html: receiptHtml }) });
+    if (!receipt.ok) return NextResponse.json({ error: "Could not send confirmation" }, { status: 500, headers });
     const ua = clip(request.headers.get("user-agent") || "", 200);
 
     const html = applicationEmailHtml({
@@ -213,8 +218,8 @@ export async function POST(request: Request) {
     return NextResponse.json(
       {
         ok: true,
-        message:
-          "Application received. The Data Nerd reads every one personally and replies within 48 hours.",
+        message: "Application received and confirmation sent.",
+        deadline,
       },
       { headers },
     );
