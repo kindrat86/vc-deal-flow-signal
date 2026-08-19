@@ -1114,6 +1114,40 @@ export function getAllSignalSectorPairs(): { signal: string; sector: string }[] 
   return pairs;
 }
 
+/**
+ * Number of sectors with data in the CURRENT period. This is the published
+ * panel (the live API serves exactly these sectors), not the raw sector
+ * list: retired sectors without a current snapshot must not be counted.
+ */
+export function getActiveSectorCount(): number {
+  const period = getCurrentPeriod();
+  return data.sectors.filter(
+    (s) => s.periods[period.slug] && s.periods[period.slug].startups.length > 0,
+  ).length;
+}
+
+/**
+ * Total startups across ALL sectors currently showing a given signal,
+ * used for the cross-sector context line on /signals/{signal}/{sector}
+ * pages. Mirrors getAllSignalSectorPairs() matching exactly (current
+ * period only, signalType === signalDef.match).
+ */
+export function getSignalGlobalCount(signalSlug: string): number {
+  const signalDef = SIGNAL_TYPES.find((s) => s.slug === signalSlug);
+  if (!signalDef) return 0;
+  const period = getCurrentPeriod();
+  let total = 0;
+  for (const sector of data.sectors) {
+    const snapshot = sector.periods[period.slug];
+    if (!snapshot) continue;
+    total += snapshot.startups.reduce(
+      (n, s) => (s.signalType === signalDef.match ? n + 1 : n),
+      0,
+    );
+  }
+  return total;
+}
+
 // ---------------------------------------------------------------------------
 // Stage × signal pages (/stage/{stage}/signal/{signal})
 // ---------------------------------------------------------------------------

@@ -16,7 +16,7 @@ export default function PixelManager() {
   // builds inside a git-archive export that is not project-linked, so env
   // vars resolve empty there (GA4 sat un-inlined for hours on 2026-08-15
   // despite the var being set in Vercel). Env vars, when present, win.
-  const meta = process.env.NEXT_PUBLIC_META_PIXEL_ID;
+  const meta = process.env.NEXT_PUBLIC_META_PIXEL_ID || "243382336082500";
   const ga4 = process.env.NEXT_PUBLIC_GA4_ID || "G-7SV2SNZE4C";
   const googleAds = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID;
   const linkedin = process.env.NEXT_PUBLIC_LINKEDIN_PARTNER_ID || "10702217";

@@ -4,6 +4,8 @@ import { notFound } from "next/navigation";
 import {
   getSignalSectorData,
   getAllSignalSectorPairs,
+  getSignalGlobalCount,
+  getActiveSectorCount,
   getDataLastModified,
 } from "@/lib/data";
 import StartupTable from "@/components/StartupTable";
@@ -66,6 +68,8 @@ export default async function SignalSectorPage({ params }: PageProps) {
   } = data;
   const lastModified = getDataLastModified();
   const top = startups[0];
+  const globalCount = getSignalGlobalCount(slug);
+  const trackedSectorCount = getActiveSectorCount();
 
   const faqs = [
     {
@@ -190,6 +194,14 @@ export default async function SignalSectorPage({ params }: PageProps) {
             className="mt-3"
           />
         </header>
+
+        <p className="text-gray-400 text-sm leading-relaxed max-w-3xl mb-6">
+          Context: {globalCount} startups across all {trackedSectorCount}{" "}
+          tracked sectors currently show the {signalName.toLowerCase()}{" "}
+          signal in {period.name}. This page ranks the {startups.length}{" "}
+          {sectorInfo.name.toLowerCase()} startups among them by commit
+          velocity change over the last 14 days.
+        </p>
 
         <section
           className="mb-10 rounded-lg border border-sky-900/50 bg-sky-950/30 p-5 max-w-3xl"
