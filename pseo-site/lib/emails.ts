@@ -106,7 +106,7 @@ export const SOAP_OPERA_EMAILS = [
 <p>Every Sunday from here on, I'll send you five startups in your sectors that are quietly taking off, teams shipping faster, contributors piling in, new infrastructure going up. The patterns that tend to show up 21 to 47 days before the deck circulates.</p>
 <p>Tomorrow, I want to challenge something you probably believe about whether public engineering data is even worth reading. Most of the people you trust on this are wrong, and the reason they're wrong is also why your current deal flow looks the way it does.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
-<p style="color:#64748b;font-size:14px;">P.S. If you want the full panel, 209 ranked orgs, filters by sector and stage, weekly refresh, the Dashboard is €9.97/mo founding-member, locked forever, closes when the cohort fills: <a href="${SITE}/dashboard" style="color:#0ea5e9;">${SITE}/dashboard</a></p>
+<p style="color:#64748b;font-size:14px;">P.S. If you want the full panel, 209 ranked orgs, filters by sector and stage, weekly refresh, the Dashboard is €49/mo: <a href="${SITE}/dashboard" style="color:#0ea5e9;">${SITE}/dashboard</a></p>
 <p style="color:#64748b;font-size:14px;">P.P.S. The full methodology is published as an SSRN preprint (n=219, peer-reviewable): <a href="https://ssrn.com/abstract=6606558" style="color:#0ea5e9;">ssrn.com/abstract=6606558</a>. Read it before tomorrow's email and you'll see what's coming.</p>
 `),
   },
@@ -230,7 +230,7 @@ Sunday digest. Wednesday filter. End-of-quarter sweep. The Acceleration Watch is
 <p><strong>And here's the Status half, the part nobody puts on a sales page.</strong> Six months from now, when the deal goes from quiet to obvious, your name is on it. The pipeline note in the partner meeting reads "GitHub commit-velocity flagged this on 2026-04-12", a date six weeks before everyone else opened Crunchbase. You stop being the analyst chasing decks and start being the partner the other partners ping when the next round of breakouts is due. That's the identity shift. The Wealth comes from the timing. The Status comes from being the one whose timing is repeatable.</p>
 <p>That's not a hypothetical. That's what a Tuesday looks like, every week, when the Dashboard is on your screen. Read the long version of the identity shift on <a href="${SIGNALS}/identity" style="color:#0ea5e9;">${SIGNALS}/identity</a>: seven before/after lines, three archetypes, no sales pitch.</p>
 <hr style="border:none;border-top:1px solid #e2e8f0;margin:24px 0;">
-<p>Here's what's actually inside the €9.97/mo founding-member Dashboard.</p>
+<p>Here's what's actually inside the €49/mo Dashboard.</p>
 <p>209 ranked orgs. Not a static list, a living panel where companies move up and down based on real GitHub API data, refreshed every Monday at 09:00 UTC.</p>
 <p>You can filter by:</p>
 <ul>
@@ -242,9 +242,9 @@ Sunday digest. Wednesday filter. End-of-quarter sweep. The Acceleration Watch is
 <p>What pitch decks tell you: what the founder <em>wants</em> you to believe.<br>
 What commit velocity tells you: what the engineering team is <em>actually doing</em>.</p>
 <p>One is a narrative. The other is behavior.</p>
-<p>The 8-object stack, Dashboard, 219-startup Backtest CSV, monthly Sector Deep-Dive PDF, <a href="https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn" style="color:#0ea5e9;">Chrome Extension #1 (Crunchbase + Wellfound badge)</a>, <a href="https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm" style="color:#0ea5e9;">Chrome Extension #2 (VC GitHub Lookup, hover any repo)</a>, Claude MCP Server, async Watchlist Build, Methodology Vault, totals €1,980 of standalone value. Founding-member price €9.97/mo, locked forever, 60-day no-questions refund.</p>
-<p><strong>Founding-member window closes May 15</strong> or at 30 signups, whichever comes first. After that, the Dashboard goes to €49/mo permanently.</p>
-<p><a href="${SITE}/dashboard" style="color:#0ea5e9;font-weight:600;">Lock in founding price &rarr;</a></p>
+<p>The 8-object stack, Dashboard, 219-startup Backtest CSV, monthly Sector Deep-Dive PDF, <a href="https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn" style="color:#0ea5e9;">Chrome Extension #1 (Crunchbase + Wellfound badge)</a>, <a href="https://chromewebstore.google.com/detail/vc-github-lookup-%E2%80%94-startu/plgngijmloeljfkenecdkhiblcfcbblm" style="color:#0ea5e9;">Chrome Extension #2 (VC GitHub Lookup, hover any repo)</a>, Claude MCP Server, async Watchlist Build, Methodology Vault, totals €1,980 of standalone value. €49/mo, 60-day no-questions refund.</p>
+<p><strong>Dashboard is €49/mo.</strong> The founding-member rate (€9.97/mo) closed June 30 and is honored only for subscribers who joined before that date. 60-day no-questions refund.</p>
+<p><a href="${SITE}/dashboard" style="color:#0ea5e9;font-weight:600;">Get the Dashboard &rarr;</a></p>
 <p>If the free digest is enough for now, that's fine too. You'll keep getting it every Sunday.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
 <p style="color:#64748b;font-size:14px;">P.S. Tomorrow I'll send you the 12-minute walkthrough of the Insider Circle, different rung, different reader. I send it once and never push it again.</p>
@@ -260,7 +260,7 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
 <ul>
 <li>A week of context (Day 0 through Day 5).</li>
 <li>The Sunday digest (your free forever).</li>
-<li>The Dashboard offer (€9.97/mo, founding-member, closes May 15).</li>
+<li>The Dashboard offer (€49/mo).</li>
 <li>The €7 First Look Pass (if you grabbed one).</li>
 </ul>
 <p>One awkward thing before I send the link. You've gotten a week of email from someone who signs as "The Data Nerd" and doesn't put a face on the website. That's deliberate, the methodology is reproducible from public GitHub data, n=219, and every claim is recoverable from the SSRN paper without me in the loop. The whole product rests on the data being more credible than the founder. If you want a face, trust the dataset, not the person. If you want the founder, the LLC sits behind a public registration, the Chrome Web Store + Smithery + Product Hunt reviews are real-name, and replying to this email lands with a human inside one business day. Anonymity here is "trust the math," not "trust me", and I'd rather you find the first more comfortable than the second.</p>
@@ -274,7 +274,7 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
 <li>The close (a future-pace mental movie of August 2026)</li>
 </ul>
 <p><a href="${SITE}/insider" style="color:#0ea5e9;font-weight:600;">Read the walkthrough &rarr;</a></p>
-<p>If at the end you want in: €97/mo, founding-member price, locked forever, 60-day no-questions refund. If at the end you want out: keep reading the free digest. The free digest stays free, with or without you joining the Insider Circle. Nothing about this newsletter changes.</p>
+<p>If at the end you want in: €197/mo, 60-day no-questions refund. If at the end you want out: keep reading the free digest. The free digest stays free, with or without you joining the Insider Circle. Nothing about this newsletter changes.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
 <p style="color:#64748b;font-size:14px;">P.S. Insider Circle members get next Sunday's 5 <em>24 hours early</em> in the private Telegram group. That's not a feature line on the page; that's the rhythm of the room.</p>
 `),
@@ -375,7 +375,7 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
 <p>The deck didn't show any of that. The deck couldn't show any of that, it's not a thing that fits on a slide. The data was on github.com the whole time. Free. Public. Indexed by Google. I just hadn't looked.</p>
 <p>That's the gap this product exists for. Not "use this instead of decks", use this <em>before</em> the deck arrives, so when the deck does, you already know the company's shape.</p>
 <p>Talk soon, <br>${FROM_NAME}</p>
-<p style="color:#64748b;font-size:14px;">P.S. The dashboard ranks the same kind of pre-deck signals across 209 venture-backed orgs every Monday. €9.97/mo founding price, locked forever: <a href="${SITE}/dashboard" style="color:#0ea5e9;">${SITE}/dashboard</a></p>
+<p style="color:#64748b;font-size:14px;">P.S. The dashboard ranks the same kind of pre-deck signals across 209 venture-backed orgs every Monday. €49/mo: <a href="${SITE}/dashboard" style="color:#0ea5e9;">${SITE}/dashboard</a></p>
 `),
   },
 
@@ -436,8 +436,8 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
     html: wrap(`
 <p>You've been on this list for about a month. Long enough to know whether the rhythm fits.</p>
 <p>The free Sunday digest stays exactly as it is, five startups every Monday morning, sector-tagged, no commitment, forever. If that's the right cadence for the way you write checks, keep doing what you're doing. I'd rather have you reading the free version for ten years than upgrade once and resent it.</p>
-<p>The one real time-bounded decision is the founding-member price on the Dashboard.</p>
-<p>It's €9.97/mo right now. Locked forever for everyone who joins before the founding cohort closes. After that the standard price is €29/mo for new subscribers, and the founding-cohort price is honored only for subscribers who joined before the close. I haven't set a hard close date publicly, but the soft target is when the subscriber count crosses 1,000 paying, at which point the rhythm of the product is established and the founding-price chapter closes.</p>
+<p>The one real decision is the Dashboard price.</p>
+<p>It's €49/mo, month to month. The founding-member rate (€9.97/mo) closed June 30 and is honored only for subscribers who joined before that date.</p>
 <p>If the dashboard fits the way you source deals, the live ranked panel, the 219-startup panel dataset, the monthly sector deep-dive PDF, the methodology source, the 30-day Signal-or-It's-Free guarantee, that's the rung where the math works for most readers. €49 × 12 is €588 for the year. One missed angel cheque pays it back forty times over.</p>
 <p>If it doesn't fit, no problem. The free digest stays. The 30-day welcome sequence ends here, the rhythm continues. You'll get a Sunday digest this weekend like always.</p>
 <p>Talk soon, <br>${FROM_NAME}</p>
@@ -458,10 +458,10 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
 <p>The list publishes Mondays at 09:00 UTC. He saw it Sunday night, but only because I had forwarded my Insider Circle briefing two hours after I sent it. The public list wouldn't have hit his inbox for another nine hours. By the time it had, the founder he wanted to reach would have had four other investors in DMs.</p>
 <p>That's the only thing the Insider Circle actually sells. Same ten ranked names, sent Sunday at 09:00 UTC instead of Monday. One full sourcing day before any other investor sees them.</p>
 <p>Everything else, the closed Telegram group, the JSON/CSV API, the custom watchlist co-built around your thesis, the webhooks, the direct founder line, is a tool that makes the Sunday-evening rhythm easier. The product is the 24-hour lead.</p>
-<p>If you write more than ten checks a year, the math is roughly: one founder per quarter that you reached because you had a head-start. At a €5k-€50k angel range with even a 3× exit on one in five, that's somewhere between €15k and €150k of expected value per Sunday-night head-start. €97/mo is €1,164 a year. The numbers don't work the other way.</p>
+<p>If you write more than ten checks a year, the math is roughly: one founder per quarter that you reached because you had a head-start. At a €5k-€50k angel range with even a 3× exit on one in five, that's somewhere between €15k and €150k of expected value per Sunday-night head-start. €197/mo is €2,364 a year. The numbers don't work the other way.</p>
 <p>The full case is on the page: <a href="${SIGNALS}/insider" style="color:#0ea5e9;">${SIGNALS}/insider</a></p>
-<p>Founding-member rate is €97/mo, locked for the lifetime of the subscription. Public hike to €197 lands the day a regulated investor tool reviews us. The Telegram group is one-seat-per-subscription; founding members keep their seat permanently even if the cap is later lowered.</p>
-<p>If Insider isn't right for you yet, no problem, the free digest stays free, and Dashboard at €9.97/mo is the right rung for most of you.</p>
+<p>Insider Circle is €197/mo. The Telegram group is one-seat-per-subscription.</p>
+<p>If Insider isn't right for you yet, no problem, the free digest stays free, and Dashboard at €49/mo is the right rung for most of you.</p>
 <p>Talk soon, <br>${FROM_NAME}</p>
 <p style="color:#64748b;font-size:14px;">P.S. The Sunday briefing arrives 24h before the public Monday list. That's it. That's the product.</p>
 `),
@@ -919,7 +919,7 @@ export const CHALLENGE_EMAILS = [
 <hr style="border:none;border-top:1px solid #1e293b;margin:24px 0;">
 <p><strong>Three optional rungs from here.</strong> Stacked from least to most committed. Pick none and the framework is still yours.</p>
 <p><strong>Rung 0, Free Sunday Digest.</strong> Five named GitHub orgs every Sunday, scored against the same 7-signal composite you just learned. <a href="${SITE}/#signup" style="color:#0ea5e9;">${SITE}/#signup</a>. Free forever, no upgrade pressure.</p>
-<p><strong>Rung 1, Dashboard, €9.97/mo founding rate.</strong> 140 venture-backed startups ranked by 14-day commit-velocity acceleration, refreshed every Monday at 06:00 UTC. Filter by sector, stage, geography. The 219-startup panel dataset. Two free Chrome extensions. The free MCP server (6 tools across Claude / Cursor / Windsurf). 30-day Signal-or-It's-Free guarantee, reply REFUND, no questions. Standalone retail of the components: ~€1,431/yr. Founding rate locks for life. <a href="${SITE}/pricing#dashboard" style="color:#0ea5e9;">${SITE}/pricing#dashboard</a></p>
+<p><strong>Rung 1, Dashboard, €49/mo.</strong> 140 venture-backed startups ranked by 14-day commit-velocity acceleration, refreshed every Monday at 06:00 UTC. Filter by sector, stage, geography. The 219-startup panel dataset. Two free Chrome extensions. The free MCP server (6 tools across Claude / Cursor / Windsurf). 30-day Signal-or-It's-Free guarantee, reply REFUND, no questions. Standalone retail of the components: ~€1,431/yr. <a href="${SITE}/pricing#dashboard" style="color:#0ea5e9;">${SITE}/pricing#dashboard</a></p>
 <p><strong>Rung 2, Custom Sector Sweep, €1,997 one-time.</strong> Pick one sector, we deliver the 40-page written deep-dive in 5 business days: top 25 ranked orgs, contributor maps, three pre-Crunchbase breakouts, raw CSV, 30-day async Q&A. Capped at 8 per quarter, bandwidth, not artificial scarcity. <a href="${SIGNALS}/sector-sweep" style="color:#0ea5e9;">${SIGNALS}/sector-sweep</a></p>
 <p>Or pick none. Whatever you do, even if you just keep running the manual version yourself, you now have a sourcing process that works without paying anyone. That's the point of the week.</p>
 <p>Tomorrow: a Day-8 recap with one ask, and what to expect from this address from here on.</p>
@@ -1352,7 +1352,7 @@ export const CHALLENGE_EMAILS = [
 </ol>
 <p><strong>Match by usage, not FOMO.</strong></p>
 <p>Some readers find the free Sunday digest is correct, full stop, the manual rhythm is enough and the upgrade is FOMO. That's a valid outcome. The framework is yours either way.</p>
-<p>The Dashboard's founding rate (€9.97/mo) locks for life. If usage data points to Dashboard, the founding-rate clock is the only thing that makes the timing matter, pricing reverts after the 2026 cohort closes.</p>
+<p>The Dashboard is €49/mo. If usage data points to Dashboard, upgrade when it fits, there's no founding-rate clock left to race.</p>
 <p><strong>Tomorrow:</strong> graduation. The Stack Slide, the three rungs, and the one decision. The framework is already yours.</p>
 <p>Talk soon, <br>${FROM_NAME}</p>
 `),
@@ -1370,7 +1370,7 @@ export const CHALLENGE_EMAILS = [
 <hr style="border:none;border-top:1px solid #1e293b;margin:24px 0;">
 <p><strong>Three optional rungs from here.</strong> Stacked from least to most committed. Pick none and the system is still yours.</p>
 <p><strong>Rung 0, Free Sunday Digest.</strong> Five named startups every Sunday, scored against the same 7-signal composite you just learned. <a href="${SITE}/#signup" style="color:#0ea5e9;">${SITE}/#signup</a>. Free forever, no upgrade pressure.</p>
-<p><strong>Rung 1, Dashboard, €9.97/mo founding rate.</strong> 140 venture-backed startups ranked by 14-day commit-velocity acceleration, refreshed every Monday at 06:00 UTC. Filter by sector, stage, geography. The 219-startup panel dataset. Two free Chrome extensions. The free MCP server. 30-day Signal-or-It's-Free guarantee. Founding rate locks for life. <a href="${SITE}/pricing#dashboard" style="color:#0ea5e9;">${SITE}/pricing#dashboard</a></p>
+<p><strong>Rung 1, Dashboard, €49/mo.</strong> 140 venture-backed startups ranked by 14-day commit-velocity acceleration, refreshed every Monday at 06:00 UTC. Filter by sector, stage, geography. The 219-startup panel dataset. Two free Chrome extensions. The free MCP server. 30-day Signal-or-It's-Free guarantee. <a href="${SITE}/pricing#dashboard" style="color:#0ea5e9;">${SITE}/pricing#dashboard</a></p>
 <p><strong>Rung 2, Custom Sector Sweep, €1,997 one-time.</strong> Pick one sector, we deliver the 40-page written deep-dive in 5 business days: top 25 ranked orgs, contributor maps, three pre-Crunchbase breakouts, raw CSV, 30-day async Q&amp;A. Capped at 8 per quarter. <a href="${SIGNALS}/sector-sweep" style="color:#0ea5e9;">${SIGNALS}/sector-sweep</a></p>
 <p>Or pick none. The framework is licensed CC BY 4.0; nothing about the rung selection changes your ownership.</p>
 <hr style="border:none;border-top:1px solid #1e293b;margin:24px 0;">
@@ -1447,7 +1447,7 @@ export const LAUNCH_EMAILS = [
 <p>Quick honest checkpoint. The cart for Agent Credits at €0.19/call has been open four days. As of this email, the launch-window count is at the kind of number where I can be specific without anyone being identifiable: somewhere between 'enough to validate the pricing' and 'the third email in this sequence is doing real work.'</p>
 <p>Two reasons you might not have bought yet, both fine:</p>
 <ol>
-<li><strong>Your sourcing isn't agent-routed yet.</strong> Stay on the free digest. The launch doesn't change anything about the human-facing tiers. Free Sunday digest stays free, €9.97 founding price on the Dashboard stays open, none of that depends on Agent Credits selling well.</li>
+<li><strong>Your sourcing isn't agent-routed yet.</strong> Stay on the free digest. The launch doesn't change anything about the human-facing tiers. Free Sunday digest stays free, the €49/mo Dashboard stays open, none of that depends on Agent Credits selling well.</li>
 <li><strong>You want to test before paying.</strong> The free 5-call sample at <a href="${SIGNALS}/agents/credits/sample" style="color:#0ea5e9;">${SIGNALS}/agents/credits/sample</a> takes 90 seconds. No card. Five real deep-signal calls with the same MCP tool you'd use after upgrading. If it doesn't fit your agent's flow, walk away, those five calls cost you nothing.</li>
 </ol>
 <p>The launch-window pricing, €19 for 100 calls, €0.19/call locked forever, closes at midnight UTC on May 20. After that the standard rate is €29 per 100 calls (€0.29/call) for new buyers. Existing buyers keep €0.19 indefinitely on every future top-up.</p>
@@ -1505,7 +1505,7 @@ export const BOOK_DRIP = [
 <p>The whole trace cost €0 in marginal data spend. Public commit graph, weekly cron, deterministic regression. The two-hour version of this analysis collapses to a fifteen-minute scan once the stack is wired up, chapters four through nine define each signal, chapter ten ties them into the scoring rubric.</p>
 <p>Day four, you'll get the unedited transcripts I promised, two early-stage investors who run a version of this daily, names redacted at their request, operational detail intact.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
-<p style="color:#64748b;font-size:14px;">P.S. The tool that ran this trace is the Dashboard, it's a tool, not a fund; I'm not investing alongside you, I just surface the startups heating up in your sectors and you make the calls. Weekly refresh, sector and stage filters, €9.97/mo founding-member: <a href="${SIGNALS}" style="color:#0ea5e9;">${SIGNALS}</a>.</p>
+<p style="color:#64748b;font-size:14px;">P.S. The tool that ran this trace is the Dashboard, it's a tool, not a fund; I'm not investing alongside you, I just surface the startups heating up in your sectors and you make the calls. Weekly refresh, sector and stage filters, €49/mo: <a href="${SIGNALS}" style="color:#0ea5e9;">${SIGNALS}</a>.</p>
 `, "book-day1"),
   },
   {
@@ -1550,7 +1550,7 @@ export const BOOK_DRIP = [
 <p>Reply turnaround is 24-72 hours during the working week. Outside the thirty-day window I still read everything, but I stop promising a personal reply.</p>
 <p>If nothing in the book broke for you and you've got nothing to ask, that's also fine. The seven-signal stack should mostly be self-contained by the time you finish chapter ten. Save this email; the window holds whether you use it on day eight or day twenty-nine.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
-<p style="color:#64748b;font-size:14px;">P.S. If running this manually starts to feel like a part-time job, the Dashboard is the same trace, automated, weekly. It's a tool, not a fund: it surfaces the startups heating up in your sectors and you make the calls, no code-reading required: <a href="${SIGNALS}" style="color:#0ea5e9;">${SIGNALS}</a>. The book buyer's price (€9.97/mo founding) holds for thirty days from your purchase, same window as this reply offer.</p>
+<p style="color:#64748b;font-size:14px;">P.S. If running this manually starts to feel like a part-time job, the Dashboard is the same trace, automated, weekly. It's a tool, not a fund: it surfaces the startups heating up in your sectors and you make the calls, no code-reading required: <a href="${SIGNALS}" style="color:#0ea5e9;">${SIGNALS}</a>. The Dashboard (€49/mo) is there when you're ready, same window as this reply offer.</p>
 `, "book-day7"),
   },
 ];
@@ -1609,7 +1609,7 @@ export const FIRSTLOOK_REACTIVATION_DRIP = [
 <p><a href="${SIGNALS}/pricing?utm_source=email&utm_medium=firstlook-credit&utm_campaign=d10" style="color:#0ea5e9;font-weight:600;">Apply the credit (€42 first month) &rarr;</a></p>
 <p>If the Dashboard isn't right for you, no pressure, the free Sunday digest still hits as usual, the deep-dive PDF is still yours forever, and we both move on. The credit just expires; nothing breaks.</p>
 <p>${FROM_NAME}</p>
-<p style="color:#64748b;font-size:14px;">P.S. Founding rate is locked for the lifetime of the subscription. The price moves to €49/mo for the public hike later this year, but if you lock now you stay at €9.97/mo (€2.97 first month with the credit) forever.</p>
+<p style="color:#64748b;font-size:14px;">P.S. The Dashboard is €49/mo. With your €7 credit, the first month is €42.</p>
 `, "firstlook-d10"),
   },
   {
@@ -1617,12 +1617,12 @@ export const FIRSTLOOK_REACTIVATION_DRIP = [
     delayMs: 13 * ONE_DAY,
     html: wrap(`
 <p>One last note on this. Your 14-day Dashboard-credit window closes tomorrow.</p>
-<p>I don't extend it. Not because it's a hard rule of physics, but because the whole point of a 14-day window is that it ends, a credit that never expires isn't a credit, it's a price cut, and that breaks the founding-rate promise to everyone who locked in earlier.</p>
+<p>I don't extend it. Not because it's a hard rule of physics, but because the whole point of a 14-day window is that it ends, a credit that never expires isn't a credit, it's a price cut, and that breaks the price promise to everyone who already paid.</p>
 <p>Two paths from here.</p>
-<p><strong>Path 1, apply the credit, lock the founding rate.</strong> Your first month is €2.97 (€9.97 minus your €7 First Look credit). Founding rate is locked for the lifetime of the subscription, even when the public price moves to €49/mo. The deep dive you already paid for becomes the first month of a continuous engine.</p>
-<p><a href="${SIGNALS}/pricing?utm_source=email&utm_medium=firstlook-credit&utm_campaign=d13" style="color:#0ea5e9;font-weight:600;">Lock the founding rate now &rarr;</a></p>
+<p><strong>Path 1, apply the credit, lock the founding rate.</strong> Your first month is €42 (€49 minus your €7 First Look credit). The deep dive you already paid for becomes the first month of a continuous engine.</p>
+<p><a href="${SIGNALS}/pricing?utm_source=email&utm_medium=firstlook-credit&utm_campaign=d13" style="color:#0ea5e9;font-weight:600;">Apply the credit now &rarr;</a></p>
 <p><strong>Path 2, keep the deep dive, skip the upgrade.</strong> The PDF + CSV are yours forever. The free Sunday digest still hits every Monday. The credit expires, the €7 stays a one-time deep-dive purchase, no resentment, no follow-up pressure from me. The follow-up sequence ends here on this rung.</p>
-<p>Either path works. The only path that doesn't is "wait and see", because tomorrow the credit becomes a regular €9.97 first month and the founding rate may close to new buyers later this year.</p>
+<p>Either path works. The only path that doesn't is "wait and see", because tomorrow the credit becomes a regular €49 first month.</p>
 <p>If you want to keep the option open without committing tonight, reply <code>HOLD</code> and I'll extend the window by 7 days, one time. Don't extend without replying, I won't chase.</p>
 <p>${FROM_NAME}</p>
 <p style="color:#64748b;font-size:14px;">P.S. Three years, two refunds. If the deep dive wasn't worth €7, reply REFUND now (still inside the 30-day refund window even if the credit window has closed). The two refunds were issued the same day each was asked. The standard is honest, not aggressive.</p>
@@ -1696,7 +1696,7 @@ const D30_T: SoapOperaEmail = {
 <p>Here's the test, plain. You pick one sector at checkout, fintech infra, AI/ML, dev tools, healthtech, whichever matches your thesis closest. Within 24 hours I send you the full Sector Deep Dive PDF: top 25 ranked orgs, 14-day acceleration deltas, contributor maps, signal-type classification, plus the top 3 names that haven't shown up on Crunchbase yet. Plus the raw CSV. Plus a written walkthrough of what stood out.</p>
 <p>If the deep dive surfaces three orgs you'd genuinely consider writing a check into, the €7 was the right call. The First Look Pass also <em>credits 100% to the Dashboard</em> if you upgrade within 14 days, so you don't pay twice.</p>
 <p>If it surfaces nothing useful, you keep the report and the CSV and you've spent €7 to find that out. Either way, you've tested step 5 of the conversion story on your own thesis without committing.</p>
-<p>The Dashboard founding rate (€9.97/mo, locked forever) is the right rung <em>after</em> the First Look proves out, not before. No Insider or Sector Sweep pitch from me at your tier, those are tools for fund-scale operators, and you're not there yet.</p>
+<p>The Dashboard (€49/mo) is the right rung <em>after</em> the First Look proves out, not before. No Insider or Sector Sweep pitch from me at your tier, those are tools for fund-scale operators, and you're not there yet.</p>
 <p>The free digest stays free either way. Sunday hits as usual this weekend.</p>
 <p>Talk soon, <br>${FROM_NAME}</p>
 <p style="color:#64748b;font-size:14px;">P.S. First Look checkout (€7, 24h delivery, credits 100% to Dashboard): <a href="${SITE}/#firstlook" style="color:#0ea5e9;">${SITE}/#firstlook</a> · Quiz if you'd rather see all the rungs first: <a href="${SIGNALS}/quiz" style="color:#0ea5e9;">${SIGNALS}/quiz</a></p>
@@ -1713,7 +1713,7 @@ const D30_I: SoapOperaEmail = {
   html: wrap(`
 <p>You've been on this list for about a month. Long enough to know whether the rhythm fits.</p>
 <p>You told me on signup that you write 20+ checks per year, or you run a fund or syndicate. Translation: the €49/mo Dashboard is too small a tool to register on your operating budget. The right rungs for your tier are the <strong>Insider Circle</strong> and the <strong>Sector Sweep</strong>.</p>
-<p><strong>Insider Circle, €97/mo, founding rate, locked for the lifetime of the subscription.</strong></p>
+<p><strong>Insider Circle, €197/mo.</strong></p>
 <ul>
 <li>Next Sunday's 5 picks land in your inbox <em>24 hours before</em> the public Monday digest. One full sourcing day before any other investor sees them.</li>
 <li>Closed Telegram with the founder and the rest of the fund-tier subscribers. Real-time pings when an org crosses the 2× contributor-influx + commit-velocity-acceleration threshold.</li>
@@ -1727,10 +1727,10 @@ const D30_I: SoapOperaEmail = {
 <li>100% credited to Insider Circle if you upgrade within 60 days of receiving the Sweep, that's roughly your first 20 months of Insider, paid in full.</li>
 <li>30-day Signal-or-It's-Free guarantee. If we don't surface three orgs you didn't already know about, reply REFUND.</li>
 </ul>
-<p>The math at fund scale: one founder per quarter that you reached because you had a Sunday-night head-start, at a €5k-€50k angel range with even a 3× exit on one in five, lands somewhere between €15k and €150k of expected value per head-start. €197/mo is €1,164/yr. The numbers don't work the other way.</p>
+<p>The math at fund scale: one founder per quarter that you reached because you had a Sunday-night head-start, at a €5k-€50k angel range with even a 3× exit on one in five, lands somewhere between €15k and €150k of expected value per head-start. €197/mo is €2,364/yr. The numbers don't work the other way.</p>
 <p>The free Sunday digest stays free regardless. The 30-day welcome ends here, the rhythm continues. Sunday hits as usual this weekend.</p>
 <p>Talk soon, <br>${FROM_NAME}</p>
-<p style="color:#64748b;font-size:14px;">P.S. Insider founding rate (€97/mo, 24h lead, closed Telegram): <a href="${SIGNALS}/insider" style="color:#0ea5e9;">${SIGNALS}/insider</a> · Sector Sweep (€1,997, 7 of 8 Q3 slots open): <a href="${SIGNALS}/sector-sweep" style="color:#0ea5e9;">${SIGNALS}/sector-sweep</a> · Email <a href="mailto:signals@gitdealflow.com?subject=Sector%20Sweep" style="color:#0ea5e9;">signals@gitdealflow.com</a> with the sector and the spec lands in your inbox inside one business day.</p>
+<p style="color:#64748b;font-size:14px;">P.S. Insider Circle (€197/mo, 24h lead, closed Telegram): <a href="${SIGNALS}/insider" style="color:#0ea5e9;">${SIGNALS}/insider</a> · Sector Sweep (€1,997, 7 of 8 Q3 slots open): <a href="${SIGNALS}/sector-sweep" style="color:#0ea5e9;">${SIGNALS}/sector-sweep</a> · Email <a href="mailto:signals@gitdealflow.com?subject=Sector%20Sweep" style="color:#0ea5e9;">signals@gitdealflow.com</a> with the sector and the spec lands in your inbox inside one business day.</p>
 `),
 };
 
@@ -1780,10 +1780,10 @@ const D0_I: SoapOperaEmail = {
 <p>Welcome. First, plainly, so there's no confusion: GitDealFlow is a tool, not a fund. I'm not a VC, not competing with you for the deal, it reads startups' public GitHub activity and flags the ones heating up in your sectors before they raise. You told me on the quiz that you write 20+ checks per year, run a fund, or run a syndicate. The &euro;49/mo Dashboard is too small to register on your operating budget, so I'm going to spend the next 90 days speaking to the rungs that matter at your scale: the <strong>Insider Circle</strong> (&euro;197/mo, 24-hour lead) and the <strong>Sector Sweep</strong> (&euro;1,997 one-time, 100% credited toward Insider).</p>
 <p>The tool started with a missed Series A. A fintech-infra startup that was suddenly shipping faster, four new senior contributors, three new infrastructure repos in a fortnight. I'd flagged it in my notebook. The investors who actually wrote the cheque had read the same public GitHub signal, they just had a system that made the read mechanical instead of episodic.</p>
 <p>Across 350+ venture-backed orgs, that system is now the panel that powers two products at your tier. The Insider Circle ships next Sunday's five picks <em>24 hours before</em> the public Monday digest, one full sourcing day before any other investor sees them, plus closed Telegram, JSON/CSV API, and a custom watchlist co-built around your fund thesis. The Sector Sweep is a 40-page custom PDF on your chosen sector, three pre-Crunchbase early-stage targets, 14-day Q&amp;A, useful as IC-memo material at fund scale, and the &euro;1,997 credits 100% to Insider if you upgrade within 60 days.</p>
-<p>The math at your check volume: one founder per quarter that you reached because you had a Sunday-night head-start, at angel-range with even a 3&times; exit on one in five, lands at &euro;15k-&euro;150k of expected value per head-start. &euro;1,164/yr of Insider versus that calculus is a no-brainer if the rhythm fits.</p>
+<p>The math at your check volume: one founder per quarter that you reached because you had a Sunday-night head-start, at angel-range with even a 3&times; exit on one in five, lands at &euro;15k-&euro;150k of expected value per head-start. &euro;2,364/yr of Insider versus that calculus is a no-brainer if the rhythm fits.</p>
 <p>Tomorrow: why the "public GitHub data is noise" objection is wrong at your tier specifically, the noise floor matters more for low-volume sourcing, not the kind you're running.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
-<p style="color:#64748b;font-size:14px;">P.S. SSRN preprint (n=219, the methodology backbone): <a href="https://ssrn.com/abstract=6606558" style="color:#0ea5e9;">ssrn.com/abstract=6606558</a> &middot; Insider Circle (&euro;97/mo, 24h lead, closed Telegram): <a href="${SIGNALS}/insider" style="color:#0ea5e9;">${SIGNALS}/insider</a> &middot; Sector Sweep (&euro;1,997, capped 8/quarter): <a href="${SIGNALS}/sector-sweep" style="color:#0ea5e9;">${SIGNALS}/sector-sweep</a></p>
+<p style="color:#64748b;font-size:14px;">P.S. SSRN preprint (n=219, the methodology backbone): <a href="https://ssrn.com/abstract=6606558" style="color:#0ea5e9;">ssrn.com/abstract=6606558</a> &middot; Insider Circle (&euro;197/mo, 24h lead, closed Telegram): <a href="${SIGNALS}/insider" style="color:#0ea5e9;">${SIGNALS}/insider</a> &middot; Sector Sweep (&euro;1,997, capped 8/quarter): <a href="${SIGNALS}/sector-sweep" style="color:#0ea5e9;">${SIGNALS}/sector-sweep</a></p>
 `),
 };
 
@@ -1833,7 +1833,7 @@ const D5_I: SoapOperaEmail = {
 <p>Picture this. It's a Sunday evening in August. The Insider Circle briefing landed in your inbox at 09:00 UTC this morning, twenty-four hours before the public Acceleration Watch goes out tomorrow. Five ranked names, sector-tagged, with the JSON pre-piped into the diligence dashboard your fund's analyst built last quarter.</p>
 <p>You scan. Two names you already knew. Three you didn't. The third entry is an AI-infra startup with sustained 14-day commit-velocity acceleration above 2&times; their 90-day baseline AND contributor-Gini under 0.30, the band where the panel's own resolution rate runs ~4-of-4 over a 90-day window. You ping the founder's listed email at 21:00 from the closed Telegram channel, where the rest of the fund-tier subscribers are already comparing notes.</p>
 <p>By Monday at 09:00, when the public list goes out and another 800 readers see the same five names, you've already had a 30-minute call booked, with a follow-up scheduled for end-of-week. By the time the warm-intro version of this deal reaches consensus partners at &euro;5M-&euro;20M funds, you're three weeks into a relationship that started at angel-allocation scale.</p>
-<p>The math: one founder per quarter, head-start window of one Sunday evening, at angel range with even a 3&times; exit on one in five, is somewhere between &euro;15k and &euro;150k of expected value per head-start. Insider Circle is &euro;1,164/yr at the founding rate. The numbers don't work the other way.</p>
+<p>The math: one founder per quarter, head-start window of one Sunday evening, at angel range with even a 3&times; exit on one in five, is somewhere between &euro;15k and &euro;150k of expected value per head-start. Insider Circle is &euro;2,364/yr. The numbers don't work the other way.</p>
 <p>Plus the rest of the fund-tier scaffolding, JSON/CSV API for the diligence stack, custom watchlist co-built around your thesis on signup, webhooks, direct founder line, closed Telegram of the other fund-tier subscribers (~30 today, capped at 100 at the founding rate). At your check volume those are the tools that turn a Sunday-night briefing into a Monday-morning conversation.</p>
 <p>Tomorrow I'll address the trust problem head-on, "I've been reading email from someone who signs as 'The Data Nerd' and doesn't put a face on the website", because at your tier that's a legitimate ask, and I'd rather answer it explicitly than have it sit in your head until D90.</p>
 <p>Insider Circle case (12-minute walkthrough): <a href="${SIGNALS}/insider" style="color:#0ea5e9;font-weight:600;">${SIGNALS}/insider</a></p>
@@ -1870,7 +1870,7 @@ const D45_T: SoapOperaEmail = {
   html: wrap(`
 <p>You signed up forty-five days ago telling me you write 2-5 angel checks per year and you're building cadence. Six Sunday digests have hit your inbox. If you grabbed the &euro;7 First Look Pass somewhere along the way, the 14-page sector deep dive + raw CSV is sitting in your inbox too.</p>
 <p>The honest question at this point: <strong>did the First Look pay back?</strong></p>
-<p>If yes, three or more orgs landed that you wouldn't have surfaced otherwise, the next rung is <strong>the &euro;49/mo Dashboard</strong>. The First Look credit-back means the upgrade is &euro;0 additional out-of-pocket if you do it within 14 days of receiving the deep dive. The Dashboard is the same engine you read once for &euro;7, run weekly, refreshed every Monday at 09:00 UTC, with the live panel of 209 ranked orgs filterable by sector / stage / geography. The 8-object stack, Dashboard + 219-startup Backtest CSV + monthly Sector Deep Dive + 2 Chrome Extensions + MCP Server + async Watchlist Build + Methodology Vault + 30-day refund, totals &euro;1,980 of standalone value at &euro;9.97/mo founding rate, locked forever.</p>
+<p>If yes, three or more orgs landed that you wouldn't have surfaced otherwise, the next rung is <strong>the &euro;49/mo Dashboard</strong>. The First Look credit-back means the upgrade is &euro;0 additional out-of-pocket if you do it within 14 days of receiving the deep dive. The Dashboard is the same engine you read once for &euro;7, run weekly, refreshed every Monday at 09:00 UTC, with the live panel of 209 ranked orgs filterable by sector / stage / geography. The 8-object stack, Dashboard + 219-startup Backtest CSV + monthly Sector Deep Dive + 2 Chrome Extensions + MCP Server + async Watchlist Build + Methodology Vault + 30-day refund, totals &euro;1,980 of standalone value at &euro;49/mo.</p>
 <p>If the First Look didn't pay back, the deep dive surfaced fewer than three names you'd consider, that's actionable feedback I want to hear. Reply to this email with the sector you covered and what didn't land, and I'll either run a fresh sweep on a different sector at no charge OR refund the &euro;7 outright. The methodology has to work for the buyer's own thesis or the rung structure breaks down.</p>
 <p>If you haven't grabbed the First Look yet, the &euro;7 price is still locked at the founding rate, the credit-back to Dashboard is still 100%, and the queue is currently 24 hours. <a href="${SITE}/#firstlook" style="color:#0ea5e9;font-weight:600;">${SITE}/#firstlook</a></p>
 <p>The free digest stays free either way. Sunday hits as usual this weekend.</p>
@@ -1890,9 +1890,9 @@ const D45_I: SoapOperaEmail = {
 <p>One, the &euro;1,997 is 100% credited to Insider Circle if you upgrade within 60 days of receiving the Sweep. That's roughly your first 20 months of Insider, paid in full. Operationally: if your fund is going to subscribe to Insider anyway, the Sweep is a free upgrade with a one-time deep artefact attached.</p>
 <p>Two, the 30-day Signal-or-It's-Free guarantee covers the Sweep itself. If we don't surface three orgs you didn't already know about, reply REFUND. No forms, no calls, no questions.</p>
 <p>If your fund's thesis is genuinely focused on one sector this quarter, AI infra, dev tools, fintech rails, vertical SaaS, climate, this is the artefact that compresses three weeks of analyst work into one weekend of reading. Email <a href="mailto:signals@gitdealflow.com?subject=Sector%20Sweep" style="color:#0ea5e9;">signals@gitdealflow.com</a> with the sector and we confirm the spec inside one business day.</p>
-<p>If Insider Circle isn't running yet either, the founding-rate window (&euro;97/mo, locked for the lifetime of the subscription) is still open. The 24-hour Sunday lead is the operating leverage; everything else is plumbing.</p>
+<p>If Insider Circle isn't running yet either, Insider Circle (&euro;197/mo) is open. The 24-hour Sunday lead is the operating leverage; everything else is plumbing.</p>
 <p>Talk soon, <br>${FROM_NAME}</p>
-<p style="color:#64748b;font-size:14px;">P.S. Insider Circle (&euro;97/mo, 24h lead, closed Telegram, ~30 fund-tier subscribers): <a href="${SIGNALS}/insider" style="color:#0ea5e9;">${SIGNALS}/insider</a> &middot; Sector Sweep stack itemised: <a href="${SIGNALS}/pricing#sector-sweep-stack" style="color:#0ea5e9;">${SIGNALS}/pricing#sector-sweep-stack</a></p>
+<p style="color:#64748b;font-size:14px;">P.S. Insider Circle (&euro;197/mo, 24h lead, closed Telegram, ~30 fund-tier subscribers): <a href="${SIGNALS}/insider" style="color:#0ea5e9;">${SIGNALS}/insider</a> &middot; Sector Sweep stack itemised: <a href="${SIGNALS}/pricing#sector-sweep-stack" style="color:#0ea5e9;">${SIGNALS}/pricing#sector-sweep-stack</a></p>
 `),
 };
 

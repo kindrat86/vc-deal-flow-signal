@@ -121,7 +121,7 @@ function dashboardWelcomeEmail(email: string): { subject: string; html: string }
 <div style="margin-bottom:24px;"><strong style="color:#0ea5e9;font-size:14px;letter-spacing:1px;">VC DEAL FLOW SIGNAL</strong></div>
 <div style="font-size:16px;line-height:1.7;color:#1e293b;">
 <p>Welcome to VC Deal Flow Signal Dashboard!</p>
-<p>Your Dashboard is live. Founding members (joined before 2026-06-30) keep <strong>&euro;9.97/mo for life</strong>; the current rate is &euro;49/mo. Here's what's waiting for you:</p>
+<p>Your Dashboard is <strong>&euro;49/mo</strong>. Here's what's waiting for you:</p>
 <ul style="padding-left:20px;">
 <li>140 startups ranked by engineering acceleration</li>
 <li>Filter by sector, stage, and geography</li>
@@ -132,7 +132,7 @@ function dashboardWelcomeEmail(email: string): { subject: string; html: string }
 <p>Log in with this email address (${escapeHtml(email)}), we'll send you a magic link, no password needed.</p>
 <p>Questions? Just reply to this email.</p>
 <p style="margin-top:28px;padding:16px 18px;background:#f0f9ff;border-left:3px solid #0284c7;border-radius:4px;font-size:14px;line-height:1.6;color:#0c4a6e;">
-<strong>Already running this for an active fund?</strong> The next rung is the <a href="https://signals.gitdealflow.com/insider?utm_source=email&amp;utm_medium=dashboard-welcome&amp;utm_campaign=insider" style="color:#0284c7;font-weight:600;">Insider Circle</a>: Dashboard + private investor Telegram + monthly briefing call + custom watchlists + API access + direct line to me. €97/mo founding price (locked, list is €197). Reply <code>upgrade me</code> any time and I'll credit your current month.
+<strong>Already running this for an active fund?</strong> The next rung is the <a href="https://signals.gitdealflow.com/insider?utm_source=email&amp;utm_medium=dashboard-welcome&amp;utm_campaign=insider" style="color:#0284c7;font-weight:600;">Insider Circle</a>: Dashboard + private investor Telegram + monthly briefing call + custom watchlists + API access + direct line to me. €197/mo. Reply <code>upgrade me</code> any time and I'll credit your current month.
 </p>
 <p>The Data Nerd</p>
 </div>
@@ -157,7 +157,7 @@ function insiderWelcomeEmail(email: string): { subject: string; html: string } {
 <div style="margin-bottom:24px;"><strong style="color:#0ea5e9;font-size:14px;letter-spacing:1px;">VC DEAL FLOW SIGNAL, INSIDER CIRCLE</strong></div>
 <div style="font-size:16px;line-height:1.7;color:#1e293b;">
 <p>You're in. Welcome to the Insider Circle.</p>
-<p>Your beta price of <strong>&euro;97/mo is locked in forever</strong>. Here's everything that's included:</p>
+<p>Your Insider Circle is <strong>&euro;197/mo</strong>. Here's everything that's included:</p>
 <ul style="padding-left:20px;">
 <li>Full Dashboard access (140 startups, all filters)</li>
 <li>Private investor Telegram group</li>
@@ -258,7 +258,7 @@ function creditPackWelcomeEmail(
 </ul>
 <p>Reply to this email if you hit anything weird. I read every message.</p>
 <p style="margin-top:28px;padding:16px 18px;background:#f0f9ff;border-left:3px solid #0284c7;border-radius:4px;font-size:14px;line-height:1.6;color:#0c4a6e;">
-<strong>Hitting the API regularly for a fund?</strong> The <a href="https://signals.gitdealflow.com/insider?utm_source=email&amp;utm_medium=credits-welcome&amp;utm_campaign=insider" style="color:#0284c7;font-weight:600;">Insider Circle</a> bundles unlimited dashboard access + private investor Telegram + monthly briefing call + custom watchlists + API access + direct line to me for €97/mo (founding price, locked). Cheaper than buying credit packs once you're past ~50 deep-signal calls/month. Reply <code>insider me</code> and I'll move you over.
+<strong>Hitting the API regularly for a fund?</strong> The <a href="https://signals.gitdealflow.com/insider?utm_source=email&amp;utm_medium=credits-welcome&amp;utm_campaign=insider" style="color:#0284c7;font-weight:600;">Insider Circle</a> bundles unlimited dashboard access + private investor Telegram + monthly briefing call + custom watchlists + API access + direct line to me for €197/mo. Cheaper than buying credit packs once you're past ~50 deep-signal calls/month. Reply <code>insider me</code> and I'll move you over.
 </p>
 <p>The Data Nerd</p>
 </div>
@@ -602,7 +602,7 @@ export async function POST(request: NextRequest) {
         body: JSON.stringify({
           api_key: "phc_lyZCgvTpicjLzAO3rY2GhxuX5WUc5jQjP8ZVwwJqauX",
           event: "purchase_completed",
-          distinct_id: email,
+          distinct_id: utm.ph_distinct_id || email,
           properties: {
             $host: "signals.gitdealflow.com",
             product: "gitdealflow",
