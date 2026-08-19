@@ -5,6 +5,7 @@ import { getAllSectors, getCurrentPeriod } from "@/lib/data";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 import { BADGE_LABEL, BADGE_HEIGHT, badgeWidth, badgeValue } from "@/lib/badge-dims";
+import SeoCta from "@/components/SeoCta";
 
 const SITE = "https://signals.gitdealflow.com";
 
@@ -229,14 +230,11 @@ export default function BadgeBuilderPage() {
         </section>
 
         {/* CTA */}
-        <div className="text-center border-t border-slate-800 pt-10">
-          <p className="text-gray-400 text-sm mb-2">
-            Powered by the VC Deal Flow Signal public dataset.
-          </p>
-          <p className="text-gray-500 text-xs">
-            CC BY 4.0 · Free forever · No authentication required
-          </p>
-        </div>
+        <SeoCta
+          heading="Your badge updates weekly. Get the five breakouts it tracks, every Sunday."
+          blurb="The free Acceleration Watch: five venture-backed teams accelerating on the engineering signal, translated into plain English, 21 to 47 days before the deck circulates. No code-reading, no card."
+          className="mt-10"
+        />
       </div>
     </>
   );
