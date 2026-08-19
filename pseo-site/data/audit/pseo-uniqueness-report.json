@@ -1,18 +1,18 @@
 {
-  "generatedAt": "2026-08-15T18:18:45.582Z",
+  "generatedAt": "2026-08-19T12:28:16.817Z",
   "config": {
     "hammingThreshold": 9,
     "globalThresholdPct": 5,
     "reportOnly": false
   },
   "totals": {
-    "entries": 405,
+    "entries": 410,
     "flagged": 0,
     "flaggedPct": 0
   },
   "observational": {
     "entries": 262,
-    "flagged": 65
+    "flagged": 66
   },
   "verdict": "PASS",
   "surfaces": [
@@ -20,13 +20,13 @@
       "name": "compare",
       "basePath": "/compare",
       "reportOnly": false,
-      "totalEntries": 46,
+      "totalEntries": 50,
       "flaggedEntries": 0,
       "flaggedPct": 0,
       "shingleCounts": {
         "min": 290,
         "max": 960,
-        "mean": 444
+        "mean": 456
       },
       "pairs": []
     },
@@ -39,8 +39,8 @@
       "flaggedPct": 0,
       "shingleCounts": {
         "min": 861,
-        "max": 1074,
-        "mean": 924
+        "max": 1289,
+        "mean": 948
       },
       "pairs": []
     },
@@ -62,13 +62,13 @@
       "name": "vs",
       "basePath": "/vs",
       "reportOnly": false,
-      "totalEntries": 37,
+      "totalEntries": 38,
       "flaggedEntries": 0,
       "flaggedPct": 0,
       "shingleCounts": {
         "min": 198,
-        "max": 243,
-        "mean": 222
+        "max": 668,
+        "mean": 263
       },
       "pairs": []
     },
@@ -150,7 +150,7 @@
       "flaggedEntries": 0,
       "flaggedPct": 0,
       "shingleCounts": {
-        "min": 317,
+        "min": 318,
         "max": 391,
         "mean": 350
       },
@@ -161,12 +161,12 @@
       "basePath": "/sector",
       "reportOnly": true,
       "totalEntries": 97,
-      "flaggedEntries": 65,
-      "flaggedPct": 67,
+      "flaggedEntries": 66,
+      "flaggedPct": 68,
       "shingleCounts": {
         "min": 876,
-        "max": 14824,
-        "mean": 1611
+        "max": 14845,
+        "mean": 1612
       },
       "pairs": [
         {
@@ -190,12 +190,6 @@
         {
           "a": "ai-infra/in/tel-aviv",
           "b": "ai-infra/in/bangalore",
-          "hamming": 3,
-          "similarity": 95.3
-        },
-        {
-          "a": "developer-tools/in/new-york",
-          "b": "infrastructure/in/new-york",
           "hamming": 3,
           "similarity": 95.3
         },
@@ -237,7 +231,19 @@
         },
         {
           "a": "developer-tools/in/san-francisco",
+          "b": "infrastructure/in/san-francisco",
+          "hamming": 5,
+          "similarity": 92.2
+        },
+        {
+          "a": "developer-tools/in/san-francisco",
           "b": "database/in/san-francisco",
+          "hamming": 5,
+          "similarity": 92.2
+        },
+        {
+          "a": "developer-tools/in/new-york",
+          "b": "infrastructure/in/new-york",
           "hamming": 5,
           "similarity": 92.2
         },
@@ -280,12 +286,6 @@
         {
           "a": "ai-infra/in/zurich",
           "b": "ai-infra/in/bangalore",
-          "hamming": 6,
-          "similarity": 90.6
-        },
-        {
-          "a": "ai-infra/in/montreal",
-          "b": "ai-infra/in/tel-aviv",
           "hamming": 6,
           "similarity": 90.6
         }

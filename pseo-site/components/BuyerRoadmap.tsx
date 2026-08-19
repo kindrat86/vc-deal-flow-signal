@@ -68,7 +68,7 @@ const BEATS_BY_TIER: Record<RoadmapTier, readonly RoadmapBeat[]> = {
     {
       when: "Today",
       what: "Lock €49/mo Dashboard. Stripe checkout, one click, your rate locked for the lifetime of the subscription.",
-      why: "The founding window (€9.97/mo) closed 2026-06-30; €49/mo is the current rate, and your rate stays locked.",
+      why: "The founding window (€9.97/mo) closed 2026-06-30; €49/mo is the current rate, month to month, cancel anytime.",
     },
     {
       when: "Day 7",
