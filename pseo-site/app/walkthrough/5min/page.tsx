@@ -276,7 +276,7 @@ export default function FiveMinPerfectWebinarPage() {
               kind="primary"
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-base shadow-lg shadow-amber-500/30 transition-colors"
             >
-              Lock €49/mo →
+              Lock €49/mo founder price →
             </WalkthroughCtaLink>
             <WalkthroughCtaLink
               href={SIGNUP_URL}

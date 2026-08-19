@@ -89,24 +89,25 @@ reply{" "}
             ascension, the thanks page must force exactly one logical
             next move. Promote the Dashboard upgrade from a footnote link
             to a button-grade CTA, with the €7 credit framed as already
-            applied so the math reads "€42 for the first month." */}
+            applied so the math reads "€2.97 for the first month." */}
         <section className="bg-gradient-to-br from-sky-950/40 via-slate-900 to-slate-950 border border-sky-700/40 rounded-xl p-6 space-y-4">
           <p className="text-sky-300 text-xs font-semibold uppercase tracking-[0.14em]">
             Skip the wait, lock the Dashboard while you&rsquo;re here
           </p>
           <p className="text-gray-200 text-base leading-relaxed">
             If you already know the deep dive is going to make you a
-            Dashboard subscriber, upgrade now. Your €7
+            Dashboard subscriber, lock the founding rate now. Your €7
             credit applies, the first month bills{" "}
-            <strong className="text-sky-200">€42</strong> instead of
-            €49. Month to month, cancel anytime.
+            <strong className="text-sky-200">€2.97</strong> instead of
+            €9.97. Founding rate is locked forever; public price steps
+            to €49/mo at launch.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 pt-1">
             <Link
               href="/dashboard"
               className="inline-flex items-center justify-center gap-2 rounded-md bg-signal-500 hover:bg-signal-600 px-5 py-3 text-slate-950 text-base font-semibold transition-colors shadow-sm shadow-signal-500/30"
             >
-              Upgrade with your €7 credit →
+              Lock founding rate (€2.97 first month) →
             </Link>
             <Link
               href="/walkthrough"

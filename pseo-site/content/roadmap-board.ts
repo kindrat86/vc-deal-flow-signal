@@ -427,7 +427,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
     id: "insider-circle-telegram",
     title: "Insider Circle private Telegram",
     summary:
-      "Live for €197/mo subscribers. Spike alerts, monthly briefings, anonymized portfolio overlap. Replaces the email-only delivery for paying members who want signal velocity.",
+      "Live for €97/mo subscribers. Spike alerts, monthly briefings, anonymized portfolio overlap. Replaces the email-only delivery for paying members who want signal velocity.",
     lane: "on-deck",
     quarter: "Q3 2026",
     eta: "2026-08-30",

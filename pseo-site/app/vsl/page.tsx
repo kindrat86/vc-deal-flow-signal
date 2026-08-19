@@ -219,7 +219,7 @@ export default function VslPage() {
             </a>
           </div>
           <p className="text-xs text-slate-500">
-            30-Day Signal-or-It&rsquo;s-Free Guarantee · Cancel anytime
+            30-Day Signal-or-It&rsquo;s-Free Guarantee · Cancel anytime · Founding rate locked forever
           </p>
           <p className="text-sm text-slate-600 leading-relaxed border-l-2 border-amber-300 pl-3">
             <span className="font-semibold text-slate-700">No code required.</span>{" "}
@@ -421,7 +421,7 @@ export default function VslPage() {
               </span>
             </div>
             <p className="text-xs text-slate-500 italic pt-1">
-              Month to month. Cancel anytime.
+              Locked at the founding rate. Forever.
             </p>
             {stackScene ? (
               <p className="text-base text-slate-700 leading-relaxed pt-3">{stackScene.vo}</p>
@@ -503,7 +503,7 @@ export default function VslPage() {
                 </p>
                 <p className="text-2xl font-bold text-slate-900 mt-1">€49/mo</p>
                 <p className="text-sm font-semibold text-slate-700 mt-2">Dashboard</p>
-                <p className="text-xs text-slate-500 mt-1">Month to month. Cancel anytime.</p>
+                <p className="text-xs text-slate-500 mt-1">Founding rate. Locked forever.</p>
               </Link>
             </div>
           </section>

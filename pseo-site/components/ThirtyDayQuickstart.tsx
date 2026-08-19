@@ -61,7 +61,7 @@ const WEEK3_DECIDE: DayBeat[] = [
   { day: 18, min: 6, action: "Read /experiments, pick the one test result you find most damaging to our claim.", outcome: "You earn skepticism, not assume it. The most damaging finding is publicly logged.", href: "/experiments" },
   { day: 19, min: 5, action: "Skim /predict, call one Series-A bet on the leaderboard.", outcome: "You stake a public position. Free.", href: "/predict" },
   { day: 20, min: 7, action: "Read /receipts, paste your GitHub username.", outcome: "You see which historical unicorns you starred early. Memory, made falsifiable.", href: "/receipts" },
-  { day: 21, min: 15, action: "Decide: Dashboard, Insider, or wait. The €7 credits 1:1 if you upgrade by Day 21.", outcome: "Your first recurring cheque inside the system. Month to month, cancel anytime.", href: "/pricing" },
+  { day: 21, min: 15, action: "Decide: Dashboard, Insider, or wait. The €7 credits 1:1 if you upgrade by Day 21.", outcome: "Your first recurring cheque inside the system. The founding rate locks to today.", href: "/pricing" },
 ];
 
 const WEEK4_OPERATIONALIZE: DayBeat[] = [

@@ -266,7 +266,7 @@ If the framework looked useful, three optional ways to keep using it, and the fr
 
 → Free Sunday digest. Five named startups every Sunday, scored against the same 7-signal composite. Subscribe at ${"gitdealflow.com" + VIA_PARAM}. No card.
 
-→ €49/mo Dashboard. The same engine running across 350+ orgs continuously, refreshed every Monday. ${"signals.gitdealflow.com/pricing#dashboard" + VIA_PARAM}.
+→ €9.97/mo Dashboard founding rate (locks for life). The same engine running across 350+ orgs continuously, refreshed every Monday. ${"signals.gitdealflow.com/pricing#dashboard" + VIA_PARAM}.
 
 → €1,997 one-time custom Sector Sweep. 40-page written deep-dive on one sector, 5 business days. ${"signals.gitdealflow.com/sector-sweep" + VIA_PARAM}.
 

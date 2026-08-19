@@ -123,7 +123,7 @@ function frame_monday(mover: TopMover | null): { subject: string; body: string }
     body: `<p>Quick one. GitDealFlow is a tool, not a fund, it just surfaces startups heating up on GitHub in your sectors before they raise, and you look.</p>
 <p>One the tool flagged today is ${moverLine(mover)}.</p>
 <p>If you want to peek: open their org and read the most-recently-edited repo's README. Eight people sharing the work reads very differently from one developer doing most of it, and only one of those shapes tends to lead to a Series A inside 60 days (3.4× more likely, see <a href="${SIGNALS}/methodology#3-4x-finding" style="color:#0ea5e9;">/methodology</a>). You don't crunch anything, the tool surfaces it, you make the call.</p>
-<p>If you want the full list, filtered by sector, stage, geography, the Dashboard is at <a href="${SITE}/dashboard" style="color:#0ea5e9;">€49/mo</a>.</p>
+<p>If you want the full list, filtered by sector, stage, geography, the Dashboard is at <a href="${SITE}/dashboard" style="color:#0ea5e9;">€9.97/mo founding rate</a>.</p>
 <p>Talk soon, <br>${FROM_NAME}</p>`,
   };
 }
@@ -193,7 +193,7 @@ function frame_sunday(mover: TopMover | null): { subject: string; body: string }
     subject: "A startup heating up early, early look tomorrow",
     body: `<p>Sunday note, Monday delivery.</p>
 <p>The free email goes out Mondays at 09:00 UTC, the startups the tool flagged as heating up early in your sectors, before they raise. The one at the top right now is ${moverLine(mover)}.</p>
-<p>If you'd like them 24 hours ahead of everyone else, that's the only thing the Insider Sunday briefing actually sells: the same startups, sent Sunday at 09:00 UTC instead of Monday. €197/mo, month to month. <a href="${SIGNALS}/insider" style="color:#0ea5e9;">${SIGNALS}/insider</a>.</p>
+<p>If you'd like them 24 hours ahead of everyone else, that's the only thing the Insider Sunday briefing actually sells: the same startups, sent Sunday at 09:00 UTC instead of Monday. €97/mo founder rate, locked forever. <a href="${SIGNALS}/insider" style="color:#0ea5e9;">${SIGNALS}/insider</a>.</p>
 <p>If you'd rather just keep reading the free version, that's exactly what hits your inbox tomorrow morning. No upgrade pressure.</p>
 <p>Talk tomorrow, <br>${FROM_NAME}</p>`,
   };

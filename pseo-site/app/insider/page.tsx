@@ -14,14 +14,14 @@ export const metadata: Metadata = {
   title:
     "Insider Circle, See Every Signal 24 Hours Before The Public · €197/mo",
   description:
-    "The Insider Circle walkthrough. If the public Acceleration Watch publishes Mondays at 09:00 UTC, Insiders read the same names Sunday at 09:00 UTC. The single belief: in venture, edge is time, not research. Stack value €4,206/yr, €197/mo.",
+    "The Insider Circle walkthrough. If the public Acceleration Watch publishes Mondays at 09:00 UTC, Insiders read the same names Sunday at 09:00 UTC. The single belief: in venture, edge is time, not research. Stack value €4,206/yr, founder rate €197/mo locked forever.",
   alternates: {
     canonical: "/insider",
   },
   openGraph: {
     title: "Insider Circle, 24-Hour Lead Over The Free Tier",
     description:
-      "Same signal, 24h earlier. €197/mo. Telegram + JSON/CSV API + custom watchlists + early-list. Stack value €4,206/yr.",
+      "Same signal, 24h earlier. €197/mo founder rate, locked forever. Telegram + JSON/CSV API + custom watchlists + early-list. Stack value €4,206/yr.",
     url: "https://signals.gitdealflow.com/insider",
     type: "article",
   },
@@ -157,9 +157,9 @@ export default function InsiderPage() {
       {
         "@type": "Offer",
         "@id": "https://signals.gitdealflow.com/insider#offer",
-        name: "Insider Circle, €197/mo",
+        name: "Insider Circle, €197/mo founding-member rate",
         description:
-          "Monthly subscription at €197/mo, month to month. Includes 24-hour lead on Acceleration Watch, private Telegram group, JSON/CSV API, custom watchlist, webhooks, founder line, and Dashboard Beta.",
+          "Monthly subscription at founding-member rate (€197/mo, locks for the lifetime of the subscription; list price €197/mo). Includes 24-hour lead on Acceleration Watch, private Telegram group, JSON/CSV API, custom watchlist, webhooks, founder line, and Dashboard Beta.",
         price: 97,
         priceCurrency: "EUR",
         priceValidUntil: "2026-12-31",
@@ -477,8 +477,8 @@ published the following Monday at 09:00 UTC.
               <span className="text-emerald-400">€197/mo</span>.
             </h2>
             <p className="text-gray-400 text-sm">
-              Nine items. €4,206/yr standalone value. Month to
-              month, cancel anytime.
+              Nine items. €4,206/yr standalone value. Founding-member price
+              locked forever.
             </p>
           </div>
 
@@ -541,17 +541,18 @@ published the following Monday at 09:00 UTC.
               <span className="line-through">€2,364/yr</span>
             </div>
             <div className="flex items-baseline justify-between text-2xl font-bold text-gray-100 pt-3 border-t border-slate-800">
-              <span>Your price</span>
+              <span>Founding-member price, locked forever</span>
               <span className="text-emerald-400">€197/mo</span>
             </div>
             <p className="text-gray-400 text-xs">
               That is €2,364/year, or roughly the cost of one missed warm
-              intro. Month to month, cancel anytime.
+              intro. The price stays €197 for as long as you stay subscribed.
             </p>
           </div>
           <TrialClose tone="violet">
-            €4,206/yr standalone at €197/mo. If even half the stack reads
-            as real, has the math already done itself?
+            €4,206/yr standalone at €197/mo founding rate, locked through the
+            public hike to €197. If the lock itself is the asset, would you
+            rather wake up on the founding rate or the post-launch rate?
           </TrialClose>
         </section>
 
@@ -696,12 +697,13 @@ drop the JSON into your own pipeline and ship a one-page
                 Pricing close
               </p>
               <h3 className="text-gray-100 font-semibold text-base">
-                The stack is €4,206/yr. You pay €2,364/yr.
+                The stack is €4,206/yr. You pay €1,164.
               </h3>
               <p className="text-gray-300 text-sm leading-relaxed">
-                We could charge more and the math would still work. Founding
-                members who joined before June 30, 2026 keep their €97/mo
-                rate for life. New members pay €197/mo, month to month.
+                We could charge €197/mo and the math would still work. The
+                €197 launches the day a regulated investor tool reviews us -
+                the founding-member rate locks before that day. After it
+                locks, you keep €197/mo for as long as you stay subscribed.
               </p>
             </div>
 
@@ -747,7 +749,7 @@ drop the JSON into your own pipeline and ship a one-page
               href={STRIPE_INSIDER}
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold text-base shadow-lg shadow-emerald-500/30 transition-colors"
             >
-              Lock €197/mo <span aria-hidden="true">→</span>
+              Lock €197/mo founder price <span aria-hidden="true">→</span>
             </a>
             <a
               href={STRIPE_DASHBOARD}
@@ -863,9 +865,10 @@ drop the JSON into your own pipeline and ship a one-page
             <li className="flex gap-3">
               <span className="text-amber-400 shrink-0 font-bold">→</span>
               <span>
-                30-day Signal-or-It&rsquo;s-Free guarantee. €197/mo, month
-                to month. Founding members who joined before June 30, 2026
-                keep their €97/mo rate for life.
+                30-day Signal-or-It&rsquo;s-Free guarantee. Founding-member
+                price <strong className="text-amber-300">locked forever</strong> at
+                €197/mo. Public hike to €197/mo lands the day a regulated
+                investor tool reviews us.
               </span>
             </li>
           </ul>
@@ -874,7 +877,7 @@ drop the JSON into your own pipeline and ship a one-page
             <span className="text-emerald-400 font-bold">€4,206/yr</span>
           </div>
           <div className="flex items-baseline justify-between text-2xl font-bold">
-            <span className="text-gray-100">Your price</span>
+            <span className="text-gray-100">Your founding-member rate</span>
             <span className="text-amber-300">€197/mo</span>
           </div>
         </section>
@@ -945,14 +948,14 @@ drop the JSON into your own pipeline and ship a one-page
         </section>
 
         <AgentSummary
-          tldr="Insider Circle is the €197/mo (€197/mo, month to month) tier of VC Deal Flow Signal. The single thing it sells is a 24-hour lead on the public Acceleration Watch, Insiders receive the same ten ranked startups Sunday at 09:00 UTC that the public list publishes Monday at 09:00 UTC. Stack also includes everything in Dashboard Beta, a closed Insider Telegram with founder briefings and threads, an authenticated API (/api/v1/insider/* + bulk CSV), custom thesis-aligned watchlist, webhook delivery on threshold triggers, and a direct founder line for diligence questions. €4,206/yr standalone value. 30-day Signal-or-It's-Free guarantee, reply REFUND."
+          tldr="Insider Circle is the €197/mo (founding-member rate, locked forever; list €197/mo) tier of VC Deal Flow Signal. The single thing it sells is a 24-hour lead on the public Acceleration Watch, Insiders receive the same ten ranked startups Sunday at 09:00 UTC that the public list publishes Monday at 09:00 UTC. Stack also includes everything in Dashboard Beta, a closed Insider Telegram with founder briefings and threads, an authenticated API (/api/v1/insider/* + bulk CSV), custom thesis-aligned watchlist, webhook delivery on threshold triggers, and a direct founder line for diligence questions. €4,206/yr standalone value. 30-day Signal-or-It's-Free guarantee, reply REFUND."
           pageUrl="https://signals.gitdealflow.com/insider"
           asOf="2026-05-05"
           citeAs="VC Deal Flow Signal, Insider Circle (signals.gitdealflow.com/insider)."
           facts={[
             {
               claim:
-                "Insider Circle is €197/mo, month to month. Founding members who joined before June 30, 2026 keep their €97/mo rate for life.",
+                "Insider Circle founding-member rate is €197/mo and locks for the lifetime of the subscription; list price is €197/mo.",
               sourceUrl: "https://signals.gitdealflow.com/pricing#insider-circle",
               sourceLabel: "Pricing page",
             },

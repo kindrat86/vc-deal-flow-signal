@@ -152,26 +152,6 @@ export default function LaunchIndex() {
           </ol>
         </section>
 
-        {open.length === 0 && (
-          <section className="rounded-xl border border-slate-800 bg-slate-900/40 p-5 space-y-2">
-            <h2 className="text-amber-300 text-xs font-semibold uppercase tracking-wider">
-              Cart open
-            </h2>
-            <p className="text-gray-300 text-sm leading-relaxed">
-              No launch windows are open right now. The founding-member
-              windows on the Dashboard (€9.97/mo) and Insider Circle
-              (€97/mo) closed June 30, 2026, exactly as promised, and those
-              members keep their rates for life. The Q2 Sector Sweep cohort
-              ran June 12-14, 2026. Current pricing is €49/mo Dashboard and
-              €197/mo Insider, month to month, always available at{" "}
-              <Link href="/pricing" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
-                /pricing
-              </Link>
-              .
-            </p>
-          </section>
-        )}
-
         {open.length > 0 && (
           <section className="space-y-4">
             <h2 className="text-amber-300 text-xs font-semibold uppercase tracking-wider">

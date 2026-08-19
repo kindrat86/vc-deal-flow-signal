@@ -205,7 +205,7 @@ export default function PitchPage() {
               href={STRIPE_DASHBOARD}
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-signal-500 hover:bg-signal-600 text-slate-950 font-semibold text-sm shadow-lg shadow-signal-500/30 transition-colors"
             >
-              Lock €49/mo <span aria-hidden="true">→</span>
+              Lock €49/mo founder price <span aria-hidden="true">→</span>
             </a>
             <a
               href={SIGNUP_URL}

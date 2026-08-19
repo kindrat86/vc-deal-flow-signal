@@ -812,7 +812,7 @@ export const CHALLENGE_DAYS: readonly ChallengeDay[] = [
     edgeCase:
       "Some readers find the free Sunday digest is correct, full stop, the manual rhythm is enough and the upgrade is FOMO. That's a valid outcome. The framework is yours either way.",
     bonus:
-      "The Dashboard is €49/mo. The founding window (€9.97/mo) closed 2026-06-30; founding members keep their rate for life. If usage data points to Dashboard, buy on usage, not on FOMO.",
+      "The Dashboard's founding rate (€9.97/mo) locks for life. If usage data points to Dashboard, the founding-rate clock is the only thing that makes the timing matter, pricing reverts after the 2026 cohort closes.",
     yesterdayRecap:
       "Yesterday you committed to the Sunday rhythm. Today: the rung-selection conversation, before tomorrow's graduation pitch.",
     tomorrowTeaser:

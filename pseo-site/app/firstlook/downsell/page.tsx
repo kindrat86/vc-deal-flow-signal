@@ -62,7 +62,7 @@ export default async function FirstLookDownsellPage({ searchParams }: Props) {
         </h1>
         <p className="text-gray-400 text-sm sm:text-base leading-relaxed">
           You said no to the Sweep, fair, it&rsquo;s a different size of
-          purchase. Here&rsquo;s the rung between &euro;7 and &euro;1,997 that
+          purchase. Here&rsquo;s the rung between &euro;7 and &euro;1,797 that
           most First Look buyers actually take.
         </p>
       </header>

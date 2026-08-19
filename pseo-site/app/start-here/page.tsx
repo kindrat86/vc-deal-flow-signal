@@ -90,7 +90,7 @@ const ENTRY_POINTS = [
     color: "sky",
   },
   {
-    price: "€197/mo",
+    price: "€97/mo",
     name: "Insider Circle",
     desc: "Everything in Dashboard + JSON/CSV API + spike alerts + monthly briefing call + portfolio overlap report.",
     href: "/pricing#insider-circle",

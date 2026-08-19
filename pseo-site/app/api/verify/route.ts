@@ -224,7 +224,7 @@ export async function GET(request: Request) {
   //    7-Day Deal Flow Reset; `cohort=launch` routes to the 5-email Brunson
   //    Product Launch Funnel. Otherwise we fork on `quiz_route` (F/T/D/I) so
   //    the value-ladder pitch matches what the visitor self-described on
-  //    /landing#signup, pre-buyers (F) skip the €7/€49/€197 pitch days,
+  //    /landing#signup, pre-buyers (F) skip the €7/€9.97/€97 pitch days,
   //    First-Look (T) gets €7 + Dashboard, Dashboard (D) gets the modal
   //    sequence, Insider (I) skips the small denominations and emphasises
   //    €97 + €1,997. Missing/unknown route falls back to SOAP_OPERA_EMAILS

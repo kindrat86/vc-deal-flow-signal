@@ -369,9 +369,9 @@ export default function OriginPage() {
             in the same place I was in early 2025. The cheap move is the free
             weekly digest, five startups every Monday, sector-tagged, no
             commitment. The slightly committed move is the €7 First Look on
-            your thesis sector. The all-in move is the Dashboard at €49/mo.
-            Founding members who joined before June 30, 2026 keep their
-            €9.97/mo rate for life.
+            your thesis sector. The all-in move is the €9.97/mo founding-price
+            Dashboard, which is locked forever for anyone who joins before the
+            cohort closes.
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
             None of these doors are wrong. Pick the one that matches the way
@@ -432,7 +432,7 @@ export default function OriginPage() {
                 href="/pricing"
                 className="text-sky-400 hover:text-sky-300 underline decoration-dotted font-medium"
               >
-                The Dashboard (€49/mo)
+                Lock the founding price on the Dashboard (€9.97/mo, forever)
               </Link>
             </li>
             <li>

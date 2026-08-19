@@ -90,7 +90,7 @@ export interface Launch {
 export const LAUNCHES: Launch[] = [
   {
     slug: "agent-credits",
-    isOpen: false,
+    isOpen: true,
     closesAt: "2026-05-20T23:59:00Z",
     headline:
       "100 deep-signal API calls for €19. The first signal-engine pricing built for AI agents, not humans.",
@@ -230,7 +230,7 @@ export const LAUNCHES: Launch[] = [
   },
   {
     slug: "founding-100",
-    isOpen: false,
+    isOpen: true,
     closesAt: "2026-06-30T23:59:00Z",
     headline:
       "Founding-100, €9.97/mo locked forever, before the public rate climbs to €49/mo.",
@@ -338,11 +338,11 @@ export const LAUNCHES: Launch[] = [
         plc: "big-idea",
         caption: "Stage 4 · Big Idea · Open Cart",
         headline:
-          "Founding-100 closed June 30, 2026, exactly as promised. Founding members keep €9.97/mo for life.",
+          "23 of 100 spots taken. €9.97/month. Locked the day you subscribe, for as long as you stay subscribed.",
         body: [
-          "The window closed June 30, 2026. Founding members keep their €9.97/mo rate for life. New members pay the list price, €49/mo.",
+          "Open until 100 spots fill or June 30, whichever comes first. The counter at the top of /pricing is live (Stripe webhook → SHARP_2026_TAKEN), so the spot count is real, not a marketing prop.",
           "The math: 100 founding members at €9.97/month is €11,964/year of recurring revenue. That funds the GitHub-API layer, the regression compute, the dataset hosting, and one part-time analyst on monthly deep-dives. Above 100, the same operations stretch, which is why the public rate climbs.",
-          "If the rhythm above (Monday digest, Sunday dashboard, monthly PDF, hover-extensions) maps to how you already source, the Dashboard at €49/mo is the cheapest decision on this page. If it doesn’t map, the free Acceleration Watch stays free and you lose nothing by skipping. The ladder is real. The rungs hold. Founding-member was the rung that closed on June 30, 2026.",
+          "If the rhythm above (Monday digest, Sunday dashboard, monthly PDF, hover-extensions) maps to how you already source, the €9.97 lock is the cheapest decision on this page. If it doesn’t map, the free Acceleration Watch stays free and you lose nothing by skipping. The ladder is real. The rungs hold. Founding-member is the rung that closes when 100 fills.",
         ],
       },
     ],
@@ -356,7 +356,7 @@ export const LAUNCHES: Launch[] = [
       },
       {
         q: "Can I upgrade later to a higher tier?",
-        a: "Yes. Insider Circle (€197/mo, private Telegram + spike alerts) and Sector Sweep (€1,997 written deep-dive) are both available at list price. The founding lock applies only to members of the closed founding window.",
+        a: "Yes. Insider Circle (€177/mo, 6 free MCP tools + private Telegram + spike alerts) and Sector Sweep (€1,797 weekend deep-dive) are both available to founding members at no special discount, same price as everyone else. The €9.97/mo lock applies only to the founding-member tier itself.",
       },
       {
         q: "What happens if I cancel and resubscribe?",
@@ -370,10 +370,10 @@ export const LAUNCHES: Launch[] = [
   },
   {
     slug: "sector-sweep-2026-q2",
-    isOpen: false,
+    isOpen: true,
     closesAt: "2026-06-14T23:59:00Z",
     headline:
-      "Sector Sweep Q2 2026, €1,997 for a 47-page weekend deep-dive on the sector you pick.",
+      "Sector Sweep Q2 2026, €1,797 for a 47-page weekend deep-dive on the sector you pick.",
     hook:
       "Eight buyers, one weekend, one sector each. Monday morning you receive a 47-page PDF, the raw CSV, and a synthetic-voice walkthrough of the breakout candidates we found.",
     abstract:
@@ -486,7 +486,7 @@ export const LAUNCHES: Launch[] = [
         headline:
           "Eight spots. €1,797. Weekend run is June 12-14. Bundle ships Monday June 15 at 09:00 UTC.",
         body: [
-          "The cohort opened and closed June 14, 2026 at midnight UTC, all eight spots ran. After the cohort closes, the standard Sector Sweep rate is €2,497 and runs are scheduled monthly with one buyer at a time. The €1,797 cohort price is the only way in at this rate.",
+          "Cohort opens now and closes June 14 at midnight UTC, or earlier if all 8 spots fill. After the cohort closes, the standard Sector Sweep rate is €2,497 and runs are scheduled monthly with one buyer at a time. The €1,797 cohort price is the only way in at this rate.",
           "At checkout you pick the sector. The 19 currently-tracked sectors are: AI infrastructure, AI agents, developer tools, climate tech, biotech, fintech, cybersecurity, robotics, edge compute, vertical SaaS, gaming, creator tools, healthcare, defense tech, mobility, supply chain, vector databases, MLOps, observability. Email if you want a different sector run for the cohort.",
           "If a Sector Sweep is the right shape for you, this is the cheapest sector landscape you’re going to find that holds up under reproducibility. If it isn’t, the free Acceleration Watch and the €9.97 founding-member rate stay where they are. Sector Sweep is the rung above founding-member; it doesn’t replace it.",
         ],
