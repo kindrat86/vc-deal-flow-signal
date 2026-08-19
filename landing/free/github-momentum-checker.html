@@ -102,6 +102,14 @@
   footer { margin-top:46px; padding-top:20px; border-top:1px solid var(--border); color:var(--text-muted); font-size:.85rem; }
   @media(max-width:640px){ .dial{width:92px;height:92px} .dial b{font-size:2rem} }
 </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7SV2SNZE4C"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7SV2SNZE4C');
+  </script>
 </head>
 <body>
 <div class="container">
@@ -133,6 +141,49 @@
     <button type="button" class="ghost" id="copy-md">Copy Markdown summary</button>
     <button type="button" class="ghost" id="copy-link">Copy link to this check</button>
   </div>
+
+  <div class="card" id="gdf-capture" style="margin-top:6px">
+    <h2 style="margin:0 0 8px;text-align:center">Get the top 5 breakouts, every Sunday</h2>
+    <p style="text-align:center;color:var(--text-muted);margin:0 auto 18px;max-width:520px">You checked one name. The Sunday email flags the five teams accelerating hardest on GitHub, each with the plain-English why. Free, no card, one click to leave.</p>
+    <form id="gdf-capture-form" style="display:flex;gap:10px;flex-wrap:wrap;justify-content:center">
+      <input type="email" id="gdf-capture-email" required inputmode="email" autocomplete="email" enterkeyhint="send" placeholder="you@example.com" style="flex:1 1 240px;max-width:360px;background:var(--bg-input);border:1px solid var(--border);color:var(--text);padding:13px 16px;border-radius:8px;font-size:1rem;font-family:inherit;min-height:48px">
+      <button type="submit" style="font:inherit;font-size:.98rem;font-weight:600;padding:13px 22px;min-height:48px;border-radius:8px;border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer">Get this Sunday's 5 names</button>
+    </form>
+    <p id="gdf-capture-msg" role="status" style="text-align:center;font-size:.85rem;color:var(--text-muted);margin:12px 0 0"></p>
+    <p style="text-align:center;font-size:.8rem;color:var(--text-muted);margin:8px 0 0">One email a week. Unsubscribe anytime. Check your inbox to confirm.</p>
+  </div>
+  <script>
+  (function(){
+    var form=document.getElementById('gdf-capture-form');
+    if(!form) return;
+    var emailEl=document.getElementById('gdf-capture-email');
+    var msgEl=document.getElementById('gdf-capture-msg');
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var v=(emailEl.value||'').trim();
+      if(!v){ msgEl.textContent='Enter an email address to continue.'; msgEl.style.color='#f87171'; return; }
+      var qs=new URLSearchParams(window.location.search);
+      var stored={}; try{ stored=JSON.parse(sessionStorage.getItem('gdf_attr')||'{}'); }catch(_){}
+      var body={
+        email:v, source:'momentum-checker',
+        utm_source:qs.get('utm_source')||stored.utm_source||'',
+        utm_medium:qs.get('utm_medium')||stored.utm_medium||'',
+        utm_campaign:qs.get('utm_campaign')||stored.utm_campaign||'',
+        referrer:stored.referrer||document.referrer||'',
+        landing_path:stored.landing_path||(window.location.pathname+window.location.search),
+        tz:(function(){ try{ var t=Intl.DateTimeFormat().resolvedOptions().timeZone; return (typeof t==='string'&&t.indexOf('/')!==-1)?t:''; }catch(_){return '';} })(),
+        website:''
+      };
+      fetch('https://signals.gitdealflow.com/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
+        .then(function(r){return r.json();})
+        .then(function(d){
+          if(d&&d.ok){ msgEl.textContent='Check your inbox to confirm. The five names land Sunday.'; msgEl.style.color='#34d399'; emailEl.value=''; }
+          else { msgEl.textContent='Something went wrong. Try again, or email signal@gitdealflow.com.'; msgEl.style.color='#f87171'; }
+        })
+        .catch(function(){ msgEl.textContent='Something went wrong. Try again.'; msgEl.style.color='#f87171'; });
+    });
+  })();
+  </script>
 
   <h2>What this measures</h2>
   <p>GitDealFlow's premise is that engineering activity is a leading indicator: a team ships harder before it raises, and that shows up in public commit history weeks before a press release. This tool runs that read on demand for any public org or repo, using the same score as the <a href="/data/momentum-index">public Momentum Index</a> so results are directly comparable.</p>

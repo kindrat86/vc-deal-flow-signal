@@ -40,6 +40,14 @@ button:hover{opacity:.9}
 .brand{margin-top:.75rem;text-align:center;font-size:.625rem;color:#475569}
 .brand a{color:#10B981;font-weight:600}
 </style>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7SV2SNZE4C"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7SV2SNZE4C');
+  </script>
 </head>
 <body>
 
@@ -54,6 +62,50 @@ button:hover{opacity:.9}
 </div>
 
 <div class="brand">Powered by <a href="https://gitdealflow.com" target="_blank" rel="noopener">GitDealFlow</a></div>
+
+<div id="gdf-capture" style="margin-top:.9rem;text-align:center">
+  <div style="background:#1e293b;border:1px solid #334155;border-radius:.5rem;padding:.9rem">
+    <div style="font-size:.78rem;font-weight:700;color:#f1f5f9;margin-bottom:.15rem">Get the top 5 breakouts, every Sunday</div>
+    <div style="font-size:.68rem;color:#94a3b8;margin-bottom:.6rem">Five teams accelerating on GitHub, free, one click to leave.</div>
+    <form id="gdf-capture-form" style="display:flex;gap:.4rem">
+      <input type="email" id="gdf-capture-email" required inputmode="email" autocomplete="email" placeholder="you@example.com" style="flex:1;padding:.5rem .6rem;background:#0f172a;border:1px solid #334155;border-radius:.375rem;color:#e2e8f0;font-size:.8rem">
+      <button type="submit" style="padding:.5rem .7rem;background:#10B981;color:#fff;border:none;border-radius:.375rem;font-size:.8rem;font-weight:600;cursor:pointer;white-space:nowrap">Get 5 names</button>
+    </form>
+    <p id="gdf-capture-msg" role="status" style="font-size:.7rem;color:#94a3b8;margin:.4rem 0 0"></p>
+  </div>
+</div>
+<script>
+(function(){
+  var form=document.getElementById('gdf-capture-form');
+  if(!form) return;
+  var emailEl=document.getElementById('gdf-capture-email');
+  var msgEl=document.getElementById('gdf-capture-msg');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    var v=(emailEl.value||'').trim();
+    if(!v){ msgEl.textContent='Enter an email address to continue.'; return; }
+    var qs=new URLSearchParams(window.location.search);
+    var stored={}; try{ stored=JSON.parse(sessionStorage.getItem('gdf_attr')||'{}'); }catch(_){}
+    var body={
+      email:v, source:'embed-momentum-checker',
+      utm_source:qs.get('utm_source')||stored.utm_source||'',
+      utm_medium:qs.get('utm_medium')||stored.utm_medium||'',
+      utm_campaign:qs.get('utm_campaign')||stored.utm_campaign||'',
+      referrer:stored.referrer||document.referrer||'',
+      landing_path:stored.landing_path||(window.location.pathname+window.location.search),
+      tz:(function(){ try{ var t=Intl.DateTimeFormat().resolvedOptions().timeZone; return (typeof t==='string'&&t.indexOf('/')!==-1)?t:''; }catch(_){return '';} })(),
+      website:''
+    };
+    fetch('https://signals.gitdealflow.com/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
+      .then(function(r){return r.json();})
+      .then(function(d){
+        if(d&&d.ok){ msgEl.textContent='Check your inbox to confirm. The five names land Sunday.'; msgEl.style.color='#34d399'; emailEl.value=''; }
+        else { msgEl.textContent='Something went wrong. Try again.'; msgEl.style.color='#f87171'; }
+      })
+      .catch(function(){ msgEl.textContent='Something went wrong. Try again.'; msgEl.style.color='#f87171'; });
+  });
+})();
+</script>
 <script>
 const form = document.getElementById('mc-form');
 const result = document.getElementById('mc-result');
