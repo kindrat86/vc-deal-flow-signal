@@ -92,7 +92,7 @@ export const TEARDOWNS: CompetitorTeardown[] = [
         brunsonNote:
           "Pricing-as-a-conversation maximises revenue per closed deal but leaks every buyer who isn't ready for a six-figure procurement cycle. The funnel is built for top-decile funds only.",
         ourMove:
-          "€9.97/mo founding-member rate, locked forever. Public pricing page. The buyer can decide in 30 seconds without scheduling a call.",
+          "€49/mo, public pricing page. The buyer can decide in 30 seconds without scheduling a call.",
       },
       {
         step: "5, Annual contract",
@@ -174,7 +174,7 @@ export const TEARDOWNS: CompetitorTeardown[] = [
         brunsonNote:
           "The quote model captures the ceiling but punishes the floor, small funds pay disproportionate procurement overhead per dollar of subscription.",
         ourMove:
-          "€49/mo Dashboard. €1,797 Sector Sweep one-time. €77/mo Insider. Three rungs, public. The buyer chooses without asking.",
+          "€49/mo Dashboard. €1,997 Sector Sweep one-time. €197/mo Insider. Three rungs, public. The buyer chooses without asking.",
       },
       {
         step: "6, Annual renewal + expansion",
@@ -286,7 +286,7 @@ export const TEARDOWNS: CompetitorTeardown[] = [
         brunsonNote:
           "Hybrid model, they want both self-serve and enterprise. That's hard to do; the self-serve tier risks cannibalising the enterprise close, the enterprise tier risks looking like an upcharge.",
         ourMove:
-          "We pick a single primary motion (self-serve, monthly) and ladder above it (Insider €77/mo, Sector Sweep €1,797 one-time). The €1,797 rung is the upcharge that doesn't cannibalise the €49 floor.",
+          "We pick a single primary motion (self-serve, monthly) and ladder above it (Insider €197/mo, Sector Sweep €1,997 one-time). The €1,997 rung is the upcharge that doesn't cannibalise the €49 floor.",
       },
       {
         step: "2, Free signup",
@@ -452,7 +452,7 @@ export const TEARDOWNS: CompetitorTeardown[] = [
         brunsonNote:
           "Self-serve upgrade is correct, but the price point sits in the small-fund-irrelevant zone, too expensive for a solo angel, too cheap for a fund analyst's procurement to bother.",
         ourMove:
-          "€9.97/mo founding rate is below the procurement threshold, angels and scouts buy on credit card without asking permission.",
+          "€49/mo is below the procurement threshold, angels and scouts buy on credit card without asking permission.",
       },
       {
         step: "5, Enterprise upsell",

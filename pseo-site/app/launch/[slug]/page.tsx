@@ -268,6 +268,7 @@ export default async function LaunchPage({ params }: PageProps) {
           </p>
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight">
             {launch.headline}
+            {!launch.isOpen && " (window closed)"}
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
             {launch.hook}

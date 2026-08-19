@@ -54,7 +54,7 @@ export async function GET() {
           "On request, emailing signals@gitdealflow.com with company legal name returns a counter-signed PDF within 5 business days",
         countersignContact: "signals@gitdealflow.com",
         appliesTo: [
-          "Insider Tier (€97/mo)",
+          "Insider Tier (€197/mo)",
           "Sharp Tier (€497/mo)",
           "Sector Sweep (€1,997 one-time)",
           "Agent Credits (€19 / 100 calls)",

@@ -68,7 +68,7 @@ const SPEC: Record<RiskReversalTier, PromiseSpec> = {
   insider: {
     promise:
       "If, in your first 30 days, the private Telegram + JSON/CSV API don't earn the seat, measured by you, against your own thesis, full refund.",
-    stake: "€97/mo",
+    stake: "€197/mo",
     process:
       "Reply REFUND to any Insider email. Full payment back inside two business days. The MCP server stays free regardless of refund decision.",
     receipt:

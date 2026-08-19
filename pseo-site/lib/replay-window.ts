@@ -5,7 +5,7 @@
  *
  *   Mon 06:00 UTC  →  doors open. Live replay + fast-action bonuses available.
  *   Wed 23:59 UTC  →  fast-action bonuses expire. Founding rate still locked.
- *   Thu 23:59 UTC  →  cart closes. €9.97/mo founding link returns "doors closed".
+ *   Thu 23:59 UTC  →  cart closes. €49/mo Dashboard checkout is always open.
  *   Fri - Sun      →  doors closed. Free Acceleration Watch signup still open.
  *   Mon 06:00 UTC  →  next cohort begins.
  *

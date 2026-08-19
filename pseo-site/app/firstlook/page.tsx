@@ -135,7 +135,7 @@ const OTO_LADDER = [
   {
     rung: "Rung 2",
     label: "Insider Circle",
-    price: "€177 / mo",
+    price: "€197 / mo",
     purpose: "Private Telegram + spike alerts + monthly briefing. €20 off first month, this funnel only.",
     href: "/pricing#insider-circle",
     tone: "teal",
@@ -143,7 +143,7 @@ const OTO_LADDER = [
   {
     rung: "Rung 3",
     label: "Sector Sweep (post-purchase OTO)",
-    price: "€1,797",
+    price: "€1,997",
     purpose: "One-click upsell on the thank-you page. Full panel + 60-min walkthrough, €200 off standalone.",
     href: "/firstlook/thanks",
     tone: "emerald",
@@ -247,7 +247,7 @@ export default function FirstLookPage() {
           "@type": "AggregateOffer",
           priceCurrency: "EUR",
           lowPrice: "7.00",
-          // €7 base + €19 Methodology Vault bump. Sector Sweep €1,797 is
+          // €7 base + €19 Methodology Vault bump. Sector Sweep €1,997 is
           // the OTO #1 rung on /firstlook/thanks, surfaced to its own
           // Product/Offer entity over there, not aggregated here, because
           // it is post-purchase and not selectable on /firstlook itself.
@@ -876,9 +876,9 @@ export default function FirstLookPage() {
               Insider Circle
             </Link>{" "}
             (private Telegram + spike alerts + monthly briefing) at{" "}
-            <strong className="text-gray-100">€177 for the first month</strong>{" "}
-€20 off the standard €197. The invite expires when the next
-            Monday digest goes out, and never re-appears at this price.
+            <strong className="text-gray-100">€197/mo</strong>{" "}
+(the standard rate). The invite expires when the next
+            Monday digest goes out, and never re-appears.
             Decline it and your €7 First Look Pass still works exactly the
             same way.
           </p>

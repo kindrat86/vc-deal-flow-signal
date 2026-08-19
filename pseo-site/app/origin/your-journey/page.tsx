@@ -331,8 +331,7 @@ export default function YourJourneyPage() {
             cheque is.
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
-            This site is what that strip-out looks like. €9.97/mo founding
-            rate, locked forever, for someone who wants earlier signal without
+            This site is what that strip-out looks like. €49/mo, for someone who wants earlier signal without
             a fund-sized stack. The First Look Pass is €7. The cheap rung
             exists because the buyer is not the partner-with-budget. You were
             right that the category wasn&rsquo;t built for you. You were wrong that
@@ -389,7 +388,7 @@ export default function YourJourneyPage() {
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
             You don&rsquo;t need to commit to anything yet. You don&rsquo;t
-            need to lock the founding rate. You don&rsquo;t need to write a
+            need to upgrade today. You don&rsquo;t need to write a
             post about your new sourcing thesis. The first move is small and
             specific: subscribe to the Acceleration Watch. Free. One email a
             week. Five startups every Monday, ranked by 14-day commit-velocity
@@ -513,10 +512,10 @@ export default function YourJourneyPage() {
                 href="/pricing"
                 className="text-sky-400 hover:text-sky-300 underline decoration-dotted font-medium"
               >
-                Lock the founding-rate Dashboard
+                The Dashboard
               </Link>
-              {" "}, 350+ ranked orgs, refreshed weekly, founding rate locked
-              forever. The all-in version of the rhythm in §06.
+              {" "}, 350+ ranked orgs, refreshed weekly, month to month,
+              cancel anytime. The all-in version of the rhythm in §06.
             </li>
           </ul>
           <p className="text-gray-400 text-sm leading-relaxed pt-3">

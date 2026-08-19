@@ -52,7 +52,7 @@ export default function ThanksDashboard() {
             Payment confirmed · Welcome to the Dashboard
           </p>
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 leading-[1.1] tracking-tight">
-            You&rsquo;re in. €9.97/mo, locked forever.
+            You&rsquo;re in. Welcome to the Dashboard.
           </h1>
           <p className="text-gray-300 text-base leading-relaxed">
             The receipt is in your inbox. So is a magic-link login. Three

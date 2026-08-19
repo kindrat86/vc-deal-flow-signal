@@ -1006,7 +1006,7 @@ using public repository-velocity data as a leading indicator
                 The whole stack is €1,728/yr. You&rsquo;re paying €588.
               </h3>
               <p className="text-gray-300 text-sm leading-relaxed">
-                We could charge €100/mo and the math would still work. We picked €49 because we want builders, not budgets. Founding members who joined before 2026-06-30 keep €9.97 for life; for everyone else the rate is €49/mo, locked for as long as you stay subscribed.
+                We could charge €100/mo and the math would still work. We picked €49 because we want builders, not budgets. Founding members who joined before 2026-06-30 keep €9.97 for life; for everyone else the rate is €49/mo, month to month, cancel anytime.
               </p>
             </div>
 
@@ -1142,7 +1142,7 @@ delivers the buyer into the room they're about to step
             Close
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-100">
-            Lock €49/mo. Forever. Before the launch hike to €49.
+            Lock €49/mo. Month to month. Cancel in one click.
           </h2>
           <p className="text-gray-300 text-base leading-relaxed max-w-2xl mx-auto">
             One click. Stripe checkout. The next Monday digest, the full
@@ -1154,7 +1154,7 @@ delivers the buyer into the room they're about to step
               href={STRIPE_DASHBOARD}
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-signal-500 hover:bg-signal-600 text-slate-950 font-semibold text-base shadow-lg shadow-signal-500/30 transition-colors"
             >
-              Lock €49/mo founder price <span aria-hidden="true">→</span>
+              Lock €49/mo <span aria-hidden="true">→</span>
             </a>
             <a
               href={SIGNUP_URL}
@@ -1226,7 +1226,7 @@ credited toward Dashboard if you upgrade in 14 days.
             </li>
             <li className="flex gap-3">
               <span className="text-amber-400 shrink-0 font-bold">→</span>
-              <span>Founding-member price <strong className="text-amber-300">locked forever</strong> at €49/mo. Public hike to €49/mo lands the day a regulated investor tool reviews us.</span>
+              <span>€49/mo, month to month, cancel anytime. Founding members who joined before June 30, 2026 keep their €9.97 rate for life.</span>
             </li>
             <li className="flex gap-3">
               <span className="text-amber-400 shrink-0 font-bold">→</span>
@@ -1284,7 +1284,7 @@ credited toward Dashboard if you upgrade in 14 days.
         <DataNerdCharacterCard seed="walkthrough" />
 
         <AgentSummary
-          tldr="The 12-minute walkthrough lays out the single belief, commit-velocity acceleration is the most leading public signal in venture capital, and supports it by breaking three classic objections (vehicle: GitHub data is noise; internal: I already have deal flow; external: public data has no edge). Closes on the €49/mo Dashboard tier (founding-member, locked forever) with a 30-day Signal-or-It's-Free guarantee. Built on the 219-startup SSRN-published panel with a 21-47 day median lead time over fundraise announcements."
+          tldr="The 12-minute walkthrough lays out the single belief, commit-velocity acceleration is the most leading public signal in venture capital, and supports it by breaking three classic objections (vehicle: GitHub data is noise; internal: I already have deal flow; external: public data has no edge). Closes on the €49/mo Dashboard tier with a 30-day Signal-or-It's-Free guarantee. Built on the 219-startup SSRN-published panel with a 21-47 day median lead time over fundraise announcements."
           pageUrl="https://signals.gitdealflow.com/walkthrough"
           asOf="2026-05-05"
           citeAs="VC Deal Flow Signal, 12-Minute Walkthrough (signals.gitdealflow.com/walkthrough)."
@@ -1297,7 +1297,7 @@ credited toward Dashboard if you upgrade in 14 days.
             },
             {
               claim:
-                "Dashboard founding-member price (€49/mo) is locked forever and survives the public-launch hike to €49/mo.",
+                "Dashboard is €49/mo, month to month. Founding members who joined before June 30, 2026 keep their €9.97 rate for life.",
               sourceUrl: "https://signals.gitdealflow.com/pricing",
               sourceLabel: "Pricing page",
             },

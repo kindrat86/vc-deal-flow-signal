@@ -5,7 +5,7 @@
   "title": "How to spot a Series A 47 days before the deck lands, The Perfect VSL",
   "headline": "How to spot a Series A 47 days before the deck lands.",
   "subhead": "The 10-minute case for code-side momentum as the single most leading public signal in venture capital.",
-  "description": "Brunson-format video sales letter. The single belief: GitHub commit-velocity acceleration is the most leading public signal in venture capital, every other deal-flow source is a lagging indicator. Built on a 219-startup SSRN panel with a 21-47 day median pre-deck lead band.\n\nThree doors at the end:\n• Free Sunday digest, https://gitdealflow.com/#signup\n• €7 First Look Pass, https://signals.gitdealflow.com/firstlook\n• €9.97/mo Dashboard, https://signals.gitdealflow.com/pricing\n\nSSRN preprint: https://ssrn.com/abstract=6606558\nFull written version: https://signals.gitdealflow.com/walkthrough\n\n#vc #dealflow #github #startups #seriesA",
+  "description": "Brunson-format video sales letter. The single belief: GitHub commit-velocity acceleration is the most leading public signal in venture capital, every other deal-flow source is a lagging indicator. Built on a 219-startup SSRN panel with a 21-47 day median pre-deck lead band.\n\nThree doors at the end:\n• Free Sunday digest, https://gitdealflow.com/#signup\n• €7 First Look Pass, https://signals.gitdealflow.com/firstlook\n• €49/mo Dashboard, https://signals.gitdealflow.com/pricing\n\nSSRN preprint: https://ssrn.com/abstract=6606558\nFull written version: https://signals.gitdealflow.com/walkthrough\n\n#vc #dealflow #github #startups #seriesA",
   "fps": 30,
   "width": 1920,
   "height": 1080,
@@ -150,7 +150,7 @@
     {
       "id": "stack",
       "kind": "stack-reveal",
-      "vo": "Here is what is in the box at nine ninety-seven a month. The live dashboard, one hundred and nine ranked startups, refreshed every Monday, the same dataset behind the SSRN paper. The two hundred nineteen startup backtest CSV, every panel row, regression-ready, drop it into a notebook. Monthly sector deep-dive PDF, twelve pages, your sector, every month. Two free Chrome extensions, the Crunchbase badge that injects a momentum score, and the GitHub Lookup that hovers any org and shows velocity in two hundred milliseconds. The free MCP server, forever, six tools inside Claude, Cursor, Windsurf, any agent host. Async watchlist build, send your thesis, get back the ten highest-acceleration matching orgs. Methodology vault, the full SSRN preprint and regression code, open. And the thirty-day signal-or-it's-free guarantee, if the dashboard does not surface a startup you find genuinely interesting in your first month, reply REFUND to any email. No forms, no calls. Total real value, one thousand seven hundred twenty-eight euros. Your price, nine ninety-seven a month. Locked at the founding rate. Forever.",
+      "vo": "Here is what is in the box at forty-nine euros a month. The live dashboard, one hundred and nine ranked startups, refreshed every Monday, the same dataset behind the SSRN paper. The two hundred nineteen startup backtest CSV, every panel row, regression-ready, drop it into a notebook. Monthly sector deep-dive PDF, twelve pages, your sector, every month. Two free Chrome extensions, the Crunchbase badge that injects a momentum score, and the GitHub Lookup that hovers any org and shows velocity in two hundred milliseconds. The free MCP server, forever, six tools inside Claude, Cursor, Windsurf, any agent host. Async watchlist build, send your thesis, get back the ten highest-acceleration matching orgs. Methodology vault, the full SSRN preprint and regression code, open. And the thirty-day signal-or-it's-free guarantee, if the dashboard does not surface a startup you find genuinely interesting in your first month, reply REFUND to any email. No forms, no calls. Total real value, one thousand seven hundred twenty-eight euros. Your price, forty-nine euros a month. Month to month. Cancel anytime.",
       "durationHint": 90,
       "data": {
         "items": [
@@ -164,7 +164,7 @@
           { "name": "30-Day Signal-or-It's-Free Guarantee", "detail": "Reply REFUND, full refund in 2 business days", "value": "Bonus" }
         ],
         "totalValue": "€1,728",
-        "yourPrice": "€9.97/mo"
+        "yourPrice": "€49/mo"
       }
     },
     {
@@ -211,7 +211,7 @@
     {
       "id": "cta",
       "kind": "cta",
-      "vo": "Three doors at the end of this video. The free Sunday digest, five names a week, no commitment, gitdealflow dot com slash signup. The seven euro First Look Pass, pick a sector, twenty-four hour deep-dive, signals dot gitdealflow dot com slash firstlook. The Dashboard at nine ninety-seven a month, founding rate, locked forever, signals dot gitdealflow dot com slash pricing. Pick the rung that fits your cadence. The rest stay out of your way.",
+      "vo": "Three doors at the end of this video. The free Sunday digest, five names a week, no commitment, gitdealflow dot com slash signup. The seven euro First Look Pass, pick a sector, twenty-four hour deep-dive, signals dot gitdealflow dot com slash firstlook. The Dashboard at forty-nine euros a month, month to month, cancel anytime, signals dot gitdealflow dot com slash pricing. Pick the rung that fits your cadence. The rest stay out of your way.",
       "durationHint": 38,
       "data": {
         "headline": "Three doors. Pick the rung that fits your cadence.",
@@ -219,14 +219,14 @@
         "ctas": [
           "Free Sunday digest, gitdealflow.com/#signup",
           "First Look Pass €7, signals.gitdealflow.com/firstlook",
-          "Dashboard €9.97/mo, signals.gitdealflow.com/pricing"
+          "Dashboard €49/mo, signals.gitdealflow.com/pricing"
         ]
       }
     },
     {
       "id": "encore",
       "kind": "magic-bullet",
-      "vo": "One last frame before you go. If all this did was surface one Series A forty-seven days before the deck reached your competitors, would the nine ninety-seven a month be worth it? If all this did was save you one warm intro you did not have access to, would it be worth it? If all this did was replace one hour of manual sourcing per week, would it be worth it? If all this did was give you one quoting moment with an LP about a thesis they had not heard from any other fund, would it be worth it? That is the question I want you to answer. The link is below.",
+      "vo": "One last frame before you go. If all this did was surface one Series A forty-seven days before the deck reached your competitors, would the forty-nine euros a month be worth it? If all this did was save you one warm intro you did not have access to, would it be worth it? If all this did was replace one hour of manual sourcing per week, would it be worth it? If all this did was give you one quoting moment with an LP about a thesis they had not heard from any other fund, would it be worth it? That is the question I want you to answer. The link is below.",
       "durationHint": 50,
       "data": {
         "title": "If all this did was...",
@@ -234,25 +234,25 @@
           {
             "day": "If",
             "label": "Surface one Series A 47 days early",
-            "detail": "Would €9.97 be worth it?",
+            "detail": "Would €49 be worth it?",
             "win": false
           },
           {
             "day": "If",
             "label": "Save one warm intro you didn't have",
-            "detail": "Would €9.97 be worth it?",
+            "detail": "Would €49 be worth it?",
             "win": false
           },
           {
             "day": "If",
             "label": "Replace 1 hour/week of manual research",
-            "detail": "Would €9.97 be worth it?",
+            "detail": "Would €49 be worth it?",
             "win": false
           },
           {
             "day": "If",
             "label": "Give you one quoting moment with an LP",
-            "detail": "Would €9.97 be worth it?",
+            "detail": "Would €49 be worth it?",
             "win": true
           }
         ]
@@ -273,7 +273,7 @@
       "a": "The SSRN/Zenodo panel (219 GitHub engineering-velocity observations, 19 sectors, 5 quarterly periods, CC-BY-4.0) is descriptive, it deliberately carries no funding-event labels, so it does not by itself prove a lead band. The 21-47 day window is our working hypothesis; we validate it in the open on /scorecard (currently un-graded) and invite replication joining the panel to funding data. Pull the panel and regression code in an afternoon."
     },
     {
-      "q": "Why €9.97/mo when comparable tools cost €1,000+/mo?",
+      "q": "Why €49/mo when comparable tools cost €1,000+/mo?",
       "a": "Two reasons. One, there is no sales team, no enterprise motion, no demo gating. The whole price difference is the cost of the sales motion we removed. Two, the buyer is a developer-investor writing €5k-€50k checks, not a partner at a fund with a six-figure data budget. Pricing matches the buyer."
     },
     {

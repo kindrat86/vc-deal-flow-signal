@@ -415,9 +415,9 @@ export const DATA_NERD_FUTURE_SELF = {
     },
     {
       n: 5,
-      label: "Insider Circle at 200 paid members or the price drops.",
+      label: "Insider Circle, €197/mo.",
       body:
-        "Founding-member rate locked at €97/mo until 200 active subscribers, then a 60-day notice and a public price hike. The cohort closes when the math closes. Members who joined early stay at the locked rate forever.",
+        "Insider Circle is €197/mo. Founding members who joined before June 30, 2026 keep their €97/mo rate for life.",
     },
   ],
 } as const;

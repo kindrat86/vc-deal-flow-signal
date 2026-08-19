@@ -119,7 +119,7 @@ function day5(ctx: ScoutContext) {
       `
 <p>@${ctx.handle}, last email in the onboarding series.</p>
 <p>Free tier is 3 predictions a month. That gets you to Scout rank (10 calls, 40% accuracy) and a public profile.</p>
-<p>If you want Sharp (25 calls, 55%), Elite (50 calls, 65%), or Oracle (100 calls, 70%, top 1% globally), you need the paid Dashboard plan. EUR 9.97 per month. 10 predictions. Private mode. Weekly Top-10 Scouts email.</p>
+<p>If you want Sharp (25 calls, 55%), Elite (50 calls, 65%), or Oracle (100 calls, 70%, top 1% globally), you need the paid Dashboard plan. EUR 49 per month. 10 predictions. Private mode. Weekly Top-10 Scouts email.</p>
 <p>Oracle rank gets a lifetime Founder Scout badge on your profile. The first 100 scouts to join already have it, no upgrade required, but the ladder past Scout is paid-gated by design, because we do not want farmed leaderboards.</p>
 <p>Upgrade or ignore, both are fine. Your calls keep resolving either way. We email you the moment each one hits.</p>
 <p><a href="${SITE_URL}/dashboard" style="color:#0ea5e9;font-weight:600;">See the Dashboard plan</a></p>

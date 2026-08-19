@@ -83,7 +83,7 @@ const BEATS_BY_TIER: Record<RoadmapTier, readonly RoadmapBeat[]> = {
     {
       when: "Day 90 → 1 year",
       what: "Three to five sourcing wins traced back to the engine. €588 a year vs the expected value of one missed name at a €5K cheque (€40K).",
-      why: "The math of the Money Close is calendar-able. By twelve months you either renewed once at the same locked rate or churned with an honest reason, both are signal we use.",
+      why: "The math of the Money Close is calendar-able. By twelve months you either renewed once or churned with an honest reason, both are signal we use.",
     },
   ],
   insider: [

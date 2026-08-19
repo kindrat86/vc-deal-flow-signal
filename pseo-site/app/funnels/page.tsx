@@ -152,8 +152,8 @@ const FUNNELS: Funnel[] = [
     price: "€49/mo (founding rate closed 2026-06-30)",
     hook: "The full live dashboard, refreshed every Monday at 06:00 UTC.",
     who: "Active angel investors, GP scouts, syndicate leads.",
-    offer: "8-item stack: live dashboard, 219-startup panel dataset, monthly sector deep-dive PDF, two free Chrome extensions, free MCP server, async watchlist build, methodology vault, 30-day Signal-or-It's-Free guarantee. €1,728/yr standalone value at €9.97/mo.",
-    cta: "Lock the founding price",
+    offer: "8-item stack: live dashboard, 219-startup panel dataset, monthly sector deep-dive PDF, two free Chrome extensions, free MCP server, async watchlist build, methodology vault, 30-day Signal-or-It's-Free guarantee. €1,728/yr standalone value at €49/mo.",
+    cta: "Get the Dashboard",
     color: "sky",
   },
   {
@@ -161,7 +161,7 @@ const FUNNELS: Funnel[] = [
     activitySlug: "insider",
     href: "/pricing#insider-circle",
     tier: "Mid-ladder",
-    price: "€97/mo",
+    price: "€197/mo",
     hook: "Private investor Telegram + monthly live briefing + Slack/Telegram spike alerts.",
     who: "Funds and syndicates who want the signal earlier than Monday's email.",
     offer: "Everything in Dashboard + JSON/CSV API + spike alerts + monthly briefing call + portfolio overlap report + quarterly trend PDF.",
@@ -393,10 +393,10 @@ five startups a week, in plain English. If a specific question is
             <li>
               <span className="text-sky-400 font-mono text-xs mr-2">[€49/mo]</span>
               <strong className="text-gray-100">Dashboard</strong>: daily-rhythm tool,
-              the founding price is locked forever.
+              month to month, cancel anytime.
             </li>
             <li>
-              <span className="text-teal-400 font-mono text-xs mr-2">[€97/mo]</span>
+              <span className="text-teal-400 font-mono text-xs mr-2">[€197/mo]</span>
               <strong className="text-gray-100">Insider Circle</strong>: earlier
               signal, private community, monthly briefing.
             </li>
@@ -542,10 +542,10 @@ six read-only tools inside Claude, Cursor, or any MCP host. Free
               { n: 11, name: "Money Close", where: "/walkthrough, \"the deal you miss is the cost\"" },
               { n: 12, name: "Identity Close", where: "/walkthrough + home, earlier-signal framing" },
               { n: 13, name: "Pricing Close", where: "/walkthrough, \"€1,728/yr stack at €588\"" },
-              { n: 14, name: "Urgency / Scarcity Close", where: "/walkthrough, founding-rate lock" },
+              { n: 14, name: "Urgency / Scarcity Close", where: "/walkthrough, 21-47 day window close" },
               { n: 15, name: "Encore Close", where: "/walkthrough, 8-line summary at the end" },
-              { n: 16, name: "Order Form Bump", where: "/firstlook, interactive cart preview, toggleable bump (€7 → €1,797), running total" },
-              { n: 17, name: "One-Time Offer (OTO)", where: "/firstlook delivery email, Insider €177/mo first month + full OTO ladder shown on page" },
+              { n: 16, name: "Order Form Bump", where: "/firstlook, interactive cart preview, toggleable bump (€7 → +€19 Methodology Vault), running total" },
+              { n: 17, name: "One-Time Offer (OTO)", where: "/firstlook delivery email, Insider €197/mo + full OTO ladder shown on page" },
               { n: 18, name: "Cart Funnel + Downsell", where: "/firstlook, offer stack (€1,547 retail → €7), Risk Reversal at cart, free Acceleration Watch fallback" },
               { n: 19, name: "Risk Reversal / Guarantee", where: "30-day Signal-or-It's-Free, every tier" },
               { n: 20, name: "Social Proof", where: "Home SignalLeader + SSRN paper + 1,060 indexed pages" },

@@ -1591,11 +1591,11 @@ one calm read every Sunday. The other two lanes are only for when a
               className="mt-[0.6rem] inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-amber-400"
             />
             <span>
-              <strong className="text-amber-300">If the founding rate</strong>{" "}
-              locks forever for everyone who joins before the cohort closes -
-              and the public price is already scheduled to step to €29/€197
-              after, does the cost of waiting one more week feel{" "}
-              <em>cheaper</em> than the cost of locking in tonight?
+              <strong className="text-amber-300">If the founding window</strong>{" "}
+              already closed on June 30, exactly as promised - and founding
+              members still keep their rate for life - does the next deadline
+              on this site feel like one you should{" "}
+              <em>believe</em>?
             </span>
           </li>
         </ul>

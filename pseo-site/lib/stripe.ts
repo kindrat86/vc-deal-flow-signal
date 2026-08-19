@@ -36,9 +36,11 @@ const TIER_BY_AMOUNT: Record<number, TierKey> = {
   100: "teardown", // EUR 1.00 one-time, Tweet Teardown micro-tripwire / €0→€7 bridge (Brunson DCS Ch 18)
   99: "book", // EUR 0.99 one-time, The 7 GitHub Signals book (Brunson Secret 17)
   700: "firstlook", // EUR 7.00 one-time
-  997: "dashboard", // EUR 9.97/mo
+  997: "dashboard", // EUR 9.97/mo, legacy founding rate
+  4900: "dashboard", // EUR 49/mo, current list price
   1900: "agent_credits_100", // EUR 19 one-time, 100 deep-signal calls
-  9700: "insider", // EUR 97.00/mo
+  9700: "insider", // EUR 97.00/mo, legacy founding rate
+  19700: "insider", // EUR 197/mo, current list price
   199700: "sector_sweep", // EUR 1,997 one-time (Russell audit 2026-05-02)
 };
 
