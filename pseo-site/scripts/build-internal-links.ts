@@ -27,6 +27,16 @@ import { join } from "node:path";
 
 const BASE = process.env.LINKS_BASE || "https://signals.gitdealflow.com";
 const SITEMAP_IDS = ["core", "sectors", "crossings", "startups", "content"];
+// These comparison twins permanently redirect to their /vs/ canonical pages.
+// Live sitemap propagation can lag a redirect, so never reintroduce them into
+// the committed graph while that cache catches up.
+const RETIRED_COMPARE_PATHS = new Set([
+  "/compare/pitchbook-vs-crunchbase",
+  "/compare/crunchbase-vs-dealroom",
+  "/compare/pitchbook-vs-dealroom",
+  "/compare/harmonic-ai-vs-dealroom",
+  "/compare/harmonic-ai-vs-forager-ai",
+]);
 
 interface Link { href: string; label: string }
 interface RelatedGroup { title: string; links: Link[] }
@@ -70,7 +80,7 @@ const tokensOf = (p: string) =>
 const titleCase = (slug: string) =>
   slug.split("/").filter(Boolean).pop()!.replace(/[-_]/g, " ").replace(/\b\w/g, (c) => c.toUpperCase()).replace(/\bVs\b/g, "vs");
 
-const paths = [...new Set(urls.map(pathOf))].filter((p) => p !== "/" && !p.endsWith(".xml") && !p.endsWith(".txt") && !p.endsWith(".json"));
+const paths = [...new Set(urls.map(pathOf))].filter((p) => p !== "/" && !p.endsWith(".xml") && !p.endsWith(".txt") && !p.endsWith(".json") && !RETIRED_COMPARE_PATHS.has(p));
 const bySection = new Map<string, string[]>();
 for (const p of paths) { const s = sectionOf(p); (bySection.get(s) || bySection.set(s, []).get(s)!).push(p); }
 
@@ -189,10 +199,8 @@ const RENDER_SECTIONS = new Set([
   "research", "vs", "continuity", "acquirer", "answers", "blog", "explore",
   "compare", "alternatives", "topics", "from-stars-to-seed", "best",
   "research-paper", "signal",
-  // Founder/solo-founder pages render the graph in HTML (verified live
-  // 2026-08-17: /founder/tj ships the /founder/leerob link) and are the only
-  // token-overlapping donors for founder cohorts, which otherwise exhaust the
-  // render-section pool and drop below their striking-distance floor.
+  // Founder/solo-founder pages render the graph in HTML and are the only
+  // token-overlapping donors for founder cohorts.
   "founder", "solo-founder-tracker",
 ]);
 const MAX_NEW_LINKS_PER_DONOR = 4; // keep any one donor from turning into a farm
@@ -239,10 +247,87 @@ for (const t of cohort) {
     indeg.set(targetPath, (indeg.get(targetPath) || 0) + 1);
     added++;
   }
+
+  // Fallback tier (2026-08-17): token overlap cannot match sibling pages inside
+  // multi-token families (two research papers share only "research"+"paper" =
+  // 0.25 < 0.3), so the heaviest cohort leaves stalled under their floors.
+  // Same-SECTION donors are topically adjacent by construction; rank them by
+  // donor in-degree (strong pages pass equity), same caps as the main tier.
+  if (added < need) {
+    const targetSection = sectionOf(targetPath);
+    const fallback = paths
+      .filter(
+        (q) =>
+          q !== targetPath &&
+          sectionOf(q) === targetSection &&
+          RENDER_SECTIONS.has(targetSection) &&
+          !(graph[q] || []).some((g) => g.links.some((l) => l.href === targetPath)),
+      )
+      .map((q) => ({ q, rank: indeg.get(q) || 0 }))
+      .sort((a, b) => b.rank - a.rank || a.q.localeCompare(b.q));
+    for (const d of fallback) {
+      if (added >= need) break;
+      if ((donorLoad.get(d.q) || 0) >= MAX_NEW_LINKS_PER_DONOR) continue;
+      const groups = graph[d.q];
+      if (!groups) continue;
+      let g = groups.find((x) => x.title === "Related topics");
+      if (!g) {
+        g = { title: "Related topics", links: [] };
+        groups.push(g);
+      }
+      if (g.links.length >= 6) continue;
+      g.links.push({ href: targetPath, label: titleCase(targetPath) });
+      donorLoad.set(d.q, (donorLoad.get(d.q) || 0) + 1);
+      indeg.set(targetPath, (indeg.get(targetPath) || 0) + 1);
+      added++;
+    }
+  }
+  // A few high-intent hubs and language pages have no useful slug overlap.
+  // Give them real, rendered browse links rather than silently leaving their
+  // search-driven floor unmet.
+  if (added < need) {
+    const broadFallback = paths
+      .filter(
+        (q) =>
+          q !== targetPath &&
+          RENDER_SECTIONS.has(sectionOf(q)) &&
+          !(graph[q] || []).some((g) => g.links.some((l) => l.href === targetPath)),
+      )
+      .map((q) => ({ q, rank: indeg.get(q) || 0 }))
+      .sort((a, b) => b.rank - a.rank || a.q.localeCompare(b.q));
+    for (const d of broadFallback) {
+      if (added >= need) break;
+      if ((donorLoad.get(d.q) || 0) >= MAX_NEW_LINKS_PER_DONOR) continue;
+      const groups = graph[d.q];
+      if (!groups) continue;
+      let g = groups.find((x) => x.title === "Explore more signals");
+      if (!g) {
+        g = { title: "Explore more signals", links: [] };
+        groups.push(g);
+      }
+      if (g.links.length >= 6) continue;
+      g.links.push({ href: targetPath, label: titleCase(targetPath) });
+      donorLoad.set(d.q, (donorLoad.get(d.q) || 0) + 1);
+      indeg.set(targetPath, (indeg.get(targetPath) || 0) + 1);
+      added++;
+    }
+  }
   if (added < need) {
     console.warn(
       `  (striking-distance: ${targetPath} floor ${t.floor}, added ${added}/${need} in-links)`,
     );
+  }
+}
+
+// Sitemaps can lag permanent redirects. Source filtering handles the normal
+// case, and this final cleanup prevents later graph passes from re-linking a
+// retired /compare twin.
+for (const retired of RETIRED_COMPARE_PATHS) {
+  delete graph[retired];
+  for (const groups of Object.values(graph)) {
+    for (const group of groups) {
+      group.links = group.links.filter((link) => link.href !== retired);
+    }
   }
 }
 

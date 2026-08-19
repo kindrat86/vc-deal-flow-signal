@@ -47,6 +47,9 @@ export interface ResearchPaper {
   metaDescription: string;
   /** Concise abstract summary in our own words, not the original abstract. */
   abstractSummary: string;
+
+  /** 40-60w quotable direct answer (§65 guard) */
+  definition: string;
   /** Our editorial context, why we cite this paper. */
   ourContext: string;
   /**
@@ -97,6 +100,15 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
     investorAngle:
       "Every frontier model your pipeline will see in 2026 (GPT, Claude, Gemini, Llama, DeepSeek) runs on the architecture this paper introduced. When we rank AI-native teams by engineering acceleration, we are measuring who is building on that substrate fastest: researcher hiring, attention-scale infrastructure, and shipping cadence.",
     metaDescription: "The original 2017 NeurIPS Transformer paper: plain-English summary of the architecture and key findings, with links to the arXiv PDF and citations.",
+        /**
+     * 40-60 word quotable definition (2026-08-17, audit win #3 striking-distance
+     * push). Rendered in the DefinitionBlock at the top of the leaf: the
+     * extractable answer for AI engines and featured snippets. Grounded in
+     * abstractSummary, distinct from metaDescription. Word window pinned by
+     * verify-no-regressions §65.
+     */
+    definition:
+      "Attention Is All You Need (Vaswani et al., NeurIPS 2017) introduced the Transformer, a neural architecture built entirely on self-attention with no recurrence or convolution. It matched or beat recurrent translation models at far lower training cost, and every modern frontier LLM, GPT, Claude, Gemini, Llama, still runs on it.",
     abstractSummary:
       "Introduces the Transformer architecture: a sequence-to-sequence model based entirely on attention mechanisms, dispensing with recurrence and convolutions. Demonstrates state-of-the-art results on English-to-German and English-to-French translation benchmarks with significantly less training time than the prior recurrent encoder-decoder models. The architecture's self-attention mechanism allows parallel processing of sequence elements and scales effectively with model size and data.",
     ourContext:
@@ -161,6 +173,15 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
     investorAngle:
       "This is the catalyst paper of the applied-AI category: few-shot in-context learning became the dominant product pattern and 175B-scale training set the design space frontier labs operate in. The applied layer we now track (Cursor, Lovable, LangChain, Perplexity, and hundreds of wrappers) exists because this paper made small AI products viable.",
     metaDescription: "The original GPT-3 paper (arXiv 2005.14165): plain-English summary of the 175B model and in-context learning, with links to the PDF and citations.",
+        /**
+     * 40-60 word quotable definition (2026-08-17, audit win #3 striking-distance
+     * push). Rendered in the DefinitionBlock at the top of the leaf: the
+     * extractable answer for AI engines and featured snippets. Grounded in
+     * abstractSummary, distinct from metaDescription. Word window pinned by
+     * verify-no-regressions §65.
+     */
+    definition:
+      "Language Models are Few-Shot Learners (Brown et al., NeurIPS 2020) introduced GPT-3, a 175B-parameter Transformer, and showed that scale alone produces few-shot in-context learning: one model performs many NLP tasks from a handful of prompt examples with no fine-tuning. The paper is the empirical foundation of the foundation-model scaling era.",
     abstractSummary:
       "Introduces GPT-3, a 175B-parameter autoregressive language model, and demonstrates that scaling up a Transformer LM produces emergent few-shot in-context learning capability. Shows that a single model can perform many NLP tasks competitively without fine-tuning, simply by being shown a few examples in the prompt. Documents capability and scaling behaviors that defined the LLM era.",
     ourContext:
@@ -225,6 +246,15 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
     investorAngle:
       "RLHF is why AI products feel helpful instead of raw: the alignment baseline behind ChatGPT-class behavior. For deal flow, RLHF and eval-harness engineering is a distinct hiring pattern we read as a team scaling toward product, not a demo.",
     metaDescription: "The original InstructGPT paper (arXiv 2203.02155): plain-English summary of RLHF and instruction tuning, with links to the PDF and citations.",
+        /**
+     * 40-60 word quotable definition (2026-08-17, audit win #3 striking-distance
+     * push). Rendered in the DefinitionBlock at the top of the leaf: the
+     * extractable answer for AI engines and featured snippets. Grounded in
+     * abstractSummary, distinct from metaDescription. Word window pinned by
+     * verify-no-regressions §65.
+     */
+    definition:
+      "InstructGPT (Ouyang et al., 2022) introduced the RLHF pipeline behind ChatGPT-style models: supervised fine-tuning on human demonstrations, a reward model trained on human preference comparisons, then PPO optimization against it. The 1.3B InstructGPT outputs were preferred over 175B GPT-3, showing alignment training beats raw scale for instructions.",
     abstractSummary:
       "Introduces InstructGPT and the RLHF (Reinforcement Learning from Human Feedback) pipeline: (1) collect demonstrations from human labelers for supervised fine-tuning, (2) collect human preference comparisons over model outputs to train a reward model, (3) optimize the LM against the reward model via PPO. Shows that this pipeline dramatically improves helpfulness, truthfulness, and harmlessness compared to the raw GPT-3 baseline, at a fraction of the parameter count.",
     ourContext:
@@ -289,6 +319,15 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
     investorAngle:
       "RAG sits under essentially every enterprise LLM deployment in 2026, which makes the retrieval layer (embeddings, vector databases, rerankers) one of the densest investing surfaces in the corpus. The quiet formation story is the vector-database and eval sub-layer building underneath the model providers.",
     metaDescription: "The original RAG paper (arXiv 2005.11401): plain-English summary of retrieval-augmented generation, with links to the PDF and citations.",
+        /**
+     * 40-60 word quotable definition (2026-08-17, audit win #3 striking-distance
+     * push). Rendered in the DefinitionBlock at the top of the leaf: the
+     * extractable answer for AI engines and featured snippets. Grounded in
+     * abstractSummary, distinct from metaDescription. Word window pinned by
+     * verify-no-regressions §65.
+     */
+    definition:
+      "Retrieval-Augmented Generation (Lewis et al., NeurIPS 2020) combined a seq2seq model with a non-parametric memory: a dense passage retrieval index over Wikipedia that the generator consults before answering. RAG matched or beat fine-tuned baselines on knowledge-intensive tasks while letting each answer cite the documents that informed it.",
     abstractSummary:
       "Introduces Retrieval-Augmented Generation (RAG): an architecture that combines a pretrained sequence-to-sequence model (BART) with a non-parametric memory (a Dense Passage Retrieval index over Wikipedia). Demonstrates strong performance on knowledge-intensive NLP tasks while providing transparency about which documents informed each generation. Establishes the design pattern of retrieving documents before generating.",
     ourContext:
@@ -353,6 +392,15 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
     investorAngle:
       "LoRA made fine-tuning cheap, and cheap fine-tuning is why vertical AI products are buildable at seed stage. Adapter-ecosystem activity around an open-weight stack is one of the cleanest reads of practical AI-application velocity we score.",
     metaDescription: "The original LoRA paper (arXiv 2106.09685): plain-English summary of low-rank adaptation for LLM fine-tuning, with links to the PDF and citations.",
+        /**
+     * 40-60 word quotable definition (2026-08-17, audit win #3 striking-distance
+     * push). Rendered in the DefinitionBlock at the top of the leaf: the
+     * extractable answer for AI engines and featured snippets. Grounded in
+     * abstractSummary, distinct from metaDescription. Word window pinned by
+     * verify-no-regressions §65.
+     */
+    definition:
+      "LoRA (Hu et al., 2021) freezes a pretrained model and adds small trainable low-rank matrices to attention weights, matching full fine-tuning on benchmarks while updating only 0.1% to 1% of parameters. GPU memory and storage drop by orders of magnitude, so per-task fine-tunes ship as small shareable files.",
     abstractSummary:
       "Introduces Low-Rank Adaptation (LoRA): a parameter-efficient fine-tuning technique that adds small low-rank matrices to a frozen base model. Demonstrates that LoRA matches full fine-tuning performance on multiple benchmarks while updating only 0.1%-1% of parameters. Reduces GPU memory requirements and storage footprint by orders of magnitude.",
     ourContext:
@@ -417,6 +465,15 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
     investorAngle:
       "Constitutional AI is the training pipeline behind Claude and the RLAIF answer to RLHF's scaling bottleneck. Alignment-engineering hiring is a frontier-lab signal: teams building RLHF or RLAIF pipelines are investing in shipping, not demoing.",
     metaDescription: "The original Constitutional AI paper (arXiv 2212.08073): plain-English summary of RLAIF and self-critique, with links to the PDF and citations.",
+        /**
+     * 40-60 word quotable definition (2026-08-17, audit win #3 striking-distance
+     * push). Rendered in the DefinitionBlock at the top of the leaf: the
+     * extractable answer for AI engines and featured snippets. Grounded in
+     * abstractSummary, distinct from metaDescription. Word window pinned by
+     * verify-no-regressions §65.
+     */
+    definition:
+      "Constitutional AI (Bai et al., 2022) replaces human feedback with a written constitution: the model critiques and revises its own outputs against those principles, then a reward model trained on this AI feedback drives reinforcement learning (RLAIF). Anthropic showed the result is both more helpful and less harmful than RLHF.",
     abstractSummary:
       "Introduces Constitutional AI (CAI): an alignment approach where an LLM critiques and revises its own outputs according to a written constitution of principles, with reinforcement learning from AI feedback (RLAIF) replacing the human-labeling step. Demonstrates that RLAIF can produce models that are both more helpful AND more harmless than RLHF baselines, while scaling alignment without proportional human labeling effort.",
     ourContext:
@@ -481,6 +538,15 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
     investorAngle:
       "Chain-of-Thought is why reasoning models exist: o-series, extended thinking, and R1 train the pattern in rather than prompting it out. The reasoning-model category emerged from this paper, and we track its engineering acceleration as its own trend surface.",
     metaDescription: "The original Chain-of-Thought paper (arXiv 2201.11903): plain-English summary of step-by-step reasoning prompts, with links to the PDF and citations.",
+        /**
+     * 40-60 word quotable definition (2026-08-17, audit win #3 striking-distance
+     * push). Rendered in the DefinitionBlock at the top of the leaf: the
+     * extractable answer for AI engines and featured snippets. Grounded in
+     * abstractSummary, distinct from metaDescription. Word window pinned by
+     * verify-no-regressions §65.
+     */
+    definition:
+      "Chain-of-thought prompting (Wei et al., 2022) asks an LLM to write intermediate reasoning steps before its final answer, sharply improving math, logic, and multi-step benchmark accuracy. The gain emerges only at sufficient model scale, and the paper established step-by-step reasoning as a standard capability elicitation technique.",
     abstractSummary:
       "Demonstrates that prompting LLMs to articulate intermediate reasoning steps before producing a final answer ('chain-of-thought prompting') dramatically improves accuracy on math, logic, and multi-step problem-solving benchmarks. The improvement scales with model size and emerges only at sufficient scale. Establishes step-by-step reasoning as a critical prompting technique and a foundation for later 'reasoning model' designs.",
     ourContext:
@@ -541,6 +607,15 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
     investorAngle:
       "The academic foundation for reading engineering activity as a performance signal: DORA showed delivery metrics carry predictive weight. Our Code-Side Sourcing methodology runs on the same premise pointed at venture outcomes: commit velocity, contributor influx, and repo-creation pulse as pre-round signals.",
     metaDescription: "The original DORA Accelerate research: plain-English summary of the four key metrics and findings, with links to the full report and citations.",
+        /**
+     * 40-60 word quotable definition (2026-08-17, audit win #3 striking-distance
+     * push). Rendered in the DefinitionBlock at the top of the leaf: the
+     * extractable answer for AI engines and featured snippets. Grounded in
+     * abstractSummary, distinct from metaDescription. Word window pinned by
+     * verify-no-regressions §65.
+     */
+    definition:
+      "Accelerate (Forsgren, Humble, and Kim, 2018) published the DORA research: four metrics, deployment frequency, lead time for changes, change failure rate, and time to restore, empirically predict software delivery and organizational performance. It is the canonical evidence base for measuring engineering velocity, which is what our deal-flow signals track.",
     abstractSummary:
       "Documents the multi-year DevOps Research and Assessment (DORA) research showing that four metrics, deployment frequency, lead time for changes, change failure rate, and mean time to recovery, empirically predict software-organization performance. Establishes the empirical foundation for engineering-velocity measurement as a research discipline.",
     ourContext:
@@ -607,6 +682,15 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
     investorAngle:
       "MoE is the architecture behind the most efficient frontier models (Mixtral, DeepSeek MoE): better cost-per-token, which flows straight into gross margin. MoE adoption in a startup's open-source repos is a sophistication signal we score: the team thinks in unit economics, not demos.",
     metaDescription: "The original Mixture of Experts paper: plain-English summary of sparsely-gated MoE layers, with links to the PDF and citations.",
+        /**
+     * 40-60 word quotable definition (2026-08-17, audit win #3 striking-distance
+     * push). Rendered in the DefinitionBlock at the top of the leaf: the
+     * extractable answer for AI engines and featured snippets. Grounded in
+     * abstractSummary, distinct from metaDescription. Word window pinned by
+     * verify-no-regressions §65.
+     */
+    definition:
+      "Outrageously Large Neural Networks (Shazeer et al., ICLR 2017) introduced the sparsely-gated mixture-of-experts layer: a trainable gating network routes each input to a small subset of expert subnetworks, achieving over 1,000x more model capacity with minimal added computation. Sparse MoE later became a standard frontier-LLM efficiency technique.",
     abstractSummary:
       "Introduces a sparsely-gated mixture-of-experts (MoE) layer for deep neural networks that achieves over 1,000x improvement in model capacity with minimal computational overhead. A trainable gating network routes each input to a small subset of expert sub-networks, enabling models with billions of parameters while keeping inference compute tractable. The architecture achieved state-of-the-art results on language modeling and machine translation benchmarks.",
     ourContext:

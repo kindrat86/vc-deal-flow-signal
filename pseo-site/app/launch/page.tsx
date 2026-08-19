@@ -109,7 +109,38 @@ export default function LaunchIndex() {
             can see the offer that was on the table when the window was
             open.
           </p>
+          <p className="text-gray-400 text-sm leading-relaxed">
+            Closed pages stay here on purpose. They show what was offered,
+            what the stated terms were, and where the standard product path
+            now lives. They are not a promise that an expired price or bonus
+            will return. For a current decision, use the live pricing page.
+          </p>
+          <p className="text-gray-400 text-sm leading-relaxed">
+            Read an archived launch as a decision record, not as a sales page.
+            It can help you understand the question a particular offer was
+            designed to answer, the proof it used, and the customer it served.
+            Then compare that record with the current product, pricing, and
+            delivery details before deciding whether a live route fits your
+            own sourcing workflow today.
+          </p>
         </header>
+
+        <section className="rounded-xl border border-slate-800 bg-slate-950/30 p-5 space-y-3" aria-label="How to use the launch archive">
+          <h2 className="text-gray-100 text-lg font-semibold">How to use this archive</h2>
+          <p className="text-gray-300 text-sm leading-relaxed">
+            A launch archive helps you separate a past campaign from the product
+            that exists today. Start with the problem the launch addressed, then
+            read the offer terms and the promised result in context. If the
+            campaign is closed, use its links as background only. The current
+            pricing and product pages are the source for what is available now.
+          </p>
+          <p className="text-gray-400 text-sm leading-relaxed">
+            That distinction matters when you are comparing routes. A useful
+            archive tells you why a buyer might have acted then. It does not
+            create a deadline, restore a former bonus, or replace the live
+            details you need before choosing a plan for your own work.
+          </p>
+        </section>
 
         <section className="rounded-xl border border-sky-700/30 bg-sky-950/20 p-6 sm:p-8 space-y-3">
           <p className="text-sky-300 text-xs font-semibold uppercase tracking-[0.14em]">
