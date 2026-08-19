@@ -324,7 +324,7 @@ export function renderDigestEmail(data: DigestData, opts: DigestOptions = {}): s
               <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;">
                 <tr>
                   <td align="center">
-                    <a href="${track("https://signals.gitdealflow.com/trending")}" style="display:block;width:100%;box-sizing:border-box;background:${BRAND.accent};color:${BRAND.onAccent};font-weight:700;font-size:19px;line-height:1.2;letter-spacing:-0.01em;padding:18px 28px;border-radius:10px;text-decoration:none;text-align:center;box-shadow:0 4px 14px rgba(2,132,199,0.35);">Browse the full 60+ ranking &rarr;</a>
+                    <a href="${track("https://signals.gitdealflow.com/trending")}" style="display:block;width:100%;box-sizing:border-box;background:${BRAND.accent};color:${BRAND.onAccent};font-weight:700;font-size:19px;line-height:1.2;letter-spacing:-0.01em;padding:18px 28px;border-radius:10px;text-decoration:none;text-align:center;box-shadow:0 4px 14px rgba(2,132,199,0.35);">Browse the full 350+ ranking &rarr;</a>
                   </td>
                 </tr>
               </table>

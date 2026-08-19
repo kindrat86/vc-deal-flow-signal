@@ -45,9 +45,10 @@ const REPORT_URL = process.env.REPORT_URL || "https://gitdealflow.com/report";
 const SITE_URL = process.env.SITE_URL || "https://signals.gitdealflow.com";
 
 
-function confirmedUrl(route: string) {
+function confirmedUrl(route: string, email?: string) {
   const params = new URLSearchParams();
   if (route) params.set("route", route);
+  if (email) params.set("email", email);
   const query = params.toString();
   return `https://gitdealflow.com/confirmed${query ? `?${query}` : ""}`;
 }
@@ -110,7 +111,7 @@ export async function GET(request: Request) {
     if (await isNonceUsed(VERIFY_NONCE_NAMESPACE, v2.nonce)) {
       // Replay (link-prefetcher rescan, leaked URL replay), return success
       // redirect but skip every Resend side effect.
-      return NextResponse.redirect(confirmedUrl(routeFromQuery(url)));
+      return NextResponse.redirect(confirmedUrl(routeFromQuery(url), email));
     }
   } else if (!verifyToken(email, token)) {
     return redirectWithError("This verification link is invalid or expired.");
@@ -129,7 +130,7 @@ export async function GET(request: Request) {
   // no PB attribution row, no Resend audience-add, no 8-email queue.
   if (isExcluded(email)) {
     console.log(`[verify] suppressed excluded address: ${email}`);
-    return NextResponse.redirect(confirmedUrl(routeFromQuery(url)));
+    return NextResponse.redirect(confirmedUrl(routeFromQuery(url), email));
   }
 
   // Pull attribution that /api/subscribe piggybacked on the verify URL.
@@ -155,7 +156,7 @@ export async function GET(request: Request) {
 
   if (!RESEND_API_KEY) {
     console.error("RESEND_API_KEY is not configured");
-    return NextResponse.redirect(confirmedUrl(routeFromQuery(url)));
+    return NextResponse.redirect(confirmedUrl(routeFromQuery(url), email));
   }
 
   // 1. Add verified contact to Resend audience, with attribution packed into
@@ -381,6 +382,7 @@ export async function GET(request: Request) {
         subject: latest.subject,
         html: injectUnsubscribeLink(latest.html, email),
         headers: listUnsubscribeHeaders(email),
+        tags: [{ name: "email_key", value: "digest-immediate" }],
       }),
     });
     if (!digestRes.ok) {
@@ -402,7 +404,7 @@ export async function GET(request: Request) {
   if (cohortParam === "launch") {
     return NextResponse.redirect(`${SITE_URL}/launch/agent-credits`);
   }
-  return NextResponse.redirect(confirmedUrl(route));
+  return NextResponse.redirect(confirmedUrl(route, email));
 }
 
 function redirectWithError(message: string) {

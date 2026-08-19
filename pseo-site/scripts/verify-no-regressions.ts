@@ -600,6 +600,30 @@ check(
 );
 
 // ---------------------------------------------------------------------------
+// 10d. Activation handoff + digest truth (2026-08-19). Verification sends the
+//      first digest immediately. The redirect must carry the verified email so
+//      the landing confirmation page can join anonymous signup activity to the
+//      same distinct id as Resend webhooks. The send tag identifies this first
+//      digest, and the CTA must match the locked 350+ panel claim.
+// ---------------------------------------------------------------------------
+check(
+  "app/api/verify/route.ts",
+  "activation tracking regressed: verification no longer hands the verified email to the confirmation page or tags the immediate digest.",
+  (s) =>
+    s.includes("function confirmedUrl(route: string, email?: string)") &&
+    s.includes('params.set("email", email)') &&
+    s.includes("confirmedUrl(route, email)") &&
+    s.includes('tags: [{ name: "email_key", value: "digest-immediate" }]'),
+  "restore the email-bearing confirmedUrl redirect and the digest-immediate Resend tag",
+);
+check(
+  "lib/digest-email.ts",
+  "digest CTA regressed: 'Browse the full 60+ ranking' contradicts the locked 350+ panel claim.",
+  (s) => !s.includes("60+ ranking") && s.includes("350+ ranking"),
+  "set the /trending CTA to 'Browse the full 350+ ranking'",
+);
+
+// ---------------------------------------------------------------------------
 // Keyword-cannibalization canonicalization (2026-08-14). signals ships ~1,700
 // quarterly startup pages (/startup/[slug]/[period]) and ~95 quarterly sector
 // pages (/startups-to-watch/[sector]-[quarter]); all were SELF-canonical, so
