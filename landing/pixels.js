@@ -14,7 +14,7 @@
   if (!/^https?:$/.test(location.protocol)) return;
 
   var PIXEL_IDS = {
-    meta: "",          // Facebook + Instagram. e.g. "1234567890123456"
+    meta: "243382336082500",          // Facebook + Instagram. e.g. "1234567890123456"
     ga4: "G-7SV2SNZE4C",           // GA4 measurement ID (GitDealFlow property)
     googleAds: "",     // Google Ads conversion ID. e.g. "AW-123456789"
     linkedin: "10702217",      // LinkedIn Insight partner ID. e.g. "1234567"
