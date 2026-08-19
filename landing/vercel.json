@@ -3,7 +3,28 @@
   "buildCommand": "node scripts/verify-all.mjs",
   "cleanUrls": true,
   "trailingSlash": false,
+  "functions": {
+    "api/crawl-proxy.js": {
+      "includeFiles": "{llms.src.txt,llms-full.src.txt,ai.src.txt,agents.src.txt}"
+    }
+  },
   "rewrites": [
+    {
+      "source": "/llms.txt",
+      "destination": "/api/crawl-proxy?f=llms.txt"
+    },
+    {
+      "source": "/llms-full.txt",
+      "destination": "/api/crawl-proxy?f=llms-full.txt"
+    },
+    {
+      "source": "/ai.txt",
+      "destination": "/api/crawl-proxy?f=ai.txt"
+    },
+    {
+      "source": "/agents.txt",
+      "destination": "/api/crawl-proxy?f=agents.txt"
+    },
     {
       "source": "/mcp",
       "destination": "/mcp.html"
@@ -103,6 +124,17 @@
     {
       "source": "/.well-known/security.txt",
       "destination": "https://signals.gitdealflow.com/.well-known/security.txt"
+    },
+    {
+      "source": "/:path*",
+      "has": [
+        {
+          "type": "header",
+          "key": "accept",
+          "value": "text/markdown"
+        }
+      ],
+      "destination": "/api/markdown?path=:path"
     }
   ],
   "redirects": [
@@ -197,6 +229,12 @@
       "destination": "/about",
       "permanent": true
     },
+    {
+      "source": "/vs/crunchbase-vs-fundable",
+      "destination": "https://signals.gitdealflow.com/vs/crunchbase-vs-fundable",
+      "permanent": true
+    },
+,
     {
       "source": "/AGENTS.md",
       "destination": "/agents.md",
@@ -326,7 +364,12 @@
       "source": "/best/best-vc-scout-programs",
       "destination": "/best/best-scout-programs",
       "permanent": true
-    }
+    },
+    {
+      "source": "/dream100",
+      "destination": "/dream-100",
+      "permanent": true
+    },
   ],
   "headers": [
     {

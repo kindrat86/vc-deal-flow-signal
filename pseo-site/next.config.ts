@@ -421,12 +421,11 @@ const nextConfig: NextConfig = {
             key: "Content-Security-Policy",
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' https://eu.i.posthog.com https://eu-assets.i.posthog.com https://scripts.refgrowcdn.com https://www.googletagmanager.com",
+              "script-src 'self' 'unsafe-inline' https://eu.i.posthog.com https://eu-assets.i.posthog.com https://scripts.refgrowcdn.com https://www.googletagmanager.com https://connect.facebook.net https://snap.licdn.com",
               "style-src 'self' 'unsafe-inline'",
               "img-src 'self' data: https:",
               "font-src 'self'",
-              "connect-src 'self' https://eu.i.posthog.com https://eu.posthog.com https://eu-assets.i.posthog.com https://api.resend.com https://scripts.refgrowcdn.com https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com",
-              "frame-ancestors 'none'",
+              "connect-src 'self' https://eu.i.posthog.com https://eu.posthog.com https://eu-assets.i.posthog.com https://api.resend.com https://scripts.refgrowcdn.com https://www.googletagmanager.com https://*.google-analytics.com https://*.analytics.google.com https://connect.facebook.net https://snap.licdn.com; frame-ancestors 'none'",
               // Added 2026-07-25 (portfolio audit): this was the only site in the
               // portfolio missing both. object-src blocks <object>/<embed> plugin
               // vectors the other directives do not cover, and base-uri stops an
