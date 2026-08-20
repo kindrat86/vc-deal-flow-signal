@@ -48,7 +48,8 @@ def escape_markdown(value: object) -> str:
 
 
 def render(today: datetime, payload: dict) -> str:
-    period = escape_markdown(payload.get("meta", {}).get("period", "current weekly dataset"))
+    raw_period = payload.get("meta", {}).get("period", "current weekly dataset")
+    period = escape_markdown(raw_period.get("name", raw_period) if isinstance(raw_period, dict) else raw_period)
     top = payload["trending"][:3]
     if len(top) < 3:
         raise RuntimeError("signals API returned fewer than three trending startups")
