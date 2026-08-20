@@ -35,10 +35,14 @@ function makeFixture() {
   return root;
 }
 
-test('accepts a complete set of substantive persona landing pages', () => {
+test('accepts the complete distribution audience portfolio', () => {
+  assert.equal(PERSONAS.length, 17);
+  assert.ok(PERSONAS.some((persona) => persona.slug === 'vc-firms' && persona.label === 'VC Firms'));
+  assert.ok(PERSONAS.some((persona) => persona.slug === 'data-providers' && persona.label === 'Data Providers'));
+
   const root = makeFixture();
   const result = verifyPersonaRoutes(root);
-  assert.equal(result.personaCount, 15);
+  assert.equal(result.personaCount, 17);
   assert.equal(result.errors.length, 0);
 });
 

@@ -8,6 +8,7 @@ export const PERSONAS = Object.freeze([
   { slug: 'angel-investors', label: 'Angel Investors' },
   { slug: 'venture-scouts', label: 'Venture Scouts' },
   { slug: 'micro-vcs', label: 'Micro VCs' },
+  { slug: 'vc-firms', label: 'VC Firms' },
   { slug: 'solo-gps', label: 'Solo GPs' },
   { slug: 'impact-investors', label: 'Impact Investors' },
   { slug: 'family-offices', label: 'Family Offices' },
@@ -20,6 +21,7 @@ export const PERSONAS = Object.freeze([
   { slug: 'accelerators', label: 'Accelerators' },
   { slug: 'startup-studios', label: 'Startup Studios' },
   { slug: 'founders', label: 'Founders' },
+  { slug: 'data-providers', label: 'Data Providers' },
 ]);
 
 function textContent(html) {
