@@ -1,6 +1,6 @@
 # Investor distribution package
 
-GitDealFlow publishes one prepared, source-backed package each week for three buyer-facing paths:
+GitDealFlow publishes one prepared, source-backed investor-native diligence card for every public technical signal in the weekly feed, alongside three buyer-facing distribution paths:
 
 1. **Angels and scouts:** a practical diligence discussion.
 2. **Seed investors:** a short newsletter editor contribution.
