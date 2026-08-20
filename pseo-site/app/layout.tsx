@@ -472,6 +472,11 @@ export default function RootLayout({
           <Footer />
           <GuidedConcierge />
           <Script
+            id="gdf-channel-attribution"
+            src="/channel-attribution.js?v=20260820-1"
+            strategy="afterInteractive"
+          />
+          <Script
             id="posthog"
             strategy="lazyOnload"
             dangerouslySetInnerHTML={{

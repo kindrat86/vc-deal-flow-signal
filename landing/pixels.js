@@ -13,6 +13,14 @@
 (function () {
   if (!/^https?:$/.test(location.protocol)) return;
 
+  // First-touch UTM attribution. This first-party file persists campaign
+  // fields across gitdealflow.com + signals.gitdealflow.com, registers them as
+  // PostHog super-properties, and emits one distribution_landing per route.
+  var attribution = document.createElement("script");
+  attribution.src = "/channel-attribution.js?v=20260820-1";
+  attribution.async = true;
+  document.head.appendChild(attribution);
+
   var PIXEL_IDS = {
     meta: "243382336082500",          // Facebook + Instagram. e.g. "1234567890123456"
     ga4: "G-7SV2SNZE4C",           // GA4 measurement ID (GitDealFlow property)

@@ -16,12 +16,12 @@ const HF_MIRROR = "https://huggingface.co/datasets/the-data-nerd/vc-deal-flow-si
 
 export const metadata: Metadata = {
   title:
-    "GitHub Engineering Velocity Index, Q3 2026 — 350+ Startups, 15 Sectors",
+    "GitHub Engineering Velocity Index, Q3 2026: 350+ Startups, 15 Sectors",
   description:
     "The GitHub Engineering Velocity Index: a public, quarterly release of engineering-acceleration signals for 350+ venture-backed startups across 15 sectors, derived from public GitHub activity. Full company table, CSV/JSON/Parquet downloads, methodology, limitations, and citation. CC BY 4.0.",
   alternates: { canonical: "/engineering-velocity-index" },
   openGraph: {
-    title: "GitHub Engineering Velocity Index — Q3 2026 Release",
+    title: "GitHub Engineering Velocity Index: Q3 2026 Release",
     description:
       "Public quarterly table of GitHub engineering-acceleration signals for 350+ venture-backed startups across 15 sectors. CC BY 4.0.",
     url: `${SITE}/engineering-velocity-index`,
@@ -30,7 +30,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "GitHub Engineering Velocity Index — Q3 2026 Release",
+    title: "GitHub Engineering Velocity Index: Q3 2026 Release",
     description:
       "Public quarterly table of GitHub engineering-acceleration signals for 350+ venture-backed startups across 15 sectors. CC BY 4.0.",
     images: [`${SITE}/api/og/signal-card`],
@@ -120,7 +120,7 @@ export default function VelocityIndexPage() {
     "@type": "Dataset",
     "@id": `${SITE}/engineering-velocity-index#dataset`,
     name: "GitHub Engineering Velocity Index",
-    alternateName: "VC Deal Flow Signal — Quarterly Engineering Acceleration Release",
+    alternateName: "VC Deal Flow Signal: Quarterly Engineering Acceleration Release",
     description: `Public quarterly release of GitHub engineering-acceleration signals for ${total} venture-backed startups across ${activeSectors.length} sectors in ${period.name}. Tracks 14-day commit velocity and change, contributor count and growth, new-repository creation, and a five-class acceleration-signal classification (engineering hiring burst, infrastructure buildout, deploy frequency spike, framework migration, deceleration).`,
     url: `${SITE}/engineering-velocity-index`,
     version: period.slug,
@@ -229,7 +229,7 @@ export default function VelocityIndexPage() {
       </nav>
 
       <h1 className="text-3xl font-bold text-slate-900 sm:text-4xl">
-        GitHub Engineering Velocity Index — {period.name} Release
+        GitHub Engineering Velocity Index: {period.name} Release
       </h1>
       <p className="mt-3 max-w-3xl text-slate-600">
         A public, quarterly release of engineering-acceleration signals for{" "}
@@ -247,7 +247,7 @@ export default function VelocityIndexPage() {
         . Data last refreshed {lastModified}.
       </p>
 
-      {/* Snapshot statistics — computed from the live table below */}
+      {/* Snapshot statistics, computed from the live table below */}
       <section
         aria-label="Quarterly snapshot"
         className="mt-6 grid gap-4 sm:grid-cols-2 lg:grid-cols-4"
