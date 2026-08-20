@@ -2,6 +2,8 @@
 
 Purpose: one file that tells you what matters right now, what to send first, what to watch next, and what to stop.
 
+Canonical channel lifecycle state lives in `docs/channel-portfolio-board.md`. This command center must not create a second status ledger.
+
 If you open only one file before doing distribution work, open this one.
 
 Updated: 2026-05-26
@@ -200,6 +202,7 @@ See:
 ## Operating files
 
 Core execution
+- `docs/channel-portfolio-board.md` (canonical lifecycle state)
 - `docs/page-priority-distribution-board.md`
 - `docs/active-distribution-7-day-plan.md`
 - `docs/direct-engagement-message-pack.md`
