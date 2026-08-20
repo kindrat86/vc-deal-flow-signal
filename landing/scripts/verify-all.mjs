@@ -72,6 +72,7 @@ const leadMagnetChecks = [
   ]],
   ['lead-magnet-thanks.html', [
     '/downloads/velocity-verdict-cheat-sheet.pdf',
+    'posthog.init(',
     "'lead_magnet_confirmed'",
     "'lead_magnet_downloaded'",
   ]],
