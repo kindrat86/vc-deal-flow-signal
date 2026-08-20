@@ -30,6 +30,8 @@ const activationChecks = [
     'in your inbox the moment you confirm',
     'posthog.identify(email)',
     "sessionStorage.setItem('gdf_email', email)",
+    'https://discord.gg/Fdd9mH3M6q?utm_source=gitdealflow.com&utm_medium=owned&utm_campaign=scout_network_launch&utm_content=hero',
+    "posthog.capture('discord_scout_network_cta_clicked',{placement:'hero',destination:'wins-and-finds'})",
   ]],
   ['subscribe-thanks.html', [
     "o='init capture identify register",
