@@ -1,0 +1,46 @@
+{
+  "hubs": [
+    "https://pubsubhubbub.appspot.com/",
+    "https://pubsubhubbub.superfeedr.com/"
+  ],
+  "topics": [
+    "https://signals.gitdealflow.com/feed.xml",
+    "https://signals.gitdealflow.com/atom.xml",
+    "https://signals.gitdealflow.com/rss.xml",
+    "https://signals.gitdealflow.com/feed.json"
+  ],
+  "payload": [
+    {
+      "hub.mode": "publish",
+      "hub.url": "https://signals.gitdealflow.com/feed.xml"
+    },
+    {
+      "hub.mode": "publish",
+      "hub.url": "https://signals.gitdealflow.com/atom.xml"
+    },
+    {
+      "hub.mode": "publish",
+      "hub.url": "https://signals.gitdealflow.com/rss.xml"
+    },
+    {
+      "hub.mode": "publish",
+      "hub.url": "https://signals.gitdealflow.com/feed.json"
+    },
+    {
+      "hub.mode": "publish",
+      "hub.url": "https://signals.gitdealflow.com/feed.xml"
+    },
+    {
+      "hub.mode": "publish",
+      "hub.url": "https://signals.gitdealflow.com/atom.xml"
+    },
+    {
+      "hub.mode": "publish",
+      "hub.url": "https://signals.gitdealflow.com/rss.xml"
+    },
+    {
+      "hub.mode": "publish",
+      "hub.url": "https://signals.gitdealflow.com/feed.json"
+    }
+  ]
+}

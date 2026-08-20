@@ -1,0 +1,50 @@
+{
+  "period": "q3-2026",
+  "publishedAt": "2026-08-20T19:21:56.666Z",
+  "title": "Weekly Signal Report, Q3 2026",
+  "summary": "The five largest engineering-acceleration moves in Q3 2026, derived from public GitHub activity.",
+  "canonicalUrl": "https://signals.gitdealflow.com/research/weekly-signal-report-2026-08-20",
+  "datasetUrl": "https://signals.gitdealflow.com/weekly/latest.csv",
+  "topSignals": [
+    {
+      "name": "liberusoftware",
+      "sector": "PropTech",
+      "commitVelocityChange": "+3275%",
+      "contributors": 14,
+      "signalType": "Engineering hiring burst",
+      "url": "https://github.com/liberusoftware"
+    },
+    {
+      "name": "untrustedmodders",
+      "sector": "Gaming",
+      "commitVelocityChange": "+2900%",
+      "contributors": 7,
+      "signalType": "Deploy frequency spike",
+      "url": "https://github.com/untrustedmodders"
+    },
+    {
+      "name": "fleetbase",
+      "sector": "Supply Chain",
+      "commitVelocityChange": "+1600%",
+      "contributors": 7,
+      "signalType": "Engineering hiring burst",
+      "url": "https://github.com/fleetbase"
+    },
+    {
+      "name": "aphp",
+      "sector": "Healthcare",
+      "commitVelocityChange": "+999%",
+      "contributors": 3,
+      "signalType": "Infrastructure buildout",
+      "url": "https://github.com/aphp"
+    },
+    {
+      "name": "StanfordSpezi",
+      "sector": "Healthcare",
+      "commitVelocityChange": "+999%",
+      "contributors": 5,
+      "signalType": "Deploy frequency spike",
+      "url": "https://github.com/StanfordSpezi"
+    }
+  ]
+}
