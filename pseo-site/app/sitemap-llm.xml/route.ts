@@ -79,6 +79,7 @@ export async function GET() {
     ["/citations", "monthly", 0.85],
     ["/citation-guide", "monthly", 0.85],
     ["/dataset", "weekly", 0.85],
+    ["/engineering-velocity-index", "weekly", 0.9],
     ["/research", "weekly", 0.9],
   ];
   for (const [path, changefreq, priority] of methodology) {
