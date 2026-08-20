@@ -67,6 +67,59 @@ class InvestorDistributionBriefTests(unittest.TestCase):
         self.assertIn("https://github.com/solace", rendered)
         self.assertIn("What changed that could explain this public engineering shift?", rendered)
 
+    def test_render_includes_a_copy_ready_sector_table_for_both_social_channels(self) -> None:
+        payload = {
+            "meta": {"period": {"name": "Q3 2026"}},
+            "trending": [
+                {
+                    "name": "Northstar",
+                    "stage": "Seed",
+                    "geography": "EU",
+                    "commitVelocityChange": "+120%",
+                    "contributors": 8,
+                    "signalType": "Infrastructure buildout",
+                    "githubUrl": "https://github.com/northstar",
+                }
+            ],
+            "sectors": [
+                {
+                    "name": "Healthcare",
+                    "startupCount": 26,
+                    "startups": [
+                        {
+                            "name": "Northstar",
+                            "commitVelocityChange": "+120%",
+                            "commitVelocity14d": 12,
+                            "contributors": 8,
+                            "signalType": "Infrastructure buildout",
+                        }
+                    ],
+                },
+                {
+                    "name": "Developer Tools",
+                    "startupCount": 12,
+                    "startups": [
+                        {
+                            "name": "Forge",
+                            "commitVelocityChange": "+80%",
+                            "contributors": 5,
+                            "signalType": "Deploy frequency spike",
+                        }
+                    ],
+                },
+            ],
+        }
+
+        rendered = brief.render(datetime(2026, 8, 20, 9, 10, tzinfo=ZoneInfo("Europe/Athens")), payload)
+
+        expected_row = "| Healthcare | 26 | Northstar | +120% | 12 | 8 | Infrastructure buildout |"
+        self.assertIn("## This week's sector table", rendered)
+        self.assertIn(expected_row, rendered)
+        self.assertIn("## 1. X asset", rendered)
+        self.assertIn("## 2. LinkedIn company page asset", rendered)
+        self.assertGreaterEqual(rendered.count(expected_row), 2)
+        self.assertIn("not a funding prediction, investment recommendation, or evidence of revenue", rendered)
+
 
 if __name__ == "__main__":
     unittest.main()
