@@ -115,6 +115,7 @@ const steps = [
   ['node', 'scripts/verify-css-preloads.mjs'],
   ['node', 'scripts/verify-pricing-offers.mjs'],
   ['node', 'scripts/verify-author-identity.mjs'],
+  ['node', 'scripts/verify-social-card.mjs'],
   ['node', 'scripts/verify-crawl-proxy.mjs'],
   ['node', 'scripts/verify-persona-routes.mjs'],
 ];

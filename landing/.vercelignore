@@ -63,6 +63,7 @@ scripts/*
 !scripts/verify-css-preloads.mjs
 !scripts/verify-pricing-offers.mjs
 !scripts/verify-author-identity.mjs
+!scripts/verify-social-card.mjs
 !scripts/verify-all.mjs
 !scripts/verify-crawl-proxy.mjs
 !scripts/verify-persona-routes.mjs
