@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Velocity Verdict, GitDealFlow</title>
+<style>
+@page { size: A4; margin: 0; }
+* { box-sizing: border-box; }
+html, body { margin: 0; padding: 0; width: 210mm; height: 297mm; }
+body {
+  background: #e8eef7;
+  color: #0f172a;
+  font-family: "Avenir Next", "SF Pro Text", system-ui, sans-serif;
+  -webkit-print-color-adjust: exact;
+  print-color-adjust: exact;
+}
+.sheet {
+  width: 210mm;
+  height: 297mm;
+  overflow: hidden;
+  background: #f8fafc;
+  position: relative;
+}
+.hero {
+  height: 72mm;
+  padding: 15mm 16mm 10mm;
+  color: white;
+  background:
+    radial-gradient(circle at 84% 20%, rgba(45, 212, 191, .28), transparent 28%),
+    radial-gradient(circle at 10% 90%, rgba(14, 165, 233, .30), transparent 33%),
+    linear-gradient(135deg, #071322 0%, #0f2743 58%, #103746 100%);
+  position: relative;
+}
+.brand-row { display: flex; align-items: center; justify-content: space-between; }
+.brand { font-size: 10pt; font-weight: 800; letter-spacing: .14em; text-transform: uppercase; }
+.badge { font-size: 7.5pt; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; color: #a7f3d0; border: .25mm solid rgba(167,243,208,.45); border-radius: 999px; padding: 2mm 3.5mm; }
+h1 { font-size: 27pt; line-height: 1.03; letter-spacing: -.04em; margin: 9mm 0 3mm; max-width: 148mm; }
+.hero p { margin: 0; max-width: 150mm; font-size: 10.5pt; line-height: 1.5; color: #cbd5e1; }
+.metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3mm; margin: 6mm 12mm 0; position: relative; z-index: 2; }
+.metric { background: #fff; border: .25mm solid #dbe5f1; border-radius: 4mm; padding: 4mm 4.5mm; }
+.metric strong { display: block; font-size: 15pt; letter-spacing: -.03em; color: #0f2743; }
+.metric span { display: block; margin-top: 1mm; font-size: 7.5pt; line-height: 1.35; color: #64748b; }
+.content { padding: 8mm 12mm 0; }
+.eyebrow { margin: 0 0 2.5mm; font-size: 7.5pt; color: #0369a1; font-weight: 800; letter-spacing: .13em; text-transform: uppercase; }
+h2 { margin: 0; font-size: 15pt; line-height: 1.15; letter-spacing: -.025em; }
+.signals { display: grid; grid-template-columns: repeat(3, 1fr); gap: 3.5mm; margin-top: 5mm; }
+.signal { min-height: 50mm; border-radius: 4mm; padding: 5mm; color: #fff; position: relative; overflow: hidden; }
+.signal::after { content: ""; position: absolute; width: 31mm; height: 31mm; border-radius: 50%; right: -14mm; bottom: -17mm; background: rgba(255,255,255,.10); }
+.signal.one { background: linear-gradient(145deg, #075985, #0284c7); }
+.signal.two { background: linear-gradient(145deg, #065f46, #059669); }
+.signal.three { background: linear-gradient(145deg, #5b21b6, #7c3aed); }
+.num { font-size: 7.5pt; font-weight: 900; letter-spacing: .14em; opacity: .75; }
+.signal h3 { margin: 5mm 0 2mm; font-size: 12.5pt; line-height: 1.15; }
+.signal p { margin: 0; font-size: 8.1pt; line-height: 1.48; color: rgba(255,255,255,.86); }
+.grid2 { display: grid; grid-template-columns: .95fr 1.05fr; gap: 4mm; margin-top: 5mm; }
+.panel { border: .25mm solid #dbe5f1; border-radius: 4mm; background: #fff; padding: 5mm; }
+.panel h3 { margin: 0 0 3mm; font-size: 10.5pt; }
+.checks { display: grid; gap: 2.1mm; }
+.check { display: grid; grid-template-columns: 5mm 1fr; gap: 2mm; align-items: start; font-size: 7.9pt; line-height: 1.35; color: #475569; }
+.x { width: 5mm; height: 5mm; display: grid; place-items: center; border-radius: 50%; background: #fee2e2; color: #b91c1c; font-weight: 900; font-size: 7pt; }
+.workflow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 2mm; }
+.step { background: #f1f5f9; border-radius: 3mm; padding: 3mm; min-height: 29mm; }
+.step strong { display: block; color: #0369a1; font-size: 7pt; text-transform: uppercase; letter-spacing: .10em; margin-bottom: 1.5mm; }
+.step span { display: block; font-size: 7.5pt; line-height: 1.35; color: #334155; }
+.question { margin-top: 4mm; padding: 4mm 5mm; border-radius: 4mm; background: #0f2743; color: white; display: grid; grid-template-columns: 17mm 1fr; gap: 4mm; align-items: center; }
+.qmark { width: 14mm; height: 14mm; border-radius: 50%; display: grid; place-items: center; background: #22d3ee; color: #083344; font-size: 16pt; font-weight: 900; }
+.question small { display: block; color: #7dd3fc; font-size: 7pt; letter-spacing: .12em; text-transform: uppercase; font-weight: 800; margin-bottom: 1mm; }
+.question p { margin: 0; font-size: 10pt; line-height: 1.35; font-weight: 700; }
+.footer { position: absolute; left: 12mm; right: 12mm; bottom: 7mm; border-top: .25mm solid #dbe5f1; padding-top: 3.5mm; display: grid; grid-template-columns: 1.45fr .55fr; gap: 6mm; font-size: 6.8pt; line-height: 1.4; color: #64748b; }
+.footer strong { color: #334155; }
+.footer .right { text-align: right; }
+</style>
+</head>
+<body>
+<main class="sheet">
+  <header class="hero">
+    <div class="brand-row"><div class="brand">GitDealFlow</div><div class="badge">Investor field card</div></div>
+    <h1>Velocity Verdict:<br>read the change, not the count.</h1>
+    <p>A one-page screen for public GitHub engineering activity. Use it to spot meaningful acceleration, rule out obvious noise, and decide what deserves a closer look.</p>
+  </header>
+
+  <section class="metrics" aria-label="Research context">
+    <div class="metric"><strong>14 days</strong><span>Compare the current window with the same team&apos;s prior baseline.</span></div>
+    <div class="metric"><strong>21 to 47 days</strong><span>Observed lead-time IQR before public fundraise announcements in the documented panel.</span></div>
+    <div class="metric"><strong>219 observations</strong><span>Startup-period observations across 55 startups and five quarters.</span></div>
+  </section>
+
+  <div class="content">
+    <p class="eyebrow">The three-signal screen</p>
+    <h2>One metric can lie. A coordinated change is harder to dismiss.</h2>
+
+    <section class="signals">
+      <article class="signal one">
+        <div class="num">SIGNAL 01</div>
+        <h3>Velocity surge</h3>
+        <p>Is the team shipping more than its own recent normal? Read the delta, not the lifetime total or a single busy day.</p>
+      </article>
+      <article class="signal two">
+        <div class="num">SIGNAL 02</div>
+        <h3>Contributor breadth</h3>
+        <p>Is the work spreading across more people? A broad team change carries more information than one noisy maintainer.</p>
+      </article>
+      <article class="signal three">
+        <div class="num">SIGNAL 03</div>
+        <h3>Infrastructure buildout</h3>
+        <p>Are new repos, services, or release surfaces appearing? Look for systems that support a larger product or customer load.</p>
+      </article>
+    </section>
+
+    <section class="grid2">
+      <article class="panel">
+        <h3>Slow down when you see:</h3>
+        <div class="checks">
+          <div class="check"><span class="x">×</span><span>One account created most of the change.</span></div>
+          <div class="check"><span class="x">×</span><span>The spike is docs, formatting, vendored code, or bot traffic.</span></div>
+          <div class="check"><span class="x">×</span><span>Activity lasted one day and immediately returned to baseline.</span></div>
+          <div class="check"><span class="x">×</span><span>The company is fully closed-source or the public repo is not its core work.</span></div>
+        </div>
+      </article>
+      <article class="panel">
+        <h3>The five-minute workflow</h3>
+        <div class="workflow">
+          <div class="step"><strong>1. Scan</strong><span>Compare the last 14 days with the prior team baseline.</span></div>
+          <div class="step"><strong>2. Verify</strong><span>Check breadth, persistence, and what actually changed.</span></div>
+          <div class="step"><strong>3. Act</strong><span>Write one specific observation and ask one clear question.</span></div>
+        </div>
+      </article>
+    </section>
+
+    <section class="question">
+      <div class="qmark">?</div>
+      <div><small>The one question</small><p>What changed in the last 14 days that did not exist in this team&apos;s prior 90-day baseline?</p></div>
+    </section>
+  </div>
+
+  <footer class="footer">
+    <div><strong>Evidence:</strong> VC Deal Flow Signal, Q3 2026 data. Documented panel: 219 startup-period observations across 55 startups. The 21-to-47-day figure is the middle 50% of observed lead times, not a guarantee that a company will raise.</div>
+    <div class="right"><strong>Open method</strong><br>signals.gitdealflow.com/methodology<br>Not investment advice.</div>
+  </footer>
+</main>
+</body>
+</html>

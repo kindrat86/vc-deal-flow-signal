@@ -87,6 +87,87 @@ ${body}
 const THIRTY_MIN = 30 * 60 * 1000;
 const ONE_DAY = 24 * 60 * 60 * 1000;
 
+/**
+ * Five-email welcome for the Velocity Verdict homepage lead magnet.
+ * This is deliberately separate from the longer Soap Opera sequence:
+ * one promised asset, three useful lessons, one low-risk next step.
+ */
+export const LEAD_MAGNET_WELCOME_EMAILS = [
+  {
+    subject: "Your Velocity Verdict cheat sheet",
+    delayMs: 0,
+    html: wrap(`
+<p>Your one-page Velocity Verdict cheat sheet is ready.</p>
+<p>It shows the three public GitHub signals worth checking together, the 14-day window, the false positives to rule out, and the one question to ask before you contact a founder.</p>
+<p style="margin:24px 0;"><a href="${SITE}/downloads/velocity-verdict-cheat-sheet.pdf" style="display:block;width:100%;box-sizing:border-box;background:#0284c7;color:#ffffff;font-weight:700;font-size:18px;line-height:1.2;padding:16px 24px;border-radius:10px;text-decoration:none;text-align:center;">Open the one-page cheat sheet</a></p>
+<p>The evidence behind it is a documented panel of 219 startup-period observations across 55 startups. In that panel, the middle 50% of observed signal lead times fell 21 to 47 days before the public fundraise announcement. It is a sourcing signal, not a promise that any company will raise.</p>
+<p>Tomorrow I will show you the mistake that makes most GitHub screens useless: reading the count instead of the change.</p>
+<p>The Data Nerd</p>
+`, "velocity-verdict-1"),
+  },
+  {
+    subject: "The signal most investors read backwards",
+    delayMs: ONE_DAY,
+    html: wrap(`
+<p>A startup with 2,000 commits is not automatically moving faster than one with 200.</p>
+<p>The useful question is narrower: <strong>what changed in the last 14 days compared with that same team's prior baseline?</strong></p>
+<p>Look for a change in pace, not a large lifetime total. Then check whether the change is broad enough to be real: more contributors, sustained work across several days, and new infrastructure or product surfaces. One late-night push from one maintainer is not the same thing.</p>
+<p>You can run that check without reading code. Paste any public GitHub repository into the free Momentum Checker:</p>
+<p><a href="${SITE}/free/github-momentum-checker" style="color:#0284c7;font-weight:700;">Check one startup's momentum &rarr;</a></p>
+<p>In two days I will show you why the three signals matter more together than any one of them does alone.</p>
+<p>The Data Nerd</p>
+`, "velocity-verdict-2"),
+  },
+  {
+    subject: "Three signals. One 14-day window.",
+    delayMs: 3 * ONE_DAY,
+    html: wrap(`
+<p>Commit velocity can jump because one developer cleared a backlog. Contributor count can jump because of a hackathon. A new repository can be nothing more than documentation.</p>
+<p>That is why the Velocity Verdict does not treat any single metric as proof.</p>
+<ul>
+<li><strong>Velocity surge:</strong> the team is shipping more than its own recent normal.</li>
+<li><strong>Contributor breadth:</strong> the work is spreading across more people, not concentrating in one account.</li>
+<li><strong>Infrastructure buildout:</strong> the team is creating the systems needed for a larger product or customer load.</li>
+</ul>
+<p>When all three move inside the same two-week window, the pattern is more useful. When only one moves, slow down and inspect the cause.</p>
+<p>The full method, definitions, limits, and data are public:</p>
+<p><a href="${SIGNALS}/methodology" style="color:#0284c7;font-weight:700;">Read the open methodology &rarr;</a></p>
+<p>Next, I will give you the three-line founder note that turns a signal into a real conversation without pretending you know more than you do.</p>
+<p>The Data Nerd</p>
+`, "velocity-verdict-3"),
+  },
+  {
+    subject: "The three-line founder note",
+    delayMs: 5 * ONE_DAY,
+    html: wrap(`
+<p>A signal is useful only if it changes what you do next.</p>
+<p>After you verify one company, keep the founder note short:</p>
+<blockquote style="margin:20px 0;padding:16px 18px;border-left:3px solid #0284c7;background:#f1f5f9;color:#334155;">
+<p style="margin:0 0 8px;">I noticed [specific public change] in [repo or team].</p>
+<p style="margin:0 0 8px;">It overlaps with my thesis on [specific market], so I took a closer look.</p>
+<p style="margin:0;">Are you open to a short conversation next week?</p>
+</blockquote>
+<p>No fake familiarity. No claim that the company is raising. No long paragraph about you. You show that you noticed real work, explain why it matters to your thesis, and ask one clear question.</p>
+<p>If you want to see the exact format GitDealFlow sends each Sunday, read a real issue:</p>
+<p><a href="${SITE}/report" style="color:#0284c7;font-weight:700;">Read the sample Sunday Signal &rarr;</a></p>
+<p>My last welcome email gives you the smallest paid test I offer. It costs one euro, once.</p>
+<p>The Data Nerd</p>
+`, "velocity-verdict-4"),
+  },
+  {
+    subject: "Want me to read one startup for you?",
+    delayMs: 7 * ONE_DAY,
+    html: wrap(`
+<p>You now have the one-page card, the baseline rule, the three-signal check, and the founder note.</p>
+<p>If you want to test my judgment before paying for a dashboard, send me one startup. I will read its public GitHub signal and return a tweet-sized verdict: what moved, what might be noise, and what I would verify next.</p>
+<p><strong>It is €1 once.</strong> No subscription. The free Sunday Signal stays free whether you buy it or not.</p>
+<p style="margin:24px 0;"><a href="https://buy.stripe.com/bJe5kC48H2d2cEKg6s0x209" style="display:block;width:100%;box-sizing:border-box;background:#0284c7;color:#ffffff;font-weight:700;font-size:18px;line-height:1.2;padding:16px 24px;border-radius:10px;text-decoration:none;text-align:center;">Get one Tweet Teardown for €1</a></p>
+<p>If the cheat sheet is enough, keep it. Your regular Sunday issue will still arrive with five names and the plain-English reason each one moved.</p>
+<p>The Data Nerd</p>
+`, "velocity-verdict-5"),
+  },
+];
+
 export const SOAP_OPERA_EMAILS = [
   // Day 0, Welcome (Russell: deliver value)
   {

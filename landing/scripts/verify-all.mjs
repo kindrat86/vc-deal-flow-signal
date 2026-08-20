@@ -54,6 +54,55 @@ for (const [rel, needles] of activationChecks) {
   }
 }
 
+// Velocity Verdict lead-magnet guard (2026-08-20). The static apex owns the
+// capture form, the honest research wording, the post-confirmation download,
+// and the PDF. A stale static deploy must not silently drop any of them.
+const leadMagnetChecks = [
+  ['index.html', [
+    'id="velocity-verdict"',
+    'data-source="velocity-verdict" data-cohort="lead-magnet"',
+    "posthog.capture(isLeadMagnet ? 'lead_magnet_verify_sent'",
+    "window.location.href = isLeadMagnet ? '/lead-magnet-thanks'",
+  ]],
+  ['cheatsheet.html', [
+    "cohort: 'lead-magnet'",
+    "posthog.capture('lead_magnet_verify_sent'",
+    "window.location.href = '/lead-magnet-thanks'",
+    '219 startup-period observations across 55 startups',
+  ]],
+  ['lead-magnet-thanks.html', [
+    '/downloads/velocity-verdict-cheat-sheet.pdf',
+    "'lead_magnet_confirmed'",
+    "'lead_magnet_downloaded'",
+  ]],
+];
+for (const [rel, needles] of leadMagnetChecks) {
+  const src = readFileSync(join(landingRoot, rel), 'utf8');
+  const missing = needles.filter((needle) => !src.includes(needle));
+  if (missing.length) {
+    console.error(`[verify-all] lead-magnet regression in ${rel}: missing ${missing.join(', ')}`);
+    process.exit(1);
+  }
+}
+const cheatSheet = readFileSync(join(landingRoot, 'cheatsheet.html'), 'utf8');
+if (/219(?: documented)?(?: startup)? fundraises/i.test(cheatSheet)) {
+  console.error('[verify-all] lead-magnet claim regression: 219 is observations, not fundraises');
+  process.exit(1);
+}
+const homepage = readFileSync(join(landingRoot, 'index.html'), 'utf8');
+const exitPopup = homepage.slice(homepage.indexOf('id="exit-popup"'));
+if (/preceded 219 fundraises/i.test(exitPopup)) {
+  console.error('[verify-all] exit-popup claim regression: 219 is observations, not fundraises');
+  process.exit(1);
+}
+const leadMagnetPdf = readFileSync(
+  join(landingRoot, 'downloads/velocity-verdict-cheat-sheet.pdf'),
+);
+if (leadMagnetPdf.length < 100_000 || leadMagnetPdf.subarray(0, 4).toString() !== '%PDF') {
+  console.error('[verify-all] lead-magnet PDF is missing or invalid');
+  process.exit(1);
+}
+
 const steps = [
   ['node', 'scripts/verify-vercel-config.mjs'],
   ['node', 'scripts/verify-jsonld.mjs', '.'],
