@@ -296,6 +296,44 @@ export default function PressPage() {
         </section>
 
         <section className="mb-12">
+          <h2 className="text-xl font-semibold text-white mb-4">MCP demo</h2>
+          <p className="text-sm text-gray-400 mb-4">
+            A 30-second screen recording of the free MCP server returning a
+            ranked startup-signal result inside Claude. Use the GIF for an
+            inline article or the MP4 where video upload is supported.
+          </p>
+          <ul className="grid sm:grid-cols-3 gap-3 text-sm">
+            <li>
+              <a
+                href="/press/mcp-demo-30s.gif"
+                className="block rounded-lg border border-slate-800 bg-slate-900/40 hover:bg-slate-900/60 p-4 text-sky-400 hover:text-sky-300"
+                download
+              >
+                mcp-demo-30s.gif · 30 seconds · GIF
+              </a>
+            </li>
+            <li>
+              <a
+                href="/press/mcp-demo-30s.mp4"
+                className="block rounded-lg border border-slate-800 bg-slate-900/40 hover:bg-slate-900/60 p-4 text-sky-400 hover:text-sky-300"
+                download
+              >
+                mcp-demo-30s.mp4 · 30 seconds · MP4
+              </a>
+            </li>
+            <li>
+              <a
+                href="/press/mcp-demo-proof-still-1280x800.png"
+                className="block rounded-lg border border-slate-800 bg-slate-900/40 hover:bg-slate-900/60 p-4 text-sky-400 hover:text-sky-300"
+                download
+              >
+                mcp-demo-proof-still · 1280×800 · PNG
+              </a>
+            </li>
+          </ul>
+        </section>
+
+        <section className="mb-12">
           <h2 className="text-xl font-semibold text-white mb-4">Screenshots</h2>
           <p className="text-sm text-gray-400 mb-4">
             For inline article use. Live URLs preferred, pages render
