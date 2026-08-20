@@ -211,6 +211,7 @@ export async function GET(_req: Request, ctx: RouteContext) {
       { url: `${BASE_URL}/enterprise`, lastmod, changefreq: "monthly", priority: 0.85 },
       { url: `${BASE_URL}/api/v1/pricing.json`, lastmod, changefreq: "monthly", priority: 0.7 },
       { url: `${BASE_URL}/dataset`, lastmod, changefreq: "weekly", priority: 0.85 },
+      { url: `${BASE_URL}/engineering-velocity-index`, lastmod, changefreq: "weekly", priority: 0.9 },
       { url: `${BASE_URL}/faq`, lastmod, changefreq: "monthly", priority: 0.7 },
       { url: `${BASE_URL}/about`, lastmod, changefreq: "monthly", priority: 0.6 },
       // AEO 2026-07-18: canonical proprietary-entity pages. Both define
