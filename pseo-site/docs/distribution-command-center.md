@@ -177,6 +177,20 @@ A good day is:
 - 1 scoreboard update per touch
 - 1 clear next page ready if someone replies
 
+### Rented-platform metrics, before the click stage
+
+For every live placement, record these in the scoreboard after checking the platform's own analytics:
+- `platform_impressions`: people shown the placement
+- `platform_engagements`: platform-native reactions, replies, saves, or upvotes
+- `platform_link_clicks`: clicks reported by the platform, before site sessions
+- `platform_engagement_rate`: engagements ÷ impressions
+- `platform_click_through_rate`: link clicks ÷ impressions
+- `platform_metrics_source` and `platform_metrics_checked_at`: where and when the number was read
+
+Leave the fields blank when the platform does not expose a metric. Do not estimate. UTM-tagged site sessions remain the next stage and are measured separately in PostHog.
+
+Run `npm run verify:distribution-scoreboard` before using the scoreboard in a weekly review. It rejects malformed numbers, impossible counts, and rates that do not match their inputs.
+
 ## Weekly cadence
 
 Monday
@@ -208,7 +222,7 @@ Core execution
 - `docs/direct-engagement-message-pack.md`
 - `docs/first-20-direct-engagement-targets.md`
 - `docs/first-3-touches-note.md`
-- `docs/distribution-scoreboard-2026-05-26.csv`
+- `docs/distribution-scoreboard-2026-05-26.csv` (platform impressions → engagement → platform link clicks → UTM landing session)
 
 Response handling
 - `docs/distribution-response-taxonomy-2026-05-26.md`
