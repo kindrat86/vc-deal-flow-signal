@@ -5938,6 +5938,38 @@ landingCheck(
   }
 }
 
+// ---------------------------------------------------------------------------
+// §66 Retention cancellation flow (2026-08-20). The reason-first route is
+// required before Stripe's portal, and deleted subscriptions must keep the
+// evidence needed for a useful recovery sequence. Without these source gates a
+// stale deploy silently turns cancellation into an unmeasured portal redirect.
+// ---------------------------------------------------------------------------
+{
+  const cancelPage = read("app/cancel/page.tsx");
+  const cancelFlow = read("app/cancel/CancelFlow.tsx");
+  const cancelApi = read("app/api/cancel/route.ts");
+  const webhook = read("app/api/webhook/stripe/route.ts");
+  const policy = read("lib/retention-policy.ts");
+  const winback = read("lib/winback.ts");
+  if (!cancelPage || !cancelPage.includes("getSession") || !cancelPage.includes('redirect("/login")')) {
+    failures.push("§66 cancel page lost its signed-in gate. Restore getSession() + redirect(\"/login\").");
+  }
+  if (!cancelFlow || !["not_using", "too_expensive", "too_complex", "missing_features", "switched_service", "low_quality", "other"].every((reason) => cancelFlow.includes(`\"${reason}\"`)) || !cancelFlow.includes("Continue cancelling")) {
+    failures.push("§66 cancel flow lost a required reason selector or the Continue cancelling portal handoff.");
+  }
+  if (!cancelApi || !["cancellation_started", "cancellation_saved", "cancellation_continue", "pause_30d", "one_month_37", "tailored_starting_point"].every((event) => cancelApi.includes(event)) || !cancelApi.includes("stripe.subscriptions.update") || !cancelApi.includes("createPortal")) {
+    failures.push("§66 cancel API lost cancellation analytics, a save action, Stripe reason metadata, or the portal handoff.");
+  }
+  if (!policy || !policy.includes("winbackSequenceForReason") || !policy.includes("day: 7") || !policy.includes("day: 30") || !policy.includes("day: 90")) {
+    failures.push("§66 retention policy lost the Day 7/30/90 recovery sequence.");
+  }
+  if (!winback || !winback.includes("scheduleWinbackSequence") || !winback.includes("step.day > 30")) {
+    failures.push("§66 win-back scheduler lost its guarded Day 7/30 scheduling path.");
+  }
+  if (!webhook || !["customer.subscription.deleted", "cancellationReasonFromStripe", "firstValueStatusForCustomer", "scheduleWinbackSequence", "cancelScheduledLifecycleEmails", "subscription_age_days"].every((needle) => webhook.includes(needle))) {
+    failures.push("§66 Stripe webhook lost cancellation evidence, win-back scheduling, or reactivation cleanup.");
+  }
+}
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +

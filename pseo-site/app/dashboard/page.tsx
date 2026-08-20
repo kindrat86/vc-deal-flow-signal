@@ -82,6 +82,7 @@ export default async function DashboardPage() {
           </span>
         </div>
         <div className="flex items-center gap-4">
+          <Link href="/cancel" className="text-gray-400 hover:text-gray-300 text-xs transition">Manage billing</Link>
           {isInsider && (
             <>
               <Link href="/dashboard/watchlist" className="text-gray-400 hover:text-gray-300 text-xs transition">
@@ -92,6 +93,7 @@ export default async function DashboardPage() {
               </Link>
             </>
           )}
+          <Link href="/support" className="text-gray-400 hover:text-gray-300 text-xs transition">Help</Link>
           <LogoutButton />
         </div>
       </div>
@@ -127,6 +129,17 @@ export default async function DashboardPage() {
           Last updated: {lastModified.toISOString().slice(0, 10)}
         </p>
       </header>
+
+      {/* Start here */}
+      <section className="mb-8 rounded-xl border border-sky-500/30 bg-sky-950/20 p-5">
+        <p className="mb-1 text-xs font-semibold uppercase tracking-wider text-sky-300">Start here: find one lead</p>
+        <p className="text-sm leading-relaxed text-gray-200">Choose a sector or company, open one signal, then decide whether it belongs in your current diligence queue. You do not need to study the full list today.</p>
+        <ol className="mt-4 grid gap-2 text-sm text-gray-300 sm:grid-cols-3">
+          <li><strong className="text-sky-300">1.</strong> Choose a sector or company</li>
+          <li><strong className="text-sky-300">2.</strong> Open the strongest signal</li>
+          <li><strong className="text-sky-300">3.</strong> Save or export it for review</li>
+        </ol>
+      </section>
 
       {/* Upgrade nudge (Dashboard tier only) */}
       {!isInsider && (
