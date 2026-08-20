@@ -5970,6 +5970,28 @@ landingCheck(
     failures.push("§66 Stripe webhook lost cancellation evidence, win-back scheduling, or reactivation cleanup.");
   }
 }
+
+// ---------------------------------------------------------------------------
+// §69 Weekly-report amplification (2026-08-21). Each weekly report needs one
+// prominent cite-or-embed block with share intent. It turns a report reader
+// into a distributer, instead of leaving those existing assets hidden in the
+// archive.
+// ---------------------------------------------------------------------------
+{
+  const blogPage = read("app/blog/[slug]/page.tsx");
+  const amplificationBlock = read("components/WeeklyReportAmplification.tsx");
+  if (!blogPage || !blogPage.includes("WeeklyReportAmplification") || !blogPage.includes("isWeeklySignalReport")) {
+    failures.push(
+      "§69 weekly reports lost the cite-or-embed block.\n    file: app/blog/[slug]/page.tsx\n    fix:  render WeeklyReportAmplification for weekly-signal-report posts.",
+    );
+  }
+  if (!amplificationBlock || !["Cite or embed this finding", "citeText", "iframe", "x.com/intent/tweet"].every((needle) => amplificationBlock.includes(needle))) {
+    failures.push(
+      "§69 weekly-report cite/embed component is missing its citation, embed snippet, or share intent.\n    file: components/WeeklyReportAmplification.tsx\n    fix:  restore the prominent citation, backlink-bearing iframe snippet, and X share intent.",
+    );
+  }
+}
+
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +

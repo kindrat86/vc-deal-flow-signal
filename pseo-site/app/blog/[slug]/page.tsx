@@ -17,6 +17,7 @@ import RelatedLinks from "@/components/RelatedLinks";
 import { getRelatedGroups } from "@/lib/related-links";
 import CitableStat from "@/components/CitableStat";
 import { citableStat } from "@/lib/citable-stats";
+import WeeklyReportAmplification from "@/components/WeeklyReportAmplification";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -91,6 +92,7 @@ export default async function BlogPostPage({ params }: PageProps) {
   }
 
   const author = getAuthor(POST_AUTHOR_OVERRIDES[slug]);
+  const isWeeklySignalReport = slug.startsWith("weekly-signal-report-");
 
   const pillar = getPillarForPost(slug);
   const relatedPostSlugs = pillar
@@ -579,6 +581,10 @@ export default async function BlogPostPage({ params }: PageProps) {
           )}
 
           <div className="prose-invert">{sections}</div>
+
+          {isWeeklySignalReport && (
+            <WeeklyReportAmplification slug={slug} title={post.title} date={post.date} />
+          )}
 
           {/* Sources footer - boosts AI citation confidence */}
           <footer className="mt-10 pt-6 border-t border-slate-800">
