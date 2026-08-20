@@ -5,11 +5,12 @@ import { getAllSectors, getCurrentPeriod } from "@/lib/data";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 import { BADGE_LABEL, BADGE_HEIGHT, badgeWidth, badgeValue } from "@/lib/badge-dims";
+import { withEditorialOverride } from "@/lib/metadata";
 import SeoCta from "@/components/SeoCta";
 
 const SITE = "https://signals.gitdealflow.com";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Free Engineering Momentum Badge, Show Your Startup's GitHub Velocity",
   description:
     "Free shields.io-style SVG badge showing your startup's engineering momentum score. Auto-updates weekly. Embed on your website, README, or pitch deck. No signup required.",
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
     type: "website",
     url: `${SITE}/badge-builder`,
   },
-};
+});
 
 interface StartupBadge {
   name: string;
@@ -147,7 +148,7 @@ export default function BadgeBuilderPage() {
               </p>
               <pre className="rounded-lg bg-slate-950 border border-slate-800 p-4 text-sm text-gray-300 overflow-x-auto">
                 <code>
-                  {`[![engineering momentum](https://signals.gitdealflow.com/api/badge/YOUR_STARTUP_NAME)](https://signals.gitdealflow.com/badge-builder)`}
+                  {`[![engineering momentum](https://signals.gitdealflow.com/api/badge/YOUR_STARTUP_NAME)](https://signals.gitdealflow.com/startup/YOUR_STARTUP_NAME)`}
                 </code>
               </pre>
             </div>
@@ -155,7 +156,7 @@ export default function BadgeBuilderPage() {
               <p className="text-sm text-gray-400 mb-2 font-medium">HTML:</p>
               <pre className="rounded-lg bg-slate-950 border border-slate-800 p-4 text-sm text-gray-300 overflow-x-auto">
                 <code>
-                  {`<a href="https://signals.gitdealflow.com/badge-builder">`}
+                  {`<a href="https://signals.gitdealflow.com/startup/YOUR_STARTUP_NAME">`}
                   {"\n"}
                   {`  <img src="https://signals.gitdealflow.com/api/badge/YOUR_STARTUP_NAME" alt="engineering momentum badge" />`}
                   {"\n"}
