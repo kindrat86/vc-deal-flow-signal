@@ -11,7 +11,7 @@
 >
 > [![Smithery install](https://smithery.ai/badge/kindrat86/vc-deal-flow-signal)](https://smithery.ai/server/kindrat86/vc-deal-flow-signal)
 
-![Claude querying VC Deal Flow Signal MCP server](https://gitdealflow.com/mcp-demo.gif)
+![Claude querying VC Deal Flow Signal MCP server](https://raw.githubusercontent.com/kindrat86/vc-deal-flow-signal/main/marketing/launch-posts/mcp-demo-ph-30s.gif)
 
 ---
 
