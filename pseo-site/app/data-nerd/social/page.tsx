@@ -7,10 +7,11 @@ import {
   POSTING_HOURS_UTC,
 } from "@/content/social-mascot";
 import { SOCIAL_BATCH, BATCH_META } from "@/content/social-content-batch";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "The Data Nerd, social mascot · pillar mix · cadence | GitDealFlow",
   description:
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/data-nerd/social",
     type: "article",
   },
-};
+});
 
 const HANDLE_STATUS_COLOR: Record<string, string> = {
   live: "border-emerald-700/40 bg-emerald-950/20 text-emerald-300",

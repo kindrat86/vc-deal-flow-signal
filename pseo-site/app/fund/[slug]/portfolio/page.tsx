@@ -9,6 +9,7 @@ import {
 import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
 import { FRESH_YEAR_STR } from "@/lib/freshness-year";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -30,13 +31,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const title = `${fund.name} Portfolio, Companies We Track ${FRESH_YEAR_STR} | VC Deal Flow Signal`;
   const description = `${portfolio.length} companies from ${fund.name}'s publicly disclosed portfolio that we track in the VC Deal Flow Signal engineering-signal panel. Independent, sources are press releases and Crunchbase only.`;
 
-  return {
+  return withEditorialOverride({
     title,
     description,
     openGraph: { title, description, type: "article", url: `/fund/${slug}/portfolio` },
     twitter: { card: "summary_large_image", title, description },
     alternates: { canonical: `/fund/${slug}/portfolio` },
-  };
+  });
 }
 
 export default async function FundPortfolioPage({ params }: PageProps) {

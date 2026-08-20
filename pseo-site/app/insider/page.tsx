@@ -7,10 +7,11 @@ import { getHreflangLanguages } from "@/lib/hreflang";
 import TrialClose from "@/components/TrialClose";
 import BuyerRoadmap from "@/components/BuyerRoadmap";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "Insider Circle, See Every Signal 24 Hours Before The Public · €197/mo",
   description:
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/insider",
     type: "article",
   },
-};
+});
 
 const STRIPE_INSIDER = "https://buy.stripe.com/bJeaEWfRpcRG6gm2fC0x20d";
 const STRIPE_DASHBOARD = "https://buy.stripe.com/4gMbJ07kTaJy7kqg6s0x20b";

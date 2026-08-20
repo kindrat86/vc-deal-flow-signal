@@ -12,6 +12,7 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 import SeoCta from "@/components/SeoCta";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -47,12 +48,12 @@ export async function generateMetadata({
   const title = `${sector.name} Startup Momentum: ${periodA.name} vs ${periodB.name} (${delta})`;
   const description = `${sector.name} engineering momentum moved ${delta} period-over-period: avg 14-day commit velocity ${avgVelB} → ${avgVelA} across ${parsed.snapshotA.startups.length} tracked orgs. Commit velocity, contributor growth, new-repo trends.`;
 
-  return {
+  return withEditorialOverride({
     title,
     description,
     openGraph: { title, description, type: "article", url: `/trends/${slug}` },
     alternates: { canonical: `/trends/${slug}` },
-  };
+  });
 }
 
 export default async function TrendPage({ params }: PageProps) {

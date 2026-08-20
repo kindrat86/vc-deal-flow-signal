@@ -6,10 +6,11 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "Underwriting Receipts, Public Ledger of Validated GitHub Signals · €0",
   description:
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/wins",
     type: "website",
   },
-};
+});
 
 interface Win {
   org: string;

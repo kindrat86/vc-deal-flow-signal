@@ -3,8 +3,9 @@ import Link from "next/link";
 import { ACQUIRERS } from "@/content/acquirers";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Acquirers, Public M&A Patterns",
   description:
     "Independent M&A pattern pages for 20 well-known public-company tech acquirers, Microsoft, Google, Salesforce, Adobe, Apple, Amazon/AWS, Cisco, IBM, Oracle, Nvidia, Atlassian, ServiceNow, Stripe, Cloudflare, Shopify, Snowflake, Databricks, GitHub, HubSpot, Intel. For Corp Dev, PE operating partners, and competitive analysts.",
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
     description:
       "Independent M&A pattern pages for 20 public-company tech acquirers.",
   },
-};
+});
 
 export const revalidate = 604800;
 

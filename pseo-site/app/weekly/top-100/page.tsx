@@ -7,10 +7,11 @@ import {
   isoWeekToMonday,
 } from "@/lib/top-100";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Top 100 GitHub-Signal Startups, Weekly Index",
   description:
     "Weekly index of the 100 startups with the strongest GitHub engineering signals, refreshed every Monday.",
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
     description:
       "Composite leaderboard refreshed weekly. Commit velocity + contributor growth + raw scale + team size.",
   },
-};
+});
 
 export default function Top100ArchivePage() {
   const slugs = getAllTop100Slugs();

@@ -1,15 +1,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "Confirmed, your 30-Day Deal Flow Reset starts now",
   description:
     "Email confirmed. Day 1 of the 30-Day Deal Flow Reset is queued for the next 15 minutes. Here's the four-week curriculum and what to expect.",
   alternates: { canonical: "/challenge/started" },
   robots: { index: false, follow: true },
-};
+});
 
 export default function ChallengeStartedPage() {
   return (

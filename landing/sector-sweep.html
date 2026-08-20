@@ -8,12 +8,12 @@
   <link rel="canonical" href="https://gitdealflow.com/sector-sweep" />
   <meta name="robots" content="index, follow">
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Sector Sweep, GitDealFlow" />
+  <meta property="og:title" content="Sector Sweep: GitDealFlow" />
   <meta property="og:description" content="One sector. One thesis. One custom report. €1,997 one-time." />
   <meta property="og:url" content="https://gitdealflow.com/sector-sweep" />
   <meta property="og:image" content="https://signals.gitdealflow.com/opengraph-image" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Sector Sweep, GitDealFlow" />
+  <meta name="twitter:title" content="Sector Sweep: GitDealFlow" />
   <meta name="twitter:description" content="A one-time custom thesis report for when you need more than the weekly shortlist." />
   <meta name="twitter:image" content="https://signals.gitdealflow.com/opengraph-image" />
   <script type="application/ld+json">{
@@ -23,7 +23,7 @@
       "@type": "WebPage",
       "@id": "https://gitdealflow.com/sector-sweep#webpage",
       "url": "https://gitdealflow.com/sector-sweep",
-      "name": "Sector Sweep, GitDealFlow",
+      "name": "Sector Sweep: GitDealFlow",
       "description": "The one-time custom thesis report for when you want a deeper sector-specific cut.",
       "isPartOf": {
         "@id": "https://gitdealflow.com/#website"
@@ -117,7 +117,7 @@
         <div class="flex flex-col sm:flex-row items-center sm:items-center gap-4 mb-4 text-center sm:text-left">
           <picture>
             <source srcset="/data-nerd.webp" type="image/webp">
-            <img src="/data-nerd.png" alt="The Data Nerd" width="160" height="160" loading="lazy" decoding="async" class="w-40 h-40 sm:w-32 sm:h-32 rounded-full ring-2 ring-slate-600 shadow-2xl mx-auto sm:mx-0">
+            <img src="/data-nerd.webp" alt="The Data Nerd" width="160" height="160" loading="lazy" decoding="async" class="w-40 h-40 sm:w-32 sm:h-32 rounded-full ring-2 ring-slate-600 shadow-2xl mx-auto sm:mx-0">
           </picture>
           <p class="text-sky-300 text-xs font-semibold uppercase tracking-wider">Why I built this, The Data Nerd</p>
         </div>
@@ -222,7 +222,7 @@
         <p class="text-yellow-300 text-xs font-semibold uppercase tracking-wider mb-3">Before you spend €1,997</p>
         <h2 class="text-2xl font-bold mb-4">Email me your thesis first. If the signal isn't there, I'll tell you before you pay.</h2>
         <p class="text-gray-300 leading-relaxed max-w-2xl mx-auto mb-6">At this price you should be skeptical, and I'd rather you check than trust. No testimonials, I won't put words in a buyer's mouth. What's verifiable is public: read the <a href="https://signals.gitdealflow.com/methodology" class="text-yellow-300 underline">methodology</a> on SSRN and a <a href="/report" class="text-yellow-300 underline">sample issue</a> before you decide. Then send me the thesis, sector, and the question you're trying to answer, and if I can't find a credible engineering signal there, I'll tell you that before you spend a cent. I'd rather lose the sale than take €1,997 for a pass that comes back empty.</p>
-        <a href="mailto:signal@gitdealflow.com?subject=Sector%20Sweep%20%E2%80%94%20thesis%20check" class="btn btn-secondary btn-md w-full sm:w-auto">Email my thesis first</a>
+        <a href="mailto:signals@gitdealflow.com?subject=Sector%20Sweep%20%E2%80%94%20thesis%20check" class="btn btn-secondary btn-md w-full sm:w-auto">Email my thesis first</a>
       </div>
     </section>
 
@@ -238,7 +238,7 @@
         <p class="text-gray-400 text-sm mb-6">7-day custom report &middot; &euro;1,997 this year &middot; &euro;2,997 after 2026 &middot; max 8 sweeps per batch</p>
         <a href="/apply" onclick="if(window.posthog)posthog.capture('sector_sweep_apply_clicked',{placement:'checkout_section'})" class="block w-full sm:w-auto mx-auto bg-yellow-500 hover:bg-yellow-400 text-dark-900 font-bold px-6 sm:px-10 py-4 rounded-lg text-lg transition">Apply for a Sweep &rarr;</a>
         <p class="text-gray-400 text-sm mt-4">No card required to apply. I review your thesis before sending a payment link.</p>
-        <p class="text-gray-400 text-xs mt-4">Prefer to talk first? <a href="mailto:signal@gitdealflow.com?subject=Sector%20Sweep%20%E2%80%94%20questions" class="text-yellow-300 hover:text-yellow-200 underline decoration-dotted">Email me directly</a>.</p>
+        <p class="text-gray-400 text-xs mt-4">Prefer to talk first? <a href="mailto:signals@gitdealflow.com?subject=Sector%20Sweep%20%E2%80%94%20questions" class="text-yellow-300 hover:text-yellow-200 underline decoration-dotted">Email me directly</a>.</p>
       </div>
     </section>
 
@@ -293,7 +293,7 @@
         <a href="/insider" class="hover:text-gray-300">Insider</a>
         <a href="/privacy" class="hover:text-gray-300">Privacy</a>
       </div>
-      <p class="text-gray-400 text-xs">&copy; 2026 GitDealFlow &middot; signal@gitdealflow.com</p>
+      <p class="text-gray-400 text-xs">&copy; 2026 GitDealFlow &middot; signals@gitdealflow.com</p>
     </div>
   </footer>
 
@@ -363,7 +363,7 @@
             try { sessionStorage.setItem('gdf_email', email); } catch (err) {}
             window.location.href = '/thanks';
           }).catch(function () {
-            if (msg) { msg.textContent = 'Something went wrong. Try again or email signal@gitdealflow.com'; msg.className = 'gdf-inline-msg text-red-400 text-xs mt-3'; }
+            if (msg) { msg.textContent = 'Something went wrong. Try again or email signals@gitdealflow.com'; msg.className = 'gdf-inline-msg text-red-400 text-xs mt-3'; }
             if (btn) { btn.disabled = false; btn.removeAttribute('aria-busy'); btn.innerHTML = orig; }
           });
         });
@@ -437,7 +437,7 @@
           try { sessionStorage.setItem('gdf_email', email); } catch (err) {}
           window.location.href = '/thanks';
         }).catch(function () {
-          msg.textContent = 'Something went wrong. Try again or email signal@gitdealflow.com';
+          msg.textContent = 'Something went wrong. Try again or email signals@gitdealflow.com';
           msg.className = 'text-red-400 text-xs text-center mt-3';
           btn.disabled = false;
           btn.textContent = 'Get this Sunday’s 5 names →';

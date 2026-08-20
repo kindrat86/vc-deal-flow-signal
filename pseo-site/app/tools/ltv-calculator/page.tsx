@@ -5,6 +5,7 @@ import { LtvCalculator } from "@/components/LtvCalculator";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import EmbedThisCard from "@/components/EmbedThisCard";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 const PAGE_URL = `${SITE}/tools/ltv-calculator`;
@@ -17,7 +18,7 @@ const PAGE_URL = `${SITE}/tools/ltv-calculator`;
 export function generateMetadata(): Metadata {
   const ogImage = `${SITE}/api/og/tools/ltv-calculator`;
 
-  return {
+  return withEditorialOverride({
     title:
       "LTV Calculator, Customer Lifetime Value, LTV:CAC Ratio, Standard Bands",
     description:
@@ -55,7 +56,7 @@ export function generateMetadata(): Metadata {
       "churn rate calculator",
       "gross margin LTV",
     ],
-  };
+  });
 }
 
 const FAQS: { question: string; answer: string }[] = [

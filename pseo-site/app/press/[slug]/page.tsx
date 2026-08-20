@@ -8,6 +8,7 @@ import {
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 
@@ -28,7 +29,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const r = getReleaseBySlug(slug);
   if (!r) return {};
-  return {
+  return withEditorialOverride({
     title: `${r.headline}, Press Release`,
     description: r.subhead,
     alternates: { canonical: `/press/${slug}` },
@@ -43,7 +44,7 @@ export async function generateMetadata({
       title: r.headline,
       description: r.subhead,
     },
-  };
+  });
 }
 
 export default async function PressReleasePage({ params }: PageProps) {

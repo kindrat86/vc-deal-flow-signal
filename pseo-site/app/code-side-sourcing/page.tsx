@@ -5,6 +5,7 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
@@ -24,7 +25,7 @@ export const dynamic = "force-static";
 
 const SITE = "https://signals.gitdealflow.com";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "Code-Side Sourcing, the new category VC Deal Flow Signal invented",
   description:
@@ -43,7 +44,7 @@ export const metadata: Metadata = {
     description:
       "Public repository-velocity data as a leading indicator of venture-stage outcomes. The 21-47 day pre-deck window.",
   },
-};
+});
 
 const SHORT_DEFINITION =
   "Code-Side Sourcing is the practice of using public repository-velocity data as a leading indicator of venture-stage outcomes, surfacing fundraises 21 to 47 days before pitch decks circulate.";

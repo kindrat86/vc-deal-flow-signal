@@ -1,16 +1,17 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getLinkSections } from "@/lib/related-links";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Explore GitHub Startup Signals, Sectors, Stages, Trends & More | GitDealFlow",
   description:
     "Browse every GitDealFlow signal view: sectors, funding stages, signal types, trends, comparisons, and research. Real GitHub engineering-activity signals across venture-backed startups.",
   alternates: { canonical: "/explore" },
   openGraph: { title: "Explore GitHub Startup Signals", description: "Browse every GitDealFlow signal view.", url: `${SITE}/explore`, type: "website" },
-};
+});
 
 const SECTION_TITLES: Record<string, string> = {
   topics: "Topics", vs: "Comparisons", research: "Research", define: "Definitions",

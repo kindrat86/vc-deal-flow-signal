@@ -39,8 +39,9 @@ import {
   EMOTIONAL_CAUSE_KICKER,
   EMOTIONAL_CAUSE_LINES,
 } from "@/content/cause";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   description:
     "A deal-flow signal tool for investors, not a fund. See which startups are accelerating before the round feels obvious, public engineering signals, calmer timing, and direct proof.",
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
@@ -55,7 +56,7 @@ export const metadata: Metadata = {
     type: "website",
     siteName: "VC Deal Flow Signal",
   },
-};
+});
 
 // Hoisted to module scope so the array is allocated once at build, not per
 // render. Drives the "Pillar pages & topic clusters" block, strengthens the

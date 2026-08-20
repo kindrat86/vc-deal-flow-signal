@@ -10,10 +10,11 @@ import {
   DATA_NERD_FUTURE_SELF,
   DATA_NERD_NOW,
 } from "@/lib/data-nerd";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   // absolute: title already names the brand, bypass the layout template
   // (brand-doubling fix 2026-08-15)
   title: { absolute: "About The Data Nerd, the founder behind VC Deal Flow Signal" },
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/about/founder",
     type: "article",
   },
-};
+});
 
 export default function FounderPage() {
   const jsonLd = {

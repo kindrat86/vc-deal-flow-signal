@@ -12,6 +12,7 @@ import {
   getClaimedCount,
   getRemainingSeats,
 } from "@/content/charter-cohort";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
@@ -36,7 +37,7 @@ const SITE = "https://signals.gitdealflow.com";
  * until real picks land.
  */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     // absolute: title already names the brand, bypass the layout template
     // (brand-doubling fix 2026-08-15)
@@ -51,7 +52,7 @@ export const metadata: Metadata = {
     url: `${SITE}/members/leaderboard`,
     type: "website",
   },
-};
+});
 
 interface LeaderboardRow {
   member: CharterMember;

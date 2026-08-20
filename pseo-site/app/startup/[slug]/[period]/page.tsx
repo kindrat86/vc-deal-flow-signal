@@ -10,6 +10,7 @@ import {
 } from "@/lib/data";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface PageProps {
   params: Promise<{ slug: string; period: string }>;
@@ -35,7 +36,7 @@ export async function generateMetadata({
   const title = `${data.profile.name}, ${data.entry.periodName} Engineering Signal`;
   const description = `${data.profile.name} engineering metrics in ${data.entry.periodName}: ${data.entry.commitVelocityChange} commit velocity change, ${data.entry.contributors} contributors, signal type: ${data.entry.signalType}. Historical snapshot from VC Deal Flow Signal.`;
 
-  return {
+  return withEditorialOverride({
     title,
     description,
     // Index-bloat control (2026-08-14): the ~1,700 period pages are
@@ -63,7 +64,7 @@ export async function generateMetadata({
         "application/ld+json": `/jsonld/startup/${slug}/${period}`,
       },
     },
-  };
+  });
 }
 
 export default async function StartupPeriodPage({ params }: PageProps) {

@@ -5,6 +5,7 @@ import { MagicNumberCalculator } from "@/components/MagicNumberCalculator";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import EmbedThisCard from "@/components/EmbedThisCard";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 const PAGE_URL = `${SITE}/tools/magic-number-calculator`;
@@ -17,7 +18,7 @@ const PAGE_URL = `${SITE}/tools/magic-number-calculator`;
 export function generateMetadata(): Metadata {
   const ogImage = `${SITE}/api/og/tools/magic-number-calculator`;
 
-  return {
+  return withEditorialOverride({
     title:
       "SaaS Magic Number Calculator, Sales Efficiency, Bessemer Bands",
     description:
@@ -55,7 +56,7 @@ export function generateMetadata(): Metadata {
       "CAC efficiency",
       "growth-stage diligence",
     ],
-  };
+  });
 }
 
 const FAQS: { question: string; answer: string }[] = [

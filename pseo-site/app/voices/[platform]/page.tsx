@@ -13,6 +13,7 @@ import {
   platformStatusCounts,
   type VoiceStatus,
 } from "@/content/voices-platforms";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
@@ -36,12 +37,12 @@ export async function generateMetadata({
   const { platform } = await params;
   const list = getPlatformList(platform);
   if (!list) {
-    return {
+    return withEditorialOverride({
       title: "Voice roster not found",
       robots: { index: false, follow: false },
-    };
+    });
   }
-  return {
+  return withEditorialOverride({
     title: `${list.label}, ${list.items.length} voices · ${list.tagline}`,
     description: `${list.intro} Cadence: ${list.cadence}`,
     alternates: { canonical: `/voices/${list.slug}` },
@@ -51,7 +52,7 @@ export async function generateMetadata({
       url: `https://signals.gitdealflow.com/voices/${list.slug}`,
       type: "article",
     },
-  };
+  });
 }
 
 const STATUS_BADGE_CLASS: Record<VoiceStatus, string> = {

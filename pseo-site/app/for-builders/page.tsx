@@ -6,10 +6,11 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { DATA_NERD_NAME, DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "For AI Agent Builders, Don't Re-Read Crunchbase. Plug Into 350+ GitHub Orgs.",
   description:
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
     description:
       "Six free MCP tools. €19/100 calls for deep_signal. €0.19/call. Misses free. No rate limits inside quota.",
   },
-};
+});
 
 const STRIPE_AGENT_CREDITS =
   process.env.NEXT_PUBLIC_STRIPE_AGENT_CREDITS_LINK ??

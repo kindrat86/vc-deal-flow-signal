@@ -2,15 +2,16 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { allPosts } from "@/content/posts";
 import SeoCta from "@/components/SeoCta";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Signal of the Week - Weekly Startup Engineering Acceleration Deep Dive",
   description:
     "A single-startup editorial each Monday. One company, one signal, one story - drawn from our ranking of 350++ startup GitHub orgs by engineering acceleration. Free, non-gated, citation-encouraged.",
   alternates: {
     canonical: "/signal-of-the-week",
   },
-};
+});
 
 export default function SignalOfTheWeekArchivePage() {
   const today = new Date().toISOString().slice(0, 10);

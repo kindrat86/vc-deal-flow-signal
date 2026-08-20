@@ -3,10 +3,11 @@ import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Roadmap, what's shipping next, and what's on the public bet",
   description:
     "GitDealFlow public roadmap. Shipped this quarter, in flight, on deck, considering. Plus the live testing transparency log: what we tried, what worked, what we cut.",
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/roadmap",
     type: "article",
   },
-};
+});
 
 type Item = {
   title: string;

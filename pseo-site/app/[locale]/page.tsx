@@ -10,6 +10,7 @@ import { LOCALE_TOPICS } from "@/content/locale-topics";
 import { JA_FINDINGS } from "@/content/ja-research";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 const SSRN_URL = "https://ssrn.com/abstract=6606558";
@@ -35,7 +36,7 @@ export async function generateMetadata({
   const l = getLocaleByCode(locale);
   if (!l) return {};
 
-  return {
+  return withEditorialOverride({
     title: { absolute: `VC Deal Flow Signal, ${l.nativeName.replace(/&amp;/g, "&")} (${l.display})` },
     description: l.intro.slice(0, 200),
     // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
@@ -59,7 +60,7 @@ export async function generateMetadata({
       card: "summary_large_image",
       images: [`${SITE}/api/og/locale/${locale}`],
     },
-  };
+  });
 }
 
 export default async function LocaleLandingPage({ params }: PageProps) {

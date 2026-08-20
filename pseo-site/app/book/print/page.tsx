@@ -4,16 +4,17 @@ import {
   getChapterMarkdown,
   renderChapterHtml,
 } from "@/lib/book";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: `${BOOK.title}, printable single-page edition`,
   description:
     "Single-page printable web edition. Save as PDF from your browser, or use the pre-generated PDF/EPUB on the book page.",
   alternates: { canonical: "/book/print" },
   robots: { index: false, follow: true },
-};
+});
 
 export default function BookPrintPage() {
   const chapters = BOOK.chapters.map((c) => ({

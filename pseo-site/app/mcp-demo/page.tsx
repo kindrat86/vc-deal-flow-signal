@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const APEX = "https://gitdealflow.com";
 const SIGNALS = "https://signals.gitdealflow.com";
@@ -19,7 +20,7 @@ const VIDEO_TITLE = "VC Deal Flow Signal MCP Server, Claude Desktop Demo";
 const VIDEO_DESCRIPTION =
   "Live demo of the VC Deal Flow Signal MCP server running inside Claude Desktop. Shows trending startups, sector search, and individual startup signal lookups via natural-language prompts. Free, no API key required.";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "MCP Server Demo, VC Deal Flow Signal in Claude Desktop",
   description: VIDEO_DESCRIPTION,
   alternates: {
@@ -47,7 +48,7 @@ export const metadata: Metadata = {
     description: VIDEO_DESCRIPTION,
     // twitter:image is auto-emitted by the colocated opengraph-image.tsx.
   },
-};
+});
 
 export default function McpDemoPage() {
   const jsonLd = {

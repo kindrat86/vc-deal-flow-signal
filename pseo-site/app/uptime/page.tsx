@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { buildUptimeManifest, type ComponentStatus } from "@/lib/uptime";
 import { TrustConversionBlock } from "@/components/TrustConversionBlock";
+import { withEditorialOverride } from "@/lib/metadata";
 
 // Server-rendered each request so the timestamps + active-incident array
 // are always live. The underlying data is computed by lib/uptime.ts and
@@ -11,7 +12,7 @@ export const runtime = "nodejs";
 
 const SITE = "https://signals.gitdealflow.com";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Status",
   description:
     "Live status of every public surface, the marketing site, programmatic SEO, JSON APIs, MCP server, OAuth token issuer, RSS/Atom feeds, and agent-facing well-known files.",
@@ -30,7 +31,7 @@ export const metadata: Metadata = {
     description:
       "Live status across site, APIs, MCP, and agent surfaces. Honest uptime, not a dashboard art project.",
   },
-};
+});
 
 const STATUS_PILL: Record<ComponentStatus, { label: string; cls: string }> = {
   operational: {

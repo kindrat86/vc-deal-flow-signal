@@ -3,8 +3,9 @@ import Link from "next/link";
 import { getCurrentPeriod, getAllSectors, getSortedStartups } from "@/lib/data";
 import { slugify } from "@/lib/slugify";
 import A2APlayground from "./A2APlayground";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Try the GitDealFlow A2A Agent, Live Playground",
   description:
     "Send live JSON-RPC 2.0 requests to the GitDealFlow Agent2Agent endpoint. No signup, no API key. Watch your call return startup engineering signals from public GitHub data.",
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
     type: "website",
     url: "/a2a-demo",
   },
-};
+});
 
 export default function A2ADemoPage() {
   const period = getCurrentPeriod();

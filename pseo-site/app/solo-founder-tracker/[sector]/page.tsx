@@ -10,6 +10,7 @@ import {
   getSoloFounderSectorBySlug,
   type SoloFounderSectorEntry,
 } from "@/content/solo-founder-tracker";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface PageProps {
   params: Promise<{ sector: string }>;
@@ -35,7 +36,7 @@ export async function generateMetadata({
   const title = `${entry.name}, Solo-Founder Tracker (commit / star / contributor thresholds)`;
   const description = `${entry.tagline} Threshold definition, observable acceleration shape, and most common false-positive pattern for spotting one-engineer companies in ${entry.name}.`;
 
-  return {
+  return withEditorialOverride({
     title,
     description,
     alternates: { canonical: `/solo-founder-tracker/${entry.slug}` },
@@ -50,7 +51,7 @@ export async function generateMetadata({
       title: `${entry.name}, Solo-Founder Tracker`,
       description: entry.tagline,
     },
-  };
+  });
 }
 
 function buildJsonLd(entry: SoloFounderSectorEntry): object {

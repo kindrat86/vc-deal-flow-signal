@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { PERSONAS } from "@/content/personas";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "For, Persona Navigation Hubs",
   description: `${PERSONAS.length} buyer-persona pages mapping the engineering-signal panel to specific roles, Corp Dev, PE Operating Partners, Tech VPs, Emerging Managers, Founders, Researchers, Journalists.`,
   alternates: { canonical: "/for" },
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
     title: "For",
     description: "Persona navigation hubs.",
   },
-};
+});
 
 export const revalidate = 604800;
 

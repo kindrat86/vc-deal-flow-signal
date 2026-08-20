@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { ForFrameworkPage } from "@/components/ForFrameworkPage";
 import { getFrameworkPositioning } from "@/lib/for-framework-data";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 const fw = getFrameworkPositioning("vercel-ai-sdk")!;
@@ -10,7 +11,7 @@ const TITLE =
 const DESCRIPTION =
   "Drop GitDealFlow into a Vercel AI SDK tool() with Zod-validated args. Server Components, Route Handlers, Server Actions, AI Gateway routing, all five skills, edge-safe, free A2A endpoint, no auth.";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: TITLE,
   description: DESCRIPTION,
   keywords: [
@@ -36,7 +37,7 @@ export const metadata: Metadata = {
     title: TITLE,
     description: DESCRIPTION,
   },
-};
+});
 
 export default function ForVercelAISDKPage() {
   return <ForFrameworkPage framework={fw} />;

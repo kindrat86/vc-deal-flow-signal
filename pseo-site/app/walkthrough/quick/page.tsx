@@ -4,6 +4,7 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import WalkthroughQuickRedirect from "@/components/WalkthroughQuickRedirect";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
@@ -33,7 +34,7 @@ export const dynamic = "force-static";
 // client JS that runs after the static HTML lands. Cheaper, faster,
 // no cold start.
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "The Walkthrough, pick your length",
   description:
     "Two variants of the same argument: 90 seconds (~250 words) or 5 minutes (~800 words). Pick the one that fits your day. The 12-minute long-form is also linked.",
@@ -51,7 +52,7 @@ export const metadata: Metadata = {
     index: false,
     follow: true,
   },
-};
+});
 
 export default function WalkthroughQuickPage() {
   return (

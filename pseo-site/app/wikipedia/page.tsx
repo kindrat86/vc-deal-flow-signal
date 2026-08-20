@@ -3,13 +3,14 @@ import Link from "next/link";
 import { FINDINGS } from "@/content/research-findings";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import SeoCta from "@/components/SeoCta";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 const SSRN_URL = "https://ssrn.com/abstract=6606558";
 const PAPER_TITLE =
   "A Longitudinal Panel of GitHub Engineering Velocity for Venture-Backed Startups";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Wikipedia Citation Helper",
   description:
     "Copy-paste-ready Wikipedia citation snippets for the SSRN-indexed methodology paper, the public dataset, and every research finding. Uses {{cite journal}} and {{cite web}} templates. Verifiability-policy compliant, every citation resolves to a free, public source.",
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
     type: "article",
     url: `${SITE}/wikipedia`,
   },
-};
+});
 
 const PAPER_CITE = `<ref>{{cite journal |last=The Data Nerd |title=${PAPER_TITLE} |journal=SSRN Electronic Journal |year=2026 |doi=10.2139/ssrn.6606558 |url=${SSRN_URL} |publisher=VC Deal Flow Signal (GitDealFlow) |orcid=0009-0002-2222-4112}}</ref>`;
 

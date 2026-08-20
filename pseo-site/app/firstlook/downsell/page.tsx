@@ -5,13 +5,14 @@ import { stripe } from "@/lib/stripe";
 import { OTO_TIERS } from "@/lib/stripe-tiers";
 import OneClickOtoButton from "@/components/OneClickOtoButton";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "First Look, one more thing.",
   robots: { index: false, follow: false },
-};
+});
 
 const SESSION_RX = /^cs_(test_|live_)?[a-zA-Z0-9]+$/;
 

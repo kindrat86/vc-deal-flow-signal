@@ -23,6 +23,7 @@ import {
 import { getFindingBySlug } from "@/content/research-findings";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 const SSRN_URL = "https://ssrn.com/abstract=6606558";
@@ -55,7 +56,7 @@ export async function generateMetadata({
   if (!localeMeta) return {};
 
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).
-  return {
+  return withEditorialOverride({
     title: `${f.title}`,
     description: f.claim,
     alternates: { canonical: `/${locale}/research/${slug}` },
@@ -86,7 +87,7 @@ export async function generateMetadata({
       citation_abstract_html_url: SSRN_URL,
       citation_language: locale,
     },
-  };
+  });
 }
 
 function inline(text: string): string {

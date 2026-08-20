@@ -5,6 +5,7 @@ import { BurnMultipleCalculator } from "@/components/BurnMultipleCalculator";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import EmbedThisCard from "@/components/EmbedThisCard";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 const PAGE_URL = `${SITE}/tools/burn-multiple-calculator`;
@@ -17,7 +18,7 @@ const PAGE_URL = `${SITE}/tools/burn-multiple-calculator`;
 export function generateMetadata(): Metadata {
   const ogImage = `${SITE}/api/og/tools/burn-multiple-calculator`;
 
-  return {
+  return withEditorialOverride({
     title:
       "Burn Multiple Calculator, SaaS Capital Efficiency, Sacks Bands",
     description:
@@ -55,7 +56,7 @@ export function generateMetadata(): Metadata {
       "startup efficiency",
       "growth-stage diligence",
     ],
-  };
+  });
 }
 
 const FAQS: { question: string; answer: string }[] = [

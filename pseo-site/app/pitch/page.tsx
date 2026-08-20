@@ -5,10 +5,11 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "The 90-Second Pitch",
   description:
     "Five sections, 90 seconds. The case for using GitHub commit-velocity acceleration as your highest-leverage deal-flow source. Read it, then either subscribe or close the tab.",
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/pitch",
     type: "article",
   },
-};
+});
 
 const STRIPE_DASHBOARD = "https://buy.stripe.com/4gMbJ07kTaJy7kqg6s0x20b";
 const SIGNUP_URL = "https://gitdealflow.com/#signup";

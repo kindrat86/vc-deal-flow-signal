@@ -7,8 +7,9 @@ import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { PANEL_CLAIM } from "@/lib/canonical-claims";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "Enterprise, VC Deal Flow Signal for Funds (Sharp Tier €4,970/yr · Application-Gated)",
   description:
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/enterprise",
   },
-};
+});
 
 const ENTERPRISE_CONTACT_URL =
   "mailto:signals@gitdealflow.com?subject=Enterprise%20Engagement%20%E2%80%94%20%5BYour%20Fund%5D&body=Hi%20%E2%80%94%0A%0AFund%20name%3A%20%0AAUM%3A%20%0AStandard%20deals%2Fyear%3A%20%0AThesis%2Fsectors%3A%20%0A%0AScope%20of%20interest%20%28pick%20any%29%3A%0A-%20White-label%20fund-branded%20UI%0A-%20Dedicated%20Slack%20channel%0A-%20On-call%20diligence%20support%20for%20active%20fundraises%0A-%20Custom%20sector%20coverage%20expansion%0A-%20Multi-seat%20Sharp%20Tier%20%28beyond%20single-fund%20cap%29%0A%0AThanks%2C%0A";

@@ -7,6 +7,7 @@ import { getAllSectors, getCurrentPeriod, getDataLastModified } from "@/lib/data
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -40,7 +41,7 @@ export async function generateMetadata({
   const uc = getUseCase(slug);
   if (!uc) return {};
 
-  return {
+  return withEditorialOverride({
     title: uc.title,
     description: uc.description,
     openGraph: {
@@ -57,7 +58,7 @@ export async function generateMetadata({
     alternates: {
       canonical: `/use-cases/${slug}`,
     },
-  };
+  });
 }
 
 export default async function UseCasePage({ params }: PageProps) {

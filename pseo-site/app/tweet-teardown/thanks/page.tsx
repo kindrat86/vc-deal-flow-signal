@@ -3,16 +3,17 @@ import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Thanks, your teardown is in the queue",
   description:
     "Confirmation page for the €1 Tweet Teardown. Manual reply within 4 hours, with refund if no org match.",
   alternates: { canonical: "/tweet-teardown/thanks" },
   robots: { index: false, follow: false },
-};
+});
 
 export default function TeardownThanksPage() {
   return (

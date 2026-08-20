@@ -9,6 +9,7 @@ import {
 } from "@/components/FunnelLiveActivity";
 import { FunnelViewTracker } from "@/components/FunnelViewTracker";
 import type { FunnelSlug } from "@/content/funnel-slugs";
+import { withEditorialOverride } from "@/lib/metadata";
 
 // The hub itself stays statically rendered, the live counters are client
 // islands fed by /api/funnel-activity. Marking dynamic="force-static" used to
@@ -16,7 +17,7 @@ import type { FunnelSlug } from "@/content/funnel-slugs";
 // HTML shell is cached, only the badge text updates per visitor.
 export const dynamic = "force-static";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Funnel Hub, every entry point to VC Deal Flow Signal",
   description:
     "Every GitDealFlow funnel on one page, free watch, quiz, walkthrough, first-look pass, dashboard, insider tiers, and sector-sweep offers.",
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/funnels",
     type: "article",
   },
-};
+});
 
 type Funnel = {
   /** Display name shown to humans. */

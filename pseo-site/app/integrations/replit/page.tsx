@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 const NPM = "@gitdealflow/mcp-signal";
@@ -17,7 +18,7 @@ const TITLE =
 const DESCRIPTION =
   "Spin up the VC Deal Flow Signal MCP server inside Replit in under 60 seconds. Run-on-Replit button, .replit + replit.nix preconfigured, Replit Agent compatible, free Replit Core tier supported. Ideal for forking, modifying, or wiring custom Replit Agents to live engineering-acceleration data.";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: "/integrations/replit" },
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
     title: TITLE,
     description: DESCRIPTION,
   },
-};
+});
 
 const HOW_TO_STEPS = [
   {

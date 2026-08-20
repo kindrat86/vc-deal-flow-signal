@@ -12,7 +12,8 @@
  * Usage: node scripts/verify-vercel-config.mjs   (exit 1 on any failure)
  */
 
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
+import { join } from "node:path";
 
 const cfg = readFileSync("vercel.json", "utf8");
 const parsed = JSON.parse(cfg);
@@ -166,7 +167,7 @@ for (const f of claimFiles) {
 {
   let txt;
   try {
-    txt = readFileSync("llms-full.txt", "utf8");
+    txt = readFileSync("llms-full.src.txt", "utf8");
   } catch {
     fail("llms-full.txt is missing (2026-08-16).");
     txt = "";
@@ -184,9 +185,9 @@ for (const f of claimFiles) {
 {
   let l;
   try {
-    l = readFileSync("llms.txt", "utf8");
+    l = readFileSync("llms.src.txt", "utf8");
   } catch {
-    fail("llms.txt is missing (2026-08-16).");
+    fail("llms.src.txt is missing (2026-08-16; renamed from llms.txt by the crawl-proxy commit f8f7e45e).");
     l = "";
   }
   if (l.includes("- Dashboard Beta: EUR 9.97/month") || l.includes("- Insider Circle: EUR 97/month,")) {
@@ -289,6 +290,69 @@ if (
 }
 
 // ---------------------------------------------------------------------------
+// Header nav must wrap on mobile — no old non-wrapping nav (2026-08-16)
+// ---------------------------------------------------------------------------
+// A 390px mobile render sweep found datasets.html (EN/DE/ES) still carrying
+// the pre-fix header: justify-content:space-between with NO flex-wrap and
+// nowrap links, pushing the "Get free signal" CTA 6px past the viewport.
+// Every other page family already ships the fixed header (gap:1rem;
+// flex-wrap:wrap on the <nav> + min-height:44px on its links). A tree that
+// lets any page regress to the old signature re-ships horizontal overflow to
+// the mobile-first indexed render.
+{
+  const OLD_NAV = 'justify-content:space-between"';
+  const walk = (dir) => {
+    let out = [];
+    for (const e of readdirSync(dir, { withFileTypes: true })) {
+      if (e.name.startsWith(".")) continue;
+      const p = join(dir, e.name);
+      if (e.isDirectory()) out = out.concat(walk(p));
+      else if (e.name.endsWith(".html")) out.push(p);
+    }
+    return out;
+  };
+  const offenders = [];
+  for (const f of walk(".")) {
+    try {
+      if (readFileSync(f, "utf8").includes(OLD_NAV)) offenders.push(f);
+    } catch {
+      /* unreadable file — not a header regression */
+    }
+  }
+  if (offenders.length) {
+    fail(
+      `Non-wrapping header nav regressed in: ${offenders.join(", ")}. The mobile header needs gap:1rem;flex-wrap:wrap on the <nav> and min-height:44px on its links (2026-08-16 fix), or the "Get free signal" CTA overflows the 360-390px viewport.`,
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Code/CTA blocks must wrap on mobile (2026-08-16)
+// ---------------------------------------------------------------------------
+// Long unbreakable tokens (API URLs, citation strings) inside <pre>/<code> and
+// the /dataset <section class="cta"> overflowed the 360-390px viewport. The
+// fix lives in inline.css (the only stylesheet the /dataset + /mcp + /sectors
+// page families load). A tree that drops it re-ships horizontal overflow.
+{
+  const css = (() => {
+    try {
+      return readFileSync("inline.css", "utf8");
+    } catch {
+      return "";
+    }
+  })();
+  if (
+    !css.includes("MOBILE CODE/CTA OVERFLOW REPAIR") ||
+    !css.includes("section.cta") ||
+    !css.includes("white-space: pre-wrap")
+  ) {
+    fail(
+      "inline.css lost the code/CTA overflow repair (pre/code overflow-wrap:anywhere + pre white-space:pre-wrap + section.cta flex-wrap, 2026-08-16); /dataset, /mcp and /sectors code blocks re-overflow the 360-390px viewport.",
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
 // HSTS preload header must survive any vercel.json rewrite (2026-08-18)
 // ---------------------------------------------------------------------------
 // gitdealflow.com serves
@@ -345,6 +409,36 @@ if (
     }
   } catch {
     // .vercelignore absent (e.g. not in the upload): nothing to check here.
+  }
+}
+
+// ---------------------------------------------------------------------------
+// text/markdown content negotiation must survive (2026-08-17)
+// ---------------------------------------------------------------------------
+// The apex is static (framework null): a static index.html cannot answer
+// "Accept: text/markdown", and `has`-conditional REWRITES are silently dropped
+// on this preset (verified 2026-08-17: a "/" -> "/api/home" rewrite was dropped
+// and a "/:path*" rewrite was dropped). `has`-conditional REDIRECTS do compile
+// (the www->apex host redirect proves it). So markdown clients are redirected
+// to the home-page markdown mirror /md/index.md (served text/markdown), while
+// everyone else keeps the static HTML. A tree missing this redirect silently
+// re-sends HTML to every assistant that asks for markdown.
+{
+  const mdRedirect = (parsed.redirects || []).find(
+    (r) => r.source === "/" && Array.isArray(r.has),
+  );
+  const hasAcceptMd =
+    mdRedirect &&
+    mdRedirect.has.some(
+      (h) => h.type === "header" && h.key === "accept" && h.value === "text/markdown",
+    );
+  if (!mdRedirect || !hasAcceptMd || mdRedirect.destination !== "/md/index.md") {
+    fail(
+      'text/markdown negotiation lost: vercel.json redirects[] must keep { "source": "/", "has": [{ "type": "header", "key": "accept", "value": "text/markdown" }], "destination": "/md/index.md", "permanent": false } (2026-08-17 AIO/LLMO fix).',
+    );
+  }
+  if (!existsSync("md/index.md")) {
+    fail("md/index.md missing: the home-page markdown mirror the redirect targets is gone (2026-08-17 AIO/LLMO fix).");
   }
 }
 

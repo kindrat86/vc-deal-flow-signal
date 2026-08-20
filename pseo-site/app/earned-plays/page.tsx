@@ -3,10 +3,11 @@ import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Earned Plays, the traffic playbook we actually run",
   description:
     "GitDealFlow's earned-traffic playbook. Reddit AEO, dev.to long-form, Substack mirror, MCP integration, Federated social, Academic citation, GitHub. Specific plays, specific frequency, specific reasons.",
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/earned-plays",
     type: "article",
   },
-};
+});
 
 type Play = {
   id: string;

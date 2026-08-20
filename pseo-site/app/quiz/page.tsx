@@ -3,10 +3,11 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import QuizForm from "./QuizForm";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Which Tier Fits You?, 90-Second Avatar Quiz",
   description:
     "Five questions, ninety seconds, and a routed recommendation. Tells you whether you're a Solo Angel, Fund GP, or Family Office Analyst, and whether the Free Acceleration Watch, the €7 First Look Pass, the €49/mo Dashboard, the €197/mo Insider Circle, or the €1,997 Sector Sweep is the right starting point.",
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/quiz",
     type: "article",
   },
-};
+});
 
 export default function QuizPage() {
   const jsonLd = {

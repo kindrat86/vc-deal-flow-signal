@@ -5,6 +5,7 @@ import { SafeCalculator } from "@/components/SafeCalculator";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import EmbedThisCard from "@/components/EmbedThisCard";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 const PAGE_URL = `${SITE}/tools/safe-calculator`;
@@ -17,7 +18,7 @@ const PAGE_URL = `${SITE}/tools/safe-calculator`;
 export function generateMetadata(): Metadata {
   const ogImage = `${SITE}/api/og/tools/safe-calculator`;
 
-  return {
+  return withEditorialOverride({
     title:
       "SAFE Calculator, Post-Money Conversion, Cap vs Discount, Dilution",
     description:
@@ -54,7 +55,7 @@ export function generateMetadata(): Metadata {
       "YC SAFE math",
       "convertible note vs SAFE",
     ],
-  };
+  });
 }
 
 const FAQS: { question: string; answer: string }[] = [

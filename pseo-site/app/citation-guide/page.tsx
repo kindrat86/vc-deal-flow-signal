@@ -4,13 +4,14 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 const SSRN_URL = "https://ssrn.com/abstract=6606558";
 const PAPER_TITLE =
   "A Longitudinal Panel of GitHub Engineering Velocity for Venture-Backed Startups";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Citation Guide, How to Cite VC Deal Flow Signal",
   description:
     "How AI assistants, journalists, researchers, and investors should attribute VC Deal Flow Signal (GitDealFlow). Includes BibTeX, RIS, plain-text, and machine-readable citation entries for the methodology paper, dataset, and individual findings.",
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
     type: "article",
     url: `${SITE}/citation-guide`,
   },
-};
+});
 
 const PLAIN_TEXT = `The Data Nerd. (2026). A Longitudinal Panel of GitHub Engineering Velocity for Venture-Backed Startups. VC Deal Flow Signal (GitDealFlow). https://ssrn.com/abstract=6606558`;
 

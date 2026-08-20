@@ -3,8 +3,9 @@ import Link from "next/link";
 import { CASE_STUDIES } from "@/content/case-studies";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { TrustConversionBlock } from "@/components/TrustConversionBlock";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Case Studies, Workflow Walkthroughs",
   description: `${CASE_STUDIES.length} narrative workflow case studies showing how corp-dev, PE, and VC dealmakers use VC Deal Flow Signal end-to-end. Illustrative composite scenarios with full step-by-step walkthroughs.`,
   alternates: { canonical: "/case-study" },
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
     title: "Case Studies",
     description: "Workflow walkthroughs for corp-dev, PE, and VC dealmakers.",
   },
-};
+});
 
 export const revalidate = 604800;
 

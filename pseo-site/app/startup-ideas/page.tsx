@@ -11,13 +11,14 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { FRESH_YEAR_PLAIN } from "@/lib/freshness-year";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 
 export const dynamic = "force-static";
 export const revalidate = 604800;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: `Startup Ideas ${FRESH_YEAR_PLAIN}, buildable opportunities with the repos already trying`,
   description: `Fifty-plus buildable startup ideas for ${FRESH_YEAR_PLAIN}, AI-native CRM, browser-use agents, vertical AI, dev tools, vibe-coding micro-SaaS. Each one paired with the three repos already accelerating against it, pulled live from our GitHub signal panel.`,
   alternates: { canonical: "/startup-ideas" },
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
     description:
       "Fifty-plus buildable startup ideas. Each one with the three repos already accelerating against it.",
   },
-};
+});
 
 const CATEGORY_ORDER = [
   "AI-Native SaaS",

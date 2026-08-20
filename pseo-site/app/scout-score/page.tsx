@@ -5,6 +5,7 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
@@ -20,7 +21,7 @@ export const dynamic = "force-static";
 
 const SITE = "https://signals.gitdealflow.com";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "Scout Score, the proprietary GitHub taste metric VC Deal Flow Signal invented",
   description:
@@ -39,7 +40,7 @@ export const metadata: Metadata = {
     description:
       "0-100 taste score from public starring history vs ~75 validated unicorns. Free at /receipts.",
   },
-};
+});
 
 const SHORT_DEFINITION =
   "Scout Score is a 0-100 measure of investment taste computed from a developer's public GitHub starring history, specifically, how many validated unicorns, big-funding, and acquisition events they starred before the event happened.";

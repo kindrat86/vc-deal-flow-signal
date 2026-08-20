@@ -8,12 +8,12 @@
   <link rel="canonical" href="https://gitdealflow.com/dashboard" />
   <meta name="robots" content="index, follow">
   <meta property="og:type" content="website" />
-  <meta property="og:title" content="Dashboard, GitDealFlow" />
+  <meta property="og:title" content="Dashboard: GitDealFlow" />
   <meta property="og:description" content="The full ranked field for people who size up companies before the round: 60+ startups, 15 sectors, plain English, no code reading. €49/mo, 30-day Signal-or-It's-Free. Cancel anytime." />
   <meta property="og:url" content="https://gitdealflow.com/dashboard" />
   <meta property="og:image" content="https://signals.gitdealflow.com/opengraph-image" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="Dashboard, GitDealFlow" />
+  <meta name="twitter:title" content="Dashboard: GitDealFlow" />
   <meta name="twitter:description" content="60+ startups across 15 sectors, refreshed weekly in plain English. €49/mo, 30-day Signal-or-It's-Free. Cancel anytime." />
   <meta name="twitter:image" content="https://signals.gitdealflow.com/opengraph-image" />
   <script type="application/ld+json">{
@@ -162,7 +162,7 @@
         <div class="flex flex-col sm:flex-row items-center sm:items-center gap-4 mb-6 text-center sm:text-left">
           <picture>
             <source srcset="/data-nerd.webp" type="image/webp">
-            <img src="/data-nerd.png" alt="The Data Nerd" width="160" height="160" loading="lazy" decoding="async" class="w-40 h-40 sm:w-32 sm:h-32 rounded-full ring-2 ring-slate-600 shadow-2xl mx-auto sm:mx-0">
+            <img src="/data-nerd.webp" alt="The Data Nerd" width="160" height="160" loading="lazy" decoding="async" class="w-40 h-40 sm:w-32 sm:h-32 rounded-full ring-2 ring-slate-600 shadow-2xl mx-auto sm:mx-0">
           </picture>
           <div>
             <p class="text-sky-300 text-xs font-semibold uppercase tracking-wider mb-1">Why I built this, The Data Nerd</p>
@@ -464,7 +464,7 @@
         <a href="/pricing" class="hover:text-gray-300">Pricing</a>
         <a href="/privacy" class="hover:text-gray-300">Privacy</a>
       </div>
-      <p class="text-gray-400 text-xs">&copy; 2026 GitDealFlow &middot; signal@gitdealflow.com &middot; GitDealFlow Dashboard</p>
+      <p class="text-gray-400 text-xs">&copy; 2026 GitDealFlow &middot; signals@gitdealflow.com &middot; GitDealFlow Dashboard</p>
     </div>
   </footer>
 
@@ -523,7 +523,7 @@
         if (trigger && original !== null) { trigger.removeAttribute('aria-busy'); trigger.innerHTML = original; }
         var msg = document.getElementById('checkout-msg');
         if (msg) {
-          msg.textContent = 'Something went wrong opening checkout. Try again, or email signal@gitdealflow.com';
+          msg.textContent = 'Something went wrong opening checkout. Try again, or email signals@gitdealflow.com';
           msg.className = 'text-red-400 text-sm mt-4';
         }
       });
@@ -628,7 +628,7 @@
           try { sessionStorage.setItem('gdf_email', email); } catch (err) {}
           window.location.href = '/thanks?route=D';
         }).catch(function () {
-          msg.textContent = 'Something went wrong. Try again or email signal@gitdealflow.com';
+          msg.textContent = 'Something went wrong. Try again or email signals@gitdealflow.com';
           msg.className = 'text-red-400 text-xs mt-3';
           btn.disabled = false; btn.removeAttribute('aria-busy'); btn.innerHTML = orig;
         });

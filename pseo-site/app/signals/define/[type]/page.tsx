@@ -10,6 +10,7 @@ import { getFindingBySlug } from "@/content/research-findings";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 import SeoCta from "@/components/SeoCta";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 const SSRN_URL = "https://ssrn.com/abstract=6606558";
@@ -35,7 +36,7 @@ export async function generateMetadata({
   const title = `${p.name}, Signal Definition, Formula &amp; Interpretation`;
   const description = `${p.name} measured in ${p.unit} over ${p.window}. ${p.interpretation.split(".")[0]}. Defined in the SSRN-indexed methodology paper of VC Deal Flow Signal (GitDealFlow).`;
 
-  return {
+  return withEditorialOverride({
     title,
     description,
     alternates: { canonical: `/signals/define/${type}` },
@@ -54,7 +55,7 @@ export async function generateMetadata({
       "alternative data",
       "engineering acceleration",
     ],
-  };
+  });
 }
 
 export default async function SignalPrimitivePage({ params }: PageProps) {

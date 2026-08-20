@@ -5,8 +5,9 @@ import { AgentSummary } from "@/components/AgentSummary";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { TrustConversionBlock } from "@/components/TrustConversionBlock";
 import { getDataLastModified, getCurrentPeriod } from "@/lib/data";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "GitHub Scout Score (Free), Grade Your Investment Taste from GitHub Stars",
   description:
@@ -36,7 +37,7 @@ export const metadata: Metadata = {
       "Free GitHub Scout Score from your starring history. No login. 8 seconds.",
     images: ["https://signals.gitdealflow.com/api/og/signal-card"],
   },
-};
+});
 
 const EXAMPLE_USERNAMES = ["tj", "sindresorhus", "gaearon"];
 

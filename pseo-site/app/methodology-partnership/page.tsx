@@ -4,6 +4,7 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
@@ -122,7 +123,7 @@ const FAQS = [
   },
 ] as const;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "Methodology Partnership, €14,997/yr · Custom regression on your fund's thesis",
   description:
@@ -135,7 +136,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/methodology-partnership",
     type: "article",
   },
-};
+});
 
 export default function MethodologyPartnershipPage() {
   const jsonLd = {

@@ -8,12 +8,13 @@ import SectorSweepBriefForm from "./SectorSweepBriefForm";
 import TrialClose from "@/components/TrialClose";
 import BuyerRoadmap from "@/components/BuyerRoadmap";
 import { RiskReversalPromise } from "@/components/RiskReversalPromise";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
 const STRIPE_DIRECT_BUY = "/api/checkout/session?tier=sector_sweep";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "Sector Sweep, €1,997 once. 40-page custom deep-dive. Async setter, 24h brief.",
   description:
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/sector-sweep",
     type: "article",
   },
-};
+});
 
 // Brunson Stack Slide (DotCom Secrets Ch 9). Each line is the standalone
 // retail value of the same artefact ordered separately, so the €1,997

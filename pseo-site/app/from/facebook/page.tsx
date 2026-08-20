@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import TrialClose from "@/components/TrialClose";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
@@ -25,7 +26,7 @@ const SITE = "https://signals.gitdealflow.com";
  * (FB feed sends users in fast, auto-playing video kills the bridge).
  */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "From Facebook, The signal your network can't see (€7 sector deep dive)",
   description:
@@ -59,7 +60,7 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-};
+});
 
 const PROOF_POINTS = [
   {

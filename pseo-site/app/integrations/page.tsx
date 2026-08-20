@@ -3,8 +3,9 @@ import Link from "next/link";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Integrations, MCP, Telegram, Email, RSS, API",
   description:
     "Plug VC Deal Flow Signal into your existing workflow. MCP server for Claude and Cursor, Telegram channel, weekly email, JSON/CSV API, RSS feed, and Zapier.",
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/integrations",
   },
-};
+});
 
 interface Integration {
   slug: string;

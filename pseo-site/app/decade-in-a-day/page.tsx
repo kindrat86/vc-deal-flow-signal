@@ -4,10 +4,11 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { ThirtyDayQuickstart } from "@/components/ThirtyDayQuickstart";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "A Decade in a Day, Twelve Lessons on Earlier Signal and Better Timing",
   description:
     "Twelve lessons on timing, proof, workflow, and signal, compressed into one day for anyone who wants a clearer way to notice startup momentum earlier.",
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/decade-in-a-day",
     type: "article",
   },
-};
+});
 
 type Module = {
   n: number;

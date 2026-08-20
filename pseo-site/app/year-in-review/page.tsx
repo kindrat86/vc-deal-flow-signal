@@ -2,8 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { YEARS_IN_REVIEW } from "@/content/year-in-review";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Year in Review, Engineering Signals & Venture Patterns",
   description: `${YEARS_IN_REVIEW.length} annual editorial roundups covering the engineering-acceleration shifts, M&A patterns, and venture trends defining recent years (${YEARS_IN_REVIEW.map((y) => y.year).join(", ")}).`,
   alternates: { canonical: "/year-in-review" },
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
     title: "Year in Review",
     description: "Annual editorial roundups of engineering signals.",
   },
-};
+});
 
 export const revalidate = 604800;
 

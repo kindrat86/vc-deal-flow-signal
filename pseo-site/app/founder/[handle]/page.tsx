@@ -3,6 +3,7 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 import { founders, getFounder, getAllFounderHandles } from "@/content/founders";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface PageProps {
   params: Promise<{ handle: string }>;
@@ -20,7 +21,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const p = getFounder(handle);
   if (!p) return {};
 
-  return {
+  return withEditorialOverride({
     title: p.title,
     description: p.metaDescription,
     openGraph: {
@@ -37,7 +38,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     alternates: {
       canonical: `/founder/${handle}`,
     },
-  };
+  });
 }
 
 export default async function FounderPage({ params }: PageProps) {

@@ -5,6 +5,7 @@ import { getDataLastModified } from "@/lib/data";
 import { AgentSummary } from "@/components/AgentSummary";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import SignalBadge from "@/components/SignalBadge";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
@@ -12,7 +13,7 @@ const SLUG = "series-a-race-2026";
 const SITE = "https://signals.gitdealflow.com";
 const PAGE_URL = `${SITE}/markets/${SLUG}`;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "Series A Race 2026, Which 5 GitHub-Flagged Startups Raise First? | Live Odds",
   description:
@@ -41,7 +42,7 @@ export const metadata: Metadata = {
       "Live implied odds on 5 early-stage startups racing to Series A by EOY 2026.",
     images: [`${SITE}/api/og/markets/${SLUG}`],
   },
-};
+});
 
 function probabilityBar({ prob }: { prob: number }) {
   const pct = Math.max(2, Math.round(prob * 100));

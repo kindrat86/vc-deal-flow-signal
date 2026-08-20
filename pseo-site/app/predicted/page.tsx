@@ -15,8 +15,9 @@ import {
   buildClaimReviewItems,
   type PredictionOutcome,
 } from "@/lib/predictions";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "Engineering Acceleration Watch, Weekly Data Index (Not an Accelerator Program)",
   description:
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
     description:
       "10 named startups every Monday. Public dataset, not an accelerator program. Outcomes graded against fundraise news at 60 and 90 days.",
   },
-};
+});
 
 const OUTCOME_LABEL: Record<NonNullable<PredictionOutcome>, string> = {
   raised: "Raised",

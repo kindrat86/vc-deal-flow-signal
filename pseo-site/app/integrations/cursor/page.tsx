@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 const NPM = "@gitdealflow/mcp-signal";
@@ -21,7 +22,7 @@ const TITLE =
 const DESCRIPTION =
   "Add the VC Deal Flow Signal MCP server to Cursor in one click. Six free read-only tools, trending startups, sector signals, startup lookup, dataset summary, Scout receipts, methodology. Works in Cursor v0.45+, no auth, no setup, weekly refresh.";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: "/integrations/cursor" },
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
     title: TITLE,
     description: DESCRIPTION,
   },
-};
+});
 
 const TOOLS = [
   {

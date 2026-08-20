@@ -11,6 +11,7 @@ import StartupTable from "@/components/StartupTable";
 import SeoCta from "@/components/SeoCta";
 import FreshnessWatermark from "@/components/FreshnessWatermark";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface PageProps {
   params: Promise<{ slug: string; signal: string }>;
@@ -36,7 +37,7 @@ export async function generateMetadata({
   const title = `${countLead(data.startups.length, `${data.stageName} Startups`)} With ${data.signalName} Signals (${data.period.name})`;
   const description = `${data.startups.length} ${data.stageName.toLowerCase()}-stage startups showing ${data.signalName.toLowerCase()} in ${data.period.name}. What the pattern means and who shows it. Free, no signup.`;
 
-  return {
+  return withEditorialOverride({
     title,
     description,
     openGraph: { title, description, type: "article", url: `/stage/${slug}/signal/${signal}` },
@@ -48,7 +49,7 @@ export async function generateMetadata({
         "application/ld+json": `/jsonld/stage/${slug}/signal/${signal}`,
       },
     },
-  };
+  });
 }
 
 export default async function StageSignalPage({ params }: PageProps) {

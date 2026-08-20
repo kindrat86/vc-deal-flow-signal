@@ -21,6 +21,7 @@ import VelocityBar from "@/components/charts/VelocityBar";
 import SignalDistribution from "@/components/charts/SignalDistribution";
 import CrossAxisNav from "@/components/CrossAxisNav";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -59,7 +60,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
       ? `/startups-to-watch/${sector.slug}-${latest.slug}`
       : `/startups-to-watch/${slug}`;
 
-  return {
+  return withEditorialOverride({
     title,
     description,
     openGraph: {
@@ -76,7 +77,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     alternates: {
       canonical: canonicalTarget,
     },
-  };
+  });
 }
 
 export default async function SectorPage({ params }: PageProps) {

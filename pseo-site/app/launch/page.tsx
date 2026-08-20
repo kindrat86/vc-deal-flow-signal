@@ -3,10 +3,11 @@ import Link from "next/link";
 import { LAUNCHES, type PLCStage } from "@/content/launches";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Launches, Jeff Walker PLF, the four-stage way",
   description:
     "Active and archived launches. Each entry is a 4-stage Product Launch Funnel: Sideways Story, Ownership Experience, Internal Struggle, Big Idea (Open Cart).",
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
     type: "article",
     url: `${SITE}/launch`,
   },
-};
+});
 
 export const dynamic = "force-static";
 

@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 const ACTIONS_URL = `${SITE}/api/actions/openapi.json`;
@@ -14,7 +15,7 @@ const TITLE =
 const DESCRIPTION =
   "Add the GitHub VC Signal GPT to ChatGPT in one click. Public OpenAPI Action calling signals.gitdealflow.com, find startups whose engineering is accelerating before they raise. Five tools across 15 sectors, weekly refresh, no auth, no setup.";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: "/integrations/chatgpt" },
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
     title: TITLE,
     description: DESCRIPTION,
   },
-};
+});
 
 const TOOLS: { name: string; summary: string }[] = [
   {

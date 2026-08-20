@@ -3,12 +3,13 @@ import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 const PAGE_URL = `${SITE}/tools`;
 const OG_IMAGE = `${SITE}/api/og/tools`;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Free VC & Founder Tools, Calculators, Checkers, References",
   description:
     "Eight free calculators for founders and investors: SAFE conversion, dilution stack, runway, and the full SaaS efficiency suite (burn multiple, magic number, CAC payback, LTV, quick ratio). URL-shareable results, per-share OG cards, CC BY 4.0, no signup. Machine-readable catalog at /api/v1/tools.json.",
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
       "8 free calculators with URL-shareable results and per-share OG cards.",
     images: [OG_IMAGE],
   },
-};
+});
 
 interface Tool {
   slug: string;

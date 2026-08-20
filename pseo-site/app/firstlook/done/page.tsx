@@ -2,13 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { redirect } from "next/navigation";
 import { stripe } from "@/lib/stripe";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "First Look, confirmed.",
   robots: { index: false, follow: false },
-};
+});
 
 const SESSION_RX = /^cs_(test_|live_)?[a-zA-Z0-9]+$/;
 

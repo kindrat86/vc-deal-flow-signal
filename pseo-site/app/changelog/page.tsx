@@ -3,8 +3,9 @@ import Link from "next/link";
 import { getAllPeriods, getAllSectors, getCurrentPeriod, getDataLastModified } from "@/lib/data";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Changelog, Weekly Signal Updates & Product Releases",
   description:
     "Weekly data refreshes, new sectors, MCP server releases, and product updates for VC Deal Flow Signal. Updated every Monday at 09:00 EEST.",
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/changelog",
   },
-};
+});
 
 interface ProductEntry {
   date: string;

@@ -321,12 +321,13 @@ ${SOLO_FOUNDER_SECTORS.map((s) => `- [${s.name}, Solo-Founder Tracker](${BASE_UR
 
 ## Embeddable Badges
 
-Free SVG badges for README files. Both endpoints return \`image/svg+xml\`, are CORS-enabled, cache 24h on the CDN with hourly ETag revalidation, and degrade to a neutral gray badge on error so READMEs never break.
+Free SVG badges for README files. All endpoints return \`image/svg+xml\`, are CORS-enabled, cache 24h on the CDN with hourly ETag revalidation, and degrade to a neutral gray badge on error so READMEs never break.
 
+- [Engineering Momentum badge](${BASE_URL}/api/badge/{name}): Per-startup deal-flow signal badge showing an org's headline GitHub momentum ("{signal} {velocity} commits"), color-coded by signal type. Replace \`{name}\` with the startup slug; auto-updates weekly. Markdown: \`[![engineering momentum](${BASE_URL}/api/badge/STARTUP_NAME)](${BASE_URL}/startup/STARTUP_NAME)\`
 - [Scout Score badge](${BASE_URL}/api/badge/scout/{username}/svg): Per-user GitHub Scout Score (0-100). Replace \`{username}\` with any GitHub handle. Markdown: \`[![Scout Score](${BASE_URL}/api/badge/scout/USERNAME/svg)](${BASE_URL}/receipts/USERNAME)\`
 - [Commit Momentum badge](${BASE_URL}/api/badge/momentum/{org}/{repo}/svg): Per-repo commit-velocity tier (cold / warming / hot / breakout). Only renders for tracked startup orgs; untracked repos render an "untracked" pill. Markdown: \`[![Commit Momentum](${BASE_URL}/api/badge/momentum/ORG/REPO/svg)](${BASE_URL}/)\`
 - [Built-With badge](${BASE_URL}/api/badge/built-with/svg): "Built with gitdealflow MCP" pill for any project that calls our MCP server, signals JSON, or dataset API. Three variants, \`?variant=default|compact|long\`. Static SVG, ETag-revalidated. Markdown: \`[![Built with gitdealflow MCP](${BASE_URL}/api/badge/built-with/svg)](${BASE_URL}/built-with)\`
-- [Badge builder](${BASE_URL}/badge-builder): Interactive UI that generates ready-to-paste markdown / HTML / BBCode snippets for all three badge types. \`?handle=USERNAME\`, \`?org=ORG&repo=REPO\`, \`?variant=default|compact|long\` query params pre-fill the form.
+- [Badge builder](${BASE_URL}/badge-builder): Interactive UI that generates ready-to-paste markdown / HTML / BBCode snippets for all badge types. \`?handle=USERNAME\`, \`?org=ORG&repo=REPO\`, \`?variant=default|compact|long\` query params pre-fill the form.
 
 ## Chrome Extensions
 

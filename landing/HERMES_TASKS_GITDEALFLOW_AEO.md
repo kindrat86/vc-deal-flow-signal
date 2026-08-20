@@ -108,9 +108,9 @@ for m in re.finditer(r'<script type=\"application/ld\+json\">(.*?)</script>', t,
 
 ## 2. P2, MEDIUM
 
-### TASK-03: Fix the stale `signals@gitdealflow.com` → `signal@gitdealflow.com` across the whole repo
+### TASK-03: Fix the stale `signals@gitdealflow.com` → `signals@gitdealflow.com` across the whole repo
 
-**Root cause (confirmed, and larger in scope than the original audit's file list):** The Organization JSON-LD `email` field (and many other places) still say `signals@gitdealflow.com` (plural), but the actual live sending identity, per prior owner decision (2026-07-19 revert), is the singular `signal@gitdealflow.com`. This is not confined to the handful of files the audit named: a repo-wide search found the stale string in **59 files** (`.html` and `.txt`), not the ~9 originally listed.
+**Root cause (confirmed, and larger in scope than the original audit's file list):** The Organization JSON-LD `email` field (and many other places) still say `signals@gitdealflow.com` (plural), but the actual live sending identity, per prior owner decision (2026-07-19 revert), is the singular `signals@gitdealflow.com`. This is not confined to the handful of files the audit named: a repo-wide search found the stale string in **59 files** (`.html` and `.txt`), not the ~9 originally listed.
 
 **Fix, repo-wide, script-based, not manual file-by-file:**
 ```bash
@@ -120,7 +120,7 @@ wc -l /tmp/stale-email-files.txt   # sanity-check the count before touching anyt
 ```
 Review the file list first, if it includes anything under a path that looks like generated output you shouldn't hand-edit (check for a `dist/`, `build/`, or similar generated-output directory that would just get overwritten on next build; if found, fix the generator/source instead of the generated copy). For genuine source files, do the replacement:
 ```bash
-xargs -a /tmp/stale-email-files.txt sed -i '' 's/signals@gitdealflow\.com/signal@gitdealflow.com/g'
+xargs -a /tmp/stale-email-files.txt sed -i '' 's/signals@gitdealflow\.com/signals@gitdealflow.com/g'
 ```
 (macOS `sed -i ''` syntax, adjust if running elsewhere.) **Do not touch any occurrence that is part of a different domain or an unrelated string that merely contains this substring**, spot-check a sample of the diff before committing to make sure the replacement was clean and didn't corrupt anything adjacent (e.g. check no `signals.gitdealflow.com` subdomain references got mangled, that's the pSEO app's domain, a different string, but worth an explicit sanity check given the similarity).
 
@@ -128,7 +128,7 @@ xargs -a /tmp/stale-email-files.txt sed -i '' 's/signals@gitdealflow\.com/signal
 ```bash
 cd ~/signals-gitdealflow/landing
 grep -rc "signals@gitdealflow.com" . --include="*.html" --include="*.txt" 2>/dev/null | grep -v ":0" | wc -l   # must be 0
-grep -rc "signal@gitdealflow.com" . --include="*.html" --include="*.txt" 2>/dev/null | grep -v ":0" | wc -l    # must be >=59 (roughly the original count)
+grep -rc "signals@gitdealflow.com" . --include="*.html" --include="*.txt" 2>/dev/null | grep -v ":0" | wc -l    # must be >=59 (roughly the original count)
 grep -c "signals.gitdealflow.com" index.html   # sanity check: this different string (the subdomain) should be UNCHANGED if it exists, confirms the replacement didn't over-match
 ```
 
@@ -156,7 +156,7 @@ Homepage loads three separate stylesheets (`styles.css` preloaded, `ux.css`, `in
    ```bash
    cd ~/signals-gitdealflow/landing
    git add index.html de/index.html es/index.html $(cat /tmp/stale-email-files.txt)
-   git commit -m "fix: remove self-serving AggregateRating/Review schema, merge duplicate Organization @id nodes, correct stale signals@ email to signal@gitdealflow.com repo-wide"
+   git commit -m "fix: remove self-serving AggregateRating/Review schema, merge duplicate Organization @id nodes, correct stale signals@ email to signals@gitdealflow.com repo-wide"
    ```
 6. Deploy:
    ```bash
@@ -178,7 +178,7 @@ curl -s https://gitdealflow.com/ | grep -c '"@id": "https://gitdealflow.com/#org
 curl -s https://gitdealflow.com/ | grep -o '"@id": "https://gitdealflow.com/#organization".\{0,400\}' | grep -o '"sameAs":\[[^]]*\]'   # must show linkedin + x/twitter + github + ssrn/zenodo all present
 
 # 3. Confirm the email fix is live
-curl -s https://gitdealflow.com/ | grep -o '"email": *"[^"]*"'   # must show signal@gitdealflow.com, not signals@
+curl -s https://gitdealflow.com/ | grep -o '"email": *"[^"]*"'   # must show signals@gitdealflow.com, not signals@
 
 # 4. Confirm the homepage is still fully rendered, not broken
 curl -s https://gitdealflow.com/ | wc -c   # should still be roughly ~127KB, not near-zero

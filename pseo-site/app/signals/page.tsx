@@ -5,10 +5,11 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Signal Vocabulary, Every Primitive Defined &amp; Linked",
   description:
     "The six atomic signal primitives VC Deal Flow Signal computes from public GitHub data, commit velocity, commit velocity change, contributor growth, engineering hiring burst, framework migration, infrastructure buildout. Each links to its formula, decision rule, common pitfall, and the empirical findings that depend on it.",
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
     type: "article",
     url: `${SITE}/signals`,
   },
-};
+});
 
 export default function SignalsIndexPage() {
   const jsonLd = {

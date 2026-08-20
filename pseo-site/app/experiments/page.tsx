@@ -3,10 +3,11 @@ import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Experiments, every conversion test, in public (with traffic data)",
   description:
     "GitDealFlow conversion experiment log. 27 tests across 12 surfaces. What we A/B tested, sample sizes, the variant that won, the lift, the takeaway. Order-bump variants, headline variants, pricing tests, email-sequence cadence, agent-side discovery, hook tests with PostHog + Stripe + Resend numbers.",
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/experiments",
     type: "article",
   },
-};
+});
 
 type Status = "won" | "lost" | "running" | "cut";
 

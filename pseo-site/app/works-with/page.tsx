@@ -8,8 +8,9 @@ import {
 } from "@/content/works-with";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: `Works with, CRM & Workflow Integrations`,
   description: `${WORKS_WITH.length} CRM and workflow tool integration pages, Affinity, HubSpot, Salesforce, Notion, Airtable, Slack, Linear, and more. For Corp Dev, PE Operating Partners, and emerging-manager funds who want signals inside their existing stack.`,
   alternates: { canonical: "/works-with" },
@@ -24,7 +25,7 @@ export const metadata: Metadata = {
     title: "Works with",
     description: "CRM and workflow tool integrations.",
   },
-};
+});
 
 export const revalidate = 604800;
 

@@ -4,11 +4,12 @@ import { redirect } from "next/navigation";
 import { Suspense } from "react";
 import { getSession } from "@/lib/auth";
 import LoginForm from "./LoginForm";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Log In",
   robots: { index: false },
-};
+});
 
 export default async function LoginPage() {
   const session = await getSession();

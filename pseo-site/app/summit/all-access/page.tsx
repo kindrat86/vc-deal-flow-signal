@@ -5,13 +5,14 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { SUMMIT, TALKS } from "@/content/summit";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 
 export const dynamic = "force-static";
 export const revalidate = 3600;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: `All-Access Pass, VC Engineering Acceleration Summit · €${SUMMIT.allAccessPrice} one-time`,
   description: `Lifetime replays of all 20 talks, full transcripts (PDF + markdown), slide decks, and the 219-startup panel dataset. €${SUMMIT.allAccessPrice} one-time. 30-day refund.`,
   alternates: { canonical: "/summit/all-access" },
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
     url: `${SITE}/summit/all-access`,
     type: "article",
   },
-};
+});
 
 const STACK = [
   { label: "Lifetime replays of all 20 talks", standalone: "€297 if bought separately" },

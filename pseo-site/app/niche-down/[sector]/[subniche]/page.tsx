@@ -17,6 +17,7 @@ import {
 } from "@/content/niches";
 import { getDataLastModified } from "@/lib/data";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 
@@ -46,7 +47,7 @@ export async function generateMetadata({
   const title = `${niche.name}, niche opportunity inside ${sector.name}`;
   const description = `${niche.pitch} Build cost: ${buildCostLabel(niche.buildCost)}. Deal velocity: ${dealVelocityLabel(niche.dealVelocity)}.`;
   const url = `${SITE}/niche-down/${sector.slug}/${niche.slug}`;
-  return {
+  return withEditorialOverride({
     title,
     description,
     ...(pruned ? { robots: { index: false, follow: true } } : {}),
@@ -55,7 +56,7 @@ export async function generateMetadata({
     },
     openGraph: { title, description, url, type: "article" },
     twitter: { card: "summary_large_image", title, description },
-  };
+  });
 }
 
 const BUILD_COST_TONE: Record<BuildCost, string> = {

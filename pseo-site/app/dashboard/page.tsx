@@ -12,8 +12,9 @@ import type { Startup } from "@/lib/data";
 import { getSession } from "@/lib/auth";
 import DashboardFilters from "@/components/DashboardFilters";
 import LogoutButton from "./LogoutButton";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Dashboard, Full Startup Rankings",
   description:
     "Browse and filter 60+ startups ranked by GitHub engineering acceleration. Filter by sector, stage, geography, and signal type. Updated weekly.",
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
   robots: {
     index: false,
   },
-};
+});
 
 export interface DashboardStartup extends Startup {
   sectorName: string;

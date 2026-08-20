@@ -1,10 +1,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "Partner with GitDealFlow, distribution, co-marketing, white-label MCP",
   description:
@@ -17,7 +18,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/partners",
     type: "article",
   },
-};
+});
 
 type Track = {
   rank: number;

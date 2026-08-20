@@ -5,6 +5,7 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import TrialClose from "@/components/TrialClose";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
@@ -14,7 +15,7 @@ const STRIPE_BOOK_LINK =
 
 const PAGE_URL = "https://signals.gitdealflow.com/book";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: `${BOOK.title}, Free book by ${BOOK.authorRole}`,
   description: BOOK.description,
   alternates: { canonical: "/book" },
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
     url: PAGE_URL,
     type: "book",
   },
-};
+});
 
 const PROMISES = [
   {

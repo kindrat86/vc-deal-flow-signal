@@ -2,15 +2,16 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { competitors, getAllCompetitorVsSlugs } from "@/content/competitor-vs";
 import SeoCta from "@/components/SeoCta";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Deal Flow Tool Comparisons (VS)",
   description:
     "Head-to-head comparisons of every major deal flow platform: Harmonic.ai, PitchBook, Crunchbase, Dealroom, Tracxn, Forager.ai. Signal type, lead time, pricing, coverage, and when to pick each one.",
   alternates: {
     canonical: "/vs",
   },
-};
+});
 
 export default function VsIndex() {
   const slugs = getAllCompetitorVsSlugs();

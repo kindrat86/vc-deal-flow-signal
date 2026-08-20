@@ -7,10 +7,11 @@ import SharpScarcityBadge from "@/components/SharpScarcityBadge";
 import ApplyForm from "./ApplyForm";
 import TrialClose from "@/components/TrialClose";
 import BuyerRoadmap from "@/components/BuyerRoadmap";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Apply for the Sharp Tier, €497/mo, capped at 8 funds in 2026",
   description:
     "Application-gated tier for active funds and syndicates. €497/mo, white-labeled API, custom watchlists, methodology source, quarterly review call. Capped at 8 funds in 2026, application reviewed within 48 hours.",
@@ -22,7 +23,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/apply",
     type: "article",
   },
-};
+});
 
 const STACK = [
   {

@@ -15,10 +15,11 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { INSTAGRAM_QUEUE } from "@/content/instagram-queue";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "@thedatanerd on Instagram, daily data-viz cards from the engineering-velocity panel",
   description:
@@ -31,7 +32,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/instagram",
     type: "article",
   },
-};
+});
 
 const POSTING_TYPES = [
   {

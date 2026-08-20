@@ -9,8 +9,9 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import SharpScarcityBadge from "@/components/SharpScarcityBadge";
 import TrialClose from "@/components/TrialClose";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   // CTR hook wave 5 (zero-click, 2026-08-16): 171 imps/90d at pos 6.3, 1
   // click on a generic title. The apex twin carries a price-ladder title
   // (live-verified 08-16); mirror that form here with the EUR tiers.
@@ -34,7 +35,7 @@ export const metadata: Metadata = {
       "VC Deal Flow Signal pricing, start free, test one sector, work the full field, or go deeper only when the question gets expensive. Research partnership layers sit above the weekly workflow, not in front of it.",
     type: "website",
   },
-};
+});
 
 const STRIPE_DASHBOARD = "https://buy.stripe.com/4gMbJ07kTaJy7kqg6s0x20b";
 const STRIPE_INSIDER = "https://buy.stripe.com/bJeaEWfRpcRG6gm2fC0x20d";

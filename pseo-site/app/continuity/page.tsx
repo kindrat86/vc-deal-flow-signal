@@ -13,6 +13,7 @@ import {
   scheduledDropCount,
   type DropFormat,
 } from "@/content/continuity-drops";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
@@ -37,7 +38,7 @@ const STRIPE_INSIDER = "https://buy.stripe.com/bJeaEWfRpcRG6gm2fC0x20d";
  * Static RSC. All content sourced from /content/continuity-drops.ts.
  */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "Monthly Insider Drop, net-new artefact every month · VC Deal Flow Signal",
   description:
@@ -51,7 +52,7 @@ export const metadata: Metadata = {
     url: `${SITE}/continuity`,
     type: "website",
   },
-};
+});
 
 const FORMAT_BADGE_CLASSES: Record<DropFormat, string> = {
   "sector-deep-dive":

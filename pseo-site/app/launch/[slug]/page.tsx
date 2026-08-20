@@ -10,6 +10,7 @@ import {
 } from "@/content/launches";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 
@@ -30,7 +31,7 @@ export async function generateMetadata({
   const { slug } = await params;
   const launch = getLaunchBySlug(slug);
   if (!launch) return {};
-  return {
+  return withEditorialOverride({
     title: `${launch.headline}`,
     description: launch.hook,
     alternates: { canonical: `/launch/${slug}` },
@@ -45,7 +46,7 @@ export async function generateMetadata({
       title: launch.headline,
       description: launch.hook,
     },
-  };
+  });
 }
 
 function CountdownLine({ launch }: { launch: Launch }) {

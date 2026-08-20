@@ -13,8 +13,9 @@ import PredictFormUrlPrefill from "./PredictFormUrlPrefill";
 import ScoutCallFormUrlPrefill from "./ScoutCallFormUrlPrefill";
 import { AgentSummary } from "@/components/AgentSummary";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Predict Startup Breakouts, Free GitHub Signal + Scout Game",
   description:
     "Paste any startup GitHub org. Get a breakout signal in 2 seconds, then make your own call: raise in 6 months? Earn scout rank from Curious to Oracle. Top 1% get featured.",
@@ -41,7 +42,7 @@ export const metadata: Metadata = {
       "See the signal, make the call, climb the scout ladder. Top 1% earn an Oracle badge.",
     images: ["https://signals.gitdealflow.com/api/og/signal-card"],
   },
-};
+});
 
 // Static route: the ?org= prefill now reads the URL client-side via
 // PredictFormUrlPrefill (inside Suspense). Awaiting searchParams here

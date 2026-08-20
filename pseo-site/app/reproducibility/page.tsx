@@ -3,12 +3,13 @@ import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { PlainEnglishNote } from "@/components/PlainEnglishNote";
 import { TrustConversionBlock } from "@/components/TrustConversionBlock";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 const SSRN_URL = "https://ssrn.com/abstract=6606558";
 const REPO_URL = "https://github.com/kindrat86/mcp-deal-flow-signal";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Reproducibility Kit",
   description:
     "Step-by-step kit to reproduce every public number on VC Deal Flow Signal (GitDealFlow). Includes the SSRN-indexed methodology, raw dataset (CC BY 4.0), open-source MCP server with the same query tools we use, and a worked example you can run in a terminal in under five minutes.",
@@ -20,7 +21,7 @@ export const metadata: Metadata = {
     type: "article",
     url: `${SITE}/reproducibility`,
   },
-};
+});
 
 interface Step {
   n: number;

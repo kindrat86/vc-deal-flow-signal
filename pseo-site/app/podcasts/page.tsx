@@ -5,10 +5,11 @@ import {
   getTargetsCountByStatus,
   type PodcastTarget,
 } from "@/content/podcast-targets";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "Podcasts, synthetic-voice guest segments",
   description:
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
     type: "article",
     url: `${SITE}/podcasts`,
   },
-};
+});
 
 export const dynamic = "force-static";
 

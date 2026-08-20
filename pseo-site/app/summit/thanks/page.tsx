@@ -3,18 +3,19 @@ import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { SUMMIT, summitDays } from "@/content/summit";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "You're in, VC Engineering Acceleration Summit",
   description:
     "Your Free Pass is reserved. Check your inbox to confirm, then watch for one email per day during the live window with the talk that just unlocked.",
   alternates: { canonical: "/summit/thanks" },
   robots: { index: false, follow: true },
-};
+});
 
 export default function SummitThanksPage() {
   const days = summitDays();

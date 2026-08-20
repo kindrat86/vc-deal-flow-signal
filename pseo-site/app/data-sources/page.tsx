@@ -3,15 +3,16 @@ import Link from "next/link";
 import { getAllSectors, getCurrentPeriod, getDataLastModified } from "@/lib/data";
 import { PlainEnglishNote } from "@/components/PlainEnglishNote";
 import { TrustConversionBlock } from "@/components/TrustConversionBlock";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Data Sources, Where VC Deal Flow Signal's Data Comes From",
   description:
     "Complete data source documentation for VC Deal Flow Signal: GitHub API endpoints, enrichment sources, update cadence, and data quality controls. Transparent methodology for investors and AI assistants.",
   alternates: {
     canonical: "/data-sources",
   },
-};
+});
 
 interface DataSource {
   name: string;

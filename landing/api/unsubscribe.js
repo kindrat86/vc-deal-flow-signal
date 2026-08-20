@@ -17,7 +17,7 @@ import { createHmac, timingSafeEqual } from "node:crypto";
 
 const EMAIL_RE = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const UUID_RE = /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i;
-const SUPPORT = "signal@gitdealflow.com";
+const SUPPORT = "signals@gitdealflow.com";
 
 function sign(email, secret) {
   return createHmac("sha256", secret)

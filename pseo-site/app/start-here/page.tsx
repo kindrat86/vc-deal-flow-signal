@@ -4,10 +4,11 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import StartHereArchetypeQuiz from "@/components/StartHereArchetypeQuiz";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Start Here, what GitDealFlow is, and where to begin",
   description:
     "Three-minute primer for the cold visitor. 90-second identity quiz routes buyers, subscribers, and engineer-curious to the right next page. What we measure (GitHub commit-velocity acceleration), why (47 days before the deck), and the four entry points sized to your week.",
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/start-here",
     type: "article",
   },
-};
+});
 
 const PATHS = [
   {

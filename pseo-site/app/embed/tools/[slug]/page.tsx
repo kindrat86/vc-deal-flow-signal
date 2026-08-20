@@ -11,6 +11,7 @@ import { CacPaybackCalculator } from "@/components/CacPaybackCalculator";
 import { LtvCalculator } from "@/components/LtvCalculator";
 import { DilutionStackCalculator } from "@/components/DilutionStackCalculator";
 import { QuickRatioCalculator } from "@/components/QuickRatioCalculator";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 
@@ -135,7 +136,7 @@ export async function generateMetadata({
   const tool = TOOLS[slug];
   if (!tool) return {};
   const url = `${SITE}/embed/tools/${slug}`;
-  return {
+  return withEditorialOverride({
     title: `${tool.name}, Embed`,
     description: `Embeddable ${tool.name} widget. ${tool.description} CC BY 4.0.`,
     alternates: { canonical: url },
@@ -148,7 +149,7 @@ export async function generateMetadata({
       url,
       type: "website",
     },
-  };
+  });
 }
 
 const FOUC_STYLE = `

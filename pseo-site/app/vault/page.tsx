@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
@@ -122,7 +123,7 @@ const FAQS = [
   },
 ] as const;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "The Vault, €49,997/yr · Co-development, pre-publication SSRN, 72h signal head-start",
   description:
@@ -135,7 +136,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/vault",
     type: "article",
   },
-};
+});
 
 export default function VaultPage() {
   const jsonLd = {

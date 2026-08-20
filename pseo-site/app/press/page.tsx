@@ -2,12 +2,13 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { PRESS_RELEASES } from "@/content/press-releases";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 const APEX = "https://gitdealflow.com";
 const SSRN_URL = "https://ssrn.com/abstract=6606558";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Press Kit, VC Deal Flow Signal (GitDealFlow)",
   description:
     "Press kit for journalists, analysts, podcasters, and citation reuse. Logo pack, fact sheet, copy-paste citation block, screenshot pack, founder bio, and contact. All assets are CC BY 4.0, attribution required.",
@@ -19,7 +20,7 @@ export const metadata: Metadata = {
     type: "article",
     url: `${SITE}/press`,
   },
-};
+});
 
 const FACT_SHEET = [
   { label: "Product", value: "VC Deal Flow Signal (also: GitDealFlow)" },

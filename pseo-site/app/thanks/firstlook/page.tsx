@@ -5,16 +5,17 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import TelegramCTA from "@/components/TelegramCTA";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "First Look Pass confirmed. Reply with your sector.",
   description:
     "Founder-written onboarding for First Look Pass buyers. Pick your sector, get the deep dive in 24 hours.",
   alternates: { canonical: "/thanks/firstlook" },
   robots: { index: false, follow: false },
-};
+});
 
 export default function ThanksFirstLook() {
   return (

@@ -25,15 +25,16 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { searchCorpus, normalizeQuery } from "@/lib/search-index";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Search, VC Deal Flow Signal",
   description:
     "Search startups, sectors, comparisons, answers, and research across VC Deal Flow Signal.",
   robots: { index: false, follow: true },
-};
+});
 
 const TYPE_LABEL: Record<string, string> = {
   startup: "Startup",

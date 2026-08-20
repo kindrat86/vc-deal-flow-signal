@@ -4,8 +4,9 @@ import { alternatives } from "@/content/alternatives";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import SeoCta from "@/components/SeoCta";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Alternatives to Harmonic.ai, Dealroom, Crunchbase & Forager.ai",
   description:
     "Compare GitDealFlow with Harmonic.ai, Dealroom, Crunchbase alerts, and Forager.ai for earlier engineering-signal deal flow.",
@@ -13,7 +14,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/alternatives",
   },
-};
+});
 
 export default function AlternativesIndex() {
   const jsonLd = {

@@ -4,8 +4,9 @@ import { TRENDS } from "@/content/trend-leaderboards";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
 import { FRESH_YEAR_STR, FRESH_YEAR_PLAIN } from "@/lib/freshness-year";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: `Trends, Engineering Signal Leaderboards ${FRESH_YEAR_STR}`,
   description: `Editorial trend leaderboards across ${TRENDS.length} technical categories, agentic AI, LLM inference, frontier labs, AI coding, edge compute, AI-native databases, observability, payments. Each leaf is curated, time-bound, and AEO-optimized for citation.`,
   alternates: { canonical: "/trend" },
@@ -21,7 +22,7 @@ export const metadata: Metadata = {
     title: "Trends",
     description: `Editorial trend leaderboards for engineering categories in ${FRESH_YEAR_PLAIN}.`,
   },
-};
+});
 
 export const revalidate = 604800;
 

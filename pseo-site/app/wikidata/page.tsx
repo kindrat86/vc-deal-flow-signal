@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import SeoCta from "@/components/SeoCta";
+import { withEditorialOverride } from "@/lib/metadata";
 
 /**
  * /wikidata, Knowledge Panel claim landing.
@@ -32,7 +33,7 @@ const WIKIDATA_URL = `https://www.wikidata.org/wiki/${QID}`;
 const WIKIDATA_JSON = `https://www.wikidata.org/wiki/Special:EntityData/${QID}.json`;
 const WIKIDATA_TTL = `https://www.wikidata.org/wiki/Special:EntityData/${QID}.ttl`;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "Wikidata Knowledge Panel claim, VC Deal Flow Signal (Q139376302)",
   description:
@@ -45,7 +46,7 @@ export const metadata: Metadata = {
     type: "article",
     url: `${SITE}/wikidata`,
   },
-};
+});
 
 const PROPERTIES: { p: string; label: string; value: string; href?: string }[] =
   [

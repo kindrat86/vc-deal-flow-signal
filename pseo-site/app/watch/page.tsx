@@ -4,10 +4,11 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import AnimatedDemo from "./AnimatedDemo";
 import { videos } from "@/content/videos";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Watch, VC Deal Flow Signal in 90 seconds (silent demo)",
   description:
     "Silent visual walkthrough of the VC Deal Flow Signal engine. No audio, no narrator, no face. Just the dashboard breathing, commit velocity, contributor diversity, dependents graph, the composite score animating in real time.",
@@ -25,7 +26,7 @@ export const metadata: Metadata = {
     description:
       "Silent visual walkthrough. No audio, no narrator. Dashboard breathing in real time.",
   },
-};
+});
 
 export const dynamic = "force-static";
 

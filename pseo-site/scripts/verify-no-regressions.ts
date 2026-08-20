@@ -4731,6 +4731,18 @@ landingCheck(
       `§55b proxy.ts shouldNoindex no longer delegates to isPagePruned(pathname).\n    file: proxy.ts\n    fix: add isPagePruned(pathname) to shouldNoindex() so pruned pages get X-Robots-Tag: noindex, follow (not just sitemap removal)`,
     );
   }
+  // §55c: cache privacy must NOT key off shouldNoindex(). noindex is an
+  // indexing decision; pruned pages are public and must keep s-maxage so they
+  // don't thrash the origin (TTFB regression, watchdog 2026-08-17).
+  if (
+    proxy !== null &&
+    (proxy.includes("if (shouldNoindex(pathname)) {\n    return \"private") ||
+      !proxy.includes("isPrivateNoStorePath(pathname)"))
+  ) {
+    failures.push(
+      `§55c proxy.ts publicHtmlCacheControl keys private,no-store off shouldNoindex() (or lost isPrivateNoStorePath).\n    file: proxy.ts\n    fix: gate the no-store branch on isPrivateNoStorePath() (the NOINDEX_PREFIXES set), NOT shouldNoindex(), so pruned noindex pages keep public s-maxage and stop thrashing the origin`,
+    );
+  }
 }
 
 // ---------------------------------------------------------------------------
@@ -5938,6 +5950,129 @@ landingCheck(
   }
 }
 
+// ---------------------------------------------------------------------------
+// §69 Research-paper paper-specific quotable figures (2026-08-17, audit item
+//     #5 "quotable blocks to research-paper leaves"). The cluster holds ~20K
+//     impressions/28d but the leaves carried only a brand-level SSRN
+//     CitableStat, not the paper's OWN headline number, so AI engines had no
+//     paper-specific stat to cite. Each paper now carries one keyStat
+//     (value + label + source + sourceHref) rendered as a paper-specific
+//     CitableStat (data-citable-stat="research-paper-figure"). Pinned here so
+//     a lineage that drops the field or the render is undeployable.
+// ---------------------------------------------------------------------------
+{
+  const content = read("content/research-papers.ts");
+  const leaf = read("app/research-paper/[slug]/page.tsx");
+  if (content && leaf) {
+    if (!content.includes("interface PaperKeyStat") || !content.includes("keyStat: PaperKeyStat;")) {
+      failures.push(
+        "§69 research-paper keyStat field dropped from the ResearchPaper interface.\n    fix: restore the PaperKeyStat interface + keyStat: PaperKeyStat; field in content/research-papers.ts",
+      );
+    }
+    const keyStats = [...content.matchAll(/^\s{4}keyStat:\s*\{/gm)].length;
+    const slugs = [...content.matchAll(/slug: "([^"]+)"/g)].map((m) => m[1]);
+    if (keyStats !== slugs.length) {
+      failures.push(
+        `§69 research-paper keyStats: ${keyStats} figures for ${slugs.length} papers. Every paper needs exactly one grounded keyStat.`,
+      );
+    }
+    if (!leaf.includes('template="research-paper-figure"')) {
+      failures.push(
+        '§69 research-paper leaf lost the paper-specific CitableStat render.\n    fix: restore <CitableStat {...paper.keyStat} template="research-paper-figure" /> after the DefinitionBlock',
+      );
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// §65 Research-paper quotable definitions (2026-08-17, audit win #3
+//     striking-distance push; RELOCATED 2026-08-17 from after the exit check
+//     where it was dead code). The /research-paper/ cluster holds ~20K
+//     impressions/28d at position 8-10 with near-zero clicks. Pins the two
+//     halves: every paper carries a 40-60 word `definition` distinct from its
+//     metaTitle, and the leaf renders it in the DefinitionBlock head.
+//     The data-direct-answer check strips comments first: the leaf's own
+//     comment ("data-direct-answer moved to the DefinitionBlock above")
+//     used to false-positive this check and would have failed every build
+//     the moment this block was moved before the exit check.
+// ---------------------------------------------------------------------------
+{
+  const content = read("content/research-papers.ts");
+  const leaf = read("app/research-paper/[slug]/page.tsx");
+  if (content && leaf) {
+    const defs = [...content.matchAll(/^\s{4}definition:\s*\n\s*"([^"]*)"/gm)].map(
+      (m) => m[1],
+    );
+    const slugs = [...content.matchAll(/slug: "([^"]+)"/g)].map((m) => m[1]);
+    const metaTitles = [...content.matchAll(/metaTitle:\s*\n?\s*"([^"]*)"/g)].map(
+      (m) => m[1],
+    );
+
+    if (defs.length !== slugs.length) {
+      failures.push(
+        `§65 research-paper definitions: ${defs.length} definition fields for ${slugs.length} papers. Every paper needs exactly one 40-60 word definition.`,
+      );
+    }
+    for (const d of defs) {
+      const wc = d.trim().split(/\s+/).filter(Boolean).length;
+      if (wc < 40 || wc > 60) {
+        failures.push(
+          `§65 research-paper definition outside the 40-60 word snippet window (${wc} words): "${d.slice(0, 60)}..."`,
+        );
+      }
+      if (metaTitles.some((mt) => mt.trim() === d.trim())) {
+        failures.push(
+          `§65 research-paper definition identical to a metaTitle (redundant extraction): "${d.slice(0, 60)}..."`,
+        );
+      }
+    }
+    if (
+      !leaf.includes("<DefinitionBlock text={paper.definition}") ||
+      !leaf.includes('label="What this paper is"')
+    ) {
+      failures.push(
+        "§65 research-paper leaf lost the DefinitionBlock head render (paper.definition, label \"What this paper is\").",
+      );
+    }
+    const leafNoComments = leaf.replace(/\/\*[\s\S]*?\*\//g, "");
+    if (/data-direct-answer/.test(leafNoComments)) {
+      failures.push(
+        "§65 research-paper leaf carries a bare data-direct-answer outside the DefinitionBlock; keep ONE extraction anchor per page.",
+      );
+    }
+  }
+}
+
+// ---------------------------------------------------------------------------
+// §70 Embeddable badge backlink target (2026-08-17, audit win #10 zero-click
+//     harvesting). The per-startup "engineering momentum" badge embeds carry a
+//     dofollow backlink that must point at the org's OWN /startup/{slug} profile
+//     (411 distinct indexable targets), never the self-referential /badge-builder
+//     which collapses every embed onto one URL and wastes the link-earning value.
+//     Also pins the badge's llms.txt discovery entry so GPTBot, ClaudeBot, and
+//     PerplexityBot learn the endpoint exists.
+// ---------------------------------------------------------------------------
+{
+  const startupLeaf = read("app/startup/[slug]/page.tsx");
+  if (startupLeaf && !startupLeaf.includes("](https://signals.gitdealflow.com/startup/${slug})")) {
+    failures.push(
+      "§70 /startup/[slug] badge snippet lost its per-org backlink: the markdown embed must link to https://signals.gitdealflow.com/startup/${slug}, not /badge-builder.",
+    );
+  }
+  const builder = read("app/badge-builder/page.tsx");
+  if (builder && !builder.includes("https://signals.gitdealflow.com/startup/YOUR_STARTUP_NAME")) {
+    failures.push(
+      "§70 /badge-builder snippets lost the per-org backlink target (must link /startup/YOUR_STARTUP_NAME, not /badge-builder).",
+    );
+  }
+  const llms = read("app/llms.txt/route.ts");
+  if (llms && !llms.includes("Engineering Momentum badge](${BASE_URL}/api/badge/{name})")) {
+    failures.push(
+      "§70 llms.txt Embeddable Badges section is missing the per-startup Engineering Momentum badge (/api/badge/{name}); AI crawlers cannot discover it.",
+    );
+  }
+}
+
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +
@@ -5951,4 +6086,5 @@ if (failures.length) {
   );
   process.exit(1);
 }
+
 console.log("✓ verify-no-regressions: all regression guards pass");

@@ -15,8 +15,9 @@ import CuriosityGate from "@/components/CuriosityGate";
 import SeoCta from "@/components/SeoCta";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Trending Startups, Top Engineering Acceleration Across All Sectors",
   description:
     "The top 20 trending startups ranked by GitHub engineering acceleration across all sectors. Commit velocity spikes, contributor growth, and breakout signals, updated weekly.",
@@ -36,7 +37,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/trending",
   },
-};
+});
 
 export default function TrendingPage() {
   const sectors = getAllSectors();

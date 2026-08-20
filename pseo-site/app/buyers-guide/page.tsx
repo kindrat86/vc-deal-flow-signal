@@ -5,8 +5,9 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { TrustConversionBlock } from "@/components/TrustConversionBlock";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "How to Evaluate a Deal-Flow Tool Without Wasting a Demo",
   description:
@@ -14,7 +15,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/buyers-guide",
   },
-};
+});
 
 const CHECKS = [
   {

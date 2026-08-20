@@ -8,6 +8,7 @@ import {
 } from "@/content/case-studies";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -25,13 +26,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const cs = getCaseStudy(slug);
   if (!cs) return {};
 
-  return {
+  return withEditorialOverride({
     title: cs.title,
     description: cs.metaDescription,
     openGraph: { title: cs.title, description: cs.metaDescription, type: "article", url: `/case-study/${slug}` },
     twitter: { card: "summary_large_image", title: cs.title, description: cs.metaDescription },
     alternates: { canonical: `/case-study/${slug}` },
-  };
+  });
 }
 
 export default async function CaseStudyPage({ params }: PageProps) {

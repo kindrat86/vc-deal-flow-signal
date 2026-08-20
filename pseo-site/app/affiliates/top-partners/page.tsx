@@ -3,10 +3,11 @@ import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Top 50, the publishers, podcasts, and communities we'd like to partner with",
   description:
     "GitDealFlow's top-50 publisher roster. 50 named newsletter writers, podcast hosts, and community owners whose audiences overlap our earlier-signal audience. Engagement status, fit notes, and the pitch templates we send.",
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/affiliates/top-partners",
     type: "article",
   },
-};
+});
 
 type Status =
   | "engaged"

@@ -15,6 +15,7 @@ import { FRESH_YEAR_STR } from "@/lib/freshness-year";
 import CitableStat from "@/components/CitableStat";
 import { citableStat } from "@/lib/citable-stats";
 import { buildSourceTruthDataset } from "@/lib/dataset-schema";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -35,13 +36,13 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const title = `${city.name} Engineering & VC Signals ${FRESH_YEAR_STR}, VC Deal Flow Signal`;
   const description = `${city.name}, ${city.country}: engineering acceleration signals, notable scaleups, active VC anchors, and the local commit-cadence pattern. Editorial interpretation for Corp Dev, PE operating partners, and emerging managers.`;
 
-  return {
+  return withEditorialOverride({
     title,
     description,
     openGraph: { title, description, type: "article", url: `/city/${slug}` },
     twitter: { card: "summary_large_image", title, description },
     alternates: { canonical: `/city/${slug}` },
-  };
+  });
 }
 
 export default async function CityPage({ params }: PageProps) {

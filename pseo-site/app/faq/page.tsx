@@ -9,8 +9,9 @@ import DefinitionBlock from "@/components/DefinitionBlock";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import CitableStat from "@/components/CitableStat";
 import { citableStat } from "@/lib/citable-stats";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   // CTR hook (GSC 90d: 631 imps, 0.16% at pos 7.3): "Frequently Asked
   // Questions" + suffix carries zero query-relevant information.
   title: {
@@ -27,7 +28,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/faq",
     type: "website",
   },
-};
+});
 
 interface FAQEntry {
   question: string;

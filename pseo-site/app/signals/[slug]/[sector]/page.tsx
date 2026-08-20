@@ -12,6 +12,7 @@ import StartupTable from "@/components/StartupTable";
 import SeoCta from "@/components/SeoCta";
 import FreshnessWatermark from "@/components/FreshnessWatermark";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface PageProps {
   params: Promise<{ slug: string; sector: string }>;
@@ -37,7 +38,7 @@ export async function generateMetadata({
   const title = `${data.sector.name} Startups Showing ${data.signalName}, ${data.period.name}`;
   const description = `${data.startups.length} ${data.sector.name.toLowerCase()} startups currently showing ${data.signalName.toLowerCase()} signal in ${data.period.name}. ${data.signalDescription}`;
 
-  return {
+  return withEditorialOverride({
     title,
     description,
     openGraph: { title, description, type: "article", url: `/signals/${slug}/${sector}` },
@@ -49,7 +50,7 @@ export async function generateMetadata({
         "application/ld+json": `/jsonld/signals/${slug}/${sector}`,
       },
     },
-  };
+  });
 }
 
 export default async function SignalSectorPage({ params }: PageProps) {

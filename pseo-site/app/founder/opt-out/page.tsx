@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Founder Profile Opt-Out",
   description:
     "Request removal of a /founder/[handle] page. Verified removal requests are honored within 7 business days; the page then returns HTTP 410 Gone and the handle is added to a permanent blocklist.",
   alternates: { canonical: "/founder/opt-out" },
   robots: { index: true, follow: false },
-};
+});
 
 export const revalidate = 604800;
 

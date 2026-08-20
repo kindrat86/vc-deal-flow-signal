@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 const NPM = "@gitdealflow/mcp-signal";
@@ -21,7 +22,7 @@ const TITLE =
 const DESCRIPTION =
   "Deploy your own VC Deal Flow Signal, MCP server (Streamable HTTP) plus the full Next.js dashboard, to Vercel in one click. Self-host the same six tools we serve at signals.gitdealflow.com, on your own domain, with full control over rate limits, custom enrichment, and private analytics. Free Hobby tier compatible. MIT licensed.";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: "/integrations/vercel-deploy" },
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
     title: TITLE,
     description: DESCRIPTION,
   },
-};
+});
 
 const HOW_TO_STEPS = [
   {

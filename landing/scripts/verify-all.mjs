@@ -63,6 +63,7 @@ const steps = [
   ['node', 'scripts/verify-css-preloads.mjs'],
   ['node', 'scripts/verify-pricing-offers.mjs'],
   ['node', 'scripts/verify-author-identity.mjs'],
+  ['node', 'scripts/verify-crawl-proxy.mjs'],
 ];
 
 for (const args of steps) {
@@ -72,7 +73,7 @@ for (const args of steps) {
     process.exit(r.status ?? 1);
   }
 }
-console.log('[verify-all] all checks passed (activation guard + 8 scripts)');
+console.log('[verify-all] all checks passed (activation guard + 9 scripts)');
 
 // IndexNow ping: non-fatal. It is a crawl hint, not a correctness gate, and a
 // failed/skipped submission must never block an otherwise-good deploy. The

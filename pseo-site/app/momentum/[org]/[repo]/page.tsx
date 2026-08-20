@@ -7,6 +7,7 @@ import {
 } from "@/lib/data";
 import { tierFromVelocityChange, type MomentumTier } from "@/lib/badge-svg";
 import { slugify } from "@/lib/slugify";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface Params {
   org: string;
@@ -100,15 +101,15 @@ export async function generateMetadata({
 }): Promise<Metadata> {
   const { org, repo } = await params;
   if (!ALLOWED_SEG.test(org) || !ALLOWED_SEG.test(repo)) {
-    return {
+    return withEditorialOverride({
       title: "Repo signal, GitDealFlow",
       robots: { index: false, follow: false },
-    };
+    });
   }
   const startup = findStartupByGithubPath(`${org}/${repo}`);
   const path = `${org}/${repo}`;
   if (!startup) {
-    return {
+    return withEditorialOverride({
       title: `${path} momentum signal, Untracked · GitDealFlow`,
       description: `${path} is not in our tracked-startup index yet. See live engineering acceleration signals on the next-best-tracked repo and predict its next round.`,
       alternates: { canonical: `/momentum/${org}/${repo}` },
@@ -119,12 +120,12 @@ export async function generateMetadata({
         type: "website",
       },
       twitter: { card: "summary_large_image", site: "@sipiteno" },
-    };
+    });
   }
   const tier = tierFromVelocityChange(startup.commitVelocityChange);
   const title = `${path}, ${TIER_COPY[tier].label} momentum (${startup.commitVelocityChange})`;
   const description = `${startup.name}: commit velocity ${startup.commitVelocity14d}/14d (${startup.commitVelocityChange}). ${startup.contributors} contributors (${startup.contributorGrowth}). Stage: ${startup.stage}.`;
-  return {
+  return withEditorialOverride({
     title,
     description,
     alternates: { canonical: `/momentum/${org}/${repo}` },
@@ -143,7 +144,7 @@ export async function generateMetadata({
       title,
       description,
     },
-  };
+  });
 }
 
 export default async function MomentumPage({

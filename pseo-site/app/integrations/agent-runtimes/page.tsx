@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 const NPM = "@gitdealflow/mcp-signal";
@@ -11,7 +12,7 @@ const TITLE =
 const DESCRIPTION =
   "Install the VC Deal Flow Signal MCP server in seven popular agent runtimes, Cursor, Cline, Block Goose, OpenHands, Aider, AiderDesk, and Raycast. One npm package, six free read-only tools, no auth, weekly refresh. Per-runtime install snippets and marketplace links.";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: "/integrations/agent-runtimes" },
@@ -28,7 +29,7 @@ export const metadata: Metadata = {
     title: TITLE,
     description: DESCRIPTION,
   },
-};
+});
 
 type RuntimeStatus = "live" | "in-review" | "config";
 

@@ -10,6 +10,7 @@ import {
   DATA_NERD_ARCHETYPE,
   DATA_NERD_TRIBE,
 } from "@/lib/data-nerd";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
@@ -25,7 +26,7 @@ export const dynamic = "force-static";
 // here without copy duplication. To update the page, edit DATA_NERD_NOW
 // in that file and ship a single deploy.
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: `/now, what The Data Nerd is working on this week (${DATA_NERD_NOW.weekISO})`,
   description: `Current weekly status from ${DATA_NERD_NAME}. Five fields, updated every Monday: shipping, reading, blocked, parking lot, weekly rhythm. The cadence is the character. Updated ${DATA_NERD_NOW.asOf}.`,
   alternates: { canonical: "/now" },
@@ -36,7 +37,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/now",
     type: "article",
   },
-};
+});
 
 const RHYTHM_DAYS: Array<{ key: keyof typeof DATA_NERD_NOW.rhythm; label: string }> = [
   { key: "monday", label: "Monday" },

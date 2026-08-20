@@ -5,6 +5,7 @@ import { funds, getFund, getAllFundSlugs } from "@/content/funds";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { withEditorialOverride } from "@/lib/metadata";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -22,7 +23,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const f = getFund(slug);
   if (!f) return {};
 
-  return {
+  return withEditorialOverride({
     title: f.title,
     description: f.metaDescription,
     openGraph: {
@@ -39,7 +40,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     alternates: {
       canonical: `/fund/${slug}`,
     },
-  };
+  });
 }
 
 export default async function FundPage({ params }: PageProps) {

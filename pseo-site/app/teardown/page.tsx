@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
@@ -20,7 +21,7 @@ const TEARDOWN_CHECKOUT =
   process.env.NEXT_PUBLIC_STRIPE_TEARDOWN_LINK ||
   "https://buy.stripe.com/bJe5kC48H2d2cEKg6s0x209";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Tweet Teardown, €1. One startup. 24-hour signal call.",
   description:
     "Pay €1 once, name one venture-backed startup, and within 24 hours get a tweet-length teardown of its GitHub momentum: signal type, 14-day acceleration %, and the kicker insight. €1 credited toward First Look Pass if you upgrade in 7 days.",
@@ -32,7 +33,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/teardown",
     type: "article",
   },
-};
+});
 
 const STACK = [
   {

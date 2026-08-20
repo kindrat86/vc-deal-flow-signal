@@ -3,15 +3,16 @@ import Link from "next/link";
 import { getAllAuthors } from "@/content/authors";
 import { allPosts as posts } from "@/content/posts";
 import SeoCta from "@/components/SeoCta";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const BASE_URL = "https://signals.gitdealflow.com";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Authors",
   description:
     "Editorial bylines behind VC Deal Flow Signal: founder, engineering research desk, and guest founder perspective. Each author maintains the methodology and dataset behind every signal published.",
   alternates: { canonical: "/authors" },
-};
+});
 
 export default function AuthorsIndexPage() {
   const all = getAllAuthors();

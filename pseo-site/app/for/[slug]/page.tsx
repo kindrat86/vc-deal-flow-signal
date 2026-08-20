@@ -9,6 +9,7 @@ import {
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { withEditorialOverride } from "@/lib/metadata";
 
 /**
  * Higher-intent buyer personas who evaluate companies for a living and have
@@ -41,7 +42,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
   // Titles that already name the brand (7 persona pages lead with it) use
   // absolute to bypass the "| VC Deal Flow Signal" template (brand doubling fix).
-  return {
+  return withEditorialOverride({
     title: p.title.includes("VC Deal Flow Signal")
       ? { absolute: p.title }
       : p.title,
@@ -49,7 +50,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     openGraph: { title: p.title, description: p.metaDescription, type: "article", url: `/for/${slug}` },
     twitter: { card: "summary_large_image", title: p.title, description: p.metaDescription },
     alternates: { canonical: `/for/${slug}` },
-  };
+  });
 }
 
 export default async function PersonaPage({ params }: PageProps) {

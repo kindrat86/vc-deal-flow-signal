@@ -9,10 +9,11 @@ import {
   platformStatusCounts,
   type VoiceStatus,
 } from "@/content/voices-platforms";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "Where the buyer reads, per platform, the X, Reddit, and Hacker News rosters",
   description:
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/voices",
     type: "article",
   },
-};
+});
 
 const STATUS_BADGE_CLASS: Record<VoiceStatus, string> = {
   engage: "bg-emerald-500/15 text-emerald-300 border-emerald-500/30",

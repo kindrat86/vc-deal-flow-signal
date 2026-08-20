@@ -7,8 +7,9 @@ import {
   getDataLastModified,
 } from "@/lib/data";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "Open Dataset, VC Deal Flow Signal: GitHub Engineering Velocity Panel",
   description:
@@ -16,7 +17,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/dataset",
   },
-};
+});
 
 interface Mirror {
   name: string;

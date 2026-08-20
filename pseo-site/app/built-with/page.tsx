@@ -2,13 +2,14 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { SMALL_BADGE_HEIGHT, builtWithWidth } from "@/lib/badge-dims";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 const TITLE = "Built with @gitdealflow/mcp-signal, embed badge for MCP integrators";
 const DESCRIPTION =
   "Free 'Built with @gitdealflow/mcp-signal' badge for any project that calls our MCP server, dataset API, or signals JSON. Three variants, copy-paste markdown, no signup, no telemetry. Same caching model as Codecov or shields.io.";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: TITLE,
   description: DESCRIPTION,
   alternates: { canonical: "/built-with" },
@@ -26,7 +27,7 @@ export const metadata: Metadata = {
     description: DESCRIPTION,
     images: [`${SITE}/api/og/badge-builder`],
   },
-};
+});
 
 interface Variant {
   name: "default" | "compact" | "long";

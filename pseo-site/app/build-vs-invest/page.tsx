@@ -8,13 +8,14 @@ import {
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 
 export const dynamic = "force-static";
 export const revalidate = 604800;
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "Build it or fund it?, The 2×2 by sector",
   description:
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
     description:
       "Cost-to-build vs deal-velocity, scored per sector. The honest answer for every sector we track.",
   },
-};
+});
 
 const QUADRANT_TONE: Record<
   BuildVsInvestQuadrant,

@@ -3,8 +3,9 @@ import Link from "next/link";
 import { useCases } from "@/content/use-cases";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Use Cases, Angels, VC Analysts, Fund of Funds",
   description:
     "How angel investors, VC analysts, and fund-of-funds teams use GitDealFlow in real sourcing, diligence, and monitoring workflows, and how those workflows route into proof, compare, and buyer pages.",
@@ -12,7 +13,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/use-cases",
   },
-};
+});
 
 export default function UseCasesIndex() {
   const jsonLd = {

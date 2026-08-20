@@ -4,6 +4,7 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
@@ -38,7 +39,7 @@ export const dynamic = "force-static";
  * /origin so the symmetry is machine-readable too.
  */
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "Your Journey, the buyer's arc",
   description:
@@ -51,7 +52,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/origin/your-journey",
     type: "article",
   },
-};
+});
 
 export default function YourJourneyPage() {
   const jsonLd = {

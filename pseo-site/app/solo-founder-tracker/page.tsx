@@ -8,13 +8,14 @@ import {
   SOLO_FOUNDER_SECTORS,
   getDefaultSoloFounderThresholds,
 } from "@/content/solo-founder-tracker";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 export const revalidate = 604800;
 
 const SITE = "https://signals.gitdealflow.com";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title:
     "Solo-Founder Tracker, one-person companies hitting commit / star / contributor thresholds, by sector",
   description:
@@ -35,7 +36,7 @@ export const metadata: Metadata = {
     description:
       "15 sector pages. Commit/star/contributor thresholds for spotting one-engineer companies on GitHub before they hire.",
   },
-};
+});
 
 export default function SoloFounderTrackerIndexPage() {
   const lastModifiedIso = getDataLastModified().toISOString();

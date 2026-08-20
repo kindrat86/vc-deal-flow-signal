@@ -7,13 +7,14 @@ import OneClickOtoButton from "@/components/OneClickOtoButton";
 import DeliveryCountdown from "@/components/DeliveryCountdown";
 import TelegramCTA from "@/components/TelegramCTA";
 import PurchaseConversionEvent from "@/components/PurchaseConversionEvent";
+import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-dynamic";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "First Look Pass, confirmed. One-time offer inside.",
   robots: { index: false, follow: false },
-};
+});
 
 const SESSION_RX = /^cs_(test_|live_)?[a-zA-Z0-9]+$/;
 

@@ -5,8 +5,9 @@ import { getHreflangLanguages } from "@/lib/hreflang";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "The Story, Why GitDealFlow Was Built",
   description:
     "The short story behind GitDealFlow: why hearing about the company late became the problem, and why public engineering movement became the signal worth watching earlier.",
@@ -18,7 +19,7 @@ export const metadata: Metadata = {
     url: "https://signals.gitdealflow.com/story",
     type: "article",
   },
-};
+});
 
 const LESSONS = [
   {
