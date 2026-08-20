@@ -1,0 +1,12 @@
+Subject: Weekly Signal Report, Q3 2026 | GitDealFlow weekly signal
+Preheader: liberusoftware: +3275% commit velocity, 14 contributors.
+
+Weekly Signal Report, Q3 2026
+
+The five largest engineering-acceleration moves in Q3 2026, derived from public GitHub activity.
+
+Top signal: liberusoftware (PropTech)
++3275% commit velocity, 14 contributors, Engineering hiring burst.
+
+Read the report: https://signals.gitdealflow.com/research/weekly-signal-report-2026-08-20
+Download the data: https://signals.gitdealflow.com/weekly/latest.csv

@@ -1,0 +1,70 @@
+{
+  "hubs": [
+    "https://pubsubhubbub.appspot.com/",
+    "https://pubsubhubbub.superfeedr.com/"
+  ],
+  "topics": [
+    "https://signals.gitdealflow.com/feed.xml",
+    "https://signals.gitdealflow.com/atom.xml",
+    "https://signals.gitdealflow.com/rss.xml",
+    "https://signals.gitdealflow.com/feed.json"
+  ],
+  "deliveries": [
+    {
+      "hub": "https://pubsubhubbub.appspot.com/",
+      "payload": {
+        "hub.mode": "publish",
+        "hub.url": "https://signals.gitdealflow.com/feed.xml"
+      }
+    },
+    {
+      "hub": "https://pubsubhubbub.appspot.com/",
+      "payload": {
+        "hub.mode": "publish",
+        "hub.url": "https://signals.gitdealflow.com/atom.xml"
+      }
+    },
+    {
+      "hub": "https://pubsubhubbub.appspot.com/",
+      "payload": {
+        "hub.mode": "publish",
+        "hub.url": "https://signals.gitdealflow.com/rss.xml"
+      }
+    },
+    {
+      "hub": "https://pubsubhubbub.appspot.com/",
+      "payload": {
+        "hub.mode": "publish",
+        "hub.url": "https://signals.gitdealflow.com/feed.json"
+      }
+    },
+    {
+      "hub": "https://pubsubhubbub.superfeedr.com/",
+      "payload": {
+        "hub.mode": "publish",
+        "hub.url": "https://signals.gitdealflow.com/feed.xml"
+      }
+    },
+    {
+      "hub": "https://pubsubhubbub.superfeedr.com/",
+      "payload": {
+        "hub.mode": "publish",
+        "hub.url": "https://signals.gitdealflow.com/atom.xml"
+      }
+    },
+    {
+      "hub": "https://pubsubhubbub.superfeedr.com/",
+      "payload": {
+        "hub.mode": "publish",
+        "hub.url": "https://signals.gitdealflow.com/rss.xml"
+      }
+    },
+    {
+      "hub": "https://pubsubhubbub.superfeedr.com/",
+      "payload": {
+        "hub.mode": "publish",
+        "hub.url": "https://signals.gitdealflow.com/feed.json"
+      }
+    }
+  ]
+}

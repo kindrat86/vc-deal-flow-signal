@@ -1,0 +1,7 @@
+{
+  "package": "@gitdealflow/mcp-signal",
+  "tool": "get_weekly_channel_asset",
+  "description": "Read the q3-2026 weekly report and its machine-readable export.",
+  "example": "get_weekly_channel_asset({ period: \"q3-2026\" })",
+  "assetUrl": "https://signals.gitdealflow.com/api/weekly/q3-2026.json"
+}
