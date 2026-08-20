@@ -1,0 +1,15 @@
+{
+  "version": "1.0",
+  "type": "rich",
+  "provider_name": "GitDealFlow",
+  "provider_url": "https://gitdealflow.com",
+  "title": "GitHub Momentum Checker",
+  "author_name": "GitDealFlow",
+  "author_url": "https://gitdealflow.com/free/github-momentum-checker",
+  "width": 460,
+  "height": 640,
+  "html": "<iframe src=\"https://gitdealflow.com/embed/tools/startup-momentum-checker?utm_source=oembed&utm_medium=referral&utm_campaign=momentum_checker\" width=\"100%\" height=\"640\" loading=\"lazy\" title=\"GitHub Momentum Checker by GitDealFlow\" style=\"border:0;border-radius:12px\" referrerpolicy=\"strict-origin-when-cross-origin\"></iframe><p><a href=\"https://gitdealflow.com/free/github-momentum-checker?utm_source=embedded_widget&utm_medium=referral&utm_campaign=momentum_checker\" rel=\"noopener\">GitHub Momentum Checker by GitDealFlow</a></p>",
+  "thumbnail_url": "https://gitdealflow.com/assets/github-momentum-checker-1200x630.png",
+  "thumbnail_width": 1200,
+  "thumbnail_height": 630
+}

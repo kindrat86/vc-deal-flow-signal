@@ -10,6 +10,7 @@
 <meta name="author" content="GitDealFlow" />
 <meta name="robots" content="index, follow" />
 <link rel="canonical" href="https://gitdealflow.com/free/github-momentum-checker" />
+<link rel="alternate" type="application/json+oembed" href="https://gitdealflow.com/oembed/startup-momentum-checker.json" title="GitHub Momentum Checker" />
 <link rel="manifest" href="/site.webmanifest">
 <meta name="mobile-web-app-capable" content="yes">
 <meta name="apple-mobile-web-app-capable" content="yes">
@@ -20,7 +21,12 @@
 <meta property="og:title" content="GitHub Momentum Checker, score any startup's engineering activity" />
 <meta property="og:description" content="Commit acceleration, contributor growth, bus factor and repo expansion for any GitHub org, live from the public API. Free, no signup." />
 <meta property="og:url" content="https://gitdealflow.com/free/github-momentum-checker" />
+<meta property="og:image" content="https://gitdealflow.com/assets/github-momentum-checker-1200x630.png" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+<meta property="og:image:alt" content="GitHub Momentum Checker showing a startup engineering momentum score" />
 <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://gitdealflow.com/assets/github-momentum-checker-1200x630.png" />
 <link rel="icon" type="image/x-icon" href="/favicon.ico" />
 
 <script type="application/ld+json">{"@context":"https://schema.org","@type":"WebApplication","@id":"https://gitdealflow.com/free/github-momentum-checker#webapp","name":"GitHub Momentum Checker, GitDealFlow","url":"https://gitdealflow.com/free/github-momentum-checker","applicationCategory":"BusinessApplication","operatingSystem":"Web","browserRequirements":"Requires JavaScript. Reads the public GitHub REST API directly from your browser.","isAccessibleForFree":true,"featureList":["Momentum Score using the published GitDealFlow methodology","Commit acceleration: last 4 weeks against the prior 12-week baseline","Contributor growth and newly active contributors","Bus factor, share of commits from the single top contributor","Repository expansion across an organisation","52-week commit history sparkline","Markdown summary for a deal memo"],"publisher":{"@id":"https://gitdealflow.com/#organization"}}</script>
@@ -98,6 +104,9 @@
   summary { cursor:pointer; font-weight:600; }
   details[open] summary { margin-bottom:8px; }
   code { background:var(--bg-input); padding:2px 5px; border-radius:4px; font-size:.88em; }
+  .embed-code { display:block; width:100%; min-height:150px; margin:14px 0; padding:14px; overflow:auto; white-space:pre-wrap; overflow-wrap:anywhere; text-align:left; color:#cbd5e1; background:var(--bg-input); border:1px solid var(--border); border-radius:8px; font:13px/1.5 ui-monospace,SFMono-Regular,Menlo,monospace; }
+  .embed-actions { display:flex; flex-wrap:wrap; gap:10px; align-items:center; }
+  .embed-actions a { min-height:48px; display:inline-flex; align-items:center; }
   .hidden { display:none !important; }
   footer { margin-top:46px; padding-top:20px; border-top:1px solid var(--border); color:var(--text-muted); font-size:.85rem; }
   @media(max-width:640px){ .dial{width:92px;height:92px} .dial b{font-size:2rem} }
@@ -140,6 +149,7 @@
   <div id="exportrow" class="chips hidden" style="margin-bottom:24px">
     <button type="button" class="ghost" id="copy-md">Copy Markdown summary</button>
     <button type="button" class="ghost" id="copy-link">Copy link to this check</button>
+    <button type="button" class="ghost" id="share-result">Share this result</button>
   </div>
 
   <div class="card" id="gdf-capture" style="margin-top:6px">
@@ -177,13 +187,28 @@
       fetch('https://signals.gitdealflow.com/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
         .then(function(r){return r.json();})
         .then(function(d){
-          if(d&&d.ok){ msgEl.textContent='Check your inbox to confirm. The five names land Sunday.'; msgEl.style.color='#34d399'; emailEl.value=''; }
+          if(d&&d.ok){
+            msgEl.textContent='Check your inbox to confirm. The five names land Sunday.'; msgEl.style.color='#34d399'; emailEl.value='';
+            try{ if(window.gtag) window.gtag('event','momentum_lead_submitted',{surface:'standalone'}); }catch(_){}
+            try{ if(window.posthog&&window.posthog.capture) window.posthog.capture('momentum_lead_submitted',{surface:'standalone'}); }catch(_){}
+          }
           else { msgEl.textContent='Something went wrong. Try again, or email signal@gitdealflow.com.'; msgEl.style.color='#f87171'; }
         })
         .catch(function(){ msgEl.textContent='Something went wrong. Try again.'; msgEl.style.color='#f87171'; });
     });
   })();
   </script>
+
+  <div class="card" id="embed-this-checker">
+    <h2 style="margin:0 0 8px">Publish this checker on your site</h2>
+    <p style="color:var(--text-muted)">The widget runs the same public formula, calls GitHub directly, and includes a source link. It is free for newsletters, blogs, fund resources, and internal investment portals.</p>
+    <code class="embed-code" id="gdf-embed-code">&lt;iframe src="https://gitdealflow.com/embed/tools/startup-momentum-checker?utm_source=embed&amp;utm_medium=referral&amp;utm_campaign=momentum_checker" width="100%" height="640" loading="lazy" title="GitHub Momentum Checker by GitDealFlow" style="border:0;border-radius:12px" referrerpolicy="strict-origin-when-cross-origin"&gt;&lt;/iframe&gt;
+&lt;p&gt;&lt;a href="https://gitdealflow.com/free/github-momentum-checker?utm_source=embedded_widget&amp;utm_medium=referral&amp;utm_campaign=momentum_checker" rel="noopener"&gt;GitHub Momentum Checker by GitDealFlow&lt;/a&gt;&lt;/p&gt;</code>
+    <div class="embed-actions">
+      <button type="button" class="ghost" id="copy-embed">Copy embed code</button>
+      <a href="/embed#momentum-checker-widget">See the live widget and install notes</a>
+    </div>
+  </div>
 
   <h2>What this measures</h2>
   <p>GitDealFlow's premise is that engineering activity is a leading indicator: a team ships harder before it raises, and that shows up in public commit history weeks before a press release. This tool runs that read on demand for any public org or repo, using the same score as the <a href="/data/momentum-index">public Momentum Index</a> so results are directly comparable.</p>
@@ -225,21 +250,26 @@
 </footer>
 </div>
 
+<script src="/momentum-engine.js"></script>
 <script>
 (function(){
 "use strict";
 var API="https://api.github.com";
+var Engine=window.GDFMomentum;
 var DISCLAIMER="The Momentum Score reflects public software-engineering activity only. It is not investment advice, a valuation, or a recommendation to buy, sell, or fund any company.";
 var $=function(s){return document.querySelector(s)};
 var esc=function(s){return String(s==null?"":s).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})};
 var num=function(n){return n==null||!isFinite(n)?"-":Math.round(n).toLocaleString("en-US")};
 var one=function(n){return n==null||!isFinite(n)?"-":n.toFixed(2)};
 var pct=function(n,d){return n==null||!isFinite(n)?"-":(n*100).toFixed(d==null?0:d)+"%"};
-var clamp=function(n,lo,hi){return Math.max(lo==null?0:lo,Math.min(hi==null?100:hi,n))};
+var clamp=Engine.clamp;
 var state={last:null};
 
 function msg(html,cls){ $("#messages").innerHTML = html?'<div class="msg '+(cls||"err")+'">'+html+'</div>':"" }
-function track(ev,props){ try{ if(window.posthog&&window.posthog.capture) window.posthog.capture(ev,props||{}) }catch(e){} }
+function track(ev,props){
+  try{ if(window.posthog&&window.posthog.capture) window.posthog.capture(ev,props||{}) }catch(e){}
+  try{ if(window.gtag) window.gtag('event',ev,props||{}) }catch(e){}
+}
 
 var rateRemaining=null;
 function showRate(){
@@ -276,32 +306,10 @@ function ghStats(path,tries){
   });
 }
 
-/* ---- published score ---- */
-function tractionOf(stars){ return clamp(100*Math.log10((stars||0)+1)/5) }
-function recencyOf(pushedAt){
-  var d=Math.max(0,(Date.now()-Date.parse(pushedAt))/86400000);
-  if(d<=2)return 100; if(d<=7)return 88; if(d<=30)return 68;
-  if(d<=90)return 40; if(d<=180)return 22; return 8;
-}
-
-/* ---- commit series analysis (no history needed) ---- */
-function analyseCommits(weeks){
-  if(!weeks||!weeks.length) return null;
-  var c=weeks.map(function(w){return w.total||0});
-  var n=c.length;
-  var last4=c.slice(-4), prior12=c.slice(-16,-4);
-  var m4=last4.length?last4.reduce(function(a,b){return a+b},0)/last4.length:0;
-  var m12=prior12.length?prior12.reduce(function(a,b){return a+b},0)/prior12.length:0;
-  var accel = m12>0 ? m4/m12 : (m4>0?null:0);   // null = no baseline to compare against
-  var total52=c.reduce(function(a,b){return a+b},0);
-  var active=c.filter(function(x){return x>0}).length;
-  // linear trend over the last 26 weeks, as % of mean per week
-  var t=c.slice(-26),sx=0,sy=0,sxx=0,sxy=0,k=t.length;
-  for(var i=0;i<k;i++){sx+=i;sy+=t[i];sxx+=i*i;sxy+=i*t[i]}
-  var den=k*sxx-sx*sx, slope=den?(k*sxy-sx*sy)/den:0, mean=k?sy/k:0;
-  return {series:c,mean4:m4,mean12:m12,accel:accel,total52:total52,activeWeeks:active,
-          trendPerWeek: mean>0?slope/mean:null, weeks:n};
-}
+/* ---- shared published score engine ---- */
+var tractionOf=Engine.tractionOf;
+var recencyOf=Engine.recencyOf;
+var analyseCommits=Engine.analyseCommits;
 function analyseContributors(list){
   if(!Array.isArray(list)||!list.length) return null;
   var nowWeek=Math.floor(Date.now()/1000/604800);
@@ -486,12 +494,13 @@ function enrich(r,deep){
 }
 
 function run(query){
-  query=String(query||"").trim().replace(/^https?:\/\/(www\.)?github\.com\//i,"").replace(/\/+$/,"").replace(/\.git$/,"");
+  query=Engine.normalizeQuery(query);
   if(!query){ msg("Enter a GitHub organisation (<code>vercel</code>) or a repository (<code>vercel/next.js</code>)."); return }
   if(!/^[A-Za-z0-9._-]+(\/[A-Za-z0-9._-]+)?$/.test(query)){ msg("That does not look like a GitHub org or <code>owner/repo</code> path."); return }
   msg('Querying the public GitHub API…',"info");
   $("#go").disabled=true; $("#results").classList.add("hidden"); $("#exportrow").classList.add("hidden");
   var isRepo=query.indexOf("/")>-1;
+  track("momentum_check_started",{mode:isRepo?"repo":"org",surface:"standalone"});
 
   var chain = isRepo
     ? gh("/repos/"+query).then(function(d){
@@ -529,10 +538,9 @@ function run(query){
     var p=out.repos[0], a=p.commits;
     // velocity: the index uses week-over-week star growth from stored history, which a
     // one-off check does not have. Substitute commit acceleration and say so.
-    var velocity, source;
-    if(a&&a.accel!=null){ velocity=Math.round(clamp(50+50*(a.accel-1)*2)); source="commit acceleration"; }
-    else { velocity=p.traction; source="traction fallback, no commit baseline"; }
-    var score=Math.round(0.40*p.traction+0.35*p.recency+0.25*velocity);
+    var velocity=Engine.velocityFromAcceleration(a?a.accel:null,p.traction);
+    var source=(a&&a.accel!=null)?"commit acceleration":"traction fallback, no commit baseline";
+    var score=Engine.scoreMomentum({traction:p.traction,recency:p.recency,velocity:velocity});
     var res={ repos:out.repos, org:out.org, score:score, traction:p.traction, recency:p.recency,
       velocity:velocity, velocitySource:source,
       title: out.org? query : p.full,
@@ -545,14 +553,22 @@ function run(query){
     $("#exportrow").classList.remove("hidden");
     msg("");
     try{ history.replaceState(null,"","?q="+encodeURIComponent(query)) }catch(e){}
-    track("momentum_check",{mode:isRepo?"repo":"org"});
+    track("momentum_check_completed",{mode:isRepo?"repo":"org",surface:"standalone",score_band:scoreWord(score).toLowerCase()});
   }).catch(function(e){
+    track("momentum_check_failed",{mode:isRepo?"repo":"org",surface:"standalone"});
     msg("<b>Could not complete the check.</b> "+(e&&e.message?e.message:String(e)));
   }).then(function(){ $("#go").disabled=false });
 }
 
 /* ---- wiring ---- */
 document.addEventListener("DOMContentLoaded",function(){
+  function copyText(value){
+    if(navigator.clipboard&&navigator.clipboard.writeText) return navigator.clipboard.writeText(value);
+    var area=document.createElement("textarea");
+    area.value=value;area.setAttribute("readonly","");area.style.position="fixed";area.style.opacity="0";
+    document.body.appendChild(area);area.select();document.execCommand("copy");area.remove();
+    return Promise.resolve();
+  }
   var examples=["vercel","supabase","calcom","huggingface","langchain-ai/langchain","tinygrad/tinygrad"];
   $("#chips").innerHTML=examples.map(function(e){return '<button type="button" class="chip" data-q="'+esc(e)+'">'+esc(e)+'</button>'}).join("");
   $("#chips").addEventListener("click",function(ev){
@@ -563,13 +579,27 @@ document.addEventListener("DOMContentLoaded",function(){
   $("#q").addEventListener("keydown",function(e){ if(e.key==="Enter"){e.preventDefault();run(this.value)} });
   $("#copy-md").addEventListener("click",function(){
     if(!state.last)return; var btn=this,md=toMarkdown(state.last);
-    var done=function(){btn.textContent="Copied";setTimeout(function(){btn.textContent="Copy Markdown summary"},2000)};
-    if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(md).then(done,done); else done();
+    var done=function(){btn.textContent="Copied";track("momentum_markdown_copied",{surface:"standalone"});setTimeout(function(){btn.textContent="Copy Markdown summary"},2000)};
+    copyText(md).then(done);
   });
   $("#copy-link").addEventListener("click",function(){
     var btn=this,u=location.origin+location.pathname+"?q="+encodeURIComponent($("#q").value.trim());
-    var done=function(){btn.textContent="Link copied";setTimeout(function(){btn.textContent="Copy link to this check"},2000)};
-    if(navigator.clipboard&&navigator.clipboard.writeText) navigator.clipboard.writeText(u).then(done,done); else done();
+    var done=function(){btn.textContent="Link copied";track("momentum_result_link_copied",{surface:"standalone"});setTimeout(function(){btn.textContent="Copy link to this check"},2000)};
+    copyText(u).then(done);
+  });
+  $("#share-result").addEventListener("click",function(){
+    if(!state.last)return;
+    var btn=this,u=location.origin+location.pathname+"?q="+encodeURIComponent($("#q").value.trim());
+    var data={title:"GitHub momentum: "+state.last.title+" scored "+state.last.score+"/100",text:"I checked "+state.last.title+" with GitDealFlow's public GitHub Momentum Checker.",url:u};
+    if(navigator.share){
+      navigator.share(data).then(function(){track("momentum_result_shared",{surface:"standalone",method:"native"})}).catch(function(){});
+    }else{
+      copyText(u).then(function(){btn.textContent="Link copied";track("momentum_result_shared",{surface:"standalone",method:"copy"});setTimeout(function(){btn.textContent="Share this result"},2000)});
+    }
+  });
+  $("#copy-embed").addEventListener("click",function(){
+    var btn=this,code=$("#gdf-embed-code").textContent;
+    copyText(code).then(function(){btn.textContent="Embed code copied";track("momentum_embed_copied",{surface:"standalone"});setTimeout(function(){btn.textContent="Copy embed code"},2000)});
   });
   var q=new URLSearchParams(location.search).get("q");
   if(q){ $("#q").value=q; run(q); }

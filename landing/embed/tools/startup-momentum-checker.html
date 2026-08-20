@@ -1,153 +1,224 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width,initial-scale=1.0">
-<link rel="manifest" href="/site.webmanifest">
-<meta name="mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-capable" content="yes">
-<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-<meta name="apple-mobile-web-app-title" content="GitDealFlow">
-<title>Startup Momentum Checker</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="noindex, follow">
+<link rel="canonical" href="https://gitdealflow.com/free/github-momentum-checker">
+<title>GitHub Momentum Checker by GitDealFlow</title>
 <style>
-*{margin:0;padding:0;box-sizing:border-box}
-body{font-family:system-ui,-apple-system,sans-serif;background:#0f172a;color:#e2e8f0;padding:1rem;min-height:100vh}
-a{color:#10B981;text-decoration:none}
-h1{font-size:1rem;margin-bottom:.5rem;color:#f1f5f9}
-p{font-size:.75rem;color:#94a3b8;margin-bottom:.75rem}
-/* Momentum checker */
-.mc-widget,.lr-widget{max-width:340px;margin:0 auto}
-#mc-form{display:flex;gap:.5rem;margin-bottom:.75rem}
-#mc-input{flex:1;padding:.5rem .75rem;background:#1e293b;border:1px solid #334155;border-radius:.375rem;color:#e2e8f0;font-size:.875rem}
-#mc-input::placeholder{color:#64748b}
-button{padding:.5rem 1rem;background:#10B981;color:#fff;border:none;border-radius:.375rem;font-size:.875rem;font-weight:600;cursor:pointer;white-space:nowrap}
-button:hover{opacity:.9}
-.mc-card{background:#1e293b;border:1px solid #334155;border-radius:.5rem;padding:1rem;text-align:center}
-.mc-score{font-size:2.5rem;font-weight:800;line-height:1}
-.mc-score.high{color:#10b981}.mc-score.mid{color:#f59e0b}.mc-score.low{color:#ef4444}
-.mc-label{font-size:.75rem;color:#94a3b8;margin-top:.25rem}
-.mc-stats{display:flex;justify-content:center;gap:1rem;margin-top:.5rem;font-size:.75rem;color:#cbd5e1}
-.mc-stats strong{color:#f1f5f9}
-.mc-sector{font-size:.625rem;color:#64748b;margin-top:.5rem;text-transform:uppercase;letter-spacing:.05em}
-.mc-empty{padding:1rem;text-align:center;font-size:.8rem;color:#94a3b8}
-/* Launch readiness */
-.lr-sliders{display:flex;flex-direction:column;gap:.5rem}
-.lr-sliders label{display:flex;justify-content:space-between;align-items:center;font-size:.7rem;color:#cbd5e1;gap:.5rem}
-.lr-slider{width:120px;accent-color:#10B981}
-.lr-result{margin-top:.75rem;text-align:center;padding-top:.75rem;border-top:1px solid #334155}
-.lr-score{font-size:2.5rem;font-weight:800;color:#10B981;line-height:1}
-.lr-label{font-size:.8rem;color:#94a3b8;margin-top:.25rem}
-.brand{margin-top:.75rem;text-align:center;font-size:.625rem;color:#475569}
-.brand a{color:#10B981;font-weight:600}
+:root{--bg:#0f172a;--card:#1e293b;--input:#111f38;--text:#e2e8f0;--muted:#94a3b8;--accent:#8b5cf6;--accent2:#a78bfa;--green:#10b981;--amber:#f59e0b;--red:#ef4444;--border:#334155}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%;background:transparent;color:var(--text);font-family:Inter,ui-sans-serif,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+body{padding:10px}
+.widget{max-width:460px;margin:0 auto;background:var(--bg);border:1px solid var(--border);border-radius:14px;padding:16px;box-shadow:0 12px 32px rgba(15,23,42,.22)}
+h1{font-size:1.08rem;line-height:1.3;margin:0 0 4px}
+p{font-size:.78rem;line-height:1.5;color:var(--muted);margin:0 0 12px}
+.privacy{display:flex;gap:7px;padding:8px 10px;margin:10px 0;background:rgba(16,185,129,.08);border:1px solid rgba(16,185,129,.28);border-radius:8px;font-size:.7rem;color:#a7f3d0}
+.form{display:flex;gap:7px;margin:10px 0 8px}
+input{min-width:0;min-height:44px;flex:1;background:var(--input);color:var(--text);border:1px solid var(--border);border-radius:8px;padding:10px 11px;font:inherit;font-size:.84rem}
+input:focus{outline:2px solid rgba(139,92,246,.45);border-color:var(--accent)}
+button{min-height:44px;border:0;border-radius:8px;background:var(--accent);color:#fff;padding:10px 13px;font:inherit;font-size:.8rem;font-weight:700;cursor:pointer;white-space:nowrap}
+button:hover{background:var(--accent2)}button:disabled{opacity:.55;cursor:wait}
+.examples{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px}.example{background:transparent;border:1px solid var(--border);padding:5px 8px;color:var(--muted);font-size:.68rem;font-weight:600}.example:hover{color:var(--text);background:rgba(139,92,246,.12)}
+.status{min-height:18px;font-size:.7rem;color:var(--muted);margin-bottom:8px}.status.error{color:#fca5a5}
+.result{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:13px;margin-top:10px}.result[hidden]{display:none}
+.score-row{display:flex;align-items:center;gap:12px}.score{width:72px;height:72px;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;color:#fff;flex:0 0 auto}.score strong{font-size:1.8rem;line-height:1}.score span{font-size:.58rem;text-transform:uppercase;letter-spacing:.05em;margin-top:2px}.summary{min-width:0}.summary strong{display:block;font-size:.92rem;overflow-wrap:anywhere}.summary span{display:block;color:var(--muted);font-size:.7rem;line-height:1.4;margin-top:3px}
+.metrics{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:7px;margin-top:11px}.metric{background:var(--input);border-radius:8px;padding:8px}.metric b{display:block;font-size:1rem}.metric span{display:block;color:var(--muted);font-size:.62rem;text-transform:uppercase;letter-spacing:.04em}.formula{font-size:.65rem;color:var(--muted);line-height:1.45;margin:9px 0 0}
+.capture{margin-top:11px;padding:10px;background:var(--card);border:1px solid var(--border);border-radius:10px}.capture strong{font-size:.76rem}.capture p{font-size:.67rem;margin:2px 0 7px}.capture .form{margin:0}.capture input{font-size:.75rem;padding:8px}.capture button{font-size:.72rem;padding:8px 9px}.capture-msg{min-height:15px;margin:5px 0 0!important}
+.brand{text-align:center;margin-top:10px;font-size:.64rem;color:#64748b}.brand a{color:#34d399;font-weight:700;text-decoration:none}.brand a:hover{text-decoration:underline}
+@media(max-width:380px){body{padding:4px}.widget{padding:12px}.form{flex-direction:column}.form button{width:100%}.capture .form{flex-direction:column}.score{width:64px;height:64px}.metrics{grid-template-columns:1fr 1fr}}
 </style>
-  <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7SV2SNZE4C"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-7SV2SNZE4C');
-  </script>
+<script>
+window.dataLayer=window.dataLayer||[];window.gtag=window.gtag||function(){window.dataLayer.push(arguments)};
+</script>
 </head>
 <body>
-
-<div class="mc-widget">
-    <h1>🚀 Startup Momentum Checker</h1>
-    <p>Enter a startup name to see engineering momentum</p>
-    <form id="mc-form">
-        <input id="mc-input" type="text" placeholder="e.g. vercel, supabase..." />
-        <button type="submit">Check</button>
-    </form>
-    <div id="mc-result"></div>
-</div>
-
-<div class="brand">Powered by <a href="https://gitdealflow.com" target="_blank" rel="noopener">GitDealFlow</a></div>
-
-<div id="gdf-capture" style="margin-top:.9rem;text-align:center">
-  <div style="background:#1e293b;border:1px solid #334155;border-radius:.5rem;padding:.9rem">
-    <div style="font-size:.78rem;font-weight:700;color:#f1f5f9;margin-bottom:.15rem">Get the top 5 breakouts, every Sunday</div>
-    <div style="font-size:.68rem;color:#94a3b8;margin-bottom:.6rem">Five teams accelerating on GitHub, free, one click to leave.</div>
-    <form id="gdf-capture-form" style="display:flex;gap:.4rem">
-      <input type="email" id="gdf-capture-email" required inputmode="email" autocomplete="email" placeholder="you@example.com" style="flex:1;padding:.5rem .6rem;background:#0f172a;border:1px solid #334155;border-radius:.375rem;color:#e2e8f0;font-size:.8rem">
-      <button type="submit" style="padding:.5rem .7rem;background:#10B981;color:#fff;border:none;border-radius:.375rem;font-size:.8rem;font-weight:600;cursor:pointer;white-space:nowrap">Get 5 names</button>
-    </form>
-    <p id="gdf-capture-msg" role="status" style="font-size:.7rem;color:#94a3b8;margin:.4rem 0 0"></p>
+<main class="widget">
+  <h1>GitHub Momentum Checker</h1>
+  <p>Score one public GitHub organisation or repository using commit acceleration, traction, and push recency.</p>
+  <div class="privacy"><span aria-hidden="true">●</span><span>Read-only. Your browser calls GitHub directly. No token, proxy, or stored result.</span></div>
+  <form class="form" id="momentum-form">
+    <input id="momentum-query" type="text" autocomplete="off" spellcheck="false" placeholder="vercel or vercel/next.js" aria-label="GitHub organisation or repository">
+    <button id="momentum-submit" type="submit">Check</button>
+  </form>
+  <div class="examples" aria-label="Examples">
+    <button class="example" type="button" data-query="vercel">vercel</button>
+    <button class="example" type="button" data-query="calcom">calcom</button>
+    <button class="example" type="button" data-query="tinygrad/tinygrad">tinygrad</button>
   </div>
-</div>
+  <div class="status" id="momentum-status" role="status">GitHub allows 60 unauthenticated requests per hour per IP.</div>
+  <section class="result" id="momentum-result" aria-live="polite" hidden>
+    <div class="score-row">
+      <div class="score" id="result-score-box"><strong id="result-score"></strong><span>momentum</span></div>
+      <div class="summary"><strong id="result-title"></strong><span id="result-summary"></span></div>
+    </div>
+    <div class="metrics">
+      <div class="metric"><b id="result-acceleration"></b><span>Commit acceleration</span></div>
+      <div class="metric"><b id="result-commits"></b><span>Commits, 52 weeks</span></div>
+      <div class="metric"><b id="result-stars"></b><span>GitHub stars</span></div>
+      <div class="metric"><b id="result-recency"></b><span>Since last push</span></div>
+    </div>
+    <p class="formula" id="result-formula"></p>
+  </section>
+
+  <section class="capture" aria-label="Weekly breakout email">
+    <strong>Get the top 5 breakouts every Sunday</strong>
+    <p>Five teams accelerating on GitHub, free, one click to leave.</p>
+    <form class="form" id="gdf-capture-form">
+      <input type="email" id="gdf-capture-email" required inputmode="email" autocomplete="email" placeholder="you@example.com" aria-label="Email address">
+      <button type="submit">Get 5 names</button>
+    </form>
+    <p class="capture-msg" id="gdf-capture-msg" role="status"></p>
+  </section>
+
+  <div class="brand">Powered by <a href="https://gitdealflow.com/free/github-momentum-checker?utm_source=embedded_widget&amp;utm_medium=referral&amp;utm_campaign=momentum_checker" target="_blank" rel="noopener">GitDealFlow's GitHub Momentum Checker</a></div>
+</main>
+
+<script src="/momentum-engine.js"></script>
 <script>
 (function(){
-  var form=document.getElementById('gdf-capture-form');
-  if(!form) return;
-  var emailEl=document.getElementById('gdf-capture-email');
-  var msgEl=document.getElementById('gdf-capture-msg');
-  form.addEventListener('submit',function(e){
-    e.preventDefault();
-    var v=(emailEl.value||'').trim();
-    if(!v){ msgEl.textContent='Enter an email address to continue.'; return; }
-    var qs=new URLSearchParams(window.location.search);
-    var stored={}; try{ stored=JSON.parse(sessionStorage.getItem('gdf_attr')||'{}'); }catch(_){}
-    var body={
-      email:v, source:'embed-momentum-checker',
-      utm_source:qs.get('utm_source')||stored.utm_source||'',
-      utm_medium:qs.get('utm_medium')||stored.utm_medium||'',
-      utm_campaign:qs.get('utm_campaign')||stored.utm_campaign||'',
-      referrer:stored.referrer||document.referrer||'',
-      landing_path:stored.landing_path||(window.location.pathname+window.location.search),
-      tz:(function(){ try{ var t=Intl.DateTimeFormat().resolvedOptions().timeZone; return (typeof t==='string'&&t.indexOf('/')!==-1)?t:''; }catch(_){return '';} })(),
-      website:''
-    };
-    fetch('https://signals.gitdealflow.com/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
-      .then(function(r){return r.json();})
-      .then(function(d){
-        if(d&&d.ok){ msgEl.textContent='Check your inbox to confirm. The five names land Sunday.'; msgEl.style.color='#34d399'; emailEl.value=''; }
-        else { msgEl.textContent='Something went wrong. Try again.'; msgEl.style.color='#f87171'; }
-      })
-      .catch(function(){ msgEl.textContent='Something went wrong. Try again.'; msgEl.style.color='#f87171'; });
+"use strict";
+var API="https://api.github.com";
+var Engine=window.GDFMomentum;
+var form=document.getElementById("momentum-form");
+var queryInput=document.getElementById("momentum-query");
+var submit=document.getElementById("momentum-submit");
+var status=document.getElementById("momentum-status");
+var result=document.getElementById("momentum-result");
+var rateRemaining=null;
+
+function esc(value){return String(value==null?"":value).replace(/[&<>"']/g,function(c){return{"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]})}
+function number(value){return value==null||!isFinite(value)?"-":Math.round(value).toLocaleString("en-US")}
+function one(value){return value==null||!isFinite(value)?"-":Number(value).toFixed(2)}
+function track(name,properties){
+  try{if(window.gtag)window.gtag("event",name,properties||{})}catch(_){}
+  try{if(window.posthog&&window.posthog.capture)window.posthog.capture(name,properties||{})}catch(_){}
+}
+function tell(message,isError){status.textContent=message;status.className="status"+(isError?" error":"")}
+function scoreColor(score){return score>=75?"#10b981":score>=55?"#8b5cf6":score>=35?"#f59e0b":"#ef4444"}
+function scoreWord(score){return score>=75?"Strong":score>=55?"Active":score>=35?"Modest":"Quiet"}
+function notifyHeight(){try{parent.postMessage({type:"gitdealflow:resize",widget:"momentum-checker",height:document.documentElement.scrollHeight},"*")}catch(_){}}
+
+function github(path){
+  return fetch(API+path,{headers:{Accept:"application/vnd.github+json"}}).then(function(response){
+    var remaining=response.headers.get("x-ratelimit-remaining");
+    if(remaining!=null)rateRemaining=parseInt(remaining,10);
+    if(response.status===202)return{pending:true};
+    if(response.status===404)return{notFound:true};
+    if(response.status===403||response.status===429){
+      var reset=response.headers.get("x-ratelimit-reset");
+      var minutes=reset?Math.max(1,Math.ceil((reset*1000-Date.now())/60000)):null;
+      throw new Error("GitHub's public API limit is reached"+(minutes?", it resets in about "+minutes+" minutes.":"."));
+    }
+    if(!response.ok)throw new Error("GitHub returned HTTP "+response.status+".");
+    return response.json();
   });
+}
+function githubStats(path,tries){
+  var left=tries==null?3:tries;
+  return github(path).then(function(data){
+    if(data&&data.pending&&left>0)return new Promise(function(resolve){setTimeout(resolve,1400)}).then(function(){return githubStats(path,left-1)});
+    return data;
+  });
+}
+function chooseRepository(list){
+  var owned=(Array.isArray(list)?list:[]).filter(function(repo){return!repo.fork&&!repo.archived});
+  if(!owned.length)owned=Array.isArray(list)?list:[];
+  var activeAfter=Date.now()-180*86400000;
+  var active=owned.filter(function(repo){return Date.parse(repo.pushed_at)>=activeAfter});
+  var pool=active.length?active:owned;
+  return pool.slice().sort(function(a,b){return(b.stargazers_count||0)-(a.stargazers_count||0)})[0]||null;
+}
+function loadRepository(query){
+  var isRepo=query.indexOf("/")>-1;
+  if(isRepo){
+    return github("/repos/"+query).then(function(repo){
+      if(repo.notFound)throw new Error("No public repository found for "+query+".");
+      return{repo:repo,mode:"repo",org:null};
+    });
+  }
+  return Promise.all([
+    github("/users/"+query),
+    github("/users/"+query+"/repos?per_page=100&sort=pushed&direction=desc&type=owner")
+  ]).then(function(values){
+    var owner=values[0],list=values[1];
+    if(owner.notFound)throw new Error("No public GitHub user or organisation found for "+query+".");
+    var repo=chooseRepository(list);
+    if(!repo)throw new Error(query+" has no public repositories to score.");
+    return{repo:repo,mode:"org",org:{name:query,publicRepos:owner.public_repos||list.length}};
+  });
+}
+function calculate(loaded,weeks){
+  var repo=loaded.repo;
+  var commits=Array.isArray(weeks)?Engine.analyseCommits(weeks):null;
+  var traction=Math.round(Engine.tractionOf(repo.stargazers_count||0));
+  var recency=Engine.recencyOf(repo.pushed_at);
+  var velocity=Engine.velocityFromAcceleration(commits?commits.accel:null,traction);
+  var score=Engine.scoreMomentum({traction:traction,recency:recency,velocity:velocity});
+  return{repo:repo,mode:loaded.mode,org:loaded.org,commits:commits,traction:traction,recency:recency,velocity:velocity,score:score};
+}
+function render(data){
+  var repo=data.repo,commits=data.commits;
+  var acceleration=commits&&commits.accel!=null?one(commits.accel)+"x":"No baseline";
+  var source=commits&&commits.accel!=null?"commit acceleration":"traction fallback";
+  var orgLine=data.org?data.org.publicRepos+" public repos, primary active repo selected by stars.":"One public repository.";
+  document.getElementById("result-score-box").style.background=scoreColor(data.score);
+  document.getElementById("result-score").textContent=String(data.score);
+  document.getElementById("result-title").textContent=repo.full_name+", "+scoreWord(data.score);
+  document.getElementById("result-summary").textContent=orgLine+" Score uses the published GitDealFlow formula.";
+  document.getElementById("result-acceleration").textContent=acceleration;
+  document.getElementById("result-commits").textContent=commits?number(commits.total52):"-";
+  document.getElementById("result-stars").textContent=number(repo.stargazers_count||0);
+  document.getElementById("result-recency").textContent=Math.round(Math.max(0,(Date.now()-Date.parse(repo.pushed_at))/86400000))+"d";
+  document.getElementById("result-formula").textContent="Score = 0.40 x traction ("+data.traction+") + 0.35 x recency ("+data.recency+") + 0.25 x velocity ("+data.velocity+", "+source+"). Public engineering activity only, not investment advice.";
+  result.hidden=false;
+  tell(rateRemaining==null?"Check complete.":"Check complete. GitHub API requests left this hour: "+rateRemaining+" of 60.",false);
+  track("embedded_momentum_check_completed",{mode:data.mode,score_band:scoreWord(data.score).toLowerCase()});
+  notifyHeight();
+}
+function run(raw){
+  var query=Engine.normalizeQuery(raw);
+  if(!query){tell("Enter a GitHub organisation or owner/repository path.",true);return}
+  if(!/^[A-Za-z0-9._-]+(\/[A-Za-z0-9._-]+)?$/.test(query)){tell("That does not look like a GitHub organisation or repository path.",true);return}
+  submit.disabled=true;result.hidden=true;tell("Reading the public GitHub API...",false);
+  track("embedded_momentum_check_started",{mode:query.indexOf("/")>-1?"repo":"org"});
+  loadRepository(query).then(function(loaded){
+    var parts=loaded.repo.full_name.split("/");
+    return githubStats("/repos/"+parts[0]+"/"+parts[1]+"/stats/commit_activity").then(function(weeks){return calculate(loaded,weeks)});
+  }).then(render).catch(function(error){
+    tell(error&&error.message?error.message:String(error),true);
+    track("embedded_momentum_check_failed",{mode:query.indexOf("/")>-1?"repo":"org"});
+    notifyHeight();
+  }).then(function(){submit.disabled=false});
+}
+
+form.addEventListener("submit",function(event){event.preventDefault();run(queryInput.value)});
+document.querySelectorAll("[data-query]").forEach(function(button){button.addEventListener("click",function(){queryInput.value=button.getAttribute("data-query");run(queryInput.value)})});
+var initial=new URLSearchParams(location.search).get("q");if(initial){queryInput.value=initial;run(initial)}
+window.addEventListener("load",notifyHeight);window.addEventListener("resize",notifyHeight);
 })();
 </script>
 <script>
-const form = document.getElementById('mc-form');
-const result = document.getElementById('mc-result');
-form.addEventListener('submit', async (e) => {
-    e.preventDefault();
-    const name = document.getElementById('mc-input').value.trim();
-    if (!name) return;
-    result.innerHTML = '<div style="text-align:center;padding:1rem;color:#64748b">Analyzing...</div>';
-    try {
-        const r = await fetch('https://signals.gitdealflow.com/api/signals.json');
-        const data = await r.json();
-        const match = (data.startups || []).find(s => (s.name || s.github_org || '').toLowerCase().includes(name.toLowerCase()));
-        if (match) {
-            const momentum = match.commit_velocity_4w || Math.floor(Math.random() * 200 + 50);
-            const contributors = match.contributors || Math.floor(Math.random() * 30 + 5);
-            const score = Math.min(99, Math.floor(momentum / 3 + contributors));
-            result.innerHTML = `
-                <div class="mc-card">
-                    <div class="mc-score ${score > 70 ? 'high' : score > 40 ? 'mid' : 'low'}">${score}</div>
-                    <div class="mc-label">Momentum Score</div>
-                    <div class="mc-stats">
-                        <span><strong>${momentum}</strong> commits/4wk</span>
-                        <span><strong>${contributors}</strong> contributors</span>
-                    </div>
-                    <div class="mc-sector">${match.sector || 'Technology'}</div>
-                </div>`;
-        } else {
-            result.innerHTML = `<div class="mc-empty">No data for "${name}". <a href="https://gitdealflow.com" target="_blank">Browse all startups →</a></div>`;
-        }
-    } catch(err) {
-        result.innerHTML = `<div class="mc-empty">Visit <a href="https://gitdealflow.com" target="_blank">GitDealFlow</a> for full data</div>`;
-    }
+(function(){
+var form=document.getElementById("gdf-capture-form");
+var email=document.getElementById("gdf-capture-email");
+var message=document.getElementById("gdf-capture-msg");
+form.addEventListener("submit",function(event){
+  event.preventDefault();
+  var value=(email.value||"").trim();
+  if(!value){message.textContent="Enter an email address.";return}
+  var query=new URLSearchParams(location.search);
+  var body={email:value,source:"embed-momentum-checker",utm_source:query.get("utm_source")||"embedded_widget",utm_medium:query.get("utm_medium")||"referral",utm_campaign:query.get("utm_campaign")||"momentum_checker",referrer:document.referrer||"",landing_path:location.pathname+location.search,tz:(function(){try{return Intl.DateTimeFormat().resolvedOptions().timeZone||""}catch(_){return""}})(),website:""};
+  fetch("https://signals.gitdealflow.com/api/subscribe",{method:"POST",headers:{"Content-Type":"application/json"},body:JSON.stringify(body)}).then(function(response){return response.json()}).then(function(data){
+    if(data&&data.ok){message.textContent="Check your inbox to confirm.";message.style.color="#34d399";email.value="";try{if(window.gtag)window.gtag("event","momentum_lead_submitted",{surface:"embed"})}catch(_){};try{if(window.posthog&&window.posthog.capture)window.posthog.capture("momentum_lead_submitted",{surface:"embed"})}catch(_){}}
+    else{message.textContent="Could not subscribe. Try again.";message.style.color="#fca5a5"}
+  }).catch(function(){message.textContent="Could not subscribe. Try again.";message.style.color="#fca5a5"});
 });
-
+})();
 </script>
-
-  <script>
-    (function(){
-      function _load(){var s=document.createElement('script');s.src='/pixels.js';s.async=true;document.head.appendChild(s);}
-      if('requestIdleCallback' in window){requestIdleCallback(_load,{timeout:3000});} else {setTimeout(_load,2500);}
-    })();
-  </script>
-
-  </body>
+<script>
+(function(){function load(){var script=document.createElement("script");script.src="/pixels.js";script.async=true;document.head.appendChild(script)}if("requestIdleCallback" in window)requestIdleCallback(load,{timeout:3000});else setTimeout(load,2500)})();
+</script>
+</body>
 </html>

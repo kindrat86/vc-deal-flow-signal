@@ -60,8 +60,8 @@ EXCLUDE_FILES = {
     "google57979683042f3b0e.html",
     "googlea30bb998b91eb6ac.html",
     "BingSiteAuth.xml",
-    # Embed/widget artifacts
-    "embed.html",
+    # Embed/widget artifacts. The root /embed page is now the indexable
+    # installation guide; only the iframe payloads stay excluded/noindex.
     "widget.html",
     "related-tools.html",
     "network/widget.html",

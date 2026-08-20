@@ -56,6 +56,7 @@ for (const [rel, needles] of activationChecks) {
 
 const steps = [
   ['node', 'scripts/verify-vercel-config.mjs'],
+  ['node', 'scripts/verify-momentum-widget.mjs'],
   ['node', 'scripts/verify-jsonld.mjs', '.'],
   ['node', 'scripts/verify-word-floor.mjs'],
   ['node', 'scripts/verify-direct-answers.mjs'],
@@ -72,7 +73,7 @@ for (const args of steps) {
     process.exit(r.status ?? 1);
   }
 }
-console.log('[verify-all] all checks passed (activation guard + 8 scripts)');
+console.log('[verify-all] all checks passed (activation guard + 9 scripts)');
 
 // IndexNow ping: non-fatal. It is a crawl hint, not a correctness gate, and a
 // failed/skipped submission must never block an otherwise-good deploy. The
