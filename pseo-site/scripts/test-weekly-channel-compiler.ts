@@ -25,6 +25,11 @@ assert.equal(assets.api.json.period, "2026-W34");
 assert.match(assets.api.csv, /Example Labs/);
 assert.match(assets.rss, /<title>Developer tools are accelerating<\/title>/);
 assert.ok(assets.websub.topics.includes("https://signals.gitdealflow.com/feed.json"));
+assert.equal(assets.websub.deliveries.length, assets.websub.hubs.length * assets.websub.topics.length);
+assert.deepEqual(assets.websub.deliveries[0], {
+  hub: "https://pubsubhubbub.appspot.com/",
+  payload: { "hub.mode": "publish", "hub.url": "https://signals.gitdealflow.com/feed.xml" },
+});
 assert.equal(assets.mcp.tool, "get_weekly_channel_asset");
 assert.match(assets.email.subject, /Developer tools are accelerating/);
 assert.equal(assets.card.headline, "Developer tools are accelerating");

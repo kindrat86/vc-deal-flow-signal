@@ -18,7 +18,14 @@ export type WeeklySignal = {
 export type WeeklyChannelAssets = {
   api: { json: WeeklySignal; csv: string };
   rss: string;
-  websub: { topics: string[]; hubs: string[]; payload: { "hub.mode": "publish"; "hub.url": string }[] };
+  websub: {
+    topics: string[];
+    hubs: string[];
+    deliveries: Array<{
+      hub: string;
+      payload: { "hub.mode": "publish"; "hub.url": string };
+    }>;
+  };
   mcp: { package: string; tool: string; description: string; example: string; assetUrl: string };
   email: { subject: string; preheader: string; text: string };
   card: { headline: string; body: string; cta: string; url: string; alt: string };
@@ -49,7 +56,14 @@ export function compileWeeklyChannelAssets(signal: WeeklySignal): WeeklyChannelA
   return {
     api: { json: signal, csv },
     rss: `<item><title>${escapeXml(signal.title)}</title><link>${escapeXml(signal.canonicalUrl)}</link><guid isPermaLink="true">${escapeXml(signal.canonicalUrl)}</guid><pubDate>${new Date(signal.publishedAt).toUTCString()}</pubDate><description>${escapeXml(signal.summary)}</description></item>`,
-    websub: { hubs: HUBS, topics: TOPICS, payload: HUBS.flatMap((hub) => TOPICS.map((topic) => ({ "hub.mode": "publish" as const, "hub.url": topic, hub }))).map(({ hub: _hub, ...payload }) => payload) },
+    websub: {
+      hubs: HUBS,
+      topics: TOPICS,
+      deliveries: HUBS.flatMap((hub) => TOPICS.map((topic) => ({
+        hub,
+        payload: { "hub.mode": "publish" as const, "hub.url": topic },
+      }))),
+    },
     mcp: { package: "@gitdealflow/mcp-signal", tool: "get_weekly_channel_asset", description: `Read the ${signal.period} weekly report and its machine-readable export.`, example: `get_weekly_channel_asset({ period: \"${signal.period}\" })`, assetUrl: `${BASE_URL}/api/weekly/${signal.period}.json` },
     email: { subject, preheader, text },
     card: { headline: signal.title, body: `${top.name}: ${top.commitVelocityChange} commit velocity with ${top.contributors} contributors. ${signal.summary}`, cta: "Read the weekly signal", url: signal.canonicalUrl, alt: `${signal.title}. Top signal: ${top.name}, ${top.commitVelocityChange} commit velocity.` },
