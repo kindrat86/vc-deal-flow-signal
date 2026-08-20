@@ -127,16 +127,21 @@ export default function Footer() {
           </div>
           <div>
             <p className="text-xs font-semibold text-gray-300 uppercase tracking-wider mb-3">Network</p>
-            <nav aria-label="Footer: Network" className="flex flex-col gap-2 text-sm text-gray-400">
-              <a href="https://sipi.bot" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">Sipi.bot</a>
-              <a href="https://churnlens.site" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">ChurnLens</a>
-              <a href="https://carshake.online" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">CarShake</a>
-              <a href="https://unlocksaas.com" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">UnlockSaaS</a>
-              <a href="https://sanctionsai.dev" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">SanctionsAI</a>
-              <a href="https://voicelogpro.com" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">VoiceLogPro</a>
-              <a href="https://invisibleexit.com" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">InvisibleExit</a>
-              <a href="https://sipiteno.com" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">Sipiteno</a>
-              <a href="https://gitdealflow.com" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">GitDealFlow</a>
+            <nav
+              aria-label="More products from Sipiteno"
+              data-portfolio-cross-promo="v1"
+              data-portfolio-origin="signals.gitdealflow.com"
+              className="flex flex-col gap-2 text-sm text-gray-400"
+            >
+              <a href="https://sipi.bot/?utm_source=signals.gitdealflow.com&utm_medium=referral&utm_campaign=portfolio_crosspromo&utm_content=footer" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">sipi.bot</a>
+              <a href="https://churnlens.site/?utm_source=signals.gitdealflow.com&utm_medium=referral&utm_campaign=portfolio_crosspromo&utm_content=footer" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">ChurnLens</a>
+              <a href="https://carshake.online/?utm_source=signals.gitdealflow.com&utm_medium=referral&utm_campaign=portfolio_crosspromo&utm_content=footer" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">CarShake</a>
+              <a href="https://unlocksaas.com/?utm_source=signals.gitdealflow.com&utm_medium=referral&utm_campaign=portfolio_crosspromo&utm_content=footer" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">UnlockSaaS</a>
+              <a href="https://sanctionsai.dev/?utm_source=signals.gitdealflow.com&utm_medium=referral&utm_campaign=portfolio_crosspromo&utm_content=footer" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">SanctionsAI</a>
+              <a href="https://voicelogpro.com/?utm_source=signals.gitdealflow.com&utm_medium=referral&utm_campaign=portfolio_crosspromo&utm_content=footer" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">VoiceLogPro</a>
+              <a href="https://invisibleexit.com/?utm_source=signals.gitdealflow.com&utm_medium=referral&utm_campaign=portfolio_crosspromo&utm_content=footer" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">Invisible Exit</a>
+              <a href="https://sipiteno.com/?utm_source=signals.gitdealflow.com&utm_medium=referral&utm_campaign=portfolio_crosspromo&utm_content=footer" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">Sipiteno</a>
+              <a href="https://gitdealflow.com/?utm_source=signals.gitdealflow.com&utm_medium=referral&utm_campaign=portfolio_crosspromo&utm_content=footer" className="hover:text-gray-200 transition-colors" rel="noopener noreferrer" target="_blank">GitDealFlow</a>
             </nav>
           </div>
           <div>
