@@ -82,11 +82,14 @@ export async function GET(request: NextRequest) {
       tier === "teardown" ||
       tier === "firstlook" ||
       tier === "sector_sweep" ||
+      tier === "signal_desk_pilot" ||
       tier === "agent_credits_100" ||
       tier === "book"
     ) {
       const thanksUrl =
-        tier === "sector_sweep"
+        tier === "signal_desk_pilot"
+          ? new URL("/signal-desk?status=paid", request.url)
+          : tier === "sector_sweep"
           ? new URL("/sector-sweep?status=paid", request.url)
           : tier === "agent_credits_100"
             ? new URL("/agents/credits?status=paid", request.url)

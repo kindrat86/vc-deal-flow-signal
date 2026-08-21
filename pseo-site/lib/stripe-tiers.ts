@@ -7,6 +7,7 @@ export type EntryTierKey =
   | "dashboard"
   | "insider"
   | "sector_sweep"
+  | "signal_desk_pilot"
   | "summit";
 
 export type OtoKey =
@@ -107,6 +108,16 @@ export const ENTRY_TIERS: Record<EntryTierKey, EntryTierConfig> = {
     cancelUrl: "/sector-sweep?cancelled=1",
     description:
       "One sector. One thesis. One serious custom pass you can act on.",
+  },
+  signal_desk_pilot: {
+    mode: "payment",
+    productName: "GitDealFlow Signal Desk, 30-day pilot",
+    unitAmount: 25000,
+    currency: "eur",
+    successUrl: "https://signals.gitdealflow.com/signal-desk/success?session_id={CHECKOUT_SESSION_ID}",
+    cancelUrl: "/signal-desk?cancelled=1",
+    description:
+      "€250 Signal Desk pilot. Credited toward the €490 annual Dashboard.",
   },
   summit: {
     mode: "payment",

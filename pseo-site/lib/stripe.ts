@@ -29,6 +29,7 @@ export type TierKey =
   | "dashboard"
   | "insider"
   | "sector_sweep"
+  | "signal_desk_pilot"
   | "agent_credits_100";
 
 // Map Stripe price amounts (in cents) to internal tier names
@@ -50,6 +51,7 @@ export const CREDIT_PACK_SIZES: Record<Extract<TierKey, `agent_credits_${string}
 };
 
 export function getTierFromSession(session: Stripe.Checkout.Session): TierKey {
+  if (session.metadata?.offer === "signal_desk_pilot") return "signal_desk_pilot";
   const lineItems = session.line_items?.data ?? [];
   for (const item of lineItems) {
     const amount = item.price?.unit_amount ?? 0;

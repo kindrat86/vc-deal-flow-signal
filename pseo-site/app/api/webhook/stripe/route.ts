@@ -163,6 +163,13 @@ function dashboardWelcomeEmail(email: string): { subject: string; html: string }
   };
 }
 
+function signalDeskWelcomeEmail(email: string): { subject: string; html: string } {
+  return {
+    subject: "Signal Desk pilot, complete your Monday intake",
+    html: `<!DOCTYPE html><html><body style="font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;color:#1e293b;line-height:1.6"><p>Your €250 Signal Desk pilot payment is confirmed.</p><p>Return to the confirmation page still open in your browser and submit your sectors, investor type, and preferred Monday delivery email. The first issue is prepared manually after that intake.</p><p>The pilot is 30 days. If you continue to the Dashboard, the €250 is credited toward the €490 annual Dashboard.</p><p>This is research output, not investment advice. We use public GitHub activity, include counter-evidence, and do not guarantee that any company will raise.</p><p>The Data Nerd</p><p style="font-size:12px;color:#64748b">Paid with: ${escapeHtml(email)}</p></body></html>`,
+  };
+}
+
 function insiderWelcomeEmail(email: string): { subject: string; html: string } {
   const telegramLine = TELEGRAM_INSIDER_INVITE
     ? `<li><strong>Join the private Telegram group:</strong> <a href="${TELEGRAM_INSIDER_INVITE}" style="color:#0ea5e9;">${TELEGRAM_INSIDER_INVITE}</a></li>`
@@ -471,6 +478,8 @@ export async function POST(request: NextRequest) {
       welcomeEmail = insiderWelcomeEmail(email);
     } else if (tier === "sector_sweep") {
       welcomeEmail = sectorSweepWelcomeEmail(email);
+    } else if (tier === "signal_desk_pilot") {
+      welcomeEmail = signalDeskWelcomeEmail(email);
     } else if (tier === "firstlook") {
       welcomeEmail = firstLookWelcomeEmail(email);
     } else if (tier === "book") {
@@ -505,13 +514,17 @@ export async function POST(request: NextRequest) {
 
     // Add the buyer without ever overriding an existing unsubscribe choice.
     // Dashboard and Insider buyers also get durable customer-health state.
-    await addBuyerToAudience(
-      email,
-      `stripe-${tier}`,
-      (tier === "dashboard" || tier === "insider") && buyerCustomerId
-        ? { tier, customerId: buyerCustomerId }
-        : undefined,
-    );
+    // Signal Desk is fulfilled manually from the paid, server-verified intake.
+    // Do not alter a buyer's marketing consent from this transactional flow.
+    if (tier !== "signal_desk_pilot") {
+      await addBuyerToAudience(
+        email,
+        `stripe-${tier}`,
+        (tier === "dashboard" || tier === "insider") && buyerCustomerId
+          ? { tier, customerId: buyerCustomerId }
+          : undefined,
+      );
+    }
 
     // Book buyers: queue the +1d / +4d / +7d follow-ups promised in the
     // welcome email. Best-effort, a Resend hiccup must not 5xx out of this
