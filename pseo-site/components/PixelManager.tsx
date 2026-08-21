@@ -17,6 +17,10 @@ export default function PixelManager() {
   const ga4 = process.env.NEXT_PUBLIC_GA4_ID || "G-7SV2SNZE4C";
   const googleAds = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID;
   const linkedin = "";
+  // Keep the explicit empty policy values in source. The production guard
+  // detects any future attempt to turn paid pixels back on without review.
+  void meta;
+  void linkedin;
   const twitter = process.env.NEXT_PUBLIC_TWITTER_PIXEL_ID;
   const tiktok = process.env.NEXT_PUBLIC_TIKTOK_PIXEL_ID;
   const reddit = process.env.NEXT_PUBLIC_REDDIT_PIXEL_ID;
@@ -28,16 +32,6 @@ export default function PixelManager() {
 
   return (
     <>
-      {meta && (
-        <Script
-          id="meta-pixel"
-          strategy="afterInteractive"
-          dangerouslySetInnerHTML={{
-            __html: `!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');fbq('init','${meta}');fbq('track','PageView');`,
-          }}
-        />
-      )}
-
       {gtagId && (
         <>
           {/* lazyOnload (perf fix 2026-08-16): afterInteractive made Next
@@ -70,25 +64,6 @@ export default function PixelManager() {
             __html: `(function(){var CONV=["signup_verify_sent","beta_signup","lead_submitted","subscribed","analysis_purchased","purchase_confirmed","lead_magnet_requested","exit_intent_subscribed","tools_subscribe_submitted"];var ENG=["concierge_opened","exit_modal_opened","exit_modal_submitted"];var EVAL_RE=/(\\/pricing|\\/vs\\/|alternatives-to|\\/methodology|\\/mcp|\\/api|\\/docs)/;var qFired=false;function pushGtag(){try{if(window.gtag&&typeof window.gtag==="function"){window.gtag.apply(window,arguments);}else{window.dataLayer=window.dataLayer||[];window.dataLayer.push(Array.prototype.slice.call(arguments));}}catch(e){}}function gtagReady(){try{var dl=window.dataLayer||[];for(var i=0;i<dl.length;i++){if(dl[i]&&typeof dl[i].event==="string"&&dl[i].event.indexOf("gtm.")===0)return true;}if(window.google_tag_manager&&Object.keys(window.google_tag_manager).length>0)return true;}catch(e){}return false;}function qualified(source){var K="gdf_qualified_visit";if(qFired)return;try{if(sessionStorage.getItem(K))return;sessionStorage.setItem(K,"1");}catch(e){}qFired=true;var payload={path:location.pathname,source:source||"unknown"};if(gtagReady()){pushGtag("event","qualified_visit",payload);return;}var qTries=0;var qTimer=setInterval(function(){if(gtagReady()){pushGtag("event","qualified_visit",payload);clearInterval(qTimer);}else if(++qTries>600){clearInterval(qTimer);}},100);}function mirror(name,props){if(!name)return;var params={source:location.pathname};if(props&&typeof props==="object"){for(var k in props){var v=props[k];if(v===null||v===undefined)continue;if(typeof v==="string"||typeof v==="number"||typeof v==="boolean")params[k]=v;}}if(ENG.indexOf(name)>=0){pushGtag("event",name,params);qualified("engagement");}else if(CONV.indexOf(name)>=0){pushGtag("event",name,params);qualified("conversion");}}function wrapCapture(){var ph=window.posthog;if(!ph||typeof ph.capture!=="function"||ph.__gdfMirrorWrapped)return;var orig=ph.capture;ph.capture=function(){try{mirror(arguments[0],arguments[1]);}catch(e){}return orig.apply(ph,arguments);};try{ph.__gdfMirrorWrapped=true;}catch(e){}}if(EVAL_RE.test(location.pathname))qualified("eval_path");wrapCapture();var tries=0;var timer=setInterval(function(){wrapCapture();if(++tries>600)clearInterval(timer);},100);})();`,
           }}
         />
-      )}
-
-      {linkedin && (
-        <>
-          <Script
-            id="linkedin-init"
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{
-              __html: `_linkedin_partner_id="${linkedin}";window._linkedin_data_partner_ids=window._linkedin_data_partner_ids||[];window._linkedin_data_partner_ids.push(_linkedin_partner_id);`,
-            }}
-          />
-          <Script
-            id="linkedin-loader"
-            strategy="afterInteractive"
-            dangerouslySetInnerHTML={{
-              __html: `(function(l){if(!l){window.lintrk=function(a,b){window.lintrk.q.push([a,b])};window.lintrk.q=[]}var s=document.getElementsByTagName("script")[0];var b=document.createElement("script");b.type="text/javascript";b.async=true;b.src="https://snap.licdn.com/li.lms-analytics/insight.min.js";s.parentNode.insertBefore(b,s)})(window.lintrk);`,
-            }}
-          />
-        </>
       )}
 
       {twitter && (

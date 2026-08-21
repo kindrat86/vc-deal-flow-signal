@@ -22,9 +22,8 @@ for (const rel of ['api/crawl-proxy.js', 'api/markdown.js', 'ai.src.txt', 'agent
   }
 }
 
-// Activation funnel guard (2026-08-19). The free product is delivered as soon
-// as verification succeeds. Keep that promise visible and keep the anonymous
-// landing events joined to the email-keyed Resend events.
+// Activation funnel guard (2026-08-21). The confirmation page gives a verified
+// subscriber immediate sample value and keeps raw email out of browser analytics.
 const activationChecks = [
   ['index.html', [
     'in your inbox the moment you confirm',
@@ -39,11 +38,10 @@ const activationChecks = [
     "posthog.capture('subscribe_thanks_viewed')",
   ]],
   ['confirmed.html', [
-    'The five names are already there.',
-    'Check spam or promotions',
+    'id="sample-issue-link" href="/report"',
+    "posthog.capture('sample_issue_opened'",
     "u.searchParams.delete('email')",
     'history.replaceState',
-    'posthog.identify(identEmail)',
     "posthog.capture('signup_confirmed_viewed'",
   ]],
 ];
@@ -54,6 +52,11 @@ for (const [rel, needles] of activationChecks) {
     console.error(`[verify-all] activation regression in ${rel}: missing ${missing.join(', ')}`);
     process.exit(1);
   }
+}
+const confirmedPage = readFileSync(join(landingRoot, 'confirmed.html'), 'utf8');
+if (confirmedPage.includes('posthog.identify(identEmail)')) {
+  console.error('[verify-all] confirmation analytics must not identify visitors from a URL email parameter');
+  process.exit(1);
 }
 
 // Velocity Verdict lead-magnet guard (2026-08-20). The static apex owns the
