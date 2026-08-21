@@ -179,6 +179,7 @@
    "what": "308s for the five Q2-2026 frozen-sector /best/ URLs (data-derived since 2026-08-16): developer-tools -> /sectors/developer-tools, plus ai-ml/fintech/climate-tech/cybersecurity -> /startups-to-watch/<slug>-q2-2026. GSC 90d on the original 404s: 48/25/23/22 impressions. Derived by scripts/best-redirect-lib.ts into data/best-redirects.json (prebuild); a lineage that drops or retargets any of the five fails the build.",
    "fixCommit": "e2219db040f05d31049149232423566d3c173ba3",
    "ancestryExpected": true,
+   "supersededBy": "Q3 2026 data now generates the 2026 /best/ routes directly. The data-derived redirect guard verifies current targets and prevents a redirect from shadowing those live pages.",
    "contentNeedles": [
     {
      "file": "pseo-site/data/best-redirects.json",
