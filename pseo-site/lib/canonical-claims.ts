@@ -16,8 +16,6 @@
  * Guarded by verify-no-regressions.ts section 53 (fails the build on revert).
  */
 export const PANEL_CLAIM = "350+";
-
-/** Numeric form of the floor for schema.org counters (userInteractionCount etc.), where a "+" suffix is invalid. */
 export const PANEL_FLOOR_NUM = 350;
 
 /** Claim form of a measured count: the locked floor once the panel clears it. */

@@ -89,7 +89,18 @@
     <link rel="stylesheet" href="/ux.css?v=20260808-2">
     <script src="/ux.js" defer></script>
   <link rel="preload" href="/inline.css" as="style">
-    <link rel="stylesheet" href="/inline.css"></head>
+    <link rel="stylesheet" href="/inline.css">  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7SV2SNZE4C"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7SV2SNZE4C');
+  </script>
+
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+</head>
 <body class="bg-dark-900 text-gray-100 font-sans antialiased">
   <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:bg-brand-500 focus:text-white focus:px-4 focus:py-2 focus:rounded focus:shadow-lg">Skip to main content</a>
 
@@ -226,13 +237,16 @@
           const attr = window.GDFattribution(form.getAttribute('data-source') || 'cheatsheet');
           const res = await fetch('https://signals.gitdealflow.com/api/subscribe', {
             method: 'POST', headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(Object.assign({ email: email, quiz_route: 'cheatsheet', quiz_route_label: 'Velocity Verdict Cheat Sheet' }, attr))
+            body: JSON.stringify(Object.assign({ email: email, quiz_route: '', quiz_route_label: 'Velocity Verdict', cohort: 'lead-magnet', tz: (function(){ try { var t = Intl.DateTimeFormat().resolvedOptions().timeZone; return t && t.indexOf('/') !== -1 ? t : undefined; } catch(e) { return undefined; } })() }, attr))
           });
           const data = await res.json();
           if (data.ok) {
-            if (window.posthog) posthog.capture('signup_verify_sent', { placement: 'cheatsheet' });
+            if (window.posthog) {
+              try { posthog.identify(email); } catch (e) {}
+              posthog.capture('lead_magnet_verify_sent', { placement: 'cheatsheet', asset: 'velocity-verdict' });
+            }
             try { sessionStorage.setItem('gdf_email', email); } catch (e) {}
-            window.location.href = '/thanks';
+            window.location.href = '/lead-magnet-thanks';
             return;
           }
           throw new Error(data.error || 'Failed');

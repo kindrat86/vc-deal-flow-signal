@@ -31,7 +31,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const description = `${portfolio.length} companies from ${fund.name}'s publicly disclosed portfolio that we track in the VC Deal Flow Signal engineering-signal panel. Independent, sources are press releases and Crunchbase only.`;
 
   return {
-    title,
+    title: { absolute: title },
     description,
     openGraph: { title, description, type: "article", url: `/fund/${slug}/portfolio` },
     twitter: { card: "summary_large_image", title, description },

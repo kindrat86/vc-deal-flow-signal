@@ -113,9 +113,9 @@ export default function FundHubPage() {
                 href={`/fund/${f.slug}`}
                 className="group block rounded-lg border border-slate-800 bg-slate-900 p-4 hover:border-slate-600 transition-all"
               >
-                <h3 className="text-gray-200 font-medium text-sm group-hover:text-sky-400 transition-colors mb-1">
+                <h2 className="text-gray-200 font-medium text-sm group-hover:text-sky-400 transition-colors mb-1">
                   {f.name}
-                </h3>
+                </h2>
                 <p className="text-gray-400 text-xs mb-1">{f.hq}</p>
                 <p className="text-gray-400 text-xs">{f.stageFocus}</p>
               </Link>

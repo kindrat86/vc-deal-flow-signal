@@ -139,6 +139,16 @@ const nextConfig: NextConfig = {
         permanent: true,
       },
       {
+        source: "/vs/harmonic-ai-vs-affinity",
+        destination: "/vs/harmonic-ai-vs-affinity",
+        permanent: true,
+      },
+      {
+        source: "/vs/crunchbase-vs-cb-insights",
+        destination: "/vs/crunchbase-vs-cb-insights",
+        permanent: true,
+      },
+      {
         // Thin programmatic twin of the rich editorial Affinity page
         // (2026-08-16). Both ranked for "vc deal flow signal vs affinity"
         // (twin pos 20.7/16 imps vs editorial pos 7.9/284 imps). Generation

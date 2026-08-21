@@ -168,7 +168,7 @@ const tiers: Tier[] = [
     forWho:
       "Use this if five names are no longer enough and you want the full field every week.",
     bullets: [
-      "350+ ranked startups across 15 sectors, refreshed weekly",
+      "140 ranked startups across 15 sectors, refreshed weekly",
       "Sector filters with five-quarter historical comparison",
       "All five signal types per startup (hiring burst, deploy frequency spike, infrastructure buildout, framework migration, deceleration)",
       "Watchlists and saved filters",

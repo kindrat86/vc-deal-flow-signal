@@ -67,8 +67,8 @@ const BEATS_BY_TIER: Record<RoadmapTier, readonly RoadmapBeat[]> = {
   dashboard: [
     {
       when: "Today",
-      what: "Lock €49/mo Dashboard. Stripe checkout, one click, your rate locked for the lifetime of the subscription.",
-      why: "The founding window (€9.97/mo) closed 2026-06-30; €49/mo is the current rate, and your rate stays locked.",
+      what: "Dashboard at €49/mo. Stripe checkout, one click, month to month.",
+      why: "Public list-price launches at €49/mo the day a regulated investor tool reviews us. The lock is a hedge against that day.",
     },
     {
       when: "Day 7",
@@ -83,7 +83,7 @@ const BEATS_BY_TIER: Record<RoadmapTier, readonly RoadmapBeat[]> = {
     {
       when: "Day 90 → 1 year",
       what: "Three to five sourcing wins traced back to the engine. €588 a year vs the expected value of one missed name at a €5K cheque (€40K).",
-      why: "The math of the Money Close is calendar-able. By twelve months you either renewed once at the same locked rate or churned with an honest reason, both are signal we use.",
+      why: "The math of the Money Close is calendar-able. By twelve months you either renewed once or churned with an honest reason, both are signal we use.",
     },
   ],
   insider: [
@@ -104,7 +104,7 @@ const BEATS_BY_TIER: Record<RoadmapTier, readonly RoadmapBeat[]> = {
     },
     {
       when: "Day 90 → 1 year",
-      what: "Twelve drops shipped, twelve weekly Insider lists, the API integrated into your stack. One renewal at locked rate.",
+      what: "Twelve drops shipped, twelve weekly Insider lists, the API integrated into your stack. One renewal, one churn decision.",
       why: "By twelve months you've crossed the lead-time × cadence × volume threshold where one extra outbound conversation per quarter compounds the cheque math.",
     },
   ],

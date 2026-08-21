@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   title:
     "You finished the 30-Day Reset, what's next",
   description:
-    "Graduation page for the 30-Day Deal Flow Reset Challenge. Three optional ways to keep using the system: free Sunday digest, €9.97/mo Dashboard, €1,997 one-time Sector Sweep. The framework + your watchlist + custom weights stay yours either way.",
+    "Graduation page for the 30-Day Deal Flow Reset Challenge. Three optional ways to keep using the system: free Sunday digest, €49/mo Dashboard, €1,997 one-time Sector Sweep. The framework + your watchlist + custom weights stay yours either way.",
   alternates: { canonical: "/challenge/done" },
   robots: { index: true, follow: true },
   openGraph: {
@@ -23,7 +23,7 @@ export const metadata: Metadata = {
 // Stack-Slide close for the Day-30 graduation. Three rungs of the value
 // ladder, free, founding-rate Dashboard, one-time Sector Sweep, each
 // priced against the standalone retail equivalent. Total stacked retail
-// anchors the €49/mo ask at ~50× value-to-price.
+// anchors the €49/mo ask against the stack value.
 const RUNGS = [
   {
     rung: "Rung 0",
@@ -221,8 +221,8 @@ export default function ChallengeDonePage() {
           </h2>
           <p className="text-gray-400 text-sm leading-relaxed mb-6">
             Stacked from least to most committed. Compare the standalone retail
-            value of each rung against its price, the founding rate on the
-            Dashboard is locked for life and never re-priced retroactively.
+            value of each rung against its price, the Dashboard is €49/mo,
+            month to month.
           </p>
           <div className="space-y-5">
             {RUNGS.map((r) => {

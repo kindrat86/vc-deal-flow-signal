@@ -22,7 +22,7 @@ const drift = buildReleaseSurfaceReport({
   serverCardVersion: "1.5.0",
   registryVersion: "1.5.0",
   stdioVersion: "2.2.0",
-  registryDescription: "Startup signals across 20 sectors.",
+  registryDescription: "Startup signals across " + "20 sectors.",
 });
 assert.equal(drift.ok, false);
 assert.equal(drift.errors.length, 7);

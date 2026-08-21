@@ -366,7 +366,8 @@ export default function FounderPage() {
               <strong className="text-gray-100">
                 €49/mo is a feature, not a price ceiling.
               </strong>{" "}
-              Founding members who joined before the cohort closed (2026-06-30) keep their price locked for life. I&rsquo;d rather have a thousand
+              Founding members who joined before
+              June 30, 2026 keep their rate for life. I&rsquo;d rather have a thousand
               people who tell five friends than a hundred people paying ten
               times more.
             </li>

@@ -184,10 +184,20 @@
     },
     "hackernoon_article": {
       "draft": "submissions/16-hackernoon-article.md",
-      "script": "manual submission (has account @TheData_7cdit42c)",
-      "status": "draft_ready",
-      "blocker": "manual paste into HN editor",
-      "priority": "P2"
+      "script": "submitted via browser_exec (logged in as @gitdealflow / mkondratyuk86@gmail.com)",
+      "status": "rejected",
+      "rejected_at": "2026-08-20",
+      "dashboard_verified_at": "2026-08-20",
+      "submitted_at": "2026-08-19",
+      "draft_id": "6a84df60a9af8641a927e1ff",
+      "track_url": "https://app.hackernoon.com/writer/tracksubmissions",
+      "title": "I Released a Public Dataset on Startup Engineering Velocity (219 Obs, 55 VC-Backed Startups)",
+      "category": "Software Engineering",
+      "tags": ["alt-data", "data-science", "github", "open-source", "venture-capital"],
+      "cover_image": "distribution/gdf-cover-1200x630.png",
+      "canonical_url_target": "https://signals.gitdealflow.com/blog/alternative-data-venture-capital",
+      "priority": "P2",
+      "next_action": "Dataset draft was rejected. Do not invent a live URL or traffic result. Separately watch the two current editorial stories in the Writer dashboard; when HackerNoon publishes one, record its public URL, then measure only verified HackerNoon referral sessions from analytics."
     },
     "wayback_machine": {
       "draft": "submissions/17-wayback-machine.md",

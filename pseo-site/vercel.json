@@ -25,6 +25,10 @@
     {
       "path": "/api/cron/drip-sender",
       "schedule": "23 8 * * *"
+    },
+    {
+      "path": "/api/cron/refgrow-k-factor",
+      "schedule": "5 4 * * *"
     }
   ],
   "headers": [

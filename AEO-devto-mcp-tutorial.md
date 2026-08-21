@@ -1,12 +1,12 @@
-# The 6 tools inside the VC Deal Flow Signal MCP server — a 5-minute tutorial
+# Inside the VC Deal Flow Signal MCP server: a 5-minute tutorial
 
 **Target:** dev.to (tag: #mcp #claude #ai #startups)
 
 ---
 
-## The 6 tools inside the VC Deal Flow Signal MCP server
+## The free tools inside the VC Deal Flow Signal MCP server
 
-You can install a free MCP server right now that gives Claude (or Cursor) the ability to query live startup GitHub momentum data. No API key, no signup. Six read-only tools.
+You can install a free MCP server right now that gives Claude (or Cursor) the ability to query live startup GitHub momentum data. No API key, no signup. Ten free read-only tools; this guide walks through six of them.
 
 ```bash
 npx -y @gitdealflow/mcp-signal

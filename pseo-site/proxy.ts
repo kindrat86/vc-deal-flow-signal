@@ -165,11 +165,28 @@ function robotsDirectiveFor(pathname: string): string {
   return shouldNoindex(pathname) ? "noindex, follow" : INDEX_ROBOTS_DIRECTIVE;
 }
 
+/**
+ * Genuinely private / user-specific surfaces. These must NEVER be edge-cached
+ * (their HTML varies per viewer), so they get `private, no-store` below.
+ * This is deliberately a NARROWER set than shouldNoindex(): noindex is an
+ * *indexing* decision (pruned zero-impression pSEO pages, research-paper
+ * leaves) that has nothing to do with cacheability. §55b (2026-08-16) folded
+ * pruned pages into shouldNoindex() but publicHtmlCacheControl() then keyed
+ * no-store off shouldNoindex(), silently turning 477 public pSEO pages into
+ * `private, no-store` origin-thrash (TTFB regression, watchdog 2026-08-17).
+ * Fix: cache privacy keys off THIS list, indexing off shouldNoindex().
+ */
+function isPrivateNoStorePath(pathname: string): boolean {
+  return NOINDEX_PREFIXES.some((prefix) => pathname.startsWith(prefix));
+}
+
 function publicHtmlCacheControl(pathname: string): string {
   // Public marketing / pSEO pages are effectively static between deploys or
   // weekly data refreshes, so edge-cache them aggressively for crawlers and
-  // humans. Keep noindex/account-like pages private below.
-  if (shouldNoindex(pathname)) {
+  // humans. Only genuinely private/user-specific surfaces (account, receipts,
+  // dashboard, login, ...) are no-store. Pruned noindex pages are still public
+  // and MUST keep s-maxage so they don't thrash the origin.
+  if (isPrivateNoStorePath(pathname)) {
     return "private, no-cache, no-store, max-age=0, must-revalidate";
   }
   // Versioned public asset (?v=YYYYMMDD-N): content changes ship a new URL,

@@ -4,6 +4,7 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import CartPreview from "@/components/CartPreview";
+import CheckoutDistinctId from "@/components/CheckoutDistinctId";
 import SectorIntent from "@/components/SectorIntent";
 import TrialClose from "@/components/TrialClose";
 import { DataNerdCharacterCard } from "@/components/DataNerdCharacterCard";
@@ -135,7 +136,7 @@ const OTO_LADDER = [
   {
     rung: "Rung 2",
     label: "Insider Circle",
-    price: "€177 / mo",
+    price: "€197 / mo",
     purpose: "Private Telegram + spike alerts + monthly briefing. €20 off first month, this funnel only.",
     href: "/pricing#insider-circle",
     tone: "teal",
@@ -143,15 +144,15 @@ const OTO_LADDER = [
   {
     rung: "Rung 3",
     label: "Sector Sweep (post-purchase OTO)",
-    price: "€1,797",
+    price: "€1,997",
     purpose: "One-click upsell on the thank-you page. Full panel + 60-min walkthrough, €200 off standalone.",
     href: "/firstlook/thanks",
     tone: "emerald",
   },
   {
     rung: "Rung 4",
-    label: "Dashboard (annual)",
-    price: "€588 / yr",
+    label: "Dashboard",
+    price: "€49 / mo",
     purpose: "All sectors, real-time scoring. The retention seat.",
     href: "/pricing",
     tone: "sky",
@@ -247,7 +248,7 @@ export default function FirstLookPage() {
           "@type": "AggregateOffer",
           priceCurrency: "EUR",
           lowPrice: "7.00",
-          // €7 base + €19 Methodology Vault bump. Sector Sweep €1,797 is
+          // €7 base + €19 Methodology Vault bump. Sector Sweep €1,997 is
           // the OTO #1 rung on /firstlook/thanks, surfaced to its own
           // Product/Offer entity over there, not aggregated here, because
           // it is post-purchase and not selectable on /firstlook itself.
@@ -876,9 +877,9 @@ export default function FirstLookPage() {
               Insider Circle
             </Link>{" "}
             (private Telegram + spike alerts + monthly briefing) at{" "}
-            <strong className="text-gray-100">€177 for the first month</strong>{" "}
-€20 off the standard €197. The invite expires when the next
-            Monday digest goes out, and never re-appears at this price.
+            <strong className="text-gray-100">€197/mo</strong>{" "}
+(the standard rate). The invite expires when the next
+            Monday digest goes out, and never re-appears.
             Decline it and your €7 First Look Pass still works exactly the
             same way.
           </p>
@@ -1050,6 +1051,7 @@ five startups every Monday, sector-tagged, no card.
           </div>
           <form action="/api/checkout/session" method="POST" className="shrink-0">
             <input type="hidden" name="tier" value="firstlook" />
+            <CheckoutDistinctId />
             <button
               type="submit"
               className="inline-flex items-center gap-1.5 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-sm px-4 py-2.5 shadow-md"

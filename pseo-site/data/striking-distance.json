@@ -4,84 +4,120 @@
   "imps": 11149,
   "clicks": 2,
   "pos": 9.3,
-  "floor": 7
+  "floor": 7,
+  "window": "28d"
+ },
+ {
+  "href": "/research-paper/lewis-2020-rag-retrieval-augmented-generation",
+  "imps": 10768,
+  "clicks": 0,
+  "pos": 9.6,
+  "floor": 10,
+  "window": "28d"
  },
  {
   "href": "/research-paper/ouyang-2022-instructgpt-rlhf",
   "imps": 6093,
-  "clicks": 2,
-  "pos": 8.7,
-  "floor": 10
+  "clicks": 0,
+  "pos": 8.5,
+  "floor": 10,
+  "window": "28d"
  },
  {
   "href": "/vs/dealroom-vs-pitchbook",
   "imps": 4274,
-  "clicks": 4,
-  "pos": 7.7,
-  "floor": 10
+  "clicks": 0,
+  "pos": 8.8,
+  "floor": 10,
+  "window": "28d"
  },
  {
   "href": "/vs/harmonic-ai-vs-pitchbook",
   "imps": 3466,
-  "clicks": 8,
-  "pos": 7.1,
-  "floor": 10
+  "clicks": 1,
+  "pos": 7.2,
+  "floor": 10,
+  "window": "28d"
  },
  {
   "href": "/research-paper/bai-2022-constitutional-ai",
   "imps": 1862,
-  "clicks": 2,
-  "pos": 9.2,
-  "floor": 9
+  "clicks": 0,
+  "pos": 8.9,
+  "floor": 9,
+  "window": "28d"
+ },
+ {
+  "href": "/research-paper/brown-2020-language-models-are-few-shot-learners",
+  "imps": 1066,
+  "clicks": 0,
+  "pos": 9.6,
+  "floor": 10,
+  "window": "28d"
  },
  {
   "href": "/answers/free-harmonic-ai-alternative-2026",
   "imps": 898,
-  "clicks": 11,
-  "pos": 9.8,
-  "floor": 10
+  "clicks": 2,
+  "pos": 13.7,
+  "floor": 10,
+  "window": "28d"
+ },
+ {
+  "href": "/research-paper/wei-2022-chain-of-thought-prompting",
+  "imps": 765,
+  "clicks": 0,
+  "pos": 9.4,
+  "floor": 10,
+  "window": "28d"
  },
  {
   "href": "/faq",
   "imps": 631,
-  "clicks": 1,
-  "pos": 7.3,
-  "floor": 3
+  "clicks": 0,
+  "pos": 10.1,
+  "floor": 3,
+  "window": "28d"
  },
  {
   "href": "/compare/best-ai-deal-sourcing-tools-2026",
   "imps": 561,
-  "clicks": 3,
-  "pos": 11.8,
-  "floor": 10
+  "clicks": 0,
+  "pos": 6.9,
+  "floor": 10,
+  "window": "28d"
  },
  {
   "href": "/glossary",
   "imps": 537,
   "clicks": 0,
-  "pos": 12.3,
-  "floor": 6
+  "pos": 8.3,
+  "floor": 6,
+  "window": "28d"
  },
  {
   "href": "/vs/pitchbook-vs-tracxn",
   "imps": 414,
-  "clicks": 2,
-  "pos": 10.3,
-  "floor": 10
+  "clicks": 1,
+  "pos": 15.6,
+  "floor": 10,
+  "window": "28d"
  },
  {
   "href": "/acquirer/google",
   "imps": 386,
-  "clicks": 1,
-  "pos": 11.8,
-  "floor": 10
+  "clicks": 0,
+  "pos": 14,
+  "floor": 10,
+  "window": "28d"
  },
  {
   "href": "/compare/best-alternative-data-tools-for-angel-investors",
   "imps": 380,
-  "clicks": 1,
-  "pos": 10.4,
-  "floor": 10
+  "clicks": 0,
+  "pos": 15.3,
+  "floor": 10,
+  "window": "28d"
  },
  {
   "href": "/markets",
@@ -93,37 +129,42 @@
  {
   "href": "/answers/what-is-glama-mcp-and-how-do-i-use-it",
   "imps": 311,
-  "clicks": 1,
-  "pos": 7.7,
-  "floor": 10
+  "clicks": 0,
+  "pos": 7.1,
+  "floor": 10,
+  "window": "28d"
  },
  {
   "href": "/acquirer/stripe",
   "imps": 310,
   "clicks": 0,
   "pos": 9.0,
-  "floor": 10
+  "floor": 10,
+  "window": "28d"
  },
  {
   "href": "/acquirer/cloudflare",
   "imps": 308,
   "clicks": 0,
   "pos": 8.4,
-  "floor": 10
+  "floor": 10,
+  "window": "28d"
  },
  {
   "href": "/compare/vc-deal-flow-signal-vs-affinity-relationship-intelligence",
   "imps": 284,
   "clicks": 0,
-  "pos": 7.9,
-  "floor": 8
+  "pos": 8.6,
+  "floor": 8,
+  "window": "28d"
  },
  {
   "href": "/acquirer/okta",
   "imps": 262,
   "clicks": 0,
-  "pos": 7.7,
-  "floor": 8
+  "pos": 9.6,
+  "floor": 8,
+  "window": "28d"
  },
  {
   "href": "/from-stars-to-seed/remotion",
@@ -135,30 +176,34 @@
  {
   "href": "/vs/dealroom-vs-crunchbase",
   "imps": 251,
-  "clicks": 1,
-  "pos": 11.5,
-  "floor": 8
+  "clicks": 0,
+  "pos": 19.4,
+  "floor": 8,
+  "window": "28d"
  },
  {
   "href": "/blog/47-alternative-data-sources-angel-investors-2026",
   "imps": 250,
   "clicks": 0,
-  "pos": 7.0,
-  "floor": 8
+  "pos": 6.4,
+  "floor": 8,
+  "window": "28d"
  },
  {
   "href": "/compare/vc-deal-flow-signal-vs-signalfire-beacon",
   "imps": 249,
-  "clicks": 1,
-  "pos": 7.7,
-  "floor": 8
+  "clicks": 0,
+  "pos": 14.4,
+  "floor": 8,
+  "window": "28d"
  },
  {
   "href": "/acquirer/snowflake",
   "imps": 242,
   "clicks": 0,
-  "pos": 9.3,
-  "floor": 8
+  "pos": 10.7,
+  "floor": 8,
+  "window": "28d"
  },
  {
   "href": "/from-stars-to-seed/qdrant",
@@ -178,36 +223,65 @@
   "href": "/methodology",
   "imps": 231,
   "clicks": 0,
-  "pos": 7.4,
-  "floor": 8
+  "pos": 8.5,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/vs/crunchbase-vs-tracxn",
+  "imps": 215,
+  "clicks": 0,
+  "pos": 12.3,
+  "floor": 8,
+  "window": "28d"
  },
  {
   "href": "/vs/dealroom-vs-tracxn",
   "imps": 202,
-  "clicks": 1,
-  "pos": 10.4,
-  "floor": 8
+  "clicks": 0,
+  "pos": 16.8,
+  "floor": 8,
+  "window": "28d"
  },
  {
   "href": "/predict",
   "imps": 201,
-  "clicks": 1,
-  "pos": 8.6,
-  "floor": 3
+  "clicks": 0,
+  "pos": 19.5,
+  "floor": 3,
+  "window": "28d"
+ },
+ {
+  "href": "/vs/specter-vs-harmonic-ai",
+  "imps": 197,
+  "clicks": 3,
+  "pos": 7.6,
+  "floor": 8,
+  "window": "28d"
  },
  {
   "href": "/acquirer/databricks",
   "imps": 195,
-  "clicks": 2,
-  "pos": 9.1,
-  "floor": 8
+  "clicks": 0,
+  "pos": 9.5,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/vs/cb-insights-vs-crunchbase",
+  "imps": 193,
+  "clicks": 0,
+  "pos": 15.3,
+  "floor": 8,
+  "window": "28d"
  },
  {
   "href": "/answers/github-data-for-startup-investors",
   "imps": 193,
   "clicks": 0,
-  "pos": 9.4,
-  "floor": 8
+  "pos": 9.6,
+  "floor": 8,
+  "window": "28d"
  },
  {
   "href": "/vs/specter-vs-crunchbase",
@@ -217,11 +291,20 @@
   "floor": 8
  },
  {
+  "href": "/startup/dfinity/q2-2026",
+  "imps": 189,
+  "clicks": 0,
+  "pos": 6.2,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
   "href": "/acquirer/oracle",
   "imps": 189,
   "clicks": 0,
-  "pos": 9.2,
-  "floor": 8
+  "pos": 8.9,
+  "floor": 8,
+  "window": "28d"
  },
  {
   "href": "/acquirer/adobe",
@@ -231,18 +314,28 @@
   "floor": 8
  },
  {
+  "href": "/vs/affinity-vs-crunchbase",
+  "imps": 173,
+  "clicks": 0,
+  "pos": 12.4,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
   "href": "/blog",
   "imps": 168,
-  "clicks": 1,
+  "clicks": 0,
   "pos": 12.1,
-  "floor": 8
+  "floor": 8,
+  "window": "28d"
  },
  {
   "href": "/pricing",
   "imps": 160,
-  "clicks": 1,
-  "pos": 8.1,
-  "floor": 4
+  "clicks": 0,
+  "pos": 6.3,
+  "floor": 4,
+  "window": "28d"
  },
  {
   "href": "/acquirer/veeva",
@@ -259,6 +352,14 @@
   "floor": 8
  },
  {
+  "href": "/research-paper/vaswani-2017-attention-is-all-you-need",
+  "imps": 147,
+  "clicks": 1,
+  "pos": 17.3,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
   "href": "/acquirer/atlassian",
   "imps": 147,
   "clicks": 0,
@@ -266,17 +367,18 @@
   "floor": 8
  },
  {
+  "href": "/compare/vc-deal-flow-signal-vs-dealroom",
+  "imps": 142,
+  "clicks": 0,
+  "pos": 8.8,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
   "href": "/compare/best-deal-flow-tools-ai-investors",
   "imps": 142,
   "clicks": 0,
   "pos": 11.3,
-  "floor": 8
- },
- {
-  "href": "/compare/vc-deal-flow-signal-vs-dealroom",
-  "imps": 142,
-  "clicks": 0,
-  "pos": 8.2,
   "floor": 8
  },
  {
@@ -301,18 +403,44 @@
   "floor": 8
  },
  {
+  "href": "/vs/affinity-vs-harmonic-ai",
+  "imps": 132,
+  "clicks": 0,
+  "pos": 6.0,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/vs/harmonic-ai-vs-crunchbase",
+  "imps": 132,
+  "clicks": 0,
+  "pos": 11.2,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/vs/harmonic-ai-vs-tracxn",
+  "imps": 128,
+  "clicks": 1,
+  "pos": 5.1,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
   "href": "/acquirer/ibm",
   "imps": 123,
   "clicks": 0,
-  "pos": 12.3,
-  "floor": 8
+  "pos": 17.1,
+  "floor": 8,
+  "window": "28d"
  },
  {
   "href": "/receipts",
   "imps": 122,
-  "clicks": 3,
-  "pos": 10.8,
-  "floor": 2
+  "clicks": 1,
+  "pos": 8.3,
+  "floor": 2,
+  "window": "28d"
  },
  {
   "href": "/compare/gitdealflow-vs-crunchbase-for-solo-angels",
@@ -325,36 +453,41 @@
   "href": "/acquirer/workday",
   "imps": 116,
   "clicks": 0,
-  "pos": 9.7,
-  "floor": 8
+  "pos": 11.0,
+  "floor": 8,
+  "window": "28d"
  },
  {
   "href": "/compare/best-free-deal-flow-tools-2026",
   "imps": 114,
   "clicks": 2,
-  "pos": 8.6,
-  "floor": 8
+  "pos": 5.3,
+  "floor": 8,
+  "window": "28d"
  },
  {
   "href": "/acquirer/block",
   "imps": 113,
   "clicks": 0,
-  "pos": 8.7,
-  "floor": 8
+  "pos": 9.8,
+  "floor": 8,
+  "window": "28d"
  },
  {
   "href": "/signal/clickhouse",
   "imps": 110,
-  "clicks": 2,
-  "pos": 9.9,
-  "floor": 8
+  "clicks": 0,
+  "pos": 13,
+  "floor": 8,
+  "window": "28d"
  },
  {
   "href": "/compare/best-deal-flow-tools-european-investors",
   "imps": 109,
   "clicks": 0,
-  "pos": 9.3,
-  "floor": 8
+  "pos": 12.3,
+  "floor": 8,
+  "window": "28d"
  },
  {
   "href": "/from-stars-to-seed/together-ai",
@@ -367,8 +500,9 @@
   "href": "/acquirer/nvidia",
   "imps": 105,
   "clicks": 1,
-  "pos": 8.9,
-  "floor": 8
+  "pos": 9.4,
+  "floor": 8,
+  "window": "28d"
  },
  {
   "href": "/acquirer/hubspot",
@@ -381,14 +515,384 @@
   "href": "/acquirer/amazon-aws",
   "imps": 102,
   "clicks": 0,
-  "pos": 11.8,
-  "floor": 8
+  "pos": 11.1,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/from-stars-to-seed",
+  "imps": 100,
+  "clicks": 0,
+  "pos": 13.3,
+  "floor": 8,
+  "window": "28d"
  },
  {
   "href": "/founder/leerob",
   "imps": 100,
   "clicks": 0,
-  "pos": 8.3,
-  "floor": 8
+  "pos": 7.6,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/vs/harmonic-ai-vs-dealroom",
+  "imps": 87,
+  "clicks": 0,
+  "pos": 6.9,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/vs/dealroom-vs-crunchbase",
+  "imps": 79,
+  "clicks": 0,
+  "pos": 19.3,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/vs/dealroom-vs-pitchbook",
+  "imps": 70,
+  "clicks": 0,
+  "pos": 15.0,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/alternatives",
+  "imps": 68,
+  "clicks": 0,
+  "pos": 16.6,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/wins",
+  "imps": 65,
+  "clicks": 0,
+  "pos": 11.8,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/alternatives/harmonic-ai",
+  "imps": 58,
+  "clicks": 0,
+  "pos": 19.1,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/answers",
+  "imps": 56,
+  "clicks": 0,
+  "pos": 13.7,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/predicted",
+  "imps": 45,
+  "clicks": 0,
+  "pos": 8.8,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/startup/margelo",
+  "imps": 45,
+  "clicks": 0,
+  "pos": 10.2,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/compare/best-deal-flow-tools-angel-investors",
+  "imps": 39,
+  "clicks": 0,
+  "pos": 12.0,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/vs/forager-ai-vs-crunchbase",
+  "imps": 39,
+  "clicks": 0,
+  "pos": 7.7,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/compare/vc-deal-flow-signal-vs-harmonic-ai",
+  "imps": 38,
+  "clicks": 0,
+  "pos": 10.6,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/answers/best-pitchbook-alternative-for-solo-investors",
+  "imps": 34,
+  "clicks": 0,
+  "pos": 9.5,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/blog/what-is-deal-flow-signal",
+  "imps": 33,
+  "clicks": 0,
+  "pos": 10.9,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/citations",
+  "imps": 33,
+  "clicks": 0,
+  "pos": 12.3,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/acquirer/intel",
+  "imps": 32,
+  "clicks": 0,
+  "pos": 17.9,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/funnels",
+  "imps": 30,
+  "clicks": 0,
+  "pos": 17.7,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/vs/harmonic-ai-vs-affinity",
+  "imps": 30,
+  "clicks": 0,
+  "pos": 6.9,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/compare/best-deal-flow-tools-vc-firms-2026",
+  "imps": 28,
+  "clicks": 0,
+  "pos": 10.0,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/zh/about",
+  "imps": 28,
+  "clicks": 0,
+  "pos": 14.4,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/vs/harmonic-ai-vs-dealroom",
+  "imps": 27,
+  "clicks": 0,
+  "pos": 10.0,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/signal/lovable",
+  "imps": 27,
+  "clicks": 0,
+  "pos": 8.4,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/blog/i-tracked-4200-startup-github-orgs-six-months",
+  "imps": 26,
+  "clicks": 1,
+  "pos": 7.5,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/about/founder",
+  "imps": 25,
+  "clicks": 0,
+  "pos": 16.2,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/book",
+  "imps": 25,
+  "clicks": 0,
+  "pos": 17.3,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/compare/vc-deal-flow-signal-vs-pitchbook",
+  "imps": 25,
+  "clicks": 0,
+  "pos": 16.4,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/founder/levelsio",
+  "imps": 25,
+  "clicks": 0,
+  "pos": 13.3,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/standards",
+  "imps": 25,
+  "clicks": 0,
+  "pos": 15.3,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/answers/how-to-add-mcp-server-to-cursor",
+  "imps": 24,
+  "clicks": 0,
+  "pos": 17.0,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/enterprise",
+  "imps": 24,
+  "clicks": 0,
+  "pos": 8.2,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/founder/mitchellh",
+  "imps": 24,
+  "clicks": 0,
+  "pos": 16.2,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/wikidata",
+  "imps": 24,
+  "clicks": 0,
+  "pos": 15.8,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/press",
+  "imps": 23,
+  "clicks": 0,
+  "pos": 9.4,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/a2a/vercel-ai-sdk",
+  "imps": 22,
+  "clicks": 0,
+  "pos": 8.2,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/acquirer/servicenow",
+  "imps": 22,
+  "clicks": 0,
+  "pos": 9.4,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/fund/iconiq",
+  "imps": 22,
+  "clicks": 0,
+  "pos": 18.4,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/zh/methodology",
+  "imps": 22,
+  "clicks": 0,
+  "pos": 11.8,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/acquirer/apple",
+  "imps": 21,
+  "clicks": 0,
+  "pos": 12.5,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/compare/best-deal-flow-tools-seed-investors",
+  "imps": 21,
+  "clicks": 0,
+  "pos": 10.6,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/compare/crunchbase-alternative-for-angel-investors",
+  "imps": 21,
+  "clicks": 0,
+  "pos": 17.7,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/developers",
+  "imps": 21,
+  "clicks": 0,
+  "pos": 4,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/mirrors",
+  "imps": 21,
+  "clicks": 0,
+  "pos": 14.9,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/research",
+  "imps": 21,
+  "clicks": 0,
+  "pos": 20,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/startup/bigprof-software",
+  "imps": 21,
+  "clicks": 0,
+  "pos": 19.8,
+  "floor": 8,
+  "window": "28d"
+ },
+ {
+  "href": "/partners",
+  "imps": 20,
+  "clicks": 0,
+  "pos": 10.1,
+  "floor": 8,
+  "window": "28d"
  }
 ]

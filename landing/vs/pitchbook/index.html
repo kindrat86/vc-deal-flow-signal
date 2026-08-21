@@ -89,12 +89,20 @@
 <script>
     !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split('.');2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement('script')).type='text/javascript',p.async=!0,p.src=s.api_host+'/static/array.js',(r=t.getElementsByTagName('script')[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a='posthog',u.people=u.people||[],u.toString=function(t){var e='posthog';return'posthog'!==a&&(e+='.'+a),t||(e+=' (stub)'),e},u.people.toString=function(){return u.toString(1)+'.people (stub)'},o='init capture register register_once register_for_session unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group setPersonProperties resetPersonProperties setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags'.split(' '),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
     (function(){
-      function _init(){ if(/^https?:$/.test(location.protocol)) posthog.init('phc_lyZCgvTpicjLzAO3rY2GhxuX5WUc5jQjP8ZVwwJqauX', {api_host: 'https://eu.i.posthog.com', persistence: 'memory', person_profiles: 'identified_only'}); }
+      function _init(){ if(/^https?:$/.test(location.protocol)) posthog.init('phc_lyZCgvTpicjLzAO3rY2GhxuX5WUc5jQjP8ZVwwJqauX', {api_host: 'https://eu.i.posthog.com', persistence: (navigator.doNotTrack=='1'||window.globalPrivacyControl)?'memory':'localStorage+cookie', disable_session_recording: (navigator.doNotTrack=='1'||window.globalPrivacyControl), session_recording: {maskAllTextInputs: true, maskTextSelector: '#success-email'}, person_profiles: 'identified_only'}); }
       if('requestIdleCallback' in window){requestIdleCallback(_init,{timeout:2500});} else {setTimeout(_init,2000);}
     })();
   </script>
 <script src="/ux.js" defer></script>
-  </head>
+    <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7SV2SNZE4C"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7SV2SNZE4C');
+  </script>
+</head>
 <body style="font-family:-apple-system,system-ui,sans-serif;max-width:760px;margin:60px auto;padding:0 20px;line-height:1.7;color:#1a1a1a;background:#fff">
     <header style="margin-bottom:40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem"><a href="https://gitdealflow.com" style="font-weight:800;font-size:1.1rem;color:#1a1a1a;text-decoration:none;min-height:44px;display:inline-flex;align-items:center">GitDealFlow</a><nav aria-label="Primary navigation" style="display:flex;gap:1.25rem"><a href="https://gitdealflow.com/pricing" style="color:#0066cc;text-decoration:none;min-height:44px;display:inline-flex;align-items:center">Pricing</a><a href="https://signals.gitdealflow.com" style="color:#0066cc;text-decoration:none;min-height:44px;display:inline-flex;align-items:center">Live signals</a></nav></header>
 
@@ -110,14 +118,14 @@
             <tr style="border-bottom:1px solid #e5e7eb"><td style="padding:.75rem;font-weight:600">Signal type</td><td style="padding:.75rem;background:#f0f7ff">Leading indicator (21-47 days ahead of announcements)</td><td style="padding:.75rem">Lagging indicator (after deals are reported)</td></tr>
             <tr style="border-bottom:1px solid #e5e7eb"><td style="padding:.75rem;font-weight:600">Coverage</td><td style="padding:.75rem;background:#f0f7ff">350+ startup GitHub orgs, 15 sectors, pre-seed to Series B</td><td style="padding:.75rem">3.4M+ companies globally, all private capital: VC, PE, M&A</td></tr>
             <tr style="border-bottom:1px solid #e5e7eb"><td style="padding:.75rem;font-weight:600">Free tier</td><td style="padding:.75rem;background:#f0f7ff">Sunday digest, trending board, sector search, MCP server, Chrome extension</td><td style="padding:.75rem">No free tier. Trial available on request.</td></tr>
-            <tr style="border-bottom:1px solid #e5e7eb"><td style="padding:.75rem;font-weight:600">Starting price</td><td style="padding:.75rem;background:#f0f7ff">Free / EUR 49/mo (Dashboard, or EUR 490/yr)</td><td style="padding:.75rem">~$20,000-$30,000/year per seat (subscription-based)</td></tr>
+            <tr style="border-bottom:1px solid #e5e7eb"><td style="padding:.75rem;font-weight:600">Starting price</td><td style="padding:.75rem;background:#f0f7ff">Free / EUR 49/mo (Dashboard, or EUR 441/yr)</td><td style="padding:.75rem">~$20,000-$30,000/year per seat (subscription-based)</td></tr>
             <tr style="border-bottom:1px solid #e5e7eb"><td style="padding:.75rem;font-weight:600">API access</td><td style="padding:.75rem;background:#f0f7ff">Free: MCP server, OpenAPI 3.1, A2A endpoint, NLWeb, JSON/CSV</td><td style="padding:.75rem">Enterprise-tier API, bundled with platform subscription</td></tr>
             <tr style="border-bottom:1px solid #e5e7eb"><td style="padding:.75rem;font-weight:600">Best for</td><td style="padding:.75rem;background:#f0f7ff">Angels, scouts, solo GPs, seed funds sourcing pre-deck</td><td style="padding:.75rem">Institutional investors: fund reporting, LP updates, cap table analysis</td></tr>
             <tr><td style="padding:.75rem;font-weight:600">Methodology</td><td style="padding:.75rem;background:#f0f7ff">Open: SSRN preprint, CC BY 4.0 data, regression published</td><td style="padding:.75rem">Proprietary: analyst-driven, not publicly auditable in full</td></tr>
         </table>
 
         <h2>Pricing and Value: A 200x Cost Differential</h2>
-        <p>PitchBook pricing starts at approximately $20,000-$30,000 per year for a single-seat license, with multi-seat enterprise agreements running higher. It is designed for institutional funds with dedicated research budgets. GitDealFlow's free tier provides the core sourcing signal (Sunday digest, trending board, sector search, MCP server access) at zero cost. The full Dashboard tier at EUR 49/month (EUR 490/year) includes 60+ ranked startups, weekly CSV exports, the SSRN backtest panel, monthly sector deep-dives, and a custom watchlist build.</p>
+        <p>PitchBook pricing starts at approximately $20,000-$30,000 per year for a single-seat license, with multi-seat enterprise agreements running higher. It is designed for institutional funds with dedicated research budgets. GitDealFlow's free tier provides the core sourcing signal (Sunday digest, trending board, sector search, MCP server access) at zero cost. The full Dashboard tier at EUR 49/month (EUR 441/year) includes 140+ ranked startups, weekly CSV exports, the SSRN backtest panel, monthly sector deep-dives, and a custom watchlist build.</p>
         <p>For a solo GP writing EUR 5k-50k cheques, the cost comparison is not close: GitDealFlow's entire annual Dashboard subscription costs less than one day of PitchBook access. The tools serve different buyer profiles. PitchBook is built for funds that need to produce quarterly LP reports with institutional-grade data. GitDealFlow is built for investors who need to find the deal before it becomes reportable.</p>
 
         <h2>Why Code-Side Sourcing Is a Leading Signal While Financial Databases Are Lagging</h2>

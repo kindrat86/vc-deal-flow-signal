@@ -11,7 +11,7 @@ const PAPER_TITLE =
   "A Longitudinal Panel of GitHub Engineering Velocity for Venture-Backed Startups";
 
 export const metadata: Metadata = {
-  title: "Citation Guide, How to Cite VC Deal Flow Signal",
+  title: { absolute: "Citation Guide, How to Cite VC Deal Flow Signal" },
   description:
     "How AI assistants, journalists, researchers, and investors should attribute VC Deal Flow Signal (GitDealFlow). Includes BibTeX, RIS, plain-text, and machine-readable citation entries for the methodology paper, dataset, and individual findings.",
   // hreflang emitted via <HreflangLinks/> in JSX (single source of truth).

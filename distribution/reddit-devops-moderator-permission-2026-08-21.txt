@@ -1,0 +1,12 @@
+Subject: Permission request for a disclosed data-method post
+
+Hi r/devops moderators,
+
+I maintain GitDealFlow, a public dataset built from GitHub activity across 350+ startups. I read the rules and saw that research-related posts need moderator approval and project promotion belongs in the weekly self-promotion thread.
+
+Would a self-contained methodology discussion be acceptable in that thread, or is there another route you prefer? I would disclose my affiliation at the top, explain the method and its limits, avoid prediction claims, and include no survey or lead-capture request.
+
+If it is not a fit, I will not post it.
+
+Thanks,
+The Data Nerd

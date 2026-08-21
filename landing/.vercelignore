@@ -63,20 +63,27 @@ scripts/*
 !scripts/verify-no-dashes.mjs
 !scripts/verify-css-preloads.mjs
 !scripts/verify-pricing-offers.mjs
-!scripts/verify-author-identity.mjs
-
 !scripts/verify-all.mjs
+!scripts/verify-author-identity.mjs
+!scripts/verify-crawl-proxy.mjs
+!scripts/verify-claims.mjs
+!scripts/indexnow-ping.mjs
 
 # NEVER add a bare `scripts/` line. It reads like the right hardening, churnlens
 # and carshake both have one, and here it fails every deploy — see above.
 #
-# DO NOT add these — they are served on purpose:
-#   agents.md, llms.txt, llms-full.txt, ai.txt      -> AI/AEO discovery surfaces
+# DO NOT add these to .vercelignore — they are served on purpose as static files:
+#   agents.md                                       -> AI/AEO discovery surface (markdown)
 #   <hex>.txt                                       -> IndexNow key verification
 #   google*.html, BingSiteAuth.xml                  -> search-engine verification
 #   mcp-demo.gif                                    -> see CLAUDE.md, do not remove
 #   data/startup-ma-statistics/data.csv             -> CC BY datasets, each cited
 #   research/vc-deal-flow-signal-2026/data.csv         from its own landing page
+#
+# NOTE: the AI discovery files are now llms.src.txt, llms-full.src.txt, ai.src.txt,
+# agents.src.txt. Their PUBLIC paths (/llms.txt etc.) are served by api/crawl-proxy.js
+# (which logs bot_crawl to PostHog), so the .src source files have no public /llms.txt
+# static twin and the rewrite can fire. The .src files themselves stay static (harmless).
 
 # --- agent working files ---
 # Preventive. carshake shipped 1,171 files this way on 2026-07-26 — a full

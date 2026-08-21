@@ -962,7 +962,15 @@ so even the free content respects your attention.
             /code-side-sourcing
           </Link>
           {" "}, what it replaces, the five first principles, who practises it,
-          and the open methodology that grounds it.
+          and the open methodology that grounds it. For the short answer to
+          what a{" "}
+          <Link
+            href="/blog/what-is-deal-flow-signal"
+            className="text-amber-300 hover:text-amber-200 underline decoration-dotted"
+          >
+            deal flow signal
+          </Link>
+          {" "}is, read the full guide.
         </p>
       </section>
 
@@ -1143,7 +1151,7 @@ fine, but slow, or had been reading the same
           on /firstlook + /walkthrough but the home reader (who never
           clicks through) saw price tiers without value anchors. Eight
           stack lines, anchored against standalone equivalents, total
-          €1,728 vs €49/mo current rate. Risk-reversal sticker
+          €1,728 vs €49/mo. Risk-reversal sticker
           (30-day guarantee) included as final stack line. */}
       <HomeOfferStack />
 
@@ -1591,11 +1599,11 @@ one calm read every Sunday. The other two lanes are only for when a
               className="mt-[0.6rem] inline-block h-1.5 w-1.5 shrink-0 rounded-full bg-amber-400"
             />
             <span>
-              <strong className="text-amber-300">If the founding rate</strong>{" "}
-              locks forever for everyone who joins before the cohort closes -
-              and the public price is already scheduled to step to €29/€197
-              after, does the cost of waiting one more week feel{" "}
-              <em>cheaper</em> than the cost of locking in tonight?
+              <strong className="text-amber-300">If the founding window</strong>{" "}
+              already closed on June 30, exactly as promised - and founding
+              members still keep their rate for life - does the next deadline
+              on this site feel like one you should{" "}
+              <em>believe</em>?
             </span>
           </li>
         </ul>

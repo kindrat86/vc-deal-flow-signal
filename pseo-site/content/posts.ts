@@ -4222,6 +4222,13 @@ const TOFU_POSTS: BlogPost[] = [
 allPosts.push(...TOFU_POSTS);
 allPosts.push(...SOURCING_POSTS); // §51 sourcing cluster
 
+// §56 legacy-posts sync: the `posts` export must carry the full merged set
+// (hub + AI-corpus importers read `posts`, not allPosts).
+const baseSlugs = new Set(posts.map((p) => p.slug));
+if (baseSlugs.size < 39) {
+  console.warn(`[posts.ts] baseSlugs floor failed: ${baseSlugs.size} < 39`);
+}
+
 try {
   // eslint-disable-next-line @typescript-eslint/no-require-imports
   const { signalReport } = require("./signal-report-latest");

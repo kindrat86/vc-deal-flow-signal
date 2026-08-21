@@ -25,7 +25,7 @@ import {
 export const dynamic = "force-static";
 
 export const metadata: Metadata = {
-  title: `${DATA_NERD_NAME}, character bible · VC Deal Flow Signal`,
+  title: { absolute: `${DATA_NERD_NAME}, character bible · VC Deal Flow Signal` },
   description:
     "The pseudonymous narrator behind VC Deal Flow Signal: identity archetype (Reluctant Reporter), backstory, six parables, eight polarities, three character flaws, seven voice rules, current weekly status, twelve-month commitments. Character bible, implemented under the anonymity rule.",
   alternates: { canonical: "/data-nerd" },

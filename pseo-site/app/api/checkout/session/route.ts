@@ -7,10 +7,19 @@ import {
   BUMPS,
   type BumpKey,
 } from "@/lib/stripe-tiers";
+import { getReferralAttribution } from "@/lib/referrals";
+import { isReferralEligibleTier } from "@/lib/referral-core";
 
 export const dynamic = "force-dynamic";
 
 const SITE_ORIGIN = "https://signals.gitdealflow.com";
+
+// SEPA Direct Debit is the EU-standard card fallback (confirmed active on the
+// account). Surface it on the subscription tiers and the high-ticket €1,997
+// Sector Sweep, where funds and offices routinely pay by direct debit or bank
+// transfer rather than card. Micro-trips (€1/€7/€19) stay card-only: SEPA's
+// mandate + delayed settlement adds friction with no benefit at that price.
+const SEPA_TIERS: ReadonlySet<string> = new Set(["dashboard", "insider", "sector_sweep"]);
 
 // Variant tag must stay short (Stripe metadata caps each value at 500 chars)
 // and ASCII-safe. We accept up to 32 chars matching this shape; anything
@@ -43,6 +52,8 @@ type CheckoutInput = {
   bump: string | null;
   variant: string | null;
   email: string | null;
+  ph_distinct_id: string | null;
+  referralCode: string | null;
 };
 
 async function readInput(req: NextRequest): Promise<CheckoutInput> {
@@ -54,15 +65,19 @@ async function readInput(req: NextRequest): Promise<CheckoutInput> {
         bump?: unknown;
         variant?: unknown;
         email?: unknown;
+        ph_distinct_id?: unknown;
+        referralCode?: unknown;
       };
       return {
         tier: typeof body.tier === "string" ? body.tier : null,
         bump: typeof body.bump === "string" ? body.bump : null,
         variant: typeof body.variant === "string" ? body.variant : null,
         email: typeof body.email === "string" ? body.email : null,
+        ph_distinct_id: typeof body.ph_distinct_id === "string" ? body.ph_distinct_id : null,
+        referralCode: typeof body.referralCode === "string" ? body.referralCode : null,
       };
     } catch {
-      return { tier: null, bump: null, variant: null, email: null };
+      return { tier: null, bump: null, variant: null, email: null, ph_distinct_id: null, referralCode: null };
     }
   }
   if (
@@ -74,11 +89,15 @@ async function readInput(req: NextRequest): Promise<CheckoutInput> {
     const bump = fd.get("bump");
     const variant = fd.get("variant");
     const email = fd.get("email");
+    const ph_distinct_id = fd.get("ph_distinct_id");
+    const referralCode = fd.get("referralCode");
     return {
       tier: typeof tier === "string" ? tier : null,
       bump: typeof bump === "string" && bump !== "" ? bump : null,
       variant: typeof variant === "string" && variant !== "" ? variant : null,
       email: typeof email === "string" && email !== "" ? email : null,
+      ph_distinct_id: typeof ph_distinct_id === "string" && ph_distinct_id !== "" ? ph_distinct_id : null,
+      referralCode: typeof referralCode === "string" && referralCode !== "" ? referralCode : null,
     };
   }
   const sp = req.nextUrl.searchParams;
@@ -87,11 +106,13 @@ async function readInput(req: NextRequest): Promise<CheckoutInput> {
     bump: sp.get("bump"),
     variant: sp.get("variant"),
     email: sp.get("email"),
+    ph_distinct_id: sp.get("ph_distinct_id"),
+    referralCode: sp.get("ref"),
   };
 }
 
 export async function POST(req: NextRequest) {
-  const { tier, bump: rawBump, variant: rawVariant, email } = await readInput(req);
+  const { tier, bump: rawBump, variant: rawVariant, email, ph_distinct_id, referralCode } = await readInput(req);
   const headers = corsHeaders(req.headers.get("origin"));
   if (!tier || !isEntryTier(tier)) {
     return NextResponse.json({ error: "invalid_tier" }, { status: 400, headers });
@@ -110,6 +131,13 @@ export async function POST(req: NextRequest) {
 
   const cfg = ENTRY_TIERS[tier];
   const origin = req.headers.get("origin") || SITE_ORIGIN;
+
+  // Referral lookup is deliberately best-effort. A bad or stale code never
+  // blocks a genuine purchase; valid Dashboard codes get their Stripe discount
+  // and carry the referrer into subscription metadata for the 30-day reward.
+  const referral = isReferralEligibleTier(tier)
+    ? await getReferralAttribution(stripe, referralCode).catch(() => null)
+    : null;
 
   // Brunson DotCom Ch 14/18, additive order bump. The bump is a SECOND
   // purchasable item, not a price swap. AOV lifts without disrupting the
@@ -175,18 +203,28 @@ export async function POST(req: NextRequest) {
     flow: "entry_checkout",
     ...(bump ? { bump } : {}),
     ...(variant ? { variant } : {}),
+    ...(ph_distinct_id ? { ph_distinct_id: ph_distinct_id.slice(0, 64) } : {}),
+    ...(referral
+      ? {
+          referral_code: referral.referralCode,
+          referral_promotion_code_id: referral.promotionCodeId,
+          referrer_customer_id: referral.referrerCustomerId,
+          referrer_email: referral.referrerEmail,
+        }
+      : {}),
   };
 
   let session: Stripe.Checkout.Session;
   try {
     const sessionParams: Stripe.Checkout.SessionCreateParams = {
       mode: cfg.mode,
-      payment_method_types: ["card"],
+      payment_method_types: SEPA_TIERS.has(tier) ? ["card", "sepa_debit"] : ["card"],
       line_items: lineItems,
       success_url: cfg.successUrl.startsWith("http") ? cfg.successUrl : `${origin}${cfg.successUrl}`,
       cancel_url: `${origin}${cfg.cancelUrl}`,
       metadata,
-      allow_promotion_codes: true,
+      allow_promotion_codes: !referral,
+      ...(referral ? { discounts: [{ promotion_code: referral.promotionCodeId }] } : {}),
       ...(email ? { customer_email: email } : {}),
     };
 
@@ -249,7 +287,7 @@ export async function GET(req: NextRequest) {
   try {
     const session = await stripe.checkout.sessions.create({
       mode: cfg.mode,
-      payment_method_types: ["card"],
+      payment_method_types: SEPA_TIERS.has(tier) ? ["card", "sepa_debit"] : ["card"],
       line_items: [
         {
           quantity: 1,

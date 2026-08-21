@@ -6,9 +6,9 @@ delay_days_after_signup: 7
 
 You've been getting the free digest. Here's what the full Dashboard shows.
 
-The Dashboard (EUR 9.97/mo, early access) gives you the full picture:
+The Dashboard (€49/mo) gives you the full picture:
 
-60+ startups heating up early across 15 sectors. Not a static list. A living dashboard where companies move up and down based on real GitHub API data, refreshed weekly. You don't crunch anything — it surfaces them, you just look.
+140+ startups heating up early across 15 sectors. Not a static list. A living dashboard where companies move up and down based on real GitHub API data, refreshed weekly. You don't crunch anything — it surfaces them, you just look.
 
 You can filter by:
 - Sector (fintech, devtools, AI/ML, cybersecurity, healthcare, and 15 more)

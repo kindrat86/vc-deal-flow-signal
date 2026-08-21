@@ -127,7 +127,7 @@ const tiers: PricingTier[] = [
     forWho:
       "Active investors and small funds who want the full ranking, not just the top five.",
     bullets: [
-      "350+ ranked startups across 15 sectors, refreshed weekly",
+      "140 ranked startups across 15 sectors, refreshed weekly",
       "Sector filters with five-quarter historical comparison",
       "All five signal types (hiring burst, deploy frequency spike, infrastructure buildout, framework migration, deceleration)",
       "Watchlists and saved filters",

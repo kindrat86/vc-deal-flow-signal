@@ -215,8 +215,8 @@ export default function FiveMinPerfectWebinarPage() {
             <span className="text-gray-400 line-through">€1,728/yr</span>
           </div>
           <div className="flex items-baseline justify-between text-lg font-bold pt-1">
-            <span className="text-gray-100">Current rate</span>
-            <span className="text-amber-400">€49/mo</span>
+            <span className="text-gray-100">Your price</span>
+            <span className="text-amber-400">€49/mo · cancel anytime</span>
           </div>
           <TrialClose tone="amber">
             €1,728 of standalone artefacts at €49/mo. If even half the
@@ -244,8 +244,8 @@ export default function FiveMinPerfectWebinarPage() {
             <div className="rounded-lg border border-indigo-700/40 bg-indigo-950/10 p-4">
               <p className="text-indigo-400 text-[10px] font-semibold uppercase tracking-wider">Pricing</p>
               <p className="text-gray-200 text-sm leading-relaxed mt-1">
-                €1,728/yr stack, €588 current rate, locked while subscribed
-                public launch hike to €49/mo.
+                €1,728/yr stack at €588/yr, month to month,
+                cancel anytime.
               </p>
             </div>
             <div className="rounded-lg border border-rose-700/40 bg-rose-950/10 p-4">
@@ -276,7 +276,7 @@ export default function FiveMinPerfectWebinarPage() {
               kind="primary"
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-amber-500 hover:bg-amber-400 text-slate-950 font-bold text-base shadow-lg shadow-amber-500/30 transition-colors"
             >
-              Lock €49/mo founder price →
+              Lock €49/mo →
             </WalkthroughCtaLink>
             <WalkthroughCtaLink
               href={SIGNUP_URL}

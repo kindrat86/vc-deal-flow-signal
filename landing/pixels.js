@@ -132,11 +132,34 @@
         props["$web_vitals_" + name + "_value"] = value;
         props["$web_vitals_" + name + "_rating"] = rate(name, value);
         props["$web_vitals_" + name + "_event_id"] = id;
-        // 2026-08-16: direct-to-PostHog send REMOVED. posthog-js 1.417
-        // (loaded by this site) auto-captures $web_vitals natively with
-        // proper metric_ids: the custom send double-counted every load
-        // under different distinct_ids (cwv-*), polluting PostHog's CWV
-        // insight. PostHog = native SDK only; this beacon now serves GA4.
+        // 2026-08-16: direct-to-PostHog send REMOVED (posthog-js auto-captures
+        // $web_vitals natively and the custom send double-counted under
+        // different distinct_ids). 2026-08-19: RE-ADDED for LCP + FCP ONLY,
+        // because the native SDK's DESKTOP LCP/FCP carry background-tab dwell
+        // (email/X/HN links cmd-clicked open; the paint fires on tab focus so
+        // the metric includes unread-tab time: measured apex LCP p75 3016ms /
+        // FCP 3110ms vs true mobile ~489ms). This beacon runs on web-vitals
+        // 4.2.4, whose onLCP/onFCP apply the firstHiddenTime guard
+        // (entry.startTime < firstHiddenTime) and drop dwell-deferred paints.
+        // The dwell-filtered LCP/FCP carry metric_name so the collector
+        // (cwv_field.py lcp_basis/fcp_basis) can quote them instead of the
+        // contaminated SDK blend. INP/CLS/TTFB stay on the native SDK / GA4
+        // to avoid double-counting.
+        if ((name === "LCP" || name === "FCP") && window.posthog && window.posthog.capture) {
+          try {
+            window.posthog.capture("$web_vitals", {
+              distinct_id: "ga4-cwv-forward",
+              $process_person_profile: false,
+              $pathname: location.pathname,
+              $current_url: location.href,
+              metric_name: name,
+              metric_value: value,
+              metric_rating: rate(name, value),
+              metric_id: id,
+              beacon: "dwell-filtered"
+            });
+          } catch (e) {}
+        }
         // Forward the same metric to GA4 (G-7SV2SNZE4C) with Google's standard
         // event params so GA4's Core Web Vitals reporting fills up alongside
         // PostHog. gtag is loaded by this same file; a no-op if it is absent.
@@ -189,23 +212,9 @@
 
     function pushGtag() {
       try {
-        if (window.gtag && typeof window.gtag === "function") {
-          window.gtag.apply(window, arguments);
-        } else {
-          window.dataLayer = window.dataLayer || [];
-          window.dataLayer.push(Array.prototype.slice.call(arguments));
-        }
+        window.dataLayer = window.dataLayer || [];
+        window.dataLayer.push(Array.prototype.slice.call(arguments));
       } catch (e) { /* never throw */ }
-    }
-    function gtagReady() {
-      try {
-        var dl = window.dataLayer || [];
-        for (var i = 0; i < dl.length; i++) {
-          if (dl[i] && typeof dl[i].event === "string" && dl[i].event.indexOf("gtm.") === 0) return true;
-        }
-        if (window.google_tag_manager && Object.keys(window.google_tag_manager).length > 0) return true;
-      } catch (e) { /* fall through to not-ready */ }
-      return false;
     }
     function qualified(source) {
       var K = "gdf_qualified_visit";
@@ -215,15 +224,7 @@
         sessionStorage.setItem(K, "1");
       } catch (e) { /* private mode: fall through to the volatile qFired guard */ }
       qFired = true;
-      var payload = { path: location.pathname, source: source || "unknown" };
-      if (gtagReady()) { pushGtag("event", "qualified_visit", payload); return; }
-      // gtag.js loads lazily (onload); a push made before it loads is not
-      // reliably replayed, so defer until the library has configured itself.
-      var qTries = 0;
-      var qTimer = setInterval(function () {
-        if (gtagReady()) { pushGtag("event", "qualified_visit", payload); clearInterval(qTimer); }
-        else if (++qTries > 600) { clearInterval(qTimer); }
-      }, 100);
+      pushGtag("event", "qualified_visit", { path: location.pathname, source: source || "unknown" });
     }
     function mirror(name, props) {
       if (!name) return;

@@ -24,6 +24,7 @@ Update as each destination goes live.
 | **RePEc / MPRA** | _draft ready, needs MPRA account_ | ⏳ | — | — |
 | **Figshare** | _draft + script ready, needs FIGSHARE_TOKEN_ | ⏳ | — | — |
 | **Harvard Dataverse** | _draft + script ready, needs HARVARD_DATAVERSE_TOKEN_ | ⏳ | — | — |
+| **ICPSR** | https://www.icpsr.umich.edu/web/ICPSR/studies/309999 | ✅ Self-Published V1.0 (2026-08-18) | 2026-08-18 | **10.3886/ICPSR309999.V1** |
 | **Mendeley Data** | _draft ready, needs Elsevier OAuth_ | ⏳ | — | — |
 | **Humanities Commons** | _draft ready, needs HC account_ | ⏳ | — | — |
 | **Academia.edu** | _draft ready (low priority)_ | ⏳ | — | — |
@@ -31,7 +32,20 @@ Update as each destination goes live.
 | **Hashnode article** | _draft ready, needs HASHNODE_PAT_ | ⏳ | — | — |
 | **Medium article** | _draft ready, via medium-daily-publisher task_ | ⏳ | — | — |
 | **Substack Note + post** | _draft ready, Chrome MCP needed_ | ⏳ | — | — |
-| **HackerNoon article** | _draft ready, manual paste via @TheData_7cdit42c_ | ⏳ | — | — |
+| **HackerNoon article, dataset** | https://app.hackernoon.com/writer/tracksubmissions (draft `6a84df60a9af8641a927e1ff`) | ❌ **Rejected** (dashboard verified 2026-08-20). No live URL, no referral traffic. | — | — |
+| **HackerNoon article, GitHub acceleration** | https://app.hackernoon.com/writer/tracksubmissions | ⏳ **In editorial**: “I Found 3 Startups Accelerating on GitHub Before Their Round, Without Leavi…” (dashboard verified 2026-08-20). Live URL and referral traffic are not available until editorial publishes it. | — | — |
+| **HackerNoon article, GitHub commits study** | https://app.hackernoon.com/writer/tracksubmissions | ⏳ **In editorial**: “I Watched 350+ Startups' GitHub Commits for a Year. Here's What Actually Pr…” (dashboard verified 2026-08-20). Live URL and referral traffic are not available until editorial publishes it. | — | — |
+| **Dryad** | _draft #458655, blocked on ROR affiliation (ROR request issue #39033)_ | ⏳ | — | **10.5061/dryad.98sf7m10f** (reserved) |
+| **JOSS (gitdealflow-signal-engine)** | https://github.com/openjournals/joss-reviews/issues/11168 | ✅ **SUBMITTED** (pre-review issue #11168, 2026-08-18) | 2026-08-18 | — |
+| **DANS SSH Data Station** | https://ssh.datastations.nl/ | ⏳ **IN PROGRESS** (logged in via Federation; JS deposit blocker) | — | — |
+| **HAL (Archive ouverte)** | https://hal.science/hal-05720420 | ✅ **SUBMITTED v1** (2026-08-18, awaiting moderation; login `signal.dataprivacy`) | 2026-08-18 | — |
+| **Research Square** | https://www.researchsquare.com/article/rs-10745326 | ✅ **SUBMITTED x2** (2026-08-19, both status QA/QC check): rs-10745326 via API lane (DOI 10.21203/rs.3.rs-10745326/v1) and rs-10745551 via wizard lane (DOI 10.21203/rs.3.rs-10745551/v1; dup draft rs-10744894 deleted) | 2026-08-19 | **10.21203/rs.3.rs-10745326/v1** + 10.21203/rs.3.rs-10745551/v1 |
+| **SciELO Preprints** | https://preprints.scielo.org/ | ⏳ **BLOCKED** (reCAPTCHA) | — | — |
+| **engrXiv** | https://engrxiv.org/ | ⏳ **NEEDS OSF LOGIN** | — | — |
+| **IEEE DataPort** | https://ieee-dataport.org/ | ⏳ **NEEDS ACCOUNT** | — | — |
+| **ScienceOpen** | https://www.scienceopen.com/ | ⏳ **BLOCKED** (ORCID OAuth → DANS redirect; Wicket AJAX email form) | — | — |
+| **EconStor** | https://www.econstor.eu/ | ⏳ **EMAIL-DEPOSIT SENT** (2026-08-18 to econstor@zbw.eu, Resend id db91b74f-...; pending ZBW review; follow-up 2026-09-01) | — | — |
+| **Dryad** | https://datadryad.org/ | ⏳ **PAID** ($199) | — | — |
 
 ## Submission bundle
 

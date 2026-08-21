@@ -21,7 +21,7 @@ Alternative: upload the MP4 via dev.to's own uploader to get an inline video pla
 
 ## The dashboard nobody visited
 
-I built a startup signal dashboard. It tracked GitHub engineering acceleration across thousands of startup organizations and ranked them by commit velocity, contributor growth, and repo expansion. The data was solid. The UI was clean.
+I built a startup signal dashboard. It tracked GitHub engineering acceleration across 350+ startup organizations and ranked them by commit velocity, contributor growth, and repo expansion. The data was solid. The UI was clean.
 
 Nobody came back to it.
 
@@ -37,7 +37,7 @@ For investors using Claude, that means an MCP server.
 
 [VC Deal Flow Signal](https://gitdealflow.com) monitors GitHub engineering activity across startup organizations and surfaces the ones showing unusual acceleration. The hypothesis: engineering acceleration (measured as the rate of change in commit velocity) is a leading indicator for fundraise announcements, usually by 3 to 6 weeks.
 
-The MCP server exposes 5 tools:
+The MCP server exposes 10 free tools (the core five):
 
 | Tool | What it does |
 |---|---|
@@ -132,7 +132,7 @@ Then ask Claude: "Which startups are accelerating in fintech?" or "Show me the s
 
 3. **The best funnel is invisible.** When an investor asks Claude about startup signals and gets my data, they didn't "visit my website" or "open my app." They used my product without knowing they entered a funnel. That's the future of distribution.
 
-4. **Embedded distribution needs a non-AI counterpart too.** Not every investor lives inside Claude yet. For the majority still browsing Crunchbase, AngelList, and PitchBook in the browser, I shipped a Chrome extension that injects the signal badge directly onto startup profile pages. Same Isenberg "piggyback" philosophy — show up where the user already is, not where you want them to go. Different surface, same funnel.
+4. **Embedded distribution needs a non-AI counterpart too.** Not every investor lives inside Claude yet. For the majority still browsing Crunchbase and Wellfound in the browser, I shipped a Chrome extension that injects the signal badge directly onto startup profile pages. Same Isenberg "piggyback" philosophy — show up where the user already is, not where you want them to go. Different surface, same funnel.
 
 ## Links
 
@@ -140,7 +140,7 @@ Then ask Claude: "Which startups are accelerating in fintech?" or "Show me the s
 - npm: [@gitdealflow/mcp-signal](https://www.npmjs.com/package/@gitdealflow/mcp-signal)
 - GitHub: [kindrat86/mcp-deal-flow-signal](https://github.com/kindrat86/mcp-deal-flow-signal)
 - Live data: [signals.gitdealflow.com](https://signals.gitdealflow.com)
-- Chrome extension (Crunchbase / AngelList / PitchBook badge): [Chrome Web Store](https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn)
+- Chrome extension (Crunchbase / Wellfound badge): [Chrome Web Store](https://chromewebstore.google.com/detail/hehkgipiamajnnlpkfhpeoeaoaogmknn)
 
 ---
 

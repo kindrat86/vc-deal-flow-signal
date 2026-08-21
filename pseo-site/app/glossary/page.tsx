@@ -25,6 +25,18 @@ type Term = GlossaryTerm;
 
 const terms: Term[] = glossaryTerms;
 
+// Featured-snippet consolidation (2026-08-16): the short `snippet` answer on
+// this hub is the extractable definition; the long-form guide is the dedicated
+// vehicle. Linking the definitional hub to the guide consolidates the "what is
+// deal flow signal" query onto one canonical answer so Google has a single
+// snippet candidate instead of five competing URLs.
+const TERM_FULL_GUIDES: Record<string, { label: string; href: string }> = {
+  "deal-flow-signal": {
+    label: "Read the full guide",
+    href: "/blog/what-is-deal-flow-signal",
+  },
+};
+
 export default function GlossaryPage() {
   const jsonLd = {
     "@context": "https://schema.org",
@@ -284,6 +296,14 @@ export default function GlossaryPage() {
               >
                 Permalink to this term →
               </a>
+              {TERM_FULL_GUIDES[t.id] ? (
+                <Link
+                  href={TERM_FULL_GUIDES[t.id].href}
+                  className="ml-4 mt-3 inline-block text-sky-400 text-sm font-medium hover:text-sky-300 transition-colors"
+                >
+                  {TERM_FULL_GUIDES[t.id].label} →
+                </Link>
+              ) : null}
               <link
                 itemProp="url"
                 href={`https://signals.gitdealflow.com/glossary#${t.id}`}

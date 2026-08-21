@@ -5,6 +5,7 @@ import Link from "next/link";
 import type { DashboardStartup } from "@/app/dashboard/page";
 import SignalBadge from "@/components/SignalBadge";
 import { slugify } from "@/lib/slugify";
+import { trackCustomerActivity } from "@/components/DashboardActivityTracker";
 
 /** Current data period slug, update when rolling to a new quarter */
 const CURRENT_PERIOD_SLUG = "q2-2026";
@@ -98,6 +99,12 @@ export default function DashboardFilters({
   );
   const [watchedOnly, setWatchedOnly] = useState(false);
   const { watched, toggle } = useWatchlist();
+
+  const toggleWatchlist = useCallback((name: string) => {
+    const alreadyWatching = watched.has(name);
+    toggle(name);
+    if (!alreadyWatching) trackCustomerActivity("watchlist_created", { startup: name });
+  }, [toggle, watched]);
 
   const filtered = useMemo(() => {
     let result = startups;
@@ -258,7 +265,10 @@ export default function DashboardFilters({
         </div>
         {isInsider && (
           <button
-            onClick={() => exportToCsv(filtered, isInsider)}
+            onClick={() => {
+              trackCustomerActivity("export_downloaded", { result_count: filtered.length });
+              exportToCsv(filtered, isInsider);
+            }}
             className="text-xs text-sky-500 hover:text-sky-400 transition flex items-center gap-1.5"
           >
             <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -344,7 +354,7 @@ export default function DashboardFilters({
                   {isInsider && (
                     <td className="px-2 py-3 text-center">
                       <button
-                        onClick={() => toggle(startup.name)}
+                        onClick={() => toggleWatchlist(startup.name)}
                         className={`transition ${
                           isWatched ? "text-amber-400" : "text-gray-700 hover:text-gray-400"
                         }`}
@@ -363,6 +373,7 @@ export default function DashboardFilters({
                     <Link
                       href={`/startup/${slugify(startup.name)}`}
                       className={`font-medium hover:text-sky-400 transition-colors ${isTop3 ? "text-gray-100" : "text-gray-200"}`}
+                      onClick={() => trackCustomerActivity("signal_opened", { startup: startup.name, sector: startup.sectorSlug })}
                     >
                       {startup.name}
                     </Link>

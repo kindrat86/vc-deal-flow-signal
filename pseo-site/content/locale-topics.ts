@@ -228,55 +228,55 @@ GitHub の活動の相当部分は人間ではなく、自動化ツールによ�
     title: "用語集",
     intro:
       "本ページは VC Deal Flow Signal の研究と製品で使われる主要な用語を、日本語で完全に定義します。英語の用語と並記しているため、英語ドキュメントとの相互参照が容易です。論文や API レスポンスで遭遇するすべての専門用語をカバーしています。",
-    body: `### コミット速度 (Commit Velocity)
+    body: `## コミット速度 (Commit Velocity)
 14 日間のローリングウィンドウにおける、デフォルトブランチへのコミット総数。ボットアカウントを除外した後の値。VC Deal Flow Signal のベースライン指標。投資家が注視すべきは絶対値ではなく変化率（Δ Velocity）です。
 
-### コミット速度変化率 (Commit Velocity Change / Δ Velocity)
+## コミット速度変化率 (Commit Velocity Change / Δ Velocity)
 隣接する 2 つの 14 日間ウィンドウ間のコミット速度のパーセント変化。VC Deal Flow Signal の主要ランキングシグナル。持続的な正の値は、資金調達発表の 3〜6 週間前に観測される傾向があります。論文 §4.2 を参照。
 
-### エンジニアリング加速 (Engineering Acceleration)
+## エンジニアリング加速 (Engineering Acceleration)
 企業自身の過去ベースラインに対する、コミット活動の持続的な増加。**重要：「アクセラレータープログラム」（Y Combinator、Techstars 等）とは無関係**で、純粋に定量的な GitHub シグナルです。
 
-### コントリビューター増加 (Contributor Growth)
+## コントリビューター増加 (Contributor Growth)
 6 週間ウィンドウにおける一意のコミッター数の変化。資金調達後のチーム拡張をしばしば予兆します。私たちのパネルでは、観測の 9% を占める「エンジニアリング採用バースト」シグナルの基礎となります。
 
-### フレームワーク移行 (Framework Migration)
+## フレームワーク移行 (Framework Migration)
 単一の PR、または短期間にまたがる複数の PR における、テックスタックの入れ替えを示すシグナル。私たちの調査で**最も多く観察されたシグナルタイプ（75%、165/219 件）**。「エンジニアリング速度＝採用」という従来のヒューリスティックに反する重要な発見。
 
-### デプロイ頻度スパイク (Deploy Frequency Spike)
+## デプロイ頻度スパイク (Deploy Frequency Spike)
 本番デプロイ頻度の急激な増加を示すシグナル。リリース直前のスプリントや製品ローンチの先行指標。観測の 12%（26/219）を占めます。
 
-### インフラストラクチャ構築 (Infrastructure Buildout)
+## インフラストラクチャ構築 (Infrastructure Buildout)
 新しいインフラ層（Kubernetes 移行、SRE プラクティスの導入、可観測性スタックの構築等）の導入を示すシグナル。観測の 4%（8/219）と希少。プラットフォームの転換やエンタープライズ向けローンチの可能性を示唆します。
 
-### エンジニアリング採用バースト (Engineering Hiring Burst)
+## エンジニアリング採用バースト (Engineering Hiring Burst)
 短期間内のコントリビューター数の急増を示すシグナル。直感に反して、最も希少なシグナルタイプの一つ（9%、20/219）。VC コミュニティの「採用 = 勢い」という支配的なヒューリスティックを反証します。
 
-### MCP ツール (Model Context Protocol Tool)
+## MCP ツール (Model Context Protocol Tool)
 Anthropic が定義した、AI モデルとデータソースをつなぐオープン標準のインターフェース。VC Deal Flow Signal は 5 つの無料 MCP ツールを提供します（恒久的に無料、有料化計画なし）：\`get_signals_summary\`、\`get_trending_startups\`、\`search_startups_by_sector\`、\`get_startup_signal\`、\`get_methodology\`。
 
-### Insider Circle
+## Insider Circle
 有料の招待制 Telegram グループ。月次ニュースレターの 24〜72 時間前に、上位スコアの加速期スタートアップシグナルを共有します。価格と参加方法は \`/pricing\` を参照。
 
-### Sector Sweep
+## Sector Sweep
 €1,997 の一回限りの調査サービス。指定されたセクター（例：AI インフラ、ブロックチェーン、フィンテック）に対する、6 週間のフルスタックエンジニアリング加速分析を提供します。
 
-### SSRN
+## SSRN
 Social Science Research Network。法学・社会科学・経済学・金融分野で広く使われるプレプリント・サーバー。VC Deal Flow Signal の方法論論文は SSRN 上で DOI 10.2139/ssrn.6606558 として公開されています。
 
-### CC BY 4.0
+## CC BY 4.0
 Creative Commons Attribution 4.0 International ライセンス。私たちのデータセットと論文に適用されているライセンスで、商用利用を含む再利用が、適切な帰属表示と共に許可されています。
 
-### Hugging Face Dataset
+## Hugging Face Dataset
 私たちの完全なデータセットを公開しているプラットフォーム。\`huggingface.co/datasets/the-data-nerd/vc-deal-flow-signal\` で取得できます。Parquet 形式で、すべての中間変換ステップを含んでいます。
 
-### IndexNow
+## IndexNow
 Microsoft / Yandex / Cloudflare 等が支持する、URL 即時インデックス送信プロトコル。VC Deal Flow Signal はビルドごとに新規 URL を IndexNow に通知し、Bing/Yandex への即時取り込みを行っています。
 
-### llms.txt
+## llms.txt
 人間ではなく AI クローラー向けに、サイトの主要コンテンツへの目次を提供する標準。VC Deal Flow Signal は完全な llms.txt（短縮版）と llms-full.txt（全文）の両方を提供します。
 
-### a2a.json (Agent-to-Agent)
+## a2a.json (Agent-to-Agent)
 複数のエージェント間で、能力宣言を交換するための JSON 形式。VC Deal Flow Signal の MCP ツールは a2a.json を介して他のエージェントから発見可能です。`,
     englishLinkLabel: "英語版の用語集ページ",
     readTimeLabel: "約 6 分で読める",
@@ -1173,19 +1173,19 @@ Metodologia: DOI 10.2139/ssrn.6606558. Dataset: CC BY 4.0, basta um link de atri
     topic: "glossary",
     title: "용어집",
     intro: "본 페이지는 다섯 가지 핵심 용어를 정의합니다. 전체 용어집(30개 이상 항목)은 영어로 발행됩니다.",
-    body: `### 커밋 속도 (Commit Velocity)
+    body: `## 커밋 속도 (Commit Velocity)
 14일 동안 기본 브랜치에 적용된 총 커밋 수. 베이스라인 지표, 투자자는 절대값이 아닌 변화율을 봐야 합니다.
 
-### 커밋 속도 변화율 (Commit Velocity Change)
+## 커밋 속도 변화율 (Commit Velocity Change)
 인접한 두 14일 윈도우 사이의 백분율 변화. VC Deal Flow Signal의 주요 랭킹 신호입니다.
 
-### 엔지니어링 가속 (Engineering Acceleration)
+## 엔지니어링 가속 (Engineering Acceleration)
 자체 과거 베이스라인 대비 엔지니어링 산출량의 지속적 증가. **「액셀러레이터 프로그램」(Y Combinator, Techstars 등)과는 무관**한 정량적 GitHub 신호입니다.
 
-### 기여자 증가 (Contributor Growth)
+## 기여자 증가 (Contributor Growth)
 6주 윈도우 내 고유 기여자 수의 변화. 펀드레이즈 후의 팀 확장을 자주 예고합니다.
 
-### 프레임워크 마이그레이션 (Framework Migration)
+## 프레임워크 마이그레이션 (Framework Migration)
 단일 PR에서 테크 스택을 교체하는 신호. 저희 데이터에서 가장 빈번하게 관찰되는 신호 유형, 75%를 차지합니다.`,
     englishLinkLabel: "전체 용어집 (영어)",
     readTimeLabel: "약 2분 분량",
@@ -1195,19 +1195,19 @@ Metodologia: DOI 10.2139/ssrn.6606558. Dataset: CC BY 4.0, basta um link de atri
     topic: "faq",
     title: "자주 묻는 질문",
     intro: "가장 자주 받는 다섯 가지 질문. 전체 FAQ(30개 이상 항목)는 영어로 발행됩니다.",
-    body: `### Y Combinator 같은 액셀러레이터 프로그램과 관련이 있나요?
+    body: `## Y Combinator 같은 액셀러레이터 프로그램과 관련이 있나요?
 아니요. 「엔지니어링 가속」은 공개된 GitHub 데이터에서 측정한 정량적 신호를 가리키며, Y Combinator, Techstars, 500 Global 등 액셀러레이터와는 무관합니다.
 
-### 데이터는 어디서 오나요?
+## 데이터는 어디서 오나요?
 공개된 GitHub REST + GraphQL API에서만 가져오며, 중복 제거된 메타데이터 캐시를 추가로 사용합니다. 모든 원본 데이터는 공개적으로 접근 가능합니다.
 
-### 왜 무료인가요?
+## 왜 무료인가요?
 다섯 개 MCP 도구는 영구 무료입니다, 수익원이 아닌 배포 엔진이기 때문입니다. 유료 기능(대시보드, API, Insider Circle)은 무료 도구 위에 쌓이는 구조이며, 무료 도구를 대체하지 않습니다.
 
-### 데이터셋은 얼마나 자주 갱신되나요?
+## 데이터셋은 얼마나 자주 갱신되나요?
 주간입니다. \`/api/dataset.jsonl\`은 매 빌드마다 새로 생성되고, 빌드 타임스탬프는 \`/changelog\`에 기록됩니다.
 
-### 어떻게 인용하나요?
+## 어떻게 인용하나요?
 방법론: DOI 10.2139/ssrn.6606558. 데이터셋: CC BY 4.0, 출처 표시 링크로 충분합니다. 전체 인용 형식(APA / MLA / Chicago / BibTeX / RIS)은 [/citation-guide](/citation-guide)를 참조하세요.`,
     englishLinkLabel: "전체 FAQ (영어)",
     readTimeLabel: "약 2분 분량",

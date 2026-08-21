@@ -1,0 +1,68 @@
+{
+  "schema_version": 1,
+  "purpose": "Prevent cross-platform identity and session collisions during GitDealFlow work.",
+  "rules": {
+    "one_owner_per_session": true,
+    "public_write_requires_identity_check": true,
+    "do_not_share_session_across_platforms": true,
+    "stop_on_login_or_captcha_gate": true
+  },
+  "sessions": [
+    {
+      "id": "safari-x-sipiteno",
+      "browser": "Safari",
+      "isolation": "dedicated Safari window",
+      "platform": "X",
+      "account": "@Sipiteno",
+      "allowed_actions": ["read", "reply-first engagement"],
+      "forbidden_actions": ["personal-account switching", "cross-platform publishing"],
+      "identity_check": "Confirm the visible account handle is @Sipiteno before every write.",
+      "human_gate": false
+    },
+    {
+      "id": "safari-reddit-worth-wealth",
+      "browser": "Safari",
+      "isolation": "dedicated Safari window",
+      "platform": "Reddit",
+      "account": "u/Worth_Wealth_6811",
+      "allowed_actions": ["read", "allowlisted participation", "approved promotional post"],
+      "forbidden_actions": ["r/SaaS", "vote automation", "follow automation", "cross-platform publishing"],
+      "identity_check": "Confirm /api/me.json returns Worth_Wealth_6811 before every write.",
+      "human_gate": false
+    },
+    {
+      "id": "chrome-gdf-publishing",
+      "browser": "Google Chrome",
+      "profile": "gdf-publishing",
+      "isolation": "named browser profile",
+      "platform": "GitDealFlow editorial accounts",
+      "account": "platform-specific pseudonymous GitDealFlow identity",
+      "allowed_actions": ["read", "draft", "approved editorial publishing"],
+      "forbidden_actions": ["personal-profile use", "credential entry", "cross-account switching"],
+      "identity_check": "Verify the intended platform identity before every write.",
+      "human_gate": true
+    },
+    {
+      "id": "comet-reddit-chat",
+      "browser": "Comet",
+      "isolation": "dedicated application session",
+      "platform": "Reddit Chat",
+      "account": "u/Worth_Wealth_6811",
+      "allowed_actions": ["inbound chat monitoring", "safe inbound replies"],
+      "forbidden_actions": ["public Reddit submissions", "public comments", "cross-platform publishing"],
+      "identity_check": "Confirm the active Reddit identity before replying.",
+      "human_gate": false
+    },
+    {
+      "id": "hn-sipitenomk",
+      "browser": "none",
+      "isolation": "no active automation session",
+      "platform": "Hacker News",
+      "account": "SipitenoMK",
+      "allowed_actions": ["public Firebase read-only monitoring"],
+      "forbidden_actions": ["all writes", "warm-ups", "appeals", "submission automation"],
+      "identity_check": "Not applicable while all writes are blocked.",
+      "human_gate": true
+    }
+  ]
+}

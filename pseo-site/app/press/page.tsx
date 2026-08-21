@@ -8,7 +8,7 @@ const APEX = "https://gitdealflow.com";
 const SSRN_URL = "https://ssrn.com/abstract=6606558";
 
 export const metadata: Metadata = {
-  title: "Press Kit, VC Deal Flow Signal (GitDealFlow)",
+  title: { absolute: "Press Kit, VC Deal Flow Signal (GitDealFlow)" },
   description:
     "Press kit for journalists, analysts, podcasters, and citation reuse. Logo pack, fact sheet, copy-paste citation block, screenshot pack, founder bio, and contact. All assets are CC BY 4.0, attribution required.",
   alternates: { canonical: "/press" },

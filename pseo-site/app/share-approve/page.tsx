@@ -9,7 +9,7 @@ import Link from "next/link";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Approve Share, VC Deal Flow Signal MCP",
+  title: { absolute: "Approve Share, VC Deal Flow Signal MCP" },
   description:
     "Review the post the agent wants to compose for you. Nothing is published, this only mints a 10-minute approval token for the share_result MCP tool.",
   robots: { index: false, follow: false },

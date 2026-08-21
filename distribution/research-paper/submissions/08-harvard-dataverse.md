@@ -1,5 +1,13 @@
 # Harvard Dataverse — dataset mirror
 
+> **STATUS: CLOSED 2026-08-18 — REJECTED as duplicate.** Deposit (DOI 10.7910/DVN/CETNSH,
+> DRAFT) was returned by the Harvard Dataverse curator: "identified as a mirror or duplicate
+> of a dataset that is maintained in another repository" (Zenodo 10.5281/zenodo.19650920
+> holds the same 3 CSVs). Harvard Dataverse policy: no mirrors. The deposit was removed;
+> it never published, so no live DOI exists. Do NOT re-attempt this venue. Canonical data
+> archive = Zenodo DOI (live, DataCite-indexed, Wayback-archived). Same files also in
+> moderation at Mendeley (10.17632/crcnwdn2py.1) and ICPSR draft #309999 (submit pending).
+
 **Target URL:** https://dataverse.harvard.edu/
 
 **Rationale:** Harvard Dataverse is the largest academic dataverse

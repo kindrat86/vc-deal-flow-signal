@@ -51,6 +51,15 @@ citation impact.
 | 18 | Preprints.org (MDPI) | Preprint mirror | Manual login | See note below | P3 |
 | 19 | Academia.edu | Academic social | Manual login | Create account | P3 |
 | 20 | Lobsters "Ask" | HN-alt | Draft only | Invite-only site, skip | skip |
+| 24 | **engrXiv** | Preprint mirror | Form + captcha | reCAPTCHA = human; IP soft-blocked (2026-08-19) | P1 |
+| 25 | **Dryad** | Dataset mirror | Web form | **FULLY STAGED** (submission 458655); $150 DPC = payment gate | P1 |
+| 26 | **ScienceOpen Preprints** | Preprint mirror | Web form | Account registered; email verify link pending (origin down 524) | P1 |
+| 27 | **Research Square** | Preprint mirror | Web form | **SUBMITTED** (RSID rs-10745326, in editorial screening) | P1 |
+| 28 | IEEE DataPort | Dataset mirror | Web form | In progress (Comet session; network error tab) | P2 |
+| 29 | HAL (France) | Preprint mirror | Web form | Account creation in progress (CAS/ORCID) | P2 |
+| 30 | JOSS | Software paper | GitHub-based | Needs separate software paper (gitdealflow-signal-engine); window check 2027-02-14 | P2 |
+| 31 | EconStor | Economics index | Self-archive | RePEc path; account in progress | P2 |
+| 32 | DANS Data Station SSH | Dataset mirror | Web form | Login via ORCID; in progress | P2 |
 
 ### Priority key
 

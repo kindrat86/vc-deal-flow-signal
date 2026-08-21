@@ -11,6 +11,7 @@ import StartupTable from "@/components/StartupTable";
 import SeoCta from "@/components/SeoCta";
 import FreshnessWatermark from "@/components/FreshnessWatermark";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { buildSourceTruthDataset } from "@/lib/dataset-schema";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -124,6 +125,17 @@ export default async function StagePage({ params }: PageProps) {
           url: `https://signals.gitdealflow.com/startups-to-watch/${s.sectorSlug}-${period.slug}`,
         })),
       },
+      buildSourceTruthDataset({
+        url: `https://signals.gitdealflow.com/stage/${slug}`,
+        name: `${name} Startups, Engineering Acceleration Dataset`,
+        description: `Engineering-acceleration statistics for ${startups.length} ${name} venture-backed startups in ${period.name}, tracked by the VC Deal Flow Signal (GitDealFlow) GitHub panel.`,
+        variableMeasured: [
+          { name: "Tracked startups", value: startups.length },
+          { name: "Average 14-day commit velocity", value: avgVelocity, unitText: "commits" },
+          { name: "Dominant signal type", value: topSignal[0] },
+        ],
+        temporalCoverage: period.name,
+      }),
     ],
   };
 

@@ -152,7 +152,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const i = INTEGRATIONS.find((x) => x.slug === tool);
   if (!i) return {};
   return {
-    title: i.title,
+    title: { absolute: i.title },
     description: i.description,
     alternates: { canonical: `/integrations/${tool}` },
     openGraph: { title: i.title, description: i.description, type: "article", url: `${SITE}/integrations/${tool}` },

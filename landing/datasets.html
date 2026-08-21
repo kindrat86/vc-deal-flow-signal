@@ -22,22 +22,289 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "CollectionPage",
-  "name": "Free Open Datasets by GitDealFlow Portfolio",
-  "description": "Ten free, open-source datasets across VC deal flow, SaaS pricing, churn, compliance, vehicle damage, side-business ideas, and more. All CC BY 4.0.",
-  "url": "https://gitdealflow.com/datasets",
-  "hasPart": [
-    {"@type": "Dataset", "name": "VC Deal Flow Signal Benchmarks Q2 2026", "url": "https://signals.gitdealflow.com/data/vc-signal-benchmarks", "description": "269 startups across 15 sectors, ranked by GitHub engineering velocity. Commit velocity, contributor growth, signal type distribution. Weekly updates."},
-    {"@type": "Dataset", "name": "GitHub Startup Momentum Index Q3 2026", "url": "https://gitdealflow.com/data/momentum-index", "description": "40 notable startup and dev-tool GitHub repos ranked by momentum score. CSV + JSON. Weekly updates. CC BY 4.0."},
-    {"@type": "Dataset", "name": "GitDealFlow Startup GitHub Signals Dataset", "url": "https://gitdealflow.com/dataset", "description": "350+ trending startups. CSV + JSON exports updated every Monday. 15 sectors. Free API access."},
-    {"@type": "Dataset", "name": "SaaS Pricing Benchmarks 2026", "url": "https://unlocksaas.com/data/saas-pricing-benchmarks", "description": "26 SaaS categories with median pricing, models, and free tier data."},
-    {"@type": "Dataset", "name": "SaaS Churn Rate Benchmarks 2026", "url": "https://churnlens.site/saas-churn-rate-benchmarks", "description": "14-sector SaaS churn benchmarks with seller-vs-actual comparison."},
-    {"@type": "Dataset", "name": "OFAC Enforcement Actions 2017-2024", "url": "https://sanctionsai.dev/data/ofac-enforcement", "description": "10 major OFAC penalties with violation amounts and settlement details."},
-    {"@type": "Dataset", "name": "Vehicle Damage Repair Costs 2026", "url": "https://carshake.online/vehicle-damage-costs.html", "description": "15 common vehicle damage types with repair cost ranges."},
-    {"@type": "Dataset", "name": "Mechanics Lien Law Deadlines", "url": "https://voicelogpro.com/lien-law-deadlines", "description": "51-jurisdiction construction lien filing deadlines."},
-    {"@type": "Dataset", "name": "Validated Micro-SaaS Ideas 2026", "url": "https://invisibleexit.com/data/micro-saas-ideas", "description": "25+ data-backed micro-SaaS ideas with search volume and revenue potential."},
-    {"@type": "Dataset", "name": "Market Expansion Data", "url": "https://sipiteno.com/market-expansion-data", "description": "Market expansion indicators across 22 countries."},
-    {"@type": "Dataset", "name": "AI Agent Spend Benchmarks", "url": "https://sipi.bot/data/agent-spend-benchmarks", "description": "AI agent API spend benchmarks across providers and task types."}
+  "@graph": [
+    {
+      "@type": "Organization",
+      "@id": "https://gitdealflow.com/#organization",
+      "name": "GitDealFlow",
+      "alternateName": "VC Deal Flow Signal",
+      "url": "https://gitdealflow.com"
+    },
+    {
+      "@type": [
+        "DataCatalog",
+        "CollectionPage"
+      ],
+      "@id": "https://gitdealflow.com/datasets#catalog",
+      "name": "GitDealFlow Portfolio Free Open Datasets",
+      "description": "Free, open-source datasets across VC deal flow, SaaS pricing, churn, compliance, vehicle damage, micro-SaaS ideas, market expansion, and AI agent spend. All CC BY 4.0.",
+      "url": "https://gitdealflow.com/datasets",
+      "publisher": {
+        "@id": "https://gitdealflow.com/#organization"
+      },
+      "creator": {
+        "@id": "https://gitdealflow.com/#organization"
+      },
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "dataset": [
+        {
+          "@id": "https://signals.gitdealflow.com/data/vc-signal-benchmarks"
+        },
+        {
+          "@id": "https://gitdealflow.com/data/momentum-index"
+        },
+        {
+          "@id": "https://gitdealflow.com/dataset"
+        },
+        {
+          "@id": "https://unlocksaas.com/data/saas-pricing-benchmarks"
+        },
+        {
+          "@id": "https://churnlens.site/saas-churn-rate-benchmarks"
+        },
+        {
+          "@id": "https://sanctionsai.dev/data/ofac-enforcement"
+        },
+        {
+          "@id": "https://carshake.online/vehicle-damage-costs.html"
+        },
+        {
+          "@id": "https://voicelogpro.com/lien-law-deadlines"
+        },
+        {
+          "@id": "https://invisibleexit.com/data/micro-saas-ideas"
+        },
+        {
+          "@id": "https://sipiteno.com/market-expansion-data"
+        },
+        {
+          "@id": "https://sipi.bot/data/agent-spend-benchmarks"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://signals.gitdealflow.com/data/vc-signal-benchmarks",
+      "name": "VC Deal Flow Signal Benchmarks Q2 2026",
+      "description": "269 startups across 15 sectors, ranked by GitHub engineering velocity. Commit velocity, contributor growth, signal type distribution. Weekly updates.",
+      "url": "https://signals.gitdealflow.com/data/vc-signal-benchmarks",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "creator": {
+        "@id": "https://gitdealflow.com/#organization"
+      },
+      "publisher": {
+        "@id": "https://gitdealflow.com/#organization"
+      },
+      "temporalCoverage": "2026",
+      "includedInDataCatalog": {
+        "@id": "https://gitdealflow.com/datasets#catalog"
+      }
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://gitdealflow.com/data/momentum-index",
+      "name": "GitHub Startup Momentum Index Q3 2026",
+      "description": "40 notable startup and dev-tool GitHub repos ranked by momentum score. CSV + JSON. Weekly updates. CC BY 4.0.",
+      "url": "https://gitdealflow.com/data/momentum-index",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "creator": {
+        "@id": "https://gitdealflow.com/#organization"
+      },
+      "publisher": {
+        "@id": "https://gitdealflow.com/#organization"
+      },
+      "temporalCoverage": "2026",
+      "includedInDataCatalog": {
+        "@id": "https://gitdealflow.com/datasets#catalog"
+      },
+      "distribution": [
+        {
+          "@type": "DataDownload",
+          "contentUrl": "https://gitdealflow.com/data/momentum-index/data.json",
+          "encodingFormat": "application/json"
+        },
+        {
+          "@type": "DataDownload",
+          "contentUrl": "https://gitdealflow.com/data/github-momentum-index-q3-2026.csv",
+          "encodingFormat": "text/csv"
+        }
+      ],
+      "dateModified": "2026-08-17"
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://gitdealflow.com/dataset",
+      "name": "GitDealFlow Startup GitHub Signals Dataset",
+      "description": "350+ trending startups. CSV + JSON exports updated every Monday. 15 sectors. Free API access.",
+      "url": "https://gitdealflow.com/dataset",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "creator": {
+        "@id": "https://gitdealflow.com/#organization"
+      },
+      "publisher": {
+        "@id": "https://gitdealflow.com/#organization"
+      },
+      "temporalCoverage": "2026",
+      "includedInDataCatalog": {
+        "@id": "https://gitdealflow.com/datasets#catalog"
+      },
+      "distribution": [
+        {
+          "@type": "DataDownload",
+          "contentUrl": "https://signals.gitdealflow.com/api/signals.csv",
+          "encodingFormat": "text/csv"
+        },
+        {
+          "@type": "DataDownload",
+          "contentUrl": "https://signals.gitdealflow.com/api/signals.json",
+          "encodingFormat": "application/json"
+        }
+      ]
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://unlocksaas.com/data/saas-pricing-benchmarks",
+      "name": "SaaS Pricing Benchmarks 2026",
+      "description": "26 SaaS categories with median pricing, models, and free tier data.",
+      "url": "https://unlocksaas.com/data/saas-pricing-benchmarks",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "creator": {
+        "@id": "https://gitdealflow.com/#organization"
+      },
+      "publisher": {
+        "@id": "https://gitdealflow.com/#organization"
+      },
+      "temporalCoverage": "2026",
+      "includedInDataCatalog": {
+        "@id": "https://gitdealflow.com/datasets#catalog"
+      }
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://churnlens.site/saas-churn-rate-benchmarks",
+      "name": "SaaS Churn Rate Benchmarks 2026",
+      "description": "14-sector SaaS churn benchmarks with seller-vs-actual comparison.",
+      "url": "https://churnlens.site/saas-churn-rate-benchmarks",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "creator": {
+        "@id": "https://gitdealflow.com/#organization"
+      },
+      "publisher": {
+        "@id": "https://gitdealflow.com/#organization"
+      },
+      "temporalCoverage": "2026",
+      "includedInDataCatalog": {
+        "@id": "https://gitdealflow.com/datasets#catalog"
+      }
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://sanctionsai.dev/data/ofac-enforcement",
+      "name": "OFAC Enforcement Actions 2017-2024",
+      "description": "10 major OFAC penalties with violation amounts and settlement details.",
+      "url": "https://sanctionsai.dev/data/ofac-enforcement",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "creator": {
+        "@id": "https://gitdealflow.com/#organization"
+      },
+      "publisher": {
+        "@id": "https://gitdealflow.com/#organization"
+      },
+      "temporalCoverage": "2017/2024",
+      "includedInDataCatalog": {
+        "@id": "https://gitdealflow.com/datasets#catalog"
+      }
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://carshake.online/vehicle-damage-costs.html",
+      "name": "Vehicle Damage Repair Costs 2026",
+      "description": "15 common vehicle damage types with repair cost ranges.",
+      "url": "https://carshake.online/vehicle-damage-costs.html",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "creator": {
+        "@id": "https://gitdealflow.com/#organization"
+      },
+      "publisher": {
+        "@id": "https://gitdealflow.com/#organization"
+      },
+      "temporalCoverage": "2026",
+      "includedInDataCatalog": {
+        "@id": "https://gitdealflow.com/datasets#catalog"
+      }
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://voicelogpro.com/lien-law-deadlines",
+      "name": "Mechanics Lien Law Deadlines",
+      "description": "51-jurisdiction construction lien filing deadlines.",
+      "url": "https://voicelogpro.com/lien-law-deadlines",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "creator": {
+        "@id": "https://gitdealflow.com/#organization"
+      },
+      "publisher": {
+        "@id": "https://gitdealflow.com/#organization"
+      },
+      "temporalCoverage": "2026",
+      "includedInDataCatalog": {
+        "@id": "https://gitdealflow.com/datasets#catalog"
+      }
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://invisibleexit.com/data/micro-saas-ideas",
+      "name": "Validated Micro-SaaS Ideas 2026",
+      "description": "25+ data-backed micro-SaaS ideas with search volume and revenue potential.",
+      "url": "https://invisibleexit.com/data/micro-saas-ideas",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "creator": {
+        "@id": "https://gitdealflow.com/#organization"
+      },
+      "publisher": {
+        "@id": "https://gitdealflow.com/#organization"
+      },
+      "temporalCoverage": "2026",
+      "includedInDataCatalog": {
+        "@id": "https://gitdealflow.com/datasets#catalog"
+      }
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://sipiteno.com/market-expansion-data",
+      "name": "Market Expansion Data",
+      "description": "Market expansion indicators across 22 countries.",
+      "url": "https://sipiteno.com/market-expansion-data",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "creator": {
+        "@id": "https://gitdealflow.com/#organization"
+      },
+      "publisher": {
+        "@id": "https://gitdealflow.com/#organization"
+      },
+      "temporalCoverage": "2026",
+      "includedInDataCatalog": {
+        "@id": "https://gitdealflow.com/datasets#catalog"
+      }
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://sipi.bot/data/agent-spend-benchmarks",
+      "name": "AI Agent Spend Benchmarks",
+      "description": "AI agent API spend benchmarks across providers and task types.",
+      "url": "https://sipi.bot/data/agent-spend-benchmarks",
+      "license": "https://creativecommons.org/licenses/by/4.0/",
+      "creator": {
+        "@id": "https://gitdealflow.com/#organization"
+      },
+      "publisher": {
+        "@id": "https://gitdealflow.com/#organization"
+      },
+      "temporalCoverage": "2026",
+      "includedInDataCatalog": {
+        "@id": "https://gitdealflow.com/datasets#catalog"
+      }
+    }
   ]
 }
 </script>
@@ -45,6 +312,20 @@
     <link rel="stylesheet" href="/styles.css">
 <link rel="preload" href="/inline.css" as="style">
     <link rel="stylesheet" href="/inline.css"><script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://gitdealflow.com/"}, {"@type": "ListItem", "position": 2, "name": "Free Open Datasets, 10 VC, SaaS, Compliance & Auto Data Downloads", "item": "https://gitdealflow.com/datasets"}]}</script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7SV2SNZE4C"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7SV2SNZE4C');
+  </script>
+
+<meta property="og:image" content="https://gitdealflow.com/assets/gitdealflow-social-card-1200x630.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gitdealflow.com/assets/gitdealflow-social-card-1200x630.png">
 </head>
 <body class="page-datasets">
 <header style="border-bottom:1px solid #1f2937;background:#0f172a">

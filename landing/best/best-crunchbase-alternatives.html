@@ -32,12 +32,20 @@
 <script>
     !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split('.');2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement('script')).type='text/javascript',p.async=!0,p.src=s.api_host+'/static/array.js',(r=t.getElementsByTagName('script')[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a='posthog',u.people=u.people||[],u.toString=function(t){var e='posthog';return'posthog'!==a&&(e+='.'+a),t||(e+=' (stub)'),e},u.people.toString=function(){return u.toString(1)+'.people (stub)'},o='init capture register register_once register_for_session unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group setPersonProperties resetPersonProperties setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags'.split(' '),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
     (function(){
-      function _init(){ if(/^https?:$/.test(location.protocol)) posthog.init('phc_lyZCgvTpicjLzAO3rY2GhxuX5WUc5jQjP8ZVwwJqauX', {api_host: 'https://eu.i.posthog.com', persistence: 'memory', person_profiles: 'identified_only'}); }
+      function _init(){ if(/^https?:$/.test(location.protocol)) posthog.init('phc_lyZCgvTpicjLzAO3rY2GhxuX5WUc5jQjP8ZVwwJqauX', {api_host: 'https://eu.i.posthog.com', persistence: (navigator.doNotTrack=='1'||window.globalPrivacyControl)?'memory':'localStorage+cookie', disable_session_recording: (navigator.doNotTrack=='1'||window.globalPrivacyControl), session_recording: {maskAllTextInputs: true, maskTextSelector: '#success-email'}, person_profiles: 'identified_only'}); }
       if('requestIdleCallback' in window){requestIdleCallback(_init,{timeout:2500});} else {setTimeout(_init,2000);}
     })();
   </script>
 <script src="/ux.js" defer></script>
-  </head>
+    <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7SV2SNZE4C"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7SV2SNZE4C');
+  </script>
+</head>
 <body style="font-family:-apple-system,system-ui,sans-serif;max-width:760px;margin:60px auto;padding:0 20px;line-height:1.7;color:#1a1a1a;background:#fff">
     <header style="margin-bottom:40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem"><a href="https://gitdealflow.com" style="font-weight:800;font-size:1.1rem;color:#1a1a1a;text-decoration:none;min-height:44px;display:inline-flex;align-items:center">GitDealFlow</a><nav aria-label="Primary navigation" style="display:flex;gap:1.25rem"><a href="https://gitdealflow.com/pricing" style="color:#0066cc;text-decoration:none;min-height:44px;display:inline-flex;align-items:center">Pricing</a><a href="https://signals.gitdealflow.com" style="color:#0066cc;text-decoration:none;min-height:44px;display:inline-flex;align-items:center">Live signals</a></nav></header>
 
@@ -76,7 +84,7 @@
         <p>Harmonic is a startup discovery engine with data on 35M+ companies and 195M+ people, positioned as a Bloomberg Terminal for startups. It maps the startup landscape in real time for VC, corporate development, and GTM teams, priced for established funds.</p>
         <p style="font-size:.9em;color:#666"><strong>Best for:</strong> Startup discovery at scale, data-driven sourcing. <strong>Pricing:</strong> custom, roughly $25,000/yr minimum. Choose it when you need startup discovery at scale and have an enterprise budget.</p>
         <h3 style="font-size:1.15em;font-weight:700;margin:1.2em 0 .3em">GitDealFlow</h3>
-        <p>GitDealFlow reads public GitHub activity (commit velocity, contributor growth, and repository expansion) across 350+ startups in 15 sectors every Monday, and surfaces the teams accelerating 21-47 days before a round is announced. The methodology is published open-access on SSRN (abstract 6606558) with a CC BY 4.0 dataset any investor can audit. Its free tier covers the Sunday digest, trending board, and MCP server; the Dashboard is EUR 49/month (EUR 490/year).</p>
+        <p>GitDealFlow reads public GitHub activity (commit velocity, contributor growth, and repository expansion) across 350+ startups in 15 sectors every Monday, and surfaces the teams accelerating 21-47 days before a round is announced. The methodology is published open-access on SSRN (abstract 6606558) with a CC BY 4.0 dataset any investor can audit. Its free tier covers the Sunday digest, trending board, and MCP server; the Dashboard is EUR 49/month (EUR 441/year).</p>
         <p style="font-size:.9em;color:#666"><strong>Best for:</strong> Pre-announcement sourcing: find startups before they raise. <strong>Pricing:</strong> Free / EUR 49/mo Dashboard.</p>
 
         <h2>How to Choose</h2>
@@ -89,7 +97,7 @@
         </ul>
 
         <h2>Why GitDealFlow Belongs on the Shortlist</h2>
-        <p>GitDealFlow reads public GitHub activity (commit velocity, contributor growth, and repository expansion) across 350+ startups in 15 sectors every Monday, and surfaces the teams accelerating 21-47 days before a round is announced. The methodology is published open-access on SSRN (abstract 6606558) with a CC BY 4.0 dataset any investor can audit. Its free tier covers the Sunday digest, trending board, and MCP server; the Dashboard is EUR 49/month (EUR 490/year).</p>
+        <p>GitDealFlow reads public GitHub activity (commit velocity, contributor growth, and repository expansion) across 350+ startups in 15 sectors every Monday, and surfaces the teams accelerating 21-47 days before a round is announced. The methodology is published open-access on SSRN (abstract 6606558) with a CC BY 4.0 dataset any investor can audit. Its free tier covers the Sunday digest, trending board, and MCP server; the Dashboard is EUR 49/month (EUR 441/year).</p>
         <p>Most of the tools above answer the question "who exists and what did they raise". GitDealFlow answers a different one: "who is accelerating right now, before anyone has announced anything". That timing is the difference between sourcing a deal and reading about it after the allocation is gone.</p>
 
         <h2>How We Evaluated</h2>

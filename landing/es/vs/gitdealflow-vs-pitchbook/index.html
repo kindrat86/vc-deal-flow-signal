@@ -27,12 +27,20 @@
 <script>
     !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split('.');2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement('script')).type='text/javascript',p.async=!0,p.src=s.api_host+'/static/array.js',(r=t.getElementsByTagName('script')[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a='posthog',u.people=u.people||[],u.toString=function(t){var e='posthog';return'posthog'!==a&&(e+='.'+a),t||(e+=' (stub)'),e},u.people.toString=function(){return u.toString(1)+'.people (stub)'},o='init capture register register_once register_for_session unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group setPersonProperties resetPersonProperties setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags'.split(' '),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
     (function(){
-      function _init(){ if(/^https?:$/.test(location.protocol)) posthog.init('phc_lyZCgvTpicjLzAO3rY2GhxuX5WUc5jQjP8ZVwwJqauX', {api_host: 'https://eu.i.posthog.com', persistence: 'memory', person_profiles: 'identified_only'}); }
+      function _init(){ if(/^https?:$/.test(location.protocol)) posthog.init('phc_lyZCgvTpicjLzAO3rY2GhxuX5WUc5jQjP8ZVwwJqauX', {api_host: 'https://eu.i.posthog.com', persistence: (navigator.doNotTrack=='1'||window.globalPrivacyControl)?'memory':'localStorage+cookie', disable_session_recording: (navigator.doNotTrack=='1'||window.globalPrivacyControl), session_recording: {maskAllTextInputs: true, maskTextSelector: '#success-email'}, person_profiles: 'identified_only'}); }
       if('requestIdleCallback' in window){requestIdleCallback(_init,{timeout:2500});} else {setTimeout(_init,2000);}
     })();
   </script>
 <script src="/ux.js" defer></script>
   <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BreadcrumbList", "itemListElement": [{"@type": "ListItem", "position": 1, "name": "Home", "item": "https://gitdealflow.com/"}, {"@type": "ListItem", "position": 2, "name": "Comparisons", "item": "https://gitdealflow.com/es/vs/"}, {"@type": "ListItem", "position": 3, "name": "GitDealFlow vs PitchBook, Encuentra startups antes de que levanten capital", "item": "https://gitdealflow.com/es/vs/gitdealflow-vs-pitchbook"}]}</script>
+  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7SV2SNZE4C"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7SV2SNZE4C');
+  </script>
 </head>
 <body style="font-family:-apple-system,system-ui,sans-serif;max-width:760px;margin:60px auto;padding:0 20px;line-height:1.7;color:#1a1a1a;background:#fff">
 <header style="margin-bottom:40px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem"><a href="https://gitdealflow.com" style="font-weight:800;font-size:1.1rem;color:#1a1a1a;text-decoration:none;min-height:44px;display:inline-flex;align-items:center">GitDealFlow</a><nav aria-label="Primary navigation" style="display:flex;gap:1.25rem"><a href="https://gitdealflow.com/pricing" style="color:#0066cc;text-decoration:none;min-height:44px;display:inline-flex;align-items:center">Precios</a><a href="https://signals.gitdealflow.com" style="color:#0066cc;text-decoration:none;min-height:44px;display:inline-flex;align-items:center">Señales en vivo</a></nav></header>
@@ -41,7 +49,7 @@
 <p style="font-size:1.1em;color:#555;margin-bottom:2em">PitchBook es el estándar de la industria para datos de mercados privados: rondas de financiación, valoraciones, cap tables. GitDealFlow es un indicador adelantado: rastrea la aceleración de ingeniería que ocurre entre 21 y 47 días ANTES de que una startup anuncie su ronda.</p>
 <h2>La diferencia fundamental: el timing</h2>
 <p><strong>PitchBook</strong> es una base de datos exhaustiva de los mercados privados: rondas de financiación, valoraciones, cap tables, rendimiento de fondos y perfiles de empresa, mantenida por analistas y con fuentes de declaraciones y anuncios. Cuando una ronda cierra, aparece en PitchBook: documentada a fondo, rica en historial y buscable en cada dimensión que un LP o GP pueda desear. Su propósito es entender lo que ha ocurrido en el mercado, y lo hace mejor que cualquier otra herramienta.</p>
-<p><strong>GitDealFlow</strong> no es una base de datos de registros: es un feed de señales. Lee la actividad pública de GitHub de 4.200+ startups y rastrea la velocidad de commits, el crecimiento de contribuidores y la expansión de repositorios. Cuando un equipo empieza a enviar código a un ritmo acelerado, GitDealFlow lo detecta, normalmente entre 21 y 47 días antes de que la ronda de financiación aparezca en cualquier otro sitio, incluido PitchBook. El método está publicado en SSRN bajo CC BY 4.0 con un dataset abierto, de modo que la señal es auditable y no una caja negra.</p>
+<p><strong>GitDealFlow</strong> no es una base de datos de registros: es un feed de señales. Lee la actividad pública de GitHub de 350+ startups y rastrea la velocidad de commits, el crecimiento de contribuidores y la expansión de repositorios. Cuando un equipo empieza a enviar código a un ritmo acelerado, GitDealFlow lo detecta, normalmente entre 21 y 47 días antes de que la ronda de financiación aparezca en cualquier otro sitio, incluido PitchBook. El método está publicado en SSRN bajo CC BY 4.0 con un dataset abierto, de modo que la señal es auditable y no una caja negra.</p>
 <h2>GitDealFlow vs PitchBook</h2>
 <ul>
 <li><strong>Timing de la señal:</strong> GitDealFlow = antes de la ronda. PitchBook = después del cierre.</li>

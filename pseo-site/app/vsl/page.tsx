@@ -22,7 +22,7 @@ const VIDEO_DURATION_ISO = "PT10M30S"; // sum of scene VOs at ~150wpm + animatio
 export const metadata: Metadata = {
   title: script.headline + ", Video Sales Letter",
   description:
-    "10-minute video sales letter. Single belief: GitHub commit-velocity acceleration is the most leading public signal in venture capital. 219-startup SSRN panel, 21-47 day median pre-deck lead band. €49/mo founding rate. Free Sunday digest. €7 First Look Pass.",
+    "10-minute video sales letter. Single belief: GitHub commit-velocity acceleration is the most leading public signal in venture capital. 219-startup SSRN panel, 21-47 day median pre-deck lead band. €49/mo. Free Sunday digest. €7 First Look Pass.",
   alternates: { canonical: "/vsl" },
   openGraph: {
     title: script.headline,
@@ -219,7 +219,7 @@ export default function VslPage() {
             </a>
           </div>
           <p className="text-xs text-slate-500">
-            30-Day Signal-or-It&rsquo;s-Free Guarantee · Cancel anytime · Founding rate locked forever
+            30-Day Signal-or-It&rsquo;s-Free Guarantee · Cancel anytime
           </p>
           <p className="text-sm text-slate-600 leading-relaxed border-l-2 border-amber-300 pl-3">
             <span className="font-semibold text-slate-700">No code required.</span>{" "}
@@ -421,7 +421,7 @@ export default function VslPage() {
               </span>
             </div>
             <p className="text-xs text-slate-500 italic pt-1">
-              Locked at the founding rate. Forever.
+              Month to month. Cancel anytime.
             </p>
             {stackScene ? (
               <p className="text-base text-slate-700 leading-relaxed pt-3">{stackScene.vo}</p>
@@ -503,7 +503,7 @@ export default function VslPage() {
                 </p>
                 <p className="text-2xl font-bold text-slate-900 mt-1">€49/mo</p>
                 <p className="text-sm font-semibold text-slate-700 mt-2">Dashboard</p>
-                <p className="text-xs text-slate-500 mt-1">Founding rate. Locked forever.</p>
+                <p className="text-xs text-slate-500 mt-1">Month to month. Cancel anytime.</p>
               </Link>
             </div>
           </section>

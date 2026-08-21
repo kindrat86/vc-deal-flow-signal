@@ -9,6 +9,7 @@ import {
   SOAP_OPERA_I,
   CHALLENGE_EMAILS,
   LAUNCH_EMAILS,
+  LEAD_MAGNET_WELCOME_EMAILS,
 } from "@/lib/emails";
 import { isExcluded } from "@/lib/excluded-emails";
 import { isNonceUsed, markNonceUsed } from "@/lib/runtime-cache";
@@ -16,6 +17,7 @@ import { listUnsubscribeHeaders, injectUnsubscribeLink } from "@/lib/list-unsubs
 import { pickAudienceId } from "@/lib/resend-audience";
 import { buildLatestDigest } from "@/lib/digest-builder";
 import { isInvestorLane } from "@/lib/investor-lanes";
+import { getResendConsentStatus } from "@/lib/resend-consent";
 
 // Single-use tracking for v2 verify-subscribe nonces. Once a v2 token's nonce
 // is consumed, any replay (link prefetcher, leaked URL replay) becomes a
@@ -30,11 +32,9 @@ const VERIFY_NONCE_TTL_SECONDS = 30 * 86_400; // matches v2 token 30-day TTL
 // who subscribes twice gets two different v2 tokens, both single-use, but
 // clicking both would enroll the same inbox in the Soap Opera Sequence twice.
 // We mark the email itself once the sequence is scheduled; ~180d TTL covers
-// the longest sequence span (Day 0-180) with the whole drip arc. A user who
-// unsubscribes and later legitimately re-subscribes inside that window is
-// re-activated on the audience (PATCH unsubscribed:false below) so digests
-// and broadcasts resume, but the already-seen drip sequence is NOT queued a
-// second time, which is the sane behavior for a returning subscriber.
+// the longest sequence span (Day 0-180) with the whole drip arc. An address
+// that is globally suppressed or unsubscribed remains blocked even when a
+// fresh verification link is clicked.
 const SOS_ENROLLED_NAMESPACE = "sos-enrolled";
 const SOS_ENROLLED_TTL_SECONDS = 180 * 86_400;
 
@@ -58,6 +58,19 @@ function routeFromQuery(url: URL): string {
   return ["F", "T", "D", "I"].includes(rawRoute) ? rawRoute : "";
 }
 
+function verifiedRedirect(cohort: string, route: string, email: string) {
+  if (cohort === "lead-magnet") {
+    return NextResponse.redirect("https://gitdealflow.com/lead-magnet-thanks?ready=1");
+  }
+  if (cohort === "challenge") {
+    return NextResponse.redirect(`${SITE_URL}/challenge/started`);
+  }
+  if (cohort === "launch") {
+    return NextResponse.redirect(`${SITE_URL}/launch/agent-credits`);
+  }
+  return NextResponse.redirect(confirmedUrl(route, email));
+}
+
 interface Attribution {
   source: string;
   utm_source: string;
@@ -68,6 +81,7 @@ interface Attribution {
   quiz_route: string;
   quiz_route_label: string;
   lane: string;
+  cohort: string;
 }
 
 // Marker we prepend to the JSON-encoded attribution we stash in Resend's
@@ -138,6 +152,7 @@ export async function GET(request: Request) {
     (v || "").slice(0, max);
   const rawRoute = clip(url.searchParams.get("quiz_route"), 4);
   const rawLane = clip(url.searchParams.get("lane"), 16);
+  const cohortParam = clip(url.searchParams.get("cohort"), 32);
   const lane = isInvestorLane(rawLane) ? rawLane : "";
   const attribution: Attribution = {
     source: clip(url.searchParams.get("source"), 100),
@@ -149,14 +164,32 @@ export async function GET(request: Request) {
     quiz_route: ["F", "T", "D", "I"].includes(rawRoute) ? rawRoute : "",
     quiz_route_label: clip(url.searchParams.get("quiz_route_label"), 120),
     lane,
+    cohort:
+      cohortParam === "lead-magnet" ||
+      cohortParam === "challenge" ||
+      cohortParam === "launch"
+        ? cohortParam
+        : "soap-opera",
   };
   const tzRaw = clip(url.searchParams.get("tz"), 64);
   const tz = tzRaw.includes("/") ? tzRaw : "";
   const packedAttribution = packAttribution(attribution);
+  const route = attribution.quiz_route as "F" | "T" | "D" | "I" | "";
 
   if (!RESEND_API_KEY) {
     console.error("RESEND_API_KEY is not configured");
     return NextResponse.redirect(confirmedUrl(routeFromQuery(url), email));
+  }
+
+  // Fail closed across both Resend consent layers. Global suppressions cover
+  // bounces, complaints, and manual blocks; contact.unsubscribed covers a
+  // reader's list opt-out. Never PATCH either state back to false here.
+  const consentStatus = await getResendConsentStatus(email, RESEND_API_KEY);
+  if (consentStatus !== "clear") {
+    console.warn(
+      `[verify] consent guard blocked side effects email=${email} status=${consentStatus}`,
+    );
+    return verifiedRedirect(cohortParam, route, email);
   }
 
   // 1. Add verified contact to Resend audience, with attribution packed into
@@ -185,7 +218,6 @@ export async function GET(request: Request) {
 
       const contactBody: Record<string, unknown> = {
         email,
-        unsubscribed: false,
       };
       if (packedAttribution) {
         contactBody.first_name = packedAttribution;
@@ -206,20 +238,26 @@ export async function GET(request: Request) {
         },
       );
       if (!contactRes.ok) {
-        // Contact already exists, this is a RE-subscriber. If they had
-        // previously unsubscribed, the POST above did not flip them back;
-        // PATCH unsubscribed:false so they actually receive emails again.
-        await fetch(
-          `https://api.resend.com/audiences/${audienceId}/contacts/${encodeURIComponent(email)}`,
-          {
-            method: "PATCH",
-            headers: {
-              Authorization: `Bearer ${RESEND_API_KEY}`,
-              "Content-Type": "application/json",
+        // An existing, still-consented contact may need fresh attribution so
+        // the local engine can identify the lead-magnet cohort. Update only
+        // metadata. The consent guard above already proved the contact is
+        // subscribed, and this PATCH deliberately cannot alter that state.
+        const metadataBody: Record<string, string> = {};
+        if (packedAttribution) metadataBody.first_name = packedAttribution;
+        if (tz) metadataBody.last_name = `tz:${tz}`;
+        if (Object.keys(metadataBody).length > 0) {
+          await fetch(
+            `https://api.resend.com/audiences/${audienceId}/contacts/${encodeURIComponent(email)}`,
+            {
+              method: "PATCH",
+              headers: {
+                Authorization: `Bearer ${RESEND_API_KEY}`,
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(metadataBody),
             },
-            body: JSON.stringify({ unsubscribed: false }),
-          },
-        );
+          );
+        }
       }
     }
   } catch (err) {
@@ -236,10 +274,10 @@ export async function GET(request: Request) {
   //    €97 + €1,997. Missing/unknown route falls back to SOAP_OPERA_EMAILS
   //    (= D) so legacy signups without the quiz card stay on the existing
   //    flow.
-  const cohortParam = url.searchParams.get("cohort");
-  const route = attribution.quiz_route as "F" | "T" | "D" | "I" | "";
   const sequence =
-    cohortParam === "challenge"
+    cohortParam === "lead-magnet"
+      ? LEAD_MAGNET_WELCOME_EMAILS
+      : cohortParam === "challenge"
       ? CHALLENGE_EMAILS
       : cohortParam === "launch"
         ? LAUNCH_EMAILS
@@ -268,12 +306,19 @@ export async function GET(request: Request) {
 
   // Per-email dedup: a double-subscribe (two verification emails, both
   // clicked) must not double-enroll the inbox in the sequence. Mark BEFORE
-  // scheduling so a concurrent second click can't race past the check. The
-  // audience add + unsubscribed:false re-activation above already ran, so a
-  // legitimate re-subscriber is back on the list for digests either way.
-  const alreadyEnrolled = await isNonceUsed(SOS_ENROLLED_NAMESPACE, email);
+  // scheduling so a concurrent second click can't race past the check.
+  const enrollmentKey =
+    cohortParam === "lead-magnet" ? `lead-magnet:${email}` : email;
+  const alreadyEnrolled = await isNonceUsed(
+    SOS_ENROLLED_NAMESPACE,
+    enrollmentKey,
+  );
   if (!alreadyEnrolled) {
-    await markNonceUsed(SOS_ENROLLED_NAMESPACE, email, SOS_ENROLLED_TTL_SECONDS);
+    await markNonceUsed(
+      SOS_ENROLLED_NAMESPACE,
+      enrollmentKey,
+      SOS_ENROLLED_TTL_SECONDS,
+    );
   }
   const toScheduleNow = alreadyEnrolled ? [] : immediate;
   const toDefer = alreadyEnrolled ? [] : deferred;
@@ -282,8 +327,28 @@ export async function GET(request: Request) {
     `[verify] dispatch email=${email} cohort=${cohortParam || "default"} route=${route || "none"} total=${sequence.length} immediate=${immediate.length} deferred=${deferred.length}${alreadyEnrolled ? " (already enrolled, skipping drip schedule)" : ""}`,
   );
 
-  for (const soapEmail of toScheduleNow) {
+  for (const [sequenceIndex, soapEmail] of toScheduleNow.entries()) {
     const sendAt = new Date(now + soapEmail.delayMs).toISOString();
+    const payload: Record<string, unknown> = {
+      from: `${FROM_NAME} <${FROM_EMAIL}>`,
+      reply_to: FROM_EMAIL,
+      bcc: "sales@sipiteno.com",
+      to: email,
+      subject: soapEmail.subject,
+      html: injectUnsubscribeLink(soapEmail.html, email),
+      headers: listUnsubscribeHeaders(email),
+    };
+    // The promised asset lands immediately after confirmation. The other four
+    // welcome messages use Resend's scheduler at day 1, 3, 5, and 7.
+    if (soapEmail.delayMs > 0) payload.scheduled_at = sendAt;
+    if (cohortParam === "lead-magnet") {
+      payload.tags = [
+        {
+          name: "email_key",
+          value: `velocity-verdict-${sequenceIndex + 1}`,
+        },
+      ];
+    }
     try {
       const res = await fetch("https://api.resend.com/emails", {
         method: "POST",
@@ -291,26 +356,18 @@ export async function GET(request: Request) {
           Authorization: `Bearer ${RESEND_API_KEY}`,
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({
-          from: `${FROM_NAME} <${FROM_EMAIL}>`,
-          bcc: "sales@sipiteno.com",
-          to: email,
-          subject: soapEmail.subject,
-          html: injectUnsubscribeLink(soapEmail.html, email),
-          scheduled_at: sendAt,
-          headers: listUnsubscribeHeaders(email),
-        }),
+        body: JSON.stringify(payload),
       });
       if (!res.ok) {
         const errText = await res.text();
         console.error(
-          `Failed to schedule "${soapEmail.subject}" for ${email}:`,
+          `Failed to send or schedule "${soapEmail.subject}" for ${email}:`,
           errText,
         );
       }
     } catch (err) {
       console.error(
-        `Error scheduling "${soapEmail.subject}" for ${email}:`,
+        `Error sending or scheduling "${soapEmail.subject}" for ${email}:`,
         err,
       );
     }
@@ -361,13 +418,16 @@ export async function GET(request: Request) {
     }
   }
 
-  // 2.5 Send the latest Signal Digest immediately. Before this, a verified
-  //     subscriber got the drip story in ~30 min but had to wait until the
-  //     next Sunday broadcast for the Top-5 breakout data the verification
-  //     email promises ("This Week's Top 5 Breakout Startups"). This closes
-  //     that up-to-7-day TTV gap. Best-effort: a render/send failure must
-  //     never break verification or the drip schedule.
-  try {
+  // 2.5 Send the latest Signal Digest immediately for the standard funnel.
+  //     Lead-magnet subscribers receive their promised PDF as email 1, so a
+  //     second immediate digest would create a two-email burst after confirm.
+  //     Before this, a verified subscriber got the drip story in ~30 min but
+  //     had to wait until the next Sunday broadcast for the Top-5 breakout
+  //     data the verification email promises. This closes that up-to-7-day
+  //     TTV gap for the standard funnel. Best-effort: a render/send failure
+  //     must never break verification or the drip schedule.
+  if (cohortParam !== "lead-magnet") {
+    try {
     const latest = buildLatestDigest(lane || undefined);
     const digestRes = await fetch("https://api.resend.com/emails", {
       method: "POST",
@@ -377,6 +437,7 @@ export async function GET(request: Request) {
       },
       body: JSON.stringify({
         from: `${FROM_NAME} <${FROM_EMAIL}>`,
+        reply_to: FROM_EMAIL,
         bcc: "sales@sipiteno.com",
         to: email,
         subject: latest.subject,
@@ -394,17 +455,10 @@ export async function GET(request: Request) {
   } catch (digestErr) {
     console.error(`[verify] immediate digest error for ${email}:`, digestErr);
   }
+  }
 
-  // 3. Redirect, challenge cohort lands on /challenge/started so the user
-  //    sees the curriculum, launch cohort lands on the open launch page so
-  //    they can buy immediately if they want, default lands on the report.
-  if (cohortParam === "challenge") {
-    return NextResponse.redirect(`${SITE_URL}/challenge/started`);
-  }
-  if (cohortParam === "launch") {
-    return NextResponse.redirect(`${SITE_URL}/launch/agent-credits`);
-  }
-  return NextResponse.redirect(confirmedUrl(route, email));
+  // 3. Redirect to the cohort's normal post-confirmation destination.
+  return verifiedRedirect(cohortParam, route, email);
 }
 
 function redirectWithError(message: string) {

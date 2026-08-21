@@ -142,6 +142,28 @@ def fmt_pct(v):
     return "—" if v is None else f"{v}%"
 
 
+def upsert_history(history, date, counts, timestamp):
+    """Replace a prior snapshot for an issue when Resend events advance.
+
+    A digest can be opened or clicked days after the Monday report. One row per
+    issue keeps the published history current instead of freezing the first poll.
+    """
+    record = {"ts": timestamp, "date": date, **counts}
+    metric_keys = (
+        "sent", "delivered", "opened", "clicked", "bounced", "suppressed",
+        "open_rate", "click_rate", "bounce_rate", "measured",
+    )
+    for index, prior in enumerate(history):
+        if prior.get("date") != date:
+            continue
+        if all(prior.get(key) == record.get(key) for key in metric_keys):
+            return history, False
+        updated = list(history)
+        updated[index] = record
+        return updated, True
+    return [*history, record], True
+
+
 def main():
     now = datetime.now(timezone.utc).isoformat()
     logs = load_sent_logs()
@@ -196,17 +218,16 @@ def main():
                     except json.JSONDecodeError:
                         pass
 
-    # Only append a NEW record if the newest issue's (date, sent) is not already
-    # the last history row (idempotent re-runs must not double-append).
+    # Keep exactly one current row per issue. Later opens/clicks replace the
+    # Monday snapshot, so the report remains a real engagement record.
     latest = issues[0] if issues else None
     if latest:
         date, counts = latest
-        already = any(h.get("date") == date and h.get("sent") == counts["sent"] for h in hist[-5:])
-        if not already:
-            record = {"ts": now, "date": date, **counts}
-            with open(HIST, "a") as f:
-                f.write(json.dumps(record) + "\n")
-            hist.append(record)
+        hist, changed = upsert_history(hist, date, counts, now)
+        if changed:
+            with open(HIST, "w") as f:
+                for record in hist:
+                    f.write(json.dumps(record) + "\n")
 
     # Write markdown.
     lines = [

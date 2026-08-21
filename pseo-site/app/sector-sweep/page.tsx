@@ -267,6 +267,20 @@ export default function SectorSweepPage() {
               when we receive your reply.)
             </span>
           </p>
+          <p className="text-sm text-gray-400">
+            Need an invoice, a VAT receipt, or bank transfer (SEPA) for your
+            fund?{" "}
+            <a
+              href="mailto:signals@gitdealflow.com?subject=Sector%20Sweep%20%E2%80%94%20invoice%20request"
+              className="text-amber-300 hover:text-amber-200 underline decoration-dotted"
+            >
+              Email signals@gitdealflow.com
+            </a>{" "}
+            <span className="text-gray-500">
+              and we&rsquo;ll send a pro-forma with the VAT line your finance
+              team needs.
+            </span>
+          </p>
         </section>
 
         <TrialClose tone="amber">

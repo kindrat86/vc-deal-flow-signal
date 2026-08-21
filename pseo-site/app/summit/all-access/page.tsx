@@ -4,6 +4,7 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
+import CheckoutDistinctId from "@/components/CheckoutDistinctId";
 import { SUMMIT, TALKS } from "@/content/summit";
 
 const SITE = "https://signals.gitdealflow.com";
@@ -140,6 +141,7 @@ export default function AllAccessPage() {
           </div>
           <form method="POST" action="/api/checkout/session" className="space-y-4">
             <input type="hidden" name="tier" value={SUMMIT.allAccessCheckoutTier} />
+            <CheckoutDistinctId />
             {/* Brunson in-cart order bump, checkbox adds the Sector Sweep
                 as a second line item in the same Stripe checkout. */}
             <label className="flex items-start gap-3 rounded-lg border-2 border-dashed border-amber-500/60 bg-amber-950/20 p-4 cursor-pointer">

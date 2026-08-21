@@ -36,7 +36,7 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   const description = `${city.name}, ${city.country}: engineering acceleration signals, notable scaleups, active VC anchors, and the local commit-cadence pattern. Editorial interpretation for Corp Dev, PE operating partners, and emerging managers.`;
 
   return {
-    title,
+    title: { absolute: title },
     description,
     openGraph: { title, description, type: "article", url: `/city/${slug}` },
     twitter: { card: "summary_large_image", title, description },

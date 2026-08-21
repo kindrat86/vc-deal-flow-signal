@@ -857,8 +857,6 @@ commit velocity falls below the prior 14-day window. The team
 
         <PSEOFooterNav excludeHrefs={["/methodology"]} />
 
-        </article>
-
         {/* CTA */}
         <div className="rounded-xl border border-slate-800 bg-slate-900 p-6 sm:p-8 text-center">
           <h2 className="text-gray-100 font-semibold text-lg mb-2">
@@ -889,6 +887,7 @@ commit velocity falls below the prior 14-day window. The team
             </Link>
           </div>
         </div>
+        </article>
       </div>
     </>
   );

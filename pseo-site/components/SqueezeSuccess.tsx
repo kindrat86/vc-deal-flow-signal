@@ -158,7 +158,7 @@ export default function SqueezeSuccess({
         </p>
         <p className="text-gray-300 text-sm leading-relaxed">
           {leadDashboard
-            ? "Five names help. The full ranked field, 60+ accelerating startups in your sectors, re-ranked weekly, changes how you work. Don't wait for Sunday."
+            ? "Five names help. The full ranked field, 140+ accelerating startups in your sectors, re-ranked weekly, changes how you work. Don't wait for Sunday."
             : "If you already know the sector you want answered, don't wait for Sunday. Pick one, pay €7, and get the full ranked deep-dive in 24 hours."}
         </p>
         <div className="flex flex-col sm:flex-row gap-3">

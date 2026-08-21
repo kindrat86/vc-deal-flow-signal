@@ -38,40 +38,6 @@ const TIER_COPY: Record<MomentumTier, { label: string; color: string; blurb: str
   },
 };
 
-// Signal-type meaning, paraphrased from the published glossary definitions so
-// each page explains its own signal in readable prose (no invented facts).
-const SIGNAL_TYPE_MEANING: Record<string, string> = {
-  "Infrastructure buildout":
-    "The team created three or more new public repositories in a 30-day window, a pattern that is classic Series A platform expansion: the core product works and now the team is building the platform around it.",
-  "Framework migration":
-    "General engineering acceleration that does not fit the hiring, buildout, or deploy-spike buckets. It often marks a stack transition, moving from a prototype stack to a production one, the shift from exploration to exploitation.",
-  "Engineering hiring burst":
-    "Contributor growth rose above 50% in a short window, which usually means the company recently closed a round and is rapidly scaling the team.",
-  "Deploy frequency spike":
-    "Commit velocity is up 150% or more versus baseline, so the team is shipping at an unusually high rate, often a launch, a pivot, iteration on early customer feedback, or a response to sudden demand.",
-};
-
-// Stage context, mirroring the stage-axis descriptions in lib/data.ts.
-const STAGE_CONTEXT: Record<string, string> = {
-  "Pre-Seed":
-    "Earliest-stage technical startups, typically before any institutional round. Engineering activity here is the clearest leading indicator because there is little press and few public breadcrumbs other than the code itself.",
-  "Seed":
-    "Post-angel or accelerator, pre-Series A. Engineering signals at this stage usually correlate with the first production build-out and the earliest customer-facing launches.",
-  "Series A/B":
-    "Growth-stage technical startups that have closed institutional rounds. Engineering signals here are less about discovery and more about validating trajectory before the next round.",
-  "Growth":
-    "Series C and beyond. Engineering signals at this scale indicate platform expansion, a new product line, or preparation for an IPO or a major strategic milestone.",
-};
-
-const GEO_LABEL: Record<string, string> = {
-  EU: "Europe",
-  US: "the United States",
-  UK: "the United Kingdom",
-  APAC: "Asia-Pacific",
-  LATAM: "Latin America",
-  Canada: "Canada",
-};
-
 function findStartupByGithubPath(orgSlash: string): Startup | null {
   const sectors = getAllSectors();
   const period = getCurrentPeriod();
@@ -158,70 +124,23 @@ export default async function MomentumPage({
   const githubUrl = `https://github.com/${org}/${repo}`;
   const tier = startup ? tierFromVelocityChange(startup.commitVelocityChange) : null;
   const tierData = tier ? TIER_COPY[tier] : null;
-  const geoLabel = startup ? (GEO_LABEL[startup.geography] ?? startup.geography) : null;
-  const signalMeaning = startup ? (SIGNAL_TYPE_MEANING[startup.signalType] ?? null) : null;
-  const stageContext = startup ? (STAGE_CONTEXT[startup.stage] ?? null) : null;
-
-  // 40-60 word direct answer, interpolated from the page's own data so every
-  // repo reads differently while staying extractable by answer engines.
-  const directAnswer = startup
-    ? `${startup.name} is a ${startup.stage} startup in ${geoLabel} showing ${tierData?.label.toLowerCase()} engineering momentum: ${startup.commitVelocity14d} commits in the last 14 days (${startup.commitVelocityChange}), across ${startup.contributors} contributors, with ${startup.newRepos} new repositories. Signal type: ${startup.signalType}.`
-    : `${path} is not yet in the tracked-startup index. An untracked repo has no GitDealFlow momentum tier because it does not map to a monitored startup org in the current period. Use the panel to find the closest tracked repo and predict its next round instead.`;
-
-  const faqs = startup
-    ? [
-        {
-          q: `What does ${tierData?.label.toLowerCase()} momentum mean for ${startup.name}?`,
-          a: `${tierData?.blurb} In ${startup.name}'s case the 14-day commit velocity is ${startup.commitVelocity14d} commits, a ${startup.commitVelocityChange} change from the prior window, with ${startup.contributors} contributors and ${startup.newRepos} new repositories.`,
-        },
-        {
-          q: `How does GitDealFlow calculate this signal?`,
-          a: `GitDealFlow pulls 14-day commit volume per organization from the public GitHub REST API with the bot filter applied, computes the percentage change against the prior window, and classifies the result into one of four signal types. The full formula is published at /methodology.`,
-        },
-        {
-          q: `Does ${startup.name} engineering acceleration predict a round?`,
-          a: `Sustained engineering acceleration has historically preceded fundraise announcements by three to six weeks, but it is a leading indicator, not a guarantee. Combine this signal with the stage context (${startup.stage}) and your own sourcing thesis.`,
-        },
-      ]
-    : [
-        {
-          q: `Why is ${path} untracked?`,
-          a: `GitDealFlow tracks a panel of venture-backed startup orgs. ${path} does not map to a monitored org in the current period, so no momentum tier is computed.`,
-        },
-        {
-          q: `How do I see momentum for a tracked repo?`,
-          a: `Use the GitDealFlow bookmarklet on any github.com page, or browse the sector pages at / to find tracked startups and open their momentum cards.`,
-        },
-      ];
 
   const jsonLd = startup
     ? {
         "@context": "https://schema.org",
-        "@graph": [
-          {
-            "@type": "Dataset",
-            name: `Engineering momentum signal, ${path}`,
-            description: `Public GitHub commit velocity, contributor growth, and momentum tier for ${path}.`,
-            url: `${SITE}/momentum/${org}/${repo}`,
-            isBasedOn: { "@id": "https://signals.gitdealflow.com/dataset#dataset" },
-            creator: { "@type": "Organization", name: "VC Deal Flow Signal", url: SITE },
-            license: "https://creativecommons.org/licenses/by/4.0/",
-            isAccessibleForFree: true,
-            variableMeasured: [
-              { "@type": "PropertyValue", name: "commit velocity (14d)", value: startup.commitVelocity14d },
-              { "@type": "PropertyValue", name: "commit velocity change", value: startup.commitVelocityChange },
-              { "@type": "PropertyValue", name: "contributors", value: startup.contributors },
-              { "@type": "PropertyValue", name: "momentum tier", value: tier },
-            ],
-          },
-          {
-            "@type": "FAQPage",
-            mainEntity: faqs.map((f) => ({
-              "@type": "Question",
-              name: f.q,
-              acceptedAnswer: { "@type": "Answer", text: f.a },
-            })),
-          },
+        "@type": "Dataset",
+        name: `Engineering momentum signal, ${path}`,
+        description: `Public GitHub commit velocity, contributor growth, and momentum tier for ${path}.`,
+        url: `${SITE}/momentum/${org}/${repo}`,
+        isBasedOn: { "@id": "https://signals.gitdealflow.com/dataset#dataset" },
+        creator: { "@type": "Organization", name: "VC Deal Flow Signal", url: SITE },
+        license: "https://creativecommons.org/licenses/by/4.0/",
+        isAccessibleForFree: true,
+        variableMeasured: [
+          { "@type": "PropertyValue", name: "commit velocity (14d)", value: startup.commitVelocity14d },
+          { "@type": "PropertyValue", name: "commit velocity change", value: startup.commitVelocityChange },
+          { "@type": "PropertyValue", name: "contributors", value: startup.contributors },
+          { "@type": "PropertyValue", name: "momentum tier", value: tier },
         ],
       }
     : null;
@@ -252,20 +171,6 @@ export default async function MomentumPage({
           </a>
         </p>
       </header>
-
-      <div
-        data-direct-answer
-        data-speakable="definition"
-        data-agent-summary
-        className="mb-8 rounded-xl border border-slate-700 bg-slate-900/70 px-5 py-4 sm:px-6 sm:py-5"
-      >
-        <p className="text-sky-400 text-[10px] font-semibold uppercase tracking-wider mb-2">
-          Direct answer
-        </p>
-        <p className="text-gray-100 text-base sm:text-lg leading-relaxed">
-          {directAnswer}
-        </p>
-      </div>
 
       {startup && tierData ? (
         <>
@@ -303,46 +208,6 @@ export default async function MomentumPage({
             </div>
           </section>
 
-          <section className="mb-8 prose prose-invert prose-slate max-w-none text-gray-300 leading-relaxed">
-            <h2 className="text-xl font-semibold text-gray-100 mb-3">
-              What this signal means
-            </h2>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              {signalMeaning ?? tierData.blurb} {startup.name} is tracked at the{" "}
-              {startup.stage} stage, which means: {stageContext ?? "no stage context available."}
-            </p>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              Read the numbers together. {startup.commitVelocity14d} commits over 14 days is the
-              raw volume; the {startup.commitVelocityChange} change tells you whether that volume
-              is accelerating or cooling. {startup.contributors} contributors with{" "}
-              {startup.contributorGrowth} growth shows whether the team is scaling, and{" "}
-              {startup.newRepos} new repositories signals whether it is expanding its technical
-              surface area. For an investor, the combination of these four metrics, not any single
-              one, is what separates a real acceleration from noise.
-            </p>
-          </section>
-
-          <section className="mb-8 prose prose-invert prose-slate max-w-none text-gray-300 leading-relaxed">
-            <h2 className="text-xl font-semibold text-gray-100 mb-3">
-              How to act on this signal
-            </h2>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              Three moves, in order. First, qualify: a {tierData?.label.toLowerCase()} tier
-              combined with a {startup.signalType.toLowerCase()} is strongest when the 14-day
-              volume is meaningful ({startup.commitVelocity14d} commits here) rather than a
-              percent spike on a near-zero base. Second, time it: for a {startup.stage} startup,
-              {stageContext ?? "read the stage context"} Third, record it: scout {org} on the
-              prediction board so the call is dated, public, and attributable, then revisit in a
-              month to see whether the acceleration held or faded.
-            </p>
-            <p className="text-gray-400 text-sm leading-relaxed">
-              One caution: momentum tiers describe engineering cadence, not company quality.
-              A hot repo can belong to a bad business, and a cold repo can belong to a
-              profitable one. Treat this card as a source filter and a timing hint, never as
-              the diligence itself.
-            </p>
-          </section>
-
           <section className="mb-8 rounded-xl border border-slate-800 bg-slate-900/50 p-5 sm:p-6">
             <h2 className="text-xl font-semibold text-gray-100 mb-2">Tracked as</h2>
             <p className="text-lg font-semibold text-gray-100 mb-1">{startup.name}</p>
@@ -375,25 +240,6 @@ export default async function MomentumPage({
               Scout {org} →
             </Link>
           </section>
-
-          <section className="mb-10" aria-label="Frequently asked questions">
-            <h2 className="text-xl font-semibold text-gray-100 mb-4">
-              Frequently asked questions
-            </h2>
-            <div className="space-y-3">
-              {faqs.map((f) => (
-                <details
-                  key={f.q}
-                  className="rounded-lg border border-slate-800 bg-slate-900/50 px-5 py-3"
-                >
-                  <summary className="cursor-pointer font-semibold text-gray-100 text-sm">
-                    {f.q}
-                  </summary>
-                  <p className="mt-3 text-gray-300 text-sm leading-relaxed">{f.a}</p>
-                </details>
-              ))}
-            </div>
-          </section>
         </>
       ) : (
         <>
@@ -405,25 +251,6 @@ export default async function MomentumPage({
               <code className="text-sky-300">{path}</code> in our current period.
               Either the org isn&rsquo;t in our universe yet, or the repo path
               doesn&rsquo;t map to one we monitor.
-            </p>
-            <p className="text-gray-400 text-sm leading-relaxed mt-3">
-              An untracked repo simply has no momentum tier computed against our panel. That does
-              not mean the project is inactive: it means it is outside the tracked-startup universe
-              for this period. Browse the sector pages or the live panel to find a comparable
-              tracked org and read its signal instead.
-            </p>
-            <p className="text-gray-400 text-sm leading-relaxed mt-3">
-              How the panel is built: each quarter GitDealFlow selects venture-backed startup orgs
-              across 15 sectors, pulls 14-day commit volume from the public GitHub REST API with the
-              bot filter applied, and publishes the acceleration deltas. If {path} later enters the
-              tracked universe, this same URL will show its live momentum card automatically, no
-              action needed.
-            </p>
-            <p className="text-gray-400 text-sm leading-relaxed mt-3">
-              Meanwhile, three things you can still do: run the bookmarklet on any github.com page
-              to read momentum wherever you browse, embed a badge in a README to watch a repo over
-              time, or predict the next round from this page so your call is dated before the panel
-              picks the org up.
             </p>
           </section>
 
@@ -444,25 +271,6 @@ export default async function MomentumPage({
             >
               Make the call →
             </Link>
-          </section>
-
-          <section className="mb-10" aria-label="Frequently asked questions">
-            <h2 className="text-xl font-semibold text-gray-100 mb-4">
-              Frequently asked questions
-            </h2>
-            <div className="space-y-3">
-              {faqs.map((f) => (
-                <details
-                  key={f.q}
-                  className="rounded-lg border border-slate-800 bg-slate-900/50 px-5 py-3"
-                >
-                  <summary className="cursor-pointer font-semibold text-gray-100 text-sm">
-                    {f.q}
-                  </summary>
-                  <p className="mt-3 text-gray-300 text-sm leading-relaxed">{f.a}</p>
-                </details>
-              ))}
-            </div>
           </section>
         </>
       )}

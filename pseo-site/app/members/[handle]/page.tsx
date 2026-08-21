@@ -45,7 +45,7 @@ export async function generateMetadata(
   const { handle } = await ctx.params;
   const member = getCharterMember(handle);
   if (!member) {
-    return { title: "Member not found · VC Deal Flow Signal" };
+    return { title: { absolute: "Member not found · VC Deal Flow Signal" } };
   }
   const claimedLabel = member.claimed
     ? `${member.claimedBy?.handle ?? handle}`

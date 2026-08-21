@@ -6,7 +6,7 @@ import SeoCta from "@/components/SeoCta";
 const SITE = "https://signals.gitdealflow.com";
 
 export const metadata: Metadata = {
-  title: "Mirrors &amp; Indexes, Where to Find VC Deal Flow Signal",
+  title: { absolute: "Mirrors &amp; Indexes, Where to Find VC Deal Flow Signal" },
   description:
     "Every external mirror, registry, and index that carries VC Deal Flow Signal artifacts, methodology paper, dataset, MCP server, browser extension, source repository. One canonical directory, machine-readable.",
   alternates: { canonical: "/mirrors" },

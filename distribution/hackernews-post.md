@@ -1,4 +1,11 @@
-# Hacker News — Show HN Post
+<!-- SUPERSEDED 2026-08-16: DO NOT USE. The canonical Show HN post is v3 at
+     /Users/sipi/signals-gitdealflow/AEO-hn-show-hn-draft.md (this is also the
+     file the gdf-hn-launch cron's paste-ready brief points to). This draft
+     predates the v3 fact/claim correction and still cites the CLOSED founding
+     pricing. Claims locked in AGENTS.md: "350+" orgs, 15 sectors, EUR 49/mo
+     Dashboard + EUR 197/mo Insider pricing. v3 is the verified, gate-gated pack. -->
+
+# Hacker News — Show HN Post (SUPERSEDED, archived)
 
 ## Title
 Show HN: I track GitHub engineering acceleration to help VCs find breakout startups
@@ -49,4 +56,4 @@ True. This only captures public engineering activity. For DevTools, open-source 
 We maintain a blocklist of large tech companies and OSS foundations. We also filter by repo characteristics — star count, contributor patterns, organization size — to focus on venture-scale startups.
 
 ## "What's the business model?"
-Free tier (email digest), paid dashboard (EUR 9.97/mo during beta), and an insider tier (EUR 97/mo) with a private investor group, live briefings, and API access.
+Free tier (email digest), paid dashboard (EUR 49/mo), and an insider tier (EUR 197/mo) with a private investor group, live briefings, and API access.

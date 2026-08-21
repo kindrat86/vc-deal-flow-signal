@@ -162,6 +162,7 @@ export default async function SectorPage({ params }: PageProps) {
         name: `${sector.name} Startups, Engineering Acceleration Dataset, ${period.name}`,
         description: `Ranked dataset of ${sortedStartups.length} ${sector.name.toLowerCase()} startups in ${period.name}, scored by GitHub commit velocity change, contributor growth, new repository count, and signal classification. Sourced from public GitHub API data.`,
         url: `https://signals.gitdealflow.com/startups-to-watch/${slug}`,
+        isBasedOn: { "@id": "https://signals.gitdealflow.com/dataset#dataset" },
         identifier: `gitdealflow:startups-to-watch:${slug}`,
         keywords: [
           sector.name,

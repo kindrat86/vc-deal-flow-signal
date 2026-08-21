@@ -1,6 +1,6 @@
 ---
 subject: 5 startups accelerating right now that nobody's talking about
-preview: This month's startups heating up early on GitHub.
+preview: This week's startups heating up early on GitHub.
 type: seinfeld_broadcast
 ---
 
@@ -20,7 +20,7 @@ But their GitHub activity tells a story:
 
 5. smartstore (E-commerce, Series A/B) - Steadily shipping faster across code and infrastructure. Framework migration pattern detected.
 
-That's your free five. The full Dashboard has 95+ more across 15 sectors, filterable by stage and geography. You don't crunch anything — it surfaces them, you just look.
+That's your free five. The full Dashboard has 135+ more across 15 sectors, filterable by stage and geography. You don't crunch anything — it surfaces them, you just look.
 
 Browse the live rankings: https://signals.gitdealflow.com
 Upgrade to the Dashboard: https://gitdealflow.com/dashboard

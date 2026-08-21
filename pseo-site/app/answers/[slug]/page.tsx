@@ -13,6 +13,8 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import RelatedLinks from "@/components/RelatedLinks";
 import { getRelatedGroups } from "@/lib/related-links";
+import CitableStat from "@/components/CitableStat";
+import { citableStat } from "@/lib/citable-stats";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -318,6 +320,8 @@ export default async function AnswerPage({ params }: PageProps) {
             {q.description}
           </p>
         </header>
+
+        <CitableStat {...citableStat("answers")} template="answers" />
 
         {q.definition ? (
           <div

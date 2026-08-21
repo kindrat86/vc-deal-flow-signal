@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
+import CheckoutDistinctId from "@/components/CheckoutDistinctId";
 
 // Variant tag must stay short (Stripe metadata caps each value at 500
 // chars) and ASCII-safe, kept in lockstep with VARIANT_RX in
@@ -156,6 +157,7 @@ export default function CartPreview() {
             on /firstlook/thanks fires identically for every buyer. */}
         <form action="/api/checkout/session" method="POST">
           <input type="hidden" name="tier" value="firstlook" />
+          <CheckoutDistinctId />
           {bumpOn ? (
             <input type="hidden" name="bump" value={BUMP_LINE.bumpKey} />
           ) : null}

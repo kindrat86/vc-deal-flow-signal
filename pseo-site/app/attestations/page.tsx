@@ -6,7 +6,7 @@ import { TrustPageOutro } from "@/components/TrustPageOutro";
 const SITE = "https://signals.gitdealflow.com";
 
 export const metadata: Metadata = {
-  title: "Attestations, Where VC Deal Flow Signal Is Indexed &amp; Verified",
+  title: { absolute: "Attestations, Where VC Deal Flow Signal Is Indexed &amp; Verified" },
   description:
     "Every third-party indexer, registry, and review platform that has independently verified VC Deal Flow Signal (GitDealFlow). SSRN, Crossref, Semantic Scholar, OpenAlex, DataCite, Zenodo, Wikidata, Glama (A-Tier 4.9/5.0), Cursor Directory, npm, GitHub, Chrome Web Store, ProductHunt, G2, AlternativeTo, SaaSHub.",
   alternates: { canonical: "/attestations" },

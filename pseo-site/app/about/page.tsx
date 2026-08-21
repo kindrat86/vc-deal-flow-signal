@@ -13,7 +13,7 @@ import {
 } from "@/lib/data-nerd";
 
 export const metadata: Metadata = {
-  title: "About VC Deal Flow Signal, Why It Exists and Why You Might Trust It",
+  title: { absolute: "About VC Deal Flow Signal, Why It Exists and Why You Might Trust It" },
   description:
     "Why VC Deal Flow Signal exists, what it tracks, and why its public methodology and data surfaces are built to help you trust the signal faster.",
   alternates: { canonical: "/about" },

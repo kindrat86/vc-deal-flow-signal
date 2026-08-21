@@ -44,7 +44,7 @@ below: copy, targeting, budgets, destination URLs, and conversion tracking.
 - **GA4** `G-7SV2SNZE4C` firing on `signals.gitdealflow.com` (confirmed in page source).
 - **LinkedIn Insight tag** `10702217` firing (audience building only; no LinkedIn campaigns, per the standing rule).
 - **Short-redirect routes** `/r/<slug>` return 308 with full UTM payload, e.g.
-  `/r/vc` → `/firstlook?utm_source=reddit&utm_medium=cpc&utm_campaign=reddit-probe-2026-08&utm_content=venturecapital`.
+  `/r/vc` → `/firstlook?utm_source=reddit&utm_medium=cpc&utm_campaign=vc-2026-05&utm_content=venturecapital`.
 - **Landing pages** all return 200: `/firstlook`, `/alternatives/tracxn`,
   `/alternatives/harmonic-ai`, `/from/facebook`, `/pricing`.
 - **UTM capture** end-to-end via `/api/subscribe` + `/api/verify` (PocketBase `subscribers`).

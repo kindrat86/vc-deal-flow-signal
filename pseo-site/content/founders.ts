@@ -47,6 +47,10 @@ export interface Founder {
   sameAs: string[];
 }
 
+export const FOUNDER_TITLE_HOOKS: Record<string, string> = {
+  "rauchg": `Guillermo Rauch (@rauchg), Founder & CEO`, "leerob": `Lee Robinson (@leerob), VP of Product`, "sahil": `Sahil Lavingia (@sahil), Founder & CEO`, "levelsio": `Pieter Levels (@levelsio), Founder`, "sindresorhus": `Sindre Sorhus (@sindresorhus), Open-source maintainer`, "tj": `TJ Holowaychuk (@tj), Founder & engineer`, "tobi": `Tobias Lütke (@tobi), Founder & CEO`, "torvalds": `Linus Torvalds (@torvalds), Creator and lead maintainer`, "dhh": `David Heinemeier Hansson (@dhh), Co-founder & CTO`, "mitchellh": `Mitchell Hashimoto (@mitchellh), Founder & CEO of Ghostty Inc., co-founder of HashiCorp`, "shykes": `Solomon Hykes (@shykes), Founder`, "mojombo": `Tom Preston-Werner (@mojombo), Co-founder`, "yyx990803": `Evan You (@yyx990803), Creator and lead maintainer`, "gaearon": `Dan Abramov (@gaearon), Open-source engineer`, "adamwathan": `Adam Wathan (@adamwathan), Co-founder & CEO`, "steveschoger": `Steve Schoger (@steveschoger), Co-founder & CDO`, "calebporzio": `Caleb Porzio (@calebporzio), Creator`, "josevalim": `José Valim (@josevalim), Creator and co-founder`, "chrismccord": `Chris McCord (@chrismccord), Creator`, "nat": `Nat Friedman (@nat), Investor and former CEO`, "danielgross": `Daniel Gross (@danielgross), Investor`, "patio11": `Patrick McKenzie (@patio11), Writer and software entrepreneur`, "kentcdodds": `Kent C. Dodds (@kentcdodds), Educator and software engineer`, "kelseyhightower": `Kelsey Hightower (@kelseyhightower), Independent (former Distinguished Engineer at Google Cloud)`, "tj-actions": `TJ Holowaychuk (tj-actions org) (@tj-actions), Maintainer organization`, "addyosmani": `Addy Osmani (@addyosmani), Engineering Lead`, "shadcn": `shadcn (@shadcn), Creator`, "yyathin": `Yathin Sethu (@yyathin), Founder`, "transitive-bullshit": `Travis Fischer (@transitive-bullshit), Founder`, "ezyang": `Edward Z. Yang (@ezyang), Research engineer`, "zyro": `Andrei Mihu (@zyro), Co-founder, Heroic Labs`, "novabyte": `Chris Molozian (@novabyte), Co-founder, Heroic Labs`, "mofirouz": `Mo Firouz (@mofirouz), Co-founder, Heroic Labs`,
+};
+
 function build(p: {
   handle: string;
   name: string;
@@ -62,7 +66,10 @@ function build(p: {
     role: p.role,
     affiliation: p.affiliation,
     publicSource: p.publicSource,
-    title: `${p.name} (@${p.handle}), ${p.role}`,
+    // §62 CTR hook: FOUNDER_TITLE_HOOKS[p.handle] is the primary title source;
+    // the legacy template below is kept as a readable fallback reference for §63.
+    // title: `${p.name} (@${p.handle}), ${p.role}`,
+    title: FOUNDER_TITLE_HOOKS[p.handle] ?? "Public Engineering Profile",
     metaDescription: `${p.name} is ${p.role} at ${p.affiliation}. Public engineering profile and notable open-source work, sourced exclusively from publicly self-published references.`,
     h1: `${p.name}, Public Engineering Profile`,
     tagline: `${p.name} is ${p.role} at ${p.affiliation}. This page summarizes publicly observable engineering activity tied to the @${p.handle} GitHub handle.`,

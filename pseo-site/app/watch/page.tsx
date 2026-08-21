@@ -8,7 +8,7 @@ import { videos } from "@/content/videos";
 const SITE = "https://signals.gitdealflow.com";
 
 export const metadata: Metadata = {
-  title: "Watch, VC Deal Flow Signal in 90 seconds (silent demo)",
+  title: { absolute: "Watch, VC Deal Flow Signal in 90 seconds (silent demo)" },
   description:
     "Silent visual walkthrough of the VC Deal Flow Signal engine. No audio, no narrator, no face. Just the dashboard breathing, commit velocity, contributor diversity, dependents graph, the composite score animating in real time.",
   alternates: { canonical: "/watch" },

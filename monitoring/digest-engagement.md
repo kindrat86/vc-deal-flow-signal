@@ -1,15 +1,13 @@
 # GitDealFlow — Sunday Signal Digest engagement
 
-Updated 2026-08-17T21:17:52.751289+00:00 (UTC)
+Updated 2026-08-21T03:41:53.617510+00:00 (UTC)
 
-## Latest issue: 2026-08-16
+## Latest issue: 2026-08-21
 
-- Sent: **14**
-- Opened: **0** · Clicked: **0** · Delivered (no open): 0
+- Sent: **32**
+- Opened: **8** · Clicked: **16** · Delivered (no open): 8
 - Bounced: 0 · Suppressed: 0
-- **Open rate: —** · **Click rate: —** · Bounce rate: —
-
-_⚠️ Engagement UNMEASURED for this issue: the send ids were not captured (or the window scrolled). The 0 values above mean "we could not see it", not "nobody opened it"._
+- **Open rate: 75.0%** · **Click rate: 50.0%** · Bounce rate: 0.0%
 
 ## History
 
@@ -17,3 +15,5 @@ _⚠️ Engagement UNMEASURED for this issue: the send ids were not captured (or
 |---|---|---|---|---|---|---|---|---|
 | 2026-08-14 | 32 | 0 | 0 | 0 | 0 | — | — | — |
 | 2026-08-16 | 14 | 0 | 0 | 0 | 0 | — | — | — |
+| 2026-07-20 | 13 | 0 | 0 | 0 | 0 | — | — | — |
+| 2026-08-21 | 32 | 8 | 16 | 8 | 0 | 75.0% | 50.0% | 0.0% |

@@ -8,7 +8,7 @@ Models the flagship pitchbook/crunchbase pages exactly. All competitor claims
 are verified against public sources (Aug 2026). No em dashes anywhere.
 
 GitDealFlow pricing (current, from /pricing): Free Sunday digest, EUR 1 Teardown,
-EUR 7 First Look, EUR 49/mo Dashboard (EUR 490/yr), EUR 197/mo Insider,
+EUR 7 First Look, EUR 49/mo Dashboard (EUR 441/yr), EUR 197/mo Insider,
 EUR 1,997 Sector Sweep. Founding window (EUR 9.97/97) CLOSED June 30.
 """
 import os, json
@@ -259,13 +259,13 @@ COMPETITORS = [
             ("Signal type", "Leading indicator (21-47 days ahead of the round)", "Coincident: a deal appears once a lead has already opened a syndicate"),
             ("Coverage", "350+ startups across 15 sectors, pre-seed to Series B", "Tens of thousands of startups and investors across syndicates, funds, and jobs"),
             ("Free tier", "Sunday digest (5 names), trending board, sector search, MCP server, Chrome extension", "Free to join and browse as an accredited investor"),
-            ("Starting price", "Free, then EUR 49/mo Dashboard (EUR 490/yr); EUR 7 First Look and EUR 1 Teardown one-time", "Free to invest; AngelList earns 5% carried interest on syndicate gains plus fund admin fees"),
+            ("Starting price", "Free, then EUR 49/mo Dashboard (EUR 441/yr); EUR 7 First Look and EUR 1 Teardown one-time", "Free to invest; AngelList earns 5% carried interest on syndicate gains plus fund admin fees"),
             ("API access", "Free MCP server, OpenAPI 3.1, A2A, NLWeb, JSON and CSV", "No public self-serve API; data lives inside the platform"),
             ("Best for", "Finding the deal before it is on anyone's radar", "Deploying capital into SPVs and syndicates, running a rolling fund, hiring early staff"),
             ("Methodology", "Open: SSRN preprint (abstract 6606558), CC BY 4.0 dataset", "Platform mechanics; not a predictive methodology"),
         ],
         "pricing": [
-            "AngelList is free to join as an investor: backers pay nothing to browse deals or commit to syndicates. AngelList makes its money on performance, taking a 5% carried interest on syndicate gains plus fund administration fees on rolling funds, while syndicate leads keep their own carry. There is no monthly subscription to buy a seat on AngelList. GitDealFlow's free tier covers the Sunday digest (five accelerating startups every week), the live trending board, sector search, and full MCP server access. The paid Dashboard tier is EUR 49/month (EUR 490/year) for the full ranked field of 60+ startups refreshed weekly, with a EUR 7 First Look Pass and a EUR 1 Tweet Teardown as low-cost entry points.",
+            "AngelList is free to join as an investor: backers pay nothing to browse deals or commit to syndicates. AngelList makes its money on performance, taking a 5% carried interest on syndicate gains plus fund administration fees on rolling funds, while syndicate leads keep their own carry. There is no monthly subscription to buy a seat on AngelList. GitDealFlow's free tier covers the Sunday digest (five accelerating startups every week), the live trending board, sector search, and full MCP server access. The paid Dashboard tier is EUR 49/month (EUR 441/year) for the full ranked field of 140+ startups refreshed weekly, with a EUR 7 First Look Pass and a EUR 1 Tweet Teardown as low-cost entry points.",
             "The two cost models are fundamentally different: AngelList only costs you when you make money, while GitDealFlow costs a flat monthly fee for a steady signal. For an angel who writes a handful of cheques a year, the pair is complementary: pay EUR 49/month for the sourcing signal, and pay AngelList's carry only when a syndicated deal actually returns.",
         ],
         "why": [
@@ -281,7 +281,7 @@ COMPETITORS = [
         "scenarios": [
             ("The solo angel building deal flow", "Start with GitDealFlow's free Sunday digest. For the names that match your thesis, check GitHub momentum history, then watch AngelList to see if a syndicate lead you trust opens an SPV. You form your own read early, and validate it against the crowd."),
             ("The emerging fund manager running a rolling fund", "AngelList Rolling Funds is your infrastructure (subscriptions, capital calls, reporting). GitDealFlow is your top of funnel: a weekly ranked list of accelerating startups across your target sectors, exported as CSV into your CRM."),
-            ("The scout who needs a steady Monday list", "GitDealFlow's Dashboard gives you 60+ ranked startups every week with a one-line reason each is moving. AngelList adds the social layer: who else is backing it, and whether a syndicate is already forming."),
+            ("The scout who needs a steady Monday list", "GitDealFlow's Dashboard gives you 140+ ranked startups every week with a one-line reason each is moving. AngelList adds the social layer: who else is backing it, and whether a syndicate is already forming."),
         ],
         "which": [
             "<strong>Use GitDealFlow for:</strong> finding the startup before any syndicate opens, tracking engineering momentum week over week, and building a pipeline without a warm network.",
@@ -290,7 +290,7 @@ COMPETITORS = [
         ],
         "faqs": [
             ("Is GitDealFlow a replacement for AngelList?", "No. GitDealFlow finds the deal before it is fundable; AngelList is the fundraising and syndication infrastructure you use after you decide to invest. They are complementary."),
-            ("How much does GitDealFlow cost vs AngelList?", "AngelList is free to join as an investor and earns a 5% carry on syndicate gains plus fund admin fees, so you only pay on performance. GitDealFlow has a free tier and a EUR 49/month Dashboard (EUR 490/year), with EUR 7 First Look and EUR 1 Teardown entry points."),
+            ("How much does GitDealFlow cost vs AngelList?", "AngelList is free to join as an investor and earns a 5% carry on syndicate gains plus fund admin fees, so you only pay on performance. GitDealFlow has a free tier and a EUR 49/month Dashboard (EUR 441/year), with EUR 7 First Look and EUR 1 Teardown entry points."),
             ("Can I use GitDealFlow and AngelList together?", "Yes, and the workflow is natural: GitDealFlow surfaces the accelerating startup, you diligence the momentum, then deploy through an AngelList syndicate or SPV when one is available."),
             ("Does AngelList show engineering momentum?", "No. AngelList shows who is raising, hiring, and syndicating, not commit velocity or contributor growth. GitDealFlow tracks the public GitHub activity that AngelList does not collect."),
             ("Which is better for a first-time angel?", "Start with GitDealFlow's free digest to build your own deal flow, and use AngelList to invest when you find syndicates led by investors you respect. The free tiers of both together cost nothing."),
@@ -309,13 +309,13 @@ COMPETITORS = [
             ("Signal type", "Leading indicator (21-47 days ahead)", "Analytical: curated market maps and Mosaic scores on a periodic cadence"),
             ("Coverage", "350+ startups across 15 sectors, pre-seed to Series B", "Millions of private companies plus patents, news, and research across industries"),
             ("Free tier", "Sunday digest, trending board, sector search, MCP server, Chrome extension", "No self-serve free tier; a research newsletter and some public reports only"),
-            ("Starting price", "Free, then EUR 49/mo Dashboard (EUR 490/yr); EUR 7 First Look, EUR 1 Teardown", "Custom-quoted; third-party reports place the floor near $50,000/year"),
+            ("Starting price", "Free, then EUR 49/mo Dashboard (EUR 441/yr); EUR 7 First Look, EUR 1 Teardown", "Custom-quoted; third-party reports place the floor near $50,000/year"),
             ("API access", "Free MCP server, OpenAPI 3.1, A2A, NLWeb, JSON and CSV", "Enterprise tier, custom-quoted"),
             ("Best for", "Early-stage deal sourcing and portfolio momentum tracking", "Corporate strategy, market mapping, board decks, competitive intelligence"),
             ("Methodology", "Open: SSRN preprint (abstract 6606558), CC BY 4.0 dataset", "Proprietary analyst plus ML scoring (Mosaic)"),
         ],
         "pricing": [
-            "CB Insights does not publish list pricing; everything is custom-quoted with an annual commitment. Third-party sources consistently place the floor around $50,000 per year, with typical contracts landing between $50,000 and $265,000 depending on seats, modules, and negotiation, and no self-serve tier below that. GitDealFlow's free tier covers the Sunday digest, trending board, sector search, and full MCP server access. The paid Dashboard is EUR 49/month (EUR 490/year), with EUR 7 First Look and EUR 1 Teardown entry points.",
+            "CB Insights does not publish list pricing; everything is custom-quoted with an annual commitment. Third-party sources consistently place the floor around $50,000 per year, with typical contracts landing between $50,000 and $265,000 depending on seats, modules, and negotiation, and no self-serve tier below that. GitDealFlow's free tier covers the Sunday digest, trending board, sector search, and full MCP server access. The paid Dashboard is EUR 49/month (EUR 441/year), with EUR 7 First Look and EUR 1 Teardown entry points.",
             "They serve different budgets for different jobs. CB Insights is a line item for a corporate strategy or fund research budget; GitDealFlow is a self-serve subscription an individual investor can put on a personal card. The data overlap is near zero, so the price gap is not a like-for-like comparison: it is the difference between buying market context and buying an early signal.",
         ],
         "why": [
@@ -330,7 +330,7 @@ COMPETITORS = [
         ],
         "scenarios": [
             ("Corporate venture team sizing a new category", "Use CB Insights for the market map, funding history, and competitive landscape, then run GitDealFlow to identify the specific startups in that category with the fastest engineering momentum for a shortlist."),
-            ("Solo GP who needs a pipeline, not a report", "CB Insights at $50,000/year is overkill. GitDealFlow's EUR 49/month Dashboard gives you 60+ ranked startups weekly with a one-line reason each is moving."),
+            ("Solo GP who needs a pipeline, not a report", "CB Insights at $50,000/year is overkill. GitDealFlow's EUR 49/month Dashboard gives you 140+ ranked startups weekly with a one-line reason each is moving."),
             ("Fund doing quarterly LP reporting", "CB Insights' Mosaic scores and market maps slot straight into the deck. GitDealFlow adds a forward-looking layer: which portfolio and prospect companies are accelerating technically right now."),
         ],
         "which": [
@@ -340,7 +340,7 @@ COMPETITORS = [
         ],
         "faqs": [
             ("Is GitDealFlow a replacement for CB Insights?", "No. CB Insights is market intelligence for strategy and research; GitDealFlow is an early deal-flow signal. They answer different questions."),
-            ("How much does GitDealFlow cost vs CB Insights?", "CB Insights is custom-quoted, with third-party reports placing the floor near $50,000/year. GitDealFlow has a free tier and a EUR 49/month Dashboard (EUR 490/year), with EUR 7 First Look and EUR 1 Teardown entry points."),
+            ("How much does GitDealFlow cost vs CB Insights?", "CB Insights is custom-quoted, with third-party reports placing the floor near $50,000/year. GitDealFlow has a free tier and a EUR 49/month Dashboard (EUR 441/year), with EUR 7 First Look and EUR 1 Teardown entry points."),
             ("Can I use GitDealFlow and CB Insights together?", "Yes. Use CB Insights for the market map and competitive context, and GitDealFlow for the weekly engineering momentum that tells you which names to shortlist."),
             ("Does CB Insights track GitHub activity?", "No. CB Insights tracks funding, patents, news, M&A, and analyst research. It does not track commit velocity or contributor growth the way GitDealFlow does."),
             ("Which signal is faster?", "GitDealFlow updates weekly from public GitHub activity, so momentum appears within days. CB Insights research is deeper but ships on a longer, periodic cadence."),
@@ -359,13 +359,13 @@ COMPETITORS = [
             ("Signal type", "Leading indicator (21-47 days ahead)", "Ecosystem intelligence: funding, founder moves, and geo momentum"),
             ("Coverage", "350+ startups across 15 sectors, global GitHub footprint", "One million plus companies, deep European coverage, global ecosystem"),
             ("Free tier", "Sunday digest, trending board, sector search, MCP server, Chrome extension", "A 3-day Premium trial; no permanent free tier"),
-            ("Starting price", "Free, then EUR 49/mo Dashboard (EUR 490/yr); EUR 7 First Look, EUR 1 Teardown", "Custom-priced; third-party sources cite roughly EUR 12,500/seat/year with a three-seat minimum"),
+            ("Starting price", "Free, then EUR 49/mo Dashboard (EUR 441/yr); EUR 7 First Look, EUR 1 Teardown", "Custom-priced; third-party sources cite roughly EUR 12,500/seat/year with a three-seat minimum"),
             ("API access", "Free MCP server, OpenAPI 3.1, A2A, NLWeb, JSON and CSV", "REST API and a hosted MCP server on paid tiers"),
             ("Best for", "Finding deals before they are announced, momentum tracking", "EU ecosystem mapping, regional deal flow, founder and hiring intelligence"),
             ("Methodology", "Open: SSRN preprint (abstract 6606558), CC BY 4.0 dataset", "Proprietary data collection and ecosystem modeling"),
         ],
         "pricing": [
-            "Dealroom is custom-priced, and third-party sources cite roughly EUR 12,500 per seat per year for Premium with a three-seat minimum, putting a real entry point around EUR 37,500/year before API access. It offers a short free trial but no permanent free tier. GitDealFlow's free tier covers the Sunday digest, trending board, sector search, and full MCP server access; the paid Dashboard is EUR 49/month (EUR 490/year), with EUR 7 First Look and EUR 1 Teardown entry points.",
+            "Dealroom is custom-priced, and third-party sources cite roughly EUR 12,500 per seat per year for Premium with a three-seat minimum, putting a real entry point around EUR 37,500/year before API access. It offers a short free trial but no permanent free tier. GitDealFlow's free tier covers the Sunday digest, trending board, sector search, and full MCP server access; the paid Dashboard is EUR 49/month (EUR 441/year), with EUR 7 First Look and EUR 1 Teardown entry points.",
             "Both products recently added an MCP server, so the gap is narrowing on the distribution side. The difference is the underlying signal: Dealroom's value is breadth across companies, founders, and geographies; GitDealFlow's value is a narrow, deep, real-time read on engineering momentum. The price gap reflects breadth versus focus.",
         ],
         "why": [
@@ -390,7 +390,7 @@ COMPETITORS = [
         ],
         "faqs": [
             ("Is GitDealFlow a replacement for Dealroom?", "No. Dealroom is an ecosystem database with deep European coverage; GitDealFlow is an engineering-momentum signal. They complement each other."),
-            ("How much does GitDealFlow cost vs Dealroom?", "Dealroom is custom-priced, with third-party sources citing roughly EUR 12,500/seat/year and a three-seat minimum. GitDealFlow has a free tier and a EUR 49/month Dashboard (EUR 490/year), with EUR 7 First Look and EUR 1 Teardown entry points."),
+            ("How much does GitDealFlow cost vs Dealroom?", "Dealroom is custom-priced, with third-party sources citing roughly EUR 12,500/seat/year and a three-seat minimum. GitDealFlow has a free tier and a EUR 49/month Dashboard (EUR 441/year), with EUR 7 First Look and EUR 1 Teardown entry points."),
             ("Can I use GitDealFlow and Dealroom together?", "Yes. Use Dealroom for the ecosystem map and founder network, and GitDealFlow for the engineering signal that flags which companies are accelerating now."),
             ("Does Dealroom track GitHub commits?", "No. Dealroom tracks funding, founders, hiring, and ecosystem data. It does not track commit velocity or contributor growth the way GitDealFlow does."),
             ("Which has better European coverage?", "Dealroom is the reference for European ecosystem data. GitDealFlow reads public GitHub activity globally, so it covers European startups through their code rather than through curated profiles."),
@@ -409,13 +409,13 @@ COMPETITORS = [
             ("Signal type", "Leading indicator (21-47 days ahead)", "Lagging: reports deals and fundraises after they are public"),
             ("Coverage", "350+ startups across 15 sectors, pre-seed to Series B", "Institutional PE across the US and Europe"),
             ("Free tier", "Sunday digest, trending board, sector search, MCP server, Chrome extension", "Limited free content; full access via subscription"),
-            ("Starting price", "Free, then EUR 49/mo Dashboard (EUR 490/yr); EUR 7 First Look, EUR 1 Teardown", "EUR 2,995 to EUR 6,550 per year (higher tier includes database access)"),
+            ("Starting price", "Free, then EUR 49/mo Dashboard (EUR 441/yr); EUR 7 First Look, EUR 1 Teardown", "EUR 2,995 to EUR 6,550 per year (higher tier includes database access)"),
             ("API access", "Free MCP server, OpenAPI 3.1, A2A, NLWeb, JSON and CSV", "No self-serve API"),
             ("Best for", "Finding early-stage software companies before they raise", "Staying current on PE deal flow, fundraising, and industry news"),
             ("Methodology", "Open: SSRN preprint (abstract 6606558), CC BY 4.0 dataset", "Editorial journalism; not a predictive methodology"),
         ],
         "pricing": [
-            "Private Equity Wire is subscription-based, with third-party sources citing EUR 2,995 to EUR 6,550 per year, where the higher tier includes database access. GitDealFlow's free tier covers the Sunday digest, trending board, sector search, and full MCP server access; the paid Dashboard is EUR 49/month (EUR 490/year), with EUR 7 First Look and EUR 1 Teardown entry points.",
+            "Private Equity Wire is subscription-based, with third-party sources citing EUR 2,995 to EUR 6,550 per year, where the higher tier includes database access. GitDealFlow's free tier covers the Sunday digest, trending board, sector search, and full MCP server access; the paid Dashboard is EUR 49/month (EUR 441/year), with EUR 7 First Look and EUR 1 Teardown entry points.",
             "The more important difference is what you are buying. A Private Equity Wire subscription keeps you informed about a market; a GitDealFlow subscription gives you a repeatable, objective signal for finding software companies before they become market news. For a deal-sourcing investor, the second is the edge.",
         ],
         "why": [
@@ -440,7 +440,7 @@ COMPETITORS = [
         ],
         "faqs": [
             ("Is GitDealFlow a replacement for Private Equity Wire?", "No. Private Equity Wire is a news and data service; GitDealFlow is a pre-announcement sourcing signal. They serve different needs."),
-            ("How much does GitDealFlow cost vs Private Equity Wire?", "Private Equity Wire is EUR 2,995 to EUR 6,550 per year by subscription. GitDealFlow has a free tier and a EUR 49/month Dashboard (EUR 490/year), with EUR 7 First Look and EUR 1 Teardown entry points."),
+            ("How much does GitDealFlow cost vs Private Equity Wire?", "Private Equity Wire is EUR 2,995 to EUR 6,550 per year by subscription. GitDealFlow has a free tier and a EUR 49/month Dashboard (EUR 441/year), with EUR 7 First Look and EUR 1 Teardown entry points."),
             ("Can I use GitDealFlow and Private Equity Wire together?", "Yes. Use GitDealFlow to find software companies building aggressively, and Private Equity Wire for market and deal context during diligence."),
             ("Does Private Equity Wire predict rounds?", "No. It reports deals and fundraises after they are announced. GitDealFlow is designed to flag companies before they raise."),
             ("Is GitDealFlow for PE investors?", "GitDealFlow tracks venture-backed startups from pre-seed to Series B, so it is best for early-stage and growth sourcing. It can flag software companies accelerating before a sell-side process, but it does not replace PE financial data."),
@@ -459,13 +459,13 @@ COMPETITORS = [
             ("Signal type", "Leading indicator (21-47 days ahead)", "Database plus sector reports, lagging and periodic"),
             ("Coverage", "350+ startups across 15 sectors, pre-seed to Series B", "7.7M+ companies, 3k+ sectors, 290k+ investors, strong emerging markets"),
             ("Free tier", "Sunday digest, trending board, sector search, MCP server, Chrome extension", "A free Lite tier with limited personal-use access"),
-            ("Starting price", "Free, then EUR 49/mo Dashboard (EUR 490/yr); EUR 7 First Look, EUR 1 Teardown", "Lite free; Premium custom-quoted (third-party sources cite roughly $6,000 to $24,000/year)"),
+            ("Starting price", "Free, then EUR 49/mo Dashboard (EUR 441/yr); EUR 7 First Look, EUR 1 Teardown", "Lite free; Premium custom-quoted (third-party sources cite roughly $6,000 to $24,000/year)"),
             ("API access", "Free MCP server, OpenAPI 3.1, A2A, NLWeb, JSON and CSV", "Enterprise tier, custom"),
             ("Best for", "Timing and early signal on specific startups", "Sector coverage and emerging-market discovery"),
             ("Methodology", "Open: SSRN preprint (abstract 6606558), CC BY 4.0 dataset", "Proprietary taxonomy and analyst curation"),
         ],
         "pricing": [
-            "Tracxn offers a free Lite tier for limited personal use, with Premium custom-quoted. Third-party sources cite roughly $6,000 to $24,000 per year depending on coverage and seats, and there is no self-serve mid-tier. GitDealFlow's free tier covers the Sunday digest, trending board, sector search, and full MCP server access; the paid Dashboard is EUR 49/month (EUR 490/year), with EUR 7 First Look and EUR 1 Teardown entry points.",
+            "Tracxn offers a free Lite tier for limited personal use, with Premium custom-quoted. Third-party sources cite roughly $6,000 to $24,000 per year depending on coverage and seats, and there is no self-serve mid-tier. GitDealFlow's free tier covers the Sunday digest, trending board, sector search, and full MCP server access; the paid Dashboard is EUR 49/month (EUR 441/year), with EUR 7 First Look and EUR 1 Teardown entry points.",
             "Both products have a genuine free tier, which is unusual in this category. The difference is breadth versus timing: Tracxn's paid value is the depth of its sector taxonomy and emerging-market coverage; GitDealFlow's paid value is a weekly, objective engineering-momentum signal that updates every Monday.",
         ],
         "why": [
@@ -490,7 +490,7 @@ COMPETITORS = [
         ],
         "faqs": [
             ("Is GitDealFlow a replacement for Tracxn?", "No. Tracxn is a sector-taxonomy database with emerging-market strength; GitDealFlow is an engineering-momentum signal. They are complementary."),
-            ("How much does GitDealFlow cost vs Tracxn?", "Tracxn has a free Lite tier and custom-priced Premium (third-party sources cite roughly $6,000 to $24,000/year). GitDealFlow has a free tier and a EUR 49/month Dashboard (EUR 490/year), with EUR 7 First Look and EUR 1 Teardown entry points."),
+            ("How much does GitDealFlow cost vs Tracxn?", "Tracxn has a free Lite tier and custom-priced Premium (third-party sources cite roughly $6,000 to $24,000/year). GitDealFlow has a free tier and a EUR 49/month Dashboard (EUR 441/year), with EUR 7 First Look and EUR 1 Teardown entry points."),
             ("Can I use GitDealFlow and Tracxn together?", "Yes. Use Tracxn for the sector landscape and company list, and GitDealFlow for the engineering signal that flags which companies are accelerating now."),
             ("Does Tracxn track GitHub activity?", "No. Tracxn organizes companies by taxonomy and tracks funding and business models. It does not track commit velocity or contributor growth the way GitDealFlow does."),
             ("Which is better for emerging markets?", "Tracxn has the deepest curated emerging-market coverage. GitDealFlow reads public GitHub activity globally, so it covers emerging-market startups through their code where they ship publicly."),

@@ -20,9 +20,9 @@ Real example from our live data: carlos-emr, an open source healthcare EMR. Comm
 
 Is it a fundraise? A product launch? A major hire push? The signal doesn't tell you which, but it tells you something changed. And it tells you weeks before any announcement.
 
-The tool flags this pattern automatically across 60+ startups in 15 sectors, in your lane — you don't crunch anything, you just look. Browse the live data: https://signals.gitdealflow.com
+The tool flags this pattern automatically across 140+ startups in 15 sectors, in your lane — you don't crunch anything, you just look. Browse the live data: https://signals.gitdealflow.com
 
-Upgrade for the full filtered view: EUR 9.97/mo early access pricing: https://gitdealflow.com/dashboard
+Upgrade for the full filtered view: €49/mo: https://gitdealflow.com/dashboard
 
 The Data Nerd
 

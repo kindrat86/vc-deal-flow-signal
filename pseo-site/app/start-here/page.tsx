@@ -84,13 +84,13 @@ const ENTRY_POINTS = [
   {
     price: "€49/mo",
     name: "Dashboard",
-    desc: "Live dashboard refreshed every Monday. Filter by sector, stage, geography. Current rate €49/mo; founding members who joined before 2026-06-30 keep their rate for life.",
+    desc: "Live dashboard refreshed every Monday. Filter by sector, stage, geography. Month to month, cancel anytime. Founding members who joined before June 30, 2026 keep their rate for life.",
     href: "/pricing",
     external: false,
     color: "sky",
   },
   {
-    price: "€97/mo",
+    price: "€197/mo",
     name: "Insider Circle",
     desc: "Everything in Dashboard + JSON/CSV API + spike alerts + monthly briefing call + portfolio overlap report.",
     href: "/pricing#insider-circle",

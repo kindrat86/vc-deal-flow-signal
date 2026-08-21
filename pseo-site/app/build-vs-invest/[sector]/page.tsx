@@ -149,6 +149,7 @@ function buildJsonLd(entry: BuildVsInvestSector, lastModifiedIso: string) {
         name: `${entry.name} build-vs-invest scores`,
         description: `Cost-to-build (${entry.costToBuild}/100) and deal-velocity (${entry.dealVelocity}/100) scores for ${entry.name}, plus the derived ${meta.short} quadrant verdict.`,
         url,
+        isBasedOn: { "@id": "https://signals.gitdealflow.com/dataset#dataset" },
         creator: {
           "@type": "Organization",
           name: "VC Deal Flow Signal",

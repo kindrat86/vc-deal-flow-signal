@@ -68,11 +68,11 @@ const SPEC: Record<RiskReversalTier, PromiseSpec> = {
   insider: {
     promise:
       "If, in your first 30 days, the private Telegram + JSON/CSV API don't earn the seat, measured by you, against your own thesis, full refund.",
-    stake: "€97/mo",
+    stake: "€197/mo",
     process:
       "Reply REFUND to any Insider email. Full payment back inside two business days. The MCP server stays free regardless of refund decision.",
     receipt:
-      "The rate lock means your price locks to entry, not tenure. Even after refund, your locked price is preserved if you ever come back.",
+      "Founding members who joined before June 30, 2026 keep their €97/mo rate for life. Everyone else pays €197/mo, month to month.",
     windowDays: 30,
   },
   sharp: {

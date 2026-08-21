@@ -8,7 +8,7 @@ import { getDataLastModified } from "@/lib/data";
 const SITE = "https://signals.gitdealflow.com";
 
 export const metadata: Metadata = {
-  title: "Agents, Every Way to Reach VC Deal Flow Signal Programmatically",
+  title: { absolute: "Agents, Every Way to Reach VC Deal Flow Signal Programmatically" },
   description:
     "Free, no-auth agent surfaces: MCP server, A2A endpoint, NLWeb, function-calling API, OpenAPI 3.1, Hugging Face JSONL, embeddable badges, ChatGPT plugin, RFC 9727 api-catalog. One install command per agent host.",
   alternates: { canonical: "/agents" },

@@ -4,6 +4,7 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import StadiumPitchHero from "@/components/StadiumPitchHero";
 import StadiumPitchRsvp from "@/components/StadiumPitchRsvp";
+import { buildSourceTruthDataset } from "@/lib/dataset-schema";
 
 const SITE = "https://signals.gitdealflow.com";
 
@@ -96,7 +97,7 @@ const ADDRESSES: ReadonlyArray<{
       {
         heading: "Closing, the standing offer",
         body: [
-          "Every monthly address ends with the same standing offer to readers who've made it this far. If you want the 47 fundraise-precursor org names from this month, the ones that scored 5 of 6 on the composite and whose 90-day window is still open, they're inside the Insider Circle private Telegram, which is €197/month, locked while subscribed. The free Sunday digest gets you five names a week. The Custom Sector Sweep, €1,997 once, gets you a deep written report on any one of the three sectors above.",
+          "Every monthly address ends with the same standing offer to readers who've made it this far. If you want the 47 fundraise-precursor org names from this month, the ones that scored 5 of 6 on the composite and whose 90-day window is still open, they're inside the Insider Circle private Telegram, which is €197/month. The free Sunday digest gets you five names a week. The Custom Sector Sweep, €1,997 once, gets you a deep written report on any one of the three sectors above.",
           "I publish this address on the first Wednesday of every month. Permanent canonical at /state-of-github with the previous twelve months indexed below. From May 2026 onward each address also ships as a 90-second synthetic-voice founder talk on the YouTube channel, same content, narrated. Read the written version, watch the talk, or both.",
           "Talk soon, The Data Nerd",
         ],
@@ -211,6 +212,15 @@ export default function StateOfGitHubPage() {
           },
         ],
       },
+      buildSourceTruthDataset({
+        url: `${SITE}/state-of-github`,
+        name: "State of GitHub Engineering Velocity (monthly report)",
+        description: `Monthly report on GitHub engineering-velocity shifts across venture-backed startups, derived from the VC Deal Flow Signal dataset. ${latest.summary}`,
+        variableMeasured: [
+          { name: "Report sections", value: latest.sections.length },
+        ],
+        temporalCoverage: latest.publishDate,
+      }),
     ],
   };
 

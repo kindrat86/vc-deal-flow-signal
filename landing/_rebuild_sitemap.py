@@ -80,7 +80,6 @@ EXCLUDE_FILES = {
     "thanks.html",
     "checkout-success.html",
     # Other non-indexable
-    "report.html",        # has noindex meta
     "funnel-math.html",
     # Soft-404 / thin content pages (GSC "Soft 404" fix, Aug 2026)
     "pulse.html",              # 270 chars visible text, live JS visualizer

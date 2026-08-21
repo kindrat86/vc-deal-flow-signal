@@ -18,7 +18,7 @@ GitHub tells you what the team is actually building. Right now. Today.
 
 I find it genuinely strange that this gap exists. But it does, and that's why I built GitDealFlow. It's a tool, not a fund — it reads that public activity and flags the startups heating up early in your sectors, before they raise. You don't read code or crunch anything; you just look.
 
-Free weekly digest for the top 5. Full Dashboard (EUR 9.97/mo) for 60+ startups with sector filters: https://gitdealflow.com/dashboard
+Free weekly digest for the top 5. Full Dashboard (€49/mo) for 140+ startups with sector filters: https://gitdealflow.com/dashboard
 
 The Data Nerd
 

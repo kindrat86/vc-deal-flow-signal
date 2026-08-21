@@ -163,9 +163,10 @@ export default function AlternativesIndex() {
           </h2>
           <p className="text-gray-300 text-sm leading-relaxed mb-3">
             Five tiers, ordered cheapest to most expensive: free weekly
-            digest, &euro;7 one-time First Look Pass, &euro;49/mo Dashboard, &euro;197/mo Insider Circle, and &euro;1,997 one-time Custom
-            Sector Sweep. Founding-member rates lock in for the lifetime of
-            the subscription. Every paid tier ships with a 30-day
+            digest, &euro;7 one-time First Look Pass, &euro;49/mo Dashboard,
+            &euro;197/mo Insider Circle, and &euro;1,997 one-time Custom
+            Sector Sweep. Founding members who joined before June 30, 2026
+            keep their rate for life. Every paid tier ships with a 30-day
             Signal-or-It&rsquo;s-Free guarantee.
           </p>
           <Link

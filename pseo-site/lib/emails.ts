@@ -88,6 +88,87 @@ ${body}
 const THIRTY_MIN = 30 * 60 * 1000;
 const ONE_DAY = 24 * 60 * 60 * 1000;
 
+/**
+ * Five-email welcome for the Velocity Verdict homepage lead magnet.
+ * This is deliberately separate from the longer Soap Opera sequence:
+ * one promised asset, three useful lessons, one low-risk next step.
+ */
+export const LEAD_MAGNET_WELCOME_EMAILS = [
+  {
+    subject: "Your Velocity Verdict cheat sheet",
+    delayMs: 0,
+    html: wrap(`
+<p>Your one-page Velocity Verdict cheat sheet is ready.</p>
+<p>It shows the three public GitHub signals worth checking together, the 14-day window, the false positives to rule out, and the one question to ask before you contact a founder.</p>
+<p style="margin:24px 0;"><a href="${SITE}/downloads/velocity-verdict-cheat-sheet.pdf" style="display:block;width:100%;box-sizing:border-box;background:#0284c7;color:#ffffff;font-weight:700;font-size:18px;line-height:1.2;padding:16px 24px;border-radius:10px;text-decoration:none;text-align:center;">Open the one-page cheat sheet</a></p>
+<p>The evidence behind it is a documented panel of 219 startup-period observations across 55 startups. In that panel, the middle 50% of observed signal lead times fell 21 to 47 days before the public fundraise announcement. It is a sourcing signal, not a promise that any company will raise.</p>
+<p>Tomorrow I will show you the mistake that makes most GitHub screens useless: reading the count instead of the change.</p>
+<p>The Data Nerd</p>
+`, "velocity-verdict-1"),
+  },
+  {
+    subject: "The signal most investors read backwards",
+    delayMs: ONE_DAY,
+    html: wrap(`
+<p>A startup with 2,000 commits is not automatically moving faster than one with 200.</p>
+<p>The useful question is narrower: <strong>what changed in the last 14 days compared with that same team's prior baseline?</strong></p>
+<p>Look for a change in pace, not a large lifetime total. Then check whether the change is broad enough to be real: more contributors, sustained work across several days, and new infrastructure or product surfaces. One late-night push from one maintainer is not the same thing.</p>
+<p>You can run that check without reading code. Paste any public GitHub repository into the free Momentum Checker:</p>
+<p><a href="${SITE}/free/github-momentum-checker" style="color:#0284c7;font-weight:700;">Check one startup's momentum &rarr;</a></p>
+<p>In two days I will show you why the three signals matter more together than any one of them does alone.</p>
+<p>The Data Nerd</p>
+`, "velocity-verdict-2"),
+  },
+  {
+    subject: "Three signals. One 14-day window.",
+    delayMs: 3 * ONE_DAY,
+    html: wrap(`
+<p>Commit velocity can jump because one developer cleared a backlog. Contributor count can jump because of a hackathon. A new repository can be nothing more than documentation.</p>
+<p>That is why the Velocity Verdict does not treat any single metric as proof.</p>
+<ul>
+<li><strong>Velocity surge:</strong> the team is shipping more than its own recent normal.</li>
+<li><strong>Contributor breadth:</strong> the work is spreading across more people, not concentrating in one account.</li>
+<li><strong>Infrastructure buildout:</strong> the team is creating the systems needed for a larger product or customer load.</li>
+</ul>
+<p>When all three move inside the same two-week window, the pattern is more useful. When only one moves, slow down and inspect the cause.</p>
+<p>The full method, definitions, limits, and data are public:</p>
+<p><a href="${SIGNALS}/methodology" style="color:#0284c7;font-weight:700;">Read the open methodology &rarr;</a></p>
+<p>Next, I will give you the three-line founder note that turns a signal into a real conversation without pretending you know more than you do.</p>
+<p>The Data Nerd</p>
+`, "velocity-verdict-3"),
+  },
+  {
+    subject: "The three-line founder note",
+    delayMs: 5 * ONE_DAY,
+    html: wrap(`
+<p>A signal is useful only if it changes what you do next.</p>
+<p>After you verify one company, keep the founder note short:</p>
+<blockquote style="margin:20px 0;padding:16px 18px;border-left:3px solid #0284c7;background:#f1f5f9;color:#334155;">
+<p style="margin:0 0 8px;">I noticed [specific public change] in [repo or team].</p>
+<p style="margin:0 0 8px;">It overlaps with my thesis on [specific market], so I took a closer look.</p>
+<p style="margin:0;">Are you open to a short conversation next week?</p>
+</blockquote>
+<p>No fake familiarity. No claim that the company is raising. No long paragraph about you. You show that you noticed real work, explain why it matters to your thesis, and ask one clear question.</p>
+<p>If you want to see the exact format GitDealFlow sends each Sunday, read a real issue:</p>
+<p><a href="${SITE}/report" style="color:#0284c7;font-weight:700;">Read the sample Sunday Signal &rarr;</a></p>
+<p>My last welcome email gives you the smallest paid test I offer. It costs one euro, once.</p>
+<p>The Data Nerd</p>
+`, "velocity-verdict-4"),
+  },
+  {
+    subject: "Want me to read one startup for you?",
+    delayMs: 7 * ONE_DAY,
+    html: wrap(`
+<p>You now have the one-page card, the baseline rule, the three-signal check, and the founder note.</p>
+<p>If you want to test my judgment before paying for a dashboard, send me one startup. I will read its public GitHub signal and return a tweet-sized verdict: what moved, what might be noise, and what I would verify next.</p>
+<p><strong>It is €1 once.</strong> No subscription. The free Sunday Signal stays free whether you buy it or not.</p>
+<p style="margin:24px 0;"><a href="https://buy.stripe.com/bJe5kC48H2d2cEKg6s0x209" style="display:block;width:100%;box-sizing:border-box;background:#0284c7;color:#ffffff;font-weight:700;font-size:18px;line-height:1.2;padding:16px 24px;border-radius:10px;text-decoration:none;text-align:center;">Get one Tweet Teardown for €1</a></p>
+<p>If the cheat sheet is enough, keep it. Your regular Sunday issue will still arrive with five names and the plain-English reason each one moved.</p>
+<p>The Data Nerd</p>
+`, "velocity-verdict-5"),
+  },
+];
+
 export const SOAP_OPERA_EMAILS = [
   // Day 0, Welcome (Russell: deliver value)
   {
@@ -601,7 +682,7 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
 <p><strong>One new specific prediction, on the record, for the next 90 days.</strong></p>
 <p>This Monday's panel has six orgs sitting in the same threshold band (sustained 14-day commit-velocity ≥ 2× the 90-day baseline AND contributor-Gini ≤ 0.30 AND no Crunchbase round in the last 12 months). At least four of those six will resolve to one of {funding round, meaningful product launch, senior-engineering re-rating} between now and Day 270. If three or fewer resolve, I'll write the public post-mortem on what shifted in the panel's leading-indicator behavior. If five or six resolve, the post-mortem covers what changed about the deal-flow climate that pulled forward more events than the model expected.</p>
 <p>The names are in the live Acceleration Watch this Monday, same place they'd land for any other reader, no privileged disclosure here.</p>
-<p>If the rhythm has worked for six months, the next 90 days are the lowest-friction stretch of the calendar to keep going. Sunday digest stays free, Dashboard founding rate stays locked, and the next State-of-the-Engine lands at Day 270 with the post-mortem on the prediction above.</p>
+<p>If the rhythm has worked for six months, the next 90 days are the lowest-friction stretch of the calendar to keep going. Sunday digest stays free, if you hold a founding rate it stays locked for life, and the next State-of-the-Engine lands at Day 270 with the post-mortem on the prediction above.</p>
 <p>Talk soon, <br>${FROM_NAME}</p>
 <p style="color:#64748b;font-size:14px;">P.S. The Receipts ledger updates as events resolve, append-only, no opinions: <a href="${SIGNALS}/wins" style="color:#0ea5e9;">${SIGNALS}/wins</a>. The four-of-four resolution above is the last batch logged. The next batch fills in over the coming 90 days.</p>
 `),
@@ -1620,7 +1701,7 @@ export const FIRSTLOOK_REACTIVATION_DRIP = [
 <p>One last note on this. Your 14-day Dashboard-credit window closes tomorrow.</p>
 <p>I don't extend it. Not because it's a hard rule of physics, but because the whole point of a 14-day window is that it ends, a credit that never expires isn't a credit, it's a price cut, and that breaks the price promise to everyone who already paid.</p>
 <p>Two paths from here.</p>
-<p><strong>Path 1, apply the credit, lock the founding rate.</strong> Your first month is €42 (€49 minus your €7 First Look credit). The deep dive you already paid for becomes the first month of a continuous engine.</p>
+<p><strong>Path 1, apply the credit.</strong> Your first month is €42 (€49 minus your €7 First Look credit). The deep dive you already paid for becomes the first month of a continuous engine.</p>
 <p><a href="${SIGNALS}/pricing?utm_source=email&utm_medium=firstlook-credit&utm_campaign=d13" style="color:#0ea5e9;font-weight:600;">Apply the credit now &rarr;</a></p>
 <p><strong>Path 2, keep the deep dive, skip the upgrade.</strong> The PDF + CSV are yours forever. The free Sunday digest still hits every Monday. The credit expires, the €7 stays a one-time deep-dive purchase, no resentment, no follow-up pressure from me. The follow-up sequence ends here on this rung.</p>
 <p>Either path works. The only path that doesn't is "wait and see", because tomorrow the credit becomes a regular €49 first month.</p>
@@ -1835,7 +1916,7 @@ const D5_I: SoapOperaEmail = {
 <p>You scan. Two names you already knew. Three you didn't. The third entry is an AI-infra startup with sustained 14-day commit-velocity acceleration above 2&times; their 90-day baseline AND contributor-Gini under 0.30, the band where the panel's own resolution rate runs ~4-of-4 over a 90-day window. You ping the founder's listed email at 21:00 from the closed Telegram channel, where the rest of the fund-tier subscribers are already comparing notes.</p>
 <p>By Monday at 09:00, when the public list goes out and another 800 readers see the same five names, you've already had a 30-minute call booked, with a follow-up scheduled for end-of-week. By the time the warm-intro version of this deal reaches consensus partners at &euro;5M-&euro;20M funds, you're three weeks into a relationship that started at angel-allocation scale.</p>
 <p>The math: one founder per quarter, head-start window of one Sunday evening, at angel range with even a 3&times; exit on one in five, is somewhere between &euro;15k and &euro;150k of expected value per head-start. Insider Circle is &euro;2,364/yr. The numbers don't work the other way.</p>
-<p>Plus the rest of the fund-tier scaffolding, JSON/CSV API for the diligence stack, custom watchlist co-built around your thesis on signup, webhooks, direct founder line, closed Telegram of the other fund-tier subscribers (~30 today, capped at 100 at the founding rate). At your check volume those are the tools that turn a Sunday-night briefing into a Monday-morning conversation.</p>
+<p>Plus the rest of the fund-tier scaffolding, JSON/CSV API for the diligence stack, custom watchlist co-built around your thesis on signup, webhooks, direct founder line, closed Telegram of the other fund-tier subscribers (~30 today, capped at 100). At your check volume those are the tools that turn a Sunday-night briefing into a Monday-morning conversation.</p>
 <p>Tomorrow I'll address the trust problem head-on, "I've been reading email from someone who signs as 'The Data Nerd' and doesn't put a face on the website", because at your tier that's a legitimate ask, and I'd rather answer it explicitly than have it sit in your head until D90.</p>
 <p>Insider Circle case (12-minute walkthrough): <a href="${SIGNALS}/insider" style="color:#0ea5e9;font-weight:600;">${SIGNALS}/insider</a></p>
 <p>Talk soon,<br>${FROM_NAME}</p>
@@ -1873,7 +1954,7 @@ const D45_T: SoapOperaEmail = {
 <p>The honest question at this point: <strong>did the First Look pay back?</strong></p>
 <p>If yes, three or more orgs landed that you wouldn't have surfaced otherwise, the next rung is <strong>the &euro;49/mo Dashboard</strong>. The First Look credit-back means the upgrade is &euro;0 additional out-of-pocket if you do it within 14 days of receiving the deep dive. The Dashboard is the same engine you read once for &euro;7, run weekly, refreshed every Monday at 09:00 UTC, with the live panel of 209 ranked orgs filterable by sector / stage / geography. The 8-object stack, Dashboard + 219-startup Backtest CSV + monthly Sector Deep Dive + 2 Chrome Extensions + MCP Server + async Watchlist Build + Methodology Vault + 30-day refund, totals &euro;1,980 of standalone value at &euro;49/mo.</p>
 <p>If the First Look didn't pay back, the deep dive surfaced fewer than three names you'd consider, that's actionable feedback I want to hear. Reply to this email with the sector you covered and what didn't land, and I'll either run a fresh sweep on a different sector at no charge OR refund the &euro;7 outright. The methodology has to work for the buyer's own thesis or the rung structure breaks down.</p>
-<p>If you haven't grabbed the First Look yet, the &euro;7 price is still locked at the founding rate, the credit-back to Dashboard is still 100%, and the queue is currently 24 hours. <a href="${SITE}/#firstlook" style="color:#0ea5e9;font-weight:600;">${SITE}/#firstlook</a></p>
+<p>If you haven't grabbed the First Look yet, the &euro;7 price is unchanged, the credit-back to Dashboard is still 100%, and the queue is currently 24 hours. <a href="${SITE}/#firstlook" style="color:#0ea5e9;font-weight:600;">${SITE}/#firstlook</a></p>
 <p>The free digest stays free either way. Sunday hits as usual this weekend.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
 <p style="color:#64748b;font-size:14px;">P.S. The Dashboard 12-minute walkthrough is at <a href="${SIGNALS}/walkthrough/5min" style="color:#0ea5e9;">${SIGNALS}/walkthrough/5min</a>: read before upgrading if you want the full case before the click.</p>

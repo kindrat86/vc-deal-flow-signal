@@ -238,13 +238,14 @@ gitdealflow.com
 ### Thursday — Reddit
 Post to r/datasets, Thursday 14:00 UTC.
 
-Title: [Open Dataset] 219 startup fundraises backtested against GitHub commit velocity signals (CSV, CC BY 4.0)
+Title: [Open Dataset] GitHub engineering momentum for 350+ startups, 15 sectors, Q3 2026: the signal that preceded 219 fundraises (JSON + CSV)
 
-Body: I backtested engineering acceleration signals (commit velocity + contributor diversity) against 219 confirmed startup fundraises. Composite signal predicted Series A 21-47 days before announcement with 3.4x lift.
+Body (canonical, verified 08-16, in ~/.hermes/scripts/reddit-distribution/gdf_post_datasets_2026-08-20.json): discloses ownership up front, offers signals.json (350+ orgs) + /datasets catalog, states the 219-fundraise backtest (21-47 days, median 31, 3.4x lift) as the research finding. NOTE: the old title claimed a "219 fundraises CSV" that does not exist (the momentum CSV is a 40-repo ranking). Fixed.
 
 Dataset: https://gitdealflow.com/datasets
-CSV: https://gitdealflow.com/data/github-momentum-index-q3-2026.csv
-SSRN: ssrn.com/abstract=6606558
+JSON: https://signals.gitdealflow.com/api/signals.json
+Methodology: https://signals.gitdealflow.com/methodology
+SSRN: https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558
 
 Safe subreddits: r/datasets, r/juststart, r/devops. DO NOT post to r/SaaS, r/Entrepreneur, r/startups.
 

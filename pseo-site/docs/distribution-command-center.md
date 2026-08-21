@@ -168,6 +168,12 @@ Never keep forcing:
 4. send one page only in each context
 5. log same day
 
+## Community gate, required before publishing
+
+Before any community post, comment, channel message, or community pitch, complete `../../distribution/community-posting-checklist.md`.
+
+It makes the channel fit, moderator rule, ownership disclosure, claim verification, pacing, UTM, and logged-out visibility checks explicit. It also hard-disables autonomous Hacker News activity and keeps LinkedIn company-page-only.
+
 ## Daily execution rule
 
 A good day is:

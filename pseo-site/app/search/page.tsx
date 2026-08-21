@@ -29,7 +29,7 @@ import { searchCorpus, normalizeQuery } from "@/lib/search-index";
 export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Search, VC Deal Flow Signal",
+  title: { absolute: "Search, VC Deal Flow Signal" },
   description:
     "Search startups, sectors, comparisons, answers, and research across VC Deal Flow Signal.",
   robots: { index: false, follow: true },

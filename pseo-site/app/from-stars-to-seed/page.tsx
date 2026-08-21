@@ -208,7 +208,7 @@ export default function FromStarsToSeedIndexPage() {
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
             VC Deal Flow Signal tracks engineering acceleration in real
-            time across twenty sectors. The same signal shapes that flagged
+            time across 15 sectors. The same signal shapes that flagged
             the repos on this page run every Monday on every public repo
             in our dataset, the next case study is being authored right
             now in someone&rsquo;s commit log.

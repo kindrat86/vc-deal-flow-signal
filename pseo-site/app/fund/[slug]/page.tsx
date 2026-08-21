@@ -5,6 +5,7 @@ import { funds, getFund, getAllFundSlugs } from "@/content/funds";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { buildSourceTruthDataset } from "@/lib/dataset-schema";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -115,6 +116,15 @@ export default async function FundPage({ params }: PageProps) {
           },
         })),
       },
+      buildSourceTruthDataset({
+        url: pageUrl,
+        name: `${f.name}: VC Fund Profile`,
+        description: `Venture-fund profile and engineering-signal mapping for ${f.name}, tracked by the VC Deal Flow Signal (GitDealFlow) GitHub panel. ${f.metaDescription}`,
+        variableMeasured: [
+          { name: "Stage focus", value: f.stageFocus },
+          { name: "Related sectors", value: f.relatedSectors.length },
+        ],
+      }),
     ],
   };
 

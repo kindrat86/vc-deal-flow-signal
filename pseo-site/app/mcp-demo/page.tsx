@@ -20,7 +20,7 @@ const VIDEO_DESCRIPTION =
   "Live demo of the VC Deal Flow Signal MCP server running inside Claude Desktop. Shows trending startups, sector search, and individual startup signal lookups via natural-language prompts. Free, no API key required.";
 
 export const metadata: Metadata = {
-  title: "MCP Server Demo, VC Deal Flow Signal in Claude Desktop",
+  title: { absolute: "MCP Server Demo, VC Deal Flow Signal in Claude Desktop" },
   description: VIDEO_DESCRIPTION,
   alternates: {
     canonical: "/mcp-demo",

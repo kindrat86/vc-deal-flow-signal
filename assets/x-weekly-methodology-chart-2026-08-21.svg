@@ -1,0 +1,54 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="675" viewBox="0 0 1200 675">
+  <rect width="1200" height="675" fill="#0B1020"/>
+  <style>
+    .title { font: 700 48px Arial, Helvetica, sans-serif; fill: #F6F8FF; letter-spacing: -1px; }
+    .sub { font: 400 23px Arial, Helvetica, sans-serif; fill: #9BA8C7; }
+    .label { font: 700 16px Arial, Helvetica, sans-serif; fill: #69E2C4; letter-spacing: .6px; }
+    .number { font: 700 16px Arial, Helvetica, sans-serif; fill: #69E2C4; }
+    .card-title { font: 700 25px Arial, Helvetica, sans-serif; fill: #F6F8FF; }
+    .threshold { font: 400 19px Arial, Helvetica, sans-serif; fill: #69E2C4; }
+    .note { font: 400 19px Arial, Helvetica, sans-serif; fill: #9BA8C7; }
+    .footer { font: 400 16px Arial, Helvetica, sans-serif; fill: #9BA8C7; }
+    .site { font: 400 16px Arial, Helvetica, sans-serif; fill: #69E2C4; }
+  </style>
+  <text x="64" y="89" class="title">HOW TO READ THIS WEEK'S GITHUB MOMENTUM REPORT</text>
+  <text x="64" y="139" class="sub">Four labels. Four screening prompts. Not investment advice.</text>
+  <rect x="64" y="162" width="252" height="32" rx="16" fill="#163C42"/>
+  <text x="82" y="184" class="label">LIVE REPORT: 21 AUG 2026</text>
+
+  <g transform="translate(64 235)">
+    <rect width="520" height="150" rx="18" fill="#121A31" stroke="#2A3658" stroke-width="2"/>
+    <rect x="22" y="24" width="50" height="50" rx="12" fill="#1B3D49"/>
+    <text x="34" y="57" class="number">01</text>
+    <text x="94" y="48" class="card-title">Engineering hiring burst</text>
+    <text x="94" y="83" class="threshold">&gt;50% contributor growth</text>
+    <text x="94" y="113" class="note">Possible team expansion.</text><text x="94" y="137" class="note">Verify the company context.</text>
+  </g>
+  <g transform="translate(612 235)">
+    <rect width="520" height="150" rx="18" fill="#121A31" stroke="#2A3658" stroke-width="2"/>
+    <rect x="22" y="24" width="50" height="50" rx="12" fill="#1B3D49"/>
+    <text x="34" y="57" class="number">02</text>
+    <text x="94" y="48" class="card-title">Infrastructure buildout</text>
+    <text x="94" y="83" class="threshold">3+ new public repos / 30d</text>
+    <text x="94" y="113" class="note">Possible platform build.</text><text x="94" y="137" class="note">Not proof of traction.</text>
+  </g>
+  <g transform="translate(64 413)">
+    <rect width="520" height="150" rx="18" fill="#121A31" stroke="#2A3658" stroke-width="2"/>
+    <rect x="22" y="24" width="50" height="50" rx="12" fill="#1B3D49"/>
+    <text x="34" y="57" class="number">03</text>
+    <text x="94" y="48" class="card-title">Deploy frequency spike</text>
+    <text x="94" y="83" class="threshold">≥150% commit-velocity change</text>
+    <text x="94" y="113" class="note">Compared with the team's own baseline.</text>
+  </g>
+  <g transform="translate(612 413)">
+    <rect width="520" height="150" rx="18" fill="#121A31" stroke="#2A3658" stroke-width="2"/>
+    <rect x="22" y="24" width="50" height="50" rx="12" fill="#1B3D49"/>
+    <text x="34" y="57" class="number">04</text>
+    <text x="94" y="48" class="card-title">Framework migration</text>
+    <text x="94" y="83" class="threshold">General acceleration</text>
+    <text x="94" y="113" class="note">Does not meet another</text><text x="94" y="137" class="note">signal threshold.</text>
+  </g>
+  <line x1="64" y1="593" x2="1136" y2="593" stroke="#2A3658" stroke-width="2"/>
+  <text x="64" y="632" class="footer">350+ startups  ·  15 sectors  ·  Public GitHub activity  ·  Updated weekly</text>
+  <text x="920" y="632" class="site">signals.gitdealflow.com</text>
+</svg>

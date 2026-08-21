@@ -1,2 +1,4 @@
 {"ts": "2026-08-15T08:44:42.875995+00:00", "date": "2026-08-14", "sent": 32, "delivered": 0, "opened": 0, "clicked": 0, "bounced": 0, "suppressed": 0, "open_rate": null, "click_rate": null, "bounce_rate": null}
 {"ts": "2026-08-17T06:05:15.244893+00:00", "date": "2026-08-16", "sent": 14, "delivered": 0, "opened": 0, "clicked": 0, "bounced": 0, "suppressed": 0, "open_rate": null, "click_rate": null, "bounce_rate": null}
+{"ts": "2026-08-20T20:23:06.257241+00:00", "date": "2026-07-20", "sent": 13, "delivered": 0, "opened": 0, "clicked": 0, "bounced": 0, "suppressed": 0, "open_rate": null, "click_rate": null, "bounce_rate": null, "measured": false}
+{"ts": "2026-08-21T03:41:53.617510+00:00", "date": "2026-08-21", "sent": 32, "delivered": 8, "opened": 8, "clicked": 16, "bounced": 0, "suppressed": 0, "open_rate": 75.0, "click_rate": 50.0, "bounce_rate": 0.0, "measured": true}

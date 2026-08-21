@@ -200,7 +200,7 @@ const REPORT_2026: AnnualReport = {
       id: "standing-offer",
       heading: "The standing offer",
       body: [
-        "Every annual report ends with the same standing offer to readers. If you want the per-sector composite-score lists from this year, the 47 fundraise-precursor org names that scored 5 of 6 on the composite for each of the three featured sectors, they are available inside the Insider Circle private Telegram, which is 97 EUR per month at the founding rate, locked forever for buyers in the launch window.",
+        "Every annual report ends with the same standing offer to readers. If you want the per-sector composite-score lists from this year, the 47 fundraise-precursor org names that scored 5 of 6 on the composite for each of the three featured sectors, they are available inside the Insider Circle private Telegram, which is 197 EUR per month.",
         "The free Sunday digest at gitdealflow.com gets you five names a week. The Custom Sector Sweep, 1,997 EUR once, gets you a deep written report on any one of the three sectors above with the full underlying signal trace. Both of those numbers anchor against the 4,179 EUR retail value of the unbundled deliverables, paying once for the bundle is the rational move if you intend to use any of these signals operationally.",
         "The next monthly address at /state-of-github lands the first Wednesday of December 2026. The next annual report, 2027 State of Engineering Velocity, lands December 1, 2027.",
         "Talk soon., The Data Nerd",

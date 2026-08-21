@@ -102,10 +102,10 @@ const RESULTS = {
     secondary: { label: "Compare all tiers", href: "/pricing" },
   },
   D: {
-    title: "Dashboard, €49/mo (founding rate closed 2026-06-30).",
-    eyebrow: "Dashboard · €49/mo",
-    body: "You write enough checks and have a sharp enough thesis that the full ranked dashboard pays for itself the first time it surfaces a name you didn't already see. €49/mo is the current rate (the €9.97 founding rate closed 2026-06-30; founding members keep it for life). Upgrade credits chain: €1 Teardown to €7 First Look to Dashboard, even after the public hike to €49/mo. Read the 12-minute walkthrough before you click if you want the full case.",
-    cta: { label: "Lock €49/mo Dashboard", href: "/pricing", external: true },
+    title: "Dashboard Beta, €49/mo, month to month.",
+    eyebrow: "Dashboard Beta · €49/mo",
+    body: "You write enough checks and have a sharp enough thesis that the full ranked dashboard pays for itself the first time it surfaces a name you didn't already see. €49/mo, month to month, cancel anytime. Founding members who joined before June 30, 2026 keep their €9.97/mo rate for life. Read the 12-minute walkthrough before you click if you want the full case.",
+    cta: { label: "Lock €49/mo", href: "https://buy.stripe.com/4gMbJ07kTaJy7kqg6s0x20b", external: true },
     secondary: { label: "Read the 12-minute case first", href: "/walkthrough" },
   },
   I: {

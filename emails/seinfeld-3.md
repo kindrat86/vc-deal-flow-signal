@@ -18,7 +18,7 @@ Either way, that 14-day window where a startup starts shipping faster is the sin
 
 By the time AngelList shows "trending" or a TechCrunch article drops, you're already weeks late.
 
-The free digest gives you the top 5 each month. The Dashboard surfaces 60+ startups heating up early across 15 sectors, filtered to your sectors — you just look: https://gitdealflow.com/dashboard
+The free digest gives you the top 5 each week. The Dashboard surfaces 140+ startups heating up early across 15 sectors, filtered to your sectors — you just look: https://gitdealflow.com/dashboard
 
 The Data Nerd
 

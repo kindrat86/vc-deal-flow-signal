@@ -172,7 +172,7 @@ export default function BuildVsInvestIndexPage() {
             Every sector we track gets the same two scores: how expensive it
             is to credibly build inside, and how fast the deals close once
             engineering acceleration shows up. Two numbers, one 2×2,
-            twenty sectors. The four quadrants are the honest answer to the
+            15 sectors. The four quadrants are the honest answer to the
             question every operator and every angel asks themselves
             inside the same week.
           </p>

@@ -59,8 +59,19 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ ok: true });
     }
 
-    // Active subscription found, send magic link
+    // Active subscription found, record the request at the customer level
+    // before sending the link, so support can spot repeated login friction.
     const token = await createMagicLinkToken(email);
+    void fetch("https://eu.i.posthog.com/capture/", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({
+        api_key: "phc_lyZCgvTpicjLzAO3rY2GhxuX5WUc5jQjP8ZVwwJqauX",
+        event: "magic_link_requested",
+        distinct_id: email,
+        properties: { $host: "signals.gitdealflow.com", product: "gitdealflow", customer_id: customer.id },
+      }),
+    }).catch(() => undefined);
     const magicLink = `${BASE_URL}/api/auth/verify?token=${token}`;
 
     await fetch("https://api.resend.com/emails", {

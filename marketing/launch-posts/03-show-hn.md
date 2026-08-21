@@ -1,4 +1,6 @@
-<!-- SUPERSEDED: The canonical Show HN post is in distribution/hackernews-post.md. This version was not posted. -->
+<!-- SUPERSEDED: The canonical Show HN post is v3 at /Users/sipi/signals-gitdealflow/AEO-hn-show-hn-draft.md.
+     (distribution/hackernews-post.md is itself superseded; do not use it either.)
+     This version was never posted and still cites stale claims (2,000+ orgs, 20 sectors, EUR 9.97/mo). -->
 # Show HN Post — Wave 2 (Tuesday April 21)
 ## Post between 8am-10am ET for max visibility
 

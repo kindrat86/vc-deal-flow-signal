@@ -23,7 +23,7 @@ export async function generateMetadata({
   const author = authors[slug];
   if (!author) return { title: "Author not found" };
   return {
-    title: `${author.name}, Author at VC Deal Flow Signal`,
+    title: { absolute: `${author.name}, Author at VC Deal Flow Signal` },
     description: author.bio,
     alternates: { canonical: `/authors/${author.slug}` },
     openGraph: {

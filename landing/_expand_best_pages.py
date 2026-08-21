@@ -5,7 +5,7 @@ Expand all thin /alternatives-to/ and /best/ pages on gitdealflow.com into rich
 library. One consistent template (matching /vs/), valid JSON-LD, no em dashes.
 
 GitDealFlow facts (current): 350+ startups, 15 sectors, Free Sunday digest,
-EUR 1 Teardown, EUR 7 First Look, EUR 49/mo Dashboard (EUR 490/yr),
+EUR 1 Teardown, EUR 7 First Look, EUR 49/mo Dashboard (EUR 441/yr),
 EUR 197/mo Insider, EUR 1,997 Sector Sweep. Lead time 21-47 days (SSRN n=219).
 """
 import os, json, re
@@ -112,7 +112,7 @@ TOOLS = {
     },
 }
 
-GDF_BLURB = ("GitDealFlow reads public GitHub activity (commit velocity, contributor growth, and repository expansion) across 350+ startups in 15 sectors every Monday, and surfaces the teams accelerating 21-47 days before a round is announced. The methodology is published open-access on SSRN (abstract 6606558) with a CC BY 4.0 dataset any investor can audit. Its free tier covers the Sunday digest, trending board, and MCP server; the Dashboard is EUR 49/month (EUR 490/year).")
+GDF_BLURB = ("GitDealFlow reads public GitHub activity (commit velocity, contributor growth, and repository expansion) across 350+ startups in 15 sectors every Monday, and surfaces the teams accelerating 21-47 days before a round is announced. The methodology is published open-access on SSRN (abstract 6606558) with a CC BY 4.0 dataset any investor can audit. Its free tier covers the Sunday digest, trending board, and MCP server; the Dashboard is EUR 49/month (EUR 441/year).")
 
 # "Choose it when" guidance line per tool.
 CHOOSE = {

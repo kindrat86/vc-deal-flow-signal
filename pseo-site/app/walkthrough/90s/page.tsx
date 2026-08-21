@@ -252,7 +252,7 @@ export default function NinetySecondWalkthroughPage() {
               kind="primary"
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-base shadow-lg shadow-emerald-500/30 transition-colors"
             >
-              Lock €49/mo founder price →
+              Lock €49/mo →
             </WalkthroughCtaLink>
             <WalkthroughCtaLink
               href={SIGNUP_URL}

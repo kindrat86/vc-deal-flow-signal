@@ -161,6 +161,7 @@ export default async function BenchmarkPage({ params }: PageProps) {
         license: "https://creativecommons.org/licenses/by/4.0/",
         temporalCoverage: period.slug,
         url: `${SITE}/benchmarks/${metric}`,
+        isBasedOn: { "@id": "https://signals.gitdealflow.com/dataset#dataset" },
         distribution: [
           { "@type": "DataDownload", encodingFormat: "application/json", contentUrl: `${SITE}/api/signals.json` },
           { "@type": "DataDownload", encodingFormat: "text/csv", contentUrl: `${SITE}/api/signals.csv` },

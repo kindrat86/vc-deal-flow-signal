@@ -107,7 +107,7 @@ export default function SignalLeader({ movers, periodSlug, asOf }: SignalLeaderP
           href="/trending"
           className="text-sky-400 hover:text-sky-300 font-medium"
         >
-          See all 60+ ranked movers &rarr;
+          See all 140+ ranked movers &rarr;
         </Link>
         <span className="text-gray-600">·</span>
         <a

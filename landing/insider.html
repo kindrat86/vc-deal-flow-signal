@@ -58,7 +58,15 @@
     <link rel="stylesheet" href="/ux.css?v=20260808-2">
     <script src="/ux.js" defer></script>
   <link rel="preload" href="/inline.css" as="style">
-    <link rel="stylesheet" href="/inline.css"></head>
+    <link rel="stylesheet" href="/inline.css">  <!-- Google tag (gtag.js) -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-7SV2SNZE4C"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+    gtag('config', 'G-7SV2SNZE4C');
+  </script>
+</head>
 <body class="bg-dark-900 text-gray-100 font-sans antialiased">
   <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[60] focus:px-4 focus:py-2 focus:bg-dark-800 focus:text-white focus:rounded-lg">Skip to main content</a>
   <header class="relative sticky top-0 z-50 border-b border-gray-800 bg-dark-900/95 backdrop-blur">
@@ -73,7 +81,7 @@
         <a href="/pricing" class="hover:text-white transition-colors">Pricing</a>
       </nav>
       <a href="https://buy.stripe.com/bJeaEWfRpcRG6gm2fC0x20d" onclick="if(window.posthog)posthog.capture('insider_nav_cta',{placement:'insider_nav'})" class="btn btn-cta btn-sm whitespace-nowrap shrink-0"><span class="lg:hidden">Join Insider</span><span class="hidden lg:inline">Join Insider, €197/mo</span> <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
-      <a href="https://buy.stripe.com/cNieVc34DbNCcEK2fC0x20e" onclick="if(window.posthog)posthog.capture('insider_nav_cta_annual',{placement:'insider_nav'})" class="btn btn-secondary btn-sm whitespace-nowrap shrink-0 hidden lg:inline-flex">&euro;1,970/yr</a>
+      <a href="https://buy.stripe.com/bJe3cu48H3h6awC3jG0x20J" onclick="if(window.posthog)posthog.capture('insider_nav_cta_annual',{placement:'insider_nav'})" class="btn btn-secondary btn-sm whitespace-nowrap shrink-0 hidden lg:inline-flex">&euro;1,773/yr</a>
       <button type="button" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu" class="md:hidden inline-flex items-center justify-center w-11 h-11 shrink-0 rounded-lg text-gray-300 hover:text-white ring-1 ring-white/10 transition-colors">
         <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
@@ -96,12 +104,12 @@
       <div class="mobile-hero-wrap relative max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-28 text-center">
         <p class="text-brand-500 font-semibold text-sm uppercase tracking-wider mb-4">Higher-touch tier</p>
         <h1 class="mobile-hero-title text-4xl md:text-6xl font-extrabold leading-tight mb-6">When you want more than a weekly shortlist and less than another noisy room.</h1>
-        <p class="sr-only"><strong>TL;DR:</strong> Insider Circle is a higher-touch tier with private discussion, monthly briefings, and a steadier deal-flow rhythm. €197/mo (€1,970/yr), capped at ~50 seats. The €97 founding rate closed June 30, founding members keep it for life.</p>
+        <p class="sr-only"><strong>TL;DR:</strong> Insider Circle is a higher-touch tier with private discussion, monthly briefings, and a steadier deal-flow rhythm. €197/mo (€1,773/yr), capped at ~50 seats. The €97 founding rate closed June 30, founding members keep it for life.</p>
 
         <p class="mobile-hero-copy text-lg md:text-xl text-gray-300 max-w-3xl mx-auto mb-8">Insider Circle is where GitDealFlow becomes a more serious operating layer: private discussion, monthly briefings, and a steadier rhythm when the decisions start to matter more.</p>
         <div class="mobile-cta-stack flex flex-col sm:flex-row items-center justify-center gap-3">
           <a href="https://buy.stripe.com/bJeaEWfRpcRG6gm2fC0x20d" onclick="if(window.posthog)posthog.capture('insider_cta',{placement:'upsell'})" class="btn btn-cta btn-lg w-full sm:w-auto">Join Insider, &euro;197/mo &rarr;</a>
-          <a href="https://buy.stripe.com/cNieVc34DbNCcEK2fC0x20e" onclick="if(window.posthog)posthog.capture('insider_cta_annual',{placement:'upsell'})" class="btn btn-secondary btn-md w-full sm:w-auto">&euro;1,970/yr (save &euro;394)</a>
+          <a href="https://buy.stripe.com/bJe3cu48H3h6awC3jG0x20J" onclick="if(window.posthog)posthog.capture('insider_cta_annual',{placement:'upsell'})" class="btn btn-secondary btn-md w-full sm:w-auto">&euro;1,773/yr (save &euro;591)</a>
           <div class="inline-flex items-center gap-2 rounded-full border border-signal-500/30 bg-signal-500/10 px-4 py-2 text-sm text-signal-400">
             <span>Price:</span>
             <strong class="text-white">€197/mo</strong>
@@ -134,7 +142,7 @@
         <div class="flex flex-col sm:flex-row items-center sm:items-center gap-4 mb-4 text-center sm:text-left">
           <picture>
             <source srcset="/data-nerd.webp" type="image/webp">
-            <img src="/data-nerd.png" alt="The Data Nerd" width="160" height="160" loading="lazy" decoding="async" class="w-40 h-40 sm:w-32 sm:h-32 rounded-full ring-2 ring-slate-600 shadow-2xl mx-auto sm:mx-0">
+            <img src="/data-nerd.webp" alt="The Data Nerd" width="160" height="160" loading="lazy" decoding="async" class="w-40 h-40 sm:w-32 sm:h-32 rounded-full ring-2 ring-slate-600 shadow-2xl mx-auto sm:mx-0">
           </picture>
           <p class="text-sky-300 text-xs font-semibold uppercase tracking-wider">Why I built this, The Data Nerd</p>
         </div>
@@ -280,7 +288,7 @@
       </div>
 <div class="flex gap-2">
         <a href="https://buy.stripe.com/bJeaEWfRpcRG6gm2fC0x20d" onclick="if(window.posthog)posthog.capture('insider_cta_sticky',{placement:'upsell'})" class="btn btn-cta btn-sm">Join, &euro;197/mo &rarr;</a>
-        <a href="https://buy.stripe.com/cNieVc34DbNCcEK2fC0x20e" onclick="if(window.posthog)posthog.capture('insider_cta_sticky_annual',{placement:'upsell'})" class="btn btn-secondary btn-sm">&euro;1,970/yr</a>
+        <a href="https://buy.stripe.com/bJe3cu48H3h6awC3jG0x20J" onclick="if(window.posthog)posthog.capture('insider_cta_sticky_annual',{placement:'upsell'})" class="btn btn-secondary btn-sm">&euro;1,773/yr</a>
       </div>
     </div>
   </div>
@@ -490,7 +498,7 @@
   <script>
     !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split('.');2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement('script')).type='text/javascript',p.async=!0,p.src=s.api_host+'/static/array.js',(r=t.getElementsByTagName('script')[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a='posthog',u.people=u.people||[],u.toString=function(t){var e='posthog';return'posthog'!==a&&(e+='.'+a),t||(e+=' (stub)'),e},u.people.toString=function(){return u.toString(1)+'.people (stub)'},o='init capture register register_once register_for_session unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group setPersonProperties resetPersonProperties setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags'.split(' '),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
     (function(){
-      function _init(){ if(/^https?:$/.test(location.protocol)) posthog.init('phc_lyZCgvTpicjLzAO3rY2GhxuX5WUc5jQjP8ZVwwJqauX', {api_host: 'https://eu.i.posthog.com', persistence: 'memory', person_profiles: 'identified_only'}); }
+      function _init(){ if(/^https?:$/.test(location.protocol)) posthog.init('phc_lyZCgvTpicjLzAO3rY2GhxuX5WUc5jQjP8ZVwwJqauX', {api_host: 'https://eu.i.posthog.com', persistence: (navigator.doNotTrack=='1'||window.globalPrivacyControl)?'memory':'localStorage+cookie', disable_session_recording: (navigator.doNotTrack=='1'||window.globalPrivacyControl), session_recording: {maskAllTextInputs: true, maskTextSelector: '#success-email'}, person_profiles: 'identified_only'}); }
       if('requestIdleCallback' in window){requestIdleCallback(_init,{timeout:2500});} else {setTimeout(_init,2000);}
     })();
   </script>

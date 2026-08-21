@@ -11,6 +11,7 @@ export type EntryTierKey =
 
 export type OtoKey =
   | "sector_sweep_oto1"
+  | "dashboard_oto_firstlook"
   | "insider_oto2"
   | "extra_sector_oto3";
 
@@ -120,6 +121,19 @@ export const ENTRY_TIERS: Record<EntryTierKey, EntryTierConfig> = {
 };
 
 export const OTO_TIERS: Record<OtoKey, OtoConfig> = {
+  dashboard_oto_firstlook: {
+    kind: "subscription",
+    productName: "Dashboard",
+    unitAmount: 4900,
+    currency: "eur",
+    interval: "month",
+    lookupKey: "dashboard_monthly_v1_49",
+    firstInvoiceCouponAmountOff: 700,
+    firstInvoiceCouponLookupKey: "dashboard_firstlook_credit_v1_7",
+    description:
+      "Full weekly ranked field, filters, history, and CSV export. €49/mo, with the €7 First Look Pass credited on the first month.",
+    welcomeSubject: "Welcome to the GitDealFlow Dashboard",
+  },
   sector_sweep_oto1: {
     kind: "one_time",
     productName: "Sector Sweep, First Look bump",

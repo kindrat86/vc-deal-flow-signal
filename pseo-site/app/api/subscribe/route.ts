@@ -14,18 +14,30 @@ const FROM_NAME = process.env.FROM_NAME || "The Data Nerd";
 const VERIFY_BASE_URL =
   process.env.VERIFY_BASE_URL || "https://signals.gitdealflow.com";
 
+type SubscribeCohort =
+  | "soap-opera"
+  | "challenge"
+  | "launch"
+  | "lead-magnet";
+
 function verificationEmailHtml(
   verifyUrl: string,
-  cohort: "soap-opera" | "challenge" | "launch",
+  cohort: SubscribeCohort,
 ): string {
   const headline =
-    cohort === "challenge"
+    cohort === "lead-magnet"
+      ? "Confirm your email to get the Velocity Verdict"
+      : cohort === "challenge"
       ? "Confirm your email, your 7-Day Reset starts immediately"
       : cohort === "launch"
         ? "Confirm your email, launch sequence starts in 30 minutes"
         : "There's a deal in here I missed by one night's sleep.";
   const body =
-    cohort === "challenge"
+    cohort === "lead-magnet"
+      ? `<p>Click below to confirm your email. Your one-page Velocity Verdict cheat sheet will land immediately after confirmation.</p>
+<p>It covers the three public GitHub signals worth checking together, the 14-day window, the false positives to rule out, and the one question to ask before contacting a founder.</p>
+<p>You will also receive four short welcome emails over the next seven days, then the free Sunday Signal. Every message has one-click unsubscribe.</p>`
+      : cohort === "challenge"
       ? `<p>Click below to confirm your email and start the 7-Day Deal Flow Reset Challenge.</p>
 <p>Day 1 lands within 15 minutes of confirmation. One signal per day, one 5-minute exercise per day. By Day 7 you'll have a personal sourcing framework built from the SSRN-published methodology.</p>`
       : cohort === "launch"
@@ -35,14 +47,18 @@ function verificationEmailHtml(
 <p>Three weeks later they raised a $4M Series A. The investors who got in had seen exactly what I'd seen. They just didn't talk themselves out of it.</p>
 <p>That's the night that made me build this. Confirm your email below and the first thing you'll read is the whole story, plus <strong>This Week's Top 5 Breakout Startups</strong>, the names showing the same engineering acceleration right now, 21 to 47 days before the deck circulates.</p>`;
   const cta =
-    cohort === "challenge"
+    cohort === "lead-magnet"
+      ? "Get the Cheat Sheet"
+      : cohort === "challenge"
       ? "Start the Challenge"
       : cohort === "launch"
         ? "Start the Launch Sequence"
         : "Get the Report";
   // Inbox preview line (hidden preheader). Mobile clients show ~90 chars.
   const preheader =
-    cohort === "challenge"
+    cohort === "lead-magnet"
+      ? "Confirm to get the one-page signal card and start the five-email welcome."
+      : cohort === "challenge"
       ? "Confirm to start your 7-Day Deal Flow Reset, Day 1 lands in 15 minutes."
       : cohort === "launch"
         ? "Confirm to start the Agent Credits launch sequence, first email in 30 minutes."
@@ -203,8 +219,10 @@ export async function POST(request: Request) {
     // 7-Day Deal Flow Reset sequence. "launch" routes to the 5-email Brunson
     // Product Launch Funnel for an active launch window. Whitelist enforced.
     const rawCohort = clip(body.cohort, 32);
-    const cohort: "soap-opera" | "challenge" | "launch" =
-      rawCohort === "challenge"
+    const cohort: SubscribeCohort =
+      rawCohort === "lead-magnet"
+        ? "lead-magnet"
+        : rawCohort === "challenge"
         ? "challenge"
         : rawCohort === "launch"
           ? "launch"
@@ -243,10 +261,13 @@ export async function POST(request: Request) {
       },
       body: JSON.stringify({
         from: `${FROM_NAME} <${FROM_EMAIL}>`,
+        reply_to: FROM_EMAIL,
         bcc: "sales@sipiteno.com",
         to: email,
         subject:
-          cohort === "challenge"
+          cohort === "lead-magnet"
+            ? "Confirm to get your Velocity Verdict cheat sheet"
+            : cohort === "challenge"
             ? "Confirm your email, your 7-Day Reset starts now"
             : cohort === "launch"
               ? "Confirm your email, Agent Credits launch starts now"

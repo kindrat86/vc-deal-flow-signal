@@ -45,8 +45,8 @@ export default async function WelcomePage() {
       <p className="inline-flex items-center gap-1.5 mb-10 rounded-md border border-emerald-700/40 bg-emerald-950/30 px-3 py-1.5 text-emerald-300 text-sm font-medium">
         <span aria-hidden="true">🔒</span>
         {isInsider
-          ? "Insider at €197/mo (the €97 founding rate closed 2026-06-30)."
-          : "Dashboard at €49/mo (the €9.97 founding rate closed 2026-06-30)."}
+          ? "€197/mo, cancel anytime."
+          : "€49/mo, cancel anytime."}
       </p>
 
       {/* What's included */}

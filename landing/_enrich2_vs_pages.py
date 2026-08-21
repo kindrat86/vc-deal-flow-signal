@@ -18,7 +18,7 @@ ENRICH2 = {
     },
     "cb-insights": {
         "comp_data": "CB Insights tracks private-company financials, funding rounds, M&A, patents, news mentions, and analyst research, all scored through the Mosaic algorithm into growth and momentum signals. The data is curated by human analysts and updated on research cycles rather than a weekly schedule, which makes it deep but inherently periodic.",
-        "gdf_who": "GitDealFlow is built for investors who need a steady, self-serve early signal: solo GPs, scouts, angels, and small funds. The Dashboard's 60+ weekly ranked startups, each with a one-line reason it is moving, are the deliverable.",
+        "gdf_who": "GitDealFlow is built for investors who need a steady, self-serve early signal: solo GPs, scouts, angels, and small funds. The Dashboard's 140+ weekly ranked startups, each with a one-line reason it is moving, are the deliverable.",
         "comp_who": "CB Insights is built for corporate strategy teams, large funds, and innovation groups that need market maps, competitive intelligence, and board-grade research. The price and the analyst depth are aimed squarely at institutional budgets.",
     },
     "dealroom": {

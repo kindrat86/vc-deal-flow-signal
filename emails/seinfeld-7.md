@@ -14,7 +14,7 @@ GitDealFlow is an attempt to make that systematic. It's a tool, not a fund — i
 
 It won't replace your network. It will show you things your network can't.
 
-Free weekly digest to try it. Full Dashboard (EUR 9.97/mo) for 60+ startups with sector filters: https://gitdealflow.com/dashboard
+Free weekly digest to try it. Full Dashboard (€49/mo) for 140+ startups with sector filters: https://gitdealflow.com/dashboard
 
 The Data Nerd
 

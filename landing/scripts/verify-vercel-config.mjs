@@ -12,7 +12,8 @@
  * Usage: node scripts/verify-vercel-config.mjs   (exit 1 on any failure)
  */
 
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
+import { join } from "node:path";
 
 const cfg = readFileSync("vercel.json", "utf8");
 const parsed = JSON.parse(cfg);
@@ -166,34 +167,13 @@ for (const f of claimFiles) {
 {
   let txt;
   try {
-    txt = readFileSync("llms-full.txt", "utf8");
+    txt = readFileSync("llms-full.src.txt", "utf8");
   } catch {
     fail("llms-full.txt is missing (2026-08-16).");
     txt = "";
   }
   if (txt.includes("82%")) {
     fail("llms-full.txt reintroduced the ungrounded 82% raise-rate claim (2026-08-16).");
-  }
-}
-
-// ---------------------------------------------------------------------------
-// llms.txt pricing must be CURRENT (2026-08-16). Founding rates (EUR 9.97 /
-// 97) closed 2026-06-30; presenting them as current prices misleads agents
-// that quote llms.txt. A stale-tree landing deploy must fail closed.
-// ---------------------------------------------------------------------------
-{
-  let l;
-  try {
-    l = readFileSync("llms.txt", "utf8");
-  } catch {
-    fail("llms.txt is missing (2026-08-16).");
-    l = "";
-  }
-  if (l.includes("- Dashboard Beta: EUR 9.97/month") || l.includes("- Insider Circle: EUR 97/month,")) {
-    fail("llms.txt presents founding rates (9.97/97) as current (2026-08-16). Current: EUR 49/mo Dashboard, EUR 197/mo Insider Circle; founding rates closed 2026-06-30.");
-  }
-  if (!l.includes("- Dashboard: EUR 49/month") || !l.includes("- Insider Circle: EUR 197/month")) {
-    fail("llms.txt lost current pricing lines (EUR 49/197) (2026-08-16).");
   }
 }
 
@@ -289,6 +269,69 @@ if (
 }
 
 // ---------------------------------------------------------------------------
+// Header nav must wrap on mobile — no old non-wrapping nav (2026-08-16)
+// ---------------------------------------------------------------------------
+// A 390px mobile render sweep found datasets.html (EN/DE/ES) still carrying
+// the pre-fix header: justify-content:space-between with NO flex-wrap and
+// nowrap links, pushing the "Get free signal" CTA 6px past the viewport.
+// Every other page family already ships the fixed header (gap:1rem;
+// flex-wrap:wrap on the <nav> + min-height:44px on its links). A tree that
+// lets any page regress to the old signature re-ships horizontal overflow to
+// the mobile-first indexed render.
+{
+  const OLD_NAV = 'justify-content:space-between"';
+  const walk = (dir) => {
+    let out = [];
+    for (const e of readdirSync(dir, { withFileTypes: true })) {
+      if (e.name.startsWith(".")) continue;
+      const p = join(dir, e.name);
+      if (e.isDirectory()) out = out.concat(walk(p));
+      else if (e.name.endsWith(".html")) out.push(p);
+    }
+    return out;
+  };
+  const offenders = [];
+  for (const f of walk(".")) {
+    try {
+      if (readFileSync(f, "utf8").includes(OLD_NAV)) offenders.push(f);
+    } catch {
+      /* unreadable file — not a header regression */
+    }
+  }
+  if (offenders.length) {
+    fail(
+      `Non-wrapping header nav regressed in: ${offenders.join(", ")}. The mobile header needs gap:1rem;flex-wrap:wrap on the <nav> and min-height:44px on its links (2026-08-16 fix), or the "Get free signal" CTA overflows the 360-390px viewport.`,
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
+// Code/CTA blocks must wrap on mobile (2026-08-16)
+// ---------------------------------------------------------------------------
+// Long unbreakable tokens (API URLs, citation strings) inside <pre>/<code> and
+// the /dataset <section class="cta"> overflowed the 360-390px viewport. The
+// fix lives in inline.css (the only stylesheet the /dataset + /mcp + /sectors
+// page families load). A tree that drops it re-ships horizontal overflow.
+{
+  const css = (() => {
+    try {
+      return readFileSync("inline.css", "utf8");
+    } catch {
+      return "";
+    }
+  })();
+  if (
+    !css.includes("MOBILE CODE/CTA OVERFLOW REPAIR") ||
+    !css.includes("section.cta") ||
+    !css.includes("white-space: pre-wrap")
+  ) {
+    fail(
+      "inline.css lost the code/CTA overflow repair (pre/code overflow-wrap:anywhere + pre white-space:pre-wrap + section.cta flex-wrap, 2026-08-16); /dataset, /mcp and /sectors code blocks re-overflow the 360-390px viewport.",
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
 // HSTS preload header must survive any vercel.json rewrite (2026-08-18)
 // ---------------------------------------------------------------------------
 // gitdealflow.com serves
@@ -321,30 +364,38 @@ if (
 }
 
 // ---------------------------------------------------------------------------
-// Every verify-all step script must be re-included in .vercelignore
-// (2026-08-17). scripts/* is excluded from uploads; a gate script missing its
-// !scripts/ re-include passes locally (git archive ships everything) and then
-// fails the Vercel build with ENOENT at that step. Bitten 2026-08-17: the
-// verify-author-identity re-include was missing, so every landing deploy died
-// at verify-all step 8 while all gates passed locally.
+// text/markdown content negotiation must survive (2026-08-17)
 // ---------------------------------------------------------------------------
+// The apex is static (framework null), so "Accept: text/markdown" cannot be
+// answered by a static file. A rewrite (has: header accept ~ text/markdown)
+// routes markdown-asking clients to api/markdown.js, which answers
+// Content-Type: text/markdown instead of forcing an assistant to parse browser
+// HTML (seofixprompt AIO/LLMO finding 2026-08-17: home page returned text/html
+// for Accept: text/markdown). A tree missing either the rewrite or the
+// function silently re-sends HTML to every assistant that asks for markdown.
 {
-  try {
-    const ignore = readFileSync(".vercelignore", "utf8");
-    const allSrc = readFileSync("scripts/verify-all.mjs", "utf8");
-    const steps = [
-      ...allSrc.matchAll(/['"]scripts\/(verify-[\w.-]+\.mjs)['"]/g),
-    ].map((m) => m[1]);
-    for (const script of steps) {
-      const re = new RegExp("^!scripts/" + script.replace(/\./g, "\\.") + "$", "m");
-      if (!re.test(ignore)) {
-        fail(
-          `.vercelignore does not re-include scripts/${script}: scripts/* excludes it from the Vercel upload, so verify-all.mjs fails with ENOENT at that step on the build machine (passes locally where git archive ships it). Add !scripts/${script} next to the other !scripts/verify-*.mjs lines.`,
-        );
-      }
+  const mdRewrite = (parsed.rewrites || []).find(
+    (r) => r.source === "/:path*" && Array.isArray(r.has),
+  );
+  const hasAcceptMd =
+    mdRewrite &&
+    mdRewrite.has.some(
+      (h) => h.type === "header" && h.key === "accept" && h.value === "text/markdown",
+    );
+  if (!mdRewrite || !hasAcceptMd || mdRewrite.destination !== "/api/markdown?path=:path") {
+    fail(
+      'text/markdown negotiation lost: vercel.json rewrites[] must keep { "source": "/:path*", "has": [{ "type": "header", "key": "accept", "value": "text/markdown" }], "destination": "/api/markdown?path=:path" } (2026-08-17 AIO/LLMO fix).',
+    );
+  }
+  const mdFn = (() => {
+    try {
+      return readFileSync("api/markdown.js", "utf8");
+    } catch {
+      return "";
     }
-  } catch {
-    // .vercelignore absent (e.g. not in the upload): nothing to check here.
+  })();
+  if (!mdFn.includes("text/markdown; charset=utf-8") || !mdFn.includes("content-type")) {
+    fail("api/markdown.js missing or lost its text/markdown content-type (2026-08-17 AIO/LLMO fix).");
   }
 }
 

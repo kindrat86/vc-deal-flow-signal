@@ -11,6 +11,7 @@ import { getSector } from "@/content/sectors";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import SeoCta from "@/components/SeoCta";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
+import { buildSourceTruthDataset } from "@/lib/dataset-schema";
 
 interface PageProps {
   params: Promise<{ slug: string }>;
@@ -116,6 +117,16 @@ export default async function TrendLeaderboardPage({ params }: PageProps) {
           acceptedAnswer: { "@type": "Answer", text: faq.answer },
         })),
       },
+      buildSourceTruthDataset({
+        url: pageUrl,
+        name: `${trend.name}, ${trend.period} Leaderboard Dataset`,
+        description: `Ranked ${trend.name} leaderboard for ${trend.period}, derived from the VC Deal Flow Signal (GitDealFlow) GitHub engineering-velocity panel. ${trend.metaDescription}`,
+        variableMeasured: [
+          { name: "Ranked companies", value: trackedCompanies.length },
+          { name: "Related sectors", value: trend.relatedSectors.length },
+        ],
+        temporalCoverage: trend.period,
+      }),
     ],
   };
 

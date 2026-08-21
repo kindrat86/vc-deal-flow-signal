@@ -52,7 +52,7 @@ export const useCases: UseCase[] = [
       {
         step: 2,
         name: "Filter by your sector focus",
-        body: "Open the Dashboard (EUR 49/mo beta) and filter 350+ ranked startups by AI/ML, enterprise SaaS, dev tools, fintech, or any of 15 sectors. Layer on stage and geography if you focus geographically.",
+        body: "Open the Dashboard (EUR 49/mo beta) and filter 140 ranked startups by AI/ML, enterprise SaaS, dev tools, fintech, or any of 15 sectors. Layer on stage and geography if you focus geographically.",
       },
       {
         step: 3,

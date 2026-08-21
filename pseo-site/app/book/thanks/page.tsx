@@ -102,9 +102,9 @@ export default function BookThanksPage() {
             broken out per startup.
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
-            Founding-member rate of <strong className="text-sky-200">€9.97/mo locked in
-            forever</strong>: set when the Dashboard launched, never raised for
-            existing subscribers.
+            <strong className="text-sky-200">€49/mo</strong>, cancel in one
+            click. Founding members who joined before June 30, 2026 keep their
+            €9.97/mo rate for life.
           </p>
           <Link
             href="/pricing#dashboard-beta"

@@ -7,6 +7,7 @@ import {
 import { PANEL_CLAIM } from "@/lib/canonical-claims";
 import DirectoryAbout from "@/components/DirectoryAbout";
 import { FRESH_YEAR_STR } from "@/lib/freshness-year";
+import { buildSourceTruthDataset } from "@/lib/dataset-schema";
 
 export const metadata: Metadata = {
   title: `Startup Directory (${FRESH_YEAR_STR})`,
@@ -75,6 +76,18 @@ export default function StartupDirectoryIndexPage() {
           url: `${PAGE_URL}/region/${r.geoSlug}`,
         })),
       },
+      buildSourceTruthDataset({
+        url: PAGE_URL,
+        name: "Startup Directory, Engineering Acceleration Panel",
+        description:
+          "Index of every tracked venture-backed startup, browseable by sector and geography, derived from the VC Deal Flow Signal (GitDealFlow) GitHub engineering-velocity panel. Free, no signup.",
+        variableMeasured: [
+          { name: "Tracked startups", value: totalStartups },
+          { name: "Sector directories", value: sectors.length },
+          { name: "Region directories", value: regions.length },
+        ],
+        keywords: ["startup directory", "engineering velocity", "venture capital", "GitHub signals"],
+      }),
     ],
   };
 
