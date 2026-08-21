@@ -38,6 +38,14 @@
       "destination": "/content-calendar.html"
     },
     {
+      "source": "/for/data-providers",
+      "destination": "/for/data-providers/index.html"
+    },
+    {
+      "source": "/for/vc-firms",
+      "destination": "/for/vc-firms/index.html"
+    },
+    {
       "source": "/partners",
       "destination": "/jv.html"
     },

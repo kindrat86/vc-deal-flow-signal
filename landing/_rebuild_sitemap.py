@@ -53,6 +53,10 @@ EXCLUDE_FILES = {
     # sitemap as a self-canonical entry (validator: canonical mismatch).
     "best/best-deal-flow-software.html",
 
+    # Closed or unverified partner surfaces. They stay live for direct links but
+    # are not indexable until their delivery, attribution, and earning terms are proved.
+    "affiliates.html",
+    "jv.html",
     # Error pages
     "404.html",
     # Verification files
@@ -182,26 +186,14 @@ def should_exclude(rel_path: str, filepath: Path) -> tuple[bool, str]:
     return False, ""
 
 
-def get_lastmod(filepath: Path):  # -> Optional[str]
-    """Get ISO date from file's mtime. Returns None if unreliable.
-    
-    Uses file mtime (last modification). Falls back to None if
-    the mtime is within a few seconds of the current time (meaning
-    the file was just regenerated and the mtime isn't meaningful).
+def get_lastmod(filepath: Path):
+    """Return no lastmod value.
+
+    Filesystem mtimes are checkout timestamps in CI and edit timestamps locally.
+    Neither represents a trustworthy content-change date, so emitting them makes
+    the tracked sitemap non-deterministic across environments.
     """
-    try:
-        mtime = filepath.stat().st_mtime
-        mtime_dt = datetime.fromtimestamp(mtime, tz=timezone.utc)
-        
-        # If mtime is within 5 minutes of now, the file was likely
-        # just regenerated, omit lastmod (unreliable)
-        now = datetime.now(timezone.utc)
-        if abs((now - mtime_dt).total_seconds()) < 300:
-            return None
-        
-        return mtime_dt.strftime('%Y-%m-%d')
-    except Exception:
-        return None
+    return None
 
 
 def file_hash(filepath: Path) -> str:

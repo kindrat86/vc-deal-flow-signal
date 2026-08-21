@@ -1,129 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Content Calendar: The HSO Matrix | GitDealFlow</title>
-<meta name="description" content="GitDealFlow's publishing schedule across platforms. Hook-Story-Offer content units mapped to traffic channels, publishing cadence, and status.">
-<meta property="og:title" content="Content Calendar: The HSO Matrix | GitDealFlow" />
-<meta property="og:description" content="Our publishing plan across X, LinkedIn, HN, Reddit, Dev.to, and Substack. Weekly cadence, platform-specific hooks.">
-<link rel="canonical" href="https://gitdealflow.com/content-calendar">
-<script type="application/ld+json">
-{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"GitDealFlow","item":"https://gitdealflow.com"},{"@type":"ListItem","position":2,"name":"Content Calendar","item":"https://gitdealflow.com/content-calendar"}]}
-</script>
-<style>
-:root{--bg:#0f172a;--card:#1e293b;--accent:#3b82f6;--green:#10b981;--text:#e2e8f0;--muted:#94a3b8;--orange:#f59e0b}
-*{margin:0;padding:0;box-sizing:border-box}
-body{background:var(--bg);color:var(--text);font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;line-height:1.7;padding:2rem 1rem}
-.container{max-width:900px;margin:0 auto}
-h1{font-size:2rem;margin-bottom:.5rem}
-h2{font-size:1.4rem;margin:2rem 0 .75rem;color:#fff}
-h3{font-size:1.1rem;margin:1.5rem 0 .5rem;color:#fff}
-p{margin-bottom:1rem}
-a{color:var(--accent);text-decoration:none}
-a:hover{text-decoration:underline}
-table{width:100%;border-collapse:collapse;margin:1rem 0;font-size:.9rem}
-th,td{padding:.6rem .5rem;text-align:left;border-bottom:1px solid var(--card)}
-th{color:var(--muted);font-size:.8rem;text-transform:uppercase;white-space:nowrap}
-.status-shipped{color:var(--green);font-weight:600}
- status-next{color:var(--orange);font-weight:600}
-.status-planned{color:var(--muted)}
-.badge{display:inline-block;padding:.15rem .5rem;border-radius:4px;font-size:.75rem;font-weight:600}
-.badge-live{background:rgba(16,185,129,.15);color:var(--green)}
-.badge-next{background:rgba(245,158,11,.15);color:var(--orange)}
-.badge-planned{background:rgba(148,163,184,.15);color:var(--muted)}
-.header{text-align:center;margin-bottom:2rem}
-.card{background:var(--card);border-radius:8px;padding:1.5rem;margin:1.5rem 0}
-.footer-nav{text-align:center;margin:2rem 0;padding-top:2rem;border-top:1px solid var(--card)}
-@media(max-width:600px){body{padding:1rem .75rem}h1{font-size:1.5rem}table{font-size:.75rem}th,td{padding:.4rem .25rem}}
-</style>
-
-<meta property="og:image" content="https://gitdealflow.com/assets/gitdealflow-social-card-1200x630.png">
-<meta property="og:image:width" content="1200">
-<meta property="og:image:height" content="630">
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://gitdealflow.com/assets/gitdealflow-social-card-1200x630.png">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Earned Distribution Calendar | GitDealFlow</title>
+  <meta name="description" content="GitDealFlow's evidence-led earned distribution calendar. Each public contribution records its source, destination, placement ID, and outcome before it is called a result.">
+  <link rel="canonical" href="https://gitdealflow.com/content-calendar">
+  <meta name="robots" content="index, follow">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Earned Distribution Calendar | GitDealFlow">
+  <meta property="og:description" content="A public operating calendar for useful data contributions, measured by real placements and qualified outcomes.">
+  <meta property="og:url" content="https://gitdealflow.com/content-calendar">
+  <meta property="og:image" content="https://gitdealflow.com/assets/gitdealflow-social-card-1200x630.png">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:image" content="https://gitdealflow.com/assets/gitdealflow-social-card-1200x630.png">
+  <script type="application/ld+json">
+  {"@context":"https://schema.org","@type":"WebPage","name":"Earned Distribution Calendar, GitDealFlow","url":"https://gitdealflow.com/content-calendar","description":"Evidence-led earned distribution calendar for GitDealFlow."}
+  </script>
+  <style>
+    :root{--bg:#0f172a;--card:#1e293b;--accent:#60a5fa;--good:#34d399;--warn:#fbbf24;--text:#e2e8f0;--muted:#94a3b8}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:16px/1.65 -apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}
+    main{max-width:980px;margin:auto;padding:48px 20px}h1{font-size:clamp(2rem,5vw,3rem);line-height:1.1;margin:0 0 14px}h2{margin:42px 0 12px;font-size:1.45rem}p{margin:0 0 16px;color:var(--muted)}a{color:var(--accent)}.eyebrow{color:var(--good);font-size:.8rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase}.card{background:var(--card);border:1px solid #334155;border-radius:14px;padding:22px;margin:18px 0}.rule{border-left:4px solid var(--good);padding-left:16px;color:var(--text)}table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.93rem}th,td{padding:12px 10px;vertical-align:top;text-align:left;border-bottom:1px solid #334155}th{color:var(--muted);font-size:.76rem;text-transform:uppercase;letter-spacing:.05em}.live{color:var(--good);font-weight:700}.planned{color:var(--warn);font-weight:700}.muted{color:var(--muted)}.footer{margin-top:48px;padding-top:22px;border-top:1px solid #334155;font-size:.9rem}@media(max-width:700px){main{padding:32px 14px}table{font-size:.82rem}th,td{padding:9px 6px}}
+  </style>
 </head>
 <body>
-<div class="container">
+<main>
+  <p class="eyebrow">Earned distribution, not paid acquisition</p>
+  <h1>Publish useful work. Measure the result.</h1>
+  <p>This is GitDealFlow's operating calendar for public research, open data, and product education. A draft is not a placement. A placement is not a qualified visit. Each step gets its own evidence.</p>
 
-<div class="header">
-<h1>Content Calendar, The HSO Matrix</h1>
-<p style="color:var(--muted);max-width:600px;margin:0 auto">Every piece of content follows Hook (grab attention), Story (keep it with a true moment), Offer (convert attention into action). Here is what we are publishing, where, and when.</p>
-</div>
+  <section class="card rule">
+    <strong>Operating rule:</strong> publish only after a claim check, a source check, and a channel-specific permission check. Paid ads are not the default strategy. Meta and LinkedIn pixels remain disabled.
+  </section>
 
-<h2>Weekly publishing cadence</h2>
-<div class="card">
-<table>
-<thead>
-<tr><th>Day</th><th>Channel</th><th>Content type</th><th>Hook angle</th><th>Status</th></tr>
-</thead>
-<tbody>
-<tr><td>Sunday 06:00 UTC</td><td>Email (Sunday Signal)</td><td>5 named startups + signal data</td><td>"These 5 are heating up on GitHub right now"</td><td><span class="badge badge-live">LIVE</span></td></tr>
-<tr><td>Monday 09:00 UTC</td><td>signals.gitdealflow.com</td><td>Weekly re-rank, sector pages updated</td><td>Dashboard refresh + trending</td><td><span class="badge badge-live">LIVE</span></td></tr>
-<tr><td>Monday 14:00 UTC</td><td>X / Twitter (@sipiteno)</td><td>Thread: top 3 movers from the week</td><td>"3 startups quietly accelerating on GitHub this week"</td><td><span class="badge badge-next">NEXT</span></td></tr>
-<tr><td>Tuesday 13:00 UTC</td><td>Hacker News</td><td>Show HN or data story</td><td>"GitHub commit velocity predicts fundraises 21-47 days early (n=219)"</td><td><span class="badge badge-next">NEXT</span></td></tr>
-<tr><td>Wednesday 10:00 UTC</td><td>LinkedIn</td><td>Long-form post on methodology or finding</td><td>"Why I stopped networking and started reading commit graphs"</td><td><span class="badge badge-planned">PLANNED</span></td></tr>
-<tr><td>Thursday 14:00 UTC</td><td>Reddit (r/datasets, r/juststart)</td><td>Open dataset share or data-driven analysis</td><td>"Open dataset: 219 startup fundraises backtested against GitHub signals"</td><td><span class="badge badge-planned">PLANNED</span></td></tr>
-<tr><td>Friday 10:00 UTC</td><td>Dev.to</td><td>Technical deep-dive on the MCP server or API</td><td>"Build a VC sourcing agent with our free MCP server (6 tools, no API key)"</td><td><span class="badge badge-planned">PLANNED</span></td></tr>
-<tr><td>Saturday</td><td>Substack (planned)</td><td>Long-form essay on code-side sourcing</td><td>"The deck lags the code by 21 to 47 days"</td><td><span class="badge badge-planned">PLANNED</span></td></tr>
-</tbody>
-</table>
-</div>
+  <h2>Weekly cadence</h2>
+  <table>
+    <thead><tr><th>When</th><th>Channel</th><th>Useful contribution</th><th>Gate</th></tr></thead>
+    <tbody>
+      <tr><td>After the weekly data refresh</td><td>Sunday Signal email</td><td>Five public-GitHub signals with a plain-English reason for each.</td><td>Delivery record and open or click evidence where available.</td></tr>
+      <tr><td>Once per week</td><td>X</td><td>A concise public-data observation linked to the relevant methodology or dataset.</td><td>Manual review before publishing.</td></tr>
+      <tr><td>When Maryan chooses</td><td>Founder-published HN only</td><td>A factual Show HN or data story written and posted by the founder.</td><td>Maryan authors, edits, and publishes it. No automated submission or warm-up.</td></tr>
+      <tr><td>With explicit approval</td><td>Company LinkedIn page (approval only)</td><td>A methodology note or public research contribution.</td><td>Never use a personal LinkedIn profile.</td></tr>
+      <tr><td>One safe placement per week</td><td>Reddit</td><td>Open-data context in r/datasets, practical build learning in r/juststart, or engineering method in r/devops.</td><td>Claims guard passes, 7-day subreddit pacing passes, and the 5:1 participation rule is met.</td></tr>
+      <tr><td>When the technical artifact is ready</td><td>Dev.to</td><td>A reproducible MCP, API, or public-data implementation note.</td><td>Claim check, working link, and rendered source verification.</td></tr>
+      <tr><td>When a factual walkthrough exists</td><td>YouTube</td><td>A high-quality product walkthrough based on the live product.</td><td>No static slides. Publish only after video and destination are verified.</td></tr>
+    </tbody>
+  </table>
 
-<h2>HSO content units (12-week roadmap)</h2>
-<p>Each unit is a complete Hook-Story-Offer package that can be adapted for multiple platforms. The hook changes per platform, but the story and offer remain consistent.</p>
+  <h2>Evidence and outcome</h2>
+  <p>The tracker below prevents a calendar from becoming a list of intentions. Every external contribution needs a record before it is called progress.</p>
+  <table>
+    <thead><tr><th>Source unit</th><th>Destination</th><th>UTM destination</th><th>Placement ID</th><th>Outcome</th></tr></thead>
+    <tbody>
+      <tr><td>Weekly Signal</td><td>Owned email</td><td>Source-specific landing link</td><td>Send ID</td><td>Delivered, opened, clicked, or no signal yet.</td></tr>
+      <tr><td>Open dataset note</td><td>Community or technical publication</td><td><code>utm_source</code>, <code>utm_medium=community</code>, campaign and placement content set explicitly.</td><td>Post URL or editorial URL</td><td>Visible placement, qualified visit, signup, or no signal yet.</td></tr>
+      <tr><td>Methodology contribution</td><td>Podcast, newsletter, or partner channel</td><td>Unique source and placement parameters</td><td>Episode, issue, or partner placement URL</td><td>Accepted, published, response received, or pending. Never call a pitch a placement.</td></tr>
+    </tbody>
+  </table>
 
-<table>
-<thead>
-<tr><th>#</th><th>Topic</th><th>Primary platform</th><th>Hook</th><th>Funnel target</th><th>Status</th></tr>
-</thead>
-<tbody>
-<tr><td>1</td><td>21-47 day lead time methodology</td><td>Hacker News (Show HN)</td><td>"n=219 backtested fundraises, SSRN preprint"</td><td>Sunday Signal signup</td><td><span class="badge badge-next">NEXT</span></td></tr>
-<tr><td>2</td><td>3.4x Series A lift finding</td><td>X thread + LinkedIn</td><td>"The composite signal that makes Series A 3.4x more predictable"</td><td>Methodology page</td><td><span class="badge badge-planned">PLANNED</span></td></tr>
-<tr><td>3</td><td>Scout Score game launch</td><td>X + Reddit</td><td>"Score your taste: how many unicorns did you star before they popped?"</td><td>/receipts game</td><td><span class="badge badge-live">LIVE</span></td></tr>
-<tr><td>4</td><td>Open dataset release</td><td>Reddit r/datasets</td><td>"40 startup GitHub repos ranked by momentum, free CSV, CC BY 4.0"</td><td>/datasets page</td><td><span class="badge badge-live">LIVE</span></td></tr>
-<tr><td>5</td><td>MCP server for VC research</td><td>Dev.to + HN</td><td>"6 free MCP tools for VC sourcing inside Claude/Cursor"</td><td>MCP install</td><td><span class="badge badge-live">LIVE</span></td></tr>
-<tr><td>6</td><td>Chrome extension launch</td><td>Product Hunt</td><td>"See GitHub momentum badges on any Crunchbase profile, free"</td><td>Chrome Web Store</td><td><span class="badge badge-live">LIVE</span></td></tr>
-<tr><td>7</td><td>"Code lags deck" manifesto</td><td>Substack + LinkedIn</td><td>"Every deal-flow source you use is a lagging indicator"</td><td>Sunday Signal signup</td><td><span class="badge badge-planned">PLANNED</span></td></tr>
-<tr><td>8</td><td>Cursor case study</td><td>X + LinkedIn</td><td>"How Cursor's commit velocity tripled before their $2.6B round"</td><td>/vs/crunchbase comparison</td><td><span class="badge badge-planned">PLANNED</span></td></tr>
-<tr><td>9</td><td>Q3 sector report (Enterprise SaaS)</td><td>LinkedIn + newsletter</td><td>"31 enterprise SaaS startups ranked by GitHub momentum, Q3 2026"</td><td>Dashboard tier</td><td><span class="badge badge-planned">PLANNED</span></td></tr>
-<tr><td>10</td><td>Anonymous founder narrative</td><td>Podcast guest appearances</td><td>"The Data Nerd: how a pseudonymous angel built a VC signal tool"</td><td>About page</td><td><span class="badge badge-planned">PLANNED</span></td></tr>
-<tr><td>11</td><td>"First Mover" identity movement</td><td>All platforms</td><td>"Are you a First Mover or a follower? Take the Scout Score test"</td><td>/receipts + signup</td><td><span class="badge badge-planned">PLANNED</span></td></tr>
-<tr><td>12</td><td>State of GitHub velocity address</td><td>YouTube + Substack</td><td>"The monthly engineering-velocity address: who's shipping, who's stalling"</td><td>Dashboard tier</td><td><span class="badge badge-planned">PLANNED</span></td></tr>
-</tbody>
-</table>
+  <h2>Current evidence base</h2>
+  <div class="card">
+    <p><strong class="live">Live public surfaces:</strong> the dataset, methodology, public API, MCP server, A2A endpoint, and Dream 100 route are available for people who want to inspect the work.</p>
+    <p>Canonical research wording: 350+ organizations across 15 sectors. The retrospective research panel contains 219 startup-period observations across 55 startups. The 21-47 day range describes the observed interval before public fundraise announcements, not a prediction promise.</p>
+    <p><a href="/datasets">Inspect the dataset</a> · <a href="https://signals.gitdealflow.com/methodology">Read the methodology</a> · <a href="/dream-100">See the Dream 100</a></p>
+  </div>
 
-<h2>Platform-native hooks</h2>
-<p>Twelve platform-specific openers for the same product story are already drafted at <a href="https://signals.gitdealflow.com/distribution/platform-hooks">/distribution/platform-hooks</a>. Each reframes the core narrative for the platform's native format and audience expectations.</p>
+  <h2>Dream 100 contribution tracker</h2>
+  <p>Targets are not proof of distribution. The tracker records only a public contribution, response, invitation, or placement ID. A target with no evidence stays a target.</p>
+  <div class="card">
+    <p class="planned">Next useful action: contribute one factual public-data artifact to a selected community, then record the exact URL and outcome. Do not replace this with cold-email volume.</p>
+  </div>
 
-<h2>Platform priority (by ICP concentration)</h2>
-<table>
-<thead><tr><th>Platform</th><th>Why</th><th>Priority</th></tr></thead>
-<tbody>
-<tr><td>Email (Sunday Signal)</td><td>Owned traffic, highest conversion, the product itself</td><td>#1, weekly, non-negotiable</td></tr>
-<tr><td>X / Twitter</td><td>Where VC/angel community lives, @sipiteno identity</td><td>#2, daily engagement, weekly thread</td></tr>
-<tr><td>Hacker News</td><td>Technical credibility, SSRN methodology is perfect fit</td><td>#3, monthly Show HN</td></tr>
-<tr><td>LinkedIn</td><td>B2B investor audience, longer-form authority building</td><td>#4, weekly long-form post</td></tr>
-<tr><td>Dev.to</td><td>Developer audience for MCP server adoption</td><td>#5, biweekly technical post</td></tr>
-<tr><td>Reddit</td><td>r/datasets for open data, r/juststart for growth</td><td>#6, monthly data share</td></tr>
-<tr><td>YouTube</td><td>Video walkthroughs and sector reports</td><td>#7, planned Q4 2026</td></tr>
-<tr><td>Substack</td><td>Long-form essays on code-side sourcing</td><td>#8, planned Q4 2026</td></tr>
-</tbody>
-</table>
-
-<div class="footer-nav">
-<a href="https://gitdealflow.com">← Back to GitDealFlow</a> · <a href="https://gitdealflow.com/cheatsheet">Free Cheatsheet</a> · <a href="https://signals.gitdealflow.com/methodology">Methodology</a>
-</div>
-
-</div>
-
-  <script>
-    (function(){
-      function _load(){var s=document.createElement('script');s.src='/pixels.js';s.async=true;document.head.appendChild(s);}
-      if('requestIdleCallback' in window){requestIdleCallback(_load,{timeout:3000});} else {setTimeout(_load,2500);}
-    })();
-  </script>
-
-  </body>
+  <p class="footer"><a href="/">GitDealFlow</a> · <a href="/datasets">Dataset</a> · <a href="https://signals.gitdealflow.com/methodology">Methodology</a> · <a href="/dream-100">Dream 100</a></p>
+</main>
+<script>
+  (function(){var s=document.createElement('script');s.src='/pixels.js';s.async=true;document.head.appendChild(s);})();
+</script>
+</body>
 </html>
