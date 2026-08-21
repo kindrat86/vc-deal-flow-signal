@@ -560,7 +560,7 @@ OTHER_PAGES = [
     ("2025", "Startup Engineering Signals, 2025 Year in Review | GitDealFlow",
      "A look back at the strongest startup engineering signals of 2025, which sectors accelerated, which teams broke out, and what the GitHub data revealed before the funding rounds.",
      f'''<h2>2025 Startup Engineering Signals: Year in Review</h2>
-        <p>2025 was a breakout year for engineering-first deal sourcing. Across 350+ tracked startups, GitDealFlow's signals identified 219 fundraises 21-47 days before announcement. AI/ML, fintech, and climate tech led sector momentum; developer tools and cybersecurity showed the strongest consistency.</p>
+        <p>2025 was a breakout year for engineering-first deal sourcing. Across 350+ tracked startups, GitDealFlow's signals documented 219 startup-period observations across 55 startups 21-47 days before announcement. AI/ML, fintech, and climate tech led sector momentum; developer tools and cybersecurity showed the strongest consistency.</p>
         <h2>Top Sectors by Engineering Velocity</h2>
         <p>AI/ML startups shipped at 2.3x the commit velocity of the average tracked startup. Fintech followed at 1.7x, driven by stablecoin infrastructure and embedded lending. Climate tech showed the fastest acceleration, Q4 2025 velocity was 3x Q1 2025.</p>
         <h2>Key Signal Patterns</h2>
@@ -568,7 +568,7 @@ OTHER_PAGES = [
         <p><a href="{CANONICAL}/#signup" style="display:inline-block;background:#00d4aa;color:#04130e;padding:.8rem 1.5rem;border-radius:.5rem;font-weight:700;text-decoration:none;margin-top:1rem">See 2026 signals →</a></p>''',
      [
          ("What was the most active sector in 2025?", "AI/ML led all sectors in engineering velocity and fundraise activity. Infrastructure-layer startups (training frameworks, inference serving, vector databases) showed the strongest and most sustained momentum."),
-         ("How many fundraises did GitDealFlow predict?", "219 fundraises were identified 21-47 days before public announcement across 15 sectors. The strongest signal pattern (sustained velocity + contributor growth) had a 78% precision rate."),
+         ("How many fundraises did GitDealFlow predict?", "219 startup-period observations across 55 startups were recorded 21-47 days before public announcement across 15 sectors. The strongest signal pattern (sustained velocity + contributor growth) had a 78% precision rate."),
          ("Can I see 2025's historical signals?", "Yes. The live dashboard includes historical data. Insider Circle members get API access to full historical signal datasets."),
      ],
      [("Home", CANONICAL + "/"), ("Year in Review", ""), ("2025", "")],

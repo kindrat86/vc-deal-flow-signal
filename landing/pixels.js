@@ -14,10 +14,10 @@
   if (!/^https?:$/.test(location.protocol)) return;
 
   var PIXEL_IDS = {
-    meta: "243382336082500",          // Facebook + Instagram. e.g. "1234567890123456"
+    meta: "",                         // Paid pixels are disabled for earned/community growth.
     ga4: "G-7SV2SNZE4C",           // GA4 measurement ID (GitDealFlow property)
     googleAds: "",     // Google Ads conversion ID. e.g. "AW-123456789"
-    linkedin: "10702217",      // LinkedIn Insight partner ID. e.g. "1234567"
+    linkedin: "",                 // Paid pixels are disabled for earned/community growth.
     twitter: "",       // X/Twitter pixel ID. e.g. "abc12"
     tiktok: "",        // TikTok pixel ID. e.g. "C0XXXXXXXXXXXXXXXXXX"
     reddit: "",        // Reddit pixel ID. e.g. "t2_xxxxxxxx"
