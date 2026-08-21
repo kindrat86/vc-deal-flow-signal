@@ -58,7 +58,8 @@ function tagEmailUrls(html: string, campaign: string): string {
       const anchor = hashIdx >= 0 ? rest.slice(hashIdx) : "";
       const pathQuery = hashIdx >= 0 ? rest.slice(0, hashIdx) : rest;
       const sep = pathQuery.includes("?") ? "&" : "?";
-      const utm = `utm_source=email&utm_medium=drip&utm_campaign=${encodeURIComponent(campaign)}`;
+      const placement = (pathQuery.split("?", 1)[0].replace(/^\/+|\/+$/g, "").replace(/[^a-z0-9]+/gi, "-").replace(/^-+|-+$/g, "").toLowerCase() || "home");
+      const utm = `utm_source=email&utm_medium=drip&utm_campaign=${encodeURIComponent(campaign)}&utm_id=drip-${encodeURIComponent(campaign)}-${placement}`;
       return `href="${base}${pathQuery}${sep}${utm}${anchor}"`;
     }
   );
