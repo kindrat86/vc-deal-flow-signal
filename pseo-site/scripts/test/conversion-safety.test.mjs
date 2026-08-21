@@ -23,6 +23,7 @@ const sectorIntent = read("components/SectorIntent.tsx");
 const liveSectors = read("lib/live-sectors.ts");
 const pseoInsider = read("app/insider/page.tsx");
 const pricingApi = read("app/api/v1/pricing.json/route.ts");
+const checkoutDistinctId = read("components/CheckoutDistinctId.tsx");
 
 const LIVE_SECTOR_SLUGS = [
   "healthcare",
@@ -61,6 +62,12 @@ test("GitDealFlow ships no Meta or LinkedIn tracker or CSP allowance by default"
 test("Dashboard checkout sends the browser PostHog ID to the server-side purchase join", () => {
   assert.match(dashboardPage, /function gdfDistinctId\(\)/);
   assert.match(dashboardPage, /ph_distinct_id:\s*gdfDistinctId\(\)/);
+});
+
+test("Checkout forms wait for the deferred PostHog tracker before reading the browser ID", () => {
+  assert.match(checkoutDistinctId, /window\.setInterval/);
+  assert.match(checkoutDistinctId, /window\.clearInterval/);
+  assert.match(checkoutDistinctId, /posthog\?\.get_distinct_id\?\.\(\)/);
 });
 
 test("First Look uses the live 15-sector taxonomy everywhere it asks for a sector", () => {
