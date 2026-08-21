@@ -22,10 +22,8 @@
   document.head.appendChild(attribution);
 
   var PIXEL_IDS = {
-    meta: "243382336082500",          // Facebook + Instagram. e.g. "1234567890123456"
     ga4: "G-7SV2SNZE4C",           // GA4 measurement ID (GitDealFlow property)
     googleAds: "",     // Google Ads conversion ID. e.g. "AW-123456789"
-    linkedin: "10702217",      // LinkedIn Insight partner ID. e.g. "1234567"
     twitter: "",       // X/Twitter pixel ID. e.g. "abc12"
     tiktok: "",        // TikTok pixel ID. e.g. "C0XXXXXXXXXXXXXXXXXX"
     reddit: "",        // Reddit pixel ID. e.g. "t2_xxxxxxxx"
@@ -34,12 +32,6 @@
     msUet: ""          // Microsoft / Bing UET tag ID. e.g. "12345678"
   };
 
-  // Meta (Facebook + Instagram)
-  if (PIXEL_IDS.meta) {
-    !function (f, b, e, v, n, t, s) { if (f.fbq) return; n = f.fbq = function () { n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments) }; if (!f._fbq) f._fbq = n; n.push = n; n.loaded = !0; n.version = "2.0"; n.queue = []; t = b.createElement(e); t.async = !0; t.src = v; s = b.getElementsByTagName(e)[0]; s.parentNode.insertBefore(t, s) }(window, document, "script", "https://connect.facebook.net/en_US/fbevents.js");
-    fbq("init", PIXEL_IDS.meta);
-    fbq("track", "PageView");
-  }
 
   // Google (GA4 + Google Ads share gtag)
   var gtagId = PIXEL_IDS.ga4 || PIXEL_IDS.googleAds;
@@ -55,13 +47,6 @@
     if (PIXEL_IDS.googleAds) gtag("config", PIXEL_IDS.googleAds);
   }
 
-  // LinkedIn Insight Tag
-  if (PIXEL_IDS.linkedin) {
-    window._linkedin_partner_id = PIXEL_IDS.linkedin;
-    window._linkedin_data_partner_ids = window._linkedin_data_partner_ids || [];
-    window._linkedin_data_partner_ids.push(PIXEL_IDS.linkedin);
-    (function (l) { if (!l) { window.lintrk = function (a, b) { window.lintrk.q.push([a, b]) }; window.lintrk.q = [] } var s = document.getElementsByTagName("script")[0]; var b = document.createElement("script"); b.type = "text/javascript"; b.async = true; b.src = "https://snap.licdn.com/li.lms-analytics/insight.min.js"; s.parentNode.insertBefore(b, s) })(window.lintrk);
-  }
 
   // X / Twitter
   if (PIXEL_IDS.twitter) {
