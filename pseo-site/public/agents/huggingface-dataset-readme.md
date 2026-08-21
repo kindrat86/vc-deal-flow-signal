@@ -62,7 +62,7 @@ See [AGENTS.md](https://signals.gitdealflow.com/AGENTS.md) for the full agent su
 
 ## Methodology
 
-The pipeline pulls weekly GitHub REST API data, computes rolling 14-day commit velocity per organization, classifies each into one of five signal types based on which metric drives the signal, and ranks within sectors. Engineering acceleration measured this way has historically preceded venture fundraise announcements by three to six weeks.
+The pipeline pulls weekly GitHub REST API data, computes rolling 14-day commit velocity per organization, classifies each into one of five signal types based on which metric drives the signal, and ranks within sectors. The descriptive SSRN release contains 219 startup-period observations of public engineering activity with no linked funding-event labels.
 
 Full methodology: <https://signals.gitdealflow.com/methodology>
 SSRN preprint: <https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558>
@@ -71,7 +71,7 @@ SSRN preprint: <https://papers.ssrn.com/sol3/papers.cfm?abstract_id=6606558>
 
 - Private repos are invisible. Some startups keep all code private.
 - Commit volume does not equal code quality.
-- Engineering acceleration is a leading indicator, not a recommendation. Always pair with confirmed fundraise data (Crunchbase, PitchBook).
+- Engineering activity is a research input, not a financing forecast or recommendation. Verify investment-relevant facts independently.
 
 ## Citation
 

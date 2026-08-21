@@ -52,6 +52,16 @@ interface StartupsData {
   sectors: Sector[];
 }
 
+// These clusters froze at Q2 2026. They remain available through historical
+// quarter views but are not part of the current 15-active-sector panel.
+const ARCHIVED_SECTOR_SLUGS = new Set([
+  "ai-ml",
+  "fintech",
+  "climate-tech",
+  "developer-tools",
+  "cybersecurity",
+]);
+
 function parseVelocityChange(s: string): number {
   return parseInt(s.replace(/[^0-9-]/g, ""), 10) || 0;
 }
@@ -83,6 +93,7 @@ function main() {
   }> = [];
 
   for (const sector of data.sectors) {
+    if (ARCHIVED_SECTOR_SLUGS.has(sector.slug)) continue;
     const snapshot = sector.periods[currentPeriod.slug];
     if (!snapshot || !snapshot.startups.length) continue;
 
@@ -147,8 +158,9 @@ function main() {
   // that overstates unique orgs and drifts weekly; generated copy must
   // phrase panel size as the floor, never the exact row count.
   const panelClaim = allStartups.length >= 350 ? "350+" : String(allStartups.length);
+  const activeSectorLabel = `${sectorStats.length} active sectors`;
 
-  const description = `This week's top 10 startups by engineering acceleration across ${sectorStats.length} sectors. ${globalTop10[0]?.name} leads with ${globalTop10[0]?.commitVelocityChange} commit velocity change. Data from 350+ tracked startups.`;
+  const description = `This week's top 10 startups by engineering acceleration across ${activeSectorLabel}. ${globalTop10[0]?.name} leads with ${globalTop10[0]?.commitVelocityChange} commit velocity change. Data from 350+ tracked startups.`;
 
   // Build the body
   const top10Section = globalTop10
@@ -171,9 +183,9 @@ function main() {
     )
     .join("\n\n");
 
-  const body = `This is the automated weekly signal report from VC Deal Flow Signal. We track GitHub engineering acceleration across ${sectorStats.length} startup sectors and rank them by commit velocity change, the rate at which engineering activity is accelerating relative to baseline.
+  const body = `This is the automated weekly signal report from VC Deal Flow Signal. We track GitHub engineering acceleration across ${activeSectorLabel} and rank them by commit velocity change, the rate at which engineering activity is accelerating relative to baseline.
 
-This report covers ${currentPeriod.name}. ${panelClaim} startups across ${sectorStats.length} sectors showed measurable engineering signals.
+This report covers ${currentPeriod.name}. ${panelClaim} startups across ${activeSectorLabel} showed measurable engineering signals.
 
 ## Top 10 Startups by Engineering Acceleration
 
@@ -193,9 +205,9 @@ Across all tracked startups: ${signalBreakdown}.
 
 Top regions by startup count: ${geoBreakdown}.
 
-## What This Means for Investors
+## How to Use This Report
 
-The startups at the top of this list are showing engineering momentum that has historically preceded fundraise announcements by three to six weeks. If you invest in any of the sectors covered here, these are the names to research this week.
+The startups at the top of this list show unusual public engineering activity. The descriptive SSRN release contains 219 startup-period observations with no linked funding-event labels. Use these rows as research prompts and verify investment-relevant facts independently.
 
 Browse the full sector rankings for detailed data on every tracked startup. Or subscribe to the Signal Digest to get this report in your inbox every week.`;
 
