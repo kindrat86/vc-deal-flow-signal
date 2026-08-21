@@ -457,8 +457,11 @@
         </form>
         <p role="status" class="js-signup-msg text-gray-400 text-sm mt-4"><span class="text-emerald-400">✓</span> Free, I cover the compute &nbsp; <span class="text-emerald-400">✓</span> Unsubscribe in one click &nbsp; <span class="text-emerald-400">✓</span> One email, every Sunday</p>
         <p class="text-signal-400 text-xs font-semibold mt-2">This Sunday&apos;s five are already locked. Be on the list when it sends.</p>
-
-        <p class="text-gray-400 text-sm mt-2"><a href="https://buy.stripe.com/bJe5kC48H2d2cEKg6s0x209" onclick="if(window.posthog)posthog.capture('hero_teardown_link_clicked')" class="text-signal-400 underline hover:text-signal-300">Not ready for the list? Get a &euro;1 Tweet Teardown &rarr;</a></p>
+        <div class="mt-5">
+          <a href="/dashboard" onclick="if(window.posthog){posthog.capture('dashboard_cta_clicked',{product:'dashboard',billing_interval:'year',price_eur:490,cta_location:'hero',page_path:location.pathname});}" class="btn btn-secondary btn-lg w-full sm:w-auto">See the full Dashboard, &euro;490/year <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
+          <p class="text-gray-400 text-sm mt-3">The full ranked weekly desk for investors who want more than five names.</p>
+        </div>
+        <script>if(window.posthog)posthog.capture('dashboard_offer_viewed',{product:'dashboard',billing_interval:'year',price_eur:490,cta_location:'hero',page_path:location.pathname});</script>
 
         <p class="hero-kicker text-base md:text-lg font-semibold leading-tight text-signal-400 mt-6 mb-6"><span class="text-gray-400">Three public signals to examine before a fundraise announcement:</span> velocity surge &middot; contributor spike &middot; infrastructure buildout</p>
 

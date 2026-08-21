@@ -38,7 +38,8 @@ const TIER_BY_AMOUNT: Record<number, TierKey> = {
   99: "book", // EUR 0.99 one-time, The 7 GitHub Signals book (Brunson Secret 17)
   700: "firstlook", // EUR 7.00 one-time
   997: "dashboard", // EUR 9.97/mo, legacy founding rate
-  4900: "dashboard", // EUR 49/mo, current list price
+  4900: "dashboard", // EUR 49/mo, legacy current monthly price
+  49000: "dashboard", // EUR 490/year, current annual Dashboard offer
   1900: "agent_credits_100", // EUR 19 one-time, 100 deep-signal calls
   9700: "insider", // EUR 97.00/mo, legacy founding rate
   19700: "insider", // EUR 197/mo, current list price
