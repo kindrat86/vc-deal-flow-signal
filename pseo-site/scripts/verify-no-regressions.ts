@@ -112,8 +112,8 @@ function landingCheck(rel: string, label: string, ok: (s: string) => boolean, hi
 // 0.5 GA4 qualified-visitor mirror (2026-08-16). GA4 is the acquisition and
 //     remarketing mirror of the PostHog north-star. The qualifier bridge fires
 //     a once-per-session qualified_visit event and forwards the qualifying
-//     conversion/engagement events (via a wrapped posthog.capture) so GA4's
-//     "Qualified Visitors" audience + Looker Studio mirror the PostHog number.
+//     conversion/engagement events through PostHog's eventCaptured listener so
+//     GA4's "Qualified Visitors" audience + Looker Studio mirror the PostHog number.
 //     A lineage that drops it silently reverts GA4 to raw activeUsers (no
 //     qualified set, no retargeting audience). BOTH surfaces must carry it:
 //     the static landing (pixels.js) and the pSEO app (PixelManager.tsx).
@@ -121,8 +121,11 @@ function landingCheck(rel: string, label: string, ok: (s: string) => boolean, hi
 check(
   "components/PixelManager.tsx",
   "GA4 qualified-visitor qualifier missing from PixelManager: GA4 reverts to raw activeUsers, no qualified_visit event, no retargeting audience.",
-  (s) => s.includes("qualified_visit") && s.includes("__gdfMirrorWrapped"),
-  "restore the gdf-ga4-qualifier script (qualified_visit + posthog.capture mirror) in components/PixelManager.tsx",
+  (s) =>
+    s.includes("qualified_visit") &&
+    s.includes("__gdfMirrorListener") &&
+    s.includes('ph.on("eventCaptured"'),
+  "restore the gdf-ga4-qualifier script (qualified_visit + PostHog eventCaptured listener) in components/PixelManager.tsx",
 );
 landingCheck(
   "pixels.js",

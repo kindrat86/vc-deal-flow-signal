@@ -24,6 +24,7 @@ const liveSectors = read("lib/live-sectors.ts");
 const pseoInsider = read("app/insider/page.tsx");
 const pricingApi = read("app/api/v1/pricing.json/route.ts");
 const checkoutDistinctId = read("components/CheckoutDistinctId.tsx");
+const regressionGuard = read("scripts/verify-no-regressions.ts");
 
 const LIVE_SECTOR_SLUGS = [
   "healthcare",
@@ -63,6 +64,7 @@ test("GA4 mirrors PostHog events without replacing the SDK capture method", () =
   assert.match(pseoPixels, /ph\.on\("eventCaptured"/);
   assert.doesNotMatch(pseoPixels, /ph\.capture=function/);
   assert.match(pseoPixels, /!ph\.__loaded/);
+  assert.match(regressionGuard, /__gdfMirrorListener/);
 });
 
 test("Dashboard checkout sends the browser PostHog ID to the server-side purchase join", () => {
