@@ -6,6 +6,17 @@
 (function () {
   const API_BASE = "https://signals.gitdealflow.com/api/signal";
   const BADGE_ID = "vcdfs-signal-badge";
+  const STATE_KEY = "gdf_popup_state_v1";
+
+  function recordSuccessfulLookup(data) {
+    if (!GDFReviewEligibility.isSuccessfulSignalLookup(data)) return;
+    chrome.storage.local.get([STATE_KEY], (res) => {
+      const state = res[STATE_KEY] || {};
+      state.successfulLookupCount = (state.successfulLookupCount || 0) + 1;
+      state.lastSuccessfulLookupAt = Date.now();
+      chrome.storage.local.set({ [STATE_KEY]: state });
+    });
+  }
 
   function safeUrl(url) {
     try {
@@ -220,6 +231,7 @@
 
     const data = await fetchSignal(companyName);
     if (data) {
+      recordSuccessfulLookup(data);
       injectBadge(data);
     } else {
       injectBadge({ status: "no_data" });

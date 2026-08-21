@@ -2,8 +2,9 @@
  * VC Deal Flow Signal — popup controller.
  *
  * Handles:
- *  - Use counting (one "use" = one popup open), persisted in chrome.storage.local.
- *  - Review prompt (5th use, once per 30 days, max 3 dismissals — then never again).
+ *  - Popup-open counting for upsell timing, persisted in chrome.storage.local.
+ *  - Review prompt (5th successful tracked-company lookup, once per 30 days,
+ *    max 3 dismissals — then never again).
  *  - Upsell banner (from 3rd use, deterministic A/B/C variant, cooldowns).
  *  - Power-user soft mention (10+ uses).
  *
@@ -156,20 +157,19 @@
     const state = await getState();
     const now = Date.now();
 
-    // Count this popup open as a use.
-    state.useCount = (state.useCount || 0) + 1;
+    // Popup opens control upsell timing only. Review eligibility is driven by
+    // successful lookup records written by content.js.
+    state.popupOpenCount = (state.popupOpenCount || 0) + 1;
     await setState(state);
-    const useCount = state.useCount;
+    const useCount = state.popupOpenCount;
 
     // --- Review prompt (priority over upsell) ---
-    const reviewDismissals = state.reviewDismissals || 0;
-    const reviewDone = !!state.reviewCtaClickedAt;
-    const lastReview = state.lastReviewPromptAt || 0;
     if (
-      !reviewDone &&
-      useCount >= REVIEW.minUse &&
-      reviewDismissals < REVIEW.maxDismissals &&
-      now - lastReview >= COOLDOWN.review
+      GDFReviewEligibility.shouldShowReviewPrompt(
+        state,
+        now,
+        COOLDOWN.review
+      )
     ) {
       state.lastReviewPromptAt = now;
       await setState(state);
