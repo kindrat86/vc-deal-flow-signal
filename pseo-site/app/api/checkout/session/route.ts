@@ -25,6 +25,35 @@ const SEPA_TIERS: ReadonlySet<string> = new Set(["dashboard", "insider", "sector
 // and ASCII-safe. We accept up to 32 chars matching this shape; anything
 // stranger is dropped silently (better than 400-ing a paying buyer).
 const VARIANT_RX = /^[a-zA-Z0-9_.-]{1,32}$/;
+const SIGNAL_DESK_TIER = "signal_desk_pilot";
+const SIGNAL_DESK_SEAT_LIMIT = 5;
+
+/**
+ * Stripe is the source of truth for the five founding places. We count only
+ * completed, paid pilot sessions, never browser state or an unverified URL.
+ */
+async function hasSignalDeskSeatRemaining(): Promise<boolean> {
+  let startingAfter: string | undefined;
+  let paidSeats = 0;
+  do {
+    const page = await stripe.checkout.sessions.list({
+      limit: 100,
+      status: "complete",
+      ...(startingAfter ? { starting_after: startingAfter } : {}),
+    });
+    for (const session of page.data) {
+      if (
+        session.payment_status === "paid" &&
+        session.metadata?.offer === "signal_desk_pilot"
+      ) {
+        paidSeats += 1;
+        if (paidSeats >= SIGNAL_DESK_SEAT_LIMIT) return false;
+      }
+    }
+    startingAfter = page.has_more ? page.data.at(-1)?.id : undefined;
+  } while (startingAfter);
+  return true;
+}
 
 function corsHeaders(origin: string | null): HeadersInit {
   const allowed = [
@@ -132,6 +161,17 @@ export async function POST(req: NextRequest) {
   const cfg = ENTRY_TIERS[tier];
   const origin = req.headers.get("origin") || SITE_ORIGIN;
 
+  if (tier === SIGNAL_DESK_TIER) {
+    try {
+      if (!(await hasSignalDeskSeatRemaining())) {
+        return NextResponse.json({ error: "pilot_full" }, { status: 409, headers });
+      }
+    } catch (err) {
+      console.error("signal desk capacity check failed", err);
+      return NextResponse.json({ error: "capacity_check_failed" }, { status: 502, headers });
+    }
+  }
+
   // Referral lookup is deliberately best-effort. A bad or stale code never
   // blocks a genuine purchase; valid Dashboard codes get their Stripe discount
   // and carry the referrer into subscription metadata for the 30-day reward.
@@ -201,6 +241,14 @@ export async function POST(req: NextRequest) {
   const metadata: Record<string, string> = {
     tier,
     flow: "entry_checkout",
+    ...(tier === SIGNAL_DESK_TIER
+      ? {
+          offer: "signal_desk_pilot",
+          pilot_duration_days: "30",
+          credit_toward_dashboard_eur: "490",
+          seat_limit: "5",
+        }
+      : {}),
     ...(bump ? { bump } : {}),
     ...(variant ? { variant } : {}),
     ...(ph_distinct_id ? { ph_distinct_id: ph_distinct_id.slice(0, 64) } : {}),
@@ -284,6 +332,15 @@ export async function GET(req: NextRequest) {
     return NextResponse.redirect(`${SITE_ORIGIN}/pricing`, 302);
   }
   const cfg = ENTRY_TIERS[tier];
+  if (tier === SIGNAL_DESK_TIER) {
+    try {
+      if (!(await hasSignalDeskSeatRemaining())) {
+        return NextResponse.redirect(`${SITE_ORIGIN}/signal-desk?full=1`, 302);
+      }
+    } catch {
+      return NextResponse.redirect(`${SITE_ORIGIN}/signal-desk?capacity=unavailable`, 302);
+    }
+  }
   try {
     const session = await stripe.checkout.sessions.create({
       mode: cfg.mode,
@@ -304,7 +361,18 @@ export async function GET(req: NextRequest) {
       ],
       success_url: cfg.successUrl.startsWith("http") ? cfg.successUrl : `${SITE_ORIGIN}${cfg.successUrl}`,
       cancel_url: `${SITE_ORIGIN}${cfg.cancelUrl}`,
-      metadata: { tier, flow: "entry_checkout_get" },
+      metadata: {
+        tier,
+        flow: "entry_checkout_get",
+        ...(tier === SIGNAL_DESK_TIER
+          ? {
+              offer: "signal_desk_pilot",
+              pilot_duration_days: "30",
+              credit_toward_dashboard_eur: "490",
+              seat_limit: "5",
+            }
+          : {}),
+      },
       allow_promotion_codes: true,
       ...(cfg.mode === "payment"
         ? { customer_creation: "always" as const, payment_intent_data: { setup_future_usage: "off_session" as const, metadata: { tier, flow: "entry_checkout_get" } } }

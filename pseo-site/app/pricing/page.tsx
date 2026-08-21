@@ -158,6 +158,27 @@ const tiers: Tier[] = [
     highlight: false,
   },
   {
+    slug: "signal-desk-pilot",
+    name: "Signal Desk pilot",
+    priceLabel: "€250",
+    priceCadence: "one-time · 30 days",
+    rrpLabel: "Five founding pilot places",
+    oneLine:
+      "Five GitHub-accelerating companies every Monday, matched to your stated sectors with plain-English reasoning, counter-evidence, and a suggested next action.",
+    forWho:
+      "Use this if you want a manually prepared weekly sourcing routine before committing to the annual Dashboard.",
+    bullets: [
+      "Five candidates every Monday, matched to your sectors",
+      "Public GitHub activity explained in plain English",
+      "Counter-evidence and one next action per candidate",
+      "€250 credited toward the €490 annual Dashboard if you continue",
+      "No investment recommendation or fundraising guarantee",
+    ],
+    ctaLabel: "See the €250 Signal Desk pilot",
+    ctaHref: "/signal-desk",
+    highlight: false,
+  },
+  {
     slug: "dashboard-beta",
     name: "Dashboard Beta",
     priceLabel: "€49",
