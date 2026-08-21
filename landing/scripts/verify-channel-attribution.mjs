@@ -86,7 +86,11 @@ assert.equal(payload.utm_campaign, "data-story");
 assert.equal(payload.utm_content, "proof");
 assert.equal(payload.utm_term, "vc");
 assert.equal(payload.utm_id, "post-42");
+assert.equal(payload.placement_id, "post-42");
+assert.equal(payload.placement_type, "post");
 assert.equal(payload.first_channel, "reddit");
+assert.equal(payload.first_placement_id, "post-42");
+assert.equal(payload.first_placement_type, "post");
 assert.equal(payload.first_landing_path, "/pricing");
 assert.equal(payload.referrer, "reddit.com");
 assert.equal(first.captured.length, 1);
@@ -94,6 +98,7 @@ assert.equal(first.captured[0].event, "distribution_landing");
 assert.equal(first.captured[0].properties.current_channel, "reddit");
 assert.ok(first.registeredOnce.some((p) => p.gdf_first_source === "reddit"));
 assert.ok(first.registered.some((p) => p.gdf_channel === "reddit"));
+assert.ok(first.registered.some((p) => p.gdf_first_placement_id === "post-42"));
 assert.ok(jar.gdf_ft_v1, "first-touch cookie was not written");
 assert.doesNotMatch(JSON.stringify(payload), /comments\/abc|@/i, "payload leaked a full referrer path or email-like value");
 
@@ -111,6 +116,11 @@ const aiReferral = run("https://gitdealflow.com/", {
 });
 assert.equal(aiReferral.captured[0].properties.current_channel, "ai-referral");
 
+const listing = run("https://gitdealflow.com/?utm_source=glama&utm_medium=directory&utm_campaign=mcp&utm_id=glama-gitdealflow");
+const listingPayload = listing.window.GDFattribution("verify-listing");
+assert.equal(listingPayload.placement_id, "glama-gitdealflow");
+assert.equal(listingPayload.placement_type, "listing");
+
 const privateRun = run(
   "https://gitdealflow.com/?utm_source=x&utm_medium=social&utm_campaign=persona",
   { cookieJar: {}, dnt: "1" },
@@ -120,6 +130,7 @@ assert.equal(privateRun.window.GDFattribution("verify-private").utm_source, "x")
 
 for (const needle of [
   "utm_source", "utm_medium", "utm_campaign", "utm_content", "utm_term", "utm_id",
+  "placement_id", "placement_type",
   "gdf_first_", "gdf_last_", "register_once", "register_for_session", "distribution_landing",
 ]) {
   assert.ok(source.includes(needle), `tracker lost required token: ${needle}`);

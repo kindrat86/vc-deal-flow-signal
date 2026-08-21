@@ -109,6 +109,14 @@
     return "referral";
   }
 
+  function placementTypeFor(channel) {
+    if (/^(x|reddit|linkedin|youtube|hackernews|indiehackers|devto|hackernoon|medium|quora)$/.test(channel)) return "post";
+    if (/^(producthunt|sideprojectors|stackshare|g2|capterra|getapp|software-advice|glama|smithery|mcp-registry|open-tools|github|npm|pypi|huggingface)$/.test(channel)) return "listing";
+    if (/^(newsletter|outreach|followup|scout)$/.test(channel)) return "message";
+    if (/^(partner|affiliate|podcast|press|guest-post)$/.test(channel)) return "mention";
+    return "";
+  }
+
   function currentTouch() {
     var params = new URLSearchParams(w.location.search);
     var utm = {};
@@ -133,6 +141,8 @@
       utm_content: utm.utm_content.toLowerCase(),
       utm_term: utm.utm_term.toLowerCase(),
       utm_id: utm.utm_id.toLowerCase(),
+      placement_id: utm.utm_id.toLowerCase(),
+      placement_type: placementTypeFor(channel),
       referrer_host: referrerHost,
       landing_host: clean(w.location.hostname.toLowerCase().replace(/^www\./, ""), 120),
       landing_path: clean(w.location.pathname, 300),
@@ -151,6 +161,8 @@
     out[prefix + "content"] = touch.utm_content || "";
     out[prefix + "term"] = touch.utm_term || "";
     out[prefix + "id"] = touch.utm_id || "";
+    out[prefix + "placement_id"] = touch.placement_id || "";
+    out[prefix + "placement_type"] = touch.placement_type || "";
     out[prefix + "landing_host"] = touch.landing_host || "";
     out[prefix + "landing_path"] = touch.landing_path || "";
     out[prefix + "referrer_host"] = touch.referrer_host || "";
@@ -178,6 +190,8 @@
       utm_content: state.last.utm_content || "",
       utm_term: state.last.utm_term || "",
       utm_id: state.last.utm_id || "",
+      placement_id: state.last.placement_id || "",
+      placement_type: state.last.placement_type || "",
       referrer: state.first.referrer_host || "",
       landing_path: state.first.landing_path || w.location.pathname,
       attribution_channel: state.first.channel || "direct",
