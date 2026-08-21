@@ -36,11 +36,10 @@ const activationChecks = [
     "posthog.capture('subscribe_thanks_viewed')",
   ]],
   ['confirmed.html', [
-    'The five names are already there.',
-    'Check spam or promotions',
+    'id="sample-issue-link" href="/report"',
+    "posthog.capture('sample_issue_opened'",
     "u.searchParams.delete('email')",
     'history.replaceState',
-    'posthog.identify(identEmail)',
     "posthog.capture('signup_confirmed_viewed'",
   ]],
 ];
@@ -51,6 +50,12 @@ for (const [rel, needles] of activationChecks) {
     console.error(`[verify-all] activation regression in ${rel}: missing ${missing.join(', ')}`);
     process.exit(1);
   }
+}
+
+const confirmed = readFileSync(join(landingRoot, 'confirmed.html'), 'utf8');
+if (/posthog\.identify\(/.test(confirmed)) {
+  console.error('[verify-all] privacy regression in confirmed.html: raw-email identity must not be sent to PostHog');
+  process.exit(1);
 }
 
 const steps = [

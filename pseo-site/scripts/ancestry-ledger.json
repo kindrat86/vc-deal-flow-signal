@@ -196,7 +196,8 @@
      "minCount": 1
     }
    ],
-   "note": "2026-08-16: needles retargeted from hardcoded next.config.ts entries to the data-derived data/best-redirects.json table (the sibling 2026-08-16 quarterly freshness rewrite legitimately moved the redirects). 2026-08-16 (claims session): the verify-no-regressions FROZEN_BEST needle was retargeted to deriveBestRedirects after 2a852952 replaced the hardcoded five-pair block with the data-derived drift check (same five pairs, now derived for every sector-year); the literal FROZEN_BEST identifier no longer exists at HEAD. Ancestry + JSON needles unchanged."
+   "note": "2026-08-16: needles retargeted from hardcoded next.config.ts entries to the data-derived data/best-redirects.json table (the sibling 2026-08-16 quarterly freshness rewrite legitimately moved the redirects). 2026-08-16 (claims session): the verify-no-regressions FROZEN_BEST needle was retargeted to deriveBestRedirects after 2a852952 replaced the hardcoded five-pair block with the data-derived drift check (same five pairs, now derived for every sector-year); the literal FROZEN_BEST identifier no longer exists at HEAD. The current data is q3-2026, so those q2 targets are no longer derived and must not be restored by hand.",
+   "supersededBy": "q3-2026 data-derived redirects verified by scripts/generate-best-redirects.ts in the 2026-08-21 DotCom Secrets release"
   }
  ]
 }

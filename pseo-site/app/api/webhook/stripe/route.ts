@@ -12,6 +12,7 @@ import { pickAudienceId } from "@/lib/resend-audience";
 import { newBuyerHealthState, firstValueStatusForCustomer, markCustomerCancelled, markCustomerReactivated } from "@/lib/customer-health";
 import { cancellationReasonFromStripe } from "@/lib/retention-policy";
 import { cancelScheduledLifecycleEmails, scheduleWinbackSequence } from "@/lib/winback";
+import { LIVE_SECTOR_LABELS } from "@/lib/live-sectors";
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY!;
 const FROM_EMAIL = process.env.FROM_EMAIL || "signals@gitdealflow.com";
@@ -370,7 +371,7 @@ function firstLookWelcomeEmail(email: string): { subject: string; html: string }
 <div style="font-size:16px;line-height:1.7;color:#1e293b;">
 <p>Thanks for grabbing the First Look Pass. Reply to this email with the sector you want and I'll ship the deep dive within 24 hours.</p>
 <p>Tracked sectors (pick one):</p>
-<p style="color:#64748b;">AI / ML, Fintech, Climate Tech, Developer Tools, Cybersecurity, Healthcare, Enterprise SaaS, Data Infrastructure, Web3, Robotics, HR Tech, PropTech, EdTech, MarTech, LegalTech, GovTech, Mobility, Gaming, Logistics, Bio.</p>
+<p style="color:#64748b;">${LIVE_SECTOR_LABELS}.</p>
 <p>What you'll get:</p>
 <ul style="padding-left:20px;">
 <li>Top 25 ranked orgs in your sector</li>
@@ -633,36 +634,39 @@ export async function POST(request: NextRequest) {
       console.error("[reddit-capi] Purchase dispatch error:", capiErr);
     }
 
-    // Server-side PostHog capture, this webhook fired zero analytics
-    // before. Mirrors the Reddit CAPI call above: fire-and-forget, wrapped
-    // so a PostHog-side failure never 5xxs the webhook (Stripe would retry
-    // → double-credit). distinct_id is the buyer's email (no client-side
-    // distinct_id is threaded through checkout metadata here yet, so this
-    // doesn't join the pre-purchase funnel, same gap as before, just no
-    // longer completely dark).
+    // A purchase is a browser-funnel conversion only when Checkout received
+    // the browser's pseudonymous PostHog ID. Never fall back to raw email.
     try {
       const utm = (fullSession.metadata || {}) as Record<string, string>;
-      const amountEUR = (fullSession.amount_total || 0) / 100;
-      await fetch("https://eu.i.posthog.com/capture/", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          api_key: "phc_lyZCgvTpicjLzAO3rY2GhxuX5WUc5jQjP8ZVwwJqauX",
-          event: "purchase_completed",
-          distinct_id: utm.ph_distinct_id || email,
-          properties: {
-            $host: "signals.gitdealflow.com",
-            product: "gitdealflow",
-            tier,
-            amount_eur: amountEUR,
-            stripe_session_id: session.id,
-            stripe_event_id: event.id,
-            utm_source: utm.utm_source,
-            utm_campaign: utm.utm_campaign,
-            utm_content: utm.utm_content,
-          },
-        }),
-      });
+      if (utm.ph_distinct_id) {
+        const amountEUR = (fullSession.amount_total || 0) / 100;
+        await fetch("https://eu.i.posthog.com/capture/", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            api_key: "phc_lyZCgvTpicjLzAO3rY2GhxuX5WUc5jQjP8ZVwwJqauX",
+            event: "purchase_completed",
+            distinct_id: utm.ph_distinct_id,
+            properties: {
+              $host: "signals.gitdealflow.com",
+              product: "gitdealflow",
+              tier,
+              amount_eur: amountEUR,
+              stripe_session_id: session.id,
+              stripe_event_id: event.id,
+              utm_source: utm.utm_source,
+              utm_campaign: utm.utm_campaign,
+              utm_content: utm.utm_content,
+              server_side: true,
+            },
+          }),
+        });
+      } else {
+        console.info("[posthog] purchase not joined: checkout carried no ph_distinct_id", {
+          stripe_session_id: session.id,
+          stripe_event_id: event.id,
+        });
+      }
     } catch (phErr) {
       console.error("[posthog] purchase_completed capture failed:", phErr);
     }

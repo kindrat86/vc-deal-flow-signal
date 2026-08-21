@@ -1200,9 +1200,9 @@ check(
 
 check(
   "components/PixelManager.tsx",
-  "components/PixelManager.tsx lost the hardcoded GA4/LinkedIn fallback IDs; pixels go dark again on every deploy_from_commit.sh build (env vars do not inline in the git-archive export path).",
-  (s) => s.includes('|| "G-7SV2SNZE4C"') && s.includes('|| "10702217"'),
-  "keep the fallback defaults: ga4 ... || \"G-7SV2SNZE4C\", linkedin ... || \"10702217\" (env vars win when present)",
+  "components/PixelManager.tsx lost the GA4 fallback used by the qualified-visitor bridge, or reintroduced a prohibited ad-network integration.",
+  (s) => s.includes('|| "G-7SV2SNZE4C"') && !/meta|linkedin/i.test(s),
+  "keep ga4 ... || \"G-7SV2SNZE4C\" and keep Meta/LinkedIn absent (env vars win when present)",
 );
 
 check(

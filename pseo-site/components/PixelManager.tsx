@@ -1,21 +1,16 @@
 import Script from "next/script";
 
 /**
- * Centralized retargeting-pixel loader.
- * Each pixel is gated on its env var: empty/missing = the script is not emitted.
- * That means we can ship this component now and pixels start firing the moment
- * the corresponding NEXT_PUBLIC_* var is set in Vercel (no code change needed).
+ * Centralized optional measurement loader.
+ * Each optional integration is gated on its env var: empty/missing = the script
+ * is not emitted.
  *
  * All vars are NEXT_PUBLIC_ because pixel IDs are public by design, they
  * appear in the page source on every ad-tracked site.
  */
 export default function PixelManager() {
-  // Pixel IDs are public by design (they appear in page source on every
-  // ad-tracked site). Hardcoded fallbacks keep pixels live even when the
-  // build path cannot inline NEXT_PUBLIC_* env vars: deploy_from_commit.sh
-  // builds inside a git-archive export that is not project-linked, so env
-  // vars resolve empty there (GA4 sat un-inlined for hours on 2026-08-15
-  // despite the var being set in Vercel). Env vars, when present, win.
+  // The GA4 fallback preserves the qualified-visitor bridge on archive builds
+  // where NEXT_PUBLIC_* values are unavailable. Env vars win when present.
   const ga4 = process.env.NEXT_PUBLIC_GA4_ID || "G-7SV2SNZE4C";
   const googleAds = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID;
 

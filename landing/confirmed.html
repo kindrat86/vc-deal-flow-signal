@@ -90,8 +90,9 @@
 
     <section class="max-w-3xl mx-auto text-center mb-10 mobile-section-pad">
       <p class="text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">&#10003; Confirmed &middot; you&rsquo;re on the list</p>
-      <h1 id="confirmed-title" class="text-4xl sm:text-5xl font-bold tracking-tight mb-5">Check your inbox. The five names are already there.</h1>
-      <p id="confirmed-copy" class="text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto">Your first issue just landed from <strong class="text-white">signal@gitdealflow.com</strong>: five names with the why. Didn&rsquo;t see it? Check spam or promotions and mark it not spam. Then read this one note from me.</p>
+      <h1 id="confirmed-title" class="text-4xl sm:text-5xl font-bold tracking-tight mb-5">Your email is confirmed. Open a sample now.</h1>
+      <p id="confirmed-copy" class="text-xl text-gray-300 leading-relaxed max-w-2xl mx-auto">Read a real sample issue now. Your next free Sunday Signal arrives on the regular weekly schedule.</p>
+      <p class="mt-5"><a id="sample-issue-link" href="/report" class="btn btn-cta btn-md">Open your sample issue &rarr;</a></p>
     </section>
 
     <section class="max-w-3xl mx-auto mb-12 mobile-section-pad">
@@ -190,8 +191,8 @@
       // Higher-intent quiz routes keep First Look as the entry point but add a "jump straight up" path.
       const config = {
         F: {
-          title: "Check your inbox. The five names are already there.",
-          copy: "Your first issue just landed from signal@gitdealflow.com: five names with the why. Didn't see it? Check spam or promotions and mark it not spam. Then read this one note from me.",
+          title: "Your email is confirmed. Open a sample now.",
+          copy: "Read a real sample issue now. Your next free Sunday Signal arrives on the regular weekly schedule.",
           guidance: "Then the week takes over, and the question goes cold. If that's you right now, you don't have to wait for the weekly list to catch up to it. There's a faster way, and since you just joined, it's the right moment to tell you about it.",
           offerEyebrow: "Your fastest next step · First Look",
           offerTitle: "One sector. One deep dive. One day.",
@@ -261,10 +262,12 @@
       if (primary) { primary.href = c.primaryHref; primary.textContent = c.primaryText; }
       const sticky = document.getElementById('sticky-link');
       if (sticky) { sticky.href = c.stickyHref; }
-      (function fireConfirm(n){ n = n || 0; if (window.posthog && window.posthog.capture) { try { var ce = new URLSearchParams(window.location.search).get('email') || ''; var se = ''; try { se = sessionStorage.getItem('gdf_email') || ''; } catch(_){} var identEmail = ce || se; if (identEmail) posthog.identify(identEmail); } catch(_){} posthog.capture('signup_confirmed_viewed', { route: route }); } else if (n < 100) { setTimeout(function(){ fireConfirm(n + 1); }, 100); } })();
+      (function fireConfirm(n){ n = n || 0; if (window.posthog && window.posthog.capture) { posthog.capture('signup_confirmed_viewed', { route: route }); } else if (n < 100) { setTimeout(function(){ fireConfirm(n + 1); }, 100); } })();
       // Track intent clicks on the primary upsell so we can measure confirm-page conversion.
       if (primary) primary.addEventListener('click', function(){ if (window.posthog) posthog.capture('confirmed_upsell_clicked', { route: route, tier: 'firstlook' }); });
       if (sticky) sticky.addEventListener('click', function(){ if (window.posthog) posthog.capture('confirmed_upsell_clicked', { route: route, tier: 'firstlook', surface: 'sticky' }); });
+      var sampleLink = document.getElementById('sample-issue-link');
+      if (sampleLink) sampleLink.addEventListener('click', function(){ if (window.posthog) posthog.capture('sample_issue_opened', { route: route, surface: 'confirmed' }); });
     })();
   </script>
 

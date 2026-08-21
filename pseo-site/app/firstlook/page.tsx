@@ -30,7 +30,7 @@ const FIRSTLOOK_OFFER_URL = "https://signals.gitdealflow.com/firstlook";
 export const metadata: Metadata = {
   title: "First Look Pass, €7. One sector. 24-hour deep dive.",
   description:
-    "Pay €7 once, pick any of 19 tracked sectors, and within 24 hours get a written sector deep dive: top 25 ranked GitHub orgs, 14-day acceleration deltas, contributor maps, and three pre-Crunchbase breakouts. Credited toward Dashboard if you upgrade in 14 days.",
+    "Pay €7 once, pick one of 15 live sectors, and within 24 hours get a written sector deep dive with a ranked shortlist, 14-day acceleration deltas, contributor maps, and a plain-English walkthrough. Credited toward Dashboard if you upgrade in 14 days.",
   alternates: { canonical: "/firstlook" },
   openGraph: {
     title: "First Look Pass, €7. One sector. 24-hour deep dive.",
@@ -64,7 +64,7 @@ const DISCOVERIES = [
     body: "Plus the 90-second test you can run on any GitHub org tonight to see the pattern on a public company before we ship the report. Page 7.",
   },
   {
-    head: "Three pre-Crunchbase startups in your sector, named, with the timestamp we surfaced each one",
+    head: "Three emerging startups in your sector, with the timestamp we surfaced each one",
     body: "So when one of them announces a round in 21-47 days you can verify we flagged it first, not back-fitted. Page 11.",
   },
 ] as const;
@@ -81,7 +81,7 @@ const STACK = [
       "Who's joined in the past 30 days. Matters because contributor influx precedes hiring announcements.",
   },
   {
-    label: "Three pre-Crunchbase breakouts",
+    label: "Emerging organizations in your sector",
     detail:
       "Net-new orgs surfaced by the same engine, companies the consensus deal-flow tools haven't indexed yet.",
   },
@@ -103,7 +103,7 @@ const STACK = [
 const VALUE_STACK = [
   { label: "Top-25 ranked org list (one sector)", value: 290 },
   { label: "Contributor influx map (top 10 orgs × 30-day)", value: 240 },
-  { label: "Three pre-Crunchbase breakouts (named + thesis-tagged)", value: 360 },
+  { label: "Three emerging startups with a thesis note", value: 360 },
   { label: "Raw CSV, every org × every metric", value: 190 },
   { label: "JSON dump (Dashboard-grade, agent-readable)", value: 150 },
   { label: "Written 14-page walkthrough PDF", value: 220 },
@@ -190,7 +190,7 @@ const FAQS = [
   },
   {
     q: "How do I pick the sector?",
-    a: "On the Stripe checkout page, the order field asks which sector. We track 19: AI/ML, AI infra, AI safety, climate tech, crypto/web3, cybersecurity, data infra, dev tools, edtech, fintech rails, future of work, gaming, healthtech, identity, observability, open source tooling, robotics, SaaS infra, vertical AI. If your thesis cuts across, name it and we'll pick the most relevant one.",
+    a: "Choose one of the 15 current sectors in the checkout form. If your thesis crosses sectors, tell us and we will use the closest current category.",
   },
   {
     q: "What happens if I upgrade to the Dashboard?",
@@ -816,7 +816,7 @@ export default function FirstLookPage() {
               {
                 t: "T+4 h",
                 head: "Contributor maps + breakouts compiled",
-                body: "Top 10 orgs get a 30-day contributor influx map. The breakout-detection pass surfaces three pre-Crunchbase candidates. Raw CSV + JSON dump sealed.",
+                body: "Contributor changes are reviewed alongside the sector ranking. The report includes the current shortlist and available supporting data.",
               },
               {
                 t: "T+12 h",

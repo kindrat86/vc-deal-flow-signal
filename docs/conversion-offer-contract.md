@@ -16,15 +16,15 @@ Do not shorten this to “219 fundraises.” Do not use 19 or 20 sectors on curr
 |---|---|---:|---|---|---|
 | `free_digest` | Sunday Signal Digest | €0 | weekly email | n/a | Five accelerating startups every Sunday. Do not promise the next issue has already been delivered. |
 | `teardown` | Tweet Teardown | €1 | one-time | `https://buy.stripe.com/bJe5kC48H2d2cEKg6s0x209` | Short, actionable public-GitHub signal verdict. |
-| `firstlook` | First Look Pass | €7 | one-time | `https://buy.stripe.com/28E6oGdJh18YgV04nK0x203` | One sector deep dive and ranked shortlist within 24 hours. Upgrade credit window: 14 days. |
+| `firstlook` | First Look Pass | €7 | one-time | `https://signals.gitdealflow.com/api/checkout/session?tier=firstlook` | One sector deep dive and ranked shortlist within 24 hours. Upgrade credit window: 14 days. |
 | `dashboard_monthly` | GitDealFlow Dashboard | €49 | monthly | `https://buy.stripe.com/4gMbJ07kTaJy7kqg6s0x20b` | Full ranked field across 15 sectors, refreshed weekly. Do not attach an unverified field-size number. |
-| `dashboard_annual` | GitDealFlow Dashboard | No active annual link | annual | Do not publish an annual CTA until a newly verified active link exists. | Same as Dashboard monthly. |
+| `dashboard_annual` | GitDealFlow Dashboard | €490 | annual | `https://buy.stripe.com/aFa5kC34DeZOawC6vS0x20c` | Same as Dashboard monthly. |
 | `insider_monthly` | GitDealFlow Insider Circle | €197 | monthly | `https://buy.stripe.com/bJeaEWfRpcRG6gm2fC0x20d` | Dashboard plus the documented Insider delivery calendar and briefing artifact, before this is promoted. |
-| `insider_annual` | GitDealFlow Insider Circle | No active annual link | annual | Do not publish an annual CTA until a newly verified active link exists. | Same as Insider monthly. |
+| `insider_annual` | GitDealFlow Insider Circle | €1,970 | annual | `https://buy.stripe.com/cNieVc34DbNCcEK2fC0x20e` | Same as Insider monthly. |
 | `sector_sweep` | Custom Sector Sweep | €1,997 | one-time after review | `https://buy.stripe.com/bJe14m34DbNC6gm1by0x204` | Custom thesis-driven sector report. Promise one verified delivery timeline only. No automatic payment link before qualification. |
 | `agent_credits` | Deep-signal credits | €19 | one-time | `https://buy.stripe.com/00w4gyfRpg3SbAGcUg0x205` | 100 deep-signal calls. |
 
-Current Stripe API probe, 2026-08-21: Dashboard monthly at €49 is active. The documented €490 Dashboard annual and €1,970 Insider annual links are inactive. A stale €441 Dashboard annual link is active. Do not treat `stripe/payment-links.md` as current until it is reconciled.
+Current Stripe API probe, 2026-08-21: Dashboard monthly at €49, Dashboard annual at €490, Insider monthly at €197, and Insider annual at €1,970 are active. The stale Dashboard €441/year and Insider €1,773/year routes must not be used.
 
 Every release that changes a price, price CTA, or fulfillment must repeat the Stripe API and rendered Checkout probe before deployment.
 
