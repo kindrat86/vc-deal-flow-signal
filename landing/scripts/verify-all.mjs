@@ -54,6 +54,7 @@ for (const [rel, needles] of activationChecks) {
 }
 
 const steps = [
+  ['node', '../distribution/scripts/verify-research-claim.mjs'],
   ['node', 'scripts/verify-vercel-config.mjs'],
   ['node', 'scripts/verify-momentum-widget.mjs'],
   ['node', 'scripts/verify-jsonld.mjs', '.'],
