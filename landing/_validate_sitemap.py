@@ -235,6 +235,11 @@ def check_local(url: str) -> dict:
         "url": url,
         "local_file": str(fp),
         "local_exists": exists or alt_exists,
+        "status": 200 if exists or alt_exists else 404,
+        "redirect_to": None,
+        "error": None,
+        "canonical": None,
+        "has_noindex": False,
     }
 
 # ═══════════════════════════════════════════════════════════════
@@ -417,8 +422,9 @@ def validate_full(args) -> int:
     start = time.time()
     with ThreadPoolExecutor(max_workers=max_workers) as pool:
         futures = {}
+        checker = check_local if local_only else check_http
         for child_name, canonical_url, check_target in all_checks:
-            futures[pool.submit(check_http, check_target)] = (child_name, canonical_url, check_target)
+            futures[pool.submit(checker, check_target)] = (child_name, canonical_url, check_target)
         
         done = 0
         for future in as_completed(futures):

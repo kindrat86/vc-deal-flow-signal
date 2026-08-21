@@ -53,6 +53,10 @@ EXCLUDE_FILES = {
     # sitemap as a self-canonical entry (validator: canonical mismatch).
     "best/best-deal-flow-software.html",
 
+    # Closed or unverified partner surfaces. They stay live for direct links but
+    # are not indexable until their delivery, attribution, and earning terms are proved.
+    "affiliates.html",
+    "jv.html",
     # Error pages
     "404.html",
     # Verification files
