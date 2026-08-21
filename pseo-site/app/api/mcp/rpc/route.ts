@@ -17,7 +17,7 @@ import {
 
 const BASE_URL = "https://signals.gitdealflow.com";
 const SERVER_NAME = "vc-deal-flow-signal";
-const SERVER_VERSION = "1.6.0";
+const SERVER_VERSION = "2.2.2";
 const PROTOCOL_VERSION = "2025-06-18";
 
 type JsonRpcId = string | number | null;

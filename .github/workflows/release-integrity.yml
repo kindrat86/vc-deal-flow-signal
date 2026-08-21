@@ -1,0 +1,53 @@
+name: MCP release integrity
+
+on:
+  pull_request:
+    paths:
+      - "mcp-server/**"
+      - "pseo-site/app/api/mcp/**"
+      - "pseo-site/app/.well-known/mcp*/**"
+      - "pseo-site/scripts/verify-release-integrity.mjs"
+      - "pseo-site/scripts/test/release-integrity.test.mjs"
+  push:
+    branches: [main]
+    paths:
+      - "mcp-server/**"
+      - "pseo-site/app/api/mcp/**"
+      - "pseo-site/app/.well-known/mcp*/**"
+      - "pseo-site/scripts/verify-release-integrity.mjs"
+      - "pseo-site/scripts/test/release-integrity.test.mjs"
+  workflow_dispatch:
+    inputs:
+      check_live:
+        description: "Check deployed npm, runtime, manifests, and registry"
+        required: false
+        default: false
+        type: boolean
+
+jobs:
+  source-gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+          cache-dependency-path: mcp-server/package-lock.json
+      - run: npm ci
+        working-directory: mcp-server
+      - run: npm run build
+        working-directory: mcp-server
+      - run: node pseo-site/scripts/test/release-integrity.test.mjs
+      - run: node pseo-site/scripts/verify-release-integrity.mjs source
+
+  live-gate:
+    if: github.event_name == 'workflow_dispatch' && inputs.check_live
+    needs: source-gate
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: node pseo-site/scripts/verify-release-integrity.mjs live
