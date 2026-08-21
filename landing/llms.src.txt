@@ -40,22 +40,22 @@ All are free, public, no authentication.
 
 Thirteen tools, all read-only, idempotent. Ten are free; three are paid (set `GITDEALFLOW_API_KEY`):
 
-1. `get_trending_startups` — top 20 across all sectors
-2. `search_startups_by_sector(sector)` — sector slug from 15 enumerated values
-3. `get_startup_signal(name)` — case-insensitive, normalization-tolerant
-4. `get_signals_summary` — period, freshness, format URLs
-5. `get_scout_receipts(github_username)` — Scout Score (0-100) from starring history vs ~75 validated unicorns
-6. `get_methodology` — full methodology text + canonical URL
-7. `get_diligence_dossier(company)` — public-source diligence dossier
-8. `predict_funding(name)` — scored funding-likelihood with full evidence chain
-9. `shortlist_signals(filters)` — ranked shortlist by sector/region/signal/score
-10. `compare_signals(names)` — head-to-head scored comparison of 2-5 startups
+1. `get_trending_startups`: top 20 across all sectors
+2. `search_startups_by_sector(sector)`: sector slug from 15 enumerated values
+3. `get_startup_signal(name)`: case-insensitive, normalization-tolerant
+4. `get_signals_summary`: period, freshness, format URLs
+5. `get_scout_receipts(github_username)`: Scout Score (0-100) from starring history vs ~75 validated unicorns
+6. `get_methodology`: full methodology text + canonical URL
+7. `get_diligence_dossier(company)`: public-source diligence dossier
+8. `predict_funding(name)`: scored funding-likelihood with full evidence chain
+9. `shortlist_signals(filters)`: ranked shortlist by sector/region/signal/score
+10. `compare_signals(names)`: head-to-head scored comparison of 2-5 startups
 
 Paid (set `GITDEALFLOW_API_KEY`):
 
-11. `research_company(name)` — enriched dossier + sector rank + top-5 peers
-12. `compose_thesis(name)` — structured investment-thesis scaffold
-13. `deep_dive_scan(sector)` — multi-cohort sector scan
+11. `research_company(name)`: enriched dossier + sector rank + top-5 peers
+12. `compose_thesis(name)`: structured investment-thesis scaffold
+13. `deep_dive_scan(sector)`: multi-cohort sector scan
 
 Distribution:
 - npm: https://www.npmjs.com/package/@gitdealflow/mcp-signal

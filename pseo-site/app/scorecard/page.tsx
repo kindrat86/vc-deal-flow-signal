@@ -5,6 +5,9 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { FalseBeliefBreaker } from "@/components/FalseBeliefBreaker";
 import { PlainEnglishNote } from "@/components/PlainEnglishNote";
 import { TrustConversionBlock } from "@/components/TrustConversionBlock";
+import { PublicScorecardProof } from "@/components/PublicScorecardProof";
+import { getPublicProof } from "@/lib/public-proof";
+import { getAllPredictionWeeks } from "@/lib/predictions";
 import { getHreflangLanguages } from "@/lib/hreflang";
 
 export const dynamic = "force-static";
@@ -51,13 +54,21 @@ const RULES = [
   },
 ];
 
-type Status = "hit" | "miss" | "pending";
-
-const SCORE_ROWS = [
-  { week: "2026-w17", picks: 10, hit: 0, miss: 0, pending: 10, note: "Grading window opens 2026-07-03 (60d) / 2026-08-02 (90d)." },
-  { week: "2026-w18", picks: 10, hit: 0, miss: 0, pending: 10, note: "Grading window opens 2026-07-10 / 2026-08-09." },
-  { week: "2026-w16", picks: 10, hit: 0, miss: 0, pending: 10, note: "Backfill, first published archive week. Grading 2026-06-26 / 2026-07-26." },
-];
+function buildScoreRows() {
+  return getAllPredictionWeeks().map((week) => {
+    const hit = week.picks.filter((pick) => ["raised", "acquired", "ipo"].includes(pick.outcome ?? "")).length;
+    const miss = week.picks.filter((pick) => ["no_event", "shutdown"].includes(pick.outcome ?? "")).length;
+    const pending = week.picks.filter((pick) => pick.outcome === null).length;
+    return {
+      week: week.slug,
+      picks: week.picks.length,
+      hit,
+      miss,
+      pending,
+      note: `Published ${week.publishedAt.slice(0, 10)}. 60-day grading due ${week.gradingDueAt}.`,
+    };
+  });
+}
 
 const HISTORICAL_HIGHLIGHT = {
   name: "(anonymised), small fintech infrastructure org",
@@ -68,7 +79,9 @@ const HISTORICAL_HIGHLIGHT = {
 };
 
 export default function ScorecardPage() {
-  const totals = SCORE_ROWS.reduce(
+  const proof = getPublicProof();
+  const scoreRows = buildScoreRows();
+  const totals = scoreRows.reduce(
     (a, r) => ({
       picks: a.picks + r.picks,
       hit: a.hit + r.hit,
@@ -148,6 +161,8 @@ export default function ScorecardPage() {
           </p>
         </header>
 
+        <PublicScorecardProof proof={proof} />
+
         <section className="rounded-xl border border-amber-700/30 bg-amber-950/10 p-6 sm:p-7 space-y-4">
           <h2 className="text-2xl font-bold text-gray-100">The grading rules</h2>
           <ol className="space-y-3">
@@ -167,7 +182,7 @@ export default function ScorecardPage() {
 
         <section className="rounded-xl border border-slate-800 bg-slate-900/60 p-5 sm:p-6">
           <p className="text-gray-400 text-[10px] font-semibold uppercase tracking-wider mb-3">
-            Cumulative · {totals.picks} picks across {SCORE_ROWS.length} weeks
+            Cumulative · {totals.picks} picks across {scoreRows.length} weeks
           </p>
           <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
             <div className="rounded-lg border border-emerald-700/40 bg-emerald-950/15 p-3">
@@ -184,11 +199,7 @@ export default function ScorecardPage() {
             </div>
           </div>
           <p className="text-gray-400 text-xs leading-relaxed mt-3 pt-3 border-t border-slate-800">
-            All current picks are still inside their 60d / 90d grading window
-            (the Acceleration Watch published its first archived week 2026-04-27;
-            the first 60d window opens 2026-06-26). Grading begins{" "}
-            <strong className="text-gray-200">2026-07-03</strong> for week
-            2026-w17. The page updates on every grade.
+            Counts above are derived from the dated prediction rows in the public dataset. Each new row remains Pending until an outcome is recorded; graded rows remain visible whether they are hits or misses.
           </p>
         </section>
 
@@ -205,9 +216,7 @@ export default function ScorecardPage() {
             running, and we have not earned the right to claim it either way yet.
           </p>
           <p>
-            Right now every row is Pending because the first window only opens
-            2026-06-26. That is honest, not weak: a forward pick is only worth
-            anything if it was dated before the outcome was known.
+            Right now the counts above are read from the dated prediction rows. A row is Pending until its outcome is recorded, then it remains public as a hit, miss, or other documented result.
           </p>
         </PlainEnglishNote>
 
@@ -241,7 +250,7 @@ export default function ScorecardPage() {
               </tr>
             </thead>
             <tbody className="text-gray-300">
-              {SCORE_ROWS.map((r) => (
+              {scoreRows.map((r) => (
                 <tr key={r.week} className="border-b border-slate-800/60">
                   <td className="py-3 pr-3 font-mono text-xs">
                     <Link

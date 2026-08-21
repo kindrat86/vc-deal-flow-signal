@@ -255,6 +255,8 @@
       <p class="text-gray-300 mb-8">One click to secure Stripe checkout, enter your email there. Attribution travels with you so the ladder stays clean.</p>
       <button type="button" data-checkout class="btn btn-cta btn-lg w-full sm:w-auto">Join Insider, €197/mo &rarr;</button>
       <p id="insider-msg" class="text-gray-400 text-sm mt-4">€197/mo · cancel anytime · 30-day Signal-or-It's-Free guarantee · secure checkout via Stripe</p>
+      <aside data-gdf-public-proof hidden class="max-w-lg mx-auto mt-5 rounded-xl border border-sky-700/40 bg-sky-950/30 p-5 text-left"><p class="text-sky-300 text-xs font-semibold uppercase tracking-wider mb-2">Public scorecard, updated <span data-proof-date></span></p><p data-proof-counts class="text-gray-100 font-semibold"></p><p class="text-gray-300 text-sm mt-2">Each pick is dated before its 60-day and 90-day checks. <a href="https://signals.gitdealflow.com/scorecard" class="text-brand-500 underline">See every pick and grading rule →</a></p></aside>
+      <p class="text-gray-300 text-sm mt-4">Pay securely with Stripe. Card details never touch GitDealFlow. Cancel subscriptions in Stripe. 30-day Signal-or-It&apos;s-Free: email <a href="mailto:signal@gitdealflow.com" class="text-brand-500 underline">signal@gitdealflow.com</a> within 30 days for a full refund. No form. No survey. <a href="/privacy" class="text-brand-500 underline">Privacy</a> · <a href="/terms" class="text-brand-500 underline">Refund terms</a></p>
     </section>
 
     <section class="mobile-section-pad max-w-3xl mx-auto px-4 sm:px-6 pb-8 text-center">
@@ -510,5 +512,6 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&t.getAttrib
 
   <script>document.addEventListener('pointerdown',function(e){if(e.target&&e.target.closest&&e.target.closest('[data-checkout]')&&!window.__gdfWarm){window.__gdfWarm=1;try{fetch('https://signals.gitdealflow.com/api/health.json',{mode:'no-cors'});}catch(_){}}},{passive:true,capture:true});</script>
 
+<script src="/proof-bar.js" defer></script>
 </body>
 </html>

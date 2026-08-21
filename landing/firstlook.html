@@ -253,7 +253,7 @@
     <section class="mobile-section-pad max-w-3xl mx-auto px-4 sm:px-6 pb-4">
       <div class="mobile-card mobile-card-pad rounded-2xl border border-gray-700 bg-dark-900/60 p-8 text-center">
         <p class="text-brand-500 text-xs font-semibold uppercase tracking-wider mb-3">Before you spend €7</p>
-        <p class="text-gray-300 leading-relaxed max-w-2xl mx-auto">No testimonials here on purpose, check the work, don't trust a stranger's quote. The <a href="https://signals.gitdealflow.com/methodology" class="text-brand-500 underline">methodology</a> is on SSRN and a <a href="/report" class="text-brand-500 underline">sample issue</a> is public, so €7 buys you the real read, not a teaser. A person reads the repos and writes your dive, reply with a question and you'll get a written answer, in batches, never a bot. And it's covered by the 30-day Signal-or-It's-Free guarantee: any paid rung, 30 days, email me, every cent back. No forms, no survey.</p>
+        <h2 class="text-2xl font-bold mb-3">Buyer proof, when it exists</h2><p class="text-gray-300 leading-relaxed max-w-2xl mx-auto">GitDealFlow is early. Some subscribers prefer to stay private. Until a customer agrees to be named, judge the work directly: <a href="/report" class="text-brand-500 underline">read a full sample issue</a>, inspect the <a href="https://signals.gitdealflow.com/scorecard" class="text-brand-500 underline">public scorecard</a>, and read the <a href="https://signals.gitdealflow.com/methodology" class="text-brand-500 underline">methodology</a>. Try any paid tier for 30 days, or get every cent back. When a customer agrees to be named, their role, firm, and exact use case will appear here. No anonymous quotes.</p>
       </div>
     </section>
 
@@ -274,6 +274,8 @@
 
       <button type="button" data-checkout class="btn btn-cta btn-lg w-full sm:w-auto"><span data-cta-label>Get my First Look &rarr;</span></button>
       <p id="firstlook-msg" class="text-gray-400 text-sm mt-4">€7 once · secure checkout via Stripe</p>
+      <aside data-gdf-public-proof hidden class="max-w-lg mx-auto mt-5 rounded-xl border border-sky-700/40 bg-sky-950/30 p-5 text-left"><p class="text-sky-300 text-xs font-semibold uppercase tracking-wider mb-2">Public scorecard, updated <span data-proof-date></span></p><p data-proof-counts class="text-gray-100 font-semibold"></p><p class="text-gray-300 text-sm mt-2">Each pick is dated before its 60-day and 90-day checks. <a href="https://signals.gitdealflow.com/scorecard" class="text-brand-500 underline">See every pick and grading rule →</a></p></aside>
+      <p class="text-gray-300 text-sm mt-4">Pay securely with Stripe. Card details never touch GitDealFlow. 30-day Signal-or-It&apos;s-Free: email <a href="mailto:signal@gitdealflow.com" class="text-brand-500 underline">signal@gitdealflow.com</a> within 30 days for a full refund. No form. No survey. <a href="/privacy" class="text-brand-500 underline">Privacy</a> · <a href="/terms" class="text-brand-500 underline">Refund terms</a></p>
     </section>
 
     <section class="mobile-section-pad max-w-3xl mx-auto px-4 sm:px-6 pb-8 text-center">
@@ -555,5 +557,6 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&t.getAttrib
     })();
   </script>
 
+<script src="/proof-bar.js" defer></script>
 </body>
 </html>

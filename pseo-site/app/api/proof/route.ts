@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import { getCache } from "@vercel/functions";
-import { computeScorecard } from "@/lib/predictions";
+import { getPublicProof } from "@/lib/public-proof";
 import proofCounters from "@/data/proof-counters.json";
 
 /**
@@ -82,25 +82,16 @@ async function getActiveSubscriberCount(): Promise<number> {
 
 export async function GET(request: Request) {
   const origin = request.headers.get("origin") || "";
-  const scorecard = computeScorecard();
+  const proof = getPublicProof();
   const subscribers = await getActiveSubscriberCount();
-
-  const hits = scorecard.raised + scorecard.acquired + scorecard.ipo;
-  const misses = scorecard.noEvent + scorecard.shutdown;
 
   return NextResponse.json(
     {
-      asOf: new Date().toISOString(),
+      asOf: proof.asOf,
       subscribers,
       issuesSent: proofCounters.issuesSent,
       firstIssueDate: proofCounters.firstIssueDate,
-      scorecard: {
-        picks: scorecard.picksTotal,
-        hits,
-        misses,
-        pending: scorecard.picksPending,
-        hitRatePct: scorecard.hitRatePct,
-      },
+      scorecard: proof.scorecard,
     },
     { headers: corsHeaders(origin) },
   );

@@ -6,6 +6,8 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { DEFAULT_HREFLANG_LANGUAGES } from "@/lib/hreflang";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
+import { PublicScorecardProof } from "@/components/PublicScorecardProof";
+import { getPublicProof } from "@/lib/public-proof";
 import {
   getCurrentPredictionWeek,
   getAllPredictionWeeks,
@@ -64,6 +66,7 @@ export default function PredictedPage() {
   const week = getCurrentPredictionWeek();
   const allWeeks = getAllPredictionWeeks();
   const score = computeScorecard();
+  const proof = getPublicProof();
 
   if (!week) {
     return (
@@ -222,7 +225,9 @@ export default function PredictedPage() {
           </p>
         </header>
 
-        {/* Public scorecard */}
+        <PublicScorecardProof proof={proof} />
+
+        {/* Current-week scorecard detail */}
         <section
           className="mb-8 rounded-xl border border-sky-700/40 bg-sky-950/30 p-6"
           aria-label="Public scorecard"
