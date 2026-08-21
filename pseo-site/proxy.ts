@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import type { NextRequest } from "next/server";
 import { detectAgentBot } from "@/lib/agent-bots";
+import { buildRedditPageview, captureRedditPageview } from "@/lib/reddit-attribution";
 import { researchPaperLeafNoindexByPath } from "@/content/research-paper-policy";
 import { isPagePruned } from "@/content/pruned-pages";
 
@@ -336,11 +337,23 @@ export async function proxy(request: NextRequest) {
   // not just HTML pages. Human traffic is untouched: no bot label means no
   // capture and no added latency.
   const userAgent = request.headers.get("user-agent") || "";
-  if (!ASSET_EXT.test(pathname)) {
-    const botLabel = resolveBotLabel(userAgent);
-    if (botLabel) {
-      await captureBotCrawl(request, botLabel);
-    }
+  const botLabel = !ASSET_EXT.test(pathname) ? resolveBotLabel(userAgent) : null;
+  if (botLabel) {
+    await captureBotCrawl(request, botLabel);
+  }
+
+  // A Reddit campaign is captured only for a canonical, human GET request with
+  // the complete organic UTM shape. DNT/GPC, bots, malformed URLs, previews,
+  // assets, and non-GET requests cannot enter the first-party event stream.
+  const privacyOptOut =
+    request.headers.get("dnt") === "1" ||
+    request.headers.get("sec-gpc") === "1";
+  if (!ASSET_EXT.test(pathname) && request.method === "GET" && !botLabel && !privacyOptOut) {
+    const redditPageview = buildRedditPageview(
+      request.nextUrl,
+      request.headers.get("x-forwarded-for") || "",
+    );
+    await captureRedditPageview(redditPageview, POSTHOG_CAPTURE, POSTHOG_KEY);
   }
 
   // Public data feeds (signals.json / signals.csv). The route handlers set
