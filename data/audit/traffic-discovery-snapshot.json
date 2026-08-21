@@ -1,0 +1,269 @@
+{
+  "generatedAt": "2026-08-21T09:37:27.610Z",
+  "domains": {
+    "gitdealflow.com": {
+      "sitemapUrls": 382,
+      "sitemapFiles": 2,
+      "invalidSitemaps": [],
+      "robotsAllows": {
+        "googlebot": true,
+        "gptbot": true,
+        "claudeBot": true,
+        "perplexityBot": true
+      },
+      "headers": {
+        "httpsRedirect": true,
+        "wwwRedirect": true,
+        "hsts": true
+      },
+      "sampledPages": [
+        {
+          "url": "https://gitdealflow.com/",
+          "status": 200,
+          "finalUrl": "https://gitdealflow.com/",
+          "responseMs": 71,
+          "title": "GitDealFlow: Find Technical Startups Before the Round Is Public",
+          "description": "GitDealFlow helps angels, scouts, and seed investors find technical startups building fast before a funding round is public, using weekly public GitHub signals.",
+          "canonical": "https://gitdealflow.com/",
+          "h1Count": 1,
+          "schemaTypes": [
+            "BreadcrumbList"
+          ],
+          "schemaErrors": [],
+          "visibleWords": 4229,
+          "claimTokens": [
+            "219 fundraises"
+          ]
+        },
+        {
+          "url": "https://gitdealflow.com/research/github-velocity-correlation-study",
+          "status": 200,
+          "finalUrl": "https://gitdealflow.com/research/github-velocity-correlation-study",
+          "responseMs": 179,
+          "title": "GitHub Engineering Velocity and Fundraising: Correlation Study",
+          "description": "A peer-reviewed study on the correlation between GitHub commit velocity and startup fundraising events, published on SSRN.",
+          "canonical": "https://gitdealflow.com/research/github-velocity-correlation-study",
+          "h1Count": 1,
+          "schemaTypes": [
+            "FAQPage",
+            "BreadcrumbList",
+            "Article"
+          ],
+          "schemaErrors": [],
+          "visibleWords": 531,
+          "claimTokens": [
+            "3-6 weeks",
+            "peer-reviewed"
+          ]
+        },
+        {
+          "url": "https://gitdealflow.com/dataset",
+          "status": 200,
+          "finalUrl": "https://gitdealflow.com/dataset",
+          "responseMs": 109,
+          "title": "Free Startup GitHub Signals Dataset: Download CSV + JSON | GitDealFlow",
+          "description": "Download 350+ trending startups ranked by GitHub engineering velocity. Free CSV and JSON exports. Updated weekly. CC BY 4.0, cite GitDealFlow as source.",
+          "canonical": "https://gitdealflow.com/dataset",
+          "h1Count": 1,
+          "schemaTypes": [
+            "Dataset",
+            "FAQPage",
+            "BreadcrumbList"
+          ],
+          "schemaErrors": [],
+          "visibleWords": 751,
+          "claimTokens": []
+        },
+        {
+          "url": "https://gitdealflow.com/llms.txt",
+          "status": 200,
+          "finalUrl": "https://gitdealflow.com/llms.txt",
+          "responseMs": 59,
+          "title": null,
+          "description": null,
+          "canonical": null,
+          "h1Count": 0,
+          "schemaTypes": [],
+          "schemaErrors": [],
+          "visibleWords": 1405,
+          "claimTokens": [
+            "3-6 weeks"
+          ]
+        }
+      ]
+    },
+    "signals.gitdealflow.com": {
+      "sitemapUrls": 1729,
+      "sitemapFiles": 10,
+      "invalidSitemaps": [],
+      "robotsAllows": {
+        "googlebot": true,
+        "gptbot": true,
+        "claudeBot": true,
+        "perplexityBot": true
+      },
+      "headers": {
+        "httpsRedirect": true,
+        "wwwRedirect": true,
+        "hsts": true
+      },
+      "sampledPages": [
+        {
+          "url": "https://signals.gitdealflow.com/",
+          "status": 200,
+          "finalUrl": "https://signals.gitdealflow.com/",
+          "responseMs": 397,
+          "title": "GitHub Momentum 3-6 Weeks Pre-Round | VC Deal Flow Signal",
+          "description": "A deal-flow signal tool for investors, not a fund. See which startups are accelerating before the round feels obvious, public engineering signals, calmer timing, and direct proof.",
+          "canonical": "https://signals.gitdealflow.com",
+          "h1Count": 1,
+          "schemaTypes": [
+            "SiteNavigationElement"
+          ],
+          "schemaErrors": [],
+          "visibleWords": 5400,
+          "claimTokens": [
+            "3-6 weeks"
+          ]
+        },
+        {
+          "url": "https://signals.gitdealflow.com/methodology",
+          "status": 200,
+          "finalUrl": "https://signals.gitdealflow.com/methodology",
+          "responseMs": 109,
+          "title": "GitDealFlow Methodology: Signals 21-47 Days Before the Round | VC Deal Flow Signal",
+          "description": "How GitDealFlow measures GitHub engineering acceleration: data sources, formulas, signal rules, update cadence, and the proof behind the timing-first thesis.",
+          "canonical": "https://signals.gitdealflow.com/methodology",
+          "h1Count": 1,
+          "schemaTypes": [
+            "SiteNavigationElement",
+            "BreadcrumbList"
+          ],
+          "schemaErrors": [],
+          "visibleWords": 2149,
+          "claimTokens": []
+        },
+        {
+          "url": "https://signals.gitdealflow.com/dataset",
+          "status": 200,
+          "finalUrl": "https://signals.gitdealflow.com/dataset",
+          "responseMs": 383,
+          "title": "Open Dataset, VC Deal Flow Signal: GitHub Engineering Velocity Panel | VC Deal Flow Signal",
+          "description": "Download the open VC Deal Flow Signal dataset (CC BY 4.0). 309 rows across three CSV configurations (startup_signals, sector_aggregates, signal_type_timeseries). Mirrored on Hugging Face, Zenodo, Kaggle, Data.world. DOI 10.5281/zenodo.19650920.",
+          "canonical": "https://signals.gitdealflow.com/dataset",
+          "h1Count": 1,
+          "schemaTypes": [
+            "SiteNavigationElement",
+            "Dataset",
+            "BreadcrumbList"
+          ],
+          "schemaErrors": [],
+          "visibleWords": 834,
+          "claimTokens": []
+        },
+        {
+          "url": "https://signals.gitdealflow.com/llms.txt",
+          "status": 200,
+          "finalUrl": "https://signals.gitdealflow.com/llms.txt",
+          "responseMs": 143,
+          "title": null,
+          "description": null,
+          "canonical": null,
+          "h1Count": 0,
+          "schemaTypes": [],
+          "schemaErrors": [],
+          "visibleWords": 22459,
+          "claimTokens": [
+            "6-12 weeks",
+            "3-6 weeks"
+          ]
+        }
+      ]
+    }
+  },
+  "claimDrift": [
+    {
+      "url": "https://gitdealflow.com/",
+      "token": "219 fundraises",
+      "context": "GitDealFlow: Find Technical Startups Before the Round Is Public"
+    },
+    {
+      "url": "https://gitdealflow.com/research/github-velocity-correlation-study",
+      "token": "3-6 weeks",
+      "context": "GitHub Engineering Velocity and Fundraising: Correlation Study"
+    },
+    {
+      "url": "https://gitdealflow.com/research/github-velocity-correlation-study",
+      "token": "peer-reviewed",
+      "context": "GitHub Engineering Velocity and Fundraising: Correlation Study"
+    },
+    {
+      "url": "https://gitdealflow.com/llms.txt",
+      "token": "3-6 weeks",
+      "context": ""
+    },
+    {
+      "url": "https://signals.gitdealflow.com/",
+      "token": "3-6 weeks",
+      "context": "GitHub Momentum 3-6 Weeks Pre-Round | VC Deal Flow Signal"
+    },
+    {
+      "url": "https://signals.gitdealflow.com/llms.txt",
+      "token": "6-12 weeks",
+      "context": ""
+    },
+    {
+      "url": "https://signals.gitdealflow.com/llms.txt",
+      "token": "3-6 weeks",
+      "context": ""
+    }
+  ],
+  "endpointChecks": [
+    {
+      "url": "https://gitdealflow.com/llms.txt",
+      "status": 200,
+      "contentType": "text/plain; charset=utf-8"
+    },
+    {
+      "url": "https://gitdealflow.com/llms-full.txt",
+      "status": 200,
+      "contentType": "text/plain; charset=utf-8"
+    },
+    {
+      "url": "https://signals.gitdealflow.com/.well-known/mcp.json",
+      "status": 200,
+      "contentType": "application/json"
+    },
+    {
+      "url": "https://signals.gitdealflow.com/.well-known/agent-card.json",
+      "status": 200,
+      "contentType": "application/json"
+    },
+    {
+      "url": "https://signals.gitdealflow.com/api/openapi.json",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8"
+    },
+    {
+      "url": "https://signals.gitdealflow.com/api/agent/tools",
+      "status": 200,
+      "contentType": "application/json"
+    },
+    {
+      "url": "https://signals.gitdealflow.com/api/signals.json",
+      "status": 200,
+      "contentType": "application/json; charset=utf-8"
+    },
+    {
+      "url": "https://signals.gitdealflow.com/api/signals.csv",
+      "status": 200,
+      "contentType": "text/csv; charset=utf-8"
+    },
+    {
+      "url": "https://signals.gitdealflow.com/api/nlweb",
+      "status": 200,
+      "contentType": "application/json"
+    }
+  ],
+  "failures": []
+}

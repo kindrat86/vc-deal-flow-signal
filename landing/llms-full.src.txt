@@ -86,7 +86,7 @@ Free Startup GitHub Signals Dataset, Download CSV + JSON. 350+ trending startups
 
 URL: https://gitdealflow.com/cheatsheet
 
-The Velocity Verdict Cheat Sheet. Free one-page cheat sheet: the three-signal pattern (velocity surge, contributor spike, infrastructure buildout) that preceded 219 fundraises, with a scannable table and the 14-day window to watch. Based on the SSRN-published methodology. Median lead time 5.4 weeks, top-decile precision ~65% in the 219-fundraise panel.
+The Velocity Verdict Cheat Sheet. Free one-page cheat sheet: the three-signal pattern (velocity surge, contributor spike, infrastructure buildout) that appeared in 219 startup-period observations across 55 startups, with a scannable table and the 14-day window to watch. Based on the SSRN-published methodology. Median lead time 5.4 weeks, top-decile precision ~65% in the 219-fundraise panel.
 
 ---
 

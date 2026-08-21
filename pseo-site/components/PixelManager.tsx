@@ -10,16 +10,13 @@ import Script from "next/script";
  * appear in the page source on every ad-tracked site.
  */
 export default function PixelManager() {
-  // Pixel IDs are public by design (they appear in page source on every
-  // ad-tracked site). Hardcoded fallbacks keep pixels live even when the
-  // build path cannot inline NEXT_PUBLIC_* env vars: deploy_from_commit.sh
-  // builds inside a git-archive export that is not project-linked, so env
-  // vars resolve empty there (GA4 sat un-inlined for hours on 2026-08-15
-  // despite the var being set in Vercel). Env vars, when present, win.
-  const meta = process.env.NEXT_PUBLIC_META_PIXEL_ID || "243382336082500";
+  // Paid-platform pixels are deliberately disabled. GitDealFlow uses earned and
+  // community distribution, so the static site only keeps GA4 and PostHog-based
+  // first-party measurement active.
+  const meta = "";
   const ga4 = process.env.NEXT_PUBLIC_GA4_ID || "G-7SV2SNZE4C";
   const googleAds = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID;
-  const linkedin = process.env.NEXT_PUBLIC_LINKEDIN_PARTNER_ID || "10702217";
+  const linkedin = "";
   const twitter = process.env.NEXT_PUBLIC_TWITTER_PIXEL_ID;
   const tiktok = process.env.NEXT_PUBLIC_TIKTOK_PIXEL_ID;
   const reddit = process.env.NEXT_PUBLIC_REDDIT_PIXEL_ID;

@@ -242,7 +242,7 @@ ARTICLES = [
             ]),
             ("Why commit velocity predicts fundraising", [
                 "The pattern is causal, not just correlational. When a startup prepares to raise, it accelerates: founders push to ship the roadmap items they will demo, engineers race to close the gaps diligence will expose, and the team front-loads work before the distraction of a fundraise process.",
-                "That acceleration shows up in public GitHub activity before it shows up anywhere else. A round announcement, a press hit, or a Crunchbase entry is a lagging indicator; the commit spike that preceded it is the leading indicator. GitDealFlow's published methodology (SSRN abstract 6606558) documents this lead time across a panel of 219 fundraises.",
+                "That acceleration shows up in public GitHub activity before it shows up anywhere else. A round announcement, a press hit, or a Crunchbase entry is a lagging indicator; the commit spike that preceded it is the leading indicator. GitDealFlow's published methodology (SSRN abstract 6606558) documents this lead time across a panel of 219 startup-period observations across 55 startups.",
             ]),
             ("How to read commit velocity like an investor", [
                 "Three questions turn a raw commit count into a signal:",

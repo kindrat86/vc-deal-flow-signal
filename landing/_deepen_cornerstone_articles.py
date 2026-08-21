@@ -57,7 +57,7 @@ DEEPEN = {
             ]),
             ("Why commit velocity predicts fundraising", [
                 "The pattern is causal, not just correlational. When a startup prepares to raise, it accelerates. Founders push to ship the roadmap items they will demo, engineers race to close the gaps diligence will expose, and the team front-loads work before the distraction of a fundraise process absorbs everyone's attention.",
-                "That acceleration shows up in public GitHub activity before it shows up anywhere else. A round announcement, a press hit, or a Crunchbase entry is a lagging indicator; the commit spike that preceded it is the leading indicator. GitDealFlow's published methodology (SSRN abstract 6606558, CC BY 4.0) documents this lead time across a research panel of 219 fundraises, with signals typically appearing 21 to 47 days before the round hits the press.",
+                "That acceleration shows up in public GitHub activity before it shows up anywhere else. A round announcement, a press hit, or a Crunchbase entry is a lagging indicator; the commit spike that preceded it is the leading indicator. GitDealFlow's published methodology (SSRN abstract 6606558, CC BY 4.0) documents this lead time across a research panel of 219 startup-period observations across 55 startups, with signals typically appearing 21 to 47 days before the round hits the press.",
                 "The mechanism is intuitive once you see it: fundraising compresses the roadmap, and a compressed roadmap looks like a velocity spike in the commit graph. It is not that founders fabricate activity; it is that the weeks before a raise are genuinely the busiest weeks a team has.",
             ]),
             ("How to read commit velocity on GitHub yourself", [

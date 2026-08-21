@@ -1200,9 +1200,9 @@ check(
 
 check(
   "components/PixelManager.tsx",
-  "components/PixelManager.tsx lost the hardcoded GA4/LinkedIn fallback IDs; pixels go dark again on every deploy_from_commit.sh build (env vars do not inline in the git-archive export path).",
-  (s) => s.includes('|| "G-7SV2SNZE4C"') && s.includes('|| "10702217"'),
-  "keep the fallback defaults: ga4 ... || \"G-7SV2SNZE4C\", linkedin ... || \"10702217\" (env vars win when present)",
+  "components/PixelManager.tsx lost its GA4 fallback or re-enabled a paid-platform pixel. GitDealFlow uses earned/community distribution, so Meta and LinkedIn must stay disabled by source, not just missing deployment variables.",
+  (s) => s.includes('|| "G-7SV2SNZE4C"') && s.includes('const meta = ""') && s.includes('const linkedin = ""') && !s.includes('NEXT_PUBLIC_META_PIXEL_ID') && !s.includes('NEXT_PUBLIC_LINKEDIN_PARTNER_ID'),
+  "keep the GA4 fallback and explicit empty meta/linkedin constants; do not revive paid pixels without an explicit reviewed consent implementation",
 );
 
 check(

@@ -1100,7 +1100,7 @@ DATA_PAGES = [
 # Category: /research/
 RESEARCH_PAGES = [
     ("github-velocity-correlation-study", "GitHub Engineering Velocity and Fundraising, Correlation Study",
-     "A peer-reviewed study on the correlation between GitHub commit velocity and startup fundraising events, published on SSRN.",
+     "An SSRN preprint on the correlation between GitHub commit velocity and startup fundraising events, published on SSRN.",
      [
          ("Study Overview",
           ["This study analyzes the relationship between public GitHub activity and fundraising events across 350+ venture-backed startups.",
@@ -1112,7 +1112,7 @@ RESEARCH_PAGES = [
            "The strongest signal pattern (sustained velocity increase + contributor growth for 2+ weeks) predicts fundraises with 78% precision."]),
      ],
      [
-         ("How was this study validated?", "The findings have been validated against ~1,200 fundraise events across 15 sectors. The SSRN preprint is peer-reviewed by the academic community."),
+         ("How was this study validated?", "The preprint documents a retrospective panel of 219 startup-period observations across 55 startups. It is public and open to scrutiny."),
      ]),
 
     ("engineering-momentum-benchmarks", "Engineering Momentum Benchmarks by Sector",
