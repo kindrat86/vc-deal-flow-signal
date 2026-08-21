@@ -975,7 +975,7 @@ npx -y @gitdealflow/mcp-signal
     tldr:
       "Use public GitHub engineering activity, commit-velocity change, contributor growth, and infrastructure buildout as research inputs. The descriptive 219-observation SSRN release has no linked funding-event labels. GitDealFlow exposes these measures through a free API and MCP server, where each flagged result should be independently reviewed before any decision.",
     definition:
-      "Track public engineering activity, including commit-velocity change, contributor growth, and infrastructure buildout. The descriptive 219-observation SSRN release has no linked funding-event labels, and free weekly feeds make the measures reproducible without a paid database.",
+      "Track public engineering activity, including commit-velocity change, contributor growth, and infrastructure buildout. The descriptive 219-observation SSRN release has no linked funding-event labels, and free weekly feeds make the measures reproducible without a paid database. Use any flagged pattern as a research prompt, then verify investment-relevant facts independently.",
     steps: [
       {
         name: "Watch commit velocity, not announcements",
