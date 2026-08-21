@@ -191,7 +191,7 @@ export default function NinetySecondWalkthroughPage() {
             </li>
             <li className="border-l-2 border-rose-700 pl-4">
               <strong className="text-gray-100">&ldquo;The good orgs are private.&rdquo;</strong>{" "}
-              The 219-startup panel is venture-backed and 100% public-GitHub.
+              The 219-observation panel is venture-backed and 100% public-GitHub.
               Private repos aren&rsquo;t needed for the signal to fire.
             </li>
             <li className="border-l-2 border-rose-700 pl-4">
@@ -213,7 +213,7 @@ export default function NinetySecondWalkthroughPage() {
               → Live dashboard, refreshed every Monday at 06:00 UTC.
             </li>
             <li>
-              → 219-startup panel dataset, replicate the regression yourself.
+              → 219-observation panel dataset, replicate the regression yourself.
             </li>
             <li>
               → Monthly sector deep-dive PDF, your sector.

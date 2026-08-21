@@ -973,9 +973,9 @@ npx -y @gitdealflow/mcp-signal
     description:
       "How to find startups before they raise: track commit velocity, contributor growth, and infra buildout. Signals lead announcements by 21-47 days. Free API.",
     tldr:
-      "The most reliable way to find startups before they raise is to track engineering acceleration on public GitHub: commit-velocity change, contributor growth, and infrastructure buildout. Across the 219-startup panel these signals preceded fundraise announcements by 21 to 47 days, and GitDealFlow exposes them as a free API and MCP server.",
+      "Use public GitHub engineering activity, commit-velocity change, contributor growth, and infrastructure buildout as research inputs. The descriptive 219-observation SSRN release has no linked funding-event labels. GitDealFlow exposes these measures through a free API and MCP server, where each flagged result should be independently reviewed before any decision.",
     definition:
-      "To find startups before they raise, track engineering acceleration on public GitHub: commit-velocity change, contributor growth, and infrastructure buildout. Across a 219-startup panel, these signals surfaced 21 to 47 days before the fundraise announcement, and free weekly feeds make the method reproducible without a paid database.",
+      "Track public engineering activity, including commit-velocity change, contributor growth, and infrastructure buildout. The descriptive 219-observation SSRN release has no linked funding-event labels, and free weekly feeds make the measures reproducible without a paid database.",
     steps: [
       {
         name: "Watch commit velocity, not announcements",
@@ -1007,13 +1007,13 @@ npx -y @gitdealflow/mcp-signal
 3. **Infrastructure buildout.** Three or more new public repositories in 30 days. Companies preparing to scale create infrastructure repos (auth, observability, billing) ahead of the round.
 4. **Framework migration.** General acceleration not fitting the other categories, often indicating a tech-stack shift that founders want to ship before they raise.
 
-**How much lead time this buys.** Across the 219-startup longitudinal panel (SSRN-indexed methodology, CC BY 4.0), engineering acceleration surfaced 21 to 47 days before the fundraise announcement. That window is where a scout can open a conversation while the round is still quiet, instead of competing with everyone who reads the same funding database each morning.
+**What the research release supports.** The SSRN-indexed methodology, released under CC BY 4.0, contains a descriptive 219-observation panel of public engineering activity. It has no linked funding-event labels, so use a pattern as a reason to research further, not as a financing forecast.
 
 **For fully automated discovery,** wire the MCP server into a Claude / Cursor / OpenAI-Agents workflow that runs on a schedule. The function-calling API is at /api/agent/tools for non-MCP runtimes.`,
     facts: [
       {
         claim:
-          "Engineering acceleration surfaced fundraises 21 to 47 days early across a 219-startup longitudinal panel.",
+          "The SSRN research release contains 219 startup-period observations of public engineering activity and no linked funding-event labels.",
         sourceUrl: "https://signals.gitdealflow.com/methodology",
         sourceLabel: "Methodology (219-startup panel)",
       },
@@ -1041,11 +1041,11 @@ npx -y @gitdealflow/mcp-signal
         // verbatim PAA (harvested 2026-08-17, "how to find startups before
         // they raise" SERP); GSC-adjacent demand also in the answers cluster.
         q: "How to find early stage startups?",
-        a: "Combine three sources: public engineering activity (commit velocity, contributor growth, new infrastructure repositories on GitHub), formation signals (incorporation filings, first hires), and community traces (niche forums, open-source release notes). On the 219-observation panel behind this site, sustained engineering acceleration appeared 21 to 47 days before the fundraise announcement, which is why code-level signals are the earliest automatable layer.",
+        a: "Combine three sources: public engineering activity (commit velocity, contributor growth, new infrastructure repositories on GitHub), formation signals (incorporation filings, first hires), and community traces (niche forums, open-source release notes). The 219-observation release behind this site documents public engineering activity and no linked funding-event labels, so use code-level signals as a research input alongside independent verification.",
       },
       {
         q: "How do you find startups before they raise?",
-        a: "Track public engineering acceleration: commit-velocity change over rolling 14-day windows, contributor growth above 50% over six weeks, and new infrastructure repositories. Across the 219-startup panel these patterns appeared 21 to 47 days before fundraise announcements, before most databases listed the round.",
+        a: "Track public engineering acceleration: commit-velocity change over rolling 14-day windows, contributor growth above 50% over six weeks, and new infrastructure repositories. The descriptive 219-observation release has no linked funding-event labels, so verify any financing question independently.",
       },
       {
         q: "How far ahead can you detect a fundraise?",
@@ -1404,12 +1404,12 @@ For agent runtimes that don't yet support MCP, GitDealFlow exposes the same tool
     query: "Which GitHub metrics predict startup fundraising?",
     h1: "Which GitHub Metrics Predict Startup Fundraising?",
     description:
-      "Four GitHub-observable patterns precede fundraise announcements by 3-6 weeks: commit-velocity surge, contributor growth, infrastructure buildout, and repo-creation bursts. Validated against 219 startup-period observations in a public SSRN preprint.",
+      "Four GitHub-observable engineering patterns to inspect: commit-velocity surge, contributor growth, infrastructure buildout, and repo-creation bursts. The public SSRN release contains 219 startup-period observations and no linked funding-event labels.",
     tldr:
       "Four GitHub-observable patterns have historically preceded fundraise announcements by 3-6 weeks: commits per day rising 50%+ in a 14-day window, contributor count rising 30%+, infrastructure-shape commits (Docker, k8s, CI, monitoring) appearing in volume, and repository-creation bursts of 3+ new public repos in a month. Each is noisy alone; combined they carry the strongest lift on the 219-startup SSRN panel.",
     // 2026-08-16 featured-snippet rebuild: 40-60w neutral direct answer.
     definition:
-      "Four GitHub patterns have historically preceded fundraise announcements by three to six weeks on a 219-startup SSRN panel: commit velocity rising 50%+ over a 14-day window, unique contributors rising 30%+, infrastructure-shape commits (Docker, Kubernetes, CI, observability) appearing in volume, and bursts of three or more new public repositories in 30 days. Combined, they carry the strongest lift.",
+      "Four GitHub patterns worth inspecting in public engineering activity are commit velocity rising over a 14-day window, contributor growth, infrastructure-shape commits, and bursts of new public repositories. The descriptive SSRN release contains 219 startup-period observations and no linked funding-event labels.",
     body: `**No GitHub metric predicts fundraising with certainty; three of them correlate with pre-announcement behavior reliably enough to be worth watching.** The correlation runs through a mechanism, not magic: rounds fund scaling, and scaling leaves engineering exhaust before it leaves a press release.
 
 **The three metrics with a mechanism.** Commit-velocity change: acceleration in weekly commits reflects shipping intensity rising, typically as a team gears a product toward the milestone a raise will fund. Distinct-contributor growth: new engineers appear on public repos weeks before headcount is announced, hiring is the single most direct pre-raise tell. Repository and dependency expansion: new repositories, languages, and dependencies map to scope growth, second products, infrastructure builds, integrations that suggest a company expanding its surface area. Each is observable, timestamped, and hard to backdate.
@@ -1458,7 +1458,7 @@ For agent runtimes that don't yet support MCP, GitDealFlow exposes the same tool
       },
       {
         q: "What is the false positive rate?",
-        a: "On the 219-startup panel top-decile precision, what share of the top 10% of weekly-flagged orgs go on to announce a fundraise within 12 weeks, is validated openly on /scorecard (not yet established); the rest are false positives or fundraises that did not happen during the observation window.",
+        a: "The descriptive 219-observation panel has no linked funding-event labels, so it does not establish precision or a financing forecast. Treat a flagged org as a research prompt and verify any outcome independently.",
       },
       {
         q: "Can private repositories spoil the signal?",
@@ -1673,7 +1673,7 @@ The tools are free in perpetuity. There is no API key gate. The free tier is str
 
 **Leading signals** fire before the event you care about. Examples:
 
-- **GitHub engineering acceleration**, commit velocity, contributor growth, and infrastructure buildouts in public repositories. Validated lead time on a 219-startup panel: median 5.4 weeks before fundraise announcement (SSRN preprint at ssrn.com/abstract=6606558).
+- **GitHub engineering acceleration**, commit velocity, contributor growth, and infrastructure buildouts in public repositories. The SSRN preprint at ssrn.com/abstract=6606558 contains a descriptive 219-observation panel with no linked funding-event labels.
 - **Hiring velocity**, sudden spikes in technical job postings, especially for senior engineers. Often visible 4-12 weeks before round close.
 - **Founder Twitter signal velocity**, quote-tweet patterns from other technical founders, increased mention frequency in technical-Twitter circles.
 - **Web traffic acceleration**, month-over-month traffic growth on the company landing page, especially when paired with engineering acceleration.
@@ -1914,7 +1914,7 @@ The tools are free in perpetuity. There is no API key gate. The free tier is str
 
 **Question 1, Is the underlying GitHub data correct?** Yes, definitionally. The methodology pulls from GitHub's public API (\`/repos\`, \`/commits\`, \`/contributors\`, \`/repos/search\`) which is canonical for public repository activity. There is no inference, scraping, or estimation at this layer.
 
-**Question 2, Does the leading-signal classification match reality?** This is the question investors actually care about. The validation panel published in the SSRN preprint at ssrn.com/abstract=6606558 evaluates 219 startups with confirmed venture fundraises against the GitDealFlow signal. The headline numbers:
+**Question 2, What does the research release establish?** The SSRN preprint at ssrn.com/abstract=6606558 documents 219 startup-period observations of public engineering activity. It has no linked funding-event labels, so it does not establish financing prediction performance.
 
 - **Precision at top decile**: validated openly on /scorecard (not yet established). Of the top 10% of orgs flagged in any given week, the share that go on to announce a fundraise within 12 weeks. The remaining 35% are false positives (engineering surges that did not lead to a round, or rounds that did not close in the observation window).
 - **Median lead time for true positives**: 5.4 weeks between signal threshold crossing and announced fundraise.
@@ -3101,7 +3101,7 @@ Restart Claude Desktop. The six tools (get_trending_startups, search_startups_by
       "GitHub stars measure attention: they spike on Hacker News or Twitter mentions. Commit velocity measures engineering investment: sustained shipping by a team. For VC sourcing, momentum (commit velocity, contributor growth, infrastructure patterns) is the signal that correlates with fundraises, while stars correlate weakly because attention is necessary but not sufficient: many high-star projects never raise, and many low-star projects do.",
     // 2026-08-16 featured-snippet rebuild: 40-60w neutral direct answer.
     definition:
-      "For investors, momentum matters more than stars. Stars measure attention and spike on Hacker News or Twitter mentions; commit velocity measures sustained engineering investment. On the 219-observation SSRN panel, top-decile engineering-momentum carried roughly 65% precision and a 5.4-week median lead before fundraises, while star-only signals showed substantially lower precision.",
+      "For investors, momentum and stars measure different things. Stars measure attention and can spike on Hacker News or Twitter mentions; commit velocity measures public engineering activity. The 219-observation SSRN release has no linked funding-event labels, so it does not establish comparative financing precision.",
     body: `Two completely different metrics that get confused in casual analysis.
 
 **GitHub stars** are an attention signal. A user clicks the star button on a repo to bookmark it or signal interest. Stars accumulate when a project gets mentioned on Hacker News, Twitter, dev.to, in a popular newsletter, or in a conference talk. A 10K-star spike from a single Hacker News front-page hit tells you the project got attention; it tells you nothing about whether the team is shipping, whether the underlying engineering investment is sustained, or whether a fundraise is in motion.
@@ -3600,7 +3600,7 @@ Restart Claude Desktop. The six tools (get_trending_startups, search_startups_by
 
 **Why "Index" not "ranking."** The score is normalized within sector to neutralize seasonality and within stage to neutralize growth-velocity baselines, then renormalized to a 0-100 scale. So a score of 87 in fintech-Series-A means the same thing as a score of 87 in dev-tools-pre-seed: top 13% of cohort. The renormalization makes it an *index* rather than a raw ranking.
 
-**Backtest performance.** Across the historical GitDealFlow panel (Q3-Q4 2025, 350+ orgs, 219 startup-period observations), top-quintile Index moves are hypothesized to precede fundraise announcements by a few weeks; lead time and precision are validated openly on /scorecard (not yet established). The descriptive panel is in the SSRN preprint.
+**Research basis.** Across the historical GitDealFlow panel (Q3-Q4 2025, 350+ orgs, 219 startup-period observations), the SSRN release documents public engineering activity and no linked funding-event labels. Treat index moves as research prompts rather than financing forecasts.
 
 **How to consume.** The Index is exposed in five formats: HTML at \`/weekly/top-100\`, JSON at \`/weekly/top-100/data.json\`, RSS at \`/weekly/top-100/feed.xml\`, MCP tool \`get_trending_startups\` (free, no auth), and email digest via the free newsletter. AI agents typically consume via the MCP tool or the JSON endpoint.`,
     facts: [
@@ -7910,7 +7910,7 @@ If the brief cannot survive on one page, the thinking is probably still too fuzz
 
 **Why 14 days.** The window is long enough to smooth weekly cadence (Friday deploys, weekend lulls, sprint boundaries) and short enough to react inside the three-to-six-week lead time before a fundraise announcement. A shorter window over-weights noise; a longer one misses the ramp.
 
-**Why it matters to investors.** Teams that are about to close a round raise hiring tempo and infrastructure spend in the weeks before the announcement. The public artifacts of that work show up as more commits, more contributors, and new repositories before the press release. Across the SSRN panel (219 startups, five quarters), GitHub engineering acceleration preceded fundraise announcements by a median of 31 days.
+**Why it matters to investors.** Teams that are about to close a round raise hiring tempo and infrastructure spend in the weeks before the announcement. The public artifacts of that work show up as more commits, more contributors, and new repositories before the press release. The SSRN release documents 219 startup-period observations of public engineering activity across five quarters, with no linked funding-event labels.
 
 **The caveats.** Commits are not code quality. Startups that develop in private monorepos are invisible. A one-off migration or vendor bump can spike the number without any real acceleration, which is why GitDealFlow requires the increase to hold across two consecutive windows and filters for bot and automation noise. Treat commit velocity as a ranking signal, not a recommendation.`,
     facts: [
@@ -8006,7 +8006,7 @@ If the brief cannot survive on one page, the thinking is probably still too fuzz
       },
       {
         claim:
-          "Across the SSRN panel (219 startups, five quarters), GitHub engineering acceleration preceded fundraise announcements by a median of 31 days.",
+          "The SSRN release documents 219 startup-period observations of public engineering activity across five quarters, with no linked funding-event labels.",
         sourceUrl: "https://ssrn.com/abstract=6606558",
         sourceLabel: "SSRN paper 6606558",
       },

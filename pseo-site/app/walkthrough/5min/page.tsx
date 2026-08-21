@@ -185,7 +185,7 @@ export default function FiveMinPerfectWebinarPage() {
             </li>
             <li className="border-l-2 border-rose-700 pl-4">
               <strong className="text-gray-100">&ldquo;The good orgs are private.&rdquo;</strong>{" "}
-              The 219-startup panel is venture-backed and 100% public-GitHub.
+              The 219-observation panel is venture-backed and 100% public-GitHub.
               Private repos are absent because they don&rsquo;t need to be
               there for the signal to fire.
             </li>
@@ -202,7 +202,7 @@ export default function FiveMinPerfectWebinarPage() {
           <h2 className="text-xl font-bold text-gray-100">The Stack, eight objects</h2>
           <ul className="space-y-1.5 text-gray-300 text-sm leading-relaxed">
             <li>→ Live dashboard, refreshed every Monday at 06:00 UTC.</li>
-            <li>→ 219-startup panel dataset, load it into any notebook, replicate the regression.</li>
+            <li>→ 219-observation panel dataset, load it into any notebook, replicate the regression.</li>
             <li>→ Monthly sector deep-dive PDF, top 25 ranked, contributor maps, three breakout candidates.</li>
             <li>→ Two free Chrome extensions (Crunchbase / Wellfound badge + GitHub Lookup).</li>
             <li>→ The MCP server, six tools inside Claude / Cursor. Free forever.</li>

@@ -86,7 +86,7 @@ Free Startup GitHub Signals Dataset, Download CSV + JSON. 350+ trending startups
 
 URL: https://gitdealflow.com/cheatsheet
 
-The Velocity Verdict Cheat Sheet. Free one-page cheat sheet: the three-signal pattern (velocity surge, contributor spike, infrastructure buildout) that preceded 219 fundraises, with a scannable table and the 14-day window to watch. Based on the SSRN-published methodology. Median lead time 5.4 weeks, top-decile precision ~65% in the 219-fundraise panel.
+The Velocity Verdict Cheat Sheet. Free one-page cheat sheet for reviewing velocity surge, contributor spike, and infrastructure buildout across a 14-day window. The SSRN release is descriptive: 219 startup-period observations of public engineering activity with no linked funding-event labels.
 
 ---
 
@@ -94,4 +94,4 @@ The Velocity Verdict Cheat Sheet. Free one-page cheat sheet: the three-signal pa
 
 URL: https://signals.gitdealflow.com/stats.json
 
-Every headline number as structured, citation-ready JSON: the 21 to 47 day fundraise lead time (median 5.4 weeks), top-decile precision ~65%, the 219-observation panel (55 startups, five quarters), commit-velocity distribution (median 71, p90 392 commits per 14 days), signal mix, and live coverage. Each stat carries a verbatim-quotable claim and a canonical source URL. Human-readable companion: https://signals.gitdealflow.com/stats. Cite as: VC Deal Flow Signal (signals.gitdealflow.com), SSRN preprint 6606558. CC BY 4.0. Open data deposit: https://zenodo.org/records/19650920.
+Structured, citation-ready JSON for the descriptive 219-observation panel (55 startups, five quarters), commit-velocity distribution, signal mix, and live coverage. The release has no linked funding-event labels. Each stat carries a verbatim-quotable claim and a canonical source URL. Human-readable companion: https://signals.gitdealflow.com/stats. Cite as: VC Deal Flow Signal (signals.gitdealflow.com), SSRN preprint 6606558. CC BY 4.0. Open data deposit: https://zenodo.org/records/19650920.

@@ -128,7 +128,7 @@ The interesting thing isn't the framework. The interesting thing is the conversa
 
 Most early-stage diligence reads the deck, the team, the market, and treats the engineering as a check-the-box. The deck says "we're building X" and you trust the team to deliver.
 
-A 219-round panel says you can do better than that.
+A 219-observation panel says you can do better than that.
 
 Specifically: there are seven GitHub-engineering signals that, in aggregate, materially predict whether a round closes inside the next 47 days. They don't replace the deck or the team conversation. They replace the *coin flip* of whether to take the meeting.
 
@@ -175,7 +175,7 @@ That conversation differential is what the framework actually buys you. The numb
     bestFor: "Existing newsletters with a recurring 'recommended this week' or 'we've been reading' section",
     estimatedTimeToCustomize: "5 minutes",
     expectedCVR: "1-2% click-through; highest absolute conversions because newsletter audiences are warm",
-    body: `**Recommended this week.** I've been running through the 30-day Deal Flow Reset at GitDealFlow, a free email course teaching seven GitHub signals that historically precede a fundraise (drawn from a 219-round panel published on SSRN). Week 1 covers the atomic signals; weeks 2-4 build a real operational sourcing system around them. The thing that makes it useful, not theoretical, is the calibration backtest in week 2, you score a known recently-funded org at month -3 and see whether the framework would have caught the round before it closed. Free, no card, the framework is licensed CC BY 4.0. Subscribe at ${"signals.gitdealflow.com/challenge" + VIA_PARAM}.`,
+    body: `**Recommended this week.** I've been running through the 30-day Deal Flow Reset at GitDealFlow, a free email course teaching seven GitHub signals for public-engineering research (grounded in a 219-observation SSRN release with no linked funding-event labels). Week 1 covers the atomic signals; weeks 2-4 build a real operational sourcing system around them. The thing that makes it useful, not theoretical, is the calibration backtest in week 2, you score a known recently-funded org at month -3 and see whether the framework would have caught the round before it closed. Free, no card, the framework is licensed CC BY 4.0. Subscribe at ${"signals.gitdealflow.com/challenge" + VIA_PARAM}.`,
     customizationNotes: [
       "Replace 'I've been running through' with your own context, 'a reader sent me' / 'I came across' / 'I'm partway through'.",
       "If your newsletter is paid, the via= link still works on the free Challenge, readers don't need to upgrade for you to earn commission later.",

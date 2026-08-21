@@ -223,7 +223,7 @@ export default function MethodologyPage() {
         "@type": "LearningResource",
         name: "How to Measure Startup Engineering Acceleration from GitHub Public Data",
         description:
-          "A free, openly published methodology for tracking GitHub commit velocity, contributor growth, and infrastructure-buildout patterns as leading indicators of venture fundraises. Includes the validation panel of 219 startup-period observations.",
+          "A free, openly published methodology for tracking GitHub commit velocity, contributor growth, and infrastructure-buildout patterns. Includes a descriptive panel of 219 startup-period observations and its documented limitations.",
         url: "https://signals.gitdealflow.com/methodology",
         learningResourceType: "Methodology",
         educationalLevel: "Professional",
@@ -236,7 +236,7 @@ export default function MethodologyPage() {
           "Compute rolling commit-velocity and contributor-growth metrics",
           "Classify acceleration patterns into five signal types",
           "Rank startups weekly by acceleration score",
-          "Validate the leading-signal hypothesis against confirmed fundraises",
+          "Interpret public engineering patterns with explicit data limitations",
         ],
         license: "https://creativecommons.org/licenses/by/4.0/",
         isAccessibleForFree: true,
@@ -261,7 +261,7 @@ export default function MethodologyPage() {
         "@type": "Quotation",
         "@id": "https://signals.gitdealflow.com/methodology#quote-3-4x",
         text:
-          "Orgs that combine high 14-day commit-velocity acceleration with low top-contributor concentration (Gini under 0.30) are 3.4× more likely to announce a Series A within 60 days than orgs with high acceleration alone. Velocity matters, but the shape of the velocity matters more.",
+          "Commit velocity, contributor growth, and repository expansion are public engineering measures. They can guide research questions, but the descriptive release does not link observations to funding outcomes.",
         spokenByCharacter: DATA_NERD_AUTHOR_REF,
         creator: {
           "@type": "Organization",

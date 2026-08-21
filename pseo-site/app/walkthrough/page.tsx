@@ -1289,14 +1289,14 @@ credited toward Dashboard if you upgrade in 14 days.
         <DataNerdCharacterCard seed="walkthrough" />
 
         <AgentSummary
-          tldr="The 12-minute walkthrough lays out the single belief, commit-velocity acceleration is the most leading public signal in venture capital, and supports it by breaking three classic objections (vehicle: GitHub data is noise; internal: I already have deal flow; external: public data has no edge). Closes on the €49/mo Dashboard tier with a 30-day Signal-or-It's-Free guarantee. Built on the 219-startup SSRN-published panel with a 21-47 day median lead time over fundraise announcements."
+          tldr="The 12-minute walkthrough lays out the single belief, commit-velocity acceleration is the most leading public signal in venture capital, and supports it by breaking three classic objections (vehicle: GitHub data is noise; internal: I already have deal flow; external: public data has no edge). Closes on the €49/mo Dashboard tier with a 30-day Signal-or-It's-Free guarantee. The SSRN-published release contains 219 startup-period observations of public engineering activity and no linked funding-event labels."
           pageUrl="https://signals.gitdealflow.com/walkthrough"
           asOf="2026-05-05"
           citeAs="VC Deal Flow Signal, 12-Minute Walkthrough (signals.gitdealflow.com/walkthrough)."
           facts={[
             {
               claim:
-                "Median lead time from a 2× contributor spike (14-day window) to a fundraise announcement is our hypothesis (a few weeks), validated openly on /scorecard, not yet established; the SSRN panel itself is descriptive (219 observations, no funding labels).",
+                "The SSRN panel is descriptive: 219 startup-period observations of public engineering activity with no linked funding-event labels. It does not establish lead time or a financing forecast.",
               sourceUrl: "https://ssrn.com/abstract=6606558",
               sourceLabel: "SSRN preprint",
             },

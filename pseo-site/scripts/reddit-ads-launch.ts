@@ -117,7 +117,7 @@ const CREATIVES = [
   {
     variant: "v1",
     headline: "Your network is showing you yesterday's deals.",
-    body: "In a panel of 219 confirmed Series A & B fundraises, commit-velocity acceleration showed up 21-47 days before the deck did. Pick a sector. €7 once. 24-hour Sector Deep-Dive PDF. €7 credited if you upgrade.",
+    body: "The open research release contains 219 startup-period observations of public GitHub engineering activity and no linked funding-event labels. Pick a sector. €7 once. 24-hour Sector Deep-Dive PDF. €7 credited if you upgrade.",
     cta: "Pick my sector for €7",
     image: `${CREATIVE_BASE}/api/og/reddit/v1`,
   },
@@ -130,7 +130,7 @@ const CREATIVES = [
   },
   {
     variant: "v3",
-    headline: "219 fundraises. One signal. 21-47 days early.",
+    headline: "219 startup-period observations. One signal. 21-47 days early.",
     body: "Open-access SSRN preprint. Reproducible methodology. Live ranking of 350+ venture-backed GitHub orgs. Pick a sector and we ship the 25-row deep-dive in 24 hours for €7. €7 credited toward Dashboard upgrade.",
     cta: "Read the panel + grab a sector",
     image: `${CREATIVE_BASE}/api/og/reddit/v3`,

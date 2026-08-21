@@ -12,7 +12,7 @@
  *   1. Free Pass, each talk is free for 24 hours after its air time.
  *      After that, the talk locks behind the All-Access Pass.
  *   2. All-Access Pass, €197 one-time. Lifetime access to all 20 talks,
- *      full transcripts, slide decks, and a 219-startup panel dataset bonus.
+ *      full transcripts, slide decks, and a 219-observation panel dataset bonus.
  *   3. Order bump on the All-Access checkout: Sector Sweep €1,797 (the
  *      same OTO lattice already wired into /firstlook → /firstlook/thanks).
  *
@@ -95,7 +95,7 @@ export const TALKS: SummitTalk[] = [
     takeaways: [
       "The single falsifiable claim: GitHub commit-velocity acceleration leads fundraise by 21-47 days",
       "Why pitch decks, AngelList, Crunchbase, and warm intros are lagging by definition",
-      "The 219-startup panel, sample frame, observation window, exclusion criteria",
+      "The 219-observation panel, sample frame, observation window, exclusion criteria",
       "What the core claim means for sourcing workflow: every other tool becomes a confirmation, not a leading indicator",
     ],
     duration: "22 min",
@@ -231,7 +231,7 @@ export const TALKS: SummitTalk[] = [
     airAt: "2026-05-20T14:00:00Z",
     freeWindowHours: 24,
     notes: [
-      "Window resolution is the single most important decision in any velocity-based signal. Too short and you pick up weekly noise, vacation weeks, sprint boundaries, holidays. Too long and you erase the leading edge that makes the signal useful. We tested 7, 14, and 30-day windows on the same 219-startup panel and found that 14 days minimizes both false positives and signal lag. Seven-day windows have 2.3× the noise floor. Thirty-day windows have 41 percent more signal lag.",
+      "Window resolution is the single most important decision in any velocity-based signal. Too short and you pick up weekly noise, vacation weeks, sprint boundaries, holidays. Too long and you erase the leading edge that makes the signal useful. We tested 7, 14, and 30-day windows on the same 219-observation panel and found that 14 days minimizes both false positives and signal lag. Seven-day windows have 2.3× the noise floor. Thirty-day windows have 41 percent more signal lag.",
       "Two-period confirmation is the second-most-important rule. A signal must persist across two consecutive 14-day windows before we mark it. This halves our false-positive rate at the cost of pushing the signal back by 14 days. That trade is worth it because the lead time still averages 31 days, the buyer doesn't need a 45-day lead to act, they need a credible 17-day lead.",
       "Z-score normalization within sector is the third pillar. Raw commit counts are misleading because sectors have wildly different baselines. AI-infrastructure companies tend to have 3× the commit volume of climate-tech companies at the same headcount. Without sector normalization, every signal would be an AI-infra signal. We normalize within sector by computing the z-score of the 14-day velocity against the trailing 90-day distribution for that sector.",
       "Bot commits and squash-merges are the edge cases that bite junior implementers. We exclude any commit authored by a known bot account (Dependabot, Renovate, Greenkeeper, the GitHub Apps registry) and we compress squash-merge bursts into a single representative commit when they're tagged as merge-commits. The exclusion rules are documented and reproducible.",

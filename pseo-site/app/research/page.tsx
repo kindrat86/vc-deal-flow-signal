@@ -190,7 +190,7 @@ export default function ResearchPage() {
     "@type": "Dataset",
     name: "VC Deal Flow Signal, GitHub Engineering Acceleration Validation Panel",
     description:
-      "A 219-startup longitudinal panel of GitHub engineering velocity signals against confirmed venture fundraises across 15 sectors. Used to validate the lead-time math published in the SSRN preprint at ssrn.com/abstract=6606558. Median lead time 5.4 weeks, top-decile precision ~65%.",
+      "A descriptive longitudinal panel of 219 startup-period observations of GitHub engineering activity. The SSRN preprint documents collection, classification, and limitations. The release has no linked funding-event labels.",
     url: "https://doi.org/10.5281/zenodo.19650920",
     sameAs: [
       "https://ssrn.com/abstract=6606558",
@@ -334,7 +334,7 @@ export default function ResearchPage() {
             "@type": "Course",
             name: "GitHub Engineering Acceleration as a Leading Indicator of Venture Fundraises",
             description:
-              "A self-paced research summary covering 30 atomic findings from a 219-startup longitudinal panel of GitHub engineering velocity signals against confirmed venture fundraises. Structured for fast comprehension by working investors, scouts, and emerging fund managers.",
+              "A self-paced research summary covering findings from a descriptive panel of 219 startup-period observations of GitHub engineering activity. Structured for fast comprehension by working investors, scouts, and emerging fund managers.",
             url: "https://signals.gitdealflow.com/research",
             provider: {
               "@type": "Organization",

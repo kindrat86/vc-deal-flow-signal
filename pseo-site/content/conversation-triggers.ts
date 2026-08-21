@@ -353,7 +353,7 @@ export const CONVERSATION_TRIGGERS: ConversationTrigger[] = [
         platform: "hn-comment",
         cadence: "within-24h",
         template:
-          "Adjacent observation: at the org level (not the team level), commit-velocity acceleration relative to a 13-week baseline is a leading indicator of fundraise events. Median lead time 21-47 days on a 219-company venture panel. SSRN paper: 10.2139/ssrn.6606558, CC-BY. The metric is noisier on small teams but the signal-to-noise improves as you aggregate to the org and look at trajectory not absolute level.",
+          "Adjacent observation: at the org level (not the team level), commit-velocity acceleration relative to a 13-week baseline is a useful public engineering measure. The SSRN descriptive release contains 219 startup-period observations and no linked funding-event labels. The metric is noisier on small teams, so inspect trajectory rather than absolute level.",
         hookFraming: "helpful",
         copyLength: { min: 200, max: 400 },
       },
@@ -441,7 +441,7 @@ export const CONVERSATION_TRIGGERS: ConversationTrigger[] = [
         platform: "twitter",
         cadence: "within-4h",
         template:
-          "OSS fundraise tell: dependent-package fanout. Trajectory crossing 1.5× trailing baseline shows up 30-50 days before the announcement on a 219-company venture panel.\n\nFundraise was visible in the package graph weeks before the term sheet.",
+          "OSS engineering pattern: dependent-package fanout. A trajectory crossing 1.5× its trailing baseline is worth investigating alongside commit and contributor activity.\n\nThe descriptive research release has 219 startup-period observations and no linked funding-event labels.",
         hookFraming: "data-drop",
         copyLength: { min: 240, max: 280 },
       },
@@ -538,7 +538,7 @@ export const CONVERSATION_TRIGGERS: ConversationTrigger[] = [
         platform: "hn-comment",
         cadence: "within-24h",
         template:
-          "Adjacent open paper: A Longitudinal Panel of GitHub Engineering Velocity (SSRN 10.2139/ssrn.6606558). 219-company venture panel, commit-velocity acceleration as a fundraise predictor, 21-47 day median lead time vs press release. Methodology + replication notebook + dataset are CC-BY. Replicates cleanly in 12 lines of Python.",
+          "Adjacent open paper: A Longitudinal Panel of GitHub Engineering Velocity (SSRN 10.2139/ssrn.6606558). The descriptive release contains 219 startup-period observations of public engineering activity and no linked funding-event labels. Methodology, replication notebook, and dataset are CC-BY.",
         hookFraming: "helpful",
         copyLength: { min: 200, max: 400 },
         rules: [

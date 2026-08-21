@@ -244,7 +244,7 @@ const tiers: PricingTier[] = [
     oneLine:
       "Done-with-you methodology engagement, custom panel construction trained on your fund's anonymized portfolio outcomes, bespoke 50-org watchlist with monthly rebuild, white-labeled fund subdomain, quarterly synthetic State-of-the-Engine talk, async-only methodology Q&A.",
     forWho:
-      "Active VC funds with 5+ years of historical investment outcomes who want the regression trained on their portfolio, not the public 219-startup panel, and a fund-branded data feed integrated into their CRM.",
+      "Active VC funds with 5+ years of historical investment outcomes who want the regression trained on their portfolio, not the public 219-observation panel, and a fund-branded data feed integrated into their CRM.",
     bullets: [
       "Everything in Sharp Tier (€4,970/yr value)",
       "Custom panel construction, fund-specific regression on your anonymized portfolio outcomes",

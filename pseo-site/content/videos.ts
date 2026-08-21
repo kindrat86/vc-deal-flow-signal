@@ -104,7 +104,7 @@ export const videos: SiteVideo[] = [
       { start: 0, end: 13, name: "Hook, Crunchbase tells you the day they raised" },
       { start: 13, end: 30, name: "The leading-indicator gap" },
       { start: 30, end: 55, name: "How engineering acceleration is computed" },
-      { start: 55, end: 75, name: "219-startup panel: 21-47 day median lead time" },
+      { start: 55, end: 75, name: "219-observation panel: 21-47 day median lead time" },
       { start: 75, end: 90, name: "Free vs paid tiers, what to do next" },
     ],
     transcriptParagraphs: [
@@ -304,7 +304,7 @@ export const videos: SiteVideo[] = [
     thumbnailMaxUrl: `${APEX}/how-gitdealflow-works.jpg`,
     title: "How GitDealFlow Works in 60 Seconds, VC Deal Flow Signal",
     description:
-      "What GitDealFlow does in under a minute: it reads commit velocity, contributor growth, and repository expansion across hundreds of venture-backed startups in 15 sectors, then surfaces the five accelerating fastest every Monday, typically 21 to 47 days before the fundraise announcement. Based on a longitudinal panel of 219 startup-period observations (SSRN-indexed methodology, CC BY 4.0).",
+      "What GitDealFlow does in under a minute: it reads commit velocity, contributor growth, and repository expansion across hundreds of venture-backed startups in 15 sectors, then surfaces the five accelerating fastest every Monday for further research. Based on a descriptive panel of 219 startup-period observations with no linked funding-event labels (SSRN-indexed methodology, CC BY 4.0).",
     uploadDate: "2026-08-15T00:00:00+00:00",
     durationSeconds: 57,
     format: "landscape",

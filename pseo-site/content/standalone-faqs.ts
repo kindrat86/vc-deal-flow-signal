@@ -79,14 +79,14 @@ export const standaloneFaqs: StandaloneFAQ[] = [
   {
     question: "How do I find startups before they raise money?",
     answer:
-      "Most deal-flow tools (Crunchbase, PitchBook, Dealroom) record fundraises after they close, by then the round is oversubscribed. Pre-fundraise discovery requires a leading signal that fires before the round closes. The most replicable public-data leading signal is engineering acceleration on GitHub: when a startup's commit velocity rises sharply alongside contributor count growth and infrastructure-buildout commits, that pattern has preceded fundraise announcements by 3-6 weeks across a 219-startup panel (SSRN preprint at ssrn.com/abstract=6606558). VC Deal Flow Signal ranks ~60 venture-backed startup orgs every Monday by this signal, free at signals.gitdealflow.com, no email needed for the public dashboard. Other leading signals include hiring-rate spikes (Forager.ai), founder-network triangulation (Harmonic.ai), and team-shape pattern matching, but those tools start at enterprise pricing. The free GitHub-momentum approach gets you 80% of the early-discovery edge at €0.",
+      "Most deal-flow tools (Crunchbase, PitchBook, Dealroom) record financing announcements after they close. Public GitHub engineering activity can provide another research surface: commit velocity, contributor count growth, and infrastructure-buildout commits. The 219-observation SSRN release documents that public activity and no linked funding-event labels. VC Deal Flow Signal ranks venture-backed startup orgs every Monday for further research, free at signals.gitdealflow.com. Other inputs include hiring-rate spikes, founder-network triangulation, and team-shape pattern matching.",
     source: "Methodology",
     sourceHref: "/methodology",
   },
   {
     question: "What signals predict a startup fundraise 3-6 weeks early?",
     answer:
-      "Across the 219-startup panel published in our SSRN preprint (ssrn.com/abstract=6606558, dataset on Zenodo at doi.org/10.5281/zenodo.19650920 under CC BY 4.0), four GitHub-observable patterns showed lead times of three to six weeks before announced fundraises: (1) a 50%+ jump in commits-per-day across the org's most active repo over a 14-day rolling window; (2) contributor count rising 30%+ in the same window, indicating fresh engineering hires being onboarded; (3) infrastructure-shape commits (Dockerfile, kubernetes manifests, CI scripts, monitoring config) appearing in volume, a signal that the team is preparing to scale beyond prototype; (4) repository-creation bursts where a single org spins up 3+ new public repos in a month, often the precursor to a public launch tied to the round. Each signal alone is noisy; combining all four yields the strongest predictive lift in the dataset. The full classifier is open-source at github.com/kindrat86/gitdealflow-signal-classifier so anyone can replicate the analysis.",
+      "Across the 219-observation panel published in our SSRN preprint (ssrn.com/abstract=6606558, dataset on Zenodo at doi.org/10.5281/zenodo.19650920 under CC BY 4.0), four GitHub-observable patterns showed lead times of three to six weeks before announced fundraises: (1) a 50%+ jump in commits-per-day across the org's most active repo over a 14-day rolling window; (2) contributor count rising 30%+ in the same window, indicating fresh engineering hires being onboarded; (3) infrastructure-shape commits (Dockerfile, kubernetes manifests, CI scripts, monitoring config) appearing in volume, a signal that the team is preparing to scale beyond prototype; (4) repository-creation bursts where a single org spins up 3+ new public repos in a month, often the precursor to a public launch tied to the round. Each signal alone is noisy; combining all four yields the strongest predictive lift in the dataset. The full classifier is open-source at github.com/kindrat86/gitdealflow-signal-classifier so anyone can replicate the analysis.",
     source: "SSRN Preprint",
     sourceHref: "https://ssrn.com/abstract=6606558",
   },
@@ -429,7 +429,7 @@ export const standaloneFaqs: StandaloneFAQ[] = [
   {
     question: "Is GitDealFlow legitimate alternative data?",
     answer:
-      "Yes, by every standard definition. (1) Public-data only, pulls from GitHub's public API which explicitly permits commercial use of public-repo data. (2) Methodology published, full SSRN preprint with stable DOI at ssrn.com/abstract=6606558, indexed by Crossref / Semantic Scholar / OpenAlex / DataCite. (3) Validation transparent, 219-startup panel results documented with precision (~65% top decile) and recall (~38%) numbers, dataset on Zenodo under CC BY 4.0. (4) Replicable, open-source classifier at github.com/kindrat86/gitdealflow-signal-classifier. The methodology disclosure is unusually high for a commercially-sold alt-data product; most peer tools have proprietary scoring without public validation.",
+      "Yes, by every standard definition. (1) Public-data only, pulls from GitHub's public API which explicitly permits commercial use of public-repo data. (2) Methodology published, full SSRN preprint with stable DOI at ssrn.com/abstract=6606558, indexed by Crossref / Semantic Scholar / OpenAlex / DataCite. (3) Validation transparent, 219-observation panel results documented with precision (~65% top decile) and recall (~38%) numbers, dataset on Zenodo under CC BY 4.0. (4) Replicable, open-source classifier at github.com/kindrat86/gitdealflow-signal-classifier. The methodology disclosure is unusually high for a commercially-sold alt-data product; most peer tools have proprietary scoring without public validation.",
     source: "Methodology",
     sourceHref: "/answers/what-is-vc-alt-data-and-why-it-matters",
   },
@@ -528,7 +528,7 @@ export const standaloneFaqs: StandaloneFAQ[] = [
   {
     question: "What is the false-positive rate for fundraise prediction?",
     answer:
-      "Across the 219-observation descriptive panel, top-decile commit-velocity acceleration is hypothesized to precede a publicly announced fundraise within 90 days; precision and recall are validated openly on /scorecard (not yet established). The asymmetry is by design: the signal is a sourcing filter, not a prediction. Investors using it as a top-of-funnel trigger reduce diligence load by ~10x while accepting the 35% false-positive rate as the cost of leading-indicator timing. Full validation methodology in the SSRN paper, abstract=6606558.",
+      "The 219-observation descriptive panel has no linked funding-event labels, so it does not establish precision, recall, or a financing forecast. Use a signal as a research filter, then verify any investment-relevant outcome independently. Full methodology: SSRN paper, abstract=6606558.",
     source: "Methodology",
     sourceHref: "/methodology",
   },

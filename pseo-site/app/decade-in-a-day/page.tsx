@@ -50,7 +50,7 @@ const MODULES: Module[] = [
     title: "Methodology, the signal that grounds everything",
     question: "Why commit-velocity acceleration, not commit count?",
     content:
-      "Counts are noise. Acceleration relative to a company's own baseline is a regime change. We use a 14-day rolling window, two-period confirmation, contributor-quality filter. The SSRN paper (n=219) shows the signal preceded fundraises by 21-47 days IQR. The methodology is the only durable moat, every other element on the site rests on it.",
+      "Counts are noise. Acceleration relative to a company's own baseline is a regime change. We use a 14-day rolling window, two-period confirmation, contributor-quality filter. The SSRN release (n=219) documents public engineering activity and has no linked funding-event labels. The methodology is the only durable moat, every other element on the site rests on it.",
     links: [
       { label: "/methodology, full breakdown", href: "/methodology" },
       { label: "SSRN paper abstract=6606558", href: "https://ssrn.com/abstract=6606558" },

@@ -169,7 +169,7 @@ export default function ChallengePage() {
             name: "What's the source of the methodology?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "The seven Week-1 signals are drawn from a panel analysis of 219 startup-period observations, published as 'GitHub Signals as Leading Indicators of Venture Fundraising' on SSRN (abstract id 6606558). Weeks 2-4 (Apply, Synthesize, Operationalize) extend that framework into the operational practice an investor would build around it, calibration, watchlist cadence, alerting, custom weights, MCP-server integration.",
+              text: "The seven Week-1 signals are drawn from a panel analysis of 219 startup-period observations, published in the SSRN research release (abstract id 6606558), which has no linked funding-event labels. Weeks 2-4 (Apply, Synthesize, Operationalize) extend that framework into the operational practice an investor would build around it, calibration, watchlist cadence, alerting, custom weights, MCP-server integration.",
             },
           },
           {

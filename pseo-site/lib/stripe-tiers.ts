@@ -116,7 +116,7 @@ export const ENTRY_TIERS: Record<EntryTierKey, EntryTierConfig> = {
     successUrl: "/summit/thanks?session_id={CHECKOUT_SESSION_ID}",
     cancelUrl: "/summit/all-access?cancelled=1",
     description:
-      "Lifetime access to all 20 summit talks, full transcripts, slide decks, and the 219-startup panel dataset.",
+      "Lifetime access to all 20 summit talks, full transcripts, slide decks, and the 219-observation panel dataset.",
   },
 };
 

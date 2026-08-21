@@ -52,7 +52,7 @@ first doesn't get engagement by lunch.
 
 Title:
 ```
-219 Startups, 5 Quarters, and What GitHub Told Me About Fundraising
+219 Startup-Period Observations, 5 Quarters, and Public GitHub Activity
 ```
 
 Subtitle:

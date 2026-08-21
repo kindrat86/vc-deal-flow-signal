@@ -102,7 +102,7 @@ const FAQS = [
   },
   {
     q: "How does the SSRN pre-publication preview work?",
-    a: "We submit a successor preprint to SSRN annually (Q3 each year) building on the 219-startup panel from the original paper. Vault funds receive the draft six months before public release: methodology section, preliminary results, regression coefficients, and the new signal types being evaluated. Vault funds may submit one signal-type proposal that gets reviewed for inclusion in the public paper, with author-credit (initials-only) on opt-in. The pre-publication preview is shared under embargo, no public re-posting until the SSRN release date.",
+    a: "We submit a successor preprint to SSRN annually (Q3 each year) building on the 219-observation panel from the original paper. Vault funds receive the draft six months before public release: methodology section, preliminary results, regression coefficients, and the new signal types being evaluated. Vault funds may submit one signal-type proposal that gets reviewed for inclusion in the public paper, with author-credit (initials-only) on opt-in. The pre-publication preview is shared under embargo, no public re-posting until the SSRN release date.",
   },
   {
     q: "What does the 72-hour signal head-start actually deliver?",

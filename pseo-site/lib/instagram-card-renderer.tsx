@@ -177,7 +177,7 @@ function WeeklyTop5Card({ slug }: { slug: string }): ReactElement {
             33 days
           </div>
           <div style={{ display: "flex", fontSize: 20, color: PALETTE.muted }}>
-            ahead of public fundraise · n=219 · CC BY 4.0
+            public engineering research · n=219 · CC BY 4.0
           </div>
         </div>
       </div>

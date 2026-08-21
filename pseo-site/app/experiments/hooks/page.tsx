@@ -206,7 +206,7 @@ const HOOKS: HookTest[] = [
   {
     id: "free-paper",
     hook:
-      '"Free 104-page book: 7 GitHub Signals That Predicted 219 Fundraises."',
+      '"Free 104-page book: 7 GitHub Signals That Predicted 219 startup-period observations."',
     channel: "/book + landing strip + Reddit cross-posts",
     surface: "/book",
     date: "2026-05 (post-PR #33)",
@@ -220,7 +220,7 @@ const HOOKS: HookTest[] = [
   {
     id: "tweet-teardown",
     hook:
-      '"Paste a tweet. €1. We\'ll grade the founder\'s GitHub against the 219-fundraise pattern in 4 hours."',
+      '"Paste a tweet. €1. We\'ll grade the founder\'s GitHub against the 219-observation public-engineering pattern in 4 hours."',
     channel: "/tweet-teardown + Twitter quote-tweets",
     surface: "/tweet-teardown",
     date: "2026-05 (post-PR #33)",

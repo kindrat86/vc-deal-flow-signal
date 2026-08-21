@@ -97,7 +97,7 @@ export const INSTAGRAM_QUEUE: InstagramPost[] = [
     type: "methodology",
     slug: "commit-velocity-acceleration",
     caption:
-      "Signal #1, Commit-Velocity Acceleration.\n\nFormula: 14-day rolling commits ÷ 60-day rolling commits, normalized by org size.\n\nDecision rule: ≥1.3× crossing for 3+ consecutive days = regime change.\n\nLead time: 21-47 days median ahead of public fundraise (n=219, peer-reviewed, SSRN abstract 6606558).\n\nFalsifiable. Auditable. CC BY 4.0. Replicate it yourself in the appendix, link in bio.",
+      "Signal #1, Commit-Velocity Acceleration.\n\nFormula: 14-day rolling commits ÷ 60-day rolling commits, normalized by org size.\n\nDecision rule: ≥1.3× crossing for 3+ consecutive days = regime change.\n\nResearch basis: a descriptive panel of 219 startup-period observations of public engineering activity, with no linked funding-event labels (SSRN abstract 6606558).\n\nFalsifiable. Auditable. CC BY 4.0. Replicate it yourself in the appendix, link in bio.",
     hashtags: HASHTAGS_DEFAULT,
     ctaUrl: "https://signals.gitdealflow.com/methodology",
     ctaLabel: "Open methodology, replicate it yourself",

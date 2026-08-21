@@ -101,7 +101,7 @@ export const LEAD_MAGNET_WELCOME_EMAILS = [
 <p>Your one-page Velocity Verdict cheat sheet is ready.</p>
 <p>It shows the three public GitHub signals worth checking together, the 14-day window, the false positives to rule out, and the one question to ask before you contact a founder.</p>
 <p style="margin:24px 0;"><a href="${SITE}/downloads/velocity-verdict-cheat-sheet.pdf" style="display:block;width:100%;box-sizing:border-box;background:#0284c7;color:#ffffff;font-weight:700;font-size:18px;line-height:1.2;padding:16px 24px;border-radius:10px;text-decoration:none;text-align:center;">Open the one-page cheat sheet</a></p>
-<p>The evidence behind it is a documented panel of 219 startup-period observations across 55 startups. In that panel, the middle 50% of observed signal lead times fell 21 to 47 days before the public fundraise announcement. It is a sourcing signal, not a promise that any company will raise.</p>
+<p>The evidence behind it is a documented panel of 219 startup-period observations across 55 startups. It records public engineering activity and has no linked funding-event labels. Use it as a research and diligence input, not a promise that any company will raise.</p>
 <p>Tomorrow I will show you the mistake that makes most GitHub screens useless: reading the count instead of the change.</p>
 <p>The Data Nerd</p>
 `, "velocity-verdict-1"),
@@ -203,7 +203,7 @@ export const SOAP_OPERA_EMAILS = [
 <p>Fair question. Raw GitHub data is noisy. Commit counts alone tell you nothing. A bot can inflate them. A hackathon can spike them. A single developer pushing config files looks the same as a team shipping features.</p>
 <p>But here's what changes everything: we don't look at absolute numbers. We look at how a team's engineering changes against <strong>its own normal</strong>.</p>
 <p>When a company's engineering picks up sharply from its own baseline, that's not noise. Something happened inside that company. They hired. They found product-market fit. They're preparing to launch, they're shipping faster than they were a month ago.</p>
-<p>In our analysis across 219 startups (the SSRN-published panel), companies where the contributor count doubled within 14 days had a strong correlation with a fundraise within 21 to 47 days.</p>
+<p>The SSRN-published release contains 219 startup-period observations. It records public engineering activity and has no linked funding-event labels, so contributor changes should be investigated rather than treated as a financing forecast.</p>
 <p>The signal is there. You just need the right lens.</p>
 <p>Tomorrow, I want to talk about something uncomfortable: why your network might be showing you yesterday's deals.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
@@ -349,7 +349,7 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
 <p>Today I'm sending you the full 12-minute written walkthrough of the Insider Circle. No video, no webinar signup, no scheduled call. Just the walkthrough, read on your timeline.</p>
 <p>It covers:</p>
 <ul>
-<li>The hook (47 days before the deck, with the 219-fundraise dataset)</li>
+<li>The research release: 219 startup-period observations and the public engineering measures behind them</li>
 <li>The origin (the founder-friend Series A, and the conversation that almost made me ship this as a personal spreadsheet)</li>
 <li>The three Insider-specific objections ("I already pay for Harmonic," "I could ETL myself," "How do I trust an anonymous founder")</li>
 <li>The 8-object stack (€9,429/yr of value, anchored line by line)</li>
@@ -520,7 +520,7 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
 <p>The free Sunday digest stays exactly as it is, five startups every Monday morning, sector-tagged, no commitment, forever. If that's the right cadence for the way you write checks, keep doing what you're doing. I'd rather have you reading the free version for ten years than upgrade once and resent it.</p>
 <p>The one real decision is the Dashboard price.</p>
 <p>It's €49/mo, month to month. The founding-member rate (€9.97/mo) closed June 30 and is honored only for subscribers who joined before that date.</p>
-<p>If the dashboard fits the way you source deals, the live ranked panel, the 219-startup panel dataset, the monthly sector deep-dive PDF, the methodology source, the 30-day Signal-or-It's-Free guarantee, that's the rung where the math works for most readers. €49 × 12 is €588 for the year. One missed angel cheque pays it back forty times over.</p>
+<p>If the dashboard fits the way you source deals, the live ranked panel, the 219-observation panel dataset, the monthly sector deep-dive PDF, the methodology source, the 30-day Signal-or-It's-Free guarantee, that's the rung where the math works for most readers. €49 × 12 is €588 for the year. One missed angel cheque pays it back forty times over.</p>
 <p>If it doesn't fit, no problem. The free digest stays. The 30-day welcome sequence ends here, the rhythm continues. You'll get a Sunday digest this weekend like always.</p>
 <p>Talk soon, <br>${FROM_NAME}</p>
 <p style="color:#64748b;font-size:14px;">P.S. Founding-price checkout: <a href="${SITE}/dashboard" style="color:#0ea5e9;">${SITE}/dashboard</a> · Quiz if you're unsure which tier fits: <a href="${SIGNALS}/quiz" style="color:#0ea5e9;">${SIGNALS}/quiz</a> · See every door: <a href="${SIGNALS}/funnels" style="color:#0ea5e9;">${SIGNALS}/funnels</a></p>
@@ -770,7 +770,7 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
     delayMs: THIRTY_MIN + 240 * ONE_DAY,
     html: wrap(`
 <p>Eight months ago you signed up for the Acceleration Watch. You've watched the Dashboard run weekly, the State-of-the-Engine prediction resolve at Day 90, the post-mortem land at Day 180. The rhythm works.</p>
-<p>If your fund has more than five years of historical investment outcomes, wins, write-offs, exits, holds, the regression that powers the Dashboard runs against the public 219-startup panel. It does not run against your fund's portfolio. Funds that license the public Dashboard read the same signal everyone else reads.</p>
+<p>If your fund has more than five years of historical investment outcomes, wins, write-offs, exits, holds, the regression that powers the Dashboard runs against the public 219-observation panel. It does not run against your fund's portfolio. Funds that license the public Dashboard read the same signal everyone else reads.</p>
 <p>The <strong>Methodology Partnership</strong> trains the same regression on your fund's anonymized portfolio outcomes and ships a fund-specific lead-time model, plus the source code to re-run it whenever your portfolio updates. €14,997/yr, founding-rate locked through end of 2027, capped at 5 funds in 2026.</p>
 <p>What's in it:</p>
 <ul style="margin:0;padding-left:20px;">
@@ -816,7 +816,7 @@ export const CHALLENGE_EMAILS = [
 <p>One thing up front, because people get confused: this is a tool, not a fund. I'm not a VC, I'm not competing with you for the deal. I built the system so you can see the same early engineering signal I do, and source earlier in the sectors you already know.</p>
 <p>Over the next 30 days I'll send you one email per day. The structure is four phases:</p>
 <ul>
-<li><strong>Week 1 (Days 1-7), Learn.</strong> Each of the 7 atomic GitHub signals that historically precede a fundraise, drawn from the panel of 219 confirmed rounds in the SSRN paper at <a href="https://ssrn.com/abstract=6606558" style="color:#0ea5e9;">ssrn.com/abstract=6606558</a>. One signal per day, 5-minute manual exercise.</li>
+<li><strong>Week 1 (Days 1-7), Learn.</strong> Each of the 7 atomic GitHub signals, grounded in a descriptive panel of 219 startup-period observations in the SSRN paper at <a href="https://ssrn.com/abstract=6606558" style="color:#0ea5e9;">ssrn.com/abstract=6606558</a>. One signal per day, 5-minute manual exercise.</li>
 <li><strong>Week 2 (Days 8-14), Apply.</strong> Run the composite on three real candidates from your own pipeline + one calibration backtest on a known recently-funded org. End the week with a real scorecard artifact.</li>
 <li><strong>Week 3 (Days 15-21), Synthesize.</strong> Build a 10-org watchlist, set the Monday rhythm, sector-batch sweep, score-driven founder Q&amp;A, the 30-second pre-read.</li>
 <li><strong>Week 4 (Days 22-30), Operationalize.</strong> Alerts, anti-signals, co-investor share template, MCP integration (free), custom composite weights, retrospective, graduation.</li>
@@ -1001,7 +1001,7 @@ export const CHALLENGE_EMAILS = [
 <hr style="border:none;border-top:1px solid #1e293b;margin:24px 0;">
 <p><strong>Three optional rungs from here.</strong> Stacked from least to most committed. Pick none and the framework is still yours.</p>
 <p><strong>Rung 0, Free Sunday Digest.</strong> Five named GitHub orgs every Sunday, scored against the same 7-signal composite you just learned. <a href="${SITE}/#signup" style="color:#0ea5e9;">${SITE}/#signup</a>. Free forever, no upgrade pressure.</p>
-<p><strong>Rung 1, Dashboard, €49/mo.</strong> 140 venture-backed startups ranked by 14-day commit-velocity acceleration, refreshed every Monday at 06:00 UTC. Filter by sector, stage, geography. The 219-startup panel dataset. Two free Chrome extensions. The free MCP server (6 tools across Claude / Cursor / Windsurf). 30-day Signal-or-It's-Free guarantee, reply REFUND, no questions. Standalone retail of the components: ~€1,431/yr. <a href="${SITE}/pricing#dashboard" style="color:#0ea5e9;">${SITE}/pricing#dashboard</a></p>
+<p><strong>Rung 1, Dashboard, €49/mo.</strong> 140 venture-backed startups ranked by 14-day commit-velocity acceleration, refreshed every Monday at 06:00 UTC. Filter by sector, stage, geography. The 219-observation panel dataset. Two free Chrome extensions. The free MCP server (6 tools across Claude / Cursor / Windsurf). 30-day Signal-or-It's-Free guarantee, reply REFUND, no questions. Standalone retail of the components: ~€1,431/yr. <a href="${SITE}/pricing#dashboard" style="color:#0ea5e9;">${SITE}/pricing#dashboard</a></p>
 <p><strong>Rung 2, Custom Sector Sweep, €1,997 one-time.</strong> Pick one sector, we deliver the 40-page written deep-dive in 5 business days: top 25 ranked orgs, contributor maps, three pre-Crunchbase breakouts, raw CSV, 30-day async Q&A. Capped at 8 per quarter, bandwidth, not artificial scarcity. <a href="${SIGNALS}/sector-sweep" style="color:#0ea5e9;">${SIGNALS}/sector-sweep</a></p>
 <p>Or pick none. Whatever you do, even if you just keep running the manual version yourself, you now have a sourcing process that works without paying anyone. That's the point of the week.</p>
 <p>Tomorrow: a Day-8 recap with one ask, and what to expect from this address from here on.</p>
@@ -1452,7 +1452,7 @@ export const CHALLENGE_EMAILS = [
 <hr style="border:none;border-top:1px solid #1e293b;margin:24px 0;">
 <p><strong>Three optional rungs from here.</strong> Stacked from least to most committed. Pick none and the system is still yours.</p>
 <p><strong>Rung 0, Free Sunday Digest.</strong> Five named startups every Sunday, scored against the same 7-signal composite you just learned. <a href="${SITE}/#signup" style="color:#0ea5e9;">${SITE}/#signup</a>. Free forever, no upgrade pressure.</p>
-<p><strong>Rung 1, Dashboard, €49/mo.</strong> 140 venture-backed startups ranked by 14-day commit-velocity acceleration, refreshed every Monday at 06:00 UTC. Filter by sector, stage, geography. The 219-startup panel dataset. Two free Chrome extensions. The free MCP server. 30-day Signal-or-It's-Free guarantee. <a href="${SITE}/pricing#dashboard" style="color:#0ea5e9;">${SITE}/pricing#dashboard</a></p>
+<p><strong>Rung 1, Dashboard, €49/mo.</strong> 140 venture-backed startups ranked by 14-day commit-velocity acceleration, refreshed every Monday at 06:00 UTC. Filter by sector, stage, geography. The 219-observation panel dataset. Two free Chrome extensions. The free MCP server. 30-day Signal-or-It's-Free guarantee. <a href="${SITE}/pricing#dashboard" style="color:#0ea5e9;">${SITE}/pricing#dashboard</a></p>
 <p><strong>Rung 2, Custom Sector Sweep, €1,997 one-time.</strong> Pick one sector, we deliver the 40-page written deep-dive in 5 business days: top 25 ranked orgs, contributor maps, three pre-Crunchbase breakouts, raw CSV, 30-day async Q&amp;A. Capped at 8 per quarter. <a href="${SIGNALS}/sector-sweep" style="color:#0ea5e9;">${SIGNALS}/sector-sweep</a></p>
 <p>Or pick none. The framework is licensed CC BY 4.0; nothing about the rung selection changes your ownership.</p>
 <hr style="border:none;border-top:1px solid #1e293b;margin:24px 0;">

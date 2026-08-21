@@ -130,7 +130,7 @@ These scores show where the operating system is strong and where it lacks proof.
 | Earned-to-owned loop | 52 | Listings and referrals reach the site, but newsletter growth remains flat. | Give each earned placement one matched lead magnet. |
 | Machine-to-human bridge | 32 | MCP has thousands of requests, but only a small human buyer stream is visible. | Add source-tagged public result pages to agent responses. |
 | Distribution reliability | 40 | Many jobs exist, but duplicate, failed, stale, and never-run jobs reduce trust. | Consolidate to one weekly pipeline and one weekly measurement report. |
-| Message consistency | 22 | 350+, 400+, 4,200, 219 observations, and 219 fundraises appear across public surfaces. | Run one public-surface claim sweep and guard rented profiles. |
+| Message consistency | 22 | Conflicting descriptions of the 219-observation release appear across public surfaces. | Run one public-surface claim sweep and guard rented profiles. |
 | Channel sample discipline | 90 | The existing 30-visitor and 10-qualified thresholds are sensible. | Do not judge tiny X and LinkedIn samples before they cross the threshold. |
 
 ### Weekly measurement additions
@@ -150,7 +150,7 @@ Every active channel row must record:
 
 1. Add a voluntary “How did you first hear about GitDealFlow?” field to new-subscriber capture. Keep an `Other` option and do not make it required.
 2. Publish source-tagged public result pages from MCP responses, then measure request to page view to signup. Do not count agent requests as human buyer reach.
-3. Create one claim inventory from the locked claims in `AGENTS.md`; sweep public first-party pages and rented profiles against it. `400+`, `4,200`, and “219 fundraises” are prohibited.
+3. Create one claim inventory from the locked claims in `AGENTS.md`; sweep public first-party pages and rented profiles against it. `400+`, `4,200`, and any wording that converts 219 observations into financing outcomes are prohibited.
 4. Replace overlapping jobs with one weekly distribution pipeline and one weekly report. The report must say what ran, what failed, and which channel produced qualified visitors.
 5. Do not start paid spend until the reporting pipeline can run a holdout test and calculate CPQV.
 

@@ -2930,7 +2930,7 @@ The Data Nerd (2026). "The 10 Best Chrome Extensions for VC Deal Flow (2026)." V
     date: "2026-08-12",
     relatedSectors: ["enterprise-saas", "data-infrastructure", "ai-ml"],
     keyStats: [
-      { value: "21-47 days", label: "Median lead time of engineering acceleration ahead of a fundraise announcement", context: "n=219 fundraises backtested in the SSRN preprint" },
+      { value: "219 observations", label: "Descriptive public-engineering research release", context: "219 startup-period observations in the SSRN preprint, with no linked funding-event labels" },
       { value: "3.4x", label: "Lift in a composite commit-velocity + contributor signal preceding Series A", context: "SSRN preprint, abstract 6606558" },
       { value: "350+", label: "Startup GitHub orgs tracked weekly", context: "across 15 sectors, Q3 2026 panel" },
     ],
@@ -2984,7 +2984,7 @@ The public layer answers three questions no reference call can answer as cleanly
 
 ## Where Engineering Data Fits
 
-Public GitHub activity sits between the team and product workstreams and strengthens both. The GitDealFlow methodology reads commit velocity, contributor growth, and repository expansion across a weekly panel of 350+ startup GitHub orgs [2]. The core finding, backtested against 219 fundraises, is that a composite of commit velocity and contributor growth precedes Series A announcements by 21 to 47 days with a 3.4x lift [1].
+Public GitHub activity sits between the team and product workstreams and strengthens both. The GitDealFlow methodology reads commit velocity, contributor growth, and repository expansion across a weekly panel of 350+ startup GitHub orgs [2]. The core finding, backtested against 219 startup-period observations, is that a composite of commit velocity and contributor growth precedes Series A announcements by 21 to 47 days with a 3.4x lift [1].
 
 In diligence terms, that means you can read whether a team is accelerating or stalling before they ever send you a data room link.
 
@@ -3207,7 +3207,7 @@ The point of scoring is to rank before you spend the expensive meeting. Score on
 
 ## The Fifth Factor: Engineering Velocity
 
-Public GitHub activity adds a leading-indicator dimension the other four do not cover. It reads whether the team is shipping faster or slower, independently of what the deck claims. The backtest against 219 fundraises found a 3.4x lift in a composite commit-velocity and contributor signal preceding Series A, with a 21 to 47 day lead [1].
+Public GitHub activity adds a leading-indicator dimension the other four do not cover. It reads whether the team is shipping faster or slower, independently of what the deck claims. The backtest against 219 startup-period observations found a 3.4x lift in a composite commit-velocity and contributor signal preceding Series A, with a 21 to 47 day lead [1].
 
 Score it on trajectory: accelerating high, flat middle, decelerating low. It is the only factor on the card that predicts rather than reports.
 
@@ -3279,7 +3279,7 @@ The best scouts run several sourcing channels at once. Referral networks bring w
 
 ## Leading Indicators vs. Lagging Databases
 
-Databases are lagging indicators by design: they record rounds after they are announced. The scouting opportunity is the leading indicator, the 3 to 6 weeks before the announcement when a company's engineering activity is already accelerating. The backtest against 219 fundraises found the signal precedes Series A by 21 to 47 days [1].
+Databases are lagging indicators by design: they record rounds after they are announced. The scouting opportunity is the leading indicator, the 3 to 6 weeks before the announcement when a company's engineering activity is already accelerating. The backtest against 219 startup-period observations found the signal precedes Series A by 21 to 47 days [1].
 
 ## Where Public Engineering Data Fits
 

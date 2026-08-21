@@ -14,11 +14,11 @@ export const revalidate = 3600;
 
 export const metadata: Metadata = {
   title: `All-Access Pass, VC Engineering Acceleration Summit · €${SUMMIT.allAccessPrice} one-time`,
-  description: `Lifetime replays of all 20 talks, full transcripts (PDF + markdown), slide decks, and the 219-startup panel dataset. €${SUMMIT.allAccessPrice} one-time. 30-day refund.`,
+  description: `Lifetime replays of all 20 talks, full transcripts (PDF + markdown), slide decks, and the 219-observation panel dataset. €${SUMMIT.allAccessPrice} one-time. 30-day refund.`,
   alternates: { canonical: "/summit/all-access" },
   openGraph: {
     title: `All-Access Pass, €${SUMMIT.allAccessPrice} one-time`,
-    description: `Lifetime replays of all 20 talks + full transcripts + slide decks + 219-startup panel dataset.`,
+    description: `Lifetime replays of all 20 talks + full transcripts + slide decks + 219-observation panel dataset.`,
     url: `${SITE}/summit/all-access`,
     type: "article",
   },
@@ -28,7 +28,7 @@ const STACK = [
   { label: "Lifetime replays of all 20 talks", standalone: "€297 if bought separately" },
   { label: "Full PDF + markdown transcripts of every talk", standalone: "€197 standalone" },
   { label: "Slide decks and chart packs from every talk", standalone: "€69 standalone" },
-  { label: "219-startup panel dataset, the dataset behind the panel", standalone: "€297 standalone" },
+  { label: "219-observation panel dataset, the dataset behind the panel", standalone: "€297 standalone" },
   { label: "Methodology vault, every signal definition + decision rule + pitfall", standalone: "€0, always free" },
   { label: "Anonymous-by-design narration files (audio, MP3 + WAV)", standalone: "€49 standalone" },
   { label: "30-day refund, reply REFUND, no forms, no questions", standalone: "Bonus" },
@@ -45,7 +45,7 @@ export default function AllAccessPage() {
         "@id": `${SITE}/summit/all-access#product`,
         name: "VC Engineering Acceleration Summit, All-Access Pass",
         description:
-          "Lifetime replays of all 20 anonymous-by-design summit talks, full transcripts, slide decks, and the 219-startup panel dataset.",
+          "Lifetime replays of all 20 anonymous-by-design summit talks, full transcripts, slide decks, and the 219-observation panel dataset.",
         applicationCategory: "BusinessApplication",
         operatingSystem: "Web",
         offers: {
@@ -105,7 +105,7 @@ export default function AllAccessPage() {
             All 20 talks of the VC Engineering Acceleration Summit, locked
             after their 24-hour free window, yours for life with the
             All-Access Pass. Plus full transcripts, slide decks, the
-            219-startup panel dataset, and the anonymous-by-design narration
+            219-observation panel dataset, and the anonymous-by-design narration
             audio. One payment, lifetime access, 30-day refund if it isn't
             useful.
           </p>

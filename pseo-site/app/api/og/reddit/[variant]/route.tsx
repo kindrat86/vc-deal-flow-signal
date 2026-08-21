@@ -8,7 +8,7 @@ import type { NextRequest } from "next/server";
  * URLs:
  *   /api/og/reddit/v1  → Hook-led ("Your network is showing you yesterday's deals")
  *   /api/og/reddit/v2  → Story-led ("The deal I missed because I trusted the deck")
- *   /api/og/reddit/v3  → Data-led ("219 fundraises. One signal. 21-47 days early")
+ *   /api/og/reddit/v3  → Data-led ("219 startup-period observations. One signal. 21-47 days early")
  *
  * Built with next/og ImageResponse so the bytes ship fresh from the edge -
  * no static asset to keep in sync.  When iterating copy, change the strings
@@ -307,7 +307,7 @@ function renderDataLed() {
             marginTop: 28,
           }}
         >
-          219 fundraises. One signal. 21-47 days early.
+          219 startup-period observations. One signal. 21-47 days early.
         </div>
 
         {/* Satori (next/og) supports flex but not grid, emulate a 4-col

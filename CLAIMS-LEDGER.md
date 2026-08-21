@@ -15,7 +15,7 @@ Single source of truth for every public number about GitDealFlow / VC Deal Flow 
 | Panel size | "350+" | "400+", "369", "411", "4,200+", "4,800", "~400", any exact count |
 | Sector count | "15" | "20", "4,200+ orgs" |
 | Data period | "Q3 2026" (advances quarterly) | "Q2 2026" once Q3 has started |
-| SSRN research sample | "12,000+ repos", "219 fundraises", "~75 unicorns" (sample labels, NOT panel size) | conflating any sample number with panel size |
+| SSRN research sample | "219 startup-period observations across 55 venture-backed startups over five quarters" | any wording that turns 219 observations into financing outcomes, predictions, lead-time, precision, or lift |
 
 Rationale: "350+" is a stable floor that survives the weekly refresh. Exact counts (369, 411, 540) change weekly and create drift. "400+" overclaims the deduped unique-org count (under 400).
 

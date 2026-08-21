@@ -93,7 +93,7 @@ any one. A founder you met, a company you almost-invested in, a
           >
             ssrn.com/abstract=6606558
           </a>{" "}
-          <span className="text-gray-400 text-sm">the SSRN paper covering the 219-round panel.
+          <span className="text-gray-400 text-sm">the SSRN paper covering the 219-observation panel.
           </span>
         </li>
       </ul>

@@ -267,7 +267,7 @@ export default function MethodologyPartnershipPage() {
           </h2>
           <p className="text-gray-300 text-sm leading-relaxed">
             The SSRN paper&rsquo;s 21-47-day lead time was measured against
-            the public 219-startup panel. Funds with five-plus years of their
+            the public 219-observation panel. Funds with five-plus years of their
             own outcomes (wins, write-offs, exits) carry private signal that
             the public regression cannot see. The Methodology Partnership
             trains the same regression on your data and gives you the

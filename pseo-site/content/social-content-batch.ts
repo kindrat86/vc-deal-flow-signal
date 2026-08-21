@@ -242,7 +242,7 @@ Startups that closed: contributor-diversity Gini = 0.34 at month -3.
 Startups that did not close: 0.61.
 
 The shape of the codebase matters more than the size of it. SSRN id 6606558.`,
-      linkedin: `**Data point from the 219-round panel.**
+      linkedin: `**Data point from the 219-observation panel.**
 
 Startups that closed a venture round: contributor-diversity Gini coefficient of 0.34 at month -3 before the announce.
 

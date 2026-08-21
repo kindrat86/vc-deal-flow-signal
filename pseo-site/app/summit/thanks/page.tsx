@@ -61,7 +61,7 @@ export default function SummitThanksPage() {
           </h2>
           <p className="text-sm text-gray-300 leading-relaxed">
             The All-Access Pass unlocks all 20 talks immediately, plus every
-            transcript, every slide deck, and the 219-startup panel dataset.
+            transcript, every slide deck, and the 219-observation panel dataset.
             One payment of €{SUMMIT.allAccessPrice}, lifetime access, 30-day
             refund. Most attendees who go All-Access do it before Day 1
             airs because the transcripts alone are worth the price.

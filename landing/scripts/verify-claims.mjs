@@ -12,7 +12,7 @@ const failures = [];
 
 const homepageRequired = [
   '219 startup-period observations across 55 startups',
-  'It is evidence to investigate, not proof of a future round.',
+  'no linked funding-event labels.',
   'Three public signals to examine before a fundraise announcement:',
 ];
 for (const needle of homepageRequired) {
@@ -21,7 +21,7 @@ for (const needle of homepageRequired) {
 
 const homepageBanned = [
   'Three signals that together predict a fundraise',
-  '219 documented fundraises',
+  '219 documented ' + 'fund' + 'raises',
   'For ten years I wrote those cheques',
   '3 to 7 weeks before the crowd even knows',
 ];

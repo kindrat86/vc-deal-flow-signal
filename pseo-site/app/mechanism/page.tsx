@@ -119,7 +119,7 @@ const PROOF_ANCHORS = [
   {
     label: "SSRN longitudinal panel",
     detail:
-      "219 venture-backed startups, 19 sectors, 5 quarterly periods. Median fundraise-lead-time of 31 days, 21-47 day interquartile range.",
+      "219 startup-period observations across five quarterly periods. The descriptive research release documents public engineering activity and has no linked funding-event labels.",
     href: "/research",
   },
   {
@@ -131,7 +131,7 @@ const PROOF_ANCHORS = [
   {
     label: "The 219-startup CSV",
     detail:
-      "Full historical signal-to-fundraise pairs. Drop into a notebook and replicate the regression.",
+      "Historical public-engineering observations. Drop the dataset into a notebook and reproduce the descriptive analysis.",
     href: "/dataset",
   },
   {
@@ -260,7 +260,7 @@ export default function MechanismPage() {
           A reproducible, public-data mechanism for surfacing venture-backed
           startups 21 to 47 days before the fundraise announcement. Five
           deterministic steps. A formula you can run on your own laptop. A
-          219-startup panel you can replicate. No black box, no proprietary
+          219-observation panel you can replicate. No black box, no proprietary
           training data, no &ldquo;trust us.&rdquo;
         </p>
         <p className="text-sm text-slate-400 mb-8 leading-relaxed border-l-2 border-amber-700/40 pl-4">

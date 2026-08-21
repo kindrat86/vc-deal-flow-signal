@@ -30,7 +30,7 @@ submit sales+hermestest@sipiteno.com → REDIRECT OK: https://gitdealflow.com/su
 ```
 
 ### T4, Anonymous testimonials ✅ DELETED
-Removed the entire "What subscribers say" section (Alex/Jordan/Morgan 5-star cards + "details withheld" disclaimer) from `index.html`, `de/index.html`, `es/index.html`. No replacement testimonials written, the receipts (219 documented fundraises, SSRN/Zenodo, graded predictions) carry the proof.
+Removed the entire "What subscribers say" section (Alex/Jordan/Morgan 5-star cards + "details withheld" disclaimer) from `index.html`, `de/index.html`, `es/index.html`. No replacement testimonials written, the receipts (219 startup-period observations, SSRN/Zenodo, graded predictions) carry the proof.
 
 Verification: `curl -s https://gitdealflow.com/ | grep -c "details withheld|What subscribers say"` → 0.
 

@@ -1532,7 +1532,7 @@ async function handleToolsCall(
         });
       }
       if (wantMastodon) {
-        const body = `${summary}${handleAttr}\n\nFrom @gitdealflow's MCP server, install: ${installCommand}\nMethodology (SSRN, 219-startup panel): ${ssrn}\n\n#VC #DevTools #AltData`.slice(0, 495);
+        const body = `${summary}${handleAttr}\n\nFrom @gitdealflow's MCP server, install: ${installCommand}\nMethodology (SSRN, 219-observation panel): ${ssrn}\n\n#VC #DevTools #AltData`.slice(0, 495);
         posts.push({
           network: "mastodon",
           body,
@@ -1541,7 +1541,7 @@ async function handleToolsCall(
         });
       }
       if (wantLinkedIn) {
-        const body = `${summary}\n\nThis came out of the GitDealFlow MCP server, a free Claude/Cursor integration that ranks startup GitHub orgs by engineering acceleration. The methodology behind it (SSRN-published, 219-startup panel) found commit velocity preceded fundraises by 21-47 days.\n\nInstall: ${installCommand}\nPaper: ${ssrn}\nProduct: ${site}`.slice(0, 695);
+        const body = `${summary}\n\nThis came out of the GitDealFlow MCP server, a free Claude/Cursor integration that ranks startup GitHub orgs by public engineering acceleration. Its SSRN-published descriptive panel contains 219 startup-period observations and no linked funding-event labels.\n\nInstall: ${installCommand}\nPaper: ${ssrn}\nProduct: ${site}`.slice(0, 695);
         posts.push({
           network: "linkedin",
           body,
@@ -1550,7 +1550,7 @@ async function handleToolsCall(
         });
       }
       if (wantTelegram) {
-        const body = `${summary}\n\nFrom the GitDealFlow MCP server, free, install with: ${installCommand}\n\nThe methodology is published on SSRN with a 219-startup panel: ${ssrn}\nProduct: ${site}\n\nGitDealFlow tracks 350+ startup GitHub orgs and ranks them by commit velocity acceleration, weekly. The pattern preceded confirmed fundraises by 21 to 47 days.`.slice(0, 995);
+        const body = `${summary}\n\nFrom the GitDealFlow MCP server, free, install with: ${installCommand}\n\nThe methodology is published on SSRN with a descriptive 219-observation panel: ${ssrn}\nProduct: ${site}\n\nGitDealFlow tracks 350+ startup GitHub orgs and ranks them by public commit-velocity acceleration each week. It is a research and diligence input, not a funding forecast.`.slice(0, 995);
         posts.push({
           network: "telegram",
           body,
