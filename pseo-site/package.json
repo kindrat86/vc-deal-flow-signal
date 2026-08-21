@@ -31,7 +31,8 @@
     "test:distribution-scoreboard": "node scripts/verify-distribution-scoreboard.test.mjs",
     "verify:release-integrity": "node scripts/verify-release-integrity.mjs source",
     "verify:release-integrity:live": "node scripts/verify-release-integrity.mjs live",
-    "test:release-integrity": "node scripts/test/release-integrity.test.mjs"
+    "test:release-integrity": "node scripts/test/release-integrity.test.mjs",
+    "test:conversion-safety": "node --test scripts/test/conversion-safety.test.mjs"
   },
   "dependencies": {
     "@coinbase/x402": "^2.1.0",
