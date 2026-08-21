@@ -25,7 +25,7 @@ import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { join } from "node:path";
 import { homedir } from "node:os";
 
-const SERVER_VERSION = "2.2.0";
+const SERVER_VERSION = "2.2.2";
 const BASE_URL = "https://signals.gitdealflow.com";
 const UA = `gitdealflow-mcp/${SERVER_VERSION}`;
 const FOOTER = "— Powered by gitdealflow.com";

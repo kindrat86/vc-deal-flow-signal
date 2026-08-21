@@ -22,7 +22,7 @@ export async function GET() {
       name: "vc-deal-flow-signal",
       displayName: "VC Deal Flow Signal",
       description: `GitHub momentum tracking for venture deal flow. Find startups whose engineering is accelerating before they raise. ${MCP_TOOL_COUNT} read-only tools (1 metered) across 15 sectors of venture-backed startups, refreshed weekly.`,
-      version: "1.5.0",
+      version: "2.2.2",
       vendor: {
         name: "GitDealFlow",
         url: "https://gitdealflow.com",
