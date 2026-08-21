@@ -3,17 +3,13 @@ import { after } from "next/server";
 import { checkRateLimit, getClientIp, rateLimitHeaders } from "@/lib/rate-limit";
 import { isAllowedOrigin } from "@/lib/validation";
 import { isNonceUsed, markNonceUsed } from "@/lib/runtime-cache";
-import { isExcluded } from "@/lib/excluded-emails";
-import { pickAudienceId } from "@/lib/resend-audience";
 
 // Sector pre-capture endpoint, Brunson DotCom Secrets Ch 13 ("Best Bait")
 // reactivation lever. The /firstlook page asks "which sector?" *before*
 // checkout. Capturing it here:
-//   1. fills a list segmented by sector even when the visitor doesn't pay,
-//      so we can warm them up with sector-specific content later;
-//   2. lets the founder pre-build the panel cache when a visitor commits
+//   1. lets the founder pre-build the panel cache when a visitor commits
 //      to a sector (engine warms, 24h SLA holds even on Friday);
-//   3. routes Stripe checkout with the sector pre-filled in metadata, so
+//   2. routes Stripe checkout with the sector pre-filled in metadata, so
 //      the buyer doesn't re-enter on the next page.
 //
 // Runtime: Node.js Fluid Compute (default). Uses next/server `after()` to
@@ -94,62 +90,10 @@ async function notifyAdmin(email: string, sector: string, source: string) {
   }
 }
 
-/**
- * Add the intent-capture email to the Resend audience with source
- * attribution (packed into first_name, gdf-attr-v1 bridge) so non-buyers
- * still receive future digests/broadcasts. On already-exists, PATCH
- * unsubscribed:false to re-activate. Best-effort.
- */
-async function addToAudience(email: string, sector: string) {
-  if (!RESEND_API_KEY || isExcluded(email)) return;
-  try {
-    const audRes = await fetch("https://api.resend.com/audiences", {
-      headers: { Authorization: `Bearer ${RESEND_API_KEY}` },
-    });
-    if (!audRes.ok) return;
-    const audiences = await audRes.json();
-    const audienceId: string | undefined = pickAudienceId(audiences);
-    if (!audienceId) return;
-    const res = await fetch(
-      `https://api.resend.com/audiences/${audienceId}/contacts`,
-      {
-        method: "POST",
-        headers: {
-          Authorization: `Bearer ${RESEND_API_KEY}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          email,
-          first_name:
-            "gdf-attr-v1:" +
-            JSON.stringify({ source: "firstlook-intent", utm_campaign: sector }),
-          unsubscribed: false,
-        }),
-      },
-    );
-    if (!res.ok) {
-      await fetch(
-        `https://api.resend.com/audiences/${audienceId}/contacts/${encodeURIComponent(email)}`,
-        {
-          method: "PATCH",
-          headers: {
-            Authorization: `Bearer ${RESEND_API_KEY}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ unsubscribed: false }),
-        },
-      );
-    }
-  } catch (err) {
-    console.error("[firstlook-intent] audience-add failed:", err);
-  }
-}
-
 export async function POST(req: NextRequest) {
   // Guards mirror app/api/subscribe/route.ts (audit 2026-07-18): this route
-  // fires an admin email + Resend audience write, so it needs the same
-  // origin allowlist, per-IP rate limit, and honeypot, the 7-day dedup
-  // nonce below stays as the secondary guard.
+  // fires an admin email, so it needs the same origin allowlist, per-IP
+  // rate limit, and honeypot. The 7-day dedup nonce below is a secondary guard.
   if (!isAllowedOrigin(req)) {
     return NextResponse.json(
       { ok: false, error: "forbidden" },
@@ -221,12 +165,11 @@ export async function POST(req: NextRequest) {
   }
   await markNonceUsed(INTENT_NAMESPACE, nonce, INTENT_TTL_SECONDS);
 
-  // Defer the admin notification + audience-add so the response returns
-  // immediately. The visitor sees "captured" inside one round-trip; Resend
-  // can take its time. `after()` runs post-response on Vercel Fluid Compute.
+  // Defer the admin notification so the response returns immediately. A
+  // pre-checkout intent is not permission to add a contact to any audience.
+  // `after()` runs post-response on Vercel Fluid Compute.
   after(async () => {
     await notifyAdmin(email, sector, sourceStr);
-    await addToAudience(email.toLowerCase(), sector);
   });
 
   return NextResponse.json({

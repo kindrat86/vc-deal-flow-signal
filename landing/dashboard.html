@@ -481,6 +481,13 @@
       } catch (e) { return 'dashboard'; }
     }
 
+    function gdfDistinctId() {
+      try {
+        return window.posthog && window.posthog.get_distinct_id
+          ? window.posthog.get_distinct_id()
+          : null;
+      } catch (e) { return null; }
+    }
     var gdfCheckoutPending = false;
     function startCheckout(trigger) {
       if (gdfCheckoutPending) return;
@@ -514,7 +521,7 @@
       fetch('https://signals.gitdealflow.com/api/checkout/session', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-        body: JSON.stringify({ tier: 'dashboard', variant: gdfVariant(), bump: bump })
+        body: JSON.stringify({ tier: 'dashboard', variant: gdfVariant(), bump: bump, ph_distinct_id: gdfDistinctId() })
       }).then(function(res){ return res.json(); }).then(function(data){
         if (!data || !data.url) throw new Error('Missing checkout URL');
         window.location.href = data.url;
