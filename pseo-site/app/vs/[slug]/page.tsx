@@ -8,6 +8,7 @@ import {
   getCanonicalVsSlug,
   getCompetitorVsPair,
   METHODOLOGY,
+  VS_CTR_COHORT_DESCRIPTIONS,
   VS_TITLE_HOOKS,
   competitorPriceNote,
 } from "@/content/competitor-vs";
@@ -80,7 +81,9 @@ export async function generateMetadata({
   // 49/mo)" read as Dealroom=$20k+, PitchBook=EUR 49/mo, both false). The
   // GDF affordability hook stays in the FAQ, correctly attributed.
   const priceClause = priceA && priceB ? ` (${priceA} vs ${priceB})` : "";
-  const description = `${a.name} vs ${b.name} head-to-head${priceClause}: signal type, lead time, pricing, coverage, and when to pick each. Independent comparison, updated ${lastModified.toLocaleDateString("en-US", { month: "long", year: "numeric" })}.`;
+  const defaultDescription = `${a.name} vs ${b.name} head-to-head${priceClause}: signal type, lead time, pricing, coverage, and when to pick each.`;
+  const cohortDescription = VS_CTR_COHORT_DESCRIPTIONS[canonicalSlug];
+  const description = `${cohortDescription ?? defaultDescription} Independent comparison, updated ${lastModified.toLocaleDateString("en-US", { month: "long", year: "numeric" })}.`;
 
   return withEditorialOverride({
     // Absolute: bypass the "| VC Deal Flow Signal" template suffix. With the

@@ -884,6 +884,24 @@ export const VS_TITLE_HOOKS: Record<string, string> = {
   "crunchbase-vs-fundable": "Crunchbase vs Fundable ($179/mo): Data vs Raise",
 };
 
+// First CTR cohort, selected from exact-property GSC rows on 2026-08-21.
+// These ten canonical /vs pages held positions 5-23 with 108-567 impressions
+// and near-zero CTR. The descriptions state the actual buyer decision instead
+// of repeating the generic template wording, while retaining the independent
+// comparison and freshness context applied by the route.
+export const VS_CTR_COHORT_DESCRIPTIONS: Record<string, string> = {
+  "harmonic-ai-vs-pitchbook": "Compare Harmonic.ai's early team-pattern sourcing with PitchBook's private-markets research, coverage, and pricing for venture workflows.",
+  "pitchbook-vs-cb-insights": "Compare PitchBook for private-markets diligence with CB Insights for market intelligence, pricing, coverage, and venture research fit.",
+  "cb-insights-vs-crunchbase": "Compare CB Insights market intelligence with Crunchbase startup data, pricing, coverage, and the right research workflow for your team.",
+  "crunchbase-vs-tracxn": "Compare Crunchbase and Tracxn for startup research: global coverage, regional depth, pricing, and the workflow each platform fits.",
+  "specter-vs-harmonic-ai": "Compare Specter's growth signals with Harmonic.ai's team-pattern sourcing, coverage, pricing, and the venture workflow each platform fits.",
+  "affinity-vs-crunchbase": "Compare Affinity's relationship CRM with Crunchbase startup data, pricing, coverage, and the venture workflow each tool supports.",
+  "affinity-vs-harmonic-ai": "Compare Affinity pipeline CRM with Harmonic.ai early-stage sourcing, pricing, coverage, and where the two tools complement each other.",
+  "dealroom-vs-pitchbook": "Compare Dealroom's European startup coverage with PitchBook private-markets data, pricing, and the diligence workflow each platform fits.",
+  "harmonic-ai-vs-tracxn": "Compare Harmonic.ai team-pattern sourcing with Tracxn sector research, coverage, pricing, and the venture workflow each platform fits.",
+  "harmonic-ai-vs-dealroom": "Compare Harmonic.ai early sourcing with Dealroom startup data, European coverage, pricing, and the venture workflow each platform fits.",
+};
+
 /** First concrete $ figure in a competitor's pricing string, e.g. "$49/mo",
  *  "$20k+/yr", or null when pricing is non-numeric ("Tiered", "Enterprise"). */
 export function competitorPriceNote(c: CompetitorInfo): string | null {
