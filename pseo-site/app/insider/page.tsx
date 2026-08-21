@@ -7,26 +7,25 @@ import { getHreflangLanguages } from "@/lib/hreflang";
 import TrialClose from "@/components/TrialClose";
 import BuyerRoadmap from "@/components/BuyerRoadmap";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
-import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
-export const metadata: Metadata = withEditorialOverride({
+export const metadata: Metadata = {
   title:
     "Insider Circle, See Every Signal 24 Hours Before The Public · €197/mo",
   description:
-    "The Insider Circle walkthrough. If the public Acceleration Watch publishes Mondays at 09:00 UTC, Insiders read the same names Sunday at 09:00 UTC. The single belief: in venture, edge is time, not research. Stack value €4,206/yr, founder rate €197/mo locked forever.",
+    "The Insider Circle walkthrough. Same public engineering signal, delivered 24 hours earlier with the documented private briefing, API, and watchlist support. €197/mo.",
   alternates: {
     canonical: "/insider",
   },
   openGraph: {
     title: "Insider Circle, 24-Hour Lead Over The Free Tier",
     description:
-      "Same signal, 24h earlier. €197/mo founder rate, locked forever. Telegram + JSON/CSV API + custom watchlists + early-list. Stack value €4,206/yr.",
+      "Same signal, 24h earlier. €197/mo. Telegram, JSON/CSV API, custom watchlists, and the documented briefing rhythm.",
     url: "https://signals.gitdealflow.com/insider",
     type: "article",
   },
-});
+};
 
 const STRIPE_INSIDER = "https://buy.stripe.com/bJeaEWfRpcRG6gm2fC0x20d";
 const STRIPE_DASHBOARD = "https://buy.stripe.com/4gMbJ07kTaJy7kqg6s0x20b";
@@ -36,87 +35,78 @@ const STACK_ITEMS = [
   {
     label: "24-Hour Lead On The Acceleration Watch",
     description:
-      "Public list publishes Monday 09:00 UTC. Insiders receive the same ten ranked names by Telegram + email Sunday 09:00 UTC. One full sourcing day before any other investor sees them.",
-    standalone: "€597/yr",
+      "The Insider briefing is sent 24 hours before the public Acceleration Watch.",
   },
   {
-    label: "Everything in Dashboard Beta",
+    label: "Dashboard",
     description:
-      "140 venture-backed startups across 15 sectors, refreshed every Monday 06:00 UTC. Sector filters. Five-quarter historical comparison. Watchlists. Both Chrome extensions. Free MCP forever.",
-    standalone: "€348/yr",
+      "Full ranked field across 15 sectors, refreshed weekly.",
   },
   {
-    label: "Private Telegram Group + Live Briefings",
+    label: "Private Telegram Group And Briefing",
     description:
-      "Closed Insider Telegram group. Founder posts the Sunday list with one-line theses, the chart, and the percentile. Open thread for follow-ups, sector questions, or 'is this real or noise' calls.",
-    standalone: "€600/yr",
+      "A private Insider space with the documented briefing artifact.",
   },
   {
     label: "Insider API, JSON Endpoints + Bulk CSV Pulls",
     description:
-      "Authenticated /api/v1/insider/* endpoints. Pull the full ranking, filter by sector + stage, query an org by name. Bulk CSV exports for any sector slice. Rate limit: 600/hr.",
-    standalone: "€1,200/yr",
+      "Authenticated API access and bulk CSV pulls.",
   },
   {
-    label: "Custom Watchlist Co-Built Around Your Thesis",
+    label: "Custom Thesis Watchlist",
     description:
-      "One async exchange, you send your thesis, we send back the 10 highest-acceleration orgs that match. Re-runnable quarterly. Becomes your private feed inside the Telegram group.",
-    standalone: "€297 once",
+      "A watchlist built around your written investment thesis.",
   },
   {
     label: "Webhook Delivery On Threshold Triggers",
     description:
-      "Wire any acceleration percentile or signal type into your Slack, Discord, or internal pipeline. Fires when a tracked org crosses your defined threshold. JSON payload, retry-safe.",
-    standalone: "Bundled (€397/yr value)",
+      "Webhook delivery when a tracked organization crosses a defined threshold.",
   },
   {
-    label: "Monthly Insider Drop, net-new artefact every first Tuesday",
+    label: "Insider Delivery Calendar",
     description:
-      "Sector deep-dive, methodology release, founder essay, or shipping tool, on a four-format rotation. First Tuesday of every month, 09:00 UTC. PDF + CSV + code + chart pack delivered the day it ships. The continuity programme that turns the subscription from a tool into an anticipation engine. Twelve-month forward calendar at /continuity.",
-    standalone: "€2,364/yr (12 drops × €197 standalone value each)",
+      "The documented Insider delivery calendar and briefing artifact.",
   },
   {
     label: "Direct Founder Line For Diligence Questions",
     description:
-      "Reply to any briefing email or Telegram message. Same-day response on signal-quality questions, methodology clarifications, or 'is this org tracked' lookups. Not a sales channel, a research line.",
-    standalone: "€0 (priceless)",
+      "A direct research line for diligence questions.",
   },
   {
     label: "30-Day Signal-or-It's-Free Guarantee",
     description:
-      "If, in your first 30 days, the 24-hour lead and the Telegram briefings do not surface a single name you find genuinely useful, reply REFUND. Full refund inside two business days. No exit interview.",
-    standalone: "Bonus",
+      "The documented 30-day Signal-or-It's-Free guarantee.",
   },
 ] as const;
 
 const FAQS = [
   {
     q: "What does Insider get me that Dashboard doesn't?",
-    a: "Three things, in order of value. (1) The 24-hour lead, Insiders receive Sunday at 09:00 UTC the same 10 names the public Acceleration Watch publishes Monday at 09:00 UTC. (2) The Telegram group, closed, founder-moderated, where the briefing arrives with thesis + chart + percentile and you can ask follow-ups. (3) The API, authenticated JSON endpoints and bulk CSV pulls so you can wire the signal into your own stack. Dashboard is the visual tool; Insider is the time advantage plus the research relationship.",
+    a: "Insider adds a 24-hour lead, the documented briefing layer, private Telegram space, authenticated API access, bulk CSV pulls, custom watchlist support, and a direct research line.",
   },
   {
     q: "Is the 24-hour lead actually meaningful?",
-    a: "In venture, time-to-first-meeting is the leading variable on whether you get into a round. The SSRN-published panel has lead-time IQR 21-47 days from signal fire to fundraise announcement. Inside that window, every day of head-start compounds, you reach the founder when they have one or two investors circling, not five. The 24-hour Insider lead lets you be the first cold email of the week, not the fifth.",
+    a: "The research panel observed a 21 to 47 day lead time before public fundraise announcements. Insider is for people who want the briefing 24 hours before the public watch.",
   },
   {
     q: "Why €197/mo when Dashboard is €49 ",
-    a: "Different buyers. Dashboard is the tool for an investor who wants the ranked list and the visual interface. Insider is the tool for an investor who has thirty deal-flow conversations a week and needs the 24-hour lead, the API for their own stack, and a direct research line to the founder. The €197 is roughly the cost of one hour of associate time at a fund, the value is one extra outbound conversation per quarter that closes.",
+    a: "Dashboard is the weekly ranked field. Insider adds the 24-hour lead, documented briefing layer, API access, and research support. Both are month to month.",
   },
   {
     q: "What does the API actually return?",
-    a: "Authenticated JSON at /api/v1/insider/ranking, /api/v1/insider/sector/{slug}, /api/v1/insider/org/{handle}, and /api/v1/insider/csv?sector={slug}. Same fields as the public dataset (acceleration percentile, contributor delta, commit-velocity 14d/30d/90d, signal type, stage, geography) plus the un-redacted org name and the engineering thesis. Rate limit 600/hr per key. CSV export accepts sector + stage + geography filters and returns every matching org × every metric.",
+    a: "Authenticated Insider API access includes JSON endpoints and bulk CSV pulls. Check the API documentation for the current endpoint and access details.",
   },
   {
     q: "Is the Telegram group active or just a broadcast channel?",
-    a: "Active. Founder posts the Sunday briefing as the anchor message; threads run all week with sector-specific follow-ups, signal-type questions, and 'is this real' calls. Members are vetted (one paying subscription = one Telegram seat) so the signal-to-noise ratio stays high. You can lurk; about a third of members do.",
+    a: "It is a private Insider space for the documented briefing and follow-up research questions.",
   },
   {
     q: "Can I downgrade to Dashboard if Insider is too much?",
-    a: "Yes, one-click in the Stripe customer portal. The 30-day refund applies first, so if Insider isn't earning its keep, you reply REFUND and get the full €197 back rather than downgrading. After 30 days, downgrades are pro-rated against the current billing period.",
+    a: "Yes. The subscription is month to month. Use the Stripe customer portal or reply to a GitDealFlow email for account help.",
   },
   {
     q: "What's the Monthly Insider Drop and what do I actually get?",
-    a: "On the first Tuesday of every month at 09:00 UTC, every Insider gets a net-new artefact, on a four-format rotation: sector deep-dive (25-page PDF + CSV), methodology release (regression code + paper update), founder essay (4-6K-word post-mortem), or tool release (new MCP tool, API endpoint, or chart pack). Public sees the abstract; members get the full essay + member-only artefact bundle. Twelve-month forward calendar at /continuity. If a drop slips by 48 hours past its publish date, every Insider gets one month free automatically, that's how seriously the cadence is taken.",
+    a: "It is the documented Insider delivery calendar and briefing artifact. Check the current calendar before subscribing.",
   },
 ] as const;
 
@@ -130,7 +120,7 @@ export default function InsiderPage() {
         headline:
           "Insider Circle, See Every Signal 24 Hours Before The Public",
         description:
-          "If venture-investing edge is time rather than research, then a 24-hour lead on a list of 10 ranked engineering accelerations is the most leveraged €197/mo an active investor can spend. Stack value €4,206/yr.",
+          "If venture-investing edge is time rather than research, Insider adds a 24-hour lead, the documented briefing rhythm, and research support at €197/mo.",
         url: "https://signals.gitdealflow.com/insider",
         datePublished: "2026-05-05T00:00:00.000Z",
         dateModified: "2026-05-05T00:00:00.000Z",
@@ -158,10 +148,10 @@ export default function InsiderPage() {
       {
         "@type": "Offer",
         "@id": "https://signals.gitdealflow.com/insider#offer",
-        name: "Insider Circle, €197/mo founding-member rate",
+        name: "Insider Circle, €197/mo",
         description:
-          "Monthly subscription at founding-member rate (€197/mo, locks for the lifetime of the subscription; list price €197/mo). Includes 24-hour lead on Acceleration Watch, private Telegram group, JSON/CSV API, custom watchlist, webhooks, founder line, and Dashboard Beta.",
-        price: 97,
+          "Monthly subscription at €197/mo, month to month. Includes 24-hour lead on Acceleration Watch, private Telegram group, JSON/CSV API, custom watchlist, webhooks, founder line, and Dashboard Beta.",
+        price: 197,
         priceCurrency: "EUR",
         priceValidUntil: "2026-12-31",
         url: STRIPE_INSIDER,
@@ -169,7 +159,7 @@ export default function InsiderPage() {
         category: "subscription",
         priceSpecification: {
           "@type": "UnitPriceSpecification",
-          price: 97,
+          price: 197,
           priceCurrency: "EUR",
           billingDuration: "P1M",
           unitCode: "MON",
@@ -238,13 +228,9 @@ export default function InsiderPage() {
             That&rsquo;s the entire Insider Circle.
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed" data-speakable>
-            If you write more than ten checks a year, the difference between
-            arriving second and arriving first on a fundraise is one outbound
-            email and twenty-four hours of head-start. The Insider Circle is
-            the tool that gives you the head-start. The next ten minutes
-            explain why €197/mo is the most leveraged price in deal-flow
-            tooling once recurring visibility already works and you need
-            recurring conviction support.
+            Insider adds a 24-hour head-start to the public watch, alongside
+            the documented briefing, API access, and research support. This
+            page explains the current delivery before you subscribe.
           </p>
         </header>
 
@@ -359,20 +345,14 @@ published the following Monday at 09:00 UTC.
               &ldquo;Twenty-four hours doesn&rsquo;t actually matter.&rdquo;
             </h3>
             <p className="text-gray-300 text-base leading-relaxed">
-              <strong className="text-gray-100">It does, and the SSRN panel quantifies it.</strong>{" "}
-              Lead-time from a fired signal to a public fundraise announcement
-              is 21-47 days IQR. Inside that window, the round shape is
-              determined in the first 72 hours after the founder starts taking
-              meetings. Reaching out on Sunday afternoon, when the founder
-              has cleared their inbox and is loading the week, is a
-              structurally different conversation than Tuesday morning when
-              they have already committed two introductions.
+              <strong className="text-gray-100">The research panel quantifies the wider timing window.</strong>{" "}
+              The observed lead time before a public fundraise announcement
+              was 21 to 47 days. Insider gives members the documented briefing
+              24 hours before the public watch.
             </p>
             <p className="text-gray-300 text-base leading-relaxed">
-              The 24-hour lead doesn&rsquo;t exist to beat other investors by
-              a day. It exists to put your email in the founder&rsquo;s inbox
-              before they have decided which investors they will actively
-              pursue.
+              Use that additional day as one input in your own research and
+              outreach process.
             </p>
           </div>
 
@@ -393,9 +373,8 @@ published the following Monday at 09:00 UTC.
               fundraise precursor than a launch.
             </p>
             <p className="text-gray-300 text-base leading-relaxed">
-              Practically: if you only have ten minutes on a Sunday evening,
-              the briefing tells you which two of the ten names to actually
-              cold-email. The dashboard tells you all ten exist.
+              The briefing is designed to help members review the ranked field
+              and decide what to investigate next.
             </p>
           </div>
 
@@ -408,7 +387,7 @@ published the following Monday at 09:00 UTC.
               &ldquo;The data is public. Anyone can replicate it.&rdquo;
             </h3>
             <p className="text-gray-300 text-base leading-relaxed">
-              <strong className="text-gray-100">Replicating it costs 6 months and a data engineer.</strong>{" "}
+              <strong className="text-gray-100">The methodology is public, and the service packages the recurring work.</strong>{" "}
               The methodology is open at{" "}
               <a
                 href="https://ssrn.com/abstract=6606558"
@@ -418,12 +397,8 @@ published the following Monday at 09:00 UTC.
               >
                 SSRN abstract 6606558
               </a>
-              {" "}because we don&rsquo;t mind. Building the pipeline that
-              ranks 350+ orgs every week, deduplicates them against fundraise
-              announcements, classifies the signal type, and ships the result
-              by Sunday 09:00 UTC is its own job. €197/mo is roughly the cost
-              of ninety minutes of that engineer&rsquo;s time. You buy the
-              pipeline, not the methodology.
+              {" "}because the method is open to review. GitDealFlow packages
+              the recurring public-GitHub research, ranking, and briefing work.
             </p>
           </div>
 
@@ -478,8 +453,7 @@ published the following Monday at 09:00 UTC.
               <span className="text-emerald-400">€197/mo</span>.
             </h2>
             <p className="text-gray-400 text-sm">
-              Nine items. €4,206/yr standalone value. Founding-member price
-              locked forever.
+              Nine documented deliverables. Month to month, cancel anytime.
             </p>
           </div>
 
@@ -515,12 +489,6 @@ published the following Monday at 09:00 UTC.
                           </span>
                         )}
                       </p>
-                      <p className="text-gray-400 text-xs whitespace-nowrap">
-                        Standalone:{" "}
-                        <span className="text-emerald-400">
-                          {item.standalone}
-                        </span>
-                      </p>
                     </div>
                     <p className="text-gray-400 text-sm leading-relaxed mt-1">
                       {item.description}
@@ -531,29 +499,17 @@ published the following Monday at 09:00 UTC.
             })}
           </ol>
 
-          {/* PRICE STACK */}
           <div className="border-t border-slate-700 pt-6 space-y-3">
-            <div className="flex items-baseline justify-between text-gray-400 text-sm">
-              <span>Total standalone value</span>
-              <span className="line-through">€4,206/yr</span>
-            </div>
-            <div className="flex items-baseline justify-between text-gray-400 text-sm">
-              <span>Post-launch retail (Insider at €197/mo)</span>
-              <span className="line-through">€2,364/yr</span>
-            </div>
-            <div className="flex items-baseline justify-between text-2xl font-bold text-gray-100 pt-3 border-t border-slate-800">
-              <span>Founding-member price, locked forever</span>
+            <div className="flex items-baseline justify-between text-2xl font-bold text-gray-100">
+              <span>Monthly price</span>
               <span className="text-emerald-400">€197/mo</span>
             </div>
             <p className="text-gray-400 text-xs">
-              That is €2,364/year, or roughly the cost of one missed warm
-              intro. The price stays €197 for as long as you stay subscribed.
+              Month to month, cancel anytime. The 30-day Signal-or-It&apos;s-Free guarantee applies.
             </p>
           </div>
           <TrialClose tone="violet">
-            €4,206/yr standalone at €197/mo founding rate, locked through the
-            public hike to €197. If the lock itself is the asset, would you
-            rather wake up on the founding rate or the post-launch rate?
+            Read the delivery calendar and a sample before deciding whether the 24-hour lead fits your sourcing rhythm.
           </TrialClose>
         </section>
 
@@ -592,19 +548,15 @@ published the following Monday at 09:00 UTC.
             <li className="flex items-start gap-3">
               <span className="text-emerald-400 font-bold shrink-0">1.</span>
               <span>
-                If you write ten-plus angel checks a year, the Sunday briefing
-                pays for itself the first month it puts you in front of one
-                founder before the deck circulates. That happens, on average,
-                inside the first two Sundays.
+                Use the Insider briefing when an earlier weekly review fits
+                the way you source and investigate opportunities.
               </span>
             </li>
             <li className="flex items-start gap-3">
               <span className="text-emerald-400 font-bold shrink-0">2.</span>
               <span>
-                If you run a fund or a syndicate, the API alone is worth €197
-drop the JSON into your own pipeline and ship a one-page
-                Monday memo to your principal before the rest of the team has
-                opened their laptop.
+                If you run a fund or syndicate, use the authenticated API and
+                bulk CSV pulls in your own research workflow.
               </span>
             </li>
             <li className="flex items-start gap-3">
@@ -625,28 +577,16 @@ drop the JSON into your own pipeline and ship a one-page
           </h2>
           <ul className="space-y-3 text-gray-300 text-base leading-relaxed">
             <li className="border-l-4 border-amber-500 pl-5 py-1">
-              If all this did was give you a{" "}
-              <strong className="text-amber-300">
-                24-hour head-start on one founder per quarter
-              </strong>
-              , and that head-start meant you got the meeting before the round
-              filled, would €197/mo be worth it?
+              Consider whether a 24-hour head-start on the public watch is
+              useful in your existing research process.
             </li>
             <li className="border-l-4 border-amber-500 pl-5 py-1">
-              If all this did was{" "}
-              <strong className="text-amber-300">
-                replace your Sunday-night sourcing block
-              </strong>{" "}
-              with a 15-minute Telegram briefing, would €197/mo be worth it?
+              Consider whether the private briefing and research support fit
+              how you review the weekly field.
             </li>
             <li className="border-l-4 border-amber-500 pl-5 py-1">
-              If all this did was let you{" "}
-              <strong className="text-amber-300">
-                ship one cold email Sunday evening
-              </strong>{" "}
-              that arrived in the founder&rsquo;s inbox before any other
-              investor saw the list, would the entire stack pay for itself
-              the first quarter?
+              Review a sample and the methodology before deciding whether the
+              monthly or annual plan is appropriate.
             </li>
           </ul>
         </section>
@@ -667,15 +607,11 @@ drop the JSON into your own pipeline and ship a one-page
                 Money close
               </p>
               <h3 className="text-gray-100 font-semibold text-base">
-                €1,164/yr. One missed warm intro.
+                €197/mo, month to month.
               </h3>
               <p className="text-gray-300 text-sm leading-relaxed">
-                €197/mo is €1,164/year. The expected value of one cheque you
-                wrote because you got there first, at a €5k-€50k angel range
-                with even a 3× exit multiple, is between €15k and €150k. The
-                math doesn&rsquo;t work the other way. You aren&rsquo;t paying
-                for data. You&rsquo;re paying for one Sunday-evening
-                head-start per quarter.
+                The monthly plan includes the documented Insider delivery
+                calendar, briefing artifact, API access, and research support.
               </p>
             </div>
 
@@ -698,13 +634,11 @@ drop the JSON into your own pipeline and ship a one-page
                 Pricing close
               </p>
               <h3 className="text-gray-100 font-semibold text-base">
-                The stack is €4,206/yr. You pay €1,164.
+                Annual billing is €1,970/yr.
               </h3>
               <p className="text-gray-300 text-sm leading-relaxed">
-                We could charge €197/mo and the math would still work. The
-                €197 launches the day a regulated investor tool reviews us -
-                the founding-member rate locks before that day. After it
-                locks, you keep €197/mo for as long as you stay subscribed.
+                The active annual Stripe Checkout route is shown alongside the
+                monthly plan. Review the current delivery before choosing one.
               </p>
             </div>
 
@@ -714,15 +648,11 @@ drop the JSON into your own pipeline and ship a one-page
                 Urgency close
               </p>
               <h3 className="text-gray-100 font-semibold text-base">
-                The Telegram is capped. Not as marketing, as moderation.
+                The Insider space is private.
               </h3>
               <p className="text-gray-300 text-sm leading-relaxed">
-                Insider Telegram is closed and one-seat-per-subscription. We
-                cap at the size where the founder can still answer threads
-                personally, currently around 50 active members. Beyond that,
-                new sign-ups go on a waiting list while we tier the group.
-                Founding members keep their seat permanently, even if the cap
-                is later lowered.
+                It is used for the documented briefing and follow-up research
+                questions. There is no public capacity claim.
               </p>
             </div>
           </div>
@@ -737,20 +667,18 @@ drop the JSON into your own pipeline and ship a one-page
             Close
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-100">
-            Lock €197/mo. Forever. Before the launch hike to €197.
+            Join Insider Circle for €197/mo.
           </h2>
           <p className="text-gray-300 text-base leading-relaxed max-w-2xl mx-auto">
-            One click. Stripe checkout. The next Sunday briefing, the
-            Telegram invite, the API key, and your custom-watchlist intake
-            form ship to you inside ten minutes. The 30-day guarantee covers
-            everything.
+            Review the current delivery calendar and briefing details, then
+            choose the monthly or annual Stripe Checkout route.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center pt-2">
             <a
               href={STRIPE_INSIDER}
               className="inline-flex items-center justify-center gap-2 px-6 py-3 rounded-lg bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-semibold text-base shadow-lg shadow-emerald-500/30 transition-colors"
             >
-              Lock €197/mo founder price <span aria-hidden="true">→</span>
+              Lock €197/mo <span aria-hidden="true">→</span>
             </a>
             <a
               href={STRIPE_DASHBOARD}
@@ -813,16 +741,13 @@ drop the JSON into your own pipeline and ship a one-page
             <li className="flex gap-3">
               <span className="text-amber-400 shrink-0 font-bold">→</span>
               <span>
-                Authenticated /api/v1/insider/* endpoints + bulk CSV pulls.
-                600/hr rate limit. Drop the JSON into your stack.
+                Authenticated Insider API access and bulk CSV pulls.
               </span>
             </li>
             <li className="flex gap-3">
               <span className="text-amber-400 shrink-0 font-bold">→</span>
               <span>
-                Custom watchlist, async exchange, you send your thesis, we
-                send back the 10 highest-acceleration orgs that match.
-                Re-runnable quarterly.
+                Custom watchlist support built around your written thesis.
               </span>
             </li>
             <li className="flex gap-3">
@@ -851,9 +776,7 @@ drop the JSON into your own pipeline and ship a one-page
             <li className="flex gap-3">
               <span className="text-amber-400 shrink-0 font-bold">→</span>
               <span>
-                Monthly Insider Drop, first Tuesday of every month, 09:00
-                UTC, a net-new sector deep-dive, methodology release, founder
-                essay, or shipping tool. Twelve-month forward calendar at{" "}
+                The documented Insider delivery calendar and briefing artifact at{" "}
                 <Link
                   href="/continuity"
                   className="text-amber-300 underline decoration-dotted hover:text-amber-200"
@@ -866,20 +789,13 @@ drop the JSON into your own pipeline and ship a one-page
             <li className="flex gap-3">
               <span className="text-amber-400 shrink-0 font-bold">→</span>
               <span>
-                30-day Signal-or-It&rsquo;s-Free guarantee. Founding-member
-                price <strong className="text-amber-300">locked forever</strong> at
-                €197/mo. Public hike to €197/mo lands the day a regulated
-                investor tool reviews us.
+                30-day Signal-or-It&rsquo;s-Free guarantee. €197/mo, month to month.
               </span>
             </li>
           </ul>
           <div className="border-t border-amber-700/30 pt-4 mt-4 flex items-baseline justify-between text-base">
-            <span className="text-gray-300">Standalone value of the stack</span>
-            <span className="text-emerald-400 font-bold">€4,206/yr</span>
-          </div>
-          <div className="flex items-baseline justify-between text-2xl font-bold">
-            <span className="text-gray-100">Your founding-member rate</span>
-            <span className="text-amber-300">€197/mo</span>
+            <span className="text-gray-300">Monthly price</span>
+            <span className="text-amber-300 font-bold">€197/mo</span>
           </div>
         </section>
 
@@ -949,26 +865,26 @@ drop the JSON into your own pipeline and ship a one-page
         </section>
 
         <AgentSummary
-          tldr="Insider Circle is the €197/mo (founding-member rate, locked forever; list €197/mo) tier of VC Deal Flow Signal. The single thing it sells is a 24-hour lead on the public Acceleration Watch, Insiders receive the same ten ranked startups Sunday at 09:00 UTC that the public list publishes Monday at 09:00 UTC. Stack also includes everything in Dashboard Beta, a closed Insider Telegram with founder briefings and threads, an authenticated API (/api/v1/insider/* + bulk CSV), custom thesis-aligned watchlist, webhook delivery on threshold triggers, and a direct founder line for diligence questions. €4,206/yr standalone value. 30-day Signal-or-It's-Free guarantee, reply REFUND."
+          tldr="Insider Circle is the €197/mo month-to-month GitDealFlow tier. It adds a 24-hour lead on the public Acceleration Watch, documented briefing layer, private Insider space, authenticated API access with bulk CSV, custom thesis watchlist support, threshold webhooks, and a direct research line. 30-day Signal-or-It's-Free guarantee."
           pageUrl="https://signals.gitdealflow.com/insider"
           asOf="2026-05-05"
           citeAs="VC Deal Flow Signal, Insider Circle (signals.gitdealflow.com/insider)."
           facts={[
             {
               claim:
-                "Insider Circle founding-member rate is €197/mo and locks for the lifetime of the subscription; list price is €197/mo.",
+                "Insider Circle is €197/mo, month to month. The annual option is €1,970/yr.",
               sourceUrl: "https://signals.gitdealflow.com/pricing#insider-circle",
               sourceLabel: "Pricing page",
             },
             {
               claim:
-                "Sunday-09:00-UTC briefing arrives 24 hours before the public Monday-09:00-UTC Acceleration Watch publishes the same names.",
+                "The Insider briefing arrives 24 hours before the public Acceleration Watch.",
               sourceUrl: "https://signals.gitdealflow.com/predicted",
               sourceLabel: "Acceleration Watch",
             },
             {
               claim:
-                "Authenticated /api/v1/insider/* endpoints and bulk CSV exports are included; rate limit 600/hr per key.",
+                "Authenticated Insider API access and bulk CSV pulls are included.",
               sourceUrl: "https://signals.gitdealflow.com/agents",
               sourceLabel: "Agents surface",
             },

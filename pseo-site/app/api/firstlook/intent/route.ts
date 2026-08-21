@@ -3,6 +3,7 @@ import { after } from "next/server";
 import { checkRateLimit, getClientIp, rateLimitHeaders } from "@/lib/rate-limit";
 import { isAllowedOrigin } from "@/lib/validation";
 import { isNonceUsed, markNonceUsed } from "@/lib/runtime-cache";
+import { LIVE_SECTOR_SET, LIVE_SECTOR_SLUGS } from "@/lib/live-sectors";
 
 // Sector pre-capture endpoint, Brunson DotCom Secrets Ch 13 ("Best Bait")
 // reactivation lever. The /firstlook page asks "which sector?" *before*
@@ -24,29 +25,8 @@ const FROM_EMAIL = process.env.FROM_EMAIL || "signals@gitdealflow.com";
 const FROM_NAME = process.env.FROM_NAME || "The Data Nerd";
 const ADMIN_EMAIL = "signals@gitdealflow.com";
 
-// 19 tracked sectors as of 2026-05. Match the firstlook welcome email
-// (lib emails.ts firstLookWelcomeEmail) so the sector key is shared.
-const VALID_SECTORS = new Set([
-  "ai-ml",
-  "ai-infra",
-  "ai-safety",
-  "climate-tech",
-  "crypto-web3",
-  "cybersecurity",
-  "data-infra",
-  "dev-tools",
-  "edtech",
-  "fintech-rails",
-  "future-of-work",
-  "gaming",
-  "healthtech",
-  "identity",
-  "observability",
-  "open-source-tooling",
-  "robotics",
-  "saas-infra",
-  "vertical-ai",
-]);
+// The selector, request validator, and delivery email share the live 15-sector
+// taxonomy from lib/live-sectors.ts. Do not add a local marketing taxonomy here.
 
 const EMAIL_RX = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 const SECTOR_RX = /^[a-z0-9-]{2,40}$/;
@@ -142,7 +122,7 @@ export async function POST(req: NextRequest) {
   if (
     typeof sector !== "string" ||
     !SECTOR_RX.test(sector) ||
-    !VALID_SECTORS.has(sector)
+    !LIVE_SECTOR_SET.has(sector)
   ) {
     return NextResponse.json(
       { ok: false, error: "invalid_sector" },
@@ -187,7 +167,7 @@ export async function GET() {
     method: "POST",
     body: {
       email: "string (valid email)",
-      sector: `one of ${Array.from(VALID_SECTORS).join(", ")}`,
+      sector: `one of ${LIVE_SECTOR_SLUGS.join(", ")}`,
       source: "string (optional, ≤80 chars)",
     },
     description:

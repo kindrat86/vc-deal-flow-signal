@@ -2,41 +2,15 @@
 
 import { useState } from "react";
 import LeadConversionEvent from "@/components/LeadConversionEvent";
+import { LIVE_SECTORS } from "@/lib/live-sectors";
 
-// Brunson DotCom Secrets Ch 13 ("Best Bait"), pre-checkout sector capture.
-// Every visitor who reaches this form has self-identified as
-// "I'd actually buy this if X sector is covered." Capturing email + sector
-// here, before they hit Stripe, gives us:
-//   1. a list segmented by sector intent (warm-up content, not cold);
-//   2. permission to pre-warm the engine for that sector;
-//   3. a soft commitment that increases the probability of completing
-//      checkout (the foot-in-the-door technique).
-//
-// POSTs to /api/firstlook/intent. Idempotent: same email × sector inside
-// 7 days = single intent record (the API de-dups). Falls open to the
-// public Stripe checkout if the API is down (no hard dependency).
+// Pre-checkout sector capture only warms the requested panel and carries the
+// selection into checkout. It is not marketing consent and never adds a
+// contact to an audience.
 
-const SECTORS: ReadonlyArray<{ key: string; label: string }> = [
-  { key: "ai-ml", label: "AI / ML" },
-  { key: "ai-infra", label: "AI infrastructure" },
-  { key: "ai-safety", label: "AI safety" },
-  { key: "climate-tech", label: "Climate tech" },
-  { key: "crypto-web3", label: "Crypto / Web3" },
-  { key: "cybersecurity", label: "Cybersecurity" },
-  { key: "data-infra", label: "Data infrastructure" },
-  { key: "dev-tools", label: "Developer tools" },
-  { key: "edtech", label: "EdTech" },
-  { key: "fintech-rails", label: "Fintech rails" },
-  { key: "future-of-work", label: "Future of work" },
-  { key: "gaming", label: "Gaming" },
-  { key: "healthtech", label: "Healthtech" },
-  { key: "identity", label: "Identity / auth" },
-  { key: "observability", label: "Observability" },
-  { key: "open-source-tooling", label: "Open-source tooling" },
-  { key: "robotics", label: "Robotics" },
-  { key: "saas-infra", label: "SaaS infrastructure" },
-  { key: "vertical-ai", label: "Vertical AI" },
-];
+const SECTORS: ReadonlyArray<{ key: string; label: string }> = LIVE_SECTORS.map(
+  ({ slug, label }) => ({ key: slug, label }),
+);
 
 type Status = "idle" | "submitting" | "success" | "error";
 
@@ -183,7 +157,7 @@ export default function SectorIntent({
               disabled={status === "submitting"}
             >
               <option value="" disabled>
-                Pick one of 19 tracked sectors…
+                Pick one of 15 live sectors…
               </option>
               {SECTORS.map((s) => (
                 <option key={s.key} value={s.key}>
