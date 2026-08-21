@@ -59,6 +59,10 @@ test("GitDealFlow ships no Meta or LinkedIn tracker or CSP allowance by default"
   }
 });
 
+test("GA4 mirror never wraps PostHog's pre-load stub", () => {
+  assert.match(pseoPixels, /!ph\.__loaded/);
+});
+
 test("Dashboard checkout sends the browser PostHog ID to the server-side purchase join", () => {
   assert.match(dashboardPage, /function gdfDistinctId\(\)/);
   assert.match(dashboardPage, /ph_distinct_id:\s*gdfDistinctId\(\)/);
