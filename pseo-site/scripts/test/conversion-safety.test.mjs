@@ -59,7 +59,9 @@ test("GitDealFlow ships no Meta or LinkedIn tracker or CSP allowance by default"
   }
 });
 
-test("GA4 mirror never wraps PostHog's pre-load stub", () => {
+test("GA4 mirrors PostHog events without replacing the SDK capture method", () => {
+  assert.match(pseoPixels, /ph\.on\("eventCaptured"/);
+  assert.doesNotMatch(pseoPixels, /ph\.capture=function/);
   assert.match(pseoPixels, /!ph\.__loaded/);
 });
 
