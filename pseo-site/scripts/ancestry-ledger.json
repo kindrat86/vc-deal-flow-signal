@@ -179,6 +179,7 @@
    "what": "308s for the five Q2-2026 frozen-sector /best/ URLs (data-derived since 2026-08-16): developer-tools -> /sectors/developer-tools, plus ai-ml/fintech/climate-tech/cybersecurity -> /startups-to-watch/<slug>-q2-2026. GSC 90d on the original 404s: 48/25/23/22 impressions. Derived by scripts/best-redirect-lib.ts into data/best-redirects.json (prebuild); a lineage that drops or retargets any of the five fails the build.",
    "fixCommit": "e2219db040f05d31049149232423566d3c173ba3",
    "ancestryExpected": true,
+   "supersededBy": "d7b752e03: the Q3 2026 data refresh gave the formerly frozen sectors current snapshots, so their /best/<sector>-2026 pages generate again. The data-derived redirect guard in verify-no-regressions now verifies the live redirect set and rejects any redirect that shadows a generating page.",
    "contentNeedles": [
     {
      "file": "pseo-site/data/best-redirects.json",
@@ -196,7 +197,7 @@
      "minCount": 1
     }
    ],
-   "note": "2026-08-16: needles retargeted from hardcoded next.config.ts entries to the data-derived data/best-redirects.json table (the sibling 2026-08-16 quarterly freshness rewrite legitimately moved the redirects). 2026-08-16 (claims session): the verify-no-regressions FROZEN_BEST needle was retargeted to deriveBestRedirects after 2a852952 replaced the hardcoded five-pair block with the data-derived drift check (same five pairs, now derived for every sector-year); the literal FROZEN_BEST identifier no longer exists at HEAD. Ancestry + JSON needles unchanged."
+   "note": "2026-08-16: needles retargeted from hardcoded next.config.ts entries to the data-derived data/best-redirects.json table (the sibling 2026-08-16 quarterly freshness rewrite legitimately moved the redirects). 2026-08-16 (claims session): the verify-no-regressions FROZEN_BEST needle was retargeted to deriveBestRedirects after 2a852952 replaced the hardcoded five-pair block with the data-derived drift check (same five pairs, now derived for every sector-year); the literal FROZEN_BEST identifier no longer exists at HEAD. d7b752e03 later refreshed those sectors to Q3 2026, making the Q2 redirect needles obsolete; the dynamic derivation remains enforced."
   }
  ]
 }
