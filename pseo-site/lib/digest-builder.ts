@@ -219,6 +219,7 @@ export function buildLatestDigest(lane?: string): LatestDigest {
 
   const digest: DigestData = {
     issueNumber: raw.meta?.issueNumber ?? 1,
+    issueId: today.toISOString().slice(0, 10),
     weekOf: formatWeekOf(today),
     heroHeadline: buildHeadline(hottestSectors),
     heroIntro: `We tracked ${panelClaim} startups across ${sectorStats.length} sectors this week. ${topStartups

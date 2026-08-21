@@ -38,6 +38,8 @@ export type DigestPartner = {
 
 export type DigestData = {
   issueNumber: number;
+  /** ISO date key for this sent issue, e.g. 2026-08-21. */
+  issueId: string;
   weekOf: string;
   heroHeadline: string;
   heroIntro: string;
@@ -88,14 +90,19 @@ function escape(s: string): string {
 // keys on utm_source containing email/outreach/newsletter/substack). Email
 // clients strip the referrer, so without this every digest click lands as
 // "direct". External links (partner slot, social footer) are left untagged.
-function track(href: string): string {
+function track(href: string, issueId: string, content: string): string {
   try {
-    if (!new URL(href).hostname.endsWith("gitdealflow.com")) return href;
+    const url = new URL(href);
+    if (!(url.hostname === "gitdealflow.com" || url.hostname.endsWith(".gitdealflow.com"))) return href;
+    url.searchParams.set("utm_source", "email");
+    url.searchParams.set("utm_medium", "email");
+    url.searchParams.set("utm_campaign", "signal-digest");
+    url.searchParams.set("utm_content", content);
+    url.searchParams.set("utm_id", `digest-${issueId}-${content}`);
+    return url.toString();
   } catch {
     return href;
   }
-  const sep = href.includes("?") ? "&" : "?";
-  return `${href}${sep}utm_source=email&utm_medium=email&utm_campaign=signal-digest`;
 }
 
 function unsubToken(_esp: DigestOptions["esp"]): { unsub: string; prefs: string } {
@@ -109,11 +116,11 @@ function unsubToken(_esp: DigestOptions["esp"]): { unsub: string; prefs: string 
   return { unsub: mailto, prefs: mailto };
 }
 
-function startupCard(s: DigestStartup): string {
+function startupCard(s: DigestStartup, issueId: string): string {
   return `
           <tr>
             <td style="padding:0 8px 12px 8px;">
-              <a href="${track(`https://signals.gitdealflow.com/startup/${escape(s.slug)}`)}" style="display:block;text-decoration:none;">
+              <a href="${track(`https://signals.gitdealflow.com/startup/${escape(s.slug)}`, issueId, `startup-${s.slug}`)}" style="display:block;text-decoration:none;">
                 <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0" class="bg-card brd" style="background:${BRAND.card};border:1px solid ${BRAND.border};border-radius:12px;">
                   <tr>
                     <td style="padding:20px;">
@@ -233,7 +240,7 @@ export function renderDigestEmail(data: DigestData, opts: DigestOptions = {}): s
               <table role="presentation" width="100%" cellpadding="0" cellspacing="0" border="0">
                 <tr>
                   <td align="left" style="vertical-align:middle;">
-                    <a href="${track("https://gitdealflow.com")}" style="color:${BRAND.textPri};font-size:16px;font-weight:700;letter-spacing:-0.01em;">
+                    <a href="${track("https://gitdealflow.com", data.issueId, "header")}" style="color:${BRAND.textPri};font-size:16px;font-weight:700;letter-spacing:-0.01em;">
                       <span style="color:${BRAND.textPri};">VC Deal Flow</span><span style="color:${BRAND.accent};"> Signal</span>
                     </a>
                   </td>
@@ -293,7 +300,7 @@ export function renderDigestEmail(data: DigestData, opts: DigestOptions = {}): s
               <h2 class="tx-pri" style="margin:0 0 4px 0;color:${BRAND.textPri};font-size:20px;font-weight:700;letter-spacing:-0.01em;">Top 5 Breakouts This Week</h2>
               <p class="tx-mut" style="margin:0;color:${BRAND.textMut};font-size:13px;">Ranked by how much faster they're shipping than their normal pace.</p>
             </td>
-          </tr>${data.topStartups.slice(0, 5).map(startupCard).join("")}
+          </tr>${data.topStartups.slice(0, 5).map((startup) => startupCard(startup, data.issueId)).join("")}
 
           <!-- HOTTEST SECTORS -->
           <tr><td style="height:32px;line-height:32px;font-size:0;">&nbsp;</td></tr>
@@ -324,12 +331,12 @@ export function renderDigestEmail(data: DigestData, opts: DigestOptions = {}): s
               <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;">
                 <tr>
                   <td align="center">
-                    <a href="${track("https://signals.gitdealflow.com/trending")}" style="display:block;width:100%;box-sizing:border-box;background:${BRAND.accent};color:${BRAND.onAccent};font-weight:700;font-size:19px;line-height:1.2;letter-spacing:-0.01em;padding:18px 28px;border-radius:10px;text-decoration:none;text-align:center;box-shadow:0 4px 14px rgba(2,132,199,0.35);">Browse the full 350+ ranking &rarr;</a>
+                    <a href="${track("https://signals.gitdealflow.com/trending", data.issueId, "browse-ranking")}" style="display:block;width:100%;box-sizing:border-box;background:${BRAND.accent};color:${BRAND.onAccent};font-weight:700;font-size:19px;line-height:1.2;letter-spacing:-0.01em;padding:18px 28px;border-radius:10px;text-decoration:none;text-align:center;box-shadow:0 4px 14px rgba(2,132,199,0.35);">Browse the full 350+ ranking &rarr;</a>
                   </td>
                 </tr>
               </table>
               <p class="tx-mut" style="margin:12px 0 0 0;color:${BRAND.textMut};font-size:13px;">
-                Want the deep dive? <a href="${track("https://gitdealflow.com/insider")}" style="color:${BRAND.accentLight};font-weight:600;">Join the Insider Circle</a> for the full numbers, real-time alerts, and the complete research tools.
+                Want the deep dive? <a href="${track("https://gitdealflow.com/insider", data.issueId, "insider")}" style="color:${BRAND.accentLight};font-weight:600;">Join the Insider Circle</a> for the full numbers, real-time alerts, and the complete research tools.
               </p>
             </td>
           </tr>
@@ -341,7 +348,7 @@ export function renderDigestEmail(data: DigestData, opts: DigestOptions = {}): s
               <div class="tx-mut" style="color:${BRAND.textMut};font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;">How we measure</div>
               <p class="tx-sec" style="margin:8px 0 0 0;color:${BRAND.textSec};font-size:14px;line-height:22px;">
                 Each week we look at how fast a team is shipping code, how many engineers are pitching in, and how often they push out updates, over the last 14 days, against that startup's own normal pace. The names at the top of this list have historically started moving 3-6 weeks before a funding announcement.
-                <a href="${track("https://signals.gitdealflow.com/methodology")}" style="color:${BRAND.accentLight};font-weight:600;">See exactly how &rarr;</a>
+                <a href="${track("https://signals.gitdealflow.com/methodology", data.issueId, "methodology")}" style="color:${BRAND.accentLight};font-weight:600;">See exactly how &rarr;</a>
               </p>
             </td>
           </tr>
@@ -375,11 +382,11 @@ export function renderDigestEmail(data: DigestData, opts: DigestOptions = {}): s
                   <td class="tx-mut" style="color:${BRAND.border};">&middot;</td>
                   <td style="padding:0 8px;"><a href="https://www.linkedin.com/company/gitdealflow" style="color:${BRAND.textMut};font-size:13px;font-weight:500;">LinkedIn</a></td>
                   <td class="tx-mut" style="color:${BRAND.border};">&middot;</td>
-                  <td style="padding:0 8px;"><a href="${track("https://signals.gitdealflow.com")}" style="color:${BRAND.textMut};font-size:13px;font-weight:500;">Signals</a></td>
+                  <td style="padding:0 8px;"><a href="${track("https://signals.gitdealflow.com", data.issueId, "footer-signals")}" style="color:${BRAND.textMut};font-size:13px;font-weight:500;">Signals</a></td>
                 </tr>
               </table>
               <p class="tx-mut" style="margin:20px 0 0 0;color:${BRAND.textFade};font-size:12px;line-height:18px;text-align:center;">
-                You're reading the Signal Digest from <a href="${track("https://gitdealflow.com")}" style="color:${BRAND.textMut};font-weight:500;">GitDealFlow</a>.<br>
+                You're reading the Signal Digest from <a href="${track("https://gitdealflow.com", data.issueId, "footer-brand")}" style="color:${BRAND.textMut};font-weight:500;">GitDealFlow</a>.<br>
                 Also find the GitDealFlow Signal on <a href="https://inboxreads.co/n/gitdealflow-signal" style="color:${BRAND.textMut};font-weight:500;">InboxReads</a>.<br>
                 No investment advice. Based on public GitHub data.<br>
                 <a href="${unsub}" style="color:${BRAND.textFade};text-decoration:underline;">Unsubscribe</a> &middot; <a href="${prefs}" style="color:${BRAND.textFade};text-decoration:underline;">Update preferences</a>

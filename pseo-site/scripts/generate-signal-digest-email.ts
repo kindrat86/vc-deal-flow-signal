@@ -237,6 +237,7 @@ function main() {
 
   const digest: DigestData = {
     issueNumber: raw.meta?.issueNumber ?? 1,
+    issueId: dateStr,
     weekOf: formatWeekOf(today),
     heroHeadline: buildHeadline(hottestSectors),
     heroIntro: `We tracked ${panelClaim} startups across ${sectorStats.length} sectors this week. ${topStartups

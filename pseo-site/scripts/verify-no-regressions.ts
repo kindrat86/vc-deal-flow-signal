@@ -5851,19 +5851,19 @@ landingCheck(
 {
   const de = read("lib/digest-email.ts");
   if (de !== null) {
-    if (!de.includes("function track(href: string): string")) {
+    if (!de.includes("function track(href: string, issueId: string, content: string): string")) {
       failures.push(
-        "§65 digest email lost the track() UTM helper.\n    file: lib/digest-email.ts\n    fix: restore the track(href) function that appends utm_source=email&utm_medium=email&utm_campaign=signal-digest to gitdealflow.com links",
+        "§65 digest email lost the placement-aware track() UTM helper.\n    file: lib/digest-email.ts\n    fix: restore track(href, issueId, content) so every digest link carries an immutable placement id",
       );
     }
-    if (!de.includes("utm_source=email&utm_medium=email&utm_campaign=signal-digest")) {
+    if (!de.includes('url.searchParams.set("utm_id", `digest-${issueId}-${content}`)')) {
       failures.push(
-        "§65 digest email UTM params lost from track().\n    file: lib/digest-email.ts\n    fix: restore the utm_source=email&utm_medium=email&utm_campaign=signal-digest query in track()",
+        "§65 digest email placement id lost from track().\n    file: lib/digest-email.ts\n    fix: restore utm_id=digest-${issueId}-${content} so newsletter clicks can be assigned to one exact issue and link",
       );
     }
-    if (!de.includes('track(`https://signals.gitdealflow.com/startup/${escape(s.slug)}`)')) {
+    if (!de.includes('track(`https://signals.gitdealflow.com/startup/${escape(s.slug)}`, issueId, `startup-${s.slug}`)')) {
       failures.push(
-        "§65 digest startup cards lost UTM tagging.\n    file: lib/digest-email.ts\n    fix: wrap the startup-card href in track() so email clicks attribute to the email source",
+        "§65 digest startup cards lost placement-aware UTM tagging.\n    file: lib/digest-email.ts\n    fix: pass issueId and startup-${slug} to track() so each card click attributes to one exact digest link",
       );
     }
   }
