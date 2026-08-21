@@ -2,12 +2,8 @@ import Link from "next/link";
 
 // Annual checkout links come from env so Stripe link rotation never needs a
 // code change; fallbacks are the live links verified 2026-07-13.
-const STRIPE_DASHBOARD_ANNUAL =
-  process.env.NEXT_PUBLIC_STRIPE_DASHBOARD_ANNUAL_LINK ||
-  "https://buy.stripe.com/aFa5kC34DeZOawC6vS0x20c";
-const STRIPE_INSIDER_ANNUAL =
-  process.env.NEXT_PUBLIC_STRIPE_INSIDER_ANNUAL_LINK ||
-  "https://buy.stripe.com/cNieVc34DbNCcEK2fC0x20e";
+const STRIPE_DASHBOARD_ANNUAL: string | undefined = undefined;
+const STRIPE_INSIDER_ANNUAL: string | undefined = undefined;
 
 interface Tier {
   name: string;

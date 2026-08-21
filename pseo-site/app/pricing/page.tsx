@@ -43,12 +43,8 @@ const STRIPE_SWEEP = "/api/checkout/session?tier=sector_sweep";
 // `||` not `??`, Vercel env entries can be empty strings, which `??`
 // would NOT replace. We want the hardcoded canonical URL whenever the
 // env var is missing OR empty.
-const STRIPE_DASHBOARD_ANNUAL =
-  process.env.NEXT_PUBLIC_STRIPE_DASHBOARD_ANNUAL_LINK ||
-  "https://buy.stripe.com/aFa5kC34DeZOawC6vS0x20c";
-const STRIPE_INSIDER_ANNUAL =
-  process.env.NEXT_PUBLIC_STRIPE_INSIDER_ANNUAL_LINK ||
-  "https://buy.stripe.com/cNieVc34DbNCcEK2fC0x20e";
+const STRIPE_DASHBOARD_ANNUAL: string | undefined = undefined;
+const STRIPE_INSIDER_ANNUAL: string | undefined = undefined;
 const SIGNUP_URL = "https://gitdealflow.com/#signup";
 // Sharp Tier, application-gated, capped at 8 funds in 2026. The mailto includes a structured intake template so the reply is immediate-prioritised.
 // Russell audit 2026-05-05 PM: replaced mailto: with a proper application
