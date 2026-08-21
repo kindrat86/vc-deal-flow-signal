@@ -19,14 +19,12 @@ export const dynamic = "force-static";
 // links, manifesto, and the walkthrough core-claim narrative.
 
 export const metadata: Metadata = withEditorialOverride({
-  title:
-    "How the Signal Works, The Commit-Velocity Acceleration Engine",
+  title: "How the Signal Works, Public Engineering Diligence Workflow",
   description:
-    "How the signal works: a reproducible public-data method for spotting startup momentum earlier, with the formula, the proof, and the checks that keep it honest.",
+    "How the signal works: a reproducible public-data diligence workflow. It identifies activity worth investigating, with the method, proof, and limits needed to keep it honest.",
   alternates: { canonical: "/mechanism" },
   openGraph: {
-    title:
-      "The Commit-Velocity Acceleration Engine, Named Mechanism for VC Deal Sourcing",
+    title: "Public Engineering Diligence Workflow",
     description:
       "A new mechanism for VC deal sourcing, public-data, formula-driven, falsifiable. Eugene Schwartz Level 5.",
     url: "https://signals.gitdealflow.com/mechanism",
@@ -47,7 +45,7 @@ const FORMULA_STEPS = [
     detail:
       "Each organization is measured against its own historical baseline, not the population. A 100% delta means the team doubled its merge cadence relative to its own prior fortnight. Cross-org comparison is meaningless; self-comparison is the whole point.",
     plain:
-      "In plain terms: we compare a team to its own normal, not to other teams. A 100% jump means they shipped twice as much code as their usual fortnight, the kind of step-change that happens right before a raise.",
+      "In plain terms: we compare a team to its own normal, not to other teams. A 100% jump means they shipped twice as much code as their usual fortnight. That can be useful for diligence, but it is not proof of a future raise.",
   },
   {
     n: 3,
@@ -59,7 +57,7 @@ const FORMULA_STEPS = [
     n: 4,
     title: "Score contributor concentration with the Gini coefficient",
     detail:
-      "The Gini coefficient of commit distribution across contributors over the same 14-day window. Below 0.30 = broad team participation. Above 0.70 = a single hero developer. High velocity with low concentration is the strongest single composite predictor in the SSRN panel, orgs meeting both conditions are 3.4× more likely to announce a Series A within 60 days than orgs with high velocity alone.",
+      "The Gini coefficient measures commit distribution across contributors over the same 14-day window. It helps distinguish broad team activity from a single-contributor spike. Treat it as context for a diligence read, not as a standalone prediction.",
     plain:
       "In plain terms: the Gini coefficient is just a fairness score for who is doing the work, is this a whole team accelerating, or one person doing everything? A real team accelerating is a far stronger buy signal than a single hero coder, and we only flag the team pattern.",
   },
@@ -67,9 +65,9 @@ const FORMULA_STEPS = [
     n: 5,
     title: "Classify the breakout into one of five signal types",
     detail:
-      "Engineering Hiring Burst (≥50% contributor growth), Infrastructure Buildout (≥3 new public repos in 30 days), Deploy Frequency Spike (≥150% velocity), Framework Migration (general acceleration that fits none of the above), or Deceleration (commit velocity falling below the prior window). Each type carries a distinct fundraise-lead-time distribution, so the classification is not cosmetic, it is the prediction.",
+      "Engineering Hiring Burst, Infrastructure Buildout, Deploy Frequency Spike, Framework Migration, or Deceleration. The labels make the observed activity easier to inspect. They do not predict a financing event or prescribe an investment decision.",
     plain:
-      "In plain terms: we tell you which kind of move it is, they just hired a wave of engineers, they're building scaling infrastructure, they're shipping to production far faster, they're re-platforming, or their pace is slowing. Each kind tends to lead a raise by a different amount of time, so the label is also the timing estimate.",
+      "In plain terms: we tell you which kind of observed move it is, such as team growth, infrastructure work, or a slowing pace. The label guides what to inspect next. It is not a timing estimate.",
   },
 ] as const;
 
@@ -120,7 +118,7 @@ const PROOF_ANCHORS = [
   {
     label: "SSRN longitudinal panel",
     detail:
-      "219 venture-backed startups, 19 sectors, 5 quarterly periods. Median fundraise-lead-time of 31 days, 21-47 day interquartile range.",
+      "219 startup-period observations across 55 startups and 15 sectors. The 21-47 day interquartile range is a published research result, not a funding forecast.",
     href: "/research",
   },
   {
@@ -132,7 +130,7 @@ const PROOF_ANCHORS = [
   {
     label: "The 219-startup CSV",
     detail:
-      "Full historical signal-to-fundraise pairs. Drop into a notebook and replicate the regression.",
+      "Published panel data and methods. Use the dataset to inspect the study design and limits, not to infer a financing outcome.",
     href: "/dataset",
   },
   {
@@ -145,16 +143,16 @@ const PROOF_ANCHORS = [
 
 const FALSIFIABILITY = [
   {
-    claim: "Commit-velocity acceleration leads fundraise announcement",
-    test: "Re-run the regression on a held-out sector. Median lead-time should fall in the 21-47 day interquartile range published in the SSRN panel.",
+    claim: "Observed public engineering activity is useful as a diligence signal, not a financing forecast.",
+    test: "Inspect the public activity, compare it against the published methodology, and corroborate it with independent diligence before deciding what to do next.",
   },
   {
-    claim: "Two-period confirmation removes false positives",
-    test: "Compare single-period and two-period precision on the validation set. Two-period precision should exceed 0.95 on the labeled cohort.",
+    claim: "Two-period confirmation reduces one-window noise",
+    test: "Compare an activity spike with the following public activity window. If it fades, treat it as noise rather than an actionable signal.",
   },
   {
-    claim: "Gini-weighted concentration improves the composite",
-    test: "Strip the Gini term from the regression. AUC should drop measurably; if it does not, the term is decorative and we should remove it.",
+    claim: "Contributor concentration adds useful context",
+    test: "Inspect whether activity is broad across a team or concentrated in one account, then use that context in a wider diligence review.",
   },
 ] as const;
 
@@ -167,9 +165,9 @@ export default function MechanismPage() {
         "@type": "Article",
         "@id": "https://signals.gitdealflow.com/mechanism#article",
         headline:
-          "The Commit-Velocity Acceleration Engine, A Named Mechanism for VC Deal Sourcing",
+          "Public Engineering Diligence Workflow, A Named Framework for Investor Research",
         description:
-          "A new mechanism for venture capital deal sourcing: 14-day commit-velocity acceleration on public GitHub data, two-period confirmation, and Gini-weighted contributor concentration.",
+          "A reproducible public-data workflow for deciding what to inspect next: activity read, comparison, inspection, and corroboration. It is a diligence signal, not a financing forecast.",
         author: {
           "@type": "Organization",
           name: "VC Deal Flow Signal",
@@ -182,16 +180,16 @@ export default function MechanismPage() {
       {
         "@type": "DefinedTerm",
         "@id": "https://signals.gitdealflow.com/mechanism#term",
-        name: "Commit-Velocity Acceleration Engine",
+        name: "Public Engineering Diligence Workflow",
         description:
-          "A reproducible, public-data mechanism for surfacing venture-backed startups 21-47 days before fundraise announcement, built on 14-day commit velocity, two-period confirmation, and Gini-weighted contributor concentration.",
+          "A reproducible public-data workflow for investigating observed engineering activity. The commit-velocity calculation is one input, checked through comparison, inspection, and corroboration.",
         inDefinedTermSet: "https://signals.gitdealflow.com/glossary",
         url: "https://signals.gitdealflow.com/mechanism",
       },
       {
         "@type": "HowTo",
-        name: "How the Commit-Velocity Acceleration Engine Works",
-        description: "The five-step formula behind the named mechanism.",
+        name: "How the Public Engineering Diligence Workflow Works",
+        description: "The five public-data checks behind the framework.",
         step: FORMULA_STEPS.map((s) => ({
           "@type": "HowToStep",
           position: s.n,
@@ -215,7 +213,7 @@ export default function MechanismPage() {
           url: "https://gitdealflow.com",
         },
         claimReviewed:
-          "Our hypothesis: commit-velocity acceleration leads venture fundraise announcements by a few weeks (validated openly on /scorecard, not yet established).",
+          "Our hypothesis: observed public engineering activity can guide diligence questions. It is not a financing forecast and must be corroborated independently.",
         itemReviewed: {
           "@type": "Claim",
           appearance:
@@ -252,31 +250,22 @@ export default function MechanismPage() {
 
       <article className="max-w-3xl mx-auto px-4 sm:px-6 py-12">
         <p className="text-xs uppercase tracking-widest text-amber-300 font-semibold mb-4">
-          Named mechanism · Eugene Schwartz Level 5
+          Named buyer framework
         </p>
         <h1 className="text-3xl sm:text-4xl font-bold tracking-tight mb-4">
-          The Commit-Velocity Acceleration Engine
+          Public Engineering Diligence Workflow
         </h1>
         <p className="text-lg text-slate-300 mb-3 leading-relaxed">
-          A reproducible, public-data mechanism for surfacing venture-backed
-          startups 21 to 47 days before the fundraise announcement. Five
-          deterministic steps. A formula you can run on your own laptop. A
-          219-startup panel you can replicate. No black box, no proprietary
-          training data, no &ldquo;trust us.&rdquo;
+          A reproducible public-data workflow for deciding what to inspect next.
+          Read the observed activity, compare it to its baseline, inspect the
+          context, and corroborate it independently. The 219-observation research
+          panel is evidence to examine, not a forecast of a financing event.
         </p>
         <p className="text-sm text-slate-400 mb-8 leading-relaxed border-l-2 border-amber-700/40 pl-4">
-          The engine is the formal implementation of the broader category we
-          call{" "}
-          <Link
-            href="/code-side-sourcing"
-            className="text-amber-300 hover:text-amber-200 underline decoration-dotted"
-          >
-            Code-Side Sourcing
-          </Link>
-          {" "}, the practice of using public repository-velocity data as a
-          leading indicator of venture-stage outcomes. Read the category
-          definition first if the term is new; the steps below are how we
-          execute it.
+          Commit velocity is one input to this workflow, not a stand-alone verdict.
+          The five checks below make the input auditable. Use the full method when
+          you want to challenge the read, then use independent diligence before any
+          decision.
         </p>
 
         <p className="text-sm text-slate-300 mb-8 leading-relaxed rounded-xl border border-slate-800 bg-slate-900/40 p-5">
@@ -470,17 +459,16 @@ not the secret. The buyer who can reproduce our regression in a
           className="border border-amber-500/40 rounded-2xl p-6 sm:p-8 bg-gradient-to-br from-amber-950/30 via-slate-900 to-slate-950 mb-10"
         >
           <p className="text-xs uppercase tracking-widest text-amber-300 font-semibold mb-3">
-            Run the engine on a sector this week
+            Inspect one sector with the workflow
           </p>
           <h2 className="text-xl sm:text-2xl font-bold mb-3">
-            €7 once. One sector. 24-hour deep dive.
+            €7 once. One sector. A documented diligence brief.
           </h2>
           <p className="text-sm text-slate-300 mb-5 leading-relaxed">
-            Pick any of 19 tracked sectors. Within 24 hours we deliver the
-            full Commit-Velocity Acceleration Engine output for that sector -
-            top 25 ranked orgs, contributor maps, the three pre-Crunchbase
-            breakouts the consensus tools haven&rsquo;t indexed. Credited
-            toward Dashboard if you upgrade in 14 days.
+            Choose from the current 15-sector taxonomy. The First Look pass gives
+            you a sector-specific public-data brief within 24 hours, then you can
+            decide whether the evidence merits deeper work. It is not a financing
+            forecast. Upgrade credit applies for 14 days.
           </p>
           <Link
             href="/firstlook"
