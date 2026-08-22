@@ -6093,6 +6093,22 @@ landingCheck(
   }
 }
 
+// ---------------------------------------------------------------------------
+// §72 Research Square DOI (2026-08-22). The paper received a permanent,
+// citable Research Square DOI. Keep the visible announcement, machine-readable
+// sameAs/citation references, and direct reader CTA together on /research.
+// ---------------------------------------------------------------------------
+check(
+  "app/research/page.tsx",
+  "§72 /research lost the Research Square DOI announcement or citation link.",
+  (s) =>
+    s.includes('const RESEARCH_SQUARE_URL = "https://doi.org/10.21203/rs.3.rs-10745326/v1"') &&
+    s.includes("Now live on Research Square") &&
+    s.includes("Read the citable preprint") &&
+    s.includes("citation: [RESEARCH_SQUARE_URL, SSRN_URL]"),
+  "restore the Research Square DOI constant, visible announcement, primary CTA, and ScholarlyArticle citation array",
+);
+
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +
