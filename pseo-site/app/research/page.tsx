@@ -10,6 +10,7 @@ import { withEditorialOverride } from "@/lib/metadata";
 
 const SITE = "https://signals.gitdealflow.com";
 const SSRN_URL = "https://ssrn.com/abstract=6606558";
+const RESEARCH_SQUARE_URL = "https://doi.org/10.21203/rs.3.rs-10745326/v1";
 const PAPER_TITLE =
   "A Longitudinal Panel of GitHub Engineering Velocity for Venture-Backed Startups";
 
@@ -71,7 +72,7 @@ const FAQ_ENTRIES = [
   {
     q: "How do I cite the paper?",
     a:
-      `VC Deal Flow Signal. (2026). ${PAPER_TITLE} (v1.0.0). https://gitdealflow.com, SSRN abstract=6606558.`,
+      `VC Deal Flow Signal. (2026). ${PAPER_TITLE}: Dataset and Early Observations. Research Square. https://doi.org/10.21203/rs.3.rs-10745326/v1.`,
   },
 ];
 
@@ -92,6 +93,7 @@ export default function ResearchPage() {
     license: "https://creativecommons.org/licenses/by/4.0/",
     isAccessibleForFree: true,
     sameAs: [
+      RESEARCH_SQUARE_URL,
       SSRN_URL,
       "https://doi.org/10.2139/ssrn.6606558",
       "https://openalex.org/works/W7154916891",
@@ -101,7 +103,7 @@ export default function ResearchPage() {
       "https://api.crossref.org/works/10.2139/ssrn.6606558",
       "https://huggingface.co/datasets/the-data-nerd/vc-deal-flow-signal",
     ],
-    citation: SSRN_URL,
+    citation: [RESEARCH_SQUARE_URL, SSRN_URL],
     isPartOf: {
       "@type": "Periodical",
       name: "SSRN Working Paper Series",
@@ -173,6 +175,7 @@ export default function ResearchPage() {
       "https://signals.gitdealflow.com/faq",
       "https://signals.gitdealflow.com/about",
       "https://ssrn.com/abstract=6606558",
+      RESEARCH_SQUARE_URL,
       "https://doi.org/10.5281/zenodo.19650920",
       "https://github.com/kindrat86/gitdealflow-signal-classifier",
       "https://www.semanticscholar.org/paper/4dd7b11e79757f68e0c4107252514cbfdfbb0462",
@@ -383,7 +386,7 @@ export default function ResearchPage() {
       <article className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
         <header className="mb-12">
           <p className="text-sky-400 text-sm font-semibold mb-3 uppercase tracking-wider">
-            Research · SSRN-indexed · CC BY 4.0
+            Research · DOI registered · CC BY 4.0
           </p>
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-5 leading-tight">
             {PAPER_TITLE}
@@ -398,6 +401,23 @@ export default function ResearchPage() {
             question is whether GitHub activity can surface startup momentum
             before a round gets crowded, this is the main evidence page.
           </p>
+          <div className="mb-6 max-w-3xl rounded-lg border border-sky-500/40 bg-sky-500/10 p-4 text-sm sm:text-base">
+            <p className="text-sky-300 font-semibold mb-1">
+              Now live on Research Square
+            </p>
+            <p className="text-gray-100 leading-relaxed">
+              Version 1 is a permanent, citable preprint with Research Square DOI{" "}
+              <a
+                href={RESEARCH_SQUARE_URL}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-sky-300 underline decoration-dotted"
+              >
+                10.21203/rs.3.rs-10745326/v1
+              </a>
+              . The full paper and open dataset remain free to read and reuse under CC BY 4.0.
+            </p>
+          </div>
           <div
             data-speakable
             className="mb-6 max-w-3xl rounded-lg border border-emerald-500/30 bg-emerald-500/5 p-4 text-sm sm:text-base"
@@ -445,12 +465,20 @@ the pattern we validate in the open. The acceleration shows up
           </PlainEnglishNote>
           <div className="flex flex-wrap gap-3">
             <a
-              href={SSRN_URL}
+              href={RESEARCH_SQUARE_URL}
               target="_blank"
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg bg-sky-700 hover:bg-sky-600 text-white text-sm font-medium transition"
             >
-              Read the paper on SSRN →
+              Read the citable preprint →
+            </a>
+            <a
+              href={SSRN_URL}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-flex items-center justify-center px-5 py-2.5 rounded-lg border border-slate-700 hover:border-slate-500 text-gray-200 text-sm font-medium transition"
+            >
+              SSRN mirror →
             </a>
             <a
               href="https://signals.gitdealflow.com/api/signals.csv"
