@@ -6149,12 +6149,16 @@ check(
         "Proof-first route lost its allowlist 404 or noindex metadata. Restore dynamicParams=false, notFound(), and noindex/nofollow/noarchive.",
       );
     }
+    const proofHeaderIndex = vercel.indexOf('"source": "/for/(.*)"');
+    const globalHeaderIndex = vercel.indexOf('"source": "/(.*)"');
     if (
-      !vercel.includes('"source": "/for/(.*)"') ||
+      proofHeaderIndex === -1 ||
+      globalHeaderIndex === -1 ||
+      proofHeaderIndex > globalHeaderIndex ||
       !vercel.includes('"value": "noindex, nofollow, noarchive"')
     ) {
       failures.push(
-        "Proof-first route lost its edge X-Robots-Tag. Restore the dedicated /for/(.*) noindex, nofollow, noarchive header.",
+        "Proof-first route lost its effective edge X-Robots-Tag. Keep /for/(.*) before the catch-all header and restore noindex, nofollow, noarchive.",
       );
     }
   }

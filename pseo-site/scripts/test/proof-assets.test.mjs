@@ -25,8 +25,11 @@ assert.match(page, /robots:\s*\{\s*index:\s*false,\s*follow:\s*false/, "asset me
 assert.match(page, /notFound\(\)/, "unknown asset IDs must call notFound");
 
 const vercel = JSON.parse(fs.readFileSync(vercelPath, "utf8"));
-const header = vercel.headers.find((entry) => entry.source === "/for/(.*)");
+const routeHeaderIndex = vercel.headers.findIndex((entry) => entry.source === "/for/(.*)");
+const globalHeaderIndex = vercel.headers.findIndex((entry) => entry.source === "/(.*)");
+const header = vercel.headers[routeHeaderIndex];
 assert.ok(header, "Vercel must emit a dedicated /for noindex header");
+assert.ok(routeHeaderIndex < globalHeaderIndex, "the specific /for header must precede the catch-all header so Vercel does not apply index, follow");
 assert.ok(header.headers.some((item) => item.key === "X-Robots-Tag" && item.value === "noindex, nofollow, noarchive"), "X-Robots-Tag must block indexing and archival");
 
 console.log("proof-assets unit test passed");
