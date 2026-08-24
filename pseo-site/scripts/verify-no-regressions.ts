@@ -6119,9 +6119,10 @@ check(
   const registry = read("content/proof-assets.json");
   const page = read("app/for/[slug]/page.tsx");
   const vercel = read("vercel.json");
-  if (!registry || !page || !vercel) {
+  const proxy = read("proxy.ts");
+  if (!registry || !page || !vercel || !proxy) {
     failures.push(
-      "Proof-first outreach route is incomplete. Restore content/proof-assets.json, app/for/[slug]/page.tsx, and the /for Vercel header.",
+      "Proof-first outreach route is incomplete. Restore the registry, /for route, Vercel header, and proxy robots split.",
     );
   } else {
     try {
@@ -6154,11 +6155,12 @@ check(
     if (
       proofHeaderIndex === -1 ||
       globalHeaderIndex === -1 ||
-      proofHeaderIndex > globalHeaderIndex ||
-      !vercel.includes('"value": "noindex, nofollow, noarchive"')
+      !vercel.includes('"value": "noindex, nofollow, noarchive"') ||
+      !proxy.includes("PROOF_ASSET_PATH") ||
+      !proxy.includes('return "noindex, nofollow, noarchive"')
     ) {
       failures.push(
-        "Proof-first route lost its effective edge X-Robots-Tag. Keep /for/(.*) before the catch-all header and restore noindex, nofollow, noarchive.",
+        "Proof-first route lost its effective robots split. Keep both Vercel headers and the proxy last-writer noindex, nofollow, noarchive rule.",
       );
     }
   }

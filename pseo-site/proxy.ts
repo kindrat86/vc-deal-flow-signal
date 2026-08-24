@@ -120,6 +120,14 @@ const NOINDEX_PREFIXES = [
   "/search",
 ];
 
+// One-to-one proof pages use random allowlisted IDs. They remain public and
+// cacheable for the recipient, but must never enter search indexes or archives.
+const PROOF_ASSET_PATH = /^\/for\/pa_[a-f0-9]{24}$/;
+
+function isProofAssetPath(pathname: string): boolean {
+  return PROOF_ASSET_PATH.test(pathname);
+}
+
 /**
  * §54: research-paper leaf noindex is slug-driven, not prefix-driven (the
  * keepIndexable leaves + the /research-paper index hub must keep serving
@@ -136,6 +144,9 @@ function researchPaperNoindex(pathname: string): boolean {
 }
 
 function shouldNoindex(pathname: string): boolean {
+  if (isProofAssetPath(pathname)) {
+    return true;
+  }
   if (NOINDEX_PREFIXES.some((prefix) => pathname.startsWith(prefix))) {
     return true;
   }
@@ -163,6 +174,9 @@ const INDEX_ROBOTS_DIRECTIVE =
   "index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1";
 
 function robotsDirectiveFor(pathname: string): string {
+  if (isProofAssetPath(pathname)) {
+    return "noindex, nofollow, noarchive";
+  }
   return shouldNoindex(pathname) ? "noindex, follow" : INDEX_ROBOTS_DIRECTIVE;
 }
 

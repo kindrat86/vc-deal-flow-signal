@@ -6,6 +6,7 @@ const root = path.resolve(import.meta.dirname, "../..");
 const dataPath = path.join(root, "content/proof-assets.json");
 const pagePath = path.join(root, "app/for/[slug]/page.tsx");
 const vercelPath = path.join(root, "vercel.json");
+const proxyPath = path.join(root, "proxy.ts");
 
 assert.ok(fs.existsSync(dataPath), "proof asset registry must exist");
 assert.ok(fs.existsSync(pagePath), "proof asset route must exist");
@@ -25,11 +26,13 @@ assert.match(page, /robots:\s*\{\s*index:\s*false,\s*follow:\s*false/, "asset me
 assert.match(page, /notFound\(\)/, "unknown asset IDs must call notFound");
 
 const vercel = JSON.parse(fs.readFileSync(vercelPath, "utf8"));
-const routeHeaderIndex = vercel.headers.findIndex((entry) => entry.source === "/for/(.*)");
-const globalHeaderIndex = vercel.headers.findIndex((entry) => entry.source === "/(.*)");
-const header = vercel.headers[routeHeaderIndex];
+const header = vercel.headers.find((entry) => entry.source === "/for/(.*)");
 assert.ok(header, "Vercel must emit a dedicated /for noindex header");
-assert.ok(routeHeaderIndex < globalHeaderIndex, "the specific /for header must precede the catch-all header so Vercel does not apply index, follow");
+assert.ok(vercel.headers.some((entry) => entry.source === "/(.*)"), "the global security and HSTS header must remain on every route");
 assert.ok(header.headers.some((item) => item.key === "X-Robots-Tag" && item.value === "noindex, nofollow, noarchive"), "X-Robots-Tag must block indexing and archival");
+
+const proxy = fs.readFileSync(proxyPath, "utf8");
+assert.match(proxy, /PROOF_ASSET_PATH/, "the last-writer proxy must recognize proof-asset routes");
+assert.match(proxy, /noindex, nofollow, noarchive/, "the last-writer proxy must preserve the strict proof-asset robots directive");
 
 console.log("proof-assets unit test passed");
