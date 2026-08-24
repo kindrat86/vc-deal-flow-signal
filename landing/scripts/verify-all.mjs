@@ -109,6 +109,7 @@ if (leadMagnetPdf.length < 100_000 || leadMagnetPdf.subarray(0, 4).toString() !=
 const steps = [
   ['node', 'scripts/verify-vercel-config.mjs'],
   ['node', 'scripts/verify-jsonld.mjs', '.'],
+  ['node', 'scripts/verify-dataset-fields.mjs'],
   ['node', 'scripts/verify-word-floor.mjs'],
   ['node', 'scripts/verify-direct-answers.mjs'],
   ['node', 'scripts/verify-no-dashes.mjs'],
@@ -127,7 +128,7 @@ for (const args of steps) {
     process.exit(r.status ?? 1);
   }
 }
-console.log('[verify-all] all checks passed (activation guard + 10 scripts)');
+console.log('[verify-all] all checks passed (activation guard + 11 scripts)');
 
 // IndexNow ping: non-fatal. It is a crawl hint, not a correctness gate, and a
 // failed/skipped submission must never block an otherwise-good deploy. The
