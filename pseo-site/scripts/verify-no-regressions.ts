@@ -6109,6 +6109,57 @@ check(
   "restore the Research Square DOI constant, visible announcement, primary CTA, and ScholarlyArticle citation array",
 );
 
+// ---------------------------------------------------------------------------
+// Proof-first outreach pages (2026-08-24). The 10 approved pilot assets must
+// remain privacy-safe, statically allowlisted, and blocked from search indexes.
+// A lineage that drops the registry, route gate, or edge noindex header would
+// turn approved one-to-one proof links into missing or crawlable pages.
+// ---------------------------------------------------------------------------
+{
+  const registry = read("content/proof-assets.json");
+  const page = read("app/for/[slug]/page.tsx");
+  const vercel = read("vercel.json");
+  if (!registry || !page || !vercel) {
+    failures.push(
+      "Proof-first outreach route is incomplete. Restore content/proof-assets.json, app/for/[slug]/page.tsx, and the /for Vercel header.",
+    );
+  } else {
+    try {
+      const assets = JSON.parse(registry) as Array<{ id?: string; recipient?: string }>;
+      if (
+        assets.length !== 10 ||
+        new Set(assets.map((asset) => asset.id)).size !== 10 ||
+        assets.some((asset) => !/^pa_[a-f0-9]{24}$/.test(asset.id ?? "")) ||
+        assets.some((asset) => "recipient" in asset) ||
+        registry.includes("@")
+      ) {
+        failures.push(
+          "Proof-first asset registry lost its 10 unique privacy-safe IDs or contains recipient/email data.",
+        );
+      }
+    } catch {
+      failures.push("Proof-first asset registry is not valid JSON.");
+    }
+    if (
+      !page.includes("export const dynamicParams = false") ||
+      !page.includes("notFound()") ||
+      !page.includes("index: false, follow: false, noarchive: true")
+    ) {
+      failures.push(
+        "Proof-first route lost its allowlist 404 or noindex metadata. Restore dynamicParams=false, notFound(), and noindex/nofollow/noarchive.",
+      );
+    }
+    if (
+      !vercel.includes('"source": "/for/(.*)"') ||
+      !vercel.includes('"value": "noindex, nofollow, noarchive"')
+    ) {
+      failures.push(
+        "Proof-first route lost its edge X-Robots-Tag. Restore the dedicated /for/(.*) noindex, nofollow, noarchive header.",
+      );
+    }
+  }
+}
+
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +

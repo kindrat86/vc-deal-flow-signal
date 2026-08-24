@@ -10,6 +10,10 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 import { withEditorialOverride } from "@/lib/metadata";
+import proofAssets from "@/content/proof-assets.json";
+import ProofAssetView, { type ProofAsset } from "@/components/ProofAssetView";
+
+const assets = proofAssets as ProofAsset[];
 
 /**
  * Higher-intent buyer personas who evaluate companies for a living and have
@@ -29,7 +33,10 @@ interface PageProps {
 }
 
 export async function generateStaticParams() {
-  return getAllPersonaSlugs().map((slug) => ({ slug }));
+  return [
+    ...getAllPersonaSlugs().map((slug) => ({ slug })),
+    ...assets.map(({ id }) => ({ slug: id })),
+  ];
 }
 
 export const dynamicParams = false;
@@ -37,6 +44,25 @@ export const revalidate = 604800;
 
 export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
   const { slug } = await params;
+  const asset = assets.find((item) => item.id === slug);
+  if (asset) {
+    return {
+      title: { absolute: `${asset.fund} Public Engineering Watchlist | GitDealFlow` },
+      description: `A two-company public GitHub engineering watchlist prepared for ${asset.fund}.`,
+      robots: { index: false, follow: false, noarchive: true },
+      openGraph: {
+        title: `${asset.fund} Public Engineering Watchlist`,
+        description: `Two current portfolio companies, public engineering observations, and diligence questions prepared for ${asset.fund}.`,
+        type: "article",
+      },
+      twitter: {
+        card: "summary",
+        title: `${asset.fund} Public Engineering Watchlist`,
+        description: "Public GitHub activity only. No private data or fundraising inference.",
+      },
+    };
+  }
+
   const p = getPersona(slug);
   if (!p) return {};
 
@@ -55,6 +81,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
 
 export default async function PersonaPage({ params }: PageProps) {
   const { slug } = await params;
+  const asset = assets.find((item) => item.id === slug);
+  if (asset) {
+    return <ProofAssetView asset={asset} />;
+  }
+
   const persona = getPersona(slug);
 
   if (!persona) {

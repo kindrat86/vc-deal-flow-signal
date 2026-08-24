@@ -1,0 +1,252 @@
+[
+  {
+    "id": "pa_305012d28b7513f6a2b53880",
+    "fund": "Alchemist Accelerator",
+    "generated": "2026-08-24",
+    "scope": "Public GitHub activity only",
+    "why": "Alchemist's official portfolio page highlights Rigetti and LaunchDarkly. Both have clearly attributable public GitHub organizations with current repository activity.",
+    "companies": [
+      {
+        "name": "Rigetti",
+        "portfolioEvidence": "https://www.alchemistaccelerator.com/portfolio",
+        "github": "https://github.com/rigetti",
+        "observation": "`rigetti/qcs-sdk-rust`, the Rust SDK for Rigetti Quantum Cloud Services, was pushed on 2026-08-23. The shared `rigetti/qcs-gha-infrastructure` repository was also pushed that day.",
+        "question": "Is this simultaneous SDK and shared CI work routine maintenance, or part of a broader Quantum Cloud Services delivery cycle?"
+      },
+      {
+        "name": "LaunchDarkly",
+        "portfolioEvidence": "https://www.alchemistaccelerator.com/portfolio",
+        "github": "https://github.com/launchdarkly",
+        "observation": "LaunchDarkly pushed updates across its public JavaScript SDK monorepo, Java SDK monorepo, and official AI tooling repository on the same day.",
+        "question": "Does the cross-language SDK and AI-tooling activity reflect a coordinated platform release or normal maintenance?"
+      }
+    ],
+    "limitations": "These observations show where public engineering work is happening. They do not prove revenue, product quality, fundraising intent, or investment merit.",
+    "methodology": "https://signals.gitdealflow.com/methodology"
+  },
+  {
+    "id": "pa_3954f06eef1c3941950a4097",
+    "fund": "Celesta Capital",
+    "generated": "2026-08-24",
+    "scope": "Public GitHub activity only",
+    "why": "Celesta's official portfolio lists SambaNova Systems and Agnikul. Both have attributable public GitHub organizations.",
+    "companies": [
+      {
+        "name": "SambaNova Systems",
+        "portfolioEvidence": "https://www.celesta.vc/portfolio/sambanova-systems",
+        "github": "https://github.com/sambanova",
+        "observation": "`sambanova/ai-starter-kit` had 251 stars and was pushed on 2026-08-20. `sambanova/sambastack-tools` was pushed on 2026-08-21.",
+        "question": "Does the activity across starter-kit and SambaStack tooling reflect a coordinated developer-adoption push or routine maintenance?"
+      },
+      {
+        "name": "Agnikul",
+        "portfolioEvidence": "https://www.celesta.vc/portfolio",
+        "github": "https://github.com/AgnikulCosmos",
+        "observation": "Agnikul's public AI chatbot server was pushed on 2026-07-03, and its BSTF PID screen repository was pushed on 2026-07-16.",
+        "question": "Is the public software work connected to a broader launch-infrastructure milestone, or isolated internal tooling?"
+      }
+    ],
+    "limitations": "These observations show where public engineering work is happening. They do not prove revenue, product quality, fundraising intent, or investment merit.",
+    "methodology": "https://signals.gitdealflow.com/methodology"
+  },
+  {
+    "id": "pa_73a4c0e4f197fa6a757b49a4",
+    "fund": "G20 Ventures",
+    "generated": "2026-08-24",
+    "scope": "Public GitHub activity only",
+    "why": "G20 Ventures' official portfolio lists CloudZero and Via Scientific. Both maintain attributable public GitHub organizations.",
+    "companies": [
+      {
+        "name": "CloudZero",
+        "portfolioEvidence": "https://www.g20vc.com/portfolio",
+        "github": "https://github.com/Cloudzero",
+        "observation": "A fix to the CloudZero Terraform provider's AWS-account resource was merged on 2026-08-24. Its Claude marketplace repository was pushed on 2026-08-22, and CostFormation tooling on 2026-08-21.",
+        "question": "Does the simultaneous provider, marketplace, and cost-tooling work reflect a coordinated integration cycle or normal maintenance?"
+      },
+      {
+        "name": "Via Scientific",
+        "portfolioEvidence": "https://www.g20vc.com/portfolio",
+        "github": "https://github.com/ViaScientific",
+        "observation": "Via Scientific pushed public multi-omics workflow modules in February and March 2026, including AAV quality-control and multi-omics explorer work.",
+        "question": "Has public workflow development slowed because the modules stabilized, or moved into private product work?"
+      }
+    ],
+    "limitations": "These observations show where public engineering work is happening. They do not prove revenue, product quality, fundraising intent, or investment merit.",
+    "methodology": "https://signals.gitdealflow.com/methodology"
+  },
+  {
+    "id": "pa_b70b44a5f784ca6d08936363",
+    "fund": "Emergence Capital",
+    "generated": "2026-08-24",
+    "scope": "Public GitHub activity only",
+    "why": "Emergence's official portfolio pages list Doximity and Arcee AI. Both maintain attributable public GitHub organizations.",
+    "companies": [
+      {
+        "name": "Doximity",
+        "portfolioEvidence": "https://www.emcap.com/portfolio/doximity",
+        "github": "https://github.com/doximity",
+        "observation": "Doximity merged a nanosecond-precision fix into its public `rake-ui` Rails engine on 2026-08-24. Its clinical QA benchmark repository was pushed on 2026-08-11.",
+        "question": "Is the benchmark and internal-tooling work part of a broader AI quality program or ordinary platform maintenance?"
+      },
+      {
+        "name": "Arcee AI",
+        "portfolioEvidence": "https://www.emcap.com/portfolio/arcee-ai",
+        "github": "https://github.com/arcee-ai",
+        "observation": "Arcee AI cut `nac` release v0.1.3 on 2026-08-20. Its public model-merging and distillation repositories also received updates in 2026.",
+        "question": "Does the release cadence indicate growing production use, or continued experimentation around model tooling?"
+      }
+    ],
+    "limitations": "These observations show where public engineering work is happening. They do not prove revenue, product quality, fundraising intent, or investment merit.",
+    "methodology": "https://signals.gitdealflow.com/methodology"
+  },
+  {
+    "id": "pa_1f51e186267203b2ae085405",
+    "fund": "Cervin",
+    "generated": "2026-08-24",
+    "scope": "Public GitHub activity only",
+    "why": "Cervin's official portfolio pages list LaunchDarkly and Paystand. Both maintain attributable public GitHub organizations.",
+    "companies": [
+      {
+        "name": "LaunchDarkly",
+        "portfolioEvidence": "https://www.cervinventures.com/portfolio/launchdarkly",
+        "github": "https://github.com/launchdarkly",
+        "observation": "LaunchDarkly pushed updates across its JavaScript SDK monorepo, Java SDK monorepo, and official AI tooling repository on 2026-08-24.",
+        "question": "Does the cross-language SDK and AI-tooling activity reflect a coordinated platform release or normal maintenance?"
+      },
+      {
+        "name": "Paystand",
+        "portfolioEvidence": "https://www.cervinventures.com/portfolio/paystand",
+        "github": "https://github.com/paystand",
+        "observation": "Paystand's public WooCommerce integration was pushed on 2026-07-29.",
+        "question": "Is the integration receiving new product investment, or only compatibility maintenance?"
+      }
+    ],
+    "limitations": "These observations show where public engineering work is happening. They do not prove revenue, product quality, fundraising intent, or investment merit.",
+    "methodology": "https://signals.gitdealflow.com/methodology"
+  },
+  {
+    "id": "pa_7747710c053116ecbbdd1e6b",
+    "fund": "Tola Capital",
+    "generated": "2026-08-24",
+    "scope": "Public GitHub activity only",
+    "why": "Tola's official current-portfolio page lists Pulumi and Certora. Both maintain clearly attributable public GitHub organizations with recent engineering activity.",
+    "companies": [
+      {
+        "name": "Pulumi",
+        "portfolioEvidence": "https://tolacapital.com/type-portfolio/current",
+        "github": "https://github.com/pulumi",
+        "observation": "Pulumi pushed updates across its AWS, GCP, Docker, YAML, .NET, and documentation repositories on 2026-08-24.",
+        "question": "Does the broad provider activity represent a coordinated release cycle or routine automated maintenance?"
+      },
+      {
+        "name": "Certora",
+        "portfolioEvidence": "https://tolacapital.com/type-portfolio/current",
+        "github": "https://github.com/Certora",
+        "observation": "Certora's public AutoProver and security-report repositories were pushed on 2026-08-24. Its `gambit` mutation-testing repository was pushed on 2026-08-12.",
+        "question": "Is the simultaneous prover and audit-report activity translating into broader production adoption, or primarily expanding technical capability?"
+      }
+    ],
+    "limitations": "These observations show where public engineering work is happening. They do not prove revenue, product quality, fundraising intent, or investment merit.",
+    "methodology": "https://signals.gitdealflow.com/methodology"
+  },
+  {
+    "id": "pa_4f7132159a4ecacb76b6ed80",
+    "fund": "Flybridge",
+    "generated": "2026-08-24",
+    "scope": "Public GitHub activity only",
+    "why": "Flybridge's official portfolio groups crewAI and Arcee AI under AI Infrastructure and Developer Platforms. Chip Hazard's official team profile names that category as a current investment interest.",
+    "companies": [
+      {
+        "name": "crewAI",
+        "portfolioEvidence": "https://www.flybridge.com/portfolio",
+        "github": "https://github.com/crewAIInc/crewAI",
+        "observation": "The public crewAI agent-framework repository had 57,557 stars and was pushed on 2026-08-24.",
+        "question": "Does the scale and same-day activity reflect durable developer adoption, or attention concentrated around a small maintainer group?"
+      },
+      {
+        "name": "Arcee AI",
+        "portfolioEvidence": "https://www.flybridge.com/portfolio",
+        "github": "https://github.com/arcee-ai",
+        "observation": "Arcee AI's `nac` repository was pushed on 2026-08-21. Its public model-merging and distillation tools also received updates in 2026.",
+        "question": "Is the activity turning open-source users into production adoption, or remaining primarily an experimentation funnel?"
+      }
+    ],
+    "limitations": "These observations show where public engineering work is happening. They do not prove revenue, product quality, fundraising intent, or investment merit.",
+    "methodology": "https://signals.gitdealflow.com/methodology"
+  },
+  {
+    "id": "pa_dd87d28f8f75896a02b22205",
+    "fund": "Toba Capital",
+    "generated": "2026-08-24",
+    "scope": "Public GitHub activity only",
+    "why": "Toba's official portfolio lists Wallarm and Hyperproof. Its team page also identifies both as portfolio companies through a current partner's board roles.",
+    "companies": [
+      {
+        "name": "Wallarm",
+        "portfolioEvidence": "https://www.tobacapital.com/portfolio",
+        "github": "https://github.com/wallarm",
+        "observation": "Wallarm's public product documentation and design-system repositories were pushed on 2026-08-24. Its NextGen Kubernetes ingress controller was pushed on 2026-08-20.",
+        "question": "Is the simultaneous documentation and design-system work part of a coordinated product release, or routine maintenance?"
+      },
+      {
+        "name": "Hyperproof",
+        "portfolioEvidence": "https://www.tobacapital.com/portfolio",
+        "github": "https://github.com/Hyperproof",
+        "observation": "Hyperproof's public HyperSync SDK, sample repository, and integrations SDK were all pushed on 2026-08-14.",
+        "question": "Does the coordinated SDK work signal expanding third-party integration demand, or a bounded compatibility update?"
+      }
+    ],
+    "limitations": "These observations show where public engineering work is happening. They do not prove revenue, product quality, fundraising intent, or investment merit.",
+    "methodology": "https://signals.gitdealflow.com/methodology"
+  },
+  {
+    "id": "pa_efc1a87c5a6955c818b2b26a",
+    "fund": "Ulu Ventures",
+    "generated": "2026-08-24",
+    "scope": "Public GitHub activity only",
+    "why": "Ulu's official site identifies Okahu as a recent investment and Ketch as an Ulu portfolio company. Both maintain clearly attributable public GitHub organizations with current engineering activity.",
+    "companies": [
+      {
+        "name": "Okahu",
+        "portfolioEvidence": "https://uluventures.com/new-investments/",
+        "github": "https://github.com/okahu",
+        "observation": "Okahu's public Python framework for tracing generative-AI applications was pushed on 2026-08-19. Its TypeScript implementation was pushed on 2026-07-27.",
+        "question": "Is the cross-language tracing work expanding real production use, or still building the initial developer surface?"
+      },
+      {
+        "name": "Ketch",
+        "portfolioEvidence": "https://uluventures.com/the-serial-ulupreneur/",
+        "github": "https://github.com/ketch-com",
+        "observation": "Ketch's Go event-forwarder repository was pushed on 2026-08-24. Its iOS, React Native, CLI, and backend infrastructure repositories were also updated during August 2026.",
+        "question": "Does the coordinated SDK and forwarding work reflect growing enterprise integration demand, or a normal release cycle?"
+      }
+    ],
+    "limitations": "These observations show where public engineering work is happening. They do not prove revenue, product quality, fundraising intent, or investment merit.",
+    "methodology": "https://signals.gitdealflow.com/methodology"
+  },
+  {
+    "id": "pa_65b76dfe0ffd7547d8d986ac",
+    "fund": "SignalFire",
+    "generated": "2026-08-24",
+    "scope": "Public GitHub activity only",
+    "why": "SignalFire's official investment posts document its investments in SigNoz and Lago. Ilya Kirnos is the current Partner and CTO and authored SignalFire's Lago investment post.",
+    "companies": [
+      {
+        "name": "SigNoz",
+        "portfolioEvidence": "https://www.signalfire.com/blog/signoz-pioneers-open-source-observability-with-65m-led-by-signalfire",
+        "github": "https://github.com/SigNoz",
+        "observation": "SigNoz's core observability platform, Kubernetes operator, OpenTelemetry collector, installation framework, and agent-skills repositories were pushed on 2026-08-24. The core repository had 31,930 stars.",
+        "question": "Is activity across the core platform and agent tooling translating into durable production adoption, or mostly developer experimentation?"
+      },
+      {
+        "name": "Lago",
+        "portfolioEvidence": "https://www.signalfire.com/blog/lago-investor",
+        "github": "https://github.com/getlago",
+        "observation": "Lago's API, front end, core metering and billing repository, and documentation were all pushed on 2026-08-24. The core repository had 10,382 stars.",
+        "question": "Does the coordinated API and product activity reflect expansion among production billing workloads or routine release work?"
+      }
+    ],
+    "limitations": "These observations show where public engineering work is happening. They do not prove revenue, product quality, fundraising intent, or investment merit.",
+    "methodology": "https://signals.gitdealflow.com/methodology"
+  }
+]
