@@ -3,6 +3,7 @@ import { checkRateLimit, getClientIp, rateLimitHeaders } from "@/lib/rate-limit"
 import { isValidEmail, isAllowedOrigin } from "@/lib/validation";
 import { isExcluded } from "@/lib/excluded-emails";
 import { pickAudienceId } from "@/lib/resend-audience";
+import { getResendConsentStatus } from "@/lib/resend-consent";
 import {
   computeReplyDeadline,
   scheduleSetterSequence,
@@ -117,7 +118,11 @@ async function addToAudience(email: string, source: string): Promise<void> {
     const audiences = await audRes.json();
     const audienceId: string | undefined = pickAudienceId(audiences);
     if (!audienceId) return;
-    const res = await fetch(
+
+    // The caller has confirmed this contact is clear. Do not set
+    // `unsubscribed: false` and never PATCH an existing contact. A Resend
+    // conflict may be an opted-out reader, and consent must stay unchanged.
+    await fetch(
       `https://api.resend.com/audiences/${audienceId}/contacts`,
       {
         method: "POST",
@@ -128,25 +133,9 @@ async function addToAudience(email: string, source: string): Promise<void> {
         body: JSON.stringify({
           email,
           first_name: "gdf-attr-v1:" + JSON.stringify({ source }),
-          unsubscribed: false,
         }),
       },
     );
-    if (!res.ok) {
-      // Contact already exists (re-applicant / prior subscriber), make sure
-      // they're re-activated so future sends reach them.
-      await fetch(
-        `https://api.resend.com/audiences/${audienceId}/contacts/${encodeURIComponent(email)}`,
-        {
-          method: "PATCH",
-          headers: {
-            Authorization: `Bearer ${RESEND_API_KEY}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({ unsubscribed: false }),
-        },
-      );
-    }
   } catch (err) {
     console.error("[apply] addToAudience failed:", err);
   }
@@ -272,35 +261,41 @@ export async function POST(request: Request) {
       );
     }
 
-    // Audience-add + Setter heat-build drip, both best-effort, both skipped
-    // for excluded (tester/bot) addresses so smoke tests don't pollute the
-    // list or burn Resend credits.
+    // Audience-add + Setter heat-build drip are only allowed for contacts that
+    // Resend confirms are neither globally suppressed nor unsubscribed.
     if (!isExcluded(email)) {
-      await addToAudience(email, "sector-sweep-apply");
+      const consentStatus = await getResendConsentStatus(email, RESEND_API_KEY);
+      if (consentStatus === "clear") {
+        await addToAudience(email, "sector-sweep-apply");
 
-      const deadline = computeReplyDeadline();
-      const setterResult = await scheduleSetterSequence(
-        {
-          contact_name: name,
-          email,
-          fund_or_role: ROLE_LABELS[role] || role,
-          sector: geography ? `${sector} (${geography})` : sector,
-          thesis: question,
-          three_orgs: "",
-          decision_window: "",
-          why_sweep: check_size ? `Typical check size: ${check_size}` : "",
-          deadline,
-        },
-        RESEND_API_KEY,
-      );
-      if (setterResult.failed > 0) {
-        console.error(
-          `[apply] heat-build sequence partial-failure: ${setterResult.failed}/4 emails errored`,
-          setterResult.errors,
+        const deadline = computeReplyDeadline();
+        const setterResult = await scheduleSetterSequence(
+          {
+            contact_name: name,
+            email,
+            fund_or_role: ROLE_LABELS[role] || role,
+            sector: geography ? `${sector} (${geography})` : sector,
+            thesis: question,
+            three_orgs: "",
+            decision_window: "",
+            why_sweep: check_size ? `Typical check size: ${check_size}` : "",
+            deadline,
+          },
+          RESEND_API_KEY,
         );
+        if (setterResult.failed > 0) {
+          console.error(
+            `[apply] heat-build sequence partial-failure: ${setterResult.failed}/4 emails errored`,
+            setterResult.errors,
+          );
+        } else {
+          console.log(
+            `[apply] heat-build sequence scheduled: ${setterResult.scheduled}/4 emails queued for ${email}`,
+          );
+        }
       } else {
-        console.log(
-          `[apply] heat-build sequence scheduled: ${setterResult.scheduled}/4 emails queued for ${email}`,
+        console.warn(
+          `[apply] consent guard blocked audience add and drip email=${email} status=${consentStatus}`,
         );
       }
     } else {

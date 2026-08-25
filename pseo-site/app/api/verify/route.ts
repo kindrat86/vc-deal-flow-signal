@@ -60,7 +60,7 @@ function routeFromQuery(url: URL): string {
 
 function verifiedRedirect(cohort: string, route: string, email: string) {
   if (cohort === "lead-magnet") {
-    return NextResponse.redirect("https://gitdealflow.com/lead-magnet-thanks?ready=1");
+    return NextResponse.redirect(confirmedUrl(route, email));
   }
   if (cohort === "challenge") {
     return NextResponse.redirect(`${SITE_URL}/challenge/started`);

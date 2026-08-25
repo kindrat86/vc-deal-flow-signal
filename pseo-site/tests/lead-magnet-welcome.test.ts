@@ -44,6 +44,11 @@ assert.match(
 
 assert.match(subscribeRoute, /"lead-magnet"/, "subscribe route must preserve the lead-magnet cohort");
 assert.match(verifyRoute, /LEAD_MAGNET_WELCOME_EMAILS/, "verify route must dispatch the lead-magnet sequence");
+assert.doesNotMatch(
+  verifyRoute,
+  /lead-magnet-thanks/,
+  "verified lead-magnet subscribers must not be redirected to the retired 404 route",
+);
 assert.match(homepage, /data-source="velocity-verdict"/, "homepage must include the dedicated lead-magnet form");
 assert.match(homepage, /cohort:\s*'lead-magnet'/, "homepage must enroll the form in the lead-magnet cohort");
 assert.match(homepage, /lead_magnet_verify_sent/, "homepage must track the lead-magnet capture separately");

@@ -75,3 +75,18 @@ test("the verification route never reactivates an opted-out contact", () => {
   assert.doesNotMatch(route, /unsubscribed:\s*false/);
   assert.doesNotMatch(route, /PATCH unsubscribed:false/);
 });
+
+test("the Sector Sweep application route never reactivates an opted-out contact", () => {
+  const route = readFileSync(
+    resolve(process.cwd(), "app/api/apply/route.ts"),
+    "utf8",
+  );
+
+  assert.match(route, /getResendConsentStatus/);
+  assert.match(route, /consentStatus\s*===\s*"clear"/);
+  assert.doesNotMatch(
+    route,
+    /body:\s*JSON\.stringify\(\{\s*unsubscribed:\s*false/,
+  );
+  assert.doesNotMatch(route, /method:\s*"PATCH"/);
+});
