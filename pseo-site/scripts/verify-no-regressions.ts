@@ -3671,9 +3671,9 @@ check(
   "content/research-papers.ts",
   "§42 CTR: research-paper metaTitles reverted to catalog form (the 19.6K-impression pool's only CTR lever)",
   (s) =>
-    s.includes("LoRA Paper Explained: Low-Rank Adaptation (Hu et al., 2021)") &&
-    s.includes("GPT-3 Paper Explained: Language Models Are Few-Shot Learners") &&
-    s.includes("RAG Paper Explained: Retrieval-Augmented Generation (Lewis 2020)") &&
+    s.includes("LoRA Paper (Hu et al. 2021, arXiv 2106.09685) + Summary") &&
+    s.includes("GPT-3 Paper (Brown et al. 2020): In-Context Learning + Summary") &&
+    s.includes("Retrieval-Augmented Generation Paper (Lewis et al. 2020) + Summary") &&
     s.includes("Constitutional AI Explained: Harmlessness (Bai et al., 2022)"),
   "restore the Explained-hook metaTitles across content/research-papers.ts (9 papers)",
 );

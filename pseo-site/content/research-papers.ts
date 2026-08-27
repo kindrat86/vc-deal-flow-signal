@@ -184,7 +184,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "https://arxiv.org/abs/2005.14165",
       "https://www.semanticscholar.org/paper/90abbc2cf38462b954ae1b772fac9532e2ccd8b0",
     ],
-    metaTitle: "GPT-3 Paper Explained: Language Models Are Few-Shot Learners",
+    metaTitle: "GPT-3 Paper (Brown et al. 2020): In-Context Learning + Summary",
     /**
      * Investor-angle lede (search-intent fix 2026-08-16): investor-voiced,
      * grounded in ourContext. Rendered top-of-page in the "Why investors
@@ -263,7 +263,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "https://arxiv.org/abs/2203.02155",
       "https://www.semanticscholar.org/paper/d766bffc357127e0dc86dd69561d5aeb520d6f4c",
     ],
-    metaTitle: "InstructGPT Explained: RLHF and Instruction Tuning (Ouyang 2022)",
+    metaTitle: "InstructGPT Paper (Ouyang et al. 2022): RLHF + Summary",
     /**
      * Investor-angle lede (search-intent fix 2026-08-16): investor-voiced,
      * grounded in ourContext. Rendered top-of-page in the "Why investors
@@ -342,7 +342,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "https://arxiv.org/abs/2005.11401",
       "https://www.semanticscholar.org/paper/58ed1fbaabe027345f7bb3a6312d41c5aac63e22",
     ],
-    metaTitle: "RAG Paper Explained: Retrieval-Augmented Generation (Lewis 2020)",
+    metaTitle: "Retrieval-Augmented Generation Paper (Lewis et al. 2020) + Summary",
     /**
      * Investor-angle lede (search-intent fix 2026-08-16): investor-voiced,
      * grounded in ourContext. Rendered top-of-page in the "Why investors
@@ -421,7 +421,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "https://arxiv.org/abs/2106.09685",
       "https://www.semanticscholar.org/paper/a8ca46b171467ceb2d7652fbb7e5e2f4631c4ac0",
     ],
-    metaTitle: "LoRA Paper Explained: Low-Rank Adaptation (Hu et al., 2021)",
+    metaTitle: "LoRA Paper (Hu et al. 2021, arXiv 2106.09685) + Summary",
     /**
      * Investor-angle lede (search-intent fix 2026-08-16): investor-voiced,
      * grounded in ourContext. Rendered top-of-page in the "Why investors
@@ -579,7 +579,7 @@ export const RESEARCH_PAPERS: ResearchPaper[] = [
       "https://arxiv.org/abs/2201.11903",
       "https://www.semanticscholar.org/paper/1b6e810ce0afd0dd093f789d2b2742d047e316d5",
     ],
-    metaTitle: "Chain-of-Thought Prompting Explained (Wei et al., 2022)",
+    metaTitle: "Chain-of-Thought Prompting Paper (Wei et al. 2022) + Summary",
     /**
      * Investor-angle lede (search-intent fix 2026-08-16): investor-voiced,
      * grounded in ourContext. Rendered top-of-page in the "Why investors
