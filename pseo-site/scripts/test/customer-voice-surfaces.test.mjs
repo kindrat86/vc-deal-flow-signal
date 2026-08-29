@@ -18,7 +18,7 @@ const needles = {
   ],
   "app/support/page.tsx": [
     "Customer support",
-    "reply within one business day",
+    "Human reply within 1 business day",
   ],
   "app/support/SupportForm.tsx": [
     "Data or signal quality",
