@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.gitdealflow.subscriber-count</string>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/Users/sipi/.local/bin/python3.11</string>
+        <string>/Users/sipi/worktrees/gdf-retention-metrics/monitoring/subscriber-count.py</string>
+    </array>
+    <key>EnvironmentVariables</key>
+    <dict>
+        <key>HOME</key>
+        <string>/Users/sipi</string>
+        <key>PATH</key>
+        <string>/Users/sipi/.local/bin:/Users/sipi/.hermes/node/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin</string>
+    </dict>
+    <key>StartCalendarInterval</key>
+    <dict>
+        <key>Hour</key>
+        <integer>4</integer>
+        <key>Minute</key>
+        <integer>10</integer>
+    </dict>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>StandardOutPath</key>
+    <string>/Users/sipi/worktrees/gdf-retention-metrics/monitoring/subscriber-count-launchd.log</string>
+    <key>StandardErrorPath</key>
+    <string>/Users/sipi/worktrees/gdf-retention-metrics/monitoring/subscriber-count-launchd.err</string>
+</dict>
+</plist>
