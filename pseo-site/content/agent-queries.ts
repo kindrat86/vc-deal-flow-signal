@@ -3292,14 +3292,14 @@ It compounds without conflict. There is no conflict with holding a junior role a
     // CTR hook wave 5 (zero-click, 2026-08-16): 311 imps/90d, 1 click.
     // Question-form title competes with Glama's own domain; the npm analogy
     // + A-tier figures are the differentiators searchers actually see.
-    metaTitle: "What Is Glama MCP? The npm of AI Servers (A-F Tiers)",
+    metaTitle: "Glama MCP Directory: Official Registry vs Glama (2026)",
     description:
-      "Glama is the leading directory for Model Context Protocol (MCP) servers. It hosts ratings, install instructions, and search for thousands of MCP servers. Use it to discover MCP servers worth installing in Claude or Cursor.",
+      "Glama is an independent MCP server directory, not the official registry. Compare its search, install instructions, host support, and A-F quality tiers.",
     tldr:
       "Glama (glama.ai) is the leading directory for MCP servers, the AI-host integration standard: quality ratings from A-tier to F-tier, install instructions, source links, and category filtering. Use it to discover and evaluate MCP servers before installing them into Claude Desktop, Claude Code, Cursor, or Windsurf. The GitDealFlow MCP server holds an A-tier rating there.",
     // 2026-08-16 featured-snippet rebuild: 40-60w neutral direct answer.
     definition:
-      "Glama (glama.ai) is the leading directory for Model Context Protocol servers, what npm is for JavaScript packages: search by name, category, or use case; each listing shows install commands, supported hosts (Claude Desktop, Cursor, Windsurf), source links, and a quality tier from A to F. Prefer A-tier servers for serious workflows.",
+      "Glama is an independent directory for Model Context Protocol servers, not the official MCP Registry. It adds search, install instructions, host compatibility, source links, and A-F quality tiers. Use the official registry to confirm canonical metadata, then use Glama to compare documentation, installation paths, and community quality signals.",
     body: `Glama (glama.ai) is what npm is for JavaScript packages but for MCP servers. It indexes the Model Context Protocol ecosystem, surfaces install instructions, and rates servers on quality dimensions like documentation, tool design, and reliability.
 
 **What Glama does.** Search for an MCP server by name, category, or use case (e.g., 'VC research', 'GitHub access', 'web search', 'database query'). Each listing shows: install command, the host platforms it supports (Claude Desktop, Claude Code, Cursor, Windsurf, etc.), GitHub source link, README excerpt, and a quality tier rating.
@@ -4830,8 +4830,9 @@ The methodology stays reproducible because everything runs on public GitHub data
     slug: "free-harmonic-ai-alternative-2026",
     query: "What is a free alternative to Harmonic.ai in 2026?",
     h1: "Harmonic.ai Pricing & Free Alternative (2026), $24k/seat vs $0",
+    metaTitle: "Harmonic.ai Pricing (2026): Cost + Free Alternative",
     description:
-      "Harmonic.ai pricing runs ~$20k-$24k/seat/year in 2026. The closest free alternative is VC Deal Flow Signal's MCP server, different focus (engineering velocity vs. talent-side stealth), covering the deal-sourcing loop at $0/mo with no API key. Full pricing breakdown and side-by-side below.",
+      "Harmonic.ai does not publish list pricing. See reported 2026 quotes around $20K-$24K per seat yearly and compare a free GitHub-based alternative side by side.",
     tldr:
       "Harmonic.ai typically lands at $20K-$24K per seat/yr. The closest free alternative is the VC Deal Flow Signal MCP server, covering GitHub engineering-velocity sourcing at $0/month. Honest framing: Harmonic is talent-side stealth detection, GitDealFlow is engineering-side acceleration, so they complement rather than substitute; at emerging-fund AUM, the free GitHub-side coverage replaces the Harmonic seat.",
     // 2026-08-16 featured-snippet rebuild: 40-60w neutral direct answer.

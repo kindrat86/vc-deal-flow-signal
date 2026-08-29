@@ -849,7 +849,7 @@ export const VS_TITLE_HOOKS: Record<string, string> = {
   "fund-momentum-vs-harmonic-ai": "Fund Momentum vs Harmonic.ai: Funds vs Teams",
   "fund-momentum-vs-forager-ai": "Fund Momentum vs Forager.ai: Funds vs Startups",
   "fund-momentum-vs-crunchbase": "Fund Momentum vs Crunchbase ($49/mo): Funds vs Data",
-  "harmonic-ai-vs-dealroom": "Harmonic.ai vs Dealroom: Incorporation vs Post-Round",
+  "harmonic-ai-vs-dealroom": "Harmonic.ai vs Dealroom: Which Is Better for Sourcing?",
   "harmonic-ai-vs-forager-ai": "Harmonic.ai vs Forager.ai: Team vs Web Signals",
   "harmonic-ai-vs-crunchbase": "Harmonic.ai vs Crunchbase ($49/mo): Sourcing",
   "harmonic-ai-vs-pitchbook": "Harmonic.ai vs PitchBook ($20k+/yr): Sourcing",

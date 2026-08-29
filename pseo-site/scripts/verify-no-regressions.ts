@@ -4067,8 +4067,9 @@ landingCheck(
 // pool. /acquirer/* was the largest un-hooked family (4,455 imps/90d, 0.34%
 // CTR at pos 8-13); the biggest-deal figure (WhatsApp $19B, Red Hat $34B,
 // VMware $69B) must stay in the title build, not just the count. Signals
-// /pricing mirrors the apex price-ladder form. Glama answer carries a
-// metaTitle hook.
+// /pricing mirrors the apex price-ladder form. Glama's title names the exact
+// "official registry" distinction now earning 4-6 positions with zero clicks
+// in the 2026-08-02..29 page-filtered GSC pull.
 {
   {
     const s = read("content/acquirers.ts");
@@ -4103,9 +4104,9 @@ landingCheck(
   }
   {
     const s = read("content/agent-queries.ts");
-    if (!s.includes('metaTitle: "What Is Glama MCP? The npm of AI Servers (A-F Tiers)"')) {
+    if (s === null || !s.includes('metaTitle: "Glama MCP Directory: Official Registry vs Glama (2026)"')) {
       failures.push(
-        `§49 glama answer lost its metaTitle CTR hook.\n    file: content/agent-queries.ts\n    fix:  keep metaTitle on slug what-is-glama-mcp-and-how-do-i-use-it`,
+        `§49 glama answer lost its official-registry CTR hook.\n    file: content/agent-queries.ts\n    fix:  keep the query-matched metaTitle on slug what-is-glama-mcp-and-how-do-i-use-it`,
       );
     }
   }
