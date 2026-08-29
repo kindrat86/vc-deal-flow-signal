@@ -5,10 +5,10 @@ import { fileURLToPath } from 'url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
 const resultPages = [
-  ['tools/runway-calculator.html', 'runway-calculator', 'results', 'class="card faq"'],
-  ['tools/burn-rate-analyzer.html', 'burn-rate-analyzer', 'results', 'class="card faq"'],
-  ['tools/deal-flow-funnel.html', 'deal-flow-funnel', 'results', 'class="card faq"'],
-  ['tools/investment-calculator/index.html', 'investment-calculator', 'result-card', 'class="powered-by"'],
+  ['tools/runway-calculator.html', 'runway-calculator', 'results', 'class="card faq"', 'calculate', 'document.getElementById("results").classList.add("show")'],
+  ['tools/burn-rate-analyzer.html', 'burn-rate-analyzer', 'results', 'class="card faq"', 'analyze', 'document.getElementById("results").classList.add("show")'],
+  ['tools/deal-flow-funnel.html', 'deal-flow-funnel', 'results', 'class="card faq"', 'calculate', 'document.getElementById("results").classList.add("show")'],
+  ['tools/investment-calculator/index.html', 'investment-calculator', 'result-card', 'class="powered-by"', 'calculate', "document.getElementById('result-card').classList.add('show')"],
 ];
 const shared = [
   'id="gdf-tool-capture"',
@@ -19,7 +19,7 @@ const shared = [
   'Check your inbox to confirm',
   'documented examples show the pattern 21 to 47 days before public fundraise announcements',
 ];
-for (const [rel, source, resultId, afterResultAnchor] of resultPages) {
+for (const [rel, source, resultId, afterResultAnchor, actionName, showNeedle] of resultPages) {
   const html = readFileSync(join(root, rel), 'utf8');
   const needles = [
     ...shared,
@@ -36,6 +36,13 @@ for (const [rel, source, resultId, afterResultAnchor] of resultPages) {
   const after = html.indexOf(afterResultAnchor);
   if (result === -1 || box === -1 || after === -1 || !(result < box && box < after)) {
     console.error(`[verify-tool-capture] ${rel} capture must sit after its result and before the next section`);
+    process.exit(1);
+  }
+  const action = html.indexOf(`function ${actionName}(`);
+  const show = html.indexOf(showNeedle, action);
+  const earlyObjectReturn = html.indexOf('\n  return {', action);
+  if (action === -1 || show === -1 || (earlyObjectReturn !== -1 && earlyObjectReturn < show)) {
+    console.error(`[verify-tool-capture] ${rel} result action must render and show ${resultId} before returning`);
     process.exit(1);
   }
 }

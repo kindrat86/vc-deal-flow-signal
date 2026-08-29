@@ -253,7 +253,7 @@ function calculate() {
     {label: 'Home Run (10x exit)', val: exit_value * 10}
   ];
 
-  return {
+  const result = {
     ownership_pct: (ownership * 100).toFixed(2),
     diluted_ownership_pct: (diluted_ownership * 100).toFixed(2),
     exit_proceeds: exit_proceeds.toFixed(0),
@@ -268,6 +268,7 @@ function calculate() {
   displayResults(result);
   document.getElementById('result-card').classList.add('show');
   document.getElementById('result-card').scrollIntoView({behavior:'smooth'});
+  return result;
 }
 
 function displayResults(r) {
@@ -461,7 +462,7 @@ window.addEventListener('DOMContentLoaded', function() {
     }
     // reveal when results show: hook calculate + watch the class change
     var _orig = window.calculate;
-    if(typeof _orig==='function'){ window.calculate=function(){ if(_orig) _orig.apply(null,arguments); setTimeout(reveal,50); }; }
+    if(typeof _orig==='function'){ window.calculate=function(){ var out=_orig.apply(this,arguments); setTimeout(reveal,50); return out; }; }
     var mo=new MutationObserver(function(){ reveal(); });
     var res=document.getElementById('result-card');
     if(res){ mo.observe(res,{attributes:true,attributeFilter:['class']}); }

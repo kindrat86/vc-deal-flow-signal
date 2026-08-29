@@ -1,8 +1,7 @@
 {
-  "generated": "2026-08-29T18:16:06.691Z",
-  "digestFile": "/Users/sipi/worktrees/gdf-launch-day-2026-08-29/emails/signal-digest-latest.html",
-  "digestMtime": "2026-08-29T18:16:06.517Z",
-  "digestAgeDays": 0.76,
+  "generatedForIssue": "2026-08-29",
+  "sourceDigestSha256": "c37b65a374f08842674c4f8dfa6bb0cd0e9487e48cf5114cd1865c03f3b0b05f",
+  "digestFile": "emails/signal-digest-latest.html",
   "issueTitle": "Signal Digest, Week of Aug 29: liberusoftware leads with +3275%",
   "campaign": "gdf-launch-2026-09",
   "xTweetLengths": [

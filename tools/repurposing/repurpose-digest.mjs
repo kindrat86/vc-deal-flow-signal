@@ -22,9 +22,10 @@
  * Usage: node tools/repurposing/repurpose-digest.mjs [--check]
  *   --check: parse-only mode, prints summary, writes nothing (gate for cron).
  */
-import { readFileSync, writeFileSync, mkdirSync, existsSync, statSync } from "fs";
+import { readFileSync, writeFileSync, mkdirSync, statSync } from "fs";
 import { resolve, dirname, join } from "path";
 import { fileURLToPath } from "url";
+import { createHash } from "crypto";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const REPO = resolve(__dirname, "..", "..");
@@ -126,8 +127,8 @@ if (startups.length === 0) {
   }
 }
 
-if (startups.length === 0) {
-  console.error("FAIL: could not parse any startup from the digest. Inspect the HTML structure.");
+if (startups.length !== 5) {
+  console.error(`FAIL: expected exactly 5 startups from the digest, parsed ${startups.length}. Inspect the HTML structure.`);
   process.exit(1);
 }
 
@@ -223,10 +224,9 @@ Five names, plain-English why, free: ${blogUrl}
 `);
 
 const summary = {
-  generated: new Date().toISOString(),
-  digestFile: DIGEST,
-  digestMtime: mtime.toISOString(),
-  digestAgeDays: Number(ageDays.toFixed(2)),
+  generatedForIssue: issue.date,
+  sourceDigestSha256: createHash("sha256").update(html).digest("hex"),
+  digestFile: "emails/signal-digest-latest.html",
   issueTitle: issue.title,
   campaign: CAMPAIGN,
   xTweetLengths: xTweets.map((tweet) => tweet.length),

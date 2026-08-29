@@ -90,7 +90,7 @@ CAPTURE_JS = """
     }
     // reveal when results show: hook calculate + watch the class change
     var _orig = window.calculate;
-    if(typeof _orig==='function'){ window.calculate=function(){ if(_orig) _orig.apply(null,arguments); setTimeout(reveal,50); }; }
+    if(typeof _orig==='function'){ window.calculate=function(){ var out=_orig.apply(this,arguments); setTimeout(reveal,50); return out; }; }
     var mo=new MutationObserver(function(){ reveal(); });
     var res=document.getElementById('__RESULT_ID__');
     if(res){ mo.observe(res,{attributes:true,attributeFilter:['class']}); }

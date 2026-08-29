@@ -4,8 +4,10 @@
 # 1) Refreshes GitHub data (fetch-github-data.ts — best-effort; uses `gh auth token`).
 # 2) Regenerates emails/signal-digest-<UTC-date>.html + signal-digest-latest.html
 #    from the refreshed pseo-site/data/startups.json.
-# 3) Broadcasts that issue to ALL ACTIVE subscribers via Resend. Idempotent per
-#    digest-<date> in the PocketBase email_log, so a re-run the same day is a no-op.
+# 3) Generates channel-ready drafts from the same rendered issue. This step
+#    never publishes or sends them.
+# 4) Broadcasts that issue to ALL ACTIVE subscribers via Resend. Idempotent per
+#    digest-<date> in the local sent log, so a re-run the same day is a no-op.
 #
 # Scheduled by com.gitdealflow.weekly-digest (Sundays 16:00 Europe/Athens ≈ 09:00 US Eastern).
 # Pass --dry-run to refresh + regenerate + COUNT recipients without sending anything.
@@ -75,7 +77,18 @@ fi
 
 DATE_UTC="$(date -u +%F)"
 
-# 3) Broadcast (or dry-run count). DATE_UTC matches the generator's UTC-dated file.
+# 3) Repurpose the exact rendered issue into review-only channel drafts. A
+#    parser failure is logged loudly but must not block the paid delivery path.
+#    Nothing in repurpose-digest.mjs calls a network or platform API.
+cd "$PROJECT_DIR"
+if node tools/repurposing/repurpose-digest.mjs \
+  --campaign="gdf-weekly-$DATE_UTC" >>"$LOG" 2>&1; then
+  log "repurpose: OK (review-only drafts; nothing published)"
+else
+  log "repurpose: FAILED - continuing with digest delivery"
+fi
+
+# 4) Broadcast (or dry-run count). DATE_UTC matches the generator's UTC-dated file.
 cd "$PROJECT_DIR/email-api"
 if [[ "$DRY_RUN" == "1" ]]; then
   if node send-weekly-digest.mjs --date "$DATE_UTC" >>"$LOG" 2>&1; then

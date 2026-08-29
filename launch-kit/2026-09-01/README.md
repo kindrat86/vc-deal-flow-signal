@@ -10,11 +10,11 @@
 | Athens | Channel | Asset | State |
 |---|---|---|---|
 | Sun Aug 30, 16:00 | Sunday digest | P.S. launch/capture note | exact draft in `pseo-site/data/ps-notes.json`; fail-closed as `status: draft` until reviewed |
-| Tue Sep 1, 15:25 | Hacker News | `show-hn.md` | Maryan-only manual post, per standing rule |
-| Tue Sep 1, 15:30 | Bluesky | `bluesky.json` | staged; public send requires final approval |
-| Tue Sep 1, 15:35 | Telegram @gitdealflow | `telegram.md` | staged; existing cron is blocked by missing CRON_SECRET and stale masked token |
-| Tue Sep 1, 15:45 | LinkedIn company page | `linkedin.md` | staged; company page only, never personal profile |
-| Tue Sep 1, 15:50 | X | `x-thread.md` | staged; official X API credits depleted on 2026-08-29 |
+| Tue Sep 1, 15:30 | Hacker News | `show-hn.md` | Maryan-only manual post, per standing rule |
+| Tue Sep 1, 15:35 | Bluesky | `bluesky.json` | staged; public send requires final approval |
+| Tue Sep 1, 15:40 | Telegram @gitdealflow | `telegram.md` | staged; existing cron is blocked by missing CRON_SECRET and stale masked token |
+| Tue Sep 1, 15:50 | LinkedIn company page | `linkedin.md` | staged; company page only, never personal profile |
+| Tue Sep 1, 15:55 | X | `x-thread.md` | staged; official X API credits depleted on 2026-08-29 |
 | Tue Sep 1, 16:00-17:00 | HN | Comment response window | Maryan-only; answer every genuine question, no upvote asks |
 
 ## Attribution links
@@ -43,3 +43,11 @@
 - Primary: human, bot-filtered first-touch qualified visitors by source.
 - Secondary: total visitors, explicit UTM coverage, share/copy events, new confirmed subscribers.
 - Kill rule: no repeated promotional posts on any channel if the first placement yields fewer than 3 qualified visitors in 7 days.
+
+## Weekly reuse loop
+
+`monitoring/run-weekly-digest.sh` now regenerates the Sunday issue, then runs
+`tools/repurposing/repurpose-digest.mjs` before the existing email delivery step.
+The repurposer writes review-only Telegram, X, LinkedIn company-page, Bluesky,
+and blog drafts from the exact rendered digest. It never calls a platform API,
+and a parser failure cannot block delivery of the subscriber product.
