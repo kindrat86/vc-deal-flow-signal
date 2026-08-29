@@ -139,7 +139,7 @@ export interface LatestDigest {
   sectorCount: number;
 }
 
-export function buildLatestDigest(lane?: string): LatestDigest {
+export function buildLatestDigest(lane?: string, opts?: { firstIssue?: boolean }): LatestDigest {
   const raw = startupsData as unknown as StartupsData;
   const period = raw.periods.find((p) => p.current) ?? raw.periods[0];
   if (!period) throw new Error("No current period in startups.json.");
@@ -233,15 +233,38 @@ export function buildLatestDigest(lane?: string): LatestDigest {
     ...(partnerPick ? { partnerPick } : {}),
   };
 
+  // First-issue block (on-verify instant digest): sets expectations so the
+  // instant issue reads as a welcome gift, not a re-sent broadcast. Days are
+  // whole days until the next Sunday send (daysUntilSunday 0 = it IS Sunday;
+  // the next full issue is then the FOLLOWING Sunday, 7 days out).
+  if (opts?.firstIssue) {
+    const now2 = new Date();
+    const daysUntilSunday = (7 - now2.getUTCDay()) % 7;
+    const nextSunday = new Date(now2);
+    nextSunday.setUTCDate(now2.getUTCDate() + (daysUntilSunday === 0 ? 7 : daysUntilSunday));
+    digest.firstIssueIntro = {
+      daysUntilSunday,
+      nextSundayISO: nextSunday.toISOString().slice(0, 10),
+    };
+  }
+
   const html = renderDigestEmail(digest);
 
   // Subject lives in the <title> tag (same extraction as
   // email-api/send-weekly-digest.mjs) so the on-verify send and the weekly
   // broadcast always share one subject source.
   const titleMatch = html.match(/<title>([^<]+)<\/title>/);
-  const subject = titleMatch
+  const broadcastSubject = titleMatch
     ? titleMatch[1].trim()
     : `Signal Digest: Week of ${digest.weekOf}`;
+  // The on-verify send is a DIFFERENT animal from the Sunday broadcast even
+  // when both render the same panel: a subscriber who confirms on Saturday
+  // would otherwise receive two near-identical subjects 24h apart (and the
+  // broadcast subject would headline a name they already saw). Distinct
+  // subject keeps the first touch unmistakable in the inbox.
+  const subject = opts?.firstIssue
+    ? `Your first five: ${topStartups[0]?.name ?? "this week's fastest"} + the 4 more accelerating right now`
+    : broadcastSubject;
 
   return {
     subject,

@@ -428,7 +428,7 @@ export async function GET(request: Request) {
   //     must never break verification or the drip schedule.
   if (cohortParam !== "lead-magnet") {
     try {
-    const latest = buildLatestDigest(lane || undefined);
+    const latest = buildLatestDigest(lane || undefined, { firstIssue: true });
     const digestRes = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
