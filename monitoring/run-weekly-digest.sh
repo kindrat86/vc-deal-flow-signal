@@ -56,7 +56,9 @@ cd "$PROJECT_DIR/pseo-site"
 
 # 1) Refresh GitHub data first (best-effort — a fetch failure must NOT block the
 #    weekly send; fall back to last-good data/startups.json and log loudly).
-if npx --yes tsx scripts/fetch-github-data.ts >>"$LOG" 2>&1; then
+# Bound the refresh: delivery is the product. If GitHub is slow, send the last-good snapshot.
+# macOS lacks GNU timeout; Perl alarm is available in the base system.
+if /usr/bin/perl -e 'alarm shift; exec @ARGV' 600 npx --yes tsx scripts/fetch-github-data.ts >>"$LOG" 2>&1; then
   log "fetch: OK (data refreshed)"
 else
   log "fetch: FAILED — proceeding with existing data/startups.json (digest may be stale)"
