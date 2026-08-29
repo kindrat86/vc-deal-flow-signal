@@ -9,6 +9,9 @@ import { fireRedditPurchase } from "@/lib/reddit-conversions-api";
 import { listUnsubscribeHeaders } from "@/lib/list-unsubscribe";
 import { isExcluded } from "@/lib/excluded-emails";
 import { pickAudienceId } from "@/lib/resend-audience";
+import { newBuyerHealthState, firstValueStatusForCustomer, markCustomerCancelled, markCustomerReactivated } from "@/lib/customer-health";
+import { cancellationReasonFromStripe } from "@/lib/retention-policy";
+import { cancelScheduledLifecycleEmails, scheduleWinbackSequence } from "@/lib/winback";
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY!;
 const FROM_EMAIL = process.env.FROM_EMAIL || "signals@gitdealflow.com";
@@ -96,7 +99,7 @@ async function sendEmail(
  * a previously-unsubscribed buyer re-enters the list, buyers must never
  * silently fall out. Best-effort: a Resend hiccup must not 5xx the webhook.
  */
-async function addBuyerToAudience(email: string, source: string) {
+async function addBuyerToAudience(email: string, source: string, health?: { tier: "dashboard" | "insider"; customerId: string }) {
   if (!RESEND_API_KEY || isExcluded(email)) return;
   try {
     const audRes = await fetch("https://api.resend.com/audiences", {
@@ -118,10 +121,28 @@ async function addBuyerToAudience(email: string, source: string) {
           email,
           first_name: "gdf-attr-v1:" + JSON.stringify({ source }),
           unsubscribed: false,
+          // Durable customer-health state (idle/pre-churn/winback input for
+          // the retention dispatcher), stored in last_name because Resend
+          // audiences expose only name fields.
+          ...(health ? { last_name: newBuyerHealthState(health) } : {}),
         }),
       },
     );
-    if (!res.ok) {
+    if (!res.ok && health) {
+      // Contact exists: PATCH the health state through without touching
+      // attribution (first_name) or consent.
+      await fetch(
+        `https://api.resend.com/audiences/${audienceId}/contacts/${encodeURIComponent(email)}`,
+        {
+          method: "PATCH",
+          headers: {
+            Authorization: `Bearer ${RESEND_API_KEY}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ unsubscribed: false, last_name: newBuyerHealthState(health) }),
+        },
+      );
+    } else if (!res.ok) {
       await fetch(
         `https://api.resend.com/audiences/${audienceId}/contacts/${encodeURIComponent(email)}`,
         {
@@ -441,6 +462,14 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ received: true });
     }
 
+    // A returning customer must not receive stale win-back emails after
+    // buying again: cancel still-scheduled lifecycle mail and clear the
+    // cancelled state. Best-effort: never blocks the purchase flow.
+    await Promise.all([
+      cancelScheduledLifecycleEmails(email),
+      markCustomerReactivated(email),
+    ]).catch((error) => console.error("[winback] reactivation cleanup failed", error));
+
     const tier = getTierFromSession(fullSession);
 
     let welcomeEmail: { subject: string; html: string };
@@ -492,7 +521,17 @@ export async function POST(request: NextRequest) {
 
     // Buyers must not fall out of the list, add (or re-activate) the buyer
     // on the Resend audience with stripe-tier attribution.
-    await addBuyerToAudience(email, `stripe-${tier}`);
+    const buyerCustomerId =
+      typeof fullSession.customer === "string"
+        ? fullSession.customer
+        : fullSession.customer?.id;
+    await addBuyerToAudience(
+      email,
+      `stripe-${tier}`,
+      (tier === "dashboard" || tier === "insider") && buyerCustomerId
+        ? { tier, customerId: buyerCustomerId }
+        : undefined,
+    );
 
     // Dashboard and Insider buyers: queue the 5-email onboarding drip
     // (day 1/3/7/14/21). Best-effort, a Resend hiccup must not 5xx out of
@@ -716,6 +755,64 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ received: true });
     }
     await dispatchOtoWelcome(email, oto, sub.id);
+  }
+
+  if (event.type === "customer.subscription.deleted") {
+    const subscription = event.data.object;
+    if (!(await isNonceUsed(STRIPE_EVENT_NAMESPACE, event.id))) {
+      await markNonceUsed(STRIPE_EVENT_NAMESPACE, event.id, STRIPE_EVENT_TTL_SECONDS);
+      const customerId = typeof subscription.customer === "string" ? subscription.customer : subscription.customer.id;
+      const details = subscription.cancellation_details as unknown as { reason?: string | null; feedback?: string | null; comment?: string | null } | null;
+      const stripeReason = details?.reason || null;
+      const stripeFeedback = details?.feedback || null;
+      const normalizedReason = cancellationReasonFromStripe(stripeFeedback || stripeReason);
+      const feedbackComment = details?.comment || null;
+      const subscriptionAgeDays = Math.max(0, Math.floor((Date.now() / 1000 - subscription.created) / 86_400));
+      const amount = subscription.items.data[0]?.price.unit_amount || 0;
+      const tier = amount >= 9_700 ? "insider" : "dashboard";
+      try {
+        const customer = await stripe.customers.retrieve(customerId);
+        const email = customer.deleted ? null : customer.email;
+        if (email) {
+          const firstValueStatus = await firstValueStatusForCustomer(email).catch(() => "unknown" as const);
+          await markCustomerCancelled({ email, reason: normalizedReason }).catch((error) =>
+            console.error("[winback] cancellation state write failed", error),
+          );
+          await sendEmail(
+            "signals@gitdealflow.com",
+            `Cancellation alert: ${email}`,
+            `<p><strong>A paid customer cancelled.</strong></p><p>Email: ${escapeHtml(email)}</p><p>Reason: ${escapeHtml(normalizedReason)}</p><p>Stripe reason: ${escapeHtml(stripeReason || "not provided")}</p><p>Feedback: ${escapeHtml(stripeFeedback || feedbackComment || "not provided")}</p><p>Subscription: ${escapeHtml(subscription.id)}</p>`,
+          );
+          void fetch("https://eu.i.posthog.com/capture/", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              api_key: "phc_lyZCgvTpicjLzAO3rY2GhxuX5WUc5jQjP8ZVwwJqauX",
+              event: "subscription_cancelled",
+              distinct_id: email,
+              properties: {
+                $host: "signals.gitdealflow.com",
+                product: "gitdealflow",
+                customer_id: customerId,
+                subscription_id: subscription.id,
+                tier,
+                cancellation_reason: normalizedReason,
+                stripe_cancellation_reason: stripeReason,
+                stripe_feedback: stripeFeedback,
+                feedback_comment: feedbackComment,
+                subscription_age_days: subscriptionAgeDays,
+                first_value_status: firstValueStatus,
+              },
+            }),
+          }).catch(() => undefined);
+          void scheduleWinbackSequence({ email, reason: normalizedReason }).catch((error) =>
+            console.error("[winback] scheduling failed", error),
+          );
+        }
+      } catch (error) {
+        console.error("cancellation alert failed", error);
+      }
+    }
   }
 
   return NextResponse.json({ received: true });
