@@ -6217,6 +6217,32 @@ check(
   }
 }
 
+// ---------------------------------------------------------------------------
+// §75 Privacy disclosure matches shipped trackers (2026-08-29). The site
+// loads GA4 (PixelManager gtag) on every page while the privacy page and
+// cookie banner said only "one first-party cookie (PostHog EU)". An accurate
+// disclosure is the fix: GA4 must be named wherever the one-cookie promise
+// is made.
+// ---------------------------------------------------------------------------
+{
+  const privacy = read("app/privacy/page.tsx");
+  const notice = read("components/CookieNotice.tsx");
+  if (!privacy || !privacy.includes("Google Analytics 4")) {
+    failures.push(
+      "§75 privacy page no longer discloses GA4 alongside the first-party-cookie promise.\n" +
+      "    file: app/privacy/page.tsx\n" +
+      "    fix:  name Google Analytics 4 in the analytics bullet."
+    );
+  }
+  if (!notice || !notice.includes("Google Analytics 4")) {
+    failures.push(
+      "§75 cookie banner no longer discloses GA4.\n" +
+      "    file: components/CookieNotice.tsx\n" +
+      "    fix:  mention GA4 measurement cookies in the banner text."
+    );
+  }
+}
+
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +

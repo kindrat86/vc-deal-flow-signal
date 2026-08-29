@@ -37,7 +37,7 @@ export default function CookieNotice() {
       className="fixed bottom-4 right-4 z-50 max-w-sm rounded-lg border border-slate-700 bg-slate-900/95 p-4 text-sm text-gray-200 shadow-xl backdrop-blur"
     >
       <p className="leading-relaxed">
-        We set one first-party cookie for product analytics (PostHog EU) so we can count unique visitors. No ads, no cross-site tracking. Browsers sending DNT or GPC are auto-opted-out.{" "}
+        We set one first-party cookie for product analytics (PostHog EU) and Google Analytics 4 measurement cookies so we can count unique visitors and aggregate traffic. No ads, no cross-site tracking. Browsers sending DNT or GPC are auto-opted-out.{" "}
         <Link href="/privacy" className="text-sky-400 hover:underline">
           Details
         </Link>
