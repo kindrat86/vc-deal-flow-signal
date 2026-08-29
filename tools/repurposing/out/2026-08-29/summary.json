@@ -1,0 +1,57 @@
+{
+  "generated": "2026-08-29T18:16:06.691Z",
+  "digestFile": "/Users/sipi/worktrees/gdf-launch-day-2026-08-29/emails/signal-digest-latest.html",
+  "digestMtime": "2026-08-29T18:16:06.517Z",
+  "digestAgeDays": 0.76,
+  "issueTitle": "Signal Digest, Week of Aug 29: liberusoftware leads with +3275%",
+  "campaign": "gdf-launch-2026-09",
+  "xTweetLengths": [
+    236,
+    81,
+    81,
+    80,
+    72,
+    81,
+    221,
+    223
+  ],
+  "parsedStartups": [
+    {
+      "rank": 1,
+      "name": "liberusoftware",
+      "velocityChange": "+3275%",
+      "sector": "PropTech"
+    },
+    {
+      "rank": 2,
+      "name": "untrustedmodders",
+      "velocityChange": "+2900%",
+      "sector": "Gaming"
+    },
+    {
+      "rank": 3,
+      "name": "fleetbase",
+      "velocityChange": "+1600%",
+      "sector": "Supply Chain"
+    },
+    {
+      "rank": 4,
+      "name": "aphp",
+      "velocityChange": "+999%",
+      "sector": "Healthcare"
+    },
+    {
+      "rank": 5,
+      "name": "StanfordSpezi",
+      "velocityChange": "+999%",
+      "sector": "Healthcare"
+    }
+  ],
+  "outputs": [
+    "telegram.md",
+    "x-thread.md",
+    "linkedin.md",
+    "bluesky.json",
+    "blog.md"
+  ]
+}

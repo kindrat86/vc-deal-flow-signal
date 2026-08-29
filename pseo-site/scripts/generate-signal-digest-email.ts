@@ -231,6 +231,28 @@ function main() {
   const today = new Date();
   const dateStr = today.toISOString().slice(0, 10);
 
+  // Optional date-bounded P.S. note. Draft entries are inert: only an entry
+  // explicitly marked status="approved" can render into an outbound digest.
+  let psNote: DigestData["psNote"];
+  const psPath = path.join(process.cwd(), "data", "ps-notes.json");
+  if (fs.existsSync(psPath)) {
+    try {
+      const notes: Array<{ status?: "draft" | "approved"; activeFrom?: string; activeThrough?: string; title?: string; body?: string; ctaLabel?: string; ctaUrl?: string }> =
+        JSON.parse(fs.readFileSync(psPath, "utf8"));
+      const pick = notes.find((n) =>
+        n.status === "approved" &&
+        (n.activeFrom ?? "9999-99-99") <= dateStr &&
+        (n.activeThrough ?? "0000-00-00") >= dateStr
+      );
+      if (pick?.title && pick?.body) {
+        psNote = { title: pick.title, body: pick.body, ctaLabel: pick.ctaLabel, ctaUrl: pick.ctaUrl };
+      }
+    } catch {
+      // malformed file: render digest without the note, never fail the send on it
+    }
+  }
+
+
   // Panel-size claim: locked "350+" floor (AGENTS.md / CLAIMS-LEDGER.md).
   // allStartups.length is a raw sector-sum, not the unique-org count.
   const panelClaim = allStartups.length >= 350 ? "350+" : String(allStartups.length);
@@ -248,6 +270,7 @@ function main() {
     topStartups,
     hottestSectors,
     ...(partnerPick ? { partnerPick } : {}),
+    ...(psNote ? { psNote } : {}),
   };
 
   const esp = parseEsp(process.argv.slice(2));

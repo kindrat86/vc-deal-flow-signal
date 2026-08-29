@@ -121,6 +121,7 @@ const steps = [
   ['node', 'scripts/verify-crawl-proxy.mjs'],
   ['node', 'scripts/verify-persona-routes.mjs'],
   ['node', '--test', 'scripts/test-expansion-routing.mjs'],
+  ['node', 'scripts/verify-tool-capture.mjs'],
 ];
 
 for (const args of steps) {

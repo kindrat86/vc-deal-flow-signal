@@ -107,6 +107,17 @@ footer{text-align:center;padding:2rem;color:#475569;font-size:0.8rem}
     overflow-wrap: anywhere;
   }
 }
+
+  /* GDF tool capture (launch-day 2026-08-29) */
+  .gdf-capture-card { border:1px solid var(--accent,#60a5fa); background:linear-gradient(135deg, var(--accent-dim,rgba(96,165,250,.15)), transparent 60%); }
+  .gdf-capture-card h2 { font-size:1.25rem; font-weight:700; text-align:center; margin:0 0 8px; }
+  .gdf-capture-card p.sub { text-align:center; color:var(--text-muted,#94a3b8); font-size:.92rem; margin:0 auto 16px; max-width:520px; }
+  .gdf-capture-card form { display:flex; gap:10px; flex-wrap:wrap; justify-content:center; }
+  .gdf-capture-card input[type="email"] { flex:1 1 240px; max-width:360px; background:var(--bg-input,#0f172a); border:1px solid var(--border,#334155); color:var(--text,#e2e8f0); padding:13px 16px; border-radius:8px; font-size:1rem; font-family:inherit; min-height:48px; }
+  .gdf-capture-card button { font:inherit; font-size:.98rem; font-weight:600; padding:13px 22px; min-height:48px; border-radius:8px; border:1px solid var(--accent,#60a5fa); background:var(--accent,#60a5fa); color:#fff; cursor:pointer; }
+  .gdf-capture-card button:hover { background:var(--accent-hover,#3b82f6); }
+  .gdf-capture-msg { text-align:center; font-size:.85rem; color:var(--text-muted,#94a3b8); margin:12px 0 0; }
+  .gdf-capture-card .fineprint { text-align:center; font-size:.8rem; color:var(--text-muted,#94a3b8); margin:8px 0 0; }
 </style>
 
 <meta property="og:image" content="https://gitdealflow.com/assets/gitdealflow-social-card-1200x630.png">
@@ -173,7 +184,17 @@ footer{text-align:center;padding:2rem;color:#475569;font-size:0.8rem}
     </div>
   </div>
 
-  <div class="powered-by">
+  <div class="card gdf-capture-card" id="gdf-tool-capture" style="display:none;margin-top:24px">
+    <h2>Want the five teams accelerating fastest, every Sunday?</h2>
+    <p class="sub">You ran the numbers. The Sunday email flags the five startups accelerating hardest on GitHub, each with the plain-English why. The documented examples show the pattern 21 to 47 days before public fundraise announcements. Free, no card, one click to leave.</p>
+    <form id="gdf-tool-capture-form">
+      <input type="email" id="gdf-tool-capture-email" required inputmode="email" autocomplete="email" enterkeyhint="send" placeholder="you@example.com" aria-label="Email address">
+      <button type="submit">Get this Sunday's 5 names</button>
+    </form>
+    <p class="gdf-capture-msg" id="gdf-tool-capture-msg" role="status"></p>
+    <p class="fineprint">One email a week. Unsubscribe anytime. Check your inbox to confirm.</p>
+  </div>
+<div class="powered-by">
     Powered by <a href="https://gitdealflow.com/">GitDealFlow</a>: free to use, no signup required
   </div>
 
@@ -401,6 +422,52 @@ window.addEventListener('DOMContentLoaded', function() {
 </script>
 
   <script>
+  (function(){
+    var box=document.getElementById('gdf-tool-capture');
+    if(!box) return;
+    var form=document.getElementById('gdf-tool-capture-form');
+    var emailEl=document.getElementById('gdf-tool-capture-email');
+    var msgEl=document.getElementById('gdf-tool-capture-msg');
+    form.addEventListener('submit',function(e){
+      e.preventDefault();
+      var v=(emailEl.value||'').trim();
+      if(!v){ msgEl.textContent='Enter an email address to continue.'; msgEl.style.color='#f87171'; return; }
+      var qs=new URLSearchParams(window.location.search);
+      var stored={}; try{ stored=JSON.parse(sessionStorage.getItem('gdf_attr')||'{}'); }catch(_){}
+      var body={
+        email:v, source:'investment-calculator',
+        utm_source:qs.get('utm_source')||stored.utm_source||'',
+        utm_medium:qs.get('utm_medium')||stored.utm_medium||'',
+        utm_campaign:qs.get('utm_campaign')||stored.utm_campaign||'',
+        referrer:stored.referrer||document.referrer||'',
+        landing_path:stored.landing_path||(window.location.pathname+window.location.search),
+        tz:(function(){ try{ var t=Intl.DateTimeFormat().resolvedOptions().timeZone; return (typeof t==='string'&&t.indexOf('/')!==-1)?t:''; }catch(_){return '';} })(),
+        website:''
+      };
+      var btn=form.querySelector('button');
+      var orig=btn.textContent; btn.disabled=true; btn.textContent='Sending...';
+      fetch('https://signals.gitdealflow.com/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(body)})
+        .then(function(r){return r.json();})
+        .then(function(d){
+          btn.disabled=false; btn.textContent=orig;
+          if(d&&d.ok){ msgEl.textContent='Check your inbox to confirm. The five names land Sunday.'; msgEl.style.color='#34d399'; emailEl.value=''; }
+          else { msgEl.textContent='Something went wrong. Try again, or email signal@gitdealflow.com.'; msgEl.style.color='#f87171'; }
+        })
+        .catch(function(){ btn.disabled=false; btn.textContent=orig; msgEl.textContent='Something went wrong. Try again.'; msgEl.style.color='#f87171'; });
+    });
+    function reveal(){
+      if(!box) return;
+      if(document.getElementById('result-card') && document.getElementById('result-card').classList.contains('show')){ box.style.display='block'; }
+    }
+    // reveal when results show: hook calculate + watch the class change
+    var _orig = window.calculate;
+    if(typeof _orig==='function'){ window.calculate=function(){ if(_orig) _orig.apply(null,arguments); setTimeout(reveal,50); }; }
+    var mo=new MutationObserver(function(){ reveal(); });
+    var res=document.getElementById('result-card');
+    if(res){ mo.observe(res,{attributes:true,attributeFilter:['class']}); }
+  })();
+  </script>
+<script>
     (function(){
       function _load(){var s=document.createElement('script');s.src='/pixels.js';s.async=true;document.head.appendChild(s);}
       if('requestIdleCallback' in window){requestIdleCallback(_load,{timeout:3000});} else {setTimeout(_load,2500);}
