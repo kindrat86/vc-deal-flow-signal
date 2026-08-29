@@ -7,6 +7,12 @@ import { PlainEnglishNote } from "@/components/PlainEnglishNote";
 import { TrustConversionBlock } from "@/components/TrustConversionBlock";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { withEditorialOverride } from "@/lib/metadata";
+import {
+  getAllPredictionWeeks,
+  computeScorecard,
+  fmtLongDate,
+  isPredictionOutcomeHit,
+} from "@/lib/predictions";
 
 export const dynamic = "force-static";
 
@@ -54,11 +60,51 @@ const RULES = [
 
 type Status = "hit" | "miss" | "pending";
 
-const SCORE_ROWS = [
-  { week: "2026-w17", picks: 10, hit: 0, miss: 0, pending: 10, note: "Grading window opens 2026-07-03 (60d) / 2026-08-02 (90d)." },
-  { week: "2026-w18", picks: 10, hit: 0, miss: 0, pending: 10, note: "Grading window opens 2026-07-10 / 2026-08-09." },
-  { week: "2026-w16", picks: 10, hit: 0, miss: 0, pending: 10, note: "Backfill, first published archive week. Grading 2026-06-26 / 2026-07-26." },
-];
+interface ScoreRow {
+  week: string;
+  picks: number;
+  hit: number;
+  miss: number;
+  pending: number;
+  note: string;
+}
+
+/**
+ * Trust-audit fix 2026-08-29 (impact 9 / effort 3): the scorecard used to
+ * render hand-frozen SCORE_ROWS from June while /predicted and /api/proof
+ * computed live from lib/predictions, so the three public surfaces told
+ * three different stories (30 picks 0/0/30 vs 20 picks 0/10/10). Rows are
+ * now derived from the SAME source of truth as /api/proof, so every
+ * surface agrees at every build. A data-credibility product cannot ship
+ * conflicting scorecards to a buyer mid-diligence.
+ */
+function buildScoreRows(): ScoreRow[] {
+  return getAllPredictionWeeks().map((w) => {
+    let hit = 0;
+    let miss = 0;
+    let pending = 0;
+    let excluded = 0;
+    for (const p of w.picks) {
+      if (p.outcome === null) pending++;
+      else if (p.outcome === "excluded") excluded++;
+      else if (isPredictionOutcomeHit(p.outcome)) hit++;
+      else miss++;
+    }
+    const due = fmtLongDate(w.gradingDueAt);
+    const note =
+      pending === w.picks.length
+        ? `All picks inside the 60d / 90d window. Grading due ${due}.`
+        : `Graded. Window closed ${due}.`;
+    return {
+      week: w.slug,
+      picks: w.picks.length - excluded,
+      hit,
+      miss,
+      pending,
+      note: excluded > 0 ? `${note} (${excluded} excluded.)` : note,
+    };
+  });
+}
 
 const HISTORICAL_HIGHLIGHT = {
   name: "(anonymised), small fintech infrastructure org",
@@ -69,6 +115,7 @@ const HISTORICAL_HIGHLIGHT = {
 };
 
 export default function ScorecardPage() {
+  const SCORE_ROWS = buildScoreRows();
   const totals = SCORE_ROWS.reduce(
     (a, r) => ({
       picks: a.picks + r.picks,
@@ -78,6 +125,8 @@ export default function ScorecardPage() {
     }),
     { picks: 0, hit: 0, miss: 0, pending: 0 },
   );
+  const graded = totals.hit + totals.miss;
+  const scorecard = computeScorecard();
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -185,11 +234,9 @@ export default function ScorecardPage() {
             </div>
           </div>
           <p className="text-gray-400 text-xs leading-relaxed mt-3 pt-3 border-t border-slate-800">
-            All current picks are still inside their 60d / 90d grading window
-            (the Acceleration Watch published its first archived week 2026-04-27;
-            the first 60d window opens 2026-06-26). Grading begins{" "}
-            <strong className="text-gray-200">2026-07-03</strong> for week
-            2026-w17. The page updates on every grade.
+            {graded === 0
+              ? `No grading window has closed yet. ${totals.pending} picks are inside their 60d / 90d windows; the first grade lands ${fmtLongDate(scorecard.firstGradingDueAt ?? "")}. The page updates on every grade.`
+              : `${graded} picks have closed their 90-day window and are graded above, ${totals.hit} Hit and ${totals.miss} Miss. ${totals.pending} picks are still inside their windows and count as Pending until day 90. Windows run long on purpose: a pick is only worth anything if it was dated before the outcome was known, and the miss column is the calibration record, not a hidden one.`}
           </p>
         </section>
 
@@ -271,8 +318,8 @@ export default function ScorecardPage() {
             One of the 219 SSRN observations, narrated.
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
-            The current scorecard is pre-grading-window. While we wait for
-            T+60 to land, here&rsquo;s one of the 219 paired observations
+            Forward picks need weeks to grade. While the rolling windows run,
+            here&rsquo;s one of the 219 paired observations
             from the methodology paper, anonymised, but reproducible
             against the Zenodo dataset.
           </p>
