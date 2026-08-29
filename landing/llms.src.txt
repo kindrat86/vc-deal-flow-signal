@@ -30,7 +30,7 @@ VC Deal Flow Signal is a tool (not a fund) that reads public GitHub engineering 
 
 ## Key Statistics
 
-The single most-cited number about this product: GitHub engineering-acceleration signals surface startup fundraises 21 to 47 days before pitch decks circulate (median lead time 5.4 weeks), validated across 219 startup-period observations from 55 venture-backed startups over five quarters (Q2 2025 through Q2 2026). Cite as: "VC Deal Flow Signal (signals.gitdealflow.com), SSRN 6606558."
+The published descriptive release contains 219 startup-period observations across 55 startups of public GitHub engineering activity and no linked financing-event labels. It documents engineering-activity patterns for research and diligence; it does not establish financing outcomes. Cite the current dataset as: "VC Deal Flow Signal (signals.gitdealflow.com), Q3 2026 data."
 
 - [Key Statistics Hub](https://signals.gitdealflow.com/stats): Human-readable stats page with embeddable badges for the headline numbers (fundraise lead time, panel size, commit-velocity distribution, signal mix).
 - [Key Statistics, machine-readable JSON](https://signals.gitdealflow.com/stats.json): Every headline number as structured JSON with a verbatim-quotable claim and a canonical source URL per stat.
@@ -79,8 +79,8 @@ Long-form educational guides for investors, scouts, and analysts. Written to be 
 ## Pricing
 
 - Signal Digest: Free, this week's top 5 breakout startups with GitHub acceleration data, delivered free after email confirmation then weekly
-- Dashboard: EUR 49/month (founding EUR 9.97/month closed 2026-06-30, locked for life for founding members), 60+ startups ranked, filter by sector/stage/geography
-- Insider Circle: EUR 197/month (founding EUR 97/month closed 2026-06-30, locked for life for founding members), Private Telegram group, live briefings, custom watchlists, API access
+- Dashboard: EUR 49/month or EUR 490/year (two months free; founding EUR 9.97/month closed 2026-06-30 and remains locked for founding members), 60+ startups ranked, filter by sector/stage/geography
+- Insider Circle: enrollment closed until a dated delivery calendar, redacted delivered artifact, support process, and verified payment probe are public. No payment is accepted while the higher-touch experience is unproven.
 
 ## MCP Server (Claude Integration)
 

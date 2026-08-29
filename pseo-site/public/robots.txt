@@ -11,3 +11,5 @@ Disallow: /welcome/
 Disallow: /share/
 Disallow: /api/share/
 Disallow: /account/
+
+Sitemap: https://signals.gitdealflow.com/sitemap.xml
