@@ -60,3 +60,32 @@ export function winbackSequenceForReason(reason: CancellationReason): WinbackSte
     },
   ];
 }
+
+// ---------------------------------------------------------------------------
+// Day-90 win-back dispatcher support (pure logic, unit-tested).
+// scheduleWinbackSequence() can only schedule up to 30 days ahead (Resend
+// limit), so the day-90 step is sent by /api/cron/winback-dispatcher, which
+// rechecks the contact's opt-out state before sending.
+// ---------------------------------------------------------------------------
+
+export type StoredHealthSnapshot = {
+  cancelledAt?: string;
+  cancellationReason?: string;
+  winback90SentAt?: string;
+  customerId?: string;
+};
+
+/** Minimum age (days) before the day-90 note may go out. */
+export const WINBACK90_MIN_DAYS = 85;
+
+export function isWinback90Due(
+  state: StoredHealthSnapshot | null | undefined,
+  now: Date = new Date(),
+): boolean {
+  if (!state?.cancelledAt || !state.cancellationReason) return false;
+  if (state.winback90SentAt) return false;
+  const cancelledMs = Date.parse(state.cancelledAt);
+  if (Number.isNaN(cancelledMs)) return false;
+  const ageDays = (now.getTime() - cancelledMs) / 86_400_000;
+  return ageDays >= WINBACK90_MIN_DAYS;
+}
