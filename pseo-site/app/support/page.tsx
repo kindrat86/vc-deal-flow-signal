@@ -87,7 +87,7 @@ export default function SupportPage() {
           <p className="text-sky-400 text-xs font-semibold uppercase tracking-[0.16em]">Customer support</p>
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 tracking-tight">Get unstuck without entering a ticket maze.</h1>
           <p className="text-gray-300 text-lg leading-relaxed">
-            Email <a href="mailto:signals@gitdealflow.com?subject=GitDealFlow%20support" className="text-sky-400 underline">signals@gitdealflow.com</a>. We reply within one business day, Monday through Friday. Paying customers and access-blocking issues are reviewed first.
+            Email <a href="mailto:signals@gitdealflow.com?subject=GitDealFlow%20support" className="text-sky-400 underline">signals@gitdealflow.com</a>. Human reply within 1 business day, Monday through Friday. Paying customers and access-blocking issues are reviewed first.
           </p>
         </header>
 
