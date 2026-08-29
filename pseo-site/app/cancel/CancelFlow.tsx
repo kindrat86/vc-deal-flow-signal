@@ -1,6 +1,6 @@
 "use client";
 
-import { FormEvent, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 
 const reasons = [
   ["not_using", "I'm not using it"],
@@ -23,6 +23,8 @@ export default function CancelFlow() {
   const [checkSize, setCheckSize] = useState("");
   const [thesis, setThesis] = useState("");
   const [feedback, setFeedback] = useState("");
+  const [stayReason, setStayReason] = useState("");
+  const [followUpOk, setFollowUpOk] = useState(false);
   const [busy, setBusy] = useState(false);
   const [result, setResult] = useState<Result | null>(null);
 
@@ -38,7 +40,7 @@ export default function CancelFlow() {
       const response = await fetch("/api/cancel", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ action, reason, sector, geography, checkSize, thesis, feedback }),
+        body: JSON.stringify({ action, reason, sector, geography, checkSize, thesis, feedback, stayReason, followUpOk }),
       });
       const body = await response.json() as Result & { error?: string };
       if (!response.ok) throw new Error(body.error || "That did not work. Please try again.");
@@ -52,8 +54,6 @@ export default function CancelFlow() {
   }
 
   const tailored = reason === "too_complex" || reason === "missing_features";
-  const cleanCancel = reason === "switched_service" || reason === "low_quality" || reason === "other";
-
   return (
     <main className="mx-auto max-w-2xl px-4 py-12 sm:py-20">
       <p className="text-sm font-semibold uppercase tracking-widest text-sky-300">Before you cancel</p>
@@ -101,10 +101,12 @@ export default function CancelFlow() {
         </section>
       )}
 
-      {cleanCancel && (
-        <section className="mt-6 rounded-xl border border-slate-700 bg-slate-900/40 p-5">
-          <label className="block text-sm font-medium text-gray-200">What should we improve? Optional.<textarea value={feedback} onChange={(event) => setFeedback(event.target.value)} className="mt-2 min-h-28 w-full rounded-md border border-slate-600 bg-slate-950 px-3 py-2 text-gray-100" maxLength={2000} /></label>
-          <p className="mt-3 text-sm text-gray-400">There is no pressure. You can cancel cleanly below.</p>
+      {reason && (
+        <section className="mt-6 space-y-5 rounded-xl border border-slate-700 bg-slate-900/40 p-5">
+          <label className="block text-sm font-medium text-gray-200">What should we improve? Optional.<textarea value={feedback} onChange={(event) => setFeedback(event.target.value)} className="mt-2 min-h-24 w-full rounded-md border border-slate-600 bg-slate-950 px-3 py-2 text-gray-100" maxLength={2000} /></label>
+          <label className="block text-sm font-medium text-gray-200">What would have made you stay for one more month? Optional.<textarea value={stayReason} onChange={(event) => setStayReason(event.target.value)} className="mt-2 min-h-24 w-full rounded-md border border-slate-600 bg-slate-950 px-3 py-2 text-gray-100" maxLength={2000} /></label>
+          <label className="flex gap-3 text-sm text-gray-300"><input type="checkbox" checked={followUpOk} onChange={(event) => setFollowUpOk(event.target.checked)} /> May we ask two follow-up questions?</label>
+          <p className="text-sm text-gray-400">There is no pressure. You can cancel cleanly below.</p>
         </section>
       )}
 

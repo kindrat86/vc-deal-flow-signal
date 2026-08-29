@@ -840,8 +840,10 @@ export async function POST(request: NextRequest) {
       const details = subscription.cancellation_details as unknown as { reason?: string | null; feedback?: string | null; comment?: string | null } | null;
       const stripeReason = details?.reason || null;
       const stripeFeedback = details?.feedback || null;
-      const normalizedReason = cancellationReasonFromStripe(stripeFeedback || stripeReason);
-      const feedbackComment = details?.comment || null;
+      const normalizedReason = cancellationReasonFromStripe(subscription.metadata?.cancellation_reason || stripeFeedback || stripeReason);
+      const feedbackComment = subscription.metadata?.cancellation_feedback || details?.comment || null;
+      const cancellationStayReason = subscription.metadata?.cancellation_stay_reason || null;
+      const cancellationFollowUpOk = subscription.metadata?.cancellation_follow_up_ok === "yes";
       const subscriptionAgeDays = Math.max(0, Math.floor((Date.now() / 1000 - subscription.created) / 86_400));
       const amount = subscription.items.data[0]?.price.unit_amount || 0;
       const tier = amount >= 9_700 ? "insider" : "dashboard";
@@ -856,7 +858,7 @@ export async function POST(request: NextRequest) {
           await sendEmail(
             "signals@gitdealflow.com",
             `Cancellation alert: ${email}`,
-            `<p><strong>A paid customer cancelled.</strong></p><p>Email: ${escapeHtml(email)}</p><p>Reason: ${escapeHtml(normalizedReason)}</p><p>Stripe reason: ${escapeHtml(stripeReason || "not provided")}</p><p>Feedback: ${escapeHtml(stripeFeedback || feedbackComment || "not provided")}</p><p>Subscription: ${escapeHtml(subscription.id)}</p>`,
+            `<p><strong>A paid customer cancelled.</strong></p><p>Email: ${escapeHtml(email)}</p><p>Reason: ${escapeHtml(normalizedReason)}</p><p>Stripe reason: ${escapeHtml(stripeReason || "not provided")}</p><p>Feedback: ${escapeHtml(stripeFeedback || feedbackComment || "not provided")}</p><p>What would have made them stay: ${escapeHtml(cancellationStayReason || "not provided")}</p><p>Follow-up consent: ${cancellationFollowUpOk ? "yes" : "no"}</p><p>Subscription: ${escapeHtml(subscription.id)}</p>`,
           );
           void fetch("https://eu.i.posthog.com/capture/", {
             method: "POST",
@@ -875,6 +877,8 @@ export async function POST(request: NextRequest) {
                 stripe_cancellation_reason: stripeReason,
                 stripe_feedback: stripeFeedback,
                 feedback_comment: feedbackComment,
+                cancellation_stay_reason: cancellationStayReason,
+                cancellation_follow_up_ok: cancellationFollowUpOk,
                 subscription_age_days: subscriptionAgeDays,
                 first_value_status: firstValueStatus,
               },
