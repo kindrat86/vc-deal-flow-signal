@@ -26,6 +26,8 @@ type CancelBody = {
   checkSize?: unknown;
   thesis?: unknown;
   feedback?: unknown;
+  stayReason?: unknown;
+  followUpOk?: unknown;
 };
 
 function text(value: unknown, limit = 500): string {
@@ -112,8 +114,10 @@ export async function POST(request: NextRequest) {
   const checkSize = text(body?.checkSize);
   const thesis = text(body?.thesis);
   const feedback = text(body?.feedback, 2_000);
+  const stayReason = text(body?.stayReason, 2_000);
+  const followUpOk = body?.followUpOk === true;
   const saveAction = saveActionForReason(reason);
-  const eventProperties = { tier: account.tier, customer_id: account.customerId, reason, feedback, sector, geography, check_size: checkSize, thesis, save_action: saveAction };
+  const eventProperties = { tier: account.tier, customer_id: account.customerId, reason, feedback, stay_reason: stayReason, follow_up_ok: followUpOk, sector, geography, check_size: checkSize, thesis, save_action: saveAction };
 
   if (action === "continue") {
     await capture("cancellation_continue", account.email, eventProperties);
@@ -124,6 +128,8 @@ export async function POST(request: NextRequest) {
           ...subscription.metadata,
           cancellation_reason: reason,
           cancellation_feedback: feedback,
+          cancellation_stay_reason: stayReason,
+          cancellation_follow_up_ok: followUpOk ? "yes" : "no",
         },
       });
     }

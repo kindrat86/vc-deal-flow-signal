@@ -361,6 +361,18 @@ export function renderDigestEmail(data: DigestData, opts: DigestOptions = {}): s
             </td>
           </tr>
 
+          <!-- CUSTOMER VOICE -->
+          <tr><td style="height:24px;line-height:24px;font-size:0;">&nbsp;</td></tr>
+          <tr>
+            <td class="bg-card brd px-outer" style="background:${BRAND.card};border:1px solid ${BRAND.border};border-radius:12px;padding:20px;">
+              <div class="tx-mut" style="color:${BRAND.textMut};font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;">One question</div>
+              <p class="tx-sec" style="margin:8px 0 0 0;color:${BRAND.textSec};font-size:14px;line-height:22px;">
+                What would make this signal more useful in your next deal decision?
+                <a href="${track("https://signals.gitdealflow.com/feedback?source=sunday")}" style="color:${BRAND.accentLight};font-weight:600;">Tell us in your own words &rarr;</a>
+              </p>
+            </td>
+          </tr>
+
           <!-- METHOD NOTE -->
           <tr><td style="height:32px;line-height:32px;font-size:0;">&nbsp;</td></tr>
           <tr>

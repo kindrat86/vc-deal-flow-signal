@@ -163,6 +163,9 @@ export default function Footer() {
           <Link href="/corrections" className="hover:text-gray-300 transition-colors">Corrections</Link>
           <Link href="/citation-guide" className="hover:text-gray-300 transition-colors">Citation Guide</Link>
           <Link href="/press" className="hover:text-gray-300 transition-colors">Press</Link>
+          <Link href="/support" className="hover:text-gray-300 transition-colors">Support</Link>
+          <Link href="/feedback" className="hover:text-gray-300 transition-colors">Feedback</Link>
+          <Link href="/pulse" className="hover:text-gray-300 transition-colors">Satisfaction pulse</Link>
           <Link href="/partners" className="hover:text-gray-300 transition-colors">Partners</Link>
           <Link href="/affiliates/leaderboard" className="hover:text-gray-300 transition-colors">Affiliate leaderboard</Link>
           <Link href="/data-nerd/social" className="hover:text-gray-300 transition-colors">Brand mascot</Link>
