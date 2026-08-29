@@ -26,6 +26,7 @@ const needles = {
     "How likely are you to recommend GitDealFlow to another investor?",
     "What is the main reason for your score?",
     "What would raise it by one point?",
+    "grid grid-cols-6 gap-2 sm:grid-cols-11",
   ],
   "components/Footer.tsx": [
     'href="/support"',
