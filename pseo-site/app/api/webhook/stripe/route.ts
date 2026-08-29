@@ -9,6 +9,9 @@ import { fireRedditPurchase } from "@/lib/reddit-conversions-api";
 import { listUnsubscribeHeaders } from "@/lib/list-unsubscribe";
 import { isExcluded } from "@/lib/excluded-emails";
 import { pickAudienceId } from "@/lib/resend-audience";
+import { newBuyerHealthState, firstValueStatusForCustomer, markCustomerCancelled, markCustomerReactivated } from "@/lib/customer-health";
+import { cancellationReasonFromStripe } from "@/lib/retention-policy";
+import { cancelScheduledLifecycleEmails, scheduleWinbackSequence } from "@/lib/winback";
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY!;
 const FROM_EMAIL = process.env.FROM_EMAIL || "signals@gitdealflow.com";
@@ -24,6 +27,34 @@ const TELEGRAM_INSIDER_INVITE = process.env.TELEGRAM_INSIDER_INVITE || "";
 // TTL covers Stripe's max retry window (3 days) with comfortable headroom.
 const STRIPE_EVENT_NAMESPACE = "stripe-webhook-event";
 const STRIPE_EVENT_TTL_SECONDS = 14 * 86_400;
+
+const BUYER_ONBOARDING_DRIP = [
+  {
+    delayMs: 1 * 86_400_000,
+    subject: "Your first signal decision",
+    html: `<p>Pick one company or sector from this week's ranked list. Ask three questions: what changed, why now, and what would disprove the signal?</p><p>You do not need to research every name. One clear diligence decision is a useful first win.</p><p><a href="https://signals.gitdealflow.com/dashboard?utm_source=email&amp;utm_medium=buyer-onboarding&amp;utm_campaign=d1">Open the Dashboard</a></p>`,
+  },
+  {
+    delayMs: 3 * 86_400_000,
+    subject: "Build your watchlist in 90 seconds",
+    html: `<p>The investors who get the most out of GitDealFlow star 5-10 companies in their sector and let the screen watch them.</p><p>Star companies from the Dashboard, then open Watchlist: you get a one-glance view of who is accelerating, and Insider-tier alert emails when a starred company jumps.</p><p><a href="https://signals.gitdealflow.com/dashboard/watchlist?utm_source=email&amp;utm_medium=buyer-onboarding&amp;utm_campaign=d3">Open Watchlist</a></p>`,
+  },
+  {
+    delayMs: 7 * 86_400_000,
+    subject: "Did you find one useful lead?",
+    html: `<p>Did you find one useful lead?</p><p><a href="mailto:signals@gitdealflow.com?subject=GDF%20onboarding%20-%20Yes">Yes</a> / <a href="mailto:signals@gitdealflow.com?subject=GDF%20onboarding%20-%20Not%20yet">Not yet</a> / <a href="mailto:signals@gitdealflow.com?subject=GDF%20onboarding%20-%20I%27m%20stuck">I'm stuck</a></p><p>Reply with your sector and stage focus if you want a hand choosing where to start.</p>`,
+  },
+  {
+    delayMs: 14 * 86_400_000,
+    subject: "One signal, one decision",
+    html: `<p>Pick one company or sector from this week's ranked list. Ask three questions: what changed, why now, and what would disprove the signal?</p><p>You do not need to research every name. One clear diligence decision is a useful first win.</p><p><a href="https://signals.gitdealflow.com/dashboard?utm_source=email&amp;utm_medium=buyer-onboarding&amp;utm_campaign=d14">Open the Dashboard</a></p>`,
+  },
+  {
+    delayMs: 21 * 86_400_000,
+    subject: "Three weeks in: where GitDealFlow fits",
+    html: `<p>Three weeks of signals in your inbox. By now you know whether the screen fits how you source.</p><p>If it fits: reply with your sector and I will send the single strongest current signal in it, free, no upsell.</p><p>If it does not fit: reply CANCEL and I will point you to the one-click cancel flow, no retention maze. Either answer is useful.</p><p><a href="https://signals.gitdealflow.com/dashboard?utm_source=email&amp;utm_medium=buyer-onboarding&amp;utm_campaign=d21">Open the Dashboard</a></p>`,
+  },
+];
 
 function escapeHtml(str: string): string {
   return str
@@ -68,7 +99,7 @@ async function sendEmail(
  * a previously-unsubscribed buyer re-enters the list, buyers must never
  * silently fall out. Best-effort: a Resend hiccup must not 5xx the webhook.
  */
-async function addBuyerToAudience(email: string, source: string) {
+async function addBuyerToAudience(email: string, source: string, health?: { tier: "dashboard" | "insider"; customerId: string }) {
   if (!RESEND_API_KEY || isExcluded(email)) return;
   try {
     const audRes = await fetch("https://api.resend.com/audiences", {
@@ -90,10 +121,28 @@ async function addBuyerToAudience(email: string, source: string) {
           email,
           first_name: "gdf-attr-v1:" + JSON.stringify({ source }),
           unsubscribed: false,
+          // Durable customer-health state (idle/pre-churn/winback input for
+          // the retention dispatcher), stored in last_name because Resend
+          // audiences expose only name fields.
+          ...(health ? { last_name: newBuyerHealthState(health) } : {}),
         }),
       },
     );
-    if (!res.ok) {
+    if (!res.ok && health) {
+      // Contact exists: PATCH the health state through without touching
+      // attribution (first_name) or consent.
+      await fetch(
+        `https://api.resend.com/audiences/${audienceId}/contacts/${encodeURIComponent(email)}`,
+        {
+          method: "PATCH",
+          headers: {
+            Authorization: `Bearer ${RESEND_API_KEY}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({ unsubscribed: false, last_name: newBuyerHealthState(health) }),
+        },
+      );
+    } else if (!res.ok) {
       await fetch(
         `https://api.resend.com/audiences/${audienceId}/contacts/${encodeURIComponent(email)}`,
         {
@@ -413,6 +462,14 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ received: true });
     }
 
+    // A returning customer must not receive stale win-back emails after
+    // buying again: cancel still-scheduled lifecycle mail and clear the
+    // cancelled state. Best-effort: never blocks the purchase flow.
+    await Promise.all([
+      cancelScheduledLifecycleEmails(email),
+      markCustomerReactivated(email),
+    ]).catch((error) => console.error("[winback] reactivation cleanup failed", error));
+
     const tier = getTierFromSession(fullSession);
 
     let welcomeEmail: { subject: string; html: string };
@@ -464,7 +521,35 @@ export async function POST(request: NextRequest) {
 
     // Buyers must not fall out of the list, add (or re-activate) the buyer
     // on the Resend audience with stripe-tier attribution.
-    await addBuyerToAudience(email, `stripe-${tier}`);
+    const buyerCustomerId =
+      typeof fullSession.customer === "string"
+        ? fullSession.customer
+        : fullSession.customer?.id;
+    await addBuyerToAudience(
+      email,
+      `stripe-${tier}`,
+      (tier === "dashboard" || tier === "insider") && buyerCustomerId
+        ? { tier, customerId: buyerCustomerId }
+        : undefined,
+    );
+
+    // Dashboard and Insider buyers: queue the 5-email onboarding drip
+    // (day 1/3/7/14/21). Best-effort, a Resend hiccup must not 5xx out of
+    // this handler and trigger Stripe to retry the whole webhook (which
+    // would double-send the welcome and double-queue the drip).
+    if (tier === "dashboard" || tier === "insider") {
+      for (const drip of BUYER_ONBOARDING_DRIP) {
+        try {
+          await fetch("https://api.resend.com/emails", {
+            method: "POST",
+            headers: { Authorization: `Bearer ${RESEND_API_KEY}`, "Content-Type": "application/json" },
+            body: JSON.stringify({ from: `${FROM_NAME} <${FROM_EMAIL}>`, bcc: "sales@sipiteno.com", to: email, subject: drip.subject, html: drip.html, scheduled_at: new Date(Date.now() + drip.delayMs).toISOString(), headers: listUnsubscribeHeaders(email) }),
+          });
+        } catch (err) {
+          console.error("Failed to schedule buyer onboarding:", err);
+        }
+      }
+    }
 
     // Book buyers: queue the +1d / +4d / +7d follow-ups promised in the
     // welcome email. Best-effort, a Resend hiccup must not 5xx out of this
@@ -670,6 +755,64 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ received: true });
     }
     await dispatchOtoWelcome(email, oto, sub.id);
+  }
+
+  if (event.type === "customer.subscription.deleted") {
+    const subscription = event.data.object;
+    if (!(await isNonceUsed(STRIPE_EVENT_NAMESPACE, event.id))) {
+      await markNonceUsed(STRIPE_EVENT_NAMESPACE, event.id, STRIPE_EVENT_TTL_SECONDS);
+      const customerId = typeof subscription.customer === "string" ? subscription.customer : subscription.customer.id;
+      const details = subscription.cancellation_details as unknown as { reason?: string | null; feedback?: string | null; comment?: string | null } | null;
+      const stripeReason = details?.reason || null;
+      const stripeFeedback = details?.feedback || null;
+      const normalizedReason = cancellationReasonFromStripe(stripeFeedback || stripeReason);
+      const feedbackComment = details?.comment || null;
+      const subscriptionAgeDays = Math.max(0, Math.floor((Date.now() / 1000 - subscription.created) / 86_400));
+      const amount = subscription.items.data[0]?.price.unit_amount || 0;
+      const tier = amount >= 9_700 ? "insider" : "dashboard";
+      try {
+        const customer = await stripe.customers.retrieve(customerId);
+        const email = customer.deleted ? null : customer.email;
+        if (email) {
+          const firstValueStatus = await firstValueStatusForCustomer(email).catch(() => "unknown" as const);
+          await markCustomerCancelled({ email, reason: normalizedReason }).catch((error) =>
+            console.error("[winback] cancellation state write failed", error),
+          );
+          await sendEmail(
+            "signals@gitdealflow.com",
+            `Cancellation alert: ${email}`,
+            `<p><strong>A paid customer cancelled.</strong></p><p>Email: ${escapeHtml(email)}</p><p>Reason: ${escapeHtml(normalizedReason)}</p><p>Stripe reason: ${escapeHtml(stripeReason || "not provided")}</p><p>Feedback: ${escapeHtml(stripeFeedback || feedbackComment || "not provided")}</p><p>Subscription: ${escapeHtml(subscription.id)}</p>`,
+          );
+          void fetch("https://eu.i.posthog.com/capture/", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              api_key: "phc_lyZCgvTpicjLzAO3rY2GhxuX5WUc5jQjP8ZVwwJqauX",
+              event: "subscription_cancelled",
+              distinct_id: email,
+              properties: {
+                $host: "signals.gitdealflow.com",
+                product: "gitdealflow",
+                customer_id: customerId,
+                subscription_id: subscription.id,
+                tier,
+                cancellation_reason: normalizedReason,
+                stripe_cancellation_reason: stripeReason,
+                stripe_feedback: stripeFeedback,
+                feedback_comment: feedbackComment,
+                subscription_age_days: subscriptionAgeDays,
+                first_value_status: firstValueStatus,
+              },
+            }),
+          }).catch(() => undefined);
+          void scheduleWinbackSequence({ email, reason: normalizedReason }).catch((error) =>
+            console.error("[winback] scheduling failed", error),
+          );
+        }
+      } catch (error) {
+        console.error("cancellation alert failed", error);
+      }
+    }
   }
 
   return NextResponse.json({ received: true });

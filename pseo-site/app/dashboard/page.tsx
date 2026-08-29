@@ -37,6 +37,21 @@ export default async function DashboardPage() {
   if (!session) {
     redirect("/login");
   }
+
+  // Record the view in durable customer-health state (idle/pre-churn input).
+  // Best-effort: a Resend hiccup must not block the dashboard render.
+  try {
+    const { recordCustomerHealthEvent } = await import("@/lib/customer-health");
+    await recordCustomerHealthEvent({
+      email: session.email,
+      tier: session.tier,
+      customerId: session.customerId,
+      event: "dashboard_viewed",
+    });
+  } catch (error) {
+    console.error("dashboard_viewed health write failed", error);
+  }
+
   const sectors = getAllSectors();
   const period = getCurrentPeriod();
   const lastModified = getDataLastModified();
