@@ -384,6 +384,7 @@
     gtag('js', new Date());
     gtag('config', 'G-7SV2SNZE4C');
   </script>
+<script src="/email-guard.js" defer></script>
 </head>
 <body class="bg-dark-900 text-gray-100 font-sans antialiased">
   <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60] focus:bg-brand-500 focus:text-white focus:px-4 focus:py-2 focus:rounded focus:shadow-lg">Skip to main content</a>
@@ -413,7 +414,7 @@
         </div>
       </nav>
       <div class="flex items-center gap-4 shrink-0">
-        <a href="#signup-hero" onclick="if(window.posthog)posthog.capture('nav_cta_clicked')" class="btn btn-primary btn-no-pulse btn-sm whitespace-nowrap shrink-0"><span class="lg:hidden">Get the 5 names</span><span class="hidden lg:inline">Get this Sunday&apos;s 5 names</span> <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
+        <a href="#signup-hero" onclick="if(window.posthog)posthog.capture('nav_cta_clicked')" class="btn btn-primary btn-no-pulse btn-sm whitespace-nowrap shrink-0"><span class="lg:hidden">Get the 5 names</span><span class="hidden lg:inline">Get the 5 names free</span> <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
         <button type="button" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu" class="md:hidden inline-flex items-center justify-center w-11 h-11 shrink-0 rounded-lg text-gray-300 hover:text-white ring-1 ring-white/10 transition-colors">
           <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
         </button>
@@ -455,10 +456,10 @@
         <form id="signup-hero" style="scroll-margin-top:5rem" class="js-signup-form mobile-cta-stack flex flex-col sm:flex-row gap-3 max-w-lg mx-auto" data-source="hero">
           <label for="hero-email" class="sr-only">Email address</label>
           <input type="email" id="hero-email" required inputmode="email" autocomplete="email" enterkeyhint="send" placeholder="you@example.com" class="flex-1 px-5 py-4 rounded-lg bg-dark-800 border border-gray-600 text-gray-100 placeholder-gray-400 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 text-lg">
-          <button type="submit" class="btn btn-primary btn-xl w-full sm:w-auto"><span>Get this Sunday&apos;s 5 names</span><span aria-hidden="true" class="btn-arrow">&rarr;</span></button>
+          <button type="submit" class="btn btn-primary btn-xl w-full sm:w-auto"><span>Get the 5 names free</span><span aria-hidden="true" class="btn-arrow">&rarr;</span></button>
         </form>
         <p role="status" class="js-signup-msg text-gray-400 text-sm mt-4"><span class="text-emerald-400">✓</span> Free, I cover the compute &nbsp; <span class="text-emerald-400">✓</span> Unsubscribe in one click &nbsp; <span class="text-emerald-400">✓</span> One email, every Sunday</p>
-        <p class="text-signal-400 text-xs font-semibold mt-2">This Sunday&apos;s five are already locked. Be on the list when it sends.</p>
+        <p class="text-signal-400 text-xs font-semibold mt-2">Confirm your email once, and this Sunday&apos;s five are in your inbox. The latest issue lands the moment you join.</p>
 
         <p class="text-gray-400 text-sm mt-2"><a href="https://buy.stripe.com/bJe5kC48H2d2cEKg6s0x209" onclick="if(window.posthog)posthog.capture('hero_teardown_link_clicked')" class="text-signal-400 underline hover:text-signal-300">Not ready for the list? Get a &euro;1 Tweet Teardown &rarr;</a> <span class="text-gray-500">&euro;1 once &middot; 30-day refund guarantee &middot; secure Stripe checkout</span></p>
 
@@ -478,7 +479,7 @@
         <div class="flex flex-wrap items-center justify-center gap-x-8 gap-y-3 text-xs text-gray-400 max-w-2xl mx-auto mt-5 mb-2">
           <span class="flex items-center gap-2">
             <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-brand-500/20 text-brand-400 text-[11px] font-bold">1</span>
-            Get this Sunday's 5 names (90s)
+            Get the 5 names free (90s)
           </span>
           <span class="flex items-center gap-2">
             <span class="inline-flex items-center justify-center w-5 h-5 rounded-full bg-brand-500/20 text-brand-400 text-[11px] font-bold">2</span>
@@ -697,7 +698,7 @@
     </section>
 
     <div class="mobile-section-pad max-w-3xl mx-auto px-4 sm:px-6 pb-8 text-center">
-      <a href="#signup" onclick="if(window.posthog)posthog.capture('repeat_cta_clicked',{placement:'after_story'})" class="btn btn-primary btn-lg w-full sm:w-auto"><span>Get this Sunday&apos;s 5 names</span><span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
+      <a href="#signup" onclick="if(window.posthog)posthog.capture('repeat_cta_clicked',{placement:'after_story'})" class="btn btn-primary btn-lg w-full sm:w-auto"><span>Get the 5 names free</span><span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
     </div>
 
     <section id="verify" class="mobile-section-pad max-w-5xl mx-auto px-4 sm:px-6 py-8" style="scroll-margin-top:5rem">
@@ -833,7 +834,7 @@
       </div>
       <div class="mt-8 text-center">
         <p class="text-xl md:text-2xl font-bold text-white mb-4">Kill all three, and only one question remains: which of this Sunday&apos;s five names is in your lane?</p>
-        <a href="#signup" onclick="if(window.posthog)posthog.capture('repeat_cta_clicked',{placement:'after_3_secrets'})" class="btn btn-primary btn-lg w-full sm:w-auto"><span>Get this Sunday&apos;s 5 names</span><span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
+        <a href="#signup" onclick="if(window.posthog)posthog.capture('repeat_cta_clicked',{placement:'after_3_secrets'})" class="btn btn-primary btn-lg w-full sm:w-auto"><span>Get the 5 names free</span><span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
       </div>
     </section>
 
@@ -923,8 +924,8 @@
       <p class="text-gray-300 text-lg text-center max-w-2xl mx-auto mb-10">Not a promise of returns, I can&apos;t make those and I won&apos;t. This is the habit you build, and where it usually leaves you. The rhythm is the whole relationship.</p>
       <div class="grid sm:grid-cols-2 md:grid-cols-4 gap-4 text-left mb-10">
         <div class="rounded-xl border border-gray-700 bg-dark-900 p-5">
-          <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider mb-2">This Sunday</p>
-          <p class="text-gray-300 text-sm leading-relaxed">Five names land. You read them in 90 seconds, flag the one in your lane, and close the laptop. Your first early read, done before coffee.</p>
+          <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider mb-2">After you confirm</p>
+          <p class="text-gray-300 text-sm leading-relaxed">Five names land in your inbox the same day. You read them in 90 seconds, flag the one in your lane, and close the laptop. Your first early read, done before coffee.</p>
         </div>
         <div class="rounded-xl border border-gray-700 bg-dark-900 p-5">
           <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider mb-2">Month 1</p>
@@ -939,9 +940,9 @@
           <p class="text-gray-200 text-sm leading-relaxed">Getting the engineering read before everyone else is just how you source now, no code, ever. You&apos;ve also watched me get a few calls wrong in public, which is exactly why you trust the ones I get right.</p>
         </div>
       </div>
-      <p class="text-gray-400 text-center max-w-2xl mx-auto mb-8">None of that asks you to read code, turn into a quant, or trust me on faith. It asks one thing: be on the list when this Sunday&apos;s five names send.</p>
+      <p class="text-gray-400 text-center max-w-2xl mx-auto mb-8">None of that asks you to read code, turn into a quant, or trust me on faith. It asks one thing: confirm your email once, and the next five names are yours to read before anyone else wakes up to them.</p>
       <div class="text-center">
-        <a href="#signup" onclick="if(window.posthog)posthog.capture('repeat_cta_clicked',{placement:'after_future_pace'})" class="btn btn-primary btn-lg w-full sm:w-auto"><span>Get this Sunday&apos;s 5 names</span><span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
+        <a href="#signup" onclick="if(window.posthog)posthog.capture('repeat_cta_clicked',{placement:'after_future_pace'})" class="btn btn-primary btn-lg w-full sm:w-auto"><span>Get the 5 names free</span><span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
       </div>
     </section>
 
@@ -994,7 +995,7 @@
           <p class="text-emerald-400 text-xs font-semibold uppercase tracking-wider mb-3">If you subscribe today</p>
           <p class="text-lg font-bold text-white mb-4">In six months, being early is just how you source.</p>
           <ul class="space-y-3 text-gray-300 text-sm leading-relaxed">
-            <li class="flex items-start gap-2"><span class="text-emerald-400 shrink-0 mt-0.5">&check;</span><span>This Sunday: five names land. You read them in 90 seconds, <strong class="text-gray-200">flag one in your lane</strong>, close the laptop.</span></li>
+            <li class="flex items-start gap-2"><span class="text-emerald-400 shrink-0 mt-0.5">&check;</span><span>The day you confirm: five names land in your inbox. You read them in 90 seconds, <strong class="text-gray-200">flag one in your lane</strong>, close the laptop.</span></li>
             <li class="flex items-start gap-2"><span class="text-emerald-400 shrink-0 mt-0.5">&check;</span><span>Month 1: You&rsquo;ve sent three &ldquo;saw your commits&rdquo; emails <strong class="text-gray-200">while everyone else waited for the intro</strong>.</span></li>
             <li class="flex items-start gap-2"><span class="text-emerald-400 shrink-0 mt-0.5">&check;</span><span>Month 3: Two founders know you as the investor <strong class="text-gray-200">who reached out before the round existed</strong>. That reputation compounds.</span></li>
             <li class="flex items-start gap-2"><span class="text-emerald-400 shrink-0 mt-0.5">&check;</span><span>Month 6: Getting the engineering read before everyone else is <strong class="text-gray-200">just how you source now</strong>: no code, no databases, no waiting.</span></li>
@@ -1004,7 +1005,7 @@
       </div>
       <p class="text-center text-gray-400 text-sm mt-8 max-w-lg mx-auto">This isn&rsquo;t a sales page trick. <strong class="text-white">Not acting is a decision too</strong>: it just happens to be the one that keeps you where you are. The Sunday email is free. The only real risk is staying late.</p>
       <div class="text-center mt-6">
-        <a href="#signup" onclick="if(window.posthog)posthog.capture('repeat_cta_clicked',{placement:'do_nothing'})" class="btn btn-primary btn-lg w-full sm:w-auto">Get this Sunday&rsquo;s 5 names, free &rarr;</a>
+        <a href="#signup" onclick="if(window.posthog)posthog.capture('repeat_cta_clicked',{placement:'do_nothing'})" class="btn btn-primary btn-lg w-full sm:w-auto">Get the 5 names free &rarr;</a>
       </div>
     </section>
 
@@ -1121,11 +1122,11 @@
           <div class="mobile-cta-stack flex flex-col sm:flex-row gap-3">
             <label for="signup-email" class="sr-only">Email address</label>
             <input type="email" id="signup-email" placeholder="you@example.com" required aria-label="Email address" inputmode="email" autocomplete="email" enterkeyhint="send" class="flex-1 px-5 py-4 rounded-lg bg-dark-800 border border-gray-600 text-gray-100 placeholder-gray-400 focus:outline-none focus:border-brand-500 focus:ring-1 focus:ring-brand-500 text-lg">
-            <button type="submit" id="signup-btn" class="btn btn-primary btn-lg w-full sm:w-auto">Get this Sunday&apos;s 5 names <span aria-hidden="true" class="btn-arrow">&rarr;</span></button>
+            <button type="submit" id="signup-btn" class="btn btn-primary btn-lg w-full sm:w-auto">Get the 5 names free <span aria-hidden="true" class="btn-arrow">&rarr;</span></button>
           </div>
         </form>
         <p class="text-gray-400 text-sm mt-4 text-center">Drop your email and <strong class="text-white">check your inbox to confirm</strong>: then the five names land <strong class="text-white">in your inbox the moment you confirm</strong>.</p>
-        <p class="text-gray-400 text-sm mt-2 text-center">Read every Sunday by angels, scouts, and seed funds sourcing before the crowd.</p>
+        <p class="text-gray-400 text-sm mt-2 text-center">Read by <span data-cc-n>&hellip;</span> investors, angels, scouts, and seed funds sourcing before the crowd, and growing every week.</p>
         <p id="signup-msg" role="status" class="js-signup-msg text-center text-gray-400 text-sm mt-2">
           <span class="text-emerald-400">✓</span> One email, every Sunday &nbsp; <span class="text-emerald-400">✓</span> Unsubscribe in one click &nbsp; <span class="text-emerald-400">✓</span> Keep every issue you got
         </p>
@@ -1165,14 +1166,14 @@
     <div class="relative w-full max-w-lg rounded-2xl border border-signal-500/40 bg-dark-900 p-6 md:p-8 shadow-2xl">
       <button type="button" id="exit-close" aria-label="Close" class="absolute top-3 right-3 text-gray-400 hover:text-gray-200 text-2xl leading-none w-11 h-11 flex items-center justify-center">&times;</button>
       <p class="text-signal-400 text-xs font-semibold uppercase tracking-wider mb-3">Before you go</p>
-      <h2 id="exit-title" class="text-2xl md:text-3xl font-extrabold leading-tight mb-3">Let me send you this Sunday’s issue first.</h2>
+      <h2 id="exit-title" class="text-2xl md:text-3xl font-extrabold leading-tight mb-3">Let me send you the five names first.</h2>
       <p class="text-gray-300 leading-relaxed mb-5">One short Sunday email. Five names worth your attention. Unsubscribe in one click.</p>
       <form id="exit-form" class="flex flex-col gap-3">
         <label for="exit-email" class="sr-only">Email address</label>
         <input type="email" id="exit-email" required inputmode="email" autocomplete="email" enterkeyhint="send" placeholder="you@example.com" class="w-full px-4 py-3 rounded-lg bg-dark-800 border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:border-signal-500">
-        <button type="submit" id="exit-submit" class="w-full bg-signal-500 hover:bg-signal-400 text-dark-900 font-bold py-3 rounded-lg transition">Get this Sunday’s 5 names &rarr;</button>
+        <button type="submit" id="exit-submit" class="w-full bg-signal-500 hover:bg-signal-400 text-dark-900 font-bold py-3 rounded-lg transition">Get the 5 names free &rarr;</button>
       </form>
-      <p id="exit-msg" role="status" class="text-gray-400 text-xs text-center mt-3">One email a week · unsubscribe anytime</p>
+      <p id="exit-msg" role="status" class="text-gray-400 text-xs text-center mt-3">One email a week · unsubscribe anytime · <span data-cc>read by <span data-cc-n>&hellip;</span> investors</span></p>
     </div>
   </div>
 
@@ -1269,7 +1270,7 @@
   <div class="mobile-sticky-cta" inert>
     <div class="inner">
       <div class="meta">
-        <strong>Get this Sunday&apos;s 5 names</strong>
+        <strong>Get the 5 names free</strong>
         <span>Free · no card · 90-second read</span>
       </div>
       <a href="#signup" onclick="if(window.posthog)posthog.capture('repeat_cta_clicked',{placement:'sticky_mobile'})" class="btn btn-primary btn-no-pulse btn-sm">Get it free</a>
@@ -1479,7 +1480,7 @@
           msg.textContent = 'Something went wrong. Try the main signup form instead.';
           msg.className = 'text-red-400 text-xs text-center mt-3';
           btn.disabled = false;
-          btn.textContent = 'Get this Sunday’s 5 names →';
+          btn.textContent = 'Get the 5 names free →';
         }
       });
     })();
@@ -1872,5 +1873,16 @@ document.addEventListener('keydown',function(e){if(e.key==='Escape'&&t.getAttrib
 </script>
 
 <script>(function(){try{if(navigator.doNotTrack=='1'||window.globalPrivacyControl)return;if(localStorage.getItem('gdf_cookie_ack'))return;var d=document.createElement('div');d.setAttribute('role','region');d.setAttribute('aria-label','Cookie notice');d.style.cssText='position:fixed;left:0;right:0;bottom:0;z-index:9998;background:#0f172a;border-top:1px solid #334155;color:#e2e8f0;padding:16px;font:14px/1.5 system-ui,-apple-system,sans-serif';d.innerHTML='<div style="max-width:900px;margin:0 auto;display:flex;gap:12px;align-items:center;flex-wrap:wrap"><p style="margin:0;flex:1;min-width:240px">We set one first-party cookie for product analytics (PostHog EU) so we can count unique visitors. No ads, no cross-site tracking. Browsers sending DNT or GPC are auto-opted-out. <a href="/privacy" style="color:#7dd3fc">Details</a>.</p><button type="button" style="min-height:44px;min-width:88px;padding:10px 20px;border:0;border-radius:8px;background:#0284c7;color:#fff;font-weight:600;cursor:pointer">Got it</button></div>';var b=d.querySelector('button');b.onclick=function(){try{localStorage.setItem('gdf_cookie_ack','1')}catch(e){}d.remove()};document.body.appendChild(d)}catch(e){}})();</script>
+
+<script>
+/* Honest consensus line: fills [data-cc-n] spans from /api/proof; never invents a number. */
+(function () {
+  var ep = 'https://signals.gitdealflow.com/api/proof';
+  function fill(n) { var els = document.querySelectorAll('[data-cc-n]'); for (var i = 0; i < els.length; i++) els[i].textContent = n; }
+  fetch(ep).then(function (r) { return r.ok ? r.json() : null; }).then(function (d) {
+    if (d && typeof d.subscribers === 'number' && d.subscribers >= 5) fill(d.subscribers);
+  }).catch(function () { /* leave ellipsis */ });
+})();
+</script>
 </body>
 </html>
