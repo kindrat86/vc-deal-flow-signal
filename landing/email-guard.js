@@ -35,7 +35,7 @@
   function check(v) {
     v = (v || '').trim();
     if (!v) return { ok: false, msg: t().invalid };
-    var m = v.match(/^[^\s@]+@([^\s@]+)\.[^\s@]{2,}$/);
+    var m = v.match(/^[^\s@]+@([^\s@]+\.[^\s@]{2,})$/);
     if (!m) return { ok: false, msg: t().invalid };
     var domain = m[1].toLowerCase();
     var fixed = TYPO_FIX[domain];
