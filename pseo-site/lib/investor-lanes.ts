@@ -69,3 +69,31 @@ const LANE_INTROS: Record<InvestorLane, string> = {
 export function laneIntro(lane: InvestorLane): string {
   return LANE_INTROS[lane];
 }
+
+/**
+ * Route a self-described lane to the smallest paid offer that matches its
+ * likely operating cadence. This does not infer wealth or force a purchase:
+ * it only changes the post-confirmation page's primary offer.
+ *
+ * - fund/corpdev: institutional workflow, full-field Dashboard
+ * - angel/scout: thesis-specific First Look before subscription
+ * - builder/other/unknown: default free-reader path
+ */
+export type OfferRoute = "F" | "T" | "D";
+export type AvatarRoute = OfferRoute | "I";
+
+export function laneOfferRoute(lane: string): OfferRoute {
+  if (lane === "fund" || lane === "corpdev") return "D";
+  if (lane === "angel" || lane === "scout") return "T";
+  return "F";
+}
+
+export function resolveOfferRoute(
+  avatarRoute: string,
+  lane: string,
+): AvatarRoute | "" {
+  if (["F", "T", "D", "I"].includes(avatarRoute)) {
+    return avatarRoute as AvatarRoute;
+  }
+  return isInvestorLane(lane) ? laneOfferRoute(lane) : "";
+}

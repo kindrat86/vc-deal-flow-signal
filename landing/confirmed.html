@@ -117,7 +117,7 @@
       <div class="mobile-card mobile-card-pad rounded-3xl border border-emerald-500/40 bg-emerald-950/20 p-8 sm:p-10">
         <div id="member-perk" class="mb-7 flex items-start gap-3 rounded-xl border border-signal-500/30 bg-signal-500/10 px-4 py-3">
           <span class="text-signal-400 text-lg leading-none mt-0.5" aria-hidden="true">&#9733;</span>
-          <p class="text-sm text-gray-200 leading-relaxed"><span class="text-white font-semibold">New-member moment, you confirmed today.</span> The &euro;7 is fully credited toward Dashboard if you upgrade within 14 days, so the only thing that can expire is your thesis staying hot. The best week to use First Look is the week you join.</p>
+          <p id="member-perk-copy" class="text-sm text-gray-200 leading-relaxed"><span class="text-white font-semibold">New-member moment, you confirmed today.</span> The &euro;7 is fully credited toward Dashboard if you upgrade within 14 days, so the only thing that can expire is your thesis staying hot. The best week to use First Look is the week you join.</p>
         </div>
         <div class="grid lg:grid-cols-[1.05fr_0.95fr] gap-8 items-start">
           <div>
@@ -127,27 +127,27 @@
             <div class="space-y-3">
               <div class="flex items-start gap-3">
                 <span class="text-emerald-400 mt-0.5">&#10003;</span>
-                <p class="text-gray-200">A full deep dive on <span class="text-white font-medium">your sector</span>, delivered within <span class="text-white font-medium">24 hours</span></p>
+                <p id="benefit-copy-1" class="text-gray-200">A full deep dive on <span class="text-white font-medium">your sector</span>, delivered within <span class="text-white font-medium">24 hours</span></p>
               </div>
               <div class="flex items-start gap-3">
                 <span class="text-emerald-400 mt-0.5">&#10003;</span>
-                <p class="text-gray-200">A <span class="text-white font-medium">ranked shortlist</span> for that thesis, the names worth your attention, with the why</p>
+                <p id="benefit-copy-2" class="text-gray-200">A <span class="text-white font-medium">ranked shortlist</span> for that thesis, the names worth your attention, with the why</p>
               </div>
               <div class="flex items-start gap-3">
                 <span class="text-emerald-400 mt-0.5">&#10003;</span>
-                <p class="text-gray-200">The lowest-risk way to <span class="text-white font-medium">test the signal on your own lens</span> before any subscription</p>
+                <p id="benefit-copy-3" class="text-gray-200">The lowest-risk way to <span class="text-white font-medium">test the signal on your own lens</span> before any subscription</p>
               </div>
               <div class="flex items-start gap-3">
                 <span class="text-emerald-400 mt-0.5">&#10003;</span>
-                <p class="text-gray-200"><span class="text-white font-medium">Your &euro;7 is risk-free:</span> if it isn&rsquo;t useful, reply within 14 days and I refund it, or it credits in full toward Dashboard if you upgrade. Either way it&rsquo;s never wasted</p>
+                <p id="benefit-copy-4" class="text-gray-200"><span class="text-white font-medium">Your &euro;7 is risk-free:</span> if it isn&rsquo;t useful, reply within 14 days and I refund it, or it credits in full toward Dashboard if you upgrade. Either way it&rsquo;s never wasted</p>
               </div>
             </div>
           </div>
 
           <div class="rounded-2xl border border-gray-700 bg-dark-900/60 p-6 text-center">
             <p class="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-2">Today, while the question still has heat</p>
-            <p class="mb-1"><span class="text-4xl font-extrabold text-white">&euro;7</span> <span class="text-gray-400">once</span></p>
-            <p class="text-gray-400 text-sm mb-5">No subscription. Secure checkout via Stripe.</p>
+            <p class="mb-1"><span id="offer-price" class="text-4xl font-extrabold text-white">&euro;7</span> <span id="offer-cadence" class="text-gray-400">once</span></p>
+            <p id="offer-price-note" class="text-gray-400 text-sm mb-5">No subscription. Secure checkout via Stripe.</p>
             <div class="space-y-3 mobile-cta-stack">
               <a id="primary-next-link" href="/firstlook" class="btn btn-cta btn-md w-full text-center">Get my First Look &rarr;</a>
             </div>
@@ -155,7 +155,7 @@
           </div>
         </div>
         <div class="mt-8 rounded-xl border border-gray-700 bg-dark-900/60 p-5">
-          <p class="text-gray-300 text-sm leading-relaxed"><span class="text-white font-medium">Don&rsquo;t take my word for it, check the work.</span> The same engineering signal lit up <span class="text-white font-medium">weeks before 219 documented fundraises</span>, each predating the round by at least 30 days. The full ledger and method are public on <a href="https://signals.gitdealflow.com/methodology" target="_blank" rel="noopener" class="text-brand-500 underline">SSRN</a>, and a complete <a href="/report" class="text-brand-500 underline">sample issue</a> is on the site. No testimonials, just the receipts.</p>
+          <p class="text-gray-300 text-sm leading-relaxed"><span class="text-white font-medium">Don&rsquo;t take my word for it, check the work.</span> The documented release contains <span class="text-white font-medium">219 startup-period observations across 55 startups</span> of public engineering activity, with no linked funding-event labels. The full ledger and method are public on <a href="https://signals.gitdealflow.com/methodology" target="_blank" rel="noopener" class="text-brand-500 underline">SSRN</a>, and a complete <a href="/report" class="text-brand-500 underline">sample issue</a> is on the site. No testimonials, just the receipts.</p>
         </div>
       </div>
     </section>
@@ -219,18 +219,29 @@
           takeawayCopy: "If you already know five names won't be enough, you can skip straight to the full ranked field on Dashboard. Otherwise, start with First Look."
         },
         D: {
+          tier: "dashboard",
           title: "You're in. Now decide if five names are enough.",
-          copy: "Your first issue is in your inbox. But if you already know you need the full field, First Look is the cheapest way to feel the difference first.",
-          guidance: "Dashboard is for the moment when not knowing where to look every week starts costing you real attention. First Look lets you test that on one thesis for €7, fully credited if you upgrade.",
-          offerEyebrow: "Test before you commit · First Look",
-          offerTitle: "One sector. One deep dive. One day.",
-          offerCopy: "Before you commit to the full field, point me at one sector. I read the public engineering signal, the part teams can't spin, so you never open a repo, and turn it into one sharp answer in 24 hours. The €7 credits toward Dashboard.",
-          primaryHref: "/firstlook",
-          primaryText: "Start with First Look →",
-          stickyTitle: "First Look · €7 (credited)",
-          stickyHref: "/firstlook",
-          takeawayTitle: "Already sure you want the full ranked field?",
-          takeawayCopy: "If five names a week won't cut it, go straight to Dashboard. If you'd rather feel the depth on one thesis first, First Look is the €7 way in."
+          copy: "Your first issue is in your inbox. You told me you operate at fund or corporate-development cadence, so I won't make you climb through two tiny purchases before showing you the full field.",
+          guidance: "Dashboard is the working surface: the full ranked field every week, not five names and not one sector. If that is more than you need, keep the free issue. If it matches the job, this is the direct path.",
+          memberPerk: "You qualified for the direct path. Skip the €1 and €7 detours: see the full Dashboard offer now. The 30-day Signal-or-It's-Free guarantee still applies.",
+          offerEyebrow: "Built for an active sourcing workflow · Dashboard",
+          offerTitle: "The full ranked field, every week.",
+          offerCopy: "See 140+ startups across 15 sectors, each ranked by public engineering acceleration with the plain-English reason it is moving. Filter the field, watch the history build, and stop waiting for five names to happen to match your thesis.",
+          benefits: [
+            "140+ ranked startups across 15 sectors, refreshed weekly",
+            "Plain-English reason every company is accelerating",
+            "Signal history, sector filters, stage and geography filters",
+            "30-day Signal-or-It's-Free guarantee, cancel in one click"
+          ],
+          offerPrice: "€49",
+          offerCadence: "/mo",
+          offerPriceNote: "Full Dashboard · secure Stripe checkout · cancel in one click",
+          primaryHref: "/dashboard",
+          primaryText: "Unlock the full field →",
+          stickyTitle: "Dashboard · €49/mo",
+          stickyHref: "/dashboard",
+          takeawayTitle: "Not ready for the full field? Keep the free issue.",
+          takeawayCopy: "There is no penalty for waiting. Read the five names first. Dashboard is here when the weekly shortlist starts feeling too small."
         },
         I: {
           title: "You're in. Now choose how close you want the signal.",
@@ -255,6 +266,13 @@
       set('offer-eyebrow', c.offerEyebrow);
       set('offer-title', c.offerTitle);
       set('offer-copy', c.offerCopy);
+      if (c.memberPerk) set('member-perk-copy', c.memberPerk);
+      if (c.benefits) {
+        for (var bi = 0; bi < c.benefits.length; bi++) set('benefit-copy-' + (bi + 1), c.benefits[bi]);
+      }
+      if (c.offerPrice) set('offer-price', c.offerPrice);
+      if (c.offerCadence) set('offer-cadence', c.offerCadence);
+      if (c.offerPriceNote) set('offer-price-note', c.offerPriceNote);
       set('next-move-title', c.takeawayTitle);
       set('next-move-copy', c.takeawayCopy);
       set('sticky-title', c.stickyTitle);
@@ -262,10 +280,11 @@
       if (primary) { primary.href = c.primaryHref; primary.textContent = c.primaryText; }
       const sticky = document.getElementById('sticky-link');
       if (sticky) { sticky.href = c.stickyHref; }
+      const offerTier = c.tier || 'firstlook';
       (function fireConfirm(n){ n = n || 0; if (window.posthog && window.posthog.capture) { try { var ce = new URLSearchParams(window.location.search).get('email') || ''; var se = ''; try { se = sessionStorage.getItem('gdf_email') || ''; } catch(_){} var identEmail = ce || se; if (identEmail) posthog.identify(identEmail); } catch(_){} posthog.capture('signup_confirmed_viewed', { route: route }); } else if (n < 100) { setTimeout(function(){ fireConfirm(n + 1); }, 100); } })();
       // Track intent clicks on the primary upsell so we can measure confirm-page conversion.
-      if (primary) primary.addEventListener('click', function(){ if (window.posthog) posthog.capture('confirmed_upsell_clicked', { route: route, tier: 'firstlook' }); });
-      if (sticky) sticky.addEventListener('click', function(){ if (window.posthog) posthog.capture('confirmed_upsell_clicked', { route: route, tier: 'firstlook', surface: 'sticky' }); });
+      if (primary) primary.addEventListener('click', function(){ if (window.posthog) posthog.capture('confirmed_upsell_clicked', { route: route, tier: offerTier }); });
+      if (sticky) sticky.addEventListener('click', function(){ if (window.posthog) posthog.capture('confirmed_upsell_clicked', { route: route, tier: offerTier, surface: 'sticky' }); });
     })();
   </script>
 
