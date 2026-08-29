@@ -1,8 +1,16 @@
-import { buildLatestDigest } from "../lib/digest-builder";
+import { buildLatestDigest, nextSundayTiming } from "../lib/digest-builder";
 
 function assert(ok: unknown, message: string): asserts ok {
   if (!ok) throw new Error(message);
 }
+
+const saturday = nextSundayTiming(new Date("2026-08-29T12:00:00Z"));
+assert(saturday.daysUntilSunday === 1, "Saturday must point one day ahead");
+assert(saturday.nextSundayISO === "2026-08-30", "Saturday next-Sunday date is wrong");
+
+const sunday = nextSundayTiming(new Date("2026-08-30T12:00:00Z"));
+assert(sunday.daysUntilSunday === 7, "Sunday must point to the following Sunday, not zero days");
+assert(sunday.nextSundayISO === "2026-09-06", "Sunday next-Sunday date is wrong");
 
 const first = buildLatestDigest("angel", { firstIssue: true });
 assert(first.subject.startsWith("Your first five:"), "first issue needs a distinct welcome subject");

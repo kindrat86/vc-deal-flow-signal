@@ -139,6 +139,27 @@ export interface LatestDigest {
   sectorCount: number;
 }
 
+/**
+ * Return the next recurring Sunday issue after `now`.
+ *
+ * On Sunday itself the weekly broadcast may already have gone out, so the
+ * next recurring issue is seven days away, never "0 days / this Sunday".
+ * Exported for deterministic boundary tests.
+ */
+export function nextSundayTiming(now: Date = new Date()): {
+  daysUntilSunday: number;
+  nextSundayISO: string;
+} {
+  const rawDays = (7 - now.getUTCDay()) % 7;
+  const daysUntilSunday = rawDays === 0 ? 7 : rawDays;
+  const nextSunday = new Date(now);
+  nextSunday.setUTCDate(now.getUTCDate() + daysUntilSunday);
+  return {
+    daysUntilSunday,
+    nextSundayISO: nextSunday.toISOString().slice(0, 10),
+  };
+}
+
 export function buildLatestDigest(lane?: string, opts?: { firstIssue?: boolean }): LatestDigest {
   const raw = startupsData as unknown as StartupsData;
   const period = raw.periods.find((p) => p.current) ?? raw.periods[0];
@@ -234,18 +255,9 @@ export function buildLatestDigest(lane?: string, opts?: { firstIssue?: boolean }
   };
 
   // First-issue block (on-verify instant digest): sets expectations so the
-  // instant issue reads as a welcome gift, not a re-sent broadcast. Days are
-  // whole days until the next Sunday send (daysUntilSunday 0 = it IS Sunday;
-  // the next full issue is then the FOLLOWING Sunday, 7 days out).
+  // instant issue reads as a welcome gift, not a re-sent broadcast.
   if (opts?.firstIssue) {
-    const now2 = new Date();
-    const daysUntilSunday = (7 - now2.getUTCDay()) % 7;
-    const nextSunday = new Date(now2);
-    nextSunday.setUTCDate(now2.getUTCDate() + (daysUntilSunday === 0 ? 7 : daysUntilSunday));
-    digest.firstIssueIntro = {
-      daysUntilSunday,
-      nextSundayISO: nextSunday.toISOString().slice(0, 10),
-    };
+    digest.firstIssueIntro = nextSundayTiming();
   }
 
   const html = renderDigestEmail(digest);
