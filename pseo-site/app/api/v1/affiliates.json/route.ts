@@ -26,7 +26,6 @@ export async function GET() {
     signup_url: AFFILIATE_PROGRAM_FACTS.portalUrl,
     terms: {
       commission_rate: AFFILIATE_PROGRAM_FACTS.commissionRate,
-      commission_per_insider_circle_eur_per_month: 39.4,
       commission_per_dashboard_eur_per_month: 9.8,
       commission_per_sector_sweep_eur: 399.4,
       terms_source: AFFILIATE_PROGRAM_FACTS.portalUrl,

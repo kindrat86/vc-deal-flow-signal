@@ -198,11 +198,10 @@ export default function AffiliateFunnelHackPage() {
                 3
               </span>
               <span>
-                Any referred conversion, Dashboard upgrade, Insider Circle
-                subscription, or Sector Sweep purchase, pays you 20%
-                recurring commission: €39.40/mo per Insider Circle sub,
-                €9.80/mo per Dashboard sub, €399.40 on each Sector Sweep.
-                The Refgrow portal owns the exact attribution rules.
+                An eligible referred Dashboard upgrade or Sector Sweep purchase
+                pays 20% commission: €9.80/mo per Dashboard sub at the current
+                public price and €399.40 on each Sector Sweep. Insider enrollment
+                is closed. The Refgrow portal owns the exact attribution rules.
               </span>
             </li>
           </ol>
@@ -344,9 +343,9 @@ export default function AffiliateFunnelHackPage() {
             Not in the program yet?
           </h2>
           <p className="text-gray-200 text-base leading-relaxed mb-5">
-            20% recurring commission. €39.40/mo per Insider Circle sub,
-            €9.80/mo per Dashboard sub, €399.40 on each Sector Sweep.
-            Attribution and payout terms live in the Refgrow portal.
+            20% recurring commission. At the current public prices, that is
+            €9.80/mo per Dashboard sub and €399.40 on each Sector Sweep. Insider
+            enrollment is closed. Attribution and payout terms live in Refgrow.
           </p>
           <a
             href={PORTAL_URL}

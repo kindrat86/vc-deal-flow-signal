@@ -242,7 +242,7 @@ export default function Dream50Page() {
 
         <section className="mb-12" aria-label="Pitch templates">
           <h2 className="text-xl font-semibold text-gray-100 mb-3">
-            The pitch templates we send
+            Draft pitch templates for future use
           </h2>
           <p className="text-gray-400 text-sm leading-relaxed mb-6">
             One template per archetype. Copy-paste, fill the [BRACKETS],
@@ -338,37 +338,32 @@ gitdealflow.com/dataset · ssrn.com/abstract=6606558`}</pre>
 
         <section className="mb-12 rounded-lg border border-sky-800/30 bg-sky-950/10 p-6">
           <h2 className="text-xl font-semibold text-gray-100 mb-3">
-            What we&apos;ve learned about the Dream 50
+            How we would approach the Dream 50
           </h2>
           <ul className="text-sm text-gray-300 leading-relaxed space-y-3 list-disc list-inside marker:text-sky-400">
             <li>
-              <strong className="text-gray-100">Most yeses come from the bottom-third of the list, not the top.</strong>{" "}
-              The big-canon names take 6+ months to get a reply, if ever. The
-              niche newsletters and engineer-led communities reply within 72
-              hours, and their conversion rate is higher per-impression.
+              <strong className="text-gray-100">Start with the most relevant niche audiences.</strong>{" "}
+              Smaller investor and engineer-led communities may offer a tighter
+              topic fit than general technology publications. That is a targeting
+              hypothesis, not an observed reply or conversion result.
             </li>
             <li>
-              <strong className="text-gray-100">The methodology paper is the unlock.</strong>{" "}
-              Pitches that lead with the SSRN paper get reply rates roughly
-              double pitches that lead with the product. A peer-reviewable
-              dataset is the credibility currency that turns &quot;another
-              founder pitching their tool&quot; into &quot;a researcher with a
-              paper.&quot;
+              <strong className="text-gray-100">Lead with verifiable methodology.</strong>{" "}
+              The documented release contains 219 startup-period observations
+              across 55 startups and no linked funding-event labels. It can support
+              a descriptive research conversation, not claims about funding accuracy.
             </li>
             <li>
-              <strong className="text-gray-100">Anonymity costs us roughly 8 of these 50 outright.</strong>{" "}
-              On-camera podcast hosts (20VC, Invest Like the Best, This Week in
-              Startups) won&apos;t book a faceless guest. We mark those
-              &quot;On hold&quot; rather than &quot;passed&quot; because the
-              door re-opens if voice-only formats grow.
+              <strong className="text-gray-100">Respect format fit and anonymity.</strong>{" "}
+              Some shows require an on-camera guest, which may not fit the
+              pseudonymous operator model. No status on this wish list implies
+              that a publisher has been contacted or has expressed interest.
             </li>
             <li>
               <strong className="text-gray-100">Co-promo &gt; affiliate.</strong>{" "}
-              The 20% lifetime affiliate program is on the table for everyone
-              on this list, but the conversation that lands is &quot;let&apos;s
-              co-author a sector deep-dive,&quot; not &quot;here&apos;s a
-              referral link.&quot; The one-time editorial collaboration creates
-              the recurring referral as a side effect.
+              The public offer is 20% recurring through Refgrow. A co-authored
+              sector deep-dive may be a better editorial fit than a bare referral
+              link, but no response or conversion outcome is claimed here.
             </li>
           </ul>
         </section>
@@ -381,7 +376,7 @@ gitdealflow.com/dataset · ssrn.com/abstract=6606558`}</pre>
               <Link href="/affiliates" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
                 Affiliate program
               </Link>{" "}
-20% lifetime, 60-day cookie, 6-channel swipe kit, monthly Stripe payouts.
+20% recurring; current attribution and payout terms live in Refgrow.
             </li>
             <li>
               →{" "}
@@ -402,7 +397,7 @@ every channel we&apos;re live on today.
               <Link href="/experiments/hooks" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
                 Hook tests
               </Link>{" "}
-the copy we send into the channels these partners run.
+draft copy available for future channel tests.
             </li>
             <li>
               →{" "}

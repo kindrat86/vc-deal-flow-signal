@@ -6347,14 +6347,19 @@ check(
   check(
     "content/affiliate-leaderboard.ts",
     "§71 affiliate data carries unsupported proof",
-    (src) => src.includes("AFFILIATE_PROGRAM_FACTS") && !src.includes("Newsletter A") && !src.includes("€32,000"),
-    "Keep verifiable program facts only; no invented partner rows, earnings, or CVRs.",
+    (src) =>
+      src.includes("AFFILIATE_PROGRAM_FACTS") &&
+      !src.includes("Newsletter A") &&
+      !src.includes("€32,000") &&
+      !src.includes("commissionPerInsiderCircleMonthly"),
+    "Keep verifiable program facts only; no invented proof or closed-Insider commission example.",
   );
   check(
     "app/api/v1/affiliates.json/route.ts",
     "§71 affiliate API lost its honest earnings state",
     (src) =>
       src.includes("no_publishable_history") &&
+      !src.includes("commission_per_insider_circle") &&
       !src.includes("payout_minimum_eur") &&
       !src.includes("leaderboard:"),
     "Keep no_publishable_history and defer mutable payout/attribution terms to the portal.",
@@ -6362,8 +6367,31 @@ check(
   check(
     "app/affiliates/top-partners/page.tsx",
     "§71 partner wishlist regained fabricated engagement statuses",
-    (src) => src.includes('type Status = "wishlist"') && !src.includes("outreach-sent") && !src.includes('status: "engaged"'),
-    "Keep the public roster a wish list. Add status only after a verified external touch.",
+    (src) =>
+      src.includes('type Status = "wishlist"') &&
+      !src.includes("outreach-sent") &&
+      !src.includes('status: "engaged"') &&
+      !src.includes("20% lifetime") &&
+      !src.includes("60-day cookie"),
+    "Keep the roster a wish list and defer mutable terms to Refgrow.",
+  );
+  check(
+    "app/affiliates/funnel-hack/page.tsx",
+    "§71 swipe page presents closed Insider enrollment as an active affiliate offer",
+    (src) => !src.includes("€39.40") && src.includes("€9.80/mo per Dashboard sub"),
+    "Use Dashboard as the active recurring example. Insider enrollment is closed.",
+  );
+  check(
+    "app/partners/page.tsx",
+    "§71 partner page presents closed Insider enrollment as an active affiliate offer",
+    (src) => !src.includes("€39.40") && src.includes("€9.80/mo per Dashboard sub"),
+    "Use Dashboard as the active recurring example. Insider enrollment is closed.",
+  );
+  check(
+    "app/api/openapi.json/route.ts",
+    "§71 OpenAPI affiliate description presents closed Insider enrollment as active",
+    (src) => !src.includes("€39.40/mo/Insider") && src.includes("€9.80/mo/Dashboard"),
+    "Keep the API description aligned to the active Dashboard example.",
   );
   check(
     "content/affiliate-swipe-kit.ts",
@@ -6411,14 +6439,26 @@ check(
     landingCheck(
       `${locale}/partners.html`,
       `§71 ${locale} partners page regained unverified terms`,
-      (src) => src.includes("20% recurring") && !src.includes("50% revenue share") && !src.includes("Real-time dashboard"),
+      (src) =>
+        src.includes("20% recurring") &&
+        !src.includes("50% revenue share") &&
+        !src.includes("Real-time dashboard") &&
+        !src.includes("€39.40") &&
+        !src.includes("Dashboard + Insider, lifetime"),
       "Mirror the honest EN terms: 20% recurring via Refgrow; JV by conversation.",
     );
   }
   landingCheck(
     "partners.html",
     "§71 apex partners page regained contradictory terms",
-    (src) => src.includes("20% recurring") && src.includes("Refgrow portal") && !src.includes("50% revenue share") && !src.includes("30% recurring") && !src.includes("Real-time dashboard"),
+    (src) =>
+      src.includes("20% recurring") &&
+      src.includes("Refgrow portal") &&
+      !src.includes("50% revenue share") &&
+      !src.includes("30% recurring") &&
+      !src.includes("Real-time dashboard") &&
+      !src.includes("€39.40") &&
+      !src.includes("Dashboard + Insider, lifetime"),
     "Use 20% recurring via Refgrow, JV by conversation, and no unsupported dashboard claim.",
   );
 }

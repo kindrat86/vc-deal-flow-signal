@@ -9,7 +9,6 @@
 export const AFFILIATE_PROGRAM_FACTS = {
   portalUrl: "https://gitdealflow.refgrow.com",
   commissionRate: "20% recurring",
-  commissionPerInsiderCircleMonthly: "€39.40",
   commissionPerDashboardMonthly: "€9.80",
   commissionPerSectorSweep: "€399.40",
   programStatus: "open",

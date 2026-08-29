@@ -178,7 +178,7 @@ const TRACKS: readonly Track[] = [
     name: "Affiliate referral program",
     audience: "Anyone with an audience that includes investors, analysts, or scouts",
     mechanic:
-      "20% recurring commission on referred subscriptions and purchases: €39.40/mo per Insider Circle sub, €9.80/mo per Dashboard sub, €399.40 on each Sector Sweep. Six clone-ready content templates (tweet thread, LinkedIn post, blog post, newsletter mention, podcast script, 3-email sequence) handle the writing. Attribution and payout terms live in the Refgrow portal.",
+      "20% recurring commission on eligible referred subscriptions and purchases: €9.80/mo per Dashboard sub at the current public price and €399.40 on each Sector Sweep. Insider enrollment is closed. Six clone-ready content templates (tweet thread, LinkedIn post, blog post, newsletter mention, podcast script, 3-email sequence) handle the writing. Attribution and payout terms live in the Refgrow portal.",
     deliverables: [
       "Unique Refgrow tracking link",
       "Six clone-ready content templates at /affiliates/funnel-hack",
