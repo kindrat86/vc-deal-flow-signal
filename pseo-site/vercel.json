@@ -172,6 +172,11 @@
   ],
   "redirects": [
     {
+      "source": "/AGENTS.md",
+      "destination": "/agents.md",
+      "permanent": true
+    },
+    {
       "source": "/(.*)",
       "has": [
         {
