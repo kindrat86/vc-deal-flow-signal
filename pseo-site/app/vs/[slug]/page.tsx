@@ -10,6 +10,7 @@ import {
   METHODOLOGY,
   VS_CTR_COHORT_DESCRIPTIONS,
   VS_TITLE_HOOKS,
+  buildVsMetadataTitle,
   competitorPriceNote,
 } from "@/content/competitor-vs";
 import { getDataLastModified } from "@/lib/data";
@@ -60,20 +61,12 @@ export async function generateMetadata({
   // Year is dynamic so titles never carry a stale year.
   const canonicalSlug = getCanonicalVsSlug(slug);
   const year = lastModified.getFullYear();
-  const hook = VS_TITLE_HOOKS[canonicalSlug];
   const priceA = competitorPriceNote(a);
   const priceB = competitorPriceNote(b);
   const fallbackTitle = `${a.name} vs ${b.name}: ${
     priceA || priceB ? `${priceA ?? "Enterprise"} vs ${priceB ?? "Enterprise"} Pricing` : "Deal Sourcing Compared"
   }`;
-  const baseTitle = hook ?? fallbackTitle;
-  // Hard cap 60 chars (Bing-safe with the " (YEAR)" suffix, stays under
-  // the 70-char pixel threshold even after the "| VC Deal Flow Signal"
-  // template appends on non-brand pairs).
-  const title =
-    baseTitle.length + 7 > 60
-      ? `${baseTitle.slice(0, 52).replace(/\s+\S+$/, "").trimEnd()} (${year})`
-      : `${baseTitle} (${year})`;
+  const title = buildVsMetadataTitle(canonicalSlug, fallbackTitle, year);
   // Price parenthetical only when BOTH competitors carry a concrete numeric
   // price, so "$49/mo vs $20k+/yr" maps unambiguously A-vs-B. The old
   // single-price fallback appended GDF's own " vs EUR 49/mo" as if it were

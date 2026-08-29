@@ -1718,17 +1718,18 @@ check(
     s.includes("VS_TITLE_HOOKS") &&
     s.includes('"dealroom-vs-pitchbook"') &&
     s.includes('"harmonic-ai-vs-pitchbook"') &&
-    s.includes("competitorPriceNote"),
-  "restore VS_TITLE_HOOKS (with the two highest-impression hooks) + competitorPriceNote in content/competitor-vs.ts",
+    s.includes("competitorPriceNote") &&
+    s.includes("export function buildVsMetadataTitle") &&
+    s.includes("hook && hook.length <= 60 && hook.length + 7 > 60"),
+  "restore VS_TITLE_HOOKS, buildVsMetadataTitle, and competitorPriceNote in content/competitor-vs.ts",
 );
 check(
   "app/vs/[slug]/page.tsx",
-  "/vs generateMetadata no longer uses the CTR hooks (titles revert to generic).",
+  "/vs generateMetadata no longer uses the CTR title builder (titles revert to generic or truncate query-matched hooks).",
   (s) =>
-    s.includes("VS_TITLE_HOOKS[canonicalSlug]") &&
-    s.includes("hook ?? fallbackTitle") &&
-    s.includes("const title =\n    baseTitle.length + 7 > 60"),
-  "import VS_TITLE_HOOKS + competitorPriceNote and build titles from them (see 2026-08-16 CTR fix)",
+    s.includes("buildVsMetadataTitle") &&
+    s.includes("buildVsMetadataTitle(canonicalSlug, fallbackTitle, year)"),
+  "import buildVsMetadataTitle and use it for the final /vs metadata title",
 );
 check(
   "app/vs/[slug]/page.tsx",

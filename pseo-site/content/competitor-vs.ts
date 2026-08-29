@@ -844,7 +844,8 @@ export const competitorVsPairs: CompetitorVs[] = [
 // Each hook names the concrete differentiator ($ figures straight from the
 // pricing fields above) that decides the comparison. Keys without a hook
 // fall back to the improved generic builder in app/vs/[slug]/page.tsx.
-// Keep hooks <= 53 chars to leave room for the year, hard cap 60.
+// Keep hooks <= 60 chars. Hooks longer than 53 chars render verbatim rather
+// than losing their query-matched ending to make room for a year suffix.
 export const VS_TITLE_HOOKS: Record<string, string> = {
   "fund-momentum-vs-harmonic-ai": "Fund Momentum vs Harmonic.ai: Funds vs Teams",
   "fund-momentum-vs-forager-ai": "Fund Momentum vs Forager.ai: Funds vs Startups",
@@ -883,6 +884,24 @@ export const VS_TITLE_HOOKS: Record<string, string> = {
   "harmonic-ai-vs-cb-insights": "Harmonic.ai vs CB Insights ($35k+/yr): Sourcing",
   "crunchbase-vs-fundable": "Crunchbase vs Fundable ($179/mo): Data vs Raise",
 };
+
+export function buildVsMetadataTitle(
+  canonicalSlug: string,
+  fallbackTitle: string,
+  year: number,
+): string {
+  const hook = VS_TITLE_HOOKS[canonicalSlug];
+  const baseTitle = hook ?? fallbackTitle;
+
+  // A curated hook is already the query-matched title contract. If it fits
+  // the 60-character cap by itself, preserve it instead of truncating the
+  // decision phrase solely to append a year.
+  if (hook && hook.length <= 60 && hook.length + 7 > 60) return hook;
+
+  return baseTitle.length + 7 > 60
+    ? `${baseTitle.slice(0, 52).replace(/\s+\S+$/, "").trimEnd()} (${year})`
+    : `${baseTitle} (${year})`;
+}
 
 // First CTR cohort, selected from exact-property GSC rows on 2026-08-21.
 // These ten canonical /vs pages held positions 5-23 with 108-567 impressions
