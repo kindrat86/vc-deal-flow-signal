@@ -6194,6 +6194,56 @@ check(
 }
 
 // ---------------------------------------------------------------------------
+// §74 Trust-bar canonical claims (2026-08-29). The global footer used to show
+// "$80M+ Rounds Tracked" and "5,000+ Founders Tracked" without a public
+// definition or canonical ledger. Keep the proof strip on the locked,
+// auditable product claims: 350+ startup orgs and 15 sectors.
+// ---------------------------------------------------------------------------
+{
+  const layout = read("app/layout.tsx");
+  if (!layout || !layout.includes(">350+</span>") || !layout.includes(">Startup Orgs</span>") || !layout.includes(">15</span>") || !layout.includes(">Sectors</span>")) {
+    failures.push(
+      "§74 global trust bar lost the canonical 350+ startup-org / 15-sector claims.\n" +
+      "    file: app/layout.tsx\n" +
+      "    fix:  restore the locked, auditable 350+ orgs and 15 sectors proof strip."
+    );
+  }
+  if (layout && (layout.includes("$80M+") || layout.includes("5,000+") || layout.includes("Founders Tracked"))) {
+    failures.push(
+      "§74 global trust bar reintroduced undefined proof numbers.\n" +
+      "    file: app/layout.tsx\n" +
+      "    fix:  remove undefined $80M+ / 5,000+ founder counters; use canonical claims only."
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
+// §75 Privacy disclosure matches shipped trackers (2026-08-29). The site
+// loads GA4 (PixelManager gtag) on every page while the privacy page and
+// cookie banner said only "one first-party cookie (PostHog EU)". An accurate
+// disclosure is the fix: GA4 must be named wherever the one-cookie promise
+// is made.
+// ---------------------------------------------------------------------------
+{
+  const privacy = read("app/privacy/page.tsx");
+  const notice = read("components/CookieNotice.tsx");
+  if (!privacy || !privacy.includes("Google Analytics 4")) {
+    failures.push(
+      "§75 privacy page no longer discloses GA4 alongside the first-party-cookie promise.\n" +
+      "    file: app/privacy/page.tsx\n" +
+      "    fix:  name Google Analytics 4 in the analytics bullet."
+    );
+  }
+  if (!notice || !notice.includes("Google Analytics 4")) {
+    failures.push(
+      "§75 cookie banner no longer discloses GA4.\n" +
+      "    file: components/CookieNotice.tsx\n" +
+      "    fix:  mention GA4 measurement cookies in the banner text."
+    );
+  }
+}
+
+// ---------------------------------------------------------------------------
 // Failed-payment dunning rescue (2026-08-29). The shared Stripe endpoint was
 // subscribed to invoice.payment_failed but the route silently ignored it. Keep
 // the first-attempt rescue, stable customer-portal login, replay protection, and

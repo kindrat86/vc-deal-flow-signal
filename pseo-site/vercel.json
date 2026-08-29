@@ -25,6 +25,10 @@
     {
       "path": "/api/cron/drip-sender",
       "schedule": "23 8 * * *"
+    },
+    {
+      "path": "/api/cron/winback-dispatcher",
+      "schedule": "30 9 * * 1"
     }
   ],
   "headers": [

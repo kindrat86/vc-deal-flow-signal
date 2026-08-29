@@ -106,7 +106,54 @@ function emailFromRequest(request: Request): string | null {
 // POST = the actual one-click action. Always return 200 so the mail client shows
 // success; a bad/expired token is logged and treated as a no-op.
 export async function POST(request: Request) {
-  const email = emailFromRequest(request);
+  const contentType = request.headers.get("content-type") || "";
+  let token = new URL(request.url).searchParams.get("token") || "";
+  let reason = "";
+  let isSurvey = false;
+  if (contentType.includes("application/x-www-form-urlencoded")) {
+    const form = new URLSearchParams(await request.text());
+    if (form.get("survey") === "1") {
+      isSurvey = true;
+      token = form.get("token") || "";
+      reason = (form.get("reason") || "").slice(0, 100);
+    }
+  }
+  const email = verifyVerifyToken(token, "unsubscribe")?.email ?? null;
+
+  if (isSurvey) {
+    if (email && reason) {
+      void fetch("https://eu.i.posthog.com/capture/", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          api_key: process.env.NEXT_PUBLIC_POSTHOG_KEY || "phc_lyZCgvTpicjLzAO3rY2GhxuX5WUc5jQjP8ZVwwJqauX",
+          event: "free_list_exit_survey",
+          distinct_id: email,
+          properties: { $host: "signals.gitdealflow.com", product: "gitdealflow", reason },
+        }),
+      }).catch(() => undefined);
+      const alertKey = process.env.RESEND_API_KEY;
+      if (alertKey && RESEND_API_KEY) {
+        void fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: { Authorization: `Bearer ${RESEND_API_KEY}`, "Content-Type": "application/json" },
+          body: JSON.stringify({
+            from: `The Data Nerd <${FROM_EMAIL}>`,
+            to: "signals@gitdealflow.com",
+            bcc: "sales@sipiteno.com",
+            reply_to: FROM_EMAIL,
+            subject: `Exit survey: ${reason} (${email})`,
+            html: `<p>A free-list subscriber unsubscribed and gave a reason.</p><p>Email: ${email}</p><p>Reason: ${reason}</p>`,
+          }),
+        }).catch(() => undefined);
+      }
+    }
+    return NextResponse.redirect(
+      new URL(`/api/unsubscribe?token=${encodeURIComponent(token)}&reason=thanks`, request.url),
+      303,
+    );
+  }
+
   if (email) {
     await suppress(email);
     await cancelQueued(email);
@@ -116,16 +163,60 @@ export async function POST(request: Request) {
 
 // GET = browser fallback (a recipient clicking an unsubscribe link in the body).
 export async function GET(request: Request) {
+  const url = new URL(request.url);
   const email = emailFromRequest(request);
   const ok = email ? await suppress(email) : false;
   if (ok && email) await cancelQueued(email);
-  return new NextResponse(confirmationHtml(ok), {
+  // Optional exit survey: browser GET path only, after a successful opt-out.
+  // One question, optional answer, POSTs back with the same signed token so
+  // nobody can submit a reason for someone else.
+  const reasonDone = url.searchParams.get("reason") === "thanks";
+  const token = url.searchParams.get("token") || "";
+  return new NextResponse(confirmationHtml(ok, email, reasonDone, token), {
     status: 200,
     headers: { "Content-Type": "text/html; charset=utf-8" },
   });
 }
 
-function confirmationHtml(ok: boolean): string {
+// Free-list exit survey reasons. Distinct from the paid cancellation reasons
+// in lib/retention-policy.ts because the free product is a weekly email, not
+// a dashboard: the failure modes are content, cadence, and fit.
+const UNSUB_REASONS: ReadonlyArray<[string, string]> = [
+  ["not_investing", "I'm not actively investing right now"],
+  ["wrong_fit", "Not relevant to how I source deals"],
+  ["too_frequent", "Too many emails"],
+  ["quality", "The signals weren't useful"],
+  ["trust", "Didn't trust the method"],
+  ["other", "Other"],
+];
+
+function escapeAttr(value: string): string {
+  return value.replace(/&/g, "&amp;").replace(/"/g, "&quot;").replace(/</g, "&lt;");
+}
+
+function surveyBlock(ok: boolean, email?: string | null, reasonDone?: boolean, token?: string): string {
+  if (!ok || !email) return "";
+  if (reasonDone) {
+    return `<p style="margin:.25rem 0 .75rem;font-size:.9rem;color:#64748b">Thanks. Noted, and it will shape what gets built next.</p>`;
+  }
+  if (!token) return "";
+  const options = UNSUB_REASONS.map(
+    ([value, label]) =>
+      `<label style="display:block;margin:.35rem 0"><input type="radio" name="reason" value="${escapeAttr(value)}" style="margin-right:.5rem" />${label}</label>`,
+  ).join("");
+  return `<form method="POST" action="/api/unsubscribe" style="margin-top:1.25rem;padding-top:1rem;border-top:1px solid #1e293b">
+  <p style="margin:0 0 .5rem;font-size:.95rem;color:#94a3b8">One optional question: what was the main reason?</p>
+  ${options}
+  <div style="margin-top:.6rem">
+    <button type="submit" style="background:#1e293b;color:#e2e8f0;border:1px solid #334155;border-radius:8px;padding:.45rem .9rem;font-size:.9rem;cursor:pointer">Send answer</button>
+    <span style="margin-left:.6rem;font-size:.8rem;color:#64748b">Optional. Skipping is fine.</span>
+  </div>
+  <input type="hidden" name="token" value="${escapeAttr(token)}" />
+  <input type="hidden" name="survey" value="1" />
+</form>`;
+}
+
+function confirmationHtml(ok: boolean, email?: string | null, reasonDone?: boolean, token?: string): string {
   const body = ok
     ? `<h1>You're unsubscribed.</h1>
        <p>You won't receive the weekly Signal Digest anymore. No hard feelings, the data will still be here if you ever want back in.</p>`
@@ -150,6 +241,7 @@ function confirmationHtml(ok: boolean): string {
 </style></head>
 <body><div class="card">
 ${body}
+${surveyBlock(ok, email, reasonDone, token)}
 <p class="foot">VC Deal Flow Signal · The Data Nerd</p>
 </div></body></html>`;
 }
