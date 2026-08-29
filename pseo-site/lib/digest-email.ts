@@ -48,6 +48,18 @@ export type DigestData = {
   hottestSectors: DigestSector[];
   /** Optional lane-specific "tuned for you" intro line (investor lanes). */
   laneIntro?: string;
+  /**
+   * Optional first-issue block for the on-verify instant digest. When set,
+   * the email opens with "you just joined, here is the freshest panel, your
+   * first full Sunday issue lands in N days" instead of looking like a
+   * re-sent broadcast. Rendered above the hero.
+   */
+  firstIssueIntro?: {
+    /** Whole days until the next Sunday (0-6). */
+    daysUntilSunday: number;
+    /** ISO date (YYYY-MM-DD) of the upcoming Sunday. */
+    nextSundayISO: string;
+  };
   /** Optional reader-recommendation slot (newsletter swap partners, §45). */
   partnerPick?: DigestPartner;
 };
@@ -244,6 +256,21 @@ export function renderDigestEmail(data: DigestData, opts: DigestOptions = {}): s
               </table>
             </td>
           </tr>
+
+          <!-- FIRST-ISSUE INTRO (on-verify instant digest only) -->
+          ${data.firstIssueIntro ? `
+          <tr>
+            <td class="bg-card brd px-outer" style="background:rgba(14,165,233,0.08);border:1px solid rgba(14,165,233,0.30);border-radius:16px;padding:20px 24px;">
+              <p style="margin:0;color:${BRAND.textSec};font-size:15px;line-height:23px;">
+                <strong style="color:${BRAND.textPri};">You just joined. Here are the five accelerating fastest on the panel right now.</strong>
+                ${data.firstIssueIntro.daysUntilSunday <= 0
+                  ? ` Your first full Sunday issue lands this Sunday, ${data.firstIssueIntro.nextSundayISO}.`
+                  : ` Your first full Sunday issue lands in ${data.firstIssueIntro.daysUntilSunday} day${data.firstIssueIntro.daysUntilSunday === 1 ? "" : "s"}, on ${data.firstIssueIntro.nextSundayISO}.`}
+                The list refreshes every week, so the names you get Sunday will be fresh, not a repeat of this one.
+              </p>
+            </td>
+          </tr>
+          <tr><td style="height:16px;line-height:16px;font-size:0;">&nbsp;</td></tr>` : ""}
 
           <!-- HERO -->
           <tr>

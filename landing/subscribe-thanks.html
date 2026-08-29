@@ -68,16 +68,18 @@
         </div>
         <div>
           <p class="text-white font-semibold mb-1">4. Still nothing?</p>
-          <p class="text-gray-400">Email <strong class="text-white">signals@gitdealflow.com</strong> directly and I'll add you manually. Include the address you tried to sign up with.</p>
+          <p class="text-gray-400">Send the confirmation again, right now, no waiting:</p>
+          <button id="resend-verify-btn" type="button" class="btn btn-secondary btn-md mt-3 w-full text-center">Resend my confirmation &rarr;</button>
+          <p id="resend-verify-msg" class="text-gray-400 text-sm mt-2" role="status" aria-live="polite"></p>
         </div>
       </div>
     </section>
 
     <section class="grid md:grid-cols-2 gap-6 mobile-grid-gap">
       <div class="mobile-card mobile-card-pad rounded-3xl border border-gray-800 bg-dark-800/70 p-8">
-        <p class="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-3">While you wait</p>
+        <p class="text-gray-400 text-xs font-semibold uppercase tracking-wider mb-3">While the confirmation travels</p>
         <h2 class="text-2xl font-bold mb-3">Read a sample issue.</h2>
-        <p class="text-gray-300 leading-relaxed mb-5">See what a Sunday Signal Digest looks like before your first one arrives. The format hasn't changed since day one.</p>
+        <p class="text-gray-300 leading-relaxed mb-5">The five names land in your inbox the moment you click confirm. This is what they'll look like. The format hasn't changed since day one.</p>
         <a href="/report" class="btn btn-secondary btn-md w-full text-center">Read the latest sample issue &rarr;</a>
       </div>
       <div class="mobile-card mobile-card-pad rounded-3xl border border-signal-500/30 bg-signal-500/10 p-8">
@@ -94,6 +96,68 @@
     // Fire subscribe_thanks_viewed once PostHog is ready, identified by email so
     // this page joins the Resend (email-keyed) funnel instead of an anon id.
     (function fireThanks(n){n=n||0;if(window.posthog&&window.posthog.capture){try{var e='';try{e=sessionStorage.getItem('gdf_email')||'';}catch(_){}if(e)posthog.identify(e);}catch(_){}posthog.capture('subscribe_thanks_viewed');}else if(n<100){setTimeout(function(){fireThanks(n+1);},100);}})();
+    // Self-serve verification resend (activation audit 2026-08-29, fix 2).
+    // The #1 drop-off between intent and activation is the double-opt-in email
+    // that never got clicked: spam foldered, deleted with the daily purge, or
+    // opened hours later when the momentum is gone. This recovers it without
+    // a support round-trip: same /api/subscribe contract the landing form
+    // uses (v2 single-use token + IP rate limit make double-send safe), and
+    // the Resend audience add only happens on verify, so a resend cannot
+    // duplicate contacts. Client-side guard: one resend attempt per email
+    // per session; the server rate limit (5/min/IP) is the hard bound.
+    // NOTE: untrusted email is only ever rendered via msg.textContent, never
+    // innerHTML (XSS-safe); innerHTML is assigned static literals only.
+    (function () {
+      var btn = document.getElementById('resend-verify-btn');
+      var msg = document.getElementById('resend-verify-msg');
+      if (!btn || !msg) return;
+      btn.addEventListener('click', async function () {
+        var email = '';
+        try { email = sessionStorage.getItem('gdf_email') || ''; } catch (_) {}
+        if (!email) {
+          msg.textContent = 'Your browser forgot the address you used. Enter it again on the home page and I\'ll send a fresh confirmation.';
+          msg.className = 'text-yellow-300 text-sm mt-2';
+          return;
+        }
+        var lockKey = 'gdf_resend_' + email;
+        try {
+          if (sessionStorage.getItem(lockKey)) {
+            msg.textContent = 'Already re-sent this session. Give it two minutes, then check spam before trying tomorrow.';
+            msg.className = 'text-yellow-300 text-sm mt-2';
+            return;
+          }
+          sessionStorage.setItem(lockKey, '1');
+        } catch (_) {}
+        var orig = btn.innerHTML;
+        btn.disabled = true;
+        btn.innerHTML = 'Sending&hellip;';
+        if (window.posthog) { try { posthog.capture('verify_resend_clicked', { has_email: true }); } catch (_) {} }
+        try {
+          var res = await fetch('https://signals.gitdealflow.com/api/subscribe', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ email: email, source: 'subscribe-thanks-resend', resend: true })
+          });
+          var data = await res.json();
+          if (data.ok) {
+            msg.textContent = 'Fresh confirmation sent to ' + email + '. Check spam too, and mark it not spam so Sunday lands in your inbox.';
+            msg.className = 'text-emerald-300 text-sm mt-2';
+          } else {
+            btn.disabled = false;
+            btn.innerHTML = orig;
+            try { sessionStorage.removeItem(lockKey); } catch (_) {}
+            msg.textContent = (data.error || 'Something went wrong.') + ' You can also email signals@gitdealflow.com.';
+            msg.className = 'text-red-400 text-sm mt-2';
+          }
+        } catch (err) {
+          btn.disabled = false;
+          btn.innerHTML = orig;
+          try { sessionStorage.removeItem(lockKey); } catch (_) {}
+          msg.textContent = 'Network hiccup. Try again, or email signals@gitdealflow.com.';
+          msg.className = 'text-red-400 text-sm mt-2';
+        }
+      });
+    })();
   </script>
 
   <footer class="border-t border-gray-800 bg-dark-900/80 py-12 mt-8">
