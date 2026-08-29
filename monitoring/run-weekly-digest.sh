@@ -17,7 +17,7 @@ set -euo pipefail
 # launchd runs with a minimal environment — set these explicitly.
 # Prefer node@22 (the project's pinned version) over the unversioned homebrew node.
 export HOME="/Users/sipi"
-export PATH="/opt/homebrew/opt/node@22/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
+export PATH="/Users/sipi/.local/bin:/Users/sipi/.hermes/node/bin:/opt/homebrew/bin:/usr/bin:/bin:/usr/sbin:/sbin"
 
 # Self-locating: PROJECT_DIR = repo root (parent of this script's monitoring/ dir),
 # so the cron operates on whatever checkout this wrapper lives in (e.g. the dedicated
