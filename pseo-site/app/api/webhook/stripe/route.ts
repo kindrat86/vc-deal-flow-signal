@@ -34,7 +34,9 @@ const DUNNING_PORTAL_LOGIN_URL = "https://billing.stripe.com/p/login/28E7sK48H04
 const STRIPE_EVENT_NAMESPACE = "stripe-webhook-event";
 const STRIPE_EVENT_TTL_SECONDS = 14 * 86_400;
 
-const BUYER_ONBOARDING_DRIP = [
+type OnboardingDrip = { delayMs: number; subject: string; html: string };
+
+const DASHBOARD_ONBOARDING_DRIP: OnboardingDrip[] = [
   {
     delayMs: 1 * 86_400_000,
     subject: "Your first signal decision",
@@ -48,7 +50,7 @@ const BUYER_ONBOARDING_DRIP = [
   {
     delayMs: 7 * 86_400_000,
     subject: "Did you find one useful lead?",
-    html: `<p>Did you find one useful lead?</p><p><a href="mailto:signals@gitdealflow.com?subject=GDF%20onboarding%20-%20Yes">Yes</a> / <a href="mailto:signals@gitdealflow.com?subject=GDF%20onboarding%20-%20Not%20yet">Not yet</a> / <a href="mailto:signals@gitdealflow.com?subject=GDF%20onboarding%20-%20I%27m%20stuck">I'm stuck</a></p><p>Reply with your sector and stage focus if you want a hand choosing where to start.</p>`,
+    html: `<p>Did you find one useful lead?</p><p><a href="mailto:signals@gitdealflow.com?subject=GDF%20onboarding%20-%20Yes">Yes</a> / <a href="mailto:signals@gitdealflow.com?subject=GDF%20onboarding%20-%20Not%20yet">Not yet</a> / <a href="mailto:signals@gitdealflow.com?subject=GDF%20onboarding%20-%20I%27m%20stuck">I'm stuck</a></p><p>Reply with your sector and stage focus if you want a hand choosing where to start. Support replies within one business day, Monday through Friday.</p>`,
   },
   {
     delayMs: 14 * 86_400_000,
@@ -61,6 +63,34 @@ const BUYER_ONBOARDING_DRIP = [
     html: `<p>Three weeks of signals in your inbox. By now you know whether the screen fits how you source.</p><p>If it fits: reply with your sector and I will send the single strongest current signal in it, free, no upsell.</p><p>If it does not fit: reply CANCEL and I will point you to the one-click cancel flow, no retention maze. Either answer is useful.</p><p><a href="https://signals.gitdealflow.com/dashboard?utm_source=email&amp;utm_medium=buyer-onboarding&amp;utm_campaign=d21">Open the Dashboard</a></p>`,
   },
 ];
+
+const INSIDER_SETUP_DRIP: OnboardingDrip = {
+  delayMs: 2 * 86_400_000,
+  subject: "Book your 20-minute Insider setup",
+  html: `<p>You do not need to configure Insider alone.</p><p>Reply with your sector, stage, geography, and three times that work for a 20-minute setup. I will help build your first watchlist and make sure the signal fits your actual sourcing process.</p><p><a href="mailto:signals@gitdealflow.com?subject=Insider%2020-minute%20setup">Reply with setup times</a></p><p>Support replies within one business day, Monday through Friday.</p>`,
+};
+
+function onboardingDripForTier(tier: string): OnboardingDrip[] {
+  if (tier === "insider") {
+    return [DASHBOARD_ONBOARDING_DRIP[0], INSIDER_SETUP_DRIP, ...DASHBOARD_ONBOARDING_DRIP.slice(1)];
+  }
+  if (tier === "dashboard") return DASHBOARD_ONBOARDING_DRIP;
+  return [];
+}
+
+async function scheduleBuyerOnboarding(email: string, tier: string): Promise<void> {
+  for (const drip of onboardingDripForTier(tier)) {
+    try {
+      await fetch("https://api.resend.com/emails", {
+        method: "POST",
+        headers: { Authorization: ["Bearer", RESEND_API_KEY].join(" "), "Content-Type": "application/json" },
+        body: JSON.stringify({ from: `${FROM_NAME} <${FROM_EMAIL}>`, bcc: "sales@sipiteno.com", to: email, subject: drip.subject, html: drip.html, scheduled_at: new Date(Date.now() + drip.delayMs).toISOString(), headers: listUnsubscribeHeaders(email) }),
+      });
+    } catch (err) {
+      console.error("Failed to schedule buyer onboarding:", err);
+    }
+  }
+}
 
 function escapeHtml(str: string): string {
   return str
@@ -542,23 +572,9 @@ export async function POST(request: NextRequest) {
         : undefined,
     );
 
-    // Dashboard and Insider buyers: queue the 5-email onboarding drip
-    // (day 1/3/7/14/21). Best-effort, a Resend hiccup must not 5xx out of
-    // this handler and trigger Stripe to retry the whole webhook (which
-    // would double-send the welcome and double-queue the drip).
-    if (tier === "dashboard" || tier === "insider") {
-      for (const drip of BUYER_ONBOARDING_DRIP) {
-        try {
-          await fetch("https://api.resend.com/emails", {
-            method: "POST",
-            headers: { Authorization: `Bearer ${RESEND_API_KEY}`, "Content-Type": "application/json" },
-            body: JSON.stringify({ from: `${FROM_NAME} <${FROM_EMAIL}>`, bcc: "sales@sipiteno.com", to: email, subject: drip.subject, html: drip.html, scheduled_at: new Date(Date.now() + drip.delayMs).toISOString(), headers: listUnsubscribeHeaders(email) }),
-          });
-        } catch (err) {
-          console.error("Failed to schedule buyer onboarding:", err);
-        }
-      }
-    }
+    // Dashboard keeps the current five-email lifecycle. Insider gets the same
+    // lifecycle plus a concrete human setup offer on day 2.
+    await scheduleBuyerOnboarding(email, tier);
 
     // Book buyers: queue the +1d / +4d / +7d follow-ups promised in the
     // welcome email. Best-effort, a Resend hiccup must not 5xx out of this
@@ -938,6 +954,9 @@ async function dispatchOtoWelcome(email: string, oto: string | undefined, ref: s
   }
   // OTO buyers must not fall out of the list either.
   await addBuyerToAudience(email, `stripe-${oto}`);
+  if (oto === "insider_oto2") {
+    await scheduleBuyerOnboarding(email, "insider");
+  }
   try {
     await sendEmail(
       "signals@gitdealflow.com",

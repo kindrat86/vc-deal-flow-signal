@@ -1,6 +1,7 @@
 import "server-only";
 
 import { pickAudienceId } from "@/lib/resend-audience";
+import { decodeCustomerHealth, type CustomerHealthSnapshot } from "@/lib/customer-health-risk";
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const FROM_EMAIL = process.env.FROM_EMAIL || "signals@gitdealflow.com";
@@ -65,13 +66,13 @@ async function audienceId(): Promise<string | null> {
 
 async function findContact(audience: string, email: string): Promise<{ last_name?: string } | null> {
   if (!RESEND_API_KEY) return null;
-  const res = await fetch(`https://api.resend.com/audiences/${audience}/contacts?limit=100`, {
+  const res = await fetch(`https://api.resend.com/audiences/${audience}/contacts/${encodeURIComponent(email)}`, {
     headers: { Authorization: `Bearer ${RESEND_API_KEY}` },
     cache: "no-store",
   });
+  if (res.status === 404) return null;
   if (!res.ok) return null;
-  const body = await res.json() as { data?: Array<{ email?: string; last_name?: string }> };
-  return body.data?.find((contact) => contact.email?.toLowerCase() === email.toLowerCase()) ?? null;
+  return await res.json() as { last_name?: string };
 }
 
 async function patchHealth(email: string, update: (state: StoredHealth) => StoredHealth): Promise<void> {
@@ -130,6 +131,14 @@ export async function firstValueStatusForCustomer(email: string): Promise<"reach
   const contact = await findContact(audience, email);
   if (!contact) return "unknown";
   return decodeHealth(contact.last_name).lastMeaningfulActivityAt ? "reached" : "not_reached";
+}
+
+export async function getCustomerHealthSnapshot(email: string): Promise<CustomerHealthSnapshot | null> {
+  const audience = await audienceId();
+  if (!audience) return null;
+  const contact = await findContact(audience, email);
+  if (!contact) return null;
+  return decodeCustomerHealth(contact.last_name);
 }
 
 export async function markCustomerCancelled(input: { email: string; reason: string }): Promise<void> {

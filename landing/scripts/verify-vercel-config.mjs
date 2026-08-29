@@ -24,19 +24,25 @@ function fail(msg) {
 }
 
 // ---------------------------------------------------------------------------
-// /contact must redirect to /about, not 404 (2026-08-15)
+// Customer-help routes must converge on the canonical support page (2026-08-29)
 // ---------------------------------------------------------------------------
-// The site never had a /contact page; investors and AI crawlers probing the
-// conventional contact URL hit a 404 trust leak. Contact happens via
-// signals@gitdealflow.com, which /about surfaces. A tree missing this
-// redirect must not deploy.
-const contactRedirect = (parsed.redirects || []).find(
-  (r) => r.source === "/contact",
-);
-if (!contactRedirect || contactRedirect.destination !== "/about") {
-  fail(
-    '/contact 404s again: the { "source": "/contact", "destination": "/about", "permanent": true } redirect is missing from vercel.json redirects[].',
-  );
+// The apex is static; account and billing support lives on the signals app.
+// Conventional help/contact/status probes must never 404 or expose the retired
+// internal portfolio dashboard.
+const SUPPORT_URL = "https://signals.gitdealflow.com/support";
+for (const source of ["/contact", "/help", "/support", "/status", "/status.html"]) {
+  const redirect = (parsed.redirects || []).find((r) => r.source === source);
+  if (!redirect || redirect.destination !== SUPPORT_URL || redirect.permanent !== true) {
+    fail(`${source} must permanently redirect to ${SUPPORT_URL}.`);
+  }
+}
+for (const file of ["status.html", "de/status.html", "es/status.html"]) {
+  try {
+    readFileSync(file, "utf8");
+    fail(`${file} exposes the retired internal portfolio status dashboard.`);
+  } catch {
+    // Missing is the required state.
+  }
 }
 
 // ---------------------------------------------------------------------------

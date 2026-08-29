@@ -174,6 +174,9 @@ export default function Footer() {
           <Link href="/translations" className="hover:text-gray-300 transition-colors">Translations</Link>
           <Link href="/wikipedia" className="hover:text-gray-300 transition-colors">Wikipedia</Link>
         </div>
+        <p className="mt-4 text-xs text-gray-500">
+          Need help? <Link href="/support" className="text-sky-400 hover:text-sky-300">Email support</Link>. We reply within one business day, Monday through Friday.
+        </p>
         <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 pt-6 mt-6 border-t border-slate-800">
           <p className="text-gray-400 text-sm max-w-md leading-relaxed">
             VC Deal Flow Signal is a free public dataset that tracks GitHub

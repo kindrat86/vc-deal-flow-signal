@@ -714,4 +714,60 @@ export const standaloneFaqs: StandaloneFAQ[] = [
     source: "Markets methodology",
     sourceHref: "/markets/methodology",
   },
+  {
+    question: "How do I cancel or pause my GitDealFlow subscription?",
+    answer:
+      "Sign in with the email used at checkout and open signals.gitdealflow.com/cancel. The flow keeps the continue-cancelling option visible and sends you to the Stripe customer portal; cancellation takes effect at the end of the current billing period. Eligible monthly Dashboard accounts can instead choose a 30-day pause or the one-month save offer shown in the flow.",
+    source: "Support",
+    sourceHref: "/support",
+  },
+  {
+    question: "How do I get a GitDealFlow invoice or receipt?",
+    answer:
+      "Stripe emails a receipt after payment. Billing history and downloadable invoices are available in the Stripe customer portal opened from the cancellation flow. If the company name or billing address needs correction, email signals@gitdealflow.com from the checkout address before asking for an updated invoice.",
+    source: "Support",
+    sourceHref: "/support",
+  },
+  {
+    question: "What is GitDealFlow's refund policy?",
+    answer:
+      "Paid subscriptions include a full refund within 30 days of purchase under the Terms. Email signals@gitdealflow.com from the checkout address with the subject 'Refund request'. Custom deliveries may include a more specific written guarantee in the purchase confirmation; that written offer controls where it is more generous.",
+    source: "Support",
+    sourceHref: "/support",
+  },
+  {
+    question: "How do I fix a GitDealFlow magic-link login problem?",
+    answer:
+      "Use the same email address used at checkout, check Spam and Promotions, and request one fresh link at signals.gitdealflow.com/login. A newer request can invalidate an older link. If the fresh link still fails, email signals@gitdealflow.com from the checkout address and include the approximate request time and timezone.",
+    source: "Support",
+    sourceHref: "/support",
+  },
+  {
+    question: "How do I recover or reset a GitDealFlow API key?",
+    answer:
+      "Agent Credits buyers receive a key in the purchase confirmation email and can check its balance at /account. Dashboard buyers can open /dashboard/api-keys after sign-in. Never email a full key. Send only the first eight characters to signals@gitdealflow.com and ask for verification or rotation.",
+    source: "Support",
+    sourceHref: "/support",
+  },
+  {
+    question: "How quickly does GitDealFlow support reply?",
+    answer:
+      "GitDealFlow replies to signals@gitdealflow.com within one business day, Monday through Friday. Paying customers and access-blocking issues are reviewed first. Data-protection requests are handled within the legal deadline, typically sooner.",
+    source: "Support",
+    sourceHref: "/support",
+  },
+  {
+    question: "Which GitDealFlow channels provide customer support?",
+    answer:
+      "Email at signals@gitdealflow.com is the support channel and the only channel with a response-time commitment. Telegram, X, LinkedIn, Flipboard, GitHub, and RSS are publishing or community channels. For account, billing, or private-data questions, use email rather than a public social channel.",
+    source: "Support",
+    sourceHref: "/support",
+  },
+  {
+    question: "What should I include in a GitDealFlow support request?",
+    answer:
+      "Include the email used at checkout, the exact page URL, what you expected, the error text, and the approximate time with timezone. For API-key problems, include only the first eight characters and never the complete secret. Screenshots are useful when they do not expose payment details or credentials.",
+    source: "Support",
+    sourceHref: "/support",
+  },
 ];

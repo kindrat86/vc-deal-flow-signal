@@ -93,7 +93,8 @@ export default function AboutPage() {
           "@type": "ContactPoint",
           contactType: "customer support",
           email: "signals@gitdealflow.com",
-          url: "https://signals.gitdealflow.com/about",
+          url: "https://signals.gitdealflow.com/support",
+          description: "Replies within one business day, Monday through Friday.",
         },
         founder: DATA_NERD_AUTHOR_REF,
       },
@@ -185,6 +186,18 @@ export default function AboutPage() {
             how can you check that without taking a vendor’s word for it?
           </p>
         </header>
+
+        <section className="rounded-xl border border-sky-700/30 bg-sky-950/15 p-5 sm:p-6 space-y-2">
+          <h2 className="text-gray-100 text-lg font-semibold">A real support path</h2>
+          <p className="text-gray-300 leading-relaxed">
+            Account, billing, or data question? Use the{" "}
+            <Link href="/support" className="text-sky-400 hover:text-sky-300 underline decoration-dotted">
+              support page
+            </Link>{" "}
+            or email signals@gitdealflow.com. We reply within one business day,
+            Monday through Friday. Email is the only channel with that commitment.
+          </p>
+        </section>
 
         <section className="rounded-2xl border border-amber-700/30 bg-gradient-to-br from-amber-950/15 via-slate-900 to-slate-950 p-6 sm:p-8 space-y-4">
           <p className="text-amber-300 text-xs font-semibold uppercase tracking-[0.14em]">

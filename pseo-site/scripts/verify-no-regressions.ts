@@ -6282,6 +6282,43 @@ check(
   }
 }
 
+// ---------------------------------------------------------------------------
+// §76 Support and proactive retention safety net (2026-08-29). Paid customers
+// need a searchable help surface, a private support form, a stated response
+// window, tier-aware onboarding, and proactive risk review. The old apex
+// /status page exposed internal portfolio revenue and customer counts.
+// ---------------------------------------------------------------------------
+{
+  const support = read("app/support/page.tsx");
+  const about = read("app/about/page.tsx");
+  const footer = read("components/Footer.tsx");
+  const webhook = read("app/api/webhook/stripe/route.ts");
+  const healthCron = read("app/api/cron/customer-health/route.ts");
+  const pseoVercel = read("vercel.json");
+  const landingVercel = readFileSync(join(ROOT, "..", "landing", "vercel.json"), "utf8");
+  const leakedStatusFiles = ["status.html", "de/status.html", "es/status.html"]
+    .filter((relative) => existsSync(join(ROOT, "..", "landing", relative)));
+
+  if (!support || !["SupportForm", "within one business day", "Cancel or pause", "Invoices and receipts", "30-day refund", "Magic-link login", "API keys", "Support channels"].every((needle) => support.includes(needle))) {
+    failures.push("§76 /support lost its private form, response window, or a core account/billing help answer.");
+  }
+  if (!about?.includes("/support") || !footer?.includes("within one business day")) {
+    failures.push("§76 support promise is no longer linked from both About and the global footer.");
+  }
+  if (!pseoVercel?.includes('"source": "/help"') || !landingVercel.includes("https://signals.gitdealflow.com/support")) {
+    failures.push("§76 /help, /support, /contact, and /status redirects no longer converge on the public support route.");
+  }
+  if (leakedStatusFiles.length) {
+    failures.push(`§76 internal portfolio status artifacts are deployable again: ${leakedStatusFiles.join(", ")}`);
+  }
+  if (!webhook?.includes("onboardingDripForTier") || !webhook.includes("20-minute setup")) {
+    failures.push("§76 Insider onboarding lost its tier-specific 20-minute human setup offer.");
+  }
+  if (!healthCron || !healthCron.includes("findAtRiskCustomers") || !healthCron.includes("Draft for review, do not auto-send")) {
+    failures.push("§76 weekly customer-health review or human approval boundary is missing.");
+  }
+}
+
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +

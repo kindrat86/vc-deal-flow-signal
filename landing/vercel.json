@@ -229,8 +229,28 @@
       "permanent": true
     },
     {
+      "source": "/help",
+      "destination": "https://signals.gitdealflow.com/support",
+      "permanent": true
+    },
+    {
+      "source": "/support",
+      "destination": "https://signals.gitdealflow.com/support",
+      "permanent": true
+    },
+    {
       "source": "/contact",
-      "destination": "/about",
+      "destination": "https://signals.gitdealflow.com/support",
+      "permanent": true
+    },
+    {
+      "source": "/status",
+      "destination": "https://signals.gitdealflow.com/support",
+      "permanent": true
+    },
+    {
+      "source": "/status.html",
+      "destination": "https://signals.gitdealflow.com/support",
       "permanent": true
     },
     {
