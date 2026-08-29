@@ -6193,6 +6193,45 @@ check(
   }
 }
 
+// ---------------------------------------------------------------------------
+// Failed-payment dunning rescue (2026-08-29). The shared Stripe endpoint was
+// subscribed to invoice.payment_failed but the route silently ignored it. Keep
+// the first-attempt rescue, stable customer-portal login, replay protection, and
+// product attribution together so another product cannot receive GDF email.
+// ---------------------------------------------------------------------------
+{
+  const webhook = read("app/api/webhook/stripe/route.ts");
+  const dunning = read("lib/dunning.ts");
+  const webhookNeedles = [
+    'event.type === "invoice.payment_failed"',
+    "isGitDealFlowSubscription(subscription)",
+    'ignored: "non_gdf_subscription"',
+    "DUNNING_PORTAL_LOGIN_URL",
+    "payment_failed_rescue_sent",
+    "(invoice.attempt_count ?? 0) > 1",
+  ];
+  if (!webhook || !webhookNeedles.every((needle) => webhook.includes(needle))) {
+    failures.push(
+      "Failed-payment dunning rescue is missing from the Stripe webhook.\n" +
+      "    file: app/api/webhook/stripe/route.ts\n" +
+      "    fix:  restore the first-attempt invoice.payment_failed branch, shared-account GDF attribution, stable portal login, and replay marker.",
+    );
+  }
+  const helperNeedles = [
+    "buildFailedPaymentEmail",
+    "isGitDealFlowSubscription",
+    "subscriptionIdFromInvoice",
+    "Action needed: update your GitDealFlow payment method",
+  ];
+  if (!dunning || !helperNeedles.every((needle) => dunning.includes(needle))) {
+    failures.push(
+      "Failed-payment dunning helper lost attribution, invoice parsing, or the customer rescue template.\n" +
+      "    file: lib/dunning.ts\n" +
+      "    fix:  restore the tested dunning helper and run npx tsx scripts/test/dunning.test.ts.",
+    );
+  }
+}
+
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +
