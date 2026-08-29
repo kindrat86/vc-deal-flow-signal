@@ -12,6 +12,7 @@ import {
 import { getScoutSession } from "@/lib/scout-session";
 import { makeShareIntents } from "@/lib/share-url";
 import { withEditorialOverride } from "@/lib/metadata";
+import TrackedScoutShareActions from "@/components/TrackedScoutShareActions";
 
 interface SearchParams {
   email?: string;
@@ -212,7 +213,7 @@ export default async function ScoutDashboardPage({
 
 function ShareSection({ scoutHandle, rankLabel }: { scoutHandle: string; rankLabel: string }) {
   const shareText = `I'm scouting pre-seed breakouts on @sipiteno's GitDealFlow. Rank: ${rankLabel}. The recipient gets a 7-day preview of the live signal index:`;
-  const { shareUrl, twitterIntent } = makeShareIntents({
+  const { shareUrl, twitterIntent, linkedinIntent } = makeShareIntents({
     sharer: scoutHandle,
     kind: "scout",
     text: shareText,
@@ -222,22 +223,11 @@ function ShareSection({ scoutHandle, rankLabel }: { scoutHandle: string; rankLab
       <h2 className="text-sm font-semibold text-gray-200 mb-3 uppercase tracking-wider">
         Share your profile
       </h2>
-      <div className="flex flex-col sm:flex-row gap-3 items-stretch">
-        <input
-          type="text"
-          readOnly
-          value={shareUrl}
-          className="flex-1 bg-slate-950 border border-slate-700 rounded-lg px-4 py-2 text-gray-100 font-mono text-xs"
-        />
-        <a
-          href={twitterIntent}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center justify-center px-4 py-2 rounded-lg bg-sky-700 hover:bg-sky-600 text-white text-sm font-medium transition whitespace-nowrap"
-        >
-          Share on X
-        </a>
-      </div>
+      <TrackedScoutShareActions
+        shareUrl={shareUrl}
+        twitterIntent={twitterIntent}
+        linkedinIntent={linkedinIntent}
+      />
       <p className="text-gray-400 text-xs mt-3 leading-relaxed">
         This link unlocks a 7-day extended preview for whoever opens it. Single-use viral loop, they get a thing, you get distribution. Token expires in 7 days.
       </p>
