@@ -7,7 +7,7 @@ import { getStripe } from "@/lib/stripe";
 // Why this route exists: the Stripe Customer Portal configuration already
 // allows switching between Dashboard (€49/mo, €490/yr) and Insider
 // (€197/mo, €1,970/yr) prices, but before this route the app had NO way
-// to open the portal — upgrade copy everywhere said "reply upgrade me by
+// to open the portal; upgrade copy everywhere said "reply upgrade me by
 // email", which makes every plan change manual founder work.
 //
 // Auth: same JWT session cookie as /dashboard (lib/auth.ts). The session
