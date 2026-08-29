@@ -9,6 +9,7 @@ const read = (relative) => fs.readFileSync(path.join(root, relative), "utf8");
 const needles = {
   "app/feedback/page.tsx": [
     "Request a feature or report a problem",
+    "robots: { index: false, follow: false }",
   ],
   "app/feedback/FeedbackForm.tsx": [
     "What were you trying to do?",

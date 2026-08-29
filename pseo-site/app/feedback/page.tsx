@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: "Request a feature or report a problem | GitDealFlow",
   description: "Tell GitDealFlow what you were trying to do and what got in the way.",
   alternates: { canonical: "/feedback" },
+  robots: { index: false, follow: false },
 };
 
 export default function FeedbackPage() {
