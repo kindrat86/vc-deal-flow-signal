@@ -1,143 +1,72 @@
-# GitDealFlow Pricing: Free, €49 Dashboard, €197 Insider
+# GitDealFlow Pricing: Free, €49 Dashboard, Custom Research
 
-> 30-day Signal-or-It's-Free guarantee on every paid tier: free Sunday digest, €7 First Look, €49 Dashboard, €197 Insider, €1,997 Sweep. Email to refund.
+> Open offers: free Sunday digest, €1 Tweet Teardown, €7 First Look Pass, €49/month or €490/year Dashboard, and €1,997 Custom Sector Sweep. Insider enrollment is closed until delivery proof is public.
 
-Canonical: https://gitdealflow.com/pricing
-Plain-text mirror of https://gitdealflow.com/pricing (Content-Type: text/markdown).
+All prices are in EUR. Every open paid offer carries the 30-day Signal-or-It's-Free guarantee: email `signals@gitdealflow.com` within 30 days for a full refund. Subscription plans can be cancelled in Stripe.
 
----
+## Free Sunday Signal
 
-[Skip to main content](#main-content)
+Five startups accelerating on public GitHub activity, sent every Sunday in plain English.
 
-VC Deal Flow Signal · one ladder, no surprises
-
-# Pricing that climbs with your conviction.
-
-Start free every Sunday. Pay €1 to test my judgment. Go deeper only when the signal has already earned it. Every paid rung carries the same 30-day guarantee.
-
-All prices in EUR. Cancel subscriptions in one click. No calls, no "contact sales" (except where the work is genuinely custom.
-
-Start here
-
-## Sunday Signal Digest
-
-Free forever
-
-- Five startups accelerating on GitHub, every Sunday morning
-
-- Sector, stage, and a plain-English reason it's moving (no code reading)
-
-- One email a week, unsubscribe in one click, no card
-
-Email address
-
-Get this Sunday's 5 names →
-
-Free: I cover the compute. One email, every Sunday.
-
-Test my judgment
+[Get the free Sunday Signal](https://gitdealflow.com/#signup)
 
 ## Tweet Teardown
 
-€1 one-time
+**€1 one-time**
 
-- Send me one startup. I read its public GitHub signal and tear it down
+Name one startup and receive a tweet-length public-GitHub momentum read.
 
-- Delivered as a short, sharp verdict you can act on
-
-- The cheapest possible way to see if my read is worth your money
-
-[Get a €1 Teardown →](https://buy.stripe.com/bJe5kC48H2d2cEKg6s0x209)
-
-One sector. One deep dive. One day.
+[Get the €1 Tweet Teardown](https://buy.stripe.com/bJe5kC48H2d2cEKg6s0x209)
 
 ## First Look Pass
 
-€7 one-time
+**€7 one-time**
 
-- Pick one sector you're sizing up. I deep-dive its public GitHub signal
+One sector deep dive, a ranked shortlist, and a 14-day Dashboard upgrade credit.
 
-- A ranked shortlist of who's actually accelerating, in plain English, back in 24 hours
-
-- 14-day upgrade-credit window: your €7 comes off your first Dashboard month
-
-[See the First Look Pass →](/firstlook)
-
-Most popular
-
-The weekly operating layer
+[See First Look](https://gitdealflow.com/firstlook)
 
 ## Dashboard
 
-€49/mo
+**€49/month or €490/year**
 
-- The full ranked field: 140+ startups, 15 sectors, refreshed weekly
+The annual plan includes two months free, saving €98 against twelve monthly payments.
 
-- Every name lands with a one-line, plain-English reason it's moving
+- 60+ startups across 15 sectors, refreshed weekly
+- Plain-English reasons for each momentum signal
+- Signal history and filters
+- Cancel in one click
 
-- Signal history so you can watch acceleration build week over week
+[Start Dashboard for €49/month](https://buy.stripe.com/fZu28q34DdVKawC6vS0x20g)
 
-- Cancel in one click, any time
-
-[Get the Dashboard →](/dashboard)
-
-Prefer annual? [€490/yr](https://buy.stripe.com/aFa5kC34DeZOawC6vS0x20c), two months free.
-
-Closest to the signal
+[Start Dashboard for €490/year](https://buy.stripe.com/aFa5kC34DeZOawC6vS0x20c)
 
 ## Insider Circle
 
-€197/mo
+**Enrollment closed**
 
-- Everything in Dashboard, plus private discussion with the circle
+GitDealFlow does not accept payment for Insider while its delivery calendar, redacted delivered artifact, support process, and member experience are not evidenced publicly.
 
-- Monthly briefings and a steadier deal-flow rhythm
-
-- The room is capped at ~50 seats
-
-[See the Insider Circle →](/insider)
-
-Prefer annual? [€1,970/yr](https://buy.stripe.com/cNieVc34DbNCcEK2fC0x20e), two months free.
-
-Done-for-you research
+[See the enrollment requirements](https://gitdealflow.com/insider)
 
 ## Custom Sector Sweep
 
-€1,997 one-time
+**€1,997 one-time**
 
-- I sweep an entire sector of your choice, org by org, on your thesis
+A commissioned sweep of one sector, ranked by public GitHub engineering momentum and written for a specific investment thesis.
 
-- A ranked, written report of who's accelerating and why, yours alone
+[See the Custom Sector Sweep](https://gitdealflow.com/sector-sweep)
 
-- Built for funds and family offices sizing up a space before a bet
+## Higher-touch custom work
 
-[See the Sector Sweep →](/sector-sweep)
+**From €4,970/year, application only**
 
-Application only
+Higher-touch work is capacity-limited and scoped before payment.
 
-## Sharp Tier & above
+[Apply](https://gitdealflow.com/apply)
 
-From €4,970/yr
+## Guarantee
 
-The rungs above Insider are gated by application, not by card. Capacity is deliberately small so the edge stays an edge: if too many people see a signal at once, it stops being early. Tell me who you are and how you invest; I'll tell you honestly whether it's worth it for you.
+Any open paid offer, 30 days, email `signals@gitdealflow.com`, every cent back. No form or survey.
 
-[Apply for a gated tier →](/apply)
-
-The guarantee, in full
-
-## 30 days, Signal-or-It's-Free on every paid rung.
-
-Any paid rung, 30 days, email me, every cent back. No forms, no survey. If the signal hasn't earned its price inside a month, I don't want your money.
-
-First Look also carries a separate 14-day upgrade-credit window: your €7 counts toward Dashboard if you step up within two weeks.
-
-A receipt, not a promise
-
-## The founding window closed June 30, exactly as promised.
-
-Founding members locked €9.97 and €97 for life, and they keep it. Everyone after pays €49 and €197, no re-opened "last chance," no reset countdown. When I set the next deadline, you'll know I mean it.
-
-Dashboard €49/mo
-Most popular · cancel anytime
-
-[See tier →](#dashboard)
+GitDealFlow is a public-data diligence signal, not a fund or a financing forecast.

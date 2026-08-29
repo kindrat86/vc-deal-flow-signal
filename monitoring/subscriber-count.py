@@ -21,8 +21,13 @@ import os
 import subprocess
 from datetime import datetime, timezone
 
-REPO = os.path.expanduser("~/signals-gitdealflow")
-ENV_FILE = os.path.join(REPO, "agent", ".env")
+# Self-locating so the tracker can run from a dedicated clean worktree.
+# Resend is the list source of truth; PocketBase is retired from the send path.
+REPO = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+ENV_FILES = [
+    os.path.join(REPO, "email-api", ".env"),
+    os.path.join(REPO, "agent", ".env"),  # legacy fallback
+]
 MON = os.path.join(REPO, "monitoring")
 HIST = os.path.join(MON, "subscriber-count.jsonl")
 MD = os.path.join(MON, "subscriber-count.md")
@@ -34,12 +39,17 @@ AUDIENCE_ID_PINNED = "1ddf358e-2416-4481-a0f5-538fd12f6e73"
 
 
 def load_key():
-    with open(ENV_FILE) as f:
-        for line in f:
-            line = line.strip()
-            if line.startswith("RESEND_API_KEY="):
-                return line.split("=", 1)[1].strip().strip('"').strip("'")
-    raise SystemExit("RESEND_API_KEY not found in agent/.env")
+    for env_file in ENV_FILES:
+        if not os.path.exists(env_file):
+            continue
+        with open(env_file) as f:
+            for line in f:
+                line = line.strip()
+                if line.startswith("RESEND_API_KEY="):
+                    return line.split("=", 1)[1].strip().strip('"').strip("'")
+    raise SystemExit(
+        "RESEND_API_KEY not found in " + ", ".join(ENV_FILES)
+    )
 
 
 def resend_get(path):
@@ -128,10 +138,21 @@ def main():
                         hist.append(json.loads(line))
                     except json.JSONDecodeError:
                         pass
-    prev_active = hist[-1]["active"] if hist else None
-    with open(HIST, "a") as f:
-        f.write(json.dumps(record) + "\n")
-    hist.append(record)
+    # Exactly one durable sample per UTC day. A launchd retry or manual check
+    # replaces today's row instead of inventing extra churn intervals.
+    same_day = bool(hist and hist[-1].get("ts", "")[:10] == now[:10])
+    prev_active = (
+        hist[-2]["active"] if same_day and len(hist) > 1
+        else hist[-1]["active"] if hist and not same_day
+        else None
+    )
+    if same_day:
+        hist[-1] = record
+    else:
+        hist.append(record)
+    with open(HIST, "w") as f:
+        for item in hist:
+            f.write(json.dumps(item) + "\n")
 
     delta = record["active"] - prev_active if prev_active is not None else None
 
@@ -175,7 +196,7 @@ def main():
     else:
         print(
             f"GitDealFlow Sunday-digest list: {record['active']} active subscribers "
-            f"({'+' if delta > 0 else ''}{delta} this week)."
+            f"({'+' if delta > 0 else ''}{delta} since prior sample)."
         )
 
 
@@ -189,7 +210,7 @@ def _append_portfolio_signal(record, delta):
     date_str = record["ts"][:10]
     delta_str = ""
     if delta is not None:
-        delta_str = f" ({'+' if delta > 0 else ''}{delta} vs last week)"
+        delta_str = f" ({'+' if delta > 0 else ''}{delta} vs prior sample)"
     block = (
         f"## {date_str}\n\n"
         f"### GitDealFlow — Sunday digest list\n"
@@ -202,6 +223,10 @@ def _append_portfolio_signal(record, delta):
             content = f.read()
     except FileNotFoundError:
         content = "# Portfolio Signals Log\n\n"
+    # Retry-safe: do not insert a second GitDealFlow block for the same UTC day.
+    same_day_marker = f"## {date_str}\n\n### GitDealFlow — Sunday digest list\n"
+    if same_day_marker in content:
+        return
     idx = content.find("\n## ")
     if idx == -1:
         content += "\n" + block

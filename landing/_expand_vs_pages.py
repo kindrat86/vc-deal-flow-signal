@@ -8,7 +8,7 @@ Models the flagship pitchbook/crunchbase pages exactly. All competitor claims
 are verified against public sources (Aug 2026). No em dashes anywhere.
 
 GitDealFlow pricing (current, from /pricing): Free Sunday digest, EUR 1 Teardown,
-EUR 7 First Look, EUR 49/mo Dashboard (EUR 490/yr), EUR 197/mo Insider,
+EUR 7 First Look, EUR 49/mo Dashboard (EUR 490/yr), Insider enrollment closed,
 EUR 1,997 Sector Sweep. Founding window (EUR 9.97/97) CLOSED June 30.
 """
 import os, json
@@ -270,7 +270,7 @@ COMPETITORS = [
         ],
         "why": [
             "AngelList's data tells you what is already being funded. When a syndicate lead opens a deal on AngelList, the round is effectively in motion: the lead has committed, the valuation is set, and backers are filling the SPV. That is a strong coincident signal, but it is not an early one. The engineering activity that convinced the lead to commit happened weeks earlier, and it happened in public on GitHub.",
-            "GitDealFlow reads that earlier layer. The SSRN research panel (n=219 confirmed fundraises) found that a composite of commit-velocity acceleration plus low top-contributor concentration (Gini under 0.30) preceded a Series A announcement by a median of 31 days, with a range of 21-47 days across sectors. A startup whose GitHub is surging is one a syndicate lead is about to notice. GitDealFlow lets you notice first.",
+            "GitDealFlow reads that earlier layer: public GitHub activity. The published descriptive SSRN release contains 219 startup-period observations across 55 startups and no linked financing-event labels. It documents observable engineering-activity patterns for research and diligence; it does not establish that a round is imminent. A startup whose GitHub activity is surging may still warrant earlier review.",
             "This is why the two tools compound: GitDealFlow surfaces the name before any syndicate opens, and AngelList is often where you deploy once you are convinced. One is the radar; the other is the trigger.",
         ],
         "keydiff": [
@@ -320,7 +320,7 @@ COMPETITORS = [
         ],
         "why": [
             "CB Insights' edge is analyst depth. Human researchers build market maps, interview industry participants, and score companies with the Mosaic algorithm. That depth is genuinely useful for understanding a market's structure, but it is inherently periodic: a report or a map is a snapshot taken weeks ago and published on a schedule.",
-            "GitDealFlow's edge is recency and objectivity. Every Monday it reads the prior week's GitHub activity and reranks 350+ startups by velocity deviation from their own baseline. The SSRN panel (n=219) found the composite signal (velocity acceleration plus low contributor concentration, Gini under 0.30) preceded a Series A announcement by a median of 31 days. No analyst cycle required: the code ships and the signal updates.",
+            "GitDealFlow's edge is recency and objectivity. Every Monday it reads the prior week's GitHub activity and reranks 350+ startups by velocity deviation from their own baseline. The published descriptive SSRN release contains 219 startup-period observations across 55 startups and no linked financing-event labels, so the signal is a diligence input rather than a financing forecast. No analyst cycle required: the code ships and the signal updates.",
             "The honest framing: CB Insights tells you the shape of a sector, and GitDealFlow tells you the name that is about to break out inside it. A corporate VC team uses both: the market map for the strategy memo, and the signal feed for the actual sourcing.",
         ],
         "keydiff": [
@@ -370,7 +370,7 @@ COMPETITORS = [
         ],
         "why": [
             "Dealroom's strength is ecosystem completeness, especially in Europe. If you need to know every startup in Berlin or Amsterdam, who founded them, what they raised, and who is hiring, Dealroom is the source of record. That data is rich but lagging: a funding round or a founder move appears after it is public.",
-            "GitDealFlow reads the earlier, objective layer: public GitHub activity. The SSRN panel (n=219) found the composite signal of commit-velocity acceleration plus low top-contributor concentration (Gini under 0.30) preceded a Series A announcement by a median of 31 days. A startup's engineering surge shows up on GitHub weeks before it shows up in any ecosystem database.",
+            "GitDealFlow reads the earlier, objective layer: public GitHub activity. The published descriptive SSRN release contains 219 startup-period observations across 55 startups and no linked financing-event labels. It documents engineering-activity patterns for research and diligence; it does not establish a financing outcome. GitHub activity can still provide a more current operating view than an ecosystem database.",
             "For an EU-focused fund, the two combine cleanly: Dealroom for the regional map and founder network, and GitDealFlow for the engineering signal that tells you which of those companies is actually accelerating right now.",
         ],
         "keydiff": [
@@ -420,7 +420,7 @@ COMPETITORS = [
         ],
         "why": [
             "Private Equity Wire is a news product, and news is inherently lagging: an editor can only write about a deal once it is announced, and by then the allocation is gone. That is not a flaw, it is the definition of news. It is useful for staying current on a market, but it cannot give you a head start.",
-            "GitDealFlow reads the layer that precedes the news: public GitHub activity. The SSRN panel (n=219) found the composite signal of commit-velocity acceleration plus low top-contributor concentration (Gini under 0.30) preceded a Series A announcement by a median of 31 days. For a PE firm sourcing software assets, that signal can flag which companies are accelerating technically months before a sell-side process begins.",
+            "GitDealFlow reads a different layer from the news: public GitHub activity. The published descriptive SSRN release contains 219 startup-period observations across 55 startups and no linked financing-event labels. For a PE firm sourcing software assets, the signal is a current engineering-activity input for diligence, not evidence that a transaction or sell-side process is imminent.",
             "Different audiences, different stages: Private Equity Wire serves the LP, allocator, and deal professional who needs to track a market; GitDealFlow serves the investor who wants to be early to a specific company.",
         ],
         "keydiff": [
@@ -470,7 +470,7 @@ COMPETITORS = [
         ],
         "why": [
             "Tracxn's edge is taxonomy breadth: millions of companies organized into thousands of sectors and business models, with analyst-crafted sector reports. That is powerful for mapping a market, especially in emerging geographies where other databases are thin. But a taxonomy is a classification of the past: it tells you what a company does and did, not what it is about to do.",
-            "GitDealFlow's edge is timing and objectivity. The SSRN panel (n=219) found the composite signal of commit-velocity acceleration plus low top-contributor concentration (Gini under 0.30) preceded a Series A announcement by a median of 31 days. A company that just tripled its shipping pace shows up in GitDealFlow's Monday leaderboard before it shows up in any sector report.",
+            "GitDealFlow's edge is recency and objectivity. The published descriptive SSRN release contains 219 startup-period observations across 55 startups and no linked financing-event labels. A company whose public shipping pace changes materially can appear in GitDealFlow's Monday leaderboard before that operating change reaches a periodic sector report, but the signal is not a financing forecast.",
             "For emerging-market investors, the combination is natural: Tracxn for the sector landscape and company discovery, and GitDealFlow for the engineering signal that tells you which of those companies is accelerating right now.",
         ],
         "keydiff": [

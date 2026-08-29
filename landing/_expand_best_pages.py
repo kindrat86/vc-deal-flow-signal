@@ -6,7 +6,7 @@ library. One consistent template (matching /vs/), valid JSON-LD, no em dashes.
 
 GitDealFlow facts (current): 350+ startups, 15 sectors, Free Sunday digest,
 EUR 1 Teardown, EUR 7 First Look, EUR 49/mo Dashboard (EUR 490/yr),
-EUR 197/mo Insider, EUR 1,997 Sector Sweep. Lead time 21-47 days (SSRN n=219).
+Insider enrollment closed, EUR 1,997 Sector Sweep. Lead time 21-47 days (SSRN n=219).
 """
 import os, json, re
 
