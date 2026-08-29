@@ -6193,6 +6193,30 @@ check(
   }
 }
 
+// ---------------------------------------------------------------------------
+// §74 Trust-bar canonical claims (2026-08-29). The global footer used to show
+// "$80M+ Rounds Tracked" and "5,000+ Founders Tracked" without a public
+// definition or canonical ledger. Keep the proof strip on the locked,
+// auditable product claims: 350+ startup orgs and 15 sectors.
+// ---------------------------------------------------------------------------
+{
+  const layout = read("app/layout.tsx");
+  if (!layout || !layout.includes(">350+</span>") || !layout.includes(">Startup Orgs</span>") || !layout.includes(">15</span>") || !layout.includes(">Sectors</span>")) {
+    failures.push(
+      "§74 global trust bar lost the canonical 350+ startup-org / 15-sector claims.\n" +
+      "    file: app/layout.tsx\n" +
+      "    fix:  restore the locked, auditable 350+ orgs and 15 sectors proof strip."
+    );
+  }
+  if (layout && (layout.includes("$80M+") || layout.includes("5,000+") || layout.includes("Founders Tracked"))) {
+    failures.push(
+      "§74 global trust bar reintroduced undefined proof numbers.\n" +
+      "    file: app/layout.tsx\n" +
+      "    fix:  remove undefined $80M+ / 5,000+ founder counters; use canonical claims only."
+    );
+  }
+}
+
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +
