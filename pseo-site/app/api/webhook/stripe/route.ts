@@ -12,12 +12,18 @@ import { pickAudienceId } from "@/lib/resend-audience";
 import { newBuyerHealthState, firstValueStatusForCustomer, markCustomerCancelled, markCustomerReactivated } from "@/lib/customer-health";
 import { cancellationReasonFromStripe } from "@/lib/retention-policy";
 import { cancelScheduledLifecycleEmails, scheduleWinbackSequence } from "@/lib/winback";
+import {
+  buildFailedPaymentEmail,
+  isGitDealFlowSubscription,
+  subscriptionIdFromInvoice,
+} from "@/lib/dunning";
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY!;
 const FROM_EMAIL = process.env.FROM_EMAIL || "signals@gitdealflow.com";
 const FROM_NAME = process.env.FROM_NAME || "The Data Nerd";
 const WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET!;
 const TELEGRAM_INSIDER_INVITE = process.env.TELEGRAM_INSIDER_INVITE || "";
+const DUNNING_PORTAL_LOGIN_URL = "https://billing.stripe.com/p/login/28E7sK48H04U8ou07u0x200";
 
 // Stripe retries `checkout.session.completed` on any non-2xx response and on
 // transient network errors, with the same `event.id`. Without dedup, a retry
@@ -71,7 +77,7 @@ async function sendEmail(
   html: string,
   opts: { subscriberFacing?: boolean } = {},
 ) {
-  await fetch("https://api.resend.com/emails", {
+  const response = await fetch("https://api.resend.com/emails", {
     method: "POST",
     headers: {
       Authorization: `Bearer ${RESEND_API_KEY}`,
@@ -89,6 +95,9 @@ async function sendEmail(
       ...(opts.subscriberFacing ? { headers: listUnsubscribeHeaders(to) } : {}),
     }),
   });
+  if (!response.ok) {
+    throw new Error(`Resend email failed with HTTP ${response.status}`);
+  }
 }
 
 /**
@@ -757,6 +766,72 @@ export async function POST(request: NextRequest) {
     await dispatchOtoWelcome(email, oto, sub.id);
   }
 
+  if (event.type === "invoice.payment_failed") {
+    const invoice = event.data.object;
+
+    // One rescue on the first failed attempt is enough. Stripe can emit this
+    // event again on every Smart Retry; repeating identical mail would punish
+    // the customer for the platform doing exactly what we asked it to do.
+    if ((invoice.attempt_count ?? 0) > 1) {
+      return NextResponse.json({ received: true, repeated_attempt: true });
+    }
+
+    if (await isNonceUsed(STRIPE_EVENT_NAMESPACE, event.id)) {
+      return NextResponse.json({ received: true, replay: true });
+    }
+
+    const subId = subscriptionIdFromInvoice(invoice);
+    if (!subId) {
+      return NextResponse.json({ received: true, ignored: "no_subscription" });
+    }
+
+    // The Stripe account is shared across the portfolio. Expand the product
+    // and verify GDF ownership before contacting anybody; a FunnelFixer or
+    // other portfolio decline must never receive a GitDealFlow email.
+    const subscription = await stripe.subscriptions.retrieve(subId, {
+      expand: ["items.data.price.product"],
+    });
+    if (!isGitDealFlowSubscription(subscription)) {
+      return NextResponse.json({ received: true, ignored: "non_gdf_subscription" });
+    }
+
+    const customerId =
+      typeof invoice.customer === "string"
+        ? invoice.customer
+        : invoice.customer && "id" in invoice.customer
+          ? invoice.customer.id
+          : null;
+    if (!customerId) {
+      return NextResponse.json({ received: true, ignored: "no_customer" });
+    }
+
+    const customer = await stripe.customers.retrieve(customerId);
+    if (customer.deleted || !customer.email) {
+      return NextResponse.json({ received: true, ignored: "no_customer_email" });
+    }
+
+    const rescue = buildFailedPaymentEmail({
+      portalLoginUrl: DUNNING_PORTAL_LOGIN_URL,
+    });
+    // Do not add List-Unsubscribe to a payment-failure notice: this is a
+    // transactional account message, not a marketing broadcast. sendEmail
+    // throws on a Resend error so Stripe can retry the webhook delivery.
+    await sendEmail(customer.email, rescue.subject, rescue.html);
+    await markNonceUsed(STRIPE_EVENT_NAMESPACE, event.id, STRIPE_EVENT_TTL_SECONDS);
+
+    try {
+      await sendEmail(
+        "signals@gitdealflow.com",
+        `Payment failed: ${customer.email}`,
+        `<p><strong>A GitDealFlow payment failed.</strong></p><p>Customer: ${escapeHtml(customer.email)}</p><p>Invoice: ${escapeHtml(invoice.id)}</p><p>Subscription: ${escapeHtml(subId)}</p><p>Attempt: ${invoice.attempt_count ?? 0}</p>`,
+      );
+    } catch (error) {
+      console.error("[stripe-webhook] payment failure admin alert failed", error);
+    }
+
+    console.log(`[stripe-webhook] payment_failed_rescue_sent invoice=${invoice.id}`);
+  }
+
   if (event.type === "customer.subscription.deleted") {
     const subscription = event.data.object;
     if (!(await isNonceUsed(STRIPE_EVENT_NAMESPACE, event.id))) {
@@ -820,18 +895,6 @@ export async function POST(request: NextRequest) {
   }
 
   return NextResponse.json({ received: true });
-}
-
-function subscriptionIdFromInvoice(invoice: Stripe.Invoice): string | null {
-  // The Stripe SDK type narrows differently across API versions; resolve
-  // both shapes (string id vs expanded object) defensively.
-  const raw = (invoice as unknown as { subscription?: unknown }).subscription;
-  if (typeof raw === "string") return raw;
-  if (raw && typeof raw === "object" && "id" in raw) {
-    const id = (raw as { id?: unknown }).id;
-    if (typeof id === "string") return id;
-  }
-  return null;
 }
 
 async function resolveOtoEmail(
