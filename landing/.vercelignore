@@ -69,6 +69,7 @@ scripts/*
 !scripts/verify-all.mjs
 !scripts/verify-crawl-proxy.mjs
 !scripts/verify-persona-routes.mjs
+!scripts/verify-tool-capture.mjs
 !scripts/indexnow-ping.mjs
 
 # NEVER add a bare `scripts/` line. It reads like the right hardening, churnlens
