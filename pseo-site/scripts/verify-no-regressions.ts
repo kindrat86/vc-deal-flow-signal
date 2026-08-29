@@ -6166,6 +6166,33 @@ check(
   }
 }
 
+// ---------------------------------------------------------------------------
+// §73 Scorecard single source of truth (2026-08-29). /scorecard used to render
+// hand-frozen SCORE_ROWS (June: "30 picks, grading begins 2026-07-03") while
+// /predicted and /api/proof computed live from lib/predictions, so the three
+// public proof surfaces told three different stories to the same buyer. The
+// scorecard must derive its rows and totals from lib/predictions, the same
+// source /api/proof uses, and must never re-introduce a hand-maintained
+// SCORE_ROWS constant or a hard-coded future grading date.
+// ---------------------------------------------------------------------------
+{
+  const page = read("app/scorecard/page.tsx");
+  if (!page || !page.includes("buildScoreRows()") || !page.includes("getAllPredictionWeeks") || !page.includes("computeScorecard")) {
+    failures.push(
+      "§73 scorecard no longer derives from lib/predictions.\n" +
+      "    file: app/scorecard/page.tsx\n" +
+      "    fix:  build rows/totals via buildScoreRows() from getAllPredictionWeeks() and computeScorecard(), same source as /api/proof. Never hand-freeze SCORE_ROWS."
+    );
+  }
+  if (page && /Grading begins|grading window opens 2026-0\d/.test(page)) {
+    failures.push(
+      "§73 scorecard carries a hard-coded grading date again.\n" +
+      "    file: app/scorecard/page.tsx\n" +
+      "    fix:  derive grading-window language from predictions.json (gradingDueAt), not a literal date."
+    );
+  }
+}
+
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +
