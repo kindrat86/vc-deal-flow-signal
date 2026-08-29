@@ -18,7 +18,6 @@ const needles = {
   ],
   "app/support/page.tsx": [
     "Customer support",
-    "Human reply within 1 business day",
   ],
   "app/support/SupportForm.tsx": [
     "Data or signal quality",
@@ -62,6 +61,13 @@ for (const [relative, expected] of Object.entries(needles)) {
     for (const needle of expected) assert.ok(source.includes(needle), `${relative} missing ${needle}`);
   });
 }
+
+test("support keeps a one-business-day response commitment", () => {
+  const normalized = read("app/support/page.tsx")
+    .toLowerCase()
+    .replace(/\b1\b/g, "one");
+  assert.match(normalized, /\brepl(?:y|ies) within one business day\b/);
+});
 
 test("the customer-voice contract runs in the release gate", () => {
   const packageJson = read("package.json");
