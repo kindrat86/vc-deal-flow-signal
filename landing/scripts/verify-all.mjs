@@ -120,6 +120,7 @@ const steps = [
   ['node', 'scripts/verify-social-card.mjs'],
   ['node', 'scripts/verify-crawl-proxy.mjs'],
   ['node', 'scripts/verify-persona-routes.mjs'],
+  ['node', '--test', 'scripts/test-expansion-routing.mjs'],
 ];
 
 for (const args of steps) {
