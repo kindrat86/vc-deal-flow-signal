@@ -10,7 +10,7 @@ GitDealFlow ships an MCP server with 5 read-only tools (npm @gitdealflow/mcp-sig
 
 Methodology is public on SSRN (abstract=6606558), so you can write the post around the data not the pitch.
 
-20% lifetime affiliate is open: €19.40/mo recurring on every Insider sub, €399 on every Sector Sweep. 60d cookie. Stripe monthly payouts. Program: signals.gitdealflow.com/affiliates.
+20% lifetime affiliate is open: €39.40/mo recurring on every Insider sub, €399 on every Sector Sweep. 60d cookie. Stripe monthly payouts. Program: signals.gitdealflow.com/affiliates.
 
 Free MCP stays free forever — you can recommend it without anyone needing to pay anything for the placement to be useful.
 

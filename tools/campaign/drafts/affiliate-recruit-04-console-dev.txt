@@ -12,7 +12,7 @@ Methodology is public, SSRN-anchored: ssrn.com/abstract=6606558.
 
 The "why I built it" angle: I'm a developer who angel invests. The data I needed to source pre-deck was sitting in public GitHub commit graphs, but no investor tool packaged it. So the MCP server is what I shipped first; the paid tiers came after.
 
-20% lifetime affiliate is open if useful (€19.40/mo recurring per Insider sub). Program: signals.gitdealflow.com/affiliates. Otherwise the free tier is the headline.
+20% lifetime affiliate is open if useful (€39.40/mo recurring per Insider sub). Program: signals.gitdealflow.com/affiliates. Otherwise the free tier is the headline.
 
 The Data Nerd
 gitdealflow.com

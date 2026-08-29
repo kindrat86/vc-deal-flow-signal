@@ -6320,6 +6320,105 @@ check(
   }
 }
 
+// §71 Affiliate-proof integrity (2026-08-29). Retired unsupported affiliate
+// earnings/partner/CVR claims and funding-outcome statistics that the current
+// descriptive SSRN release cannot support. The Refgrow portal is the terms
+// source of truth; the public program may not claim earnings history until it
+// exists. The SSRN release has no linked funding-event labels, so it may not be
+// cited for precision, recall, lead time, close-rate, or base-rate lift.
+// ---------------------------------------------------------------------------
+{
+  check(
+    "app/affiliates/page.tsx",
+    "§71 affiliate hub lost the verified portal offer",
+    (src) => src.includes("20% recurring") && src.includes("gitdealflow.refgrow.com") && src.includes("No affiliate earnings"),
+    "Keep one honest program hub: 20% recurring, portal-owned terms, no earnings history claims.",
+  );
+  check(
+    "app/affiliates/leaderboard/page.tsx",
+    "§71 retired affiliate leaderboard returned",
+    (src) => src.includes('redirect("/affiliates")') && !src.includes("LEADERBOARD"),
+    "Keep the redirect. Reintroduce a leaderboard only with read-back-able Refgrow results.",
+  );
+  check(
+    "content/affiliate-leaderboard.ts",
+    "§71 affiliate data carries unsupported proof",
+    (src) => src.includes("AFFILIATE_PROGRAM_FACTS") && !src.includes("Newsletter A") && !src.includes("€32,000"),
+    "Keep verifiable program facts only; no invented partner rows, earnings, or CVRs.",
+  );
+  check(
+    "app/api/v1/affiliates.json/route.ts",
+    "§71 affiliate API lost its honest earnings state",
+    (src) =>
+      src.includes("no_publishable_history") &&
+      !src.includes("payout_minimum_eur") &&
+      !src.includes("leaderboard:"),
+    "Keep no_publishable_history and defer mutable payout/attribution terms to the portal.",
+  );
+  check(
+    "app/affiliates/top-partners/page.tsx",
+    "§71 partner wishlist regained fabricated engagement statuses",
+    (src) => src.includes('type Status = "wishlist"') && !src.includes("outreach-sent") && !src.includes('status: "engaged"'),
+    "Keep the public roster a wish list. Add status only after a verified external touch.",
+  );
+  check(
+    "content/affiliate-swipe-kit.ts",
+    "§71 swipe kit regained unsupported conversion or outcome claims",
+    (src) => !src.includes("38%") && !src.includes("5× the base rate") && !src.includes("€19.40") && src.includes("Not measured yet"),
+    "Use descriptive panel language and state that affiliate conversion rates are not measured yet.",
+  );
+  check(
+    "content/social-content-batch.ts",
+    "§71 social content regained unsupported funding-outcome claims",
+    (src) =>
+      !src.includes("38% close-within-47d") &&
+      !src.includes("5× base rate") &&
+      !src.includes("5× lift over the base rate") &&
+      !src.includes("Closed rounds: Gini 0.34") &&
+      !src.includes("would have flagged this round") &&
+      src.includes("no linked funding-event labels"),
+    "Keep social content descriptive. The documented release cannot establish funding accuracy, lift, lead time, or outcome-linked Gini splits.",
+  );
+  check(
+    "content/agent-queries.ts",
+    "§71 accuracy answers regained unsupported precision/lead-time claims",
+    (src) => !src.includes("~65% precision") && !src.includes("5.4-week median") && src.includes("no linked funding-event labels"),
+    "Do not cite the descriptive release for precision, recall, or funding lead time.",
+  );
+  check(
+    "content/standalone-faqs.ts",
+    "§71 FAQ regained unsupported precision/lead-time claims",
+    (src) => !src.includes("top-decile commit-velocity precision is ~65%") && !src.includes("Median lead time for true positives is 5.4 weeks"),
+    "Keep outcome accuracy unestablished until forward scorecard data matures.",
+  );
+  landingCheck(
+    "affiliates.html",
+    "§71 apex affiliate page regained duplicate terms",
+    (src) => src.includes("signals.gitdealflow.com/affiliates") && !src.includes("30%"),
+    "Keep the apex page as a noindex redirect to the canonical signals affiliate hub.",
+  );
+  for (const locale of ["de", "es"]) {
+    landingCheck(
+      `${locale}/affiliates.html`,
+      `§71 ${locale} affiliate page regained duplicate terms`,
+      (src) => src.includes("signals.gitdealflow.com/affiliates") && !src.includes("30%"),
+      "Keep localized pages as noindex redirects to the canonical signals affiliate hub.",
+    );
+    landingCheck(
+      `${locale}/partners.html`,
+      `§71 ${locale} partners page regained unverified terms`,
+      (src) => src.includes("20% recurring") && !src.includes("50% revenue share") && !src.includes("Real-time dashboard"),
+      "Mirror the honest EN terms: 20% recurring via Refgrow; JV by conversation.",
+    );
+  }
+  landingCheck(
+    "partners.html",
+    "§71 apex partners page regained contradictory terms",
+    (src) => src.includes("20% recurring") && src.includes("Refgrow portal") && !src.includes("50% revenue share") && !src.includes("30% recurring") && !src.includes("Real-time dashboard"),
+    "Use 20% recurring via Refgrow, JV by conversation, and no unsupported dashboard claim.",
+  );
+}
+
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +

@@ -100,7 +100,7 @@ The procedure to verify yourself (5 minutes):
 
 The full 7-signal composite scores them at 5/6. The only miss: their dependents graph isn't formally exposed because they're a UI library distributed via copy-paste rather than npm. That's a known framework edge case, not a real negative signal.
 
-Backtest: composite of 5/6 with sustained 14d acceleration → ~38% chance of a venture round closing within 47 days. Roughly 5× the base rate.
+The composite is a research and diligence signal, not a funding predictor. The current SSRN release is descriptive and has no linked funding-event labels.
 
 Read the live ranking: signals.gitdealflow.com/predicted${VIA}
 
@@ -119,7 +119,7 @@ Link in bio for the live ranking.
 ${TAGS_IG.join(" ")}`,
       facebook: `Signal of the week: ShadcnUI is showing a 14d/90d commit-velocity ratio of 1.62, the third consecutive week above the 1.5 acceleration threshold.
 
-The framework backtest: composite of 5/6 with sustained 14-day acceleration → ~38% chance of a venture round closing within 47 days.
+The composite is a research and diligence signal, not a funding predictor. The current SSRN release does not establish a close-within-47-days rate.
 
 You can verify the velocity number yourself in 5 minutes using only github.com (no API, no tool). The procedure is in the free 30-day course at signals.gitdealflow.com/challenge${VIA}.
 
@@ -148,7 +148,7 @@ Composite: 5/6. signals.gitdealflow.com/predicted`,
         },
         {
           headline: "Composite score",
-          body: "5/6 · 38% close-within-47d (5× base rate)",
+          body: "5/6 engineering-pattern match · not a funding forecast",
         },
         {
           headline: "Read the framework",
@@ -236,38 +236,32 @@ The full 7-signal procedure (free, no card): signals.gitdealflow.com/challenge${
     crossPostTo: ["linkedin", "threads", "bluesky", "instagram"],
     scheduledIsoDate: "2026-05-14",
     bodies: {
-      twitter: `Data point from the panel:
+      twitter: `Research note from the panel:
 
-Startups that closed: contributor-diversity Gini = 0.34 at month -3.
-Startups that did not close: 0.61.
+Contributor-diversity Gini is a descriptive view of how concentrated public engineering work is.
 
-The shape of the codebase matters more than the size of it. SSRN id 6606558.`,
-      linkedin: `**Data point from the 219-round panel.**
+The documented release has 219 startup-period observations across 55 startups and no linked funding-event labels. It cannot establish a closed-versus-not-closed Gini split. SSRN id 6606558.`,
+      linkedin: `**Research note from the documented panel.**
 
-Startups that closed a venture round: contributor-diversity Gini coefficient of 0.34 at month -3 before the announce.
+Contributor-diversity Gini is a descriptive engineering measure. It shows whether public commits are concentrated among one or two contributors or distributed across a wider team.
 
-Startups that did not close: 0.61.
+The documented release contains 219 startup-period observations across 55 startups and no linked funding-event labels. It therefore cannot establish that one Gini range predicts a financing outcome.
 
-Translation: more concentrated codebases (one or two committers doing everything) close fewer rounds than distributed codebases.
-
-The mechanism is straightforward. A 4-person codebase with no single committer dominating is funding a real engineering team. A 1-person codebase is funding a salary. The contract value, the dilution math, and the diligence story are all different, even if the headline metrics look similar.
-
-This is signal #2 of the seven we publish. The procedure to read it yourself runs in 5 minutes from any GitHub org's Insights → Contributors page.
+Use the measure as one public input for sourcing and diligence, not as a financing forecast. The procedure runs from a GitHub org's Insights → Contributors page.
 
 Methodology paper: ssrn.com/abstract=6606558 (CC BY 4.0)
 Free 30-day course: signals.gitdealflow.com/challenge${VIA}`,
-      instagram: `📈 Data point from the panel:
+      instagram: `📈 Research note from the panel:
 
-Closed rounds → Gini 0.34
-Didn't close → Gini 0.61
+Contributor-diversity Gini describes how concentrated public engineering work is.
 
-The shape of the codebase matters more than the size of it.
+The documented release has no linked funding-event labels, so it does not establish financing-outcome accuracy.
 
 (SSRN id 6606558)
 
 ${TAGS_IG.join(" ")}`,
-      threads: `Data point from the panel:\n\nClosed: Gini 0.34\nDidn't close: Gini 0.61\n\nShape > size. SSRN 6606558`,
-      bluesky: `Closed rounds: Gini 0.34 at month -3.\nDidn't close: 0.61.\n\nShape of the codebase > size of it.`,
+      threads: `Research note: contributor-diversity Gini describes how concentrated public engineering work is.\n\nThe documented panel has no linked funding-event labels, so it does not establish financing outcomes. SSRN 6606558`,
+      bluesky: `Contributor-diversity Gini is a descriptive engineering measure.\n\nThe documented panel has no linked funding-event labels, so it is not financing-outcome evidence.`,
     },
   },
 
@@ -314,7 +308,7 @@ Procedure: signals.gitdealflow.com/challenge${VIA}`,
     crossPostTo: ["twitter", "instagram", "facebook"],
     scheduledIsoDate: "2026-05-16",
     bodies: {
-      linkedin: `**Calibration case, a recently-funded round, scored at month -3.**
+      linkedin: `**Retrospective engineering example, scored at month -3.**
 
 Vercel announced their Series E in 2026-04. We backtested their composite as it would have read 90 days before the announce.
 
@@ -327,35 +321,33 @@ Score at month -3: **5/6.**
 → New repo creation: 4 platform repos in last 30 days ✅
 → Issue-to-PR ratio: 0.9, below the 1.5 threshold (the only miss)
 
-The miss on issue-to-PR is interesting because it suggests the team was fielding inbound faster than they could ship, the kind of "we need the round to hire" moment that often precedes a growth-stage close.
+The miss on issue-to-PR is a prompt for diligence, not evidence of financing intent.
 
-Composite framework would have flagged this round before the headline. ~5× lift over the base rate at month -3.
-
-Calibration runs against known rounds are how you build trust in the framework. Run one a week and the score becomes more useful than the headline.
+This retrospective shows how the engineering score is assembled. The documented research release has no linked funding-event labels, so it cannot show that this score predicted the round, establish lift over a base rate, or establish a funding lead time.
 
 Methodology: ssrn.com/abstract=6606558
 Free 30-day course: signals.gitdealflow.com/challenge${VIA}`,
-      twitter: `Calibration case: Vercel Series E 2026-04.
+      twitter: `Retrospective engineering example: Vercel, 2026-04.
 
 Composite at month -3: 5/6.
 Only miss: issue-to-PR (0.9 vs 1.5 threshold).
 
-Framework would have flagged this round before the headline. ~5× base rate.`,
-      instagram: `🎯 Calibration case
+The documented release has no linked funding-event labels. This is a diligence example, not a financing forecast.`,
+      instagram: `🎯 Retrospective engineering example
 
 Vercel Series E (April 2026)
 Backtested at month -3: 5/6
 
-Only miss: issue-to-PR ratio (suggested inbound > shipping speed)
+Only miss: issue-to-PR ratio
 
-Framework would have flagged this round 90 days early.
+The documented release has no linked funding-event labels. This is not evidence that the score predicted the round.
 
 ${TAGS_IG.join(" ")}`,
-      facebook: `Calibration case, Vercel's Series E announced April 2026, backtested at month -3.
+      facebook: `Retrospective engineering example: Vercel's Series E was announced in April 2026, with the public engineering composite read at month -3.
 
-The composite read 5/6 ninety days before the announce. The only miss was the issue-to-PR ratio (0.9 vs the 1.5 healthy threshold) which suggested inbound was outpacing shipping, the kind of "we need the round to hire" moment that often precedes a growth-stage close.
+The composite read 5/6. The only miss was the issue-to-PR ratio (0.9 vs the 1.5 threshold).
 
-Calibration runs are how you build trust in the framework. Run one a week. SSRN: ssrn.com/abstract=6606558`,
+The documented research release has no linked funding-event labels, so this example is not evidence that the score predicted financing. Use it as a research and diligence aid, not a financing forecast. SSRN: ssrn.com/abstract=6606558`,
     },
   },
 

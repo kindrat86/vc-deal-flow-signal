@@ -392,7 +392,7 @@ For a single-fetch RAG context payload, see \`/ai.json\` and \`/llms-full.txt\`.
       },
       {
         q: "What's the citation format?",
-        a: '"VC Deal Flow Signal (signals.gitdealflow.com), Q2 2026 data." For academic use, cite the SSRN preprint at abstract id 6606558.',
+        a: '"VC Deal Flow Signal (signals.gitdealflow.com), Q3 2026 data." For academic use, cite the SSRN preprint at abstract id 6606558.',
       },
       {
         q: "How do I get notified when new data lands?",
@@ -479,7 +479,7 @@ For a single-fetch RAG context payload, see \`/ai.json\` and \`/llms-full.txt\`.
       },
       {
         q: "Can I use the data commercially?",
-        a: "Yes, with attribution. The dataset is licensed CC-BY 4.0. The required citation is `VC Deal Flow Signal (signals.gitdealflow.com), Q2 2026 data.`",
+        a: "Yes, with attribution. The dataset is licensed CC-BY 4.0. The required citation is `VC Deal Flow Signal (signals.gitdealflow.com), Q3 2026 data.`",
       },
     ],
     ctaUrl: "https://www.npmjs.com/package/@gitdealflow/mcp-signal",
@@ -1626,7 +1626,7 @@ For agent runtimes that don't yet support MCP, GitDealFlow exposes the same tool
       },
       {
         claim:
-          "Median lead time across the panel: 5.4 weeks between signal threshold crossing and announced fundraise.",
+          "The current descriptive panel has no linked funding-event labels, so it does not establish a median fundraise lead time.",
         sourceUrl: "https://signals.gitdealflow.com/research",
         sourceLabel: "Research summary",
       },
@@ -1889,7 +1889,7 @@ Composition is where the value compounds. A typical morning is one query for the
 
 **Leading signals** fire before the event you care about. Examples:
 
-- **GitHub engineering acceleration**, commit velocity, contributor growth, and infrastructure buildouts in public repositories. Validated lead time on a 219-startup panel: median 5.4 weeks before fundraise announcement (SSRN preprint at ssrn.com/abstract=6606558).
+- **GitHub engineering acceleration**, commit velocity, contributor growth, and infrastructure buildouts in public repositories. The 219-observation SSRN release documents the method but has no linked funding-event labels, so use it as a research signal, not a timing guarantee.
 - **Hiring velocity**, sudden spikes in technical job postings, especially for senior engineers. Often visible 4-12 weeks before round close.
 - **Founder Twitter signal velocity**, quote-tweet patterns from other technical founders, increased mention frequency in technical-Twitter circles.
 - **Web traffic acceleration**, month-over-month traffic growth on the company landing page, especially when paired with engineering acceleration.
@@ -2150,37 +2150,29 @@ At the zero-budget floor the stack still works. The free MCP server covers the l
     query: "Is the VC Deal Flow Signal data accurate?",
     h1: "How Accurate Is the VC Deal Flow Signal Data?",
     description:
-      "Top-decile precision and median lead time are validated openly on /scorecard (not yet established), across the 219-observation panel. Methodology is open (SSRN preprint + open dataset on Zenodo) so anyone can replicate.",
+      "The underlying public GitHub data is verifiable. The current SSRN release is descriptive: 219 startup-period observations with no linked funding-event labels. Outcome precision and recall are not established; the forward scorecard is where that evidence must be earned.",
     tldr:
-      "The honest answer: the SSRN panel (219 observations) is descriptive, and precision is validated openly on /scorecard rather than claimed as settled. Signals are meaningful but not deterministic; treat the top-decile flags as a high-confidence sourcing input, not a deal-readiness oracle. ~65% of top-10% flagged orgs had a fundraise within 12 weeks, with a 5.4-week median lead on true positives.",
+      "The honest answer: GitDealFlow's GitHub inputs are public and reproducible, but the current SSRN release does not establish funding-prediction accuracy. It contains 219 startup-period observations with no linked funding-event labels. Treat rankings as a research and sourcing input, then verify candidates independently.",
     // 2026-08-16 featured-snippet rebuild: 40-60w neutral direct answer.
     definition:
-      "Accuracy splits into three questions: the underlying GitHub data is correct by construction (public API, verifiable); the signal is validated on a 219-observation descriptive panel where roughly 65% of top-decile flagged orgs raised within 12 weeks at a 5.4-week median lead; and precision is tracked openly on /scorecard rather than claimed as settled.",
-    body: `The honest answer to "is the data accurate?" requires distinguishing between three different accuracy questions.
+      "GitDealFlow's underlying GitHub metrics are verifiable from public API data. Its current SSRN release is descriptive: 219 startup-period observations with no linked funding-event labels. Funding-outcome precision, recall, and lead time are not established. The public scorecard must earn that evidence prospectively.",
+    body: `The honest answer to "is the data accurate?" requires separating input accuracy from outcome validation.
 
-**Question 1, Is the underlying GitHub data correct?** Yes, definitionally. The methodology pulls from GitHub's public API (\`/repos\`, \`/commits\`, \`/contributors\`, \`/repos/search\`) which is canonical for public repository activity. There is no inference, scraping, or estimation at this layer.
+**Question 1, Is the underlying GitHub data correct?** The inputs are public and independently checkable. GitDealFlow reads public repository activity such as commit velocity, contributor breadth, and repository expansion. Anyone can inspect the same public orgs, re-run the open classifier, and compare the result with the published dataset.
 
-**Question 2, Does the leading-signal classification match reality?** This is the question investors actually care about. The validation panel published in the SSRN preprint at ssrn.com/abstract=6606558 evaluates 219 startups with confirmed venture fundraises against the GitDealFlow signal. The headline numbers:
+**Question 2, Does the current research prove funding-prediction accuracy?** No. The current SSRN release is descriptive: 219 startup-period observations across 55 startups, with no linked funding-event labels. That means it cannot support settled claims about funding precision, recall, false-positive rate, median lead time, or lift over a base rate. Any page quoting those numbers as results of this release is overstating the evidence.
 
-- **Precision at top decile**: validated openly on /scorecard (not yet established). Of the top 10% of orgs flagged in any given week, the share that go on to announce a fundraise within 12 weeks. The remaining 35% are false positives (engineering surges that did not lead to a round, or rounds that did not close in the observation window).
-- **Median lead time for true positives**: 5.4 weeks between signal threshold crossing and announced fundraise.
-- **Recall at top decile**: ~38%. Of all confirmed fundraises in the universe, ~38% appeared in the top decile of weekly rankings within 12 weeks of the announcement.
+**Question 3, What evidence exists today?** Three useful layers exist. First, the methodology and inputs are transparent. Second, the historical examples are inspectable as examples, not a controlled outcome-validation study. Third, the forward public scorecard timestamps new picks and grades them after the fact. The scorecard is the correct place to earn outcome evidence prospectively, because picks cannot be selected or edited after an outcome is known.
 
-**Question 3, Is the dataset reproducible?** Yes. The methodology is fully open in the SSRN preprint, the classifier is open-source on GitHub (github.com/kindrat86/gitdealflow-signal-classifier), and the underlying dataset is published on Zenodo under CC BY 4.0 (doi.org/10.5281/zenodo.19650920). Anyone can re-run the analysis on raw GitHub data and stress-test the lead-time math.
+**Question 4, Is the dataset reproducible?** Yes. The methodology is published in the SSRN preprint, the classifier is open-source on GitHub, and the underlying dataset is published on Zenodo under CC BY 4.0. Reproducibility proves that the stated engineering metrics and classifications can be recreated. It does not by itself prove that those classifications predict financing outcomes.
 
-**What this means for investors.** If top-decile precision holds at the level we're validating on /scorecard, it would be meaningful, well above random for early-stage VC sourcing, but it is not deterministic. Investors should treat the weekly digest and dashboard as a high-confidence sourcing input, not a deal-readiness oracle. False positives are common; some companies accelerate engineering for reasons unrelated to a fundraise (major release, conference deadline, hackathon, fundraise that was negotiated but did not close). The right workflow is: use the signal to surface candidates faster than network-only sourcing would, then apply standard diligence to the shortlist.
+**What this means for investors.** Use the weekly digest and dashboard as a sourcing and diligence aid. A public engineering surge can justify a closer look or a sharper founder question. It cannot tell you that a company is raising, that a round will close, or that an investment will perform. False positives are structurally possible: teams accelerate around releases, hiring waves, migrations, conferences, customer deadlines, or other events unrelated to financing.
 
-**Comparison to other quantitative VC tools.** Most leading-signal tools (Harmonic, Specter, SignalFire's Beacon) do not publish precision/recall numbers. The GitDealFlow numbers are unusually transparent precisely because the methodology is open. Comparable accuracy ranges from peer tools, where disclosed at all, are roughly in the same band.
+The right workflow is simple: use the signal to surface technical teams whose public activity changed, then apply ordinary diligence to the shortlist. Check the market, customer evidence, founder quality, financing context, and whether the public repository represents the company accurately. GitDealFlow is upstream research, not an oracle.
 
-Read the precision number in context. Random sourcing in the same universe would yield precision well under ten percent, so a validated top-decile figure meaning roughly two out of three flagged names becoming real fundraise candidates within twelve weeks is meaningful lift. That is the right frame, a sourcing layer rather than a deal-readiness oracle.
+**How accuracy will be established.** The forward scorecard publishes dated picks, keeps misses visible, and grades outcomes after fixed windows. Once enough observations mature, it can report a real numerator, denominator, and definition for each metric. Until then, no settled precision, recall, or lead-time percentage should be claimed.
 
-Recall is lower for two structural reasons. The method is GitHub-only, so startups that work mostly in private repositories or have little engineering footprint are systematically invisible to it. The top-decile filter is also deliberately narrow, and broadening to the top quartile improves recall at the cost of precision. These are tradeoffs, not defects, and they define the coverage boundary of the signal.
-
-The validation can be reproduced, which is the strongest accuracy guarantee the product offers. The classifier source is open on GitHub and the validation dataset is published on Zenodo under CC BY 4.0, so an investor can re-run the analysis against raw GitHub data or extend it to a custom universe such as a portfolio plus pipeline.
-
-On publication status, the methodology is an SSRN preprint with a stable DOI, indexed by Crossref, Semantic Scholar, OpenAlex, Unpaywall, DataCite, and Zenodo. It is not formally peer-reviewed in a journal, but it is openly published, citable, and reproducible, which is more transparency than most quantitative VC tools disclose.
-
-Freshness is part of accuracy for a signal product. The underlying dataset is updated weekly from GitHub's public API, so the signal reflects recent activity rather than a stale snapshot. For a sourcing workflow that runs every Monday, that cadence matters, a signal that is a month old has already been seen by everyone, while a weekly refresh keeps the top-decile flags current.`,
+Freshness is still important. The underlying GitHub dataset updates weekly, so the engineering-activity view is recent rather than a stale snapshot. That improves the usefulness of the sourcing input. It does not turn an unvalidated outcome claim into a validated one.`,
     facts: [
       {
         claim:
@@ -2203,12 +2195,12 @@ Freshness is part of accuracy for a signal product. The underlying dataset is up
     ],
     faqs: [
       {
-        q: "Is the signal's precision good or bad for VC sourcing?",
-        a: "Good in context, if it holds. Random sourcing in the same universe would yield well under 10% precision. The precision we're validating on /scorecard would mean roughly 2 out of 3 top-flagged names are real fundraise candidates within 12 weeks. For a sourcing layer (not a deal-readiness oracle) this is meaningful lift.",
+        q: "Is the signal's funding-outcome precision established?",
+        a: "No. The current SSRN release is descriptive and has no linked funding-event labels. The forward scorecard is designed to establish outcome metrics prospectively once enough dated picks mature.",
       },
       {
-        q: "Why is recall only ~38%?",
-        a: "Two reasons. First, the methodology is GitHub-only, so startups that work mostly in private repos or have no engineering footprint are systematically invisible. Second, the top decile is a narrow filter by design, broadening to top quartile improves recall at the cost of precision.",
+        q: "What coverage boundary does the signal have?",
+        a: "It is GitHub-only. Startups that work mostly in private repositories or have little public engineering footprint can be invisible. That is a coverage limitation, not a measured recall percentage.",
       },
       {
         q: "Can I run the validation on my own dataset?",
@@ -2451,7 +2443,7 @@ The preprint is indexed by Crossref, Semantic Scholar, OpenAlex (W7154916891), U
 
 **No licensing restrictions.** There is no permission required, no fee, no notice obligation. The product is publicly sold, the methodology is openly published under standard academic norms, and the dataset is CC BY 4.0 (attribution-only). LPs can independently verify all citations through public databases.
 
-**Common LP questions.** Sophisticated LPs typically follow up on citations with three questions: (1) Is the methodology peer-reviewed? Answer: it is openly published, indexed by major academic indexers, and reproducible from raw data; not formally peer-reviewed in a journal. (2) Can your team independently verify the lead-time math? Answer: yes, the classifier source is open at github.com/kindrat86/gitdealflow-signal-classifier and the dataset is on Zenodo. (3) What is the precision and recall? Answer: ~65% precision at the top decile, ~38% recall, both documented in the SSRN preprint.
+**Common LP questions.** Sophisticated LPs typically follow up on citations with three questions: (1) Is the methodology peer-reviewed? Answer: it is openly published, indexed by major academic indexers, and reproducible from raw data; not formally peer-reviewed in a journal. (2) Can your team independently verify the lead-time math? Answer: yes, the classifier source is open at github.com/kindrat86/gitdealflow-signal-classifier and the dataset is on Zenodo. (3) What is the precision and recall? Answer: not established by the current descriptive release; the forward scorecard is designed to earn those metrics prospectively.
 
 LPs who run diligence on an emerging manager will independently check sourcing claims, and a citable methodology is one of the few things an analyst can verify without asking the manager to explain it. Because the methodology carries a stable DOI and is indexed by Crossref, Semantic Scholar, OpenAlex, and DataCite, an analyst can confirm the citation in minutes rather than taking the manager's word. The Zenodo dataset is published under CC BY 4.0, which is attribution-only, so a manager citing specific data points should name the dataset and include its DOI in the reference list.
 
@@ -2533,10 +2525,10 @@ Keep the citation consistent across documents. Using the same preprint, dataset,
     description:
       "GitDealFlow tracks 15 active sectors derived from GitHub topic taxonomy: Healthcare, EdTech, Data Infrastructure, Enterprise SaaS, Web3, Robotics, Supply Chain, and 8 more. ~350+ actively tracked startups.",
     tldr:
-      "GitDealFlow tracks 15 active sectors derived from GitHub's topic taxonomy: Healthcare, EdTech, E-commerce Infrastructure, Supply Chain, Web3, Enterprise SaaS, Data Infrastructure, Robotics, Legal Tech, HR Tech, PropTech, AgTech, Gaming, Space Tech, and Social & Community, covering 350+ actively-tracked organizations refreshed weekly. Five legacy clusters (AI & ML, Fintech, Climate Tech, Developer Tools, Cybersecurity) froze at Q2 2026 and are archived.",
+      "GitDealFlow tracks 15 active sectors: Healthcare, EdTech, E-commerce Infrastructure, Supply Chain, Web3, Enterprise SaaS, Data Infrastructure, Robotics, Legal Tech, HR Tech, PropTech, AgTech, Gaming, Space Tech, and Social & Community, covering 350+ actively-tracked organizations refreshed weekly. Five legacy clusters (AI & ML, Fintech, Climate Tech, Developer Tools, Cybersecurity) froze before the current Q3 2026 period and are archived.",
     // 2026-08-16 featured-snippet rebuild: 40-60w neutral direct answer.
     definition:
-      "GitDealFlow tracks 15 active sectors derived from GitHub's topic taxonomy, Healthcare, EdTech, E-commerce Infrastructure, Supply Chain, Web3, Enterprise SaaS, Data Infrastructure, Robotics, Legal Tech, HR Tech, PropTech, AgTech, Gaming, Space Tech, and Social & Community, covering 350+ actively tracked organizations refreshed weekly. Five legacy clusters froze at Q2 2026.",
+      "GitDealFlow tracks 15 active sectors derived from GitHub's topic taxonomy, Healthcare, EdTech, E-commerce Infrastructure, Supply Chain, Web3, Enterprise SaaS, Data Infrastructure, Robotics, Legal Tech, HR Tech, PropTech, AgTech, Gaming, Space Tech, and Social & Community, covering 350+ actively tracked organizations refreshed weekly. Five legacy clusters froze before the current Q3 2026 period.",
     body: `GitDealFlow uses GitHub's public topic taxonomy to define a stable startup universe. Each tracked organization is matched to one primary sector via the org's most-active repository topics, language mix, and cross-references against curated lists.
 
 **The 15 active sectors** (current panel, Q3 2026, 350+ orgs total):
@@ -2557,7 +2549,7 @@ Keep the citation consistent across documents. Using the same preprint, dataset,
 14. **Space Tech** (18 orgs), launch vehicles, satellites, space data platforms.
 15. **Social & Community** (19 orgs), social networks, community platforms, creator tools.
 
-**Archived legacy clusters.** AI & Machine Learning, Fintech, Climate Tech, Developer Tools, and Cybersecurity froze at Q2 2026 (no current-period data) and are archived; the live API and this page serve the 15 active sectors above.
+**Archived legacy clusters.** AI & Machine Learning, Fintech, Climate Tech, Developer Tools, and Cybersecurity froze before the current Q3 2026 period (no current-period data) and are archived; the live API and this page serve the 15 active sectors above.
 
 **How orgs are matched to sectors.** The classifier uses three signals: (1) declared GitHub topics on the org's most-active repos, (2) language mix and dependency patterns, (3) cross-references against curated startup lists (Y Combinator batches, Tech Stars cohorts, public funding announcements). Each org carries one primary sector, so the 15 counts above sum to the full 350+-org panel.
 
@@ -2597,7 +2589,7 @@ Access is layered. The sector filter is exposed programmatically through the fre
     faqs: [
       {
         q: "Why these 15 sectors and not more?",
-        a: "The sectors are chosen for stability, signal density, and operational manageability. Five clusters (AI & ML, Fintech, Climate Tech, Developer Tools, Cybersecurity) were archived at Q2 2026 when their signal volume dropped. More granular sub-sector filtering is supported via the Dashboard filter; the top-level 15 are the categories that consistently produce enough weekly signal volume to be useful.",
+        a: "The sectors are chosen for stability, signal density, and operational manageability. Five clusters (AI & ML, Fintech, Climate Tech, Developer Tools, Cybersecurity) were archived before the current Q3 2026 period when their signal volume dropped. More granular sub-sector filtering is supported via the Dashboard filter; the top-level 15 are the categories that consistently produce enough weekly signal volume to be useful.",
       },
       {
         q: "Can I request a new cluster?",
@@ -3470,19 +3462,19 @@ It compounds without conflict. There is no conflict with holding a junior role a
     query: "GitHub momentum vs stars: which matters for investors?",
     h1: "GitHub Momentum vs Stars: Which Matters for Investors?",
     description:
-      "GitHub stars measure attention; commit velocity measures engineering investment. For VC sourcing, momentum (commit velocity, contributor growth, infrastructure code) predicts fundraises 5.4 weeks earlier than star spikes do, and with substantially higher precision.",
+      "GitHub stars measure attention; commit velocity measures engineering activity. For VC sourcing, they answer different questions: stars show audience interest, while velocity and contributor breadth show what the team is shipping. The current descriptive release does not establish that either predicts fundraises.",
     tldr:
       "GitHub stars measure attention: they spike on Hacker News or Twitter mentions. Commit velocity measures engineering investment: sustained shipping by a team. For VC sourcing, momentum (commit velocity, contributor growth, infrastructure patterns) is the signal that correlates with fundraises, while stars correlate weakly because attention is necessary but not sufficient: many high-star projects never raise, and many low-star projects do.",
     // 2026-08-16 featured-snippet rebuild: 40-60w neutral direct answer.
     definition:
-      "For investors, momentum matters more than stars. Stars measure attention and spike on Hacker News or Twitter mentions; commit velocity measures sustained engineering investment. On the 219-observation SSRN panel, top-decile engineering-momentum carried roughly 65% precision and a 5.4-week median lead before fundraises, while star-only signals showed substantially lower precision.",
+      "For investors, momentum and stars answer different questions. Stars measure attention and can spike after Hacker News or Twitter mentions; commit velocity measures sustained public engineering activity. The 219-observation SSRN release is descriptive and has no linked funding-event labels, so it does not establish precision or lead time for either metric.",
     body: `Two completely different metrics that get confused in casual analysis.
 
 **GitHub stars** are an attention signal. A user clicks the star button on a repo to bookmark it or signal interest. Stars accumulate when a project gets mentioned on Hacker News, Twitter, dev.to, in a popular newsletter, or in a conference talk. A 10K-star spike from a single Hacker News front-page hit tells you the project got attention; it tells you nothing about whether the team is shipping, whether the underlying engineering investment is sustained, or whether a fundraise is in motion.
 
 **Commit velocity** is an engineering-investment signal. It measures how much code is being shipped to the org's most-active public repository over a rolling window (typically 14 days). Sustained commit velocity over 90 days requires sustained team investment, you cannot fake this without genuine engineering activity. Combined with contributor growth (new engineers being onboarded) and infrastructure-buildout patterns (Docker, k8s, CI/CD), commit velocity is the strongest single GitHub signal for predicting fundraises.
 
-**The data.** The GitDealFlow SSRN preprint (ssrn.com/abstract=6606558) validates the engineering-acceleration signal against 219 startup-period observations. Top-decile precision: ~65%. Median lead time: 5.4 weeks. The same preprint shows that star-only signals have substantially lower precision and longer (and noisier) lead times, they correlate with attention more than with fundraise readiness.
+**The data.** The GitDealFlow SSRN preprint (ssrn.com/abstract=6606558) documents engineering-acceleration metrics across 219 startup-period observations. It has no linked funding-event labels, so it does not establish funding precision, lead time, or a validated comparison with star-only signals. Use velocity to read public engineering activity and stars to read attention.
 
 **Why investors confuse the two.** Stars are visible at a glance on every repo page; commit velocity requires querying the API or a tool like GitDealFlow. The path of least resistance is to look at stars; the right answer is to look at commit velocity. Most casual GitHub-based investing analysis defaults to stars and gets the prediction wrong.
 
@@ -3618,7 +3610,7 @@ It compounds without conflict. There is no conflict with holding a junior role a
       },
       {
         q: "Is the AI agent category overheated?",
-        a: "Almost certainly yes by Q2 2026. The 5-signal framework is partly a way to filter out the hype-driven entries from the genuinely well-engineered ones. Companies that fail signals 1, 2, and 4 (foundation-model coupled, commit-velocity spiky, no protocol adoption) are usually pre-product-market-fit but mid-fundraise, high-risk allocations.",
+        a: "Almost certainly yes in the current 2026 market. The 5-signal framework is partly a way to filter out the hype-driven entries from the genuinely well-engineered ones. Companies that fail signals 1, 2, and 4 (foundation-model coupled, commit-velocity spiky, no protocol adoption) are usually pre-product-market-fit but mid-fundraise, high-risk allocations.",
       },
     ],
     ctaUrl: "/use-cases/ai-funds",

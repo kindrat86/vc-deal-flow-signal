@@ -211,7 +211,7 @@ export const CHALLENGE_DAYS: readonly ChallengeDay[] = [
     title: "The composite + the fast version",
     oneLine: "Six signals → one score → 350+ orgs in 4 seconds.",
     whyItMatters:
-      "The composite is the framework. A startup scoring 5/6 with sustained acceleration over 14 days closes within 21-47 days about 38% of the time, roughly 5x the base rate from the SSRN panel.",
+      "The composite is the framework: it combines six public engineering observations into one consistent reading. It is a research and diligence aid, not a funding predictor; the current SSRN release has no linked funding-event labels.",
     procedure: [
       "Commit velocity ratio > 1.3 → +1",
       "Top contributor < 50% AND ≥4 contributors with 10+ commits → +1",
@@ -221,7 +221,7 @@ export const CHALLENGE_DAYS: readonly ChallengeDay[] = [
       "PRs closed ÷ Issues opened (last 30d) > 1.5 → +1",
     ],
     filterFor:
-      "Score 5 of 6 = strong fundraise-precursor profile. Score 6 of 6 with 14-day sustained acceleration = ~38% close-within-47-days rate (vs ~7% base rate).",
+      "Score 5 of 6 = strong public engineering-acceleration profile. A high score justifies a closer look; it does not establish that a fundraise is underway or likely.",
     edgeCase:
       "A startup scoring 6/6 on a single repo but the org-level reading is 2/6, that's a single product break-out inside an otherwise quiet org. Different bet than an org-wide acceleration. Read both layers.",
     bonus:

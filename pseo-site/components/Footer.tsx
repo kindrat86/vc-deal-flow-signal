@@ -117,7 +117,7 @@ export default function Footer() {
               <Link href="/startups" className="hover:text-gray-200 transition-colors">Startup Directory</Link>
               <Link href="/trending" className="hover:text-gray-200 transition-colors">Trending</Link>
               <Link href="/stage/seed" className="hover:text-gray-200 transition-colors">By Stage</Link>
-              <Link href="/for" className="hover:text-gray-200 transition-colors">Who It's For</Link>
+              <Link href="/for" className="hover:text-gray-200 transition-colors">Who It&apos;s For</Link>
               <Link href="/vs/harmonic-ai-vs-dealroom" className="hover:text-gray-200 transition-colors">Head-to-Head</Link>
               <Link href="/blog" className="hover:text-gray-200 transition-colors">Blog</Link>
               <Link href="/book" className="hover:text-gray-200 transition-colors">Book: 7 Signals</Link>
@@ -167,7 +167,7 @@ export default function Footer() {
           <Link href="/feedback" className="hover:text-gray-300 transition-colors">Feedback</Link>
           <Link href="/pulse" className="hover:text-gray-300 transition-colors">Satisfaction pulse</Link>
           <Link href="/partners" className="hover:text-gray-300 transition-colors">Partners</Link>
-          <Link href="/affiliates/leaderboard" className="hover:text-gray-300 transition-colors">Affiliate leaderboard</Link>
+          <Link href="/affiliates" className="hover:text-gray-300 transition-colors">Affiliate program</Link>
           <Link href="/data-nerd/social" className="hover:text-gray-300 transition-colors">Brand mascot</Link>
           <Link href="/mirrors" className="hover:text-gray-300 transition-colors">Mirrors</Link>
           <Link href="/embed" className="hover:text-gray-300 transition-colors">Embed</Link>

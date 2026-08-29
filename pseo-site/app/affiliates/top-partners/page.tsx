@@ -10,23 +10,18 @@ export const dynamic = "force-static";
 export const metadata: Metadata = withEditorialOverride({
   title: "Top 50, the publishers, podcasts, and communities we'd like to partner with",
   description:
-    "GitDealFlow's top-50 publisher roster. 50 named newsletter writers, podcast hosts, and community owners whose audiences overlap our earlier-signal audience. Engagement status, fit notes, and the pitch templates we send.",
+    "GitDealFlow's partner wishlist: 50 named newsletters, podcasts, and communities whose audiences overlap our earlier-signal audience, with fit notes. No outreach has been sent through this page; it is a public wish list, not an engagement log.",
   alternates: { canonical: "/affiliates/top-partners" },
   openGraph: {
     title: "Top 50, publishers we'd like to partner with",
     description:
-      "50 named newsletter writers, podcast hosts, and communities. Status: engaged, outreach-sent, replied, pending, declined.",
+      "50 named newsletters, podcasts, and communities we'd like to work with. A public wish list, not an engagement log.",
     url: "https://signals.gitdealflow.com/affiliates/top-partners",
     type: "article",
   },
 });
 
-type Status =
-  | "engaged"
-  | "replied"
-  | "outreach-sent"
-  | "pending"
-  | "passed";
+type Status = "wishlist";
 
 type PartnerArchetype =
   | "newsletter"
@@ -43,97 +38,80 @@ type Partner = {
   audience: string;
   fit: string;
   status: Status;
-  lastTouch?: string;
 };
 
 const PARTNERS: Partner[] = [
   // Engaged (live mention, recommendation block, or interview shipped)
-  { id: "lennys", name: "Lenny's Newsletter", who: "Lenny Rachitsky", archetype: "newsletter", audience: "Product / growth, ~900k subs", fit: "Crossover with PM-turned-angel readers", status: "outreach-sent", lastTouch: "2026-04" },
-  { id: "stratechery", name: "Stratechery", who: "Ben Thompson", archetype: "newsletter", audience: "Tech strategy, 6-figure paid", fit: "Aggregation Theory readers care about platform-buildout signals", status: "pending" },
-  { id: "platformer", name: "Platformer", who: "Casey Newton", archetype: "newsletter", audience: "Tech industry, ~170k", fit: "Audience overlaps tech-aware angels", status: "pending" },
-  { id: "alex-blog", name: "Alex Xu, ByteByteGo", who: "Alex Xu", archetype: "newsletter", audience: "Engineering systems, ~700k", fit: "Reads engineering-as-signal naturally", status: "pending" },
-  { id: "indie-hackers", name: "IndieHackers Weekly", who: "Channing Allen / Stripe", archetype: "newsletter", audience: "Indie founders ~120k", fit: "Founder-investor crossover, low CPL", status: "outreach-sent", lastTouch: "2026-05" },
+  { id: "lennys", name: "Lenny's Newsletter", who: "Lenny Rachitsky", archetype: "newsletter", audience: "Product / growth, ~900k subs", fit: "Crossover with PM-turned-angel readers", status: "wishlist" },
+  { id: "stratechery", name: "Stratechery", who: "Ben Thompson", archetype: "newsletter", audience: "Tech strategy, 6-figure paid", fit: "Aggregation Theory readers care about platform-buildout signals", status: "wishlist" },
+  { id: "platformer", name: "Platformer", who: "Casey Newton", archetype: "newsletter", audience: "Tech industry, ~170k", fit: "Audience overlaps tech-aware angels", status: "wishlist" },
+  { id: "alex-blog", name: "Alex Xu, ByteByteGo", who: "Alex Xu", archetype: "newsletter", audience: "Engineering systems, ~700k", fit: "Reads engineering-as-signal naturally", status: "wishlist" },
+  { id: "indie-hackers", name: "IndieHackers Weekly", who: "Channing Allen / Stripe", archetype: "newsletter", audience: "Indie founders ~120k", fit: "Founder-investor crossover, low CPL", status: "wishlist" },
 
   // Newsletters, venture & alt-data
-  { id: "fintech-bs", name: "Fintech Business Weekly", who: "Jason Mikula", archetype: "newsletter", audience: "Fintech VCs + ops", fit: "Fintech sector overlap with our 15-sector grid", status: "pending" },
-  { id: "axios-pro-rata", name: "Axios Pro Rata", who: "Dan Primack", archetype: "newsletter", audience: "VC industry, ~80k", fit: "Direct VC-news audience", status: "pending" },
-  { id: "term-sheet", name: "Fortune Term Sheet", who: "Allie Garfinkle / Jessica Mathews", archetype: "newsletter", audience: "VC industry, large", fit: "Daily VC briefing, methodology PR fit", status: "pending" },
-  { id: "newcomer", name: "Newcomer", who: "Eric Newcomer", archetype: "newsletter", audience: "VC scoops, ~80k paid", fit: "Pre-deck deal-flow scoop angle", status: "pending" },
-  { id: "the-information", name: "The Information, The Briefing", who: "Cory Weinberg", archetype: "newsletter", audience: "Premium tech, 6-fig", fit: "Methodology paper PR angle", status: "pending" },
-  { id: "the-generalist", name: "The Generalist", who: "Mario Gabriele", archetype: "newsletter", audience: "Deep-dive VC, ~150k", fit: "Long-form fit, could co-author a sector deep-dive", status: "outreach-sent", lastTouch: "2026-04" },
-  { id: "everything-bundle", name: "Every / Napkin Math", who: "Evan Armstrong / Dan Shipper", archetype: "newsletter", audience: "Tech-business analysis", fit: "Alt-data thesis fits Napkin Math house style", status: "pending" },
-  { id: "exec-sum", name: "Exec Sum", who: "Litquidity", archetype: "newsletter", audience: "Finance Twitter readers, ~700k", fit: "Tweet-Teardown crossover; high-volume top-of-funnel", status: "pending" },
-  { id: "techmeme-rs", name: "Techmeme Ride Home", who: "Brian McCullough", archetype: "podcast", audience: "Tech-industry daily, ~100k", fit: "VC-tools-news angle, methodology paper hook", status: "pending" },
-  { id: "petitions", name: "Petition", who: "Tim Carlson", archetype: "newsletter", audience: "Restructuring + alt-data", fit: "Alt-data community overlap", status: "pending" },
+  { id: "fintech-bs", name: "Fintech Business Weekly", who: "Jason Mikula", archetype: "newsletter", audience: "Fintech VCs + ops", fit: "Fintech sector overlap with our 15-sector grid", status: "wishlist" },
+  { id: "axios-pro-rata", name: "Axios Pro Rata", who: "Dan Primack", archetype: "newsletter", audience: "VC industry, ~80k", fit: "Direct VC-news audience", status: "wishlist" },
+  { id: "term-sheet", name: "Fortune Term Sheet", who: "Allie Garfinkle / Jessica Mathews", archetype: "newsletter", audience: "VC industry, large", fit: "Daily VC briefing, methodology PR fit", status: "wishlist" },
+  { id: "newcomer", name: "Newcomer", who: "Eric Newcomer", archetype: "newsletter", audience: "VC scoops, ~80k paid", fit: "Pre-deck deal-flow scoop angle", status: "wishlist" },
+  { id: "the-information", name: "The Information, The Briefing", who: "Cory Weinberg", archetype: "newsletter", audience: "Premium tech, 6-fig", fit: "Methodology paper PR angle", status: "wishlist" },
+  { id: "the-generalist", name: "The Generalist", who: "Mario Gabriele", archetype: "newsletter", audience: "Deep-dive VC, ~150k", fit: "Long-form fit, could co-author a sector deep-dive", status: "wishlist" },
+  { id: "everything-bundle", name: "Every / Napkin Math", who: "Evan Armstrong / Dan Shipper", archetype: "newsletter", audience: "Tech-business analysis", fit: "Alt-data thesis fits Napkin Math house style", status: "wishlist" },
+  { id: "exec-sum", name: "Exec Sum", who: "Litquidity", archetype: "newsletter", audience: "Finance Twitter readers, ~700k", fit: "Tweet-Teardown crossover; high-volume top-of-funnel", status: "wishlist" },
+  { id: "techmeme-rs", name: "Techmeme Ride Home", who: "Brian McCullough", archetype: "podcast", audience: "Tech-industry daily, ~100k", fit: "VC-tools-news angle, methodology paper hook", status: "wishlist" },
+  { id: "petitions", name: "Petition", who: "Tim Carlson", archetype: "newsletter", audience: "Restructuring + alt-data", fit: "Alt-data community overlap", status: "wishlist" },
 
   // Podcasts, VC + tech
-  { id: "20vc", name: "Twenty Minute VC", who: "Harry Stebbings", archetype: "podcast", audience: "VC industry, large", fit: "Founder-as-Data-Nerd angle if anonymity relaxes", status: "passed", lastTouch: "anonymity rule" },
-  { id: "acquired", name: "Acquired", who: "Ben Gilbert / David Rosenthal", archetype: "podcast", audience: "Long-form tech, ~500k", fit: "Methodology paper hook for an episode segment", status: "pending" },
-  { id: "invest-best", name: "Invest Like the Best", who: "Patrick O'Shaughnessy", archetype: "podcast", audience: "Investing, large", fit: "Quant-side investing crossover", status: "passed", lastTouch: "anonymity rule" },
-  { id: "this-vc", name: "This Week in Startups", who: "Jason Calacanis", archetype: "podcast", audience: "Angel community", fit: "Angel-investor primary audience", status: "passed", lastTouch: "anonymity rule" },
-  { id: "founders-pod", name: "Founders Podcast", who: "David Senra", archetype: "podcast", audience: "Founder reading-club, large", fit: "Bookish audience reads /book funnel naturally", status: "pending" },
-  { id: "all-in", name: "All-In", who: "Chamath / Friedberg / Sacks / Calacanis", archetype: "podcast", audience: "Tech-VC, very large", fit: "Out of reach, methodology PR only", status: "pending" },
-  { id: "decoder", name: "Decoder", who: "Nilay Patel", archetype: "podcast", audience: "Tech industry", fit: "Platform-thinking audience", status: "pending" },
-  { id: "tech-deck", name: "Tech Deck", who: "Sequoia Capital", archetype: "podcast", audience: "Sequoia portfolio + alumni", fit: "Out of reach, long-shot", status: "pending" },
-  { id: "logan-bartlett", name: "The Logan Bartlett Show", who: "Logan Bartlett (Redpoint)", archetype: "podcast", audience: "VC operators, growing", fit: "Operator-investor audience match", status: "pending" },
-  { id: "swyx", name: "Latent Space", who: "swyx + Alessio", archetype: "podcast", audience: "AI engineering, ~50k", fit: "Agent-side MCP hook lands here", status: "outreach-sent", lastTouch: "2026-05" },
+  { id: "20vc", name: "Twenty Minute VC", who: "Harry Stebbings", archetype: "podcast", audience: "VC industry, large", fit: "Founder-as-Data-Nerd angle if anonymity relaxes", status: "wishlist" },
+  { id: "acquired", name: "Acquired", who: "Ben Gilbert / David Rosenthal", archetype: "podcast", audience: "Long-form tech, ~500k", fit: "Methodology paper hook for an episode segment", status: "wishlist" },
+  { id: "invest-best", name: "Invest Like the Best", who: "Patrick O'Shaughnessy", archetype: "podcast", audience: "Investing, large", fit: "Quant-side investing crossover", status: "wishlist" },
+  { id: "this-vc", name: "This Week in Startups", who: "Jason Calacanis", archetype: "podcast", audience: "Angel community", fit: "Angel-investor primary audience", status: "wishlist" },
+  { id: "founders-pod", name: "Founders Podcast", who: "David Senra", archetype: "podcast", audience: "Founder reading-club, large", fit: "Bookish audience reads /book funnel naturally", status: "wishlist" },
+  { id: "all-in", name: "All-In", who: "Chamath / Friedberg / Sacks / Calacanis", archetype: "podcast", audience: "Tech-VC, very large", fit: "Out of reach, methodology PR only", status: "wishlist" },
+  { id: "decoder", name: "Decoder", who: "Nilay Patel", archetype: "podcast", audience: "Tech industry", fit: "Platform-thinking audience", status: "wishlist" },
+  { id: "tech-deck", name: "Tech Deck", who: "Sequoia Capital", archetype: "podcast", audience: "Sequoia portfolio + alumni", fit: "Out of reach, long-shot", status: "wishlist" },
+  { id: "logan-bartlett", name: "The Logan Bartlett Show", who: "Logan Bartlett (Redpoint)", archetype: "podcast", audience: "VC operators, growing", fit: "Operator-investor audience match", status: "wishlist" },
+  { id: "swyx", name: "Latent Space", who: "swyx + Alessio", archetype: "podcast", audience: "AI engineering, ~50k", fit: "Agent-side MCP hook lands here", status: "wishlist" },
 
   // Communities
-  { id: "ih", name: "IndieHackers community", who: "Channing & Rosanna Allen", archetype: "community", audience: "~50k MAU", fit: "Solo-founder building public; we already post weekly", status: "engaged", lastTouch: "2026-05 (weekly)" },
-  { id: "ph", name: "Product Hunt", who: "Ryan Hoover et al.", archetype: "community", audience: "PH Top 50 reach", fit: "MCP launch, Tweet-Teardown launch fits", status: "engaged", lastTouch: "2026-04" },
-  { id: "hn", name: "Hacker News", who: "dang (mod)", archetype: "community", audience: "Tier-1 tech traffic", fit: "Account block needs resolution before resumption", status: "passed", lastTouch: "blocked" },
-  { id: "lobsters", name: "Lobste.rs", who: "Peter Bhat Harkins", archetype: "community", audience: "~25k engineers, invite-only", fit: "Methodology paper fits site rules", status: "pending" },
-  { id: "rvc", name: "r/venturecapital", who: "Mod team", archetype: "community", audience: "~95k", fit: "VC subreddit; affiliate disclosure required", status: "engaged", lastTouch: "2026-05" },
-  { id: "rangel", name: "r/AngelInvestor", who: "Mod team", archetype: "community", audience: "~30k", fit: "Direct angel audience", status: "outreach-sent", lastTouch: "2026-05" },
-  { id: "rstartups", name: "r/startups", who: "Mod team", archetype: "community", audience: "~1.5M", fit: "Founder side; teardown / dashboard hook", status: "pending" },
-  { id: "rsidehustle", name: "r/SideProject", who: "Mod team", archetype: "community", audience: "~500k", fit: "Show-and-tell-friendly community", status: "outreach-sent", lastTouch: "2026-05" },
-  { id: "build-fund", name: "Build & Fund (Founders Network)", who: "Mike Suprovici", archetype: "community", audience: "Vetted founder community", fit: "Indirect, partners for affiliate co-promo", status: "pending" },
-  { id: "openvc", name: "OpenVC community", who: "Stéphane Nasser", archetype: "community", audience: "~20k founders + investors", fit: "Direct VC-tools fit", status: "pending" },
+  { id: "ih", name: "IndieHackers community", who: "Channing & Rosanna Allen", archetype: "community", audience: "~50k MAU", fit: "Solo-founder building public; we already post weekly", status: "wishlist" },
+  { id: "ph", name: "Product Hunt", who: "Ryan Hoover et al.", archetype: "community", audience: "PH Top 50 reach", fit: "MCP launch, Tweet-Teardown launch fits", status: "wishlist" },
+  { id: "hn", name: "Hacker News", who: "dang (mod)", archetype: "community", audience: "Tier-1 tech traffic", fit: "Account block needs resolution before resumption", status: "wishlist" },
+  { id: "lobsters", name: "Lobste.rs", who: "Peter Bhat Harkins", archetype: "community", audience: "~25k engineers, invite-only", fit: "Methodology paper fits site rules", status: "wishlist" },
+  { id: "rvc", name: "r/venturecapital", who: "Mod team", archetype: "community", audience: "~95k", fit: "VC subreddit; affiliate disclosure required", status: "wishlist" },
+  { id: "rangel", name: "r/AngelInvestor", who: "Mod team", archetype: "community", audience: "~30k", fit: "Direct angel audience", status: "wishlist" },
+  { id: "rstartups", name: "r/startups", who: "Mod team", archetype: "community", audience: "~1.5M", fit: "Founder side; teardown / dashboard hook", status: "wishlist" },
+  { id: "rsidehustle", name: "r/SideProject", who: "Mod team", archetype: "community", audience: "~500k", fit: "Show-and-tell-friendly community", status: "wishlist" },
+  { id: "build-fund", name: "Build & Fund (Founders Network)", who: "Mike Suprovici", archetype: "community", audience: "Vetted founder community", fit: "Indirect, partners for affiliate co-promo", status: "wishlist" },
+  { id: "openvc", name: "OpenVC community", who: "Stéphane Nasser", archetype: "community", audience: "~20k founders + investors", fit: "Direct VC-tools fit", status: "wishlist" },
 
   // Blogs / writers
-  { id: "tomtunguz", name: "Tomasz Tunguz blog", who: "Tomasz Tunguz", archetype: "blog", audience: "VC ops + analytics", fit: "Data-driven VC angle, methodology paper hook", status: "pending" },
-  { id: "gergely", name: "The Pragmatic Engineer", who: "Gergely Orosz", archetype: "newsletter", audience: "Senior engineers ~700k", fit: "Engineering-org signals fit his beat exactly", status: "outreach-sent", lastTouch: "2026-04" },
-  { id: "stay-saasy", name: "Stay SaaSy", who: "Anonymous SaaS exec", archetype: "blog", audience: "B2B SaaS ops", fit: "Anonymous-author parallel; soft cross-promo", status: "pending" },
-  { id: "paul-graham", name: "Paul Graham essays", who: "Paul Graham", archetype: "blog", audience: "Founder canon", fit: "Methodology paper PR, long shot", status: "pending" },
-  { id: "ed-zitron", name: "Ed Zitron, Where's Your Ed At", who: "Ed Zitron", archetype: "newsletter", audience: "Tech-criticism ~100k", fit: "Counter-warm-intro narrative fits his beat", status: "pending" },
+  { id: "tomtunguz", name: "Tomasz Tunguz blog", who: "Tomasz Tunguz", archetype: "blog", audience: "VC ops + analytics", fit: "Data-driven VC angle, methodology paper hook", status: "wishlist" },
+  { id: "gergely", name: "The Pragmatic Engineer", who: "Gergely Orosz", archetype: "newsletter", audience: "Senior engineers ~700k", fit: "Engineering-org signals fit his beat exactly", status: "wishlist" },
+  { id: "stay-saasy", name: "Stay SaaSy", who: "Anonymous SaaS exec", archetype: "blog", audience: "B2B SaaS ops", fit: "Anonymous-author parallel; soft cross-promo", status: "wishlist" },
+  { id: "paul-graham", name: "Paul Graham essays", who: "Paul Graham", archetype: "blog", audience: "Founder canon", fit: "Methodology paper PR, long shot", status: "wishlist" },
+  { id: "ed-zitron", name: "Ed Zitron, Where's Your Ed At", who: "Ed Zitron", archetype: "newsletter", audience: "Tech-criticism ~100k", fit: "Counter-warm-intro narrative fits his beat", status: "wishlist" },
 
   // YouTube
-  { id: "fireship", name: "Fireship", who: "Jeff Delaney", archetype: "youtube", audience: "~3M devs", fit: "GitHub-visualisation hook, could land a 100s short", status: "pending" },
-  { id: "ycombinator-yt", name: "Y Combinator (YouTube)", who: "YC team", archetype: "youtube", audience: "Founder canon", fit: "Methodology paper interview-segment fit", status: "pending" },
-  { id: "lex-fridman", name: "Lex Fridman", who: "Lex Fridman", archetype: "podcast", audience: "Long-form, very large", fit: "Out of scope, long-shot list anchor only", status: "pending" },
+  { id: "fireship", name: "Fireship", who: "Jeff Delaney", archetype: "youtube", audience: "~3M devs", fit: "GitHub-visualisation hook, could land a 100s short", status: "wishlist" },
+  { id: "ycombinator-yt", name: "Y Combinator (YouTube)", who: "YC team", archetype: "youtube", audience: "Founder canon", fit: "Methodology paper interview-segment fit", status: "wishlist" },
+  { id: "lex-fridman", name: "Lex Fridman", who: "Lex Fridman", archetype: "podcast", audience: "Long-form, very large", fit: "Out of scope, long-shot list anchor only", status: "wishlist" },
 
   // Niche / sector newsletters
-  { id: "ben-evans", name: "Benedict Evans", who: "Benedict Evans", archetype: "newsletter", audience: "Tech analyst ~140k", fit: "Methodology paper PR fit", status: "pending" },
-  { id: "scott-galloway", name: "No Mercy / No Malice", who: "Scott Galloway", archetype: "newsletter", audience: "Business-tech, very large", fit: "VC-tools commentary fit", status: "pending" },
-  { id: "matt-levine", name: "Matt Levine, Money Stuff", who: "Matt Levine", archetype: "newsletter", audience: "Finance Twitter, ~300k", fit: "Quirky alt-data fits his column tone", status: "pending" },
-  { id: "byrne-hobart", name: "The Diff", who: "Byrne Hobart", archetype: "newsletter", audience: "Finance / strategy ~50k paid", fit: "Methodology paper fits Byrne's research style", status: "outreach-sent", lastTouch: "2026-04" },
-  { id: "alpha-signal", name: "Alpha Signal", who: "Lior", archetype: "newsletter", audience: "AI research ~150k", fit: "AI/ML sector overlap, MCP hook", status: "pending" },
-  { id: "tldr", name: "TLDR Newsletter", who: "Dan Ni", archetype: "newsletter", audience: "Devs ~1M", fit: "Devtools sector overlap", status: "pending" },
-  { id: "morning-brew-tech", name: "Tech Brew", who: "Morning Brew", archetype: "newsletter", audience: "Tech business ~600k", fit: "Methodology paper PR fit", status: "pending" },
-  { id: "ai-supremacy", name: "AI Supremacy", who: "Michael Spencer", archetype: "newsletter", audience: "AI-business ~100k", fit: "AI sector deep-dive co-promo", status: "pending" },
-  { id: "interconnects", name: "Interconnects", who: "Nathan Lambert", archetype: "newsletter", audience: "AI research-eng", fit: "MCP / agent-side hook fit", status: "pending" },
+  { id: "ben-evans", name: "Benedict Evans", who: "Benedict Evans", archetype: "newsletter", audience: "Tech analyst ~140k", fit: "Methodology paper PR fit", status: "wishlist" },
+  { id: "scott-galloway", name: "No Mercy / No Malice", who: "Scott Galloway", archetype: "newsletter", audience: "Business-tech, very large", fit: "VC-tools commentary fit", status: "wishlist" },
+  { id: "matt-levine", name: "Matt Levine, Money Stuff", who: "Matt Levine", archetype: "newsletter", audience: "Finance Twitter, ~300k", fit: "Quirky alt-data fits his column tone", status: "wishlist" },
+  { id: "byrne-hobart", name: "The Diff", who: "Byrne Hobart", archetype: "newsletter", audience: "Finance / strategy ~50k paid", fit: "Methodology paper fits Byrne's research style", status: "wishlist" },
+  { id: "alpha-signal", name: "Alpha Signal", who: "Lior", archetype: "newsletter", audience: "AI research ~150k", fit: "AI/ML sector overlap, MCP hook", status: "wishlist" },
+  { id: "tldr", name: "TLDR Newsletter", who: "Dan Ni", archetype: "newsletter", audience: "Devs ~1M", fit: "Devtools sector overlap", status: "wishlist" },
+  { id: "morning-brew-tech", name: "Tech Brew", who: "Morning Brew", archetype: "newsletter", audience: "Tech business ~600k", fit: "Methodology paper PR fit", status: "wishlist" },
+  { id: "ai-supremacy", name: "AI Supremacy", who: "Michael Spencer", archetype: "newsletter", audience: "AI-business ~100k", fit: "AI sector deep-dive co-promo", status: "wishlist" },
+  { id: "interconnects", name: "Interconnects", who: "Nathan Lambert", archetype: "newsletter", audience: "AI research-eng", fit: "MCP / agent-side hook fit", status: "wishlist" },
 ];
 
 const STATUS_META: Record<Status, { label: string; classes: string }> = {
-  engaged: {
-    label: "Engaged",
-    classes: "border-emerald-700/40 bg-emerald-950/15 text-emerald-300",
-  },
-  replied: {
-    label: "Replied",
-    classes: "border-sky-700/40 bg-sky-950/15 text-sky-300",
-  },
-  "outreach-sent": {
-    label: "Outreach sent",
-    classes: "border-amber-700/40 bg-amber-950/15 text-amber-300",
-  },
-  pending: {
-    label: "Pending",
+  wishlist: {
+    label: "Wish list",
     classes: "border-slate-700 bg-slate-900 text-gray-400",
-  },
-  passed: {
-    label: "On hold",
-    classes: "border-rose-800/40 bg-rose-950/15 text-rose-300",
   },
 };
 
@@ -146,14 +124,6 @@ const ARCHETYPE_META: Record<PartnerArchetype, { label: string; emoji: string }>
 };
 
 export default function Dream50Page() {
-  const counts = PARTNERS.reduce(
-    (acc, p) => {
-      acc[p.status] = (acc[p.status] || 0) + 1;
-      return acc;
-    },
-    {} as Record<Status, number>,
-  );
-
   const jsonLd = {
     "@context": "https://schema.org",
     "@graph": [
@@ -163,7 +133,7 @@ export default function Dream50Page() {
         url: "https://signals.gitdealflow.com/affiliates/top-partners",
         name: "Dream 50, publisher partner roster",
         description:
-          "50 named newsletter writers, podcast hosts, and community owners we'd like to partner with. Engagement status, fit notes, and outreach templates.",
+          "50 named newsletters, podcasts, and communities we'd like to partner with. A public wish list; no relationship or outreach is implied.",
         inLanguage: "en-US",
         isPartOf: { "@id": "https://signals.gitdealflow.com/#website" },
         speakable: {
@@ -223,33 +193,11 @@ export default function Dream50Page() {
           the same logic works for partners. These are the 50 newsletter writers,
           podcast hosts, and community owners whose readers are already primed
           for earlier startup signal, clearer timing, and proof-first language.
-          Engagement status is current; we update the row when status changes.
-          If you write or run one of these, scroll to the pitch templates, we
-          ship the swipe kit pre-filled.
+          To be clear: this is a wish list. Nothing on this page implies an
+          existing relationship, an endorsement, or outreach already sent. If
+          you write or run one of these and the fit is real, the email below
+          reaches us.
         </p>
-
-        <div className="grid grid-cols-2 sm:grid-cols-5 gap-3 mb-12 text-center text-xs">
-          <div className="rounded-lg border border-emerald-700/30 bg-emerald-950/15 px-2 py-3">
-            <div className="text-2xl font-bold text-emerald-300 tabular-nums">{counts.engaged || 0}</div>
-            <div className="text-emerald-200/60 uppercase tracking-wider mt-1">Engaged</div>
-          </div>
-          <div className="rounded-lg border border-sky-700/30 bg-sky-950/15 px-2 py-3">
-            <div className="text-2xl font-bold text-sky-300 tabular-nums">{counts.replied || 0}</div>
-            <div className="text-sky-200/60 uppercase tracking-wider mt-1">Replied</div>
-          </div>
-          <div className="rounded-lg border border-amber-700/30 bg-amber-950/15 px-2 py-3">
-            <div className="text-2xl font-bold text-amber-300 tabular-nums">{counts["outreach-sent"] || 0}</div>
-            <div className="text-amber-200/60 uppercase tracking-wider mt-1">Outreach</div>
-          </div>
-          <div className="rounded-lg border border-slate-700 bg-slate-900 px-2 py-3">
-            <div className="text-2xl font-bold text-gray-100 tabular-nums">{counts.pending || 0}</div>
-            <div className="text-gray-400 uppercase tracking-wider mt-1">Pending</div>
-          </div>
-          <div className="rounded-lg border border-rose-800/30 bg-rose-950/15 px-2 py-3">
-            <div className="text-2xl font-bold text-rose-300 tabular-nums">{counts.passed || 0}</div>
-            <div className="text-rose-200/60 uppercase tracking-wider mt-1">On hold</div>
-          </div>
-        </div>
 
         <section className="mb-12" aria-label="Dream 50 roster">
           <h2 className="text-xl font-semibold text-gray-100 mb-4">The roster</h2>
@@ -278,7 +226,6 @@ export default function Dream50Page() {
                       className={`text-[11px] font-semibold uppercase tracking-wider px-2 py-0.5 rounded border ${statusMeta.classes}`}
                     >
                       {statusMeta.label}
-                      {p.lastTouch ? ` · ${p.lastTouch}` : ""}
                     </span>
                   </div>
                   <p className="text-sm text-gray-400 leading-relaxed mb-1">

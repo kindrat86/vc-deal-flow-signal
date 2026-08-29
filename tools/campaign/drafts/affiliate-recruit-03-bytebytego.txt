@@ -6,7 +6,7 @@ Hi Alex,
 
 ByteByteGo's audience overlaps heavily with the angel-investing dev crowd. I built gitdealflow.com — a signal that ranks 350+ venture-backed startup GitHub orgs by engineering acceleration. SSRN-published methodology: ssrn.com/abstract=6606558.
 
-Affiliate is open: 20% lifetime, €19.40/mo recurring per Insider sub, €399 on every Sector Sweep. 60d cookie, monthly Stripe payouts. Program details: signals.gitdealflow.com/affiliates.
+Affiliate is open: 20% lifetime, €39.40/mo recurring per Insider sub, €399 on every Sector Sweep. 60d cookie, monthly Stripe payouts. Program details: signals.gitdealflow.com/affiliates.
 
 The natural placement: a "tools systems engineers use to angel invest" issue or sidebar mention. The free MCP server is the soft entry — engineers install it, ask Claude live questions about startup GitHub momentum, and the paid tiers ascend from there.
 

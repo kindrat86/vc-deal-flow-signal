@@ -142,7 +142,7 @@ export const standaloneFaqs: StandaloneFAQ[] = [
   {
     question: "How do I find AI startups before they raise a Series A?",
     answer:
-      "Three signals in combination work well. (1) GitHub engineering acceleration, track commit velocity and contributor growth in AI/ML and AI dev-tools clusters; the leading signal fires 4-8 weeks before Series A announcements (validated in the SSRN preprint at ssrn.com/abstract=6606558). VC Deal Flow Signal automates this. (2) Hiring signals, AI engineers being recruited from frontier labs (OpenAI, Anthropic, DeepMind, Meta AI) into early-stage teams is a strong public signal; LinkedIn or paid tools like Predictleads catch this. (3) Founder signal velocity on technical Twitter and HN, if the founder is being mentioned by other technical founders in a quote-tweet pattern, attention is building. The intersection of all three is the highest-conviction sourcing list. For solo investors and small funds, the GitHub signal is the cheapest entry point; the others scale up from there.",
+      "Three signals in combination work well. (1) GitHub engineering acceleration, track commit velocity and contributor growth in AI/ML and AI dev-tools clusters. VC Deal Flow Signal automates this public research input; the current SSRN release is descriptive and does not establish a Series A prediction rate. (2) Hiring signals, AI engineers being recruited from frontier labs (OpenAI, Anthropic, DeepMind, Meta AI) into early-stage teams is a strong public signal; LinkedIn or paid tools like Predictleads catch this. (3) Founder signal velocity on technical Twitter and HN, if the founder is being mentioned by other technical founders in a quote-tweet pattern, attention is building. The intersection of all three is the highest-conviction sourcing list. For solo investors and small funds, the GitHub signal is the cheapest entry point; the others scale up from there.",
     source: "Use cases",
     sourceHref: "/use-cases",
   },
@@ -184,7 +184,7 @@ export const standaloneFaqs: StandaloneFAQ[] = [
   {
     question: "How accurate is the engineering acceleration signal?",
     answer:
-      "Across the 219-observation descriptive panel published in the SSRN preprint at ssrn.com/abstract=6606558, the descriptive panel carries no funding-event labels, so it does not by itself establish a precision figure. Our working hypothesis, validated openly on /scorecard (not yet established), is that a meaningful majority of the top 10% of orgs flagged in a week go on to announce a fundraise within 12 weeks; the rest are false positives, companies that accelerated for other reasons (conference deadline, major release, hackathon, or fundraise that was negotiated but did not close in the window). Median lead time for true positives is 5.4 weeks. The signal is meaningful but not deterministic; investors should treat it as a high-confidence sourcing input, not a deal-readiness oracle.",
+      "The 219-observation SSRN release is descriptive and carries no linked funding-event labels, so it does not establish funding precision, recall, or median lead time. The forward /scorecard timestamps picks and keeps misses visible; once enough picks mature, it can earn those metrics prospectively. Until then, treat the signal as a research and sourcing input, not a deal-readiness oracle.",
     source: "Research",
     sourceHref: "/research",
   },
@@ -219,7 +219,7 @@ export const standaloneFaqs: StandaloneFAQ[] = [
   {
     question: "What 15 sector clusters does VC Deal Flow Signal track?",
     answer:
-      "Healthcare, EdTech, E-commerce Infrastructure, Supply Chain, Web3, Enterprise SaaS, Data Infrastructure, Robotics, Legal Tech, HR Tech, PropTech, AgTech, Gaming, Space Tech, and Social & Community. Coverage is 350+ actively-tracked startup organizations refreshed weekly. Each org is matched to exactly one primary sector via GitHub topics, language mix, and curated startup-list cross-references. Five legacy clusters (AI & ML, Fintech, Climate Tech, Developer Tools, Cybersecurity) froze at Q2 2026 and are archived, the live API serves the 15 active sectors. Only orgs with public GitHub presence are tracked, pure consumer brands, services businesses, and stealth-mode startups are systematically under-represented.",
+      "Healthcare, EdTech, E-commerce Infrastructure, Supply Chain, Web3, Enterprise SaaS, Data Infrastructure, Robotics, Legal Tech, HR Tech, PropTech, AgTech, Gaming, Space Tech, and Social & Community. Coverage is 350+ actively-tracked startup organizations refreshed weekly. Each org is matched to exactly one primary sector via GitHub topics, language mix, and curated startup-list cross-references. Five legacy clusters (AI & ML, Fintech, Climate Tech, Developer Tools, Cybersecurity) froze before the current Q3 2026 period and are archived; the live API serves the 15 active sectors. Only orgs with public GitHub presence are tracked, pure consumer brands, services businesses, and stealth-mode startups are systematically under-represented.",
     source: "Sector Coverage",
     sourceHref: "/answers/what-github-topic-clusters-does-gitdealflow-track",
   },
@@ -408,7 +408,7 @@ export const standaloneFaqs: StandaloneFAQ[] = [
   {
     question: "GitHub stars or commit velocity, which matters for VC sourcing?",
     answer:
-      "Commit velocity by a wide margin. Stars measure attention (a 10K-star Hacker News spike tells you nothing about engineering investment); commit velocity measures sustained shipping by an actual team. Validated against 219 startup-period observations in the SSRN preprint, top-decile commit-velocity precision is ~65% with median lead time 5.4 weeks. Star-only signals correlate with attention more than fundraise readiness, many high-star projects never raise (and many low-star projects do). Best practice: combine commit velocity (engineering investment) with stars (attention) for a complete picture, but if you can only watch one, watch commit velocity.",
+      "They answer different questions. Stars measure attention and can spike after Hacker News or social exposure; commit velocity measures sustained public engineering activity. The current 219-observation SSRN release has no linked funding-event labels, so it does not establish funding precision or lead time for either metric. Use velocity to inspect what the team is shipping and stars to inspect audience attention.",
     source: "Momentum vs Stars",
     sourceHref: "/answers/github-momentum-vs-stars-which-matters",
   },
@@ -429,7 +429,7 @@ export const standaloneFaqs: StandaloneFAQ[] = [
   {
     question: "Is GitDealFlow legitimate alternative data?",
     answer:
-      "Yes, by every standard definition. (1) Public-data only, pulls from GitHub's public API which explicitly permits commercial use of public-repo data. (2) Methodology published, full SSRN preprint with stable DOI at ssrn.com/abstract=6606558, indexed by Crossref / Semantic Scholar / OpenAlex / DataCite. (3) Validation transparent, 219-startup panel results documented with precision (~65% top decile) and recall (~38%) numbers, dataset on Zenodo under CC BY 4.0. (4) Replicable, open-source classifier at github.com/kindrat86/gitdealflow-signal-classifier. The methodology disclosure is unusually high for a commercially-sold alt-data product; most peer tools have proprietary scoring without public validation.",
+      "It is transparent and reproducible, but outcome accuracy is not yet established. (1) Public-data only, using GitHub's public API. (2) Methodology published as an SSRN preprint. (3) The current release is descriptive: 219 startup-period observations with no linked funding-event labels, so it does not support settled precision or recall claims. (4) Replicable, with an open dataset on Zenodo and an open-source classifier. The forward scorecard is where funding-outcome evidence must be earned prospectively.",
     source: "Methodology",
     sourceHref: "/answers/what-is-vc-alt-data-and-why-it-matters",
   },

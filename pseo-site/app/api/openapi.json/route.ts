@@ -17,7 +17,7 @@ export async function GET() {
         url: "https://creativecommons.org/licenses/by/4.0/",
       },
       "x-citation":
-        "VC Deal Flow Signal (signals.gitdealflow.com), Q2 2026 data. SSRN: 6606558.",
+        "VC Deal Flow Signal (signals.gitdealflow.com), Q3 2026 data. SSRN: 6606558.",
       "x-revision-date": "2026-05-08",
       "x-mcp-tool-count": 8,
       "x-rest-operation-count": 25,
@@ -793,7 +793,7 @@ export async function GET() {
           operationId: "getAffiliatesV1",
           summary: "Affiliate program, terms, leaderboard snapshot, swipe-kit templates",
           description:
-            "Programmatic mirror of /affiliates. Returns commission terms (20% lifetime, €399/Sweep, €19.40/mo/Insider, 60-day cookie), pseudonymized top-10 leaderboard, six clone-ready swipe-kit content templates (tweet thread, LinkedIn post, blog post, newsletter mention, podcast script, 3-email sequence), aggregate program stats, and the Refgrow signup URL. Updated monthly. Cached at the edge for 1 hour.",
+            "Programmatic mirror of /affiliates. Returns verified commission terms (20% recurring via the Refgrow portal, €39.40/mo/Insider, €9.80/mo/Dashboard, €399.40/Sweep), six clone-ready swipe-kit content templates, and the Refgrow signup URL. The program has no earnings history yet; none is claimed. Cached at the edge for 1 hour.",
           responses: {
             "200": {
               description: "Affiliate program metadata + leaderboard + swipe kit",
