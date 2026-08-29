@@ -6337,9 +6337,12 @@ check(
   );
   check(
     "app/affiliates/leaderboard/page.tsx",
-    "§71 retired affiliate leaderboard returned",
-    (src) => src.includes('redirect("/affiliates")') && !src.includes("LEADERBOARD"),
-    "Keep the redirect. Reintroduce a leaderboard only with read-back-able Refgrow results.",
+    "§71 retired affiliate leaderboard returned or became indexable",
+    (src) =>
+      src.includes('redirect("/affiliates")') &&
+      src.includes("robots: { index: false, follow: false }") &&
+      !src.includes("LEADERBOARD"),
+    "Keep the noindex redirect. Reintroduce a leaderboard only with read-back-able Refgrow results.",
   );
   check(
     "content/affiliate-leaderboard.ts",

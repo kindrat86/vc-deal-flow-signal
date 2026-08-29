@@ -75,6 +75,63 @@ export default function AffiliatesPage() {
         </p>
       </section>
 
+      <section className="space-y-5 text-gray-400 text-sm leading-relaxed mb-8">
+        <h2 className="text-xl font-semibold text-gray-100">What the 20% offer means</h2>
+        <p>
+          Commission is calculated from an eligible purchase attributed to
+          your affiliate account under the rules shown in Refgrow. For a simple
+          current-price illustration, 20% of the €49 monthly Dashboard price is
+          €9.80 for each eligible paid month. That is arithmetic, not an earnings
+          result, forecast, or promise that a visitor will convert.
+        </p>
+        <p>
+          GitDealFlow does not restate a cookie window, payout threshold,
+          holdback period, payment schedule, or eligible-product list on this
+          page. Those details can change as the program develops. Check the
+          portal before publishing a promotion and rely on the terms displayed
+          there for the referral you are making.
+        </p>
+      </section>
+
+      <section className="space-y-5 text-gray-400 text-sm leading-relaxed mb-8">
+        <h2 className="text-xl font-semibold text-gray-100">A useful recommendation to make</h2>
+        <p>
+          Explain the concrete job GitDealFlow helps with: inspecting public
+          engineering momentum across 350+ startup organizations in 15 sectors.
+          The documented research release contains 219 startup-period
+          observations across 55 startups and no linked funding-event labels.
+          That makes the product useful for research, sourcing, and diligence,
+          but it does not make it a financing forecast.
+        </p>
+        <p>
+          A responsible recommendation can show how an investor checks commit
+          velocity, contributor growth, or repository expansion and then uses
+          that observation to ask better diligence questions. It should not say
+          that the research proves funding accuracy, precision, recall, a median
+          funding lead time, or lift over a financing base rate. It should also
+          avoid invented customer stories, partner relationships, conversion
+          rates, and payout examples presented as actual results.
+        </p>
+      </section>
+
+      <section className="space-y-5 text-gray-400 text-sm leading-relaxed mb-8">
+        <h2 className="text-xl font-semibold text-gray-100">Before you publish</h2>
+        <p>
+          Open the portal, create or retrieve your own attributed link, and test
+          that it resolves to the intended GitDealFlow page. Add a plain-language
+          disclosure near the link so readers know you may earn a commission.
+          Keep the surrounding explanation in your own voice and make it useful
+          even for someone who never buys.
+        </p>
+        <p>
+          If you need a larger co-marketing or joint-venture arrangement, discuss
+          it separately. Larger arrangements are considered case by case; there
+          is no automatic upgrade and no public 50% revenue-share promise. The
+          standard public affiliate offer remains the 20% recurring program
+          displayed in Refgrow.
+        </p>
+      </section>
+
       <a
         href={PORTAL_URL}
         target="_blank"

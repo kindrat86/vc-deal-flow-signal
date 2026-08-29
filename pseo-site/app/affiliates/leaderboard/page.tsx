@@ -1,4 +1,10 @@
+import type { Metadata } from "next";
 import { redirect } from "next/navigation";
+
+export const metadata: Metadata = {
+  robots: { index: false, follow: false },
+  alternates: { canonical: "/affiliates" },
+};
 
 /**
  * /affiliates/leaderboard was retired 2026-08-29.
