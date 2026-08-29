@@ -253,9 +253,9 @@ export default function ScorecardPage() {
             running, and we have not earned the right to claim it either way yet.
           </p>
           <p>
-            Right now every row is Pending because the first window only opens
-            2026-06-26. That is honest, not weak: a forward pick is only worth
-            anything if it was dated before the outcome was known.
+            {graded === 0
+              ? `All ${totals.pending} current picks are still Pending. A forward pick is only worth anything if it was dated before the outcome was known.`
+              : `${graded} picks are graded and ${totals.pending} remain Pending. The live counts above, including every Miss, are the current record.`}
           </p>
         </PlainEnglishNote>
 
@@ -315,13 +315,13 @@ export default function ScorecardPage() {
             Historical highlight, a worked example
           </p>
           <h2 className="text-2xl sm:text-3xl font-bold text-gray-100 leading-snug">
-            One of the 219 SSRN observations, narrated.
+            Illustrative historical example, separate from the SSRN release.
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
-            Forward picks need weeks to grade. While the rolling windows run,
-            here&rsquo;s one of the 219 paired observations
-            from the methodology paper, anonymised, but reproducible
-            against the Zenodo dataset.
+            The documented SSRN release contains 219 startup-period
+            observations across 55 startups of public engineering activity,
+            with no linked funding-event labels. The timeline below is an
+            illustrative example, not an SSRN outcome record.
           </p>
           <dl className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2 text-sm">
             <div className="rounded-lg border border-slate-700 bg-slate-900/60 p-3">
@@ -345,7 +345,7 @@ export default function ScorecardPage() {
             {HISTORICAL_HIGHLIGHT.context}
           </p>
           <p className="text-gray-400 text-xs leading-relaxed pt-1">
-            Reproduce against{" "}
+            Read the descriptive{" "}
             <a
               href="https://ssrn.com/abstract=6606558"
               className="text-amber-300 hover:text-amber-200 underline decoration-dotted"
@@ -354,7 +354,8 @@ export default function ScorecardPage() {
             >
               SSRN abstract=6606558
             </a>{" "}
-            + Zenodo dataset (CC BY 4.0).
+            and public dataset (CC BY 4.0). Neither contains linked
+            funding-event labels.
           </p>
         </section>
 

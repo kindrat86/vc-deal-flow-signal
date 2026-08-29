@@ -224,7 +224,7 @@ export default function MethodologyPage() {
         "@type": "LearningResource",
         name: "How to Measure Startup Engineering Acceleration from GitHub Public Data",
         description:
-          "A free, openly published methodology for tracking GitHub commit velocity, contributor growth, and infrastructure-buildout patterns as leading indicators of venture fundraises. Includes the validation panel of 219 startup-period observations.",
+          "A free, openly published methodology for tracking GitHub commit velocity, contributor growth, and infrastructure-buildout patterns. The documented release contains 219 startup-period observations across 55 startups and no linked funding-event labels.",
         url: "https://signals.gitdealflow.com/methodology",
         learningResourceType: "Methodology",
         educationalLevel: "Professional",
@@ -237,7 +237,7 @@ export default function MethodologyPage() {
           "Compute rolling commit-velocity and contributor-growth metrics",
           "Classify acceleration patterns into five signal types",
           "Rank startups weekly by acceleration score",
-          "Validate the leading-signal hypothesis against confirmed fundraises",
+          "Separate descriptive engineering observations from forward funding-outcome validation",
         ],
         license: "https://creativecommons.org/licenses/by/4.0/",
         isAccessibleForFree: true,
@@ -260,9 +260,9 @@ export default function MethodologyPage() {
       // of forcing them to reach into the surrounding Article body.
       {
         "@type": "Quotation",
-        "@id": "https://signals.gitdealflow.com/methodology#quote-3-4x",
+        "@id": "https://signals.gitdealflow.com/methodology#quote-composite-screen",
         text:
-          "Orgs that combine high 14-day commit-velocity acceleration with low top-contributor concentration (Gini under 0.30) are 3.4× more likely to announce a Series A within 60 days than orgs with high acceleration alone. Velocity matters, but the shape of the velocity matters more.",
+          "GitDealFlow uses 14-day commit-velocity acceleration and contributor concentration as descriptive screening inputs. The documented release contains no linked funding-event labels, so it does not establish funding lift, precision, recall, or lead time.",
         spokenByCharacter: DATA_NERD_AUTHOR_REF,
         creator: {
           "@type": "Organization",
@@ -274,7 +274,7 @@ export default function MethodologyPage() {
           name: "A Longitudinal Panel of GitHub Engineering Velocity for Venture-Backed Startups",
           url: "https://ssrn.com/abstract=6606558",
         },
-        citation: "SSRN preprint 6606558, panel n=219, regression stratified by stage.",
+        citation: "SSRN preprint 6606558, 219 startup-period observations across 55 startups; no linked funding-event labels.",
         license: "https://creativecommons.org/licenses/by/4.0/",
         inLanguage: "en",
       },
@@ -282,7 +282,7 @@ export default function MethodologyPage() {
         "@type": "Quotation",
         "@id": "https://signals.gitdealflow.com/methodology#quote-leading-indicator",
         text:
-          "Engineering acceleration is a leading indicator of traction, not a guarantee of success. Our claim, validated openly on the public scorecard, not yet established, is that the signal precedes fundraise announcements by roughly three to six weeks; it is a screening filter, not investment advice.",
+          "Engineering acceleration is a screening signal, not a guarantee of success. The claim that it precedes fundraise announcements by roughly three to six weeks is being tested openly on the public scorecard and is not established by the descriptive SSRN release.",
         spokenByCharacter: DATA_NERD_AUTHOR_REF,
         creator: {
           "@type": "Organization",
@@ -417,10 +417,10 @@ export default function MethodologyPage() {
         </h1>
 
         <AgentSummary
-          tldr="VC Deal Flow Signal (GitDealFlow) ranks venture-backed startups by GitHub commit-velocity change, a code-side momentum signal computed from public GitHub data, unrelated to startup accelerator programs. The pipeline pulls weekly GitHub REST API data for ~350+ organizations across 15 sectors, computes rolling 14-day commit velocity and contributor growth, classifies each org into one of five signal types, and publishes the rankings. This metric, referred to throughout the site as engineering acceleration, has historically preceded fundraise announcements by three to six weeks."
+          tldr="VC Deal Flow Signal (GitDealFlow) ranks venture-backed startups by GitHub commit-velocity change, a code-side momentum signal computed from public GitHub data, unrelated to startup accelerator programs. The pipeline pulls weekly GitHub REST API data for 350+ organizations across 15 sectors, computes rolling 14-day commit velocity and contributor growth, classifies each org into one of five signal types, and publishes the rankings. The documented SSRN release is descriptive and contains no linked funding-event labels; the three-to-six-week funding lead-time claim is under forward validation on the public scorecard."
           pageUrl="https://signals.gitdealflow.com/methodology"
           asOf={asOf}
-          citeAs="VC Deal Flow Signal, Methodology (signals.gitdealflow.com/methodology), retrieved Q2 2026."
+          citeAs="VC Deal Flow Signal, Methodology (signals.gitdealflow.com/methodology), retrieved Q3 2026."
           facts={[
             {
               claim: "Primary signal: percentage change in 14-day commit velocity vs. the prior 14-day window, normalized against each org's own baseline so it works across stages and team sizes.",
@@ -552,26 +552,22 @@ export default function MethodologyPage() {
               className="rounded-lg border border-sky-700/40 bg-gradient-to-br from-sky-950/30 via-slate-900 to-slate-900 p-6 scroll-mt-24"
             >
               <h3 className="text-gray-100 font-medium mb-2">
-                Composite predictor: velocity × contributor diversity (the 3.4× finding)
+                Composite screen: velocity and contributor diversity
               </h3>
               <p className="text-gray-400 text-sm leading-relaxed mb-3">
-                The single most predictive composite in the SSRN panel of 219
-                confirmed rounds is{" "}
+                GitDealFlow reads{" "}
                 <strong className="text-gray-200">14-day commit-velocity acceleration</strong>{" "}
-                <em>combined with</em>{" "}
+                alongside{" "}
                 <strong className="text-gray-200">low top-contributor concentration</strong>{" "}
-                (Gini coefficient under 0.30 over the same 14-day window).
+                over the same window. This distinguishes a broad team build-out
+                from a spike driven mainly by one contributor.
               </p>
               <p className="text-gray-400 text-sm leading-relaxed mb-3">
-                Orgs that meet <em>both</em> conditions are{" "}
-                <strong className="text-sky-300">3.4× more likely</strong> to announce a
-                Series A within 60 days than orgs with high acceleration
-                <em> alone</em>. In other words: velocity matters, but the{" "}
-                <em>shape</em> of the velocity matters more. A team where one
-                developer is doing 80% of the commits can spike just as hard as
-                a team where eight developers are sharing the load, but only
-                one of those teams looks like a fundraise candidate to a Series
-                A partner.
+                The documented release contains 219 startup-period observations
+                across 55 startups of public engineering activity. It has no
+                linked funding-event labels, so it cannot establish funding
+                lift, precision, recall, or lead time. Those outcomes are under
+                forward validation on the public scorecard.
               </p>
               <p className="text-gray-400 text-xs leading-relaxed">
                 Source: SSRN preprint{" "}
@@ -583,8 +579,9 @@ export default function MethodologyPage() {
                 >
                   abstract=6606558
                 </a>
-                , panel n=219, regression stratified by stage. Lift survives a
-                90-day extension of the panel (next refresh: Q3 2026).
+                , 219 startup-period observations across 55 startups. The
+                release is descriptive and carries no linked funding-event
+                labels.
               </p>
             </div>
 
@@ -592,10 +589,9 @@ export default function MethodologyPage() {
               <p>
                 In dealmaker terms: a startup whose engineering is both speeding
                 up <em>and</em> spreading across more people, not one hero
-                developer doing everything, is roughly{" "}
-                <strong className="text-gray-200">3.4× more likely</strong> to
-                raise a Series A within 60 days than a team that&apos;s just
-                shipping fast off one person.
+                developer doing everything, can be more useful to investigate
+                than a one-person spike. It is a screening heuristic, not a
+                validated funding probability.
               </p>
               <p>
                 You don&apos;t compute anything. We flag the teams that look like

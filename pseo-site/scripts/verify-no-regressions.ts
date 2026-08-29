@@ -6193,6 +6193,51 @@ check(
       "    fix:  derive grading-window language from predictions.json (gradingDueAt), not a literal date."
     );
   }
+  if (page && (
+    page.includes("Right now every row is Pending") ||
+    page.includes("One of the 219 SSRN observations") ||
+    page.includes("one of the 219 paired observations")
+  )) {
+    failures.push(
+      "§73 scorecard regained stale grading copy or attributes an illustrative funding example to the descriptive SSRN release.\n" +
+      "    file: app/scorecard/page.tsx\n" +
+      "    fix:  render grading state from live totals and state that the SSRN release has no linked funding-event labels."
+    );
+  }
+  const falseBeliefs = read("components/FalseBeliefBreaker.tsx");
+  if (falseBeliefs && falseBeliefs.includes("SSRN paper grades n=219 paired observations PROSPECTIVELY")) {
+    failures.push(
+      "§73 false-belief copy attributes prospective funding grades to the descriptive SSRN release.\n" +
+      "    file: components/FalseBeliefBreaker.tsx\n" +
+      "    fix:  separate the descriptive 219-observation release from the forward public scorecard."
+    );
+  }
+  const predicted = read("app/predicted/page.tsx");
+  if (predicted && (
+    predicted.includes("one of the 219 paired observations") ||
+    predicted.includes("The lead-time distribution: 21-47 days, IQR, n=219")
+  )) {
+    failures.push(
+      "§73 predicted page attributes an illustrative funding timeline to the descriptive SSRN release.\n" +
+      "    file: app/predicted/page.tsx\n" +
+      "    fix:  label the timeline as illustrative and state that the SSRN release has no linked funding-event labels."
+    );
+  }
+  const methodology = read("app/methodology/page.tsx");
+  if (methodology && (
+    methodology.includes("SSRN panel of 219") ||
+    methodology.includes("3.4× more likely") ||
+    methodology.includes("regression stratified by stage") ||
+    methodology.includes("validation panel of 219 startup-period observations") ||
+    methodology.includes("Validate the leading-signal hypothesis against confirmed fundraises") ||
+    methodology.includes("historically preceded fundraise announcements")
+  )) {
+    failures.push(
+      "§73 methodology attributes funding lift or an outcome regression to a release with no linked funding-event labels.\n" +
+      "    file: app/methodology/page.tsx\n" +
+      "    fix:  keep the release descriptive and leave funding lead-time validation to the public scorecard."
+    );
+  }
 }
 
 // ---------------------------------------------------------------------------

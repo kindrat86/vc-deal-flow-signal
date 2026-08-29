@@ -38,8 +38,8 @@ const FALSE_BELIEFS: FalseBelief[] = [
     origin:
       "Survivorship bias is the right thing to suspect when someone shows you a chart. It's the default skeptical move and the buyer is correct to make it.",
     breakLine:
-      "The SSRN paper grades n=219 paired observations PROSPECTIVELY, picks made before the fundraise, not after. The miss column is published. Survivorship would require the miss column to be empty; it isn't.",
-    proof: { label: "/methodology, n=219 panel + miss column", href: "/methodology" },
+      "The published release is descriptive: 219 startup-period observations across 55 startups, with no linked funding-event labels. Forward outcomes are graded separately on the public scorecard, including every Miss.",
+    proof: { label: "/scorecard, public forward grades + miss column", href: "/scorecard" },
   },
   {
     pattern: "internal",
