@@ -38,3 +38,12 @@ test("daily Seinfeld provider failures do not expose the raw provider body", () 
   assert.match(source, /recipient_ref:\s*recipientRef\(testTo\)/);
   assert.match(source, /provider_status:\s*sendRes\.status/);
 });
+
+test("daily Seinfeld audience fan-out BCCs the portfolio archive", () => {
+  const source = read("app/api/cron/daily-seinfeld/route.ts");
+  const fanout = source.split("// Default: fan out to the audience")[1] ?? "";
+  assert.match(
+    fanout,
+    /from:\s*FROM_EMAIL,\s*bcc:\s*["']sales@sipiteno\.com["'],\s*to:\s*\[addr\]/,
+  );
+});
