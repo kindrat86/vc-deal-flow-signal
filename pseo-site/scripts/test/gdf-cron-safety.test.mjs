@@ -47,3 +47,13 @@ test("daily Seinfeld audience fan-out BCCs the portfolio archive", () => {
     /from:\s*FROM_EMAIL,\s*bcc:\s*["']sales@sipiteno\.com["'],\s*to:\s*\[addr\]/,
   );
 });
+
+test("native lifecycle email routes remain available but are not scheduled", () => {
+  const config = JSON.parse(read("vercel.json"));
+  const scheduledPaths = new Set(config.crons.map((cron) => cron.path));
+
+  assert.doesNotThrow(() => read("app/api/cron/daily-seinfeld/route.ts"));
+  assert.doesNotThrow(() => read("app/api/cron/drip-sender/route.ts"));
+  assert.equal(scheduledPaths.has("/api/cron/daily-seinfeld"), false);
+  assert.equal(scheduledPaths.has("/api/cron/drip-sender"), false);
+});

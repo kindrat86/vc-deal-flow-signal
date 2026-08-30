@@ -11,20 +11,12 @@
       "schedule": "0 6 * * 1"
     },
     {
-      "path": "/api/cron/daily-seinfeld",
-      "schedule": "0 14 * * *"
-    },
-    {
       "path": "/api/cron/telegram-signal",
       "schedule": "0 13 * * 0"
     },
     {
       "path": "/api/cron/route-canary",
       "schedule": "13 6 * * *"
-    },
-    {
-      "path": "/api/cron/drip-sender",
-      "schedule": "23 8 * * *"
     },
     {
       "path": "/api/cron/winback-dispatcher",
