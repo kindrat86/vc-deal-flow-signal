@@ -19,18 +19,18 @@
  *
  * Auth:
  *   - Production: Vercel Cron sends `Authorization: Bearer ${CRON_SECRET}`.
- *   - Local + manual: `?dry=1` skips both auth and Resend send, returning
- *     a summary of what would have been sent.
+ *   - Manual: `?dry=1` still requires cron auth, skips Resend send, and returns
+ *     a PII-safe summary of what would have been sent.
  *
  * Test surfaces:
- *   GET /api/cron/drip-sender?dry=1   → JSON summary, no send, no auth
+ *   GET /api/cron/drip-sender?dry=1   → JSON summary, no send, auth required
  *   GET /api/cron/drip-sender         → cron mode (auth required)
  */
 
 import { NextResponse } from "next/server";
 import { pickAudienceId } from "@/lib/resend-audience";
 import { listUnsubscribeHeaders, injectUnsubscribeLink } from "@/lib/list-unsubscribe";
-import { gateAllows } from "@/lib/send-gate";
+import { gateAllows, recipientRef } from "@/lib/send-gate";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -123,11 +123,9 @@ export async function GET(request: Request) {
   const url = new URL(request.url);
   const dry = url.searchParams.get("dry") === "1";
 
-  if (!dry) {
-    const auth = request.headers.get("authorization");
-    if (!CRON_SECRET || auth !== `Bearer ${CRON_SECRET}`) {
-      return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
-    }
+  const auth = request.headers.get("authorization");
+  if (!CRON_SECRET || auth !== `Bearer ${CRON_SECRET}`) {
+    return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
   }
 
   if (!RESEND_API_KEY) {
@@ -151,7 +149,7 @@ export async function GET(request: Request) {
   let sent = 0;
   let skipped = 0;
   let errors = 0;
-  const sentLog: { email: string; day: number; subject: string }[] = [];
+  const sentLog: { recipient_ref: string; day: number; subject: string }[] = [];
 
   for (const contact of contacts) {
     scanned++;
@@ -189,7 +187,11 @@ export async function GET(request: Request) {
       }
 
       if (dry) {
-        sentLog.push({ email: contact.email, day: entry.d, subject: entry.s });
+        sentLog.push({
+          recipient_ref: recipientRef(contact.email),
+          day: entry.d,
+          subject: entry.s,
+        });
         sent++;
         continue;
       }
@@ -199,7 +201,7 @@ export async function GET(request: Request) {
         sent++;
         sentDays.add(entry.d);
         sentLog.push({
-          email: contact.email,
+          recipient_ref: recipientRef(contact.email),
           day: entry.d,
           subject: entry.s,
         });
