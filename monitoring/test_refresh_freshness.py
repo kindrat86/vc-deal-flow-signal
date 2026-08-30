@@ -34,10 +34,11 @@ class RefreshFreshnessTests(unittest.TestCase):
 
     @staticmethod
     def valid_payload(completed_at: str) -> dict[str, object]:
+        sectors = [f"sector-{index}" for index in range(5)]
         return {
             "completed_at": completed_at,
-            "sectors_processed": ["enterprise-saas", "data-infrastructure"],
-            "sector_count": 2,
+            "sectors_processed": sectors,
+            "sector_count": len(sectors),
         }
 
     def test_fresh_completion_marker_passes(self) -> None:
@@ -58,6 +59,18 @@ class RefreshFreshnessTests(unittest.TestCase):
         self.assertNotEqual(result.returncode, 0)
         self.assertIn("invalid", result.stderr.lower())
 
+    def test_partial_sector_manifest_fails_closed(self) -> None:
+        completed_at = (datetime.now(timezone.utc) - timedelta(days=2)).isoformat()
+        result = self.run_checker(
+            {
+                "completed_at": completed_at,
+                "sectors_processed": [f"sector-{index}" for index in range(4)],
+                "sector_count": 4,
+            }
+        )
+        self.assertNotEqual(result.returncode, 0)
+        self.assertIn("incomplete", result.stderr.lower())
+
     def test_missing_completion_marker_fails_closed(self) -> None:
         result = self.run_checker(None)
         self.assertNotEqual(result.returncode, 0)
@@ -71,6 +84,7 @@ class RefreshFreshnessTests(unittest.TestCase):
     def test_wrapper_enforces_freshness_before_live_sender(self) -> None:
         text = WRAPPER.read_text(encoding="utf-8")
         self.assertIn('GITHUB_REFRESH_TIMEOUT_SECONDS="${GITHUB_REFRESH_TIMEOUT_SECONDS:-1800}"', text)
+        self.assertIn("--min-sector-count 5", text)
         check_pos = text.index("check-refresh-freshness.py")
         send_pos = text.index('node send-weekly-digest.mjs --date "$DATE_UTC" --send')
         self.assertLess(check_pos, send_pos)

@@ -14,6 +14,7 @@ def parse_args() -> argparse.Namespace:
     parser = argparse.ArgumentParser()
     parser.add_argument("metadata", type=Path)
     parser.add_argument("--max-age-days", type=float, default=8.0)
+    parser.add_argument("--min-sector-count", type=int, default=5)
     return parser.parse_args()
 
 
@@ -24,8 +25,8 @@ def fail(message: str) -> int:
 
 def main() -> int:
     args = parse_args()
-    if args.max_age_days <= 0:
-        return fail("invalid max age")
+    if args.max_age_days <= 0 or args.min_sector_count <= 0:
+        return fail("invalid freshness policy")
     if not args.metadata.is_file():
         return fail("refresh metadata missing")
 
@@ -45,6 +46,11 @@ def main() -> int:
             or len(set(sectors_processed)) != sector_count
         ):
             raise ValueError("sectors_processed is invalid")
+        if sector_count < args.min_sector_count:
+            return fail(
+                f"refresh metadata incomplete: sector_count={sector_count} "
+                f"minimum={args.min_sector_count}"
+            )
         completed = datetime.fromisoformat(raw.replace("Z", "+00:00"))
         if completed.tzinfo is None:
             raise ValueError("completed_at lacks timezone")

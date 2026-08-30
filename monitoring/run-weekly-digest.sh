@@ -69,7 +69,7 @@ fi
 
 FRESHNESS_CHECKER="$PROJECT_DIR/monitoring/check-refresh-freshness.py"
 FRESHNESS_METADATA="$PROJECT_DIR/pseo-site/data/github-refresh-metadata.json"
-if /Users/sipi/.local/bin/python3.11 "$FRESHNESS_CHECKER" "$FRESHNESS_METADATA" --max-age-days 8 >>"$LOG" 2>&1; then
+if /Users/sipi/.local/bin/python3.11 "$FRESHNESS_CHECKER" "$FRESHNESS_METADATA" --max-age-days 8 --min-sector-count 5 >>"$LOG" 2>&1; then
   log "freshness: OK"
 else
   log "freshness: FAILED - aborting before generation or send"
