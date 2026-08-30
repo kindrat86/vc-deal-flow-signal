@@ -57,7 +57,8 @@ def resend_get(path):
     # subprocess curl, not urllib: urllib has TLS/proxy issues on this Mac
     # (same proven pattern as ~/.hermes/email-engine/engine.py).
     cmd = [
-        "curl", "-s", "--max-time", "20", "--connect-timeout", "10",
+        "curl", "-sS", "--max-time", "20", "--connect-timeout", "10",
+        "--user-agent", "Mozilla/5.0",
         "-w", "\n__HTTP_STATUS__:%{http_code}",
         f"https://api.resend.com{path}",
         "-H", f"Authorization: Bearer {key}",
