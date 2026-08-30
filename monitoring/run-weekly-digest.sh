@@ -12,8 +12,8 @@
 # Scheduled by com.gitdealflow.weekly-digest (Sundays 16:00 Europe/Athens ≈ 09:00 US Eastern).
 # Pass --dry-run to refresh + regenerate + COUNT recipients without sending anything.
 #
-# A fetch failure does NOT block the send — it falls back to the last-good
-# data/startups.json and logs "fetch: FAILED" (digest may be stale that week).
+# A fetch failure may use the last-good data only when the last completed
+# refresh is no more than eight days old. Older or unproven data blocks sends.
 set -euo pipefail
 
 # launchd runs with a minimal environment — set these explicitly.
@@ -30,6 +30,7 @@ LOG="$PROJECT_DIR/monitoring/weekly-digest.log"
 
 DRY_RUN=0
 [[ "${1:-}" == "--dry-run" ]] && DRY_RUN=1
+GITHUB_REFRESH_TIMEOUT_SECONDS="${GITHUB_REFRESH_TIMEOUT_SECONDS:-1800}"
 
 log() { echo "$(date '+%Y-%m-%d %H:%M:%S %Z') | $*" | tee -a "$LOG"; }
 
@@ -56,14 +57,23 @@ log "=== weekly digest start (dry_run=$DRY_RUN) ==="
 
 cd "$PROJECT_DIR/pseo-site"
 
-# 1) Refresh GitHub data first (best-effort — a fetch failure must NOT block the
-#    weekly send; fall back to last-good data/startups.json and log loudly).
-# Bound the refresh: delivery is the product. If GitHub is slow, send the last-good snapshot.
+# 1) Refresh GitHub data first. If GitHub is slow, a recent completed snapshot
+#    may be used, but missing or stale refresh evidence blocks the send.
+# Bound the refresh so the job cannot hang forever.
 # macOS lacks GNU timeout; Perl alarm is available in the base system.
-if /usr/bin/perl -e 'alarm shift; exec @ARGV' 600 npx --yes tsx scripts/fetch-github-data.ts >>"$LOG" 2>&1; then
+if /usr/bin/perl -e 'alarm shift; exec @ARGV' "$GITHUB_REFRESH_TIMEOUT_SECONDS" npx --yes tsx scripts/fetch-github-data.ts >>"$LOG" 2>&1; then
   log "fetch: OK (data refreshed)"
 else
-  log "fetch: FAILED — proceeding with existing data/startups.json (digest may be stale)"
+  log "fetch: FAILED - checking last completed refresh before proceeding"
+fi
+
+FRESHNESS_CHECKER="$PROJECT_DIR/monitoring/check-refresh-freshness.py"
+FRESHNESS_METADATA="$PROJECT_DIR/pseo-site/data/github-refresh-metadata.json"
+if /Users/sipi/.local/bin/python3.11 "$FRESHNESS_CHECKER" "$FRESHNESS_METADATA" --max-age-days 8 --min-sector-count 5 >>"$LOG" 2>&1; then
+  log "freshness: OK"
+else
+  log "freshness: FAILED - aborting before generation or send"
+  exit 1
 fi
 
 # 2) Regenerate the digest HTML (npx tsx — same invocation as pseo-site prebuild).

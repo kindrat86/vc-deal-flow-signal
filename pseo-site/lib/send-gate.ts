@@ -15,22 +15,29 @@
  * receipts and lead notifications are exempt and always send.
  */
 
+import { createHash } from "node:crypto";
+
 const GATE_URL = process.env.GATE_URL;
 const GATE_SECRET = process.env.GATE_SECRET;
+
+export function recipientRef(email: string): string {
+  const normalized = email.trim().toLowerCase();
+  return createHash("sha256").update(normalized).digest("hex").slice(0, 16);
+}
 
 /**
  * Claim `email`'s single marketing slot for `day` (default: today UTC).
  *
- * Fails CLOSED when a gate is configured but unreachable, a skipped marketing
- * send is recoverable, a duplicate blast is not. When no gate is configured the
- * caller keeps its previous behaviour so local/dry runs still work.
+ * Fails CLOSED in production when the gate is missing or unreachable. A skipped
+ * marketing send is recoverable, a duplicate blast is not. Local development
+ * can still run without the remote gate.
  */
 export async function gateAllows(
   email: string,
   sender: string,
   day?: string,
 ): Promise<boolean> {
-  if (!GATE_URL || !GATE_SECRET) return true;
+  if (!GATE_URL || !GATE_SECRET) return process.env.NODE_ENV !== "production";
   try {
     const res = await fetch(GATE_URL, {
       method: "POST",
@@ -42,9 +49,12 @@ export async function gateAllows(
       signal: AbortSignal.timeout(15000),
     });
     const data = await res.json();
-    return data?.allowed === true;
+    return res.ok && data?.allowed === true;
   } catch (err) {
-    console.warn(`[send-gate] unreachable for ${email}, skipping (fail-closed)`, err);
+    console.warn(
+      `[send-gate] unreachable for recipient_ref=${recipientRef(email)}, skipping (fail-closed)`,
+      err,
+    );
     return false;
   }
 }
