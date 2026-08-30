@@ -474,6 +474,15 @@ async function main() {
   const out = { periods: periods.map(({ slug, name, current }) => ({ slug, name, current })), sectors: outputSectors };
   fs.writeFileSync(dataPath, JSON.stringify(out, null, 2), "utf8");
 
+  // Write this only after startups.json is complete. The weekly sender uses it
+  // as evidence that a full fetch reached the durable completion boundary.
+  const refreshMetadataPath = path.join(dir, "github-refresh-metadata.json");
+  fs.writeFileSync(refreshMetadataPath, JSON.stringify({
+    completed_at: new Date().toISOString(),
+    sectors_processed: sectorSlice.map((sector) => sector.slug),
+    sector_count: sectorSlice.length,
+  }, null, 2), "utf8");
+
   const pages = outputSectors.reduce((s, x) => s + Object.keys(x.periods).length, 0);
   const total = outputSectors.reduce((s, x) => s + Object.values(x.periods).reduce((ps, snap) => ps + snap.startups.length, 0), 0);
   console.log(`\n=== Done: ${pages} pages, ${total} startup entries, ${pages * 3} FAQs ===`);

@@ -367,7 +367,7 @@ ${data.firstIssueIntro ? `
               <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;">
                 <tr>
                   <td align="center">
-                    <a href="${track("https://buy.stripe.com/28E6oGdJh18YgV04nK0x203")}" style="display:block;width:100%;box-sizing:border-box;background:${BRAND.accent};color:${BRAND.onAccent};font-weight:700;font-size:19px;line-height:1.2;letter-spacing:-0.01em;padding:18px 28px;border-radius:10px;text-decoration:none;text-align:center;box-shadow:0 4px 14px rgba(2,132,199,0.35);">Get the First Look Pass &mdash; &euro;7 once</a>
+                    <a href="${track("https://signals.gitdealflow.com/api/checkout/session?tier=firstlook")}" style="display:block;width:100%;box-sizing:border-box;background:${BRAND.accent};color:${BRAND.onAccent};font-weight:700;font-size:19px;line-height:1.2;letter-spacing:-0.01em;padding:18px 28px;border-radius:10px;text-decoration:none;text-align:center;box-shadow:0 4px 14px rgba(2,132,199,0.35);">Get the First Look Pass - &euro;7 once</a>
                   </td>
                 </tr>
               </table>
