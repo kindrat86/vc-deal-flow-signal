@@ -30,3 +30,11 @@ test("daily Seinfeld manual recipient path is owner-address-only", () => {
   assert.match(source, /INTERNAL_TEST_RECIPIENTS\.has\(testTo\.toLowerCase\(\)\)/);
   assert.match(source, /gateAllows\(testTo,\s*["']pseo:daily-seinfeld-test["']\)/);
 });
+
+test("daily Seinfeld provider failures do not expose the raw provider body", () => {
+  const source = read("app/api/cron/daily-seinfeld/route.ts");
+  assert.doesNotMatch(source, /console\.error\([^;]*,\s*body\s*\)/s);
+  assert.doesNotMatch(source, /error:\s*body/);
+  assert.match(source, /recipient_ref:\s*recipientRef\(testTo\)/);
+  assert.match(source, /provider_status:\s*sendRes\.status/);
+});

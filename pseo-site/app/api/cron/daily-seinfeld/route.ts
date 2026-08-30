@@ -133,9 +133,18 @@ export async function GET(req: Request): Promise<Response> {
     });
     const body = (await sendRes.json()) as ResendErrorBody & { id?: string };
     if (!sendRes.ok) {
-      console.error("[daily-seinfeld] test send failed:", body);
+      console.error("[daily-seinfeld] test send failed", {
+        recipient_ref: recipientRef(testTo),
+        provider_status: sendRes.status,
+      });
       return NextResponse.json(
-        { ok: false, mode: "test", recipient_ref: recipientRef(testTo), error: body },
+        {
+          ok: false,
+          mode: "test",
+          recipient_ref: recipientRef(testTo),
+          error: "Provider send failed",
+          provider_status: sendRes.status,
+        },
         { status: 502 },
       );
     }
