@@ -357,8 +357,22 @@ ${data.firstIssueIntro ? `
                   </td>
                 </tr>
               </table>
+            </td>
+          </tr>
+
+          <!-- PAID CTA: First Look Pass -->
+          <tr><td style="height:32px;line-height:32px;font-size:0;">&nbsp;</td></tr>
+          <tr>
+            <td align="center" class="px-outer" style="padding:0 8px;">
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;">
+                <tr>
+                  <td align="center">
+                    <a href="${track("https://buy.stripe.com/28E6oGdJh18YgV04nK0x203")}" style="display:block;width:100%;box-sizing:border-box;background:${BRAND.accent};color:${BRAND.onAccent};font-weight:700;font-size:19px;line-height:1.2;letter-spacing:-0.01em;padding:18px 28px;border-radius:10px;text-decoration:none;text-align:center;box-shadow:0 4px 14px rgba(2,132,199,0.35);">Get the First Look Pass &mdash; &euro;7 once</a>
+                  </td>
+                </tr>
+              </table>
               <p class="tx-mut" style="margin:12px 0 0 0;color:${BRAND.textMut};font-size:13px;">
-                Want the deep dive? <a href="${track("https://gitdealflow.com/insider")}" style="color:${BRAND.accentLight};font-weight:600;">Join the Insider Circle</a> for the full numbers, real-time alerts, and the complete research tools.
+                One sector, fully mapped: PDF + CSV, ranked by acceleration. 30-day Signal-or-It&#39;s-Free guarantee.
               </p>
             </td>
           </tr>
