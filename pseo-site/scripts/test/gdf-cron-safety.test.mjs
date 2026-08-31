@@ -69,3 +69,11 @@ test("unsubscribe diagnostics never expose recipient PII or provider bodies", ()
   assert.doesNotMatch(source, /Email:\s*\$\{email\}/);
   assert.match(source, /recipient_ref[^\n]*recipientRef\(email\)/);
 });
+
+test("production prebuild runs the cron safety suite", () => {
+  const packageJson = JSON.parse(read("package.json"));
+  assert.match(
+    packageJson.scripts.prebuild,
+    /node --test scripts\/test\/gdf-cron-safety\.test\.mjs/,
+  );
+});
