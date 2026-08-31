@@ -128,6 +128,10 @@ function b64url(buf) {
     .replace(/=+$/, "");
 }
 function unsubscribeUrl(email) {
+  // Signed one-click link only when VERIFY_SECRET is present locally.
+  // Absent secret = the same mailto-only fallback the weekly digest has
+  // always used, so a missing secret degrades instead of crashing.
+  if (!VERIFY_SECRET) return null;
   const ttlMs = 10 * 365 * 86_400 * 1000;
   const payload = {
     e: String(email).toLowerCase(),
@@ -220,7 +224,7 @@ if (TEST_TO) {
     to: TEST_TO,
     bcc: ["sales@sipiteno.com"],
     subject: SUBJECT,
-    text: BODY_TEMPLATE.replace("{UNSUB_URL}", unsubscribeUrl(TEST_TO)),
+    text: BODY_TEMPLATE.replace("{UNSUB_URL}", unsubscribeUrl(TEST_TO) || UNSUB_MAILTO.replace(/[<>]/g, "")),
     tags: [{ name: "email_key", value: EMAIL_KEY }],
     headers: unsubHeaders(TEST_TO),
   });
@@ -320,7 +324,7 @@ for (const contact of queue) {
       to: contact.email,
       bcc: ["sales@sipiteno.com"],
       subject: SUBJECT,
-      text: BODY_TEMPLATE.replace("{UNSUB_URL}", unsubscribeUrl(contact.email)),
+      text: BODY_TEMPLATE.replace("{UNSUB_URL}", unsubscribeUrl(contact.email) || UNSUB_MAILTO.replace(/[<>]/g, "")),
       tags: [{ name: "email_key", value: EMAIL_KEY }],
       headers: unsubHeaders(contact.email),
     });
