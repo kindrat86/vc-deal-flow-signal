@@ -3,6 +3,10 @@ import { withX402 } from "x402-next";
 import type { FacilitatorConfig } from "x402/types";
 import { createCdpAuthHeaders } from "@coinbase/x402";
 import { buildDeepSignal } from "@/lib/deep-signal-core";
+import {
+  decorateLegacyResponseForV2,
+  paymentSignatureV2ToV1,
+} from "@/lib/x402-v2-bridge";
 
 const COINBASE_FACILITATOR_URL =
   "https://api.cdp.coinbase.com/platform/v2/x402" as const;
@@ -19,8 +23,9 @@ const PAY_TO = process.env.X402_PAY_TO_ADDRESS as `0x${string}` | undefined;
 const CORS = {
   "Access-Control-Allow-Origin": "*",
   "Access-Control-Allow-Methods": "POST, OPTIONS",
-  "Access-Control-Allow-Headers": "Content-Type, X-PAYMENT",
-  "Access-Control-Expose-Headers": "X-PAYMENT-RESPONSE",
+  "Access-Control-Allow-Headers": "Content-Type, X-PAYMENT, PAYMENT-SIGNATURE",
+  "Access-Control-Expose-Headers":
+    "X-PAYMENT-RESPONSE, PAYMENT-REQUIRED, PAYMENT-RESPONSE",
 } as const;
 
 export async function OPTIONS() {
@@ -112,7 +117,7 @@ const facilitator: FacilitatorConfig =
       }
     : { url: X402_DEFAULT_FACILITATOR_URL };
 
-export const POST = PAY_TO
+const legacyPOST = PAY_TO
   ? withX402(
       handler,
       PAY_TO,
@@ -129,3 +134,22 @@ export const POST = PAY_TO
       facilitator,
     )
   : notConfiguredHandler;
+
+export async function POST(request: NextRequest): Promise<Response> {
+  const paymentSignature = request.headers.get("PAYMENT-SIGNATURE");
+  if (!paymentSignature) {
+    return decorateLegacyResponseForV2(await legacyPOST(request), false);
+  }
+
+  let legacyRequest: NextRequest;
+  try {
+    const headers = new Headers(request.headers);
+    headers.set("X-PAYMENT", paymentSignatureV2ToV1(paymentSignature, NETWORK));
+    legacyRequest = new NextRequest(request, { headers });
+  } catch {
+    // Invalid or unsupported v2 payload: return a fresh dual-protocol challenge.
+    return decorateLegacyResponseForV2(await legacyPOST(request), false);
+  }
+
+  return decorateLegacyResponseForV2(await legacyPOST(legacyRequest), true);
+}

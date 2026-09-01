@@ -6508,6 +6508,44 @@ check(
   );
 }
 
+// ---------------------------------------------------------------------------
+// §77 x402 v2 HTTP interoperability (2026-09-01). The paid deep-signal route
+// remains v1-compatible while advertising the canonical v2 PAYMENT-REQUIRED
+// header and accepting PAYMENT-SIGNATURE. The executable bridge test is part
+// of prebuild so a body-only v1 regression cannot deploy.
+// ---------------------------------------------------------------------------
+{
+  check(
+    "app/api/agent/deep-signal/x402/route.ts",
+    "§77 x402 route lost its v2 header/payment bridge",
+    (src) =>
+      src.includes("paymentSignatureV2ToV1") &&
+      src.includes("decorateLegacyResponseForV2") &&
+      src.includes('request.headers.get("PAYMENT-SIGNATURE")') &&
+      src.includes("const legacyPOST =") &&
+      src.includes("export async function POST"),
+    "Restore the dual-protocol wrapper around the proven legacy settlement path.",
+  );
+  check(
+    "lib/x402-v2-bridge.ts",
+    "§77 x402 v2 PAYMENT-REQUIRED/PAYMENT-RESPONSE encoder is missing",
+    (src) =>
+      src.includes('headers.set("PAYMENT-REQUIRED"') &&
+      src.includes('headers.set("PAYMENT-RESPONSE"') &&
+      src.includes("x402Version: 2") &&
+      src.includes("EIP-3009"),
+    "Restore the tested v1/v2 HTTP envelope bridge and its CORS headers.",
+  );
+  check(
+    "package.json",
+    "§77 x402 v2 bridge test is no longer a prebuild release gate",
+    (src) =>
+      src.includes('"test:x402-v2-bridge"') &&
+      src.includes("npm run test:x402-v2-bridge"),
+    "Keep tests/x402-v2-bridge.test.ts wired into prebuild.",
+  );
+}
+
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +
