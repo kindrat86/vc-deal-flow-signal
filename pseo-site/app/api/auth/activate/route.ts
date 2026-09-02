@@ -50,6 +50,11 @@ export async function GET(request: NextRequest) {
       return NextResponse.redirect(new URL("/", request.url));
     }
 
+    const tier = getTierFromSession(session);
+    if (!tier) {
+      return NextResponse.redirect(new URL("/", request.url));
+    }
+
     // Mark as used BEFORE creating the session token. The Runtime Cache
     // write is awaited so a concurrent request that lost the race sees the
     // mark on its next isNonceUsed check (eventually consistent within ~ms
@@ -66,7 +71,6 @@ export async function GET(request: NextRequest) {
       typeof session.customer === "string"
         ? session.customer
         : session.customer?.id ?? "";
-    const tier = getTierFromSession(session);
 
     if (!email) {
       return NextResponse.redirect(new URL("/", request.url));
