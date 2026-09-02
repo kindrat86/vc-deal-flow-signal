@@ -501,6 +501,15 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ received: true });
     }
 
+    const tier = getTierFromSession(fullSession);
+    if (!tier) {
+      console.info("Ignoring checkout from an unrecognized Stripe product", {
+        eventId: event.id,
+        sessionId: session.id,
+      });
+      return NextResponse.json({ received: true });
+    }
+
     // A returning customer must not receive stale win-back emails after
     // buying again: cancel still-scheduled lifecycle mail and clear the
     // cancelled state. Best-effort: never blocks the purchase flow.
@@ -508,8 +517,6 @@ export async function POST(request: NextRequest) {
       cancelScheduledLifecycleEmails(email),
       markCustomerReactivated(email),
     ]).catch((error) => console.error("[winback] reactivation cleanup failed", error));
-
-    const tier = getTierFromSession(fullSession);
 
     let welcomeEmail: { subject: string; html: string };
     if (tier === "agent_credits_100") {
