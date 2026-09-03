@@ -4,6 +4,8 @@ export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
 
 const SITE = "https://signals.gitdealflow.com";
+const TEARDOWN_V2_COPY =
+  "Enter one startup at checkout. Work starts when payment succeeds. Within 24 hours, you receive either a verified public-GitHub activity teardown or, when no attributable public org exists, a coverage verdict plus one replacement startup. No reply is required.";
 
 interface PricingTier {
   slug: string;
@@ -28,6 +30,16 @@ interface PricingTier {
   ctaHref: string;
   guarantee: string | null;
   promoCode: string | null;
+  fulfilment?: {
+    offerVersion: "teardown_v2";
+    requiredInput: "startup";
+    inputCollectedAt: "stripe_checkout";
+    slaStartsAt: "payment_created";
+    slaHours: 24;
+    replyRequired: false;
+    noPublicFootprintOutcome: "coverage_verdict_plus_one_replacement";
+    refunds: "manual_review_only";
+  };
 }
 
 const tiers: PricingTier[] = [
@@ -68,21 +80,31 @@ const tiers: PricingTier[] = [
     foundingMember: false,
     applicationGated: false,
     capacity: null,
-    oneLine:
-      "Pay €1 once, name one venture-backed startup, and within 24 hours get a tweet-length (≤280 char) teardown of its GitHub momentum, signal type, 14-day acceleration delta, and the kicker insight. Buyer-threshold breaker between Free and €7.",
+    oneLine: TEARDOWN_V2_COPY,
     forWho:
       "Curious investors who want to feel the signal quality on a startup they already know before paying real money.",
     bullets: [
-      "Tweet-length (≤280 char) teardown of one startup you name",
+      "Enter one startup in the required Stripe Checkout field",
       "Signal classification + 14-day acceleration delta + kicker insight",
-      "Hand-written by the founder, not LLM-generated",
-      "Delivered within 24h on weekdays",
+      "Autonomous, evidence-checked public-GitHub analysis",
+      "24 clock hours from successful payment; no reply required",
+      "Coverage verdict plus one replacement when no attributable public org exists",
       "€1 credited toward First Look Pass if you upgrade within 7 days",
     ],
     ctaLabel: "Buy the Teardown",
     ctaHref: "https://signals.gitdealflow.com/teardown",
     guarantee: null,
     promoCode: null,
+    fulfilment: {
+      offerVersion: "teardown_v2",
+      requiredInput: "startup",
+      inputCollectedAt: "stripe_checkout",
+      slaStartsAt: "payment_created",
+      slaHours: 24,
+      replyRequired: false,
+      noPublicFootprintOutcome: "coverage_verdict_plus_one_replacement",
+      refunds: "manual_review_only",
+    },
   },
   {
     slug: "first-look-pass",
@@ -337,14 +359,14 @@ export async function GET() {
       ],
       excludes: ["tweet-teardown", "first-look-pass"],
       excludesReason:
-        "€1 Tweet Teardown and €7 First Look Pass are one-time micro-deliverables, refund window is 24h after delivery, not 30 days. Tweet Teardown auto-refunds if no public GitHub data is available for the named org.",
+        "Tweet Teardown uses a coverage verdict plus one replacement startup when no public GitHub organization can be attributed; refund requests are reviewed manually. First Look Pass has separate one-time-deliverable terms.",
     },
     upgradeCredits: {
       "tweet-teardown": {
         creditsToward: ["first-look-pass"],
         amountEur: 1,
         windowDays: 7,
-        note: "€1 credited toward First Look Pass if upgraded within 7 days. Reply REQUEST CREDIT to delivery email; founder applies manually.",
+        note: "€1 credited toward First Look Pass if upgraded within 7 days. Reply REQUEST CREDIT to the delivery email; support applies it manually.",
       },
       "first-look-pass": {
         creditsToward: ["dashboard-beta"],

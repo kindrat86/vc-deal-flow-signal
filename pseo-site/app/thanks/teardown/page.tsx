@@ -9,10 +9,12 @@ import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
+const TEARDOWN_V2_COPY =
+  "Enter one startup at checkout. Work starts when payment succeeds. Within 24 hours, you receive either a verified public-GitHub activity teardown or, when no attributable public org exists, a coverage verdict plus one replacement startup. No reply is required.";
+
 export const metadata: Metadata = withEditorialOverride({
-  title: "Tweet Teardown confirmed. Reply with the startup name.",
-  description:
-    "Founder-written onboarding for Tweet Teardown buyers. Name a startup, get the tweet-length teardown in 24 hours.",
+  title: "Tweet Teardown payment confirmed. The 24-hour clock is running.",
+  description: TEARDOWN_V2_COPY,
   alternates: { canonical: "/thanks/teardown" },
   robots: { index: false, follow: false },
 });
@@ -32,12 +34,10 @@ export default function ThanksTeardown() {
             Payment confirmed · Tweet Teardown
           </p>
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 leading-[1.1] tracking-tight">
-            €1 received. Reply with the startup name and the 24-hour clock starts.
+            Payment received. The 24-hour clock started when payment succeeded.
           </h1>
           <p className="text-gray-300 text-base leading-relaxed">
-            Stripe receipt is in your inbox. The Teardown is hand-written
-            from public GitHub data, so the only thing that can&rsquo;t be
-            done at scale is choosing the org, that comes from you.
+            {TEARDOWN_V2_COPY}
           </p>
         </header>
 
@@ -63,19 +63,16 @@ export default function ThanksTeardown() {
 
         <section className="bg-slate-900/60 border border-slate-800 rounded-lg p-5 space-y-3">
           <p className="text-gray-300 text-sm font-semibold">
-            What to send back
+            No reply required
           </p>
           <ul className="space-y-2 text-gray-300 text-sm leading-relaxed list-disc list-inside marker:text-rose-300">
-            <li>The startup name (and its public GitHub org URL if you have one).</li>
             <li>
-              Optional: one sentence on what you already think about them.
-              The kicker insight gets sharper when the founder knows whether
-              you&rsquo;re bullish, sceptical, or just curious.
+              Optional: reply with the public GitHub organization URL or one
+              sentence of context if you have either. This does not restart the clock.
             </li>
           </ul>
           <p className="text-gray-400 text-xs leading-relaxed">
-            If the org has no public GitHub footprint, you get an immediate
-            €1 refund, no public commit data means no signal to read.
+            Questions and manually reviewed refund requests: signals@gitdealflow.com.
           </p>
         </section>
 
@@ -84,20 +81,15 @@ export default function ThanksTeardown() {
             What happens next
           </p>
           <ol className="space-y-2 text-gray-200 text-base leading-relaxed list-decimal list-inside">
-            <li>You reply with the startup name.</li>
-            <li>The founder confirms within an hour (during EU business hours).</li>
+            <li>Payment started the 24-hour SLA.</li>
+            <li>The startup entered at checkout is already attached to the order.</li>
             <li>
-              Within 24 hours of confirmation, you get the tweet-length
-              teardown in your inbox, signal type, 14-day acceleration
-              %, kicker insight.
+              Within 24 clock hours of payment, the order receives a verified
+              public-GitHub teardown or a coverage verdict.
             </li>
             <li>
-              €1 credits toward the €7 First Look Pass if you upgrade within
-              7 days, reply{" "}
-              <code className="text-rose-200 bg-rose-900/40 px-1.5 py-0.5 rounded text-xs">
-                REQUEST CREDIT
-              </code>{" "}
-              to your delivery email and the founder applies it manually.
+              A coverage verdict includes one free replacement startup. It is
+              a fulfilment path, not an automatic refund trigger.
             </li>
           </ol>
         </section>
@@ -115,7 +107,7 @@ export default function ThanksTeardown() {
           <p className="text-gray-300 text-sm leading-relaxed">
             Skip the upgrade email and go straight to the €7 First Look Pass.
             The €1 credit applies if you check out within 7 days -
-            effective price, €6.
+            effective price, €6. Reply REQUEST CREDIT and support applies it manually.
           </p>
           <p className="pt-2">
             <Link

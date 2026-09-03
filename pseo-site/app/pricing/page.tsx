@@ -46,6 +46,8 @@ const STRIPE_SWEEP = "/api/checkout/session?tier=sector_sweep";
 const STRIPE_DASHBOARD_ANNUAL: string | undefined = undefined;
 const STRIPE_INSIDER_ANNUAL: string | undefined = undefined;
 const SIGNUP_URL = "https://gitdealflow.com/#signup";
+const TEARDOWN_V2_COPY =
+  "Enter one startup at checkout. Work starts when payment succeeds. Within 24 hours, you receive either a verified public-GitHub activity teardown or, when no attributable public org exists, a coverage verdict plus one replacement startup. No reply is required.";
 // Sharp Tier, application-gated, capped at 8 funds in 2026. The mailto includes a structured intake template so the reply is immediate-prioritised.
 // Russell audit 2026-05-05 PM: replaced mailto: with a proper application
 // page (/apply). Mailto leaked the funnel to the user's email client and
@@ -116,15 +118,15 @@ const tiers: Tier[] = [
     priceLabel: "€1",
     priceCadence: "one-time",
     rrpLabel: "Buyer-threshold breaker · 24-hour delivery",
-    oneLine:
-      "Pay €1 once, name one venture-backed startup, and within 24 hours get a tweet-length (≤280 char) teardown of its GitHub momentum, signal type, 14-day acceleration %, and the kicker insight.",
+    oneLine: TEARDOWN_V2_COPY,
     forWho:
       "Use this if you want one fast low-friction test before you trust the signal with more money.",
     bullets: [
-      "Tweet-length (≤280 char) teardown of one startup you name",
+      "Enter one startup in the required Stripe Checkout field",
       "Signal classification + 14-day acceleration delta + the kicker insight",
-      "Hand-written by the founder, not LLM-generated",
-      "Delivered to your inbox within 24h on weekdays",
+      "Autonomous, evidence-checked public-GitHub analysis",
+      "24 clock hours from successful payment; no reply required",
+      "Coverage verdict plus one replacement when no attributable public org exists",
       "€1 credited toward First Look Pass if you upgrade within 7 days",
       "No PDF, no CSV, no call, pure signal compression",
     ],
@@ -306,7 +308,7 @@ const tiers: Tier[] = [
 const faqs: { q: string; a: string }[] = [
   {
     q: "How much does VC Deal Flow Signal cost?",
-    a: "Pricing has ten tiers. The Signal Digest is free forever, a weekly email with five ranked startups. The Book is €0.99 one-time (or free PDF/EPUB) for the 104-page operational field manual on the seven public-data signals that precede Series A rounds. The Tweet Teardown is €1 one-time and delivers a tweet-length (≤280 char) momentum teardown of one startup you name, hand-written by the founder, within 24 hours. The First Look Pass is €7 one-time and delivers a full sector deep dive within 24 hours. The Dashboard Beta is €49 per month (the €9.97/mo founding rate closed 2026-06-30; existing founding members keep it for life) and ranks 140 startups across 15 sectors with weekly refresh. The Insider Circle is €197 per month (founding rate was €97/mo, same closed cohort) and adds a private Telegram group, custom watchlists, and JSON / CSV API access. The Sharp Tier is €497 per month or €4,970 per year for active funds and syndicates, quarterly portfolio review brief, custom thesis-aligned watchlist co-built with the fund, white-labeled API endpoint at /api/v1/sharp/<your-fund>, methodology source code access, application-gated and capped at 8 funds in 2026. The Custom Sector Sweep is €1,997 one-time for a written report on one sector of your choice. The Methodology Partnership is €14,997 per year (founding rate, going to €29,997 per year for funds joining 2027+) and runs a custom regression on the fund's anonymized portfolio outcomes, ships a bespoke 50-org watchlist with monthly rebuild, runs a white-labeled fund subdomain at signal.yourfund.com, and includes a quarterly synthetic founder talk and async-only methodology Q&A, capped at 5 funds in 2026. The Vault is €49,997 per year (founding rate, going to €99,997 per year for funds joining 2027+) and adds co-development access to the panel-construction pipeline, pre-publication SSRN preview six months early, 72-hour signal head-start over the public Dashboard, an annual async methodology summit, methodology source repo on a fund-only fork license, and Signal-of-the-Quarter co-investment alerts, capped at 2 funds in 2026. The Methodology Partnership and Vault are async-only and anonymity-preserving, no live calls, no in-person attendance. The free MCP server for Claude / Cursor / Windsurf is bundled with every tier including the free one and will never be gated.",
+    a: "Pricing has ten tiers. The Signal Digest is free forever, a weekly email with five ranked startups. The Book is €0.99 one-time (or free PDF/EPUB) for the 104-page operational field manual on the seven public-data signals that precede Series A rounds. The Tweet Teardown is €1 one-time, accepts one startup at checkout, starts its 24-hour clock when payment succeeds, and returns a verified public-GitHub teardown or a coverage verdict plus one replacement. The First Look Pass is €7 one-time and delivers a full sector deep dive within 24 hours. The Dashboard Beta is €49 per month (the €9.97/mo founding rate closed 2026-06-30; existing founding members keep it for life) and ranks 140 startups across 15 sectors with weekly refresh. The Insider Circle is €197 per month (founding rate was €97/mo, same closed cohort) and adds a private Telegram group, custom watchlists, and JSON / CSV API access. The Sharp Tier is €497 per month or €4,970 per year for active funds and syndicates, quarterly portfolio review brief, custom thesis-aligned watchlist co-built with the fund, white-labeled API endpoint at /api/v1/sharp/<your-fund>, methodology source code access, application-gated and capped at 8 funds in 2026. The Custom Sector Sweep is €1,997 one-time for a written report on one sector of your choice. The Methodology Partnership is €14,997 per year (founding rate, going to €29,997 per year for funds joining 2027+) and runs a custom regression on the fund's anonymized portfolio outcomes, ships a bespoke 50-org watchlist with monthly rebuild, runs a white-labeled fund subdomain at signal.yourfund.com, and includes a quarterly synthetic founder talk and async-only methodology Q&A, capped at 5 funds in 2026. The Vault is €49,997 per year (founding rate, going to €99,997 per year for funds joining 2027+) and adds co-development access to the panel-construction pipeline, pre-publication SSRN preview six months early, 72-hour signal head-start over the public Dashboard, an annual async methodology summit, methodology source repo on a fund-only fork license, and Signal-of-the-Quarter co-investment alerts, capped at 2 funds in 2026. The Methodology Partnership and Vault are async-only and anonymity-preserving, no live calls, no in-person attendance. The free MCP server for Claude / Cursor / Windsurf is bundled with every tier including the free one and will never be gated.",
   },
   {
     q: "Why is there a €1 tier?",
@@ -318,7 +320,7 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "What is the cheapest paid plan?",
-    a: "The Tweet Teardown at €1 one-time is the cheapest paid product. It delivers a tweet-length (≤280 character) GitHub-momentum teardown of one startup you name, signal classification, 14-day acceleration delta, and the human-written kicker insight, emailed within 24 hours on weekdays. The €1 is credited toward the €7 First Look Pass if you upgrade within 7 days, so the rung functions as a near-zero-friction on-ramp into the paid ladder. The next step up is the €7 First Look Pass, which delivers a full sector deep dive (PDF + CSV) on whichever sector you pick. If you upgrade Tweet Teardown → First Look → Dashboard, every credit chains forward.",
+    a: "The Tweet Teardown at €1 one-time is the cheapest paid product. It accepts one startup at checkout and delivers a signal classification, 14-day acceleration delta, and evidence-checked kicker insight within 24 clock hours of payment; when no public org can be attributed, it delivers a coverage verdict plus one replacement. The €1 is credited toward the €7 First Look Pass if you upgrade within 7 days, so the rung functions as a near-zero-friction on-ramp into the paid ladder. The next step up is the €7 First Look Pass, which delivers a full sector deep dive (PDF + CSV) on whichever sector you pick. If you upgrade Tweet Teardown → First Look → Dashboard, every credit chains forward.",
   },
   {
     q: "What is founding-member pricing?",
@@ -326,7 +328,7 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "What is the Signal-or-It's-Free guarantee?",
-    a: "Every paid tier (Dashboard, Insider, and Sector Sweep) ships with a 30-day guarantee. If, in your first 30 days, the signal doesn't surface a startup that you find genuinely interesting, defined as one you would have wanted to know about earlier, reply to any email with the word REFUND and the full payment is refunded, no questions asked. The guarantee exists because the signal either works or it doesn't; charging for an output you don't find useful is bad business.",
+    a: "Dashboard, Insider, Sharp Tier, and Sector Sweep ship with a 30-day guarantee; Tweet Teardown instead uses its coverage-verdict and replacement path. If, in your first 30 days, the signal doesn't surface a startup that you find genuinely interesting, defined as one you would have wanted to know about earlier, reply to any email with the word REFUND and the full payment is refunded, no questions asked. The guarantee exists because the signal either works or it doesn't; charging for an output you don't find useful is bad business.",
   },
   {
     q: "How does the Sector Sweep differ from Dashboard?",
@@ -560,8 +562,9 @@ export default function PricingPage() {
           before 2026-06-30 keep €9.97 and €97 respectively for life).
           Sharp Tier at €497
           per month is the dedicated landing for active funds; it is
-          application-gated and capped at 8 funds in 2026. Every paid tier
-          ships with a 30-day Signal-or-It&rsquo;s-Free guarantee. If your real
+          application-gated and capped at 8 funds in 2026. The 30-day
+          Signal-or-It&rsquo;s-Free guarantee applies to Dashboard, Insider,
+          Sharp Tier, and Sector Sweep, not Tweet Teardown. If your real
           question is which paid step to buy first, this page is the offer-selection layer.
         </p>
         <p className="text-gray-400 text-sm leading-relaxed mb-6 border-l-2 border-amber-700/40 pl-4">
@@ -619,7 +622,7 @@ export default function PricingPage() {
         </div>
 
         <AgentSummary
-          tldr="VC Deal Flow Signal (GitDealFlow) has seven pricing tiers: a free weekly Signal Digest with five ranked startups, a €1 one-time Tweet Teardown (tweet-length GitHub-momentum read on one startup the buyer names, buyer-threshold breaker between Free and €7), a €7 one-time First Look Pass for a sector deep dive, a €49/mo Dashboard Beta covering 140 startups across 15 sectors, a €197/mo Insider Circle adding private Telegram + JSON/CSV API, a €497/mo Sharp Tier for active funds with quarterly review calls + custom watchlists + white-labeled API + methodology source code (application-gated, capped at 8 funds in 2026), and a €1,997 one-time Custom Sector Sweep written report. A founding-member rate (€9.97/mo Dashboard, €97/mo Insider) closed 2026-06-30 and applies only to subscribers who joined before that date. The free MCP server (five read-only tools) is bundled with every tier including the free one and will never be gated. Every paid tier ships with a 30-day Signal-or-It's-Free guarantee."
+          tldr={`VC Deal Flow Signal (GitDealFlow) has seven pricing tiers: a free weekly Signal Digest with five ranked startups, a €1 one-time Tweet Teardown (tweet-length GitHub-momentum read on one startup the buyer names, buyer-threshold breaker between Free and €7), a €7 one-time First Look Pass for a sector deep dive, a €49/mo Dashboard Beta covering 140 startups across 15 sectors, a €197/mo Insider Circle adding private Telegram + JSON/CSV API, a €497/mo Sharp Tier for active funds with quarterly review calls + custom watchlists + white-labeled API + methodology source code (application-gated, capped at 8 funds in 2026), and a €1,997 one-time Custom Sector Sweep written report. A founding-member rate (€9.97/mo Dashboard, €97/mo Insider) closed 2026-06-30 and applies only to subscribers who joined before that date. The free MCP server (five read-only tools) is bundled with every tier including the free one and will never be gated. ${TEARDOWN_V2_COPY} The 30-day Signal-or-It's-Free guarantee applies to Dashboard, Insider, Sharp Tier, and Sector Sweep, not Tweet Teardown.`}
           pageUrl="https://signals.gitdealflow.com/pricing"
           asOf={asOf}
           citeAs="VC Deal Flow Signal, Pricing (signals.gitdealflow.com/pricing), retrieved Q2 2026."
@@ -632,7 +635,7 @@ export default function PricingPage() {
             },
             {
               claim:
-                "Cheapest paid product is the €1 Tweet Teardown, a tweet-length (≤280 char) momentum teardown on one startup the buyer names, hand-written by the founder, delivered within 24h. €1 credited toward First Look Pass if upgraded within 7 days.",
+                `Cheapest paid product is the €1 Tweet Teardown. ${TEARDOWN_V2_COPY} €1 is credited toward First Look Pass if upgraded within 7 days.`,
               sourceUrl: "https://signals.gitdealflow.com/teardown",
               sourceLabel: "Tweet Teardown",
             },
@@ -650,7 +653,7 @@ export default function PricingPage() {
             },
             {
               claim:
-                "Every paid tier ships with a 30-day Signal-or-It's-Free guarantee, full refund within 30 days if the signal does not surface a startup you find genuinely interesting.",
+                "Dashboard, Insider, Sharp Tier, and Sector Sweep carry the 30-day Signal-or-It's-Free guarantee. Tweet Teardown is excluded and uses its coverage-verdict plus one-replacement path.",
               sourceUrl: "https://signals.gitdealflow.com/pricing#guarantee",
               sourceLabel: "Guarantee",
             },
@@ -1199,8 +1202,9 @@ we credit the unused portion of the current month toward
             Signal or It&rsquo;s Free, 30-day guarantee
           </h2>
           <p className="text-gray-300 text-sm leading-relaxed mb-3">
-            Every paid tier (Dashboard, Insider Circle, and Sector Sweep)
-            ships with a 30-day guarantee. If, in your first 30 days, the
+            Dashboard, Insider Circle, Sharp Tier, and Sector Sweep ship
+            with a 30-day guarantee. Tweet Teardown is excluded and uses
+            its coverage-verdict plus one-replacement path. If, in your first 30 days, the
             signal doesn&rsquo;t surface a startup you find genuinely
             interesting, defined as one you would have wanted to know
             about earlier, reply to any email with the word{" "}
