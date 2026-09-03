@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffffff">
+<meta name="color-scheme" content="light">
+<title>How to track GitHub activity of startups: the analyst's guide</title>
+<link rel="alternate" hreflang="en" href="https://gitdealflow.com/answers/how-to-track-github-activity-of-startups">
+<link rel="alternate" hreflang="x-default" href="https://gitdealflow.com/answers/how-to-track-github-activity-of-startups">
+<meta name="description" content="Track startup GitHub activity the way analysts do: commit velocity, contributor growth, and repository expansion, measured weekly on identical windows across a fixed panel of 350+ orgs in 15 sectors.">
+<link rel="canonical" href="https://gitdealflow.com/answers/how-to-track-github-activity-of-startups">
+<meta property="og:type" content="article">
+<meta property="og:title" content="How to track GitHub activity of startups: the analyst's guide">
+<meta property="og:description" content="Track startup GitHub activity the way analysts do: commit velocity, contributor growth, and repository expansion, measured weekly on identical windows across a fixed panel of 350+ orgs in 15 sectors.">
+<meta property="og:url" content="https://gitdealflow.com/answers/how-to-track-github-activity-of-startups">
+<meta property="og:site_name" content="GitDealFlow">
+<meta property="og:image" content="https://signals.gitdealflow.com/opengraph-image">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://signals.gitdealflow.com/opengraph-image">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type": "Question", "name": "How do I track a startup's GitHub activity?", "acceptedAnswer": {"@type": "Answer", "text": "Watch the organization, not a single repository: track commit velocity in 14-day windows, new contributors joining, and repository expansion (new repos, services, and languages). Pull weekly from the public GitHub REST API or a panel tracker, comparing identical windows so change reads as a rank change, not noise."}},{"@type":"Question","name":"What GitHub metrics indicate a startup is about to raise?","acceptedAnswer":{"@type":"Answer","text":"No metric predicts a raise. The honest framing is that engineering acceleration often precedes announcements: commit velocity, contributor growth, and repository expansion tend to ramp before a round. Across the tracked panel, breakout engineering teams become visible 21 to 47 days before their round is announced. Treat it as a leading indicator for ranking attention, not a guarantee: most accelerated teams still fail."}},{"@type":"Question","name":"Can I track startup GitHub activity manually, or do I need a tool?","acceptedAnswer":{"@type":"Answer","text":"You can start manually: the GitHub REST API is public, and for a handful of orgs a weekly script plus a spreadsheet works fine. Manual tracking breaks down at scale through API rate limits, org renames, and window drift. Panel trackers like GitDealFlow, which refreshes 350+ startup orgs across 15 sectors weekly, exist for that scale."}}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://gitdealflow.com/"},{"@type":"ListItem","position":2,"name":"Answers","item":"https://gitdealflow.com/answers/"},{"@type":"ListItem","position":3,"name":"How to track GitHub activity of startups: the analyst's guide","item":"https://gitdealflow.com/answers/how-to-track-github-activity-of-startups"}]}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"How to track GitHub activity of startups: the analyst's guide","description":"Track startup GitHub activity the way analysts do: commit velocity, contributor growth, and repository expansion, measured weekly on identical windows across a fixed panel of 350+ orgs in 15 sectors.","author":{"@type":"Organization","name":"GitDealFlow","url":"https://gitdealflow.com"},"publisher":{"@type":"Organization","name":"GitDealFlow","url":"https://gitdealflow.com"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://gitdealflow.com/answers/how-to-track-github-activity-of-startups"},"datePublished":"2026-09-03","dateModified":"2026-09-03"}</script>
+<style>
+body{background:#fff;color:#1a1a1a;font-family:-apple-system,system-ui,sans-serif;line-height:1.7;max-width:760px;margin:0 auto;padding:0 20px 60px}
+.hero h1{font-size:2em;font-weight:800;margin:1.5em 0 .5em;line-height:1.2;color:#1a1a1a}
+.content p{margin-bottom:1em;color:#333}
+.content ul,.content ol{line-height:1.9;color:#333}
+footer{max-width:760px;margin:0 auto;padding:1rem 20px;color:#6b7280;font-size:.85rem;border-top:1px solid #e5e7eb}
+</style>
+</head>
+<body>
+<header style="border-bottom:1px solid #1f2937;background:#0f172a">
+<nav style="max-width:1100px;margin:0 auto;padding:1rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+<a href="/" style="color:#f1f5f9;font-weight:700;font-size:1.1rem;text-decoration:none;min-height:44px;display:inline-flex;align-items:center">GitDealFlow</a>
+<div style="display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap">
+<a href="/pricing" style="color:#cbd5e1;text-decoration:none;font-size:.9rem;min-height:44px;display:inline-flex;align-items:center">Pricing</a>
+<a href="/#signup" style="background:#00d4aa;color:#04130e;padding:.6rem 1.1rem;border-radius:.5rem;font-weight:700;font-size:.9rem;text-decoration:none;min-height:44px;display:inline-flex;align-items:center">Get free signal</a>
+</div>
+</nav>
+</header>
+<main>
+<section class="hero"><h1>How to track GitHub activity of startups: the analyst's guide</h1></section>
+<section class="content">
+<div data-direct-answer style="background:#f0fdf4;border:1px solid #bbf7d0;border-radius:.5rem;padding:.9rem 1.1rem;margin:0 0 1.4rem"><p style="color:#1a1a1a;line-height:1.7;margin:0"><strong>Direct answer:</strong> Track the organization, not the announcement feed. Pull commit velocity, contributor growth, and repository expansion for watchlist orgs weekly, in identical 14-day windows, from the public GitHub REST API. Measured on a fixed panel, breakout teams become visible 21 to 47 days before their round is announced.</p></div>
+
+<h2 style="font-size:1.4em;font-weight:700;margin-top:2rem;margin-bottom:.8em;border-bottom:2px solid #e5e7eb;padding-bottom:.3rem">Why analysts track GitHub at all</h2>
+<p>Most sourcing inputs are narratives: a founder pitch, a press cycle, a referral. GitHub activity differs in three ways. It is public, so everyone starts from the same data. It is timestamped, so you measure change instead of asking about it. And it is behavioral: teams cannot fake weeks of merged work the way a landing page is redesigned in an afternoon. It is not a crystal ball, but it is one of the few pre-announcement inputs an analyst can audit.</p>
+<p>Honest caveat: many startups keep their core product private, so public activity is a sample, not the full record. Track organizations on a panel over time rather than judging a single repo snapshot: the change in public behavior carries the signal.</p>
+
+<h2 style="font-size:1.4em;font-weight:700;margin-top:2rem;margin-bottom:.8em;border-bottom:2px solid #e5e7eb;padding-bottom:.3rem">The three things worth tracking</h2>
+<ul style="line-height:1.9;padding-left:1.25rem">
+<li><strong>Commit velocity.</strong> Merged work per org in 14-day windows, read as percentage change against the prior window. Two consecutive accelerating periods filter out one-off bursts such as a hack week or a single large import.</li>
+<li><strong>Contributor growth.</strong> New engineers appearing in the org, and how concentrated commit share is across them. A team going from 3 to 9 active contributors is staffing up, and hiring almost always precedes a raise.</li>
+<li><strong>Repository expansion.</strong> New repositories, new services, and new languages appearing under the org. Expansion means new product surface, which usually means new spend that needs funding.</li>
+</ul>
+<p>Each metric is noisy alone; together they separate teams genuinely accelerating from teams that merely look busy.</p>
+
+<h2 style="font-size:1.4em;font-weight:700;margin-top:2rem;margin-bottom:.8em;border-bottom:2px solid #e5e7eb;padding-bottom:.3rem">The manual path, step by step</h2>
+<ol style="line-height:1.9;padding-left:1.25rem">
+<li><strong>Fix a watchlist.</strong> Pick your population once: sectors, stages, regions. A fixed panel is what makes week-over-week rankings comparable. GitDealFlow's panel is 350+ venture-backed startup GitHub organizations across 15 sectors, refreshed weekly.</li>
+<li><strong>Pull weekly from the public API.</strong> The GitHub REST API needs no special access for public orgs. Fetch org-level repos and contributor activity on the same day each week, into the same schema.</li>
+<li><strong>Measure identical windows.</strong> Score every org on the same 14-day cadence so a rising team shows up as a rank change, not a vibe.</li>
+<li><strong>Demand confirmation.</strong> Act only on two-period acceleration. Single-window spikes are the most common false positive in signal sourcing.</li>
+<li><strong>Review the exceptions.</strong> Read top movers before acting: a bulk import or monorepo migration can look like acceleration to a script.</li></ol>
+
+<h2 style="font-size:1.4em;font-weight:700;margin-top:2rem;margin-bottom:.8em;border-bottom:2px solid #e5e7eb;padding-bottom:.3rem">Where manual tracking breaks down</h2>
+<p>For five orgs, a weekly script and a spreadsheet are enough. Past that, four failure modes arrive together. API rate limits cap how many orgs you can sweep in a window. Orgs rename, archive, and split repositories, which corrupts your time series unless you reconcile identities. Maintainers change and the weekly pull quietly stops. And the measurement windows drift, so the ranking stops meaning anything. This maintenance, not the initial script, is the actual cost of the signal.</p>
+
+<h2 style="font-size:1.4em;font-weight:700;margin-top:2rem;margin-bottom:.8em;border-bottom:2px solid #e5e7eb;padding-bottom:.3rem">What the data shows, honestly</h2>
+<p>Answers on this site are anchored to one public dataset: engineering activity across 350+ startup GitHub organizations in 15 sectors, refreshed weekly from the public GitHub REST API. Across that panel, breakout engineering teams become visible 21 to 47 days before their round is announced. Be honest about what that is: a leading indicator, not a guarantee. Most teams that accelerate still fail, and some strong fundraisers never show top-quartile public velocity. The value is in ranking attention weeks before the announcement, while the founder still has time to talk.</p>
+
+<h2 style="font-size:1.4em;font-weight:700;margin-top:2rem;margin-bottom:.8em;border-bottom:2px solid #e5e7eb;padding-bottom:.3rem">Related answers &amp; tools</h2>
+<ul style="line-height:1.9;padding-left:1.25rem">
+<li><a href="/answers/how-to-find-startups-before-they-raise">How to find startups before they raise: the GitHub signal playbook</a></li>
+<li><a href="/answers/how-to-spot-a-unicorn-early">How to spot a unicorn early</a></li>
+<li><a href="/answers/how-to-get-scouted-on-github">How to get scouted on GitHub</a></li>
+<li><a href="/free/github-momentum-checker">Check a specific target: free momentum checker</a></li>
+<li><a href="/research/">Research hub with the downloadable dataset</a></li>
+</ul>
+
+<section class="faq" style="margin-top:40px">
+<h2 style="font-size:1.4em;font-weight:700;margin-bottom:20px;border-bottom:2px solid #e5e7eb;padding-bottom:.3rem">Frequently Asked Questions</h2>
+<details style="margin-bottom:.75rem;border:1px solid #e5e7eb;border-radius:.5rem;padding:.75rem 1rem"><summary style="font-weight:600;cursor:pointer;color:#1a1a1a">How do I track a startup's GitHub activity?</summary><p style="color:#333;margin-top:.5em">Watch the organization, not a single repository: track commit velocity in 14-day windows, new contributors joining, and repository expansion (new repos, services, and languages). Pull weekly from the public GitHub REST API or a panel tracker, comparing identical windows so change reads as a rank change, not noise.</p></details>
+<details style="margin-bottom:.75rem;border:1px solid #e5e7eb;border-radius:.5rem;padding:.75rem 1rem"><summary style="font-weight:600;cursor:pointer;color:#1a1a1a">What GitHub metrics indicate a startup is about to raise?</summary><p style="color:#333;margin-top:.5em">No metric predicts a raise. The honest framing is that engineering acceleration often precedes announcements: commit velocity, contributor growth, and repository expansion tend to ramp before a round. Across the tracked panel, breakout engineering teams become visible 21 to 47 days before their round is announced. Treat it as a leading indicator for ranking attention, not a guarantee: most accelerated teams still fail.</p></details>
+<details style="margin-bottom:.75rem;border:1px solid #e5e7eb;border-radius:.5rem;padding:.75rem 1rem"><summary style="font-weight:600;cursor:pointer;color:#1a1a1a">Can I track startup GitHub activity manually, or do I need a tool?</summary><p style="color:#333;margin-top:.5em">You can start manually: the GitHub REST API is public, and for a handful of orgs a weekly script plus a spreadsheet works fine. Manual tracking breaks down at scale through API rate limits, org renames, and window drift. Panel trackers like GitDealFlow, which refreshes 350+ startup orgs across 15 sectors weekly, exist for that scale.</p></details>
+</section>
+
+<section class="cta" style="text-align:center;padding:2rem 1rem">
+<a href="/pricing" onclick="if(window.posthog)posthog.capture('answers_cta_clicked',{page:'how-to-track-github-activity-of-startups',destination:'pricing'})" style="display:inline-block;background:#00d4aa;color:#04130e;padding:.9rem 1.75rem;border-radius:.75rem;font-weight:700;font-size:1rem;text-decoration:none;min-height:44px">Start with a &euro;1 Teardown &rarr;</a>
+</section>
+</section>
+</main>
+
+<section style="margin-top:40px;padding-top:20px;border-top:1px solid #e0e0e0">
+<h3 style="font-size:1.1em;font-weight:700;margin-bottom:12px">Related pages</h3>
+<ul style="list-style:none;padding:0;display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:8px">
+<li><a href="https://gitdealflow.com/answers/" style="color:#0066cc">All Answers</a></li>
+</ul>
+</section>
+<footer><p>&copy; 2026 GitDealFlow</p></footer>
+
+  <script>
+    (function(){
+      function _load(){var s=document.createElement('script');s.src='/pixels.js';s.async=true;document.head.appendChild(s);}
+      if('requestIdleCallback' in window){requestIdleCallback(_load,{timeout:3000});} else {setTimeout(_load,2500);}
+    })();
+  </script>
+
+  </body>
+</html>
