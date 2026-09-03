@@ -21,15 +21,16 @@ const TEARDOWN_CHECKOUT =
   process.env.NEXT_PUBLIC_STRIPE_TEARDOWN_LINK ||
   "https://buy.stripe.com/bJe5kC48H2d2cEKg6s0x209";
 
+const TEARDOWN_V2_COPY =
+  "Enter one startup at checkout. Work starts when payment succeeds. Within 24 hours, you receive either a verified public-GitHub activity teardown or, when no attributable public org exists, a coverage verdict plus one replacement startup. No reply is required.";
+
 export const metadata: Metadata = withEditorialOverride({
   title: "Tweet Teardown, €1. One startup. 24-hour signal call.",
-  description:
-    "Pay €1 once, name one venture-backed startup, and within 24 hours get a tweet-length teardown of its GitHub momentum: signal type, 14-day acceleration %, and the kicker insight. €1 credited toward First Look Pass if you upgrade in 7 days.",
+  description: TEARDOWN_V2_COPY,
   alternates: { canonical: "/teardown" },
   openGraph: {
     title: "Tweet Teardown, €1. One startup. 24-hour signal call.",
-    description:
-      "€1 once, name a startup, get a tweet-length teardown of its engineering momentum in 24h.",
+    description: TEARDOWN_V2_COPY,
     url: "https://signals.gitdealflow.com/teardown",
     type: "article",
   },
@@ -54,7 +55,7 @@ const STACK = [
   {
     label: "Tweet-shaped output (≤280 chars)",
     detail:
-      "Paste-able into Twitter/X, into your IC memo, into a partner Slack. Written by the founder, not auto-generated. Your name is never attached unless you ask.",
+      "Paste-able into Twitter/X, into your IC memo, or into a partner Slack. Evidence-checked autonomous analysis; your name is never attached unless you ask.",
   },
 ] as const;
 
@@ -65,19 +66,19 @@ const FAQS = [
   },
   {
     q: "What's the deliverable, exactly?",
-    a: "One paragraph (≤280 characters) emailed to your inbox within 24h on weekdays. Three sentences: signal classification, the acceleration number, the kicker insight. No PDF. No CSV. No call. No follow-up. The whole point is brutal compression, if a signal can't be summarised in a tweet, it isn't a signal worth selling.",
+    a: `${TEARDOWN_V2_COPY} When an attributable public org exists, the teardown is one paragraph (≤280 characters): signal classification, the acceleration number, and the kicker insight. No PDF, CSV, or call.`,
   },
   {
     q: "Can I name a private/stealth-mode startup?",
-    a: "If they have a public GitHub org, yes, that's exactly the point of the methodology. If their entire engineering footprint is private GitLab, no, there's no public commit data to analyse and we'll refund the €1 inside the same hour. Public GitHub orgs cover roughly 70% of YC, Antler, and Entrepreneur First batches by default.",
+    a: "Yes. We search for an independently attributable public GitHub organization. If no public footprint can be attributed, you receive a coverage verdict plus one free replacement startup. Refund requests are reviewed manually at signals@gitdealflow.com; no refund is automatic.",
   },
   {
     q: "What happens if I upgrade?",
-    a: "The €1 is credited toward the First Look Pass (€7) if you upgrade within 7 days. Reply to the delivery email with REQUEST CREDIT and the founder applies it manually. After the First Look, the standard €7 → Dashboard upgrade credit also applies, so you can effectively start at €1 and roll the spend forward into the subscription if the signal reads true.",
+    a: "The €1 is credited toward the First Look Pass (€7) if you upgrade within 7 days. Reply to the delivery email with REQUEST CREDIT and support applies it manually. After the First Look, the standard €7 → Dashboard upgrade credit also applies.",
   },
   {
     q: "Is this just an AI-generated summary?",
-    a: "No, the founder writes every Teardown personally. The metrics are computed from public GitHub data with the same engine as the Dashboard, but the kicker insight (the third sentence) is a human read on what the data implies for a buyer. AI is a poor judge of which signals matter to a fund's specific thesis; a human writing a tweet about a startup the buyer already knows is the highest-signal version of this product.",
+    a: "No. It is an autonomous, evidence-checked analysis of attributable public GitHub activity. Commit inputs, attribution decisions, period boundaries, exclusions, and the final verdict are retained in the private order record so the result can be audited.",
   },
 ] as const;
 
@@ -89,8 +90,7 @@ export default function TeardownPage() {
         "@type": "SoftwareApplication",
         "@id": "https://signals.gitdealflow.com/teardown#product",
         name: "Tweet Teardown",
-        description:
-          "€1 one-time micro-tripwire, a tweet-length (≤280 char) GitHub-momentum teardown of one startup you name, written by the founder and delivered within 24 hours.",
+        description: TEARDOWN_V2_COPY,
         applicationCategory: "BusinessApplication",
         operatingSystem: "Web",
         offers: {
@@ -154,9 +154,7 @@ export default function TeardownPage() {
             </span>
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-            Three sentences. One number. Hand-written by the founder, not an
-            LLM. The tightest possible read of an engineering team you already
-            have a name for, for less than a vending-machine coffee.
+            {TEARDOWN_V2_COPY}
           </p>
         </header>
 
@@ -233,9 +231,11 @@ export default function TeardownPage() {
           </p>
           <h2 className="text-3xl sm:text-4xl font-bold text-rose-200">€1</h2>
           <p className="text-gray-300 text-base leading-relaxed max-w-xl mx-auto">
-            Stripe checkout. The startup name goes in the order field.
-            Delivery to your inbox within 24h on weekdays. €1 credited
-            toward the €7 First Look Pass if you upgrade within 7 days.
+            {TEARDOWN_V2_COPY} Refund requests are reviewed manually at{" "}
+            <a className="underline" href="mailto:signals@gitdealflow.com">
+              signals@gitdealflow.com
+            </a>
+            .
           </p>
           <a
             href={TEARDOWN_CHECKOUT}

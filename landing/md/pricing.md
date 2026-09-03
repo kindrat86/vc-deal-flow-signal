@@ -2,7 +2,7 @@
 
 > Open offers: free Sunday digest, €1 Tweet Teardown, €7 First Look Pass, €49/month or €490/year Dashboard, and €1,997 Custom Sector Sweep. Insider enrollment is closed until delivery proof is public.
 
-All prices are in EUR. Every open paid offer carries the 30-day Signal-or-It's-Free guarantee: email `signals@gitdealflow.com` within 30 days for a full refund. Subscription plans can be cancelled in Stripe.
+All prices are in EUR. Dashboard, Insider, Sharp Tier, and Sector Sweep carry the 30-day Signal-or-It's-Free guarantee. Tweet Teardown uses its coverage-verdict and replacement path. Refund requests are reviewed manually at `signals@gitdealflow.com`. Subscription plans can be cancelled in Stripe.
 
 ## Free Sunday Signal
 
@@ -14,7 +14,7 @@ Five startups accelerating on public GitHub activity, sent every Sunday in plain
 
 **€1 one-time**
 
-Name one startup and receive a tweet-length public-GitHub momentum read.
+Enter one startup at checkout. Work starts when payment succeeds. Within 24 hours, you receive either a verified public-GitHub activity teardown or, when no attributable public org exists, a coverage verdict plus one replacement startup. No reply is required.
 
 [Get the €1 Tweet Teardown](https://buy.stripe.com/bJe5kC48H2d2cEKg6s0x209)
 

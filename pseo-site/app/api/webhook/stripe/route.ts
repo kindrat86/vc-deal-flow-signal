@@ -17,6 +17,8 @@ import {
   isGitDealFlowSubscription,
   subscriptionIdFromInvoice,
 } from "@/lib/dunning";
+import { processTeardownConfirmation } from "@/lib/teardown-order-handler";
+import type { TeardownConfirmationPayload } from "@/lib/teardown-order";
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY!;
 const FROM_EMAIL = process.env.FROM_EMAIL || "signals@gitdealflow.com";
@@ -128,6 +130,36 @@ async function sendEmail(
   if (!response.ok) {
     throw new Error(`Resend email failed with HTTP ${response.status}`);
   }
+}
+
+async function sendTeardownConfirmation(
+  payload: TeardownConfirmationPayload,
+  idempotencyKey: string,
+): Promise<{ id: string }> {
+  const response = await fetch("https://api.resend.com/emails", {
+    method: "POST",
+    headers: {
+      Authorization: ["Bearer", RESEND_API_KEY].join(" "),
+      "Content-Type": "application/json",
+      "Idempotency-Key": idempotencyKey,
+    },
+    body: JSON.stringify({
+      from: payload.from,
+      reply_to: payload.replyTo,
+      bcc: payload.bcc,
+      to: payload.to,
+      subject: payload.subject,
+      text: payload.text,
+    }),
+  });
+  if (!response.ok) {
+    throw new Error(`Resend teardown confirmation failed with HTTP ${response.status}`);
+  }
+  const responseBody = (await response.json()) as { id?: string };
+  if (!responseBody.id) {
+    throw new Error("Resend teardown confirmation response omitted email ID");
+  }
+  return { id: responseBody.id };
 }
 
 /**
@@ -390,43 +422,6 @@ function bookWelcomeEmail(email: string): { subject: string; html: string } {
   };
 }
 
-function teardownWelcomeEmail(email: string): { subject: string; html: string } {
-  // Suppress unused-param warning, email is reserved for future per-recipient
-  // personalisation (e.g. inserting the buyer's first name once Stripe captures it).
-  void email;
-  return {
-    subject: "Tweet Teardown, name your startup",
-    html: `<!DOCTYPE html>
-<html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
-<body style="margin:0;padding:0;background:#f8fafc;color:#1e293b;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
-<div style="max-width:600px;margin:0 auto;padding:32px 24px;">
-<div style="margin-bottom:24px;"><strong style="color:#f43f5e;font-size:14px;letter-spacing:1px;">VC DEAL FLOW SIGNAL, TWEET TEARDOWN</strong></div>
-<div style="font-size:16px;line-height:1.7;color:#1e293b;">
-<p>€1 received. The 24-hour clock starts when you reply with the startup name.</p>
-<p>What I need:</p>
-<ul style="padding-left:20px;">
-<li>The startup name</li>
-<li>Their public GitHub org URL if you have it (otherwise I'll find it)</li>
-<li>Optional: one sentence on what you already think, bullish, sceptical, or just curious. The kicker insight gets sharper when I know your prior.</li>
-</ul>
-<p>What lands back in your inbox within 24h on weekdays:</p>
-<ul style="padding-left:20px;">
-<li>Signal classification (hiring burst / shipping sprint / infra buildout / platform migration)</li>
-<li>14-day commit-velocity delta, the actual number, two-period confirmed</li>
-<li>The kicker insight, what the data implies for a check-writer this month</li>
-</ul>
-<p>All in a single tweet-shaped paragraph (≤280 chars). Paste-able into Twitter, into your IC memo, into a partner Slack. Your name is never attached unless you ask.</p>
-<p><strong>If the org has no public GitHub footprint:</strong> I refund the €1 within the same hour, no public commit data, no signal to read.</p>
-<p><strong>Want to upgrade?</strong> The €1 credits toward the €7 First Look Pass if you check out within 7 days. Reply <code>REQUEST CREDIT</code> to this email and I apply it manually.</p>
-<p>The Data Nerd</p>
-</div>
-<div style="margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;font-size:12px;color:#94a3b8;">
-<p><a href="https://signals.gitdealflow.com/firstlook" style="color:#0ea5e9;">See the €7 First Look Pass</a> · <a href="https://gitdealflow.com" style="color:#0ea5e9;">gitdealflow.com</a></p>
-</div>
-</div></body></html>`,
-  };
-}
-
 function firstLookWelcomeEmail(email: string): { subject: string; html: string } {
   return {
     subject: "First Look Pass, pick your sector",
@@ -478,35 +473,63 @@ export async function POST(request: NextRequest) {
   if (event.type === "checkout.session.completed") {
     const session = event.data.object;
 
-    // Replay defense: Stripe retries on 5xx with the same event.id. Mark
-    // before side effects fire so a concurrent retry racing the first
-    // delivery cannot double-charge credits / double-send emails. The
-    // mark-then-check ordering is intentional, `markNonceUsed` is
-    // idempotent in the underlying Runtime Cache, so re-marking on a real
-    // first delivery costs nothing, while a true retry sees the prior mark.
+    // Retrieve before classification: Payment Link ownership and teardown custom
+    // fields are trusted only from Stripe's current full Checkout Session.
+    const fullSession = await stripe.checkout.sessions.retrieve(session.id, {
+      expand: ["line_items", "customer"],
+    });
+    const tier = getTierFromSession(fullSession);
+
+    // Tweet Teardown has its own retry-safe lane. Do not consume the shared
+    // event nonce before Resend accepts the confirmation: a pre-acceptance
+    // failure must remain retryable. Resend's stable idempotency key plus the
+    // persisted session metadata prevent duplicate acceptance on replay.
+    if (tier === "teardown") {
+      try {
+        const result = await processTeardownConfirmation(fullSession, {
+          send: sendTeardownConfirmation,
+          record: async (sessionId, metadata) => {
+            await stripe.checkout.sessions.update(sessionId, { metadata });
+          },
+        });
+        console.info("[stripe-webhook] teardown confirmation processed", {
+          eventId: event.id,
+          ticketRef: "ticketRef" in result ? result.ticketRef : undefined,
+          status: result.status,
+          providerId: "providerId" in result ? result.providerId : undefined,
+        });
+        return NextResponse.json({ received: true, teardown: result.status });
+      } catch (error) {
+        console.error("[stripe-webhook] teardown confirmation retryable failure", {
+          eventId: event.id,
+          errorType: error instanceof Error ? error.name : "unknown",
+        });
+        return NextResponse.json(
+          { error: "teardown_confirmation_retryable" },
+          { status: 500 },
+        );
+      }
+    }
+
+    if (!tier) {
+      console.info("Ignoring checkout from an unrecognized Stripe product", {
+        eventId: event.id,
+        sessionId: session.id,
+      });
+      return NextResponse.json({ received: true });
+    }
+
+    // Preserve the established fail-closed shared-product replay defense for
+    // every non-teardown product.
     if (await isNonceUsed(STRIPE_EVENT_NAMESPACE, event.id)) {
       console.log(`[stripe-webhook] replay suppressed: ${event.id}`);
       return NextResponse.json({ received: true, replay: true });
     }
     await markNonceUsed(STRIPE_EVENT_NAMESPACE, event.id, STRIPE_EVENT_TTL_SECONDS);
 
-    // Fetch full session with line items + customer (credit pack tier needs the customer ID)
-    const fullSession = await stripe.checkout.sessions.retrieve(session.id, {
-      expand: ["line_items", "customer"],
-    });
-
     const email = fullSession.customer_details?.email;
     if (!email) {
       console.error("No email in checkout session:", session.id);
-      return NextResponse.json({ received: true });
-    }
-
-    const tier = getTierFromSession(fullSession);
-    if (!tier) {
-      console.info("Ignoring checkout from an unrecognized Stripe product", {
-        eventId: event.id,
-        sessionId: session.id,
-      });
       return NextResponse.json({ received: true });
     }
 
@@ -551,8 +574,6 @@ export async function POST(request: NextRequest) {
       welcomeEmail = firstLookWelcomeEmail(email);
     } else if (tier === "book") {
       welcomeEmail = bookWelcomeEmail(email);
-    } else if (tier === "teardown") {
-      welcomeEmail = teardownWelcomeEmail(email);
     } else {
       welcomeEmail = dashboardWelcomeEmail(email);
     }
