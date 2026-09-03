@@ -76,6 +76,9 @@ export default function McpDemoPage() {
           logo: {
             "@type": "ImageObject",
             url: `${SIGNALS}/icon.png`,
+          copyrightNotice: "\u00a9 VC Deal Flow Signal (GitDealFlow). Licensed under CC BY 4.0.",
+          creator: { "@id": "https://signals.gitdealflow.com/about#person" },
+          acquireLicensePage: "https://signals.gitdealflow.com/terms",
           },
         },
         potentialAction: {
@@ -94,6 +97,9 @@ export default function McpDemoPage() {
         primaryImageOfPage: {
           "@type": "ImageObject",
           url: THUMB_URL,
+        copyrightNotice: "\u00a9 VC Deal Flow Signal (GitDealFlow). Licensed under CC BY 4.0.",
+        creator: { "@id": "https://signals.gitdealflow.com/about#person" },
+        acquireLicensePage: "https://signals.gitdealflow.com/terms",
         },
         video: { "@id": `${PAGE_URL}#video` },
         isPartOf: { "@id": `${SIGNALS}/#website` },

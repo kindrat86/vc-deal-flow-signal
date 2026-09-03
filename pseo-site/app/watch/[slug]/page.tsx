@@ -143,6 +143,9 @@ function buildVideoJsonLd(v: SiteVideo) {
           logo: {
             "@type": "ImageObject",
             url: `${SITE}/icon.png`,
+          copyrightNotice: "\u00a9 VC Deal Flow Signal (GitDealFlow). Licensed under CC BY 4.0.",
+          creator: { "@id": "https://signals.gitdealflow.com/about#person" },
+          acquireLicensePage: "https://signals.gitdealflow.com/terms",
           },
         },
         creator: DATA_NERD_AUTHOR_REF,
@@ -174,6 +177,9 @@ function buildVideoJsonLd(v: SiteVideo) {
         primaryImageOfPage: {
           "@type": "ImageObject",
           url: v.thumbnailMaxUrl,
+        copyrightNotice: "\u00a9 VC Deal Flow Signal (GitDealFlow). Licensed under CC BY 4.0.",
+        creator: { "@id": "https://signals.gitdealflow.com/about#person" },
+        acquireLicensePage: "https://signals.gitdealflow.com/terms",
         },
         video: { "@id": `${pageUrl}#video` },
         isPartOf: { "@id": `${SITE}/#website` },

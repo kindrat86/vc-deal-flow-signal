@@ -215,6 +215,9 @@ export default function WinsPage() {
         primaryImageOfPage: {
           "@type": "ImageObject",
           url: "https://signals.gitdealflow.com/api/og/signal-card",
+        copyrightNotice: "\u00a9 VC Deal Flow Signal (GitDealFlow). Licensed under CC BY 4.0.",
+        creator: { "@id": "https://signals.gitdealflow.com/about#person" },
+        acquireLicensePage: "https://signals.gitdealflow.com/terms",
         },
         mainEntity: { "@id": "https://signals.gitdealflow.com/wins#dataset" },
         speakable: {

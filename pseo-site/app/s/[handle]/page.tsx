@@ -119,6 +119,9 @@ export default async function ScoutProfilePage({
           url: `https://signals.gitdealflow.com/api/og/scout/${scout.handle}`,
           width: 1200,
           height: 630,
+        copyrightNotice: "\u00a9 VC Deal Flow Signal (GitDealFlow). Licensed under CC BY 4.0.",
+        creator: { "@id": "https://signals.gitdealflow.com/about#person" },
+        acquireLicensePage: "https://signals.gitdealflow.com/terms",
         },
         mainEntity: { "@id": `${shareUrl}#person` },
         isPartOf: {

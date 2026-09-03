@@ -88,6 +88,9 @@ export default function PressPage() {
         creditText: "VC Deal Flow Signal (GitDealFlow)",
         width: 192,
         height: 192,
+      copyrightNotice: "\u00a9 VC Deal Flow Signal (GitDealFlow). Licensed under CC BY 4.0.",
+      creator: { "@id": "https://signals.gitdealflow.com/about#person" },
+      acquireLicensePage: "https://signals.gitdealflow.com/terms",
       },
     ],
   };

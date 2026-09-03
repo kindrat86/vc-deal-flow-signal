@@ -499,6 +499,9 @@ export default function Home() {
         primaryImageOfPage: {
           "@type": "ImageObject",
           url: "https://signals.gitdealflow.com/opengraph-image",
+          copyrightNotice: "© VC Deal Flow Signal (GitDealFlow). CC BY 4.0.",
+          creator: { "@id": "https://signals.gitdealflow.com/about#person" },
+          acquireLicensePage: "https://signals.gitdealflow.com/terms",
         },
         isPartOf: {
           "@id": `${SITE}/#website`,

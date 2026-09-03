@@ -214,6 +214,9 @@ export default async function StartupPage({ params }: PageProps) {
           url: `https://signals.gitdealflow.com/startup/${slug}/opengraph-image`,
           width: 1200,
           height: 630,
+        copyrightNotice: "\u00a9 VC Deal Flow Signal (GitDealFlow). Licensed under CC BY 4.0.",
+        creator: { "@id": "https://signals.gitdealflow.com/about#person" },
+        acquireLicensePage: "https://signals.gitdealflow.com/terms",
         },
       },
       {
@@ -226,6 +229,9 @@ export default async function StartupPage({ params }: PageProps) {
           url: `https://signals.gitdealflow.com/startup/${slug}/opengraph-image`,
           width: 1200,
           height: 630,
+        copyrightNotice: "\u00a9 VC Deal Flow Signal (GitDealFlow). Licensed under CC BY 4.0.",
+        creator: { "@id": "https://signals.gitdealflow.com/about#person" },
+        acquireLicensePage: "https://signals.gitdealflow.com/terms",
         },
         author: DATA_NERD_AUTHOR_REF,
         publisher: {

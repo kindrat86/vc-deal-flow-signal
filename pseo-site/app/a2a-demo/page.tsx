@@ -52,6 +52,9 @@ export default function A2ADemoPage() {
         primaryImageOfPage: {
           "@type": "ImageObject",
           url: "https://signals.gitdealflow.com/icon.png",
+        copyrightNotice: "\u00a9 VC Deal Flow Signal (GitDealFlow). Licensed under CC BY 4.0.",
+        creator: { "@id": "https://signals.gitdealflow.com/about#person" },
+        acquireLicensePage: "https://signals.gitdealflow.com/terms",
         },
         inLanguage: "en",
       },
