@@ -103,6 +103,8 @@ export default async function StartupPeriodPage({ params }: PageProps) {
         },
         image: {
           "@type": "ImageObject",
+          license: "https://creativecommons.org/licenses/by/4.0/",
+          creditText: "VC Deal Flow Signal (GitDealFlow)",
           url: `https://signals.gitdealflow.com/startup/${slug}/${period}/opengraph-image`,
           width: 1200,
           height: 630,
@@ -121,6 +123,8 @@ export default async function StartupPeriodPage({ params }: PageProps) {
           url: "https://gitdealflow.com",
           logo: {
             "@type": "ImageObject",
+            license: "https://creativecommons.org/licenses/by/4.0/",
+            creditText: "VC Deal Flow Signal (GitDealFlow)",
             url: "https://signals.gitdealflow.com/icon.png",
             width: 192,
             height: 192,

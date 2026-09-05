@@ -6546,6 +6546,19 @@ check(
   );
 }
 
+// Image metadata must be checked at the actual object boundary, including
+// nested logos. The AST-based test fails if license or creditText is absent.
+check(
+  "package.json",
+  "ImageObject license and creditText prebuild gate is missing",
+  (src) => {
+    const pkg = JSON.parse(src);
+    return pkg.scripts.prebuild.includes("npm run test:image-metadata") &&
+      pkg.scripts["test:image-metadata"] === "node --test scripts/test/image-metadata.test.mjs";
+  },
+  "Keep the full-site ImageObject metadata regression test wired into prebuild.",
+);
+
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +

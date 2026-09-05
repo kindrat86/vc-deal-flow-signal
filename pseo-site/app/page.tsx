@@ -498,6 +498,8 @@ export default function Home() {
         },
         primaryImageOfPage: {
           "@type": "ImageObject",
+          license: "https://creativecommons.org/licenses/by/4.0/",
+          creditText: "VC Deal Flow Signal (GitDealFlow)",
           url: "https://signals.gitdealflow.com/opengraph-image",
           copyrightNotice: "© VC Deal Flow Signal (GitDealFlow). CC BY 4.0.",
           creator: { "@id": "https://signals.gitdealflow.com/about#person" },

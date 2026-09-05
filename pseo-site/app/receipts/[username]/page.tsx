@@ -150,6 +150,8 @@ export default async function ReceiptsResultPage({
         description: `GitHub starring history scored against validated unicorns. Score: ${result.score}/100. Rank: ${RANK_LABEL[result.rank]}.`,
         primaryImageOfPage: {
           "@type": "ImageObject",
+          license: "https://creativecommons.org/licenses/by/4.0/",
+          creditText: "VC Deal Flow Signal (GitDealFlow)",
           url: `${SITE}/api/og/receipts/${username}`,
           width: 1200,
           height: 630,

@@ -214,6 +214,8 @@ export default function WinsPage() {
         name: "Underwriting Receipts, Public Ledger of Validated GitHub Signals",
         primaryImageOfPage: {
           "@type": "ImageObject",
+          license: "https://creativecommons.org/licenses/by/4.0/",
+          creditText: "VC Deal Flow Signal (GitDealFlow)",
           url: "https://signals.gitdealflow.com/api/og/signal-card",
         copyrightNotice: "\u00a9 VC Deal Flow Signal (GitDealFlow). Licensed under CC BY 4.0.",
         creator: { "@id": "https://signals.gitdealflow.com/about#person" },

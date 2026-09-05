@@ -211,6 +211,8 @@ export default async function StartupPage({ params }: PageProps) {
         },
         primaryImageOfPage: {
           "@type": "ImageObject",
+          license: "https://creativecommons.org/licenses/by/4.0/",
+          creditText: "VC Deal Flow Signal (GitDealFlow)",
           url: `https://signals.gitdealflow.com/startup/${slug}/opengraph-image`,
           width: 1200,
           height: 630,
@@ -226,6 +228,8 @@ export default async function StartupPage({ params }: PageProps) {
         description: profile.description,
         image: {
           "@type": "ImageObject",
+          license: "https://creativecommons.org/licenses/by/4.0/",
+          creditText: "VC Deal Flow Signal (GitDealFlow)",
           url: `https://signals.gitdealflow.com/startup/${slug}/opengraph-image`,
           width: 1200,
           height: 630,

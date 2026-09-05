@@ -129,6 +129,8 @@ export default async function PredictedWeekPage({ params }: RouteContext) {
         },
         image: {
           "@type": "ImageObject",
+          license: "https://creativecommons.org/licenses/by/4.0/",
+          creditText: "VC Deal Flow Signal (GitDealFlow)",
           url: `https://signals.gitdealflow.com/predicted/${week.slug}/opengraph-image`,
           width: 1200,
           height: 630,

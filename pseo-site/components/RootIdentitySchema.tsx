@@ -179,6 +179,8 @@ export function RootIdentitySchema() {
         },
         logo: {
           "@type": "ImageObject",
+          license: "https://creativecommons.org/licenses/by/4.0/",
+          creditText: "VC Deal Flow Signal (GitDealFlow)",
           url: `${SITE}/icon.png`,
           contentUrl: `${SITE}/icon.png`,
           width: 192,
@@ -190,6 +192,8 @@ export function RootIdentitySchema() {
         },
         image: {
           "@type": "ImageObject",
+          license: "https://creativecommons.org/licenses/by/4.0/",
+          creditText: "VC Deal Flow Signal (GitDealFlow)",
           url: `${SITE}/opengraph-image`,
           width: 1200,
           height: 630,

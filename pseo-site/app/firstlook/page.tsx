@@ -230,6 +230,8 @@ export default function FirstLookPage() {
         isAccessibleForFree: true,
         primaryImageOfPage: {
           "@type": "ImageObject",
+          license: "https://creativecommons.org/licenses/by/4.0/",
+          creditText: "VC Deal Flow Signal (GitDealFlow)",
           url: "https://signals.gitdealflow.com/api/og/firstlook",
         copyrightNotice: "\u00a9 VC Deal Flow Signal (GitDealFlow). Licensed under CC BY 4.0.",
         creator: { "@id": "https://signals.gitdealflow.com/about#person" },

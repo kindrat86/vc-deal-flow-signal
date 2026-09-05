@@ -169,6 +169,8 @@ export default function BreakoutStartupsThisWeekPage() {
         },
         image: {
           "@type": "ImageObject",
+          license: "https://creativecommons.org/licenses/by/4.0/",
+          creditText: "VC Deal Flow Signal (GitDealFlow)",
           url: `${SITE}/breakout-startups-this-week/opengraph-image`,
           width: 1200,
           height: 630,
@@ -206,6 +208,8 @@ export default function BreakoutStartupsThisWeekPage() {
           url: "https://gitdealflow.com",
           logo: {
             "@type": "ImageObject",
+            license: "https://creativecommons.org/licenses/by/4.0/",
+            creditText: "VC Deal Flow Signal (GitDealFlow)",
             url: `${SITE}/icon.png`,
             width: 192,
             height: 192,

@@ -116,6 +116,8 @@ export default async function ScoutProfilePage({
         description: `${RANK_LABEL[scout.rank]} scout. ${Math.round(scout.points)} points${accuracy !== null ? ` · ${accuracy}% accuracy across ${totalResolved} resolved calls` : ` · ${scout.pending_count} predictions pending`}.`,
         primaryImageOfPage: {
           "@type": "ImageObject",
+          license: "https://creativecommons.org/licenses/by/4.0/",
+          creditText: "VC Deal Flow Signal (GitDealFlow)",
           url: `https://signals.gitdealflow.com/api/og/scout/${scout.handle}`,
           width: 1200,
           height: 630,
