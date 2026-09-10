@@ -853,7 +853,7 @@ export const VS_TITLE_HOOKS: Record<string, string> = {
   "harmonic-ai-vs-dealroom": "Harmonic.ai vs Dealroom: Which Is Better for Sourcing?",
   "harmonic-ai-vs-forager-ai": "Harmonic.ai vs Forager.ai: Team vs Web Signals",
   "harmonic-ai-vs-crunchbase": "Harmonic.ai vs Crunchbase ($49/mo): Sourcing",
-  "harmonic-ai-vs-pitchbook": "Harmonic.ai vs PitchBook ($20k+/yr): Sourcing",
+  "harmonic-ai-vs-pitchbook": "Harmonic.ai vs PitchBook: People Signals vs Fund Database",
   "harmonic-ai-vs-tracxn": "Harmonic.ai vs Tracxn: Team Signals vs Sector Maps",
   "dealroom-vs-forager-ai": "Dealroom vs Forager.ai: EU Database vs Web Signals",
   "dealroom-vs-crunchbase": "Dealroom vs Crunchbase ($49/mo): EU Depth vs Default",
@@ -909,7 +909,7 @@ export function buildVsMetadataTitle(
 // of repeating the generic template wording, while retaining the independent
 // comparison and freshness context applied by the route.
 export const VS_CTR_COHORT_DESCRIPTIONS: Record<string, string> = {
-  "harmonic-ai-vs-pitchbook": "Compare Harmonic.ai's early team-pattern sourcing with PitchBook's private-markets research, coverage, and pricing for venture workflows.",
+  "harmonic-ai-vs-pitchbook": "Harmonic.ai reads team and network patterns from incorporation; PitchBook is a curated post-announcement fund database. Coverage, pricing, and fit compared.",
   "pitchbook-vs-cb-insights": "Compare PitchBook for private-markets diligence with CB Insights for market intelligence, pricing, coverage, and venture research fit.",
   "cb-insights-vs-crunchbase": "Compare CB Insights market intelligence with Crunchbase startup data, pricing, coverage, and the right research workflow for your team.",
   "crunchbase-vs-tracxn": "Compare Crunchbase and Tracxn for startup research: global coverage, regional depth, pricing, and the workflow each platform fits.",
