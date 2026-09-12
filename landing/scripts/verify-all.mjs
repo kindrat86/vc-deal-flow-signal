@@ -110,6 +110,7 @@ const steps = [
   ['node', 'scripts/verify-vercel-config.mjs'],
   ['node', 'scripts/verify-jsonld.mjs', '.'],
   ['node', 'scripts/verify-dataset-fields.mjs'],
+  ['node', '--test', 'scripts/test-dataset-fields.mjs'],
   ['node', 'scripts/verify-word-floor.mjs'],
   ['node', 'scripts/verify-direct-answers.mjs'],
   ['node', 'scripts/verify-no-dashes.mjs'],
