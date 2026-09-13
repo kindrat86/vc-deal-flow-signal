@@ -6559,6 +6559,46 @@ check(
   "Keep the full-site ImageObject metadata regression test wired into prebuild.",
 );
 
+// Data freshness honesty (2026-09-13). Production served /api/signals.json
+// meta.lastUpdated stamped at REQUEST time (two probes 6s apart returned
+// timestamps 6s apart) on data whose last material compute was 2026-08-18:
+// in Vercel serverless fs.statSync(data/startups.json) throws, so
+// getDataLastModified() fell through to new Date() and every machine
+// surface (API meta, llms.txt, sitemap lastmod, feed.xml) claimed the data
+// was updated "just now" while templates advertised "updated weekly".
+// Fix shape: data/startups.json carries `_meta.fetchedAt` (written by the
+// fetch pipeline at data-write time, travels with the module import), and
+// getDataLastModified() reads it BEFORE any filesystem fallback. A lineage
+// missing either half silently restores the false-freshness defect, so both
+// are asserted here.
+{
+  const raw = read("data/startups.json");
+  if (raw !== null) {
+    try {
+      const stamp = JSON.parse(raw)?._meta?.fetchedAt;
+      const t = typeof stamp === "string" ? Date.parse(stamp) : NaN;
+      if (!(t >= new Date("2026-01-01T00:00:00.000Z").getTime())) {
+        failures.push(
+          `data/startups.json lacks a valid _meta.fetchedAt stamp (got ${JSON.stringify(stamp)}).\n    file: data/startups.json\n    fix:  re-run the fetch pipeline (scripts/fetch-github-data.ts), which stamps it at data-write time. Never hand-edit the stamp to a date the data was NOT computed (GUARDRAIL 5.8).`,
+        );
+      }
+    } catch (e) {
+      failures.push(
+        `data/startups.json is not parseable JSON: ${e}\n    file: data/startups.json\n    fix:  repair the file; the freshness guard cannot verify it.`,
+      );
+    }
+  }
+  check(
+    "lib/data.ts",
+    "getDataLastModified() must prefer the embedded _meta.fetchedAt stamp before filesystem fallbacks (2026-09-13 false-freshness fix)",
+    (src) => {
+      const fn = src.slice(src.indexOf("export function getDataLastModified"));
+      return fn.includes("_meta") && fn.includes("fetchedAt");
+    },
+    "restore the embedded-stamp branch in getDataLastModified() (lib/data.ts); without it production stamps request time as lastUpdated again.",
+  );
+}
+
 if (failures.length) {
   console.error(
     `\n✖ verify-no-regressions: ${failures.length} regression(s) detected.\n` +

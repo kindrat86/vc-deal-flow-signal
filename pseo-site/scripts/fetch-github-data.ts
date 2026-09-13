@@ -471,7 +471,17 @@ async function main() {
     return aIdx - bIdx;
   });
 
-  const out = { periods: periods.map(({ slug, name, current }) => ({ slug, name, current })), sectors: outputSectors };
+  const out = {
+    // Data-as-of stamp, read by getDataLastModified() (lib/data.ts) and
+    // asserted by scripts/verify-no-regressions.ts. Without it, production
+    // stamps request time as "lastUpdated" (2026-09-13 honesty fix).
+    _meta: {
+      fetchedAt: new Date().toISOString(),
+      note: "Written by scripts/fetch-github-data.ts at data-write time. Do not hand-edit.",
+    },
+    periods: periods.map(({ slug, name, current }) => ({ slug, name, current })),
+    sectors: outputSectors,
+  };
   fs.writeFileSync(dataPath, JSON.stringify(out, null, 2), "utf8");
 
   // Write this only after startups.json is complete. The weekly sender uses it
