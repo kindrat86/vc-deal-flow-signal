@@ -391,25 +391,24 @@ if (
 }
 
 // ---------------------------------------------------------------------------
-// Every verify-all step script must be re-included in .vercelignore
-// (2026-08-17). scripts/* is excluded from uploads; a gate script missing its
+// Every local script invoked by verify-all must be re-included in .vercelignore
+// (2026-09-16). scripts/* is excluded from uploads; a gate script missing its
 // !scripts/ re-include passes locally (git archive ships everything) and then
-// fails the Vercel build with ENOENT at that step. Bitten 2026-08-17: the
-// verify-author-identity re-include was missing, so every landing deploy died
-// at verify-all step 8 while all gates passed locally.
+// fails the Vercel build with ENOENT at that step. The matcher intentionally
+// covers tests and other local scripts, not only filenames beginning verify-.
 // ---------------------------------------------------------------------------
 {
   try {
     const ignore = readFileSync(".vercelignore", "utf8");
     const allSrc = readFileSync("scripts/verify-all.mjs", "utf8");
     const steps = [
-      ...allSrc.matchAll(/['"]scripts\/(verify-[\w.-]+\.mjs)['"]/g),
+      ...allSrc.matchAll(/['"]scripts\/([\w.-]+\.mjs)['"]/g),
     ].map((m) => m[1]);
     for (const script of steps) {
       const re = new RegExp("^!scripts/" + script.replace(/\./g, "\\.") + "$", "m");
       if (!re.test(ignore)) {
         fail(
-          `.vercelignore does not re-include scripts/${script}: scripts/* excludes it from the Vercel upload, so verify-all.mjs fails with ENOENT at that step on the build machine (passes locally where git archive ships it). Add !scripts/${script} next to the other !scripts/verify-*.mjs lines.`,
+          `.vercelignore does not re-include scripts/${script}: scripts/* excludes it from the Vercel upload, so verify-all.mjs fails with ENOENT at that step on the build machine (passes locally where git archive ships it). Add !scripts/${script} next to the other required script lines.`,
         );
       }
     }
