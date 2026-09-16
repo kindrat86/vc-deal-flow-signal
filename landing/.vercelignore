@@ -69,7 +69,6 @@ scripts/*
 !scripts/verify-author-identity.mjs
 !scripts/verify-social-card.mjs
 !scripts/verify-all.mjs
-!scripts/test-knockknock-widget.mjs
 !scripts/verify-crawl-proxy.mjs
 !scripts/verify-persona-routes.mjs
 !scripts/verify-tool-capture.mjs

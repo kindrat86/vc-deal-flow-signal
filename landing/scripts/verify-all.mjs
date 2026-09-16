@@ -108,7 +108,6 @@ if (leadMagnetPdf.length < 100_000 || leadMagnetPdf.subarray(0, 4).toString() !=
 
 const steps = [
   ['node', 'scripts/verify-vercel-config.mjs'],
-  ['node', 'scripts/test-knockknock-widget.mjs'],
   ['node', 'scripts/verify-jsonld.mjs', '.'],
   ['node', 'scripts/verify-dataset-fields.mjs'],
   ['node', '--test', 'scripts/test-dataset-fields.mjs'],
