@@ -392,6 +392,16 @@
       "source": "/dream100",
       "destination": "/dream-100",
       "permanent": true
+    },
+    {
+      "source": "/a/startups-like-:slug",
+      "destination": "https://signals.gitdealflow.com/startup/:slug",
+      "permanent": true
+    },
+    {
+      "source": "/badge/:slug",
+      "destination": "https://signals.gitdealflow.com/startup/:slug",
+      "permanent": true
     }
   ],
   "headers": [

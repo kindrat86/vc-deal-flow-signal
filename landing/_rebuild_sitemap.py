@@ -186,14 +186,57 @@ def should_exclude(rel_path: str, filepath: Path) -> tuple[bool, str]:
     return False, ""
 
 
-def get_lastmod(filepath: Path):
-    """Return no lastmod value.
+_GIT_DATES = None
 
-    Filesystem mtimes are checkout timestamps in CI and edit timestamps locally.
-    Neither represents a trustworthy content-change date, so emitting them makes
-    the tracked sitemap non-deterministic across environments.
+
+def _load_git_dates():
+    """One batched pass over git log: path -> newest commit date (YYYY-MM-DD).
+
+    Git history is the only trustworthy content-change date: filesystem mtimes
+    are checkout timestamps in CI and edit timestamps locally. Commit dates are
+    stable across environments, so the emitted lastmod is deterministic given
+    the same checkout.
     """
-    return None
+    global _GIT_DATES
+    if _GIT_DATES is not None:
+        return _GIT_DATES
+    try:
+        import subprocess
+        out = subprocess.run(
+            ["git", "log", "--format=__C%ad", "--date=short", "--name-only"],
+            cwd=str(BASE), capture_output=True, text=True, timeout=120,
+        ).stdout
+    except Exception:
+        out = ""
+    dates = {}
+    cur = None
+    for line in out.splitlines():
+        line = line.strip()
+        if not line:
+            continue
+        if line.startswith("__C"):
+            cur = line[3:]
+        elif cur and line not in dates:
+            dates[line] = cur
+    _GIT_DATES = dates
+    return dates
+
+
+def get_lastmod(filepath: Path):
+    """Git-commit date (YYYY-MM-DD) of the file's last change, or None.
+
+    Files never committed (brand-new, untracked) emit no lastmod: there is no
+    trustworthy content-change date for them yet. This is deliberate; do not
+    "fix" it by falling back to mtime.
+    """
+    try:
+        rel = str(filepath.relative_to(BASE))
+    except ValueError:
+        return None
+    # git log --name-only reports paths relative to the REPO ROOT
+    # (~/signals-gitdealflow), so files under landing/ are prefixed.
+    dates = _load_git_dates()
+    return dates.get(f"landing/{rel}") or dates.get(rel)
 
 
 def file_hash(filepath: Path) -> str:
