@@ -1,0 +1,11 @@
+file '/Users/sipi/signals-gitdealflow/distribution/linkedin-100-followers-sprint/assets/day-06-slide-01.png'
+duration 5
+file '/Users/sipi/signals-gitdealflow/distribution/linkedin-100-followers-sprint/assets/day-06-slide-02.png'
+duration 5
+file '/Users/sipi/signals-gitdealflow/distribution/linkedin-100-followers-sprint/assets/day-06-slide-03.png'
+duration 5
+file '/Users/sipi/signals-gitdealflow/distribution/linkedin-100-followers-sprint/assets/day-06-slide-04.png'
+duration 5
+file '/Users/sipi/signals-gitdealflow/distribution/linkedin-100-followers-sprint/assets/day-06-slide-05.png'
+duration 5
+file '/Users/sipi/signals-gitdealflow/distribution/linkedin-100-followers-sprint/assets/day-06-slide-05.png'
