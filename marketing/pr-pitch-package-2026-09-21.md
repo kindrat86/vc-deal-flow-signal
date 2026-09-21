@@ -117,3 +117,12 @@ Message-ID), then STOP regardless of response.
 Net: no new sends possible without either (a) Maryan's Substack login for Lenny's,
 (b) accepting the weak-fit Hammerstone address, or (c) self-publishing on Dev.to
 (drafted on request). Recommend (c) - it is the original AEO play and costs nothing.
+
+
+## DEV.TO STORY (posted 2026-09-21 03:41 UTC)
+
+- URL: https://dev.to/data_nerd/we-published-our-fundraising-prediction-model-and-its-misses-heres-what-219-rounds-taught-us-1l7l
+- Account: data_nerd (The Data Nerd), article id 4703154
+- Angle: published model + 0-for-10 misses; links SSRN/Zenodo/methodology/engine
+- Tags: dataengineering, machinelearning, opensource, startups
+- API key stored at ~/.hermes/.devto_api_key (0600)
