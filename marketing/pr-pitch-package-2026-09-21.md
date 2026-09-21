@@ -71,3 +71,49 @@ or answer questions. Either way, thanks for reading.
 
 Rules honored: from signals@gitdealflow.com only; BCC sales@sipiteno.com on all three
 sends; ASCII preflight passed on every body; one follow-up max after 5 business days.
+
+## FOLLOW-UP DRAFTS (staged 09-21; DO NOT send before 2026-09-26; reply-threaded)
+
+### Follow-up 1 - The Generalist (hey@readthegeneralist.com)
+Subject: Re: Engineering acceleration predicts Series A announcements 21-47 days early (open dataset)
+
+Hi Mario,
+
+One quick follow-up in case this got buried - the preprint and open dataset are here:
+https://ssrn.com/abstract=6606558 (Zenodo DOI below, CC BY 4.0).
+
+If a guest essay interests you, I would frame it as "what public GitHub data can (and
+cannot) predict about fundraises" - 800 words, all charts included, no product pitch.
+Either way, thanks for reading.
+
+- The Data Nerd
+
+### Follow-up 2 - Term Sheet (alexandra.garfinkle@fortune.com)
+Subject: Re: Term Sheet data story: GitHub signal precedes Series A announcements by 21-47 days (open dataset)
+
+Hi Allie,
+
+Quick follow-up in case the first note got buried. The short version: our open dataset
+(SSRN 6606558, Zenodo CC BY 4.0) shows four public-GitHub patterns preceding Series A
+announcements by 21-47 days across a 219-round panel. Happy to walk you through the
+data, or share the full methodology any time - all public.
+
+- The Data Nerd
+
+SEND RULE: one send each on/after Sept 26, threaded (In-Reply-To the original
+Message-ID), then STOP regardless of response.
+
+## ADDRESS HUNT RESULTS (09-21, official pages only - no guessed addresses)
+
+| Outlet | Verified address? | Route found | Decision |
+|--------|------------------|-------------|----------|
+| Lenny's Newsletter | NO | Substack platform (no public email; contact = Substack message / sponsor form) | Needs Maryan's Substack-session action, or skip |
+| Hammerstone | YES: info@thehammerstone.com (their contact page) | email | HOLD: weak editorial fit (markets/trading data audience, not VC); sending would be off-ICP spam |
+| Dev.to | support@dev.to only | support address | NOT a pitch route. Correct play: self-publish the story as a Dev.to post (free, was the AEO plan anyway) |
+| EU-Startups (eu-startups.com) | NO email in contact/about pages (raw HTML checked) | contact form only | Skip unless Maryan wants form-pitch text drafted |
+| eustartup.news | unreliable extraction; no verified editorial email | - | Skip |
+| Sifted | no general editorial email; pitches go to individual journalists | per-journalist author pages | Next step if wanted: pick their VC/AI reporter and verify from their author page |
+
+Net: no new sends possible without either (a) Maryan's Substack login for Lenny's,
+(b) accepting the weak-fit Hammerstone address, or (c) self-publishing on Dev.to
+(drafted on request). Recommend (c) - it is the original AEO play and costs nothing.
