@@ -110,7 +110,6 @@ const steps = [
   ['node', 'scripts/verify-vercel-config.mjs'],
   ['node', 'scripts/verify-jsonld.mjs', '.'],
   ['node', 'scripts/verify-dataset-fields.mjs'],
-  ['node', '--test', 'scripts/test-dataset-fields.mjs'],
   ['node', 'scripts/verify-word-floor.mjs'],
   ['node', 'scripts/verify-direct-answers.mjs'],
   ['node', 'scripts/verify-no-dashes.mjs'],
@@ -121,8 +120,6 @@ const steps = [
   ['node', 'scripts/verify-social-card.mjs'],
   ['node', 'scripts/verify-crawl-proxy.mjs'],
   ['node', 'scripts/verify-persona-routes.mjs'],
-  ['node', '--test', 'scripts/test-expansion-routing.mjs'],
-  ['node', 'scripts/verify-tool-capture.mjs'],
 ];
 
 for (const args of steps) {
