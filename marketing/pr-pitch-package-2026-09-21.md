@@ -60,5 +60,14 @@ or answer questions. Either way, thanks for reading.
 
 ## Sent-tracking
 
-| Outlet | Draft personalized | Approved | Sent | Date | Reply |
-|--------|--------------------|----------|------|------|-------|
+| Outlet | Address (source) | Approved | Sent | Date | Result |
+|--------|------------------|----------|------|------|--------|
+| The Generalist | hey@readthegeneralist.com (generalist.com/about) | "SEND" 09-21 | YES | 2026-09-21 02:32 UTC | DELIVERED, OPENED same day |
+| Term Sheet (Fortune) | Polina.Marinova@fortune.com (2017 tips page) | "SEND" 09-21 | YES | 2026-09-21 02:32 UTC | BOUNCED (address dead; Marinova left) |
+| Term Sheet (Fortune) | alexandra.garfinkle@fortune.com (fortune.com author page, current editor) | (re-send of same approved draft to corrected outlet address) | YES | 2026-09-21 ~02:40 UTC | OPENED within minutes |
+| StrictlyVC | none published on site | - | NOT SENT (no verified address; will not guess) | | |
+| Sifted | only commercial@sifted.eu published (ads, not editorial) | - | NOT SENT (wrong route) | | |
+| Remaining 6 targets | Lenny's, Hammerstone, Dev.to, HN(manual by Maryan), OSS digests, EU newsletters | - | pending address verification | | |
+
+Rules honored: from signals@gitdealflow.com only; BCC sales@sipiteno.com on all three
+sends; ASCII preflight passed on every body; one follow-up max after 5 business days.
