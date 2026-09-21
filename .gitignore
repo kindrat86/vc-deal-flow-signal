@@ -52,3 +52,9 @@ tools/.gsc-oauth-client.json
 tools/.gsc-oauth-token.json
 tools/client_secret*.json
 .env*
+
+__pycache__/
+*.pyc
+.worktrees/
+worktrees/
+result.json
