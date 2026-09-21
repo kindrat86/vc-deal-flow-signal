@@ -46,8 +46,6 @@ export type DigestData = {
   statTopMover: string;
   topStartups: DigestStartup[];
   hottestSectors: DigestSector[];
-  /** Optional P.S. note rendered after the method note (launch mentions, asks). */
-  psNote?: { title: string; body: string; ctaLabel?: string; ctaUrl?: string };
   /** Optional lane-specific "tuned for you" intro line (investor lanes). */
   laneIntro?: string;
   /**
@@ -260,7 +258,7 @@ export function renderDigestEmail(data: DigestData, opts: DigestOptions = {}): s
           </tr>
 
           <!-- FIRST-ISSUE INTRO (on-verify instant digest only) -->
-${data.firstIssueIntro ? `
+          ${data.firstIssueIntro ? `
           <tr>
             <td class="bg-card brd px-outer" style="background:rgba(14,165,233,0.08);border:1px solid rgba(14,165,233,0.30);border-radius:16px;padding:20px 24px;">
               <p style="margin:0;color:${BRAND.textSec};font-size:15px;line-height:23px;">
@@ -357,22 +355,8 @@ ${data.firstIssueIntro ? `
                   </td>
                 </tr>
               </table>
-            </td>
-          </tr>
-
-          <!-- PAID CTA: First Look Pass -->
-          <tr><td style="height:32px;line-height:32px;font-size:0;">&nbsp;</td></tr>
-          <tr>
-            <td align="center" class="px-outer" style="padding:0 8px;">
-              <table role="presentation" cellpadding="0" cellspacing="0" border="0" width="100%" style="width:100%;">
-                <tr>
-                  <td align="center">
-                    <a href="${track("https://signals.gitdealflow.com/api/checkout/session?tier=firstlook")}" style="display:block;width:100%;box-sizing:border-box;background:${BRAND.accent};color:${BRAND.onAccent};font-weight:700;font-size:19px;line-height:1.2;letter-spacing:-0.01em;padding:18px 28px;border-radius:10px;text-decoration:none;text-align:center;box-shadow:0 4px 14px rgba(2,132,199,0.35);">Get the First Look Pass - &euro;7 once</a>
-                  </td>
-                </tr>
-              </table>
               <p class="tx-mut" style="margin:12px 0 0 0;color:${BRAND.textMut};font-size:13px;">
-                One sector, fully mapped: PDF + CSV, ranked by acceleration. 30-day Signal-or-It&#39;s-Free guarantee.
+                Want the deep dive? <a href="${track("https://gitdealflow.com/insider")}" style="color:${BRAND.accentLight};font-weight:600;">Join the Insider Circle</a> for the full numbers, real-time alerts, and the complete research tools.
               </p>
             </td>
           </tr>
@@ -402,7 +386,7 @@ ${data.firstIssueIntro ? `
           </tr>
 
           <!-- PARTNER PICK (newsletter swap slot, §45) -->
-${data.partnerPick ? `
+          ${data.partnerPick ? `
           <tr><td style="height:32px;line-height:32px;font-size:0;">&nbsp;</td></tr>
           <tr>
             <td class="bg-card brd px-outer" style="background:${BRAND.card};border:1px solid ${BRAND.border};border-radius:12px;padding:20px;">
@@ -414,19 +398,6 @@ ${data.partnerPick ? `
               </p>
               <p class="tx-mut" style="margin:10px 0 0 0;color:${BRAND.textFade};font-size:12px;line-height:18px;">
                 By ${escape(data.partnerPick.author)}. We read a lot of VC writing; this earned the recommendation. Not paid, not affiliated.
-              </p>
-            </td>
-          </tr>` : ""}
-
-          <!-- P.S. NOTE (launch mentions, reader asks) -->
-${data.psNote ? `
-          <tr><td style="height:32px;line-height:32px;font-size:0;">&nbsp;</td></tr>
-          <tr>
-            <td class="bg-card brd px-outer" style="background:${BRAND.card};border:1px solid ${BRAND.accent};border-radius:12px;padding:20px;">
-              <div class="tx-mut" style="color:${BRAND.textMut};font-size:11px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;">${escape(data.psNote.title)}</div>
-              <p class="tx-sec" style="margin:8px 0 0 0;color:${BRAND.textSec};font-size:14px;line-height:22px;">
-                ${escape(data.psNote.body)}
-                ${data.psNote.ctaUrl && data.psNote.ctaLabel ? `<a href="${escape(track(data.psNote.ctaUrl))}" style="color:${BRAND.accentLight};font-weight:600;">${escape(data.psNote.ctaLabel)} &rarr;</a>` : ""}
               </p>
             </td>
           </tr>` : ""}

@@ -1,0 +1,14 @@
+{
+  "name": "@gitdealflow/composio-github-smoke",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Safe Composio GitHub connection and first-call harness for GitDealFlow.",
+  "scripts": {
+    "test": "node --test",
+    "github:me": "node src/github-first-call.mjs"
+  },
+  "dependencies": {
+    "@composio/core": "0.17.0"
+  }
+}

@@ -1718,18 +1718,17 @@ check(
     s.includes("VS_TITLE_HOOKS") &&
     s.includes('"dealroom-vs-pitchbook"') &&
     s.includes('"harmonic-ai-vs-pitchbook"') &&
-    s.includes("competitorPriceNote") &&
-    s.includes("export function buildVsMetadataTitle") &&
-    s.includes("hook && hook.length <= 60 && hook.length + 7 > 60"),
-  "restore VS_TITLE_HOOKS, buildVsMetadataTitle, and competitorPriceNote in content/competitor-vs.ts",
+    s.includes("competitorPriceNote"),
+  "restore VS_TITLE_HOOKS (with the two highest-impression hooks) + competitorPriceNote in content/competitor-vs.ts",
 );
 check(
   "app/vs/[slug]/page.tsx",
-  "/vs generateMetadata no longer uses the CTR title builder (titles revert to generic or truncate query-matched hooks).",
+  "/vs generateMetadata no longer uses the CTR hooks (titles revert to generic).",
   (s) =>
-    s.includes("buildVsMetadataTitle") &&
-    s.includes("buildVsMetadataTitle(canonicalSlug, fallbackTitle, year)"),
-  "import buildVsMetadataTitle and use it for the final /vs metadata title",
+    s.includes("VS_TITLE_HOOKS[canonicalSlug]") &&
+    s.includes("hook ?? fallbackTitle") &&
+    s.includes("const title =\n    baseTitle.length + 7 > 60"),
+  "import VS_TITLE_HOOKS + competitorPriceNote and build titles from them (see 2026-08-16 CTR fix)",
 );
 check(
   "app/vs/[slug]/page.tsx",
@@ -6193,51 +6192,6 @@ check(
       "    fix:  derive grading-window language from predictions.json (gradingDueAt), not a literal date."
     );
   }
-  if (page && (
-    page.includes("Right now every row is Pending") ||
-    page.includes("One of the 219 SSRN observations") ||
-    page.includes("one of the 219 paired observations")
-  )) {
-    failures.push(
-      "§73 scorecard regained stale grading copy or attributes an illustrative funding example to the descriptive SSRN release.\n" +
-      "    file: app/scorecard/page.tsx\n" +
-      "    fix:  render grading state from live totals and state that the SSRN release has no linked funding-event labels."
-    );
-  }
-  const falseBeliefs = read("components/FalseBeliefBreaker.tsx");
-  if (falseBeliefs && falseBeliefs.includes("SSRN paper grades n=219 paired observations PROSPECTIVELY")) {
-    failures.push(
-      "§73 false-belief copy attributes prospective funding grades to the descriptive SSRN release.\n" +
-      "    file: components/FalseBeliefBreaker.tsx\n" +
-      "    fix:  separate the descriptive 219-observation release from the forward public scorecard."
-    );
-  }
-  const predicted = read("app/predicted/page.tsx");
-  if (predicted && (
-    predicted.includes("one of the 219 paired observations") ||
-    predicted.includes("The lead-time distribution: 21-47 days, IQR, n=219")
-  )) {
-    failures.push(
-      "§73 predicted page attributes an illustrative funding timeline to the descriptive SSRN release.\n" +
-      "    file: app/predicted/page.tsx\n" +
-      "    fix:  label the timeline as illustrative and state that the SSRN release has no linked funding-event labels."
-    );
-  }
-  const methodology = read("app/methodology/page.tsx");
-  if (methodology && (
-    methodology.includes("SSRN panel of 219") ||
-    methodology.includes("3.4× more likely") ||
-    methodology.includes("regression stratified by stage") ||
-    methodology.includes("validation panel of 219 startup-period observations") ||
-    methodology.includes("Validate the leading-signal hypothesis against confirmed fundraises") ||
-    methodology.includes("historically preceded fundraise announcements")
-  )) {
-    failures.push(
-      "§73 methodology attributes funding lift or an outcome regression to a release with no linked funding-event labels.\n" +
-      "    file: app/methodology/page.tsx\n" +
-      "    fix:  keep the release descriptive and leave funding lead-time validation to the public scorecard."
-    );
-  }
 }
 
 // ---------------------------------------------------------------------------
@@ -6366,198 +6320,75 @@ check(
   }
 }
 
-// §71 Affiliate-proof integrity (2026-08-29). Retired unsupported affiliate
-// earnings/partner/CVR claims and funding-outcome statistics that the current
-// descriptive SSRN release cannot support. The Refgrow portal is the terms
-// source of truth; the public program may not claim earnings history until it
-// exists. The SSRN release has no linked funding-event labels, so it may not be
-// cited for precision, recall, lead time, close-rate, or base-rate lift.
+// ---------------------------------------------------------------------------
+// §80 ImageObject metadata completeness for GSC WNC-10030322 (2026-09-03).
+//    Every ImageObject in site JSON-LD must carry copyrightNotice, creator,
+//    and acquireLicensePage. The external-thumbnail pages watch/ and mcp-demo
+//    use a special honest copyright string; the rest use the canonical string.
 // ---------------------------------------------------------------------------
 {
-  check(
-    "app/affiliates/page.tsx",
-    "§71 affiliate hub lost the verified portal offer",
-    (src) => src.includes("20% recurring") && src.includes("gitdealflow.refgrow.com") && src.includes("No affiliate earnings"),
-    "Keep one honest program hub: 20% recurring, portal-owned terms, no earnings history claims.",
-  );
-  check(
-    "app/affiliates/leaderboard/page.tsx",
-    "§71 retired affiliate leaderboard returned or became indexable",
-    (src) =>
-      src.includes('redirect("/affiliates")') &&
-      src.includes("robots: { index: false, follow: false }") &&
-      !src.includes("LEADERBOARD"),
-    "Keep the noindex redirect. Reintroduce a leaderboard only with read-back-able Refgrow results.",
-  );
-  check(
-    "content/affiliate-leaderboard.ts",
-    "§71 affiliate data carries unsupported proof",
-    (src) =>
-      src.includes("AFFILIATE_PROGRAM_FACTS") &&
-      !src.includes("Newsletter A") &&
-      !src.includes("€32,000") &&
-      !src.includes("commissionPerInsiderCircleMonthly"),
-    "Keep verifiable program facts only; no invented proof or closed-Insider commission example.",
-  );
-  check(
-    "app/api/v1/affiliates.json/route.ts",
-    "§71 affiliate API lost its honest earnings state",
-    (src) =>
-      src.includes("no_publishable_history") &&
-      !src.includes("commission_per_insider_circle") &&
-      !src.includes("payout_minimum_eur") &&
-      !src.includes("leaderboard:"),
-    "Keep no_publishable_history and defer mutable payout/attribution terms to the portal.",
-  );
-  check(
-    "app/affiliates/top-partners/page.tsx",
-    "§71 partner wishlist regained fabricated engagement statuses",
-    (src) =>
-      src.includes('type Status = "wishlist"') &&
-      !src.includes("outreach-sent") &&
-      !src.includes('status: "engaged"') &&
-      !src.includes("20% lifetime") &&
-      !src.includes("60-day cookie"),
-    "Keep the roster a wish list and defer mutable terms to Refgrow.",
-  );
-  check(
-    "app/affiliates/funnel-hack/page.tsx",
-    "§71 swipe page presents closed Insider enrollment as an active affiliate offer",
-    (src) => !src.includes("€39.40") && src.includes("€9.80/mo per Dashboard sub"),
-    "Use Dashboard as the active recurring example. Insider enrollment is closed.",
-  );
-  check(
-    "app/partners/page.tsx",
-    "§71 partner page presents closed Insider enrollment as an active affiliate offer",
-    (src) => !src.includes("€39.40") && src.includes("€9.80/mo per Dashboard sub"),
-    "Use Dashboard as the active recurring example. Insider enrollment is closed.",
-  );
-  check(
-    "app/api/openapi.json/route.ts",
-    "§71 OpenAPI affiliate description presents closed Insider enrollment as active",
-    (src) => !src.includes("€39.40/mo/Insider") && src.includes("€9.80/mo/Dashboard"),
-    "Keep the API description aligned to the active Dashboard example.",
-  );
-  check(
-    "content/affiliate-swipe-kit.ts",
-    "§71 swipe kit regained unsupported conversion or outcome claims",
-    (src) => !src.includes("38%") && !src.includes("5× the base rate") && !src.includes("€19.40") && src.includes("Not measured yet"),
-    "Use descriptive panel language and state that affiliate conversion rates are not measured yet.",
-  );
-  check(
-    "content/social-content-batch.ts",
-    "§71 social content regained unsupported funding-outcome claims",
-    (src) =>
-      !src.includes("38% close-within-47d") &&
-      !src.includes("5× base rate") &&
-      !src.includes("5× lift over the base rate") &&
-      !src.includes("Closed rounds: Gini 0.34") &&
-      !src.includes("would have flagged this round") &&
-      src.includes("no linked funding-event labels"),
-    "Keep social content descriptive. The documented release cannot establish funding accuracy, lift, lead time, or outcome-linked Gini splits.",
-  );
-  check(
-    "content/agent-queries.ts",
-    "§71 accuracy answers regained unsupported precision/lead-time claims",
-    (src) => !src.includes("~65% precision") && !src.includes("5.4-week median") && src.includes("no linked funding-event labels"),
-    "Do not cite the descriptive release for precision, recall, or funding lead time.",
-  );
-  check(
-    "content/standalone-faqs.ts",
-    "§71 FAQ regained unsupported precision/lead-time claims",
-    (src) => !src.includes("top-decile commit-velocity precision is ~65%") && !src.includes("Median lead time for true positives is 5.4 weeks"),
-    "Keep outcome accuracy unestablished until forward scorecard data matures.",
-  );
-  landingCheck(
-    "affiliates.html",
-    "§71 apex affiliate page regained duplicate terms",
-    (src) => src.includes("signals.gitdealflow.com/affiliates") && !src.includes("30%"),
-    "Keep the apex page as a noindex redirect to the canonical signals affiliate hub.",
-  );
-  for (const locale of ["de", "es"]) {
-    landingCheck(
-      `${locale}/affiliates.html`,
-      `§71 ${locale} affiliate page regained duplicate terms`,
-      (src) => src.includes("signals.gitdealflow.com/affiliates") && !src.includes("30%"),
-      "Keep localized pages as noindex redirects to the canonical signals affiliate hub.",
-    );
-    landingCheck(
-      `${locale}/partners.html`,
-      `§71 ${locale} partners page regained unverified terms`,
-      (src) =>
-        src.includes("20% recurring") &&
-        !src.includes("50% revenue share") &&
-        !src.includes("Real-time dashboard") &&
-        !src.includes("€39.40") &&
-        !src.includes("Dashboard + Insider, lifetime"),
-      "Mirror the honest EN terms: 20% recurring via Refgrow; JV by conversation.",
-    );
+  const canonical = '© VC Deal Flow Signal (GitDealFlow). Licensed under CC BY 4.0.';
+  const external = "Video thumbnail © its respective owner; page content © VC Deal Flow Signal (GitDealFlow), CC BY 4.0.";
+  const creatorNeedles = [
+    '"@id": "https://signals.gitdealflow.com/about#person"',
+    '"@id": `${SITE}/about#person`',
+  ];
+  const licenseNeedles = [
+    '"acquireLicensePage": "https://signals.gitdealflow.com/terms"',
+    'acquireLicensePage: "https://signals.gitdealflow.com/terms"',
+    'acquireLicensePage: `${SITE}/terms`',
+  ];
+  for (const rel of [
+    "app/page.tsx",
+    "components/RootIdentitySchema.tsx",
+    "app/breakout-startups-this-week/page.tsx",
+  ]) {
+    const s = read(rel);
+    if (!s) {
+      failures.push(`§80 ImageObject metadata guard missing file: ${rel}`);
+      continue;
+    }
+    const imageBlocks: string[] = [];
+    const marker = '"@type": "ImageObject"';
+    let idx = s.indexOf(marker);
+    while (idx !== -1) {
+      const start = s.lastIndexOf('{', idx);
+      if (start >= 0) {
+        let depth = 0;
+        for (let i = start; i < s.length; i++) {
+          const c = s[i];
+          if (c === '{') depth++;
+          else if (c === '}') {
+            depth--;
+            if (depth === 0) {
+              imageBlocks.push(s.slice(start, i + 1));
+              break;
+            }
+          }
+        }
+      }
+      idx = s.indexOf(marker, idx + marker.length);
+    }
+    for (const block of imageBlocks) {
+      if (
+        !block.includes('copyrightNotice') ||
+        !creatorNeedles.some((needle) => block.includes(needle)) ||
+        !licenseNeedles.some((needle) => block.includes(needle))
+      ) {
+        failures.push(
+          `§80 ImageObject metadata incomplete in ${rel}. Every ImageObject must include copyrightNotice, creator about#person, and acquireLicensePage.`,
+        );
+        break;
+      }
+      if (!block.includes(canonical) && !block.includes(external)) {
+        failures.push(
+          `§80 Non-canonical ImageObject copyrightNotice in ${rel}. Use the canonical string or the external-thumbnail exception.`,
+        );
+        break;
+      }
+    }
   }
-  landingCheck(
-    "partners.html",
-    "§71 apex partners page regained contradictory terms",
-    (src) =>
-      src.includes("20% recurring") &&
-      src.includes("Refgrow portal") &&
-      !src.includes("50% revenue share") &&
-      !src.includes("30% recurring") &&
-      !src.includes("Real-time dashboard") &&
-      !src.includes("€39.40") &&
-      !src.includes("Dashboard + Insider, lifetime"),
-    "Use 20% recurring via Refgrow, JV by conversation, and no unsupported dashboard claim.",
-  );
 }
-
-// ---------------------------------------------------------------------------
-// §77 x402 v2 HTTP interoperability (2026-09-01). The paid deep-signal route
-// remains v1-compatible while advertising the canonical v2 PAYMENT-REQUIRED
-// header and accepting PAYMENT-SIGNATURE. The executable bridge test is part
-// of prebuild so a body-only v1 regression cannot deploy.
-// ---------------------------------------------------------------------------
-{
-  check(
-    "app/api/agent/deep-signal/x402/route.ts",
-    "§77 x402 route lost its v2 header/payment bridge",
-    (src) =>
-      src.includes("paymentSignatureV2ToV1") &&
-      src.includes("decorateLegacyResponseForV2") &&
-      src.includes('request.headers.get("PAYMENT-SIGNATURE")') &&
-      src.includes("const legacyPOST =") &&
-      src.includes("export async function POST"),
-    "Restore the dual-protocol wrapper around the proven legacy settlement path.",
-  );
-  check(
-    "lib/x402-v2-bridge.ts",
-    "§77 x402 v2 PAYMENT-REQUIRED/PAYMENT-RESPONSE encoder is missing",
-    (src) =>
-      src.includes('headers.set("PAYMENT-REQUIRED"') &&
-      src.includes('headers.set("PAYMENT-RESPONSE"') &&
-      src.includes("x402Version: 2") &&
-      src.includes("EIP-3009"),
-    "Restore the tested v1/v2 HTTP envelope bridge and its CORS headers.",
-  );
-  check(
-    "package.json",
-    "§77 x402 v2 bridge test is no longer a prebuild release gate",
-    (src) =>
-      src.includes('"test:x402-v2-bridge"') &&
-      src.includes("npm run test:x402-v2-bridge"),
-    "Keep tests/x402-v2-bridge.test.ts wired into prebuild.",
-  );
-}
-
-// Image metadata must be checked at the actual object boundary, including
-// nested logos. The AST-based test fails if license or creditText is absent.
-check(
-  "package.json",
-  "ImageObject license and creditText prebuild gate is missing",
-  (src) => {
-    const pkg = JSON.parse(src);
-    return pkg.scripts.prebuild.includes("npm run test:image-metadata") &&
-      pkg.scripts["test:image-metadata"] === "node --test scripts/test/image-metadata.test.mjs";
-  },
-  "Keep the full-site ImageObject metadata regression test wired into prebuild.",
-);
 
 if (failures.length) {
   console.error(

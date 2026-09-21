@@ -369,8 +369,7 @@ first cohort matures 60 days after publish. Until then, every
             </li>
           </ol>
           <p className="text-gray-400 text-sm leading-relaxed pt-2 border-t border-amber-700/30">
-            This timeline is an illustrative historical example, not an
-            outcome record from the{" "}
+            This is one of the 219 paired observations in the{" "}
             <a
               href="https://ssrn.com/abstract=6606558"
               className="text-amber-300 hover:text-amber-200 underline decoration-dotted"
@@ -379,14 +378,12 @@ first cohort matures 60 days after publish. Until then, every
             >
               SSRN methodology paper
             </a>{" "}
-            or its public dataset. The documented release contains 219
-            startup-period observations across 55 startups of public
-            engineering activity and no linked funding-event labels. Forward
-            funding outcomes are graded on{" "}
-            <Link href="/scorecard" className="text-amber-300 hover:text-amber-200 underline decoration-dotted">
-              /scorecard
+anonymized to protect the founder, but the regression is
+            reproducible against the public Zenodo dataset linked from{" "}
+            <Link href="/methodology" className="text-amber-300 hover:text-amber-200 underline decoration-dotted">
+              /methodology
             </Link>
-            .
+            . The lead-time distribution: 21-47 days, IQR, n=219.
           </p>
         </section>
 

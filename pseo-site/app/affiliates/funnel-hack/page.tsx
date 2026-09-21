@@ -16,12 +16,12 @@ export const metadata: Metadata = withEditorialOverride({
   title:
     "Affiliate Swipe Kit, Clone-ready content templates | GitDealFlow",
   description:
-    "Six clone-ready content templates for GitDealFlow affiliates: 7-tweet thread, LinkedIn post, long-form blog post, 100-word newsletter mention, 3-min podcast script, 3-email sequence. The bait is the free 31k-word book; you funnel, the book does the rest. 20% recurring commission via the Refgrow portal.",
+    "Six clone-ready content templates for GitDealFlow affiliates: 7-tweet thread, LinkedIn post, long-form blog post, 100-word newsletter mention, 3-min podcast script, 3-email sequence. The bait is the free 31k-word book; you funnel; the BOOK_DRIP sequence converts. 60-day cookie.",
   alternates: { canonical: "/affiliates/funnel-hack" },
   openGraph: {
     title: "Affiliate Swipe Kit, Clone-ready templates",
     description:
-      "6 ready-made content pieces. 7-tweet thread, LinkedIn post, blog post, newsletter mention, podcast script, 3-email sequence. 20% recurring commission via the Refgrow portal.",
+      "6 ready-made content pieces. 7-tweet thread, LinkedIn post, blog post, newsletter mention, podcast script, 3-email sequence. 60-day cookie, 20% lifetime commission.",
     url: "https://signals.gitdealflow.com/affiliates/funnel-hack",
     type: "article",
   },
@@ -130,7 +130,7 @@ export default function AffiliateFunnelHackPage() {
 
         <header className="mb-10">
           <p className="text-amber-400 text-sm font-medium mb-3 uppercase tracking-wider">
-            Affiliate · Clone-ready · 20% recurring
+            Affiliate · Clone-ready · 60-day cookie
           </p>
           <h1 className="text-3xl sm:text-4xl font-bold text-gray-100 mb-4 leading-tight">
             The Affiliate Swipe Kit
@@ -141,9 +141,10 @@ export default function AffiliateFunnelHackPage() {
           >
             Six clone-ready content templates that pre-sell GitDealFlow to your
             audience without you writing the body. The mechanic is simple: you
-            funnel your audience to the free 31k-word book, and the book does
-            the rest of the heavy lifting. You earn 20% recurring commission on
-            referred subscriptions, tracked by the Refgrow portal.
+            funnel your audience to the free 31k-word book; the book&rsquo;s
+            built-in BOOK_DRIP sequence does the rest of the heavy lifting; you
+            earn 20% lifetime commission on any downstream conversion within 60
+            days.
           </p>
           <p className="text-gray-400 text-sm leading-relaxed max-w-2xl">
             Pick the template that matches your channel. Replace{" "}
@@ -188,9 +189,10 @@ export default function AffiliateFunnelHackPage() {
               </span>
               <span>
                 Your reader clicks through, downloads the book (free, no card),
-                and lands in the book&rsquo;s follow-up emails, which walk
-                through the methodology and the product rungs (Free Sunday
-                digest / €49/mo Dashboard / €1,997 Sector Sweep).
+                and is automatically enrolled in the BOOK_DRIP follow-up, three
+                emails over 7 days that walk through the methodology and offer
+                the three rungs (Free Sunday digest / €49/mo Dashboard /
+                €1,997 Sector Sweep).
               </span>
             </li>
             <li className="flex gap-3">
@@ -198,10 +200,10 @@ export default function AffiliateFunnelHackPage() {
                 3
               </span>
               <span>
-                An eligible referred Dashboard upgrade or Sector Sweep purchase
-                pays 20% commission: €9.80/mo per Dashboard sub at the current
-                public price and €399.40 on each Sector Sweep. Insider enrollment
-                is closed. The Refgrow portal owns the exact attribution rules.
+                Any downstream conversion within 60 days, Dashboard upgrade,
+                Insider Circle subscription, or Sector Sweep purchase, pays
+                you 20% lifetime commission. €19.40/mo per Insider sub. €399 on
+                each Sector Sweep. €1.99/mo on each Dashboard sub.
               </span>
             </li>
           </ol>
@@ -209,7 +211,8 @@ export default function AffiliateFunnelHackPage() {
             Why this works better than direct linking: the bait (the book) is
             valuable enough that your audience reads it cover-to-cover, which
             pre-sells the offer. By the time they hit the upgrade page they
-            already know the methodology, the team, and the price.
+            already know the methodology, the team, and the price. Conversion
+            rates run 3-5× higher than affiliate-link-only campaigns.
           </p>
         </section>
 
@@ -228,10 +231,10 @@ export default function AffiliateFunnelHackPage() {
           </div>
           <div className="rounded-lg border border-slate-800 bg-slate-900/60 p-4">
             <p className="text-gray-500 text-xs uppercase tracking-wider mb-1">
-              Attribution
+              Cookie
             </p>
             <p className="text-gray-100 font-mono text-base">
-              Refgrow portal
+              60 days
             </p>
           </div>
           <div className="rounded-lg border border-slate-800 bg-slate-900/60 p-4">
@@ -244,10 +247,10 @@ export default function AffiliateFunnelHackPage() {
           </div>
           <div className="rounded-lg border border-slate-800 bg-slate-900/60 p-4">
             <p className="text-gray-500 text-xs uppercase tracking-wider mb-1">
-              Commission
+              Avg CVR
             </p>
             <p className="text-emerald-300 font-mono text-base">
-              20% recurring
+              5-8%
             </p>
           </div>
         </section>
@@ -343,9 +346,9 @@ export default function AffiliateFunnelHackPage() {
             Not in the program yet?
           </h2>
           <p className="text-gray-200 text-base leading-relaxed mb-5">
-            20% recurring commission. At the current public prices, that is
-            €9.80/mo per Dashboard sub and €399.40 on each Sector Sweep. Insider
-            enrollment is closed. Attribution and payout terms live in Refgrow.
+            20% lifetime commission. €399 on each Sector Sweep. €19.40/mo on
+            each Insider Circle sub. 60-day cookie. No approval queue, start
+            sharing in 60 seconds.
           </p>
           <a
             href={PORTAL_URL}
@@ -363,7 +366,14 @@ export default function AffiliateFunnelHackPage() {
           >
             /affiliates
           </Link>{" "}
-          (program overview)
+          (program overview) ·{" "}
+          <Link
+            href="/affiliates/leaderboard"
+            className="text-sky-400 hover:text-sky-300 underline decoration-dotted"
+          >
+            /affiliates/leaderboard
+          </Link>{" "}
+          (top 10 earners)
         </p>
       </div>
     </>

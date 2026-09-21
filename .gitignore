@@ -23,8 +23,6 @@ pocketbase/backups/
 .next/
 .vercel
 mcp-server/dist/
-__pycache__/
-pseo-site/data/github-refresh-metadata.json
 
 # OS files
 .DS_Store

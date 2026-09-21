@@ -14,8 +14,8 @@
  *
  * Test surfaces:
  *   - `GET /api/cron/daily-seinfeld?dry=1`        → JSON, no send, no auth
- *   - `GET /api/cron/daily-seinfeld?to=<internal>` → owner-only test recipient
- *                                                    via Resend /emails (auth)
+ *   - `GET /api/cron/daily-seinfeld?to=foo@bar`   → single recipient via
+ *                                                   Resend /emails (auth)
  *   - `GET /api/cron/daily-seinfeld`              → per-recipient fan-out to
  *                                                   the audience (auth), each
  *                                                   claiming the shared daily
@@ -30,17 +30,13 @@ import { getTopMoversThisWeek } from "@/lib/data";
 import { buildDailySeinfeld, FROM_EMAIL } from "@/lib/daily-seinfeld";
 import { pickAudienceId } from "@/lib/resend-audience";
 import { listUnsubscribeHeaders, injectUnsubscribeLink } from "@/lib/list-unsubscribe";
-import { gateAllows, recipientRef } from "@/lib/send-gate";
+import { gateAllows } from "@/lib/send-gate";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
 
 const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const CRON_SECRET = process.env.CRON_SECRET;
-const INTERNAL_TEST_RECIPIENTS = new Set([
-  "sales@sipiteno.com",
-  "signals@gitdealflow.com",
-]);
 
 interface ResendErrorBody {
   message?: string;
@@ -99,19 +95,6 @@ export async function GET(req: Request): Promise<Response> {
 
   // ?to=email, single test recipient via /emails endpoint (not /broadcasts).
   if (to) {
-    const testTo = to.trim();
-    if (!INTERNAL_TEST_RECIPIENTS.has(testTo.toLowerCase())) {
-      return NextResponse.json(
-        { ok: false, error: "Test recipient is not allowlisted" },
-        { status: 400 },
-      );
-    }
-    if (!(await gateAllows(testTo, "pseo:daily-seinfeld-test"))) {
-      return NextResponse.json(
-        { ok: false, error: "Daily send gate denied test recipient" },
-        { status: 409 },
-      );
-    }
     const sendRes = await fetch("https://api.resend.com/emails", {
       method: "POST",
       headers: {
@@ -121,40 +104,29 @@ export async function GET(req: Request): Promise<Response> {
       body: JSON.stringify({
         from: FROM_EMAIL,
         bcc: "sales@sipiteno.com",
-        to: [testTo],
+        to: [to],
         subject: email.subject,
-        html: injectUnsubscribeLink(email.html, testTo),
+        html: injectUnsubscribeLink(email.html, to),
         text: email.text,
         headers: {
           "X-Entity-Ref-ID": `daily-seinfeld-test-${Date.now()}`,
-          ...listUnsubscribeHeaders(testTo),
+          ...listUnsubscribeHeaders(to),
         },
       }),
     });
     const body = (await sendRes.json()) as ResendErrorBody & { id?: string };
     if (!sendRes.ok) {
-      console.error("[daily-seinfeld] test send failed", {
-        recipient_ref: recipientRef(testTo),
-        provider_status: sendRes.status,
-      });
+      console.error("[daily-seinfeld] test send failed:", body);
       return NextResponse.json(
-        {
-          ok: false,
-          mode: "test",
-          recipient_ref: recipientRef(testTo),
-          error: "Provider send failed",
-          provider_status: sendRes.status,
-        },
+        { ok: false, mode: "test", to, error: body },
         { status: 502 },
       );
     }
-    console.info(
-      `[daily-seinfeld] test sent recipient_ref=${recipientRef(testTo)}, frame=${email.frame}`,
-    );
+    console.info(`[daily-seinfeld] test sent to ${to}, frame=${email.frame}`);
     return NextResponse.json({
       ok: true,
       mode: "test",
-      recipient_ref: recipientRef(testTo),
+      to,
       frame: email.frame,
       moverOrg: email.moverOrg,
       resend_id: body.id,
@@ -206,7 +178,6 @@ export async function GET(req: Request): Promise<Response> {
       },
       body: JSON.stringify({
         from: FROM_EMAIL,
-        bcc: "sales@sipiteno.com",
         to: [addr],
         subject: email.subject,
         html: injectUnsubscribeLink(email.html, addr),

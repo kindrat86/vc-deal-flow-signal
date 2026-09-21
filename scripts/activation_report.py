@@ -27,6 +27,7 @@ from __future__ import annotations
 
 import json
 import sys
+import time
 import urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
@@ -38,6 +39,8 @@ PROJECT = 143861
 VAULT_FILE = Path("/Users/sipi/portfolio/config/vault_local.json")
 VAULT_KEY_FILE = Path("/Users/sipi/portfolio/config/.vault_key")
 ACTIVATION_WINDOW_H = 48
+QUERY_ATTEMPTS = 3
+QUERY_TIMEOUT_SECONDS = 60
 
 # GDF email subjects: instant first digest, drip, broadcast. Subject-LIKE
 # patterns, matching what the audit found in live properties.
@@ -70,8 +73,16 @@ def q(key: str, hogql: str):
         headers={"Authorization": f"Bearer {key}", "Content-Type": "application/json"},
         method="POST",
     )
-    with urllib.request.urlopen(req, timeout=60) as r:
-        return json.loads(r.read().decode())["results"]
+    for attempt in range(QUERY_ATTEMPTS):
+        try:
+            with urllib.request.urlopen(req, timeout=QUERY_TIMEOUT_SECONDS) as r:
+                return json.loads(r.read().decode())["results"]
+        except TimeoutError:
+            if attempt == QUERY_ATTEMPTS - 1:
+                raise
+            time.sleep(2**attempt)
+
+    raise AssertionError("unreachable")
 
 
 def parse_ts(v) -> datetime:

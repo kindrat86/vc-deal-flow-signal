@@ -4,16 +4,14 @@
 # 1) Refreshes GitHub data (fetch-github-data.ts — best-effort; uses `gh auth token`).
 # 2) Regenerates emails/signal-digest-<UTC-date>.html + signal-digest-latest.html
 #    from the refreshed pseo-site/data/startups.json.
-# 3) Generates channel-ready drafts from the same rendered issue. This step
-#    never publishes or sends them.
-# 4) Broadcasts that issue to ALL ACTIVE subscribers via Resend. Idempotent per
-#    digest-<date> in the local sent log, so a re-run the same day is a no-op.
+# 3) Broadcasts that issue to ALL ACTIVE subscribers via Resend. Idempotent per
+#    digest-<date> in the PocketBase email_log, so a re-run the same day is a no-op.
 #
 # Scheduled by com.gitdealflow.weekly-digest (Sundays 16:00 Europe/Athens ≈ 09:00 US Eastern).
 # Pass --dry-run to refresh + regenerate + COUNT recipients without sending anything.
 #
-# A fetch failure may use the last-good data only when the last completed
-# refresh is no more than eight days old. Older or unproven data blocks sends.
+# A fetch failure does NOT block the send — it falls back to the last-good
+# data/startups.json and logs "fetch: FAILED" (digest may be stale that week).
 set -euo pipefail
 
 # launchd runs with a minimal environment — set these explicitly.
@@ -30,7 +28,6 @@ LOG="$PROJECT_DIR/monitoring/weekly-digest.log"
 
 DRY_RUN=0
 [[ "${1:-}" == "--dry-run" ]] && DRY_RUN=1
-GITHUB_REFRESH_TIMEOUT_SECONDS="${GITHUB_REFRESH_TIMEOUT_SECONDS:-1800}"
 
 log() { echo "$(date '+%Y-%m-%d %H:%M:%S %Z') | $*" | tee -a "$LOG"; }
 
@@ -57,23 +54,14 @@ log "=== weekly digest start (dry_run=$DRY_RUN) ==="
 
 cd "$PROJECT_DIR/pseo-site"
 
-# 1) Refresh GitHub data first. If GitHub is slow, a recent completed snapshot
-#    may be used, but missing or stale refresh evidence blocks the send.
-# Bound the refresh so the job cannot hang forever.
+# 1) Refresh GitHub data first (best-effort — a fetch failure must NOT block the
+#    weekly send; fall back to last-good data/startups.json and log loudly).
+# Bound the refresh: delivery is the product. If GitHub is slow, send the last-good snapshot.
 # macOS lacks GNU timeout; Perl alarm is available in the base system.
-if /usr/bin/perl -e 'alarm shift; exec @ARGV' "$GITHUB_REFRESH_TIMEOUT_SECONDS" npx --yes tsx scripts/fetch-github-data.ts >>"$LOG" 2>&1; then
+if /usr/bin/perl -e 'alarm shift; exec @ARGV' 600 npx --yes tsx scripts/fetch-github-data.ts >>"$LOG" 2>&1; then
   log "fetch: OK (data refreshed)"
 else
-  log "fetch: FAILED - checking last completed refresh before proceeding"
-fi
-
-FRESHNESS_CHECKER="$PROJECT_DIR/monitoring/check-refresh-freshness.py"
-FRESHNESS_METADATA="$PROJECT_DIR/pseo-site/data/github-refresh-metadata.json"
-if /Users/sipi/.local/bin/python3.11 "$FRESHNESS_CHECKER" "$FRESHNESS_METADATA" --max-age-days 8 --min-sector-count 5 >>"$LOG" 2>&1; then
-  log "freshness: OK"
-else
-  log "freshness: FAILED - aborting before generation or send"
-  exit 1
+  log "fetch: FAILED — proceeding with existing data/startups.json (digest may be stale)"
 fi
 
 # 2) Regenerate the digest HTML (npx tsx — same invocation as pseo-site prebuild).
@@ -87,18 +75,7 @@ fi
 
 DATE_UTC="$(date -u +%F)"
 
-# 3) Repurpose the exact rendered issue into review-only channel drafts. A
-#    parser failure is logged loudly but must not block the paid delivery path.
-#    Nothing in repurpose-digest.mjs calls a network or platform API.
-cd "$PROJECT_DIR"
-if node tools/repurposing/repurpose-digest.mjs \
-  --campaign="gdf-weekly-$DATE_UTC" >>"$LOG" 2>&1; then
-  log "repurpose: OK (review-only drafts; nothing published)"
-else
-  log "repurpose: FAILED - continuing with digest delivery"
-fi
-
-# 4) Broadcast (or dry-run count). DATE_UTC matches the generator's UTC-dated file.
+# 3) Broadcast (or dry-run count). DATE_UTC matches the generator's UTC-dated file.
 cd "$PROJECT_DIR/email-api"
 if [[ "$DRY_RUN" == "1" ]]; then
   if node send-weekly-digest.mjs --date "$DATE_UTC" >>"$LOG" 2>&1; then

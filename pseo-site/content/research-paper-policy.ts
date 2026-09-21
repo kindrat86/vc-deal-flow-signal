@@ -60,9 +60,9 @@ export interface ResearchPaperPolicy {
 }
 
 export const RESEARCH_PAPER_POLICY: ResearchPaperPolicy = {
-  decision: "noindex",
-  verdict: "flip-to-noindex",
-  decidedAt: "2026-08-30",
+  decision: "retain",
+  verdict: "pending",
+  decidedAt: null,
   rule: {
     windowStart: "2026-08-16",
     minImpressions: 3000,

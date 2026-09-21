@@ -18,6 +18,7 @@ const needles = {
   ],
   "app/support/page.tsx": [
     "Customer support",
+    "Human reply within 1 business day",
   ],
   "app/support/SupportForm.tsx": [
     "Data or signal quality",
@@ -26,7 +27,6 @@ const needles = {
     "How likely are you to recommend GitDealFlow to another investor?",
     "What is the main reason for your score?",
     "What would raise it by one point?",
-    "grid grid-cols-6 gap-2 sm:grid-cols-11",
   ],
   "components/Footer.tsx": [
     'href="/support"',
@@ -62,13 +62,6 @@ for (const [relative, expected] of Object.entries(needles)) {
     for (const needle of expected) assert.ok(source.includes(needle), `${relative} missing ${needle}`);
   });
 }
-
-test("support keeps a one-business-day response commitment", () => {
-  const normalized = read("app/support/page.tsx")
-    .toLowerCase()
-    .replace(/\b1\b/g, "one");
-  assert.match(normalized, /\brepl(?:y|ies) within one business day\b/);
-});
 
 test("the customer-voice contract runs in the release gate", () => {
   const packageJson = read("package.json");

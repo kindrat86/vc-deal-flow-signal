@@ -16,7 +16,7 @@ import { isNonceUsed, markNonceUsed } from "@/lib/runtime-cache";
 import { listUnsubscribeHeaders, injectUnsubscribeLink } from "@/lib/list-unsubscribe";
 import { pickAudienceId } from "@/lib/resend-audience";
 import { buildLatestDigest } from "@/lib/digest-builder";
-import { isInvestorLane, resolveOfferRoute } from "@/lib/investor-lanes";
+import { isInvestorLane } from "@/lib/investor-lanes";
 import { getResendConsentStatus } from "@/lib/resend-consent";
 
 // Single-use tracking for v2 verify-subscribe nonces. Once a v2 token's nonce
@@ -55,8 +55,7 @@ function confirmedUrl(route: string, email?: string) {
 
 function routeFromQuery(url: URL): string {
   const rawRoute = (url.searchParams.get("quiz_route") || "").slice(0, 4);
-  const rawLane = (url.searchParams.get("lane") || "").slice(0, 16);
-  return resolveOfferRoute(rawRoute, rawLane);
+  return ["F", "T", "D", "I"].includes(rawRoute) ? rawRoute : "";
 }
 
 function verifiedRedirect(cohort: string, route: string, email: string) {
@@ -175,7 +174,7 @@ export async function GET(request: Request) {
   const tzRaw = clip(url.searchParams.get("tz"), 64);
   const tz = tzRaw.includes("/") ? tzRaw : "";
   const packedAttribution = packAttribution(attribution);
-  const route = resolveOfferRoute(attribution.quiz_route, lane);
+  const route = attribution.quiz_route as "F" | "T" | "D" | "I" | "";
 
   if (!RESEND_API_KEY) {
     console.error("RESEND_API_KEY is not configured");

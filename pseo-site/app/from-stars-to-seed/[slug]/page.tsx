@@ -158,10 +158,8 @@ function buildJsonLd(c: StarsCase): object {
         dateModified: lastModifiedIso,
         primaryImageOfPage: {
           "@type": "ImageObject",
-          license: "https://creativecommons.org/licenses/by/4.0/",
-          creditText: "VC Deal Flow Signal (GitDealFlow)",
           url: `${SITE}/opengraph-image`,
-        copyrightNotice: "\u00a9 VC Deal Flow Signal (GitDealFlow). Licensed under CC BY 4.0.",
+        copyrightNotice: "© VC Deal Flow Signal (GitDealFlow). Licensed under CC BY 4.0.",
         creator: { "@id": "https://signals.gitdealflow.com/about#person" },
         acquireLicensePage: "https://signals.gitdealflow.com/terms",
         },

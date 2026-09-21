@@ -178,12 +178,13 @@ const TRACKS: readonly Track[] = [
     name: "Affiliate referral program",
     audience: "Anyone with an audience that includes investors, analysts, or scouts",
     mechanic:
-      "20% recurring commission on eligible referred subscriptions and purchases: €9.80/mo per Dashboard sub at the current public price and €399.40 on each Sector Sweep. Insider enrollment is closed. Six clone-ready content templates (tweet thread, LinkedIn post, blog post, newsletter mention, podcast script, 3-email sequence) handle the writing. Attribution and payout terms live in the Refgrow portal.",
+      "20% lifetime commission on every paid referral. €399 on each Sector Sweep. €19.40/mo on each Insider Circle subscription. 60-day cookie. Six clone-ready content templates (tweet thread, LinkedIn post, blog post, newsletter mention, podcast script, 3-email sequence) handle the writing.",
     deliverables: [
       "Unique Refgrow tracking link",
       "Six clone-ready content templates at /affiliates/funnel-hack",
-      "Terms, attribution rules, and payouts in the Refgrow portal",
-      "Free book + course as your bait product",
+      "Public anonymized leaderboard at /affiliates/leaderboard",
+      "Monthly Stripe payouts (€50 minimum)",
+      "Free 30-day book + course as your bait product",
     ],
     cost: "Free to join (no approval queue, no waiting list)",
     timeline: "Live within 60 seconds at gitdealflow.refgrow.com",

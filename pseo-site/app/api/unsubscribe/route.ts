@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
 import { verifyVerifyToken } from "@/lib/verify-token";
 import { pickAudienceId } from "@/lib/resend-audience";
-import { recipientRef } from "@/lib/send-gate";
 
 // Mutating endpoint, never cache, run on Node (mirrors app/api/recent-signups).
 export const runtime = "nodejs";
@@ -56,10 +55,7 @@ async function suppress(email: string): Promise<boolean> {
     },
   );
   if (res.ok || res.status === 404) return true;
-  console.error("[unsubscribe] Resend PATCH failed", {
-    recipient_ref: recipientRef(email),
-    provider_status: res.status,
-  });
+  console.error(`[unsubscribe] Resend PATCH failed ${res.status}: ${await res.text()}`);
   return false;
 }
 
@@ -93,10 +89,7 @@ async function cancelQueued(email: string): Promise<number> {
       if (c.ok) cancelled++;
     }
     if (cancelled > 0)
-      console.info("[unsubscribe] cancelled queued emails", {
-        recipient_ref: recipientRef(email),
-        cancelled,
-      });
+      console.info(`[unsubscribe] cancelled ${cancelled} queued emails for ${email}`);
     return cancelled;
   } catch (err) {
     console.warn("[unsubscribe] cancelQueued failed", err);
@@ -135,13 +128,8 @@ export async function POST(request: Request) {
         body: JSON.stringify({
           api_key: process.env.NEXT_PUBLIC_POSTHOG_KEY || "phc_lyZCgvTpicjLzAO3rY2GhxuX5WUc5jQjP8ZVwwJqauX",
           event: "free_list_exit_survey",
-          distinct_id: recipientRef(email),
-          properties: {
-            $host: "signals.gitdealflow.com",
-            product: "gitdealflow",
-            recipient_ref: recipientRef(email),
-            reason,
-          },
+          distinct_id: email,
+          properties: { $host: "signals.gitdealflow.com", product: "gitdealflow", reason },
         }),
       }).catch(() => undefined);
       const alertKey = process.env.RESEND_API_KEY;
@@ -154,8 +142,8 @@ export async function POST(request: Request) {
             to: "signals@gitdealflow.com",
             bcc: "sales@sipiteno.com",
             reply_to: FROM_EMAIL,
-            subject: `Exit survey: ${reason} (${recipientRef(email)})`,
-            html: `<p>A free-list subscriber unsubscribed and gave a reason.</p><p>Recipient reference: ${recipientRef(email)}</p><p>Reason: ${reason}</p>`,
+            subject: `Exit survey: ${reason} (${email})`,
+            html: `<p>A free-list subscriber unsubscribed and gave a reason.</p><p>Email: ${email}</p><p>Reason: ${reason}</p>`,
           }),
         }).catch(() => undefined);
       }
