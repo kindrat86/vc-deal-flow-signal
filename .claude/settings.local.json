@@ -69,7 +69,8 @@
       "mcp__7c0eff71-0f32-4865-9bab-cd04c9759661__search_files",
       "mcp__7c0eff71-0f32-4865-9bab-cd04c9759661__list_recent_files",
       "mcp__7c0eff71-0f32-4865-9bab-cd04c9759661__read_file_content",
-      "mcp__7c0eff71-0f32-4865-9bab-cd04c9759661__create_file"
+      "mcp__7c0eff71-0f32-4865-9bab-cd04c9759661__create_file",
+      "mcp__b09f4626-5f92-49b8-84ec-292a6869ec9b__exec"
     ]
   }
 }
