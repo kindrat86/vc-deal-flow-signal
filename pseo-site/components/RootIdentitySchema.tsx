@@ -187,6 +187,8 @@ export function RootIdentitySchema() {
           copyrightNotice: "© VC Deal Flow Signal (GitDealFlow). Licensed under CC BY 4.0.",
           creator: { "@id": `${SITE}/about#person` },
           acquireLicensePage: `${SITE}/terms`,
+          license: "https://creativecommons.org/licenses/by/4.0/",
+          creditText: "VC Deal Flow Signal (GitDealFlow)",
         },
         image: {
           "@type": "ImageObject",
@@ -197,6 +199,8 @@ export function RootIdentitySchema() {
           copyrightNotice: "© VC Deal Flow Signal (GitDealFlow). Licensed under CC BY 4.0.",
           creator: { "@id": `${SITE}/about#person` },
           acquireLicensePage: `${SITE}/terms`,
+          license: "https://creativecommons.org/licenses/by/4.0/",
+          creditText: "VC Deal Flow Signal (GitDealFlow)",
         },
         foundingDate: "2025",
         email: "signals@gitdealflow.com",

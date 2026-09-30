@@ -192,6 +192,8 @@ export default async function BlogPostPage({ params }: PageProps) {
         copyrightNotice: "© VC Deal Flow Signal (GitDealFlow). Licensed under CC BY 4.0.",
         creator: { "@id": "https://signals.gitdealflow.com/about#person" },
         acquireLicensePage: "https://signals.gitdealflow.com/terms",
+        license: "https://creativecommons.org/licenses/by/4.0/",
+        creditText: "VC Deal Flow Signal (GitDealFlow)",
         },
         inLanguage: "en-US",
         isAccessibleForFree: true,
@@ -265,6 +267,8 @@ export default async function BlogPostPage({ params }: PageProps) {
           copyrightNotice: "© VC Deal Flow Signal (GitDealFlow). Licensed under CC BY 4.0.",
           creator: { "@id": "https://signals.gitdealflow.com/about#person" },
           acquireLicensePage: "https://signals.gitdealflow.com/terms",
+          license: "https://creativecommons.org/licenses/by/4.0/",
+          creditText: "VC Deal Flow Signal (GitDealFlow)",
           },
         },
         // News-class umbrella reference: only emitted when the post is

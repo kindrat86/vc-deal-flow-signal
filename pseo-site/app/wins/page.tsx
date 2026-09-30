@@ -218,6 +218,8 @@ export default function WinsPage() {
         copyrightNotice: "© VC Deal Flow Signal (GitDealFlow). Licensed under CC BY 4.0.",
         creator: { "@id": "https://signals.gitdealflow.com/about#person" },
         acquireLicensePage: "https://signals.gitdealflow.com/terms",
+        license: "https://creativecommons.org/licenses/by/4.0/",
+        creditText: "VC Deal Flow Signal (GitDealFlow)",
         },
         mainEntity: { "@id": "https://signals.gitdealflow.com/wins#dataset" },
         speakable: {

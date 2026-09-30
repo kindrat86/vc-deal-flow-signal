@@ -79,6 +79,8 @@ export default function McpDemoPage() {
           copyrightNotice: "© VC Deal Flow Signal (GitDealFlow). Licensed under CC BY 4.0.",
           creator: { "@id": "https://signals.gitdealflow.com/about#person" },
           acquireLicensePage: "https://signals.gitdealflow.com/terms",
+          license: "https://creativecommons.org/licenses/by/4.0/",
+          creditText: "VC Deal Flow Signal (GitDealFlow)",
           },
         },
         potentialAction: {
@@ -100,6 +102,8 @@ export default function McpDemoPage() {
         copyrightNotice: "Video thumbnail © its respective owner; page content © VC Deal Flow Signal (GitDealFlow), CC BY 4.0.",
         creator: { "@id": "https://signals.gitdealflow.com/about#person" },
         acquireLicensePage: "https://signals.gitdealflow.com/terms",
+        license: "https://creativecommons.org/licenses/by/4.0/",
+        creditText: "VC Deal Flow Signal (GitDealFlow)",
         },
         video: { "@id": `${PAGE_URL}#video` },
         isPartOf: { "@id": `${SIGNALS}/#website` },

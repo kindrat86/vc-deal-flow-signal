@@ -6338,6 +6338,11 @@ check(
     'acquireLicensePage: "https://signals.gitdealflow.com/terms"',
     'acquireLicensePage: `${SITE}/terms`',
   ];
+  // 2026-09-30 (GSC WNC "Missing field 'license' / Missing field 'creditText'"):
+  // every ImageObject must also carry license (CC BY 4.0 deed) and creditText.
+  const licenseFieldNeedle =
+    'license: "https://creativecommons.org/licenses/by/4.0/"';
+  const creditNeedle = 'creditText: "VC Deal Flow Signal (GitDealFlow)"';
   for (const rel of [
     "app/page.tsx",
     "components/RootIdentitySchema.tsx",
@@ -6373,10 +6378,12 @@ check(
       if (
         !block.includes('copyrightNotice') ||
         !creatorNeedles.some((needle) => block.includes(needle)) ||
-        !licenseNeedles.some((needle) => block.includes(needle))
+        !licenseNeedles.some((needle) => block.includes(needle)) ||
+        !block.includes(licenseFieldNeedle) ||
+        !block.includes(creditNeedle)
       ) {
         failures.push(
-          `§80 ImageObject metadata incomplete in ${rel}. Every ImageObject must include copyrightNotice, creator about#person, and acquireLicensePage.`,
+          `§80 ImageObject metadata incomplete in ${rel}. Every ImageObject must include copyrightNotice, creator about#person, acquireLicensePage, license (CC BY 4.0), and creditText.`,
         );
         break;
       }
