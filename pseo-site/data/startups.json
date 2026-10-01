@@ -1,4 +1,8 @@
 {
+  "_meta": {
+    "fetchedAt": "2026-08-18T09:40:27.000Z",
+    "note": "Back-stamped 2026-09-13 from commit ba13625c (contributors pagination repair, the last material recompute of this data). Future stamps are written automatically by scripts/fetch-github-data.ts / scripts/fetch-real-data.mjs at data-write time."
+  },
   "periods": [
     {
       "slug": "q3-2026",

@@ -185,6 +185,12 @@ export default function Footer() {
           </p>
           <nav aria-label="Footer: Legal" className="flex flex-wrap items-center gap-4 text-sm text-gray-400">
             <Link href="https://gitdealflow.com" className="hover:text-gray-300 transition-colors">Main Site</Link>
+            <a
+              href="https://hirenika.com/employees/nika"
+              className="hover:text-gray-300 transition-colors"
+            >
+              Sibling: Nika, AI bookkeeper
+            </a>
             <Link href="/about" className="hover:text-gray-300 transition-colors">About</Link>
             <Link href="/about/founder" className="hover:text-gray-300 transition-colors">Founder</Link>
             <Link href="/origin" className="hover:text-gray-300 transition-colors">Origin</Link>

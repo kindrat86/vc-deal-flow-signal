@@ -785,6 +785,20 @@ export function parseTrendSlug(slug: string): TrendPageData | null {
 const MTIME_FLOOR = new Date("2024-01-01T00:00:00.000Z").getTime();
 
 export function getDataLastModified(): Date {
+  // 1) Embedded fetch stamp (2026-09-13 honesty fix): data/startups.json
+  //    carries `_meta.fetchedAt`, written by the fetch pipeline at data-write
+  //    time. It travels with the JSON module import into every runtime, so it
+  //    works where fs.statSync cannot (Vercel serverless never sees the file;
+  //    before this fix every machine surface stamped REQUEST time as
+  //    "lastUpdated" on data that was weeks old - GUARDRAIL 5.8).
+  const embedded = (
+    startupsData as unknown as { _meta?: { fetchedAt?: unknown } }
+  )._meta?.fetchedAt;
+  if (typeof embedded === "string") {
+    const t = Date.parse(embedded);
+    if (!Number.isNaN(t) && t >= MTIME_FLOOR) return new Date(t);
+  }
+  // 2) Local/dev fallbacks: file mtime, then build time.
   try {
     const filePath = path.join(process.cwd(), "data", "startups.json");
     const stat = fs.statSync(filePath);

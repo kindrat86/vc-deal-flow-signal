@@ -557,7 +557,16 @@ async function main() {
     console.log(`  => ${startups.length} startups with data`);
   }
 
-  const output = { periods, sectors };
+  const output = {
+    // Data-as-of stamp, read by getDataLastModified() (lib/data.ts) and
+    // asserted by scripts/verify-no-regressions.ts (2026-09-13 honesty fix).
+    _meta: {
+      fetchedAt: new Date().toISOString(),
+      note: "Written by scripts/fetch-real-data.mjs at data-write time. Do not hand-edit.",
+    },
+    periods,
+    sectors,
+  };
 
   writeFileSync(OUTPUT, JSON.stringify(output, null, 2));
 
