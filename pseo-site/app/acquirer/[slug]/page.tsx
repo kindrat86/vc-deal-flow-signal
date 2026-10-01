@@ -87,6 +87,25 @@ export default async function AcquirerPage({ params }: PageProps) {
         ]
       : []),
 
+    // GSC 2026-10-01 (~/.hermes/organic/tmp/gsc-acquirer-queries-20261001.json):
+    // /acquirer/cloudflare is the family's top impression page (181i/28d, 0 clicks)
+    // and its demand is a year-cluster question set at p8-10 that the existing FAQ
+    // block does not answer: "cloudflare acquisition 2026" 16i p8.3 (d90) + 4i p8.8
+    // (d28), "cloudflare acquisitions 2025 2026" 12i p9.7, "cloudflare acquisitions
+    // 2026" 3i p8, "cloudflare recent acquisition" 1i p11. Answer reuses ONLY
+    // repo-established facts from content/acquirers.ts (BastionZero 2024 entry,
+    // 6-deal 2020-2024 list, edge-tuck-in strategy line, Area 1/Zaraz/S2 product
+    // mappings). Conditional: entity-specific, only Cloudflare's page answers it.
+    ...(a.slug === "cloudflare"
+      ? [
+          {
+            question: "What has Cloudflare acquired recently?",
+            answer:
+              "The most recent publicly documented acquisition on this page is BastionZero (2024), a zero-trust infrastructure access provider. Cloudflare's acquisition cadence is deliberately small and recent: the six deals documented here span 2020-2024, and each became a first-party feature on the Cloudflare edge (Area 1 became Email Security, Zaraz became Third-party Tag Manager, S2 Systems became Browser Isolation). We list only deals announced via press release or SEC filing, so newly announced 2025-2026 deals will appear here once they are publicly documented; we do not track rumors or undisclosed deals.",
+          },
+        ]
+      : []),
+
     {
       question: `How many acquisitions has ${a.name} made?`,
       answer: `This page documents ${a.notableAcquisitions.length} notable public acquisitions by ${a.name}, every deal here was announced via press release, SEC filing, or both. ${a.name}'s full acquisition history may include smaller, undisclosed talent acquisitions; we list only the publicly documented deals that materially shaped their direction.`,
