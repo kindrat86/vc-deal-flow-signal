@@ -56,6 +56,7 @@ data/momentum-index/_build_momentum_index.mjs
 # no secrets, no keys and no site-specific data.
 scripts/*
 !scripts/verify-jsonld.mjs
+!scripts/verify-meta-length.mjs
 !scripts/verify-dataset-fields.mjs
 !scripts/test-dataset-fields.mjs
 !scripts/test-expansion-routing.mjs
