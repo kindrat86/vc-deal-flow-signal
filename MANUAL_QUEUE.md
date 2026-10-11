@@ -36,9 +36,8 @@ stale/near-empty sectors should be consolidated back down (then update data).
 
 **STATUS: Complete. All 17 claims live + stale claim removed. No human action needed.**
 
-Executed via API as TheDataNerd (password recovered through project inbox —
-reset email to signal@gitdealflow.com → temp password → email verification code →
-new permanent password, stored in macOS keychain `wikidata-hermes`).
+Executed via API as TheDataNerd (Wikidata account credentials are held in the
+macOS keychain; recovery details are not documented here).
 
 Live now on **Q139493250** (paper): P893 SSRN, P356 DOI 10.2139/SSRN.6606558,
 P4011 Semantic Scholar, P10283 OpenAlex, P4901 Zenodo, P973 ×3 (Zenodo/Kaggle/classifier).
