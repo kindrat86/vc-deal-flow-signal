@@ -56,6 +56,643 @@ export interface BlogPost {
 
 export const posts: BlogPost[] = [
   {
+    slug: "how-to-evaluate-github-activity-for-startup-scouting",
+    title: "How to Evaluate GitHub Activity for Startup Scouting: A Practical Checklist",
+    description: "A one-sitting checklist for evaluating a startup's GitHub activity: Pulse, contributors, commit velocity, normalization, persistence, and red flags.",
+    date: "2026-10-14",
+    relatedSectors: ["ai-ml", "developer-tools", "fintech", "enterprise-saas", "data-infrastructure"],
+    faqs: [
+      {
+        question: "How far back do GitHub commit statistics go?",
+        answer: "The statistics endpoint returns weekly commit totals covering the last year; summed into 14-day buckets they give a boundary approximation of rolling windows. Pulse periods come from its dropdown, whose default is short, so extend it before judging.",
+      },
+      {
+        question: "Does a commit spike mean the startup is hiring or raising?",
+        answer: "No. A spike is evidence of engineering activity in that window. Hiring and funding each require their own verification; reading outcomes into commits is an evaluation error, not evidence.",
+      },
+      {
+        question: "Can I compare two startups by raw commit counts?",
+        answer: "Raw counts alone are not enough. Squash merging, repo structure, and coverage can distort comparisons. Compare each org to its own baseline, then compare directions of change.",
+      },
+    ],
+    references: [
+      {
+        label: "1",
+        title: "GitHub Docs, Using Pulse to view a summary of repository activity",
+        url: "https://docs.github.com/en/repositories/viewing-activity-and-data-for-your-repository/using-pulse-to-view-a-summary-of-repository-activity",
+        source: "GitHub Docs",
+      },
+      {
+        label: "2",
+        title: "GitHub Docs, Viewing a project's contributors",
+        url: "https://docs.github.com/en/repositories/viewing-activity-and-data-for-your-repository/viewing-a-projects-contributors",
+        source: "GitHub Docs",
+      },
+      {
+        label: "3",
+        title: "GitHub Docs, REST API endpoints for repository statistics",
+        url: "https://docs.github.com/en/rest/metrics/statistics",
+        source: "GitHub Docs",
+      },
+      {
+        label: "4",
+        title: "GitHub Docs, Pull request merges (merge commit, squash, rebase)",
+        url: "https://docs.github.com/en/pull-requests/reference/pull-request-merges",
+        source: "GitHub Docs",
+      },
+      {
+        label: "5",
+        title: "GitHub Docs, REST API versions",
+        url: "https://docs.github.com/en/rest/about-the-rest-api/api-versions",
+        source: "GitHub Docs",
+      },
+      {
+        label: "6",
+        title: "GitDealFlow, VC Deal Flow Signal methodology",
+        url: "https://signals.gitdealflow.com/methodology",
+        source: "GitHub Docs",
+      },
+    ],
+    body: `Public repository activity can be inspected without asking the founder, and is granular enough to compare one window against another. It is also easy to misread. A commit spike can be a product push, a hackathon, or a documentation cleanup, and raw counts punish teams for merge habits. This is a working checklist for evaluating one startup's GitHub activity in a single sitting: what to open, what each view can and cannot tell you, and which cautions separate signal from noise.
+
+One scope note first: everything here reads public data only. The GitDealFlow [methodology page](https://signals.gitdealflow.com/methodology) states that its pipeline uses the public GitHub REST API, excludes bot commits, and touches no private repositories and no scraping. Hold the same line manually: it keeps your evidence reproducible.
+
+## Start with the repository Pulse summary
+
+GitHub's [Pulse view](https://docs.github.com/en/repositories/viewing-activity-and-data-for-your-repository/using-pulse-to-view-a-summary-of-repository-activity) lives under the Insights tab and summarizes what happened: merged and open pull requests, new and closed issues, and the people involved. Two habits make it useful:
+
+1. Change the period. The dropdown defaults to the last seven days, too short to judge a startup; set a longer window, then compare two equal windows.
+2. Use Pulse as the sanity check on any spike: a jump that shows up as many merged pull requests reads very differently from a few giant automated syncs.
+
+## Read the contributors graph correctly
+
+The [contributors graph](https://docs.github.com/en/repositories/viewing-activity-and-data-for-your-repository/viewing-a-projects-contributors), also under Insights, answers who did the work, over what period. GitHub's docs document the caution that matters most: the graph counts default-branch commits. Commits that only live on feature branches do not appear until merged; GitHub's docs use \`gh-pages\` as the example. Treat what it shows as contributor identities, not employees: teams that keep work on long-lived side branches will look smaller, and neither the graph nor the pull request queue is a headcount.
+
+## Pull commit velocity from the REST API
+
+For numbers you can log and compare week over week, pull weekly commit counts from the [repository statistics endpoint](https://docs.github.com/en/rest/metrics/statistics). Summed into 14-day buckets they approximate the methodology's rolling 14-day commit velocity; weekly buckets have fixed boundaries, so treat the sum as a boundary approximation of a rolling window, not an exact reading. Two cautions:
+
+1. Send the \`X-GitHub-Api-Version\` header on every call, as the [API versioning guide](https://docs.github.com/en/rest/about-the-rest-api/api-versions) recommends, so your numbers keep one meaning across API versions.
+2. Keep the set of repositories you measure fixed across windows. Switching repos mid-trend changes what is being measured, and the trend line breaks.
+
+Squash merging turns a whole pull request into one commit: identical work, very different counts. [Commit velocity explained](/blog/commit-velocity-explained) covers the rest.
+
+## Normalize before you compare, then demand persistence
+
+Per the methodology, the signal is a "percentage change in 14-day commit velocity vs. the prior 14-day window, normalized against each org's own baseline so it works across stages and team sizes." In practice: compare an org to its own past, rather than treating another org's raw count as equivalent.
+
+Then apply the persistence rule, also from the methodology: "A breakout must persist into a second 14-day window before it becomes actionable." Hackathons and release weeks produce single-window spikes; require persistence into a second window before treating a change as real.
+
+## Red flags checklist
+
+Activity concentrated in a mirror, template, or tutorial repo.
+
+Contributor identities shrinking while commit count rises. That can have several explanations; it is not a headcount, so verify separately.
+
+Repositories freshly re-created with shallow history, which makes trend lines unreadable.
+
+Switching which repository you measure mid-trend, which resets the comparison.
+
+## The one-sitting evaluation, step by step
+
+1. Open the organization and confirm it is the company you think it is, not a namesake or fan fork.
+2. Open Pulse, set a longer period, and compare two equal-length windows.
+3. Open the contributors graph, remember the default-branch caveat, and compare distinct pull request author identities with graph entries; both are identities, not headcount.
+4. Pull weekly commit counts from the statistics endpoint and compute two consecutive 14-day bucket sums versus the prior two, treating them as boundary approximations.
+5. Confirm the organization's main product repository is what you measured, not a mirror, template, or fan fork.
+6. Check merge habits: if pull requests squash into one commit, read pull request trends alongside commits.
+7. Require persistence into a second window before the org earns a watchlist entry.
+8. Log the windows, the numbers, and the caveats. Treat the result as a lead to verify, never a verdict.
+
+For where this step sits in a full scouting process, see the [pre-seed scouting guide](/blog/pre-seed-scouting-with-github-signals) and the [data sources page](/data-sources).`,
+  },
+  {
+    slug: "engineering-acceleration-is-not-revenue-or-hiring",
+    title: "Engineering Acceleration Is Not Revenue or Hiring: Reading the Signal for What It Is",
+    description: "Engineering acceleration is a change in public-code activity, not a business outcome. What the signal supports, what it cannot, and how to verify.",
+    date: "2026-10-14",
+    relatedSectors: ["ai-ml", "developer-tools", "fintech", "enterprise-saas", "data-infrastructure"],
+    faqs: [
+      {
+        question: "Can GitHub activity forecast a funding round?",
+        answer: "These activity measurements alone do not establish that a round will happen. Any predictive claim needs validated out-of-sample evidence. Use the signal to prioritize which companies to examine, and verify funding through funding-specific evidence.",
+      },
+      {
+        question: "Does more commits mean more engineers?",
+        answer: "Not reliably. Squash merging, side-branch workflows, contractors, and community contributions all distort the commits-to-headcount relationship. Verify hiring on hiring surfaces.",
+      },
+      {
+        question: "What is engineering acceleration, in one sentence?",
+        answer: "The percentage change in a startup's 14-day commit velocity versus its prior 14-day window, normalized against the org's own baseline: a measure of changing engineering activity, not of business outcomes.",
+      },
+    ],
+    references: [
+      {
+        label: "1",
+        title: "GitDealFlow, VC Deal Flow Signal methodology",
+        url: "https://signals.gitdealflow.com/methodology",
+        source: "GitHub Docs",
+      },
+      {
+        label: "2",
+        title: "GitHub Docs, Viewing a project's contributors",
+        url: "https://docs.github.com/en/repositories/viewing-activity-and-data-for-your-repository/viewing-a-projects-contributors",
+        source: "GitHub Docs",
+      },
+      {
+        label: "3",
+        title: "GitHub Docs, Pull request merges (merge commit, squash, rebase)",
+        url: "https://docs.github.com/en/pull-requests/reference/pull-request-merges",
+        source: "GitHub Docs",
+      },
+    ],
+    body: `Engineering acceleration is a change in public-code activity, not a business outcome. Activity is not revenue, headcount, or a funding forecast. This article fixes the definition, then maps what the signal can support, what it cannot, and how to verify the outcomes people read into it.
+
+## The definition, precisely
+
+Per the [methodology page](https://signals.gitdealflow.com/methodology), engineering acceleration is a "percentage change in 14-day commit velocity vs. the prior 14-day window, normalized against each org's own baseline so it works across stages and team sizes," computed from public GitHub data with bot commits excluded. The methodology also classifies each org into one of five signal types: engineering hiring burst, infrastructure buildout, deploy frequency spike, framework migration, and deceleration.
+
+Read the type names carefully. They classify patterns of engineering activity; none is an outcome measurement. "Engineering hiring burst" is a signal label, not a verification: it does not count a single employee and does not establish that anyone was hired. That distinction is the whole point of this article. For the metric mechanics, [what is engineering acceleration](/blog/what-is-engineering-acceleration) walks through the computation.
+
+## Why activity and outcomes come apart
+
+Ordinary, harmless situations inflate or deflate activity with no change in business results:
+
+Open-source surges. A tool that gets popular on its own attracts community commits from people who will never be customers or employees. A community contributor is not necessarily an employee or customer.
+
+Framework migrations and re-platforming. These can increase commits without establishing a change in commercial results.
+
+Hackathons, internship cohorts, university partnerships. Real work, real commits, deliberately time-boxed.
+
+Contractor patterns. Agencies committing inside a client's org move that org's numbers without changing its team.
+
+Merge habit changes. Squash merging collapses each pull request into one commit, per GitHub's [merge method documentation](https://docs.github.com/en/pull-requests/reference/pull-request-merges); changing merge styles can change the count without a corresponding change in work delivered.
+
+The last one cuts both ways: a deceleration reading can be a merge-style change, a post-launch consolidation, or a repo switch rather than a slowdown. Declining activity is a question, not an answer.
+
+## What acceleration can honestly support
+
+1. Triage: where to spend scarce diligence hours this week, which is a scout's actual job.
+2. Consistency evidence: sustained cadence across successive windows is informative about whether the engineering org is alive.
+3. Recency checks: the site describes a weekly refresh. Check the displayed period and last update before treating a value as current.
+4. Conversation openers: a specific observed pattern, such as contributor identities and velocity rising together, gives you something precise to ask a founder about.
+
+The methodology's persistence rule, quoted directly: "A breakout must persist into a second 14-day window before it becomes actionable." The two-window rule filters noise; it does not convert activity into business results.
+
+## What it cannot support
+
+Hiring claims. Commits are not headcount. Changes in team size and commit activity need not move together. If you need hiring evidence, verify hiring on its own surface; [GitHub signals vs hiring data](/blog/github-signals-vs-hiring-data) maps where the two agree and disagree.
+
+Revenue claims. No computation turns commits into revenue. Monetization happens in systems GitHub cannot see: invoices, contracts, receipts. Revenue inference from activity is invention.
+
+Funding conclusions. These measurements alone do not establish that a funding round will happen. Activity can shift before a round, after a round, or never, depending on what the money funded. Treat any model claiming to forecast rounds from commits as unproven until it shows validated out-of-sample evidence.
+
+## False positive cautions checklist
+
+**Single-window spikes:** requiring a second window can reduce sensitivity to one-off bursts; it is not a guarantee.
+
+**Mirror and template repos:** confirm the product repository is what you measured, not a mirror.
+
+**Repository coverage changes:** changing the measured repositories can break comparisons across windows.
+
+**Default-branch undercounts:** the [contributors graph](https://docs.github.com/en/repositories/viewing-activity-and-data-for-your-repository/viewing-a-projects-contributors) counts default-branch commits only, so work confined to other branches is absent from that graph.
+
+**Community-driven repos:** separate product work from unrelated tooling; neither proves team size.
+
+## Verification checklist for outcomes you actually care about
+
+1. Hiring: read the careers page, recent postings, and public team footprint. Log dates. Do not infer from commits.
+2. Revenue: reliable transaction or financial evidence is the standard. Public pricing pages and case studies show offers and claims, not verified revenue.
+3. Funding: rely on filings and founder confirmation. Never forecast from activity.
+4. Engineering reality: the claim GitHub activity data can support. Run the two-window evaluation, log it, and let it rank your diligence queue.
+
+For how activity patterns differ by maturity, see [engineering velocity benchmarks by stage](/blog/engineering-velocity-benchmarks-by-stage).`,
+  },
+  {
+    slug: "github-signal-sector-comparison-workflow",
+    title: "A Practical Sector Comparison Workflow for GitHub Startup Signals",
+    description: "A working workflow for comparing startup sectors on GitHub signals: distortions to check, normalized change, persistence, and per-sector cautions.",
+    date: "2026-10-14",
+    relatedSectors: ["ai-ml", "developer-tools", "fintech", "enterprise-saas", "data-infrastructure"],
+    faqs: [
+      {
+        question: "Which sector has the strongest GitHub signal right now?",
+        answer: "Read the live sector hubs rather than trusting any fixed answer. Sector leadership shifts as windows roll, so record the period and refresh time alongside your answer. The workflow above provides a repeatable way to inspect those hubs.",
+      },
+      {
+        question: "How do I compare a two-person startup with a much larger org?",
+        answer: "Through each org's own baseline, which is what the normalized percentage change provides, then verify team size separately if headcount matters to your thesis. Normalization reduces scale effects; stage, repo coverage, merge habits, and small baselines still matter, so it does not tell you team size.",
+      },
+      {
+        question: "Where do I see a sector's live list?",
+        answer: "On the sector hub pages, for example the [AI and machine learning hub](/sector/ai-ml), with trending and the signals dashboard as cross-checks.",
+      },
+    ],
+    references: [
+      {
+        label: "1",
+        title: "GitDealFlow, VC Deal Flow Signal methodology",
+        url: "https://signals.gitdealflow.com/methodology",
+        source: "GitHub Docs",
+      },
+      {
+        label: "2",
+        title: "GitHub Docs, Pull request merges (merge commit, squash, rebase)",
+        url: "https://docs.github.com/en/pull-requests/reference/pull-request-merges",
+        source: "GitHub Docs",
+      },
+      {
+        label: "3",
+        title: "GitHub Docs, Using Pulse to view a summary of repository activity",
+        url: "https://docs.github.com/en/repositories/viewing-activity-and-data-for-your-repository/using-pulse-to-view-a-summary-of-repository-activity",
+        source: "GitHub Docs",
+      },
+      {
+        label: "4",
+        title: "GitHub Docs, REST API endpoints for repository statistics",
+        url: "https://docs.github.com/en/rest/metrics/statistics",
+        source: "GitHub Docs",
+      },
+    ],
+    body: `Cross-sector comparisons need more than a raw commit leaderboard. Commit counts that look comparable on a leaderboard are shaped by language ecosystems, repo layout, and merge culture, so the chattiest sectors look hot and the quiet ones cold. This is a working workflow for comparing sectors honestly: what distorts raw comparison, the steps that survive contact with real data, and cautions for sectors you will screen.
+
+## Why raw cross-sector ranking misleads
+
+Check these possible distortions:
+
+1. Merge culture. Squash merging turns a whole pull request into one commit, per GitHub's [merge method documentation](https://docs.github.com/en/pull-requests/reference/pull-request-merges). Check whether the repositories use different merge methods before comparing raw rankings.
+2. Repo structure. The methodology computes a per-organization signal from public GitHub data, so how an org spreads its work across repos shapes what gets measured: a monorepo concentrates activity in one stream, many small repos spread it.
+3. Community gravity. Sectors with strong open-source cultures attract contributor identities unrelated to the company's own product growth.
+4. Base rates. Check for automation, bot and generated-code activity. The site says it excludes bot commits, but filtering rules should still be checked.
+
+The fix is built into the methodology: the signal is a "percentage change in 14-day commit velocity vs. the prior 14-day window, normalized against each org's own baseline so it works across stages and team sizes." Percentage change against the org's own past is the unit that travels across sectors. Raw commit volume is not.
+
+## The workflow, step by step
+
+1. Pick two or three sectors you can actually judge. Domain knowledge turns a ranked list into a screened list. Each sector has a live hub, for example the [AI and machine learning hub](/sector/ai-ml); the [explore page](/explore) indexes the rest.
+2. Within a hub, shortlist by direction of change, not absolute volume, but inspect the absolute baseline first: a doubling off a tiny denominator is not automatically a strong lead. Rank percentage changes only after checking the denominator they came from.
+3. Cross-check the shortlist against the [trending view](/trending) and the [region view](/startups/region). These are different views of the same underlying data, not independent confirmations. Use them to locate and review candidates.
+4. Apply the persistence rule before anything reaches the watchlist. Quoted from the [methodology](https://signals.gitdealflow.com/methodology): "A breakout must persist into a second 14-day window before it becomes actionable."
+5. Run the per-org evaluation on each survivor: Pulse for merged versus automated activity, the contributors graph read as identities not headcount, and two-window bucket sums from weekly statistics data as a boundary approximation.
+6. Log each watchlist entry with the windows compared, the numbers, and the caveats found. A lead without a logged basis cannot be re-checked later.
+7. Re-run the same sectors on the same weekday with the same window lengths and the same repo set per org. Consistent method makes your sector comparisons cumulative instead of anecdotal.
+8. Use the two-window logic symmetrically for retirement: an org whose acceleration faded across two windows steps off the list. The [signals dashboard](/signals) is the working surface for the re-check.
+
+## Sector-specific cautions: hypotheses to check, not facts
+
+Treat each of these as a hypothesis your screen should test, not as proven sector behavior:
+
+**Developer tools:** check whether product commits can be separated from community tooling commits. Popularity of a library is not the same fact as growth of the company behind it.
+
+**Web3:** check whether commits chase incentive programs rather than products; contributor authenticity may need extra verification here.
+
+**Gaming:** check whether single-window bursts come from game jams and asset imports; that is what the persistence rule tests.
+
+**Enterprise software:** check whether release pushes cluster around business cycles and customer deadlines; if so, persistence across windows matters more.
+
+**Hardware and climate:** check whether firmware repos carry vendor tooling commits that inflate activity without touching the roadmap.
+
+## Comparing sectors without a shared denominator
+
+The disciplined pattern: rank orgs within their sector by normalized change, then compare survivor proportions across sectors alongside counts, disclosing each sector's coverage and denominators (hub listings versus orgs screened). A hub covering few orgs produces few survivors without saying anything about activity; a higher survivor share still needs comparable coverage, sampling and stated denominators. Comparing raw levels is not. For how normalized change behaves as companies grow, see [engineering velocity benchmarks by stage](/blog/engineering-velocity-benchmarks-by-stage); the [data sources page](/data-sources) documents what feeds the panel.
+
+## Common mistakes checklist
+
+Comparing raw commit counts across orgs or sectors.
+
+Ignoring a mid-trend switch in which repository you measure, which silently changes what is compared.
+
+Reading deceleration as failure without checking merge-style changes or post-launch consolidation.
+
+Forgetting the site's pipeline excludes bot commits while a manual API pull includes them unless you filter.
+
+Each of these is checkable; the workflow above builds the checks in.`,
+  },
+  {
+    slug: "github-releases-versus-commits",
+    title: "GitHub Releases Versus Commits: What Each Activity Measure Tells You",
+    description: "Releases and commits measure different things. How to count each correctly, pick the right timestamp, and compare timelines without mixing them.",
+    date: "2026-10-14",
+    relatedSectors: ["ai-ml", "developer-tools", "fintech", "enterprise-saas", "data-infrastructure"],
+    faqs: [
+      {
+        question: "Does no GitHub release mean no product updates?",
+        answer: "No. The releases list excludes ordinary tags without release records, and a company's update process may use other surfaces. Check what this repository actually publishes.",
+      },
+      {
+        question: "Can the latest-release endpoint answer when publication happened?",
+        answer: "Not by relying on `created_at` alone. The documentation distinguishes that field from drafting and publication. Inspect the appropriate returned fields.",
+      },
+      {
+        question: "Can release activity confirm a commit spike means growth?",
+        answer: "No. It adds context about public release records, not independent evidence of commercial growth. Verify business outcomes through their own sources.",
+      },
+    ],
+    references: [
+      {
+        label: "1",
+        title: "GitHub releases API",
+        url: "https://docs.github.com/en/rest/releases/releases",
+        source: "GitHub Docs",
+      },
+      {
+        label: "2",
+        title: "GitHub repository statistics",
+        url: "https://docs.github.com/en/rest/metrics/statistics",
+        source: "GitHub Docs",
+      },
+      {
+        label: "3",
+        title: "GitHub pagination",
+        url: "https://docs.github.com/en/rest/using-the-rest-api/using-pagination-in-the-rest-api",
+        source: "GitHub Docs",
+      },
+      {
+        label: "4",
+        title: "GitHub API versions",
+        url: "https://docs.github.com/en/rest/about-the-rest-api/api-versions",
+        source: "GitHub Docs",
+      },
+      {
+        label: "5",
+        title: "GitDealFlow methodology",
+        url: "https://signals.gitdealflow.com/methodology",
+        source: "GitHub Docs",
+      },
+    ],
+    body: `A commit and a GitHub release are different records. A repository can accumulate commits without publishing a release, and a release can package work collected over a longer period. Counting them together obscures the distinction between code changes and a published release record.
+
+For startup scouting, keep separate observations and ask what each actually measures. Neither establishes revenue, headcount, customer adoption or fundraising. The site's [methodology](/methodology) describes public activity inputs, but a manual release review should not be presented as a verified component of the site's score unless that implementation has been checked.
+
+## Start with the object you are counting
+
+The [GitHub releases API](https://docs.github.com/en/rest/releases/releases) returns release records. GitHub explicitly says the list does not include ordinary Git tags that have not been associated with a release. An empty release list therefore does not prove there are no tags, commits or product updates.
+
+The [repository statistics endpoint](https://docs.github.com/en/rest/metrics/statistics) describes commit activity grouped by week. It also says statistics exclude merge commits. That is a counting rule for the endpoint, not a universal definition of all development activity.
+
+Write down the object and source before comparing two charts. "Published release records in this window" and "commits counted by this endpoint" are clear measurements. "Shipping speed" needs more explanation and should not be inferred automatically from either number.
+
+## Choose the relevant timestamp
+
+Release records include \`created_at\` and \`published_at\`. The documentation for the latest-release endpoint says \`created_at\` is the date of the commit used for the release, not the date it was drafted or published.
+
+If your question is when a release was published, inspect the publication field rather than assuming creation time answers it. Keep a missing publication timestamp missing. Record the timestamp field used in the calculation so another analyst can reproduce the result.
+
+The latest-release endpoint also describes excluding draft and prerelease releases. That is not the same population as a complete release list. Decide whether prereleases belong in your analysis, record the choice, and apply it consistently to both periods.
+
+## Compare timelines, not interchangeable totals
+
+A useful manual table has separate columns for release identity, publication time, tag name, prerelease status, and the commit activity observed over a defined window. Preserve links returned by the source so a reviewer can inspect the release notes.
+
+Do not divide commits by releases and call the result developer productivity. A different release process can change that ratio without changing the quality or amount of work. A repository's public releases may also cover only one part of a larger product.
+
+Instead, ask bounded questions:
+
+Was a release published during the observed interval?
+
+Is it marked as a prerelease?
+
+What do the release notes actually claim changed?
+
+Does the commit window cover the same repository and dates?
+
+Did the collection include all relevant pages?
+
+These questions produce a checkable observation rather than a business conclusion.
+
+## Read release notes as claims to inspect
+
+Release notes can describe fixes, features or compatibility changes. They are useful context, but their wording does not prove that customers adopted the change or that a deployment reached every user.
+
+Keep the distinction visible in your notes. Write "release notes describe a new integration" rather than "the company gained integration customers." If an outcome matters, seek outcome-specific evidence outside GitHub.
+
+The same caution applies to commit messages. A message saying "launch" is not itself proof of a commercial launch. Public-code artifacts explain what is visible in the repository, not everything happening inside the company.
+
+## Avoid collection shortcuts
+
+The [pagination documentation](https://docs.github.com/en/rest/using-the-rest-api/using-pagination-in-the-rest-api) explains that large responses can be split across pages. Follow the returned next-page links instead of assuming the first page is the entire history. Record whether the collection completed.
+
+The [API versioning guide](https://docs.github.com/en/rest/about-the-rest-api/api-versions) explains how to request a version explicitly. Keep the version in the snapshot alongside the repository identifiers and timestamp fields.
+
+If a statistics request is pending, do not substitute zero commits next to a real release count. Missing data and observed inactivity are different states. Preserve the uncertainty and postpone the comparison if the gap could change it.
+
+## Put the result into a scouting workflow
+
+Use the [trending view](/trending) to select names worth inspecting, then examine their actual public repositories. The [blog](/blog) provides practical context, while the measurement record should contain your own dates, scope and caveats.
+
+A defensible conclusion might read: "This repository published a non-prerelease release in the selected window, and its public commit count changed under the stated counting rule." That is less dramatic than "the company is taking off," but it is an observation another person can check.`,
+  },
+  {
+    slug: "missing-github-statistics-not-zero",
+    title: "Missing GitHub Statistics Are Not Zero Activity",
+    description: "A blank GitHub statistics response is not zero activity. Handle 202, 204, caching, and endpoint limits without inventing numbers.",
+    date: "2026-10-14",
+    relatedSectors: ["ai-ml", "developer-tools", "fintech", "enterprise-saas", "data-infrastructure"],
+    faqs: [
+      {
+        question: "Can I treat a `202` response as zero commits?",
+        answer: "No. GitHub documents it as a statistics calculation that may still be compiling. Record pending and keep the numeric value unset.",
+      },
+      {
+        question: "Does `404` prove a repository was deleted?",
+        answer: "Not always. GitHub's best-practices guide notes that some private resources return `404` when credentials lack access. Resolve access before claiming absence.",
+      },
+      {
+        question: "Should incomplete companies disappear from the ranking?",
+        answer: "That is a ranking choice, but it should be explicit. Keep a separate unavailable list and disclose coverage so exclusion is not mistaken for low activity.",
+      },
+    ],
+    references: [
+      {
+        label: "1",
+        title: "GitHub repository statistics",
+        url: "https://docs.github.com/en/rest/metrics/statistics",
+        source: "GitHub Docs",
+      },
+      {
+        label: "2",
+        title: "GitHub API best practices",
+        url: "https://docs.github.com/en/rest/using-the-rest-api/best-practices-for-using-the-rest-api",
+        source: "GitHub Docs",
+      },
+      {
+        label: "3",
+        title: "GitHub pagination",
+        url: "https://docs.github.com/en/rest/using-the-rest-api/using-pagination-in-the-rest-api",
+        source: "GitHub Docs",
+      },
+      {
+        label: "4",
+        title: "GitDealFlow methodology",
+        url: "https://signals.gitdealflow.com/methodology",
+        source: "GitHub Docs",
+      },
+    ],
+    body: `A blank GitHub statistics response does not tell you that a repository stopped working. It can mean the calculation is pending, the endpoint returned no content, access failed, or your collection did not finish. Collapsing those states into zero creates false drops and misleading rankings.
+
+This guide is about handling missing public-code measurements. It does not diagnose a company's health from an API response. Use the site's [methodology](/methodology) to understand the activity metric, then preserve uncertainty when the source cannot supply it.
+
+## Read the status before the number
+
+GitHub's [repository statistics documentation](https://docs.github.com/en/rest/metrics/statistics) says statistics can be returned from a cache. If the calculation is not cached, the request can return \`202\` while a background job compiles the statistics. A later request can return \`200\` when the calculation has completed.
+
+A \`202\` is therefore a pending measurement, not a measured zero. Store it as pending and leave the activity value unset. Record when you checked so another analyst can distinguish an old failure from a current one.
+
+The commit-activity endpoint also documents \`204\` as a no-content response. Do not invent a numerical meaning for that response. Your table should preserve its status rather than converting the missing body into an array of zeroes.
+
+## Know which limitation belongs to which endpoint
+
+Statistics endpoints are not interchangeable. GitHub documents a 10,000-commit limitation for the code-frequency endpoint, which returns additions and deletions. The contributor endpoint also has a documented limitation affecting addition and deletion values in large repositories.
+
+Do not transfer a limitation from one endpoint to every GitHub metric. Keep the exact endpoint and its documented response behavior in the collection log. If the statistic is unsuitable for the repository, mark that measurement unavailable and choose another explicitly defined observation rather than filling the gap with a guess.
+
+GitHub statistics also exclude merge commits. Contributor statistics exclude empty commits. A valid low value may therefore differ from a count taken from another source. That is a definition mismatch to investigate, not necessarily a missing-data problem.
+
+## Give each result a state
+
+A practical table keeps the value and state separate:
+
+**Observed:** a valid response was parsed and the measurement is available.
+
+**Pending:** the provider accepted the calculation but has not returned it.
+
+**No content:** the endpoint returned no usable measurement.
+
+**Access unresolved:** authentication or permission needs checking.
+
+**Rate limited:** collection stopped to honor the provider's limits.
+
+**Incomplete:** a page or repository in the intended collection is missing.
+
+These are suggested labels for your own workflow. They are not statuses claimed for the site's pipeline. Add the response code, collection time and explanatory note next to each label.
+
+A real zero belongs only in the observed state when the valid response and counting rules support it. That distinction should survive export to CSV, a dashboard and any later API consumer.
+
+## Retry without turning collection into a storm
+
+GitHub's [API best-practices guide](https://docs.github.com/en/rest/using-the-rest-api/best-practices-for-using-the-rest-api) recommends avoiding unnecessary polling and making requests serially to reduce secondary-rate-limit risk. Honor \`retry-after\` when present. When the remaining allowance is zero, respect the reset header rather than immediately trying again.
+
+For a secondary rate limit without those instructions, the guide describes waiting before retrying, increasing the wait after further failures and stopping after a bounded number of attempts. It also warns that continuing requests while rate limited can result in a ban. A data gap is preferable to damaging access.
+
+Define a retry ceiling before collection starts. When you hit it, preserve the gap and report its consequence. Do not keep retrying because the chart would look cleaner with one more number.
+
+## Do not hide incomplete coverage
+
+If you intended to measure several repositories and one is missing, disclose both the completed coverage and the missing part. Do not compare a complete earlier period with an incomplete later period as though both cover the same population.
+
+For paginated lists, the [pagination guide](https://docs.github.com/en/rest/using-the-rest-api/using-pagination-in-the-rest-api) explains the next-page links in the response header. Finishing only the first page can undercount records even when the request succeeded.
+
+Use the [trending view](/trending) as a starting list, then inspect the measurement behind a candidate. The [blog](/blog) can explain the workflow, but neither surface fills a failed source response. A watchlist entry should say whether its comparison is complete, approximate or currently unavailable.`,
+  },
+  {
+    slug: "reproducible-github-activity-snapshots",
+    title: "How to Make a Reproducible GitHub Activity Snapshot",
+    description: "Make GitHub activity snapshots another analyst can re-check: measurement contracts, versioning, missing-data states, and evidence packets.",
+    date: "2026-10-14",
+    relatedSectors: ["ai-ml", "developer-tools", "fintech", "enterprise-saas", "data-infrastructure"],
+    faqs: [
+      {
+        question: "Is a screenshot enough?",
+        answer: "It can show what you saw, but usually does not preserve repository coverage, counting rules or failed requests. Keep it alongside the measurement record, not instead of it.",
+      },
+      {
+        question: "Must I use the site's exact calculation?",
+        answer: "No. A manual workflow can use another clearly defined measurement. Do not call it identical to the site's score unless its implementation and scope have been verified.",
+      },
+      {
+        question: "Does a reproducible snapshot prove commercial momentum?",
+        answer: "No. It supports a checkable observation about public-code activity. Business outcomes need their own evidence.",
+      },
+    ],
+    references: [
+      {
+        label: "1",
+        title: "GitHub API versions",
+        url: "https://docs.github.com/en/rest/about-the-rest-api/api-versions",
+        source: "GitHub Docs",
+      },
+      {
+        label: "2",
+        title: "GitHub repository statistics",
+        url: "https://docs.github.com/en/rest/metrics/statistics",
+        source: "GitHub Docs",
+      },
+      {
+        label: "3",
+        title: "GitHub pagination",
+        url: "https://docs.github.com/en/rest/using-the-rest-api/using-pagination-in-the-rest-api",
+        source: "GitHub Docs",
+      },
+      {
+        label: "4",
+        title: "GitHub API best practices",
+        url: "https://docs.github.com/en/rest/using-the-rest-api/best-practices-for-using-the-rest-api",
+        source: "GitHub Docs",
+      },
+      {
+        label: "5",
+        title: "GitDealFlow methodology",
+        url: "https://signals.gitdealflow.com/methodology",
+        source: "GitHub Docs",
+      },
+    ],
+    body: `A GitHub activity comparison is useful only if another analyst can work out what you counted. A screenshot of a rising line leaves questions unanswered: which repositories, which window, which API, and which exclusions? A small evidence packet makes the observation easier to check without turning it into a claim about hiring, revenue or fundraising.
+
+This workflow is for public repositories. It produces a dated activity snapshot, not an investment recommendation. Start with the site's [methodology](/methodology), then record your own collection choices explicitly. The site's exact repository aggregation should not be assumed from a manual pull.
+
+## Define the measurement before collecting
+
+Write a measurement contract in plain language. Include repository identifiers, the window start and end, timezone, endpoint, API version, and whether you are counting commits, pull requests or releases. Those are different objects and should have different columns.
+
+Specify how an event on the boundary is handled. For example, choose a start-inclusive, end-exclusive interval. That is a proposed collection convention, not a claim about the site's implementation. Keep it unchanged between comparison periods.
+
+Also decide what happens when data is missing. An unavailable response should remain unavailable. Do not substitute zero just to keep a chart continuous. A separate status field protects the numeric field from that mistake.
+
+## Keep the request reproducible
+
+GitHub's [API versioning documentation](https://docs.github.com/en/rest/about-the-rest-api/api-versions) explains the \`X-GitHub-Api-Version\` header. Record the version you requested rather than relying on a changing assumption about the default. Also keep the endpoint and non-secret query parameters.
+
+Do not save access tokens in an evidence packet. Reproducibility needs the measurement recipe and permitted response data, not credentials. Record whether the request was authenticated and the access scope relevant to interpreting it, without including the secret itself.
+
+A useful request record contains:
+
+Collection time in UTC.
+
+Repository owner and name as returned by the source.
+
+Requested window and query parameters.
+
+Endpoint and API version.
+
+Response status and relevant cache metadata.
+
+Any collection failure or incomplete pagination.
+
+## Separate source data from your calculation
+
+Keep the permitted raw response separate from your derived table. That makes it possible to fix a calculation without silently replacing the evidence used by the earlier version.
+
+The [repository statistics documentation](https://docs.github.com/en/rest/metrics/statistics) describes the last year of commit activity grouped by week. The response contains \`week\`, \`total\` and \`days\`; the daily array starts on Sunday. If you add whole weekly totals to approximate a 14-day rolling window, disclose the bucket-boundary approximation. Do not label the result an exact rolling count.
+
+GitHub also says repository statistics exclude merge commits, and contributor statistics exclude empty commits. A count from those endpoints therefore cannot be compared blindly with a count produced by another method. Write the exclusion rule next to the metric.
+
+## Capture pagination and cache state
+
+For a paginated endpoint, one successful page is not proof that the collection is complete. GitHub's [pagination guide](https://docs.github.com/en/rest/using-the-rest-api/using-pagination-in-the-rest-api) describes the \`link\` response header and its next-page links. Follow the links returned for the endpoint and record whether you reached the end. Do not treat a partial list as the complete population.
+
+GitHub's [best-practices guide](https://docs.github.com/en/rest/using-the-rest-api/best-practices-for-using-the-rest-api) describes conditional requests using an ETag or Last-Modified value. A \`304 Not Modified\` response means the requested representation has not changed. It is not a new empty dataset. Your record should point to the cached response that the check validated.
+
+Keep request parameters stable when comparing cached representations. Changing filters or sort order changes what you requested, even if the endpoint name stays the same.
+
+## Review the packet before ranking
+
+Check that both periods use the same repository set and counting rules. If a repository was added, removed or moved, separate the coverage change from the activity change. A new denominator can move the result without telling you that the same observed team changed its behavior.
+
+Use the [trending view](/trending) to find candidates for inspection, not to authenticate your collection. Multiple views of the same site data are not independent confirmations. The [blog](/blog) provides workflow context; your saved response and calculation remain the evidence for your particular observation.
+
+A compact packet can contain a request log, raw responses, calculation notes, a derived table and a one-paragraph caveat. That is enough to explain why a name entered a watchlist and what would invalidate the comparison.`,
+  },
+  {
     slug: "enterprise-saas-github-signal-patterns",
     title: "Enterprise SaaS GitHub Signal Patterns: A Sector Taxonomy for VC Sourcing",
     description:
