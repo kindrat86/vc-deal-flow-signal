@@ -10,6 +10,7 @@ import { getHreflangLanguages } from "@/lib/hreflang";
 import SharpScarcityBadge from "@/components/SharpScarcityBadge";
 import TrialClose from "@/components/TrialClose";
 import { withEditorialOverride } from "@/lib/metadata";
+import { PRE_ROUND_PATH } from "@/lib/pre-round";
 
 export const metadata: Metadata = withEditorialOverride({
   // CTR hook wave 5 (zero-click, 2026-08-16): 171 imps/90d at pos 6.3, 1
@@ -152,6 +153,28 @@ const tiers: Tier[] = [
     ],
     ctaLabel: "Get the Pass, €7",
     ctaHref: "/firstlook",
+    highlight: false,
+  },
+  {
+    slug: "pre-round-report",
+    name: "Pre-Round Report",
+    priceLabel: "€49",
+    priceCadence: "one-time",
+    rrpLabel: "No subscription · 48-hour delivery",
+    oneLine:
+      "The 25 startups with the strongest pre-round engineering signal this month, all sectors or the one you pick, with the evidence behind each name, PDF + CSV.",
+    forWho:
+      "Use this if five names a week is not enough but a monthly plan is more than you need right now.",
+    bullets: [
+      "25 ranked startups, cross-sector or filtered to one of 15 sectors",
+      "Signal type, 14-day velocity change, contributor growth and last public round per name",
+      "GitHub, website and public founder links for first-touch outreach",
+      "PDF to read + CSV for your CRM",
+      "€49 credited toward Dashboard if you upgrade within 14 days",
+      "30-day Signal-or-It's-Free guarantee",
+    ],
+    ctaLabel: "Get the Report, €49",
+    ctaHref: PRE_ROUND_PATH,
     highlight: false,
   },
   {

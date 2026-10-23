@@ -1,4 +1,255 @@
 {
-  "$comment": "Human-editable editorial/meta overrides. Edit this ONE file to change a page's title, description, or index status WITHOUT touching code or hunting through content/*.ts. Key = route path (leading slash, no domain). Supported fields: title (brand-free, the layout appends the site name), description (120-180 chars), noindex (true hides the page from search), keywords (array, replaces the page's own). Example: \"/methodology\": { \"title\": \"How We Score Engineering Velocity\", \"description\": \"The Scout Score method explained: commit velocity, contributor growth, and repo expansion across 15 sectors.\" }. Empty overrides object = no active overrides.",
-  "overrides": {}
+  "$comment": "Human-editable editorial/meta overrides. Edit this ONE file to change a page's title, description, or index status WITHOUT touching code or hunting through content/*.ts. Key = route path (leading slash, no domain). Supported fields: title (brand-free, the layout appends the site name), description (120-180 chars), noindex (true hides the page from search), keywords (array, replaces the page's own). Example: \"/methodology\": { \"title\": \"How We Score Engineering Velocity\", \"description\": \"The Scout Score method explained: commit velocity, contributor growth, and repo expansion across 15 sectors.\" }. Empty overrides object = no active overrides. Optional absolute: true renders the title verbatim (no layout brand suffix); used by the 2026-10 CTR wave so the full title stays under 60 chars.",
+  "overrides": {
+    "/vs/dealroom-vs-pitchbook": {
+      "title": "Dealroom vs PitchBook (2026): Price, Coverage, Verdict",
+      "absolute": true,
+      "description": "Dealroom vs PitchBook side by side: EU startup coverage vs private-market depth, 2026 pricing, deal origination fit, and which one your fund should pick."
+    },
+    "/answers/free-harmonic-ai-alternative-2026": {
+      "title": "Harmonic AI Pricing 2026: Cost per Seat + Free Option",
+      "absolute": true,
+      "description": "How much does Harmonic cost? Reported 2026 quotes run about $20K-$24K per seat a year with no public free tier. See what you get and a free alternative."
+    },
+    "/vs/harmonic-ai-vs-pitchbook": {
+      "title": "How Does Harmonic Compare to PitchBook? (2026)",
+      "absolute": true,
+      "description": "Harmonic vs PitchBook: early team-pattern sourcing vs private-market research. Data freshness, coverage, pricing and when each tool wins for a VC team."
+    },
+    "/vs/specter-vs-harmonic-ai": {
+      "title": "Specter vs Harmonic (2026): Which Finds Startups First?",
+      "absolute": true,
+      "description": "How does Harmonic compare to Specter? Growth signals vs team-pattern sourcing, network sourcing, coverage and pricing, compared for venture scouts."
+    },
+    "/vs/harmonic-ai-vs-dealroom": {
+      "title": "Harmonic vs Dealroom (2026): AI Sourcing vs EU Data",
+      "absolute": true,
+      "description": "How does Harmonic compare to Dealroom? AI-driven early sourcing vs European startup data: coverage, pricing, signal lead time and the workflow each fits."
+    },
+    "/vs/harmonic-ai-vs-crunchbase": {
+      "title": "Harmonic vs Crunchbase: Which Spots Startups Earlier?",
+      "absolute": true,
+      "description": "How does Harmonic compare to Crunchbase for startup data? Lead time, signal type, coverage and pricing ($49/mo vs enterprise seats), with a clear verdict."
+    },
+    "/glossary": {
+      "title": "VC Glossary: Deal Flow & Startup Signal Terms Defined",
+      "absolute": true,
+      "description": "Plain-English definitions of VC deal flow terms: commit velocity, engineering acceleration, contributor growth, signal types, funding stages and more."
+    },
+    "/vs/pitchbook-vs-cb-insights": {
+      "title": "PitchBook vs CB Insights (2026): $20K+ vs $35K+ Compared",
+      "absolute": true,
+      "description": "PitchBook vs CB Insights: private-market diligence vs market maps. 2026 pricing, coverage, data freshness and which one fits your research workflow."
+    },
+    "/vs/affinity-vs-harmonic-ai": {
+      "title": "Does Harmonic Integrate With Affinity? CRM vs Sourcing",
+      "absolute": true,
+      "description": "Affinity vs Harmonic: how the pipeline CRM and the sourcing tool fit together, what the integration covers, pricing, and when you need both or just one."
+    },
+    "/research-paper/brown-2020-language-models-are-few-shot-learners": {
+      "title": "Language Models Are Few-Shot Learners (Brown et al. 2020)",
+      "absolute": true,
+      "description": "The GPT-3 paper by Brown et al. (arXiv 2005.14165): authors, a plain-English summary of 175B-parameter in-context learning, PDF link and citation."
+    },
+    "/answers": {
+      "title": "VC Deal Flow Answers: Cited Q&As for Investors & Agents",
+      "absolute": true,
+      "description": "Short, citation-ready answers on VC deal flow, startup sourcing tools, GitHub momentum signals and MCP servers for investor research and AI agents."
+    },
+    "/vs/harmonic-ai-vs-tracxn": {
+      "title": "How Does Harmonic Compare to Tracxn? (2026 Verdict)",
+      "absolute": true,
+      "description": "Harmonic vs Tracxn: team-pattern AI sourcing vs sector maps. Coverage, network sourcing, pricing and the venture workflow each tool fits best in 2026."
+    },
+    "/research-paper/ouyang-2022-instructgpt-rlhf": {
+      "title": "InstructGPT Paper: Ouyang et al. 2022 (arXiv 2203.02155)",
+      "absolute": true,
+      "description": "InstructGPT by Ouyang et al. (2022, arXiv 2203.02155) explained: how RLHF and instruction tuning work, key results, authors, PDF link and citation."
+    },
+    "/from-stars-to-seed": {
+      "title": "GitHub Stars Before Funding: Startup Case Studies",
+      "absolute": true,
+      "description": "Case studies where GitHub star and commit growth showed up before the funding round: LangChain, Vercel, Cursor, Groq, Modal and more, with the numbers."
+    },
+    "/compare/best-ai-deal-sourcing-tools-2026": {
+      "title": "Best AI Deal Sourcing Tools 2026: Harmonic, Specter & More",
+      "absolute": true,
+      "description": "Harmonic, Specter, SourceScrub, Dealroom and free GitHub signals compared on signal type, lead time and pricing, from $0 to $35K+ a year."
+    },
+    "/vs/crunchbase-vs-tracxn": {
+      "title": "Crunchbase vs Tracxn (2026): Pricing, Coverage, Verdict",
+      "absolute": true,
+      "description": "Crunchbase vs Tracxn: global startup coverage vs regional sector depth, category taxonomy, $49/mo vs enterprise pricing, and which one to pick."
+    },
+    "/": {
+      "title": "VC Deal Flow Signal: Startups Accelerating Pre-Round",
+      "absolute": true,
+      "description": "Free weekly list of 350+ startups ranked by GitHub engineering acceleration across 15 sectors. Spot teams speeding up 3-6 weeks before the round."
+    },
+    "/vs/dealroom-vs-crunchbase": {
+      "title": "Dealroom vs Crunchbase (2026): EU Depth vs $49/mo",
+      "absolute": true,
+      "description": "Dealroom vs Crunchbase for startup and investor data: European depth vs global default, pricing, freshness and which database to use for sourcing."
+    },
+    "/acquirer/servicenow": {
+      "title": "ServiceNow Acquisitions List: Element AI & Full History",
+      "absolute": true,
+      "description": "ServiceNow acquisition history: Element AI (~$230M) and other notable deals, the rationale behind each, and the AI and workflow sectors it buys into."
+    },
+    "/answers/best-startup-database": {
+      "title": "Best Startup Database 2026: 6 Compared on Price & API",
+      "absolute": true,
+      "description": "Crunchbase, Dealroom, PitchBook, Tracxn, Wellfound and a free dataset compared on coverage, freshness, price and API access. Pick the right one fast."
+    },
+    "/wins": {
+      "title": "Validated GitHub Signals: Public Receipts Ledger",
+      "absolute": true,
+      "description": "Every startup whose GitHub engineering acceleration matched our signal pattern before a funding round, acquisition or valuation jump, logged in public."
+    },
+    "/vs/cb-insights-vs-crunchbase": {
+      "title": "CB Insights vs Crunchbase (2026): $35K+ vs $49/mo",
+      "absolute": true,
+      "description": "CB Insights vs Crunchbase: market intelligence vs startup database. CB Rank, coverage, 2026 pricing and which one fits your team's research budget."
+    },
+    "/alternatives/cb-insights": {
+      "title": "CB Insights Alternative 2026: $0 vs $35K+ per Year",
+      "absolute": true,
+      "description": "Looking for a cheaper CB Insights alternative? Swap $35K+ market reports for leading GitHub engineering signals at less than 1% of the price."
+    },
+    "/vs/specter-vs-crunchbase": {
+      "title": "Specter vs Crunchbase: Growth Signals vs Database (2026)",
+      "absolute": true,
+      "description": "Specter vs Crunchbase: real-time growth signals vs a funding database. Market mapping, AI sourcing, lead time and pricing compared, with a verdict."
+    },
+    "/explore": {
+      "title": "Explore Startup Signals by Sector, Stage & Trend",
+      "absolute": true,
+      "description": "Browse every startup signal view in one place: 15 sectors, funding stages, signal types, trends and comparisons, all built from public GitHub activity."
+    },
+    "/vs/affinity-vs-pitchbook": {
+      "title": "Affinity vs PitchBook (2026): VC CRM vs Data, Compared",
+      "absolute": true,
+      "description": "Affinity vs PitchBook: relationship CRM vs fund and deal database. Pricing, pipeline workflow, data coverage and the best Affinity alternatives for VCs."
+    },
+    "/acquirer/cloudflare": {
+      "title": "Cloudflare Acquisitions List: Area 1 ($162M) & More",
+      "absolute": true,
+      "description": "Cloudflare acquisition history: Area 1 Security ($162M) and other notable deals, the security and edge sectors it buys into, and what it signals next."
+    },
+    "/startups-to-watch/web3-q3-2026": {
+      "title": "Web3 Startups to Watch in 2026, Ranked by GitHub",
+      "absolute": true,
+      "description": "Web3 and crypto startups ranked by GitHub engineering acceleration this quarter: commit velocity, contributor growth and breakout signals. No signup."
+    },
+    "/blog/47-alternative-data-sources-angel-investors-2026": {
+      "title": "47 Alternative Data Sources for Angel Investors (2026)",
+      "absolute": true,
+      "description": "Spot startups before Crunchbase: 47 alternative data sources for angels, from GitHub velocity and new domains to SEC Form D filings and hiring signals."
+    },
+    "/alternatives/harmonic-ai": {
+      "title": "Harmonic.ai Alternative: Free Signals vs ~$20K Seats",
+      "absolute": true,
+      "description": "Looking for a Harmonic.ai alternative? Surface breakout startups 6-12 weeks before a raise from GitHub engineering data. Free tier, no sales call."
+    },
+    "/vs/pitchbook-vs-tracxn": {
+      "title": "PitchBook vs Tracxn (2026): Fund Data vs Sector Maps",
+      "absolute": true,
+      "description": "PitchBook vs Tracxn: fund and deal data vs 2,000+ sector maps. Sourcing startups, coverage, pricing and the research workflow each platform suits."
+    },
+    "/faq": {
+      "title": "GitHub Signals FAQ: How VCs Use Commit Velocity",
+      "absolute": true,
+      "description": "How investors use GitHub signals to source deals: what commit velocity and engineering acceleration mean, data sources, limits and how scoring works."
+    },
+    "/best/enterprise-saas-2026": {
+      "title": "Top Enterprise SaaS Startups 2026, Ranked Weekly",
+      "absolute": true,
+      "description": "The fastest-moving enterprise SaaS startups of 2026, ranked weekly by GitHub commit-velocity acceleration, contributor growth and breakout signals."
+    },
+    "/acquirer/amazon-aws": {
+      "title": "Amazon & AWS Acquisitions List: Biggest Deals (2026)",
+      "absolute": true,
+      "description": "Amazon and AWS acquisition history: Whole Foods ($13.7B) and other notable deals, recent AWS acquisitions, focus sectors and signals to watch next."
+    },
+    "/founder": {
+      "title": "Founder GitHub Profiles: Public Engineering Activity",
+      "absolute": true,
+      "description": "Public GitHub engineering profiles of well-known founders, OSS maintainers and technical CEOs who self-publish their handle: activity, repos, momentum."
+    },
+    "/vs/harmonic-ai-vs-cb-insights": {
+      "title": "How Does Harmonic Compare to CB Insights? (2026)",
+      "absolute": true,
+      "description": "Harmonic vs CB Insights: early AI sourcing vs market intelligence. Which surfaces new startups first, the signals each uses, coverage and pricing."
+    },
+    "/acquirer/google": {
+      "title": "Google Acquisitions List: Wiz ($32B) & Recent Deals",
+      "absolute": true,
+      "description": "Google and Alphabet acquisition history: Wiz ($32B) and other notable deals, the AI, cloud and security sectors it targets, and what to watch next."
+    },
+    "/acquirer/microsoft": {
+      "title": "Microsoft Acquisitions 2026: Activision & Recent M&A",
+      "absolute": true,
+      "description": "Microsoft acquisition history and recent M&A: Activision Blizzard ($68.7B) and other notable deals, integration notes, focus sectors and next targets."
+    },
+    "/solo-founder-tracker": {
+      "title": "Solo Founder Tracker: One-Person Startups on GitHub",
+      "absolute": true,
+      "description": "Track one-person startups by sector: solo-founder companies crossing commit, star and contributor thresholds on GitHub, updated every week."
+    },
+    "/compare/vc-deal-flow-signal-vs-signalfire-beacon": {
+      "title": "SignalFire Beacon vs Free GitHub Deal Signals (2026)",
+      "absolute": true,
+      "description": "How does SignalFire's Beacon AI compare to other data-driven VC sourcing? Signals, coverage, access and pricing vs a free GitHub-based alternative."
+    },
+    "/blog": {
+      "title": "How VCs Source Deals: Data-Driven Sourcing Blog",
+      "absolute": true,
+      "description": "Practical guides on how VCs and angels source deals with data: GitHub momentum, alternative data, sourcing tools and reading signals before the round."
+    },
+    "/alternatives/crunchbase": {
+      "title": "Crunchbase Alternatives 2026: Free Leading Signals",
+      "absolute": true,
+      "description": "Crunchbase alternatives and competitors compared: find breakout technical startups from public GitHub acceleration, a leading signal, free to start."
+    },
+    "/startup-ideas/database-modernization-tools": {
+      "title": "Database Modernization Tools: AI Schema Migration",
+      "absolute": true,
+      "description": "AI-assisted schema conversion and data migration from Oracle, MySQL and Postgres: the database modernization tool gap, who is building it, and demand."
+    },
+    "/vs/forager-ai-vs-pitchbook": {
+      "title": "Forager.ai vs PitchBook (2026): Funding Data Compared",
+      "absolute": true,
+      "description": "Forager.ai vs PitchBook: web-signal company data vs fund and deal records. Funding stage coverage, freshness, pricing and which one to use when."
+    },
+    "/alternatives": {
+      "title": "Harmonic, Crunchbase & Dealroom Alternatives (2026)",
+      "absolute": true,
+      "description": "Best alternatives to Harmonic.ai, Crunchbase, Dealroom and Forager.ai compared: how each finds startups, pricing, and earlier engineering-signal options."
+    },
+    "/stage/seed": {
+      "title": "Seed-Stage Startups to Watch: GitHub Momentum Ranking",
+      "absolute": true,
+      "description": "Seed-stage startups ranked by GitHub engineering acceleration this quarter. See who ships fastest before the next round is obvious. Free, no signup."
+    },
+    "/vs/dealroom-vs-forager-ai": {
+      "title": "Dealroom vs Forager.ai (2026): Database vs Web Signals",
+      "absolute": true,
+      "description": "Dealroom vs Forager.ai: curated EU startup database vs AI web signals. Funding stage data, AI sourcing, coverage and pricing compared side by side."
+    },
+    "/compare": {
+      "title": "Deal Flow Tools Comparison 2026: Pricing & Signals",
+      "absolute": true,
+      "description": "Compare deal flow and sourcing platforms for fund managers: signals, filters, pricing and research time saved, from free GitHub data to $35K+ suites."
+    },
+    "/answers/best-vc-deal-flow-software-2026": {
+      "title": "Best VC Deal Flow Software 2026 (By Fund Size)",
+      "absolute": true,
+      "description": "What is the best VC deal flow software? Picks by fund size and stage: CRM, sourcing and signal tools compared on pricing, workflow and fit for 2026."
+    },
+    "/alternatives/specter": {
+      "title": "Specter Alternative (TrySpecter): Free GitHub Signals",
+      "absolute": true,
+      "description": "Looking for a Specter alternative? Track stealth and early startups from GitHub engineering acceleration instead of web and social signals. Free to start."
+    }
+  }
 }
