@@ -164,7 +164,7 @@ const tiers: Tier[] = [
     oneLine:
       "The 25 startups with the strongest pre-round engineering signal this month, all sectors or the one you pick, with the evidence behind each name, PDF + CSV.",
     forWho:
-      "Use this if five names a week is not enough but a monthly plan is more than you need right now.",
+      "Use this if five free names are not enough but a monthly plan is more than you need right now.",
     bullets: [
       "25 ranked startups, cross-sector or filtered to one of 15 sectors",
       "Signal type, 14-day velocity change, contributor growth and last public round per name",

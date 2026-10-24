@@ -50,7 +50,7 @@ export default function PreRoundPage() {
           The 25 startups speeding up before their next round
         </h1>
         <p className="text-gray-300 text-base leading-relaxed">
-          The free Sunday digest gives you five names. The Pre-Round Report gives
+          The free signup gives you five names. The Pre-Round Report gives
           you the full shortlist for this month, with the evidence behind each
           one, so you can reach out before the deck starts circulating. One
           payment, no subscription.
@@ -89,7 +89,7 @@ export default function PreRoundPage() {
           These are engineering signals from public GitHub data, not a promise
           that a company will raise. Our prediction ledger publishes the misses
           too, see <Link href="/predicted" className="underline underline-offset-2">the public ledger</Link>.
-          If the report is not useful to you, reply within 30 days and we refund it.
+          The report ships with the same 30-day Signal-or-It&rsquo;s-Free guarantee as every paid tier: if it does not surface a startup you find genuinely interesting, reply REFUND within 30 days and you get the full €{PRE_ROUND_PRICE_EUR} back.
         </p>
       </section>
 
