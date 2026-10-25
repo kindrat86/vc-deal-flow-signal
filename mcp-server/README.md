@@ -3,13 +3,13 @@
 [![npm version](https://img.shields.io/npm/v/@gitdealflow/mcp-signal.svg)](https://www.npmjs.com/package/@gitdealflow/mcp-signal)
 [![npm downloads](https://img.shields.io/npm/dm/@gitdealflow/mcp-signal.svg)](https://www.npmjs.com/package/@gitdealflow/mcp-signal)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Smithery](https://smithery.ai/badge/kindrat86/vc-deal-flow-signal)](https://smithery.ai/server/kindrat86/vc-deal-flow-signal)
+[![LightNow capabilities](https://lightnow.ai/badge/io.github.kindrat86/vc-deal-flow-signal)](https://lightnow.ai/servers/io.github.kindrat86/vc-deal-flow-signal)
 
 **MCP server for searching, shortlisting, comparing, and predicting startup engineering acceleration across 15 sectors.** Tracks commit velocity, contributor growth, and repository expansion for 350+ GitHub orgs. Built for VCs, angels, scouts, and technical operators who need transparent, citable deal-flow signals before they show up in traditional channels.
 
 > One-click install for Claude Desktop / Cursor / Cline / Continue via Smithery — verified, 98/100 quality score.
 >
-> [![Smithery install](https://smithery.ai/badge/kindrat86/vc-deal-flow-signal)](https://smithery.ai/server/kindrat86/vc-deal-flow-signal)
+> [Install via Smithery](https://smithery.ai/server/kindrat86/vc-deal-flow-signal)
 
 ![Claude querying VC Deal Flow Signal MCP server](https://raw.githubusercontent.com/kindrat86/vc-deal-flow-signal/main/marketing/launch-posts/mcp-demo-ph-30s.gif)
 
