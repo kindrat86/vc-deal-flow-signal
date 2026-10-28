@@ -136,7 +136,7 @@ const tiers: PricingTier[] = [
     ctaLabel: "Start Dashboard, €49/mo",
     ctaHref: "https://buy.stripe.com/4gMbJ07kTaJy7kqg6s0x20b",
     guarantee: "30-day Signal-or-It's-Free, full refund within 30 days",
-    promoCode: "PH50OFF",
+    promoCode: null,
   },
   {
     slug: "insider-circle",
@@ -164,7 +164,7 @@ const tiers: PricingTier[] = [
     ctaLabel: "Join the Insider Circle",
     ctaHref: "https://buy.stripe.com/bJeaEWfRpcRG6gm2fC0x20d",
     guarantee: "30-day Signal-or-It's-Free, full refund within 30 days",
-    promoCode: "PH50OFF",
+    promoCode: null,
   },
   {
     slug: "sharp-tier",
@@ -176,7 +176,7 @@ const tiers: PricingTier[] = [
     listPriceCadence: null,
     foundingMember: false,
     applicationGated: true,
-    capacity: "8 funds in 2026",
+    capacity: null,
     oneLine:
       "Everything in Insider Circle plus quarterly portfolio review call, custom thesis-aligned watchlist, white-labeled API endpoint, and methodology source-code access.",
     forWho:
@@ -190,7 +190,7 @@ const tiers: PricingTier[] = [
       "Data-room exports formatted for LP updates",
       "All future paid MCP tools included, no per-tool upcharge",
       "Direct access to the methodology source code (private repo invite)",
-      "Capped at 8 funds in 2026, applications reviewed within 48h",
+      "Application-gated, applications reviewed within 48h",
     ],
     ctaLabel: "Apply for Sharp Tier",
     ctaHref:
@@ -318,12 +318,7 @@ export async function GET() {
       preferredFormat: "email-only",
     },
     currency: "EUR",
-    promoCode: {
-      code: "PH50OFF",
-      effect: "50% off first 3 months",
-      appliesTo: ["dashboard-beta", "insider-circle"],
-      stacksWithFoundingMember: true,
-    },
+    promoCode: null,
     guarantee: {
       window: "30 days",
       label: "Signal-or-It's-Free",
@@ -381,7 +376,7 @@ export async function GET() {
       tier: "sharp-tier",
       applicationUrl:
         "mailto:signals@gitdealflow.com?subject=Sharp%20Tier%20Application%20%E2%80%94%20%5BYour%20Fund%5D",
-      capacityRemaining: "8 funds capped in 2026; applications reviewed within 48h",
+      capacityRemaining: "Application-gated; applications reviewed within 48h",
       humanPage: `${SITE}/enterprise`,
     },
     tiers,
