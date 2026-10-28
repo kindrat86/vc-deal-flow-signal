@@ -10,6 +10,7 @@ import {
   CHALLENGE_EMAILS,
   LAUNCH_EMAILS,
   LEAD_MAGNET_WELCOME_EMAILS,
+  withWelcome2026_11,
 } from "@/lib/emails";
 import { isExcluded } from "@/lib/excluded-emails";
 import { isNonceUsed, markNonceUsed } from "@/lib/runtime-cache";
@@ -281,15 +282,19 @@ export async function GET(request: Request) {
       ? CHALLENGE_EMAILS
       : cohortParam === "launch"
         ? LAUNCH_EMAILS
-        : route === "F"
-          ? SOAP_OPERA_F
-          : route === "T"
-            ? SOAP_OPERA_T
-            : route === "D"
-              ? SOAP_OPERA_D
-              : route === "I"
-                ? SOAP_OPERA_I
-                : SOAP_OPERA_EMAILS;
+        : // Default cohort: the approved 2026-11 welcome (Day 0, 1, 3, 5, 7)
+          // replaces the old Day 0-7 window; the tier's Day 8+ emails follow.
+          withWelcome2026_11(
+            route === "F"
+              ? SOAP_OPERA_F
+              : route === "T"
+                ? SOAP_OPERA_T
+                : route === "D"
+                  ? SOAP_OPERA_D
+                  : route === "I"
+                    ? SOAP_OPERA_I
+                    : SOAP_OPERA_EMAILS,
+          );
   // Resend's scheduled_at API rejects anything more than 30 days in the
   // future (returns 422). Emails within the window are scheduled now; emails
   // beyond it are stored as a deferred plan on the contact's `properties`

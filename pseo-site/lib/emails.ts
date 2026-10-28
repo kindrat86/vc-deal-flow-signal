@@ -2137,3 +2137,151 @@ export const SHARP_INDOCTRINATION_DRIP = [
 `, "sharp-indoc-3"),
   },
 ];
+
+/**
+ * Welcome sequence 2026-11 (approved by Maryan 2026-10-29, final text in
+ * /workspace/gdf-pricing/emails.md on the box, "Так" t360u). Five emails,
+ * Day 0, 1, 3, 5, 7 after verification. Wording is approved verbatim: do not
+ * edit copy here without a new approval.
+ *
+ * It replaces the Day 0-7 window of the default Soap Opera cohort (all four
+ * quiz tiers) for NEW verifications only (scheduled in app/api/verify). The
+ * Day 8+ Seinfeld emails and the tier-specific later overrides stay as they
+ * were. Links already carry utm_source=sequence, so this wrapper does NOT run
+ * tagEmailUrls (that would add a second utm_source).
+ */
+function wrapWelcome2026_11(preview: string, body: string): string {
+  return `<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
+<body style="margin:0;padding:0;background:#f8fafc;color:#1e293b;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+<div style="display:none;max-height:0;overflow:hidden;mso-hide:all;font-size:1px;line-height:1px;color:#f8fafc;opacity:0;">${preview}&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;</div>
+<div style="max-width:600px;margin:0 auto;padding:32px 24px;">
+<div style="margin-bottom:24px;"><strong style="color:#0ea5e9;font-size:14px;letter-spacing:1px;">VC DEAL FLOW SIGNAL</strong></div>
+<div style="font-size:16px;line-height:1.7;color:#1e293b;">
+${body}
+</div>
+<div style="margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;font-size:12px;color:#94a3b8;">
+<p>You're receiving this because you signed up at <a href="${SITE}" style="color:#0ea5e9;">gitdealflow.com</a></p>
+<p><a href="${SIGNALS}" style="color:#0ea5e9;">Browse Signals</a> · <a href="mailto:signals@gitdealflow.com" style="color:#0ea5e9;">Reply to unsubscribe</a></p>
+</div>
+</div>
+</body>
+</html>`;
+}
+
+export const WELCOME_2026_11_EMAILS = [
+  {
+    subject: "Why you get five names, not fifty",
+    delayMs: THIRTY_MIN,
+    html: wrapWelcome2026_11(
+      "And what to do with them before Friday.",
+      `
+<p>Hi,</p>
+<p>Quick one, since you signed up for the weekly five.</p>
+<p>Every Sunday I send you five names. To pick them, I read public GitHub activity across 350+ startup orgs and pick the five teams that are speeding up the most. Commits, new contributors, new repositories. Then I write one plain sentence on why each one is moving.</p>
+<p>Five is on purpose. Five is a number you can actually act on in a week. Fifty is a list you save and never open.</p>
+<p>So here is the one thing I would ask: pick one name from this week's five and open its GitHub page. Look at who joined in the last month. That is usually the first sign of money coming in or about to come in.</p>
+<p>Over the next few emails I will tell you why I built this, what went wrong, and what I now think the signal is good for. Including the part where it did not work.</p>
+<p>Tomorrow: the spreadsheet that started it.</p>
+<p style="margin:24px 0;"><a href="https://signals.gitdealflow.com/?utm_source=sequence&amp;utm_medium=email&amp;utm_campaign=soap-2026-11&amp;utm_content=e1" style="display:inline-block;background:#0284c7;color:#ffffff;font-weight:700;font-size:16px;padding:14px 22px;border-radius:10px;text-decoration:none;">Open this week's signals &rarr;</a></p>
+<p>The Data Nerd</p>
+`,
+    ),
+  },
+  {
+    subject: "The spreadsheet that started this",
+    delayMs: THIRTY_MIN + ONE_DAY,
+    html: wrapWelcome2026_11(
+      "Commit counts, round dates, and one awkward pattern.",
+      `
+<p>Hi,</p>
+<p>GitDealFlow started as a spreadsheet.</p>
+<p>On one side, startups that had announced a funding round. On the other, what their public GitHub looked like in the weeks before. Commit velocity, contributor count, new repos.</p>
+<p>The awkward pattern: in a lot of cases the engineering speed-up came first. Teams hire before they announce. New engineers push code before the press release goes out.</p>
+<p>I wrote it up properly. A panel of 219 startup-period observations across 55 startups, where the signal showed up 21 to 47 days before the public announcement. The method is public on SSRN, so anyone can check it.</p>
+<p>Then I hit the wall every data project hits. A pattern in old data is not the same as a call about the future. So I started publishing live picks, with dates, before anyone knew the outcome.</p>
+<p>Tomorrow I will show you how the first batch did. It is not the email you expect.</p>
+<p style="margin:24px 0;"><a href="https://signals.gitdealflow.com/methodology?utm_source=sequence&amp;utm_medium=email&amp;utm_campaign=soap-2026-11&amp;utm_content=e2" style="display:inline-block;background:#0284c7;color:#ffffff;font-weight:700;font-size:16px;padding:14px 22px;border-radius:10px;text-decoration:none;">Read the methodology &rarr;</a></p>
+<p>The Data Nerd</p>
+`,
+    ),
+  },
+  {
+    subject: "0 out of 20",
+    delayMs: THIRTY_MIN + 3 * ONE_DAY,
+    html: wrapWelcome2026_11(
+      "Two public batches, graded. I published both anyway.",
+      `
+<p>Hi,</p>
+<p>In May and again in August I published ten named startups with the strongest acceleration that week. Dated, public, graded after 60 days against public funding news.</p>
+<p>Result: two batches, twenty named startups, zero announced rounds inside 60 days.</p>
+<p>I put that on the public ledger, next to each pick, with the link I checked. You can see it at the link below.</p>
+<p>Here is what it taught me. The signal is not "this company will raise in 60 days". Rounds close when they close, and many are never announced. What the signal does well is narrower and more useful: it tells you which technical teams are building fast right now, before that is common knowledge. That is the moment a founder still answers a cold email from an angel.</p>
+<p>So I stopped selling it as a crystal ball and started treating it as a sourcing list. Who is worth a first conversation this month, with the evidence next to each name.</p>
+<p>That is exactly what the Pre-Round Report is. More on that in two days.</p>
+<p style="margin:24px 0;"><a href="https://signals.gitdealflow.com/predicted?utm_source=sequence&amp;utm_medium=email&amp;utm_campaign=soap-2026-11&amp;utm_content=e3" style="display:inline-block;background:#0284c7;color:#ffffff;font-weight:700;font-size:16px;padding:14px 22px;border-radius:10px;text-decoration:none;">See the public ledger, misses included &rarr;</a></p>
+<p>The Data Nerd</p>
+`,
+    ),
+  },
+  {
+    subject: "The part nobody asks about",
+    delayMs: THIRTY_MIN + 5 * ONE_DAY,
+    html: wrapWelcome2026_11(
+      "Why the evidence matters more than the name.",
+      `
+<p>Hi,</p>
+<p>When people see a list of startups, they ask "which ones will raise?"</p>
+<p>The better question is "what do I say in my first email?"</p>
+<p>That is the hidden benefit of the evidence behind each name. If you write to a founder and say something like "your contributor count went from 4 to 9 since September and you shipped two new repos", you are not one more investor asking for the deck. You are the one who noticed.</p>
+<p>The Pre-Round Report gives you that for 25 startups this month:</p>
+<ul>
+<li>signal type, 14-day commit-velocity change and contributor growth for each</li>
+<li>last public round and stage</li>
+<li>GitHub, website and public founder links</li>
+<li>a short PDF to read and a CSV for your CRM</li>
+</ul>
+<p>All sectors, or only the one you pick at checkout. Delivered within 48 hours. EUR 49, paid once.</p>
+<p>If it does not surface a startup you find genuinely interesting, reply REFUND within 30 days and you get the full EUR 49 back.</p>
+<p style="margin:24px 0;"><a href="https://signals.gitdealflow.com/pre-round?utm_source=sequence&amp;utm_medium=email&amp;utm_campaign=soap-2026-11&amp;utm_content=e4" style="display:inline-block;background:#0284c7;color:#ffffff;font-weight:700;font-size:16px;padding:14px 22px;border-radius:10px;text-decoration:none;">Get the Pre-Round Report, EUR 49 &rarr;</a></p>
+<p>The Data Nerd</p>
+`,
+    ),
+  },
+  {
+    subject: "Five a week, 25 a month, or all of them",
+    delayMs: THIRTY_MIN + 7 * ONE_DAY,
+    html: wrapWelcome2026_11(
+      "Pick the one that matches how often you source.",
+      `
+<p>Hi,</p>
+<p>Last email in this series. Here is the whole thing in one place, so you can pick what fits.</p>
+<p>Five a week, free. You already have this. If one first conversation a month is your pace, stay here. That is a fine choice.</p>
+<p>25 a month, EUR 49 once. The Pre-Round Report. The strongest pre-round patterns this month with the evidence and links for each name. Good if you want a proper shortlist without a subscription.</p>
+<p>All of them, every week, EUR 49 a month. The Dashboard. The full ranked field across 15 sectors, refreshed weekly, with sector filters, five-quarter history and watchlists. Same price as one Report, but every week instead of once. If you buy the Report first and upgrade within 14 days, the EUR 49 is credited in full, so the first Dashboard month costs nothing extra. There is a yearly option at EUR 490, two months free.</p>
+<p>Both paid options carry the same 30-day Signal-or-It's-Free guarantee.</p>
+<p>No countdown and no discount code. The prices stay as they are. Reply with your sector if you want me to check it is well covered before you buy.</p>
+<p style="margin:24px 0;"><a href="https://signals.gitdealflow.com/pricing?utm_source=sequence&amp;utm_medium=email&amp;utm_campaign=soap-2026-11&amp;utm_content=e5" style="display:inline-block;background:#0284c7;color:#ffffff;font-weight:700;font-size:16px;padding:14px 22px;border-radius:10px;text-decoration:none;">Compare the four steps &rarr;</a></p>
+<p>The Data Nerd</p>
+<p>P.S. Whatever you pick, the weekly five keep coming.</p>
+`,
+    ),
+  },
+];
+
+/** Last old Soap Opera email that the new welcome replaces (old Day 7). */
+const WELCOME_2026_11_REPLACES_UP_TO_MS = THIRTY_MIN + 7 * ONE_DAY;
+
+/**
+ * Default-cohort schedule for a new verification: the approved 5-email
+ * welcome first, then the existing tier sequence from Day 8 on.
+ */
+export function withWelcome2026_11(
+  tierSequence: readonly { subject: string; delayMs: number; html: string }[],
+): { subject: string; delayMs: number; html: string }[] {
+  return [
+    ...WELCOME_2026_11_EMAILS,
+    ...tierSequence.filter((e) => e.delayMs > WELCOME_2026_11_REPLACES_UP_TO_MS),
+  ];
+}
