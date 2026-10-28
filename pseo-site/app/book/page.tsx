@@ -405,7 +405,7 @@ export default function BookPage() {
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
             One email, the PDF and EPUB downloads land in your inbox in about
-            ninety seconds. You also get the free Monday-morning Signal Digest
+            ninety seconds. You also get the free Sunday Signal Digest
             with the top five firings across the universe of tracked
             organizations. Unsubscribe in one click; your email is never sold.
           </p>

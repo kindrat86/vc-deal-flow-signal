@@ -161,7 +161,7 @@ const OTO_LADDER = [
     rung: "Rung 5",
     label: "Sharp Tier",
     price: "€4,970 / yr",
-    purpose: "Application-gated. White-labeled API, custom watchlist. 8-fund cap.",
+    purpose: "Application-gated. White-labeled API, custom watchlist.",
     href: "/apply",
     tone: "indigo",
   },
@@ -169,7 +169,7 @@ const OTO_LADDER = [
     rung: "Rung 6",
     label: "Methodology Partnership",
     price: "€14,997 / yr",
-    purpose: "Done-with-you. Custom regression on your fund's portfolio. 5-fund cap.",
+    purpose: "Done-with-you. Custom regression on your fund's portfolio.",
     href: "/methodology-partnership",
     tone: "violet",
   },
@@ -177,7 +177,7 @@ const OTO_LADDER = [
     rung: "Rung 7",
     label: "The Vault",
     price: "€49,997 / yr",
-    purpose: "Methodology source license + 72h signal head-start. 2-fund cap.",
+    purpose: "Methodology source license + 72h signal head-start.",
     href: "/vault",
     tone: "amber",
   },
@@ -884,7 +884,7 @@ export default function FirstLookPage() {
             (private Telegram + spike alerts + monthly briefing) at{" "}
             <strong className="text-gray-100">€177 for the first month</strong>{" "}
 €20 off the standard €197. The invite expires when the next
-            Monday digest goes out, and never re-appears at this price.
+            Sunday digest goes out, and never re-appears at this price.
             Decline it and your €7 First Look Pass still works exactly the
             same way.
           </p>
@@ -1000,7 +1000,7 @@ export default function FirstLookPage() {
             >
               Acceleration Watch
             </a>{" "}
-five startups every Monday, sector-tagged, no card.
+five startups every Sunday, sector-tagged, no card.
           </p>
         </aside>
 

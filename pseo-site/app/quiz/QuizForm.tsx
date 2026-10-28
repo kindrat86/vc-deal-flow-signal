@@ -90,7 +90,7 @@ const RESULTS = {
   F: {
     title: "Start with the free Acceleration Watch.",
     eyebrow: "Free tier · €0",
-    body: "You'd burn money on a paid subscription right now. The free Monday digest gives you the top 5 ranked startups every week, that's enough to test whether the signal matches your taste before you commit to a tool.",
+    body: "You'd burn money on a paid subscription right now. The free Sunday digest gives you the top 5 ranked startups every week, that's enough to test whether the signal matches your taste before you commit to a tool.",
     cta: { label: "Subscribe to the Acceleration Watch, Free", href: "https://gitdealflow.com/#signup", external: true },
     secondary: { label: "Or skim the methodology first", href: "/methodology" },
   },
@@ -175,7 +175,7 @@ const ARCHETYPE_BLURB: Record<ArchetypeId, string> = {
   "solo-angel":
     "Personal checks, engineer-buying-behavior. Free Sunday digest is the on-ramp; Dashboard is the workflow tier; Insider is for when cadence ramps past 20 checks/year.",
   "fund-gp":
-    "Monday memo, LP-update defensibility. Insider gives you the 24-hour lead; Sharp (capped 8 funds) gives you the white-labeled API and methodology source.",
+    "Monday memo, LP-update defensibility. Insider gives you the 24-hour lead; Sharp (application-gated) gives you the white-labeled API and methodology source.",
   "family-office":
     "Diligence cycle, compliance review, annual contract. Sector Sweep is the entry; Methodology Partnership is recurring; Vault is custom co-development.",
 };

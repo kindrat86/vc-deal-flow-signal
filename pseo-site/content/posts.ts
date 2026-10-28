@@ -985,7 +985,7 @@ The full automated screening loop runs in a few hours per week of compute. The h
 
 The signal is only useful if it lands in the actual investment process. Integration with existing workflow tools is where many promising data products fail in deployment. Three integration patterns work in practice.
 
-The weekly digest pattern is the simplest. The screening pipeline emails a Monday-morning report directly to partners and analysts, formatted for skimming. Each entry has a one-line signal summary, a magnitude, and a one-click link to a deeper view. This pattern requires no infrastructure on the fund side and works well for small funds and angels. Its limitation is that the digest exists outside the fund's CRM and pipeline workflows; tracking which leads converted requires manual logging.
+The weekly digest pattern is the simplest. The screening pipeline emails a Sunday report directly to partners and analysts, formatted for skimming. Each entry has a one-line signal summary, a magnitude, and a one-click link to a deeper view. This pattern requires no infrastructure on the fund side and works well for small funds and angels. Its limitation is that the digest exists outside the fund's CRM and pipeline workflows; tracking which leads converted requires manual logging.
 
 The CRM enrichment pattern extends the screening output into the fund's existing CRM. New signals appear as tagged opportunities in Affinity or HubSpot with the signal type and magnitude as fields. Existing pipeline companies receive enrichment events when their engineering acceleration changes meaningfully. This pattern requires API integration but produces tightly closed loops, every signal lands in the same surface where decisions are tracked, and conversion data flows naturally back to the screening model.
 
@@ -1085,11 +1085,11 @@ The metric will not remain unique or proprietary indefinitely. Its value is in b
 
 The minimum viable starting workflow for an individual investor or small fund is short.
 
-Begin by subscribing to the free weekly Signal Report at gitdealflow.com. The Monday digest provides the top five breakout startups with the signal type, magnitude, and direct GitHub link for each. This requires zero infrastructure and zero engineering effort and provides exposure to the framework's output.
+Begin by subscribing to the free weekly Signal Report at gitdealflow.com. The Sunday digest provides the top five breakout startups with the signal type, magnitude, and direct GitHub link for each. This requires zero infrastructure and zero engineering effort and provides exposure to the framework's output.
 
 In parallel, build a starter target list. Pick two or three sectors of focus, identify 50 to 100 startups whose GitHub organizations are publicly known, and bookmark their pages. Use the GitHub interface's commit activity graphs as a manual replacement for the pipeline; while less rigorous than a programmatic version, the visual pattern of acceleration is recognizable to any engineer. This calibrates the eye.
 
-After two to four weeks of working from the digest plus manual cross-references, the investor has enough context to use the Dashboard productively. The EUR 49/month Dashboard provides ranked rankings across all 350+ organizations, filterable by sector, stage, and geography, with the four core metrics displayed for each company. The screening time per Monday drops from 30 minutes of digest reading to 10 minutes of filtered ranking review.
+After two to four weeks of working from the digest plus manual cross-references, the investor has enough context to use the Dashboard productively. The EUR 49/month Dashboard provides ranked rankings across all 350+ organizations, filterable by sector, stage, and geography, with the four core metrics displayed for each company. The screening time per Sunday drops from 30 minutes of digest reading to 10 minutes of filtered ranking review.
 
 For funds with engineering capacity, the API or MCP server (npx -y @gitdealflow/mcp-signal) provides direct programmatic access. The API can be wired into the fund's existing CRM or data warehouse for automated CRM enrichment, weekly reporting, and custom alert workflows.
 
@@ -2115,7 +2115,7 @@ For a comprehensive treatment of pitfalls and the diligence checks that catch th
 
 ## How investors use the metric
 
-The pragmatic use of engineering acceleration is a weekly digest. Every Monday, an investor reviews the top-ranked breakouts in their sectors of interest, cross-references against their CRM for any prior contact, prioritizes unflagged ones for a 30-minute desk dive, and tags the rest for monitoring. Total time investment is roughly 30 minutes per week, which is small enough that the metric is sustainable as part of a normal sourcing workflow.
+The pragmatic use of engineering acceleration is a weekly digest. Every Sunday, an investor reviews the top-ranked breakouts in their sectors of interest, cross-references against their CRM for any prior contact, prioritizes unflagged ones for a 30-minute desk dive, and tags the rest for monitoring. Total time investment is roughly 30 minutes per week, which is small enough that the metric is sustainable as part of a normal sourcing workflow.
 
 The signal complements rather than replaces existing sourcing channels. Founder networks, demo days, and accelerator pipelines stay intact; engineering acceleration adds an external, quantitative top-of-funnel feed that is hard to source any other way. The most successful fund deployments treat the signal as a conversation prompt, not a buying decision: the first outreach acknowledges the team's pace, asks what is driving it, and is open to whatever the founder wants to share.
 
@@ -2497,7 +2497,7 @@ Search for the company on Hacker News, Twitter, and LinkedIn. Check their career
 
 For startups that pass all checks, add them to your deal tracking system. Include the engineering data: velocity change, signal type, contributor count, and the date you first noticed them. This creates a record of your timing advantage.
 
-Subscribe to the [Signal Digest](https://gitdealflow.com/#signup) to get the highlights delivered to your inbox every Monday.`,
+Subscribe to the [Signal Digest](https://gitdealflow.com/#signup) to get the highlights delivered to your inbox every Sunday.`,
   },
   {
     slug: "cybersecurity-startup-signals",
@@ -2730,7 +2730,7 @@ I am publishing this in public on purpose. Backtests are easy to fake. Live forw
 
 If you are a VC, scout, or angel:
 
-1. Subscribe to the free weekly digest at [gitdealflow.com](https://gitdealflow.com/#signup). Five breakouts every Monday morning, in your inbox before any other source has them.
+1. Subscribe to the free weekly digest at [gitdealflow.com](https://gitdealflow.com/#signup). Five breakouts every Sunday, in your inbox before any other source has them.
 2. Bookmark the [Q3 2026 watchlist](/predicted). When something on the list raises, you will know we called it.
 3. Use the [/predict tool](/predict) before every founder meeting. Two seconds of GitHub-signal context can save a 30-minute call with a company whose engineering momentum is already cooling.
 

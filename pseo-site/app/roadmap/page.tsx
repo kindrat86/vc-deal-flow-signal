@@ -54,7 +54,7 @@ const ON_DECK = [
   { title: "Long-Form Video Sales Letter (LFVSL)", desc: "Voiceover-only walkthrough of /walkthrough. Anonymity-rule preserves: synthetic narration, no founder face." },
   { title: "Public scoreboard for past Acceleration Watch picks", desc: "Quarterly grading at 60d / 90d. Re-confirms the one-shot proof on rolling cadence." },
   { title: "Insider Circle Telegram (private group)", desc: "Live for €197/mo subscribers. Spike alerts, monthly briefing, portfolio overlap." },
-  { title: "Custom Sector Sweep, recurring Q4 rhythm", desc: "End-of-quarter deep dives on requested sectors, capped at 8 per quarter." },
+  { title: "Custom Sector Sweep, recurring Q4 rhythm", desc: "End-of-quarter deep dives on requested sectors." },
 ] as const;
 
 const CONSIDERING = [

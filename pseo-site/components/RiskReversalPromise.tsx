@@ -82,7 +82,7 @@ const SPEC: Record<RiskReversalTier, PromiseSpec> = {
     process:
       "Reply REFUND or pick up the phone on the next quarterly call. Full payment back, methodology source code stays in your repo (it's MIT-licensed, not gated).",
     receipt:
-      "Application-gated, capped at 8 funds in 2026. The cap exists so the guarantee can stay this loose, we can only refund what we can serve.",
+      "Application-gated, reviewed by the founder within 48 hours.",
     windowDays: 30,
   },
   "sector-sweep": {

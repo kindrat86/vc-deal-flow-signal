@@ -713,7 +713,7 @@ using public repository-velocity data as a leading indicator
               {
                 time: "09:14",
                 scene:
-                  "Coffee, laptop open. Sunday’s digest from this past weekend is still in the tab to the left, five names, sector-tagged. The third one, an AI-infra org out of Berlin, you opened on Monday because it matched the thesis you keep pulling toward. You spent fifteen minutes on their commit graph and sent the founder a three-line email. There’s a reply at the top of your inbox now: short, friendly, asks if you want to see the deck.",
+                  "Coffee, laptop open. Sunday’s digest from this past weekend is still in the tab to the left, five names, sector-tagged. The third one, an AI-infra org out of Berlin, you opened on Sunday because it matched the thesis you keep pulling toward. You spent fifteen minutes on their commit graph and sent the founder a three-line email. There’s a reply at the top of your inbox now: short, friendly, asks if you want to see the deck.",
               },
               {
                 time: "11:30",
@@ -911,7 +911,7 @@ using public repository-velocity data as a leading indicator
               <span className="text-sky-400 font-bold shrink-0">3.</span>
               <span>
                 If you are a developer who only occasionally writes a check,
-                stay on the free digest forever. Five startups every Monday is
+                stay on the free digest forever. Five startups every Sunday is
                 enough for a part-time investor. Upgrade only when filtering
                 the full universe pays for itself.
               </span>
@@ -1146,7 +1146,7 @@ delivers the buyer into the room they're about to step
             Lock €49/mo. Forever. Before the launch hike to €49.
           </h2>
           <p className="text-gray-300 text-base leading-relaxed max-w-2xl mx-auto">
-            One click. Stripe checkout. The next Monday digest, the full
+            One click. Stripe checkout. The next Sunday digest, the full
             dashboard, and the SSRN panel ship to you inside ten minutes. The
             30-day guarantee covers everything.
           </p>
@@ -1231,7 +1231,7 @@ credited toward Dashboard if you upgrade in 14 days.
             </li>
             <li className="flex gap-3">
               <span className="text-amber-400 shrink-0 font-bold">→</span>
-              <span>One click. Stripe. The Monday digest, the dashboard, and the SSRN paper land in your inbox inside ten minutes.</span>
+              <span>One click. Stripe. The Sunday digest, the dashboard, and the SSRN paper land in your inbox inside ten minutes.</span>
             </li>
           </ul>
           <div className="border-t border-amber-700/30 pt-4 mt-4 flex items-baseline justify-between text-base">

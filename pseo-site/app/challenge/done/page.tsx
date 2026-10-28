@@ -74,7 +74,7 @@ const RUNGS = [
       "Three pre-Crunchbase breakouts named + thesis-tagged",
       "Raw CSV (every org × every metric)",
       "Async Q&A with the methodology team for 30 days post-delivery",
-      "Capped at 8 per quarter, bandwidth, not artificial scarcity",
+      "Delivery date confirmed at checkout",
     ],
     standaloneValue: 4970,
     cta: "Book a Sector Sweep",

@@ -3,7 +3,7 @@
  *
  * Brunson DotCom Secret #8, Daily Seinfeld Sequence. The Sunday digest
  * trains the audience that Monday is the rhythm; the daily Seinfeld keeps
- * the list warm between Mondays without repeating the digest. Each day has
+ * the list warm between Sundays without repeating the digest. Each day has
  * a single editorial frame; today's #1 mover from `getTopMoversThisWeek(1)`
  * anchors the email so it's never generic, never theoretical.
  *

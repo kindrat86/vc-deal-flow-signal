@@ -92,7 +92,7 @@ export default function BookThanksPage() {
             One-time offer · for book readers only
           </p>
           <h2 className="text-2xl font-bold text-gray-100 leading-tight">
-            Skip the workflow. Get the ranked list every Monday.
+            Skip the workflow. Get the ranked list every Sunday.
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
             You have the methodology. The Dashboard is the methodology, run

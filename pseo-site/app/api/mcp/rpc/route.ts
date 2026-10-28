@@ -796,7 +796,7 @@ const PROMPTS = [
   {
     name: "weekly_digest",
     description:
-      "Monday-morning Signal Digest from the current top-20 trending startups.",
+      "Sunday Signal Digest from the current top-20 trending startups.",
     arguments: [],
   },
   {
@@ -1955,7 +1955,7 @@ function handlePromptGet(id: JsonRpcId | undefined, params: unknown) {
   switch (name) {
     case "weekly_digest":
       messageText = [
-        "You are writing a Monday-morning Signal Digest for venture investors.",
+        "You are writing a Sunday Signal Digest for venture investors.",
         "",
         "Step 1: Call the `get_trending_startups` tool to fetch the current top 20.",
         "Step 2: Open with three plain-English sentences naming the dominant pattern of the week.",

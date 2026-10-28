@@ -774,7 +774,7 @@ export const CHALLENGE_DAYS: readonly ChallengeDay[] = [
     title: "The Sunday digest as continuous practice",
     oneLine: "After Day 30, the rhythm continues, five orgs every Sunday, one composite per week.",
     whyItMatters:
-      "30-day challenges produce muscle that fades unless a continuous practice replaces them. Five new orgs every Sunday, scored against the same composite, keeps the framework alive without requiring active 25-min Monday blocks. The Sunday digest is the gymnastics-bar equivalent of grip strength.",
+      "30-day challenges produce muscle that fades unless a continuous practice replaces them. Five new orgs every Sunday, scored against the same composite, keeps the framework alive without requiring active 25-min Sunday blocks. The Sunday digest is the gymnastics-bar equivalent of grip strength.",
     procedure: [
       "Subscribe to the free Sunday digest if you aren't already (it's the same address you got these emails from).",
       "Each Sunday: open the digest, score the top 1 with the full composite, glance at the others.",

@@ -236,8 +236,8 @@ export default function NowPage() {
             What every week looks like, week after week.
           </h2>
           <p className="text-gray-400 text-sm leading-relaxed">
-            The cadence is the character. If a Monday digest doesn&rsquo;t
-            arrive, something broke; if every Monday digest is on time for
+            The cadence is the character. If a Sunday digest doesn&rsquo;t
+            arrive, something broke; if every Sunday digest is on time for
             twelve months, the rhythm is real.
           </p>
           <dl className="space-y-2 pt-2">

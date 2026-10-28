@@ -2660,7 +2660,7 @@ Restart Claude Desktop. The six tools (get_trending_startups, search_startups_by
 
 **Install in Claude Code.** Edit \`.claude/mcp.json\` in your project root with the same JSON. The CLI assistant has access to the tools immediately.
 
-**Sample workflow, weekly digest review.** Open Claude Desktop on Monday. Ask: 'What are this week's top 5 trending technical startups?' Claude calls \`get_trending_startups\` and returns the list. Follow up: 'Tell me more about the AI/ML ones.' Claude filters down. Follow up: 'How does $org's commit velocity compare to the AI/ML cluster median?' Claude calls \`get_startup_signal\` and returns a comparison. The whole conversation is conversational; the data is live.
+**Sample workflow, weekly digest review.** Open Claude Desktop on Sunday. Ask: 'What are this week's top 5 trending technical startups?' Claude calls \`get_trending_startups\` and returns the list. Follow up: 'Tell me more about the AI/ML ones.' Claude filters down. Follow up: 'How does $org's commit velocity compare to the AI/ML cluster median?' Claude calls \`get_startup_signal\` and returns a comparison. The whole conversation is conversational; the data is live.
 
 **Sample workflow, live diligence on inbound.** A founder pitches you. Open Cursor and ask: 'Pull engineering metrics for $founder_org and tell me how it compares to our sector benchmark.' Cursor calls the tools and returns a structured answer in 15 seconds. Skip the manual GitHub dashboard work.
 
@@ -3658,7 +3658,7 @@ It compounds without conflict. There is no conflict with holding a junior role a
 
 **The weekly ritual that makes it work.** Monday: trending feed, triage 15 minutes, shortlist 3-5 names. For each: free database check, one signal pull, log in the sheet with a next-touch date. Friday: recheck the watchlist for acceleration. Total tool cost: zero. When deal flow volume or LP reporting outgrows this, the upgrade path on the comparison pages states every price plainly, including this site's own €49/month dashboard tier.
 
-**The weekly signal report is the anchor of the discovery layer.** A free email, no credit card required, surfaces five breakout startups every Monday, giving a solo angel a fixed cadence to triage rather than an open-ended crawl of the whole market. Paired with the same site's public dataset, which tracks 350+ startups across 15 sectors and updates weekly, the Monday email becomes a starting point that the underlying tools can then be pointed at for depth.
+**The weekly signal report is the anchor of the discovery layer.** A free email, no credit card required, surfaces five breakout startups every Sunday, giving a solo angel a fixed cadence to triage rather than an open-ended crawl of the whole market. Paired with the same site's public dataset, which tracks 350+ startups across 15 sectors and updates weekly, the Sunday email becomes a starting point that the underlying tools can then be pointed at for depth.
 
 **The raw data is free to read and script.** The public endpoints, \`signals.json\`, \`signals.csv\`, and \`dataset.jsonl\`, are free for personal and editorial use with attribution, so the same numbers behind the dashboard can be pulled into a notebook, a sheet, or a custom script without a paid account. The MCP server exposes the equivalent six read-only tools, trending startups, sector search, single-startup signal, dataset summary, scout receipts, and methodology, with no API key and no rate limit beyond GitHub's own.
 

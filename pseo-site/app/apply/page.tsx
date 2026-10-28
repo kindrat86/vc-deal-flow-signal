@@ -12,14 +12,14 @@ import { withEditorialOverride } from "@/lib/metadata";
 export const dynamic = "force-static";
 
 export const metadata: Metadata = withEditorialOverride({
-  title: "Apply for the Sharp Tier, €497/mo, capped at 8 funds in 2026",
+  title: "Apply for the Sharp Tier, €497/mo, application reviewed in 48 hours",
   description:
-    "Application-gated tier for active funds and syndicates. €497/mo, white-labeled API, custom watchlists, methodology source, quarterly review call. Capped at 8 funds in 2026, application reviewed within 48 hours.",
+    "Application-gated tier for active funds and syndicates. €497/mo, white-labeled API, custom watchlists, methodology source, quarterly review call. Application reviewed within 48 hours.",
   alternates: { canonical: "/apply" },
   openGraph: {
     title: "Apply for the Sharp Tier",
     description:
-      "€497/mo. Capped at 8 funds in 2026. Application reviewed within 48 hours.",
+      "€497/mo. Application reviewed within 48 hours.",
     url: "https://signals.gitdealflow.com/apply",
     type: "article",
   },
@@ -61,7 +61,7 @@ const STACK = [
 const FAQS = [
   {
     q: "Why is this application-gated and not just paid?",
-    a: "Two reasons. One, the quarterly review call is real founder time. Hard cap at 8 funds in 2026 ensures every Sharp-tier fund gets meaningful attention. Two, the white-labeled API + methodology source mean we know what your fund is doing with the data. We turn down anyone whose use case doesn't fit the read-only investor-side framing of this product.",
+    a: "Two reasons. One, the quarterly review call is real founder time. Reviewing every application by hand keeps that time for funds where the fit is real. Two, the white-labeled API + methodology source mean we know what your fund is doing with the data. We turn down anyone whose use case doesn't fit the read-only investor-side framing of this product.",
   },
   {
     q: "What's the response time after applying?",
@@ -86,7 +86,7 @@ export default function ApplyPage() {
         "@id": "https://signals.gitdealflow.com/apply#service",
         name: "Sharp Tier, VC Deal Flow Signal",
         description:
-          "Application-gated tier for active funds and syndicates. €497/mo. Capped at 8 funds in 2026.",
+          "Application-gated tier for active funds and syndicates. €497/mo. Application reviewed within 48 hours.",
         provider: {
           "@type": "Organization",
           "@id": "https://gitdealflow.com/#organization",
@@ -143,7 +143,7 @@ export default function ApplyPage() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
         <header className="space-y-4">
           <p className="text-purple-300 text-xs font-medium uppercase tracking-wider">
-            Sharp Tier · €497/mo · Application-gated · Cap 8 funds in 2026
+            Sharp Tier · €497/mo · Application-gated · 48h review
           </p>
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight">
             For funds that want{" "}
@@ -151,8 +151,7 @@ export default function ApplyPage() {
           </h1>
           <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
             White-labeled API, custom watchlists, methodology source, and a
-            60-minute quarterly review call with the founder. Capped at 8
-            funds in 2026 because the call time is real. Application
+            60-minute quarterly review call with the founder. Application
             reviewed within 48 business hours.
           </p>
           <p className="text-gray-400 text-sm leading-relaxed">
@@ -172,7 +171,7 @@ export default function ApplyPage() {
         </header>
 
         <TrialClose tone="violet">
-          Capped at 8 funds, application-gated, founder reviews in 48 hours.
+          Application-gated, founder reviews in 48 hours.
           If the gate itself is the trust signal, does that already tell
           you whether the room is the room you want to be in?
         </TrialClose>

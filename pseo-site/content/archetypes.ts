@@ -72,7 +72,7 @@ export const ARCHETYPES: readonly Archetype[] = [
     jobs: [
       "Show me one company a week I’d otherwise miss.",
       "Confirm my hunch that a startup I’m circling is shipping faster than its peers.",
-      "Give me a Sunday digest dense enough that I don’t need to scroll Twitter on Monday.",
+      "Give me a Sunday digest dense enough that I don’t need to scroll Twitter on Sunday.",
     ],
     entryTier: {
       name: "Free Acceleration Watch",
@@ -126,7 +126,7 @@ export const ARCHETYPES: readonly Archetype[] = [
     },
     rampTier: {
       name: "Sharp Tier",
-      price: "€497/mo (capped 8 funds)",
+      price: "€497/mo (application-gated)",
       href: "/apply",
     },
     entryCta: {
@@ -140,7 +140,7 @@ export const ARCHETYPES: readonly Archetype[] = [
     whatBuys: [
       "A 24-hour lead window over the free digest, your analyst sees it before consensus does.",
       "White-labeled API + custom watchlists; methodology source under CC BY 4.0 so an LP can audit it.",
-      "Quarterly review call with the methodology lead. Capped 8 funds means scarcity is real, not theatre.",
+      "Quarterly review call with the methodology lead. Application-gated, reviewed by the founder.",
     ],
     notForYouIf:
       "You’re a Series-B+ partner with a six-figure data budget, Harmonic, Tracxn, and Affinity are built for full-coverage screening. We’re a leading-indicator overlay, not a replacement.",

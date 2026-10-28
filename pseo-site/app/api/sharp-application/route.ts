@@ -7,7 +7,7 @@ import { computeSharpReplyDeadline, normalizeSharpApplication } from "@/lib/shar
 /**
  * /api/sharp-application, Russell audit fix 2026-05-05 (DotCom Secrets §23).
  *
- * Receives the Sharp Tier (€497/mo, capped 8 funds/yr) application from
+ * Receives the Sharp Tier (€497/mo, application-gated) application from
  * landing/apply/index.html, validates, and emails it to signals@gitdealflow.com
  * via Resend so the founder can review + reply within 48h.
  *
@@ -62,7 +62,7 @@ function applicationEmailHtml(fields: {
 <div style="max-width:640px;margin:0 auto;padding:24px;">
 <div style="background:#fef9c3;border-left:4px solid #facc15;padding:16px 20px;margin-bottom:24px;">
 <strong style="color:#854d0e;font-size:13px;letter-spacing:1px;text-transform:uppercase;">Sharp Tier Application</strong>
-<p style="margin:4px 0 0;font-size:14px;color:#713f12;">€497/mo &middot; 8-fund cap &middot; 48-hour response promised</p>
+<p style="margin:4px 0 0;font-size:14px;color:#713f12;">€497/mo &middot; 48-hour response promised</p>
 </div>
 <table style="width:100%;border-collapse:collapse;font-size:14px;">
 <tr><td style="padding:8px 0;font-weight:600;width:180px;color:#475569;">Fund / syndicate</td><td style="padding:8px 0;">${f.fund_name}</td></tr>

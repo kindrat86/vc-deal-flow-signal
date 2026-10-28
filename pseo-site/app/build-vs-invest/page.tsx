@@ -340,7 +340,7 @@ export default function BuildVsInvestIndexPage() {
             The same data, weekly
           </p>
           <h2 className="text-xl sm:text-2xl font-bold text-gray-100">
-            One Monday email. Five sectors. Five movers.
+            One Sunday email. Five sectors. Five movers.
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
             The 2×2 above is the strategic view. The weekly Signal Report is
@@ -352,7 +352,7 @@ export default function BuildVsInvestIndexPage() {
               href="https://gitdealflow.com/#signup"
               className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-signal-500 hover:bg-signal-400 text-slate-950 font-bold text-sm transition-colors"
             >
-              Get the Monday email →
+              Get the Sunday email →
             </Link>
             <Link
               href="/pricing"

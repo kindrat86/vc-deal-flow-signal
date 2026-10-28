@@ -78,7 +78,7 @@ const integrations: Integration[] = [
   {
     slug: "email",
     name: "Weekly Email",
-    tagline: "Five breakout startups in your inbox every Monday",
+    tagline: "Five breakout startups in your inbox every Sunday",
     description:
       "The free Signal Report: one email per week, five startups ranked by GitHub engineering acceleration, with the signal type (commit spike, contributor growth, infrastructure buildout) and a direct link to each organisation. No ads, no tracker pixels beyond basic open rates.",
     status: "live",
@@ -411,7 +411,7 @@ export default function IntegrationsPage() {
           </p>
           <p className="text-gray-300 text-sm leading-relaxed mb-4">
             You don&apos;t need to touch code to get the signal. Have it land
-            where you already work: your inbox each Monday, a Telegram channel,
+            where you already work: your inbox each Sunday, a Telegram channel,
             your feed reader, or piped straight into Affinity, HubSpot, or
             Salesforce. Pick a lane and you&apos;re done.
           </p>

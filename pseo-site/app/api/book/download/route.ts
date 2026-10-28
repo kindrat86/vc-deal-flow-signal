@@ -78,7 +78,7 @@ function downloadEmailHtml(email: string): string {
 
 <p>If you only have one evening, the recommended path is the Introduction + Methodology + Replication Appendix, about ninety minutes total, which gives you the full computational toolkit. The seven signal chapters can wait for a longer sitting.</p>
 
-<p>Tomorrow morning at nine, I&rsquo;ll send a short follow-up, the most recent Series A announcement that the methodology would have caught, walked signal-by-signal. After that you&rsquo;ll be on the regular Monday-morning Signal Digest with the top five firings of the week.</p>
+<p>Tomorrow morning at nine, I&rsquo;ll send a short follow-up, the most recent Series A announcement that the methodology would have caught, walked signal-by-signal. After that you&rsquo;ll be on the regular Sunday Signal Digest with the top five firings of the week.</p>
 
 <p>If anything in the book breaks for you, a threshold that doesn&rsquo;t reproduce, a script that errors, a chapter that contradicts itself, reply to this email. I read every message and the next edition will fold in your correction.</p>
 
@@ -90,7 +90,7 @@ function downloadEmailHtml(email: string): string {
 </div>
 <div style="margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;font-size:12px;color:#94a3b8;">
 <p>You requested this download at <a href="${SITE_URL}/book" style="color:#0ea5e9;">${SITE_URL}/book</a> with the email ${escapeHtml(email)}.</p>
-<p>Reply &ldquo;unsubscribe&rdquo; to stop the Monday-morning Signal Digest.</p>
+<p>Reply &ldquo;unsubscribe&rdquo; to stop the Sunday Signal Digest.</p>
 </div>
 </div>
 </body>

@@ -574,7 +574,7 @@ export default function DataNerdPage() {
               >
                 Subscribe to the Acceleration Watch (free, weekly Sunday)
               </a>
-              . The cheap test of the voice. Five startups every Monday.
+              . The cheap test of the voice. Five startups every Sunday.
             </li>
             <li>
               →{" "}

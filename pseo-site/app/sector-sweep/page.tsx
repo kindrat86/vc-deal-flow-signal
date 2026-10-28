@@ -145,12 +145,7 @@ export default function SectorSweepPage() {
           price: "1997",
           priceCurrency: "EUR",
           url: STRIPE_DIRECT_BUY,
-          availability: "https://schema.org/LimitedAvailability",
-          eligibleQuantity: {
-            "@type": "QuantitativeValue",
-            value: 8,
-            unitText: "Sweeps per quarter",
-          },
+          availability: "https://schema.org/InStock",
         },
       },
       {
@@ -320,9 +315,8 @@ export default function SectorSweepPage() {
             </span>
           </div>
           <p className="text-gray-400 text-xs italic">
-            Founding rate is locked through Q4 2026. Cap is 8 Sweeps per
-            quarter, Q3 2026 has 7 of 8 slots open as of this page load.
-            After 2026 the price moves to €2,997 and the cap stays at 8.
+            Founding rate is locked through Q4 2026. Each Sweep is written
+            by hand, so delivery dates are confirmed at checkout.
           </p>
           <TrialClose tone="amber">
             €1,997 against €5,959 of standalone deliverables, with the full

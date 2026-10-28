@@ -43,7 +43,7 @@ const tiers: PricingTier[] = [
     applicationGated: false,
     capacity: null,
     oneLine:
-      "Five breakout startups in your inbox every Monday, the same data the paid tiers see, narrowed to the top five.",
+      "Five breakout startups in your inbox every Sunday, the same data the paid tiers see, narrowed to the top five.",
     forWho:
       "Angel investors and developers who want one shortlist a week without paying.",
     bullets: [
@@ -240,7 +240,7 @@ const tiers: PricingTier[] = [
     listPriceCadence: "yearly",
     foundingMember: true,
     applicationGated: true,
-    capacity: "5 funds in 2026",
+    capacity: null,
     oneLine:
       "Done-with-you methodology engagement, custom panel construction trained on your fund's anonymized portfolio outcomes, bespoke 50-org watchlist with monthly rebuild, white-labeled fund subdomain, quarterly synthetic State-of-the-Engine talk, async-only methodology Q&A.",
     forWho:
@@ -254,7 +254,7 @@ const tiers: PricingTier[] = [
       "Async methodology Q&A, unlimited dedicated email channel, 24h weekday turn",
       "Quarterly anonymized fund-as-case-study published to /press",
       "Annual fund-only methodology brief (synthetic-voice walkthrough + 40-page PDF)",
-      "Founding-rate locked through end of 2027; capped at 5 funds in 2026",
+      "Founding-rate locked through end of 2027; application-gated",
     ],
     ctaLabel: "Apply for Methodology Partnership",
     ctaHref: "https://signals.gitdealflow.com/methodology-partnership",
@@ -272,7 +272,7 @@ const tiers: PricingTier[] = [
     listPriceCadence: "yearly",
     foundingMember: true,
     applicationGated: true,
-    capacity: "2 funds in 2026",
+    capacity: null,
     oneLine:
       "Top rung. Methodology Partnership plus: co-development access to the panel-construction pipeline, pre-publication SSRN preview six months early, 72-hour signal head-start over the public Dashboard, methodology source repo (fund-only fork license), Signal-of-the-Quarter co-investment alerts.",
     forWho:
@@ -285,7 +285,7 @@ const tiers: PricingTier[] = [
       "Annual async methodology summit, 8-hour Remotion-rendered keynote + fund-branded artifacts",
       "Methodology source repo, private fork, MIT-license to your fund only",
       "Signal-of-the-Quarter co-investment alerts (4/yr deep written analyses)",
-      "Founding-rate locked through end of 2028; capped at 2 funds in 2026",
+      "Founding-rate locked through end of 2028; application-gated",
     ],
     ctaLabel: "Apply for the Vault",
     ctaHref: "https://signals.gitdealflow.com/vault",

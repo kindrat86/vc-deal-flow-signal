@@ -84,7 +84,7 @@ const FAQS = [
   },
   {
     q: "What does the public channel get that the email doesn't?",
-    a: "Mid-week sector pings (when AI infra crosses 2× contributor influx, the channel fires before the next Monday email). Live methodology change notes (the email recaps changes monthly; the channel posts them when shipped). Synthetic-voice clips from the monthly /state-of-github address (audio is anonymity-safe, no founder voice, only Cartesia Theo synthetic narration).",
+    a: "Mid-week sector pings (when AI infra crosses 2× contributor influx, the channel fires before the next Sunday email). Live methodology change notes (the email recaps changes monthly; the channel posts them when shipped). Synthetic-voice clips from the monthly /state-of-github address (audio is anonymity-safe, no founder voice, only Cartesia Theo synthetic narration).",
   },
   {
     q: "What does the private (paid) Telegram get that the public doesn't?",

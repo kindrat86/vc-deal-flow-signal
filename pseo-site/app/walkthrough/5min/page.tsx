@@ -253,7 +253,7 @@ export default function FiveMinPerfectWebinarPage() {
               <p className="text-rose-400 text-[10px] font-semibold uppercase tracking-wider">Urgency</p>
               <p className="text-gray-200 text-sm leading-relaxed mt-1">
                 The window is the lead time, not the discount. 21-47 days
-                before the deck. Every Monday skipped is one window closed.
+                before the deck. Every Sunday skipped is one window closed.
               </p>
             </div>
           </div>

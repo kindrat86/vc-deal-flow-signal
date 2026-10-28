@@ -21,10 +21,10 @@ import { PRE_ROUND_PATH } from "@/lib/pre-round";
 export const metadata: Metadata = withEditorialOverride({
   title: {
     absolute:
-      "GitDealFlow Pricing: Free Weekly Digest, EUR 49 Report, EUR 49/mo Dashboard",
+      "GitDealFlow Pricing: Free Weekly Digest, EUR 49 Dashboard, EUR 197 Insider",
   },
   description:
-    "Four steps. Five startups free every week, the 25-name Pre-Round Report for EUR 49, the full ranked field weekly on the EUR 49/mo Dashboard, or Insider Circle with API and webhooks. 30-day Signal-or-It's-Free guarantee on every paid step.",
+    "Four steps. Five startups free every Sunday, the 25-name Pre-Round Report for EUR 49, the full ranked field weekly on the EUR 49/mo Dashboard, or Insider Circle with API and webhooks. 30-day Signal-or-It's-Free guarantee on every paid step.",
   alternates: {
     canonical: "/pricing",
   },
@@ -65,9 +65,9 @@ const steps: Step[] = [
     name: "Signal Digest",
     price: 0,
     priceLabel: "Free",
-    cadence: "every week",
+    cadence: "every Sunday",
     oneLine:
-      "Five startups with the strongest engineering acceleration, in your inbox once a week, each with a plain-English reason.",
+      "Five startups with the strongest engineering acceleration, in your inbox every Sunday, each with a plain-English reason.",
     forWho: "Start here if you want to see the signal before you pay for anything.",
     bullets: [
       "Five ranked startups per issue, with signal type and sector",
@@ -157,7 +157,7 @@ const stack: { item: string; note: string }[] = [
 const faqs: { q: string; a: string }[] = [
   {
     q: "How much does GitDealFlow cost?",
-    a: "Four steps. The Signal Digest is free, five startups every week. The Pre-Round Report is €49 one-time for 25 ranked startups with evidence, PDF + CSV within 48 hours. The Dashboard is €49 per month (or €490 per year) for the full ranked field across 15 sectors, refreshed weekly. Insider Circle is €197 per month (or €1,970 per year) and adds API, webhooks and custom watchlists. Founding members who joined before 2026-06-30 keep €9.97 and €97 for life.",
+    a: "Four steps. The Signal Digest is free, five startups every Sunday. The Pre-Round Report is €49 one-time for 25 ranked startups with evidence, PDF + CSV within 48 hours. The Dashboard is €49 per month (or €490 per year) for the full ranked field across 15 sectors, refreshed weekly. Insider Circle is €197 per month (or €1,970 per year) and adds API, webhooks and custom watchlists. Founding members who joined before 2026-06-30 keep €9.97 and €97 for life.",
   },
   {
     q: "Should I buy the Report or the Dashboard?",
@@ -181,7 +181,7 @@ const faqs: { q: string; a: string }[] = [
   },
 ];
 
-function stepToOffer(step: Step) {
+function tierToOffer(step: Step) {
   const offer: Record<string, unknown> = {
     "@type": "Offer",
     name: step.name,
@@ -208,8 +208,9 @@ function stepToOffer(step: Step) {
 
 export default function PricingPage() {
   const asOf = getDataLastModified().toISOString().slice(0, 10);
-  const paid = steps.filter((s) => s.price > 0);
-  const offers = paid.map(stepToOffer);
+  const tiers = steps;
+  const paidTiers = tiers.filter((s) => s.price > 0);
+  const offers = paidTiers.map(tierToOffer);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -239,9 +240,9 @@ export default function PricingPage() {
         offers: {
           "@type": "AggregateOffer",
           priceCurrency: "EUR",
-          lowPrice: Math.min(...paid.map((s) => s.price)),
-          highPrice: Math.max(...paid.map((s) => s.price)),
-          offerCount: offers.length,
+          lowPrice: Math.min(...paidTiers.map((s) => s.price)),
+          highPrice: Math.max(...paidTiers.map((s) => s.price)),
+          offerCount: paidTiers.length,
           offers,
         },
       },

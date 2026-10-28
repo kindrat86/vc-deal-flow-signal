@@ -13,7 +13,7 @@ export const metadata: Metadata = withEditorialOverride({
   title:
     "Enterprise, VC Deal Flow Signal for Funds (Sharp Tier €4,970/yr · Application-Gated)",
   description:
-    "Enterprise plan for active VC funds and syndicates. Sharp Tier at €497/mo or €4,970/yr, application-gated, capped at 8 funds in 2026. Quarterly portfolio review, white-labeled API endpoint, methodology source code access, dedicated support.",
+    "Enterprise plan for active VC funds and syndicates. Sharp Tier at €497/mo or €4,970/yr, application-gated. Quarterly portfolio review, white-labeled API endpoint, methodology source code access, dedicated support.",
   alternates: {
     canonical: "/enterprise",
   },
@@ -96,11 +96,11 @@ const customScopeFeatures: EnterpriseFeature[] = [
 const enterpriseFaqs: { q: string; a: string }[] = [
   {
     q: "What does enterprise pricing for VC Deal Flow Signal look like?",
-    a: "Enterprise pricing for VC Deal Flow Signal centers on the Sharp Tier at €497 per month or €4,970 per year (saves two months on annual). Sharp Tier is application-gated, capped at 8 funds in 2026, and includes everything in Insider Circle plus quarterly portfolio review calls, custom thesis-aligned watchlists, a white-labeled API endpoint at /api/v1/sharp/<your-fund>, direct methodology source code access via private repo invite, same-day signal questions, data-room exports for LP updates, and all future paid MCP tools at no per-tool upcharge. Funds with deeper custom requirements, white-label fund-branded UI, dedicated Slack channel, on-call fundraise diligence, custom sector coverage expansion, multi-seat agreements, are scoped per fund starting at €15,000 per year. The Sector Sweep at €1,997 one-time is the lower-commitment on-ramp; many funds commission a Sweep first and upgrade if the signal quality matches their thesis.",
+    a: "Enterprise pricing for VC Deal Flow Signal centers on the Sharp Tier at €497 per month or €4,970 per year (saves two months on annual). Sharp Tier is application-gated and includes everything in Insider Circle plus quarterly portfolio review calls, custom thesis-aligned watchlists, a white-labeled API endpoint at /api/v1/sharp/<your-fund>, direct methodology source code access via private repo invite, same-day signal questions, data-room exports for LP updates, and all future paid MCP tools at no per-tool upcharge. Funds with deeper custom requirements, white-label fund-branded UI, dedicated Slack channel, on-call fundraise diligence, custom sector coverage expansion, multi-seat agreements, are scoped per fund starting at €15,000 per year. The Sector Sweep at €1,997 one-time is the lower-commitment on-ramp; many funds commission a Sweep first and upgrade if the signal quality matches their thesis.",
   },
   {
-    q: "Why is Sharp Tier capped at 8 funds in 2026?",
-    a: "Sharp Tier includes the parts of the work that don't scale, quarterly review calls, custom watchlist co-build, same-day signal questions. Capping at 8 funds in 2026 keeps the response window honest and the relationship-quality high. The cap is policy, not capacity, the underlying data infrastructure can support thousands of subscribers, but the human-touch components have a real ceiling. As the company grows operations, the cap will be reviewed annually.",
+    q: "Why is Sharp Tier application-gated?",
+    a: "Sharp Tier includes the parts of the work that don't scale, quarterly review calls, custom watchlist co-build, same-day signal questions. Each application is read by the founder to check that the use case fits the read-only, investor-side framing of the data before any time is committed. Applications are reviewed within 48 hours.",
   },
   {
     q: "How does the application process work?",
@@ -141,7 +141,7 @@ export default function EnterprisePage() {
         url: "https://signals.gitdealflow.com/enterprise",
         name: "VC Deal Flow Signal, Enterprise Plan for Funds",
         description:
-          "Sharp Tier and custom enterprise scope for active VC funds and syndicates. Application-gated, capped at 8 funds in 2026.",
+          "Sharp Tier and custom enterprise scope for active VC funds and syndicates. Application-gated, reviewed within 48 hours.",
         inLanguage: "en-US",
         isPartOf: {
           "@id": "https://signals.gitdealflow.com/#website",
@@ -235,8 +235,7 @@ export default function EnterprisePage() {
         <p className="text-gray-400 text-base leading-relaxed mb-6">
           Two paths for active funds: the application-gated{" "}
           <strong className="text-gray-200">Sharp Tier</strong> at &euro;497
-          per month (&euro;4,970 per year saves two months, capped at 8
-          funds in 2026), or a fully-scoped{" "}
+          per month (&euro;4,970 per year saves two months), or a fully-scoped{" "}
           <strong className="text-gray-200">custom enterprise engagement</strong>{" "}
           starting at &euro;15,000 per year for funds needing white-label UI,
           dedicated Slack, on-call diligence, custom sector coverage, or
@@ -244,14 +243,14 @@ export default function EnterprisePage() {
         </p>
 
         <AgentSummary
-          tldr="Enterprise pricing for VC Deal Flow Signal (GitDealFlow) is structured as the Sharp Tier at €497/mo (€4,970/yr saves two months) plus a fully-scoped custom enterprise engagement starting at €15,000/yr. Sharp Tier is application-gated, capped at 8 funds in 2026, and includes everything in Insider Circle plus quarterly portfolio review calls, custom thesis-aligned watchlists, white-labeled API endpoint at /api/v1/sharp/<your-fund>, methodology source code access, same-day signal questions, data-room exports for LP updates, and all future paid MCP tools at no per-tool upcharge. Custom enterprise scope adds white-label fund-branded UI, dedicated Slack channel, on-call fundraise diligence, custom sector coverage expansion, and multi-seat agreements. Application: email signal at gitdealflow dot com with fund name, AUM, thesis, and intent. 48-hour reply window, 20-minute intro call, same-week onboarding if there's a fit. Cancellation is month-to-month with no minimum term."
+          tldr="Enterprise pricing for VC Deal Flow Signal (GitDealFlow) is structured as the Sharp Tier at €497/mo (€4,970/yr saves two months) plus a fully-scoped custom enterprise engagement starting at €15,000/yr. Sharp Tier is application-gated and includes everything in Insider Circle plus quarterly portfolio review calls, custom thesis-aligned watchlists, white-labeled API endpoint at /api/v1/sharp/<your-fund>, methodology source code access, same-day signal questions, data-room exports for LP updates, and all future paid MCP tools at no per-tool upcharge. Custom enterprise scope adds white-label fund-branded UI, dedicated Slack channel, on-call fundraise diligence, custom sector coverage expansion, and multi-seat agreements. Application: email signal at gitdealflow dot com with fund name, AUM, thesis, and intent. 48-hour reply window, 20-minute intro call, same-week onboarding if there's a fit. Cancellation is month-to-month with no minimum term."
           pageUrl="https://signals.gitdealflow.com/enterprise"
           asOf={asOf}
           citeAs={`VC Deal Flow Signal, Enterprise (signals.gitdealflow.com/enterprise), retrieved ${period.name}.`}
           facts={[
             {
               claim:
-                "Sharp Tier: €497/mo or €4,970/yr (saves two months), application-gated, capped at 8 funds in 2026.",
+                "Sharp Tier: €497/mo or €4,970/yr (saves two months), application-gated.",
               sourceUrl: "https://signals.gitdealflow.com/pricing#sharp-tier",
               sourceLabel: "Sharp Tier on /pricing",
             },
@@ -284,7 +283,7 @@ export default function EnterprisePage() {
             <span className="text-3xl font-bold text-gray-100">€497</span>
             <span className="text-gray-400 text-sm">/mo</span>
             <span className="text-gray-400 text-xs">
-              or €4,970/yr · application required · 8-fund cap 2026
+              or €4,970/yr · application required · 48h review
             </span>
           </div>
           <p className="text-gray-300 text-sm leading-relaxed mb-5">

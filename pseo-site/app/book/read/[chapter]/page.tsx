@@ -191,7 +191,7 @@ export default async function ChapterPage({ params }: PageProps) {
             Use the methodology Monday morning
           </p>
           <p className="text-gray-300 leading-relaxed">
-            The free Monday-morning Signal Digest delivers the top five firings
+            The free Sunday Signal Digest delivers the top five firings
             from the universe of tracked organizations every week. Five
             startups, ranked, with the signal that fired and the public GitHub
             link. <Link href="/" className="text-sky-400 hover:text-sky-300">Subscribe in one click →</Link>
