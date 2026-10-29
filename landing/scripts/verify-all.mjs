@@ -22,6 +22,26 @@ for (const rel of ['api/crawl-proxy.js', 'api/markdown.js', 'ai.src.txt', 'agent
   }
 }
 
+// Momentum Checker note guard (2026-10-29, Maryan t362u). The note was pasted in
+// as a bare <p> after </main>, so it rendered flush against the left edge of the
+// viewport. It must sit inside a centered container on every page that carries it.
+{
+  const { readdirSync, statSync } = await import('fs');
+  const bare = [];
+  (function walk(dir) {
+    for (const n of readdirSync(dir)) {
+      if (['.git', '.vercel', 'node_modules', 'dist', '__pycache__'].includes(n)) continue;
+      const p = join(dir, n);
+      if (statSync(p).isDirectory()) walk(p);
+      else if (n.endsWith('.html') && readFileSync(p, 'utf8').includes('<!-- momentum-checker-v1 --><p')) bare.push(p.slice(landingRoot.length + 1));
+    }
+  })(landingRoot);
+  if (bare.length) {
+    console.error(`[verify-all] Momentum Checker note is not in a centered container: ${bare.join(', ')}`);
+    process.exit(1);
+  }
+}
+
 // Activation funnel guard (2026-08-19). The free product is delivered as soon
 // as verification succeeds. Keep that promise visible and keep the anonymous
 // landing events joined to the email-keyed Resend events.
