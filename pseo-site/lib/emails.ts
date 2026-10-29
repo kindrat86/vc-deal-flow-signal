@@ -2144,10 +2144,10 @@ export const SHARP_INDOCTRINATION_DRIP = [
  * Day 0, 1, 3, 5, 7 after verification. Wording is approved verbatim: do not
  * edit copy here without a new approval.
  *
- * It replaces the Day 0-7 window of the default Soap Opera cohort (all four
- * quiz tiers) for NEW verifications only (scheduled in app/api/verify). The
- * Day 8+ Seinfeld emails and the tier-specific later overrides stay as they
- * were. Links already carry utm_source=sequence, so this wrapper does NOT run
+ * It is the WHOLE default-cohort sequence (all four quiz tiers) for NEW
+ * verifications (scheduled in app/api/verify). Per Maryan 2026-10-29 no old
+ * Soap Opera / Seinfeld emails follow it. SOAP_OPERA_* stay exported for the
+ * recovery script but are no longer scheduled for new signups. Links already carry utm_source=sequence, so this wrapper does NOT run
  * tagEmailUrls (that would add a second utm_source).
  */
 function wrapWelcome2026_11(preview: string, body: string): string {
@@ -2269,19 +2269,3 @@ export const WELCOME_2026_11_EMAILS = [
     ),
   },
 ];
-
-/** Last old Soap Opera email that the new welcome replaces (old Day 7). */
-const WELCOME_2026_11_REPLACES_UP_TO_MS = THIRTY_MIN + 7 * ONE_DAY;
-
-/**
- * Default-cohort schedule for a new verification: the approved 5-email
- * welcome first, then the existing tier sequence from Day 8 on.
- */
-export function withWelcome2026_11(
-  tierSequence: readonly { subject: string; delayMs: number; html: string }[],
-): { subject: string; delayMs: number; html: string }[] {
-  return [
-    ...WELCOME_2026_11_EMAILS,
-    ...tierSequence.filter((e) => e.delayMs > WELCOME_2026_11_REPLACES_UP_TO_MS),
-  ];
-}

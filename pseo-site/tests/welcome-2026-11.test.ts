@@ -1,12 +1,9 @@
 import assert from "node:assert/strict";
+import { readFileSync } from "node:fs";
+import { dirname, join } from "node:path";
+import { fileURLToPath } from "node:url";
 
-import {
-  SOAP_OPERA_EMAILS,
-  SOAP_OPERA_F,
-  SOAP_OPERA_I,
-  WELCOME_2026_11_EMAILS,
-  withWelcome2026_11,
-} from "../lib/emails";
+import { WELCOME_2026_11_EMAILS } from "../lib/emails";
 
 const DAY = 24 * 60 * 60 * 1000;
 const THIRTY_MIN = 30 * 60 * 1000;
@@ -35,12 +32,20 @@ for (const [i, e] of WELCOME_2026_11_EMAILS.entries()) {
   assert.doesNotMatch(e.html, /utm_source=email/, `email ${i + 1} got double UTM tagging`);
 }
 
-for (const tier of [SOAP_OPERA_EMAILS, SOAP_OPERA_F, SOAP_OPERA_I]) {
-  const seq = withWelcome2026_11(tier);
-  assert.deepEqual(seq.slice(0, 5), WELCOME_2026_11_EMAILS, "welcome leads the default cohort");
-  const rest = seq.slice(5);
-  assert.ok(rest.length > 0, "Day 8+ emails are kept");
-  assert.ok(rest.every((e) => e.delayMs > THIRTY_MIN + 7 * DAY), "no old Day 0-7 email survives");
-}
+// The default cohort (every quiz tier) schedules ONLY the five welcome
+// emails: nothing after Day 7, so nothing lands in the deferred drip plan.
+assert.ok(
+  WELCOME_2026_11_EMAILS.every((e) => e.delayMs <= THIRTY_MIN + 7 * DAY),
+  "no welcome email may fall past Day 7",
+);
+const root = join(dirname(fileURLToPath(import.meta.url)), "..");
+const verifyRoute = readFileSync(join(root, "app/api/verify/route.ts"), "utf8");
+const sequenceExpr = verifyRoute.slice(
+  verifyRoute.indexOf("const sequence ="),
+  verifyRoute.indexOf("const MAX_SCHEDULE_MS"),
+);
+assert.match(sequenceExpr, /\? LAUNCH_EMAILS\s*:[\s\S]*WELCOME_2026_11_EMAILS;/, "default cohort must resolve to the welcome sequence");
+assert.doesNotMatch(sequenceExpr, /SOAP_OPERA/, "no old Soap Opera sequence may be scheduled for new default signups");
+assert.match(sequenceExpr, /LEAD_MAGNET_WELCOME_EMAILS/, "gitdealflow.com Velocity Verdict cohort is untouched");
 
 console.log("welcome-2026-11: ok");
