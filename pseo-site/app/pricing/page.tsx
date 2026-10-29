@@ -38,9 +38,7 @@ export const metadata: Metadata = withEditorialOverride({
 });
 
 const STRIPE_DASHBOARD = "https://buy.stripe.com/4gMbJ07kTaJy7kqg6s0x20b";
-const STRIPE_DASHBOARD_ANNUAL = "https://buy.stripe.com/aFa5kC34DeZOawC6vS0x20c";
 const STRIPE_INSIDER = "https://buy.stripe.com/bJeaEWfRpcRG6gm2fC0x20d";
-const STRIPE_INSIDER_ANNUAL = "https://buy.stripe.com/cNieVc34DbNCcEK2fC0x20e";
 const SIGNUP_URL = "https://gitdealflow.com/#signup";
 
 interface Step {
@@ -114,7 +112,6 @@ const steps: Step[] = [
       "All five signal types per startup, including deceleration",
       "Sector filters with five-quarter history, watchlists and saved filters",
       "Free Chrome extensions: Crunchbase and Wellfound badge, GitHub hover lookup",
-      "€490/yr option, two months free",
     ],
     ctaLabel: "Start Dashboard, €49/mo",
     ctaHref: STRIPE_DASHBOARD,
@@ -136,7 +133,6 @@ const steps: Step[] = [
       "Webhook delivery on threshold triggers, into Slack, Discord or your own tools",
       "Custom watchlists built around your thesis",
       "Private Insider group with briefings and a direct line for diligence questions",
-      "€1,970/yr option, two months free",
     ],
     ctaLabel: "Join Insider Circle, €197/mo",
     ctaHref: STRIPE_INSIDER,
@@ -157,7 +153,7 @@ const stack: { item: string; note: string }[] = [
 const faqs: { q: string; a: string }[] = [
   {
     q: "How much does GitDealFlow cost?",
-    a: "Four steps. The Signal Digest is free, five startups every Sunday. The Pre-Round Report is €49 one-time for 25 ranked startups with evidence, PDF + CSV within 48 hours. The Dashboard is €49 per month (or €490 per year) for the full ranked field across 15 sectors, refreshed weekly. Insider Circle is €197 per month (or €1,970 per year) and adds API, webhooks and custom watchlists. Founding members who joined before 2026-06-30 keep €9.97 and €97 for life.",
+    a: "Four steps. The Signal Digest is free, five startups every Sunday. The Pre-Round Report is €49 one-time for 25 ranked startups with evidence, PDF + CSV within 48 hours. The Dashboard is €49 per month for the full ranked field across 15 sectors, refreshed weekly. Insider Circle is €197 per month and adds API, webhooks and custom watchlists. Founding members who joined before 2026-06-30 keep €9.97 and €97 for life.",
   },
   {
     q: "Should I buy the Report or the Dashboard?",
@@ -177,7 +173,7 @@ const faqs: { q: string; a: string }[] = [
   },
   {
     q: "Can I cancel?",
-    a: "Yes. Monthly plans cancel any time from the Stripe receipt or by emailing signals@gitdealflow.com. Annual plans can be switched from monthly; the unused part of the current month is credited.",
+    a: "Yes. Monthly plans cancel any time from the Stripe receipt or by emailing signals@gitdealflow.com.",
   },
 ];
 
@@ -367,22 +363,11 @@ export default function PricingPage() {
               ))}
             </tbody>
           </table>
-          <p className="text-gray-300 text-sm leading-relaxed mb-2">
+          <p className="text-gray-300 text-sm leading-relaxed mb-5">
             The anchor: the Pre-Round Report is €49 for one monthly list of 25
             names. The Dashboard is the same €49 for the whole ranked field,
             every week. Insider Circle at €197 is there for teams that need the
             API and webhooks.
-          </p>
-          <p className="text-gray-400 text-sm leading-relaxed mb-5">
-            Prefer to pay yearly?{" "}
-            <a href={STRIPE_DASHBOARD_ANNUAL} className="text-sky-400 hover:text-sky-300 underline">
-              Dashboard €490/yr
-            </a>{" "}
-            or{" "}
-            <a href={STRIPE_INSIDER_ANNUAL} className="text-sky-400 hover:text-sky-300 underline">
-              Insider €1,970/yr
-            </a>
-            , two months free in both cases.
           </p>
           <a
             href={STRIPE_DASHBOARD}

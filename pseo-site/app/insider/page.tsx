@@ -8,15 +8,17 @@ import { withEditorialOverride } from "@/lib/metadata";
 
 export const dynamic = "force-static";
 
+const STRIPE_INSIDER = "https://buy.stripe.com/bJeaEWfRpcRG6gm2fC0x20d";
+
 export const metadata: Metadata = withEditorialOverride({
-  title: "Insider Circle Status",
+  title: "Insider Circle, €197/mo",
   description:
-    "Insider Circle is not open for enrollment. GitDealFlow will publish a real delivery calendar and a redacted delivered artifact before it offers a higher-touch subscription.",
+    "Insider Circle is €197 per month: everything in the Dashboard plus JSON API and bulk CSV pulls, webhooks, custom watchlists and a private group with a direct line for diligence questions. 30-day Signal-or-It's-Free guarantee.",
   alternates: { canonical: "/insider" },
   openGraph: {
-    title: "Insider Circle Status",
+    title: "Insider Circle, €197/mo",
     description:
-      "Not open for enrollment. Start with public research or the current Dashboard instead.",
+      "Dashboard plus API, webhooks and custom watchlists, €197/mo, cancel any time, 30-day guarantee.",
     url: "https://signals.gitdealflow.com/insider",
     type: "website",
   },
@@ -29,10 +31,10 @@ export default function InsiderPage() {
       {
         "@type": "WebPage",
         "@id": "https://signals.gitdealflow.com/insider#webpage",
-        name: "Insider Circle Status",
+        name: "Insider Circle",
         url: "https://signals.gitdealflow.com/insider",
         description:
-          "GitDealFlow Insider Circle is not open for enrollment. No price, capacity, delivery timing, or member outcome is claimed until it can be evidenced publicly.",
+          "GitDealFlow Insider Circle, €197 per month: Dashboard plus JSON API, bulk CSV, webhooks, custom watchlists and a private group for diligence questions.",
         author: DATA_NERD_AUTHOR_REF,
       },
       {
@@ -59,64 +61,78 @@ export default function InsiderPage() {
         </nav>
 
         <header className="space-y-4">
-          <p className="text-amber-300 text-xs font-semibold uppercase tracking-widest">Offer status</p>
-          <h1 className="text-3xl sm:text-5xl font-bold tracking-tight">Insider enrollment is not open.</h1>
+          <p className="text-sky-300 text-xs font-semibold uppercase tracking-widest">Step 4 · Insider Circle</p>
+          <h1 className="text-3xl sm:text-5xl font-bold tracking-tight">Insider Circle, €197 per month.</h1>
           <p className="text-lg leading-relaxed text-slate-300">
-            A higher-touch research offer needs proof of its real delivery, not a persuasive stack. We are not taking payment for Insider while its calendar, artefacts, response process, and member experience are unproven on this site.
+            For investors whose sourcing runs through a pipeline, a CRM or a syndicate. You get everything in the Dashboard, plus the data in a form your own tools can use.
           </p>
         </header>
 
-        <section className="rounded-2xl border border-amber-600/40 bg-amber-950/20 p-6 space-y-3">
-          <h2 className="text-xl font-semibold">What must exist before enrollment opens</h2>
+        <section className="rounded-2xl border border-sky-600/40 bg-sky-950/20 p-6 space-y-4">
+          <h2 className="text-xl font-semibold">What you get</h2>
           <ul className="list-disc pl-5 space-y-2 text-slate-300 leading-relaxed">
-            <li>A public delivery calendar with dated, realistic deliverables.</li>
-            <li>A redacted delivered briefing or artefact that shows what members actually receive.</li>
-            <li>A documented support and refund process backed by current operations.</li>
-            <li>One verified price and a working Checkout probe, published only after the delivery proof is live.</li>
+            <li>Everything in Dashboard: the full ranked field across 15 sectors, refreshed weekly, with filters, history and watchlists.</li>
+            <li>JSON API and bulk CSV pulls.</li>
+            <li>Webhook delivery on threshold triggers, into Slack, Discord or your own tools.</li>
+            <li>Custom watchlists built around your thesis.</li>
+            <li>Private Insider group with briefings and a direct line for diligence questions.</li>
           </ul>
-        </section>
-
-        <section className="space-y-3">
-          <h2 className="text-2xl font-semibold">Use the proof that exists today</h2>
           <p className="text-slate-300 leading-relaxed">
-            GitDealFlow is a public-data diligence signal. It helps you decide what to investigate, it does not forecast financing or replace investment diligence.
+            €197 per month, billed monthly through Stripe. Cancel any time from the Stripe receipt or by emailing signals@gitdealflow.com. The 30-day Signal-or-It&apos;s-Free guarantee applies: if the signal does not surface a startup you find genuinely interesting, reply REFUND within 30 days and you get the full payment back.
           </p>
           <div className="flex flex-wrap gap-3">
-            <Link href="/research" className="rounded-lg bg-emerald-500 px-5 py-3 font-semibold text-slate-950 hover:bg-emerald-400">
-              Read the research panel
-            </Link>
-            <Link href="/mechanism" className="rounded-lg border border-slate-700 px-5 py-3 font-semibold hover:border-slate-500">
-              Inspect the method
-            </Link>
-            <Link href="/dashboard" className="rounded-lg border border-slate-700 px-5 py-3 font-semibold hover:border-slate-500">
-              See the current Dashboard
+            <a href={STRIPE_INSIDER} className="rounded-lg bg-sky-500 px-5 py-3 font-semibold text-slate-950 hover:bg-sky-400">
+              Join Insider Circle, €197/mo →
+            </a>
+            <Link href="/pricing" className="rounded-lg border border-slate-700 px-5 py-3 font-semibold hover:border-slate-500">
+              Compare all four steps
             </Link>
           </div>
         </section>
 
         <section className="space-y-3">
-          <h2 className="text-2xl font-semibold">Why this standard matters</h2>
+          <h2 className="text-2xl font-semibold">What it is, and what it is not</h2>
           <p className="text-slate-300 leading-relaxed">
-            A higher-touch subscription asks for more than access to a page. It asks buyers to trust a recurring operating promise: what arrives, when it arrives, what happens when a question needs an answer, and what recourse exists when delivery falls short. Those are operational facts. They should be visible before checkout, not imagined from a headline or inferred from a price.
+            GitDealFlow is a public-data diligence signal. It helps you decide what to investigate, it does not forecast financing or replace investment diligence.
           </p>
           <p className="text-slate-300 leading-relaxed">
-            This page therefore does not use a waitlist count, an urgency deadline, a member-cap claim, an earnings comparison, or a projected outcome. None of those would help a careful investor assess the offer. The useful proof is a dated calendar, a redacted example, and terms that match the actual workflow. Until those exist, the honest decision is to keep enrollment closed.
+            The public-data workflow is deliberately modest: observe an engineering change, compare it with the organisation&apos;s baseline, inspect the surrounding evidence, and corroborate before acting. It helps narrow a research queue. It cannot tell you that a company will raise, guarantee access to a founder, or replace the work of investment diligence.
+          </p>
+          <p className="text-slate-300 leading-relaxed">
+            This page does not use a member count, an urgency deadline, a member-cap claim, an earnings comparison, or a projected outcome. None of those would help a careful investor assess the offer. The public prediction ledger, misses included, is at <Link href="/predicted" className="text-sky-400 hover:text-sky-300 underline">/predicted</Link>.
           </p>
         </section>
 
         <section className="space-y-3">
-          <h2 className="text-2xl font-semibold">What to use in the meantime</h2>
+          <h2 className="text-2xl font-semibold">Where Insider sits in the four steps</h2>
+          <ul className="list-disc pl-5 space-y-2 text-slate-300 leading-relaxed">
+            <li>Step 1, free: the Signal Digest, five startups every Sunday, each with a plain-English reason.</li>
+            <li>Step 2, €49 once: the Pre-Round Report, 25 ranked startups with evidence, PDF and CSV within 48 hours.</li>
+            <li>Step 3, €49 per month: the Dashboard, the full ranked field across 15 sectors, refreshed every week.</li>
+            <li>Step 4, €197 per month: Insider Circle, the Dashboard plus API access, webhooks and custom watchlists, for teams that move the signal into their own systems instead of reading it on a page.</li>
+          </ul>
           <p className="text-slate-300 leading-relaxed">
-            Start with the public method if you need to understand the research. Use the Dashboard only when the currently available surface fits your weekly diligence process. If you are evaluating one live sector question, use the smaller First Look step after reading its current terms. Each route should stand on the evidence it can show today, rather than borrowing certainty from an unfinished higher tier.
-          </p>
-          <p className="text-slate-300 leading-relaxed">
-            The public-data workflow is deliberately modest: observe an engineering change, compare it with the organisation's baseline, inspect the surrounding evidence, and corroborate before acting. It helps narrow a research queue. It cannot tell you that a company will raise, guarantee access to a founder, or replace the work of investment diligence.
+            Every paid step carries the same 30-day Signal-or-It&apos;s-Free guarantee, so you can test whether the data fits your process before you commit to it.
           </p>
         </section>
 
-        <aside className="border-l-2 border-slate-700 pl-4 text-sm leading-relaxed text-slate-400">
-          When Insider has evidence-backed delivery, this page will show the calendar, the artefact, the terms, and the exact next step. Until then, do not over-buy.
-        </aside>
+        <section className="space-y-3">
+          <h2 className="text-2xl font-semibold">Not sure Insider is the right step?</h2>
+          <p className="text-slate-300 leading-relaxed">
+            If you read the signal yourself each week and do not need the API or webhooks, the €49/mo Dashboard covers the same ranked field. Start with the public method if you need to understand the research first.
+          </p>
+          <div className="flex flex-wrap gap-3">
+            <Link href="/dashboard" className="rounded-lg border border-slate-700 px-5 py-3 font-semibold hover:border-slate-500">
+              See the Dashboard
+            </Link>
+            <Link href="/research" className="rounded-lg border border-slate-700 px-5 py-3 font-semibold hover:border-slate-500">
+              Read the research panel
+            </Link>
+            <Link href="/mechanism" className="rounded-lg border border-slate-700 px-5 py-3 font-semibold hover:border-slate-500">
+              Inspect the method
+            </Link>
+          </div>
+        </section>
       </article>
     </main>
   );

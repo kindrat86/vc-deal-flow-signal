@@ -241,7 +241,7 @@ export default function ApplyPage() {
             </div>
           ))}
           <TrialClose tone="emerald">
-            Insider credit on upgrade, application-gated cap, methodology
+            Insider credit on upgrade, application review, methodology
             source under CC BY 4.0. If the structure reads as more
             partnership than vendor-relationship, would the application
             itself be the next move?

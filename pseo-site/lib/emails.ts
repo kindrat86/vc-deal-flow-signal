@@ -1811,7 +1811,7 @@ const D30_I: SoapOperaEmail = {
 <p>The math at fund scale: one founder per quarter that you reached because you had a Sunday-night head-start, at a €5k-€50k angel range with even a 3× exit on one in five, lands somewhere between €15k and €150k of expected value per head-start. €197/mo is €2,364/yr. The numbers don't work the other way.</p>
 <p>The free Sunday digest stays free regardless. The 30-day welcome ends here, the rhythm continues. Sunday hits as usual this weekend.</p>
 <p>Talk soon, <br>${FROM_NAME}</p>
-<p style="color:#64748b;font-size:14px;">P.S. Insider Circle (€197/mo, 24h lead, closed Telegram): <a href="${SIGNALS}/insider" style="color:#0ea5e9;">${SIGNALS}/insider</a> · Sector Sweep (€1,997): <a href="${SIGNALS}/sector-sweep" style="color:#0ea5e9;">${SIGNALS}/sector-sweep</a> · Email <a href="mailto:signals@gitdealflow.com?subject=Sector%20Sweep" style="color:#0ea5e9;">signals@gitdealflow.com</a> with the sector and the spec lands in your inbox inside one business day.</p>
+<p style="color:#64748b;font-size:14px;">P.S. Insider Circle (€197/mo, 24h lead, private group): <a href="${SIGNALS}/insider" style="color:#0ea5e9;">${SIGNALS}/insider</a> · Sector Sweep (€1,997): <a href="${SIGNALS}/sector-sweep" style="color:#0ea5e9;">${SIGNALS}/sector-sweep</a> · Email <a href="mailto:signals@gitdealflow.com?subject=Sector%20Sweep" style="color:#0ea5e9;">signals@gitdealflow.com</a> with the sector and the spec lands in your inbox inside one business day.</p>
 `),
 };
 
@@ -1864,7 +1864,7 @@ const D0_I: SoapOperaEmail = {
 <p>The math at your check volume: one founder per quarter that you reached because you had a Sunday-night head-start, at angel-range with even a 3&times; exit on one in five, lands at &euro;15k-&euro;150k of expected value per head-start. &euro;2,364/yr of Insider versus that calculus is a no-brainer if the rhythm fits.</p>
 <p>Tomorrow: why the "public GitHub data is noise" objection is wrong at your tier specifically, the noise floor matters more for low-volume sourcing, not the kind you're running.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
-<p style="color:#64748b;font-size:14px;">P.S. SSRN preprint (n=219, the methodology backbone): <a href="https://ssrn.com/abstract=6606558" style="color:#0ea5e9;">ssrn.com/abstract=6606558</a> &middot; Insider Circle (&euro;197/mo, 24h lead, closed Telegram): <a href="${SIGNALS}/insider" style="color:#0ea5e9;">${SIGNALS}/insider</a> &middot; Sector Sweep (&euro;1,997, capped 8/quarter): <a href="${SIGNALS}/sector-sweep" style="color:#0ea5e9;">${SIGNALS}/sector-sweep</a></p>
+<p style="color:#64748b;font-size:14px;">P.S. SSRN preprint (n=219, the methodology backbone): <a href="https://ssrn.com/abstract=6606558" style="color:#0ea5e9;">ssrn.com/abstract=6606558</a> &middot; Insider Circle (&euro;197/mo, 24h lead, private group): <a href="${SIGNALS}/insider" style="color:#0ea5e9;">${SIGNALS}/insider</a> &middot; Sector Sweep (&euro;1,997, capped 8/quarter): <a href="${SIGNALS}/sector-sweep" style="color:#0ea5e9;">${SIGNALS}/sector-sweep</a></p>
 `),
 };
 
@@ -1973,7 +1973,7 @@ const D45_I: SoapOperaEmail = {
 <p>If your fund's thesis is genuinely focused on one sector this quarter, AI infra, dev tools, fintech rails, vertical SaaS, climate, this is the artefact that compresses three weeks of analyst work into one weekend of reading. Email <a href="mailto:signals@gitdealflow.com?subject=Sector%20Sweep" style="color:#0ea5e9;">signals@gitdealflow.com</a> with the sector and we confirm the spec inside one business day.</p>
 <p>If Insider Circle isn't running yet either, Insider Circle (&euro;197/mo) is open. The 24-hour Sunday lead is the operating leverage; everything else is plumbing.</p>
 <p>Talk soon, <br>${FROM_NAME}</p>
-<p style="color:#64748b;font-size:14px;">P.S. Insider Circle (&euro;197/mo, 24h lead, closed Telegram, ~30 fund-tier subscribers): <a href="${SIGNALS}/insider" style="color:#0ea5e9;">${SIGNALS}/insider</a> &middot; Sector Sweep stack itemised: <a href="${SIGNALS}/pricing#sector-sweep-stack" style="color:#0ea5e9;">${SIGNALS}/pricing#sector-sweep-stack</a></p>
+<p style="color:#64748b;font-size:14px;">P.S. Insider Circle (&euro;197/mo, 24h lead, private group): <a href="${SIGNALS}/insider" style="color:#0ea5e9;">${SIGNALS}/insider</a> &middot; Sector Sweep stack itemised: <a href="${SIGNALS}/pricing#sector-sweep-stack" style="color:#0ea5e9;">${SIGNALS}/pricing#sector-sweep-stack</a></p>
 `),
 };
 

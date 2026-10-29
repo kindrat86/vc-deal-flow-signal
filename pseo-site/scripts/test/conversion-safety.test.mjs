@@ -71,7 +71,10 @@ test("Expert Secrets public copy stays evidence-led", () => {
 });
 
 test("Insider and affiliate routes do not sell unverified delivery or performance", () => {
-  assert.match(insiderPage, /Insider enrollment is not open/);
+  // 2026-10-29 (Maryan, t362u): signals /insider is open, same €197/mo
+  // Stripe link as /pricing, no closed/waitlist state.
+  assert.match(insiderPage, /https:\/\/buy\.stripe\.com\/bJeaEWfRpcRG6gm2fC0x20d/);
+  assert.doesNotMatch(insiderPage, /not open|waitlist|enrollment closed|keep enrollment closed/i);
   assert.doesNotMatch(insiderPage, /€4,206|locked forever|same-day response|Sunday 09:00 UTC/);
   assert.match(landingInsider, /Insider enrollment is not open/);
   assert.doesNotMatch(landingInsider, /€197\/mo|private discussion|monthly briefings|capacity|Checkout/);
