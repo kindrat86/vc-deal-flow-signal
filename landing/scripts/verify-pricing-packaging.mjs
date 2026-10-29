@@ -8,7 +8,6 @@ const DEFAULT_ROOT = join(fileURLToPath(new URL('..', import.meta.url)));
 const ROOT = process.argv[2] || DEFAULT_ROOT;
 const errors = [];
 const dashboardMonthly = 'https://buy.stripe.com/fZu28q34DdVKawC6vS0x20g';
-const dashboardAnnual = 'https://buy.stripe.com/aFa5kC34DeZOawC6vS0x20c';
 const bannedTokens = [
   '4gMbJ07kTaJy7kqg6s0x20b', // old Dashboard monthly product
   'bJeaEWfRpcRG6gm2fC0x20d', // old Insider monthly product
@@ -16,6 +15,7 @@ const bannedTokens = [
   '5kQ8wO48H3h6cEKdYk0x20I', // stale Dashboard EUR 441/year
   'bJe3cu48H3h6awC3jG0x20J', // stale Insider EUR 1,773/year
   'cNieVc34DbNCcEK2fC0x20e', // closed Insider annual product
+  'aFa5kC34DeZOawC6vS0x20c', // Dashboard annual, removed 2026-10-29 (Maryan, t363u)
 ];
 const scannedExt = new Set(['.html', '.md', '.txt', '.xml', '.json', '.py', '.mjs']);
 const skip = new Set([
@@ -53,9 +53,6 @@ const insider = read('insider.html');
 const pricingMd = read('md/pricing.md');
 const insiderMd = read('md/insider.md');
 const llms = read('llms.src.txt');
-for (const [rel, text] of [['pricing.html', pricing], ['dashboard.html', dashboard], ['md/pricing.md', pricingMd]]) {
-  if (!text.includes(dashboardAnnual)) errors.push(`${rel}: canonical EUR 490/year checkout missing`);
-}
 for (const [rel, text] of [['dashboard.html', dashboard], ['md/pricing.md', pricingMd]]) {
   if (!text.includes(dashboardMonthly)) errors.push(`${rel}: canonical EUR 49/month checkout missing`);
 }
@@ -68,7 +65,7 @@ if (insider.includes('buy.stripe.com') || !insider.includes('Insider enrollment 
 if (insiderMd.includes('buy.stripe.com') || !insiderMd.includes('Insider enrollment is not open')) {
   errors.push('md/insider.md: closed status or no-payment invariant broken');
 }
-if (!llms.includes('- Dashboard: EUR 49/month or EUR 490/year') || !llms.includes('- Insider Circle: enrollment closed')) {
+if (!llms.includes('- Dashboard: EUR 49/month (') || !llms.includes('- Insider Circle: enrollment closed')) {
   errors.push('llms.src.txt: canonical pricing/package lines missing');
 }
 
@@ -90,4 +87,4 @@ if (errors.length) {
   for (const e of errors) console.error(`  - ${e}`);
   process.exit(1);
 }
-console.log('PASS verify-pricing-packaging: Dashboard EUR 49/490 open; Insider closed; stale links absent');
+console.log('PASS verify-pricing-packaging: Dashboard EUR 49/mo open, no annual; Insider closed; stale links absent');

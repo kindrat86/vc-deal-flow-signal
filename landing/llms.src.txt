@@ -92,7 +92,7 @@ Long-form educational guides for investors, scouts, and analysts. Written to be 
 ## Pricing
 
 - Signal Digest: Free, this week's top 5 breakout startups with GitHub acceleration data, delivered free after email confirmation then weekly
-- Dashboard: EUR 49/month or EUR 490/year (two months free; founding EUR 9.97/month closed 2026-06-30 and remains locked for founding members), 60+ startups ranked, filter by sector/stage/geography
+- Dashboard: EUR 49/month (founding EUR 9.97/month closed 2026-06-30 and remains locked for founding members), 60+ startups ranked, filter by sector/stage/geography
 - Insider Circle: enrollment closed until a dated delivery calendar, redacted delivered artifact, support process, and verified payment probe are public. No payment is accepted while the higher-touch experience is unproven.
 
 ## MCP Server (Claude Integration)

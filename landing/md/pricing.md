@@ -1,6 +1,6 @@
 # GitDealFlow Pricing: Free, €49 Dashboard, Custom Research
 
-> Open offers: free Sunday digest, €1 Tweet Teardown, €7 First Look Pass, €49/month or €490/year Dashboard, and €1,997 Custom Sector Sweep. Insider enrollment is closed until delivery proof is public.
+> Open offers: free Sunday digest, €1 Tweet Teardown, €7 First Look Pass, €49/month Dashboard, and €1,997 Custom Sector Sweep. Insider enrollment is closed until delivery proof is public.
 
 All prices are in EUR. Every open paid offer carries the 30-day Signal-or-It's-Free guarantee: email `signals@gitdealflow.com` within 30 days for a full refund. Subscription plans can be cancelled in Stripe.
 
@@ -28,9 +28,7 @@ One sector deep dive, a ranked shortlist, and a 14-day Dashboard upgrade credit.
 
 ## Dashboard
 
-**€49/month or €490/year**
-
-The annual plan includes two months free, saving €98 against twelve monthly payments.
+**€49/month**
 
 - 60+ startups across 15 sectors, refreshed weekly
 - Plain-English reasons for each momentum signal
@@ -38,8 +36,6 @@ The annual plan includes two months free, saving €98 against twelve monthly pa
 - Cancel in one click
 
 [Start Dashboard for €49/month](https://buy.stripe.com/fZu28q34DdVKawC6vS0x20g)
-
-[Start Dashboard for €490/year](https://buy.stripe.com/aFa5kC34DeZOawC6vS0x20c)
 
 ## Insider Circle
 
