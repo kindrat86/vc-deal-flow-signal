@@ -1,3 +1,5 @@
 .vercel
 .claude
 .env*
+# build output: public files only, see scripts/build-public.mjs
+/dist

@@ -8,7 +8,7 @@ Models the flagship pitchbook/crunchbase pages exactly. All competitor claims
 are verified against public sources (Aug 2026). No em dashes anywhere.
 
 GitDealFlow pricing (current, from /pricing): Free Sunday digest, EUR 1 Teardown,
-EUR 7 First Look, EUR 49/mo Dashboard, Insider enrollment closed,
+EUR 7 First Look, EUR 49/mo Dashboard, EUR 197/mo Insider Circle,
 EUR 1,997 Sector Sweep. Founding window (EUR 9.97/97) CLOSED June 30.
 """
 import os, json

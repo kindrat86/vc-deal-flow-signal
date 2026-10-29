@@ -3,8 +3,8 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Insider Circle Status | GitDealFlow</title>
-  <meta name="description" content="Insider Circle is not open for enrollment. GitDealFlow will publish a real delivery calendar and a redacted delivered artifact before it offers a...">
+  <title>Insider Circle, €197/mo | GitDealFlow</title>
+  <meta name="description" content="Insider Circle, €197/mo: the Dashboard plus JSON API, bulk CSV, webhooks, custom watchlists and a private group for diligence questions.">
   <link rel="canonical" href="https://gitdealflow.com/insider">
   <meta name="robots" content="noindex, nofollow">
   <style>
@@ -13,8 +13,8 @@
     header, main, footer { max-width: 760px; margin: auto; padding: 24px; }
     header { display: flex; justify-content: space-between; align-items: center; border-bottom: 1px solid #334155; }
     a { color: #67e8f9; }
-    .eyebrow { color: #fcd34d; font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
-    .card { margin: 28px 0; padding: 24px; border: 1px solid #a16207; border-radius: 14px; background: #451a031f; }
+    .eyebrow { color: #67e8f9; font-size: .78rem; font-weight: 700; letter-spacing: .12em; text-transform: uppercase; }
+    .card { margin: 28px 0; padding: 24px; border: 1px solid #0e7490; border-radius: 14px; background: #0832441f; }
     .actions { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 24px; }
     .button { display: inline-block; padding: 12px 16px; border-radius: 8px; color: #06141a; background: #5eead4; font-weight: 700; text-decoration: none; }
     .button.secondary { color: #e2e8f0; background: transparent; border: 1px solid #475569; }
@@ -27,27 +27,40 @@
     <a href="/pricing">Pricing</a>
   </header>
   <main>
-    <p class="eyebrow">Offer status</p>
-    <h1>Insider enrollment is not open.</h1>
-    <p>We will not take payment for a higher-touch offer while its calendar, artefacts, support process, and member experience are not evidenced on this site.</p>
+    <p class="eyebrow">Insider Circle</p>
+    <h1>Insider Circle, €197 per month.</h1>
+    <p>For investors whose sourcing runs through a pipeline, a CRM or a syndicate. You get everything in the Dashboard, plus the data in a form your own tools can use.</p>
 
-    <section class="card" aria-labelledby="before-open">
-      <h2 id="before-open">What must exist before enrollment opens</h2>
+    <section class="card" aria-labelledby="what-you-get">
+      <h2 id="what-you-get">What you get</h2>
       <ul>
-        <li>A public delivery calendar with dated, realistic deliverables.</li>
-        <li>A redacted delivered briefing or artefact that shows what members receive.</li>
-        <li>A documented support and refund process backed by current operations.</li>
-        <li>One verified price and a working payment probe, published only after delivery proof is live.</li>
+        <li>Everything in Dashboard: the full ranked field across 15 sectors, refreshed weekly, with filters, history and watchlists.</li>
+        <li>JSON API and bulk CSV pulls.</li>
+        <li>Webhook delivery on threshold triggers, into Slack, Discord or your own tools.</li>
+        <li>Custom watchlists built around your thesis.</li>
+        <li>Private Insider group with briefings and a direct line for diligence questions.</li>
       </ul>
+      <p>€197 per month, billed monthly through Stripe. Cancel any time from the Stripe receipt or by emailing signals@gitdealflow.com. The 30-day Signal-or-It's-Free guarantee applies: if the signal does not surface a startup you find genuinely interesting, reply REFUND within 30 days and you get the full payment back.</p>
+      <div class="actions">
+        <a class="button" href="https://buy.stripe.com/bJeaEWfRpcRG6gm2fC0x20d" onclick="if(window.posthog)posthog.capture('insider_cta_clicked',{placement:'insider_page'})">Join Insider Circle, €197/mo →</a>
+        <a class="button secondary" href="/pricing">Compare all plans</a>
+      </div>
     </section>
 
     <section>
-      <h2>Use the proof that exists today</h2>
+      <h2>What it is, and what it is not</h2>
       <p>GitDealFlow is a public-data diligence signal. It helps you decide what to investigate. It does not forecast financing or replace investment diligence.</p>
+      <p>The public-data workflow is deliberately modest: observe an engineering change, compare it with the organisation's baseline, inspect the surrounding evidence, and corroborate before acting. It helps narrow a research queue. It cannot tell you that a company will raise, guarantee access to a founder, or replace the work of investment diligence.</p>
+      <p>This page does not use a member count, an urgency deadline, a member-cap claim, an earnings comparison, or a projected outcome. The public prediction ledger, misses included, is at <a href="https://signals.gitdealflow.com/predicted">signals.gitdealflow.com/predicted</a>.</p>
+    </section>
+
+    <section>
+      <h2>Not sure Insider is the right step?</h2>
+      <p>If you read the signal yourself each week and do not need the API or webhooks, the €49/mo Dashboard covers the same ranked field. Start with the public method if you need to understand the research first.</p>
       <div class="actions">
-        <a class="button" href="https://signals.gitdealflow.com/research">Read the research panel</a>
+        <a class="button secondary" href="/dashboard">See the Dashboard</a>
+        <a class="button secondary" href="https://signals.gitdealflow.com/research">Read the research panel</a>
         <a class="button secondary" href="https://signals.gitdealflow.com/mechanism">Inspect the method</a>
-        <a class="button secondary" href="/dashboard">See the current Dashboard</a>
       </div>
     </section>
   </main>

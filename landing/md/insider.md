@@ -1,24 +1,19 @@
-# Insider Circle Status | GitDealFlow
+# Insider Circle, €197/mo | GitDealFlow
 
-> Insider enrollment is not open.
+> Insider Circle is €197 per month: everything in the Dashboard plus JSON API and bulk CSV pulls, webhooks, custom watchlists and a private group for diligence questions.
 
-GitDealFlow will not accept payment for a higher-touch subscription while its calendar, artifacts, support process, and member experience are not evidenced on the site.
+## What you get
 
-## What must exist before enrollment opens
+- Everything in Dashboard: the full ranked field across 15 sectors, refreshed weekly, with filters, history and watchlists.
+- JSON API and bulk CSV pulls.
+- Webhook delivery on threshold triggers, into Slack, Discord or your own tools.
+- Custom watchlists built around your thesis.
+- Private Insider group with briefings and a direct line for diligence questions.
 
-- A public delivery calendar with dated, realistic deliverables
-- A redacted delivered briefing or artifact showing what members receive
-- A documented support and refund process backed by current operations
-- One verified price and a working payment probe, published only after delivery proof is live
+€197 per month, billed monthly through Stripe. Cancel any time. The 30-day Signal-or-It's-Free guarantee applies.
 
-## Use the proof that exists today
+[Join Insider Circle for €197/month](https://buy.stripe.com/bJeaEWfRpcRG6gm2fC0x20d)
 
-GitDealFlow is a public-data diligence signal. It helps investors decide what to investigate. It does not forecast financing or replace investment diligence.
+GitDealFlow is a public-data diligence signal. It helps you decide what to investigate. It does not forecast financing or replace investment diligence.
 
-[Read the research panel](https://signals.gitdealflow.com/research)
-
-[Inspect the method](https://signals.gitdealflow.com/mechanism)
-
-[See the current Dashboard](https://gitdealflow.com/dashboard)
-
-[Compare open offers](https://gitdealflow.com/pricing)
+Canonical page: https://gitdealflow.com/insider

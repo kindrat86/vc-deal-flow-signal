@@ -1,6 +1,6 @@
 {
-  "outputDirectory": ".",
-  "buildCommand": "node scripts/verify-all.mjs",
+  "outputDirectory": "dist",
+  "buildCommand": "node scripts/build-public.mjs --clean && node scripts/verify-all.mjs && node scripts/build-public.mjs",
   "cleanUrls": true,
   "trailingSlash": false,
   "functions": {

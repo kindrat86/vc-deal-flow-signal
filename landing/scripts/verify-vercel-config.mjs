@@ -197,10 +197,10 @@ for (const f of claimFiles) {
     l = "";
   }
   if (l.includes("- Dashboard Beta: EUR 9.97/month") || l.includes("- Insider Circle: EUR 97/month,")) {
-    fail("llms.txt presents founding rates (9.97/97) as current. Dashboard is EUR 49/mo; Insider enrollment is closed.");
+    fail("llms.txt presents founding rates (9.97/97) as current. Dashboard is EUR 49/mo; Insider Circle is EUR 197/mo.");
   }
-  if (!l.includes("- Dashboard: EUR 49/month (") || !l.includes("- Insider Circle: enrollment closed")) {
-    fail("llms.txt lost the current Dashboard pricing or Insider closed-status lines.");
+  if (!l.includes("- Dashboard: EUR 49/month (") || !l.includes("- Insider Circle: EUR 197/month.")) {
+    fail("llms.txt lost the current Dashboard or Insider Circle pricing lines.");
   }
 }
 
