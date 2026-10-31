@@ -44,6 +44,12 @@ jobs:
     steps:
       - name: Checkout
         uses: actions/checkout@v4
+        with:
+          # _rebuild_sitemap.py dates <lastmod> from `git log --name-only`.
+          # fetch-depth 1 leaves the parent out, so that log lists every
+          # path as introduced by HEAD and stamps every URL with the tip
+          # commit date. Full history is what makes lastmod deterministic.
+          fetch-depth: 0
 
       - name: Setup Python
         uses: actions/setup-python@v5
