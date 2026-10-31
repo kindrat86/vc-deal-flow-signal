@@ -139,7 +139,7 @@ const MODULES: Module[] = [
     title: "The Closes, five named patterns, one buyer profile each",
     question: "Money / Identity / Pricing / Urgency / Encore, when does each fire?",
     content:
-      "Money close fires for the spreadsheet buyer. Identity close fires for the engineer who's tired of pretending to be a partner. Pricing close fires for the rate-anchor, €1,728 retail vs €588 founding. Urgency close fires for the calendar, every Monday skipped is one 21-47-day window closed. Encore is the safety net for everyone, eight lines, the whole offer in one block, before the FAQ. One of the five always lands; you don't pick, you stack.",
+      "Money close fires for the spreadsheet buyer. Identity close fires for the engineer who's tired of pretending to be a partner. Pricing close fires for the rate-anchor, €1,728 retail vs €588 founding. Urgency close fires for the calendar, every Sunday skipped is one 21-47-day window closed. Encore is the safety net for everyone, eight lines, the whole offer in one block, before the FAQ. One of the five always lands; you don't pick, you stack.",
     links: [
       { label: "/walkthrough, four-close grid + encore", href: "/walkthrough" },
     ],

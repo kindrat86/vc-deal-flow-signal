@@ -635,7 +635,7 @@ export default async function BuildVsInvestSectorPage({ params }: PageProps) {
               href="https://gitdealflow.com/#signup"
               className="inline-flex items-center justify-center gap-2 px-5 py-2.5 rounded-lg bg-signal-500 hover:bg-signal-400 text-slate-950 font-bold text-sm transition-colors"
             >
-              Get the Monday email →
+              Get the Sunday email →
             </Link>
           </div>
         </section>
@@ -653,7 +653,7 @@ export default async function BuildVsInvestSectorPage({ params }: PageProps) {
               You read the quadrant. Now you want the names.
             </h2>
             <p className="text-gray-300 text-sm leading-relaxed">
-              The free Monday email tells you which way the wind is blowing.
+              The free Sunday email tells you which way the wind is blowing.
               If {entry.name.toLowerCase()} is the call you&rsquo;re weighing this
               quarter, two faster moves: pull the live teardown on this one
               sector, or watch every sector week over week so you see the team

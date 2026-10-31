@@ -65,7 +65,7 @@ export function buildSaveTheDateEmail({ dropTimeIso }: BuildArgs): {
 
 <p>Talk soon, The Data Nerd</p>
 
-<p style="margin-top:24px;color:#475569;font-size:14px;">P.S. If you also want the free weekly Sunday digest, a handful of startups heating up early each Monday, the signup lives at <a href="${SITE_APEX}/#signup">${SITE_APEX}</a>. Different list, same engine, no overlap.</p>`,
+<p style="margin-top:24px;color:#475569;font-size:14px;">P.S. If you also want the free weekly Sunday digest, a handful of startups heating up early each Sunday, the signup lives at <a href="${SITE_APEX}/#signup">${SITE_APEX}</a>. Different list, same engine, no overlap.</p>`,
     "stadium-save-date",
   );
 
@@ -166,7 +166,7 @@ ${reminderList}
 
 <p>You can add the moment to your calendar via this <a href="${SITE_SIGNALS}/api/stadium-pitch/calendar.ics?utm_source=email&amp;utm_medium=stadium-rsvp&amp;utm_campaign=stadium-confirm">.ics calendar invite</a>: it sets up a recurring monthly entry on the first Wednesday so future drops are pre-scheduled.</p>
 
-<p style="margin-top:28px;color:#475569;font-size:14px;">If you also want the free weekly Sunday digest, a handful of startups heating up early, every Monday at 09:00 UTC, separate signup at <a href="${SITE_APEX}/#signup">${SITE_APEX}</a>.</p>
+<p style="margin-top:28px;color:#475569;font-size:14px;">If you also want the free weekly Sunday digest, a handful of startups heating up early, every Sunday at 09:00 UTC, separate signup at <a href="${SITE_APEX}/#signup">${SITE_APEX}</a>.</p>
 
 <p>Talk soon, The Data Nerd</p>`,
     "stadium-confirm",

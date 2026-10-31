@@ -87,6 +87,10 @@ function absoluteUrl(path: string): string {
 export function defineMetadata(input: DefineMetadataInput): Metadata {
   const override = getEditorialOverride(input.path);
   const title = override?.title ?? input.title;
+  const pageTitle: Metadata["title"] =
+    override?.title !== undefined && override.absolute
+      ? { absolute: override.title }
+      : title;
   const description = override?.description ?? input.description;
   const keywords = override?.keywords ?? input.keywords;
   const noindex = override?.noindex ?? input.noindex;
@@ -104,7 +108,7 @@ export function defineMetadata(input: DefineMetadataInput): Metadata {
   // else the inherited root `/opengraph-image`.
   const ogImage = input.ogImage;
   const meta: Metadata = {
-    title,
+    title: pageTitle,
     description,
     alternates: {
       canonical,
@@ -163,8 +167,18 @@ export function withEditorialOverride(meta: Metadata): Metadata {
   const override = getEditorialOverride(path);
   if (!override) return meta;
   const out: Metadata = { ...meta };
-  if (override.title !== undefined) out.title = override.title;
+  if (override.title !== undefined) {
+    out.title = override.absolute ? { absolute: override.title } : override.title;
+  }
   if (override.description !== undefined) out.description = override.description;
+  // Keep social cards in step with the search snippet when an override lands.
+  if (meta.openGraph && (override.title !== undefined || override.description !== undefined)) {
+    out.openGraph = {
+      ...meta.openGraph,
+      ...(override.title !== undefined ? { title: override.title } : {}),
+      ...(override.description !== undefined ? { description: override.description } : {}),
+    };
+  }
   if (override.keywords !== undefined) out.keywords = override.keywords;
   if (override.noindex !== undefined) {
     const existing = meta.robots;

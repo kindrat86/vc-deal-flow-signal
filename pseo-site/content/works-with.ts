@@ -247,7 +247,7 @@ export const WORKS_WITH: WorksWithTool[] = [
       {
         name: "Weekly digest in a Notion doc",
         description:
-          "A Zapier flow grabs the Sunday digest and appends it to a shared Notion doc the partner-team reads on Monday morning.",
+          "A Zapier flow grabs the Sunday digest and appends it to a shared Notion doc the partner-team reads on Sunday.",
       },
       {
         name: "Notion AI grounding",
@@ -334,7 +334,7 @@ export const WORKS_WITH: WorksWithTool[] = [
       {
         name: "Weekly digest as Linear comments",
         description:
-          "The Sunday digest writes one Linear comment per accelerating company onto a recurring 'Deal Flow Review' issue, ready for Monday partner-meeting prep.",
+          "The Sunday digest writes one Linear comment per accelerating company onto a recurring 'Deal Flow Review' issue, ready for Sunday partner-meeting prep.",
       },
       {
         name: "Triage workflow integration",

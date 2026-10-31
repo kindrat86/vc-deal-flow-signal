@@ -174,7 +174,7 @@ const FUNNELS: Funnel[] = [
     activitySlug: "sharp",
     href: "/apply",
     tier: "Application funnel",
-    price: "€497/mo · capped at 8 funds in 2026",
+    price: "€497/mo · application-gated",
     hook: "Application-gated. Custom watchlists, white-labeled API, methodology source, quarterly review call.",
     who: "Active funds that already use the data and want sharper integration.",
     offer: "Everything in Insider + custom watchlists rebuilt monthly + white-labeled JSON/CSV endpoint + methodology source code (CC BY 4.0) + quarterly 60-min review call + first-look on every new signal type 30 days before public release.",
@@ -404,7 +404,7 @@ five startups a week, in plain English. If a specific question is
             <li>
               <span className="text-rose-400 font-mono text-xs mr-2">[€497/mo]</span>
               <strong className="text-gray-100">Sharp Tier</strong>: fund-grade
-              integration, application-gated, capped at 8.
+              integration, application-gated.
             </li>
             <li>
               <span className="text-slate-200 font-mono text-xs mr-2">[€1,997 one-time]</span>
@@ -550,7 +550,7 @@ six read-only tools inside Claude, Cursor, or any MCP host. Free
               { n: 18, name: "Cart Funnel + Downsell", where: "/firstlook, offer stack (€1,547 retail → €7), Risk Reversal at cart, free Acceleration Watch fallback" },
               { n: 19, name: "Risk Reversal / Guarantee", where: "30-day Signal-or-It's-Free, every tier" },
               { n: 20, name: "Social Proof", where: "Home SignalLeader + SSRN paper + 1,060 indexed pages" },
-              { n: 21, name: "Application / Filter", where: "/apply, 8-fund cap on Sharp Tier" },
+              { n: 21, name: "Application / Filter", where: "/apply, Sharp Tier application" },
               { n: 22, name: "Welcome email sequence", where: "lib/emails.ts D0-D7 + Challenge cohort" },
               { n: 23, name: "Daily story drip", where: "lib/emails.ts D9, D12, D14, D17, D21, D25, D30" },
               { n: 24, name: "Founder talk / State of Industry", where: "/state-of-github, first-Wednesday-of-month address" },

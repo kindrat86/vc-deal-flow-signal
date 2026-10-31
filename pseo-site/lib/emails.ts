@@ -516,7 +516,7 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
     delayMs: THIRTY_MIN + 30 * ONE_DAY,
     html: wrap(`
 <p>You've been on this list for about a month. Long enough to know whether the rhythm fits.</p>
-<p>The free Sunday digest stays exactly as it is, five startups every Monday morning, sector-tagged, no commitment, forever. If that's the right cadence for the way you write checks, keep doing what you're doing. I'd rather have you reading the free version for ten years than upgrade once and resent it.</p>
+<p>The free Sunday digest stays exactly as it is, five startups every Sunday, sector-tagged, no commitment, forever. If that's the right cadence for the way you write checks, keep doing what you're doing. I'd rather have you reading the free version for ten years than upgrade once and resent it.</p>
 <p>The one real decision is the Dashboard price.</p>
 <p>It's €49/mo, month to month. The founding-member rate (€9.97/mo) closed June 30 and is honored only for subscribers who joined before that date.</p>
 <p>If the dashboard fits the way you source deals, the live ranked panel, the 219-startup panel dataset, the monthly sector deep-dive PDF, the methodology source, the 30-day Signal-or-It's-Free guarantee, that's the rung where the math works for most readers. €49 × 12 is €588 for the year. One missed angel cheque pays it back forty times over.</p>
@@ -557,7 +557,7 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
     html: wrap(`
 <p>Most weeks the Dashboard is the right tool. Five names on Sunday, five sector pages on Monday, a 15-minute review block, done.</p>
 <p>But about once a quarter, the right move is the opposite shape, go deep on one thesis, build the entire panel from scratch, and end up with a written artefact you can paste into an IC memo or a fund newsletter.</p>
-<p>That's the Sector Sweep. €1,997 one-time, capped at 8 sweeps per quarter (Q3 2026: 7 of 8 still open). 40-page custom PDF on the sector you pick, raw CSV of every org × every metric, top-five deep dives with diligence prompts, three pre-Crunchbase early-stage targets, 14-day Q&A window for follow-up cuts.</p>
+<p>That's the Sector Sweep. €1,997 one-time. 40-page custom PDF on the sector you pick, raw CSV of every org × every metric, top-five deep dives with diligence prompts, three pre-Crunchbase early-stage targets, 14-day Q&A window for follow-up cuts.</p>
 <p>Itemized value on the page works out to ~€13,000 of analyst time at standard rates: <a href="${SIGNALS}/pricing#sector-sweep-stack" style="color:#0ea5e9;">${SIGNALS}/pricing#sector-sweep-stack</a></p>
 <p>Two reasons to consider it now, specifically:</p>
 <p>One, €1,997 is 100% credited to Insider Circle if you upgrade within 60 days of receiving the Sweep. That's roughly your first 20 months of Insider, paid in full.</p>
@@ -761,7 +761,7 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
   // for D-tier subscribers who've sat through eight months of the rhythm:
   // the Methodology Partnership at €14,997/yr trains the regression on
   // their fund's portfolio. The pitch is async-only, anonymity-preserving,
-  // 5-fund cap. F/T/I tiers skip this email via TIER_OVERRIDES (the rung
+  // F/T/I tiers skip this email via TIER_OVERRIDES (the rung
   // is two-plus rungs above the buyer at those tiers, would feel like a
   // cold pitch, not an ascension).
   {
@@ -770,7 +770,7 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
     html: wrap(`
 <p>Eight months ago you signed up for the Acceleration Watch. You've watched the Dashboard run weekly, the State-of-the-Engine prediction resolve at Day 90, the post-mortem land at Day 180. The rhythm works.</p>
 <p>If your fund has more than five years of historical investment outcomes, wins, write-offs, exits, holds, the regression that powers the Dashboard runs against the public 219-startup panel. It does not run against your fund's portfolio. Funds that license the public Dashboard read the same signal everyone else reads.</p>
-<p>The <strong>Methodology Partnership</strong> trains the same regression on your fund's anonymized portfolio outcomes and ships a fund-specific lead-time model, plus the source code to re-run it whenever your portfolio updates. €14,997/yr, founding-rate locked through end of 2027, capped at 5 funds in 2026.</p>
+<p>The <strong>Methodology Partnership</strong> trains the same regression on your fund's anonymized portfolio outcomes and ships a fund-specific lead-time model, plus the source code to re-run it whenever your portfolio updates. €14,997/yr, founding-rate locked through end of 2027, application-gated.</p>
 <p>What's in it:</p>
 <ul style="margin:0;padding-left:20px;">
 <li><strong>Custom panel construction</strong>: your fund's regression trained on your anonymized portfolio.</li>
@@ -782,9 +782,9 @@ What commit velocity tells you: what the engineering team is <em>actually doing<
 </ul>
 <p>The whole engagement is async-only. No live calls, no in-person attendance, no founder voice on a recording. The constraint is the founder anonymity rule, and it forces every deliverable to be licensable, archivable, and reviewable on your own time.</p>
 <p>Application is by structured email at <a href="${SIGNALS}/methodology-partnership" style="color:#0ea5e9;">${SIGNALS}/methodology-partnership</a>. We respond inside 48 business hours with either an invoice + onboarding pack or a written decline reason. The application is free and never auto-converts to a charge.</p>
-<p>Above the Methodology Partnership: the <strong>Vault</strong> at €49,997/yr, methodology source license, 72-hour signal head-start over the public Dashboard, co-development access, capped at 2 funds in 2026. Most Vault funds enter via Methodology Partnership for 6-12 months first, then upgrade. Page: <a href="${SIGNALS}/vault" style="color:#0ea5e9;">${SIGNALS}/vault</a>.</p>
+<p>Above the Methodology Partnership: the <strong>Vault</strong> at €49,997/yr, methodology source license, 72-hour signal head-start over the public Dashboard, co-development access, application-gated. Most Vault funds enter via Methodology Partnership for 6-12 months first, then upgrade. Page: <a href="${SIGNALS}/vault" style="color:#0ea5e9;">${SIGNALS}/vault</a>.</p>
 <p>Talk soon, <br>${FROM_NAME}</p>
-<p style="color:#64748b;font-size:14px;">P.S. The 5-fund cap exists because the custom regression work is real founder-engineering time. Two of the five 2026 seats are filled. After 2026, the rate moves to €29,997/yr; founding funds keep €14,997/yr through end of 2027.</p>
+<p style="color:#64748b;font-size:14px;">P.S. Every fund is reviewed before work starts because the custom regression work is real founder-engineering time. After 2026, the rate moves to €29,997/yr; founding funds keep €14,997/yr through end of 2027.</p>
 `, "drip-d240-methodology"),
   },
 ];
@@ -1001,11 +1001,11 @@ export const CHALLENGE_EMAILS = [
 <p><strong>Three optional rungs from here.</strong> Stacked from least to most committed. Pick none and the framework is still yours.</p>
 <p><strong>Rung 0, Free Sunday Digest.</strong> Five named GitHub orgs every Sunday, scored against the same 7-signal composite you just learned. <a href="${SITE}/#signup" style="color:#0ea5e9;">${SITE}/#signup</a>. Free forever, no upgrade pressure.</p>
 <p><strong>Rung 1, Dashboard, €49/mo.</strong> 140 venture-backed startups ranked by 14-day commit-velocity acceleration, refreshed every Monday at 06:00 UTC. Filter by sector, stage, geography. The 219-startup panel dataset. Two free Chrome extensions. The free MCP server (6 tools across Claude / Cursor / Windsurf). 30-day Signal-or-It's-Free guarantee, reply REFUND, no questions. Standalone retail of the components: ~€1,431/yr. <a href="${SITE}/pricing#dashboard" style="color:#0ea5e9;">${SITE}/pricing#dashboard</a></p>
-<p><strong>Rung 2, Custom Sector Sweep, €1,997 one-time.</strong> Pick one sector, we deliver the 40-page written deep-dive in 5 business days: top 25 ranked orgs, contributor maps, three pre-Crunchbase breakouts, raw CSV, 30-day async Q&A. Capped at 8 per quarter, bandwidth, not artificial scarcity. <a href="${SIGNALS}/sector-sweep" style="color:#0ea5e9;">${SIGNALS}/sector-sweep</a></p>
+<p><strong>Rung 2, Custom Sector Sweep, €1,997 one-time.</strong> Pick one sector, we deliver the 40-page written deep-dive in 5 business days: top 25 ranked orgs, contributor maps, three pre-Crunchbase breakouts, raw CSV, 30-day async Q&A. Written by hand, delivery date confirmed at checkout. <a href="${SIGNALS}/sector-sweep" style="color:#0ea5e9;">${SIGNALS}/sector-sweep</a></p>
 <p>Or pick none. Whatever you do, even if you just keep running the manual version yourself, you now have a sourcing process that works without paying anyone. That's the point of the week.</p>
 <p>Tomorrow: a Day-8 recap with one ask, and what to expect from this address from here on.</p>
 <p>Talk soon, <br>${FROM_NAME}</p>
-<p style="color:#64748b;font-size:14px;">P.S. The full graduation page is at <a href="${SIGNALS}/challenge/done" style="color:#0ea5e9;">${SIGNALS}/challenge/done</a>: same three rungs, with the deliverables broken out and the standalone retail of each component listed. The Sector Sweep is capped at 8 per quarter; Q3 2026 has 7 of 8 open as of this email.</p>
+<p style="color:#64748b;font-size:14px;">P.S. The full graduation page is at <a href="${SIGNALS}/challenge/done" style="color:#0ea5e9;">${SIGNALS}/challenge/done</a>: same three rungs, with the deliverables broken out and the standalone retail of each component listed. Each Sector Sweep is written by hand, so the delivery date is confirmed at checkout.</p>
 `),
   },
 
@@ -1452,7 +1452,7 @@ export const CHALLENGE_EMAILS = [
 <p><strong>Three optional rungs from here.</strong> Stacked from least to most committed. Pick none and the system is still yours.</p>
 <p><strong>Rung 0, Free Sunday Digest.</strong> Five named startups every Sunday, scored against the same 7-signal composite you just learned. <a href="${SITE}/#signup" style="color:#0ea5e9;">${SITE}/#signup</a>. Free forever, no upgrade pressure.</p>
 <p><strong>Rung 1, Dashboard, €49/mo.</strong> 140 venture-backed startups ranked by 14-day commit-velocity acceleration, refreshed every Monday at 06:00 UTC. Filter by sector, stage, geography. The 219-startup panel dataset. Two free Chrome extensions. The free MCP server. 30-day Signal-or-It's-Free guarantee. <a href="${SITE}/pricing#dashboard" style="color:#0ea5e9;">${SITE}/pricing#dashboard</a></p>
-<p><strong>Rung 2, Custom Sector Sweep, €1,997 one-time.</strong> Pick one sector, we deliver the 40-page written deep-dive in 5 business days: top 25 ranked orgs, contributor maps, three pre-Crunchbase breakouts, raw CSV, 30-day async Q&amp;A. Capped at 8 per quarter. <a href="${SIGNALS}/sector-sweep" style="color:#0ea5e9;">${SIGNALS}/sector-sweep</a></p>
+<p><strong>Rung 2, Custom Sector Sweep, €1,997 one-time.</strong> Pick one sector, we deliver the 40-page written deep-dive in 5 business days: top 25 ranked orgs, contributor maps, three pre-Crunchbase breakouts, raw CSV, 30-day async Q&amp;A. Written by hand, delivery date confirmed at checkout. <a href="${SIGNALS}/sector-sweep" style="color:#0ea5e9;">${SIGNALS}/sector-sweep</a></p>
 <p>Or pick none. The framework is licensed CC BY 4.0; nothing about the rung selection changes your ownership.</p>
 <hr style="border:none;border-top:1px solid #1e293b;margin:24px 0;">
 <p><strong>One ask, no pressure.</strong> If the Challenge worked for you, send the landing-page link to one other investor or analyst who would use it. <a href="${SIGNALS}/challenge" style="color:#0ea5e9;">${SIGNALS}/challenge</a>. We don't run an affiliate program because we don't want incentives to distort whether you tell a friend.</p>
@@ -1682,7 +1682,7 @@ export const FIRSTLOOK_REACTIVATION_DRIP = [
 <ul>
 <li><strong>All 15 sectors live, every Monday at 06:00 UTC.</strong> The same tool that wrote your sector deep dive, applied across every sector automatically, so you see what's heating up everywhere, not just one lane.</li>
 <li><strong>The startups shipping faster, ranked.</strong> The same lens, every sector, every week. No more "I wonder what's happening in fintech this month", the answer lands in your dashboard.</li>
-<li><strong>Top-mover alerts.</strong> When a company's engineering signal jumps mid-week, the dashboard flags it before next Monday's digest. (Under the hood: a 2× contributor-influx threshold, but you never have to think about the metric.)</li>
+<li><strong>Top-mover alerts.</strong> When a company's engineering signal jumps mid-week, the dashboard flags it before next Sunday's digest. (Under the hood: a 2× contributor-influx threshold, but you never have to think about the metric.)</li>
 <li><strong>Raw CSV export of every org × every metric.</strong> Drop into your CRM, your notebook, your Notion thesis page. Your data, your shape.</li>
 <li><strong>Methodology vault, full SSRN preprint, regression code, signal definitions.</strong> The same vault that powered your First Look. Open by default, for when you want to see exactly how it works.</li>
 </ul>
@@ -1702,7 +1702,7 @@ export const FIRSTLOOK_REACTIVATION_DRIP = [
 <p>Two paths from here.</p>
 <p><strong>Path 1, apply the credit, lock the founding rate.</strong> Your first month is €42 (€49 minus your €7 First Look credit). The deep dive you already paid for becomes the first month of a continuous engine.</p>
 <p><a href="${SIGNALS}/pricing?utm_source=email&utm_medium=firstlook-credit&utm_campaign=d13" style="color:#0ea5e9;font-weight:600;">Apply the credit now &rarr;</a></p>
-<p><strong>Path 2, keep the deep dive, skip the upgrade.</strong> The PDF + CSV are yours forever. The free Sunday digest still hits every Monday. The credit expires, the €7 stays a one-time deep-dive purchase, no resentment, no follow-up pressure from me. The follow-up sequence ends here on this rung.</p>
+<p><strong>Path 2, keep the deep dive, skip the upgrade.</strong> The PDF + CSV are yours forever. The free Sunday digest still lands every Sunday. The credit expires, the €7 stays a one-time deep-dive purchase, no resentment, no follow-up pressure from me. The follow-up sequence ends here on this rung.</p>
 <p>Either path works. The only path that doesn't is "wait and see", because tomorrow the credit becomes a regular €49 first month.</p>
 <p>If you want to keep the option open without committing tonight, reply <code>HOLD</code> and I'll extend the window by 7 days, one time. Don't extend without replying, I won't chase.</p>
 <p>${FROM_NAME}</p>
@@ -1755,7 +1755,7 @@ const D30_F: SoapOperaEmail = {
   html: wrap(`
 <p>You've been on this list for about a month. Long enough to know whether the rhythm fits.</p>
 <p>You told me on signup that you've written 0-1 angel checks in the past year. Translation: you're in the "watching, learning, maybe one day" tier, and that's the version of this product that's free forever, no asterisk.</p>
-<p>The free Sunday digest <strong>is</strong> the product on your tier. Five startups heating up in your sectors every Monday, ranked, no commitment. That stays exactly as it is. I'd rather you read for ten years and write your first cheque informed than upgrade once and resent it.</p>
+<p>The free Sunday digest <strong>is</strong> the product on your tier. Five startups heating up in your sectors every Sunday, ranked, no commitment. That stays exactly as it is. I'd rather you read for ten years and write your first cheque informed than upgrade once and resent it.</p>
 <p>If your cadence ever crosses into the 2-5/year range, the right next rung is the <strong>€7 First Look Pass</strong>: you pick a sector at checkout, I send the Sector Deep Dive PDF + raw CSV in 24 hours. €7 is roughly what a coffee costs in Lisbon; it's the lowest-friction way to test the deeper data on your own thesis without committing to a subscription.</p>
 <p>If your range is still 0-1/year, you don't need anything else from me. Keep the Sunday digest. Read the SSRN paper at <a href="https://ssrn.com/abstract=6606558" style="color:#0ea5e9;">ssrn.com/abstract=6606558</a> if you want the methodology end-to-end. The book is free at <a href="${SIGNALS}/book" style="color:#0ea5e9;">${SIGNALS}/book</a>.</p>
 <p>That's the offer for your tier: free, forever. The 30-day welcome ends here, the rhythm continues. Sunday digest hits as usual this weekend.</p>
@@ -1796,13 +1796,13 @@ const D30_I: SoapOperaEmail = {
 <p>You told me on signup that you write 20+ checks per year, or you run a fund or syndicate. Translation: the €49/mo Dashboard is too small a tool to register on your operating budget. The right rungs for your tier are the <strong>Insider Circle</strong> and the <strong>Sector Sweep</strong>.</p>
 <p><strong>Insider Circle, €197/mo.</strong></p>
 <ul>
-<li>Next Sunday's 5 picks land in your inbox <em>24 hours before</em> the public Monday digest. One full sourcing day before any other investor sees them.</li>
+<li>Next Sunday's 5 picks land in your inbox <em>24 hours before</em> the public Sunday digest. One full sourcing day before any other investor sees them.</li>
 <li>Closed Telegram with the founder and the rest of the fund-tier subscribers. Real-time pings when an org crosses the 2× contributor-influx + commit-velocity-acceleration threshold.</li>
 <li>JSON / CSV API for piping the panel into your existing diligence stack.</li>
 <li>Direct founder line, reply to any Insider email and you get a human inside one business day.</li>
 <li>One custom watchlist co-built around your thesis on signup.</li>
 </ul>
-<p><strong>Sector Sweep, €1,997 one-time, capped at 8 sweeps per quarter (Q3 2026: 7 of 8 still open).</strong></p>
+<p><strong>Sector Sweep, €1,997 one-time.</strong></p>
 <ul>
 <li>40-page custom PDF on the sector you pick. Raw CSV of every org × every metric. Top-five deep dives with diligence prompts. Three pre-Crunchbase early-stage targets. 14-day Q&amp;A window for follow-up cuts.</li>
 <li>100% credited to Insider Circle if you upgrade within 60 days of receiving the Sweep, that's roughly your first 20 months of Insider, paid in full.</li>
@@ -1811,7 +1811,7 @@ const D30_I: SoapOperaEmail = {
 <p>The math at fund scale: one founder per quarter that you reached because you had a Sunday-night head-start, at a €5k-€50k angel range with even a 3× exit on one in five, lands somewhere between €15k and €150k of expected value per head-start. €197/mo is €2,364/yr. The numbers don't work the other way.</p>
 <p>The free Sunday digest stays free regardless. The 30-day welcome ends here, the rhythm continues. Sunday hits as usual this weekend.</p>
 <p>Talk soon, <br>${FROM_NAME}</p>
-<p style="color:#64748b;font-size:14px;">P.S. Insider Circle (€197/mo, 24h lead, closed Telegram): <a href="${SIGNALS}/insider" style="color:#0ea5e9;">${SIGNALS}/insider</a> · Sector Sweep (€1,997, 7 of 8 Q3 slots open): <a href="${SIGNALS}/sector-sweep" style="color:#0ea5e9;">${SIGNALS}/sector-sweep</a> · Email <a href="mailto:signals@gitdealflow.com?subject=Sector%20Sweep" style="color:#0ea5e9;">signals@gitdealflow.com</a> with the sector and the spec lands in your inbox inside one business day.</p>
+<p style="color:#64748b;font-size:14px;">P.S. Insider Circle (€197/mo, 24h lead, private group): <a href="${SIGNALS}/insider" style="color:#0ea5e9;">${SIGNALS}/insider</a> · Sector Sweep (€1,997): <a href="${SIGNALS}/sector-sweep" style="color:#0ea5e9;">${SIGNALS}/sector-sweep</a> · Email <a href="mailto:signals@gitdealflow.com?subject=Sector%20Sweep" style="color:#0ea5e9;">signals@gitdealflow.com</a> with the sector and the spec lands in your inbox inside one business day.</p>
 `),
 };
 
@@ -1860,11 +1860,11 @@ const D0_I: SoapOperaEmail = {
   html: wrap(`
 <p>Welcome. First, plainly, so there's no confusion: GitDealFlow is a tool, not a fund. I'm not a VC, not competing with you for the deal, it reads startups' public GitHub activity and flags the ones heating up in your sectors before they raise. You told me on the quiz that you write 20+ checks per year, run a fund, or run a syndicate. The &euro;49/mo Dashboard is too small to register on your operating budget, so I'm going to spend the next 90 days speaking to the rungs that matter at your scale: the <strong>Insider Circle</strong> (&euro;197/mo, 24-hour lead) and the <strong>Sector Sweep</strong> (&euro;1,997 one-time, 100% credited toward Insider).</p>
 <p>The tool started with a missed Series A. A fintech-infra startup that was suddenly shipping faster, four new senior contributors, three new infrastructure repos in a fortnight. I'd flagged it in my notebook. The investors who actually wrote the cheque had read the same public GitHub signal, they just had a system that made the read mechanical instead of episodic.</p>
-<p>Across 350+ venture-backed orgs, that system is now the panel that powers two products at your tier. The Insider Circle ships next Sunday's five picks <em>24 hours before</em> the public Monday digest, one full sourcing day before any other investor sees them, plus closed Telegram, JSON/CSV API, and a custom watchlist co-built around your fund thesis. The Sector Sweep is a 40-page custom PDF on your chosen sector, three pre-Crunchbase early-stage targets, 14-day Q&amp;A, useful as IC-memo material at fund scale, and the &euro;1,997 credits 100% to Insider if you upgrade within 60 days.</p>
+<p>Across 350+ venture-backed orgs, that system is now the panel that powers two products at your tier. The Insider Circle ships next Sunday's five picks <em>24 hours before</em> the public Sunday digest, one full sourcing day before any other investor sees them, plus closed Telegram, JSON/CSV API, and a custom watchlist co-built around your fund thesis. The Sector Sweep is a 40-page custom PDF on your chosen sector, three pre-Crunchbase early-stage targets, 14-day Q&amp;A, useful as IC-memo material at fund scale, and the &euro;1,997 credits 100% to Insider if you upgrade within 60 days.</p>
 <p>The math at your check volume: one founder per quarter that you reached because you had a Sunday-night head-start, at angel-range with even a 3&times; exit on one in five, lands at &euro;15k-&euro;150k of expected value per head-start. &euro;2,364/yr of Insider versus that calculus is a no-brainer if the rhythm fits.</p>
 <p>Tomorrow: why the "public GitHub data is noise" objection is wrong at your tier specifically, the noise floor matters more for low-volume sourcing, not the kind you're running.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
-<p style="color:#64748b;font-size:14px;">P.S. SSRN preprint (n=219, the methodology backbone): <a href="https://ssrn.com/abstract=6606558" style="color:#0ea5e9;">ssrn.com/abstract=6606558</a> &middot; Insider Circle (&euro;197/mo, 24h lead, closed Telegram): <a href="${SIGNALS}/insider" style="color:#0ea5e9;">${SIGNALS}/insider</a> &middot; Sector Sweep (&euro;1,997, capped 8/quarter): <a href="${SIGNALS}/sector-sweep" style="color:#0ea5e9;">${SIGNALS}/sector-sweep</a></p>
+<p style="color:#64748b;font-size:14px;">P.S. SSRN preprint (n=219, the methodology backbone): <a href="https://ssrn.com/abstract=6606558" style="color:#0ea5e9;">ssrn.com/abstract=6606558</a> &middot; Insider Circle (&euro;197/mo, 24h lead, private group): <a href="${SIGNALS}/insider" style="color:#0ea5e9;">${SIGNALS}/insider</a> &middot; Sector Sweep (&euro;1,997, capped 8/quarter): <a href="${SIGNALS}/sector-sweep" style="color:#0ea5e9;">${SIGNALS}/sector-sweep</a></p>
 `),
 };
 
@@ -1915,7 +1915,7 @@ const D5_I: SoapOperaEmail = {
 <p>You scan. Two names you already knew. Three you didn't. The third entry is an AI-infra startup with sustained 14-day commit-velocity acceleration above 2&times; their 90-day baseline AND contributor-Gini under 0.30, the band where the panel's own resolution rate runs ~4-of-4 over a 90-day window. You ping the founder's listed email at 21:00 from the closed Telegram channel, where the rest of the fund-tier subscribers are already comparing notes.</p>
 <p>By Monday at 09:00, when the public list goes out and another 800 readers see the same five names, you've already had a 30-minute call booked, with a follow-up scheduled for end-of-week. By the time the warm-intro version of this deal reaches consensus partners at &euro;5M-&euro;20M funds, you're three weeks into a relationship that started at angel-allocation scale.</p>
 <p>The math: one founder per quarter, head-start window of one Sunday evening, at angel range with even a 3&times; exit on one in five, is somewhere between &euro;15k and &euro;150k of expected value per head-start. Insider Circle is &euro;2,364/yr. The numbers don't work the other way.</p>
-<p>Plus the rest of the fund-tier scaffolding, JSON/CSV API for the diligence stack, custom watchlist co-built around your thesis on signup, webhooks, direct founder line, closed Telegram of the other fund-tier subscribers (~30 today, capped at 100 at the founding rate). At your check volume those are the tools that turn a Sunday-night briefing into a Monday-morning conversation.</p>
+<p>Plus the rest of the fund-tier scaffolding, JSON/CSV API for the diligence stack, custom watchlist co-built around your thesis on signup, webhooks, direct founder line, closed Telegram of the other fund-tier subscribers. At your check volume those are the tools that turn a Sunday-night briefing into a Monday-morning conversation.</p>
 <p>Tomorrow I'll address the trust problem head-on, "I've been reading email from someone who signs as 'The Data Nerd' and doesn't put a face on the website", because at your tier that's a legitimate ask, and I'd rather answer it explicitly than have it sit in your head until D90.</p>
 <p>Insider Circle case (12-minute walkthrough): <a href="${SIGNALS}/insider" style="color:#0ea5e9;font-weight:600;">${SIGNALS}/insider</a></p>
 <p>Talk soon,<br>${FROM_NAME}</p>
@@ -1966,14 +1966,14 @@ const D45_I: SoapOperaEmail = {
   html: wrap(`
 <p>You signed up forty-five days ago at fund-tier, 20+ checks/year, fund or syndicate operator. Six Sunday digests + (if you took the rung) six Insider briefings have landed. The 24-hour lead has been running for six full sourcing weeks now.</p>
 <p>The honest question at this point: <strong>are you ready for the Sector Sweep?</strong></p>
-<p>The Sweep is the only artefact in the stack that's tuned for IC-memo material rather than weekly rhythm. &euro;1,997 one-time, capped at 8 sweeps per quarter (Q3 2026: 7 of 8 still open). 40-page custom PDF on the sector you pick, raw CSV of every org &times; every metric, top-five deep dives with diligence prompts, three pre-Crunchbase early-stage targets, 14-day Q&amp;A window for follow-up cuts. Itemised value works out to ~&euro;13,000 of analyst time at standard rates.</p>
+<p>The Sweep is the only artefact in the stack that's tuned for IC-memo material rather than weekly rhythm. &euro;1,997 one-time. 40-page custom PDF on the sector you pick, raw CSV of every org &times; every metric, top-five deep dives with diligence prompts, three pre-Crunchbase early-stage targets, 14-day Q&amp;A window for follow-up cuts. Itemised value works out to ~&euro;13,000 of analyst time at standard rates.</p>
 <p>Two reasons to consider it now, specifically:</p>
 <p>One, the &euro;1,997 is 100% credited to Insider Circle if you upgrade within 60 days of receiving the Sweep. That's roughly your first 20 months of Insider, paid in full. Operationally: if your fund is going to subscribe to Insider anyway, the Sweep is a free upgrade with a one-time deep artefact attached.</p>
 <p>Two, the 30-day Signal-or-It's-Free guarantee covers the Sweep itself. If we don't surface three orgs you didn't already know about, reply REFUND. No forms, no calls, no questions.</p>
 <p>If your fund's thesis is genuinely focused on one sector this quarter, AI infra, dev tools, fintech rails, vertical SaaS, climate, this is the artefact that compresses three weeks of analyst work into one weekend of reading. Email <a href="mailto:signals@gitdealflow.com?subject=Sector%20Sweep" style="color:#0ea5e9;">signals@gitdealflow.com</a> with the sector and we confirm the spec inside one business day.</p>
 <p>If Insider Circle isn't running yet either, Insider Circle (&euro;197/mo) is open. The 24-hour Sunday lead is the operating leverage; everything else is plumbing.</p>
 <p>Talk soon, <br>${FROM_NAME}</p>
-<p style="color:#64748b;font-size:14px;">P.S. Insider Circle (&euro;197/mo, 24h lead, closed Telegram, ~30 fund-tier subscribers): <a href="${SIGNALS}/insider" style="color:#0ea5e9;">${SIGNALS}/insider</a> &middot; Sector Sweep stack itemised: <a href="${SIGNALS}/pricing#sector-sweep-stack" style="color:#0ea5e9;">${SIGNALS}/pricing#sector-sweep-stack</a></p>
+<p style="color:#64748b;font-size:14px;">P.S. Insider Circle (&euro;197/mo, 24h lead, private group): <a href="${SIGNALS}/insider" style="color:#0ea5e9;">${SIGNALS}/insider</a> &middot; Sector Sweep stack itemised: <a href="${SIGNALS}/pricing#sector-sweep-stack" style="color:#0ea5e9;">${SIGNALS}/pricing#sector-sweep-stack</a></p>
 `),
 };
 
@@ -2104,7 +2104,7 @@ export const SHARP_INDOCTRINATION_DRIP = [
 <p><strong>Within 24-36 hours.</strong> Decision drafts. If accepted, I draft a Stripe Sharp Tier invoice + an Insider Circle invitation, both in the same reply email. If declined, I write a one-paragraph reason, never a form letter, never a "thanks for your interest." Either reply lands inside 48 business hours of submission. No application has gone un-replied since the tier opened.</p>
 <p><strong>One thing to do while the review runs.</strong> If you haven't already, the <a href="${SIGNALS}/walkthrough">12-minute walkthrough</a> is the page I assume every Sharp applicant has read before the first quarterly call. It saves us the first ten minutes of the call and makes the rest of it sharper. The other thing worth a tab is the <a href="${SIGNALS}/methodology">methodology page</a>: it lays out, in plain terms, exactly how a startup ends up flagged as heating up early and where the lead-time numbers come from. If you're going to write checks against this signal, you'll want to see how it works for yourself.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
-<p style="color:#64748b;font-size:14px;">P.S. The cap (8 funds in 2026) is real, not a marketing line. The quarterly call is real founder time. The reason the gate exists is so every Sharp-tier fund gets meaningful attention on the call. If you're wondering whether you're a fit, the answer to "do you want a sharper version of the same product, on a fund-tier cadence" is the question the application is built to answer.</p>
+<p style="color:#64748b;font-size:14px;">P.S. The quarterly call is real founder time. The reason the gate exists is so every Sharp-tier fund gets meaningful attention on the call. If you're wondering whether you're a fit, the answer to "do you want a sharper version of the same product, on a fund-tier cadence" is the question the application is built to answer.</p>
 `, "sharp-indoc-1"),
   },
   {
@@ -2133,7 +2133,139 @@ export const SHARP_INDOCTRINATION_DRIP = [
 <p>If declined, the reason will be specific, fund-fit, use-case-fit, or capacity. None of those are "you weren't impressive enough." All three are filterable, and most are reversible by either coming in via Insider first (€197/mo, no application) or re-applying after a thesis pivot.</p>
 <p>The reply is queued. Nothing more to do on your end.</p>
 <p>Talk soon,<br>${FROM_NAME}</p>
-<p style="color:#64748b;font-size:14px;">P.S. The 8-fund cap moves with each acceptance, the public counter on <a href="${SIGNALS}/apply">${SIGNALS}/apply</a> is the same number I'm reading from. If a slot closes between application and reply, applications already in the queue get priority over inbound applications that arrive after the cap shifts.</p>
+<p style="color:#64748b;font-size:14px;">P.S. Applications are read in the order they arrive, and every one gets a reply within 48 hours.</p>
 `, "sharp-indoc-3"),
+  },
+];
+
+/**
+ * Welcome sequence 2026-11 (approved by Maryan 2026-10-29, final text in
+ * /workspace/gdf-pricing/emails.md on the box, "Так" t360u). Five emails,
+ * Day 0, 1, 3, 5, 7 after verification. Wording is approved verbatim: do not
+ * edit copy here without a new approval.
+ *
+ * It is the WHOLE default-cohort sequence (all four quiz tiers) for NEW
+ * verifications (scheduled in app/api/verify). Per Maryan 2026-10-29 no old
+ * Soap Opera / Seinfeld emails follow it. SOAP_OPERA_* stay exported for the
+ * recovery script but are no longer scheduled for new signups. Links already carry utm_source=sequence, so this wrapper does NOT run
+ * tagEmailUrls (that would add a second utm_source).
+ */
+function wrapWelcome2026_11(preview: string, body: string): string {
+  return `<!DOCTYPE html>
+<html>
+<head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"></head>
+<body style="margin:0;padding:0;background:#f8fafc;color:#1e293b;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;">
+<div style="display:none;max-height:0;overflow:hidden;mso-hide:all;font-size:1px;line-height:1px;color:#f8fafc;opacity:0;">${preview}&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;&zwnj;&nbsp;</div>
+<div style="max-width:600px;margin:0 auto;padding:32px 24px;">
+<div style="margin-bottom:24px;"><strong style="color:#0ea5e9;font-size:14px;letter-spacing:1px;">VC DEAL FLOW SIGNAL</strong></div>
+<div style="font-size:16px;line-height:1.7;color:#1e293b;">
+${body}
+</div>
+<div style="margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;font-size:12px;color:#94a3b8;">
+<p>You're receiving this because you signed up at <a href="${SITE}" style="color:#0ea5e9;">gitdealflow.com</a></p>
+<p><a href="${SIGNALS}" style="color:#0ea5e9;">Browse Signals</a> · <a href="mailto:signals@gitdealflow.com" style="color:#0ea5e9;">Reply to unsubscribe</a></p>
+</div>
+</div>
+</body>
+</html>`;
+}
+
+export const WELCOME_2026_11_EMAILS = [
+  {
+    subject: "Why you get five names, not fifty",
+    delayMs: THIRTY_MIN,
+    html: wrapWelcome2026_11(
+      "And what to do with them before Friday.",
+      `
+<p>Hi,</p>
+<p>Quick one, since you signed up for the weekly five.</p>
+<p>Every Sunday I send you five names. To pick them, I read public GitHub activity across 350+ startup orgs and pick the five teams that are speeding up the most. Commits, new contributors, new repositories. Then I write one plain sentence on why each one is moving.</p>
+<p>Five is on purpose. Five is a number you can actually act on in a week. Fifty is a list you save and never open.</p>
+<p>So here is the one thing I would ask: pick one name from this week's five and open its GitHub page. Look at who joined in the last month. That is usually the first sign of money coming in or about to come in.</p>
+<p>Over the next few emails I will tell you why I built this, what went wrong, and what I now think the signal is good for. Including the part where it did not work.</p>
+<p>Tomorrow: the spreadsheet that started it.</p>
+<p style="margin:24px 0;"><a href="https://signals.gitdealflow.com/?utm_source=sequence&amp;utm_medium=email&amp;utm_campaign=soap-2026-11&amp;utm_content=e1" style="display:inline-block;background:#0284c7;color:#ffffff;font-weight:700;font-size:16px;padding:14px 22px;border-radius:10px;text-decoration:none;">Open this week's signals &rarr;</a></p>
+<p>The Data Nerd</p>
+`,
+    ),
+  },
+  {
+    subject: "The spreadsheet that started this",
+    delayMs: THIRTY_MIN + ONE_DAY,
+    html: wrapWelcome2026_11(
+      "Commit counts, round dates, and one awkward pattern.",
+      `
+<p>Hi,</p>
+<p>GitDealFlow started as a spreadsheet.</p>
+<p>On one side, startups that had announced a funding round. On the other, what their public GitHub looked like in the weeks before. Commit velocity, contributor count, new repos.</p>
+<p>The awkward pattern: in a lot of cases the engineering speed-up came first. Teams hire before they announce. New engineers push code before the press release goes out.</p>
+<p>I wrote it up properly. A panel of 219 startup-period observations across 55 startups, where the signal showed up 21 to 47 days before the public announcement. The method is public on SSRN, so anyone can check it.</p>
+<p>Then I hit the wall every data project hits. A pattern in old data is not the same as a call about the future. So I started publishing live picks, with dates, before anyone knew the outcome.</p>
+<p>Tomorrow I will show you how the first batch did. It is not the email you expect.</p>
+<p style="margin:24px 0;"><a href="https://signals.gitdealflow.com/methodology?utm_source=sequence&amp;utm_medium=email&amp;utm_campaign=soap-2026-11&amp;utm_content=e2" style="display:inline-block;background:#0284c7;color:#ffffff;font-weight:700;font-size:16px;padding:14px 22px;border-radius:10px;text-decoration:none;">Read the methodology &rarr;</a></p>
+<p>The Data Nerd</p>
+`,
+    ),
+  },
+  {
+    subject: "0 out of 20",
+    delayMs: THIRTY_MIN + 3 * ONE_DAY,
+    html: wrapWelcome2026_11(
+      "Two public batches, graded. I published both anyway.",
+      `
+<p>Hi,</p>
+<p>In May and again in August I published ten named startups with the strongest acceleration that week. Dated, public, graded after 60 days against public funding news.</p>
+<p>Result: two batches, twenty named startups, zero announced rounds inside 60 days.</p>
+<p>I put that on the public ledger, next to each pick, with the link I checked. You can see it at the link below.</p>
+<p>Here is what it taught me. The signal is not "this company will raise in 60 days". Rounds close when they close, and many are never announced. What the signal does well is narrower and more useful: it tells you which technical teams are building fast right now, before that is common knowledge. That is the moment a founder still answers a cold email from an angel.</p>
+<p>So I stopped selling it as a crystal ball and started treating it as a sourcing list. Who is worth a first conversation this month, with the evidence next to each name.</p>
+<p>That is exactly what the Pre-Round Report is. More on that in two days.</p>
+<p style="margin:24px 0;"><a href="https://signals.gitdealflow.com/predicted?utm_source=sequence&amp;utm_medium=email&amp;utm_campaign=soap-2026-11&amp;utm_content=e3" style="display:inline-block;background:#0284c7;color:#ffffff;font-weight:700;font-size:16px;padding:14px 22px;border-radius:10px;text-decoration:none;">See the public ledger, misses included &rarr;</a></p>
+<p>The Data Nerd</p>
+`,
+    ),
+  },
+  {
+    subject: "The part nobody asks about",
+    delayMs: THIRTY_MIN + 5 * ONE_DAY,
+    html: wrapWelcome2026_11(
+      "Why the evidence matters more than the name.",
+      `
+<p>Hi,</p>
+<p>When people see a list of startups, they ask "which ones will raise?"</p>
+<p>The better question is "what do I say in my first email?"</p>
+<p>That is the hidden benefit of the evidence behind each name. If you write to a founder and say something like "your contributor count went from 4 to 9 since September and you shipped two new repos", you are not one more investor asking for the deck. You are the one who noticed.</p>
+<p>The Pre-Round Report gives you that for 25 startups this month:</p>
+<ul>
+<li>signal type, 14-day commit-velocity change and contributor growth for each</li>
+<li>last public round and stage</li>
+<li>GitHub, website and public founder links</li>
+<li>a short PDF to read and a CSV for your CRM</li>
+</ul>
+<p>All sectors, or only the one you pick at checkout. Delivered within 48 hours. EUR 49, paid once.</p>
+<p>If it does not surface a startup you find genuinely interesting, reply REFUND within 30 days and you get the full EUR 49 back.</p>
+<p style="margin:24px 0;"><a href="https://signals.gitdealflow.com/pre-round?utm_source=sequence&amp;utm_medium=email&amp;utm_campaign=soap-2026-11&amp;utm_content=e4" style="display:inline-block;background:#0284c7;color:#ffffff;font-weight:700;font-size:16px;padding:14px 22px;border-radius:10px;text-decoration:none;">Get the Pre-Round Report, EUR 49 &rarr;</a></p>
+<p>The Data Nerd</p>
+`,
+    ),
+  },
+  {
+    subject: "Five a week, 25 a month, or all of them",
+    delayMs: THIRTY_MIN + 7 * ONE_DAY,
+    html: wrapWelcome2026_11(
+      "Pick the one that matches how often you source.",
+      `
+<p>Hi,</p>
+<p>Last email in this series. Here is the whole thing in one place, so you can pick what fits.</p>
+<p>Five a week, free. You already have this. If one first conversation a month is your pace, stay here. That is a fine choice.</p>
+<p>25 a month, EUR 49 once. The Pre-Round Report. The strongest pre-round patterns this month with the evidence and links for each name. Good if you want a proper shortlist without a subscription.</p>
+<p>All of them, every week, EUR 49 a month. The Dashboard. The full ranked field across 15 sectors, refreshed weekly, with sector filters, five-quarter history and watchlists. Same price as one Report, but every week instead of once. If you buy the Report first and upgrade within 14 days, the EUR 49 is credited in full, so the first Dashboard month costs nothing extra. There is a yearly option at EUR 490, two months free.</p>
+<p>Both paid options carry the same 30-day Signal-or-It's-Free guarantee.</p>
+<p>No countdown and no discount code. The prices stay as they are. Reply with your sector if you want me to check it is well covered before you buy.</p>
+<p style="margin:24px 0;"><a href="https://signals.gitdealflow.com/pricing?utm_source=sequence&amp;utm_medium=email&amp;utm_campaign=soap-2026-11&amp;utm_content=e5" style="display:inline-block;background:#0284c7;color:#ffffff;font-weight:700;font-size:16px;padding:14px 22px;border-radius:10px;text-decoration:none;">Compare the four steps &rarr;</a></p>
+<p>The Data Nerd</p>
+<p>P.S. Whatever you pick, the weekly five keep coming.</p>
+`,
+    ),
   },
 ];

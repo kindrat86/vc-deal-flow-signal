@@ -69,7 +69,7 @@ const ENTRY_POINTS = [
   {
     price: "Free forever",
     name: "Acceleration Watch",
-    desc: "Five startups every Monday. Sector-tagged, 6-week historical context. The signal in your inbox.",
+    desc: "Five startups every Sunday. Sector-tagged, 6-week historical context. The signal in your inbox.",
     href: "https://gitdealflow.com/#signup",
     external: true,
     color: "emerald",
@@ -231,7 +231,7 @@ export default function StartHerePage() {
               If you only do one thing: get the free Acceleration Watch.
             </h2>
             <p className="text-gray-300 text-base leading-relaxed">
-              Five startups every Monday, the ones whose public code shipped
+              Five startups every Sunday, the ones whose public code shipped
               harder than last week. Sector-tagged, 6-week historical context.
               No card, no code required to read it. It&rsquo;s the lowest-risk
               way to see whether the signal is worth more of your time.

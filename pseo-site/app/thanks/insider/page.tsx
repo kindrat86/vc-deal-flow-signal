@@ -169,8 +169,8 @@ carries the Monday five-name drop and mid-week sector pings
           <p className="text-gray-300 text-sm leading-relaxed">
             White-labeled API on your fund&rsquo;s subdomain, custom
             watchlists rebuilt monthly, methodology source code, and a
-            60-minute quarterly review call with the founder. Capped at 8
-            funds in 2026. Insider monthly fee credits 1:1 toward the first
+            60-minute quarterly review call with the founder. Application
+            reviewed within 48 hours. Insider monthly fee credits 1:1 toward the first
             month of Sharp on upgrade.
           </p>
           <p className="pt-2">

@@ -2,14 +2,10 @@ import { NextResponse } from "next/server";
 import { verifyToken, verifyVerifyToken } from "@/lib/verify-token";
 import { isValidEmail } from "@/lib/validation";
 import {
-  SOAP_OPERA_EMAILS,
-  SOAP_OPERA_F,
-  SOAP_OPERA_T,
-  SOAP_OPERA_D,
-  SOAP_OPERA_I,
   CHALLENGE_EMAILS,
   LAUNCH_EMAILS,
   LEAD_MAGNET_WELCOME_EMAILS,
+  WELCOME_2026_11_EMAILS,
 } from "@/lib/emails";
 import { isExcluded } from "@/lib/excluded-emails";
 import { isNonceUsed, markNonceUsed } from "@/lib/runtime-cache";
@@ -281,15 +277,10 @@ export async function GET(request: Request) {
       ? CHALLENGE_EMAILS
       : cohortParam === "launch"
         ? LAUNCH_EMAILS
-        : route === "F"
-          ? SOAP_OPERA_F
-          : route === "T"
-            ? SOAP_OPERA_T
-            : route === "D"
-              ? SOAP_OPERA_D
-              : route === "I"
-                ? SOAP_OPERA_I
-                : SOAP_OPERA_EMAILS;
+        : // Default cohort (all quiz tiers): ONLY the approved 2026-11
+          // welcome, +30 min then Day 1, 3, 5, 7. Maryan 2026-10-29: no old
+          // Soap Opera / Seinfeld emails after it.
+          WELCOME_2026_11_EMAILS;
   // Resend's scheduled_at API rejects anything more than 30 days in the
   // future (returns 422). Emails within the window are scheduled now; emails
   // beyond it are stored as a deferred plan on the contact's `properties`

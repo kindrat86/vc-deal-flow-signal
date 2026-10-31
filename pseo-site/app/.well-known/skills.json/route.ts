@@ -27,7 +27,7 @@ const SITE = "https://signals.gitdealflow.com";
 const SKILLS = [
   {
     name: "weekly_digest",
-    title: "Monday Signal Digest",
+    title: "Sunday Signal Digest",
     description:
       "Compose a Monday-morning intel brief from the current top-20 trending startups: each entry includes commit-velocity change, signal classification, and a one-line investor takeaway.",
     type: "mcp.prompt",

@@ -15,6 +15,8 @@ import rawOverrides from "@/content/editorial-overrides.json";
 
 export interface EditorialOverride {
   title?: string;
+  /** Render `title` verbatim, skipping the layout's "| VC Deal Flow Signal" template. */
+  absolute?: boolean;
   description?: string;
   noindex?: boolean;
   keywords?: string[];

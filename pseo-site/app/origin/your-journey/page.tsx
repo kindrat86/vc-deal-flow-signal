@@ -393,7 +393,7 @@ export default function YourJourneyPage() {
             need to lock the founding rate. You don&rsquo;t need to write a
             post about your new sourcing thesis. The first move is small and
             specific: subscribe to the Acceleration Watch. Free. One email a
-            week. Five startups every Monday, ranked by 14-day commit-velocity
+            week. Five startups every Sunday, ranked by 14-day commit-velocity
             acceleration in your sector. Sector-tagged. Direct GitHub link
             on each.
           </p>

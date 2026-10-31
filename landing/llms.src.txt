@@ -19,7 +19,7 @@ VC Deal Flow Signal is a tool (not a fund) that reads public GitHub engineering 
 - [Homepage](https://gitdealflow.com/): Product overview, pricing, and free Signal Digest signup
 - [Open-Source Signal Engine](https://github.com/kindrat86/gitdealflow-signal-engine): MIT-licensed Python reference implementation of the signal computation (commit velocity, contributor growth, new-repo creation, composite score). Clone it and re-derive the numbers on any GitHub org, the computation is open, the live data feed is the paid product.
 - [Live Dashboard](https://signals.gitdealflow.com/): Real-time startup rankings by engineering acceleration across 15 sectors
-- [Insider Circle](https://gitdealflow.com/insider): Premium tier with private Telegram group, live briefings, API access
+- [Insider Circle](https://gitdealflow.com/insider): EUR 197/month, Dashboard plus JSON API, webhooks, custom watchlists and a private group
 - [Chrome Extension](https://gitdealflow.com/chrome): Free Chrome/Brave/Edge extension that adds a GitHub momentum badge to Crunchbase and Wellfound startup profiles. No account, no tracking, ~30 KB.
 - [Receipts](https://signals.gitdealflow.com/receipts): Free tool, paste any GitHub username, get a Scout Score (0-100) computed from how many validated unicorns the user starred *before* the funding/acquisition/$1B-valuation event. No login, no OAuth, instant shareable card. Backwards-looking proof of taste.
 - [Predict (Scout Game)](https://signals.gitdealflow.com/predict): Free forward-looking prediction game, pick a GitHub org, call whether they raise a Series A in 6 months. Auto-resolved. Public profile at /s/[handle], leaderboard, rank ladder Curious → Oracle.
@@ -92,8 +92,8 @@ Long-form educational guides for investors, scouts, and analysts. Written to be 
 ## Pricing
 
 - Signal Digest: Free, this week's top 5 breakout startups with GitHub acceleration data, delivered free after email confirmation then weekly
-- Dashboard: EUR 49/month or EUR 490/year (two months free; founding EUR 9.97/month closed 2026-06-30 and remains locked for founding members), 60+ startups ranked, filter by sector/stage/geography
-- Insider Circle: enrollment closed until a dated delivery calendar, redacted delivered artifact, support process, and verified payment probe are public. No payment is accepted while the higher-touch experience is unproven.
+- Dashboard: EUR 49/month (founding EUR 9.97/month closed 2026-06-30 and remains locked for founding members), 60+ startups ranked, filter by sector/stage/geography
+- Insider Circle: EUR 197/month. Everything in Dashboard plus JSON API and bulk CSV pulls, webhooks, custom watchlists and a private group for diligence questions. Checkout: https://buy.stripe.com/bJeaEWfRpcRG6gm2fC0x20d
 
 ## MCP Server (Claude Integration)
 

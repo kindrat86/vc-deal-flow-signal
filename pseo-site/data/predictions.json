@@ -39,7 +39,7 @@
           "contributorGrowth": null,
           "thesis": "Pre-seed US jobs platform sustaining 1,694 commits over 14 days with the contributor signal pointing to a hiring burst. The combination of pre-seed stage and high commit volume is the textbook pre-seed-to-seed acceleration profile.",
           "outcome": "no_event",
-          "outcomeNotes": "Graded 2026-07-31 (60-day window closed 2026-07-03): no public funding, acquisition, IPO, or shutdown announcement found for this organization via news search.",
+          "outcomeNotes": "Graded 2026-07-31 (60-day window closed 2026-07-03): no public funding, acquisition, IPO, or shutdown announcement found for this organization via news search. Re-checked 2026-10-29 with web search: still no public funding announcement in the window (2026-05-04 to 2026-07-03). Austin-based Texas LLC; no investors or funding rounds listed. Evidence: https://www.cbinsights.com/company/zapply",
           "outcomeAt": "2026-07-31"
         },
         {
@@ -59,7 +59,7 @@
           "contributorGrowth": null,
           "thesis": "EU seed-stage configurable PIM/MDM platform with a sustained framework-migration signal. The +38% acceleration on 116 commits indicates production-grade refactor work, usually a Series A precursor in B2B SaaS.",
           "outcome": "no_event",
-          "outcomeNotes": "Graded 2026-07-31 (60-day window closed 2026-07-03): no public funding, acquisition, IPO, or shutdown announcement found for this organization via news search.",
+          "outcomeNotes": "Graded 2026-07-31 (60-day window closed 2026-07-03): no public funding, acquisition, IPO, or shutdown announcement found for this organization via news search. Re-checked 2026-10-29 with web search: still no public funding announcement in the window (2026-05-04 to 2026-07-03). Tracxn lists AtroCore as unfunded; no round in 2026. Evidence: https://tracxn.com/d/companies/atrocore/__Sb_Vif3Np_a0aUFfZ8OcjI7vejrz2g0y9KE7VnL6RFo",
           "outcomeAt": "2026-07-31"
         },
         {
@@ -79,7 +79,7 @@
           "contributorGrowth": null,
           "thesis": "Open-core ERP/HR platform showing a 9.5x acceleration over baseline with a contributor base of 79. A spike of this magnitude on a multi-product team usually maps to a release window or a customer-driven sprint.",
           "outcome": "no_event",
-          "outcomeNotes": "Graded 2026-07-31 (60-day window closed 2026-07-03): no public funding, acquisition, IPO, or shutdown announcement found for this organization via news search.",
+          "outcomeNotes": "Graded 2026-07-31 (60-day window closed 2026-07-03): no public funding, acquisition, IPO, or shutdown announcement found for this organization via news search. Re-checked 2026-10-29 with web search: still no public funding announcement in the window (2026-05-04 to 2026-07-03). No round found for Ever Co. (Ever Gauzy). Same-name funding news belongs to unrelated companies (Ever auto retail, Gauzy Ltd.). Evidence: https://github.com/ever-co/ever-gauzy",
           "outcomeAt": "2026-07-31"
         },
         {
@@ -99,7 +99,7 @@
           "contributorGrowth": null,
           "thesis": "LATAM seed-stage commerce engine with one of the highest commit volumes in the seed cohort. 598 commits / 14d with a +32% delta indicates real customer-driven shipping rather than open-source maintenance.",
           "outcome": "no_event",
-          "outcomeNotes": "Graded 2026-07-31 (60-day window closed 2026-07-03): no public funding, acquisition, IPO, or shutdown announcement found for this organization via news search.",
+          "outcomeNotes": "Graded 2026-07-31 (60-day window closed 2026-07-03): no public funding, acquisition, IPO, or shutdown announcement found for this organization via news search. Re-checked 2026-10-29 with web search: still no public funding announcement in the window (2026-05-04 to 2026-07-03). PitchBook shows one accelerator deal on 2025-08-07, before the window; nothing inside it. Evidence: https://pitchbook.com/profiles/company/1162548-91",
           "outcomeAt": "2026-07-31"
         },
         {
@@ -119,7 +119,7 @@
           "contributorGrowth": null,
           "thesis": "Identity-and-access platform (Gluu spinout) with a +77% acceleration on a 100-contributor base. Framework migration in identity SaaS at this scale typically lines up with enterprise-tier launch or platform compliance work.",
           "outcome": "no_event",
-          "outcomeNotes": "Graded 2026-07-31 (60-day window closed 2026-07-03): no public funding, acquisition, IPO, or shutdown announcement found for this organization via news search.",
+          "outcomeNotes": "Graded 2026-07-31 (60-day window closed 2026-07-03): no public funding, acquisition, IPO, or shutdown announcement found for this organization via news search. Re-checked 2026-10-29 with web search: still no public funding announcement in the window (2026-05-04 to 2026-07-03). Janssen is a Linux Foundation project led by Gluu; Tracxn shows no Gluu round in 2026. Evidence: https://tracxn.com/d/companies/gluu/__PNd36xuevcHzyJsTP2ZqYY2Ljdvxh1XGZHsV8cCps2Q",
           "outcomeAt": "2026-07-31"
         },
         {
@@ -139,7 +139,7 @@
           "contributorGrowth": null,
           "thesis": "EU venture-backed open-core ERP with a 2.4x acceleration. Sustained framework migration plus 66 active contributors maps to a re-platform or a major customer onboarding.",
           "outcome": "no_event",
-          "outcomeNotes": "Graded 2026-07-31 (60-day window closed 2026-07-03): no public funding, acquisition, IPO, or shutdown announcement found for this organization via news search.",
+          "outcomeNotes": "Graded 2026-07-31 (60-day window closed 2026-07-03): no public funding, acquisition, IPO, or shutdown announcement found for this organization via news search. Re-checked 2026-10-29 with web search: still no public funding announcement in the window (2026-05-04 to 2026-07-03). Tracxn lists metasfresh (metas GmbH) as unfunded. Evidence: https://tracxn.com/d/companies/metasfresh/__R6UcJf5ujYrmXDR1u8pSqa5SpUss92X2VscLWL4tgYY",
           "outcomeAt": "2026-07-31"
         },
         {
@@ -159,7 +159,7 @@
           "contributorGrowth": null,
           "thesis": "APAC open-core Laravel commerce platform with a +59% acceleration. Framework-migration commits with a 100-contributor base usually map to a major version release, a typical B2B fundraising-window precursor in the e-commerce stack.",
           "outcome": "no_event",
-          "outcomeNotes": "Graded 2026-07-31 (60-day window closed 2026-07-03): no public funding, acquisition, IPO, or shutdown announcement found for this organization via news search.",
+          "outcomeNotes": "Graded 2026-07-31 (60-day window closed 2026-07-03): no public funding, acquisition, IPO, or shutdown announcement found for this organization via news search. Re-checked 2026-10-29 with web search: still no public funding announcement in the window (2026-05-04 to 2026-07-03). Webkul (Bagisto) describes itself as 100% self-bootstrapped; no external round. Evidence: https://webkul.com/about-us/company-profile/",
           "outcomeAt": "2026-07-31"
         },
         {
@@ -179,7 +179,7 @@
           "contributorGrowth": null,
           "thesis": "Italian Series A/B devtools / SaaS shop with a +38% acceleration. Smaller velocity but high contributor:commit ratio (1:1), a hallmark of distributed senior engineering teams shipping to production.",
           "outcome": "no_event",
-          "outcomeNotes": "Graded 2026-07-31 (60-day window closed 2026-07-03): no public funding, acquisition, IPO, or shutdown announcement found for this organization via news search.",
+          "outcomeNotes": "Graded 2026-07-31 (60-day window closed 2026-07-03): no public funding, acquisition, IPO, or shutdown announcement found for this organization via news search. Re-checked 2026-10-29 with web search: still no public funding announcement in the window (2026-05-04 to 2026-07-03). Only reported funding is a 2015 Start-Up Chile seed; nothing in 2026. Evidence: https://www.cbinsights.com/company/devcode/financials",
           "outcomeAt": "2026-07-31"
         },
         {
@@ -199,7 +199,7 @@
           "contributorGrowth": null,
           "thesis": "Series A/B healthcare software shop with a +25% acceleration on a 28-person contributor base. Framework migration in regulated software (healthcare) is rare and meaningful, usually a product re-architecture financed by a recent or upcoming round.",
           "outcome": "no_event",
-          "outcomeNotes": "Graded 2026-07-31 (60-day window closed 2026-07-03): no public funding, acquisition, IPO, or shutdown announcement found for this organization via news search.",
+          "outcomeNotes": "Graded 2026-07-31 (60-day window closed 2026-07-03): no public funding, acquisition, IPO, or shutdown announcement found for this organization via news search. Re-checked 2026-10-29 with web search: still no public funding announcement in the window (2026-05-04 to 2026-07-03). Services LLC (ODK/DHIS2 hosting); no investors or rounds found. Evidence: https://thirdculturesoftware.com/",
           "outcomeAt": "2026-07-31"
         },
         {
@@ -219,7 +219,7 @@
           "contributorGrowth": null,
           "thesis": "Seed-stage decentralized infra team with a +28% acceleration. Smaller absolute volume but the framework-migration label across a 14-person contributor base indicates a real product re-platform rather than a single-author push.",
           "outcome": "no_event",
-          "outcomeNotes": "Graded 2026-07-31 (60-day window closed 2026-07-03): no public funding, acquisition, IPO, or shutdown announcement found for this organization via news search.",
+          "outcomeNotes": "Graded 2026-07-31 (60-day window closed 2026-07-03): no public funding, acquisition, IPO, or shutdown announcement found for this organization via news search. Re-checked 2026-10-29 with web search: still no public funding announcement in the window (2026-05-04 to 2026-07-03). Only listed financing is an undisclosed 2018 seed; nothing in 2026. Evidence: https://bouncewatch.com/company/lonero",
           "outcomeAt": "2026-07-31"
         }
       ]
@@ -248,9 +248,9 @@
           "contributors": 8,
           "contributorGrowth": "+0%",
           "thesis": "Seed-stage enterprise SaaS org showing a +573% deploy-frequency spike on 74 commits/14d across 8 contributors, the sharpest week-over-week acceleration in the panel this week.",
-          "outcome": null,
-          "outcomeNotes": null,
-          "outcomeAt": null
+          "outcome": "no_event",
+          "outcomeNotes": "Graded 2026-10-29 (60-day window 2026-08-10 to 2026-10-09 closed): no public funding, acquisition, IPO, or shutdown announcement found via web search. Databayt states its products are customer-funded, not venture-funded; no round found. Evidence: https://www.databayt.org/en/about",
+          "outcomeAt": "2026-10-29"
         },
         {
           "rank": 2,
@@ -268,9 +268,9 @@
           "contributors": 23,
           "contributorGrowth": "+400%",
           "thesis": "Series A/B data-infrastructure team at +421% with contributor count up +400%, a simultaneous velocity and hiring-burst signal, the strongest combined pattern we track.",
-          "outcome": null,
-          "outcomeNotes": null,
-          "outcomeAt": null
+          "outcome": "no_event",
+          "outcomeNotes": "Graded 2026-10-29 (60-day window 2026-08-10 to 2026-10-09 closed): no public funding, acquisition, IPO, or shutdown announcement found via web search. Conduit is built by Meroxa; latest disclosed financing is a 2024 convertible note. The March 2026 'Conduit raises $6M' news is an unrelated dock-management company. Evidence: https://www.cbinsights.com/company/meroxa/financials",
+          "outcomeAt": "2026-10-29"
         },
         {
           "rank": 3,
@@ -288,9 +288,9 @@
           "contributors": 5,
           "contributorGrowth": "+37%",
           "thesis": "Pre-seed gaming studio at +358% on 55 commits/14d with contributor growth of +37%, early-stage volume of this kind usually maps to a pre-launch sprint.",
-          "outcome": null,
-          "outcomeNotes": null,
-          "outcomeAt": null
+          "outcome": "no_event",
+          "outcomeNotes": "Graded 2026-10-29 (60-day window 2026-08-10 to 2026-10-09 closed): no public funding, acquisition, IPO, or shutdown announcement found via web search. Hobby group building a Godot fangame engine; non-venture, no funding found. Evidence: https://github.com/TheVessels",
+          "outcomeAt": "2026-10-29"
         },
         {
           "rank": 4,
@@ -308,9 +308,9 @@
           "contributors": 100,
           "contributorGrowth": "+0%",
           "thesis": "Growth-stage US game-engine org at +167% on 147 commits/14d with a 100-contributor base, a deploy-frequency spike at this scale indicates a major release window.",
-          "outcome": null,
-          "outcomeNotes": null,
-          "outcomeAt": null
+          "outcome": "no_event",
+          "outcomeNotes": "Graded 2026-10-29 (60-day window 2026-08-10 to 2026-10-09 closed): no public funding, acquisition, IPO, or shutdown announcement found via web search. Bevy is run by the donation-funded Bevy Foundation (non-profit); no venture round. Evidence: https://bevy.org/foundation/",
+          "outcomeAt": "2026-10-29"
         },
         {
           "rank": 5,
@@ -328,9 +328,9 @@
           "contributors": 9,
           "contributorGrowth": "+0%",
           "thesis": "Seed robotics (drone-show software) org at +118% with framework-migration commits, production re-architecture at seed stage is a classic pre-round profile.",
-          "outcome": null,
-          "outcomeNotes": null,
-          "outcomeAt": null
+          "outcome": "no_event",
+          "outcomeNotes": "Graded 2026-10-29 (60-day window 2026-08-10 to 2026-10-09 closed): no public funding, acquisition, IPO, or shutdown announcement found via web search. Skybrush (CollMot Robotics) states 'no investors, open-source business model'; no round found. Evidence: https://imrclab.github.io/workshop-aerial-swarms-rss2024/presentations/skybrush_20240719.pdf",
+          "outcomeAt": "2026-10-29"
         },
         {
           "rank": 6,
@@ -348,9 +348,9 @@
           "contributors": 65,
           "contributorGrowth": "+49%",
           "thesis": "APAC payments-infrastructure org at +113% on 100 commits/14d with contributor growth of +49%, sustained framework migration plus hiring is a scale-up signal.",
-          "outcome": null,
-          "outcomeNotes": null,
-          "outcomeAt": null
+          "outcome": "no_event",
+          "outcomeNotes": "Graded 2026-10-29 (60-day window 2026-08-10 to 2026-10-09 closed): no public funding, acquisition, IPO, or shutdown announcement found via web search. Juspay's latest round ($50M Series D follow-on, WestBridge) was announced 2026-01-23, before the pick and outside the window. No round 2026-08-10 to 2026-10-09. Evidence: https://juspay.io/newsroom/juspay-secures-usd50-million-investment-from-westbridge-capital",
+          "outcomeAt": "2026-10-29"
         },
         {
           "rank": 7,
@@ -368,9 +368,9 @@
           "contributors": 30,
           "contributorGrowth": "+0%",
           "thesis": "Space-tech collective at +96% on 104 commits/14d across 30 contributors, sustained framework-migration work at above-panel-median volume.",
-          "outcome": null,
-          "outcomeNotes": null,
-          "outcomeAt": null
+          "outcome": "no_event",
+          "outcomeNotes": "Graded 2026-10-29 (60-day window 2026-08-10 to 2026-10-09 closed): no public funding, acquisition, IPO, or shutdown announcement found via web search. MoonDAO is a DAO that runs community grant cohorts; no venture round announced in the window. Evidence: https://news.moondao.com/posts/deadline-approaching-submit-your-proposal",
+          "outcomeAt": "2026-10-29"
         },
         {
           "rank": 8,
@@ -388,9 +388,9 @@
           "contributors": 16,
           "contributorGrowth": "+400%",
           "thesis": "EU seed web3 protocol at +80% with contributors up +400%, an engineering hiring burst on a 16-person base is rare at this stage.",
-          "outcome": null,
-          "outcomeNotes": null,
-          "outcomeAt": null
+          "outcome": "no_event",
+          "outcomeNotes": "Graded 2026-10-29 (60-day window 2026-08-10 to 2026-10-09 closed): no public funding, acquisition, IPO, or shutdown announcement found via web search. Latest disclosed funding is a $100K seed in June 2024; no round in the window. Evidence: https://www.vcbacked.co/company/axone-protocol",
+          "outcomeAt": "2026-10-29"
         },
         {
           "rank": 9,
@@ -408,9 +408,9 @@
           "contributors": 65,
           "contributorGrowth": "+0%",
           "thesis": "Canadian agtech platform at +49% on 186 commits/14d, one of the highest absolute velocities in this week's cohort, with 65 active contributors.",
-          "outcome": null,
-          "outcomeNotes": null,
-          "outcomeAt": null
+          "outcome": "no_event",
+          "outcomeNotes": "Graded 2026-10-29 (60-day window 2026-08-10 to 2026-10-09 closed): no public funding, acquisition, IPO, or shutdown announcement found via web search. LiteFarm is grant and research funded (UBC, NSERC, Scotiabank); no commercial round. Evidence: https://tracxn.com/d/companies/lite-farm/__DM-zwqiomgXc2Ug8A7uU73D1GKimjzP0ATWvh_3KRQM",
+          "outcomeAt": "2026-10-29"
         },
         {
           "rank": 10,
@@ -428,9 +428,9 @@
           "contributors": 7,
           "contributorGrowth": "+54%",
           "thesis": "Pre-seed gaming org at +42% with contributor growth of +54%, small-base hiring bursts like this are the textbook pre-seed-to-seed acceleration profile.",
-          "outcome": null,
-          "outcomeNotes": null,
-          "outcomeAt": null
+          "outcome": "no_event",
+          "outcomeNotes": "Graded 2026-10-29 (60-day window 2026-08-10 to 2026-10-09 closed): no public funding, acquisition, IPO, or shutdown announcement found via web search. Founder-led open-source project; devlog mentions limited resources, no funding found. Evidence: https://routevn.com/en/blog/devlog-y1-5/",
+          "outcomeAt": "2026-10-29"
         }
       ]
     }

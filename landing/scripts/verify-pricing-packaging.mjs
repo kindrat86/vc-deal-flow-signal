@@ -7,15 +7,16 @@ import { fileURLToPath } from 'node:url';
 const DEFAULT_ROOT = join(fileURLToPath(new URL('..', import.meta.url)));
 const ROOT = process.argv[2] || DEFAULT_ROOT;
 const errors = [];
-const dashboardMonthly = 'https://buy.stripe.com/fZu28q34DdVKawC6vS0x20g';
-const dashboardAnnual = 'https://buy.stripe.com/aFa5kC34DeZOawC6vS0x20c';
+// Same checkout links as signals.gitdealflow.com (aligned 2026-10-29, Maryan t364u).
+const dashboardMonthly = 'https://buy.stripe.com/4gMbJ07kTaJy7kqg6s0x20b';
+const insiderMonthly = 'https://buy.stripe.com/bJeaEWfRpcRG6gm2fC0x20d';
 const bannedTokens = [
-  '4gMbJ07kTaJy7kqg6s0x20b', // old Dashboard monthly product
-  'bJeaEWfRpcRG6gm2fC0x20d', // old Insider monthly product
+  'fZu28q34DdVKawC6vS0x20g', // apex-only Dashboard monthly, replaced by the signals link 2026-10-29 (t364u)
   '8x29AS5cLdVK206g6s0x20h', // closed Insider monthly product
   '5kQ8wO48H3h6cEKdYk0x20I', // stale Dashboard EUR 441/year
   'bJe3cu48H3h6awC3jG0x20J', // stale Insider EUR 1,773/year
   'cNieVc34DbNCcEK2fC0x20e', // closed Insider annual product
+  'aFa5kC34DeZOawC6vS0x20c', // Dashboard annual, removed 2026-10-29 (Maryan, t363u)
 ];
 const scannedExt = new Set(['.html', '.md', '.txt', '.xml', '.json', '.py', '.mjs']);
 const skip = new Set([
@@ -42,8 +43,8 @@ for (const p of walk(ROOT)) {
   for (const token of bannedTokens) {
     if (text.includes(token)) errors.push(`${rel}: banned Stripe token ${token}`);
   }
-  for (const phrase of ['Subscribe &euro;197', 'Join Insider, €197', 'Add Insider, &euro;197', 'Insider Circle, €197/mo']) {
-    if (text.includes(phrase)) errors.push(`${rel}: closed Insider offer is presented as purchasable (${phrase})`);
+  if (rel !== 'scripts/test-indexability-policy.mjs' && /Insider enrol+ment (is )?(closed|not open)|Insider Circle, enrol+ment closed/i.test(text)) {
+    errors.push(`${rel}: Insider is open at EUR 197/mo but the page still says enrollment is closed`);
   }
 }
 
@@ -53,22 +54,13 @@ const insider = read('insider.html');
 const pricingMd = read('md/pricing.md');
 const insiderMd = read('md/insider.md');
 const llms = read('llms.src.txt');
-for (const [rel, text] of [['pricing.html', pricing], ['dashboard.html', dashboard], ['md/pricing.md', pricingMd]]) {
-  if (!text.includes(dashboardAnnual)) errors.push(`${rel}: canonical EUR 490/year checkout missing`);
-}
 for (const [rel, text] of [['dashboard.html', dashboard], ['md/pricing.md', pricingMd]]) {
   if (!text.includes(dashboardMonthly)) errors.push(`${rel}: canonical EUR 49/month checkout missing`);
 }
-if (!pricing.includes('Insider enrollment is closed') && !pricing.includes('Insider enrollment is closed'.replace('is ', ''))) {
-  errors.push('pricing.html: Insider closed status missing');
+for (const [rel, text] of [['pricing.html', pricing], ['insider.html', insider], ['md/insider.md', insiderMd], ['md/pricing.md', pricingMd]]) {
+  if (!text.includes(insiderMonthly)) errors.push(`${rel}: Insider EUR 197/month checkout missing`);
 }
-if (insider.includes('buy.stripe.com') || !insider.includes('Insider enrollment is not open')) {
-  errors.push('insider.html: closed status or no-payment invariant broken');
-}
-if (insiderMd.includes('buy.stripe.com') || !insiderMd.includes('Insider enrollment is not open')) {
-  errors.push('md/insider.md: closed status or no-payment invariant broken');
-}
-if (!llms.includes('- Dashboard: EUR 49/month or EUR 490/year') || !llms.includes('- Insider Circle: enrollment closed')) {
+if (!llms.includes('- Dashboard: EUR 49/month (') || !llms.includes('- Insider Circle: EUR 197/month.')) {
   errors.push('llms.src.txt: canonical pricing/package lines missing');
 }
 
@@ -81,8 +73,8 @@ for (const b of blocks) {
   } catch (e) { errors.push(`pricing.html: invalid JSON-LD: ${e.message}`); }
 }
 const offers = product?.offers?.offers || [];
-if (offers.length !== 4) errors.push(`pricing.html: expected 4 open schema offers, found ${offers.length}`);
-if (offers.some((o) => o?.name === 'Insider Circle')) errors.push('pricing.html: closed Insider remains in Product offers');
+if (offers.length !== 5) errors.push(`pricing.html: expected 5 open schema offers, found ${offers.length}`);
+if (!offers.some((o) => o?.name === 'Insider Circle' && Number(o.price) === 197)) errors.push('pricing.html: Insider Circle EUR 197 schema offer missing');
 if (!offers.some((o) => o?.name === 'Dashboard' && Number(o.price) === 49)) errors.push('pricing.html: Dashboard schema offer missing');
 
 if (errors.length) {
@@ -90,4 +82,4 @@ if (errors.length) {
   for (const e of errors) console.error(`  - ${e}`);
   process.exit(1);
 }
-console.log('PASS verify-pricing-packaging: Dashboard EUR 49/490 open; Insider closed; stale links absent');
+console.log('PASS verify-pricing-packaging: Dashboard EUR 49/mo and Insider EUR 197/mo open on the signals links, no annual; stale links absent');

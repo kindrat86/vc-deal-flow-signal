@@ -368,7 +368,7 @@ export default function OriginPage() {
           <p className="text-gray-300 text-base leading-relaxed">
             If you&rsquo;ve nodded once in the last eight minutes, you&rsquo;re
             in the same place I was in early 2025. The cheap move is the free
-            weekly digest, five startups every Monday, sector-tagged, no
+            weekly digest, five startups every Sunday, sector-tagged, no
             commitment. The slightly committed move is the €7 First Look on
             your thesis sector. The all-in move is the €9.97/mo founding-price
             Dashboard, which is locked forever for anyone who joins before the

@@ -216,7 +216,7 @@ one sector deep-dive, one-time payment, ahead of the next weekly
               Sharp Tier
             </p>
             <p className="text-gray-400 text-xs mt-1 leading-snug">
-              Application-gated. 8-fund cap.
+              Application-gated.
             </p>
           </Link>
           <Link
@@ -228,7 +228,7 @@ one sector deep-dive, one-time payment, ahead of the next weekly
               Methodology Partnership
             </p>
             <p className="text-gray-400 text-xs mt-1 leading-snug">
-              Done-with-you. 5-fund cap.
+              Done-with-you.
             </p>
           </Link>
           <Link
@@ -240,7 +240,7 @@ one sector deep-dive, one-time payment, ahead of the next weekly
               The Vault
             </p>
             <p className="text-gray-400 text-xs mt-1 leading-snug">
-              Methodology source. 2-fund cap.
+              Methodology source.
             </p>
           </Link>
         </div>

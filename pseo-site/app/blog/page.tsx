@@ -6,8 +6,9 @@ import PSEOFooterNav from "@/components/PSEOFooterNav";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
+import { withEditorialOverride } from "@/lib/metadata";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = withEditorialOverride({
   title: "Blog: GitHub Signals, Deal Sourcing & VC Data",
   description:
     "GitHub Signals for Startup Investing: practical guides for VCs and angel investors on reading engineering momentum as a leading indicator of traction.",
@@ -15,7 +16,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "/blog",
   },
-};
+});
 
 export default function BlogIndex() {
   const jsonLd = {

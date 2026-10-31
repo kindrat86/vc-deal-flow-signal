@@ -32,7 +32,7 @@ const APPLY_MAILTO =
       "",
       "Vault applications are reviewed within 5 business days. The Vault is",
       "async-only, no live calls, no in-person attendance, no founder voice",
-      "on any recording. Capped at 2 funds in 2026.",
+      "on any recording.",
     ].join("\n"),
   );
 
@@ -95,7 +95,7 @@ const TOTAL_VALUE = STACK.reduce((s, x) => s + x.value, 0);
 const FAQS = [
   {
     q: "Why is the Vault €49,997 and not higher?",
-    a: "Three anchors. (1) The Methodology Partnership is €14,997/yr, the Vault is roughly 3.3× that, with co-development access, pre-publication paper preview, 72-hour signal head-start, and the full methodology source repo as the differentiator. (2) Equivalent fund-as-research-partner engagements from name-brand methodology consultancies quote €100,000-€300,000/year. We undercut on margin, not on quality. (3) The cap of 2 funds in 2026 means the engagement stays sustainable at €49,997, beyond that, founder-engineering time becomes the bottleneck and the rate would need to climb to €100,000+ to maintain quality. The 2027 rate is €99,997/yr; 2026 funds keep €49,997 through end of 2028.",
+    a: "Three anchors. (1) The Methodology Partnership is €14,997/yr, the Vault is roughly 3.3× that, with co-development access, pre-publication paper preview, 72-hour signal head-start, and the full methodology source repo as the differentiator. (2) Equivalent fund-as-research-partner engagements from name-brand methodology consultancies quote €100,000-€300,000/year. We undercut on margin, not on quality. (3) Application review keeps the engagement sustainable at €49,997, beyond a small number of funds, founder-engineering time becomes the bottleneck and the rate would need to climb to €100,000+ to maintain quality. The 2027 rate is €99,997/yr; 2026 funds keep €49,997 through end of 2028.",
   },
   {
     q: "What does 'co-development access' mean concretely?",
@@ -127,12 +127,12 @@ export const metadata: Metadata = withEditorialOverride({
   title:
     "The Vault, €49,997/yr · Co-development, pre-publication SSRN, 72h signal head-start",
   description:
-    "Top-rung research partnership for active VC funds. Co-development access to the panel-construction pipeline, pre-publication SSRN preview, 72-hour signal head-start, methodology source repo (fund-only license). Async-only, anonymity-preserving. Capped at 2 funds in 2026. €49,997/yr founding rate.",
+    "Top-rung research partnership for active VC funds. Co-development access to the panel-construction pipeline, pre-publication SSRN preview, 72-hour signal head-start, methodology source repo (fund-only license). Async-only, anonymity-preserving. Application-gated. €49,997/yr founding rate.",
   alternates: { canonical: "/vault" },
   openGraph: {
     title: "The Vault, €49,997/yr · GitDealFlow",
     description:
-      "Top rung. Methodology source license. 72-hour signal head-start. Capped at 2 funds in 2026.",
+      "Top rung. Methodology source license. 72-hour signal head-start. Application-gated.",
     url: "https://signals.gitdealflow.com/vault",
     type: "article",
   },
@@ -156,7 +156,7 @@ export default function VaultPage() {
         serviceType:
           "Investment research partnership, methodology source license, co-development, pre-publication research access",
         description:
-          "Twelve-month research partnership for active VC funds. Includes everything in the Methodology Partnership, plus: co-development access to the panel-construction pipeline, pre-publication SSRN preview six months early, 72-hour signal head-start over public Dashboard, annual async methodology summit, methodology source repo (fund-only fork license), Signal-of-the-Quarter co-investment alerts. Async-only, anonymity-preserving. Capped at 2 funds in 2026.",
+          "Twelve-month research partnership for active VC funds. Includes everything in the Methodology Partnership, plus: co-development access to the panel-construction pipeline, pre-publication SSRN preview six months early, 72-hour signal head-start over public Dashboard, annual async methodology summit, methodology source repo (fund-only fork license), Signal-of-the-Quarter co-investment alerts. Async-only, anonymity-preserving. Application-gated.",
         provider: { "@id": "https://gitdealflow.com/#organization" },
         offers: {
           "@type": "Offer",
@@ -164,13 +164,8 @@ export default function VaultPage() {
           price: PRICE_NUMBER,
           priceCurrency: "EUR",
           priceValidUntil: "2026-12-31",
-          availability: "https://schema.org/LimitedAvailability",
+          availability: "https://schema.org/InStock",
           url: "https://signals.gitdealflow.com/vault",
-          eligibleQuantity: {
-            "@type": "QuantitativeValue",
-            maxValue: 2,
-            unitText: "year",
-          },
         },
       },
       {
@@ -239,7 +234,7 @@ export default function VaultPage() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
         <header className="space-y-4">
           <p className="text-amber-400 text-xs font-medium uppercase tracking-wider">
-            Rung 9 · Top of the ladder · Capped at 2 funds in 2026
+            Rung 9 · Top of the ladder · Application-gated
           </p>
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight">
             The methodology source.{" "}

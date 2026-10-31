@@ -1,6 +1,6 @@
 # GitDealFlow Pricing: Free, €49 Dashboard, Custom Research
 
-> Open offers: free Sunday digest, €1 Tweet Teardown, €7 First Look Pass, €49/month or €490/year Dashboard, and €1,997 Custom Sector Sweep. Insider enrollment is closed until delivery proof is public.
+> Open offers: free Sunday digest, €1 Tweet Teardown, €7 First Look Pass, €49/month Dashboard, €197/month Insider Circle, and €1,997 Custom Sector Sweep.
 
 All prices are in EUR. Every open paid offer carries the 30-day Signal-or-It's-Free guarantee: email `signals@gitdealflow.com` within 30 days for a full refund. Subscription plans can be cancelled in Stripe.
 
@@ -28,26 +28,22 @@ One sector deep dive, a ranked shortlist, and a 14-day Dashboard upgrade credit.
 
 ## Dashboard
 
-**€49/month or €490/year**
-
-The annual plan includes two months free, saving €98 against twelve monthly payments.
+**€49/month**
 
 - 60+ startups across 15 sectors, refreshed weekly
 - Plain-English reasons for each momentum signal
 - Signal history and filters
 - Cancel in one click
 
-[Start Dashboard for €49/month](https://buy.stripe.com/fZu28q34DdVKawC6vS0x20g)
-
-[Start Dashboard for €490/year](https://buy.stripe.com/aFa5kC34DeZOawC6vS0x20c)
+[Start Dashboard for €49/month](https://buy.stripe.com/4gMbJ07kTaJy7kqg6s0x20b)
 
 ## Insider Circle
 
-**Enrollment closed**
+**€197/month**
 
-GitDealFlow does not accept payment for Insider while its delivery calendar, redacted delivered artifact, support process, and member experience are not evidenced publicly.
+Everything in Dashboard plus JSON API and bulk CSV pulls, webhooks on threshold triggers, custom watchlists built around your thesis, and a private Insider group with a direct line for diligence questions.
 
-[See the enrollment requirements](https://gitdealflow.com/insider)
+[Join Insider Circle for €197/month](https://buy.stripe.com/bJeaEWfRpcRG6gm2fC0x20d)
 
 ## Custom Sector Sweep
 

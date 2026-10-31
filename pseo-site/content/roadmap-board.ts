@@ -441,7 +441,7 @@ export const ROADMAP_ITEMS: RoadmapItem[] = [
     id: "recurring-sector-sweep-rhythm",
     title: "Custom Sector Sweep, recurring quarterly rhythm",
     summary:
-      "End-of-quarter deep dives on requested sectors. Capped at 8 per quarter. Buyers can re-up the same sector or rotate; queue is publicly numbered.",
+      "End-of-quarter deep dives on requested sectors. Buyers can re-up the same sector or rotate; queue is publicly numbered.",
     lane: "on-deck",
     quarter: "Q4 2026",
     eta: "2026-10-01",

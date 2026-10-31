@@ -117,7 +117,7 @@ const RESULTS: Record<Archetype, Result> = {
     archetype: "SUBSCRIBER",
     eyebrow: "Cold Subscriber · here to read",
     title: "Subscribe to the free Acceleration Watch.",
-    body: "You're not buying anything today, and that's exactly right. The Monday digest gives you the top 5 ranked startups every week, sector-tagged, with 6-week historical context. Free forever. The fastest way to test whether the signal matches your taste before you commit to a paid tool.",
+    body: "You're not buying anything today, and that's exactly right. The Sunday digest gives you the top 5 ranked startups every week, sector-tagged, with 6-week historical context. Free forever. The fastest way to test whether the signal matches your taste before you commit to a paid tool.",
     primary: {
       label: "Subscribe to the Acceleration Watch, Free →",
       href: "https://gitdealflow.com/#signup",

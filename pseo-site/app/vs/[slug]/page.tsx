@@ -443,7 +443,7 @@ export default async function VsPage({ params }: PageProps) {
         <section className="mb-12" aria-label="Call to action">
           <SeoCta
             heading={`Skip the ${a.name}-vs-${b.name} debate, see who's actually shipping`}
-            secondary={{ label: "Unlock the Dashboard", href: "https://gitdealflow.com/dashboard" }}
+            secondary={{ label: "Get the €49 Pre-Round Report", href: "/pre-round" }}
           />
         </section>
 

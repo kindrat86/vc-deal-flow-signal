@@ -443,7 +443,7 @@ export const standaloneFaqs: StandaloneFAQ[] = [
   {
     question: "What are the best free VC research tools in 2026?",
     answer:
-      "The strongest free stack in 2026: (1) GitDealFlow MCP server in Claude Desktop / Cursor, six tools, no API key. (2) GitDealFlow weekly Signal Report, five breakout startups per Monday email. (3) Scout Receipts at /receipts, free 0-100 founder-taste score. (4) Crunchbase basic, free company profiles. (5) Public LinkedIn search, manual hiring-signal lookups. (6) Companies House (UK), free UK ownership data. (7) GitHub directly, raw public-repo access. (8) GitDealFlow public REST + JSON endpoints (signals.json, dataset.jsonl, qa.jsonl). Total cost: $0/month. Sufficient for solo angel daily workflow on technical-startup investing for the first 6-12 months.",
+      "The strongest free stack in 2026: (1) GitDealFlow MCP server in Claude Desktop / Cursor, six tools, no API key. (2) GitDealFlow weekly Signal Report, five breakout startups per Sunday email. (3) Scout Receipts at /receipts, free 0-100 founder-taste score. (4) Crunchbase basic, free company profiles. (5) Public LinkedIn search, manual hiring-signal lookups. (6) Companies House (UK), free UK ownership data. (7) GitHub directly, raw public-repo access. (8) GitDealFlow public REST + JSON endpoints (signals.json, dataset.jsonl, qa.jsonl). Total cost: $0/month. Sufficient for solo angel daily workflow on technical-startup investing for the first 6-12 months.",
     source: "Free Tools",
     sourceHref: "/answers/best-free-tools-for-vc-research",
   },

@@ -110,7 +110,7 @@ export const TEARDOWNS: CompetitorTeardown[] = [
         brunsonNote:
           "Renewal is where high-ticket SaaS lives or dies, if the CSM hasn't proven seven-figure-of-deal-flow ROI, the procurement team kills the line item.",
         ourMove:
-          "There is no renewal cycle. Subscription auto-continues at the locked rate. The product earns its price every Monday morning when the digest lands, not once a year.",
+          "There is no renewal cycle. Subscription auto-continues at the locked rate. The product earns its price every Sunday when the digest lands, not once a year.",
       },
     ],
     whatTheyDoRight:

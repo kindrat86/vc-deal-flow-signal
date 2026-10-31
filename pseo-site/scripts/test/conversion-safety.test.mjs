@@ -71,10 +71,15 @@ test("Expert Secrets public copy stays evidence-led", () => {
 });
 
 test("Insider and affiliate routes do not sell unverified delivery or performance", () => {
-  assert.match(insiderPage, /Insider enrollment is not open/);
+  // 2026-10-29 (Maryan, t362u): signals /insider is open, same €197/mo
+  // Stripe link as /pricing, no closed/waitlist state.
+  assert.match(insiderPage, /https:\/\/buy\.stripe\.com\/bJeaEWfRpcRG6gm2fC0x20d/);
+  assert.doesNotMatch(insiderPage, /not open|waitlist|enrollment closed|keep enrollment closed/i);
   assert.doesNotMatch(insiderPage, /€4,206|locked forever|same-day response|Sunday 09:00 UTC/);
-  assert.match(landingInsider, /Insider enrollment is not open/);
-  assert.doesNotMatch(landingInsider, /€197\/mo|private discussion|monthly briefings|capacity|Checkout/);
+  // 2026-10-29 (Maryan, t364u): gitdealflow.com /insider aligned with signals,
+  // same €197/mo link, no closed wording, no scarcity.
+  assert.match(landingInsider, /https:\/\/buy\.stripe\.com\/bJeaEWfRpcRG6gm2fC0x20d/);
+  assert.doesNotMatch(landingInsider, /not open|enrollment is closed|waitlist|private discussion|monthly briefings|capacity|locked forever|€4,206/i);
   assert.match(affiliatesPage, /Affiliate enrollment is not open/);
   assert.doesNotMatch(affiliatesPage, /€5,200\+ Platinum|11\.3% top CVR|20% lifetime/);
 });

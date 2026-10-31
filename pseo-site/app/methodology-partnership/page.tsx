@@ -32,7 +32,7 @@ const APPLY_MAILTO =
       "",
       "We review applications inside 48 business hours. The Methodology",
       "Partnership is async-only, no live calls, no in-person attendance.",
-      "Capped at 5 funds in 2026.",
+      "Applications reviewed within 5 business days.",
     ].join("\n"),
   );
 
@@ -106,8 +106,8 @@ const FAQS = [
     a: "Three anchors. (1) The Sharp Tier at €4,970/yr is what a fund pays for the productized version of this, same data, no custom regression, no fund-branded subdomain, no quarterly founder talk. The €14,997 is roughly 3× Sharp because the deliverables are bespoke, not productized. (2) Equivalent fund-as-case-study work from a name-brand methodology consultancy quotes €60,000-€120,000/year. We undercut that on margin, not on quality. (3) The next rung up, the Vault, is €49,997/yr and includes co-development access, pre-publication paper preview, and signal-of-the-quarter co-invest alerts. €14,997 sits exactly between productized and partnership-grade.",
   },
   {
-    q: "Why is this capped at 5 funds in 2026?",
-    a: "Two reasons. (1) The custom regression work is real founder-engineering time, even on async-only delivery, every additional fund adds 80-120 hours of pipeline work over the first three months. Five is the ceiling at which we can guarantee the 24-hour Q&A SLA without dropping quality. (2) Cap creates the scarcity that makes the founding rate hold. After 2026 the cap rises to 8 and the rate moves to €29,997/yr. Founding-rate funds keep €14,997/yr through end of 2027.",
+    q: "Why is this application-gated?",
+    a: "The custom regression work is real founder-engineering time, even on async-only delivery, so each fund is reviewed before work starts to confirm the 24-hour Q&A SLA can be kept. After 2026 the rate moves to €29,997/yr. Founding-rate funds keep €14,997/yr through end of 2027.",
   },
   {
     q: "How does this compare to commissioning a Sector Sweep?",
@@ -119,7 +119,7 @@ const FAQS = [
   },
   {
     q: "What's the upgrade path to the Vault (€49,997/yr)?",
-    a: "Methodology Partnership funds can upgrade to the Vault any time during the 12-month engagement. The Partnership rate is credited 1:1 toward the Vault rate (so a fund 6 months into Partnership pays €49,997 minus €7,499 prorated = €42,498 to upgrade). The Vault adds co-development access (your analysts submit signal hypotheses to the pipeline), pre-publication preview of next year's SSRN successor paper, 72-hour signal head-start over the public Dashboard, and annual private methodology summit. Capped at 2 funds in 2026.",
+    a: "Methodology Partnership funds can upgrade to the Vault any time during the 12-month engagement. The Partnership rate is credited 1:1 toward the Vault rate (so a fund 6 months into Partnership pays €49,997 minus €7,499 prorated = €42,498 to upgrade). The Vault adds co-development access (your analysts submit signal hypotheses to the pipeline), pre-publication preview of next year's SSRN successor paper, 72-hour signal head-start over the public Dashboard, and annual private methodology summit. Application-gated.",
   },
 ] as const;
 
@@ -127,12 +127,12 @@ export const metadata: Metadata = withEditorialOverride({
   title:
     "Methodology Partnership, €14,997/yr · Custom regression on your fund's thesis",
   description:
-    "Done-with-you methodology engagement for active VC funds. Custom panel construction trained on your portfolio, bespoke 50-org watchlist, white-labeled fund subdomain, quarterly synthetic founder talk, async-only methodology Q&A. Capped at 5 funds in 2026. €14,997/yr founding rate.",
+    "Done-with-you methodology engagement for active VC funds. Custom panel construction trained on your portfolio, bespoke 50-org watchlist, white-labeled fund subdomain, quarterly synthetic founder talk, async-only methodology Q&A. Application-gated. €14,997/yr founding rate.",
   alternates: { canonical: "/methodology-partnership" },
   openGraph: {
     title: "Methodology Partnership, €14,997/yr · GitDealFlow",
     description:
-      "Custom regression on your fund's portfolio. Bespoke watchlist. Async-only. Capped at 5 funds in 2026.",
+      "Custom regression on your fund's portfolio. Bespoke watchlist. Async-only. Application-gated.",
     url: "https://signals.gitdealflow.com/methodology-partnership",
     type: "article",
   },
@@ -157,7 +157,7 @@ export default function MethodologyPartnershipPage() {
         name: "Methodology Partnership",
         serviceType: "Investment research and custom regression methodology",
         description:
-          "Twelve-month done-with-you engagement: custom panel construction trained on your fund's anonymized portfolio outcomes, bespoke 50-org watchlist with monthly rebuild, white-labeled fund subdomain, quarterly synthetic founder talk, async-only methodology Q&A. Capped at 5 funds in 2026.",
+          "Twelve-month done-with-you engagement: custom panel construction trained on your fund's anonymized portfolio outcomes, bespoke 50-org watchlist with monthly rebuild, white-labeled fund subdomain, quarterly synthetic founder talk, async-only methodology Q&A. Application-gated.",
         provider: { "@id": "https://gitdealflow.com/#organization" },
         offers: {
           "@type": "Offer",
@@ -165,13 +165,8 @@ export default function MethodologyPartnershipPage() {
           price: PRICE_NUMBER,
           priceCurrency: "EUR",
           priceValidUntil: "2026-12-31",
-          availability: "https://schema.org/LimitedAvailability",
+          availability: "https://schema.org/InStock",
           url: "https://signals.gitdealflow.com/methodology-partnership",
-          eligibleQuantity: {
-            "@type": "QuantitativeValue",
-            maxValue: 5,
-            unitText: "year",
-          },
         },
       },
       {
@@ -235,7 +230,7 @@ export default function MethodologyPartnershipPage() {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-10">
         <header className="space-y-4">
           <p className="text-violet-400 text-xs font-medium uppercase tracking-wider">
-            Rung 8 · Done-with-you · Capped at 5 funds in 2026
+            Rung 8 · Done-with-you · Application-gated
           </p>
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight">
             Your fund&rsquo;s portfolio.{" "}
@@ -437,7 +432,7 @@ productised, no custom regression. Above: the{" "}
               Vault (€49,997/yr)
             </Link>{" "}
 adds co-development, pre-publication paper preview, 72-hour
-            signal head-start, capped at 2 funds. See the{" "}
+            signal head-start. See the{" "}
             <Link
               href="/pricing"
               className="text-violet-400 hover:text-violet-300 underline decoration-dotted"

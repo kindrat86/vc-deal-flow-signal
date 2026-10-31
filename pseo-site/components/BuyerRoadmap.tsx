@@ -112,7 +112,7 @@ const BEATS_BY_TIER: Record<RoadmapTier, readonly RoadmapBeat[]> = {
     {
       when: "Today",
       what: "Apply via /apply, five-question diligence form. Reviewed in 48 business hours.",
-      why: "Application-gated because the quarterly review call is real founder time. Hard cap at 8 funds in 2026.",
+      why: "Application-gated because the quarterly review call is real founder time.",
     },
     {
       when: "Day 3",

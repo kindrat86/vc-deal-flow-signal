@@ -164,7 +164,7 @@ export default function PitchPage() {
               <span className="text-emerald-400 font-bold shrink-0">→</span>
               <span>
                 <strong className="text-gray-100">Free.</strong> Top 5
-                breakouts in your inbox every Monday. Plus a free MCP server
+                breakouts in your inbox every Sunday. Plus a free MCP server
                 inside Claude/Cursor.
               </span>
             </li>

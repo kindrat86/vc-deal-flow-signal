@@ -67,7 +67,7 @@ export default function DeliveryCountdown() {
 
       <p className="text-gray-400 text-xs leading-relaxed border-t border-slate-800 pt-3">
         Weekday delivery. If you paid Friday after 18:00 UTC the clock
-        adjusts to Monday 18:00 UTC and you receive an inbox note with the
+        adjusts to Sunday 18:00 UTC and you receive an inbox note with the
         adjusted ETA. Outside that edge case, this counter is the actual
         SLA.
       </p>

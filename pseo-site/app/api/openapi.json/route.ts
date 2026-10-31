@@ -1307,7 +1307,7 @@ export async function GET() {
       prompts: [
         {
           name: "weekly_digest",
-          description: "Monday-morning Signal Digest from the current top-20 trending startups.",
+          description: "Sunday Signal Digest from the current top-20 trending startups.",
           arguments: [],
         },
         {

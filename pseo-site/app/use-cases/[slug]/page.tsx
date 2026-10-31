@@ -358,7 +358,7 @@ export default async function UseCasePage({ params }: PageProps) {
               The free email is the watchlist. This is the answer on one company.
             </h2>
             <p className="text-gray-400 text-sm mb-6 max-w-xl leading-relaxed">
-              The Monday email tells you who&rsquo;s moving across the market. When a
+              The Sunday email tells you who&rsquo;s moving across the market. When a
               specific company lands on your desk and you need a read before the
               call, you don&rsquo;t want to wait for Monday. Two ways to go deeper -
               still no code to read, still plain-English answers you can paste into

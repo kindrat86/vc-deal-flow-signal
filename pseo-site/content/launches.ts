@@ -338,11 +338,11 @@ export const LAUNCHES: Launch[] = [
         plc: "big-idea",
         caption: "Stage 4 · Big Idea · Open Cart",
         headline:
-          "23 of 100 spots taken. €9.97/month. Locked the day you subscribe, for as long as you stay subscribed.",
+          "€9.97/month. Locked the day you subscribe, for as long as you stay subscribed.",
         body: [
-          "Open until 100 spots fill or June 30, whichever comes first. The counter at the top of /pricing is live (Stripe webhook → SHARP_2026_TAKEN), so the spot count is real, not a marketing prop.",
+          "This founding offer ran in June 2026 and is now closed. Current pricing lives on /pricing.",
           "The math: 100 founding members at €9.97/month is €11,964/year of recurring revenue. That funds the GitHub-API layer, the regression compute, the dataset hosting, and one part-time analyst on monthly deep-dives. Above 100, the same operations stretch, which is why the public rate climbs.",
-          "If the rhythm above (Monday digest, Sunday dashboard, monthly PDF, hover-extensions) maps to how you already source, the €9.97 lock is the cheapest decision on this page. If it doesn’t map, the free Acceleration Watch stays free and you lose nothing by skipping. The ladder is real. The rungs hold. Founding-member is the rung that closes when 100 fills.",
+          "If the rhythm above (Sunday digest, weekly dashboard, monthly PDF, hover-extensions) maps to how you already source, the €9.97 lock is the cheapest decision on this page. If it doesn’t map, the free Acceleration Watch stays free and you lose nothing by skipping. The ladder is real. The rungs hold. Founding-member is the rung that closes when 100 fills.",
         ],
       },
     ],
