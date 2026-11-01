@@ -1,6 +1,6 @@
 {
   "outputDirectory": "dist",
-  "buildCommand": "node scripts/build-public.mjs --clean && node scripts/verify-all.mjs && node scripts/build-public.mjs",
+  "buildCommand": "node scripts/build-public.mjs --clean && node scripts/verify-all.mjs && node scripts/build-public.mjs && node scripts/inject-vercel-analytics.mjs dist",
   "cleanUrls": true,
   "trailingSlash": false,
   "functions": {
