@@ -3,22 +3,35 @@
 // Deployed as a Vercel serverless function. No auth required (read-only tools).
 // Install in Claude Desktop: npx mcp-remote https://gitdealflow.com/api/mcp
 
+const SUPPORTED_PROTOCOL_VERSIONS = ["2025-06-18", "2025-03-26", "2024-11-05"];
+const LATEST_PROTOCOL_VERSION = SUPPORTED_PROTOCOL_VERSIONS[0];
 const SERVER_INFO = {
   name: "gitdealflow-mcp",
+  title: "GitDealFlow MCP",
   version: "1.0.0"
 };
 const CAPABILITIES = { tools: { listChanged: false }, resources: {}, prompts: {} };
 const TOOLS = [
   {
     "name": "search_startups",
+    "title": "Search Startups",
     "description": "Search tracked startups by sector, city, or keyword.",
     "inputSchema": {
       "type": "object",
       "properties": {
         "query": {
-          "type": "string"
+          "type": "string",
+          "description": "Search keywords matching a sector, city, or startup name, e.g. fintech, Berlin.",
+          "examples": ["fintech", "Berlin", "devtools"]
         }
       }
+    },
+    "annotations": {
+      "title": "Search Startups",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
     }
   },
   {
@@ -28,26 +41,51 @@ const TOOLS = [
       "type": "object",
       "properties": {
         "startup": {
-          "type": "string"
+          "type": "string",
+          "description": "Name of the tracked startup to get the engineering momentum signal for.",
+          "examples": ["vercel", "supabase"]
         }
       },
       "required": [
         "startup"
       ]
+    },
+    "annotations": {
+      "title": "Get Startup Signal",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
     }
   },
   {
     "name": "list_sectors",
+    "title": "List Sectors",
     "description": "List all tracked sectors with startup counts.",
     "inputSchema": {
       "type": "object"
+    },
+    "annotations": {
+      "title": "List Sectors",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
     }
   },
   {
     "name": "list_cities",
+    "title": "List Cities",
     "description": "List all tracked cities with startup counts.",
     "inputSchema": {
       "type": "object"
+    },
+    "annotations": {
+      "title": "List Cities",
+      "readOnlyHint": true,
+      "destructiveHint": false,
+      "idempotentHint": true,
+      "openWorldHint": false
     }
   }
 ];
@@ -106,7 +144,7 @@ export default function handler(req, res) {
       jsonrpc: "2.0",
       serverInfo: SERVER_INFO,
       capabilities: CAPABILITIES,
-      protocolVersion: "2024-11-05",
+      protocolVersion: LATEST_PROTOCOL_VERSION,
       tools: TOOLS.map(t => ({ name: t.name, description: t.description })),
       _meta: {
         homepage: HOME_URL,
@@ -143,8 +181,9 @@ export default function handler(req, res) {
     const { id, method, params } = req || {};
     // initialize
     if (method === "initialize") {
+      const requested = (params && params.protocolVersion) || "";
       return makeResult(id, {
-        protocolVersion: "2024-11-05",
+        protocolVersion: SUPPORTED_PROTOCOL_VERSIONS.includes(requested) ? requested : LATEST_PROTOCOL_VERSION,
         capabilities: CAPABILITIES,
         serverInfo: SERVER_INFO
       });
