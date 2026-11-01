@@ -21,6 +21,7 @@ import WebVitalsReporter from "@/components/WebVitalsReporter";
 import GuidedConcierge from "@/components/GuidedConcierge";
 import CookieNotice from "@/components/CookieNotice";
 import { NotInEmbed } from "@/components/NotInEmbed";
+import { Analytics } from "@vercel/analytics/next";
 
 const inter = Inter({ subsets: ["latin"], display: "swap" });
 
@@ -647,6 +648,7 @@ export default function RootLayout({
             only. Guarded in verify-no-regressions.ts (check 15). */}
         <RootIdentitySchema />
         <BreadcrumbsSchema />
+        <Analytics />
       </body>
     </html>
   );
