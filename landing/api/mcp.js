@@ -36,6 +36,7 @@ const TOOLS = [
   },
   {
     "name": "get_startup_signal",
+    "title": "Get Startup Signal",
     "description": "Get engineering momentum signal for a specific startup.",
     "inputSchema": {
       "type": "object",
@@ -63,7 +64,8 @@ const TOOLS = [
     "title": "List Sectors",
     "description": "List all tracked sectors with startup counts.",
     "inputSchema": {
-      "type": "object"
+      "type": "object",
+      "properties": {}
     },
     "annotations": {
       "title": "List Sectors",
@@ -78,7 +80,8 @@ const TOOLS = [
     "title": "List Cities",
     "description": "List all tracked cities with startup counts.",
     "inputSchema": {
-      "type": "object"
+      "type": "object",
+      "properties": {}
     },
     "annotations": {
       "title": "List Cities",
@@ -135,7 +138,7 @@ export default function handler(req, res) {
   // CORS, MCP clients connect from various origins
   res.setHeader("Access-Control-Allow-Origin", "*");
   res.setHeader("Access-Control-Allow-Methods", "GET, POST, DELETE, OPTIONS");
-  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Accept, Mcp-Session-Id");
+  res.setHeader("Access-Control-Allow-Headers", "Content-Type, Accept, Mcp-Session-Id, MCP-Protocol-Version");
   if (req.method === "OPTIONS") return res.status(200).end();
 
   // GET: return server manifest (MCP discovery + agent card)
