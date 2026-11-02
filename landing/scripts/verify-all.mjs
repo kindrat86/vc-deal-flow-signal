@@ -97,6 +97,12 @@ const leadMagnetChecks = [
     'posthog.init(',
     "'lead_magnet_confirmed'",
     "'lead_magnet_downloaded'",
+    // Phase-4 qualify-buyers guard (Dotcom Secrets audit 2026-11-02): the
+    // lead-magnet thank-you page must carry the EUR 1 Teardown tripwire so
+    // the exit-popup and Velocity Verdict cohorts hit a buyer qualification
+    // offer, not a dead end.
+    'buy.stripe.com/bJe5kC48H2d2cEKg6s0x209',
+    "teardown_cta_clicked',{placement:'lead_magnet_thanks'",
   ]],
 ];
 for (const [rel, needles] of leadMagnetChecks) {
