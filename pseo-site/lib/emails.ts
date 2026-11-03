@@ -2237,11 +2237,11 @@ export const WELCOME_2026_11_EMAILS = [
 <p>When people see a list of startups, they ask "which ones will raise?"</p>
 <p>The better question is "what do I say in my first email?"</p>
 <p>That is the hidden benefit of the evidence behind each name. If you write to a founder and say something like "your contributor count went from 4 to 9 since September and you shipped two new repos", you are not one more investor asking for the deck. You are the one who noticed.</p>
-<p>The Pre-Round Report gives you that for 25 startups this month:</p>
+<p>The Pre-Round Report gives you that for 25 startups from this week's data:</p>
 <ul>
 <li>signal type, 14-day commit-velocity change and contributor growth for each</li>
-<li>last public round and stage</li>
-<li>GitHub, website and public founder links</li>
+<li>team size on GitHub (how many people commit)</li>
+<li>GitHub and website links</li>
 <li>a short PDF to read and a CSV for your CRM</li>
 </ul>
 <p>All sectors, or only the one you pick at checkout. Delivered within 48 hours. EUR 49, paid once.</p>

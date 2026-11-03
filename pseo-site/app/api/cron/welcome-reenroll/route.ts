@@ -24,9 +24,9 @@ import { isExcluded } from "@/lib/excluded-emails";
 import { listUnsubscribeHeaders, injectUnsubscribeLink } from "@/lib/list-unsubscribe";
 import { pickAudienceId } from "@/lib/resend-audience";
 import { gateAllows } from "@/lib/send-gate";
-import { honestSignalsCopy } from "@/lib/stale-copy";
 import { digestFreshness } from "@/lib/digest-builder";
-import { SOAP_2026_11_PAUSED } from "@/lib/soap-pause";
+import { SOAP_2026_11_PAUSED, REENROLL_SHIFT_DAYS } from "@/lib/soap-pause";
+import { createHash } from "crypto";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -67,7 +67,7 @@ async function send(to: string, idx: number, scheduledAt?: string) {
     bcc: "sales@sipiteno.com",
     to,
     subject: m.subject,
-    html: injectUnsubscribeLink(honestSignalsCopy(m.html), to),
+    html: injectUnsubscribeLink(m.html, to),
     headers: listUnsubscribeHeaders(to),
     tags: [{ name: "email_key", value: `welcome-reenroll-${idx + 1}` }],
   };
@@ -108,7 +108,8 @@ export async function GET(request: Request) {
   const todayMs = Date.parse(`${today}T00:00:00Z`);
   const due: { email: string; idx: number; at: string }[] = [];
   for (const q of loadQueue()) {
-    const offset = Math.round((todayMs - Date.parse(`${q.d}T00:00:00Z`)) / ONE_DAY);
+    const shift = REENROLL_SHIFT_DAYS[createHash("sha256").update(q.e.trim().toLowerCase()).digest("hex")] ?? 0;
+    const offset = Math.round((todayMs - Date.parse(`${q.d}T00:00:00Z`)) / ONE_DAY) - shift;
     const idx = dayOffsets.indexOf(offset);
     if (idx < 0) continue;
     const at = new Date(`${today}T${q.t}:00Z`);

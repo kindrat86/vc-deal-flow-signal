@@ -75,8 +75,27 @@ function parseVelocityChange(s: string): number {
 
 // Measured jumps rank above "no baseline" entries (zero commits in the prior
 // window), which have no comparable percentage at all.
-function byMeasuredChange(a: { commitVelocityChange: string }, b: { commitVelocityChange: string }): number {
-  const na = isNoBaseline(a.commitVelocityChange), nb = isNoBaseline(b.commitVelocityChange);
+type Moved = { commitVelocityChange: string; commitVelocity14d: number };
+
+/**
+ * Tiny base: the prior 14-day window had fewer than MIN_BASE_COMMITS commits
+ * (prior = current / (1 + change)). "+700%" on 8 commits is 1 -> 8, not a
+ * comparable percentage; shown as "New" like the "+999%" sentinel.
+ */
+const MIN_BASE_COMMITS = 5;
+export function isTinyBase(s: Moved): boolean {
+  if (isNoBaseline(s.commitVelocityChange)) return true;
+  const pct = parseVelocityChange(s.commitVelocityChange);
+  if (pct <= 0) return false;
+  return s.commitVelocity14d / (1 + pct / 100) < MIN_BASE_COMMITS;
+}
+/** Display value: tiny-base changes collapse to the "+999%" no-baseline sentinel. */
+function shownChange(s: Moved): string {
+  return isTinyBase(s) ? NO_BASELINE : s.commitVelocityChange;
+}
+
+function byMeasuredChange(a: Moved, b: Moved): number {
+  const na = isTinyBase(a), nb = isTinyBase(b);
   if (na !== nb) return na ? 1 : -1;
   return parseVelocityChange(b.commitVelocityChange) - parseVelocityChange(a.commitVelocityChange);
 }
@@ -102,13 +121,17 @@ const SYNTHETIC_DESC = /\bis an? ?[a-z&\- ]*\b(pre-seed|seed|series a\/b|growth)
 // Orgs that are not startups (public institutions, university projects,
 // non-profit institutes). Kept out of every digest ranking; the fetch
 // pipeline BLOCKLIST carries the same names for future refreshes.
-export const NON_STARTUP_ORGS = new Set(["aphp", "stanfordspezi", "vectorinstitute"]);
+export const NON_STARTUP_ORGS = new Set(["aphp", "stanfordspezi", "vectorinstitute", "fedbiomed"]);
 
 // fetch-github-data.ts writes "+999%" when the prior 14 days had zero commits.
 // That is "no baseline", not a 999% jump, so it is never shown as a number.
 export const NO_BASELINE = "+999%";
+// Any jump of +999% or more (e.g. "+20250%") comes from a zero or near-zero
+// prior window: not a comparable percentage, so it is shown as "New" and
+// ranked after measured jumps, same as the "+999%" sentinel.
 export function isNoBaseline(change: string): boolean {
-  return change.trim() === NO_BASELINE;
+  const n = parseInt(change.replace(/[^0-9-]/g, ""), 10);
+  return change.trim() === NO_BASELINE || (Number.isFinite(n) && n >= 999);
 }
 
 function sanitizeDescription(raw: string): string {
@@ -269,7 +292,7 @@ export function buildLatestDigest(lane?: string, opts?: { firstIssue?: boolean }
     sectorStats.push({
       name: sector.name,
       topStartup: sorted[0].name,
-      topChange: sorted[0].commitVelocityChange,
+      topChange: shownChange(sorted[0]),
       count: eligible.length,
       avgVelocity: avg,
     });
@@ -291,7 +314,7 @@ export function buildLatestDigest(lane?: string, opts?: { firstIssue?: boolean }
       sectorName: s.sectorName,
       sectorSlug: s.sectorSlug,
       description: sanitizeDescription(s.description),
-      commitVelocityChange: s.commitVelocityChange,
+      commitVelocityChange: shownChange(s),
       commitVelocity14d: s.commitVelocity14d,
       contributors: s.contributors,
       signalType: humanizeSignalType(s.signalType),

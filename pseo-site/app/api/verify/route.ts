@@ -12,7 +12,6 @@ import { isNonceUsed, markNonceUsed } from "@/lib/runtime-cache";
 import { listUnsubscribeHeaders, injectUnsubscribeLink } from "@/lib/list-unsubscribe";
 import { pickAudienceId } from "@/lib/resend-audience";
 import { buildLatestDigest, isDigestDataFresh, digestFreshness, FRESH_DAYS } from "@/lib/digest-builder";
-import { honestSignalsCopy } from "@/lib/stale-copy";
 import { SOAP_2026_11_PAUSED } from "@/lib/soap-pause";
 import { isInvestorLane } from "@/lib/investor-lanes";
 import { getResendConsentStatus } from "@/lib/resend-consent";
@@ -340,7 +339,7 @@ export async function GET(request: Request) {
       bcc: "sales@sipiteno.com",
       to: email,
       subject: soapEmail.subject,
-      html: injectUnsubscribeLink(honestSignalsCopy(soapEmail.html), email),
+      html: injectUnsubscribeLink(soapEmail.html, email),
       headers: listUnsubscribeHeaders(email),
     };
     // The promised asset lands immediately after confirmation. The other four

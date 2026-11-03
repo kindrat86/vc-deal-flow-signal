@@ -112,9 +112,14 @@ function track(href: string): string {
 }
 
 const NO_BASELINE = "+999%";
+/** +999% or more = zero/near-zero prior window (see lib/digest-builder.ts isNoBaseline). */
+function noBase(change: string): boolean {
+  const n = parseInt(change.replace(/[^0-9-]/g, ""), 10);
+  return change.trim() === NO_BASELINE || (Number.isFinite(n) && n >= 999);
+}
 function changeLabel(change: string): { value: string; label: string } {
-  return change.trim() === NO_BASELINE
-    ? { value: "New", label: "no activity before" }
+  return noBase(change)
+    ? { value: "New", label: "near-zero before" }
     : { value: change, label: "vs. usual pace" };
 }
 function plural(n: number, one: string, many: string): string {
@@ -122,7 +127,7 @@ function plural(n: number, one: string, many: string): string {
 }
 /** Subject/preheader text for a change value ("+999%" means no baseline). */
 export function changeText(change: string): string {
-  return change.trim() === NO_BASELINE ? "new activity" : change;
+  return noBase(change) ? "new activity" : change;
 }
 
 function unsubToken(_esp: DigestOptions["esp"]): { unsub: string; prefs: string } {
@@ -195,7 +200,7 @@ function sectorCard(s: DigestSector): string {
   return `<td class="stack bg-card brd" width="32%" style="background:${BRAND.card};border:1px solid ${BRAND.border};border-radius:12px;padding:16px;vertical-align:top;">
                     <div class="tx-mut" style="color:${BRAND.textMut};font-size:11px;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;">${escape(s.name)}</div>
                     <div class="tx-pri" style="color:${BRAND.textPri};font-size:20px;font-weight:700;margin-top:6px;">${escape(s.topStartup)}</div>
-                    <div style="color:${BRAND.positive};font-size:13px;font-weight:600;margin-top:2px;">${s.topChange.trim() === NO_BASELINE ? "top mover (new activity)" : `${escape(s.topChange)} top mover`}</div>
+                    <div style="color:${BRAND.positive};font-size:13px;font-weight:600;margin-top:2px;">${noBase(s.topChange) ? "top mover (new activity)" : `${escape(s.topChange)} top mover`}</div>
                     <div class="tx-mut" style="color:${BRAND.textMut};font-size:12px;margin-top:8px;">${plural(s.count, "startup", "startups")} &middot; ~${plural(s.avgVelocity, "code update", "code updates")} in 14 days</div>
                   </td>`;
 }

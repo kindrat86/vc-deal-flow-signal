@@ -20,17 +20,17 @@ const INCLUDED = [
   {
     label: "25 startups, ranked",
     detail:
-      "The 25 teams with the strongest pre-round engineering pattern this month, across all 15 sectors or filtered to the one you pick at checkout.",
+      "The 25 teams with the strongest pre-round engineering pattern from this week's data, across all 15 sectors or filtered to the one you pick at checkout.",
   },
   {
     label: "The evidence for each name",
     detail:
-      "Signal type, 14-day commit-velocity change, contributor growth, last public round and stage, so you can see why it made the list, not just that it did.",
+      "Signal type, 14-day commit-velocity change, contributor growth, team size on GitHub (how many people commit), so you can see why it made the list, not just that it did.",
   },
   {
     label: "Where to reach them",
     detail:
-      "GitHub org, website and public founder profiles where they exist. Ready for a first-touch email the same day.",
+      "GitHub and website links. Ready for a first-touch email the same day.",
   },
   {
     label: "PDF + CSV",
