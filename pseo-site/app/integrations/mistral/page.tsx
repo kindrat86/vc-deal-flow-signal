@@ -180,7 +180,7 @@ const jsonLd = {
       applicationCategory: "DeveloperApplication",
       operatingSystem: "Web (Streamable HTTP)",
       description:
-        "MCP server exposing six read-only tools over engineering-acceleration signals for 350+ venture-backed startups across 15 sectors. Streamable HTTP, no auth, public dataset.",
+        "MCP server exposing six read-only tools over engineering-acceleration signals for 350+ GitHub organizations across 15 sectors. Streamable HTTP, no auth, public dataset.",
       offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
       author: {
         "@type": "Organization",

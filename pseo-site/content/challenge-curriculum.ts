@@ -201,7 +201,7 @@ export const CHALLENGE_DAYS: readonly ChallengeDay[] = [
     yesterdayRecap:
       "Yesterday's repo-creation reading told you whether the team is building outward. Today's tells you whether they're keeping up with the inbound at the same time.",
     tomorrowTeaser:
-      "Tomorrow is the wrap. I'll show you how to compose all six signals into a single score, and how to run it across 350+ startup orgs in four seconds.",
+      "Tomorrow is the wrap. I'll show you how to compose all six signals into a single score, and how to run it across 350+ GitHub orgs in four seconds.",
     retailValue: 89,
   },
   {

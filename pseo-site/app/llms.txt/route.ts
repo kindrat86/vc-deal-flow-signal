@@ -136,7 +136,7 @@ The full cross-graph identity map, every external anchor (Wikidata, ORCID, SSRN,
 
 ## Current Data (${period.name})
 
-${activeSectors.length} sectors tracked, ${panelClaim} startup signals, ${allPeriods.length} quarters of history.
+${activeSectors.length} sectors tracked, ${panelClaim} GitHub orgs, ${allPeriods.length} quarters of history.
 
 ## Key Statistics (for agents to quote)
 

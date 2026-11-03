@@ -785,7 +785,7 @@ export default function Home() {
         </dl>
 
         <p className="text-gray-300 text-base sm:text-lg leading-relaxed">
-          {panelClaim} venture-backed GitHub orgs ranked every week by commit
+          {panelClaim} GitHub orgs ranked every week by commit
           velocity <strong className="text-gray-100">and contributor diversity</strong>: the two signals that, combined, drove the{" "}
           <a
             href="/methodology#3-4x-finding"
@@ -1238,7 +1238,7 @@ fine, but slow, or had been reading the same
             sourceLabel: "agents.md",
           },
           {
-            claim: `${panelClaim} startup signals across ${activeSectorCount} sectors and ${allPeriods.length} quarterly periods of history.`,
+            claim: `${panelClaim} GitHub orgs across ${activeSectorCount} sectors and ${allPeriods.length} quarterly periods of history.`,
             sourceUrl: "https://signals.gitdealflow.com/api/signals.json",
             sourceLabel: "signals.json",
           },
@@ -1655,8 +1655,8 @@ one calm read every Sunday. The other two lanes are only for when a
             All sectors we track
           </h2>
           <p className="text-gray-400 text-xs">
-            {activeSectorCount} sectors · {panelClaim} venture-backed
-            startups · refreshed weekly
+            {activeSectorCount} sectors · {panelClaim} GitHub
+            organizations · refreshed weekly
           </p>
         </div>
         <p className="text-gray-400 text-sm mb-5 max-w-2xl">

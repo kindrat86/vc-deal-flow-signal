@@ -20,7 +20,7 @@ export const methodologyFaqs: MethodologyFAQ[] = [
   {
     question: "How does VC Deal Flow Signal measure engineering acceleration?",
     answer:
-      "Engineering acceleration is computed weekly from public GitHub data. The pipeline pulls 14-day commit velocity, contributor count, and repository-creation events for roughly 350+ startup organizations across 15 sectors via the GitHub REST API, then expresses each metric as a percentage change versus the prior 14-day window. A startup whose 14-day commit velocity doubles relative to its own baseline is recorded as +100% acceleration. The metric is computed per organization against its own historical baseline, not across the population.",
+      "Engineering acceleration is computed weekly from public GitHub data. The pipeline pulls 14-day commit velocity, contributor count, and repository-creation events for roughly 350+ GitHub organizations across 15 sectors via the GitHub REST API, then expresses each metric as a percentage change versus the prior 14-day window. A startup whose 14-day commit velocity doubles relative to its own baseline is recorded as +100% acceleration. The metric is computed per organization against its own historical baseline, not across the population.",
     source: "Methodology",
     sourceHref: "/methodology",
   },

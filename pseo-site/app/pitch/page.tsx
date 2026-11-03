@@ -180,7 +180,7 @@ export default function PitchPage() {
               <span className="text-sky-400 font-bold shrink-0">→</span>
               <span>
                 <strong className="text-gray-100">€49/mo Dashboard.</strong>{" "}
-                350+ startups, 15 sectors, full filters, 219-startup backtest
+                350+ GitHub organizations, 15 sectors, full filters, 219-startup backtest
                 CSV, monthly Sector Deep Dive PDF. Rate locked while subscribed.
               </span>
             </li>

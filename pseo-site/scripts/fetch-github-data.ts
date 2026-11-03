@@ -14,6 +14,7 @@
  */
 
 import { execSync } from "child_process";
+import { applySectorOverrides } from "./sector-overrides";
 import * as fs from "fs";
 import * as path from "path";
 
@@ -55,7 +56,7 @@ const BLOCKLIST = new Set([
   // Public institutions / university projects / non-profit institutes (not startups)
   "aphp","StanfordSpezi","VectorInstitute","fedbiomed",
   // Non-startups seen in the 2026-11-03 digest (free tools, OSS without a company, hobby/game projects, labs)
-  "sunlabuiuc","ai4s-research","HeliumEdu","jlawyerorg","flame-engine","o3de","mlco2","opengeos","own-pay","tsugiproject","horizon-rust","Black-Tek",
+  "sunlabuiuc","ai4s-research","7-Blocks","HeliumEdu","jlawyerorg","flame-engine","o3de","mlco2","opengeos","own-pay","tsugiproject","horizon-rust","Black-Tek",
 ]);
 
 // Patterns in org name or description that indicate non-startup
@@ -470,6 +471,9 @@ async function main() {
       }
     }
   }
+
+  const movedBySectorOverride = applySectorOverrides(outputSectors as never);
+  if (movedBySectorOverride) console.log(`Sector overrides applied: ${movedBySectorOverride}`);
 
   // Sort sectors to maintain consistent order
   outputSectors.sort((a, b) => {

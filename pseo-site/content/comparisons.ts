@@ -113,7 +113,7 @@ export const comparisons: Comparison[] = [
     sections: [
       {
         heading: "VC Deal Flow Signal",
-        body: "VC Deal Flow Signal monitors GitHub engineering activity across 15 startup sectors and surfaces startups showing unusual engineering acceleration. The core signal, commit velocity change, has historically preceded fundraise announcements by 6-12 weeks. The free Signal Report delivers 5 breakout startups weekly. The Dashboard (EUR 49/mo beta) gives access to 350+ ranked startups with sector, stage, and geography filters. Best for: investors who want a timing-first, data-first approach to finding startups before they raise.",
+        body: "VC Deal Flow Signal monitors GitHub engineering activity across 15 startup sectors and surfaces startups showing unusual engineering acceleration. The core signal, commit velocity change, has historically preceded fundraise announcements by 6-12 weeks. The free Signal Report delivers 5 breakout startups weekly. The Dashboard (EUR 49/mo beta) gives access to 350+ ranked GitHub organizations with sector, stage, and geography filters. Best for: investors who want a timing-first, data-first approach to finding startups before they raise.",
       },
       {
         heading: "Harmonic.ai",
@@ -273,7 +273,7 @@ export const comparisons: Comparison[] = [
       },
       {
         heading: "Coverage and Depth",
-        body: "PitchBook covers 3.4M+ companies globally across all sectors and stages, with deep financial data including valuations, cap tables, and investor networks. Coverage is unmatched for due diligence. VC Deal Flow Signal tracks 350+ startups across 15 sectors with deep engineering metrics, commit velocity, contributor growth, signal classification, but no financial data. Coverage is narrow but the data is unique: no other tool tracks real-time engineering acceleration patterns.",
+        body: "PitchBook covers 3.4M+ companies globally across all sectors and stages, with deep financial data including valuations, cap tables, and investor networks. Coverage is unmatched for due diligence. VC Deal Flow Signal tracks 350+ GitHub organizations across 15 sectors with deep engineering metrics, commit velocity, contributor growth, signal classification, but no financial data. Coverage is narrow but the data is unique: no other tool tracks real-time engineering acceleration patterns.",
       },
       {
         heading: "Pricing",
@@ -289,7 +289,7 @@ export const comparisons: Comparison[] = [
       features: [
         { feature: "Signal Type", values: { "VC Deal Flow Signal": "Engineering acceleration", "PitchBook": "Financial data & market intel" } },
         { feature: "Lead Time", values: { "VC Deal Flow Signal": "6-12 weeks pre-raise", "PitchBook": "Post-raise" } },
-        { feature: "Coverage", values: { "VC Deal Flow Signal": "350+ startups, 15 sectors", "PitchBook": "3.4M+ companies" } },
+        { feature: "Coverage", values: { "VC Deal Flow Signal": "350+ GitHub organizations, 15 sectors", "PitchBook": "3.4M+ companies" } },
         { feature: "Data Depth", values: { "VC Deal Flow Signal": "Engineering metrics", "PitchBook": "Financials, cap tables, LPs" } },
         { feature: "Pricing", values: { "VC Deal Flow Signal": "Free / EUR 49/mo", "PitchBook": "$20,000+/year" } },
         { feature: "Best For", values: { "VC Deal Flow Signal": "Early deal sourcing", "PitchBook": "Due diligence & market mapping" } },
@@ -322,7 +322,7 @@ export const comparisons: Comparison[] = [
       },
       {
         heading: "Coverage",
-        body: "Harmonic.ai covers a broad universe of companies globally, scanning for team patterns across all sectors. Coverage is wide but shallow on the engineering dimension. VC Deal Flow Signal covers 350+ startups across 15 sectors with deep engineering metrics, commit velocity trends, contributor growth rates, signal classification. Coverage is narrower but offers a data dimension no other tool provides.",
+        body: "Harmonic.ai covers a broad universe of companies globally, scanning for team patterns across all sectors. Coverage is wide but shallow on the engineering dimension. VC Deal Flow Signal covers 350+ GitHub organizations across 15 sectors with deep engineering metrics, commit velocity trends, contributor growth rates, signal classification. Coverage is narrower but offers a data dimension no other tool provides.",
       },
       {
         heading: "Pricing",
@@ -508,7 +508,7 @@ export const comparisons: Comparison[] = [
     sections: [
       {
         heading: "VC Deal Flow Signal, leading-signal layer",
-        body: "The free weekly Signal Report (5 startups every Monday) is enough to keep a solo GP looking at high-quality technical opportunities. The Dashboard at EUR 49/month adds 350+ ranked startups, sector and stage filters, and historical lead-time audit. Engineering acceleration is causally upstream of fundraise announcements, for a solo GP whose edge depends on getting in before the round is competitive, this is the highest-value monthly subscription.",
+        body: "The free weekly Signal Report (5 startups every Monday) is enough to keep a solo GP looking at high-quality technical opportunities. The Dashboard at EUR 49/month adds 350+ ranked GitHub organizations, sector and stage filters, and historical lead-time audit. Engineering acceleration is causally upstream of fundraise announcements, for a solo GP whose edge depends on getting in before the round is competitive, this is the highest-value monthly subscription.",
       },
       {
         heading: "Crunchbase free + Pro, funding-data layer",
@@ -2146,7 +2146,7 @@ export const comparisons: Comparison[] = [
       },
       {
         heading: "Coverage",
-        body: "Tracxn spans more than two thousand industries with genuinely strong coverage of Asian ecosystems, a differentiator in a category that often skews Europe and North America. VC Deal Flow Signal tracks 350+ startups across 15 sectors on public GitHub, which is strongest for software, infrastructure, and developer-tools companies and thinner for sectors with little public engineering activity.",
+        body: "Tracxn spans more than two thousand industries with genuinely strong coverage of Asian ecosystems, a differentiator in a category that often skews Europe and North America. VC Deal Flow Signal tracks 350+ GitHub organizations across 15 sectors on public GitHub, which is strongest for software, infrastructure, and developer-tools companies and thinner for sectors with little public engineering activity.",
       },
       {
         heading: "Pricing",
@@ -2162,7 +2162,7 @@ export const comparisons: Comparison[] = [
       features: [
         { feature: "Signal type", values: { "VC Deal Flow Signal": "Engineering acceleration (GitHub)", "Tracxn": "Analyst-curated sector maps" } },
         { feature: "Lead time", values: { "VC Deal Flow Signal": "3-6 weeks pre-fundraise", "Tracxn": "Post-announcement" } },
-        { feature: "Coverage", values: { "VC Deal Flow Signal": "15 sectors, 350+ startups", "Tracxn": "2,000+ industries, global" } },
+        { feature: "Coverage", values: { "VC Deal Flow Signal": "15 sectors, 350+ GitHub organizations", "Tracxn": "2,000+ industries, global" } },
         { feature: "Entry pricing", values: { "VC Deal Flow Signal": "Free / EUR 49/mo", "Tracxn": "Tiered (Pro to Enterprise)" } },
         { feature: "Free tier", values: { "VC Deal Flow Signal": "Weekly Signal Report", "Tracxn": "Limited" } },
         { feature: "Best for", values: { "VC Deal Flow Signal": "Pre-round technical discovery", "Tracxn": "Sector research and Asia mapping" } },
@@ -2205,7 +2205,7 @@ export const comparisons: Comparison[] = [
       },
       {
         heading: "Coverage",
-        body: "Forager.ai covers any company with a public web footprint, including consumer and services businesses that never touch GitHub. VC Deal Flow Signal tracks 350+ startups across 15 sectors and is strongest for software, infrastructure, and developer tools. If you source consumer or non-technical companies, Forager is broader; if you source technical startups, the GitHub signal is the stronger leading indicator.",
+        body: "Forager.ai covers any company with a public web footprint, including consumer and services businesses that never touch GitHub. VC Deal Flow Signal tracks 350+ GitHub organizations across 15 sectors and is strongest for software, infrastructure, and developer tools. If you source consumer or non-technical companies, Forager is broader; if you source technical startups, the GitHub signal is the stronger leading indicator.",
       },
       {
         heading: "Pricing",
@@ -2221,7 +2221,7 @@ export const comparisons: Comparison[] = [
       features: [
         { feature: "Signal type", values: { "VC Deal Flow Signal": "Engineering acceleration (GitHub)", "Forager.ai": "Web, social, and hiring (NLP)" } },
         { feature: "Lead time", values: { "VC Deal Flow Signal": "3-6 weeks pre-fundraise", "Forager.ai": "2-6 weeks pre-fundraise" } },
-        { feature: "Coverage", values: { "VC Deal Flow Signal": "15 sectors, 350+ startups", "Forager.ai": "Any public web footprint" } },
+        { feature: "Coverage", values: { "VC Deal Flow Signal": "15 sectors, 350+ GitHub organizations", "Forager.ai": "Any public web footprint" } },
         { feature: "Entry pricing", values: { "VC Deal Flow Signal": "Free / EUR 49/mo", "Forager.ai": "Tiered" } },
         { feature: "Free tier", values: { "VC Deal Flow Signal": "Weekly Signal Report", "Forager.ai": "Limited" } },
         { feature: "Best for", values: { "VC Deal Flow Signal": "Technical startup discovery", "Forager.ai": "Wide-net public momentum" } },
@@ -2264,7 +2264,7 @@ export const comparisons: Comparison[] = [
       },
       {
         heading: "Coverage",
-        body: "Specter is strongest in consumer and SaaS, focused on English-speaking markets, and shallower in deep-tech and infrastructure, precisely where engineering acceleration matters most. VC Deal Flow Signal tracks 350+ startups across 15 sectors on public GitHub, which is strongest in software, infrastructure, and developer tools.",
+        body: "Specter is strongest in consumer and SaaS, focused on English-speaking markets, and shallower in deep-tech and infrastructure, precisely where engineering acceleration matters most. VC Deal Flow Signal tracks 350+ GitHub organizations across 15 sectors on public GitHub, which is strongest in software, infrastructure, and developer tools.",
       },
       {
         heading: "Pricing",
@@ -2280,7 +2280,7 @@ export const comparisons: Comparison[] = [
       features: [
         { feature: "Signal type", values: { "VC Deal Flow Signal": "Engineering acceleration (GitHub)", "Specter": "Web, hiring, and product growth" } },
         { feature: "Lead time", values: { "VC Deal Flow Signal": "3-6 weeks pre-fundraise", "Specter": "2-6 weeks pre-fundraise" } },
-        { feature: "Coverage", values: { "VC Deal Flow Signal": "15 sectors, 350+ startups", "Specter": "Consumer and SaaS, EN markets" } },
+        { feature: "Coverage", values: { "VC Deal Flow Signal": "15 sectors, 350+ GitHub organizations", "Specter": "Consumer and SaaS, EN markets" } },
         { feature: "Entry pricing", values: { "VC Deal Flow Signal": "Free / EUR 49/mo", "Specter": "Tiered (mid-market)" } },
         { feature: "Free tier", values: { "VC Deal Flow Signal": "Weekly Signal Report", "Specter": "Limited dataset" } },
         { feature: "Best for", values: { "VC Deal Flow Signal": "Technical startup discovery", "Specter": "Consumer and SaaS growth" } },
@@ -2323,7 +2323,7 @@ export const comparisons: Comparison[] = [
       },
       {
         heading: "Coverage",
-        body: "SignalRank covers Series A to B graduations globally and publishes a peer-reviewed methodology, but its output is a score, not a list of companies to contact. VC Deal Flow Signal tracks 350+ startups across 15 sectors on public GitHub and outputs a ranked list of accelerating companies.",
+        body: "SignalRank covers Series A to B graduations globally and publishes a peer-reviewed methodology, but its output is a score, not a list of companies to contact. VC Deal Flow Signal tracks 350+ GitHub organizations across 15 sectors on public GitHub and outputs a ranked list of accelerating companies.",
       },
       {
         heading: "Pricing and access",
@@ -2340,7 +2340,7 @@ export const comparisons: Comparison[] = [
         { feature: "What it does", values: { "VC Deal Flow Signal": "Early-stage sourcing signal", "SignalRank": "Series-B graduation prediction" } },
         { feature: "Stage", values: { "VC Deal Flow Signal": "Pre-seed and seed", "SignalRank": "Post-Series A to B" } },
         { feature: "Lead time", values: { "VC Deal Flow Signal": "3-6 weeks pre-fundraise", "SignalRank": "Forward-looking, late stage" } },
-        { feature: "Coverage", values: { "VC Deal Flow Signal": "15 sectors, 350+ startups", "SignalRank": "Series A-B graduations globally" } },
+        { feature: "Coverage", values: { "VC Deal Flow Signal": "15 sectors, 350+ GitHub organizations", "SignalRank": "Series A-B graduations globally" } },
         { feature: "Access", values: { "VC Deal Flow Signal": "Free / EUR 49/mo SaaS", "SignalRank": "Index-fund product" } },
         { feature: "Best for", values: { "VC Deal Flow Signal": "Early technical discovery", "SignalRank": "Growth-stage validation" } },
       ],
@@ -2381,7 +2381,7 @@ interface Competitor {
 }
 
 const competitors: Competitor[] = [
-  { name: "VC Deal Flow Signal", slug: "vc-deal-flow-signal", type: "Engineering acceleration tracker", pricing: "Free / EUR 49/mo", leadTime: "6-12 weeks pre-fundraise", coverage: "15 sectors, 350+ startups (public GitHub)", bestFor: "Early deal sourcing for technical startups", signalType: "Real-time GitHub commit velocity" },
+  { name: "VC Deal Flow Signal", slug: "vc-deal-flow-signal", type: "Engineering acceleration tracker", pricing: "Free / EUR 49/mo", leadTime: "6-12 weeks pre-fundraise", coverage: "15 sectors, 350+ GitHub organizations (public GitHub)", bestFor: "Early deal sourcing for technical startups", signalType: "Real-time GitHub commit velocity" },
   { name: "PitchBook", slug: "pitchbook", type: "Financial data platform", pricing: "$20,000+/year", leadTime: "Post-fundraise (lagging)", coverage: "3.4M+ companies globally", bestFor: "Due diligence, market mapping, LP reporting", signalType: "Funding rounds, valuations, cap tables" },
   { name: "Crunchbase", slug: "crunchbase", type: "Startup database", pricing: "Free / $49/mo Pro", leadTime: "Post-fundraise (lagging)", coverage: "1M+ companies", bestFor: "Company verification and basic research", signalType: "Funding announcements, team changes" },
   { name: "Harmonic.ai", slug: "harmonic-ai", type: "AI team pattern matching", pricing: "Enterprise (annual)", leadTime: "At incorporation (static)", coverage: "Broad, all sectors", bestFor: "Institutional VCs, team-quality screening", signalType: "Founding team composition and background" },

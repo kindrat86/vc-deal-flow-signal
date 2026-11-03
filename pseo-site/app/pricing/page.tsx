@@ -111,7 +111,7 @@ const steps: Step[] = [
       `The full ranked field across ${SECTOR_COUNT} sectors, refreshed every week, with filters, history and watchlists.`,
     forWho: "Pick this if you source every week and want the whole field, not a monthly snapshot.",
     bullets: [
-      `Full ranked field across ${SECTOR_COUNT} sectors (350+ startup orgs tracked), refreshed weekly`,
+      `Full ranked field across ${SECTOR_COUNT} sectors (350+ GitHub orgs tracked), refreshed weekly`,
       "All five signal types per startup, including deceleration",
       "Sector filters with five-quarter history, watchlists and saved filters",
       "Free Chrome extensions: Crunchbase and Wellfound badge, GitHub hover lookup",

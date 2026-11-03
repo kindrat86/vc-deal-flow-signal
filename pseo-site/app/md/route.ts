@@ -29,7 +29,7 @@ export async function GET() {
     `---\n\n` +
     `# VC Deal Flow Signal\n\n` +
     `Engineering acceleration signals from public GitHub data across ${active.length} startup sectors.\n\n` +
-    `## Current Period\n\n${period.name}. ${panelClaim} startup signals across ${active.length} sectors. ${allPeriods.length} quarters of history.\n\n` +
+    `## Current Period\n\n${period.name}. ${panelClaim} GitHub orgs across ${active.length} sectors. ${allPeriods.length} quarters of history.\n\n` +
     `## Sectors\n\n${active
       .map(
         (s) =>

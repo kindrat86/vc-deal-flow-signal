@@ -84,7 +84,7 @@
     "/": {
       "title": "VC Deal Flow Signal: Startups Accelerating Pre-Round",
       "absolute": true,
-      "description": "Free weekly list of 350+ startups ranked by GitHub engineering acceleration across 15 sectors. Spot teams speeding up 3-6 weeks before the round."
+      "description": "Free weekly list of 350+ GitHub organizations ranked by GitHub engineering acceleration across 15 sectors. Spot teams speeding up 3-6 weeks before the round."
     },
     "/vs/dealroom-vs-crunchbase": {
       "title": "Dealroom vs Crunchbase (2026): EU Depth vs $49/mo",

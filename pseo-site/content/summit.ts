@@ -523,7 +523,7 @@ export const TALKS: SummitTalk[] = [
     notes: [
       "The top-100 ICP frame is the simplest way to compress sourcing into a manageable list. Name the 100 organizations whose customers, employees, or community members are your dream customers, and stop trying to reach everyone. The framework was written for B2C marketers, but it translates cleanly to venture sourcing.",
       "Our translation is direct. Replace 'demographic match' with 'engineering-behavior match'. Replace 'lookalike audience' with 'commit-velocity profile'. Replace 'follow lists' with 'contributor graphs'. The result is a top-100 of GitHub organizations that match your investment thesis on engineering behavior, not on PitchBook tags or Crunchbase categories.",
-      "The four-axis filter is sector × stage × velocity × contributor-profile. Sector and stage are the obvious axes, you pick the sectors you invest in and the stages you write checks at. Velocity is the 14-day commit-velocity z-score sustained over two periods. Contributor profile is the team-shape signal, did the team form recently, are they all senior, is there a clear technical co-founder, is the bus-factor manageable. Apply all four filters together and the universe of 350+ venture-backed orgs we track collapses to roughly 80-120 names, depending on how strict you are. That's your top-100.",
+      "The four-axis filter is sector × stage × velocity × contributor-profile. Sector and stage are the obvious axes, you pick the sectors you invest in and the stages you write checks at. Velocity is the 14-day commit-velocity z-score sustained over two periods. Contributor profile is the team-shape signal, did the team form recently, are they all senior, is there a clear technical co-founder, is the bus-factor manageable. Apply all four filters together and the universe of 350+ orgs we track collapses to roughly 80-120 names, depending on how strict you are. That's your top-100.",
       "Maintain it as a rolling 90-day list, not a one-shot snapshot. Re-run the filter every quarter. About 30-40 percent of the names will roll off (signal weakened, fundraise happened, sector pivot) and a similar number of new names will roll on. The top-100 you ship in May 2026 should look meaningfully different from the one you ship in August 2026. That rolling nature is a feature, it keeps you out of the trap of fixating on names that no longer match your thesis.",
     ],
     relatedRoutes: [
@@ -542,7 +542,7 @@ export const TALKS: SummitTalk[] = [
     speaker: "Agent Architect",
     speakerRole: "Agent integration, VC Deal Flow Signal",
     abstract:
-      "Autonomous diligence agents are entering venture sourcing this year. We walk through the MCP server architecture, the x402 USDC pay-per-call endpoint, and the JSON-RPC interface that lets a Claude or GPT-class agent screen the universe of 350+ startups in seconds.",
+      "Autonomous diligence agents are entering venture sourcing this year. We walk through the MCP server architecture, the x402 USDC pay-per-call endpoint, and the JSON-RPC interface that lets a Claude or GPT-class agent screen the universe of 350+ GitHub organizations in seconds.",
     takeaways: [
       "What MCP gives an agent, six read-only tools inside Claude or Cursor",
       "x402 pay-per-call: USDC on Base, $0.19 per deep-signal call",

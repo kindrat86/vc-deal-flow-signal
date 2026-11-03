@@ -26659,21 +26659,6 @@
               "githubUrl": "https://github.com/superlinked",
               "websiteUrl": "https://superlinked.com",
               "lastSeen": "2026-11-03"
-            },
-            {
-              "name": "Hebbian-Robotics",
-              "description": "Developing robots that extend what humanity can do, for the benefit of the communities they serve.",
-              "stage": "Growth",
-              "geography": "Unknown",
-              "commitVelocity14d": 21,
-              "commitVelocityChange": "+133%",
-              "contributors": 102,
-              "contributorGrowth": "+0%",
-              "newRepos": 3,
-              "signalType": "Infrastructure buildout",
-              "githubUrl": "https://github.com/Hebbian-Robotics",
-              "websiteUrl": "https://hebbianrobotics.com",
-              "lastSeen": "2026-11-03"
             }
           ],
           "faqs": [
@@ -29456,6 +29441,21 @@
               "signalType": "Framework migration",
               "githubUrl": "https://github.com/ros-mobile-robots",
               "websiteUrl": "https://ros-mobile-robots.com",
+              "lastSeen": "2026-11-03"
+            },
+            {
+              "name": "Hebbian-Robotics",
+              "description": "Developing robots that extend what humanity can do, for the benefit of the communities they serve.",
+              "stage": "Growth",
+              "geography": "Unknown",
+              "commitVelocity14d": 21,
+              "commitVelocityChange": "+133%",
+              "contributors": 102,
+              "contributorGrowth": "+0%",
+              "newRepos": 3,
+              "signalType": "Infrastructure buildout",
+              "githubUrl": "https://github.com/Hebbian-Robotics",
+              "websiteUrl": "https://hebbianrobotics.com",
               "lastSeen": "2026-11-03"
             }
           ],

@@ -578,13 +578,16 @@ check(
 // ---------------------------------------------------------------------------
 check(
   "app/about/page.tsx",
-  "org-count regressed: canonical AI-description block must claim '350+ venture-backed startups', not 369/~400/400+.",
+  "org-count regressed: canonical AI-description block must claim '350+ GitHub organizations', not 369/~400/400+ or '350+ venture-backed startups'.",
+  // 2026-11-03 (Maryan): ~406 GitHub orgs are tracked but only ~259 pass the
+  // startup rule, so "350+ startups" overclaimed; the floor names orgs.
   (s) =>
-    s.includes("350+ venture-backed startups") &&
+    s.includes("350+ GitHub organizations") &&
+    !s.includes("350+ venture-backed startups") &&
     !s.includes("369 venture-backed startups") &&
     !s.includes("~400") &&
     !s.includes("400+ venture-backed startups"),
-  "restore '350+ venture-backed startups' in the /about canonical AI-description block (user-locked 2026-08-16)",
+  "restore '350+ GitHub organizations' in the /about canonical AI-description block (user-locked 2026-08-16, wording 2026-11-03)",
 );
 check(
   "content/alternatives.ts",
@@ -6204,14 +6207,16 @@ check(
 // "$80M+ Rounds Tracked" and "5,000+ Founders Tracked" without a public
 // definition or canonical ledger. Keep the proof strip on the locked,
 // auditable product claims: 350+ startup orgs and 15 sectors.
+// 2026-11-03 (Maryan): "350+ GitHub Orgs Tracked" (not all pass the startup
+// rule) and the sector count comes from the data (20 today, not 15).
 // ---------------------------------------------------------------------------
 {
   const layout = read("app/layout.tsx");
-  if (!layout || !layout.includes(">350+</span>") || !layout.includes(">Startup Orgs</span>") || !layout.includes(">15</span>") || !layout.includes(">Sectors</span>")) {
+  if (!layout || !layout.includes(">350+</span>") || !layout.includes(">GitHub Orgs Tracked</span>") || !layout.includes(">${SECTOR_COUNT}</span>") || !layout.includes(">Sectors</span>")) {
     failures.push(
       "§74 global trust bar lost the canonical 350+ startup-org / 15-sector claims.\n" +
       "    file: app/layout.tsx\n" +
-      "    fix:  restore the locked, auditable 350+ orgs and 15 sectors proof strip."
+      "    fix:  restore the 350+ GitHub Orgs Tracked strip with the data-driven ${SECTOR_COUNT} sectors."
     );
   }
   if (layout && (layout.includes("$80M+") || layout.includes("5,000+") || layout.includes("Founders Tracked"))) {

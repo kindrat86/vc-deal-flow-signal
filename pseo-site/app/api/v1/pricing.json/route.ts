@@ -1,4 +1,6 @@
-import { getDataLastModified } from "@/lib/data";
+import { getDataLastModified, getAllSectors } from "@/lib/data";
+// Sector count comes from the data, never hard-coded.
+const SECTOR_COUNT = getAllSectors().length;
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -123,11 +125,11 @@ const tiers: PricingTier[] = [
     applicationGated: false,
     capacity: null,
     oneLine:
-      "140 startups ranked across 15 sectors, refreshed weekly, with sector filters and historical period comparisons.",
+      `The full ranked field across ${SECTOR_COUNT} sectors, refreshed weekly, with sector filters and historical period comparisons.`,
     forWho:
       "Active investors and small funds who want the full ranking, not just the top five.",
     bullets: [
-      "350+ ranked startups across 15 sectors, refreshed weekly",
+      `350+ ranked GitHub organizations across ${SECTOR_COUNT} sectors, refreshed weekly`,
       "Sector filters with five-quarter historical comparison",
       "All five signal types (hiring burst, deploy frequency spike, infrastructure buildout, framework migration, deceleration)",
       "Watchlists and saved filters",

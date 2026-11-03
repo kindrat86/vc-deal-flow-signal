@@ -7,6 +7,9 @@ import "./globals.css";
 // round trip; the full /ux.css loads asynchronously (FCP fix 2026-08-16).
 import "./critical.css";
 import Header from "@/components/Header";
+import { getAllSectors } from "@/lib/data";
+// Sector count comes from the data, never hard-coded.
+const SECTOR_COUNT = getAllSectors().length;
 import Footer from "@/components/Footer";
 import ReadingProgressBar from "@/components/ReadingProgressBar";
 import BackToTop from "@/components/BackToTop";
@@ -631,9 +634,9 @@ export default function RootLayout({
   <div style="max-width:900px;margin:0 auto">
     <div style="display:flex;flex-wrap:wrap;justify-content:center;gap:28px;margin-bottom:28px">
       <div><span style="font-size:1.6rem;font-weight:700;color:#00d4aa">21-47 days</span><br><span style="font-size:.82rem;color:#94a3b8">Signal Lead Time (median 31d)</span></div>
-      <div><span style="font-size:1.6rem;font-weight:700;color:#00d4aa">350+</span><br><span style="font-size:.82rem;color:#94a3b8">Startup Orgs</span></div>
+      <div><span style="font-size:1.6rem;font-weight:700;color:#00d4aa">350+</span><br><span style="font-size:.82rem;color:#94a3b8">GitHub Orgs Tracked</span></div>
       <div><span style="font-size:1.6rem;font-weight:700;color:#00d4aa">90 sec</span><br><span style="font-size:.82rem;color:#94a3b8">Per Scan</span></div>
-      <div><span style="font-size:1.6rem;font-weight:700;color:#00d4aa">15</span><br><span style="font-size:.82rem;color:#94a3b8">Sectors</span></div>
+      <div><span style="font-size:1.6rem;font-weight:700;color:#00d4aa">${SECTOR_COUNT}</span><br><span style="font-size:.82rem;color:#94a3b8">Sectors</span></div>
     </div>
     <p style="font-size:1.05rem;margin-bottom:24px;color:#cbd5e1">One missed signal is a missed round. Get the Velocity Verdict in your inbox every Sunday free.</p>
     <a href="https://signals.gitdealflow.com/#signup" style="display:inline-block;background:linear-gradient(135deg,#00d4aa,#2deec0);color:#04130e;padding:14px 32px;border-radius:12px;font-weight:700;text-decoration:none;font-size:.95rem;box-shadow:0 8px 24px -10px rgba(0,212,170,.5)">Get Free Signals</a>

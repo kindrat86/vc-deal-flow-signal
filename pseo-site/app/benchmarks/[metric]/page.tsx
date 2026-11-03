@@ -27,7 +27,7 @@ const BENCHMARKS: Benchmark[] = [
     name: "Commit Velocity",
     title: `Startup Commit Velocity Benchmarks by Sector, ${FRESH_YEAR_PLAIN} GitHub Data`,
     description:
-      "How does your startup's GitHub commit velocity compare? Real benchmarks from 350+ venture-backed startups across 15 sectors. 14-day rolling window, refreshed weekly.",
+      "How does your startup's GitHub commit velocity compare? Real benchmarks from 350+ GitHub organizations across 15 sectors. 14-day rolling window, refreshed weekly.",
     h1: "Commit Velocity Benchmarks, How Your Startup Compares",
     intro:
       "Commit velocity (14-day rolling commits to the most active public repo) is the core ranking metric for VC Deal Flow Signal. These benchmarks show where your startup stands relative to the sector median and top quartile.",
@@ -91,7 +91,7 @@ const BENCHMARKS: Benchmark[] = [
     name: "Signal Distribution",
     title: `Engineering Signal Distribution by Sector, Breakout vs Cooling ${FRESH_YEAR_PLAIN}`,
     description:
-      "Which sectors have the most breakout engineering signals? Real distribution data from 350+ startups. Breakout, acceleration, steady, cooling classifications.",
+      "Which sectors have the most breakout engineering signals? Real distribution data from 350+ GitHub organizations. Breakout, acceleration, steady, cooling classifications.",
     h1: "Signal Distribution, Which Sectors Are Heating Up",
     intro:
       "Every tracked startup is classified into one of four signal types: breakout (sudden surge), acceleration (sustained growth), steady (healthy baseline), or cooling (declining). This page shows the distribution by sector.",
@@ -212,7 +212,7 @@ export default async function BenchmarkPage({ params }: PageProps) {
         <section aria-label="TL;DR" className="mb-8 rounded-lg border border-slate-800 bg-slate-900/60 p-4">
           <p className="text-xs font-semibold text-sky-400 uppercase tracking-wider mb-2">TL;DR</p>
           <p className="text-gray-300 text-sm leading-relaxed">
-            Real benchmark data from ~350+ venture-backed startups across 15 sectors. Refreshed weekly every Monday.
+            Real benchmark data from ~350+ GitHub organizations across 15 sectors. Refreshed weekly every Monday.
             Data from {period.name}. Free under CC BY 4.0.
           </p>
         </section>

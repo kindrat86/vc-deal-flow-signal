@@ -128,6 +128,8 @@ export const NON_STARTUP_ORGS = new Set([
   "heliumedu", "jlawyerorg", "flame-engine", "o3de", "mlco2", "opengeos", "own-pay", "tsugiproject",
   // hobby projects / game reimplementations and mods
   "horizon-rust", "black-tek",
+  // software agencies (client work, not a product company)
+  "7-blocks",
 ]);
 
 /**

@@ -89,7 +89,7 @@ export default function RegionDirectoryIndexPage() {
 
         <section className="mb-8 max-w-3xl" aria-label="About this directory">
           <p className="text-gray-400 text-base leading-relaxed">
-            VC Deal Flow Signal tracks {PANEL_CLAIM} startups across{" "}
+            VC Deal Flow Signal tracks {PANEL_CLAIM} GitHub organizations across{" "}
             {regions.length} regions in the current quarter, resolved from each
             company&apos;s GitHub organization location and a curated headquarters
             enrichment layer. Pick a region below to open a paginated directory

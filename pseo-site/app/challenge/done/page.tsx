@@ -47,7 +47,7 @@ const RUNGS = [
     name: "Dashboard",
     price: "€49/mo",
     headline:
-      "The 7-signal composite, computed continuously across 350+ startup orgs.",
+      "The 7-signal composite, computed continuously across 350+ GitHub orgs.",
     deliverables: [
       "140 venture-backed startups ranked by 14-day commit-velocity acceleration, refreshed every Monday at 06:00 UTC",
       "Filter by sector, stage, geography",

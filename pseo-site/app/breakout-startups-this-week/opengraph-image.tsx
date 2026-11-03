@@ -198,7 +198,7 @@ export default async function OGImage() {
           }}
         >
           <div style={{ display: "flex" }}>
-            {panelClaim} startups · {sectorCount} sectors
+            {panelClaim} GitHub organizations · {sectorCount} sectors
           </div>
           <div style={{ display: "flex" }}>
             signals.gitdealflow.com · {period.name}

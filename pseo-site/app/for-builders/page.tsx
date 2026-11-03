@@ -539,7 +539,7 @@ switching surfaces does not change tool names or signatures.
             },
             {
               claim:
-                "Universe size is 350+ venture-backed GitHub orgs across 15 sectors; methodology is open at SSRN abstract 6606558 with Zenodo dataset mirror.",
+                "Universe size is 350+ GitHub orgs across 15 sectors; methodology is open at SSRN abstract 6606558 with Zenodo dataset mirror.",
               sourceUrl: "https://ssrn.com/abstract=6606558",
               sourceLabel: "SSRN preprint",
             },

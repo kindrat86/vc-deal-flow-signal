@@ -103,7 +103,7 @@ export default function StartupDirectoryIndexPage() {
 
         <section className="mb-8 max-w-3xl" aria-label="About this directory">
           <p className="text-gray-400 text-base leading-relaxed">
-            VC Deal Flow Signal tracks {PANEL_CLAIM} startups across{" "}
+            VC Deal Flow Signal tracks {PANEL_CLAIM} GitHub organizations across{" "}
             {sectors.length} sectors and {regions.length} regions in the current
             quarter. This directory is the fastest way to browse the full corpus
             without a search box: pick a sector or a region below and you get a

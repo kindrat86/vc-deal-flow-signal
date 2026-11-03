@@ -1,4 +1,7 @@
 import Link from "next/link";
+import { getAllSectors } from "@/lib/data";
+// Sector count comes from the data, never hard-coded.
+const SECTOR_COUNT = getAllSectors().length;
 
 // Annual checkout links come from env so Stripe link rotation never needs a
 // code change; fallbacks are the live links verified 2026-07-13.
@@ -41,7 +44,7 @@ const TIERS: readonly Tier[] = [
     cadence: "per month",
     pitch: "8-object stack, €1,728 of value, 30-day Signal-or-It's-Free guarantee.",
     bullets: [
-      "Sunday Digest, Full Dashboard (140 startups, 15 sectors)",
+      `Sunday Digest, Full Dashboard (${SECTOR_COUNT} sectors)`,
       "219-startup Backtest CSV (the SSRN dataset)",
       "Monthly Sector Deep Dive PDF (your pick)",
       "Chrome Extension + Claude MCP + Async Watchlist Build",

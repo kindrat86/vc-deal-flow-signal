@@ -82,7 +82,7 @@ export const PLATFORM_HOOKS: PlatformHook[] = [
     openerPattern:
       "Vulnerable-builder frame. 'I built this for myself, here's what I found.' Lead with the discovery, not the product.",
     exampleOpener:
-      "I spent six months reading commit logs of 350+ startups. Here's what I learned.",
+      "I spent six months reading commit logs of 350+ GitHub organizations. Here's what I learned.",
     storyAngle:
       "Numbered findings, methodology disclosed inline, ask-for-help at the close. Subreddit-match the framing, r/startups gets the build-in-public version, r/AngelInvesting gets the deal-side version.",
     offerPhrasing:

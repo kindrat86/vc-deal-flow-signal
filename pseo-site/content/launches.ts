@@ -212,7 +212,7 @@ export const LAUNCHES: Launch[] = [
     faq: [
       {
         q: "What counts as a ‘deep-signal call’?",
-        a: "One call returns the full signal panel for one GitHub org, commit-velocity acceleration, contributor-diversity Gini, dependents-graph external count, README-freshness diff size, new-repo-creation rate, issue-to-PR ratio, and the composite score. Calls against orgs not in our universe (350+ venture-backed startup orgs) are misses and don’t decrement your balance.",
+        a: "One call returns the full signal panel for one GitHub org, commit-velocity acceleration, contributor-diversity Gini, dependents-graph external count, README-freshness diff size, new-repo-creation rate, issue-to-PR ratio, and the composite score. Calls against orgs not in our universe (350+ GitHub orgs) are misses and don’t decrement your balance.",
       },
       {
         q: "Is this rate-limited?",

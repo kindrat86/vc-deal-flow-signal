@@ -24,7 +24,7 @@ export default function SocialProofBar({
     >
       <span className="flex items-center gap-1.5">
         <span className="text-gray-100 font-semibold tabular-nums">{startupCount}</span>
-        <span className="text-gray-400">venture-backed startups</span>
+        <span className="text-gray-400">GitHub organizations tracked</span>
       </span>
       <Dot />
       <span className="flex items-center gap-1.5">
