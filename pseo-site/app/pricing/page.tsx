@@ -8,6 +8,9 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { withEditorialOverride } from "@/lib/metadata";
 import { PRE_ROUND_PATH } from "@/lib/pre-round";
+import { getAllSectors } from "@/lib/data";
+// Sector count comes from the data (20 on 2026-11-03), never hard-coded.
+const SECTOR_COUNT = getAllSectors().length;
 
 // 2026-10 pricing simplification (draft branch feat/pricing-4-steps).
 // Four steps instead of eleven: Free digest -> EUR 49 Pre-Round Report ->
@@ -85,12 +88,12 @@ const steps: Step[] = [
     priceLabel: "€49",
     cadence: "one-time",
     oneLine:
-      "The 25 startups with the strongest pre-round engineering pattern this month, with the evidence behind each name. PDF + CSV within 48 hours.",
+      "The 25 startups with the strongest pre-round engineering pattern from this week's data, with the evidence behind each name. PDF + CSV within 48 hours.",
     forWho: "Buy this when five names are not enough but a subscription is more than you need today.",
     bullets: [
       "25 ranked startups, all sectors or the one of 15 you pick at checkout",
       "Signal type, 14-day velocity change, contributor growth and last public round per name",
-      "GitHub, website and public founder links for a first-touch email the same day",
+      "GitHub and website links for a first-touch email the same day",
       "€49 credited in full toward Dashboard if you upgrade within 14 days",
     ],
     ctaLabel: "Get the Report, €49",
@@ -105,10 +108,10 @@ const steps: Step[] = [
     priceLabel: "€49",
     cadence: "/mo",
     oneLine:
-      "The full ranked field across 15 sectors, refreshed every week, with filters, history and watchlists.",
+      `The full ranked field across ${SECTOR_COUNT} sectors, refreshed every week, with filters, history and watchlists.`,
     forWho: "Pick this if you source every week and want the whole field, not a monthly snapshot.",
     bullets: [
-      "Full ranked field across 15 sectors (350+ startup orgs tracked), refreshed weekly",
+      `Full ranked field across ${SECTOR_COUNT} sectors (350+ startup orgs tracked), refreshed weekly`,
       "All five signal types per startup, including deceleration",
       "Sector filters with five-quarter history, watchlists and saved filters",
       "Free Chrome extensions: Crunchbase and Wellfound badge, GitHub hover lookup",
@@ -153,11 +156,11 @@ const stack: { item: string; note: string }[] = [
 const faqs: { q: string; a: string }[] = [
   {
     q: "How much does GitDealFlow cost?",
-    a: "Four steps. The Signal Digest is free, five startups every Sunday. The Pre-Round Report is €49 one-time for 25 ranked startups with evidence, PDF + CSV within 48 hours. The Dashboard is €49 per month for the full ranked field across 15 sectors, refreshed weekly. Insider Circle is €197 per month and adds API, webhooks and custom watchlists. Founding members who joined before 2026-06-30 keep €9.97 and €97 for life.",
+    a: `Four steps. The Signal Digest is free, five startups every Sunday. The Pre-Round Report is €49 one-time for 25 ranked startups with evidence, PDF + CSV within 48 hours. The Dashboard is €49 per month for the full ranked field across ${SECTOR_COUNT} sectors, refreshed weekly. Insider Circle is €197 per month and adds API, webhooks and custom watchlists. Founding members who joined before 2026-06-30 keep €9.97 and €97 for life.`,
   },
   {
     q: "Should I buy the Report or the Dashboard?",
-    a: "The Report is one snapshot of 25 names this month. The Dashboard is the full field every week for the same €49 per month. If you buy the Report and decide within 14 days that you want it weekly, the €49 is credited in full toward your first Dashboard month.",
+    a: "The Report is one snapshot of 25 names from this week's data. The Dashboard is the full field every week for the same €49 per month. If you buy the Report and decide within 14 days that you want it weekly, the €49 is credited in full toward your first Dashboard month.",
   },
   {
     q: "What does the guarantee cover?",

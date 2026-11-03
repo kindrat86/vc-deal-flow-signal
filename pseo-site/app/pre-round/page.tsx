@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { withEditorialOverride } from "@/lib/metadata";
 import { PRE_ROUND_CHECKOUT, PRE_ROUND_PAUSED, PRE_ROUND_PRICE_EUR } from "@/lib/pre-round";
+import { getAllSectors } from "@/lib/data";
+// Sector count comes from the data (20 on 2026-11-03), never hard-coded.
+const SECTOR_COUNT = getAllSectors().length;
 
 export const dynamic = "force-static";
 
@@ -20,7 +23,7 @@ const INCLUDED = [
   {
     label: "25 startups, ranked",
     detail:
-      "The 25 teams with the strongest pre-round engineering pattern from this week's data, across all 15 sectors or filtered to the one you pick at checkout.",
+      `The 25 teams with the strongest pre-round engineering pattern from this week's data, across all ${SECTOR_COUNT} sectors or filtered to the one you pick at checkout.`,
   },
   {
     label: "The evidence for each name",
@@ -51,7 +54,7 @@ export default function PreRoundPage() {
         </h1>
         <p className="text-gray-300 text-base leading-relaxed">
           The free signup gives you five names. The Pre-Round Report gives
-          you the full shortlist for this month, with the evidence behind each
+          you the full shortlist from this week&apos;s data, with the evidence behind each
           one, so you can reach out before the deck starts circulating. One
           payment, no subscription.
         </p>

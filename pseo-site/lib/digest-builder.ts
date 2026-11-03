@@ -121,7 +121,39 @@ const SYNTHETIC_DESC = /\bis an? ?[a-z&\- ]*\b(pre-seed|seed|series a\/b|growth)
 // Orgs that are not startups (public institutions, university projects,
 // non-profit institutes). Kept out of every digest ranking; the fetch
 // pipeline BLOCKLIST carries the same names for future refreshes.
-export const NON_STARTUP_ORGS = new Set(["aphp", "stanfordspezi", "vectorinstitute", "fedbiomed"]);
+export const NON_STARTUP_ORGS = new Set([
+  // public institutions / university labs / research institutes
+  "aphp", "stanfordspezi", "vectorinstitute", "fedbiomed", "sunlabuiuc", "ai4s-research",
+  // open-source projects or free tools without a company behind them
+  "heliumedu", "jlawyerorg", "flame-engine", "o3de", "mlco2", "opengeos", "own-pay", "tsugiproject",
+  // hobby projects / game reimplementations and mods
+  "horizon-rust", "black-tek",
+]);
+
+/**
+ * Digest eligibility rule (2026-11-03): the Sunday digest names startups, so
+ * an org is left out when any of these hold:
+ *   - explicit denylist above
+ *   - no company website at all, or a website on a project host / non-company
+ *     TLD (github.io, gitlab.io, readthedocs, .org, .edu, .gov, .ac.*)
+ *   - academic or government owner in the name/description
+ *   - free tool / hobby / community project wording
+ *   - game mods, reimplementations, emulators
+ * (Product-pricing pages are not checked: no such field in the data.)
+ */
+const NON_COMPANY_HOST = /(^|\.)(github\.io|gitlab\.io|readthedocs\.io|sourceforge\.net)$|\.(org|edu|gov|mil|int)$|\.(ac|edu|gov|gouv)\.[a-z]{2}$/i;
+const ACADEMIC_GOV = /\b(universit(y|ies|é|at)|college|institute|institut|laborator(y|ies)|research (group|lab|centre|center)|academic|government|ministry|federal agency|national lab|uiuc|inria|cnrs|nasa|cern)\b/i;
+const FREE_HOBBY = /\b(free|hobby|non-?profit|by the community|community[- ]driven|fan[- ]?made|volunteer)\b/i;
+const GAME_MOD = /\b(minecraft|mods?|modpack|emulator|rewritten in|fan game|server emulator)\b/i;
+
+export function isNonStartup(s: { name: string; description?: string; websiteUrl?: string }): boolean {
+  if (NON_STARTUP_ORGS.has(s.name.toLowerCase())) return true;
+  let host = "";
+  try { host = s.websiteUrl ? new URL(s.websiteUrl).hostname.toLowerCase() : ""; } catch { host = ""; }
+  if (!host || NON_COMPANY_HOST.test(host)) return true;
+  const text = `${s.name} ${s.description ?? ""}`;
+  return ACADEMIC_GOV.test(text) || FREE_HOBBY.test(text) || GAME_MOD.test(text);
+}
 
 // fetch-github-data.ts writes "+999%" when the prior 14 days had zero commits.
 // That is "no baseline", not a 999% jump, so it is never shown as a number.
@@ -279,7 +311,7 @@ export function buildLatestDigest(lane?: string, opts?: { firstIssue?: boolean }
     const snapshot = sector.periods[period.slug];
     if (!snapshot || !snapshot.startups.length) continue;
 
-    const eligible = snapshot.startups.filter((s) => !NON_STARTUP_ORGS.has(s.name.toLowerCase()));
+    const eligible = snapshot.startups.filter((s) => !isNonStartup(s));
     if (!eligible.length) continue;
     for (const s of eligible) {
       allStartups.push({ ...s, sectorName: sector.name, sectorSlug: sector.slug });

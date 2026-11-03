@@ -54,6 +54,8 @@ const BLOCKLIST = new Set([
   "carlos-emr",
   // Public institutions / university projects / non-profit institutes (not startups)
   "aphp","StanfordSpezi","VectorInstitute","fedbiomed",
+  // Non-startups seen in the 2026-11-03 digest (free tools, OSS without a company, hobby/game projects, labs)
+  "sunlabuiuc","ai4s-research","HeliumEdu","jlawyerorg","flame-engine","o3de","mlco2","opengeos","own-pay","tsugiproject","horizon-rust","Black-Tek",
 ]);
 
 // Patterns in org name or description that indicate non-startup
