@@ -23,4 +23,63 @@
                 <span>Churn analytics that predict, not just report</span>
             </div>
         </a>
+</section><!-- gdf-own-traffic-capture v1 (Traffic Secrets: traffic you own) -->
+<style>
+.gdf-capture{max-width:640px;margin:48px auto;padding:0 16px;font-family:-apple-system,system-ui,'Segoe UI',Roboto,sans-serif}
+.gdf-capture-card{background:#0f172a;border:1px solid rgba(56,189,248,.35);border-radius:16px;padding:28px 24px;text-align:center}
+.gdf-capture-kicker{margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#38bdf8}
+.gdf-capture-title{margin:0 0 8px;font-size:22px;line-height:1.25;color:#f8fafc}
+.gdf-capture-sub{margin:0 0 18px;font-size:14px;line-height:1.5;color:#94a3b8}
+.gdf-capture-form{display:flex;flex-direction:column;gap:10px}
+.gdf-capture-label{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+.gdf-capture input[type=email]{flex:1;box-sizing:border-box;width:100%;padding:13px 16px;border-radius:10px;border:1px solid #475569;background:#1e293b;color:#f1f5f9;font-size:16px;outline:none;margin:0}
+.gdf-capture input[type=email]:focus{border-color:#38bdf8;box-shadow:0 0 0 2px rgba(56,189,248,.25)}
+.gdf-capture button{padding:13px 22px;border-radius:10px;border:0;background:linear-gradient(135deg,#0ea5e9,#2563eb);color:#fff;font-size:16px;font-weight:700;cursor:pointer;margin:0}
+.gdf-capture button:hover{filter:brightness(1.08)}
+.gdf-capture button[disabled]{opacity:.6;cursor:wait}
+.gdf-capture-msg{margin:12px 0 0;font-size:12.5px;color:#64748b}
+@media(min-width:480px){.gdf-capture-form{flex-direction:row}.gdf-capture button{white-space:nowrap}}
+</style>
+<section id="gdf-capture" class="gdf-capture" aria-labelledby="gdf-capture-h">
+  <div class="gdf-capture-card">
+    <p class="gdf-capture-kicker">Free, every Sunday</p>
+    <h2 id="gdf-capture-h" class="gdf-capture-title">The Sunday Signal: five startups accelerating before anyone calls it a round.</h2>
+    <p class="gdf-capture-sub">Each name in plain English, with the reason it is moving. No card, no code, unsubscribe in one click.</p>
+    <form class="gdf-capture-form" data-source="related-tools" novalidate>
+      <label class="gdf-capture-label" for="gdf-capture-email">Email address</label>
+      <input type="email" id="gdf-capture-email" required inputmode="email" autocomplete="email" enterkeyhint="send" placeholder="you@example.com">
+      <button type="submit"><span>Send me Sunday issues</span></button>
+    </form>
+    <p class="gdf-capture-msg" role="status">The next issue lands Sunday. Free forever.</p>
+  </div>
 </section>
+<script>
+(function(){
+  var form=document.querySelector('.gdf-capture form');if(!form)return;
+  form.addEventListener('submit',async function(e){
+    e.preventDefault();
+    var btn=form.querySelector('button[type=submit]'),msg=form.parentElement.querySelector('.gdf-capture-msg');
+    var email=(form.querySelector('input[type=email]').value||'').trim();
+    if(!email||email.indexOf('@')<1){if(msg){msg.textContent='Enter a valid email address.';}return;}
+    var orig=btn?btn.innerHTML:'';
+    if(btn){btn.disabled=true;btn.innerHTML='Sending&hellip;';}
+    try{
+      var attr={};try{attr=window.GDFattribution?window.GDFattribution(form.getAttribute('data-source')):{source:form.getAttribute('data-source')};}catch(_){attr={source:form.getAttribute('data-source')};}
+      var res=await fetch('https://signals.gitdealflow.com/api/subscribe',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(Object.assign({email:email,quiz_route:'',quiz_route_label:'',cohort:'',tz:(function(){try{var t=Intl.DateTimeFormat().resolvedOptions().timeZone;return t&&t.indexOf('/')!==-1?t:undefined;}catch(e){return undefined;}})()},attr))});
+      var data=await res.json();
+      if(data.ok){
+        if(window.posthog){try{posthog.identify(email);}catch(e){}posthog.capture('signup_verify_sent',{placement:form.getAttribute('data-source')||'content-page'});}
+        try{sessionStorage.setItem('gdf_email',email);}catch(e){}
+        window.location.href='/subscribe-thanks';return;
+      }
+      throw new Error(data.error||'Failed');
+    }catch(err){
+      if(msg){msg.textContent='Something went wrong. Try again or email signals@gitdealflow.com';}
+      if(btn){btn.disabled=false;btn.innerHTML=orig;}
+    }
+  });
+})();
+</script>
+
+</body>
+</html>

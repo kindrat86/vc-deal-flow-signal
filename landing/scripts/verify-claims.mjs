@@ -9,6 +9,7 @@ const PUBLIC_CLAIM_BANS = [
   ['219 fundraises', /\b219\s+(?:documented\s+)?fundraises\b/i],
   ['6-12 weeks', /\b6\s*(?:-|\u2013|to)\s*12\s+weeks?\b/i],
   ['19 or 20 sectors', /\b(?:19|20)\s+sectors\b/i],
+  ['20 sectors split across tags', />\s*(?:19|20)\s*<\/[^>]+>[^<]{0,80}sectors/i],
   ['unsupported panel count', /\b(?:400\+|4,200\+|4,800|369|411)\s+(?:startups|organizations|orgs)\b/i],
 ];
 
