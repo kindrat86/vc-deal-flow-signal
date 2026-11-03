@@ -11,7 +11,7 @@ import { isExcluded } from "@/lib/excluded-emails";
 import { isNonceUsed, markNonceUsed } from "@/lib/runtime-cache";
 import { listUnsubscribeHeaders, injectUnsubscribeLink } from "@/lib/list-unsubscribe";
 import { pickAudienceId } from "@/lib/resend-audience";
-import { buildLatestDigest, isDigestDataFresh } from "@/lib/digest-builder";
+import { buildLatestDigest, isDigestDataFresh, digestFreshness, FRESH_DAYS } from "@/lib/digest-builder";
 import { honestSignalsCopy } from "@/lib/stale-copy";
 import { isInvestorLane } from "@/lib/investor-lanes";
 import { getResendConsentStatus } from "@/lib/resend-consent";
@@ -291,8 +291,20 @@ export async function GET(request: Request) {
 
   const immediate: typeof sequence = [];
   const deferred: typeof sequence = [];
-  for (const e of sequence) {
-    if (e.delayMs <= MAX_SCHEDULE_MS) immediate.push(e);
+  // Freshness gate for the soap-2026-11 welcome (Maryan 2026-11-03): E1 says
+  // "this week's five", E4 sells "25 startups this month". An email is only
+  // pre-scheduled in Resend when the signal data will still be <= FRESH_DAYS
+  // old at its send time; otherwise it goes to the drip plan (key-only, no
+  // html) and /api/cron/drip-sender sends it once the data is fresh again.
+  const isW2611 = sequence === WELCOME_2026_11_EMAILS;
+  const fr = digestFreshness();
+  const w2611Deferred = new Set<number>();
+  for (const [i, e] of sequence.entries()) {
+    const ageAtSend = fr.ageDays + e.delayMs / 86_400_000;
+    if (isW2611 && (!fr.fresh || ageAtSend > FRESH_DAYS)) {
+      w2611Deferred.add(i);
+      deferred.push(e);
+    } else if (e.delayMs <= MAX_SCHEDULE_MS) immediate.push(e);
     else deferred.push(e);
   }
 
@@ -370,11 +382,15 @@ export async function GET(request: Request) {
   // JSON and store it in the contact's `properties.drip` field, keyed by
   // the delay-in-days so the cron can match on days-since-signup.
   if (toDefer.length > 0) {
-    const dripPlan = toDefer.map((e) => ({
-      d: Math.round(e.delayMs / (24 * 60 * 60 * 1000)), // delay in days
-      s: e.subject,
-      h: e.html,
-    }));
+    const dripPlan = toDefer.map((e) => {
+      const d = Math.round(e.delayMs / (24 * 60 * 60 * 1000)); // delay in days
+      const wi = isW2611 ? sequence.indexOf(e) : -1;
+      // soap-2026-11 entries carry only a key; drip-sender renders the
+      // approved html from WELCOME_2026_11_EMAILS and applies the gate.
+      return wi >= 0 && w2611Deferred.has(wi)
+        ? { d, s: e.subject, h: "", k: `w2611:${wi}` }
+        : { d, s: e.subject, h: e.html };
+    });
     try {
       // Resolve audience + contact ID, then PATCH properties
       const audienceRes = await fetch("https://api.resend.com/audiences", {

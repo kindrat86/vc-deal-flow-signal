@@ -28,6 +28,8 @@
  */
 
 import { NextResponse } from "next/server";
+import { WELCOME_2026_11_EMAILS } from "@/lib/emails";
+import { digestFreshness } from "@/lib/digest-builder";
 import { pickAudienceId } from "@/lib/resend-audience";
 import { listUnsubscribeHeaders, injectUnsubscribeLink } from "@/lib/list-unsubscribe";
 import { gateAllows } from "@/lib/send-gate";
@@ -44,7 +46,16 @@ const FROM_NAME = process.env.FROM_NAME || "The Data Nerd";
 interface DripEntry {
   d: number; // delay in days
   s: string; // subject
-  h: string; // html
+  h: string; // html ("" when k is set)
+  k?: string; // "w2611:<idx>" = soap-2026-11 welcome email idx, rendered from lib/emails
+}
+
+/** soap-2026-11 (approved 2026-11 welcome) entries: resolved html + gated on data freshness. */
+function resolveEntry(entry: DripEntry): { subject: string; html: string; dataGated: boolean } {
+  const m = /^w2611:(\d+)$/.exec(entry.k ?? "");
+  const w = m ? WELCOME_2026_11_EMAILS[Number(m[1])] : undefined;
+  const html = w ? w.html : entry.h;
+  return { subject: w ? w.subject : entry.s, html, dataGated: !!w || html.includes("soap-2026-11") };
 }
 
 interface ResendContact {
@@ -151,6 +162,8 @@ export async function GET(request: Request) {
   let sent = 0;
   let skipped = 0;
   let errors = 0;
+  let heldStale = 0;
+  const dataFresh = digestFreshness().fresh;
   const sentLog: { email: string; day: number; subject: string }[] = [];
 
   for (const contact of contacts) {
@@ -188,13 +201,22 @@ export async function GET(request: Request) {
         continue;
       }
 
+      const r = resolveEntry(entry);
+      // Freshness gate (Maryan 2026-11-03): held, not dropped; sends on the
+      // first daily run after the signal data is fresh again.
+      if (r.dataGated && !dataFresh) {
+        heldStale++;
+        continue;
+      }
+      if (!r.html) { errors++; continue; }
+
       if (dry) {
-        sentLog.push({ email: contact.email, day: entry.d, subject: entry.s });
+        sentLog.push({ email: contact.email, day: entry.d, subject: r.subject });
         sent++;
         continue;
       }
 
-      const ok = await sendEmail(contact.email, entry.s, entry.h);
+      const ok = await sendEmail(contact.email, r.subject, r.html);
       if (ok) {
         sent++;
         sentDays.add(entry.d);
@@ -218,8 +240,11 @@ export async function GET(request: Request) {
     }
   }
 
+  if (heldStale) console.warn(`[drip-sender] held ${heldStale} soap-2026-11 emails: signal data stale`);
   return NextResponse.json({
     dry,
+    dataFresh,
+    heldStale,
     scanned,
     withPlan,
     sent,
