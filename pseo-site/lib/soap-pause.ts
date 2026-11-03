@@ -14,7 +14,7 @@ export const PRE_ROUND_PAUSED = false; // unpaused 2026-11-03 12:01 (Maryan та
  * "apply": re-time / replace them per the plan in soap-pause-sweep.
  * Triggered with `vercel crons run /api/cron/soap-pause-sweep` (no secret in hand).
  */
-export const SOAP_RESUME_MODE: "off" | "dry" | "apply" = "apply"; // idempotent: only touches emails parked > 20 d out
+export const SOAP_RESUME_MODE: "off" | "dry" | "apply" = "off"; // applied 2026-11-03 ~12:30 Athens (5 emails)
 
 /**
  * Re-enroll queue shift (days) per subscriber, keyed by sha256(lowercase email)
