@@ -3907,7 +3907,12 @@ landingCheck(
 // newsletter swap offer promises partners.
 {
   const de = readFileSync("lib/digest-email.ts", "utf8");
-  const gen = readFileSync("scripts/generate-signal-digest-email.ts", "utf8");
+  // 2026-11-03: the generator renders via lib/digest-builder.ts (one shared
+  // builder for cron, verify and the script), so the loading logic lives there.
+  const gen = readFileSync("lib/digest-builder.ts", "utf8");
+  if (!readFileSync("scripts/generate-signal-digest-email.ts", "utf8").includes("buildLatestDigest")) {
+    failures.push("§45 generate-signal-digest-email.ts no longer renders via buildLatestDigest (partner slot + claim floor live there)");
+  }
   const pdata = readFileSync("data/partner-recommendations.json", "utf8");
   const needles45: ReadonlyArray<[string, string, string]> = [
     [de, "This week we're reading", "renderer partner-slot header"],
@@ -4775,7 +4780,7 @@ landingCheck(
     ["app/startups/page.tsx", "PANEL_CLAIM"],
     ["app/startups/region/page.tsx", "PANEL_CLAIM"],
     ["scripts/generate-signal-report.ts", "panelClaim = allStartups.length >= 350"],
-    ["scripts/generate-signal-digest-email.ts", "panelClaim = allStartups.length >= 350"],
+    ["lib/digest-builder.ts", "panelClaim = allStartups.length >= 350"], // generator renders via this builder since 2026-11-03
   ];
   for (const [file, needle] of claimSurfaces) {
     const src = readFileSync(join(ROOT, file), "utf8");

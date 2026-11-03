@@ -38,8 +38,9 @@ function main() {
     const why = `fetchedAt=${fr.fetchedAt} ageDays=${fr.ageDays.toFixed(1)} freshCount=${fr.freshCount} labelOk=${labelOk}`;
     if (!allowStale) {
       console.error(`REFUSED: signal data is stale (${why}). Run the weekly data refresh first. No digest files written.`);
-      // Inside `npm run build` this must not fail the site build; standalone it exits 2.
-      process.exit(process.env.npm_lifecycle_event === "build" || process.env.VERCEL ? 0 : 2);
+      // Exit 0: this runs inside `npm run build` and must not fail the site
+      // build. Senders have their own gates (send-weekly-digest.mjs refuses).
+      return;
     }
     const p = path.join(outDir, "PREVIEW-STALE-signal-digest.html");
     fs.writeFileSync(p, digest.html, "utf8");
