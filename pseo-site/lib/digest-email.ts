@@ -132,7 +132,8 @@ function unsubToken(_esp: DigestOptions["esp"]): { unsub: string; prefs: string 
   // template text would land in the inbox. Use a real mailto: link that
   // works in any client. The List-Unsubscribe header set by the sender
   // (email-api/send-weekly-digest.mjs) covers Gmail/Yahoo one-click.
-  const mailto = `mailto:${process.env.FROM_EMAIL || "signal@gitdealflow.com"}?subject=Unsubscribe`;
+  // Always signal@ (Maryan 2026-11-03), independent of FROM_EMAIL.
+  const mailto = "mailto:signal@gitdealflow.com?subject=Unsubscribe";
   return { unsub: mailto, prefs: mailto };
 }
 
