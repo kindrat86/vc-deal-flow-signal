@@ -11,10 +11,6 @@
       "schedule": "0 6 * * 1"
     },
     {
-      "path": "/api/cron/daily-seinfeld",
-      "schedule": "0 14 * * *"
-    },
-    {
       "path": "/api/cron/telegram-signal",
       "schedule": "0 13 * * 0"
     },
@@ -33,6 +29,14 @@
     {
       "path": "/api/cron/customer-health",
       "schedule": "0 8 * * 1"
+    },
+    {
+      "path": "/api/cron/welcome-reenroll",
+      "schedule": "30 5 * * *"
+    },
+    {
+      "path": "/api/cron/weekly-digest",
+      "schedule": "0 7 * * 0"
     }
   ],
   "headers": [

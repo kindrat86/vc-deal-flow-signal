@@ -1,3 +1,4 @@
+import { POSTAL_ADDRESS_LINE } from "./postal-address";
 /**
  * Soap Opera Sequence, Russell SOS ascension + Seinfeld continuation.
  *
@@ -2164,6 +2165,7 @@ ${body}
 <div style="margin-top:40px;padding-top:20px;border-top:1px solid #e2e8f0;font-size:12px;color:#94a3b8;">
 <p>You're receiving this because you signed up at <a href="${SITE}" style="color:#0ea5e9;">gitdealflow.com</a></p>
 <p><a href="${SIGNALS}" style="color:#0ea5e9;">Browse Signals</a> · <a href="mailto:signals@gitdealflow.com" style="color:#0ea5e9;">Reply to unsubscribe</a></p>
+<p>${POSTAL_ADDRESS_LINE}</p>
 </div>
 </div>
 </body>

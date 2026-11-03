@@ -1,3 +1,4 @@
+import { POSTAL_ADDRESS_LINE } from "./postal-address";
 /**
  * Weekly Signal Digest email renderer.
  *
@@ -422,6 +423,7 @@ export function renderDigestEmail(data: DigestData, opts: DigestOptions = {}): s
                 Also find the GitDealFlow Signal on <a href="https://inboxreads.co/n/gitdealflow-signal" style="color:${BRAND.textMut};font-weight:500;">InboxReads</a>.<br>
                 No investment advice. Based on public GitHub data.<br>
                 <a href="https://signals.gitdealflow.com/support" style="color:${BRAND.textFade};text-decoration:underline;">Support</a> replies within one business day, Monday through Friday.<br>
+                ${POSTAL_ADDRESS_LINE}<br>
                 <a href="${unsub}" style="color:${BRAND.textFade};text-decoration:underline;">Unsubscribe</a> &middot; <a href="${prefs}" style="color:${BRAND.textFade};text-decoration:underline;">Update preferences</a>
               </p>
             </td>

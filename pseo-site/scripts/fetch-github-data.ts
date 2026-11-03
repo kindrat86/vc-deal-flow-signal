@@ -21,7 +21,7 @@ interface GhRepo { id: number; full_name: string; name: string; owner: { login: 
 interface SearchResult { total_count: number; items: GhRepo[]; }
 interface WeeklyCommit { week: number; total: number; days: number[]; }
 interface Contributor { login: string; contributions: number; }
-interface StartupOutput { name: string; description: string; stage: string; geography: string; commitVelocity14d: number; commitVelocityChange: string; contributors: number; contributorGrowth: string; newRepos: number; signalType: string; githubUrl: string; websiteUrl?: string; }
+interface StartupOutput { name: string; description: string; stage: string; geography: string; commitVelocity14d: number; commitVelocityChange: string; contributors: number; contributorGrowth: string; newRepos: number; signalType: string; githubUrl: string; websiteUrl?: string; lastSeen?: string; }
 interface FAQ { question: string; answer: string; }
 interface SectorSnapshot { intro: string; startups: StartupOutput[]; faqs: FAQ[]; }
 interface SectorOutput { slug: string; name: string; description: string; relatedSlugs: string[]; periods: Record<string, SectorSnapshot>; }
@@ -372,8 +372,11 @@ async function main() {
   // The day-of-year determines which slice of sectors to process.
   const dayOfYear = Math.floor((Date.now() - new Date(new Date().getFullYear(), 0, 0).getTime()) / 86400000);
   const startIdx = (dayOfYear * SECTORS_PER_RUN) % SECTORS.length;
+  // FETCH_ALL_SECTORS=1 (weekly box refresh before the Sunday digest) walks
+  // every sector in one run so no sector's numbers are weeks old.
+  const perRun = process.env.FETCH_ALL_SECTORS === "1" ? SECTORS.length : SECTORS_PER_RUN;
   const sectorSlice: typeof SECTORS = [];
-  for (let i = 0; i < SECTORS_PER_RUN && i < SECTORS.length; i++) {
+  for (let i = 0; i < perRun && i < SECTORS.length; i++) {
     sectorSlice.push(SECTORS[(startIdx + i) % SECTORS.length]);
   }
   console.log(`Sector rotation: day ${dayOfYear}, processing ${sectorSlice.length}/${SECTORS.length} sectors`);
@@ -415,7 +418,7 @@ async function main() {
       for (const org of orgs) {
         const m = computePeriodMetrics(org.commitActivity, period.weekOffset, parseFloat(org.contributorGrowth.replace(/[^0-9.-]/g, "")) / 100 + 1 || 1, org.newRepos);
         if (!m) continue;
-        startups.push({ name: org.orgLogin, description: org.description, stage: classifyStage(org.contributorCount), geography: org.geography, commitVelocity14d: m.commitVelocity14d, commitVelocityChange: m.commitVelocityChange, contributors: org.contributorCount, contributorGrowth: org.contributorGrowth, newRepos: org.newRepos, signalType: m.signalType, githubUrl: org.githubUrl, ...(org.websiteUrl ? { websiteUrl: org.websiteUrl } : {}) });
+        startups.push({ name: org.orgLogin, description: org.description, stage: classifyStage(org.contributorCount), geography: org.geography, commitVelocity14d: m.commitVelocity14d, commitVelocityChange: m.commitVelocityChange, contributors: org.contributorCount, contributorGrowth: org.contributorGrowth, newRepos: org.newRepos, signalType: m.signalType, githubUrl: org.githubUrl, ...(org.websiteUrl ? { websiteUrl: org.websiteUrl } : {}), lastSeen: new Date().toISOString().slice(0, 10) });
       }
       if (!startups.length) continue;
       sp[period.slug] = { intro: sector.intro, startups, faqs: generateFaqs(sector.name, sector.description, period.name, startups) };

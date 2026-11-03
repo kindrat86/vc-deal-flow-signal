@@ -38,6 +38,7 @@ interface Startup {
   signalType: string;
   githubUrl: string;
   websiteUrl?: string;
+  lastSeen?: string;
   linkedinUrl?: string;
   slug?: string;
 }
@@ -160,6 +161,22 @@ export function nextSundayTiming(now: Date = new Date()): {
   };
 }
 
+export const FRESH_DAYS = 9;
+
+function freshStartups<T extends { lastSeen?: string }>(list: T[], now = Date.now()): T[] {
+  return list.filter((s) => s.lastSeen && now - Date.parse(`${s.lastSeen}T00:00:00Z`) <= FRESH_DAYS * 86_400_000);
+}
+
+/** Startups in the current period measured within FRESH_DAYS (weekly-digest send guard). */
+export function countFreshCurrentStartups(): number {
+  const raw = startupsData as unknown as StartupsData;
+  const period = raw.periods.find((p) => p.current) ?? raw.periods[0];
+  if (!period) return 0;
+  const all: Startup[] = [];
+  for (const sector of raw.sectors) all.push(...(sector.periods[period.slug]?.startups ?? []));
+  return freshStartups(all).length;
+}
+
 export function buildLatestDigest(lane?: string, opts?: { firstIssue?: boolean }): LatestDigest {
   const raw = startupsData as unknown as StartupsData;
   const period = raw.periods.find((p) => p.current) ?? raw.periods[0];
@@ -191,7 +208,14 @@ export function buildLatestDigest(lane?: string, opts?: { firstIssue?: boolean }
     });
   }
 
-  const topStartups: DigestStartup[] = [...allStartups]
+  // Real data only: rank just the startups whose numbers were (re)measured
+  // in the last FRESH_DAYS (lastSeen is stamped by fetch-github-data.ts).
+  // Entries merged forward from older runs keep stale velocity numbers and
+  // must not appear as "this week's" movers. Legacy files with no lastSeen
+  // at all fall back to the full list.
+  const freshPool = freshStartups(allStartups);
+  const rankPool = freshPool.length >= 5 ? freshPool : allStartups;
+  const topStartups: DigestStartup[] = [...rankPool]
     .sort(
       (a, b) =>
         parseVelocityChange(b.commitVelocityChange) - parseVelocityChange(a.commitVelocityChange),
