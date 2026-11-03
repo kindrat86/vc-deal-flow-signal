@@ -75,7 +75,8 @@ export async function GET(request: Request) {
   const scheduled = await listScheduledSoap();
   const results: Record<string, unknown>[] = [];
 
-  if (held && !resume) {
+  // Parking always wins while held (pause switch or stale data).
+  if (held) {
     const parkAt = new Date(now + 29 * DAY).toISOString();
     for (const e of scheduled) {
       const due = e.scheduled_at ? Date.parse(e.scheduled_at) : now;
