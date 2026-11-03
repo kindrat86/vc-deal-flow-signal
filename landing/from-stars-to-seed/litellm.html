@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#ffffff">
+<meta name="color-scheme" content="light">
+<title>LiteLLM: LLM Proxy to a $5M a16z Seed</title>
+<meta name="description" content="LiteLLM: LLM Proxy to a $5M a16z Seed">
+<link rel="canonical" href="https://gitdealflow.com/from-stars-to-seed/litellm">
+<meta property="og:type" content="article">
+<meta property="og:title" content="LiteLLM: LLM Proxy to a $5M a16z Seed">
+<meta property="og:description" content="LiteLLM: LLM Proxy to a $5M a16z Seed">
+<meta property="og:url" content="https://gitdealflow.com/from-stars-to-seed/litellm">
+<meta property="og:site_name" content="GitDealFlow">
+<meta property="og:image" content="https://gitdealflow.com/assets/gitdealflow-social-card-1200x630.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://gitdealflow.com/assets/gitdealflow-social-card-1200x630.png">
+<meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Article","headline":"LiteLLM: LLM Proxy to a $5M a16z Seed","description":"LiteLLM: LLM Proxy to a $5M a16z Seed","author":{"@type":"Organization","name":"GitDealFlow","url":"https://gitdealflow.com"},"publisher":{"@type":"Organization","name":"GitDealFlow","url":"https://gitdealflow.com"},"mainEntityOfPage":{"@type":"WebPage","@id":"https://gitdealflow.com/from-stars-to-seed/litellm"},"datePublished":"2026-11-03","dateModified":"2026-11-03"}</script>
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://gitdealflow.com/"},{"@type":"ListItem","position":2,"name":"From Stars to Seed","item":"https://gitdealflow.com/"},{"@type":"ListItem","position":3,"name":"LiteLLM: LLM Proxy to a $5M a16z Seed","item":"https://gitdealflow.com/from-stars-to-seed/litellm"}]}</script>
+<style>
+body{background:#fff;color:#1a1a1a;font-family:-apple-system,system-ui,sans-serif;line-height:1.7;max-width:760px;margin:0 auto;padding:0 20px 60px}
+.hero h1{font-size:2em;font-weight:800;margin:1.5em 0 .5em;line-height:1.2;color:#1a1a1a}
+.content p{margin-bottom:1em;color:#333}
+.content ul{line-height:1.9;color:#333}
+.content table{border-collapse:collapse;width:100%;margin:1em 0;font-size:.92em}
+.content th,.content td{border:1px solid #e5e7eb;padding:.5rem .6rem;text-align:left;vertical-align:top}
+.content th{background:#f8fafc}
+.content code{background:#f1f5f9;border-radius:.25rem;padding:.1rem .3rem;font-size:.92em}
+.content pre{background:#0f172a;color:#e2e8f0;border-radius:.5rem;padding:1rem;overflow-x:auto}
+footer{max-width:760px;margin:0 auto;padding:1rem 20px;color:#6b7280;font-size:.85rem;border-top:1px solid #e5e7eb}
+</style>
+</head>
+<body>
+<header style="border-bottom:1px solid #1f2937;background:#0f172a">
+<nav style="max-width:1100px;margin:0 auto;padding:1rem 1.25rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap">
+<a href="/" style="color:#f1f5f9;font-weight:700;font-size:1.1rem;text-decoration:none;min-height:44px;display:inline-flex;align-items:center">GitDealFlow</a>
+<div style="display:flex;align-items:center;gap:1.25rem;flex-wrap:wrap">
+<a href="/#ladder" style="color:#cbd5e1;text-decoration:none;font-size:.9rem;min-height:44px;display:inline-flex;align-items:center">Pricing</a>
+<a href="/#signup" style="background:#00d4aa;color:#04130e;padding:.6rem 1.1rem;border-radius:.5rem;font-weight:700;font-size:.9rem;text-decoration:none;min-height:44px;display:inline-flex;align-items:center">Get free signal</a>
+</div>
+</nav>
+</header>
+<main>
+<section class="hero"><h1>LiteLLM: LLM Proxy to a $5M a16z Seed</h1></section>
+<section class="content">
+
+
+<div style="background:#0f172a;border-radius:.75rem;padding:1.25rem 1.4rem;margin:1.6rem 0">
+<p style="color:#f1f5f9;font-weight:700;margin:0 0 .5rem">Five startups accelerating on GitHub, every Sunday</p>
+<p style="color:#cbd5e1;margin:0 0 .9rem;font-size:.95rem">The weekly panel covers 350+ venture-backed startup GitHub organizations across 15 sectors. Free, no card, unsubscribe in one click.</p>
+<form class="js-signup-form" data-source="signals-merge-from-stars-to-seed" style="display:flex;gap:.6rem;flex-wrap:wrap">
+<label for="sm-email-1" style="position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)">Email</label>
+<input type="email" id="sm-email-1" required inputmode="email" autocomplete="email" placeholder="you@example.com" style="flex:1;min-width:220px;padding:.7rem .9rem;border-radius:.5rem;border:1px solid #334155;background:#1e293b;color:#f1f5f9;font-size:1rem">
+<button type="submit" style="background:#00d4aa;color:#04130e;padding:.7rem 1.2rem;border-radius:.5rem;font-weight:700;border:0;cursor:pointer;font-size:1rem">Get the Sunday signal</button>
+</form>
+<p class="js-signup-msg" role="status" style="color:#94a3b8;font-size:.85rem;margin:.5rem 0 0">Email required; the first issue lands after you confirm.</p>
+</div>
+<p>LiteLLM became the default multi-provider LLM proxy as enterprise teams juggled 100+ providers, locking in route-based telemetry and usage controls before a16z led the $5M seed in July 2024, the category-utility signal had been visible for two quarters.</p><aside aria-label="Summary and citation"><p><span>TL;DR</span>BerriAI/litellm gave developers a single API across 100+ LLM providers. By mid-2024 it had 7K+ stars and growing enterprise interest. a16z led the $5M seed in July 2024.</p><ul><li><span>BerriAI/litellm is the canonical OSS source.</span> <a href="https://github.com/BerriAI/litellm">(BerriAI/litellm)</a></li><li><span>LiteLLM documents the company at its homepage.</span> <a href="https://www.litellm.ai">(LiteLLM homepage)</a></li></ul><p><span>Cite as:</span> <code>VC Deal Flow Signal, From Stars to Seed (https://signals.gitdealflow.com/from-stars-to-seed/litellm), retrieved 2026-08-18.</code> · Data current as of 2026-08-18.</p></aside><section aria-label="At a glance"><h2>At a glance</h2><dl><div><dt>Company</dt><dd>LiteLLM (BerriAI)</dd></div><div><dt>Sector</dt><dd>AI / LLM routing</dd></div><div><dt>Primary repo</dt><dd><a href="https://github.com/BerriAI/litellm">github.com/BerriAI/litellm</a></dd></div><div><dt>Trigger window</dt><dd>first half 2024</dd></div><div><dt>Stars at trigger</dt><dd>~7K stars at trigger window</dd></div><div><dt>Announced raise</dt><dd>$5M seed (a16z) <span>(2024-07-15)</span></dd></div><div><dt>Lead investor</dt><dd>Andreessen Horowitz</dd></div><div><dt>Time-to-money read</dt><dd>LLM proxy adoption + multi-provider tooling led the seed</dd></div></dl></section><section aria-label="Narrative"><p>LiteLLM&#x27;s positioning is straightforward: one OpenAI-compatible API, any LLM provider. That utility hit at a moment when teams were juggling multiple providers and needed a routing layer.</p><p>The signal was both star slope and enterprise-tier evaluation, public case studies started appearing in early 2024.</p><p>a16z led the $5M seed in July 2024. The category-utility signal had been visible for at least two quarters.</p></section><section aria-label="Signals"><h2>Signals that would have flagged this pre-raise</h2><ul><li><span>Star slope:</span><span>~3K → 7K+ stars in 9 months</span></li><li><span>Provider coverage:</span><span>100+ supported LLM providers</span></li><li><span>Enterprise case studies:</span><span>Public adoption stories</span></li></ul></section><section aria-label="How the timeline read"><h2>How the timeline read</h2><p>The engineering acceleration was observable during <strong>first half 2024</strong>, while any fundraising paperwork was still private. The announced event, <strong>$5M seed (a16z) on 2024-07-15</strong>, landed after the signal window: LLM proxy adoption + multi-provider tooling led the seed. That ordering is the entire thesis of this series: by the time a round appears in a funding digest, the repositories were already telling the story at ~7k stars at trigger window.</p><p>In practice, that is what a weekly monitoring cadence buys you. VC Deal Flow Signal re-scores this sector (AI / LLM routing) every week across its tracked repository, so a window like this one surfaces as a rising trend rather than a single spike you had to be lucky to catch. The pre-raise signals listed above are the rows that moved while the press stayed quiet.</p></section><section aria-label="Repositories"><h2>Repositories</h2><ul><li><a href="https://github.com/BerriAI/litellm">github.com/BerriAI/litellm</a></li></ul></section><section aria-label="Frequently asked questions"><h2>Frequently asked questions</h2><div><details><summary>Why is &#x27;category utility&#x27; a strong signal?</summary><p>Because utility libraries with broad coverage become defaults, and defaults compound.</p></details></div></section><section><p>Find the next one</p><p>VC Deal Flow Signal tracks engineering acceleration weekly across twenty sectors, the same signal shapes that preceded the raise above.</p><a href="/firstlook">Get the weekly signal report →</a></section><section aria-label="Related case studies"><h2>Related case studies</h2><ul><li><a href="https://signals.gitdealflow.com/from-stars-to-seed/langchain">LangChain, fastest-trending LLM framework in OSS history before its $25M Series A</a></li><li><a href="https://signals.gitdealflow.com/from-stars-to-seed/anthropic">Anthropic, SDK adoption to a $60B+ valuation</a></li></ul><p>Read them side by side: these related cases span AI / LLM tooling, AI / foundation model, each with its own trigger window and raise event, and the same pre-raise signal shape held in every one. A pattern that repeats across different sectors and different windows is what separates a repeatable signal from an after-the-fact story.</p></section><section aria-label="Related proof stories"><h2>Related proof stories</h2><div><div><p>More in From Stars To Seed</p><ul><li><a href="/from-stars-to-seed"><span>From Stars To Seed</span></a></li><li><a href="https://signals.gitdealflow.com/from-stars-to-seed/sentry"><span>Sentry</span></a></li><li><a href="https://signals.gitdealflow.com/from-stars-to-seed/shadcn-ui"><span>Shadcn Ui</span></a></li><li><a href="https://signals.gitdealflow.com/from-stars-to-seed/strapi"><span>Strapi</span></a></li><li><a href="https://signals.gitdealflow.com/from-stars-to-seed/supabase"><span>Supabase</span></a></li><li><a href="https://signals.gitdealflow.com/from-stars-to-seed/together-ai"><span>Together Ai</span></a></li></ul></div><div><p>Related topics</p><ul><li><a href="https://signals.gitdealflow.com/playbooks/how-to-spot-a-pre-seed-round-from-commit-velocity"><span>How To Spot A Pre Seed Round From Commit Velocity</span></a></li><li><a href="https://signals.gitdealflow.com/stage/seed"><span>Seed</span></a></li></ul></div><div><p>Browse</p><ul><li><a href="/from-stars-to-seed"><span>All From Stars To Seed</span></a></li><li><a href="https://signals.gitdealflow.com/explore"><span>Explore all signals</span></a></li></ul></div></div></section></article>
+<section class="cta" style="text-align:center;padding:2rem 1rem">
+<a href="/#signup" style="display:inline-block;background:#00d4aa;color:#04130e;padding:.9rem 1.75rem;border-radius:.75rem;font-weight:700;font-size:1rem;text-decoration:none;min-height:44px">Get the five names free, every Sunday &rarr;</a>
+<p style="color:#6b7280;font-size:.85rem;margin-top:.8rem">One email a week. No card. Unsubscribe in one click.</p>
+</section>
+</section>
+</main>
+
+<footer><p>&copy; 2026 GitDealFlow &middot; <a href="/about" style="color:#374151">About</a> &middot; <a href="/pricing" style="color:#374151">Pricing</a> &middot; <a href="/glossary" style="color:#374151">Glossary</a></p></footer>
+<script>
+(function(){
+  document.querySelectorAll('form.js-signup-form').forEach(function (form) {
+    form.addEventListener('submit', async function (e) {
+      e.preventDefault();
+      var btn = form.querySelector('button[type="submit"]');
+      var msg = form.querySelector('.js-signup-msg') || (form.parentElement && form.parentElement.querySelector('.js-signup-msg'));
+      var emailEl = form.querySelector('input[type="email"]');
+      var email = (emailEl && emailEl.value || '').trim();
+      if (!email) return;
+      var orig = btn ? btn.innerHTML : '';
+      if (btn) { btn.disabled = true; btn.innerHTML = 'Sending&hellip;'; }
+      try {
+        var p = new URLSearchParams(window.location.search);
+        var body = { email: email, source: form.getAttribute('data-source') || 'landing-page',
+          utm_source: p.get('utm_source') || '', utm_medium: p.get('utm_medium') || '', utm_campaign: p.get('utm_campaign') || '' };
+        try { body.tz = Intl.DateTimeFormat().resolvedOptions().timeZone; } catch (err) {}
+        var res = await fetch('https://signals.gitdealflow.com/api/subscribe', {
+          method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(body) });
+        var data = await res.json();
+        if (data.ok) { window.location.href = '/subscribe-thanks'; return; }
+        throw new Error(data.error || 'Failed');
+      } catch (err) {
+        if (msg) msg.textContent = 'Something went wrong. Try again or email signals@gitdealflow.com';
+        if (btn) { btn.disabled = false; btn.innerHTML = orig; }
+      }
+    });
+  });
+})();
+</script>
+</body>
+</html>

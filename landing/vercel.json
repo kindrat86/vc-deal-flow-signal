@@ -254,11 +254,6 @@
       "permanent": true
     },
     {
-      "source": "/vs/crunchbase-vs-fundable",
-      "destination": "https://signals.gitdealflow.com/vs/crunchbase-vs-fundable",
-      "permanent": true
-    },
-    {
       "source": "/AGENTS.md",
       "destination": "/agents.md",
       "permanent": true
@@ -266,11 +261,6 @@
     {
       "source": "/predicted",
       "destination": "https://signals.gitdealflow.com/predicted",
-      "permanent": true
-    },
-    {
-      "source": "/book",
-      "destination": "https://signals.gitdealflow.com/book",
       "permanent": true
     },
     {

@@ -39,6 +39,7 @@ EXCLUDE_DIRS = {
     "api",          # API routes
     "es",           # Spanish, has own sitemap (sitemap-es.xml)
     "de",           # German, has own sitemap (sitemap-de.xml)
+    "dist",         # build output (scripts/build-public.mjs), never a URL source
 }
 
 # Specific files to exclude (non-indexable)
