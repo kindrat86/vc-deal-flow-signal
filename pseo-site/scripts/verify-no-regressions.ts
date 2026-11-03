@@ -5561,7 +5561,17 @@ landingCheck(
     "109+ venture-backed startup orgs",
     "109+ venture-backed startup organizations",
   ];
-  const sectorClaim60 =
+  // 2026-11-03 (Maryan): the Q4 2026 data has 20 ACTIVE sectors again, so
+  // "20 sectors" is only banned while the current period has a different
+  // active count (it was 15 when this lock was written).
+  const activeSectors60 = (() => {
+    try {
+      const d = JSON.parse(readFileSync(join(ROOT, "data", "startups.json"), "utf8"));
+      const cur = (d.periods.find((p: { current?: boolean }) => p.current) ?? d.periods[0]).slug;
+      return d.sectors.filter((s: { periods: Record<string, { startups?: unknown[] }> }) => s.periods[cur]?.startups?.length).length;
+    } catch { return 0; }
+  })();
+  const sectorClaim60 = activeSectors60 === 20 ? /$^/ :
     /(?:across|track|tracks|universe of|Curate)\s+20\s+(?:startup\s+)?sectors/i;
   const exts60 = new Set([".ts", ".tsx", ".md", ".json", ".html", ".js", ".mjs", ".txt"]);
   const skip60 = new Set([".vercel", ".git", "node_modules", ".DS_Store"]);
