@@ -36,6 +36,21 @@ const signalsMergeRedirects: { source: string; destination: string }[] = (() => 
   }
 })();
 
+// Empty pSEO cells (2026-11-03): /stage/<stage>/<sector>, /signals/<signal>/<sector>
+// and /trends/<sector>-<a>-vs-<b> URLs whose cell fell below MIN_PSEO_CELL_SIZE
+// (or whose period left the data) 404'd after the weekly refresh, e.g.
+// /stage/pre-seed/healthcare. scripts/generate-empty-cell-redirects.ts derives
+// them from data/startups.json in prebuild -> 301 to the nearest live parent.
+const emptyCellRedirects: { source: string; destination: string }[] = (() => {
+  try {
+    return JSON.parse(
+      readFileSync(path.join(__dirname, "data", "empty-cell-redirects.json"), "utf8"),
+    ).redirects;
+  } catch {
+    return [];
+  }
+})();
+
 const nextConfig: NextConfig = {
   // Pin turbopack root to this package so worktree builds (and any nested
   // checkout layout) don't drift to a parent lockfile. Harmless on Vercel -
@@ -114,6 +129,12 @@ const nextConfig: NextConfig = {
         source: r.source,
         destination: r.destination,
         permanent: true,
+      })),
+      // Empty pSEO cells (data-derived, see emptyCellRedirects above).
+      ...emptyCellRedirects.map((r) => ({
+        source: r.source,
+        destination: r.destination,
+        statusCode: 301 as const,
       })),
       {
         // Consolidate thin noindex /compare cross mirrors into their rich

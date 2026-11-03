@@ -1,0 +1,372 @@
+{
+  "redirects": [
+    {
+      "source": "/stage/pre-seed/climate-tech",
+      "destination": "/stage/pre-seed"
+    },
+    {
+      "source": "/stage/pre-seed/healthcare",
+      "destination": "/stage/pre-seed"
+    },
+    {
+      "source": "/stage/pre-seed/data-infrastructure",
+      "destination": "/stage/pre-seed"
+    },
+    {
+      "source": "/stage/pre-seed/agtech",
+      "destination": "/stage/pre-seed"
+    },
+    {
+      "source": "/stage/pre-seed/gaming",
+      "destination": "/stage/pre-seed"
+    },
+    {
+      "source": "/stage/seed/ai-ml",
+      "destination": "/stage/seed"
+    },
+    {
+      "source": "/stage/seed/developer-tools",
+      "destination": "/stage/seed"
+    },
+    {
+      "source": "/stage/seed/cybersecurity",
+      "destination": "/stage/seed"
+    },
+    {
+      "source": "/stage/seed/data-infrastructure",
+      "destination": "/stage/seed"
+    },
+    {
+      "source": "/stage/seed/legal-tech",
+      "destination": "/stage/seed"
+    },
+    {
+      "source": "/stage/seed/space-tech",
+      "destination": "/stage/seed"
+    },
+    {
+      "source": "/stage/series-a-b/hr-tech",
+      "destination": "/stage/series-a-b"
+    },
+    {
+      "source": "/stage/growth/edtech",
+      "destination": "/stage/growth"
+    },
+    {
+      "source": "/stage/growth/hr-tech",
+      "destination": "/stage/growth"
+    },
+    {
+      "source": "/stage/growth/agtech",
+      "destination": "/stage/growth"
+    },
+    {
+      "source": "/signals/hiring-burst/ai-ml",
+      "destination": "/signals/hiring-burst"
+    },
+    {
+      "source": "/signals/hiring-burst/cybersecurity",
+      "destination": "/signals/hiring-burst"
+    },
+    {
+      "source": "/signals/hiring-burst/healthcare",
+      "destination": "/signals/hiring-burst"
+    },
+    {
+      "source": "/signals/hiring-burst/edtech",
+      "destination": "/signals/hiring-burst"
+    },
+    {
+      "source": "/signals/hiring-burst/ecommerce-infrastructure",
+      "destination": "/signals/hiring-burst"
+    },
+    {
+      "source": "/signals/hiring-burst/web3",
+      "destination": "/signals/hiring-burst"
+    },
+    {
+      "source": "/signals/hiring-burst/data-infrastructure",
+      "destination": "/signals/hiring-burst"
+    },
+    {
+      "source": "/signals/hiring-burst/legal-tech",
+      "destination": "/signals/hiring-burst"
+    },
+    {
+      "source": "/signals/hiring-burst/proptech",
+      "destination": "/signals/hiring-burst"
+    },
+    {
+      "source": "/signals/hiring-burst/agtech",
+      "destination": "/signals/hiring-burst"
+    },
+    {
+      "source": "/signals/hiring-burst/gaming",
+      "destination": "/signals/hiring-burst"
+    },
+    {
+      "source": "/signals/hiring-burst/space-tech",
+      "destination": "/signals/hiring-burst"
+    },
+    {
+      "source": "/signals/hiring-burst/social-community",
+      "destination": "/signals/hiring-burst"
+    },
+    {
+      "source": "/signals/infrastructure-buildout/ai-ml",
+      "destination": "/signals/infrastructure-buildout"
+    },
+    {
+      "source": "/signals/infrastructure-buildout/fintech",
+      "destination": "/signals/infrastructure-buildout"
+    },
+    {
+      "source": "/signals/infrastructure-buildout/climate-tech",
+      "destination": "/signals/infrastructure-buildout"
+    },
+    {
+      "source": "/signals/infrastructure-buildout/developer-tools",
+      "destination": "/signals/infrastructure-buildout"
+    },
+    {
+      "source": "/signals/infrastructure-buildout/cybersecurity",
+      "destination": "/signals/infrastructure-buildout"
+    },
+    {
+      "source": "/signals/infrastructure-buildout/healthcare",
+      "destination": "/signals/infrastructure-buildout"
+    },
+    {
+      "source": "/signals/infrastructure-buildout/edtech",
+      "destination": "/signals/infrastructure-buildout"
+    },
+    {
+      "source": "/signals/infrastructure-buildout/ecommerce-infrastructure",
+      "destination": "/signals/infrastructure-buildout"
+    },
+    {
+      "source": "/signals/infrastructure-buildout/supply-chain",
+      "destination": "/signals/infrastructure-buildout"
+    },
+    {
+      "source": "/signals/infrastructure-buildout/web3",
+      "destination": "/signals/infrastructure-buildout"
+    },
+    {
+      "source": "/signals/infrastructure-buildout/enterprise-saas",
+      "destination": "/signals/infrastructure-buildout"
+    },
+    {
+      "source": "/signals/infrastructure-buildout/data-infrastructure",
+      "destination": "/signals/infrastructure-buildout"
+    },
+    {
+      "source": "/signals/infrastructure-buildout/robotics",
+      "destination": "/signals/infrastructure-buildout"
+    },
+    {
+      "source": "/signals/infrastructure-buildout/legal-tech",
+      "destination": "/signals/infrastructure-buildout"
+    },
+    {
+      "source": "/signals/infrastructure-buildout/hr-tech",
+      "destination": "/signals/infrastructure-buildout"
+    },
+    {
+      "source": "/signals/infrastructure-buildout/proptech",
+      "destination": "/signals/infrastructure-buildout"
+    },
+    {
+      "source": "/signals/infrastructure-buildout/agtech",
+      "destination": "/signals/infrastructure-buildout"
+    },
+    {
+      "source": "/signals/infrastructure-buildout/gaming",
+      "destination": "/signals/infrastructure-buildout"
+    },
+    {
+      "source": "/signals/infrastructure-buildout/space-tech",
+      "destination": "/signals/infrastructure-buildout"
+    },
+    {
+      "source": "/signals/infrastructure-buildout/social-community",
+      "destination": "/signals/infrastructure-buildout"
+    },
+    {
+      "source": "/signals/deploy-frequency-spike/ai-ml",
+      "destination": "/signals/deploy-frequency-spike"
+    },
+    {
+      "source": "/signals/deploy-frequency-spike/fintech",
+      "destination": "/signals/deploy-frequency-spike"
+    },
+    {
+      "source": "/signals/deploy-frequency-spike/climate-tech",
+      "destination": "/signals/deploy-frequency-spike"
+    },
+    {
+      "source": "/signals/deploy-frequency-spike/developer-tools",
+      "destination": "/signals/deploy-frequency-spike"
+    },
+    {
+      "source": "/signals/deploy-frequency-spike/cybersecurity",
+      "destination": "/signals/deploy-frequency-spike"
+    },
+    {
+      "source": "/signals/deploy-frequency-spike/supply-chain",
+      "destination": "/signals/deploy-frequency-spike"
+    },
+    {
+      "source": "/signals/deploy-frequency-spike/web3",
+      "destination": "/signals/deploy-frequency-spike"
+    },
+    {
+      "source": "/signals/deploy-frequency-spike/data-infrastructure",
+      "destination": "/signals/deploy-frequency-spike"
+    },
+    {
+      "source": "/signals/deploy-frequency-spike/robotics",
+      "destination": "/signals/deploy-frequency-spike"
+    },
+    {
+      "source": "/signals/deploy-frequency-spike/legal-tech",
+      "destination": "/signals/deploy-frequency-spike"
+    },
+    {
+      "source": "/signals/deploy-frequency-spike/hr-tech",
+      "destination": "/signals/deploy-frequency-spike"
+    },
+    {
+      "source": "/signals/deploy-frequency-spike/proptech",
+      "destination": "/signals/deploy-frequency-spike"
+    },
+    {
+      "source": "/signals/deploy-frequency-spike/agtech",
+      "destination": "/signals/deploy-frequency-spike"
+    },
+    {
+      "source": "/signals/deploy-frequency-spike/space-tech",
+      "destination": "/signals/deploy-frequency-spike"
+    },
+    {
+      "source": "/signals/framework-migration/developer-tools",
+      "destination": "/signals/framework-migration"
+    },
+    {
+      "source": "/signals/framework-migration/healthcare",
+      "destination": "/signals/framework-migration"
+    },
+    {
+      "source": "/signals/framework-migration/ecommerce-infrastructure",
+      "destination": "/signals/framework-migration"
+    },
+    {
+      "source": "/signals/framework-migration/web3",
+      "destination": "/signals/framework-migration"
+    },
+    {
+      "source": "/signals/framework-migration/legal-tech",
+      "destination": "/signals/framework-migration"
+    },
+    {
+      "source": "/signals/framework-migration/hr-tech",
+      "destination": "/signals/framework-migration"
+    },
+    {
+      "source": "/signals/framework-migration/agtech",
+      "destination": "/signals/framework-migration"
+    },
+    {
+      "source": "/signals/framework-migration/gaming",
+      "destination": "/signals/framework-migration"
+    },
+    {
+      "source": "/signals/framework-migration/social-community",
+      "destination": "/signals/framework-migration"
+    },
+    {
+      "source": "/trends/ai-ml-q4-2025-vs-q3-2025",
+      "destination": "/trends/ai-ml-q1-2026-vs-q4-2025"
+    },
+    {
+      "source": "/trends/fintech-q4-2025-vs-q3-2025",
+      "destination": "/trends/fintech-q1-2026-vs-q4-2025"
+    },
+    {
+      "source": "/trends/climate-tech-q4-2025-vs-q3-2025",
+      "destination": "/trends/climate-tech-q1-2026-vs-q4-2025"
+    },
+    {
+      "source": "/trends/developer-tools-q4-2025-vs-q3-2025",
+      "destination": "/trends/developer-tools-q1-2026-vs-q4-2025"
+    },
+    {
+      "source": "/trends/cybersecurity-q4-2025-vs-q3-2025",
+      "destination": "/trends/cybersecurity-q1-2026-vs-q4-2025"
+    },
+    {
+      "source": "/trends/healthcare-q4-2025-vs-q3-2025",
+      "destination": "/trends/healthcare-q1-2026-vs-q4-2025"
+    },
+    {
+      "source": "/trends/edtech-q4-2025-vs-q3-2025",
+      "destination": "/trends/edtech-q1-2026-vs-q4-2025"
+    },
+    {
+      "source": "/trends/ecommerce-infrastructure-q4-2025-vs-q3-2025",
+      "destination": "/trends/ecommerce-infrastructure-q1-2026-vs-q4-2025"
+    },
+    {
+      "source": "/trends/supply-chain-q4-2025-vs-q3-2025",
+      "destination": "/trends/supply-chain-q1-2026-vs-q4-2025"
+    },
+    {
+      "source": "/trends/web3-q4-2025-vs-q3-2025",
+      "destination": "/trends/web3-q1-2026-vs-q4-2025"
+    },
+    {
+      "source": "/trends/enterprise-saas-q4-2025-vs-q3-2025",
+      "destination": "/trends/enterprise-saas-q1-2026-vs-q4-2025"
+    },
+    {
+      "source": "/trends/data-infrastructure-q4-2025-vs-q3-2025",
+      "destination": "/trends/data-infrastructure-q1-2026-vs-q4-2025"
+    },
+    {
+      "source": "/trends/robotics-q4-2025-vs-q3-2025",
+      "destination": "/trends/robotics-q1-2026-vs-q4-2025"
+    },
+    {
+      "source": "/trends/legal-tech-q4-2025-vs-q3-2025",
+      "destination": "/trends/legal-tech-q1-2026-vs-q4-2025"
+    },
+    {
+      "source": "/trends/hr-tech-q4-2025-vs-q3-2025",
+      "destination": "/trends/hr-tech-q1-2026-vs-q4-2025"
+    },
+    {
+      "source": "/trends/proptech-q4-2025-vs-q3-2025",
+      "destination": "/trends/proptech-q1-2026-vs-q4-2025"
+    },
+    {
+      "source": "/trends/agtech-q4-2025-vs-q3-2025",
+      "destination": "/trends/agtech-q1-2026-vs-q4-2025"
+    },
+    {
+      "source": "/trends/gaming-q4-2025-vs-q3-2025",
+      "destination": "/trends/gaming-q1-2026-vs-q4-2025"
+    },
+    {
+      "source": "/trends/space-tech-q4-2025-vs-q3-2025",
+      "destination": "/trends/space-tech-q1-2026-vs-q4-2025"
+    },
+    {
+      "source": "/trends/social-community-q4-2025-vs-q3-2025",
+      "destination": "/trends/social-community-q1-2026-vs-q4-2025"
+    },
+    {
+      "source": "/blog/weekly-signal-report-:date((?!2026-11-03$)\\d{4}-\\d{2}-\\d{2})",
+      "destination": "/blog/weekly-signal-report-2026-11-03"
+    }
+  ]
+}
