@@ -43,7 +43,10 @@ function main(): void {
     publishedAt: new Date().toISOString(),
     title: `Weekly Signal Report, ${period.name}`,
     summary: `The five largest engineering-acceleration moves in ${period.name}, derived from public GitHub activity.`,
-    canonicalUrl: `https://signals.gitdealflow.com/research/weekly-signal-report-${new Date().toISOString().slice(0, 10)}`,
+    // 2026-11-03: /research/weekly-signal-report-<date> has never existed as a
+    // route (the report renders at /blog/weekly-signal-report-<date>), so every
+    // channel asset pointed at a 404. Point at the real route.
+    canonicalUrl: `https://signals.gitdealflow.com/blog/weekly-signal-report-${new Date().toISOString().slice(0, 10)}`,
     datasetUrl: "https://signals.gitdealflow.com/weekly/latest.csv",
     topSignals,
   };

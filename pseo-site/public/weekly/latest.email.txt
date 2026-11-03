@@ -1,12 +1,12 @@
-Subject: Weekly Signal Report, Q3 2026 | GitDealFlow weekly signal
-Preheader: liberusoftware: +3275% commit velocity, 14 contributors.
+Subject: Weekly Signal Report, Q4 2026 | GitDealFlow weekly signal
+Preheader: heymegabyte: +20250% commit velocity, 6 contributors.
 
-Weekly Signal Report, Q3 2026
+Weekly Signal Report, Q4 2026
 
-The five largest engineering-acceleration moves in Q3 2026, derived from public GitHub activity.
+The five largest engineering-acceleration moves in Q4 2026, derived from public GitHub activity.
 
-Top signal: liberusoftware (PropTech)
-+3275% commit velocity, 14 contributors, Engineering hiring burst.
+Top signal: heymegabyte (Enterprise SaaS)
++20250% commit velocity, 6 contributors, Engineering hiring burst.
 
-Read the report: https://signals.gitdealflow.com/research/weekly-signal-report-2026-08-29
+Read the report: https://signals.gitdealflow.com/blog/weekly-signal-report-2026-11-03
 Download the data: https://signals.gitdealflow.com/weekly/latest.csv

@@ -1,50 +1,50 @@
 {
-  "period": "q3-2026",
-  "publishedAt": "2026-08-29T17:29:18.566Z",
-  "title": "Weekly Signal Report, Q3 2026",
-  "summary": "The five largest engineering-acceleration moves in Q3 2026, derived from public GitHub activity.",
-  "canonicalUrl": "https://signals.gitdealflow.com/research/weekly-signal-report-2026-08-29",
+  "period": "q4-2026",
+  "publishedAt": "2026-11-03T13:50:36.524Z",
+  "title": "Weekly Signal Report, Q4 2026",
+  "summary": "The five largest engineering-acceleration moves in Q4 2026, derived from public GitHub activity.",
+  "canonicalUrl": "https://signals.gitdealflow.com/blog/weekly-signal-report-2026-11-03",
   "datasetUrl": "https://signals.gitdealflow.com/weekly/latest.csv",
   "topSignals": [
     {
-      "name": "liberusoftware",
-      "sector": "PropTech",
-      "commitVelocityChange": "+3275%",
-      "contributors": 14,
+      "name": "heymegabyte",
+      "sector": "Enterprise SaaS",
+      "commitVelocityChange": "+20250%",
+      "contributors": 6,
       "signalType": "Engineering hiring burst",
-      "url": "https://github.com/liberusoftware"
+      "url": "https://github.com/heymegabyte"
     },
     {
-      "name": "untrustedmodders",
+      "name": "graycoreio",
+      "sector": "E-commerce Infrastructure",
+      "commitVelocityChange": "+7550%",
+      "contributors": 34,
+      "signalType": "Engineering hiring burst",
+      "url": "https://github.com/graycoreio"
+    },
+    {
+      "name": "balaurengine",
       "sector": "Gaming",
-      "commitVelocityChange": "+2900%",
-      "contributors": 7,
-      "signalType": "Deploy frequency spike",
-      "url": "https://github.com/untrustedmodders"
-    },
-    {
-      "name": "fleetbase",
-      "sector": "Supply Chain",
-      "commitVelocityChange": "+1600%",
-      "contributors": 7,
-      "signalType": "Engineering hiring burst",
-      "url": "https://github.com/fleetbase"
-    },
-    {
-      "name": "aphp",
-      "sector": "Healthcare",
-      "commitVelocityChange": "+999%",
+      "commitVelocityChange": "+2363%",
       "contributors": 3,
-      "signalType": "Infrastructure buildout",
-      "url": "https://github.com/aphp"
+      "signalType": "Deploy frequency spike",
+      "url": "https://github.com/balaurengine"
     },
     {
-      "name": "StanfordSpezi",
-      "sector": "Healthcare",
-      "commitVelocityChange": "+999%",
-      "contributors": 5,
-      "signalType": "Deploy frequency spike",
-      "url": "https://github.com/StanfordSpezi"
+      "name": "sint-ai",
+      "sector": "Robotics",
+      "commitVelocityChange": "+2129%",
+      "contributors": 8,
+      "signalType": "Engineering hiring burst",
+      "url": "https://github.com/sint-ai"
+    },
+    {
+      "name": "PyPSA",
+      "sector": "Climate Tech",
+      "commitVelocityChange": "+1950%",
+      "contributors": 124,
+      "signalType": "Engineering hiring burst",
+      "url": "https://github.com/PyPSA"
     }
   ]
 }

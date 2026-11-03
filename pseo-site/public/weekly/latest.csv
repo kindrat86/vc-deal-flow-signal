@@ -1,6 +1,6 @@
 name,sector,commit_velocity_change,contributors,signal_type,url
-liberusoftware,PropTech,+3275%,14,Engineering hiring burst,https://github.com/liberusoftware
-untrustedmodders,Gaming,+2900%,7,Deploy frequency spike,https://github.com/untrustedmodders
-fleetbase,Supply Chain,+1600%,7,Engineering hiring burst,https://github.com/fleetbase
-aphp,Healthcare,+999%,3,Infrastructure buildout,https://github.com/aphp
-StanfordSpezi,Healthcare,+999%,5,Deploy frequency spike,https://github.com/StanfordSpezi
+heymegabyte,Enterprise SaaS,+20250%,6,Engineering hiring burst,https://github.com/heymegabyte
+graycoreio,E-commerce Infrastructure,+7550%,34,Engineering hiring burst,https://github.com/graycoreio
+balaurengine,Gaming,+2363%,3,Deploy frequency spike,https://github.com/balaurengine
+sint-ai,Robotics,+2129%,8,Engineering hiring burst,https://github.com/sint-ai
+PyPSA,Climate Tech,+1950%,124,Engineering hiring burst,https://github.com/PyPSA

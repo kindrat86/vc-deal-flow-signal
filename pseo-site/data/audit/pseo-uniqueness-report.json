@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-08-29T17:31:11.799Z",
+  "generatedAt": "2026-11-03T13:34:53.964Z",
   "config": {
     "hammingThreshold": 9,
     "globalThresholdPct": 5,
@@ -26,7 +26,7 @@
       "shingleCounts": {
         "min": 290,
         "max": 960,
-        "mean": 456
+        "mean": 457
       },
       "pairs": []
     },
@@ -40,7 +40,7 @@
       "shingleCounts": {
         "min": 861,
         "max": 1289,
-        "mean": 948
+        "mean": 949
       },
       "pairs": []
     },
@@ -54,7 +54,7 @@
       "shingleCounts": {
         "min": 428,
         "max": 584,
-        "mean": 478
+        "mean": 479
       },
       "pairs": []
     },
@@ -67,8 +67,8 @@
       "flaggedPct": 0,
       "shingleCounts": {
         "min": 198,
-        "max": 668,
-        "mean": 263
+        "max": 669,
+        "mean": 265
       },
       "pairs": []
     },
