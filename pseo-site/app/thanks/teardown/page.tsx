@@ -6,6 +6,7 @@ import { getHreflangLanguages } from "@/lib/hreflang";
 import TelegramCTA from "@/components/TelegramCTA";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { withEditorialOverride } from "@/lib/metadata";
+import { ThesisWatchlistOffer } from "@/components/ThesisWatchlistOffer";
 
 export const dynamic = "force-static";
 
@@ -101,6 +102,9 @@ export default function ThanksTeardown() {
             </li>
           </ol>
         </section>
+
+        {/* Continuity offer, OFF until data is verified fresh (lib/thesis-watchlist.ts). */}
+        <ThesisWatchlistOffer />
 
         {/* Brunson TS §3 Ch 11, €1 buyers are the highest-velocity tier
             of the value-ladder. Telegram is the lowest-friction next step
