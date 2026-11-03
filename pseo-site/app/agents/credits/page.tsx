@@ -13,7 +13,7 @@ export const metadata: Metadata = withEditorialOverride({
   description:
     "Per-request pricing for AI agents and programmatic callers. €19 = 100 deep-signal calls (€0.19 each). One credit per deep signal returned. The free MCP tools stay free.",
   alternates: { canonical: "/agents/credits" },
-  robots: { index: true, follow: true },
+  robots: { index: false, follow: true }, // signals-merge phase 2: consolidate into gitdealflow.com
   openGraph: {
     title: "Agent Credits, Pay Per Deep Signal",
     description:

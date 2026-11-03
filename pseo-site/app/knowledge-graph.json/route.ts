@@ -403,7 +403,7 @@ export async function GET() {
       "Content-Type": "application/ld+json; charset=utf-8",
       "Cache-Control": "s-maxage=86400, stale-while-revalidate=604800",
       "Access-Control-Allow-Origin": "*",
-      "X-Robots-Tag": "index, follow",
+      "X-Robots-Tag": "noindex, follow", // signals-merge phase 2 (2026-11-03): consolidate into gitdealflow.com
       Link: `<${SITE}/.well-known/dataset.json>; rel="describedby", <${SITE}/citations>; rel="canonical"`,
     },
   });

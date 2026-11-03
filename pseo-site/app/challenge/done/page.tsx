@@ -11,7 +11,7 @@ export const metadata: Metadata = withEditorialOverride({
   description:
     "Graduation page for the 30-Day Deal Flow Reset Challenge. Three optional ways to keep using the system: free Sunday digest, €9.97/mo Dashboard, €1,997 one-time Sector Sweep. The framework + your watchlist + custom weights stay yours either way.",
   alternates: { canonical: "/challenge/done" },
-  robots: { index: true, follow: true },
+  robots: { index: false, follow: true }, // signals-merge phase 2: consolidate into gitdealflow.com
   openGraph: {
     title: "You finished the 30-Day Reset, what's next",
     description:

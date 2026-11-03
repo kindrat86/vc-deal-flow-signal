@@ -24,6 +24,8 @@ export async function GET() {
   const headers = new Headers(upstream.headers);
   headers.set("Link", `<${SITE}/api/v1/glossary.jsonl>; rel="canonical"`);
   headers.set("Content-Type", "application/x-ndjson; charset=utf-8");
+  // signals-merge phase 2 (2026-11-03): consolidate into gitdealflow.com
+  headers.set("X-Robots-Tag", "noindex, follow");
   return new Response(upstream.body, {
     status: upstream.status,
     statusText: upstream.statusText,

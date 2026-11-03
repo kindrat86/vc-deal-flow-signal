@@ -9,7 +9,7 @@ export const metadata: Metadata = withEditorialOverride({
   description:
     "Try get_deep_signal before buying credits: drop your email, get an API key with 5 free deep-signal calls within 24 hours. No card, no subscription.",
   alternates: { canonical: "/agents/credits/sample" },
-  robots: { index: true, follow: true },
+  robots: { index: false, follow: true }, // signals-merge phase 2: consolidate into gitdealflow.com
   openGraph: {
     title: "Free 5-Call Sample, Agent Credits",
     description:

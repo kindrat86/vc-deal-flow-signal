@@ -320,6 +320,8 @@ export async function GET() {
     headers: {
       "content-type": "application/json; charset=utf-8",
       "cache-control": "public, max-age=86400, s-maxage=86400",
+      // signals-merge phase 2 (2026-11-03): consolidate into gitdealflow.com
+      "x-robots-tag": "noindex, follow",
       // Hint to Google's Knowledge Graph crawler that the resource is
       // intended for entity-binding consumption (no PII, no auth-gated
       // content).

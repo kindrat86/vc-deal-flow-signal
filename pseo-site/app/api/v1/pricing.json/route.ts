@@ -399,7 +399,7 @@ export async function GET() {
       "Content-Type": "application/json; charset=utf-8",
       "Cache-Control": "public, s-maxage=3600, stale-while-revalidate=86400",
       "Access-Control-Allow-Origin": "*",
-      "X-Robots-Tag": "index, follow",
+      "X-Robots-Tag": "noindex, follow", // signals-merge phase 2 (2026-11-03): consolidate into gitdealflow.com
       "Last-Modified": lastModified.toUTCString(),
     },
   });

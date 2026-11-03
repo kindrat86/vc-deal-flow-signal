@@ -64,7 +64,7 @@ export async function generateMetadata(
       type: "profile",
     },
     robots: {
-      index: true,
+      index: false, // signals-merge phase 2: consolidate into gitdealflow.com
       follow: true,
     },
   });

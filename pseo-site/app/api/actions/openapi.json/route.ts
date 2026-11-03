@@ -407,6 +407,8 @@ export async function GET() {
       "Content-Type": "application/json; charset=utf-8",
       "Cache-Control": "s-maxage=86400, stale-while-revalidate=3600",
       "Access-Control-Allow-Origin": "*",
+      // signals-merge phase 2 (2026-11-03): consolidate into gitdealflow.com
+      "X-Robots-Tag": "noindex, follow",
     },
   });
 }

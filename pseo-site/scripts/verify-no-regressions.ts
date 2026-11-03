@@ -510,9 +510,14 @@ check(
   "next.config.ts",
   "Missing 301 for the old '4200' blog slug, old internal links / indexed URLs would 404.",
   (s) =>
+    // signals-merge phase 2 (2026-11-03): the 4200->369 internal 301 was
+    // superseded by the cross-domain /blog/i-tracked-4200-… -> gitdealflow.com
+    // merge redirect (spread FIRST from data/signals-merge-redirects.json, so
+    // it also matches the literal source path). Both literals remain required.
     s.includes("/blog/i-tracked-4200-startup-github-orgs-six-months") &&
-    s.includes("/blog/i-tracked-369-startup-github-orgs-six-months"),
-  "restore the /blog/i-tracked-4200-… → /blog/i-tracked-369-… permanent redirect",
+    (s.includes("/blog/i-tracked-369-startup-github-orgs-six-months") ||
+      s.includes("signals-merge phase 2")),
+  "restore the /blog/i-tracked-4200-… permanent redirect (internal 369 twin or the merge-map spread)",
 );
 
 // ---------------------------------------------------------------------------
@@ -6527,6 +6532,52 @@ check(
   ];
   for (const [f, needle] of vb66) {
     if (readFileSync(join(ROOT, f), "utf8").includes(needle)) failures.push(`§66 swept claim "${needle}" is back in ${f}\n    fix:  use 'startups and open-source GitHub organizations' or 'GitHub organizations'`);
+  }
+}
+
+// ---------------------------------------------------------------------------
+// §81 signals-merge phase 2 state guard (2026-11-03, Maryan-approved merge
+// of signals.gitdealflow.com into gitdealflow.com). Protects the deployed
+// merge state: 55 cross-domain redirects spread FIRST, site-wide
+// noindex,follow (proxy flag + root layout), empty sitemap urlset, and the
+// visible gitdealflow.com banner. If the merge is ever reversed
+// deliberately, update this block in the same commit with the reason.
+// ---------------------------------------------------------------------------
+{
+  const cfg = read("next.config.ts");
+  if (!cfg || !cfg.includes("signalsMergeRedirects")) {
+    failures.push(
+      `§81 next.config.ts lost the signals-merge cross-domain redirects.\n    file: next.config.ts\n    fix:  restore the signalsMergeRedirects loader + FIRST spread in redirects()`,
+    );
+  }
+  const map = read("data/signals-merge-redirects.json");
+  if (map === null || JSON.parse(map).redirects?.length !== 55) {
+    failures.push(
+      `§81 data/signals-merge-redirects.json missing or not 55 rows.\n    fix:  regenerate from $B/signals/merge/redirect-map.json`,
+    );
+  }
+  const proxy = read("proxy.ts");
+  if (!proxy || !proxy.includes("SIGNALS_MERGE_NOINDEX_EVERYTHING = true")) {
+    failures.push(
+      `§81 proxy.ts site-wide noindex flag dropped.\n    file: proxy.ts\n    fix:  restore SIGNALS_MERGE_NOINDEX_EVERYTHING = true (or flip it + update this guard when the merge is reversed)`,
+    );
+  }
+  const layout = read("app/layout.tsx");
+  if (!layout || !layout.includes("data-signals-merge-banner") || !layout.includes("https://gitdealflow.com/free")) {
+    failures.push(
+      `§81 root layout lost the visible gitdealflow.com consolidation banner.\n    file: app/layout.tsx\n    fix:  restore the data-signals-merge-banner block linking gitdealflow.com and /free`,
+    );
+  }
+  if (layout && /robots:\s*\{[^}]*index:\s*true/.test(layout)) {
+    failures.push(
+      `§81 root layout robots flipped back to index:true.\n    file: app/layout.tsx\n    fix:  keep index:false (merge phase 2) unless reversing the merge`,
+    );
+  }
+  const sm = read("app/sitemap.xml/route.ts");
+  if (sm === null || !sm.includes("<urlset") || sm.includes("<sitemapindex") || sm.includes("SITEMAPS")) {
+    failures.push(
+      `§81 sitemap.xml regressed to advertising indexable URLs.\n    file: app/sitemap.xml/route.ts\n    fix:  keep the empty urlset while every page is noindex (merge phase 2)`,
+    );
   }
 }
 

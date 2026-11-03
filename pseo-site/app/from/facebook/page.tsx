@@ -57,7 +57,7 @@ export const metadata: Metadata = withEditorialOverride({
     // Pre-frame landings should be discoverable but not compete with /firstlook
     // for canonical SEO weight. /firstlook is the conversion canonical; this
     // page exists to bridge ad-traffic only.
-    index: true,
+    index: false, // signals-merge phase 2: consolidate into gitdealflow.com
     follow: true,
   },
 });

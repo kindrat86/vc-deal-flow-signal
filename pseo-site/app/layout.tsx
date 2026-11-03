@@ -47,8 +47,13 @@ export const metadata: Metadata = {
     "VC sourcing",
   ],
   metadataBase: new URL("https://signals.gitdealflow.com"),
+  // signals-merge phase 2 (2026-11-03, Maryan-approved): the whole site
+  // consolidates into gitdealflow.com. Root default flips to noindex,follow
+  // (proxy.ts sends the matching X-Robots-Tag). Pages without their own
+  // robots metadata inherit this; the few pages that declared index: true
+  // were flipped in the same commit so meta and header never disagree.
   robots: {
-    index: true,
+    index: false,
     follow: true,
     "max-image-preview": "large",
   },
@@ -460,6 +465,37 @@ export default function RootLayout({
       </head>
       <body className={`${inter.className} min-h-full flex flex-col bg-slate-950 text-gray-100`}>
         <ReadingProgressBar />
+        {/* signals-merge phase 2 (2026-11-03): visible consolidation notice.
+            Every non-redirected page here is noindex,follow now; humans who
+            land on one get a one-click path to the live product on
+            gitdealflow.com and its free weekly list. Gated by NotInEmbed so
+            iframe widgets stay clean. */}
+        <NotInEmbed>
+          <div
+            data-signals-merge-banner
+            className="w-full bg-amber-400/95 text-slate-900 text-sm font-medium"
+          >
+            <div className="max-w-5xl mx-auto px-4 py-2 flex flex-wrap items-center gap-x-3 gap-y-1">
+              <span aria-hidden="true">📣</span>
+              <span>
+                GitDealFlow Signal has moved to{" "}
+                <a
+                  href="https://gitdealflow.com/"
+                  className="underline font-semibold"
+                >
+                  gitdealflow.com
+                </a>
+                .
+              </span>
+              <a
+                href="https://gitdealflow.com/free"
+                className="underline font-semibold"
+              >
+                Get the free weekly startup list →
+              </a>
+            </div>
+          </div>
+        </NotInEmbed>
         {/* Site chrome (Header, Footer, retargeting pixels,
             PostHog/RefGrow, web-vitals beacon) is gated off on iframe-embed
             surfaces, `/embed/<widget>/...` paths render only `<main>` so

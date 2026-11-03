@@ -56,7 +56,7 @@ export async function GET() {
     headers: {
       "Content-Type": "application/x-ndjson; charset=utf-8",
       "Cache-Control": "s-maxage=86400, stale-while-revalidate=604800",
-      "X-Robots-Tag": "index, follow",
+      "X-Robots-Tag": "noindex, follow", // signals-merge phase 2 (2026-11-03): consolidate into gitdealflow.com
       Link: `<${SITE}/api/v1/glossary.jsonl>; rel="canonical"`,
       "Access-Control-Allow-Origin": "*",
     },

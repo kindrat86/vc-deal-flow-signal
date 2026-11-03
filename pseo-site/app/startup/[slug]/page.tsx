@@ -82,7 +82,7 @@ export async function generateMetadata({
     title,
     description,
     robots: {
-      index: true,
+      index: false, // signals-merge phase 2: consolidate into gitdealflow.com
       follow: true,
       "max-image-preview": "large",
     },

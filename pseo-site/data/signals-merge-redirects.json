@@ -1,0 +1,225 @@
+{
+  "note": "signals-merge phase 2 (2026-11-03): 55 permanent cross-domain redirects; loaded first in next.config.ts redirects() so they take precedence",
+  "redirects": [
+    {
+      "source": "/",
+      "destination": "https://gitdealflow.com/"
+    },
+    {
+      "source": "/alternatives",
+      "destination": "https://gitdealflow.com/alternatives-to"
+    },
+    {
+      "source": "/alternatives/cb-insights",
+      "destination": "https://gitdealflow.com/alternatives/cb-insights"
+    },
+    {
+      "source": "/alternatives/specter",
+      "destination": "https://gitdealflow.com/alternatives/specter"
+    },
+    {
+      "source": "/answers",
+      "destination": "https://gitdealflow.com/answers"
+    },
+    {
+      "source": "/answers/best-mcp-servers-for-vc-and-finance-research-2026",
+      "destination": "https://gitdealflow.com/answers/best-mcp-servers-for-vc-and-finance-research-2026"
+    },
+    {
+      "source": "/answers/does-harmonic-integrate-with-affinity",
+      "destination": "https://gitdealflow.com/answers/does-harmonic-integrate-with-affinity"
+    },
+    {
+      "source": "/answers/free-harmonic-ai-alternative-2026",
+      "destination": "https://gitdealflow.com/answers/free-harmonic-ai-alternative-2026"
+    },
+    {
+      "source": "/answers/what-is-glama-mcp-and-how-do-i-use-it",
+      "destination": "https://gitdealflow.com/answers/what-is-glama-mcp-and-how-do-i-use-it"
+    },
+    {
+      "source": "/best/web3-2025",
+      "destination": "https://gitdealflow.com/best/web3-2026"
+    },
+    {
+      "source": "/best/web3-2026",
+      "destination": "https://gitdealflow.com/best/web3-2026"
+    },
+    {
+      "source": "/blog",
+      "destination": "https://gitdealflow.com/learn"
+    },
+    {
+      "source": "/blog/best-chrome-extensions-vc-deal-flow-2026",
+      "destination": "https://gitdealflow.com/blog/best-chrome-extensions-vc-deal-flow-2026"
+    },
+    {
+      "source": "/blog/commit-velocity-explained",
+      "destination": "https://gitdealflow.com/blog/commit-velocity-explained"
+    },
+    {
+      "source": "/blog/deal-sourcing-best-practices-vc",
+      "destination": "https://gitdealflow.com/blog/deal-sourcing-best-practices-vc"
+    },
+    {
+      "source": "/blog/github-due-diligence-checklist-20-minutes",
+      "destination": "https://gitdealflow.com/blog/github-due-diligence-checklist-20-minutes"
+    },
+    {
+      "source": "/blog/i-tracked-4200-startup-github-orgs-six-months",
+      "destination": "https://gitdealflow.com/blog/i-tracked-4200-startup-github-orgs-six-months"
+    },
+    {
+      "source": "/blog/inbound-vs-outbound-deal-sourcing",
+      "destination": "https://gitdealflow.com/blog/inbound-vs-outbound-deal-sourcing"
+    },
+    {
+      "source": "/blog/startup-engineering-metrics-investors-should-track",
+      "destination": "https://gitdealflow.com/blog/startup-engineering-metrics-investors-should-track"
+    },
+    {
+      "source": "/book",
+      "destination": "https://gitdealflow.com/book"
+    },
+    {
+      "source": "/compare",
+      "destination": "https://gitdealflow.com/vs"
+    },
+    {
+      "source": "/compare/best-ai-deal-sourcing-tools-2026",
+      "destination": "https://gitdealflow.com/compare/best-ai-deal-sourcing-tools-2026"
+    },
+    {
+      "source": "/compare/best-alternative-data-tools-for-angel-investors",
+      "destination": "https://gitdealflow.com/compare/best-alternative-data-tools-for-angel-investors"
+    },
+    {
+      "source": "/compare/best-free-deal-flow-tools-2026",
+      "destination": "https://gitdealflow.com/compare/best-free-deal-flow-tools-2026"
+    },
+    {
+      "source": "/compare/vc-deal-flow-signal-vs-signalfire-beacon",
+      "destination": "https://gitdealflow.com/compare/vc-deal-flow-signal-vs-signalfire-beacon"
+    },
+    {
+      "source": "/faq",
+      "destination": "https://gitdealflow.com/faq"
+    },
+    {
+      "source": "/from-stars-to-seed",
+      "destination": "https://gitdealflow.com/from-stars-to-seed"
+    },
+    {
+      "source": "/from-stars-to-seed/litellm",
+      "destination": "https://gitdealflow.com/from-stars-to-seed/litellm"
+    },
+    {
+      "source": "/glossary",
+      "destination": "https://gitdealflow.com/glossary"
+    },
+    {
+      "source": "/playbooks/how-to-read-a-github-trendline-like-a-partner",
+      "destination": "https://gitdealflow.com/playbooks/how-to-read-a-github-trendline-like-a-partner"
+    },
+    {
+      "source": "/predict",
+      "destination": "https://gitdealflow.com/predict"
+    },
+    {
+      "source": "/pricing",
+      "destination": "https://gitdealflow.com/pricing"
+    },
+    {
+      "source": "/receipts",
+      "destination": "https://gitdealflow.com/receipts"
+    },
+    {
+      "source": "/research",
+      "destination": "https://gitdealflow.com/research"
+    },
+    {
+      "source": "/startups-to-watch/edtech-q2-2026",
+      "destination": "https://gitdealflow.com/startups-to-watch/edtech-q2-2026"
+    },
+    {
+      "source": "/startups-to-watch/healthcare-q2-2026",
+      "destination": "https://gitdealflow.com/startups-to-watch/healthcare-q2-2026"
+    },
+    {
+      "source": "/startups-to-watch/healthcare-q3-2026",
+      "destination": "https://gitdealflow.com/startups-to-watch/healthcare-q3-2026"
+    },
+    {
+      "source": "/startups-to-watch/space-tech-q3-2026",
+      "destination": "https://gitdealflow.com/startups-to-watch/space-tech-q3-2026"
+    },
+    {
+      "source": "/startups-to-watch/supply-chain-q3-2026",
+      "destination": "https://gitdealflow.com/startups-to-watch/supply-chain-q3-2026"
+    },
+    {
+      "source": "/startups-to-watch/web3-q3-2026",
+      "destination": "https://gitdealflow.com/startups-to-watch/web3-q3-2026"
+    },
+    {
+      "source": "/vs/affinity-vs-harmonic-ai",
+      "destination": "https://gitdealflow.com/vs/affinity-vs-harmonic-ai"
+    },
+    {
+      "source": "/vs/crunchbase-vs-fundable",
+      "destination": "https://gitdealflow.com/vs/crunchbase-vs-fundable"
+    },
+    {
+      "source": "/vs/crunchbase-vs-tracxn",
+      "destination": "https://gitdealflow.com/vs/crunchbase-vs-tracxn"
+    },
+    {
+      "source": "/vs/dealroom-vs-crunchbase",
+      "destination": "https://gitdealflow.com/vs/dealroom-vs-crunchbase"
+    },
+    {
+      "source": "/vs/dealroom-vs-pitchbook",
+      "destination": "https://gitdealflow.com/vs/dealroom-vs-pitchbook"
+    },
+    {
+      "source": "/vs/dealroom-vs-tracxn",
+      "destination": "https://gitdealflow.com/vs/dealroom-vs-tracxn"
+    },
+    {
+      "source": "/vs/forager-ai-vs-pitchbook",
+      "destination": "https://gitdealflow.com/vs/forager-ai-vs-pitchbook"
+    },
+    {
+      "source": "/vs/harmonic-ai-vs-affinity",
+      "destination": "https://gitdealflow.com/vs/affinity-vs-harmonic-ai"
+    },
+    {
+      "source": "/vs/harmonic-ai-vs-crunchbase",
+      "destination": "https://gitdealflow.com/vs/harmonic-ai-vs-crunchbase"
+    },
+    {
+      "source": "/vs/harmonic-ai-vs-dealroom",
+      "destination": "https://gitdealflow.com/vs/harmonic-ai-vs-dealroom"
+    },
+    {
+      "source": "/vs/harmonic-ai-vs-pitchbook",
+      "destination": "https://gitdealflow.com/vs/harmonic-ai-vs-pitchbook"
+    },
+    {
+      "source": "/vs/harmonic-ai-vs-tracxn",
+      "destination": "https://gitdealflow.com/vs/harmonic-ai-vs-tracxn"
+    },
+    {
+      "source": "/vs/pitchbook-vs-tracxn",
+      "destination": "https://gitdealflow.com/vs/pitchbook-vs-tracxn"
+    },
+    {
+      "source": "/vs/specter-vs-crunchbase",
+      "destination": "https://gitdealflow.com/vs/specter-vs-crunchbase"
+    },
+    {
+      "source": "/vs/specter-vs-harmonic-ai",
+      "destination": "https://gitdealflow.com/vs/specter-vs-harmonic-ai"
+    }
+  ]
+}

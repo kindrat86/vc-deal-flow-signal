@@ -53,7 +53,7 @@ export async function generateMetadata({
       // Indexable, these are public reference pages for the IG queue and
       // help link unfurls + agent-side discovery (the cards mirror the same
       // data we expose at /predicted, /signal-of-the-week, /methodology).
-      index: true,
+      index: false, // signals-merge phase 2: consolidate into gitdealflow.com
       follow: true,
     },
   };

@@ -34,7 +34,7 @@ export const metadata: Metadata = withEditorialOverride({
   description:
     "Trailer for the Sunday digest. Sector, stage, velocity delta, signal type for the five orgs about to publish. Names redacted, subscribe to get the actual list.",
   alternates: { canonical: "/friday-preview" },
-  robots: { index: true, follow: true },
+  robots: { index: false, follow: true }, // signals-merge phase 2: consolidate into gitdealflow.com
   openGraph: {
     title: "Friday preview, Sunday's five, with names redacted",
     description:

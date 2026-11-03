@@ -7,7 +7,7 @@ export const metadata: Metadata = withEditorialOverride({
   description:
     "Request removal of a /founder/[handle] page. Verified removal requests are honored within 7 business days; the page then returns HTTP 410 Gone and the handle is added to a permanent blocklist.",
   alternates: { canonical: "/founder/opt-out" },
-  robots: { index: true, follow: false },
+  robots: { index: false, follow: false }, // signals-merge phase 2: consolidate into gitdealflow.com
 });
 
 export const revalidate = 604800;

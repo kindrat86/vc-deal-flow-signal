@@ -48,8 +48,12 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     // decision = "retain"; the evaluator cron flips it on the pre-registered
     // post-lede CTR rule (>= 3000 imps AND < 0.20% CTR). noindex,follow with
     // self-canonical: unique content, link equity keeps flowing to siblings.
+    // signals-merge phase 2 (2026-11-03): everything on signals
+    // consolidates into gitdealflow.com; leaf indexability is overridden to
+    // noindex regardless of the §54 policy (self-canonical kept so link
+    // equity keeps flowing to siblings).
     robots: researchPaperLeafIndexable(slug)
-      ? { index: true, follow: true }
+      ? { index: false, follow: true }
       : { index: false, follow: true },
   });
 }
