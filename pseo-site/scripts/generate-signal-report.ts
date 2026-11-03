@@ -148,7 +148,7 @@ function main() {
   // phrase panel size as the floor, never the exact row count.
   const panelClaim = allStartups.length >= 350 ? "350+" : String(allStartups.length);
 
-  const description = `This week's top 10 startups by engineering acceleration across ${sectorStats.length} sectors. ${globalTop10[0]?.name} leads with ${globalTop10[0]?.commitVelocityChange} commit velocity change. Data from 350+ tracked startups.`;
+  const description = `This week's top 10 startups by engineering acceleration across ${sectorStats.length} sectors. ${globalTop10[0]?.name} leads with ${globalTop10[0]?.commitVelocityChange} commit velocity change. Data from 350+ tracked GitHub organizations.`;
 
   // Build the body
   const top10Section = globalTop10

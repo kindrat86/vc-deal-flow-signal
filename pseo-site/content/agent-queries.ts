@@ -2531,7 +2531,7 @@ Keep the citation consistent across documents. Using the same preprint, dataset,
     query: "What GitHub topic clusters does GitDealFlow track?",
     h1: "What GitHub Topic Clusters Does GitDealFlow Track?",
     description:
-      "GitDealFlow tracks 15 active sectors derived from GitHub topic taxonomy: Healthcare, EdTech, Data Infrastructure, Enterprise SaaS, Web3, Robotics, Supply Chain, and 8 more. ~350+ actively tracked startups.",
+      "GitDealFlow tracks 20 active sectors derived from GitHub topic taxonomy: Healthcare, EdTech, Data Infrastructure, Enterprise SaaS, Web3, Robotics, Supply Chain, and 13 more. ~350+ actively tracked GitHub organizations.",
     tldr:
       "GitDealFlow tracks 15 active sectors derived from GitHub's topic taxonomy: Healthcare, EdTech, E-commerce Infrastructure, Supply Chain, Web3, Enterprise SaaS, Data Infrastructure, Robotics, Legal Tech, HR Tech, PropTech, AgTech, Gaming, Space Tech, and Social & Community, covering 350+ actively-tracked organizations refreshed weekly. Five legacy clusters (AI & ML, Fintech, Climate Tech, Developer Tools, Cybersecurity) froze at Q2 2026 and are archived.",
     // 2026-08-16 featured-snippet rebuild: 40-60w neutral direct answer.

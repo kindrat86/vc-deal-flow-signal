@@ -133,9 +133,9 @@ function buildNarrative(pick: Ranked, allCount: number, sectorCount: number, per
   const title = `Signal of the Week: ${pick.name} (${pick.sectorName}) - ${vc} commit velocity`;
 
   // SEO description - should read like a wire-service lead
-  const description = `${pick.name} is the #1 engineering acceleration mover this week across ${allCount} tracked startups in ${sectorCount} sectors. Commit velocity is up ${vc} over 14 days on a baseline of ${pick.commitVelocity14d} commits with ${pick.contributors} contributors. Signal: ${pick.signalType}.`;
+  const description = `${pick.name} is the #1 engineering acceleration mover this week across ${allCount} tracked GitHub organizations in ${sectorCount} sectors. Commit velocity is up ${vc} over 14 days on a baseline of ${pick.commitVelocity14d} commits with ${pick.contributors} contributors. Signal: ${pick.signalType}.`;
 
-  const summary = `${pick.name}, a ${stageText || "growth-stage"} ${pick.sectorName.toLowerCase()} startup${geo ? ` based in ${geo}` : ""}, is the top engineering-acceleration mover this week across ${allCount} tracked startups. Commit velocity is ${vc} over 14 days with ${pick.contributors} contributors active. The signal type is ${pick.signalType.toLowerCase()} - historically a fundraise predictor 3-6 weeks out.`;
+  const summary = `${pick.name}, a ${stageText || "growth-stage"} ${pick.sectorName.toLowerCase()} startup${geo ? ` based in ${geo}` : ""}, is the top engineering-acceleration mover this week across ${allCount} tracked GitHub organizations. Commit velocity is ${vc} over 14 days with ${pick.contributors} contributors active. The signal type is ${pick.signalType.toLowerCase()} - historically a fundraise predictor 3-6 weeks out.`;
 
   const keyStats: Array<{ value: string; label: string; context?: string }> = [
     { value: vc, label: "Commit velocity change", context: "14-day vs. baseline" },
@@ -151,7 +151,7 @@ function buildNarrative(pick: Ranked, allCount: number, sectorCount: number, per
   if (pick.linkedinUrl) outbound.push(`[LinkedIn](${pick.linkedinUrl})`);
   const outboundRow = outbound.join(" · ");
 
-  const body = `${pick.name} is the #1 engineering-acceleration mover this week across ${allCount} tracked startups in ${sectorCount} sectors. Commit velocity is ${vc} over 14 days, off a baseline of ${pick.commitVelocity14d} commits with ${pick.contributors} contributors actively shipping. The dominant signal type is ${pick.signalType.toLowerCase()} - historically a 3-6 week leading indicator of fundraise announcements.
+  const body = `${pick.name} is the #1 engineering-acceleration mover this week across ${allCount} tracked GitHub organizations in ${sectorCount} sectors. Commit velocity is ${vc} over 14 days, off a baseline of ${pick.commitVelocity14d} commits with ${pick.contributors} contributors actively shipping. The dominant signal type is ${pick.signalType.toLowerCase()} - historically a 3-6 week leading indicator of fundraise announcements.
 
 ${outboundRow}
 
@@ -383,7 +383,7 @@ Signal of the Week - ${pick.name} (${pick.sectorName})
 
 ${vc} commit velocity change over 14 days. ${pick.contributors} contributors. Signal type: ${pick.signalType.toLowerCase()}.
 
-This is the #1 engineering-acceleration mover this week across ${allCount} tracked startups. In our data, this pattern precedes fundraise announcements by 3-6 weeks.
+This is the #1 engineering-acceleration mover this week across ${allCount} tracked GitHub organizations. In our data, this pattern precedes fundraise announcements by 3-6 weeks.
 
 Full breakdown: ${permalink}
 
@@ -417,7 +417,7 @@ Signal of the Week - ${pick.name}
 
 ${pick.sectorName} · ${vc} commit velocity · ${pick.contributors} contributors
 
-#1 engineering-acceleration mover this week across ${allCount} tracked startups.
+#1 engineering-acceleration mover this week across ${allCount} tracked GitHub organizations.
 
 Full breakdown: ${permalink}
 
