@@ -15,6 +15,7 @@ import {
   FRAMEWORKS,
   type FrameworkPositioning,
 } from "@/lib/for-framework-data";
+import { SECTOR_COUNT } from "../lib/sector-count";
 
 const SITE = "https://signals.gitdealflow.com";
 const A2A_URL = `${SITE}/api/a2a`;
@@ -28,7 +29,7 @@ export function ForFrameworkPage({ framework: f }: Props) {
   const path = `/for-${f.slug}`;
   const url = `${SITE}${path}`;
   const title = `Use GitDealFlow with ${f.name}, VC Engineering Signals for Your Agent`;
-  const description = `${f.hook} Free A2A endpoint, MCP server, no auth. 350+ GitHub organizations across 15 sectors, refreshed weekly.`;
+  const description = `${f.hook} Free A2A endpoint, MCP server, no auth. 350+ GitHub organizations across ${SECTOR_COUNT} sectors, refreshed weekly.`;
 
   const others = FRAMEWORKS.filter((x) => x.slug !== f.slug);
 

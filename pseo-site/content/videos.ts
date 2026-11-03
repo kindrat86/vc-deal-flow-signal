@@ -81,7 +81,7 @@ export const videos: SiteVideo[] = [
     title:
       "GitHub Commit Velocity Predicts Series A 30 Days Early, Engineering Acceleration Watch",
     description:
-      "By the time a startup hits Crunchbase, every other VC sees it the same morning. Engineering Acceleration Watch ships every Monday with the venture-backed startups whose GitHub commit velocity is accelerating sharpest, typically 21 to 47 days before the Series A announcement, based on a longitudinal panel of 219 startup-period observations (SSRN-indexed methodology, CC BY 4.0).",
+      "By the time a startup hits Crunchbase, every other VC sees it the same morning. Engineering Acceleration Watch ships every Monday with the startups whose GitHub commit velocity is accelerating sharpest, typically 21 to 47 days before the Series A announcement, based on a longitudinal panel of 219 startup-period observations (SSRN-indexed methodology, CC BY 4.0).",
     uploadDate: "2026-05-05T00:00:00+00:00",
     durationSeconds: 90,
     format: "landscape",
@@ -304,7 +304,7 @@ export const videos: SiteVideo[] = [
     thumbnailMaxUrl: `${APEX}/how-gitdealflow-works.jpg`,
     title: "How GitDealFlow Works in 60 Seconds, VC Deal Flow Signal",
     description:
-      "What GitDealFlow does in under a minute: it reads commit velocity, contributor growth, and repository expansion across hundreds of venture-backed startups in 15 sectors, then surfaces the five accelerating fastest every Monday, typically 21 to 47 days before the fundraise announcement. Based on a longitudinal panel of 219 startup-period observations (SSRN-indexed methodology, CC BY 4.0).",
+      "What GitDealFlow does in under a minute: it reads commit velocity, contributor growth, and repository expansion across 350+ public GitHub organizations in every tracked sector, then surfaces the five accelerating fastest every Monday, typically 21 to 47 days before the fundraise announcement. Based on a longitudinal panel of 219 startup-period observations (SSRN-indexed methodology, CC BY 4.0).",
     uploadDate: "2026-08-15T00:00:00+00:00",
     durationSeconds: 57,
     format: "landscape",

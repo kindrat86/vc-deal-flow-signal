@@ -126,7 +126,7 @@ export const OTO_TIERS: Record<OtoKey, OtoConfig> = {
     unitAmount: 179700,
     currency: "eur",
     description:
-      "Full venture-backed panel for one sector, three time windows, 60-minute walkthrough call. Standalone €1,997, €200 off when added to a First Look Pass.",
+      "Full tracked panel for one sector, three time windows, 60-minute walkthrough call. Standalone €1,997, €200 off when added to a First Look Pass.",
     welcomeSubject: "Custom Sector Sweep, your thesis intake form",
   },
   insider_oto2: {

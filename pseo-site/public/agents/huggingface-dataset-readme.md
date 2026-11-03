@@ -25,14 +25,14 @@ configs:
 
 # VC Deal Flow Signal, Startup Engineering Signals
 
-GitHub-derived engineering acceleration panel for ~350+ GitHub organizations across 15 sectors, refreshed weekly. Includes commit-velocity change, contributor count, signal-type classification, estimated funding stage, and per-sector rankings.
+GitHub-derived engineering acceleration panel for ~350+ GitHub organizations across every tracked sector, refreshed weekly. Includes commit-velocity change, contributor count, signal-type classification, estimated funding stage, and per-sector rankings.
 
 ## Schema
 
 | Field | Type | Description |
 |---|---|---|
 | `name` | string | Startup organization name |
-| `sector` | string | One of 15 sector slugs (`ai-ml`, `fintech`, `devtools`, etc.) |
+| `sector` | string | Sector slug (`ai-ml`, `fintech`, `developer-tools`, etc.) |
 | `commitVelocity` | int | Total commits to the most-active public repo over rolling 14-day window |
 | `commitVelocityChange` | string | Percentage change vs. prior 14-day window, primary signal |
 | `contributors` | int | Unique contributor count |

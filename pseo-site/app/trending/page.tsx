@@ -264,7 +264,7 @@ export default function TrendingPage() {
               signalType={top20[0].signalType}
               entityName={top20[0].name}
               otherCount={allStartups.length - 1}
-              contextLabel="venture-backed orgs we rank"
+              contextLabel="GitHub orgs we rank"
             />
           </section>
         )}

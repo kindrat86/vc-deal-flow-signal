@@ -127,7 +127,7 @@ function buildNarrative(pick: Ranked, allCount: number, sectorCount: number, per
 } {
   const vc = humanizedVelocityChange(pick.commitVelocityChange);
   const geo = pick.geography !== "Unknown" ? pick.geography : "";
-  const stageText = pick.stage && pick.stage !== "Unknown" ? `${pick.stage}-stage` : "";
+  // stage is estimated from contributor count (not funding), so it is not printed as a claim.
 
   // Keep title tight, tweet-friendly, citation-shaped
   const title = `Signal of the Week: ${pick.name} (${pick.sectorName}) - ${vc} commit velocity`;
@@ -135,7 +135,7 @@ function buildNarrative(pick: Ranked, allCount: number, sectorCount: number, per
   // SEO description - should read like a wire-service lead
   const description = `${pick.name} is the #1 engineering acceleration mover this week across ${allCount} tracked GitHub organizations in ${sectorCount} sectors. Commit velocity is up ${vc} over 14 days on a baseline of ${pick.commitVelocity14d} commits with ${pick.contributors} contributors. Signal: ${pick.signalType}.`;
 
-  const summary = `${pick.name}, a ${stageText || "growth-stage"} ${pick.sectorName.toLowerCase()} startup${geo ? ` based in ${geo}` : ""}, is the top engineering-acceleration mover this week across ${allCount} tracked GitHub organizations. Commit velocity is ${vc} over 14 days with ${pick.contributors} contributors active. The signal type is ${pick.signalType.toLowerCase()} - historically a fundraise predictor 3-6 weeks out.`;
+  const summary = `${pick.name}, a ${pick.sectorName.toLowerCase()} company${geo ? ` based in ${geo}` : ""}, is the top engineering-acceleration mover this week across ${allCount} tracked GitHub organizations. Commit velocity is ${vc} over 14 days with ${pick.contributors} contributors active. The signal type is ${pick.signalType.toLowerCase()} - historically a fundraise predictor 3-6 weeks out.`;
 
   const keyStats: Array<{ value: string; label: string; context?: string }> = [
     { value: vc, label: "Commit velocity change", context: "14-day vs. baseline" },
@@ -157,7 +157,7 @@ ${outboundRow}
 
 ## The Signal
 
-${pick.name}${stageText ? ` (${stageText})` : ""}${geo ? `, based in ${geo}` : ""}, operates in ${pick.sectorName.toLowerCase()}: ${pick.description.replace(/\s*\[.*?\]\(.*?\)\s*$/g, "").trim()}
+${pick.name}${geo ? `, based in ${geo}` : ""}, operates in ${pick.sectorName.toLowerCase()}: ${pick.description.replace(/\s*\[.*?\]\(.*?\)\s*$/g, "").trim()}
 
 Over the last two weeks, we measured:
 
@@ -166,13 +166,9 @@ Over the last two weeks, we measured:
 - New repositories: ${pick.newRepos} in the current period.
 - Classification: ${pick.signalType}.
 
-For context, the median tracked startup this period runs at roughly 85 commits/14d with flat or negative velocity change. ${pick.name} is running ${pick.commitVelocity14d > 200 ? "well above" : "above"} the median with a strongly positive acceleration profile.
-
 ## Why This Matters for Investors
 
-Engineering acceleration is the earliest publicly available fundraise signal we track. In our data, a sustained ${vc.startsWith("+") ? vc : "+50%"}-or-greater commit velocity change over a 14-day window precedes an announced round by 3-6 weeks on average. The signal compresses further (to 2-4 weeks) when the signal type is "${pick.signalType}", which is what we see here.
-
-The implication for ${pick.sectorName.toLowerCase()} investors: ${pick.name} is likely in the weeks-2-to-4 window of a ramp that will show up in TechCrunch 6-8 weeks from now. This is the window where warm-intro investors still have access to the founder, before the round is competitive.
+Engineering acceleration is the earliest publicly available fundraise signal we track. In the published research panel, engineering acceleration preceded announced rounds by 3-6 weeks.
 
 We are not saying ${pick.name} is fundraising. We are saying the engineering pattern is consistent with companies that fundraise on this kind of timeline.
 

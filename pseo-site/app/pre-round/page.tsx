@@ -14,7 +14,7 @@ export const dynamic = "force-static";
 export const metadata: Metadata = withEditorialOverride({
   title: { absolute: "Pre-Round Report, €49: 25 Startups Before Their Raise" },
   description:
-    "One-off €49 report: the 25 venture-backed startups with the strongest pre-round engineering signal right now, with evidence, links and CSV. 48h delivery.",
+    "One-off €49 report: the 25 startups with the strongest pre-round engineering signal right now, with evidence, links and CSV. 48h delivery.",
   alternates: { canonical: "/pre-round" },
   robots: { index: false, follow: true },
 });

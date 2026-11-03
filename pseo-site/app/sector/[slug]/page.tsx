@@ -145,7 +145,7 @@ export default async function SectorHubPage({ params }: PageProps) {
       buildSourceTruthDataset({
         url: pageUrl,
         name: `${s.name}: Engineering Velocity Signals`,
-        description: `Derived engineering-velocity statistics for ${s.name} venture-backed startups tracked by the VC Deal Flow Signal (GitDealFlow) GitHub panel. ${s.metaDescription}`,
+        description: `Derived engineering-velocity statistics for ${s.name} GitHub organizations tracked by the VC Deal Flow Signal (GitDealFlow) GitHub panel. ${s.metaDescription}`,
         variableMeasured: keyStats.map((k) => ({
           name: k.label,
           value: k.value,

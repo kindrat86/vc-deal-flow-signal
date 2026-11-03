@@ -525,14 +525,12 @@ check(
 // ---------------------------------------------------------------------------
 check(
   "public/agents.md",
-  "Agent docs regressed to a stale sector count: '20 sectors' / '20 enumerated' contradicts the live 15-sector panel.",
-  (s) =>
-    !s.includes("20 sectors") &&
-    !s.includes("20 enumerated") &&
-    !s.includes("in 20 sectors") &&
-    !s.includes("across 20 sectors") &&
-    s.includes("15 sectors"),
-  "set the sector count back to 15 in public/agents.md (and public/AGENTS.md + MCP tool schemas)",
+  // 2026-11-03: static agent docs state no sector count at all (the live
+  // count moves: 15 in Aug, 20 since the 2026-11-03 refresh); the number
+  // lives in the data and lib/sector-count.ts.
+  "Agent docs hard-code a sector count ('N sectors' / 'N enumerated'); static docs must stay number-free.",
+  (s) => !/\b\d+\s+(?:startup\s+|active\s+)?sectors\b/i.test(s) && !/\b\d+\s+enumerated\b/i.test(s) && s.includes("every tracked sector"),
+  "use number-free wording in public/agents.md ('every tracked sector', 'the enumerated values')",
 );
 
 // ---------------------------------------------------------------------------
@@ -549,23 +547,27 @@ check(
 // ---------------------------------------------------------------------------
 check(
   "content/standalone-faqs.ts",
-  "stale 20-cluster taxonomy in the sector-coverage FAQ: the live API serves 15 active sectors (350+ orgs), not the archived 20-cluster list.",
+  // 2026-11-03: all 20 live sectors (the 5 paused at q2-2026 are back).
+  "sector-coverage FAQ must list the live API sector names (all 20 since the 2026-11-03 refresh), not the old 20-cluster taxonomy or the 'archived' note.",
   (s) =>
     !s.includes("Vertical SaaS, Web3 & Blockchain, Open Source Tools") &&
     !s.includes("20 clusters") &&
-    s.includes("Healthcare, EdTech, E-commerce Infrastructure, Supply Chain, Web3, Enterprise SaaS, Data Infrastructure, Robotics, Legal Tech, HR Tech, PropTech, AgTech, Gaming, Space Tech, and Social & Community"),
-  "reconcile the sector-coverage FAQ to the 15 live API sector names (see verify §10b)",
+    !s.includes("froze at Q2 2026 and are archived") &&
+    s.includes("AI & Machine Learning, Fintech, Climate Tech, Developer Tools, Cybersecurity, Healthcare, EdTech, E-commerce Infrastructure, Supply Chain, Web3, Enterprise SaaS, Data Infrastructure, Robotics, Legal Tech, HR Tech, PropTech, AgTech, Gaming, Space Tech, and Social & Community"),
+  "reconcile the sector-coverage FAQ to the live API sector names (see verify §10b)",
 );
 check(
   "content/agent-queries.ts",
-  "answer page what-github-topic-clusters-does-gitdealflow-track still carries the stale 20-cluster list (description/tldr/body numbered list).",
+  "answer page what-github-topic-clusters-does-gitdealflow-track lost the live sector list (description/tldr/body numbered list).",
   (s) =>
     !s.includes("The 20 clusters.") &&
     !s.includes("and 12 more") &&
     !s.includes("across the 20 clusters") &&
-    s.includes("The 15 active sectors") &&
-    s.includes("Space Tech** (18 orgs)"),
-  "rewrite the answer to the 15 live API sector names with per-sector org counts (see verify §10b)",
+    !s.includes("The 15 active sectors") &&
+    s.includes("The 20 active sectors") &&
+    s.includes("**Cybersecurity** (") &&
+    s.includes("Space Tech** ("),
+  "rewrite the answer to the live API sector names with per-sector org counts (see verify §10b)",
 );
 
 // ---------------------------------------------------------------------------
@@ -591,9 +593,9 @@ check(
 );
 check(
   "content/alternatives.ts",
-  "comparison tables still advertise '20 clusters' sector coverage.",
-  (s) => !s.includes("20 clusters") && s.includes("15 active sectors"),
-  "set comparison-table sector-coverage cells to '15 active sectors' (see verify §10b)",
+  "comparison tables advertise a stale hard-coded sector count.",
+  (s) => !s.includes("20 clusters") && !s.includes("15 active sectors") && !s.includes("~15 sectors") && s.includes("every active sector"),
+  "set comparison-table sector-coverage cells to 'every active sector' (see verify §10b)",
 );
 check(
   "content/post-freshness.ts",
@@ -621,9 +623,10 @@ check(
 );
 check(
   "lib/digest-email.ts",
-  "digest CTA regressed: 'Browse the full 60+ ranking' contradicts the locked 350+ panel claim.",
-  (s) => !s.includes("60+ ranking") && s.includes("350+ ranking"),
-  "set the /trending CTA to 'Browse the full 350+ ranking'",
+  // 2026-11-03 13:43 (Maryan так): CTA is number-free, "Browse the full ranking".
+  "digest CTA regressed: the /trending CTA must read 'Browse the full ranking' (no panel count).",
+  (s) => !s.includes("60+ ranking") && !s.includes("350+ ranking") && s.includes("Browse the full ranking"),
+  "set the /trending CTA to 'Browse the full ranking'",
 );
 
 // ---------------------------------------------------------------------------
@@ -2681,9 +2684,9 @@ check(
         );
       }
     }
-    if (!badgeRoute.includes('"stats-m19": { label: "Tracked sectors for deal signals", value: "15"')) {
+    if (!badgeRoute.includes('"stats-m19": { label: "Tracked sectors for deal signals", value: String(SECTOR_COUNT)')) {
       failures.push(
-        `§24 stats-m19 must say 15 sectors (live /api/signals.json truth), not a stale count`,
+        `§24 stats-m19 must take the sector count from lib/sector-count.ts (live data), not a hard-coded number`,
       );
     }
     // (c) the ungrounded "72% correlation" claim stays retired. Grounded
@@ -4830,7 +4833,10 @@ landingCheck(
   //    sits in the tree between deploys (prebuild regenerates it anyway).
   try {
     const srl = readFileSync(join(ROOT, "content", "signal-report-latest.ts"), "utf8");
-    if (/Data from 400\+ tracked startups|Data from 4[0-9]{2} tracked startups|across 20 sectors showed measurable/.test(srl)) {
+    // 2026-11-03: the sector count must equal the data's active count.
+    const sc56 = /across (\d+) sectors showed measurable/.exec(srl);
+    const active56 = Number((/SECTOR_COUNT = (\d+)/.exec(readFileSync(join(ROOT, "lib", "sector-count.ts"), "utf8")) ?? [])[1] ?? -1);
+    if (/Data from 400\+ tracked startups|Data from 4[0-9]{2} tracked startups|\+\d{4,}% commit velocity change/.test(srl) || (sc56 && Number(sc56[1]) !== active56)) {
       failures.push(
         "§56 content/signal-report-latest.ts carries a banned/stale panel claim (exact count or 20 sectors).\n    file: content/signal-report-latest.ts\n    fix:  re-run npx tsx scripts/generate-signal-report.ts (prebuild does this on every deploy)",
       );
@@ -6468,6 +6474,60 @@ check(
     },
     "restore the embedded-stamp branch in getDataLastModified() (lib/data.ts); without it production stamps request time as lastUpdated again.",
   );
+}
+
+// ---------------------------------------------------------------------------
+// §66 Honesty pass 2026-11-03 (Maryan, autonomous MVP fixes):
+//   a) no hard-coded "15 sectors" product claim on site surfaces (the count
+//      comes from lib/sector-count.ts, generated from data/startups.json, or
+//      the copy is number-free). Email templates, research-panel copy and the
+//      recorded video transcript are exempt.
+//   b) lib/sector-count.ts must match the data's active current-period count.
+//   c) homepage top movers use the digest ranking (tiny-base jumps = "New").
+//   d) no unsourced "venture-backed" panel claims that were swept.
+// ---------------------------------------------------------------------------
+{
+  const exempt66 = new Set(["lib/emails.ts", "lib/firstlook-generator.ts", "lib/soap-pause.ts", "content/videos.ts"]);
+  const re66 = /\b(?:15|fifteen)[ -]+(?:startup |active |tracked )?(?:sectors|sector clusters|sector slugs|enumerated)\b/i;
+  const hits66: string[] = [];
+  const walk66 = (rel: string) => {
+    const abs = join(ROOT, rel);
+    let ents: string[] = [];
+    try { ents = readdirSync(abs); } catch { return; }
+    for (const e of ents) {
+      const r = `${rel}/${e}`;
+      if (e === "node_modules" || e.startsWith(".")) continue;
+      if (statSync(join(ROOT, r)).isDirectory()) { walk66(r); continue; }
+      if (!/\.(tsx?|md|json|html|ya?ml|mdc|jsonld)$/.test(e) || exempt66.has(r)) continue;
+      const src = readFileSync(join(ROOT, r), "utf8")
+        .replace(/\/\*[\s\S]*?\*\//g, "")
+        .replace(/^\s*\/\/.*$/gm, "");
+      if (re66.test(src)) hits66.push(r);
+    }
+  };
+  ["app", "components", "lib", "content", "public"].forEach(walk66);
+  if (hits66.length) failures.push(`§66 hard-coded '15 sectors' claim in: ${hits66.join(", ")}\n    fix:  use SECTOR_COUNT (lib/sector-count.ts) or number-free wording`);
+  try {
+    const d = JSON.parse(readFileSync(join(ROOT, "data", "startups.json"), "utf8"));
+    const cur = (d.periods.find((p: { current?: boolean }) => p.current) ?? d.periods[0]).slug;
+    const active = d.sectors.filter((x: { periods: Record<string, { startups?: unknown[] }> }) => x.periods[cur]?.startups?.length).length;
+    const gen = readFileSync(join(ROOT, "lib", "sector-count.ts"), "utf8");
+    if (!gen.includes(`export const SECTOR_COUNT = ${active};`)) failures.push(`§66 lib/sector-count.ts is stale (data has ${active} active sectors)\n    fix:  node scripts/write-sector-count.mjs`);
+  } catch (e) { failures.push(`§66 sector-count check failed: ${e}`); }
+  const home = readFileSync(join(ROOT, "app", "page.tsx"), "utf8");
+  if (!home.includes("getDigestTopMovers(3)")) failures.push("§66 homepage top movers no longer use the digest ranking (getDigestTopMovers)\n    fix:  restore lib/top-movers.ts usage so near-zero-baseline jumps show as New");
+  const vb66: Array<[string, string]> = [
+    ["components/SeoCta.tsx", "five venture-backed teams"],
+    ["components/RootIdentitySchema.tsx", "across venture-backed startups"],
+    ["app/layout.tsx", "Search venture-backed startups"],
+    ["content/launches.ts", "140 venture-backed startups"],
+    ["content/use-cases.ts", "most venture-backed technical companies"],
+    ["content/agent-queries.ts", "12,000 venture-backed"],
+    ["content/agent-queries.ts", "is not a named sector in the panel"],
+  ];
+  for (const [f, needle] of vb66) {
+    if (readFileSync(join(ROOT, f), "utf8").includes(needle)) failures.push(`§66 swept claim "${needle}" is back in ${f}\n    fix:  use 'startups and open-source GitHub organizations' or 'GitHub organizations'`);
+  }
 }
 
 if (failures.length) {

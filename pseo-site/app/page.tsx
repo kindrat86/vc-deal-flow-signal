@@ -6,7 +6,6 @@ import {
   getCurrentPeriod,
   getAllPeriods,
   getDataLastModified,
-  getTopMoversThisWeek,
   getTotalTrackedThisWeek,
 } from "@/lib/data";
 import { allPosts as posts } from "@/content/posts";
@@ -40,6 +39,8 @@ import {
   EMOTIONAL_CAUSE_LINES,
 } from "@/content/cause";
 import { withEditorialOverride } from "@/lib/metadata";
+import { SECTOR_COUNT } from "../lib/sector-count";
+import { getDigestTopMovers } from "@/lib/top-movers";
 
 export const metadata: Metadata = withEditorialOverride({
   description:
@@ -145,7 +146,8 @@ export default function Home() {
   const sectors = getAllSectors();
   const period = getCurrentPeriod();
   const allPeriods = getAllPeriods();
-  const topMovers = getTopMoversThisWeek(3);
+  // Same ranking rules as the Sunday digest (tiny-base jumps shown as New).
+  const topMovers = getDigestTopMovers(3);
   const totalTracked = getTotalTrackedThisWeek();
   // Public panel-size claim: locked "350+" floor, never the raw sector-sum
   // count (deduped unique orgs sit under 400; see lib/canonical-claims.ts).
@@ -185,7 +187,7 @@ export default function Home() {
         name: "VC Deal Flow Signal, Startup Engineering Acceleration Dataset",
         alternateName: "GitDealFlow Startup Engineering Velocity Panel",
         description:
-          "Quarterly longitudinal panel of GitHub engineering-velocity signals across venture-backed startups. Covers commit velocity, contributor growth, repository expansion, and acceleration-signal classification across " +
+          "Quarterly longitudinal panel of GitHub engineering-velocity signals across tracked startups and open-source GitHub organizations. Covers commit velocity, contributor growth, repository expansion, and acceleration-signal classification across " +
           activeSectorCount +
           " startup sectors and " +
           allPeriods.length +
@@ -343,7 +345,7 @@ export default function Home() {
           name: "Global, US, EU, APAC, LATAM, Canada",
         },
         measurementTechnique:
-          "Automated collection from the GitHub REST API v3: commit activity, unique contributor counts, and repository-creation metadata for venture-backed startup organizations. Rolling 14-day observation windows with deterministic signal classification over commit patterns.",
+          "Automated collection from the GitHub REST API v3: commit activity, unique contributor counts, and repository-creation metadata for tracked GitHub organizations. Rolling 14-day observation windows with deterministic signal classification over commit patterns.",
         variableMeasured: [
           {
             "@type": "PropertyValue",
@@ -448,7 +450,7 @@ export default function Home() {
         },
         category: "Alternative Data, Engineering Velocity Signals",
         description:
-          "Weekly engineering-acceleration signals from public GitHub data across 15 startup sectors. Surfaces breakout startups 3-6 weeks before fundraise announcements. Delivered via web dashboard, MCP server, JSON/CSV, RSS, Telegram, and email.",
+          `Weekly engineering-acceleration signals from public GitHub data across ${SECTOR_COUNT} startup sectors. Surfaces breakout startups 3-6 weeks before fundraise announcements. Delivered via web dashboard, MCP server, JSON/CSV, RSS, Telegram, and email.`,
         url: "https://signals.gitdealflow.com",
         availableChannel: [
           {
@@ -490,7 +492,7 @@ export default function Home() {
         url: "https://signals.gitdealflow.com",
         name: "VC Deal Flow Signal, Startup Engineering Acceleration Tracker",
         description:
-          "Weekly ranking of breakout engineering teams by GitHub commit velocity, contributor growth, and infrastructure buildouts across 15 startup sectors.",
+          `Weekly ranking of breakout engineering teams by GitHub commit velocity, contributor growth, and infrastructure buildouts across ${SECTOR_COUNT} startup sectors.`,
         inLanguage: "en-US",
         speakable: {
           "@type": "SpeakableSpecification",

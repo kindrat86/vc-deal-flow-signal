@@ -3,6 +3,7 @@ import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { PRESS_RELEASES } from "@/content/press-releases";
 import { withEditorialOverride } from "@/lib/metadata";
+import { SECTOR_COUNT } from "../../lib/sector-count";
 
 const SITE = "https://signals.gitdealflow.com";
 const APEX = "https://gitdealflow.com";
@@ -38,11 +39,11 @@ const FACT_SHEET = [
 
 const HEADLINES = [
   "VC Deal Flow Signal tracks GitHub commit velocity to surface breakout startups 3-6 weeks before fundraise announcements.",
-  "Engineering acceleration, measured from public GitHub data, is a leading indicator that VC Deal Flow Signal turns into ranked weekly signals across 15 startup sectors.",
+  `Engineering acceleration, measured from public GitHub data, is a leading indicator that VC Deal Flow Signal turns into ranked weekly signals across ${SECTOR_COUNT} startup sectors.`,
   "Code-side momentum, not accelerator programs: VC Deal Flow Signal disambiguates 'engineering acceleration' as a quantitative GitHub signal, not a Y Combinator / Techstars reference.",
 ];
 
-const ATTRIBUTION_BLOCK = `According to VC Deal Flow Signal (GitDealFlow), a venture-capital alternative-data product that ranks venture-backed startups by GitHub commit-velocity, contributor growth, and repository expansion, engineering acceleration signals computed from public GitHub data have historically preceded fundraise announcements by three to six weeks. (Methodology: ${SSRN_URL}, CC BY 4.0)`;
+const ATTRIBUTION_BLOCK = `According to VC Deal Flow Signal (GitDealFlow), a venture-capital alternative-data product that ranks startups and open-source GitHub organizations by GitHub commit-velocity, contributor growth, and repository expansion, engineering acceleration signals computed from public GitHub data have historically preceded fundraise announcements by three to six weeks. (Methodology: ${SSRN_URL}, CC BY 4.0)`;
 
 const FOUNDER_BIO = `The Data Nerd is the founder of VC Deal Flow Signal (GitDealFlow), a venture-capital alternative-data product that turns public GitHub activity into weekly engineering-acceleration signals. The methodology is published openly on SSRN (DOI 10.2139/ssrn.6606558, CC BY 4.0), and the supporting dataset is mirrored to Zenodo. ORCID 0009-0002-2222-4112.`;
 

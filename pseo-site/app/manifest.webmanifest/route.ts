@@ -1,3 +1,4 @@
+import { SECTOR_COUNT } from "../../lib/sector-count";
 const BASE_URL = "https://signals.gitdealflow.com";
 
 export async function GET() {
@@ -5,7 +6,7 @@ export async function GET() {
     name: "VC Deal Flow Signal, GitHub Momentum Tracking for Investors",
     short_name: "GitDealFlow",
     description:
-      "GitHub commit-velocity tracking across 15 startup sectors. Code-side momentum signals, surface venture-backed startups 3-6 weeks before fundraise.",
+      `GitHub commit-velocity tracking across ${SECTOR_COUNT} startup sectors. Code-side momentum signals, surface startups 3-6 weeks before fundraise.`,
     start_url: "/",
     scope: "/",
     display: "standalone",

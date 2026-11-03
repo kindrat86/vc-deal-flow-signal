@@ -22,11 +22,10 @@ import {
  * These helpers power the /startups/[sector]/[page] and
  * /startups/region/[geo]/[page] directory routes. Each directory is keyed to
  * the CURRENT period (getCurrentPeriod), matching the live API and the
- * canonical "15 active sectors" truth: the five legacy sectors that froze at
- * q2-2026 (ai-ml, fintech, climate-tech, developer-tools, cybersecurity) have
- * no current-period snapshot and therefore no directory, keeping the
- * directory fresh and free of stale/fresh mixes. Their startups remain
- * discoverable via the quarter-canonicalized ranked lists.
+ * current-period truth: a sector with no current-period snapshot gets no
+ * directory, keeping the directory fresh and free of stale/fresh mixes.
+ * (2026-11-03: all 20 sectors have current-period data again; the five that
+ * paused at q2-2026 came back with the refresh.)
  */
 
 export const DIRECTORY_PAGE_SIZE = 24;

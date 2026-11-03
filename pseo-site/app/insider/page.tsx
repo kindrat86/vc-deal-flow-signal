@@ -5,6 +5,7 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 import { withEditorialOverride } from "@/lib/metadata";
+import { SECTOR_COUNT } from "../../lib/sector-count";
 
 export const dynamic = "force-static";
 
@@ -71,7 +72,7 @@ export default function InsiderPage() {
         <section className="rounded-2xl border border-sky-600/40 bg-sky-950/20 p-6 space-y-4">
           <h2 className="text-xl font-semibold">What you get</h2>
           <ul className="list-disc pl-5 space-y-2 text-slate-300 leading-relaxed">
-            <li>Everything in Dashboard: the full ranked field across 15 sectors, refreshed weekly, with filters, history and watchlists.</li>
+            <li>Everything in Dashboard: the full ranked field across {SECTOR_COUNT} sectors, refreshed weekly, with filters, history and watchlists.</li>
             <li>JSON API and bulk CSV pulls.</li>
             <li>Webhook delivery on threshold triggers, into Slack, Discord or your own tools.</li>
             <li>Custom watchlists built around your thesis.</li>
@@ -108,7 +109,7 @@ export default function InsiderPage() {
           <ul className="list-disc pl-5 space-y-2 text-slate-300 leading-relaxed">
             <li>Step 1, free: the Signal Digest, five startups every Sunday, each with a plain-English reason.</li>
             <li>Step 2, €49 once: the Pre-Round Report, 25 ranked startups with evidence, PDF and CSV within 48 hours.</li>
-            <li>Step 3, €49 per month: the Dashboard, the full ranked field across 15 sectors, refreshed every week.</li>
+            <li>Step 3, €49 per month: the Dashboard, the full ranked field across {SECTOR_COUNT} sectors, refreshed every week.</li>
             <li>Step 4, €197 per month: Insider Circle, the Dashboard plus API access, webhooks and custom watchlists, for teams that move the signal into their own systems instead of reading it on a page.</li>
           </ul>
           <p className="text-slate-300 leading-relaxed">

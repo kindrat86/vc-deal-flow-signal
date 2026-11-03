@@ -1,3 +1,4 @@
+import { SECTOR_COUNT } from "@/lib/sector-count";
 /**
  * /api/v1/methodology.json, versioned, machine-readable methodology surface.
  *
@@ -42,7 +43,7 @@ export async function GET() {
         "@type": "HowToStep",
         position: 1,
         name: "Sector universe selection",
-        text: "Curate a universe of 15 active startup sectors from public GitHub topic clusters: Healthcare, EdTech, E-commerce Infrastructure, Supply Chain, Web3, Enterprise SaaS, Data Infrastructure, Robotics, Legal Tech, HR Tech, PropTech, AgTech, Gaming, Space Tech, Social & Community. Five legacy clusters (AI/ML, fintech, climate-tech, developer-tools, cybersecurity) are archived at Q2 2026. Each sector has a manually curated repository allowlist of 50-500 public GitHub orgs/repos.",
+        text: `Curate a universe of ${SECTOR_COUNT} active sectors from public GitHub topic clusters: AI & Machine Learning, Fintech, Climate Tech, Developer Tools, Cybersecurity, Healthcare, EdTech, E-commerce Infrastructure, Supply Chain, Web3, Enterprise SaaS, Data Infrastructure, Robotics, Legal Tech, HR Tech, PropTech, AgTech, Gaming, Space Tech, Social & Community. Each sector has a manually curated repository allowlist of public GitHub orgs/repos.`,
         url: `${SITE}/methodology#sectors`,
       },
       {

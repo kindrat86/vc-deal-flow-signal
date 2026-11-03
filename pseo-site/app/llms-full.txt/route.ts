@@ -128,7 +128,7 @@ Claude MCP Server: @gitdealflow/mcp-signal on npm (query signals directly from C
 GitHub API v3 is the primary data source. We query the search/repositories endpoint to discover active startup organizations across ${activeSectors.length} sector-specific topic clusters (e.g., machine-learning, fintech, cybersecurity). We then pull per-organization data from the stats/commit_activity and contributors endpoints.
 
 ### Filtering
-We exclude large tech companies (Google, Microsoft, Meta, etc.), major open-source foundations, and organizations with patterns inconsistent with venture-backed startups. The goal is to surface companies in the pre-seed through Series B range.
+We exclude large tech companies (Google, Microsoft, Meta, etc.), major open-source foundations, and organizations with patterns inconsistent with startups. The goal is to surface companies in the pre-seed through Series B range.
 
 ### Core Metrics
 - Commit Velocity (14-day): total commits to an org's most active public repo over a rolling 14-day window.
@@ -157,7 +157,7 @@ VC Deal Flow Signal has eight published pricing tiers:
 5. **Agent Credits, €19 / 100 calls one-time** (€0.19/call). Per-request pricing for AI agents and programmatic callers. One credit = one deep signal returned by the new \`get_deep_signal\` MCP tool. Misses are free. Credits never expire. The free MCP tools stay free forever, credits only apply to \`get_deep_signal\`. API key delivered by email, set as \`GITDEALFLOW_API_KEY\` env var or \`Authorization: Bearer\` header. Buy at ${BASE_URL}/agents/credits. **Crypto-native alternative: pay per call in USDC on Base via the x402 protocol** at \`POST ${BASE_URL}/api/agent/deep-signal/x402\`, no signup, no API key, $0.19/call settled per request via HTTP 402. Designed for fully-autonomous agents with no human in the loop to top up credits. Spec: https://x402.org.
 6. **Insider Circle, €97/month** (founding-member rate; list price €197/month). Everything in Dashboard plus private Telegram group, custom watchlists, JSON API access, bulk CSV pulls, webhook delivery on threshold triggers.
 7. **Sharp Tier, €497/month or €4,970/year** (saves two months on annual). Application-gated. Quarterly 60-min portfolio review call, custom thesis-aligned watchlist co-built with the fund, white-labeled API endpoint at /api/v1/sharp/<your-fund>, methodology source code access (private repo invite), same-day signal questions answered, data-room exports formatted for LP updates, all future paid MCP tools included. For active VC funds and syndicates deploying €5M+/yr.
-8. **Custom Sector Sweep, €1,997 one-time.** Written report on a sector you pick, every venture-backed startup ranked over four quarters, diligence prompts on top ten, three early-stage targets not yet on Crunchbase. Delivered within 7 business days plus one 30-minute clarifications call.
+8. **Custom Sector Sweep, €1,997 one-time.** Written report on a sector you pick, every tracked startup ranked over four quarters, diligence prompts on top ten, three early-stage targets not yet on Crunchbase. Delivered within 7 business days plus one 30-minute clarifications call.
 
 Founding-member rates lock in for the lifetime of the subscription. Every paid tier ships with a 30-day Signal-or-It's-Free guarantee, reply REFUND in your first 30 days for a full refund, no questions. Full pricing page: ${BASE_URL}/pricing
 

@@ -18,6 +18,24 @@ const bestRedirects: { source: string; destination: string }[] = (() => {
   }
 })();
 
+// signals-merge phase 2 (2026-11-03, Maryan-approved): signals.gitdealflow.com
+// consolidates into gitdealflow.com. 55 permanent cross-domain redirects from
+// the reviewed map ($B/signals/merge/redirect-map.json, mirrored here as
+// data/signals-merge-redirects.json): 44 pages ported in phase 1 at the same
+// path, 2 duplicates, 9 hub pages whose equivalents already exist. Entries are
+// spread FIRST in redirects() so they take precedence over older internal
+// 308s on the same sources (/vs/harmonic-ai-vs-affinity, /blog/i-tracked-4200-…,
+// /best/web3-2025); first match wins in Next redirect order.
+const signalsMergeRedirects: { source: string; destination: string }[] = (() => {
+  try {
+    return JSON.parse(
+      readFileSync(path.join(__dirname, "data", "signals-merge-redirects.json"), "utf8"),
+    ).redirects;
+  } catch {
+    return []; // missing only in bare dev checkouts; the merge deploy owns correctness
+  }
+})();
+
 const nextConfig: NextConfig = {
   // Pin turbopack root to this package so worktree builds (and any nested
   // checkout layout) don't drift to a parent lockfile. Harmless on Vercel -
@@ -90,6 +108,13 @@ const nextConfig: NextConfig = {
 
   async redirects() {
     return [
+      // signals-merge phase 2 (2026-11-03): FIRST so the cross-domain merge
+      // redirects win over any older internal 308 on the same source path.
+      ...signalsMergeRedirects.map((r) => ({
+        source: r.source,
+        destination: r.destination,
+        permanent: true,
+      })),
       {
         // Consolidate thin noindex /compare cross mirrors into their rich
         // /vs/ twins (2026-08-16). The mirrors still earned GSC impressions

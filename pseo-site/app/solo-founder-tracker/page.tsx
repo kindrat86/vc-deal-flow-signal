@@ -9,6 +9,7 @@ import {
   getDefaultSoloFounderThresholds,
 } from "@/content/solo-founder-tracker";
 import { withEditorialOverride } from "@/lib/metadata";
+import { SECTOR_COUNT } from "../../lib/sector-count";
 
 export const dynamic = "force-static";
 export const revalidate = 604800;
@@ -19,13 +20,13 @@ export const metadata: Metadata = withEditorialOverride({
   title:
     "Solo-Founder Tracker, one-person companies hitting commit / star / contributor thresholds, by sector",
   description:
-    "15 sector pages indexing the 'one-person unicorn' pattern on GitHub. Commit-velocity, star-growth, and contributor-concentration thresholds that solo-founder companies share. Distinct from /predicted: this surface answers 'where are the one-engineer companies emerging right now?', not 'who's the next round'.",
+    `${SECTOR_COUNT} sector pages indexing the 'one-person unicorn' pattern on GitHub. Commit-velocity, star-growth, and contributor-concentration thresholds that solo-founder companies share. Distinct from /predicted: this surface answers 'where are the one-engineer companies emerging right now?', not 'who's the next round'.`,
   alternates: { canonical: "/solo-founder-tracker" },
   openGraph: {
     title:
       "Solo-Founder Tracker, one-person companies hitting commit / star / contributor thresholds",
     description:
-      "15 sectors. Threshold-driven framework for spotting one-engineer companies on GitHub before they hire. Distinct from the all-stage /predicted feed, this is the solo-founder lens.",
+      `${SECTOR_COUNT} sectors. Threshold-driven framework for spotting one-engineer companies on GitHub before they hire. Distinct from the all-stage /predicted feed, this is the solo-founder lens.`,
     url: `${SITE}/solo-founder-tracker`,
     type: "article",
   },
@@ -34,7 +35,7 @@ export const metadata: Metadata = withEditorialOverride({
     title:
       "Solo-Founder Tracker, the 'one-person unicorn' lens, indexed by sector",
     description:
-      "15 sector pages. Commit/star/contributor thresholds for spotting one-engineer companies on GitHub before they hire.",
+      `${SECTOR_COUNT} sector pages. Commit/star/contributor thresholds for spotting one-engineer companies on GitHub before they hire.`,
   },
 });
 
@@ -64,7 +65,7 @@ export default function SoloFounderTrackerIndexPage() {
         url,
         name: "Solo-Founder Tracker, by sector",
         description:
-          "15 sector pages indexing the 'one-person unicorn' pattern on GitHub. Threshold-driven framework for spotting one-engineer companies before they hire.",
+          `${SECTOR_COUNT} sector pages indexing the 'one-person unicorn' pattern on GitHub. Threshold-driven framework for spotting one-engineer companies before they hire.`,
         inLanguage: "en-US",
         datePublished: lastModifiedIso,
         dateModified: lastModifiedIso,
@@ -160,7 +161,7 @@ export default function SoloFounderTrackerIndexPage() {
             <span className="text-gray-400">Solo-Founder Tracker</span>
           </nav>
           <p className="text-sky-400 text-xs font-semibold uppercase tracking-wider">
-            15 sectors · One-engineer companies · Threshold-driven
+            {SECTOR_COUNT} sectors · One-engineer companies · Threshold-driven
           </p>
           <h1 className="text-3xl sm:text-5xl font-bold text-gray-100 leading-[1.1] tracking-tight">
             The{" "}
@@ -174,7 +175,7 @@ export default function SoloFounderTrackerIndexPage() {
             One engineer. One repo. One revenue curve. The Solo-Founder Tracker
             indexes the GitHub shape of one-person companies, the commit
             cadence, the star trajectory, the contributor-concentration
-            window, across 15 sectors. Distinct from{" "}
+            window, across {SECTOR_COUNT} sectors. Distinct from{" "}
             <Link
               href="/predicted"
               className="text-sky-300 underline decoration-dotted hover:text-sky-200"

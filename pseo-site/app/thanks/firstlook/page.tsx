@@ -6,6 +6,7 @@ import { getHreflangLanguages } from "@/lib/hreflang";
 import TelegramCTA from "@/components/TelegramCTA";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { withEditorialOverride } from "@/lib/metadata";
+import { SECTOR_COUNT } from "../../../lib/sector-count";
 
 export const dynamic = "force-static";
 
@@ -42,13 +43,14 @@ export default function ThanksFirstLook() {
 
         <section className="bg-slate-900/60 border border-slate-800 rounded-lg p-5 space-y-3">
           <p className="text-gray-300 text-sm font-semibold">
-            We track 15 sectors:
+            We track {SECTOR_COUNT} sectors:
           </p>
           <p className="text-gray-400 text-sm leading-relaxed">
-            AI/ML · AI infra · AI safety · climate tech · crypto/web3 ·
-            cybersecurity · data infra · dev tools · edtech · fintech rails ·
-            future of work · gaming · healthtech · identity · observability ·
-            open source tooling · robotics · SaaS infra · vertical AI
+            AI &amp; machine learning · fintech · climate tech · developer tools ·
+            cybersecurity · healthcare · edtech · e-commerce infrastructure ·
+            supply chain · web3 · enterprise SaaS · data infrastructure ·
+            robotics · legal tech · HR tech · proptech · agtech · gaming ·
+            space tech · social &amp; community
           </p>
           <p className="text-gray-400 text-sm leading-relaxed">
             If your thesis cuts across (e.g. &ldquo;AI infra meets fintech

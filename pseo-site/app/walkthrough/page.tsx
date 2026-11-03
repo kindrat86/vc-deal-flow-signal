@@ -47,7 +47,7 @@ const STACK_ITEMS = [
   {
     label: "The Live Dashboard",
     description:
-      "140 venture-backed startups ranked by 14-day commit-velocity acceleration, refreshed every Monday at 06:00 UTC. Filter by sector, stage, geography. The same data the SSRN paper was built on.",
+      "350+ GitHub organizations ranked by 14-day commit-velocity acceleration, refreshed every Monday at 06:00 UTC. Filter by sector, stage, geography. The same data the SSRN paper was built on.",
     standalone: "€348/yr",
   },
   {
@@ -1203,7 +1203,7 @@ credited toward Dashboard if you upgrade in 14 days.
           <ul className="space-y-2 text-gray-200 text-base leading-relaxed">
             <li className="flex gap-3">
               <span className="text-amber-400 shrink-0 font-bold">→</span>
-              <span>The full ranked dashboard of every venture-backed startup we track. Refreshed every Monday at 09:00 UTC.</span>
+              <span>The full ranked dashboard of every GitHub organization we track. Refreshed every Monday at 09:00 UTC.</span>
             </li>
             <li className="flex gap-3">
               <span className="text-amber-400 shrink-0 font-bold">→</span>

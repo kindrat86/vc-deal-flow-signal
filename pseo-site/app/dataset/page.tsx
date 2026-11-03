@@ -194,7 +194,7 @@ export default function DatasetPage() {
     name: "VC Deal Flow Signal, Startup Engineering Acceleration Dataset",
     alternateName: "GitDealFlow Startup Engineering Velocity Panel",
     description:
-      `Open longitudinal panel of GitHub engineering-velocity signals across ${sectors.length} venture-backed startup sectors and ${allPeriods.length} quarterly periods. Tracks 14-day commit velocity, contributor growth, repository expansion, and acceleration-signal classification. Designed for venture-capital deal sourcing, portfolio monitoring, and academic research on alternative data in venture capital.`,
+      `Open longitudinal panel of GitHub engineering-velocity signals across ${sectors.length} sectors and ${allPeriods.length} quarterly periods. Tracks 14-day commit velocity, contributor growth, repository expansion, and acceleration-signal classification. Designed for venture-capital deal sourcing, portfolio monitoring, and academic research on alternative data in venture capital.`,
     url: "https://signals.gitdealflow.com/dataset",
     identifier: [
       {
@@ -291,7 +291,7 @@ export default function DatasetPage() {
       name: "Global, US, EU, APAC, LATAM, Canada",
     },
     measurementTechnique:
-      "Automated collection from the GitHub REST API v3: commit activity, unique contributor counts, and repository-creation metadata for venture-backed startup organizations. Rolling 14-day observation windows with deterministic signal classification over commit patterns.",
+      "Automated collection from the GitHub REST API v3: commit activity, unique contributor counts, and repository-creation metadata for tracked GitHub organizations. Rolling 14-day observation windows with deterministic signal classification over commit patterns.",
     variableMeasured: variableMeasured.map((v) => ({
       "@type": "PropertyValue",
       name: v.name,

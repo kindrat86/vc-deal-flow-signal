@@ -327,7 +327,7 @@ export default function OriginPage() {
           </p>
           <p className="text-gray-300 text-base leading-relaxed">
             The product on this site is the same script, productised. The
-            dashboard ranks 209 venture-backed orgs every Monday. The First
+            dashboard ranks 350+ GitHub organizations every Monday. The First
             Look Pass turns it into a one-sector deep dive in 24 hours. The
             Insider Circle adds spike alerts and a private community. The
             Sharp Tier is for funds that want it integrated into their

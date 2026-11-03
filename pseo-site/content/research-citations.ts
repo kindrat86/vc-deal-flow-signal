@@ -120,7 +120,7 @@ export const EXTERNAL_CITATIONS: ExternalCitation[] = [
     doi: "10.1007/s10664-017-9512-6",
     identifiers: [{ propertyID: "DOI", value: "10.1007/s10664-017-9512-6" }],
     sameAs: ["https://link.springer.com/article/10.1007/s10664-017-9512-6"],
-    why: "Filters real engineering projects from toy/personal repos at scale, methodology we apply to the venture-backed seed list.",
+    why: "Filters real engineering projects from toy/personal repos at scale, methodology we apply to the seed list.",
     appliesTo: ["§3", "§3.1", "§3.3"],
   },
   {

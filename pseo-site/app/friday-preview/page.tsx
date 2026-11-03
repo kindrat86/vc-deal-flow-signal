@@ -3,9 +3,9 @@ import Link from "next/link";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
-import { getTopMoversThisWeek } from "@/lib/data";
 import SqueezeForm from "../squeeze/SqueezeForm";
 import { withEditorialOverride } from "@/lib/metadata";
+import { getDigestTopMovers } from "@/lib/top-movers";
 
 export const dynamic = "force-static";
 
@@ -65,7 +65,7 @@ function stageBadge(stage: string): { color: string; bg: string; label: string }
 }
 
 export default function FridayPreviewPage() {
-  const top = getTopMoversThisWeek(5);
+  const top = getDigestTopMovers(5);
 
   const jsonLd = {
     "@context": "https://schema.org",

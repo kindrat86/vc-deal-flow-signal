@@ -151,7 +151,7 @@ export default async function FirstLookThanksPage({ searchParams }: Props) {
           </h2>
           <p className="text-gray-300 text-base leading-relaxed">
             You picked one sector. The Custom Sector Sweep is the same lens
-            applied across <strong className="text-gray-100">every venture-backed startup in one sector</strong>: three time windows (30d / 90d / TTM), the full ranked panel, plus
+            applied across <strong className="text-gray-100">every tracked startup in one sector</strong>: three time windows (30d / 90d / TTM), the full ranked panel, plus
             a <strong className="text-gray-100">60-minute walkthrough call</strong> to talk through
             the names that surprised you.
           </p>
@@ -165,7 +165,7 @@ export default async function FirstLookThanksPage({ searchParams }: Props) {
 
         <ul className="space-y-2.5 border-t border-amber-700/40 pt-5">
           {[
-            "Every venture-backed org in one sector, not just the top 25",
+            "Every tracked org in one sector, not just the top 25",
             "Three time windows (30d / 90d / TTM), trend confirmation, not snapshot",
             "Contributor influx maps for top 50",
             "Eight pre-Crunchbase breakouts (vs three in First Look)",

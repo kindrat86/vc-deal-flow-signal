@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { ForFrameworkPage } from "@/components/ForFrameworkPage";
 import { getFrameworkPositioning } from "@/lib/for-framework-data";
 import { withEditorialOverride } from "@/lib/metadata";
+import { SECTOR_COUNT } from "../../lib/sector-count";
 
 const SITE = "https://signals.gitdealflow.com";
 const fw = getFrameworkPositioning("langchain")!;
@@ -9,7 +10,7 @@ const fw = getFrameworkPositioning("langchain")!;
 const TITLE =
   "GitDealFlow for LangChain, Wire VC Engineering Signals into Any Agent";
 const DESCRIPTION =
-  "Drop GitDealFlow signals into a LangChain agent in 20 lines of Python. Live commit-velocity data on 350+ GitHub organizations across 15 sectors. Free A2A endpoint, no auth. Works with ReAct, LangGraph, and langchain-mcp-adapters.";
+  `Drop GitDealFlow signals into a LangChain agent in 20 lines of Python. Live commit-velocity data on 350+ GitHub organizations across ${SECTOR_COUNT} sectors. Free A2A endpoint, no auth. Works with ReAct, LangGraph, and langchain-mcp-adapters.`;
 
 export const metadata: Metadata = withEditorialOverride({
   title: TITLE,

@@ -7,6 +7,7 @@ import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 import { BADGE_LABEL, BADGE_HEIGHT, badgeWidth, badgeValue } from "@/lib/badge-dims";
 import { withEditorialOverride } from "@/lib/metadata";
 import SeoCta from "@/components/SeoCta";
+import { SECTOR_COUNT } from "../../lib/sector-count";
 
 const SITE = "https://signals.gitdealflow.com";
 
@@ -208,7 +209,7 @@ export default function BadgeBuilderPage() {
               },
               {
                 q: "What if my startup isn't listed?",
-                a: "We track 350+ GitHub organizations across 15 sectors. If your GitHub organization is active and you'd like to be added, reach out at signals@gitdealflow.com.",
+                a: `We track 350+ GitHub organizations across ${SECTOR_COUNT} sectors. If your GitHub organization is active and you'd like to be added, reach out at signals@gitdealflow.com.`,
               },
               {
                 q: "Can I customize the colors?",
@@ -233,7 +234,7 @@ export default function BadgeBuilderPage() {
         {/* CTA */}
         <SeoCta
           heading="Your badge updates weekly. Get the five breakouts it tracks, every Sunday."
-          blurb="The free Acceleration Watch: five venture-backed teams accelerating on the engineering signal, translated into plain English, 21 to 47 days before the deck circulates. No code-reading, no card."
+          blurb="The free Acceleration Watch: five startup teams accelerating on the engineering signal, translated into plain English, 21 to 47 days before the deck circulates. No code-reading, no card."
           className="mt-10"
         />
       </div>

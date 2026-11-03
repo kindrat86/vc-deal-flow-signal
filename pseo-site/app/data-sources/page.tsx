@@ -4,6 +4,7 @@ import { getAllSectors, getCurrentPeriod, getDataLastModified } from "@/lib/data
 import { PlainEnglishNote } from "@/components/PlainEnglishNote";
 import { TrustConversionBlock } from "@/components/TrustConversionBlock";
 import { withEditorialOverride } from "@/lib/metadata";
+import { SECTOR_COUNT } from "../../lib/sector-count";
 
 export const metadata: Metadata = withEditorialOverride({
   title: "Data Sources, Where VC Deal Flow Signal's Data Comes From",
@@ -30,7 +31,7 @@ const sources: DataSource[] = [
     type: "primary",
     endpoint: "https://api.github.com/search/repositories",
     description:
-      "Primary discovery endpoint. Queried every Monday across 15 sector-specific topic clusters (machine-learning, saas, fintech, devtools, etc.) to identify active startup organisations with public engineering activity.",
+      `Primary discovery endpoint. Queried every Monday across ${SECTOR_COUNT} sector-specific topic clusters (machine-learning, saas, fintech, devtools, etc.) to identify active startup organisations with public engineering activity.`,
     updateCadence: "Weekly (Monday)",
     license: "GitHub Terms of Service, public data access",
     attribution: "GitHub, Inc.",
@@ -89,7 +90,7 @@ const sources: DataSource[] = [
     type: "reference",
     endpoint: "https://github.com/topics",
     description:
-      "Reference for the 15 sector clusters. Each cluster maps to 3-10 GitHub topic tags; a repository is included in a sector if its primary language, topic tags, or description matches the cluster rules. The mapping is versioned and available on request.",
+      `Reference for the ${SECTOR_COUNT} sector clusters. Each cluster maps to 3-10 GitHub topic tags; a repository is included in a sector if its primary language, topic tags, or description matches the cluster rules. The mapping is versioned and available on request.`,
     updateCadence: "Quarterly review",
     license: "Public reference data",
   },
@@ -341,7 +342,7 @@ export default function DataSourcesPage() {
           <ul className="list-disc pl-5 space-y-1.5">
             <li>
               <strong className="text-gray-200">~350+ organisations scanned every week</strong>{" "}
-the full universe of venture-backed GitHub orgs we look at. This
+the full universe of GitHub orgs we look at. This
               is the haystack, not the picks.
             </li>
             <li>

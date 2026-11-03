@@ -17,7 +17,7 @@ export async function GET() {
                       xmlns:moz="http://www.mozilla.org/2006/browser/search/">
   <ShortName>GitDealFlow</ShortName>
   <LongName>VC Deal Flow Signal, startup engineering acceleration search</LongName>
-  <Description>Search venture-backed startups by GitHub engineering acceleration, sector, signal type, and period.</Description>
+  <Description>Search startups and GitHub organizations by GitHub engineering acceleration, sector, signal type, and period.</Description>
   <InputEncoding>UTF-8</InputEncoding>
   <Image height="32" width="32" type="image/png">${SITE}/icon.png</Image>
   <Image height="64" width="64" type="image/png">${SITE}/icon.png</Image>

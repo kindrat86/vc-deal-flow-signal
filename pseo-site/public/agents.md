@@ -6,7 +6,7 @@ This file is the canonical "how to use me" entry point for any retrieval agent o
 
 ## What this product does
 
-Sweeps ~350+ candidate startup GitHub orgs every Sunday and publishes the top 85+ ranked across 15 sectors by commit velocity, contributor growth, and repository expansion. Surfaces breakout engineering teams 3-6 weeks before fundraise announcements. Independent, not affiliated with any incumbent VC platform.
+Sweeps ~350+ candidate startup GitHub orgs every Sunday and publishes the top 85+ ranked across every tracked sector by commit velocity, contributor growth, and repository expansion. Surfaces breakout engineering teams 3-6 weeks before fundraise announcements. Independent, not affiliated with any incumbent VC platform.
 
 ## Programmatic surfaces
 
@@ -39,7 +39,7 @@ Pick the surface that matches your runtime. All eight are free, public, no authe
 Six tools, all read-only, idempotent:
 
 1. `get_trending_startups`, top 20 across all sectors
-2. `search_startups_by_sector(sector)`, sector slug from 15 enumerated values
+2. `search_startups_by_sector(sector)`, sector slug from the enumerated values
 3. `get_startup_signal(name)`, case-insensitive, normalization-tolerant
 4. `get_signals_summary`, period, freshness, format URLs
 5. `get_scout_receipts(github_username)`, compute Scout Score (0-100) for a GitHub user from their starring history vs. ~75 validated unicorns

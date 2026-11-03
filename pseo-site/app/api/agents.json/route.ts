@@ -1,5 +1,6 @@
 import { agentQueries } from "@/content/agent-queries";
 import { getDataLastModified } from "@/lib/data";
+import { SECTOR_COUNT } from "../../../lib/sector-count";
 
 export const runtime = "nodejs";
 
@@ -20,7 +21,7 @@ export async function GET() {
     version: "1.0.0",
     name: "VC Deal Flow Signal, Agent Surfaces Index",
     description:
-      "Free, no-auth public surfaces for AI agents. Each surface wraps the same dataset of ~350+ GitHub organizations across 15 sectors, refreshed weekly.",
+      `Free, no-auth public surfaces for AI agents. Each surface wraps the same dataset of ~350+ GitHub organizations across ${SECTOR_COUNT} sectors, refreshed weekly.`,
     site: SITE,
     license: {
       identifier: "CC-BY-4.0",

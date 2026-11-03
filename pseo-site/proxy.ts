@@ -143,7 +143,18 @@ function researchPaperNoindex(pathname: string): boolean {
   return researchPaperLeafNoindexByPath(pathname);
 }
 
+// signals-merge phase 2 (2026-11-03, Maryan-approved): the whole site
+// consolidates into gitdealflow.com. Every signals page that is not one of
+// the 55 merge redirects now serves `noindex, follow` so Google drops the
+// ~4,800-URL index here while the ported pages re-index on gitdealflow.com.
+// Pages stay 200 + crawlable (robots.txt keeps Allow: /) so the noindex is
+// actually seen. Flip to false only if the merge is reversed.
+const SIGNALS_MERGE_NOINDEX_EVERYTHING = true;
+
 function shouldNoindex(pathname: string): boolean {
+  if (SIGNALS_MERGE_NOINDEX_EVERYTHING) {
+    return true;
+  }
   if (isProofAssetPath(pathname)) {
     return true;
   }

@@ -1,3 +1,4 @@
+import { SECTOR_COUNT } from "@/lib/sector-count";
 /**
  * /knowledge-graph.json, single canonical entity graph for the project.
  *
@@ -32,7 +33,7 @@ const METHODOLOGY_STEPS: Array<{ name: string; text: string; anchor: string }> =
   [
     {
       name: "Sector universe selection",
-      text: "Curate 15 active startup sectors from public GitHub topic clusters (five legacy clusters archived at Q2 2026); each sector has a manually curated allowlist of 50-500 public GitHub orgs/repos.",
+      text: `Curate ${SECTOR_COUNT} active sectors from public GitHub topic clusters; each sector has a manually curated allowlist of public GitHub orgs/repos.`,
       anchor: "sectors",
     },
     {

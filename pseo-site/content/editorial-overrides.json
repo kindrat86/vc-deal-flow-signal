@@ -1,5 +1,5 @@
 {
-  "$comment": "Human-editable editorial/meta overrides. Edit this ONE file to change a page's title, description, or index status WITHOUT touching code or hunting through content/*.ts. Key = route path (leading slash, no domain). Supported fields: title (brand-free, the layout appends the site name), description (120-180 chars), noindex (true hides the page from search), keywords (array, replaces the page's own). Example: \"/methodology\": { \"title\": \"How We Score Engineering Velocity\", \"description\": \"The Scout Score method explained: commit velocity, contributor growth, and repo expansion across 15 sectors.\" }. Empty overrides object = no active overrides. Optional absolute: true renders the title verbatim (no layout brand suffix); used by the 2026-10 CTR wave so the full title stays under 60 chars.",
+  "$comment": "Human-editable editorial/meta overrides. Edit this ONE file to change a page's title, description, or index status WITHOUT touching code or hunting through content/*.ts. Key = route path (leading slash, no domain). Supported fields: title (brand-free, the layout appends the site name), description (120-180 chars), noindex (true hides the page from search), keywords (array, replaces the page's own). Example: \"/methodology\": { \"title\": \"How We Score Engineering Velocity\", \"description\": \"The Scout Score method explained: commit velocity, contributor growth, and repo expansion across every sector.\" }. Empty overrides object = no active overrides. Optional absolute: true renders the title verbatim (no layout brand suffix); used by the 2026-10 CTR wave so the full title stays under 60 chars.",
   "overrides": {
     "/vs/dealroom-vs-pitchbook": {
       "title": "Dealroom vs PitchBook (2026): Price, Coverage, Verdict",
@@ -84,7 +84,7 @@
     "/": {
       "title": "VC Deal Flow Signal: Startups Accelerating Pre-Round",
       "absolute": true,
-      "description": "Free weekly list of 350+ GitHub organizations ranked by GitHub engineering acceleration across 15 sectors. Spot teams speeding up 3-6 weeks before the round."
+      "description": "Free weekly list of 350+ GitHub organizations ranked by GitHub engineering acceleration in every tracked sector. Spot teams speeding up 3-6 weeks before the round."
     },
     "/vs/dealroom-vs-crunchbase": {
       "title": "Dealroom vs Crunchbase (2026): EU Depth vs $49/mo",
@@ -124,7 +124,7 @@
     "/explore": {
       "title": "Explore Startup Signals by Sector, Stage & Trend",
       "absolute": true,
-      "description": "Browse every startup signal view in one place: 15 sectors, funding stages, signal types, trends and comparisons, all built from public GitHub activity."
+      "description": "Browse every startup signal view in one place: all sectors, funding stages, signal types, trends and comparisons, all built from public GitHub activity."
     },
     "/vs/affinity-vs-pitchbook": {
       "title": "Affinity vs PitchBook (2026): VC CRM vs Data, Compared",

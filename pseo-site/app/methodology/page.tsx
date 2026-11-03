@@ -9,7 +9,6 @@ import {
   getSectorLatestPeriod,
   getAllStageSlugs,
   getStagePageData,
-  getTopMoversThisWeek,
 } from "@/lib/data";
 import { slugify } from "@/lib/slugify";
 import PSEOFooterNav from "@/components/PSEOFooterNav";
@@ -17,6 +16,8 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 import { withEditorialOverride } from "@/lib/metadata";
+import { SECTOR_COUNT } from "../../lib/sector-count";
+import { getDigestTopMovers } from "@/lib/top-movers";
 
 export const metadata: Metadata = withEditorialOverride({
   title: "GitDealFlow Methodology: Signals 21-47 Days Before the Round",
@@ -72,7 +73,7 @@ export default function MethodologyPage() {
             name: "What data sources does VC Deal Flow Signal use?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "VC Deal Flow Signal uses the public GitHub REST API v3 as its primary data source: the search/repositories endpoint to discover active startup organizations across 15 sector topic clusters, and the stats/commit_activity and contributors endpoints for per-organization data. Bot commits are excluded before aggregation, and no private repositories or scraping is involved.",
+              text: `VC Deal Flow Signal uses the public GitHub REST API v3 as its primary data source: the search/repositories endpoint to discover active startup organizations across ${SECTOR_COUNT} sector topic clusters, and the stats/commit_activity and contributors endpoints for per-organization data. Bot commits are excluded before aggregation, and no private repositories or scraping is involved.`,
             },
           },
           {
@@ -80,7 +81,7 @@ export default function MethodologyPage() {
             name: "How does VC Deal Flow Signal measure engineering acceleration?",
             acceptedAnswer: {
               "@type": "Answer",
-              text: "Engineering acceleration is computed weekly from public GitHub data. The pipeline pulls 14-day commit velocity, contributor count, and repository creation events for roughly 350+ GitHub organizations across 15 sectors, then expresses each metric as a percentage change versus the prior 14-day window. A breakout must persist into a second 14-day window before it becomes actionable.",
+              text: `Engineering acceleration is computed weekly from public GitHub data. The pipeline pulls 14-day commit velocity, contributor count, and repository creation events for roughly 350+ GitHub organizations across ${SECTOR_COUNT} sectors, then expresses each metric as a percentage change versus the prior 14-day window. A breakout must persist into a second 14-day window before it becomes actionable.`,
             },
           },
           {
@@ -141,7 +142,7 @@ export default function MethodologyPage() {
           },
           {
             "@type": "HowToSupply",
-            name: "Curated allowlist of 350+ GitHub organizations across 15 sector clusters",
+            name: `Curated allowlist of 350+ GitHub organizations across ${SECTOR_COUNT} sector clusters`,
           },
         ],
         tool: [
@@ -151,7 +152,7 @@ export default function MethodologyPage() {
           { "@type": "HowToTool", name: "Append-only Parquet storage for weekly snapshots" },
         ],
         yield:
-          "One weekly ranked panel of 350+ GitHub organizations across 15 sectors, classified into five signal types and republished as sector pages, /api/v1/signals.json, /qa.jsonl, and the public dashboard.",
+          `One weekly ranked panel of 350+ GitHub organizations across ${SECTOR_COUNT} sectors, classified into five signal types and republished as sector pages, /api/v1/signals.json, /qa.jsonl, and the public dashboard.`,
         dateModified: new Date().toISOString().slice(0, 10),
         license: "https://creativecommons.org/licenses/by/4.0/",
         step: [
@@ -159,7 +160,7 @@ export default function MethodologyPage() {
             "@type": "HowToStep",
             position: 1,
             name: "Query GitHub API for startup organizations",
-            text: "Every Monday, query the GitHub API v3 search/repositories endpoint to discover active startup organizations across 15 sector-specific topic clusters. Pull per-organization data from stats/commit_activity and contributors endpoints.",
+            text: `Every Monday, query the GitHub API v3 search/repositories endpoint to discover active startup organizations across ${SECTOR_COUNT} sector-specific topic clusters. Pull per-organization data from stats/commit_activity and contributors endpoints.`,
           },
           {
             "@type": "HowToStep",
@@ -320,7 +321,7 @@ export default function MethodologyPage() {
         name: "VC Deal Flow Signal, Startup Engineering Acceleration Dataset",
         alternateName: "GitDealFlow Startup Engineering Velocity Panel",
         description:
-          "Longitudinal panel of GitHub engineering-velocity signals across 15 venture-backed startup sectors and multiple quarterly periods, computed weekly from public GitHub data. The methodology on this page documents how the panel is sourced, filtered, and ranked.",
+          `Longitudinal panel of GitHub engineering-velocity signals across ${SECTOR_COUNT} sectors and multiple quarterly periods, computed weekly from public GitHub data. The methodology on this page documents how the panel is sourced, filtered, and ranked.`,
         url: "https://signals.gitdealflow.com/dataset",
         identifier: [
           "https://signals.gitdealflow.com/dataset",
@@ -385,7 +386,7 @@ export default function MethodologyPage() {
     })
     .filter((x): x is { name: string; href: string } => x !== null);
 
-  const topMoverLinks = getTopMoversThisWeek(6).map((m) => ({
+  const topMoverLinks = getDigestTopMovers(6).map((m) => ({
     name: m.name,
     href: `/startup/${slugify(m.name)}`,
   }));
@@ -417,7 +418,7 @@ export default function MethodologyPage() {
         </h1>
 
         <AgentSummary
-          tldr="VC Deal Flow Signal (GitDealFlow) ranks venture-backed startups by GitHub commit-velocity change, a code-side momentum signal computed from public GitHub data, unrelated to startup accelerator programs. The pipeline pulls weekly GitHub REST API data for ~350+ organizations across 15 sectors, computes rolling 14-day commit velocity and contributor growth, classifies each org into one of five signal types, and publishes the rankings. This metric, referred to throughout the site as engineering acceleration, has historically preceded fundraise announcements by three to six weeks."
+          tldr={`VC Deal Flow Signal (GitDealFlow) ranks startups and open-source GitHub organizations by GitHub commit-velocity change, a code-side momentum signal computed from public GitHub data, unrelated to startup accelerator programs. The pipeline pulls weekly GitHub REST API data for ~350+ organizations across ${SECTOR_COUNT} sectors, computes rolling 14-day commit velocity and contributor growth, classifies each org into one of five signal types, and publishes the rankings. This metric, referred to throughout the site as engineering acceleration, has historically preceded fundraise announcements by three to six weeks.`}
           pageUrl="https://signals.gitdealflow.com/methodology"
           asOf={asOf}
           citeAs="VC Deal Flow Signal, Methodology (signals.gitdealflow.com/methodology), retrieved Q2 2026."
@@ -455,7 +456,7 @@ export default function MethodologyPage() {
           <p className="text-gray-200 text-base leading-relaxed mb-4" data-speakable>
             VC Deal Flow Signal uses the public GitHub REST API v3 as its
             primary data source: the search/repositories endpoint to discover
-            active startup organizations across 15 sector topic clusters, and
+            active startup organizations across {SECTOR_COUNT} sector topic clusters, and
             the stats/commit_activity and contributors endpoints for
             per-organization data. Bot commits are excluded before aggregation,
             and no private repositories or scraping is involved.
@@ -465,7 +466,7 @@ export default function MethodologyPage() {
               <strong className="text-gray-200">GitHub API v3</strong> is our
               primary data source. We query the{" "}
               <code className="text-sky-400">search/repositories</code> endpoint
-              to discover active startup organizations across 15 sector-specific
+              to discover active startup organizations across {SECTOR_COUNT} sector-specific
               topic clusters (e.g., <code className="text-sky-400">machine-learning</code>,{" "}
               <code className="text-sky-400">fintech</code>,{" "}
               <code className="text-sky-400">cybersecurity</code>). We then pull
@@ -477,7 +478,7 @@ export default function MethodologyPage() {
               <strong className="text-gray-200">Filtering</strong>: We exclude
               large tech companies (Google, Microsoft, Meta, etc.), major
               open-source foundations, and organizations with patterns
-              inconsistent with venture-backed startups. The goal is to surface
+              inconsistent with startups. The goal is to surface
               companies in the pre-seed through Series B range.
             </p>
             <p>
@@ -497,7 +498,7 @@ export default function MethodologyPage() {
             Engineering acceleration is computed weekly from public GitHub
             data. The pipeline pulls 14-day commit velocity, contributor count,
             and repository creation events for roughly 350+ GitHub
-            organizations across 15 sectors, then expresses each metric as a
+            organizations across {SECTOR_COUNT} sectors, then expresses each metric as a
             percentage change versus the prior 14-day window. A breakout must
             persist into a second 14-day window before it becomes actionable.
           </p>
@@ -866,7 +867,7 @@ commit velocity falls below the prior 14-day window. The team
             See the signals in action
           </h2>
           <p className="text-gray-400 text-sm mb-5 max-w-lg mx-auto">
-            Browse startup rankings across 15 sectors, updated weekly with
+            Browse startup rankings across {SECTOR_COUNT} sectors, updated weekly with
             fresh GitHub data, or jump straight to the pricing page.
           </p>
           <div className="flex flex-wrap justify-center gap-3">

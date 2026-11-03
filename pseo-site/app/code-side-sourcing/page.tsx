@@ -6,6 +6,7 @@ import { getHreflangLanguages } from "@/lib/hreflang";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 import { withEditorialOverride } from "@/lib/metadata";
+import { SECTOR_COUNT } from "../../lib/sector-count";
 
 export const dynamic = "force-static";
 
@@ -143,7 +144,7 @@ const DELIVERABLES = [
   {
     name: "Live Dashboard",
     cadence: "€49/mo",
-    what: "350+ ranked orgs across 15 sectors, refreshed Mondays 06:00 UTC. Sector filters, watchlists, the full acceleration ranking, the operational surface for a fund running Code-Side Sourcing as a weekly motion.",
+    what: `350+ ranked orgs across ${SECTOR_COUNT} sectors, refreshed Mondays 06:00 UTC. Sector filters, watchlists, the full acceleration ranking, the operational surface for a fund running Code-Side Sourcing as a weekly motion.`,
     href: "/pricing",
   },
   {
@@ -177,7 +178,7 @@ const FAQS = [
   },
   {
     q: "Why is the lead time 21 to 47 days specifically?",
-    a: "That&rsquo;s the interquartile range of the SSRN-published panel of 219 venture-backed startups across five quarterly periods. The median is 31 days. The signal arrives earlier than 21 days for 25% of the panel and later than 47 days for another 25%. The full distribution and methodology are published at /research and ssrn.com/abstract=6606558.",
+    a: "That&rsquo;s the interquartile range of the SSRN-published panel of 219 startup-period observations (55 venture-backed startups) across five quarterly periods. The median is 31 days. The signal arrives earlier than 21 days for 25% of the panel and later than 47 days for another 25%. The full distribution and methodology are published at /research and ssrn.com/abstract=6606558.",
   },
   {
     q: "What kind of fund or investor is best suited to practise Code-Side Sourcing?",

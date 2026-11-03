@@ -2,10 +2,10 @@ import { ImageResponse } from "next/og";
 import {
   getAllSectors,
   getCurrentPeriod,
-  getTopMoversThisWeek,
   getTotalTrackedThisWeek,
 } from "@/lib/data";
 import { panelClaimFloor } from "@/lib/canonical-claims";
+import { getDigestTopMovers } from "@/lib/top-movers";
 
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
@@ -22,7 +22,7 @@ export default async function OGImage() {
     (s) => s.periods[period.slug],
   ).length;
 
-  const movers = getTopMoversThisWeek(25, 30);
+  const movers = getDigestTopMovers(25, 30);
   const qualified = movers.filter(
     (m) =>
       m.velocityChangePct >= BREAKOUT_VELOCITY_FLOOR &&

@@ -17,6 +17,7 @@ import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 import CitableStat from "@/components/CitableStat";
 import { citableStat } from "@/lib/citable-stats";
 import { withEditorialOverride } from "@/lib/metadata";
+import { SECTOR_COUNT } from "../../../lib/sector-count";
 
 const SITE = "https://signals.gitdealflow.com";
 const SSRN_URL = "https://ssrn.com/abstract=6606558";
@@ -242,7 +243,7 @@ export default async function ResearchFindingPage({ params }: PageProps) {
         "@id": `${SITE}/api/dataset.jsonl#dataset`,
         name: "VC Deal Flow Signal, public signals dataset",
         description:
-          "Public weekly panel of GitHub-derived engineering signals across 15 startup sectors. Each NDJSON record encodes commit-velocity rank, contributor growth, infrastructure-buildout flags, and sector-relative momentum for one startup-week. Source for every research finding on this site. CC BY 4.0.",
+          `Public weekly panel of GitHub-derived engineering signals across ${SECTOR_COUNT} startup sectors. Each NDJSON record encodes commit-velocity rank, contributor growth, infrastructure-buildout flags, and sector-relative momentum for one startup-week. Source for every research finding on this site. CC BY 4.0.`,
         url: `${SITE}/api/dataset.jsonl`,
         license: "https://creativecommons.org/licenses/by/4.0/",
       },

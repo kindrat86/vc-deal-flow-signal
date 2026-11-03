@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { withEditorialOverride } from "@/lib/metadata";
+import { SECTOR_COUNT } from "../../../lib/sector-count";
 
 const SITE = "https://signals.gitdealflow.com";
 const NPM = "@gitdealflow/mcp-signal";
@@ -92,7 +93,7 @@ run = ["sh", "-c", "npx -y ${NPM}"]
 
 [mcp]
 name = "vc-deal-flow-signal"
-description = "Live GitHub engineering-acceleration signals across 15 startup sectors. Six free read-only tools."
+description = "Live GitHub engineering-acceleration signals across ${SECTOR_COUNT} startup sectors. Six free read-only tools."
 transport = "stdio"
 command = "npx"
 args = ["-y", "${NPM}"]

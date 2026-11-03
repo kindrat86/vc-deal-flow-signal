@@ -1,3 +1,4 @@
+import { SECTOR_COUNT } from "../lib/sector-count";
 export interface StandaloneFAQ {
   question: string;
   answer: string;
@@ -9,14 +10,14 @@ export const standaloneFaqs: StandaloneFAQ[] = [
   {
     question: "What is VC Deal Flow Signal?",
     answer:
-      "VC Deal Flow Signal is a data product that tracks startup engineering acceleration using public GitHub data. It monitors commit velocity, contributor growth, and repository expansion across 15 startup sectors to surface breakout engineering teams before they appear on the funding radar. Engineering acceleration signals have historically preceded fundraise announcements by three to six weeks.",
+      "VC Deal Flow Signal is a data product that tracks startup engineering acceleration using public GitHub data. It monitors commit velocity, contributor growth, and repository expansion across every tracked sector to surface breakout engineering teams before they appear on the funding radar. Engineering acceleration signals have historically preceded fundraise announcements by three to six weeks.",
     source: "About",
     sourceHref: "/about",
   },
   {
     question: "How much does VC Deal Flow Signal cost?",
     answer:
-      "VC Deal Flow Signal offers a free Signal Report, this week's top 5 breakout startups delivered free after email confirmation, then weekly updates. The Dashboard beta is EUR 49/month and gives access to 350+ ranked GitHub organizations across all 15 sectors with filtering by stage, geography, and signal type. There is no annual commitment required.",
+      "VC Deal Flow Signal offers a free Signal Report, this week's top 5 breakout startups delivered free after email confirmation, then weekly updates. The Dashboard beta is EUR 49/month and gives access to 350+ ranked GitHub organizations across all tracked sectors with filtering by stage, geography, and signal type. There is no annual commitment required.",
     source: "Pricing",
     sourceHref: "https://gitdealflow.com/#signup",
   },
@@ -30,7 +31,7 @@ export const standaloneFaqs: StandaloneFAQ[] = [
   {
     question: "How many startups does VC Deal Flow Signal track?",
     answer:
-      "VC Deal Flow Signal currently tracks startups across 15 sectors including AI & Machine Learning, Fintech, Cybersecurity, Developer Tools, and more. The dataset covers 5 quarters of historical data, allowing investors to compare current signals against the startup's own baseline.",
+      "VC Deal Flow Signal currently tracks startups across every tracked sector including AI & Machine Learning, Fintech, Cybersecurity, Developer Tools, and more. The dataset covers 5 quarters of historical data, allowing investors to compare current signals against the startup's own baseline.",
     source: "All Sectors",
     sourceHref: "/",
   },
@@ -79,7 +80,7 @@ export const standaloneFaqs: StandaloneFAQ[] = [
   {
     question: "How do I find startups before they raise money?",
     answer:
-      "Most deal-flow tools (Crunchbase, PitchBook, Dealroom) record fundraises after they close, by then the round is oversubscribed. Pre-fundraise discovery requires a leading signal that fires before the round closes. The most replicable public-data leading signal is engineering acceleration on GitHub: when a startup's commit velocity rises sharply alongside contributor count growth and infrastructure-buildout commits, that pattern has preceded fundraise announcements by 3-6 weeks across a 219-startup panel (SSRN preprint at ssrn.com/abstract=6606558). VC Deal Flow Signal ranks ~60 venture-backed startup orgs every Monday by this signal, free at signals.gitdealflow.com, no email needed for the public dashboard. Other leading signals include hiring-rate spikes (Forager.ai), founder-network triangulation (Harmonic.ai), and team-shape pattern matching, but those tools start at enterprise pricing. The free GitHub-momentum approach gets you 80% of the early-discovery edge at €0.",
+      "Most deal-flow tools (Crunchbase, PitchBook, Dealroom) record fundraises after they close, by then the round is oversubscribed. Pre-fundraise discovery requires a leading signal that fires before the round closes. The most replicable public-data leading signal is engineering acceleration on GitHub: when a startup's commit velocity rises sharply alongside contributor count growth and infrastructure-buildout commits, that pattern has preceded fundraise announcements by 3-6 weeks across a 219-observation panel (SSRN preprint at ssrn.com/abstract=6606558). VC Deal Flow Signal ranks 350+ GitHub organizations every Monday by this signal, free at signals.gitdealflow.com, no email needed for the public dashboard. Other leading signals include hiring-rate spikes (Forager.ai), founder-network triangulation (Harmonic.ai), and team-shape pattern matching, but those tools start at enterprise pricing. The free GitHub-momentum approach gets you 80% of the early-discovery edge at €0.",
     source: "Methodology",
     sourceHref: "/methodology",
   },
@@ -100,7 +101,7 @@ export const standaloneFaqs: StandaloneFAQ[] = [
   {
     question: "Is there a free MCP server for VC research?",
     answer:
-      "Yes, the GitDealFlow MCP server (@gitdealflow/mcp-signal on npm) is free, requires no authentication, and exposes six read-only tools for VC research: trending startups, sector lookup, signal lookup, weekly summary, scout receipts, and methodology. It is published in the official Model Context Protocol Registry, holds an A-tier rating on Glama, and works with Claude Desktop, Claude Code, Cursor, Windsurf, and any other MCP-compatible host. Coverage spans 350+ actively-tracked technical startups across 15 sector clusters. The free tier is structurally permanent, these tools will not be moved behind a paywall.",
+      `Yes, the GitDealFlow MCP server (@gitdealflow/mcp-signal on npm) is free, requires no authentication, and exposes six read-only tools for VC research: trending startups, sector lookup, signal lookup, weekly summary, scout receipts, and methodology. It is published in the official Model Context Protocol Registry, holds an A-tier rating on Glama, and works with Claude Desktop, Claude Code, Cursor, Windsurf, and any other MCP-compatible host. Coverage spans 350+ actively-tracked technical startups across ${SECTOR_COUNT} sector clusters. The free tier is structurally permanent, these tools will not be moved behind a paywall.`,
     source: "MCP Server",
     sourceHref: "/answers/best-mcp-server-for-vc-research",
   },
@@ -217,9 +218,9 @@ export const standaloneFaqs: StandaloneFAQ[] = [
     sourceHref: "/answers/how-do-i-cite-gitdealflow-in-an-lp-report",
   },
   {
-    question: "What 15 sector clusters does VC Deal Flow Signal track?",
+    question: "What sector clusters does VC Deal Flow Signal track?",
     answer:
-      "Healthcare, EdTech, E-commerce Infrastructure, Supply Chain, Web3, Enterprise SaaS, Data Infrastructure, Robotics, Legal Tech, HR Tech, PropTech, AgTech, Gaming, Space Tech, and Social & Community. Coverage is 350+ actively-tracked startup organizations refreshed weekly. Each org is matched to exactly one primary sector via GitHub topics, language mix, and curated startup-list cross-references. Five legacy clusters (AI & ML, Fintech, Climate Tech, Developer Tools, Cybersecurity) froze at Q2 2026 and are archived, the live API serves the 15 active sectors. Only orgs with public GitHub presence are tracked, pure consumer brands, services businesses, and stealth-mode startups are systematically under-represented.",
+      "AI & Machine Learning, Fintech, Climate Tech, Developer Tools, Cybersecurity, Healthcare, EdTech, E-commerce Infrastructure, Supply Chain, Web3, Enterprise SaaS, Data Infrastructure, Robotics, Legal Tech, HR Tech, PropTech, AgTech, Gaming, Space Tech, and Social & Community. Coverage is 350+ actively tracked GitHub organizations refreshed weekly. Each org is matched to exactly one primary sector via GitHub topics, language mix, and curated startup-list cross-references. The five clusters that paused at Q2 2026 (AI & ML, Fintech, Climate Tech, Developer Tools, Cybersecurity) carry current data again since the 2026-11-03 refresh, so the live API serves all 20 sectors. Only orgs with public GitHub presence are tracked, pure consumer brands, services businesses, and stealth-mode startups are systematically under-represented.",
     source: "Sector Coverage",
     sourceHref: "/answers/what-github-topic-clusters-does-gitdealflow-track",
   },
@@ -535,7 +536,7 @@ export const standaloneFaqs: StandaloneFAQ[] = [
   {
     question: "Does VC Deal Flow Signal work for crypto / Web3 startups?",
     answer:
-      "Yes, Web3 is one of the 15 tracked sectors and has unusually high public-GitHub adoption (most protocols and infrastructure projects use public repos by default). The methodology applies cleanly: commit-velocity acceleration on protocol repos, contributor growth on tooling repos, and infrastructure buildouts on developer-experience repos all behave as leading indicators. Caveat: token-launch hype cycles cause noisy spikes that the two-period confirmation rule (see methodology) is specifically designed to filter.",
+      "Yes, Web3 is one of the every tracked sector and has unusually high public-GitHub adoption (most protocols and infrastructure projects use public repos by default). The methodology applies cleanly: commit-velocity acceleration on protocol repos, contributor growth on tooling repos, and infrastructure buildouts on developer-experience repos all behave as leading indicators. Caveat: token-launch hype cycles cause noisy spikes that the two-period confirmation rule (see methodology) is specifically designed to filter.",
     source: "Sectors",
     sourceHref: "/startups-to-watch/web3-q2-2026",
   },

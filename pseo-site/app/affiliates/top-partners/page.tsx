@@ -4,6 +4,7 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { withEditorialOverride } from "@/lib/metadata";
+import { SECTOR_COUNT } from "../../../lib/sector-count";
 
 export const dynamic = "force-static";
 
@@ -55,7 +56,7 @@ const PARTNERS: Partner[] = [
   { id: "indie-hackers", name: "IndieHackers Weekly", who: "Channing Allen / Stripe", archetype: "newsletter", audience: "Indie founders ~120k", fit: "Founder-investor crossover, low CPL", status: "outreach-sent", lastTouch: "2026-05" },
 
   // Newsletters, venture & alt-data
-  { id: "fintech-bs", name: "Fintech Business Weekly", who: "Jason Mikula", archetype: "newsletter", audience: "Fintech VCs + ops", fit: "Fintech sector overlap with our 15-sector grid", status: "pending" },
+  { id: "fintech-bs", name: "Fintech Business Weekly", who: "Jason Mikula", archetype: "newsletter", audience: "Fintech VCs + ops", fit: `Fintech sector overlap with our ${SECTOR_COUNT}-sector grid`, status: "pending" },
   { id: "axios-pro-rata", name: "Axios Pro Rata", who: "Dan Primack", archetype: "newsletter", audience: "VC industry, ~80k", fit: "Direct VC-news audience", status: "pending" },
   { id: "term-sheet", name: "Fortune Term Sheet", who: "Allie Garfinkle / Jessica Mathews", archetype: "newsletter", audience: "VC industry, large", fit: "Daily VC briefing, methodology PR fit", status: "pending" },
   { id: "newcomer", name: "Newcomer", who: "Eric Newcomer", archetype: "newsletter", audience: "VC scoops, ~80k paid", fit: "Pre-deck deal-flow scoop angle", status: "pending" },

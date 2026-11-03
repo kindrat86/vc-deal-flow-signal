@@ -1,6 +1,13 @@
+import { SECTOR_COUNT } from "../../../../lib/sector-count";
 const BASE_URL = "https://signals.gitdealflow.com";
 
+// 2026-11-03: the five sectors that paused at q2-2026 have current data again.
 const SECTOR_SLUGS = [
+  "ai-ml",
+  "fintech",
+  "climate-tech",
+  "developer-tools",
+  "cybersecurity",
   "healthcare",
   "edtech",
   "ecommerce-infrastructure",
@@ -22,7 +29,7 @@ const TOOL_DEFINITIONS = [
   {
     name: "get_trending_startups",
     description:
-      "Top 20 startups by engineering acceleration across all 15 sectors for the current weekly period. Read-only, idempotent. Use for cross-sector 'what's hot this week' questions.",
+      `Top 20 startups by engineering acceleration across all ${SECTOR_COUNT} sectors for the current weekly period. Read-only, idempotent. Use for cross-sector 'what's hot this week' questions.`,
     parameters: {
       type: "object" as const,
       properties: {} as Record<string, unknown>,
@@ -33,7 +40,7 @@ const TOOL_DEFINITIONS = [
   {
     name: "search_startups_by_sector",
     description:
-      "Every tracked startup within a sector, ranked by engineering acceleration. Use when the user names a vertical (healthcare, web3, gaming, etc.). Map fuzzy input to one of the 15 enumerated sector slugs before calling.",
+      `Every tracked startup within a sector, ranked by engineering acceleration. Use when the user names a vertical (healthcare, web3, gaming, etc.). Map fuzzy input to one of the ${SECTOR_SLUGS.length} enumerated sector slugs before calling.`,
     parameters: {
       type: "object" as const,
       properties: {

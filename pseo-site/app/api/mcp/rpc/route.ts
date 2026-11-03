@@ -14,6 +14,7 @@ import {
   verifyApprovalToken,
   type ApprovalVerifyError,
 } from "@/lib/mcp/share-approval-token";
+import { SECTOR_COUNT } from "../../../../lib/sector-count";
 
 const BASE_URL = "https://signals.gitdealflow.com";
 const SERVER_NAME = "vc-deal-flow-signal";
@@ -29,7 +30,13 @@ interface JsonRpcRequest {
   params?: unknown;
 }
 
+// 2026-11-03: the five sectors that paused at q2-2026 have current data again.
 const SECTOR_SLUGS = [
+  "ai-ml",
+  "fintech",
+  "climate-tech",
+  "developer-tools",
+  "cybersecurity",
   "healthcare",
   "edtech",
   "ecommerce-infrastructure",
@@ -132,7 +139,7 @@ const TOOLS = [
     name: "get_trending_startups",
     title: "Trending Startups",
     description:
-      "Top 20 startups by engineering acceleration across all 15 sectors for the current weekly period. Read-only, idempotent.",
+      `Top 20 startups by engineering acceleration across all ${SECTOR_COUNT} sectors for the current weekly period. Read-only, idempotent.`,
     inputSchema: { type: "object", properties: {}, additionalProperties: false },
     outputSchema: {
       type: "object" as const,
@@ -154,7 +161,7 @@ const TOOLS = [
     name: "search_startups_by_sector",
     title: "Search Startups by Sector",
     description:
-      "Every tracked startup within a sector, ranked by engineering acceleration. Sector slug must be one of 15 enumerated values.",
+      `Every tracked startup within a sector, ranked by engineering acceleration. Sector slug must be one of ${SECTOR_SLUGS.length} enumerated values.`,
     inputSchema: {
       type: "object",
       properties: {

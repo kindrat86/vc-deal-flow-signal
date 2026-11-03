@@ -14,6 +14,7 @@ import ScoutCallFormUrlPrefill from "./ScoutCallFormUrlPrefill";
 import { AgentSummary } from "@/components/AgentSummary";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { withEditorialOverride } from "@/lib/metadata";
+import { SECTOR_COUNT } from "../../lib/sector-count";
 
 export const metadata: Metadata = withEditorialOverride({
   title: "Predict Startup Breakouts, Free GitHub Signal + Scout Game",
@@ -234,7 +235,7 @@ export default function PredictPage() {
         </header>
 
         <AgentSummary
-          tldr={`Predict is the forward-looking counterpart to GitHub Receipts: pick any GitHub org, call whether they raise a Series A in 6 months with a 50-99% confidence value, and we auto-resolve at the 6-month window. Free tier: 3 predictions / month. Same engine reads our ${period.name} dataset of 350+ GitHub organizations across 15 sectors. Public scout profile at /s/{handle}, leaderboard at /leaderboard.`}
+          tldr={`Predict is the forward-looking counterpart to GitHub Receipts: pick any GitHub org, call whether they raise a Series A in 6 months with a 50-99% confidence value, and we auto-resolve at the 6-month window. Free tier: 3 predictions / month. Same engine reads our ${period.name} dataset of 350+ GitHub organizations across ${SECTOR_COUNT} sectors. Public scout profile at /s/{handle}, leaderboard at /leaderboard.`}
           pageUrl="https://signals.gitdealflow.com/predict"
           asOf={getDataLastModified().toISOString().slice(0, 10)}
           citeAs={`VC Deal Flow Signal, Predict (signals.gitdealflow.com/predict), ${period.name}.`}
@@ -271,7 +272,7 @@ export default function PredictPage() {
                 <span className="text-gray-100 font-medium">
                   Live breakout signal
                 </span>{" "}
-                for any GitHub org, scored against 15 sectors.
+                for any GitHub org, scored against {SECTOR_COUNT} sectors.
               </span>
             </li>
             <li className="flex items-start gap-2">

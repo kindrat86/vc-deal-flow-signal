@@ -3,7 +3,6 @@ import Link from "next/link";
 import {
   getAllSectors,
   getCurrentPeriod,
-  getTopMoversThisWeek,
   getTotalTrackedThisWeek,
   getDataLastModified,
   type TopMover,
@@ -14,6 +13,8 @@ import StatCallout from "@/components/StatCallout";
 import PSEOFooterNav from "@/components/PSEOFooterNav";
 import SeoCta from "@/components/SeoCta";
 import { withEditorialOverride } from "@/lib/metadata";
+import { SECTOR_COUNT } from "../../lib/sector-count";
+import { getDigestTopMovers } from "@/lib/top-movers";
 
 export const revalidate = 3600;
 
@@ -59,7 +60,7 @@ function getBreakoutRoundup(): BreakoutRoundup {
   ).length;
   const lastModified = getDataLastModified().toISOString().slice(0, 10);
 
-  const movers = getTopMoversThisWeek(25, 30);
+  const movers = getDigestTopMovers(25, 30);
   const qualified = movers.filter(
     (m) =>
       m.velocityChangePct >= BREAKOUT_VELOCITY_FLOOR &&
@@ -146,7 +147,7 @@ export default function BreakoutStartupsThisWeekPage() {
 
   const keyStats = [
     { value: String(breakouts.length), label: "Breakouts this week", context: "Above the 30% velocity floor" },
-    { value: String(totalTracked), label: "Startups tracked", context: "Across 15 sectors" },
+    { value: String(totalTracked), label: "Startups tracked", context: `Across ${SECTOR_COUNT} sectors` },
     { value: String(sectorCount), label: "Sectors represented", context: periodName },
     ...(top
       ? [{ value: top.commitVelocityChange, label: "Fastest mover", context: top.name }]
@@ -335,7 +336,7 @@ export default function BreakoutStartupsThisWeekPage() {
             Breakout Startups This Week
           </h1>
           <p className="text-gray-400 text-base leading-relaxed" data-agent-summary>
-            The GitHub activity of {totalTracked} venture-backed startups shifted
+            The GitHub activity of {totalTracked} tracked GitHub organizations shifted
             again this week. {breakouts.length} cleared our breakout bar: at least
             30 commits in 14 days, a real contributor team, and a commit-velocity
             change of 30% or more. These are the engineering teams accelerating

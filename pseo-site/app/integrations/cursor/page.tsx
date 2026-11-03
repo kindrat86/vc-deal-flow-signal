@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { withEditorialOverride } from "@/lib/metadata";
+import { SECTOR_COUNT } from "../../../lib/sector-count";
 
 const SITE = "https://signals.gitdealflow.com";
 const NPM = "@gitdealflow/mcp-signal";
@@ -45,12 +46,12 @@ const TOOLS = [
   {
     name: "get_trending_startups",
     summary:
-      "Top 20 startups by engineering acceleration across all 15 sectors for the current week.",
+      `Top 20 startups by engineering acceleration across all ${SECTOR_COUNT} sectors for the current week.`,
   },
   {
     name: "search_startups_by_sector",
     summary:
-      "Every tracked startup within a sector, ranked by velocity. Sector slug from the 15 enumerated values.",
+      "Every tracked startup within a sector, ranked by velocity. Sector slug from the enumerated values.",
   },
   {
     name: "get_startup_signal",

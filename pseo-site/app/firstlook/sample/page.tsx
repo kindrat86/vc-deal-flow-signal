@@ -5,6 +5,7 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { withEditorialOverride } from "@/lib/metadata";
+import { SECTOR_COUNT } from "../../../lib/sector-count";
 
 export const dynamic = "force-static";
 
@@ -317,7 +318,7 @@ one of the highest in the panel, the org has
             </h2>
             <p className="text-gray-400 text-sm leading-relaxed">
               Every First Look ships at 14 pages exactly, the structure
-              holds across all 15 sectors. If you don&rsquo;t see at least three
+              holds across all {SECTOR_COUNT} sectors. If you don&rsquo;t see at least three
               pages below that you&rsquo;d screenshot into a memo, the bait
               isn&rsquo;t the right shape for you and you should skip the €7.
             </p>

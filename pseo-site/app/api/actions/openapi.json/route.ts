@@ -1,6 +1,12 @@
 const BASE_URL = "https://signals.gitdealflow.com";
 
+// 2026-11-03: the five sectors that paused at q2-2026 have current data again.
 const SECTOR_SLUGS = [
+  "ai-ml",
+  "fintech",
+  "climate-tech",
+  "developer-tools",
+  "cybersecurity",
   "healthcare",
   "edtech",
   "ecommerce-infrastructure",

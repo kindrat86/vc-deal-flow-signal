@@ -186,7 +186,7 @@ export default function FiveMinPerfectWebinarPage() {
             </li>
             <li className="border-l-2 border-rose-700 pl-4">
               <strong className="text-gray-100">&ldquo;The good orgs are private.&rdquo;</strong>{" "}
-              The 219-startup panel is venture-backed and 100% public-GitHub.
+              The research panel (219 startup-period observations across 55 startups) is venture-backed and 100% public-GitHub.
               Private repos are absent because they don&rsquo;t need to be
               there for the signal to fire.
             </li>

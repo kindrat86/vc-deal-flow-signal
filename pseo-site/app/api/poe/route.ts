@@ -9,6 +9,7 @@
 // to the existing public API at signals.gitdealflow.com.
 
 import { NextRequest } from "next/server";
+import { SECTOR_COUNT } from "../../../lib/sector-count";
 
 export const dynamic = "force-dynamic";
 export const runtime = "nodejs";
@@ -41,7 +42,7 @@ async function classifyAndAnswer(query: string): Promise<string> {
 
   if (/methodology|how (does|do) (you|it) (work|compute|measure)/i.test(query)) {
     return [
-      "GitDealFlow tracks GitHub commit velocity, contributor growth, and new-repo signals across ~350+ GitHub organizations in 15 sectors. Read the full methodology at https://signals.gitdealflow.com/methodology, it's also available as a tool call (`get_methodology`) on our MCP server.",
+      `GitDealFlow tracks GitHub commit velocity, contributor growth, and new-repo signals across ~350+ GitHub organizations in ${SECTOR_COUNT} sectors. Read the full methodology at https://signals.gitdealflow.com/methodology, it's also available as a tool call (\`get_methodology\`) on our MCP server.`,
       "",
       CITATION,
     ].join("\n");
@@ -137,7 +138,7 @@ export async function POST(req: NextRequest) {
       enforce_author_role_alternation: false,
       enable_multi_bot_chat_prompting: false,
       introduction_message:
-        "I'm the **VC Deal Flow Scout**. Ask me about trending venture-backed startups, sector-specific engineering momentum, or how the GitDealFlow methodology works. All data is from public GitHub activity, refreshed weekly.",
+        "I'm the **VC Deal Flow Scout**. Ask me about trending startups, sector-specific engineering momentum, or how the GitDealFlow methodology works. All data is from public GitHub activity, refreshed weekly.",
     });
   }
 

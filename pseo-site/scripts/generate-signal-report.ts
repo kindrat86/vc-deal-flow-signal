@@ -10,6 +10,10 @@
 
 import * as fs from "fs";
 import * as path from "path";
+// Same ranking rules as the Sunday Signal Digest (2026-11-03): startup rule,
+// fresh-data pool, tiny-base / no-baseline jumps shown as "New" and ranked
+// after every measured jump. Relative import so tsx resolves it.
+import { FRESH_DAYS, isNonStartup, isTinyBase } from "../lib/digest-builder";
 
 interface Startup {
   name: string;
@@ -25,6 +29,7 @@ interface Startup {
   githubUrl: string;
   websiteUrl?: string;
   linkedinUrl?: string;
+  lastSeen?: string;
 }
 
 interface SectorSnapshot {
@@ -54,6 +59,18 @@ interface StartupsData {
 
 function parseVelocityChange(s: string): number {
   return parseInt(s.replace(/[^0-9-]/g, ""), 10) || 0;
+}
+
+/** Digest order: measured jumps first (largest first), tiny-base jumps last. */
+function byMeasuredChange(a: Startup, b: Startup): number {
+  const na = isTinyBase(a), nb = isTinyBase(b);
+  if (na !== nb) return na ? 1 : -1;
+  return parseVelocityChange(b.commitVelocityChange) - parseVelocityChange(a.commitVelocityChange);
+}
+
+/** Display value: a jump off a zero or near-zero prior window is "New". */
+function shown(s: Startup): string {
+  return isTinyBase(s) ? "New" : s.commitVelocityChange;
 }
 
 function main() {
@@ -90,9 +107,8 @@ function main() {
       allStartups.push({ ...s, sectorName: sector.name, sectorSlug: sector.slug });
     }
 
-    const sorted = [...snapshot.startups].sort(
-      (a, b) => parseVelocityChange(b.commitVelocityChange) - parseVelocityChange(a.commitVelocityChange)
-    );
+    const eligible = snapshot.startups.filter((s) => !isNonStartup(s));
+    const sorted = [...(eligible.length ? eligible : snapshot.startups)].sort(byMeasuredChange);
     const avg = Math.round(
       snapshot.startups.reduce((sum, s) => sum + s.commitVelocity14d, 0) / snapshot.startups.length
     );
@@ -106,15 +122,19 @@ function main() {
       count: snapshot.startups.length,
       avgVelocity: avg,
       topStartup: sorted[0].name,
-      topChange: sorted[0].commitVelocityChange,
+      topChange: shown(sorted[0]),
       dominantSignal: topSignal,
     });
   }
 
   // Sort all startups by velocity change
-  const globalTop10 = [...allStartups]
-    .sort((a, b) => parseVelocityChange(b.commitVelocityChange) - parseVelocityChange(a.commitVelocityChange))
-    .slice(0, 10);
+  const now = Date.now();
+  const named = allStartups.filter((s) => !isNonStartup(s));
+  const fresh = named.filter(
+    (s) => s.lastSeen && now - Date.parse(`${s.lastSeen}T00:00:00Z`) <= FRESH_DAYS * 86_400_000,
+  );
+  const rankPool = fresh.length >= 5 ? fresh : named;
+  const globalTop10 = [...rankPool].sort(byMeasuredChange).slice(0, 10);
 
   // Sort sectors by avg velocity
   const hottestSectors = [...sectorStats].sort((a, b) => b.avgVelocity - a.avgVelocity).slice(0, 5);
@@ -148,7 +168,13 @@ function main() {
   // phrase panel size as the floor, never the exact row count.
   const panelClaim = allStartups.length >= 350 ? "350+" : String(allStartups.length);
 
-  const description = `This week's top 10 startups by engineering acceleration across ${sectorStats.length} sectors. ${globalTop10[0]?.name} leads with ${globalTop10[0]?.commitVelocityChange} commit velocity change. Data from 350+ tracked GitHub organizations.`;
+  const lead = globalTop10[0];
+  const leadLine = lead
+    ? isTinyBase(lead)
+      ? `${lead.name} leads, new activity with no prior baseline.`
+      : `${lead.name} leads with ${lead.commitVelocityChange} commit velocity change.`
+    : "";
+  const description = `This week's top 10 startups by engineering acceleration across ${sectorStats.length} sectors. ${leadLine} Data from ${panelClaim} tracked GitHub organizations.`;
 
   // Build the body
   const top10Section = globalTop10
@@ -160,7 +186,8 @@ function main() {
         .filter(Boolean)
         .join(" · ");
       const linkSuffix = outboundLinks ? ` ${outboundLinks}.` : "";
-      return `**#${i + 1} ${s.name}** (${s.sectorName}), ${s.commitVelocityChange} commit velocity change, ${s.commitVelocity14d} commits over 14 days, ${s.contributors} contributors. Signal: ${s.signalType}. ${s.description}${linkSuffix}`;
+      const change = isTinyBase(s) ? "new activity (no prior baseline)" : `${s.commitVelocityChange} commit velocity change`;
+      return `**#${i + 1} ${s.name}** (${s.sectorName}), ${change}, ${s.commitVelocity14d} commits over 14 days, ${s.contributors} contributors. Signal: ${s.signalType}. ${s.description}${linkSuffix}`;
     })
     .join("\n\n");
 
@@ -173,11 +200,11 @@ function main() {
 
   const body = `This is the automated weekly signal report from VC Deal Flow Signal. We track GitHub engineering acceleration across ${sectorStats.length} startup sectors and rank them by commit velocity change, the rate at which engineering activity is accelerating relative to baseline.
 
-This report covers ${currentPeriod.name}. ${panelClaim} startups across ${sectorStats.length} sectors showed measurable engineering signals.
+This report covers ${currentPeriod.name}. ${panelClaim} tracked GitHub organizations across ${sectorStats.length} sectors showed measurable engineering signals. The top 10 below names only orgs that pass the digest startup rule and were measured in the last ${FRESH_DAYS} days; a jump off a zero or near-zero prior window is shown as new activity, not a percentage.
 
 ## Top 10 Startups by Engineering Acceleration
 
-These are the startups showing the highest commit velocity change this period, the ones where engineering activity is accelerating fastest relative to their own baseline.
+These are the startups showing the highest measured commit velocity change this period, the ones where engineering activity is accelerating fastest relative to their own baseline.
 
 ${top10Section}
 

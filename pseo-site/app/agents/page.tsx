@@ -5,6 +5,7 @@ import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { getDataLastModified } from "@/lib/data";
 import { withEditorialOverride } from "@/lib/metadata";
+import { SECTOR_COUNT } from "../../lib/sector-count";
 
 const SITE = "https://signals.gitdealflow.com";
 
@@ -568,7 +569,7 @@ Wikidata{" "}
           citeAs={`VC Deal Flow Signal, Agents (signals.gitdealflow.com/agents), retrieved ${asOf}.`}
           facts={[
             {
-              claim: `${surfaces.length} agent surfaces all wrap one CC-BY-4.0 dataset of 350+ GitHub organizations across 15 sectors, refreshed weekly.`,
+              claim: `${surfaces.length} agent surfaces all wrap one CC-BY-4.0 dataset of 350+ GitHub organizations across ${SECTOR_COUNT} sectors, refreshed weekly.`,
               sourceUrl: `${SITE}/AGENTS.md`,
               sourceLabel: "AGENTS.md",
             },

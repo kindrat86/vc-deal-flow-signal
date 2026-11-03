@@ -54,7 +54,9 @@ export default function SignalLeader({ movers, periodSlug, asOf }: SignalLeaderP
               <p className={`font-mono font-bold text-3xl ${leadTone.text}`}>
                 {lead.commitVelocityChange}
               </p>
-              <p className="text-[11px] text-gray-400 mt-0.5">14d velocity</p>
+              <p className="text-[11px] text-gray-400 mt-0.5">
+                {lead.commitVelocityChange === "New" ? "no prior baseline" : "14d velocity"}
+              </p>
             </div>
           </div>
           <p className="text-gray-400 text-sm leading-relaxed line-clamp-2 mb-3">

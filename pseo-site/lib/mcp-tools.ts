@@ -1,3 +1,4 @@
+import { SECTOR_COUNT } from "./sector-count";
 /**
  * Canonical MCP tool catalog, SINGLE SOURCE OF TRUTH for the static descriptors.
  *
@@ -30,7 +31,7 @@ export const MCP_TOOLS: McpTool[] = [
   {
     name: "get_trending_startups",
     description:
-      "Top 20 startups by engineering acceleration across all 15 sectors for the current weekly period.",
+      `Top 20 startups by engineering acceleration across all ${SECTOR_COUNT} sectors for the current weekly period.`,
     readOnly: true,
   },
   {

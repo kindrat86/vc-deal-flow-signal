@@ -6,6 +6,7 @@ import { getHreflangLanguages } from "@/lib/hreflang";
 import { DATA_NERD_AUTHOR_REF } from "@/lib/data-nerd";
 import { DataNerdSignoff } from "@/components/DataNerdSignoff";
 import { withEditorialOverride } from "@/lib/metadata";
+import { SECTOR_COUNT } from "../../lib/sector-count";
 
 export const dynamic = "force-static";
 
@@ -180,7 +181,7 @@ export default function PitchPage() {
               <span className="text-sky-400 font-bold shrink-0">→</span>
               <span>
                 <strong className="text-gray-100">€49/mo Dashboard.</strong>{" "}
-                350+ GitHub organizations, 15 sectors, full filters, 219-startup backtest
+                350+ GitHub organizations, {SECTOR_COUNT} sectors, full filters, 219-startup backtest
                 CSV, monthly Sector Deep Dive PDF. Rate locked while subscribed.
               </span>
             </li>

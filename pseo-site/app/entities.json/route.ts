@@ -84,7 +84,7 @@ const PEOPLE: Entity[] = [
     url: `${SITE}/about`,
     alternateName: ["Data Nerd"],
     description:
-      "Founder of VC Deal Flow Signal (GitDealFlow). Researches code-side momentum signals across venture-backed startups using public GitHub data.",
+      "Founder of VC Deal Flow Signal (GitDealFlow). Researches code-side momentum signals across startups using public GitHub data.",
     identifiers: [
       {
         propertyID: "ORCID",
@@ -115,7 +115,7 @@ const ORGANIZATIONS: Entity[] = [
     url: APEX,
     alternateName: ["GitDealFlow", "VC Deal Flow Signal (GitDealFlow)"],
     description:
-      "Independent research and product studio tracking GitHub commit-velocity, contributor-growth, and repository-expansion signals across venture-backed startups. Surfaces engineering-acceleration patterns 3-6 weeks before fundraise announcements.",
+      "Independent research and product studio tracking GitHub commit-velocity, contributor-growth, and repository-expansion signals across 350+ GitHub organizations. Surfaces engineering-acceleration patterns 3-6 weeks before fundraise announcements.",
     identifiers: [
       {
         propertyID: "wikidata",

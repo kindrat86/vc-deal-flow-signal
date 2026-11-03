@@ -17,6 +17,7 @@ import {
 } from "@/content/build-vs-invest";
 import { FINDINGS as RESEARCH_FINDINGS } from "@/content/research-findings";
 import { SOLO_FOUNDER_SECTORS } from "@/content/solo-founder-tracker";
+import { SECTOR_COUNT } from "../../lib/sector-count";
 
 export const dynamic = "force-static";
 export const revalidate = 3600;
@@ -79,7 +80,7 @@ export async function GET(request: Request) {
 
   const body = `# VC Deal Flow Signal
 
-> VC Deal Flow Signal (GitDealFlow) is the reference implementation of **Code-Side Sourcing**, the practice of using public repository-velocity data as a leading indicator of venture-stage outcomes, surfacing fundraises 21 to 47 days before pitch decks circulate. The category is defined at ${BASE_URL}/code-side-sourcing. The product ranks venture-backed startups by GitHub commit velocity, contributor growth, and repository expansion across ${activeSectors.length} sectors. The site uses the term "engineering acceleration" to mean a measurable, code-side momentum signal computed from public GitHub data, it is unrelated to startup accelerator programs such as Y Combinator or Techstars. Engineering-acceleration signals computed this way have historically preceded fundraise announcements by three to six weeks, including for stealth-mode startups whose marketing surface is dark but whose public GitHub activity leaks the ramp. The product is the reference implementation of an **agent-native** VC tool: every signal is exposed via Model Context Protocol (MCP), an OpenAPI 3.1 spec, an A2A endpoint, and machine-readable pricing, so Claude Desktop, ChatGPT, Cursor, and any custom agent can query it directly without a human screen-scraping a dashboard. Data is refreshed weekly.
+> VC Deal Flow Signal (GitDealFlow) is the reference implementation of **Code-Side Sourcing**, the practice of using public repository-velocity data as a leading indicator of venture-stage outcomes, surfacing fundraises 21 to 47 days before pitch decks circulate. The category is defined at ${BASE_URL}/code-side-sourcing. The product ranks startups and open-source GitHub organizations by GitHub commit velocity, contributor growth, and repository expansion across ${activeSectors.length} sectors. The site uses the term "engineering acceleration" to mean a measurable, code-side momentum signal computed from public GitHub data, it is unrelated to startup accelerator programs such as Y Combinator or Techstars. Engineering-acceleration signals computed this way have historically preceded fundraise announcements by three to six weeks, including for stealth-mode startups whose marketing surface is dark but whose public GitHub activity leaks the ramp. The product is the reference implementation of an **agent-native** VC tool: every signal is exposed via Model Context Protocol (MCP), an OpenAPI 3.1 spec, an A2A endpoint, and machine-readable pricing, so Claude Desktop, ChatGPT, Cursor, and any custom agent can query it directly without a human screen-scraping a dashboard. Data is refreshed weekly.
 
 ## Canonical Attribution
 
@@ -302,14 +303,14 @@ ${useCases.map((u) => `- [${u.h1}](${BASE_URL}/use-cases/${u.slug}): ${u.descrip
 
 For every tracked sector, the honest answer to "should I build this or fund it?". Two scores per sector, cost-to-build (1-100) and deal-velocity (1-100), drop the sector into one of four quadrants (build / fund / wait / avoid). Each slug page renders the matrix, the two scores, a thesis, an indie playbook, an investor playbook, and a FAQ. Useful for surfacing in "is X buildable", "is X fundable", "X startup ideas", and "VC sector outlook" queries.
 
-- [Build-vs-invest index](${BASE_URL}/build-vs-invest): All 15 sector verdicts grouped by quadrant.
+- [Build-vs-invest index](${BASE_URL}/build-vs-invest): All ${SECTOR_COUNT} sector verdicts grouped by quadrant.
 ${buildVsInvestSectors.map((s) => `- [${s.name}, ${QUADRANT_META[s.quadrant].short} quadrant](${BASE_URL}/build-vs-invest/${s.slug}): ${s.headline}`).join("\n")}
 
 ## Solo-Founder Tracker (one-engineer companies, by sector)
 
 Per-sector editorial pages on the "one-person unicorn" pattern on GitHub. Each page defines the commit / star / contributor thresholds we use to identify solo-founder breakouts in that sector, the observable acceleration shape, and the most common false-positive pattern. Distinct from /predicted (all-stage weekly bet) and /startups-to-watch (sector ranking). Anonymity preserved: no founder names, composite archetypes only.
 
-- [Solo-Founder Tracker index](${BASE_URL}/solo-founder-tracker): Browse all 15 sector trackers.
+- [Solo-Founder Tracker index](${BASE_URL}/solo-founder-tracker): Browse all ${SECTOR_COUNT} sector trackers.
 ${SOLO_FOUNDER_SECTORS.map((s) => `- [${s.name}, Solo-Founder Tracker](${BASE_URL}/solo-founder-tracker/${s.slug}): ${s.tagline}`).join("\n")}
 
 ## Agent surfaces index

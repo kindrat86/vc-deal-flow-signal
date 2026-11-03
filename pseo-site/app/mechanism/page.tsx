@@ -5,6 +5,7 @@ import { HreflangLinks } from "@/components/HreflangLinks";
 import { getHreflangLanguages } from "@/lib/hreflang";
 import ThreeCoreStoriesNav from "@/components/ThreeCoreStoriesNav";
 import { withEditorialOverride } from "@/lib/metadata";
+import { SECTOR_COUNT } from "../../lib/sector-count";
 
 export const dynamic = "force-static";
 
@@ -118,7 +119,7 @@ const PROOF_ANCHORS = [
   {
     label: "SSRN longitudinal panel",
     detail:
-      "219 startup-period observations across 55 startups and 15 sectors. The 21-47 day interquartile range is a published research result, not a funding forecast.",
+      "219 startup-period observations across 55 startups and 18 sectors. The 21-47 day interquartile range is a published research result, not a funding forecast.",
     href: "/research",
   },
   {
@@ -465,7 +466,7 @@ not the secret. The buyer who can reproduce our regression in a
             €7 once. One sector. A documented diligence brief.
           </h2>
           <p className="text-sm text-slate-300 mb-5 leading-relaxed">
-            Choose from the current 15-sector taxonomy. The First Look pass gives
+            Choose from the current {SECTOR_COUNT}-sector taxonomy. The First Look pass gives
             you a sector-specific public-data brief within 24 hours, then you can
             decide whether the evidence merits deeper work. It is not a financing
             forecast. Upgrade credit applies for 14 days.

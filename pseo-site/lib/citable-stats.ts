@@ -24,6 +24,7 @@ import { posts } from "@/content/posts";
 import { standaloneFaqs } from "@/content/standalone-faqs";
 import { getAllSectors, getCurrentPeriod, getAllBestSectorSlugs } from "@/lib/data";
 import { PANEL_CLAIM } from "@/lib/canonical-claims";
+import { SECTOR_COUNT } from "./sector-count";
 
 export const BASE_URL = "https://signals.gitdealflow.com";
 export const SSRN_URL = "https://ssrn.com/abstract=6606558";
@@ -180,7 +181,7 @@ export function citableStat(template: CitableStatTemplate): CitableStat {
     case "startups":
       return {
         value: PANEL_CLAIM,
-        label: "startups across 15 sectors",
+        label: `GitHub organizations across ${SECTOR_COUNT} sectors`,
         context: "refreshed weekly, every company links to its live signal profile",
         source: BRAND,
         sourceHref: `${BASE_URL}/startups`,

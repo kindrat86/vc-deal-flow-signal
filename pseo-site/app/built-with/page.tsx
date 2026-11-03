@@ -99,7 +99,7 @@ const FREE_TOOLS = [
   },
   {
     name: "search_startups_by_sector",
-    desc: "All tracked startups in a sector, ranked by acceleration. 15 sector enum.",
+    desc: "All tracked startups in a sector, ranked by acceleration. Sector slug from the tool's enum.",
   },
   {
     name: "get_startup_signal",

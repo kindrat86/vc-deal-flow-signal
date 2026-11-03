@@ -12,6 +12,7 @@ import {
   EXTERNAL_CITATIONS,
   citationToBibTeX,
 } from "@/content/research-citations";
+import { SECTOR_COUNT } from "../../../lib/sector-count";
 
 export const dynamic = "force-static";
 
@@ -32,7 +33,7 @@ const DATASET_ENTRY = `@misc{datanerd2026dataset,
   year         = {2026},
   howpublished = {Dataset},
   url          = {https://signals.gitdealflow.com/api/dataset.jsonl},
-  note         = {Newline-delimited JSON. 350+ GitHub organizations across 15 sectors. Refreshed weekly. Licensed CC BY 4.0.},
+  note         = {Newline-delimited JSON. 350+ GitHub organizations across ${SECTOR_COUNT} sectors. Refreshed weekly. Licensed CC BY 4.0.},
   keywords     = {dataset, github, commit velocity, contributor growth},
 }`;
 

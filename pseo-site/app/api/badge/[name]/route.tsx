@@ -1,5 +1,6 @@
 import { NextRequest } from "next/server";
 import startupsData from "@/data/startups.json";
+import { SECTOR_COUNT } from "@/lib/sector-count";
 
 export const runtime = "nodejs";
 export const dynamic = "force-static";
@@ -98,12 +99,12 @@ const STAT_BADGES: Record<string, { label: string; value: string; color: string 
   "stats-m16": { label: "Deals meeting or exceeding synergy targets", value: "60%", color: "#34d399" },
   "stats-m17": { label: "Announcement to close, average", value: "4-6 months", color: "#60a5fa" },
   "stats-m18": { label: "Engineering signal lead time", value: "3-6 weeks", color: "#fbbf24" },
-  "stats-m19": { label: "Tracked sectors for deal signals", value: "15", color: "#818cf8" },
+  "stats-m19": { label: "Tracked sectors for deal signals", value: String(SECTOR_COUNT), color: "#818cf8" },
   "stats-m20": { label: "Top-decile signal precision", value: "~65%", color: "#34d399" },
   // /stats hub (signals.gitdealflow.com) cards stat-s1..s10. Keep in sync with
   // pseo-site/public/stats/index.html (the human companion of /stats.json).
   "stats-s1": { label: "Tracked GitHub organizations", value: "350+", color: "#60a5fa" },
-  "stats-s2": { label: "Tracked industry sectors", value: "15", color: "#818cf8" },
+  "stats-s2": { label: "Tracked industry sectors", value: String(SECTOR_COUNT), color: "#818cf8" },
   "stats-s3": { label: "Engineering signal lead time", value: "3-6 weeks", color: "#fbbf24" },
   "stats-s4": { label: "Top-decile signal precision", value: "~65%", color: "#34d399" },
   "stats-s5": { label: "Global M&A volume Q1 2026", value: "$861.1B", color: "#34d399" },

@@ -8,7 +8,7 @@ const SITE = "https://signals.gitdealflow.com";
 export const metadata: Metadata = withEditorialOverride({
   title: "Explore GitHub Startup Signals, Sectors, Stages, Trends & More | GitDealFlow",
   description:
-    "Browse every GitDealFlow signal view: sectors, funding stages, signal types, trends, comparisons, and research. Real GitHub engineering-activity signals across venture-backed startups.",
+    "Browse every GitDealFlow signal view: sectors, funding stages, signal types, trends, comparisons, and research. Real GitHub engineering-activity signals across startups and open-source GitHub organizations.",
   alternates: { canonical: "/explore" },
   openGraph: { title: "Explore GitHub Startup Signals", description: "Browse every GitDealFlow signal view.", url: `${SITE}/explore`, type: "website" },
 });

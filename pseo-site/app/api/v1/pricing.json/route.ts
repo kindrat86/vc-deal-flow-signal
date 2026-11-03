@@ -212,11 +212,11 @@ const tiers: PricingTier[] = [
     applicationGated: false,
     capacity: null,
     oneLine:
-      "A custom written report on one sector, engineering momentum across every venture-backed startup in that sector, ranked, with diligence prompts and three early-stage targets.",
+      "A custom written report on one sector, engineering momentum across every tracked startup in that sector, ranked, with diligence prompts and three early-stage targets.",
     forWho:
       "Funds investing seven-figure cheques into a defined sector who want a one-off, deeper-than-Dashboard analysis without a yearly contract.",
     bullets: [
-      "Full sector audit, every venture-backed startup in the sector you pick",
+      "Full sector audit, every tracked startup in the sector you pick",
       "Engineering acceleration ranked over the past four quarters",
       "Diligence prompts for each top-ten startup",
       "Three early-stage targets not yet on Crunchbase or PitchBook",

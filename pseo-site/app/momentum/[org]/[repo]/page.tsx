@@ -8,6 +8,7 @@ import {
 import { tierFromVelocityChange, type MomentumTier } from "@/lib/badge-svg";
 import { slugify } from "@/lib/slugify";
 import { withEditorialOverride } from "@/lib/metadata";
+import { SECTOR_COUNT } from "../../../../lib/sector-count";
 
 interface Params {
   org: string;
@@ -187,7 +188,7 @@ export default async function MomentumPage({
     : [
         {
           q: `Why is ${path} untracked?`,
-          a: `GitDealFlow tracks a panel of venture-backed startup orgs. ${path} does not map to a monitored org in the current period, so no momentum tier is computed.`,
+          a: `GitDealFlow tracks a panel of startup and open-source GitHub orgs. ${path} does not map to a monitored org in the current period, so no momentum tier is computed.`,
         },
         {
           q: `How do I see momentum for a tracked repo?`,
@@ -414,8 +415,8 @@ export default async function MomentumPage({
               tracked org and read its signal instead.
             </p>
             <p className="text-gray-400 text-sm leading-relaxed mt-3">
-              How the panel is built: each quarter GitDealFlow selects venture-backed startup orgs
-              across 15 sectors, pulls 14-day commit volume from the public GitHub REST API with the
+              How the panel is built: each quarter GitDealFlow selects startup GitHub orgs
+              across {SECTOR_COUNT} sectors, pulls 14-day commit volume from the public GitHub REST API with the
               bot filter applied, and publishes the acceleration deltas. If {path} later enters the
               tracked universe, this same URL will show its live momentum card automatically, no
               action needed.

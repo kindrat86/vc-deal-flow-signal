@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { AgentMirrorLinks } from "@/components/AgentMirrorLinks";
 import { withEditorialOverride } from "@/lib/metadata";
+import { SECTOR_COUNT } from "../../../lib/sector-count";
 
 const SITE = "https://signals.gitdealflow.com";
 const ACTIONS_URL = `${SITE}/api/actions/openapi.json`;
@@ -13,7 +14,7 @@ const GPT_URL_IS_LIVE = true;
 const TITLE =
   "Use VC Deal Flow Signal in ChatGPT, GitHub VC Signal GPT";
 const DESCRIPTION =
-  "Add the GitHub VC Signal GPT to ChatGPT in one click. Public OpenAPI Action calling signals.gitdealflow.com, find startups whose engineering is accelerating before they raise. Five tools across 15 sectors, weekly refresh, no auth, no setup.";
+  `Add the GitHub VC Signal GPT to ChatGPT in one click. Public OpenAPI Action calling signals.gitdealflow.com, find startups whose engineering is accelerating before they raise. Five tools across ${SECTOR_COUNT} sectors, weekly refresh, no auth, no setup.`;
 
 export const metadata: Metadata = withEditorialOverride({
   title: TITLE,
@@ -38,7 +39,7 @@ const TOOLS: { name: string; summary: string }[] = [
   {
     name: "getAllSignals",
     summary:
-      "Top 20 trending startups across all 15 sectors plus every sector's full ranked roster. The GPT slices the response for trending or sector queries.",
+      `Top 20 trending startups across all ${SECTOR_COUNT} sectors plus every sector's full ranked roster. The GPT slices the response for trending or sector queries.`,
   },
   {
     name: "getStartupSignal",
@@ -95,7 +96,7 @@ const FAQS: { q: string; a: string }[] = [
   },
   {
     q: "What does it actually rank?",
-    a: "Engineering momentum, derived from public GitHub activity. Three input metrics: commit velocity over a rolling 14-day window, contributor growth over a rolling 30-day window, and new repos over a rolling 30-day window. Output classification: breakout (sudden surge), acceleration (sustained growth), steady (healthy baseline), or cooling (declining). Approximately 400 venture-backed startups across 15 sectors are tracked.",
+    a: `Engineering momentum, derived from public GitHub activity. Three input metrics: commit velocity over a rolling 14-day window, contributor growth over a rolling 30-day window, and new repos over a rolling 30-day window. Output classification: breakout (sudden surge), acceleration (sustained growth), steady (healthy baseline), or cooling (declining). 350+ GitHub organizations across ${SECTOR_COUNT} sectors are tracked.`,
   },
   {
     q: "Why GitHub specifically?",
@@ -183,7 +184,7 @@ const jsonLd = {
       applicationCategory: "BusinessApplication",
       operatingSystem: "Web (ChatGPT)",
       description:
-        "ChatGPT GPT exposing the VC Deal Flow Signal dataset as a public OpenAPI Action. Find startups whose engineering is accelerating before they raise, six tools, 15 sectors, weekly refresh, no auth.",
+        `ChatGPT GPT exposing the VC Deal Flow Signal dataset as a public OpenAPI Action. Find startups whose engineering is accelerating before they raise, six tools, ${SECTOR_COUNT} sectors, weekly refresh, no auth.`,
       offers: { "@type": "Offer", price: "0", priceCurrency: "USD" },
       author: {
         "@type": "Organization",
@@ -232,7 +233,7 @@ export default function ChatGPTIntegrationPage() {
           answer with commit-velocity changes, contributor deltas, signal
           classification, and a citation block, all powered by a public
           OpenAPI Action against signals.gitdealflow.com. No install. No auth.
-          Five tools across 15 sectors, refreshed every Monday.
+          Five tools across {SECTOR_COUNT} sectors, refreshed every Monday.
         </p>
 
         <div className="rounded-xl border border-emerald-900/50 bg-emerald-950/30 p-4 mb-10 text-sm">

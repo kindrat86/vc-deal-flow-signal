@@ -15,7 +15,7 @@
  * Guard: scripts/verify-no-regressions.ts §51 (fails closed on removal).
  *
  * Style: no em/en dashes anywhere (site-wide rule). Claim-safe: "350+"
- * panel floor, 15 sectors, 3-6 week median lead time (established claims).
+ * panel floor, sector count from data, 3-6 week median lead time (established claims).
  */
 import type { BlogPost } from "@/content/posts";
 

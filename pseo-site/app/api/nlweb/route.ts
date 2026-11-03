@@ -8,6 +8,7 @@ import {
   type Sector,
 } from "@/lib/data";
 import { slugify } from "@/lib/slugify";
+import { SECTOR_COUNT } from "../../../lib/sector-count";
 
 const BASE_URL = "https://signals.gitdealflow.com";
 const NLWEB_VERSION = "0.1.0";
@@ -323,7 +324,7 @@ function summaryResponse() {
     "@type": "Dataset" as const,
     name: "VC Deal Flow Signal",
     description:
-      "Public dataset of startup engineering acceleration derived from public GitHub activity. Commit velocity, contributor growth, and signal classification across 15 sectors. Updated weekly.",
+      `Public dataset of startup engineering acceleration derived from public GitHub activity. Commit velocity, contributor growth, and signal classification across ${SECTOR_COUNT} sectors. Updated weekly.`,
     url: BASE_URL,
     keywords: [
       "venture-capital",

@@ -136,7 +136,7 @@ export default function SummitPage() {
           </h1>
           <p className="text-gray-300 text-lg leading-relaxed" data-speakable>
             Five days, twenty talks, the entire methodology behind the SSRN
-            panel of 219 venture-backed startups, taught chapter by chapter
+            panel of 219 startup-period observations (55 venture-backed startups), taught chapter by chapter
             by the data nerds who wrote it. Each talk free for 24 hours after
             it airs. Anonymous-by-design: no founder face, no founder voice,
             no real names. Synthetic narration, Remotion-rendered slides, the
