@@ -14,6 +14,7 @@ Verified live in Stripe Checkout on 2026-07-13.
 | Insider annual | Insider Circle | EUR 1,970.00/yr | https://buy.stripe.com/cNieVc34DbNCcEK2fC0x20e | ACTIVE |
 | Sector Sweep | Custom Sector Sweep | EUR 1,997.00 one-time | https://buy.stripe.com/bJe14m34DbNC6gm1by0x204 | ACTIVE |
 | Agent Credits | 100 deep-signal calls | EUR 19.00 one-time | https://buy.stripe.com/00w4gyfRpg3SbAGcUg0x205 | ACTIVE |
+| Thesis Watchlist | GitDealFlow Thesis Watchlist (prod_VYlKC7BDHlN7qc) | EUR 29.00/mo (price_1UXdnyCwGoUDklReWbZLqfd5) | https://buy.stripe.com/eVq5kC8oX4labAG9I40x20V | ACTIVE link, offer HIDDEN (THESIS_WATCHLIST_ENABLED=false, pseo-site/lib/thesis-watchlist.ts). Created 2026-11-03 after Maryan «так» 11:12 |
 | Book (Kindle) | 7 GitHub Signals book | EUR 0.99 one-time | https://buy.stripe.com/cNi5kCax52d29sy1by0x208 | ACTIVE |
 | Readers Pack bump | Book + CSV + notebook bundle | EUR 5.96 one-time | https://buy.stripe.com/eVqdR8bB9aJygV0cUg0x20a | ACTIVE |
 
