@@ -25,6 +25,7 @@ import { listUnsubscribeHeaders, injectUnsubscribeLink } from "@/lib/list-unsubs
 import { pickAudienceId } from "@/lib/resend-audience";
 import { gateAllows } from "@/lib/send-gate";
 import { honestSignalsCopy } from "@/lib/stale-copy";
+import { digestFreshness } from "@/lib/digest-builder";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -83,6 +84,15 @@ export async function GET(request: Request) {
   const url = new URL(request.url);
   const dry = url.searchParams.get("dry") === "1";
   const testTo = url.searchParams.get("to");
+  // Freshness gate (Maryan 2026-11-03): welcome email 1 points readers at
+  // "this week's" signals, so no welcome email goes out while the signal data
+  // is older than FRESH_DAYS (8). dry=1 still plans. Held days are not
+  // re-sent automatically; the log line lists who was held.
+  const fr = digestFreshness();
+  if (!fr.fresh && !dry) {
+    console.error(`[welcome-reenroll] stale data (fetchedAt=${fr.fetchedAt}), not sending`);
+    return NextResponse.json({ ok: false, reason: "stale_data", fetchedAt: fr.fetchedAt, ageDays: Math.round(fr.ageDays), freshCount: fr.freshCount }, { status: 409 });
+  }
   if (testTo) {
     const idx = Math.max(0, Math.min(WELCOME_2026_11_EMAILS.length - 1, Number(url.searchParams.get("idx") || 0)));
     return NextResponse.json({ mode: "test", idx, ...(await send(testTo, idx)) });

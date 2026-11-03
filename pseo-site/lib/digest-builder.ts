@@ -195,7 +195,8 @@ export function nextSundayTiming(now: Date = new Date()): {
   };
 }
 
-export const FRESH_DAYS = 9;
+// Maryan 2026-11-03: no GitDealFlow email may carry data older than ~8 days.
+export const FRESH_DAYS = 8;
 
 function freshStartups<T extends { lastSeen?: string }>(list: T[], now = Date.now()): T[] {
   return list.filter((s) => s.lastSeen && now - Date.parse(`${s.lastSeen}T00:00:00Z`) <= FRESH_DAYS * 86_400_000);
@@ -216,6 +217,31 @@ export function isDigestDataFresh(now = Date.now()): boolean {
   const f = (startupsData as { _meta?: { fetchedAt?: string } })._meta?.fetchedAt;
   const age = f ? (now - Date.parse(f)) / 86_400_000 : Infinity;
   return age <= FRESH_DAYS && countFreshCurrentStartups() >= 5;
+}
+
+/** Freshness facts for send gates (never throws). */
+export function digestFreshness(now = Date.now()): { fresh: boolean; fetchedAt: string | null; ageDays: number; freshCount: number } {
+  const f = (startupsData as { _meta?: { fetchedAt?: string } })._meta?.fetchedAt ?? null;
+  const ageDays = f ? (now - Date.parse(f)) / 86_400_000 : Infinity;
+  const freshCount = countFreshCurrentStartups();
+  return { fresh: ageDays <= FRESH_DAYS && freshCount >= 5, fetchedAt: f, ageDays, freshCount };
+}
+
+/**
+ * True when every "Week of <Mon> <D>" label in `text` is within FRESH_DAYS of
+ * the data measurement date (and there is at least one label). A digest
+ * labelled "Week of Nov 3" that carries August numbers fails this.
+ */
+export function weekLabelMatchesData(text: string, data: Date = dataDate()): boolean {
+  const labels = [...text.matchAll(/Week of ([A-Z][a-z]{2}) (\d{1,2})/g)];
+  if (!labels.length) return false;
+  return labels.every((m) => {
+    const y = data.getUTCFullYear();
+    const best = [y - 1, y, y + 1]
+      .map((yy) => Math.abs(Date.parse(`${m[1]} ${m[2]}, ${yy} 00:00:00 UTC`) - data.getTime()))
+      .filter((x) => !isNaN(x));
+    return best.length > 0 && Math.min(...best) / 86_400_000 <= FRESH_DAYS;
+  });
 }
 
 export function buildLatestDigest(lane?: string, opts?: { firstIssue?: boolean }): LatestDigest {

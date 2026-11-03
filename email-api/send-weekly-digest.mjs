@@ -93,6 +93,34 @@ const html = readFileSync(FILE, "utf-8");
 const titleMatch = html.match(/<title>([^<]+)<\/title>/);
 const subject = titleMatch ? titleMatch[1].trim() : `Signal Digest — Week of ${DATE}`;
 
+// --- freshness gate (Maryan 2026-11-03) ---
+// Never send a digest built from signal data older than 8 days, or whose
+// "Week of <Mon> <D>" label does not match the data date (a "Week of Nov 3"
+// test once went out with August numbers). Applies to --send, test copies
+// included. Dry-runs only report.
+const MAX_DATA_AGE_DAYS = 8;
+{
+  let fetchedAt = null;
+  try {
+    fetchedAt = JSON.parse(readFileSync(join(REPO_ROOT, "pseo-site", "data", "startups.json"), "utf-8"))?._meta?.fetchedAt ?? null;
+  } catch {}
+  const dataMs = fetchedAt ? Date.parse(fetchedAt) : NaN;
+  const ageDays = isNaN(dataMs) ? Infinity : (Date.now() - dataMs) / 86_400_000;
+  const labels = [...html.matchAll(/Week of ([A-Z][a-z]{2}) (\d{1,2})/g)];
+  const labelOk = !isNaN(dataMs) && labels.every((m) => {
+    const y = new Date(dataMs).getUTCFullYear();
+    const d = Math.min(...[y - 1, y, y + 1].map((yy) => Math.abs(Date.parse(`${m[1]} ${m[2]}, ${yy} 00:00:00 UTC`) - dataMs)));
+    return d / 86_400_000 <= MAX_DATA_AGE_DAYS;
+  });
+  const fresh = ageDays <= MAX_DATA_AGE_DAYS && labelOk;
+  const why = `data fetchedAt=${fetchedAt} ageDays=${isFinite(ageDays) ? ageDays.toFixed(1) : "?"} labels=${labels.map((m) => m[0]).join("|") || "none"} labelOk=${labelOk}`;
+  if (!fresh && flag("send")) {
+    console.error(`REFUSED: stale digest (${why}). Run the weekly data refresh and regenerate first.`);
+    process.exit(2);
+  }
+  if (!fresh) console.warn(`WARNING: stale digest (${why}); --send would be refused.`);
+}
+
 const EMAIL_KEY = `digest-${DATE}`;
 const FROM = `${FROM_NAME} <${FROM_EMAIL}>`;
 const UNSUB_MAILTO = `<mailto:${FROM_EMAIL}?subject=Unsubscribe>`;

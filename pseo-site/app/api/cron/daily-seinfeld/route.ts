@@ -31,6 +31,7 @@ import { buildDailySeinfeld, FROM_EMAIL } from "@/lib/daily-seinfeld";
 import { pickAudienceId } from "@/lib/resend-audience";
 import { listUnsubscribeHeaders, injectUnsubscribeLink } from "@/lib/list-unsubscribe";
 import { gateAllows } from "@/lib/send-gate";
+import { digestFreshness } from "@/lib/digest-builder";
 
 export const dynamic = "force-dynamic";
 export const maxDuration = 60;
@@ -91,6 +92,14 @@ export async function GET(req: Request): Promise<Response> {
   if (!RESEND_API_KEY) {
     console.error("[daily-seinfeld] RESEND_API_KEY not configured");
     return new Response("Resend not configured", { status: 500 });
+  }
+
+  // Retired 2026-11-03 (no vercel.json cron), but still callable: never send
+  // "this week's mover" from data older than FRESH_DAYS (8).
+  const fr = digestFreshness();
+  if (!fr.fresh) {
+    console.error(`[daily-seinfeld] stale data (fetchedAt=${fr.fetchedAt}), not sending`);
+    return NextResponse.json({ ok: false, reason: "stale_data", fetchedAt: fr.fetchedAt, ageDays: Math.round(fr.ageDays) }, { status: 409 });
   }
 
   // ?to=email, single test recipient via /emails endpoint (not /broadcasts).

@@ -17,7 +17,7 @@
  */
 import { NextResponse } from "next/server";
 import startupsData from "@/data/startups.json";
-import { buildLatestDigest, countFreshCurrentStartups } from "@/lib/digest-builder";
+import { buildLatestDigest, countFreshCurrentStartups, FRESH_DAYS, weekLabelMatchesData } from "@/lib/digest-builder";
 import { isExcluded } from "@/lib/excluded-emails";
 import { listUnsubscribeHeaders, injectUnsubscribeLink } from "@/lib/list-unsubscribe";
 import { pickAudienceId } from "@/lib/resend-audience";
@@ -31,7 +31,7 @@ const RESEND_API_KEY = process.env.RESEND_API_KEY;
 const CRON_SECRET = process.env.CRON_SECRET;
 const FROM_EMAIL = process.env.FROM_EMAIL || "signals@gitdealflow.com";
 const FROM_NAME = process.env.FROM_NAME || "The Data Nerd";
-const MAX_DATA_AGE_DAYS = 9;
+const MAX_DATA_AGE_DAYS = FRESH_DAYS; // 8 days (Maryan 2026-11-03)
 
 async function resend(path: string, init?: RequestInit) {
   return fetch(`https://api.resend.com${path}`, {
@@ -52,8 +52,11 @@ export async function GET(request: Request) {
   const fetchedAt = (startupsData as { _meta?: { fetchedAt?: string } })._meta?.fetchedAt;
   const ageDays = fetchedAt ? (Date.now() - Date.parse(fetchedAt)) / 86_400_000 : Infinity;
   const freshCount = countFreshCurrentStartups();
-  const fresh = ageDays <= MAX_DATA_AGE_DAYS && freshCount >= 5;
   const digest = buildLatestDigest();
+  // Gate: data measured within MAX_DATA_AGE_DAYS, >= 5 fresh startups, and
+  // the "Week of" label in subject+body matches the data date.
+  const labelOk = weekLabelMatchesData(digest.subject + " " + digest.html);
+  const fresh = ageDays <= MAX_DATA_AGE_DAYS && freshCount >= 5 && labelOk;
   const issue = new Date().toISOString().slice(0, 10);
 
   const sendOne = async (to: string) => {
@@ -74,12 +77,14 @@ export async function GET(request: Request) {
     return { ok: res.ok, id: (body as { id?: string }).id, error: res.ok ? undefined : body };
   };
 
-  if (testTo) return NextResponse.json({ mode: "test", fetchedAt, fresh, subject: digest.subject, freshCount, ...(await sendOne(testTo)) });
-
-  if (!fresh) {
-    console.error(`[weekly-digest] data too old (fetchedAt=${fetchedAt}), not sending`);
-    return NextResponse.json({ ok: false, reason: "stale_data", fetchedAt, ageDays: Math.round(ageDays), freshCount }, { status: 409 });
+  // Every mode, test copies included, refuses stale data (Maryan 2026-11-03:
+  // a "Week of Nov 3" test went out with August numbers). dry=1 still reports.
+  if (!fresh && !dry) {
+    console.error(`[weekly-digest] stale data (fetchedAt=${fetchedAt}, labelOk=${labelOk}), not sending`);
+    return NextResponse.json({ ok: false, reason: "stale_data", fetchedAt, ageDays: Math.round(ageDays), freshCount, labelOk }, { status: 409 });
   }
+
+  if (testTo) return NextResponse.json({ mode: "test", fetchedAt, fresh, subject: digest.subject, freshCount, ...(await sendOne(testTo)) });
 
   const audRes = await resend("/audiences");
   const audienceId = audRes.ok ? pickAudienceId(await audRes.json()) : undefined;
@@ -88,7 +93,7 @@ export async function GET(request: Request) {
   const contacts = cRes.ok ? (((await cRes.json()) as { data?: { email?: string; unsubscribed?: boolean }[] }).data ?? []) : [];
   const recipients = contacts.filter((c) => c.email && !c.unsubscribed && !isExcluded(c.email)).map((c) => c.email!.toLowerCase());
 
-  if (dry) return NextResponse.json({ dry, fetchedAt, freshCount, subject: digest.subject, recipients: recipients.length });
+  if (dry) return NextResponse.json({ dry, fresh, labelOk, fetchedAt, freshCount, subject: digest.subject, recipients: recipients.length });
 
   let sent = 0, gated = 0, failed = 0;
   for (const to of recipients) {
