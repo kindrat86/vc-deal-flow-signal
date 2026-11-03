@@ -13,6 +13,7 @@ import { listUnsubscribeHeaders, injectUnsubscribeLink } from "@/lib/list-unsubs
 import { pickAudienceId } from "@/lib/resend-audience";
 import { buildLatestDigest, isDigestDataFresh, digestFreshness, FRESH_DAYS } from "@/lib/digest-builder";
 import { honestSignalsCopy } from "@/lib/stale-copy";
+import { SOAP_2026_11_PAUSED } from "@/lib/soap-pause";
 import { isInvestorLane } from "@/lib/investor-lanes";
 import { getResendConsentStatus } from "@/lib/resend-consent";
 
@@ -301,7 +302,7 @@ export async function GET(request: Request) {
   const w2611Deferred = new Set<number>();
   for (const [i, e] of sequence.entries()) {
     const ageAtSend = fr.ageDays + e.delayMs / 86_400_000;
-    if (isW2611 && (!fr.fresh || ageAtSend > FRESH_DAYS)) {
+    if (isW2611 && (SOAP_2026_11_PAUSED || !fr.fresh || ageAtSend > FRESH_DAYS)) {
       w2611Deferred.add(i);
       deferred.push(e);
     } else if (e.delayMs <= MAX_SCHEDULE_MS) immediate.push(e);

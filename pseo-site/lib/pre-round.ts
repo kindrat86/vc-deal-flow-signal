@@ -21,7 +21,12 @@ export const PRE_ROUND_FALLBACK_MAILTO =
     "Hi, I'd like the €49 Pre-Round Report.\nSector (or 'all sectors'): \n\nPlease send me the payment link.",
   );
 
-export const PRE_ROUND_CHECKOUT =
-  process.env.NEXT_PUBLIC_STRIPE_PREROUND_LINK || PRE_ROUND_FALLBACK_MAILTO;
+import { PRE_ROUND_PAUSED } from "./soap-pause";
+export { PRE_ROUND_PAUSED };
+
+// Paused (lib/soap-pause.ts): no checkout link is rendered anywhere.
+export const PRE_ROUND_CHECKOUT = PRE_ROUND_PAUSED
+  ? "/pre-round#paused"
+  : process.env.NEXT_PUBLIC_STRIPE_PREROUND_LINK || PRE_ROUND_FALLBACK_MAILTO;
 
 export const PRE_ROUND_PATH = "/pre-round";

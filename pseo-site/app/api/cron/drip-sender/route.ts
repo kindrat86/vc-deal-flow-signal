@@ -30,6 +30,7 @@
 import { NextResponse } from "next/server";
 import { WELCOME_2026_11_EMAILS } from "@/lib/emails";
 import { digestFreshness } from "@/lib/digest-builder";
+import { SOAP_2026_11_PAUSED } from "@/lib/soap-pause";
 import { pickAudienceId } from "@/lib/resend-audience";
 import { listUnsubscribeHeaders, injectUnsubscribeLink } from "@/lib/list-unsubscribe";
 import { gateAllows } from "@/lib/send-gate";
@@ -163,7 +164,7 @@ export async function GET(request: Request) {
   let skipped = 0;
   let errors = 0;
   let heldStale = 0;
-  const dataFresh = digestFreshness().fresh;
+  const dataFresh = digestFreshness().fresh && !SOAP_2026_11_PAUSED; // manual pause holds soap-2026-11 too
   const sentLog: { email: string; day: number; subject: string }[] = [];
 
   for (const contact of contacts) {

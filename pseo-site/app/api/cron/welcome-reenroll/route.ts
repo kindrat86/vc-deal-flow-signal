@@ -26,6 +26,7 @@ import { pickAudienceId } from "@/lib/resend-audience";
 import { gateAllows } from "@/lib/send-gate";
 import { honestSignalsCopy } from "@/lib/stale-copy";
 import { digestFreshness } from "@/lib/digest-builder";
+import { SOAP_2026_11_PAUSED } from "@/lib/soap-pause";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -89,6 +90,10 @@ export async function GET(request: Request) {
   // is older than FRESH_DAYS (8). dry=1 still plans. Held days are not
   // re-sent automatically; the log line lists who was held.
   const fr = digestFreshness();
+  if (SOAP_2026_11_PAUSED && !dry) {
+    console.warn("[welcome-reenroll] soap-2026-11 paused (lib/soap-pause.ts), not sending");
+    return NextResponse.json({ ok: false, reason: "paused" }, { status: 409 });
+  }
   if (!fr.fresh && !dry) {
     console.error(`[welcome-reenroll] stale data (fetchedAt=${fr.fetchedAt}), not sending`);
     return NextResponse.json({ ok: false, reason: "stale_data", fetchedAt: fr.fetchedAt, ageDays: Math.round(fr.ageDays), freshCount: fr.freshCount }, { status: 409 });

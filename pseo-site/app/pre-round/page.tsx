@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { withEditorialOverride } from "@/lib/metadata";
-import { PRE_ROUND_CHECKOUT, PRE_ROUND_PRICE_EUR } from "@/lib/pre-round";
+import { PRE_ROUND_CHECKOUT, PRE_ROUND_PAUSED, PRE_ROUND_PRICE_EUR } from "@/lib/pre-round";
 
 export const dynamic = "force-static";
 
@@ -56,12 +56,18 @@ export default function PreRoundPage() {
           payment, no subscription.
         </p>
         <div className="flex flex-col sm:flex-row gap-3 pt-2">
+          {PRE_ROUND_PAUSED ? (
+            <p id="paused" className="rounded-lg border border-amber-600/50 bg-amber-950/30 text-amber-200 px-5 py-3 text-sm">
+              Orders are paused while we refresh this month&apos;s data. Check back in a few days.
+            </p>
+          ) : (
           <a
             href={PRE_ROUND_CHECKOUT}
             className="inline-flex items-center justify-center rounded-lg bg-sky-500 hover:bg-sky-400 text-slate-950 font-semibold px-5 py-3 text-sm"
           >
             Get the Pre-Round Report, €{PRE_ROUND_PRICE_EUR} →
           </a>
+          )}
           <Link
             href="/pricing"
             className="inline-flex items-center justify-center rounded-lg border border-slate-700 text-gray-200 hover:border-sky-600 px-5 py-3 text-sm"
