@@ -2220,7 +2220,7 @@ export const WELCOME_2026_11_EMAILS = [
 <p>Result: two batches, twenty named startups, zero announced rounds inside 60 days.</p>
 <p>I put that on the public ledger, next to each pick, with the link I checked. You can see it at the link below.</p>
 <p>Here is what it taught me. The signal is not "this company will raise in 60 days". Rounds close when they close, and many are never announced. What the signal does well is narrower and more useful: it tells you which technical teams are building fast right now, before that is common knowledge. That is the moment a founder still answers a cold email from an angel.</p>
-<p>So I stopped selling it as a crystal ball and started treating it as a sourcing list. Who is worth a first conversation this month, with the evidence next to each name.</p>
+<p>So I stopped selling it as a crystal ball and started treating it as a sourcing list. Who is worth a first conversation from this week's data, with the evidence next to each name.</p>
 <p>That is exactly what the Pre-Round Report is. More on that in two days.</p>
 <p style="margin:24px 0;"><a href="https://signals.gitdealflow.com/predicted?utm_source=sequence&amp;utm_medium=email&amp;utm_campaign=soap-2026-11&amp;utm_content=e3" style="display:inline-block;background:#0284c7;color:#ffffff;font-weight:700;font-size:16px;padding:14px 22px;border-radius:10px;text-decoration:none;">See the public ledger, misses included &rarr;</a></p>
 <p>The Data Nerd</p>
@@ -2260,8 +2260,8 @@ export const WELCOME_2026_11_EMAILS = [
 <p>Hi,</p>
 <p>Last email in this series. Here is the whole thing in one place, so you can pick what fits.</p>
 <p>Five a week, free. You already have this. If one first conversation a month is your pace, stay here. That is a fine choice.</p>
-<p>25 a month, EUR 49 once. The Pre-Round Report. The strongest pre-round patterns this month with the evidence and links for each name. Good if you want a proper shortlist without a subscription.</p>
-<p>All of them, every week, EUR 49 a month. The Dashboard. The full ranked field across 15 sectors, refreshed weekly, with sector filters, five-quarter history and watchlists. Same price as one Report, but every week instead of once. If you buy the Report first and upgrade within 14 days, the EUR 49 is credited in full, so the first Dashboard month costs nothing extra. There is a yearly option at EUR 490, two months free.</p>
+<p>25 a month, EUR 49 once. The Pre-Round Report. The strongest pre-round patterns from this week's data with the evidence and links for each name. Good if you want a proper shortlist without a subscription.</p>
+<p>All of them, every week, EUR 49 a month. The Dashboard. The full ranked field across 20 sectors, refreshed weekly, with sector filters, five-quarter history and watchlists. Same price as one Report, but every week instead of once. If you buy the Report first and upgrade within 14 days, the EUR 49 is credited in full, so the first Dashboard month costs nothing extra. There is a yearly option at EUR 490, two months free.</p>
 <p>Both paid options carry the same 30-day Signal-or-It's-Free guarantee.</p>
 <p>No countdown and no discount code. The prices stay as they are. Reply with your sector if you want me to check it is well covered before you buy.</p>
 <p style="margin:24px 0;"><a href="https://signals.gitdealflow.com/pricing?utm_source=sequence&amp;utm_medium=email&amp;utm_campaign=soap-2026-11&amp;utm_content=e5" style="display:inline-block;background:#0284c7;color:#ffffff;font-weight:700;font-size:16px;padding:14px 22px;border-radius:10px;text-decoration:none;">Compare the four steps &rarr;</a></p>

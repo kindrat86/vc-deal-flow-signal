@@ -20,7 +20,7 @@ import { NextResponse } from "next/server";
 import { createHash } from "crypto";
 import { WELCOME_2026_11_EMAILS } from "@/lib/emails";
 import { digestFreshness } from "@/lib/digest-builder";
-import { SOAP_2026_11_PAUSED, SOAP_RESUME_MODE } from "@/lib/soap-pause";
+import { SOAP_2026_11_PAUSED, SOAP_RESUME_MODE, SOAP_REPLACE_MODE, SOAP_REPLACE_STEPS, SOAP_REPLACE_CREATED_BEFORE } from "@/lib/soap-pause";
 import { isExcluded } from "@/lib/excluded-emails";
 import { listUnsubscribeHeaders, injectUnsubscribeLink } from "@/lib/list-unsubscribe";
 import { pickAudienceId } from "@/lib/resend-audience";
@@ -34,7 +34,7 @@ const CRON_SECRET = process.env.CRON_SECRET;
 const DAY = 86_400_000;
 const SUBJECTS = new Set(WELCOME_2026_11_EMAILS.map((e) => e.subject));
 
-interface ListedEmail { id: string; subject?: string; last_event?: string; scheduled_at?: string | null; to?: string[] }
+interface ListedEmail { id: string; subject?: string; last_event?: string; scheduled_at?: string | null; to?: string[]; created_at?: string }
 
 async function resend(path: string, init?: RequestInit) {
   return fetch(`https://api.resend.com${path}`, {
@@ -156,6 +156,42 @@ export async function GET(request: Request) {
         }
         results.push(row);
       }
+    }
+  }
+  // Text correction in place (SOAP_REPLACE_MODE): same send time, corrected body.
+  if (!held && SOAP_REPLACE_MODE !== "off") {
+    const replaceDry = dry || SOAP_REPLACE_MODE === "dry";
+    const cutoff = Date.parse(SOAP_REPLACE_CREATED_BEFORE);
+    const aud = await resend("/audiences");
+    const audienceId = aud.ok ? pickAudienceId(await aud.json()) : undefined;
+    for (const e of scheduled) {
+      const idx = WELCOME_2026_11_EMAILS.findIndex((w) => w.subject === e.subject);
+      if (!SOAP_REPLACE_STEPS.includes(idx)) continue;
+      const due = e.scheduled_at ? Date.parse(e.scheduled_at) : NaN;
+      const to = (e.to ?? [])[0]?.toLowerCase() ?? "";
+      const row: Record<string, unknown> = { id: e.id, step: idx + 1, to: mask([to]), scheduled_at: e.scheduled_at, created_at: e.created_at, mode: "replace" };
+      if (!e.created_at || Date.parse(e.created_at) >= cutoff) { row.action = "already_corrected"; results.push(row); continue; }
+      if (!(due > now + 10 * 60_000) || due > now + 20 * DAY) { row.action = "skip_due_window"; results.push(row); continue; }
+      let ok = !!to && !isExcluded(to) && !!audienceId;
+      if (ok) {
+        const c = await resend(`/audiences/${audienceId}/contacts/${encodeURIComponent(to)}`);
+        ok = c.ok && !((await c.json()) as { unsubscribed?: boolean }).unsubscribed;
+      }
+      if (replaceDry) { row.action = ok ? "would_replace_corrected" : "would_cancel_unsubscribed"; results.push(row); continue; }
+      const cx = await resend(`/emails/${e.id}/cancel`, { method: "POST" });
+      if (!cx.ok) { row.action = `cancel_failed_${cx.status}`; results.push(row); continue; }
+      if (!ok) { row.action = "cancelled_unsubscribed"; results.push(row); continue; }
+      const w = WELCOME_2026_11_EMAILS[idx];
+      const r = await resend("/emails", { method: "POST", body: JSON.stringify({
+        from: `${process.env.FROM_NAME || "The Data Nerd"} <${process.env.FROM_EMAIL || "signals@gitdealflow.com"}>`,
+        reply_to: process.env.FROM_EMAIL || "signals@gitdealflow.com",
+        bcc: "sales@sipiteno.com", to, subject: w.subject,
+        html: injectUnsubscribeLink(w.html, to), headers: listUnsubscribeHeaders(to),
+        tags: [{ name: "email_key", value: `welcome-2026-11-e${idx + 1}-corrected` }], scheduled_at: new Date(due).toISOString() }) });
+      const nb = (await r.json().catch(() => ({}))) as { id?: string };
+      row.action = r.ok ? "replaced_corrected" : `create_failed_${r.status}`;
+      row.new_id = nb.id;
+      results.push(row);
     }
   }
   console.info(`[soap-pause-sweep] held=${held} paused=${SOAP_2026_11_PAUSED} mode=${SOAP_RESUME_MODE} fresh=${fr.fresh} scheduled=${scheduled.length} ${JSON.stringify(results)}`);

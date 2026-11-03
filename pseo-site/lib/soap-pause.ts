@@ -24,3 +24,16 @@ export const SOAP_RESUME_MODE: "off" | "dry" | "apply" = "off"; // applied 2026-
  * every later step keeps its spacing: no lost steps, max one per day.
  */
 export const REENROLL_SHIFT_DAYS: Record<string, number> = {};
+
+/**
+ * In-place text correction for already-scheduled copies (Maryan так
+ * 2026-11-03 12:59 Athens: E3 + E5 "15 sectors" -> "20 sectors", "this month"
+ * -> "from this week's data"). Resend cannot edit html, so the sweep cancels
+ * each scheduled copy of these steps that was created before the cutoff and
+ * re-creates it from lib/emails at the SAME scheduled_at. Copies created after
+ * the cutoff (already corrected) are never touched, so re-runs are no-ops.
+ * "off" | "dry" (log the plan) | "apply".
+ */
+export const SOAP_REPLACE_MODE: "off" | "dry" | "apply" = "dry";
+export const SOAP_REPLACE_STEPS: number[] = [2, 4]; // 0-based: E3, E5
+export const SOAP_REPLACE_CREATED_BEFORE = "2026-11-03T11:10:00Z";
