@@ -34,6 +34,6 @@ export const REENROLL_SHIFT_DAYS: Record<string, number> = {};
  * the cutoff (already corrected) are never touched, so re-runs are no-ops.
  * "off" | "dry" (log the plan) | "apply".
  */
-export const SOAP_REPLACE_MODE: "off" | "dry" | "apply" = "dry";
+export const SOAP_REPLACE_MODE: "off" | "dry" | "apply" = "apply"; // dry plan 2026-11-03 11:10Z: 3 copies (jr E3, jr E5, mo E5)
 export const SOAP_REPLACE_STEPS: number[] = [2, 4]; // 0-based: E3, E5
 export const SOAP_REPLACE_CREATED_BEFORE = "2026-11-03T11:10:00Z";
