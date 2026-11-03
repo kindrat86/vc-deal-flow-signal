@@ -24,6 +24,7 @@ import { isExcluded } from "@/lib/excluded-emails";
 import { listUnsubscribeHeaders, injectUnsubscribeLink } from "@/lib/list-unsubscribe";
 import { pickAudienceId } from "@/lib/resend-audience";
 import { gateAllows } from "@/lib/send-gate";
+import { honestSignalsCopy } from "@/lib/stale-copy";
 
 export const runtime = "nodejs";
 export const dynamic = "force-dynamic";
@@ -64,7 +65,7 @@ async function send(to: string, idx: number, scheduledAt?: string) {
     bcc: "sales@sipiteno.com",
     to,
     subject: m.subject,
-    html: injectUnsubscribeLink(m.html, to),
+    html: injectUnsubscribeLink(honestSignalsCopy(m.html), to),
     headers: listUnsubscribeHeaders(to),
     tags: [{ name: "email_key", value: `welcome-reenroll-${idx + 1}` }],
   };

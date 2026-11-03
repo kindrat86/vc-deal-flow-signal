@@ -52,6 +52,8 @@ const BLOCKLIST = new Set([
   "pytroll","OpenSpace","nasa","cern",
   // Forks / wrappers with no original product
   "carlos-emr",
+  // Public institutions / university projects / non-profit institutes (not startups)
+  "aphp","StanfordSpezi","VectorInstitute",
 ]);
 
 // Patterns in org name or description that indicate non-startup

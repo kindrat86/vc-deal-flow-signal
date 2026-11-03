@@ -73,6 +73,14 @@ function parseVelocityChange(s: string): number {
   return parseInt(s.replace(/[^0-9-]/g, ""), 10) || 0;
 }
 
+// Measured jumps rank above "no baseline" entries (zero commits in the prior
+// window), which have no comparable percentage at all.
+function byMeasuredChange(a: { commitVelocityChange: string }, b: { commitVelocityChange: string }): number {
+  const na = isNoBaseline(a.commitVelocityChange), nb = isNoBaseline(b.commitVelocityChange);
+  if (na !== nb) return na ? 1 : -1;
+  return parseVelocityChange(b.commitVelocityChange) - parseVelocityChange(a.commitVelocityChange);
+}
+
 // --- description sanitization -------------------------------------------
 // Repo descriptions are scraped from public GitHub and routinely carry junk
 // that has no business in a subscriber email: chat-group recruitment spam
@@ -85,8 +93,27 @@ const GROUP_SPAM = /(群|QQ|微信|公众号|加入|加群|t\.me\/|telegram|disc
 const NON_LATIN_SCRIPT = /[\u3000-\u9fff\uac00-\ud7af\uff00-\uffef\u0400-\u04ff\u0600-\u06ff]/;
 const MAX_DESC = 140;
 
+// Template text an old pipeline wrote when an org had no description
+// ("aphp is ahealthcare pre-seed startup based in EU, investing in ...").
+// It is generated, not sourced, and has been wrong (AP-HP is the Paris public
+// hospital system), so it never reaches a reader.
+const SYNTHETIC_DESC = /\bis an? ?[a-z&\- ]*\b(pre-seed|seed|series a\/b|growth)(-stage)? startup\b/i;
+
+// Orgs that are not startups (public institutions, university projects,
+// non-profit institutes). Kept out of every digest ranking; the fetch
+// pipeline BLOCKLIST carries the same names for future refreshes.
+export const NON_STARTUP_ORGS = new Set(["aphp", "stanfordspezi", "vectorinstitute"]);
+
+// fetch-github-data.ts writes "+999%" when the prior 14 days had zero commits.
+// That is "no baseline", not a 999% jump, so it is never shown as a number.
+export const NO_BASELINE = "+999%";
+export function isNoBaseline(change: string): boolean {
+  return change.trim() === NO_BASELINE;
+}
+
 function sanitizeDescription(raw: string): string {
   if (!raw) return "";
+  if (SYNTHETIC_DESC.test(raw)) return "";
   let t = raw
     .normalize("NFC")
     .replace(/[\u0000-\u001f\u007f]+/g, " ")
@@ -119,6 +146,13 @@ function slugify(name: string): string {
     .toLowerCase()
     .replace(/[^a-z0-9-]+/g, "-")
     .replace(/^-+|-+$/g, "");
+}
+
+/** Data measurement date (startups.json _meta.fetchedAt), falls back to now. */
+export function dataDate(): Date {
+  const f = (startupsData as { _meta?: { fetchedAt?: string } })._meta?.fetchedAt;
+  const d = f ? new Date(f) : new Date();
+  return isNaN(d.getTime()) ? new Date() : d;
 }
 
 function formatWeekOf(date: Date): string {
@@ -177,6 +211,13 @@ export function countFreshCurrentStartups(): number {
   return freshStartups(all).length;
 }
 
+/** Same rule as the Sunday cron guard: data measured within FRESH_DAYS and >= 5 fresh startups. */
+export function isDigestDataFresh(now = Date.now()): boolean {
+  const f = (startupsData as { _meta?: { fetchedAt?: string } })._meta?.fetchedAt;
+  const age = f ? (now - Date.parse(f)) / 86_400_000 : Infinity;
+  return age <= FRESH_DAYS && countFreshCurrentStartups() >= 5;
+}
+
 export function buildLatestDigest(lane?: string, opts?: { firstIssue?: boolean }): LatestDigest {
   const raw = startupsData as unknown as StartupsData;
   const period = raw.periods.find((p) => p.current) ?? raw.periods[0];
@@ -189,21 +230,21 @@ export function buildLatestDigest(lane?: string, opts?: { firstIssue?: boolean }
     const snapshot = sector.periods[period.slug];
     if (!snapshot || !snapshot.startups.length) continue;
 
-    for (const s of snapshot.startups) {
+    const eligible = snapshot.startups.filter((s) => !NON_STARTUP_ORGS.has(s.name.toLowerCase()));
+    if (!eligible.length) continue;
+    for (const s of eligible) {
       allStartups.push({ ...s, sectorName: sector.name, sectorSlug: sector.slug });
     }
 
-    const sorted = [...snapshot.startups].sort(
-      (a, b) => parseVelocityChange(b.commitVelocityChange) - parseVelocityChange(a.commitVelocityChange),
-    );
+    const sorted = [...eligible].sort(byMeasuredChange);
     const avg = Math.round(
-      snapshot.startups.reduce((sum, s) => sum + s.commitVelocity14d, 0) / snapshot.startups.length,
+      eligible.reduce((sum, s) => sum + s.commitVelocity14d, 0) / eligible.length,
     );
     sectorStats.push({
       name: sector.name,
       topStartup: sorted[0].name,
       topChange: sorted[0].commitVelocityChange,
-      count: snapshot.startups.length,
+      count: eligible.length,
       avgVelocity: avg,
     });
   }
@@ -216,10 +257,7 @@ export function buildLatestDigest(lane?: string, opts?: { firstIssue?: boolean }
   const freshPool = freshStartups(allStartups);
   const rankPool = freshPool.length >= 5 ? freshPool : allStartups;
   const topStartups: DigestStartup[] = [...rankPool]
-    .sort(
-      (a, b) =>
-        parseVelocityChange(b.commitVelocityChange) - parseVelocityChange(a.commitVelocityChange),
-    )
+    .sort(byMeasuredChange)
     .slice(0, 5)
     .map((s, i) => ({
       rank: i + 1,
@@ -264,14 +302,14 @@ export function buildLatestDigest(lane?: string, opts?: { firstIssue?: boolean }
 
   const digest: DigestData = {
     issueNumber: raw.meta?.issueNumber ?? 1,
-    weekOf: formatWeekOf(today),
+    weekOf: formatWeekOf(dataDate()),
     heroHeadline: buildHeadline(hottestSectors),
     heroIntro: `We tracked ${panelClaim} startups across ${sectorStats.length} sectors this week. ${topStartups
-      .filter((s) => parseVelocityChange(s.commitVelocityChange) >= 100)
+      .filter((s) => !isNoBaseline(s.commitVelocityChange) && parseVelocityChange(s.commitVelocityChange) >= 100)
       .length} of them more than doubled how fast they're shipping code versus their own normal pace, the kind of jump that usually shows up 3-6 weeks before a funding announcement.`,
     statStartups: panelClaim,
     statSectors: sectorStats.length,
-    statTopMover: topStartups[0]?.commitVelocityChange ?? "",
+    statTopMover: topStartups[0] ? (isNoBaseline(topStartups[0].commitVelocityChange) ? "New" : topStartups[0].commitVelocityChange) : "",
     topStartups,
     hottestSectors,
     ...(lane && isInvestorLane(lane) ? { laneIntro: laneIntro(lane) } : {}),

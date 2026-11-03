@@ -111,6 +111,20 @@ function track(href: string): string {
   return `${href}${sep}utm_source=email&utm_medium=email&utm_campaign=signal-digest`;
 }
 
+const NO_BASELINE = "+999%";
+function changeLabel(change: string): { value: string; label: string } {
+  return change.trim() === NO_BASELINE
+    ? { value: "New", label: "no activity before" }
+    : { value: change, label: "vs. usual pace" };
+}
+function plural(n: number, one: string, many: string): string {
+  return `${n} ${n === 1 ? one : many}`;
+}
+/** Subject/preheader text for a change value ("+999%" means no baseline). */
+export function changeText(change: string): string {
+  return change.trim() === NO_BASELINE ? "new activity" : change;
+}
+
 function unsubToken(_esp: DigestOptions["esp"]): { unsub: string; prefs: string } {
   // We send the digest via Resend's /emails endpoint (per-recipient), not
   // /broadcasts, so neither {{{RESEND_UNSUBSCRIBE_URL}}} nor
@@ -118,7 +132,7 @@ function unsubToken(_esp: DigestOptions["esp"]): { unsub: string; prefs: string 
   // template text would land in the inbox. Use a real mailto: link that
   // works in any client. The List-Unsubscribe header set by the sender
   // (email-api/send-weekly-digest.mjs) covers Gmail/Yahoo one-click.
-  const mailto = "mailto:signals@gitdealflow.com?subject=Unsubscribe";
+  const mailto = `mailto:${process.env.FROM_EMAIL || "signal@gitdealflow.com"}?subject=Unsubscribe`;
   return { unsub: mailto, prefs: mailto };
 }
 
@@ -147,8 +161,8 @@ function startupCard(s: DigestStartup): string {
                             }
                           </td>
                           <td align="right" width="110" class="hide-sm" style="vertical-align:top;padding-left:16px;">
-                            <div style="color:${BRAND.positive};font-size:22px;font-weight:800;letter-spacing:-0.01em;text-align:right;">${escape(s.commitVelocityChange)}</div>
-                            <div class="tx-mut" style="color:${BRAND.textMut};font-size:11px;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;text-align:right;margin-top:2px;">vs. usual pace</div>
+                            <div style="color:${BRAND.positive};font-size:22px;font-weight:800;letter-spacing:-0.01em;text-align:right;">${escape(changeLabel(s.commitVelocityChange).value)}</div>
+                            <div class="tx-mut" style="color:${BRAND.textMut};font-size:11px;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;text-align:right;margin-top:2px;">${changeLabel(s.commitVelocityChange).label}</div>
                           </td>
                         </tr>
                       </table>
@@ -159,7 +173,7 @@ function startupCard(s: DigestStartup): string {
                               <tr>
                                 <td style="background:rgba(14,165,233,0.12);color:${BRAND.accentLight};font-size:12px;font-weight:600;padding:4px 10px;border-radius:6px;border:1px solid rgba(14,165,233,0.3);">${escape(s.signalType)}</td>
                                 <td style="width:6px;">&nbsp;</td>
-                                <td class="tx-mut" style="color:${BRAND.textMut};font-size:12px;">${s.commitVelocity14d} code updates · ${s.contributors} engineers · last 14 days</td>
+                                <td class="tx-mut" style="color:${BRAND.textMut};font-size:12px;">${plural(s.commitVelocity14d, "code update", "code updates")} · ${plural(s.contributors, "engineer", "engineers")} · last 14 days</td>
                               </tr>
                             </table>
                           </td>
@@ -180,18 +194,18 @@ function sectorCard(s: DigestSector): string {
   return `<td class="stack bg-card brd" width="32%" style="background:${BRAND.card};border:1px solid ${BRAND.border};border-radius:12px;padding:16px;vertical-align:top;">
                     <div class="tx-mut" style="color:${BRAND.textMut};font-size:11px;font-weight:500;letter-spacing:0.04em;text-transform:uppercase;">${escape(s.name)}</div>
                     <div class="tx-pri" style="color:${BRAND.textPri};font-size:20px;font-weight:700;margin-top:6px;">${escape(s.topStartup)}</div>
-                    <div style="color:${BRAND.positive};font-size:13px;font-weight:600;margin-top:2px;">${escape(s.topChange)} top mover</div>
-                    <div class="tx-mut" style="color:${BRAND.textMut};font-size:12px;margin-top:8px;">${s.count} startups &middot; ~${s.avgVelocity} code updates in 14 days</div>
+                    <div style="color:${BRAND.positive};font-size:13px;font-weight:600;margin-top:2px;">${s.topChange.trim() === NO_BASELINE ? "top mover (new activity)" : `${escape(s.topChange)} top mover`}</div>
+                    <div class="tx-mut" style="color:${BRAND.textMut};font-size:12px;margin-top:8px;">${plural(s.count, "startup", "startups")} &middot; ~${plural(s.avgVelocity, "code update", "code updates")} in 14 days</div>
                   </td>`;
 }
 
 export function renderDigestEmail(data: DigestData, opts: DigestOptions = {}): string {
   const { unsub, prefs } = unsubToken(opts.esp);
   const subject =
-    opts.subject ?? `Signal Digest, Week of ${data.weekOf}: ${data.topStartups[0]?.name ?? ""} leads with ${data.topStartups[0]?.commitVelocityChange ?? ""}`;
+    opts.subject ?? `Signal Digest, Week of ${data.weekOf}: ${data.topStartups[0]?.name ?? ""} leads with ${changeText(data.topStartups[0]?.commitVelocityChange ?? "")}`;
   const preheader = `${data.statStartups} startups tracked across ${data.statSectors} sectors. ${data.topStartups
     .slice(0, 3)
-    .map((s) => `${s.name} ${s.commitVelocityChange}`)
+    .map((s) => `${s.name} ${changeText(s.commitVelocityChange)}`)
     .join(", ")}. Three weeks before your inbox gets the TechCrunch headline.`;
 
   const [sector1, sector2, sector3] = data.hottestSectors;

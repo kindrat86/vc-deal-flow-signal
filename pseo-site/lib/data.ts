@@ -108,7 +108,16 @@ const data = startupsData as unknown as StartupsData;
 // cache, see enrichLinks() above for the precedence rule.
 for (const sector of data.sectors) {
   for (const snapshot of Object.values(sector.periods)) {
-    snapshot.startups = snapshot.startups.map(enrichLinks);
+    // Drop generated template descriptions ("X is ahealthcare pre-seed startup
+    // based in EU, ..."): not sourced, and wrong for at least one public
+    // institution. Same rule as lib/digest-builder.ts SYNTHETIC_DESC.
+    snapshot.startups = snapshot.startups
+      .map(enrichLinks)
+      .map((s) =>
+        /\bis an? ?[a-z&\- ]*\b(pre-seed|seed|series a\/b|growth)(-stage)? startup\b/i.test(s.description ?? "")
+          ? { ...s, description: "" }
+          : s,
+      );
   }
 }
 

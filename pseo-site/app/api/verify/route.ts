@@ -11,7 +11,8 @@ import { isExcluded } from "@/lib/excluded-emails";
 import { isNonceUsed, markNonceUsed } from "@/lib/runtime-cache";
 import { listUnsubscribeHeaders, injectUnsubscribeLink } from "@/lib/list-unsubscribe";
 import { pickAudienceId } from "@/lib/resend-audience";
-import { buildLatestDigest } from "@/lib/digest-builder";
+import { buildLatestDigest, isDigestDataFresh } from "@/lib/digest-builder";
+import { honestSignalsCopy } from "@/lib/stale-copy";
 import { isInvestorLane } from "@/lib/investor-lanes";
 import { getResendConsentStatus } from "@/lib/resend-consent";
 
@@ -326,7 +327,7 @@ export async function GET(request: Request) {
       bcc: "sales@sipiteno.com",
       to: email,
       subject: soapEmail.subject,
-      html: injectUnsubscribeLink(soapEmail.html, email),
+      html: injectUnsubscribeLink(honestSignalsCopy(soapEmail.html), email),
       headers: listUnsubscribeHeaders(email),
     };
     // The promised asset lands immediately after confirmation. The other four
@@ -417,7 +418,13 @@ export async function GET(request: Request) {
   //     data the verification email promises. This closes that up-to-7-day
   //     TTV gap for the standard funnel. Best-effort: a render/send failure
   //     must never break verification or the drip schedule.
-  if (cohortParam !== "lead-magnet") {
+  // Real data only: never send the instant "first five" from stale data
+  // (same guard as the Sunday cron). The subscriber still gets the drip and
+  // the next Sunday issue once fresh data exists.
+  if (cohortParam !== "lead-magnet" && !isDigestDataFresh()) {
+    console.warn(`[verify] immediate digest skipped for ${email}: signal data is stale`);
+  }
+  if (cohortParam !== "lead-magnet" && isDigestDataFresh()) {
     try {
     const latest = buildLatestDigest(lane || undefined, { firstIssue: true });
     const digestRes = await fetch("https://api.resend.com/emails", {
