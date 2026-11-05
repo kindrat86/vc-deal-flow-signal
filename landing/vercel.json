@@ -384,11 +384,6 @@
       "permanent": true
     },
     {
-      "source": "/start",
-      "destination": "/report",
-      "permanent": true
-    },
-    {
       "source": "/sample",
       "destination": "/report",
       "permanent": true

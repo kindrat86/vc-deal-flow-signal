@@ -72,7 +72,7 @@
         <a href="/insider" class="hover:text-white transition-colors">Insider</a>
         <a href="/pricing" class="hover:text-white transition-colors">Pricing</a>
       </nav>
-      <a href="/#signup" class="btn btn-cta btn-sm whitespace-nowrap shrink-0"><span class="lg:hidden">Get it</span><span class="hidden lg:inline">Get the free Sunday email</span> <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
+      <a href="#gdf-capture" class="btn btn-cta btn-sm whitespace-nowrap shrink-0"><span class="lg:hidden">Get it</span><span class="hidden lg:inline">Get the free Sunday email</span> <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
       <button type="button" data-nav-toggle aria-expanded="false" aria-controls="mobile-nav" aria-label="Open menu" class="md:hidden inline-flex items-center justify-center w-11 h-11 shrink-0 rounded-lg text-gray-300 hover:text-white ring-1 ring-white/10 transition-colors">
         <svg aria-hidden="true" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
       </button>
@@ -204,9 +204,8 @@
         <p class="text-gray-300 text-lg leading-relaxed max-w-3xl mx-auto mb-8">If you want to verify the claim properly, use the same three proof surfaces every time: methodology, comparison, and this sample output. If that stack feels solid, go back to the apex and take the free Sunday email.</p>
         <div class="mobile-cta-stack flex flex-col sm:flex-row gap-4 justify-center">
           <a href="https://signals.gitdealflow.com/compare/best-alternative-data-tools-for-angel-investors" class="btn btn-secondary btn-md w-full sm:w-auto">See which alternative-data stack helps you move earlier</a>
-          <a href="/#signup" class="btn btn-cta btn-md w-full sm:w-auto">Send me the next Sunday issue</a>
+          <a href="#gdf-capture" class="btn btn-cta btn-md w-full sm:w-auto">Send me the next Sunday issue</a>
         </div>
-        <p class="text-gray-400 text-sm mt-5">Want my read on one specific name first? <a href="https://buy.stripe.com/bJe5kC48H2d2cEKg6s0x209" onclick="if(window.posthog)posthog.capture('teardown_cta_clicked',{placement:'report_close',price_eur:1})" class="text-signal-400 underline underline-offset-2 hover:text-signal-400">Get a &euro;1 Teardown &rarr;</a> <span class="text-gray-500">One euro, once &middot; 30-day refund guarantee</span></p>
         <div class="mt-6 flex flex-col sm:flex-row gap-4 justify-center text-left sm:text-center">
           <a href="https://signals.gitdealflow.com/answers/what-is-startup-engineering-momentum" class="text-signal-400 hover:text-signal-400 underline underline-offset-2">What startup engineering momentum means</a>
           <a href="https://signals.gitdealflow.com/answers/deal-flow-timing-vs-verification" class="text-signal-400 hover:text-signal-400 underline underline-offset-2">Timing and verification are not the same thing</a>
@@ -215,11 +214,11 @@
     </section>
   </main>
 
-  <div class="mobile-sticky-cta" role="region" aria-label="Free Sunday email"><div class="inner"><div class="meta"><strong>Free Sunday email</strong><span>5 names, plain English</span></div><a href="/#signup" class="btn btn-cta btn-sm">Get it &rarr;</a></div></div>
+  <div class="mobile-sticky-cta" role="region" aria-label="Free Sunday email"><div class="inner"><div class="meta"><strong>Free Sunday email</strong><span>5 names, plain English</span></div><a href="#gdf-capture" class="btn btn-cta btn-sm">Get it &rarr;</a></div></div>
 
   <!-- gdf-own-traffic-capture v1 (Traffic Secrets: traffic you own) -->
 <style>
-.gdf-capture{max-width:640px;margin:48px auto;padding:0 16px;font-family:-apple-system,system-ui,'Segoe UI',Roboto,sans-serif}
+.gdf-capture{max-width:640px;margin:48px auto;padding:0 16px;font-family:-apple-system,system-ui,'Segoe UI',Roboto,sans-serif;scroll-margin-top:88px}
 .gdf-capture-card{background:#0f172a;border:1px solid rgba(56,189,248,.35);border-radius:16px;padding:28px 24px;text-align:center}
 .gdf-capture-kicker{margin:0 0 8px;font-size:11px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#38bdf8}
 .gdf-capture-title{margin:0 0 8px;font-size:22px;line-height:1.25;color:#f8fafc}
@@ -247,6 +246,8 @@
     <p class="gdf-capture-msg" role="status">The next issue lands Sunday. Free forever.</p>
   </div>
 </section>
+<p class="report-teardown-below">Want my read on one specific name first? <a href="https://buy.stripe.com/bJe5kC48H2d2cEKg6s0x209" onclick="if(window.posthog)posthog.capture('teardown_cta_clicked',{placement:'report_below_form',price_eur:1})" class="text-signal-400 underline underline-offset-2 hover:text-signal-400">Get a &euro;1 Teardown &rarr;</a> <span class="text-gray-500">One euro, once &middot; 30-day refund guarantee</span></p>
+<style>.report-teardown-below{max-width:640px;margin:14px auto 48px;padding:0 16px;font-size:13px;color:#94a3b8;font-family:-apple-system,system-ui,'Segoe UI',Roboto,sans-serif;text-align:center}</style>
 <script>
 (function(){
   var form=document.querySelector('.gdf-capture form');if(!form)return;
@@ -293,6 +294,18 @@
 (function(){var t=document.querySelector('[data-nav-toggle]'),p=document.getElementById('mobile-nav');if(!t||!p)return;function set(o){t.setAttribute('aria-expanded',String(o));t.setAttribute('aria-label',o?'Close menu':'Open menu');p.hidden=!o;}
 t.addEventListener('click',function(){set(t.getAttribute('aria-expanded')!=='true');});
 document.addEventListener('keydown',function(e){if(e.key==='Escape'&&t.getAttribute('aria-expanded')==='true'){set(false);t.focus();}});})();
+  </script>
+  <script>
+    // Primary CTAs point at the inline capture form: land on it, then focus the field.
+    (function () {
+      var id = 'gdf-capture';
+      function focusCapture() {
+        var f = document.querySelector('#' + id + ' input[type=email]');
+        if (f) { try { f.focus({ preventScroll: true }); } catch (e) { f.focus(); } }
+      }
+      if (location.hash === '#' + id) setTimeout(focusCapture, 150);
+      window.addEventListener('hashchange', function () { if (location.hash === '#' + id) setTimeout(focusCapture, 150); });
+    })();
   </script>
   <script>
     // Sticky mobile CTA reveals only after the hero scrolls out of view. Scroll-driven for reliability.
