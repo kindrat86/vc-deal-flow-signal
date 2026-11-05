@@ -21,7 +21,7 @@
  */
 import { dataDate, isDigestDataFresh } from "@/lib/digest-builder";
 
-export const THESIS_WATCHLIST_ENABLED = false;
+export const THESIS_WATCHLIST_ENABLED = true;
 
 export const THESIS_WATCHLIST_PAYMENT_LINK =
   "https://buy.stripe.com/eVq5kC8oX4labAG9I40x20V";

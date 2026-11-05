@@ -208,6 +208,51 @@ export default async function RegionPage({ params }: PageProps) {
           </Link>
         </section>
 
+        <section
+          className="mb-10 max-w-3xl"
+          aria-label="Startup signal profiles"
+        >
+          <h2 className="text-gray-100 font-semibold text-lg mb-4">
+            Signal profiles: each {geoName} startup in {period.name}
+          </h2>
+          <div className="space-y-5">
+            {startups.map((s) => (
+              <article
+                key={s.name}
+                className="rounded-lg border border-slate-800 bg-slate-900 p-5"
+              >
+                <h3 className="text-gray-100 font-medium mb-2">
+                  {s.name} ({s.sectorName})
+                </h3>
+                <p className="text-gray-400 text-sm leading-relaxed mb-3">
+                  {s.description}
+                </p>
+                <ul className="text-gray-400 text-sm leading-relaxed list-disc pl-5 space-y-1">
+                  <li>
+                    Signal: {s.signalType}: {s.commitVelocity14d} commits in
+                    the last 14 days ({s.commitVelocityChange} change)
+                  </li>
+                  <li>
+                    Contributors: {s.contributors} active on GitHub (
+                    {s.contributorGrowth} growth), {s.newRepos} new{" "}
+                    {s.newRepos === 1 ? "repository" : "repositories"} this
+                    quarter
+                  </li>
+                  <li>
+                    Profile: {s.githubUrl}
+                    {s.websiteUrl ? ` · ${s.websiteUrl}` : ""}
+                  </li>
+                </ul>
+              </article>
+            ))}
+          </div>
+          <p className="mt-3 text-gray-600 text-xs">
+            All figures come from public GitHub activity over the stated
+            window. Nothing on this page is inferred, estimated or manually
+            edited; the weekly crawler rebuilds it from the same source.
+          </p>
+        </section>
+
         <section className="mb-12" aria-label="Call to action">
           <SeoCta secondary={{ label: "Unlock the Dashboard", href: "https://gitdealflow.com/dashboard" }} />
         </section>

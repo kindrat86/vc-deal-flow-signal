@@ -8,5 +8,5 @@ The five largest engineering-acceleration moves in Q4 2026, derived from public 
 Top signal: heymegabyte (Enterprise SaaS)
 +20250% commit velocity, 6 contributors, Engineering hiring burst.
 
-Read the report: https://signals.gitdealflow.com/blog/weekly-signal-report-2026-11-03
+Read the report: https://signals.gitdealflow.com/blog/weekly-signal-report-2026-11-05
 Download the data: https://signals.gitdealflow.com/weekly/latest.csv

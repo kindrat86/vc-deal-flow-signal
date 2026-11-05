@@ -394,9 +394,12 @@ export function getAllRegionPageSlugs(): string[] {
         if (!snapshot) continue;
         total += snapshot.startups.filter((s) => s.geography === geo.match).length;
       }
-      // >= 4: a 3-startup region rollup renders under the 400-word floor
-      // (canada-q4-2026, first seen 2026-11-03; no existing page has 3).
-      if (total >= 4) {
+      // >= 3 matches parseRegionPageSlug's minimum. canada-q4-2026 (3
+      // startups, first seen 2026-11-03) initially rendered under the
+      // 400-word floor and was gated out; the template now carries a
+      // data-driven per-startup signal-profile section that keeps small
+      // rollups above the floor, so the parser minimum governs again.
+      if (total >= 3) {
         slugs.push(`${geo.slug}-${periodSlug}`);
       }
     }
