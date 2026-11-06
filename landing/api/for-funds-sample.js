@@ -156,9 +156,11 @@ function queueRequest(payload) {
     variant: payload.variant,
     matched_thesis: payload.thesis_label,
   }) + "\n";
-  // Vercel functions have a read-only FS except /tmp. Try the mountable
-  // volume first (set via QS_DIR env in serverless config), then /tmp, then
-  // stdout-only fallback. The queue is internal: nothing here is ever served.
+  // Vercel functions get a read-only FS except /tmp, and /tmp is per-invocation
+  // ephemeral. The DURABLE record on Vercel is the function log, so the queue
+  // line is ALWAYS console.log'd as well; the file append is a local-dev
+  // convenience (QS_DIR volume when self-hosted). Never served either way.
+  console.log("[for-funds-sample-queue] " + line.trim());
   for (const dir of [process.env.QS_DIR, "/qstore", "/tmp"].filter(Boolean)) {
     try {
       if (!existsSync(dir)) mkdirSync(dir, { recursive: true });
@@ -168,7 +170,6 @@ function queueRequest(payload) {
       /* try next */
     }
   }
-  console.log("[for-funds-sample-queue] " + line.trim());
   return { queued: false, via: "stdout", queue_id: id };
 }
 
