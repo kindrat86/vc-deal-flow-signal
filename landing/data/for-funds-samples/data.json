@@ -1,0 +1,575 @@
+{
+ "updated": "2026-08-17",
+ "source": "gitdealflow.com leaderboards (Top 100 velocity + Top 100 breakout, public GitHub engineering-activity signals)",
+ "disclaimer": "Public engineering-activity signal to investigate, not investment advice.",
+ "max_matches": 8,
+ "theses": [
+  {
+   "id": "devtools-open-source",
+   "label": "Developer tools and open-source infrastructure",
+   "sector": "Data Infrastructure",
+   "thesis": "We back developer tools and open-source infrastructure teams who convert community traction into commercial traction (airbyte, cal.com, appsmith, deno style).",
+   "method": "Sector = Data Infrastructure on the current Top 100 commit-velocity board; ordered by velocity, evidence lines from the weekly deltas.",
+   "matches": [
+    {
+     "name": "PostHog",
+     "sector": "Data Infrastructure",
+     "velocity": 1621,
+     "delta_velocity": "-45%",
+     "delta_contributors": "+60%",
+     "signal": "Engineering hiring burst",
+     "profile": "https://signals.gitdealflow.com/startup/posthog",
+     "why": "PostHog (Data Infrastructure): engineering hiring burst; velocity score 1621 (-45% wow), contributors +60% wow.",
+     "evidence": "Velocity score 1621 (-45% wow). Contributors +60% wow. Signal class: Engineering hiring burst. Profile: https://signals.gitdealflow.com/startup/posthog"
+    },
+    {
+     "name": "airbytehq",
+     "sector": "Data Infrastructure",
+     "velocity": 1031,
+     "delta_velocity": "+9%",
+     "delta_contributors": "+66%",
+     "signal": "Engineering hiring burst",
+     "profile": "https://signals.gitdealflow.com/startup/airbytehq",
+     "why": "airbytehq (Data Infrastructure): engineering hiring burst; velocity score 1031 (+9% wow), contributors +66% wow.",
+     "evidence": "Velocity score 1031 (+9% wow). Contributors +66% wow. Signal class: Engineering hiring burst. Profile: https://signals.gitdealflow.com/startup/airbytehq"
+    },
+    {
+     "name": "dbt-labs",
+     "sector": "Data Infrastructure",
+     "velocity": 99,
+     "delta_velocity": "-31%",
+     "delta_contributors": "+0%",
+     "signal": "Framework migration",
+     "profile": "https://signals.gitdealflow.com/startup/dbt-labs",
+     "why": "dbt-labs (Data Infrastructure): framework migration; velocity score 99 (-31% wow), contributors +0% wow.",
+     "evidence": "Velocity score 99 (-31% wow). Contributors +0% wow. Signal class: Framework migration. Profile: https://signals.gitdealflow.com/startup/dbt-labs"
+    },
+    {
+     "name": "redpanda-data",
+     "sector": "Data Infrastructure",
+     "velocity": 91,
+     "delta_velocity": "-71%",
+     "delta_contributors": "+19%",
+     "signal": "Framework migration",
+     "profile": "https://signals.gitdealflow.com/startup/redpanda-data",
+     "why": "redpanda-data (Data Infrastructure): framework migration; velocity score 91 (-71% wow), contributors +19% wow.",
+     "evidence": "Velocity score 91 (-71% wow). Contributors +19% wow. Signal class: Framework migration. Profile: https://signals.gitdealflow.com/startup/redpanda-data"
+    },
+    {
+     "name": "cilium",
+     "sector": "Data Infrastructure",
+     "velocity": 82,
+     "delta_velocity": "-63%",
+     "delta_contributors": "+0%",
+     "signal": "Framework migration",
+     "profile": "https://signals.gitdealflow.com/startup/cilium",
+     "why": "cilium (Data Infrastructure): framework migration; velocity score 82 (-63% wow), contributors +0% wow.",
+     "evidence": "Velocity score 82 (-63% wow). Contributors +0% wow. Signal class: Framework migration. Profile: https://signals.gitdealflow.com/startup/cilium"
+    },
+    {
+     "name": "langfuse",
+     "sector": "Data Infrastructure",
+     "velocity": 78,
+     "delta_velocity": "-34%",
+     "delta_contributors": "+85%",
+     "signal": "Engineering hiring burst",
+     "profile": "https://signals.gitdealflow.com/startup/langfuse",
+     "why": "langfuse (Data Infrastructure): engineering hiring burst; velocity score 78 (-34% wow), contributors +85% wow.",
+     "evidence": "Velocity score 78 (-34% wow). Contributors +85% wow. Signal class: Engineering hiring burst. Profile: https://signals.gitdealflow.com/startup/langfuse"
+    },
+    {
+     "name": "rocky-data",
+     "sector": "Data Infrastructure",
+     "velocity": 76,
+     "delta_velocity": "-21%",
+     "delta_contributors": "+0%",
+     "signal": "Framework migration",
+     "profile": "https://signals.gitdealflow.com/startup/rocky-data",
+     "why": "rocky-data (Data Infrastructure): framework migration; velocity score 76 (-21% wow), contributors +0% wow.",
+     "evidence": "Velocity score 76 (-21% wow). Contributors +0% wow. Signal class: Framework migration. Profile: https://signals.gitdealflow.com/startup/rocky-data"
+    },
+    {
+     "name": "ConduitIO",
+     "sector": "Data Infrastructure",
+     "velocity": 73,
+     "delta_velocity": "+421%",
+     "delta_contributors": "+400%",
+     "signal": "Engineering hiring burst",
+     "profile": "https://signals.gitdealflow.com/startup/conduitio",
+     "why": "ConduitIO (Data Infrastructure): engineering hiring burst; velocity score 73 (+421% wow), contributors +400% wow.",
+     "evidence": "Velocity score 73 (+421% wow). Contributors +400% wow. Signal class: Engineering hiring burst. Profile: https://signals.gitdealflow.com/startup/conduitio"
+    }
+   ]
+  },
+  {
+   "id": "ai-automation-agents",
+   "label": "Web3 and open crypto infrastructure",
+   "sector": "Web3",
+   "thesis": "We back web3 and open crypto infrastructure teams, pre-token/Series A, where engineering headcount is added ahead of the news cycle.",
+   "method": "Web3-sector orgs on the current breakout board showing hiring-burst signals, ordered by velocity score.",
+   "matches": [
+    {
+     "name": "MystenLabs",
+     "sector": "Web3",
+     "velocity": 172,
+     "delta_velocity": "-19%",
+     "delta_contributors": "+0%",
+     "signal": "Framework migration",
+     "profile": "https://signals.gitdealflow.com/startup/mystenlabs",
+     "why": "MystenLabs (Web3): framework migration; velocity score 172 (-19% wow), contributors +0% wow.",
+     "evidence": "Velocity score 172 (-19% wow). Contributors +0% wow. Signal class: Framework migration. Profile: https://signals.gitdealflow.com/startup/mystenlabs"
+    },
+    {
+     "name": "baizhiheizi",
+     "sector": "Web3",
+     "velocity": 91,
+     "delta_velocity": "-16%",
+     "delta_contributors": "+400%",
+     "signal": "Engineering hiring burst",
+     "profile": "https://signals.gitdealflow.com/startup/baizhiheizi",
+     "why": "baizhiheizi (Web3): engineering hiring burst; velocity score 91 (-16% wow), contributors +400% wow.",
+     "evidence": "Velocity score 91 (-16% wow). Contributors +400% wow. Signal class: Engineering hiring burst. Profile: https://signals.gitdealflow.com/startup/baizhiheizi"
+    },
+    {
+     "name": "tradingstrategy-ai",
+     "sector": "Web3",
+     "velocity": 82,
+     "delta_velocity": "-32%",
+     "delta_contributors": "+43%",
+     "signal": "Framework migration",
+     "profile": "https://signals.gitdealflow.com/startup/tradingstrategy-ai",
+     "why": "tradingstrategy-ai (Web3): framework migration; velocity score 82 (-32% wow), contributors +43% wow.",
+     "evidence": "Velocity score 82 (-32% wow). Contributors +43% wow. Signal class: Framework migration. Profile: https://signals.gitdealflow.com/startup/tradingstrategy-ai"
+    },
+    {
+     "name": "paradigmxyz",
+     "sector": "Web3",
+     "velocity": 61,
+     "delta_velocity": "-58%",
+     "delta_contributors": "+55%",
+     "signal": "Engineering hiring burst",
+     "profile": "https://signals.gitdealflow.com/startup/paradigmxyz",
+     "why": "paradigmxyz (Web3): engineering hiring burst; velocity score 61 (-58% wow), contributors +55% wow.",
+     "evidence": "Velocity score 61 (-58% wow). Contributors +55% wow. Signal class: Engineering hiring burst. Profile: https://signals.gitdealflow.com/startup/paradigmxyz"
+    },
+    {
+     "name": "IntersectMBO",
+     "sector": "Web3",
+     "velocity": 52,
+     "delta_velocity": "-64%",
+     "delta_contributors": "+0%",
+     "signal": "Framework migration",
+     "profile": "https://signals.gitdealflow.com/startup/intersectmbo",
+     "why": "IntersectMBO (Web3): framework migration; velocity score 52 (-64% wow), contributors +0% wow.",
+     "evidence": "Velocity score 52 (-64% wow). Contributors +0% wow. Signal class: Framework migration. Profile: https://signals.gitdealflow.com/startup/intersectmbo"
+    }
+   ]
+  },
+  {
+   "id": "applied-ai-healthcare",
+   "label": "Applied AI in healthcare",
+   "sector": "Healthcare",
+   "thesis": "Applied AI in healthcare: teams shipping to regulated environments, where engineering hiring bursts precede the institutional round.",
+   "method": "Sector = Healthcare on the breakout board; engineering-hiring-burst signal class weighted over raw velocity.",
+   "matches": [
+    {
+     "name": "epic-open-source",
+     "sector": "Healthcare",
+     "velocity": 2,
+     "delta_velocity": "+999%",
+     "delta_contributors": "+300%",
+     "signal": "Engineering hiring burst",
+     "profile": "https://signals.gitdealflow.com/startup/epic-open-source",
+     "why": "epic-open-source (Healthcare): engineering hiring burst; velocity score 2 (+999% wow), contributors +300% wow.",
+     "evidence": "Velocity score 2 (+999% wow). Contributors +300% wow. Signal class: Engineering hiring burst. Profile: https://signals.gitdealflow.com/startup/epic-open-source"
+    },
+    {
+     "name": "neuml",
+     "sector": "Healthcare",
+     "velocity": 25,
+     "delta_velocity": "+400%",
+     "delta_contributors": "+0%",
+     "signal": "Deploy frequency spike",
+     "profile": "https://signals.gitdealflow.com/startup/neuml",
+     "why": "neuml (Healthcare): deploy frequency spike; velocity score 25 (+400% wow), contributors +0% wow.",
+     "evidence": "Velocity score 25 (+400% wow). Contributors +0% wow. Signal class: Deploy frequency spike. Profile: https://signals.gitdealflow.com/startup/neuml"
+    },
+    {
+     "name": "StanfordSpezi",
+     "sector": "Healthcare",
+     "velocity": 5,
+     "delta_velocity": "+999%",
+     "delta_contributors": "+0%",
+     "signal": "Deploy frequency spike",
+     "profile": "https://signals.gitdealflow.com/startup/stanfordspezi",
+     "why": "StanfordSpezi (Healthcare): deploy frequency spike; velocity score 5 (+999% wow), contributors +0% wow.",
+     "evidence": "Velocity score 5 (+999% wow). Contributors +0% wow. Signal class: Deploy frequency spike. Profile: https://signals.gitdealflow.com/startup/stanfordspezi"
+    },
+    {
+     "name": "tuva-health",
+     "sector": "Healthcare",
+     "velocity": 3,
+     "delta_velocity": "+999%",
+     "delta_contributors": "+0%",
+     "signal": "Infrastructure buildout",
+     "profile": "https://signals.gitdealflow.com/startup/tuva-health",
+     "why": "tuva-health (Healthcare): infrastructure buildout; velocity score 3 (+999% wow), contributors +0% wow.",
+     "evidence": "Velocity score 3 (+999% wow). Contributors +0% wow. Signal class: Infrastructure buildout. Profile: https://signals.gitdealflow.com/startup/tuva-health"
+    },
+    {
+     "name": "insightsengineering",
+     "sector": "Healthcare",
+     "velocity": 2,
+     "delta_velocity": "+999%",
+     "delta_contributors": "+0%",
+     "signal": "Deploy frequency spike",
+     "profile": "https://signals.gitdealflow.com/startup/insightsengineering",
+     "why": "insightsengineering (Healthcare): deploy frequency spike; velocity score 2 (+999% wow), contributors +0% wow.",
+     "evidence": "Velocity score 2 (+999% wow). Contributors +0% wow. Signal class: Deploy frequency spike. Profile: https://signals.gitdealflow.com/startup/insightsengineering"
+    },
+    {
+     "name": "aphp",
+     "sector": "Healthcare",
+     "velocity": 1,
+     "delta_velocity": "+999%",
+     "delta_contributors": "+0%",
+     "signal": "Infrastructure buildout",
+     "profile": "https://signals.gitdealflow.com/startup/aphp",
+     "why": "aphp (Healthcare): infrastructure buildout; velocity score 1 (+999% wow), contributors +0% wow.",
+     "evidence": "Velocity score 1 (+999% wow). Contributors +0% wow. Signal class: Infrastructure buildout. Profile: https://signals.gitdealflow.com/startup/aphp"
+    },
+    {
+     "name": "ere-health",
+     "sector": "Healthcare",
+     "velocity": 1,
+     "delta_velocity": "+999%",
+     "delta_contributors": "+0%",
+     "signal": "Deploy frequency spike",
+     "profile": "https://signals.gitdealflow.com/startup/ere-health",
+     "why": "ere-health (Healthcare): deploy frequency spike; velocity score 1 (+999% wow), contributors +0% wow.",
+     "evidence": "Velocity score 1 (+999% wow). Contributors +0% wow. Signal class: Deploy frequency spike. Profile: https://signals.gitdealflow.com/startup/ere-health"
+    }
+   ]
+  },
+  {
+   "id": "fintech-infrastructure",
+   "label": "Fintech and payments infrastructure",
+   "sector": "E-commerce Infrastructure",
+   "thesis": "Fintech and payments infrastructure: quiet back-office builders whose contributor growth outruns their publicity.",
+   "method": "E-commerce Infrastructure sector on the velocity board, contributor-growth-first ordering.",
+   "matches": [
+    {
+     "name": "BuilderIO",
+     "sector": "E-commerce Infrastructure",
+     "velocity": 294,
+     "delta_velocity": "-45%",
+     "delta_contributors": "+61%",
+     "signal": "Engineering hiring burst",
+     "profile": "https://signals.gitdealflow.com/startup/builderio",
+     "why": "BuilderIO (E-commerce Infrastructure): engineering hiring burst; velocity score 294 (-45% wow), contributors +61% wow.",
+     "evidence": "Velocity score 294 (-45% wow). Contributors +61% wow. Signal class: Engineering hiring burst. Profile: https://signals.gitdealflow.com/startup/builderio"
+    },
+    {
+     "name": "medusajs",
+     "sector": "E-commerce Infrastructure",
+     "velocity": 105,
+     "delta_velocity": "-19%",
+     "delta_contributors": "+24%",
+     "signal": "Framework migration",
+     "profile": "https://signals.gitdealflow.com/startup/medusajs",
+     "why": "medusajs (E-commerce Infrastructure): framework migration; velocity score 105 (-19% wow), contributors +24% wow.",
+     "evidence": "Velocity score 105 (-19% wow). Contributors +24% wow. Signal class: Framework migration. Profile: https://signals.gitdealflow.com/startup/medusajs"
+    },
+    {
+     "name": "juspay",
+     "sector": "E-commerce Infrastructure",
+     "velocity": 100,
+     "delta_velocity": "+113%",
+     "delta_contributors": "+49%",
+     "signal": "Framework migration",
+     "profile": "https://signals.gitdealflow.com/startup/juspay",
+     "why": "juspay (E-commerce Infrastructure): framework migration; velocity score 100 (+113% wow), contributors +49% wow.",
+     "evidence": "Velocity score 100 (+113% wow). Contributors +49% wow. Signal class: Framework migration. Profile: https://signals.gitdealflow.com/startup/juspay"
+    },
+    {
+     "name": "openlinker-project",
+     "sector": "E-commerce Infrastructure",
+     "velocity": 51,
+     "delta_velocity": "-51%",
+     "delta_contributors": "+0%",
+     "signal": "Framework migration",
+     "profile": "https://signals.gitdealflow.com/startup/openlinker-project",
+     "why": "openlinker-project (E-commerce Infrastructure): framework migration; velocity score 51 (-51% wow), contributors +0% wow.",
+     "evidence": "Velocity score 51 (-51% wow). Contributors +0% wow. Signal class: Framework migration. Profile: https://signals.gitdealflow.com/startup/openlinker-project"
+    },
+    {
+     "name": "tempoxyz",
+     "sector": "E-commerce Infrastructure",
+     "velocity": 42,
+     "delta_velocity": "-45%",
+     "delta_contributors": "+0%",
+     "signal": "Infrastructure buildout",
+     "profile": "https://signals.gitdealflow.com/startup/tempoxyz",
+     "why": "tempoxyz (E-commerce Infrastructure): infrastructure buildout; velocity score 42 (-45% wow), contributors +0% wow.",
+     "evidence": "Velocity score 42 (-45% wow). Contributors +0% wow. Signal class: Infrastructure buildout. Profile: https://signals.gitdealflow.com/startup/tempoxyz"
+    }
+   ]
+  },
+  {
+   "id": "climate-industrial",
+   "label": "Climate and agri tech",
+   "sector": "AgTech",
+   "thesis": "Climate and industrial technology, including agtech, where engineering velocity is spiking off a small base.",
+   "method": "AgTech breakout rows, velocity-delta-first ordering off small bases.",
+   "matches": [
+    {
+     "name": "Project-AgML",
+     "sector": "AgTech",
+     "velocity": 33,
+     "delta_velocity": "+136%",
+     "delta_contributors": "+121%",
+     "signal": "Engineering hiring burst",
+     "profile": "https://signals.gitdealflow.com/startup/project-agml",
+     "why": "Project-AgML (AgTech): engineering hiring burst; velocity score 33 (+136% wow), contributors +121% wow.",
+     "evidence": "Velocity score 33 (+136% wow). Contributors +121% wow. Signal class: Engineering hiring burst. Profile: https://signals.gitdealflow.com/startup/project-agml"
+    },
+    {
+     "name": "sapic",
+     "sector": "AgTech",
+     "velocity": 5,
+     "delta_velocity": "+999%",
+     "delta_contributors": "+0%",
+     "signal": "Deploy frequency spike",
+     "profile": "https://signals.gitdealflow.com/startup/sapic",
+     "why": "sapic (AgTech): deploy frequency spike; velocity score 5 (+999% wow), contributors +0% wow.",
+     "evidence": "Velocity score 5 (+999% wow). Contributors +0% wow. Signal class: Deploy frequency spike. Profile: https://signals.gitdealflow.com/startup/sapic"
+    },
+    {
+     "name": "Fields2Cover",
+     "sector": "AgTech",
+     "velocity": 5,
+     "delta_velocity": "+999%",
+     "delta_contributors": "+400%",
+     "signal": "Engineering hiring burst",
+     "profile": "https://signals.gitdealflow.com/startup/fields2cover",
+     "why": "Fields2Cover (AgTech): engineering hiring burst; velocity score 5 (+999% wow), contributors +400% wow.",
+     "evidence": "Velocity score 5 (+999% wow). Contributors +400% wow. Signal class: Engineering hiring burst. Profile: https://signals.gitdealflow.com/startup/fields2cover"
+    },
+    {
+     "name": "fineprint-global",
+     "sector": "AgTech",
+     "velocity": 2,
+     "delta_velocity": "+999%",
+     "delta_contributors": "+100%",
+     "signal": "Engineering hiring burst",
+     "profile": "https://signals.gitdealflow.com/startup/fineprint-global",
+     "why": "fineprint-global (AgTech): engineering hiring burst; velocity score 2 (+999% wow), contributors +100% wow.",
+     "evidence": "Velocity score 2 (+999% wow). Contributors +100% wow. Signal class: Engineering hiring burst. Profile: https://signals.gitdealflow.com/startup/fineprint-global"
+    },
+    {
+     "name": "ARPA-SIMC",
+     "sector": "AgTech",
+     "velocity": 1,
+     "delta_velocity": "+999%",
+     "delta_contributors": "+0%",
+     "signal": "Deploy frequency spike",
+     "profile": "https://signals.gitdealflow.com/startup/arpa-simc",
+     "why": "ARPA-SIMC (AgTech): deploy frequency spike; velocity score 1 (+999% wow), contributors +0% wow.",
+     "evidence": "Velocity score 1 (+999% wow). Contributors +0% wow. Signal class: Deploy frequency spike. Profile: https://signals.gitdealflow.com/startup/arpa-simc"
+    }
+   ]
+  },
+  {
+   "id": "security-devops",
+   "label": "Privacy, security and compliance tooling",
+   "sector": "Legal Tech",
+   "thesis": "Privacy, security and compliance tooling for developers: boring-mission-critical repos where commit discipline beats hype.",
+   "method": "Legal Tech (compliance tooling cluster) and privacy-adjacent orgs on the current velocity board, ordered by velocity.",
+   "matches": [
+    {
+     "name": "AdguardTeam",
+     "sector": "Legal Tech",
+     "velocity": 643,
+     "delta_velocity": "-31%",
+     "delta_contributors": "+0%",
+     "signal": "Framework migration",
+     "profile": "https://signals.gitdealflow.com/startup/adguardteam",
+     "why": "AdguardTeam (Legal Tech): framework migration; velocity score 643 (-31% wow), contributors +0% wow.",
+     "evidence": "Velocity score 643 (-31% wow). Contributors +0% wow. Signal class: Framework migration. Profile: https://signals.gitdealflow.com/startup/adguardteam"
+    },
+    {
+     "name": "ondata",
+     "sector": "Legal Tech",
+     "velocity": 64,
+     "delta_velocity": "-35%",
+     "delta_contributors": "+0%",
+     "signal": "Framework migration",
+     "profile": "https://signals.gitdealflow.com/startup/ondata",
+     "why": "ondata (Legal Tech): framework migration; velocity score 64 (-35% wow), contributors +0% wow.",
+     "evidence": "Velocity score 64 (-35% wow). Contributors +0% wow. Signal class: Framework migration. Profile: https://signals.gitdealflow.com/startup/ondata"
+    },
+    {
+     "name": "iblai",
+     "sector": "Legal Tech",
+     "velocity": 56,
+     "delta_velocity": "-64%",
+     "delta_contributors": "+0%",
+     "signal": "Framework migration",
+     "profile": "https://signals.gitdealflow.com/startup/iblai",
+     "why": "iblai (Legal Tech): framework migration; velocity score 56 (-64% wow), contributors +0% wow.",
+     "evidence": "Velocity score 56 (-64% wow). Contributors +0% wow. Signal class: Framework migration. Profile: https://signals.gitdealflow.com/startup/iblai"
+    },
+    {
+     "name": "dealfluence",
+     "sector": "Legal Tech",
+     "velocity": 55,
+     "delta_velocity": "+22%",
+     "delta_contributors": "+0%",
+     "signal": "Framework migration",
+     "profile": "https://signals.gitdealflow.com/startup/dealfluence",
+     "why": "dealfluence (Legal Tech): framework migration; velocity score 55 (+22% wow), contributors +0% wow.",
+     "evidence": "Velocity score 55 (+22% wow). Contributors +0% wow. Signal class: Framework migration. Profile: https://signals.gitdealflow.com/startup/dealfluence"
+    },
+    {
+     "name": "stella",
+     "sector": "Legal Tech",
+     "velocity": 47,
+     "delta_velocity": "+15%",
+     "delta_contributors": "+31%",
+     "signal": "Framework migration",
+     "profile": "https://signals.gitdealflow.com/startup/stella",
+     "why": "stella (Legal Tech): framework migration; velocity score 47 (+15% wow), contributors +31% wow.",
+     "evidence": "Velocity score 47 (+15% wow). Contributors +31% wow. Signal class: Framework migration. Profile: https://signals.gitdealflow.com/startup/stella"
+    }
+   ]
+  },
+  {
+   "id": "vertical-saas-europe",
+   "label": "Vertical SaaS with focused engineering teams",
+   "sector": "Enterprise SaaS",
+   "thesis": "Vertical SaaS with focused engineering teams: steady contributor growth over star-chasing, in industries with real budgets.",
+   "method": "Enterprise SaaS sector board, contributor-delta-first ordering.",
+   "matches": [
+    {
+     "name": "metorial",
+     "sector": "Enterprise SaaS",
+     "velocity": 102,
+     "delta_velocity": "-19%",
+     "delta_contributors": "+0%",
+     "signal": "Framework migration",
+     "profile": "https://signals.gitdealflow.com/startup/metorial",
+     "why": "metorial (Enterprise SaaS): framework migration; velocity score 102 (-19% wow), contributors +0% wow.",
+     "evidence": "Velocity score 102 (-19% wow). Contributors +0% wow. Signal class: Framework migration. Profile: https://signals.gitdealflow.com/startup/metorial"
+    },
+    {
+     "name": "constructorfabric",
+     "sector": "Enterprise SaaS",
+     "velocity": 101,
+     "delta_velocity": "-43%",
+     "delta_contributors": "+8%",
+     "signal": "Infrastructure buildout",
+     "profile": "https://signals.gitdealflow.com/startup/constructorfabric",
+     "why": "constructorfabric (Enterprise SaaS): infrastructure buildout; velocity score 101 (-43% wow), contributors +8% wow.",
+     "evidence": "Velocity score 101 (-43% wow). Contributors +8% wow. Signal class: Infrastructure buildout. Profile: https://signals.gitdealflow.com/startup/constructorfabric"
+    },
+    {
+     "name": "databayt",
+     "sector": "Enterprise SaaS",
+     "velocity": 74,
+     "delta_velocity": "+573%",
+     "delta_contributors": "+0%",
+     "signal": "Deploy frequency spike",
+     "profile": "https://signals.gitdealflow.com/startup/databayt",
+     "why": "databayt (Enterprise SaaS): deploy frequency spike; velocity score 74 (+573% wow), contributors +0% wow.",
+     "evidence": "Velocity score 74 (+573% wow). Contributors +0% wow. Signal class: Deploy frequency spike. Profile: https://signals.gitdealflow.com/startup/databayt"
+    },
+    {
+     "name": "temporalio",
+     "sector": "Enterprise SaaS",
+     "velocity": 74,
+     "delta_velocity": "+32%",
+     "delta_contributors": "+0%",
+     "signal": "Framework migration",
+     "profile": "https://signals.gitdealflow.com/startup/temporalio",
+     "why": "temporalio (Enterprise SaaS): framework migration; velocity score 74 (+32% wow), contributors +0% wow.",
+     "evidence": "Velocity score 74 (+32% wow). Contributors +0% wow. Signal class: Framework migration. Profile: https://signals.gitdealflow.com/startup/temporalio"
+    },
+    {
+     "name": "lomiafrica",
+     "sector": "Enterprise SaaS",
+     "velocity": 61,
+     "delta_velocity": "-55%",
+     "delta_contributors": "+86%",
+     "signal": "Engineering hiring burst",
+     "profile": "https://signals.gitdealflow.com/startup/lomiafrica",
+     "why": "lomiafrica (Enterprise SaaS): engineering hiring burst; velocity score 61 (-55% wow), contributors +86% wow.",
+     "evidence": "Velocity score 61 (-55% wow). Contributors +86% wow. Signal class: Engineering hiring burst. Profile: https://signals.gitdealflow.com/startup/lomiafrica"
+    }
+   ]
+  },
+  {
+   "id": "emerging-frontier",
+   "label": "Frontier tech: space, robotics, web3",
+   "sector": "Space Tech",
+   "thesis": "Frontier bets: space, robotics and web3 infrastructure, breakout deltas first.",
+   "method": "Space Tech breakout rows ordered by velocity delta.",
+   "matches": [
+    {
+     "name": "mx-space",
+     "sector": "Space Tech",
+     "velocity": 130,
+     "delta_velocity": "+141%",
+     "delta_contributors": "+0%",
+     "signal": "Framework migration",
+     "profile": "https://signals.gitdealflow.com/startup/mx-space",
+     "why": "mx-space (Space Tech): framework migration; velocity score 130 (+141% wow), contributors +0% wow.",
+     "evidence": "Velocity score 130 (+141% wow). Contributors +0% wow. Signal class: Framework migration. Profile: https://signals.gitdealflow.com/startup/mx-space"
+    },
+    {
+     "name": "OpenCSGs",
+     "sector": "Space Tech",
+     "velocity": 54,
+     "delta_velocity": "+286%",
+     "delta_contributors": "+29%",
+     "signal": "Deploy frequency spike",
+     "profile": "https://signals.gitdealflow.com/startup/opencsgs",
+     "why": "OpenCSGs (Space Tech): deploy frequency spike; velocity score 54 (+286% wow), contributors +29% wow.",
+     "evidence": "Velocity score 54 (+286% wow). Contributors +29% wow. Signal class: Deploy frequency spike. Profile: https://signals.gitdealflow.com/startup/opencsgs"
+    },
+    {
+     "name": "NASA-AMMOS",
+     "sector": "Space Tech",
+     "velocity": 46,
+     "delta_velocity": "+360%",
+     "delta_contributors": "+30%",
+     "signal": "Deploy frequency spike",
+     "profile": "https://signals.gitdealflow.com/startup/nasa-ammos",
+     "why": "NASA-AMMOS (Space Tech): deploy frequency spike; velocity score 46 (+360% wow), contributors +30% wow.",
+     "evidence": "Velocity score 46 (+360% wow). Contributors +30% wow. Signal class: Deploy frequency spike. Profile: https://signals.gitdealflow.com/startup/nasa-ammos"
+    },
+    {
+     "name": "SatDump",
+     "sector": "Space Tech",
+     "velocity": 7,
+     "delta_velocity": "+250%",
+     "delta_contributors": "+0%",
+     "signal": "Deploy frequency spike",
+     "profile": "https://signals.gitdealflow.com/startup/satdump",
+     "why": "SatDump (Space Tech): deploy frequency spike; velocity score 7 (+250% wow), contributors +0% wow.",
+     "evidence": "Velocity score 7 (+250% wow). Contributors +0% wow. Signal class: Deploy frequency spike. Profile: https://signals.gitdealflow.com/startup/satdump"
+    },
+    {
+     "name": "orbiternassp",
+     "sector": "Space Tech",
+     "velocity": 6,
+     "delta_velocity": "+200%",
+     "delta_contributors": "+0%",
+     "signal": "Deploy frequency spike",
+     "profile": "https://signals.gitdealflow.com/startup/orbiternassp",
+     "why": "orbiternassp (Space Tech): deploy frequency spike; velocity score 6 (+200% wow), contributors +0% wow.",
+     "evidence": "Velocity score 6 (+200% wow). Contributors +0% wow. Signal class: Deploy frequency spike. Profile: https://signals.gitdealflow.com/startup/orbiternassp"
+    }
+   ]
+  }
+ ]
+}

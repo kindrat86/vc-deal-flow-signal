@@ -68,7 +68,7 @@
 <a class="hover:text-white transition-colors" href="/for-funds">For funds</a>
 <a class="hover:text-white transition-colors" href="/pricing">Pricing</a>
 </nav>
-<a class="btn btn-primary btn-sm whitespace-nowrap shrink-0" href="#sample" onclick="if(window.posthog)posthog.capture('for_funds_nav_cta_clicked')">Free sample report <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
+<a class="btn btn-primary btn-sm whitespace-nowrap shrink-0" href="#sample" onclick="if(window.posthog)posthog.capture('for_funds_nav_cta_clicked')">Free sample, instant <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
 <button aria-controls="mobile-nav" aria-expanded="false" aria-label="Open menu" class="md:hidden inline-flex items-center justify-center w-11 h-11 shrink-0 rounded-lg text-gray-300 hover:text-white ring-1 ring-white/10 transition-colors" data-nav-toggle="" type="button">
 <svg aria-hidden="true" fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24" width="22"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
 </button>
@@ -94,7 +94,7 @@
 <h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-4">Deal flow matched to your fund's thesis. Not another newsletter.</h1>
 <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed mb-8">Your written investment thesis in. Five or ten startups a month that are accelerating on public GitHub engineering signals, each with the reason it matched and the evidence behind it. You judge; we surface.</p>
 <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-<a class="btn btn-primary btn-md" href="#sample" onclick="if(window.posthog)posthog.capture('for_funds_hero_cta_clicked',{cta:'free_sample'})">Request a free sample report <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
+<a class="btn btn-primary btn-md" href="#sample" onclick="if(window.posthog)posthog.capture('for_funds_hero_cta_clicked',{cta:'free_sample'})">Generate a free sample now <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
 <a class="btn btn-ghost btn-md" href="#tiers" onclick="if(window.posthog)posthog.capture('for_funds_hero_cta_clicked',{cta:'tiers'})">See the two tiers</a>
 </div>
 <p class="text-gray-400 text-sm mt-4">Free sample first. No logo walls, no rented benchmarks, no pressure.</p>
@@ -187,15 +187,27 @@
 </section>
 <!-- ============ FREE SAMPLE ============ -->
 <section class="max-w-3xl mx-auto px-4 sm:px-6 py-12" id="sample">
-<div class="rounded-2xl border border-brand-500/30 bg-brand-500/10 p-8 md:p-10 text-center">
-<p class="text-brand-400 text-xs font-semibold uppercase tracking-wider mb-2">Start here, free</p>
-<h2 class="text-2xl md:text-3xl font-bold text-white mb-3">Request a free sample report</h2>
-<p class="text-gray-300 leading-relaxed max-w-xl mx-auto mb-6">Send us your thesis. Within a few business days you get one sample report with real matches from the current signal set, so you can judge the work before any money moves. No call required unless you want one.</p>
-<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
-<a class="btn btn-primary btn-md" href="mailto:signals@gitdealflow.com?subject=GitDealFlow%20free%20sample%20report%20request&body=Our%20thesis%3A%20%0A%0A%28sectors%2C%20stage%2C%20geography%2C%20what%20%22fit%22%20means%20for%20you%29" onclick="if(window.posthog)posthog.capture('for_funds_sample_clicked')">Request the free sample <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
-<a class="btn btn-ghost btn-md" href="mailto:signals@gitdealflow.com?subject=GitDealFlow%20for%20funds%20-%20book%20a%20call" onclick="if(window.posthog)posthog.capture('for_funds_call_clicked')">Book a call instead</a>
-</div>
-<p class="text-gray-400 text-xs mt-4">Prefer to see the signal cold first? Read the <a class="text-brand-400 hover:text-brand-300 underline" href="/report">public evidence report</a> or browse the <a class="text-brand-400 hover:text-brand-300 underline" href="https://signals.gitdealflow.com/predicted">graded predictions board</a>.</p>
+<div class="rounded-2xl border border-brand-500/30 bg-brand-500/10 p-8 md:p-10">
+  <p class="text-brand-400 text-xs font-semibold uppercase tracking-wider mb-2">Start here, free</p>
+  <h2 class="text-2xl md:text-3xl font-bold text-white mb-3">See your thesis in the data, right now</h2>
+  <p class="text-gray-300 leading-relaxed max-w-xl mx-auto mb-6 text-center">Paste your fund's thesis below. You get a one-page sample immediately on this page: up to eight GitHub-signal startups matched to it, each with a why-matched line and the evidence behind it. Nothing is emailed by a machine. If you leave your address, a human reviews the sample queue and replies from signals@gitdealflow.com within a few business days. No call required unless you want one.</p>
+  <form id="gdf-sample-form" class="flex flex-col gap-3 max-w-xl mx-auto" novalidate>
+    <label class="sr-only" for="gdf-thesis">Your investment thesis</label>
+    <textarea id="gdf-thesis" class="rounded-lg bg-dark-900/80 border border-gray-700 text-gray-100 px-4 py-3 min-h-28 focus:outline-none focus:ring-2 focus:ring-brand-500 placeholder:text-gray-500" placeholder='Your thesis, e.g. "We back pre-Series A developer-tools and open-source infrastructure teams in Europe."' required minlength="20" maxlength="2000"></textarea>
+    <div class="grid gap-3 sm:grid-cols-2">
+      <label class="sr-only" for="gdf-email">Work email (optional)</label>
+      <input id="gdf-email" type="email" autocomplete="email" class="rounded-lg bg-dark-900/80 border border-gray-700 text-gray-100 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-500 placeholder:text-gray-500" placeholder="Work email (optional)">
+      <label class="sr-only" for="gdf-fund">Fund name (optional)</label>
+      <input id="gdf-fund" type="text" autocomplete="organization" class="rounded-lg bg-dark-900/80 border border-gray-700 text-gray-100 px-4 py-3 focus:outline-none focus:ring-2 focus:ring-brand-500 placeholder:text-gray-500" placeholder="Fund name (optional)">
+    </div>
+    <p id="gdf-sample-error" class="text-red-400 text-sm hidden" role="alert"></p>
+    <div class="flex flex-col sm:flex-row items-center justify-center gap-3 mt-1">
+      <button id="gdf-sample-btn" type="submit" class="btn btn-primary btn-md w-full sm:w-auto justify-center">Generate my sample <span aria-hidden="true" class="btn-arrow">&rarr;</span></button>
+      <a class="btn btn-ghost btn-md" href="mailto:signals@gitdealflow.com?subject=GitDealFlow%20for%20funds%20-%20book%20a%20call" onclick="if(window.posthog)posthog.capture('for_funds_call_clicked')">Book a call instead</a>
+    </div>
+  </form>
+  <div id="gdf-sample-result" class="hidden mt-8 text-left" aria-live="polite"></div>
+  <p class="text-gray-400 text-xs mt-6 text-center">Deterministic demo: the same thesis returns the same sample, built from the public signal set updated <span id="gdf-sample-updated">2026-08-17</span>. Prefer to see the signal cold first? Read the <a class="text-brand-400 hover:text-brand-300 underline" href="/report">public evidence report</a> or browse the <a class="text-brand-400 hover:text-brand-300 underline" href="https://signals.gitdealflow.com/predicted">graded predictions board</a>. Want a tailored sample by email instead? <a class="text-brand-400 hover:text-brand-300 underline" href="mailto:signals@gitdealflow.com?subject=GitDealFlow%20free%20sample%20report%20request&body=Our%20thesis%3A%20%0A%0A%28sectors%2C%20stage%2C%20geography%2C%20what%20%22fit%22%20means%20for%20you%29">Request it here</a>.</p>
 </div>
 </section>
 <!-- ============ FAQ ============ -->
@@ -252,6 +264,66 @@
 (function(){var t=document.querySelector('[data-nav-toggle]'),p=document.getElementById('mobile-nav');if(!t||!p)return;function set(o){t.setAttribute('aria-expanded',String(o));t.setAttribute('aria-label',o?'Close menu':'Open menu');p.hidden=!o;}
 t.addEventListener('click',function(){set(t.getAttribute('aria-expanded')!=='true');});
 document.addEventListener('keydown',function(e){if(e.key==='Escape'&&t.getAttribute('aria-expanded')==='true'){set(false);t.focus();}});})();
+</script>
+<script>
+(function(){
+var form=document.getElementById('gdf-sample-form');
+if(!form)return;
+var btn=document.getElementById('gdf-sample-btn');
+var errBox=document.getElementById('gdf-sample-error');
+var result=document.getElementById('gdf-sample-result');
+var updatedEl=document.getElementById('gdf-sample-updated');
+fetch('/api/for-funds-sample').then(function(r){return r.json()}).then(function(d){
+  if(d&&d.updated&&updatedEl)updatedEl.textContent=d.updated;
+}).catch(function(){});
+function esc(s){return String(s==null?'':s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;')}
+function showErr(m){errBox.textContent=m;errBox.classList.remove('hidden')}
+form.addEventListener('submit',function(e){
+  e.preventDefault();
+  errBox.classList.add('hidden');
+  var thesis=document.getElementById('gdf-thesis').value.trim();
+  if(thesis.length<20){showErr('Tell us a bit more: at least 20 characters (sectors, stage, geography, what "fit" means).');return}
+  var email=document.getElementById('gdf-email').value.trim();
+  if(email&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)){showErr('That email does not look right. Leave it empty or fix it.');return}
+  var fund=document.getElementById('gdf-fund').value.trim();
+  btn.disabled=true;btn.textContent='Matching your thesis...';
+  if(window.posthog)posthog.capture('for_funds_sample_generated_client',{thesis_len:thesis.length,has_email:!!email});
+  fetch('/api/for-funds-sample',{method:'POST',headers:{'content-type':'application/json'},body:JSON.stringify({thesis:thesis,email:email,fund:fund,variant:'free_sample'})})
+  .then(function(r){return r.json().then(function(j){return {ok:r.ok,j:j}})})
+  .then(function(res){
+    if(!res.ok||!res.j.ok){showErr((res.j&&res.j.hint)||'Something went wrong generating the sample. Email signals@gitdealflow.com and a human will run it for you.');return}
+    var j=res.j;
+    var html='<div class="rounded-xl border border-gray-700 bg-dark-900/70 p-5 md:p-6">'
+      +'<p class="text-xs uppercase tracking-wider text-brand-400 font-semibold mb-1">Your sample, matched to: '+esc(j.thesis_label)+'</p>'
+      +'<p class="text-gray-400 text-xs mb-4">Method: '+esc(j.method)+' Signal data updated '+esc(j.data_updated)+'. Public engineering-activity signal to investigate, not investment advice.</p>'
+      +'<ol class="list-none p-0 m-0 flex flex-col gap-4">';
+    j.matches.forEach(function(m,i){
+      html+='<li class="border-t border-gray-800 pt-3">'
+        +'<p class="font-semibold text-white">'+(i+1)+'. '+esc(m.name)+' <span class="text-gray-500 font-normal">· '+esc(m.sector)+'</span></p>'
+        +'<p class="text-gray-300 text-sm mt-1">'+esc(m.why_matched)+'</p>'
+        +'<p class="text-gray-500 text-xs mt-1">'+esc(m.evidence)+' <a class="text-brand-400 hover:text-brand-300 underline" href="'+esc(m.profile)+'" target="_blank" rel="noopener">profile &rarr;</a></p>'
+        +'</li>';
+    });
+    html+='</ol>';
+    if(j.matched_keywords&&j.matched_keywords.length){
+      html+='<p class="text-gray-500 text-xs mt-4 border-t border-gray-800 pt-3">Matched on: '+j.matched_keywords.map(esc).join(', ')+'.</p>';
+    }
+    html+='<p class="text-gray-400 text-sm mt-4">This is the shape of every monthly report: '+j.matches.length+' matches now, 5 (Scout) or 10 (Desk) a month, each with its why and evidence. Your request '+(email?'is queued; a human replies from signals@gitdealflow.com within a few business days.':'was noted. Leave your email to get a human-tailored version.')+'</p>';
+    html+='<div class="flex flex-col sm:flex-row gap-3 mt-4"><a class="btn btn-primary btn-sm justify-center" href="#tiers">Turn this into a monthly report</a><a class="btn btn-ghost btn-sm justify-center" href="mailto:signals@gitdealflow.com?subject=GitDealFlow%20free%20sample%20report%20request&body='+encodeURIComponent('Our thesis: '+thesis.slice(0,500))+'">Get the tailored email version</a></div>';
+    html+='</div>';
+    result.innerHTML=html;
+    result.classList.remove('hidden');
+    result.scrollIntoView({behavior:'smooth',block:'nearest'});
+    if(window.posthog)posthog.capture('for_funds_sample_rendered',{matched_thesis:j.thesis_label,match_count:j.matches.length});
+  })
+  .catch(function(){showErr('Network problem. Try again, or email signals@gitdealflow.com.')});
+  // Re-enable so the fund can iterate on the thesis; innerHTML below is safe:
+  // every interpolated value is server-side static bank data passed through esc(),
+  // and the one user-derived string is encodeURIComponent()-wrapped in the href.
+  var reenable=function(){btn.disabled=false;btn.textContent='Generate my sample';};
+  setTimeout(reenable,1200);
+});
+})();
 </script>
 </body>
 </html>

@@ -6,9 +6,16 @@
   "functions": {
     "api/crawl-proxy.js": {
       "includeFiles": "{llms.src.txt,llms-full.src.txt,ai.src.txt,agents.src.txt}"
+    },
+    "api/for-funds-sample.js": {
+      "includeFiles": "data/for-funds-samples/data.json"
     }
   },
   "rewrites": [
+    {
+      "source": "/api/for-funds-sample",
+      "destination": "/api/for-funds-sample.js"
+    },
     {
       "source": "/llms.txt",
       "destination": "/api/crawl-proxy?f=llms.txt"
