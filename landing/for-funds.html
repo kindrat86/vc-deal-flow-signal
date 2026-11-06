@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>GitDealFlow for Funds: Thesis-Matched Deal Flow (€300/€500 a month)</title>
+<meta name="description" content="Monthly deal flow matched to your fund's thesis from public GitHub engineering signals. Thesis Scout €300/mo (5 matches) or Thesis Desk €500/mo (10 matches + evidence). Free sample first.">
+<link rel="canonical" href="https://gitdealflow.com/for-funds">
+<meta name="robots" content="index, follow">
+<link rel="preload" href="/ux.css?v=20260808-2" as="style">
+<link rel="stylesheet" href="/ux.css?v=20260808-2">
+<meta name="theme-color" content="#0f172a">
+<meta name="color-scheme" content="dark">
+<meta property="og:title" content="GitDealFlow for Funds: Thesis-Matched Deal Flow">
+<meta property="og:description" content="Your thesis in. Five or ten GitHub-signal startups a month, with the evidence behind each match. Thesis Scout €300/mo, Thesis Desk €500/mo. Free sample first.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://gitdealflow.com/for-funds">
+<meta property="og:image" content="https://signals.gitdealflow.com/opengraph-image">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="GitDealFlow for Funds: Thesis-Matched Deal Flow">
+<meta name="twitter:description" content="Monthly deal flow matched to your fund's thesis from public GitHub engineering signals. Free sample report first.">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"Service","name":"GitDealFlow for Funds","serviceType":"Thesis-matched startup deal flow for VC funds and family offices","provider":{"@type":"Organization","name":"GitDealFlow","url":"https://gitdealflow.com"},"areaServed":"Worldwide","description":"Monthly deal-flow reports matched to a fund's investment thesis, built from public GitHub engineering activity signals across 350+ startup orgs.","offers":[{"@type":"Offer","name":"Thesis Scout","price":"300","priceCurrency":"EUR","description":"5 thesis-matched startups per month with a why-matched line each.","url":"https://gitdealflow.com/for-funds"},{"@type":"Offer","name":"Thesis Desk","price":"500","priceCurrency":"EUR","description":"10 thesis-matched startups per month plus an evidence pack per match.","url":"https://gitdealflow.com/for-funds"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://gitdealflow.com/"},{"@type":"ListItem","position":2,"name":"For Funds","item":"https://gitdealflow.com/for-funds"}]}
+</script>
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"FAQPage","mainEntity":[
+{"@type":"Question","name":"How is this different from the GitDealFlow Dashboard?","acceptedAnswer":{"@type":"Answer","text":"The Dashboard is self-serve: you pick sectors and watch the board yourself. For-funds is done-for-you: you give us your written thesis and we hand-pick and explain the matches from the full 350+ org signal set, in a monthly report."}},
+{"@type":"Question","name":"What data is this built on?","acceptedAnswer":{"@type":"Answer","text":"Public GitHub engineering activity across 350+ startup organizations: commit and contributor momentum, engineering hiring bursts, and velocity relative to sector benchmarks. No private data, no code reading, no scraping of private repos."}},
+{"@type":"Question","name":"Is this investment advice?","acceptedAnswer":{"@type":"Answer","text":"No. It is research signal to investigate, not a recommendation to invest. Every match comes with the reason it surfaced so your team can judge it."}},
+{"@type":"Question","name":"What happens after I pay?","acceptedAnswer":{"@type":"Answer","text":"You get a welcome email asking for your thesis (or you can send it first via the free sample request). The first monthly report lands within 10 business days of receiving your thesis. Every open paid rung carries the 30-day Signal-or-It's-Free guarantee."}},
+{"@type":"Question","name":"Can we try it before paying?","acceptedAnswer":{"@type":"Answer","text":"Yes, and we prefer it. Request a free sample report with your thesis and we will send one matched sample so you can judge the signal before any money moves."}}
+]}
+</script>
+<style>
+  .tier-card { border: 1px solid #1f2937; border-radius: 1rem; padding: 1.75rem; background: linear-gradient(180deg, rgba(15,23,42,.6), rgba(15,23,42,.9)); display: flex; flex-direction: column; transition: border-color 160ms ease, transform 160ms ease, box-shadow 160ms ease; }
+  .tier-card:hover { border-color: rgba(14, 165, 233, 0.5); transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,.2); }
+  .tier-eyebrow { font-size: 0.7rem; font-weight: 700; letter-spacing: 0.1em; text-transform: uppercase; color: #38bdf8; margin-bottom: 0.35rem; }
+  .tier-price { font-size: 2rem; font-weight: 800; color: #fff; margin-bottom: 0.75rem; }
+  .tier-price small { font-size: 0.85rem; font-weight: 500; color: #94a3b8; }
+  .tier-list { list-style: none; padding: 0; margin: 0 0 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; flex: 1; }
+  .tier-list li { position: relative; padding-left: 1.5rem; color: #d1d5db; font-size: 0.95rem; line-height: 1.5; }
+  .tier-list li::before { content: "✓"; position: absolute; left: 0; top: 0; color: #34d399; font-weight: 700; }
+  .tier-cta-stack { display: flex; flex-direction: column; gap: 0.5rem; }
+  .tier-cta-stack .btn { width: 100%; justify-content: center; }
+  .tier-badge { display: inline-block; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; color: #0f172a; background: #38bdf8; border-radius: 999px; padding: 0.2rem 0.6rem; margin-left: 0.5rem; vertical-align: middle; }
+  .step-card { border: 1px solid #1f2937; border-radius: 1rem; padding: 1.5rem; background: rgba(15,23,42,.6); }
+  .step-num { display: inline-flex; align-items: center; justify-content: center; width: 2rem; height: 2rem; border-radius: 999px; background: rgba(56,189,248,.15); color: #38bdf8; font-weight: 700; margin-bottom: 0.75rem; }
+  @media (prefers-reduced-motion: reduce) { .tier-card { transition: none; } .tier-card:hover { transform: none; } }
+</style>
+</head>
+<body class="bg-dark-900 text-gray-100 antialiased">
+<a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:top-2 focus:left-2 focus:z-[100] focus:bg-brand-500 focus:text-dark-900 focus:px-4 focus:py-2 focus:rounded-lg">Skip to content</a>
+<header class="relative sticky top-0 z-50 border-b border-gray-800 bg-dark-900/95 backdrop-blur">
+<div class="max-w-5xl mx-auto px-4 sm:px-6 py-4 flex items-center justify-between gap-3">
+<a class="font-semibold tracking-tight text-white text-lg" href="/">GitDealFlow</a>
+<nav aria-label="Primary navigation" class="hidden md:flex items-center gap-5 text-sm font-medium text-gray-300">
+<a class="hover:text-white transition-colors" href="/">Home</a>
+<a class="hover:text-white transition-colors" href="https://signals.gitdealflow.com/predicted">Signals</a>
+<a class="hover:text-white transition-colors" href="/firstlook">First Look</a>
+<a class="hover:text-white transition-colors" href="/dashboard">Dashboard</a>
+<a class="hover:text-white transition-colors" href="/insider">Insider</a>
+<a class="hover:text-white transition-colors" href="/for-funds">For funds</a>
+<a class="hover:text-white transition-colors" href="/pricing">Pricing</a>
+</nav>
+<a class="btn btn-primary btn-sm whitespace-nowrap shrink-0" href="#sample" onclick="if(window.posthog)posthog.capture('for_funds_nav_cta_clicked')">Free sample report <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
+<button aria-controls="mobile-nav" aria-expanded="false" aria-label="Open menu" class="md:hidden inline-flex items-center justify-center w-11 h-11 shrink-0 rounded-lg text-gray-300 hover:text-white ring-1 ring-white/10 transition-colors" data-nav-toggle="" type="button">
+<svg aria-hidden="true" fill="none" height="22" stroke="currentColor" stroke-linecap="round" stroke-width="2" viewbox="0 0 24 24" width="22"><path d="M4 7h16M4 12h16M4 17h16"></path></svg>
+</button>
+</div>
+<div class="md:hidden absolute top-full inset-x-0 z-50 border-b border-white/10 bg-dark-900 shadow-2xl" hidden="" id="mobile-nav">
+<nav aria-label="Mobile navigation" class="flex flex-col px-4 py-2">
+<a class="py-3 min-h-[44px] flex items-center border-b border-white/5 text-gray-200 hover:text-white" href="/">Home</a>
+<a class="py-3 min-h-[44px] flex items-center border-b border-white/5 text-gray-200 hover:text-white" href="https://signals.gitdealflow.com/predicted">Signals</a>
+<a class="py-3 min-h-[44px] flex items-center border-b border-white/5 text-gray-200 hover:text-white" href="/firstlook">First Look</a>
+<a class="py-3 min-h-[44px] flex items-center border-b border-white/5 text-gray-200 hover:text-white" href="/dashboard">Dashboard</a>
+<a class="py-3 min-h-[44px] flex items-center border-b border-white/5 text-gray-200 hover:text-white" href="/insider">Insider</a>
+<a class="py-3 min-h-[44px] flex items-center border-b border-white/5 text-gray-200 hover:text-white" href="/for-funds">For funds</a>
+<a class="py-3 min-h-[44px] flex items-center text-gray-200 hover:text-white" href="/pricing">Pricing</a>
+</nav>
+</div>
+</header>
+<main id="main-content">
+<!-- ============ HERO ============ -->
+<section class="relative overflow-hidden">
+<div class="absolute inset-0 bg-gradient-to-br from-dark-900 via-dark-800 to-brand-900 opacity-80"></div>
+<div class="relative max-w-4xl mx-auto px-4 sm:px-6 py-16 md:py-20 text-center">
+<p class="text-brand-500 font-semibold text-sm uppercase tracking-wider mb-4">GitDealFlow for funds · done-for-you deal flow</p>
+<h1 class="text-4xl md:text-5xl font-extrabold leading-tight mb-4">Deal flow matched to your fund's thesis. Not another newsletter.</h1>
+<p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto leading-relaxed mb-8">Your written investment thesis in. Five or ten startups a month that are accelerating on public GitHub engineering signals, each with the reason it matched and the evidence behind it. You judge; we surface.</p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+<a class="btn btn-primary btn-md" href="#sample" onclick="if(window.posthog)posthog.capture('for_funds_hero_cta_clicked',{cta:'free_sample'})">Request a free sample report <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
+<a class="btn btn-ghost btn-md" href="#tiers" onclick="if(window.posthog)posthog.capture('for_funds_hero_cta_clicked',{cta:'tiers'})">See the two tiers</a>
+</div>
+<p class="text-gray-400 text-sm mt-4">Free sample first. No logo walls, no rented benchmarks, no pressure.</p>
+</div>
+</section>
+<!-- ============ PROOF STRIP ============ -->
+<section class="max-w-5xl mx-auto px-4 sm:px-6 py-10">
+<div class="grid gap-4 sm:grid-cols-3 text-center">
+<div class="step-card">
+<p class="text-2xl font-extrabold text-white mb-1">350+</p>
+<p class="text-gray-400 text-sm">startup orgs read on public GitHub engineering activity</p>
+</div>
+<div class="step-card">
+<p class="text-2xl font-extrabold text-white mb-1">21–47 days</p>
+<p class="text-gray-400 text-sm">signal appeared before public fundraise announcements in a documented 219-observation panel. Evidence to investigate, not proof.</p>
+</div>
+<div class="step-card">
+<p class="text-2xl font-extrabold text-white mb-1">Public scorecard</p>
+<p class="text-gray-400 text-sm">our graded predictions board is public, <a class="text-brand-400 hover:text-brand-300 underline" href="https://signals.gitdealflow.com/predicted">misses included</a></p>
+</div>
+</div>
+</section>
+<!-- ============ HOW IT WORKS ============ -->
+<section class="max-w-5xl mx-auto px-4 sm:px-6 py-10">
+<h2 class="text-2xl md:text-3xl font-bold text-white text-center mb-8">How it works</h2>
+<div class="grid gap-6 md:grid-cols-4">
+<div class="step-card">
+<span class="step-num" aria-hidden="true">1</span>
+<h3 class="font-semibold text-white mb-1">Send your thesis</h3>
+<p class="text-gray-400 text-sm leading-relaxed">Two minutes by email or on a call: sectors, stage, geography, what "fit" means for you.</p>
+</div>
+<div class="step-card">
+<span class="step-num" aria-hidden="true">2</span>
+<h3 class="font-semibold text-white mb-1">We map it to signals</h3>
+<p class="text-gray-400 text-sm leading-relaxed">Your thesis becomes GitHub-signal queries across 350+ orgs: momentum, hiring bursts, sector benchmarks.</p>
+</div>
+<div class="step-card">
+<span class="step-num" aria-hidden="true">3</span>
+<h3 class="font-semibold text-white mb-1">Monthly report</h3>
+<p class="text-gray-400 text-sm leading-relaxed">5 or 10 matches, each with a why-matched line. Thesis Desk adds the evidence pack behind it.</p>
+</div>
+<div class="step-card">
+<span class="step-num" aria-hidden="true">4</span>
+<h3 class="font-semibold text-white mb-1">You investigate, we refine</h3>
+<p class="text-gray-400 text-sm leading-relaxed">Tell us which matches were noise. The next report gets sharper. Cancel any month.</p>
+</div>
+</div>
+</section>
+<!-- ============ TIERS ============ -->
+<section class="max-w-5xl mx-auto px-4 sm:px-6 py-12" id="tiers">
+<h2 class="text-2xl md:text-3xl font-bold text-white text-center mb-2">Two tiers. Monthly. Cancel any time.</h2>
+<p class="text-gray-400 text-center mb-8 max-w-2xl mx-auto">Both carry the same 30-day Signal-or-It's-Free guarantee as every open GitDealFlow offer: email us, every cent back.</p>
+<div class="grid gap-6 md:grid-cols-2">
+<!-- THESIS SCOUT -->
+<article class="tier-card" id="thesis-scout">
+<p class="tier-eyebrow">For funds testing the signal</p>
+<h2 class="text-xl font-bold text-white mb-1">Thesis Scout</h2>
+<p class="tier-price">€300 <small>/month</small></p>
+<ul class="tier-list">
+<li><strong class="text-white">5 thesis-matched startups</strong> every month, hand-picked from the full 350+ org signal set</li>
+<li>A plain-English why-matched line for each: what moved, why it fits your thesis</li>
+<li>One monthly report by email, yours to circulate internally</li>
+<li>Thesis refinement on your feedback: tell us the noise, the next report sharpens</li>
+<li>Email support; a human (the same one) answers</li>
+</ul>
+<div class="tier-cta-stack">
+<a class="btn btn-primary btn-md" href="https://buy.stripe.com/eVq4gydJhdVK2069I40x20Y" rel="noopener" onclick="if(window.posthog)posthog.capture('for_funds_cta_clicked',{tier:'thesis_scout'})">Start Thesis Scout — €300/mo <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
+<a class="btn btn-ghost btn-sm" href="mailto:signals@gitdealflow.com?subject=GitDealFlow%20Thesis%20Scout%20%E2%82%AC300%20%E2%80%94%20questions" onclick="if(window.posthog)posthog.capture('for_funds_contact_clicked',{tier:'thesis_scout'})">Questions first? Email us</a>
+</div>
+</article>
+<!-- THESIS DESK -->
+<article class="tier-card" id="thesis-desk">
+<p class="tier-eyebrow">For funds running the signal hard<span class="tier-badge">Most complete</span></p>
+<h2 class="text-xl font-bold text-white mb-1">Thesis Desk</h2>
+<p class="tier-price">€500 <small>/month</small></p>
+<ul class="tier-list">
+<li><strong class="text-white">10 thesis-matched startups</strong> every month, everything in Thesis Scout</li>
+<li><strong class="text-white">Evidence pack per match:</strong> velocity trend, engineering hiring signals, sector benchmark context</li>
+<li>Quarterly thesis review call: what the signal saw, what it missed, what to change</li>
+<li>Priority email; matches re-checked against your feedback before sending</li>
+<li>Best fit for funds and family offices with a standing thesis and a pipeline to feed</li>
+</ul>
+<div class="tier-cta-stack">
+<a class="btn btn-primary btn-md" href="https://buy.stripe.com/aFa7sK20z5pe48e9I40x20Z" rel="noopener" onclick="if(window.posthog)posthog.capture('for_funds_cta_clicked',{tier:'thesis_desk'})">Start Thesis Desk — €500/mo <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
+<a class="btn btn-ghost btn-sm" href="mailto:signals@gitdealflow.com?subject=GitDealFlow%20Thesis%20Desk%20%E2%82%AC500%20%E2%80%94%20questions" onclick="if(window.posthog)posthog.capture('for_funds_contact_clicked',{tier:'thesis_desk'})">Questions first? Email us</a>
+</div>
+</article>
+</div>
+<p class="text-center text-gray-500 text-xs mt-6">Prices in EUR, VAT excluded where applicable. Subscriptions cancel in one click, no call required. Need something custom (more matches, multiple theses, data delivery)? <a class="text-brand-400 hover:text-brand-300 underline" href="mailto:signals@gitdealflow.com?subject=GitDealFlow%20for%20funds%20%E2%80%94%20custom%20scope">Ask for a quote</a>.</p>
+</section>
+<!-- ============ FREE SAMPLE ============ -->
+<section class="max-w-3xl mx-auto px-4 sm:px-6 py-12" id="sample">
+<div class="rounded-2xl border border-brand-500/30 bg-brand-500/10 p-8 md:p-10 text-center">
+<p class="text-brand-400 text-xs font-semibold uppercase tracking-wider mb-2">Start here, free</p>
+<h2 class="text-2xl md:text-3xl font-bold text-white mb-3">Request a free sample report</h2>
+<p class="text-gray-300 leading-relaxed max-w-xl mx-auto mb-6">Send us your thesis. Within a few business days you get one sample report with real matches from the current signal set, so you can judge the work before any money moves. No call required unless you want one.</p>
+<div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+<a class="btn btn-primary btn-md" href="mailto:signals@gitdealflow.com?subject=GitDealFlow%20free%20sample%20report%20request&body=Our%20thesis%3A%20%0A%0A%28sectors%2C%20stage%2C%20geography%2C%20what%20%22fit%22%20means%20for%20you%29" onclick="if(window.posthog)posthog.capture('for_funds_sample_clicked')">Request the free sample <span aria-hidden="true" class="btn-arrow">&rarr;</span></a>
+<a class="btn btn-ghost btn-md" href="mailto:signals@gitdealflow.com?subject=GitDealFlow%20for%20funds%20%E2%80%94%20book%20a%20call" onclick="if(window.posthog)posthog.capture('for_funds_call_clicked')">Book a call instead</a>
+</div>
+<p class="text-gray-400 text-xs mt-4">Prefer to see the signal cold first? Read the <a class="text-brand-400 hover:text-brand-300 underline" href="/report">public evidence report</a> or browse the <a class="text-brand-400 hover:text-brand-300 underline" href="https://signals.gitdealflow.com/predicted">graded predictions board</a>.</p>
+</div>
+</section>
+<!-- ============ FAQ ============ -->
+<section class="max-w-3xl mx-auto px-4 sm:px-6 py-12">
+<h2 class="text-2xl md:text-3xl font-bold text-white text-center mb-8">Fair questions</h2>
+<div class="flex flex-col gap-6">
+<details class="step-card" open>
+<summary class="font-semibold text-white cursor-pointer">How is this different from the GitDealFlow Dashboard?</summary>
+<p class="text-gray-400 text-sm leading-relaxed mt-2">The <a class="text-brand-400 hover:text-brand-300 underline" href="/dashboard">Dashboard</a> is self-serve: you pick sectors and watch the board yourself. For-funds is done-for-you: you give us your written thesis and we hand-pick and explain the matches from the full 350+ org signal set, in a monthly report.</p>
+</details>
+<details class="step-card">
+<summary class="font-semibold text-white cursor-pointer">What data is this built on?</summary>
+<p class="text-gray-400 text-sm leading-relaxed mt-2">Public GitHub engineering activity across 350+ startup organizations: commit and contributor momentum, engineering hiring bursts, and velocity relative to sector benchmarks. No private data, no code reading, no scraping of private repos.</p>
+</details>
+<details class="step-card">
+<summary class="font-semibold text-white cursor-pointer">Is this investment advice?</summary>
+<p class="text-gray-400 text-sm leading-relaxed mt-2">No. It is research signal to investigate, not a recommendation to invest. Every match comes with the reason it surfaced so your team can judge it.</p>
+</details>
+<details class="step-card">
+<summary class="font-semibold text-white cursor-pointer">What happens after we pay?</summary>
+<p class="text-gray-400 text-sm leading-relaxed mt-2">You get a welcome email asking for your thesis (or send it first via the free sample request). The first monthly report lands within 10 business days of receiving your thesis. The 30-day Signal-or-It's-Free guarantee applies from your first payment.</p>
+</details>
+<details class="step-card">
+<summary class="font-semibold text-white cursor-pointer">Can we try it before paying?</summary>
+<p class="text-gray-400 text-sm leading-relaxed mt-2">Yes, and we prefer it. <a class="text-brand-400 hover:text-brand-300 underline" href="#sample">Request a free sample report</a> with your thesis and we will send one matched sample so you can judge the signal before any money moves.</p>
+</details>
+</div>
+</section>
+</main>
+<footer class="border-t border-gray-800 bg-dark-900/80 py-12">
+<div class="max-w-4xl mx-auto px-4 sm:px-6 text-center">
+<p class="text-gray-300 mb-4 font-semibold">GitDealFlow is a deal-flow signal tool for investors, not a fund.</p>
+<div class="flex flex-wrap justify-center gap-6 text-gray-400 text-sm mb-4">
+<a class="hover:text-gray-300" href="/">Home</a>
+<a class="hover:text-gray-300" href="/pricing">Pricing</a>
+<a class="hover:text-gray-300" href="/dashboard">Dashboard</a>
+<a class="hover:text-gray-300" href="/sector-sweep">Sector Sweep</a>
+<a class="hover:text-gray-300" href="/report">Evidence Report</a>
+<a class="hover:text-gray-300" href="/privacy">Privacy</a>
+<a class="hover:text-gray-300" href="/terms">Terms</a>
+</div>
+<p class="text-gray-400 text-xs">© 2026 GitDealFlow. Questions? signals@gitdealflow.com. A human (the same one) answers.</p>
+</div>
+</footer>
+<script>
+    !function(t,e){var o,n,p,r;e.__SV||(window.posthog=e,e._i=[],e.init=function(i,s,a){function g(t,e){var o=e.split('.');2==o.length&&(t=t[o[0]],e=o[1]),t[e]=function(){t.push([e].concat(Array.prototype.slice.call(arguments,0)))}}(p=t.createElement('script')).type='text/javascript',p.async=!0,p.src=s.api_host+'/static/array.js',(r=t.getElementsByTagName('script')[0]).parentNode.insertBefore(p,r);var u=e;for(void 0!==a?u=e[a]=[]:a='posthog',u.people=u.people||[],u.toString=function(t){var e='posthog';return'posthog'!==a&&(e+='.'+a),t||(e+=' (stub)'),e},u.people.toString=function(){return u.toString(1)+'.people (stub)'},o='init capture register register_once register_for_session unregister opt_out_capturing has_opted_out_capturing opt_in_capturing reset isFeatureEnabled onFeatureFlags getFeatureFlag getFeatureFlagPayload reloadFeatureFlags group setPersonProperties resetPersonProperties setPersonPropertiesForFlags resetPersonPropertiesForFlags setGroupPropertiesForFlags resetGroupPropertiesForFlags'.split(' '),n=0;n<o.length;n++)g(u,o[n]);e._i.push([i,s,a])},e.__SV=1)}(document,window.posthog||[]);
+    (function(){
+      function _init(){ if(/^https?:$/.test(location.protocol)) posthog.init('phc_lyZCgvTpicjLzAO3rY2GhxuX5WUc5jQjP8ZVwwJqauX', {api_host: 'https://eu.i.posthog.com', persistence: (navigator.doNotTrack=='1'||window.globalPrivacyControl)?'memory':'localStorage+cookie', cross_subdomain_cookie: true, disable_session_recording: true, person_profiles: 'identified_only'}); }
+      if('requestIdleCallback' in window){requestIdleCallback(_init,{timeout:2500});} else {setTimeout(_init,2000);}
+    })();
+  </script>
+<script src="/ux.js" defer></script>
+<script>
+(function(){var t=document.querySelector('[data-nav-toggle]'),p=document.getElementById('mobile-nav');if(!t||!p)return;function set(o){t.setAttribute('aria-expanded',String(o));t.setAttribute('aria-label',o?'Close menu':'Open menu');p.hidden=!o;}
+t.addEventListener('click',function(){set(t.getAttribute('aria-expanded')!=='true');});
+document.addEventListener('keydown',function(e){if(e.key==='Escape'&&t.getAttribute('aria-expanded')==='true'){set(false);t.focus();}});})();
+</script>
+</body>
+</html>
