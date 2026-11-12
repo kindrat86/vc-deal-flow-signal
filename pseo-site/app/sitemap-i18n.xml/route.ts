@@ -12,6 +12,7 @@
 
 import { getI18nSitemapEntries } from "@/lib/hreflang";
 import { getDataLastModified } from "@/lib/data";
+import { isMergeRedirectedUrl } from "@/lib/sitemap-redirect-filter";
 
 export const dynamic = "force-dynamic";
 
@@ -20,10 +21,15 @@ export async function GET() {
   const entries = getI18nSitemapEntries();
 
   const urlBlocks = entries
-    .flatMap(({ enUrl, alternates }) => {
+    .flatMap(({ enUrl, alternates: allAlternates }) => {
+      // signals-merge (2026-11-12): drop variants that 308 to gitdealflow.com,
+      // both as <loc> and as hreflang alternates.
+      const alternates = allAlternates.filter((a) => !isMergeRedirectedUrl(a.href));
       // Emit one <url> per (en + each locale variant). Each emits the FULL
       // alternates list, Google requires bidirectional declarations.
-      const allUrls = Array.from(new Set([enUrl, ...alternates.map((a) => a.href)]));
+      const allUrls = Array.from(
+        new Set([enUrl, ...alternates.map((a) => a.href)]),
+      ).filter((u) => !isMergeRedirectedUrl(u));
       return allUrls.map((url) => {
         const altLinks = alternates
           .map(

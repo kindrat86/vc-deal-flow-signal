@@ -6,6 +6,7 @@ import {
 import { posts } from "@/content/posts";
 import { agentQueries } from "@/content/agent-queries";
 import { videos, watchPageUrl } from "@/content/videos";
+import { isMergeRedirectedUrl } from "@/lib/sitemap-redirect-filter";
 
 export const dynamic = "force-dynamic";
 
@@ -112,6 +113,7 @@ export async function GET() {
   // Group by pageUrl so each <url> gets all its <image:image> children
   const byPage = new Map<string, ImageEntry[]>();
   for (const e of entries) {
+    if (isMergeRedirectedUrl(e.pageUrl)) continue;
     const arr = byPage.get(e.pageUrl) ?? [];
     arr.push(e);
     byPage.set(e.pageUrl, arr);
