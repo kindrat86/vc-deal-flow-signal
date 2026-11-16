@@ -34,3 +34,17 @@ export function isMergeRedirectedUrl(url: string): boolean {
   }
   return REDIRECTED_PATHS.has(normalizePath(pathname));
 }
+
+/**
+ * Off-host destination for a merge-redirected signals URL, or null when the
+ * URL does not redirect. Used where a feed must keep one required link (RSS
+ * <channel><link>) but should point at the final 200 URL, not a 308 hop.
+ */
+export function mergeRedirectDestination(url: string): string | null {
+  if (!isMergeRedirectedUrl(url)) return null;
+  const pathname = normalizePath(new URL(url, `https://${SIGNALS_HOST}`).pathname);
+  const hit = (signalsMergeRedirects as { redirects: { source: string; destination: string }[] }).redirects.find(
+    (r) => normalizePath(r.source) === pathname,
+  );
+  return hit ? hit.destination : null;
+}
