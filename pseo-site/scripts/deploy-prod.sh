@@ -27,6 +27,44 @@
 
 set -euo pipefail
 
+# Step 5 lives here as a function so `bash scripts/deploy-prod.sh verify-live`
+# can run ONLY the post-deploy check (no build, no vercel, no lock).
+# signals.gitdealflow.com/ is an intentional 308 to gitdealflow.com
+# (signals-merge phase 2, 6e0a39317). The old helper asserted HTTP 200 plus
+# the 'VC Deal Flow Signal' body needle, which that URL no longer serves.
+verify_signals_root_redirect() {
+  local url="${1:-https://signals.gitdealflow.com/}"
+  local expected_host="${2:-gitdealflow.com}"
+  local headers status location location_host
+  echo "▶ Verifying ${url} redirects to ${expected_host} (308)..."
+  if ! headers="$(curl -sS -D - -o /dev/null --max-time 30 "$url")"; then
+    echo "✗ verify-live: curl failed for $url"
+    return 1
+  fi
+  status="$(printf '%s\n' "$headers" | awk 'BEGIN{s=""} toupper($1) ~ /^HTTP\//{s=$2} END{print s}')"
+  location="$(printf '%s\n' "$headers" | awk 'tolower($0) ~ /^location:/{sub(/\r$/,""); sub(/^[Ll][Oo][Cc][Aa][Tt][Ii][Oo][Nn]:[ \t]*/,""); print; exit}')"
+  location_host="${location#*://}"
+  location_host="${location_host%%/*}"
+  location_host="${location_host%%:*}"
+  if [ "$status" != "308" ]; then
+    echo "✗ verify-live: expected HTTP 308 from $url, got ${status:-empty}"
+    echo "$headers"
+    return 1
+  fi
+  if [ "$location_host" != "$expected_host" ]; then
+    echo "✗ verify-live: expected Location host ${expected_host}, got '${location_host:-empty}' (Location: ${location:-empty})"
+    echo "$headers"
+    return 1
+  fi
+  echo "✓ verify-live: $url → 308 Location host ${location_host} (${location})"
+}
+
+if [ "${1:-}" = "verify-live" ]; then
+  verify_signals_root_redirect "${2:-https://signals.gitdealflow.com/}" "${3:-gitdealflow.com}"
+  exit 0
+fi
+
+
 # Deploy lock — serialize against concurrent deploys to the same alias-pinned
 # Vercel project (multiple agents deploy this site; last-wins silently reverts
 # fixes). The lock helper lives in the shared growth-loop framework so both
@@ -77,18 +115,9 @@ node scripts/verify-jsonld.mjs .vercel/output
 echo "▶ Deploying to production with --archive=tgz..."
 npx vercel deploy --prebuilt --prod --archive=tgz
 
-# Step 5 - post-deploy content-marker verification (2026-08-19).
-# A deploy returning 0 does not prove the site is live and rendered: an
-# empty/blank 200 still exits 0 (CSP trusted-types blank shell, stale empty
-# artifact). Curl the live homepage and assert HTTP 200 + a brand needle + a
-# minimum body size so a blank deploy fails loudly instead of "succeeding".
-# This replaces the old status-only `curl -I` hint, which missed empty pages.
-VERIFY_HELPER="${GITDEALFLOW_VERIFY_HELPER:-$HOME/growth-loop/lib/verify-live-deploy.sh}"
-if [ -f "$VERIFY_HELPER" ]; then
-  # shellcheck disable=SC1090
-  source "$VERIFY_HELPER"
-  verify_live_deploy "https://signals.gitdealflow.com/" "VC Deal Flow Signal" 20000
-else
-  echo "⚠ verify-live-deploy.sh not found at $VERIFY_HELPER, skipping live verification."
-fi
+# Step 5 — post-deploy verification (updated 2026-11-16).
+# '/' on signals.gitdealflow.com is an intentional 308 to gitdealflow.com
+# (signals-merge phase 2, 6e0a39317). Check status + Location host; do not
+# look for a homepage body needle that this URL no longer serves.
+verify_signals_root_redirect "https://signals.gitdealflow.com/" "gitdealflow.com"
 
