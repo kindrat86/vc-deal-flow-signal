@@ -59,6 +59,7 @@ import {
   getAllDirectoryRegions,
 } from "@/lib/directory";
 import { isPagePruned } from "@/content/pruned-pages";
+import { isMergeRedirectedUrl } from "@/lib/sitemap-redirect-filter";
 
 const BASE_URL = "https://signals.gitdealflow.com";
 
@@ -883,6 +884,9 @@ export async function GET(_req: Request, ctx: RouteContext) {
   // convention as the §48 niche-down prune). The generated set lives in
   // content/pruned-pages.ts; re-run scripts/build-pruned-pages.ts quarterly.
   entries = entries.filter((e) => !isPagePruned(new URL(e.url).pathname));
+
+  // signals-merge (2026-11-12): never advertise URLs that 308 to gitdealflow.com.
+  entries = entries.filter((e) => !isMergeRedirectedUrl(e.url));
 
   const urlsXml = entries
     .map(

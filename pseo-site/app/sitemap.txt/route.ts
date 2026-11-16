@@ -14,6 +14,7 @@ import { pillars } from "@/content/pillars";
 import { agentQueries } from "@/content/agent-queries";
 import { startupIdeas } from "@/content/startup-ideas";
 import { isPagePruned } from "@/content/pruned-pages";
+import { isMergeRedirectedUrl } from "@/lib/sitemap-redirect-filter";
 
 const SITE = "https://signals.gitdealflow.com";
 
@@ -67,7 +68,6 @@ export async function GET() {
     "/api/dataset.jsonl",
     "/api/answers.json",
     "/api/openapi.json",
-    "/api/agents",
     "/.well-known/agent-card.json",
     "/.well-known/ai-policy.json",
     "/.well-known/mcp.json",
@@ -102,6 +102,7 @@ export async function GET() {
   // render; `urls` stays const).
   const body = urls
     .filter((u) => !isPagePruned(new URL(u).pathname))
+    .filter((u) => !isMergeRedirectedUrl(u))
     .join("\n") + "\n";
 
   return new Response(body, {

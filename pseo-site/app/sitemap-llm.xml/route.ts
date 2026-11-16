@@ -34,8 +34,10 @@
 import {
   getDataLastModified,
   getAllPageSlugs,
+  parsePageSlug,
   SIGNAL_TYPES,
 } from "@/lib/data";
+import { isMergeRedirectedUrl } from "@/lib/sitemap-redirect-filter";
 import { glossaryTerms } from "@/content/glossary";
 import { getAllSectorSlugs } from "@/content/sectors";
 import { PRIMITIVES } from "@/content/signal-primitives";
@@ -139,8 +141,10 @@ export async function GET() {
       priority: 0.85,
     });
   }
-  // /startups-to-watch/{sector}-{period} ranking pages (all periods).
-  for (const slug of getAllPageSlugs()) {
+  // /startups-to-watch/{sector}-{period} ranking pages (all periods that
+  // actually render: the page 404s when parsePageSlug() returns null, e.g.
+  // q3-2025 snapshots whose period is no longer in data.periods).
+  for (const slug of getAllPageSlugs().filter((s) => parsePageSlug(s) !== null)) {
     entries.push({
       url: `${BASE_URL}/startups-to-watch/${slug}`,
       lastmod,
@@ -150,6 +154,7 @@ export async function GET() {
   }
 
   const urlsXml = entries
+    .filter((e) => !isMergeRedirectedUrl(e.url))
     .map(
       (e) =>
         `  <url>\n    <loc>${esc(e.url)}</loc>\n    <lastmod>${e.lastmod}</lastmod>\n    <changefreq>${e.changefreq}</changefreq>\n    <priority>${e.priority}</priority>\n  </url>`
